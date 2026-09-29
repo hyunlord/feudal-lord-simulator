@@ -14,6 +14,8 @@ export interface WallBoundary {
 
 export interface WallGrid extends Grid {
   readonly palisade?: WallBoundary | null;
+  /** FIX-10 (FD-1): the land's river — its ford cells take a road without a bridge. */
+  readonly river?: { readonly fords: readonly number[] } | undefined;
 }
 
 type Segment = readonly [TileEdgePoint, TileEdgePoint];

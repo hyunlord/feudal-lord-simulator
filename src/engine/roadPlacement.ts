@@ -1,7 +1,7 @@
 import type { GameState } from "./engine.types";
 import { getTile, type TileCoordinate } from "../world/grid";
 import { PlacementFailure, placementSpendableResource } from "../world/placement";
-import { BRIDGE_MAX_WATER_TILES, BRIDGE_TIMBER_PER_TILE, bridgeAt } from "../world/bridges";
+import { BRIDGE_MAX_WATER_TILES, BRIDGE_TIMBER_PER_TILE, FORD_TIMBER_PER_TILE, bridgeAt, isFordCell } from "../world/bridges";
 import { canTraverseWallBoundary } from "../world/wallTraversal";
 
 export type RoadPlacementAssessment = {
@@ -26,8 +26,13 @@ export function roadPlacementAssessment(state: GameState, path: readonly TileCoo
   if (first === undefined || last === undefined) return result(PlacementFailure.wrong_terrain);
   const horizontal = first.ty === last.ty;
   if (first.tx !== last.tx && !horizontal) return result(PlacementFailure.wrong_terrain);
-  const waterIndexes = path.flatMap((point, index) => getTile(state, point)?.terrain === 'water' ? [index] : []);
-  if (waterIndexes.length === 0) return result(null);
+  // FIX-10 (FD-1): a river's ford cells take the road as they are (a ford); the other water must make a bridge's span.
+  const waterIndexes = path.flatMap((point, index) => getTile(state, point)?.terrain === 'water' && !isFordCell(state, point) ? [index] : []);
+  const newFords = path.filter(point => getTile(state, point)?.terrain === 'water' && isFordCell(state, point) && getTile(state, point)?.hasRoad !== true).length;
+  const fordTimber = newFords * FORD_TIMBER_PER_TILE;
+  if (waterIndexes.length === 0) {
+    return fordTimber > 0 && placementSpendableResource(state, 'timber') < fordTimber ? result(PlacementFailure.insufficient_materials) : result(null);
+  }
   const newWaterIndexes = waterIndexes.filter(index => {
     const point = path[index];
     return point !== undefined && getTile(state, point)?.hasRoad !== true;
@@ -43,7 +48,7 @@ export function roadPlacementAssessment(state: GameState, path: readonly TileCoo
     const point = path[index];
     if (point === undefined) continue;
     if (!canTraverseWallBoundary(state, path[index - 1] ?? point, point)) return result(PlacementFailure.wrong_terrain);
-    if (getTile(state, point)?.terrain !== 'water') continue;
+    if (getTile(state, point)?.terrain !== 'water' || isFordCell(state, point)) continue;
     if (bridgeAt(projected, point) === null) return result(PlacementFailure.wrong_terrain);
     if (getTile(state, point)?.hasRoad === true) continue;
     for (const sign of [-1, 1]) {
@@ -51,7 +56,7 @@ export function roadPlacementAssessment(state: GameState, path: readonly TileCoo
       if (neighbor?.terrain === 'water' && neighbor.hasRoad) return result(PlacementFailure.occupied);
     }
   }
-  return placementSpendableResource(state, 'timber') < newWaterIndexes.length * BRIDGE_TIMBER_PER_TILE
+  return placementSpendableResource(state, 'timber') < newWaterIndexes.length * BRIDGE_TIMBER_PER_TILE + fordTimber
     ? result(PlacementFailure.insufficient_materials) : result(null);
 }
 
@@ -62,8 +67,11 @@ export function roadPlacementFailure(state: GameState, path: readonly TileCoordi
 export function roadTimberCost(state:GameState,path:readonly TileCoordinate[]):number {
   return path.filter(point => {
     const tile = getTile(state, point);
-    return tile?.terrain === 'water' && !tile.hasRoad;
-  }).length * BRIDGE_TIMBER_PER_TILE;
+    return tile?.terrain === 'water' && !tile.hasRoad && !isFordCell(state, point);
+  }).length * BRIDGE_TIMBER_PER_TILE + path.filter(point => {
+    const tile = getTile(state, point);
+    return tile?.terrain === 'water' && !tile.hasRoad && isFordCell(state, point);
+  }).length * FORD_TIMBER_PER_TILE;
 }
 
 export function chargeRoadTimber(state:GameState,cost:number):Pick<GameState,"treasuryTimber"|"buildings"> {

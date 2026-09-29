@@ -1,4 +1,5 @@
 import { setFarmsteadCrop } from "../engine/ale";
+import { orderTimber } from "../engine/timberTrade";
 import { startDrainage } from "../engine/drainage";
 import { DEFAULT_SCENARIO_ID } from "../content/scenario/coreScenarios";
 import { recordMaterialPlacement, refreshMaterialResult } from '../engine/autoplayMaterialLifecycle';
@@ -160,6 +161,8 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return setFarmsteadCrop(state, action.buildingId, action.crop);
     case "drain_fen":
       return startDrainage(state, action.tx, action.ty);
+    case "order_timber":
+      return orderTimber(state, action.amount);
     case "cancel_construction": {
       const routes = createSimulationRoutePorts(state);
       const result = cancelConstruction({

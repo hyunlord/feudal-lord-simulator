@@ -1,3 +1,4 @@
+import { wadingPace } from "../world/bridges";
 import { observeMaterialReturn } from './materialActivity';
 import { BALANCE } from "../content/balanceConfig";
 import { WALL_CARRY_COST_FACTOR } from '../content/wallConstructionConfig';
@@ -98,7 +99,8 @@ export function stepCarters(input: DeliveryStepInput): DeliveryStepResult {
       && input.routes.canCarryForDestination?.(to, walker.destination) === true;
     const length = from === undefined || to === undefined ? 1
       : Math.abs(from.tx - to.tx) + Math.abs(from.ty - to.ty);
-    const speed = carry && length > 0 ? BALANCE.CARTER_SPEED / WALL_CARRY_COST_FACTOR : BALANCE.CARTER_SPEED;
+    // FIX-10 (FD-2): wading a ford is slower.
+    const speed = wadingPace(input.routes.isFord, from, to, carry && length > 0 ? BALANCE.CARTER_SPEED / WALL_CARRY_COST_FACTOR : BALANCE.CARTER_SPEED);
     const moved = stepWalkerAlongPath(walker, speed);
     if (!hasArrivedAtPathEnd(moved)) {
       walkers.push(moved);

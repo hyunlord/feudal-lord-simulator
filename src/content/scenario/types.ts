@@ -112,8 +112,10 @@ export interface ArchetypeRules {
   readonly timberPermille: number;
   /** A wet summer's harvest loss (its share of the 5 % the open field loses). */
   readonly floodPermille: number;
-  /** A coastal town's raid (houses and loot) and its pestilence's deaths. */
+  /** A coastal town's pestilence's deaths (MA-6). */
   readonly coastalEventPermille: number;
+  /** FIX-10 (MA-13): a coastal town's raid — the houses it burns and its share of the loot. */
+  readonly coastalRaidPermille: number;
 }
 
 export interface ArchetypeDef {

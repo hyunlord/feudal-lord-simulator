@@ -33,7 +33,7 @@ export const MAP_ARCHETYPES: readonly ArchetypeDef[] = [
     terrain: { kind: "river", river: RIVER },
     ground: { fill: "grass", decals: [], decalPermille: 0, fieldBoundary: "hedgerow", water: RIVER_WATER },
     resources: { timber: "normal", stone: "normal", clay: "normal", fish: "normal" },
-    rules: { arablePermille: 1000, pastoralPermille: 1000, timberPermille: 1000, floodPermille: 1000, coastalEventPermille: 1000 },
+    rules: { arablePermille: 1000, pastoralPermille: 1000, timberPermille: 1000, floodPermille: 1000, coastalEventPermille: 1000, coastalRaidPermille: 1000 },
   },
   {
     // MA-1 ②: a harbour on a sea edge — sand, shingle and salt marsh; the raid of 1337 and the port's fever strike hardest.
@@ -43,7 +43,7 @@ export const MAP_ARCHETYPES: readonly ArchetypeDef[] = [
       decals: ["decals/coastal_sand_a", "decals/coastal_sand_b", "decals/coastal_sand_c", "props/driftwood_a", "props/driftwood_b", "props/rock_pool"],
       water: ["water/shore_foam_sheet", ...CURRENT, "water/ripple_sheet", "water/sparkle", "water/fish_ring", "water/ice_edge"] },
     resources: { timber: "scarce", stone: "normal", clay: "normal", fish: "rich" },
-    rules: { arablePermille: 950, pastoralPermille: 1000, timberPermille: 900, floodPermille: 1000, coastalEventPermille: 1200 },
+    rules: { arablePermille: 950, pastoralPermille: 1000, timberPermille: 900, floodPermille: 1000, coastalEventPermille: 1200, coastalRaidPermille: 1500 },
   },
   {
     // MA-1 ③: the chalk downs — short turf, white chalk, dry-stone folds; sheep thrive, the plough less, water is scarce.
@@ -54,7 +54,7 @@ export const MAP_ARCHETYPES: readonly ArchetypeDef[] = [
         "props/chalk_outcrop_c", "props/sheep_stone_wall_a", "props/sheep_stone_wall_b", "decals/heath_patch_a", "props/gorse_a", "props/gorse_b"],
       water: [...CURRENT, "water/ripple_sheet", "water/sparkle", "water/ice_edge"] },
     resources: { timber: "scarce", stone: "rich", clay: "scarce", fish: "scarce" },
-    rules: { arablePermille: 850, pastoralPermille: 1300, timberPermille: 900, floodPermille: 600, coastalEventPermille: 1000 },
+    rules: { arablePermille: 850, pastoralPermille: 1300, timberPermille: 900, floodPermille: 600, coastalEventPermille: 1000, coastalRaidPermille: 1000 },
   },
   {
     // MA-1 ④: the forest's edge — leaf litter and fallen trees; timber comes fast, the fields are won by felling.
@@ -65,7 +65,7 @@ export const MAP_ARCHETYPES: readonly ArchetypeDef[] = [
         "props/fern_bush_a", "props/fern_bush_b", "props/fern_bush_c"],
       water: [...CURRENT, "water/ripple_sheet", "water/sparkle", "water/fish_ring", "water/ice_edge"] },
     resources: { timber: "rich", stone: "normal", clay: "normal", fish: "normal" },
-    rules: { arablePermille: 900, pastoralPermille: 900, timberPermille: 1300, floodPermille: 1000, coastalEventPermille: 1000 },
+    rules: { arablePermille: 900, pastoralPermille: 900, timberPermille: 1300, floodPermille: 1000, coastalEventPermille: 1000, coastalRaidPermille: 1000 },
   },
   {
     // MA-1 ⑤: the fen — wet meadow, reed beds, meres; the drained ground is the richest, and a wet summer floods it.
@@ -76,7 +76,7 @@ export const MAP_ARCHETYPES: readonly ArchetypeDef[] = [
         "props/fen_puddle_a", "props/fen_puddle_b"],
       water: [...CURRENT, "water/reeds_sway_a_sheet", "water/reeds_sway_b_sheet", "water/reeds_sway_c_sheet", "water/ripple_shallow_sheet", "water/fish_ring", "water/ice_edge"] },
     resources: { timber: "scarce", stone: "scarce", clay: "rich", fish: "rich" },
-    rules: { arablePermille: 1150, pastoralPermille: 1100, timberPermille: 800, floodPermille: 2500, coastalEventPermille: 1000 },
+    rules: { arablePermille: 1150, pastoralPermille: 1100, timberPermille: 800, floodPermille: 2500, coastalEventPermille: 1000, coastalRaidPermille: 1000 },
   },
 ];
 

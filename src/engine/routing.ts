@@ -102,7 +102,7 @@ function dedupeSortedNonWaterRoads(
 
 // SMOOTH-2E: a building's road accesses per immutable tile array and wall (their whole input with the footprint), read
 // by production, labour, food flow and every route each tick. Same key as the road graph's (`roadGraph.ts`).
-const accessCaches = new WeakMap<WallGrid["tiles"], { readonly width: number; readonly height: number; readonly wall: WallGrid["palisade"];
+const accessCaches = new WeakMap<WallGrid["tiles"], { readonly width: number; readonly height: number; readonly wall: WallGrid["palisade"]; readonly river: WallGrid["river"];
   readonly tiles: Map<string, readonly TileCoordinate[]> }>();
 
 export function buildingRoadAccessTiles(
@@ -113,8 +113,8 @@ export function buildingRoadAccessTiles(
   // A partial grid (a view without its tiles) is read uncached.
   if (typeof grid.tiles !== "object" || grid.tiles === null) return uncachedBuildingRoadAccessTiles(grid, building, definition);
   let cache = accessCaches.get(grid.tiles);
-  if (cache === undefined || cache.width !== grid.width || cache.height !== grid.height || cache.wall !== grid.palisade) {
-    cache = { width: grid.width, height: grid.height, wall: grid.palisade, tiles: new Map() };
+  if (cache === undefined || cache.width !== grid.width || cache.height !== grid.height || cache.wall !== grid.palisade || cache.river !== grid.river) {
+    cache = { width: grid.width, height: grid.height, wall: grid.palisade, river: grid.river, tiles: new Map() };
     accessCaches.set(grid.tiles, cache);
   }
   const key = `${building.tx},${building.ty},${definition.width},${definition.height}`;

@@ -1,3 +1,4 @@
+import { wadingPace } from "../world/bridges";
 import { operationSuspended } from "../content/buildingConfig";
 import { nextHouseDemandTile } from "./roamingDemand";
 import { BALANCE } from "../content/balanceConfig";
@@ -165,7 +166,8 @@ function stepDistributor(
     return { ...stopDistributor(buildings, walker), houses, deliveryEvents: [] };
   }
 
-  const moved = stepWalkerAlongPath(walker, BALANCE.DISTRIBUTOR_SPEED);
+  // FIX-10 (FD-2): wading a ford is slower.
+  const moved = stepWalkerAlongPath(walker, wadingPace(routes.isFord, walker.path[walker.pathIndex], walker.path[walker.pathIndex + 1], BALANCE.DISTRIBUTOR_SPEED));
   if (!hasArrivedAtPathEnd(moved)) return { buildings, houses, walker: moved, deliveryEvents: [] };
   if (moved.phase === "returning") {
     const restored = restoreBread(buildings, moved);

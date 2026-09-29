@@ -1,0 +1,61 @@
+/**
+ * FIX-10 timber from the market's traders (spec docs/design/timber-trade.md):
+ * - TT-1 the command `order_timber` sets a standing order (0 cancels, at most `maxOrder`); the order waits for a market.
+ * - TT-2 on each market day (a market round) with a staffed market open, the traders bring up to `perMarketDay` of it
+ *   into the treasury's timber at `price` pennies each — as much as the treasury pays for — posted `timber_purchase`.
+ * - TT-3 the order falls by what came; at nought it is gone.
+ * - TT-4 the bot orders its construction's missing timber when it can pay for it and keep `botCoinReserve`.
+ */
+import { TIMBER_TRADE_BALANCE } from "../content/timberTradeConfig";
+import { constructionDeliveryNeed, isWallConstructionSite } from "../economy/construction";
+import { TIMBER_EXPANSION_OBSERVATION_TICKS } from "./autoplayTimberRecovery";
+import { postLedgerEntries } from "../ledger/ledger";
+import { placementSpendableResource } from "../world/placement";
+import type { GameState } from "./engine.types";
+import { completedMarkets, MARKET_CADENCE_TICKS } from "./marketSettlement";
+
+/** TT-1: the standing order, clamped to 0…`maxOrder` (0 cancels). */
+export function orderTimber(state: GameState, amount: number): GameState {
+  const next = Math.max(0, Math.min(TIMBER_TRADE_BALANCE.maxOrder, Math.floor(Number.isFinite(amount) ? amount : 0)));
+  if (next === (state.timberOrder ?? 0)) return state;
+  if (next === 0) { const { timberOrder: _gone, ...rest } = state; return rest; }
+  return { ...state, timberOrder: next };
+}
+
+/** TT-2: the market that trades with the timber merchants (the first staffed one), or null. */
+export function timberTradeMarket(state: GameState) {
+  return completedMarkets(state.buildings)[0] ?? null;
+}
+
+/** TT-2, TT-3: a market day's delivery of the standing order. */
+export function advanceTimberTrade(state: GameState): GameState {
+  const order = state.timberOrder ?? 0;
+  if (order <= 0 || state.tick <= 0 || state.tick % MARKET_CADENCE_TICKS !== 0) return state;
+  const market = timberTradeMarket(state);
+  if (market === null) return state;
+  const brought = Math.min(order, TIMBER_TRADE_BALANCE.perMarketDay, Math.floor(Math.max(0, state.treasuryCoin) / TIMBER_TRADE_BALANCE.price));
+  if (brought <= 0) return state;
+  const posted = postLedgerEntries(state, [{ account: "cash", category: "timber_purchase", amount: -brought * TIMBER_TRADE_BALANCE.price,
+    sourceRefs: [{ type: "building", id: market.id, detail: `timber:${brought}` }] }]);
+  const left = order - brought;
+  const { timberOrder: _order, ...rest } = state;
+  return { ...rest, ...(left > 0 ? { timberOrder: left } : {}), treasuryTimber: state.treasuryTimber + brought,
+    treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };
+}
+
+/**
+ * TT-4: the bot's order — once its wall has waited a whole shortage window for timber (the window that also lets it add
+ * a logging camp, `TIMBER_EXPANSION_OBSERVATION_TICKS`), the wall timber still lacking, what the treasury pays for above
+ * the reserve.
+ */
+export function botTimberOrder(state: GameState): number | null {
+  if ((state.timberOrder ?? 0) > 0 || timberTradeMarket(state) === null) return null;
+  const since = state.timberProductionWindow?.expansionShortageSinceTick;
+  if (since === undefined || state.tick - since < TIMBER_EXPANSION_OBSERVATION_TICKS) return null;
+  const need = state.constructionSites.filter(isWallConstructionSite).reduce((sum, site) => sum + (constructionDeliveryNeed(site).timber ?? 0), 0)
+    - placementSpendableResource(state, "timber");
+  if (need <= 0) return null;
+  const affordable = Math.floor((state.treasuryCoin - TIMBER_TRADE_BALANCE.botCoinReserve) / TIMBER_TRADE_BALANCE.price);
+  const amount = Math.min(need, affordable, TIMBER_TRADE_BALANCE.maxOrder);
+  return amount >= TIMBER_TRADE_BALANCE.perMarketDay ? amount : null;
+}

@@ -3,6 +3,33 @@ import { canTraverseWallBoundary, type WallGrid } from "./wallTraversal";
 
 export const BRIDGE_MAX_WATER_TILES = 8;
 export const BRIDGE_TIMBER_PER_TILE = 4;
+/**
+ * FIX-10 (FD-1…FD-3, spec docs/design/map-archetypes.md): a ford — a road laid over a river's ford cells (its narrow,
+ * open-banked reaches, `RiverData.fords`) — needs no bridge: a timber a cell for the causeway's stones and hurdles, and
+ * carts and walkers wade it at half their pace.
+ */
+export const FORD_TIMBER_PER_TILE = 1;
+export const FORD_PACE_DIVISOR = 2;
+const fordSets = new WeakMap<readonly number[], ReadonlySet<number>>();
+
+/** The tile is one of the river's ford cells (with a road or not). */
+export function isFordCell(grid:WallGrid,coordinate:TileCoordinate):boolean {
+  const fords=grid.river?.fords;
+  if(fords===undefined||fords.length===0||coordinate.tx<0||coordinate.ty<0||coordinate.tx>=grid.width||coordinate.ty>=grid.height)return false;
+  let set=fordSets.get(fords);
+  if(set===undefined){set=new Set(fords);fordSets.set(fords,set);}
+  return set.has(coordinate.ty*grid.width+coordinate.tx);
+}
+
+/** FD-2: the pace of a step from `from` to `to` — `pace`, or `pace / FORD_PACE_DIVISOR` when either end is a ford road. */
+export function wadingPace(isFord:((tile:TileCoordinate)=>boolean)|undefined,from:TileCoordinate|undefined,to:TileCoordinate|undefined,pace:number):number {
+  return from!==undefined&&to!==undefined&&isFord!==undefined&&(isFord(from)||isFord(to)) ? pace/FORD_PACE_DIVISOR : pace;
+}
+
+/** A road on a ford cell: the wading place. */
+export function isFordRoad(grid:WallGrid,coordinate:TileCoordinate):boolean {
+  return getTile(grid,coordinate)?.hasRoad===true&&isFordCell(grid,coordinate);
+}
 export type BridgeSpan = { readonly axis: "x" | "y"; readonly water: readonly TileCoordinate[]; readonly banks: readonly [TileCoordinate, TileCoordinate] };
 const axes = [{tx:1,ty:0,axis:"x"},{tx:0,ty:1,axis:"y"}] as const;
 const same = (a:TileCoordinate,b:TileCoordinate) => a.tx===b.tx&&a.ty===b.ty;
@@ -40,6 +67,7 @@ export function canTraverseRoadBoundary(grid:WallGrid,from:TileCoordinate,to:Til
 /** A water end of a step is a bridge's, and the other end on that same bridge (its water or its banks). */
 function bridgeEndAllows(grid:WallGrid,point:TileCoordinate,other:TileCoordinate):boolean {
   if(getTile(grid,point)?.terrain!=="water")return true;
+  if(isFordRoad(grid,point))return true;
   const span=bridgeAt(grid,point);
   return span!==null&&(span.water.some(candidate=>same(candidate,other))||span.banks.some(candidate=>same(candidate,other)));
 }

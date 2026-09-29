@@ -42,7 +42,8 @@ const SALE_RULES = [
   { resource: "finished_cloth", reserve: 0, coin: CLOTH_BALANCE.clothPrice },
 ] as const satisfies readonly SaleRule[];
 
-const MARKET_CADENCE_TICKS = 80;
+/** A market round, the town's market day: the markets trade (and, FIX-10, the traders bring ordered timber). */
+export const MARKET_CADENCE_TICKS = 80;
 
 /**
  * EV-5: the price a unit sells for now: the rule's price, bread and wheat × the food price of an arriving dearth
@@ -79,7 +80,7 @@ function withAmount(
   return { ...record, [resource]: nextAmount };
 }
 
-function completedMarkets(buildings: readonly Building[]): readonly Building[] {
+export function completedMarkets(buildings: readonly Building[]): readonly Building[] {
   return buildings
     .filter((building) => building.kind === "market")
     .filter((building) => !operationSuspended(building) && building.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired)

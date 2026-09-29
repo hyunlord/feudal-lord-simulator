@@ -47,7 +47,7 @@ test("MA-1 five lands in the start screen's order: the riverside town (the open 
   assert.deepEqual(MAP_ARCHETYPE_IDS, [RIVERSIDE_ARCHETYPE_ID, COASTAL_ARCHETYPE_ID, DOWNS_ARCHETYPE_ID, WOODLAND_ARCHETYPE_ID, FEN_ARCHETYPE_ID]);
   assert.deepEqual(mapArchetypes().map(archetype => archetype.id), MAP_ARCHETYPE_IDS);
   assert.equal(RIVERSIDE_ARCHETYPE_ID, SCENARIOS.get(DEFAULT_SCENARIO_ID)!.archetype, "the campaign's land is still the open field");
-  assert.deepEqual(Object.values(byId(RIVERSIDE_ARCHETYPE_ID).rules), [1000, 1000, 1000, 1000, 1000]);
+  assert.deepEqual(Object.values(byId(RIVERSIDE_ARCHETYPE_ID).rules), [1000, 1000, 1000, 1000, 1000, 1000]);
   assert.deepEqual(MAP_ARCHETYPES.map(archetype => archetype.coastal === true), [true, true, false, false, false]);
   for (const archetype of MAP_ARCHETYPES) {
     const copy = SCENARIO_COPY.archetypes[archetype.id.split(":")[1] as keyof typeof SCENARIO_COPY.archetypes];
@@ -181,6 +181,16 @@ test("MA-4 ⑤ the harbour's raid takes more houses and loot, its port fever mor
   const riverside = firstDeaths(plague);
   assert.ok(riverside >= 420 && riverside <= 480);
   assert.equal(firstDeaths(on(plague, COASTAL_ARCHETYPE_ID)), Math.floor(riverside * archetypeRules(on(plague, COASTAL_ARCHETYPE_ID)).coastalEventPermille / 1000));
+});
+
+test("MA-13 the harbour's raid weighs 1.5 (houses and loot), its pestilence still 1.2; every other land 1,000", () => {
+  const rules = (id: string) => MAP_ARCHETYPES.find(archetype => archetype.id === id)!.rules;
+  assert.deepEqual([rules(COASTAL_ARCHETYPE_ID).coastalRaidPermille, rules(COASTAL_ARCHETYPE_ID).coastalEventPermille], [1500, 1200]);
+  for (const archetype of MAP_ARCHETYPES) if (archetype.id !== COASTAL_ARCHETYPE_ID) assert.equal(archetype.rules.coastalRaidPermille, 1000, archetype.id);
+  const town = loadSave("population-176");
+  const open = raidLosses(town), harbour = raidLosses(on(town, COASTAL_ARCHETYPE_ID));
+  const exposed = town.houses.filter(house => house.burntTick === undefined).length;
+  assert.equal(harbour.burntHouses, Math.min(exposed, Math.round(open.burntHouses * 1.5)), `${open.burntHouses} → ${harbour.burntHouses}`);
 });
 
 test("MA-5 the ground layer names confirmed Wave 22 files; field edges are Wave 28's, water movement Wave 29's; each land has its own fill", () => {

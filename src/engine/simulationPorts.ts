@@ -17,7 +17,7 @@ import {
   withdrawReservedStock,
 } from "../economy/storage";
 import { getTile } from "../world/grid";
-import { canTraverseRoadBoundary } from "../world/bridges";
+import { canTraverseRoadBoundary, isFordRoad } from "../world/bridges";
 import { getOrthogonalRoadNeighbors } from "../world/roadGraph";
 import type { GameState, RoadPathCache } from "./engine.types";
 import {
@@ -166,6 +166,7 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
     isRoad: (tile) => getTile(state, tile)?.hasRoad === true,
     canTraverse: (from, to) => canTraverseRoadBoundary(state, from, to)
       || canTraverseWallCarryEdge(state, from, to),
+    isFord: (tile) => isFordRoad(state, tile),
   };
 
   const roaming: RoamingRoutePort = {
@@ -198,6 +199,7 @@ export function createSimulationRoutePorts(state: GameState): SimulationRoutePor
     }),
     isRoad: (tile) => getTile(state, tile)?.hasRoad === true,
     canTraverse: (from, to) => canTraverseRoadBoundary(state, from, to),
+    isFord: (tile) => isFordRoad(state, tile),
   };
 
   return {

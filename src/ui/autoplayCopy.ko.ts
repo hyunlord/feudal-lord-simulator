@@ -6,3 +6,5 @@ export const AUTOPLAY_FAMINE_RESPONSE_LABEL = '다음: 대기근 대응 정하�
 export const AUTOPLAY_PETITION_RESPONSE_LABEL = '다음: 청원에 답하기';
 /** INSTALL-3 (AL-8): the bot turns a barn's crop (the game command `set_farmstead_crop`); the crop is the good's name. */
 export const AUTOPLAY_FARMSTEAD_CROP_LABEL = (crop: string) => `다음: 헛간 작물을 ${crop}로`;
+/** FIX-10 (TT-4): the bot's timber order. */
+export const AUTOPLAY_TIMBER_ORDER_LABEL = (amount: number) => `다음: 장날 상인에게 목재 ${amount} 주문`;

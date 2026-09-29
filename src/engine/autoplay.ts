@@ -9,6 +9,8 @@ import { autoplaySearchExhausted, runAutoplaySearch, runAutoplaySearchPhase } fr
 import { resetAutoplayServiceSearch } from './autoplayServiceSpace';
 import type { FoodDiagnosticCollector } from './autoplayFoodDiagnostic';
 import { timberExpansionKind } from './autoplayTimberRecovery';
+import { botTimberOrder } from './timberTrade';
+import { crossingAction } from './autoplayCrossing';
 import { needsStoneStorageRecovery } from './autoplayStorageRecovery';
 import { materialRecoveryAction } from './autoplayMaterialRecovery';
 import { constructionLogisticsAction } from './autoplayConstructionLogistics';
@@ -251,10 +253,14 @@ function buildAction(state: GameState, kind: BuildingKind, accepts: (coordinate:
     const road = plannedBuildingRoadAction(state, virtualBuilding(kind, candidate.tile));
     if (road.kind !== "none") return road;
   }
-  return NONE;
+  // FIX-10 (FD-4): no site for the quarry or logging camp on this side — a ford or bridge to the far bank's rock or wood.
+  return crossingAction(state, kind);
 }
 
 function timberAction(state: GameState, diagnostic?: BotRecoveryCollector): AutoplayAction {
+  // FIX-10 (TT-4): the construction's missing timber ordered from the market's traders, when the treasury pays for it.
+  const order = botTimberOrder(state);
+  if (order !== null) return { kind: "order_timber", amount: order };
   // BOT-1 (BT6): timber for the waiting construction, decided while the stock to build the facility is there.
   const demand = timberDemandExpansionKind(state);
   if (demand !== null) {
