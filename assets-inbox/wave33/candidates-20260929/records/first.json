@@ -1,0 +1,78 @@
+[
+  {
+    "id": "1391-wool-staple",
+    "title": "양모 스테이플 이전",
+    "year": 1391,
+    "file": "assets/1391-wool-staple.png",
+    "prompt": "Use case: historical-scene. Create ONE standalone wide 16:9 opaque painted historical event illustration for a medieval city game. Reference images are STYLE references only: match the subdued natural earth colors, richly textured painterly detail, believable expressive people, warm plaster and weathered oak of Wave21. Do NOT copy their contact-sheet layout or frames. Scene: southern England in 1391, relocation of the wool staple trade. In the immediate foreground on an outdoor timber wharf, a customs official clearly presses a small seal stamp onto the tied closure of a large wool sack, with a second inspected sack bearing a simple round nontext emblem. Two merchants observe and discuss the consignment. Beside them porters carry bulky wool sacks up a sturdy gangplank into a moored medieval single-masted cog, making shipping activity prominent and unmistakable. Put the visible stamping hand, wool sacks, and loaders at readable foreground/middle scale; open river and modest timber-framed quay buildings behind. Clothing appropriate to late fourteenth-century England: wool tunics, hoods, caps, hose, modest merchant gowns; no modern dress. Painterly realism, muted ochre, warm gray, brown, faded moss green and burgundy, soft daylight. Maintain a single coherent scene edge to edge with no decorative border. No readable letters, words, numbers, labels, captions, watermark or heraldic lettering. No chimneys, brick houses, reflective modern glass, guns, modern ships, indoor paperwork scene or table-centered composition. Output one landscape image; keep central narrative safe for final 960x540 crop.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch4.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch5.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave31.jpg"
+    ],
+    "nativeOutput": "native/first/1391-wool-staple.png",
+    "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-7c69-7530-bb7a-eb769a0ced94 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-7c69-7530-bb7a-eb769a0ced94/exec-4909f559-d672-4187-b34a-6461012a1cc6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "postprocess": "Sharp resize 960x540 fit cover position centre, removeAlpha, PNG; no drawn or composited additions.",
+    "nativeSize": {
+      "width": 1672,
+      "height": 941
+    },
+    "finalSize": {
+      "width": 960,
+      "height": 540
+    },
+    "status": "candidate",
+    "tool": "builtin image_gen",
+    "modelVersion": null,
+    "seed": null,
+    "visualQA": {
+      "inspected": true,
+      "coherentSingleScene": true,
+      "mainActionReadable": true,
+      "noLegibleTextObserved": true,
+      "noChimneysObserved": true,
+      "opaque": true,
+      "notes": "Stamping official, sacks, merchants and gangplank loaders clearly visible; small seal has ornamental nontext marks."
+    },
+    "sha256": "e7dbb927ce065c7ba838c254c9df84a0c18b003d3544fb1a3f8f24ad0b8f9ca4",
+    "nativeSha256": "7ac39afdb8fb47f51e787ea7fb4a978425180aa09a20bf44efe7fd6e3258ed18"
+  },
+  {
+    "id": "1394-guild-dispute",
+    "title": "길드와 상인 분쟁",
+    "year": 1394,
+    "file": "assets/1394-guild-dispute.png",
+    "prompt": "Use case: historical-scene. Create ONE standalone wide 16:9 opaque painted historical event illustration for a medieval city game. All supplied images are STYLE references only: follow Wave21's subdued earth colors, richly textured painterly treatment, expressive believable townspeople, warm plaster and dark oak architecture. Never reproduce a grid, montage, border or reference panel arrangement. Scene: southern England in 1394, a guild and merchant dispute OUTSIDE the guildhall on its broad stone entrance steps and adjoining open street. Two clearly opposing groups face each other in the foreground: working artisans in modest wool clothes and aprons on one side, prosperous merchants in restrained long wool gowns on the other. An artisan holds a fabric guild banner with ONLY a large simple crossed-tools symbol, entirely without text. Central speakers exchange tense open-hand gestures, others listen or gesture disagreement; readable expressions and distinct silhouettes. All hands are empty except the banner staff, no raised weapons, violence or fighting. The guildhall's warm plaster and weathered timber frame, low rubble stone base and plain clay-tile roof frame the steps; distant medieval street provides context, no chimneys anywhere. Painterly realism, soft daylight, muted ochre/brown/gray, faded green and burgundy cloth; match continuity with the supplied Wave21 art. One complete outdoor scene edge to edge, main action visible at foreground scale and centered safely for final 960x540. No indoor paperwork scene, tables, writing, documents, readable letters, numbers, captions, logos, watermark, or ornamental border. No modern items, guns, brick houses, reflective glass, or chimneys.",
+    "refs": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch4.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch5.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave31.jpg"
+    ],
+    "nativeOutput": "native/first/1394-guild-dispute.png",
+    "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-7c69-7530-bb7a-eb769a0ced94 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-7c69-7530-bb7a-eb769a0ced94/exec-24fd18e0-eb84-469f-97bf-86b1c23f0a59.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "postprocess": "Sharp resize 960x540 fit cover position centre, removeAlpha, PNG; no drawn or composited additions.",
+    "nativeSize": {
+      "width": 1672,
+      "height": 941
+    },
+    "finalSize": {
+      "width": 960,
+      "height": 540
+    },
+    "status": "candidate",
+    "tool": "builtin image_gen",
+    "modelVersion": null,
+    "seed": null,
+    "visualQA": {
+      "inspected": true,
+      "coherentSingleScene": true,
+      "mainActionReadable": true,
+      "noLegibleTextObserved": true,
+      "noChimneysObserved": true,
+      "opaque": true,
+      "notes": "Opposing artisan and merchant groups visible outdoors on steps; banner tool symbol; open-hand disagreement without violence."
+    },
+    "sha256": "1f17de00cefb3c83ef674be507a56b2e2da25a48e841735c32be5259ad2ab6a3",
+    "nativeSha256": "0ef00d2a11bade3f360eaed75ceb4fe76be491c9f28c67c78e3715ef7622da8a"
+  }
+]
