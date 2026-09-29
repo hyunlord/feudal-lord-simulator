@@ -1,0 +1,104 @@
+{
+ "variant": "house",
+ "answers": {
+  "royal_tax": "accept",
+  "heir_choice": "refuse",
+  "borough_autonomy": "refuse",
+  "legacy_choice": "accept_with_price"
+ },
+ "start": {
+  "tick": 329000,
+  "year": 1382,
+  "treasury": 58370,
+  "population": 768
+ },
+ "end": {
+  "tick": 601000,
+  "year": 1450,
+  "treasury": 171620,
+  "population": 768,
+  "outcome": "victory",
+  "lived": 24,
+  "l4": 24
+ },
+ "heir": {
+  "kind": "nephew",
+  "personId": "m-000015",
+  "previousHeadId": "m-000013",
+  "tick": 344000,
+  "relief": 200
+ },
+ "candidates": [
+  [
+   "nephew",
+   "kinsman"
+  ]
+ ],
+ "mayorId": null,
+ "family": "stayed",
+ "backlash": 93,
+ "royalSubsidy": 400,
+ "legacy": "family",
+ "endowment": 500,
+ "clothSold": 3400,
+ "scores": {
+  "town": 55,
+  "family": 90,
+  "church": 27,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": -20,
+    "legacy": 0
+   },
+   "family": {
+    "house": 20,
+    "generations": 12,
+    "heir": 5,
+    "stayed": 15,
+    "relations": 3,
+    "treasury": 10,
+    "legacy": 25
+   },
+   "church": {
+    "church": 10,
+    "chapels": 4,
+    "bishop": 3,
+    "priest": 5,
+    "relief": 5,
+    "legacy": 0
+   }
+  }
+ },
+ "ending": {
+  "id": "house_seat",
+  "title": "가문의 도시",
+  "sentence": "드 포콩발 가문은 3대에 걸쳐 영주관을 지켰고, 나이 든 앤드루 드 포콩발이 그 문장을 이었다. 1450년 마지막 장날, 도시는 여전히 가문의 도시였다.",
+  "quotes": [
+   "h-026471",
+   "h-025873",
+   "h-027332"
+  ],
+  "final": true
+ },
+ "relations": {
+  "overlord": -10,
+  "crown": 40,
+  "neighbour_1": -6,
+  "neighbour_2": 0,
+  "bishop": 15,
+  "merchant_house_1": 20,
+  "merchant_house_2": 0,
+  "town": 28,
+  "commons": 35
+ },
+ "rights": [
+  "market_charter:merchants",
+  "commuted_rent:townsfolk",
+  "market_tolls:townsfolk",
+  "bridge_tolls:townsfolk"
+ ]
+}
