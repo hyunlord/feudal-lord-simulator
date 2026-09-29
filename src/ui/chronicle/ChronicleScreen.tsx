@@ -128,8 +128,8 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
   const biography = useMemo(() => personId === null ? null : biographyView(state, personId), [personId, state.history, state.persons]); // eslint-disable-line react-hooks/exhaustive-deps
   // The faction tab reads the factions, the ledger, the persons, the petitions and the war (time stands still while it is open).
   const view = personId !== null ? "person" : tab === "records" ? "records" : factionId === null ? "factions" : "faction";
+  // UI-9: state.reorganisation added — factionRows now reads factionInfluence, which depends on it.
   // why: the rows and the page are rebuilt when the tab or page opens; the state is still while the screen is up
-  // UI-9: state.reorganisation added — factionRows now reads factionInfluence which depends on it.
   const rows = useMemo(() => view === "factions" ? factionRows(state) : [], [view, state.factions, state.history, state.politics, state.war, state.reorganisation]); // eslint-disable-line react-hooks/exhaustive-deps
   // why: the world's events move only with the year
   const world = useMemo(() => view === "factions" ? worldLines(state) : [], [view, yearNow]); // eslint-disable-line react-hooks/exhaustive-deps
