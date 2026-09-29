@@ -5,7 +5,7 @@ import { tileToScreen } from "./iso";
 import { presentationPreference } from "./presentationPreferences";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { drawSeasonArt, seasonImage, seasonMeta, seasonOf } from "./seasonArt";
-import { drawCroppedWorldSprite } from "./worldSprite";
+import { SNOW_FLAKE_PIXELS } from "./pixelFacts.generated";
 import { SEMANTIC_PALETTE } from "../content/palette";
 import { withAlpha } from "./style";
 
@@ -51,27 +51,19 @@ export function drawSeasonFx(context: CanvasRenderingContext2D, state: GameState
   drawSnowfall(context, viewport, transform === null ? 1 : transform.a / zoom, nowMs);
 }
 
-// Cache (AGENTS rule 10): the flakes of each snowfall frame as one path of its visible pixels (alpha over 24 of 255),
-// read once from the loaded sheet; key: the sheet image (one sheet). Reason: a full-view pattern blend per frame cost
-// the DGX software raster ~11 ms a frame through the first snow (pop176 turn cell, p95 17.6 ms against trunk 7.2 ms);
-// the sheet is sparse (~100 flake pixels per 128 x 128 frame), so filling only those pixels over the view's cells costs
-// a few dozen small fills. Measured: docs/verification/install15/perf.md.
+// Cache (AGENTS rule 10): the flakes of each snowfall frame as one path of its visible pixels (alpha over 24 of 255);
+// key: the sheet image (one sheet). Reason: a full-view pattern blend per frame cost the DGX software raster ~11 ms a
+// frame through the first snow (pop176 turn cell, p95 17.6 ms against trunk 7.2 ms); the sheet is sparse (~100 flake
+// pixels per 128 x 128 frame), so filling only those pixels over the view's cells costs a few dozen small fills.
+// Measured: docs/verification/install15/perf.md. SMOOTH-2R: the flake pixels come from the build-time pixel facts
+// (pixelFacts.generated.ts SNOW_FLAKE_PIXELS, scripts/buildPixelFacts.ts), not from reading the sheet back.
 let snowFlakes: { readonly sheet: HTMLImageElement; readonly frames: readonly (Path2D | null)[] } | null = null;
-const SNOW_ALPHA_FLOOR = 24;
 
-function flakePaths(sheet: HTMLImageElement): readonly (Path2D | null)[] {
-  const meta = seasonMeta("snowfall_sheet");
-  const canvas = document.createElement("canvas");
-  canvas.width = meta.width; canvas.height = meta.height;
-  const paint = canvas.getContext("2d", { willReadFrequently: true });
-  if (paint === null || typeof Path2D === "undefined") return [];
-  drawCroppedWorldSprite(paint, sheet, { x: 0, y: 0, width: meta.width, height: meta.height }, { x: 0, y: 0, width: meta.width, height: meta.height }, false, true);
-  const data = paint.getImageData(0, 0, meta.width, meta.height).data;
-  return Array.from({ length: meta.frames.count }, (_, frame) => {
+function flakePaths(): readonly (Path2D | null)[] {
+  if (typeof Path2D === "undefined") return [];
+  return SNOW_FLAKE_PIXELS.map(pixels => {
     const path = new Path2D();
-    for (let y = 0; y < meta.frames.height; y += 1) for (let x = 0; x < meta.frames.width; x += 1) {
-      if ((data[(y * meta.width + frame * meta.frames.width + x) * 4 + 3] ?? 0) > SNOW_ALPHA_FLOOR) path.rect(x, y, 1, 1);
-    }
+    for (let index = 0; index < pixels.length; index += 2) path.rect(pixels[index]!, pixels[index + 1]!, 1, 1);
     return path;
   });
 }
@@ -80,7 +72,7 @@ function drawSnowfall(context: CanvasRenderingContext2D, viewport: { readonly wi
   if (typeof document === "undefined" || typeof context.fill !== "function") return;
   const sheet = seasonImage("snowfall_sheet");
   if (sheet === null) return;
-  if (snowFlakes === null || snowFlakes.sheet !== sheet) snowFlakes = { sheet, frames: flakePaths(sheet) };
+  if (snowFlakes === null || snowFlakes.sheet !== sheet) snowFlakes = { sheet, frames: flakePaths() };
   const meta = seasonMeta("snowfall_sheet");
   const path = snowFlakes.frames[Math.floor(nowMs / SNOW_FRAME_MS) % meta.frames.count] ?? null;
   if (path === null) return;

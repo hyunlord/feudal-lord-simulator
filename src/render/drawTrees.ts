@@ -28,8 +28,7 @@ function drawSeasonalSprite(context: CanvasRenderingContext2D, key: string, tx: 
   const variant = seasonVariant(key, seasonForObject(blend, salt), salt);
   const image = variant === null ? null : seasonSprite(variant);
   if (image === null) return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, options);
-  const { tint: _tint, ...untinted } = options;
-  return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, { ...untinted, image });
+  return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, { ...options, image });
 }
 
 export { seasonBlend } from "./seasonTransition"; // one drawBuildings import for the object pass's season
@@ -71,7 +70,6 @@ export function drawTreeDescriptor(
       drawSeasonalSprite(context, input.tree.spriteKey, anchor.tx, anchor.ty, {
         ...input.spriteOptions,
         scale: input.tree.scale,
-        tint: input.tree.tone,
         flipX: input.tree.flipX,
       }, input.season, saltOf(input.tree.anchorTx, input.tree.anchorTy))
     ) {

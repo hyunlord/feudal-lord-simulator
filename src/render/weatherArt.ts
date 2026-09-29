@@ -1,6 +1,8 @@
 import { WAVE23_IMAGES, type Wave23Key } from "./wave23ArtManifest.generated";
+import { RAIN_KEPT_RUNS, WEATHER_MEAN_RGBA } from "./pixelFacts.generated";
 import { rgbaOfChannels } from "./style";
-import { RAIN_ALPHA_FLOOR, RAIN_DRAW, type RainSheet } from "./weatherLayers";
+import { SEMANTIC_PALETTE } from "../content/palette";
+import { RAIN_DRAW, type RainSheet } from "./weatherLayers";
 import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
 
@@ -73,11 +75,11 @@ function cellCanvas(key: Wave23Key, image: CanvasImageSource, frame: number): Ca
   if (paint === null) return null;
   drawCroppedWorldSprite(paint, image, cell, { x: 0, y: 0, width: cell.width, height: cell.height }, false, false);
   const rain = key in RAIN_DRAW ? RAIN_DRAW[key as RainSheet] : null;
-  if (rain !== null && typeof paint.getImageData === "function") {
+  if (rain !== null) {
     // INSTALL-23b: the halo cleared, then the cell scaled nearest to its drawn size (the streaks' share unchanged).
-    const pixels = paint.getImageData(0, 0, cell.width, cell.height);
-    clearFaintPixels(pixels.data, RAIN_ALPHA_FLOOR);
-    paint.putImageData(pixels, 0, 0);
+    // SMOOTH-2R: the halo is cleared by keeping only the cell's pixels over RAIN_ALPHA_FLOOR, their row runs measured
+    // at build time (pixelFacts.generated.ts RAIN_KEPT_RUNS), filled opaque with destination-in — no pixel is read back.
+    keepRuns(paint, RAIN_KEPT_RUNS[key]?.[index] ?? "");
     const scaled = document.createElement("canvas");
     scaled.width = Math.round(cell.width * rain.scale); scaled.height = Math.round(cell.height * rain.scale);
     const scaledPaint = scaled.getContext("2d");
@@ -88,6 +90,28 @@ function cellCanvas(key: Wave23Key, image: CanvasImageSource, frame: number): Ca
   }
   cells[index] = canvas;
   return canvas;
+}
+
+/** SMOOTH-2R: keeps only the pixels of the row runs `encoded` (scripts/buildPixelFacts.ts: per row a run count, then
+ * per run its gap from the last run's end and its length - 1, one byte each, base64) and clears the rest. The runs are
+ * whole pixels filled at full alpha, so a kept pixel keeps its exact value. */
+function keepRuns(paint: CanvasRenderingContext2D, encoded: string): void {
+  const bytes = atob(encoded);
+  paint.save();
+  paint.setTransform(1, 0, 0, 1, 0, 0);
+  paint.globalCompositeOperation = "destination-in";
+  paint.beginPath();
+  for (let at = 0, row = 0; at < bytes.length; row += 1) {
+    const runs = bytes.charCodeAt(at++);
+    for (let run = 0, end = 0; run < runs; run += 1) {
+      const start = end + bytes.charCodeAt(at++); const length = bytes.charCodeAt(at++) + 1;
+      paint.rect(start, row, length, 1);
+      end = start + length;
+    }
+  }
+  paint.fillStyle = SEMANTIC_PALETTE.ink;
+  paint.fill();
+  paint.restore();
 }
 
 /** INSTALL-23b: clears every pixel at or under `floor` alpha (RGBA bytes, in place) — the rain streaks' faint halo, so
@@ -127,9 +151,10 @@ export function drawWeatherSprite(context: CanvasRenderingContext2D, key: Wave23
   return true;
 }
 
-// Cache (AGENTS rule 10): a tint's mean colour (its RGB and alpha averaged over the image), read once; key: the image
-// (two tints). Reason: a repeat pattern of the 256 x 256 tint over the whole view cost 3.8 ms a frame against 0.6 ms for
-// a flat fill of the same blend (headless Chrome --disable-gpu on a Mac, 1280 x 800, multiply at 0.06, median of 40;
+// Cache (AGENTS rule 10): a tint's mean colour (its RGB and alpha averaged over the image); key: the image (two tints).
+// SMOOTH-2R: the mean is measured at build time (pixelFacts.generated.ts WEATHER_MEAN_RGBA), not read back from the
+// image. Reason: a repeat pattern of the 256 x 256 tint over the whole view cost 3.8 ms a frame against 0.6 ms for a
+// flat fill of the same blend (headless Chrome --disable-gpu on a Mac, 1280 x 800, multiply at 0.06, median of 40;
 // scripts/weatherCaptures.ts "fillCost" repeats it). The tint's brush variation is kept to 25 % of its colour by Astra's
 // processing, and at the 0.06-0.10 it is applied that is under two 8-bit levels, so the flat mean looks the same.
 const meanColours = new Map<CanvasImageSource, string | null>();
@@ -139,19 +164,8 @@ export function weatherMeanColour(key: Wave23Key): string | null {
   const image = weatherImage(key);
   if (image === null) return null;
   if (meanColours.has(image)) return meanColours.get(image) ?? null;
-  const meta = WAVE23_IMAGES[key];
-  const canvas = typeof document === "undefined" ? null : document.createElement("canvas");
-  const paint = canvas?.getContext("2d", { willReadFrequently: true }) ?? null;
-  if (canvas === null || paint === null) { meanColours.set(image, null); return null; }
-  canvas.width = meta.width; canvas.height = meta.height;
-  drawCroppedWorldSprite(paint, image, { x: 0, y: 0, width: meta.width, height: meta.height }, { x: 0, y: 0, width: meta.width, height: meta.height }, false, false);
-  const data = paint.getImageData(0, 0, meta.width, meta.height).data;
-  let red = 0, green = 0, blue = 0, alpha = 0;
-  for (let index = 0; index < data.length; index += 4) {
-    const a = data[index + 3] ?? 0;
-    red += (data[index] ?? 0) * a; green += (data[index + 1] ?? 0) * a; blue += (data[index + 2] ?? 0) * a; alpha += a;
-  }
-  const colour = alpha === 0 ? null : rgbaOfChannels(red / alpha, green / alpha, blue / alpha, alpha / (data.length / 4) / 255);
+  const mean = WEATHER_MEAN_RGBA[key] ?? null;
+  const colour = mean === null ? null : rgbaOfChannels(mean[0], mean[1], mean[2], mean[3] / 255);
   meanColours.set(image, colour);
   return colour;
 }

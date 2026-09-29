@@ -1,3 +1,4 @@
+import { recordDrawExtent, type RecordedExtent } from "./rasterDrawBounds";
 type Transform = Readonly<{ a: number; b: number; c: number; d: number; e: number; f: number }>;
 export type RasterBounds = Readonly<{ left: number; top: number; right: number; bottom: number }>;
 type Entry = Readonly<{ canvas: HTMLCanvasElement; x: number; y: number; pixels: number }>;
@@ -59,8 +60,8 @@ export function drawCachedWorldRaster(context: CanvasRenderingContext2D, content
     paint.setTransform(transform.a, transform.b, transform.c, transform.d, -x, -y);
     paint.imageSmoothingEnabled = context.imageSmoothingEnabled;
     paint.imageSmoothingQuality = context.imageSmoothingQuality;
-    draw(paint);
-    entry = trimTransparentMargin(canvas, paint, x, y) ?? { canvas, x, y, pixels };
+    const drawn = recordDrawExtent(paint, [transform.a, transform.b, transform.c, transform.d, -x, -y], draw);
+    entry = trimToDrawnExtent(canvas, drawn, x, y) ?? { canvas, x, y, pixels };
     let total = entry.pixels;
     for (const existing of cache.values()) total += existing.pixels;
     for (const [oldKey, old] of cache) {
@@ -77,23 +78,18 @@ export function drawCachedWorldRaster(context: CanvasRenderingContext2D, content
   } finally { context.restore(); }
 }
 
-/** Trim transparent padding once so small wall pieces cannot churn the pixel budget. */
-function trimTransparentMargin(canvas: HTMLCanvasElement, paint: CanvasRenderingContext2D, x: number, y: number): Entry | null {
-  if (typeof paint.getImageData !== "function") return null;
+/** Trim transparent padding once so small wall pieces cannot churn the pixel budget. SMOOTH-2R: to the drawn pieces'
+ * recorded extent (rasterDrawBounds.ts) and one device pixel more, as the pixel scan did — no pixel is read back. */
+function trimToDrawnExtent(canvas: HTMLCanvasElement, drawn: RecordedExtent, x: number, y: number): Entry | null {
+  if (drawn === null || drawn === "unbounded") return null;
+  const { width, height } = canvas;
+  const left = Math.max(0, Math.floor(drawn.left) - 1); const top = Math.max(0, Math.floor(drawn.top) - 1);
+  const right = Math.min(width, Math.ceil(drawn.right) + 1); const bottom = Math.min(height, Math.ceil(drawn.bottom) + 1);
+  if (right <= left || bottom <= top) return null;
+  if (left === 0 && top === 0 && right === width && bottom === height) return null;
   try {
-    const { width, height } = canvas;
-    const pixels = paint.getImageData(0, 0, width, height).data;
-    let left = width; let top = height; let right = -1; let bottom = -1;
-    for (let row = 0; row < height; row++) for (let column = 0; column < width; column++) {
-      if ((pixels[(row * width + column) * 4 + 3] ?? 0) === 0) continue;
-      left = Math.min(left, column); right = Math.max(right, column);
-      top = Math.min(top, row); bottom = Math.max(bottom, row);
-    }
-    if (right < left || bottom < top) return null;
-    left = Math.max(0, left - 1); top = Math.max(0, top - 1);
-    right = Math.min(width - 1, right + 1); bottom = Math.min(height - 1, bottom + 1);
     const trimmed = document.createElement("canvas");
-    trimmed.width = right - left + 1; trimmed.height = bottom - top + 1;
+    trimmed.width = right - left; trimmed.height = bottom - top;
     const target = trimmed.getContext("2d");
     if (target === null) return null;
     target.drawImage(canvas, left, top, trimmed.width, trimmed.height, 0, 0, trimmed.width, trimmed.height);
