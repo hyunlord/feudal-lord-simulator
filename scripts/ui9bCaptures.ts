@@ -22,7 +22,7 @@ import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 type Locator = { first: () => Locator; click: (options?: object) => Promise<void>; count: () => Promise<number>; waitFor: (options?: object) => Promise<void>;
   screenshot: (options: object) => Promise<unknown> };
-type Page = { waitForTimeout: (ms: number) => Promise<void>; screenshot: (options: object) => Promise<unknown>; evaluate: <T, A = void>(f: ((arg: A) => T) | string, arg?: A) => Promise<T>;
+type Page = { waitForTimeout: (ms: number) => Promise<void>; screenshot: (options: object) => Promise<unknown>; evaluate: <T = unknown, A = void>(f: ((arg: A) => T) | string, arg?: A) => Promise<T>;
   locator: (selector: string) => Locator; on: (event: string, handler: (error: unknown) => void) => void };
 const [out] = process.argv.slice(2);
 const flag = (name: string) => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
@@ -139,7 +139,12 @@ for (const [file, dir, name, chapter] of [["o3-chapter3-opening", dirs.ui6, "cha
       const candidate = await scene(state, [keep.tx, keep.ty], { delay: 0, label: file });
       // The page opens after the save's first frames: a minute or more on the DGX's software rendering.
       try { await candidate.page.locator(".chronicle-page").waitFor({ timeout: 120_000 }); opened = candidate; result[`${file}-attempts`] = attempt; }
-      catch (error) { errors.push(`${file} attempt ${attempt}: ${String(error).slice(0, 200)}`); await candidate.close(); }
+      catch (error) {
+        // What the page shows instead (the welcome, a card, another dialog), for the report.
+        const seen = await candidate.page.evaluate(`({ welcome: document.querySelectorAll('.welcome-parchment').length, dialogs: [...document.querySelectorAll('[role=dialog]')].map(d => (d.getAttribute('aria-label') || d.className).slice(0, 50)), chips: document.querySelectorAll('.event-chip').length, calendar: document.querySelector("[data-testid='hud-calendar']")?.textContent?.slice(0, 14) ?? null, paused: document.querySelector('.speed-seal[aria-pressed=true]')?.getAttribute('aria-label') ?? null })`).catch(() => null);
+        await candidate.page.screenshot({ path: join(out!, `${file}-failed-${attempt}.jpg`), type: "jpeg", quality: 55 }).catch(() => undefined);
+        errors.push(`${file} attempt ${attempt}: ${String(error).slice(0, 120)} ${JSON.stringify(seen)}`); await candidate.close();
+      }
     }
     if (opened === null) throw new Error(`${file}: the chapter page did not open in three loads`);
     const { page, close } = opened;
