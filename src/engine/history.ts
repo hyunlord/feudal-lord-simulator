@@ -42,7 +42,7 @@ import { beaconLit, raidEventId, warDecisionForecast } from "./war";
 import { plagueDecisionForecast } from "./plague";
 import { reorganisationDecisionForecast } from "./reorganisation";
 import { heirRelationWord, legacyDecisionForecast, legacyEnding, legacyWord } from "./legacy";
-import { LEGACY_PETITION_IDS, LEGACY_STEP_ART, BOROUGH_AUTONOMY_PETITION_ID } from "../content/legacyConfig";
+import { LEGACY_BALANCE, LEGACY_PETITION_IDS, LEGACY_STEP_ART, BOROUGH_AUTONOMY_PETITION_ID } from "../content/legacyConfig";
 import { manorLord, personDisplayName } from "./persons";
 import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
 import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
@@ -631,6 +631,14 @@ function legacyDrafts(before: GameState, after: GameState): (Draft & { thumbnail
     drafts.push({ ...at, ...(now.family === "departed" ? art("family_departure") : {}), kind: "event", template: now.family === "departed" ? "legacy.family_departed" : "legacy.family_stayed",
       severity: 3, params: { house }, cause });
   }
+  // FIX-9 (LG-13): the interlude's events, the nave rebuilt.
+  for (const [id, tick] of Object.entries(now.interludes ?? {})) {
+    if (was?.interludes?.[id as keyof typeof now.interludes] !== undefined || tick !== after.tick) continue;
+    const actor = id === "staple" || id === "deposition" ? "crown" : id === "church_rebuilding" ? "bishop" : id === "guild_dispute" ? "merchant_house_1" : "town";
+    drafts.push({ ...at, ...by(actor), kind: "event", template: `legacy.${id}`, severity: id === "deposition" ? 3 : 2, cause,
+      ...(id === "market_fire" ? { params: { cost: LEGACY_BALANCE.marketFireRepair } } : {}) });
+  }
+  if (now.naveRebuilt === true && was?.naveRebuilt !== true) drafts.push({ ...at, ...by("bishop"), kind: "event", template: "legacy.nave_rebuilt", severity: 2, cause, thumbnail: { state: after, size: 128 } });
   if (came("legacy_record")) drafts.push({ ...at, ...art("legacy_record"), kind: "event", template: "legacy.legacy_record", severity: 3, params: { legacy: legacyWord(now.legacy) }, cause });
   if (came("last_market")) {
     drafts.push({ ...at, ...art("last_market"), kind: "event", template: "legacy.last_market", severity: 3, params: { ending: legacyEnding(after)?.title ?? "" }, cause,

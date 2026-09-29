@@ -3,7 +3,7 @@
  * answers, the heir's candidates and the heir, the mayor, the backlash, the legacy, the scores and the ending.
  */
 import type { PetitionResponse } from "../content/chapterConfig";
-import type { HeirKind, LegacyAxis, LegacyEndingId, LegacyStepId } from "../content/legacyConfig";
+import type { HeirKind, LegacyAxis, LegacyEndingId, LegacyInterludeId, LegacyStepId } from "../content/legacyConfig";
 
 /** LG-3: one heir the old lord may name (a real person of the family, or one who came with the question). */
 export interface HeirCandidate {
@@ -67,6 +67,9 @@ export interface LegacyState {
   /** LG-5: the legacy and what it cost. */
   readonly legacy?: LegacyAxis | null;
   readonly endowment: number;
+  /** FIX-9 (LG-13, save v30): the interlude's events that came (the tick), and the nave rebuilt. */
+  readonly interludes?: Readonly<Partial<Record<LegacyInterludeId, number>>>;
+  readonly naveRebuilt?: boolean;
   /** LG-7: the cloth sold in chapter 5 (the seals). */
   readonly clothSold: number;
   /** LG-7: at the last market day. */

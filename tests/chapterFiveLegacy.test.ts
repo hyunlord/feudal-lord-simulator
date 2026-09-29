@@ -12,8 +12,11 @@ import { CHAPTER_FIVE } from "../src/content/chapterConfig";
 import {
   BOROUGH_AUTONOMY_PETITION_ID,
   BOROUGH_SEAL_RIGHT_ID,
+  CHURCH_REBUILDING_PETITION_ID,
+  GUILD_DISPUTE_PETITION_ID,
   HEIR_CHOICE_PETITION_ID,
   LEGACY_BALANCE as B,
+  LEGACY_CARD_PETITION_IDS,
   LEGACY_CHOICE_PETITION_ID,
   LEGACY_DECISION_ART,
   LEGACY_ENDING_IDS,
@@ -26,7 +29,8 @@ import {
 import { HISTORY_TEMPLATES } from "../src/content/historyCopy.ko";
 import { campaignChronicle, campaignChronicleText } from "../src/engine/campaignChronicle";
 import type { GameState } from "../src/engine/engine.types";
-import { heirCandidates, legacyDecisionForecast, legacyEnding, legacyForecast, legacyScores, legacyStage } from "../src/engine/legacy";
+import { heirCandidates, legacyDecisionForecast, legacyEnding, legacyForecast, legacyInterludes, legacyScores, legacyStage } from "../src/engine/legacy";
+import { reorganisationClothTrade } from "../src/engine/reorganisation";
 import { manorLord, offerHeirs } from "../src/engine/persons";
 import type { Person } from "../src/engine/persons.types";
 import { chapterEnd, chapterGoals, openPetitions } from "../src/engine/politics";
@@ -74,7 +78,8 @@ test("L1 (LG-1) the eight steps come in order, each with its Wave 21 picture; fo
   for (const id of LEGACY_STEP_IDS) if (id !== "charter_sealing" && id !== "family_departure") assert.ok(records.some(record => record.illustration === LEGACY_STEP_ART[id]), id);
   assert.ok(records.some(record => record.illustration === LEGACY_STEP_ART.charter_sealing), "the charter sealed");
   assert.ok(records.every(record => HISTORY_TEMPLATES[record.template] !== undefined));
-  assert.deepEqual(LEGACY_PETITION_DEFS.map(def => def.id).sort(), Object.keys(LEGACY_DECISION_ART).sort());
+  assert.deepEqual([...LEGACY_CARD_PETITION_IDS].sort(), Object.keys(LEGACY_DECISION_ART).sort());
+  assert.ok(LEGACY_CARD_PETITION_IDS.every(id => LEGACY_PETITION_DEFS.some(def => def.id === id)));
   // The pace (1400–1450): the succession from 1400, the legacy's question from 1440.
   assert.ok(end.legacy!.steps.succession! >= at(B.successionFromYear));
   assert.ok(end.history!.records.some(record => record.template === "decision.petition_response" && record.params?.defId === LEGACY_CHOICE_PETITION_ID && record.tick >= at(B.legacyFromYear)));
@@ -211,13 +216,15 @@ test("L8 (LG-6) the answers move the factions (a ledger memory each)", () => {
   assert.ok(after.history!.records.some(record => record.template === "faction.relation" && String(record.params?.reason).startsWith(`petition:${BOROUGH_AUTONOMY_PETITION_ID}`)));
 });
 
-test("L9 (LG-7) the scores and the endings: four answer sets of the same town end four ways", () => {
+test("L9 (LG-7) the scores and the endings: six answer sets of the same town end six ways (FIX-9: the church's too)", () => {
   const endings = new Map<string, string>();
   for (const [name, answers] of Object.entries({
     standard: STANDARD,
     remembered: { ...STANDARD, [LEGACY_CHOICE_PETITION_ID]: "accept_with_price" },
-    chantry: { ...STANDARD, [LEGACY_CHOICE_PETITION_ID]: "refuse" },
+    chantry: { ...STANDARD, [LEGACY_CHOICE_PETITION_ID]: "refuse", [CHURCH_REBUILDING_PETITION_ID]: "refuse" },
     house: { ...STANDARD, [BOROUGH_AUTONOMY_PETITION_ID]: "refuse", [LEGACY_CHOICE_PETITION_ID]: "accept_with_price" },
+    pilgrim: { ...STANDARD, [BOROUGH_AUTONOMY_PETITION_ID]: "refuse", [LEGACY_CHOICE_PETITION_ID]: "refuse", [CHURCH_REBUILDING_PETITION_ID]: "accept" },
+    lords: { [ROYAL_TAX_PETITION_ID]: "refuse", [HEIR_CHOICE_PETITION_ID]: "refuse", [BOROUGH_AUTONOMY_PETITION_ID]: "refuse", [CHURCH_REBUILDING_PETITION_ID]: "refuse" },
   } as Record<string, Answers>)) {
     const end = through(town(), answers);
     const scores = end.legacy!.scores!;
@@ -229,7 +236,8 @@ test("L9 (LG-7) the scores and the endings: four answer sets of the same town en
     assert.ok(LEGACY_ENDING_IDS.includes(ending.id));
     endings.set(name, ending.id);
   }
-  assert.deepEqual(Object.fromEntries(endings), { standard: "free_borough", remembered: "house_remembered", chantry: "merchants_chantry", house: "house_seat" });
+  assert.deepEqual(Object.fromEntries(endings), { standard: "free_borough", remembered: "house_remembered", chantry: "merchants_chantry", house: "house_seat",
+    pilgrim: "pilgrim_town", lords: "lords_town" });
 });
 
 test("L10 (LG-8) the last market day ends chapter 5 — the campaign won, chapter 5's goal reached, its chronicle line", () => {
@@ -269,7 +277,7 @@ test("L12 (LG-11) the save round trip (v29) mid-chapter, the same course twice, 
   const mid = through(town(), STANDARD, "royal_tax_envoy");
   const loaded = decodeSave(encodeSave({ state: mid, createdAt: "2026-09-29T00:00:00.000Z", savedAt: "2026-09-29T00:00:00.000Z" }).bytes).envelope;
   assert.equal(loaded.schemaVersion, SAVE_SCHEMA_VERSION);
-  assert.ok(SAVE_SCHEMA_VERSION >= 29);
+  assert.ok(SAVE_SCHEMA_VERSION >= 30);
   assert.deepEqual(loaded.state, mid);
   const a = through(loaded.state as GameState, STANDARD, "city_seal"), b = through(mid, STANDARD, "city_seal");
   assert.deepEqual(a.legacy, b.legacy);
@@ -278,4 +286,40 @@ test("L12 (LG-11) the save round trip (v29) mid-chapter, the same course twice, 
   const v28 = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v28/chapter-four-town.save.json"))).envelope.state as GameState;
   assert.equal(v28.legacy, undefined);
   assert.equal(v28.politics?.chapter.number, 4);
+});
+
+test("L13 (FIX-9, LG-13) the interlude 1384–1400: the Staple (cloth dearer two years), the guild's quarrel (or the market's fire), the nave, Richard II deposed", () => {
+  const start = town();
+  assert.deepEqual(legacyInterludes(start).map(entry => entry.id), [start.reorganisation?.guild !== undefined ? "staple" : "staple",
+    start.reorganisation?.guild !== undefined ? "guild_dispute" : "market_fire", "church_rebuilding", "deposition"]);
+  const staple = runAnswering(movedTo(start, at(...B.staple)), at(...B.staple) + 1, {});
+  assert.equal(staple.legacy!.interludes?.staple, at(...B.staple));
+  assert.ok(staple.history!.records.some(record => record.template === "legacy.staple"));
+  const plain = (state: GameState) => { const { legacy: _legacy, ...rest } = state; return rest; };
+  const price = reorganisationClothTrade(staple)!.price;
+  assert.equal(price, Math.round(reorganisationClothTrade(plain(staple))!.price * B.staplePricePermille / 1000));
+  assert.equal(reorganisationClothTrade({ ...staple, tick: at(...B.staple) + B.stapleSeasons * SEASON })!.price, reorganisationClothTrade(plain(staple))!.price);
+  const quarrel = runAnswering(movedTo(staple, at(...B.guildDispute)), at(...B.guildDispute) + 1, {});
+  if (start.reorganisation?.guild !== undefined) {
+    const petition = openPetitions(quarrel).find(entry => entry.defId === GUILD_DISPUTE_PETITION_ID)!;
+    const relation = (state: GameState, id: string) => state.factions!.factions.find(faction => faction.id === id)!.relation;
+    const sided = gameReducer(quarrel, { type: "petition_response", petitionId: petition.id, response: "accept" });
+    assert.ok(relation(sided, "town") > relation(quarrel, "town") && relation(sided, "merchant_house_1") < relation(quarrel, "merchant_house_1"));
+  } else {
+    assert.deepEqual(cash(quarrel, "construction").filter(entry => entry.sourceRefs.some(ref => ref.id === "market_fire")).map(entry => entry.amount), [-B.marketFireRepair]);
+  }
+  const nave = runAnswering(movedTo(quarrel, at(...B.churchRebuilding)), at(...B.churchRebuilding) + 1, {});
+  const ask = openPetitions(nave).find(entry => entry.defId === CHURCH_REBUILDING_PETITION_ID)!;
+  assert.equal(legacyDecisionForecast(nave, CHURCH_REBUILDING_PETITION_ID, "accept"), treasuryBalance(nave) - B.churchRebuildingCost);
+  const built = gameReducer(nave, { type: "petition_response", petitionId: ask.id, response: "accept" });
+  assert.equal(built.legacy!.naveRebuilt, true);
+  assert.equal(legacyScores(built).parts.church.rebuilt, B.score.church.rebuilt);
+  assert.ok(built.history!.records.some(record => record.template === "legacy.nave_rebuilt"));
+  const crown = (state: GameState) => state.factions!.factions.find(faction => faction.id === "crown")!.relation;
+  const deposed = runAnswering(movedTo(built, at(...B.deposition)), at(...B.deposition) + 1, {});
+  assert.equal(crown(deposed) - crown(built), Math.round((10 - crown(built)) * B.depositionPermille / 1000));
+  assert.ok(deposed.history!.records.some(record => record.template === "legacy.deposition" && record.severity === 3));
+  assert.ok(legacyInterludes(deposed).every(entry => entry.state === "done"));
+  // A chapter opened after 1400 has none of them.
+  assert.deepEqual(legacyInterludes({ ...start, legacy: { ...start.legacy!, startTick: at(1400) } }), []);
 });

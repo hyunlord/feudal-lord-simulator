@@ -31,7 +31,7 @@ import { hairWords, inheritTraits, populationTraits } from "./heredity";
 import { chooseFactionPortraitIdentity, choosePortraitIdentity, identityFaction, identityLineage, PORTRAIT_BAND, setPlaces } from "./portraits";
 import { hashSeed } from "./prng";
 import { WAR_BALANCE } from "../content/warConfig";
-import { HEIR_BY_RESPONSE, HEIR_CHOICE_PETITION_ID, LEGACY_CHOICE_PETITION_ID, LEGACY_PETITION_IDS, LEGACY_RELATIONS, type LegacyPetitionId } from "../content/legacyConfig";
+import { HEIR_BY_RESPONSE, HEIR_CHOICE_PETITION_ID, LEGACY_BALANCE, LEGACY_CHOICE_PETITION_ID, LEGACY_PETITION_IDS, LEGACY_RELATIONS, type LegacyPetitionId } from "../content/legacyConfig";
 import { BOROUGH_CHARTER_PETITION_ID, REORGANISATION_EVENT_RELATIONS, REORGANISATION_PETITION_IDS, REORGANISATION_RELATIONS, type ReorganisationPetitionId } from "../content/reorganisationConfig";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
@@ -350,6 +350,12 @@ export function factionChanges(before: GameState, after: GameState): readonly Fa
         changes.push({ factionId: factionId as FactionId, delta, reason: `reorg:rebellion:${reorgAfter.rebellion.outcome}` });
       }
     }
+  }
+  // FIX-9 (LG-13): Richard II deposed (1399) — the new king's reign goes halfway back to where the Crown started.
+  if (after.legacy?.interludes?.deposition !== undefined && before.legacy?.interludes?.deposition === undefined) {
+    const crown = factions.factions.find(faction => faction.id === "crown");
+    const start = FACTION_DEF_BY_ID.get("crown")!.startRelation;
+    if (crown !== undefined) changes.push({ factionId: "crown", delta: Math.round((start - crown.relation) * LEGACY_BALANCE.depositionPermille / 1000), reason: "legacy:deposition" });
   }
   return changes.filter(change => change.delta !== 0);
 }
