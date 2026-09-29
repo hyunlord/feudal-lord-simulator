@@ -1,5 +1,5 @@
 /**
- * ARCH-1 gate ③ (spec docs/design/map-archetypes.md AR-7): the chapter-1 human path on every new land — a new game on
+ * ARCH-1 gate ③ (spec docs/design/map-archetypes.md MA-7): the chapter-1 human path on every new land — a new game on
  * the land (seed 1) by the start screen's command, the tutorial by its card buttons (pace 1), then the street, two
  * wells and twelve burgage plots, and the town left to run to the end of 1302. It must live as the riverside town's
  * does (`humanPathChapterOne.test.ts`, FIX-4 gate ①): 60+ people, no facility stopped for upkeep, no construction a year

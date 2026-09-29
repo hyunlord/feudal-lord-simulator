@@ -1,5 +1,5 @@
 /**
- * ARCH-1 map archetypes (spec docs/design/map-archetypes.md AR-1…AR-6): five lands, their deterministic maps with the
+ * ARCH-1 map archetypes (spec docs/design/map-archetypes.md MA-1…MA-6): five lands, their deterministic maps with the
  * same town site, their resources, their five coefficients where the rules read them, their art keys (Wave 22, 28, 29
  * confirmed files) and the new game's command. The bot's chapter 1 on each land is `scripts/archetypeChapterOne.ts`
  * (gate ①, DGX), the human path `humanPathArchetypes.test.ts` (gate ③).
@@ -43,7 +43,7 @@ const share = (terrains: readonly TerrainType[], terrain: TerrainType) => terrai
 const on = (state: GameState, archetypeId: string): GameState => ({ ...state, archetypeId });
 const loadSave = (name: string) => decodeSave(new Uint8Array(readFileSync(`fixtures/saves/v31/${name}.save.json`))).envelope.state as GameState;
 
-test("AR-1 five lands in the start screen's order: the riverside town (the open field, every coefficient 1,000) first; the harbour and the river's mouth coastal", () => {
+test("MA-1 five lands in the start screen's order: the riverside town (the open field, every coefficient 1,000) first; the harbour and the river's mouth coastal", () => {
   assert.deepEqual(MAP_ARCHETYPE_IDS, [RIVERSIDE_ARCHETYPE_ID, COASTAL_ARCHETYPE_ID, DOWNS_ARCHETYPE_ID, WOODLAND_ARCHETYPE_ID, FEN_ARCHETYPE_ID]);
   assert.deepEqual(mapArchetypes().map(archetype => archetype.id), MAP_ARCHETYPE_IDS);
   assert.equal(RIVERSIDE_ARCHETYPE_ID, SCENARIOS.get(DEFAULT_SCENARIO_ID)!.archetype, "the campaign's land is still the open field");
@@ -58,7 +58,7 @@ test("AR-1 five lands in the start screen's order: the riverside town (the open 
   assert.equal(DEFAULT_GAME_STATE.archetypeId, undefined);
 });
 
-test("AR-2 ① the riverside town's map is buildWorldGrid's byte for byte; a new land's is deterministic in (land, seed) and differs by seed and by land", () => {
+test("MA-2 ① the riverside town's map is buildWorldGrid's byte for byte; a new land's is deterministic in (land, seed) and differs by seed and by land", () => {
   for (const seed of [1, 2, 3, 4, 5]) {
     assert.deepEqual(buildArchetypeWorldGrid(byId(RIVERSIDE_ARCHETYPE_ID), { ...SIZE, seed }), buildWorldGrid({ ...SIZE, seed }));
   }
@@ -70,7 +70,7 @@ test("AR-2 ① the riverside town's map is buildWorldGrid's byte for byte; a new
   }
 });
 
-test("AR-2 ② every new land's town site is open ground with the camp's copse, and the opening village stands on it untranslated with its roads joined (seeds 1–5)", () => {
+test("MA-2 ② every new land's town site is open ground with the camp's copse, and the opening village stands on it untranslated with its roads joined (seeds 1–5)", () => {
   for (const id of NEW_LANDS) for (const seed of [1, 2, 3, 4, 5]) {
     const terrains = archetypeTerrains(byId(id), { ...SIZE, seed });
     for (let ty = TOWN_SITE.minTy; ty <= TOWN_SITE.maxTy; ty += 1) for (let tx = TOWN_SITE.minTx; tx <= TOWN_SITE.maxTx; tx += 1) {
@@ -86,7 +86,7 @@ test("AR-2 ② every new land's town site is open ground with the camp's copse, 
   }
 });
 
-test("AR-2 ③ AR-3 the lands' resources: the harbour's sea on its north or west edge, the down's rock and little water, the forest's timber, the fen's meres", () => {
+test("MA-2 ③ MA-3 the lands' resources: the harbour's sea on its north or west edge, the down's rock and little water, the forest's timber, the fen's meres", () => {
   const mean = (id: string, terrain: TerrainType) => [1, 2, 3].reduce((sum, seed) => sum + share(archetypeTerrains(byId(id), { ...SIZE, seed }), terrain), 0) / 3;
   const open = (terrain: TerrainType) => [1, 2, 3].reduce((sum, seed) => sum + share(buildWorldGrid({ ...SIZE, seed }).tiles.map(tile => tile.terrain), terrain), 0) / 3;
   for (const seed of [1, 2, 3, 4, 5]) {
@@ -102,7 +102,7 @@ test("AR-2 ③ AR-3 the lands' resources: the harbour's sea on its north or west
   assert.deepEqual(MAP_ARCHETYPES.map(archetype => archetype.resources.stone), ["normal", "normal", "rich", "normal", "scarce"]);
 });
 
-test("AR-4 ① the arable harvest by the land's coefficient: the down's strip brings less, the fen's more, the same strips the same season", () => {
+test("MA-4 ① the arable harvest by the land's coefficient: the down's strip brings less, the fen's more, the same strips the same season", () => {
   let state = loadSave("four-farms");
   let checked = 0;
   for (let step = 0; step < 8000 && checked < 3; step += 1) {
@@ -119,7 +119,7 @@ test("AR-4 ① the arable harvest by the land's coefficient: the down's strip br
   assert.equal(checked, 3, "three harvest ticks compared");
 });
 
-test("AR-4 ② the pasture's clip by the land: the down's flocks give 1.3 times the fleece, the forest's 0.9", () => {
+test("MA-4 ② the pasture's clip by the land: the down's flocks give 1.3 times the fleece, the forest's 0.9", () => {
   const town = clothTown();
   const side = 6, x = 2, y = 50;
   const shearing = Math.ceil(town.tick / 4000) * 4000 + CLOTH_BALANCE.shearingInYearTick;
@@ -137,7 +137,7 @@ test("AR-4 ② the pasture's clip by the land: the down's flocks give 1.3 times 
   assert.equal(fleece(on(pasture, WOODLAND_ARCHETYPE_ID)), Math.floor(open * 900 / 1000));
 });
 
-test("AR-4 ③ the logging camp's pace by the land: the forest fells a log in 38 ticks, the fen in 63; the open field's definition is the config's own", () => {
+test("MA-4 ③ the logging camp's pace by the land: the forest fells a log in 38 ticks, the fen in 63; the open field's definition is the config's own", () => {
   const camp = BUILDING_CONFIG_BY_KIND.logging_camp;
   assert.equal(archetypeProductionDefinition(DEFAULT_GAME_STATE, camp), camp);
   assert.equal(archetypeProductionDefinition(on(DEFAULT_GAME_STATE, WOODLAND_ARCHETYPE_ID), camp).production!.ticksPerOutput, Math.round(50 * 1000 / 1300));
@@ -146,7 +146,7 @@ test("AR-4 ③ the logging camp's pace by the land: the forest fells a log in 38
   assert.equal(archetypeProductionDefinition(on(DEFAULT_GAME_STATE, WOODLAND_ARCHETYPE_ID), BUILDING_CONFIG_BY_KIND.sawmill), BUILDING_CONFIG_BY_KIND.sawmill, "the sawmill keeps its pace");
 });
 
-test("AR-4 ④ a wet summer floods by the land: the open field keeps 95 % of its harvest, the fen 87.5 %, the down 97 %", () => {
+test("MA-4 ④ a wet summer floods by the land: the open field keeps 95 % of its harvest, the fen 87.5 %, the down 97 %", () => {
   const wet = Array.from({ length: 12 }, (_, year) => year).find(year =>
     weatherOfSeason(DEFAULT_GAME_STATE, year * 4 + 1) === "wet" && harvestYieldPermille(DEFAULT_GAME_STATE, year * 4000 + 2000) === WET_SUMMER_HARVEST_PERMILLE);
   assert.ok(wet !== undefined, "a plain wet summer in the first twelve years");
@@ -156,7 +156,7 @@ test("AR-4 ④ a wet summer floods by the land: the open field keeps 95 % of its
   assert.equal(harvestYieldPermille(on(DEFAULT_GAME_STATE, WOODLAND_ARCHETYPE_ID), tick), WET_SUMMER_HARVEST_PERMILLE);
 });
 
-test("AR-4 ⑤ the harbour's raid takes more houses and loot, its port fever more lives; the inland lands have neither the raid nor the early fever", () => {
+test("MA-4 ⑤ the harbour's raid takes more houses and loot, its port fever more lives; the inland lands have neither the raid nor the early fever", () => {
   const town = loadSave("population-176");
   const open = raidLosses(town), harbour = raidLosses(on(town, COASTAL_ARCHETYPE_ID));
   assert.ok(harbour.burntHouses >= open.burntHouses && harbour.looted > open.looted, `${JSON.stringify(open)} → ${JSON.stringify(harbour)}`);
@@ -172,7 +172,7 @@ test("AR-4 ⑤ the harbour's raid takes more houses and loot, its port fever mor
   assert.equal(firstDeaths(on(plague, COASTAL_ARCHETYPE_ID)), Math.floor(riverside * archetypeRules(on(plague, COASTAL_ARCHETYPE_ID)).coastalEventPermille / 1000));
 });
 
-test("AR-5 the ground layer names confirmed Wave 22 files; field edges are Wave 28's, water movement Wave 29's; each land has its own fill", () => {
+test("MA-5 the ground layer names confirmed Wave 22 files; field edges are Wave 28's, water movement Wave 29's; each land has its own fill", () => {
   const ledger = readFileSync("assets-inbox/INBOX_LEDGER.csv", "utf8").split("\n").filter(line => /^wave2[289],/.test(line) && line.includes(",confirmed,"));
   const confirmed = (wave: string, key: string) => ledger.some(line => line.startsWith(`${wave},`) && new RegExp(`/assets/${key}[-_.]`).test(line));
   const fills = new Set<string>();
@@ -196,7 +196,7 @@ test("AR-5 the ground layer names confirmed Wave 22 files; field edges are Wave 
   assert.equal(byId(DOWNS_ARCHETYPE_ID).ground.fieldBoundary, "dry_stone_wall");
 });
 
-test("AR-6 a new game on a land: the start command takes the land and seed; the riverside town is today's map; a new land keeps its id through a save", () => {
+test("MA-6 a new game on a land: the start command takes the land and seed; the riverside town is today's map; a new land keeps its id through a save", () => {
   const riverside = newGameState({ scenarioId: DEFAULT_SCENARIO_ID })!;
   assert.deepEqual(riverside, { ...structuredClone(DEFAULT_GAME_STATE), scenarioId: DEFAULT_SCENARIO_ID });
   assert.equal(newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: RIVERSIDE_ARCHETYPE_ID, seed: 2 }), null, "the riverside town is seed 1");

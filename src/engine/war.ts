@@ -167,7 +167,7 @@ export function raidLosses(state: GameState, defencePermille = ringDefencePermil
   const standing = state.houses.filter(house => house.burntTick === undefined && buildings.has(house.buildingId));
   const exposed = standing.map(house => ({ house, building: buildings.get(house.buildingId)!, exposure: exposure(buildings.get(house.buildingId)!) }));
   const townExposure = exposed.length === 0 ? 0 : exposed.reduce((sum, entry) => sum + entry.exposure, 0) / exposed.length;
-  // ARCH-1 (AR-4 ⑤): a harbour's raid is heavier — more houses and more loot by the land's coastal coefficient.
+  // ARCH-1 (MA-4 ⑤): a harbour's raid is heavier — more houses and more loot by the land's coastal coefficient.
   const coastal = archetypeRules(state).coastalEventPermille;
   const count = Math.min(exposed.length, Math.round(WAR_BALANCE.raidHouses * townExposure / 1000 * (coastal === 1000 ? 1 : coastal / 1000)));
   const houseIds = exposed.filter(entry => entry.exposure > 0)

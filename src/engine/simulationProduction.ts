@@ -49,7 +49,7 @@ export function runProduction(input: GameState): GameState {
       if (productionOperation(building, BUILDING_CONFIG_BY_KIND.mill) === 'no_input') rawStarvedTicks += 1;
     }
     // F4-A (RG-5): the guild's looms (or the weavers gone after its refusal) set the cloth buildings' working time.
-    // ARCH-1 (AR-4 ③): and the land sets the logging camp's pace.
+    // ARCH-1 (MA-4 ③): and the land sets the logging camp's pace.
     const step = stepProduction(building, archetypeProductionDefinition(state, reorganisationDefinition(state, building.kind)));
     if (building.kind === 'masonry' && materialRecord !== undefined) {
       const operation = productionOperation(building, BUILDING_CONFIG_BY_KIND.masonry);

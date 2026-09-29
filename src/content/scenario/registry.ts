@@ -37,7 +37,7 @@ export class ScenarioRegistry {
     return this.archetypes.get(id);
   }
 
-  /** ARCH-1 (AR-6): the lands in registration order, the order the start screen offers them. */
+  /** ARCH-1 (MA-6): the lands in registration order, the order the start screen offers them. */
   listArchetypes(): readonly ArchetypeDef[] {
     return [...this.archetypes.values()];
   }
@@ -56,7 +56,7 @@ function validateNumber(scenario: string, value: unknown, label: string): void {
   if (typeof value !== "number" || !Number.isFinite(value) || value < 0) fail(scenario, `${label} must be a finite non-negative number`);
 }
 
-/** ARCH-1 (AR-2, AR-4): shares that leave open ground, a sea's depths whole and ordered, coefficients whole and positive. */
+/** ARCH-1 (MA-2, MA-4): shares that leave open ground, a sea's depths whole and ordered, coefficients whole and positive. */
 function validateArchetype(archetype: ArchetypeDef): void {
   const fail = (message: string): never => { throw new ScenarioValidationError(`${archetype.id}: ${message}`); };
   const { terrain, rules } = archetype;
@@ -179,7 +179,7 @@ export function archetypeOf(scenario: ScenarioDef): ArchetypeDef | undefined {
   return SCENARIOS.archetype(scenario.archetype);
 }
 
-/** ARCH-1 (AR-6): a land by id, or undefined. */
+/** ARCH-1 (MA-6): a land by id, or undefined. */
 export function archetypeById(id: string): ArchetypeDef | undefined {
   return SCENARIOS.archetype(id);
 }

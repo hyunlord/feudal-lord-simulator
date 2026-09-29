@@ -66,7 +66,7 @@ export function runPhase19NaturalGrowth(options: {
   readonly naiveUpkeep?: boolean;
   /** F2-A gate (WR-10): the wall-or-market answer fixed (`AutoplayPolicy.wallChoice`). */
   readonly wallChoice?: "wall" | "market";
-  /** ARCH-1 gate (AR-7): the land (absent = the riverside town, the open field). */
+  /** ARCH-1 gate (MA-7): the land (absent = the riverside town, the open field). */
   readonly archetypeId?: string;
   readonly additionalAcceptance?: (state: GameState) => boolean;
   readonly onDiagnostic?: (receipt: AdvisorDiagnosticReceipt) => void;

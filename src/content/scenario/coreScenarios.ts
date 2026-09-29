@@ -80,7 +80,7 @@ const WALLS = {
 /** C2 money rules: the lord's mill monopoly is on, demesne sales are off (goods belong to residents). */
 const ECONOMY_RULES = { millMonopoly: true, demesneSale: false } as const satisfies ScenarioDef["economyRules"];
 
-/** ARCH-1 (AR-1): the five lands — the open field (the riverside town, a tidal river's mouth) first. */
+/** ARCH-1 (MA-1): the five lands — the open field (the riverside town, a tidal river's mouth) first. */
 export const CORE_ARCHETYPES: readonly ArchetypeDef[] = MAP_ARCHETYPES;
 
 /**

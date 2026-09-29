@@ -87,7 +87,7 @@ export function pastoralFieldNeed(tendedCells: number, tick: number): number {
 function shear(state: GameState): GameState {
   const tended = pastureTending(state);
   if (tended.size === 0) return state;
-  // ARCH-1 (AR-4 ②): the land's pasture — the down's flocks clip more, the forest's less.
+  // ARCH-1 (MA-4 ②): the land's pasture — the down's flocks clip more, the forest's less.
   const pastoralPermille = archetypeRules(state).pastoralPermille;
   let changed = false;
   const buildings = state.buildings.map(building => {

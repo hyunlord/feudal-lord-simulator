@@ -404,7 +404,7 @@ export function stepArableFields(state: GameState): { readonly state: GameState;
       else {
         const barley = record.crop === "barley";
         // C4 (AL-2): barley yields more to the strip than wheat (decision AL1).
-        // ARCH-1 (AR-4 ①): the land's arable coefficient (the down's thin soil, the drained fen's richness).
+        // ARCH-1 (MA-4 ①): the land's arable coefficient (the down's thin soil, the drained fen's richness).
         const grown = scaleByPermille(Math.floor(stripYield(strip, record, record.completionPermille ?? 1000) * (barley ? ALE_BALANCE.barleyYieldPermille : 1000) / 1000), arablePermille);
         // EV-3, EV-5: a wet summer or a dearth takes its share of the crop grown.
         const amount = Math.floor(grown * harvestPermille / 1000);

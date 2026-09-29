@@ -1,14 +1,14 @@
-// ARCH-1 gate ② (spec docs/design/map-archetypes.md AR-2, AR-5): the engine's proof raster of each land — the
+// ARCH-1 gate ② (spec docs/design/map-archetypes.md MA-2, MA-5): the engine's proof raster of each land — the
 // opening state's map at 128×128 (2 px a tile, top-down, not the render's isometric view), coloured by terrain and by
 // the ground layer's fill and band, with the opening village and its roads; one file per land and seed, and a sheet
-// (lands across, seeds down). Colours are a legend, not art.
+// (lands across, seeds down). Colours are a legend, not art; JPEG (AGENTS rule 1).
 //   tsx scripts/archetypeTerrainCapture.ts [outDir=docs/verification/arch1/terrain] [seeds=1,2,3]
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { MAP_ARCHETYPES } from "../src/content/scenario/archetypes";
 import { archetypeGroundLayer } from "../src/world/archetypeGround";
 import { createGrowthOpening } from "./phase21OpeningTranslation";
-import { encodePng } from "./keyartDerivatives";
+import { encodeJpeg } from "./keyartDerivatives";
 
 const SCALE = 2;
 type Colour = readonly [number, number, number];
@@ -59,11 +59,11 @@ const cell = tiles[0]![0]!;
 const sheet = { width: MAP_ARCHETYPES.length * (cell.width + gap) - gap, height: seeds.length * (cell.height + gap) - gap, data: new Uint8Array(0) };
 sheet.data = new Uint8Array(sheet.width * sheet.height * 4).fill(255);
 tiles.forEach((column, x) => column.forEach((image, y) => {
-  writeFileSync(resolve(out, `${MAP_ARCHETYPES[x]!.id.split(":")[1]}-seed${seeds[y]}.png`), encodePng(image));
+  writeFileSync(resolve(out, `${MAP_ARCHETYPES[x]!.id.split(":")[1]}-seed${seeds[y]}.jpg`), encodeJpeg(image, 92));
   for (let row = 0; row < image.height; row += 1) {
     sheet.data.set(image.data.subarray(row * image.width * 4, (row + 1) * image.width * 4),
       ((y * (cell.height + gap) + row) * sheet.width + x * (cell.width + gap)) * 4);
   }
 }));
-writeFileSync(resolve(out, "sheet.png"), encodePng(sheet));
+writeFileSync(resolve(out, "sheet.jpg"), encodeJpeg(sheet, 92));
 process.stdout.write(`${JSON.stringify({ out, lands: MAP_ARCHETYPES.map(archetype => archetype.id), seeds, size: [cell.width, cell.height] })}\n`);

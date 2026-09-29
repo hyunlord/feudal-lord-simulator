@@ -1,4 +1,4 @@
-// ARCH-1 gate ① (spec docs/design/map-archetypes.md AR-7): the guardrail's growth bot on one land and seed, run until
+// ARCH-1 gate ① (spec docs/design/map-archetypes.md MA-7): the guardrail's growth bot on one land and seed, run until
 // chapter 1 ends (a market town through the Great Famine with 60 % of its people, `chapterEnd(state, 1)`) or the
 // calendar reaches `toYear` (default 1330: the famine waits at most five years past 1315 and lasts about three).
 //   tsx scripts/archetypeChapterOne.ts <archetypeId> <seed> [toYear] > run.json

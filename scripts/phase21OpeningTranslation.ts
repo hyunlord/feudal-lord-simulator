@@ -96,7 +96,7 @@ export function selectGrowthOpening(world: Grid, seed: number) {
   throw new InvalidGrowthOpeningError(seed, ["no-legal-offset: all in-bounds rigid opening translations rejected"]);
 }
 
-/** ARCH-1 (AR-7): on a land other than the riverside town the map is that land's, and the state carries its id. */
+/** ARCH-1 (MA-7): on a land other than the riverside town the map is that land's, and the state carries its id. */
 export function createGrowthOpening(seed: number, archetypeId?: string) {
   if (!Number.isInteger(seed) || seed < 1 || seed > 5) throw new RangeError("verification seed must be 1..5");
   const size = { width: DEFAULT_GAME_STATE.width, height: DEFAULT_GAME_STATE.height, seed };

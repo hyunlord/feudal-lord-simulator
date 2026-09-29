@@ -11,7 +11,7 @@ export const SCENARIO_COPY = {
     sandbox: "샌드박스로 시작",
   },
   modePrompt: "새 게임 방식을 고르세요",
-  /** ARCH-1 (AR-6): the lands the start screen offers (render's picker). */
+  /** ARCH-1 (MA-6): the lands the start screen offers (render's picker). */
   archetypePrompt: "어떤 땅에서 시작할지 고르세요",
   archetypes: {
     open_field: { name: "강가 시장도시", description: "강 하나와 풀밭. 경작·목축·목재가 고르고, 강어귀라 1337년의 습격이 닿습니다." },

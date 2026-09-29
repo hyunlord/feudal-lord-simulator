@@ -1,5 +1,5 @@
 /**
- * ARCH-1 (spec docs/design/map-archetypes.md AR-5): what a render lays on a land — per tile, a Wave 22 ground fill, a
+ * ARCH-1 (spec docs/design/map-archetypes.md MA-5): what a render lays on a land — per tile, a Wave 22 ground fill, a
  * transition or shore band and a decal — derived from the terrain, the land and the seed alone (the terrain does not
  * change in play, so a render computes it once per map). The land's field boundary (Wave 28) and water movement
  * (Wave 29) are the archetype's `ground.fieldBoundary` and `ground.water`. The simulation never reads this layer.
@@ -66,7 +66,7 @@ function seaMask(terrains: readonly TerrainType[], width: number, height: number
   return sea;
 }
 
-/** AR-5: the land's ground layer. */
+/** MA-5: the land's ground layer. */
 export function archetypeGroundLayer(archetype: ArchetypeDef, terrains: readonly TerrainType[], width: number, height: number, seed: number): GroundLayer {
   const ground = archetype.ground;
   const keys: string[] = ["none"];

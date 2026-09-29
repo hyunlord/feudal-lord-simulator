@@ -514,7 +514,7 @@ export function advancePlague(state: GameState, endChapter: (state: GameState) =
   if (offset === arrivalSeasonOffset(state) && plague.first === undefined) {
     const span = PLAGUE_BALANCE.deathPermilleMax - PLAGUE_BALANCE.deathPermilleMin + 1;
     const drawn = PLAGUE_BALANCE.deathPermilleMin + hashSeed(state.seed, "plague:share") % span;
-    // ARCH-1 (AR-4 ⑤): a harbour's port fever kills more (the land's coastal coefficient; a coastal town only).
+    // ARCH-1 (MA-4 ⑤): a harbour's port fever kills more (the land's coastal coefficient; a coastal town only).
     const permille = plagueCoastal(state) ? Math.min(900, scaleByPermille(drawn, archetypeRules(state).coastalEventPermille)) : drawn;
     next = withPlague(next, { ...plague, ...(plague.rumourTick === undefined ? { rumourTick: state.tick } : {}), first: newPestilence(next, permille),
       curacy: { vacantSince: state.tick } });

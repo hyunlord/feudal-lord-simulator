@@ -262,7 +262,7 @@ function weatherHarvestYieldPermille(state: EventWorld, tick: number): number {
     const arrivalYear = Math.floor(season / SEASONS_PER_YEAR);
     if ((def.harvestYears ?? [0]).some(offset => arrivalYear + offset === yearIndex)) return def.harvestPermille;
   }
-  // ARCH-1 (AR-4 ④): a flood-prone land loses its coefficient's share of the wet summer's loss (the fen more, the down less).
+  // ARCH-1 (MA-4 ④): a flood-prone land loses its coefficient's share of the wet summer's loss (the fen more, the down less).
   return weatherOfSeason(state, summerOfYearIndex(yearIndex)) === "wet" ? wetSummerHarvestPermille(state) : 1000;
 }
 

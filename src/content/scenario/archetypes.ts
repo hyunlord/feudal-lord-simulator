@@ -1,13 +1,13 @@
 /**
- * ARCH-1 map archetypes (spec docs/design/map-archetypes.md AR-1…AR-8): the same 150 years on five kinds of land.
+ * ARCH-1 map archetypes (spec docs/design/map-archetypes.md MA-1…MA-8): the same 150 years on five kinds of land.
  * The riverside market town is the open field unchanged (its generator, its rules, its id `core:open_field`, so every
  * save and the guardrail keep it); the four new lands move the generator's thresholds, add a sea, and differ in their
- * rules by five coefficients only (AR-4). Art keys are Wave 22 (ground, bands, decals), Wave 28 (field edges) and
+ * rules by five coefficients only (MA-4). Art keys are Wave 22 (ground, bands, decals), Wave 28 (field edges) and
  * Wave 29 (water movement), all confirmed in `assets-inbox/`.
  */
 import type { ArchetypeDef } from "./types";
 
-/** AR-1: the open field is the riverside market town — every coefficient 1,000. */
+/** MA-1: the open field is the riverside market town — every coefficient 1,000. */
 export const RIVERSIDE_ARCHETYPE_ID = "core:open_field";
 export const COASTAL_ARCHETYPE_ID = "core:coastal_port";
 export const DOWNS_ARCHETYPE_ID = "core:chalk_downs";
@@ -27,7 +27,7 @@ export const MAP_ARCHETYPES: readonly ArchetypeDef[] = [
     rules: { arablePermille: 1000, pastoralPermille: 1000, timberPermille: 1000, floodPermille: 1000, coastalEventPermille: 1000 },
   },
   {
-    // AR-1 ②: a harbour on a sea edge — sand, shingle and salt marsh; the raid of 1337 and the port's fever strike hardest.
+    // MA-1 ②: a harbour on a sea edge — sand, shingle and salt marsh; the raid of 1337 and the port's fever strike hardest.
     id: COASTAL_ARCHETYPE_ID, resourcePackage: {}, coastal: true,
     terrain: { kind: "coast", shares: { water: 30, rock: 30, forest: 120 }, detailPermille: 300, sea: { minDepth: 8, maxDepth: 15 } },
     ground: { fill: "coastal_grass", edge: "coastal", decalPermille: 60, fieldBoundary: "hedgerow",
@@ -37,7 +37,7 @@ export const MAP_ARCHETYPES: readonly ArchetypeDef[] = [
     rules: { arablePermille: 950, pastoralPermille: 1000, timberPermille: 900, floodPermille: 1000, coastalEventPermille: 1200 },
   },
   {
-    // AR-1 ③: the chalk downs — short turf, white chalk, dry-stone folds; sheep thrive, the plough less, water is scarce.
+    // MA-1 ③: the chalk downs — short turf, white chalk, dry-stone folds; sheep thrive, the plough less, water is scarce.
     id: DOWNS_ARCHETYPE_ID, resourcePackage: {},
     terrain: { kind: "downs", shares: { water: 12, rock: 110, forest: 70 }, detailPermille: 400 },
     ground: { fill: "chalk_down", patchFill: "heath", edge: "chalk", decalPermille: 90, fieldBoundary: "dry_stone_wall",
@@ -48,7 +48,7 @@ export const MAP_ARCHETYPES: readonly ArchetypeDef[] = [
     rules: { arablePermille: 850, pastoralPermille: 1300, timberPermille: 900, floodPermille: 600, coastalEventPermille: 1000 },
   },
   {
-    // AR-1 ④: the forest's edge — leaf litter and fallen trees; timber comes fast, the fields are won by felling.
+    // MA-1 ④: the forest's edge — leaf litter and fallen trees; timber comes fast, the fields are won by felling.
     id: WOODLAND_ARCHETYPE_ID, resourcePackage: {},
     terrain: { kind: "woodland", shares: { water: 50, rock: 20, forest: 560 }, detailPermille: 250 },
     ground: { fill: "woodland_floor", decalPermille: 80, fieldBoundary: "hedgerow",
@@ -59,7 +59,7 @@ export const MAP_ARCHETYPES: readonly ArchetypeDef[] = [
     rules: { arablePermille: 900, pastoralPermille: 900, timberPermille: 1300, floodPermille: 1000, coastalEventPermille: 1000 },
   },
   {
-    // AR-1 ⑤: the fen — wet meadow, reed beds, meres; the drained ground is the richest, and a wet summer floods it.
+    // MA-1 ⑤: the fen — wet meadow, reed beds, meres; the drained ground is the richest, and a wet summer floods it.
     id: FEN_ARCHETYPE_ID, resourcePackage: {},
     terrain: { kind: "fen", shares: { water: 330, rock: 5, forest: 70 }, detailPermille: 600 },
     ground: { fill: "fen", edge: "fen", decalPermille: 90, fieldBoundary: "hedgerow",
@@ -71,5 +71,5 @@ export const MAP_ARCHETYPES: readonly ArchetypeDef[] = [
   },
 ];
 
-/** AR-6: the order the start screen offers the lands (the riverside town first, as today). */
+/** MA-6: the order the start screen offers the lands (the riverside town first, as today). */
 export const MAP_ARCHETYPE_IDS = MAP_ARCHETYPES.map(archetype => archetype.id);

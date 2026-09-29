@@ -1,5 +1,5 @@
 /**
- * v31 is ARCH-1 (spec `docs/design/map-archetypes.md` AR-6): a state may name its land, `archetypeId`. A v30 save has
+ * v31 is ARCH-1 (spec `docs/design/map-archetypes.md` MA-6): a state may name its land, `archetypeId`. A v30 save has
  * none and reads as its scenario's land — the open field, the riverside market town — as it always has.
  */
 export function migrateV30ToV31(input: unknown): unknown {

@@ -61,7 +61,7 @@ export interface EraDef {
 }
 
 /**
- * ARCH-1 (AR-2): how a map archetype's land is drawn from the shared noise fields (`world/archetypeTerrain.ts`).
+ * ARCH-1 (MA-2): how a map archetype's land is drawn from the shared noise fields (`world/archetypeTerrain.ts`).
  * `river` is the open-field generator unchanged; the others move its thresholds and may add a sea along one edge.
  */
 export type ArchetypeTerrainKind = "river" | "coast" | "downs" | "woodland" | "fen";
@@ -79,7 +79,7 @@ export interface ArchetypeTerrainDef {
   readonly sea?: { readonly minDepth: number; readonly maxDepth: number };
 }
 
-/** ARCH-1 (AR-5): the art a render lays on the archetype's land — Wave 22 ground, Wave 28 field edges, Wave 29 water. */
+/** ARCH-1 (MA-5): the art a render lays on the archetype's land — Wave 22 ground, Wave 28 field edges, Wave 29 water. */
 export interface ArchetypeGroundDef {
   /** Wave 22 fill of the open ground (`terrain/<fill>`); `grass` is today's meadow. */
   readonly fill: "grass" | "chalk_down" | "coastal_grass" | "woodland_floor" | "fen";
@@ -97,10 +97,10 @@ export interface ArchetypeGroundDef {
   readonly water: readonly string[];
 }
 
-/** ARCH-1 (AR-3): the land's resources, from scarce to rich; timber and stone are its forest and rock. */
+/** ARCH-1 (MA-3): the land's resources, from scarce to rich; timber and stone are its forest and rock. */
 export type ResourceLevel = "scarce" | "normal" | "rich";
 
-/** ARCH-1 (AR-4): the archetype's rules differ by these coefficients only, permille (1,000 = the open field). */
+/** ARCH-1 (MA-4): the archetype's rules differ by these coefficients only, permille (1,000 = the open field). */
 export interface ArchetypeRules {
   /** The arable harvest (the crop a strip grows). */
   readonly arablePermille: number;
