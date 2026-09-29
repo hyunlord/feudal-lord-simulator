@@ -1,0 +1,101 @@
+{
+ "count:rumour-quiet.json": {
+  "tick": 325000,
+  "walkers": 51,
+  "before": {
+   "onRoof": 188,
+   "hidden": 0
+  },
+  "after": {
+   "onRoof": 0,
+   "hidden": 0,
+   "hiddenPairs": []
+  }
+ },
+ "count:reorg.textile_street.json": {
+  "tick": 256000,
+  "walkers": 52,
+  "before": {
+   "onRoof": 199,
+   "hidden": 0
+  },
+  "after": {
+   "onRoof": 0,
+   "hidden": 2,
+   "hiddenPairs": [
+    "carter:construction-site-000072:intake:255957<timber:43,23:44,23",
+    "distributor:construction-site-000039:255840<timber:44,23:45,23"
+   ]
+  }
+ },
+ "count:plague.empty_streets.json": {
+  "tick": 194001,
+  "walkers": 46,
+  "before": {
+   "onRoof": 156,
+   "hidden": 0
+  },
+  "after": {
+   "onRoof": 0,
+   "hidden": 1,
+   "hiddenPairs": [
+    "carter:construction-site-000070:193958<timber:50,24:51,24"
+   ]
+  }
+ },
+ "count:chapter-four-town.save.json": {
+  "tick": 275340,
+  "walkers": 40,
+  "before": {
+   "onRoof": 253,
+   "hidden": 0
+  },
+  "after": {
+   "onRoof": 0,
+   "hidden": 4,
+   "hiddenPairs": [
+    "carter:construction-site-000067:intake:275322<stone:38,37:39,37",
+    "carter:construction-site-000003:275244<stone:53,41:54,41",
+    "carter:construction-site-000002:275213<stone:53,41:54,41",
+    "carter:construction-site-000002:275213<stone:53,42:54,42"
+   ]
+  }
+ },
+ "doorProps:rumour-quiet.json": {
+  "yarn_skeins_1": 0.125,
+  "yarn_skeins_3": 0.125,
+  "none": 0.5,
+  "fleece_heap_1": 0.08333333333333333,
+  "yarn_skeins_2": 0.16666666666666666
+ },
+ "doorProps:reorg.textile_street.json": {
+  "yarn_skeins_1": 0.125,
+  "yarn_skeins_3": 0.125,
+  "none": 0.5,
+  "fleece_heap_1": 0.08333333333333333,
+  "yarn_skeins_2": 0.16666666666666666
+ },
+ "doorProps:plague.empty_streets.json": {},
+ "doorProps:chapter-four-town.save.json": {},
+ "spots": [
+  {
+   "tx": 42,
+   "ty": 22,
+   "walker": "carter:construction-site-000081:324898",
+   "roofs": 11
+  },
+  {
+   "tx": 43,
+   "ty": 30,
+   "walker": "carter:construction-site-000019:324999",
+   "roofs": 10
+  },
+  {
+   "tx": 45,
+   "ty": 41,
+   "walker": "carter:construction-site-000046:324810",
+   "roofs": 4
+  }
+ ],
+ "errors": []
+}

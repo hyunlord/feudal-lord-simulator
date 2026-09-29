@@ -1,0 +1,45 @@
+// NAT-1 "0 walkers on roofs": the whole town's draw queue as the renderer builds it (objectRenderItemsForFrame over
+// every tile, the bridges' rails, sortRenderItems), then the walkers placed the way drawObjectRenderItems draws them —
+// before NAT-1 (every walker after all the objects, except at a stone gate or on a bridge) and now (walkerOcclusion.ts).
+// For each order, the box rule's faults: a walker drawn over an object it is behind ("on a roof") and a walker drawn
+// under an object it stands in front of ("hidden").
+//   npx tsx scripts/nat1Occlusion.ts <state.json | save.json> [...]   → one JSON line per file
+import { readFileSync } from "node:fs";
+import type { GameState } from "../src/engine/engine.types";
+import type { RenderQueueItem } from "../src/render/objectRenderOrder";
+import { objectRenderItemsForFrame } from "../src/render/renderObjectFrameCache";
+import { sortRenderItems } from "../src/render/objectRenderSort";
+import { bridgeRailPieces } from "../src/render/drawBridges";
+import { bridgeAt } from "../src/world/bridges";
+import { occlusionFaults, placeWalkers } from "../src/render/walkerOcclusion";
+import { decodeSave } from "../src/save/saveCodec";
+
+export function loadState(path: string): GameState {
+  const bytes = readFileSync(path);
+  const json = JSON.parse(bytes.toString("utf8")) as { schemaVersion?: number; state?: GameState } & GameState;
+  return typeof json.schemaVersion === "number" && json.state !== undefined ? decodeSave(new Uint8Array(bytes)).envelope.state as GameState : json;
+}
+
+export function drawOrders(state: GameState) {
+  const range = { minTx: 0, minTy: 0, maxTx: state.width - 1, maxTy: state.height - 1 };
+  const items = objectRenderItemsForFrame({ state, visibleTiles: state.tiles, range, includeGroundCover: false });
+  const rails = bridgeRailPieces(state, state.tiles).map(piece => ({ kind: "bridge_rail" as const, piece, depth: piece.depth, anchorTx: piece.tx, id: `bridge:${piece.tx}:${piece.ty}:${piece.side}` }));
+  const queue = sortRenderItems([...items, ...rails]);
+  const gates = queue.flatMap(item => item.kind === "palisade_segment" ? (item.stoneNodes ?? []).filter(node => node.kind === "gate").map(node => node.point) : []);
+  const keepOrder = (item: Extract<RenderQueueItem, { kind: "walker" }>) =>
+    gates.some(gate => Math.hypot(item.walker.position.tx - gate.x, item.walker.position.ty - gate.y) < 1.5)
+    || bridgeAt(state, { tx: Math.round(item.walker.position.tx), ty: Math.round(item.walker.position.ty) }) !== null;
+  const deferred = [...queue.filter(item => item.kind !== "walker" || keepOrder(item)), ...queue.filter(item => item.kind === "walker" && !keepOrder(item))];
+  const placed = placeWalkers(queue, state, keepOrder);
+  return { queue, deferred, placed, keepOrder, walkers: queue.filter(item => item.kind === "walker").length };
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  for (const path of process.argv.slice(2)) {
+    const state = loadState(path);
+    const { deferred, placed, keepOrder, walkers } = drawOrders(state);
+    const before = occlusionFaults(deferred, state, keepOrder); const after = occlusionFaults(placed, state, keepOrder);
+    console.log(JSON.stringify({ file: path, tick: state.tick, walkers, before: { onRoof: before.onRoof.length, hidden: before.hidden.length },
+      after: { onRoof: after.onRoof.length, hidden: after.hidden.length, samples: [...after.onRoof, ...after.hidden].slice(0, 6) } }));
+  }
+}

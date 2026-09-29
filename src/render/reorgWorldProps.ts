@@ -29,6 +29,8 @@ import { drawCollector } from "./collectorWalker";
 const SEASON_TICKS = 1_000;
 const GAIT_MS = 260;
 const GUILDHALL_SCALE = 0.5; // zoom1Scale: 352×300 → 176×150 screen px at zoom 1, ~3 tiles wide
+/** The guildhall's plot (tx, ty is its back corner). */
+export const GUILDHALL_FOOTPRINT = { width: 3, height: 2 } as const;
 
 const guildhallArt = manifestArt<keyof typeof WAVE12_GUILDHALL_IMAGES>(WAVE12_GUILDHALL_IMAGES);
 export const preloadGuildhallArt = guildhallArt.preload;
@@ -121,7 +123,8 @@ export function reorgProp(state: GameState): ReorgProp | null {
   if (guildOf(state) === null) return null;
   const spot = guildhallSpot(state);
   if (spot === null) return null;
-  return { kind: "guildhall", tx: spot.tx, ty: spot.ty, depth: depthKey(spot.tx, spot.ty), id: `reorg:guildhall:${spot.tx}:${spot.ty}` };
+  // NAT-1: sorted by its front corner like a building (it was its back corner, so what stood just behind drew over it).
+  return { kind: "guildhall", tx: spot.tx, ty: spot.ty, depth: depthKey(spot.tx + GUILDHALL_FOOTPRINT.width - 1, spot.ty + GUILDHALL_FOOTPRINT.height - 1), id: `reorg:guildhall:${spot.tx}:${spot.ty}` };
 }
 
 // Object-queue merge (mirrors withPlagueProps in renderObjectFrameCache.ts).

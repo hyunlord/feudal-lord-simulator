@@ -95,7 +95,8 @@
 .resource-bar__more[open] { z-index: 30; }
 .app-shell .resource-bar__coin { cursor: pointer; }
 .app-shell .resource-bar__coin:hover, .app-shell .resource-bar__coin[aria-expanded="true"] { background: var(--palette-ink-muted); }
-.resource-bar__coin-detail { position: absolute; top: calc(100% + 4px); right: 0; z-index: 30; width: min(360px, calc(100vw - 24px)); padding: 10px 12px; background: var(--palette-ink); border: 2px solid var(--palette-earth); color: var(--palette-vellum); font: var(--font-meta)/1.5 var(--ui-body-font); }
+/* NAT-1: medium width token; frame applied in uiSkin.css. */
+.resource-bar__coin-detail { position: absolute; top: calc(100% + 4px); right: 0; z-index: 30; width: min(var(--box-w-medium), calc(100vw - 32px)); padding: 10px 12px; background: var(--palette-ink); border: 2px solid var(--palette-earth); color: var(--palette-vellum); font: var(--font-meta)/1.5 var(--ui-body-font); }
 .resource-bar__coin-detail p { margin: 4px 0 0; }
 
 /* Calendar badge beside the bar (B2): absolutely positioned so it never takes one of the five grid cells. */

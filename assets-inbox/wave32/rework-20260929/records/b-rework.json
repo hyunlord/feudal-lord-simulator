@@ -1,0 +1,248 @@
+{
+  "assets": [
+    {
+      "file": "assets/granary_b_snow-v1.png",
+      "state": "snow",
+      "variant": "b",
+      "status": "candidate_rework",
+      "width": 160,
+      "height": 144,
+      "pivot": [
+        80,
+        128
+      ],
+      "prompt": "Use case: lighting-weather. EDIT TARGET image 1: this exact medieval granary B. Create complete building with ONLY roof changed, preserving entire original canvas and precise geometry. Add NATURAL IRREGULAR PILED SNOW covering about 70 percent of visible roof. Snow must form three or four large connected thick organic drifts with uneven soft contours and rounded overhanging edges, smoothly burying tile joints. Snow extends across many tiles as continuous masses. The surface of snow MUST NOT copy the tile grid, no individual white tiles, no white checkerboard, no evenly outlined tiles, no repeated little pillows. Leave broad irregular areas of brown clay tiles peeping through between snow drifts, roughly one quarter of roof. Subtle pale blue snow shadows, off-white lit surfaces, painterly medieval sprite. All walls/door/supports/platform, framing and exact building position unchanged. No chimney, people, objects, letters or background. Genuine transparent RGBA background. One asset.",
+      "ref": [
+        "../astra-wave32-v1/native/b/base.png"
+      ],
+      "nativeOutput": "native/b/snow.png",
+      "baseUnchangedSha256": "eaec3c2249890eacceebdba71cb4620d32461e8101daeee2c2149a0ffad39042",
+      "registration": {
+        "nativeNormalization": [
+          1322,
+          1190
+        ],
+        "nativeCrop": [
+          230,
+          21,
+          874,
+          1093
+        ],
+        "targetRect": [
+          31,
+          3,
+          99,
+          126
+        ]
+      },
+      "postprocess": "Mechanical registration, snow color segmentation or loading door crop, clipped to unchanged base alpha and zeroed contact stripe. No procedural drawing.",
+      "roofMask": "records/masks/b-roof.png",
+      "snowMask": "records/masks/b-snow.png",
+      "roofPixels": 2868,
+      "snowPixels": 1871,
+      "coveragePercent": 65.2370990237099,
+      "coverage": {
+        "roofPixels": 2868,
+        "snowPixels": 1871,
+        "percent": 65.2370990237099,
+        "roofMask": "records/masks/b-roof.png",
+        "snowMask": "records/masks/b-snow.png"
+      },
+      "roofMaskSha256": "b1b54be745f315a693d21302005a6ec4328edf9503a411add09b41c4431cde64",
+      "roofMaskMatchesOriginal": true,
+      "preRootThresholdMeasurement": {
+        "snowPixels": 1900,
+        "coveragePercent": 66.24825662482566
+      },
+      "finalMeasurement": "roof>=128 and snow mask>=128 and final overlay>=128; same previous-wave criterion"
+    },
+    {
+      "file": "assets/granary_b_boarded-v1.png",
+      "state": "boarded",
+      "variant": "b",
+      "status": "candidate_rework",
+      "width": 160,
+      "height": 144,
+      "pivot": [
+        80,
+        128
+      ],
+      "prompt": "Use case: precise-object-edit. EDIT TARGET image 1: exact medieval granary B. Create complete building with only upper tall loading door changed. Nail TWO THICK ROUGH PALE WOODEN PLANKS in an UNMISTAKABLE LARGE X across the entire upper door. One plank runs from upper-left corner to lower-right corner; the other from upper-right to lower-left. They cross in the middle. Strong broad diagonals, obvious X even at tiny sprite scale. Do not use vertical boards or parallel short boards. Preserve existing closed door behind X. Every other part of building unchanged: roof, side wall braces, supports, front platform, original framing, camera and position. Painterly muted medieval England. No people, text, chimney or scenery. Genuine transparent RGBA. One asset.",
+      "ref": [
+        "../astra-wave32-v1/native/b/base.png"
+      ],
+      "nativeOutput": "native/b/boarded.png",
+      "baseUnchangedSha256": "eaec3c2249890eacceebdba71cb4620d32461e8101daeee2c2149a0ffad39042",
+      "registration": {
+        "nativeNormalization": [
+          1322,
+          1190
+        ],
+        "nativeCrop": [
+          230,
+          21,
+          874,
+          1093
+        ],
+        "targetRect": [
+          31,
+          3,
+          99,
+          126
+        ]
+      },
+      "postprocess": "Mechanical registration, snow color segmentation or loading door crop, clipped to unchanged base alpha and zeroed contact stripe. No procedural drawing."
+    }
+  ],
+  "qa": {
+    "scope": "Only B snow and boarded replaced. Other assets and original v1 untouched.",
+    "snowClassifier": "RGB each >140, blue>=red-10, alpha>128 inside identical original fixed roof mask alpha>=128. Base alpha clip and contact zero applied.",
+    "visual": "Native generation inspected: continuous organic piled snow obscures multiple tile joints; upper loading door has two thick pale crossing diagonal planks forming X. Actual size composite inspected separately.",
+    "pixelChecks": [
+      {
+        "file": "assets/granary_b_snow-v1.png",
+        "dimensions": [
+          160,
+          144
+        ],
+        "rgba": true,
+        "nonzeroAlpha": 1900,
+        "outsideBase": 0,
+        "contactOverlap": 0
+      },
+      {
+        "file": "assets/granary_b_boarded-v1.png",
+        "dimensions": [
+          160,
+          144
+        ],
+        "rgba": true,
+        "nonzeroAlpha": 693,
+        "outsideBase": 0,
+        "contactOverlap": 0
+      }
+    ],
+    "otherAssetsChecked": [
+      {
+        "file": "granary_a-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_a_boarded-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_a_empty-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_a_full-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_a_half-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_a_snow-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_a_weathered-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_b-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_b_empty-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_b_full-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_b_half-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_b_weathered-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_c-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_c_boarded-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_c_empty-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_c_full-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_c_half-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_c_snow-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_c_weathered-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_pulley_beam-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_pulley_rope_hook-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_sack_single-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_sacks_large-v1.png",
+        "present": true,
+        "same": true
+      },
+      {
+        "file": "granary_sacks_small-v1.png",
+        "present": true,
+        "same": true
+      }
+    ]
+  }
+}
