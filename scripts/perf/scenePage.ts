@@ -2,6 +2,7 @@
 // file written into the game's IndexedDB slot `auto-1`, then 이어하기 on the title screen; without a save, a new game.
 // The tutorial is off. The proof port (?phase10-proof=1) gives the tick, but it also installs recorders on the render
 // path (render-stage timing, sprite-draw log); `proof: false` opens the page as a player gets it. No game code is changed.
+import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import { pathToFileURL } from "node:url";
@@ -37,6 +38,32 @@ export async function closeModals(page: any) {
     if (await page.locator(MODAL).count() > 0) await page.locator('[role="dialog"] button').first().click({ timeout: 2_000 }).catch(() => {});
     await page.waitForTimeout(400);
   }
+}
+
+/**
+ * A headed run needs the window in front and focused: Chrome stops drawing a covered window (visibilityState "hidden"),
+ * so a run behind another window records a paused game. Brings the page to front (and, best effort, Chrome's process
+ * to the front of macOS), then waits up to `seconds` for a visible, focused page. Null when ready, else the reason.
+ */
+export async function windowReady(browser: any, page: any, seconds: number): Promise<string | null> {
+  await page.bringToFront().catch(() => {});
+  try {
+    const session = await browser.newBrowserCDPSession();
+    const processes = ((await session.send("SystemInfo.getProcessInfo")).processInfo ?? []) as { type: string; id: number }[];
+    const pid = processes.find(process => process.type === "browser")?.id;
+    if (pid !== undefined) spawnSync("osascript", ["-e", `tell application "System Events" to set frontmost of (first process whose unix id is ${pid}) to true`], { timeout: 5_000 });
+  } catch { /* the window may still come to front by itself */ }
+  const deadline = Date.now() + seconds * 1000; let told = false; let state = { visible: false, focus: false };
+  while (Date.now() < deadline) {
+    state = await page.evaluate(() => new Promise<{ visible: boolean; focus: boolean }>(resolve => {
+      // Drawing too: at least 20 frames in half a second (a sleeping display or another Space draws none).
+      let frames = 0; const count = () => { frames += 1; requestAnimationFrame(count); }; requestAnimationFrame(count);
+      setTimeout(() => resolve({ visible: document.visibilityState === "visible" && frames >= 20, focus: document.hasFocus() }), 500); }));
+    if (state.visible && state.focus) return null;
+    if (!told) { console.error(`창을 기다린다: ${state.visible ? "보이지만 초점이 없다" : "가려져 있다"} — 측정용 Chrome 창을 앞으로 가져와 클릭해 주세요(${seconds}초).`); told = true; }
+    await page.waitForTimeout(1_000);
+  }
+  return state.visible ? `창에 초점이 없다(${seconds}초 기다림)` : `창이 가려졌거나 그려지지 않는다(${seconds}초 기다림)`;
 }
 
 /** Goes to the build, loads the scene (a save, or a new game), closes what covers the town and sets the speed. */
