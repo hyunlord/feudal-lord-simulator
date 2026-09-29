@@ -220,3 +220,26 @@ test("H10 (LN-2, LN-11) determinism: the same town twice gives the same people; 
   assert.deepEqual(persons.resemblance(state, "p-a", "p-b"), ["hair", "nose"]);
   assert.equal(YEAR, 4 * SEASON);
 });
+
+test("H7 (FIX-9, FX9-3) a house whose heiress died: her widower holds it while a child of theirs lives (the courtesy); else her nearest of the blood comes home", () => {
+  // The chapter-4 town (seed 1, 1368): the heiress Cecily died of the plague in 1361, her son Geoffrey with her; her
+  // widower Henry stayed, with no head. Her mother's brothers left the manor long ago (Thomas b. 1293, Roger b. 1304).
+  const town = decodeSave(new Uint8Array(readFileSync(`fixtures/saves/v${SAVE_SCHEMA_VERSION}/chapter-four-town.save.json`))).envelope.state as GameState;
+  const yearStart = Math.ceil((town.tick + 1) / YEAR) * YEAR;
+  const house = (state: GameState) => [...state.persons!.people].filter(person => person.tags.includes("lord-house:1") && person.householdId === MANOR_HOUSEHOLD);
+  assert.ok(!house(town).some(person => person.role === "head"), "no head before");
+  const kin = advancePersons({ ...town, tick: yearStart });
+  const head = house(kin).find(person => person.role === "head")!;
+  assert.equal(head.id, "m-000007", "Roger, her grandfather's son (Thomas, 76, is past the age to be called home)");
+  assert.equal(head.leftYear, undefined);
+  assert.equal(kin.persons!.past.some(person => person.id === "m-000007"), false);
+  assert.equal(house(kin).find(person => person.id === "m-000013")?.role, "kin", "the widower");
+  // The courtesy: had her son lived, Henry would hold the house for his life.
+  const son = town.persons!.past.find(person => person.id === "m-000014")!;
+  const { deathYear: _year, deathCause: _cause, ...living } = son;
+  const withSon: GameState = { ...town, tick: yearStart, persons: { ...town.persons!, people: [...town.persons!.people, { ...living, alive: true }],
+    past: town.persons!.past.filter(person => person.id !== son.id) } };
+  const courtesy = advancePersons(withSon);
+  assert.equal(house(courtesy).find(person => person.role === "head")?.id, "m-000013");
+  assert.equal(house(courtesy).find(person => person.id === son.id)?.role, "child", "the son stays the heir");
+});

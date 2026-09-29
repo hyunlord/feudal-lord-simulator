@@ -14,7 +14,12 @@ export const BOROUGH_AUTONOMY_PETITION_ID = "borough_autonomy";
 export const HEIR_CHOICE_PETITION_ID = "heir_choice";
 export const ROYAL_TAX_PETITION_ID = "royal_tax";
 export const LEGACY_CHOICE_PETITION_ID = "legacy_choice";
-export const LEGACY_PETITION_IDS = [ROYAL_TAX_PETITION_ID, HEIR_CHOICE_PETITION_ID, BOROUGH_AUTONOMY_PETITION_ID, LEGACY_CHOICE_PETITION_ID] as const;
+/** FIX-9 (LG-13): the interlude's two petitions — the guild against the merchants (1394), the parish's nave (1396). */
+export const GUILD_DISPUTE_PETITION_ID = "guild_dispute";
+export const CHURCH_REBUILDING_PETITION_ID = "church_rebuilding";
+/** LG-2…LG-5: the four Wave 21 decisions. */
+export const LEGACY_CARD_PETITION_IDS = [ROYAL_TAX_PETITION_ID, HEIR_CHOICE_PETITION_ID, BOROUGH_AUTONOMY_PETITION_ID, LEGACY_CHOICE_PETITION_ID] as const;
+export const LEGACY_PETITION_IDS = [...LEGACY_CARD_PETITION_IDS, GUILD_DISPUTE_PETITION_ID, CHURCH_REBUILDING_PETITION_ID] as const;
 export type LegacyPetitionId = (typeof LEGACY_PETITION_IDS)[number];
 
 /** LG-2: the rights a sealed charter hands the town (their holder `townsfolk`). */
@@ -30,8 +35,16 @@ export const LEGACY_STEP_ART: Readonly<Record<LegacyStepId, string>> = {
   city_seal: "ch5_event_city_seal_making", charter_sealing: "ch5_event_charter_sealing", family_departure: "ch5_event_family_departure",
   legacy_record: "ch5_event_legacy_record", last_market: "ch5_event_last_market",
 };
+/**
+ * FIX-9 (LG-13): the interlude between the Crown's tax and the succession (1384–1400), by the calendar — the Staple
+ * moved and wool bound (1391), the guild's quarrel with the merchants or, without a guild, the market's fire (1394), the
+ * parish's nave (1396), Richard II deposed and Henry IV crowned (autumn 1399). No Wave 21 picture yet (render).
+ */
+export const LEGACY_INTERLUDE_IDS = ["staple", "guild_dispute", "market_fire", "church_rebuilding", "deposition"] as const;
+export type LegacyInterludeId = (typeof LEGACY_INTERLUDE_IDS)[number];
+
 /** LG-2…LG-5: each decision's Wave 21 card. */
-export const LEGACY_DECISION_ART: Readonly<Record<LegacyPetitionId, string>> = {
+export const LEGACY_DECISION_ART: Readonly<Record<(typeof LEGACY_CARD_PETITION_IDS)[number], string>> = {
   borough_autonomy: "ch5_decision_autonomy", heir_choice: "ch5_decision_heir_choice", royal_tax: "ch5_decision_royal_tax_response", legacy_choice: "ch5_decision_legacy",
 };
 
@@ -84,6 +97,21 @@ export const LEGACY_BALANCE = {
   subsidyMin: 60,
   subsidyMax: 400,
 
+  /**
+   * LG-13 the interlude (year, in-year season). The Staple: cloth sells at `staplePricePermille` for `stapleSeasons`
+   * (wool bound at home, the weavers' market wider). The market's fire: its repair. The nave: its cost. The deposition:
+   * the Crown's relation goes `depositionPermille` of the way back to where it started (a new king's reign).
+   */
+  staple: [1391, 0] as readonly [number, number],
+  staplePricePermille: 1_100,
+  stapleSeasons: 8,
+  guildDispute: [1394, 0] as readonly [number, number],
+  marketFireRepair: 150,
+  churchRebuilding: [1396, 0] as readonly [number, number],
+  churchRebuildingCost: 300,
+  deposition: [1399, 2] as readonly [number, number],
+  depositionPermille: 500,
+
   /** LG-5: the legacy's endowment and its score. */
   endowment: 500,
   legacyPoints: 25,
@@ -93,7 +121,9 @@ export const LEGACY_BALANCE = {
     town: { peoplePerPoint: 20, peopleCap: 25, l4Points: 20, clothPerPoint: 40, clothCap: 15, rightPoints: 5, rightsCap: 15, autonomy: 20, refused: -20 },
     family: { firstHouse: 20, perChange: -10, perGeneration: 4, generationsCap: 16, heir: { eldest_son: 12, daughter_husband: 8, nephew: 5 } as Readonly<Record<HeirKind, number>>,
       stayed: 15, relationDivisor: 10, relationCap: 10, treasuryPerPoint: 2000, treasuryCap: 10 },
-    church: { church: 10, chapel: 4, chapelCap: 8, bishopDivisor: 4, bishopCap: 20, priest: 5, relief: 5 },
+    // FIX-9: the church's axis can lead (a church-built town): each church 10 (two), the bishop's favour ÷ 2, the
+    // monastery's priest, the nave rebuilt.
+    church: { church: 10, churchCap: 20, chapel: 4, chapelCap: 8, bishopDivisor: 2, bishopCap: 25, priest: 10, relief: 5, rebuilt: 15 },
   },
 } as const;
 
@@ -120,6 +150,15 @@ export const LEGACY_RELATIONS: Readonly<Record<LegacyPetitionId, Readonly<Partia
     accept_with_price: { overlord: 5 },
     refuse: { bishop: 15 },
   },
+  // FIX-9 (LG-13): the guild's side or the merchants'; the nave rebuilt or not.
+  guild_dispute: {
+    accept: { town: 10, merchant_house_1: -10 },
+    refuse: { merchant_house_1: 10, town: -10 },
+  },
+  church_rebuilding: {
+    accept: { bishop: 10 },
+    refuse: { bishop: -10 },
+  },
 };
 
 const QUIET = { right: null, stallFeePermille: 1000, charterFee: 0, gauge: 0 } as const;
@@ -127,6 +166,7 @@ const QUIET = { right: null, stallFeePermille: 1000, charterFee: 0, gauge: 0 } a
 const RESPONSES: Readonly<Record<LegacyPetitionId, readonly PetitionResponse[]>> = {
   borough_autonomy: ["accept", "refuse"], royal_tax: ["accept", "refuse"],
   heir_choice: ["accept", "accept_with_price", "refuse"], legacy_choice: ["accept", "accept_with_price", "refuse"],
+  guild_dispute: ["accept", "refuse"], church_rebuilding: ["accept", "refuse"],
 };
 
 /**
@@ -134,7 +174,8 @@ const RESPONSES: Readonly<Record<LegacyPetitionId, readonly PetitionResponse[]>>
  * (`trigger: "legacy"`); unanswered a season, the lord's silence answers. Sums depend on the town (`legacyDecisionForecast`).
  */
 export const LEGACY_PETITION_DEFS: readonly PetitionDef[] = LEGACY_PETITION_IDS.map(id => ({
-  id, petitioner: id === ROYAL_TAX_PETITION_ID ? "crown" as const : id === HEIR_CHOICE_PETITION_ID ? "overlord" as const : "townsfolk" as const,
+  id, petitioner: id === ROYAL_TAX_PETITION_ID ? "crown" as const : id === HEIR_CHOICE_PETITION_ID ? "overlord" as const
+    : id === GUILD_DISPUTE_PETITION_ID ? "craftsmen" as const : id === CHURCH_REBUILDING_PETITION_ID ? "parish" as const : "townsfolk" as const,
   demand: id, fromYear: 1382, toYear: 1450, requiresLots: 0, trigger: "legacy" as const,
   responses: RESPONSES[id], outcomes: { accept: QUIET, accept_with_price: QUIET, refuse: QUIET }, expiredGauge: 0,
 }));

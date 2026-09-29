@@ -1,0 +1,114 @@
+{
+ "variant": "house",
+ "answers": {
+  "royal_tax": "accept",
+  "guild_dispute": "accept",
+  "church_rebuilding": "accept",
+  "heir_choice": "refuse",
+  "borough_autonomy": "refuse",
+  "legacy_choice": "accept_with_price"
+ },
+ "start": {
+  "tick": 329000,
+  "year": 1382,
+  "treasury": 58370,
+  "population": 768
+ },
+ "end": {
+  "tick": 601000,
+  "year": 1450,
+  "treasury": 171419,
+  "population": 768,
+  "outcome": "victory",
+  "lived": 24,
+  "l4": 24
+ },
+ "heir": {
+  "kind": "nephew",
+  "personId": "m-000019",
+  "previousHeadId": "m-000017",
+  "tick": 400000,
+  "relief": 200
+ },
+ "candidates": [
+  [
+   "nephew",
+   "kinsman"
+  ]
+ ],
+ "mayorId": null,
+ "family": "stayed",
+ "backlash": 93,
+ "royalSubsidy": 400,
+ "legacy": "family",
+ "endowment": 500,
+ "clothSold": 3400,
+ "interludes": {
+  "staple": 364000,
+  "guild_dispute": 376000,
+  "church_rebuilding": 384000,
+  "deposition": 398000
+ },
+ "naveRebuilt": true,
+ "scores": {
+  "town": 55,
+  "family": 84,
+  "church": 66,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": -20,
+    "legacy": 0
+   },
+   "family": {
+    "house": 20,
+    "generations": 8,
+    "heir": 5,
+    "stayed": 15,
+    "relations": 1,
+    "treasury": 10,
+    "legacy": 25
+   },
+   "church": {
+    "church": 20,
+    "chapels": 4,
+    "bishop": 12,
+    "priest": 10,
+    "relief": 5,
+    "rebuilt": 15,
+    "legacy": 0
+   }
+  }
+ },
+ "ending": {
+  "id": "house_seat",
+  "title": "가문의 도시",
+  "sentence": "드 포콩발 가문은 2대에 걸쳐 영주관을 지켰고, 나이 든 존 드 포콩발이 그 문장을 이었다. 1450년 마지막 장날, 도시는 여전히 가문의 도시였다.",
+  "quotes": [
+   "h-031429",
+   "h-030923",
+   "h-046065"
+  ],
+  "final": true
+ },
+ "relations": {
+  "overlord": -10,
+  "crown": 25,
+  "neighbour_1": -6,
+  "neighbour_2": 0,
+  "bishop": 25,
+  "merchant_house_1": 10,
+  "merchant_house_2": 0,
+  "town": 38,
+  "commons": 35
+ },
+ "rights": [
+  "market_charter:merchants",
+  "commuted_rent:townsfolk",
+  "market_tolls:townsfolk",
+  "bridge_tolls:townsfolk"
+ ]
+}

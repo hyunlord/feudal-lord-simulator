@@ -63,6 +63,8 @@ export const LEDGER_CATEGORY_LABELS = {
   royal_subsidy: "국왕 과세",
   succession_relief: "상속세",
   legacy_endowment: "유산 기부",
+  // FIX-9 (LG-13)
+  church_rebuilding: "교회 증축",
 } as const satisfies Record<LedgerCategory, string>;
 
 export const LEDGER_WINDOW_LABELS = {
