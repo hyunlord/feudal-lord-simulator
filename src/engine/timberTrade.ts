@@ -68,8 +68,8 @@ export function botTimberOrder(state: GameState): number | null {
  */
 export function botTimberOrderFor(state: GameState, timberNeeded: number): number | null {
   if ((state.timberOrder ?? 0) > 0 || timberTradeMarket(state) === null) return null;
-  const window = state.timberProductionWindow;
-  if (window === undefined || window.produced > 0 || state.tick - window.startTick < 2399
+  const production = state.timberProductionWindow;
+  if (production === undefined || production.produced > 0 || state.tick - production.startTick < 2399
     || !state.buildings.some(building => building.kind === "sawmill")) return null;
   const shortfall = timberNeeded - placementSpendableResource(state, "timber");
   if (shortfall <= 0) return null;

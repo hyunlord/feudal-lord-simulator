@@ -1,4 +1,4 @@
-import { wadingPace } from "../world/bridges";
+import { wadingPace } from "./wading";
 import { observeMaterialReturn } from './materialActivity';
 import { BALANCE } from "../content/balanceConfig";
 import { WALL_CARRY_COST_FACTOR } from '../content/wallConstructionConfig';

@@ -1,4 +1,4 @@
-import { wadingPace } from "../world/bridges";
+import { wadingPace } from "./wading";
 import { operationSuspended } from "../content/buildingConfig";
 import { nextHouseDemandTile } from "./roamingDemand";
 import { BALANCE } from "../content/balanceConfig";

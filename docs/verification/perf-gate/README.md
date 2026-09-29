@@ -67,3 +67,10 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
 | 2026-09-29 21:34 | `b75574ce`* | 판정 아님(SMOOTH-2E 브랜치) | big-town-x5 판정 아님 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2134-b75574ce](2026-09-29-2134-b75574ce.md) |
 | 2026-09-29 21:53 | `b75574ce`* | 실패(SMOOTH-2E 브랜치 — 회귀 없음 비교의 유효한 한 벌) | big-town-x5 실패 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2153-b75574ce](2026-09-29-2153-b75574ce.md) |
 | 2026-09-29 22:08 | `f5ae40ec`* | 실패(본선 — 회귀 없음 비교의 유효한 한 벌) | big-town-x5 실패 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2208-f5ae40ec](2026-09-29-2208-f5ae40ec.md) |
+| 2026-09-30 00:10 | `5ac904f0` | 판정 아님(본선, FIX-10 회귀 없음 비교; 이 세션의 DGX 동기화가 겹침) | big-town-x5 실패 · new-game-x3 실패 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0010-5ac904f0](2026-09-30-0010-5ac904f0.md) |
+| 2026-09-30 00:24 | `bcee3d90` | 판정 아님(FIX-10 브랜치) | big-town-x5 실패 · new-game-x3 통과 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0024-bcee3d90](2026-09-30-0024-bcee3d90.md) |
+| 2026-09-30 00:38 | `5ac904f0`* | 판정 아님(본선) | big-town-x5 판정 아님 · new-game-x3 통과 · season-x1 판정 아님 · placement-x3 실패 | [2026-09-30-0038-5ac904f0](2026-09-30-0038-5ac904f0.md) |
+| 2026-09-30 00:53 | `bcee3d90`* | 실패(FIX-10 브랜치, 두 장면만) | season-x1 통과 · placement-x3 실패 | [2026-09-30-0053-bcee3d90](2026-09-30-0053-bcee3d90.md) |
+| 2026-09-30 01:01 | `5ac904f0`* | 통과(본선, 한 장면만) | season-x1 통과 | [2026-09-30-0101-5ac904f0](2026-09-30-0101-5ac904f0.md) |
+| 2026-09-30 01:05 | `bcee3d90`* | 판정 아님(FIX-10 브랜치, 두 장면만) | big-town-x5 판정 아님 · placement-x3 실패 | [2026-09-30-0105-bcee3d90](2026-09-30-0105-bcee3d90.md) |
+| 2026-09-30 01:13 | `5ac904f0`* | 판정 아님(본선, 두 장면만) | big-town-x5 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0113-5ac904f0](2026-09-30-0113-5ac904f0.md) |

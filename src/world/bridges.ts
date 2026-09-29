@@ -9,7 +9,6 @@ export const BRIDGE_TIMBER_PER_TILE = 4;
  * carts and walkers wade it at half their pace.
  */
 export const FORD_TIMBER_PER_TILE = 1;
-export const FORD_PACE_DIVISOR = 2;
 const fordSets = new WeakMap<readonly number[], ReadonlySet<number>>();
 
 /** The tile is one of the river's ford cells (with a road or not). */
@@ -19,11 +18,6 @@ export function isFordCell(grid:WallGrid,coordinate:TileCoordinate):boolean {
   let set=fordSets.get(fords);
   if(set===undefined){set=new Set(fords);fordSets.set(fords,set);}
   return set.has(coordinate.ty*grid.width+coordinate.tx);
-}
-
-/** FD-2: the pace of a step from `from` to `to` — `pace`, or `pace / FORD_PACE_DIVISOR` when either end is a ford road. */
-export function wadingPace(isFord:((tile:TileCoordinate)=>boolean)|undefined,from:TileCoordinate|undefined,to:TileCoordinate|undefined,pace:number):number {
-  return from!==undefined&&to!==undefined&&isFord!==undefined&&(isFord(from)||isFord(to)) ? pace/FORD_PACE_DIVISOR : pace;
 }
 
 /** A road on a ford cell: the wading place. */
