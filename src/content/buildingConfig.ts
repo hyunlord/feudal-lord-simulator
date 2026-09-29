@@ -46,6 +46,8 @@ export interface BuildingDefinition {
   readonly workersRequired: number;
   readonly buildCost: Partial<Record<ResourceType, number>>;
   readonly requiresAdjacentTerrain: TerrainType | null;
+  /** ARCH-1b (MA-10): the adjacent water must flow (the map's river or brook; an older save without one: any water). */
+  readonly requiresFlowingWater?: true;
   readonly requiresRoad: boolean;
   readonly production: ProductionSpec | null;
   readonly storageCapacity: number;
@@ -393,7 +395,8 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
   // stays a windmill, the forbidden watermill is the grain one).
   fulling_mill: {
     kind: "fulling_mill", name: BUILDING_COPY.fulling_mill.name, width: 2, height: 2, workersRequired: 2, buildCost: { timber: 60 },
-    requiresAdjacentTerrain: "water", requiresRoad: true,
+    // ARCH-1b (MA-10): its wheel turns on running water — the river or brook, not a mere or the sea.
+    requiresAdjacentTerrain: "water", requiresFlowingWater: true, requiresRoad: true,
     production: { output: "fulled_cloth", input: "raw_cloth", inputPerOutput: 1, ticksPerOutput: 60, outputHoldLimit: 10 }, storageCapacity: 30, serviceRadius: 0,
   },
   // C5 (CL-6): the dyehouse by the water — a vat of woad, madder or weld a cloth.

@@ -45,6 +45,7 @@ import {
   allocateBuildingAndConstructionLabour,
   builderWalkersForSites,
 } from "../population/labour";
+import { advanceDrainage } from "./drainage";
 import { allocateLabourDemands } from "./labourDemand";
 import { withHouseholdMembers } from "../population/householdMembers";
 import { advancePersons, labourPool } from "./persons";
@@ -223,11 +224,13 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     treasuryCoin: marketSettled.treasuryCoin,
     ...(marketSettled.ledger === undefined ? {} : { ledger: marketSettled.ledger }),
   }, { servedHouses, deliveryEvents: movedDistributors.deliveryEvents }), servedHouses));
+  // ARCH-1b (MA-11): the fen's drainage works gain their diggers' work (a finished one turns its cells to meadow).
+  const drained = advanceDrainage(produced, demands.drainage);
   const progressed = {
-    ...produced,
+    ...drained,
     constructionSites: recomputeConstructionStalls({
-      ...produced,
-      constructionSites: advanceConstructionSites(produced),
+      ...drained,
+      constructionSites: advanceConstructionSites(drained),
     }, routePorts.delivery),
   };
   const spawnedCarters = spawnCarters({

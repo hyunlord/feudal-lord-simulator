@@ -5,8 +5,9 @@ import { canPlaceBuildingBeforeRoad } from "../src/world/placement";
 import { findExistingRoadPath } from "../src/world/roadGraph";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { getTile, type Grid, type TileCoordinate } from "../src/world/grid";
+import { buildArchetypeWorld } from "../src/world/archetypeTerrain";
 import { buildWorldGrid } from "../src/world/terrain";
-import { buildArchetypeWorldGrid } from "../src/world/archetypeTerrain";
+import { RIVERSIDE_ARCHETYPE_ID } from "../src/content/scenario/archetypes";
 import { archetypeById } from "../src/content/scenario/registry";
 
 export class InvalidGrowthOpeningError extends Error {
@@ -96,13 +97,23 @@ export function selectGrowthOpening(world: Grid, seed: number) {
   throw new InvalidGrowthOpeningError(seed, ["no-legal-offset: all in-bounds rigid opening translations rejected"]);
 }
 
-/** ARCH-1 (MA-7): on a land other than the riverside town the map is that land's, and the state carries its id. */
+/**
+ * ARCH-1 (MA-7): on a land other than the riverside town the map is that land's, and the state carries its id.
+ * ARCH-1b (MA-9): every land's map carries its river (the riverside town's too: the open field with its river).
+ */
 export function createGrowthOpening(seed: number, archetypeId?: string) {
   if (!Number.isInteger(seed) || seed < 1 || seed > 5) throw new RangeError("verification seed must be 1..5");
   const size = { width: DEFAULT_GAME_STATE.width, height: DEFAULT_GAME_STATE.height, seed };
-  const archetype = archetypeId === undefined ? undefined : archetypeById(archetypeId);
-  if (archetypeId !== undefined && archetype === undefined) throw new RangeError(`unknown archetype ${archetypeId}`);
-  if (archetype === undefined || archetype.terrain.kind === "river") return selectGrowthOpening(buildWorldGrid(size), seed);
-  const opening = selectGrowthOpening(buildArchetypeWorldGrid(archetype, size), seed);
-  return { ...opening, state: { ...opening.state, archetypeId: archetype.id } };
+  const archetype = archetypeById(archetypeId ?? RIVERSIDE_ARCHETYPE_ID);
+  if (archetype === undefined) throw new RangeError(`unknown archetype ${archetypeId}`);
+  // The riverside town's opening is chosen on the open field's map first; the river then keeps off that site (carving
+  // only adds water, so the same translation stays the nearest legal one).
+  const offset = archetype.terrain.kind === "river" ? selectGrowthOpening(buildWorldGrid(size), seed).provenance.offset : { tx: 0, ty: 0 };
+  const land = buildArchetypeWorld(archetype, size, offset);
+  const world = { width: size.width, height: size.height, tiles: land.terrains.map((terrain, index) => ({
+    tx: index % size.width, ty: Math.floor(index / size.width), terrain, buildingId: null, hasRoad: false })) };
+  const opening = selectGrowthOpening(world, seed);
+  const { river: _river, ...state } = opening.state;
+  return { ...opening, state: { ...state, ...(archetype.terrain.kind === "river" ? {} : { archetypeId: archetype.id }),
+    ...(land.river === null ? {} : { river: land.river }) } };
 }

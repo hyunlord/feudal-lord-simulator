@@ -1,4 +1,5 @@
 import { setFarmsteadCrop } from "../engine/ale";
+import { startDrainage } from "../engine/drainage";
 import { DEFAULT_SCENARIO_ID } from "../content/scenario/coreScenarios";
 import { recordMaterialPlacement, refreshMaterialResult } from '../engine/autoplayMaterialLifecycle';
 import {
@@ -34,7 +35,9 @@ import {
   createDeliveryInventoryPort,
   createSimulationRoutePorts,
 } from "../engine/simulationPorts";
-import { buildWorldGrid } from "../world/terrain";
+import { buildArchetypeWorld } from "../world/archetypeTerrain";
+import { archetypeById } from "../content/scenario/registry";
+import { RIVERSIDE_ARCHETYPE_ID } from "../content/scenario/archetypes";
 import {
   applyOpeningVillageToTile,
   openingVillageBuildings,
@@ -58,7 +61,9 @@ import {
 } from "./fixedTickLoop";
 
 const WORLD_SEED = 1;
-const INITIAL_WORLD = buildWorldGrid({ width: 64, height: 64, seed: WORLD_SEED });
+// ARCH-1b (MA-9): the riverside town's map is the open field's with its river carved across it.
+const INITIAL_LAND = buildArchetypeWorld(archetypeById(RIVERSIDE_ARCHETYPE_ID)!, { width: 64, height: 64, seed: WORLD_SEED });
+const INITIAL_WORLD = { width: 64, height: 64, tiles: INITIAL_LAND.terrains.map((terrain, index) => ({ tx: index % 64, ty: Math.floor(index / 64), terrain, buildingId: null, hasRoad: false })) };
 const STARTING_BUILDINGS = openingVillageBuildings();
 const STARTING_HOUSES = openingVillageHouses();
 
@@ -85,6 +90,7 @@ export const DEFAULT_GAME_STATE: GameState = withOpeningVillageServices({
   roadRevision: 0,
   pathCache: {},
   scenarioId: DEFAULT_SCENARIO_ID,
+  ...(INITIAL_LAND.river === null ? {} : { river: INITIAL_LAND.river }),
   zones: [],
   nextZoneOrdinal: 1,
 });
@@ -152,6 +158,8 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return respondToPetition(state, action.petitionId, action.response);
     case "set_farmstead_crop":
       return setFarmsteadCrop(state, action.buildingId, action.crop);
+    case "drain_fen":
+      return startDrainage(state, action.tx, action.ty);
     case "cancel_construction": {
       const routes = createSimulationRoutePorts(state);
       const result = cancelConstruction({

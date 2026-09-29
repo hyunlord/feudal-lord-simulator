@@ -3,21 +3,28 @@ import test from "node:test";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { buildWorldGrid } from "../src/world/terrain";
 import { createGrowthInitialState } from "../scripts/phase19GrowthRunControl";
+import { selectGrowthOpening } from "../scripts/phase21OpeningTranslation";
+import { RIVERSIDE_ARCHETYPE_ID } from "../src/content/scenario/archetypes";
+import { archetypeById } from "../src/content/scenario/registry";
+import { buildArchetypeWorld } from "../src/world/archetypeTerrain";
 
 test("approved verification seeds receive a rigid legal opening without changing raw terrain or economic fields", () => {
   const original = structuredClone(DEFAULT_GAME_STATE);
   for (const seed of [1, 2, 3, 4, 5]) {
     const state = createGrowthInitialState(seed);
-    const raw = buildWorldGrid({ width: 64, height: 64, seed });
-    assert.deepEqual(state.tiles.map(({ buildingId, hasRoad, ...tile }) => tile), raw.tiles.map(({ buildingId, hasRoad, ...tile }) => tile));
+    // ARCH-1b (MA-9): the raw terrain is the riverside town's — the open field's with its river, kept off the opening.
+    const offset = selectGrowthOpening(buildWorldGrid({ width: 64, height: 64, seed }), seed).provenance.offset;
+    const land = buildArchetypeWorld(archetypeById(RIVERSIDE_ARCHETYPE_ID)!, { width: 64, height: 64, seed }, offset);
+    assert.deepEqual(state.tiles.map(tile => tile.terrain), land.terrains);
+    assert.deepEqual(state.river, land.river);
     const first = state.buildings[0]; const before = original.buildings[0];
     assert.ok(first && before);
     const dx = first.tx - before.tx; const dy = first.ty - before.ty;
     assert.deepEqual(state.buildings.map(b => ({ ...b, tx: b.tx - dx, ty: b.ty - dy })), original.buildings);
     assert.equal(state.tiles.filter(t => t.hasRoad).length, original.tiles.filter(t => t.hasRoad).length);
     assert.deepEqual(state.tiles.filter(t => t.hasRoad).map(t => [t.tx - dx, t.ty - dy]), original.tiles.filter(t => t.hasRoad).map(t => [t.tx, t.ty]));
-    const { tiles, buildings, seed: actualSeed, ...rest } = state;
-    const { tiles: originalTiles, buildings: originalBuildings, seed: originalSeed, ...originalRest } = original;
+    const { tiles, buildings, seed: actualSeed, river, ...rest } = state;
+    const { tiles: originalTiles, buildings: originalBuildings, seed: originalSeed, river: originalRiver, ...originalRest } = original;
     assert.deepEqual(rest, originalRest);
     assert.deepEqual(createGrowthInitialState(seed), state);
   }

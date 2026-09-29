@@ -6,7 +6,7 @@
 import { SCENARIOS, archetypeById } from "../content/scenario/registry";
 import type { ArchetypeDef } from "../content/scenario/types";
 import type { GameState } from "../engine/engine.types";
-import { buildArchetypeWorldGrid } from "../world/archetypeTerrain";
+import { buildArchetypeWorld } from "../world/archetypeTerrain";
 import { DEFAULT_GAME_STATE } from "./gameStore";
 import { applyOpeningVillageToTile } from "./openingVillage";
 
@@ -33,7 +33,10 @@ export function newGameState(options: NewGameOptions): GameState | null {
   if (archetype.terrain.kind === "river") {
     return seed === DEFAULT_GAME_STATE.seed ? { ...structuredClone(DEFAULT_GAME_STATE), scenarioId: options.scenarioId } : null;
   }
-  const world = buildArchetypeWorldGrid(archetype, { width: DEFAULT_GAME_STATE.width, height: DEFAULT_GAME_STATE.height, seed });
-  return { ...structuredClone(DEFAULT_GAME_STATE), scenarioId: options.scenarioId, archetypeId: archetype.id, seed,
-    tiles: world.tiles.map(applyOpeningVillageToTile) };
+  const { width, height } = DEFAULT_GAME_STATE;
+  const world = buildArchetypeWorld(archetype, { width, height, seed });
+  const { river: _river, ...opening } = structuredClone(DEFAULT_GAME_STATE);
+  return { ...opening, scenarioId: options.scenarioId, archetypeId: archetype.id, seed,
+    ...(world.river === null ? {} : { river: world.river }),
+    tiles: world.terrains.map((terrain, index) => applyOpeningVillageToTile({ tx: index % width, ty: Math.floor(index / width), terrain, buildingId: null, hasRoad: false })) };
 }

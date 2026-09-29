@@ -67,10 +67,13 @@ test("L2 LB-1/LB-2 member seeds are deterministic and survive a save round trip"
   assert.equal(householdMembers(state, "no-such-house"), null);
 });
 
-/** An 8×4 field (24 cultivable cells) tended from a farmstead, with a mill, a granary, a logging camp and a sawmill. */
+/**
+ * An 8×3 field (24 cultivable cells) tended from a farmstead, with a mill, a granary, a logging camp and a sawmill.
+ * ARCH-1b: on the shifted meadow (the helper's `FIELD_SHIFT`) every cell is grass; the old 8×4 had eight uncultivable.
+ */
 const FIELD_CELLS = 24;
 function townWithBigField(tick: number): GameState {
-  const world = fieldWorld({ field: rectangle(2, 9, 10, 13), tick, farmstead: farmsteadAt(10, 10, 0) });
+  const world = fieldWorld({ field: rectangle(2, 9, 10, 12), tick, farmstead: farmsteadAt(10, 10, 0) });
   const extra: Building[] = ["mill", "granary", "logging_camp", "sawmill"].map((kind, index) =>
     ({ ...building(`b-${kind}`, kind as Building["kind"], { tx: 14 + index, ty: 3 }) }));
   return { ...world, buildings: [...world.buildings, ...extra] };

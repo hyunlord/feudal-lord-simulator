@@ -29,7 +29,7 @@ import { DEFAULT_GAME_STATE, gameReducer } from "../src/state/gameStore";
 import { mapArchetypes, newGameState } from "../src/state/newGame";
 import { stepArableFields } from "../src/zones/arableFields";
 import { archetypeGroundLayer } from "../src/world/archetypeGround";
-import { archetypeTerrains, buildArchetypeWorldGrid, coastSeaEdge, TOWN_SITE } from "../src/world/archetypeTerrain";
+import { archetypeTerrains, buildArchetypeWorld, coastSeaEdge, TOWN_SITE } from "../src/world/archetypeTerrain";
 import { buildWorldGrid } from "../src/world/terrain";
 import { createGrowthOpening } from "../scripts/phase21OpeningTranslation";
 import { terrainResourcePreflight } from "../scripts/phase19NaturalGrowth";
@@ -41,7 +41,7 @@ const NEW_LANDS = [COASTAL_ARCHETYPE_ID, DOWNS_ARCHETYPE_ID, WOODLAND_ARCHETYPE_
 const byId = (id: string) => MAP_ARCHETYPES.find(archetype => archetype.id === id)!;
 const share = (terrains: readonly TerrainType[], terrain: TerrainType) => terrains.filter(entry => entry === terrain).length * 1000 / terrains.length;
 const on = (state: GameState, archetypeId: string): GameState => ({ ...state, archetypeId });
-const loadSave = (name: string) => decodeSave(new Uint8Array(readFileSync(`fixtures/saves/v31/${name}.save.json`))).envelope.state as GameState;
+const loadSave = (name: string) => decodeSave(new Uint8Array(readFileSync(`fixtures/saves/v32/${name}.save.json`))).envelope.state as GameState;
 
 test("MA-1 five lands in the start screen's order: the riverside town (the open field, every coefficient 1,000) first; the harbour and the river's mouth coastal", () => {
   assert.deepEqual(MAP_ARCHETYPE_IDS, [RIVERSIDE_ARCHETYPE_ID, COASTAL_ARCHETYPE_ID, DOWNS_ARCHETYPE_ID, WOODLAND_ARCHETYPE_ID, FEN_ARCHETYPE_ID]);
@@ -58,9 +58,14 @@ test("MA-1 five lands in the start screen's order: the riverside town (the open 
   assert.equal(DEFAULT_GAME_STATE.archetypeId, undefined);
 });
 
-test("MA-2 ① the riverside town's map is buildWorldGrid's byte for byte; a new land's is deterministic in (land, seed) and differs by seed and by land", () => {
+test("MA-2 ① MA-9 the riverside town's map is the open field's with its river carved across it; a new land's is deterministic in (land, seed) and differs by seed and by land", () => {
   for (const seed of [1, 2, 3, 4, 5]) {
-    assert.deepEqual(buildArchetypeWorldGrid(byId(RIVERSIDE_ARCHETYPE_ID), { ...SIZE, seed }), buildWorldGrid({ ...SIZE, seed }));
+    const world = buildArchetypeWorld(byId(RIVERSIDE_ARCHETYPE_ID), { ...SIZE, seed });
+    const open = buildWorldGrid({ ...SIZE, seed }).tiles.map(tile => tile.terrain);
+    const channel = new Set(world.river!.cells);
+    const changed = world.terrains.flatMap((terrain, index) => terrain === open[index] ? [] : [index]);
+    assert.deepEqual(changed.filter(index => !channel.has(index)), [], `seed ${seed}: only the channel differs`);
+    assert.ok(world.river!.cells.every(index => world.terrains[index] === "water"));
   }
   for (const id of NEW_LANDS) {
     const first = archetypeTerrains(byId(id), { ...SIZE, seed: 2 });
@@ -87,7 +92,13 @@ test("MA-2 ② every new land's town site is open ground with the camp's copse, 
 });
 
 test("MA-2 ③ MA-3 the lands' resources: the harbour's sea on its north or west edge, the down's rock and little water, the forest's timber, the fen's meres", () => {
-  const mean = (id: string, terrain: TerrainType) => [1, 2, 3].reduce((sum, seed) => sum + share(archetypeTerrains(byId(id), { ...SIZE, seed }), terrain), 0) / 3;
+  // Still water and land: the river's channel (MA-9) is counted apart.
+  const stillShare = (id: string, seed: number, terrain: TerrainType) => {
+    const world = buildArchetypeWorld(byId(id), { ...SIZE, seed });
+    const channel = new Set(world.river?.cells ?? []);
+    return share(world.terrains.map((entry, index) => channel.has(index) ? "grass" : entry), terrain);
+  };
+  const mean = (id: string, terrain: TerrainType) => [1, 2, 3].reduce((sum, seed) => sum + stillShare(id, seed, terrain), 0) / 3;
   const open = (terrain: TerrainType) => [1, 2, 3].reduce((sum, seed) => sum + share(buildWorldGrid({ ...SIZE, seed }).tiles.map(tile => tile.terrain), terrain), 0) / 3;
   for (const seed of [1, 2, 3, 4, 5]) {
     const terrains = archetypeTerrains(byId(COASTAL_ARCHETYPE_ID), { ...SIZE, seed });
