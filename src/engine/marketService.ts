@@ -65,10 +65,10 @@ const roadDistanceCache = new WeakMap<WallGrid["tiles"], { readonly width: numbe
   readonly byMarket: Map<string, ReadonlyMap<string, number>> }>();
 
 export function marketRoadDistanceMap(grid: WallGrid, market: Building): ReadonlyMap<string, number> {
-  let entry = roadDistanceCache.get(grid.tiles);
+  let entry = typeof grid.tiles === "object" && grid.tiles !== null ? roadDistanceCache.get(grid.tiles) : undefined;
   if (entry === undefined || entry.width !== grid.width || entry.height !== grid.height || entry.wall !== grid.palisade) {
     entry = { width: grid.width, height: grid.height, wall: grid.palisade, byMarket: new Map() };
-    roadDistanceCache.set(grid.tiles, entry);
+    if (typeof grid.tiles === "object" && grid.tiles !== null) roadDistanceCache.set(grid.tiles, entry);
   }
   const byMarket = entry.byMarket;
   const key = `${market.id}:${market.tx},${market.ty}`;

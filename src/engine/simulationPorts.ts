@@ -75,7 +75,9 @@ export function createDeliveryInventoryPort(): DeliveryInventoryPort {
 
 export function createSimulationRoutePorts(state: GameState): SimulationRoutePorts {
   let pathCache = state.pathCache;
-  const routeState = (): GameState => stateWithCache(state, pathCache);
+  // SMOOTH-2E: one copy of the state per cache the routes have made (the state is immutable), not one per lookup.
+  let routed: GameState | null = null;
+  const routeState = (): GameState => routed !== null && routed.pathCache === pathCache ? routed : (routed = stateWithCache(state, pathCache));
 
   const routeToBuilding = (
     start: TilePos,

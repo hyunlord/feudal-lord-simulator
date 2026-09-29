@@ -54,10 +54,10 @@ interface RoadSteps { readonly width: number; readonly height: number; readonly 
 const roadSteps = new WeakMap<WallGrid["tiles"], RoadSteps>();
 
 function roadStepsOf(grid: WallGrid): RoadSteps {
-  const cached = roadSteps.get(grid.tiles);
+  const cached = typeof grid.tiles === "object" && grid.tiles !== null ? roadSteps.get(grid.tiles) : undefined;
   if (cached?.width === grid.width && cached.height === grid.height && cached.wall === grid.palisade) return cached;
-  const fresh = { width: grid.width, height: grid.height, wall: grid.palisade, masks: new Uint8Array(grid.width * grid.height) };
-  roadSteps.set(grid.tiles, fresh);
+  const fresh = { width: grid.width, height: grid.height, wall: grid.palisade, masks: new Uint8Array(Math.max(0, grid.width * grid.height) || 0) };
+  if (typeof grid.tiles === "object" && grid.tiles !== null) roadSteps.set(grid.tiles, fresh);
   return fresh;
 }
 
