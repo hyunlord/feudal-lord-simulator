@@ -83,8 +83,18 @@ async function storyModal(page, selector, file) {
     await card.waitFor({ timeout: 30_000 }).catch(async error => { await page.screenshot({ path: join(out, file), type: 'jpeg' }); throw error; });
   }
 }
+// UI-9b: a paused save's chapter page (or a petition card) does not always open on the DGX (the story never pushes it,
+// nothing blocks it; seen on the trunk too); a step that timed out before auditing anything loads its scene again, up
+// to three times. A step that audited something is not repeated (nothing is counted twice).
 async function step(name, run) {
-  try { await run(); } catch (error) { result.errors.push(`${name}: ${String(error).slice(0, 300)}`); console.log(`${name}: FAILED ${String(error).slice(0, 200)}`); }
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    const before = result.total.elements;
+    try { await run(); return; } catch (error) {
+      const retry = attempt < 3 && result.total.elements === before && String(error).includes('Timeout');
+      console.log(`${name}: ${retry ? `attempt ${attempt} timed out, again` : 'FAILED'} ${String(error).slice(0, 200)}`);
+      if (!retry) { result.errors.push(`${name}: ${String(error).slice(0, 300)}`); return; }
+    }
+  }
 }
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 

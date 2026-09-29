@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-29(ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -20,6 +20,12 @@
   - **GC 빈도**: Blink 쪽 할당이 초당 60~90 MB다.
     - 이름 붙은 몫: `getTransform` 초당 71,000번, 걷는 사람 합성을 분당 4,400번 다시 함, 지면 청크 캔버스를 다시 만듦.
     - 약 60 MB/s는 아직 이름을 붙이지 못했다.
+- **UI-9b 짧은 수정 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_F 1): [보고서](verification/ui9b/REPORT.md), 결정 UI9B-D1~D4.
+  - 세력 쪽 반란 압력은 쪽 안의 칸(발치 상자 오른쪽 아래, 칸 안 스크롤). 왕실 닮은 문장(파랑 + 금백합, 빨강 + 금사자) 금지 — 그 색만 바꿈, 다른 문장 불변(드 포콩발 가문 빨강·파랑 → 빨강·초록).
+  - Wave 17 징수원(`wk_tax_collector`, 칸마다의 발)이 1381 쫓음의 맨 앞. Wave 31 `chapter5_intro`와 5장 여는 화면·목표 문구. 목축 농장은 우리의 마름모로 자른 사본(약 1.4배). Wave 3 목동·축융공·양모 상인 시트에 칸 정보를 넣어 등록(직물 건물의 수레꾼).
+  - 관문: DGX 캡처 오류 0, 스킨 감사 0 / 1263, 면적 5.5 % / 6 %·태블릿 5.9 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 로컬 전체 시험 3,761 / 3,761, 깨끗한 클론 `26914ae` 3,762/3,762·build.
+  - 관찰: 멈춘 게임에서 장 끝 쪽이 가끔 열리지 않음(본선도, 원인 미확인) — 캡처·스킨 감사는 다시 불러옴.
+
 - **SMOOTH-1 끊김 감사 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): [보고서](verification/smooth1/REPORT.md). 목표선은 사용자 판정 대기.
   - 도구 `scripts/perf/hitch*`: 제품 빌드에 장면 저장을 불러와 rAF 프레임 간격과 Chrome 추적의 긴 작업 원인을 잰다. 추적은 저장소 밖(`~/feudal-lord-analysis/perf-traces/smooth1-20260929/`).
   - Mac 실제 Chrome 창(120 Hz) 추적 27회 77.4분: p50 8.3 ms인데 33 ms 초과가 분당 27.8번, 1× 도시도 분당 9.7~19.3번, 최악 한 프레임 2.49초.

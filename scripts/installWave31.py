@@ -1,6 +1,6 @@
 """PLAGUE-b: install the confirmed Wave 31 chapter opening paintings (assets-inbox/wave31/candidates-20260929,
 1920 × 1080 JPEG) that a built chapter uses: chapter 3's (the chronicle's chapter-3 start and chapter 3's opening
-screen) and chapter 4's (UI-9). Chapter 5 joins when its screens are built (INTRO below).
+screen), chapter 4's (UI-9) and chapter 5's (UI-9b).
 No C2PA marker (asserted). The received files are JPEG 95 (about 1 MB each) and the build-time derivatives
 (scripts/keyartDerivatives.ts) decode PNG only, so the runtime copy is re-encoded here once at the Wave 16 / 21
 derivatives' quality (JPEG 70, same size) into public/assets/wave31/chapters; the received JPEG stays in assets-inbox.
@@ -31,7 +31,7 @@ QUALITY = 70
 INSTALLED_ON = "2026-09-29"
 USED_IN = "src/ui/wave31ArtManifest.generated.ts (chapter opening paintings: the chronicle's chapter start, the chapter's opening screen)"
 # (id, chapter, installing task)
-INTRO = [("chapter3_intro", 3, "PLAGUE-b"), ("chapter4_intro", 4, "UI-9")]
+INTRO = [("chapter3_intro", 3, "PLAGUE-b"), ("chapter4_intro", 4, "UI-9"), ("chapter5_intro", 5, "UI-9b")]
 csv.field_size_limit(sys.maxsize)
 
 

@@ -1,0 +1,216 @@
+{
+ "messenger": {
+  "tick": 148000,
+  "year": 1337
+ },
+ "wool_payment": {
+  "tick": 149000,
+  "year": 1337,
+  "petitionId": "wool_payment@149000"
+ },
+ "levy_response": {
+  "tick": 152000,
+  "year": 1338,
+  "petitionId": "levy_response@152000"
+ },
+ "war_funding": {
+  "tick": 154000,
+  "year": 1338,
+  "petitionId": "war_funding@154000"
+ },
+ "beacon": {
+  "tick": 156000,
+  "year": 1339
+ },
+ "before-raid": {
+  "tick": 156999,
+  "year": 1339
+ },
+ "raid": {
+  "tick": 157000,
+  "year": 1339,
+  "raid": {
+   "tick": 157000,
+   "defencePermille": 600,
+   "losses": {
+    "burntHouses": 3,
+    "looted": 680,
+    "coin": 605
+   }
+  }
+ },
+ "refugee_admission": {
+  "tick": 158000,
+  "year": 1339,
+  "petitionId": "refugee_admission@158000"
+ },
+ "wall_or_market": {
+  "tick": 159000,
+  "year": 1339,
+  "petitionId": "wall_or_market@159000"
+ },
+ "chapter2-end": {
+  "tick": 160000,
+  "year": 1340,
+  "end": {
+   "chapter": 2,
+   "tick": 160000,
+   "chronicle": {
+    "chapter": 2,
+    "fromYear": 1319,
+    "toYear": 1340,
+    "events": [
+     {
+      "recordId": "h-002319",
+      "eventId": "great_famine@61",
+      "defId": "great_famine",
+      "year": 1319,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 4298
+      }
+     },
+     {
+      "recordId": "h-004438",
+      "eventId": "era:war",
+      "defId": "war",
+      "year": 1337,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-004439",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1337,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-004728",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1339,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-004749",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1339,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-004784",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1339,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     }
+    ],
+    "decisions": [
+     {
+      "recordId": "h-004457",
+      "kind": "petition_response",
+      "tick": 149057,
+      "chosen": "accept_with_price",
+      "alternatives": [
+       "accept",
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 7547,
+       "merchantGauge": 65
+      },
+      "actual": {
+       "treasury": 7547,
+       "merchantGauge": 65
+      }
+     },
+     {
+      "recordId": "h-004476",
+      "kind": "petition_response",
+      "tick": 152057,
+      "chosen": "accept_with_price",
+      "alternatives": [
+       "accept",
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 7485,
+       "merchantGauge": 65
+      },
+      "actual": {
+       "treasury": 7615,
+       "merchantGauge": 65
+      }
+     },
+     {
+      "recordId": "h-004494",
+      "kind": "petition_response",
+      "tick": 154097,
+      "chosen": "accept",
+      "alternatives": [
+       "accept_with_price",
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 7385,
+       "merchantGauge": 75
+      },
+      "actual": {
+       "treasury": 7685,
+       "merchantGauge": 75
+      }
+     }
+    ],
+    "stats": {
+     "populationStart": 528,
+     "populationEnd": 728,
+     "peakPopulation": 728,
+     "houses": 24,
+     "burntHouses": 0,
+     "departures": 0,
+     "harvestLost": 0,
+     "treasury": 6946,
+     "famine": {
+      "year": 1315,
+      "populationAtArrival": 527,
+      "populationAtEnd": 528
+     },
+     "war": {
+      "raidYear": 1339,
+      "raidLosses": {
+       "burntHouses": 3,
+       "looted": 680,
+       "coin": 605
+      },
+      "defencePermille": 600,
+      "men": 0,
+      "lostMen": 0,
+      "wall": "market"
+     }
+    }
+   }
+  }
+ }
+}

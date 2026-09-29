@@ -144,7 +144,7 @@ test("UI-6 faction page: demands, promises, the remembered records as links (new
   assert.match(markup, /frame_faction_page\.png/);
   assert.match(markup, /relation_scale_track\.png/);
   assert.equal((markup.match(/class="chronicle-faction-record[^"]*"[^>]*data-record="h-00000[12]"/g) ?? []).length, 2, "each remembered record is a button");
-  assert.equal(Object.keys(FACTION_PAGE_SLOTS).length, 9);
+  assert.equal(Object.keys(FACTION_PAGE_SLOTS).length, 11, "nine slots and UI-9b's two for the commons' revolt pressure");
   // The link's target: the list filtered to the faction (every kind, every severity) holds exactly its records.
   assert.ok((CHRONICLE_KINDS as readonly string[]).includes("faction"), "relation records are a kind of the list");
   const listed = chronicleItems(state, { ...DEFAULT_CHRONICLE_FILTER, severity: 0, factionId: "merchant_house_1" }).map(entry => entry.record.id);

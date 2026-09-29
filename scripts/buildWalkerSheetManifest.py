@@ -231,6 +231,38 @@ for name, template, sex in (("wk_alewife.png", "civilian_woman", "female"), ("wk
                    "legacy": False, "holdsTool": False, "template": template, "season": "all",
                    "directionOrder": DIRECTIONS, "cloak": None, "cloakPoke": None, "frames": frames_of(actors[template], hands_of(sheet_image(path)))})
 
+# INSTALL-3 (UI-9): the Wave 3 cloth chain's workers (shepherd, fuller, wool merchant), reskins of the civilian/merchant
+# templates at their runtime size (wk_shepherd and wk_fuller on the man's 294 x 147, wk_wool_merchant on the merchant's
+# 285 x 142: Astra kept each cell's head and both feet byte for byte, records/worker-overlap.csv), so they take the
+# template's feet and figure heights, and hands measured on their own alpha. Band "cloth": no occupation band draws them;
+# the shepherd walks from pastoral_farm, the fuller from fulling_mill, the wool merchant from dyehouse / tenter_yard
+# (walkerComposer `walkerAppearance` via clothWorkerSheet). No winter cloak (not tested against these costumes).
+_cloth_worker_csv_path = ROOT / "assets-inbox/wave3/candidates-20260926/records/worker-overlap.csv"
+_cloth_template_by_id: dict = {}
+for _ov in csv.DictReader(open(_cloth_worker_csv_path, encoding="utf-8")):
+    _wid = _ov["assetId"].removesuffix("-v1")
+    if _wid in ("wk_shepherd", "wk_fuller", "wk_wool_merchant") and _wid not in _cloth_template_by_id:
+        _m = re.match(r"actor_([a-z_]+)-v\d\.png", _ov["template"])
+        _cloth_template_by_id[_wid] = _m.group(1)
+for _worker_id, _template in (("wk_shepherd", _cloth_template_by_id["wk_shepherd"]),
+                               ("wk_fuller", _cloth_template_by_id["wk_fuller"]),
+                               ("wk_wool_merchant", _cloth_template_by_id["wk_wool_merchant"])):
+    _name = f"{_worker_id}.png"
+    _sex = "female" if _template == "civilian_woman" else "male"
+    _path = ROOT / "public/assets/wave3/workers" / _name
+    _image = Image.open(_path)
+    # Apply the same cloak logic as the reskins: merchant-template sheets take the merchant cloak; civilian
+    # sheets take the sex cloak only if head poke is within the limit. cloak_poke uses 74 px cells and the
+    # 296 x 148 cloak overlay — use sheet_image (which resizes to 296 x 148) so the shapes match.
+    _image_for_cloak = sheet_image(_path)
+    _cloak_kind = cloak_of(_template, _sex)
+    _poke = cloak_poke(_image_for_cloak, _cloak_kind)
+    _cloak = None if _cloak_kind != "merchant" and _poke > CLOAK_POKE_LIMIT else _cloak_kind
+    sheets.append({"id": _worker_id, "url": f"assets/wave3/workers/{_name}", "width": _image.width, "height": _image.height,
+                   "sha256": hashlib.sha256(_path.read_bytes()).hexdigest(), "classBand": "cloth", "sex": _sex, "occupationTags": [],
+                   "legacy": False, "holdsTool": False, "template": _template, "season": "all",
+                   "directionOrder": DIRECTIONS, "cloak": _cloak, "cloakPoke": _poke, "frames": frames_of(actors[_template], hands_of(sheet_image(_path)))})
+
 props = {}
 for row in rows:
     if row["type"] != "prop":

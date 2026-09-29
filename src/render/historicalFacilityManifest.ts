@@ -277,32 +277,32 @@ export const historicalFacilityManifest = [
   {
     "id": "farm_pastoral_spring",
     "kind": "pastoral_farm",
-    "url": "assets/wave2/bld/farm_pastoral_spring.png",
-    "width": 384,
-    "height": 192,
-    "source": { "x": 0, "y": 0, "width": 384, "height": 184 },
-    "displayWidth": 107,
-    "sha256": "9136f8eb6e4b1ec0f137c344f574677a0d4f26688b861e94a50d21ca484593ae"
+    "url": "assets/wave2/bld/farm_pastoral_spring_fit.png",
+    "width": 272,
+    "height": 136,
+    "source": { "x": 0, "y": 0, "width": 272, "height": 136 },
+    "displayWidth": 108,
+    "sha256": "0ed56a4c0e2d740d1bcaf3e640445cf08aa3bfef82d8da1dc5a0d9e7b143f9ce"
   },
   {
     "id": "farm_pastoral_summer",
     "kind": "pastoral_farm",
-    "url": "assets/wave2/bld/farm_pastoral_summer.png",
-    "width": 384,
-    "height": 192,
-    "source": { "x": 0, "y": 0, "width": 384, "height": 184 },
-    "displayWidth": 104,
-    "sha256": "4fab6bfe6c2c4ce47855d41d2b71cbba764be2f9cb03305bea96f8fcae7d223b"
+    "url": "assets/wave2/bld/farm_pastoral_summer_fit.png",
+    "width": 272,
+    "height": 136,
+    "source": { "x": 0, "y": 0, "width": 272, "height": 136 },
+    "displayWidth": 107,
+    "sha256": "8ef12e5dc4c9f46e15cd61bf743fdbf81c9f6aba49bccad366809ed83b112f7d"
   },
   {
     "id": "farm_pastoral_winter",
     "kind": "pastoral_farm",
-    "url": "assets/wave2/bld/farm_pastoral_winter.png",
-    "width": 384,
-    "height": 192,
-    "source": { "x": 0, "y": 0, "width": 384, "height": 184 },
-    "displayWidth": 106,
-    "sha256": "7564790ae4d650ee6881b61af965ef7f9943b250479414b54c2c3e327f47dcd4"
+    "url": "assets/wave2/bld/farm_pastoral_winter_fit.png",
+    "width": 272,
+    "height": 136,
+    "source": { "x": 0, "y": 0, "width": 272, "height": 136 },
+    "displayWidth": 108,
+    "sha256": "89008d9240da5792eed737b455395c71c63f1aafcb355850ddf9a8204d509196"
   }
 ] as const;
 

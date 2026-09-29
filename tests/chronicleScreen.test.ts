@@ -227,5 +227,5 @@ test("CHRON-1 faction page: the Wave 19 frame with its slots, the relation pin o
   assert.match(markup, /frame_faction_page\.png/);
   assert.match(markup, /relation_scale_track\.png/);
   assert.match(markup, /left:60%/, "the relation pin at +20 of −100…100");
-  assert.equal(Object.keys(FACTION_PAGE_SLOTS).length, 9);
+  assert.equal(Object.keys(FACTION_PAGE_SLOTS).length, 11, "nine slots and UI-9b's two for the commons' revolt pressure");
 });

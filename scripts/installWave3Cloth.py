@@ -14,6 +14,7 @@ Run: python3 scripts/installWave3Cloth.py
 import csv
 import hashlib
 import json
+import re
 import shutil
 import struct
 import sys
@@ -102,12 +103,21 @@ def records(batch: Path) -> dict:
     return {row["runtimePath"]: row for row in csv.DictReader(open(batch / "records/assets.csv", encoding="utf-8-sig"))}
 
 
+CLOTH_WORKER_KEYS = {"wk_shepherd", "wk_fuller", "wk_wool_merchant"}
+
+
 def main() -> None:
     inbox = list(csv.DictReader(open(INBOX_LEDGER, encoding="utf-8")))
     by_file = {row["file"]: row for row in inbox}
     first, fix = records(FIRST), records(FIX)
     wave2_prov = {row["assetId"]: row for row in csv.DictReader(open(WAVE2 / "provenance-wave2.csv", encoding="utf-8-sig"))}
     rows, installed, images = [], set(), {}
+    # UI-9: read worker-overlap.csv for the cloth workers' frame grid and template.
+    overlap_by_key: dict = {}
+    for ov_row in csv.DictReader(open(FIRST / "records/worker-overlap.csv", encoding="utf-8")):
+        stripped = ov_row["assetId"].removesuffix("-v1")
+        if stripped in CLOTH_WORKER_KEYS:
+            overlap_by_key.setdefault(stripped, []).append(ov_row)
 
     # --- Wave 3 cloth assets ---
     for rel in WANTED:
@@ -129,7 +139,17 @@ def main() -> None:
         # (e.g. "bld/weaver_house_a.png", "loads/cart_load_cloth_dyed_ne-v1.png").
         record = (fix if is_fix else first).get(rel)
         assert record is not None and record["runtimeSha256"] == digest, f"{rel}: record missing or sha mismatch"
-        images[key] = {"url": f"assets/wave3/{folder}/{key}.png", "folder": folder, "width": width, "height": height}
+        entry: dict = {"url": f"assets/wave3/{folder}/{key}.png", "folder": folder, "width": width, "height": height}
+        if folder == "workers" and key in CLOTH_WORKER_KEYS:
+            # UI-9: assert all 8 cells (4 col × 2 frame) passed the overlap check, then embed the frame grid.
+            cell_rows = overlap_by_key.get(key, [])
+            assert len(cell_rows) == 8 and all(r["result"] == "PASS" for r in cell_rows), \
+                f"{key}: expected 8 PASS rows in worker-overlap.csv, got {[(r['column'], r['frame'], r['result']) for r in cell_rows]}"
+            m = re.match(r"actor_([a-z_]+)-v\d\.png", cell_rows[0]["template"])
+            assert m is not None, f"{key}: template field did not match actor_<name>-v<n>.png"
+            entry["frames"] = {"columns": 4, "rows": 2, "cellWidth": width / 4, "cellHeight": height / 2,
+                               "directions": ["NE", "SE", "SW", "NW"], "template": m.group(1)}
+        images[key] = entry
         prompt = ROOT / "docs/provenance/prompts" / f"{key}-wave3cloth.txt"
         prompt.write_text((record.get("prompt") or "(no prompt recorded)").strip() + "\n")
         rows.append({**record, "assetId": f"wave3cloth/{key}", "runtimePath": str(runtime.relative_to(ROOT)),

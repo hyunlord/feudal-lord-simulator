@@ -13,6 +13,7 @@ import { WAVE12_GUILDHALL_IMAGES } from "./wave12GuildhallManifest.generated";
 import { wave9Art, wave9Meta, type Wave9Key } from "./wave9Art";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { canTraverseWallBoundary } from "../world/wallTraversal";
+import { drawCollector } from "./collectorWalker";
 
 // UI-9: Chapter 4 reorganisation world props (spec docs/design/chapter-four-reorganisation.md RG-4…RG-8).
 //  1. Guildhall world prop: Wave 12 guildhall painting on a free 3 × 2 spot near the market (grass or felled forest, no road, building or site) while guildOf(state) !== null.
@@ -216,11 +217,11 @@ function drawAlehouseDrinkers(ctx: CanvasRenderingContext2D, state: GameState, r
 }
 
 // 3. Collector chase (RG-8, chased): for a season after the rumour, the lord's collector hurries from the market to the
-// keep with the townsfolk a few steps behind him — nobody armed, nobody hurt. No tax collector was painted: the Wave 9
-// royal messenger's livery stands in for the lord's official; the followers are the petitioners.
+// keep with the townsfolk a few steps behind him — nobody armed, nobody hurt. UI-9b: the collector is Wave 17's
+// wk_tax_collector (collectorWalker.ts; UI-9 had the Wave 9 royal messenger stand in); the followers are the petitioners.
 const CHASE_LOOP_MS = 9_000;
-const CHASERS: readonly { readonly key: Wave9Key; readonly lag: number; readonly side: number }[] = [
-  { key: "wk_royal_messenger", lag: 0, side: 0 }, { key: "wk_petitioner_m", lag: 0.16, side: -8 },
+const CHASERS: readonly { readonly key: Wave9Key | "wk_tax_collector"; readonly lag: number; readonly side: number }[] = [
+  { key: "wk_tax_collector", lag: 0, side: 0 }, { key: "wk_petitioner_m", lag: 0.16, side: -8 },
   { key: "wk_petitioner_f", lag: 0.2, side: 8 }, { key: "wk_petitioner_m", lag: 0.26, side: 2 },
 ];
 function drawCollectorChase(ctx: CanvasRenderingContext2D, state: GameState, reorg: GameState["reorganisation"] & object, nowMs: number): void {
@@ -238,6 +239,8 @@ function drawCollectorChase(ctx: CanvasRenderingContext2D, state: GameState, reo
   for (const [index, chaser] of CHASERS.entries()) {
     const t = run - chaser.lag;
     if (t < 0 || t > 1) continue;
-    walkerCell(ctx, chaser.key, dir, gait + index, from.sx + dx * t + chaser.side, from.sy + dy * t + chaser.side * 0.5);
+    const x = from.sx + dx * t + chaser.side; const y = from.sy + dy * t + chaser.side * 0.5;
+    if (chaser.key === "wk_tax_collector") drawCollector(ctx, dir, gait + index, x, y);
+    else walkerCell(ctx, chaser.key, dir, gait + index, x, y);
   }
 }

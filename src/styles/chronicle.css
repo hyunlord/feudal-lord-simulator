@@ -224,14 +224,15 @@
 .chronicle-faction-date { font-weight: 700; margin-right: 6px; white-space: nowrap; }
 .chronicle-faction-record { display: block; width: 100%; min-height: 44px; padding: 4px 8px; box-sizing: border-box; text-align: left; font-size: 12px; line-height: 1.3; }
 .chronicle-faction-record-line { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-/* UI-9: revolt pressure section below the faction art frame (RG-8; commons only, from chapter 4). */
-.chronicle-faction-pressure { padding: 10px 14px; font-size: 13px; border-top: 1px solid color-mix(in srgb, var(--palette-ink) 20%, transparent); }
-.chronicle-faction-pressure h4 { margin: 0 0 4px; font-size: 13px; font-weight: 700; }
-.chronicle-faction-pressure p { margin: 2px 0; font-size: 12px; }
+/* UI-9: revolt pressure (RG-8; commons only, from chapter 4). UI-9b: a cell in the foot box under their timeline, ruled off
+   from it; its reading scrolls inside the cell. */
+.chronicle-faction-pressure { border-top: 1px solid color-mix(in srgb, var(--palette-ink) 30%, transparent); }
+.chronicle-faction-pressure-body { min-height: 0; overflow-y: auto; font-size: 12px; line-height: 1.35; }
+.chronicle-faction-pressure-body:focus-visible { outline: 3px solid var(--palette-ultramarine); outline-offset: -3px; }
+.chronicle-faction-pressure-body p { margin: 0 0 2px; }
 .chronicle-faction-pressure-threshold { color: var(--palette-vermilion); font-weight: 600; }
 .chronicle-faction-pressure-outcome { font-style: italic; }
-.chronicle-faction-pressure ul { margin: 4px 0; padding-left: 16px; }
-.chronicle-faction-pressure li { font-size: 12px; }
+.chronicle-faction-pressure-body ul { display: block; margin: 2px 0; padding-left: 16px; list-style: disc; overflow: visible; }
 
 .app-shell .ledger-tab-list { display: flex; gap: 4px; }
 .ledger-tab--chronicle { margin-left: auto; font-weight: 700; }

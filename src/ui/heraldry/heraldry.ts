@@ -48,16 +48,41 @@ function picker(seed: number, salt: string, key: string) {
   return <T>(options: readonly T[]): T => options[hashSeed(seed, salt, ...codes, step++) % options.length]!;
 }
 
+/**
+ * UI-9b: a golden lily on blue is France's royal arms, a golden lion passant on red England's; a house or a faction may
+ * not bear either. The one colour behind such a charge (the field, or the partition's other colour) is the royal one.
+ */
+export const ROYAL_LOOKALIKES: readonly Readonly<{ charge: (typeof CHARGES)[number]; tincture: Tincture; colour: Tincture }>[] = [
+  { charge: "fleur_de_lis", tincture: "or", colour: "azure" }, { charge: "lion_passant", tincture: "or", colour: "gules" },
+];
+const royalColour = (charge: ArmsRecipe["charge"]): Tincture | null =>
+  charge === null ? null : ROYAL_LOOKALIKES.find(rule => rule.charge === charge.id && rule.tincture === charge.tincture)?.colour ?? null;
+
 export function armsRecipe(seed: number, household: string): ArmsRecipe {
   const pick = picker(seed, "arms", household);
   const shield = pick(SHIELDS);
-  const field = pick(COLOURS);
-  const other = pick(COLOURS.filter(colour => colour !== field));
+  let field = pick(COLOURS);
+  let other = pick(COLOURS.filter(colour => colour !== field));
   const metal = pick(METALS);
   const kind = pick(["partition", "partition", "partition", "partition", "partition", "partition", "partition", "chief", "chief", "ordinary"] as const);
   if (kind === "ordinary") return { shield, field, partition: null, ordinary: { id: pick(ORDINARIES), tincture: metal }, charge: null };
-  if (kind === "chief") return { shield, field, partition: null, ordinary: { id: "chief", tincture: metal }, charge: { id: pick(CHARGES), tincture: pick(METALS) } };
-  return { shield, field, partition: { id: pick(PARTITIONS), tincture: other }, ordinary: null, charge: { id: pick(CHARGES), tincture: metal } };
+  // The picks in their old order (the partition before the charge), so every other house keeps its arms.
+  const partition = kind === "partition" ? pick(PARTITIONS) : null;
+  const charge = kind === "chief" ? { id: pick(CHARGES), tincture: pick(METALS) } : { id: pick(CHARGES), tincture: metal };
+  // UI-9b: the royal colour gives way to one the arms do not already bear (picked last).
+  const royal = royalColour(charge);
+  if (royal !== null && (field === royal || (partition !== null && other === royal))) {
+    const free = COLOURS.filter(colour => colour !== royal && colour !== field && colour !== other);
+    if (field === royal) field = pick(free); else other = pick(free);
+  }
+  if (partition === null) return { shield, field, partition: null, ordinary: { id: "chief", tincture: metal }, charge };
+  return { shield, field, partition: { id: partition, tincture: other }, ordinary: null, charge };
+}
+
+/** UI-9b: whether arms read as a king's (a golden lily on blue, a golden lion on red). */
+export function looksRoyal(recipe: ArmsRecipe): boolean {
+  const royal = royalColour(recipe.charge);
+  return royal !== null && (recipe.field === royal || recipe.partition?.tincture === royal);
 }
 
 export function merchantRecipe(seed: number, household: string): MerchantRecipe {
