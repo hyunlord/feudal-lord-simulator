@@ -17,7 +17,8 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 //     ZOOM_RERASTER_BUDGET chunks per frame; the rest are drawn from their previous zoom until their turn). A
 //     content change is not deferred (that chunk re-rasters in the same frame), with one exception (C1d): a request
 //     whose `deferKey` equals the held raster's (a zone-only edit or a season turn: same ground base, readiness, zoom
-//     and scale) may show the held raster while this frame has already spent DEFER_BUDGET_MS rastering or is
+//     and scale) may show the held raster while this frame has already spent DEFER_BUDGET_MS rastering (or made
+//     DEFERRABLE_RERASTERS_PER_FRAME of them) or is
 //     FRAME_DEFER_AFTER_MS old; it re-rasters on a later frame (a chunk that waited MAX_DEFERRED_FRAMES frames takes
 //     that frame's one over-budget raster, so every wait ends). Measured in docs/verification/c1d-yard/.
 // (c) Memory (SMOOTH-2R): every raster is an entry of the page's canvas budget (canvasBudget.ts, one byte cap over
@@ -38,7 +39,11 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 
 export const GROUND_CHUNK_ZOOM_STEP = 0.05;
 const OFFSCREEN_ENTRIES = 64;
-const ZOOM_RERASTER_BUDGET = 6;
+const ZOOM_RERASTER_BUDGET = 2;
+/** Deferrable (zone-only, season) re-rasters a frame may make, whatever their CPU time (SMOOTH-2R: the CPU time of a
+ * raster is only its commands — the GPU draws a 2052x1028 chunk later; in a placement trace the ground pass took
+ * 422 ms while the GPU process was busy 618 ms, docs/verification/smooth2r/). */
+const DEFERRABLE_RERASTERS_PER_FRAME = 2;
 /** Raster time a frame may spend before deferrable (zone-only, season) re-rasters wait for the next frame. */
 const DEFER_BUDGET_MS = 4;
 /** Deferrable re-rasters also wait once the frame itself is this old (e.g. it just rebuilt the zone layer). */
@@ -130,6 +135,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
   const stats: GroundChunkCacheStats = { hits: 0, prefetched: 0, contentRasters: 0, zoomRasters: 0, deferredZoom: 0, deferredContent: 0, evictions: 0,
     rasterMs: 0, entries: 0, pixels: 0, lastFrameRasters: 0, lastFrameRasterMs: 0, fades: 0, waves: 0, canvasesMade: 0, canvasesReused: 0, staged: 0, stagedUsed: 0 };
   let zoomBudget = ZOOM_RERASTER_BUDGET;
+  let deferrableBudget = DEFERRABLE_RERASTERS_PER_FRAME;
   let pendingThisFrame = 0;
   let frameStart: number | undefined;
   let forcedThisFrame = false;
@@ -245,7 +251,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
 
   return {
     beginFrame(startedAt) {
-      settle(); zoomBudget = ZOOM_RERASTER_BUDGET; pendingThisFrame = 0; frameStart = startedAt; forcedThisFrame = false;
+      settle(); zoomBudget = ZOOM_RERASTER_BUDGET; deferrableBudget = DEFERRABLE_RERASTERS_PER_FRAME; pendingThisFrame = 0; frameStart = startedAt; forcedThisFrame = false;
       stats.lastFrameRasters = 0; stats.lastFrameRasterMs = 0; drawnThisFrame.clear();
     },
     pending: () => pendingThisFrame,
@@ -313,7 +319,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
         }
       }
       if (frameStart !== undefined && entry !== undefined && entry.scale === request.scale && request.deferKey !== undefined
-        && entry.deferKey === request.deferKey && (stats.lastFrameRasterMs >= DEFER_BUDGET_MS || now() - frameStart >= FRAME_DEFER_AFTER_MS)
+        && entry.deferKey === request.deferKey && (stats.lastFrameRasterMs >= DEFER_BUDGET_MS || deferrableBudget <= 0 || now() - frameStart >= FRAME_DEFER_AFTER_MS)
         && (forcedThisFrame || (deferredFrames.get(request.id) ?? 0) < MAX_DEFERRED_FRAMES)) {
         stats.deferredContent += 1;
         pendingThisFrame += 1;
@@ -327,6 +333,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
       const next = raster(request, paint, false);
       if (next === null) { paint(target); return; }
       if (zoomOnly) { stats.zoomRasters += 1; zoomBudget -= 1; } else stats.contentRasters += 1;
+      if (!zoomOnly && entry !== undefined && entry.deferKey === request.deferKey) deferrableBudget -= 1;
       store(request.id, next, true);
       blit(target, next, transform);
     },
