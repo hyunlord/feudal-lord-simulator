@@ -16,6 +16,8 @@ function nat1PseudoLongPlugin() {
   return {
     name: "nat1-pseudo-long",
     enforce: "pre" as const,
+    // The dev server only (the gate captures, ?pseudo-long=1): the shipped build keeps its copy modules as written.
+    apply: "serve" as const,
     transform(code: string, id: string): { code: string; map: null } | null {
       const cleanId = id.replace(/\?.*$/, "");
       if (!cleanId.endsWith(".ko.ts")) return null;
