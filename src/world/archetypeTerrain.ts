@@ -114,6 +114,34 @@ function guaranteeQuarryRock(terrains: readonly TerrainType[], width: number, he
 
 
 /**
+ * MA-9: the quarry's rock on the town's side of the river. The bot builds no bridge, so a quarry across the channel is
+ * out of its reach (ARCH-1b comparison: the harbour's seed 3 never had stone, hence no church and no L4). The guarantee
+ * runs once more on the land joined to the town site only (the rest held out as water), then everything is given back.
+ */
+function guaranteeTownSideRock(terrains: readonly TerrainType[], width: number, height: number, seed: number): TerrainType[] {
+  const town = new Uint8Array(terrains.length);
+  const start = SITE_ANCHOR.ty * width + SITE_ANCHOR.tx;
+  const queue = [start];
+  town[start] = 1;
+  for (let head = 0; head < queue.length; head += 1) {
+    const index = queue[head]!;
+    const tx = index % width, ty = Math.floor(index / width);
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as const) {
+      const x = tx + dx, y = ty + dy, next = y * width + x;
+      if (x < 0 || y < 0 || x >= width || y >= height || town[next] === 1 || terrains[next] === "water") continue;
+      town[next] = 1;
+      queue.push(next);
+    }
+  }
+  const masked = terrains.map((terrain, index) => town[index] === 1 ? terrain : "water");
+  const guaranteed = guaranteeQuarryRock(masked, width, height, seed);
+  return terrains.map((terrain, index) => town[index] === 1 ? guaranteed[index]! : terrain);
+}
+
+/** A tile inside the town site the town's land is reached from. */
+const SITE_ANCHOR = { tx: 40, ty: 48 } as const;
+
+/**
  * MA-9: the rectangles the river may not enter — the town site (one tile wider) and the logging camp's copse — so the
  * opening village, its first street and its camp's forest stand on every land and seed.
  */
@@ -174,7 +202,7 @@ export function buildArchetypeWorld(archetype: ArchetypeDef, size: WorldGridSize
   // side (it looks for a quarry site in every dry component).
   const guaranteed = guaranteeQuarryRock(cleaned, width, height, size.seed);
   const river = carveRiver(guaranteed, width, height, fieldSeed, spec, index => lift[index]!, closed, source);
-  return { terrains: guaranteed, river };
+  return { terrains: guaranteeTownSideRock(guaranteed, width, height, size.seed), river };
 }
 
 /** MA-2: the terrain of any land, row-major. */
