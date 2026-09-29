@@ -34,6 +34,13 @@ const OBSERVE = `(() => {
   window.__hitch = { marks: [], frames: [], recording: false };
   const mark = (kind, detail) => { if (!window.__hitch.recording) return; const t = performance.now(); window.__hitch.marks.push({ kind, t, detail }); performance.mark('hitch:' + kind); };
   window.__hitchMark = mark;
+  // SMOOTH-2R: Chrome's Long Animation Frame entries (cheap, no tracing) say what a long frame spent its time on in
+  // untraced runs too: scripts (with their function and file), style and layout, and what was left (outside the page).
+  window.__hitch.loaf = [];
+  try { new PerformanceObserver(list => { if (!window.__hitch.recording) return; for (const entry of list.getEntries()) if (entry.duration > 50) window.__hitch.loaf.push({
+    start: entry.startTime, duration: entry.duration, blocking: entry.blockingDuration, renderStart: entry.renderStart, styleAndLayoutStart: entry.styleAndLayoutStart,
+    scripts: (entry.scripts || []).map(script => ({ invoker: script.invoker, fn: script.sourceFunctionName, url: (script.sourceURL || '').split('/').pop(), charPosition: script.sourceCharPosition,
+      duration: Math.round(script.duration), forcedStyleAndLayout: Math.round(script.forcedStyleAndLayoutDuration || 0) })) }); }).observe({ type: 'long-animation-frame', buffered: false }); } catch (error) { void error; }
   const put = IDBObjectStore.prototype.put;
   IDBObjectStore.prototype.put = function (...args) { if (this.name === 'slots') mark('autosave', String(args[1] ?? '')); return put.apply(this, args); };
   const observer = new MutationObserver(records => { for (const record of records) for (const node of record.addedNodes) {
@@ -133,7 +140,7 @@ async function main() {
   }
   const recorded = await page.evaluate(() => { const hitch = (window as unknown as PageWindow).__hitch; hitch.recording = false; clearInterval(hitch.poll);
     const state = (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__?.state();
-    return { frames: hitch.frames, marks: hitch.marks, tick: state?.tick ?? null, population: state?.population ?? null, buildings: state?.buildings.length ?? null,
+    return { frames: hitch.frames, marks: hitch.marks, loaf: hitch.loaf ?? [], tick: state?.tick ?? null, population: state?.population ?? null, buildings: state?.buildings.length ?? null,
       dpr: devicePixelRatio, viewport: [innerWidth, innerHeight] }; });
   if (!noTrace) await browser.stopTracing();
   await browser.close();
@@ -146,6 +153,7 @@ async function main() {
   const summary = { run: runName, machine, scene, speed, action, seconds, url, save: save ?? null, loadSeconds, startMarkPageMs,
     page: { dpr: recorded.dpr, viewport: recorded.viewport, tickEnd: recorded.tick, population: recorded.population, buildings: recorded.buildings },
     trace: noTrace ? null : { file: gz, bytes: statSync(gz).size }, moments: recorded.marks, actions: [...new Set(actionLog)], errors,
+    longAnimationFrames: recorded.loaf,
     ...analysis };
   writeFileSync(join(out, `${runName}.json`), `${JSON.stringify(summary, null, 1)}\n`);
   const s = analysis.stats;

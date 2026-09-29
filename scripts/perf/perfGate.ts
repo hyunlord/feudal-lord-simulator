@@ -53,7 +53,8 @@ const run = (command: string, args: readonly string[]) => spawnSync(command, arg
 const git = (...args: string[]) => run("git", args).stdout.trim();
 
 interface Frame { readonly from: number; readonly to: number; readonly ms: number }
-interface Summary { readonly startMarkPageMs?: number; readonly stats: Record<string, number | null>; readonly longFrames: readonly Frame[]; readonly moments: readonly { kind: string; t: number }[]; readonly errors: readonly string[]; readonly loadSeconds: number; readonly page: Record<string, unknown> }
+type LongAnimationFrame = { readonly start: number; readonly duration: number; readonly [field: string]: unknown };
+interface Summary { readonly longAnimationFrames?: readonly LongAnimationFrame[]; readonly startMarkPageMs?: number; readonly stats: Record<string, number | null>; readonly longFrames: readonly Frame[]; readonly moments: readonly { kind: string; t: number }[]; readonly errors: readonly string[]; readonly loadSeconds: number; readonly page: Record<string, unknown> }
 
 // P(X >= k) for X ~ Binomial(n, p).
 export function binomialTail(k: number, n: number, p: number): number {
@@ -171,7 +172,10 @@ async function main() {
       verdict: runInvalid.length ? "판정 아님" : failed.length ? "실패" : "통과", failed, invalid: runInvalid,
       stats: summary?.stats ?? null, loadSeconds: summary?.loadSeconds ?? null, page: summary?.page ?? null,
       moments: summary === null ? null : Object.fromEntries(["season", "autosave", "dialog", "chapter"].map(kind => [kind, summary.moments.filter(moment => moment.kind === kind).length])),
-      worstFrames: summary === null ? [] : [...summary.longFrames].sort((a, b) => b.ms - a.ms).slice(0, 10).map(frame => ({ atSeconds: Math.round((frame.to - (summary.startMarkPageMs ?? 0)) / 100) / 10, ms: Math.round(frame.ms * 10) / 10 })) })),
+      worstFrames: summary === null ? [] : [...summary.longFrames].sort((a, b) => b.ms - a.ms).slice(0, 10).map(frame => ({ atSeconds: Math.round((frame.to - (summary.startMarkPageMs ?? 0)) / 100) / 10, ms: Math.round(frame.ms * 10) / 10 })),
+      // SMOOTH-2R: what the longest frames spent their time on (Chrome's Long Animation Frame entries, hitchAudit.ts).
+      longAnimationFrames: summary === null ? [] : [...(summary.longAnimationFrames ?? [])].sort((a, b) => b.duration - a.duration).slice(0, 10)
+        .map(entry => ({ ...entry, atSeconds: Math.round((entry.start - (summary.startMarkPageMs ?? 0)) / 100) / 10 })) })),
     moments: { windows: moments.windows, windowsWithLong: moments.windowsWithLong, baseline: moments.baseline, rows: moments.rows, pass: moments.pass } };
   writeFileSync(join(outDir, `${stamp}.json`), `${JSON.stringify(record, null, 1)}\n`);
   const cell = (value: number | null | undefined) => value === null || value === undefined ? "-" : String(value);
