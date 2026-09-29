@@ -3,7 +3,7 @@ import { stateCalendar } from "../src/engine/scenarioState";
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { Building } from "../src/content/buildingConfig";
-import { clothCartLoad, clothStockPile } from "../src/render/clothWorldArt";
+import { clothCartLoad, clothStockPile, spinningPile } from "../src/render/clothWorldArt";
 import { historicalFacilityAssetId } from "../src/render/historicalFacilityAssets";
 import type { GameState } from "../src/engine/engine.types";
 import { stockPileLevel } from "../src/render/stockPiles";
@@ -88,4 +88,12 @@ test("pastoral farm: spring art in spring (season 0), summer in summer and autum
   };
   assert.deepEqual([0, 1, 2, 3].map(at), ["farm_pastoral_spring", "farm_pastoral_summer", "farm_pastoral_summer", "farm_pastoral_winter"]);
   assert.equal(historicalFacilityAssetId(farm, undefined), "farm_pastoral_summer", "without a state (the build menu), summer");
+});
+
+test("CLOTH-UI: a house that spins shows yarn skeins at its door; a brewing house does not", () => {
+  const spin = (stock: Record<string, number>) => ({ crafts: [null, { craftId: "spin_yarn", stock, workers: 1, input: { fleece: 1 }, output: { yarn: 1 } }] }) as never;
+  assert.equal(spinningPile(spin({ fleece: 0 })), "yarn_skeins_1", "the slot is empty between batches");
+  assert.equal(spinningPile(spin({ yarn: 2 })), "yarn_skeins_1");
+  assert.equal(spinningPile({ crafts: [{ craftId: "brew_ale", stock: { ale: 3 } }] } as never), null, "brewing is the ale barrels'");
+  assert.equal(spinningPile({ crafts: undefined } as never), null);
 });

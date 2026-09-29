@@ -1,6 +1,7 @@
 // CLOTH-UI gate captures (C5's human path, scripts/clothStates.ts): world first, then the screens.
 //   w0 the commands (the pasture strokes and the five sites), w1 the five buildings standing (one frame over the chain),
-//   w2 the shorn fleece at the pastoral farm, w3 a spinning house's backyard wheel, w4 the weaver's house with its raw
+//   w2 the shorn fleece at the pastoral farm, w3 a spinning house's skeins at its door (w3b one whose back cells take
+//   the Wave 27 weaver's yard), w4 the weaver's house with its raw
 //   cloth, w5 the fulling mill by the water, w6 the tenter yard with dyed cloth hung, w7 finished cloth on the tenters,
 //   w8 the first sale (the merchants buy at the tenters) — each close (zoom 1.4, paused, no hover, the story held back);
 //   u1 the ledger drawer's stock tab with 도시의 직물 (a season after the sale), u2 a store's card with the cloth goods'
@@ -10,7 +11,9 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";
-import { spinningSlot, townCloth } from "../src/engine/cloth";
+import { townCloth } from "../src/engine/cloth";
+import { backyardDecals } from "../src/render/backyardDecals";
+import { spinningPile } from "../src/render/clothWorldArt";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 type Locator = { first: () => Locator; count: () => Promise<number>; waitFor: (options?: object) => Promise<void>; click: (options?: object) => Promise<void>;
@@ -55,7 +58,8 @@ const facts = (state: GameState, building?: { id: string; inventory: Readonly<Re
 const WORLD: readonly (readonly [file: string, state: string, focus: (state: GameState) => { tx: number; ty: number; id?: string; inventory?: Record<string, number | undefined> } | undefined, zoom: number])[] = [
   ["w0-commands", "c0-commands", state => sites(state)[0], 1.0],
   ["w2-fleece", "c2-fleece", state => of(state, "pastoral_farm"), 1.4],
-  ["w3-spinning", "c3-yarn", state => { const house = state.houses.find(entry => spinningSlot(entry) !== null); return house === undefined ? undefined : state.buildings.find(building => building.id === house.buildingId); }, 1.6],
+  ["w3-spinning", "c3-yarn", state => { const house = state.houses.find(entry => spinningPile(entry) !== null); return house === undefined ? undefined : state.buildings.find(building => building.id === house.buildingId); }, 2.0],
+  ["w3b-spinning-yard", "c3-yarn", state => { const yard = backyardDecals(state).find(decal => String(decal.key).startsWith("yard_weaver")); return yard === undefined ? undefined : state.buildings.find(building => building.id === yard.buildingId); }, 2.0],
   ["w4-woven", "c4-woven", state => of(state, "weaver_house"), 1.6],
   ["w5-fulled", "c5-fulled", state => of(state, "fulling_mill"), 1.4],
   ["w6-dyed", "c6-dyed", state => of(state, "tenter_yard"), 1.4],

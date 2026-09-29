@@ -1,4 +1,6 @@
 import type { Building } from "../content/buildingConfig";
+import { spinningSlot } from "../engine/cloth";
+import type { House } from "../population/population.types";
 import type { ResourceType } from "../content/resourceConfig";
 import { stockPileLevel } from "./stockPiles";
 import type { Wave3ClothKey } from "./wave3ClothArt";
@@ -31,6 +33,16 @@ export function clothStockPile(building: Pick<Building, "inventory">, capacity: 
     if (level !== 0) return `${base}_${level}` as Wave3ClothKey;
   }
   return null;
+}
+
+/**
+ * CLOTH-UI (CL-4): a house that has taken up spinning in its second slot shows yarn skeins at its door. The engine
+ * spins in batches (a fleece fetched, spun and carried off in one step every 400 ticks), so the slot itself is empty
+ * nearly always: the skeins stand for the trade while it lasts. The Wave 27 weaver's yard (backyardConfig
+ * `spin_yarn`) needs two free back cells, which a street house rarely has (2 of the replay town's 24 spinning houses).
+ */
+export function spinningPile(house: Pick<House, "crafts">): Wave3ClothKey | null {
+  return spinningSlot(house) === null ? null : "yarn_skeins_1";
 }
 
 const CLOTH_CART: Readonly<Partial<Record<ResourceType, "wool_bales" | "cloth_raw" | "cloth_dyed">>> = {

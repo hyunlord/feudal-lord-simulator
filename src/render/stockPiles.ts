@@ -7,7 +7,7 @@ import { drawWave7, type Wave7Key } from "./wave7Art";
 import { drawWave3Ale, type Wave3AleKey } from "./wave3AleArt";
 import { drawWave3Cloth, type Wave3ClothKey } from "./wave3ClothArt";
 import { aleBarrelPile, aleStockPile } from "./aleWorldArt";
-import { clothStockPile } from "./clothWorldArt";
+import { clothStockPile, spinningPile } from "./clothWorldArt";
 import { brewingDoor } from "./villageLife";
 
 // INSTALL-7 stock piles (Wave 7, 3 levels each): what a building holds shows at its door, so the wheat -> bread -> home
@@ -60,6 +60,9 @@ export function buildingStockPiles(state: GameState, building: Building): readon
     const spot = brewingDoor(state, building.id);
     piles.push({ key: barrels, wave3: true, ...(spot === null ? door : { x: tileToScreen(spot.x, spot.y).sx, y: tileToScreen(spot.x, spot.y).sy }) });
   }
+  // CLOTH-UI: the spinning house's skeins, on the door's other side (the barrels keep theirs).
+  const skeins = house === undefined ? null : spinningPile(house);
+  if (skeins !== null) piles.push({ key: skeins, cloth: true, x: door.x - hw * 0.5, y: door.y - hh * 0.1 });
   if (building.kind === "farmstead") {
     const harvested = farmsteadFieldWork(state).get(building.id)?.harvested ?? null;
     const cell = harvested?.[0];
