@@ -36,6 +36,7 @@ import { ageOf, currentYear } from "./persons";
 import type { Person } from "./persons.types";
 import type { PetitionRecord } from "./politics.types";
 import { hashSeed } from "./prng";
+import { legacyClothPermille } from "./legacy";
 import type { ChapterFiveStart, GuildRecord, ReorganisationState, ReorganisationStep, RevoltPressure } from "./reorganisation.types";
 import { calendar, scenarioOf } from "./scenarioState";
 import { abandonHouse } from "./seasonPressure";
@@ -63,10 +64,11 @@ const seasonOf = (state: Pick<GameState, "scenarioId">, year: number, season = 0
 // --- RG-3 / RG-5 / RG-7 / RG-8 / RG-9: what the rest of the rules read ---------------------------------------------
 
 /** RG-3: the cloth trade of chapter 4 (null before): the price, the seal, the lord's toll share; the merchants come apart. */
-export function reorganisationClothTrade(state: Pick<GameState, "reorganisation">): { readonly price: number; readonly ulnage: number; readonly toll: number } | null {
+export function reorganisationClothTrade(state: Pick<GameState, "reorganisation"> & Partial<Pick<GameState, "legacy" | "tick">>): { readonly price: number; readonly ulnage: number; readonly toll: number } | null {
   const reorganisation = state.reorganisation;
   if (reorganisation === undefined) return null;
-  const price = reorganisation.answers[CLOTH_OR_GRAIN_PETITION_ID] === "accept" ? B.specialisedClothPrice : B.clothPrice;
+  // FIX-9 (LG-13): the Staple's years (1391) sell cloth a tenth dearer.
+  const price = Math.round((reorganisation.answers[CLOTH_OR_GRAIN_PETITION_ID] === "accept" ? B.specialisedClothPrice : B.clothPrice) * legacyClothPermille(state) / 1000);
   return { price, ulnage: B.ulnagePerCloth, toll: Math.round(price * B.clothTollPermille / 1000) };
 }
 

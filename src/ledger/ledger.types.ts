@@ -30,6 +30,8 @@ export const LEDGER_CATEGORIES = [
   "cloth_toll", "poll_tax", "fee_farm",
   // F5-A (LG-3…LG-5): the Crown's subsidy (and its confirmation of a charter), the heir's relief, the legacy's endowment.
   "royal_subsidy", "succession_relief", "legacy_endowment",
+  // FIX-9 (LG-13): the parish's nave rebuilt.
+  "church_rebuilding",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

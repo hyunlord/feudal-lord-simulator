@@ -13,11 +13,14 @@ import { LEGACY_AXIS_COPY, LEGACY_ENDING_COPY, HEIR_RELATION_COPY } from "../con
 import {
   BOROUGH_AUTONOMY_PETITION_ID,
   BOROUGH_SEAL_RIGHT_ID,
+  CHURCH_REBUILDING_PETITION_ID,
+  GUILD_DISPUTE_PETITION_ID,
   HEIR_BY_RESPONSE,
   HEIR_CHOICE_PETITION_ID,
   LEGACY_BALANCE,
   LEGACY_BY_RESPONSE,
   LEGACY_CHOICE_PETITION_ID,
+  LEGACY_INTERLUDE_IDS,
   LEGACY_PETITION_IDS,
   LEGACY_SEQUENCE_ID,
   LEGACY_STEP_IDS,
@@ -26,6 +29,7 @@ import {
   type HeirKind,
   type LegacyAxis,
   type LegacyEndingId,
+  type LegacyInterludeId,
   type LegacyStepId,
 } from "../content/legacyConfig";
 import { VACANT_PRIEST_PETITION_ID } from "../content/plagueConfig";
@@ -178,6 +182,13 @@ export function answerLegacyPetition(state: GameState, petition: PetitionRecord,
       }
       break;
     }
+    case CHURCH_REBUILDING_PETITION_ID: {
+      // FIX-9 (LG-13): the nave rebuilt at the lord's cost (the guild's quarrel moves only the factions).
+      if (response !== "accept") break;
+      const paid = post(next, "church_rebuilding", -B.churchRebuildingCost, [{ type: "actor", id: "bishop" }, { type: "claim", id: "church_rebuilding", detail: "nave" }]);
+      next = withLegacy(paid.state, { ...l, naveRebuilt: true });
+      break;
+    }
     case LEGACY_CHOICE_PETITION_ID: {
       if (response === "expired") { next = withLegacy(next, { ...l, legacy: null }); break; }
       const axis = LEGACY_BY_RESPONSE[response];
@@ -209,6 +220,8 @@ export function legacyDecisionForecast(state: GameState, defId: string, response
     }
     case LEGACY_CHOICE_PETITION_ID:
       return out(B.endowment);
+    case CHURCH_REBUILDING_PETITION_ID:
+      return response === "accept" ? out(B.churchRebuildingCost) : treasury;
     default:
       return treasury;
   }
@@ -238,6 +251,43 @@ export function legacyForecast(state: GameState): readonly LegacyStep[] {
     const tick = came ?? due(state, legacy, id);
     return { id, tick, state: came !== undefined ? "done" : tick !== null && state.tick >= tick ? "now" : "ahead" };
   });
+}
+
+/** LG-13: the tick of each interlude event (the guild's quarrel and the market's fire share 1394). */
+function interludeTick(state: Pick<GameState, "scenarioId">, id: LegacyInterludeId): number {
+  const [year, season] = id === "staple" ? B.staple : id === "church_rebuilding" ? B.churchRebuilding : id === "deposition" ? B.deposition : B.guildDispute;
+  return seasonOf(state, year, season);
+}
+
+/**
+ * LG-13 API `legacyInterludes`: the interlude's events and their state — those the chapter opened too late for are left
+ * out; of 1394's two, the one the town has (the guild's quarrel with a guild, else the market's fire).
+ */
+export function legacyInterludes(state: GameState): readonly { readonly id: LegacyInterludeId; readonly tick: number; readonly state: "done" | "ahead" }[] {
+  const legacy = legacyOf(state);
+  if (legacy === undefined) return [];
+  const guild = state.reorganisation?.guild !== undefined;
+  return LEGACY_INTERLUDE_IDS.filter(id => (id === "guild_dispute" ? guild : id === "market_fire" ? !guild : true) && interludeTick(state, id) > legacy.startTick)
+    .map(id => ({ id, tick: interludeTick(state, id), state: legacy.interludes?.[id] !== undefined ? "done" as const : "ahead" as const }));
+}
+
+/** LG-13: the interlude's events due by this season start (by the calendar, in a chapter opened before them). */
+function advanceInterlude(state: GameState): GameState {
+  let next = state;
+  for (const due of legacyInterludes(state).filter(entry => entry.state === "ahead" && entry.tick <= state.tick)) {
+    const legacy = legacyOf(next)!;
+    next = withLegacy(next, { ...legacy, interludes: { ...legacy.interludes, [due.id]: state.tick } });
+    if (due.id === "guild_dispute") next = addPetition(next, GUILD_DISPUTE_PETITION_ID, "craftsmen");
+    if (due.id === "church_rebuilding") next = addPetition(next, CHURCH_REBUILDING_PETITION_ID, "parish");
+    if (due.id === "market_fire") next = post(next, "construction", -B.marketFireRepair, [TOWN_ACTOR, { type: "claim", id: "market_fire", detail: "repair" }]).state;
+  }
+  return next;
+}
+
+/** LG-13: the Staple's years — cloth sells dearer (permille), else 1,000. */
+export function legacyClothPermille(state: Partial<Pick<GameState, "legacy" | "tick">>): number {
+  const staple = state.legacy?.interludes?.staple;
+  return staple !== undefined && state.tick !== undefined && state.tick < staple + B.stapleSeasons * SEASON ? B.staplePricePermille : 1_000;
 }
 
 /** LG-12 API: the stage now — before the envoy, from it to the charter's answer, from then to the end, done (null before). */
@@ -281,11 +331,12 @@ export function legacyScores(state: GameState): LegacyScores {
   };
   const built = (kind: string) => state.buildings.filter(building => building.kind === kind).length;
   const church = {
-    church: built("church") > 0 ? c.church.church : 0,
+    church: Math.min(c.church.churchCap, built("church") * c.church.church),
     chapels: Math.min(c.church.chapelCap, built("chapel") * c.church.chapel),
     bishop: clamp(Math.floor(relation(state, "bishop") / c.church.bishopDivisor), 0, c.church.bishopCap),
     priest: state.plague?.answers[VACANT_PRIEST_PETITION_ID] === "accept" ? c.church.priest : 0,
     relief: (state.politics?.decisions ?? []).some(decision => decision.kind === "famine_response" && decision.choice === "relief") ? c.church.relief : 0,
+    rebuilt: legacy?.naveRebuilt === true ? c.church.rebuilt : 0,
     legacy: legacy?.legacy === "church" ? B.legacyPoints : 0,
   };
   const sum = (parts: Readonly<Record<string, number>>) => clamp(Object.values(parts).reduce((total, value) => total + value, 0), 0, 100);
@@ -393,6 +444,8 @@ export function advanceLegacy(state: GameState, endChapter: (state: GameState) =
     next = { ...next, politics: { ...next.politics!, petitions: next.politics!.petitions.map(entry => entry.id === petition.id
       ? { ...entry, response: "expired" as const, respondedTick: tick } : entry) } };
   }
+  // LG-13: the interlude's events by the calendar.
+  next = advanceInterlude(next);
   l = legacyOf(next)!;
   const ready = (step: LegacyStepId) => { const at = due(next, l!, step); return l!.steps[step] === undefined && at !== null && tick >= at; };
 

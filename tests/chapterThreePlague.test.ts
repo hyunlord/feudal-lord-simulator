@@ -15,6 +15,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { foodPricePermille } from "../src/engine/eventSchedule";
 import { historySummary } from "../src/engine/history";
 import { derelictPermille, lordFamilyExtinct } from "../src/engine/lordship";
+import { periodRent } from "../src/engine/moneyRules";
 import { labourPool, LORD_FAMILY_TAG } from "../src/engine/persons";
 import {
   advancePlague, arrivalSeasonOffset, curacyVacant, plagueDecisionForecast, plagueForecast, plagueHousing, plagueRecoveryPermille, plagueStage,
@@ -209,6 +210,12 @@ test("P8 (PL-8) labour services: commuted, the tenants pay a quarter more rent f
   assert.ok(commutedRent > 0);
   // Kept: the upkeep at three quarters, and households run.
   const asked = at(spring(1352) + 2);
+  // FIX-9: the card's two forecasts differ — the rent's quarter more against the upkeep's quarter spared.
+  const before = { ...asked, plague: { ...asked.plague!, answers: Object.fromEntries(Object.entries(asked.plague!.answers).filter(([id]) => id !== CASH_RENT_PETITION_ID)) } };
+  const rise = plagueDecisionForecast(before, CASH_RENT_PETITION_ID, "accept") - treasuryBalance(before);
+  const spare = plagueDecisionForecast(before, CASH_RENT_PETITION_ID, "refuse") - treasuryBalance(before);
+  assert.ok(rise > 0 && spare > 0 && rise !== spare, `rent +${rise}, upkeep −${spare}`);
+  assert.equal(rise, Math.round(periodRent(before) * 250 / 1000 * 2000 / 2400));
   const { [CASH_RENT_PETITION_ID]: _answered, ...answers } = asked.plague!.answers;
   const kept = run({ ...reopen(asked, ask.id, { rights: asked.politics!.rights.filter(right => right.id !== "commuted_rent") }), plague: { ...asked.plague!, answers } },
     spring(1354), { ...BOT, [CASH_RENT_PETITION_ID]: "refuse" });

@@ -10,12 +10,13 @@ import { resourceName } from "../content/resourceCatalog.ko";
 import { DECLINE_CAUSES, LORD_RIGHT_NAMES } from "../content/historyCopy.ko";
 import { conscriptsAway } from "../engine/war";
 import { LORDSHIP_COPY } from "./lordshipCopy.ko";
-import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
-import { resourceEntry } from "../content/resourceCatalog";
+import { type ResourceType } from "../content/resourceConfig";
 import { economyStockTotals } from "./ledgerModel";
 import { seasonAleCause } from "./houseAleModel";
 import { townAle } from "../engine/ale";
 import { townAleView } from "./townAleModel";
+import { townCloth } from "../engine/cloth";
+import { townClothView } from "./townClothModel";
 
 // UI-3 season ledger card (FP-1): the latest closed season, its three biggest changes as the scroll's three scenes
 // (UI-4b: from the history ledger, as Wave 19 scene icons, seasonLedgerScenes.ts), money, population and stock beside
@@ -36,10 +37,20 @@ export type SeasonLedgerCardModel = Readonly<{
   drinkLine: string | null;
   /** ECON-UI (FIX-7 `townAle`): the closed season's ale — brewed, drunk, bought at the alehouses — and the houses it served. */
   aleLines: readonly string[];
+  /**
+   * C5: the cloth chain's goods held now (fleece…finished_cloth) — in the stores, yards and craft slots — each drawn
+   * with its Wave 3 chain-sheet icon; empty when none held.
+   */
+  cloth: readonly { readonly resource: ResourceType; readonly name: string; readonly amount: number }[];
+  clothLine: string | null;
+  /** C5 (CL-8, CL-5): the closed season's cloth money (ulnage + fulling_toll) from townClothView. */
+  clothLines: readonly string[];
 }>;
 
-/** INSTALL-3: the goods of the ale chain (the catalog's Wave 3 chain cells), in the catalog's order. */
-const ALE_CHAIN = RESOURCE_TYPES.filter(resource => resourceEntry(resource).chainCell !== undefined);
+/** INSTALL-3: the goods of the ale chain (barley, malt, ale), in catalog order. */
+const ALE_CHAIN: readonly ResourceType[] = ["barley", "malt", "ale"];
+/** C5: the goods of the cloth chain (the seven), in catalog order (CL10: now that the card tells the chains apart). */
+const CLOTH_CHAIN: readonly ResourceType[] = ["fleece", "yarn", "raw_cloth", "fulled_cloth", "dyes", "dyed_cloth", "finished_cloth"];
 
 /** A card state with the whole world (the game's own) reads the stores and the houses; the tests' bare ledgers do not. */
 const isWorld = (state: object): state is GameState => "buildings" in state && "houses" in state && "tiles" in state && "walkers" in state;
@@ -114,6 +125,14 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
   const drink = totals === null ? [] : ALE_CHAIN.map(resource => ({ resource, name: resourceName(resource),
     amount: Math.floor(resource === "ale" ? townAle(state as GameState).stock : totals[resource]) }));
   const held = drink.some(item => item.amount > 0);
+  // C5: the cloth chain's goods (fleece…finished_cloth) held in town (stores, yards, craft slots); townCloth totals all.
+  const clothData = isWorld(state) ? townCloth(state as GameState) : null;
+  const clothView = isWorld(state) ? townClothView(state as GameState) : null;
+  const cloth = clothData === null ? [] : CLOTH_CHAIN.map(resource => ({
+    resource, name: resourceName(resource),
+    amount: Math.floor(clothData.goods[resource as keyof typeof clothData.goods] ?? 0),
+  }));
+  const clothHeld = cloth.some(item => item.amount > 0);
   return {
     key: `${ledger.year}:${ledger.season}`,
     title: SEASON_LEDGER_COPY.title(year, ledger.season),
@@ -127,6 +146,10 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     drink: held ? drink : [],
     drinkLine: held ? SEASON_LEDGER_COPY.heldNow(drink.map(item => SEASON_LEDGER_COPY.held(item.name, item.amount))) : null,
     aleLines: ale === null || ale.closedSeason === null ? [] : [ale.closedSeason, ale.served],
+    // Seven goods make a long row: only those the town holds (the ale row's three are always all shown).
+    cloth: cloth.filter(item => item.amount > 0),
+    clothLine: clothHeld ? SEASON_LEDGER_COPY.heldNow(cloth.filter(item => item.amount > 0).map(item => SEASON_LEDGER_COPY.held(item.name, item.amount))) : null,
+    clothLines: clothView === null || clothView.closedSeason === null ? [] : [clothView.closedSeason],
   };
 }
 

@@ -49,7 +49,9 @@ const houseModels = (state: GameState) => [...buildingCauseSnapshot(state).value
 test("barley, malt and ale are drawn from the Wave 3 chain sheet's first three cells", () => {
   const sheet = WAVE3_ALE_IMAGES.icon_resource_chain_sheet;
   assert.equal(RESOURCE_CHAIN_SHEET_CELLS.length, sheet.width / sheet.height, "ten 96 px cells in one row");
-  assert.deepEqual(RESOURCE_CATALOG.filter(entry => "chainCell" in entry).map(entry => [entry.id, resourceEntry(entry.id).chainCell]),
+  // CL10: the cloth chain's goods now also have chain-sheet cells; the ale chain's three come first in the catalog.
+  const aleGoods = RESOURCE_CATALOG.filter(entry => (["barley", "malt", "ale"] as string[]).includes(entry.id));
+  assert.deepEqual(aleGoods.map(entry => [entry.id, resourceEntry(entry.id).chainCell]),
     [["barley", "barley"], ["malt", "malt"], ["ale", "ale"]]);
   for (const [resource, index] of [["barley", 0], ["malt", 1], ["ale", 2]] as const) {
     const markup = renderToStaticMarkup(createElement(ResourceGlyph, { resource }));

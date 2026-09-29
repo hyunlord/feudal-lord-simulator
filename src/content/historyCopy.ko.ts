@@ -64,6 +64,7 @@ export const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
   vacant_priest: "빈 사제 자리", wages: "일꾼들의 임금 요구", land_redistribution: "빈 필지의 주인", cash_rent: "부역을 돈으로 바꾸자는 청원",
   guild_charter: "직인들의 길드 결성 요구", tax_collection: "인두세를 걷는 방식", cloth_or_grain: "직물과 곡물 사이의 선택", borough_charter: "도시의 자치 특허 요구서",
   royal_tax: "국왕의 과세 사절", heir_choice: "늙은 영주의 후계자", borough_autonomy: "자치 특허의 인장", legacy_choice: "남길 유산 하나",
+  guild_dispute: "길드와 상인 사이의 다툼", church_rebuilding: "교구 교회 증축 청원",
 };
 export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   wool_payment: { accept: "현물로 낸다", accept_with_price: "현금으로 낸다", refuse: "거절", expired: "답하지 않음" },
@@ -83,6 +84,8 @@ export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string
   heir_choice: { accept: "맏아들에게 잇게 한다", accept_with_price: "딸의 남편에게 잇게 한다", refuse: "조카에게 잇게 한다", expired: "답하지 않음" },
   borough_autonomy: { accept: "자치 특허에 인장을 찍는다", refuse: "가문이 계속 다스린다", expired: "답하지 않음" },
   legacy_choice: { accept: "도시에 길드홀과 시청을 남긴다", accept_with_price: "가문의 영주관과 문장, 혈통 기록을 남긴다", refuse: "교회를 넓히고 기도처를 세운다", expired: "답하지 않음" },
+  guild_dispute: { accept: "길드 편을 든다", refuse: "상인 편을 든다", expired: "답하지 않음" },
+  church_rebuilding: { accept: "교회를 넓혀 짓는다", refuse: "증축을 미룬다", expired: "답하지 않음" },
 };
 /** PERSON-1a (LN-4): a birth's line by where the child's name came from. */
 const NAME_FROM: Readonly<Record<string, string>> = {
@@ -141,6 +144,13 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "legacy.family_stayed": params => `${houseName(s(params, "house"))} 가문이 영주관에 남았다`,
   "legacy.legacy_record": params => s(params, "legacy") === "" ? "유산 기록을 봉인했다 — 남긴 것 없이" : `유산 기록을 봉인했다 — ${s(params, "legacy")}`,
   "legacy.last_market": params => `마지막 장날 — ${s(params, "ending")}`,
+  // FIX-9 (LG-13): the interlude 1384–1400.
+  "legacy.staple": () => "양모 집산지(Staple)가 옮겨지고 양모 수출이 묶였다 — 직물 값이 오른다",
+  "legacy.guild_dispute": () => "길드와 상인이 직물을 파는 권리를 두고 다툰다",
+  "legacy.market_fire": params => `장터에 불이 났다 — 수리에 ${n(params, "cost")}d`,
+  "legacy.church_rebuilding": () => "교구가 낡은 교회의 증축을 청했다",
+  "legacy.nave_rebuilt": () => "교회의 새 회중석이 섰다",
+  "legacy.deposition": () => "리처드 2세가 폐위되고 헨리 4세가 즉위했다",
   "legacy.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
   "war.beacon": () => "해안의 봉화가 올랐다",
   "war.raid": params => `해안 습격이 닥쳤다 — 불탄 집 ${n(params, "burntHouses")}, 빼앗긴 물자 ${n(params, "looted")}, 빼앗긴 돈 ${n(params, "coin")}d`,

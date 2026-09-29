@@ -1,11 +1,25 @@
 # 현재 상태
 
-갱신: 2026-09-29(F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **CLOTH-UI 직물 사슬 화면 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_E 2, 엔진 C5 넘김): [보고서](verification/cloth-ui/REPORT.md), 결정 CLOTHUI-D1~D5.
+  - 건물 다섯 그림(Wave 2 목축 농장 계절·Wave 3 직조공 집·축융 방앗간·염색집·텐터 틀, 37장 설치), 문 앞 양털·베 더미, 수레 적재물(양털 자루·베 두루마리).
+  - 사슬 아이콘 분리: 결산 카드의 에일 줄은 보리·엿기름·에일, 직물 줄은 일곱 중 가진 것만. 장부 서랍 "도시의 직물"(양·목초지·실 잣는 집·건물·직물 인장세·축융 사용료).
+  - 실 잣는 집 문 앞 실타래(뒤뜰 Wave 27 직조 판은 뒤 칸 둘이 빈 집만 — 24채 중 2채), 텐터에 물들인 베.
+  - 관문: 사람 경로 재생(목초지 → 첫 판매) 캡처 오류 0, 스킨 감사 0 / 1014, 면적 5.3 % / 6 %·태블릿 5.9 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 깨끗한 클론 `b08f9b8` 3,658/3,658·build. 시작 그림 607장 80.61 MB(+3.62).
+  - 넘길 것: 베의 염료 색(엔진에 없음), 워커 옷 셋(시트 틀 정보 없음), 축융 방앗간 방향은 필지로·목축 농장 그림이 2 × 1 필지에 맞춰 작음(판정 대상).
+
+- **FIX-9 막간·교회 결말·가장 없는 가문 외 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/fix9/REPORT.md), 결정 FX9-1~FX9-7.
+  - 5장 막간 1384~1400(LG-13): 1391 Staple 이전(직물 1.1배 두 해), 1394 길드와 상인의 다툼(청원) 또는 장터 화재, 1396 교회 증축(청원), 1399 리처드 2세 폐위 → 헨리 4세(왕실 관계 절반 되돌림). 저장 v30.
+  - 교회 축(교회 × 10·주교 ÷ 2·수도원 사제·증축): 봇 변형(특허 유지·증축·교회 유산)에서 `pilgrim_town`(교회 99)이 나온다.
+  - 가장 없는 영주 가문: 여상속인의 남편은 아이가 살아 있을 때 가장(courtesy of England), 아니면 가장 가까운 혈족. 4장 길드 결성 기록은 명령 때. 세력 수장 최소 나이(주교 40·백작 25·도시 공동체 30). 부역 → 화폐 지대 카드의 두 예측이 다름.
+  - 관문: 가드레일 `321168c` 5/5(수치 모두 불변, 인물 층 해시만 → 새 기준선 `baseline-321168c`), 사람 경로 6/6, 인물 층 고정값 다섯 재기록(인물·세력 뺀 상태는 본선과 같음), 깨끗한 클론 `05c5246` 3,638/3,638·build.
+  - 넘길 것(렌더): 막간 사건 넷의 그림, 청원 카드 둘(`guild_dispute`·`church_rebuilding`), 장부 `church_rebuilding`, `pilgrim_town` 끝 화면.
 
 - **F5-A 5장 자치와 유산 1382–1450 — 관문 통과, 본선 병합. 캠페인이 1300~1450년 처음부터 끝까지 이어진다**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/f5a-legacy/REPORT.md), [명세](design/chapter-five-legacy.md) LG-1~LG-12, 결정 LG1~LG7.
   - 사건 사슬(Wave 21 5장과 1:1): 시장 선출 요구 → 국왕 과세 사절 → 가문 상속 → 도시 인장 → 특허 날인(또는 거부 뒤 반발) → 가문 퇴거/잔류 → 유산 기록 봉인 → 1450 여름 마지막 장날(유산 판정, 5장 끝 = 캠페인 승리). 박자: 첫 결정은 5장 시작 뒤 2년 안, 상속 1400·유산 1440부터.

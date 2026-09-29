@@ -30,6 +30,8 @@ import { lordshipView, type LordshipView } from "../lordshipModel";
 import { wave14FrameStyle, wave14ImageStyle } from "../wave14Art";
 import { townAleView } from "../townAleModel";
 import { TOWN_ALE_COPY } from "../townAleCopy.ko";
+import { townClothView } from "../townClothModel";
+import { TOWN_CLOTH_COPY } from "../townClothCopy.ko";
 import { wageLedgerView } from "./wageLedgerModel";
 import { WAGE_LEDGER_COPY } from "./wageLedgerCopy.ko";
 // UI-9: chapter 4 reorganisation ledger (RG-3, RG-6, RG-9) and revolt pressure on the rights tab (RG-8).
@@ -232,6 +234,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   const matrix = ledgerMatrix(state);
   const alerts = alertStackRows(state);
   const townAle = townAleView(state);
+  const townCloth = townClothView(state);
   const wageLedger = wageLedgerView(state);
   // UI-9: RG-3/RG-6/RG-9 chapter 4 reorganisation ledger — null before chapter 4 starts.
   const reorgLedger = reorgLedgerView(state);
@@ -273,6 +276,12 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
       {tab === "stock" && townAle !== null ? <section className="ledger-town-ale" aria-label={TOWN_ALE_COPY.heading}>
         <h3><ResourceGlyph resource="ale" />{TOWN_ALE_COPY.heading}</h3>
         {[townAle.stock, townAle.houses, townAle.served, townAle.thisSeason, ...(townAle.lastSeason === null ? [] : [townAle.lastSeason])].map(line => <p key={line}>{line}</p>)}
+      </section> : null}
+      {/* C5 (CL-10 townCloth): the cloth chain — sheep, spinning houses, chain buildings and closed-season money. */}
+      {tab === "stock" && townCloth !== null ? <section className="ledger-town-cloth" aria-label={TOWN_CLOTH_COPY.heading}>
+        <h3><ResourceGlyph resource="fleece" />{TOWN_CLOTH_COPY.heading}</h3>
+        {[townCloth.sheep, townCloth.spinningHouses, ...(townCloth.buildings.length > 0 ? [townCloth.buildings] : []),
+          ...(townCloth.closedSeason !== null ? [townCloth.closedSeason] : [])].map(line => <p key={line}>{line}</p>)}
       </section> : null}
       {/* UI-8 (F3-A): wage ledger — plague labour costs by category, shown only once chapter 3's plague arrives. */}
       {tab === "stock" && wageLedger !== null ? <section className="ledger-wage-ledger" aria-label={WAGE_LEDGER_COPY.heading}>

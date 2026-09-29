@@ -1,0 +1,261 @@
+{
+  "w0-commands": {
+    "tick": 275340,
+    "goods": {
+      "fleece": 0,
+      "yarn": 0,
+      "raw_cloth": 0,
+      "fulled_cloth": 0,
+      "dyes": 0,
+      "dyed_cloth": 0,
+      "finished_cloth": 0
+    },
+    "sheep": 144,
+    "spinning": 0
+  },
+  "w2-fleece": {
+    "tick": 277100,
+    "goods": {
+      "fleece": 144,
+      "yarn": 0,
+      "raw_cloth": 0,
+      "fulled_cloth": 0,
+      "dyes": 20,
+      "dyed_cloth": 0,
+      "finished_cloth": 0
+    },
+    "sheep": 144,
+    "spinning": 0,
+    "at": "construction-site-000081",
+    "holds": {
+      "fleece": 144
+    }
+  },
+  "w3-spinning": {
+    "tick": 277200,
+    "goods": {
+      "fleece": 120,
+      "yarn": 24,
+      "raw_cloth": 0,
+      "fulled_cloth": 0,
+      "dyes": 20,
+      "dyed_cloth": 0,
+      "finished_cloth": 0
+    },
+    "sheep": 144,
+    "spinning": 24,
+    "at": "house-46-40-0",
+    "holds": {}
+  },
+  "w3b-spinning-yard": {
+    "tick": 277200,
+    "goods": {
+      "fleece": 120,
+      "yarn": 24,
+      "raw_cloth": 0,
+      "fulled_cloth": 0,
+      "dyes": 20,
+      "dyed_cloth": 0,
+      "finished_cloth": 0
+    },
+    "sheep": 144,
+    "spinning": 24,
+    "at": "construction-site-000032",
+    "holds": {}
+  },
+  "w4-woven": {
+    "tick": 277360,
+    "goods": {
+      "fleece": 120,
+      "yarn": 16,
+      "raw_cloth": 1,
+      "fulled_cloth": 0,
+      "dyes": 20,
+      "dyed_cloth": 0,
+      "finished_cloth": 0
+    },
+    "sheep": 144,
+    "spinning": 24,
+    "at": "construction-site-000082",
+    "holds": {
+      "yarn": 8,
+      "raw_cloth": 1
+    }
+  },
+  "w5-fulled": {
+    "tick": 277568,
+    "goods": {
+      "fleece": 120,
+      "yarn": 8,
+      "raw_cloth": 3,
+      "fulled_cloth": 1,
+      "dyes": 20,
+      "dyed_cloth": 0,
+      "finished_cloth": 0
+    },
+    "sheep": 144,
+    "spinning": 24,
+    "at": "construction-site-000083",
+    "holds": {
+      "fulled_cloth": 1
+    }
+  },
+  "w6-dyed": {
+    "tick": 277908,
+    "goods": {
+      "fleece": 103,
+      "yarn": 13,
+      "raw_cloth": 2,
+      "fulled_cloth": 1,
+      "dyes": 19,
+      "dyed_cloth": 1,
+      "finished_cloth": 0
+    },
+    "sheep": 144,
+    "spinning": 24,
+    "at": "construction-site-000085",
+    "holds": {
+      "dyed_cloth": 1
+    }
+  },
+  "w7-finished": {
+    "tick": 277987,
+    "goods": {
+      "fleece": 103,
+      "yarn": 9,
+      "raw_cloth": 6,
+      "fulled_cloth": 1,
+      "dyes": 19,
+      "dyed_cloth": 0,
+      "finished_cloth": 1
+    },
+    "sheep": 144,
+    "spinning": 24,
+    "at": "construction-site-000085",
+    "holds": {
+      "finished_cloth": 1
+    }
+  },
+  "w8-first-sale": {
+    "tick": 278000,
+    "goods": {
+      "fleece": 80,
+      "yarn": 32,
+      "raw_cloth": 6,
+      "fulled_cloth": 1,
+      "dyes": 20,
+      "dyed_cloth": 0,
+      "finished_cloth": 0
+    },
+    "sheep": 144,
+    "spinning": 24,
+    "at": "construction-site-000085",
+    "holds": {}
+  },
+  "w1-chain": {
+    "tick": 276220,
+    "buildings": [
+      {
+        "kind": "pastoral_farm",
+        "tile": [
+          45,
+          50
+        ]
+      },
+      {
+        "kind": "weaver_house",
+        "tile": [
+          46,
+          46
+        ]
+      },
+      {
+        "kind": "fulling_mill",
+        "tile": [
+          43,
+          25
+        ]
+      },
+      {
+        "kind": "dyehouse",
+        "tile": [
+          42,
+          23
+        ]
+      },
+      {
+        "kind": "tenter_yard",
+        "tile": [
+          48,
+          46
+        ]
+      }
+    ]
+  },
+  "u1-ledger-cloth": {
+    "cloth": [
+      "양 144마리 · 목초지 72칸",
+      "실 잣는 집 24채",
+      "목축 농장 1동 · 직조공 집 1동 · 축융 방앗간 1동 · 염색집 1동 · 텐터 틀 1동",
+      "이 계절 직물 수입: 직물 인장세 +24d · 축융 방앗간 사용료 +33d"
+    ],
+    "ale": [
+      "도시의 에일"
+    ]
+  },
+  "u2-store-cloth": {
+    "store": "construction-site-000036",
+    "holds": {
+      "logs": 100,
+      "timber": 60,
+      "stone": 39,
+      "yarn": 1
+    },
+    "icons": [
+      "chain.malt",
+      "chain.ale",
+      "chain.fleece",
+      "chain.yarn",
+      "chain.raw_cloth",
+      "chain.fulled_cloth",
+      "chain.dyes",
+      "chain.dyed_cloth",
+      "chain.finished_cloth",
+      "chain.malt",
+      "chain.ale",
+      "chain.fleece",
+      "chain.yarn",
+      "chain.raw_cloth",
+      "chain.fulled_cloth",
+      "chain.dyes",
+      "chain.dyed_cloth",
+      "chain.finished_cloth",
+      "chain.ale"
+    ]
+  },
+  "u3-season-cloth": {
+    "cloth": [
+      "지금 영지에양털 39실 33생베 3축융한 베 1염료 20물들인 베 1",
+      "이 계절 직물 수입: 직물 인장세 +24d · 축융 방앗간 사용료 +33d"
+    ],
+    "ale": [
+      "지금 영지에보리 966엿기름 8에일 136",
+      "이 계절 에일: 빚음 50통 · 마심 23통 · 에일집에서 삼 4통",
+      "에일을 누린 집 24/24채 · 한 계절에 24통 필요"
+    ],
+    "clothIcons": [
+      "chain.fleece",
+      "chain.yarn",
+      "chain.raw_cloth",
+      "chain.fulled_cloth",
+      "chain.dyes",
+      "chain.dyed_cloth"
+    ],
+    "aleIcons": [
+      "chain.barley",
+      "chain.malt",
+      "chain.ale"
+    ]
+  },
+  "errors": []
+}

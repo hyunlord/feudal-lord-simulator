@@ -34,4 +34,7 @@ test("humanPath chapter 4: two weaver's houses (commands) bring the textile stre
   state = gameReducer(state, { type: "petition_response", petitionId: demand.id, response: "accept" });
   const guild = guildOf(state);
   assert.ok(guild !== null && guild.headId !== null && state.persons!.people.some(person => person.id === guild.headId), "the guild and its head");
+  // FIX-9: the ledger remembers the guild at the command, once.
+  assert.equal(state.history!.records.filter(record => record.template === "reorg.guild_founded").length, 1);
+  assert.equal(advanceTick(state).history!.records.filter(record => record.template === "reorg.guild_founded").length, 1);
 });

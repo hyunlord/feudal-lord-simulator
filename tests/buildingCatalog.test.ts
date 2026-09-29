@@ -32,7 +32,7 @@ test("every picture the catalog names exists: facility art, sprite keys, thumbna
   for (const kind of CATALOG_BUILDING_KINDS) {
     const entry = buildingEntry(kind);
     const art = entry.facilityArt;
-    if (art !== undefined) for (const id of "id" in art ? [art.id] : "variants" in art ? art.variants : [art.quiet, art.active]) assert.ok(facilityIds.has(id), `${kind}: facility ${id}`);
+    if (art !== undefined) for (const id of "id" in art ? [art.id] : "variants" in art ? art.variants : "seasonal" in art ? Object.values(art.seasonal) : [art.quiet, art.active]) assert.ok(facilityIds.has(id), `${kind}: facility ${id}`);
     if (entry.spriteKey !== undefined) assert.notEqual(spriteMeta(entry.spriteKey), null, `${kind}: sprite ${entry.spriteKey}`);
     const thumbnail = buildThumbnail(kind);
     if (entry.thumbnail !== undefined) {

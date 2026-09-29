@@ -1,0 +1,129 @@
+{
+ "c0-commands": {
+  "tick": 275340,
+  "year": 1368,
+  "pastureCells": 72,
+  "pastureMiddle": [
+   45,
+   54
+  ]
+ },
+ "c1-built": {
+  "tick": 276220,
+  "year": 1369,
+  "pastoral_farm": {
+   "building": "construction-site-000081",
+   "kind": "pastoral_farm",
+   "tile": [
+    45,
+    50
+   ]
+  },
+  "weaver_house": {
+   "building": "construction-site-000082",
+   "kind": "weaver_house",
+   "tile": [
+    46,
+    46
+   ]
+  },
+  "fulling_mill": {
+   "building": "construction-site-000083",
+   "kind": "fulling_mill",
+   "tile": [
+    43,
+    25
+   ]
+  },
+  "dyehouse": {
+   "building": "construction-site-000084",
+   "kind": "dyehouse",
+   "tile": [
+    42,
+    23
+   ]
+  },
+  "tenter_yard": {
+   "building": "construction-site-000085",
+   "kind": "tenter_yard",
+   "tile": [
+    48,
+    46
+   ]
+  }
+ },
+ "c2-fleece": {
+  "tick": 277100,
+  "year": 1369,
+  "building": "construction-site-000081",
+  "kind": "pastoral_farm",
+  "tile": [
+   45,
+   50
+  ]
+ },
+ "c3-yarn": {
+  "tick": 277200,
+  "year": 1369,
+  "building": "construction-site-000036",
+  "kind": "storehouse",
+  "tile": [
+   43,
+   43
+  ]
+ },
+ "c4-woven": {
+  "tick": 277360,
+  "year": 1369,
+  "building": "construction-site-000082",
+  "kind": "weaver_house",
+  "tile": [
+   46,
+   46
+  ]
+ },
+ "c5-fulled": {
+  "tick": 277568,
+  "year": 1369,
+  "building": "construction-site-000083",
+  "kind": "fulling_mill",
+  "tile": [
+   43,
+   25
+  ]
+ },
+ "c6-dyed": {
+  "tick": 277908,
+  "year": 1369,
+  "building": "construction-site-000085",
+  "kind": "tenter_yard",
+  "tile": [
+   48,
+   46
+  ]
+ },
+ "c7-finished": {
+  "tick": 277987,
+  "year": 1369,
+  "building": "construction-site-000085",
+  "kind": "tenter_yard",
+  "tile": [
+   48,
+   46
+  ]
+ },
+ "c8-first-sale": {
+  "tick": 278000,
+  "year": 1369,
+  "building": "construction-site-000085",
+  "kind": "tenter_yard",
+  "tile": [
+   48,
+   46
+  ]
+ },
+ "c9-season-after": {
+  "tick": 279000,
+  "year": 1369
+ }
+}

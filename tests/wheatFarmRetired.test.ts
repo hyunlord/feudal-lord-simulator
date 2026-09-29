@@ -8,7 +8,8 @@ import { decodeSave } from "../src/save/saveCodec";
 import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
 
 // C1f gate 2: the 2x2 wheat farm (retired by C1c-2) has no art left in the runtime, and no save migrates to one.
-const FARM_ART = /wheat_farm|farm_mixed|farm_pastoral|historical-farm/;
+// CLOTH-UI: Wave 2's farm_pastoral paints C5's pastoral farm (a building of its own, not the retired farm) — not retired.
+const FARM_ART = /wheat_farm|farm_mixed|historical-farm/;
 
 function files(dir: string): string[] {
   return readdirSync(dir).flatMap(name => {
