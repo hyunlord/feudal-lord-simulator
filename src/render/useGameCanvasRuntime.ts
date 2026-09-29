@@ -9,6 +9,7 @@ import { createCanvasMutableRefs } from "./canvasRuntimeRefs";
 import { worldBounds } from "./interactions";
 import { publishMinimapViewport } from "./minimapCameraJump";
 import { preloadChapterArt, preloadFrameArt, preloadGameArt } from "./preloadGameArt";
+import { warmWalkerLooksFor } from "./walkerWarmup";
 import { artChapterLimit } from "./chapterArt";
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
@@ -116,6 +117,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       // BUDGET-1b: entering a chapter (or loading a later save) starts its art at once, before its content draws.
       const chapter = artChapterLimit(stateRef.current);
       if (chapter > artChapter) { artChapter = chapter; preloadChapterArt(chapter); }
+      warmWalkerLooksFor(stateRef.current, chapter); // SMOOTH-2R: the map's walker looks composed ahead (idle time)
       const work = proofFrameWork.current;
       const startedAt = work === null ? 0 : performance.now();
       drawCurrentCanvasFrame({ canvas, context, refs, publishPrediction, zoneBrush: zoneBrushView(zoneContext), state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current, running: getSpeedRef.current() !== 0 });

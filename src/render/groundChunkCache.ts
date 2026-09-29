@@ -26,11 +26,14 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 //     canvases a minute). Chunks in a one-chunk ring around the view are rastered ahead in idle time (prefetch) only
 //     while the budget has room, so a camera drag reveals rasters that already exist.
 // (d) Season turn (INSTALL-15, SMOOTH-2R): a request carries a turn token (the season). When the token changes, each
-//     chunk keeps its old raster until its own moment in the turn (its id's phase × `fade.ms`) and then re-rasters in
-//     place, so the new season runs over the ground as a wave, like the trees and roofs (seasonForObject). It used a
-//     crossfade: the next season staged in a second canvas per chunk and a blend in a third — two extra full sets
-//     (84 canvases, ~700 MB in the biggest town at zoom 2) that the budget cannot hold. At 5x (`ms` 0) every chunk's
-//     moment is the turn itself and the deferral in (b) spreads the re-rasters over frames.
+//     chunk keeps its old raster until its own moment in the turn (its id's phase × `fade.ms`) and then takes its new
+//     raster, so the new season runs over the ground as a wave, like the trees and roofs (seasonForObject). In the
+//     last seconds of a season the renderer rasters the next season's visible chunks in idle time (`stage`, ranked
+//     "other season" in the budget, only while it has room); at its moment a chunk takes its staged raster as is and
+//     its old canvas goes to the pool, otherwise it re-rasters in place. It used a crossfade: the staged set plus a
+//     blend canvas per chunk — up to two extra full sets (84 canvases, ~700 MB in the biggest town at zoom 2, measured
+//     in docs/verification/smooth2r/) that the budget cannot hold. At 5x (`ms` 0) every chunk's moment is the turn
+//     itself and the deferral in (b) spreads the re-rasters that were not staged over frames.
 
 export const GROUND_CHUNK_ZOOM_STEP = 0.05;
 const OFFSCREEN_ENTRIES = 64;
@@ -42,6 +45,8 @@ const FRAME_DEFER_AFTER_MS = 8;
 /** After waiting this many frames a chunk may take the frame's one over-budget raster (so every wait ends). */
 const MAX_DEFERRED_FRAMES = 3;
 const EDGE_OVERLAP_PX = 1.5;
+/** Budget key prefix of a staged (next-season) raster. */
+const STAGE = "stage:";
 
 export type ChunkCanvas = {
   readonly canvas: CanvasImageSource & { width: number; height: number };
@@ -85,7 +90,7 @@ export type GroundChunkCacheStats = {
   /** New canvases made, and canvases taken again (own re-raster, pool, an off-screen chunk). */
   canvasesMade: number;
   canvasesReused: number;
-  /** Kept for the INSTALL-15 scripts: staging is gone (header (d)), so these stay 0. */
+  /** Next-season rasters made ahead, and taken at the chunk's moment in the turn (header (d)). */
   staged: number;
   stagedUsed: number;
 };
@@ -98,6 +103,10 @@ export type GroundChunkCache = {
   prefetch(request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): boolean;
   /** Whether `prefetch` would raster anything for this request. */
   needs(request: ChunkRasterRequest): boolean;
+  /** Rasters a chunk's next-season content ahead of the turn (idle time, only with budget room); no-op if staged. */
+  stage(request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void): boolean;
+  /** Whether `stage` would raster anything for this request. */
+  needsStage(request: ChunkRasterRequest): boolean;
   stats(): Readonly<GroundChunkCacheStats>;
   /** Chunks this frame drew from a held raster while their re-raster waits (deferKey, turn); a later frame must follow. */
   pending(): number;
@@ -115,6 +124,7 @@ let cacheSerial = 0;
 export function createGroundChunkCache(factory: ChunkCanvasFactory | null = browserChunkCanvas, clock: ChunkClock = performanceClock,
   budget: CanvasBudget = canvasBudget): GroundChunkCache {
   const entries = new Map<string, Entry>();
+  const staged = new Map<string, Entry>();
   const stats: GroundChunkCacheStats = { hits: 0, prefetched: 0, contentRasters: 0, zoomRasters: 0, deferredZoom: 0, deferredContent: 0, evictions: 0,
     rasterMs: 0, entries: 0, pixels: 0, lastFrameRasters: 0, lastFrameRasterMs: 0, fades: 0, waves: 0, canvasesMade: 0, canvasesReused: 0, staged: 0, stagedUsed: 0 };
   let zoomBudget = ZOOM_RERASTER_BUDGET;
@@ -134,10 +144,12 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
   const release = (raster: ChunkCanvas): void => budget.give(raster.canvas);
   const owner: BudgetOwner = {
     name: `ground-chunks#${cacheSerial++}`,
-    evict(id) {
-      const entry = entries.get(id);
+    evict(key) {
+      const stagedId = key.startsWith(STAGE) ? key.slice(STAGE.length) : null;
+      const map = stagedId === null ? entries : staged; const id = stagedId ?? key;
+      const entry = map.get(id);
       if (entry === undefined) return;
-      entries.delete(id); stats.evictions += 1; recount();
+      map.delete(id); stats.evictions += 1; recount();
       entry.raster.canvas.width = 0; entry.raster.canvas.height = 0;
     },
   };
@@ -163,7 +175,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
     return next;
   };
 
-  const raster = (request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void, optional: boolean): Entry | null => {
+  const raster = (request: ChunkRasterRequest, paint: (context: CanvasRenderingContext2D) => void, optional: boolean, fresh = false): Entry | null => {
     if (factory === null) return null;
     const started = now();
     const xs = request.diamond.map(point => point.x); const ys = request.diamond.map(point => point.y);
@@ -172,7 +184,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
     const width = Math.ceil((Math.max(...xs) + pad - left) * request.scale);
     const height = Math.ceil((Math.max(...ys) + pad - top) * request.scale);
     const held = entries.get(request.id);
-    const own = held !== undefined && held.raster.canvas.width === width && held.raster.canvas.height === height;
+    const own = !fresh && held !== undefined && held.raster.canvas.width === width && held.raster.canvas.height === height;
     const target = own ? held.raster : acquire(width, height, optional);
     if (target === null) return null;
     if (own) stats.canvasesReused += 1;
@@ -219,6 +231,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
     }
     recount();
   };
+  const dropStaged = (id: string, entry: Entry): void => { staged.delete(id); budget.forget(owner, STAGE + id); release(entry.raster); };
   const turnStart = (token: string): number => {
     let started = turns.get(token);
     if (started === undefined) {
@@ -234,6 +247,21 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
       stats.lastFrameRasters = 0; stats.lastFrameRasterMs = 0; drawnThisFrame.clear();
     },
     pending: () => pendingThisFrame,
+    needsStage(request) {
+      const entry = staged.get(request.id);
+      return request.fade !== undefined && (entry === undefined || entry.contentKey !== request.contentKey || entry.scale !== request.scale);
+    },
+    stage(request, paint) {
+      if (!this.needsStage(request) || request.fade === undefined) return false;
+      for (const [id, entry] of [...staged]) if (entry.fadeToken !== request.fade.token || id === request.id) dropStaged(id, entry);
+      const started = stats.lastFrameRasterMs; const count = stats.lastFrameRasters;
+      const next = raster(request, paint, true, true);
+      stats.lastFrameRasterMs = started; stats.lastFrameRasters = count;
+      if (next === null) return false;
+      staged.set(request.id, next); stats.staged += 1;
+      budget.track(owner, STAGE + request.id, bytes(next.raster), "otherSeason");
+      return true;
+    },
     needs(request) {
       const entry = entries.get(request.id);
       return entry === undefined || entry.contentKey !== request.contentKey || entry.scale !== request.scale;
@@ -272,7 +300,16 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
         budget.touch(owner, request.id, "onscreen");
         blit(target, entry); return;
       }
-      if (turning && request.fade !== undefined) turnStart(request.fade.token);
+      if (turning && request.fade !== undefined) {
+        turnStart(request.fade.token);
+        const ready = staged.get(request.id);
+        if (ready !== undefined && ready.contentKey === request.contentKey && ready.scale === request.scale) {
+          // Made ahead in idle time: taken as is; the old season's canvas goes to the pool.
+          staged.delete(request.id); budget.forget(owner, STAGE + request.id); stats.stagedUsed += 1;
+          store(request.id, ready, true);
+          blit(target, ready); return;
+        }
+      }
       if (frameStart !== undefined && entry !== undefined && entry.scale === request.scale && request.deferKey !== undefined
         && entry.deferKey === request.deferKey && (stats.lastFrameRasterMs >= DEFER_BUDGET_MS || now() - frameStart >= FRAME_DEFER_AFTER_MS)
         && (forcedThisFrame || (deferredFrames.get(request.id) ?? 0) < MAX_DEFERRED_FRAMES)) {
@@ -294,6 +331,7 @@ export function createGroundChunkCache(factory: ChunkCanvasFactory | null = brow
     stats: () => ({ ...stats }),
     clear() {
       for (const [id, entry] of entries) { budget.forget(owner, id); release(entry.raster); }
+      for (const [id, entry] of [...staged]) dropStaged(id, entry);
       entries.clear(); turns.clear(); stats.entries = 0; stats.pixels = 0;
     },
     entry(id) { const value = entries.get(id); return value === undefined ? null : { contentKey: value.contentKey, scale: value.scale, raster: value.raster }; },

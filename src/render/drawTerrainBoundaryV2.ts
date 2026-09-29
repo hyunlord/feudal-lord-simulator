@@ -145,6 +145,20 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   }
   probe?.enter("terrain.water"); // INSTALL-29: the water motion, live over the chunks' still water (drawWaterMotion.ts)
   drawWaterMotion(context, { state: input.state, shore: scene.shore, chunks: visible, range: input.range, zoom: input.zoom, chunkZoom: zoom, nowMs: input.nowMs ?? 0, season }); probe?.enter("terrain.fill");
+  // INSTALL-15 staging: in the season's last STAGE_TICKS the visible chunks' next-season rasters are made in idle time
+  // while the canvas budget has room, so at its moment in the turn a chunk only swaps (groundChunkCache header (d);
+  // SMOOTH-2R: at every speed). Same keys as the turn's requests will carry.
+  if (input.state.tick % SEASON_TICKS >= SEASON_TICKS - STAGE_TICKS) {
+    const next = ((season + 1) % 4) as SeasonIndex;
+    const nextToken = seasonChunkToken(next);
+    const nextFade = { token: `s${next}`, ms: fade.ms };
+    scheduleStaging(context, cache, visible.flatMap(plan => [
+      { request: { ...groundRequest(plan), contentKey: `${plan.groundKey}|${groundReadiness(plan)}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
+        paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts, next) },
+      ...(plan.hasRoads ? [{ request: { ...roadRequest(plan), contentKey: `${plan.roadKey}|${readiness}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
+        paint: (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan, next) }] : []),
+    ]));
+  }
   schedulePrefetch(context, cache, ringChunks(scene, input.range, visible).flatMap(plan => [
     { request: groundRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts, season) },
     ...(plan.hasRoads ? [{ request: roadRequest(plan), paint: paintRoads(plan) }] : []),
@@ -237,6 +251,38 @@ const PREFETCH_MIN_IDLE_MS = 6;
  * Rasters the ring of chunks around the view in idle time, nearest first. Each job carries the content key of the
  * frame that queued it, so a raster made from an older state is simply re-rastered when the key moves on.
  */
+const SEASON_TICKS = 1_000;
+/** Staging window before a turn: 200 ticks, 10 s at 1x (the visible chunks raster in ~0.1-0.3 s of idle time; a scene
+ * opened just before a turn shares that idle time with its first rasters). */
+const STAGE_TICKS = 200;
+/** The longest a staging callback waits for idle time (46 chunks stage in ~2.3 s even with none). */
+const STAGE_WAIT_MS = 50;
+const stagingQueues = new WeakMap<CanvasRenderingContext2D, { jobs: PrefetchJob[]; scheduled: boolean }>();
+
+function scheduleStaging(context: CanvasRenderingContext2D, cache: GroundChunkCache, jobs: PrefetchJob[]): void {
+  if (typeof requestIdleCallback !== "function") return;
+  let queue = stagingQueues.get(context);
+  if (queue === undefined) { queue = { jobs: [], scheduled: false }; stagingQueues.set(context, queue); }
+  queue.jobs = jobs.filter(job => cache.needsStage(job.request));
+  if (queue.scheduled || queue.jobs.length === 0) return;
+  queue.scheduled = true;
+  // One chunk per callback at least (the callback comes within STAGE_WAIT_MS even without idle time): on a busy
+  // software raster (the DGX) idle periods over PREFETCH_MIN_IDLE_MS are rare, and staging must finish before the turn.
+  const run = (deadline: IdleDeadline): void => {
+    const current = stagingQueues.get(context);
+    if (current === undefined) return;
+    let first = true;
+    while (current.jobs.length > 0 && (first || deadline.timeRemaining() > PREFETCH_MIN_IDLE_MS)) {
+      const job = current.jobs.shift() as PrefetchJob;
+      cache.stage(job.request, job.paint);
+      first = false;
+    }
+    current.scheduled = current.jobs.length > 0;
+    if (current.scheduled) requestIdleCallback(run, { timeout: STAGE_WAIT_MS });
+  };
+  requestIdleCallback(run, { timeout: STAGE_WAIT_MS });
+}
+
 function schedulePrefetch(context: CanvasRenderingContext2D, cache: GroundChunkCache, jobs: PrefetchJob[]): void {
   if (typeof requestIdleCallback !== "function") return;
   let queue = prefetchQueues.get(context);

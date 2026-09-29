@@ -37,7 +37,7 @@ test("SMOOTH-2R budget: over the cap the lowest rank goes first, then the least 
 
 test("SMOOTH-2R budget: a canvas given back is taken again at the same size, pooled canvases go first and never count against room", () => {
   const budget = createCanvasBudget(10 * MB);
-  const accept = (canvas: { width: number; height: number }): canvas is { width: number; height: number } & CanvasImageSource => true;
+  const accept = (_canvas: { width: number; height: number }): _canvas is { width: number; height: number } & CanvasImageSource => true;
   const canvas = fakeCanvas(1024, 1024);
   budget.give(canvas as unknown as CanvasImageSource & { width: number; height: number });
   assert.equal(budget.stats().poolBytes, 4 * MB);
@@ -94,4 +94,29 @@ test("SMOOTH-2R ground chunks: a re-raster draws into the chunk's own canvas, a 
   cache.beginFrame(); cache.draw(target.context, request(ids[0]!, "a|s1", "s1", 0, 1), () => undefined);
   assert.equal(made, 13, "back at scale 1: the pooled canvas of that size");
   assert.ok(cache.stats().canvasesReused >= 13);
+});
+
+test("SMOOTH-2R ground chunks: a next-season raster is staged only while the budget has room, and at the turn it is swapped in with the old canvas pooled", () => {
+  const diamond = [{ x: 0, y: -64 }, { x: 128, y: 0 }, { x: 0, y: 64 }, { x: -128, y: 0 }] as const;
+  const request = (content: string, token: string) => ({ id: "ground:0,0", contentKey: content, scale: 1, diamond, deferKey: "base", fade: { token, ms: 0 } });
+  const run = (capBytes: number) => {
+    const budget = createCanvasBudget(capBytes);
+    let made = 0;
+    const cache = createGroundChunkCache(((w: number, h: number) => { made += 1; return recordingChunkCanvas(w, h); }) as unknown as Parameters<typeof createGroundChunkCache>[0],
+      () => 0, budget);
+    const target = recordingChunkCanvas(512, 512);
+    cache.beginFrame(); cache.draw(target.context, request("a|s0", "s0"), () => undefined);
+    const staged = cache.stage(request("a|s1", "s1"), () => undefined);
+    cache.beginFrame(); cache.draw(target.context, request("a|s1", "s1"), () => undefined);
+    return { staged, made, stats: cache.stats(), pooled: budget.stats().pooled };
+  };
+  const roomy = run(64 * MB);
+  assert.equal(roomy.staged, true);
+  assert.equal(roomy.stats.stagedUsed, 1);
+  assert.equal(roomy.stats.contentRasters, 1, "the turn took the staged raster: no raster in the turn's frame");
+  assert.equal(roomy.pooled, 1, "the old season's canvas went to the pool");
+  const tight = run(0.1 * MB);
+  assert.equal(tight.staged, false, "no room: nothing staged");
+  assert.equal(tight.made, 1);
+  assert.equal(tight.stats.contentRasters, 2, "the turn re-rastered in place");
 });

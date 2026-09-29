@@ -213,13 +213,26 @@ export function drawComposedWalker(context: CanvasRenderingContext2D, state: Gam
   return true;
 }
 
+/** SMOOTH-2R warm-up (walkerWarmup.ts): the distinct looks the state's walkers show now. */
+export function currentWalkerLooks(state: GameState): readonly (readonly [WalkerSheetId, WalkerPropKind | null, WalkerCloakKind | null])[] {
+  const seen = new Map<string, readonly [WalkerSheetId, WalkerPropKind | null, WalkerCloakKind | null]>();
+  for (const walker of state.walkers) {
+    const { look, prop, cloak } = walkerAppearance(state, walker);
+    seen.set(`${look.sheetId}|${prop}|${cloak}`, [look.sheetId, prop, cloak]);
+  }
+  return [...seen.values()];
+}
+
+/** Whether a whole look (8 cells) would fit in the canvas budget without pushing anything out. */
+export function lookFitsBudget(): boolean { return canvasBudget.room(8 * CELL_BYTES); }
+
 export function walkerComposerStats() {
   const looks = new Set([...cells.keys()].map(key => key.slice(0, key.lastIndexOf("|"))));
   return { ...stats, cached: cells.size, cachedLooks: looks.size, bytesPerCell: CELL_BYTES, cacheBytes: cells.size * CELL_BYTES,
     looks: lookCache.size, keys: [...looks], images: [...images.entries()].map(([url, entry]) => ({ url, status: entry.status })) };
 }
 
-/** Evidence: the composed 8 cells of a look, NE SE SW NW then the second gait frame (null while its images load). */
+/** The composed 8 cells of a look, NE SE SW NW then the second gait frame (null while its images load): the warm-up and evidence. */
 export function composedLookForProof(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: WalkerCloakKind | null): readonly Cell[] | null {
   const composed: Cell[] = [];
   for (const gaitFrame of [0, 1]) for (const direction of ["NE", "SE", "SW", "NW"] as const) {
