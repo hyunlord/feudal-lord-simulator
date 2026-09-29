@@ -12,7 +12,6 @@ export type WorldSpriteOptions = {
   readonly dpr?: number;
   readonly scale?: number;
   readonly alpha?: number;
-  readonly tint?: PaletteColor;
   readonly flipX?: boolean;
   readonly viewport?: { readonly width: number; readonly height: number };
   /** Same-size replacement image drawn with this sprite's registration (visual variants). */
@@ -43,7 +42,6 @@ export type RampTintPixel = {
 };
 
 const DEFAULT_CAMERA = { zoom: 1, panX: 0, panY: 0 } as const satisfies CameraState;
-const tintedSpriteCache = new WeakMap<CanvasImageSource, Map<string, CanvasImageSource>>();
 const FOLIAGE_RGB_TO_SHADE = new Map(RAMPS.foliage.map((hex, shade) => [hexToRgbKey(hex), shade]));
 const TIMBER_RGB_KEYS = new Set(RAMPS.timber.map(hexToRgbKey));
 const NEUTRAL_FOLIAGE_TINT_SHADE = 4;
@@ -99,7 +97,6 @@ function drawAtWorldAnchor(
     recordWorldSpriteDraw({ key, drawn: false, reason: "culled" });
     return false;
   }
-  const source = options.tint === undefined ? image : tintedSprite(image, meta, options.tint);
 
   context.save();
   try {
@@ -108,9 +105,9 @@ function drawAtWorldAnchor(
     context.imageSmoothingEnabled = false;
     if (options.flipX === true) {
       context.setTransform(-1, 0, 0, 1, rect.dx + rect.width, 0);
-      context.drawImage(source, 0, rect.dy, rect.width, rect.height);
+      context.drawImage(image, 0, rect.dy, rect.width, rect.height);
     } else {
-      context.drawImage(source, rect.dx, rect.dy, rect.width, rect.height);
+      context.drawImage(image, rect.dx, rect.dy, rect.width, rect.height);
     }
   } finally {
     context.restore();
@@ -150,28 +147,14 @@ export function drawCroppedWorldSprite(
   }
 }
 
-function tintedSprite(
-  image: CanvasImageSource,
-  meta: NonNullable<ReturnType<typeof spriteMeta>>,
-  tint: PaletteColor,
-): CanvasImageSource {
-  const dimensions = sourceDimensions(meta);
-  const cacheKey = `${tint}:${dimensions.width}x${dimensions.height}`;
-  const cached = tintedSpriteCache.get(image)?.get(cacheKey);
-  if (cached !== undefined) return cached;
-  const canvas = createTintCanvas(dimensions.width, dimensions.height);
-  if (canvas === null) return image;
-  const tintContext = canvas.getContext("2d");
-  if (tintContext === null) return image;
-  tintContext.imageSmoothingEnabled = false;
-  tintContext.drawImage(image, 0, 0, dimensions.width, dimensions.height);
-  tintContext.putImageData(tintImageData(tintContext.getImageData(0, 0, dimensions.width, dimensions.height), tint), 0, 0);
-  const imageCache = tintedSpriteCache.get(image) ?? new Map<string, CanvasImageSource>();
-  imageCache.set(cacheKey, canvas);
-  tintedSpriteCache.set(image, imageCache);
-  return canvas;
-}
-
+/**
+ * The tree tone's foliage ramp tint: recolours only the pixels that are exactly a foliage ramp colour. SMOOTH-2R: it
+ * no longer runs on sprites while the game plays (it read every tinted sprite back with getImageData: 34 reads, 0.3 s
+ * in the big town's first 30 s). The painted foliage art has no pixel of a ramp colour — counted per sprite at build
+ * time (pixelFacts.generated.ts FOLIAGE_RAMP_PIXELS, all 0; scripts/buildPixelFacts.ts stops if one ever has some) and
+ * measured in Chrome on the six trees' downscaled sprites in all six tones (0 pixels changed) — so the tinted sprite
+ * was the sprite itself, and the tint option is gone.
+ */
 export function foliageRampTintPixels(
   pixels: readonly RampTintPixel[],
   tint: PaletteColor,
@@ -190,26 +173,6 @@ export function foliageRampTintPixels(
     const [r, g, b] = hexToRgb(targetHex);
     return { r, g, b, a: pixel.a };
   });
-}
-
-function tintImageData(imageData: ImageData, tint: PaletteColor): ImageData {
-  const pixels: RampTintPixel[] = [];
-  for (let index = 0; index < imageData.data.length; index += 4) {
-    pixels.push({
-      r: imageData.data[index] ?? 0,
-      g: imageData.data[index + 1] ?? 0,
-      b: imageData.data[index + 2] ?? 0,
-      a: imageData.data[index + 3] ?? 0,
-    });
-  }
-  foliageRampTintPixels(pixels, tint).forEach((pixel, pixelIndex) => {
-    const index = pixelIndex * 4;
-    imageData.data[index] = pixel.r;
-    imageData.data[index + 1] = pixel.g;
-    imageData.data[index + 2] = pixel.b;
-    imageData.data[index + 3] = pixel.a;
-  });
-  return imageData;
 }
 
 function hexToRgb(hex: string): readonly [number, number, number] {
@@ -258,13 +221,6 @@ function destinationRect(
     dy: Math.round((canvasAnchor.y - meta.anchor.y * zoomScale) * dpr),
     width: Math.round(meta.width * zoomScale * dpr),
     height: Math.round(meta.height * zoomScale * dpr),
-  };
-}
-
-function sourceDimensions(meta: NonNullable<ReturnType<typeof spriteMeta>>): { readonly width: number; readonly height: number } {
-  return {
-    width: Math.max(1, Math.round(meta.width * meta.renderScale)),
-    height: Math.max(1, Math.round(meta.height * meta.renderScale)),
   };
 }
 
