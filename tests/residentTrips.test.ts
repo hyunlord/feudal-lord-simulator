@@ -103,8 +103,9 @@ test("V2 mapping: every installed class band has a walking occupation, and every
   // INSTALL-5c: the elder band is drawn by age (ELDER_BANDS), whatever the errand.
   const mapped = new Set([...Object.values(OCCUPATION_BANDS), ELDER_BANDS].flatMap(rows => rows.map(([band]) => band)));
   // INSTALL-11: the kit band (carpenter, mason) is worn only by builders at a kit site (walkerAppearance), never drawn from a pool.
-  // INSTALL-3: the ale band (alewife, maltster) is worn only on the ale chain's errands and carts (walkerAppearance).
-  assert.deepEqual([...bands].filter(band => !mapped.has(band) && band !== "kit" && band !== "ale"), []);
+  // INSTALL-3: the ale band (alewife, maltster) is worn only on the ale chain's errands and carts (walkerAppearance);
+  // UI-9b: the cloth band (shepherd, fuller, wool merchant) only on the cloth buildings' carts.
+  assert.deepEqual([...bands].filter(band => !mapped.has(band) && band !== "kit" && band !== "ale" && band !== "cloth"), []);
   const residentOccupations: readonly ResidentOccupation[] = ["water_fetcher", "marketgoer", "churchgoer", "field_hand", "market_visitor", "clergy"];
   for (const occupation of residentOccupations) {
     for (const sex of ["female", "male"] as const) {
