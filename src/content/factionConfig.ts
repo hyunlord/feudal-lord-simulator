@@ -65,6 +65,16 @@ export const FACTION_PORTRAIT_POOLS: Readonly<Record<FactionId, readonly string[
 export const FACTION_LINEAGE_SETS: Readonly<Partial<Record<FactionId, string>>> = { overlord: "L6", neighbour_1: "L7" };
 export const FAMILY_FACTIONS: ReadonlySet<FactionId> = new Set(["overlord", "neighbour_1", "neighbour_2"]);
 
+/**
+ * FIX-9: the youngest a faction's leader may be (a successor is born this long before at least; a town faction's head
+ * this old or older while one is). A bishop is a man of 40; an earl, a neighbouring lord, a merchant's or the commons'
+ * head 25; the town community's 30. The Crown's leader is the reigning king (history's age); its officer's portrait is
+ * drawn at 25 at least.
+ */
+export const FACTION_LEADER_MIN_AGE: Readonly<Record<FactionId, number>> = {
+  overlord: 25, crown: 25, neighbour_1: 25, neighbour_2: 25, bishop: 40, merchant_house_1: 25, merchant_house_2: 25, town: 30, commons: 25,
+};
+
 /** CODE-1a: the pool-3 ranks a leader prefers (the earl before his heir, the bishop before his deputy). */
 export const FACTION_HEAD_RANKS: readonly string[] = ["earl", "sheriff", "escheator", "herald", "knight_lord", "bishop", "house_head", "mayor_candidate",
   "clerk", "guild_representative", "rural_representative", "community_representative"];

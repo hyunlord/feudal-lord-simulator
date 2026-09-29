@@ -31,6 +31,7 @@ import {
 import { archetypeOf } from "../content/scenario/registry";
 import { houseLotArea } from "../geometry/buildingFootprint";
 import { LEDGER_PERIOD_TICKS, postLedgerEntries, treasuryBalance } from "../ledger/ledger";
+import { periodRent, upkeepCharges } from "./moneyRules";
 import type { LedgerCategory, LedgerPosting } from "../ledger/ledger.types";
 import { houseHasFood } from "../population/houseFood";
 import { houseCapacity, type PlagueHousing } from "../population/housing";
@@ -415,6 +416,14 @@ export function plagueDecisionForecast(state: GameState, defId: string, response
     }
     case LAND_REDISTRIBUTION_PETITION_ID:
       return response === "accept_with_price" ? treasury + 2 * PLAGUE_BALANCE.settlerHouseholds * PLAGUE_BALANCE.entryFine : treasury;
+    case CASH_RENT_PETITION_ID: {
+      // FIX-9: money rent brings the rent's quarter more (× 1.25); the week-work kept spares the upkeep's quarter
+      // (× 0.75) — over the two seasons, about one ledger period, as the wages'.
+      const share = 2 * SEASON / LEDGER_PERIOD_TICKS;
+      if (response === "accept") return treasury + Math.round(periodRent(state) * (PLAGUE_BALANCE.cashRentPermille - 1000) / 1000 * share);
+      const upkeep = upkeepCharges(state).reduce((sum, charge) => sum + charge.amount, 0) * 1000 / plagueUpkeepPermille(state);
+      return treasury + Math.round(upkeep * (1000 - PLAGUE_BALANCE.labourServiceUpkeepPermille) / 1000 * share);
+    }
     default:
       return treasury;
   }

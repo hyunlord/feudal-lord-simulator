@@ -198,7 +198,8 @@ export function recordDecision(before: GameState, after: GameState, command: { r
     ...(petitioner === undefined ? {} : { actors: [{ type: "faction" as const, id: factionOfPetitioner(petitioner) }] }),
     ...(place === undefined ? {} : { place: { tx: place.tx, ty: place.ty, buildingId: place.id } }), decision, severity: 1 }, ...lordshipDrafts(before, after),
     // F5-A (LG-2…LG-5): what a chapter-5 answer did at once (the heir seated, the Crown paid, the charter sealed).
-    ...legacyDrafts(before, after), ...factionDrafts(before, after)]));
+    // FIX-9: and a chapter-4 answer's (the guild founded).
+    ...reorganisationDrafts(before, after), ...legacyDrafts(before, after), ...factionDrafts(before, after)]));
 }
 
 /** FACTION-0 (FX-4): a faction's relation moved — one record each, the faction's memory. */
