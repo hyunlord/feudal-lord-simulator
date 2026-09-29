@@ -28,7 +28,7 @@ import {
   VACANT_PRIEST_PETITION_ID,
   WAGES_PETITION_ID,
 } from "../content/plagueConfig";
-import { archetypeOf } from "../content/scenario/registry";
+import { archetypeRules, scaleByPermille, stateArchetype } from "./archetype";
 import { houseLotArea } from "../geometry/buildingFootprint";
 import { LEDGER_PERIOD_TICKS, postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import { periodRent, upkeepCharges } from "./moneyRules";
@@ -60,12 +60,12 @@ export function plagueActive(state: Pick<GameState, "scenarioId">): boolean {
 }
 
 /** PL-1: a town on the coast or a river's mouth (its archetype) takes the pestilence a season sooner. */
-export function plagueCoastal(state: Pick<GameState, "scenarioId">): boolean {
-  return archetypeOf(scenarioOf(state))?.coastal === true;
+export function plagueCoastal(state: Pick<GameState, "scenarioId" | "archetypeId">): boolean {
+  return stateArchetype(state)?.coastal === true;
 }
 
 /** PL-1: the pestilence's first season, counted from the era's. */
-export function arrivalSeasonOffset(state: Pick<GameState, "scenarioId">): number {
+export function arrivalSeasonOffset(state: Pick<GameState, "scenarioId" | "archetypeId">): number {
   return PLAGUE_BALANCE.rumourSeason + (plagueCoastal(state) ? PLAGUE_BALANCE.coastalArrivalAfterRumour : PLAGUE_BALANCE.inlandArrivalAfterRumour);
 }
 
@@ -513,7 +513,9 @@ export function advancePlague(state: GameState, endChapter: (state: GameState) =
   plague = plagueOf(next)!;
   if (offset === arrivalSeasonOffset(state) && plague.first === undefined) {
     const span = PLAGUE_BALANCE.deathPermilleMax - PLAGUE_BALANCE.deathPermilleMin + 1;
-    const permille = PLAGUE_BALANCE.deathPermilleMin + hashSeed(state.seed, "plague:share") % span;
+    const drawn = PLAGUE_BALANCE.deathPermilleMin + hashSeed(state.seed, "plague:share") % span;
+    // ARCH-1 (AR-4 ⑤): a harbour's port fever kills more (the land's coastal coefficient; a coastal town only).
+    const permille = plagueCoastal(state) ? Math.min(900, scaleByPermille(drawn, archetypeRules(state).coastalEventPermille)) : drawn;
     next = withPlague(next, { ...plague, ...(plague.rumourTick === undefined ? { rumourTick: state.tick } : {}), first: newPestilence(next, permille),
       curacy: { vacantSince: state.tick } });
     next = addPetition(next, VACANT_PRIEST_PETITION_ID, "parish");

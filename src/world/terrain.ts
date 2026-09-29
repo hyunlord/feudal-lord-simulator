@@ -22,7 +22,8 @@ const MINIMUM_REGION_SIZE: Readonly<Record<"water" | "forest" | "rock", number>>
   rock: 4,
 };
 
-const WORLD_SAMPLE_ORIGIN = { tx: 5, ty: 2 } as const;
+/** ARCH-1: exported so the archetype generator samples the same fields at the same origin. */
+export const WORLD_SAMPLE_ORIGIN = { tx: 5, ty: 2 } as const;
 
 const ORTHOGONAL_OFFSETS = [
   { tx: 0, ty: -1 },
@@ -39,7 +40,8 @@ function amplify(value: number, contrast: number): number {
   return clamp01(0.5 + (value - 0.5) * contrast);
 }
 
-function terrainFields(tx: number, ty: number, seed: number) {
+/** The elevation and moisture fields at a sample point (ARCH-1 reads them with its own thresholds). */
+export function terrainFields(tx: number, ty: number, seed: number) {
   const elevationDetail = fbm(tx * 0.034, ty * 0.034, seed, 4);
   const elevationMass = fbm(tx * 0.018, ty * 0.018, seed + 4_009, 3);
   const elevationRaw = clamp01(

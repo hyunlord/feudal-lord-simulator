@@ -1,5 +1,4 @@
 import { setFarmsteadCrop } from "../engine/ale";
-import { SCENARIOS } from "../content/scenario/registry";
 import { DEFAULT_SCENARIO_ID } from "../content/scenario/coreScenarios";
 import { recordMaterialPlacement, refreshMaterialResult } from '../engine/autoplayMaterialLifecycle';
 import {
@@ -49,6 +48,7 @@ import type {
   PreviousRenderState,
 } from "./gameStore.types";
 import { decisionSaveReason } from "../save/autosavePolicy";
+import { newGameState } from "./newGame";
 import { SaveSystemContext, useSaveSystem } from "./saveSystem";
 import { createUiChannel } from "./uiChannel";
 import {
@@ -105,9 +105,10 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
 
 function reduceGameAction(state: GameState, action: GameAction): GameState {
   if (action.type === "load_saved_state") return action.state;
-  // A new game is the default opening under the chosen scenario (B2 mode choice); unknown ids are ignored.
-  if (action.type === "start_new_game") return SCENARIOS.get(action.scenarioId) === undefined
-    ? state : { ...structuredClone(DEFAULT_GAME_STATE), scenarioId: action.scenarioId };
+  // A new game is the default opening under the chosen scenario (B2 mode choice), ARCH-1 on the chosen land; unknown
+  // ids are ignored.
+  if (action.type === "start_new_game") return newGameState({ scenarioId: action.scenarioId,
+    ...(action.archetypeId === undefined ? {} : { archetypeId: action.archetypeId }), ...(action.seed === undefined ? {} : { seed: action.seed }) }) ?? state;
   if (state.settlement?.outcome === "abandoned") {
     return action.type === "restart_settlement" ? structuredClone(DEFAULT_GAME_STATE) : state;
   }

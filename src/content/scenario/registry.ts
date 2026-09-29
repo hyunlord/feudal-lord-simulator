@@ -18,6 +18,7 @@ export class ScenarioRegistry {
 
   registerArchetype(archetype: ArchetypeDef): void {
     if (!ID_PATTERN.test(archetype.id)) throw new ScenarioValidationError(`Archetype id must be namespace:id: ${archetype.id}`);
+    validateArchetype(archetype);
     if (this.archetypes.has(archetype.id)) throw new ScenarioValidationError(`Duplicate archetype ${archetype.id}`);
     this.archetypes.set(archetype.id, archetype);
   }
@@ -36,6 +37,11 @@ export class ScenarioRegistry {
     return this.archetypes.get(id);
   }
 
+  /** ARCH-1 (AR-6): the lands in registration order, the order the start screen offers them. */
+  listArchetypes(): readonly ArchetypeDef[] {
+    return [...this.archetypes.values()];
+  }
+
   /** Registration order, which is also the order shown to the player. */
   list(): readonly ScenarioDef[] {
     return [...this.scenarios.values()];
@@ -48,6 +54,23 @@ function fail(scenario: string, message: string): never {
 
 function validateNumber(scenario: string, value: unknown, label: string): void {
   if (typeof value !== "number" || !Number.isFinite(value) || value < 0) fail(scenario, `${label} must be a finite non-negative number`);
+}
+
+/** ARCH-1 (AR-2, AR-4): shares that leave open ground, a sea's depths whole and ordered, coefficients whole and positive. */
+function validateArchetype(archetype: ArchetypeDef): void {
+  const fail = (message: string): never => { throw new ScenarioValidationError(`${archetype.id}: ${message}`); };
+  const { terrain, rules } = archetype;
+  const shares = terrain.shares;
+  if ((shares === undefined) !== (terrain.kind === "river")) fail("every land but the riverside town has its shares");
+  if (shares !== undefined && (Object.values(shares).some(value => !Number.isInteger(value) || value < 0)
+    || shares.water + shares.rock + shares.forest >= 1000)) fail("shares are whole permille and leave open ground");
+  if (terrain.detailPermille !== undefined && (!Number.isInteger(terrain.detailPermille) || terrain.detailPermille < 0 || terrain.detailPermille > 1000)) {
+    fail("detailPermille must lie in [0, 1000]");
+  }
+  if (terrain.sea !== undefined && (!Number.isInteger(terrain.sea.minDepth) || !Number.isInteger(terrain.sea.maxDepth)
+    || terrain.sea.minDepth < 1 || terrain.sea.maxDepth < terrain.sea.minDepth)) fail("the sea needs whole depths, least first");
+  for (const [key, value] of Object.entries(rules)) if (!Number.isInteger(value) || value <= 0) fail(`${key} must be a positive whole permille`);
+  if (archetype.ground.decalPermille < 0 || archetype.ground.decalPermille > 1000) fail("decalPermille must lie in [0, 1000]");
 }
 
 function validateCondition(scenario: string, condition: Condition): void {
@@ -151,9 +174,14 @@ export function scenarioById(id: string | undefined): ScenarioDef {
   return scenario;
 }
 
-/** F2-A (WR-5): the scenario's map archetype (its coast). */
+/** F2-A (WR-5): the scenario's map archetype (its coast). ARCH-1: a state's own land is `stateArchetype` (engine). */
 export function archetypeOf(scenario: ScenarioDef): ArchetypeDef | undefined {
   return SCENARIOS.archetype(scenario.archetype);
+}
+
+/** ARCH-1 (AR-6): a land by id, or undefined. */
+export function archetypeById(id: string): ArchetypeDef | undefined {
+  return SCENARIOS.archetype(id);
 }
 
 export function stageDef(scenario: ScenarioDef, stage: StageId): StageDef {
