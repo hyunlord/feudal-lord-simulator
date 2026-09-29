@@ -9,6 +9,8 @@ import { LORDSHIP_COPY } from "./lordshipCopy.ko";
 import { lordHouseArms, lordHouseholdRows, type PersonRow } from "./persons/personModels";
 import type { Wave14ImageId } from "./wave14Art";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
+// UI-9: revolt pressure shown on the rights tab (RG-8).
+import { revoltPressureSection, type RevoltPressureSection } from "./chronicle/factionInfluenceModel";
 
 /**
  * UI-6: the ledger drawer's rights tab (FAIL-3 FL-1…FL-8, F2-A): the ruling house (name, arms from its heraldry seed,
@@ -30,6 +32,10 @@ export type LordshipView = Readonly<{
   granted: readonly string[];
   decline: string | null;
   war: readonly string[];
+  /** UI-9: RG-7 rights that moved to the town in ch4 (market_tolls, bridge_tolls from borough_charter). */
+  rightsTransfer: readonly Readonly<{ id: string; line: string }>[];
+  /** UI-9: RG-8 revolt pressure shown on the rights tab (null before chapter 4). */
+  revoltPressure: RevoltPressureSection | null;
 }>;
 
 /** UI-6 (F2-A WR-3): the men away and when they come back (the population drawer's line), or null. */
@@ -61,6 +67,12 @@ export function lordshipView(state: GameState): LordshipView {
     // UI-8: pass right.id so DECISION_COPY.right can distinguish commuted_rent from market-charter rights.
     granted: (state.politics?.rights ?? []).map(right => DECISION_COPY.right(right.holder, right.stallFeePermille, right.id)),
     decline: lordship.decline === null ? null : LORDSHIP_COPY.decline(DECLINE_CAUSES[lordship.decline.cause] ?? lordship.decline.cause),
+    // UI-9: RG-7 rights held by townsfolk (borough_charter grants market_tolls + bridge_tolls to "townsfolk").
+    rightsTransfer: (state.politics?.rights ?? [])
+      .filter(r => r.holder === "townsfolk")
+      .map(r => ({ id: r.id, line: LORDSHIP_COPY.rightsTransferLine(r.id, yearOfTick(state, r.grantedTick)) })),
+    // UI-9: RG-8 revolt pressure on the rights tab (null before chapter 4).
+    revoltPressure: revoltPressureSection(state),
     war: war === undefined ? [] : [LORDSHIP_COPY.favour(war.favour),
       ...(conscriptsAway(state) > 0 ? [LORDSHIP_COPY.away(conscriptsAway(state))] : []),
       ...(state.palisade === null ? [] : [LORDSHIP_COPY.defence(Math.round(defence / 10), defence > 0)])],
