@@ -48,7 +48,8 @@ function EventCardDetail({ open, onDismiss, onDecide }: {
   return (
     <article className="event-card" data-story={open.kind}>
       <div className="event-card-art" aria-hidden="true" style={storyArtStyle(open.illustration, 296)} />
-      <h2 title={open.title}>{open.title}</h2>
+      {/* NAT-1: one line (ellipsis); "더 보기" shows it whole with the body (no hover-only title tooltip). */}
+      <h2 className={lineExpanded ? "event-card-title--whole" : undefined}>{open.title}</h2>
       {/* NAT-1: clamp to 4 lines; the "더 보기" button reveals the rest. */}
       <p className={`event-card-line${lineExpanded ? "" : " event-card-line--clamped"}`}>{open.line}</p>
       {lineExpanded ? null : (
