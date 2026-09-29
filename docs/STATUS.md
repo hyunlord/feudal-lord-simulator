@@ -1,12 +1,17 @@
 # 현재 상태
 
-갱신: 2026-09-29(NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
+- **LEAK-1 앞 프레임 상태 사슬 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시, SMOOTH-G가 찾음): [보고서](verification/leak1/REPORT.md), 결정 LEAK1-D1.
+  - `presentedState.ts` `PREVIOUS`의 값이 앞 상태(곧 앞 칸의 열쇠)를 쥐어 모든 지난 상태가 사슬로 살아 있었다 → 한 칸 캐시(두 틱 번호 + 같은 두 상태). `PRESENTED`는 값이 다른 열쇠를 쥐지 않아 그대로.
+  - 가장 큰 도시 5× 5분: 살아 있는 게임 상태 13개(1분 15개, 본선 2분 15,625개), JS 힙 33.5 → 41.7 MB(본선 86 → 465 MB).
+  - perf:gate 1단계 재측정: 아직 실패(가장 큰 도시·계절 전환, 배치 끌기 최대 200 ms), 새 게임은 판정 아님(다른 일 CPU)이지만 긴 프레임 0; 자동 저장 뒤 끊김 55 % → 6 %(통과). 남은 건 픽셀 GC 예산·계절 지면 재구성(SMOOTH-2R).
+  - 관문: 시험(옛 코드 199/199 상태 살아 실패) · 병합 전 검사 · 깨끗한 클론 CLONE_SHORT.
 - **NAT-1 자연스러움 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 판정 1380 도시): [보고서](verification/nat1/REPORT.md), 결정 NAT1-D1~D4.
   - 워커는 건물·성벽과 같은 깊이 순서(등각 상자 규칙, 예외는 돌 성문 통로·다리 위) — 지붕 위 워커 188~253쌍 → 0(상태 넷). 선택한 워커만 가려지면 옅은 실루엣.
   - 문 앞 실타래는 거리 줄마다 같은 것 둘까지·절반은 빈 자리·가구 id로 변주(한 가지 몫 ≤ 16.7 %). 비 오는 여름 웅덩이 변주.
