@@ -47,6 +47,9 @@ test("quarry artwork follows actual staffing and storage capacity without invent
   assert.equal(historicalFacilityAssetId(facility("market", 3)), "market_quiet");
 });
 
+// Each facility picture's declared canvas, by url ending (the stub Image answers with it, as the real file would).
+const DECLARED_SIZES = JSON.stringify(Object.fromEntries(historicalFacilityManifest.map(meta => [meta.url, [meta.width, meta.height]])));
+
 for (const mode of ["ready", "error", "wrong_size", "constructor_throw", "src_throw", "raster_throw"] as const) {
   test(`facility loading settles and preserves fallback after ${mode}`, () => {
     const script = `
@@ -61,17 +64,18 @@ for (const mode of ["ready", "error", "wrong_size", "constructor_throw", "src_th
         constructor() { count++; if ('${mode}' === 'constructor_throw') throw new Error('unavailable'); }
         set src(url) {
           if ('${mode}' === 'src_throw') throw new Error('unavailable');
-          // INSTALL-3: the malt kiln's Wave 3 paintings are their own 160 x 136 canvases (no derivative).
-          const kiln = String(url).includes('/wave3/');
-          this.naturalWidth = '${mode}' === 'wrong_size' ? 1 : kiln ? 160 : 1254;
-          this.naturalHeight = kiln ? 136 : 1254;
+          // INSTALL-3 / CLOTH-UI: the Wave 2 and Wave 3 paintings are their own canvases (the manifest's declared sizes).
+          const sizes = ${DECLARED_SIZES};
+          const size = Object.entries(sizes).find(([declared]) => String(url).endsWith(declared))?.[1] ?? [1254, 1254];
+          this.naturalWidth = '${mode}' === 'wrong_size' ? 1 : size[0];
+          this.naturalHeight = size[1];
           queueMicrotask(() => '${mode}' === 'error' ? this.onerror() : this.onload());
         }
       };
       const first = preloadHistoricalFacilityAssets();
       assert.equal(first, preloadHistoricalFacilityAssets());
       await first;
-      assert.equal(count, 13);
+      assert.equal(count, ${historicalFacilityManifest.length}); // 13, and CLOTH-UI's eleven cloth-chain paintings
       assert.ok(historicalFacilityAssetStatuses().every(asset => asset.status === (['ready', 'raster_throw'].includes('${mode}') ? 'ready' : 'missing')));
       if ('${mode}' === 'raster_throw') {
         assert.ok(historicalFacilityAssetStatuses().every(asset => asset.rasterError === 'raster draw failed'));
