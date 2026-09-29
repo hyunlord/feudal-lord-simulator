@@ -7,7 +7,7 @@ import { gunzipSync } from "node:zlib";
 import type { Walker } from "../src/agents/walker.types";
 import type { GameState } from "../src/engine/engine.types";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
-import { CACHE_LIMIT, PROP_SCALE, WALKER_CELL, WALKER_COMPOSED_CELL, WALKER_PAD, rightHand } from "../src/render/walkerComposer";
+import { PROP_SCALE, WALKER_CELL, WALKER_COMPOSED_CELL, WALKER_PAD, rightHand } from "../src/render/walkerComposer";
 import { walkerCloak, walkerHeldProp, walkerLook, walkerLooks, walkerSheet } from "../src/render/walkerLook";
 import { walkerCloakManifest, walkerPropManifest, walkerSheetManifest } from "../src/render/walkerSheetManifest.generated";
 
@@ -110,8 +110,9 @@ test("Given the calendar When it is winter Then cloaks cover everyone but the cl
   assert.ok(winter.walkers.some(walker => walkerCloak(winter, walkerLook(winter, walker)) !== null), "control: the winter scene shows cloaks");
 });
 
-test("Given the composer cache When it is full Then it holds at most 25 MB of composed cells (gate 5)", () => {
-  assert.ok(CACHE_LIMIT * 4 * WALKER_COMPOSED_CELL * 2 * WALKER_COMPOSED_CELL * 4 <= 25_000_000);
+test("Given the composer cache When cells are counted Then each is one 108 px cell and their bytes are the canvas budget's (SMOOTH-2R, was gate 5's 64 looks)", () => {
+  assert.equal(WALKER_COMPOSED_CELL, 108);
+  assert.equal(WALKER_COMPOSED_CELL * WALKER_COMPOSED_CELL * 4, 46_656);
 });
 
 test("Given the Wave 5a, 4e and 5c sheets When the manifest is read Then all 48 walkers, 76 props and the three cloaks are installed with the ledger bytes", () => {

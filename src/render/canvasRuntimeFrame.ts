@@ -1,3 +1,4 @@
+import { canvasBudget } from "./canvasBudget";
 import type { Walker } from "../agents/walker.types";
 import type { GameState, OverlayMode } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
@@ -57,6 +58,7 @@ export function drawCurrentCanvasFrame(input: Readonly<{
 }>): void {
   const probe = renderStageProbe.current;
   probe?.frameStart();
+  canvasBudget.beginFrame(); // SMOOTH-2R: the canvas caches' byte cap, once per frame
   if (boundaryV2Enabled()) beginGroundSceneFrame();
   const nowMs = performance.now();
   if (!isPlacementFeedbackVisible(input.refs.feedbackRef.current, nowMs)) {

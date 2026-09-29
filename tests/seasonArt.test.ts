@@ -14,7 +14,7 @@ import { resetSeasonBlendForTest, SEASON_FADE_MS, seasonBlend } from "../src/ren
 import { recordingCanvas } from "../scripts/recordingCanvas";
 
 // INSTALL-15 seasonal nature (Wave 15): the 65 installed files and their ledger rows, the picture chooser, the season
-// part of the chunk keys, the season change (crossfade, 5x immediate, loads are not changes), the chunk cache fade,
+// part of the chunk keys, the season change (crossfade, 5x immediate, loads are not changes), the chunk cache's turn (SMOOTH-2R: a wave),
 // the season decals and effects.
 const ROOT = new URL("../", import.meta.url);
 const state = (tick: number) => ({ tick, scenarioId: "core:campaign_market_town" });
@@ -79,9 +79,9 @@ test("Given the object pass When the season turns at 1x Then it fades over SEASO
   resetSeasonBlendForTest();
 });
 
-test("Given a held chunk raster When it re-rasters under a new season token Then it shows a stepped blend of old and new until the fade ends", () => {
+test("Given a held chunk raster When it re-rasters under a new season token Then it keeps the old season until its moment in the turn and re-rasters in place (SMOOTH-2R)", () => {
   const made: ReturnType<typeof recordingCanvas>[] = [];
-  // A fake clock (TEST-1): the fade's time is what the test says, not what a busy machine's timers give.
+  // A fake clock (TEST-1): the turn's time is what the test says, not what a busy machine's timers give.
   let clockMs = 0;
   const cache = createGroundChunkCache(((w: number, h: number) => { const canvas = recordingCanvas(w, h); made.push(canvas); return canvas; }) as unknown as Parameters<typeof createGroundChunkCache>[0],
     () => clockMs);
@@ -91,28 +91,23 @@ test("Given a held chunk raster When it re-rasters under a new season token Then
   cache.beginFrame(); cache.draw(target.context, request("a|s2", "s2", 1_000_000), () => undefined);
   target.canvas.ops.length = 0;
   cache.beginFrame(); cache.draw(target.context, request("a|s3", "s3", 40), () => undefined);
-  assert.equal(target.canvas.ops.filter(op => op.startsWith("drawImage")).length, 1, "the turn's first frame: one opaque blit (the old raster)");
+  assert.equal(target.canvas.ops.filter(op => op.startsWith("drawImage")).length, 1, "the turn's first frame: one opaque blit");
   assert.equal(cache.stats().fades, 1);
-  clockMs += 20;
+  clockMs += 40;
   target.canvas.ops.length = 0;
   cache.beginFrame(); cache.draw(target.context, request("a|s3", "s3", 40), () => undefined);
-  assert.equal(target.canvas.ops.filter(op => op.startsWith("drawImage")).length, 1, "mid-fade: one opaque blit (the blend)");
-  const blend = made.at(-1)!.canvas.ops;
-  assert.equal(blend.filter(op => op.startsWith("drawImage")).length, 2, "the blend: the old raster, then the new one over it");
-  assert.ok(blend.some(op => /^set globalAlpha\(0\.(3|4|5|6)\d*\)$/.test(op)), `mid-fade step alpha: ${blend.filter(op => op.includes("globalAlpha")).join(" ")}`);
-  // The same token (an art load, a zone edit) cuts over; a zero-length fade (5x) too.
-  clockMs += 30;
+  assert.equal(target.canvas.ops.filter(op => op.startsWith("drawImage")).length, 1, "after the turn's time: one opaque blit, of the new season");
+  assert.equal(cache.entry("ground:0,0")?.contentKey, "a|s3");
+  assert.equal(made.length, 1, "no staged or blend canvas: the chunk's own canvas");
+  // The same token (an art load, a zone edit) cuts over; a zero-length turn (5x) too.
   target.canvas.ops.length = 0;
   cache.beginFrame(); cache.draw(target.context, request("b|s3", "s3", 1_000_000), () => undefined);
   assert.equal(target.canvas.ops.filter(op => op.startsWith("drawImage")).length, 1);
+  assert.equal(cache.entry("ground:0,0")?.contentKey, "b|s3");
   cache.beginFrame(); cache.draw(target.context, request("b|s0", "s0", 0), () => undefined);
-  assert.equal(cache.stats().fades, 1);
-  // A short fade ends: one blit again.
-  cache.beginFrame(); cache.draw(target.context, request("b|s1", "s1", 1), () => undefined);
-  clockMs += 5;
-  target.canvas.ops.length = 0;
-  cache.beginFrame(); cache.draw(target.context, request("b|s1", "s1", 1), () => undefined);
-  assert.equal(target.canvas.ops.filter(op => op.startsWith("drawImage")).length, 1);
+  assert.equal(cache.entry("ground:0,0")?.contentKey, "b|s0");
+  assert.equal(cache.stats().fades, 2);
+  assert.equal(made.length, 1);
 });
 
 test("Given the season decals When scattered Then spring has flowers, winter has ice on a quarter of that scatter, and only finished palisade edges and hurdles drift", () => {
