@@ -24,7 +24,8 @@ try {
         sites: state.constructionSites.map(site => site.kind), church: count("church"), chapel: count("chapel"), quarry: count("quarry"), masonry: count("masonry"),
         logging: count("logging_camp"), sawmill: count("sawmill"), market: count("market"), timber: state.treasuryTimber + stock(state, "timber"),
         logs: stock(state, "logs"), stone: stock(state, "stone"), coin: state.treasuryCoin, timberOrder: state.timberOrder ?? 0, boughtCoin: bought,
-        idle: state.idleWorkers })}\n`);
+        idle: state.idleWorkers, waterRoads: state.tiles.filter(tile => tile.terrain === "water" && tile.hasRoad).map(tile => `${tile.tx},${tile.ty}`),
+        roads: state.tiles.filter(tile => tile.hasRoad).length, buildings: state.buildings.length })}\n`);
     }
     if (year > last) throw new Stop();
   }, additionalAcceptance: state => stateCalendar(state).year > last });
