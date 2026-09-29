@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path'),sharp=require('/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const root=path.resolve(__dirname,'..'); const src='/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-617f-7c82-8469-4f883fde101b';
+const ids={c:'exec-d145b4f6-d9f5-4f53-9c45-4e73573eec5b.png',d:'exec-f7f6e014-445b-4baa-9ca9-0e95f7ad9372.png',e:'exec-35f7fcdc-7639-4917-8e86-a047ba3835b0.png'};
+(async()=>{for(const[v,p]of Object.entries(ids)){fs.copyFileSync(path.join(src,p),path.join(root,'native/l4h',v+'-base.png'));await sharp(path.join(src,p)).trim({threshold:10}).resize(175,198,{fit:'fill'}).extend({top:4,bottom:2,left:16,right:13,background:{r:0,g:0,b:0,alpha:0}}).png().toFile(path.join(root,'assets',`house_pair_l4_horizontal_${v}-v1.png`));}})();

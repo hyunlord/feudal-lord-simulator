@@ -33,4 +33,10 @@ export const ALE_BALANCE = {
   /** AL-7: ale's market price (pennies a cask), and the alehouse's dues a ledger period: this share of its sales. */
   alePrice: 3,
   alehouseDuesPermille: 200,
+  /**
+   * AL-3 (FIX-8, decision FX8-1): a storehouse takes malt up to this share of its room, permille; past it the kiln
+   * holds its own (20) and stops, and the brewsters fetch from it. The kilns malt more than the town brews, and a
+   * store full of malt would hold no timber.
+   */
+  maltStorePermille: 250,
 } as const;

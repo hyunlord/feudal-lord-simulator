@@ -61,7 +61,8 @@ export const RESOURCE_CATALOG = [
   { id: "stone", storage: "storehouse", group: "goods", hudPriority: 6, carrier: "quarryman", cartLoadKey: "stone", cartPileKey: "pile_stone_1", sheetCell: "stone", color: "stone", bulk: 1 },
   // C4 the ale chain: barley from the fields, malt from the kiln, ale brewed in the households (no hops before 1400s).
   { id: "barley", storage: "granary", group: "raw", hudPriority: 7, carrier: "farmer", cartLoadKey: "grainsack", chainCell: "barley", color: "goldDark", bulk: 1 },
-  { id: "malt", storage: "granary", group: "goods", hudPriority: 8, carrier: "farmer", cartLoadKey: "grainsack", chainCell: "malt", color: "earth", bulk: 1 },
+  // FIX-8 (decision FX8-1): malt is not food — it goes to the storehouse (a granary full of it held no bread, C4's seed 4).
+  { id: "malt", storage: "storehouse", group: "goods", hudPriority: 8, carrier: "farmer", cartLoadKey: "grainsack", chainCell: "malt", color: "earth", bulk: 1 },
   { id: "ale", storage: "storehouse", group: "drink", hudPriority: 9, carrier: "farmer", chainCell: "ale", color: "earthDark", bulk: 1 },
   // C5 the cloth chain (K2's seven goods): fleece from the pasture flocks, yarn spun at home, cloth woven, fulled at the
   // water mill, dyed (woad, madder, weld — the dyes the merchants bring), stretched on the tenters, sold finished.

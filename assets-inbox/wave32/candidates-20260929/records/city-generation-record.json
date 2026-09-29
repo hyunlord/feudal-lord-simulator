@@ -1,0 +1,26 @@
+[
+  {
+    "id": "city-large-cleanplate",
+    "tool": "built-in image_gen.imagegen",
+    "intent": "precise-object-edit",
+    "prompt": "Use case: precise-object-edit. Edit target: supplied 1200x750 isometric medieval city screenshot. Remove ONLY the SIX identical large red-orange gable-roof granaries on white staddle stones: one centered (374,305), two at upper right (944,268) and (1041,308), one lower right (1004,541), and two at bottom center (657,583) and (749,624). Fill just their silhouettes with coherent nearby brown-green earth and path texture. Preserve ALL other buildings, houses, fences, people, water, vegetation, HUD, text, and exact camera alignment. Do not replace or repaint the scene. Output same landscape composition. This is a cleanplate for exact masked compositing: only these six former building silhouettes will be used.",
+    "reference": "references/city-large.png",
+    "outputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8f-7895-7610-b90d-9cc26b5682e8 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8f-7895-7610-b90d-9cc26b5682e8/exec-912d006e-2fef-440f-9cd9-de10241160c4.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourceOutput": "native/city-large-generated-cleanplate.png",
+    "modelVersion": null,
+    "seed": null,
+    "postprocess": "Resample generated image to original screenshot dimensions. Use only original barn alpha silhouette masks with 1px dilation. Preserve other pixels and restore selected foreground objects from original."
+  },
+  {
+    "id": "city-small-cleanplate",
+    "tool": "built-in image_gen.imagegen",
+    "intent": "precise-object-edit",
+    "prompt": "Use case: precise-object-edit. Edit target: supplied 900x562 isometric medieval city screenshot. Remove ONLY the SIX identical large red-orange gable-roof granaries on white staddle stones: one centered (328,243), two at upper right (640,223) and (690,246), one lower right (665,369), and two at bottom center (483,391) and (530,418). Fill just their silhouettes with coherent nearby brown-green earth and path texture. Preserve ALL other buildings, houses, fences, people, water, vegetation, HUD, text, and exact camera alignment. Do not replace or repaint the scene. Output same landscape composition. This is a cleanplate for exact masked compositing: only these six former building silhouettes will be used.",
+    "reference": "references/city-small.png",
+    "outputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8f-7895-7610-b90d-9cc26b5682e8 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8f-7895-7610-b90d-9cc26b5682e8/exec-9f8cda42-5b1d-4013-abe1-e04b2d4130ce.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "sourceOutput": "native/city-small-generated-cleanplate.png",
+    "modelVersion": null,
+    "seed": null,
+    "postprocess": "Resample generated image to original screenshot dimensions. Use only original barn alpha silhouette masks with 1px dilation. Preserve other pixels and restore selected foreground objects from original."
+  }
+]

@@ -1,0 +1,173 @@
+{
+  "status": "candidate; offline composite; not installed; not runtime evidence",
+  "method": "Only old barn alpha silhouettes plus 1px dilation take generated cleanplate pixels. New assets use original full canvas registration. Explicit foreground polygons restore existing Wave30 foreground houses/stalls. Screenshot fit is estimated, not product transform.",
+  "sourceZoomLabels": "1.0 and 1.4 are inherited Wave30 capture labels, not magnifications manufactured by this script.",
+  "large": {
+    "changedPixels": 83280,
+    "outsideAuthorizedMaskChangedPixels": 0,
+    "placements": [
+      {
+        "variant": "a",
+        "state": "full",
+        "mse": 497.1531407611188,
+        "s": 1.27,
+        "x": 270,
+        "y": 224,
+        "anchor": [
+          371.6,
+          386.56
+        ]
+      },
+      {
+        "variant": "b",
+        "state": "half",
+        "mse": 796.3995873452544,
+        "s": 1.27,
+        "x": 858,
+        "y": 182,
+        "anchor": [
+          959.6,
+          344.56
+        ]
+      },
+      {
+        "variant": "c",
+        "state": "empty",
+        "mse": 237.26753782668501,
+        "s": 1.27,
+        "x": 942,
+        "y": 224,
+        "anchor": [
+          1043.6,
+          386.56
+        ]
+      },
+      {
+        "variant": "a",
+        "state": "half",
+        "mse": 250.46882164144887,
+        "s": 1.27,
+        "x": 900,
+        "y": 455,
+        "anchor": [
+          1001.6,
+          617.56
+        ]
+      },
+      {
+        "variant": "b",
+        "state": "empty",
+        "mse": 861.3270056497175,
+        "s": 1.28,
+        "x": 563,
+        "y": 497,
+        "anchor": [
+          665.4,
+          660.84
+        ]
+      },
+      {
+        "variant": "c",
+        "state": "full",
+        "mse": 226.16093535075655,
+        "s": 1.27,
+        "x": 648,
+        "y": 539,
+        "anchor": [
+          749.6,
+          701.56
+        ]
+      }
+    ]
+  },
+  "small": {
+    "changedPixels": 24389,
+    "outsideAuthorizedMaskChangedPixels": 0,
+    "placements": [
+      {
+        "variant": "a",
+        "state": "full",
+        "mse": 762.1127946127946,
+        "s": 0.67,
+        "x": 274,
+        "y": 201,
+        "anchor": [
+          327.6,
+          286.76
+        ]
+      },
+      {
+        "variant": "b",
+        "state": "half",
+        "mse": 876.8930976430977,
+        "s": 0.67,
+        "x": 589,
+        "y": 179,
+        "anchor": [
+          642.6,
+          264.76
+        ]
+      },
+      {
+        "variant": "c",
+        "state": "empty",
+        "mse": 322.8515873015873,
+        "s": 0.69,
+        "x": 633,
+        "y": 200,
+        "anchor": [
+          688.2,
+          288.32
+        ]
+      },
+      {
+        "variant": "a",
+        "state": "half",
+        "mse": 324.8826860841424,
+        "s": 0.68,
+        "x": 611,
+        "y": 324,
+        "anchor": [
+          665.4,
+          411.04
+        ]
+      },
+      {
+        "variant": "b",
+        "state": "empty",
+        "mse": 957.3220064724919,
+        "s": 0.68,
+        "x": 431,
+        "y": 346,
+        "anchor": [
+          485.4,
+          433.04
+        ]
+      },
+      {
+        "variant": "c",
+        "state": "full",
+        "mse": 312.56553398058253,
+        "s": 0.68,
+        "x": 476,
+        "y": 369,
+        "anchor": [
+          530.4,
+          456.04
+        ]
+      }
+    ]
+  },
+  "stateReadabilityReview": {
+    "native": "A full/half/empty are clear. B and C open versus closed doors are visible; exact full versus half needs comparison of small sack groups.",
+    "scale06": "Roof materials and snow remain clear. A full versus half is visible on comparison; B/C full versus half is weak at 96x86 and should not be claimed immediately readable in a moving city. Boarded/weathered are subtle at this scale.",
+    "verdict": "Candidate art proof passes placement/repetition review; compact inventory readability remains a disclosed limitation."
+  },
+  "repetitionVerdict": "Six identical red roofs become 2 thatch + 2 timber/tile + 2 stone/slab roofs. Largest identical cluster is reduced from 6 to 2; red tile remains on other untouched houses. Inventory differences require close inspection at 0.6 scale and are not a runtime readability claim.",
+  "remainingLimits": [
+    "Screenshot anchors estimated using original barn template.",
+    "Cleanplate is generated only inside old silhouettes; background under removed buildings is inferred.",
+    "No runtime occlusion, DPR, camera motion, or all-placement connection validation.",
+    "JPEG proofs are lossy; unchanged-pixel count measured from PNG composites before JPEG encoding."
+  ]
+}

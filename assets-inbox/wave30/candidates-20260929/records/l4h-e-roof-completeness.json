@@ -1,0 +1,145 @@
+{
+  "before": {
+    "roofPixels": 3453,
+    "snowPixels": 2544,
+    "coveragePercent": 73.6750651607298,
+    "roofPolygons": [
+      [
+        [
+          51,
+          10
+        ],
+        [
+          118,
+          47
+        ],
+        [
+          84,
+          84
+        ]
+      ],
+      [
+        [
+          126,
+          51
+        ],
+        [
+          190,
+          87
+        ],
+        [
+          157,
+          111
+        ]
+      ],
+      [
+        [
+          91,
+          112
+        ],
+        [
+          99,
+          96
+        ],
+        [
+          107,
+          103
+        ],
+        [
+          104,
+          121
+        ]
+      ]
+    ]
+  },
+  "after": {
+    "roofPixels": 3827,
+    "snowPixels": 2544,
+    "coveragePercent": 66.47504572772407,
+    "roofPolygons": [
+      [
+        [
+          51,
+          10
+        ],
+        [
+          118,
+          47
+        ],
+        [
+          84,
+          84
+        ]
+      ],
+      [
+        [
+          126,
+          51
+        ],
+        [
+          190,
+          87
+        ],
+        [
+          157,
+          111
+        ]
+      ],
+      [
+        [
+          91,
+          112
+        ],
+        [
+          99,
+          96
+        ],
+        [
+          107,
+          103
+        ],
+        [
+          104,
+          121
+        ]
+      ],
+      [
+        [
+          118,
+          47
+        ],
+        [
+          123,
+          58
+        ],
+        [
+          99,
+          79
+        ],
+        [
+          84,
+          84
+        ]
+      ]
+    ]
+  },
+  "addedPolygon": [
+    [
+      118,
+      47
+    ],
+    [
+      123,
+      58
+    ],
+    [
+      99,
+      79
+    ],
+    [
+      84,
+      84
+    ]
+  ],
+  "reason": "Visual inspection at3x confirms band is exposed reddish tiled roof plane of the taller left house, behind the smaller front gable. Initial triangular mask omitted this quadrilateral. Denominator expanded for geometric completeness. No asset PNG or snow mask changed."
+}

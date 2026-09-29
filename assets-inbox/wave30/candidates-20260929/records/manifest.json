@@ -1,0 +1,3391 @@
+{
+  "status": "PASS",
+  "count": 90,
+  "failures": [],
+  "assets": [
+    {
+      "id": "house_pair_l2_horizontal_c_boarded-v1",
+      "file": "assets/house_pair_l2_horizontal_c_boarded-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "boarded",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "two offset attached ridges",
+      "wall": "ivory limewash; vertical oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 24622,
+        "partial": 0,
+        "visible": 5798
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "b5526ae87a32d043c0bf5f232361cb00edfd82c9391f0cf16b8debe69cb5ec5c"
+    },
+    {
+      "id": "house_pair_l2_horizontal_c_fresh-v1",
+      "file": "assets/house_pair_l2_horizontal_c_fresh-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "fresh",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "two offset attached ridges",
+      "wall": "ivory limewash; vertical oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23241,
+        "partial": 7179,
+        "visible": 7179
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "d9761f39df2cb465a1ecb2ba3b5880cd7a65c99db1a2609cc2258998db1c170e"
+    },
+    {
+      "id": "house_pair_l2_horizontal_c_snow-v1",
+      "file": "assets/house_pair_l2_horizontal_c_snow-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "snow",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "two offset attached ridges",
+      "wall": "ivory limewash; vertical oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": {
+        "roofMask": "records/masks/l2h-c-roof.png",
+        "snowMask": "records/masks/l2h-c-snow.png",
+        "roofPixels": 7127,
+        "snowPixels": 4834,
+        "coveragePercent": 67.82657499649221,
+        "removedAfterMask": 46,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 25586,
+        "partial": 0,
+        "visible": 4834
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "07212663208db6acce06f70a5458d8c8ee329ad908a85380d71e8977fe1af55f"
+    },
+    {
+      "id": "house_pair_l2_horizontal_c_weathered-v1",
+      "file": "assets/house_pair_l2_horizontal_c_weathered-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "weathered",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "two offset attached ridges",
+      "wall": "ivory limewash; vertical oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23293,
+        "partial": 7127,
+        "visible": 7127
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "32b6c8ec2c4efaf1035e8f5be1468b4a802b33ef879aa925fa873d3702846c0a"
+    },
+    {
+      "id": "house_pair_l2_horizontal_c-v1",
+      "file": "assets/house_pair_l2_horizontal_c-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "base",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "two offset attached ridges",
+      "wall": "ivory limewash; vertical oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 13531,
+        "partial": 16535,
+        "visible": 16889
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "b6ec842e238bc9111bb5bd438d6b1fcf6f3c94c48c6d47c9897a034309f70c23"
+    },
+    {
+      "id": "house_pair_l2_horizontal_d_boarded-v1",
+      "file": "assets/house_pair_l2_horizontal_d_boarded-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "boarded",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "left projecting gable; unequal thatch ridges",
+      "wall": "ochre limewash; diagonal oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 25200,
+        "partial": 0,
+        "visible": 5220
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "b0ec6f3bf20bcbf939457ae5e6ea77fdb5131f968b0f7838fb1f674f812fe7d8"
+    },
+    {
+      "id": "house_pair_l2_horizontal_d_fresh-v1",
+      "file": "assets/house_pair_l2_horizontal_d_fresh-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "fresh",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "left projecting gable; unequal thatch ridges",
+      "wall": "ochre limewash; diagonal oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23106,
+        "partial": 7314,
+        "visible": 7314
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "98a670657f008db80aebc56f552aaa1cd8759b79b2fb3c55b4d9322402d3a002"
+    },
+    {
+      "id": "house_pair_l2_horizontal_d_snow-v1",
+      "file": "assets/house_pair_l2_horizontal_d_snow-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "snow",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "left projecting gable; unequal thatch ridges",
+      "wall": "ochre limewash; diagonal oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": {
+        "roofMask": "records/masks/l2h-d-roof.png",
+        "snowMask": "records/masks/l2h-d-snow.png",
+        "roofPixels": 6575,
+        "snowPixels": 4887,
+        "coveragePercent": 74.32699619771863,
+        "removedAfterMask": 9,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 25533,
+        "partial": 0,
+        "visible": 4887
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "de0bc524c7cda3a4939b0c958e506e6ffc50c48c8b1b6e5a1aa60b94e8da37a2"
+    },
+    {
+      "id": "house_pair_l2_horizontal_d_weathered-v1",
+      "file": "assets/house_pair_l2_horizontal_d_weathered-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "weathered",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "left projecting gable; unequal thatch ridges",
+      "wall": "ochre limewash; diagonal oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 22915,
+        "partial": 7505,
+        "visible": 7505
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "70235a3a69ec788eae1b7d630a3233232b480e42522cb05290a01b45a2d603b6"
+    },
+    {
+      "id": "house_pair_l2_horizontal_d-v1",
+      "file": "assets/house_pair_l2_horizontal_d-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "base",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "left projecting gable; unequal thatch ridges",
+      "wall": "ochre limewash; diagonal oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 13877,
+        "partial": 16184,
+        "visible": 16543
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "1dc5828d50526f35f26f50f2203113da1cbcd139184f6f4e604282e8bac32d77"
+    },
+    {
+      "id": "house_pair_l2_horizontal_e_boarded-v1",
+      "file": "assets/house_pair_l2_horizontal_e_boarded-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "boarded",
+      "width": 195,
+      "height": 156,
+      "roof": "muted flat clay tile",
+      "shape": "two offset attached ridges",
+      "wall": "pink and ivory limewash; sparse oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 27211,
+        "partial": 0,
+        "visible": 3209
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "359b530165ae7b00de0bde30f79d74410c5ef4b353c5f3882d8586b7b763d9a3"
+    },
+    {
+      "id": "house_pair_l2_horizontal_e_fresh-v1",
+      "file": "assets/house_pair_l2_horizontal_e_fresh-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "fresh",
+      "width": 195,
+      "height": 156,
+      "roof": "muted flat clay tile",
+      "shape": "two offset attached ridges",
+      "wall": "pink and ivory limewash; sparse oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 22905,
+        "partial": 7515,
+        "visible": 7515
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "d0d54c8e90854e98ca6d013457a6e5abe1230bfd0c6f1d4e067a99d7c632921c"
+    },
+    {
+      "id": "house_pair_l2_horizontal_e_snow-v1",
+      "file": "assets/house_pair_l2_horizontal_e_snow-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "snow",
+      "width": 195,
+      "height": 156,
+      "roof": "muted flat clay tile",
+      "shape": "two offset attached ridges",
+      "wall": "pink and ivory limewash; sparse oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": {
+        "roofMask": "records/masks/l2h-e-roof.png",
+        "snowMask": "records/masks/l2h-e-snow.png",
+        "roofPixels": 6828,
+        "snowPixels": 5077,
+        "coveragePercent": 74.35559461042766,
+        "removedAfterMask": 40,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 25343,
+        "partial": 0,
+        "visible": 5077
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "bedf6d5fa1e5bf5620eaea6422454d85a5db084243201e2da0a047c92c2325b7"
+    },
+    {
+      "id": "house_pair_l2_horizontal_e_weathered-v1",
+      "file": "assets/house_pair_l2_horizontal_e_weathered-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "weathered",
+      "width": 195,
+      "height": 156,
+      "roof": "muted flat clay tile",
+      "shape": "two offset attached ridges",
+      "wall": "pink and ivory limewash; sparse oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23344,
+        "partial": 7076,
+        "visible": 7076
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "c5dd70eb72f400dc89bcc2e9d4eac69b7ac2d0760965d39e33c0a7c8e1474a34"
+    },
+    {
+      "id": "house_pair_l2_horizontal_e-v1",
+      "file": "assets/house_pair_l2_horizontal_e-v1.png",
+      "status": "candidate",
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "base",
+      "width": 195,
+      "height": 156,
+      "roof": "muted flat clay tile",
+      "shape": "two offset attached ridges",
+      "wall": "pink and ivory limewash; sparse oak",
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "provenance": "records/l2h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 13682,
+        "partial": 16374,
+        "visible": 16738
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "9d0880b632169dea96f582d49db289fd0f7e679b938e47b71b371c2a0e027d98"
+    },
+    {
+      "id": "house_pair_l2_vertical_c_boarded-v1",
+      "file": "assets/house_pair_l2_vertical_c_boarded-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "boarded",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm white limewash sparse oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 30869,
+        "partial": 2620,
+        "visible": 2620
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "c0c7ca1f5854ce2c853398912f993dbd9aa8eca8de5d792718b33f9dbf62be0e"
+    },
+    {
+      "id": "house_pair_l2_vertical_c_fresh-v1",
+      "file": "assets/house_pair_l2_vertical_c_fresh-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "fresh",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm white limewash sparse oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 26767,
+        "partial": 6706,
+        "visible": 6722
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "075b96b92121bc3b3690069bf8810d564f775d5c09a28d54374b2049bebfc1d7"
+    },
+    {
+      "id": "house_pair_l2_vertical_c_snow-v1",
+      "file": "assets/house_pair_l2_vertical_c_snow-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "snow",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm white limewash sparse oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": {
+        "roofMask": "records/masks/l2v-c-roof.png",
+        "snowMask": "records/masks/l2v-c-snow.png",
+        "roofPixels": 5998,
+        "snowPixels": 3718,
+        "coveragePercent": 61.98732910970324,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 29771,
+        "partial": 3714,
+        "visible": 3718
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "519e5db2d9710a1a354ed9bd88792a50d7198de597ae713ca9b8a883ead8bd1b"
+    },
+    {
+      "id": "house_pair_l2_vertical_c_weathered-v1",
+      "file": "assets/house_pair_l2_vertical_c_weathered-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "weathered",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm white limewash sparse oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23953,
+        "partial": 9513,
+        "visible": 9536
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "049c915449316188c927cb74ebb7fb748f614cc957b0f9baece3160adb948aa0"
+    },
+    {
+      "id": "house_pair_l2_vertical_c-v1",
+      "file": "assets/house_pair_l2_vertical_c-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "base",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm white limewash sparse oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 18788,
+        "partial": 14395,
+        "visible": 14701
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "4a45cb1ac33883fab6fc82233b1735674f30dc329f51bcd89cc7411617e29e75"
+    },
+    {
+      "id": "house_pair_l2_vertical_d_boarded-v1",
+      "file": "assets/house_pair_l2_vertical_d_boarded-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "boarded",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm ochre limewash vertical oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 31382,
+        "partial": 2107,
+        "visible": 2107
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "767d19676da3a45ca44d76c8be8bdb485cdf989dcd3f9d628480202b6c970ff8"
+    },
+    {
+      "id": "house_pair_l2_vertical_d_fresh-v1",
+      "file": "assets/house_pair_l2_vertical_d_fresh-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "fresh",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm ochre limewash vertical oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23642,
+        "partial": 9816,
+        "visible": 9847
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "003e3c577709f400f232b8c3a3dc0a8a7c24e60d92f07582762cd0c0c746c451"
+    },
+    {
+      "id": "house_pair_l2_vertical_d_snow-v1",
+      "file": "assets/house_pair_l2_vertical_d_snow-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "snow",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm ochre limewash vertical oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": {
+        "roofMask": "records/masks/l2v-d-roof.png",
+        "snowMask": "records/masks/l2v-d-snow.png",
+        "roofPixels": 6260,
+        "snowPixels": 4107,
+        "coveragePercent": 65.60702875399362,
+        "removedAfterMask": 5,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 29377,
+        "partial": 4109,
+        "visible": 4112
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "f05bf72a2484b06e935aa564a2935e9a764fecc738cb6e143d851b1b0911391b"
+    },
+    {
+      "id": "house_pair_l2_vertical_d_weathered-v1",
+      "file": "assets/house_pair_l2_vertical_d_weathered-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "weathered",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm ochre limewash vertical oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 22842,
+        "partial": 10639,
+        "visible": 10647
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "bf5c4556b0db11d563fd78c7661e2caf5f07223ac3c295fb6e5c62df36270a07"
+    },
+    {
+      "id": "house_pair_l2_vertical_d-v1",
+      "file": "assets/house_pair_l2_vertical_d-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "base",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm ochre limewash vertical oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 18547,
+        "partial": 14610,
+        "visible": 14942
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "9bcd6a04b168a5e21dc07af013a42697b47ad33d529c4e2b15403b9f2b896a5c"
+    },
+    {
+      "id": "house_pair_l2_vertical_e_boarded-v1",
+      "file": "assets/house_pair_l2_vertical_e_boarded-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "boarded",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "pale salmon limewash diagonal oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 31462,
+        "partial": 2027,
+        "visible": 2027
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "4dab6e49787a44f106fdd3266a9c9a2c4e5cca9512baf674c38e9f5ffb0da47b"
+    },
+    {
+      "id": "house_pair_l2_vertical_e_fresh-v1",
+      "file": "assets/house_pair_l2_vertical_e_fresh-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "fresh",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "pale salmon limewash diagonal oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 24861,
+        "partial": 8568,
+        "visible": 8628
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "e07a7ab9941cea8f8091297dcc2d50111810cc1ef04e01aac8910970d2cf07b1"
+    },
+    {
+      "id": "house_pair_l2_vertical_e_snow-v1",
+      "file": "assets/house_pair_l2_vertical_e_snow-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "snow",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "pale salmon limewash diagonal oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": {
+        "roofMask": "records/masks/l2v-e-roof.png",
+        "snowMask": "records/masks/l2v-e-snow.png",
+        "roofPixels": 6260,
+        "snowPixels": 3771,
+        "coveragePercent": 60.239616613418534,
+        "removedAfterMask": 4,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 29714,
+        "partial": 3772,
+        "visible": 3775
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "92a5c248baa5ceb97ba0071c91e4c5ac0cf88969c77a544dcbc2d263adbda2b7"
+    },
+    {
+      "id": "house_pair_l2_vertical_e_weathered-v1",
+      "file": "assets/house_pair_l2_vertical_e_weathered-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "weathered",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "pale salmon limewash diagonal oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 21912,
+        "partial": 11556,
+        "visible": 11577
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "f67b5ef32445083da6c6dab8b79ba701542de4e9e398cba4cedb168c4cfe5173"
+    },
+    {
+      "id": "house_pair_l2_vertical_e-v1",
+      "file": "assets/house_pair_l2_vertical_e-v1.png",
+      "status": "candidate",
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "base",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "pale salmon limewash diagonal oak",
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "provenance": "records/l2v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 18402,
+        "partial": 14738,
+        "visible": 15087
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "82e84ce5178e397482bc14216dcf45fb237fad45b5401f7cfe93c69fcd1edd35"
+    },
+    {
+      "id": "house_pair_l3_horizontal_c_boarded-v1",
+      "file": "assets/house_pair_l3_horizontal_c_boarded-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "boarded",
+      "width": 209,
+      "height": 167,
+      "roof": "thatch",
+      "shape": "unequal intersecting double gables",
+      "wall": "warm ochre limewash, diagonal oak",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 29228,
+        "partial": 5674,
+        "visible": 5675
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "ab9d2de127e05629ab8820bc5af9e2ed2119b1210b46d05760cf7669e6fc9672"
+    },
+    {
+      "id": "house_pair_l3_horizontal_c_fresh-v1",
+      "file": "assets/house_pair_l3_horizontal_c_fresh-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "fresh",
+      "width": 209,
+      "height": 167,
+      "roof": "thatch",
+      "shape": "unequal intersecting double gables",
+      "wall": "warm ochre limewash, diagonal oak",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 25394,
+        "partial": 9504,
+        "visible": 9509
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "59213aa5d2043bf0f2704a80cdfc7e16544dcfe2914acb64e2668ff72e3431a2"
+    },
+    {
+      "id": "house_pair_l3_horizontal_c_snow-v1",
+      "file": "assets/house_pair_l3_horizontal_c_snow-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "snow",
+      "width": 209,
+      "height": 167,
+      "roof": "thatch",
+      "shape": "unequal intersecting double gables",
+      "wall": "warm ochre limewash, diagonal oak",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": {
+        "roofMask": "records/masks/l3h-c-roof.png",
+        "snowMask": "records/masks/l3h-c-snow.png",
+        "roofPixels": 5847,
+        "snowPixels": 4351,
+        "coveragePercent": 74.41422951941166,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 30318,
+        "partial": 4583,
+        "visible": 4585
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "d152184eef7ed850a4f22563c5ecde2db5934084ed0cde07910deb0adfb35b27"
+    },
+    {
+      "id": "house_pair_l3_horizontal_c_weathered-v1",
+      "file": "assets/house_pair_l3_horizontal_c_weathered-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "weathered",
+      "width": 209,
+      "height": 167,
+      "roof": "thatch",
+      "shape": "unequal intersecting double gables",
+      "wall": "warm ochre limewash, diagonal oak",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 22556,
+        "partial": 12307,
+        "visible": 12347
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "76ae4799ec7d55765641bb4f15bc3a2649160994fa7fd08e6753e0deed3d58ff"
+    },
+    {
+      "id": "house_pair_l3_horizontal_c-v1",
+      "file": "assets/house_pair_l3_horizontal_c-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "base",
+      "width": 209,
+      "height": 167,
+      "roof": "thatch",
+      "shape": "unequal intersecting double gables",
+      "wall": "warm ochre limewash, diagonal oak",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 17048,
+        "partial": 17494,
+        "visible": 17855
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "a5ca047317a2ba071b28d7dd40465531e70704140d0cdb8cea0f31a82b683c95"
+    },
+    {
+      "id": "house_pair_l3_horizontal_d_boarded-v1",
+      "file": "assets/house_pair_l3_horizontal_d_boarded-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "boarded",
+      "width": 209,
+      "height": 167,
+      "roof": "flat_clay_tile",
+      "shape": "narrow twin gables, petite jetty",
+      "wall": "pale pink limewash, upright framing",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 29112,
+        "partial": 5787,
+        "visible": 5791
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "d73a3ba1be43b418889682ce6348d206c44122e9849b53e9d979f5ebad94ba73"
+    },
+    {
+      "id": "house_pair_l3_horizontal_d_fresh-v1",
+      "file": "assets/house_pair_l3_horizontal_d_fresh-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "fresh",
+      "width": 209,
+      "height": 167,
+      "roof": "flat_clay_tile",
+      "shape": "narrow twin gables, petite jetty",
+      "wall": "pale pink limewash, upright framing",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 24049,
+        "partial": 10840,
+        "visible": 10854
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "df22c4d1909e8d2cd5a4b7d63849a600ad839d88c3c25407c6131ac5a07705ed"
+    },
+    {
+      "id": "house_pair_l3_horizontal_d_snow-v1",
+      "file": "assets/house_pair_l3_horizontal_d_snow-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "snow",
+      "width": 209,
+      "height": 167,
+      "roof": "flat_clay_tile",
+      "shape": "narrow twin gables, petite jetty",
+      "wall": "pale pink limewash, upright framing",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": {
+        "roofMask": "records/masks/l3h-d-roof.png",
+        "snowMask": "records/masks/l3h-d-snow.png",
+        "roofPixels": 5090,
+        "snowPixels": 3544,
+        "coveragePercent": 69.62671905697447,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 30860,
+        "partial": 4018,
+        "visible": 4043
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "4a3865b94ecbcec23034890533731d8de24d61cc065b9947d373cb30859e760e"
+    },
+    {
+      "id": "house_pair_l3_horizontal_d_weathered-v1",
+      "file": "assets/house_pair_l3_horizontal_d_weathered-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "weathered",
+      "width": 209,
+      "height": 167,
+      "roof": "flat_clay_tile",
+      "shape": "narrow twin gables, petite jetty",
+      "wall": "pale pink limewash, upright framing",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 22208,
+        "partial": 12687,
+        "visible": 12695
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "b3ef65ed200cc43e0e475a6a2ad0d94f74a0a6dfcc3f37bf90c86f944cade9a0"
+    },
+    {
+      "id": "house_pair_l3_horizontal_d-v1",
+      "file": "assets/house_pair_l3_horizontal_d-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "base",
+      "width": 209,
+      "height": 167,
+      "roof": "flat_clay_tile",
+      "shape": "narrow twin gables, petite jetty",
+      "wall": "pale pink limewash, upright framing",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 16549,
+        "partial": 17994,
+        "visible": 18354
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "7815dff8775f3e996c16894aaa7f3a80808e6f06d21346919c506769e0f16553"
+    },
+    {
+      "id": "house_pair_l3_horizontal_e_boarded-v1",
+      "file": "assets/house_pair_l3_horizontal_e_boarded-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "boarded",
+      "width": 209,
+      "height": 167,
+      "roof": "stone_slab",
+      "shape": "broad left and lower offset right gable, side doorway",
+      "wall": "ivory limewash, diagonal braces",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 29189,
+        "partial": 5713,
+        "visible": 5714
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "cee4b1adee671eb213b5279e43db9aaa5d06cad347327584e0d8b97548a2b4e4"
+    },
+    {
+      "id": "house_pair_l3_horizontal_e_fresh-v1",
+      "file": "assets/house_pair_l3_horizontal_e_fresh-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "fresh",
+      "width": 209,
+      "height": 167,
+      "roof": "stone_slab",
+      "shape": "broad left and lower offset right gable, side doorway",
+      "wall": "ivory limewash, diagonal braces",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 21814,
+        "partial": 13045,
+        "visible": 13089
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "fafb29d5edf632005fbbf0baefcea5328e32b7daa5bf7ad0f94014fafa91d2d4"
+    },
+    {
+      "id": "house_pair_l3_horizontal_e_snow-v1",
+      "file": "assets/house_pair_l3_horizontal_e_snow-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "snow",
+      "width": 209,
+      "height": 167,
+      "roof": "stone_slab",
+      "shape": "broad left and lower offset right gable, side doorway",
+      "wall": "ivory limewash, diagonal braces",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": {
+        "roofMask": "records/masks/l3h-e-roof.png",
+        "snowMask": "records/masks/l3h-e-snow.png",
+        "roofPixels": 5350,
+        "snowPixels": 3994,
+        "coveragePercent": 74.65420560747663,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 30020,
+        "partial": 4859,
+        "visible": 4883
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "446107213e5897a3adc3ee523178ebc3c1aaaaab83cd8ef125822b59a7b1ed99"
+    },
+    {
+      "id": "house_pair_l3_horizontal_e_weathered-v1",
+      "file": "assets/house_pair_l3_horizontal_e_weathered-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "weathered",
+      "width": 209,
+      "height": 167,
+      "roof": "stone_slab",
+      "shape": "broad left and lower offset right gable, side doorway",
+      "wall": "ivory limewash, diagonal braces",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23125,
+        "partial": 11757,
+        "visible": 11778
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "a808c8bd8a7c0da36d58ed173f15d9054295648de3f473e7c9f1aca97cbc6f6a"
+    },
+    {
+      "id": "house_pair_l3_horizontal_e-v1",
+      "file": "assets/house_pair_l3_horizontal_e-v1.png",
+      "status": "candidate",
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "base",
+      "width": 209,
+      "height": 167,
+      "roof": "stone_slab",
+      "shape": "broad left and lower offset right gable, side doorway",
+      "wall": "ivory limewash, diagonal braces",
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "provenance": "records/l3h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 16764,
+        "partial": 17773,
+        "visible": 18139
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "f455d19fef9ef19ee09da2056e6b68e8e8ec107bc3f615290907e3c1682b6b4e"
+    },
+    {
+      "id": "house_pair_l3_vertical_c_boarded-v1",
+      "file": "assets/house_pair_l3_vertical_c_boarded-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "boarded",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "cream limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 28211,
+        "partial": 5278,
+        "visible": 5278
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "dae7a021310d1e0a058aab76f9128ab6043df6f488bafa8fa9b3843875dc32f2"
+    },
+    {
+      "id": "house_pair_l3_vertical_c_fresh-v1",
+      "file": "assets/house_pair_l3_vertical_c_fresh-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "fresh",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "cream limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 27769,
+        "partial": 5720,
+        "visible": 5720
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "78186c27d3bc89a5409d3b4eb9e3d0422747feda5fa695b232611578bb7d2f02"
+    },
+    {
+      "id": "house_pair_l3_vertical_c_snow-v1",
+      "file": "assets/house_pair_l3_vertical_c_snow-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "snow",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "cream limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": {
+        "roofMask": "records/masks/l3v-c-roof.png",
+        "snowMask": "records/masks/l3v-c-snow.png",
+        "roofPixels": 5747,
+        "snowPixels": 3949,
+        "coveragePercent": 68.71411171045763,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 28215,
+        "partial": 5245,
+        "visible": 5274
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "8ad24b05852772ec867701e87655a2b0e6895fdaa0fc55935b6cc0bcf29780fa"
+    },
+    {
+      "id": "house_pair_l3_vertical_c_weathered-v1",
+      "file": "assets/house_pair_l3_vertical_c_weathered-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "weathered",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "cream limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 20157,
+        "partial": 13249,
+        "visible": 13332
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "855c6105a4b07c39e3adcaaf4edf2e880510cad1f64f286ec2ab3bb6ba544ed4"
+    },
+    {
+      "id": "house_pair_l3_vertical_c-v1",
+      "file": "assets/house_pair_l3_vertical_c-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "base",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "cream limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 15062,
+        "partial": 18078,
+        "visible": 18427
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "ed4629cc1d9dcbc58098fc1d7440daee9b5a9154b3aebc24b6084dbc9a261b38"
+    },
+    {
+      "id": "house_pair_l3_vertical_d_boarded-v1",
+      "file": "assets/house_pair_l3_vertical_d_boarded-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "boarded",
+      "width": 183,
+      "height": 183,
+      "roof": "muted flat clay tile",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "ochre limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 28998,
+        "partial": 4491,
+        "visible": 4491
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "3ecd92d78bcedce86ff1869e9af3da9be5a36e6979d89b8d88426e096d7347f0"
+    },
+    {
+      "id": "house_pair_l3_vertical_d_fresh-v1",
+      "file": "assets/house_pair_l3_vertical_d_fresh-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "fresh",
+      "width": 183,
+      "height": 183,
+      "roof": "muted flat clay tile",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "ochre limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 28888,
+        "partial": 4599,
+        "visible": 4601
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "9519adfff021fa32ce0e0c243331a54a0a7590b2ffcadaf147312ca8d8ee7de7"
+    },
+    {
+      "id": "house_pair_l3_vertical_d_snow-v1",
+      "file": "assets/house_pair_l3_vertical_d_snow-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "snow",
+      "width": 183,
+      "height": 183,
+      "roof": "muted flat clay tile",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "ochre limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": {
+        "roofMask": "records/masks/l3v-d-roof.png",
+        "snowMask": "records/masks/l3v-d-snow.png",
+        "roofPixels": 5614,
+        "snowPixels": 3823,
+        "coveragePercent": 68.09761311008194,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 29017,
+        "partial": 4441,
+        "visible": 4472
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "98d56a4addd844b5e5c3ef2835b5911cbbfa588890799dcbd428a61d6c1c3ba8"
+    },
+    {
+      "id": "house_pair_l3_vertical_d_weathered-v1",
+      "file": "assets/house_pair_l3_vertical_d_weathered-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "weathered",
+      "width": 183,
+      "height": 183,
+      "roof": "muted flat clay tile",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "ochre limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 21968,
+        "partial": 11474,
+        "visible": 11521
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "c6c88c414285d7f0d6f856682411cc5abc2af111b12efdde658951d0e3c8a37a"
+    },
+    {
+      "id": "house_pair_l3_vertical_d-v1",
+      "file": "assets/house_pair_l3_vertical_d-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "base",
+      "width": 183,
+      "height": 183,
+      "roof": "muted flat clay tile",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "ochre limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 15148,
+        "partial": 17965,
+        "visible": 18341
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "68545dc5d995505a2e757d9c56320056160fc3f613fa6f3ba30a03f5004d4378"
+    },
+    {
+      "id": "house_pair_l3_vertical_e_boarded-v1",
+      "file": "assets/house_pair_l3_vertical_e_boarded-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "boarded",
+      "width": 183,
+      "height": 183,
+      "roof": "grey-brown stone slab",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "dusty rose limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 28125,
+        "partial": 5364,
+        "visible": 5364
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "0bf98563081fdea7a2f1960fc7d784ec6ff03a9d05520529b94026ae599536dc"
+    },
+    {
+      "id": "house_pair_l3_vertical_e_fresh-v1",
+      "file": "assets/house_pair_l3_vertical_e_fresh-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "fresh",
+      "width": 183,
+      "height": 183,
+      "roof": "grey-brown stone slab",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "dusty rose limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23430,
+        "partial": 10025,
+        "visible": 10059
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "383e1ef2ecfea66b1ead9fda13d6f5c354e39711822aeeee2f6aedd69d6a73c7"
+    },
+    {
+      "id": "house_pair_l3_vertical_e_snow-v1",
+      "file": "assets/house_pair_l3_vertical_e_snow-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "snow",
+      "width": 183,
+      "height": 183,
+      "roof": "grey-brown stone slab",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "dusty rose limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": {
+        "roofMask": "records/masks/l3v-e-roof.png",
+        "snowMask": "records/masks/l3v-e-snow.png",
+        "roofPixels": 5614,
+        "snowPixels": 3673,
+        "coveragePercent": 65.42572141075883,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 29242,
+        "partial": 4219,
+        "visible": 4247
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "d7de9ed661bcca7c595f7897e78ba965a4fbc269604fe7fcac6ae2c91cf7c489"
+    },
+    {
+      "id": "house_pair_l3_vertical_e_weathered-v1",
+      "file": "assets/house_pair_l3_vertical_e_weathered-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "weathered",
+      "width": 183,
+      "height": 183,
+      "roof": "grey-brown stone slab",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "dusty rose limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 17015,
+        "partial": 16346,
+        "visible": 16474
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "373393beae6c385cd24031f6bdceba43e03f045bab9e491819697b2937c40ecf"
+    },
+    {
+      "id": "house_pair_l3_vertical_e-v1",
+      "file": "assets/house_pair_l3_vertical_e-v1.png",
+      "status": "candidate",
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "base",
+      "width": 183,
+      "height": 183,
+      "roof": "grey-brown stone slab",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "dusty rose limewash",
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "provenance": "records/l3v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 15264,
+        "partial": 17877,
+        "visible": 18225
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "69890ac64579d2d3b56364210c4760d40ea30619abdd9f1339b8b603131740d7"
+    },
+    {
+      "id": "house_pair_l4_horizontal_c_boarded-v1",
+      "file": "assets/house_pair_l4_horizontal_c_boarded-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "boarded",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal parallel ridges",
+      "wall": "white and ochre limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 38851,
+        "partial": 2480,
+        "visible": 2765
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "b5c54671140c2d8a5f1c600a11dadf816395050f5cb868305328f4cddda2a2f3"
+    },
+    {
+      "id": "house_pair_l4_horizontal_c_fresh-v1",
+      "file": "assets/house_pair_l4_horizontal_c_fresh-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "fresh",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal parallel ridges",
+      "wall": "white and ochre limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 31609,
+        "partial": 9343,
+        "visible": 10007
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "89c388207eb3eb66cba0aa256ef4ba3fddde651e721f765318eb1196553aca90"
+    },
+    {
+      "id": "house_pair_l4_horizontal_c_snow-v1",
+      "file": "assets/house_pair_l4_horizontal_c_snow-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "snow",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal parallel ridges",
+      "wall": "white and ochre limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": {
+        "roofMask": "records/masks/l4h-c-roof.png",
+        "snowMask": "records/masks/l4h-c-snow.png",
+        "roofPixels": 6437,
+        "snowPixels": 4914,
+        "coveragePercent": 76.33990989591425,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 36702,
+        "partial": 4835,
+        "visible": 4914
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "4ce954b7e5bc4733af386ac21271510d66bcf890ddfc30a660c2e6f5b4af1c08"
+    },
+    {
+      "id": "house_pair_l4_horizontal_c_weathered-v1",
+      "file": "assets/house_pair_l4_horizontal_c_weathered-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "weathered",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal parallel ridges",
+      "wall": "white and ochre limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 33634,
+        "partial": 7466,
+        "visible": 7982
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "e39956154b79b31bf7156761d168c968ef1968761bb4471f57143bf35e99ec16"
+    },
+    {
+      "id": "house_pair_l4_horizontal_c-v1",
+      "file": "assets/house_pair_l4_horizontal_c-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "base",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal parallel ridges",
+      "wall": "white and ochre limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 17538,
+        "partial": 23669,
+        "visible": 24078
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "9878d93d199cd8b0eb11c51e23be85b4e255cdf055c92303608774d000351d98"
+    },
+    {
+      "id": "house_pair_l4_horizontal_d_boarded-v1",
+      "file": "assets/house_pair_l4_horizontal_d_boarded-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "boarded",
+      "width": 204,
+      "height": 204,
+      "roof": "limestone slabs",
+      "shape": "unequal parallel ridges",
+      "wall": "faded rose and cream limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 34636,
+        "partial": 6548,
+        "visible": 6980
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "1331a80fdd876a5a3415d9e64ea2f52d0f1adb67f08bd2a0f63aeef4251385ce"
+    },
+    {
+      "id": "house_pair_l4_horizontal_d_fresh-v1",
+      "file": "assets/house_pair_l4_horizontal_d_fresh-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "fresh",
+      "width": 204,
+      "height": 204,
+      "roof": "limestone slabs",
+      "shape": "unequal parallel ridges",
+      "wall": "faded rose and cream limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 33135,
+        "partial": 7756,
+        "visible": 8481
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "832d8f35326ccc064413a60b011ce0c2d607df3087af610733405f1a438fce14"
+    },
+    {
+      "id": "house_pair_l4_horizontal_d_snow-v1",
+      "file": "assets/house_pair_l4_horizontal_d_snow-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "snow",
+      "width": 204,
+      "height": 204,
+      "roof": "limestone slabs",
+      "shape": "unequal parallel ridges",
+      "wall": "faded rose and cream limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": {
+        "roofMask": "records/masks/l4h-d-roof.png",
+        "snowMask": "records/masks/l4h-d-snow.png",
+        "roofPixels": 7383,
+        "snowPixels": 4910,
+        "coveragePercent": 66.5041311120141,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 36706,
+        "partial": 4892,
+        "visible": 4910
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "75c7086e9c302f6c61b24969ad0a13d7e323a5b10f48313598328db19c339469"
+    },
+    {
+      "id": "house_pair_l4_horizontal_d_weathered-v1",
+      "file": "assets/house_pair_l4_horizontal_d_weathered-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "weathered",
+      "width": 204,
+      "height": 204,
+      "roof": "limestone slabs",
+      "shape": "unequal parallel ridges",
+      "wall": "faded rose and cream limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 32236,
+        "partial": 9091,
+        "visible": 9380
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "663a5fa0aa1adc6296525d7bcaeaac85c7e3908a550d4d0e1c85f63bc646c536"
+    },
+    {
+      "id": "house_pair_l4_horizontal_d-v1",
+      "file": "assets/house_pair_l4_horizontal_d-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "base",
+      "width": 204,
+      "height": 204,
+      "roof": "limestone slabs",
+      "shape": "unequal parallel ridges",
+      "wall": "faded rose and cream limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 17843,
+        "partial": 23399,
+        "visible": 23773
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "2b56863ba04b5ee17f306f3c9ff5e9448ea69df0a5014f99bc9f0a7cda2acc55"
+    },
+    {
+      "id": "house_pair_l4_horizontal_e_boarded-v1",
+      "file": "assets/house_pair_l4_horizontal_e_boarded-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "boarded",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal paired cross gables",
+      "wall": "ochre and pale pink limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 38403,
+        "partial": 2950,
+        "visible": 3213
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "52f89ec3d51181e40ceb8e0534f22a1e9553889fb454e4c51f0ac6f0f539d1ff"
+    },
+    {
+      "id": "house_pair_l4_horizontal_e_fresh-v1",
+      "file": "assets/house_pair_l4_horizontal_e_fresh-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "fresh",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal paired cross gables",
+      "wall": "ochre and pale pink limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 32639,
+        "partial": 8078,
+        "visible": 8977
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "e703bd4e8cbec3951864455309099bd50e29f7a4ac746992bc4683a078da13e3"
+    },
+    {
+      "id": "house_pair_l4_horizontal_e_snow-v1",
+      "file": "assets/house_pair_l4_horizontal_e_snow-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "snow",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal paired cross gables",
+      "wall": "ochre and pale pink limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": {
+        "roofMask": "records/masks/l4h-e-roof.png",
+        "snowMask": "records/masks/l4h-e-snow.png",
+        "roofPixels": 3827,
+        "snowPixels": 2544,
+        "coveragePercent": 66.47504572772407,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 39072,
+        "partial": 2542,
+        "visible": 2544
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "7dc814e9e4d3b0bfc0ba35a9d05fe394f6d773897937ea9e3b674304b0b02a22"
+    },
+    {
+      "id": "house_pair_l4_horizontal_e_weathered-v1",
+      "file": "assets/house_pair_l4_horizontal_e_weathered-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "weathered",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal paired cross gables",
+      "wall": "ochre and pale pink limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 31635,
+        "partial": 9452,
+        "visible": 9981
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "689222be88a3bfdb6d829c16c38aaa88e2bd4cd968719e83b81509b6a608b22a"
+    },
+    {
+      "id": "house_pair_l4_horizontal_e-v1",
+      "file": "assets/house_pair_l4_horizontal_e-v1.png",
+      "status": "candidate",
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "base",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal paired cross gables",
+      "wall": "ochre and pale pink limewash",
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "provenance": "records/l4h.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 18430,
+        "partial": 22793,
+        "visible": 23186
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "f51f04a5ee75ca2fab29db235a4e878b881223097abc036c2e3540762a22dd17"
+    },
+    {
+      "id": "house_pair_l4_vertical_c_boarded-v1",
+      "file": "assets/house_pair_l4_vertical_c_boarded-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "boarded",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "cross_gable_front_and_low_rear_workshop",
+      "wall": "warm_white_limewash_oak",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 31567,
+        "partial": 2076,
+        "visible": 2289
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "e6f98973761b61ce6fa43cbbf4dea59ba7c35b3a4f1d125711d1f20fb587acaa"
+    },
+    {
+      "id": "house_pair_l4_vertical_c_fresh-v1",
+      "file": "assets/house_pair_l4_vertical_c_fresh-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "fresh",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "cross_gable_front_and_low_rear_workshop",
+      "wall": "warm_white_limewash_oak",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23491,
+        "partial": 9671,
+        "visible": 10365
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "12f6860e9f10cd44d29c61e375d0d62d6364026b6105f31912cb379b6bd8e866"
+    },
+    {
+      "id": "house_pair_l4_vertical_c_snow-v1",
+      "file": "assets/house_pair_l4_vertical_c_snow-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "snow",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "cross_gable_front_and_low_rear_workshop",
+      "wall": "warm_white_limewash_oak",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": {
+        "roofMask": "records/masks/house_pair_l4_vertical_c-roof.png",
+        "snowMask": "records/masks/house_pair_l4_vertical_c-snow.png",
+        "roofPixels": 4987,
+        "snowPixels": 3135,
+        "coveragePercent": 62.8634449568879,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 30721,
+        "partial": 3030,
+        "visible": 3135
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "2c8a5b8f846f3c01c3e2c371809455cdf5f677c7d6e612e6cda35c60376a7e4d"
+    },
+    {
+      "id": "house_pair_l4_vertical_c_weathered-v1",
+      "file": "assets/house_pair_l4_vertical_c_weathered-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "weathered",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "cross_gable_front_and_low_rear_workshop",
+      "wall": "warm_white_limewash_oak",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23061,
+        "partial": 10516,
+        "visible": 10795
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "221abdfffaeaa8963ed630da34c823228c37066c992484b46f663e47c7ffaa14"
+    },
+    {
+      "id": "house_pair_l4_vertical_c-v1",
+      "file": "assets/house_pair_l4_vertical_c-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "base",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "cross_gable_front_and_low_rear_workshop",
+      "wall": "warm_white_limewash_oak",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 16362,
+        "partial": 17147,
+        "visible": 17494
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "9133294c7723aa93abe07380588c425e332403744471df59fbbb86f7d1774b80"
+    },
+    {
+      "id": "house_pair_l4_vertical_d_boarded-v1",
+      "file": "assets/house_pair_l4_vertical_d_boarded-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "boarded",
+      "width": 184,
+      "height": 184,
+      "roof": "clay_flat_tiles",
+      "shape": "gable_front_hipped_rear_workshop",
+      "wall": "pale_pink_limewash_close_studs",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 29009,
+        "partial": 4348,
+        "visible": 4847
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "547fd52c2069934f2b8dfbed48d693db0516d528b2bee55e228b679fb35f4a59"
+    },
+    {
+      "id": "house_pair_l4_vertical_d_fresh-v1",
+      "file": "assets/house_pair_l4_vertical_d_fresh-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "fresh",
+      "width": 184,
+      "height": 184,
+      "roof": "clay_flat_tiles",
+      "shape": "gable_front_hipped_rear_workshop",
+      "wall": "pale_pink_limewash_close_studs",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 24791,
+        "partial": 8358,
+        "visible": 9065
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "01f092be067ac1aa0a4f3e628782e3f57005fe8d51ae0e239946b1c38134c258"
+    },
+    {
+      "id": "house_pair_l4_vertical_d_snow-v1",
+      "file": "assets/house_pair_l4_vertical_d_snow-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "snow",
+      "width": 184,
+      "height": 184,
+      "roof": "clay_flat_tiles",
+      "shape": "gable_front_hipped_rear_workshop",
+      "wall": "pale_pink_limewash_close_studs",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": {
+        "roofMask": "records/masks/house_pair_l4_vertical_d-roof.png",
+        "snowMask": "records/masks/house_pair_l4_vertical_d-snow.png",
+        "roofPixels": 5497,
+        "snowPixels": 3641,
+        "coveragePercent": 66.23612879752592,
+        "removedAfterMask": 4,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 30215,
+        "partial": 3586,
+        "visible": 3641
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "6a50f8881f0d07af58dd2c652954efdca2b8126f784a8393c54deec4665147c1"
+    },
+    {
+      "id": "house_pair_l4_vertical_d_weathered-v1",
+      "file": "assets/house_pair_l4_vertical_d_weathered-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "weathered",
+      "width": 184,
+      "height": 184,
+      "roof": "clay_flat_tiles",
+      "shape": "gable_front_hipped_rear_workshop",
+      "wall": "pale_pink_limewash_close_studs",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 23335,
+        "partial": 10277,
+        "visible": 10521
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "1fe7c90f497ca4747ed3e868c3d3aa34f0a322cca338569cecc9814768c131f0"
+    },
+    {
+      "id": "house_pair_l4_vertical_d-v1",
+      "file": "assets/house_pair_l4_vertical_d-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "base",
+      "width": 184,
+      "height": 184,
+      "roof": "clay_flat_tiles",
+      "shape": "gable_front_hipped_rear_workshop",
+      "wall": "pale_pink_limewash_close_studs",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 16444,
+        "partial": 17040,
+        "visible": 17412
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "8450387caa7ee7cd9d88c010979e3d812ea5fc5686d25cd68c1bb2d39b0038d4"
+    },
+    {
+      "id": "house_pair_l4_vertical_e_boarded-v1",
+      "file": "assets/house_pair_l4_vertical_e_boarded-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "boarded",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "steep_gable_front_lower_rear_gable",
+      "wall": "ochre_limewash_diagonal_braces",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 30258,
+        "partial": 3238,
+        "visible": 3598
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "9a1f223ba25ea1031be756b7b99d9eb09cb49897da75601f7b319b3173d63573"
+    },
+    {
+      "id": "house_pair_l4_vertical_e_fresh-v1",
+      "file": "assets/house_pair_l4_vertical_e_fresh-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "fresh",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "steep_gable_front_lower_rear_gable",
+      "wall": "ochre_limewash_diagonal_braces",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 25726,
+        "partial": 7570,
+        "visible": 8130
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "4791fdd2af87b693d0e058b38d27634ad5880b5b7d062a3e37769d549e2febdb"
+    },
+    {
+      "id": "house_pair_l4_vertical_e_snow-v1",
+      "file": "assets/house_pair_l4_vertical_e_snow-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "snow",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "steep_gable_front_lower_rear_gable",
+      "wall": "ochre_limewash_diagonal_braces",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": {
+        "roofMask": "records/masks/house_pair_l4_vertical_e-roof.png",
+        "snowMask": "records/masks/house_pair_l4_vertical_e-snow.png",
+        "roofPixels": 5521,
+        "snowPixels": 3654,
+        "coveragePercent": 66.18366238000363,
+        "removedAfterMask": 0,
+        "method": "Independent authored roof mask alpha>=128; saved classified snow mask alpha>=128 intersect final overlay alpha>=128. Family record holds color thresholds."
+      },
+      "alpha": {
+        "transparent": 30202,
+        "partial": 3434,
+        "visible": 3654
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "e4a0527b9cc64f8ad6777169c7ee7fbc928d9a596d96d9e19dc9e4927b3e4be1"
+    },
+    {
+      "id": "house_pair_l4_vertical_e_weathered-v1",
+      "file": "assets/house_pair_l4_vertical_e_weathered-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "weathered",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "steep_gable_front_lower_rear_gable",
+      "wall": "ochre_limewash_diagonal_braces",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 24860,
+        "partial": 8712,
+        "visible": 8996
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "fc9a6e35818063b834210b3cd0821ab64d48bbd4beee8e7e60e483b79958528c"
+    },
+    {
+      "id": "house_pair_l4_vertical_e-v1",
+      "file": "assets/house_pair_l4_vertical_e-v1.png",
+      "status": "candidate",
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "base",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "steep_gable_front_lower_rear_gable",
+      "wall": "ochre_limewash_diagonal_braces",
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "provenance": "records/l4v.json",
+      "coverage": null,
+      "alpha": {
+        "transparent": 16435,
+        "partial": 17068,
+        "visible": 17421
+      },
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "sha256": "3954a50683e2e6349483f14346fd7f40b373b1033a069759b882d8ab1ffdd8ae"
+    }
+  ]
+}

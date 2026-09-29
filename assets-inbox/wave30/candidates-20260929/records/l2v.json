@@ -1,0 +1,489 @@
+{
+  "assets": [
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "c",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm white limewash sparse oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_c",
+      "file": "assets/house_pair_l2_vertical_c-v1.png",
+      "state": "base",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. Variant c: Both roof masses thick golden weathered THATCH, front steep simple gable with clipped eaves, warm chalk-white limewash and sparse dark upright oak frame, small rear courtyard gate.",
+      "ref": [
+        "references/house_pair_l2_vertical-v2.png"
+      ],
+      "nativeOutput": "native/l2v/c-base.png"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "c",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm white limewash sparse oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_c_weathered",
+      "file": "assets/house_pair_l2_vertical_c_weathered-v1.png",
+      "state": "weathered",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated overlay of visible age: damp ochre/brown stains, faded flaked limewash and dark irregular moss on roofing. Align perfectly to supplied house, do not return the house. No rectangular sheet, no ground/plinth marks. Noticeable at183px. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_c-v1.png"
+      ],
+      "nativeOutput": "native/l2v/c-weathered.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "c",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm white limewash sparse oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_c_fresh",
+      "file": "assets/house_pair_l2_vertical_c_fresh-v1.png",
+      "state": "fresh",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated overlay of newly repaired warm pale limewash patches and a few clean replacement oak beams and brighter replacement roof patches. Align perfectly to supplied house, do not return the house. No ground/plinth marks. Noticeable at183px. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_c-v1.png"
+      ],
+      "nativeOutput": "native/l2v/c-fresh.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "c",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm white limewash sparse oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_c_snow",
+      "file": "assets/house_pair_l2_vertical_c_snow-v1.png",
+      "state": "snow",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated snow overlay, irregular broad snow sheets covering approximately70% of EACH visible roof plane, leaving30% of original thatch/tile showing through in irregular holes and uncovered bands. Snow sits on roofs with irregular edges, not outline-only. No snow on walls or ground. Align perfectly to supplied house; do not return the house. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_c-v1.png"
+      ],
+      "nativeOutput": "native/l2v/c-snow.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art",
+      "roofMask": "records/masks/l2v-c-roof.png",
+      "snowMask": "records/masks/l2v-c-snow.png",
+      "roofPixels": 5998,
+      "snowPixels": 3718,
+      "coveragePercent": 61.98732910970323,
+      "roofPolygons": [
+        [
+          [
+            36,
+            24
+          ],
+          [
+            104,
+            63
+          ],
+          [
+            75,
+            108
+          ],
+          [
+            7,
+            73
+          ]
+        ],
+        [
+          [
+            122,
+            51
+          ],
+          [
+            175,
+            80
+          ],
+          [
+            150,
+            102
+          ],
+          [
+            105,
+            76
+          ]
+        ]
+      ],
+      "measurement": "Independent base roof planes annotated by visible ridge/eave corners before snow measurement. Snow criterion RGB >165/170/170, channel spread<65, delta>=12; hard binary area. No denominator tuning."
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "c",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm white limewash sparse oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_c_boarded",
+      "file": "assets/house_pair_l2_vertical_c_boarded-v1.png",
+      "state": "boarded",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated overlay of thick crossed weathered oak planks closing every visible main door and window. Bold heavy crossed boards readable at183px. Keep exact opening positions. Do not return the house or ground. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_c-v1.png"
+      ],
+      "nativeOutput": "native/l2v/c-boarded.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "d",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm ochre limewash vertical oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_d",
+      "file": "assets/house_pair_l2_vertical_d-v1.png",
+      "state": "base",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. Variant d: Both roofs muted desaturated brown flat CLAY TILE, front transverse gable with small offset gabled porch and rear long lean-to, pale warm ochre plaster and close vertical timber posts.",
+      "ref": [
+        "references/house_pair_l2_vertical-v2.png"
+      ],
+      "nativeOutput": "native/l2v/d-base.png"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "d",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm ochre limewash vertical oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_d_weathered",
+      "file": "assets/house_pair_l2_vertical_d_weathered-v1.png",
+      "state": "weathered",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated overlay of visible age: damp ochre/brown stains, faded flaked limewash and dark irregular moss on roofing. Align perfectly to supplied house, do not return the house. No rectangular sheet, no ground/plinth marks. Noticeable at183px. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_d-v1.png"
+      ],
+      "nativeOutput": "native/l2v/d-weathered.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "d",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm ochre limewash vertical oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_d_fresh",
+      "file": "assets/house_pair_l2_vertical_d_fresh-v1.png",
+      "state": "fresh",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated overlay of newly repaired warm pale limewash patches and a few clean replacement oak beams and brighter replacement roof patches. Align perfectly to supplied house, do not return the house. No ground/plinth marks. Noticeable at183px. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_d-v1.png"
+      ],
+      "nativeOutput": "native/l2v/d-fresh.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "d",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm ochre limewash vertical oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_d_snow",
+      "file": "assets/house_pair_l2_vertical_d_snow-v1.png",
+      "state": "snow",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. EDIT SUPPLIED HOUSE: Coat a generous75-78% of BOTH visible roof surfaces in broad irregular opaque creamy-white snow blankets. Leave only22-25% of brown tiles exposed in scattered small irregular patches. Main roof needs more snow than last try. Full house may remain; all framing, walls, doors, ground and building pixels unchanged. Keep exact canvas and position.",
+      "ref": [
+        "assets/house_pair_l2_vertical_d-v1.png"
+      ],
+      "nativeOutput": "native/l2v/d-snow.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art",
+      "roofMask": "records/masks/l2v-d-roof.png",
+      "snowMask": "records/masks/l2v-d-snow.png",
+      "roofPixels": 6260,
+      "snowPixels": 4112,
+      "coveragePercent": 65.68690095846645,
+      "roofPolygons": [
+        [
+          [
+            37,
+            24
+          ],
+          [
+            107,
+            65
+          ],
+          [
+            76,
+            110
+          ],
+          [
+            8,
+            74
+          ]
+        ],
+        [
+          [
+            122,
+            53
+          ],
+          [
+            176,
+            81
+          ],
+          [
+            151,
+            106
+          ],
+          [
+            105,
+            78
+          ]
+        ]
+      ],
+      "measurement": "Independent base roof planes annotated by visible ridge/eave corners before snow measurement. Snow criterion RGB >165/170/170, channel spread<65, delta>=12; hard binary area. No denominator tuning."
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "d",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "warm ochre limewash vertical oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_d_boarded",
+      "file": "assets/house_pair_l2_vertical_d_boarded-v1.png",
+      "state": "boarded",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated overlay of thick crossed weathered oak planks closing every visible main door and window. Bold heavy crossed boards readable at183px. Keep exact opening positions. Do not return the house or ground. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_d-v1.png"
+      ],
+      "nativeOutput": "native/l2v/d-boarded.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "e",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "pale salmon limewash diagonal oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_e",
+      "file": "assets/house_pair_l2_vertical_e-v1.png",
+      "state": "base",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. Variant e: Both roofs dusty gray-terracotta flat CLAY TILE, tall narrow front gable with small lower side catslide, pale salmon-pink limewash and diagonal timber bracing; rearworkshop roof lower.",
+      "ref": [
+        "references/house_pair_l2_vertical-v2.png"
+      ],
+      "nativeOutput": "native/l2v/e-base.png"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "e",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "pale salmon limewash diagonal oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_e_weathered",
+      "file": "assets/house_pair_l2_vertical_e_weathered-v1.png",
+      "state": "weathered",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated overlay of visible age: damp ochre/brown stains, faded flaked limewash and dark irregular moss on roofing. Align perfectly to supplied house, do not return the house. No rectangular sheet, no ground/plinth marks. Noticeable at183px. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_e-v1.png"
+      ],
+      "nativeOutput": "native/l2v/e-weathered.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "e",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "pale salmon limewash diagonal oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_e_fresh",
+      "file": "assets/house_pair_l2_vertical_e_fresh-v1.png",
+      "state": "fresh",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated overlay of newly repaired warm pale limewash patches and a few clean replacement oak beams and brighter replacement roof patches. Align perfectly to supplied house, do not return the house. No ground/plinth marks. Noticeable at183px. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_e-v1.png"
+      ],
+      "nativeOutput": "native/l2v/e-fresh.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art"
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "e",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "pale salmon limewash diagonal oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_e_snow",
+      "file": "assets/house_pair_l2_vertical_e_snow-v1.png",
+      "state": "snow",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated snow overlay, irregular broad snow sheets covering approximately70% of EACH visible roof plane, leaving30% of original thatch/tile showing through in irregular holes and uncovered bands. Snow sits on roofs with irregular edges, not outline-only. No snow on walls or ground. Align perfectly to supplied house; do not return the house. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_e-v1.png"
+      ],
+      "nativeOutput": "native/l2v/e-snow.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art",
+      "roofMask": "records/masks/l2v-e-roof.png",
+      "snowMask": "records/masks/l2v-e-snow.png",
+      "roofPixels": 6260,
+      "snowPixels": 3775,
+      "coveragePercent": 60.3035143769968,
+      "roofPolygons": [
+        [
+          [
+            37,
+            24
+          ],
+          [
+            107,
+            65
+          ],
+          [
+            76,
+            110
+          ],
+          [
+            8,
+            74
+          ]
+        ],
+        [
+          [
+            122,
+            53
+          ],
+          [
+            176,
+            81
+          ],
+          [
+            151,
+            106
+          ],
+          [
+            105,
+            78
+          ]
+        ]
+      ],
+      "measurement": "Independent base roof planes annotated by visible ridge/eave corners before snow measurement. Snow criterion RGB >165/170/170, channel spread<65, delta>=12; hard binary area. No denominator tuning."
+    },
+    {
+      "level": 2,
+      "direction": "vertical",
+      "variant": "e",
+      "width": 183,
+      "height": 183,
+      "roof": "flat clay tile",
+      "shape": "front main gable plus lower rear workshop",
+      "wall": "pale salmon limewash diagonal oak",
+      "pivotcontract": "unchanged original square canvas; no crop/recenter; root restores canonical source contact mask",
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_vertical_e_boarded",
+      "file": "assets/house_pair_l2_vertical_e_boarded-v1.png",
+      "state": "boarded",
+      "prompt": "Use case: precise-object-edit. Single transparent RGBA game sprite of a modest paired two-lot house in southern England circa1300, handpainted muted gouache matching reference. Preserve reference fixed isometric view, front tall main house plus LOWER rear workshop extending to upper-right, EXACT original ground footprint contact/plinth and relative framing on square canvas. No chimney, glass reflections, people, objects outside footprint, text or shadows beyond original. Keep rear-front arrangement, not horizontal pair. OVERLAY EDIT: Return ONLY a transparent isolated overlay of thick crossed weathered oak planks closing every visible main door and window. Bold heavy crossed boards readable at183px. Keep exact opening positions. Do not return the house or ground. Keep square canvas and absolute pixel placement unchanged.",
+      "ref": [
+        "assets/house_pair_l2_vertical_e-v1.png"
+      ],
+      "nativeOutput": "native/l2v/e-boarded.png",
+      "postprocessing": "Full-state output resized to fixed183x183; unchanged pixels delta<12 removed; base alpha clip; no procedural art"
+    }
+  ],
+  "qa": {
+    "verdict": "pass",
+    "score": 91,
+    "review": "Manual183px contact viewed. Thatch versus tile and warm-white/ochre/salmon walls differ; all states clearly readable. Rear workshop/front house axis retained. No chimneys. d snow regenerated after59.78%failed, roof denominator untouched. Roof form variation modest to preserve footprint.",
+    "superseded": [
+      "native/l2v/d-snow-superseded.png"
+    ],
+    "nativeCalls": 16,
+    "finalAssets": 15,
+    "rootPending": "canonical source contact/plinth restoration and final pivot QA"
+  }
+}
