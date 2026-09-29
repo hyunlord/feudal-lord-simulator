@@ -186,7 +186,7 @@ export const EVENT_STORY_COPY = {
   /** UI-9: the steward's one line when the reorganisation is the nearest coming event. */
   stewardReorg: {
     wageCompetition: "임금 경쟁이 시작되었습니다. 일손이 빠져나가고 있습니다",
-    petitionsSurge: "청원 물결이 시작됩니다. 조합·인두세·자치 특허를 차례로 결정해야 합니다",
+    petitionsSurge: "청원 물결이 시작됩니다. 길드·직물 대 곡물·인두세·자치 특허를 차례로 결정합니다",
     rebellion: "1381년 소요가 가까워집니다. 반란 압력을 낮추십시오",
   },
 } as const;

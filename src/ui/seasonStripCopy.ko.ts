@@ -24,9 +24,9 @@ export const SEASON_STRIP_COPY = {
     second: "두 번째 역병", end: "역병 종료" } satisfies Record<PlagueMark["id"], string>,
   /** UI-9: the reorganisation's coming steps (F4-A `reorganisationForecast`). */
   reorg: { wage_competition: "임금 경쟁", textile_street: "직물 거리", alehouse_boom: "에일집 성황",
-    petitions_surge: "청원 물결", guild_demand: "조합 설립 청원", cloth_or_grain: "직물 전업 청원",
-    overlord_warning: "영주의 경고", poll_tax: "인두세 징수",
-    rebellion_rumour: "1381년 농민 반란 소문", autonomy_request: "자치 특허 청원", end: "4장 종료" } satisfies Record<ReorganisationMark["id"], string>,
+    petitions_surge: "청원 물결", guild_demand: "길드 인가 청원", cloth_or_grain: "직물 대 곡물",
+    overlord_warning: "백작의 경고", poll_tax: "인두세 징수",
+    rebellion_rumour: "1381년 농민 반란 소문", autonomy_request: "자치 특허 협상", end: "4장 종료" } satisfies Record<ReorganisationMark["id"], string>,
   /** Judgement 2026-09-26: the pill's food days, with the calendar point they reach ("식량 270일 — 가을 초까지"). */
   foodUntil: (days: number, season: 0 | 1 | 2 | 3, third: 0 | 1 | 2, nextYear: boolean) =>
     `식량 ${days}일 — ${nextYear ? "내년 " : ""}${SCENARIO_COPY.seasons[season]} ${THIRDS[third]}까지`,
