@@ -45,7 +45,7 @@ test("UX-3R2 store history: the weekly change needs a week of samples, then is n
   const change = weeklyTotalChange(history, "bread", now);
   assert.ok(change !== null && change < 0, `bread fell: ${change}`);
   const model = storeInspectorModel(now, granary.id, history)!;
-  assert.deepEqual(model.items.map(item => item.resource), ["wheat", "bread", "barley", "malt"], "a granary takes the grains, bread and malt by rule (C4: barley too, though the barns keep it for the kiln)");
+  assert.deepEqual(model.items.map(item => item.resource), ["wheat", "bread", "barley"], "a granary takes the grains and bread by rule (C4: barley too, though the barns keep it for the kiln; FIX-8: malt to the storehouse)");
   assert.equal(model.capacity, 200);
   assert.ok(model.items.find(item => item.resource === "bread")!.week.startsWith("−"));
   const restarted = observeStoreStockHistory(history, at(3, 30));

@@ -1,3 +1,4 @@
+import { ALE_BALANCE } from "../content/aleConfig";
 import { barnHolds,
   BUILDING_CONFIG_BY_KIND,
   type BuildingDefinition,
@@ -62,11 +63,14 @@ function rawIntakeUsage(
   const limited: readonly StorableResourceType[] = building.kind === "granary" && resource === "wheat"
     ? ["wheat"]
     : building.kind === "storehouse" && (resource === "logs" || resource === "stone_raw")
-      ? ["logs", "stone_raw"] : [];
+      ? ["logs", "stone_raw"]
+      : building.kind === "storehouse" && resource === "malt" ? ["malt"] : [];
   if (limited.length === 0) return null;
+  const room = BUILDING_CONFIG_BY_KIND[building.kind].storageCapacity;
   return {
     used: limited.reduce((total, kind) => total + amountOf(building.inventory, kind) + amountOf(building.reserved, kind), 0),
-    capacity: Math.floor(BUILDING_CONFIG_BY_KIND[building.kind].storageCapacity / 2),
+    // FIX-8 (decision FX8-1): malt takes a quarter of a store's room at most; raw goods half.
+    capacity: resource === "malt" ? Math.floor(room * ALE_BALANCE.maltStorePermille / 1000) : Math.floor(room / 2),
   };
 }
 

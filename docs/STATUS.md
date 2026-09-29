@@ -1,11 +1,17 @@
 # 현재 상태
 
-갱신: 2026-09-29(F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **FIX-8 엿기름은 창고로 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 판정, 검증 DGX): [보고서](verification/fix8/REPORT.md), [명세](design/ale-chain.md) AL-12, 결정 FX8-1·FX8-2.
+  - 곡창은 식량 저장소다. 엿기름은 창고로 간다(창고 자리의 4분의 1까지). 몫이 차면 가마가 제 엿기름을 쥐고, 양조하는 집이 가마에서 곧장 가져온다. 곡창에 남은 엿기름은 양조 때 먼저 쓰인다. 저장 v28은 곡창의 엿기름을 창고 빈자리로 옮긴다.
+  - 관문: seed 4 연장 실행 1400~1450 L4 24(F4-A 코드 18~23, 곡창 엿기름 0), 가드레일 `7630a2a` 5/5(새 기준선 `baseline-7630a2a`, 승리 틱 셋 그대로, seed 3·5는 2장에서 약 850틱), 사람 경로 5/5, 시험 M1~M4, 깨끗한 클론 `6edb69f` 3,598/3,598·build.
+  - 다음 후보: 모든 seed의 되돌이 하락(가구 사람 수, 식량 아님), 가장이 없는 영주 가문(LN-9).
+  - 넘길 것(렌더): 엿기름 더미·저장소 표시가 창고 쪽으로(곡창 인스펙터에 엿기름 줄 없음).
 
 - **F4-A 4장 재편 1362–1400 — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/f4a-reorganisation/REPORT.md), [명세](design/chapter-four-reorganisation.md) RG-1~RG-12, 결정 RG1~RG12.
   - 사건 사슬(Wave 21 4장과 1:1): 임금 경쟁 → 직물 거리(직조공 집 둘) → 에일하우스 성황 → 청원 급증 → 길드 결성 요구 → 상위 영주의 경고(도시 힘 50) → 1377 인두세 → 1381 농민 반란 소문(압력 50 이상이면 징수원을 쫓음, 유혈 없음) → 자치 요구서 → 4장 끝(특허 다음 계절, 늦어도 1400) → 5장.

@@ -149,13 +149,14 @@ test("the season card names the houses waiting longer for want of ale, and the a
 test("barley and malt show with their icons in the ledger drawer, the stores, a barn's stock and the kiln's chip", () => {
   const state = chapterTwo();
   const barn = state.buildings.find(building => building.kind === "farmstead")!;
-  const granary = state.buildings.find(building => building.kind === "granary")!;
+  // FIX-8 (FX8-1): malt is kept in the storehouse.
+  const storehouse = state.buildings.find(building => building.kind === "storehouse")!;
   const stocked: GameState = { ...state, buildings: state.buildings.map(building => building === barn ? { ...barn, inventory: { ...barn.inventory, barley: 12 } }
-    : building === granary ? { ...granary, inventory: { ...granary.inventory, malt: 3 } } : building) };
+    : building === storehouse ? { ...storehouse, inventory: { ...storehouse.inventory, malt: 3 } } : building) };
   const drawer = renderToStaticMarkup(createElement(LedgerDrawer, { state: stocked, onInspect: () => undefined, onClose: () => undefined, viewTab: null, mapTab: null }));
   assert.match(drawer, /data-resource="barley"[^]*?data-icon="chain.barley"/);
   assert.match(drawer, /data-resource="malt"[^]*?data-icon="chain.malt"/);
-  const store = renderToStaticMarkup(createElement(StoreInspectorBody, { model: storeInspectorModel(stocked, granary.id, null)! }));
+  const store = renderToStaticMarkup(createElement(StoreInspectorBody, { model: storeInspectorModel(stocked, storehouse.id, null)! }));
   assert.match(store, /data-resource="malt"[^]*?data-icon="chain.malt"/);
   const facility = buildingInspectorModel(stocked, barn.id)!;
   assert.ok(facility.stock!.some(item => item.resource === "barley" && item.amount === 12));
