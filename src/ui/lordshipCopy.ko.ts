@@ -6,7 +6,7 @@ import { LORD_HOUSE_NAMES_KO } from "../content/historyCopy.ko";
 const house = (name: string) => LORD_HOUSE_NAMES_KO[name] ?? name;
 // UI-9: localised names for the rights the town receives in chapter 4.
 const RIGHTS_TRANSFER_NAMES: Readonly<Record<string, string>> = {
-  market_tolls: "시장 통행세", bridge_tolls: "다리 통행세",
+  market_tolls: "시장 좌판세", bridge_tolls: "통행세 절반",
 };
 export const LORDSHIP_COPY = {
   tab: "권리",
@@ -35,5 +35,9 @@ export const LORDSHIP_COPY = {
   // UI-9: RG-7 rights-transfer section (rights held by the town from ch4).
   rightsTransferHeading: "4장 권리 이양",
   rightsTransferLine: (id: string, year: number) =>
-    `${RIGHTS_TRANSFER_NAMES[id] ?? id} → 도시 · ${year}년 · 자치도시 칙허장`,
+    `${RIGHTS_TRANSFER_NAMES[id] ?? id} → 도시 · ${year}년 자치 특허`,
+  /** RG-9: the fee farm is the town's duty for the rights, not a right (decision RG6). */
+  feeFarmLine: (pence: number) => `도시가 해마다 봄에 영주에게 ${pence}d를 냅니다(fee farm) — 권리가 아니라 넘긴 권리의 대가`,
+  /** A lord's right the charter passed to the town (the market's stall tax, half the tolls). */
+  passedToTown: (year: number, half: boolean) => `${half ? "절반을 " : ""}도시로 넘김 · ${year}년`,
 } as const;

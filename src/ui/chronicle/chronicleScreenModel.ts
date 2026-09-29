@@ -14,7 +14,7 @@ import { calendar, scenarioOf } from "../../engine/scenarioState";
 import { factionDisplayName } from "../../content/factionCopy.ko";
 import type { FactionRecord } from "../../engine/faction.types";
 import { lordHouseHeraldrySeed, lordshipOf } from "../../engine/lordshipState";
-import { chronicleIllustration } from "../chronicleModel";
+import { chronicleIllustration, reorgRecordArt } from "../chronicleModel";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { armsRecipe, heraldryArms, heraldryMark, royalArms } from "../heraldry/heraldry";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
@@ -360,6 +360,8 @@ const REORG_DECISION_ART: Readonly<Record<string, Wave21ImageId>> = {
 /** F4-A: the reorganisation's petition decisions and chapter 4 milestone. */
 function chapterFourArt(_state: unknown, record: HistoryRecord): ChronicleArt {
   const param = (key: string) => String(record.params?.[key] ?? "");
+  const reorg = reorgRecordArt(record);
+  if (reorg !== null) return { kind: "wave21", id: reorg };
   if (record.template === "decision.petition_response") {
     const id = REORG_DECISION_ART[param("defId")];
     if (id !== undefined) return { kind: "wave21", id };

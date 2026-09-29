@@ -136,14 +136,22 @@ test("UI-9 RG-7: rightsTransfer lists market_tolls and bridge_tolls granted to t
     },
   };
   const view = lordshipView(state);
-  assert.equal(view.rightsTransfer.length, 2);
-  assert.ok(view.rightsTransfer.some(r => r.id === "market_tolls"), "expected market_tolls in transfer list");
-  assert.ok(view.rightsTransfer.some(r => r.id === "bridge_tolls"), "expected bridge_tolls in transfer list");
-  // Each line should mention "도시" (the word for town) and the charter.
-  for (const r of view.rightsTransfer) {
-    assert.match(r.line, /도시/, `expected "도시" in line for ${r.id}`);
-    assert.match(r.line, /칙허장/, `expected "칙허장" in line for ${r.id}`);
-  }
+  // The two rights and the fee farm (the town's duty for them, not a right, RG-9).
+  assert.deepEqual(view.rightsTransfer.map(r => r.id), ["market_tolls", "bridge_tolls", "fee_farm"]);
+  assert.match(view.rightsTransfer[0]!.line, /^시장 좌판세 → 도시 · \d+년 자치 특허$/);
+  assert.match(view.rightsTransfer[1]!.line, /^통행세 절반 → 도시/);
+  assert.match(view.rightsTransfer[2]!.line, /120d.*권리가 아니라/);
+  // The lord's own rights read as passed; the charter's rights are not repeated among the granted ones.
+  assert.ok(view.granted.every(line => !line.includes("townsfolk")), view.granted.join(" | "));
+  const market = view.rights.find(right => right.id === "market");
+  if (market !== undefined) assert.match(market.status, /도시로 넘김/);
+});
+
+test("UI-9 RG-7: a chapter 3 right the town holds (commuted rent) is no charter transfer", () => {
+  const base = chapterFourState();
+  const state: GameState = { ...base, politics: { ...(base.politics ?? initialPolitics(base)),
+    rights: [{ id: "commuted_rent", holder: "townsfolk", grantedTick: base.tick, petitionId: "cash_rent", stallFeePermille: 1000 }] } };
+  assert.deepEqual(lordshipView(state).rightsTransfer, []);
 });
 
 test("UI-9 RG-7: rights held by merchants do not appear in rightsTransfer", () => {

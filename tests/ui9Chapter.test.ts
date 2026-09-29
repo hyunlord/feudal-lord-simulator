@@ -7,6 +7,7 @@ import { WAVE21_IMAGES } from "../src/ui/wave21ArtManifest.generated";
 import { chapterOfArt } from "../src/render/chapterArt";
 import { CHAPTER_COPY } from "../src/ui/chapterCopy.ko";
 import { CHRONICLE_COPY } from "../src/ui/chronicleCopy.ko";
+import { reorgRecordArt } from "../src/ui/chronicleModel";
 import { SEASON_STRIP_COPY } from "../src/ui/seasonStripCopy.ko";
 import type { ChronicleEntry } from "../src/engine/politics.types";
 
@@ -89,4 +90,16 @@ test("SEASON_STRIP_COPY.reorg covers all ReorganisationStepIds", () => {
     assert.ok(typeof SEASON_STRIP_COPY.reorg[id] === "string" && SEASON_STRIP_COPY.reorg[id].length > 0,
       `SEASON_STRIP_COPY.reorg.${id} must be a non-empty string`);
   }
+});
+
+test("UI-9: each reorganisation line has its Wave 21 chapter-4 picture; the chase only when the collectors were chased", () => {
+  const art = (template: string, params: Record<string, unknown> = {}) => reorgRecordArt({ template, params } as never);
+  for (const template of ["reorg.wage_competition", "reorg.textile_street", "reorg.alehouse_boom", "reorg.petitions_surge", "reorg.guild_founded",
+    "reorg.overlord_warning", "reorg.poll_tax", "reorg.rebellion_rumour", "reorg.autonomy_request", "reorg.charter"]) {
+    const id = art(template);
+    assert.ok(id !== null && id in WAVE21_IMAGES && id.startsWith("ch4_"), `${template}: ${id}`);
+  }
+  assert.equal(art("reorg.rebellion_rumour", { outcome: "chased" }), "ch4_chronicle_rebellion_rumour");
+  assert.equal(art("reorg.rebellion_rumour", { outcome: "quiet" }), "ch4_chronicle_petitions");
+  assert.equal(art("plague.rumour"), null);
 });

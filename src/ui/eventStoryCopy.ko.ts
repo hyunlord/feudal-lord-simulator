@@ -156,29 +156,30 @@ export const EVENT_STORY_COPY = {
   // UI-9 (F4-A RG-1…RG-9): chapter 4's reorganisation — seven informational beats and their steward lines.
   reorg: {
     /** RG-2: households leaving for higher wages in neighbouring towns. */
-    wageCompetition: { title: "임금 경쟁", line: "역병 뒤 인력이 귀해졌습니다. 이웃 도시가 더 높은 임금을 부르고, 일손이 빠져나갑니다",
-      advice: "금고를 충분히 채워 두십시오. 길드를 설립하면 이탈이 줄어들 수 있습니다",
+    wageCompetition: { title: "임금 경쟁", line: "역병 뒤 일손이 귀합니다. 이웃 장원이 더 높은 임금으로 가난한 가구를 부릅니다",
+      advice: "떠난 집은 비고, 새 가구가 다시 채웁니다. 한 해 동안 이어집니다",
       leavers: (n: number) => `떠난 가구 ${n}` },
     /** RG-1: the weavers' houses gather into a textile quarter. */
-    textileStreet: { title: "직물 거리", line: "직조 공방이 모여 직물 거리가 생겨났습니다. 직물 전업 청원이 곧 올 것입니다",
-      advice: "직물 전업 청원에 답할 준비를 하십시오" },
+    textileStreet: { title: "직물 거리", line: "직조공 집이 모여 직물 거리가 생겼습니다. 도시가 직물로 부유해집니다",
+      advice: "4장부터 직물이 영지의 가장 큰 수입이 됩니다" },
     /** RG-1: alehouses multiply as survivors celebrate. */
-    alehouseBoom: { title: "선술집 성황", line: "역병 뒤 살아남은 사람들이 선술집으로 모입니다. 도시 공동체의 세력이 오르고 있습니다",
-      advice: "도시 공동체의 요구가 늘어날 것입니다" },
+    alehouseBoom: { title: "에일집 성황", line: "에일집마다 사람이 붐빕니다. 장인과 상인이 모여 도시의 일을 이야기합니다",
+      advice: "직물 거리와 에일집이 모두 서면 청원이 잇달아 옵니다" },
     /** RG-1: the surge of petitions begins. */
     petitionsSurge: { title: "청원 물결", line: "도시 공동체의 힘이 커졌습니다. 청원이 잇달아 밀려옵니다",
       advice: "조합·인두세·자치 특허 청원에 차례로 답해야 합니다" },
     /** RG-4: the overlord warns the lord about the town's growing power. */
-    overlordWarning: { title: "영주의 경고", line: "상급 영주가 도시 공동체의 세력이 지나치게 커졌다고 경고합니다",
-      advice: "자치 특허 결정 때 영주의 경고를 고려하십시오" },
+    overlordWarning: { title: "백작의 경고", line: "상위 영주(백작)가 도시 공동체의 힘이 지나치게 커졌다고 경고합니다",
+      advice: "경고 뒤에 자치 특허를 내주면 백작이 더 크게 돌아섭니다" },
     /** RG-6: the poll tax is collected. */
-    pollTax: { title: "인두세 징수", line: "국왕이 인두세를 징수합니다. 위탁하면 도시 공동체가 걷고, 직접이면 왕실 징수원이 옵니다",
+    pollTax: { title: "인두세 징수", line: "국왕의 인두세를 걷습니다. 위탁하면 도시 공동체가 걷고, 직접 징수면 영주의 징수원이 걷습니다",
       advice: "인두세 방식이 반란 압력을 좌우합니다",
       collected: (amount: string) => `걷힌 세금 ${amount}` },
     /** RG-8: the 1381 rumour — collectors chased or a quiet passing. */
-    rebellion: { title: "1381년 소요", line: "압력이 쌓였습니다. 주민 일부가 소란을 피웠습니다",
-      advice: "소요는 하룻밤 소동입니다. 5장의 시작이 달라집니다",
-      chased: "징수원을 마을 밖으로 쫓아냈습니다", quiet: "소란은 조용히 지나갔습니다" },
+    rebellion: { title: "1381년 농민 반란 소문", line: "농민 반란의 소문이 도시에 닿았습니다",
+      advice: "반란 압력이 50 이상이면 사람들이 징수원을 쫓아냅니다. 다치는 사람은 없습니다",
+      chased: "사람들이 세금 징수원을 쫓아내고 장원 법정 기록을 태웠습니다 — 이번 인두세와 다음 기간 지대가 들지 않습니다",
+      quiet: "소문은 조용히 지나갔습니다" },
     /** Chip advice for a reorganisation petition (craftsmen, merchants, townsfolk — not the Crown). */
     demand: { advice: "한 계절 안에 답하지 않으면 거절로 칩니다. 재편 시대의 선택은 4장 끝까지 남습니다" },
   },

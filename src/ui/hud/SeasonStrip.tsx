@@ -2,8 +2,9 @@ import { idleWheat } from "./statusPillModel";
 import type { GameState } from "../../engine/engine.types";
 import { eventForecast } from "../../engine/eventSchedule";
 import { warForecast } from "../../engine/war";
-import { arrivalOf, forecastMarks, plagueMarks, seasonMarks, warMarks, yearFraction, type PlagueMark, type SeasonMarkKind, type WarMark } from "../seasonStrip";
+import { arrivalOf, forecastMarks, plagueMarks, reorganisationMarks, seasonMarks, warMarks, yearFraction, type PlagueMark, type ReorganisationMark, type SeasonMarkKind, type WarMark } from "../seasonStrip";
 import { plagueForecast } from "../../engine/plague";
+import { reorganisationForecast } from "../../engine/reorganisation";
 import { UiIcon } from "../UiIcon";
 import type { UiIconCell } from "../uiArt";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
@@ -28,6 +29,14 @@ const PLAGUE_ICON: Readonly<Record<PlagueMark["id"], UiIconCell<"cause">>> = {
   rumour: "safety", arrival: "safety", wage_demand: "labour", abandoned_fields: "food", ordinance: "rights", resettlement: "labour", second: "safety", end: "rights",
 };
 
+// UI-9: the reorganisation's steps by the cause family they press on — the wages war and the weavers (labour), the
+// town's trade (food for the alehouses' bread and ale), the petitions, the earl, the tax, the charter (rights), the
+// rumour of 1381 (safety).
+const REORG_ICON: Readonly<Record<ReorganisationMark["id"], UiIconCell<"cause">>> = {
+  wage_competition: "labour", textile_street: "labour", alehouse_boom: "food", petitions_surge: "rights", guild_demand: "rights", cloth_or_grain: "food",
+  overlord_warning: "rights", poll_tax: "rights", rebellion_rumour: "safety", autonomy_request: "rights", end: "rights",
+};
+
 export function SeasonStripMini({ tick }: { readonly tick: number }) {
   return (
     <span className="season-strip-mini" aria-hidden="true" style={{ backgroundImage: `url("${wave8Url("season_strip")}")` }}>
@@ -46,6 +55,7 @@ export function SeasonStripPanel({ state, food, onClose }: {
   const coming = forecastMarks(eventForecast(state), state.tick);
   const war = warMarks(warForecast(state), state.tick);
   const plague = plagueMarks(plagueForecast(state), state.tick);
+  const reorg = reorganisationMarks(reorganisationForecast(state), state.tick);
   const until = food.untilTick === null ? null : arrivalOf(state.tick, food.untilTick);
   return (
     <section className="season-strip-panel" aria-label={SEASON_STRIP_COPY.listTitle}>
@@ -61,6 +71,8 @@ export function SeasonStripPanel({ state, food, onClose }: {
           style={{ left: `${mark.fraction * 100}%` }}><UiIcon sheet="cause" cell={WAR_ICON[mark.id]} /></span>)}
         {plague.map(mark => <span key={`plague:${mark.id}`} className="season-strip-mark season-strip-forecast" data-mark={`plague_${mark.id}`}
           style={{ left: `${mark.fraction * 100}%` }}><UiIcon sheet="cause" cell={PLAGUE_ICON[mark.id]} /></span>)}
+        {reorg.map(mark => <span key={`reorg:${mark.id}`} className="season-strip-mark season-strip-forecast" data-mark={`reorg_${mark.id}`}
+          style={{ left: `${mark.fraction * 100}%` }}><UiIcon sheet="cause" cell={REORG_ICON[mark.id]} /></span>)}
         <span className="season-strip-pin" data-fraction={yearFraction(state.tick).toFixed(3)}
           style={{ left: `${yearFraction(state.tick) * 100}%`, ...wave8ImageStyle("season_pin", 12) }} />
       </div>
@@ -80,6 +92,11 @@ export function SeasonStripPanel({ state, food, onClose }: {
           const when = arrivalOf(state.tick, mark.tick);
           return <li key={`plague:${mark.id}`} data-mark={`plague_${mark.id}`}><UiIcon sheet="cause" cell={PLAGUE_ICON[mark.id]} />
             {SEASON_STRIP_COPY.row(SEASON_STRIP_COPY.plague[mark.id] ?? mark.id, SEASON_STRIP_COPY.arrival(when.season, when.third, when.nextYear))}</li>;
+        })}
+        {reorg.map(mark => {
+          const when = arrivalOf(state.tick, mark.tick);
+          return <li key={`reorg:${mark.id}`} data-mark={`reorg_${mark.id}`}><UiIcon sheet="cause" cell={REORG_ICON[mark.id]} />
+            {SEASON_STRIP_COPY.row(SEASON_STRIP_COPY.reorg[mark.id] ?? mark.id, SEASON_STRIP_COPY.arrival(when.season, when.third, when.nextYear))}</li>;
         })}
         {marks.map(mark => {
           const when = arrivalOf(state.tick, mark.tick);

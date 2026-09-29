@@ -336,7 +336,8 @@ function reorgBeats(state: GameState): readonly StoryBeat[] {
   if (reorg.rebellion !== undefined && state.tick - reorg.rebellion.tick < 2 * SEASON) {
     const chased = reorg.rebellion.outcome === "chased";
     beats.push({ id: `reorg_rebellion:${reorg.rebellion.tick}`, kind: "reorg_rebellion",
-      illustration: "ch4_event_rebellion_1381", tile: keepTile(state), decision: null, title: copy.rebellion.title,
+      // The chase picture only when they were chased; a quiet rumour is the townsfolk talking (chronicleModel reorgRecordArt).
+      illustration: chased ? "ch4_event_rebellion_1381" : "ch4_event_petitions", tile: keepTile(state), decision: null, title: copy.rebellion.title,
       line: chased ? copy.rebellion.chased : copy.rebellion.quiet, advice: copy.rebellion.advice, facts: [] });
   }
 
