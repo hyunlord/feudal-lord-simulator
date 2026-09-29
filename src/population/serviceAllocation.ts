@@ -74,12 +74,20 @@ export function allocateHouseServices(input: ServiceAllocationInput): ServiceAll
       // MARKET-1 (MK-1): a market reaches the homes within its road reach (when the road service knows it), not a radius.
       // One close by air but not joined by road still counts as near, so the home reads `unreachable` (a road to build).
       const marketReach = service === 'market' ? input.roadService?.marketReach : undefined;
-      const nearby = facilities.filter(p => marketReach === undefined ? buildingFootprintDistance(home, p) <= definition.serviceRadius
-        : marketReach(home, p) || (buildingFootprintDistance(home, p) <= definition.serviceRadius && input.roadService?.(home, p) !== true));
-      const operating = nearby.filter(p => !operationSuspended(p));
-      const staffed = operating.filter(p => p.workers >= definition.workersRequired);
-      const reachable = staffed.filter(p => !config.roadRequired || (marketReach !== undefined ? marketReach(home, p) : input.roadService?.(home, p) === true))
-        .sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id));
+      // SMOOTH-2E: one pass — near, then operating, then staffed, then reachable (only the first three's counts are read).
+      let nearby = 0, operating = 0, staffed = 0;
+      const reachable: Building[] = [];
+      for (const p of facilities) {
+        if (!(marketReach === undefined ? buildingFootprintDistance(home, p) <= definition.serviceRadius
+          : marketReach(home, p) || (buildingFootprintDistance(home, p) <= definition.serviceRadius && input.roadService?.(home, p) !== true))) continue;
+        nearby += 1;
+        if (operationSuspended(p)) continue;
+        operating += 1;
+        if (p.workers < definition.workersRequired) continue;
+        staffed += 1;
+        if (!config.roadRequired || (marketReach !== undefined ? marketReach(home, p) : input.roadService?.(home, p) === true)) reachable.push(p);
+      }
+      reachable.sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id));
       return [{ house, demand, nearby, operating, staffed, reachable }];
     });
     const assigned = new Map<string, string>();
@@ -122,11 +130,13 @@ export function allocateHouseServices(input: ServiceAllocationInput): ServiceAll
         break;
       }
       const kind: ServiceAccessKind = provider !== undefined ? 'served'
-        : facilities.length === 0 ? 'missing' : nearby.length === 0 ? 'outside'
-        : operating.length === 0 ? 'paused' : staffed.length === 0 ? 'understaffed' : reachable.length === 0 ? 'unreachable' : 'capacity';
-      const reachableIds = new Set(reachable.map(p => p.id));
-      const earlierHomesUsingCapacity = kind === 'capacity'
-        ? [...assigned.values()].filter(id => reachableIds.has(id)).length : undefined;
+        : facilities.length === 0 ? 'missing' : nearby === 0 ? 'outside'
+        : operating === 0 ? 'paused' : staffed === 0 ? 'understaffed' : reachable.length === 0 ? 'unreachable' : 'capacity';
+      let earlierHomesUsingCapacity: number | undefined;
+      if (kind === 'capacity') {
+        const reachableIds = new Set(reachable.map(p => p.id));
+        earlierHomesUsingCapacity = [...assigned.values()].filter(id => reachableIds.has(id)).length;
+      }
       houses.set(house.buildingId, { ...current, [service]: { kind, providerId: provider?.id ?? null, demand,
         ...(earlierHomesUsingCapacity === undefined ? {} : { earlierHomesUsingCapacity }) } });
       if (provider !== undefined) {

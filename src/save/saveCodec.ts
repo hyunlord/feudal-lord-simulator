@@ -62,6 +62,122 @@ export function encodeSave(input: EncodeSaveInput): EncodedSave {
   return { bytes, header, saveSerializeMs: performance.now() - startedAt };
 }
 
+/**
+ * SMOOTH-2E: `encodeSave` in pieces — the same bytes, the same checksum — so a caller can spread a big city's save
+ * (6.7 MB by 1440, ~50 ms in one task) over idle slices. Each `next()` does one piece; the generator returns the save.
+ * The state is written as JSON.stringify would (key order, skipped undefined members, null for an array's undefined),
+ * whole below the first levels and piece by piece above them; the checksum runs over the pieces in order.
+ */
+export function* encodeSaveInPieces(input: EncodeSaveInput): Generator<void, EncodedSave, void> {
+  let workMs = 0;
+  let resumedAt = performance.now();
+  const checksum = createStateChecksum();
+  const chunks: Uint8Array[] = [];
+  let pending = "";
+  const write = (text: string) => {
+    checksum.update(text);
+    pending += text;
+    if (pending.length >= PIECE_FLUSH_CHARS) { chunks.push(encoder.encode(pending)); pending = ""; }
+    return text.length;
+  };
+  for (const _piece of jsonPieces(toSnapshot(input.state), 0, write)) {
+    workMs += performance.now() - resumedAt;
+    yield;
+    resumedAt = performance.now();
+  }
+  if (pending.length > 0) chunks.push(encoder.encode(pending));
+  const header: SaveHeader = {
+    schemaVersion: SAVE_SCHEMA_VERSION,
+    gameVersion: input.gameVersion ?? GAME_VERSION,
+    createdAt: input.createdAt,
+    savedAt: input.savedAt,
+    scenarioId: input.scenarioId ?? input.state.scenarioId ?? CAMPAIGN_SCENARIO_ID,
+    seed: String(input.state.seed),
+    tick: input.state.tick,
+    rngState: { kind: "derived", algorithm: "mulberry32/fnv1a-roaming-junction-v1", seed: input.state.seed },
+    summary: createSaveSummary(input.state),
+    checksum: checksum.digest(),
+  };
+  const head = encoder.encode(`${JSON.stringify(header).slice(0, -1)}${STATE_MARKER}`);
+  const bytes = new Uint8Array(head.byteLength + chunks.reduce((sum, chunk) => sum + chunk.byteLength, 0) + 1);
+  bytes.set(head, 0);
+  let offset = head.byteLength;
+  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+  bytes[offset] = 0x7d; // "}"
+  return { bytes, header, saveSerializeMs: workMs + performance.now() - resumedAt };
+}
+
+const PIECE_FLUSH_CHARS = 65_536;
+/** A piece ends once it has written this many characters (or a run of `PIECE_RUN` members). */
+const PIECE_CHARS = 16_384;
+const PIECE_RUN = 128;
+/** The first levels are always written member by member; deeper, only a large member (see `isLarge`). */
+const PIECE_OPEN_DEPTH = 2;
+const PIECE_MAX_DEPTH = 8;
+const LARGE_ARRAY = 64;
+
+function isContainer(value: unknown): value is object {
+  return typeof value === "object" && value !== null && typeof (value as { toJSON?: unknown }).toJSON !== "function";
+}
+
+/** A long array, or an object holding one: worth writing member by member. */
+function isLarge(value: object): boolean {
+  if (Array.isArray(value)) return value.length > LARGE_ARRAY;
+  for (const key in value) {
+    const member: unknown = (value as Record<string, unknown>)[key];
+    if (Array.isArray(member) && member.length > LARGE_ARRAY) return true;
+  }
+  return false;
+}
+
+function opens(value: unknown, depth: number): value is object {
+  return isContainer(value) && depth < PIECE_MAX_DEPTH && (depth < PIECE_OPEN_DEPTH || isLarge(value));
+}
+
+/** Writes `value`'s JSON through `write`, yielding between pieces. */
+function* jsonPieces(value: unknown, depth: number, write: (text: string) => number): Generator<void, void, void> {
+  if (!opens(value, depth)) {
+    write(JSON.stringify(value) ?? "null");
+    return;
+  }
+  let written = 0;
+  let members = 0;
+  const piece = function* (chars: number) {
+    written += chars;
+    members += 1;
+    if (written >= PIECE_CHARS || members >= PIECE_RUN) { written = 0; members = 0; yield; }
+  };
+  if (Array.isArray(value)) {
+    write("[");
+    for (let index = 0; index < value.length; index += 1) {
+      if (index > 0) write(",");
+      const member: unknown = value[index];
+      if (opens(member, depth + 1)) { yield* jsonPieces(member, depth + 1, write); written = 0; members = 0; yield; }
+      else yield* piece(write(JSON.stringify(member) ?? "null"));
+    }
+    write("]");
+    return;
+  }
+  write("{");
+  let first = true;
+  for (const key of Object.keys(value)) {
+    const member: unknown = (value as Record<string, unknown>)[key];
+    if (opens(member, depth + 1)) {
+      write(`${first ? "" : ","}${JSON.stringify(key)}:`);
+      first = false;
+      yield* jsonPieces(member, depth + 1, write);
+      written = 0; members = 0;
+      yield;
+      continue;
+    }
+    const text = JSON.stringify(member);
+    if (text === undefined) continue;
+    yield* piece(write(`${first ? "" : ","}${JSON.stringify(key)}:${text}`));
+    first = false;
+  }
+  write("}");
+}
+
 export interface DecodedSave {
   readonly envelope: SaveEnvelope;
   readonly migratedFrom: number;
@@ -145,17 +261,30 @@ export function saveMetaFor(slotId: string, bytes: Uint8Array): SaveMeta | null 
 
 /** 53-bit cyrb53 over the state JSON; synchronous so saving never awaits crypto. */
 export function stateChecksum(text: string): string {
+  const checksum = createStateChecksum();
+  checksum.update(text);
+  return checksum.digest();
+}
+
+/** `stateChecksum` over a text given in pieces, in order (SMOOTH-2E: the save written in slices). */
+function createStateChecksum(): { readonly update: (text: string) => void; readonly digest: () => string } {
   let h1 = 0xdeadbeef;
   let h2 = 0x41c6ce57;
-  for (let index = 0; index < text.length; index += 1) {
-    const code = text.charCodeAt(index);
-    h1 = Math.imul(h1 ^ code, 2_654_435_761);
-    h2 = Math.imul(h2 ^ code, 1_597_334_677);
-  }
-  h1 = Math.imul(h1 ^ (h1 >>> 16), 2_246_822_507) ^ Math.imul(h2 ^ (h2 >>> 13), 3_266_489_909);
-  h2 = Math.imul(h2 ^ (h2 >>> 16), 2_246_822_507) ^ Math.imul(h1 ^ (h1 >>> 13), 3_266_489_909);
-  const value = 4_294_967_296 * (2_097_151 & h2) + (h1 >>> 0);
-  return `cyrb53:${value.toString(16).padStart(14, "0")}`;
+  return {
+    update: (text) => {
+      for (let index = 0; index < text.length; index += 1) {
+        const code = text.charCodeAt(index);
+        h1 = Math.imul(h1 ^ code, 2_654_435_761);
+        h2 = Math.imul(h2 ^ code, 1_597_334_677);
+      }
+    },
+    digest: () => {
+      const m1 = Math.imul(h1 ^ (h1 >>> 16), 2_246_822_507) ^ Math.imul(h2 ^ (h2 >>> 13), 3_266_489_909);
+      const m2 = Math.imul(h2 ^ (h2 >>> 16), 2_246_822_507) ^ Math.imul(m1 ^ (m1 >>> 13), 3_266_489_909);
+      const value = 4_294_967_296 * (2_097_151 & m2) + (m1 >>> 0);
+      return `cyrb53:${value.toString(16).padStart(14, "0")}`;
+    },
+  };
 }
 
 function validateEnvelope(value: unknown): SaveEnvelope {

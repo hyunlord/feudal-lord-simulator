@@ -59,11 +59,18 @@ function marketConnection(grid: WallGrid): (home: Building, market: Building) =>
  * MARKET-1 (MK-1, spec docs/design/market-reach.md): road steps from a market's road access to each road tile it
  * reaches (walls and bridges as the road graph has them). Cached per grid and market.
  */
-const roadDistanceCache = new WeakMap<object, Map<string, ReadonlyMap<string, number>>>();
+// SMOOTH-2E: keyed by the immutable tile array and wall (the road graph's whole input), not the grid object — the grid
+// is the game state, a new object every tick, so every market's search ran again each tick.
+const roadDistanceCache = new WeakMap<WallGrid["tiles"], { readonly width: number; readonly height: number; readonly wall: WallGrid["palisade"];
+  readonly byMarket: Map<string, ReadonlyMap<string, number>> }>();
 
 export function marketRoadDistanceMap(grid: WallGrid, market: Building): ReadonlyMap<string, number> {
-  let byMarket = roadDistanceCache.get(grid);
-  if (byMarket === undefined) { byMarket = new Map(); roadDistanceCache.set(grid, byMarket); }
+  let entry = typeof grid.tiles === "object" && grid.tiles !== null ? roadDistanceCache.get(grid.tiles) : undefined;
+  if (entry === undefined || entry.width !== grid.width || entry.height !== grid.height || entry.wall !== grid.palisade) {
+    entry = { width: grid.width, height: grid.height, wall: grid.palisade, byMarket: new Map() };
+    if (typeof grid.tiles === "object" && grid.tiles !== null) roadDistanceCache.set(grid.tiles, entry);
+  }
+  const byMarket = entry.byMarket;
   const key = `${market.id}:${market.tx},${market.ty}`;
   const cached = byMarket.get(key);
   if (cached !== undefined) return cached;

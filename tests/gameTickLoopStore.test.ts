@@ -4,8 +4,10 @@ import test from "node:test";
 import { createEconomyHarnessScenario } from "../scripts/economyHarnessScenario";
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import type { GameSpeed } from "../src/engine/engine.types";
+import { advanceTick } from "../src/engine/tick";
 import {
   createFixedTickLoop,
+  TICK_BUDGET_MS,
   type AnimationFrameScheduler,
 } from "../src/state/fixedTickLoop";
 import { gameReducer } from "../src/state/gameStore";
@@ -44,6 +46,7 @@ test("Given a delayed animation frame When the fixed loop catches up Then it adv
     commit: (previousState, nextState) => {
       state = gameReducer(state, { type: "commit_simulation_state", previousState, nextState });
     },
+    now: () => 0,
   });
 
   loop.start();
@@ -53,6 +56,41 @@ test("Given a delayed animation frame When the fixed loop catches up Then it adv
   assert.equal(state.tick, 5);
   assert.equal(state.wallTick, 5);
   assert.equal(loop.interpolationAlpha(), 0);
+  loop.stop();
+});
+
+test("SMOOTH-2E Given ticks that overrun the frame's budget When the loop catches up Then the rest wait for the next frames, every tick in order with the same result", () => {
+  const scheduler = new ManualAnimationFrameScheduler();
+  const start = createEconomyHarnessScenario({ seed: 3 });
+  let state = start;
+  const committed: number[] = [];
+  // Each clock read is 3 ms after the last: the frame's first tick ends at 3 ms, its second at 6, its third at 9.
+  let clock = 0;
+  const loop = createFixedTickLoop({
+    scheduler,
+    getSpeed: () => 5,
+    getState: () => state,
+    commit: (previousState, nextState) => {
+      committed.push(nextState.tick - previousState.tick);
+      state = gameReducer(state, { type: "commit_simulation_state", previousState, nextState });
+    },
+    now: () => (clock += 3),
+  });
+  assert.equal(Math.ceil(TICK_BUDGET_MS / 3), 3);
+
+  loop.start();
+  scheduler.runNext(0);
+  scheduler.runNext(5_000);
+  assert.equal(state.tick, 3, "the budget stops the frame after three ticks");
+  scheduler.runNext(5_001);
+  assert.equal(state.tick, 5, "the two ticks still due run the next frame");
+  scheduler.runNext(5_002);
+  assert.equal(state.tick, 5, "nothing more was due");
+  assert.deepEqual(committed, [3, 2]);
+
+  let direct = start;
+  for (let tick = 0; tick < 5; tick += 1) direct = advanceTick(direct);
+  assert.deepEqual(state, direct, "the same five ticks as one after another");
   loop.stop();
 });
 

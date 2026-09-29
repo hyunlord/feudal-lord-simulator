@@ -3,8 +3,8 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { SAVE_COPY } from "../content/saveCopy.ko";
 import type { GameState } from "../engine/engine.types";
 import { openPlatformSaveStorage } from "../platform/saveStoragePlatform";
-import { shouldAutosave, type SaveReason } from "../save/autosavePolicy";
-import { createSaveService, PREVIOUS_SAVE_SLOT, type SaveService } from "../save/saveService";
+import { autosaveDelayMs, shouldAutosave, type SaveReason } from "../save/autosavePolicy";
+import { createSaveService, PREVIOUS_SAVE_SLOT, type SavePace, type SaveService } from "../save/saveService";
 import type { SaveMeta } from "../save/saveTypes";
 
 const RECENT_SAVE_COUNT = 3;
@@ -18,9 +18,9 @@ export interface SaveMetricSample {
   readonly byteLength: number;
   readonly saveSerializeMs: number;
   readonly writeMs: number;
-  /** Synchronous main-thread work of the save task, i.e. what the save adds to its frame. */
+  /** Longest main-thread slice of the save (its whole work when written in one task), i.e. what the save adds to a frame. */
   readonly frameWorkMs: number;
-  /** Longest gap between animation frames from the request until two frames after the save; ~16.7 ms means no drop. */
+  /** Longest gap between animation frames from the save's start until two frames after it; ~16.7 ms means no drop. */
   readonly frameIntervalMs: number | null;
 }
 
@@ -61,6 +61,9 @@ function afterIdle(callback: () => void): void {
   else window.setTimeout(callback, 0);
 }
 
+/** SMOOTH-2E: a save's next slice waits for the main thread's next idle moment. */
+const idlePace: SavePace = () => new Promise(resolve => afterIdle(resolve));
+
 /** Samples requestAnimationFrame timestamps until stopped and reports the longest frame-to-frame gap. */
 function sampleFrameGaps(): { readonly stop: () => Promise<number | null> } {
   if (typeof window.requestAnimationFrame !== "function") return { stop: async () => null };
@@ -88,12 +91,13 @@ function recordMetric(sample: SaveMetricSample): void {
 export function useSaveSystem(input: {
   readonly stateRef: RefObject<GameState>;
   readonly onLoaded: (state: GameState) => void;
-}): { readonly value: SaveSystemValue; readonly requestSave: (reason: SaveReason) => void } {
+}): { readonly value: SaveSystemValue; readonly requestSave: (reason: SaveReason) => void; readonly noteSeasonTurn: () => void } {
   const { stateRef, onLoaded } = input;
   const serviceRef = useRef<SaveService | null>(null);
   const queueRef = useRef<Promise<unknown>>(Promise.resolve());
   const lastSavedStateRef = useRef<GameState | null>(stateRef.current);
   const lastSavedAtMsRef = useRef(Date.now());
+  const lastSeasonTurnAtMsRef = useRef<number | null>(null);
   const [ready, setReady] = useState(false);
   const [persistent, setPersistent] = useState(true);
   const [saves, setSaves] = useState<readonly SaveMeta[]>([]);
@@ -136,15 +140,19 @@ export function useSaveSystem(input: {
     lastSavedStateRef.current = state;
     lastSavedAtMsRef.current = Date.now();
     if (reason === "manual") setBusy(true);
+    // SMOOTH-2E: not in the season turn's second, and written in idle slices (the hidden tab's save at once, whole).
+    const delayMs = autosaveDelayMs(reason, lastSeasonTurnAtMsRef.current, performance.now());
+    const pace = reason === "hidden" ? undefined : idlePace;
     enqueue(service => new Promise<void>(resolve => {
-      const frames = sampleFrameGaps();
       const run = () => {
+        const frames = sampleFrameGaps();
         const taskStartedAt = performance.now();
-        const pending = reason === "manual" ? service.saveManual(state) : service.autosave(state);
-        const frameWorkMs = performance.now() - taskStartedAt;
+        const pending = reason === "manual" ? service.saveManual(state, pace) : service.autosave(state, pace);
+        const syncWorkMs = performance.now() - taskStartedAt;
         void pending.then(async result => {
           recordMetric({ reason, slotId: result.meta.slotId, tick: result.meta.tick, byteLength: result.byteLength,
-            saveSerializeMs: result.saveSerializeMs, writeMs: result.writeMs, frameWorkMs, frameIntervalMs: await frames.stop() });
+            saveSerializeMs: result.saveSerializeMs, writeMs: result.writeMs, frameWorkMs: Math.max(syncWorkMs, result.longestSliceMs ?? 0),
+            frameIntervalMs: await frames.stop() });
           if (reason === "manual") setNotice(SAVE_COPY.saved);
           await refreshSaves(service);
         }, () => {
@@ -156,9 +164,11 @@ export function useSaveSystem(input: {
         });
       };
       if (reason === "hidden") run();
+      else if (delayMs > 0) window.setTimeout(() => afterIdle(run), delayMs);
       else afterIdle(run);
     }));
   }, [enqueue, refreshSaves, stateRef]);
+  const noteSeasonTurn = useCallback(() => { lastSeasonTurnAtMsRef.current = performance.now(); }, []);
 
   const finishLoad = useCallback((loadedSlot: () => ReturnType<SaveService["load"]>) => {
     setBusy(true);
@@ -220,5 +230,5 @@ export function useSaveSystem(input: {
     startNewGame,
   }), [busy, current, finishLoad, latest, notice, offerContinue, persistent, previous, ready, requestSave, startNewGame]);
 
-  return { value, requestSave };
+  return { value, requestSave, noteSeasonTurn };
 }

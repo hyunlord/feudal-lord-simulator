@@ -2,6 +2,7 @@ import type { GameState } from "../engine/engine.types";
 import {
   decodeSave,
   encodeSave,
+  encodeSaveInPieces,
   readStoredSchemaVersion,
   SaveChecksumError,
   type DecodedSave,
@@ -22,7 +23,16 @@ export interface SaveWriteResult {
   readonly writeMs: number;
   readonly byteLength: number;
   readonly backupSlotId: string | null;
+  /** SMOOTH-2E: a save written in slices — the longest slice of main-thread work (what the save adds to one frame). */
+  readonly longestSliceMs?: number;
 }
+
+/**
+ * SMOOTH-2E: resolves when the save may do its next slice (the game's idle time); a save given one writes its city in
+ * slices of `SAVE_SLICE_MS` instead of one task.
+ */
+export type SavePace = () => Promise<void>;
+export const SAVE_SLICE_MS = 4;
 
 export interface SaveLoadResult {
   readonly slotId: string;
@@ -70,6 +80,23 @@ export function createSaveService(options: SaveServiceOptions) {
   function encode(state: GameState): EncodedSave {
     return encodeSave({ state, createdAt: sessionCreatedAt, savedAt: now().toISOString(),
       ...(options.gameVersion === undefined ? {} : { gameVersion: options.gameVersion }) });
+  }
+
+  /** `encode` in slices of about `SAVE_SLICE_MS`, awaiting `pace` between them: the same bytes. */
+  async function encodePaced(state: GameState, pace: SavePace): Promise<{ readonly encoded: EncodedSave; readonly longestSliceMs: number }> {
+    const pieces = encodeSaveInPieces({ state, createdAt: sessionCreatedAt, savedAt: now().toISOString(),
+      ...(options.gameVersion === undefined ? {} : { gameVersion: options.gameVersion }) });
+    let longestSliceMs = 0;
+    let sliceStartedAt = performance.now();
+    for (;;) {
+      const step = pieces.next();
+      const elapsed = performance.now() - sliceStartedAt;
+      if (step.done) return { encoded: step.value, longestSliceMs: Math.max(longestSliceMs, elapsed) };
+      if (elapsed < SAVE_SLICE_MS) continue;
+      longestSliceMs = Math.max(longestSliceMs, elapsed);
+      await pace();
+      sliceStartedAt = performance.now();
+    }
   }
 
   async function writeEncoded(slotId: string, encoded: EncodedSave): Promise<SaveWriteResult> {
@@ -131,12 +158,16 @@ export function createSaveService(options: SaveServiceOptions) {
 
   return {
     save,
-    /** Encodes before choosing the slot, so serialisation happens in the caller's task. */
-    autosave(state: GameState): Promise<SaveWriteResult> {
+    /** Encodes before choosing the slot, so serialisation happens in the caller's task — or, given a pace, in slices. */
+    autosave(state: GameState, pace?: SavePace): Promise<SaveWriteResult> {
+      if (pace !== undefined) return encodePaced(state, pace).then(async ({ encoded, longestSliceMs }) =>
+        ({ ...await writeEncoded(await nextAutoSlot(), encoded), longestSliceMs }));
       const encoded = encode(state);
       return nextAutoSlot().then(slotId => writeEncoded(slotId, encoded));
     },
-    saveManual(state: GameState): Promise<SaveWriteResult> {
+    saveManual(state: GameState, pace?: SavePace): Promise<SaveWriteResult> {
+      if (pace !== undefined) return encodePaced(state, pace).then(async ({ encoded, longestSliceMs }) =>
+        ({ ...await writeEncoded(MANUAL_SAVE_SLOT, encoded), longestSliceMs }));
       return save(MANUAL_SAVE_SLOT, state);
     },
     playerSaves,

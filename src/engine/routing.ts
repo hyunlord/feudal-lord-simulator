@@ -11,7 +11,7 @@ import type { TileCoordinate } from "../world/grid";
 import { getTile } from "../world/grid";
 import type { WallGrid } from "../world/wallTraversal";
 import { canTraverseRoadBoundary } from "../world/bridges";
-import { findExistingRoadPath } from "../world/roadGraph";
+import { shortestExistingRoadPath } from "../world/roadGraph";
 import type { GameState, RoadPathCache } from "./engine.types";
 import { wallCarryRoute } from './wallCarryRoute';
 
@@ -100,11 +100,36 @@ function dedupeSortedNonWaterRoads(
   return roads.sort(compareCoordinates);
 }
 
+// SMOOTH-2E: a building's road accesses per immutable tile array and wall (their whole input with the footprint), read
+// by production, labour, food flow and every route each tick. Same key as the road graph's (`roadGraph.ts`).
+const accessCaches = new WeakMap<WallGrid["tiles"], { readonly width: number; readonly height: number; readonly wall: WallGrid["palisade"];
+  readonly tiles: Map<string, readonly TileCoordinate[]> }>();
+
 export function buildingRoadAccessTiles(
   grid: WallGrid,
   building: Building,
 ): readonly TileCoordinate[] {
   const definition = buildingFootprint(building);
+  // A partial grid (a view without its tiles) is read uncached.
+  if (typeof grid.tiles !== "object" || grid.tiles === null) return uncachedBuildingRoadAccessTiles(grid, building, definition);
+  let cache = accessCaches.get(grid.tiles);
+  if (cache === undefined || cache.width !== grid.width || cache.height !== grid.height || cache.wall !== grid.palisade) {
+    cache = { width: grid.width, height: grid.height, wall: grid.palisade, tiles: new Map() };
+    accessCaches.set(grid.tiles, cache);
+  }
+  const key = `${building.tx},${building.ty},${definition.width},${definition.height}`;
+  const cached = cache.tiles.get(key);
+  if (cached !== undefined) return cached;
+  const access = uncachedBuildingRoadAccessTiles(grid, building, definition);
+  cache.tiles.set(key, access);
+  return access;
+}
+
+function uncachedBuildingRoadAccessTiles(
+  grid: WallGrid,
+  building: Building,
+  definition: { readonly width: number; readonly height: number },
+): readonly TileCoordinate[] {
   const candidates: TileCoordinate[] = [];
 
   for (let dx = 0; dx < definition.width; dx += 1) {
@@ -202,19 +227,8 @@ function shortestRoadPathBetweenAccessTiles(
   starts: readonly TileCoordinate[],
   destinations: readonly TileCoordinate[],
 ): readonly TileCoordinate[] | null {
-  let bestPath: readonly TileCoordinate[] | null = null;
-
-  for (const start of starts) {
-    for (const destination of destinations) {
-      const path = findExistingRoadPath(grid, { start, destination });
-      if (path === null) continue;
-      if (bestPath === null || path.length < bestPath.length) {
-        bestPath = path;
-      }
-    }
-  }
-
-  return bestPath;
+  // SMOOTH-2E: the shortest of every start × destination road path, first among equals — one search per start.
+  return shortestExistingRoadPath(grid, starts, destinations);
 }
 
 export function resolveBuildingRoute(
@@ -241,12 +255,18 @@ export function resolveBuildingRoute(
     };
   }
 
+  return withCachedPath(reverse ? reversedPath(path) : path, state.pathCache, key, path);
+}
+
+/**
+ * SMOOTH-2E: a resolution whose cache has the new path added — built when first read. Most callers read only the path
+ * (the bot's what-if checks); copying the whole cache (hundreds of entries) on each miss was the bot's top cost.
+ */
+function withCachedPath(path: readonly TileCoordinate[], cache: RoadPathCache, key: string, cached: readonly TileCoordinate[]): RouteResolution {
+  let added: RoadPathCache | undefined;
   return {
-    path: reverse ? reversedPath(path) : path,
-    pathCache: {
-      ...state.pathCache,
-      [key]: path,
-    },
+    path,
+    get pathCache() { return added ??= { ...cache, [key]: cached }; },
   };
 }
 
@@ -271,7 +291,7 @@ export function resolveBuildingToConstructionSiteRoute(
   const path = carried !== null && (direct === null || carried.cost < direct.length - 1)
     ? carried.path : direct;
   if (path === null) return { path: null, pathCache: state.pathCache };
-  return { path, pathCache: { ...state.pathCache, [forwardKey]: path } };
+  return withCachedPath(path, state.pathCache, forwardKey, path);
 }
 
 export function resolveDirectBuildingToConstructionSiteRoute(

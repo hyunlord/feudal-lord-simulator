@@ -13,14 +13,16 @@ import { createReadStream, createWriteStream, rmSync } from "node:fs";
 import { pipeline } from "node:stream/promises";
 import { join } from "node:path";
 import { analyseRun, type FrameRecord, type MomentMark } from "./hitchTrace";
-import { MODAL, SEASON_TEXT, TUTORIAL_OFF, closeModals as closeSceneModals, loadChromium, openScene, type PageWindow } from "./scenePage";
+import { MODAL, SEASON_TEXT, TUTORIAL_OFF, closeModals as closeSceneModals, loadChromium, openScene, windowReady, type PageWindow } from "./scenePage";
+import { holderText, takeMachineLock } from "./machineLock";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback?: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] : fallback; };
 const url = flag("url")!; const scene = flag("scene")!; const save = flag("save"); const speed = Number(flag("speed", "1"));
 const seconds = Number(flag("seconds", "180")); const action = flag("action", "none")!; const headed = argv.includes("--headed");
 const machine = flag("machine", headed ? "mac-chrome-window" : "dgx-headless")!; const out = flag("out")!; const traces = flag("traces")!;
-const noProof = argv.includes("--no-proof");   // the page as a player gets it: no proof port and its render recorders
+const noProof = argv.includes("--no-proof");
+const lockWait = Number(flag("lock-wait", "30")); const focusWait = Number(flag("focus-wait", "60"));   // minutes · seconds   // the page as a player gets it: no proof port and its render recorders
 const noTrace = argv.includes("--no-trace");   // control: the same run without tracing (does tracing cause the hitches?)
 const width = Number(flag("width", "1600")); const height = Number(flag("height", "1000"));
 if (!url || !scene || !out || !traces || ![1, 3, 5].includes(speed)) throw new Error("--url --scene --speed 1|3|5 --out --traces are required");
@@ -47,9 +49,25 @@ const OBSERVE = `(() => {
     if (node.nodeType === 1 && (node.matches?.('[role="dialog"],[aria-modal="true"]') || node.querySelector?.('[role="dialog"],[aria-modal="true"]'))) mark('dialog', node.getAttribute?.('aria-label') ?? String(node.className ?? ''));
   } });
   document.addEventListener('DOMContentLoaded', () => observer.observe(document.documentElement, { childList: true, subtree: true }));
+  // A covered window stops drawing; a run that loses its window is no judgement (perf:gate reads these marks).
+  document.addEventListener('visibilitychange', () => mark(document.visibilityState === 'hidden' ? 'hidden' : 'visible'));
+  window.addEventListener('blur', () => mark('blur')); window.addEventListener('focus', () => mark('focus'));
+  // Chrome under Playwright keeps drawing a hidden or minimised window, but a sleeping display, a locked screen or
+  // another Space stop rAF while timers still run. A 250 ms timer that twice in a row finds no rAF for 500 ms marks
+  // "not-drawn" (a long task cannot fake it: after one, rAF comes within a frame, before the second check).
+  window.__lastRaf = performance.now();
+  const beat = () => { window.__lastRaf = performance.now(); requestAnimationFrame(beat); }; requestAnimationFrame(beat);
+  let previous = { stale: false, raf: 0 }; let open = false;
+  setInterval(() => { const raf = window.__lastRaf; const stale = performance.now() - raf > 500;
+    if (stale && previous.stale && previous.raf === raf) { if (!open) { mark('not-drawn', String(Math.round(performance.now() - raf))); open = true; } }
+    else if (!stale) open = false;
+    previous = { stale, raf }; }, 250);
 })();`;
 
 async function main() {
+  // One measurement at a time on this machine (scripts/perf/machineLock.ts); inside perf:gate the gate holds it.
+  const lock = await takeMachineLock(`hitchAudit ${scene} x${speed}`, lockWait, holder => console.error(`측정 잠금을 기다린다: ${holderText(holder)}`));
+  if (!lock.held) { console.error(`판정 아님: 다른 측정이 돌고 있다 — ${holderText(lock.holder)}`); process.exitCode = 3; return; }
   const chromium = await loadChromium();
   const browser = await chromium.launch({ channel: "chrome", headless: !headed,
     args: headed ? [`--window-size=${width},${height + 90}`, "--window-position=40,40"] : [] });
@@ -62,6 +80,10 @@ async function main() {
   const closeModals = () => closeSceneModals(page);
   const loadSeconds = (Date.now() - load0) / 1000;
   await page.waitForTimeout(1_000);
+  if (headed) {
+    const notReady = await windowReady(browser, page, focusWait);
+    if (notReady !== null) { console.error(`판정 아님: ${notReady}`); await browser.close(); process.exitCode = 3; return; }
+  }
 
   const rawTrace = join(traces, `${runName}.json`);
   if (!noTrace) await browser.startTracing(page, { path: rawTrace, screenshots: false,
