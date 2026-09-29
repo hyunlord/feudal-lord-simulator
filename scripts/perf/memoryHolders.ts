@@ -23,7 +23,7 @@ const flag = (name: string, fallback?: string) => { const i = argv.indexOf(`--${
 const scene = flag("scene")!; const save = flag("save"); const speed = Number(flag("speed", "5"));
 const playSeconds = Number(flag("play-seconds", "120")); const cameraSeconds = Number(flag("camera-seconds", "60"));
 const out = flag("out")!; const raw = flag("raw")!; const port = Number(flag("port", "4393"));
-const noProof = argv.includes("--no-proof");   // the page as a player gets it (no proof port and its render recorders)
+const noProof = argv.includes("--no-proof"); const noSnapshot = argv.includes("--no-snapshot");   // the page as a player gets it (no proof port and its render recorders)
 if (!scene || !out || !raw) throw new Error("--scene --out --raw are required");
 mkdirSync(out, { recursive: true }); mkdirSync(raw, { recursive: true });
 
@@ -54,12 +54,29 @@ const RECORD = `(() => {
   globalThis.Image.prototype = Img.prototype;
   for (const proto of [HTMLCanvasElement.prototype, Offscreen && Offscreen.prototype].filter(Boolean)) {
     const getContext = proto.getContext;
-    proto.getContext = function (...args) { const index = tracked.get(this); if (index !== undefined) { entries[index].context = true; entries[index].transferred = false; } return getContext.apply(this, args); };
+    proto.getContext = function (...args) { const index = tracked.get(this); if (index !== undefined) { entries[index].context = true; entries[index].transferred = false; entries[index].pixels = this.width * this.height; } return getContext.apply(this, args); };
   }
   const createBitmap = globalThis.createImageBitmap;
   globalThis.createImageBitmap = function (...args) { const id = stackId(); return createBitmap.apply(this, args).then(bitmap => { track(bitmap, 'bitmap'); entries[entries.length - 1].stack = id; return bitmap; }); };
   const close = ImageBitmap.prototype.close;
   ImageBitmap.prototype.close = function () { const index = tracked.get(this); if (index !== undefined) entries[index].closed = true; return close.call(this); };
+  // Calls that make Blink (Oilpan) objects or pixel copies, counted between two reads: the embedder churn behind V8's
+  // global budget. getImageData also counts its bytes.
+  const calls = {}; const count = (name, bytes) => { const entry = calls[name] ?? (calls[name] = { calls: 0, bytes: 0 }); entry.calls += 1; entry.bytes += bytes || 0; };
+  const wrap = (proto, name, bytesOf) => { if (!proto || typeof proto[name] !== 'function') return; const original = proto[name];
+    proto[name] = function (...args) { count((proto === Element.prototype ? 'Element' : proto.constructor.name) + '.' + name, bytesOf ? bytesOf(args) : 0); return original.apply(this, args); }; };
+  for (const proto of [CanvasRenderingContext2D.prototype, globalThis.OffscreenCanvasRenderingContext2D && OffscreenCanvasRenderingContext2D.prototype]) {
+    wrap(proto, 'getImageData', args => (args[2] | 0) * (args[3] | 0) * 4); wrap(proto, 'createImageData', args => (args[0] | 0) * (args[1] | 0) * 4);
+    // Every other method of the 2D context too (save() makes a state object, drawImage and fill may not).
+    if (proto) for (const name of Object.getOwnPropertyNames(proto)) { if (name === 'getImageData' || name === 'createImageData' || name === 'constructor') continue;
+      const descriptor = Object.getOwnPropertyDescriptor(proto, name); if (descriptor && typeof descriptor.value === 'function') wrap(proto, name); }
+  }
+  wrap(Element.prototype, 'getBoundingClientRect'); wrap(Element.prototype, 'getClientRects');
+  const getComputed = window.getComputedStyle; window.getComputedStyle = function (...args) { count('getComputedStyle', 0); return getComputed.apply(this, args); };
+  for (const name of ['DOMMatrix', 'Path2D', 'ImageData', 'DOMRect', 'DOMPoint']) { const Original = globalThis[name]; if (!Original) continue;
+    const Wrapped = function (...args) { count('new ' + name, name === 'ImageData' ? (args[1] | 0) * (args[2] | 0) * 4 || (args[0] && args[0].length) || 0 : 0); return new Original(...args); };
+    Wrapped.prototype = Original.prototype; Object.setPrototypeOf(Wrapped, Original); globalThis[name] = Wrapped; }
+  window.__calls = () => { const snapshot = JSON.parse(JSON.stringify(calls)); for (const key of Object.keys(calls)) delete calls[key]; return snapshot; };
   window.__pixels = () => {
     const groups = new Map();
     for (const entry of entries) {
@@ -76,6 +93,13 @@ const RECORD = `(() => {
       groups.set(key, group);
     }
     const list = [...groups.values()];
+    // Everything created since the last read, dead or alive, by stack: the churn (pixels = w x h when it got a context).
+    const made = new Map();
+    for (let index = window.__madeFrom || 0; index < entries.length; index++) { const entry = entries[index];
+      const key = entry.stack + '|' + entry.kind; const row = made.get(key) ?? { stack: entry.stack, kind: entry.kind, count: 0, pixels: 0 }; row.count += 1; row.pixels += entry.pixels || 0; made.set(key, row); }
+    window.__madeFrom = entries.length;
+    const churn = [...made.values()].sort((a, b) => b.count - a.count).slice(0, 12);
+    for (const row of churn) list.push({ stack: row.stack, kind: 'made:' + row.kind, source: '', onScreen: false, count: row.count, bytes: 0, empty: row.count, largest: row.pixels * 4, largestSize: 'sum' });
     return { groups: list, stacks: Object.fromEntries([...new Set(list.map(group => group.stack))].map(id => [id, stacks[id]])), created: entries.length };
   };
 })();`;
@@ -113,17 +137,28 @@ async function gcBudget(browser: any, page: any, file: string, seconds: number) 
   await page.waitForTimeout(seconds * 1000);
   await browser.stopTracing();
   const starts: Record<string, number>[] = []; let majorGC = 0; let minorGC = 0;
+  // Each GC's start: embedder bytes = global consumed − old generation consumed; between two scavenges (no mark-compact
+  // between them) its growth is what the embedder allocated.
+  const gcs: { ts: number; kind: string; embedder: number; oldGen: number }[] = [];
   for await (const line of createInterface({ input: createReadStream(file) })) {
     const text = line.trim().replace(/,$/, ""); if (!text.startsWith("{") || text.startsWith('{"traceEvents"')) continue;
     let event: any; try { event = JSON.parse(text); } catch { continue; }
     if (event.name === "V8.GCIncrementalMarkingStart") starts.push(event.args?.value ?? event.args ?? {});
     if (event.name === "MajorGC" && event.ph === "X") majorGC += 1;
+    if (event.name === "V8.GCTraceGCNVP") { try { const value = JSON.parse(event.args?.value ?? "{}");
+      if (typeof value.start_global_consumed_size === "number") gcs.push({ ts: event.ts, kind: value.gc, embedder: value.start_global_consumed_size - value.start_old_gen_consumed_size, oldGen: value.start_old_gen_consumed_size }); } catch { /* not a GC line */ } }
     if (event.name === "MinorGC" && event.ph === "X") minorGC += 1;
   }
   const mb = (key: string) => { const values = starts.map(args => args[key]).filter((value): value is number => typeof value === "number").sort((a, b) => a - b);
     return values.length === 0 ? null : Math.round(values[Math.floor(values.length / 2)]! / 1e5) / 10; };
   const keys = [...new Set(starts.flatMap(args => Object.keys(args)))];
-  return { seconds, majorGC, minorGC, markingStarts: starts.length, reasons: [...new Set(starts.map(args => String(args.reason ?? args.epoch ?? "")))],
+  gcs.sort((a, b) => a.ts - b.ts); const rates: number[] = [];
+  for (let i = 1; i < gcs.length; i++) if (gcs[i - 1]!.kind === "s" && gcs[i]!.embedder >= gcs[i - 1]!.embedder && gcs[i]!.ts > gcs[i - 1]!.ts)
+    rates.push((gcs[i]!.embedder - gcs[i - 1]!.embedder) / ((gcs[i]!.ts - gcs[i - 1]!.ts) / 1e6));
+  rates.sort((a, b) => a - b);
+  const embedderAllocMBps = rates.length === 0 ? null : Math.round(rates[Math.floor(rates.length / 2)]! / 1e5) / 10;
+  return { seconds, majorGC, minorGC, markingStarts: starts.length, embedderAllocMBps, gcCount: gcs.length,
+    embedderAtGcMB: gcs.length === 0 ? null : { min: Math.round(Math.min(...gcs.map(gc => gc.embedder)) / 1e5) / 10, max: Math.round(Math.max(...gcs.map(gc => gc.embedder)) / 1e5) / 10 }, reasons: [...new Set(starts.map(args => String(args.reason ?? args.epoch ?? "")))],
     medianMB: Object.fromEntries(keys.filter(key => /bytes|limit|size/.test(key)).map(key => [key, mb(key)])) };
 }
 
@@ -163,7 +198,11 @@ async function main() {
     };
     const measure = async (label: string) => {
       const gcTrace = join(raw, `${scene}-${label}.gc-trace.json`);
+      await page.evaluate(() => (window as unknown as PageWindow).__calls());   // counts from here
       const gc = await gcBudget(browser, page, gcTrace, 30);
+      const callCounts = await page.evaluate(() => (window as unknown as PageWindow).__calls()) as Record<string, { calls: number; bytes: number }>;
+      const callsPerSecond = Object.fromEntries(Object.entries(callCounts).sort((a, b) => b[1].calls - a[1].calls)
+        .map(([name, entry]) => [name, { perSecond: Math.round(entry.calls / gc.seconds), MBps: Math.round(entry.bytes / gc.seconds / 1e5) / 10 }]));
       for (let i = 0; i < 3; i++) { await cdp.send("HeapProfiler.collectGarbage"); await page.waitForTimeout(300); }
       const heap = await cdp.send("Runtime.getHeapUsage"); const dom = await cdp.send("Memory.getDOMCounters");
       const processes = ((await browserCdp.send("SystemInfo.getProcessInfo")).processInfo ?? []) as { type: string; id: number }[];
@@ -175,18 +214,21 @@ async function main() {
       const groups = (pixels.groups as PixelGroup[]).map(group => ({ ...group, ...resolve(String(pixels.stacks[group.stack] ?? "")) }));
       const totalMB = groups.reduce((sum, group) => sum + group.bytes, 0) / 1e6;
       points.push({ label, at: new Date().toISOString(), state, heapUsageMB: Object.fromEntries(Object.entries(heap).map(([key, value]) => [key, Math.round(Number(value) / 1e5) / 10])),
-        domCounters: dom, rssMB, gc, pixels: { created: pixels.created, liveMB: Math.round(totalMB * 10) / 10, groups: groups.sort((a, b) => b.bytes - a.bytes) } });
-      console.log(`${scene} ${label}: ${state.date} tick ${state.tick} pixels ${totalMB.toFixed(1)} MB in ${groups.length} groups; heap used ${(Number(heap.usedSize) / 1e6).toFixed(1)} MB; GC budget ${JSON.stringify(gc.medianMB)}`);
+        domCounters: dom, rssMB, gc, callsPerSecond, pixels: { created: pixels.created, liveMB: Math.round(totalMB * 10) / 10, groups: groups.sort((a, b) => b.bytes - a.bytes) } });
+      console.log(`${scene} ${label}: ${state.date} tick ${state.tick} pixels ${totalMB.toFixed(1)} MB in ${groups.length} groups; heap used ${(Number(heap.usedSize) / 1e6).toFixed(1)} MB; GC budget ${JSON.stringify(gc.medianMB)}; embedder ${gc.embedderAllocMBps} MB/s; calls ${JSON.stringify(Object.entries(callsPerSecond).slice(0, 4))}`);
     };
 
     await page.waitForTimeout(10_000); await measure("loaded");
     await keepPlaying(playSeconds * 1000, false); await measure("played");
     if (cameraSeconds > 0) { await keepPlaying(cameraSeconds * 1000, true); await measure("camera"); }
     // The JS heap at the last point, streamed to a file outside the repository (scripts/perf/heapSnapshot.ts reads it).
-    const snapshotFile = join(raw, `${scene}.heapsnapshot`); const stream = createWriteStream(snapshotFile);
-    cdp.on("HeapProfiler.addHeapSnapshotChunk", (event: { chunk: string }) => { stream.write(event.chunk); });
-    await cdp.send("HeapProfiler.takeHeapSnapshot", { reportProgress: false, captureNumericValue: false });
-    await new Promise<void>(done => stream.end(done));
+    const snapshotFile = noSnapshot ? null : join(raw, `${scene}.heapsnapshot`);
+    if (snapshotFile !== null) {
+      const stream = createWriteStream(snapshotFile);
+      cdp.on("HeapProfiler.addHeapSnapshotChunk", (event: { chunk: string }) => { stream.write(event.chunk); });
+      await cdp.send("HeapProfiler.takeHeapSnapshot", { reportProgress: false, captureNumericValue: false });
+      await new Promise<void>(done => stream.end(done));
+    }
     writeFileSync(join(out, `${scene}.memory.json`), `${JSON.stringify({ scene, save: save ?? null, speed, proof: !noProof, playSeconds, cameraSeconds, errors, snapshot: snapshotFile, points }, null, 1)}\n`);
     console.log(`${scene}: wrote ${join(out, `${scene}.memory.json`)}, snapshot ${snapshotFile}`);
   } finally {

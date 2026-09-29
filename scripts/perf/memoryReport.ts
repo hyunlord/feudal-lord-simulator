@@ -43,7 +43,7 @@ const summary = runs.map(run => {
     const rows = [...holders.values()].sort((a, b) => b.bytes - a.bytes).map(holder => ({ holder: holder.holder, cache: holder.cache, kinds: [...holder.kinds], live: holder.count, MB: mb(holder.bytes),
       largest: holder.largestSize, by: [...holder.fns].sort((a, b) => b[1] - a[1]).slice(0, 3).map(([fn, bytes]) => `${fn} ${mb(bytes)}`) }));
     const caches = new Map<string, number>(); for (const row of rows) caches.set(row.cache ?? "(그 밖)", (caches.get(row.cache ?? "(그 밖)") ?? 0) + row.MB);
-    return { label: point.label, state: point.state, heapUsageMB: point.heapUsageMB, rssMB: point.rssMB, gc: point.gc, domCounters: point.domCounters,
+    return { label: point.label, state: point.state, heapUsageMB: point.heapUsageMB, rssMB: point.rssMB, gc: point.gc, domCounters: point.domCounters, callsPerSecond: point.callsPerSecond ?? {},
       pixelsMB: point.pixels.liveMB, pixelOwnersCreated: point.pixels.created, holders: rows, caches: Object.fromEntries([...caches].map(([key, value]) => [key, Math.round(value * 10) / 10])) };
   });
   return { scene: run.scene, save: run.save, speed: run.speed, errors: run.errors, points, heap };
@@ -53,14 +53,16 @@ writeFileSync(flag("out") ?? join(dir, "memory-summary.json"), `${JSON.stringify
 const lines: string[] = [];
 for (const run of summary) {
   lines.push(`## ${run.scene}`, "");
-  lines.push("| 시점 | 틱 | 인구 | 픽셀(살아 있는 캔버스·비트맵·그림) MB | JS 힙 사용 MB | GC 예산: 전역 소비 / 한도 / old gen MB | major GC(30초) | 렌더러 RSS MB | GPU RSS MB |", "|---|---:|---:|---:|---:|---|---:|---:|---:|");
+  lines.push("| 시점 | 날짜 | 픽셀(살아 있는 캔버스·비트맵·그림) MB | JS 힙(강제 GC 뒤) MB | Blink 힙(강제 GC 뒤) MB | GC 예산: 전역 소비 / 한도 / old gen MB | Blink 쪽 할당 MB/s | major GC(30초) | 렌더러 RSS MB | GPU RSS MB |", "|---|---|---:|---:|---:|---|---:|---:|---:|---:|");
   for (const point of run.points) {
     const rss = Object.entries(point.rssMB as Record<string, number>);
     const renderer = rss.filter(([key]) => key.startsWith("renderer")).map(([, value]) => value).sort((a, b) => b - a)[0] ?? "-";
     const gpu = rss.filter(([key]) => key.startsWith("GPU")).map(([, value]) => value)[0] ?? "-";
     const budget = point.gc.medianMB as Record<string, number | null>;
-    lines.push(`| ${point.label} | ${point.state.tick} | ${point.state.population} | ${point.pixelsMB} | ${point.heapUsageMB.usedSize} | ${budget.global_consumed_bytes ?? "-"} / ${budget.global_allocation_limit ?? "-"} / ${budget.old_gen_consumed_bytes ?? "-"} | ${point.gc.majorGC} | ${renderer} | ${gpu} |`);
+    lines.push(`| ${point.label} | ${point.state.date ?? point.state.tick} | ${point.pixelsMB} | ${point.heapUsageMB.usedSize} | ${point.heapUsageMB.embedderHeapUsedSize ?? "-"} | ${budget.global_consumed_bytes ?? "-"} / ${budget.global_allocation_limit ?? "-"} / ${budget.old_gen_consumed_bytes ?? "-"} | ${point.gc.embedderAllocMBps ?? "-"} | ${point.gc.majorGC} | ${renderer} | ${gpu} |`);
   }
+  lines.push("", "Blink 객체를 만드는 호출(초당, 30초 창):", "");
+  for (const point of run.points) lines.push(`- ${point.label}: ${Object.entries(point.callsPerSecond as Record<string, { perSecond: number; MBps: number }>).slice(0, 8).map(([name, entry]) => `\`${name}\` ${entry.perSecond}/초${entry.MBps ? ` (${entry.MBps} MB/s)` : ""}`).join(" · ") || "-"}`);
   const last = run.points.at(-1)!;
   lines.push("", `### 픽셀 붙잡이 (${last.label})`, "", "| # | 붙잡이(만든 src 파일) | 캐시 | 종류 | 살아 있는 수 | MB | 가장 큰 것 | 만든 함수(← 부른 곳) MB |", "|---:|---|---|---|---:|---:|---|---|");
   last.holders.slice(0, 20).forEach((row: any, index: number) => lines.push(`| ${index + 1} | \`${row.holder}\` | ${row.cache ?? ""} | ${row.kinds.join(", ")} | ${row.live} | ${row.MB} | ${row.largest} | ${row.by.join("; ")} |`));
@@ -68,8 +70,13 @@ for (const run of summary) {
   const cacheNames: string[] = [...new Set<string>(run.points.flatMap((point: any) => Object.keys(point.caches)))];
   for (const name of cacheNames) lines.push(`| ${name} | ${run.points.map((point: any) => point.caches[name] ?? 0).join(" | ")} |`);
   if (run.heap !== null) {
-    lines.push("", `### JS 힙 붙잡이 (힙 스냅숏, 자기 크기 합 ${run.heap.totalSelfMB} MB)`, "", "| # | 변수 | 종류 | 유지 MB |", "|---:|---|---|---:|");
-    run.heap.holders.slice(0, 15).forEach((row: any, index: number) => lines.push(`| ${index + 1} | \`${row.names.join(", ")}\` | ${row.type} ${row.constructor} | ${row.retainedMB} |`));
+    lines.push("", `### JS 힙 붙잡이 (힙 스냅숏, 자기 크기 합 ${run.heap.totalSelfMB} MB, 살아 있는 게임 상태 ${run.heap.stateCount}개)`, "",
+      "가장 짧은 경로의 앞 이름별 자기 크기(모듈 변수 → 필드):", "", "| # | 경로 | MB | 객체 수 |", "|---:|---|---:|---:|");
+    run.heap.byPath.slice(0, 15).forEach((row: any, index: number) => lines.push(`| ${index + 1} | \`${row.path.replace(/^__FEUDAL_PHASE10_PROOF__ → tileClientPoint → /, "")}\` | ${row.selfMB} | ${row.count} |`));
+    lines.push("", "지금 게임 상태의 필드별 크기(먼저 닿은 필드에 셈):", "", "| 필드 | MB | 객체 수 |", "|---|---:|---:|");
+    for (const row of run.heap.stateFields.filter((row: any) => row.MB >= 0.5)) lines.push(`| ${row.field} | ${row.MB} | ${row.objects} |`);
+    lines.push("", "| # | 모듈 변수 | 종류 | 유지 MB |", "|---:|---|---|---:|");
+    run.heap.holders.slice(0, 10).forEach((row: any, index: number) => lines.push(`| ${index + 1} | \`${row.names.join(", ")}\` | ${row.type} ${row.constructor} | ${row.retainedMB} |`));
     lines.push("", "| 노드 종류 | 이름 | 수 | 자기 MB |", "|---|---|---:|---:|");
     for (const row of run.heap.kinds.slice(0, 12)) lines.push(`| ${row.type} | ${row.name || "-"} | ${row.count} | ${row.selfMB} |`);
   }

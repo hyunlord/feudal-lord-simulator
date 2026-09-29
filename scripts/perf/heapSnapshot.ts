@@ -116,8 +116,70 @@ export function analyseSnapshot(snapshot: Awaited<ReturnType<typeof readSnapshot
   const kindRows = [...kinds].map(([key, entry]) => ({ type: key.split("|")[0]!, name: key.slice(key.indexOf("|") + 1), count: entry.count, selfMB: mb(entry.self) }))
     .sort((a, b) => b.selfMB - a.selfMB).slice(0, top);
   let total = 0; for (let n = 0; n < nodeCount; n++) total += nodes[n * NF + nSelf]!;
-  void ELEMENT; void HIDDEN;
-  return { nodes: nodeCount, reachable, totalSelfMB: mb(total), rootRetainedMB: mb(retained[root]!), holders: holderRows, kinds: kindRows };
+  // A path from the root to each node (breadth first over strong edges), for naming what the dominator tree shows.
+  const parentNode = new Uint32Array(nodeCount).fill(UNSET); const parentEdge = new Uint32Array(nodeCount).fill(UNSET);
+  const queue = new Uint32Array(nodeCount); let head = 0; let tailAt = 0; queue[tailAt++] = 0; parentNode[0] = 0;
+  while (head < tailAt) {
+    const n = queue[head++]!;
+    for (let e = firstEdge[n]!; e < firstEdge[n + 1]!; e += EF) { if (edges[e + eType] === WEAK) continue; const t = target(e); if (parentNode[t] !== UNSET) continue; parentNode[t] = n; parentEdge[t] = e; queue[tailAt++] = t; }
+  }
+  const edgeLabel = (e: number) => { const kind = edges[e + eType]!; const value = edges[e + eName]!;
+    return kind === ELEMENT || kind === HIDDEN ? `[${value}]` : (strings[value] ?? "?").slice(0, 40); };
+  const pathOf = (n: number) => { const hops: string[] = []; let at = n;
+    while (at !== 0 && parentNode[at] !== UNSET && hops.length < 12) { hops.unshift(edgeLabel(parentEdge[at]!)); at = parentNode[at]!; }
+    return hops.join(" → "); };
+  // The dominator tree from the root, children of at least `minMB`, `depth` levels.
+  const childCount = new Uint32Array(reachable + 1);
+  for (let p = 0; p < root; p++) if (idom[p] !== UNSET) childCount[idom[p]! + 1]! += 1;
+  for (let p = 0; p < reachable; p++) childCount[p + 1]! += childCount[p]!;
+  const children = new Uint32Array(childCount[reachable]!); const at = childCount.slice(0, reachable);
+  for (let p = 0; p < root; p++) if (idom[p] !== UNSET) children[at[idom[p]!]!++] = p;
+  type TreeRow = { depth: number; retainedMB: number; selfMB: number; type: string; name: string; path: string };
+  const tree: TreeRow[] = []; const minBytes = 4e6;
+  const walk = (p: number, depth: number) => {
+    const kids = [...children.subarray(childCount[p]!, childCount[p + 1]!)].filter(q => retained[q]! >= minBytes).sort((a, b) => retained[b]! - retained[a]!);
+    for (const q of kids.slice(0, 8)) {
+      const n = order[q]!;
+      tree.push({ depth, retainedMB: mb(retained[q]!), selfMB: mb(nodes[n * NF + nSelf]!), type: typeOf(n), name: nameOf(n).slice(0, 50), path: pathOf(n) });
+      if (depth < 7) walk(q, depth + 1);
+    }
+  };
+  walk(root, 0);
+  // Shared data (the game state reached from React, refs and closures at once) is dominated by the root itself, so the
+  // tree says little about it. Two more views:
+  //  - by path: every node's self size under the first names of its shortest path from the root (index hops and
+  //    Blink's own holders left out);
+  //  - the game state: objects with tick + buildings + walkers fields, how many are alive, and for the biggest the size
+  //    reached through each field (breadth first, a node counted under the first field that reaches it).
+  const SKIP = /^\[\d+\]$|^\d+ \/ |^global_object$|^context$|^previous$|^shared$|^map$|^properties$|^elements$|^table$/;
+  const byPath = new Map<string, { self: number; count: number }>();
+  for (let n = 1; n < nodeCount; n++) {
+    if (parentNode[n] === UNSET) continue;
+    const labels = pathOf(n).split(" → ").filter(label => !SKIP.test(label)).slice(0, 4).join(" → ");
+    const entry = byPath.get(labels) ?? { self: 0, count: 0 }; entry.self += nodes[n * NF + nSelf]!; entry.count += 1; byPath.set(labels, entry);
+  }
+  const pathRows = [...byPath].map(([path, entry]) => ({ path, selfMB: mb(entry.self), count: entry.count })).sort((a, b) => b.selfMB - a.selfMB).slice(0, top);
+  const fieldNames = (n: number) => { const names = new Map<string, number>();
+    for (let e = firstEdge[n]!; e < firstEdge[n + 1]!; e += EF) if (edges[e + eType] === PROPERTY) names.set(strings[edges[e + eName]!] ?? "", target(e)); return names; };
+  const states: number[] = [];
+  for (let n = 0; n < nodeCount; n++) { if (typeOf(n) !== "object") continue; const names = fieldNames(n); if (names.has("tick") && names.has("buildings") && names.has("walkers")) states.push(n); }
+  const seen = new Uint8Array(nodeCount);
+  const reach = (start: number) => { let bytes = 0; let objects = 0; const stack = [start];
+    while (stack.length > 0) { const n = stack.pop()!; if (seen[n]) continue; seen[n] = 1; bytes += nodes[n * NF + nSelf]!; objects += 1;
+      for (let e = firstEdge[n]!; e < firstEdge[n + 1]!; e += EF) { const kind = edges[e + eType]!; if (kind === WEAK) continue; const t = target(e);
+        const tType = typeOf(t); if (tType === "code" || tType === "hidden" || tType === "object shape" || tType === "closure" || nameOf(t) === "system / Context") continue;
+        if (!seen[t]) stack.push(t); } }
+    return { bytes, objects }; };
+  const stateRows = states.map(n => ({ node: n, path: pathOf(n).slice(-200), fields: fieldNames(n).size }));
+  let stateFields: { field: string; MB: number; objects: number }[] = [];
+  if (states.length > 0) {
+    // The live state (the one the page reaches first) claims its fields first; then what other states add.
+    const [first, ...rest] = [...states].sort((a, b) => pathOf(a).length - pathOf(b).length);
+    seen[first!] = 1;
+    stateFields = [...fieldNames(first!)].map(([field, t]) => ({ field, ...reach(t) })).map(row => ({ field: row.field, MB: mb(row.bytes), objects: row.objects })).sort((a, b) => b.MB - a.MB);
+    const others = rest.map(n => reach(n)); stateFields.push({ field: `(그 밖의 상태 ${rest.length}개가 더한 것)`, MB: mb(others.reduce((sum, row) => sum + row.bytes, 0)), objects: others.reduce((sum, row) => sum + row.objects, 0) });
+  }
+  return { byPath: pathRows, states: stateRows.slice(0, 20), stateCount: states.length, stateFields, nodes: nodeCount, reachable, totalSelfMB: mb(total), rootRetainedMB: mb(retained[root]!), holders: holderRows, kinds: kindRows, tree };
 }
 
 if (process.argv[1]?.endsWith("heapSnapshot.ts")) {
@@ -126,6 +188,8 @@ if (process.argv[1]?.endsWith("heapSnapshot.ts")) {
   const started = Date.now(); const snapshot = await readSnapshot(file);
   const result = analyseSnapshot(snapshot, Number(flag("top") ?? 40));
   console.log(`${file}: ${result.nodes} nodes, ${result.totalSelfMB} MB self, ${result.rootRetainedMB} MB retained from the root (${((Date.now() - started) / 1000).toFixed(1)} s)`);
-  for (const row of result.holders.slice(0, 20)) console.log(`  ${String(row.retainedMB).padStart(8)} MB  ${row.names.join(",")}  (${row.type} ${row.constructor})`);
+  console.log(`game states alive: ${result.stateCount}`); for (const row of result.stateFields.slice(0, 25)) console.log(`  ${String(row.MB).padStart(7)} MB  ${row.field} (${row.objects} objects)`);
+  for (const row of result.byPath.slice(0, 25)) console.log(`  ${String(row.selfMB).padStart(7)} MB  ${row.path.slice(0, 160)} (${row.count})`);
+  for (const row of result.tree.slice(0, 20)) console.log(`${"  ".repeat(row.depth)}${String(row.retainedMB).padStart(7)} MB  ${row.type} ${row.name}  ← ${row.path.slice(-160)}`);
   const json = flag("json"); if (json !== undefined) writeFileSync(json, `${JSON.stringify(result, null, 1)}\n`);
 }
