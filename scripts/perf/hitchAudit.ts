@@ -7,28 +7,25 @@
 //   PLAYWRIGHT_MODULE=... tsx scripts/perf/hitchAudit.ts --url <build url> --scene <name> [--save <file.save.json>]
 //     --speed 1|3|5 [--seconds 180] [--action none|camera|placement|drawers] [--headed] [--machine <label>]
 //     --out <summary dir> --traces <trace dir outside the repository>
-import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { mkdirSync, statSync, writeFileSync } from "node:fs";
 import { createGzip } from "node:zlib";
 import { createReadStream, createWriteStream, rmSync } from "node:fs";
 import { pipeline } from "node:stream/promises";
 import { join } from "node:path";
-import { pathToFileURL } from "node:url";
-import { saveMetaFor } from "../../src/save/saveCodec";
 import { analyseRun, type FrameRecord, type MomentMark } from "./hitchTrace";
+import { MODAL, SEASON_TEXT, TUTORIAL_OFF, closeModals as closeSceneModals, loadChromium, openScene, type PageWindow } from "./scenePage";
 
-// The page globals the audit reads (the proof port and its own recorder).
-type PageWindow = Record<string, any>;
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback?: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] : fallback; };
 const url = flag("url")!; const scene = flag("scene")!; const save = flag("save"); const speed = Number(flag("speed", "1"));
 const seconds = Number(flag("seconds", "180")); const action = flag("action", "none")!; const headed = argv.includes("--headed");
 const machine = flag("machine", headed ? "mac-chrome-window" : "dgx-headless")!; const out = flag("out")!; const traces = flag("traces")!;
+const noProof = argv.includes("--no-proof");   // the page as a player gets it: no proof port and its render recorders
 const noTrace = argv.includes("--no-trace");   // control: the same run without tracing (does tracing cause the hitches?)
 const width = Number(flag("width", "1600")); const height = Number(flag("height", "1000"));
 if (!url || !scene || !out || !traces || ![1, 3, 5].includes(speed)) throw new Error("--url --scene --speed 1|3|5 --out --traces are required");
 mkdirSync(out, { recursive: true }); mkdirSync(traces, { recursive: true });
-const runName = `${machine}-${scene}-x${speed}${action === "none" ? "" : `-${action}`}${noTrace ? "-notrace" : ""}`;
-const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
+const runName = `${machine}-${scene}-x${speed}${action === "none" ? "" : `-${action}`}${noTrace ? "-notrace" : ""}${noProof ? "-noproof" : ""}`;
 
 // In the page, before the app: autosave writes and dialogs become marks; nothing in the game is replaced.
 // tsx (esbuild keepNames) wraps functions handed to page.evaluate in __name(); the page gets a pass-through.
@@ -46,7 +43,7 @@ const OBSERVE = `(() => {
 })();`;
 
 async function main() {
-  const chromium = (await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE!).href)).chromium;
+  const chromium = await loadChromium();
   const browser = await chromium.launch({ channel: "chrome", headless: !headed,
     args: headed ? [`--window-size=${width},${height + 90}`, "--window-position=40,40"] : [] });
   const context = await browser.newContext(headed ? { viewport: null } : { viewport: { width, height }, deviceScaleFactor: 1 });
@@ -54,44 +51,8 @@ async function main() {
   const page = await context.newPage();
   const errors: string[] = []; page.on("pageerror", (error: Error) => errors.push(error.message));
   const load0 = Date.now();
-  await page.goto(`${url}?phase10-proof=1`, { waitUntil: "load" });
-  if (save !== undefined) {
-    const bytes = new Uint8Array(readFileSync(save)); const meta = saveMetaFor("auto-1", bytes);
-    if (meta === null) throw new Error(`${save}: not a save file`);
-    await page.evaluate(async ({ base64, meta }: { base64: string; meta: unknown }) => {
-      const data = Uint8Array.from(atob(base64), char => char.charCodeAt(0));
-      const db: IDBDatabase = await new Promise((resolve, reject) => { const request = indexedDB.open("feudal-lord-simulator-saves", 1);
-        request.onupgradeneeded = () => { for (const store of ["slots", "meta"]) if (!request.result.objectStoreNames.contains(store)) request.result.createObjectStore(store); };
-        request.onsuccess = () => resolve(request.result); request.onerror = () => reject(request.error); });
-      await new Promise<void>((resolve, reject) => { const tx = db.transaction(["slots", "meta"], "readwrite");
-        tx.objectStore("slots").put(data.buffer, "auto-1"); tx.objectStore("meta").put(meta, "auto-1");
-        tx.oncomplete = () => resolve(); tx.onerror = () => reject(tx.error); });
-      db.close();
-    }, { base64: Buffer.from(bytes).toString("base64"), meta });
-    await page.reload({ waitUntil: "load" });
-    await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 60_000 });
-  } else {
-    for (const name of ["목표형으로 시작", "새 게임", "새 게임 시작"]) {
-      const button = page.getByRole("button", { name, exact: true });
-      if (await button.count() > 0 && await button.first().isVisible()) { await button.first().click(); break; }
-    }
-  }
-  // A modal open over the town (a story card saved open, the season ledger) blocks the speed buttons: Esc, and when
-  // it stays, its first button — what a player does to get on with the game.
-  const MODAL = '[role="dialog"], .story-modal-backdrop, .season-ledger-backdrop';
-  const closeModals = async () => {
-    for (let attempt = 0; attempt < 4 && await page.locator(MODAL).count() > 0; attempt++) {
-      await page.keyboard.press("Escape").catch(() => {}); await page.waitForTimeout(400);
-      if (await page.locator(MODAL).count() > 0) await page.locator('[role="dialog"] button').first().click({ timeout: 2_000 }).catch(() => {});
-      await page.waitForTimeout(400);
-    }
-  };
-  await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90_000 });
-  await page.waitForTimeout(2_000);
-  if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
-  if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");
-  await closeModals();
-  await page.getByRole("button", { name: `${speed}배속`, exact: true }).click();
+  await openScene(page, { url, speed, proof: !noProof, ...(save === undefined ? {} : { save }) });
+  const closeModals = () => closeSceneModals(page);
   const loadSeconds = (Date.now() - load0) / 1000;
   await page.waitForTimeout(1_000);
 
@@ -100,14 +61,20 @@ async function main() {
     categories: ["devtools.timeline", "disabled-by-default-devtools.timeline", "disabled-by-default-v8.cpu_profiler", "blink.user_timing", "v8.execute", "v8"] });
   await page.waitForTimeout(2_000);   // tracing's own start-up stall stays out of the recorded frames
   // The recorder: every rAF's timestamp, and every 250 ms the proof port's tick, chapter, season and weather.
-  const startMarkPageMs: number = await page.evaluate(() => {
+  const startMarkPageMs: number = await page.evaluate((seasonText: string) => {
     const hitch = (window as unknown as PageWindow).__hitch; hitch.recording = true;
     const proof = (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__;
+    const seasonWord = () => /봄|여름|가을|겨울/.exec(document.querySelector(seasonText)?.textContent ?? "")?.[0] ?? null;
+    let lastWord = seasonWord();
     const t0 = performance.now(); performance.mark("hitch:start");
     const frame = (t: number) => { if (!hitch.recording) return; hitch.frames.push({ t }); requestAnimationFrame(frame); };
     requestAnimationFrame(frame);
     let last: { tick: number; chapter: number; season: number } | null = null;
     hitch.poll = setInterval(() => {
+      if (proof === undefined) {   // no proof port: the HUD's season word
+        const word = seasonWord(); if (word !== null && lastWord !== null && word !== lastWord) (window as unknown as PageWindow).__hitchMark("season", `${lastWord}->${word}`);
+        if (word !== null) lastWord = word; return;
+      }
       const state = proof.state(); const tick = state.tick;
       // The weather belongs to its season (events.types EV-3), so a weather change is a season change.
       const now = { tick, chapter: state.politics?.chapter?.number ?? 1, season: Math.floor(((tick % 4000) * 4) / 4000) };
@@ -119,7 +86,7 @@ async function main() {
       last = now;
     }, 250);
     return t0;
-  });
+  }, SEASON_TEXT);
 
   const deadline = Date.now() + seconds * 1000;
   const box = await page.locator("canvas").first().boundingBox();
@@ -165,8 +132,8 @@ async function main() {
     }
   }
   const recorded = await page.evaluate(() => { const hitch = (window as unknown as PageWindow).__hitch; hitch.recording = false; clearInterval(hitch.poll);
-    const proof = (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__; const state = proof.state();
-    return { frames: hitch.frames, marks: hitch.marks, tick: state.tick, population: state.population, buildings: state.buildings.length,
+    const state = (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__?.state();
+    return { frames: hitch.frames, marks: hitch.marks, tick: state?.tick ?? null, population: state?.population ?? null, buildings: state?.buildings.length ?? null,
       dpr: devicePixelRatio, viewport: [innerWidth, innerHeight] }; });
   if (!noTrace) await browser.stopTracing();
   await browser.close();
@@ -176,7 +143,7 @@ async function main() {
   const gz = `${rawTrace}.gz`;
   if (!noTrace) { await pipeline(createReadStream(rawTrace), createGzip({ level: 6 }), createWriteStream(gz)); rmSync(rawTrace); }
   const analysis = await analyseRun({ frames: recorded.frames as FrameRecord[], marks: recorded.marks as MomentMark[], startMarkPageMs, tracePath: noTrace ? null : gz });
-  const summary = { run: runName, machine, scene, speed, action, seconds, url, save: save ?? null, loadSeconds,
+  const summary = { run: runName, machine, scene, speed, action, seconds, url, save: save ?? null, loadSeconds, startMarkPageMs,
     page: { dpr: recorded.dpr, viewport: recorded.viewport, tickEnd: recorded.tick, population: recorded.population, buildings: recorded.buildings },
     trace: noTrace ? null : { file: gz, bytes: statSync(gz).size }, moments: recorded.marks, actions: [...new Set(actionLog)], errors,
     ...analysis };
