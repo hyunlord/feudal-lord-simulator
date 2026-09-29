@@ -84,3 +84,4 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
 | 2026-09-29 21:34 | `b75574ce`* | 판정 아님(SMOOTH-2E 브랜치) | big-town-x5 판정 아님 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2134-b75574ce](2026-09-29-2134-b75574ce.md) |
 | 2026-09-29 21:53 | `b75574ce`* | 실패(SMOOTH-2E 브랜치 — 회귀 없음 비교의 유효한 한 벌) | big-town-x5 실패 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2153-b75574ce](2026-09-29-2153-b75574ce.md) |
 | 2026-09-29 22:08 | `f5ae40ec`* | 실패(본선 — 회귀 없음 비교의 유효한 한 벌) | big-town-x5 실패 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2208-f5ae40ec](2026-09-29-2208-f5ae40ec.md) |
+| 2026-09-30 08:22 | `a1b5696b` | 판정 아님 | big-town-x5 판정 아님 · new-game-x3 통과 · season-x1 실패 · placement-x3 통과 | [2026-09-30-0822-a1b5696b](2026-09-30-0822-a1b5696b.md) |
