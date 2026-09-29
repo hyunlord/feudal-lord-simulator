@@ -1,0 +1,232 @@
+{
+ "gate": "perf:gate stage 1",
+ "verdict": "판정 아님",
+ "commit": "4c2b378032a4795823ad8cccaf371692b9511a28",
+ "dirty": false,
+ "started": "2026-09-29T23:48:38.520Z",
+ "finished": "2026-09-29T23:51:49.759Z",
+ "machine": {
+  "platform": "darwin",
+  "model": "Mac16,5",
+  "cpus": 14,
+  "chrome": "Google Chrome 154.0.8037.58",
+  "loadAverage1m": [
+   3.7,
+   6
+  ]
+ },
+ "limits": {
+  "p99Ms": 16.7,
+  "maxMs": 100,
+  "over50PerMin": 1,
+  "over33PerMin": 3,
+  "momentAlpha": 0.05,
+  "otherCpu": 0.25
+ },
+ "seconds": 180,
+ "invalid": [
+  "season-x1: 다른 일의 CPU 30% > 25%(10초 구간 최대, 코어 14): 다른 일이 돌았다"
+ ],
+ "failures": [
+  "season-x1: 최대 1058.2 ms > 100",
+  "season-x1: 50 ms 초과 1.3/분 > 1"
+ ],
+ "scenes": [
+  {
+   "id": "season-x1",
+   "loadMax": 0.3,
+   "label": "계절 전환(가장 큰 도시 1배속)",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 1,
+   "action": "none",
+   "verdict": "판정 아님",
+   "failed": [
+    "최대 1058.2 ms > 100",
+    "50 ms 초과 1.3/분 > 1"
+   ],
+   "invalid": [
+    "다른 일의 CPU 30% > 25%(10초 구간 최대, 코어 14): 다른 일이 돌았다"
+   ],
+   "stats": {
+    "frames": 21398,
+    "minutes": 3,
+    "p50": 8.3,
+    "p95": 10.2,
+    "p99": 10.3,
+    "max": 1058.2,
+    "over25": 8,
+    "over33": 8,
+    "over50": 4,
+    "over25PerMin": 2.7,
+    "over33PerMin": 2.7,
+    "over50PerMin": 1.3
+   },
+   "loadSeconds": 3.424,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 3,
+    "autosave": 4,
+    "dialog": 3,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 142.6,
+     "ms": 1058.2
+    },
+    {
+     "atSeconds": 143.3,
+     "ms": 125.4
+    },
+    {
+     "atSeconds": 141.6,
+     "ms": 124.1
+    },
+    {
+     "atSeconds": 142.7,
+     "ms": 116.5
+    },
+    {
+     "atSeconds": 142.9,
+     "ms": 49.1
+    },
+    {
+     "atSeconds": 142.8,
+     "ms": 48
+    },
+    {
+     "atSeconds": 142.8,
+     "ms": 35.1
+    },
+    {
+     "atSeconds": 144.9,
+     "ms": 33.4
+    }
+   ],
+   "longAnimationFrames": [
+    {
+     "start": 148181.20000000298,
+     "duration": 727.8999999910593,
+     "blocking": 658.2,
+     "renderStart": 148207.79999999702,
+     "styleAndLayoutStart": 148906.09999999404,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-Dyh-bx6n.js",
+       "charPosition": 2461366,
+       "duration": 114,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-Dyh-bx6n.js",
+       "charPosition": 3874946,
+       "duration": 580,
+       "forcedStyleAndLayout": 149
+      }
+     ],
+     "atSeconds": 141.7
+    },
+    {
+     "start": 149606.79999999702,
+     "duration": 131,
+     "blocking": 0,
+     "renderStart": 149734.79999999702,
+     "styleAndLayoutStart": 149737.79999999702,
+     "scripts": [],
+     "atSeconds": 143.2
+    },
+    {
+     "start": 149072.39999999106,
+     "duration": 120.40000000596046,
+     "blocking": 57.3,
+     "renderStart": 149096.59999999404,
+     "styleAndLayoutStart": 149192.79999999702,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-Dyh-bx6n.js",
+       "charPosition": 2461366,
+       "duration": 32,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-Dyh-bx6n.js",
+       "charPosition": 3874946,
+       "duration": 12,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 142.6
+    },
+    {
+     "start": 147892.39999999106,
+     "duration": 60.5,
+     "blocking": 10.5,
+     "renderStart": 147892.39999999106,
+     "styleAndLayoutStart": 147951.39999999106,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-Dyh-bx6n.js",
+       "charPosition": 2461366,
+       "duration": 15,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-Dyh-bx6n.js",
+       "charPosition": 3874946,
+       "duration": 37,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 141.5
+    }
+   ]
+  }
+ ],
+ "moments": {
+  "windows": 144,
+  "windowsWithLong": 3,
+  "baseline": 0.020833333333333332,
+  "rows": [
+   {
+    "kind": "season",
+    "seen": 3,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.020833333333333332,
+    "pValue": 1,
+    "pass": true
+   },
+   {
+    "kind": "autosave",
+    "seen": 4,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.020833333333333332,
+    "pValue": 1,
+    "pass": true
+   }
+  ],
+  "pass": true
+ }
+}
