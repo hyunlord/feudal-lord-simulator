@@ -6,7 +6,8 @@ import type { TouchTranslator } from "./touchTranslator";
 // translator and applies what it asks for (preventDefault / stopImmediatePropagation). Nothing here knows the game.
 // TOUCH-1: a press on the map (mouse or touch) takes the keyboard focus back from a button or card, so the map's
 // shortcuts work at once (a clicked speed seal kept the focus and swallowed WASD / Q / E / Space before); and each
-// device reports itself as the last input device.
+// device reports itself as the last input device. SMOOTH-2R: mouse moves are queued and handled once per frame
+// (mouseKeyboardTranslator `queueMove`); touch and the pad drive the translator directly.
 
 /** Drop the focus of a control (not a text field being typed in) when the map is pressed — and (UX-3) when a pick
  * closes the build drawer, so the map's keys act on the placement at once. */
@@ -80,7 +81,7 @@ export function bindMouseKeyboard(canvas: EventSource, translator: MouseKeyboard
       keyUp: event => applyOutcome(event, translator.keyUp(key(event))),
       blurWindow: () => translator.focusLost(),
       startDrag: event => { reportInputDevice("mouse"); releaseControlFocus(); applyOutcome(event, translator.pointerDown(pointer(event))); },
-      movePointer: event => { if (event.movementX !== 0 || event.movementY !== 0) reportInputDevice("mouse"); applyOutcome(event, translator.pointerMove(pointer(event))); },
+      movePointer: event => { if (event.movementX !== 0 || event.movementY !== 0) reportInputDevice("mouse"); applyOutcome(event, translator.queueMove(pointer(event))); },
       leaveCanvas: () => translator.leave(),
       clickCanvas: event => applyOutcome(event, translator.click(pointer(event))),
       contextMenuCanvas: event => applyOutcome(event, translator.contextMenu(pointer(event))),
