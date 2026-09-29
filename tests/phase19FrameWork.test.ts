@@ -75,6 +75,8 @@ function tickHarness() {
     getState: () => state,
     getSpeed: () => speed,
     commit: (_, next) => { state = next; },
+    // The tick budget's own clock: frozen, so these tests see the proof instrumentation's reads alone.
+    now: () => 0,
   });
   return { loop, run: (timestamp: number) => { assert.ok(callback); callback(timestamp); },
     pause: () => { speed = 0; }, tick: () => state.tick };

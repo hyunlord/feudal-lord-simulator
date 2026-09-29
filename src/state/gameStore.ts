@@ -50,7 +50,7 @@ import type {
   GameStoreApi,
   PreviousRenderState,
 } from "./gameStore.types";
-import { decisionSaveReason } from "../save/autosavePolicy";
+import { decisionSaveReason, seasonTurned } from "../save/autosavePolicy";
 import { newGameState } from "./newGame";
 import { SaveSystemContext, useSaveSystem } from "./saveSystem";
 import { createUiChannel } from "./uiChannel";
@@ -217,6 +217,7 @@ export function GameProvider({ children }: GameProviderProps) {
   const [ui] = useState(() => createUiChannel({ initial: initialState, read: () => stateRef.current, intervalMs: UI_REFRESH_MS,
     now: () => performance.now(), setTimer: (run, delayMs) => setTimeout(run, delayMs), clearTimer: timer => clearTimeout(timer as ReturnType<typeof setTimeout>) }));
   const requestSaveRef = useRef<((reason: import("../save/autosavePolicy").SaveReason) => void) | null>(null);
+  const noteSeasonTurnRef = useRef<(() => void) | null>(null);
   const newSessionRef = useRef<(() => void) | null>(null);
 
   // A committed tick reaches the UI at most every UI_REFRESH_MS (the last one always does); an action at once.
@@ -249,6 +250,7 @@ export function GameProvider({ children }: GameProviderProps) {
       setSessionKey(key => key + 1);
     }
     notify(action.type === "commit_simulation_state");
+    if (action.type === "commit_simulation_state" && seasonTurned(currentState, nextState)) noteSeasonTurnRef.current?.();
     const decision = action.type === "load_saved_state" || action.type === "restart_settlement" || action.type === "start_new_game"
       ? null : decisionSaveReason(currentState, nextState);
     if (action.type === "restart_settlement" && nextState !== currentState) newSessionRef.current?.();
@@ -257,6 +259,7 @@ export function GameProvider({ children }: GameProviderProps) {
   const onLoaded = useCallback((loaded: GameState) => dispatch({ type: "load_saved_state", state: loaded }), [dispatch]);
   const saveSystem = useSaveSystem({ stateRef, onLoaded });
   requestSaveRef.current = saveSystem.requestSave;
+  noteSeasonTurnRef.current = saveSystem.noteSeasonTurn;
   newSessionRef.current = saveSystem.value.declineContinue;
 
   const setSpeed = useCallback((nextSpeed: GameSpeed) => {

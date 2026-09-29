@@ -240,22 +240,34 @@ function eventCause(eventId: string, defId: string): SourceRef {
  */
 function personDrafts(before: GameState, after: GameState): Draft[] {
   const previous = new Map(before.houses.map(house => [house.buildingId, house]));
-  const buildings = new Map(after.buildings.map(building => [building.id, building]));
-  const heads = new Map<string, string>();
-  for (const person of [...(before.persons?.people ?? []), ...(after.persons?.people ?? [])]) if (person.role === "head") heads.set(person.householdId, person.id);
+  // SMOOTH-2E: the buildings' and the heads' lookups (and a record's base) are made only when a record is written —
+  // most ticks write none, and these were rebuilt for every house each tick.
+  let buildings: Map<string, GameState["buildings"][number]> | null = null;
+  let heads: Map<string, string> | null = null;
+  const headOf = (householdId: string) => {
+    if (heads === null) {
+      heads = new Map();
+      for (const person of before.persons?.people ?? []) if (person.role === "head") heads.set(person.householdId, person.id);
+      for (const person of after.persons?.people ?? []) if (person.role === "head") heads.set(person.householdId, person.id);
+    }
+    return heads.get(householdId);
+  };
   const drafts: Draft[] = [];
   const placeOf = (householdId: string) => {
+    buildings ??= new Map(after.buildings.map(building => [building.id, building]));
     const building = buildings.get(householdId);
     return building === undefined ? {} : { place: { tx: building.tx, ty: building.ty, buildingId: building.id } };
   };
   for (const house of after.houses) {
     const old = previous.get(house.buildingId);
     if (old === undefined) continue;
-    const household = { type: "household" as const, id: house.buildingId };
-    const head = heads.get(house.buildingId);
-    const base = { tick: after.tick, kind: "person" as const, ...placeOf(house.buildingId),
-      ...(head === undefined ? { subject: household } : { subject: { type: "person" as const, id: head }, actors: [household] }) };
-    const push = (template: string, severity: HistorySeverity, extra: Partial<Draft> = {}) => drafts.push({ ...base, template, severity, ...extra });
+    const baseOf = () => {
+      const household = { type: "household" as const, id: house.buildingId };
+      const head = headOf(house.buildingId);
+      return { tick: after.tick, kind: "person" as const, ...placeOf(house.buildingId),
+        ...(head === undefined ? { subject: household } : { subject: { type: "person" as const, id: head }, actors: [household] }) };
+    };
+    const push = (template: string, severity: HistorySeverity, extra: Partial<Draft> = {}) => drafts.push({ ...baseOf(), template, severity, ...extra });
     if (house.burntTick !== undefined && old.burntTick === undefined) {
       push("person.burnt", 1, house.burntByEventId === undefined ? {} : { cause: eventCause(house.burntByEventId, house.burntByEventId.split("@")[0] ?? "fire") });
       continue;

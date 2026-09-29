@@ -34,14 +34,14 @@ export function bridgeAt(grid:WallGrid, coordinate:TileCoordinate):BridgeSpan|nu
 }
 
 export function canTraverseRoadBoundary(grid:WallGrid,from:TileCoordinate,to:TileCoordinate):boolean {
-  if(!canTraverseWallBoundary(grid,from,to))return false;
-  for(const [point,other] of [[from,to],[to,from]] as const){
-    if(getTile(grid,point)?.terrain!=="water")continue;
-    const span=bridgeAt(grid,point);
-    if(span===null)return false;
-    if(![...span.water,...span.banks].some(candidate=>same(candidate,other)))return false;
-  }
-  return true;
+  return canTraverseWallBoundary(grid,from,to)&&bridgeEndAllows(grid,from,to)&&bridgeEndAllows(grid,to,from);
+}
+
+/** A water end of a step is a bridge's, and the other end on that same bridge (its water or its banks). */
+function bridgeEndAllows(grid:WallGrid,point:TileCoordinate,other:TileCoordinate):boolean {
+  if(getTile(grid,point)?.terrain!=="water")return true;
+  const span=bridgeAt(grid,point);
+  return span!==null&&(span.water.some(candidate=>same(candidate,other))||span.banks.some(candidate=>same(candidate,other)));
 }
 
 export function bridgeRemovalTiles(grid:WallGrid,coordinate:TileCoordinate):readonly TileCoordinate[]{

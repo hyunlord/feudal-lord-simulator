@@ -1,6 +1,12 @@
+import { BALANCE } from "../content/balanceConfig";
 import type { GameState } from "../engine/engine.types";
 
 export const AUTOSAVE_INTERVAL_MS = 60_000;
+/**
+ * SMOOTH-2E: a save (but a manual one or the tab's hiding) starts no sooner than this after the season turns — the
+ * turn's own work, the season's card and the pause it brings all land in that second (SMOOTH-1: 65 % of autosaves).
+ */
+export const AUTOSAVE_SEASON_GAP_MS = 2_000;
 
 export type SaveReason = "interval" | "pause" | "hidden" | "palisade_proclaimed" | "era_changed" | "manual";
 
@@ -26,4 +32,15 @@ export function shouldAutosave(input: {
   if (input.state === input.lastSavedState) return false;
   if (input.reason === "interval") return input.nowMs - input.lastSavedAtMs >= AUTOSAVE_INTERVAL_MS;
   return true;
+}
+
+/** The tick crossed into another season (the calendar's quarter of `BALANCE.TICKS_PER_YEAR`). */
+export function seasonTurned(previous: Pick<GameState, "tick">, next: Pick<GameState, "tick">): boolean {
+  return Math.floor((previous.tick * 4) / BALANCE.TICKS_PER_YEAR) !== Math.floor((next.tick * 4) / BALANCE.TICKS_PER_YEAR);
+}
+
+/** How long a save asked for now waits: until `AUTOSAVE_SEASON_GAP_MS` after the last season turn (never for a manual or hidden-tab save). */
+export function autosaveDelayMs(reason: SaveReason, lastSeasonTurnAtMs: number | null, nowMs: number): number {
+  if (reason === "manual" || reason === "hidden" || lastSeasonTurnAtMs === null) return 0;
+  return Math.max(0, lastSeasonTurnAtMs + AUTOSAVE_SEASON_GAP_MS - nowMs);
 }
