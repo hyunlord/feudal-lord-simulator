@@ -291,7 +291,8 @@ test("Given a dense neighborhood When hovering a roof in normal view Then buildi
 test("Given roads are under tall object overhang When drawing objects Then the road ground pass runs before upright buildings and walkers", () => {
   // Given
   const house = building("house-a", 1, 1);
-  const walker = builderWalker("builder-a");
+  // NAT-1: the walker stands on the tile in front of the house (inside its footprint it is behind the house, drawn first).
+  const walker = { ...builderWalker("builder-a"), position: { tx: 1, ty: 2 } };
   const roadTile = tile(1, 0, true);
   const context = loggedContext();
 

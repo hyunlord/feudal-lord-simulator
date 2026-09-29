@@ -143,6 +143,7 @@ export const renderFrame = (input: RenderFrameInput): void => {
         nowMs: input.nowMs ?? 0, lifeClockMs: input.lifeClockMs ?? input.nowMs ?? 0,
         hoveredTile: input.hoveredTile ?? null,
       selectionMode: input.selectionMode ?? false,
+        selectedWalkerId: input.selectedWalkerId ?? null, // NAT-1 a hidden selected walker drawn faintly
       }),
     overhang: () => {
       probe?.enter("effects");
