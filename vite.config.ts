@@ -29,9 +29,10 @@ function nat1PseudoLongPlugin() {
       let result = importLine + code;
       // Wrap: `export const NAME = {` → `export const NAME = __pl({`
       result = result.replace(/(export const [A-Za-z_]\w* = )(\{)/g, "$1__pl($2");
-      // Close: `} as const;` or `} as const satisfies Type;` → append `)` before `;`
-      // The [^\n;]* captures optional TypeScript `satisfies` clauses on the same line.
-      result = result.replace(/(\} as const(?:\s+satisfies\s+[^\n;]+)?);/g, "$1);");
+      // Close: `} as const;` or `} as const satisfies Type;` at the START of a line
+      // (multiline `m` flag + `^`). This avoids closing inline non-exported consts like
+      // `const PARENTS = { ... } as const;` which are all on one line.
+      result = result.replace(/^(\} as const(?:\s+satisfies\s+[^\n;]+)?);/gm, "$1);");
       return { code: result, map: null };
     },
   };

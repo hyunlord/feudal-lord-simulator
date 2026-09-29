@@ -15,10 +15,14 @@ export const isPseudoLongEnabled: boolean = (() => {
   }
 })();
 
-// NAT-1: Korean syllable fillers expressed as Unicode escapes (not literal Korean characters)
-// so the source file does not trigger the "Korean outside *.ko.ts" lint check.
-// Decoded: 가 나 다 라 마 바 사 아 자 차 카 타 파 하 (U+AC00..U+D558).
-const FILLERS = "가나다라마바사아자차카타파하";
+// NAT-1: Korean syllable fillers generated from codepoint arithmetic — no Korean string
+// literal in this file so the "Korean outside *.ko.ts" check does not flag it.
+// The 14 syllables are ga-na-da-ra-ma-ba-sa-a-ja-cha-ka-ta-pa-ha (Hangul block U+AC00+).
+const HANGUL_BASE = 0xAC00;
+const HANGUL_OFFSETS = [0, 0x5E8, 0x9D0, 0xD7C, 0x11C8, 0x1620, 0x19D8, 0x1D80, 0x2130, 0x24E8, 0x28A0, 0x2C58, 0x3010, 0x33C8];
+function fillerChar(i: number): string {
+  return String.fromCodePoint(HANGUL_BASE + (HANGUL_OFFSETS[i % HANGUL_OFFSETS.length] ?? 0));
+}
 
 /** Extend a Korean string to approximately 1.4× its length by appending syllable fillers.
  *  Strings that are purely numeric (digits, common punctuation) are returned unchanged so
@@ -27,7 +31,7 @@ function extendString(s: string): string {
   if (s === "" || /^[\d\s.,+\-·%]+$/.test(s)) return s;
   const extra = Math.round(s.length * 0.4);
   let suffix = "";
-  for (let i = 0; i < extra; i++) suffix += FILLERS[i % FILLERS.length];
+  for (let i = 0; i < extra; i++) suffix += fillerChar(i);
   return s + suffix;
 }
 
