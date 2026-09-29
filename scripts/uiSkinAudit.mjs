@@ -24,6 +24,29 @@ const load = name => JSON.parse(readFileSync(join(statesDir, `${name}.json`), 'u
 const houseTile = state => { const house = state.buildings.find(building => building.kind === 'house') ?? state.buildings[0]; return [house.tx, house.ty]; };
 const captures = [];
 
+/** NAT-1: In the page: every visible floating box and whether it has a 9-slice frame.
+ *  A floating box is positioned (fixed/absolute) and matches one of the inventoried selectors.
+ *  Returns one row per frameless box found (empty array = audit passes). */
+function auditFloatingBoxes() {
+  const FLOATING_SELECTORS = [
+    '.season-strip-panel', '.event-card', '.steward-bubble:not(.steward-advisor)',
+    '.layer-switch-note', '.resource-bar__coin-detail',
+    '.settlement-crisis-slot .settlement-crisis',
+    '.command-popover', '.build-menu-details', '.slot-panel', '.ui-tooltip',
+  ];
+  const ART = /url\("?[^")]*\/assets\/(ui-p0|wave\d+[a-z]?)\//i;
+  const visible = element => { const box = element.getBoundingClientRect(); return box.width > 0 && box.height > 0; };
+  const hasFrame = element => ART.test(getComputedStyle(element).borderImageSource);
+  const rows = [];
+  for (const selector of FLOATING_SELECTORS) {
+    for (const element of document.querySelectorAll(selector)) {
+      if (!visible(element)) continue;
+      if (!hasFrame(element)) rows.push({ selector, class: element.className.toString().slice(0, 60) });
+    }
+  }
+  return rows;
+}
+
 /** In the page: every visible interactive element and whether it wears the skin. */
 function auditPage() {
   const SELECTOR = 'button, summary, [role="button"], [role="tab"], [role="option"], [role="switch"], [role="checkbox"], [role="slider"], a[href], input:not([type="hidden"]), select, textarea';
@@ -58,13 +81,19 @@ function auditPage() {
 async function audit(name, page, file) {
   await page.addStyleTag({ content: '[data-skin-audit="skinless"] { outline: 3px solid #e0115f !important; outline-offset: 1px !important; }' });
   const rows = await page.evaluate(auditPage);
+  // NAT-1: also check floating boxes for missing 9-slice frames.
+  const frameless = await page.evaluate(auditFloatingBoxes);
   const skinless = rows.filter(row => !row.skinned);
   result.states[name] = { elements: rows.length, kit: rows.filter(row => row.kit).length, surfaces: rows.filter(row => row.surface).length,
-    skinless: skinless.length, native: rows.filter(row => row.native).length, list: skinless.map(({ path, text, native }) => ({ path, text, native })) };
+    skinless: skinless.length, native: rows.filter(row => row.native).length, frameless: frameless.length,
+    list: skinless.map(({ path, text, native }) => ({ path, text, native })), framelessList: frameless };
   result.total.elements += rows.length; result.total.skinless += skinless.length; result.total.native += rows.filter(row => row.native).length;
+  if (!result.total.frameless) result.total.frameless = 0;
+  result.total.frameless += frameless.length;
+  if (frameless.length > 0) console.warn(`NAT-1 frameless boxes in ${name}:`, frameless.map(f => f.selector).join(', '));
   await page.screenshot({ path: join(out, file), type: 'jpeg', quality: 70 });
   captures.push({ name, file });
-  console.log(`${name}: ${rows.length} elements, ${skinless.length} skinless`);
+  console.log(`${name}: ${rows.length} elements, ${skinless.length} skinless, ${frameless.length} frameless-boxes`);
 }
 
 async function scene(stateName, tile, extra = {}) {
@@ -351,7 +380,8 @@ const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection',
   ...(states8 === undefined ? [] : ['wage-ledger', 'chapter3-page']),
   ...(states9 === undefined ? [] : ['reorg-petition', 'factions-chapter4', 'rights-chapter4', 'reorg-ledger', 'chapter4-page'])];
 result.missing = expected.filter(name => result.states[name] === undefined);
-result.pass = result.total.skinless === 0 && result.missing.length === 0;
+// NAT-1: frameless floating boxes are also failures.
+result.pass = result.total.skinless === 0 && result.missing.length === 0 && (result.total.frameless ?? 0) === 0;
 writeFileSync(join(out, 'audit.json'), JSON.stringify(result, null, 1) + '\n');
 console.log(JSON.stringify({ pass: result.pass, total: result.total, missing: result.missing, errors: result.errors.length }));
 process.exit(result.pass ? 0 : 1);

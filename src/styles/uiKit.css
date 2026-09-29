@@ -218,9 +218,11 @@
 :root .ui-frame.ui-frame--record { color: var(--ink); background: none; border-image: var(--art-frame-record); }
 
 /* ---- Tooltip and divider ---- */
+/* NAT-1: tooltip uses the small width token (fixed, no content-driven resize). */
 :root .ui-tooltip.ui-tooltip {
   display: inline-block;
-  max-width: 320px;
+  width: min(var(--box-w-small), calc(100vw - 32px));
+  max-width: none;
   padding: 6px 10px;
   color: var(--ink);
   font-size: var(--text-13);

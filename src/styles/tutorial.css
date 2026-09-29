@@ -85,7 +85,8 @@
   border: 1px solid var(--palette-ink);
 }
 .goal-card-help > summary::-webkit-details-marker { display: none; }
-.goal-card-help > p { position: absolute; right: 0; z-index: 3; width: 260px; margin: 4px 0 0; padding: 8px; font-size: 13px; background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+/* NAT-1: small width token for the goal card help popover. */
+.goal-card-help > p { position: absolute; right: 0; z-index: 3; width: min(var(--box-w-small), calc(100vw - 32px)); margin: 4px 0 0; padding: 8px; font-size: 13px; background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
 .goal-card--done, .goal-card--already { border-color: var(--palette-gold-dark); animation: goal-card-success 1500ms ease-out both; }
 .goal-card-status { margin: 0; font-size: 14px; font-weight: 700; }
 @keyframes goal-card-success {

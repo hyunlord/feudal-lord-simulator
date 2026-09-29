@@ -10,7 +10,8 @@
 .command-disclosure > summary { padding: 4px 8px; cursor: pointer; list-style: none; background: var(--palette-ink-muted); color: var(--palette-parchment); border: 1px solid var(--palette-earth); }
 .command-disclosure > summary::marker { content: ""; }
 .command-disclosure[open] > summary { color: var(--palette-ink); background: var(--palette-parchment); }
-.command-popover { position: absolute; bottom: calc(100% + 16px); right: 0; width: max-content; max-width: min(320px, calc(100vw - 24px)); padding: 12px; background: var(--palette-ink); border: 2px solid var(--palette-earth); max-height: calc(100vh - var(--resource-height) - var(--command-height) - 24px); overflow-y: auto; }
+/* NAT-1: medium token, fixed width (was max-content so the popover resized with each command). */
+.command-popover { position: absolute; bottom: calc(100% + 16px); right: 0; width: min(var(--box-w-medium), calc(100vw - 32px)); max-width: none; padding: 12px; background: var(--palette-ink); border: 2px solid var(--palette-earth); max-height: calc(100vh - var(--resource-height) - var(--command-height) - 24px); overflow-y: auto; }
 .map-recess .command-popover { left: 0; right: auto; }
 .app-shell .ledger-stack { display: block; width: auto; overflow: visible; }
 .app-shell .economy-overlays { display: block; padding: 0; border: 0; background: none; color: var(--palette-parchment); }
@@ -33,7 +34,8 @@
 .development-panel > summary { padding: 8px 12px; cursor: pointer; font: var(--font-body)/24px var(--ui-body-font); }
 .development-panel .era-console { border: 0; }
 .app-shell .settlement-status { bottom: calc(var(--command-height) + 8px); left: auto; right: 12px; font: var(--font-meta)/1.5 var(--ui-body-font); }
-.app-shell .top-population-drawer { left: 12px; right: auto; top: var(--resource-height); bottom: auto; width: min(340px, calc(100% - 24px)); z-index: 24; }
+/* NAT-1: medium token for the population drawer. */
+.app-shell .top-population-drawer { left: 12px; right: auto; top: var(--resource-height); bottom: auto; width: min(var(--box-w-medium), calc(100vw - 32px)); z-index: 24; }
 .app-shell .top-population-drawer .population-event-panel { max-height: min(50vh, 360px); }
 .app-shell button:focus-visible, .app-shell summary:focus-visible { outline: 2px solid var(--palette-gold); outline-offset: 2px; }
 @media (max-width: 900px) {

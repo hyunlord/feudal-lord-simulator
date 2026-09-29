@@ -6,6 +6,7 @@ import type { StoryBeat } from "../eventStory";
 import { UiIcon } from "../UiIcon";
 import { Button } from "../kit";
 import { storyArtStyle } from "../storyArt";
+import { NAT1_BOX_COPY } from "../nat1TextBoxCopy.ko";
 
 // UI-4 event cards (not modal: time runs on unless the setting stops it): a folded chip under the crisis icons for
 // each beat the world has already shown; a tap opens its card — the Wave 16 illustration, one line, the facts,
@@ -16,7 +17,6 @@ export function EventCards({ beats, onDismiss, onDecide }: {
   readonly onDecide: (beat: StoryBeat) => void;
 }) {
   const [openId, setOpenId] = useState<string | null>(null);
-  const [adviceId, setAdviceId] = useState<string | null>(null);
   if (beats.length === 0) return null;
   const open = beats.find(beat => beat.id === openId) ?? null;
   return (
@@ -30,20 +30,40 @@ export function EventCards({ beats, onDismiss, onDecide }: {
         ))}
       </div>
       {open === null ? null : (
-        <article className="event-card" data-story={open.kind}>
-          <div className="event-card-art" aria-hidden="true" style={storyArtStyle(open.illustration, 296)} />
-          <h2>{open.title}</h2>
-          <p className="event-card-line">{open.line}</p>
-          {open.facts.length === 0 ? null : <ul className="event-card-facts">{open.facts.map(fact => <li key={fact}>{fact}</li>)}</ul>}
-          {adviceId === open.id ? <p className="event-card-advice" role="status">{open.advice}</p> : null}
-          <div className="event-card-actions">
-            {open.decision !== null ? <Button type="button" className="event-card-decide" onPress={() => onDecide(open)} variant="primary"><UiIcon sheet="action" cell="open" />{EVENT_STORY_COPY.decide}</Button> : null}
-            {open.tile === null ? null : <Button type="button" onPress={() => { platformServices().input.emit({ kind: "lookAt", tile: open.tile! }); }} variant="secondary"><UiIcon sheet="action" cell="look" />{EVENT_STORY_COPY.lookAt}</Button>}
-            <Button type="button" aria-pressed={adviceId === open.id} onPress={() => setAdviceId(current => current === open.id ? null : open.id)} variant="secondary"><UiIcon sheet="lock" cell="help" />{EVENT_STORY_COPY.advice}</Button>
-            <Button type="button" onPress={() => { setOpenId(null); onDismiss(open.id); }} variant="secondary">{EVENT_STORY_COPY.close}</Button>
-          </div>
-        </article>
+        // NAT-1: key={open.id} resets the expand state when the player switches to a different card.
+        <EventCardDetail key={open.id} open={open} onDismiss={onDismiss} onDecide={onDecide} />
       )}
     </section>
+  );
+}
+
+/** NAT-1: extracted card body so useState resets on key change (different event card opened). */
+function EventCardDetail({ open, onDismiss, onDecide }: {
+  readonly open: StoryBeat;
+  readonly onDismiss: (id: string) => void;
+  readonly onDecide: (beat: StoryBeat) => void;
+}) {
+  const [lineExpanded, setLineExpanded] = useState(false);
+  const [adviceId, setAdviceId] = useState<string | null>(null);
+  return (
+    <article className="event-card" data-story={open.kind}>
+      <div className="event-card-art" aria-hidden="true" style={storyArtStyle(open.illustration, 296)} />
+      <h2 title={open.title}>{open.title}</h2>
+      {/* NAT-1: clamp to 4 lines; the "더 보기" button reveals the rest. */}
+      <p className={`event-card-line${lineExpanded ? "" : " event-card-line--clamped"}`}>{open.line}</p>
+      {lineExpanded ? null : (
+        <Button type="button" className="event-card-more" variant="quiet" onPress={() => setLineExpanded(true)}>
+          {NAT1_BOX_COPY.more}
+        </Button>
+      )}
+      {open.facts.length === 0 ? null : <ul className="event-card-facts">{open.facts.map(fact => <li key={fact}>{fact}</li>)}</ul>}
+      {adviceId === open.id ? <p className="event-card-advice" role="status">{open.advice}</p> : null}
+      <div className="event-card-actions">
+        {open.decision !== null ? <Button type="button" className="event-card-decide" onPress={() => onDecide(open)} variant="primary"><UiIcon sheet="action" cell="open" />{EVENT_STORY_COPY.decide}</Button> : null}
+        {open.tile === null ? null : <Button type="button" onPress={() => { platformServices().input.emit({ kind: "lookAt", tile: open.tile! }); }} variant="secondary"><UiIcon sheet="action" cell="look" />{EVENT_STORY_COPY.lookAt}</Button>}
+        <Button type="button" aria-pressed={adviceId === open.id} onPress={() => setAdviceId(current => current === open.id ? null : open.id)} variant="secondary"><UiIcon sheet="lock" cell="help" />{EVENT_STORY_COPY.advice}</Button>
+        <Button type="button" onPress={() => { onDismiss(open.id); }} variant="secondary">{EVENT_STORY_COPY.close}</Button>
+      </div>
+    </article>
   );
 }
