@@ -132,6 +132,7 @@ DGX에서 두 판을 1360~1405년 다시 돌리며 떴다(`scripts/perf/levelDro
   - `engine/timberTrade.ts`의 변수 이름 `window`가 DOM 검사에 걸렸다.
   - 2회차 `a174b87` 3,838/3,838.
 - 깨끗한 클론 `a174b87`(DGX `engine-FIX10-clone`): 3,838/3,838, typecheck, build 통과.
+- 본선(SMOOTH-G2·INBOX-2n)을 합친 병합 커밋의 깨끗한 클론 `90b62d7`(DGX `engine-FIX10-clone2`): 3,838/3,838, typecheck, build 통과.
 - 옮김은 동작을 바꾸지 않는다. 가드레일은 다시 돌리지 않았다(이 작업의 1회차만).
 
 ## 병합
