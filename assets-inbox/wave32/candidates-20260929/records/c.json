@@ -1,0 +1,198 @@
+{
+  "assets": [
+    {
+      "file": "assets/granary_c-v1.png",
+      "state": "base",
+      "variant": "c",
+      "roof": "warm grey stone slabs",
+      "shape": "barn reference gabled silhouette; same registered bbox and anchor",
+      "wall": "thick stone masonry with narrow buttresses and slit ventilation windows",
+      "prompt": "Use case: precise-object-edit. Edit target first image barn.png. Supporting style reference second image farmstead.png. Create ONE transparent game sprite replacement of the barn: rich medieval English stone granary, thick warm rubble masonry walls with narrow buttresses, tiny slit ventilation windows, warm grey stone slab gabled roof. Elevated tall narrow loading door with simple timber hoist beam. Change construction fabric but preserve EXACT first image camera, gabled silhouette, roof ridge/eave positions, orientation, whole building bounding box, canvas padding, bottom contact supports and platform footprint. No expanded plinth or surrounding paving. The original bottom support positions are a hard footprint constraint. Stone building not timber frame. Match refined painterly pixel detail of farmstead. Southern England 1300–1450. No chimney, glass, people, text, sacks or scene. Transparent RGBA. Fixed target160x144 proportional canvas; pivot80,128. No resizing/recentering within composition.",
+      "ref": [
+        "references/barn.png",
+        "references/farmstead.png"
+      ],
+      "nativeOutput": "native/c/base.png",
+      "nativeOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b/exec-3b897206-b315-46fb-8478-c72f6bf28cec.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canvas": [
+        160,
+        144
+      ],
+      "pivot": [
+        80,
+        128
+      ],
+      "registration": "alpha>20 source bbox mapped to reference alpha>20 bbox x31 y3 w99 h126; state changes extracted within fixed manually authored local regions",
+      "status": "candidate"
+    },
+    {
+      "file": "assets/granary_c_full-v1.png",
+      "state": "full",
+      "variant": "c",
+      "roof": "warm grey stone slabs",
+      "shape": "barn reference gabled silhouette; same registered bbox and anchor",
+      "wall": "thick stone masonry with narrow buttresses and slit ventilation windows",
+      "prompt": "Use case: precise-object-edit. Edit target: supplied granary C base sprite. Generate ONE full building state image for transparent overlay extraction, not a sheet. Open the elevated narrow loading door, very dark grain store interior filled with MANY visible beige sacks, plus a large stack of sacks immediately in front of that door on its elevated loading ledge. Keep the door aperture position and geometry. Do not place sacks on the ground or on lower supports. HARD INVARIANTS: exact building geometry, size, orientation, silhouette, projection, camera, canvas padding, support positions, every unrelated pixel and roof/wall/door boundaries unchanged. Transparent RGBA background preserved. No people, text, chimney, scene, shadow ground, recentering or zoom. Match the original warm painterly pixel-art rendering.",
+      "ref": [
+        "native/c/base.png"
+      ],
+      "nativeOutput": "native/c/full.png",
+      "nativeOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b/exec-8c551800-9c11-470e-8075-c88ebc2d7ddc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canvas": [
+        160,
+        144
+      ],
+      "pivot": [
+        80,
+        128
+      ],
+      "registration": "alpha>20 source bbox mapped to reference alpha>20 bbox x31 y3 w99 h126; state changes extracted within fixed manually authored local regions",
+      "status": "candidate"
+    },
+    {
+      "file": "assets/granary_c_half-v1.png",
+      "state": "half",
+      "variant": "c",
+      "roof": "warm grey stone slabs",
+      "shape": "barn reference gabled silhouette; same registered bbox and anchor",
+      "wall": "thick stone masonry with narrow buttresses and slit ventilation windows",
+      "prompt": "Use case: precise-object-edit. Edit target: supplied granary C base sprite. Generate ONE full building state image for transparent overlay extraction, not a sheet. Open the elevated narrow loading door, dark grain store interior with only TWO beige sacks inside and ONE sack directly in front on the elevated door loading ledge. Clearly much less stock than full. Do not place sacks on ground or lower supports. HARD INVARIANTS: exact building geometry, size, orientation, silhouette, projection, camera, canvas padding, support positions, every unrelated pixel and roof/wall/door boundaries unchanged. Transparent RGBA background preserved. No people, text, chimney, scene, shadow ground, recentering or zoom. Match the original warm painterly pixel-art rendering.",
+      "ref": [
+        "native/c/base.png"
+      ],
+      "nativeOutput": "native/c/half.png",
+      "nativeOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b/exec-6288fd08-4ee7-4ee9-b5cf-a7efb330e87b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canvas": [
+        160,
+        144
+      ],
+      "pivot": [
+        80,
+        128
+      ],
+      "registration": "alpha>20 source bbox mapped to reference alpha>20 bbox x31 y3 w99 h126; state changes extracted within fixed manually authored local regions",
+      "status": "candidate"
+    },
+    {
+      "file": "assets/granary_c_empty-v1.png",
+      "state": "empty",
+      "variant": "c",
+      "roof": "warm grey stone slabs",
+      "shape": "barn reference gabled silhouette; same registered bbox and anchor",
+      "wall": "thick stone masonry with narrow buttresses and slit ventilation windows",
+      "prompt": "Use case: precise-object-edit. Edit target: supplied granary C base sprite. Generate ONE full building state image for transparent overlay extraction, not a sheet. Keep the elevated narrow loading door CLOSED with clear plain vertical oak boards and two dark iron hinges, no sacks anywhere. Replace only the upper door panel; preserve architecture. HARD INVARIANTS: exact building geometry, size, orientation, silhouette, projection, camera, canvas padding, support positions, every unrelated pixel and roof/wall/door boundaries unchanged. Transparent RGBA background preserved. No people, text, chimney, scene, shadow ground, recentering or zoom. Match the original warm painterly pixel-art rendering.",
+      "ref": [
+        "native/c/base.png"
+      ],
+      "nativeOutput": "native/c/empty.png",
+      "nativeOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b/exec-d9e9fec5-5714-4612-a9d7-23957bd498e8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canvas": [
+        160,
+        144
+      ],
+      "pivot": [
+        80,
+        128
+      ],
+      "registration": "alpha>20 source bbox mapped to reference alpha>20 bbox x31 y3 w99 h126; state changes extracted within fixed manually authored local regions",
+      "status": "candidate"
+    },
+    {
+      "file": "assets/granary_c_snow-v1.png",
+      "state": "snow",
+      "variant": "c",
+      "roof": "warm grey stone slabs",
+      "shape": "barn reference gabled silhouette; same registered bbox and anchor",
+      "wall": "thick stone masonry with narrow buttresses and slit ventilation windows",
+      "prompt": "Use case: precise-object-edit. Edit target supplied granary C base sprite. Produce ONE full building snowy state image on transparent RGBA background. Add dense WHITE SNOW covering approximately 78 percent of ALL visible roof surfaces, including the broad front sloping roof AND the narrow right roof plane/raking eave descending from ridge to far right corner. Leave about22percent roof stones exposed in small irregular thawed gaps; more snow than scattered thin patches. Snow on roof only, no snow on walls, door, foundation, platform, or ground. Bright ivory snow with softly shaded edges, distinct from warm grey stone. HARD INVARIANTS: exact building geometry, size, orientation, silhouette, projection, camera, canvas padding, support positions, every unrelated pixel and roof/wall/door boundaries unchanged. Transparent RGBA background preserved. No people, text, chimney, scene, shadow ground, recentering or zoom. Match original warm painterly pixel-art rendering.",
+      "ref": [
+        "native/c/base.png"
+      ],
+      "nativeOutput": "native/c/snow-roof-audit-v2.png",
+      "nativeOutputHint": "Builtin output exec-e4c846a2-a6a0-4101-b425-396aa54962f1.png; copied unchanged to native/c/snow-roof-audit-v2.png.",
+      "canvas": [
+        160,
+        144
+      ],
+      "pivot": [
+        80,
+        128
+      ],
+      "registration": "alpha>20 source bbox mapped to reference alpha>20 bbox x31 y3 w99 h126; state changes extracted within fixed manually authored local regions",
+      "status": "candidate",
+      "roofMask": "records/masks/c-roof.png",
+      "snowMask": "records/masks/c-snow.png",
+      "roofPixels": 2907,
+      "snowPixels": 1963,
+      "coveragePercent": 67.52665978672171,
+      "snowClassification": "Within fixed roof mask, min RGB >140 and RGB sum more than base by60. Includes shaded snow edge pixels; immutable roof mask authored before snow generation.",
+      "previousSnow": {
+        "nativeOutput": "native/c/snow.png",
+        "prompt": "Use case: precise-object-edit. Edit target: supplied granary C base sprite. Generate ONE full building state image for transparent overlay extraction, not a sheet. Add thick softly irregular WHITE SNOW patches covering seventy percent (70%) of the visible pitched roof, leaving thirty percent warm grey stone slab roof visible in irregular thawed gaps. Snow on ROOF ONLY. No snow on walls, door, foundation, platform, or ground. Snow is bright ivory white, distinct from grey roof. HARD INVARIANTS: exact building geometry, size, orientation, silhouette, projection, camera, canvas padding, support positions, every unrelated pixel and roof/wall/door boundaries unchanged. Transparent RGBA background preserved. No people, text, chimney, scene, shadow ground, recentering or zoom. Match the original warm painterly pixel-art rendering.",
+        "roofMask": "records/masks/c-roof-omitted-right-plane-v1.png",
+        "snowMask": "records/masks/c-snow-before-roof-audit.png",
+        "originalReportedCoveragePercent": 60.64056939501779,
+        "correctedRoofPixels": 2907,
+        "correctedCoveragePercent": 58.6171310629515,
+        "reason": "Reviewer identified omitted visible narrow right roof plane. Corrected denominator reduced prior snow below60%; replacement generated using frozen corrected denominator."
+      }
+    },
+    {
+      "file": "assets/granary_c_boarded-v1.png",
+      "state": "boarded",
+      "variant": "c",
+      "roof": "warm grey stone slabs",
+      "shape": "barn reference gabled silhouette; same registered bbox and anchor",
+      "wall": "thick stone masonry with narrow buttresses and slit ventilation windows",
+      "prompt": "Use case: precise-object-edit. Edit target: supplied granary C base sprite. Generate ONE full building state image for transparent overlay extraction, not a sheet. Add rough crossed weathered wooden planks nailed across the elevated upper narrow loading door and tiny ventilation slits to indicate abandoned granary. Board overlays only; keep building intact. HARD INVARIANTS: exact building geometry, size, orientation, silhouette, projection, camera, canvas padding, support positions, every unrelated pixel and roof/wall/door boundaries unchanged. Transparent RGBA background preserved. No people, text, chimney, scene, shadow ground, recentering or zoom. Match the original warm painterly pixel-art rendering.",
+      "ref": [
+        "native/c/base.png"
+      ],
+      "nativeOutput": "native/c/boarded.png",
+      "nativeOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b/exec-0c31ad9d-1e71-484d-96b7-3a21d30f2f3e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canvas": [
+        160,
+        144
+      ],
+      "pivot": [
+        80,
+        128
+      ],
+      "registration": "alpha>20 source bbox mapped to reference alpha>20 bbox x31 y3 w99 h126; state changes extracted within fixed manually authored local regions",
+      "status": "candidate"
+    },
+    {
+      "file": "assets/granary_c_weathered-v1.png",
+      "state": "weathered",
+      "variant": "c",
+      "roof": "warm grey stone slabs",
+      "shape": "barn reference gabled silhouette; same registered bbox and anchor",
+      "wall": "thick stone masonry with narrow buttresses and slit ventilation windows",
+      "prompt": "Use case: precise-object-edit. Edit target: supplied granary C base sprite. Generate ONE full building state image for transparent overlay extraction, not a sheet. Age this granary with visible muted green moss speckles along lower wall edges, restrained dark water streaks beneath eaves, and a few chipped mortar joints. Preserve same stone walls and roof construction intact. No vegetation outside footprint, no new props. HARD INVARIANTS: exact building geometry, size, orientation, silhouette, projection, camera, canvas padding, support positions, every unrelated pixel and roof/wall/door boundaries unchanged. Transparent RGBA background preserved. No people, text, chimney, scene, shadow ground, recentering or zoom. Match the original warm painterly pixel-art rendering.",
+      "ref": [
+        "native/c/base.png"
+      ],
+      "nativeOutput": "native/c/weathered.png",
+      "nativeOutputHint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-729b-7243-aad4-be9cefcf366b/exec-1a1a6ced-08dc-460f-9df4-f079fa46fb71.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "canvas": [
+        160,
+        144
+      ],
+      "pivot": [
+        80,
+        128
+      ],
+      "registration": "alpha>20 source bbox mapped to reference alpha>20 bbox x31 y3 w99 h126; state changes extracted within fixed manually authored local regions",
+      "status": "candidate"
+    }
+  ],
+  "qa": {
+    "actualSizeVisual": "All six composites viewed at160x144. Full many sacks, half sparse sacks, empty closed zero-sack door are distinct. Boarded cross planks visible. Weathering intentionally restrained. Roof snow patch edges visible with exposed slabs.",
+    "installation": "Not installed",
+    "contact": "State extraction zeros contact.png. Root owns final reference contact restoration.",
+    "calls": 8,
+    "modelVersion": null,
+    "seed": null,
+    "snowCorrection": "All visible roofplanes now included:2907px fixed before replacement snow.1963snowpx=67.5266597867%.Actual160x144 composite reviewed; contact stripe alpha0. Otherstates unchanged."
+  }
+}

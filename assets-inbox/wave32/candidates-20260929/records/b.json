@@ -1,0 +1,193 @@
+{
+  "assets": [
+    {
+      "file": "assets/granary_b-v1.png",
+      "state": "base",
+      "variant": "b",
+      "roof": "muted clay tile",
+      "shape": "original barn raised rectangular gabled granary",
+      "wall": "oak planks with large diagonal cross braces",
+      "prompt": "Use case: precise-object-edit. Edit target image 1 barn.png, style reference image 2 farmstead.png. Create ONE transparent isometric medieval granary sprite, preserving barn exact camera, silhouette scale, framing, footprint, raised floor, supports and front plank platform positions. 1300–1450 southern England. Variant B: muted weathered clay flat tile roof (NOT bright orange), dark oak timber framed walls with distinctive large diagonal cross braces, mushroom shaped staddle stones exactly on reference support contacts. Tall narrow CLOSED timber loading door on left-facing gable, no sacks. Painterly textured same finesse as farmstead. No chimney, people, text, scenery or ground. Keep entire original 160x144 frame/pivot proportions, anchor at (80,128); no recentering. Transparent RGBA background.",
+      "ref": [
+        "references/barn.png",
+        "references/farmstead.png"
+      ],
+      "nativeOutput": "native/b/base.png"
+    },
+    {
+      "file": "assets/granary_b_full-v1.png",
+      "state": "full",
+      "variant": "b",
+      "roof": "muted clay tile",
+      "shape": "original barn registered",
+      "wall": "diagonal braced timber",
+      "prompt": "Use case: precise-object-edit. Edit target is the supplied B granary base. Create ONE complete edited building on genuinely transparent RGBA background so a difference overlay can be extracted. STATE full: Open the tall narrow door with a deep dark interior packed with many grain sacks. Add a clearly abundant stack of 7–9 small tied coarse linen sacks inside doorway and on existing front plank platform, staying above support contact line. Keep every unedited pixel unchanged; same exact full-canvas framing, dimensions, camera, roof ridge/eaves, timber brace pattern, building edges, supports, plank platform and position. No translation/rescaling. Painterly medieval England 1300–1450. No chimney, people, text, background.",
+      "ref": [
+        "native/b/base.png"
+      ],
+      "nativeOutput": "native/b/full.png"
+    },
+    {
+      "file": "assets/granary_b_half-v1.png",
+      "state": "half",
+      "variant": "b",
+      "roof": "muted clay tile",
+      "shape": "original barn registered",
+      "wall": "diagonal braced timber",
+      "prompt": "Use case: precise-object-edit. Edit target is the supplied B granary base. Create ONE complete edited building on genuinely transparent RGBA background so a difference overlay can be extracted. STATE half: Open the tall narrow door with a dark interior and only 3 small tied coarse linen grain sacks inside and on existing front plank platform, visibly half as stocked, ample empty space. Keep every unedited pixel unchanged; same exact full-canvas framing, dimensions, camera, roof ridge/eaves, timber brace pattern, building edges, supports, plank platform and position. No translation/rescaling. Painterly medieval England 1300–1450. No chimney, people, text, background.",
+      "ref": [
+        "native/b/base.png"
+      ],
+      "nativeOutput": "native/b/half.png"
+    },
+    {
+      "file": "assets/granary_b_empty-v1.png",
+      "state": "empty",
+      "variant": "b",
+      "roof": "muted clay tile",
+      "shape": "original barn registered",
+      "wall": "diagonal braced timber",
+      "prompt": "Use case: precise-object-edit. Edit target is the supplied B granary base. Create ONE complete edited building on genuinely transparent RGBA background so a difference overlay can be extracted. STATE empty: Show empty grain stock: fully closed tall narrow plank loading door, no sacks anywhere. Change only door's wooden latch and closure detail. Keep every unedited pixel unchanged; same exact full-canvas framing, dimensions, camera, roof ridge/eaves, timber brace pattern, building edges, supports, plank platform and position. No translation/rescaling. Painterly medieval England 1300–1450. No chimney, people, text, background.",
+      "ref": [
+        "native/b/base.png"
+      ],
+      "nativeOutput": "native/b/empty.png"
+    },
+    {
+      "file": "assets/granary_b_snow-v1.png",
+      "state": "snow",
+      "variant": "b",
+      "roof": "muted clay tile",
+      "shape": "original barn registered",
+      "wall": "diagonal braced timber",
+      "prompt": "Use case: lighting-weather. Precisely edit attached granary B base image. Transparent RGBA. Preserve geometry, full canvas, original framing, camera, walls, doors, supports and front platform exactly. Add snowy winter accumulation on THREE QUARTERS (75%) of entire visible clay tile roof. A mostly continuous white snow blanket from ridge down to eaves with only a few small irregular bare tile islands, totaling one quarter of the roof. Important: snow should cover much more than half the roof. White and pale bluish snow over all roof slopes and roof strip on right. Leave THREE modest exposed tile patches. No snow on walls, platform or supportstones. Do not add any objects, lettering, people, chimney or scenery. Keep image unchanged outside the roof. Output one complete snow-edited granary.",
+      "ref": [
+        "native/b/base.png"
+      ],
+      "nativeOutput": "native/b/snow.png",
+      "roofMask": "records/masks/b-roof.png",
+      "snowMask": "records/masks/b-snow.png",
+      "roofPixels": 2868,
+      "snowPixels": 2119,
+      "coveragePercent": 73.88423988842399
+    },
+    {
+      "file": "assets/granary_b_boarded-v1.png",
+      "state": "boarded",
+      "variant": "b",
+      "roof": "muted clay tile",
+      "shape": "original barn registered",
+      "wall": "diagonal braced timber",
+      "prompt": "Use case: precise-object-edit. Edit target is the supplied B granary base. Create ONE complete edited building on genuinely transparent RGBA background so a difference overlay can be extracted. STATE boarded: Abandoned granary: add 3 rough diagonal wooden boarding planks across the tall narrow loading door and small ventilation opening. No sacks. Preserve all building geometry. Keep every unedited pixel unchanged; same exact full-canvas framing, dimensions, camera, roof ridge/eaves, timber brace pattern, building edges, supports, plank platform and position. No translation/rescaling. Painterly medieval England 1300–1450. No chimney, people, text, background.",
+      "ref": [
+        "native/b/base.png"
+      ],
+      "nativeOutput": "native/b/boarded.png"
+    },
+    {
+      "file": "assets/granary_b_weathered-v1.png",
+      "state": "weathered",
+      "variant": "b",
+      "roof": "muted clay tile",
+      "shape": "original barn registered",
+      "wall": "diagonal braced timber",
+      "prompt": "Use case: precise-object-edit. Edit target is the supplied B granary base. Create ONE complete edited building on genuinely transparent RGBA background so a difference overlay can be extracted. STATE weathered: Long-used but intact granary: add subtle age streaks on oak planks, rough worn timber surface, tiny pale lichen on roof tiles, slightly loosened wooden door surfaces. No holes, collapse, new objects or footprint changes. Keep every unedited pixel unchanged; same exact full-canvas framing, dimensions, camera, roof ridge/eaves, timber brace pattern, building edges, supports, plank platform and position. No translation/rescaling. Painterly medieval England 1300–1450. No chimney, people, text, background.",
+      "ref": [
+        "native/b/base.png"
+      ],
+      "nativeOutput": "native/b/weathered.png"
+    }
+  ],
+  "registration": {
+    "nativeCrop": [
+      230,
+      21,
+      874,
+      1093
+    ],
+    "targetRect": [
+      31,
+      3,
+      99,
+      126
+    ],
+    "referenceAlphaThreshold": 64,
+    "anchor": [
+      80,
+      128
+    ]
+  },
+  "qa": {
+    "snowCoveragePercent": 73.88423988842399,
+    "snowPass": true,
+    "files": [
+      {
+        "file": "assets/granary_b-v1.png",
+        "width": 160,
+        "height": 144,
+        "channels": 4,
+        "nonzeroAlphaPixels": 8864,
+        "pass": true
+      },
+      {
+        "file": "assets/granary_b_full-v1.png",
+        "width": 160,
+        "height": 144,
+        "channels": 4,
+        "nonzeroAlphaPixels": 2454,
+        "pass": true
+      },
+      {
+        "file": "assets/granary_b_half-v1.png",
+        "width": 160,
+        "height": 144,
+        "channels": 4,
+        "nonzeroAlphaPixels": 2451,
+        "pass": true
+      },
+      {
+        "file": "assets/granary_b_empty-v1.png",
+        "width": 160,
+        "height": 144,
+        "channels": 4,
+        "nonzeroAlphaPixels": 2445,
+        "pass": true
+      },
+      {
+        "file": "assets/granary_b_snow-v1.png",
+        "width": 160,
+        "height": 144,
+        "channels": 4,
+        "nonzeroAlphaPixels": 2119,
+        "pass": true
+      },
+      {
+        "file": "assets/granary_b_boarded-v1.png",
+        "width": 160,
+        "height": 144,
+        "channels": 4,
+        "nonzeroAlphaPixels": 2437,
+        "pass": true
+      },
+      {
+        "file": "assets/granary_b_weathered-v1.png",
+        "width": 160,
+        "height": 144,
+        "channels": 4,
+        "nonzeroAlphaPixels": 4346,
+        "pass": true
+      }
+    ],
+    "visual": "Reviewed native edits and 160x144 composites. Full has 7 visible sacks in open door and on platform; half has 3; empty closed/no sacks. Boarded rough door planks. Weathering subtle at native size. No people/chimneys/text. Base/overlay contact stripe restoration owned by root.",
+    "snowClassifier": "All RGB >140 and blue >= red-10, alpha>128 within independently drawn roof alpha>=128. This includes cool blue shaded snow and excludes warm clay tiles. Initial max-min<40 rule rejected because it excluded blue snow shadow; denominator unchanged.",
+    "rejectedSnow": {
+      "file": "native/b/snow-rejected-v1.png",
+      "originalStrictClassifierCoverage": 51.84797768479777,
+      "prompt": "native/b/prompts-original.json"
+    },
+    "snowCorrection": {
+      "prompt": "native/b/snow-correction-prompt.txt",
+      "selectedNative": "native/b/snow.png"
+    }
+  }
+}

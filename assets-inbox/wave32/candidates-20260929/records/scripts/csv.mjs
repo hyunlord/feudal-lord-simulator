@@ -1,0 +1,14 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {Workbook} from '/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs';
+const R=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const m=JSON.parse(await fs.readFile(R+'/records/manifest.json','utf8'));
+if(m.status!=='PASS'||m.assets.length!==26)throw Error('26 verified assets required');
+const criteria={base:'closed-door base; no stock threshold',full:'open tall door; many sacks inside and on loading platform',half:'open door; fewer sacks than full',empty:'closed door; no sacks',snow:'60–80% visible roof; fixed independent roof mask',boarded:'crossed boards on door/openings',weathered:'surface stains and wear',prop:'separate compositing prop'};
+const headers=['id','file','status','variant','state','width','height','pivot_x','pivot_y','roof','shape','wall','state_criterion','snow_coverage_percent','roof_pixels','snow_pixels','roof_mask','snow_mask','provenance','model_version','seed','sha256'];
+const rows=m.assets.map(a=>[a.id,a.file,a.status,a.variant,a.state,a.width,a.height,a.pivot.x,a.pivot.y,a.roof,a.shape,a.wall,criteria[a.state]??'separate prop',a.coverage?.percent??'',a.coverage?.roofPixels??'',a.coverage?.snowPixels??'',a.coverage?.roofMask??'',a.coverage?.snowMask??'',a.provenance,'not exposed','not exposed',a.sha256]);
+const wb=Workbook.create(),s=wb.worksheets.add('Wave32');s.getRange('A1:V27').values=[headers,...rows];wb.recalculate();const matrix=s.getRange('A1:V27').values;
+if(matrix.length!==27||matrix.some(r=>r.length!==22))throw Error('CSV shape');
+const q=x=>'"'+String(x??'').replaceAll('"','""')+'"';await fs.writeFile(R+'/generation-records.csv','\uFEFF'+matrix.map(r=>r.map(q).join(',')).join('\r\n')+'\r\n');
+console.log('CSV26 rows /22 columns');
