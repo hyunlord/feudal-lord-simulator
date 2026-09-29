@@ -2,8 +2,9 @@
  * PLAGUE-b captures (local or DGX; UI-8's chapter 3 states, scripts/ui8States.ts):
  *   b1 the plague-emptied houses up close (paused, no hover): each shows the empty-house boards that fit its painting
  *      (buildingOverlays.ts vacantHouseBoards) — the bot town's L4 houses boarded_l4, no door marks;
- *   b2 the chronicle at chapter 3's end: chapter 3's start card with the harbour fever rumour illustration.
- *   npx tsx scripts/plagueBCaptures.ts <out> --url <app url> --states <dir>
+ *   b2 the chronicle at chapter 3's end: chapter 3's start card with its Wave 31 opening painting (chapter3_intro);
+ *   b3 chapter 2's end (UI-6's state): its page, then chapter 3's opening screen over the same painting, with its goals.
+ *   npx tsx scripts/plagueBCaptures.ts <out> --url <app url> --states <dir> --states6 <UI-6 states dir>
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -19,10 +20,10 @@ type Page = { waitForTimeout: (ms: number) => Promise<void>; screenshot: (option
   locator: (selector: string) => Locator; on: (event: string, handler: (error: unknown) => void) => void };
 const [out] = process.argv.slice(2);
 const flag = (name: string) => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
-const url = flag("url")!; const statesDir = flag("states")!;
+const url = flag("url")!; const statesDir = flag("states")!; const states6 = flag("states6")!;
 mkdirSync(out!, { recursive: true });
 const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
-const load = (name: string) => JSON.parse(readFileSync(join(statesDir, `${name}.json`), "utf8")) as GameState;
+const load = (name: string, dir = statesDir) => JSON.parse(readFileSync(join(dir, `${name}.json`), "utf8")) as GameState;
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const result: Record<string, unknown> = {};
@@ -32,8 +33,8 @@ const errors: string[] = [];
 const OVERLAYS = "**/src/render/buildingOverlays.ts*";
 const NO_BOARDS = [{ pattern: OVERLAYS, from: `const boarded = house !== undefined && housePressureStatus(house) === "abandoned";`, to: "const boarded = false;" }];
 const NO_BASE_BOARDS = [{ pattern: OVERLAYS, from: `else if (boards === "boarded")`, to: `else if (boards === "none")` }];
-async function scene(state: GameState, tile: readonly number[], zoom: number, rewrite: readonly object[] = []): Promise<{ page: Page; close: () => Promise<void> }> {
-  const { context, page } = await openScene(browser, { state, tile, baseUrl: url, width: 1280, height: 800, zoom, run: false, initScript: TUTORIAL_OFF, query: "&story-delay=600000", rewrite });
+async function scene(state: GameState, tile: readonly number[], zoom: number, rewrite: readonly object[] = [], storyDelay = 600_000): Promise<{ page: Page; close: () => Promise<void> }> {
+  const { context, page } = await openScene(browser, { state, tile, baseUrl: url, width: 1280, height: 800, zoom, run: false, initScript: TUTORIAL_OFF, query: `&story-delay=${storyDelay}`, rewrite });
   (page as Page).on("pageerror", error => errors.push(String(error).slice(0, 200)));
   return { page: page as Page, close: () => context.close() };
 }
@@ -80,7 +81,7 @@ await step("b2-chronicle-chapter3-start", async () => {
   }
   const card = await page.evaluate(() => {
     const cards = [...document.querySelectorAll<HTMLElement>(".chronicle-card")];
-    const found = cards.find(card => (card.querySelector(".chronicle-card-art") as HTMLElement | null)?.outerHTML.includes("ch3_event_harbour_fever") === true
+    const found = cards.find(card => (card.querySelector(".chronicle-card-art") as HTMLElement | null)?.outerHTML.includes("chapter3_intro") === true
       && (card.textContent ?? "").includes("3장"));
     found?.scrollIntoView({ block: "center" });
     return found === undefined ? null : { line: found.querySelector(".chronicle-card-line")?.textContent ?? found.textContent?.slice(0, 120) ?? "" };
@@ -88,6 +89,22 @@ await step("b2-chronicle-chapter3-start", async () => {
   await page.waitForTimeout(900);
   await page.screenshot({ path: join(out!, "b2-chronicle-chapter3-start.jpg"), type: "jpeg", quality: 70 });
   result["b2"] = card;
+  await close();
+});
+
+// b3: chapter 2's end, its page's "to chapter 3", then chapter 3's opening screen.
+await step("b3-chapter3-opening", async () => {
+  const state = load("chapter2-end", states6);
+  const keep = state.buildings.find(building => building.kind === "keep") ?? state.buildings.find(building => building.kind === "church")!;
+  const { page, close } = await scene(state, [keep.tx, keep.ty], 1.1, [], 0);
+  await page.locator(".chronicle-page").waitFor({ timeout: 20_000 });
+  await page.locator(".chronicle-page .chronicle-next").first().click(); await page.waitForTimeout(1_500);
+  await page.screenshot({ path: join(out!, "b3-chapter3-opening.jpg"), type: "jpeg", quality: 70 });
+  result["b3"] = await page.evaluate(() => {
+    const screen = document.querySelector<HTMLElement>(".chapter-preview");
+    return screen === null ? null : { chapter: screen.dataset.chapter, title: screen.getAttribute("aria-label"), art: screen.style.backgroundImage.includes("chapter3_intro"),
+      goals: [...screen.querySelectorAll(".chapter-preview-goals li")].map(item => item.textContent ?? ""), start: screen.querySelector(".chapter-preview-continue")?.textContent ?? "" };
+  });
   await close();
 });
 

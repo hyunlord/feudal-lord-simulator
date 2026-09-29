@@ -6,7 +6,7 @@ import type { ChapterEnd } from "../engine/politics.types";
 import { chapterEnd } from "../engine/politics";
 import { CHRONICLE_COPY } from "./chronicleCopy.ko";
 import type { StoryIllustration } from "./storyArt";
-import type { Wave21ImageId } from "./wave21Art";
+import { chapterIntro } from "./wave31Art";
 
 // UI-4 chronicle page (CHRONICLE_DESIGN 2.1 timeline v0, one chapter): at the end of chapter 1 (F0-C1 `chapterEnd`),
 // the chapter as a timeline edited from the F0-C2 history ledger (`history.query`: the chapter's records of severity 1
@@ -22,10 +22,6 @@ export type ChronicleView = Readonly<{
   decisions: readonly { readonly id: string; readonly sentence: string; readonly alternatives: string; readonly outcome: string }[];
   stats: readonly string[];
 }>;
-
-/** PLAGUE-b: a chapter's start without its own painting borrows one of its event illustrations (Astra's start
- * paintings replace these when they come). Chapter 2's intro is Wave 16's (chronicleScreenModel). */
-export const CHAPTER_START_ART: Readonly<Partial<Record<number, Wave21ImageId>>> = { 3: "ch3_event_harbour_fever" };
 
 /** The chronicle illustration for a ledger record (the chapter's settlement when nothing fits better). */
 export function chronicleIllustration(record: Pick<HistoryRecord, "template" | "params">): StoryIllustration {
@@ -62,7 +58,8 @@ export function chronicleIllustration(record: Pick<HistoryRecord, "template" | "
       return building === "mill" ? "chronicle_first_mill" : building === "farmstead" ? "chronicle_first_plough" : building === "market" ? "chronicle_market_day"
         : building === "chapel" || building === "church" ? "chronicle_church_dedication" : "chronicle_settlement";
     }
-    case "milestone.chapter_start": return CHAPTER_START_ART[Number(param("chapter"))] ?? "chronicle_settlement";
+    // PLAGUE-b: a chapter's start is its Wave 31 opening painting (chapter 2's is Wave 16's, chronicleScreenModel).
+    case "milestone.chapter_start": return chapterIntro(Number(param("chapter"))) ?? "chronicle_settlement";
     case "milestone.chapter_end": return "chronicle_survival_spring";
     case "era.entered": return param("eraId") === "famine" ? "chronicle_famine" : param("eraId") === "saturation" ? "chronicle_settlement" : "chronicle_palisade";
     default: return "chronicle_settlement";
