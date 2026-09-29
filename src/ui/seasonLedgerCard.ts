@@ -146,8 +146,9 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     drink: held ? drink : [],
     drinkLine: held ? SEASON_LEDGER_COPY.heldNow(drink.map(item => SEASON_LEDGER_COPY.held(item.name, item.amount))) : null,
     aleLines: ale === null || ale.closedSeason === null ? [] : [ale.closedSeason, ale.served],
-    cloth: clothHeld ? cloth : [],
-    clothLine: clothHeld ? SEASON_LEDGER_COPY.heldNow(cloth.map(item => SEASON_LEDGER_COPY.held(item.name, item.amount))) : null,
+    // Seven goods make a long row: only those the town holds (the ale row's three are always all shown).
+    cloth: cloth.filter(item => item.amount > 0),
+    clothLine: clothHeld ? SEASON_LEDGER_COPY.heldNow(cloth.filter(item => item.amount > 0).map(item => SEASON_LEDGER_COPY.held(item.name, item.amount))) : null,
     clothLines: clothView === null || clothView.closedSeason === null ? [] : [clothView.closedSeason],
   };
 }
