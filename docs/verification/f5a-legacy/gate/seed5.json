@@ -1,0 +1,1863 @@
+{
+ "seed": 5,
+ "maxTicks": 620000,
+ "chapterEnds": [
+  {
+   "chapter": 1,
+   "tick": 89500,
+   "year": 1322
+  },
+  {
+   "chapter": 2,
+   "tick": 164000,
+   "year": 1341
+  },
+  {
+   "chapter": 3,
+   "tick": 248000,
+   "year": 1362
+  },
+  {
+   "chapter": 4,
+   "tick": 329000,
+   "year": 1382
+  },
+  {
+   "chapter": 5,
+   "tick": 601000,
+   "year": 1450
+  }
+ ],
+ "legacy": {
+  "startTick": 329000,
+  "steps": [
+   {
+    "id": "mayor_demand",
+    "tick": 333000,
+    "state": "done"
+   },
+   {
+    "id": "royal_tax_envoy",
+    "tick": 337000,
+    "state": "done"
+   },
+   {
+    "id": "succession",
+    "tick": 400000,
+    "state": "done"
+   },
+   {
+    "id": "city_seal",
+    "tick": 405000,
+    "state": "done"
+   },
+   {
+    "id": "charter_sealing",
+    "tick": 407000,
+    "state": "done"
+   },
+   {
+    "id": "family_departure",
+    "tick": 410000,
+    "state": "done"
+   },
+   {
+    "id": "legacy_record",
+    "tick": 561000,
+    "state": "done"
+   },
+   {
+    "id": "last_market",
+    "tick": 601000,
+    "state": "done"
+   }
+  ],
+  "answers": {
+   "royal_tax": "accept",
+   "heir_choice": "accept_with_price",
+   "borough_autonomy": "accept",
+   "legacy_choice": "accept"
+  },
+  "heirs": [
+   {
+    "kind": "daughter_husband",
+    "relation": "husband",
+    "name": "바살러뮤 드 케스트베일",
+    "age": 31,
+    "created": true
+   },
+   {
+    "kind": "nephew",
+    "relation": "nephew",
+    "name": "리처드 드 레이븐홀트",
+    "age": 22,
+    "created": true
+   }
+  ],
+  "heir": {
+   "kind": "daughter_husband",
+   "personId": "m-000023",
+   "previousHeadId": "m-000014",
+   "tick": 400110,
+   "relief": 150
+  },
+  "mayorId": "p-003038",
+  "royalSubsidy": 400,
+  "backlash": 0,
+  "feeFarm": 200,
+  "family": "departed",
+  "legacy": "town",
+  "endowment": 500,
+  "clothSold": 4054,
+  "scores": {
+   "town": 100,
+   "family": 47,
+   "church": 27,
+   "parts": {
+    "town": {
+     "people": 25,
+     "houses": 20,
+     "cloth": 15,
+     "rights": 15,
+     "autonomy": 20,
+     "legacy": 25
+    },
+    "family": {
+     "house": 20,
+     "generations": 8,
+     "heir": 8,
+     "stayed": 0,
+     "relations": 1,
+     "treasury": 10,
+     "legacy": 0
+    },
+    "church": {
+     "church": 10,
+     "chapels": 4,
+     "bishop": 3,
+     "priest": 5,
+     "relief": 5,
+     "legacy": 0
+    }
+   }
+  },
+  "ending": {
+   "id": "free_borough",
+   "title": "스스로 다스리는 도시",
+   "sentence": "1401년 자치 특허에 도시 인장이 찍혔고, 나이 든 윌리엄 밀러가 첫 시장이 되었다. 1450년 마지막 장날, 도시는 제 법정과 제 인장으로 스스로를 다스렸고, 길드홀에 그 이름을 새겼다.",
+   "quotes": [
+    "h-031872",
+    "h-031229",
+    "h-046596"
+   ],
+   "final": true
+  }
+ },
+ "outcome": "victory",
+ "book": {
+  "chapters": [
+   {
+    "chapter": 1,
+    "events": 7,
+    "decisions": 3
+   },
+   {
+    "chapter": 2,
+    "events": 8,
+    "decisions": 3
+   },
+   {
+    "chapter": 3,
+    "events": 8,
+    "decisions": 3
+   },
+   {
+    "chapter": 4,
+    "events": 8,
+    "decisions": 3
+   },
+   {
+    "chapter": 5,
+    "events": 8,
+    "decisions": 3
+   }
+  ],
+  "family": 31,
+  "heads": 6,
+  "factions": [
+   3,
+   4,
+   1,
+   0,
+   5,
+   2,
+   0,
+   14,
+   1
+  ],
+  "textLines": 123
+ },
+ "final": {
+  "tick": 601000,
+  "year": 1450,
+  "chapter": 5,
+  "population": 768,
+  "treasury": 190815,
+  "lived": 24,
+  "l4": 24,
+  "bread": 486,
+  "granaryMalt": 0
+ },
+ "yearly": [
+  {
+   "tick": 4000,
+   "year": 1301,
+   "chapter": 1,
+   "population": 56,
+   "treasury": 59,
+   "lived": 4,
+   "l4": 0,
+   "bread": 0,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 8000,
+   "year": 1302,
+   "chapter": 1,
+   "population": 107,
+   "treasury": 69,
+   "lived": 14,
+   "l4": 0,
+   "bread": 0,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 12000,
+   "year": 1303,
+   "chapter": 1,
+   "population": 127,
+   "treasury": 96,
+   "lived": 15,
+   "l4": 0,
+   "bread": 77,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 16000,
+   "year": 1304,
+   "chapter": 1,
+   "population": 229,
+   "treasury": 158,
+   "lived": 17,
+   "l4": 0,
+   "bread": 79,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 20000,
+   "year": 1305,
+   "chapter": 1,
+   "population": 226,
+   "treasury": 322,
+   "lived": 17,
+   "l4": 0,
+   "bread": 110,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 24000,
+   "year": 1306,
+   "chapter": 1,
+   "population": 264,
+   "treasury": 503,
+   "lived": 19,
+   "l4": 0,
+   "bread": 98,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 28000,
+   "year": 1307,
+   "chapter": 1,
+   "population": 353,
+   "treasury": 624,
+   "lived": 24,
+   "l4": 0,
+   "bread": 173,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 32000,
+   "year": 1308,
+   "chapter": 1,
+   "population": 381,
+   "treasury": 900,
+   "lived": 24,
+   "l4": 0,
+   "bread": 191,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 36000,
+   "year": 1309,
+   "chapter": 1,
+   "population": 414,
+   "treasury": 1189,
+   "lived": 24,
+   "l4": 0,
+   "bread": 171,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 40000,
+   "year": 1310,
+   "chapter": 1,
+   "population": 416,
+   "treasury": 1350,
+   "lived": 24,
+   "l4": 0,
+   "bread": 190,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 44000,
+   "year": 1311,
+   "chapter": 1,
+   "population": 427,
+   "treasury": 1697,
+   "lived": 24,
+   "l4": 0,
+   "bread": 207,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 48000,
+   "year": 1312,
+   "chapter": 1,
+   "population": 468,
+   "treasury": 2073,
+   "lived": 24,
+   "l4": 0,
+   "bread": 174,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 52000,
+   "year": 1313,
+   "chapter": 1,
+   "population": 520,
+   "treasury": 2286,
+   "lived": 24,
+   "l4": 0,
+   "bread": 191,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 56000,
+   "year": 1314,
+   "chapter": 1,
+   "population": 528,
+   "treasury": 2747,
+   "lived": 24,
+   "l4": 0,
+   "bread": 224,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 60000,
+   "year": 1315,
+   "chapter": 1,
+   "population": 528,
+   "treasury": 3209,
+   "lived": 24,
+   "l4": 0,
+   "bread": 267,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 64000,
+   "year": 1316,
+   "chapter": 1,
+   "population": 528,
+   "treasury": 3440,
+   "lived": 24,
+   "l4": 0,
+   "bread": 308,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 68000,
+   "year": 1317,
+   "chapter": 1,
+   "population": 528,
+   "treasury": 3901,
+   "lived": 24,
+   "l4": 0,
+   "bread": 362,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 72000,
+   "year": 1318,
+   "chapter": 1,
+   "population": 528,
+   "treasury": 4362,
+   "lived": 24,
+   "l4": 0,
+   "bread": 360,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 76000,
+   "year": 1319,
+   "chapter": 1,
+   "population": 528,
+   "treasury": 4319,
+   "lived": 24,
+   "l4": 0,
+   "bread": 391,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 80000,
+   "year": 1320,
+   "chapter": 1,
+   "population": 528,
+   "treasury": 4098,
+   "lived": 24,
+   "l4": 0,
+   "bread": 428,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 84000,
+   "year": 1321,
+   "chapter": 1,
+   "population": 528,
+   "treasury": 3875,
+   "lived": 24,
+   "l4": 0,
+   "bread": 438,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 88000,
+   "year": 1322,
+   "chapter": 1,
+   "population": 528,
+   "treasury": 3760,
+   "lived": 24,
+   "l4": 0,
+   "bread": 459,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 92000,
+   "year": 1323,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 3821,
+   "lived": 24,
+   "l4": 0,
+   "bread": 477,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 96000,
+   "year": 1324,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 4178,
+   "lived": 24,
+   "l4": 0,
+   "bread": 475,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 100000,
+   "year": 1325,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 4433,
+   "lived": 24,
+   "l4": 0,
+   "bread": 462,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 104000,
+   "year": 1326,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 4936,
+   "lived": 24,
+   "l4": 0,
+   "bread": 453,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 108000,
+   "year": 1327,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 5405,
+   "lived": 24,
+   "l4": 0,
+   "bread": 421,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 112000,
+   "year": 1328,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 5670,
+   "lived": 24,
+   "l4": 0,
+   "bread": 406,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 116000,
+   "year": 1329,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 6198,
+   "lived": 24,
+   "l4": 0,
+   "bread": 441,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 120000,
+   "year": 1330,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 6642,
+   "lived": 24,
+   "l4": 0,
+   "bread": 499,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 124000,
+   "year": 1331,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 6882,
+   "lived": 24,
+   "l4": 0,
+   "bread": 518,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 128000,
+   "year": 1332,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 7401,
+   "lived": 24,
+   "l4": 0,
+   "bread": 523,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 132000,
+   "year": 1333,
+   "chapter": 2,
+   "population": 528,
+   "treasury": 7944,
+   "lived": 24,
+   "l4": 0,
+   "bread": 535,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 136000,
+   "year": 1334,
+   "chapter": 2,
+   "population": 690,
+   "treasury": 8183,
+   "lived": 24,
+   "l4": 17,
+   "bread": 474,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 140000,
+   "year": 1335,
+   "chapter": 2,
+   "population": 698,
+   "treasury": 8928,
+   "lived": 24,
+   "l4": 17,
+   "bread": 395,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 144000,
+   "year": 1336,
+   "chapter": 2,
+   "population": 698,
+   "treasury": 9599,
+   "lived": 24,
+   "l4": 17,
+   "bread": 323,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 148000,
+   "year": 1337,
+   "chapter": 2,
+   "population": 768,
+   "treasury": 9964,
+   "lived": 24,
+   "l4": 24,
+   "bread": 274,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 152000,
+   "year": 1338,
+   "chapter": 2,
+   "population": 760,
+   "treasury": 10018,
+   "lived": 24,
+   "l4": 22,
+   "bread": 111,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 156000,
+   "year": 1339,
+   "chapter": 2,
+   "population": 759,
+   "treasury": 9885,
+   "lived": 24,
+   "l4": 22,
+   "bread": 54,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 160000,
+   "year": 1340,
+   "chapter": 2,
+   "population": 701,
+   "treasury": 9450,
+   "lived": 24,
+   "l4": 15,
+   "bread": 57,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 164000,
+   "year": 1341,
+   "chapter": 3,
+   "population": 678,
+   "treasury": 8689,
+   "lived": 24,
+   "l4": 11,
+   "bread": 145,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 168000,
+   "year": 1342,
+   "chapter": 3,
+   "population": 681,
+   "treasury": 9086,
+   "lived": 24,
+   "l4": 14,
+   "bread": 149,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 172000,
+   "year": 1343,
+   "chapter": 3,
+   "population": 686,
+   "treasury": 9323,
+   "lived": 24,
+   "l4": 16,
+   "bread": 181,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 176000,
+   "year": 1344,
+   "chapter": 3,
+   "population": 677,
+   "treasury": 9853,
+   "lived": 24,
+   "l4": 16,
+   "bread": 186,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 180000,
+   "year": 1345,
+   "chapter": 3,
+   "population": 682,
+   "treasury": 10366,
+   "lived": 24,
+   "l4": 17,
+   "bread": 173,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 184000,
+   "year": 1346,
+   "chapter": 3,
+   "population": 688,
+   "treasury": 10629,
+   "lived": 24,
+   "l4": 19,
+   "bread": 200,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 188000,
+   "year": 1347,
+   "chapter": 3,
+   "population": 686,
+   "treasury": 11217,
+   "lived": 24,
+   "l4": 19,
+   "bread": 190,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 192000,
+   "year": 1348,
+   "chapter": 3,
+   "population": 693,
+   "treasury": 11696,
+   "lived": 24,
+   "l4": 19,
+   "bread": 182,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 196000,
+   "year": 1349,
+   "chapter": 3,
+   "population": 525,
+   "treasury": 11715,
+   "lived": 22,
+   "l4": 0,
+   "bread": 184,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 200000,
+   "year": 1350,
+   "chapter": 3,
+   "population": 405,
+   "treasury": 11737,
+   "lived": 20,
+   "l4": 17,
+   "bread": 476,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 204000,
+   "year": 1351,
+   "chapter": 3,
+   "population": 425,
+   "treasury": 11794,
+   "lived": 20,
+   "l4": 17,
+   "bread": 715,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 208000,
+   "year": 1352,
+   "chapter": 3,
+   "population": 453,
+   "treasury": 11863,
+   "lived": 22,
+   "l4": 22,
+   "bread": 831,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 212000,
+   "year": 1353,
+   "chapter": 3,
+   "population": 481,
+   "treasury": 12358,
+   "lived": 24,
+   "l4": 24,
+   "bread": 986,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 216000,
+   "year": 1354,
+   "chapter": 3,
+   "population": 501,
+   "treasury": 12879,
+   "lived": 24,
+   "l4": 24,
+   "bread": 1031,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 220000,
+   "year": 1355,
+   "chapter": 3,
+   "population": 521,
+   "treasury": 13146,
+   "lived": 24,
+   "l4": 24,
+   "bread": 1055,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 224000,
+   "year": 1356,
+   "chapter": 3,
+   "population": 541,
+   "treasury": 13384,
+   "lived": 24,
+   "l4": 24,
+   "bread": 1010,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 228000,
+   "year": 1357,
+   "chapter": 3,
+   "population": 561,
+   "treasury": 13889,
+   "lived": 24,
+   "l4": 24,
+   "bread": 1056,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 232000,
+   "year": 1358,
+   "chapter": 3,
+   "population": 581,
+   "treasury": 14191,
+   "lived": 24,
+   "l4": 24,
+   "bread": 1061,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 236000,
+   "year": 1359,
+   "chapter": 3,
+   "population": 601,
+   "treasury": 14910,
+   "lived": 24,
+   "l4": 24,
+   "bread": 1049,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 240000,
+   "year": 1360,
+   "chapter": 3,
+   "population": 621,
+   "treasury": 15606,
+   "lived": 24,
+   "l4": 24,
+   "bread": 1050,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 244000,
+   "year": 1361,
+   "chapter": 3,
+   "population": 641,
+   "treasury": 15961,
+   "lived": 24,
+   "l4": 24,
+   "bread": 1071,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 248000,
+   "year": 1362,
+   "chapter": 4,
+   "population": 580,
+   "treasury": 16597,
+   "lived": 24,
+   "l4": 24,
+   "bread": 1065,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 252000,
+   "year": 1363,
+   "chapter": 4,
+   "population": 744,
+   "treasury": 17678,
+   "lived": 24,
+   "l4": 24,
+   "bread": 956,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 256000,
+   "year": 1364,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 18886,
+   "lived": 24,
+   "l4": 24,
+   "bread": 1002,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 260000,
+   "year": 1365,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 20919,
+   "lived": 24,
+   "l4": 24,
+   "bread": 912,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 264000,
+   "year": 1366,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 23066,
+   "lived": 24,
+   "l4": 24,
+   "bread": 769,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 268000,
+   "year": 1367,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 24722,
+   "lived": 24,
+   "l4": 24,
+   "bread": 720,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 272000,
+   "year": 1368,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 26764,
+   "lived": 24,
+   "l4": 24,
+   "bread": 726,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 276000,
+   "year": 1369,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 28797,
+   "lived": 24,
+   "l4": 24,
+   "bread": 628,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 280000,
+   "year": 1370,
+   "chapter": 4,
+   "population": 766,
+   "treasury": 30574,
+   "lived": 24,
+   "l4": 22,
+   "bread": 608,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 284000,
+   "year": 1371,
+   "chapter": 4,
+   "population": 766,
+   "treasury": 32721,
+   "lived": 24,
+   "l4": 22,
+   "bread": 561,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 288000,
+   "year": 1372,
+   "chapter": 4,
+   "population": 766,
+   "treasury": 34859,
+   "lived": 24,
+   "l4": 22,
+   "bread": 452,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 292000,
+   "year": 1373,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 36520,
+   "lived": 24,
+   "l4": 24,
+   "bread": 534,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 296000,
+   "year": 1374,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 38755,
+   "lived": 24,
+   "l4": 24,
+   "bread": 560,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 300000,
+   "year": 1375,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 41087,
+   "lived": 24,
+   "l4": 24,
+   "bread": 575,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 304000,
+   "year": 1376,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 42791,
+   "lived": 24,
+   "l4": 24,
+   "bread": 531,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 308000,
+   "year": 1377,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 45123,
+   "lived": 24,
+   "l4": 24,
+   "bread": 556,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 312000,
+   "year": 1378,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 48080,
+   "lived": 24,
+   "l4": 24,
+   "bread": 511,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 316000,
+   "year": 1379,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 50374,
+   "lived": 24,
+   "l4": 24,
+   "bread": 513,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 320000,
+   "year": 1380,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 52658,
+   "lived": 24,
+   "l4": 24,
+   "bread": 596,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 324000,
+   "year": 1381,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 54909,
+   "lived": 24,
+   "l4": 24,
+   "bread": 536,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 328000,
+   "year": 1382,
+   "chapter": 4,
+   "population": 768,
+   "treasury": 57343,
+   "lived": 24,
+   "l4": 24,
+   "bread": 539,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 332000,
+   "year": 1383,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 59354,
+   "lived": 24,
+   "l4": 24,
+   "bread": 575,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 336000,
+   "year": 1384,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 61356,
+   "lived": 24,
+   "l4": 24,
+   "bread": 570,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 340000,
+   "year": 1385,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 62650,
+   "lived": 24,
+   "l4": 24,
+   "bread": 563,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 344000,
+   "year": 1386,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 64745,
+   "lived": 24,
+   "l4": 24,
+   "bread": 587,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 348000,
+   "year": 1387,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 66719,
+   "lived": 24,
+   "l4": 24,
+   "bread": 584,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 352000,
+   "year": 1388,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 68441,
+   "lived": 24,
+   "l4": 24,
+   "bread": 538,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 356000,
+   "year": 1389,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 70481,
+   "lived": 24,
+   "l4": 24,
+   "bread": 560,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 360000,
+   "year": 1390,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 72525,
+   "lived": 24,
+   "l4": 24,
+   "bread": 564,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 364000,
+   "year": 1391,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 74221,
+   "lived": 24,
+   "l4": 24,
+   "bread": 584,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 368000,
+   "year": 1392,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 76200,
+   "lived": 24,
+   "l4": 24,
+   "bread": 522,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 372000,
+   "year": 1393,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 78230,
+   "lived": 24,
+   "l4": 24,
+   "bread": 544,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 376000,
+   "year": 1394,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 79944,
+   "lived": 24,
+   "l4": 24,
+   "bread": 513,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 380000,
+   "year": 1395,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 82041,
+   "lived": 24,
+   "l4": 24,
+   "bread": 477,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 384000,
+   "year": 1396,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 84064,
+   "lived": 24,
+   "l4": 24,
+   "bread": 457,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 388000,
+   "year": 1397,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 85692,
+   "lived": 24,
+   "l4": 24,
+   "bread": 424,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 392000,
+   "year": 1398,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 87701,
+   "lived": 24,
+   "l4": 24,
+   "bread": 457,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 396000,
+   "year": 1399,
+   "chapter": 5,
+   "population": 761,
+   "treasury": 89717,
+   "lived": 24,
+   "l4": 23,
+   "bread": 433,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 400000,
+   "year": 1400,
+   "chapter": 5,
+   "population": 761,
+   "treasury": 91363,
+   "lived": 24,
+   "l4": 23,
+   "bread": 473,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 404000,
+   "year": 1401,
+   "chapter": 5,
+   "population": 761,
+   "treasury": 93227,
+   "lived": 24,
+   "l4": 23,
+   "bread": 522,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 408000,
+   "year": 1402,
+   "chapter": 5,
+   "population": 761,
+   "treasury": 95442,
+   "lived": 24,
+   "l4": 23,
+   "bread": 486,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 412000,
+   "year": 1403,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 97180,
+   "lived": 24,
+   "l4": 24,
+   "bread": 433,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 416000,
+   "year": 1404,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 99270,
+   "lived": 24,
+   "l4": 24,
+   "bread": 486,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 420000,
+   "year": 1405,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 101341,
+   "lived": 24,
+   "l4": 24,
+   "bread": 549,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 424000,
+   "year": 1406,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 103085,
+   "lived": 24,
+   "l4": 24,
+   "bread": 612,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 428000,
+   "year": 1407,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 105187,
+   "lived": 24,
+   "l4": 24,
+   "bread": 579,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 432000,
+   "year": 1408,
+   "chapter": 5,
+   "population": 765,
+   "treasury": 107358,
+   "lived": 24,
+   "l4": 23,
+   "bread": 557,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 436000,
+   "year": 1409,
+   "chapter": 5,
+   "population": 765,
+   "treasury": 108988,
+   "lived": 24,
+   "l4": 23,
+   "bread": 548,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 440000,
+   "year": 1410,
+   "chapter": 5,
+   "population": 765,
+   "treasury": 111061,
+   "lived": 24,
+   "l4": 23,
+   "bread": 488,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 444000,
+   "year": 1411,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 113137,
+   "lived": 24,
+   "l4": 24,
+   "bread": 460,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 448000,
+   "year": 1412,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 114953,
+   "lived": 24,
+   "l4": 24,
+   "bread": 532,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 452000,
+   "year": 1413,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 117001,
+   "lived": 24,
+   "l4": 24,
+   "bread": 516,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 456000,
+   "year": 1414,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 119105,
+   "lived": 24,
+   "l4": 24,
+   "bread": 523,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 460000,
+   "year": 1415,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 121012,
+   "lived": 24,
+   "l4": 24,
+   "bread": 551,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 464000,
+   "year": 1416,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 123080,
+   "lived": 24,
+   "l4": 24,
+   "bread": 585,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 468000,
+   "year": 1417,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 125191,
+   "lived": 24,
+   "l4": 24,
+   "bread": 580,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 472000,
+   "year": 1418,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 126969,
+   "lived": 24,
+   "l4": 24,
+   "bread": 548,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 476000,
+   "year": 1419,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 129109,
+   "lived": 24,
+   "l4": 24,
+   "bread": 528,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 480000,
+   "year": 1420,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 131192,
+   "lived": 24,
+   "l4": 24,
+   "bread": 481,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 484000,
+   "year": 1421,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 133064,
+   "lived": 24,
+   "l4": 24,
+   "bread": 511,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 488000,
+   "year": 1422,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 135133,
+   "lived": 24,
+   "l4": 24,
+   "bread": 492,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 492000,
+   "year": 1423,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 137240,
+   "lived": 24,
+   "l4": 24,
+   "bread": 507,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 496000,
+   "year": 1424,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 138989,
+   "lived": 24,
+   "l4": 24,
+   "bread": 587,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 500000,
+   "year": 1425,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 141117,
+   "lived": 24,
+   "l4": 24,
+   "bread": 583,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 504000,
+   "year": 1426,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 143136,
+   "lived": 24,
+   "l4": 24,
+   "bread": 515,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 508000,
+   "year": 1427,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 144939,
+   "lived": 24,
+   "l4": 24,
+   "bread": 467,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 512000,
+   "year": 1428,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 147071,
+   "lived": 24,
+   "l4": 24,
+   "bread": 483,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 516000,
+   "year": 1429,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 149232,
+   "lived": 24,
+   "l4": 24,
+   "bread": 502,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 520000,
+   "year": 1430,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 150995,
+   "lived": 24,
+   "l4": 24,
+   "bread": 506,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 524000,
+   "year": 1431,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 153086,
+   "lived": 24,
+   "l4": 24,
+   "bread": 513,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 528000,
+   "year": 1432,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 155198,
+   "lived": 24,
+   "l4": 24,
+   "bread": 513,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 532000,
+   "year": 1433,
+   "chapter": 5,
+   "population": 764,
+   "treasury": 156971,
+   "lived": 24,
+   "l4": 23,
+   "bread": 537,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 536000,
+   "year": 1434,
+   "chapter": 5,
+   "population": 764,
+   "treasury": 159086,
+   "lived": 24,
+   "l4": 23,
+   "bread": 593,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 540000,
+   "year": 1435,
+   "chapter": 5,
+   "population": 764,
+   "treasury": 161089,
+   "lived": 24,
+   "l4": 23,
+   "bread": 545,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 544000,
+   "year": 1436,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 162741,
+   "lived": 24,
+   "l4": 24,
+   "bread": 626,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 548000,
+   "year": 1437,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 164863,
+   "lived": 24,
+   "l4": 24,
+   "bread": 602,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 552000,
+   "year": 1438,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 167046,
+   "lived": 24,
+   "l4": 24,
+   "bread": 586,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 556000,
+   "year": 1439,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 168765,
+   "lived": 24,
+   "l4": 24,
+   "bread": 587,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 560000,
+   "year": 1440,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 170864,
+   "lived": 24,
+   "l4": 24,
+   "bread": 630,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 564000,
+   "year": 1441,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 172432,
+   "lived": 24,
+   "l4": 24,
+   "bread": 587,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 568000,
+   "year": 1442,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 174269,
+   "lived": 24,
+   "l4": 24,
+   "bread": 593,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 572000,
+   "year": 1443,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 176379,
+   "lived": 24,
+   "l4": 24,
+   "bread": 566,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 576000,
+   "year": 1444,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 178486,
+   "lived": 24,
+   "l4": 24,
+   "bread": 537,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 580000,
+   "year": 1445,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 180289,
+   "lived": 24,
+   "l4": 24,
+   "bread": 508,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 584000,
+   "year": 1446,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 182414,
+   "lived": 24,
+   "l4": 24,
+   "bread": 530,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 588000,
+   "year": 1447,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 184560,
+   "lived": 24,
+   "l4": 24,
+   "bread": 505,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 592000,
+   "year": 1448,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 186288,
+   "lived": 24,
+   "l4": 24,
+   "bread": 506,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 596000,
+   "year": 1449,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 188387,
+   "lived": 24,
+   "l4": 24,
+   "bread": 502,
+   "granaryMalt": 0
+  },
+  {
+   "tick": 600000,
+   "year": 1450,
+   "chapter": 5,
+   "population": 768,
+   "treasury": 190500,
+   "lived": 24,
+   "l4": 24,
+   "bread": 477,
+   "granaryMalt": 0
+  }
+ ]
+}

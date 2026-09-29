@@ -1,0 +1,108 @@
+{
+ "variant": "house",
+ "answers": {
+  "royal_tax": "accept",
+  "heir_choice": "accept",
+  "borough_autonomy": "refuse",
+  "legacy_choice": "accept_with_price"
+ },
+ "start": {
+  "tick": 329000,
+  "year": 1382,
+  "treasury": 58370,
+  "population": 768
+ },
+ "end": {
+  "tick": 601000,
+  "year": 1450,
+  "treasury": 130836,
+  "population": 768,
+  "outcome": "victory",
+  "lived": 24,
+  "l4": 24
+ },
+ "heir": {
+  "kind": "eldest_son",
+  "personId": "m-000017",
+  "previousHeadId": "m-000015",
+  "tick": 408000,
+  "relief": 100
+ },
+ "candidates": [
+  [
+   "eldest_son",
+   "son"
+  ],
+  [
+   "nephew",
+   "kinsman"
+  ]
+ ],
+ "mayorId": null,
+ "family": "stayed",
+ "backlash": 93,
+ "royalSubsidy": 400,
+ "legacy": "family",
+ "endowment": 500,
+ "clothSold": 3400,
+ "scores": {
+  "town": 55,
+  "family": 92,
+  "church": 27,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": -20,
+    "legacy": 0
+   },
+   "family": {
+    "house": 10,
+    "generations": 16,
+    "heir": 12,
+    "stayed": 15,
+    "relations": 4,
+    "treasury": 10,
+    "legacy": 25
+   },
+   "church": {
+    "church": 10,
+    "chapels": 4,
+    "bishop": 3,
+    "priest": 5,
+    "relief": 5,
+    "legacy": 0
+   }
+  }
+ },
+ "ending": {
+  "id": "house_seat",
+  "title": "가문의 도시",
+  "sentence": "드 보테르 가문은 4대에 걸쳐 영주관을 지켰고, 나이 든 리처드 드 보테르가 그 문장을 이었다. 1450년 마지막 장날, 도시는 여전히 가문의 도시였다.",
+  "quotes": [
+   "h-032140",
+   "h-031612",
+   "h-046065"
+  ],
+  "final": true
+ },
+ "relations": {
+  "overlord": 20,
+  "crown": 25,
+  "neighbour_1": -3,
+  "neighbour_2": 0,
+  "bishop": 13,
+  "merchant_house_1": 20,
+  "merchant_house_2": 0,
+  "town": 28,
+  "commons": 35
+ },
+ "rights": [
+  "market_charter:merchants",
+  "commuted_rent:townsfolk",
+  "market_tolls:townsfolk",
+  "bridge_tolls:townsfolk"
+ ]
+}
