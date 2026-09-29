@@ -26,16 +26,36 @@ function nat1PseudoLongPlugin() {
       let rel = relative(fileDir, nat1Abs).replace(/\\/g, "/");
       if (!rel.startsWith(".")) rel = `./${rel}`;
       const importLine = `import { pseudoLong as __pl } from '${rel}';\n`;
-      let result = importLine + code;
-      // Wrap: `export const NAME = {` → `export const NAME = __pl({`
-      result = result.replace(/(export const [A-Za-z_]\w* = )(\{)/g, "$1__pl($2");
-      // Close: any `};`, `} as const;` or `} as const satisfies Type;` at column 0.
-      // The `^` + `m` flag ensures we only match top-level closers (nested object closers
-      // are always indented). This covers both `as const` exports AND bare `};` exports.
-      // Inline non-exported consts like `const X = { ... } as const;` are on one line and
-      // never start at column 0 after the `}`, so they are not matched.
-      result = result.replace(/^(\}(?:\s+as\s+const(?:\s+satisfies\s+[^\n;]+)?)?);/gm, "$1);");
-      return { code: result, map: null };
+      // Stateful line-by-line transform: wrap every `export const NAME = { ... }` with
+      // __pl(). Uses brace depth tracking so we only close the block we opened — this
+      // avoids false-closing `export type`, helper consts, or other non-export constructs.
+      const OPEN_RE = /^(export const [A-Za-z_]\w* = )(\{)/;
+      const CLOSE_RE = /^(\}(?:\s+as\s+const(?:\s+satisfies\s+[^\n;]+)?)?);/;
+      const lines = (importLine + code).split("\n");
+      const out: string[] = [];
+      let depth = 0; // >0 while we're inside a __pl( wrapper; 0 = not in one
+      for (const line of lines) {
+        const opens = (line.match(/\{/g) ?? []).length;
+        const closes = (line.match(/\}/g) ?? []).length;
+        if (depth === 0) {
+          if (OPEN_RE.test(line)) {
+            depth = opens - closes; // net depth after this opening line
+            out.push(line.replace(OPEN_RE, "$1__pl($2"));
+          } else {
+            out.push(line);
+          }
+        } else {
+          depth += opens - closes;
+          if (depth <= 0) {
+            // This is the line that closes the export const block.
+            out.push(line.replace(CLOSE_RE, "$1);"));
+            depth = 0;
+          } else {
+            out.push(line);
+          }
+        }
+      }
+      return { code: out.join("\n"), map: null };
     },
   };
 }
