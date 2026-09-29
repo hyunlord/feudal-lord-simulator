@@ -155,7 +155,9 @@ export function analyseSnapshot(snapshot: Awaited<ReturnType<typeof readSnapshot
   const byPath = new Map<string, { self: number; count: number }>();
   for (let n = 1; n < nodeCount; n++) {
     if (parentNode[n] === UNSET) continue;
-    const labels = pathOf(n).split(" → ").filter(label => !SKIP.test(label)).slice(0, 4).join(" → ");
+    // From the module scope on (a function component's `elementType` or the proof port's function leads into it).
+    const hops = pathOf(n).split(" → "); const into = Math.max(hops.lastIndexOf("elementType"), hops.lastIndexOf("tileClientPoint"));
+    const labels = hops.slice(into + 1).filter(label => !SKIP.test(label)).slice(0, 3).join(" → ") || "(module scope)";
     const entry = byPath.get(labels) ?? { self: 0, count: 0 }; entry.self += nodes[n * NF + nSelf]!; entry.count += 1; byPath.set(labels, entry);
   }
   const pathRows = [...byPath].map(([path, entry]) => ({ path, selfMB: mb(entry.self), count: entry.count })).sort((a, b) => b.selfMB - a.selfMB).slice(0, top);

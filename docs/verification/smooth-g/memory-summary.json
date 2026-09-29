@@ -1,0 +1,5637 @@
+[
+ {
+  "scene": "big-town",
+  "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+  "speed": 5,
+  "errors": [],
+  "points": [
+   {
+    "label": "loaded",
+    "state": {
+     "date": "1380년 여름",
+     "tick": null,
+     "population": null,
+     "buildings": null
+    },
+    "heapUsageMB": {
+     "usedSize": 85.7,
+     "totalSize": 91,
+     "embedderHeapUsedSize": 39.2,
+     "backingStorageSize": 4.5
+    },
+    "rssMB": {
+     "browser-52325": 266,
+     "renderer-52365": 97,
+     "renderer-52366": 582,
+     "renderer-52364": 180,
+     "GPU-52357": 195,
+     "network.mojom.NetworkService-52358": 169,
+     "storage.mojom.StorageService-52360": 78,
+     "audio.mojom.AudioService-52500": 95,
+     "tracing.mojom.TracingService-53274": 125
+    },
+    "gc": {
+     "seconds": 30,
+     "majorGC": 7,
+     "minorGC": 180,
+     "markingStarts": 7,
+     "embedderAllocMBps": 86.6,
+     "gcCount": 187,
+     "embedderAtGcMB": {
+      "min": 798.6,
+      "max": 1183.6
+     },
+     "reasons": [
+      "approaching global allocation limit"
+     ],
+     "medianMB": {
+      "global_allocation_limit": 1295.9,
+      "global_consumed_bytes": 1263.3,
+      "old_gen_allocation_limit": 134.3,
+      "old_gen_consumed_bytes": 96.6
+     }
+    },
+    "domCounters": {
+     "documents": 1,
+     "nodes": 2287,
+     "jsEventListeners": 2116
+    },
+    "callsPerSecond": {
+     "CanvasRenderingContext2D.getTransform": {
+      "perSecond": 71263,
+      "MBps": 0
+     },
+     "Element.getBoundingClientRect": {
+      "perSecond": 480,
+      "MBps": 0
+     },
+     "OffscreenCanvasRenderingContext2D.getTransform": {
+      "perSecond": 1,
+      "MBps": 0
+     }
+    },
+    "pixelsMB": 876.9,
+    "pixelOwnersCreated": 6537,
+    "holders": [
+     {
+      "holder": "src/render/groundChunkCache.ts",
+      "cache": "지면 청크 캐시",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 71,
+      "MB": 599.1,
+      "largest": "2052x1028",
+      "by": [
+       "browserChunkCanvas ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 599.1"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js",
+      "cache": null,
+      "kinds": [
+       "canvas",
+       "화면 캔버스"
+      ],
+      "live": 2,
+      "MB": 44.9,
+      "largest": "3200x1754",
+      "by": [
+       "completeWork 44.9"
+      ]
+     },
+     {
+      "holder": "src/render/terrainVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 40,
+      "MB": 40.1,
+      "largest": "1774x887",
+      "by": [
+       "(anonymous) ← src/render/drawWallFaces.ts:drawWallFaceSlice 37.5",
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 2.2",
+       "shoreSurface ← src/render/drawShoreline.ts:(anonymous) 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/manifestArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 362,
+      "MB": 34.2,
+      "largest": "512x384",
+      "by": [
+       "art ← src/render/preloadGameArt.ts:preloadFrameArt 27.5",
+       "art ← src/render/preloadGameArt.ts:preloadChapterArt 5.3",
+       "Object.art ← src/render/countrysideArt.ts:drawCountryBlit 0.8"
+      ]
+     },
+     {
+      "holder": "src/render/walkerComposer.ts",
+      "cache": "걷는 사람 합성 캐시",
+      "kinds": [
+       "bitmap",
+       "image"
+      ],
+      "live": 603,
+      "MB": 32.3,
+      "largest": "312x156",
+      "by": [
+       "composedCanvas ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 23.9",
+       "imageFor ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 8.4"
+      ]
+     },
+     {
+      "holder": "src/render/worldRasterCache.ts",
+      "cache": "worldRasterCache(그림 래스터)",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 195,
+      "MB": 24.7,
+      "largest": "220x266",
+      "by": [
+       "trimTransparentMargin ← src/render/drawPalisadeSegments.ts:drawPalisadeSegment 24.7"
+      ]
+     },
+     {
+      "holder": "src/render/worldSprite.ts",
+      "cache": "스프라이트 색조 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 195,
+      "MB": 12.9,
+      "largest": "582x279",
+      "by": [
+       "createTintCanvas ← src/render/worldSpriteRaster.ts:rasterizeWorldSprite 12.4",
+       "createTintCanvas ← src/render/drawTrees.ts:drawSeasonalSprite 0.4",
+       "createTintCanvas ← src/render/villageLifeDraw.ts:rasterize 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/weatherArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 18,
+      "MB": 10.2,
+      "largest": "1024x256",
+      "by": [
+       "weatherImage ← src/render/weatherOverlay.ts:(anonymous) 6.2",
+       "cellCanvas ← src/render/weatherOverlay.ts:drawFill 4"
+      ]
+     },
+     {
+      "holder": "src/render/gateArtAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 8.4,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 8.4"
+      ]
+     },
+     {
+      "holder": "src/render/houseConditionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 33,
+      "MB": 6.7,
+      "largest": "271x271",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.7"
+      ]
+     },
+     {
+      "holder": "src/render/seasonArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 65,
+      "MB": 6.3,
+      "largest": "256x256",
+      "by": [
+       "preloadSeasonArt ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/bridgeWaterAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 10,
+      "MB": 6.3,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/waterMotionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 54,
+      "MB": 6,
+      "largest": "2048x128",
+      "by": [
+       "waterImage ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "browserCanvas ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "waterImage ← src/render/drawWaterMotion.ts:liveReeds 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/zoneAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 56,
+      "MB": 5.8,
+      "largest": "256x256",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 5.8"
+      ]
+     },
+     {
+      "holder": "src/render/buildingVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 52,
+      "MB": 4.9,
+      "largest": "224x224",
+      "by": [
+       "record ← src/render/preloadGameArt.ts:preloadGameArt 3.2",
+       "record ← src/render/wave26HouseArt.ts:(anonymous) 1.7"
+      ]
+     },
+     {
+      "holder": "src/render/constructionArtAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 9,
+      "MB": 4.7,
+      "largest": "512x256",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.7"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 34,
+      "MB": 4.3,
+      "largest": "512x512",
+      "by": [
+       "createImage ← src/render/preloadGameArt.ts:preloadGameArt 4.3"
+      ]
+     },
+     {
+      "holder": "src/render/historicalFacilityAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 24,
+      "MB": 4.1,
+      "largest": "384x192",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.1"
+      ]
+     },
+     {
+      "holder": "src/render/stripJoin.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 8,
+      "MB": 3.1,
+      "largest": "1536x128",
+      "by": [
+       "canvas2d$1 ← src/render/drawWallFaces.ts:gateFaceCanvas 0.8",
+       "canvas2d$1 ← src/render/drawArableFields.ts:joinStrips 0.8",
+       "canvas2d$1 ← src/render/drawWallFaces.ts:faceCanvas 0.5"
+      ]
+     },
+     {
+      "holder": "src/render/drawRoadRibbons.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 10,
+      "MB": 2.7,
+      "largest": "2048x64",
+      "by": [
+       "canvas2d ← src/render/drawBuildingGrounds.ts:drawAprons 2.1",
+       "canvas2d ← src/render/drawTerrainBoundaryV2.ts:(anonymous) 0.6"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-facilities-v1/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 16,
+      "MB": 2.4,
+      "largest": "266x266",
+      "by": [
+       "completeWork 2.4"
+      ]
+     },
+     {
+      "holder": "src/render/stoneWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 2.1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 2.1"
+      ]
+     },
+     {
+      "holder": "src/render/drawWallFaces.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 2,
+      "MB": 1.3,
+      "largest": "1536x128",
+      "by": [
+       "shadowCanvas ← src/render/drawPalisadeSegments.ts:drawPalisadeSegmentUncached 1.3"
+      ]
+     },
+     {
+      "holder": "src/render/visibilityArtManifest.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 22,
+      "MB": 1.1,
+      "largest": "512x256",
+      "by": [
+       "visibilityArt ← src/render/preloadGameArt.ts:preloadFrameArt 1.1"
+      ]
+     },
+     {
+      "holder": "src/render/timberWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/boundaryAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 11,
+      "MB": 1,
+      "largest": "512x64",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 1"
+      ]
+     },
+     {
+      "holder": "src/render/runtimeActorAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 1,
+      "largest": "332x166",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/houseCompoundAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 6,
+      "MB": 0.8,
+      "largest": "204x204",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.8"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 0.8,
+      "largest": "200x160",
+      "by": [
+       "completeWork 0.8"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave2/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 0.6,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.6"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/yard/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 0.6,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.6"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssetScaleCache.ts",
+      "cache": "그림 축척 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 36,
+      "MB": 0.6,
+      "largest": "87x102",
+      "by": [
+       "createScaleCanvas ← src/render/worldAssets.ts:image.onload 0.4",
+       "createScaleCanvas ← src/render/seasonArt.ts:seasonSprite 0.2"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 0.5,
+      "largest": "160x144",
+      "by": [
+       "completeWork 0.5"
+      ]
+     },
+     {
+      "holder": "src/render/historicalHouseAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 0.4,
+      "largest": "161x161",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.4"
+      ]
+     },
+     {
+      "holder": "src/ui/uiArt.ts",
+      "cache": "삽화·UI 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 13,
+      "MB": 0.4,
+      "largest": "432x48",
+      "by": [
+       "canvasSheet ← src/render/preloadGameArt.ts:preloadFrameArt 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/drawWater.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "256x256",
+      "by": [
+       "waterSurface ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-houses/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 0.2,
+      "largest": "153x153",
+      "by": [
+       "completeWork 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/animatedMill.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 0.1,
+      "largest": "136x136",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/townLandscapeAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 3,
+      "MB": 0.1,
+      "largest": "113x80",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     }
+    ],
+    "caches": {
+     "지면 청크 캐시": 599.1,
+     "(그 밖)": 177.7,
+     "걷는 사람 합성 캐시": 32.3,
+     "worldRasterCache(그림 래스터)": 24.7,
+     "스프라이트 색조 캐시": 12.9,
+     "계절·날씨 그림": 16.5,
+     "벽 캐시": 12.8,
+     "그림 축척 캐시": 0.6,
+     "삽화·UI 그림": 0.4
+    }
+   },
+   {
+    "label": "played",
+    "state": {
+     "date": "1382년 봄",
+     "tick": null,
+     "population": null,
+     "buildings": null
+    },
+    "heapUsageMB": {
+     "usedSize": 465,
+     "totalSize": 477.5,
+     "embedderHeapUsedSize": 40.2,
+     "backingStorageSize": 5.9
+    },
+    "rssMB": {
+     "browser-52325": 270,
+     "renderer-52365": 97,
+     "renderer-52366": 1082,
+     "renderer-52364": 180,
+     "GPU-52357": 199,
+     "network.mojom.NetworkService-52358": 170,
+     "storage.mojom.StorageService-52360": 78,
+     "audio.mojom.AudioService-52500": 95,
+     "tracing.mojom.TracingService-53274": 126
+    },
+    "gc": {
+     "seconds": 30,
+     "majorGC": 2,
+     "minorGC": 184,
+     "markingStarts": 2,
+     "embedderAllocMBps": 87.6,
+     "gcCount": 186,
+     "embedderAtGcMB": {
+      "min": 674.9,
+      "max": 2140.1
+     },
+     "reasons": [
+      "approaching global allocation limit"
+     ],
+     "medianMB": {
+      "global_allocation_limit": 2654.4,
+      "global_consumed_bytes": 2621.2,
+      "old_gen_allocation_limit": 544.3,
+      "old_gen_consumed_bytes": 481.8
+     }
+    },
+    "domCounters": {
+     "documents": 1,
+     "nodes": 1748,
+     "jsEventListeners": 2064
+    },
+    "callsPerSecond": {
+     "CanvasRenderingContext2D.getTransform": {
+      "perSecond": 71157,
+      "MBps": 0
+     },
+     "Element.getBoundingClientRect": {
+      "perSecond": 472,
+      "MBps": 0
+     },
+     "CanvasRenderingContext2D.createPattern": {
+      "perSecond": 0,
+      "MBps": 0
+     }
+    },
+    "pixelsMB": 754.5,
+    "pixelOwnersCreated": 29708,
+    "holders": [
+     {
+      "holder": "src/render/groundChunkCache.ts",
+      "cache": "지면 청크 캐시",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 59,
+      "MB": 497.8,
+      "largest": "2052x1028",
+      "by": [
+       "browserChunkCanvas ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 354.4",
+       "browserChunkCanvas ← src/render/drawTerrainBoundaryV2.ts:run 143.4"
+      ]
+     },
+     {
+      "holder": "src/render/terrainVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 40,
+      "MB": 40.1,
+      "largest": "1774x887",
+      "by": [
+       "(anonymous) ← src/render/drawWallFaces.ts:drawWallFaceSlice 37.5",
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 2.2",
+       "shoreSurface ← src/render/drawShoreline.ts:(anonymous) 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/manifestArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 374,
+      "MB": 35.7,
+      "largest": "512x384",
+      "by": [
+       "art ← src/render/preloadGameArt.ts:preloadFrameArt 27.5",
+       "art ← src/render/preloadGameArt.ts:preloadChapterArt 5.3",
+       "Object.art ← src/render/countrysideArt.ts:drawCountryBlit 2"
+      ]
+     },
+     {
+      "holder": "src/render/walkerComposer.ts",
+      "cache": "걷는 사람 합성 캐시",
+      "kinds": [
+       "bitmap",
+       "image"
+      ],
+      "live": 607,
+      "MB": 32.9,
+      "largest": "312x156",
+      "by": [
+       "composedCanvas ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 23.9",
+       "imageFor ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 9"
+      ]
+     },
+     {
+      "holder": "src/render/worldRasterCache.ts",
+      "cache": "worldRasterCache(그림 래스터)",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 195,
+      "MB": 24.7,
+      "largest": "220x266",
+      "by": [
+       "trimTransparentMargin ← src/render/drawPalisadeSegments.ts:drawPalisadeSegment 24.7"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js",
+      "cache": null,
+      "kinds": [
+       "화면 캔버스"
+      ],
+      "live": 1,
+      "MB": 22.5,
+      "largest": "3200x1754",
+      "by": [
+       "completeWork 22.5"
+      ]
+     },
+     {
+      "holder": "src/render/worldSprite.ts",
+      "cache": "스프라이트 색조 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 196,
+      "MB": 12.9,
+      "largest": "582x279",
+      "by": [
+       "createTintCanvas ← src/render/worldSpriteRaster.ts:rasterizeWorldSprite 12.4",
+       "createTintCanvas ← src/render/drawTrees.ts:drawSeasonalSprite 0.4",
+       "createTintCanvas ← src/render/villageLifeDraw.ts:rasterize 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/weatherArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 19,
+      "MB": 10.5,
+      "largest": "1024x256",
+      "by": [
+       "weatherImage ← src/render/weatherOverlay.ts:(anonymous) 6.5",
+       "cellCanvas ← src/render/weatherOverlay.ts:drawFill 4"
+      ]
+     },
+     {
+      "holder": "src/render/gateArtAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 8.4,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 8.4"
+      ]
+     },
+     {
+      "holder": "src/render/houseConditionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 33,
+      "MB": 6.7,
+      "largest": "271x271",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.7"
+      ]
+     },
+     {
+      "holder": "src/render/seasonArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 65,
+      "MB": 6.3,
+      "largest": "256x256",
+      "by": [
+       "preloadSeasonArt ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/bridgeWaterAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 10,
+      "MB": 6.3,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/waterMotionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 55,
+      "MB": 6.1,
+      "largest": "2048x128",
+      "by": [
+       "waterImage ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "browserCanvas ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "browserCanvas ← src/render/drawWaterMotion.ts:drawBand 0.5"
+      ]
+     },
+     {
+      "holder": "src/render/zoneAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 56,
+      "MB": 5.8,
+      "largest": "256x256",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 5.8"
+      ]
+     },
+     {
+      "holder": "src/render/buildingVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 52,
+      "MB": 4.9,
+      "largest": "224x224",
+      "by": [
+       "record ← src/render/preloadGameArt.ts:preloadGameArt 3.2",
+       "record ← src/render/wave26HouseArt.ts:(anonymous) 1.7"
+      ]
+     },
+     {
+      "holder": "src/render/constructionArtAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 9,
+      "MB": 4.7,
+      "largest": "512x256",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.7"
+      ]
+     },
+     {
+      "holder": "src/render/stripJoin.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 14,
+      "MB": 4.7,
+      "largest": "1536x128",
+      "by": [
+       "canvas2d$1 ← src/render/drawArableFields.ts:joinStrips 2.4",
+       "canvas2d$1 ← src/render/drawWallFaces.ts:gateFaceCanvas 0.8",
+       "canvas2d$1 ← src/render/drawWallFaces.ts:faceCanvas 0.5"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 34,
+      "MB": 4.3,
+      "largest": "512x512",
+      "by": [
+       "createImage ← src/render/preloadGameArt.ts:preloadGameArt 4.3"
+      ]
+     },
+     {
+      "holder": "src/render/historicalFacilityAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 24,
+      "MB": 4.1,
+      "largest": "384x192",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.1"
+      ]
+     },
+     {
+      "holder": "src/render/drawRoadRibbons.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 10,
+      "MB": 2.7,
+      "largest": "2048x64",
+      "by": [
+       "canvas2d ← src/render/drawBuildingGrounds.ts:drawAprons 2.1",
+       "canvas2d ← src/render/drawTerrainBoundaryV2.ts:(anonymous) 0.6"
+      ]
+     },
+     {
+      "holder": "src/render/stoneWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 2.1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 2.1"
+      ]
+     },
+     {
+      "holder": "src/render/drawWallFaces.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 2,
+      "MB": 1.3,
+      "largest": "1536x128",
+      "by": [
+       "shadowCanvas ← src/render/drawPalisadeSegments.ts:drawPalisadeSegmentUncached 1.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-facilities-v1/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 1.2,
+      "largest": "266x266",
+      "by": [
+       "completeWork 1.2"
+      ]
+     },
+     {
+      "holder": "src/render/visibilityArtManifest.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 22,
+      "MB": 1.1,
+      "largest": "512x256",
+      "by": [
+       "visibilityArt ← src/render/preloadGameArt.ts:preloadFrameArt 1.1"
+      ]
+     },
+     {
+      "holder": "src/render/timberWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/boundaryAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 11,
+      "MB": 1,
+      "largest": "512x64",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 1"
+      ]
+     },
+     {
+      "holder": "src/render/runtimeActorAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 1,
+      "largest": "332x166",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/houseCompoundAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 6,
+      "MB": 0.8,
+      "largest": "204x204",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.8"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssetScaleCache.ts",
+      "cache": "그림 축척 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 36,
+      "MB": 0.6,
+      "largest": "87x102",
+      "by": [
+       "createScaleCanvas ← src/render/worldAssets.ts:image.onload 0.4",
+       "createScaleCanvas ← src/render/seasonArt.ts:seasonSprite 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/historicalHouseAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 0.4,
+      "largest": "161x161",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 4,
+      "MB": 0.4,
+      "largest": "200x160",
+      "by": [
+       "completeWork 0.4"
+      ]
+     },
+     {
+      "holder": "src/ui/uiArt.ts",
+      "cache": "삽화·UI 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 13,
+      "MB": 0.4,
+      "largest": "432x48",
+      "by": [
+       "canvasSheet ← src/render/preloadGameArt.ts:preloadFrameArt 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave2/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/yard/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.3"
+      ]
+     },
+     {
+      "holder": "src/render/drawWater.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "256x256",
+      "by": [
+       "waterSurface ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 4,
+      "MB": 0.2,
+      "largest": "160x144",
+      "by": [
+       "completeWork 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/animatedMill.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 0.1,
+      "largest": "136x136",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/townLandscapeAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 3,
+      "MB": 0.1,
+      "largest": "113x80",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-houses/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.1,
+      "largest": "153x153",
+      "by": [
+       "completeWork 0.1"
+      ]
+     }
+    ],
+    "caches": {
+     "지면 청크 캐시": 497.8,
+     "(그 밖)": 155.9,
+     "걷는 사람 합성 캐시": 32.9,
+     "worldRasterCache(그림 래스터)": 24.7,
+     "스프라이트 색조 캐시": 12.9,
+     "계절·날씨 그림": 16.8,
+     "벽 캐시": 12.8,
+     "그림 축척 캐시": 0.6,
+     "삽화·UI 그림": 0.4
+    }
+   },
+   {
+    "label": "camera",
+    "state": {
+     "date": "1382년 봄",
+     "tick": null,
+     "population": null,
+     "buildings": null
+    },
+    "heapUsageMB": {
+     "usedSize": 464.5,
+     "totalSize": 476.9,
+     "embedderHeapUsedSize": 40.3,
+     "backingStorageSize": 5.9
+    },
+    "rssMB": {
+     "browser-52325": 117,
+     "renderer-52365": 31,
+     "renderer-52366": 824,
+     "renderer-52364": 60,
+     "GPU-52357": 80,
+     "network.mojom.NetworkService-52358": 43,
+     "storage.mojom.StorageService-52360": 22,
+     "audio.mojom.AudioService-52500": 28,
+     "tracing.mojom.TracingService-53274": 70
+    },
+    "gc": {
+     "seconds": 30,
+     "majorGC": 2,
+     "minorGC": 351,
+     "markingStarts": 2,
+     "embedderAllocMBps": 87.7,
+     "gcCount": 353,
+     "embedderAtGcMB": {
+      "min": 667.8,
+      "max": 2139.4
+     },
+     "reasons": [
+      "approaching global allocation limit"
+     ],
+     "medianMB": {
+      "global_allocation_limit": 2640.6,
+      "global_consumed_bytes": 2623.9,
+      "old_gen_allocation_limit": 527.5,
+      "old_gen_consumed_bytes": 484.6
+     }
+    },
+    "domCounters": {
+     "documents": 1,
+     "nodes": 1748,
+     "jsEventListeners": 2064
+    },
+    "callsPerSecond": {
+     "CanvasRenderingContext2D.getTransform": {
+      "perSecond": 71333,
+      "MBps": 0
+     },
+     "Element.getBoundingClientRect": {
+      "perSecond": 473,
+      "MBps": 0
+     }
+    },
+    "pixelsMB": 754.5,
+    "pixelOwnersCreated": 29740,
+    "holders": [
+     {
+      "holder": "src/render/groundChunkCache.ts",
+      "cache": "지면 청크 캐시",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 59,
+      "MB": 497.8,
+      "largest": "2052x1028",
+      "by": [
+       "browserChunkCanvas ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 354.4",
+       "browserChunkCanvas ← src/render/drawTerrainBoundaryV2.ts:run 143.4"
+      ]
+     },
+     {
+      "holder": "src/render/terrainVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 40,
+      "MB": 40.1,
+      "largest": "1774x887",
+      "by": [
+       "(anonymous) ← src/render/drawWallFaces.ts:drawWallFaceSlice 37.5",
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 2.2",
+       "shoreSurface ← src/render/drawShoreline.ts:(anonymous) 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/manifestArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 374,
+      "MB": 35.7,
+      "largest": "512x384",
+      "by": [
+       "art ← src/render/preloadGameArt.ts:preloadFrameArt 27.5",
+       "art ← src/render/preloadGameArt.ts:preloadChapterArt 5.3",
+       "Object.art ← src/render/countrysideArt.ts:drawCountryBlit 2"
+      ]
+     },
+     {
+      "holder": "src/render/walkerComposer.ts",
+      "cache": "걷는 사람 합성 캐시",
+      "kinds": [
+       "bitmap",
+       "image"
+      ],
+      "live": 607,
+      "MB": 32.9,
+      "largest": "312x156",
+      "by": [
+       "composedCanvas ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 23.9",
+       "imageFor ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 9"
+      ]
+     },
+     {
+      "holder": "src/render/worldRasterCache.ts",
+      "cache": "worldRasterCache(그림 래스터)",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 195,
+      "MB": 24.7,
+      "largest": "220x266",
+      "by": [
+       "trimTransparentMargin ← src/render/drawPalisadeSegments.ts:drawPalisadeSegment 24.7"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js",
+      "cache": null,
+      "kinds": [
+       "화면 캔버스"
+      ],
+      "live": 1,
+      "MB": 22.5,
+      "largest": "3200x1754",
+      "by": [
+       "completeWork 22.5"
+      ]
+     },
+     {
+      "holder": "src/render/worldSprite.ts",
+      "cache": "스프라이트 색조 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 196,
+      "MB": 12.9,
+      "largest": "582x279",
+      "by": [
+       "createTintCanvas ← src/render/worldSpriteRaster.ts:rasterizeWorldSprite 12.4",
+       "createTintCanvas ← src/render/drawTrees.ts:drawSeasonalSprite 0.4",
+       "createTintCanvas ← src/render/villageLifeDraw.ts:rasterize 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/weatherArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 19,
+      "MB": 10.5,
+      "largest": "1024x256",
+      "by": [
+       "weatherImage ← src/render/weatherOverlay.ts:(anonymous) 6.5",
+       "cellCanvas ← src/render/weatherOverlay.ts:drawFill 4"
+      ]
+     },
+     {
+      "holder": "src/render/gateArtAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 8.4,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 8.4"
+      ]
+     },
+     {
+      "holder": "src/render/houseConditionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 33,
+      "MB": 6.7,
+      "largest": "271x271",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.7"
+      ]
+     },
+     {
+      "holder": "src/render/seasonArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 65,
+      "MB": 6.3,
+      "largest": "256x256",
+      "by": [
+       "preloadSeasonArt ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/bridgeWaterAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 10,
+      "MB": 6.3,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/waterMotionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 55,
+      "MB": 6.1,
+      "largest": "2048x128",
+      "by": [
+       "waterImage ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "browserCanvas ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "browserCanvas ← src/render/drawWaterMotion.ts:drawBand 0.5"
+      ]
+     },
+     {
+      "holder": "src/render/zoneAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 56,
+      "MB": 5.8,
+      "largest": "256x256",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 5.8"
+      ]
+     },
+     {
+      "holder": "src/render/buildingVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 52,
+      "MB": 4.9,
+      "largest": "224x224",
+      "by": [
+       "record ← src/render/preloadGameArt.ts:preloadGameArt 3.2",
+       "record ← src/render/wave26HouseArt.ts:(anonymous) 1.7"
+      ]
+     },
+     {
+      "holder": "src/render/constructionArtAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 9,
+      "MB": 4.7,
+      "largest": "512x256",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.7"
+      ]
+     },
+     {
+      "holder": "src/render/stripJoin.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 14,
+      "MB": 4.7,
+      "largest": "1536x128",
+      "by": [
+       "canvas2d$1 ← src/render/drawArableFields.ts:joinStrips 2.4",
+       "canvas2d$1 ← src/render/drawWallFaces.ts:gateFaceCanvas 0.8",
+       "canvas2d$1 ← src/render/drawWallFaces.ts:faceCanvas 0.5"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 34,
+      "MB": 4.3,
+      "largest": "512x512",
+      "by": [
+       "createImage ← src/render/preloadGameArt.ts:preloadGameArt 4.3"
+      ]
+     },
+     {
+      "holder": "src/render/historicalFacilityAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 24,
+      "MB": 4.1,
+      "largest": "384x192",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.1"
+      ]
+     },
+     {
+      "holder": "src/render/drawRoadRibbons.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 10,
+      "MB": 2.7,
+      "largest": "2048x64",
+      "by": [
+       "canvas2d ← src/render/drawBuildingGrounds.ts:drawAprons 2.1",
+       "canvas2d ← src/render/drawTerrainBoundaryV2.ts:(anonymous) 0.6"
+      ]
+     },
+     {
+      "holder": "src/render/stoneWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 2.1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 2.1"
+      ]
+     },
+     {
+      "holder": "src/render/drawWallFaces.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 2,
+      "MB": 1.3,
+      "largest": "1536x128",
+      "by": [
+       "shadowCanvas ← src/render/drawPalisadeSegments.ts:drawPalisadeSegmentUncached 1.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-facilities-v1/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 1.2,
+      "largest": "266x266",
+      "by": [
+       "completeWork 1.2"
+      ]
+     },
+     {
+      "holder": "src/render/visibilityArtManifest.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 22,
+      "MB": 1.1,
+      "largest": "512x256",
+      "by": [
+       "visibilityArt ← src/render/preloadGameArt.ts:preloadFrameArt 1.1"
+      ]
+     },
+     {
+      "holder": "src/render/timberWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/boundaryAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 11,
+      "MB": 1,
+      "largest": "512x64",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 1"
+      ]
+     },
+     {
+      "holder": "src/render/runtimeActorAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 1,
+      "largest": "332x166",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/houseCompoundAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 6,
+      "MB": 0.8,
+      "largest": "204x204",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.8"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssetScaleCache.ts",
+      "cache": "그림 축척 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 36,
+      "MB": 0.6,
+      "largest": "87x102",
+      "by": [
+       "createScaleCanvas ← src/render/worldAssets.ts:image.onload 0.4",
+       "createScaleCanvas ← src/render/seasonArt.ts:seasonSprite 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/historicalHouseAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 0.4,
+      "largest": "161x161",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 4,
+      "MB": 0.4,
+      "largest": "200x160",
+      "by": [
+       "completeWork 0.4"
+      ]
+     },
+     {
+      "holder": "src/ui/uiArt.ts",
+      "cache": "삽화·UI 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 13,
+      "MB": 0.4,
+      "largest": "432x48",
+      "by": [
+       "canvasSheet ← src/render/preloadGameArt.ts:preloadFrameArt 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave2/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/yard/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.3"
+      ]
+     },
+     {
+      "holder": "src/render/drawWater.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "256x256",
+      "by": [
+       "waterSurface ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 4,
+      "MB": 0.2,
+      "largest": "160x144",
+      "by": [
+       "completeWork 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/animatedMill.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 0.1,
+      "largest": "136x136",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/townLandscapeAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 3,
+      "MB": 0.1,
+      "largest": "113x80",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-houses/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.1,
+      "largest": "153x153",
+      "by": [
+       "completeWork 0.1"
+      ]
+     }
+    ],
+    "caches": {
+     "지면 청크 캐시": 497.8,
+     "(그 밖)": 155.9,
+     "걷는 사람 합성 캐시": 32.9,
+     "worldRasterCache(그림 래스터)": 24.7,
+     "스프라이트 색조 캐시": 12.9,
+     "계절·날씨 그림": 16.8,
+     "벽 캐시": 12.8,
+     "그림 축척 캐시": 0.6,
+     "삽화·UI 그림": 0.4
+    }
+   }
+  ],
+  "heap": {
+   "byPath": [
+    {
+     "path": "roadDistanceCache → 6",
+     "selfMB": 56.5,
+     "count": 15692
+    },
+    {
+     "path": "PRESENTED → walkers",
+     "selfMB": 49.2,
+     "count": 716269
+    },
+    {
+     "path": "PRESENTED → buildings",
+     "selfMB": 38.2,
+     "count": 728110
+    },
+    {
+     "path": "PRESENTED → walkers → path",
+     "selfMB": 35.6,
+     "count": 652382
+    },
+    {
+     "path": "PRESENTED → walkers → position",
+     "selfMB": 30.4,
+     "count": 3450585
+    },
+    {
+     "path": "buildingSignatures",
+     "selfMB": 25.7,
+     "count": 7809
+    },
+    {
+     "path": "PRESENTED → autoplayRecurringDelivery → homes",
+     "selfMB": 17.3,
+     "count": 390350
+    },
+    {
+     "path": "PRESENTED → houses",
+     "selfMB": 14.5,
+     "count": 251798
+    },
+    {
+     "path": "cache$4",
+     "selfMB": 14.4,
+     "count": 15618
+    },
+    {
+     "path": "PRESENTED → walkers → resident",
+     "selfMB": 11.2,
+     "count": 311849
+    },
+    {
+     "path": "tendingMemo → zones",
+     "selfMB": 10,
+     "count": 87402
+    },
+    {
+     "path": "blink::WebLocalFrameImpl::WebLocalFrameI → get value → script",
+     "selfMB": 9.6,
+     "count": 11
+    },
+    {
+     "path": "PRESENTED → autoplayFoodFlow → current",
+     "selfMB": 7.7,
+     "count": 225662
+    },
+    {
+     "path": "PRESENTED → autoplayFoodFlow → rolling",
+     "selfMB": 6.1,
+     "count": 96124
+    },
+    {
+     "path": "document",
+     "selfMB": 4.5,
+     "count": 40097
+    },
+    {
+     "path": "cache$5 → houses",
+     "selfMB": 3.8,
+     "count": 15692
+    },
+    {
+     "path": "PRESENTED → walkers → spawnedTick",
+     "selfMB": 3.7,
+     "count": 623718
+    },
+    {
+     "path": "PREVIOUS → value → walkers",
+     "selfMB": 3.6,
+     "count": 33215
+    },
+    {
+     "path": "PRESENTED",
+     "selfMB": 2.9,
+     "count": 39037
+    },
+    {
+     "path": "layoutMemo → tiles → paths",
+     "selfMB": 2.4,
+     "count": 219941
+    },
+    {
+     "path": "PRESENTED → walkers → previousTile",
+     "selfMB": 2,
+     "count": 225350
+    },
+    {
+     "path": "PREVIOUS",
+     "selfMB": 1.9,
+     "count": 15619
+    },
+    {
+     "path": "PREVIOUS → walkers",
+     "selfMB": 1.7,
+     "count": 15616
+    },
+    {
+     "path": "PRESENTED → timberProductionWindow → productionTicks",
+     "selfMB": 1.5,
+     "count": 15614
+    },
+    {
+     "path": "getComputedStyle → entries",
+     "selfMB": 1.3,
+     "count": 29743
+    },
+    {
+     "path": "document → __reactFiber$zuwrxgzswbh → __proto__",
+     "selfMB": 1.2,
+     "count": 11499
+    },
+    {
+     "path": "cache$5 → providers",
+     "selfMB": 1.2,
+     "count": 15692
+    },
+    {
+     "path": "document → __reactFiber$zuwrxgzswbh → return",
+     "selfMB": 1.1,
+     "count": 19538
+    },
+    {
+     "path": "(module scope)",
+     "selfMB": 0.9,
+     "count": 14046
+    },
+    {
+     "path": "tendingMemo → zones → id",
+     "selfMB": 0.9,
+     "count": 44537
+    },
+    {
+     "path": "roadDistanceCache",
+     "selfMB": 0.9,
+     "count": 15694
+    },
+    {
+     "path": "PRESENTED → ledger → entries",
+     "selfMB": 0.9,
+     "count": 348
+    },
+    {
+     "path": "lastGraveState → pathCache → road:149:walls:{\"gates\":[\"47,42\"],\"edges",
+     "selfMB": 0.8,
+     "count": 80438
+    },
+    {
+     "path": "cache$5 → houses → 80",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 77",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 74",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 71",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 68",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 65",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 62",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 59",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 50",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 53",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 56",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 29",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 32",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 35",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 20",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 23",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 26",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 38",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 41",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 44",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 47",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 83",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 86",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "cache$5 → houses → 89",
+     "selfMB": 0.8,
+     "count": 31384
+    },
+    {
+     "path": "fieldWork",
+     "selfMB": 0.7,
+     "count": 15618
+    },
+    {
+     "path": "lookups",
+     "selfMB": 0.7,
+     "count": 15618
+    },
+    {
+     "path": "PRESENTED → constructionSites",
+     "selfMB": 0.7,
+     "count": 23421
+    }
+   ],
+   "states": [
+    {
+     "node": 154747,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PRESENTED → table → 3634 / part of key (Object @309585) -> v",
+     "fields": 50
+    },
+    {
+     "node": 154792,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 1603 / part of key (Object @326911) -> v → previous",
+     "fields": 50
+    },
+    {
+     "node": 154794,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 3634 / part of key (Object @309585) -> v → previous",
+     "fields": 50
+    },
+    {
+     "node": 154848,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PRESENTED → table → 4340 / part of key (Object @310845) -> v",
+     "fields": 50
+    },
+    {
+     "node": 154861,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PRESENTED → table → 2828 / part of key (Object @310555) -> v",
+     "fields": 50
+    },
+    {
+     "node": 154875,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PRESENTED → table → 3698 / part of key (Object @309589) -> v",
+     "fields": 50
+    },
+    {
+     "node": 155277,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 4340 / part of key (Object @310845) -> v → previous",
+     "fields": 50
+    },
+    {
+     "node": 155422,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 3698 / part of key (Object @309589) -> v → previous",
+     "fields": 50
+    },
+    {
+     "node": 161574,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 1433 / part of key (Object @21923965) -> → previous",
+     "fields": 50
+    },
+    {
+     "node": 163455,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 2065 / part of key (Object @13829063) -> → previous",
+     "fields": 50
+    },
+    {
+     "node": 177297,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 3818 / part of key (Object @8369713) ->  → previous",
+     "fields": 50
+    },
+    {
+     "node": 181798,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → routeAccessCache → table → 6 → projected",
+     "fields": 26
+    },
+    {
+     "node": 183802,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 5390 / part of key (Object @368933) -> v → previous",
+     "fields": 50
+    },
+    {
+     "node": 184264,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 7107 / part of key (Object @3523303) ->  → previous",
+     "fields": 50
+    },
+    {
+     "node": 184434,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 1 / part of key (Object @372185) -> valu → previous",
+     "fields": 50
+    },
+    {
+     "node": 186060,
+     "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PREVIOUS → table → 4690 / part of key (Object @375161) -> v → previous",
+     "fields": 50
+    },
+    {
+     "node": 186402,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PRESENTED → table → 1742 / part of key (Object @9772935) -> ",
+     "fields": 50
+    },
+    {
+     "node": 186420,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PRESENTED → table → 5865 / part of key (Object @10545891) ->",
+     "fields": 50
+    },
+    {
+     "node": 186433,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PRESENTED → table → 6992 / part of key (Object @13890229) ->",
+     "fields": 50
+    },
+    {
+     "node": 186444,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context → PRESENTED → table → 7775 / part of key (Object @9771109) -> ",
+     "fields": 50
+    }
+   ],
+   "stateCount": 15625,
+   "stateFields": [
+    {
+     "field": "tiles",
+     "MB": 17.1,
+     "objects": 521998
+    },
+    {
+     "field": "pathCache",
+     "MB": 1.6,
+     "objects": 77795
+    },
+    {
+     "field": "history",
+     "MB": 1.4,
+     "objects": 60700
+    },
+    {
+     "field": "persons",
+     "MB": 1.4,
+     "objects": 56776
+    },
+    {
+     "field": "autoplayFoodFlow",
+     "MB": 0.2,
+     "objects": 21749
+    },
+    {
+     "field": "ledger",
+     "MB": 0.2,
+     "objects": 9449
+    },
+    {
+     "field": "tick",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "seed",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "width",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "height",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "buildings",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "constructionSites",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "houses",
+     "MB": 0,
+     "objects": 448
+    },
+    {
+     "field": "walkers",
+     "MB": 0,
+     "objects": 2490
+    },
+    {
+     "field": "population",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "idleWorkers",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "treasuryTimber",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "treasuryCoin",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "wallTick",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "era",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "eraProclaimedTick",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "palisade",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "forestHarvests",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "nextConstructionOrdinal",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "roadRevision",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "scenarioId",
+     "MB": 0,
+     "objects": 4
+    },
+    {
+     "field": "zones",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "nextZoneOrdinal",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "zoneUndo",
+     "MB": 0,
+     "objects": 3187
+    },
+    {
+     "field": "labour",
+     "MB": 0,
+     "objects": 5
+    },
+    {
+     "field": "autoplayRecurringDelivery",
+     "MB": 0,
+     "objects": 513
+    },
+    {
+     "field": "arableFields",
+     "MB": 0,
+     "objects": 119
+    },
+    {
+     "field": "timberProductionWindow",
+     "MB": 0,
+     "objects": 5
+    },
+    {
+     "field": "historicalEras",
+     "MB": 0,
+     "objects": 12
+    },
+    {
+     "field": "seasons",
+     "MB": 0,
+     "objects": 60
+    },
+    {
+     "field": "events",
+     "MB": 0,
+     "objects": 45
+    },
+    {
+     "field": "politics",
+     "MB": 0,
+     "objects": 423
+    },
+    {
+     "field": "factions",
+     "MB": 0,
+     "objects": 1105
+    },
+    {
+     "field": "autoplayEmptyHomes",
+     "MB": 0,
+     "objects": 1
+    },
+    {
+     "field": "settlement",
+     "MB": 0,
+     "objects": 9
+    },
+    {
+     "field": "autoplayFoodObservation",
+     "MB": 0,
+     "objects": 14
+    },
+    {
+     "field": "money",
+     "MB": 0,
+     "objects": 9
+    },
+    {
+     "field": "wallConstructionReserve",
+     "MB": 0,
+     "objects": 14
+    },
+    {
+     "field": "war",
+     "MB": 0,
+     "objects": 11
+    },
+    {
+     "field": "ale",
+     "MB": 0,
+     "objects": 3
+    },
+    {
+     "field": "plague",
+     "MB": 0,
+     "objects": 15
+    },
+    {
+     "field": "lordship",
+     "MB": 0,
+     "objects": 10
+    },
+    {
+     "field": "reorganisation",
+     "MB": 0,
+     "objects": 17
+    },
+    {
+     "field": "autoplayMaterialRecovery",
+     "MB": 0,
+     "objects": 6
+    },
+    {
+     "field": "__proto__",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "(그 밖의 상태 15624개가 더한 것)",
+     "MB": 412.6,
+     "objects": 10686126
+    }
+   ],
+   "nodes": 11993026,
+   "reachable": 11992947,
+   "totalSelfMB": 485.3,
+   "rootRetainedMB": 485.3,
+   "holders": [
+    {
+     "names": [
+      "entries"
+     ],
+     "type": "object",
+     "constructor": "Array",
+     "retainedMB": 1.8,
+     "selfMB": 0
+    },
+    {
+     "names": [
+      "masks"
+     ],
+     "type": "object",
+     "constructor": "Map",
+     "retainedMB": 1.3,
+     "selfMB": 0
+    },
+    {
+     "names": [
+      "last$1"
+     ],
+     "type": "object",
+     "constructor": "Object",
+     "retainedMB": 1.1,
+     "selfMB": 0
+    }
+   ],
+   "kinds": [
+    {
+     "type": "object",
+     "name": "Object",
+     "count": 5178234,
+     "selfMB": 204.3
+    },
+    {
+     "type": "array",
+     "name": "",
+     "count": 463344,
+     "selfMB": 144
+    },
+    {
+     "type": "string",
+     "name": "",
+     "count": 3095077,
+     "selfMB": 53.2
+    },
+    {
+     "type": "number",
+     "name": "",
+     "count": 2248843,
+     "selfMB": 26.2
+    },
+    {
+     "type": "code",
+     "name": "",
+     "count": 116993,
+     "selfMB": 16.9
+    },
+    {
+     "type": "native",
+     "name": "system / ExternalStringData",
+     "count": 850,
+     "selfMB": 9.1
+    },
+    {
+     "type": "object",
+     "name": "Array",
+     "count": 372653,
+     "selfMB": 6
+    },
+    {
+     "type": "native",
+     "name": "system / PropertyArray",
+     "count": 132997,
+     "selfMB": 5.1
+    },
+    {
+     "type": "native",
+     "name": "blink::ImageResource",
+     "count": 861,
+     "selfMB": 2.5
+    },
+    {
+     "type": "concatenated string",
+     "name": "",
+     "count": 103075,
+     "selfMB": 2.1
+    },
+    {
+     "type": "native",
+     "name": "system / JSArrayBufferData",
+     "count": 9,
+     "selfMB": 1.3
+    },
+    {
+     "type": "object shape",
+     "name": "",
+     "count": 22878,
+     "selfMB": 1.2
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapHashTableBacking<blink::HashTable<blink::FontCach",
+     "count": 376,
+     "selfMB": 1.1
+    },
+    {
+     "type": "native",
+     "name": "blink::FontResource",
+     "count": 372,
+     "selfMB": 1.1
+    },
+    {
+     "type": "object",
+     "name": "Map",
+     "count": 56119,
+     "selfMB": 0.9
+    },
+    {
+     "type": "native",
+     "name": "blink::SimpleFontData",
+     "count": 2648,
+     "selfMB": 0.7
+    },
+    {
+     "type": "native",
+     "name": "system / WeakArrayList",
+     "count": 4006,
+     "selfMB": 0.6
+    },
+    {
+     "type": "object",
+     "name": "WeakMap",
+     "count": 39147,
+     "selfMB": 0.6
+    },
+    {
+     "type": "native",
+     "name": "CanvasRenderingContext2D",
+     "count": 338,
+     "selfMB": 0.6
+    },
+    {
+     "type": "object",
+     "name": "WeakRef",
+     "count": 29743,
+     "selfMB": 0.5
+    },
+    {
+     "type": "native",
+     "name": "blink::cssvalue::CSSUnicodeRangeValue",
+     "count": 19602,
+     "selfMB": 0.5
+    },
+    {
+     "type": "native",
+     "name": "OffscreenCanvasRenderingContext2D",
+     "count": 232,
+     "selfMB": 0.4
+    },
+    {
+     "type": "native",
+     "name": "blink::CanvasRenderingContext2DState",
+     "count": 570,
+     "selfMB": 0.4
+    },
+    {
+     "type": "native",
+     "name": "system / FunctionTemplateInfo",
+     "count": 4763,
+     "selfMB": 0.3
+    },
+    {
+     "type": "object",
+     "name": "Set",
+     "count": 15835,
+     "selfMB": 0.3
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapHashTableBacking<blink::HashTable<cppgc::internal",
+     "count": 2685,
+     "selfMB": 0.3
+    },
+    {
+     "type": "native",
+     "name": "blink::NGShapeCache",
+     "count": 2648,
+     "selfMB": 0.3
+    },
+    {
+     "type": "native",
+     "name": "blink::NetworkResourcesData::ResourceData",
+     "count": 1049,
+     "selfMB": 0.3
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapVectorBacking<blink::UnicodeRange>",
+     "count": 372,
+     "selfMB": 0.2
+    },
+    {
+     "type": "native",
+     "name": "blink::UniqueElementData",
+     "count": 1531,
+     "selfMB": 0.2
+    },
+    {
+     "type": "native",
+     "name": "system / ArrayList",
+     "count": 188,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "system / PropertyCell",
+     "count": 2571,
+     "selfMB": 0.1
+    },
+    {
+     "type": "closure",
+     "name": "",
+     "count": 2596,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "CanvasPattern",
+     "count": 593,
+     "selfMB": 0.1
+    },
+    {
+     "type": "object",
+     "name": "FiberNode",
+     "count": 920,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "system / WeakCell",
+     "count": 1989,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "<canvas width=\"170\" height=\"196\">",
+     "count": 81,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::",
+     "count": 2025,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "EventListener",
+     "count": 2064,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::FontDataForRangeSet",
+     "count": 2852,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::StyleRule",
+     "count": 1754,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink:",
+     "count": 1494,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::ImmutableCSSPropertyValueSet",
+     "count": 1101,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<const ",
+     "count": 449,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::CSSCustomFontData",
+     "count": 2345,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::EventTargetData",
+     "count": 977,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "V8EventHandlerNonNull",
+     "count": 1838,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapVectorBacking<blink::VectorBackedLinkedListNode<c",
+     "count": 942,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::HTMLImageLoader",
+     "count": 907,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::ImageResourceContent",
+     "count": 861,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "FontFace",
+     "count": 372,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::Font",
+     "count": 641,
+     "selfMB": 0.1
+    },
+    {
+     "type": "synthetic",
+     "name": "",
+     "count": 32,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "undefined",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Hole",
+     "count": 12,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "null",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "true",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "false",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Map",
+     "count": 174,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Map (SeqOneByteString)",
+     "count": 1,
+     "selfMB": 0
+    }
+   ],
+   "tree": [
+    {
+     "depth": 0,
+     "retainedMB": 485.3,
+     "selfMB": 0,
+     "type": "synthetic",
+     "name": "(GC roots)",
+     "path": "[1]"
+    },
+    {
+     "depth": 1,
+     "retainedMB": 15.1,
+     "selfMB": 0,
+     "type": "object",
+     "name": "system / Context / scope @356657",
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$zuwrxgzswbh → return → elementType → context"
+    },
+    {
+     "depth": 1,
+     "retainedMB": 9.6,
+     "selfMB": 0,
+     "type": "code",
+     "name": "system / Script / http://127.0.0.1:4393/assets/ind",
+     "path": "[1] → [29] → blink::WebLocalFrameImpl::WebLocalFrameI → [7] → [1] → [2] → get value → shared → script"
+    },
+    {
+     "depth": 2,
+     "retainedMB": 9,
+     "selfMB": 0,
+     "type": "string",
+     "name": "//#region \\0rolldown/runtime.js\nvar __commonJSMin ",
+     "path": "[1] → [29] → blink::WebLocalFrameImpl::WebLocalFrameI → [7] → [1] → [2] → get value → shared → script → source"
+    },
+    {
+     "depth": 3,
+     "retainedMB": 9,
+     "selfMB": 9,
+     "type": "native",
+     "name": "system / ExternalStringData",
+     "path": "[1] → [29] → blink::WebLocalFrameImpl::WebLocalFrameI → [7] → [1] → [2] → get value → shared → script → source → 2 / backing_store"
+    }
+   ]
+  }
+ },
+ {
+  "scene": "new-game",
+  "save": null,
+  "speed": 3,
+  "errors": [],
+  "points": [
+   {
+    "label": "loaded",
+    "state": {
+     "date": "1300년 여름",
+     "tick": null,
+     "population": null,
+     "buildings": null
+    },
+    "heapUsageMB": {
+     "usedSize": 23.4,
+     "totalSize": 26.8,
+     "embedderHeapUsedSize": 31.5,
+     "backingStorageSize": 4.5
+    },
+    "rssMB": {
+     "browser-71209": 254,
+     "renderer-71221": 97,
+     "renderer-71222": 421,
+     "renderer-71220": 182,
+     "GPU-71216": 172,
+     "network.mojom.NetworkService-71217": 155,
+     "storage.mojom.StorageService-71218": 78,
+     "audio.mojom.AudioService-71323": 95,
+     "tracing.mojom.TracingService-71967": 125
+    },
+    "gc": {
+     "seconds": 30,
+     "majorGC": 18,
+     "minorGC": 99,
+     "markingStarts": 18,
+     "embedderAllocMBps": 68.5,
+     "gcCount": 117,
+     "embedderAtGcMB": {
+      "min": 437.3,
+      "max": 1105.4
+     },
+     "reasons": [
+      "approaching global allocation limit",
+      "approaching old generation allocation limit"
+     ],
+     "medianMB": {
+      "global_allocation_limit": 626.8,
+      "global_consumed_bytes": 593.6,
+      "old_gen_allocation_limit": 64.6,
+      "old_gen_consumed_bytes": 25.7
+     }
+    },
+    "domCounters": {
+     "documents": 1,
+     "nodes": 1398,
+     "jsEventListeners": 1769
+    },
+    "callsPerSecond": {
+     "CanvasRenderingContext2D.getTransform": {
+      "perSecond": 13508,
+      "MBps": 0
+     },
+     "Element.getBoundingClientRect": {
+      "perSecond": 484,
+      "MBps": 0
+     },
+     "CanvasRenderingContext2D.createPattern": {
+      "perSecond": 6,
+      "MBps": 0
+     },
+     "OffscreenCanvasRenderingContext2D.getTransform": {
+      "perSecond": 3,
+      "MBps": 0
+     }
+    },
+    "pixelsMB": 487.7,
+    "pixelOwnersCreated": 1421,
+    "holders": [
+     {
+      "holder": "src/render/groundChunkCache.ts",
+      "cache": "지면 청크 캐시",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 40,
+      "MB": 337.5,
+      "largest": "2052x1028",
+      "by": [
+       "browserChunkCanvas ← src/render/drawTerrainBoundaryV2.ts:run 337.5"
+      ]
+     },
+     {
+      "holder": "src/render/manifestArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 344,
+      "MB": 31.7,
+      "largest": "512x384",
+      "by": [
+       "art ← src/render/preloadGameArt.ts:preloadFrameArt 27.5",
+       "art ← src/render/preloadGameArt.ts:preloadChapterArt 3.4",
+       "art ← src/render/drawBackyardDecals.ts:drawBackyardDecals 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js",
+      "cache": null,
+      "kinds": [
+       "화면 캔버스"
+      ],
+      "live": 1,
+      "MB": 22.5,
+      "largest": "3200x1754",
+      "by": [
+       "completeWork 22.5"
+      ]
+     },
+     {
+      "holder": "src/render/worldSprite.ts",
+      "cache": "스프라이트 색조 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 186,
+      "MB": 12.5,
+      "largest": "582x279",
+      "by": [
+       "createTintCanvas ← src/render/worldSpriteRaster.ts:rasterizeWorldSprite 12",
+       "createTintCanvas ← src/render/drawTrees.ts:drawSeasonalSprite 0.4",
+       "createTintCanvas ← src/render/villageLifeDraw.ts:rasterize 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/gateArtAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 8.4,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 8.4"
+      ]
+     },
+     {
+      "holder": "src/render/walkerComposer.ts",
+      "cache": "걷는 사람 합성 캐시",
+      "kinds": [
+       "bitmap",
+       "image"
+      ],
+      "live": 129,
+      "MB": 6.8,
+      "largest": "308x154",
+      "by": [
+       "composedCanvas ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 5.2",
+       "imageFor ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 1.6"
+      ]
+     },
+     {
+      "holder": "src/render/houseConditionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 33,
+      "MB": 6.7,
+      "largest": "271x271",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.7"
+      ]
+     },
+     {
+      "holder": "src/render/seasonArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 65,
+      "MB": 6.3,
+      "largest": "256x256",
+      "by": [
+       "preloadSeasonArt ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/bridgeWaterAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 10,
+      "MB": 6.3,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/waterMotionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 43,
+      "MB": 5.8,
+      "largest": "2048x128",
+      "by": [
+       "waterImage ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "browserCanvas ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "waterImage ← src/render/drawWaterMotion.ts:liveReeds 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/zoneAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 56,
+      "MB": 5.8,
+      "largest": "256x256",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 5.8"
+      ]
+     },
+     {
+      "holder": "src/render/buildingVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 52,
+      "MB": 4.9,
+      "largest": "224x224",
+      "by": [
+       "record ← src/render/preloadGameArt.ts:preloadGameArt 3.2",
+       "record ← src/render/wave26HouseArt.ts:(anonymous) 1.7"
+      ]
+     },
+     {
+      "holder": "src/render/constructionArtAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 9,
+      "MB": 4.7,
+      "largest": "512x256",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.7"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 34,
+      "MB": 4.3,
+      "largest": "512x512",
+      "by": [
+       "createImage ← src/render/preloadGameArt.ts:preloadGameArt 4.3"
+      ]
+     },
+     {
+      "holder": "src/render/historicalFacilityAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 24,
+      "MB": 4.1,
+      "largest": "384x192",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.1"
+      ]
+     },
+     {
+      "holder": "src/render/drawRoadRibbons.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 8,
+      "MB": 2.6,
+      "largest": "2048x64",
+      "by": [
+       "canvas2d ← src/render/drawBuildingGrounds.ts:drawAprons 2",
+       "canvas2d ← src/render/drawTerrainBoundaryV2.ts:(anonymous) 0.6"
+      ]
+     },
+     {
+      "holder": "src/render/terrainVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 19,
+      "MB": 2.6,
+      "largest": "256x192",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 2.2",
+       "shoreSurface ← src/render/drawShoreline.ts:(anonymous) 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/stoneWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 2.1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 2.1"
+      ]
+     },
+     {
+      "holder": "src/render/weatherArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 2.1,
+      "largest": "512x512",
+      "by": [
+       "weatherImage ← src/render/weatherOverlay.ts:(anonymous) 2.1"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-facilities-v1/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 1.2,
+      "largest": "266x266",
+      "by": [
+       "completeWork 1.2"
+      ]
+     },
+     {
+      "holder": "src/render/visibilityArtManifest.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 22,
+      "MB": 1.1,
+      "largest": "512x256",
+      "by": [
+       "visibilityArt ← src/render/preloadGameArt.ts:preloadFrameArt 1.1"
+      ]
+     },
+     {
+      "holder": "src/render/timberWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/boundaryAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 11,
+      "MB": 1,
+      "largest": "512x64",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 1"
+      ]
+     },
+     {
+      "holder": "src/render/runtimeActorAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 1,
+      "largest": "332x166",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/houseCompoundAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 6,
+      "MB": 0.8,
+      "largest": "204x204",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.8"
+      ]
+     },
+     {
+      "holder": "src/render/stripJoin.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 2,
+      "MB": 0.8,
+      "largest": "768x128",
+      "by": [
+       "canvas2d$1 ← src/render/drawShoreline.ts:deepWaterPattern 0.4",
+       "canvas2d$1 ← src/render/drawShoreline.ts:shoreStripCanvas 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssetScaleCache.ts",
+      "cache": "그림 축척 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 36,
+      "MB": 0.6,
+      "largest": "87x102",
+      "by": [
+       "createScaleCanvas ← src/render/worldAssets.ts:image.onload 0.4",
+       "createScaleCanvas ← src/render/seasonArt.ts:seasonSprite 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/historicalHouseAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 0.4,
+      "largest": "161x161",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 4,
+      "MB": 0.4,
+      "largest": "200x160",
+      "by": [
+       "completeWork 0.4"
+      ]
+     },
+     {
+      "holder": "src/ui/uiArt.ts",
+      "cache": "삽화·UI 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 13,
+      "MB": 0.4,
+      "largest": "432x48",
+      "by": [
+       "canvasSheet ← src/render/preloadGameArt.ts:preloadFrameArt 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave2/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/yard/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.3"
+      ]
+     },
+     {
+      "holder": "src/render/drawWater.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "256x256",
+      "by": [
+       "waterSurface ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 4,
+      "MB": 0.2,
+      "largest": "160x144",
+      "by": [
+       "completeWork 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/animatedMill.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 0.1,
+      "largest": "136x136",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/townLandscapeAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 3,
+      "MB": 0.1,
+      "largest": "113x80",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-houses/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.1,
+      "largest": "153x153",
+      "by": [
+       "completeWork 0.1"
+      ]
+     }
+    ],
+    "caches": {
+     "지면 청크 캐시": 337.5,
+     "(그 밖)": 110.1,
+     "스프라이트 색조 캐시": 12.5,
+     "벽 캐시": 11.5,
+     "걷는 사람 합성 캐시": 6.8,
+     "계절·날씨 그림": 8.4,
+     "그림 축척 캐시": 0.6,
+     "삽화·UI 그림": 0.4
+    }
+   },
+   {
+    "label": "played",
+    "state": {
+     "date": "1301년 여름",
+     "tick": null,
+     "population": null,
+     "buildings": null
+    },
+    "heapUsageMB": {
+     "usedSize": 45.7,
+     "totalSize": 49.2,
+     "embedderHeapUsedSize": 29.8,
+     "backingStorageSize": 4.5
+    },
+    "rssMB": {
+     "browser-71209": 259,
+     "renderer-71221": 97,
+     "renderer-71222": 478,
+     "renderer-71220": 182,
+     "GPU-71216": 179,
+     "network.mojom.NetworkService-71217": 157,
+     "storage.mojom.StorageService-71218": 78,
+     "audio.mojom.AudioService-71323": 95,
+     "tracing.mojom.TracingService-71967": 126
+    },
+    "gc": {
+     "seconds": 30,
+     "majorGC": 11,
+     "minorGC": 83,
+     "markingStarts": 11,
+     "embedderAllocMBps": 60.2,
+     "gcCount": 94,
+     "embedderAtGcMB": {
+      "min": 459.5,
+      "max": 1112.5
+     },
+     "reasons": [
+      "approaching old generation allocation limit",
+      "approaching global allocation limit"
+     ],
+     "medianMB": {
+      "global_allocation_limit": 733,
+      "global_consumed_bytes": 699.7,
+      "old_gen_allocation_limit": 86.3,
+      "old_gen_consumed_bytes": 49.4
+     }
+    },
+    "domCounters": {
+     "documents": 1,
+     "nodes": 1464,
+     "jsEventListeners": 1852
+    },
+    "callsPerSecond": {
+     "CanvasRenderingContext2D.getTransform": {
+      "perSecond": 13444,
+      "MBps": 0
+     },
+     "Element.getBoundingClientRect": {
+      "perSecond": 479,
+      "MBps": 0
+     },
+     "new DOMMatrix": {
+      "perSecond": 57,
+      "MBps": 0
+     },
+     "CanvasRenderingContext2D.createPattern": {
+      "perSecond": 6,
+      "MBps": 0
+     },
+     "CanvasRenderingContext2D.getImageData": {
+      "perSecond": 0,
+      "MBps": 0
+     },
+     "CanvasRenderingContext2D.putImageData": {
+      "perSecond": 0,
+      "MBps": 0
+     }
+    },
+    "pixelsMB": 505.1,
+    "pixelOwnersCreated": 2094,
+    "holders": [
+     {
+      "holder": "src/render/groundChunkCache.ts",
+      "cache": "지면 청크 캐시",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 40,
+      "MB": 337.5,
+      "largest": "2052x1028",
+      "by": [
+       "browserChunkCanvas ← src/render/drawTerrainBoundaryV2.ts:run 337.5"
+      ]
+     },
+     {
+      "holder": "src/render/manifestArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 357,
+      "MB": 32.7,
+      "largest": "512x384",
+      "by": [
+       "art ← src/render/preloadGameArt.ts:preloadFrameArt 27.5",
+       "art ← src/render/preloadGameArt.ts:preloadChapterArt 3.4",
+       "Object.art ← src/render/countrysideArt.ts:drawCountryBlit 1.1"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js",
+      "cache": null,
+      "kinds": [
+       "화면 캔버스"
+      ],
+      "live": 1,
+      "MB": 22.5,
+      "largest": "3200x1754",
+      "by": [
+       "completeWork 22.5"
+      ]
+     },
+     {
+      "holder": "src/render/walkerComposer.ts",
+      "cache": "걷는 사람 합성 캐시",
+      "kinds": [
+       "bitmap",
+       "image"
+      ],
+      "live": 324,
+      "MB": 17.4,
+      "largest": "308x154",
+      "by": [
+       "composedCanvas ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 13.8",
+       "imageFor ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 3.6"
+      ]
+     },
+     {
+      "holder": "src/render/worldSprite.ts",
+      "cache": "스프라이트 색조 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 190,
+      "MB": 12.6,
+      "largest": "582x279",
+      "by": [
+       "createTintCanvas ← src/render/worldSpriteRaster.ts:rasterizeWorldSprite 12.1",
+       "createTintCanvas ← src/render/drawTrees.ts:drawSeasonalSprite 0.4",
+       "createTintCanvas ← src/render/villageLifeDraw.ts:rasterize 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/gateArtAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 8.4,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 8.4"
+      ]
+     },
+     {
+      "holder": "src/render/weatherArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 14,
+      "MB": 7.8,
+      "largest": "512x512",
+      "by": [
+       "weatherImage ← src/render/weatherOverlay.ts:(anonymous) 5.4",
+       "cellCanvas ← src/render/weatherOverlay.ts:drawFill 2.4"
+      ]
+     },
+     {
+      "holder": "src/render/houseConditionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 33,
+      "MB": 6.7,
+      "largest": "271x271",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.7"
+      ]
+     },
+     {
+      "holder": "src/render/seasonArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 65,
+      "MB": 6.3,
+      "largest": "256x256",
+      "by": [
+       "preloadSeasonArt ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/bridgeWaterAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 10,
+      "MB": 6.3,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/waterMotionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 44,
+      "MB": 5.9,
+      "largest": "2048x128",
+      "by": [
+       "waterImage ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "browserCanvas ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "browserCanvas ← src/render/drawWaterMotion.ts:drawBand 0.5"
+      ]
+     },
+     {
+      "holder": "src/render/zoneAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 56,
+      "MB": 5.8,
+      "largest": "256x256",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 5.8"
+      ]
+     },
+     {
+      "holder": "src/render/buildingVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 52,
+      "MB": 4.9,
+      "largest": "224x224",
+      "by": [
+       "record ← src/render/preloadGameArt.ts:preloadGameArt 3.2",
+       "record ← src/render/wave26HouseArt.ts:(anonymous) 1.7"
+      ]
+     },
+     {
+      "holder": "src/render/constructionArtAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 9,
+      "MB": 4.7,
+      "largest": "512x256",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.7"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 34,
+      "MB": 4.3,
+      "largest": "512x512",
+      "by": [
+       "createImage ← src/render/preloadGameArt.ts:preloadGameArt 4.3"
+      ]
+     },
+     {
+      "holder": "src/render/historicalFacilityAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 24,
+      "MB": 4.1,
+      "largest": "384x192",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.1"
+      ]
+     },
+     {
+      "holder": "src/render/drawRoadRibbons.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 8,
+      "MB": 2.6,
+      "largest": "2048x64",
+      "by": [
+       "canvas2d ← src/render/drawBuildingGrounds.ts:drawAprons 2",
+       "canvas2d ← src/render/drawTerrainBoundaryV2.ts:(anonymous) 0.6"
+      ]
+     },
+     {
+      "holder": "src/render/terrainVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 19,
+      "MB": 2.6,
+      "largest": "256x192",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 2.2",
+       "shoreSurface ← src/render/drawShoreline.ts:(anonymous) 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/stoneWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 2.1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 2.1"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-facilities-v1/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 1.2,
+      "largest": "266x266",
+      "by": [
+       "completeWork 1.2"
+      ]
+     },
+     {
+      "holder": "src/render/visibilityArtManifest.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 22,
+      "MB": 1.1,
+      "largest": "512x256",
+      "by": [
+       "visibilityArt ← src/render/preloadGameArt.ts:preloadFrameArt 1.1"
+      ]
+     },
+     {
+      "holder": "src/render/timberWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/boundaryAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 11,
+      "MB": 1,
+      "largest": "512x64",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 1"
+      ]
+     },
+     {
+      "holder": "src/render/runtimeActorAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 1,
+      "largest": "332x166",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/houseCompoundAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 6,
+      "MB": 0.8,
+      "largest": "204x204",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.8"
+      ]
+     },
+     {
+      "holder": "src/render/stripJoin.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 2,
+      "MB": 0.8,
+      "largest": "768x128",
+      "by": [
+       "canvas2d$1 ← src/render/drawShoreline.ts:deepWaterPattern 0.4",
+       "canvas2d$1 ← src/render/drawShoreline.ts:shoreStripCanvas 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssetScaleCache.ts",
+      "cache": "그림 축척 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 36,
+      "MB": 0.6,
+      "largest": "87x102",
+      "by": [
+       "createScaleCanvas ← src/render/worldAssets.ts:image.onload 0.4",
+       "createScaleCanvas ← src/render/seasonArt.ts:seasonSprite 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/historicalHouseAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 0.4,
+      "largest": "161x161",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 4,
+      "MB": 0.4,
+      "largest": "200x160",
+      "by": [
+       "completeWork 0.4"
+      ]
+     },
+     {
+      "holder": "src/ui/uiArt.ts",
+      "cache": "삽화·UI 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 13,
+      "MB": 0.4,
+      "largest": "432x48",
+      "by": [
+       "canvasSheet ← src/render/preloadGameArt.ts:preloadFrameArt 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave2/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/yard/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.3"
+      ]
+     },
+     {
+      "holder": "src/render/drawWater.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "256x256",
+      "by": [
+       "waterSurface ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 4,
+      "MB": 0.2,
+      "largest": "160x144",
+      "by": [
+       "completeWork 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/animatedMill.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 0.1,
+      "largest": "136x136",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/townLandscapeAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 3,
+      "MB": 0.1,
+      "largest": "113x80",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-houses/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.1,
+      "largest": "153x153",
+      "by": [
+       "completeWork 0.1"
+      ]
+     }
+    ],
+    "caches": {
+     "지면 청크 캐시": 337.5,
+     "(그 밖)": 111.2,
+     "걷는 사람 합성 캐시": 17.4,
+     "스프라이트 색조 캐시": 12.6,
+     "벽 캐시": 11.5,
+     "계절·날씨 그림": 14.1,
+     "그림 축척 캐시": 0.6,
+     "삽화·UI 그림": 0.4
+    }
+   },
+   {
+    "label": "camera",
+    "state": {
+     "date": "1301년 겨울",
+     "tick": null,
+     "population": null,
+     "buildings": null
+    },
+    "heapUsageMB": {
+     "usedSize": 59.1,
+     "totalSize": 62.7,
+     "embedderHeapUsedSize": 11.3,
+     "backingStorageSize": 4.5
+    },
+    "rssMB": {
+     "browser-71209": 260,
+     "renderer-71221": 97,
+     "renderer-71222": 528,
+     "renderer-71220": 182,
+     "GPU-71216": 188,
+     "network.mojom.NetworkService-71217": 157,
+     "storage.mojom.StorageService-71218": 78,
+     "audio.mojom.AudioService-71323": 95,
+     "tracing.mojom.TracingService-71967": 127
+    },
+    "gc": {
+     "seconds": 30,
+     "majorGC": 13,
+     "minorGC": 103,
+     "markingStarts": 13,
+     "embedderAllocMBps": 90.7,
+     "gcCount": 116,
+     "embedderAtGcMB": {
+      "min": 206.6,
+      "max": 498.1
+     },
+     "reasons": [
+      "approaching global allocation limit"
+     ],
+     "medianMB": {
+      "global_allocation_limit": 495.3,
+      "global_consumed_bytes": 462.5,
+      "old_gen_allocation_limit": 100.3,
+      "old_gen_consumed_bytes": 62.8
+     }
+    },
+    "domCounters": {
+     "documents": 1,
+     "nodes": 1474,
+     "jsEventListeners": 1858
+    },
+    "callsPerSecond": {
+     "CanvasRenderingContext2D.getTransform": {
+      "perSecond": 19205,
+      "MBps": 0
+     },
+     "Element.getBoundingClientRect": {
+      "perSecond": 472,
+      "MBps": 0
+     },
+     "CanvasRenderingContext2D.createPattern": {
+      "perSecond": 11,
+      "MBps": 0
+     }
+    },
+    "pixelsMB": 241.4,
+    "pixelOwnersCreated": 6302,
+    "holders": [
+     {
+      "holder": "src/render/groundChunkCache.ts",
+      "cache": "지면 청크 캐시",
+      "kinds": [
+       "canvas"
+      ],
+      "live": 52,
+      "MB": 71,
+      "largest": "824x414",
+      "by": [
+       "browserChunkCanvas ← src/render/drawTerrainBoundaryV2.ts:run 71"
+      ]
+     },
+     {
+      "holder": "src/render/manifestArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 360,
+      "MB": 32.9,
+      "largest": "512x384",
+      "by": [
+       "art ← src/render/preloadGameArt.ts:preloadFrameArt 27.5",
+       "art ← src/render/preloadGameArt.ts:preloadChapterArt 3.4",
+       "Object.art ← src/render/countrysideArt.ts:drawCountryBlit 1.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js",
+      "cache": null,
+      "kinds": [
+       "화면 캔버스"
+      ],
+      "live": 1,
+      "MB": 22.5,
+      "largest": "3200x1754",
+      "by": [
+       "completeWork 22.5"
+      ]
+     },
+     {
+      "holder": "src/render/walkerComposer.ts",
+      "cache": "걷는 사람 합성 캐시",
+      "kinds": [
+       "bitmap",
+       "image"
+      ],
+      "live": 324,
+      "MB": 17.4,
+      "largest": "308x154",
+      "by": [
+       "composedCanvas ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 13.8",
+       "imageFor ← src/render/drawWalkers.ts:drawComposedWalkerWithCart 3.6"
+      ]
+     },
+     {
+      "holder": "src/render/worldSprite.ts",
+      "cache": "스프라이트 색조 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 191,
+      "MB": 12.6,
+      "largest": "582x279",
+      "by": [
+       "createTintCanvas ← src/render/worldSpriteRaster.ts:rasterizeWorldSprite 12.1",
+       "createTintCanvas ← src/render/drawTrees.ts:drawSeasonalSprite 0.4",
+       "createTintCanvas ← src/render/villageLifeDraw.ts:rasterize 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/weatherArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 19,
+      "MB": 10.5,
+      "largest": "512x512",
+      "by": [
+       "weatherImage ← src/render/weatherOverlay.ts:(anonymous) 6.5",
+       "cellCanvas ← src/render/weatherOverlay.ts:drawFill 4"
+      ]
+     },
+     {
+      "holder": "src/render/gateArtAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 8.4,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 8.4"
+      ]
+     },
+     {
+      "holder": "src/render/houseConditionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 33,
+      "MB": 6.7,
+      "largest": "271x271",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.7"
+      ]
+     },
+     {
+      "holder": "src/render/seasonArt.ts",
+      "cache": "계절·날씨 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 65,
+      "MB": 6.3,
+      "largest": "256x256",
+      "by": [
+       "preloadSeasonArt ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/bridgeWaterAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 10,
+      "MB": 6.3,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 6.3"
+      ]
+     },
+     {
+      "holder": "src/render/waterMotionArt.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 44,
+      "MB": 5.9,
+      "largest": "2048x128",
+      "by": [
+       "waterImage ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "browserCanvas ← src/render/drawWaterMotion.ts:fillWorldAligned 2.1",
+       "browserCanvas ← src/render/drawWaterMotion.ts:drawBand 0.5"
+      ]
+     },
+     {
+      "holder": "src/render/zoneAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 56,
+      "MB": 5.8,
+      "largest": "256x256",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 5.8"
+      ]
+     },
+     {
+      "holder": "src/render/buildingVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 52,
+      "MB": 4.9,
+      "largest": "224x224",
+      "by": [
+       "record ← src/render/preloadGameArt.ts:preloadGameArt 3.2",
+       "record ← src/render/wave26HouseArt.ts:(anonymous) 1.7"
+      ]
+     },
+     {
+      "holder": "src/render/constructionArtAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 9,
+      "MB": 4.7,
+      "largest": "512x256",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.7"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 34,
+      "MB": 4.3,
+      "largest": "512x512",
+      "by": [
+       "createImage ← src/render/preloadGameArt.ts:preloadGameArt 4.3"
+      ]
+     },
+     {
+      "holder": "src/render/historicalFacilityAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 24,
+      "MB": 4.1,
+      "largest": "384x192",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 4.1"
+      ]
+     },
+     {
+      "holder": "src/render/drawRoadRibbons.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 8,
+      "MB": 2.6,
+      "largest": "2048x64",
+      "by": [
+       "canvas2d ← src/render/drawBuildingGrounds.ts:drawAprons 2",
+       "canvas2d ← src/render/drawTerrainBoundaryV2.ts:(anonymous) 0.6"
+      ]
+     },
+     {
+      "holder": "src/render/terrainVariantAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image",
+       "canvas"
+      ],
+      "live": 19,
+      "MB": 2.6,
+      "largest": "256x192",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 2.2",
+       "shoreSurface ← src/render/drawShoreline.ts:(anonymous) 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/stoneWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 2.1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 2.1"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-facilities-v1/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 8,
+      "MB": 1.2,
+      "largest": "266x266",
+      "by": [
+       "completeWork 1.2"
+      ]
+     },
+     {
+      "holder": "src/render/visibilityArtManifest.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 22,
+      "MB": 1.1,
+      "largest": "512x256",
+      "by": [
+       "visibilityArt ← src/render/preloadGameArt.ts:preloadFrameArt 1.1"
+      ]
+     },
+     {
+      "holder": "src/render/timberWallAssets.ts",
+      "cache": "벽 캐시",
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 1,
+      "largest": "512x512",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/boundaryAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 11,
+      "MB": 1,
+      "largest": "512x64",
+      "by": [
+       "(anonymous) ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 1"
+      ]
+     },
+     {
+      "holder": "src/render/runtimeActorAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 1,
+      "largest": "332x166",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 1"
+      ]
+     },
+     {
+      "holder": "src/render/houseCompoundAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 6,
+      "MB": 0.8,
+      "largest": "204x204",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.8"
+      ]
+     },
+     {
+      "holder": "src/render/stripJoin.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 2,
+      "MB": 0.8,
+      "largest": "768x128",
+      "by": [
+       "canvas2d$1 ← src/render/drawShoreline.ts:deepWaterPattern 0.4",
+       "canvas2d$1 ← src/render/drawShoreline.ts:shoreStripCanvas 0.4"
+      ]
+     },
+     {
+      "holder": "src/render/worldAssetScaleCache.ts",
+      "cache": "그림 축척 캐시",
+      "kinds": [
+       "offscreen"
+      ],
+      "live": 36,
+      "MB": 0.6,
+      "largest": "87x102",
+      "by": [
+       "createScaleCanvas ← src/render/worldAssets.ts:image.onload 0.4",
+       "createScaleCanvas ← src/render/seasonArt.ts:seasonSprite 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/historicalHouseAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 5,
+      "MB": 0.4,
+      "largest": "161x161",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 4,
+      "MB": 0.4,
+      "largest": "200x160",
+      "by": [
+       "completeWork 0.4"
+      ]
+     },
+     {
+      "holder": "src/ui/uiArt.ts",
+      "cache": "삽화·UI 그림",
+      "kinds": [
+       "image"
+      ],
+      "live": 13,
+      "MB": 0.4,
+      "largest": "432x48",
+      "by": [
+       "canvasSheet ← src/render/preloadGameArt.ts:preloadFrameArt 0.4"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave2/bld/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/wave3/yard/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "384x192",
+      "by": [
+       "completeWork 0.3"
+      ]
+     },
+     {
+      "holder": "src/render/drawWater.ts",
+      "cache": null,
+      "kinds": [
+       "canvas"
+      ],
+      "live": 1,
+      "MB": 0.3,
+      "largest": "256x256",
+      "by": [
+       "waterSurface ← src/render/drawTerrainBoundaryV2.ts:drawTerrainBoundaryV2 0.3"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 4,
+      "MB": 0.2,
+      "largest": "160x144",
+      "by": [
+       "completeWork 0.2"
+      ]
+     },
+     {
+      "holder": "src/render/animatedMill.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 2,
+      "MB": 0.1,
+      "largest": "136x136",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "src/render/townLandscapeAssets.ts",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 3,
+      "MB": 0.1,
+      "largest": "113x80",
+      "by": [
+       "(anonymous) ← src/render/preloadGameArt.ts:preloadGameArt 0.1"
+      ]
+     },
+     {
+      "holder": "node_modules/react-dom/cjs/react-dom-client.production.js assets/buildings/historical-houses/",
+      "cache": null,
+      "kinds": [
+       "image"
+      ],
+      "live": 1,
+      "MB": 0.1,
+      "largest": "153x153",
+      "by": [
+       "completeWork 0.1"
+      ]
+     }
+    ],
+    "caches": {
+     "지면 청크 캐시": 71,
+     "(그 밖)": 111.4,
+     "걷는 사람 합성 캐시": 17.4,
+     "스프라이트 색조 캐시": 12.6,
+     "계절·날씨 그림": 16.8,
+     "벽 캐시": 11.5,
+     "그림 축척 캐시": 0.6,
+     "삽화·UI 그림": 0.4
+    }
+   }
+  ],
+  "heap": {
+   "byPath": [
+    {
+     "path": "blink::WebLocalFrameImpl::WebLocalFrameI → get value → script",
+     "selfMB": 9.6,
+     "count": 11
+    },
+    {
+     "path": "PRESENTED → autoplayFoodFlow → rolling",
+     "selfMB": 5.2,
+     "count": 50212
+    },
+    {
+     "path": "document",
+     "selfMB": 4.3,
+     "count": 40872
+    },
+    {
+     "path": "PRESENTED → buildings",
+     "selfMB": 3,
+     "count": 68272
+    },
+    {
+     "path": "PRESENTED",
+     "selfMB": 2.4,
+     "count": 41127
+    },
+    {
+     "path": "PRESENTED → houses",
+     "selfMB": 2.3,
+     "count": 68541
+    },
+    {
+     "path": "PRESENTED → autoplayFoodFlow → current",
+     "selfMB": 1.9,
+     "count": 61635
+    },
+    {
+     "path": "buildingSignatures",
+     "selfMB": 1.8,
+     "count": 6857
+    },
+    {
+     "path": "document → __reactFiber$toeftdlih2s → sibling",
+     "selfMB": 1.5,
+     "count": 9368
+    },
+    {
+     "path": "document → __reactFiber$toeftdlih2s → __proto__",
+     "selfMB": 1.2,
+     "count": 11485
+    },
+    {
+     "path": "cache$1",
+     "selfMB": 1.2,
+     "count": 39614
+    },
+    {
+     "path": "cache$4",
+     "selfMB": 1.1,
+     "count": 13712
+    },
+    {
+     "path": "PRESENTED → walkers",
+     "selfMB": 0.7,
+     "count": 18392
+    },
+    {
+     "path": "PRESENTED → buildings → tx",
+     "selfMB": 0.7,
+     "count": 109128
+    },
+    {
+     "path": "cache$5 → houses → 6",
+     "selfMB": 0.7,
+     "count": 27420
+    },
+    {
+     "path": "cache$5 → houses → 9",
+     "selfMB": 0.7,
+     "count": 27420
+    },
+    {
+     "path": "cache$5 → houses → 12",
+     "selfMB": 0.7,
+     "count": 27420
+    },
+    {
+     "path": "cache$5 → houses → 15",
+     "selfMB": 0.7,
+     "count": 27420
+    },
+    {
+     "path": "PRESENTED → buildings → ty",
+     "selfMB": 0.7,
+     "count": 109128
+    },
+    {
+     "path": "(module scope)",
+     "selfMB": 0.6,
+     "count": 11129
+    },
+    {
+     "path": "extension → function → trusted_function_data",
+     "selfMB": 0.6,
+     "count": 10764
+    },
+    {
+     "path": "cache$4 → 8 → summary",
+     "selfMB": 0.6,
+     "count": 26155
+    },
+    {
+     "path": "cache$4 → 11 → summary",
+     "selfMB": 0.6,
+     "count": 26955
+    },
+    {
+     "path": "cache$4 → 14 → summary",
+     "selfMB": 0.6,
+     "count": 26155
+    },
+    {
+     "path": "cache$4 → 17 → summary",
+     "selfMB": 0.6,
+     "count": 26955
+    },
+    {
+     "path": "cache$5 → houses",
+     "selfMB": 0.6,
+     "count": 13710
+    },
+    {
+     "path": "cache$5 → providers",
+     "selfMB": 0.6,
+     "count": 13710
+    },
+    {
+     "path": "utils → asLocator → script",
+     "selfMB": 0.6,
+     "count": 13
+    },
+    {
+     "path": "cache$4 → 8",
+     "selfMB": 0.4,
+     "count": 6855
+    },
+    {
+     "path": "cache$4 → 11",
+     "selfMB": 0.4,
+     "count": 6855
+    },
+    {
+     "path": "cache$4 → 14",
+     "selfMB": 0.4,
+     "count": 6855
+    },
+    {
+     "path": "cache$4 → 17",
+     "selfMB": 0.4,
+     "count": 6855
+    },
+    {
+     "path": "PRESENTED → autoplayFoodFlow",
+     "selfMB": 0.3,
+     "count": 13709
+    },
+    {
+     "path": "PRESENTED → labour",
+     "selfMB": 0.3,
+     "count": 6854
+    },
+    {
+     "path": "PRESENTED → timberProductionWindow",
+     "selfMB": 0.3,
+     "count": 6854
+    },
+    {
+     "path": "PRESENTED → settlement",
+     "selfMB": 0.3,
+     "count": 6854
+    },
+    {
+     "path": "cache$5",
+     "selfMB": 0.3,
+     "count": 6857
+    },
+    {
+     "path": "PRESENTED → walkers → position",
+     "selfMB": 0.3,
+     "count": 35075
+    },
+    {
+     "path": "PREVIOUS",
+     "selfMB": 0.3,
+     "count": 6857
+    },
+    {
+     "path": "cache$4 → 8 → blocker",
+     "selfMB": 0.3,
+     "count": 16240
+    },
+    {
+     "path": "cache$4 → 14 → blocker",
+     "selfMB": 0.3,
+     "count": 16240
+    },
+    {
+     "path": "cache$4 → 17 → blocker",
+     "selfMB": 0.3,
+     "count": 14640
+    },
+    {
+     "path": "cache$4 → 11 → blocker",
+     "selfMB": 0.3,
+     "count": 14640
+    },
+    {
+     "path": "getComputedStyle → entries",
+     "selfMB": 0.3,
+     "count": 6305
+    },
+    {
+     "path": "blink::GridLineResolver::GridLineResolve",
+     "selfMB": 0.3,
+     "count": 2666
+    },
+    {
+     "path": "v8_inspector::V8InspectorSessionImpl::V8",
+     "selfMB": 0.3,
+     "count": 1005
+    },
+    {
+     "path": "code → instruction_stream",
+     "selfMB": 0.2,
+     "count": 368
+    },
+    {
+     "path": "getComputedStyle → stacks",
+     "selfMB": 0.2,
+     "count": 116
+    },
+    {
+     "path": "__reactFiber$toeftdlih2s → return → pendingProps",
+     "selfMB": 0.2,
+     "count": 6125
+    },
+    {
+     "path": "PRESENTED → autoplayRecurringDelivery",
+     "selfMB": 0.2,
+     "count": 6854
+    },
+    {
+     "path": "cache$4 → 29 → summary",
+     "selfMB": 0.2,
+     "count": 6855
+    },
+    {
+     "path": "cache$4 → 26 → summary",
+     "selfMB": 0.2,
+     "count": 6855
+    },
+    {
+     "path": "cache$4 → 20 → summary",
+     "selfMB": 0.2,
+     "count": 6855
+    },
+    {
+     "path": "cache$4 → 23 → summary",
+     "selfMB": 0.2,
+     "count": 6855
+    },
+    {
+     "path": "cache$5 → providers → 6",
+     "selfMB": 0.2,
+     "count": 6855
+    },
+    {
+     "path": "PRESENTED → settlement → milestones",
+     "selfMB": 0.2,
+     "count": 6854
+    },
+    {
+     "path": "cache$4 → 20",
+     "selfMB": 0.2,
+     "count": 6855
+    },
+    {
+     "path": "cache$4 → 23",
+     "selfMB": 0.2,
+     "count": 6855
+    },
+    {
+     "path": "cache$4 → 26",
+     "selfMB": 0.2,
+     "count": 6855
+    },
+    {
+     "path": "cache$4 → 29",
+     "selfMB": 0.2,
+     "count": 6855
+    }
+   ],
+   "states": [
+    {
+     "node": 68080,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 5539 / part of key (Object @136161) -> v",
+     "fields": 38
+    },
+    {
+     "node": 86925,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 6540 / part of key (Object @173851) -> v",
+     "fields": 38
+    },
+    {
+     "node": 92742,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 436 / part of key (Object @185485) -> va",
+     "fields": 38
+    },
+    {
+     "node": 92807,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 2989 / part of key (Object @185615) -> v",
+     "fields": 38
+    },
+    {
+     "node": 92821,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 3280 / part of key (Object @185643) -> v",
+     "fields": 38
+    },
+    {
+     "node": 92942,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 4998 / part of key (Object @185885) -> v",
+     "fields": 38
+    },
+    {
+     "node": 93259,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 5395 / part of key (Object @186519) -> v",
+     "fields": 38
+    },
+    {
+     "node": 93272,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 5449 / part of key (Object @186545) -> v",
+     "fields": 38
+    },
+    {
+     "node": 93285,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 2067 / part of key (Object @186571) -> v",
+     "fields": 38
+    },
+    {
+     "node": 93298,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 2970 / part of key (Object @186597) -> v",
+     "fields": 38
+    },
+    {
+     "node": 93311,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 4221 / part of key (Object @186623) -> v",
+     "fields": 38
+    },
+    {
+     "node": 93859,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 2284 / part of key (Object @187719) -> v",
+     "fields": 38
+    },
+    {
+     "node": 93903,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 1186 / part of key (Object @187807) -> v",
+     "fields": 38
+    },
+    {
+     "node": 94287,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 1310 / part of key (Object @188575) -> v",
+     "fields": 38
+    },
+    {
+     "node": 94806,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 6408 / part of key (Object @189613) -> v",
+     "fields": 40
+    },
+    {
+     "node": 94831,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 6650 / part of key (Object @189663) -> v",
+     "fields": 40
+    },
+    {
+     "node": 94877,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 4395 / part of key (Object @189755) -> v",
+     "fields": 40
+    },
+    {
+     "node": 94958,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 1074 / part of key (Object @189917) -> v",
+     "fields": 40
+    },
+    {
+     "node": 94976,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 1121 / part of key (Object @189953) -> v",
+     "fields": 40
+    },
+    {
+     "node": 94991,
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context → PRESENTED → table → 1131 / part of key (Object @189983) -> v",
+     "fields": 40
+    }
+   ],
+   "stateCount": 6863,
+   "stateFields": [
+    {
+     "field": "tiles",
+     "MB": 2,
+     "objects": 42289
+    },
+    {
+     "field": "tick",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "seed",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "width",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "height",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "buildings",
+     "MB": 0,
+     "objects": 65
+    },
+    {
+     "field": "constructionSites",
+     "MB": 0,
+     "objects": 1
+    },
+    {
+     "field": "houses",
+     "MB": 0,
+     "objects": 8
+    },
+    {
+     "field": "walkers",
+     "MB": 0,
+     "objects": 1
+    },
+    {
+     "field": "population",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "idleWorkers",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "treasuryTimber",
+     "MB": 0,
+     "objects": 2
+    },
+    {
+     "field": "treasuryCoin",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "wallTick",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "era",
+     "MB": 0,
+     "objects": 1
+    },
+    {
+     "field": "eraProclaimedTick",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "palisade",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "forestHarvests",
+     "MB": 0,
+     "objects": 1
+    },
+    {
+     "field": "nextConstructionOrdinal",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "roadRevision",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "pathCache",
+     "MB": 0,
+     "objects": 1
+    },
+    {
+     "field": "scenarioId",
+     "MB": 0,
+     "objects": 4
+    },
+    {
+     "field": "zones",
+     "MB": 0,
+     "objects": 934
+    },
+    {
+     "field": "nextZoneOrdinal",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "__proto__",
+     "MB": 0,
+     "objects": 0
+    },
+    {
+     "field": "(그 밖의 상태 6862개가 더한 것)",
+     "MB": 34.9,
+     "objects": 1189649
+    }
+   ],
+   "nodes": 1656928,
+   "reachable": 1656849,
+   "totalSelfMB": 77.2,
+   "rootRetainedMB": 77.2,
+   "holders": [],
+   "kinds": [
+    {
+     "type": "object",
+     "name": "Object",
+     "count": 476888,
+     "selfMB": 16.6
+    },
+    {
+     "type": "code",
+     "name": "",
+     "count": 104100,
+     "selfMB": 13.5
+    },
+    {
+     "type": "array",
+     "name": "",
+     "count": 102955,
+     "selfMB": 11.3
+    },
+    {
+     "type": "native",
+     "name": "system / ExternalStringData",
+     "count": 918,
+     "selfMB": 9
+    },
+    {
+     "type": "string",
+     "name": "",
+     "count": 337155,
+     "selfMB": 5.5
+    },
+    {
+     "type": "native",
+     "name": "system / PropertyArray",
+     "count": 71119,
+     "selfMB": 2.6
+    },
+    {
+     "type": "number",
+     "name": "",
+     "count": 228339,
+     "selfMB": 2.4
+    },
+    {
+     "type": "native",
+     "name": "blink::ImageResource",
+     "count": 773,
+     "selfMB": 2.3
+    },
+    {
+     "type": "object",
+     "name": "Array",
+     "count": 93513,
+     "selfMB": 1.5
+    },
+    {
+     "type": "concatenated string",
+     "name": "",
+     "count": 72456,
+     "selfMB": 1.4
+    },
+    {
+     "type": "native",
+     "name": "blink::FontResource",
+     "count": 372,
+     "selfMB": 1.1
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapHashTableBacking<blink::HashTable<blink::FontCach",
+     "count": 376,
+     "selfMB": 0.9
+    },
+    {
+     "type": "object shape",
+     "name": "",
+     "count": 15880,
+     "selfMB": 0.8
+    },
+    {
+     "type": "native",
+     "name": "blink::SimpleFontData",
+     "count": 2050,
+     "selfMB": 0.5
+    },
+    {
+     "type": "native",
+     "name": "blink::cssvalue::CSSUnicodeRangeValue",
+     "count": 19602,
+     "selfMB": 0.5
+    },
+    {
+     "type": "native",
+     "name": "system / WeakArrayList",
+     "count": 3171,
+     "selfMB": 0.4
+    },
+    {
+     "type": "object",
+     "name": "Map",
+     "count": 23563,
+     "selfMB": 0.4
+    },
+    {
+     "type": "native",
+     "name": "OffscreenCanvasRenderingContext2D",
+     "count": 227,
+     "selfMB": 0.4
+    },
+    {
+     "type": "native",
+     "name": "system / FunctionTemplateInfo",
+     "count": 4770,
+     "selfMB": 0.3
+    },
+    {
+     "type": "native",
+     "name": "blink::NetworkResourcesData::ResourceData",
+     "count": 890,
+     "selfMB": 0.3
+    },
+    {
+     "type": "native",
+     "name": "blink::CanvasRenderingContext2DState",
+     "count": 337,
+     "selfMB": 0.3
+    },
+    {
+     "type": "object",
+     "name": "Set",
+     "count": 13927,
+     "selfMB": 0.2
+    },
+    {
+     "type": "native",
+     "name": "CanvasRenderingContext2D",
+     "count": 110,
+     "selfMB": 0.2
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapVectorBacking<blink::UnicodeRange>",
+     "count": 372,
+     "selfMB": 0.2
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapHashTableBacking<blink::HashTable<cppgc::internal",
+     "count": 2505,
+     "selfMB": 0.2
+    },
+    {
+     "type": "native",
+     "name": "blink::NGShapeCache",
+     "count": 2050,
+     "selfMB": 0.2
+    },
+    {
+     "type": "native",
+     "name": "system / ArrayList",
+     "count": 190,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "system / PropertyCell",
+     "count": 2571,
+     "selfMB": 0.1
+    },
+    {
+     "type": "closure",
+     "name": "",
+     "count": 2363,
+     "selfMB": 0.1
+    },
+    {
+     "type": "object",
+     "name": "FiberNode",
+     "count": 1076,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "system / WeakCell",
+     "count": 1437,
+     "selfMB": 0.1
+    },
+    {
+     "type": "object",
+     "name": "WeakRef",
+     "count": 6305,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::BasicHeapVector<blink::internal::HeapCollectionType::",
+     "count": 1820,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "EventListener",
+     "count": 1858,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::FontDataForRangeSet",
+     "count": 2852,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::ImmutableCSSPropertyValueSet",
+     "count": 1059,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<const ",
+     "count": 452,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::StyleRule",
+     "count": 1754,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::HeapVectorBacking<cppgc::internal::BasicMember<blink:",
+     "count": 1250,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "V8EventHandlerNonNull",
+     "count": 1632,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::CSSCustomFontData",
+     "count": 1820,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::UniqueElementData",
+     "count": 1230,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::HTMLImageLoader",
+     "count": 804,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::ImageResourceContent",
+     "count": 773,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "FontFace",
+     "count": 372,
+     "selfMB": 0.1
+    },
+    {
+     "type": "native",
+     "name": "blink::Font",
+     "count": 408,
+     "selfMB": 0.1
+    },
+    {
+     "type": "synthetic",
+     "name": "",
+     "count": 32,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "undefined",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Hole",
+     "count": 12,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "null",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "true",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "false",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Map",
+     "count": 174,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Map (SeqOneByteString)",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Map (InternalizedOneByteString)",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Map (SeqTwoByteString)",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Map (ConsTwoByteString)",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Map (ConsOneByteString)",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Map (ThinTwoByteString)",
+     "count": 1,
+     "selfMB": 0
+    },
+    {
+     "type": "native",
+     "name": "system / Map (ThinOneByteString)",
+     "count": 1,
+     "selfMB": 0
+    }
+   ],
+   "tree": [
+    {
+     "depth": 0,
+     "retainedMB": 77.2,
+     "selfMB": 0,
+     "type": "synthetic",
+     "name": "(GC roots)",
+     "path": "[1]"
+    },
+    {
+     "depth": 1,
+     "retainedMB": 9.9,
+     "selfMB": 0,
+     "type": "object",
+     "name": "system / Context / scope @112671",
+     "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$toeftdlih2s → return → elementType → context"
+    },
+    {
+     "depth": 1,
+     "retainedMB": 9.6,
+     "selfMB": 0,
+     "type": "code",
+     "name": "system / Script / http://127.0.0.1:4393/assets/ind",
+     "path": "[1] → [29] → blink::WebLocalFrameImpl::WebLocalFrameI → [7] → [1] → [2] → get value → shared → script"
+    },
+    {
+     "depth": 2,
+     "retainedMB": 9,
+     "selfMB": 0,
+     "type": "string",
+     "name": "//#region \\0rolldown/runtime.js\nvar __commonJSMin ",
+     "path": "[1] → [29] → blink::WebLocalFrameImpl::WebLocalFrameI → [7] → [1] → [2] → get value → shared → script → source"
+    },
+    {
+     "depth": 3,
+     "retainedMB": 9,
+     "selfMB": 9,
+     "type": "native",
+     "name": "system / ExternalStringData",
+     "path": "[1] → [29] → blink::WebLocalFrameImpl::WebLocalFrameI → [7] → [1] → [2] → get value → shared → script → source → 2 / backing_store"
+    }
+   ]
+  }
+ }
+]
