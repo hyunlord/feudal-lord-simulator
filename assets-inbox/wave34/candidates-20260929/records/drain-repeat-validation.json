@@ -1,0 +1,83 @@
+{
+  "pairs": [
+    {
+      "phase": 1,
+      "alphaSilhouetteIoU": 0.9260273972602739,
+      "canvasEqual": true,
+      "pivotEqual": true
+    },
+    {
+      "phase": 2,
+      "alphaSilhouetteIoU": 0.9685598377281948,
+      "canvasEqual": true,
+      "pivotEqual": true
+    },
+    {
+      "phase": 3,
+      "alphaSilhouetteIoU": 1,
+      "canvasEqual": true,
+      "pivotEqual": true
+    }
+  ],
+  "channelContacts": [
+    {
+      "id": "drain/drain_stage2_ditched_summer-v1",
+      "contacts": [
+        {
+          "x": 33,
+          "y": 47,
+          "alpha": 175
+        },
+        {
+          "x": 34,
+          "y": 46,
+          "alpha": 175
+        },
+        {
+          "x": 94,
+          "y": 16,
+          "alpha": 175
+        },
+        {
+          "x": 95,
+          "y": 16,
+          "alpha": 175
+        }
+      ],
+      "allContactSamplesVisible": true
+    },
+    {
+      "id": "drain/drain_stage2_ditched_winter-v1",
+      "contacts": [
+        {
+          "x": 33,
+          "y": 47,
+          "alpha": 175
+        },
+        {
+          "x": 34,
+          "y": 46,
+          "alpha": 175
+        },
+        {
+          "x": 94,
+          "y": 16,
+          "alpha": 175
+        },
+        {
+          "x": 95,
+          "y": 16,
+          "alpha": 175
+        }
+      ],
+      "allContactSamplesVisible": true
+    }
+  ],
+  "stage3Final": {
+    "summerInteriorVisible": 4096,
+    "winterInteriorVisible": 4096,
+    "interiorHoles": 0,
+    "native25TileCompositeVisual": "pass at0.5 and0.3; no largechecker or macroblotches",
+    "individualTileFilteredDownscale": "can cause alpha hairlines; precompose nativegrid first"
+  }
+}

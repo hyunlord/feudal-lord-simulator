@@ -1,0 +1,60 @@
+[
+  {
+    "id": "drain/drain_done_edge_summer-v1",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_done_edge_summer-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-4fbfbe23-a389-46e1-9208-4b93c4882fed.png",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      0,
+      292,
+      1774,
+      300
+    ],
+    "width": 512,
+    "height": 64,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "summer",
+    "stage": "done",
+    "repeat": "X only",
+    "waterSelectedPixels": 1006,
+    "partialAlphaPixels": 21853,
+    "xSeamMax": 0,
+    "yMarginViolations": 0,
+    "manualEdits": "Alpha-bbox vertical crop; resize to512x48 at y8; cool blue-grey channel pixels capped alpha160; local16px shared X end band premultiplied blend; zero transparentRGB."
+  },
+  {
+    "id": "drain/drain_done_edge_winter-v1",
+    "outputPath": "/tmp/astra-wave34-candidates-20260929/drain/drain_done_edge_winter-v1.png",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-b581a54d-ec86-4eab-b89b-49f6a37c0b43.png",
+    "nativeSize": [
+      1774,
+      887
+    ],
+    "crop": [
+      0,
+      291,
+      1774,
+      302
+    ],
+    "width": 512,
+    "height": 64,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "winter",
+    "stage": "done",
+    "repeat": "X only",
+    "waterSelectedPixels": 5388,
+    "partialAlphaPixels": 21452,
+    "xSeamMax": 0,
+    "yMarginViolations": 0,
+    "manualEdits": "Alpha-bbox vertical crop; resize to512x48 at y8; cool blue-grey channel pixels capped alpha160; local16px shared X end band premultiplied blend; zero transparentRGB."
+  }
+]

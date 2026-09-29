@@ -1,0 +1,34 @@
+{
+  "proofs": [
+    {
+      "file": "checks/01-river-crossings.png",
+      "sha256": "6b1a849d0ea0c61d9925f362a3d2add0e844149da444e992c7658a44449abf35",
+      "visualVerdict": "pass_with_documented_limitations"
+    },
+    {
+      "file": "checks/02-fen-drainage.png",
+      "sha256": "4c33bcb656d122f32d5be416355bfbea6650eda37abccf2f8f9b0fdf56e2845c",
+      "visualVerdict": "pass_with_documented_limitations"
+    }
+  ],
+  "engineInstalled": false,
+  "riverScene": "offline reconstruction from attached minimap archetype",
+  "zoomScales": [
+    1,
+    0.6
+  ],
+  "stage1OverlayCount": 16,
+  "stage2OverlayCount": 10,
+  "stage3OverlayCount": 25,
+  "pondCounts": [
+    5,
+    3,
+    0,
+    0
+  ],
+  "limitations": [
+    "representative river scene shows summer NE variants",
+    "static flow sample only"
+  ],
+  "stage3Composition": "25 native-size tiles composited before one whole-patch rescale"
+}
