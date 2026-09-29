@@ -1,0 +1,461 @@
+{
+  "assets": [
+    {
+      "id": "house_pair_l3_vertical_c-v1",
+      "file": "assets/house_pair_l3_vertical_c-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "base",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "cream limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "references/house_pair_l3_vertical-v2.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_c-v1.png",
+      "prompt": "Edit target image: this exact isometric two-lot 1300 southern England house, front main block and rear workshop. Produce ONE new base variation C with warm golden THATCH roofs on both bodies, cream limewash, distinct oak framing and modest small front jetty. Preserve exact isometric orientation, canvas occupancy, building ground vertices and ground contact silhouette/pivot from target; front main + rear workshop arrangement. No chimney of any kind, no blue glass, no people, no labels. Hand-painted muted gouache as target. Transparent RGBA background, square canvas, complete building. Change roof shape slightly to rounded thatch eaves but do not enlarge footprint.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "references/house_pair_l3_vertical-v2.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_c-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_c_weathered-v1",
+      "file": "assets/house_pair_l3_vertical_c_weathered-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "weathered",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "cream limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-1b80b959-fb08-4acd-b7a0-efa803535ad0.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_c_weathered-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render weathering ONLY: irregular grey-brown grime and chipped limewash patches on wall faces, faded scuffed timber streaks, moss tiny roof edges. Do NOT show intact walls or roof. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is c weathered overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-1b80b959-fb08-4acd-b7a0-efa803535ad0.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_c_weathered-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_c_fresh-v1",
+      "file": "assets/house_pair_l3_vertical_c_fresh-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "fresh",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "cream limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-1b80b959-fb08-4acd-b7a0-efa803535ad0.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_c_fresh-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render fresh repair ONLY: discrete bright warm limewash repair patches, freshly replaced small warm oak board patches and roof repairs. Do NOT show intact walls or roof. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is c fresh overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-1b80b959-fb08-4acd-b7a0-efa803535ad0.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_c_fresh-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_c_snow-v1",
+      "file": "assets/house_pair_l3_vertical_c_snow-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "snow",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "cream limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-1b80b959-fb08-4acd-b7a0-efa803535ad0.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_c_snow-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render snow ONLY: uneven opaque ivory snow patches covering approximately seventy percent of EACH visible roof plane, leaving irregular gaps with underlying roofing visible. Snow follows exact slope and roof silhouette. No falling snow, no ground snow, no house included. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is c snow overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": {
+        "denominator": 5747,
+        "numerator": 3949,
+        "percent": 68.71411171045763,
+        "threshold": "base manual roof mask alpha>=128; generated snow neutral RGB>170,170,160 delta<45 alpha>=128",
+        "roof_mask": "records/masks/l3v-c-roof.png",
+        "snow_mask": "records/masks/l3v-c-snow.png"
+      },
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-1b80b959-fb08-4acd-b7a0-efa803535ad0.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_c_snow-v1.png",
+      "roofMask": "records/masks/l3v-c-roof.png",
+      "snowMask": "records/masks/l3v-c-snow.png",
+      "roofPixels": 5747,
+      "snowPixels": 3949,
+      "coveragePercent": 68.71411171045763
+    },
+    {
+      "id": "house_pair_l3_vertical_c_boarded-v1",
+      "file": "assets/house_pair_l3_vertical_c_boarded-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "boarded",
+      "width": 183,
+      "height": 183,
+      "roof": "thatch",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "cream limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-1b80b959-fb08-4acd-b7a0-efa803535ad0.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_c_boarded-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render boarding ONLY: very thick crossed rough oak planks barring all visible doors and lower windows, large dark nails. Clearly abandoned-house boarding at tiny scale. No wall or roof included. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is c boarded overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-1b80b959-fb08-4acd-b7a0-efa803535ad0.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_c_boarded-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_d-v1",
+      "file": "assets/house_pair_l3_vertical_d-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "base",
+      "width": 183,
+      "height": 183,
+      "roof": "muted flat clay tile",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "ochre limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "references/house_pair_l3_vertical-v2.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_d-v1.png",
+      "prompt": "Edit this exact isometric two-lot house to ONE base variation D: muted grey terracotta flat CLAY tiles, pale ochre limewash walls, simpler vertical oak framing, gable-front mainhouse plus lower rear workshop/courtyard door. Southern England 1300 handpainted gouache. Keep ground contact vertices, square canvas placement, footprint and front-main/rear-workshop volumetric arrangement exact. No chimney anywhere, no glass blue reflections, no people/text. Modest jetty only. Transparent RGBA background.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "references/house_pair_l3_vertical-v2.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_d-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_d_weathered-v1",
+      "file": "assets/house_pair_l3_vertical_d_weathered-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "weathered",
+      "width": 183,
+      "height": 183,
+      "roof": "muted flat clay tile",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "ochre limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-a258953a-90bc-4893-a7b7-1c22d1ad57a1.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_d_weathered-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render weathering ONLY: irregular grey-brown grime and chipped limewash patches on wall faces, faded scuffed timber streaks, moss tiny roof edges. Do NOT show intact walls or roof. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is d weathered overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-a258953a-90bc-4893-a7b7-1c22d1ad57a1.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_d_weathered-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_d_fresh-v1",
+      "file": "assets/house_pair_l3_vertical_d_fresh-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "fresh",
+      "width": 183,
+      "height": 183,
+      "roof": "muted flat clay tile",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "ochre limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-a258953a-90bc-4893-a7b7-1c22d1ad57a1.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_d_fresh-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render fresh repair ONLY: discrete bright warm limewash repair patches, freshly replaced small warm oak board patches and roof repairs. Do NOT show intact walls or roof. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is d fresh overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-a258953a-90bc-4893-a7b7-1c22d1ad57a1.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_d_fresh-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_d_snow-v1",
+      "file": "assets/house_pair_l3_vertical_d_snow-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "snow",
+      "width": 183,
+      "height": 183,
+      "roof": "muted flat clay tile",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "ochre limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-a258953a-90bc-4893-a7b7-1c22d1ad57a1.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_d_snow-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render snow ONLY: uneven opaque ivory snow patches covering approximately seventy percent of EACH visible roof plane, leaving irregular gaps with underlying roofing visible. Snow follows exact slope and roof silhouette. No falling snow, no ground snow, no house included. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is d snow overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": {
+        "denominator": 5614,
+        "numerator": 3823,
+        "percent": 68.09761311008194,
+        "threshold": "base manual roof mask alpha>=128; generated snow neutral RGB>170,170,160 delta<45 alpha>=128",
+        "roof_mask": "records/masks/l3v-d-roof.png",
+        "snow_mask": "records/masks/l3v-d-snow.png"
+      },
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-a258953a-90bc-4893-a7b7-1c22d1ad57a1.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_d_snow-v1.png",
+      "roofMask": "records/masks/l3v-d-roof.png",
+      "snowMask": "records/masks/l3v-d-snow.png",
+      "roofPixels": 5614,
+      "snowPixels": 3823,
+      "coveragePercent": 68.09761311008194
+    },
+    {
+      "id": "house_pair_l3_vertical_d_boarded-v1",
+      "file": "assets/house_pair_l3_vertical_d_boarded-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "boarded",
+      "width": 183,
+      "height": 183,
+      "roof": "muted flat clay tile",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "ochre limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-a258953a-90bc-4893-a7b7-1c22d1ad57a1.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_d_boarded-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render boarding ONLY: very thick crossed rough oak planks barring all visible doors and lower windows, large dark nails. Clearly abandoned-house boarding at tiny scale. No wall or roof included. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is d boarded overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-a258953a-90bc-4893-a7b7-1c22d1ad57a1.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_d_boarded-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_e-v1",
+      "file": "assets/house_pair_l3_vertical_e-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "base",
+      "width": 183,
+      "height": 183,
+      "roof": "grey-brown stone slab",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "dusty rose limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "references/house_pair_l3_vertical-v2.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_e-v1.png",
+      "prompt": "Edit target exact isometric joined two-lot medieval house, front tall mainhouse plus lower rear workshop, ONE variation E. Roofs brown-grey irregular STONE SLABS, not blue slate, walls pale dusty rose limewash with dark oak crossbracing, main gable shifted modestly and little courtyard wood door in rear volume. Keep exact footprint ground vertices, canvas placement, scale and fixed view. 1300 southern England handpainted muted gouache sprite. No chimney whatsoever, no blue glass, no figures/text. Transparent RGBA square canvas.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "references/house_pair_l3_vertical-v2.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_e-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_e_weathered-v1",
+      "file": "assets/house_pair_l3_vertical_e_weathered-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "weathered",
+      "width": 183,
+      "height": 183,
+      "roof": "grey-brown stone slab",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "dusty rose limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-13591ae7-bb21-4814-945b-31e8fefc0087.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_e_weathered-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render weathering ONLY: irregular grey-brown grime and chipped limewash patches on wall faces, faded scuffed timber streaks, moss tiny roof edges. Do NOT show intact walls or roof. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is e weathered overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-13591ae7-bb21-4814-945b-31e8fefc0087.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_e_weathered-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_e_fresh-v1",
+      "file": "assets/house_pair_l3_vertical_e_fresh-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "fresh",
+      "width": 183,
+      "height": 183,
+      "roof": "grey-brown stone slab",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "dusty rose limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-13591ae7-bb21-4814-945b-31e8fefc0087.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_e_fresh-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render fresh repair ONLY: discrete bright warm limewash repair patches, freshly replaced small warm oak board patches and roof repairs. Do NOT show intact walls or roof. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is e fresh overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-13591ae7-bb21-4814-945b-31e8fefc0087.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_e_fresh-v1.png"
+    },
+    {
+      "id": "house_pair_l3_vertical_e_snow-v1",
+      "file": "assets/house_pair_l3_vertical_e_snow-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "snow",
+      "width": 183,
+      "height": 183,
+      "roof": "grey-brown stone slab",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "dusty rose limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-13591ae7-bb21-4814-945b-31e8fefc0087.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_e_snow-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render snow ONLY: uneven opaque ivory snow patches covering approximately seventy percent of EACH visible roof plane, leaving irregular gaps with underlying roofing visible. Snow follows exact slope and roof silhouette. No falling snow, no ground snow, no house included. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is e snow overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": {
+        "denominator": 5614,
+        "numerator": 3673,
+        "percent": 65.42572141075881,
+        "threshold": "base manual roof mask alpha>=128; generated snow neutral RGB>170,170,160 delta<45 alpha>=128",
+        "roof_mask": "records/masks/l3v-e-roof.png",
+        "snow_mask": "records/masks/l3v-e-snow.png"
+      },
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-13591ae7-bb21-4814-945b-31e8fefc0087.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_e_snow-v1.png",
+      "roofMask": "records/masks/l3v-e-roof.png",
+      "snowMask": "records/masks/l3v-e-snow.png",
+      "roofPixels": 5614,
+      "snowPixels": 3673,
+      "coveragePercent": 65.42572141075881
+    },
+    {
+      "id": "house_pair_l3_vertical_e_boarded-v1",
+      "file": "assets/house_pair_l3_vertical_e_boarded-v1.png",
+      "level": 3,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "boarded",
+      "width": 183,
+      "height": 183,
+      "roof": "grey-brown stone slab",
+      "shape": "front tall mainhouse + rear lower workshop; small jetty",
+      "wall": "dusty rose limewash",
+      "pivotcontract": "source-contract.json l3v fixed crop; ROOT final source contact restoration",
+      "refs": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-13591ae7-bb21-4814-945b-31e8fefc0087.png"
+      ],
+      "native": "native/l3v/house_pair_l3_vertical_e_boarded-v1.png",
+      "prompt": "Input image is positioning reference. Make ONE transparent RGBA overlay, same square canvas, same exact pixel positions as reference. Render boarding ONLY: very thick crossed rough oak planks barring all visible doors and lower windows, large dark nails. Clearly abandoned-house boarding at tiny scale. No wall or roof included. Preserve exact placement relative to reference; all unchanged parts must be FULLY TRANSPARENT. Do not render underlying building at all. No labels/text, no chimney, no people. Hand-painted gouache to match reference. This is e boarded overlay asset.",
+      "model": null,
+      "seed": null,
+      "coverage": null,
+      "transform": "Native square image resized once to183x183; state clipped to base alpha; snow neutral snow pixels extracted, no procedural painting.",
+      "ref": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-191f-7133-9820-618f2f125b72/exec-13591ae7-bb21-4814-945b-31e8fefc0087.png"
+      ],
+      "nativeOutput": "native/l3v/house_pair_l3_vertical_e_boarded-v1.png"
+    }
+  ],
+  "qa": {
+    "score": 92,
+    "verdict": "pass",
+    "review_image": "native/l3v/state-qa.png",
+    "observations": [
+      "Three roof materials and cream/ochre/rose walls distinguish c/d/e at183px.",
+      "Weathered moss/chipped walls, fresh repairs, snow patches and thick crossboards visibly separate atnative183px.",
+      "No chimney, figures, blueglass or text observed.",
+      "Front mainhouse and rear lowworkshop retained; silhouette variation deliberately modest."
+    ],
+    "limitations": [
+      "Exact contact mask restoration is root-owned and pending.",
+      "Offline compositing only; not installed in game."
+    ],
+    "snow_denominator": "Manual base roof polygons recorded before snow measurements; unchanged across iterations."
+  }
+}

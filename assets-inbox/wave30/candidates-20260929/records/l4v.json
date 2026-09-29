@@ -1,0 +1,643 @@
+{
+  "assets": [
+    {
+      "id": "house_pair_l4_vertical_c",
+      "file": "assets/house_pair_l4_vertical_c-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "base",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "cross_gable_front_and_low_rear_workshop",
+      "wall": "warm_white_limewash_oak",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "references/house_pair_l4_vertical-v2.png"
+      ],
+      "prompt": "Edit target: provided transparent isometric paired medieval house. Create ONE L4 vertical variation c: replace red roof with warm grey flat stone slabs, front tall main house plus lower rear workshop. Slight cross-gable on front main roof; pale warm limewash and irregular oak timber pattern, courtyard door rear. Preserve original isometric direction, exact ground footprint/pivot, same canvas composition and baseline; no widening. 1300 southern England, restrained jetty. Painterly game sprite, same upper-left light. NO chimney, no blue glass, no people, no text. Transparent background. Only one house.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-eb716ce5-147d-4260-bd8f-0f2aed083776.png",
+      "nativeFile": "native/l4v/c-base.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_c_weathered",
+      "file": "assets/house_pair_l4_vertical_c_weathered-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "weathered",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "cross_gable_front_and_low_rear_workshop",
+      "wall": "warm_white_limewash_oak",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_c-v1.png"
+      ],
+      "prompt": "Use case precise-object-edit. Edit target is this exact house sprite. Make ONLY a transparent weathering overlay for this exact canvas. DO NOT redraw the building. Show thin muted damp streaks on lower plaster, several small chipped plaster patches exposing dark undercoat and grey worn scratches on oak beams. All unchanged house pixels must be transparent. Roof intact, no collapse, no vegetation. Keep exact isometric coordinates of reference, aligned 1:1, full square canvas, no cropping or recentering. No text, people, chimney or new objects. Transparent RGBA texture layer. Marks noticeable but restrained at 184px.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-fb72a452-3fcc-415b-a744-524b68d525f8.png",
+      "nativeFile": "native/l4v/c-weathered.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_c_fresh",
+      "file": "assets/house_pair_l4_vertical_c_fresh-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "fresh",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "cross_gable_front_and_low_rear_workshop",
+      "wall": "warm_white_limewash_oak",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_c-v1.png"
+      ],
+      "prompt": "Use case precise-object-edit. Edit target is this exact house sprite. Make ONLY a transparent fresh maintenance overlay for this exact canvas. DO NOT redraw the building. Show newly whitewashed patches on plaster panels, warm clean oak repair highlights on several existing beams and doorframe edges. All unchanged house pixels must be transparent. Keep roof intact and same. Keep exact isometric coordinates of reference, aligned 1:1, full square canvas, no cropping or recentering. No text, people, chimney or new objects. Transparent RGBA texture layer. Marks noticeable but restrained at 184px.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-58aa5859-7e24-4b7b-ad34-2fc68f228abe.png",
+      "nativeFile": "native/l4v/c-fresh.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_c_snow",
+      "file": "assets/house_pair_l4_vertical_c_snow-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "snow",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "cross_gable_front_and_low_rear_workshop",
+      "wall": "warm_white_limewash_oak",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_c-v1.png"
+      ],
+      "prompt": "Use case lighting-weather precise-object-edit. Edit target exact house sprite. Make ONLY SNOW OVERLAY on transparent canvas, no building redraw. Snow softly covers approximately70% of ALL visible roof planes, leaving irregular 30% roof holes of varied size where reference roof shows through. Trace both main house roof and lower rear workshop roof EXACTLY. Broad thin settled snow, NOT white edge stripes; irregular eaves. No snow anywhere except roof. All building/walls/ground/empty background must be fully transparent. Same square composition, same roof coordinates, no crop/recenter/rescale. Muted cream-grey winter snow upperleft light, painterly. NO chimney/text/people.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-d5ba7c04-e60a-4894-b568-538c456b72bc.png",
+      "nativeFile": "native/l4v/c-snow.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter",
+        "Extract generated snow pixels: overlay alpha>=128, minRGB>=140, maxRGB-minRGB<=40; clip to independent visible-roof mask; no new painted pixels"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      },
+      "roofMask": "records/masks/house_pair_l4_vertical_c-roof.png",
+      "snowMask": "records/masks/house_pair_l4_vertical_c-snow.png",
+      "roofPixels": 4987,
+      "snowPixels": 3135,
+      "coveragePercent": 62.86344495688791,
+      "coverageMethod": "Independent manually traced complete visible base roof polygons; roof alpha>=128; final extracted snow alpha>=128. Extraction uses minRGB>=140 and chroma<=40. Denominator fixed before state edits."
+    },
+    {
+      "id": "house_pair_l4_vertical_c_boarded",
+      "file": "assets/house_pair_l4_vertical_c_boarded-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "c",
+      "state": "boarded",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "cross_gable_front_and_low_rear_workshop",
+      "wall": "warm_white_limewash_oak",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_c-v1.png"
+      ],
+      "prompt": "Use case precise-object-edit. Edit target exact house sprite. Make ONLY abandoned-house BOARDS OVERLAY on transparent canvas, no building redraw. Thick weathered brown oak boards crossed X over main front door and 3 large front/side windows, rear workshop door boarded too. Boards broad visibly distinguishable at184px, rusty small nailheads. Precisely match openings positions on reference, same perspective. All unchanged building,roof,walls,ground and background fully transparent. Full same square canvas exact coordinates no crop/recenter. No text, people, chimneys. Painterly upperleft light.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-6c74564a-4a84-49f3-91eb-c4437988ef90.png",
+      "nativeFile": "native/l4v/c-boarded.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_d",
+      "file": "assets/house_pair_l4_vertical_d-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "base",
+      "width": 184,
+      "height": 184,
+      "roof": "clay_flat_tiles",
+      "shape": "gable_front_hipped_rear_workshop",
+      "wall": "pale_pink_limewash_close_studs",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "references/house_pair_l4_vertical-v2.png"
+      ],
+      "prompt": "Edit target: provided transparent isometric paired medieval house. Create ONE L4 vertical variation d: dark muted clay flat tiles, front tall main house plus lower rear workshop. Hipped little rear roof and asymmetrical front gable; very pale pink limewash and close-studded oak timber, small side courtyard door. Preserve original isometric direction, exact ground footprint/pivot, same canvas composition and baseline; no widening. 1300 southern England, restrained jetty. Painterly game sprite, same upper-left light. NO chimney, no blue glass, no people, no text. Transparent background. Only one house.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-03361911-b421-4924-9c03-c90723aba83a.png",
+      "nativeFile": "native/l4v/d-base.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_d_weathered",
+      "file": "assets/house_pair_l4_vertical_d_weathered-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "weathered",
+      "width": 184,
+      "height": 184,
+      "roof": "clay_flat_tiles",
+      "shape": "gable_front_hipped_rear_workshop",
+      "wall": "pale_pink_limewash_close_studs",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_d-v1.png"
+      ],
+      "prompt": "Use case precise-object-edit. Edit target is this exact house sprite. Make ONLY a transparent weathering overlay for this exact canvas. DO NOT redraw the building. Show thin muted damp streaks on lower plaster, several small chipped plaster patches exposing dark undercoat and grey worn scratches on oak beams. All unchanged house pixels must be transparent. Roof intact, no collapse, no vegetation. Keep exact isometric coordinates of reference, aligned 1:1, full square canvas, no cropping or recentering. No text, people, chimney or new objects. Transparent RGBA texture layer. Marks noticeable but restrained at 184px.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-8144b50d-89c5-4cf1-82dc-15bc982adb00.png",
+      "nativeFile": "native/l4v/d-weathered.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_d_fresh",
+      "file": "assets/house_pair_l4_vertical_d_fresh-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "fresh",
+      "width": 184,
+      "height": 184,
+      "roof": "clay_flat_tiles",
+      "shape": "gable_front_hipped_rear_workshop",
+      "wall": "pale_pink_limewash_close_studs",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_d-v1.png"
+      ],
+      "prompt": "Use case precise-object-edit. Edit target is this exact house sprite. Make ONLY a transparent fresh maintenance overlay for this exact canvas. DO NOT redraw the building. Show newly whitewashed patches on plaster panels, warm clean oak repair highlights on several existing beams and doorframe edges. All unchanged house pixels must be transparent. Keep roof intact and same. Keep exact isometric coordinates of reference, aligned 1:1, full square canvas, no cropping or recentering. No text, people, chimney or new objects. Transparent RGBA texture layer. Marks noticeable but restrained at 184px.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-1aeac600-8cf0-4536-80d5-45023b252ceb.png",
+      "nativeFile": "native/l4v/d-fresh.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_d_snow",
+      "file": "assets/house_pair_l4_vertical_d_snow-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "snow",
+      "width": 184,
+      "height": 184,
+      "roof": "clay_flat_tiles",
+      "shape": "gable_front_hipped_rear_workshop",
+      "wall": "pale_pink_limewash_close_studs",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_d-v1.png"
+      ],
+      "prompt": "Use case lighting-weather precise-object-edit. Edit target exact house sprite. Make ONLY SNOW OVERLAY on transparent canvas, no building redraw. Snow softly covers approximately70% of ALL visible roof planes, leaving irregular 30% roof holes of varied size where reference roof shows through. Trace both main house roof and lower rear workshop roof EXACTLY. Broad thin settled snow, NOT white edge stripes; irregular eaves. No snow anywhere except roof. All building/walls/ground/empty background must be fully transparent. Same square composition, same roof coordinates, no crop/recenter/rescale. Muted cream-grey winter snow upperleft light, painterly. NO chimney/text/people.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-7128fc4d-91a0-4ac3-992c-cbb22b90ade0.png",
+      "nativeFile": "native/l4v/d-snow.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter",
+        "Extract generated snow pixels: overlay alpha>=128, minRGB>=140, maxRGB-minRGB<=40; clip to independent visible-roof mask; no new painted pixels"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      },
+      "roofMask": "records/masks/house_pair_l4_vertical_d-roof.png",
+      "snowMask": "records/masks/house_pair_l4_vertical_d-snow.png",
+      "roofPixels": 5497,
+      "snowPixels": 3645,
+      "coveragePercent": 66.30889576132437,
+      "coverageMethod": "Independent manually traced complete visible base roof polygons; roof alpha>=128; final extracted snow alpha>=128. Extraction uses minRGB>=140 and chroma<=40. Denominator fixed before state edits."
+    },
+    {
+      "id": "house_pair_l4_vertical_d_boarded",
+      "file": "assets/house_pair_l4_vertical_d_boarded-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "d",
+      "state": "boarded",
+      "width": 184,
+      "height": 184,
+      "roof": "clay_flat_tiles",
+      "shape": "gable_front_hipped_rear_workshop",
+      "wall": "pale_pink_limewash_close_studs",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_d-v1.png"
+      ],
+      "prompt": "Use case precise-object-edit. Edit target exact house sprite. Make ONLY abandoned-house BOARDS OVERLAY on transparent canvas, no building redraw. Thick weathered brown oak boards crossed X over main front door and 3 large front/side windows, rear workshop door boarded too. Boards broad visibly distinguishable at184px, rusty small nailheads. Precisely match openings positions on reference, same perspective. All unchanged building,roof,walls,ground and background fully transparent. Full same square canvas exact coordinates no crop/recenter. No text, people, chimneys. Painterly upperleft light.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-f16fd1bc-8317-4490-890b-777162858632.png",
+      "nativeFile": "native/l4v/d-boarded.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_e",
+      "file": "assets/house_pair_l4_vertical_e-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "base",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "steep_gable_front_lower_rear_gable",
+      "wall": "ochre_limewash_diagonal_braces",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "references/house_pair_l4_vertical-v2.png"
+      ],
+      "prompt": "Edit target: provided transparent isometric paired medieval house. Create ONE L4 vertical variation e: warm limestone roof slabs (not slate), front tall main house plus lower rear workshop. Unbroken steep main gable and lower rear gable aligned at different level; soft ochre limewash, diagonal timber braces, prominent dark oak arched courtyard door. Preserve original isometric direction, exact ground footprint/pivot, same canvas composition and baseline; no widening. 1300 southern England, restrained jetty. Painterly game sprite, same upper-left light. NO chimney, no blue glass, no people, no text. Transparent background. Only one house.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-a51d2fb6-194e-400c-9d1e-90c2f8710398.png",
+      "nativeFile": "native/l4v/e-base.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_e_weathered",
+      "file": "assets/house_pair_l4_vertical_e_weathered-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "weathered",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "steep_gable_front_lower_rear_gable",
+      "wall": "ochre_limewash_diagonal_braces",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_e-v1.png"
+      ],
+      "prompt": "Use case precise-object-edit. Edit target is this exact house sprite. Make ONLY a transparent weathering overlay for this exact canvas. DO NOT redraw the building. Show thin muted damp streaks on lower plaster, several small chipped plaster patches exposing dark undercoat and grey worn scratches on oak beams. All unchanged house pixels must be transparent. Roof intact, no collapse, no vegetation. Keep exact isometric coordinates of reference, aligned 1:1, full square canvas, no cropping or recentering. No text, people, chimney or new objects. Transparent RGBA texture layer. Marks noticeable but restrained at 184px.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-40ea21a2-9971-4e01-a0d1-4873de12eeb6.png",
+      "nativeFile": "native/l4v/e-weathered.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_e_fresh",
+      "file": "assets/house_pair_l4_vertical_e_fresh-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "fresh",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "steep_gable_front_lower_rear_gable",
+      "wall": "ochre_limewash_diagonal_braces",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_e-v1.png"
+      ],
+      "prompt": "Use case precise-object-edit. Edit target is this exact house sprite. Make ONLY a transparent fresh maintenance overlay for this exact canvas. DO NOT redraw the building. Show newly whitewashed patches on plaster panels, warm clean oak repair highlights on several existing beams and doorframe edges. All unchanged house pixels must be transparent. Keep roof intact and same. Keep exact isometric coordinates of reference, aligned 1:1, full square canvas, no cropping or recentering. No text, people, chimney or new objects. Transparent RGBA texture layer. Marks noticeable but restrained at 184px.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-9f9a3817-ee76-417f-8772-67f75eba0baa.png",
+      "nativeFile": "native/l4v/e-fresh.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    },
+    {
+      "id": "house_pair_l4_vertical_e_snow",
+      "file": "assets/house_pair_l4_vertical_e_snow-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "snow",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "steep_gable_front_lower_rear_gable",
+      "wall": "ochre_limewash_diagonal_braces",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_e-v1.png"
+      ],
+      "prompt": "Edit ONLY isolated snow layer image2, matching roof of house image1. Keep ONLY snow visible transparent background, absolutely NO house or roof tiles. Shrink the three big transparent mainroof holes to HALF their current area by adding white grey settledsnow around insideedges. Shrink big rearroof hole to HALF its area too. Preserve exact snow outer perimeter and every snow coordinate, retain original full square canvas. Final snowonly overlay, no stone, no walls, no base. Painterly muted white thin snow. This fixes measured coverage52% target65–75%.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-b05f4d43-d376-47f3-bd38-11e803b04262.png",
+      "nativeFile": "native/l4v/e-snow.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter",
+        "Extract generated snow pixels: overlay alpha>=128, minRGB>=140, maxRGB-minRGB<=40; clip to independent visible-roof mask; no new painted pixels"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      },
+      "roofMask": "records/masks/house_pair_l4_vertical_e-roof.png",
+      "snowMask": "records/masks/house_pair_l4_vertical_e-snow.png",
+      "roofPixels": 5521,
+      "snowPixels": 3654,
+      "coveragePercent": 66.18366238000363,
+      "coverageMethod": "Independent manually traced complete visible base roof polygons; roof alpha>=128; final extracted snow alpha>=128. Extraction uses minRGB>=140 and chroma<=40. Denominator fixed before state edits."
+    },
+    {
+      "id": "house_pair_l4_vertical_e_boarded",
+      "file": "assets/house_pair_l4_vertical_e_boarded-v1.png",
+      "level": 4,
+      "direction": "vertical",
+      "variant": "e",
+      "state": "boarded",
+      "width": 184,
+      "height": 184,
+      "roof": "warm_limestone_slabs",
+      "shape": "steep_gable_front_lower_rear_gable",
+      "wall": "ochre_limewash_diagonal_braces",
+      "pivotcontract": "184x184 reference canvas; no crop/recenter; root restores source footplate RGBA; runtime crop/pivot in source-contract.json",
+      "refs": [
+        "assets/house_pair_l4_vertical_e-v1.png"
+      ],
+      "prompt": "Use case precise-object-edit. Edit target exact house sprite. Make ONLY abandoned-house BOARDS OVERLAY on transparent canvas, no building redraw. Thick weathered brown oak boards crossed X over main front door and 3 large front/side windows, rear workshop door boarded too. Boards broad visibly distinguishable at184px, rusty small nailheads. Precisely match openings positions on reference, same perspective. All unchanged building,roof,walls,ground and background fully transparent. Full same square canvas exact coordinates no crop/recenter. No text, people, chimneys. Painterly upperleft light.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea5a-9fe9-7cb1-b4b1-ebfe14af9f46/exec-8055b951-deae-4758-a964-d4ccd722eeb0.png",
+      "nativeFile": "native/l4v/e-boarded.png",
+      "model": null,
+      "seed": null,
+      "transforms": [
+        "Whole native canvas downsampled to 184x184 Lanczos3; no crop/recenter"
+      ],
+      "qa": {
+        "chimney": false,
+        "blueGlass": false,
+        "orientation": "front main house + rear lower workshop",
+        "visualReview": "184px five-state composite inspected: roof materials and front/rear form retained; all states readable; no chimney; c fresh is relatively saturated compared with d/e"
+      }
+    }
+  ],
+  "roofPolygons": {
+    "c": [
+      [
+        [
+          34,
+          6
+        ],
+        [
+          99,
+          48
+        ],
+        [
+          77,
+          85
+        ],
+        [
+          54,
+          52
+        ],
+        [
+          38,
+          64
+        ],
+        [
+          10,
+          46
+        ]
+      ],
+      [
+        [
+          122,
+          65
+        ],
+        [
+          163,
+          91
+        ],
+        [
+          147,
+          114
+        ],
+        [
+          113,
+          125
+        ],
+        [
+          113,
+          81
+        ]
+      ]
+    ],
+    "d": [
+      [
+        [
+          34,
+          6
+        ],
+        [
+          100,
+          47
+        ],
+        [
+          76,
+          86
+        ],
+        [
+          10,
+          46
+        ]
+      ],
+      [
+        [
+          134,
+          66
+        ],
+        [
+          174,
+          94
+        ],
+        [
+          141,
+          112
+        ],
+        [
+          113,
+          123
+        ],
+        [
+          115,
+          79
+        ]
+      ]
+    ],
+    "e": [
+      [
+        [
+          34,
+          6
+        ],
+        [
+          100,
+          47
+        ],
+        [
+          76,
+          86
+        ],
+        [
+          10,
+          46
+        ]
+      ],
+      [
+        [
+          122,
+          59
+        ],
+        [
+          163,
+          87
+        ],
+        [
+          145,
+          113
+        ],
+        [
+          114,
+          124
+        ],
+        [
+          114,
+          78
+        ]
+      ]
+    ]
+  },
+  "rejectedSnowE": [
+    {
+      "native": "native/l4v/e-snow-rejected89.png",
+      "reason": "89.30% before genuine snow extraction; too much roof coverage"
+    },
+    {
+      "native": "native/l4v/e-snow-v3.png",
+      "reason": "52.24% actual snow, undercoverage"
+    }
+  ],
+  "qaSummary": {
+    "count": 15,
+    "dimensions": "all 184x184 RGBA",
+    "snowCoveragePass": true,
+    "review": "actual-size offline composite, not installed gameplay",
+    "limitation": "fresh layer on variant c has stronger warm oak highlights"
+  }
+}

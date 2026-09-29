@@ -1,0 +1,16 @@
+{
+ "classification":"Offline screenshot reconstruction. Residential sites inferred visually; saved building IDs/lot topology are not available. These sites are illustrative candidate placements, not verified original compound IDs.",
+ "preserve":"All elevated red-roof granaries (barn.png) stay unchanged. Their large repeated silhouette is outside this commission.",
+ "scenes":[
+  {"label":"첨부 줌 1.0","source":"references/city-zoom1-source.png","width":900,"height":562,"clean":"native/city-cleanplate-1.0.png","sites":[
+   {"family":"l2v","variant":"c","pivot":[486,190],"width":44,"polygon":[[468,146],[485,137],[503,149],[505,178],[486,191],[467,181]]},
+   {"family":"l3h","variant":"d","pivot":[540,201],"width":65,"polygon":[[511,148],[528,138],[548,149],[562,155],[571,167],[570,194],[544,202],[512,185]]},
+   {"family":"l4v","variant":"c","pivot":[595,201],"width":43,"polygon":[[580,157],[595,151],[612,162],[613,189],[595,201],[579,190]]}
+  ]},
+  {"label":"첨부 줌 1.4","source":"references/설치후_줌1.4.jpg","width":1200,"height":750,"clean":"native/city-cleanplate-1.4.png","sites":[
+   {"family":"l2v","variant":"c","pivot":[665,205],"width":78,"polygon":[[632,126],[649,115],[677,120],[703,139],[702,187],[670,207],[633,190]]},
+   {"family":"l3h","variant":"d","pivot":[773,226],"width":116,"polygon":[[718,131],[739,120],[774,137],[792,145],[824,164],[823,210],[781,228],[719,197]]},
+   {"family":"l4v","variant":"c","pivot":[867,224],"width":73,"polygon":[[839,146],[855,132],[892,147],[901,167],[900,208],[868,228],[840,209]]}
+  ]}
+ ]
+}

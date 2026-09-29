@@ -1,0 +1,228 @@
+{
+  "assets": [
+    {
+      "family": "l2h",
+      "level": 2,
+      "direction": "horizontal",
+      "reference": "references/house_pair_l2_horizontal-v4.png",
+      "width": 195,
+      "height": 156,
+      "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+      "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+      "runtime_matches": true,
+      "authored_manifest": {
+        "level": 2,
+        "axis": "horizontal",
+        "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+        "width": 1402,
+        "height": 1122,
+        "alphaBounds": {
+          "x": 97,
+          "y": 47,
+          "width": 1215,
+          "height": 1062
+        }
+      },
+      "normalized_crop": {
+        "x": 13.491440798858772,
+        "y": 6.53475935828877,
+        "width": 168.990727532097,
+        "height": 147.6577540106952
+      },
+      "pivot": {
+        "x": 97.98680456490727,
+        "y": 154.19251336898395
+      },
+      "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+      "contact_mask": "records/masks/l2h-contact.png",
+      "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+    },
+    {
+      "family": "l2v",
+      "level": 2,
+      "direction": "vertical",
+      "reference": "references/house_pair_l2_vertical-v2.png",
+      "width": 183,
+      "height": 183,
+      "source_sha256": "2ef3d3d0ca334fa96c6554b7f92aaaf482623c674b1d3de49a36a64996e2c9fe",
+      "runtime_source_sha256": "2ef3d3d0ca334fa96c6554b7f92aaaf482623c674b1d3de49a36a64996e2c9fe",
+      "runtime_matches": true,
+      "authored_manifest": {
+        "level": 2,
+        "axis": "vertical",
+        "url": "assets/buildings/historical-houses/house_pair_l2_vertical-v2.png",
+        "width": 1254,
+        "height": 1254,
+        "alphaBounds": {
+          "x": 60,
+          "y": 166,
+          "width": 1164,
+          "height": 925
+        }
+      },
+      "normalized_crop": {
+        "x": 8.75598086124402,
+        "y": 24.224880382775122,
+        "width": 169.866028708134,
+        "height": 134.98803827751198
+      },
+      "pivot": {
+        "x": 93.68899521531101,
+        "y": 159.2129186602871
+      },
+      "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+      "contact_mask": "records/masks/l2v-contact.png",
+      "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+    },
+    {
+      "family": "l3h",
+      "level": 3,
+      "direction": "horizontal",
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "width": 209,
+      "height": 167,
+      "source_sha256": "0b9d9bb5a9d70a0982f7aed9a87a85e9bcaa470801f96402d6b04af311abb980",
+      "runtime_source_sha256": "0b9d9bb5a9d70a0982f7aed9a87a85e9bcaa470801f96402d6b04af311abb980",
+      "runtime_matches": true,
+      "authored_manifest": {
+        "level": 3,
+        "axis": "horizontal",
+        "url": "assets/buildings/historical-houses/house_pair_l3_horizontal-v2.png",
+        "width": 1402,
+        "height": 1122,
+        "alphaBounds": {
+          "x": 138,
+          "y": 31,
+          "width": 1138,
+          "height": 1069
+        }
+      },
+      "normalized_crop": {
+        "x": 20.57203994293866,
+        "y": 4.614081996434938,
+        "width": 169.6447931526391,
+        "height": 159.11140819964348
+      },
+      "pivot": {
+        "x": 105.3944365192582,
+        "y": 163.72549019607843
+      },
+      "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+      "contact_mask": "records/masks/l3h-contact.png",
+      "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+    },
+    {
+      "family": "l3v",
+      "level": 3,
+      "direction": "vertical",
+      "reference": "references/house_pair_l3_vertical-v2.png",
+      "width": 183,
+      "height": 183,
+      "source_sha256": "a86fee01caeca604d0fe5b2521d53a5d2310b002bc1907735a3888b52ffb51b9",
+      "runtime_source_sha256": "a86fee01caeca604d0fe5b2521d53a5d2310b002bc1907735a3888b52ffb51b9",
+      "runtime_matches": true,
+      "authored_manifest": {
+        "level": 3,
+        "axis": "vertical",
+        "url": "assets/buildings/historical-houses/house_pair_l3_vertical-v2.png",
+        "width": 1254,
+        "height": 1254,
+        "alphaBounds": {
+          "x": 54,
+          "y": 75,
+          "width": 1160,
+          "height": 1093
+        }
+      },
+      "normalized_crop": {
+        "x": 7.880382775119618,
+        "y": 10.944976076555024,
+        "width": 169.2822966507177,
+        "height": 159.50478468899522
+      },
+      "pivot": {
+        "x": 92.52153110047847,
+        "y": 170.44976076555025
+      },
+      "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+      "contact_mask": "records/masks/l3v-contact.png",
+      "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+    },
+    {
+      "family": "l4h",
+      "level": 4,
+      "direction": "horizontal",
+      "reference": "references/house_pair_l4_horizontal-v2.png",
+      "width": 204,
+      "height": 204,
+      "source_sha256": "a566dbd2fb48057171d7fca97ab9c63178abe1ccf93d73c825b39b16b8e302c6",
+      "runtime_source_sha256": "a566dbd2fb48057171d7fca97ab9c63178abe1ccf93d73c825b39b16b8e302c6",
+      "runtime_matches": true,
+      "authored_manifest": {
+        "level": 4,
+        "axis": "horizontal",
+        "url": "assets/buildings/historical-houses/house_pair_l4_horizontal-v2.png",
+        "width": 1254,
+        "height": 1254,
+        "alphaBounds": {
+          "x": 116,
+          "y": 46,
+          "width": 1039,
+          "height": 1195
+        }
+      },
+      "normalized_crop": {
+        "x": 18.870813397129186,
+        "y": 7.483253588516746,
+        "width": 169.02392344497608,
+        "height": 194.40191387559807
+      },
+      "pivot": {
+        "x": 103.38277511961722,
+        "y": 201.88516746411483
+      },
+      "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+      "contact_mask": "records/masks/l4h-contact.png",
+      "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+    },
+    {
+      "family": "l4v",
+      "level": 4,
+      "direction": "vertical",
+      "reference": "references/house_pair_l4_vertical-v2.png",
+      "width": 184,
+      "height": 184,
+      "source_sha256": "b2e76b6e2eaf8a3f8d84998f3dcc851d739fe04c7e841fccafa9057cd31135a9",
+      "runtime_source_sha256": "b2e76b6e2eaf8a3f8d84998f3dcc851d739fe04c7e841fccafa9057cd31135a9",
+      "runtime_matches": true,
+      "authored_manifest": {
+        "level": 4,
+        "axis": "vertical",
+        "url": "assets/buildings/historical-houses/house_pair_l4_vertical-v2.png",
+        "width": 1254,
+        "height": 1254,
+        "alphaBounds": {
+          "x": 67,
+          "y": 58,
+          "width": 1152,
+          "height": 1131
+        }
+      },
+      "normalized_crop": {
+        "x": 9.830940988835726,
+        "y": 8.5103668261563,
+        "width": 169.0334928229665,
+        "height": 165.95215311004785
+      },
+      "pivot": {
+        "x": 94.34768740031899,
+        "y": 174.46251993620416
+      },
+      "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+      "contact_mask": "records/masks/l4v-contact.png",
+      "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+    }
+  ],
+  "source_code": "read-only product houseCompoundAssets.ts:houseCompoundSpriteRect and runtimeAssetCoordinates.ts:runtimeAssetCrop",
+  "not_installed": true
+}

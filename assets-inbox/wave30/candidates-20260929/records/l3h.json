@@ -1,0 +1,493 @@
+{
+  "assets": [
+    {
+      "id": "house_pair_l3_horizontal_c-v1",
+      "file": "assets/house_pair_l3_horizontal_c-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "base",
+      "width": 209,
+      "height": 167,
+      "roof": "thatch",
+      "shape": "unequal intersecting double gables",
+      "wall": "warm ochre limewash, diagonal oak",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "ref": "references/house_pair_l3_horizontal-v2.png",
+      "nativeOutput": "native/l3h/c-base.png",
+      "prompt": "Use case: precise-object-edit. Input image is exact edit target: existing 209x167 L3 horizontal joined two-lot house. Create ONE new candidate sprite c. Broad golden weathered straw thatch roofs, the left frontage with a slightly lower gable and right with an intersecting thatch gable; warm pale ochre limewash; simple diagonal timber braces. Retain TWO attached frontages. Hand-painted low saturation medieval southern England circa1300 asset. Keep reference's southwest isometric camera, overall paired-house volume and footprint, exact two-front ground contact and bottom stone footplate positions and canvas placement. Do not scale or move the house relative to image. No surrounding terrain. Transparent RGBA. CHANGE roof silhouette/details above fixed original foundation only. No chimney anywhere, no glass blue reflection, no people, no text, no detached objects. Two distinct lot traces, not palace. Output only one house. Preserve source framing/aspect ratio 209:167.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_c_weathered-v1",
+      "file": "assets/house_pair_l3_horizontal_c_weathered-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "weathered",
+      "width": 209,
+      "height": 167,
+      "roof": "thatch",
+      "shape": "unequal intersecting double gables",
+      "wall": "warm ochre limewash, diagonal oak",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/c-base.png",
+      "ref": "native/l3h/c-base.png",
+      "nativeOutput": "native/l3h/c-weathered.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE weathered state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT WEATHERING OVERLAY, no house body. On exactly the shown facades and roof positions paint restrained visible dirty rain streaks, scattered peeling limewash chips, dark oak wear and a few muted moss marks. All unchanged parts fully transparent. Keep some large readable weathering patches, not barely perceptible specks. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_c_fresh-v1",
+      "file": "assets/house_pair_l3_horizontal_c_fresh-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "fresh",
+      "width": 209,
+      "height": 167,
+      "roof": "thatch",
+      "shape": "unequal intersecting double gables",
+      "wall": "warm ochre limewash, diagonal oak",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/c-base.png",
+      "ref": "native/l3h/c-base.png",
+      "nativeOutput": "native/l3h/c-fresh.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE fresh state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT FRESHLY BUILT OVERLAY, no house body. On exactly the shown facade limewash panel positions paint clear warm pale new limewash patches, neatly clean wood repairs and restrained clean roof repair patches. All unchanged parts fully transparent. Keep several broad, visibly fresh pale facade panels without hiding frame. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_c_snow-v1",
+      "file": "assets/house_pair_l3_horizontal_c_snow-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "snow",
+      "width": 209,
+      "height": 167,
+      "roof": "thatch",
+      "shape": "unequal intersecting double gables",
+      "wall": "warm ochre limewash, diagonal oak",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/c-base.png",
+      "ref": "native/l3h/c-base.png",
+      "nativeOutput": "native/l3h/c-snow.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE snow state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT SNOW OVERLAY, no house body. Cover approximately 70 percent of every visible pitched roof surface with broad continuous soft off-white snow blankets. Roof slopes and gables follow input exactly. Irregular edges, large exposed roof islands totaling30 percent; no outline-only snow. No snow covering facade, ground, sky. Overlay snow positions aligned exactly to input. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base.",
+      "roofMask": "records/masks/l3h-c-roof.png",
+      "snowMask": "records/masks/l3h-c-snow.png",
+      "roofPixels": 5847,
+      "snowPixels": 4351,
+      "coveragePercent": 74.41422951941166
+    },
+    {
+      "id": "house_pair_l3_horizontal_c_boarded-v1",
+      "file": "assets/house_pair_l3_horizontal_c_boarded-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "c",
+      "state": "boarded",
+      "width": 209,
+      "height": 167,
+      "roof": "thatch",
+      "shape": "unequal intersecting double gables",
+      "wall": "warm ochre limewash, diagonal oak",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/c-base.png",
+      "ref": "native/l3h/c-base.png",
+      "nativeOutput": "native/l3h/c-boarded.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE boarded state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT BOARDED-UP OVERLAY, no house body. Large thick weathered crossed X timber planks cover BOTH ground-floor doors, shop opening and several upper shutter windows at their exact positions. Boards easily readable at small game zoom. Transparent everywhere else. Do not add wall or house pixels. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_d-v1",
+      "file": "assets/house_pair_l3_horizontal_d-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "base",
+      "width": 209,
+      "height": 167,
+      "roof": "flat_clay_tile",
+      "shape": "narrow twin gables, petite jetty",
+      "wall": "pale pink limewash, upright framing",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "ref": "references/house_pair_l3_horizontal-v2.png",
+      "nativeOutput": "native/l3h/d-base.png",
+      "prompt": "Use case: precise-object-edit. Input image is exact edit target: existing 209x167 L3 horizontal joined two-lot house. Create ONE new candidate sprite d. Muted dusty brown-red FLAT clay tile roofs, left narrow forward gable and right slightly taller gable; pale warm pink limewash; upright rectangular timber framing and a very small right upper-floor jetty. Retain TWO attached frontages. Hand-painted low saturation medieval southern England circa1300 asset. Keep reference's southwest isometric camera, overall paired-house volume and footprint, exact two-front ground contact and bottom stone footplate positions and canvas placement. Do not scale or move the house relative to image. No surrounding terrain. Transparent RGBA. CHANGE roof silhouette/details above fixed original foundation only. No chimney anywhere, no glass blue reflection, no people, no text, no detached objects. Two distinct lot traces, not palace. Output only one house. Preserve source framing/aspect ratio 209:167.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_d_weathered-v1",
+      "file": "assets/house_pair_l3_horizontal_d_weathered-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "weathered",
+      "width": 209,
+      "height": 167,
+      "roof": "flat_clay_tile",
+      "shape": "narrow twin gables, petite jetty",
+      "wall": "pale pink limewash, upright framing",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/d-base.png",
+      "ref": "native/l3h/d-base.png",
+      "nativeOutput": "native/l3h/d-weathered.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE weathered state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT WEATHERING OVERLAY, no house body. On exactly the shown facades and roof positions paint restrained visible dirty rain streaks, scattered peeling limewash chips, dark oak wear and a few muted moss marks. All unchanged parts fully transparent. Keep some large readable weathering patches, not barely perceptible specks. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_d_fresh-v1",
+      "file": "assets/house_pair_l3_horizontal_d_fresh-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "fresh",
+      "width": 209,
+      "height": 167,
+      "roof": "flat_clay_tile",
+      "shape": "narrow twin gables, petite jetty",
+      "wall": "pale pink limewash, upright framing",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/d-base.png",
+      "ref": "native/l3h/d-base.png",
+      "nativeOutput": "native/l3h/d-fresh.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE fresh state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT FRESHLY BUILT OVERLAY, no house body. On exactly the shown facade limewash panel positions paint clear warm pale new limewash patches, neatly clean wood repairs and restrained clean roof repair patches. All unchanged parts fully transparent. Keep several broad, visibly fresh pale facade panels without hiding frame. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_d_snow-v1",
+      "file": "assets/house_pair_l3_horizontal_d_snow-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "snow",
+      "width": 209,
+      "height": 167,
+      "roof": "flat_clay_tile",
+      "shape": "narrow twin gables, petite jetty",
+      "wall": "pale pink limewash, upright framing",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/d-base.png",
+      "ref": "native/l3h/d-base.png",
+      "nativeOutput": "native/l3h/d-snow.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE snow state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT SNOW OVERLAY, no house body. Cover approximately 70 percent of every visible pitched roof surface with broad continuous soft off-white snow blankets. Roof slopes and gables follow input exactly. Irregular edges, large exposed roof islands totaling30 percent; no outline-only snow. No snow covering facade, ground, sky. Overlay snow positions aligned exactly to input. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base.",
+      "roofMask": "records/masks/l3h-d-roof.png",
+      "snowMask": "records/masks/l3h-d-snow.png",
+      "roofPixels": 5090,
+      "snowPixels": 3544,
+      "coveragePercent": 69.62671905697447
+    },
+    {
+      "id": "house_pair_l3_horizontal_d_boarded-v1",
+      "file": "assets/house_pair_l3_horizontal_d_boarded-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "d",
+      "state": "boarded",
+      "width": 209,
+      "height": 167,
+      "roof": "flat_clay_tile",
+      "shape": "narrow twin gables, petite jetty",
+      "wall": "pale pink limewash, upright framing",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/d-base.png",
+      "ref": "native/l3h/d-base.png",
+      "nativeOutput": "native/l3h/d-boarded.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE boarded state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT BOARDED-UP OVERLAY, no house body. Large thick weathered crossed X timber planks cover BOTH ground-floor doors, shop opening and several upper shutter windows at their exact positions. Boards easily readable at small game zoom. Transparent everywhere else. Do not add wall or house pixels. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_e-v1",
+      "file": "assets/house_pair_l3_horizontal_e-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "base",
+      "width": 209,
+      "height": 167,
+      "roof": "stone_slab",
+      "shape": "broad left and lower offset right gable, side doorway",
+      "wall": "ivory limewash, diagonal braces",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "references/house_pair_l3_horizontal-v2.png",
+      "ref": "references/house_pair_l3_horizontal-v2.png",
+      "nativeOutput": "native/l3h/e-base.png",
+      "prompt": "Use case: precise-object-edit. Input image is exact edit target: existing 209x167 L3 horizontal joined two-lot house. Create ONE new candidate sprite e. Warm grey-brown rough stone slab roofs, broad left gable and lower right offset gable; creamy ivory limewash; strong diagonal oak braces and a discreet small yard doorway. Stone not blue slate. Retain TWO attached frontages. Hand-painted low saturation medieval southern England circa1300 asset. Keep reference's southwest isometric camera, overall paired-house volume and footprint, exact two-front ground contact and bottom stone footplate positions and canvas placement. Do not scale or move the house relative to image. No surrounding terrain. Transparent RGBA. CHANGE roof silhouette/details above fixed original foundation only. No chimney anywhere, no glass blue reflection, no people, no text, no detached objects. Two distinct lot traces, not palace. Output only one house. Preserve source framing/aspect ratio 209:167.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_e_weathered-v1",
+      "file": "assets/house_pair_l3_horizontal_e_weathered-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "weathered",
+      "width": 209,
+      "height": 167,
+      "roof": "stone_slab",
+      "shape": "broad left and lower offset right gable, side doorway",
+      "wall": "ivory limewash, diagonal braces",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/e-base.png",
+      "ref": "native/l3h/e-base.png",
+      "nativeOutput": "native/l3h/e-weathered.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE weathered state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT WEATHERING OVERLAY, no house body. On exactly the shown facades and roof positions paint restrained visible dirty rain streaks, scattered peeling limewash chips, dark oak wear and a few muted moss marks. All unchanged parts fully transparent. Keep some large readable weathering patches, not barely perceptible specks. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_e_fresh-v1",
+      "file": "assets/house_pair_l3_horizontal_e_fresh-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "fresh",
+      "width": 209,
+      "height": 167,
+      "roof": "stone_slab",
+      "shape": "broad left and lower offset right gable, side doorway",
+      "wall": "ivory limewash, diagonal braces",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/e-base.png",
+      "ref": "native/l3h/e-base.png",
+      "nativeOutput": "native/l3h/e-fresh.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE fresh state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT FRESHLY BUILT OVERLAY, no house body. On exactly the shown facade limewash panel positions paint clear warm pale new limewash patches, neatly clean wood repairs and restrained clean roof repair patches. All unchanged parts fully transparent. Keep several broad, visibly fresh pale facade panels without hiding frame. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    },
+    {
+      "id": "house_pair_l3_horizontal_e_snow-v1",
+      "file": "assets/house_pair_l3_horizontal_e_snow-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "snow",
+      "width": 209,
+      "height": 167,
+      "roof": "stone_slab",
+      "shape": "broad left and lower offset right gable, side doorway",
+      "wall": "ivory limewash, diagonal braces",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/e-base.png",
+      "ref": "native/l3h/e-base.png",
+      "nativeOutput": "native/l3h/e-snow.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE snow state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT SNOW OVERLAY, no house body. Cover approximately 70 percent of every visible pitched roof surface with broad continuous soft off-white snow blankets. Roof slopes and gables follow input exactly. Irregular edges, large exposed roof islands totaling30 percent; no outline-only snow. No snow covering facade, ground, sky. Overlay snow positions aligned exactly to input. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base.",
+      "roofMask": "records/masks/l3h-e-roof.png",
+      "snowMask": "records/masks/l3h-e-snow.png",
+      "roofPixels": 5350,
+      "snowPixels": 3994,
+      "coveragePercent": 74.65420560747664
+    },
+    {
+      "id": "house_pair_l3_horizontal_e_boarded-v1",
+      "file": "assets/house_pair_l3_horizontal_e_boarded-v1.png",
+      "level": 3,
+      "direction": "horizontal",
+      "variant": "e",
+      "state": "boarded",
+      "width": 209,
+      "height": 167,
+      "roof": "stone_slab",
+      "shape": "broad left and lower offset right gable, side doorway",
+      "wall": "ivory limewash, diagonal braces",
+      "pivotcontract": "records/source-contract.json l3h; fixed full canvas, source footplate RGBA restored, no recenter",
+      "reference": "native/l3h/e-base.png",
+      "ref": "native/l3h/e-base.png",
+      "nativeOutput": "native/l3h/e-boarded.png",
+      "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE boarded state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT BOARDED-UP OVERLAY, no house body. Large thick weathered crossed X timber planks cover BOTH ground-floor doors, shop opening and several upper shutter windows at their exact positions. Boards easily readable at small game zoom. Transparent everywhere else. Do not add wall or house pixels. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.\n",
+      "model": null,
+      "seed": null,
+      "transforms": "Whole canvas resize 209x167. Footplate source restored for base; overlays alpha clipped to base and zeroed at contact. Fresh/weathered changed-pixel extraction RGB maxdiff ramp14–44. Snow white-pigment extraction minRGB150 chroma<=48, roof denominator independently annotated on base."
+    }
+  ],
+  "roofPolygons": {
+    "c": [
+      [
+        145,
+        380
+      ],
+      [
+        330,
+        32
+      ],
+      [
+        725,
+        204
+      ],
+      [
+        1140,
+        415
+      ],
+      [
+        1264,
+        493
+      ],
+      [
+        1280,
+        537
+      ],
+      [
+        1150,
+        419
+      ],
+      [
+        1015,
+        732
+      ],
+      [
+        864,
+        456
+      ],
+      [
+        607,
+        586
+      ],
+      [
+        406,
+        293
+      ],
+      [
+        196,
+        432
+      ]
+    ],
+    "d": [
+      [
+        125,
+        360
+      ],
+      [
+        300,
+        22
+      ],
+      [
+        1147,
+        410
+      ],
+      [
+        1271,
+        515
+      ],
+      [
+        1246,
+        539
+      ],
+      [
+        1155,
+        421
+      ],
+      [
+        1016,
+        720
+      ],
+      [
+        833,
+        337
+      ],
+      [
+        606,
+        573
+      ],
+      [
+        430,
+        227
+      ],
+      [
+        196,
+        410
+      ]
+    ],
+    "e": [
+      [
+        126,
+        370
+      ],
+      [
+        306,
+        24
+      ],
+      [
+        716,
+        210
+      ],
+      [
+        1140,
+        411
+      ],
+      [
+        1254,
+        515
+      ],
+      [
+        1237,
+        539
+      ],
+      [
+        1144,
+        427
+      ],
+      [
+        1012,
+        724
+      ],
+      [
+        870,
+        436
+      ],
+      [
+        612,
+        578
+      ],
+      [
+        420,
+        223
+      ],
+      [
+        189,
+        409
+      ]
+    ]
+  },
+  "roofCoordinateBasis": [
+    1392,
+    1136
+  ],
+  "qa": {
+    "status": "pass",
+    "reviewImage": "native/l3h/qa-contact.png",
+    "review": "Viewed all15 composited cells at2x. Three roof materials distinguish; each has two ground frontages; no chimney/blue glass/text. Weathered dark moss and fresh clean limewash differ visibly. Broad irregular snow blankets distinguish snowy roof. Crossboards align door/window/shop openings. Tiny source-restored right contour fleck is inherited contact data; root common normalization owns it.",
+    "snowCoverageRule": "Independent base roof polygons, binary roof alpha>=128; generated snow pigments minRGB150 and max-min<=48; snow alpha>=128, intersect denominator. Not percentage fitted.",
+    "limitations": "Offline compositing only, no installed runtime test. Base silhouette close to original by design; most diversity comes material, framing, gable shape and wall hue."
+  }
+}

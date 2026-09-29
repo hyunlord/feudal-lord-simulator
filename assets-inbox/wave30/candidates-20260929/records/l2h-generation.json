@@ -1,0 +1,76 @@
+{
+  "c": {
+    "prompt": "Use case: precise-object-edit. Edit this single isometric medieval joined two-lot house sprite, southern England 1300. Variant C: two attached frontages under warm straw thatch, gently rounded thick thatch eaves, off-white limewashed upper walls with simple vertical oak framing, slightly unequal ridge heights. Keep exactly this horizontal two-lot silhouette scale, view, lower stone foundation footprint, ground contact and transparent canvas margins. NO chimney, no glass, no people, no text. Preserve painterly tiny game sprite material. Actual RGBA transparent background. One building only.",
+    "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-b7090ef2-c954-45b9-a712-30480a70c972.png",
+    "states": {
+      "snow": {
+        "prompt": "Use case precise-object-edit. This sprite is a positioning template. Return ONLY a transparent RGBA SNOW OVERLAY at exactly the same canvas framing and positions, no house body in output. Paint opaque soft ivory snow across about70% of ALL visible thatched roof planes, broad irregular settled patches following pitched roofs, leave30% thatch visible in holes and eave strips. No ground snow. Keep roof location and perspective identical. Everything not snow must transparent. No new objects, no chimney, no text. Thick snow sheet visually reads snow-covered roof, not thin white rim.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-10b3ca44-14b1-41c2-a9c8-dc0afcbb680a.png"
+      },
+      "weathered": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add visibly worn limewash chips, dark weather stains beneath eaves, faded grey oak beam edges. Keep roofs material/color and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-65ea2989-55c9-49bd-8654-b537fb63a649.png"
+      },
+      "fresh": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add fresh warm ivory/ochre limewash repair brush patches on plaster panels and warm newly repaired oak plank edges. Keep roofs and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-53dae91e-3e39-46a1-a462-96a06c3f515d.png"
+      },
+      "boarded": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Board up every groundfloor door and visible window with thick crossed rough dark oak planks, large enough to read at tiny sprite size. No people. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-f7702859-76db-4175-b68d-45cd56c15b68.png"
+      }
+    }
+  },
+  "d": {
+    "prompt": "Use case precise-object-edit. Single horizontal attached two-lot medieval house sprite. Variant D: thatched roofs with one narrow projecting front gable on LEFT house and lower long thatch ridge on RIGHT house. Pale warm ochre limewash, diagonal dark oak braces, distinct small arched courtyard entry on right front. Same source painterly isometric angle, two-storey low mass, EXACT same lowest stone foundation footprint and ground anchor. No chimney, no glass, no people, no text, no extra yard. Transparent RGBA. Make architectural variant genuinely different, not recolor.",
+    "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-d7771759-1365-4473-bbf8-7911dcc507f3.png",
+    "states": {
+      "snow": {
+        "prompt": "Use case precise-object-edit. Add WINTER SNOW to the whole attached medieval house, keep exact canvas framing and all geometry identical. Snow must thickly cover80% of the visible roof area, BROAD connected white blankets, only sparse small uncovered holes20%, not isolated spots. Keep walls doors foundation unchanged, no ground snow. No chimney/no text. Actualtransparent background. Fullhouse return positioned exactlysame.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-0634757f-ce0d-4316-8f8a-b7320d9d83d3.png"
+      },
+      "weathered": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add visibly worn limewash chips, dark weather stains beneath eaves, faded grey oak beam edges. Keep roofs material/color and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-09fb4e84-fe69-481a-b7dc-6b4b2e21aebf.png"
+      },
+      "fresh": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add fresh warm ochre limewash repair brush patches on plaster panels and warm newly repaired oak plank edges. Keep roofs and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-9c1eaf90-4f12-45a5-b0ac-e4188b18d9eb.png"
+      },
+      "boarded": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Board up every groundfloor door and visible window with thick crossed rough dark oak planks, large enough to read at tiny sprite size. No people. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-b26f76be-b514-4ea6-863e-481def16282d.png"
+      },
+      "snowRejected": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add broad settled ivory snow blankets covering70% of all pitched thatch roof planes with irregular patches and30% exposed thatch holes. No ground snow. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-1dc5bcba-0108-4992-b890-8645b68dee09.png"
+      }
+    }
+  },
+  "e": {
+    "prompt": "Use case precise-object-edit. Single horizontal two attached medieval houses, southern England1300, architectural Variant E. Muted desaturated brown-grey FLAT clay tile roofs, two different ridgelines with small front gable RIGHT, faint pink limewash left/ivory limewash right, sparse black-brown timber horizontal beam panels and shallow modest jettied upper floor. Keep source painterly isometric camera, footprint, exact lowest foundation, ground contact, canvas proportion. No chimney, glass, text, people, modern materials, yard. RGBA transparent background. Distinct from source long red tile ridge.",
+    "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-cf77bce9-6e4a-4b83-af8d-441bf4080fe0.png",
+    "states": {
+      "snow": {
+        "prompt": "Use case precise-object-edit. Add WINTER SNOW to the whole attached medieval house, keep exact canvas framing and all geometry identical. Snow must thickly cover80% of the visible roof area, BROAD connected white blankets, only sparse small uncovered holes20%, not isolated spots. Keep walls doors foundation unchanged, no ground snow. No chimney/no text. Actualtransparent background. Fullhouse return positioned exactlysame.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-c90adf26-206a-4fb8-9bfc-f90cf341daa0.png"
+      },
+      "weathered": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add visibly worn limewash chips, dark weather stains beneath eaves, faded grey oak beam edges. Keep roofs material/color and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-182ff15b-0bac-48aa-b8a1-becd35092728.png"
+      },
+      "fresh": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add fresh pink/ivory limewash repair brush patches on plaster panels and warm newly repaired oak plank edges. Keep roofs and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-a54a2e08-7cdb-45b0-81fb-cc0134dd37ea.png"
+      },
+      "boarded": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Board up every groundfloor door and visible window with thick crossed rough dark oak planks, large enough to read at tiny sprite size. No people. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-f353e186-6b8d-4269-a349-ce8a5076d1d9.png"
+      },
+      "snowRejected": {
+        "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add broad settled ivory snow blankets covering70% of all pitched tiled roof planes with irregular patches and30% exposed brown tile holes. No ground snow. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+        "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-2cdfb8e5-1708-42e7-acba-eb8c8bce92ac.png"
+      }
+    }
+  }
+}
