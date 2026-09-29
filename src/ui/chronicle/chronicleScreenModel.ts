@@ -14,7 +14,7 @@ import { calendar, scenarioOf } from "../../engine/scenarioState";
 import { factionDisplayName } from "../../content/factionCopy.ko";
 import type { FactionRecord } from "../../engine/faction.types";
 import { lordHouseHeraldrySeed, lordshipOf } from "../../engine/lordshipState";
-import { chronicleIllustration } from "../chronicleModel";
+import { CHAPTER_START_ART, chronicleIllustration } from "../chronicleModel";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { armsRecipe, heraldryArms, heraldryMark, royalArms } from "../heraldry/heraldry";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
@@ -363,7 +363,9 @@ function chapterThreeArt(_state: unknown, record: HistoryRecord): ChronicleArt {
     const id = plagueDecisions[param("defId")];
     if (id !== undefined) return { kind: "wave21", id };
   }
-  // Chapter 3 start: no dedicated intro art exists (gap — falls through to chapterTwoArt / base rules).
+  // PLAGUE-b: chapter 3 has no start painting yet (asked of Astra) — its first event, the harbour fever rumour, stands in.
+  const start = record.template === "milestone.chapter_start" ? CHAPTER_START_ART[Number(param("chapter"))] : undefined;
+  if (start !== undefined) return { kind: "wave21", id: start };
   if (record.template === "milestone.chapter_end" && param("chapter") === "3") return { kind: "wave21", id: "ch3_ending" };
   return null;
 }
