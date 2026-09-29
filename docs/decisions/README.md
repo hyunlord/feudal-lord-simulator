@@ -430,6 +430,7 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | LG4 | **유산 판정은 세 축 점수와 고른 유산 하나로 결말 여섯 가운데 하나를 준다**(명세 LG-7 표). 가장 높은 축이 같으면 도시 → 가문 → 교회. 결말 문장은 원장을 인용한다(특허 해·시장·후계자·가문 이름). 봇 도시는 도시 축이 높아 교회 축이 가장 높은 결말(`pilgrim_town`)은 나오기 어렵다 — 교회를 키운 도시의 결말로 남긴다 | 확정(F5-A) | 2026-09-29 | [5장 명세](../design/chapter-five-legacy.md) · [F5-A 보고서](../verification/f5a-legacy/REPORT.md) |
 | LG5 | **연대기 책(`campaignChronicle`)은 저장하지 않고 원장에서 편집한다**: 장별 쪽(사건·결정 인용·요약), 가문 계보(영주관 사람 모두), 세력 연대(세력 기록과 그 세력이 든 사건), 유산. 내보내기 글은 `campaignChronicleText`(문구 `legacyCopy.ko.ts`). 5장 끝이 캠페인 승리다(FL-9 그대로). 5장 뒤에도 도시는 계속 돈다 | 확정(F5-A) | 2026-09-29 | [5장 명세](../design/chapter-five-legacy.md) · [F5-A 보고서](../verification/f5a-legacy/REPORT.md) |
 | LG6 | **명령으로 준 5장 답이 곧바로 바꾼 것은 명령 때 원장에 쓴다**(`recordDecision`이 `legacyDrafts`를 부른다: 후계자, 국왕 과세, 특허 인장). 틱만 보는 기록은 명령이 바꾼 상태를 놓친다 — 4장의 길드 결성 기록(`reorg.guild_founded`)이 그렇게 빠진다(다음 후보) | 확정(F5-A) | 2026-09-29 | [5장 명세](../design/chapter-five-legacy.md) · [F5-A 보고서](../verification/f5a-legacy/REPORT.md) |
+| LG7 | 규칙 19 고정값(F5-A): `fixtures/saves/v29/`(v28 묶음 열을 v29로, `buildSaveFixtures.ts --from-version 28`, 그리고 새 `chapter-five-town` — 가드레일 실행기의 seed 1이 봇과 봇의 답으로 1~4장을 지나 5장 첫 틱(1382)에 선 도시, `scripts/chapterFiveFixture.ts`, 경로 캐시만 비움), `src/save/schemaFingerprint.v29.json`을 더했다. 이유: 저장 v29가 `state.legacy`와 청원의 `options`를 더했다. 다시 기록한 고정값은 없다(5장은 1382년부터라 1~4장 고정값이 그대로다) | 확정(F5-A) | 2026-09-29 | [F5-A 보고서](../verification/f5a-legacy/REPORT.md) |
 
 ## R1-fix 확정 규칙
 
