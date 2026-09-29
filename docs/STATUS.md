@@ -16,7 +16,7 @@
 - **ARCH-1 지도 유형 넷(+강가) — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/arch1/REPORT.md), [명세](design/map-archetypes.md) MA-1~MA-8, 결정 MA1~MA7.
   - 땅 다섯: 강가 시장도시(`core:open_field` 그대로), 해안 항구, 백악 언덕 목양, 숲 가장자리 개척, 습지 간척. 지형은 (땅, seed) 결정론이고, 땅마다 물·바위·숲의 몫(분위수)으로 자른다. 해안은 북/서 바다다. 모든 새 땅에서 시작 마을이 같은 자리에 선다(마을 자리 보장).
   - 규칙 차이는 계수 다섯(경작·목축·목재·홍수·해안 사건)뿐이다. 강가는 모두 1,000이라 바이트까지 같다. 새 건물은 없다. 저장 v31 `archetypeId`.
-  - 관문: 봇 1장 완주 15/15(1317~1326), 지형 캡처 15장(128², JPEG), 가드레일 `91fc529` 5/5(끝 상태 해시 다섯 = `baseline-321168c`), 사람 경로 새 땅 넷 1장 생존(1318까지 60명 이상)·가드레일 옆 10/10, 계층 시험 실패 1 고침(`hashSeed` → `content/seedHash.ts`).
+  - 관문: 봇 1장 완주 15/15(1317~1326), 지형 캡처 15장(128², JPEG), 가드레일 `91fc529` 5/5(끝 상태 해시 다섯 = `baseline-321168c`), 사람 경로 새 땅 넷 1장 생존(1318까지 60명 이상)·가드레일 옆 10/10, 계층 시험 실패 1 고침(`hashSeed` → `content/seedHash.ts`), 깨끗한 클론 `2a66b17` 3,750/3,750·build.
   - 넘길 것(렌더): 시작 화면의 땅 고르기(`mapArchetypes`·`SCENARIO_COPY.archetypes`·`start_new_game`의 `archetypeId`·`seed`), 지면 배치 데이터 `archetypeGroundLayer`(Wave 22 채움·띠·소품), 들판 경계(Wave 28)·물 움직임(Wave 29), `countrysideLayout`의 땅을 `stateArchetype(state)`로.
 
 - **CLOTH-UI 직물 사슬 화면 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_E 2, 엔진 C5 넘김): [보고서](verification/cloth-ui/REPORT.md), 결정 CLOTHUI-D1~D5.

@@ -1,6 +1,6 @@
 # ARCH-1 지도 유형 넷(+강가) — 보고서
 
-관문: 통과 — 봇 1장 완주 15/15(관문 ≥ 13) · 유형별 지형 캡처 15장 · open_field 가드레일 `91fc529` 5/5(끝 상태 해시 다섯 = `baseline-321168c`) · 사람 경로 새 땅 넷 1장 생존 + 가드레일 옆 10/10 · 저장 v31 · 깨끗한 클론(아래 7절)
+관문: 통과 — 봇 1장 완주 15/15(관문 ≥ 13) · 유형별 지형 캡처 15장 · open_field 가드레일 `91fc529` 5/5(끝 상태 해시 다섯 = `baseline-321168c`) · 사람 경로 새 땅 넷 1장 생존 + 가드레일 옆 10/10 · 저장 v31 · 깨끗한 클론 `2a66b17` 3,750/3,750
 
 - 지시: 사용자 지시 2026-09-29 ARCH-1(6시간), `to_ClaudeCode_ARCH1`.
 - 명세: [지도 유형](../../design/map-archetypes.md) MA-1~MA-8. 결정: MA1~MA7.
@@ -75,7 +75,7 @@ DGX `engine-ARCH1-bot-2c98055`에서 가드레일의 성장 봇이 땅 옵션으
   - 고침: `hashSeed`와 그 섞기 함수를 `src/content/seedHash.ts`로 그대로 옮기고, `engine/prng`가 다시 내보낸다. 값이 같아 지형 캡처가 바이트까지 같다.
 - 저장 v31: `GameState.archetypeId`를 더했다. 이행은 판 번호만 올린다. 지문 `schemaFingerprint.v31.json`, 고정값 `fixtures/saves/v31/` 열둘(결정 MA7).
 - 병합 전 검사(`check:merge`): 통과.
-- 깨끗한 클론: 마지막 커밋에서 DGX `engine-ARCH1-clone`로 돌린다(결과는 STATUS·ROADMAP 비고에 적는다).
+- 깨끗한 클론 `2a66b17`(DGX `engine-ARCH1-clone`, 본선 UI-9·INBOX-2k 병합 뒤): 전체 회귀 3,750/3,750, typecheck, build 통과.
 
 ## 8. 렌더가 넘겨받을 것
 - **시작 화면의 땅 고르기**:
@@ -94,4 +94,4 @@ DGX `engine-ARCH1-bot-2c98055`에서 가드레일의 성장 봇이 땅 옵션으
 - 사람 플레이(G4)에서 땅마다의 첫 30분.
 
 ## 10. 시간
-- 13:08~ KST(명령 시각). 끝 시각은 STATUS에 적는다. 6시간 상한 안이다.
+- 13:08~14:21 KST(명령 시각). 6시간 상한 안이다.
