@@ -95,9 +95,9 @@ await step("r00-chapter4-opening", async () => {
   await close();
 });
 
-// The reorganisation's forecast on the season strip (the wages war's season: the steps ahead).
+// The reorganisation's forecast on the season strip (the petitions' surge: the guild's demand a year ahead).
 await step("season-strip", async () => {
-  const { page, close } = await scene("reorg.wage_competition", 600_000);
+  const { page, close } = await scene("reorg.petitions_surge", 600_000);
   await page.waitForTimeout(1_000);
   await page.locator("[data-testid='hud-calendar']").first().click(); await page.waitForTimeout(600);
   await page.screenshot({ path: join(out!, "r00-season-strip.jpg"), type: "jpeg", quality: 66 });

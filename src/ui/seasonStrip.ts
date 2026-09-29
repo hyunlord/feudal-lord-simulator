@@ -85,6 +85,7 @@ export function plagueMarks(steps: readonly Pick<PlagueStep, "id" | "tick" | "st
  */
 export type ReorganisationMark = { readonly id: ReorganisationStepId; readonly tick: number; readonly fraction: number };
 export function reorganisationMarks(steps: readonly Pick<ReorganisationStep, "id" | "tick" | "state">[], now: number): readonly ReorganisationMark[] {
-  return steps.filter(step => step.state === "ahead" && step.tick !== null && step.tick >= now && step.tick - now < YEAR)
+  // The reorganisation's steps come a year (four seasons) apart: the next one, exactly a year ahead, still shows.
+  return steps.filter(step => step.state === "ahead" && step.tick !== null && step.tick >= now && step.tick - now <= YEAR)
     .map(step => ({ id: step.id, tick: step.tick!, fraction: yearFraction(step.tick!) })).sort((a, b) => a.tick - b.tick);
 }
