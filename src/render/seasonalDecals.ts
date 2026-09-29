@@ -117,7 +117,15 @@ function drawDecalsOf(context: CanvasRenderingContext2D, state: GameState, tiles
       const key = seasonalDecal(state.seed, tile, season);
       if (key === null) continue;
       const at = tileToScreen(tile.tx, tile.ty);
-      drawWave9(context, PUDDLES[key === "dry_grass_a" ? 0 : 1]!, at.sx, at.sy + TILE_H * 0.35, DECAL_SCALE);
+      // NAT-1: two puddle paintings on every dry-grass tile read as one stamp repeated; half the scatter holds one, at
+      // 0.75–1.1 of its size, every other one mirrored (by the tile's hash).
+      const pick = hashNumbers([state.seed, tile.tx, tile.ty, 9_203]);
+      if (pick % 2 === 1) continue;
+      const scale = DECAL_SCALE * (0.75 + ((pick >> 3) % 8) * 0.05);
+      const mirrored = ((pick >> 1) & 1) === 1;
+      if (mirrored) { context.save(); context.translate(at.sx, 0); context.scale(-1, 1); context.translate(-at.sx, 0); }
+      drawWave9(context, PUDDLES[key === "dry_grass_a" ? 0 : 1]!, at.sx, at.sy + TILE_H * 0.35, scale);
+      if (mirrored) context.restore();
     }
     return;
   }
