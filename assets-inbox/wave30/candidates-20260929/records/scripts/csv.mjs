@@ -1,0 +1,17 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { Workbook } from '/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const {assets,status}=JSON.parse(await fs.readFile(root+'/records/manifest.json','utf8'));
+if(status!=='PASS'||assets.length!==90)throw Error('Verified 90 assets required');
+const headers=['id','file','status','family','level','direction','variant','state','width','height','roof','shape','wall','pivot_x','pivot_y','snow_coverage_percent','roof_pixels','snow_pixels','roof_mask','snow_mask','provenance','model_version','seed','sha256'];
+const rows=assets.map(a=>[a.id,a.file,a.status,a.family,a.level,a.direction,a.variant,a.state,a.width,a.height,a.roof,a.shape,a.wall,a.pivot.x,a.pivot.y,a.coverage?.coveragePercent??'',a.coverage?.roofPixels??'',a.coverage?.snowPixels??'',a.coverage?.roofMask??'',a.coverage?.snowMask??'',a.provenance,'not exposed','not exposed',a.sha256]);
+const wb=Workbook.create(),sheet=wb.worksheets.add('Wave30');
+sheet.getRange('A1:X91').values=[headers,...rows];wb.recalculate();
+const matrix=sheet.getRange('A1:X91').values;
+if(matrix.length!==91||matrix.some(r=>r.length!==24))throw Error('CSV dimensions');
+const quote=x=>'"'+String(x??'').replaceAll('"','""')+'"';
+await fs.writeFile(root+'/generation-records.csv','\uFEFF'+matrix.map(r=>r.map(quote).join(',')).join('\r\n')+'\r\n');
+await fs.writeFile(root+'/records/csv-verification.json',JSON.stringify({rows:90,columns:24,snowRows:rows.filter(r=>r[7]==='snow').length,artifactToolRoundtrip:true,format:'UTF8 BOM, RFC4180, CRLF; static measured records, no formulas'},null,2));
+console.log('CSV90 rows /24 columns');

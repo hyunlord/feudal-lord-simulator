@@ -1,0 +1,989 @@
+{
+  "assets": [
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "c",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "two offset attached ridges",
+      "wall": "ivory limewash; vertical oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case: precise-object-edit. Edit this single isometric medieval joined two-lot house sprite, southern England 1300. Variant C: two attached frontages under warm straw thatch, gently rounded thick thatch eaves, off-white limewashed upper walls with simple vertical oak framing, slightly unequal ridge heights. Keep exactly this horizontal two-lot silhouette scale, view, lower stone foundation footprint, ground contact and transparent canvas margins. NO chimney, no glass, no people, no text. Preserve painterly tiny game sprite material. Actual RGBA transparent background. One building only.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-b7090ef2-c954-45b9-a712-30480a70c972.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_c",
+      "file": "assets/house_pair_l2_horizontal_c-v1.png",
+      "state": "base",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-b7090ef2-c954-45b9-a712-30480a70c972.png",
+      "ref": "references/house_pair_l2_horizontal-v4.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "c",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "two offset attached ridges",
+      "wall": "ivory limewash; vertical oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add visibly worn limewash chips, dark weather stains beneath eaves, faded grey oak beam edges. Keep roofs material/color and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-65ea2989-55c9-49bd-8654-b537fb63a649.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_c_weathered",
+      "file": "assets/house_pair_l2_horizontal_c_weathered-v1.png",
+      "state": "weathered",
+      "ref": "assets/house_pair_l2_horizontal_c-v1.png",
+      "transform": "Fullstate samecanvas resize; retain changed wall pixels threshold 12 excluding roof; preserve base silhouette; no procedural painting.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-65ea2989-55c9-49bd-8654-b537fb63a649.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "c",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "two offset attached ridges",
+      "wall": "ivory limewash; vertical oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add fresh warm ivory/ochre limewash repair brush patches on plaster panels and warm newly repaired oak plank edges. Keep roofs and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-53dae91e-3e39-46a1-a462-96a06c3f515d.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_c_fresh",
+      "file": "assets/house_pair_l2_horizontal_c_fresh-v1.png",
+      "state": "fresh",
+      "ref": "assets/house_pair_l2_horizontal_c-v1.png",
+      "transform": "Fullstate samecanvas resize; retain changed wall pixels threshold 12 excluding roof; preserve base silhouette; no procedural painting.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-53dae91e-3e39-46a1-a462-96a06c3f515d.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "c",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "two offset attached ridges",
+      "wall": "ivory limewash; vertical oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. This sprite is a positioning template. Return ONLY a transparent RGBA SNOW OVERLAY at exactly the same canvas framing and positions, no house body in output. Paint opaque soft ivory snow across about70% of ALL visible thatched roof planes, broad irregular settled patches following pitched roofs, leave30% thatch visible in holes and eave strips. No ground snow. Keep roof location and perspective identical. Everything not snow must transparent. No new objects, no chimney, no text. Thick snow sheet visually reads snow-covered roof, not thin white rim.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-10b3ca44-14b1-41c2-a9c8-dc0afcbb680a.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_c_snow",
+      "file": "assets/house_pair_l2_horizontal_c_snow-v1.png",
+      "state": "snow",
+      "ref": "assets/house_pair_l2_horizontal_c-v1.png",
+      "transform": "Generated snow colors isolated RGBmin>170, RGBspread<55; intersect independent roof polygon. c native roof bbox normalized to original roofbbox; d/e fullcanvas resize.",
+      "coverage": 0.6847200785744353,
+      "snow_pixels": 4880,
+      "roof_pixels": 7127,
+      "roof_mask": "records/masks/l2h-c-roof.png",
+      "coverage_threshold": "mask alpha>=128; snow overlay alpha>=128; target0.60–0.80",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-10b3ca44-14b1-41c2-a9c8-dc0afcbb680a.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      },
+      "roofMask": "records/masks/l2h-c-roof.png",
+      "snowMask": "records/masks/l2h-c-snow.png",
+      "roofPixels": 7127,
+      "snowPixels": 4880,
+      "coveragePercent": 68.47200785744353,
+      "coveragePass": true
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "c",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "two offset attached ridges",
+      "wall": "ivory limewash; vertical oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Board up every groundfloor door and visible window with thick crossed rough dark oak planks, large enough to read at tiny sprite size. No people. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-f7702859-76db-4175-b68d-45cd56c15b68.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_c_boarded",
+      "file": "assets/house_pair_l2_horizontal_c_boarded-v1.png",
+      "state": "boarded",
+      "ref": "assets/house_pair_l2_horizontal_c-v1.png",
+      "transform": "Fullstate samecanvas resize; retain changed wall pixels threshold 28 excluding roof; preserve base silhouette; no procedural painting.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-f7702859-76db-4175-b68d-45cd56c15b68.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "d",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "left projecting gable; unequal thatch ridges",
+      "wall": "ochre limewash; diagonal oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Single horizontal attached two-lot medieval house sprite. Variant D: thatched roofs with one narrow projecting front gable on LEFT house and lower long thatch ridge on RIGHT house. Pale warm ochre limewash, diagonal dark oak braces, distinct small arched courtyard entry on right front. Same source painterly isometric angle, two-storey low mass, EXACT same lowest stone foundation footprint and ground anchor. No chimney, no glass, no people, no text, no extra yard. Transparent RGBA. Make architectural variant genuinely different, not recolor.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-d7771759-1365-4473-bbf8-7911dcc507f3.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_d",
+      "file": "assets/house_pair_l2_horizontal_d-v1.png",
+      "state": "base",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-d7771759-1365-4473-bbf8-7911dcc507f3.png",
+      "ref": "references/house_pair_l2_horizontal-v4.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "d",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "left projecting gable; unequal thatch ridges",
+      "wall": "ochre limewash; diagonal oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add visibly worn limewash chips, dark weather stains beneath eaves, faded grey oak beam edges. Keep roofs material/color and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-09fb4e84-fe69-481a-b7dc-6b4b2e21aebf.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_d_weathered",
+      "file": "assets/house_pair_l2_horizontal_d_weathered-v1.png",
+      "state": "weathered",
+      "ref": "assets/house_pair_l2_horizontal_d-v1.png",
+      "transform": "Fullstate samecanvas resize; retain changed wall pixels threshold 12 excluding roof; preserve base silhouette; no procedural painting.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-09fb4e84-fe69-481a-b7dc-6b4b2e21aebf.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "d",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "left projecting gable; unequal thatch ridges",
+      "wall": "ochre limewash; diagonal oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add fresh warm ochre limewash repair brush patches on plaster panels and warm newly repaired oak plank edges. Keep roofs and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-9c1eaf90-4f12-45a5-b0ac-e4188b18d9eb.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_d_fresh",
+      "file": "assets/house_pair_l2_horizontal_d_fresh-v1.png",
+      "state": "fresh",
+      "ref": "assets/house_pair_l2_horizontal_d-v1.png",
+      "transform": "Fullstate samecanvas resize; retain changed wall pixels threshold 12 excluding roof; preserve base silhouette; no procedural painting.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-9c1eaf90-4f12-45a5-b0ac-e4188b18d9eb.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "d",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "left projecting gable; unequal thatch ridges",
+      "wall": "ochre limewash; diagonal oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Add WINTER SNOW to the whole attached medieval house, keep exact canvas framing and all geometry identical. Snow must thickly cover80% of the visible roof area, BROAD connected white blankets, only sparse small uncovered holes20%, not isolated spots. Keep walls doors foundation unchanged, no ground snow. No chimney/no text. Actualtransparent background. Fullhouse return positioned exactlysame.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-0634757f-ce0d-4316-8f8a-b7320d9d83d3.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_d_snow",
+      "file": "assets/house_pair_l2_horizontal_d_snow-v1.png",
+      "state": "snow",
+      "ref": "assets/house_pair_l2_horizontal_d-v1.png",
+      "transform": "Generated snow colors isolated RGBmin>170, RGBspread<55; intersect independent roof polygon. c native roof bbox normalized to original roofbbox; d/e fullcanvas resize.",
+      "coverage": 0.744638783269962,
+      "snow_pixels": 4896,
+      "roof_pixels": 6575,
+      "roof_mask": "records/masks/l2h-d-roof.png",
+      "coverage_threshold": "mask alpha>=128; snow overlay alpha>=128; target0.60–0.80",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-0634757f-ce0d-4316-8f8a-b7320d9d83d3.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      },
+      "roofMask": "records/masks/l2h-d-roof.png",
+      "snowMask": "records/masks/l2h-d-snow.png",
+      "roofPixels": 6575,
+      "snowPixels": 4896,
+      "coveragePercent": 74.46387832699621,
+      "coveragePass": true
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "d",
+      "width": 195,
+      "height": 156,
+      "roof": "thatch",
+      "shape": "left projecting gable; unequal thatch ridges",
+      "wall": "ochre limewash; diagonal oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Board up every groundfloor door and visible window with thick crossed rough dark oak planks, large enough to read at tiny sprite size. No people. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-b26f76be-b514-4ea6-863e-481def16282d.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_d_boarded",
+      "file": "assets/house_pair_l2_horizontal_d_boarded-v1.png",
+      "state": "boarded",
+      "ref": "assets/house_pair_l2_horizontal_d-v1.png",
+      "transform": "Fullstate samecanvas resize; retain changed wall pixels threshold 28 excluding roof; preserve base silhouette; no procedural painting.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-b26f76be-b514-4ea6-863e-481def16282d.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "e",
+      "width": 195,
+      "height": 156,
+      "roof": "muted flat clay tile",
+      "shape": "two offset attached ridges",
+      "wall": "pink and ivory limewash; sparse oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Single horizontal two attached medieval houses, southern England1300, architectural Variant E. Muted desaturated brown-grey FLAT clay tile roofs, two different ridgelines with small front gable RIGHT, faint pink limewash left/ivory limewash right, sparse black-brown timber horizontal beam panels and shallow modest jettied upper floor. Keep source painterly isometric camera, footprint, exact lowest foundation, ground contact, canvas proportion. No chimney, glass, text, people, modern materials, yard. RGBA transparent background. Distinct from source long red tile ridge.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-cf77bce9-6e4a-4b83-af8d-441bf4080fe0.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_e",
+      "file": "assets/house_pair_l2_horizontal_e-v1.png",
+      "state": "base",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-cf77bce9-6e4a-4b83-af8d-441bf4080fe0.png",
+      "ref": "references/house_pair_l2_horizontal-v4.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "e",
+      "width": 195,
+      "height": 156,
+      "roof": "muted flat clay tile",
+      "shape": "two offset attached ridges",
+      "wall": "pink and ivory limewash; sparse oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add visibly worn limewash chips, dark weather stains beneath eaves, faded grey oak beam edges. Keep roofs material/color and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-182ff15b-0bac-48aa-b8a1-becd35092728.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_e_weathered",
+      "file": "assets/house_pair_l2_horizontal_e_weathered-v1.png",
+      "state": "weathered",
+      "ref": "assets/house_pair_l2_horizontal_e-v1.png",
+      "transform": "Fullstate samecanvas resize; retain changed wall pixels threshold 12 excluding roof; preserve base silhouette; no procedural painting.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-182ff15b-0bac-48aa-b8a1-becd35092728.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "e",
+      "width": 195,
+      "height": 156,
+      "roof": "muted flat clay tile",
+      "shape": "two offset attached ridges",
+      "wall": "pink and ivory limewash; sparse oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Add fresh pink/ivory limewash repair brush patches on plaster panels and warm newly repaired oak plank edges. Keep roofs and structure unchanged. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-a54a2e08-7cdb-45b0-81fb-cc0134dd37ea.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_e_fresh",
+      "file": "assets/house_pair_l2_horizontal_e_fresh-v1.png",
+      "state": "fresh",
+      "ref": "assets/house_pair_l2_horizontal_e-v1.png",
+      "transform": "Fullstate samecanvas resize; retain changed wall pixels threshold 12 excluding roof; preserve base silhouette; no procedural painting.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-a54a2e08-7cdb-45b0-81fb-cc0134dd37ea.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "e",
+      "width": 195,
+      "height": 156,
+      "roof": "muted flat clay tile",
+      "shape": "two offset attached ridges",
+      "wall": "pink and ivory limewash; sparse oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Add WINTER SNOW to the whole attached medieval house, keep exact canvas framing and all geometry identical. Snow must thickly cover80% of the visible roof area, BROAD connected white blankets, only sparse small uncovered holes20%, not isolated spots. Keep walls doors foundation unchanged, no ground snow. No chimney/no text. Actualtransparent background. Fullhouse return positioned exactlysame.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-c90adf26-206a-4fb8-9bfc-f90cf341daa0.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_e_snow",
+      "file": "assets/house_pair_l2_horizontal_e_snow-v1.png",
+      "state": "snow",
+      "ref": "assets/house_pair_l2_horizontal_e-v1.png",
+      "transform": "Generated snow colors isolated RGBmin>170, RGBspread<55; intersect independent roof polygon. c native roof bbox normalized to original roofbbox; d/e fullcanvas resize.",
+      "coverage": 0.7494141769185706,
+      "snow_pixels": 5117,
+      "roof_pixels": 6828,
+      "roof_mask": "records/masks/l2h-e-roof.png",
+      "coverage_threshold": "mask alpha>=128; snow overlay alpha>=128; target0.60–0.80",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-c90adf26-206a-4fb8-9bfc-f90cf341daa0.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      },
+      "roofMask": "records/masks/l2h-e-roof.png",
+      "snowMask": "records/masks/l2h-e-snow.png",
+      "roofPixels": 6828,
+      "snowPixels": 5117,
+      "coveragePercent": 74.94141769185705,
+      "coveragePass": true
+    },
+    {
+      "level": 2,
+      "direction": "horizontal",
+      "variant": "e",
+      "width": 195,
+      "height": 156,
+      "roof": "muted flat clay tile",
+      "shape": "two offset attached ridges",
+      "wall": "pink and ivory limewash; sparse oak",
+      "pivotcontract": {
+        "family": "l2h",
+        "level": 2,
+        "direction": "horizontal",
+        "reference": "references/house_pair_l2_horizontal-v4.png",
+        "width": 195,
+        "height": 156,
+        "source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_source_sha256": "df13aa20e1665e717db5d6075f24e92a9ba16a0f2be27ec66999e832a4023129",
+        "runtime_matches": true,
+        "authored_manifest": {
+          "level": 2,
+          "axis": "horizontal",
+          "url": "assets/buildings/historical-houses/house_pair_l2_horizontal-v4.png",
+          "width": 1402,
+          "height": 1122,
+          "alphaBounds": {
+            "x": 97,
+            "y": 47,
+            "width": 1215,
+            "height": 1062
+          }
+        },
+        "normalized_crop": {
+          "x": 13.491440798858772,
+          "y": 6.53475935828877,
+          "width": 168.990727532097,
+          "height": 147.6577540106952
+        },
+        "pivot": {
+          "x": 97.98680456490727,
+          "y": 154.19251336898395
+        },
+        "pivot_basis": "Existing renderer bottom-center of authored alpha crop, transformed to attached derivative pixels; preserve same crop, never re-autocrop variants.",
+        "contact_mask": "records/masks/l2h-contact.png",
+        "contact_rule": "Per-column source alpha>=16 bottom contour, copy six pixels above and all below where contour>=0.6H. Protect transparent lowerquarter outside narrower columns. Retain source stone plinth edge; masks inspect visually."
+      },
+      "prompt": "Use case precise-object-edit. Edit this whole house sprite in place. Board up every groundfloor door and visible window with thick crossed rough dark oak planks, large enough to read at tiny sprite size. No people. Keep EXACT geometry, canvas framing, footprint, every edge and perspective identical; no chimney/no text. RGBA transparent background. Return full house with changes, not cropped detail.",
+      "source": "references/house_pair_l2_horizontal-v4.png",
+      "native": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-f353e186-6b8d-4269-a349-ce8a5076d1d9.png",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l2_horizontal_e_boarded",
+      "file": "assets/house_pair_l2_horizontal_e_boarded-v1.png",
+      "state": "boarded",
+      "ref": "assets/house_pair_l2_horizontal_e-v1.png",
+      "transform": "Fullstate samecanvas resize; retain changed wall pixels threshold 28 excluding roof; preserve base silhouette; no procedural painting.",
+      "nativeOutput": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea59-4eef-7bb2-acb1-51a40908a413/exec-f353e186-6b8d-4269-a349-ce8a5076d1d9.png",
+      "qa": {
+        "geometry": "Exact 195x156 canvas; no recrop; same foundation restored by root contact rule",
+        "visual": "Manual three variants x five states board inspected at native size; no chimneys; distinct front gable/roof/wall materials; weather/fresh read; crossed boards visible",
+        "modelProvided": false
+      }
+    }
+  ],
+  "visualVerdict": {
+    "score": 93,
+    "verdict": "pass",
+    "category_match": true,
+    "differences": [
+      "Fresh state chiefly wall limewash/oak contrast; roof unchanged intentionally"
+    ],
+    "suggestions": [],
+    "reasoning": "Three small-scale architecture variants materially distinct, overlays align at native size; snow independently measured 68.47%,74.46%,74.94%."
+  }
+}

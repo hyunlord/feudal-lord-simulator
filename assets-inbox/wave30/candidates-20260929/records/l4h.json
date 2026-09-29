@@ -1,0 +1,653 @@
+{
+  "assets": [
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "c",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal parallel ridges",
+      "wall": "white and ochre limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_c",
+      "file": "assets/house_pair_l4_horizontal_c-v1.png",
+      "state": "base",
+      "prompt": "Use case precise-object-edit. ONE isolated isometric game sprite, edit reference horizontal two-lot English merchant house c. Preserve EXACT framing, scale, two-frontage horizontal footprint and stone footplate, camera and ground anchor. Change architecture above plinth to a wealthy but modest southern England 1300 timber-frame two attached frontage houses: pale warm white limewash left, pale muted ochre right, different frame braces, left lower roof ridge and right small projecting front gable, flat weathered clay roof tiles muted burnt umber not bright red. Tiny medieval shop openings, modest jetties. Hand-painted muted gouache same style reference. NO chimney, glass, text, people, garden or additional ground. TRUE transparent RGBA background. Single building, not sheet.\n",
+      "ref": "references/house_pair_l4_horizontal-v2.png",
+      "nativeOutput": "native/l4h/c-base.png",
+      "transforms": [
+        "alpha-bounds registration to source 175x198 at16,4",
+        "RGBA Lanczos resize"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "c",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal parallel ridges",
+      "wall": "white and ochre limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_c_weathered",
+      "file": "assets/house_pair_l4_horizontal_c_weathered-v1.png",
+      "state": "weathered",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only add a sparse transparent layer of visible worn limewash chips, subtle dark rain streaks on lower plaster and light aged wood scuffs. Keep damage confined to wall and timber surfaces; do not draw any underlying house or plinth. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_c-v1.png",
+      "nativeOutput": "native/l4h/c-weathered.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "source silhouette clip; unchanged pixel difference extraction threshold22 for wall states"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "c",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal parallel ridges",
+      "wall": "white and ochre limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_c_fresh",
+      "file": "assets/house_pair_l4_horizontal_c_fresh-v1.png",
+      "state": "fresh",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only add a sparse transparent layer of small fresh cream and rose limewash repair patches matching walls, clean wooden repair highlights on beams and a few freshly repaired roof tiles. Do not draw underlying house or plinth. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_c-v1.png",
+      "nativeOutput": "native/l4h/c-fresh.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "source silhouette clip; unchanged pixel difference extraction threshold22 for wall states"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "c",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal parallel ridges",
+      "wall": "white and ochre limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_c_snow",
+      "file": "assets/house_pair_l4_horizontal_c_snow-v1.png",
+      "state": "snow",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only draw a transparent snow overlay aligned EXACTLY to this base house: thick irregular white snow covers 70 percent of each visible roof plane, with warm grey shaded snow undersides, exposed tile islands covering the remaining 30 percent, uneven patch boundaries. Do not draw underlying roof/house, walls, plinth or ground. Snow should be broad opaque patches ON roof surfaces, not only white edge lines. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_c-v1.png",
+      "nativeOutput": "native/l4h/c-snow.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "snow colour segmentation and independent roof clip"
+      ],
+      "roofMask": "records/masks/l4h-c-roof.png",
+      "snowMask": "records/masks/l4h-c-snow.png",
+      "roofPixels": 6437,
+      "snowPixels": 4914,
+      "coveragePercent": 76.33990989591425,
+      "roofPolygons": [
+        [
+          [
+            18,
+            44
+          ],
+          [
+            40,
+            7
+          ],
+          [
+            96,
+            39
+          ],
+          [
+            77,
+            77
+          ]
+        ],
+        [
+          [
+            78,
+            77
+          ],
+          [
+            105,
+            29
+          ],
+          [
+            165,
+            65
+          ],
+          [
+            143,
+            107
+          ]
+        ]
+      ],
+      "coverageMethod": "Independent hand-traced base roof polygons; roof alpha>=128; snow alpha>=128 and RGB>155,155,150 chroma<42; no denominator inferred from snow",
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "c",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal parallel ridges",
+      "wall": "white and ochre limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_c_boarded",
+      "file": "assets/house_pair_l4_horizontal_c_boarded-v1.png",
+      "state": "boarded",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only draw a transparent overlay of THICK crossed weathered timber boards tightly nailed across front ground-floor shop doors and front windows of this exact house. Each door has large visible diagonal X boards. Boards readable at small scale. Do not draw underlying house walls roof ground or plinth. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_c-v1.png",
+      "nativeOutput": "native/l4h/c-boarded.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "source silhouette clip; unchanged pixel difference extraction threshold22 for wall states"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "d",
+      "width": 204,
+      "height": 204,
+      "roof": "limestone slabs",
+      "shape": "unequal parallel ridges",
+      "wall": "faded rose and cream limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_d",
+      "file": "assets/house_pair_l4_horizontal_d-v1.png",
+      "state": "base",
+      "prompt": "Use case precise-object-edit. ONE isolated isometric game sprite, edit reference horizontal two-lot English merchant house d. Preserve EXACT framing, scale, two-frontage horizontal footprint and stone footplate, camera and ground anchor. Architecture above plinth: wealthy modest southern England 1300 timber-frame attached merchant homes, TWO distinct narrow frontages. Roof of uneven muted warm GREY limestone STONE SLABS, absolutely NO thatch or clay tiles. One long roof ridge offset lower over left home, small rear gable, pale faded rose limewash with heavy brown diagonal braces and pale cream right frontage, separate shop doors, modest upper jetty. Hand-painted subdued gouache same style. NO chimneys, glass, text, people, extra ground. TRUE transparent RGBA. Single building not sheet.\n",
+      "ref": "references/house_pair_l4_horizontal-v2.png",
+      "nativeOutput": "native/l4h/d-base.png",
+      "transforms": [
+        "alpha-bounds registration to source 175x198 at16,4",
+        "RGBA Lanczos resize"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "d",
+      "width": 204,
+      "height": 204,
+      "roof": "limestone slabs",
+      "shape": "unequal parallel ridges",
+      "wall": "faded rose and cream limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_d_weathered",
+      "file": "assets/house_pair_l4_horizontal_d_weathered-v1.png",
+      "state": "weathered",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only add a sparse transparent layer of visible worn limewash chips, subtle dark rain streaks on lower plaster and light aged wood scuffs. Keep damage confined to wall and timber surfaces; do not draw any underlying house or plinth. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_d-v1.png",
+      "nativeOutput": "native/l4h/d-weathered.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "source silhouette clip; unchanged pixel difference extraction threshold22 for wall states"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "d",
+      "width": 204,
+      "height": 204,
+      "roof": "limestone slabs",
+      "shape": "unequal parallel ridges",
+      "wall": "faded rose and cream limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_d_fresh",
+      "file": "assets/house_pair_l4_horizontal_d_fresh-v1.png",
+      "state": "fresh",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only add a sparse transparent layer of small fresh cream and rose limewash repair patches matching walls, clean wooden repair highlights on beams and a few freshly repaired roof tiles. Do not draw underlying house or plinth. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_d-v1.png",
+      "nativeOutput": "native/l4h/d-fresh.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "source silhouette clip; unchanged pixel difference extraction threshold22 for wall states"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "d",
+      "width": 204,
+      "height": 204,
+      "roof": "limestone slabs",
+      "shape": "unequal parallel ridges",
+      "wall": "faded rose and cream limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_d_snow",
+      "file": "assets/house_pair_l4_horizontal_d_snow-v1.png",
+      "state": "snow",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only draw a transparent snow overlay aligned EXACTLY to this base house: thick irregular white snow covers 70 percent of each visible roof plane, with warm grey shaded snow undersides, exposed tile islands covering the remaining 30 percent, uneven patch boundaries. Do not draw underlying roof/house, walls, plinth or ground. Snow should be broad opaque patches ON roof surfaces, not only white edge lines. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_d-v1.png",
+      "nativeOutput": "native/l4h/d-snow.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "snow colour segmentation and independent roof clip"
+      ],
+      "roofMask": "records/masks/l4h-d-roof.png",
+      "snowMask": "records/masks/l4h-d-snow.png",
+      "roofPixels": 7383,
+      "snowPixels": 4910,
+      "coveragePercent": 66.5041311120141,
+      "roofPolygons": [
+        [
+          [
+            18,
+            49
+          ],
+          [
+            43,
+            7
+          ],
+          [
+            106,
+            39
+          ],
+          [
+            83,
+            85
+          ]
+        ],
+        [
+          [
+            84,
+            85
+          ],
+          [
+            108,
+            38
+          ],
+          [
+            171,
+            72
+          ],
+          [
+            143,
+            119
+          ]
+        ]
+      ],
+      "coverageMethod": "Independent hand-traced base roof polygons; roof alpha>=128; snow alpha>=128 and RGB>155,155,150 chroma<42; no denominator inferred from snow",
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "d",
+      "width": 204,
+      "height": 204,
+      "roof": "limestone slabs",
+      "shape": "unequal parallel ridges",
+      "wall": "faded rose and cream limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_d_boarded",
+      "file": "assets/house_pair_l4_horizontal_d_boarded-v1.png",
+      "state": "boarded",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only draw a transparent overlay of THICK crossed weathered timber boards tightly nailed across front ground-floor shop doors and front windows of this exact house. Each door has large visible diagonal X boards. Boards readable at small scale. Do not draw underlying house walls roof ground or plinth. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_d-v1.png",
+      "nativeOutput": "native/l4h/d-boarded.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "source silhouette clip; unchanged pixel difference extraction threshold22 for wall states"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "e",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal paired cross gables",
+      "wall": "ochre and pale pink limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_e",
+      "file": "assets/house_pair_l4_horizontal_e-v1.png",
+      "state": "base",
+      "prompt": "Use case precise-object-edit. ONE isolated isometric game sprite variant e from reference horizontal two-lot English merchant house. EXACT same framing scale stone footplate and two distinct adjacent frontages, same camera and ground anchor. Alter upper building silhouette to TWO unequal CROSS GABLES facing front and slim recessed joining entry. Southern England 1300 wealthy but modest timber houses, muted pale ochre limewash left and dusty pale pink right, diagonal dark oak bracing, modest jetties. Flat dark muted brown-red CLAY TILES, roof edge and ridge shapes distinct from reference and no stone/slate/thatch. Same handpainted gouache miniature style. NO chimney, blue glass, people, text, added ground, palace. TRUE transparent RGBA isolated single building, no sheet.\n",
+      "ref": "references/house_pair_l4_horizontal-v2.png",
+      "nativeOutput": "native/l4h/e-base.png",
+      "transforms": [
+        "alpha-bounds registration to source 175x198 at16,4",
+        "RGBA Lanczos resize"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "e",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal paired cross gables",
+      "wall": "ochre and pale pink limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_e_weathered",
+      "file": "assets/house_pair_l4_horizontal_e_weathered-v1.png",
+      "state": "weathered",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only add a sparse transparent layer of visible worn limewash chips, subtle dark rain streaks on lower plaster and light aged wood scuffs. Keep damage confined to wall and timber surfaces; do not draw any underlying house or plinth. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_e-v1.png",
+      "nativeOutput": "native/l4h/e-weathered.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "source silhouette clip; unchanged pixel difference extraction threshold22 for wall states"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "e",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal paired cross gables",
+      "wall": "ochre and pale pink limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_e_fresh",
+      "file": "assets/house_pair_l4_horizontal_e_fresh-v1.png",
+      "state": "fresh",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only add a sparse transparent layer of small fresh cream and rose limewash repair patches matching walls, clean wooden repair highlights on beams and a few freshly repaired roof tiles. Do not draw underlying house or plinth. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_e-v1.png",
+      "nativeOutput": "native/l4h/e-fresh.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "source silhouette clip; unchanged pixel difference extraction threshold22 for wall states"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "e",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal paired cross gables",
+      "wall": "ochre and pale pink limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_e_snow",
+      "file": "assets/house_pair_l4_horizontal_e_snow-v1.png",
+      "state": "snow",
+      "prompt": "Precise image edit. Keep this snowy house absolutely identical canvas/position/architecture. Change ONLY the four exposed red tile holes in snow on both main roof planes: enlarge EACH hole to FOUR TIMES its present area, with irregular jagged melted contours. The broad snow blanket remains around holes. Target total visible roof area70% snow30% exposed red tiles. Do not change or move any house geometry. Transparent background unchanged. No text.",
+      "ref": "native/l4h/e-snow-superseded91.72.png",
+      "nativeOutput": "native/l4h/e-snow.png",
+      "transforms": [
+        "Full snowy house alpha bounds registered to same base bounds x16,y4,175x198",
+        "Snow color segmentation and fixed independent roof mask clip"
+      ],
+      "roofMask": "records/masks/l4h-e-roof.png",
+      "snowMask": "records/masks/l4h-e-snow.png",
+      "roofPixels": 3827,
+      "snowPixels": 2544,
+      "coveragePercent": 66.47504572772407,
+      "roofPolygons": [
+        [
+          [
+            51,
+            10
+          ],
+          [
+            118,
+            47
+          ],
+          [
+            84,
+            84
+          ]
+        ],
+        [
+          [
+            126,
+            51
+          ],
+          [
+            190,
+            87
+          ],
+          [
+            157,
+            111
+          ]
+        ],
+        [
+          [
+            91,
+            112
+          ],
+          [
+            99,
+            96
+          ],
+          [
+            107,
+            103
+          ],
+          [
+            104,
+            121
+          ]
+        ],
+        [
+          [
+            118,
+            47
+          ],
+          [
+            123,
+            58
+          ],
+          [
+            99,
+            79
+          ],
+          [
+            84,
+            84
+          ]
+        ]
+      ],
+      "coverageMethod": "Independent hand-traced base roof polygons; roof alpha>=128; snow alpha>=128 and RGB>155,155,150 chroma<42; no denominator inferred from snow; completeness correction includes exposed rear roof tile band behind the smaller front gable, without modifying snow asset",
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed",
+        "coveragePass": true
+      }
+    },
+    {
+      "level": 4,
+      "direction": "horizontal",
+      "variant": "e",
+      "width": 204,
+      "height": 204,
+      "roof": "flat clay tile",
+      "shape": "unequal paired cross gables",
+      "wall": "ochre and pale pink limewash",
+      "pivotcontract": "204x204 source canvas; source bounds registered x16 y4 width175 height198; root restores canonical contact pixels",
+      "model": null,
+      "seed": null,
+      "id": "house_pair_l4_horizontal_e_boarded",
+      "file": "assets/house_pair_l4_horizontal_e_boarded-v1.png",
+      "state": "boarded",
+      "prompt": "Use case precise-object-edit. Output ONE transparent game sprite overlay for provided exact 204x204 reference canvas. Only draw a transparent overlay of THICK crossed weathered timber boards tightly nailed across front ground-floor shop doors and front windows of this exact house. Each door has large visible diagonal X boards. Boards readable at small scale. Do not draw underlying house walls roof ground or plinth. Exact same frame, camera, scale and spatial positions. The overlay must fit pixel-for-pixel over reference when scaled back to 204x204; retain empty transparent margins. DO NOT center or crop overlay to its own bounds. No text, no people, no chimneys. True RGBA transparent background.",
+      "ref": "assets/house_pair_l4_horizontal_e-v1.png",
+      "nativeOutput": "native/l4h/e-boarded.png",
+      "transforms": [
+        "full generated canvas resize204x204 without crop",
+        "source silhouette clip; unchanged pixel difference extraction threshold22 for wall states"
+      ],
+      "status": "candidate",
+      "qa": {
+        "noChimney": true,
+        "noThatchL4": true,
+        "horizontalTwoFrontages": true,
+        "visualReview": "records/l4h-contactsheet.png",
+        "installation": "not installed"
+      }
+    }
+  ],
+  "review": {
+    "score": 92,
+    "verdict": "pass",
+    "category_match": true,
+    "reasoning": "All three L4 horizontal bases visibly distinguish roof material or paired gable silhouette. No chimneys. Snow thresholds against unchanged independent base polygons are c76.34,d66.50,e73.68. Fresh and weathered visible at204; boarded doors have thick cross timbers.",
+    "limitations": [
+      "Visual roof clipping follows polygon edges; not a runtime attachment test",
+      "Root must restore canonical source contact mask after handoff"
+    ],
+    "snowAttempts": {
+      "e": [
+        80.6835,
+        36.6348,
+        59.3687,
+        58.9632,
+        55.9803,
+        58.0365,
+        91.7173,
+        73.6751
+      ]
+    },
+    "rejectedSnowNative": "native/l4h/e-snow-superseded*.png"
+  }
+}

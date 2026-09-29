@@ -1,0 +1,3 @@
+const fs=require('fs'),path=require('path'),sharp=require('/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');
+const root=path.resolve(__dirname,'..');const calls=JSON.parse(fs.readFileSync(path.join(root,'records/l4h-state-calls.json')));
+(async()=>{for(const r of calls){const source=r.hint.match(/ as (.+\.png) by default/)[1];const dest=path.join(root,'native/l4h',r.variant+'-'+r.state+'.png');fs.copyFileSync(source,dest);await sharp(dest).resize(204,204,{fit:'fill'}).png().toFile(path.join(root,'assets',`house_pair_l4_horizontal_${r.variant}_${r.state}-v1.png`));}})();

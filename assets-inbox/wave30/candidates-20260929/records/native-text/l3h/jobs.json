@@ -1,0 +1,74 @@
+[
+  {
+    "v": "c",
+    "state": "weathered",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE weathered state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT WEATHERING OVERLAY, no house body. On exactly the shown facades and roof positions paint restrained visible dirty rain streaks, scattered peeling limewash chips, dark oak wear and a few muted moss marks. All unchanged parts fully transparent. Keep some large readable weathering patches, not barely perceptible specks. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/c-base.png"
+  },
+  {
+    "v": "c",
+    "state": "fresh",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE fresh state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT FRESHLY BUILT OVERLAY, no house body. On exactly the shown facade limewash panel positions paint clear warm pale new limewash patches, neatly clean wood repairs and restrained clean roof repair patches. All unchanged parts fully transparent. Keep several broad, visibly fresh pale facade panels without hiding frame. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/c-base.png"
+  },
+  {
+    "v": "c",
+    "state": "snow",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE snow state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT SNOW OVERLAY, no house body. Cover approximately 70 percent of every visible pitched roof surface with broad continuous soft off-white snow blankets. Roof slopes and gables follow input exactly. Irregular edges, large exposed roof islands totaling30 percent; no outline-only snow. No snow covering facade, ground, sky. Overlay snow positions aligned exactly to input. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/c-base.png"
+  },
+  {
+    "v": "c",
+    "state": "boarded",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE boarded state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT BOARDED-UP OVERLAY, no house body. Large thick weathered crossed X timber planks cover BOTH ground-floor doors, shop opening and several upper shutter windows at their exact positions. Boards easily readable at small game zoom. Transparent everywhere else. Do not add wall or house pixels. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/c-base.png"
+  },
+  {
+    "v": "d",
+    "state": "weathered",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE weathered state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT WEATHERING OVERLAY, no house body. On exactly the shown facades and roof positions paint restrained visible dirty rain streaks, scattered peeling limewash chips, dark oak wear and a few muted moss marks. All unchanged parts fully transparent. Keep some large readable weathering patches, not barely perceptible specks. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/d-base.png"
+  },
+  {
+    "v": "d",
+    "state": "fresh",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE fresh state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT FRESHLY BUILT OVERLAY, no house body. On exactly the shown facade limewash panel positions paint clear warm pale new limewash patches, neatly clean wood repairs and restrained clean roof repair patches. All unchanged parts fully transparent. Keep several broad, visibly fresh pale facade panels without hiding frame. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/d-base.png"
+  },
+  {
+    "v": "d",
+    "state": "snow",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE snow state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT SNOW OVERLAY, no house body. Cover approximately 70 percent of every visible pitched roof surface with broad continuous soft off-white snow blankets. Roof slopes and gables follow input exactly. Irregular edges, large exposed roof islands totaling30 percent; no outline-only snow. No snow covering facade, ground, sky. Overlay snow positions aligned exactly to input. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/d-base.png"
+  },
+  {
+    "v": "d",
+    "state": "boarded",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE boarded state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT BOARDED-UP OVERLAY, no house body. Large thick weathered crossed X timber planks cover BOTH ground-floor doors, shop opening and several upper shutter windows at their exact positions. Boards easily readable at small game zoom. Transparent everywhere else. Do not add wall or house pixels. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/d-base.png"
+  },
+  {
+    "v": "e",
+    "state": "weathered",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE weathered state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT WEATHERING OVERLAY, no house body. On exactly the shown facades and roof positions paint restrained visible dirty rain streaks, scattered peeling limewash chips, dark oak wear and a few muted moss marks. All unchanged parts fully transparent. Keep some large readable weathering patches, not barely perceptible specks. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/e-base.png"
+  },
+  {
+    "v": "e",
+    "state": "fresh",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE fresh state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT FRESHLY BUILT OVERLAY, no house body. On exactly the shown facade limewash panel positions paint clear warm pale new limewash patches, neatly clean wood repairs and restrained clean roof repair patches. All unchanged parts fully transparent. Keep several broad, visibly fresh pale facade panels without hiding frame. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/e-base.png"
+  },
+  {
+    "v": "e",
+    "state": "snow",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE snow state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT SNOW OVERLAY, no house body. Cover approximately 70 percent of every visible pitched roof surface with broad continuous soft off-white snow blankets. Roof slopes and gables follow input exactly. Irregular edges, large exposed roof islands totaling30 percent; no outline-only snow. No snow covering facade, ground, sky. Overlay snow positions aligned exactly to input. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/e-base.png"
+  },
+  {
+    "v": "e",
+    "state": "boarded",
+    "prompt": "Use case: precise-object-edit. Input is exact edit target, a paired medieval horizontal house. Create ONE boarded state overlay aligned with this exact sprite, on same 1392x1136 canvas/aspect/frame. Return ONLY TRANSPARENT BOARDED-UP OVERLAY, no house body. Large thick weathered crossed X timber planks cover BOTH ground-floor doors, shop opening and several upper shutter windows at their exact positions. Boards easily readable at small game zoom. Transparent everywhere else. Do not add wall or house pixels. Preserve exact roof, window, door, wall positions, camera, scale, framing; NO repositioning, no background, no text, no chimney. Painterly subdued game art, transparent RGBA overlay only. This is a layer composited directly over the unmodified input.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave30-v1/native/l3h/e-base.png"
+  }
+]

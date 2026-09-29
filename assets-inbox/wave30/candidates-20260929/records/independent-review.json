@@ -1,0 +1,134 @@
+{
+  "status": "PASS offline candidate art review",
+  "scope": "Offline candidate PNG review only; no runtime/game validation",
+  "reviewed": "18 base sprites,72state composites,18independently supplied roof masks",
+  "evidence": [
+    "/tmp/wave30-independent-sheet.png",
+    "/tmp/wave30-roof-close.png",
+    "references/COMMISSION.md",
+    "records/source-contract.json"
+  ],
+  "visualFindings": [
+    {
+      "severity": "pass",
+      "finding": "Roof polygons follow visible roof planes in inspected composite sheets; no evident snow-shaped denominator. No chimney observed across18bases. Variants retain joined frontages or main-house/rear-wing arrangement."
+    },
+    {
+      "severity": "provisional-fail",
+      "asset": "house_pair_l4_horizontal_e_snow-v1",
+      "finding": "At snapshot:1265/3453roof pixels have overlay alpha>=128=36.63%, below60%. Lane still reworking."
+    },
+    {
+      "severity": "provisional-fail",
+      "asset": "house_pair_l4_vertical_e_snow-v1",
+      "finding": "Declared alpha>=128 AND minRGB>=105 classifier gives4560/5521=82.59%, above80%. Lane still reworking."
+    },
+    {
+      "severity": "normalization-pending",
+      "finding": "L4v snow overlays carry roof redraw as well as snow; alpha-only coverage93.80/94.85/99.11% is NOT their declared snow criterion. Root has requested snow-only extraction."
+    },
+    {
+      "severity": "normalization-pending",
+      "finding": "Nonzero snow-overlay alpha where base alpha=0: L2h c/d/e46/9/40pixels; L4v c/d/e20/267/1269pixels. Root plans clipping and contact restoration before final review."
+    }
+  ],
+  "measurementNotes": "Others alpha>=128 coverage60–80%. L4v c/d recorded classifier independently reproduced72.47/70.44%. Contact differences observed before announced root restoration; not final disposition.",
+  "caveat": "Large repeated red-roof structures in original user screenshots are granaries. Compound-house candidates cannot establish granary repetition solved. Final proofs remain to be reviewed.",
+  "finalStatus": "complete",
+  "cityProof": {
+    "file": "proofs/01-city-repetition.jpg",
+    "status": "PASS as offline illustrative composite",
+    "observations": [
+      "Offline composition and unknown original building IDs/compound status are disclosed directly in image.",
+      "Large red-roof granaries visibly remain; bottom caption correctly states their repetition persists.",
+      "Three replacement residences show readable material/color variation; no immediately visible floating house, cut roof or obvious road intrusion."
+    ],
+    "limitations": [
+      "Does not establish actual compound lot locations, runtime occlusion or exact runtime footprint/zoom.",
+      "Not a game installation or proof the most prominent granary repetition has been solved."
+    ]
+  },
+  "l4vRecheck": {
+    "status": "PASS snow-only coverage and visual alignment; final clipping pending",
+    "evidence": "/tmp/wave30-l4v-recheck.png",
+    "coverage": [
+      {
+        "variant": "c",
+        "roof": 4987,
+        "snow": 3135,
+        "percent": 62.86344495688791
+      },
+      {
+        "variant": "d",
+        "roof": 5497,
+        "snow": 3645,
+        "percent": 66.30889576132437
+      },
+      {
+        "variant": "e",
+        "roof": 5521,
+        "snow": 3654,
+        "percent": 66.18366238000363
+      }
+    ],
+    "criterion": "Unchanged independent roof alpha>=128; snow overlay alpha>=128. All included snow pixels minRGB>=105.",
+    "findings": "Dark roof redraw removed. No visually apparent wall contamination or roof geometry misalignment. c/e have zero outside-base alpha pixels; d has4pending root final clip.",
+    "supersedes": "Earlier l4v coverage and roof-redraw failures; does not supersede full-set final pending status."
+  },
+  "finalSnapshotReview": {
+    "status": "PASS",
+    "assetCount": 90,
+    "independentlyVerified": {
+      "canvasDimensions": "90/90 match source contract",
+      "contactMismatch": 0,
+      "outsideBase": 0,
+      "coverage": "18/18 within60–80% under both saved classifier and final alpha>=128"
+    },
+    "proof2": {
+      "file": "proofs/02-variants-states.jpg",
+      "finding": "No newly observed chimney, major misalignment or halo. Weathered/fresh/snow/boarded read as distinct overlays. Fresh lightens/repaints walls; boarded has aligned opening crosses."
+    },
+    "l4hE": {
+      "roofPixels": 3453,
+      "snowPixels": 2544,
+      "coveragePercent": 73.6750651607298,
+      "evidence": "/tmp/wave30-l4h-e-final.png",
+      "concern": "Mask first triangle omits apparent exposed tile strip behind smaller foreground gable at lower-right edge of tall roof. Request denominator completeness confirmation, without shrinking denominator or changing snow."
+    },
+    "measurementNote": "L2v d/e saved classifier differs from final alpha>=128 by5/4pixels; both remain within60–80%. Actual-alpha minimum60.2396166%; manifest-classifier minimum60.3035144%."
+  },
+  "finalDisposition": {
+    "status": "PASS",
+    "scope": "90candidate PNGs,18roof-mask snow measurements,2offline proofs; no installation/runtime claim",
+    "findingsResolved": [
+      "L4h e missing exposed roof band independently confirmed and denominator enlarged by374pixels to3827. Snow unchanged2544pixels gives66.47504572772407%. Corrected mask visually follows exposed roof, including band behind front gable.",
+      "L4v snow-only extraction and root alpha clipping resolve earlier roof redraw and outside-base fringe.",
+      "All90final PNG canvas/contact/outsideBase checks passed independent scan; no new major halo or geometry misalignment observed in final proof2."
+    ],
+    "coverage": {
+      "method": "Independent roof-mask alpha>=128 intersect classified snow and final overlay alpha>=128",
+      "count": 18,
+      "min": 60.239616613418534,
+      "max": 76.33990989591425,
+      "l4hE": {
+        "roofPixels": 3827,
+        "snowPixels": 2544,
+        "coveragePercent": 66.47504572772407
+      }
+    },
+    "evidence": [
+      "proofs/01-city-repetition.jpg",
+      "proofs/02-variants-states.jpg",
+      "records/l4h-e-roof-completeness.json",
+      "/tmp/wave30-l4h-e-roof-corrected.png"
+    ],
+    "manifestSHA256": "9151caa0a7cbec26daa2f51f226bfae519f767203d78715ded65ba079280798f",
+    "limitations": [
+      "Roof boundaries remain authored visual annotations, not engine3Dsurface measurements.",
+      "Source canvas/pivot/contact preservation does not validate runtime occlusion, collision, camera, animation or arbitrary placement.",
+      "Original screenshot building IDs/compound-lot positions unverified; city proof is illustrative offline composition.",
+      "Large repeated granaries remain unchanged and their repetition is not solved by house variants."
+    ],
+    "historyNote": "Earlier provisional findings and pending phrases above describe superseded snapshots; this final disposition is authoritative."
+  }
+}
