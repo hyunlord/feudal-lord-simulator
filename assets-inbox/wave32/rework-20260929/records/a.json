@@ -1,0 +1,184 @@
+{
+  "assets": [
+    {
+      "file": "assets/granary_a-v1.png",
+      "state": "base",
+      "variant": "a",
+      "roof": "thatch",
+      "shape": "raised compact gable granary matching barn bounds",
+      "wall": "timber on mushroom staddle stones",
+      "prompt": "native/a/base-prompt.txt",
+      "ref": "references/barn.png;references/farmstead.png",
+      "nativeOutput": "native/a/base.png"
+    },
+    {
+      "file": "assets/granary_a_full-v1.png",
+      "state": "full",
+      "variant": "a",
+      "roof": "thatch",
+      "shape": "same registered granary footprint",
+      "wall": "timber on staddle stones",
+      "prompt": "native/a/full-prompt.txt",
+      "ref": "native/a/base.png",
+      "nativeOutput": "native/a/full.png",
+      "registration": {
+        "sourceBounds": [
+          255,
+          15,
+          1152,
+          1136
+        ],
+        "targetBounds": [
+          31,
+          3,
+          129,
+          128
+        ],
+        "method": "invariant architectural silhouette bounds registration; crop and resize; region overlay extraction; contact stripe cleared"
+      }
+    },
+    {
+      "file": "assets/granary_a_half-v1.png",
+      "state": "half",
+      "variant": "a",
+      "roof": "thatch",
+      "shape": "same registered granary footprint",
+      "wall": "timber on staddle stones",
+      "prompt": "native/a/half-v2-prompt.txt",
+      "ref": "native/a/base.png",
+      "nativeOutput": "native/a/half-v2.png",
+      "registration": {
+        "sourceBounds": [
+          253,
+          14,
+          1156,
+          1137
+        ],
+        "targetBounds": [
+          31,
+          3,
+          129,
+          128
+        ],
+        "method": "silhouette registration and local overlay extraction; original contact stripe excluded"
+      },
+      "rejected": "native/a/half.png;native/a/half-rejected-overlay.png;native/a/half-rejected-composite.png",
+      "revisionReason": "Review required unmistakably open dark doorway at actual size"
+    },
+    {
+      "file": "assets/granary_a_empty-v1.png",
+      "state": "empty",
+      "variant": "a",
+      "roof": "thatch",
+      "shape": "same registered granary footprint",
+      "wall": "timber on staddle stones",
+      "prompt": "native/a/empty-prompt.txt",
+      "ref": "native/a/base.png",
+      "nativeOutput": "native/a/empty.png",
+      "registration": {
+        "sourceBounds": [
+          247,
+          15,
+          1151,
+          1140
+        ],
+        "targetBounds": [
+          31,
+          3,
+          129,
+          128
+        ],
+        "method": "invariant architectural silhouette bounds registration; crop and resize; region overlay extraction; contact stripe cleared"
+      }
+    },
+    {
+      "file": "assets/granary_a_snow-v1.png",
+      "state": "snow",
+      "variant": "a",
+      "roof": "thatch",
+      "shape": "same registered granary footprint",
+      "wall": "timber on staddle stones",
+      "prompt": "native/a/snow-prompt.txt",
+      "ref": "native/a/base.png",
+      "nativeOutput": "native/a/snow.png",
+      "registration": {
+        "sourceBounds": [
+          254,
+          11,
+          1153,
+          1139
+        ],
+        "targetBounds": [
+          31,
+          3,
+          129,
+          128
+        ],
+        "method": "invariant architectural silhouette bounds registration; crop and resize; region overlay extraction; contact stripe cleared"
+      },
+      "roofMask": "records/masks/a-roof.png",
+      "snowMask": "records/masks/a-snow.png",
+      "roofPixels": 2729,
+      "snowPixels": 1963,
+      "coveragePercent": 71.93111029681202,
+      "snowCriterion": "R>130 G>130 B>125 max-min<43 on independently predefined roof polygon",
+      "preFinalNormalization": {
+        "snowPixels": 1964,
+        "coveragePercent": 71.96775375595456
+      },
+      "finalNormalization": "Root base-alpha/contact cleanup removed1snowpixel; final PNG is authoritative."
+    },
+    {
+      "file": "assets/granary_a_boarded-v1.png",
+      "state": "boarded",
+      "variant": "a",
+      "roof": "thatch",
+      "shape": "same registered granary footprint",
+      "wall": "timber on staddle stones",
+      "prompt": "native/a/boarded-prompt.txt",
+      "ref": "native/a/base.png",
+      "nativeOutput": "native/a/boarded.png",
+      "registration": {
+        "sourceBounds": [
+          256,
+          14,
+          1152,
+          1139
+        ],
+        "targetBounds": [
+          31,
+          3,
+          129,
+          128
+        ],
+        "method": "invariant architectural silhouette bounds registration; crop and resize; region overlay extraction; contact stripe cleared"
+      }
+    },
+    {
+      "file": "assets/granary_a_weathered-v1.png",
+      "state": "weathered",
+      "variant": "a",
+      "roof": "thatch",
+      "shape": "same registered granary footprint",
+      "wall": "timber on staddle stones",
+      "prompt": "native/a/weathered-prompt.txt",
+      "ref": "native/a/base.png",
+      "nativeOutput": "native/a/weathered.png",
+      "registration": {
+        "sourceBounds": [
+          257,
+          15,
+          1152,
+          1140
+        ],
+        "targetBounds": [
+          31,
+          3,
+          129,
+          128
+        ],
+        "method": "invariant architectural silhouette bounds registration; crop and resize; region overlay extraction; contact stripe cleared"
+      }
+    }
+  ]
+}

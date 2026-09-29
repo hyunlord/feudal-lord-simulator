@@ -1,0 +1,20 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto'),{execFileSync}=require('child_process'),sharp=require('/Users/rexxa/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/sharp');const R=path.resolve(__dirname,'..'),old=path.resolve(R,'../astra-wave32-v1'),hash=b=>crypto.createHash('sha256').update(b).digest('hex'),changes=['granary_b_snow-v1.png','granary_b_boarded-v1.png'];
+function walk(p){return fs.readdirSync(p,{withFileTypes:true}).flatMap(x=>x.isDirectory()?walk(p+'/'+x.name):[p+'/'+x.name])}
+(async()=>{const prior=JSON.parse(fs.readFileSync(old+'/records/manifest.json')),rec=JSON.parse(fs.readFileSync(R+'/records/b-rework.json')),rows=Array.isArray(rec)?rec:rec.assets,assets=[],fail=[];for(const a of prior.assets){const f=path.basename(a.file),b=fs.readFileSync(R+'/assets/'+f),changed=changes.includes(f),m=await sharp(b).metadata();if(!changed&&hash(b)!==a.sha256)fail.push(f+' preservation');if(m.width!==a.width||m.height!==a.height||m.channels!==4)fail.push(f+' shape');const fresh=rows.find(x=>path.basename(x.file)===f);assets.push({...a,...fresh,pivot:a.pivot,file:'assets/'+f,sha256:hash(b),status:changed?'candidate_rework':'confirmed_unchanged',provenance:changed?'records/b-rework.json':'records/previous/'+path.basename(a.provenance)});}if(fail.length)throw Error(fail.join(','));fs.writeFileSync(R+'/records/manifest.json',JSON.stringify({status:'PASS',unchanged:24,reworked:2,assets},null,2));fs.cpSync(old+'/records',R+'/records/previous',{recursive:true});
+const raw='/Users/rexxa/feudal-lord-analysis/astra-raw/wave32-rework-20260929';fs.mkdirSync(raw,{recursive:true});const inventory=[];for(const p of walk(R+'/native')){const rel=path.relative(R,p),b=fs.readFileSync(p),out=raw+'/'+rel;fs.mkdirSync(path.dirname(out),{recursive:true});if(fs.existsSync(out)&&hash(fs.readFileSync(out))!==hash(b))throw Error('raw overwrite '+rel);fs.writeFileSync(out,b);inventory.push({file:rel,raw:out,sha256:hash(b),bytes:b.length});if(/\.(json|txt)$/.test(p)){const t=R+'/records/native-text/'+path.relative(R+'/native',p);fs.mkdirSync(path.dirname(t),{recursive:true});fs.copyFileSync(p,t);}}fs.writeFileSync(R+'/records/raw-inventory.json',JSON.stringify(inventory,null,2));
+let html='<html lang="ko"><meta charset="utf-8"><title>Wave32 B 교정</title><h1>Wave32 B 교정</h1><a href="proofs/01-snow-boarded.jpg">눈·판자 비교</a><ul>';for(const a of assets)html+='<li><a href="'+a.file+'">'+a.id+'</a> — '+a.status+'</li>';fs.writeFileSync(R+'/gallery.html',html+'</ul></html>');
+execFileSync('node',[R+'/scripts/csv.mjs'],{stdio:'inherit'});
+const stage=fs.mkdtempSync('/tmp/astra-wave32-rework-'),dest=stage+'/astra-wave32-rework',zip='/tmp/astra-wave32-rework-20260929-lite.zip';fs.mkdirSync(dest);for(const d of ['assets','proofs','records','scripts','references'])fs.cpSync(R+'/'+d,dest+'/'+d,{recursive:true});for(const f of ['README.md','QA.md','PLAN.md','gallery.html','generation-records.csv'])fs.copyFileSync(R+'/'+f,dest+'/'+f);const files=walk(dest).filter(p=>!p.endsWith('/package-result.json'));fs.writeFileSync(dest+'/SHA256SUMS',files.map(p=>hash(fs.readFileSync(p))+'  '+path.relative(dest,p)).join('\n')+'\n');execFileSync('python3',['-c',`import pathlib,zipfile,hashlib,csv,io
+r=pathlib.Path(${JSON.stringify(dest)})
+with zipfile.ZipFile(${JSON.stringify(zip)},'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+ for p in sorted(r.rglob('*')):
+  if p.is_file():z.write(p,str(p.relative_to(r.parent)))
+with zipfile.ZipFile(${JSON.stringify(zip)}) as z:
+ assert z.testzip() is None
+ pre='astra-wave32-rework/'
+ for line in z.read(pre+'SHA256SUMS').decode().splitlines():
+  h,n=line.split('  ',1);assert hashlib.sha256(z.read(pre+n)).hexdigest()==h
+ rows=list(csv.DictReader(io.StringIO(z.read(pre+'generation-records.csv').decode('utf-8-sig'))))
+ assert len(rows)==26
+ assert sum(x['status']=='confirmed_unchanged' for x in rows)==24
+ print('ZIP CRC/SHA +26 rows +24 preserved PASS')`],{stdio:'inherit'});const b=fs.readFileSync(zip);fs.writeFileSync(R+'/records/package-result.json',JSON.stringify({zip,bytes:b.length,sha256:hash(b)},null,2));console.log(zip,b.length,hash(b));})();
