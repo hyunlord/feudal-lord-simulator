@@ -57,6 +57,7 @@ export type TerrainV2Parts = {
   readonly drawGrounding: (context: CanvasRenderingContext2D) => void;
 };
 
+const CHUNK_MAX_SCALE = 2;
 const caches = new WeakMap<CanvasRenderingContext2D, GroundChunkCache>();
 let cacheFactoryForTest: ((context: CanvasRenderingContext2D) => GroundChunkCache) | null = null;
 
@@ -105,7 +106,8 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const transform = typeof context.getTransform === "function" ? context.getTransform() : null;
   const dpr = transform === null || input.zoom <= 0 ? 1 : Math.hypot(transform.a, transform.b) / input.zoom;
   const zoom = groundChunkZoomBucket(input.zoom);
-  const scale = zoom * dpr;
+  // SMOOTH-2R experiment: chunks raster at most CHUNK_MAX_SCALE device px per world unit (GPU memory ÷4 at zoom 2 × DPR 2).
+  const scale = Math.min(zoom * dpr, CHUNK_MAX_SCALE);
   // Render scale (B9) is already inside `dpr` (the canvas transform carries DPR x render scale) and so inside the
   // raster scale the cache compares; it is also named in the content key, so a settings change re-rasters the visible
   // chunks in that frame instead of stretching the old rasters through the zoom-only path. Scale 1 adds nothing: the
