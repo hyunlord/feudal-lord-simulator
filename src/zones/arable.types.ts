@@ -47,3 +47,19 @@ export interface ArableMigrationSummary {
   /** Converted cells the wall already enclosed (kept as fields, AF-1; arable cannot be painted there, Z-9). */
   readonly cellsInsideWall: number;
 }
+
+/** BOT-4 (GP-1): one year's expected harvest (at its first harvest) and the wheat the barns took in. */
+export interface HarvestYear {
+  readonly expected: number;
+  readonly wheat: number;
+}
+
+/** BOT-4 (GP-1, save v34): the calendar year being counted (`expected` set at its first harvest) and the last years. */
+export interface HarvestRecord {
+  /** Absolute calendar year index (`tick ÷ TICKS_PER_YEAR`). */
+  readonly year: number;
+  readonly expected?: number;
+  readonly wheat: number;
+  /** Completed years with an expected harvest, oldest first, at most `HARVEST_RECORD_YEARS`. */
+  readonly past: readonly HarvestYear[];
+}

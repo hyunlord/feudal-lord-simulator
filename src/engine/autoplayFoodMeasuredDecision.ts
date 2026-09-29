@@ -3,6 +3,7 @@ import { strandedFoodSupply } from './autoplayFoodRoutes';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { availableSpace, availableStock } from '../economy/storage';
 import { arableSupplyShort } from './autoplayArable';
+import { grainReserveOutlook } from '../zones/arableOutlook';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
 import { foodEfficiencyMetrics } from './autoplayFoodEfficiency';
 import { foodFacilityWithinLimit } from './autoplayFoodLimits';
@@ -11,7 +12,8 @@ import { resolveBuildingRoute } from './routing';
 import type { GameState } from './engine.types';
 
 export type MeasuredFoodReason = 'observation_warmup' | 'food_staff_shortage' | 'food_route_blocked'
-  | 'wheat_transport_blocked' | 'food_supply_sufficient' | 'actual_wheat_deficit' | 'actual_bread_deficit';
+  | 'wheat_transport_blocked' | 'food_supply_sufficient' | 'actual_wheat_deficit' | 'actual_bread_deficit'
+  | 'grain_exhausted' | 'grain_between_harvests';
 export interface MeasuredFoodDecision {
   readonly kind: 'farmstead' | 'mill' | null;
   readonly reason: MeasuredFoodReason;
@@ -66,6 +68,13 @@ export function measuredFoodDecision(state: GameState, options: { readonly ignor
     && stockedWheat >= Math.max(0, breadDeficit) * (BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2)) {
     return { kind: 'mill', reason: 'actual_bread_deficit' };
   }
-  if (!millsSupplied) return { kind: null, reason: 'wheat_transport_blocked' };
+  if (!millsSupplied) {
+    // GP-3: starving mills with no cart-load of wheat anywhere have nothing to be hauled — the grain ran out. The
+    // reserve outlook tells a harvest too small (more fields) from the weeks before a harvest (nothing to build).
+    if (stockedWheat < BALANCE.CARTER_CAPACITY) {
+      return grainReserveOutlook(state).short ? { kind: 'farmstead', reason: 'grain_exhausted' } : { kind: null, reason: 'grain_between_harvests' };
+    }
+    return { kind: null, reason: 'wheat_transport_blocked' };
+  }
   return { kind: 'mill', reason: 'actual_bread_deficit' };
 }

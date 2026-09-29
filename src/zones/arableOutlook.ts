@@ -8,6 +8,7 @@ import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
 import type { GameState } from "../engine/engine.types";
 import { arableLayouts, inYearTick, stripSeasonYield, stripTending, type ArableZoneLayout } from "./arableFields";
+import type { HarvestRecord } from "./arable.types";
 
 const WHEAT_PER_BREAD = BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2;
 
@@ -42,6 +43,40 @@ export function farmsteadYears(state: GameState, layouts: readonly ArableZoneLay
 /** AF-10: the whole town's expected wheat in a season. */
 export function expectedAnnualWheat(state: GameState): number {
   return farmsteadYears(state).reduce((sum, year) => sum + year.wheat, 0);
+}
+
+/** GP-1: completed years the harvest record keeps. */
+export const HARVEST_RECORD_YEARS = 3;
+
+/**
+ * GP-1: the harvest record after a tick that took `harvested` wheat into the barns. `before` is the tick's state before
+ * the fields worked (its expected harvest is the year's `expected`, taken once, at the year's first harvest). A new
+ * calendar year moves the counted year into `past` (only a year that had a harvest) and keeps the last three.
+ */
+export function nextHarvestRecord(before: GameState, harvested: number): HarvestRecord | undefined {
+  const year = Math.floor(before.tick / BALANCE.TICKS_PER_YEAR);
+  let record = before.harvestRecord;
+  if (record !== undefined && record.year !== year) {
+    const past = record.expected === undefined ? record.past
+      : [...record.past, { expected: record.expected, wheat: record.wheat }].slice(-HARVEST_RECORD_YEARS);
+    record = { year, wheat: 0, past };
+  }
+  if (harvested <= 0) return record;
+  const counted = record ?? { year, wheat: 0, past: [] };
+  return { ...counted, expected: counted.expected ?? expectedAnnualWheat(before), wheat: counted.wheat + harvested };
+}
+
+/** GP-2: the share of the expected harvest the last years' barns really took in, ‰ (at most 1,000; none recorded = 1,000). */
+export function realisedHarvestPermille(state: Pick<GameState, "harvestRecord">): number {
+  const past = state.harvestRecord?.past ?? [];
+  const expected = past.reduce((sum, year) => sum + year.expected, 0);
+  if (expected <= 0) return 1000;
+  return Math.min(1000, Math.floor(past.reduce((sum, year) => sum + year.wheat, 0) * 1000 / expected));
+}
+
+/** GP-2: the expected harvest scaled by what the last years realised — the bot's grain supply. */
+export function realisedAnnualWheat(state: GameState): number {
+  return Math.floor(expectedAnnualWheat(state) * realisedHarvestPermille(state) / 1000);
 }
 
 /** Wheat the homes eat (as bread through the mills) in `ticks` ticks at today's residents. */

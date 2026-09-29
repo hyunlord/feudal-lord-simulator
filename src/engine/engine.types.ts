@@ -163,6 +163,8 @@ export interface GameState {
   readonly zoneUndo?: readonly import("../zones/zone.types").ZoneUndoRecord[];
   /** Crop state of every arable zone's strips (save v10, spec AF-3). Absent = no field worked yet. */
   readonly arableFields?: readonly import("../zones/arable.types").ArableField[];
+  /** BOT-4 (GP-1, save v34): this year's expected and harvested wheat and the last three years'. Absent = no harvest yet. */
+  readonly harvestRecord?: import("../zones/arable.types").HarvestRecord;
   /** Set once by the v9→v10 migration when it converted wheat farms (spec AF-12). */
   readonly arableMigration?: import("../zones/arable.types").ArableMigrationSummary;
   /** Season ledgers and the season being counted (save v12, spec FP-1). Absent until the first tick after v12. */
