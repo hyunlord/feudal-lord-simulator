@@ -16,6 +16,7 @@ import { WAVE17_WORLD_IMAGES } from "../src/render/wave17WorldManifest.generated
 import { WAVE21_IMAGES } from "../src/ui/wave21ArtManifest.generated";
 import { WAVE31_IMAGES } from "../src/ui/wave31ArtManifest.generated";
 import { WAVE12_GUILDHALL_IMAGES } from "../src/render/wave12GuildhallManifest.generated";
+import { WAVE17_WALKER_IMAGES } from "../src/render/wave17WalkerManifest.generated";
 
 const WAR = Object.values(WAVE17_WORLD_IMAGES).map(image => image.url);
 const PLAGUE = [WAVE9_IMAGES.event_plague_shut_l1.url, WAVE9_IMAGES.event_plague_shut_l2.url, WAVE9_IMAGES.event_plague_shut_l3.url];
@@ -26,6 +27,9 @@ const WAVE21_CH4 = [...(Object.keys(WAVE21_IMAGES) as (keyof typeof WAVE21_IMAGE
   ...Object.values(WAVE31_IMAGES).filter(image => image.chapter === 4).map(image => image.url)];
 const WAVE21 = [...WAVE21_CH3, ...WAVE21_CH4];
 const GUILDHALL = Object.values(WAVE12_GUILDHALL_IMAGES).map(image => image.url); // UI-9: chapter 4 guildhall prop
+// UI-9b: the lord's collector (chapter 4, the 1381 chase) and chapter 5's opening painting.
+const COLLECTOR = Object.values(WAVE17_WALKER_IMAGES).map(image => image.url);
+const CH5_INTRO = Object.values(WAVE31_IMAGES).filter(image => image.chapter === 5).map(image => image.url);
 const EVERY_CHAPTER = [...historicalFacilityManifest.map(meta => meta.url), WAVE9_IMAGES.event_burnt_l2.url, WAVE9_IMAGES.event_crowd_manor_gate.url];
 const URLS = [...EVERY_CHAPTER, ...WAR, ...PLAGUE, ...WAVE21, ...GUILDHALL];
 
@@ -83,7 +87,7 @@ test("no art CHAPTER_ART declares for a later chapter is in the startup set befo
 });
 
 test("the runtime's startup preload requests later chapters' art only once the game is in them", () => {
-  for (const url of [...WAR, ...PLAGUE, ...WAVE21, ...GUILDHALL]) {
+  for (const url of [...WAR, ...PLAGUE, ...WAVE21, ...GUILDHALL, ...COLLECTOR, ...CH5_INTRO]) {
     assert.ok(all.has(url), `the sandbox preloads ${url}`);
     assert.ok(!chapter(1).has(url), `a chapter-1 start leaves out ${url}`);
   }
@@ -93,6 +97,9 @@ test("the runtime's startup preload requests later chapters' art only once the g
   for (const url of WAVE21_CH3) assert.ok(!chapter(2).has(url) && chapter(3).has(url), `chapter 3 adds wave21 ch3 ${url}`);
   for (const url of WAVE21_CH4) assert.ok(!chapter(3).has(url) && chapter(4).has(url), `chapter 4 adds wave21 ch4 ${url}`);
   for (const url of GUILDHALL) assert.ok(!chapter(3).has(url) && chapter(4).has(url), `chapter 4 adds guildhall ${url}`);
-  assert.deepEqual([...all].filter(url => !chapter(1).has(url)).sort(), [...WAR, ...PLAGUE, ...WAVE21, ...GUILDHALL].sort(), "only chapter-bound art is deferred");
+  for (const url of COLLECTOR) assert.ok(!chapter(3).has(url) && chapter(4).has(url), `chapter 4 adds the collector ${url}`);
+  assert.equal(CH5_INTRO.length, 1);
+  for (const url of CH5_INTRO) assert.ok(!chapter(4).has(url) && chapter(5).has(url), `chapter 5 adds its opening ${url}`);
+  assert.deepEqual([...all].filter(url => !chapter(1).has(url)).sort(), [...WAR, ...PLAGUE, ...WAVE21, ...GUILDHALL, ...COLLECTOR, ...CH5_INTRO].sort(), "only chapter-bound art is deferred");
   for (const url of historicalFacilityManifest.map(meta => meta.url)) assert.ok(chapter(1).has(url), `stage-gated ${url} stays at startup`);
 });

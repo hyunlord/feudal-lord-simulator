@@ -21,6 +21,7 @@ import { preloadWave31Art } from "../ui/wave31Art";
 import { preloadWave9Art } from "./wave9Art";
 import { preloadWave17WorldArt } from "./warWorldProps";
 import { preloadGuildhallArt } from "./reorgWorldProps";
+import { preloadCollectorArt } from "./collectorWalker";
 import { preloadWave11Art } from "./wave11Art";
 import { preloadWave3AleArt } from "./wave3AleArt";
 import { preloadWave3ClothArt } from "./wave3ClothArt";
@@ -58,7 +59,7 @@ export function preloadFrameArt(chapter: number): void {
 }
 
 /** BUDGET-1b: the manifestArt manifests that hold chapter-bound art (chapterArt.ts CHAPTER_ART); a new one joins here. */
-const CHAPTER_SCOPED_MANIFESTS: readonly ((include: (url: string) => boolean) => void)[] = [preloadWave9Art, preloadWave17WorldArt, preloadWave21Art, preloadWave31Art, preloadGuildhallArt];
+const CHAPTER_SCOPED_MANIFESTS: readonly ((include: (url: string) => boolean) => void)[] = [preloadWave9Art, preloadWave17WorldArt, preloadWave21Art, preloadWave31Art, preloadGuildhallArt, preloadCollectorArt];
 
 /** BUDGET-1b: the chapter-bound art up to `chapter`; called again when the game enters a later chapter. */
 export function preloadChapterArt(chapter: number): void {

@@ -6,7 +6,7 @@ import { personPortraitStateClass, personStateOrnamentStyle } from "../persons/p
 import { wave19ImageStyle, wave19Url } from "../wave19Art";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 import { leaderName, type FactionPageView } from "./factionTabModel";
-// UI-9: revolt pressure section (RG-8) below the faction page art frame.
+// UI-9: revolt pressure (RG-8); UI-9b: a cell on the page.
 import { FACTION_INFLUENCE_COPY as INFLUENCE } from "./factionInfluenceCopy.ko";
 
 // CHRON-2 faction chronicle page (CHRONICLE_DESIGN 2.3; UI-6 first pass). The Wave 19 `frame_faction_page` (640 x 800
@@ -33,6 +33,8 @@ export const FACTION_PAGE_SLOTS = {
   leader: slot(66, 92, 148, 148), crest: slot(490, 92, 88, 104), name: slot(236, 84, 240, 180), relation: slot(70, 296, 500, 32),
   relationText: slot(70, 330, 500, 24), demands: slot(50, 364, 266, 102), promises: slot(326, 364, 268, 102),
   ourEvents: slot(50, 528, 276, 218), theirEvents: slot(326, 528, 268, 218),
+  // UI-9b: with revolt pressure (the commons, from chapter 4) the foot box's right half holds their timeline above it.
+  theirEventsAbovePressure: slot(326, 528, 268, 104), pressure: slot(326, 636, 268, 110),
 } as const;
 
 function PageArt({ scale }: { readonly scale: number }) {
@@ -51,10 +53,8 @@ export function FactionPage({ view, scale, onRecord }: {
   readonly view: FactionPageView; readonly scale: number; readonly onRecord: (recordId: string, tick: number) => void;
 }) {
   const leader = view.leader === null ? null : portraitStyle(view.leader.portraitId, Math.round(148 * scale));
-  // UI-9: revolt pressure goes AFTER the art frame in document order; the art frame is position:absolute-based so adding
-  // content inside it would escape the 640×800 box. Wrapping in a fragment keeps the parent's justify-items:center layout.
+  const pressure = view.revoltPressure;
   return (
-    <>
     <article className="chronicle-faction" aria-label={COPY.factionTitle(view.name)} data-faction={view.id} data-relation={view.relation}
       style={{ width: FACTION_PAGE.width * scale, height: FACTION_PAGE.height * scale }}>
       <PageArt scale={scale} />
@@ -103,27 +103,24 @@ export function FactionPage({ view, scale, onRecord }: {
             </li>
           ))}</ul>)}
       </section>
-      <section className="chronicle-faction-box" aria-label={COPY.timelineHeading} style={FACTION_PAGE_SLOTS.theirEvents}>
+      <section className="chronicle-faction-box" aria-label={COPY.timelineHeading}
+        style={pressure === null ? FACTION_PAGE_SLOTS.theirEvents : FACTION_PAGE_SLOTS.theirEventsAbovePressure}>
         <h4>{COPY.timelineHeading}</h4>
         {view.timeline.length === 0 ? <p className="chronicle-faction-empty">{COPY.timelineEmpty}</p>
           : <ul tabIndex={0} aria-label={COPY.timelineHeading}>{view.timeline.map(line => <li key={line.key}><span className="chronicle-faction-date">{line.date}</span>{line.line}</li>)}</ul>}
       </section>
+      {pressure === null ? null : (
+        <section className="chronicle-faction-box chronicle-faction-pressure" aria-label={INFLUENCE.pressureHeading} style={FACTION_PAGE_SLOTS.pressure}>
+          <h4>{INFLUENCE.pressureHeading}</h4>
+          {/* UI-9b: the cell keeps the page's size; a long reading scrolls inside it. */}
+          <div className="chronicle-faction-pressure-body" tabIndex={0} aria-label={INFLUENCE.pressureHeading}>
+            <p>{pressure.totalLabel}</p>
+            <p className="chronicle-faction-pressure-threshold">{pressure.thresholdLine}</p>
+            {pressure.causes.length > 0 ? <ul>{pressure.causes.map(c => <li key={c.key}>{c.line}</li>)}</ul> : null}
+            {pressure.outcome !== null ? <p className="chronicle-faction-pressure-outcome">{pressure.outcome}</p> : null}
+          </div>
+        </section>
+      )}
     </article>
-    {/* UI-9: RG-8 revolt pressure — below the art frame, width matching the scaled page. */}
-    {view.revoltPressure !== null ? (
-      <section className="chronicle-faction-pressure" aria-label={INFLUENCE.pressureHeading}
-        style={{ width: FACTION_PAGE.width * scale }}>
-        <h4>{INFLUENCE.pressureHeading}</h4>
-        <p>{view.revoltPressure.totalLabel}</p>
-        <p className="chronicle-faction-pressure-threshold">{view.revoltPressure.thresholdLine}</p>
-        {view.revoltPressure.causes.length > 0
-          ? <ul>{view.revoltPressure.causes.map(c => <li key={c.key}>{c.line}</li>)}</ul>
-          : null}
-        {view.revoltPressure.outcome !== null
-          ? <p className="chronicle-faction-pressure-outcome">{view.revoltPressure.outcome}</p>
-          : null}
-      </section>
-    ) : null}
-    </>
   );
 }
