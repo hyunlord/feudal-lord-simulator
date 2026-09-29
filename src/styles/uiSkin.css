@@ -48,6 +48,10 @@
   --slice-tooltip: 6px;
   --slice-banner: 24px;
   --slice-toast: 12px;
+  /* NAT-1: floating-box width tokens (section 3). Tablet ×1.15 override in @media (pointer: coarse) below. */
+  --box-w-small: 280px;
+  --box-w-medium: 360px;
+  --box-w-wide: 480px;
   /* The P0 art as whole border-image / background values (source insets from src/ui/uiArtManifest.generated.ts). */
   --art-button-primary: url("/assets/ui-p0/button_primary_base.png") 12 fill / var(--slice-button) / 0 stretch;
   --art-button-secondary: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--slice-button) / 0 stretch;
@@ -354,6 +358,57 @@
   border-image: url("/assets/ui-p0/frame_panel_dark.png") 24 fill / var(--slice-strip) / 0 stretch;
 }
 .welcome-parchment:focus { outline: none; }
+
+/* NAT-1: tablet (coarse pointer) width token overrides — multiply each token by 1.15 so
+   floating boxes scale up proportionally on touch screens. */
+@media (pointer: coarse) {
+  :root {
+    --box-w-small: 322px;
+    --box-w-medium: 414px;
+    --box-w-wide: 552px;
+  }
+}
+
+/* NAT-1: frame rules for floating boxes that were plain rectangles — each gets a 9-slice
+   UI-KIT frame so the "no flat-rectangle floating box" audit rule can pass with 0 violations. */
+
+/* Season strip panel: a light parchment frame (same as the inspector). */
+.app-shell .season-strip-panel {
+  background: var(--parchment) var(--art-texture-light) repeat;
+  border-color: transparent;
+  border-image: var(--art-frame-light);
+}
+/* Event card: the story card that appears under crisis bells. */
+.app-shell .event-card {
+  background: var(--parchment) var(--art-texture-light) repeat;
+  border-color: transparent;
+  border-image: var(--art-frame-light);
+}
+/* Quiet steward bubble (no .steward-advisor class): the advisor frame without the portrait. */
+.app-shell .steward-bubble:not(.steward-advisor) {
+  background: var(--parchment) var(--art-texture-light) repeat;
+  border-color: transparent;
+  border-image: var(--art-frame-advisor);
+}
+/* Layer switch note: the small tooltip frame. */
+.app-shell .layer-switch-note {
+  background: var(--parchment) var(--art-texture-light) repeat;
+  border-color: transparent;
+  border-image: var(--art-frame-tooltip);
+}
+/* Coin / resource detail flyout: dark panel frame (matches its dark-ink background). */
+.app-shell .resource-bar__coin-detail {
+  background: var(--oak) var(--art-texture-dark) repeat;
+  border-color: transparent;
+  border-image: var(--art-frame-dark);
+}
+/* Settlement crisis card: alert toast frame with a vermilion left accent stripe. */
+.app-shell .settlement-crisis-slot .settlement-crisis {
+  background: var(--parchment) var(--art-texture-light) repeat;
+  border-color: transparent;
+  border-image: var(--art-frame-record);
+  box-shadow: inset 3px 0 0 var(--status-block);
+}
 
 /* ---- F0-V completion toast (grouped, 4 s): the toast frame under the top bar ---- */
 .app-shell .completion-toast {

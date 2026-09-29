@@ -1,0 +1,224 @@
+{
+  "assets": [
+    {
+      "file": "assets/granary_pulley_beam-v1.png",
+      "state": "prop",
+      "variant": "shared",
+      "roof": "n/a",
+      "shape": "pulley_beam",
+      "wall": "n/a",
+      "width": 64,
+      "height": 64,
+      "pivot": {
+        "x": 32,
+        "y": 64
+      },
+      "ref": [
+        "references/barn.png",
+        "references/farmstead.png"
+      ],
+      "referenceUse": "Visual style review only; no reference file submitted to imagegen",
+      "prompt": "Use case: historical-scene. Create one isolated medieval game prop sprite, not a sheet. Southern England 1300–1450. Match the project reference aesthetic: fine hand-painted isometric 2:1 game art, muted warm golden brown oak and tan hemp, upper-left diffuse daylight, subtly dark right faces, crisp readable silhouette at tiny pixel sizes. Actual transparent RGBA background; no ground, no pedestal, no cast shadow outside the object, no text, labels, people, houses or chimneys. Center complete object with generous transparent padding, no cropping. Subject: a single horizontal projecting rectangular oak hoist beam, seen in isometric perspective receding upper-right, with a small wooden grooved pulley wheel attached under its outer tip and simple dark iron axle bracket. Only the beam and wheel; no rope or hook, no wall or building. Intended final sprite 64×64.",
+      "nativeOutput": "native/props/granary_pulley_beam-v1.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-cc5c-7d73-aa71-30d5fcbab88d/exec-b7b6bf77-3590-4aaa-9352-c118fb08006c.png",
+      "generationTool": "builtin imagegen",
+      "model": null,
+      "seed": null,
+      "postprocess": {
+        "alphaBounds": {
+          "left": 49,
+          "top": 21,
+          "width": 1089,
+          "height": 1193
+        },
+        "method": "alpha-only bounding crop, proportional Lanczos3 downsample, transparent padding",
+        "placement": {
+          "left": 4,
+          "top": 2
+        }
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "status": "candidate",
+      "alignment": "standalone bottom-center pivot; barn alignment not claimed"
+    },
+    {
+      "file": "assets/granary_pulley_rope_hook-v1.png",
+      "state": "prop",
+      "variant": "shared",
+      "roof": "n/a",
+      "shape": "rope_hook",
+      "wall": "n/a",
+      "width": 32,
+      "height": 64,
+      "pivot": {
+        "x": 16,
+        "y": 64
+      },
+      "ref": [
+        "references/barn.png",
+        "references/farmstead.png"
+      ],
+      "referenceUse": "Visual style review only; no reference file submitted to imagegen",
+      "prompt": "Use case: historical-scene. Create one isolated medieval game prop sprite, not a sheet. Southern England 1300–1450. Match the project reference aesthetic: fine hand-painted isometric 2:1 game art, muted warm golden brown oak and tan hemp, upper-left diffuse daylight, subtly dark right faces, crisp readable silhouette at tiny pixel sizes. Actual transparent RGBA background; no ground, no pedestal, no cast shadow outside the object, no text, labels, people, houses or chimneys. Center complete object with generous transparent padding, no cropping. Subject: one single long vertical hanging twisted hemp rope terminating in a simple dark wrought iron open lifting hook. Only the rope and hook, narrow vertical silhouette, visibly thick enough for tiny sprite use. No beam, pulley wheel, sacks or building. Intended final sprite 32×64.",
+      "nativeOutput": "native/props/granary_pulley_rope_hook-v1.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-cc5c-7d73-aa71-30d5fcbab88d/exec-030e872b-bc61-47a1-8621-18e8c5c0b882.png",
+      "generationTool": "builtin imagegen",
+      "model": null,
+      "seed": null,
+      "postprocess": {
+        "alphaBounds": {
+          "left": 331,
+          "top": 63,
+          "width": 533,
+          "height": 1639
+        },
+        "method": "alpha-only bounding crop, proportional Lanczos3 downsample, transparent padding",
+        "placement": {
+          "left": 6,
+          "top": 2
+        }
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "status": "candidate",
+      "alignment": "standalone bottom-center pivot; barn alignment not claimed"
+    },
+    {
+      "file": "assets/granary_sack_single-v1.png",
+      "state": "prop",
+      "variant": "shared",
+      "roof": "n/a",
+      "shape": "sack_single",
+      "wall": "n/a",
+      "width": 32,
+      "height": 32,
+      "pivot": {
+        "x": 16,
+        "y": 32
+      },
+      "ref": [
+        "references/barn.png",
+        "references/farmstead.png"
+      ],
+      "referenceUse": "Visual style review only; no reference file submitted to imagegen",
+      "prompt": "Use case: historical-scene. Create one isolated medieval game prop sprite, not a sheet. Southern England 1300–1450. Match the project reference aesthetic: fine hand-painted isometric 2:1 game art, muted warm golden brown oak and tan hemp, upper-left diffuse daylight, subtly dark right faces, crisp readable silhouette at tiny pixel sizes. Actual transparent RGBA background; no ground, no pedestal, no cast shadow outside the object, no text, labels, people, houses or chimneys. Center complete object with generous transparent padding, no cropping. Subject: exactly ONE plump upright grain sack made of coarse undyed tan hemp linen, tied shut at top with a short hemp cord. Rounded weight-bearing bottom, subtly wrinkled sack. No loose grain, no other objects. Intended final sprite 32×32.",
+      "nativeOutput": "native/props/granary_sack_single-v1.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-cc5c-7d73-aa71-30d5fcbab88d/exec-692e4022-f5e0-4244-9d6c-452ce9879e63.png",
+      "generationTool": "builtin imagegen",
+      "model": null,
+      "seed": null,
+      "postprocess": {
+        "alphaBounds": {
+          "left": 57,
+          "top": 39,
+          "width": 1135,
+          "height": 1159
+        },
+        "method": "alpha-only bounding crop, proportional Lanczos3 downsample, transparent padding",
+        "placement": {
+          "left": 2,
+          "top": 2
+        }
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "status": "candidate",
+      "alignment": "standalone bottom-center pivot; barn alignment not claimed"
+    },
+    {
+      "file": "assets/granary_sacks_small-v1.png",
+      "state": "prop",
+      "variant": "shared",
+      "roof": "n/a",
+      "shape": "sacks_small",
+      "wall": "n/a",
+      "width": 64,
+      "height": 48,
+      "pivot": {
+        "x": 32,
+        "y": 48
+      },
+      "ref": [
+        "references/barn.png",
+        "references/farmstead.png"
+      ],
+      "referenceUse": "Visual style review only; no reference file submitted to imagegen",
+      "prompt": "Use case: historical-scene. Create one isolated medieval game prop sprite, not a sheet. Southern England 1300–1450. Match the project reference aesthetic: fine hand-painted isometric 2:1 game art, muted warm golden brown oak and tan hemp, upper-left diffuse daylight, subtly dark right faces, crisp readable silhouette at tiny pixel sizes. Actual transparent RGBA background; no ground, no pedestal, no cast shadow outside the object, no text, labels, people, houses or chimneys. Center complete object with generous transparent padding, no cropping. Subject: exactly THREE tied plump undyed tan hemp linen grain sacks arranged in a compact isometric group; two standing in front and one behind, all three tops and distinct silhouettes readable. No loose grain or other objects. Intended final sprite 64×48.",
+      "nativeOutput": "native/props/granary_sacks_small-v1.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-cc5c-7d73-aa71-30d5fcbab88d/exec-14ce0e43-8664-4898-a386-299f047e4c85.png",
+      "generationTool": "builtin imagegen",
+      "model": null,
+      "seed": null,
+      "postprocess": {
+        "alphaBounds": {
+          "left": 33,
+          "top": 48,
+          "width": 1369,
+          "height": 1004
+        },
+        "method": "alpha-only bounding crop, proportional Lanczos3 downsample, transparent padding",
+        "placement": {
+          "left": 2,
+          "top": 2
+        }
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "status": "candidate",
+      "alignment": "standalone bottom-center pivot; barn alignment not claimed"
+    },
+    {
+      "file": "assets/granary_sacks_large-v1.png",
+      "state": "prop",
+      "variant": "shared",
+      "roof": "n/a",
+      "shape": "sacks_large",
+      "wall": "n/a",
+      "width": 64,
+      "height": 64,
+      "pivot": {
+        "x": 32,
+        "y": 64
+      },
+      "ref": [
+        "references/barn.png",
+        "references/farmstead.png"
+      ],
+      "referenceUse": "Visual style review only; no reference file submitted to imagegen",
+      "prompt": "Use case: historical-scene. Create one isolated medieval game prop sprite, not a sheet. Southern England 1300–1450. Match the project reference aesthetic: fine hand-painted isometric 2:1 game art, muted warm golden brown oak and tan hemp, upper-left diffuse daylight, subtly dark right faces, crisp readable silhouette at tiny pixel sizes. Actual transparent RGBA background; no ground, no pedestal, no cast shadow outside the object, no text, labels, people, houses or chimneys. Center complete object with generous transparent padding, no cropping. Subject: exactly EIGHT plump tied undyed tan hemp linen grain sacks in a compact isometric storage pile, five on lower tier and three staggered atop, eight distinguishable tied necks and sack bodies. No loose grain or other objects. Intended final sprite 64×64.",
+      "nativeOutput": "native/props/granary_sacks_large-v1.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0ea8e-cc5c-7d73-aa71-30d5fcbab88d/exec-1a53c47b-11fd-43b2-bbe0-d19841938d0d.png",
+      "generationTool": "builtin imagegen",
+      "model": null,
+      "seed": null,
+      "postprocess": {
+        "alphaBounds": {
+          "left": 0,
+          "top": 21,
+          "width": 1230,
+          "height": 1201
+        },
+        "method": "alpha-only bounding crop, proportional Lanczos3 downsample, transparent padding",
+        "placement": {
+          "left": 2,
+          "top": 3
+        }
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255
+      },
+      "status": "candidate",
+      "alignment": "standalone bottom-center pivot; barn alignment not claimed"
+    }
+  ]
+}

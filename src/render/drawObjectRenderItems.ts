@@ -26,6 +26,7 @@ import { drawVillageLifeItem } from "./villageLifeDraw";
 import { drawPlagueProp } from "./plagueWorldProps";
 import { drawReorgPropAt } from "./reorgWorldProps";
 import { drawCountrysideItem } from "./countrysideDraw";
+import { placeWalkers, walkerHiddenBehind } from "./walkerOcclusion";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -44,6 +45,8 @@ type DrawObjectRenderItemsInput = {
   readonly lifeClockMs?: number;
   readonly hoveredTile?: TileCoordinate | null;
   readonly selectionMode?: boolean;
+  /** NAT-1: the selected walker, outlined faintly when an object in front hides it. */
+  readonly selectedWalkerId?: string | null;
 };
 
 export function drawObjectRenderItems(
@@ -55,7 +58,6 @@ export function drawObjectRenderItems(
   probe?.enter("farmland");
   beginBuildingVariantFrame(input.state);
   beginHouseVariantFrame(input.state); // INSTALL-26 the Wave 26 house paintings
-  const walkerItems: Extract<RenderQueueItem, { readonly kind: "walker" }>[] = [];
   const viewMode = getObjectRenderViewMode();
   // RENDER_BOUNDARY_V2 draws road ribbons in the ground chunks, under frontage and objects. (The V1 wheat-farm soil
   // pass that stood here went with the retired farm art, C1f.)
@@ -71,7 +73,11 @@ export function drawObjectRenderItems(
     id: `bridge:${piece.tx}:${piece.ty}:${piece.side}`,
   }));
   probe?.enter("objects.sort");
-  const queue = sortRenderItems([...input.objectRenderItems, ...rails]);
+  // NAT-1: walkers in the same order as the objects (walkerOcclusion.ts); those passing a stone gate or on a bridge keep
+  // the queue's own place, where the gate's arch and the bridge's rails are drawn around them by depth.
+  const queue = placeWalkers(sortRenderItems([...input.objectRenderItems, ...rails]), input.state, item =>
+    stoneGates.some(gate => Math.hypot(item.walker.position.tx - gate.x, item.walker.position.ty - gate.y) < 1.5)
+    || bridgeAt(input.state, { tx: Math.round(item.walker.position.tx), ty: Math.round(item.walker.position.ty) }) !== null);
   for (const item of queue) {
     probe?.enter(stageForRenderItem(item.kind));
     if (item.kind === "bridge_rail") {
@@ -96,12 +102,6 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "village_life") { // INSTALL-23 hens, cats, dogs, birds, toys, washing lines, doorstep props
       if (viewMode === "normal") drawVillageLifeItem(context, item.life, { state: input.state, zoom: input.zoom, nowMs: input.lifeClockMs ?? input.nowMs ?? 0, camera: input.camera, viewport: input.viewport });
-      continue;
-    }
-    if (item.kind === "walker" && !stoneGates.some(gate =>
-      Math.hypot(item.walker.position.tx - gate.x, item.walker.position.ty - gate.y) < 1.5)
-      && bridgeAt(input.state, { tx: Math.round(item.walker.position.tx), ty: Math.round(item.walker.position.ty) }) === null) {
-      walkerItems.push(item);
       continue;
     }
     if (item.kind === "construction_site") {
@@ -152,9 +152,14 @@ export function drawObjectRenderItems(
     });
     context.restore();
   }
-  probe?.enter("walkers");
-  for (const item of walkerItems) {
+  // NAT-1: a hidden walker stays hidden, except the selected one: drawn again faintly over what hides it.
+  const selectedIndex = input.selectedWalkerId === undefined || input.selectedWalkerId === null ? -1
+    : queue.findIndex(item => item.kind === "walker" && item.walker.id === input.selectedWalkerId);
+  const selected = queue[selectedIndex];
+  if (selected !== undefined && selected.kind === "walker" && walkerHiddenBehind(queue, selectedIndex, input.state)) {
+    probe?.enter("walkers");
     context.save();
+    context.globalAlpha *= SELECTED_HIDDEN_ALPHA;
     drawBuildings(context, {
       state: input.state,
       tiles: input.tiles,
@@ -163,7 +168,7 @@ export function drawObjectRenderItems(
       camera: input.camera,
       dpr: input.dpr,
       viewport: input.viewport,
-      objectRenderItems: [item],
+      objectRenderItems: [selected],
       houseMaterialWave: input.houseMaterialWave ?? null,
       nowMs: input.nowMs ?? 0,
       hoveredTile: input.hoveredTile ?? null,
@@ -173,6 +178,9 @@ export function drawObjectRenderItems(
     context.restore();
   }
 }
+
+/** NAT-1: the selected walker's faint silhouette over the object that hides it. */
+const SELECTED_HIDDEN_ALPHA = 0.35;
 
 /**
  * Wall strips (D3b, RENDER_WALL_STRIPS on the curved ground): the wall item's unit edge draws its stretch of the extruded face and the modules it owns (the

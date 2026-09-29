@@ -1,0 +1,397 @@
+{
+  "assetCount": 26,
+  "checkCount": 2,
+  "scopeReason": "Brief says approximate 24; full summer/winter ford set, stages and done strips total 26.",
+  "assets": [
+    {
+      "id": "ford/ford_w2_ne_summer-v1",
+      "file": "ford/ford_w2_ne_summer-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "summer",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w2_ne_winter-v1",
+      "file": "ford/ford_w2_ne_winter-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "winter",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w2_nw_summer-v1",
+      "file": "ford/ford_w2_nw_summer-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "summer",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w2_nw_winter-v1",
+      "file": "ford/ford_w2_nw_winter-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "winter",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w3_ne_summer-v1",
+      "file": "ford/ford_w3_ne_summer-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "summer",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w3_ne_winter-v1",
+      "file": "ford/ford_w3_ne_winter-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "winter",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w3_nw_summer-v1",
+      "file": "ford/ford_w3_nw_summer-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "summer",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w3_nw_winter-v1",
+      "file": "ford/ford_w3_nw_winter-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "winter",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w4_ne_summer-v1",
+      "file": "ford/ford_w4_ne_summer-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "summer",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w4_ne_winter-v1",
+      "file": "ford/ford_w4_ne_winter-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "winter",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w4_nw_summer-v1",
+      "file": "ford/ford_w4_nw_summer-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "summer",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "ford/ford_w4_nw_winter-v1",
+      "file": "ford/ford_w4_nw_winter-v1.png",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "role": "ford",
+      "season": "winter",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "props/ford_splash_a-v1",
+      "file": "props/ford_splash_a-v1.png",
+      "width": 96,
+      "height": 64,
+      "pivot": [
+        48,
+        56
+      ],
+      "role": "prop",
+      "season": "all",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "props/ford_splash_b-v1",
+      "file": "props/ford_splash_b-v1.png",
+      "width": 96,
+      "height": 64,
+      "pivot": [
+        48,
+        56
+      ],
+      "role": "prop",
+      "season": "all",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "drain/drain_stage1_staked_summer-v1",
+      "file": "drain/drain_stage1_staked_summer-v1.png",
+      "width": 128,
+      "height": 64,
+      "pivot": [
+        64,
+        32
+      ],
+      "role": "iso-overlay",
+      "season": "summer",
+      "stage": "1_staked",
+      "repeat": "isometric-grid",
+      "status": "candidate"
+    },
+    {
+      "id": "drain/drain_stage1_staked_winter-v1",
+      "file": "drain/drain_stage1_staked_winter-v1.png",
+      "width": 128,
+      "height": 64,
+      "pivot": [
+        64,
+        32
+      ],
+      "role": "iso-overlay",
+      "season": "winter",
+      "stage": "1_staked",
+      "repeat": "isometric-grid",
+      "status": "candidate"
+    },
+    {
+      "id": "drain/drain_stage2_ditched_summer-v1",
+      "file": "drain/drain_stage2_ditched_summer-v1.png",
+      "width": 128,
+      "height": 64,
+      "pivot": [
+        64,
+        32
+      ],
+      "role": "iso-overlay",
+      "season": "summer",
+      "stage": "2_ditched",
+      "repeat": "isometric-grid",
+      "status": "candidate"
+    },
+    {
+      "id": "drain/drain_stage2_ditched_winter-v1",
+      "file": "drain/drain_stage2_ditched_winter-v1.png",
+      "width": 128,
+      "height": 64,
+      "pivot": [
+        64,
+        32
+      ],
+      "role": "iso-overlay",
+      "season": "winter",
+      "stage": "2_ditched",
+      "repeat": "isometric-grid",
+      "status": "candidate"
+    },
+    {
+      "id": "drain/drain_stage3_drying_summer-v1",
+      "file": "drain/drain_stage3_drying_summer-v1.png",
+      "width": 128,
+      "height": 64,
+      "pivot": [
+        64,
+        32
+      ],
+      "role": "iso-overlay",
+      "season": "summer",
+      "stage": "3_drying",
+      "repeat": "isometric-grid",
+      "status": "candidate"
+    },
+    {
+      "id": "drain/drain_stage3_drying_winter-v1",
+      "file": "drain/drain_stage3_drying_winter-v1.png",
+      "width": 128,
+      "height": 64,
+      "pivot": [
+        64,
+        32
+      ],
+      "role": "iso-overlay",
+      "season": "winter",
+      "stage": "3_drying",
+      "repeat": "isometric-grid",
+      "status": "candidate"
+    },
+    {
+      "id": "drain/drain_done_edge_summer-v1",
+      "file": "drain/drain_done_edge_summer-v1.png",
+      "width": 512,
+      "height": 64,
+      "pivot": [
+        256,
+        32
+      ],
+      "role": "strip",
+      "season": "summer",
+      "stage": "done",
+      "repeat": "X",
+      "status": "candidate"
+    },
+    {
+      "id": "drain/drain_done_edge_winter-v1",
+      "file": "drain/drain_done_edge_winter-v1.png",
+      "width": 512,
+      "height": 64,
+      "pivot": [
+        256,
+        32
+      ],
+      "role": "strip",
+      "season": "winter",
+      "stage": "done",
+      "repeat": "X",
+      "status": "candidate"
+    },
+    {
+      "id": "props/drain_earth_cart-v1",
+      "file": "props/drain_earth_cart-v1.png",
+      "width": 128,
+      "height": 96,
+      "pivot": [
+        64,
+        88
+      ],
+      "role": "prop",
+      "season": "all",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "props/drain_soil_heap-v1",
+      "file": "props/drain_soil_heap-v1.png",
+      "width": 96,
+      "height": 64,
+      "pivot": [
+        48,
+        56
+      ],
+      "role": "prop",
+      "season": "all",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "props/drain_sluice-v1",
+      "file": "props/drain_sluice-v1.png",
+      "width": 128,
+      "height": 96,
+      "pivot": [
+        64,
+        88
+      ],
+      "role": "prop",
+      "season": "all",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    },
+    {
+      "id": "props/drain_plank_bridge-v1",
+      "file": "props/drain_plank_bridge-v1.png",
+      "width": 128,
+      "height": 64,
+      "pivot": [
+        64,
+        56
+      ],
+      "role": "prop",
+      "season": "all",
+      "stage": "none",
+      "repeat": "none",
+      "status": "candidate"
+    }
+  ]
+}

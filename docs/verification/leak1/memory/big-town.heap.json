@@ -1,0 +1,571 @@
+{
+ "byPath": [
+  {
+   "path": "blink::WebLocalFrameImpl::WebLocalFrameI → get value → script",
+   "selfMB": 9.7,
+   "count": 11
+  },
+  {
+   "path": "document",
+   "selfMB": 4.5,
+   "count": 40094
+  },
+  {
+   "path": "layoutMemo → tiles → paths",
+   "selfMB": 2.3,
+   "count": 213173
+  },
+  {
+   "path": "getComputedStyle → entries",
+   "selfMB": 1.6,
+   "count": 45603
+  },
+  {
+   "path": "(module scope)",
+   "selfMB": 1.2,
+   "count": 18132
+  },
+  {
+   "path": "document → __reactFiber$a7qokdd8w9v → __proto__",
+   "selfMB": 1.2,
+   "count": 11498
+  },
+  {
+   "path": "lastGraveState → pathCache → road:149:walls:{\"gates\":[\"47,42\"],\"edges",
+   "selfMB": 0.8,
+   "count": 80438
+  },
+  {
+   "path": "utils → asLocator → script",
+   "selfMB": 0.7,
+   "count": 13
+  },
+  {
+   "path": "extension → function → trusted_function_data",
+   "selfMB": 0.6,
+   "count": 10499
+  },
+  {
+   "path": "last$1 → scene → grounds",
+   "selfMB": 0.6,
+   "count": 41865
+  },
+  {
+   "path": "document → __reactFiber$a7qokdd8w9v → return",
+   "selfMB": 0.5,
+   "count": 15387
+  },
+  {
+   "path": "getComputedStyle → entries → ref",
+   "selfMB": 0.5,
+   "count": 29917
+  },
+  {
+   "path": "__reactFiber$a7qokdd8w9v → return → return",
+   "selfMB": 0.4,
+   "count": 32979
+  },
+  {
+   "path": "jobs → paint → scene",
+   "selfMB": 0.4,
+   "count": 25706
+  },
+  {
+   "path": "v8_inspector::V8InspectorSessionImpl::V8",
+   "selfMB": 0.4,
+   "count": 1380
+  }
+ ],
+ "states": [
+  {
+   "node": 293586,
+   "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → DEFAULT_GAME_STATE",
+   "fields": 26
+  },
+  {
+   "node": 296835,
+   "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → lastGraveState",
+   "fields": 50
+  },
+  {
+   "node": 296837,
+   "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → return → memoizedState → memoizedState → current",
+   "fields": 50
+  },
+  {
+   "node": 296840,
+   "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → previousSlot → previous → 1 / part of key (Object @1101593) -> val",
+   "fields": 50
+  },
+  {
+   "node": 296842,
+   "path": "__reactFiber$a7qokdd8w9v → return → updateQueue → lastEffect → inst → destroy → context → previous → previous → onBuild → context → state",
+   "fields": 50
+  },
+  {
+   "node": 522314,
+   "path": "1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → advanceSimulationSubstep → feedback_cell → value → [12] → transition_info",
+   "fields": 9
+  },
+  {
+   "node": 522316,
+   "path": "1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → advanceSimulationSubstep → feedback_cell → value → [35] → transition_info",
+   "fields": 7
+  },
+  {
+   "node": 524612,
+   "path": "1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → advanceSimulationSubstep → feedback_cell → value → [216] → transition_info",
+   "fields": 5
+  },
+  {
+   "node": 525617,
+   "path": "1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → advanceSimulationSubstep → feedback_cell → value → [194] → transition_info",
+   "fields": 8
+  },
+  {
+   "node": 550794,
+   "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → previousSlot → current",
+   "fields": 50
+  },
+  {
+   "node": 550795,
+   "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → previousSlot → previous",
+   "fields": 50
+  },
+  {
+   "node": 682392,
+   "path": "1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → staticObjectRenderItemsForFrame → feedback_cell → value → [26] → transition_info",
+   "fields": 12
+  },
+  {
+   "node": 860186,
+   "path": "[10] → 1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context → routeAccessCache → table → 6 → projected",
+   "fields": 27
+  }
+ ],
+ "stateCount": 13,
+ "stateFields": [
+  {
+   "field": "tiles",
+   "MB": 3.6,
+   "objects": 277972
+  },
+  {
+   "field": "pathCache",
+   "MB": 1.6,
+   "objects": 77860
+  },
+  {
+   "field": "history",
+   "MB": 1.4,
+   "objects": 60696
+  },
+  {
+   "field": "persons",
+   "MB": 1.4,
+   "objects": 56768
+  },
+  {
+   "field": "autoplayFoodFlow",
+   "MB": 0.2,
+   "objects": 21845
+  },
+  {
+   "field": "ledger",
+   "MB": 0.2,
+   "objects": 9302
+  },
+  {
+   "field": "tick",
+   "MB": 0,
+   "objects": 2
+  },
+  {
+   "field": "seed",
+   "MB": 0,
+   "objects": 2
+  },
+  {
+   "field": "width",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "height",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "buildings",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "constructionSites",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "houses",
+   "MB": 0,
+   "objects": 448
+  },
+  {
+   "field": "walkers",
+   "MB": 0,
+   "objects": 2700
+  },
+  {
+   "field": "population",
+   "MB": 0,
+   "objects": 2
+  },
+  {
+   "field": "idleWorkers",
+   "MB": 0,
+   "objects": 2
+  },
+  {
+   "field": "treasuryTimber",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "treasuryCoin",
+   "MB": 0,
+   "objects": 2
+  },
+  {
+   "field": "wallTick",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "era",
+   "MB": 0,
+   "objects": 1
+  },
+  {
+   "field": "eraProclaimedTick",
+   "MB": 0,
+   "objects": 2
+  },
+  {
+   "field": "palisade",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "forestHarvests",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "nextConstructionOrdinal",
+   "MB": 0,
+   "objects": 2
+  },
+  {
+   "field": "roadRevision",
+   "MB": 0,
+   "objects": 2
+  },
+  {
+   "field": "scenarioId",
+   "MB": 0,
+   "objects": 4
+  },
+  {
+   "field": "zones",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "nextZoneOrdinal",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "zoneUndo",
+   "MB": 0,
+   "objects": 3187
+  },
+  {
+   "field": "labour",
+   "MB": 0,
+   "objects": 5
+  },
+  {
+   "field": "autoplayRecurringDelivery",
+   "MB": 0,
+   "objects": 513
+  },
+  {
+   "field": "arableFields",
+   "MB": 0,
+   "objects": 119
+  },
+  {
+   "field": "timberProductionWindow",
+   "MB": 0,
+   "objects": 5
+  },
+  {
+   "field": "historicalEras",
+   "MB": 0,
+   "objects": 12
+  },
+  {
+   "field": "seasons",
+   "MB": 0,
+   "objects": 60
+  },
+  {
+   "field": "events",
+   "MB": 0,
+   "objects": 37
+  },
+  {
+   "field": "politics",
+   "MB": 0,
+   "objects": 423
+  },
+  {
+   "field": "factions",
+   "MB": 0,
+   "objects": 1105
+  },
+  {
+   "field": "autoplayEmptyHomes",
+   "MB": 0,
+   "objects": 1
+  },
+  {
+   "field": "settlement",
+   "MB": 0,
+   "objects": 9
+  },
+  {
+   "field": "autoplayFoodObservation",
+   "MB": 0,
+   "objects": 14
+  },
+  {
+   "field": "money",
+   "MB": 0,
+   "objects": 11
+  },
+  {
+   "field": "wallConstructionReserve",
+   "MB": 0,
+   "objects": 14
+  },
+  {
+   "field": "war",
+   "MB": 0,
+   "objects": 11
+  },
+  {
+   "field": "ale",
+   "MB": 0,
+   "objects": 3
+  },
+  {
+   "field": "plague",
+   "MB": 0,
+   "objects": 15
+  },
+  {
+   "field": "lordship",
+   "MB": 0,
+   "objects": 10
+  },
+  {
+   "field": "reorganisation",
+   "MB": 0,
+   "objects": 17
+  },
+  {
+   "field": "autoplayMaterialRecovery",
+   "MB": 0,
+   "objects": 6
+  },
+  {
+   "field": "__proto__",
+   "MB": 0,
+   "objects": 0
+  },
+  {
+   "field": "(그 밖의 상태 12개가 더한 것)",
+   "MB": 1.6,
+   "objects": 86694
+  }
+ ],
+ "nodes": 1240688,
+ "reachable": 1240609,
+ "totalSelfMB": 61.9,
+ "rootRetainedMB": 61.9,
+ "holders": [
+  {
+   "names": [
+    "entries"
+   ],
+   "type": "object",
+   "constructor": "Array",
+   "retainedMB": 2.1,
+   "selfMB": 0
+  },
+  {
+   "names": [
+    "masks"
+   ],
+   "type": "object",
+   "constructor": "Map",
+   "retainedMB": 1.3,
+   "selfMB": 0
+  },
+  {
+   "names": [
+    "scene"
+   ],
+   "type": "object",
+   "constructor": "Object",
+   "retainedMB": 1,
+   "selfMB": 0
+  }
+ ],
+ "kinds": [
+  {
+   "type": "code",
+   "name": "",
+   "count": 119186,
+   "selfMB": 17.9
+  },
+  {
+   "type": "native",
+   "name": "system / ExternalStringData",
+   "count": 974,
+   "selfMB": 9.2
+  },
+  {
+   "type": "string",
+   "name": "",
+   "count": 407036,
+   "selfMB": 5.8
+  },
+  {
+   "type": "object",
+   "name": "Object",
+   "count": 193288,
+   "selfMB": 5.5
+  },
+  {
+   "type": "number",
+   "name": "",
+   "count": 272578,
+   "selfMB": 2.7
+  },
+  {
+   "type": "native",
+   "name": "blink::ImageResource",
+   "count": 868,
+   "selfMB": 2.6
+  },
+  {
+   "type": "array",
+   "name": "",
+   "count": 19010,
+   "selfMB": 2.5
+  },
+  {
+   "type": "native",
+   "name": "system / JSArrayBufferData",
+   "count": 9,
+   "selfMB": 1.3
+  },
+  {
+   "type": "object shape",
+   "name": "",
+   "count": 23539,
+   "selfMB": 1.2
+  },
+  {
+   "type": "native",
+   "name": "blink::HeapHashTableBacking<blink::HashTable<blink::FontCach",
+   "count": 376,
+   "selfMB": 1.1
+  },
+  {
+   "type": "native",
+   "name": "blink::FontResource",
+   "count": 372,
+   "selfMB": 1.1
+  },
+  {
+   "type": "native",
+   "name": "system / WeakArrayList",
+   "count": 4400,
+   "selfMB": 0.7
+  },
+  {
+   "type": "native",
+   "name": "blink::SimpleFontData",
+   "count": 2648,
+   "selfMB": 0.7
+  },
+  {
+   "type": "native",
+   "name": "system / PropertyArray",
+   "count": 21815,
+   "selfMB": 0.5
+  },
+  {
+   "type": "object",
+   "name": "WeakRef",
+   "count": 29921,
+   "selfMB": 0.5
+  }
+ ],
+ "tree": [
+  {
+   "depth": 0,
+   "retainedMB": 61.9,
+   "selfMB": 0,
+   "type": "synthetic",
+   "name": "(GC roots)",
+   "path": "[1]"
+  },
+  {
+   "depth": 1,
+   "retainedMB": 12.8,
+   "selfMB": 0,
+   "type": "object",
+   "name": "system / Context / scope @139813",
+   "path": "[1] → [10] → 1 / DevTools console → document → [11] → __reactFiber$a7qokdd8w9v → return → elementType → context"
+  },
+  {
+   "depth": 1,
+   "retainedMB": 9.7,
+   "selfMB": 0,
+   "type": "code",
+   "name": "system / Script / http://127.0.0.1:4393/assets/ind",
+   "path": "[1] → [29] → blink::WebLocalFrameImpl::WebLocalFrameI → [7] → [1] → [2] → get value → shared → script"
+  },
+  {
+   "depth": 2,
+   "retainedMB": 9.1,
+   "selfMB": 0,
+   "type": "string",
+   "name": "//#region \\0rolldown/runtime.js\nvar __commonJSMin ",
+   "path": "[1] → [29] → blink::WebLocalFrameImpl::WebLocalFrameI → [7] → [1] → [2] → get value → shared → script → source"
+  },
+  {
+   "depth": 3,
+   "retainedMB": 9.1,
+   "selfMB": 9.1,
+   "type": "native",
+   "name": "system / ExternalStringData",
+   "path": "[1] → [29] → blink::WebLocalFrameImpl::WebLocalFrameI → [7] → [1] → [2] → get value → shared → script → source → 2 / backing_store"
+  }
+ ]
+}

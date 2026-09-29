@@ -1,0 +1,19 @@
+{
+  "width": 160,
+  "height": 144,
+  "anchor": {
+    "x": 80,
+    "y": 128
+  },
+  "renderScale": 0.48888888888888893,
+  "footprint": {
+    "width": 2,
+    "height": 2
+  },
+  "source_sha256": "cf600bf15c6c1c722399acdd687dadb3300e4f52f5dc87b44d988b0ad6eb96b4",
+  "runtime_sha256": "cf600bf15c6c1c722399acdd687dadb3300e4f52f5dc87b44d988b0ad6eb96b4",
+  "same": true,
+  "contactMask": "records/masks/contact.png",
+  "rule": "Preserve source bottom stone-support/step contact stripe exactly; same full canvas and anchor, no auto crop.",
+  "source": "references/barn.png"
+}

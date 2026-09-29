@@ -1,0 +1,80 @@
+[
+  {
+    "id": "drain/drain_stage1_staked_summer-v1",
+    "width": 128,
+    "height": 64,
+    "pivot": [
+      64,
+      32
+    ],
+    "outsideDiamondNonzero": 0,
+    "visiblePixels": 1988,
+    "semiTransparentPixels": 1988,
+    "waterPixelsCapped": 0
+  },
+  {
+    "id": "drain/drain_stage2_ditched_summer-v1",
+    "width": 128,
+    "height": 64,
+    "pivot": [
+      64,
+      32
+    ],
+    "outsideDiamondNonzero": 0,
+    "visiblePixels": 1045,
+    "semiTransparentPixels": 1045,
+    "waterPixelsCapped": 256
+  },
+  {
+    "id": "drain/drain_stage3_drying_summer-v1",
+    "width": 128,
+    "height": 64,
+    "pivot": [
+      64,
+      32
+    ],
+    "outsideDiamondNonzero": 0,
+    "visiblePixels": 4096,
+    "semiTransparentPixels": 4096,
+    "waterPixelsCapped": 0
+  },
+  {
+    "id": "drain/drain_stage1_staked_winter-v1",
+    "width": 128,
+    "height": 64,
+    "pivot": [
+      64,
+      32
+    ],
+    "outsideDiamondNonzero": 0,
+    "visiblePixels": 1956,
+    "semiTransparentPixels": 1956,
+    "waterPixelsCapped": 0
+  },
+  {
+    "id": "drain/drain_stage2_ditched_winter-v1",
+    "width": 128,
+    "height": 64,
+    "pivot": [
+      64,
+      32
+    ],
+    "outsideDiamondNonzero": 0,
+    "visiblePixels": 1024,
+    "semiTransparentPixels": 1024,
+    "waterPixelsCapped": 256
+  },
+  {
+    "id": "drain/drain_stage3_drying_winter-v1",
+    "width": 128,
+    "height": 64,
+    "pivot": [
+      64,
+      32
+    ],
+    "outsideDiamondNonzero": 0,
+    "visiblePixels": 4096,
+    "semiTransparentPixels": 4096,
+    "waterPixelsCapped": 0
+  }
+]
