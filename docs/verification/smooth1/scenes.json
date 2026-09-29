@@ -1,0 +1,66 @@
+{
+  "seed": 2,
+  "maxTicks": 600000,
+  "scenes": {
+    "pre-petition": {
+      "tick": 148700,
+      "year": 1337,
+      "season": 0,
+      "chapter": 2,
+      "population": 528,
+      "buildings": 65,
+      "bytes": 2454257,
+      "why": "300 ticks before chapter 2's first petition"
+    },
+    "ch2-1340": {
+      "tick": 160000,
+      "year": 1340,
+      "season": 0,
+      "chapter": 3,
+      "population": 739,
+      "buildings": 70,
+      "bytes": 2948136,
+      "why": "first tick of chapter 2+ in 1340"
+    },
+    "pre-chapter3": {
+      "tick": 159600,
+      "year": 1339,
+      "season": 3,
+      "chapter": 2,
+      "population": 739,
+      "buildings": 69,
+      "bytes": 2926907,
+      "why": "400 ticks before chapter 2 turns to 3"
+    },
+    "ch3-plague": {
+      "tick": 193600,
+      "year": 1348,
+      "season": 1,
+      "chapter": 3,
+      "population": 768,
+      "buildings": 75,
+      "bytes": 3102686,
+      "why": "400 ticks before the first pestilence"
+    },
+    "ch4-1380": {
+      "tick": 320000,
+      "year": 1380,
+      "season": 0,
+      "chapter": 4,
+      "population": 768,
+      "buildings": 86,
+      "bytes": 4896531,
+      "why": "first tick of chapter 4+ in 1380"
+    },
+    "ch5-1440": {
+      "tick": 560000,
+      "year": 1440,
+      "season": 0,
+      "chapter": 5,
+      "population": 768,
+      "buildings": 86,
+      "bytes": 6686493,
+      "why": "first tick of chapter 5 in 1440"
+    }
+  }
+}
