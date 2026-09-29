@@ -88,7 +88,9 @@ test("L-3 before the first posting the treasury is the opening balance; the firs
     // C5 (CL-5, CL-8)
     "fulling_toll", "ulnage",
     // F4-A (RG-3, RG-6, RG-9)
-    "cloth_toll", "poll_tax", "fee_farm"]);
+    "cloth_toll", "poll_tax", "fee_farm",
+    // F5-A (LG-3…LG-5)
+    "royal_subsidy", "succession_relief", "legacy_endowment"]);
 });
 
 test("L-4 roll-ups keep every account total while only the last 6 periods stay as entries", () => {

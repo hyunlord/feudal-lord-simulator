@@ -245,7 +245,9 @@ test("R10 (RG-10) chapter 4 ends the season after the charter's answer (by 1400 
   assert.equal(ended.politics!.chapter.number, 5);
   assert.equal(end.chronicle.stats.reorganisation!.charter, "partial");
   assert.equal(end.chronicle.stats.reorganisation!.guild, true);
-  assert.deepEqual(chapterGoals(ended).at(-1), { chapter: 4, id: "charter", reachedTick: end.tick });
+  assert.deepEqual(chapterGoals(ended).find(goal => goal.id === "charter"), { chapter: 4, id: "charter", reachedTick: end.tick });
+  // F5-A (LG-8): chapter 5's goal follows, not yet reached.
+  assert.deepEqual(chapterGoals(ended).at(-1), { chapter: 5, id: "legacy", reachedTick: null });
   assert.equal(reorganisationStage(ended), "done");
   // The calendar: 1400 with no charter.
   const late = runAnswering(movedTo(shared, at(1400)), at(1400) + 1, {});

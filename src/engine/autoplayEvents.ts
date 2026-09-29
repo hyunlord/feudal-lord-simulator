@@ -5,6 +5,7 @@
  */
 import { LAND_REDISTRIBUTION_PETITION_ID, PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
+import { LEGACY_PETITION_IDS } from "../content/legacyConfig";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { EVENT_DEF_BY_ID } from "../content/eventConfig";
 import { foodReserveTicks } from "../population/foodReserve";
@@ -79,6 +80,9 @@ export function chapterDecisionAction(state: GameState, famine: FamineResponseCh
   // F4-A (RG-11): the reorganisation's by the bot's standard rule — the guild granted, the tax left to the town, the
   // demesne turned to cloth, the charter granted in part (every card's `accept`).
   if ((REORGANISATION_PETITION_IDS as readonly string[]).includes(open.defId)) return { kind: "petition_response", petitionId: open.id, response: "accept" };
+  // F5-A (LG-10): chapter 5's by the bot's standard rule — the Crown paid, the eldest son (else the first heir there
+  // is), the charter sealed, the town's legacy (every card's `accept`, the heir's the first it offers).
+  if ((LEGACY_PETITION_IDS as readonly string[]).includes(open.defId)) return { kind: "petition_response", petitionId: open.id, response: open.options?.[0] ?? "accept" };
   return { kind: "petition_response", petitionId: open.id, response: petition };
 }
 

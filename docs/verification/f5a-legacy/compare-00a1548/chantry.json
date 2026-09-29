@@ -1,0 +1,106 @@
+{
+ "variant": "chantry",
+ "answers": {
+  "royal_tax": "accept",
+  "heir_choice": "refuse",
+  "borough_autonomy": "accept",
+  "legacy_choice": "refuse"
+ },
+ "start": {
+  "tick": 329000,
+  "year": 1382,
+  "treasury": 58370,
+  "population": 768
+ },
+ "end": {
+  "tick": 601000,
+  "year": 1450,
+  "treasury": 176960,
+  "population": 768,
+  "outcome": "victory",
+  "lived": 24,
+  "l4": 24
+ },
+ "heir": {
+  "kind": "nephew",
+  "personId": "m-000015",
+  "previousHeadId": "m-000013",
+  "tick": 344000,
+  "relief": 200
+ },
+ "candidates": [
+  [
+   "nephew",
+   "kinsman"
+  ]
+ ],
+ "mayorId": "p-002591",
+ "family": "departed",
+ "backlash": 0,
+ "royalSubsidy": 400,
+ "legacy": "church",
+ "endowment": 500,
+ "clothSold": 3400,
+ "scores": {
+  "town": 95,
+  "family": 47,
+  "church": 56,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": 20,
+    "legacy": 0
+   },
+   "family": {
+    "house": 20,
+    "generations": 12,
+    "heir": 5,
+    "stayed": 0,
+    "relations": 0,
+    "treasury": 10,
+    "legacy": 0
+   },
+   "church": {
+    "church": 10,
+    "chapels": 4,
+    "bishop": 7,
+    "priest": 5,
+    "relief": 5,
+    "legacy": 25
+   }
+  }
+ },
+ "ending": {
+  "id": "merchants_chantry",
+  "title": "상인들의 기도처",
+  "sentence": "상인과 직인의 도시가 된 이곳에서 영주는 교회에 기도처를 세웠다. 1450년 마지막 장날, 장터의 종은 드 포콩발 가문의 이름으로 울렸다.",
+  "quotes": [
+   "h-026471",
+   "h-025873",
+   "h-027332"
+  ],
+  "final": true
+ },
+ "relations": {
+  "overlord": -40,
+  "crown": 45,
+  "neighbour_1": -6,
+  "neighbour_2": 0,
+  "bishop": 30,
+  "merchant_house_1": 50,
+  "merchant_house_2": 0,
+  "town": 78,
+  "commons": 40
+ },
+ "rights": [
+  "market_charter:merchants",
+  "commuted_rent:townsfolk",
+  "market_tolls:townsfolk",
+  "bridge_tolls:townsfolk",
+  "mayoralty:townsfolk",
+  "borough_seal:townsfolk"
+ ]
+}

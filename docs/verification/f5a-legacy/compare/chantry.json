@@ -1,0 +1,110 @@
+{
+ "variant": "chantry",
+ "answers": {
+  "royal_tax": "accept",
+  "heir_choice": "accept",
+  "borough_autonomy": "accept",
+  "legacy_choice": "refuse"
+ },
+ "start": {
+  "tick": 329000,
+  "year": 1382,
+  "treasury": 58370,
+  "population": 768
+ },
+ "end": {
+  "tick": 601000,
+  "year": 1450,
+  "treasury": 134896,
+  "population": 768,
+  "outcome": "victory",
+  "lived": 24,
+  "l4": 24
+ },
+ "heir": {
+  "kind": "eldest_son",
+  "personId": "m-000017",
+  "previousHeadId": "m-000015",
+  "tick": 408000,
+  "relief": 100
+ },
+ "candidates": [
+  [
+   "eldest_son",
+   "son"
+  ],
+  [
+   "nephew",
+   "kinsman"
+  ]
+ ],
+ "mayorId": "p-002909",
+ "family": "departed",
+ "backlash": 0,
+ "royalSubsidy": 400,
+ "legacy": "church",
+ "endowment": 500,
+ "clothSold": 3400,
+ "scores": {
+  "town": 95,
+  "family": 50,
+  "church": 56,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": 20,
+    "legacy": 0
+   },
+   "family": {
+    "house": 10,
+    "generations": 16,
+    "heir": 12,
+    "stayed": 0,
+    "relations": 2,
+    "treasury": 10,
+    "legacy": 0
+   },
+   "church": {
+    "church": 10,
+    "chapels": 4,
+    "bishop": 7,
+    "priest": 5,
+    "relief": 5,
+    "legacy": 25
+   }
+  }
+ },
+ "ending": {
+  "id": "merchants_chantry",
+  "title": "상인들의 기도처",
+  "sentence": "상인과 직인의 도시가 된 이곳에서 영주는 교회에 기도처를 세웠다. 1450년 마지막 장날, 장터의 종은 드 보테르 가문의 이름으로 울렸다.",
+  "quotes": [
+   "h-032140",
+   "h-031612",
+   "h-046065"
+  ],
+  "final": true
+ },
+ "relations": {
+  "overlord": -10,
+  "crown": 30,
+  "neighbour_1": -3,
+  "neighbour_2": 0,
+  "bishop": 28,
+  "merchant_house_1": 50,
+  "merchant_house_2": 0,
+  "town": 78,
+  "commons": 40
+ },
+ "rights": [
+  "market_charter:merchants",
+  "commuted_rent:townsfolk",
+  "market_tolls:townsfolk",
+  "bridge_tolls:townsfolk",
+  "mayoralty:townsfolk",
+  "borough_seal:townsfolk"
+ ]
+}
