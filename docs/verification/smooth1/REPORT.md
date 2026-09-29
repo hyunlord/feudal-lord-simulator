@@ -259,4 +259,4 @@ node_modules/.bin/tsx scripts/perf/hitchSummary.ts <summary dirs…> --out docs/
 
 ## 소요 시간
 
-13:38(작업 브랜치 생성) ~ END_TIME(본선 푸시). 4시간 상한.
+13:38(작업 브랜치 생성) ~ 16:25(본선 푸시). 4시간 상한.
