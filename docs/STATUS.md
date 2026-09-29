@@ -1,12 +1,18 @@
 # 현재 상태
 
-갱신: 2026-09-29(UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(NAT-1 · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
+- **NAT-1 자연스러움 — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 판정 1380 도시): [보고서](verification/nat1/REPORT.md), 결정 NAT1-D1~D4.
+  - 워커는 건물·성벽과 같은 깊이 순서(등각 상자 규칙, 예외는 돌 성문 통로·다리 위) — 지붕 위 워커 188~253쌍 → 0(상태 넷). 선택한 워커만 가려지면 옅은 실루엣.
+  - 문 앞 실타래는 거리 줄마다 같은 것 둘까지·절반은 빈 자리·가구 id로 변주(한 가지 몫 ≤ 16.7 %). 비 오는 여름 웅덩이 변주.
+  - 떠오르는 상자는 너비 토큰 280·360·480(태블릿 ×1.15)에 고정·줄 간격 1.5·제목 한 줄·본문 4줄 뒤 [더 보기]·UI-KIT 틀; 스킨 감사에 틀 없는 상자 규칙; 개발 서버 `?pseudo-long=1` 1.4배 글에서 너비 불변·넘침 0.
+  - 감사 목록: 성벽이 호숫가를 따라 호수를 성 안에 넣음(엔진 규칙이 물가 가장자리 허용 + 렌더가 벽 두께를 가장자리 가운데로, 판정 대상), 물가 워커, 가을 풀빛, 낙엽 반복, 이름표 겹침, L4 돌기둥 집, 경고 표시 붐빔.
+  - 관문: DGX 캡처·측정 오류 0, 스킨 감사 0 / 1263·틀 없는 상자 0, 면적 5.4 % / 6 %·태블릿 5.9 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 로컬 전체 시험 3,796 / 3,796, 깨끗한 클론 CLONE_SHORT.
 - **UI-9b 짧은 수정 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_F 1): [보고서](verification/ui9b/REPORT.md), 결정 UI9B-D1~D4.
   - 세력 쪽 반란 압력은 쪽 안의 칸(발치 상자 오른쪽 아래, 칸 안 스크롤). 왕실 닮은 문장(파랑 + 금백합, 빨강 + 금사자) 금지 — 그 색만 바꿈, 다른 문장 불변(드 포콩발 가문 빨강·파랑 → 빨강·초록).
   - Wave 17 징수원(`wk_tax_collector`, 칸마다의 발)이 1381 쫓음의 맨 앞. Wave 31 `chapter5_intro`와 5장 여는 화면·목표 문구. 목축 농장은 우리의 마름모로 자른 사본(약 1.4배). Wave 3 목동·축융공·양모 상인 시트에 칸 정보를 넣어 등록(직물 건물의 수레꾼).
