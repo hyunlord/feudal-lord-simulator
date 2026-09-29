@@ -1,0 +1,617 @@
+{
+ "reorg.wage_competition": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "임금 경쟁"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "rumour",
+  "pressure": {
+   "total": 0,
+   "causes": []
+  }
+ },
+ "reorg.textile_street": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "직물 거리",
+    "에일집 성황"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "rumour",
+  "pressure": {
+   "total": 0,
+   "causes": []
+  }
+ },
+ "reorg.alehouse_boom": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "직물 거리",
+    "에일집 성황"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "rumour",
+  "pressure": {
+   "total": 0,
+   "causes": []
+  }
+ },
+ "reorg.petitions_surge": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "청원 물결"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "arrival",
+  "pressure": {
+   "total": 0,
+   "causes": []
+  }
+ },
+ "reorg.overlord_warning": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": "길드 인가 청원",
+   "def": "guild_charter",
+   "chips": [
+    "길드 인가 청원",
+    "백작의 경고"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "arrival",
+  "pressure": {
+   "total": 0,
+   "causes": []
+  }
+ },
+ "guild_charter": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": "길드 인가 청원",
+   "def": "guild_charter",
+   "chips": [
+    "길드 인가 청원",
+    "백작의 경고"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "arrival",
+  "pressure": {
+   "total": 0,
+   "causes": []
+  }
+ },
+ "cloth_or_grain": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": "직물 대 곡물",
+   "def": "cloth_or_grain",
+   "chips": [
+    "직물 대 곡물"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "arrival",
+  "pressure": {
+   "total": 0,
+   "causes": []
+  }
+ },
+ "tax_collection": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": "인두세 징수 방식",
+   "def": "tax_collection",
+   "chips": [
+    "인두세 징수 방식"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "arrival",
+  "pressure": {
+   "total": 10,
+   "causes": [
+    {
+     "id": "cloth_specialised",
+     "pressure": 10
+    }
+   ]
+  }
+ },
+ "reorg.poll_tax": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "인두세 징수"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "arrival",
+  "pressure": {
+   "total": 10,
+   "causes": [
+    {
+     "id": "cloth_specialised",
+     "pressure": 10
+    }
+   ]
+  }
+ },
+ "rumour-quiet": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "젖은 여름",
+    "1381년 농민 반란 소문"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "arrival",
+  "pressure": {
+   "total": 10,
+   "causes": [
+    {
+     "id": "cloth_specialised",
+     "pressure": 10
+    }
+   ]
+  }
+ },
+ "rumour-chased": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "젖은 여름",
+    "1381년 농민 반란 소문"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "arrival",
+  "pressure": {
+   "total": 50,
+   "causes": [
+    {
+     "id": "direct_collection",
+     "pressure": 40
+    },
+    {
+     "id": "cloth_specialised",
+     "pressure": 10
+    }
+   ]
+  }
+ },
+ "borough_charter": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "ui": {
+   "modal": "자치 특허 협상",
+   "def": "borough_charter",
+   "chips": [
+    "자치 특허 협상"
+   ],
+   "goal": "제4장 · 재편0/1목표 기록"
+  },
+  "stage": "recovery",
+  "pressure": {
+   "total": 10,
+   "causes": [
+    {
+     "id": "cloth_specialised",
+     "pressure": 10
+    }
+   ]
+  }
+ },
+ "chapter4-end": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "goal": "제5장0/1목표 기록"
+  },
+  "ui": {
+   "modal": "제4장 연대기 · 1362–1382",
+   "def": null,
+   "chips": [],
+   "goal": "제5장0/1목표 기록"
+  },
+  "stage": "done",
+  "pressure": {
+   "total": 10,
+   "causes": [
+    {
+     "id": "cloth_specialised",
+     "pressure": 10
+    }
+   ]
+  }
+ },
+ "r00-chapter4-opening": {
+  "chapter": "4",
+  "title": "제4장 · 재편 · 1362–1400",
+  "art": true,
+  "goals": [
+   "도시에 자치 특허를 내주거나 거부한다"
+  ]
+ },
+ "season-strip": [
+  "길드 인가 청원 — 내년 봄 초쯤"
+ ],
+ "w1-textile-street": {
+  "tick": 256000,
+  "stage": "rumour",
+  "weavers": 2,
+  "textileStreet": 256000,
+  "alehouseBoom": 256000,
+  "guild": null,
+  "guildhall": null,
+  "rebellion": null,
+  "openPetitions": [],
+  "at": [
+   50,
+   21
+  ]
+ },
+ "w2-alehouse-crowd": {
+  "tick": 256000,
+  "stage": "rumour",
+  "weavers": 2,
+  "textileStreet": 256000,
+  "alehouseBoom": 256000,
+  "guild": null,
+  "guildhall": null,
+  "rebellion": null,
+  "openPetitions": [],
+  "at": [
+   46,
+   37
+  ]
+ },
+ "w3-petition-crowd": {
+  "tick": 276000,
+  "stage": "arrival",
+  "weavers": 2,
+  "textileStreet": 256000,
+  "alehouseBoom": 256000,
+  "guild": null,
+  "guildhall": null,
+  "rebellion": null,
+  "openPetitions": [
+   "guild_charter"
+  ],
+  "at": [
+   49,
+   29
+  ]
+ },
+ "w4-collectors-chased": {
+  "tick": 325000,
+  "stage": "arrival",
+  "weavers": 2,
+  "textileStreet": 256000,
+  "alehouseBoom": 256000,
+  "guild": {
+   "foundedTick": 276092,
+   "headId": "p-002381"
+  },
+  "guildhall": {
+   "kind": "guildhall",
+   "tx": 52,
+   "ty": 31,
+   "depth": 83,
+   "id": "reorg:guildhall:52:31"
+  },
+  "rebellion": {
+   "tick": 325000,
+   "pressure": 50,
+   "outcome": "chased"
+  },
+  "openPetitions": [],
+  "at": [
+   53,
+   32
+  ]
+ },
+ "w5-rumour-quiet": {
+  "tick": 325000,
+  "stage": "arrival",
+  "weavers": 2,
+  "textileStreet": 256000,
+  "alehouseBoom": 256000,
+  "guild": {
+   "foundedTick": 276092,
+   "headId": "p-002381"
+  },
+  "guildhall": {
+   "kind": "guildhall",
+   "tx": 52,
+   "ty": 31,
+   "depth": 83,
+   "id": "reorg:guildhall:52:31"
+  },
+  "rebellion": {
+   "tick": 325000,
+   "pressure": 10,
+   "outcome": "quiet"
+  },
+  "openPetitions": [],
+  "at": [
+   49,
+   29
+  ]
+ },
+ "w6-guildhall": {
+  "tick": 280000,
+  "stage": "arrival",
+  "weavers": 2,
+  "textileStreet": 256000,
+  "alehouseBoom": 256000,
+  "guild": {
+   "foundedTick": 276092,
+   "headId": "p-002163"
+  },
+  "guildhall": {
+   "kind": "guildhall",
+   "tx": 52,
+   "ty": 31,
+   "depth": 83,
+   "id": "reorg:guildhall:52:31"
+  },
+  "rebellion": null,
+  "openPetitions": [
+   "cloth_or_grain"
+  ],
+  "at": [
+   52,
+   31
+  ]
+ },
+ "f1-factions-warning": {
+  "tug": "도시·상인백작 경고선 50영주·왕실백작이 경고했습니다",
+  "influence": [
+   [
+    "overlord",
+    null
+   ],
+   [
+    "crown",
+    null
+   ],
+   [
+    "neighbour_1",
+    null
+   ],
+   [
+    "neighbour_2",
+    null
+   ],
+   [
+    "bishop",
+    null
+   ],
+   [
+    "merchant_house_1",
+    "힘 63"
+   ],
+   [
+    "merchant_house_2",
+    "힘 37"
+   ],
+   [
+    "town",
+    "힘 65"
+   ],
+   [
+    "commons",
+    null
+   ]
+  ]
+ },
+ "f2-factions-chapter-end": {
+  "tug": "도시·상인백작 경고선 50영주·왕실백작이 경고했습니다",
+  "influence": [
+   [
+    "overlord",
+    null
+   ],
+   [
+    "crown",
+    null
+   ],
+   [
+    "neighbour_1",
+    null
+   ],
+   [
+    "neighbour_2",
+    null
+   ],
+   [
+    "bishop",
+    null
+   ],
+   [
+    "merchant_house_1",
+    "힘 73"
+   ],
+   [
+    "merchant_house_2",
+    "힘 43"
+   ],
+   [
+    "town",
+    "힘 89"
+   ],
+   [
+    "commons",
+    null
+   ]
+  ]
+ },
+ "f3-commons-quiet": [
+  "압력 합계: 10",
+  "50 이상이면 징수원을 쫓는다",
+  "직물 전문화 +10",
+  "소문 결과: 지나갔습니다"
+ ],
+ "f4-commons-chased": [
+  "압력 합계: 50",
+  "50 이상이면 징수원을 쫓는다",
+  "직접 징수 +40",
+  "직물 전문화 +10",
+  "소문 결과: 징수원을 쫓았습니다"
+ ],
+ "l1-rights-chased": [
+  "드 포콩발 가문 · 2대째 가문 · 1359년부터",
+  "칭호: 자치도시 영주",
+  "앞선 가문: 피츠웬들",
+  "영주의 가솔",
+  "존 드 포콩발영주 · 54살",
+  "마저리 드 포콩발영주 부인 · 48살",
+  "휴 드 포콩발영주의 아들 · 27살",
+  "윌리엄 드 포콩발영주의 아들 · 16살",
+  "전쟁",
+  "왕실의 신임: 있음",
+  "성벽의 방어 100 %",
+  "영주의 권리",
+  "시장 좌판세지님",
+  "통행세지님",
+  "방앗간 사용료지님",
+  "영주가 준 권리",
+  "상인 무리: 시장권 · 좌판세 × 0.75",
+  "소작인: 화폐 지대 · 부역 면제",
+  "반란 압력",
+  "압력 합계: 50",
+  "50 이상이면 징수원을 쫓는다",
+  "직접 징수 +40",
+  "직물 전문화 +10",
+  "소문 결과: 징수원을 쫓았습니다"
+ ],
+ "l2-rights-chapter-end": [
+  "드 포콩발 가문 · 2대째 가문 · 1359년부터",
+  "칭호: 자치도시 영주",
+  "앞선 가문: 피츠웬들",
+  "영주의 가솔",
+  "존 드 포콩발영주 · 55살",
+  "마저리 드 포콩발영주 부인 · 49살부상",
+  "휴 드 포콩발영주의 아들 · 28살",
+  "윌리엄 드 포콩발영주의 아들 · 17살",
+  "전쟁",
+  "왕실의 신임: 있음",
+  "성벽의 방어 100 %",
+  "영주의 권리",
+  "시장 좌판세도시로 넘김 · 1382년",
+  "통행세절반을 도시로 넘김 · 1382년",
+  "방앗간 사용료지님",
+  "영주가 준 권리",
+  "상인 무리: 시장권 · 좌판세 × 0.75",
+  "소작인: 화폐 지대 · 부역 면제",
+  "4장 권리 이양",
+  "시장 좌판세 → 도시 · 1382년 자치 특허",
+  "통행세 절반 → 도시 · 1382년 자치 특허",
+  "도시가 해마다 봄에 영주에게 120d를 냅니다(fee farm) — 권리가 아니라 넘긴 권리의 대가",
+  "반란 압력",
+  "압력 합계: 10",
+  "50 이상이면 징수원을 쫓는다",
+  "직물 전문화 +10",
+  "소문 결과: 지나갔습니다"
+ ],
+ "l3-reorg-ledger": [
+  "분류이번 기간지난 기간3장 합계",
+  "임금0d0d-2388d",
+  "노동자 조례 벌금0d0d-100d",
+  "수도원 사제 봉급0d0d-60d",
+  "새 이주민 입주금0d0d40d",
+  "분류이번 기간지난 기간4장 합계",
+  "직물 인장세192d224d6224d",
+  "직물 매매세240d280d7324d",
+  "축융 방앗간 사용료84d51d2466d",
+  "인두세 영주 몫0d616d1844d",
+  "도시의 연납금0d0d0d"
+ ],
+ "errors": []
+}

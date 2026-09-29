@@ -1,12 +1,18 @@
 # 현재 상태
 
-갱신: 2026-09-29(CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
+- **UI-9 4장 재편 화면 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_E 3, 엔진 F4-A 넘김): [보고서](verification/ui9/REPORT.md), 결정 UI9-D1~D5.
+  - Wave 21 4장 19장·Wave 31 `chapter4_intro`·Wave 12 길드홀. 결정 카드 넷(답 둘, 명세대로의 답 줄, 엔진 표의 관계, 예측), 사건 아홉과 계절 띠, 연대기 4장 그림.
+  - 세계 먼저: 직물 거리, 에일집 앞 무리, 영주관 앞 청원 무리, 1381 쫓음(징수원이 시장 → 영주관, 주민이 뒤따름, 다치는 사람 없음), 길드홀(시장 쪽 성 안 빈 3 × 2).
+  - 세력 탭 힘 막대와 줄다리기(백작 경고선 50), 권리 탭 권리 이양(좌판세·통행세 절반 → 도시, fee farm 120d는 대가), 반란 압력 원인 줄, 4장 장부(직물 인장세·매매세·축융 사용료·인두세·연납금), 4장 목표·시작 화면·장 끝.
+  - 관문: seed 2 4장 재생 캡처 오류 0, 스킨 감사 0 / 1263(4장 묶음 포함), 면적 5.3 % / 6 %·태블릿 5.8 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 로컬 전체 시험 3,724 / 3,724.
+  - 넘길 것(엔진): 길드 결성의 원장 줄 없음, 길드·직물 대 곡물·특허 카드의 예측이 두 답 모두 지금 금고. 판정: 징수원 그림(국왕 전령 제복), 길드홀 자리 규칙.
 - **CLOTH-UI 직물 사슬 화면 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_E 2, 엔진 C5 넘김): [보고서](verification/cloth-ui/REPORT.md), 결정 CLOTHUI-D1~D5.
   - 건물 다섯 그림(Wave 2 목축 농장 계절·Wave 3 직조공 집·축융 방앗간·염색집·텐터 틀, 37장 설치), 문 앞 양털·베 더미, 수레 적재물(양털 자루·베 두루마리).
   - 사슬 아이콘 분리: 결산 카드의 에일 줄은 보리·엿기름·에일, 직물 줄은 일곱 중 가진 것만. 장부 서랍 "도시의 직물"(양·목초지·실 잣는 집·건물·직물 인장세·축융 사용료).
