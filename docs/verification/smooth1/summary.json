@@ -1,0 +1,9353 @@
+{
+ "generatedFrom": 2,
+ "runs": [
+  {
+   "run": "dgx-headless-ch1-new-x1",
+   "machine": "dgx-headless",
+   "scene": "ch1-new",
+   "speed": 1,
+   "action": "none",
+   "seconds": 180,
+   "population": 38,
+   "buildings": 8,
+   "dpr": 1,
+   "frames": 10441,
+   "minutes": 3,
+   "p50": 16.7,
+   "p95": 16.8,
+   "p99": 33.4,
+   "max": 66.8,
+   "over25": 344,
+   "over33": 344,
+   "over50": 4,
+   "over25PerMin": 114.7,
+   "over33PerMin": 114.7,
+   "over50PerMin": 1.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 62,
+     "perMin": 20.7,
+     "meanMs": 19.1,
+     "p95Ms": 36.4,
+     "maxMs": 43.8
+    },
+    "minor": {
+     "count": 391,
+     "perMin": 130.3,
+     "meanMs": 1.1,
+     "p95Ms": 1.5,
+     "maxMs": 2.2
+    },
+    "heapMB": {
+     "min": 16,
+     "max": 73
+    },
+    "marking": {
+     "starts": 62,
+     "reasons": {
+      "task": 62
+     },
+     "globalConsumedMB": 206,
+     "globalLimitMB": 239,
+     "oldGenMB": 33,
+     "externalMB": 173
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 3,
+    "season": 3,
+    "autosave": 3
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 307,
+     "maxMs": 50.1
+    },
+    "dialog": {
+     "frames": 22,
+     "maxMs": 66.7
+    },
+    "season": {
+     "frames": 23,
+     "maxMs": 66.7
+    },
+    "autosave": {
+     "frames": 23,
+     "maxMs": 66.8
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "지면 그리기": 317,
+    "GC(major)": 26,
+    "저장 직렬화": 1
+   },
+   "worst": [
+    {
+     "ms": 66.8,
+     "mainBusyMs": 66.7,
+     "moments": [
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame",
+      "drawFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 32.7
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 32.7
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 32.7
+      }
+     ]
+    },
+    {
+     "ms": 66.7,
+     "mainBusyMs": 66.6,
+     "moments": [
+      "season",
+      "dialog"
+     ],
+     "top": [
+      "drawFrame",
+      "getBoundingClientRect",
+      "viewport",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 43.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 43.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 43.6
+      }
+     ]
+    },
+    {
+     "ms": 50.1,
+     "mainBusyMs": 50.1,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 42.8
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 42.7
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 42.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch1-new-x3",
+   "machine": "dgx-headless",
+   "scene": "ch1-new",
+   "speed": 3,
+   "action": "none",
+   "seconds": 181,
+   "population": 1,
+   "buildings": 8,
+   "dpr": 1,
+   "frames": 10637,
+   "minutes": 3.01,
+   "p50": 16.7,
+   "p95": 16.8,
+   "p99": 33.3,
+   "max": 100,
+   "over25": 160,
+   "over33": 160,
+   "over50": 19,
+   "over25PerMin": 53.1,
+   "over33PerMin": 53.1,
+   "over50PerMin": 6.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 49,
+     "perMin": 16.3,
+     "meanMs": 37.6,
+     "p95Ms": 86.8,
+     "maxMs": 89.4
+    },
+    "minor": {
+     "count": 449,
+     "perMin": 149.2,
+     "meanMs": 1.1,
+     "p95Ms": 1.5,
+     "maxMs": 2
+    },
+    "heapMB": {
+     "min": 17,
+     "max": 100
+    },
+    "marking": {
+     "starts": 49,
+     "reasons": {
+      "task": 49
+     },
+     "globalConsumedMB": 249,
+     "globalLimitMB": 282,
+     "oldGenMB": 40,
+     "externalMB": 209
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 8,
+    "season": 8,
+    "autosave": 8
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 126,
+     "maxMs": 100
+    },
+    "dialog": {
+     "frames": 29,
+     "maxMs": 66.6
+    },
+    "season": {
+     "frames": 27,
+     "maxMs": 66.6
+    },
+    "autosave": {
+     "frames": 25,
+     "maxMs": 100
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "지면 그리기": 125,
+    "건물·물체 그리기": 1,
+    "GC(major)": 33,
+    "저장 직렬화": 1
+   },
+   "worst": [
+    {
+     "ms": 100,
+     "mainBusyMs": 100,
+     "moments": [
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 62.6
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 62.6
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 62.6
+      }
+     ]
+    },
+    {
+     "ms": 100,
+     "mainBusyMs": 100,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 86.2
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 86.2
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 86.1
+      }
+     ]
+    },
+    {
+     "ms": 100,
+     "mainBusyMs": 100,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame",
+      "drawFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 89.4
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 89.4
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 89.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch1-new-x5-notrace",
+   "machine": "dgx-headless",
+   "scene": "ch1-new",
+   "speed": 5,
+   "action": "none",
+   "seconds": 180,
+   "population": 6,
+   "buildings": 8,
+   "dpr": 1,
+   "frames": 5880,
+   "minutes": 3,
+   "p50": 16.7,
+   "p95": 66.7,
+   "p99": 83.4,
+   "max": 183.3,
+   "over25": 2440,
+   "over33": 2440,
+   "over50": 732,
+   "over25PerMin": 813.2,
+   "over33PerMin": 813.2,
+   "over50PerMin": 244,
+   "valid": true,
+   "gc": null,
+   "control": "no-trace",
+   "momentsSeen": {
+    "dialog": 10,
+    "season": 10,
+    "autosave": 10
+   },
+   "longFramesByMoment": {},
+   "errors": 0,
+   "causes": {
+    "대조(추적 없음)": 2440
+   },
+   "worst": [
+    {
+     "ms": 183.29999999998836,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 183.29999999998836,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 166.60000000000582,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch1-new-x5",
+   "machine": "dgx-headless",
+   "scene": "ch1-new",
+   "speed": 5,
+   "action": "none",
+   "seconds": 182,
+   "population": 15,
+   "buildings": 8,
+   "dpr": 1,
+   "frames": 8667,
+   "minutes": 3.03,
+   "p50": 16.7,
+   "p95": 50,
+   "p99": 66.7,
+   "max": 183.3,
+   "over25": 1434,
+   "over33": 1434,
+   "over50": 184,
+   "over25PerMin": 472.9,
+   "over33PerMin": 472.9,
+   "over50PerMin": 60.7,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 47,
+     "perMin": 15.5,
+     "meanMs": 47.5,
+     "p95Ms": 106.2,
+     "maxMs": 176
+    },
+    "minor": {
+     "count": 369,
+     "perMin": 121.8,
+     "meanMs": 2.2,
+     "p95Ms": 3.1,
+     "maxMs": 43.5
+    },
+    "heapMB": {
+     "min": 18,
+     "max": 98
+    },
+    "marking": {
+     "starts": 47,
+     "reasons": {
+      "task": 47
+     },
+     "globalConsumedMB": 225,
+     "globalLimitMB": 259,
+     "oldGenMB": 41,
+     "externalMB": 190
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 12,
+    "dialog": 13,
+    "autosave": 12
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 1102,
+     "maxMs": 183.3
+    },
+    "season": {
+     "frames": 216,
+     "maxMs": 99.9
+    },
+    "dialog": {
+     "frames": 232,
+     "maxMs": 133.4
+    },
+    "autosave": {
+     "frames": 205,
+     "maxMs": 100.1
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "지면 그리기": 1241,
+    "건물·물체 그리기": 68,
+    "GC(major)": 27,
+    "기타": 6,
+    "GC(minor)": 10,
+    "메인 스레드 밖(합성·GPU·OS)": 62,
+    "React 재렌더": 12,
+    "저장 직렬화": 1,
+    "시뮬레이션 틱": 4,
+    "입력·카메라": 2,
+    "주민·수레 그리기": 1
+   },
+   "worst": [
+    {
+     "ms": 183.3,
+     "mainBusyMs": 183.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawTerrainBoundaryV2",
+      "drawTerrain"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 180.9
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 180.9
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 180.9
+      }
+     ]
+    },
+    {
+     "ms": 166.7,
+     "mainBusyMs": 166.6,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 148.4
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 148.4
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 148.4
+      }
+     ]
+    },
+    {
+     "ms": 166.7,
+     "mainBusyMs": 166.6,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 151.5
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 151.4
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 151.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch2-1340-x1",
+   "machine": "dgx-headless",
+   "scene": "ch2-1340",
+   "speed": 1,
+   "action": "none",
+   "seconds": 180,
+   "population": 739,
+   "buildings": 71,
+   "dpr": 1,
+   "frames": 6247,
+   "minutes": 3,
+   "p50": 16.8,
+   "p95": 50.1,
+   "p99": 83.3,
+   "max": 266.6,
+   "over25": 3012,
+   "over33": 3012,
+   "over50": 412,
+   "over25PerMin": 1003.9,
+   "over33PerMin": 1003.9,
+   "over50PerMin": 137.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 19,
+     "perMin": 6.3,
+     "meanMs": 103.3,
+     "p95Ms": 197,
+     "maxMs": 197
+    },
+    "minor": {
+     "count": 761,
+     "perMin": 253.7,
+     "meanMs": 2.7,
+     "p95Ms": 3.3,
+     "maxMs": 44.4
+    },
+    "heapMB": {
+     "min": 34,
+     "max": 239
+    },
+    "marking": {
+     "starts": 19,
+     "reasons": {
+      "task": 19
+     },
+     "globalConsumedMB": 321,
+     "globalLimitMB": 336,
+     "oldGenMB": 86,
+     "externalMB": 235
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 4,
+    "season": 3,
+    "chapter": 1,
+    "autosave": 4
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 2836,
+     "maxMs": 266.6
+    },
+    "dialog": {
+     "frames": 93,
+     "maxMs": 166.7
+    },
+    "season": {
+     "frames": 76,
+     "maxMs": 166.7
+    },
+    "chapter": {
+     "frames": 27,
+     "maxMs": 166.7
+    },
+    "autosave": {
+     "frames": 97,
+     "maxMs": 216.7
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 2638,
+    "React 재렌더": 18,
+    "지면 그리기": 223,
+    "메인 스레드 밖(합성·GPU·OS)": 31,
+    "GC(minor)": 19,
+    "시뮬레이션 틱": 34,
+    "기타": 4,
+    "주민·수레 그리기": 21,
+    "GC(major)": 14,
+    "그림 디코드": 3,
+    "저장 직렬화": 4,
+    "입력·카메라": 3
+   },
+   "worst": [
+    {
+     "ms": 266.6,
+     "mainBusyMs": 266.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 217.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 217.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 217.7
+      }
+     ]
+    },
+    {
+     "ms": 233.4,
+     "mainBusyMs": 233.4,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 222.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 222.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 222.3
+      }
+     ]
+    },
+    {
+     "ms": 216.7,
+     "mainBusyMs": 216.6,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 176.1
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 176
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 176
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch2-1340-x3",
+   "machine": "dgx-headless",
+   "scene": "ch2-1340",
+   "speed": 3,
+   "action": "none",
+   "seconds": 183,
+   "population": 759,
+   "buildings": 71,
+   "dpr": 1,
+   "frames": 7849,
+   "minutes": 3.04,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 50,
+   "max": 349.9,
+   "over25": 2830,
+   "over33": 2830,
+   "over50": 51,
+   "over25PerMin": 929.9,
+   "over33PerMin": 929.9,
+   "over50PerMin": 16.8,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 24,
+     "perMin": 7.9,
+     "meanMs": 101.3,
+     "p95Ms": 268.4,
+     "maxMs": 322.6
+    },
+    "minor": {
+     "count": 1228,
+     "perMin": 403.9,
+     "meanMs": 1.2,
+     "p95Ms": 1.5,
+     "maxMs": 2.5
+    },
+    "heapMB": {
+     "min": 37,
+     "max": 325
+    },
+    "marking": {
+     "starts": 24,
+     "reasons": {
+      "task": 24
+     },
+     "globalConsumedMB": 348,
+     "globalLimitMB": 400,
+     "oldGenMB": 112,
+     "externalMB": 261
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 9,
+    "season": 8,
+    "chapter": 1,
+    "autosave": 8
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 2525,
+     "maxMs": 349.9
+    },
+    "dialog": {
+     "frames": 213,
+     "maxMs": 116.6
+    },
+    "season": {
+     "frames": 200,
+     "maxMs": 116.6
+    },
+    "chapter": {
+     "frames": 28,
+     "maxMs": 83.4
+    },
+    "autosave": {
+     "frames": 126,
+     "maxMs": 249.9
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 2657,
+    "지면 그리기": 136,
+    "시뮬레이션 틱": 9,
+    "저장 직렬화": 8,
+    "GC(major)": 18,
+    "React 재렌더": 1,
+    "주민·수레 그리기": 1
+   },
+   "worst": [
+    {
+     "ms": 349.9,
+     "mainBusyMs": 349.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 335.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 335.8
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 335.8
+      }
+     ]
+    },
+    {
+     "ms": 300.1,
+     "mainBusyMs": 300,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 283.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 283.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 283.7
+      }
+     ]
+    },
+    {
+     "ms": 249.9,
+     "mainBusyMs": 249.9,
+     "moments": [
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 236.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 236.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 236.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch2-1340-x5",
+   "machine": "dgx-headless",
+   "scene": "ch2-1340",
+   "speed": 5,
+   "action": "none",
+   "seconds": 180,
+   "population": 759,
+   "buildings": 71,
+   "dpr": 1,
+   "frames": 7725,
+   "minutes": 3,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 50,
+   "max": 333.3,
+   "over25": 2752,
+   "over33": 2752,
+   "over50": 57,
+   "over25PerMin": 917.2,
+   "over33PerMin": 917.2,
+   "over50PerMin": 19,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 24,
+     "perMin": 8,
+     "meanMs": 95.6,
+     "p95Ms": 249,
+     "maxMs": 310.2
+    },
+    "minor": {
+     "count": 1441,
+     "perMin": 480.3,
+     "meanMs": 1.1,
+     "p95Ms": 1.4,
+     "maxMs": 2.6
+    },
+    "heapMB": {
+     "min": 36,
+     "max": 350
+    },
+    "marking": {
+     "starts": 24,
+     "reasons": {
+      "global allocation limit": 1,
+      "task": 23
+     },
+     "globalConsumedMB": 372,
+     "globalLimitMB": 399,
+     "oldGenMB": 118,
+     "externalMB": 271
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 12,
+    "chapter": 1,
+    "dialog": 13,
+    "autosave": 12
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 2285,
+     "maxMs": 333.3
+    },
+    "season": {
+     "frames": 360,
+     "maxMs": 150
+    },
+    "chapter": {
+     "frames": 30,
+     "maxMs": 100
+    },
+    "dialog": {
+     "frames": 354,
+     "maxMs": 233.2
+    },
+    "autosave": {
+     "frames": 177,
+     "maxMs": 233.2
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 2402,
+    "지면 그리기": 304,
+    "시뮬레이션 틱": 15,
+    "저장 직렬화": 12,
+    "GC(major)": 19
+   },
+   "worst": [
+    {
+     "ms": 333.3,
+     "mainBusyMs": 333.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 310.2
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 310.2
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 310.2
+      }
+     ]
+    },
+    {
+     "ms": 283.4,
+     "mainBusyMs": 283.3,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 249
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 249
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 249
+      }
+     ]
+    },
+    {
+     "ms": 250,
+     "mainBusyMs": 250,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 212.2
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 212.1
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 209.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch3-plague-x1",
+   "machine": "dgx-headless",
+   "scene": "ch3-plague",
+   "speed": 1,
+   "action": "none",
+   "seconds": 180,
+   "population": 481,
+   "buildings": 75,
+   "dpr": 1,
+   "frames": 9254,
+   "minutes": 3,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 33.4,
+   "max": 216.6,
+   "over25": 1404,
+   "over33": 1404,
+   "over50": 24,
+   "over25PerMin": 467.9,
+   "over33PerMin": 467.9,
+   "over50PerMin": 8,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 25,
+     "perMin": 8.3,
+     "meanMs": 74.5,
+     "p95Ms": 163.6,
+     "maxMs": 190.8
+    },
+    "minor": {
+     "count": 1035,
+     "perMin": 345,
+     "meanMs": 1.2,
+     "p95Ms": 1.5,
+     "maxMs": 3.5
+    },
+    "heapMB": {
+     "min": 35,
+     "max": 238
+    },
+    "marking": {
+     "starts": 25,
+     "reasons": {
+      "task": 25
+     },
+     "globalConsumedMB": 379,
+     "globalLimitMB": 447,
+     "oldGenMB": 88,
+     "externalMB": 306
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 5,
+    "season": 3,
+    "autosave": 4
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 1312,
+     "maxMs": 216.6
+    },
+    "dialog": {
+     "frames": 54,
+     "maxMs": 100
+    },
+    "season": {
+     "frames": 47,
+     "maxMs": 100
+    },
+    "autosave": {
+     "frames": 48,
+     "maxMs": 50
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 1285,
+    "GC(major)": 21,
+    "그림 디코드": 1,
+    "지면 그리기": 88,
+    "저장 직렬화": 4,
+    "React 재렌더": 4,
+    "시뮬레이션 틱": 1
+   },
+   "worst": [
+    {
+     "ms": 216.6,
+     "mainBusyMs": 216.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 203.4
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 203.4
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 203.4
+      }
+     ]
+    },
+    {
+     "ms": 183.3,
+     "mainBusyMs": 183.3,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 176
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 176
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 176
+      }
+     ]
+    },
+    {
+     "ms": 183.3,
+     "mainBusyMs": 183.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 173
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 173
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 172.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch3-plague-x3",
+   "machine": "dgx-headless",
+   "scene": "ch3-plague",
+   "speed": 3,
+   "action": "none",
+   "seconds": 180,
+   "population": 430,
+   "buildings": 75,
+   "dpr": 1,
+   "frames": 8262,
+   "minutes": 3,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 50,
+   "max": 333.3,
+   "over25": 2272,
+   "over33": 2272,
+   "over50": 50,
+   "over25PerMin": 757.4,
+   "over33PerMin": 757.4,
+   "over50PerMin": 16.7,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 25,
+     "perMin": 8.3,
+     "meanMs": 103,
+     "p95Ms": 275.1,
+     "maxMs": 307.4
+    },
+    "minor": {
+     "count": 1319,
+     "perMin": 439.7,
+     "meanMs": 1.1,
+     "p95Ms": 1.5,
+     "maxMs": 2.6
+    },
+    "heapMB": {
+     "min": 37,
+     "max": 313
+    },
+    "marking": {
+     "starts": 25,
+     "reasons": {
+      "task": 25
+     },
+     "globalConsumedMB": 412,
+     "globalLimitMB": 443,
+     "oldGenMB": 111,
+     "externalMB": 290
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 7,
+    "dialog": 10,
+    "autosave": 7
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 2029,
+     "maxMs": 316.6
+    },
+    "season": {
+     "frames": 158,
+     "maxMs": 116.6
+    },
+    "dialog": {
+     "frames": 175,
+     "maxMs": 116.6
+    },
+    "autosave": {
+     "frames": 79,
+     "maxMs": 333.3
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 2031,
+    "시뮬레이션 틱": 25,
+    "지면 그리기": 178,
+    "저장 직렬화": 7,
+    "GC(major)": 21,
+    "React 재렌더": 9,
+    "주민·수레 그리기": 1
+   },
+   "worst": [
+    {
+     "ms": 333.3,
+     "mainBusyMs": 333.2,
+     "moments": [
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 317.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 317.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 317.3
+      }
+     ]
+    },
+    {
+     "ms": 316.6,
+     "mainBusyMs": 316.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 289.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 289.2
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 289.2
+      }
+     ]
+    },
+    {
+     "ms": 233.4,
+     "mainBusyMs": 233.3,
+     "moments": [
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 194.1
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 194.1
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 194.1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch3-plague-x5",
+   "machine": "dgx-headless",
+   "scene": "ch3-plague",
+   "speed": 5,
+   "action": "none",
+   "seconds": 180,
+   "population": 426,
+   "buildings": 75,
+   "dpr": 1,
+   "frames": 7638,
+   "minutes": 3,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 50,
+   "max": 366.7,
+   "over25": 2787,
+   "over33": 2787,
+   "over50": 70,
+   "over25PerMin": 928.9,
+   "over33PerMin": 928.9,
+   "over50PerMin": 23.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 26,
+     "perMin": 8.7,
+     "meanMs": 95.2,
+     "p95Ms": 241.1,
+     "maxMs": 334.6
+    },
+    "minor": {
+     "count": 1502,
+     "perMin": 500.7,
+     "meanMs": 1.1,
+     "p95Ms": 1.4,
+     "maxMs": 10.6
+    },
+    "heapMB": {
+     "min": 42,
+     "max": 329
+    },
+    "marking": {
+     "starts": 26,
+     "reasons": {
+      "task": 26
+     },
+     "globalConsumedMB": 398,
+     "globalLimitMB": 458,
+     "oldGenMB": 102,
+     "externalMB": 301
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 11,
+    "dialog": 14,
+    "autosave": 11
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 2317,
+     "maxMs": 366.7
+    },
+    "season": {
+     "frames": 339,
+     "maxMs": 83.3
+    },
+    "dialog": {
+     "frames": 344,
+     "maxMs": 83.3
+    },
+    "autosave": {
+     "frames": 186,
+     "maxMs": 200
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 2319,
+    "시뮬레이션 틱": 87,
+    "지면 그리기": 344,
+    "저장 직렬화": 11,
+    "React 재렌더": 6,
+    "그림 디코드": 1,
+    "GC(major)": 19
+   },
+   "worst": [
+    {
+     "ms": 366.7,
+     "mainBusyMs": 366.7,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 347.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 347.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 347.6
+      }
+     ]
+    },
+    {
+     "ms": 266.6,
+     "mainBusyMs": 266.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 241.1
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 241.1
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 241.1
+      }
+     ]
+    },
+    {
+     "ms": 200,
+     "mainBusyMs": 199.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 174.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 174.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 171.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch4-1380-x1",
+   "machine": "dgx-headless",
+   "scene": "ch4-1380",
+   "speed": 1,
+   "action": "none",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 8754,
+   "minutes": 3,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 33.4,
+   "max": 266.7,
+   "over25": 1923,
+   "over33": 1923,
+   "over50": 24,
+   "over25PerMin": 640.9,
+   "over33PerMin": 640.9,
+   "over50PerMin": 8,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 21,
+     "perMin": 7,
+     "meanMs": 82.6,
+     "p95Ms": 188,
+     "maxMs": 231.6
+    },
+    "minor": {
+     "count": 1196,
+     "perMin": 398.7,
+     "meanMs": 1.2,
+     "p95Ms": 1.6,
+     "maxMs": 2.3
+    },
+    "heapMB": {
+     "min": 40,
+     "max": 291
+    },
+    "marking": {
+     "starts": 21,
+     "reasons": {
+      "task": 21
+     },
+     "globalConsumedMB": 472,
+     "globalLimitMB": 539,
+     "oldGenMB": 106,
+     "externalMB": 364
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 3,
+    "dialog": 3,
+    "autosave": 3
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 1848,
+     "maxMs": 266.7
+    },
+    "season": {
+     "frames": 55,
+     "maxMs": 100
+    },
+    "dialog": {
+     "frames": 56,
+     "maxMs": 100
+    },
+    "autosave": {
+     "frames": 28,
+     "maxMs": 66.6
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 1821,
+    "GC(major)": 18,
+    "시뮬레이션 틱": 14,
+    "지면 그리기": 66,
+    "저장 직렬화": 3,
+    "주민·수레 그리기": 1
+   },
+   "worst": [
+    {
+     "ms": 266.7,
+     "mainBusyMs": 266.7,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: v8.callFunction",
+       "ms": 233
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 232.9
+      },
+      {
+       "name": "main: V8.StackGuard",
+       "ms": 231.8
+      }
+     ]
+    },
+    {
+     "ms": 216.8,
+     "mainBusyMs": 216.8,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 203.2
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 203.2
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 203.2
+      }
+     ]
+    },
+    {
+     "ms": 183.3,
+     "mainBusyMs": 183.3,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "renderFrame",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 171.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 171.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 171.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch4-1380-x3",
+   "machine": "dgx-headless",
+   "scene": "ch4-1380",
+   "speed": 3,
+   "action": "none",
+   "seconds": 184,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 7839,
+   "minutes": 3.07,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 50,
+   "max": 366.7,
+   "over25": 2902,
+   "over33": 2902,
+   "over50": 57,
+   "over25PerMin": 944.4,
+   "over33PerMin": 944.4,
+   "over50PerMin": 18.5,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 21,
+     "perMin": 6.8,
+     "meanMs": 131.8,
+     "p95Ms": 309.7,
+     "maxMs": 355
+    },
+    "minor": {
+     "count": 1665,
+     "perMin": 542.3,
+     "meanMs": 1.1,
+     "p95Ms": 1.4,
+     "maxMs": 2.1
+    },
+    "heapMB": {
+     "min": 42,
+     "max": 410
+    },
+    "marking": {
+     "starts": 21,
+     "reasons": {
+      "task": 21
+     },
+     "globalConsumedMB": 500,
+     "globalLimitMB": 530,
+     "oldGenMB": 137,
+     "externalMB": 337
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 9,
+    "season": 8,
+    "autosave": 8
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 2634,
+     "maxMs": 349.9
+    },
+    "dialog": {
+     "frames": 191,
+     "maxMs": 366.7
+    },
+    "season": {
+     "frames": 190,
+     "maxMs": 233.3
+    },
+    "autosave": {
+     "frames": 94,
+     "maxMs": 233.4
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 2669,
+    "시뮬레이션 틱": 58,
+    "지면 그리기": 149,
+    "GC(major)": 17,
+    "저장 직렬화": 8,
+    "React 재렌더": 1
+   },
+   "worst": [
+    {
+     "ms": 366.7,
+     "mainBusyMs": 366.7,
+     "moments": [
+      "dialog"
+     ],
+     "top": [
+      "(garbage collector)",
+      "runRenderPasses",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 365.5
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 365.5
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 365.5
+      }
+     ]
+    },
+    {
+     "ms": 349.9,
+     "mainBusyMs": 349.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 325.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 325.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 325.6
+      }
+     ]
+    },
+    {
+     "ms": 316.8,
+     "mainBusyMs": 316.7,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 302.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 302.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 302.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch4-1380-x5-notrace",
+   "machine": "dgx-headless",
+   "scene": "ch4-1380",
+   "speed": 5,
+   "action": "none",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 3799,
+   "minutes": 3,
+   "p50": 50,
+   "p95": 83.4,
+   "p99": 100.1,
+   "max": 383.4,
+   "over25": 3007,
+   "over33": 3007,
+   "over50": 1410,
+   "over25PerMin": 1000.8,
+   "over33PerMin": 1000.8,
+   "over50PerMin": 469.3,
+   "valid": false,
+   "gc": null,
+   "control": "no-trace",
+   "momentsSeen": {
+    "season": 9,
+    "dialog": 10,
+    "autosave": 9
+   },
+   "longFramesByMoment": {},
+   "errors": 0,
+   "causes": {
+    "대조(추적 없음)": 3007
+   },
+   "worst": [
+    {
+     "ms": 383.3999999999942,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 366.70000000001164,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 350,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch4-1380-x5",
+   "machine": "dgx-headless",
+   "scene": "ch4-1380",
+   "speed": 5,
+   "action": "none",
+   "seconds": 182,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 7134,
+   "minutes": 3.03,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 50,
+   "max": 366.7,
+   "over25": 3341,
+   "over33": 3341,
+   "over50": 69,
+   "over25PerMin": 1103.2,
+   "over33PerMin": 1103.2,
+   "over50PerMin": 22.8,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 22,
+     "perMin": 7.3,
+     "meanMs": 131.3,
+     "p95Ms": 321.5,
+     "maxMs": 338.5
+    },
+    "minor": {
+     "count": 1758,
+     "perMin": 580.2,
+     "meanMs": 1,
+     "p95Ms": 1.4,
+     "maxMs": 2.9
+    },
+    "heapMB": {
+     "min": 44,
+     "max": 350
+    },
+    "marking": {
+     "starts": 22,
+     "reasons": {
+      "task": 22
+     },
+     "globalConsumedMB": 456,
+     "globalLimitMB": 510,
+     "oldGenMB": 140,
+     "externalMB": 339
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 12,
+    "dialog": 14,
+    "autosave": 12,
+    "chapter": 1
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 2774,
+     "maxMs": 366.7
+    },
+    "season": {
+     "frames": 389,
+     "maxMs": 166.7
+    },
+    "dialog": {
+     "frames": 408,
+     "maxMs": 249.9
+    },
+    "autosave": {
+     "frames": 227,
+     "maxMs": 200
+    },
+    "chapter": {
+     "frames": 30,
+     "maxMs": 83.3
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 2878,
+    "시뮬레이션 틱": 167,
+    "지면 그리기": 265,
+    "저장 직렬화": 12,
+    "GC(major)": 18,
+    "React 재렌더": 1
+   },
+   "worst": [
+    {
+     "ms": 366.7,
+     "mainBusyMs": 366.6,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "advanceTick",
+      "drawFrame",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 338.5
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 338.5
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 338.4
+      }
+     ]
+    },
+    {
+     "ms": 350,
+     "mainBusyMs": 349.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 314.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 314.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 314.7
+      }
+     ]
+    },
+    {
+     "ms": 333.3,
+     "mainBusyMs": 333.3,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "runRenderPasses"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 331
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 331
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 331
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ch5-1440-x1",
+   "machine": "dgx-headless",
+   "scene": "ch5-1440",
+   "speed": 1,
+   "action": "none",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 4702,
+   "minutes": 3,
+   "p50": 33.4,
+   "p95": 66.7,
+   "p99": 83.3,
+   "max": 383.3,
+   "over25": 3964,
+   "over33": 3964,
+   "over50": 544,
+   "over25PerMin": 1321.1,
+   "over33PerMin": 1321.1,
+   "over50PerMin": 181.3,
+   "valid": false,
+   "gc": {
+    "major": {
+     "count": 11,
+     "perMin": 3.7,
+     "meanMs": 156.8,
+     "p95Ms": 323.6,
+     "maxMs": 323.6
+    },
+    "minor": {
+     "count": 915,
+     "perMin": 305,
+     "meanMs": 2.9,
+     "p95Ms": 6.5,
+     "maxMs": 37
+    },
+    "heapMB": {
+     "min": 56,
+     "max": 295
+    },
+    "marking": {
+     "starts": 11,
+     "reasons": {
+      "task": 11
+     },
+     "globalConsumedMB": 520,
+     "globalLimitMB": 552,
+     "oldGenMB": 154,
+     "externalMB": 369
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 3,
+    "dialog": 3,
+    "autosave": 3
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 3804,
+     "maxMs": 283.3
+    },
+    "season": {
+     "frames": 85,
+     "maxMs": 116.7
+    },
+    "dialog": {
+     "frames": 85,
+     "maxMs": 116.7
+    },
+    "autosave": {
+     "frames": 82,
+     "maxMs": 383.3
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 3461,
+    "지면 그리기": 277,
+    "React 재렌더": 43,
+    "시뮬레이션 틱": 86,
+    "입력·카메라": 6,
+    "기타": 14,
+    "GC(minor)": 13,
+    "메인 스레드 밖(합성·GPU·OS)": 11,
+    "GC(major)": 10,
+    "주민·수레 그리기": 40,
+    "저장 직렬화": 3
+   },
+   "worst": [
+    {
+     "ms": 383.3,
+     "mainBusyMs": 383.2,
+     "moments": [
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 365.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 365.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 365.3
+      }
+     ]
+    },
+    {
+     "ms": 283.3,
+     "mainBusyMs": 283.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 239.5
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 239.5
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 239.4
+      }
+     ]
+    },
+    {
+     "ms": 283.3,
+     "mainBusyMs": 283.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 238.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 238.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 234.1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-moment-petition-x1",
+   "machine": "dgx-headless",
+   "scene": "moment-petition",
+   "speed": 1,
+   "action": "none",
+   "seconds": 60,
+   "population": 528,
+   "buildings": 65,
+   "dpr": 1,
+   "frames": 3419,
+   "minutes": 1,
+   "p50": 16.7,
+   "p95": 33.2,
+   "p99": 33.4,
+   "max": 83.3,
+   "over25": 172,
+   "over33": 172,
+   "over50": 2,
+   "over25PerMin": 172,
+   "over33PerMin": 172,
+   "over50PerMin": 2,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 14,
+     "perMin": 14,
+     "meanMs": 25.2,
+     "p95Ms": 58.2,
+     "maxMs": 58.2
+    },
+    "minor": {
+     "count": 309,
+     "perMin": 309,
+     "meanMs": 1.1,
+     "p95Ms": 1.4,
+     "maxMs": 1.9
+    },
+    "heapMB": {
+     "min": 30,
+     "max": 116
+    },
+    "marking": {
+     "starts": 14,
+     "reasons": {
+      "task": 14
+     },
+     "globalConsumedMB": 323,
+     "globalLimitMB": 361,
+     "oldGenMB": 54,
+     "externalMB": 273
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 1,
+    "dialog": 2,
+    "autosave": 1
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 158,
+     "maxMs": 83.3
+    },
+    "season": {
+     "frames": 9,
+     "maxMs": 33.4
+    },
+    "dialog": {
+     "frames": 10,
+     "maxMs": 33.4
+    },
+    "autosave": {
+     "frames": 5,
+     "maxMs": 50
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 128,
+    "시뮬레이션 틱": 2,
+    "GC(major)": 8,
+    "지면 그리기": 33,
+    "저장 직렬화": 1
+   },
+   "worst": [
+    {
+     "ms": 83.3,
+     "mainBusyMs": 83.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 43.7
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 43.7
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 43.7
+      }
+     ]
+    },
+    {
+     "ms": 66.7,
+     "mainBusyMs": 66.6,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 58.2
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 58.2
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 58.2
+      }
+     ]
+    },
+    {
+     "ms": 50,
+     "mainBusyMs": 50,
+     "moments": [
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 39.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 39.2
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 39.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-moment-petition-x3",
+   "machine": "dgx-headless",
+   "scene": "moment-petition",
+   "speed": 3,
+   "action": "none",
+   "seconds": 63,
+   "population": 528,
+   "buildings": 65,
+   "dpr": 1,
+   "frames": 3344,
+   "minutes": 1.05,
+   "p50": 16.7,
+   "p95": 33.3,
+   "p99": 33.4,
+   "max": 166.7,
+   "over25": 414,
+   "over33": 414,
+   "over50": 11,
+   "over25PerMin": 392.4,
+   "over33PerMin": 392.4,
+   "over50PerMin": 10.4,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 13,
+     "perMin": 12.4,
+     "meanMs": 43.7,
+     "p95Ms": 132.9,
+     "maxMs": 132.9
+    },
+    "minor": {
+     "count": 426,
+     "perMin": 405.7,
+     "meanMs": 1.1,
+     "p95Ms": 1.5,
+     "maxMs": 2.1
+    },
+    "heapMB": {
+     "min": 34,
+     "max": 163
+    },
+    "marking": {
+     "starts": 13,
+     "reasons": {
+      "task": 13
+     },
+     "globalConsumedMB": 310,
+     "globalLimitMB": 360,
+     "oldGenMB": 66,
+     "externalMB": 257
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 3,
+    "dialog": 4,
+    "autosave": 3
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 343,
+     "maxMs": 100
+    },
+    "season": {
+     "frames": 49,
+     "maxMs": 166.7
+    },
+    "dialog": {
+     "frames": 53,
+     "maxMs": 166.7
+    },
+    "autosave": {
+     "frames": 31,
+     "maxMs": 50.1
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 362,
+    "시뮬레이션 틱": 2,
+    "지면 그리기": 39,
+    "저장 직렬화": 3,
+    "GC(major)": 8
+   },
+   "worst": [
+    {
+     "ms": 166.7,
+     "mainBusyMs": 166.6,
+     "moments": [
+      "dialog",
+      "season"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 132.9
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 132.9
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 132.9
+      }
+     ]
+    },
+    {
+     "ms": 100,
+     "mainBusyMs": 99.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 85.4
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 85.3
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 85.3
+      }
+     ]
+    },
+    {
+     "ms": 83.3,
+     "mainBusyMs": 83.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 62.5
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 62.5
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 62.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-moment-petition-x5",
+   "machine": "dgx-headless",
+   "scene": "moment-petition",
+   "speed": 5,
+   "action": "none",
+   "seconds": 60,
+   "population": 528,
+   "buildings": 65,
+   "dpr": 1,
+   "frames": 3118,
+   "minutes": 1.01,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 50,
+   "max": 133.2,
+   "over25": 442,
+   "over33": 442,
+   "over50": 14,
+   "over25PerMin": 438.6,
+   "over33PerMin": 438.6,
+   "over50PerMin": 13.9,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 15,
+     "perMin": 14.9,
+     "meanMs": 36.9,
+     "p95Ms": 93.6,
+     "maxMs": 93.6
+    },
+    "minor": {
+     "count": 427,
+     "perMin": 422.8,
+     "meanMs": 1.1,
+     "p95Ms": 1.4,
+     "maxMs": 2
+    },
+    "heapMB": {
+     "min": 30,
+     "max": 156
+    },
+    "marking": {
+     "starts": 14,
+     "reasons": {
+      "task": 14
+     },
+     "globalConsumedMB": 302,
+     "globalLimitMB": 335,
+     "oldGenMB": 72,
+     "externalMB": 246
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 6,
+    "autosave": 4,
+    "season": 3
+   },
+   "longFramesByMoment": {
+    "dialog": {
+     "frames": 93,
+     "maxMs": 66.6
+    },
+    "autosave": {
+     "frames": 53,
+     "maxMs": 50.1
+    },
+    "none": {
+     "frames": 327,
+     "maxMs": 133.2
+    },
+    "season": {
+     "frames": 70,
+     "maxMs": 66.6
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "시뮬레이션 틱": 1,
+    "지면 그리기": 74,
+    "건물·물체 그리기": 355,
+    "저장 직렬화": 4,
+    "GC(major)": 8
+   },
+   "worst": [
+    {
+     "ms": 133.2,
+     "mainBusyMs": 133.1,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 93.6
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 93.5
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 93.5
+      }
+     ]
+    },
+    {
+     "ms": 99.9,
+     "mainBusyMs": 99.8,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 72.5
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 72.5
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 72.4
+      }
+     ]
+    },
+    {
+     "ms": 83.4,
+     "mainBusyMs": 83.4,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 75.2
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 75.2
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 75.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ops-camera-x1-camera",
+   "machine": "dgx-headless",
+   "scene": "ops-camera",
+   "speed": 1,
+   "action": "camera",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 9708,
+   "minutes": 3,
+   "p50": 16.7,
+   "p95": 33.3,
+   "p99": 33.4,
+   "max": 400.1,
+   "over25": 540,
+   "over33": 540,
+   "over50": 70,
+   "over25PerMin": 180,
+   "over33PerMin": 180,
+   "over50PerMin": 23.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 30,
+     "perMin": 10,
+     "meanMs": 64.6,
+     "p95Ms": 87.1,
+     "maxMs": 90
+    },
+    "minor": {
+     "count": 494,
+     "perMin": 164.7,
+     "meanMs": 1,
+     "p95Ms": 1.3,
+     "maxMs": 2.4
+    },
+    "heapMB": {
+     "min": 46,
+     "max": 139
+    },
+    "marking": {
+     "starts": 30,
+     "reasons": {
+      "global allocation limit": 6,
+      "allocation limit": 3,
+      "task": 21
+     },
+     "globalConsumedMB": 319,
+     "globalLimitMB": 317,
+     "oldGenMB": 97,
+     "externalMB": 222
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 1,
+    "season": 1,
+    "autosave": 1
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 536,
+     "maxMs": 400.1
+    },
+    "dialog": {
+     "frames": 4,
+     "maxMs": 33.4
+    },
+    "season": {
+     "frames": 4,
+     "maxMs": 33.4
+    },
+    "autosave": {
+     "frames": 4,
+     "maxMs": 33.4
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 94,
+    "지면 그리기": 329,
+    "시뮬레이션 틱": 59,
+    "GC(major)": 25,
+    "React 재렌더": 8,
+    "주민·수레 그리기": 24,
+    "저장 직렬화": 1
+   },
+   "worst": [
+    {
+     "ms": 400.1,
+     "mainBusyMs": 400,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 373.5
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 373.5
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 373.4
+      }
+     ]
+    },
+    {
+     "ms": 383.4,
+     "mainBusyMs": 383.3,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 378
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 378
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 378
+      }
+     ]
+    },
+    {
+     "ms": 383.3,
+     "mainBusyMs": 383.2,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 369
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 369
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 369
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ops-camera-x3-camera",
+   "machine": "dgx-headless",
+   "scene": "ops-camera",
+   "speed": 3,
+   "action": "camera",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 7499,
+   "minutes": 3,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 50,
+   "max": 400.1,
+   "over25": 3121,
+   "over33": 3121,
+   "over50": 39,
+   "over25PerMin": 1040.1,
+   "over33PerMin": 1040.1,
+   "over50PerMin": 13,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 29,
+     "perMin": 9.7,
+     "meanMs": 35.4,
+     "p95Ms": 45.9,
+     "maxMs": 57.8
+    },
+    "minor": {
+     "count": 497,
+     "perMin": 165.7,
+     "meanMs": 1.1,
+     "p95Ms": 1.3,
+     "maxMs": 1.6
+    },
+    "heapMB": {
+     "min": 43,
+     "max": 129
+    },
+    "marking": {
+     "starts": 29,
+     "reasons": {
+      "task": 16,
+      "global allocation limit": 12,
+      "allocation limit": 1
+     },
+     "globalConsumedMB": 372,
+     "globalLimitMB": 342,
+     "oldGenMB": 77,
+     "externalMB": 295
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 1,
+    "season": 1,
+    "autosave": 1
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 3063,
+     "maxMs": 400.1
+    },
+    "dialog": {
+     "frames": 34,
+     "maxMs": 99.9
+    },
+    "season": {
+     "frames": 33,
+     "maxMs": 99.9
+    },
+    "autosave": {
+     "frames": 30,
+     "maxMs": 83.3
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 63,
+    "지면 그리기": 3006,
+    "시뮬레이션 틱": 20,
+    "기타": 3,
+    "GC(major)": 28,
+    "저장 직렬화": 1
+   },
+   "worst": [
+    {
+     "ms": 400.1,
+     "mainBusyMs": 400,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 387.4
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 387.4
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 387.4
+      }
+     ]
+    },
+    {
+     "ms": 383.3,
+     "mainBusyMs": 383.2,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 371.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 371.8
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 371.8
+      }
+     ]
+    },
+    {
+     "ms": 350,
+     "mainBusyMs": 349.9,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 335.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 335.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 335.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ops-camera-x5-camera",
+   "machine": "dgx-headless",
+   "scene": "ops-camera",
+   "speed": 5,
+   "action": "camera",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 10392,
+   "minutes": 3,
+   "p50": 16.7,
+   "p95": 16.8,
+   "p99": 33.4,
+   "max": 99.9,
+   "over25": 386,
+   "over33": 386,
+   "over50": 6,
+   "over25PerMin": 128.6,
+   "over33PerMin": 128.6,
+   "over50PerMin": 2,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 27,
+     "perMin": 9,
+     "meanMs": 23.6,
+     "p95Ms": 25.8,
+     "maxMs": 38.4
+    },
+    "minor": {
+     "count": 593,
+     "perMin": 197.7,
+     "meanMs": 1,
+     "p95Ms": 1.2,
+     "maxMs": 1.9
+    },
+    "heapMB": {
+     "min": 41,
+     "max": 110
+    },
+    "marking": {
+     "starts": 27,
+     "reasons": {
+      "task": 16,
+      "global allocation limit": 11
+     },
+     "globalConsumedMB": 396,
+     "globalLimitMB": 418,
+     "oldGenMB": 65,
+     "externalMB": 331
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 1,
+    "season": 1,
+    "autosave": 1
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 357,
+     "maxMs": 99.9
+    },
+    "dialog": {
+     "frames": 28,
+     "maxMs": 66.6
+    },
+    "season": {
+     "frames": 28,
+     "maxMs": 66.6
+    },
+    "autosave": {
+     "frames": 15,
+     "maxMs": 66.6
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 55,
+    "지면 그리기": 237,
+    "시뮬레이션 틱": 71,
+    "기타": 2,
+    "저장 직렬화": 1,
+    "GC(major)": 20
+   },
+   "worst": [
+    {
+     "ms": 99.9,
+     "mainBusyMs": 99.8,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 79.9
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 79.9
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 79.9
+      }
+     ]
+    },
+    {
+     "ms": 66.6,
+     "mainBusyMs": 66.4,
+     "moments": [
+      "dialog",
+      "season",
+      "autosave"
+     ],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 21.5
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 21.5
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 21.5
+      }
+     ]
+    },
+    {
+     "ms": 50.1,
+     "mainBusyMs": 50,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 21.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 21.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 21.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ops-drawers-x1-drawers",
+   "machine": "dgx-headless",
+   "scene": "ops-drawers",
+   "speed": 1,
+   "action": "drawers",
+   "seconds": 202,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 3940,
+   "minutes": 3.36,
+   "p50": 49.9,
+   "p95": 116.6,
+   "p99": 183.2,
+   "max": 433.4,
+   "over25": 2626,
+   "over33": 2626,
+   "over50": 1640,
+   "over25PerMin": 781.4,
+   "over33PerMin": 781.4,
+   "over50PerMin": 488,
+   "valid": false,
+   "gc": {
+    "major": {
+     "count": 25,
+     "perMin": 7.4,
+     "meanMs": 60.2,
+     "p95Ms": 104.3,
+     "maxMs": 223
+    },
+    "minor": {
+     "count": 382,
+     "perMin": 113.7,
+     "meanMs": 6,
+     "p95Ms": 41.1,
+     "maxMs": 54.9
+    },
+    "heapMB": {
+     "min": 39,
+     "max": 132
+    },
+    "marking": {
+     "starts": 25,
+     "reasons": {
+      "task": 25
+     },
+     "globalConsumedMB": 242,
+     "globalLimitMB": 268,
+     "oldGenMB": 65,
+     "externalMB": 177
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 4,
+    "autosave": 4,
+    "season": 1
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 2493,
+     "maxMs": 300
+    },
+    "dialog": {
+     "frames": 70,
+     "maxMs": 433.4
+    },
+    "autosave": {
+     "frames": 67,
+     "maxMs": 249.9
+    },
+    "season": {
+     "frames": 6,
+     "maxMs": 433.4
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 1970,
+    "기타": 46,
+    "지면 그리기": 302,
+    "시뮬레이션 틱": 69,
+    "메인 스레드 밖(합성·GPU·OS)": 161,
+    "React 재렌더": 25,
+    "GC(minor)": 21,
+    "주민·수레 그리기": 13,
+    "입력·카메라": 7,
+    "GC(major)": 7,
+    "그림 디코드": 1,
+    "저장 직렬화": 4
+   },
+   "worst": [
+    {
+     "ms": 433.4,
+     "mainBusyMs": 433.1,
+     "moments": [
+      "dialog",
+      "season"
+     ],
+     "top": [
+      "runRenderPasses",
+      "renderFrame",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 289.4
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 289.4
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 289
+      }
+     ]
+    },
+    {
+     "ms": 300,
+     "mainBusyMs": 299.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 294.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 294.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 294.6
+      }
+     ]
+    },
+    {
+     "ms": 283.4,
+     "mainBusyMs": 282.9,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 90.9
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 90.9
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 90.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ops-drawers-x3-drawers",
+   "machine": "dgx-headless",
+   "scene": "ops-drawers",
+   "speed": 3,
+   "action": "drawers",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 2355,
+   "minutes": 3.01,
+   "p50": 66.7,
+   "p95": 183.4,
+   "p99": 250,
+   "max": 883.3,
+   "over25": 1870,
+   "over33": 1870,
+   "over50": 1402,
+   "over25PerMin": 621.9,
+   "over33PerMin": 621.9,
+   "over50PerMin": 466.3,
+   "valid": false,
+   "gc": {
+    "major": {
+     "count": 13,
+     "perMin": 4.3,
+     "meanMs": 127.9,
+     "p95Ms": 278.8,
+     "maxMs": 278.8
+    },
+    "minor": {
+     "count": 570,
+     "perMin": 189.4,
+     "meanMs": 5.4,
+     "p95Ms": 41.5,
+     "maxMs": 123.2
+    },
+    "heapMB": {
+     "min": 42,
+     "max": 154
+    },
+    "marking": {
+     "starts": 13,
+     "reasons": {
+      "task": 11,
+      "allocation limit": 1,
+      "global allocation limit": 1
+     },
+     "globalConsumedMB": 378,
+     "globalLimitMB": 415,
+     "oldGenMB": 87,
+     "externalMB": 285
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 4,
+    "dialog": 5,
+    "autosave": 5
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 1743,
+     "maxMs": 883.3
+    },
+    "season": {
+     "frames": 44,
+     "maxMs": 400
+    },
+    "dialog": {
+     "frames": 62,
+     "maxMs": 400
+    },
+    "autosave": {
+     "frames": 67,
+     "maxMs": 283.3
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 927,
+    "지면 그리기": 433,
+    "시뮬레이션 틱": 348,
+    "React 재렌더": 14,
+    "주민·수레 그리기": 27,
+    "기타": 39,
+    "저장 직렬화": 5,
+    "입력·카메라": 7,
+    "GC(minor)": 18,
+    "메인 스레드 밖(합성·GPU·OS)": 46,
+    "GC(major)": 6
+   },
+   "worst": [
+    {
+     "ms": 883.3,
+     "mainBusyMs": 883.1,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 696.5
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 696.5
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 695.6
+      }
+     ]
+    },
+    {
+     "ms": 450,
+     "mainBusyMs": 449.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 311.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 311.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 311.2
+      }
+     ]
+    },
+    {
+     "ms": 400,
+     "mainBusyMs": 399.6,
+     "moments": [
+      "season",
+      "dialog"
+     ],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 202.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 202.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 202.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ops-placement-x3-placement",
+   "machine": "dgx-headless",
+   "scene": "ops-placement",
+   "speed": 3,
+   "action": "placement",
+   "seconds": 241,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 12240,
+   "minutes": 4.01,
+   "p50": 16.7,
+   "p95": 33.4,
+   "p99": 50,
+   "max": 183.3,
+   "over25": 1922,
+   "over33": 1922,
+   "over50": 60,
+   "over25PerMin": 479,
+   "over33PerMin": 479,
+   "over50PerMin": 15,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 23,
+     "perMin": 5.7,
+     "meanMs": 71.4,
+     "p95Ms": 129.2,
+     "maxMs": 143.5
+    },
+    "minor": {
+     "count": 1116,
+     "perMin": 278.3,
+     "meanMs": 1.2,
+     "p95Ms": 1.5,
+     "maxMs": 29.7
+    },
+    "heapMB": {
+     "min": 47,
+     "max": 223
+    },
+    "marking": {
+     "starts": 23,
+     "reasons": {
+      "task": 20,
+      "allocation limit": 1,
+      "global allocation limit": 2
+     },
+     "globalConsumedMB": 588,
+     "globalLimitMB": 621,
+     "oldGenMB": 131,
+     "externalMB": 472
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 3,
+    "dialog": 4,
+    "autosave": 4
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 1737,
+     "maxMs": 183.3
+    },
+    "season": {
+     "frames": 89,
+     "maxMs": 99.9
+    },
+    "dialog": {
+     "frames": 93,
+     "maxMs": 99.9
+    },
+    "autosave": {
+     "frames": 105,
+     "maxMs": 66.7
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 1732,
+    "시뮬레이션 틱": 32,
+    "지면 그리기": 113,
+    "React 재렌더": 1,
+    "GC(major)": 21,
+    "저장 직렬화": 4,
+    "주민·수레 그리기": 1,
+    "기타": 15,
+    "메인 스레드 밖(합성·GPU·OS)": 2,
+    "GC(minor)": 1
+   },
+   "worst": [
+    {
+     "ms": 183.3,
+     "mainBusyMs": 183.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 164.5
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 164.5
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 164.5
+      }
+     ]
+    },
+    {
+     "ms": 150.1,
+     "mainBusyMs": 150.1,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 140.1
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 140.1
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 140.1
+      }
+     ]
+    },
+    {
+     "ms": 149.9,
+     "mainBusyMs": 149.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 142.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 142.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 142.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "dgx-headless-ops-placement-x5-placement",
+   "machine": "dgx-headless",
+   "scene": "ops-placement",
+   "speed": 5,
+   "action": "placement",
+   "seconds": 257,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 1,
+   "frames": 6904,
+   "minutes": 4.28,
+   "p50": 33.3,
+   "p95": 83.3,
+   "p99": 116.7,
+   "max": 550,
+   "over25": 4924,
+   "over33": 4924,
+   "over50": 996,
+   "over25PerMin": 1151.3,
+   "over33PerMin": 1151.3,
+   "over50PerMin": 232.9,
+   "valid": false,
+   "gc": {
+    "major": {
+     "count": 19,
+     "perMin": 4.4,
+     "meanMs": 141.5,
+     "p95Ms": 471,
+     "maxMs": 471
+    },
+    "minor": {
+     "count": 1027,
+     "perMin": 240,
+     "meanMs": 2.1,
+     "p95Ms": 3,
+     "maxMs": 43.8
+    },
+    "heapMB": {
+     "min": 40,
+     "max": 235
+    },
+    "marking": {
+     "starts": 19,
+     "reasons": {
+      "task": 13,
+      "global allocation limit": 3,
+      "allocation limit": 3
+     },
+     "globalConsumedMB": 524,
+     "globalLimitMB": 580,
+     "oldGenMB": 123,
+     "externalMB": 374
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 7,
+    "dialog": 7,
+    "autosave": 8
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 4507,
+     "maxMs": 550
+    },
+    "season": {
+     "frames": 196,
+     "maxMs": 183.2
+    },
+    "dialog": {
+     "frames": 198,
+     "maxMs": 183.2
+    },
+    "autosave": {
+     "frames": 236,
+     "maxMs": 183.4
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 4250,
+    "시뮬레이션 틱": 329,
+    "지면 그리기": 273,
+    "저장 직렬화": 7,
+    "GC(major)": 16,
+    "입력·카메라": 4,
+    "React 재렌더": 3,
+    "기타": 5,
+    "주민·수레 그리기": 6,
+    "GC(minor)": 10,
+    "메인 스레드 밖(합성·GPU·OS)": 21
+   },
+   "worst": [
+    {
+     "ms": 550,
+     "mainBusyMs": 549.7,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 518.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 518.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 518.7
+      }
+     ]
+    },
+    {
+     "ms": 466.6,
+     "mainBusyMs": 466.4,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 380.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 380.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 380.6
+      }
+     ]
+    },
+    {
+     "ms": 416.7,
+     "mainBusyMs": 416.6,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "advanceTick",
+      "advanceSimulationSubstep",
+      "routeToBuilding"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 373.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 373.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 368.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch1-new-x1",
+   "machine": "mac-chrome-window",
+   "scene": "ch1-new",
+   "speed": 1,
+   "action": "none",
+   "seconds": 180,
+   "population": 38,
+   "buildings": 8,
+   "dpr": 2,
+   "frames": 21466,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 10.1,
+   "p99": 10.3,
+   "max": 156.8,
+   "over25": 27,
+   "over33": 12,
+   "over50": 5,
+   "over25PerMin": 9,
+   "over33PerMin": 4,
+   "over50PerMin": 1.7,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 88,
+     "perMin": 29.3,
+     "meanMs": 20.1,
+     "p95Ms": 40.5,
+     "maxMs": 58.9
+    },
+    "minor": {
+     "count": 629,
+     "perMin": 209.7,
+     "meanMs": 0.6,
+     "p95Ms": 0.9,
+     "maxMs": 3.3
+    },
+    "heapMB": {
+     "min": 17,
+     "max": 72
+    },
+    "marking": {
+     "starts": 88,
+     "reasons": {
+      "task": 88
+     },
+     "globalConsumedMB": 628,
+     "globalLimitMB": 662,
+     "oldGenMB": 33,
+     "externalMB": 592
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 3,
+    "autosave": 3,
+    "season": 3
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 12,
+     "maxMs": 156.8
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "메인 스레드 밖(합성·GPU·OS)": 2,
+    "지면 그리기": 1,
+    "GC(major)": 9
+   },
+   "worst": [
+    {
+     "ms": 156.8,
+     "mainBusyMs": 4,
+     "moments": [],
+     "top": [
+      "renderFrame",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame",
+      "drawFrame"
+     ],
+     "threads": [
+      {
+       "name": "GPU Process/CrGpuMain: GPUTask",
+       "ms": 4.9
+      },
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 2.9
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 2.9
+      }
+     ]
+    },
+    {
+     "ms": 75.6,
+     "mainBusyMs": 3.1,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "renderFrame",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 2.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 2.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 2.7
+      }
+     ]
+    },
+    {
+     "ms": 66.6,
+     "mainBusyMs": 66.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "renderFrame",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 63.9
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 63.9
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 63.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch1-new-x3",
+   "machine": "mac-chrome-window",
+   "scene": "ch1-new",
+   "speed": 3,
+   "action": "none",
+   "seconds": 180,
+   "population": 4,
+   "buildings": 8,
+   "dpr": 2,
+   "frames": 21289,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 10.1,
+   "p99": 10.3,
+   "max": 107.9,
+   "over25": 48,
+   "over33": 42,
+   "over50": 25,
+   "over25PerMin": 16,
+   "over33PerMin": 14,
+   "over50PerMin": 8.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 81,
+     "perMin": 27,
+     "meanMs": 43.1,
+     "p95Ms": 98.1,
+     "maxMs": 112.7
+    },
+    "minor": {
+     "count": 653,
+     "perMin": 217.7,
+     "meanMs": 0.6,
+     "p95Ms": 0.8,
+     "maxMs": 1.2
+    },
+    "heapMB": {
+     "min": 18,
+     "max": 97
+    },
+    "marking": {
+     "starts": 81,
+     "reasons": {
+      "task": 81
+     },
+     "globalConsumedMB": 720,
+     "globalLimitMB": 753,
+     "oldGenMB": 42,
+     "externalMB": 662
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 8,
+    "autosave": 8,
+    "season": 8
+   },
+   "longFramesByMoment": {
+    "season": {
+     "frames": 8,
+     "maxMs": 93.1
+    },
+    "dialog": {
+     "frames": 8,
+     "maxMs": 93.1
+    },
+    "autosave": {
+     "frames": 8,
+     "maxMs": 93.1
+    },
+    "none": {
+     "frames": 34,
+     "maxMs": 107.9
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 42
+   },
+   "worst": [
+    {
+     "ms": 107.9,
+     "mainBusyMs": 107.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 107.9
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 107.9
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 107.9
+      }
+     ]
+    },
+    {
+     "ms": 106.8,
+     "mainBusyMs": 106.8,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 102.3
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 102.2
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 102.2
+      }
+     ]
+    },
+    {
+     "ms": 101.9,
+     "mainBusyMs": 101.8,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 99.3
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 99.3
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 99.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch1-new-x5-notrace",
+   "machine": "mac-chrome-window",
+   "scene": "ch1-new",
+   "speed": 5,
+   "action": "none",
+   "seconds": 184,
+   "population": 15,
+   "buildings": 8,
+   "dpr": 2,
+   "frames": 21808,
+   "minutes": 3.07,
+   "p50": 8.3,
+   "p95": 10.2,
+   "p99": 10.3,
+   "max": 108.7,
+   "over25": 36,
+   "over33": 31,
+   "over50": 26,
+   "over25PerMin": 11.7,
+   "over33PerMin": 10.1,
+   "over50PerMin": 8.5,
+   "valid": true,
+   "gc": null,
+   "control": "no-trace",
+   "momentsSeen": {
+    "dialog": 28,
+    "season": 12,
+    "autosave": 12
+   },
+   "longFramesByMoment": {},
+   "errors": 0,
+   "causes": {
+    "대조(추적 없음)": 31
+   },
+   "worst": [
+    {
+     "ms": 108.70000000001164,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 108.70000000001164,
+     "mainBusyMs": null,
+     "moments": [
+      "dialog",
+      "dialog",
+      "dialog"
+     ],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 108.59999999997672,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch1-new-x5",
+   "machine": "mac-chrome-window",
+   "scene": "ch1-new",
+   "speed": 5,
+   "action": "none",
+   "seconds": 180,
+   "population": 15,
+   "buildings": 8,
+   "dpr": 2,
+   "frames": 21456,
+   "minutes": 3.05,
+   "p50": 8.3,
+   "p95": 10.1,
+   "p99": 10.3,
+   "max": 208.6,
+   "over25": 58,
+   "over33": 49,
+   "over50": 35,
+   "over25PerMin": 19,
+   "over33PerMin": 16.1,
+   "over50PerMin": 11.5,
+   "valid": true,
+   "gc": null,
+   "control": null,
+   "momentsSeen": {
+    "dialog": 13,
+    "season": 12,
+    "autosave": 12
+   },
+   "longFramesByMoment": {
+    "dialog": {
+     "frames": 8,
+     "maxMs": 141.6
+    },
+    "autosave": {
+     "frames": 7,
+     "maxMs": 134.6
+    },
+    "season": {
+     "frames": 6,
+     "maxMs": 134.6
+    },
+    "none": {
+     "frames": 41,
+     "maxMs": 208.6
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 42,
+    "GC(minor)": 1,
+    "시뮬레이션 틱": 2,
+    "기타": 1,
+    "지면 그리기": 2,
+    "React 재렌더": 1
+   },
+   "worst": [
+    {
+     "ms": 208.6,
+     "mainBusyMs": 208.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "performWorkOnRoot",
+      "performSyncWorkOnRoot",
+      "flushSyncWorkAcrossRoots_impl"
+     ],
+     "threads": [
+      {
+       "name": "main: TimerFire",
+       "ms": 198.4
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 197.9
+      },
+      {
+       "name": "main: RunMicrotasks",
+       "ms": 197.5
+      }
+     ]
+    },
+    {
+     "ms": 185.1,
+     "mainBusyMs": 185.1,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 180.1
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 180.1
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 180.1
+      }
+     ]
+    },
+    {
+     "ms": 150,
+     "mainBusyMs": 149.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "renderFrame",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 145
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 145
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 145
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch2-1340-x1",
+   "machine": "mac-chrome-window",
+   "scene": "ch2-1340",
+   "speed": 1,
+   "action": "none",
+   "seconds": 180,
+   "population": 739,
+   "buildings": 71,
+   "dpr": 2,
+   "frames": 21221,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 10.1,
+   "p99": 10.3,
+   "max": 173.5,
+   "over25": 33,
+   "over33": 29,
+   "over50": 22,
+   "over25PerMin": 11,
+   "over33PerMin": 9.7,
+   "over50PerMin": 7.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 40,
+     "perMin": 13.3,
+     "meanMs": 71.9,
+     "p95Ms": 168.1,
+     "maxMs": 177.4
+    },
+    "minor": {
+     "count": 1561,
+     "perMin": 520.3,
+     "meanMs": 0.7,
+     "p95Ms": 0.9,
+     "maxMs": 2.3
+    },
+    "heapMB": {
+     "min": 33,
+     "max": 233
+    },
+    "marking": {
+     "starts": 40,
+     "reasons": {
+      "task": 39,
+      "global allocation limit": 1
+     },
+     "globalConsumedMB": 1354,
+     "globalLimitMB": 1436,
+     "oldGenMB": 98,
+     "externalMB": 1252
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 4,
+    "season": 3,
+    "chapter": 1,
+    "autosave": 4
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 26,
+     "maxMs": 173.5
+    },
+    "dialog": {
+     "frames": 3,
+     "maxMs": 126.6
+    },
+    "season": {
+     "frames": 3,
+     "maxMs": 126.6
+    },
+    "chapter": {
+     "frames": 1,
+     "maxMs": 43.6
+    },
+    "autosave": {
+     "frames": 3,
+     "maxMs": 126.6
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "기타": 1,
+    "시뮬레이션 틱": 1,
+    "GC(major)": 26,
+    "주민·수레 그리기": 1
+   },
+   "worst": [
+    {
+     "ms": 173.5,
+     "mainBusyMs": 173.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 173.3
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 173.3
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 173.3
+      }
+     ]
+    },
+    {
+     "ms": 165,
+     "mainBusyMs": 165,
+     "moments": [],
+     "top": [
+      "(garbage collector)"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 165
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 165
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 165
+      }
+     ]
+    },
+    {
+     "ms": 164.6,
+     "mainBusyMs": 164.6,
+     "moments": [],
+     "top": [
+      "(garbage collector)"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 164.6
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 164.6
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 164.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch2-1340-x3",
+   "machine": "mac-chrome-window",
+   "scene": "ch2-1340",
+   "speed": 3,
+   "action": "none",
+   "seconds": 181,
+   "population": 759,
+   "buildings": 71,
+   "dpr": 2,
+   "frames": 20490,
+   "minutes": 3.02,
+   "p50": 8.3,
+   "p95": 10.1,
+   "p99": 14.7,
+   "max": 815,
+   "over25": 60,
+   "over33": 42,
+   "over50": 35,
+   "over25PerMin": 19.9,
+   "over33PerMin": 13.9,
+   "over50PerMin": 11.6,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 33,
+     "perMin": 10.9,
+     "meanMs": 197.9,
+     "p95Ms": 636.1,
+     "maxMs": 801.9
+    },
+    "minor": {
+     "count": 2090,
+     "perMin": 692.1,
+     "meanMs": 0.8,
+     "p95Ms": 1,
+     "maxMs": 12.4
+    },
+    "heapMB": {
+     "min": 44,
+     "max": 448
+    },
+    "marking": {
+     "starts": 33,
+     "reasons": {
+      "task": 31,
+      "global allocation limit": 2
+     },
+     "globalConsumedMB": 1615,
+     "globalLimitMB": 1649,
+     "oldGenMB": 152,
+     "externalMB": 1482
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 9,
+    "season": 8,
+    "chapter": 1,
+    "autosave": 8
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 34,
+     "maxMs": 684.6
+    },
+    "dialog": {
+     "frames": 8,
+     "maxMs": 815
+    },
+    "season": {
+     "frames": 7,
+     "maxMs": 239.9
+    },
+    "chapter": {
+     "frames": 3,
+     "maxMs": 58
+    },
+    "autosave": {
+     "frames": 7,
+     "maxMs": 815
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 26,
+    "기타": 3,
+    "건물·물체 그리기": 5,
+    "지면 그리기": 2,
+    "React 재렌더": 1,
+    "시뮬레이션 틱": 4,
+    "주민·수레 그리기": 1
+   },
+   "worst": [
+    {
+     "ms": 815,
+     "mainBusyMs": 815,
+     "moments": [
+      "dialog",
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame",
+      "drawFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 808.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 808.8
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 808.8
+      }
+     ]
+    },
+    {
+     "ms": 684.6,
+     "mainBusyMs": 684.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "performWorkOnRoot",
+      "performSyncWorkOnRoot",
+      "flushSyncWorkAcrossRoots_impl"
+     ],
+     "threads": [
+      {
+       "name": "main: EventDispatch",
+       "ms": 342.9
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 336.6
+      },
+      {
+       "name": "main: RunMicrotasks",
+       "ms": 304.2
+      }
+     ]
+    },
+    {
+     "ms": 666.9,
+     "mainBusyMs": 655.1,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 466.9
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 463.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 463.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch2-1340-x5",
+   "machine": "mac-chrome-window",
+   "scene": "ch2-1340",
+   "speed": 5,
+   "action": "none",
+   "seconds": 180,
+   "population": 759,
+   "buildings": 71,
+   "dpr": 2,
+   "frames": 19501,
+   "minutes": 3,
+   "p50": 8.4,
+   "p95": 15.3,
+   "p99": 23.6,
+   "max": 815.5,
+   "over25": 142,
+   "over33": 81,
+   "over50": 36,
+   "over25PerMin": 47.3,
+   "over33PerMin": 27,
+   "over50PerMin": 12,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 25,
+     "perMin": 8.3,
+     "meanMs": 193.7,
+     "p95Ms": 536.6,
+     "maxMs": 798.9
+    },
+    "minor": {
+     "count": 2131,
+     "perMin": 710.3,
+     "meanMs": 0.9,
+     "p95Ms": 1,
+     "maxMs": 44.5
+    },
+    "heapMB": {
+     "min": 43,
+     "max": 528
+    },
+    "marking": {
+     "starts": 24,
+     "reasons": {
+      "global allocation limit": 2,
+      "task": 22
+     },
+     "globalConsumedMB": 1406,
+     "globalLimitMB": 1468,
+     "oldGenMB": 169,
+     "externalMB": 1256
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 11,
+    "season": 10,
+    "chapter": 1,
+    "autosave": 10
+   },
+   "longFramesByMoment": {
+    "dialog": {
+     "frames": 17,
+     "maxMs": 531.8
+    },
+    "season": {
+     "frames": 18,
+     "maxMs": 531.8
+    },
+    "chapter": {
+     "frames": 5,
+     "maxMs": 58.7
+    },
+    "autosave": {
+     "frames": 18,
+     "maxMs": 531.8
+    },
+    "none": {
+     "frames": 63,
+     "maxMs": 815.5
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "기타": 3,
+    "건물·물체 그리기": 16,
+    "시뮬레이션 틱": 30,
+    "지면 그리기": 9,
+    "GC(major)": 18,
+    "주민·수레 그리기": 1,
+    "React 재렌더": 4
+   },
+   "worst": [
+    {
+     "ms": 815.5,
+     "mainBusyMs": 815.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 802.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 802.8
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 802.8
+      }
+     ]
+    },
+    {
+     "ms": 531.8,
+     "mainBusyMs": 531.8,
+     "moments": [
+      "dialog",
+      "autosave",
+      "season"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "nearestPointOnPolyline"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 531.2
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 531.1
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 531.1
+      }
+     ]
+    },
+    {
+     "ms": 458.5,
+     "mainBusyMs": 458.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "residentWalkers",
+      "withResidentWalkers"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 451.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 451.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 451.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch3-plague-x1",
+   "machine": "mac-chrome-window",
+   "scene": "ch3-plague",
+   "speed": 1,
+   "action": "none",
+   "seconds": 180,
+   "population": 481,
+   "buildings": 75,
+   "dpr": 2,
+   "frames": 20679,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 10.1,
+   "p99": 14.7,
+   "max": 1799.4,
+   "over25": 57,
+   "over33": 41,
+   "over50": 29,
+   "over25PerMin": 19,
+   "over33PerMin": 13.7,
+   "over50PerMin": 9.7,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 41,
+     "perMin": 13.7,
+     "meanMs": 84.5,
+     "p95Ms": 181.5,
+     "maxMs": 282.4
+    },
+    "minor": {
+     "count": 1552,
+     "perMin": 517.3,
+     "meanMs": 0.8,
+     "p95Ms": 1.1,
+     "maxMs": 45.7
+    },
+    "heapMB": {
+     "min": 34,
+     "max": 226
+    },
+    "marking": {
+     "starts": 41,
+     "reasons": {
+      "task": 39,
+      "global allocation limit": 2
+     },
+     "globalConsumedMB": 1392,
+     "globalLimitMB": 1448,
+     "oldGenMB": 100,
+     "externalMB": 1300
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 5,
+    "season": 3,
+    "autosave": 4
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 34,
+     "maxMs": 1799.4
+    },
+    "dialog": {
+     "frames": 7,
+     "maxMs": 217
+    },
+    "season": {
+     "frames": 6,
+     "maxMs": 217
+    },
+    "autosave": {
+     "frames": 6,
+     "maxMs": 217
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 27,
+    "시뮬레이션 틱": 8,
+    "건물·물체 그리기": 2,
+    "메인 스레드 밖(합성·GPU·OS)": 1,
+    "지면 그리기": 1,
+    "React 재렌더": 2
+   },
+   "worst": [
+    {
+     "ms": 1799.4,
+     "mainBusyMs": 1798.4,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 1726.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 1724.5
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 1718
+      }
+     ]
+    },
+    {
+     "ms": 500,
+     "mainBusyMs": 499.3,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "getBoundingClientRect",
+      "viewport",
+      "processRootScheduleInMicrotask"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 198.1
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 198.1
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 196.1
+      }
+     ]
+    },
+    {
+     "ms": 350.5,
+     "mainBusyMs": 350.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "advanceTick",
+      "drawFrame",
+      "advanceSimulationSubstep"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 85.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 85.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 85.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch3-plague-x3",
+   "machine": "mac-chrome-window",
+   "scene": "ch3-plague",
+   "speed": 3,
+   "action": "none",
+   "seconds": 180,
+   "population": 430,
+   "buildings": 75,
+   "dpr": 2,
+   "frames": 20573,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 10.2,
+   "p99": 15.8,
+   "max": 724.9,
+   "over25": 50,
+   "over33": 34,
+   "over50": 25,
+   "over25PerMin": 16.7,
+   "over33PerMin": 11.3,
+   "over50PerMin": 8.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 34,
+     "perMin": 11.3,
+     "meanMs": 185.4,
+     "p95Ms": 551.9,
+     "maxMs": 704
+    },
+    "minor": {
+     "count": 2167,
+     "perMin": 722.3,
+     "meanMs": 0.7,
+     "p95Ms": 0.9,
+     "maxMs": 1.6
+    },
+    "heapMB": {
+     "min": 44,
+     "max": 421
+    },
+    "marking": {
+     "starts": 34,
+     "reasons": {
+      "task": 31,
+      "global allocation limit": 3
+     },
+     "globalConsumedMB": 1532,
+     "globalLimitMB": 1558,
+     "oldGenMB": 162,
+     "externalMB": 1355
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 10,
+    "season": 7,
+    "autosave": 7
+   },
+   "longFramesByMoment": {
+    "dialog": {
+     "frames": 11,
+     "maxMs": 724.9
+    },
+    "season": {
+     "frames": 10,
+     "maxMs": 333
+    },
+    "autosave": {
+     "frames": 11,
+     "maxMs": 724.9
+    },
+    "none": {
+     "frames": 23,
+     "maxMs": 565.8
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "시뮬레이션 틱": 5,
+    "GC(major)": 28,
+    "지면 그리기": 1
+   },
+   "worst": [
+    {
+     "ms": 724.9,
+     "mainBusyMs": 724.8,
+     "moments": [
+      "dialog",
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 712.1
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 712.1
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 712.1
+      }
+     ]
+    },
+    {
+     "ms": 565.8,
+     "mainBusyMs": 565.8,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 558.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 558.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 558.3
+      }
+     ]
+    },
+    {
+     "ms": 515.1,
+     "mainBusyMs": 515.1,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 505.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 505.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 505.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch3-plague-x5",
+   "machine": "mac-chrome-window",
+   "scene": "ch3-plague",
+   "speed": 5,
+   "action": "none",
+   "seconds": 182,
+   "population": 445,
+   "buildings": 75,
+   "dpr": 2,
+   "frames": 19940,
+   "minutes": 3.04,
+   "p50": 8.4,
+   "p95": 15.2,
+   "p99": 17.9,
+   "max": 874.7,
+   "over25": 61,
+   "over33": 35,
+   "over50": 21,
+   "over25PerMin": 20.1,
+   "over33PerMin": 11.5,
+   "over50PerMin": 6.9,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 29,
+     "perMin": 9.5,
+     "meanMs": 214.6,
+     "p95Ms": 577.8,
+     "maxMs": 877.2
+    },
+    "minor": {
+     "count": 2428,
+     "perMin": 798.7,
+     "meanMs": 0.7,
+     "p95Ms": 1,
+     "maxMs": 1.5
+    },
+    "heapMB": {
+     "min": 42,
+     "max": 535
+    },
+    "marking": {
+     "starts": 29,
+     "reasons": {
+      "task": 28,
+      "global allocation limit": 1
+     },
+     "globalConsumedMB": 1478,
+     "globalLimitMB": 1544,
+     "oldGenMB": 160,
+     "externalMB": 1308
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 13,
+    "season": 10,
+    "autosave": 10
+   },
+   "longFramesByMoment": {
+    "dialog": {
+     "frames": 16,
+     "maxMs": 248.6
+    },
+    "season": {
+     "frames": 16,
+     "maxMs": 248.6
+    },
+    "autosave": {
+     "frames": 16,
+     "maxMs": 248.6
+    },
+    "none": {
+     "frames": 19,
+     "maxMs": 874.7
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "시뮬레이션 틱": 4,
+    "React 재렌더": 2,
+    "지면 그리기": 5,
+    "GC(major)": 21,
+    "건물·물체 그리기": 3
+   },
+   "worst": [
+    {
+     "ms": 874.7,
+     "mainBusyMs": 874.7,
+     "moments": [],
+     "top": [
+      "(garbage collector)"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 874.7
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 874.7
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 874.7
+      }
+     ]
+    },
+    {
+     "ms": 576.3,
+     "mainBusyMs": 576.3,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "settlementMetrics",
+      "getSettlementView",
+      "generalCards"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 575.9
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 575.9
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 575.8
+      }
+     ]
+    },
+    {
+     "ms": 535.3,
+     "mainBusyMs": 535.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 527.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 527.8
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 527.8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch4-1380-x1",
+   "machine": "mac-chrome-window",
+   "scene": "ch4-1380",
+   "speed": 1,
+   "action": "none",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 21030,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 9.8,
+   "p99": 10.4,
+   "max": 250.4,
+   "over25": 44,
+   "over33": 36,
+   "over50": 27,
+   "over25PerMin": 14.7,
+   "over33PerMin": 12,
+   "over50PerMin": 9,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 36,
+     "perMin": 12,
+     "meanMs": 92.9,
+     "p95Ms": 206.4,
+     "maxMs": 218.4
+    },
+    "minor": {
+     "count": 1644,
+     "perMin": 548,
+     "meanMs": 0.8,
+     "p95Ms": 1,
+     "maxMs": 3.1
+    },
+    "heapMB": {
+     "min": 40,
+     "max": 251
+    },
+    "marking": {
+     "starts": 36,
+     "reasons": {
+      "task": 35,
+      "global allocation limit": 1
+     },
+     "globalConsumedMB": 1386,
+     "globalLimitMB": 1419,
+     "oldGenMB": 123,
+     "externalMB": 1264
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 3,
+    "season": 3,
+    "autosave": 3
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 28,
+     "maxMs": 217.3
+    },
+    "dialog": {
+     "frames": 8,
+     "maxMs": 250.4
+    },
+    "season": {
+     "frames": 8,
+     "maxMs": 250.4
+    },
+    "autosave": {
+     "frames": 8,
+     "maxMs": 250.4
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 30,
+    "시뮬레이션 틱": 1,
+    "주민·수레 그리기": 3,
+    "원인 미기록(추적 버퍼 끝)": 2
+   },
+   "worst": [
+    {
+     "ms": 250.4,
+     "mainBusyMs": 250.3,
+     "moments": [
+      "season",
+      "dialog",
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "commit",
+      "residentWalkers",
+      "follow"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 228.4
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 228.4
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 228.4
+      }
+     ]
+    },
+    {
+     "ms": 217.3,
+     "mainBusyMs": 0,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 200.2,
+     "mainBusyMs": 200.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 200.2
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 200.2
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 200.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch4-1380-x3",
+   "machine": "mac-chrome-window",
+   "scene": "ch4-1380",
+   "speed": 3,
+   "action": "none",
+   "seconds": 184,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 19444,
+   "minutes": 3.06,
+   "p50": 8.4,
+   "p95": 16.4,
+   "p99": 24.9,
+   "max": 707.8,
+   "over25": 143,
+   "over33": 69,
+   "over50": 34,
+   "over25PerMin": 46.7,
+   "over33PerMin": 22.5,
+   "over50PerMin": 11.1,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 28,
+     "perMin": 9.2,
+     "meanMs": 259.6,
+     "p95Ms": 652.9,
+     "maxMs": 703.7
+    },
+    "minor": {
+     "count": 2473,
+     "perMin": 808.2,
+     "meanMs": 0.9,
+     "p95Ms": 1.2,
+     "maxMs": 14.3
+    },
+    "heapMB": {
+     "min": 49,
+     "max": 530
+    },
+    "marking": {
+     "starts": 28,
+     "reasons": {
+      "task": 27,
+      "global allocation limit": 1
+     },
+     "globalConsumedMB": 1837,
+     "globalLimitMB": 1982,
+     "oldGenMB": 215,
+     "externalMB": 1663
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 8,
+    "dialog": 9,
+    "autosave": 8
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 55,
+     "maxMs": 707.8
+    },
+    "season": {
+     "frames": 14,
+     "maxMs": 250.1
+    },
+    "dialog": {
+     "frames": 14,
+     "maxMs": 250.1
+    },
+    "autosave": {
+     "frames": 14,
+     "maxMs": 250.1
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 26,
+    "시뮬레이션 틱": 22,
+    "메인 스레드 밖(합성·GPU·OS)": 3,
+    "건물·물체 그리기": 10,
+    "지면 그리기": 2,
+    "React 재렌더": 3,
+    "주민·수레 그리기": 2,
+    "저장 직렬화": 1
+   },
+   "worst": [
+    {
+     "ms": 707.8,
+     "mainBusyMs": 707.8,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "performWorkOnRoot",
+      "performSyncWorkOnRoot"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 700.3
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 700.3
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 700.3
+      }
+     ]
+    },
+    {
+     "ms": 675,
+     "mainBusyMs": 674.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 628.2
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 628.1
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 623.5
+      }
+     ]
+    },
+    {
+     "ms": 665.9,
+     "mainBusyMs": 665.9,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 658.9
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 658.9
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 658.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch4-1380-x5-notrace",
+   "machine": "mac-chrome-window",
+   "scene": "ch4-1380",
+   "speed": 5,
+   "action": "none",
+   "seconds": 183,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 21101,
+   "minutes": 3.05,
+   "p50": 8.3,
+   "p95": 10.2,
+   "p99": 16.3,
+   "max": 831.6,
+   "over25": 49,
+   "over33": 30,
+   "over50": 23,
+   "over25PerMin": 16,
+   "over33PerMin": 9.8,
+   "over50PerMin": 7.5,
+   "valid": true,
+   "gc": null,
+   "control": "no-trace",
+   "momentsSeen": {
+    "dialog": 56,
+    "season": 8,
+    "autosave": 8
+   },
+   "longFramesByMoment": {},
+   "errors": 0,
+   "causes": {
+    "대조(추적 없음)": 30
+   },
+   "worst": [
+    {
+     "ms": 831.5999999999913,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 392.3000000000029,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 359.1000000000058,
+     "mainBusyMs": null,
+     "moments": [],
+     "top": [],
+     "threads": []
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch4-1380-x5",
+   "machine": "mac-chrome-window",
+   "scene": "ch4-1380",
+   "speed": 5,
+   "action": "none",
+   "seconds": 183,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 17091,
+   "minutes": 3.05,
+   "p50": 8.5,
+   "p95": 17.1,
+   "p99": 25.4,
+   "max": 1386.9,
+   "over25": 219,
+   "over33": 113,
+   "over50": 52,
+   "over25PerMin": 71.7,
+   "over33PerMin": 37,
+   "over50PerMin": 17,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 21,
+     "perMin": 6.9,
+     "meanMs": 269.9,
+     "p95Ms": 603.9,
+     "maxMs": 701.5
+    },
+    "minor": {
+     "count": 2400,
+     "perMin": 786.9,
+     "meanMs": 0.9,
+     "p95Ms": 1.1,
+     "maxMs": 213
+    },
+    "heapMB": {
+     "min": 41,
+     "max": 527
+    },
+    "marking": {
+     "starts": 21,
+     "reasons": {
+      "task": 19,
+      "global allocation limit": 2
+     },
+     "globalConsumedMB": 1727,
+     "globalLimitMB": 1863,
+     "oldGenMB": 234,
+     "externalMB": 1353
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 10,
+    "dialog": 12,
+    "autosave": 10,
+    "chapter": 1
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 94,
+     "maxMs": 1386.9
+    },
+    "season": {
+     "frames": 19,
+     "maxMs": 66.6
+    },
+    "dialog": {
+     "frames": 19,
+     "maxMs": 66.6
+    },
+    "autosave": {
+     "frames": 19,
+     "maxMs": 66.6
+    },
+    "chapter": {
+     "frames": 2,
+     "maxMs": 66.6
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "시뮬레이션 틱": 55,
+    "GC(major)": 20,
+    "지면 그리기": 10,
+    "주민·수레 그리기": 3,
+    "건물·물체 그리기": 20,
+    "기타": 1,
+    "GC(minor)": 2,
+    "React 재렌더": 2
+   },
+   "worst": [
+    {
+     "ms": 1386.9,
+     "mainBusyMs": 1385,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 1282.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 1280.8
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 1280.8
+      }
+     ]
+    },
+    {
+     "ms": 700.4,
+     "mainBusyMs": 700.4,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "renderWithHooks",
+      "updateFunctionComponent",
+      "beginWork"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 698.6
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 698.6
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 698.6
+      }
+     ]
+    },
+    {
+     "ms": 625.4,
+     "mainBusyMs": 625.4,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 609.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 609.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 609.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch5-1440-x1",
+   "machine": "mac-chrome-window",
+   "scene": "ch5-1440",
+   "speed": 1,
+   "action": "none",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 20680,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 9.2,
+   "p99": 9.4,
+   "max": 1100,
+   "over25": 71,
+   "over33": 58,
+   "over50": 37,
+   "over25PerMin": 23.7,
+   "over33PerMin": 19.3,
+   "over50PerMin": 12.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 36,
+     "perMin": 12,
+     "meanMs": 91.4,
+     "p95Ms": 215.4,
+     "maxMs": 515.9
+    },
+    "minor": {
+     "count": 1637,
+     "perMin": 545.7,
+     "meanMs": 1.6,
+     "p95Ms": 3.3,
+     "maxMs": 477.5
+    },
+    "heapMB": {
+     "min": 41,
+     "max": 268
+    },
+    "marking": {
+     "starts": 36,
+     "reasons": {
+      "task": 34,
+      "global allocation limit": 2
+     },
+     "globalConsumedMB": 1413,
+     "globalLimitMB": 1446,
+     "oldGenMB": 125,
+     "externalMB": 1266
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 3,
+    "season": 3,
+    "autosave": 3
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 51,
+     "maxMs": 1100
+    },
+    "dialog": {
+     "frames": 7,
+     "maxMs": 225
+    },
+    "season": {
+     "frames": 7,
+     "maxMs": 225
+    },
+    "autosave": {
+     "frames": 7,
+     "maxMs": 225
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 26,
+    "저장 직렬화": 2,
+    "건물·물체 그리기": 12,
+    "시뮬레이션 틱": 11,
+    "GC(minor)": 2,
+    "지면 그리기": 2,
+    "그림 디코드": 1,
+    "메인 스레드 밖(합성·GPU·OS)": 1,
+    "입력·카메라": 1
+   },
+   "worst": [
+    {
+     "ms": 1100,
+     "mainBusyMs": 1100,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 727.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 727.1
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 710.5
+      }
+     ]
+    },
+    {
+     "ms": 699.1,
+     "mainBusyMs": 699.1,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 584.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 584.8
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 584.8
+      }
+     ]
+    },
+    {
+     "ms": 450.9,
+     "mainBusyMs": 450.9,
+     "moments": [],
+     "top": [
+      "roadPull",
+      "alignedRoadPosition",
+      "roadAlignedWalkers",
+      "displayWalkers"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 0.5
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 0.5
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 0.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch5-1440-x3",
+   "machine": "mac-chrome-window",
+   "scene": "ch5-1440",
+   "speed": 3,
+   "action": "none",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 19786,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 10.1,
+   "p99": 16.7,
+   "max": 2240,
+   "over25": 85,
+   "over33": 64,
+   "over50": 46,
+   "over25PerMin": 28.3,
+   "over33PerMin": 21.3,
+   "over50PerMin": 15.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 26,
+     "perMin": 8.7,
+     "meanMs": 245.2,
+     "p95Ms": 685.5,
+     "maxMs": 1833.8
+    },
+    "minor": {
+     "count": 2466,
+     "perMin": 822,
+     "meanMs": 1.4,
+     "p95Ms": 3.1,
+     "maxMs": 148.1
+    },
+    "heapMB": {
+     "min": 49,
+     "max": 517
+    },
+    "marking": {
+     "starts": 26,
+     "reasons": {
+      "task": 22,
+      "global allocation limit": 4
+     },
+     "globalConsumedMB": 2031,
+     "globalLimitMB": 2048,
+     "oldGenMB": 226,
+     "externalMB": 1685
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 7,
+    "season": 7,
+    "autosave": 7
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 55,
+     "maxMs": 2240
+    },
+    "dialog": {
+     "frames": 9,
+     "maxMs": 416.3
+    },
+    "season": {
+     "frames": 9,
+     "maxMs": 416.3
+    },
+    "autosave": {
+     "frames": 9,
+     "maxMs": 416.3
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 25,
+    "시뮬레이션 틱": 22,
+    "저장 직렬화": 1,
+    "건물·물체 그리기": 7,
+    "지면 그리기": 3,
+    "React 재렌더": 2,
+    "GC(minor)": 4
+   },
+   "worst": [
+    {
+     "ms": 2240,
+     "mainBusyMs": 2240,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "performWorkOnRoot",
+      "performSyncWorkOnRoot",
+      "flushSyncWorkAcrossRoots_impl"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 2106.9
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 2106.9
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 2101.3
+      }
+     ]
+    },
+    {
+     "ms": 1662.4,
+     "mainBusyMs": 1662.3,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 1037.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 1017.9
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 1016.9
+      }
+     ]
+    },
+    {
+     "ms": 909.9,
+     "mainBusyMs": 909.1,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "advanceTick",
+      "advanceSimulationSubstep",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "GPU Process/CrGpuMain: GPUTask",
+       "ms": 372.2
+      },
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 300
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 300
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ch5-1440-x5",
+   "machine": "mac-chrome-window",
+   "scene": "ch5-1440",
+   "speed": 5,
+   "action": "none",
+   "seconds": 184,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 21080,
+   "minutes": 3.07,
+   "p50": 8.3,
+   "p95": 10.2,
+   "p99": 16.7,
+   "max": 941.5,
+   "over25": 40,
+   "over33": 20,
+   "over50": 16,
+   "over25PerMin": 13.1,
+   "over33PerMin": 6.5,
+   "over50PerMin": 5.2,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 18,
+     "perMin": 5.9,
+     "meanMs": 222.9,
+     "p95Ms": 624.3,
+     "maxMs": 624.3
+    },
+    "minor": {
+     "count": 3349,
+     "perMin": 1090.9,
+     "meanMs": 0.7,
+     "p95Ms": 1,
+     "maxMs": 1.9
+    },
+    "heapMB": {
+     "min": 52,
+     "max": 836
+    },
+    "marking": {
+     "starts": 18,
+     "reasons": {
+      "task": 17,
+      "global allocation limit": 1
+     },
+     "globalConsumedMB": 1788,
+     "globalLimitMB": 1819,
+     "oldGenMB": 248,
+     "externalMB": 1533
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 13,
+    "dialog": 13,
+    "autosave": 13
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 15,
+     "maxMs": 632
+    },
+    "dialog": {
+     "frames": 5,
+     "maxMs": 941.5
+    },
+    "season": {
+     "frames": 4,
+     "maxMs": 191.3
+    },
+    "autosave": {
+     "frames": 5,
+     "maxMs": 941.5
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 17,
+    "건물·물체 그리기": 1,
+    "시뮬레이션 틱": 1,
+    "원인 미기록(추적 버퍼 끝)": 1
+   },
+   "worst": [
+    {
+     "ms": 941.5,
+     "mainBusyMs": 0,
+     "moments": [
+      "dialog",
+      "autosave"
+     ],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 632,
+     "mainBusyMs": 632,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 627.2
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 627.2
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 627.2
+      }
+     ]
+    },
+    {
+     "ms": 625.2,
+     "mainBusyMs": 625.2,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 613.7
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 613.7
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 613.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-moment-petition-x1",
+   "machine": "mac-chrome-window",
+   "scene": "moment-petition",
+   "speed": 1,
+   "action": "none",
+   "seconds": 64,
+   "population": 528,
+   "buildings": 65,
+   "dpr": 2,
+   "frames": 7625,
+   "minutes": 1.07,
+   "p50": 8.3,
+   "p95": 9.2,
+   "p99": 9.4,
+   "max": 34.1,
+   "over25": 6,
+   "over33": 1,
+   "over50": 0,
+   "over25PerMin": 5.6,
+   "over33PerMin": 0.9,
+   "over50PerMin": 0,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 21,
+     "perMin": 19.6,
+     "meanMs": 20.2,
+     "p95Ms": 29.1,
+     "maxMs": 30.6
+    },
+    "minor": {
+     "count": 410,
+     "perMin": 383.2,
+     "meanMs": 0.9,
+     "p95Ms": 1.4,
+     "maxMs": 11.2
+    },
+    "heapMB": {
+     "min": 31,
+     "max": 88
+    },
+    "marking": {
+     "starts": 21,
+     "reasons": {
+      "task": 21
+     },
+     "globalConsumedMB": 1056,
+     "globalLimitMB": 1089,
+     "oldGenMB": 50,
+     "externalMB": 1006
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 1,
+    "dialog": 33,
+    "autosave": 1
+   },
+   "longFramesByMoment": {
+    "dialog": {
+     "frames": 1,
+     "maxMs": 34.1
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 1
+   },
+   "worst": [
+    {
+     "ms": 34.1,
+     "mainBusyMs": 34.1,
+     "moments": [
+      "dialog",
+      "dialog",
+      "dialog",
+      "dialog"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawObjectRenderItems",
+      "objects",
+      "runRenderPasses"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 28.9
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 28.9
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 28.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-moment-petition-x3",
+   "machine": "mac-chrome-window",
+   "scene": "moment-petition",
+   "speed": 3,
+   "action": "none",
+   "seconds": 68,
+   "population": 528,
+   "buildings": 65,
+   "dpr": 2,
+   "frames": 7992,
+   "minutes": 1.14,
+   "p50": 8.3,
+   "p95": 9.2,
+   "p99": 16.6,
+   "max": 216.2,
+   "over25": 27,
+   "over33": 14,
+   "over50": 7,
+   "over25PerMin": 23.7,
+   "over33PerMin": 12.3,
+   "over50PerMin": 6.1,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 23,
+     "perMin": 20.2,
+     "meanMs": 28.3,
+     "p95Ms": 55.2,
+     "maxMs": 92.8
+    },
+    "minor": {
+     "count": 401,
+     "perMin": 351.8,
+     "meanMs": 1.2,
+     "p95Ms": 2,
+     "maxMs": 51
+    },
+    "heapMB": {
+     "min": 31,
+     "max": 95
+    },
+    "marking": {
+     "starts": 23,
+     "reasons": {
+      "task": 22,
+      "global allocation limit": 1
+     },
+     "globalConsumedMB": 1044,
+     "globalLimitMB": 1077,
+     "oldGenMB": 51,
+     "externalMB": 993
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 1,
+    "dialog": 41,
+    "autosave": 1
+   },
+   "longFramesByMoment": {
+    "dialog": {
+     "frames": 3,
+     "maxMs": 66.7
+    },
+    "none": {
+     "frames": 11,
+     "maxMs": 216.2
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 4,
+    "건물·물체 그리기": 5,
+    "지면 그리기": 2,
+    "입력·카메라": 1,
+    "GC(minor)": 1,
+    "메인 스레드 밖(합성·GPU·OS)": 1
+   },
+   "worst": [
+    {
+     "ms": 216.2,
+     "mainBusyMs": 216.2,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "roadAlignedWalkers",
+      "displayWalkers"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 215
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 215
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 215
+      }
+     ]
+    },
+    {
+     "ms": 107.8,
+     "mainBusyMs": 107.7,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawCroppedWorldSprite",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 101.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 101.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 101.3
+      }
+     ]
+    },
+    {
+     "ms": 101,
+     "mainBusyMs": 101,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 94.6
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 94.6
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 94.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-moment-petition-x5",
+   "machine": "mac-chrome-window",
+   "scene": "moment-petition",
+   "speed": 5,
+   "action": "none",
+   "seconds": 67,
+   "population": 528,
+   "buildings": 65,
+   "dpr": 2,
+   "frames": 8019,
+   "minutes": 1.12,
+   "p50": 8.3,
+   "p95": 9.2,
+   "p99": 9.3,
+   "max": 25.3,
+   "over25": 1,
+   "over33": 0,
+   "over50": 0,
+   "over25PerMin": 0.9,
+   "over33PerMin": 0,
+   "over50PerMin": 0,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 23,
+     "perMin": 20.5,
+     "meanMs": 16.6,
+     "p95Ms": 18.7,
+     "maxMs": 24.5
+    },
+    "minor": {
+     "count": 412,
+     "perMin": 367.9,
+     "meanMs": 0.6,
+     "p95Ms": 0.8,
+     "maxMs": 1.7
+    },
+    "heapMB": {
+     "min": 42,
+     "max": 108
+    },
+    "marking": {
+     "starts": 23,
+     "reasons": {
+      "task": 22,
+      "global allocation limit": 1
+     },
+     "globalConsumedMB": 1042,
+     "globalLimitMB": 1075,
+     "oldGenMB": 49,
+     "externalMB": 993
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "autosave": 1,
+    "dialog": 40
+   },
+   "longFramesByMoment": {},
+   "errors": 0,
+   "causes": {},
+   "worst": []
+  },
+  {
+   "run": "mac-chrome-window-ops-camera-x1-camera",
+   "machine": "mac-chrome-window",
+   "scene": "ops-camera",
+   "speed": 1,
+   "action": "camera",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 19192,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 9.3,
+   "p99": 33.6,
+   "max": 842,
+   "over25": 223,
+   "over33": 202,
+   "over50": 167,
+   "over25PerMin": 74.3,
+   "over33PerMin": 67.3,
+   "over50PerMin": 55.6,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 95,
+     "perMin": 31.7,
+     "meanMs": 42.2,
+     "p95Ms": 77.6,
+     "maxMs": 84.2
+    },
+    "minor": {
+     "count": 843,
+     "perMin": 281,
+     "meanMs": 0.7,
+     "p95Ms": 0.9,
+     "maxMs": 1.6
+    },
+    "heapMB": {
+     "min": 39,
+     "max": 134
+    },
+    "marking": {
+     "starts": 95,
+     "reasons": {
+      "task": 27,
+      "global allocation limit": 68
+     },
+     "globalConsumedMB": 914,
+     "globalLimitMB": 879,
+     "oldGenMB": 75,
+     "externalMB": 834
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 1,
+    "dialog": 1,
+    "autosave": 1
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 199,
+     "maxMs": 842
+    },
+    "season": {
+     "frames": 3,
+     "maxMs": 83.2
+    },
+    "dialog": {
+     "frames": 3,
+     "maxMs": 83.2
+    },
+    "autosave": {
+     "frames": 2,
+     "maxMs": 41.1
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 94,
+    "시뮬레이션 틱": 3,
+    "지면 그리기": 26,
+    "GC(major)": 34,
+    "주민·수레 그리기": 1,
+    "메인 스레드 밖(합성·GPU·OS)": 1,
+    "원인 미기록(추적 버퍼 끝)": 43
+   },
+   "worst": [
+    {
+     "ms": 842,
+     "mainBusyMs": 0,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 367.1,
+     "mainBusyMs": 0,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 350,
+     "mainBusyMs": 0,
+     "moments": [],
+     "top": [],
+     "threads": []
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ops-camera-x3-camera",
+   "machine": "mac-chrome-window",
+   "scene": "ops-camera",
+   "speed": 3,
+   "action": "camera",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 20449,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 9.2,
+   "p99": 15.7,
+   "max": 534.4,
+   "over25": 97,
+   "over33": 85,
+   "over50": 68,
+   "over25PerMin": 32.3,
+   "over33PerMin": 28.3,
+   "over50PerMin": 22.6,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 50,
+     "perMin": 16.7,
+     "meanMs": 54.2,
+     "p95Ms": 74.1,
+     "maxMs": 95.3
+    },
+    "minor": {
+     "count": 666,
+     "perMin": 222,
+     "meanMs": 0.6,
+     "p95Ms": 0.9,
+     "maxMs": 1.4
+    },
+    "heapMB": {
+     "min": 44,
+     "max": 131
+    },
+    "marking": {
+     "starts": 50,
+     "reasons": {
+      "task": 26,
+      "global allocation limit": 24
+     },
+     "globalConsumedMB": 1099,
+     "globalLimitMB": 1073,
+     "oldGenMB": 94,
+     "externalMB": 1025
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 1,
+    "dialog": 1,
+    "autosave": 1
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 81,
+     "maxMs": 534.4
+    },
+    "season": {
+     "frames": 4,
+     "maxMs": 140.9
+    },
+    "dialog": {
+     "frames": 2,
+     "maxMs": 99.4
+    },
+    "autosave": {
+     "frames": 2,
+     "maxMs": 99.4
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "건물·물체 그리기": 26,
+    "GC(major)": 29,
+    "시뮬레이션 틱": 6,
+    "지면 그리기": 1,
+    "원인 미기록(추적 버퍼 끝)": 23
+   },
+   "worst": [
+    {
+     "ms": 534.4,
+     "mainBusyMs": 0,
+     "moments": [],
+     "top": [],
+     "threads": []
+    },
+    {
+     "ms": 283.2,
+     "mainBusyMs": 283.1,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 270.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 270.8
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 270.8
+      }
+     ]
+    },
+    {
+     "ms": 282.4,
+     "mainBusyMs": 282.4,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 277.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 277.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 277.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ops-camera-x5-camera",
+   "machine": "mac-chrome-window",
+   "scene": "ops-camera",
+   "speed": 5,
+   "action": "camera",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 20935,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 9.3,
+   "p99": 16.7,
+   "max": 400.1,
+   "over25": 64,
+   "over33": 44,
+   "over50": 9,
+   "over25PerMin": 21.3,
+   "over33PerMin": 14.7,
+   "over50PerMin": 3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 33,
+     "perMin": 11,
+     "meanMs": 42.1,
+     "p95Ms": 51,
+     "maxMs": 59.3
+    },
+    "minor": {
+     "count": 890,
+     "perMin": 296.7,
+     "meanMs": 0.7,
+     "p95Ms": 0.8,
+     "maxMs": 1.5
+    },
+    "heapMB": {
+     "min": 46,
+     "max": 119
+    },
+    "marking": {
+     "starts": 33,
+     "reasons": {
+      "global allocation limit": 6,
+      "task": 27
+     },
+     "globalConsumedMB": 1124,
+     "globalLimitMB": 1153,
+     "oldGenMB": 84,
+     "externalMB": 1040
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 1,
+    "dialog": 1,
+    "autosave": 1
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 40,
+     "maxMs": 400.1
+    },
+    "season": {
+     "frames": 4,
+     "maxMs": 50.8
+    },
+    "dialog": {
+     "frames": 4,
+     "maxMs": 50.8
+    },
+    "autosave": {
+     "frames": 4,
+     "maxMs": 50.8
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 28,
+    "건물·물체 그리기": 3,
+    "시뮬레이션 틱": 6,
+    "원인 미기록(추적 버퍼 끝)": 7
+   },
+   "worst": [
+    {
+     "ms": 400.1,
+     "mainBusyMs": 400,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 387.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 387.8
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 387.8
+      }
+     ]
+    },
+    {
+     "ms": 334.1,
+     "mainBusyMs": 334,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 316
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 316
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 316
+      }
+     ]
+    },
+    {
+     "ms": 317.2,
+     "mainBusyMs": 317.1,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 296.4
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 296.4
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 296.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ops-drawers-x1-drawers",
+   "machine": "mac-chrome-window",
+   "scene": "ops-drawers",
+   "speed": 1,
+   "action": "drawers",
+   "seconds": 182,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 19614,
+   "minutes": 3.03,
+   "p50": 8.3,
+   "p95": 16.1,
+   "p99": 17.5,
+   "max": 2491.9,
+   "over25": 100,
+   "over33": 64,
+   "over50": 42,
+   "over25PerMin": 33,
+   "over33PerMin": 21.1,
+   "over50PerMin": 13.9,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 37,
+     "perMin": 12.2,
+     "meanMs": 82.6,
+     "p95Ms": 163.3,
+     "maxMs": 186.6
+    },
+    "minor": {
+     "count": 1444,
+     "perMin": 476.6,
+     "meanMs": 1.3,
+     "p95Ms": 2.1,
+     "maxMs": 329
+    },
+    "heapMB": {
+     "min": 37,
+     "max": 208
+    },
+    "marking": {
+     "starts": 37,
+     "reasons": {
+      "task": 36,
+      "global allocation limit": 1
+     },
+     "globalConsumedMB": 1300,
+     "globalLimitMB": 1333,
+     "oldGenMB": 101,
+     "externalMB": 1177
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 6,
+    "autosave": 6,
+    "season": 2
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 50,
+     "maxMs": 2491.9
+    },
+    "dialog": {
+     "frames": 14,
+     "maxMs": 215.9
+    },
+    "autosave": {
+     "frames": 14,
+     "maxMs": 215.9
+    },
+    "season": {
+     "frames": 7,
+     "maxMs": 117.1
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "GC(major)": 34,
+    "React 재렌더": 3,
+    "메인 스레드 밖(합성·GPU·OS)": 4,
+    "시뮬레이션 틱": 9,
+    "건물·물체 그리기": 6,
+    "지면 그리기": 1,
+    "저장 직렬화": 4,
+    "주민·수레 그리기": 3
+   },
+   "worst": [
+    {
+     "ms": 2491.9,
+     "mainBusyMs": 2491.3,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 1241.4
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 1241.4
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 1158.5
+      }
+     ]
+    },
+    {
+     "ms": 824.6,
+     "mainBusyMs": 824.5,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 339.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 339.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 338.3
+      }
+     ]
+    },
+    {
+     "ms": 667.4,
+     "mainBusyMs": 229.5,
+     "moments": [],
+     "top": [
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 68.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 68.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 68.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ops-drawers-x3-drawers",
+   "machine": "mac-chrome-window",
+   "scene": "ops-drawers",
+   "speed": 3,
+   "action": "drawers",
+   "seconds": 195,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 19263,
+   "minutes": 3.25,
+   "p50": 8.4,
+   "p95": 17,
+   "p99": 25.5,
+   "max": 1799.8,
+   "over25": 331,
+   "over33": 115,
+   "over50": 52,
+   "over25PerMin": 101.9,
+   "over33PerMin": 35.4,
+   "over50PerMin": 16,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 30,
+     "perMin": 9.2,
+     "meanMs": 180.3,
+     "p95Ms": 482,
+     "maxMs": 490.9
+    },
+    "minor": {
+     "count": 1825,
+     "perMin": 561.5,
+     "meanMs": 1,
+     "p95Ms": 1.7,
+     "maxMs": 43.7
+    },
+    "heapMB": {
+     "min": 55,
+     "max": 350
+    },
+    "marking": {
+     "starts": 30,
+     "reasons": {
+      "task": 26,
+      "global allocation limit": 4
+     },
+     "globalConsumedMB": 1543,
+     "globalLimitMB": 1616,
+     "oldGenMB": 157,
+     "externalMB": 1363
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 5,
+    "dialog": 8,
+    "autosave": 8
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 88,
+     "maxMs": 1799.8
+    },
+    "season": {
+     "frames": 19,
+     "maxMs": 490.8
+    },
+    "dialog": {
+     "frames": 19,
+     "maxMs": 490.8
+    },
+    "autosave": {
+     "frames": 20,
+     "maxMs": 491.8
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "시뮬레이션 틱": 41,
+    "건물·물체 그리기": 21,
+    "GC(major)": 29,
+    "지면 그리기": 6,
+    "주민·수레 그리기": 3,
+    "React 재렌더": 5,
+    "저장 직렬화": 2,
+    "GC(minor)": 3,
+    "그림 디코드": 1,
+    "메인 스레드 밖(합성·GPU·OS)": 2,
+    "기타": 2
+   },
+   "worst": [
+    {
+     "ms": 1799.8,
+     "mainBusyMs": 1770.1,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 1423.1
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 1420.5
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 1063.7
+      }
+     ]
+    },
+    {
+     "ms": 491.8,
+     "mainBusyMs": 491.7,
+     "moments": [
+      "autosave"
+     ],
+     "top": [
+      "autosave",
+      "run",
+      "encode",
+      "encodeSave"
+     ],
+     "threads": [
+      {
+       "name": "main: FireIdleCallback",
+       "ms": 419.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 415.4
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 331.8
+      }
+     ]
+    },
+    {
+     "ms": 490.8,
+     "mainBusyMs": 490.7,
+     "moments": [
+      "dialog",
+      "season",
+      "autosave"
+     ],
+     "top": [
+      "(garbage collector)",
+      "drawCurrentCanvasFrame",
+      "drawFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: MajorGC",
+       "ms": 488.9
+      },
+      {
+       "name": "main: V8.GCFinalizeMC",
+       "ms": 488.9
+      },
+      {
+       "name": "main: V8.GC_MARK_COMPACTOR",
+       "ms": 488.9
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ops-drawers-x5-drawers",
+   "machine": "mac-chrome-window",
+   "scene": "ops-drawers",
+   "speed": 5,
+   "action": "drawers",
+   "seconds": 206,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 20302,
+   "minutes": 3.43,
+   "p50": 8.4,
+   "p95": 17.1,
+   "p99": 25.6,
+   "max": 2491.2,
+   "over25": 311,
+   "over33": 120,
+   "over50": 51,
+   "over25PerMin": 90.7,
+   "over33PerMin": 35,
+   "over50PerMin": 14.9,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 29,
+     "perMin": 8.5,
+     "meanMs": 180.4,
+     "p95Ms": 343.2,
+     "maxMs": 359.3
+    },
+    "minor": {
+     "count": 1872,
+     "perMin": 545.8,
+     "meanMs": 1.1,
+     "p95Ms": 2,
+     "maxMs": 135.7
+    },
+    "heapMB": {
+     "min": 44,
+     "max": 321
+    },
+    "marking": {
+     "starts": 29,
+     "reasons": {
+      "global allocation limit": 4,
+      "task": 24,
+      "allocation limit": 1
+     },
+     "globalConsumedMB": 1448,
+     "globalLimitMB": 1490,
+     "oldGenMB": 147,
+     "externalMB": 1298
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 6,
+    "dialog": 7,
+    "autosave": 7
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 84,
+     "maxMs": 2491.2
+    },
+    "season": {
+     "frames": 31,
+     "maxMs": 216.6
+    },
+    "dialog": {
+     "frames": 33,
+     "maxMs": 216.6
+    },
+    "autosave": {
+     "frames": 21,
+     "maxMs": 392.6
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "시뮬레이션 틱": 31,
+    "GC(major)": 29,
+    "지면 그리기": 2,
+    "React 재렌더": 4,
+    "저장 직렬화": 2,
+    "주민·수레 그리기": 3,
+    "건물·물체 그리기": 5,
+    "그림 디코드": 1,
+    "메인 스레드 밖(합성·GPU·OS)": 2,
+    "기타": 41
+   },
+   "worst": [
+    {
+     "ms": 2491.2,
+     "mainBusyMs": 2491.1,
+     "moments": [],
+     "top": [],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 1490.9
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 1490.1
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 1490.1
+      }
+     ]
+    },
+    {
+     "ms": 633.6,
+     "mainBusyMs": 631.8,
+     "moments": [],
+     "top": [],
+     "threads": [
+      {
+       "name": "main: Commit",
+       "ms": 216.9
+      },
+      {
+       "name": "GPU Process/CrGpuMain: GPUTask",
+       "ms": 203.3
+      },
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 156.9
+      }
+     ]
+    },
+    {
+     "ms": 392.6,
+     "mainBusyMs": 392.5,
+     "moments": [
+      "autosave"
+     ],
+     "top": [],
+     "threads": [
+      {
+       "name": "main: V8.GCIncrementalMarkingStart",
+       "ms": 377.6
+      },
+      {
+       "name": "main: V8.GC_HEAP_ENSURE_SWEEPING_COMPLETED",
+       "ms": 356.8
+      },
+      {
+       "name": "main: V8.GC_MC_INCREMENTAL_START",
+       "ms": 20.7
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ops-placement-x1-placement",
+   "machine": "mac-chrome-window",
+   "scene": "ops-placement",
+   "speed": 1,
+   "action": "placement",
+   "seconds": 180,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 18919,
+   "minutes": 3,
+   "p50": 8.3,
+   "p95": 16.7,
+   "p99": 25,
+   "max": 500.2,
+   "over25": 156,
+   "over33": 98,
+   "over50": 41,
+   "over25PerMin": 52,
+   "over33PerMin": 32.7,
+   "over50PerMin": 13.7,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 28,
+     "perMin": 9.3,
+     "meanMs": 97.2,
+     "p95Ms": 182,
+     "maxMs": 244.9
+    },
+    "minor": {
+     "count": 1373,
+     "perMin": 457.7,
+     "meanMs": 2.7,
+     "p95Ms": 6.8,
+     "maxMs": 23.9
+    },
+    "heapMB": {
+     "min": 38,
+     "max": 258
+    },
+    "marking": {
+     "starts": 28,
+     "reasons": {
+      "task": 25,
+      "allocation limit": 1,
+      "global allocation limit": 2
+     },
+     "globalConsumedMB": 1439,
+     "globalLimitMB": 1470,
+     "oldGenMB": 139,
+     "externalMB": 1300
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 1,
+    "dialog": 1,
+    "autosave": 2
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 85,
+     "maxMs": 500.2
+    },
+    "season": {
+     "frames": 7,
+     "maxMs": 100
+    },
+    "dialog": {
+     "frames": 7,
+     "maxMs": 100
+    },
+    "autosave": {
+     "frames": 13,
+     "maxMs": 133.2
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "주민·수레 그리기": 3,
+    "기타": 43,
+    "건물·물체 그리기": 1,
+    "React 재렌더": 1,
+    "GC(major)": 25,
+    "메인 스레드 밖(합성·GPU·OS)": 19,
+    "시뮬레이션 틱": 2,
+    "원인 미기록(추적 버퍼 끝)": 2,
+    "GC(minor)": 1,
+    "그림 디코드": 1
+   },
+   "worst": [
+    {
+     "ms": 500.2,
+     "mainBusyMs": 52,
+     "moments": [],
+     "top": [
+      "querySelectorAll",
+      "_queryEngineAll",
+      "queryRole",
+      "queryAll"
+     ],
+     "threads": [
+      {
+       "name": "GPU Process/CrGpuMain: GPUTask",
+       "ms": 500.2
+      },
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 8.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 8.8
+      }
+     ]
+    },
+    {
+     "ms": 408.4,
+     "mainBusyMs": 27.1,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "GPU Process/CrGpuMain: GPUTask",
+       "ms": 408.4
+      },
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 12
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 12
+      }
+     ]
+    },
+    {
+     "ms": 191.7,
+     "mainBusyMs": 191.7,
+     "moments": [],
+     "top": [],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 178.7
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 178.7
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 172.6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ops-placement-x3-placement",
+   "machine": "mac-chrome-window",
+   "scene": "ops-placement",
+   "speed": 3,
+   "action": "placement",
+   "seconds": 219,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 20467,
+   "minutes": 3.65,
+   "p50": 8.4,
+   "p95": 24.3,
+   "p99": 25.7,
+   "max": 2291.8,
+   "over25": 432,
+   "over33": 154,
+   "over50": 52,
+   "over25PerMin": 118.3,
+   "over33PerMin": 42.2,
+   "over50PerMin": 14.2,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 20,
+     "perMin": 5.5,
+     "meanMs": 309.9,
+     "p95Ms": 1412.8,
+     "maxMs": 1412.8
+    },
+    "minor": {
+     "count": 1636,
+     "perMin": 448.2,
+     "meanMs": 1.6,
+     "p95Ms": 3.1,
+     "maxMs": 219.9
+    },
+    "heapMB": {
+     "min": 41,
+     "max": 387
+    },
+    "marking": {
+     "starts": 20,
+     "reasons": {
+      "global allocation limit": 8,
+      "task": 12
+     },
+     "globalConsumedMB": 2136,
+     "globalLimitMB": 2169,
+     "oldGenMB": 292,
+     "externalMB": 1845
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "season": 4,
+    "dialog": 4,
+    "autosave": 5
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 123,
+     "maxMs": 2291.8
+    },
+    "season": {
+     "frames": 21,
+     "maxMs": 508
+    },
+    "dialog": {
+     "frames": 22,
+     "maxMs": 508
+    },
+    "autosave": {
+     "frames": 27,
+     "maxMs": 508
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "주민·수레 그리기": 6,
+    "건물·물체 그리기": 30,
+    "시뮬레이션 틱": 35,
+    "React 재렌더": 1,
+    "GC(major)": 19,
+    "기타": 44,
+    "저장 직렬화": 3,
+    "지면 그리기": 6,
+    "메인 스레드 밖(합성·GPU·OS)": 4,
+    "GC(minor)": 2,
+    "그림 디코드": 2,
+    "원인 미기록(추적 버퍼 끝)": 2
+   },
+   "worst": [
+    {
+     "ms": 2291.8,
+     "mainBusyMs": 2291.7,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 1699.5
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 1699.4
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 1699.4
+      }
+     ]
+    },
+    {
+     "ms": 542.1,
+     "mainBusyMs": 537.6,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 374.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 373.5
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 373.5
+      }
+     ]
+    },
+    {
+     "ms": 541.2,
+     "mainBusyMs": 541.2,
+     "moments": [],
+     "top": [
+      "drawFrame",
+      "drawCurrentCanvasFrame",
+      "renderFrame",
+      "drawGameCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 397.2
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 392.9
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 389.1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "run": "mac-chrome-window-ops-placement-x5-placement",
+   "machine": "mac-chrome-window",
+   "scene": "ops-placement",
+   "speed": 5,
+   "action": "placement",
+   "seconds": 207,
+   "population": 768,
+   "buildings": 86,
+   "dpr": 2,
+   "frames": 17287,
+   "minutes": 3.46,
+   "p50": 8.4,
+   "p95": 25.4,
+   "p99": 41.6,
+   "max": 1524.2,
+   "over25": 1179,
+   "over33": 532,
+   "over50": 91,
+   "over25PerMin": 341.1,
+   "over33PerMin": 153.9,
+   "over50PerMin": 26.3,
+   "valid": true,
+   "gc": {
+    "major": {
+     "count": 27,
+     "perMin": 7.8,
+     "meanMs": 169.2,
+     "p95Ms": 428.5,
+     "maxMs": 588.1
+    },
+    "minor": {
+     "count": 1754,
+     "perMin": 506.9,
+     "meanMs": 1.5,
+     "p95Ms": 2.8,
+     "maxMs": 183.1
+    },
+    "heapMB": {
+     "min": 51,
+     "max": 364
+    },
+    "marking": {
+     "starts": 27,
+     "reasons": {
+      "global allocation limit": 13,
+      "task": 13,
+      "allocation limit": 1
+     },
+     "globalConsumedMB": 1502,
+     "globalLimitMB": 1535,
+     "oldGenMB": 153,
+     "externalMB": 1343
+    }
+   },
+   "control": null,
+   "momentsSeen": {
+    "dialog": 8,
+    "season": 8,
+    "autosave": 8
+   },
+   "longFramesByMoment": {
+    "none": {
+     "frames": 457,
+     "maxMs": 1524.2
+    },
+    "dialog": {
+     "frames": 50,
+     "maxMs": 183.4
+    },
+    "season": {
+     "frames": 62,
+     "maxMs": 183.4
+    },
+    "autosave": {
+     "frames": 59,
+     "maxMs": 183.4
+    }
+   },
+   "errors": 0,
+   "causes": {
+    "시뮬레이션 틱": 344,
+    "건물·물체 그리기": 95,
+    "기타": 7,
+    "주민·수레 그리기": 15,
+    "GC(major)": 25,
+    "지면 그리기": 23,
+    "저장 직렬화": 8,
+    "메인 스레드 밖(합성·GPU·OS)": 4,
+    "React 재렌더": 9,
+    "그림 디코드": 2
+   },
+   "worst": [
+    {
+     "ms": 1524.2,
+     "mainBusyMs": 1519.9,
+     "moments": [],
+     "top": [
+      "performWorkOnRoot",
+      "performSyncWorkOnRoot",
+      "flushSyncWorkAcrossRoots_impl",
+      "processRootScheduleInMicrotask"
+     ],
+     "threads": [
+      {
+       "name": "main: EventDispatch",
+       "ms": 646.5
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 641.9
+      },
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 510.5
+      }
+     ]
+    },
+    {
+     "ms": 1225.6,
+     "mainBusyMs": 1225.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "renderFrame",
+      "drawGameCanvasFrame",
+      "drawCurrentCanvasFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 1202.8
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 1202.8
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 1202.8
+      }
+     ]
+    },
+    {
+     "ms": 1042.6,
+     "mainBusyMs": 1042.5,
+     "moments": [],
+     "top": [
+      "(garbage collector)",
+      "advanceTick",
+      "advanceSimulationSubstep",
+      "drawFrame"
+     ],
+     "threads": [
+      {
+       "name": "main: FireAnimationFrame",
+       "ms": 327.3
+      },
+      {
+       "name": "main: v8.callFunction",
+       "ms": 327.3
+      },
+      {
+       "name": "main: FunctionCall",
+       "ms": 302
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "categories": [
+  {
+   "machine": "dgx-headless",
+   "category": "건물·물체 그리기",
+   "frames": 34166,
+   "over100": 374,
+   "ms": 1339047,
+   "maxMs": 333,
+   "scenes": [
+    "ch1-new×3",
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch3-plague×1",
+    "ch3-plague×3",
+    "ch3-plague×5",
+    "ch4-1380×1",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "moment-petition×1",
+    "moment-petition×3",
+    "moment-petition×5",
+    "ops-camera×1",
+    "ops-camera×3",
+    "ops-camera×5",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "지면 그리기",
+   "frames": 8552,
+   "over100": 212,
+   "ms": 374418,
+   "maxMs": 883,
+   "scenes": [
+    "ch1-new×1",
+    "ch1-new×3",
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch3-plague×1",
+    "ch3-plague×3",
+    "ch3-plague×5",
+    "ch4-1380×1",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "moment-petition×1",
+    "moment-petition×3",
+    "moment-petition×5",
+    "ops-camera×1",
+    "ops-camera×3",
+    "ops-camera×5",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "시뮬레이션 틱",
+   "frames": 1433,
+   "over100": 181,
+   "ms": 89359,
+   "maxMs": 300,
+   "scenes": [
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch3-plague×1",
+    "ch3-plague×3",
+    "ch3-plague×5",
+    "ch4-1380×1",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "moment-petition×1",
+    "moment-petition×3",
+    "moment-petition×5",
+    "ops-camera×1",
+    "ops-camera×3",
+    "ops-camera×5",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "GC(major)",
+   "frames": 408,
+   "over100": 160,
+   "ms": 46615,
+   "maxMs": 550,
+   "scenes": [
+    "ch1-new×1",
+    "ch1-new×3",
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch3-plague×1",
+    "ch3-plague×3",
+    "ch3-plague×5",
+    "ch4-1380×1",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "moment-petition×1",
+    "moment-petition×3",
+    "moment-petition×5",
+    "ops-camera×1",
+    "ops-camera×3",
+    "ops-camera×5",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "메인 스레드 밖(합성·GPU·OS)",
+   "frames": 334,
+   "over100": 10,
+   "ms": 20699,
+   "maxMs": 250,
+   "scenes": [
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch5-1440×1",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "React 재렌더",
+   "frames": 146,
+   "over100": 14,
+   "ms": 8600,
+   "maxMs": 300,
+   "scenes": [
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch3-plague×1",
+    "ch3-plague×3",
+    "ch3-plague×5",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "ops-camera×1",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "주민·수레 그리기",
+   "frames": 136,
+   "over100": 34,
+   "ms": 10949,
+   "maxMs": 250,
+   "scenes": [
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch3-plague×3",
+    "ch4-1380×1",
+    "ch5-1440×1",
+    "ops-camera×1",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "기타",
+   "frames": 134,
+   "over100": 13,
+   "ms": 8515,
+   "maxMs": 250,
+   "scenes": [
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch5-1440×1",
+    "ops-camera×3",
+    "ops-camera×5",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "저장 직렬화",
+   "frames": 106,
+   "over100": 12,
+   "ms": 7084,
+   "maxMs": 283,
+   "scenes": [
+    "ch1-new×1",
+    "ch1-new×3",
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch3-plague×1",
+    "ch3-plague×3",
+    "ch3-plague×5",
+    "ch4-1380×1",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "moment-petition×1",
+    "moment-petition×3",
+    "moment-petition×5",
+    "ops-camera×1",
+    "ops-camera×3",
+    "ops-camera×5",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "GC(minor)",
+   "frames": 92,
+   "over100": 2,
+   "ms": 5499,
+   "maxMs": 117,
+   "scenes": [
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch5-1440×1",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "입력·카메라",
+   "frames": 29,
+   "over100": 4,
+   "ms": 1867,
+   "maxMs": 150,
+   "scenes": [
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch5-1440×1",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "dgx-headless",
+   "category": "그림 디코드",
+   "frames": 6,
+   "over100": 0,
+   "ms": 317,
+   "maxMs": 83,
+   "scenes": [
+    "ch2-1340×1",
+    "ch3-plague×1",
+    "ch3-plague×5",
+    "ops-drawers×1"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "시뮬레이션 틱",
+   "frames": 643,
+   "over100": 24,
+   "ms": 33509,
+   "maxMs": 2492,
+   "scenes": [
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch3-plague×1",
+    "ch3-plague×3",
+    "ch3-plague×5",
+    "ch4-1380×1",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "ch5-1440×3",
+    "ch5-1440×5",
+    "ops-camera×1",
+    "ops-camera×3",
+    "ops-camera×5",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-drawers×5",
+    "ops-placement×1",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "GC(major)",
+   "frames": 640,
+   "over100": 306,
+   "ms": 100980,
+   "maxMs": 2292,
+   "scenes": [
+    "ch1-new×1",
+    "ch1-new×3",
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch3-plague×1",
+    "ch3-plague×3",
+    "ch3-plague×5",
+    "ch4-1380×1",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "ch5-1440×3",
+    "ch5-1440×5",
+    "moment-petition×1",
+    "moment-petition×3",
+    "ops-camera×1",
+    "ops-camera×3",
+    "ops-camera×5",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-drawers×5",
+    "ops-placement×1",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "건물·물체 그리기",
+   "frames": 362,
+   "over100": 88,
+   "ms": 33817,
+   "maxMs": 1800,
+   "scenes": [
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch3-plague×1",
+    "ch3-plague×5",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "ch5-1440×3",
+    "ch5-1440×5",
+    "moment-petition×3",
+    "ops-camera×1",
+    "ops-camera×3",
+    "ops-camera×5",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-drawers×5",
+    "ops-placement×1",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "기타",
+   "frames": 146,
+   "over100": 13,
+   "ms": 11034,
+   "maxMs": 2491,
+   "scenes": [
+    "ch1-new×5",
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch4-1380×5",
+    "ops-drawers×3",
+    "ops-drawers×5",
+    "ops-placement×1",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "지면 그리기",
+   "frames": 105,
+   "over100": 17,
+   "ms": 12528,
+   "maxMs": 1799,
+   "scenes": [
+    "ch1-new×1",
+    "ch1-new×5",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch3-plague×1",
+    "ch3-plague×3",
+    "ch3-plague×5",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "ch5-1440×3",
+    "moment-petition×3",
+    "ops-camera×1",
+    "ops-camera×3",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-drawers×5",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "원인 미기록(추적 버퍼 끝)",
+   "frames": 80,
+   "over100": 23,
+   "ms": 9731,
+   "maxMs": 942,
+   "scenes": [
+    "ch4-1380×1",
+    "ch5-1440×5",
+    "ops-camera×1",
+    "ops-camera×3",
+    "ops-camera×5",
+    "ops-placement×1",
+    "ops-placement×3"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "주민·수레 그리기",
+   "frames": 45,
+   "over100": 0,
+   "ms": 1795,
+   "maxMs": 66,
+   "scenes": [
+    "ch2-1340×1",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch4-1380×1",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ops-camera×1",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-drawers×5",
+    "ops-placement×1",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "메인 스레드 밖(합성·GPU·OS)",
+   "frames": 44,
+   "over100": 11,
+   "ms": 5001,
+   "maxMs": 667,
+   "scenes": [
+    "ch1-new×1",
+    "ch3-plague×1",
+    "ch4-1380×3",
+    "ch5-1440×1",
+    "moment-petition×3",
+    "ops-camera×1",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-drawers×5",
+    "ops-placement×1",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "React 재렌더",
+   "frames": 40,
+   "over100": 11,
+   "ms": 6892,
+   "maxMs": 1524,
+   "scenes": [
+    "ch1-new×5",
+    "ch2-1340×3",
+    "ch2-1340×5",
+    "ch3-plague×1",
+    "ch3-plague×5",
+    "ch4-1380×3",
+    "ch4-1380×5",
+    "ch5-1440×3",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-drawers×5",
+    "ops-placement×1",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "저장 직렬화",
+   "frames": 23,
+   "over100": 1,
+   "ms": 1433,
+   "maxMs": 492,
+   "scenes": [
+    "ch4-1380×3",
+    "ch5-1440×1",
+    "ch5-1440×3",
+    "ops-drawers×1",
+    "ops-drawers×3",
+    "ops-drawers×5",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "GC(minor)",
+   "frames": 16,
+   "over100": 4,
+   "ms": 1921,
+   "maxMs": 699,
+   "scenes": [
+    "ch1-new×5",
+    "ch4-1380×5",
+    "ch5-1440×1",
+    "ch5-1440×3",
+    "moment-petition×3",
+    "ops-drawers×3",
+    "ops-placement×1",
+    "ops-placement×3"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "그림 디코드",
+   "frames": 8,
+   "over100": 0,
+   "ms": 317,
+   "maxMs": 50,
+   "scenes": [
+    "ch5-1440×1",
+    "ops-drawers×3",
+    "ops-drawers×5",
+    "ops-placement×1",
+    "ops-placement×3",
+    "ops-placement×5"
+   ]
+  },
+  {
+   "machine": "mac-chrome-window",
+   "category": "입력·카메라",
+   "frames": 2,
+   "over100": 2,
+   "ms": 667,
+   "maxMs": 451,
+   "scenes": [
+    "ch5-1440×1",
+    "moment-petition×3"
+   ]
+  }
+ ],
+ "moments": [
+  {
+   "machine": "mac-chrome-window",
+   "kind": "dialog",
+   "seen": 358,
+   "baselineShare": 26,
+   "followedByLongFrame": 128,
+   "share": 36,
+   "worstMs": 942
+  },
+  {
+   "machine": "mac-chrome-window",
+   "kind": "autosave",
+   "seen": 172,
+   "baselineShare": 26,
+   "followedByLongFrame": 111,
+   "share": 65,
+   "worstMs": 815
+  },
+  {
+   "machine": "mac-chrome-window",
+   "kind": "season",
+   "seen": 159,
+   "baselineShare": 26,
+   "followedByLongFrame": 107,
+   "share": 67,
+   "worstMs": 815
+  },
+  {
+   "machine": "mac-chrome-window",
+   "kind": "chapter",
+   "seen": 4,
+   "baselineShare": 26,
+   "followedByLongFrame": 4,
+   "share": 100,
+   "worstMs": 67
+  },
+  {
+   "machine": "dgx-headless",
+   "kind": "dialog",
+   "seen": 163,
+   "baselineShare": 83,
+   "followedByLongFrame": 163,
+   "share": 100,
+   "worstMs": 433
+  },
+  {
+   "machine": "dgx-headless",
+   "kind": "season",
+   "seen": 137,
+   "baselineShare": 83,
+   "followedByLongFrame": 137,
+   "share": 100,
+   "worstMs": 433
+  },
+  {
+   "machine": "dgx-headless",
+   "kind": "autosave",
+   "seen": 146,
+   "baselineShare": 83,
+   "followedByLongFrame": 145,
+   "share": 99,
+   "worstMs": 383
+  },
+  {
+   "machine": "dgx-headless",
+   "kind": "chapter",
+   "seen": 4,
+   "baselineShare": 83,
+   "followedByLongFrame": 4,
+   "share": 100,
+   "worstMs": 167
+  }
+ ],
+ "causes": [
+  {
+   "name": "[script]",
+   "ms": 1303099,
+   "frames": 47416,
+   "runs": 49,
+   "maxMs": 2407.4
+  },
+  {
+   "name": "[rAF callback]",
+   "ms": 1273373,
+   "frames": 47403,
+   "runs": 49,
+   "maxMs": 2400.3
+  },
+  {
+   "name": "drawFrame",
+   "ms": 905670,
+   "frames": 46695,
+   "runs": 49,
+   "maxMs": 1714.8
+  },
+  {
+   "name": "drawCurrentCanvasFrame",
+   "ms": 896765,
+   "frames": 46674,
+   "runs": 49,
+   "maxMs": 1692.7
+  },
+  {
+   "name": "drawGameCanvasFrame",
+   "ms": 879192,
+   "frames": 46543,
+   "runs": 49,
+   "maxMs": 1540
+  },
+  {
+   "name": "renderFrame",
+   "ms": 877688,
+   "frames": 46574,
+   "runs": 49,
+   "maxMs": 1540
+  },
+  {
+   "name": "runRenderPasses",
+   "ms": 775541,
+   "frames": 46194,
+   "runs": 49,
+   "maxMs": 926
+  },
+  {
+   "name": "[commit]",
+   "ms": 635217,
+   "frames": 46857,
+   "runs": 49,
+   "maxMs": 216.9
+  },
+  {
+   "name": "objects",
+   "ms": 478168,
+   "frames": 37476,
+   "runs": 49,
+   "maxMs": 566
+  },
+  {
+   "name": "drawObjectRenderItems",
+   "ms": 478164,
+   "frames": 37725,
+   "runs": 49,
+   "maxMs": 566
+  },
+  {
+   "name": "drawCroppedWorldSprite",
+   "ms": 454736,
+   "frames": 39484,
+   "runs": 47,
+   "maxMs": 548.1
+  },
+  {
+   "name": "restore",
+   "ms": 392285,
+   "frames": 38761,
+   "runs": 44,
+   "maxMs": 196.5
+  },
+  {
+   "name": "drawBuildings",
+   "ms": 291059,
+   "frames": 28070,
+   "runs": 45,
+   "maxMs": 556.3
+  },
+  {
+   "name": "drawBuilding",
+   "ms": 172152,
+   "frames": 19046,
+   "runs": 33,
+   "maxMs": 548.6
+  },
+  {
+   "name": "ground",
+   "ms": 157942,
+   "frames": 13348,
+   "runs": 47,
+   "maxMs": 637.9
+  },
+  {
+   "name": "[GC (major)]",
+   "ms": 141822,
+   "frames": 1255,
+   "runs": 49,
+   "maxMs": 1833.8
+  },
+  {
+   "name": "(garbage collector)",
+   "ms": 137489,
+   "frames": 1391,
+   "runs": 49,
+   "maxMs": 2210.2
+  },
+  {
+   "name": "drawTerrainBoundaryV2",
+   "ms": 136094,
+   "frames": 10355,
+   "runs": 47,
+   "maxMs": 583.6
+  },
+  {
+   "name": "drawTerrain",
+   "ms": 133541,
+   "frames": 9824,
+   "runs": 47,
+   "maxMs": 593.3
+  },
+  {
+   "name": "draw",
+   "ms": 133389,
+   "frames": 10382,
+   "runs": 45,
+   "maxMs": 567.3
+  },
+  {
+   "name": "blit",
+   "ms": 88286,
+   "frames": 6931,
+   "runs": 41,
+   "maxMs": 276
+  },
+  {
+   "name": "drawBuildingDetail",
+   "ms": 85488,
+   "frames": 9676,
+   "runs": 21,
+   "maxMs": 73.5
+  },
+  {
+   "name": "advanceTick",
+   "ms": 61538,
+   "frames": 5286,
+   "runs": 44,
+   "maxMs": 637
+  },
+  {
+   "name": "drawPalisadeSegment",
+   "ms": 52306,
+   "frames": 4846,
+   "runs": 38,
+   "maxMs": 253.5
+  },
+  {
+   "name": "drawCachedWorldRaster",
+   "ms": 45412,
+   "frames": 4237,
+   "runs": 31,
+   "maxMs": 248
+  },
+  {
+   "name": "advanceSimulationSubstep",
+   "ms": 39783,
+   "frames": 2922,
+   "runs": 43,
+   "maxMs": 585.4
+  },
+  {
+   "name": "drawImage",
+   "ms": 30057,
+   "frames": 1299,
+   "runs": 28,
+   "maxMs": 477.2
+  },
+  {
+   "name": "countedCanvasCall",
+   "ms": 25721,
+   "frames": 1400,
+   "runs": 39,
+   "maxMs": 471.9
+  },
+  {
+   "name": "drawBuildingOverlays",
+   "ms": 25232,
+   "frames": 2648,
+   "runs": 19,
+   "maxMs": 67.8
+  },
+  {
+   "name": "[GC (minor)]",
+   "ms": 23919,
+   "frames": 11162,
+   "runs": 46,
+   "maxMs": 477.5
+  },
+  {
+   "name": "drawCountryBlit",
+   "ms": 19902,
+   "frames": 2075,
+   "runs": 23,
+   "maxMs": 360.6
+  },
+  {
+   "name": "drawCountrysideItem",
+   "ms": 19355,
+   "frames": 1954,
+   "runs": 22,
+   "maxMs": 360.6
+  },
+  {
+   "name": "drawAtWorldAnchor",
+   "ms": 16467,
+   "frames": 1977,
+   "runs": 18,
+   "maxMs": 59.5
+  },
+  {
+   "name": "drawZonePropIn",
+   "ms": 14935,
+   "frames": 1668,
+   "runs": 16,
+   "maxMs": 67.3
+  },
+  {
+   "name": "drawWorldSpriteAtWorldAnchor",
+   "ms": 14468,
+   "frames": 1711,
+   "runs": 18,
+   "maxMs": 59.5
+  },
+  {
+   "name": "drawZoneProp",
+   "ms": 13250,
+   "frames": 1368,
+   "runs": 16,
+   "maxMs": 67.3
+  },
+  {
+   "name": "blit$2",
+   "ms": 13159,
+   "frames": 1473,
+   "runs": 15,
+   "maxMs": 68.7
+  },
+  {
+   "name": "drawVillageLifeItem",
+   "ms": 12765,
+   "frames": 1383,
+   "runs": 16,
+   "maxMs": 68.7
+  },
+  {
+   "name": "drawSeasonalSprite",
+   "ms": 10724,
+   "frames": 1191,
+   "runs": 18,
+   "maxMs": 57.3
+  },
+  {
+   "name": "{GPU Process/CrGpuMain: GPUTask}",
+   "ms": 10559,
+   "frames": 1264,
+   "runs": 25,
+   "maxMs": 1218.1
+  },
+  {
+   "name": "[timer]",
+   "ms": 10084,
+   "frames": 3796,
+   "runs": 42,
+   "maxMs": 198.4
+  },
+  {
+   "name": "[idle callback]",
+   "ms": 9485,
+   "frames": 1969,
+   "runs": 37,
+   "maxMs": 419.7
+  },
+  {
+   "name": "drawOnReference",
+   "ms": 8472,
+   "frames": 976,
+   "runs": 8,
+   "maxMs": 50.4
+  },
+  {
+   "name": "objectRenderItemsForFrame",
+   "ms": 8049,
+   "frames": 309,
+   "runs": 33,
+   "maxMs": 762.1
+  },
+  {
+   "name": "trimTransparentMargin",
+   "ms": 7797,
+   "frames": 114,
+   "runs": 4,
+   "maxMs": 235
+  },
+  {
+   "name": "drawWalker",
+   "ms": 7070,
+   "frames": 355,
+   "runs": 35,
+   "maxMs": 496.4
+  },
+  {
+   "name": "performWorkOnRoot",
+   "ms": 6797,
+   "frames": 547,
+   "runs": 41,
+   "maxMs": 473.5
+  },
+  {
+   "name": "routeToBuilding",
+   "ms": 6409,
+   "frames": 392,
+   "runs": 29,
+   "maxMs": 71.4
+  },
+  {
+   "name": "drawTreeDescriptor",
+   "ms": 6351,
+   "frames": 635,
+   "runs": 19,
+   "maxMs": 57.3
+  },
+  {
+   "name": "resolveRoadToBuildingRoute",
+   "ms": 6219,
+   "frames": 396,
+   "runs": 32,
+   "maxMs": 71.4
+  },
+  {
+   "name": "run",
+   "ms": 5628,
+   "frames": 192,
+   "runs": 31,
+   "maxMs": 331.6
+  },
+  {
+   "name": "performSyncWorkOnRoot",
+   "ms": 5561,
+   "frames": 405,
+   "runs": 39,
+   "maxMs": 473.5
+  },
+  {
+   "name": "residentWalkers",
+   "ms": 5499,
+   "frames": 482,
+   "runs": 39,
+   "maxMs": 63.7
+  },
+  {
+   "name": "drawHistoricalHouse",
+   "ms": 5498,
+   "frames": 611,
+   "runs": 14,
+   "maxMs": 60.3
+  },
+  {
+   "name": "getImageData",
+   "ms": 5310,
+   "frames": 86,
+   "runs": 6,
+   "maxMs": 160.4
+  },
+  {
+   "name": "commit",
+   "ms": 5226,
+   "frames": 366,
+   "runs": 38,
+   "maxMs": 64.2
+  },
+  {
+   "name": "autosave",
+   "ms": 5020,
+   "frames": 130,
+   "runs": 31,
+   "maxMs": 331.6
+  },
+  {
+   "name": "encode",
+   "ms": 5008,
+   "frames": 131,
+   "runs": 31,
+   "maxMs": 286.4
+  },
+  {
+   "name": "follow",
+   "ms": 4974,
+   "frames": 341,
+   "runs": 35,
+   "maxMs": 63.9
+  },
+  {
+   "name": "encodeSave",
+   "ms": 4962,
+   "frames": 130,
+   "runs": 31,
+   "maxMs": 282.8
+  }
+ ]
+}
