@@ -359,6 +359,10 @@
 .chronicle-actions button, .chapter-preview-continue { display: inline-flex; gap: 6px; align-items: center; min-height: 48px; font-size: 15px; font-weight: 700; }
 .chapter-preview { position: absolute; inset: 0; z-index: 45; display: grid; place-content: center; justify-items: center; gap: 8px;
   background-color: var(--palette-ink); background-position: center; background-size: cover; }
+/* PLAGUE-b: the goals on the opening painting take the title's vellum (bare text was lost on chapter 3's harbour). */
+.chapter-preview-goals { padding: 6px 18px; color: var(--palette-ink); background-color: var(--palette-vellum); }
+.chapter-preview-goals h3 { margin: 0; font-size: 13px; }
+.chapter-preview-goals ul { margin: 2px 0 0; padding-left: 18px; font-size: 14px; }
 /* UI-4 forecast marks on the season strip (cause icons, 24 px scaled to the strip). */
 .app-shell .season-strip-forecast { display: inline-grid; place-items: center; transform: translate(-50%, -2px) scale(0.75); }
 .app-shell .season-strip-forecast[data-stage="rumour"] { opacity: 0.7; }

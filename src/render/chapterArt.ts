@@ -2,6 +2,7 @@ import { CHAPTER_THREE, CHAPTER_TWO } from "../content/chapterConfig";
 import { scenarioById } from "../content/scenario/registry";
 import type { GameState } from "../engine/engine.types";
 import { WAVE21_IMAGES } from "../ui/wave21ArtManifest.generated";
+import { WAVE31_IMAGES } from "../ui/wave31ArtManifest.generated";
 import { WAVE9_IMAGES } from "./wave9ArtManifest.generated";
 import { WAVE17_WORLD_IMAGES } from "./wave17WorldManifest.generated";
 
@@ -30,6 +31,7 @@ export const CHAPTER_ART: readonly ChapterArt[] = [
   { chapter: CHAPTER_TWO.chapter, what: "the war's world props (Wave 17 world, the Wave 12 quay under the burning quay)", urls: urlsOf(WAVE17_WORLD_IMAGES) },
   { chapter: CHAPTER_TWO.chapter + 1, what: "the plague-shut houses (Wave 9; 1348, no draw path yet)", urls: urlsOf(WAVE9_IMAGES, key => key.startsWith("event_plague_shut_")) },
   { chapter: CHAPTER_THREE.chapter, what: "Wave 21 chapter 3 illustrations (UI-8: decisions, events, chronicle, chapter-3 end)", urls: urlsOf(WAVE21_IMAGES) },
+  { chapter: CHAPTER_THREE.chapter, what: "Wave 31 chapter 3 opening (PLAGUE-b: the chronicle's chapter start, the opening screen)", urls: urlsOf(WAVE31_IMAGES, key => WAVE31_IMAGES[key].chapter === CHAPTER_THREE.chapter) },
 ];
 
 const CHAPTER_OF_URL: ReadonlyMap<string, number> = new Map(CHAPTER_ART.flatMap(entry => entry.urls.map(url => [url, entry.chapter] as const)));

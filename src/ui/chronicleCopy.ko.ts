@@ -49,6 +49,10 @@ export const CHRONICLE_COPY = {
   chapterTwoStartLine: "기근이 지나간 도시에 새 세대가 자랐습니다. 이제 왕의 전쟁이 돈과 사람을 청구합니다",
   chapterTwoGoalsHeading: "이 장의 목표",
   chapterTwoStart: "제2장 시작",
+  // PLAGUE-b: a later chapter built in the game opens as chapter 2 does, over its Wave 31 opening painting.
+  chapterOpening: {
+    3: { title: "제3장 · 흑사병의 그늘 · 1348–1364", line: "항구에서 열병 소문이 올라옵니다. 역병이 지나가면 일손이 모자라고, 남은 이들이 값을 부릅니다", start: "제3장 시작" },
+  } as Readonly<Record<number, { readonly title: string; readonly line: string; readonly start: string }>>,
   laterTitle: (chapter: number) => `제${chapter}장 — 예고`,
   laterLine: "다음 장은 아직 준비 중입니다",
   keepPlaying: "계속 (샌드박스)",
