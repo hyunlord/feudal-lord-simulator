@@ -50,7 +50,7 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
 
 ## 기록
 
-실행마다 `<날짜>-<시각>-<커밋>.json`(수치 전부)과 `.md`(표)를 남기고, 아래 표에 한 줄을 더한다. `*`는 커밋 안 된 변경이 있던 실행이다.
+실행마다 `<날짜>-<시각>-<커밋>.json`(수치 전부)과 `.md`(표)를 남기고, 아래 표에 한 줄을 더한다. `*`는 커밋 안 된 변경이 있던 실행이다(20:54 뒤의 `*`는 그 작업 트리에 앞 실행의 기록 파일만 있었다 — 코드는 커밋 그대로).
 
 | 시각(이 Mac의 현지 시각) | 커밋 | 판정 | 장면 | 기록 |
 |---|---|---|---|---|
@@ -58,3 +58,9 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
 | 2026-09-29 17:28 | `38090444` | 판정 아님(같은 Mac에서 힙 스냅숏 분석을 함께 돌림) | big-town-x5 판정 아님 · new-game-x3 실패 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-29-1728-38090444](2026-09-29-1728-38090444.md) |
 | 2026-09-29 18:00 | `bc4cbd3f` | 실패 | big-town-x5 실패 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-1800-bc4cbd3f](2026-09-29-1800-bc4cbd3f.md) |
 | 2026-09-29 19:41 | `bbdf4f34` | 판정 아님 | big-town-x5 판정 아님 · new-game-x3 판정 아님 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-29-1941-bbdf4f34](2026-09-29-1941-bbdf4f34.md) |
+| 2026-09-29 20:14 | `b75574ce` | 판정 아님(SMOOTH-2E 브랜치; 렌더 세션의 측정과 겹침, 새 게임 창이 1.54분만 그려짐) | big-town-x5 실패 · new-game-x3 판정 아님 · season-x1 실패 · placement-x3 판정 아님 | [2026-09-29-2014-b75574ce](2026-09-29-2014-b75574ce.md) |
+| 2026-09-29 20:54 | `f5ae40ec` | 판정 아님(본선, 회귀 없음 비교) | big-town-x5 판정 아님 · new-game-x3 판정 아님 · season-x1 판정 아님 · placement-x3 실패 | [2026-09-29-2054-f5ae40ec](2026-09-29-2054-f5ae40ec.md) |
+| 2026-09-29 21:14 | `f5ae40ec`* | 판정 아님(본선) | big-town-x5 판정 아님 · new-game-x3 판정 아님 · season-x1 판정 아님 · placement-x3 실패 | [2026-09-29-2114-f5ae40ec](2026-09-29-2114-f5ae40ec.md) |
+| 2026-09-29 21:34 | `b75574ce`* | 판정 아님(SMOOTH-2E 브랜치) | big-town-x5 판정 아님 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2134-b75574ce](2026-09-29-2134-b75574ce.md) |
+| 2026-09-29 21:53 | `b75574ce`* | 실패(SMOOTH-2E 브랜치 — 회귀 없음 비교의 유효한 한 벌) | big-town-x5 실패 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2153-b75574ce](2026-09-29-2153-b75574ce.md) |
+| 2026-09-29 22:08 | `f5ae40ec`* | 실패(본선 — 회귀 없음 비교의 유효한 한 벌) | big-town-x5 실패 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2208-f5ae40ec](2026-09-29-2208-f5ae40ec.md) |

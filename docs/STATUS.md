@@ -1,11 +1,19 @@
 # 현재 상태
 
-갱신: 2026-09-29(ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(SMOOTH-2E · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
+
+- **SMOOTH-2E 끊김 없애기(엔진) — 관문 통과(회귀 없음, 사용자 판정 SG4), 본선 병합**(Claude Code, 엔진 세션): [보고서](verification/smooth2e/REPORT.md), [명세](design/engine-frame-budget.md) FB-1~FB-4, 결정 SE1~SE3·SG4.
+  - 틱 시간 예산 8 ms(남은 틱은 다음 프레임, 순서·결과 같음). 저장은 계절 전환 2초 뒤에 유휴 4 ms 조각으로 쓴다(같은 바이트).
+  - 길 찾기·분배의 할당: 틱당 3.44 → 1.10 MB(1380 도시), 3,000틱 3.85 → 2.7 s. 상태 해시 같음.
+  - 관문: 가드레일 `b75574c` 5/5(끝 상태 해시 다섯 = `baseline-7a9db2a`), 사람 경로 10/10, 회귀 3,783/3,783.
+  - perf:gate 본선 대 브랜치: 자동 저장 순간 48 % → 14 %(1단계 통과). 계절 전환 순간과 GC 긴 프레임은 렌더 몫(SMOOTH-2R).
+  - 습지 seed 1이 느린 까닭: 528명에서 멈춘 도시에서 봇이 계속 짓고 매 틱 시대 건물 자리를 찾음(옛 코드 한 해 68초). 새 코드로 1450까지 1시간 42분.
+  - 넘길 것(렌더): 저장 지표 `frameWorkMs`는 가장 긴 조각.
 
 - **SMOOTH-G 부드러움 관문·메모리 붙잡이 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): [보고서](verification/smooth-g/REPORT.md), [관문 사용법·기록](verification/perf-gate/README.md), 결정 SG1~SG3.
   - `npm run perf:gate`(1단계, 사용자 판정 2026-09-29)
