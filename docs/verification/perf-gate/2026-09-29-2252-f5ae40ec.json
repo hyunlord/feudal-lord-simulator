@@ -1,0 +1,151 @@
+{
+ "gate": "perf:gate stage 1",
+ "verdict": "실패",
+ "commit": "f5ae40eca2e52df99a7889ed9339eda0d947d5d8",
+ "dirty": true,
+ "started": "2026-09-29T13:52:29.946Z",
+ "finished": "2026-09-29T13:55:40.266Z",
+ "machine": {
+  "platform": "darwin",
+  "model": "Mac16,5",
+  "cpus": 14,
+  "chrome": "Google Chrome 154.0.8037.58",
+  "loadAverage1m": [
+   5.4,
+   4.3
+  ]
+ },
+ "limits": {
+  "p99Ms": 16.7,
+  "maxMs": 100,
+  "over50PerMin": 1,
+  "over33PerMin": 3,
+  "momentAlpha": 0.05,
+  "otherCpu": 0.25
+ },
+ "seconds": 180,
+ "invalid": [],
+ "failures": [
+  "season-x1: 최대 201.6 ms > 100",
+  "season-x1: 50 ms 초과 8/분 > 1",
+  "season-x1: 33 ms 초과 10.3/분 > 3",
+  "순간 autosave: 100% > 기준 22% (p 0.002)",
+  "순간 season: 100% > 기준 22% (p 0.010)"
+ ],
+ "scenes": [
+  {
+   "id": "season-x1",
+   "loadMax": 0.18,
+   "label": "계절 전환(가장 큰 도시 1배속)",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 1,
+   "action": "none",
+   "verdict": "실패",
+   "failed": [
+    "최대 201.6 ms > 100",
+    "50 ms 초과 8/분 > 1",
+    "33 ms 초과 10.3/분 > 3"
+   ],
+   "invalid": [],
+   "stats": {
+    "frames": 21241,
+    "minutes": 3,
+    "p50": 8.3,
+    "p95": 10.2,
+    "p99": 10.3,
+    "max": 201.6,
+    "over25": 33,
+    "over33": 31,
+    "over50": 24,
+    "over25PerMin": 11,
+    "over33PerMin": 10.3,
+    "over50PerMin": 8
+   },
+   "loadSeconds": 3.287,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 3,
+    "autosave": 4,
+    "dialog": 3,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 178.6,
+     "ms": 201.6
+    },
+    {
+     "atSeconds": 170.6,
+     "ms": 183.6
+    },
+    {
+     "atSeconds": 157.1,
+     "ms": 160
+    },
+    {
+     "atSeconds": 147.1,
+     "ms": 158.2
+    },
+    {
+     "atSeconds": 162.8,
+     "ms": 148
+    },
+    {
+     "atSeconds": 150.8,
+     "ms": 133.7
+    },
+    {
+     "atSeconds": 140.5,
+     "ms": 126.5
+    },
+    {
+     "atSeconds": 94.2,
+     "ms": 123.3
+    },
+    {
+     "atSeconds": 92.6,
+     "ms": 117.3
+    },
+    {
+     "atSeconds": 133.6,
+     "ms": 114.7
+    }
+   ]
+  }
+ ],
+ "moments": {
+  "windows": 144,
+  "windowsWithLong": 31,
+  "baseline": 0.2152777777777778,
+  "rows": [
+   {
+    "kind": "autosave",
+    "seen": 4,
+    "followedByLongFrame": 4,
+    "share": 1,
+    "baseline": 0.2152777777777778,
+    "pValue": 0.002147814682790461,
+    "pass": false
+   },
+   {
+    "kind": "season",
+    "seen": 3,
+    "followedByLongFrame": 3,
+    "share": 1,
+    "baseline": 0.2152777777777778,
+    "pValue": 0.009976945623285327,
+    "pass": false
+   }
+  ],
+  "pass": false
+ }
+}
