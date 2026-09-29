@@ -91,3 +91,9 @@ test("UI-9b pastoral farm: the pen's diamond cut from the Wave 2 paintings fills
     assert.ok(farm.displayWidth / farm.width > 1.35 * (106 / 384), `${farm.id} ${farm.displayWidth}`);
   }
 });
+
+test("UI-9b chapter 5's goal and title have their words (the opening screen listed the goal's id)", async () => {
+  const { CHAPTER_COPY } = await import("../src/ui/chapterCopy.ko");
+  assert.equal(CHAPTER_COPY.goals.legacy, "1450년 마지막 장날까지 도시와 가문의 유산을 남긴다");
+  assert.equal(CHAPTER_COPY.titles[5], "제5장 · 자치와 유산");
+});
