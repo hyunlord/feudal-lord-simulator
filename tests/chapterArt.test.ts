@@ -17,7 +17,10 @@ import { WAVE21_IMAGES } from "../src/ui/wave21ArtManifest.generated";
 
 const WAR = Object.values(WAVE17_WORLD_IMAGES).map(image => image.url);
 const PLAGUE = [WAVE9_IMAGES.event_plague_shut_l1.url, WAVE9_IMAGES.event_plague_shut_l2.url, WAVE9_IMAGES.event_plague_shut_l3.url];
-const WAVE21 = Object.values(WAVE21_IMAGES).map(image => image.url);
+// UI-9: split WAVE21 into chapter 3 (ch3_*) and chapter 4 (ch4_*) subsets.
+const WAVE21_CH3 = (Object.keys(WAVE21_IMAGES) as (keyof typeof WAVE21_IMAGES)[]).filter(k => k.startsWith("ch3_")).map(k => WAVE21_IMAGES[k].url);
+const WAVE21_CH4 = (Object.keys(WAVE21_IMAGES) as (keyof typeof WAVE21_IMAGES)[]).filter(k => k.startsWith("ch4_")).map(k => WAVE21_IMAGES[k].url);
+const WAVE21 = [...WAVE21_CH3, ...WAVE21_CH4];
 const EVERY_CHAPTER = [...historicalFacilityManifest.map(meta => meta.url), WAVE9_IMAGES.event_burnt_l2.url, WAVE9_IMAGES.event_crowd_manor_gate.url];
 const URLS = [...EVERY_CHAPTER, ...WAR, ...PLAGUE, ...WAVE21];
 
@@ -37,7 +40,8 @@ test("each image's chapter: the war props (with the Wave 12 quay) 2, the plague-
 test("a chapter-1 start leaves out later chapters' art; entering chapter N adds its art", () => {
   assert.deepEqual(artForChapter(URLS, 1), EVERY_CHAPTER);
   assert.deepEqual(artForChapter(URLS, 2), [...EVERY_CHAPTER, ...WAR]);
-  assert.deepEqual(artForChapter(URLS, 3), URLS);
+  assert.deepEqual(artForChapter(URLS, 3), [...EVERY_CHAPTER, ...WAR, ...PLAGUE, ...WAVE21_CH3]);
+  assert.deepEqual(artForChapter(URLS, 4), URLS);
   assert.deepEqual(artForChapter(URLS, 5), URLS);
 });
 
@@ -79,7 +83,9 @@ test("the runtime's startup preload requests later chapters' art only once the g
   }
   for (const url of WAR) assert.ok(chapter(2).has(url), `chapter 2 adds ${url}`);
   for (const url of PLAGUE) assert.ok(!chapter(2).has(url) && chapter(3).has(url), `chapter 3 adds ${url}`);
-  for (const url of WAVE21) assert.ok(!chapter(2).has(url) && chapter(3).has(url), `chapter 3 adds wave21 ${url}`);
+  // UI-9: ch3_* wave21 art is chapter 3; ch4_* wave21 art is chapter 4.
+  for (const url of WAVE21_CH3) assert.ok(!chapter(2).has(url) && chapter(3).has(url), `chapter 3 adds wave21 ch3 ${url}`);
+  for (const url of WAVE21_CH4) assert.ok(!chapter(3).has(url) && chapter(4).has(url), `chapter 4 adds wave21 ch4 ${url}`);
   assert.deepEqual([...all].filter(url => !chapter(1).has(url)).sort(), [...WAR, ...PLAGUE, ...WAVE21].sort(), "only chapter-bound art is deferred");
   for (const url of historicalFacilityManifest.map(meta => meta.url)) assert.ok(chapter(1).has(url), `stage-gated ${url} stays at startup`);
 });

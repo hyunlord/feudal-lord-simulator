@@ -57,7 +57,8 @@ export function chronicleIllustration(record: Pick<HistoryRecord, "template" | "
       return building === "mill" ? "chronicle_first_mill" : building === "farmstead" ? "chronicle_first_plough" : building === "market" ? "chronicle_market_day"
         : building === "chapel" || building === "church" ? "chronicle_church_dedication" : "chronicle_settlement";
     }
-    case "milestone.chapter_end": return "chronicle_survival_spring";
+    // UI-9 (F4-A): chapter 4 end uses the chapter's own ending illustration.
+    case "milestone.chapter_end": return param("chapter") === "4" ? "ch4_ending" : "chronicle_survival_spring";
     case "era.entered": return param("eraId") === "famine" ? "chronicle_famine" : param("eraId") === "saturation" ? "chronicle_settlement" : "chronicle_palisade";
     default: return "chronicle_settlement";
   }
