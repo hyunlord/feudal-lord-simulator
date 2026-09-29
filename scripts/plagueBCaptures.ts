@@ -97,7 +97,8 @@ await step("b3-chapter3-opening", async () => {
   const state = load("chapter2-end", states6);
   const keep = state.buildings.find(building => building.kind === "keep") ?? state.buildings.find(building => building.kind === "church")!;
   const { page, close } = await scene(state, [keep.tx, keep.ty], 1.1, [], 0);
-  await page.locator(".chronicle-page").waitFor({ timeout: 20_000 });
+  // The chapter page opens after the save's first frames (a minute on the DGX's software rendering).
+  await page.locator(".chronicle-page").waitFor({ timeout: 90_000 });
   await page.locator(".chronicle-page .chronicle-next").first().click(); await page.waitForTimeout(1_500);
   await page.screenshot({ path: join(out!, "b3-chapter3-opening.jpg"), type: "jpeg", quality: 70 });
   result["b3"] = await page.evaluate(() => {
