@@ -13,18 +13,19 @@ import { createReadStream, createWriteStream, rmSync } from "node:fs";
 import { pipeline } from "node:stream/promises";
 import { join } from "node:path";
 import { analyseRun, type FrameRecord, type MomentMark } from "./hitchTrace";
-import { MODAL, TUTORIAL_OFF, closeModals as closeSceneModals, loadChromium, openScene, type PageWindow } from "./scenePage";
+import { MODAL, SEASON_TEXT, TUTORIAL_OFF, closeModals as closeSceneModals, loadChromium, openScene, type PageWindow } from "./scenePage";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback?: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] : fallback; };
 const url = flag("url")!; const scene = flag("scene")!; const save = flag("save"); const speed = Number(flag("speed", "1"));
 const seconds = Number(flag("seconds", "180")); const action = flag("action", "none")!; const headed = argv.includes("--headed");
 const machine = flag("machine", headed ? "mac-chrome-window" : "dgx-headless")!; const out = flag("out")!; const traces = flag("traces")!;
+const noProof = argv.includes("--no-proof");   // the page as a player gets it: no proof port and its render recorders
 const noTrace = argv.includes("--no-trace");   // control: the same run without tracing (does tracing cause the hitches?)
 const width = Number(flag("width", "1600")); const height = Number(flag("height", "1000"));
 if (!url || !scene || !out || !traces || ![1, 3, 5].includes(speed)) throw new Error("--url --scene --speed 1|3|5 --out --traces are required");
 mkdirSync(out, { recursive: true }); mkdirSync(traces, { recursive: true });
-const runName = `${machine}-${scene}-x${speed}${action === "none" ? "" : `-${action}`}${noTrace ? "-notrace" : ""}`;
+const runName = `${machine}-${scene}-x${speed}${action === "none" ? "" : `-${action}`}${noTrace ? "-notrace" : ""}${noProof ? "-noproof" : ""}`;
 
 // In the page, before the app: autosave writes and dialogs become marks; nothing in the game is replaced.
 // tsx (esbuild keepNames) wraps functions handed to page.evaluate in __name(); the page gets a pass-through.
@@ -50,7 +51,7 @@ async function main() {
   const page = await context.newPage();
   const errors: string[] = []; page.on("pageerror", (error: Error) => errors.push(error.message));
   const load0 = Date.now();
-  await openScene(page, { url, speed, ...(save === undefined ? {} : { save }) });
+  await openScene(page, { url, speed, proof: !noProof, ...(save === undefined ? {} : { save }) });
   const closeModals = () => closeSceneModals(page);
   const loadSeconds = (Date.now() - load0) / 1000;
   await page.waitForTimeout(1_000);
@@ -60,14 +61,20 @@ async function main() {
     categories: ["devtools.timeline", "disabled-by-default-devtools.timeline", "disabled-by-default-v8.cpu_profiler", "blink.user_timing", "v8.execute", "v8"] });
   await page.waitForTimeout(2_000);   // tracing's own start-up stall stays out of the recorded frames
   // The recorder: every rAF's timestamp, and every 250 ms the proof port's tick, chapter, season and weather.
-  const startMarkPageMs: number = await page.evaluate(() => {
+  const startMarkPageMs: number = await page.evaluate((seasonText: string) => {
     const hitch = (window as unknown as PageWindow).__hitch; hitch.recording = true;
     const proof = (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__;
+    const seasonWord = () => /봄|여름|가을|겨울/.exec(document.querySelector(seasonText)?.textContent ?? "")?.[0] ?? null;
+    let lastWord = seasonWord();
     const t0 = performance.now(); performance.mark("hitch:start");
     const frame = (t: number) => { if (!hitch.recording) return; hitch.frames.push({ t }); requestAnimationFrame(frame); };
     requestAnimationFrame(frame);
     let last: { tick: number; chapter: number; season: number } | null = null;
     hitch.poll = setInterval(() => {
+      if (proof === undefined) {   // no proof port: the HUD's season word
+        const word = seasonWord(); if (word !== null && lastWord !== null && word !== lastWord) (window as unknown as PageWindow).__hitchMark("season", `${lastWord}->${word}`);
+        if (word !== null) lastWord = word; return;
+      }
       const state = proof.state(); const tick = state.tick;
       // The weather belongs to its season (events.types EV-3), so a weather change is a season change.
       const now = { tick, chapter: state.politics?.chapter?.number ?? 1, season: Math.floor(((tick % 4000) * 4) / 4000) };
@@ -79,7 +86,7 @@ async function main() {
       last = now;
     }, 250);
     return t0;
-  });
+  }, SEASON_TEXT);
 
   const deadline = Date.now() + seconds * 1000;
   const box = await page.locator("canvas").first().boundingBox();
@@ -125,8 +132,8 @@ async function main() {
     }
   }
   const recorded = await page.evaluate(() => { const hitch = (window as unknown as PageWindow).__hitch; hitch.recording = false; clearInterval(hitch.poll);
-    const proof = (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__; const state = proof.state();
-    return { frames: hitch.frames, marks: hitch.marks, tick: state.tick, population: state.population, buildings: state.buildings.length,
+    const state = (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__?.state();
+    return { frames: hitch.frames, marks: hitch.marks, tick: state?.tick ?? null, population: state?.population ?? null, buildings: state?.buildings.length ?? null,
       dpr: devicePixelRatio, viewport: [innerWidth, innerHeight] }; });
   if (!noTrace) await browser.stopTracing();
   await browser.close();

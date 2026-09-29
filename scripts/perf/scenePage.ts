@@ -1,6 +1,7 @@
 // Opening a perf scene the way a player opens it (SMOOTH-1, shared by hitchAudit, perfGate and memoryHolders): a save
 // file written into the game's IndexedDB slot `auto-1`, then 이어하기 on the title screen; without a save, a new game.
-// The tutorial is off and the proof port (?phase10-proof=1) is on, so the tick can be read. No game code is changed.
+// The tutorial is off. The proof port (?phase10-proof=1) gives the tick, but it also installs recorders on the render
+// path (render-stage timing, sprite-draw log); `proof: false` opens the page as a player gets it. No game code is changed.
 import { readFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import { pathToFileURL } from "node:url";
@@ -12,6 +13,8 @@ export type PageWindow = Record<string, any>;
 export const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
 // A modal open over the town (a story card saved open, the season ledger) blocks the speed buttons.
 export const MODAL = '[role="dialog"], .story-modal-backdrop, .season-ledger-backdrop';
+// The HUD's date pill ("1380년 봄 …"): without the proof port, its season word marks a season change.
+export const SEASON_TEXT = '.status-pill-date-text';
 
 // Playwright is not a dependency of the repository: PLAYWRIGHT_MODULE names a playwright-core index.mjs (as for the
 // other browser scripts, docs/REMOTE_RUNS.md).
@@ -37,8 +40,9 @@ export async function closeModals(page: any) {
 }
 
 /** Goes to the build, loads the scene (a save, or a new game), closes what covers the town and sets the speed. */
-export async function openScene(page: any, input: { readonly url: string; readonly save?: string; readonly speed: number }) {
-  await page.goto(`${input.url}?phase10-proof=1`, { waitUntil: "load" });
+export async function openScene(page: any, input: { readonly url: string; readonly save?: string; readonly speed: number; readonly proof?: boolean }) {
+  const proof = input.proof ?? true;
+  await page.goto(proof ? `${input.url}?phase10-proof=1` : input.url, { waitUntil: "load" });
   if (input.save !== undefined) {
     const bytes = readSave(input.save); const meta = saveMetaFor("auto-1", bytes);
     if (meta === null) throw new Error(`${input.save}: not a save file`);
@@ -60,7 +64,8 @@ export async function openScene(page: any, input: { readonly url: string; readon
       if (await button.count() > 0 && await button.first().isVisible()) { await button.first().click(); break; }
     }
   }
-  await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90_000 });
+  if (proof) await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90_000 });
+  else await page.locator(SEASON_TEXT).first().waitFor({ timeout: 90_000 });
   await page.waitForTimeout(2_000);
   if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
   if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");

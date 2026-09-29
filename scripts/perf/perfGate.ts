@@ -6,8 +6,10 @@
 // binomial test at 5 %: a higher share that chance explains passes).
 // Scenes: the biggest town (fixtures/perf-gate/ch4-1380: 1380, 768 people, 86 buildings) at 5x; a new game at 3x; the
 // same town at 1x for the season changes as they come in play; and that town at 3x with placement drags (road, house,
-// zone brush). Frames are the page's rAF intervals (scripts/perf/hitchAudit.ts --no-trace).
-// A run is valid only on a Mac at 120 Hz (rAF p50 8.3 ms) with no page error; the DGX (software raster) never judges.
+// zone brush). Frames are the page's rAF intervals (scripts/perf/hitchAudit.ts --no-trace --no-proof: the page as a
+// player gets it, without the proof port's render recorders; season changes are read from the HUD's date).
+// A run is valid only on a Mac at 120 Hz (rAF p50 8.3 ms), with no page error and at most half the machine's CPU in use
+// in any 10 s of the run (the game itself takes a few cores; another session's tests would make a false fail); the DGX (software raster) never judges.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs npm run perf:gate [-- --only big-town-x5,season-x1] [--seconds 180]
 //     [--port 4392] [--out docs/verification/perf-gate]
 // Exit 0 = pass, 1 = fail, 2 = not a judgement (wrong machine, refresh rate, page error, a run that did not finish).
@@ -22,7 +24,9 @@ const flag = (name: string, fallback: string) => { const i = argv.indexOf(`--${n
 const seconds = Number(flag("seconds", "180")); const port = Number(flag("port", "4392"));
 const outDir = flag("out", "docs/verification/perf-gate"); const only = flag("only", "").split(",").filter(Boolean);
 
-export const LIMITS = { p99Ms: 16.7, maxMs: 100, over50PerMin: 1, over33PerMin: 3, momentAlpha: 0.05 } as const;
+export const LIMITS = { p99Ms: 16.7, maxMs: 100, over50PerMin: 1, over33PerMin: 3, momentAlpha: 0.05, cpuBusy: 0.5 } as const;
+// All cores' busy and total time so far (os.cpus() ticks), for the share of the machine in use between two samples.
+const cpuTimes = () => cpus().reduce((sum, cpu) => { const t = cpu.times; return { idle: sum.idle + t.idle, total: sum.total + t.user + t.nice + t.sys + t.idle + t.irq }; }, { idle: 0, total: 0 });
 const SAVE = "fixtures/perf-gate/ch4-1380.save.json.gz";
 const SCENES = [
   { id: "big-town-x5", label: "가장 큰 도시 5배속", save: SAVE, speed: 5, action: "none" },
@@ -89,7 +93,7 @@ async function main() {
   const scenes = SCENES.filter(scene => only.length === 0 || only.includes(scene.id));
   const work = mkdtempSync(join(tmpdir(), "fls-perf-gate-")); const build = join(work, "build");
   let preview: ReturnType<typeof spawn> | null = null;
-  const results: { scene: (typeof SCENES)[number]; summary: Summary | null; failed: string[]; invalid: string[] }[] = [];
+  const results: { scene: (typeof SCENES)[number]; summary: Summary | null; loadMax: number; failed: string[]; invalid: string[] }[] = [];
   try {
     if (invalid.length === 0) {
       console.log(`perf:gate ${commit.slice(0, 8)}${dirty ? " (dirty)" : ""}: build`);
@@ -101,12 +105,21 @@ async function main() {
       for (const scene of scenes) {
         console.log(`== ${new Date().toTimeString().slice(0, 8)} ${scene.id} (${seconds} s)`);
         const args = ["scripts/perf/hitchAudit.ts", "--url", url, "--scene", scene.id, "--speed", String(scene.speed), "--seconds", String(seconds),
-          "--action", scene.action, "--machine", MACHINE, "--out", join(work, "runs"), "--traces", join(work, "records"), "--headed", "--no-trace",
+          "--action", scene.action, "--machine", MACHINE, "--out", join(work, "runs"), "--traces", join(work, "records"), "--headed", "--no-trace", "--no-proof",
           ...(scene.save === null ? [] : ["--save", scene.save])];
-        const audit = spawnSync("node_modules/.bin/tsx", args, { encoding: "utf8", env: { ...process.env, NODE_OPTIONS: "--max-old-space-size=8192" } });
-        const file = join(work, "runs", `${MACHINE}-${scene.id}-x${scene.speed}${scene.action === "none" ? "" : `-${scene.action}`}-notrace.json`);
+        // The machine's 1-minute load, every 10 s of the run: another session's tests on this Mac make a run no judgement.
+        const loads: number[] = []; let previous = cpuTimes();
+        const sampler = setInterval(() => { const now = cpuTimes(); loads.push(1 - (now.idle - previous.idle) / Math.max(1, now.total - previous.total)); previous = now; }, 10_000);
+        const audit = await new Promise<{ status: number | null; stdout: string; stderr: string }>(done => {
+          const child = spawn("node_modules/.bin/tsx", args, { env: { ...process.env, NODE_OPTIONS: "--max-old-space-size=8192" } });
+          let stdout = ""; let stderr = ""; child.stdout.on("data", data => { stdout += data; }); child.stderr.on("data", data => { stderr += data; });
+          child.on("close", status => done({ status, stdout, stderr }));
+        });
+        clearInterval(sampler);
+        const busiest = Math.round(Math.max(0, ...loads) * 100) / 100;   // the busiest 10 s: share of all cores in use
+        const file = join(work, "runs", `${MACHINE}-${scene.id}-x${scene.speed}${scene.action === "none" ? "" : `-${scene.action}`}-notrace-noproof.json`);
         if (audit.status !== 0 || !existsSync(file)) {
-          results.push({ scene, summary: null, failed: [], invalid: [`실행이 끝나지 않았다: ${(audit.stderr || audit.stdout).trim().split("\n").slice(-3).join(" / ")}`] });
+          results.push({ scene, summary: null, loadMax: busiest, failed: [], invalid: [`실행이 끝나지 않았다: ${(audit.stderr || audit.stdout).trim().split("\n").slice(-3).join(" / ")}`] });
           continue;
         }
         const summary = JSON.parse(readFileSync(file, "utf8")) as Summary;
@@ -114,9 +127,10 @@ async function main() {
         const p50 = summary.stats.p50 ?? 0;
         if (p50 < 7.9 || p50 > 8.8) runInvalid.push(`rAF p50 ${p50} ms: 120 Hz 창이 아니다(가려진 창·60 Hz·부하)`);
         if ((summary.stats.minutes ?? 0) < (seconds / 60) * 0.95) runInvalid.push(`기록 ${summary.stats.minutes}분 < ${seconds / 60}분`);
+        if (busiest > LIMITS.cpuBusy) runInvalid.push(`기계 CPU ${Math.round(busiest * 100)}% > ${LIMITS.cpuBusy * 100}%(10초 구간 최대, 코어 ${cpus().length}): 다른 일이 돌았다`);
         if (summary.errors.length > 0) runInvalid.push(`페이지 오류 ${summary.errors.length}: ${summary.errors[0]}`);
         const failed = judgeRun(summary.stats);
-        results.push({ scene, summary, failed, invalid: runInvalid });
+        results.push({ scene, summary, loadMax: busiest, failed, invalid: runInvalid });
         console.log(`   p50 ${summary.stats.p50} p99 ${summary.stats.p99} max ${summary.stats.max} >50 ${summary.stats.over50PerMin}/min >33 ${summary.stats.over33PerMin}/min — ${runInvalid.length ? "무효" : failed.length ? "실패" : "통과"}`);
       }
     }
@@ -138,7 +152,7 @@ async function main() {
   const record = { gate: "perf:gate stage 1", verdict, commit, dirty, started: started.toISOString(), finished: new Date().toISOString(),
     machine: { platform: process.platform, model, cpus: cpus().length, chrome, loadAverage1m: load.map(value => Math.round(value * 10) / 10) },
     limits: LIMITS, seconds, invalid: allInvalid, failures,
-    scenes: results.map(({ scene, summary, failed, invalid: runInvalid }) => ({ id: scene.id, label: scene.label, save: scene.save, speed: scene.speed, action: scene.action,
+    scenes: results.map(({ scene, summary, loadMax, failed, invalid: runInvalid }) => ({ id: scene.id, loadMax, label: scene.label, save: scene.save, speed: scene.speed, action: scene.action,
       verdict: runInvalid.length ? "판정 아님" : failed.length ? "실패" : "통과", failed, invalid: runInvalid,
       stats: summary?.stats ?? null, loadSeconds: summary?.loadSeconds ?? null, page: summary?.page ?? null,
       moments: summary === null ? null : Object.fromEntries(["season", "autosave", "dialog", "chapter"].map(kind => [kind, summary.moments.filter(moment => moment.kind === kind).length])),
@@ -151,8 +165,8 @@ async function main() {
     `- 기준: p99 ≤ ${LIMITS.p99Ms} ms · 최대 ≤ ${LIMITS.maxMs} ms · 50 ms 초과 ≤ ${LIMITS.over50PerMin}/분 · 33 ms 초과 ≤ ${LIMITS.over33PerMin}/분 · 계절 전환·자동 저장 뒤 긴 프레임 비율 ≤ 아무 1.25초 구간(단측 이항 5 %)`,
     ...(allInvalid.length ? ["", "**판정 아님:**", ...allInvalid.map(reason => `- ${reason}`)] : []),
     ...(failures.length ? ["", "**실패:**", ...failures.map(reason => `- ${reason}`)] : []),
-    "", "| 장면 | 판정 | p50 | p99 | 최대 | 50 ms 초과/분 | 33 ms 초과/분 | 계절·저장·모달 | 가장 긴 프레임(기록 시작 뒤 초: ms) |", "|---|---|---:|---:|---:|---:|---:|---|---|",
-    ...record.scenes.map(scene => `| ${scene.label} | ${scene.verdict} | ${cell(scene.stats?.p50)} | ${cell(scene.stats?.p99)} | ${cell(scene.stats?.max)} | ${cell(scene.stats?.over50PerMin)} | ${cell(scene.stats?.over33PerMin)} | ${scene.moments ? `${scene.moments.season}·${scene.moments.autosave}·${scene.moments.dialog}` : "-"} | ${scene.worstFrames.slice(0, 3).map(frame => `${frame.atSeconds}: ${frame.ms}`).join(", ")} |`),
+    "", "| 장면 | 판정 | p50 | p99 | 최대 | 50 ms 초과/분 | 33 ms 초과/분 | 계절·저장·모달 | CPU 최대 | 가장 긴 프레임(기록 시작 뒤 초: ms) |", "|---|---|---:|---:|---:|---:|---:|---|---:|---|",
+    ...record.scenes.map(scene => `| ${scene.label} | ${scene.verdict} | ${cell(scene.stats?.p50)} | ${cell(scene.stats?.p99)} | ${cell(scene.stats?.max)} | ${cell(scene.stats?.over50PerMin)} | ${cell(scene.stats?.over33PerMin)} | ${scene.moments ? `${scene.moments.season}·${scene.moments.autosave}·${scene.moments.dialog}` : "-"} | ${Math.round(scene.loadMax * 100)}% | ${scene.worstFrames.slice(0, 3).map(frame => `${frame.atSeconds}: ${frame.ms}`).join(", ")} |`),
     "", `순간(실행 합): 아무 1.25초 구간 ${moments.windows}개 중 ${moments.windowsWithLong}개(${Math.round(moments.baseline * 100)}%)에 긴 프레임.`,
     ...moments.rows.map(row => `- ${row.kind}: ${row.seen}번 중 ${row.followedByLongFrame}번(${Math.round(row.share * 100)}%), p ${row.pValue.toFixed(3)} — ${row.pass ? "통과" : "실패"}`), ""];
   writeFileSync(join(outDir, `${stamp}.md`), lines.join("\n"));
