@@ -60,12 +60,71 @@ export interface EraDef {
   readonly effects: readonly EffectSpec[];
 }
 
+/**
+ * ARCH-1 (MA-2): how a map archetype's land is drawn from the shared noise fields (`world/archetypeTerrain.ts`).
+ * `river` is the open-field generator unchanged; the others move its thresholds and may add a sea along one edge.
+ */
+export type ArchetypeTerrainKind = "river" | "coast" | "downs" | "woodland" | "fen";
+
+export interface ArchetypeTerrainDef {
+  readonly kind: ArchetypeTerrainKind;
+  /**
+   * The land's water, rock and forest, permille of the map before the town site (the thresholds are these quantiles of
+   * the fields, so every seed of a land has its share). The riverside town has none: its thresholds are the open field's.
+   */
+  readonly shares?: { readonly water: number; readonly rock: number; readonly forest: number };
+  /** How much finer noise breaks up the land's water and rock (and forest), permille: the fen's meres, the down's chalk. */
+  readonly detailPermille?: number;
+  /** A sea along one map edge (the seed picks north or west): its depth in tiles, the least and the most. */
+  readonly sea?: { readonly minDepth: number; readonly maxDepth: number };
+}
+
+/** ARCH-1 (MA-5): the art a render lays on the archetype's land — Wave 22 ground, Wave 28 field edges, Wave 29 water. */
+export interface ArchetypeGroundDef {
+  /** Wave 22 fill of the open ground (`terrain/<fill>`); `grass` is today's meadow. */
+  readonly fill: "grass" | "chalk_down" | "coastal_grass" | "woodland_floor" | "fen";
+  /** A second fill in patches (the down's heath), or none. */
+  readonly patchFill?: "heath";
+  /** The Wave 22 transition band between the meadow and the fill (`boundary/<edge>_edge_{a,b}`), or none. */
+  readonly edge?: "chalk" | "heath" | "fen" | "coastal";
+  /** Wave 22 decals and props scattered on the fill (`decals/…`, `props/…` without the variant suffix). */
+  readonly decals: readonly string[];
+  /** Tiles of the open ground that carry a decal, permille. */
+  readonly decalPermille: number;
+  /** Wave 28's field boundary: a hedgerow or a dry-stone wall. */
+  readonly fieldBoundary: "hedgerow" | "dry_stone_wall";
+  /** Wave 29's water movement on this land's water. */
+  readonly water: readonly string[];
+}
+
+/** ARCH-1 (MA-3): the land's resources, from scarce to rich; timber and stone are its forest and rock. */
+export type ResourceLevel = "scarce" | "normal" | "rich";
+
+/** ARCH-1 (MA-4): the archetype's rules differ by these coefficients only, permille (1,000 = the open field). */
+export interface ArchetypeRules {
+  /** The arable harvest (the crop a strip grows). */
+  readonly arablePermille: number;
+  /** The pasture's clip (fleeces at the shearing). */
+  readonly pastoralPermille: number;
+  /** The logging camp's pace (logs). */
+  readonly timberPermille: number;
+  /** A wet summer's harvest loss (its share of the 5 % the open field loses). */
+  readonly floodPermille: number;
+  /** A coastal town's raid (houses and loot) and its pestilence's deaths. */
+  readonly coastalEventPermille: number;
+}
+
 export interface ArchetypeDef {
   readonly id: string;
   /** Filled by B5/C1 (land system, resource package). */
   readonly resourcePackage: Readonly<Record<string, unknown>>;
   /** F2-A (WR-5): on the coast (or a tidal river's mouth) — the war of 1337 lights its beacon and raids it. */
   readonly coastal?: boolean;
+  /** ARCH-1: the land, its art, its resources and its rules. */
+  readonly terrain: ArchetypeTerrainDef;
+  readonly ground: ArchetypeGroundDef;
+  readonly resources: Readonly<Record<"timber" | "stone" | "clay" | "fish", ResourceLevel>>;
+  readonly rules: ArchetypeRules;
 }
 
 export interface WallPolicy {

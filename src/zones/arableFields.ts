@@ -11,6 +11,7 @@ import { availableSpace } from "../economy/storage";
 import type { GameState } from "../engine/engine.types";
 import { buildingHasRequiredRoadAccess } from "../engine/roadAccess";
 import { harvestYieldPermille } from "../engine/eventSchedule";
+import { archetypeRules, scaleByPermille } from "../engine/archetype";
 import type { TileCoordinate } from "../geometry/tileGeometry";
 import type { ArableField, ArableStage, ArableStripRecord } from "./arable.types";
 import { zonesOf } from "./zoneEdits";
@@ -339,6 +340,7 @@ export function stepArableFields(state: GameState): { readonly state: GameState;
   let harvestedWheat = 0;
   let weatherLostWheat = 0;
   const harvestPermille = harvestYieldPermille(state, state.tick);
+  const arablePermille = archetypeRules(state).arablePermille;
   const fields = reconciled.map(field => {
     let strips: ArableStripRecord[] | null = null;
     let lost = 0;
@@ -402,7 +404,8 @@ export function stepArableFields(state: GameState): { readonly state: GameState;
       else {
         const barley = record.crop === "barley";
         // C4 (AL-2): barley yields more to the strip than wheat (decision AL1).
-        const grown = Math.floor(stripYield(strip, record, record.completionPermille ?? 1000) * (barley ? ALE_BALANCE.barleyYieldPermille : 1000) / 1000);
+        // ARCH-1 (MA-4 ①): the land's arable coefficient (the down's thin soil, the drained fen's richness).
+        const grown = scaleByPermille(Math.floor(stripYield(strip, record, record.completionPermille ?? 1000) * (barley ? ALE_BALANCE.barleyYieldPermille : 1000) / 1000), arablePermille);
         // EV-3, EV-5: a wet summer or a dearth takes its share of the crop grown.
         const amount = Math.floor(grown * harvestPermille / 1000);
         if (amount > availableSpace(farmstead, BUILDING_CONFIG_BY_KIND.farmstead)) {

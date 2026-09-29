@@ -11,6 +11,15 @@ export const SCENARIO_COPY = {
     sandbox: "샌드박스로 시작",
   },
   modePrompt: "새 게임 방식을 고르세요",
+  /** ARCH-1 (MA-6): the lands the start screen offers (render's picker). */
+  archetypePrompt: "어떤 땅에서 시작할지 고르세요",
+  archetypes: {
+    open_field: { name: "강가 시장도시", description: "강 하나와 풀밭. 경작·목축·목재가 고르고, 강어귀라 1337년의 습격이 닿습니다." },
+    coastal_port: { name: "해안 항구", description: "모래·자갈 해변과 염습지. 습격과 항구 열병이 가장 셉니다. 나무가 적습니다." },
+    chalk_downs: { name: "백악 언덕 목양", description: "짧은 풀과 흰 백악, 마른 돌담. 양은 잘 되고 밭은 덜 됩니다. 물이 귀합니다." },
+    forest_edge: { name: "숲 가장자리 개척", description: "낙엽과 쓰러진 나무. 목재가 빨리 나고, 밭은 숲을 베어 얻습니다." },
+    fen_drainage: { name: "습지 간척", description: "갈대와 웅덩이. 마른 땅은 가장 기름지지만 젖은 여름엔 물이 찹니다." },
+  },
   stages: {
     village: "촌락",
     market_town: "시장도시",

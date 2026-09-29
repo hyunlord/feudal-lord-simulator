@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-29(UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-29(ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -13,6 +13,12 @@
   - 세력 탭 힘 막대와 줄다리기(백작 경고선 50), 권리 탭 권리 이양(좌판세·통행세 절반 → 도시, fee farm 120d는 대가), 반란 압력 원인 줄, 4장 장부(직물 인장세·매매세·축융 사용료·인두세·연납금), 4장 목표·시작 화면·장 끝.
   - 관문: seed 2 4장 재생 캡처 오류 0, 스킨 감사 0 / 1263(4장 묶음 포함), 면적 5.3 % / 6 %·태블릿 5.8 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 로컬 전체 시험 3,724 / 3,724, 깨끗한 클론 `62eda3e` 3,724/3,724·build.
   - 넘길 것(엔진): 길드 결성의 원장 줄 없음, 길드·직물 대 곡물·특허 카드의 예측이 두 답 모두 지금 금고. 판정: 징수원 그림(국왕 전령 제복), 길드홀 자리 규칙.
+- **ARCH-1 지도 유형 넷(+강가) — 관문 통과, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시, 검증 DGX): [보고서](verification/arch1/REPORT.md), [명세](design/map-archetypes.md) MA-1~MA-8, 결정 MA1~MA7.
+  - 땅 다섯: 강가 시장도시(`core:open_field` 그대로), 해안 항구, 백악 언덕 목양, 숲 가장자리 개척, 습지 간척. 지형은 (땅, seed) 결정론이고, 땅마다 물·바위·숲의 몫(분위수)으로 자른다. 해안은 북/서 바다다. 모든 새 땅에서 시작 마을이 같은 자리에 선다(마을 자리 보장).
+  - 규칙 차이는 계수 다섯(경작·목축·목재·홍수·해안 사건)뿐이다. 강가는 모두 1,000이라 바이트까지 같다. 새 건물은 없다. 저장 v31 `archetypeId`.
+  - 관문: 봇 1장 완주 15/15(1317~1326), 지형 캡처 15장(128², JPEG), 가드레일 `91fc529` 5/5(끝 상태 해시 다섯 = `baseline-321168c`), 사람 경로 새 땅 넷 1장 생존(1318까지 60명 이상)·가드레일 옆 10/10, 계층 시험 실패 1 고침(`hashSeed` → `content/seedHash.ts`), 깨끗한 클론 `2a66b17` 3,750/3,750·build.
+  - 넘길 것(렌더): 시작 화면의 땅 고르기(`mapArchetypes`·`SCENARIO_COPY.archetypes`·`start_new_game`의 `archetypeId`·`seed`), 지면 배치 데이터 `archetypeGroundLayer`(Wave 22 채움·띠·소품), 들판 경계(Wave 28)·물 움직임(Wave 29), `countrysideLayout`의 땅을 `stateArchetype(state)`로.
+
 - **CLOTH-UI 직물 사슬 화면 — 완료, 본선 병합**(Claude Code, 렌더 세션, RENDER_E 2, 엔진 C5 넘김): [보고서](verification/cloth-ui/REPORT.md), 결정 CLOTHUI-D1~D5.
   - 건물 다섯 그림(Wave 2 목축 농장 계절·Wave 3 직조공 집·축융 방앗간·염색집·텐터 틀, 37장 설치), 문 앞 양털·베 더미, 수레 적재물(양털 자루·베 두루마리).
   - 사슬 아이콘 분리: 결산 카드의 에일 줄은 보리·엿기름·에일, 직물 줄은 일곱 중 가진 것만. 장부 서랍 "도시의 직물"(양·목초지·실 잣는 집·건물·직물 인장세·축융 사용료).

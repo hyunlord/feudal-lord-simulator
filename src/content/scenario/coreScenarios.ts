@@ -4,6 +4,7 @@ import { PLAGUE_SEQUENCE_ID } from "../plagueConfig";
 import { REORGANISATION_SEQUENCE_ID } from "../reorganisationConfig";
 import { LEGACY_SEQUENCE_ID } from "../legacyConfig";
 import { WAR_ERA_EFFECTS, WAR_SEQUENCE_ID } from "../warConfig";
+import { MAP_ARCHETYPES } from "./archetypes";
 import { SCENARIO_COPY } from "./scenarioCopy.ko";
 import type { ArchetypeDef, EraDef, ObjectiveDef, ScenarioDef, StageDef } from "./types";
 
@@ -79,8 +80,8 @@ const WALLS = {
 /** C2 money rules: the lord's mill monopoly is on, demesne sales are off (goods belong to residents). */
 const ECONOMY_RULES = { millMonopoly: true, demesneSale: false } as const satisfies ScenarioDef["economyRules"];
 
-/** F2-A (WR-5, decision WR2): the open-field town stands at a tidal river's mouth — the war's raiders reach it. */
-export const CORE_ARCHETYPES: readonly ArchetypeDef[] = [{ id: "core:open_field", resourcePackage: {}, coastal: true }];
+/** ARCH-1 (MA-1): the five lands — the open field (the riverside town, a tidal river's mouth) first. */
+export const CORE_ARCHETYPES: readonly ArchetypeDef[] = MAP_ARCHETYPES;
 
 /**
  * F0-B (EV-1): the weather and chapter 1's events — the first fire, later fires and the first dearth (the rehearsal).

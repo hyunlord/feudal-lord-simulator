@@ -6,6 +6,8 @@ import { findExistingRoadPath } from "../src/world/roadGraph";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { getTile, type Grid, type TileCoordinate } from "../src/world/grid";
 import { buildWorldGrid } from "../src/world/terrain";
+import { buildArchetypeWorldGrid } from "../src/world/archetypeTerrain";
+import { archetypeById } from "../src/content/scenario/registry";
 
 export class InvalidGrowthOpeningError extends Error {
   readonly code = "invalid-opening-fixture";
@@ -94,7 +96,13 @@ export function selectGrowthOpening(world: Grid, seed: number) {
   throw new InvalidGrowthOpeningError(seed, ["no-legal-offset: all in-bounds rigid opening translations rejected"]);
 }
 
-export function createGrowthOpening(seed: number) {
+/** ARCH-1 (MA-7): on a land other than the riverside town the map is that land's, and the state carries its id. */
+export function createGrowthOpening(seed: number, archetypeId?: string) {
   if (!Number.isInteger(seed) || seed < 1 || seed > 5) throw new RangeError("verification seed must be 1..5");
-  return selectGrowthOpening(buildWorldGrid({ width: DEFAULT_GAME_STATE.width, height: DEFAULT_GAME_STATE.height, seed }), seed);
+  const size = { width: DEFAULT_GAME_STATE.width, height: DEFAULT_GAME_STATE.height, seed };
+  const archetype = archetypeId === undefined ? undefined : archetypeById(archetypeId);
+  if (archetypeId !== undefined && archetype === undefined) throw new RangeError(`unknown archetype ${archetypeId}`);
+  if (archetype === undefined || archetype.terrain.kind === "river") return selectGrowthOpening(buildWorldGrid(size), seed);
+  const opening = selectGrowthOpening(buildArchetypeWorldGrid(archetype, size), seed);
+  return { ...opening, state: { ...opening.state, archetypeId: archetype.id } };
 }

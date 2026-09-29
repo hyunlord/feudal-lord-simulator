@@ -22,7 +22,7 @@ import {
   WAR_SEQUENCE_ID,
   WOOL_PAYMENT_PETITION_ID,
 } from "../content/warConfig";
-import { archetypeOf } from "../content/scenario/registry";
+import { archetypeRules, stateArchetype } from "./archetype";
 import { FLEECE_RESOURCE } from "../content/clothConfig";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { LedgerCategory, LedgerPosting } from "../ledger/ledger.types";
@@ -53,8 +53,8 @@ export function warActive(state: Pick<GameState, "scenarioId">): boolean {
 }
 
 /** WR-5: a town on the coast (its archetype) has the beacon and the raid. */
-export function warCoastal(state: Pick<GameState, "scenarioId">): boolean {
-  return archetypeOf(scenarioOf(state))?.coastal === true;
+export function warCoastal(state: Pick<GameState, "scenarioId" | "archetypeId">): boolean {
+  return stateArchetype(state)?.coastal === true;
 }
 
 /** WR-5: the raid's season, counted from the messenger's (the seed picks among `raidSeasons`). */
@@ -64,7 +64,7 @@ export function raidSeasonOffset(state: Pick<GameState, "seed">): number {
 }
 
 /** WR-7: the recovery's season from the messenger's (two after the raid; inland, the latest raid's). */
-export function recoverySeasonOffset(state: Pick<GameState, "seed" | "scenarioId">): number {
+export function recoverySeasonOffset(state: Pick<GameState, "seed" | "scenarioId" | "archetypeId">): number {
   return warCoastal(state) ? raidSeasonOffset(state) + WAR_BALANCE.recoverySeasonsAfterRaid : WAR_BALANCE.inlandRecoverySeason;
 }
 
@@ -167,13 +167,15 @@ export function raidLosses(state: GameState, defencePermille = ringDefencePermil
   const standing = state.houses.filter(house => house.burntTick === undefined && buildings.has(house.buildingId));
   const exposed = standing.map(house => ({ house, building: buildings.get(house.buildingId)!, exposure: exposure(buildings.get(house.buildingId)!) }));
   const townExposure = exposed.length === 0 ? 0 : exposed.reduce((sum, entry) => sum + entry.exposure, 0) / exposed.length;
-  const count = Math.min(exposed.length, Math.round(WAR_BALANCE.raidHouses * townExposure / 1000));
+  // ARCH-1 (MA-4 ⑤): a harbour's raid is heavier — more houses and more loot by the land's coastal coefficient.
+  const coastal = archetypeRules(state).coastalEventPermille;
+  const count = Math.min(exposed.length, Math.round(WAR_BALANCE.raidHouses * townExposure / 1000 * (coastal === 1000 ? 1 : coastal / 1000)));
   const houseIds = exposed.filter(entry => entry.exposure > 0)
     .sort((a, b) => b.exposure - a.exposure || edge(a.building) - edge(b.building) || a.house.buildingId.localeCompare(b.house.buildingId))
     .slice(0, count).map(entry => entry.house.buildingId);
   const loot: { buildingId: string; resource: string; amount: number }[] = [];
   for (const building of [...state.buildings].sort((a, b) => a.id.localeCompare(b.id))) {
-    const share = exposure(building) * WAR_BALANCE.raidLootPermille;
+    const share = Math.min(1_000_000, Math.round(exposure(building) * WAR_BALANCE.raidLootPermille * coastal / 1000));
     for (const [resource, stock] of Object.entries(building.inventory ?? {}).sort(([a], [b]) => a.localeCompare(b))) {
       const amount = Math.floor(Math.max(0, stock ?? 0) * share / 1_000_000);
       if (amount > 0) loot.push({ buildingId: building.id, resource, amount });

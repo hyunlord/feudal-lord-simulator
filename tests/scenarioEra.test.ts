@@ -1,3 +1,4 @@
+import { MAP_ARCHETYPES } from "../src/content/scenario/archetypes";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
@@ -37,7 +38,7 @@ function walledMarketTown(scenarioId = DEFAULT_SCENARIO_ID): GameState {
 test("SC-1 scenarios register as namespace:id in declaration order and reject invalid data", () => {
   assert.deepEqual(SCENARIOS.list().map(scenario => scenario.id), [DEFAULT_SCENARIO_ID, SANDBOX_SCENARIO_ID]);
   const base = CORE_SCENARIOS[0]!;
-  const registry = () => { const r = new ScenarioRegistry(); r.registerArchetype({ id: "core:open_field", resourcePackage: {} }); return r; };
+  const registry = () => { const r = new ScenarioRegistry(); r.registerArchetype(MAP_ARCHETYPES[0]!); return r; };
   const reject = (scenario: ScenarioDef, pattern: RegExp) => assert.throws(() => registry().register(scenario), (error: unknown) => error instanceof ScenarioValidationError && pattern.test(String((error as Error).message)));
   reject({ ...base, id: "campaign" }, /namespace:id/);
   reject({ ...base, walls: { ...base.walls, palisade: "optional" } }, /K4-2/);

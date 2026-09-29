@@ -1,0 +1,92 @@
+[
+  {
+    "seed": 1,
+    "exit": 0,
+    "seconds": 1229,
+    "stopReason": "target-scale-stable",
+    "tick": 281602,
+    "maxTicks": 1200000,
+    "simulationPassed": true,
+    "guardrail": "passed",
+    "checks": {
+      "efficiency": true,
+      "baselineL4": true,
+      "serviceGap": true,
+      "newDeadlock": true,
+      "zeroWheatRegression": true
+    },
+    "finalStateSha256": "039b9a82a8752f258c5d9f59a166490143a71cd58434c5f6123636e6785697d7"
+  },
+  {
+    "seed": 2,
+    "exit": 0,
+    "seconds": 1861,
+    "stopReason": "target-scale-stable",
+    "tick": 323310,
+    "maxTicks": 1200000,
+    "simulationPassed": true,
+    "guardrail": "passed",
+    "checks": {
+      "efficiency": true,
+      "baselineL4": true,
+      "serviceGap": true,
+      "newDeadlock": true,
+      "zeroWheatRegression": true
+    },
+    "finalStateSha256": "65c190f6fabfee7c66ac876984a56ff0ce786db6958e2c7539f272ae7f8f8c03"
+  },
+  {
+    "seed": 3,
+    "exit": 0,
+    "seconds": 1402,
+    "stopReason": "target-scale-stable",
+    "tick": 290621,
+    "maxTicks": 1200000,
+    "simulationPassed": true,
+    "guardrail": "passed",
+    "checks": {
+      "efficiency": true,
+      "baselineL4": true,
+      "serviceGap": true,
+      "newDeadlock": true,
+      "zeroWheatRegression": true
+    },
+    "finalStateSha256": "4d4826d594f29d2da7e781ee74d4487c738839bca1c711996b2e5c6ebaea993d"
+  },
+  {
+    "seed": 4,
+    "exit": 0,
+    "seconds": 1370,
+    "stopReason": "target-scale-stable",
+    "tick": 300877,
+    "maxTicks": 1200000,
+    "simulationPassed": true,
+    "guardrail": "passed",
+    "checks": {
+      "efficiency": true,
+      "baselineL4": true,
+      "serviceGap": true,
+      "newDeadlock": true,
+      "zeroWheatRegression": true
+    },
+    "finalStateSha256": "9035ba8cdb5379ddf03dbab0e0f648a070569850c84f201c40835f9bc1fe9356"
+  },
+  {
+    "seed": 5,
+    "exit": 0,
+    "seconds": 1526,
+    "stopReason": "target-scale-stable",
+    "tick": 315449,
+    "maxTicks": 1200000,
+    "simulationPassed": true,
+    "guardrail": "passed",
+    "checks": {
+      "efficiency": true,
+      "baselineL4": true,
+      "serviceGap": true,
+      "newDeadlock": true,
+      "zeroWheatRegression": true
+    },
+    "finalStateSha256": "b5a12465c0729c613aa0558da8fd9965a363ce8636dcf039b48ea66815109c91"
+  }
+]

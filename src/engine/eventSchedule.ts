@@ -27,13 +27,14 @@ import { FAMINE_RESPONSE_CONFIG } from "../content/chapterConfig";
 import { PLAGUE_BALANCE } from "../content/plagueConfig";
 import { CLOTH_OR_GRAIN_PETITION_ID, REORGANISATION_BALANCE } from "../content/reorganisationConfig";
 import { calendar, scenarioOf } from "./scenarioState";
+import { archetypeRules } from "./archetype";
 
 export const SEASON_TICKS = PRESSURE_BALANCE.seasonTicks;
 const SEASONS_PER_YEAR = BALANCE.TICKS_PER_YEAR / SEASON_TICKS;
 const SUMMER = 1;
 
 /** The schedule reads the seed and scenario; F0-C1's era events also read what arrived and the eras entered. */
-type EventWorld = Pick<GameState, "seed" | "scenarioId"> & Partial<Pick<GameState, "events" | "historicalEras" | "plague" | "reorganisation">>;
+type EventWorld = Pick<GameState, "seed" | "scenarioId"> & Partial<Pick<GameState, "events" | "historicalEras" | "plague" | "reorganisation" | "archetypeId">>;
 
 export function seasonIndexOf(tick: number): number {
   return Math.floor(tick / SEASON_TICKS);
@@ -261,7 +262,13 @@ function weatherHarvestYieldPermille(state: EventWorld, tick: number): number {
     const arrivalYear = Math.floor(season / SEASONS_PER_YEAR);
     if ((def.harvestYears ?? [0]).some(offset => arrivalYear + offset === yearIndex)) return def.harvestPermille;
   }
-  return weatherOfSeason(state, summerOfYearIndex(yearIndex)) === "wet" ? WET_SUMMER_HARVEST_PERMILLE : 1000;
+  // ARCH-1 (MA-4 ④): a flood-prone land loses its coefficient's share of the wet summer's loss (the fen more, the down less).
+  return weatherOfSeason(state, summerOfYearIndex(yearIndex)) === "wet" ? wetSummerHarvestPermille(state) : 1000;
+}
+
+function wetSummerHarvestPermille(state: EventWorld): number {
+  const flood = archetypeRules(state).floodPermille;
+  return flood === 1000 ? WET_SUMMER_HARVEST_PERMILLE : Math.max(0, 1000 - Math.round((1000 - WET_SUMMER_HARVEST_PERMILLE) * flood / 1000));
 }
 
 /**
