@@ -129,13 +129,16 @@ export function drawCroppedWorldSprite(
   destination: SpriteCropRect,
   snap = true,
   smoothing = false,
+  transform?: CanvasTransform,
 ): void {
-  const transform = context.getTransform();
-  const origin = snap ? snapPointToDevicePixel(destination, transform) : destination;
-  const scaleX = Math.hypot(transform.a, transform.b);
-  const scaleY = Math.hypot(transform.c, transform.d);
-  const width = snap && scaleX > 0 ? Math.round(destination.width * scaleX) / scaleX : destination.width;
-  const height = snap && scaleY > 0 ? Math.round(destination.height * scaleY) / scaleY : destination.height;
+  // SMOOTH-2R: only a snapped blit needs the transform; `transform` (the context's current one, when the caller holds
+  // it) spares the DOMMatrix each getTransform() allocates.
+  const t = snap ? transform ?? context.getTransform() : null;
+  const origin = t === null ? destination : snapPointToDevicePixel(destination, t);
+  const scaleX = t === null ? 0 : Math.hypot(t.a, t.b);
+  const scaleY = t === null ? 0 : Math.hypot(t.c, t.d);
+  const width = scaleX > 0 ? Math.round(destination.width * scaleX) / scaleX : destination.width;
+  const height = scaleY > 0 ? Math.round(destination.height * scaleY) / scaleY : destination.height;
   context.save();
   try {
     context.imageSmoothingEnabled = smoothing;

@@ -31,7 +31,7 @@ import { drawBuildingOverlays } from "./buildingOverlays";
 import { drawFarmsteadSprite } from "./farmsteadArt";
 import { drawFarmProp } from "./farmProps";
 import { drawBody, drawLodBlock, drawRoof } from "./buildingFallbackShapes";
-import { applyInkOutline, snapToPixel } from "./style";
+import { applyInkOutline, snapToPixel, type CanvasTransform } from "./style";
 import type { ObjectRenderViewMode } from "./objectRenderViewMode";
 import { OBJECT_OUTLINE_ALPHA } from "./occlusionModel";
 import { drawHouseRoofSmoke, drawWorkFireSmoke, smokeTimeMs } from "./roofSmoke";
@@ -49,7 +49,8 @@ type ObjectRenderInput = {
   readonly nowMs?: number;
   readonly hoveredTile?: TileCoordinate | null;
   readonly selectionMode?: boolean;
-  readonly viewMode?: ObjectRenderViewMode;
+  // SMOOTH-2R `transform`: the context's transform as the frame set it (drawObjectRenderItems reads it once), for walkers.
+  readonly viewMode?: ObjectRenderViewMode; readonly transform?: CanvasTransform | undefined;
 };
 
 type Point = { readonly x: number; readonly y: number };
@@ -89,7 +90,7 @@ export function drawBuildings(
         spriteOptions, season,
       });
     } else if (item.kind === "walker") {
-      drawWalker(context, item.walker, input.zoom, input.viewMode ?? "normal", input.state);
+      drawWalker(context, item.walker, input.zoom, input.viewMode ?? "normal", input.state, input.transform);
     } else if (item.kind === "zone_prop") {
       if ((input.viewMode ?? "normal") === "normal") drawZoneProp(context, item.prop, season);
     } else if (item.kind === "farm_prop") {
