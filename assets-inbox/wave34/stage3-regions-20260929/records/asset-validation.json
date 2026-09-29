@@ -1,0 +1,62 @@
+{
+  "assets": 4,
+  "checks": 1,
+  "csvRows": 4,
+  "csvColumns": 27,
+  "csvRoundtrip": true,
+  "preservedOriginal28": true,
+  "validation": [
+    {
+      "id": "drain/drain_stage3_drying_summer_5x5-v3",
+      "width": 640,
+      "height": 320,
+      "pivot": [
+        320,
+        160
+      ],
+      "nontransparentOutside": 0,
+      "transparentInside": 0,
+      "rectangularRepeatTest": "not applicable; never repeat",
+      "pass": true
+    },
+    {
+      "id": "drain/drain_stage3_drying_winter_5x5-v3",
+      "width": 640,
+      "height": 320,
+      "pivot": [
+        320,
+        160
+      ],
+      "nontransparentOutside": 0,
+      "transparentInside": 0,
+      "rectangularRepeatTest": "not applicable; never repeat",
+      "pass": true
+    },
+    {
+      "id": "drain/drain_stage3_drying_summer_3x3-v3",
+      "width": 384,
+      "height": 192,
+      "pivot": [
+        192,
+        96
+      ],
+      "nontransparentOutside": 0,
+      "transparentInside": 0,
+      "rectangularRepeatTest": "not applicable; never repeat",
+      "pass": true
+    },
+    {
+      "id": "drain/drain_stage3_drying_winter_3x3-v3",
+      "width": 384,
+      "height": 192,
+      "pivot": [
+        192,
+        96
+      ],
+      "nontransparentOutside": 0,
+      "transparentInside": 0,
+      "rectangularRepeatTest": "not applicable; never repeat",
+      "pass": true
+    }
+  ]
+}

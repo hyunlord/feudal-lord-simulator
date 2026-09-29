@@ -1,0 +1,328 @@
+{
+  "inputs": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_summer_a-v2.png",
+      "sha256": "68e3b98c6b3bd76c04b12d568613d8e156f44a24d81b61b592a96571171bd3d8"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/decals/fen_pool_c-v1.png",
+      "sha256": "a1f92ac806e45991d68a4174a369fcce49710d37d69720985a3242252e560bec"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/decals/fen_pool_b-v1.png",
+      "sha256": "47c76ae3f6ed2a86f59321b723c3f59cf2a80be506ddb31de6f6a773c7ed8cc3"
+    },
+    {
+      "path": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage1_staked_summer-v1.png",
+      "sha256": "f091a1952228015ff1a6c98e86874d2d405048065329bb96a9da4dee14deaa50"
+    },
+    {
+      "path": "/tmp/astra-wave34-candidates-20260929/props/drain_earth_cart-v1.png",
+      "sha256": "b89283c7df2c731c6db9e191031ed4fed9a6c7159d2bbc3f54b0dff4464d7d76"
+    },
+    {
+      "path": "/tmp/astra-wave34-candidates-20260929/props/drain_soil_heap-v1.png",
+      "sha256": "1da347896fa07f6504098c19b280acc701d2c4598eab9726f0345205c56fbde6"
+    },
+    {
+      "path": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage2_ditched_summer-v1.png",
+      "sha256": "6d97f3c9c1d42cbad02b5aa7ebde9a312199883b02d0a06f62ffee7b71a4fa92"
+    },
+    {
+      "path": "/tmp/astra-wave34-candidates-20260929/props/drain_sluice-v1.png",
+      "sha256": "3723b8e196b76ad77ab81e1c81a69e4cc02041b7c892548547f8dbb5ec2c2ad5"
+    },
+    {
+      "path": "/tmp/astra-wave34-stage3-regions-candidates-20260929/drain/drain_stage3_drying_summer_5x5-v3.png",
+      "sha256": "579d4f3b08dca8b363037782a56befb0471da38efde9d9ce8a3251688cb8cd0d"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+      "sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288"
+    },
+    {
+      "path": "/tmp/astra-wave34-candidates-20260929/drain/drain_done_edge_summer-v1.png",
+      "sha256": "a1e74a7f1458bc4e83e1f5828d5b75dab0cbae81436b4962a996dd7071b0e9b1"
+    },
+    {
+      "path": "/tmp/astra-wave34-candidates-20260929/props/drain_plank_bridge-v1.png",
+      "sha256": "cadb5bae967e2ca9319e0b7fb01957c0c3885a314a70ebc04a4b82e2b5bdd5ce"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_winter_a-v2.png",
+      "sha256": "cec139c429ce8b6961435f50a6bf12d5be657f48fd24e23a8384ef0bc6c0d5fc"
+    },
+    {
+      "path": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage1_staked_winter-v1.png",
+      "sha256": "d794cf354a2e5ee51483a976ccdc88dbd8ac4005af45111f8a5cf00aa7a9a706"
+    },
+    {
+      "path": "/tmp/astra-wave34-candidates-20260929/drain/drain_stage2_ditched_winter-v1.png",
+      "sha256": "55286779741b3bff8004e8c0976e4b900c6596d3a863fa207b4c90402bb3ca6e"
+    },
+    {
+      "path": "/tmp/astra-wave34-stage3-regions-candidates-20260929/drain/drain_stage3_drying_winter_5x5-v3.png",
+      "sha256": "78a6640c214e628b318eff2f906228d18593794112b63e273ce68ba4cf0399d2"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/terrain/grass_winter_fill-v1.png",
+      "sha256": "fb3944c40dde9679ff08f5b6c019e57af53e5814e743e31176f00627de41c052"
+    },
+    {
+      "path": "/tmp/astra-wave34-candidates-20260929/drain/drain_done_edge_winter-v1.png",
+      "sha256": "9bef7a0ccad60762736006e752bbd65c100362aa80faa8617dbd9484b5edaefc"
+    },
+    {
+      "path": "/tmp/astra-wave34-stage3-regions-candidates-20260929/drain/drain_stage3_drying_summer_3x3-v3.png",
+      "sha256": "17eb2e5fd922280b1a13807c9bd0b30a999b9cdc42f548bff9528d4798a84fe6"
+    },
+    {
+      "path": "/tmp/astra-wave34-stage3-regions-candidates-20260929/drain/drain_stage3_drying_winter_3x3-v3.png",
+      "sha256": "5deb59892c8cce82fd1bb248825b1b121e69004cf6d56a3f00c4b5338fdcaae0"
+    }
+  ],
+  "records": [
+    {
+      "n": 5,
+      "season": "summer",
+      "stage": 1,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_summer_a-v2.png",
+      "region": null,
+      "overlayCount": 16,
+      "pondCount": 5,
+      "ditchOffsets": [
+        -1,
+        1
+      ],
+      "stage2Transform": null,
+      "stage3Placement": null
+    },
+    {
+      "n": 5,
+      "season": "summer",
+      "stage": 2,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_summer_a-v2.png",
+      "region": null,
+      "overlayCount": 10,
+      "pondCount": 3,
+      "ditchOffsets": [
+        -1,
+        1
+      ],
+      "stage2Transform": "horizontal flip per sprite; constant u channels / +0.5 slope",
+      "stage3Placement": null
+    },
+    {
+      "n": 5,
+      "season": "summer",
+      "stage": 3,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_summer_a-v2.png",
+      "region": "/tmp/astra-wave34-stage3-regions-candidates-20260929/drain/drain_stage3_drying_summer_5x5-v3.png",
+      "overlayCount": 1,
+      "pondCount": 0,
+      "ditchOffsets": [
+        -1,
+        1
+      ],
+      "stage2Transform": null,
+      "stage3Placement": "one whole-region drawImage at 1:1 source pixels"
+    },
+    {
+      "n": 5,
+      "season": "summer",
+      "stage": 4,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+      "region": null,
+      "overlayCount": 0,
+      "pondCount": 0,
+      "ditchOffsets": [
+        -1,
+        1
+      ],
+      "stage2Transform": null,
+      "stage3Placement": null
+    },
+    {
+      "n": 5,
+      "season": "winter",
+      "stage": 1,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_winter_a-v2.png",
+      "region": null,
+      "overlayCount": 16,
+      "pondCount": 5,
+      "ditchOffsets": [
+        -1,
+        1
+      ],
+      "stage2Transform": null,
+      "stage3Placement": null
+    },
+    {
+      "n": 5,
+      "season": "winter",
+      "stage": 2,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_winter_a-v2.png",
+      "region": null,
+      "overlayCount": 10,
+      "pondCount": 3,
+      "ditchOffsets": [
+        -1,
+        1
+      ],
+      "stage2Transform": "horizontal flip per sprite; constant u channels / +0.5 slope",
+      "stage3Placement": null
+    },
+    {
+      "n": 5,
+      "season": "winter",
+      "stage": 3,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_winter_a-v2.png",
+      "region": "/tmp/astra-wave34-stage3-regions-candidates-20260929/drain/drain_stage3_drying_winter_5x5-v3.png",
+      "overlayCount": 1,
+      "pondCount": 0,
+      "ditchOffsets": [
+        -1,
+        1
+      ],
+      "stage2Transform": null,
+      "stage3Placement": "one whole-region drawImage at 1:1 source pixels"
+    },
+    {
+      "n": 5,
+      "season": "winter",
+      "stage": 4,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/terrain/grass_winter_fill-v1.png",
+      "region": null,
+      "overlayCount": 0,
+      "pondCount": 0,
+      "ditchOffsets": [
+        -1,
+        1
+      ],
+      "stage2Transform": null,
+      "stage3Placement": null
+    },
+    {
+      "n": 3,
+      "season": "summer",
+      "stage": 1,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_summer_a-v2.png",
+      "region": null,
+      "overlayCount": 8,
+      "pondCount": 5,
+      "ditchOffsets": [
+        -0.5,
+        0.5
+      ],
+      "stage2Transform": null,
+      "stage3Placement": null
+    },
+    {
+      "n": 3,
+      "season": "summer",
+      "stage": 2,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_summer_a-v2.png",
+      "region": null,
+      "overlayCount": 6,
+      "pondCount": 3,
+      "ditchOffsets": [
+        -0.5,
+        0.5
+      ],
+      "stage2Transform": "horizontal flip per sprite; constant u channels / +0.5 slope",
+      "stage3Placement": null
+    },
+    {
+      "n": 3,
+      "season": "summer",
+      "stage": 3,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_summer_a-v2.png",
+      "region": "/tmp/astra-wave34-stage3-regions-candidates-20260929/drain/drain_stage3_drying_summer_3x3-v3.png",
+      "overlayCount": 1,
+      "pondCount": 0,
+      "ditchOffsets": [
+        -0.5,
+        0.5
+      ],
+      "stage2Transform": null,
+      "stage3Placement": "one whole-region drawImage at 1:1 source pixels"
+    },
+    {
+      "n": 3,
+      "season": "summer",
+      "stage": 4,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+      "region": null,
+      "overlayCount": 0,
+      "pondCount": 0,
+      "ditchOffsets": [
+        -0.5,
+        0.5
+      ],
+      "stage2Transform": null,
+      "stage3Placement": null
+    },
+    {
+      "n": 3,
+      "season": "winter",
+      "stage": 1,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_winter_a-v2.png",
+      "region": null,
+      "overlayCount": 8,
+      "pondCount": 5,
+      "ditchOffsets": [
+        -0.5,
+        0.5
+      ],
+      "stage2Transform": null,
+      "stage3Placement": null
+    },
+    {
+      "n": 3,
+      "season": "winter",
+      "stage": 2,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_winter_a-v2.png",
+      "region": null,
+      "overlayCount": 6,
+      "pondCount": 3,
+      "ditchOffsets": [
+        -0.5,
+        0.5
+      ],
+      "stage2Transform": "horizontal flip per sprite; constant u channels / +0.5 slope",
+      "stage3Placement": null
+    },
+    {
+      "n": 3,
+      "season": "winter",
+      "stage": 3,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/fen_winter_a-v2.png",
+      "region": "/tmp/astra-wave34-stage3-regions-candidates-20260929/drain/drain_stage3_drying_winter_3x3-v3.png",
+      "overlayCount": 1,
+      "pondCount": 0,
+      "ditchOffsets": [
+        -0.5,
+        0.5
+      ],
+      "stage2Transform": null,
+      "stage3Placement": "one whole-region drawImage at 1:1 source pixels"
+    },
+    {
+      "n": 3,
+      "season": "winter",
+      "stage": 4,
+      "fill": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/terrain/grass_winter_fill-v1.png",
+      "region": null,
+      "overlayCount": 0,
+      "pondCount": 0,
+      "ditchOffsets": [
+        -0.5,
+        0.5
+      ],
+      "stage2Transform": null,
+      "stage3Placement": null
+    }
+  ],
+  "file": "checks/01-region-drainage-sequence.png",
+  "sha256": "436949b28b51d695fddc94125025c99e80ae9794bc3dbfce643bd7019ae8a2ea"
+}
