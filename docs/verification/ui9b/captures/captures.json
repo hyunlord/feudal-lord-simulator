@@ -1,0 +1,148 @@
+{
+ "arms": {
+  "house": {
+   "name": "de Fauconval",
+   "key": "knightly.gules.per_pale_indented.vert...fleur_de_lis.or",
+   "royal": false
+  },
+  "factions": [
+   {
+    "id": "overlord",
+    "key": "knightly.vert...pale.or..",
+    "royal": false
+   },
+   {
+    "id": "crown",
+    "kind": "royal"
+   },
+   {
+    "id": "neighbour_1",
+    "key": "heater.azure.per_bend.vert...crescent.or",
+    "royal": false
+   },
+   {
+    "id": "neighbour_2",
+    "key": "knightly.azure.per_pale_indented.sable...crescent.or",
+    "royal": false
+   },
+   {
+    "id": "bishop",
+    "key": "rounded.azure.per_pale_indented.vert...tower.argent",
+    "royal": false
+   },
+   {
+    "id": "merchant_house_1",
+    "kind": "merchant"
+   },
+   {
+    "id": "merchant_house_2",
+    "kind": "merchant"
+   },
+   {
+    "id": "town",
+    "key": "knightly.sable.per_bend_sinister.azure...rose.argent",
+    "royal": false
+   },
+   {
+    "id": "commons",
+    "key": "knightly.azure.per_fess.gules...fish.or",
+    "royal": false
+   }
+  ]
+ },
+ "p1": {
+  "page": [
+   353,
+   62,
+   927,
+   780
+  ],
+  "cell": [
+   645,
+   633,
+   886,
+   732
+  ],
+  "timeline": [
+   645,
+   536,
+   886,
+   629
+  ],
+  "inside": true,
+  "scrolls": true,
+  "minFont": 12,
+  "lines": [
+   "압력 합계: 50",
+   "50 이상이면 징수원을 쫓는다",
+   "직접 징수 +40",
+   "직물 전문화 +10",
+   "소문 결과: 징수원을 쫓았습니다"
+  ]
+ },
+ "o3-chapter3-opening-attempts": 1,
+ "o3-chapter3-opening": {
+  "chapter": "3",
+  "title": "제3장 · 흑사병의 그늘 · 1348–1364",
+  "art": true,
+  "line": "항구에서 열병 소문이 올라옵니다. 역병이 지나가면 일손이 모자라고, 남은 이들이 값을 부릅니다",
+  "goals": [
+   "역병에서 회복해 사람의 70 %를 되찾는다"
+  ],
+  "start": "제3장 시작"
+ },
+ "o4-chapter4-opening-attempts": 2,
+ "o4-chapter4-opening": {
+  "chapter": "4",
+  "title": "제4장 · 재편 · 1362–1400",
+  "art": true,
+  "line": "역병이 지나간 도시가 부유해졌습니다. 이제 도시는 영주에게 권리를 요구합니다",
+  "goals": [
+   "도시에 자치 특허를 내주거나 거부한다"
+  ],
+  "start": "제4장 시작"
+ },
+ "o5-chapter5-opening-attempts": 2,
+ "o5-chapter5-opening": {
+  "chapter": "5",
+  "title": "제5장 · 자치와 유산 · 1400–1450",
+  "art": true,
+  "line": "도시가 제 시장과 인장을 원합니다. 늙은 영주는 무엇을 남길지 정해야 합니다",
+  "goals": [
+   "legacy"
+  ],
+  "start": "제5장 시작"
+ },
+ "o6": [
+  {
+   "text": "1382년 여름5장이 시작되었다그때 지도",
+   "art": "chapter5_intro"
+  },
+  {
+   "text": "1362년 봄4장이 시작되었다그때 지도",
+   "art": "chapter4_intro"
+  },
+  {
+   "text": "1340년 봄3장이 시작되었다그때 지도",
+   "art": "chapter3_intro"
+  }
+ ],
+ "f1-before": {
+  "farm": [
+   45,
+   50
+  ],
+  "tick": 277100
+ },
+ "f1-after": {
+  "farm": [
+   45,
+   50
+  ],
+  "tick": 277100
+ },
+ "errors": [
+  "o4-chapter4-opening attempt 1: TimeoutError: locator.waitFor: Timeout 120000ms exceeded.\nCall log:\n  - waiting for locator('.chronicle-page') to be vis {\"welcome\":0,\"dialogs\":[],\"chips\":0,\"calendar\":\"1362년 봄\",\"paused\":\"일시 정지\"}",
+  "o5-chapter5-opening attempt 1: TimeoutError: locator.waitFor: Timeout 120000ms exceeded.\nCall log:\n  - waiting for locator('.chronicle-page') to be vis {\"welcome\":0,\"dialogs\":[],\"chips\":0,\"calendar\":\"1382년 여름\",\"paused\":\"일시 정지\"}"
+ ]
+}
