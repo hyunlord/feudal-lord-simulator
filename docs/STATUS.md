@@ -11,7 +11,7 @@
   - 사건 사슬(Wave 21 5장과 1:1): 시장 선출 요구 → 국왕 과세 사절 → 가문 상속 → 도시 인장 → 특허 날인(또는 거부 뒤 반발) → 가문 퇴거/잔류 → 유산 기록 봉인 → 1450 여름 마지막 장날(유산 판정, 5장 끝 = 캠페인 승리). 박자: 첫 결정은 5장 시작 뒤 2년 안, 상속 1400·유산 1440부터.
   - 결정 넷(청원): 자치 특허 수여/가문 지배(4장 결과·도시 힘·반발로 대가가 달라짐), 후계자(맏아들/딸의 남편/조카 — 가족 실제 인물, 없는 후보는 답이 없음), 국왕 과세 납부/청원, 유산 하나(도시/가문/교회).
   - 유산 판정: 세 축(도시·가문·교회) 점수 + 고른 유산 → 결말 여섯(원장 인용 문장). 연대기 책 `campaignChronicle`(장 다섯·가문 계보·세력 아홉·유산)과 한국어 내보내기.
-  - 관문: L1~L12, 비교표 결말 5종(`free_borough`·`house_remembered`·`merchants_chantry`·`house_seat`·`lords_town`), 봇 5장 완주 5/5(1450), 사람 경로 5장 첫 결정(가드레일 옆 6/6), 가드레일 `26ae3da` 5/5(끝 상태 해시 다섯 = `baseline-7630a2a`, 1~4장 무변화), 저장 v29, 깨끗한 클론 `86f3f73` 3,622/3,622·build.
+  - 관문: L1~L12, 비교표 결말 5종(`free_borough`·`house_remembered`·`merchants_chantry`·`house_seat`·`lords_town`), 봇 5장 완주 5/5(1450), 사람 경로 5장 첫 결정(가드레일 옆 6/6), 가드레일 `26ae3da` 5/5(끝 상태 해시 다섯 = `baseline-7630a2a`, 1~4장 무변화), 저장 v29, 깨끗한 클론 `86f3f73` 3,622/3,622·build, PLAGUE-b 병합 뒤 회귀 `fd93d0c` 3,624/3,624.
   - 판정·다음 후보: 1384~1400 빈 16년(4장이 1382에 끝남), `pilgrim_town`은 봇 도시에서 안 나옴(교회 축 최대 56), 4장 길드 결성 기록 누락(명령 시점 기록), 가장 없는 영주 가문(LN-9).
   - 넘길 것(렌더): 결정 카드 넷(`petition.options ?? def.responses`로 답 거르기, `legacyDecisionForecast`), 사건 여덟(`legacyForecast`·원장 `legacy.*` 그림 키), 후계자 후보(`heirCandidates`), 유산 점수·결말(`legacyScores`·`legacyEnding`), 연대기 책(`campaignChronicle`·`campaignChronicleText`, 캠페인 끝 그림), 권리 `mayoralty`·`borough_seal`, 장부 `royal_subsidy`·`succession_relief`·`legacy_endowment`, 가문 퇴거 뒤 빈 영주관, 5장 목표 `legacy`·캠페인 끝.
 
