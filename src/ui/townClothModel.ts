@@ -24,12 +24,13 @@ export function townClothView(state: GameState): TownClothView | null {
   const ulnage = amountFor("ulnage");
   const fullingToll = amountFor("fulling_toll");
 
+  const bn = TOWN_CLOTH_COPY.buildingNames;
   const buildingParts = [
-    ...(cloth.buildings.pastoral_farm > 0 ? [TOWN_CLOTH_COPY.buildingCount("목축 농장", cloth.buildings.pastoral_farm)] : []),
-    ...(cloth.buildings.weaver_house > 0 ? [TOWN_CLOTH_COPY.buildingCount("직조공 집", cloth.buildings.weaver_house)] : []),
-    ...(cloth.buildings.fulling_mill > 0 ? [TOWN_CLOTH_COPY.buildingCount("축융 방앗간", cloth.buildings.fulling_mill)] : []),
-    ...(cloth.buildings.dyehouse > 0 ? [TOWN_CLOTH_COPY.buildingCount("염색집", cloth.buildings.dyehouse)] : []),
-    ...(cloth.buildings.tenter_yard > 0 ? [TOWN_CLOTH_COPY.buildingCount("텐터 틀", cloth.buildings.tenter_yard)] : []),
+    ...(cloth.buildings.pastoral_farm > 0 ? [TOWN_CLOTH_COPY.buildingCount(bn.pastoral_farm, cloth.buildings.pastoral_farm)] : []),
+    ...(cloth.buildings.weaver_house > 0 ? [TOWN_CLOTH_COPY.buildingCount(bn.weaver_house, cloth.buildings.weaver_house)] : []),
+    ...(cloth.buildings.fulling_mill > 0 ? [TOWN_CLOTH_COPY.buildingCount(bn.fulling_mill, cloth.buildings.fulling_mill)] : []),
+    ...(cloth.buildings.dyehouse > 0 ? [TOWN_CLOTH_COPY.buildingCount(bn.dyehouse, cloth.buildings.dyehouse)] : []),
+    ...(cloth.buildings.tenter_yard > 0 ? [TOWN_CLOTH_COPY.buildingCount(bn.tenter_yard, cloth.buildings.tenter_yard)] : []),
   ];
 
   return {
