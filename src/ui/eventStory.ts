@@ -9,6 +9,7 @@ import { wetSummer } from "../render/wetSummer";
 import { beaconSpot, raidQuaySpot } from "../render/warWorldProps";
 import { EVENT_STORY_COPY } from "./eventStoryCopy.ko";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
+import { reorganisationOf } from "../engine/reorganisation";
 import { beaconLit, conscriptsAway, warForecast, warOf } from "../engine/war";
 import { pence } from "./hud/hudCopy.ko";
 import { petitionPresentation } from "./petitionPresentation";
@@ -24,7 +25,10 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   | "war_messenger" | "beacon" | "raid" | "raid_aftermath" | "conscripts_away" | "stone_wall"
   // UI-8: nine plague beats (F3-A PL-1…PL-10).
   | "plague_rumour" | "plague_arrival" | "plague_priest_death" | "plague_new_graves" | "plague_empty_streets"
-  | "plague_abandoned_fields" | "plague_ordinance" | "plague_resettlement" | "plague_second";
+  | "plague_abandoned_fields" | "plague_ordinance" | "plague_resettlement" | "plague_second"
+  // UI-9: seven reorganisation informational beats (F4-A RG-1…RG-9; guild/charter petition beats share the "petition" kind).
+  | "reorg_wage_competition" | "reorg_textile_street" | "reorg_alehouse" | "reorg_petitions_surge"
+  | "reorg_overlord_warning" | "reorg_poll_tax" | "reorg_rebellion";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
@@ -116,15 +120,19 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
     const presentation = petitionPresentation(state, petition);
     const war = WAR_DEMAND_ART[petition.defId];
     const plaguePetition = PLAGUE_DEMAND_ART[petition.defId];
-    beats.push({ id: `petition:${petition.id}`, kind: "petition", illustration: war ?? plaguePetition ?? "event_market_petition", tile: keepTile(state), decision: "petition",
-      title: war === undefined && plaguePetition === undefined && petition.defId === "market_charter" ? copy.petition.title : presentation.title,
-      line: war === undefined && plaguePetition === undefined && petition.defId === "market_charter" ? copy.petition.line : presentation.demand,
+    const reorgPetition = REORG_DEMAND_ART[petition.defId];
+    beats.push({ id: `petition:${petition.id}`, kind: "petition",
+      illustration: war ?? plaguePetition ?? reorgPetition ?? "event_market_petition", tile: keepTile(state), decision: "petition",
+      title: war === undefined && plaguePetition === undefined && reorgPetition === undefined && petition.defId === "market_charter" ? copy.petition.title : presentation.title,
+      line: war === undefined && plaguePetition === undefined && reorgPetition === undefined && petition.defId === "market_charter" ? copy.petition.line : presentation.demand,
       advice: petition.petitioner === "crown" ? copy.war.demand.advice
         : plaguePetition !== undefined ? copy.plague.demand.advice
+        : reorgPetition !== undefined ? copy.reorg.demand.advice
         : copy.petition.advice, facts: [] });
   }
   beats.push(...warBeats(state));
   beats.push(...plagueBeats(state));
+  beats.push(...reorgBeats(state));
   const right = state.politics?.rights?.[0];
   if (right !== undefined && state.tick - right.grantedTick < SEASON) beats.push({ id: `charter:${right.id}`, kind: "market_charter", illustration: "event_market_charter", tile: marketTile(state), decision: null,
     title: copy.charter.title, line: copy.charter.line, advice: copy.charter.advice, facts: [] });
@@ -149,6 +157,11 @@ const WAR_DEMAND_ART: Readonly<Record<string, StoryIllustration>> = {
 const PLAGUE_DEMAND_ART: Readonly<Record<string, StoryIllustration>> = {
   vacant_priest: "ch3_event_priest_death", wages: "ch3_event_wage_demand",
   land_redistribution: "ch3_event_abandoned_fields", cash_rent: "ch3_event_resettlement",
+};
+/** UI-9: the reorganisation petitions' chip illustrations (Wave 21 event art; the card shows the Wave 21 decision picture). */
+const REORG_DEMAND_ART: Readonly<Record<string, StoryIllustration>> = {
+  guild_charter: "ch4_event_guild_foundation", tax_collection: "ch4_event_petitions",
+  cloth_or_grain: "ch4_event_textile_growth", borough_charter: "ch4_event_autonomy_request",
 };
 
 /**
@@ -260,6 +273,72 @@ function plagueBeats(state: GameState): readonly StoryBeat[] {
     beats.push({ id: `plague_second:${plague.second.arrivalTick}`, kind: "plague_second",
       illustration: "ch3_event_new_graves", tile: keepTile(state), decision: null, title: copy.second.title,
       line: copy.second.line, advice: copy.second.advice, facts: [copy.second.dead(plague.second.dead)] });
+  }
+
+  return beats;
+}
+
+/**
+ * UI-9 (F4-A RG-1…RG-9): the reorganisation's informational beats — seven cards that are not petitions.
+ * Guild demand and autonomy request show as petition beats (the open petition) rather than here.
+ */
+function reorgBeats(state: GameState): readonly StoryBeat[] {
+  const reorg = reorganisationOf(state);
+  if (reorg === undefined) return [];
+  const copy = EVENT_STORY_COPY.reorg;
+  const beats: StoryBeat[] = [];
+
+  // 1. 임금 경쟁 (wage competition): within 4 seasons of wageCompetitionTick.
+  if (reorg.wageCompetitionTick !== undefined && state.tick - reorg.wageCompetitionTick < 4 * SEASON) {
+    beats.push({ id: `reorg_wage:${reorg.wageCompetitionTick}`, kind: "reorg_wage_competition",
+      illustration: "ch4_event_wage_competition", tile: null, decision: null, title: copy.wageCompetition.title,
+      line: copy.wageCompetition.line, advice: copy.wageCompetition.advice,
+      facts: reorg.wageLeavers > 0 ? [copy.wageCompetition.leavers(reorg.wageLeavers)] : [] });
+  }
+
+  // 2. 직물 거리 (textile street): within 2 seasons of textileStreetTick.
+  if (reorg.textileStreetTick !== undefined && state.tick - reorg.textileStreetTick < 2 * SEASON) {
+    beats.push({ id: `reorg_textile:${reorg.textileStreetTick}`, kind: "reorg_textile_street",
+      illustration: "ch4_event_textile_growth", tile: null, decision: null, title: copy.textileStreet.title,
+      line: copy.textileStreet.line, advice: copy.textileStreet.advice, facts: [] });
+  }
+
+  // 3. 선술집 성황 (alehouse boom): within 2 seasons of alehouseBoomTick.
+  if (reorg.alehouseBoomTick !== undefined && state.tick - reorg.alehouseBoomTick < 2 * SEASON) {
+    beats.push({ id: `reorg_alehouse:${reorg.alehouseBoomTick}`, kind: "reorg_alehouse",
+      illustration: "ch4_event_alehouse", tile: null, decision: null, title: copy.alehouseBoom.title,
+      line: copy.alehouseBoom.line, advice: copy.alehouseBoom.advice, facts: [] });
+  }
+
+  // 4. 청원 물결 (petitions surge): within 2 seasons of surgeTick.
+  if (reorg.surgeTick !== undefined && state.tick - reorg.surgeTick < 2 * SEASON) {
+    beats.push({ id: `reorg_surge:${reorg.surgeTick}`, kind: "reorg_petitions_surge",
+      illustration: "ch4_event_petitions", tile: keepTile(state), decision: null, title: copy.petitionsSurge.title,
+      line: copy.petitionsSurge.line, advice: copy.petitionsSurge.advice, facts: [] });
+  }
+
+  // 5. 영주의 경고 (overlord warning): within 2 seasons of warningTick.
+  if (reorg.warningTick !== undefined && state.tick - reorg.warningTick < 2 * SEASON) {
+    beats.push({ id: `reorg_warning:${reorg.warningTick}`, kind: "reorg_overlord_warning",
+      illustration: "ch4_event_lord_warning", tile: keepTile(state), decision: null, title: copy.overlordWarning.title,
+      line: copy.overlordWarning.line, advice: copy.overlordWarning.advice, facts: [] });
+  }
+
+  // 6. 인두세 징수 (poll tax): while collections are happening and the rebellion has not occurred.
+  if (reorg.collections > 0 && reorg.rebellion === undefined) {
+    beats.push({ id: `reorg_poll:${reorg.startTick}`, kind: "reorg_poll_tax",
+      illustration: "ch4_event_petitions", tile: keepTile(state), decision: null, title: copy.pollTax.title,
+      line: copy.pollTax.line, advice: copy.pollTax.advice,
+      facts: reorg.pollTax > 0 ? [copy.pollTax.collected(pence(reorg.pollTax))] : [] });
+  }
+
+  // 7. 1381년 소요 (rebellion): within 2 seasons of the rebellion's tick.
+  if (reorg.rebellion !== undefined && state.tick - reorg.rebellion.tick < 2 * SEASON) {
+    const chased = reorg.rebellion.outcome === "chased";
+    beats.push({ id: `reorg_rebellion:${reorg.rebellion.tick}`, kind: "reorg_rebellion",
+      // The chase picture only when they were chased; a quiet rumour is the townsfolk talking (chronicleModel reorgRecordArt).
+      illustration: chased ? "ch4_event_rebellion_1381" : "ch4_event_petitions", tile: keepTile(state), decision: null, title: copy.rebellion.title,
+      line: chased ? copy.rebellion.chased : copy.rebellion.quiet, advice: copy.rebellion.advice, facts: [] });
   }
 
   return beats;

@@ -1,10 +1,11 @@
-import { CHAPTER_THREE, CHAPTER_TWO } from "../content/chapterConfig";
+import { CHAPTER_FOUR, CHAPTER_THREE, CHAPTER_TWO } from "../content/chapterConfig";
 import { scenarioById } from "../content/scenario/registry";
 import type { GameState } from "../engine/engine.types";
 import { WAVE21_IMAGES } from "../ui/wave21ArtManifest.generated";
 import { WAVE31_IMAGES } from "../ui/wave31ArtManifest.generated";
 import { WAVE9_IMAGES } from "./wave9ArtManifest.generated";
 import { WAVE17_WORLD_IMAGES } from "./wave17WorldManifest.generated";
+import { WAVE12_GUILDHALL_IMAGES } from "./wave12GuildhallManifest.generated";
 
 // BUDGET-1b (judgement 2026-09-28): the world art still loads in one go at the start, except the art of the campaign
 // chapters the game has not entered yet — that loads when the chapter begins. Presentation only (nothing is saved).
@@ -30,8 +31,12 @@ const urlsOf = <K extends string>(manifest: Readonly<Record<K, { readonly url: s
 export const CHAPTER_ART: readonly ChapterArt[] = [
   { chapter: CHAPTER_TWO.chapter, what: "the war's world props (Wave 17 world, the Wave 12 quay under the burning quay)", urls: urlsOf(WAVE17_WORLD_IMAGES) },
   { chapter: CHAPTER_TWO.chapter + 1, what: "the plague-shut houses (Wave 9; 1348, no draw path yet)", urls: urlsOf(WAVE9_IMAGES, key => key.startsWith("event_plague_shut_")) },
-  { chapter: CHAPTER_THREE.chapter, what: "Wave 21 chapter 3 illustrations (UI-8: decisions, events, chronicle, chapter-3 end)", urls: urlsOf(WAVE21_IMAGES) },
+  { chapter: CHAPTER_THREE.chapter, what: "Wave 21 chapter 3 illustrations (UI-8: decisions, events, chronicle, chapter-3 end)", urls: urlsOf(WAVE21_IMAGES, key => key.startsWith("ch3_")) },
   { chapter: CHAPTER_THREE.chapter, what: "Wave 31 chapter 3 opening (PLAGUE-b: the chronicle's chapter start, the opening screen)", urls: urlsOf(WAVE31_IMAGES, key => WAVE31_IMAGES[key].chapter === CHAPTER_THREE.chapter) },
+  // UI-9: chapter 4 reorganisation art (Wave 21 ch4_*: decision cards, event illustrations, chronicle scenes, chapter-4 end).
+  { chapter: CHAPTER_FOUR.chapter, what: "Wave 21 chapter 4 illustrations (UI-9: decisions, events, chronicle, chapter-4 end)", urls: urlsOf(WAVE21_IMAGES, key => key.startsWith("ch4_")) },
+  { chapter: CHAPTER_FOUR.chapter, what: "Wave 31 chapter 4 opening (UI-9: the chronicle's chapter start, the opening screen)", urls: urlsOf(WAVE31_IMAGES, key => WAVE31_IMAGES[key].chapter === CHAPTER_FOUR.chapter) },
+  { chapter: CHAPTER_FOUR.chapter, what: "Wave 12 guildhall world prop (UI-9: chapter 4 guild founded)", urls: urlsOf(WAVE12_GUILDHALL_IMAGES) },
 ];
 
 const CHAPTER_OF_URL: ReadonlyMap<string, number> = new Map(CHAPTER_ART.flatMap(entry => entry.urls.map(url => [url, entry.chapter] as const)));

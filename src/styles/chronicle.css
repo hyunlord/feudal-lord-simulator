@@ -152,8 +152,9 @@
 .chronicle-screen:is([data-view="factions"], [data-view="faction"]) { grid-template-rows: auto minmax(0, 1fr); }
 
 /* UI-6 faction tab: nine rows (kit buttons) and the world strip under them. */
+/* UI-9: grid-template-rows removed — tug-of-war strip is a conditional third row above the list. */
 .chronicle-page-body--factions { justify-items: stretch; }
-.chronicle-factions { display: grid; grid-template-rows: auto auto; align-content: start; gap: 8px; width: 100%; max-width: 1180px; margin: 0 auto; }
+.chronicle-factions { display: grid; align-content: start; gap: 8px; width: 100%; max-width: 1180px; margin: 0 auto; }
 .chronicle-factions-list { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
 .chronicle-factions-row { display: grid; width: 100%; min-height: 56px; padding: 4px 14px; box-sizing: border-box; align-items: center; gap: 14px; text-align: left;
   grid-template-columns: 48px minmax(0, 1.3fr) minmax(0, 1.4fr) auto minmax(0, 0.8fr); }
@@ -180,6 +181,26 @@
   background: color-mix(in srgb, var(--palette-vellum) 80%, transparent); border: 1px solid color-mix(in srgb, var(--palette-ink) 35%, transparent); }
 .chronicle-world-strip strong { font-size: 13px; }
 .chronicle-world-empty { margin: 0; font-size: 12px; }
+/* UI-9: influence bar inside the counts column of a faction row (RG-4). */
+.chronicle-factions-influence { display: grid; gap: 2px; min-width: 64px; }
+.chronicle-factions-influence-track { position: relative; height: 6px; border-radius: 3px;
+  background: color-mix(in srgb, var(--palette-ink) 15%, transparent); overflow: hidden; }
+.chronicle-factions-influence-fill { position: absolute; inset: 0 auto 0 0; border-radius: 3px;
+  background: var(--palette-gold); }
+.chronicle-factions-influence-value { font-size: 12px; font-weight: 700; }
+/* UI-9: tug-of-war strip above the faction list (RG-4). */
+.chronicle-factions-tug { display: grid; gap: 4px; padding: 6px 14px; border-radius: 4px;
+  background: color-mix(in srgb, var(--palette-vellum) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--palette-ink) 20%, transparent); }
+.chronicle-factions-tug-bar { position: relative; height: 16px; border-radius: 8px;
+  background: color-mix(in srgb, var(--palette-earth) 30%, transparent); overflow: hidden; }
+.chronicle-factions-tug-fill { position: absolute; inset: 0 auto 0 0; border-radius: 8px 0 0 8px;
+  background: var(--palette-sage); }
+.chronicle-factions-tug-warn { position: absolute; top: 0; bottom: 0; width: 2px;
+  transform: translateX(-50%); background: var(--palette-vermilion); pointer-events: none; }
+.chronicle-factions-tug-labels { display: flex; justify-content: space-between; font-size: 12px; }
+.chronicle-factions-tug-warn-label { font-weight: 700; color: var(--palette-vermilion); }
+.chronicle-factions-tug-alert { margin: 0; font-size: 12px; font-weight: 700; color: var(--palette-vermilion); }
 
 /* CHRON-2 faction page (frame_faction_page slots, placed in % of the page so they scale with it). */
 .chronicle-faction-band { position: absolute; left: 0; right: 0; background-repeat: no-repeat; pointer-events: none; }
@@ -203,6 +224,14 @@
 .chronicle-faction-date { font-weight: 700; margin-right: 6px; white-space: nowrap; }
 .chronicle-faction-record { display: block; width: 100%; min-height: 44px; padding: 4px 8px; box-sizing: border-box; text-align: left; font-size: 12px; line-height: 1.3; }
 .chronicle-faction-record-line { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+/* UI-9: revolt pressure section below the faction art frame (RG-8; commons only, from chapter 4). */
+.chronicle-faction-pressure { padding: 10px 14px; font-size: 13px; border-top: 1px solid color-mix(in srgb, var(--palette-ink) 20%, transparent); }
+.chronicle-faction-pressure h4 { margin: 0 0 4px; font-size: 13px; font-weight: 700; }
+.chronicle-faction-pressure p { margin: 2px 0; font-size: 12px; }
+.chronicle-faction-pressure-threshold { color: var(--palette-vermilion); font-weight: 600; }
+.chronicle-faction-pressure-outcome { font-style: italic; }
+.chronicle-faction-pressure ul { margin: 4px 0; padding-left: 16px; }
+.chronicle-faction-pressure li { font-size: 12px; }
 
 .app-shell .ledger-tab-list { display: flex; gap: 4px; }
 .ledger-tab--chronicle { margin-left: auto; font-weight: 700; }

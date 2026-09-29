@@ -3,4 +3,5 @@
 // `source` is the received JPEG in assets-inbox.
 export const WAVE31_IMAGES = {
   chapter3_intro: {"url": "assets/wave31/chapters/chapter3_intro.jpg", "width": 1920, "height": 1080, "chapter": 3, "source": "assets-inbox/wave31/candidates-20260929/assets/illustrations/chapter3_intro-v1.jpg"},
+  chapter4_intro: {"url": "assets/wave31/chapters/chapter4_intro.jpg", "width": 1920, "height": 1080, "chapter": 4, "source": "assets-inbox/wave31/candidates-20260929/assets/illustrations/chapter4_intro-v1.jpg"},
 } as const;

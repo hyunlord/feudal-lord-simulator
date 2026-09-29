@@ -13,21 +13,22 @@ const inbox = readFileSync("assets-inbox/INBOX_LEDGER.csv", "utf8");
 const ledger = readFileSync("docs/provenance/assets.csv", "utf8");
 const jpegSize = (bytes: Buffer) => { const sof = bytes.indexOf(Buffer.from([0xff, 0xc0])); return [bytes.readUInt16BE(sof + 7), bytes.readUInt16BE(sof + 5)]; };
 
-test("Wave 21: 19 chapter-3 illustrations as confirmed received PNGs in the inbox ledger", () => {
-  assert.equal(WAVE21_DERIVATIVES.length, 19);
-  assert.equal(Object.keys(WAVE21_IMAGES).length, 19);
+test("Wave 21: 19 chapter-3 and 19 chapter-4 illustrations (UI-8, UI-9) as confirmed received PNGs in the inbox ledger", () => {
+  assert.equal(WAVE21_DERIVATIVES.length, 38);
+  assert.equal(Object.keys(WAVE21_IMAGES).filter(id => id.startsWith("ch3_")).length, 19);
+  assert.equal(Object.keys(WAVE21_IMAGES).filter(id => id.startsWith("ch4_")).length, 19);
   for (const item of WAVE21_DERIVATIVES) {
     assert.ok(inbox.includes(sha256(readFileSync(item.source))), `${item.id}: sha256 matches INBOX_LEDGER`);
     assert.ok(ledger.includes(item.source), `${item.id}: provenance row in assets.csv`);
   }
 });
 
-test("Wave 21: JPEG derivatives match declared dimensions (decision 640×480, event 960×540, chronicle 384×384, chapter-3 end 1920×1080)", () => {
+test("Wave 21: JPEG derivatives match declared dimensions (decision 640×480, event 960×540, chronicle 384×384, chapter end 1920×1080)", () => {
   const expected = (id: string): [number, number] =>
-    id.startsWith("ch3_decision_") ? [640, 480]
-    : id.startsWith("ch3_event_") ? [960, 540]
-    : id === "ch3_ending" ? [1920, 1080]
-    : [384, 384]; // ch3_chronicle_*
+    /^ch[34]_decision_/.test(id) ? [640, 480]
+    : /^ch[34]_event_/.test(id) ? [960, 540]
+    : /^ch[34]_ending$/.test(id) ? [1920, 1080]
+    : [384, 384]; // ch3_chronicle_*, ch4_chronicle_*
   for (const item of WAVE21_DERIVATIVES) {
     assert.deepEqual(jpegSize(buildKeyartDerivative(item)), expected(item.id), item.id);
   }

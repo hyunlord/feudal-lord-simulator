@@ -1,0 +1,152 @@
+{
+  "status": "PASS",
+  "assets": [
+    {
+      "id": "1391-wool-staple",
+      "title": "양모 스테이플 이전",
+      "year": 1391,
+      "file": "assets/1391-wool-staple.png",
+      "prompt": "Use case: historical-scene. Create ONE standalone wide 16:9 opaque painted historical event illustration for a medieval city game. Reference images are STYLE references only: match the subdued natural earth colors, richly textured painterly detail, believable expressive people, warm plaster and weathered oak of Wave21. Do NOT copy their contact-sheet layout or frames. Scene: southern England in 1391, relocation of the wool staple trade. In the immediate foreground on an outdoor timber wharf, a customs official clearly presses a small seal stamp onto the tied closure of a large wool sack, with a second inspected sack bearing a simple round nontext emblem. Two merchants observe and discuss the consignment. Beside them porters carry bulky wool sacks up a sturdy gangplank into a moored medieval single-masted cog, making shipping activity prominent and unmistakable. Put the visible stamping hand, wool sacks, and loaders at readable foreground/middle scale; open river and modest timber-framed quay buildings behind. Clothing appropriate to late fourteenth-century England: wool tunics, hoods, caps, hose, modest merchant gowns; no modern dress. Painterly realism, muted ochre, warm gray, brown, faded moss green and burgundy, soft daylight. Maintain a single coherent scene edge to edge with no decorative border. No readable letters, words, numbers, labels, captions, watermark or heraldic lettering. No chimneys, brick houses, reflective modern glass, guns, modern ships, indoor paperwork scene or table-centered composition. Output one landscape image; keep central narrative safe for final 960x540 crop.",
+      "refs": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch4.jpg",
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch5.jpg",
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave31.jpg"
+      ],
+      "nativeOutput": "native/first/1391-wool-staple.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-7c69-7530-bb7a-eb769a0ced94 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-7c69-7530-bb7a-eb769a0ced94/exec-4909f559-d672-4187-b34a-6461012a1cc6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "postprocess": "Sharp resize 960x540 fit cover position centre, removeAlpha, PNG; no drawn or composited additions.",
+      "nativeSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "finalSize": {
+        "width": 960,
+        "height": 540
+      },
+      "status": "candidate",
+      "tool": "builtin image_gen",
+      "modelVersion": null,
+      "seed": "not exposed",
+      "visualQA": {
+        "inspected": true,
+        "coherentSingleScene": true,
+        "mainActionReadable": true,
+        "noLegibleTextObserved": true,
+        "noChimneysObserved": true,
+        "opaque": true,
+        "notes": "Stamping official, sacks, merchants and gangplank loaders clearly visible; small seal has ornamental nontext marks."
+      },
+      "sha256": "e7dbb927ce065c7ba838c254c9df84a0c18b003d3544fb1a3f8f24ad0b8f9ca4",
+      "nativeSha256": "7ac39afdb8fb47f51e787ea7fb4a978425180aa09a20bf44efe7fd6e3258ed18",
+      "width": 960,
+      "height": 540,
+      "model_version": "not exposed"
+    },
+    {
+      "id": "1394-guild-dispute",
+      "title": "길드와 상인 분쟁",
+      "year": 1394,
+      "file": "assets/1394-guild-dispute.png",
+      "prompt": "Use case: historical-scene. Create ONE standalone wide 16:9 opaque painted historical event illustration for a medieval city game. All supplied images are STYLE references only: follow Wave21's subdued earth colors, richly textured painterly treatment, expressive believable townspeople, warm plaster and dark oak architecture. Never reproduce a grid, montage, border or reference panel arrangement. Scene: southern England in 1394, a guild and merchant dispute OUTSIDE the guildhall on its broad stone entrance steps and adjoining open street. Two clearly opposing groups face each other in the foreground: working artisans in modest wool clothes and aprons on one side, prosperous merchants in restrained long wool gowns on the other. An artisan holds a fabric guild banner with ONLY a large simple crossed-tools symbol, entirely without text. Central speakers exchange tense open-hand gestures, others listen or gesture disagreement; readable expressions and distinct silhouettes. All hands are empty except the banner staff, no raised weapons, violence or fighting. The guildhall's warm plaster and weathered timber frame, low rubble stone base and plain clay-tile roof frame the steps; distant medieval street provides context, no chimneys anywhere. Painterly realism, soft daylight, muted ochre/brown/gray, faded green and burgundy cloth; match continuity with the supplied Wave21 art. One complete outdoor scene edge to edge, main action visible at foreground scale and centered safely for final 960x540. No indoor paperwork scene, tables, writing, documents, readable letters, numbers, captions, logos, watermark, or ornamental border. No modern items, guns, brick houses, reflective glass, or chimneys.",
+      "refs": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch4.jpg",
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch5.jpg",
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave31.jpg"
+      ],
+      "nativeOutput": "native/first/1394-guild-dispute.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-7c69-7530-bb7a-eb769a0ced94 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-7c69-7530-bb7a-eb769a0ced94/exec-24fd18e0-eb84-469f-97bf-86b1c23f0a59.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "postprocess": "Sharp resize 960x540 fit cover position centre, removeAlpha, PNG; no drawn or composited additions.",
+      "nativeSize": {
+        "width": 1672,
+        "height": 941
+      },
+      "finalSize": {
+        "width": 960,
+        "height": 540
+      },
+      "status": "candidate",
+      "tool": "builtin image_gen",
+      "modelVersion": null,
+      "seed": "not exposed",
+      "visualQA": {
+        "inspected": true,
+        "coherentSingleScene": true,
+        "mainActionReadable": true,
+        "noLegibleTextObserved": true,
+        "noChimneysObserved": true,
+        "opaque": true,
+        "notes": "Opposing artisan and merchant groups visible outdoors on steps; banner tool symbol; open-hand disagreement without violence."
+      },
+      "sha256": "1f17de00cefb3c83ef674be507a56b2e2da25a48e841735c32be5259ad2ab6a3",
+      "nativeSha256": "0ef00d2a11bade3f360eaed75ceb4fe76be491c9f28c67c78e3715ef7622da8a",
+      "width": 960,
+      "height": 540,
+      "model_version": "not exposed"
+    },
+    {
+      "id": "1394-market-fire",
+      "file": "assets/1394-market-fire.png",
+      "title": "시장 천막 화재",
+      "year": 1394,
+      "prompt": "Use case: historical-scene. Create ONE single continuous wide 16:9 narrative game illustration, opaque, intended final size 960x540. Use the supplied project-owned Wave21 montage images ONLY as painting style references: individually painted muted earth colors, fine natural brush texture, believable period people and architecture. Do NOT reproduce their grid, frames, collages, writing, or specific scenes.\nSubject: a small local market awning fire in southern England, year 1394. The single unmistakable main action is an active bucket brigade extinguishing a small fire at JUST ONE END of ONE canvas market awning. Only a narrow terminal corner of canvas has small orange flames and a little pale smoke; the remaining awning and all buildings are intact. In the foreground a townsman is visibly throwing an arc of water from a wooden bucket directly onto that small burning canvas corner. Behind him several adults are carrying full wooden buckets and passing them along; visible water and purposeful action read instantly. Keep all people safely away from flames, no injuries or casualties. The remainder of the marketplace is calm, safe, sunlit, undamaged.\nWide street-level view, entire scene without frames or borders. Half-timber houses, warm lime plaster, low rubble plinths, flat clay roof tiles, late 14th-century wool tunics, hoods, linen coifs. Muted ochre, brown, moss green, faded red and warm grey; restrained natural daylight. Handpainted historical illustration matching Wave21, not photography, not 3D. No text, letters, numerals, captions, modern objects, chimneys, chimney pots, blue glass, slate, brick houses, huge inferno, burning roofs, panic stampede, gore, or dead bodies.",
+      "refs": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch4.jpg",
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch5.jpg"
+      ],
+      "nativeOutput": "native/second/1394-market-fire.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-b3e4-7840-9999-925241eecd21/exec-945a0610-5fa7-4422-b874-846de91a1bdd.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-b3e4-7840-9999-925241eecd21 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-b3e4-7840-9999-925241eecd21/exec-945a0610-5fa7-4422-b874-846de91a1bdd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "postprocess": "Sharp resize 960x540 fit cover centre, flatten #ffffff, PNG; no drawn additions.",
+      "status": "candidate",
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": "not exposed",
+      "width": 960,
+      "height": 540,
+      "sha256": "f1adf5f261e920ceaa6c1ba893993ec7796d320297210c07be05281a2b8a1247",
+      "model_version": "not exposed"
+    },
+    {
+      "id": "1396-church-extension",
+      "file": "assets/1396-church-extension.png",
+      "title": "교회 본당 증축",
+      "year": 1396,
+      "prompt": "Use case: historical-scene. Create ONE single continuous wide 16:9 narrative game illustration, opaque, intended final size 960x540. Supplied project-owned Wave21 montage images are ONLY painting style references: handpainted muted earthy colors, natural fine brushwork, believable late-medieval people and architecture. Do NOT reproduce the grids, borders, separate panels, letters, or existing scenes.\nSubject: extension of a parish church NAVE in southern England, year 1396. Wide side view across an active church building site, construction taking most of the picture. Show the existing church nave joined directly to several new unfinished stone arch bays continuing its length. The new arches have clear curved wooden centering underneath the stone voussoirs, sturdy timber scaffolding with planks and diagonal braces. Show masons actually working: placing an arch stone from scaffold, applying mortar with trowel, and chiselling a block near cut stones on the ground. Open unfinished masonry, supporting timber, and workers make the expansion unmistakable. A small secondary narrative at one edge: a well-dressed lay donor in wool clothing offers a small leather money purse into a priest's open hand, both standing beside the site. No table, no seated council or meeting. Work occupies the main focus, donor is secondary.\nRestrained daylight; warm grey local stone, weathered brown oak, ochre earth, faded red and moss-green cloth. Flat clay tiles only on the existing church roof, no blue glass. Late-14th-century southern English dress, hoods and linen coifs. Painterly historical game art consistent with Wave21 rather than glossy cinema or photography. No text, numerals, writing, captions, modern construction equipment, modern hardhats, metal scaffolding, brick buildings, chimneys, chimney pots, high-fantasy cathedral spires, isolated decorative arch unrelated to church, borders or collage.",
+      "refs": [
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch4.jpg",
+        "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave33-v1/references/wave21-ch5.jpg"
+      ],
+      "nativeOutput": "native/second/1396-church-extension.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-b3e4-7840-9999-925241eecd21/exec-5b9d78e0-ec0c-4f02-98e6-52f4c0bb4666.png",
+      "toolOutput": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-b3e4-7840-9999-925241eecd21 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0eb58-b3e4-7840-9999-925241eecd21/exec-5b9d78e0-ec0c-4f02-98e6-52f4c0bb4666.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "postprocess": "Sharp resize 960x540 fit cover centre, flatten #ffffff, PNG; no drawn additions.",
+      "status": "candidate",
+      "tool": "builtin image_gen",
+      "model": null,
+      "seed": "not exposed",
+      "width": 960,
+      "height": 540,
+      "sha256": "1f352a2a4f6b86fcb0ad8b22c465c6f56447e300d69ad6a85d8a90410b75c460",
+      "model_version": "not exposed"
+    },
+    {
+      "id": "1399-henry-iv-news",
+      "file": "assets/1399-henry-iv-news.png",
+      "title": "헨리 4세 즉위 소식",
+      "year": 1399,
+      "prompt": "Create ONE widescreen 16:9 historical game event illustration, no collage. Style reference images are contact sheets ONLY for painterly muted earthy palette and handpainted late-medieval southern English town aesthetic, do not copy contact sheet layout. Scene: news of Henry IV's accession in 1399, town square. Royal herald on low stone market cross steps at right foreground reads a rolled parchment to townspeople assembled in broad semicircle, gestures announcing important news. Parchment faces herald with blank reverse toward viewer, absolutely NO letters, text, numerals or captions anywhere. Distinct from guild confrontation: one authoritative herald and attentive peaceful gathered mixed townspeople. A clear large rectangular royal banner beside herald: quartered shield/banner, upper-left and lower-right blue strewn with MANY small gold fleurs-de-lis (France ancient, NOT just three fleurs), upper-right and lower-left deep muted red each with THREE gold lions passant guardant stacked horizontally. Historically appropriate English royal arms in1399 before French quarters reduced1406. Make heraldic quarters visibly recognizable, avoid invented lettering. Timber frame and stone market town background, simple medieval clothing wool hoods and veils, natural afternoon light, restrained earthy colors, brushwork like supplied reference. No chimney stacks, firearms, modern objects, blood, royal portrait or indoor paperwork scene. One complete illustrated scene edge-to-edge, intended960x540.",
+      "refs": [
+        "references/wave21-ch4.jpg",
+        "references/wave21-ch5.jpg"
+      ],
+      "nativeOutput": "native/1399-henry-iv-news.png",
+      "postprocess": "Proportional resize/crop to960x540; no painted edits",
+      "model_version": "not exposed",
+      "seed": "not exposed",
+      "width": 960,
+      "height": 540,
+      "status": "candidate",
+      "sha256": "ff8b6a93c64326eb878f95f808352eb79cf2ab005c44e95e780fada6188c5ee6"
+    }
+  ]
+}
