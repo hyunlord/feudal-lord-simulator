@@ -5,7 +5,7 @@
 //  - the game is built from a detached worktree of the job's commit (node_modules shared when package-lock.json is
 //    the same, else `npm ci`), with this checkout's gate scripts (scenes, checks) and scene save;
 //  - a run a person touched (the Mac's hardware input idle time at its end is shorter than the run) is no judgement,
-//    and so is a covered or undrawn window; a job that came out "판정 아님" goes back in the queue, five tries in all; queued, each scene also waits for a quiet Mac first.
+//    and so is a covered or undrawn window; a job that came out "판정 아님" goes back in the queue (a try voided only by a person, other work or the window is not counted; five counted tries in all); queued, each scene also waits for a quiet Mac first.
 // While the runner lives, `caffeinate -d -i` keeps the display awake (a slept or locked screen draws nothing).
 // Jobs, the runner's pid and its log: ~/.fls-perf-queue (FLS_PERF_QUEUE). Results: the gate's usual files in the
 // queuing checkout's docs/verification/perf-gate/ (commit them from there).
@@ -117,6 +117,15 @@ async function runner() {
     } catch (error) { log(`${job.id}: ${(error as Error).message}`); }
     const done = readJob(`${job.id}.json`);
     done.results.push({ at: new Date().toISOString(), verdict, file, exit });
+    // A try voided only by the Mac's surroundings (a person, other work, the window, another measurement) does not
+    // count against the job: it waits for the next quiet time. Only errors and real verdicts use up tries.
+    if (exit === 2 && file !== null) {
+      try {
+        const record = JSON.parse(readFileSync(join(job.repo, file.replace(/\.md$/, ".json")), "utf8")) as { invalid?: string[] };
+        const reasons = record.invalid ?? [];
+        if (reasons.length > 0 && reasons.every(reason => /다른 일의 CPU|사람 입력|창이|창에 초점|그려지지|다른 측정/.test(reason))) { done.attempts -= 1; log(`${job.id}: voided by the surroundings only — the try is not counted`); }
+      } catch { /* no record: count the try */ }
+    }
     done.status = exit === 2 || exit === null ? (done.attempts < MAX_ATTEMPTS ? "queued" : "no-judgement") : "done";
     writeJob(done); log(`${job.id}: ${verdict}${file === null ? "" : ` → ${file}`} (${done.status})`);
     if (done.status !== "queued") {   // finished: the job's worktree goes (a retry keeps it)
