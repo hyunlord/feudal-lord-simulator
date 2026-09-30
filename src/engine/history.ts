@@ -43,7 +43,7 @@ import { plagueDecisionForecast } from "./plague";
 import { reorganisationDecisionForecast } from "./reorganisation";
 import { heirRelationWord, legacyDecisionForecast, legacyEnding, legacyOf, legacyWord } from "./legacy";
 import { LEGACY_BALANCE, LEGACY_PETITION_IDS, LEGACY_STEP_ART, BOROUGH_AUTONOMY_PETITION_ID, HEIR_CHOICE_PETITION_ID, HEIR_BY_RESPONSE } from "../content/legacyConfig";
-import { manorLord, personDisplayName } from "./persons";
+import { currentYear, manorLord, personDisplayName } from "./persons";
 import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
 import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
@@ -516,17 +516,17 @@ function lordshipDrafts(before: GameState, after: GameState): Draft[] {
   if (chapter > (before.politics?.chapter.number ?? 1)) {
     drafts.push({ tick: after.tick, kind: "milestone", template: "milestone.chapter_start", params: { chapter }, subject: TOWN, severity: 2 });
   }
-  // FIX-11: wardship begin and end.
+  // FIX-11 (FX11-1): wardship begin and end — the ward is the lord the rule reads (`manorLord`), before or after.
+  const lordOf = (state: GameState) => manorLord(state.persons?.people ?? [], lordshipOf(state).house.order, currentYear(state));
   if (was.wardship === undefined && now.wardship !== undefined) {
-    const lord = after.persons?.people.find(p => p.householdId === "manor" && p.role === "head");
-    const guardian = now.wardship.guardianId !== null
-      ? after.persons?.people.find(p => p.id === now.wardship!.guardianId)
-      : undefined;
+    const lord = lordOf(after);
+    const guardianId = now.wardship.guardianId;
+    const guardian = guardianId === null ? undefined : after.persons?.people.find(person => person.id === guardianId);
     drafts.push({ tick: after.tick, kind: "milestone", template: "lord.wardship_begun",
       params: { lord: lord !== undefined ? personDisplayName(lord) : "", guardian: guardian !== undefined ? personDisplayName(guardian) : "" },
       subject: TOWN, severity: 2 });
   } else if (was.wardship !== undefined && now.wardship === undefined) {
-    const lord = after.persons?.people.find(p => p.householdId === "manor" && p.role === "head");
+    const lord = lordOf(after) ?? lordOf(before);
     drafts.push({ tick: after.tick, kind: "milestone", template: "lord.wardship_ended",
       params: { lord: lord !== undefined ? personDisplayName(lord) : "" },
       subject: TOWN, severity: 2 });

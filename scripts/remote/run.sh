@@ -97,8 +97,8 @@ if [ "$1" = "--task" ]; then
   LABEL=${FLS_REMOTE_LABEL:-$(default_label)}
   case "$TASK" in
     guardrail) SLOT=guardrail ;;
-    test|browser|perf|clone-check) ;;
-    *) die "unknown task: $TASK (test|guardrail|browser|perf|clone-check)" ;;
+    test|browser|perf|clone-check|trend) ;;
+    *) die "unknown task: $TASK (test|guardrail|browser|perf|clone-check|trend)" ;;
   esac
   [ "${FLS_REMOTE_DETACH:-0}" = 1 ] && DETACH=1
   set -- bash scripts/remote/tasks.sh "$TASK" "$@"

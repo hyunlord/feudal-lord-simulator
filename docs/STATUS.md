@@ -1,12 +1,25 @@
 # 현재 상태
 
-갱신: 2026-09-30(BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-10-01(FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
+- **추이 문서 뒤처짐 경고·NAT-2 힙 확인 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 RR4)
+  - `check:merge`가 추이 문서가 본선 머리보다 10개 넘게 뒤처지면 경고 한 줄을 찍는다(실패 아님, `<git common dir>/fls-trend-lag.log`에 쌓임). 합치는 세션이 `npm run perf:trend`로 갱신하고, 경고가 쌓이면 인프라 세션이 모아 커밋한다.
+  - NAT-2 뒤 JS 힙 증가는 없었다: Mac A-B-A-B([기록](verification/perf-ab/2026-09-30-2310-00df3324-8ebdcf5c.md))에서 힙 끝 85.3 → 81.1 MB(소음 안), 할당 −13 %·GC −39 %(좋아짐). 추이의 표시는 GC 톱니 위 한 점을 잰 탓이었다. 밉맵 캐시는 JS 힙 밖(픽셀 0~2.1 MB)이다.
+  - 추이 지표 보정: GC 뒤 남은 힙을 판정, 다른 일 CPU를 함께 적음. 렌더가 볼 관찰 둘(카메라 뒤 목책 래스터 캐시, NAT-2 쪽 긴 프레임)은 [요청서](requests/render-telemetry-hooks.md) 덧붙임에 있다.
+- **성능 측정 재편: 기다리지 않고 추이로 판정 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 RR3)
+  - perf:gate의 잠금·대기열·조용한 Mac 기다리기를 없앴다. 환경은 수치 옆 기록이다.
+  - ① 개발 서버 텔레메트리 `~/.fls-telemetry/`(`npm run telemetry:report`).
+  - ② 커밋마다 DGX 추이(본선 pre-push가 뒤로 띄움, `npm run remote:trend`).
+  - ③ `npm run perf:ab` A-B-A-B.
+  - ④ [`verification/perf-trend/`](verification/perf-trend/README.md)(`npm run perf:trend`).
+  - 렌더 요청: [텔레메트리 훅](requests/render-telemetry-hooks.md)(줌, 캐시 재생성 이름).
+  - 대기열이 남긴 유효 판정 둘은 `verification/perf-gate/`에 있다(`cf04b4a7` 실패, SMOOTH-2R `00df3324` 실패 — 큰 도시·배치 통과).
+- **보고서 실행 위치 필수·RR2 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션): 보고서의 검증마다 실행 위치(DGX/Mac/둘 다)를 적는다(AGENTS.md 보고 양식). 끊김·메모리는 Mac 실제 창, 처리량 기준선은 DGX(결정 RR2). 최소 줌은 0.5 그대로이고, perf:gate의 0.4 장면은 건너뛴다.
 - **INSTALL-30~33 합필 집·곡창·결말 그림(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 연쇄 F 3번): [보고서](verification/install30/REPORT.md), 결정 IN30-D1·D2·IN32-D1·IN33-D1(IN30-D1 승인된 합필 그림을 고르기에서 뺌은 판정 대기).
   - Wave 30 합필 집 90장: Wave 26과 같은 고르기로 c·d·e, 변형마다 새것·낡음·눈·판자. Wave 32 곡창 26장: `barn.png` 대신 a·b·c, 재고 비율로 가득·반·빔(2/3·1/5), 낡음·판자·눈(B의 눈·판자는 재작업판). 캠페인 결말 그림 여섯(INBOX-2s)을 결말별 배경으로.
   - 관문: 캡처 전후 · 스킨 감사 0 / 1266 · 면적·판·칩·튜토리얼 22 = 22·터치·입력 14/14·포커스 · 깨끗한 클론 `fbb3f319` 3,954/3,954·build. 감사의 청원 대체 경로(칩만 누름)를 고침.
@@ -56,14 +69,19 @@
   - 떠오르는 상자는 너비 토큰 280·360·480(태블릿 ×1.15)에 고정·줄 간격 1.5·제목 한 줄·본문 4줄 뒤 [더 보기]·UI-KIT 틀; 스킨 감사에 틀 없는 상자 규칙; 개발 서버 `?pseudo-long=1` 1.4배 글에서 너비 불변·넘침 0.
   - 감사 목록: 성벽이 호숫가를 따라 호수를 성 안에 넣음(엔진 규칙이 물가 가장자리 허용 + 렌더가 벽 두께를 가장자리 가운데로, 판정 대상), 물가 워커, 가을 풀빛, 낙엽 반복, 이름표 겹침, L4 돌기둥 집, 경고 표시 붐빔.
   - 관문: DGX 캡처·측정 오류 0, 스킨 감사 0 / 1263·틀 없는 상자 0, 면적 5.4 % / 6 %·태블릿 5.9 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 로컬 전체 시험 3,796 / 3,796, 깨끗한 클론 `55ad6ee` 3,796/3,796·build(ARCH-1b를 합친 뒤 `1f25c42` 3,811/3,811).
-- **FIX-11 쌓인 엔진 넘김 열다섯 — 진행 중**(Claude Code, 엔진 세션, 사용자 지시): 브랜치 `claude/fix11-engine-handoffs`. 렌더 UI-9·UI-10·NAT-2·UI-AUDIT-1과 Astra QA 1·2회차가 넘긴 것.
+- **FIX-11 쌓인 엔진 넘김 열다섯 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/fix11/REPORT.md), 명세 [영주관](design/manor-house.md)·[묶인 물자](design/stuck-stock.md), 결정 FX11-1~16.
+  - 인물: 미성년 영주 후견, 모든 사람이 같은 사망표, 60살부터 재혼 없음, 같은 집 "큰/작은", 시장 후보의 가구, 5장의 거짓 가문 끊김 막음, 후계자 떠난 해.
+    - 90살 넘은 인물의 가장 큰 원인은 100살 홀아비가 100살 신부를 맞는 재혼이었다.
+  - 기록: 헨리 4세는 1399 가을 폐위의 계절에 왕위에 오르고, 리처드 2세는 유폐 중 사망한다. 장 기록은 결정 전부를 싣고 경계를 지키며, 후계 결정에 관계를 담는다. 장의 실제 시작 해를 쓴다. `decisionForecast`는 답마다 금고와 관계를 준다.
+  - 세계: 영주관(`manor_house`, 저장 v35), 곧은 변 성문, 시장 검사 캐시(0.17 → 0.068 ms), 베마다 염색 색, `stuckStock`.
+  - 가드레일 `5e8dda5` 5/5, 새 기준선 `baseline-5e8dda5`. 클론 `c832300` 4,026/4,026. 렌더 넘김은 보고서에 있다.
 
 - **BOT-4 봇의 곡물 계획 — 관문 미달, 사용자 판정으로 "알려진 흔들림" 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/bot4/REPORT.md), [경작지 명세](design/arable-fields.md) GP-1~GP-4, 결정 GP1~GP8·RR1.
   - 병합한 것: 수확 기록(저장 v34 `harvestRecord`, 영주 모드 이유 점수 재료), 가득 찬 헛간 곁에 그 헛간의 한 해를 빻을 방앗간(GP-4). 실현율 판단(GP-2)은 가드레일 seed 1을 멈추게 해 뺐고, 빈 곡창의 방앗간(GP-3)은 본선 동작으로 되돌렸다.
   - 전제와 다른 점: 곡창이 빈 까닭은 곡물 부족이 아니라 한 해 내내 가득 찬 헛간이었다(해마다 여문 밀 약 800을 버림).
   - 관문(GP6) 미달: 해안 seed 3 1370~75 L4 17·1388~92 20(화재 밖), 백악 seed 1·3도 22 아래. 강가 seed 2 최저 23. 1450 L4 24 열네 판(습지 seed 1 알려진 정지). "GP-4가 풀었다"던 앞 판단은 틀렸다(해안 seed 3을 살린 건 GP-2·GP-3이 있던 3판, GP8).
   - 가드레일 4회차 `bdcfe2c` 5/5, 새 기준선 `baseline-bdcfe2c`. 깨끗한 클론 `bdcfe2c` 3,956/3,956.
-  - 남은 흔들림의 뿌리(가득 찬 헛간에서 밀이 못 나가는 물류)는 FIX-11 "묶인 물자"와 LM-E1이 다룬다. DGX 판정 실행 붙잡기: `run.sh --keep`(RR1).
+  - 남은 흔들림의 뿌리(가득 찬 헛간에서 밀이 못 나가는 물류)는 FIX-11 "묶인 물자"와 LM-E1이 다룬다. DGX 판정 실행 붙잡기: `run.sh --keep`(RR5).
 
 - **FIX-10 해안 습격 1.5·목재 사 오기·여울 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/fix10/REPORT.md), [목재 명세](design/timber-trade.md) TT-1~TT-4b, [지도 명세](design/map-archetypes.md) MA-13·FD-1~FD-4, 결정 FX10-1~7. 브랜치 `claude/fix10-timber-fords`(SMOOTH-2E 위).
   - 해안 습격 1.5(역병 1.2 그대로). 목재 사 오기: 장날 2개·하나 18d, 명령 `order_timber`, 봇은 목책이 기다릴 때와 제재소가 멈췄을 때. 여울: 칸당 목재 1·반 속도. 봇은 물 건너 바위·숲으로 건넌다. 저장 v33.

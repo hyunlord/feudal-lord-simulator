@@ -12,6 +12,9 @@
 #   perf         [--cells lots24:1:still,...] [--rounds 3] [--baseline perf/baseline-dgx-<sha>.json]
 #                without --baseline: records perf/baseline-dgx-<sha>.json; with it: compares p95 (DGX vs DGX only)
 #   clone-check                                              fresh clone of the commit (+LFS), npm ci, typecheck, test, build
+#   trend        [--commits sha,...] [--rounds 3] [--seconds 45]
+#                                                            per-commit noise-resistant metrics (scripts/perf/trendRun.ts)
+#                                                            into ~/fls-runs/_trend/<sha>.json and .remote/trend/
 set -uo pipefail
 TASK=${1:?task}; shift
 OUT=$PWD/.remote
@@ -22,6 +25,11 @@ summarise_tap() {  # node --test totals as one line: TAP ("# pass 12", Node 20) 
 }
 
 case "$TASK" in
+trend)
+  node_modules/.bin/tsx scripts/perf/trendRun.ts "$@" 2>&1 | tee "$OUT/trend.log"
+  exit "${PIPESTATUS[0]}"
+  ;;
+
 test)
   rc=0
   if [ "${1:-}" = --typecheck ]; then

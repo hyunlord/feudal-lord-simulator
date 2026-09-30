@@ -11,6 +11,8 @@ npm run remote:guardrail -- --seeds 1,2,3,4,5          # 가드레일(기본 1,2
 npm run remote:browser -- --repeat 10 [tests/x.test.ts ...]  # 브라우저 테스트 N회 연속(기본 Part7)
 npm run remote:perf [-- --baseline perf/baseline-dgx-<sha>.json]   # 인자 없으면 기준선 기록, 있으면 p95 비교
 npm run remote:clone-check                             # 커밋 깨끗한 클론(+LFS) → npm ci·typecheck·test·build
+npm run remote:trend [-- --commits a,b] [--rounds 3]  # 커밋마다 성능 추이(scripts/perf/trendRun.ts) → ~/fls-runs/_trend/<sha>.json
+                                                       #   본선 푸시 때 pre-push가 뒤로 띄운다(FLS_TREND_OFF=1로 끔). 모으기: npm run perf:trend
 scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 명령>   # 임의 명령
 ```
 
@@ -87,7 +89,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
 
 ## 성능 기준선
 - 처리량 관문(p95 비교)은 **DGX 대 DGX로만** 한다. Mac 수치와 섞지 않는다.
-- 끊김 판정은 이것과 따로다. `npm run perf:gate`로 이 Mac의 실제 Chrome 창에서 한다([perf-gate](verification/perf-gate/README.md)). DGX 헤드리스는 소프트웨어 래스터라 끊김 판정에 쓰지 않는다.
+- 끊김 판정과 메모리 측정은 이것과 따로다. `npm run perf:gate`·`scripts/perf/memoryHolders.ts`로 이 Mac의 실제 Chrome 창에서 한다([perf-gate](verification/perf-gate/README.md)). DGX 헤드리스는 소프트웨어 래스터라 끊김 판정에 쓰지 않는다.
 - 기준선은 `perf/baseline-dgx-<sha>.json`이다. `scripts/renderStageBenchmark.mjs`로 한 칸을 3회 × 240 draw 재고(첫 회는 버린다), frameWork·tick·rAF의 중앙·p95를 기록한다. 서버는 DGX Vite 개발 서버(127.0.0.1, 4300~4399)다.
 - 기본 칸은 `lots24:1:still, lots24:1:drag, lots24:2:still, pop176:1:still, newgame:1:still`이다.
 - 비교: `npm run remote:perf -- --baseline perf/baseline-dgx-<sha>.json`을 실행하면 `.remote-runs/<run>/perf/compare.md`에 칸별 p95 비가 나온다.
@@ -96,7 +98,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
 ## 병합 전 자동 검사
 본선(`codex/phase15-organic-ground`)과 main에 들어가는 것은 pre-push 훅이 먼저 검사한다(AGENTS.md 규칙 19, REVIEW-1).
 - **실행**: `npm run check:merge [-- --base <rev> --head <rev>]`. 기본 범위는 본선과의 merge-base..HEAD다. 훅은 `FLS_PUSH_OK=1 git push …`로 푸시할 때 원격 머리..로컬 머리를 넘긴다.
-  - 검사 일곱 가지 가운데 하나라도 실패하면 푸시를 거부한다.
+  - 검사 일곱 가지(1~7) 가운데 하나라도 실패하면 푸시를 거부한다. 8번(추이 문서 뒤처짐)은 경고만 한다.
   - 이 작업 트리가 `<head>`와 다르거나 수정돼 있으면, `<head>`의 임시 워크트리(LFS는 포인터)에서 ESLint·tsc·빌드 크기 예산을 돌린다. 예산 검사는 빌드가 웹 파생본으로 바꾸는 받은 PNG(키아트·삽화·초상 풀)만 로컬 LFS 저장소에서 꺼낸다(`git lfs checkout`).
 - **검사**:
   1. `scripts/checks/pinChanges.mjs`: 고정값 파일·테스트 해시 값이 바뀌었으면, 같은 범위에서 결정 목록(`docs/decisions/**`, `docs/DECISIONS.md`)에 더한 줄에 그 파일 이름이나 상위 폴더가 있어야 한다.
@@ -110,6 +112,10 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
   7. `scripts/checks/distBudget.mjs`(BUDGET-1): `<head>`를 임시 폴더에 `vite build --outDir`로 빌드해(작업 트리의 `dist`는 그대로) 파일 크기를 범주별(세계 그림·초상·삽화·키아트·UI·소리·코드, 규칙에 안 걸리면 기타)로 더하고, 전체나 예산 있는 범주가 넘으면 실패한다. 빌드 폴더는 지운다.
      - 범주 규칙과 예산(전체 150 MB, 초상 20 MB, 삽화 25 MB; MB = 1,000,000바이트)은 `scripts/checks/distBudget.config.json` 한 파일이다. 새 에셋 폴더가 기타로 잡히면 목록에 이름이 나오니 규칙을 더한다.
      - 따로 재기: `npm run budget:dist`(같은 빌드·표), 이미 있는 빌드는 `node scripts/checks/distBudget.mjs --dist dist`.
+  8. `scripts/checks/trendLag.mjs`(경고만, 결정 RR4): `<head>`의 `docs/verification/perf-trend/trend.json`이 본선 머리를 몇 개 뒤처졌는지 센다. 10개를 넘으면 경고 한 줄을 찍고 푸시는 막지 않는다.
+     - 세는 단위는 본선 머리(추이가 재는 단위)다: 이 저장소의 `origin/codex/phase15-organic-ground` reflog(워크트리끼리 공유)에 있던 커밋과 `<head>` 가운데, 문서의 측정 커밋 어느 것에서도 닿지 않는 것. reflog가 없는 새 클론에서는 그 범위의 커밋 전부를 센다(병합된 브랜치의 커밋까지 세어 많게 나온다).
+     - 경고는 `<git common dir>/fls-trend-lag.log`에도 한 줄씩 쌓인다. 어느 워크트리에서든 `cat "$(git rev-parse --git-common-dir)/fls-trend-lag.log"`로 본다.
+     - 갱신: `npm run perf:trend`로 DGX 결과를 모아 `docs/verification/perf-trend`를 커밋한다. 합치는 세션이 하고, 경고가 쌓이면 인프라 세션이 모아 커밋한다.
 - **ESLint 설치가 따로인 이유**
   - typescript-eslint는 TypeScript 6.1 미만만 지원한다. 루트의 TypeScript 7(네이티브 포트)에는 JS 컴파일러 API가 없다.
   - 그래서 `tools/eslint/`에 ESLint 10.11 · @typescript-eslint/parser 8.70 · TypeScript 6.0.3(파싱 전용) · react-hooks 7.1.1을 자체 lock으로 둔다. 루트 package.json의 의존성과 lock에는 넣지 않는다.
