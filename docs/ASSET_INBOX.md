@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-30 13시 갱신)
+## 3. 현재 장부 요약 (2026-09-30 14시 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -85,7 +85,7 @@ assets-inbox/
 | `wave33` | 6 |  | 6 |  |  |  |  | 0 |
 | `wave34` | 33 |  | 31 |  | 2 |  |  | 0 |
 | `wave35` | 57 |  | 57 |  |  |  |  | 0 |
-| `wave37` | 63 |  | 55 | 4 |  | 4 |  | 0 |
+| `wave37` | 71 |  | 63 |  | 4 | 4 |  | 0 |
 | `wave4-pilot` | 15 |  | 12 |  |  | 3 |  | 12 |
 | `wave4b` | 57 |  | 57 |  |  |  |  | 53 |
 | `wave4c` | 29 |  | 29 |  |  |  |  | 18 |
@@ -99,7 +99,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **4523** | **0** | **3293** | **4** | **253** | **937** | **36** | **1803** |
+| **합계** | **4531** | **0** | **3301** | **0** | **257** | **937** | **36** | **1803** |
 
 ## 4. 찾는 법
 
@@ -217,6 +217,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-wave35-candidates-20260930-lite.zip` (09-30 11:21, 경량판) | `wave35/candidates-20260930` | 9,345 KB | `0b52373caf15fa4c…` | 137 | 0 | `references/` 제외 | `qa/`·`prompts/`·`tools/`는 `records/` 아래로. 경량판은 `raw/`(생성 원본·반려 이력)를 빼고 `RAW_INDEX.json`에 경로·크기·SHA를 실음. 작업 폴더 `output/astra-wave35-candidates-20260930`(`raw/` 114MB 포함)은 `astra-raw/output/`에 보관. 확인 그림 2장은 JPG
 | `/tmp/astra-wave36-building-kit-pilot-20260930-lite.zip` (09-30 12:08, 경량판) | `experiments/wave36-building-kit-pilot-20260930` | 25,308 KB | `42fbe518b780edb2…` | 139 | 3 | `references/`, `renders/`(216 기본·210 상태 조합과 간판 15·색 입힘 12, 453장), `sources/`, `blind/`의 개별 PNG 48(렌더 사본 24·Wave 26 원본 사본 24) 제외 — 사용자 지시로 저장소에 넣지 않고 astra-raw에만 | 실패한 실험 기록이라 새 최상위 폴더 `experiments/`에 둠. 문서·`prompts/`·`records/`·`tools/`·`qa/`·`masks/`·`blind/`의 시트와 CSV는 `records/` 아래로. 건너뛴 3장은 같은 묶음 안 같은 바이트 마스크(`roof_stone`·`roof_thatch`·`roof_tile` = `roof_canonical`). 작업 폴더 `output/astra-wave36-candidates-20260930`(89MB, 렌더·생성 원본 포함)은 `astra-raw/output/`에 보관
 | `/tmp/astra-wave37-doorstep-trade-props-20260930-lite.zip` (09-30 12:51, 경량판) | `wave37/candidates-20260930` | 4,388 KB | `7fbb88ef01f65d83…` | 116 | 0 | `references/` 제외 | `proofs/`의 확인 그림 JPG 3장만 `proofs/`에 두고 같은 폴더의 작업 접촉판 PNG 4장은 `records/contacts/`로. `blind/`(판독 시험)·`qa/`·`prompts/`·`tools/`·`rejected/r1/`(1차 교정 이력)은 `records/` 아래로. 경량판은 `raw/`를 빼고 `RAW_INDEX.csv`에 경로·해시를 실음. 작업 폴더 `output/astra-wave37-candidates-20260930`(56MB, `raw/` 포함)은 `astra-raw/output/`에 보관. 같은 폴더의 `output/astra-wave37-rework-v2`(진행 중인 재작업)는 받지 않음
+| `/tmp/astra-wave37-rework-v2-lite.zip` (09-30 13:28, 경량판) | `wave37/rework-v2` | 828 KB | `8a0c102d9a268b15…` | 26 | 30 | `references/` 제외 | 32장 가운데 바뀐 것은 `condition_prosperous_bench`·`trade_carpenter_a`·`trade_miller_a`·`trade_miller_b` 넷뿐(해시 대조). 원본과 바이트가 같은 28장과, 같은 묶음 새 방앗간 그림과 바이트가 같은 판독 그림 2장(`blind/01`·`02`)은 넣지 않음. 작업 폴더 `output/astra-wave37-rework-v2`(9.5MB)는 `astra-raw/output/`에 보관
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -279,6 +280,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 35 영주 모드 화면 그림**(`wave35/candidates-20260930`, 2026-09-30 11시 판정, 경량판): PNG 50장 — 의뢰서 기본 43(영지 9·협상 10·약속 8·운영 12·영수증 4), 직책 32px 파생 5, 9-slice 조립 보조 2(`treaty_divider` 협상 중앙선 16px·`ledger_spine` 장부 접힘 24px, 배경만 늘리고 중앙 장식은 늘리지 않음) — 과 확인 그림 2(JPG, 1280×800 모의 화면) `confirmed`. 검수·기록 그림 5장(`records/qa/` 4, `records/` 1)도 `confirmed`. README 한계: 쇠락 영지가 가난한 영지보다 쇠락 표현이 완만하다.
 - **Wave 36 조합형 집 키트 파일럿 — 실패 기록**(`experiments/wave36-building-kit-pilot-20260930`, 2026-09-30 12시 판정): 부품 24장 `rejected`, 비고 "조합형 파일럿 실패 — 눈가림 100%·어색 72/216, 윤곽 통일이 다양성을 없앰, 기록 보관". 독립 눈가림 판별 48/48(기준 ≤60%), 216 조합 중 72개 어색(기준 ≤5%), 자동 검사 열 가지 가운데 여럿 실패(`records/REPORT.md`). 확인 그림 3·눈가림 48채 시트·마스크 27·검수 그림 23은 기록 그림으로 `confirmed`. 216·210 조합 렌더 전체는 astra-raw에만 있다. `experiments/`는 설치 후보가 아닌 실험 자료를 두는 곳이다.
 - **Wave 37 집 앞 직업·형편 표지**(`wave37/candidates-20260930`, 2026-09-30 13시 판정, 경량판): 직업 12종 × a·b 24장과 형편 표지 8장 가운데 28장 `confirmed`. `rework_pending` 4장 — `condition_prosperous_bench` "19세기 공원 벤치로 보임", `trade_carpenter_a` "보통 벤치와 같은 물건으로 읽힘", `trade_miller_a` "치즈로 읽힘", `trade_miller_b` "새 입주 수레 B와 같음". 확인 그림 3(JPG) `confirmed`. 판독 시험 그림 12·검수 그림 8·작업 접촉판 4는 기록 그림으로 `confirmed`. 1차 교정 이력(`records/rejected/r1/`) 4장은 Astra가 반려한 판이라 `rejected`로 두었다(기록 보관).
+- **Wave 37 재작업**(`wave37/rework-v2`, 2026-09-30 14시 판정): 새 4장(`condition_prosperous_bench`·`trade_carpenter_a`·`trade_miller_a`·`trade_miller_b`) `confirmed`, 비고 "재작업판(바이트 다름)" — 파일 이름이 원래 납품과 같다. 옛 4장(`rework_pending`)은 `superseded`, `replaced_by`에 새 경로. 비교판 3(혼동 쌍 JPG·6배 확대 PNG 2)은 확인 그림, 판독 기록 `recognition.jpg`는 기록 그림으로 `confirmed`. 나머지 28장은 원본과 바이트가 같아 새 행을 만들지 않았다.
 ## 7. 찾지 못한 것
 
 | 항목 | 상태 |
