@@ -6,4 +6,4 @@
 set -u
 UI6_OUT=docs/verification/install30/ui6 UI6_STATES=${UI6_STATES:-$HOME/fls-ui6-states} UI5_STATES=${UI5_STATES:-$HOME/fls-ui5-states-v22} \
   UI8_STATES=${UI8_STATES:-$HOME/fls-ui8-states} UI9_STATES=${UI9_STATES:-$HOME/fls-ui9-states} UI10_STATES=${UI10_STATES:-$HOME/fls-ui10-states} \
-  bash scripts/ui6Verification.sh all
+  bash scripts/ui6Verification.sh "${1:-all}"
