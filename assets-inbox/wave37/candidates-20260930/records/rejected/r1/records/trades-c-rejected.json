@@ -1,0 +1,124 @@
+[
+  {
+    "id": "trade_fisher_a",
+    "prompt": "Use case: stylized-concept. Generate ONE standalone raster game prop candidate, not a sheet. Project-owned references: first image Wave27 occupational backyards provides appropriate simple prop forms; second provides muted hand-painted sprite style only. Do not reproduce reference houses, animals, grass, UI, labels, or backgrounds. Southern England 1300–1450. Orthographic 2:1 isometric ground plane, visible top and two sides, upper-left lighting. Muted warm earth colours, crisp readable hand-painted detail with soft natural texture; readable at 96 px. True RGBA transparent background, no painted checkerboard, no background plane or grass base, minimal contact shadow only. Entire object including ALL ground-standing feet visible, generous blank margin; no attachment to buildings, no person, animal, house, wall, text, numbers, logo, letters or watermark. Single cohesive prop cluster. Fisher trade display: low oval wicker basket containing three clearly recognizable small silvery fish, beside a FREESTANDING wooden net drying rack. Rack has two posts, a crossbeam, two splayed feet with diagonal braces completely visible and supported on ground. One simple brown fishing net draped on beam, open diamond mesh with holes visibly transparent. No wall attachment.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-b9df-7923-bf01-66698f466db5/exec-cc02bc23-b4d7-4f01-82c0-02df7afc974e.png",
+    "tool": "image_gen__imagegen",
+    "model_version": null,
+    "seed": null,
+    "status": "candidate",
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_fisher_a.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_fisher_a.png",
+    "raw_dimensions": [
+      1536,
+      1024
+    ],
+    "crop_alpha_threshold": 8,
+    "crop_bbox": [
+      159,
+      34,
+      1471,
+      951
+    ],
+    "scale": 0.0913937547600914,
+    "resized": [
+      120,
+      84
+    ],
+    "paste": [
+      4,
+      7
+    ],
+    "width": 128,
+    "height": 96,
+    "baseline_y": 90,
+    "postprocess": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+    "foot_x": 98,
+    "foot_y": 90,
+    "foot_method": "Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front ground-contact foot of right net-rack support",
+    "foot_uncertainty_px": 2,
+    "visual_review": {
+      "proof": "qa/trades-c-review.png",
+      "transparency": "true RGBA, no ground plane",
+      "recognizability": "pass at native dimensions; in-game zoom not verified",
+      "full_feet": "pass",
+      "variant_structure": "distinct arrangement/support form; no flip or rotation",
+      "status": "candidate only; not installed"
+    },
+    "limitations": [
+      "At world scale 0.45 small merchandise and fine mesh lose detail; not runtime-tested",
+      "Hand-painted historical plausibility judged from references; no archaeological accuracy claim",
+      "Foot anchor is visual estimate with 2px uncertainty"
+    ],
+    "alpha_audit": {
+      "hasAlpha": true,
+      "transparent_pixels": 7062,
+      "partial_alpha_pixels": 4823
+    }
+  },
+  {
+    "id": "trade_inn_a",
+    "prompt": "Use case: stylized-concept. Generate ONE standalone raster game prop candidate, not a sheet. Project-owned references: first image Wave27 occupational backyards provides appropriate simple prop forms; second provides muted hand-painted sprite style only. Do not reproduce reference houses, animals, grass, UI, labels, or backgrounds. Southern England 1300–1450. Orthographic 2:1 isometric ground plane, visible top and two sides, upper-left lighting. Muted warm earth colours, crisp readable hand-painted detail with soft natural texture; readable at 96 px. True RGBA transparent background, no painted checkerboard, no background plane or grass base, minimal contact shadow only. Entire object including ALL ground-standing feet visible, generous blank margin; no attachment to buildings, no person, animal, house, wall, text, numbers, logo, letters or watermark. Single cohesive prop cluster. Inn pictorial sign: one freestanding upright oak post with short cantilever beam and diagonal bracket. From beam hangs a small rectangular wooden sign board with ONLY a simple painted RED LION silhouette, absolutely NO letters or words. Signpost stands on a sturdy wooden cruciform base with all feet visible. No house or wall attachment. Tall compact silhouette.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-b9df-7923-bf01-66698f466db5/exec-f3690764-412e-4b03-9c6c-d18bf0954084.png",
+    "tool": "image_gen__imagegen",
+    "model_version": null,
+    "seed": null,
+    "status": "candidate",
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_inn_a.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_inn_a.png",
+    "raw_dimensions": [
+      1208,
+      1302
+    ],
+    "crop_alpha_threshold": 8,
+    "crop_bbox": [
+      227,
+      41,
+      949,
+      1221
+    ],
+    "scale": 0.07281964436917866,
+    "resized": [
+      53,
+      86
+    ],
+    "paste": [
+      21,
+      5
+    ],
+    "width": 96,
+    "height": 96,
+    "baseline_y": 90,
+    "postprocess": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+    "foot_x": 51,
+    "foot_y": 90,
+    "foot_method": "Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front tip of cruciform signpost foot",
+    "foot_uncertainty_px": 2,
+    "visual_review": {
+      "proof": "qa/trades-c-review.png",
+      "transparency": "true RGBA, no ground plane",
+      "recognizability": "pass at native dimensions; in-game zoom not verified",
+      "full_feet": "pass",
+      "variant_structure": "distinct arrangement/support form; no flip or rotation",
+      "status": "candidate only; not installed"
+    },
+    "limitations": [
+      "At world scale 0.45 small merchandise and fine mesh lose detail; not runtime-tested",
+      "Hand-painted historical plausibility judged from references; no archaeological accuracy claim",
+      "Foot anchor is visual estimate with 2px uncertainty"
+    ],
+    "alpha_audit": {
+      "hasAlpha": true,
+      "transparent_pixels": 6595,
+      "partial_alpha_pixels": 2362
+    }
+  }
+]
