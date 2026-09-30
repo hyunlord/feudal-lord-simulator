@@ -46,7 +46,7 @@ test("Given a zoom When its detail level is chosen Then blocks are only on the s
   assert.equal(BLOCKS_MAX_ZOOM, 0.35);
   assert.deepEqual([0.25, 0.3, 0.35].map(renderDetailLevel), ["blocks", "blocks", "blocks"]);
   // 0.5 is the game's widest camera (MIN_ZOOM): painted, never blocks.
-  assert.deepEqual([0.351, 0.4, 0.5, 0.6, 0.7].map(renderDetailLevel), ["simplified", "simplified", "simplified", "simplified", "simplified"]);
+  assert.deepEqual([0.351, 0.4, 0.5, 0.6, 0.7].map(renderDetailLevel), ["full", "full", "full", "full", "full"]);
   assert.deepEqual([0.7001, 1, 1.4].map(renderDetailLevel), ["full", "full", "full"]);
 });
 

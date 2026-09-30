@@ -184,15 +184,15 @@ test("a strip piece covers its tile edge exactly: 32 px across, its ground line 
   }
 });
 
-test("detail levels: blocks draw nothing, simplified keeps the strips, trees, haystacks and folds, full draws all", () => {
+test("detail levels: blocks draw nothing, everything above them draws by the same rules (NAT-2)", () => {
   const strip: CountryStripPiece = { id: "t", family: "hedgerow_b", axis: "y", tx: 1, ty: 1, step: 0, offset: 0, depth: 2.5 };
   const prop = (family: "oak_solitary" | "willow_pollard" | "haystack" | "skep_row") => ({ id: family, family, tx: 1, ty: 1, cells: [25], salt: 3 });
-  // NAT-2 QA-008: blocks at zoom <= 0.35 only; the painted forest at simplified detail takes the painted oaks with it.
+  // NAT-2 (user): blocks at zoom <= 0.35 only; above them every strip and prop, the small ones too.
   assert.deepEqual([0.35, 0.5, 0.6, 1].map(zoom => countrysideDrawnAt(strip, zoom)), [false, true, true, true]);
   assert.deepEqual([0.35, 0.5, 0.6, 1].map(zoom => countrysideDrawnAt(prop("haystack"), zoom)), [false, true, true, true]);
   assert.deepEqual([0.35, 0.5, 0.6, 1].map(zoom => countrysideDrawnAt(prop("oak_solitary"), zoom)), [false, true, true, true]);
   assert.deepEqual([0.35, 0.5, 0.6, 1].map(zoom => countrysideDrawnAt(prop("willow_pollard"), zoom)), [false, true, true, true]);
-  assert.deepEqual([0.35, 0.5, 0.6, 1].map(zoom => countrysideDrawnAt(prop("skep_row"), zoom)), [false, false, false, true]);
+  assert.deepEqual([0.35, 0.5, 0.6, 1].map(zoom => countrysideDrawnAt(prop("skep_row"), zoom)), [false, true, true, true]);
 });
 
 test("strips and props join the object queue in depth order", () => {

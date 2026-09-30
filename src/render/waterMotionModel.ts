@@ -24,11 +24,9 @@ import { WAVE29_WATER, type Wave29WaterKey } from "./wave29WaterManifest.generat
 // Clock: the frame's wall clock `nowMs` (the renderer's), like the smoke and the weather, so the water keeps moving
 // while the game is paused. Not the life clock (lifeClock.ts), which holds while paused, and not the game tick.
 //
-// Detail (renderDetailLevel): full (zoom > 0.7) draws everything; simplified (0.35 < zoom <= 0.7) keeps the area fills
-// only (deep ripples, river flow: their cost is bounded by the screen, and they carry the water's motion) and drops
-// the shallow ripples, the foam (one fill per shore segment, which grows as the view widens), the swaying reeds (the
-// chunks' static reeds instead), the glints and the fish rings (a few pixels wide there); blocks (zoom <= 0.35) draws
-// no motion (the chunks' still water, with the ice rim in winter).
+// Detail (renderDetailLevel): above block detail everything draws (NAT-2: the small views too, by the same rules — the
+// foam's one fill per shore segment grows as the view widens; its cost at 0.4–0.6 is in docs/verification/nat2/lod);
+// blocks (zoom <= 0.35) draws no motion (the chunks' still water, with the ice rim in winter).
 export const WINTER: SeasonIndex = 3;
 export const FISH_INTERVAL_MS = { min: 8_000, max: 20_000 } as const;
 export const REED_SHEETS = ["reeds_sway_a_sheet", "reeds_sway_b_sheet", "reeds_sway_c_sheet"] as const satisfies readonly Wave29WaterKey[];

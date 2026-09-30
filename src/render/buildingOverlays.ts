@@ -12,8 +12,8 @@ import { drawStoryProps } from "./storyWorldProps";
 import { seasonBlend, seasonForObject } from "./seasonTransition";
 import { drawWave26HouseLayers, houseStateLayerNow, shownHouseVariant } from "./wave26HouseArt";
 
-// INSTALL-7 building overlays, drawn right after a finished building's art in the object pass (full detail; NAT-2: the
-// pictures, not the piles and story props, at simplified detail too):
+// INSTALL-7 building overlays, drawn right after a finished building's art in the object pass (above block detail —
+// NAT-2: the small views too, by the same rules):
 //  - winter (calendar season 3): snow on the roof of a single-lot house, the Wave 7 layer painted on that level's own
 //    canvas (roof_snow_l0..l4), drawn into the same rect and crop as the house; gone in spring;
 //  - an abandoned house (F0-A stage 2): the boarded windows (boarded_l0..l4), same registration;

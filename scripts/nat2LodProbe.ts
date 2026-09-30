@@ -5,7 +5,7 @@
 //    the buildings and nature stages and of every stage over 0.05 ms, and the drawImage calls per frame.
 //  capture: JPEGs of the paused town at each `--zooms` value.
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/nat2LodProbe.ts <out-dir> --label before|after --url http://127.0.0.1:5395/
-//     [--mode measure|capture|both] [--zooms 0.6,1.0]
+//     [--mode measure|capture|both] [--zooms 0.6,1.0] [--size 1600x1100] [--dpr 1]
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { gunzipSync } from "node:zlib";
@@ -20,6 +20,8 @@ const [out] = process.argv.slice(2);
 const flag = (name: string) => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
 const url = flag("url") ?? "http://127.0.0.1:5395/"; const label = flag("label") ?? "run"; const mode = flag("mode") ?? "both";
 const zooms = (flag("zooms") ?? "0.6,1.0").split(",").map(Number);
+// The window (CSS px) and device pixel ratio; the user's report was a retina window of about 1850 × 1010 (NAT-2).
+const [width, height] = (flag("size") ?? "1600x1100").split("x").map(Number) as [number, number]; const dpr = Number(flag("dpr") ?? 1);
 mkdirSync(out!, { recursive: true });
 const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
 const envelope = JSON.parse(gunzipSync(readFileSync("fixtures/perf-gate/ch4-1380.save.json.gz")).toString("utf8"));
@@ -32,7 +34,7 @@ const browser = await chromium.launch({ channel: "chrome", headless: true });
 const errors: string[] = [];
 
 async function scene(zoom: number, speed: 0 | 5): Promise<{ page: Page; close: () => Promise<void> }> {
-  const { context, page } = await openScene(browser, { state: envelope, tile: TILE, baseUrl: url, width: 1600, height: 1100, dpr: 1, zoom, run: false,
+  const { context, page } = await openScene(browser, { state: envelope, tile: TILE, baseUrl: url, width, height, dpr, zoom, run: false,
     initScript: TUTORIAL_OFF, query: "&story-delay=600000", rewrite: [MIN_ZOOM_REWRITE] });
   (page as Page).on("pageerror", error => errors.push(String(error).slice(0, 200)));
   if (speed === 5) await (page as Page).getByRole("button", { name: "5배속", exact: true }).click();
@@ -88,7 +90,7 @@ if (mode !== "measure") {
   for (const zoom of zooms) {
     const { page, close } = await scene(zoom, 0);
     await page.waitForTimeout(6_000);
-    const file = join(out!, `${label}-zoom${zoom.toFixed(2)}.jpg`);
+    const file = join(out!, `${label}-zoom${zoom.toFixed(2)}${width === 1600 && height === 1100 && dpr === 1 ? "" : `-${width}x${height}@${dpr}`}.jpg`);
     await page.screenshot({ path: file, type: "jpeg", quality: 62 });
     console.log(file);
     await close();

@@ -53,10 +53,10 @@ test("zoom detail policy preserves city mass at overview scale", () => {
   // NAT-2 QA-008: blocks only on the strategic map (<= 0.35); 0.5 (the game's widest) keeps the painted art.
   assert.equal(renderDetailLevel(0.3), "blocks");
   assert.equal(renderDetailLevel(0.35), "blocks");
-  assert.equal(renderDetailLevel(0.36), "simplified");
-  assert.equal(renderDetailLevel(0.5), "simplified");
-  assert.equal(renderDetailLevel(0.69), "simplified");
-  assert.equal(renderDetailLevel(0.7), "simplified");
+  // NAT-2 (user): no second "simplified" set of rules — the painted art and every feature by the same rules above it.
+  assert.equal(renderDetailLevel(0.36), "full");
+  assert.equal(renderDetailLevel(0.5), "full");
+  assert.equal(renderDetailLevel(0.7), "full");
   assert.equal(renderDetailLevel(0.7001), "full");
   assert.equal(buildingLodColor("house"), SEMANTIC_PALETTE.parchmentDark);
   assert.equal(buildingLodColor("storehouse"), SEMANTIC_PALETTE.stone);

@@ -13,14 +13,12 @@ import { seasonBlend, seasonForObject } from "./seasonTransition";
 //    season decals (frost and leaves lie on them). Strips and point props are depth-sorted objects: a hedge piece sorts
 //    by the middle of its tile edge (as the yard hurdles), a prop by its anchor cell, so a hedge in front of a walker,
 //    house or tree covers it and one behind is covered.
-//  - Detail (renderDetailLevel, the building LOD): full (zoom > 0.7) draws everything; simplified (0.35 < zoom <= 0.7)
-//    keeps the strips, the trees (NAT-2: the forest is painted there too now, from its mip levels) and the farm props
-//    that read at that size (haystack, sheepfold: the zone haycocks stay too) and drops the small props (cross, skeps,
-//    stone); blocks (zoom <= 0.35) draws none. The patches follow the season decals (from DECAL_MIN_ZOOM).
+//  - Detail (renderDetailLevel, the building LOD): above block detail everything draws, by the same rules close up and
+//    far out (NAT-2: the small views draw each sprite from its pre-shrunk level); blocks (zoom <= 0.35) draws none. The
+//    patches follow the season decals (from DECAL_MIN_ZOOM).
 //  - Seasons: each piece turns to the new season's picture at its own moment of the season fade (seasonForObject).
 
 export type CountrysideRenderItem = Extract<ObjectRenderItem, { readonly kind: "countryside" }>;
-const SIMPLIFIED_PROPS: ReadonlySet<string> = new Set(["oak_solitary", "willow_pollard", "haystack", "hurdle_fold"]);
 
 const itemsByLayout = new WeakMap<Countryside, readonly CountrysideRenderItem[]>();
 function countrysideItems(layout: Countryside): readonly CountrysideRenderItem[] {
@@ -56,10 +54,8 @@ export function withCountryside(queue: readonly RenderQueueItem[], state: GameSt
 }
 
 /** Whether a strip or prop draws at `zoom` (the detail levels above). */
-export function countrysideDrawnAt(piece: CountryStripPiece | CountryPiece, zoom: number): boolean {
-  const detail = renderDetailLevel(zoom);
-  if (detail === "blocks") return false;
-  return detail === "full" || !("salt" in piece) || SIMPLIFIED_PROPS.has(piece.family);
+export function countrysideDrawnAt(_piece: CountryStripPiece | CountryPiece, zoom: number): boolean {
+  return renderDetailLevel(zoom) !== "blocks";
 }
 
 export function drawCountrysideItem(context: CanvasRenderingContext2D, item: CountrysideRenderItem, state: GameState, zoom: number): void {
