@@ -15,8 +15,8 @@ import { WAVE30_PAIR_HOUSE_IMAGES } from "../src/render/wave30PairHouseManifest.
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 
 // INSTALL-30 on the canvas: a pair household's Wave 30 painting replaces the approved pair, its own layers (weathered /
-// fresh, boarded, snow) go on it, the approved pair's wear marks stay off it and its roof smoke follows it; a pair that
-// drew the approved painting stays as before (no layers).
+// fresh, boarded, snow) go on it, the approved pair's wear marks stay off it and its roof smoke follows it; no seed
+// gives a pair the approved painting (bare: it has no layers).
 
 class LoadedImage {
   onload: (() => void) | null = null;
@@ -88,15 +88,15 @@ test("a pair household's Wave 30 painting with its own layers and smoke; no appr
   const fresh = recorder();
   drawBuildingOverlays(fresh.context, summer, home);
   assert.deepEqual(fresh.drawn.filter(drawn => drawn.includes("wave30")), [`assets/wave30/house_pair/${variant.key}_fresh.png`]);
-  // A household that drew the approved pair: the approved painting (or its Wave 2 variant), bare in winter as before.
-  const plain = [...Array(500).keys()].find(candidate => rawHouseBody(candidate, home.id, 3, "common", "vertical").variant === null)!;
-  const approved: GameState = { ...winter, seed: plain };
-  beginHouseVariantFrame(approved);
-  const old = recorder();
-  assert.equal(drawHouseCompoundSprite(old.context, home, 3), true);
-  assert.equal(old.drawn.some(drawn => drawn.includes("wave30")), false, old.drawn.join());
-  const bare = recorder();
-  drawBuildingOverlays(bare.context, approved, home);
-  assert.equal(bare.drawn.some(drawn => drawn.includes("wave30")), false, bare.drawn.join());
-  assert.equal(shownHouseVariantUrl(home, 3), null);
+  // Every seed: a Wave 30 painting with its winter snow and its boards, never the approved pair.
+  for (let candidate = 0; candidate < 200; candidate += 1) {
+    const scene: GameState = { ...winter, seed: candidate };
+    beginHouseVariantFrame(scene);
+    const drawn = recorder();
+    assert.equal(drawHouseCompoundSprite(drawn.context, home, 3), true);
+    assert.match(drawn.drawn[0] ?? "", /^assets\/wave30\/house_pair\/house_pair_l3_vertical_[cde]\.png$/, `seed ${candidate}`);
+    const layers = recorder();
+    drawBuildingOverlays(layers.context, scene, home);
+    assert.deepEqual(layers.drawn.filter(url => url.includes("wave30")).map(url => url.replace(/.*_(\w+)\.png$/, "$1")), ["weathered", "boarded", "snow"], `seed ${candidate}`);
+  }
 });

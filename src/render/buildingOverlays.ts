@@ -21,8 +21,8 @@ import { drawWave26HouseLayers, houseStateLayerNow, shownHouseVariant } from "./
 //  - UI-8/PLAGUE-b (chapter 3 plague): a plague-emptied house keeps the empty-house boards (vacantHouseBoards);
 //    only a base painting of L1–L3 takes event_plague_shut_lN instead. No door marks (historical accuracy).
 //  - stock piles at the door (stockPiles.ts).
-// Pair lots have no Wave 7 overlay (their roofs differ): the approved pair and its Wave 2 variants keep their walls bare
-// in winter. INSTALL-30: a pair showing a Wave 30 painting takes that painting's own layers by the same rules — its
+// Pair lots have no Wave 7 overlay (their roofs differ). INSTALL-30: every pair wears a Wave 30 painting (the approved
+// pair, bare, only while it loads) and takes that painting's own layers by the same rules — its
 // weathered or fresh, its boarded when abandoned (plague-emptied too: a variant's boards, vacantHouseBoards), snow in winter.
 // UI-4 (Wave 9, world before UI): a house on fire (F0-B `events.burning`) shows its roof in flames (fire_roof_lN on the
 // level's canvas) under a black smoke column (four frames, 150 ms each) and, when its household draws water from a

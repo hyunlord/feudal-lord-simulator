@@ -11,8 +11,9 @@ import { houseBodyAssignments, houseBodyOptions, rawHouseBody } from "../src/ren
 import { runtimeAssetDerivatives } from "../src/render/runtimeAssetDerivatives.generated";
 import { WAVE30_PAIR_HOUSE_IMAGES, WAVE30_PAIR_HOUSE_VARIANTS } from "../src/render/wave30PairHouseManifest.generated";
 
-// INSTALL-30 the Wave 30 pair-house variants: install consistency, the per-household choice among a pair's own four
-// paintings (Wave 26's rule), its weights and stability, and every painting's own state layers.
+// INSTALL-30 the Wave 30 pair-house variants: install consistency, every painting's own four state layers, the
+// per-household choice among a pair's three Wave 30 paintings (Wave 26's rule; never the approved pair), its weights
+// and stability.
 
 const LOTS = ["horizontal", "vertical"] as const;
 const building = (id: string, tx: number, ty: number, fields: Partial<Building> = {}): Building =>
@@ -71,12 +72,14 @@ test("install: 18 paintings and their 72 own layers, received bytes, ledgers, ro
   assert.match(readFileSync("scripts/checks/distBudget.config.json", "utf8"), /"category": "world", "label": "pair-house variants and their state layers \(Wave 30\)", "patterns": \["assets\/wave30\/\*\*"\]/);
 });
 
-test("choice: four paintings a pair (level and lot), the approved pair first; singles keep their own five", () => {
+test("choice: three paintings a pair (level and lot), Wave 30's c-e and never the approved pair; singles keep their own five", () => {
   for (const level of [2, 3, 4]) for (const lot of LOTS) {
     const options = houseBodyOptions(level, lot);
-    assert.equal(options.length, 4);
-    assert.deepEqual([options[0]!.roof, options[0]!.variant], ["clay_tile", null], "the approved pairs are red tile");
-    assert.deepEqual(options.slice(1).map(option => option.variant!.key), ["c", "d", "e"].map(variant => `house_pair_l${level}_${lot}_${variant}`));
+    assert.deepEqual(options.map(option => option.variant?.key), ["c", "d", "e"].map(variant => `house_pair_l${level}_${lot}_${variant}`));
+  }
+  // Whatever the household, level, lot or wealth, a pair's pick is a Wave 30 painting (each with its four layers above).
+  for (let index = 0; index < 3_000; index += 1) for (const level of [2, 3, 4]) for (const lot of LOTS) for (const wealth of ["common", "rich"] as const) {
+    assert.notEqual(rawHouseBody(index % 17, `pair-${index}`, level, wealth, lot).variant, null);
   }
   assert.equal(houseBodyOptions(2).length, 5);
   assert.ok(houseBodyOptions(2).every(option => option.variant === null || !("lot" in option.variant)));
@@ -88,13 +91,13 @@ test("selection: stable per household, keyed by the lot's building id, moved by 
     assert.equal(rawHouseBody(7, id, 3, "common", "vertical"), rawHouseBody(7, id, 3, "common", "vertical"));
   }
   const bySeed = new Set(Array.from({ length: 40 }, (_, seed) => rawHouseBody(seed, "pair-1", 2, "common", "horizontal").variant?.key ?? "existing"));
-  assert.equal(bySeed.size, 4, "the world seed reaches every painting");
+  assert.equal(bySeed.size, 3, "the world seed reaches every painting");
   const houses = [house("a", 2), house("b", 3), house("c", 4), house("s", 2)];
   const state = { seed: 11, buildings: [building("a", 2, 2, { houseLot: "horizontal" }), building("b", 8, 2, { houseLot: "vertical" }),
     building("c", 14, 2, { houseLot: "horizontal" }), building("s", 20, 2)], houses } as unknown as GameState;
   const first = houseBodyAssignments(state);
   for (const [id, level, lot] of [["a", 2, "horizontal"], ["b", 3, "vertical"], ["c", 4, "horizontal"]] as const) {
-    assert.ok(first.has(id), id);
+    assert.ok(first.get(id) !== null && first.get(id) !== undefined, id);
     assert.equal(first.get(id), rawHouseBody(11, id, level, level === 4 ? "rich" : "common", lot).variant, id);
   }
   assert.deepEqual(houseBodyAssignments({ ...state, tick: 9_999, houses: houses.map(entry => ({ ...entry, breadStock: 9 })) } as GameState), first,
@@ -109,25 +112,26 @@ test("selection: stable per household, keyed by the lot's building id, moved by 
   }
 });
 
-test("weights: Wave 26's roof weights over the pair's paintings; uniform within a roof", () => {
+test("weights: Wave 26's roof weights over the pair's three paintings; uniform within a roof", () => {
   const ids = Array.from({ length: 12_000 }, (_, index) => `lot-${index}`);
   const share = (level: number, lot: (typeof LOTS)[number], wealth: "common" | "rich", roof: string) =>
     ids.filter(id => rawHouseBody(3, id, level, wealth, lot).roof === roof).length / ids.length;
   const near = (actual: number, expected: number, label: string) => assert.ok(Math.abs(actual - expected) < 0.015, `${label}: ${actual.toFixed(3)} vs ${expected.toFixed(3)}`);
-  // L2 horizontal: approved tile + c, d thatch + e tile. Commoner thatch 3 x 2 : tile 1 x 2; rich 1 x 2 : 3 x 2.
-  near(share(2, "horizontal", "common", "thatch"), 6 / 8, "L2h commoner thatch");
-  near(share(2, "horizontal", "rich", "thatch"), 2 / 8, "L2h rich thatch");
-  // L2 vertical: approved tile + c thatch + d, e tile.
-  near(share(2, "vertical", "common", "thatch"), 3 / 6, "L2v commoner thatch");
-  // L3: approved tile, c thatch, d tile, e stone slate.
-  near(share(3, "horizontal", "common", "stone_slate"), 1 / 6, "L3h commoner stone");
-  near(share(3, "vertical", "rich", "clay_tile"), 6 / 9, "L3v rich tile");
-  // L4 (always rich): horizontal tile x 3, stone x 1; vertical tile x 2, stone x 2.
-  near(share(4, "horizontal", "rich", "stone_slate"), 2 / 11, "L4h stone");
-  near(share(4, "vertical", "rich", "stone_slate"), 4 / 10, "L4v stone");
+  // L2 horizontal: c, d thatch + e tile. Commoner thatch 3 x 2 : tile 1 x 1; rich 1 x 2 : 3 x 1.
+  near(share(2, "horizontal", "common", "thatch"), 6 / 7, "L2h commoner thatch");
+  near(share(2, "horizontal", "rich", "thatch"), 2 / 5, "L2h rich thatch");
+  // L2 vertical: c thatch + d, e tile.
+  near(share(2, "vertical", "common", "thatch"), 3 / 5, "L2v commoner thatch");
+  // L3: c thatch, d tile, e stone slate.
+  near(share(3, "horizontal", "common", "stone_slate"), 1 / 5, "L3h commoner stone");
+  near(share(3, "vertical", "rich", "clay_tile"), 3 / 6, "L3v rich tile");
+  // L4 (always rich): horizontal tile x 2, stone x 1; vertical tile x 1, stone x 2.
+  near(share(4, "horizontal", "rich", "stone_slate"), 2 / 8, "L4h stone");
+  near(share(4, "vertical", "rich", "stone_slate"), 4 / 7, "L4v stone");
   const counts = new Map<string, number>();
   for (const id of ids) { const key = rawHouseBody(3, id, 4, "rich", "horizontal").variant?.key ?? "existing"; counts.set(key, (counts.get(key) ?? 0) + 1); }
-  for (const key of ["existing", "house_pair_l4_horizontal_c", "house_pair_l4_horizontal_e"]) near(counts.get(key)! / ids.length, 3 / 11, `L4h ${key}`);
+  assert.equal(counts.has("existing"), false);
+  for (const key of ["house_pair_l4_horizontal_c", "house_pair_l4_horizontal_e"]) near(counts.get(key)! / ids.length, 3 / 8, `L4h ${key}`);
 });
 
 test("eligibility: a pair built to L2-L4 picks, also while burning or burnt (it has no fire painting); below L2 it has none", () => {

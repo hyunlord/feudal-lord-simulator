@@ -23,10 +23,11 @@ import { WAVE30_PAIR_HOUSE_VARIANTS } from "./wave30PairHouseManifest.generated"
 // Neighbour push, as Wave 2's: a touching house earlier in (ty, tx) order with the same raw pick takes the roof's
 // next painting (raw picks only, no cascade). A burning or burnt house (Wave 9's fire and ruin layers are painted on
 // the approved house) and an alehouse under its stake keep the approved painting.
-// INSTALL-30 a pair lot (L2-L4, horizontal or vertical) by the same rule among its own four paintings: the approved
-// pair (with its Wave 2 variants at L3 and L4) and Wave 30's c-e. The household is the lot's building id (a merge
-// keeps the source house's id, so a merged household picks again among the pair's paintings). A pair has no fire or
-// ruin painting (it shows the smoke column and soot on whatever it wears), so a burning or burnt pair keeps its own.
+// INSTALL-30 a pair lot (L2-L4, horizontal or vertical) by the same rule among Wave 30's c-e only: every pair wears a
+// painting with its own fresh, weathered, snow and boarded layers (the approved pair has none; it stays installed and
+// is drawn only while a Wave 30 painting loads, with its Wave 2 variants). The household is the lot's building id (a
+// merge keeps the source house's id, so a merged household picks again among the pair's paintings). A pair has no
+// fire or ruin painting (it shows the smoke column and soot on whatever it wears), so a burning or burnt pair keeps its own.
 
 export type Wave26Variant = (typeof WAVE26_HOUSE_VARIANTS)[number];
 export type Wave30PairVariant = (typeof WAVE30_PAIR_HOUSE_VARIANTS)[number];
@@ -37,18 +38,15 @@ export type HouseLot = "single" | "horizontal" | "vertical";
 export type HouseBodyOption = { readonly roof: HouseRoof; readonly variant: HousePainting | null };
 
 const ROOF_ORDER: readonly HouseRoof[] = ["thatch", "clay_tile", "stone_slate"];
-/** The roof of the approved pair paintings (L2-L4, both lots), read off the art: red clay tile, every one. */
-const PAIR_EXISTING_ROOF: HouseRoof = "clay_tile";
 const OPTIONS: readonly (readonly HouseBodyOption[])[] = [0, 1, 2, 3, 4].map(level => [
   { roof: HOUSE_VARIANT_CONFIG.existingRoof[level] as HouseRoof, variant: null },
   ...WAVE26_HOUSE_VARIANTS.filter(variant => variant.level === level).map(variant => ({ roof: variant.roof as HouseRoof, variant })),
 ]);
 const PAIR_OPTIONS = new Map<string, readonly HouseBodyOption[]>([2, 3, 4].flatMap(level => (["horizontal", "vertical"] as const).map(lot => [
-  `${level}:${lot}`, [{ roof: PAIR_EXISTING_ROOF, variant: null },
-    ...WAVE30_PAIR_HOUSE_VARIANTS.filter(variant => variant.level === level && variant.lot === lot).map(variant => ({ roof: variant.roof as HouseRoof, variant }))],
+  `${level}:${lot}`, WAVE30_PAIR_HOUSE_VARIANTS.filter(variant => variant.level === level && variant.lot === lot).map(variant => ({ roof: variant.roof as HouseRoof, variant })),
 ] as const)));
 
-/** The level's paintings, the approved one first: five for a single lot, four for a pair (levels 2-4). */
+/** The level's paintings: for a single lot five, the approved one first; for a pair (levels 2-4) Wave 30's three. */
 export function houseBodyOptions(level: number, lot: HouseLot = "single"): readonly HouseBodyOption[] {
   if (lot !== "single") return PAIR_OPTIONS.get(`${Math.max(2, Math.min(4, level))}:${lot}`) as readonly HouseBodyOption[];
   return OPTIONS[Math.max(0, Math.min(4, level))] as readonly HouseBodyOption[];
