@@ -180,14 +180,17 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
             ))}
           </ol>
           <h3>{CHRONICLE_COPY.statsHeading}</h3>
-          <ul className="chronicle-stats">{view.stats.map(line => <li key={line}>{line}</li>)}</ul>
+          <ul className="chronicle-stats">{view.stats.map(line => <li key={line}>{line}</li>)}</ul></section>
+          </div>
+          {/* UI-10: the page's footer — the full panel's width, held at the bottom while a long page (chapter 5's six
+              decisions) scrolls under it; its buttons in the right column's place, as before. */}
+          <div className="chronicle-page-footer">
           <div className="chronicle-actions">
             <Button type="button" className="chronicle-next" onPress={() => onNextChapter()} variant="secondary"><UiIcon sheet="action" cell="open" />{nextLabel ?? CHRONICLE_COPY.nextChapterOf(view.chapter)}</Button>
             <Button type="button" className="chronicle-keep" onPress={() => onKeepPlaying()} variant="secondary"><UiIcon sheet="time" cell="play" />{CHRONICLE_COPY.keepPlaying}</Button>
             {onOpenChronicle === undefined ? null : <Button type="button" className="chronicle-full" onPress={() => onOpenChronicle()} variant="primary">
               <UiIcon sheet="action" cell="log" />{CHRONICLE_COPY.openFull}</Button>}
-          </div></section>
-          </div>
+          </div></div>
         </div>
       </section>
     </div>

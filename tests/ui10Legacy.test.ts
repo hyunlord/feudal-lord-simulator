@@ -25,6 +25,10 @@ import { recordCard } from "../src/ui/chronicle/chronicleScreenModel";
 import { legacyLedgerView } from "../src/ui/hud/legacyLedgerModel";
 import { LEGACY_LEDGER_COPY } from "../src/ui/hud/legacyLedgerCopy.ko";
 import { LedgerDrawer } from "../src/ui/hud/HudShell";
+import { cashUpTo } from "../src/ui/hud/chapterLedgerTotals";
+import { reorgLedgerView } from "../src/ui/hud/reorgLedgerModel";
+import { wageLedgerView } from "../src/ui/hud/wageLedgerModel";
+import { ledgerView } from "../src/ledger/ledgerView";
 import { HEIR_CHOICE_PETITION_ID, LEGACY_CARD_PETITION_IDS } from "../src/content/legacyConfig";
 import { clothTown } from "./helpers/clothTown";
 import { LEGACY_ENDING_ANSWERS, throughLegacy } from "./helpers/legacyEndings";
@@ -210,11 +214,9 @@ test("UI-10 gate 4: the ledger drawer's stock tab has a chapter-5 section — th
   const end = endOf("free_borough");
   const view = legacyLedgerView(end)!;
   assert.deepEqual(view.rows.map(row => row.category), ["royal_subsidy", "succession_relief", "legacy_endowment", "charter_fee", "church_rebuilding", "fee_farm"]);
-  const since = end.legacy!.startTick;
+  const fourEnd = end.politics!.chapterEnds.find(entry => entry.chapter === 4)!.tick;
   for (const row of view.rows) {
-    const entries = end.ledger!.entries.filter(entry => entry.account === "cash" && entry.category === row.category && entry.tick >= since).reduce((sum, entry) => sum + entry.amount, 0);
-    const folded = end.ledger!.rollups.filter(rollup => rollup.account === "cash" && rollup.periodStart >= since).reduce((sum, rollup) => sum + (rollup.byCategory[row.category] ?? 0), 0);
-    assert.equal(row.chapterTotal, entries + folded, row.category);
+    assert.equal(row.chapterTotal, cashUpTo(end, row.category, end.tick) - cashUpTo(end, row.category, fourEnd), row.category);
     assert.ok(row.label.length > 0 && row.shown.every(amount => amount.endsWith("d")));
   }
   assert.ok(view.rows.find(row => row.category === "royal_subsidy")!.chapterTotal < 0, "the Crown's tax was paid");
@@ -229,8 +231,34 @@ test("UI-10 gate 5–6: the buttons stay in view — the ending's three in a foo
   const hud = readFileSync("src/styles/hudShell.css", "utf8");
   assert.match(hud, /\.petition-body > \.story-modal-later \{ position: sticky; bottom: 0;/);
   assert.match(hud, /\[data-def="borough_autonomy"\][^{]*\{ min-height: 620px; \}/, "the charter card's full height");
-  assert.match(hud, /\.chronicle-columns \.chronicle-actions \{ position: sticky; bottom: 0;/, "the chapter page's buttons");
+  assert.match(hud, /\.chapter-page-body > \.chronicle-page-footer \{ position: sticky; bottom: 0;[^}]*background: var\(--parchment\);[^}]*border-top:/, "the chapter page's footer");
+  assert.match(readFileSync("src/ui/hud/StoryModals.tsx", "utf8"), /<\/div>\s*\{\/\*[^]*?\*\/\}\s*<div className="chronicle-page-footer">\s*<div className="chronicle-actions">/, "the footer after the two columns");
   const source = readFileSync("src/ui/legacy/LegacyEndingScreen.tsx", "utf8");
   const footer = source.slice(source.indexOf('className="legacy-ending-footer"'));
   for (const button of ["legacy-open-book", "legacy-export", "legacy-keep"]) assert.ok(footer.includes(button), button);
+});
+
+test("UI-10 gate 7: a closed chapter's ledger total stops at its end — chapter 4's fee farm (paid from the spring after the charter) is chapter 5's", () => {
+  const end = endOf("free_borough");
+  const endOfChapter = (chapter: number) => end.politics!.chapterEnds.find(entry => entry.chapter === chapter)!.tick;
+  const whole = (category: string) => ledgerView(end, "cash", "all").byCategory.find(row => row.category === category)?.amount ?? 0;
+  const four = reorgLedgerView(end)!;
+  const five = legacyLedgerView(end)!;
+  for (const row of four.rows) assert.equal(row.chapterTotal, cashUpTo(end, row.category, endOfChapter(4)), row.category);
+  const feeFour = four.rows.find(row => row.category === "fee_farm")!.chapterTotal;
+  const feeFive = five.rows.find(row => row.category === "fee_farm")!.chapterTotal;
+  assert.ok(whole("fee_farm") > 0, "the town paid its fee farm");
+  assert.equal(feeFour + feeFive, whole("fee_farm"), "chapters 4 and 5 split the fee farm, nothing counted twice");
+  assert.ok(feeFive > feeFour, `chapter 5 holds the fee farm (4: ${feeFour}, 5: ${feeFive})`);
+  const wages = wageLedgerView(end)!;
+  for (const row of wages.rows) assert.equal(row.chapterTotal, cashUpTo(end, row.category, endOfChapter(3)), row.category);
+  // This period and last period stay the current ones (the drawer's own periods), for a closed chapter too.
+  const recent = ledgerView(end, "cash", "recent").byCategory;
+  for (const row of four.rows) assert.equal(row.thisSeason, recent.find(entry => entry.category === row.category)?.amount ?? 0, row.category);
+  // A chapter being played counts up to now.
+  const open = clothTown();
+  const playing = reorgLedgerView(open);
+  if (playing !== null && open.politics?.chapterEnds.every(entry => entry.chapter !== 4)) {
+    for (const row of playing.rows) assert.equal(row.chapterTotal, cashUpTo(open, row.category, open.tick), row.category);
+  }
 });
