@@ -8,7 +8,7 @@ Claude Code 세션이 시작할 때 읽는 요약이다.
 ## 목적
 잉글랜드 1300–1450 시장도시를 영주로서 키우는 등각 2D 건설·경영 게임을 **사람이 끝까지 하고 싶어 하는 게임**으로 만든다. 시스템은 재료이고, 플레이어의 경험이 결과다. 단계를 넘는 관문은 사람 플레이(G1~G4)이고, 에이전트 관문(시나리오·가드레일·결정론·깨끗한 클론)은 회귀를 막는 장치다.
 
-## 정체성 여섯
+## 정체성 일곱
 1. **역사가 재료**
    - 대기근·전쟁·흑사병·재편이 병목을 토지 → 돈 → 사람 → 권리로 옮긴다.
    - 고증은 실제 자료로 한다. 금지 목록: 문 표식, 홉 맥주, 육각 관, 담비, 원색 염료, 현대 달력·헤어·칼라, 물레방아 곡물 방앗간, 집 굴뚝.
@@ -26,6 +26,7 @@ Claude Code 세션이 시작할 때 읽는 요약이다.
 6. **모든 것이 남는다**
    - 내 결정(대안·예측·실제), 사건, 인물의 생애, 주변 세력의 역사가 전부 기록 원장에 남는다.
    - 연대기·인물 전기·세력 연대기 화면에서 "그때는 어땠나"를 글과 그때의 지도로 본다([CHRONICLE_DESIGN](docs/design/CHRONICLE_DESIGN.md)).
+7. **조건을 만드는 영주**: 플레이어는 조건을 만들고 도시는 이유 있게 반응한다([영주 모드](docs/design/lord-mode.md)).
 
 ## 화면 원칙
 - **평소엔 게임만.**
@@ -88,6 +89,7 @@ Claude Code 세션이 시작할 때 읽는 요약이다.
   - [플레이어 흐름](docs/design/player-flow.md)(헌장의 PLAYER_FLOW_DESIGN)
   - [보이는 시뮬레이션](docs/design/visibility.md)(헌장의 VISIBILITY_DESIGN)
   - [기록·연대기](docs/design/CHRONICLE_DESIGN.md)
+  - [영주 모드](docs/design/lord-mode.md)(종합 [lord-mode-synthesis](docs/design/lord-mode-synthesis.md))
   - 결정 목록 [docs/decisions/README.md](docs/decisions/README.md)
 - **조사**: [docs/research/](docs/research/)(조사 15: UI 상태·HUD)
 - **운영**: [원격 실행](docs/REMOTE_RUNS.md), [플레이 서버](docs/PLAY_SERVER.md)
