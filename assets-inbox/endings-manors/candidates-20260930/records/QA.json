@@ -1,0 +1,50 @@
+{
+  "reviewedAt": "2026-09-30T10:25:07.252Z",
+  "verdict": "candidate_pass",
+  "blockingIssues": [],
+  "inspection": "Six full-size ending JPEGs, two manor PNGs, two proof boards, Wave21 and Wave31 reference paintings.",
+  "checks": [
+    {
+      "asset": "스스로 다스리는 도시",
+      "result": "pass",
+      "evidence": "시민들이 모인 길드홀 앞 공공 탁자와 도시 인장."
+    },
+    {
+      "asset": "이름이 남은 가문",
+      "result": "pass",
+      "evidence": "교회 안 무덤과 세대가 다른 가족의 추모."
+    },
+    {
+      "asset": "상인들의 기도처",
+      "result": "pass",
+      "evidence": "강변 창고 곁 작은 독립 예배당, 기도와 화물 노동."
+    },
+    {
+      "asset": "가문의 도시",
+      "result": "pass",
+      "evidence": "장원 난간의 두 세대와 같은 가문 깃발이 선 도시 전경."
+    },
+    {
+      "asset": "영주의 도시",
+      "result": "pass",
+      "evidence": "장원 대청에서 앉은 영주와 서 있는 청원자들의 재판."
+    },
+    {
+      "asset": "순례자의 도시",
+      "result": "pass",
+      "evidence": "교회 입장 행렬과 순례 배지 좌판."
+    },
+    {
+      "asset": "장원 A/B",
+      "result": "pass",
+      "evidence": "기존 건축 배치 유지, 닫힌 창·빗장·마당 잡초, 접지선과 주요 윤곽 정렬."
+    }
+  ],
+  "noVisibleLettering": true,
+  "styleMatch": "Warm muted stone/wood/wool material rendering and painterly realism consistent with inspected project references.",
+  "limitations": [
+    "Manor roof saturation is slightly stronger than the originals.",
+    "Manor architecture is visually aligned, not pixel-identical; supplied silhouette IoU is about 0.99.",
+    "Visual inspection is not an exhaustive historical research audit or game runtime test."
+  ]
+}
