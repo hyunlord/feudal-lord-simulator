@@ -1,0 +1,596 @@
+{
+ "schema": 1,
+ "run": "render-UIAUDIT-tool-23161ae",
+ "commit": "23161ae8cac31f056d3436f1720fc8923e2701a2",
+ "dirty": false,
+ "inputs": {
+  "src": "40c74d46464801a2b49bd77720f65244ecb62bf1",
+  "assets": "fc6bb7053839259339b5692145d7b172f5439ae7",
+  "audit": "fa43bebff17ddf2b92d83636f26e6a384b8486b0",
+  "measure": "931eb4b307d8f86b81aa7e228d5f5cb2d64cfdc2",
+  "scene": "60057c6e31df4dac028f85eb582ca9dff3a3e8bc"
+ },
+ "inputHash": "36b8f886e7cd652a76c081bb986d645bc6a84dae23b6985b142bad6c5d6c51cb",
+ "measuredAt": "2026-09-30T13:05:36.591Z",
+ "report": "docs/verification/uiaudit1/geometry/render-UIAUDIT-tool-23161ae/geometry.json",
+ "axes": {
+  "viewports": [
+   "1280x800",
+   "1920x1080",
+   "tablet-1180x820"
+  ],
+  "copies": [
+   "normal",
+   "long"
+  ],
+  "numbers": [
+   "normal",
+   "extreme"
+  ]
+ },
+ "rows": 76,
+ "conditions": 810,
+ "measured": 795,
+ "failures": 4887,
+ "unopened": 15,
+ "unreachable": [
+  "hud.goal-help",
+  "hud.unlock-banner",
+  "hud.era-ceremony",
+  "hud.build-details"
+ ],
+ "warnings": 256,
+ "byCheck": {
+  "outside": 3658,
+  "overflow": 269,
+  "border": 556,
+  "portrait": 12,
+  "overlap": 392,
+  "empty": 0,
+  "controls": 0
+ },
+ "bySurface": {
+  "hud.status-pill": {
+   "failures": 100,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 100
+   }
+  },
+  "hud.season-strip-panel": {
+   "failures": 174,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 102,
+    "border": 72
+   }
+  },
+  "hud.time-cluster": {
+   "failures": 132,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 60,
+    "overflow": 12,
+    "border": 60
+   }
+  },
+  "hud.settings-popover": {
+   "failures": 224,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 208,
+    "overflow": 4,
+    "border": 4,
+    "overlap": 8
+   }
+  },
+  "hud.layer-switch": {
+   "failures": 18,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 18
+   }
+  },
+  "hud.layer-switch-note": {
+   "failures": 12,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12
+   }
+  },
+  "hud.action-dock": {
+   "failures": 48,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 48
+   }
+  },
+  "hud.steward-bubble": {
+   "failures": 12,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12
+   }
+  },
+  "hud.crisis-icons": {
+   "failures": 18,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 18
+   }
+  },
+  "hud.event-chips": {
+   "failures": 24,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24
+   }
+  },
+  "hud.event-card": {
+   "failures": 120,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 72,
+    "border": 48
+   }
+  },
+  "hud.goal-chips": {
+   "failures": 18,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12,
+    "border": 6
+   }
+  },
+  "hud.pause-veil": {
+   "failures": 12,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12
+   }
+  },
+  "hud.completion-toast": {
+   "failures": 18,
+   "unopened": 6,
+   "byCheck": {
+    "outside": 12,
+    "border": 6
+   }
+  },
+  "hud.cause-legend": {
+   "failures": 12,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12
+   }
+  },
+  "hud.zone-toolbar": {
+   "failures": 138,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 132,
+    "overflow": 6
+   }
+  },
+  "hud.zone-land-legend": {
+   "failures": 12,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12
+   }
+  },
+  "hud.placement-confirm": {
+   "failures": 12,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12
+   }
+  },
+  "hud.prediction-chip": {
+   "failures": 78,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 54,
+    "border": 24
+   }
+  },
+  "hud.hover-tooltip": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.build-drawer": {
+   "failures": 192,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 96,
+    "border": 96
+   }
+  },
+  "hud.build-pinned": {
+   "failures": 12,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12
+   }
+  },
+  "hud.qa-overlay": {
+   "failures": 144,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 144
+   }
+  },
+  "slot.goals": {
+   "failures": 18,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12,
+    "overflow": 6
+   }
+  },
+  "slot.goals.settlement": {
+   "failures": 36,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24,
+    "overflow": 12
+   }
+  },
+  "slot.goals.era-console": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.population": {
+   "failures": 24,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12,
+    "border": 12
+   }
+  },
+  "slot.inspector": {
+   "failures": 24,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12,
+    "border": 12
+   }
+  },
+  "slot.ledger.stock": {
+   "failures": 216,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 216
+   }
+  },
+  "slot.ledger.alerts": {
+   "failures": 84,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 84
+   }
+  },
+  "slot.ledger.view": {
+   "failures": 120,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 120
+   }
+  },
+  "slot.ledger.map": {
+   "failures": 48,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 48
+   }
+  },
+  "slot.ledger.map-overview": {
+   "failures": 12,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12
+   }
+  },
+  "slot.ledger.rights": {
+   "failures": 17,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 17
+   }
+  },
+  "slot.ledger.rights-decline": {
+   "failures": 12,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12
+   }
+  },
+  "slot.ledger.wage": {
+   "failures": 288,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 276,
+    "border": 12
+   }
+  },
+  "slot.ledger.reorg": {
+   "failures": 360,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 300,
+    "border": 60
+   }
+  },
+  "slot.ledger.legacy": {
+   "failures": 360,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 300,
+    "border": 60
+   }
+  },
+  "map.selection.house": {
+   "failures": 48,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 36,
+    "overflow": 12
+   }
+  },
+  "map.selection.walker": {
+   "failures": 24,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12,
+    "overflow": 12
+   }
+  },
+  "map.selection.site": {
+   "failures": 24,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12,
+    "overflow": 12
+   }
+  },
+  "map.selection.farmstead": {
+   "failures": 36,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24,
+    "overflow": 12
+   }
+  },
+  "map.selection.store": {
+   "failures": 36,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24,
+    "overflow": 12
+   }
+  },
+  "modal.pause": {
+   "failures": 72,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 72
+   }
+  },
+  "modal.season-ledger": {
+   "failures": 42,
+   "unopened": 6,
+   "byCheck": {
+    "outside": 42
+   }
+  },
+  "modal.famine": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch1": {
+   "failures": 72,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 36,
+    "overflow": 12,
+    "overlap": 24
+   }
+  },
+  "modal.petition.ch2-war": {
+   "failures": 81,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 30,
+    "overflow": 12,
+    "overlap": 39
+   }
+  },
+  "modal.petition.ch4-reorg": {
+   "failures": 75,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 30,
+    "overflow": 12,
+    "overlap": 33
+   }
+  },
+  "modal.petition.ch5-legacy": {
+   "failures": 51,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 21,
+    "overflow": 6,
+    "overlap": 24
+   }
+  },
+  "modal.petition.heir": {
+   "failures": 92,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 39,
+    "overflow": 15,
+    "overlap": 38
+   }
+  },
+  "modal.chapter-page.ch1": {
+   "failures": 36,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24,
+    "overflow": 12
+   }
+  },
+  "modal.chapter-page.ch2": {
+   "failures": 38,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24,
+    "overflow": 12,
+    "overlap": 2
+   }
+  },
+  "modal.chapter-page.ch3": {
+   "failures": 52,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24,
+    "overflow": 10,
+    "overlap": 18
+   }
+  },
+  "modal.chapter-page.ch4": {
+   "failures": 60,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24,
+    "overflow": 6,
+    "overlap": 30
+   }
+  },
+  "modal.chapter-page.ch5": {
+   "failures": 146,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 40,
+    "overflow": 12,
+    "overlap": 94
+   }
+  },
+  "modal.chapter-preview": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.chapter-loading": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.person-card": {
+   "failures": 72,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 36,
+    "border": 24,
+    "portrait": 12
+   }
+  },
+  "modal.history.records": {
+   "failures": 4,
+   "unopened": 0,
+   "byCheck": {
+    "overlap": 4
+   }
+  },
+  "modal.history.record-card": {
+   "failures": 120,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 72,
+    "border": 48
+   }
+  },
+  "modal.history.snapshot-map": {
+   "failures": 36,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24,
+    "border": 12
+   }
+  },
+  "modal.select-list": {
+   "failures": 48,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 48
+   }
+  },
+  "modal.history.decision": {
+   "failures": 60,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 60
+   }
+  },
+  "modal.history.biography": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.family-tree": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.factions": {
+   "failures": 168,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 156,
+    "overflow": 12
+   }
+  },
+  "modal.history.faction-page": {
+   "failures": 28,
+   "unopened": 0,
+   "byCheck": {
+    "overflow": 24,
+    "overlap": 4
+   }
+  },
+  "modal.legacy-ending": {
+   "failures": 118,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 32,
+    "overflow": 12,
+    "overlap": 74
+   }
+  },
+  "modal.chronicle-book": {
+   "failures": 72,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 60,
+    "overflow": 12
+   }
+  },
+  "screen.welcome": {
+   "failures": 21,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 21
+   }
+  },
+  "dev.ui-kit": {
+   "failures": 6,
+   "unopened": 3,
+   "byCheck": {
+    "outside": 6
+   }
+  }
+ }
+}

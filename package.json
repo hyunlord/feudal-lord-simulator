@@ -21,6 +21,7 @@
     "remote:browser": "scripts/remote/run.sh --task browser",
     "remote:clone-check": "scripts/remote/run.sh --task clone-check",
     "remote:perf": "scripts/remote/run.sh --task perf",
+    "remote:ui-geometry": "scripts/remote/run.sh --task ui-geometry",
     "perf:gate": "tsx scripts/perf/perfGate.ts",
     "hooks:install": "sh scripts/git-hooks/install.sh",
     "postinstall": "test ! -f scripts/git-hooks/install.sh || sh scripts/git-hooks/install.sh",
