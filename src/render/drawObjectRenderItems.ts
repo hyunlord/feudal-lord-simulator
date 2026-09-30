@@ -25,6 +25,7 @@ import { drawWarProp } from "./warWorldProps";
 import { drawVillageLifeItem } from "./villageLifeDraw";
 import { drawPlagueProp } from "./plagueWorldProps";
 import { drawReorgPropAt } from "./reorgWorldProps";
+import { drawAleDrinker } from "./alehouseCrowd";
 import { drawCountrysideItem } from "./countrysideDraw";
 import { placeWalkers, walkerHiddenBehind } from "./walkerOcclusion";
 
@@ -93,6 +94,10 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "plague_prop") { // UI-8 chapter 3 fresh graves in the churchyard
       if (viewMode === "normal") drawPlagueProp(context, item.prop);
+      continue;
+    }
+    if (item.kind === "ale_drinker") { // NAT-2 the alehouse crowd, on the village life's clock
+      if (viewMode === "normal") drawAleDrinker(context, input.state, item, input.lifeClockMs ?? input.nowMs ?? 0);
       continue;
     }
     if (item.kind === "reorg_prop") { // UI-9 chapter 4 guildhall world prop
