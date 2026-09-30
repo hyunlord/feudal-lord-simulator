@@ -328,6 +328,8 @@
 /* NAT-1: tablet (coarse pointer) width token overrides — multiply each token by 1.15 so
    floating boxes scale up proportionally on touch screens. */
 @media (pointer: coarse) {
+  /* UI-AUDIT-1: the speed seals are touch targets too — 48 px on a coarse pointer (44 on a fine one). */
+  .app-shell .speed-seal { width: 48px; height: 48px; }
   :root {
     --box-w-small: 322px;
     --box-w-medium: 414px;

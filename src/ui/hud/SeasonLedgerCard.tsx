@@ -1,7 +1,7 @@
 import { UiIcon } from "../UiIcon";
 import type { SeasonLedgerCardModel } from "../seasonLedgerCard";
 import { SEASON_LEDGER_COPY } from "../seasonLedgerCopy.ko";
-import { wave8ContentStyle, wave8FrameLayerStyle } from "../wave8Art";
+import { wave8FrameLayerStyle } from "../wave8Art";
 import { seasonSceneStyle } from "../wave19Art";
 import { Button } from "../kit";
 import { ResourceGlyph } from "../ResourceArtwork";
@@ -24,8 +24,8 @@ export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }
             <span className="season-ledger-scene-icon" role="img" aria-label={scene.name} style={seasonSceneStyle(scene.id, SCENE_ICON_PX)} />
             {scene.value === null ? null : <strong>{scene.value}</strong>}</li>)}
         </ol>
-        <div className="season-ledger-body" style={wave8ContentStyle("frame_season_ledger")}>
-          {/* INSTALL-3: the season's lines scroll; the card's own controls (계속, the auto toggle) stay pinned below them. */}
+        <div className="season-ledger-body">
+          {/* INSTALL-3: the card's own controls (계속, the auto toggle) stay pinned below the season's lines. */}
           <div className="season-ledger-content">
             <h2>{model.title}</h2>
             <p className="season-ledger-scenes-line">{model.scenesLine}</p>

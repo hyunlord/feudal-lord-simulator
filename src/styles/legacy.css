@@ -49,8 +49,11 @@
 .legacy-axis-parts li[data-zero="true"] { color: var(--palette-ink-muted); }
 .legacy-verdict-lines { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; font-size: 14px; font-weight: 700; }
 .legacy-actions button { min-height: 48px; }
-/* The ending's buttons: a footer held at the bottom of the scrolling verdict (1280×800, 1180×820: always in view). */
-.legacy-ending-footer { position: sticky; bottom: 0; z-index: 1; display: grid; gap: 2px; margin: 0; padding: 6px 0 0;
+/* The ending's buttons: a footer, the body's last row, under the verdict that scrolls in the row above it (1280×800,
+   1180×820: always in view; UI-AUDIT-1: the verdict never scrolls under the buttons). */
+.legacy-ending-body { grid-template-rows: minmax(0, 1fr) auto; align-content: stretch; overflow: hidden; }
+.legacy-ending-scroll { display: grid; align-content: start; gap: 6px; min-height: 0; overflow-x: hidden; overflow-y: auto; }
+.legacy-ending-footer { display: grid; gap: 2px; margin: 0; padding: 6px 0 0;
   background: var(--parchment); border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
 .legacy-ending-footer .legacy-actions { margin-top: 0; }
 .legacy-export-status { min-height: 18px; margin: 0; font-size: 13px; color: var(--palette-ink-muted); }

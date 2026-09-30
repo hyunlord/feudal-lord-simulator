@@ -149,7 +149,10 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
   const onList = view === "records";
   useEffect(() => {
     const observer = new ResizeObserver(() => {
-      setViewport({ list: list.current?.clientHeight ?? 480, page: body.current?.clientHeight ?? 640 });
+      // UI-AUDIT-1: a person's page is drawn below its tabs (and the column's 6 px gap): the page fits under them.
+      const tabs = body.current?.querySelector<HTMLElement>(".chronicle-person-tabs") ?? null;
+      const above = tabs === null ? 0 : tabs.offsetHeight + 6;
+      setViewport({ list: list.current?.clientHeight ?? 480, page: (body.current?.clientHeight ?? 640) - above });
     });
     if (list.current !== null) observer.observe(list.current);
     if (body.current !== null) observer.observe(body.current);

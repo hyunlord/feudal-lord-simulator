@@ -10,6 +10,7 @@ import { artPatchStyle } from "../artPatch";
 import { EmblemImage } from "../heraldry/EmblemImage";
 import { usePresentationPreference } from "../../render/PresentationToggle";
 import { frameArtSpaceStyle, frameBoxStyle } from "../frameBox";
+import { slotInside, type ArtRect } from "./paintedSlots";
 
 // CHRON-1 biography (CHRONICLE_DESIGN 2.2): the Wave 19 `frame_biography` page (640 x 800 art, drawn at one scale so
 // its printed slots stay where they are): the portrait in the great circle (the pool picture of the person's age now;
@@ -24,10 +25,13 @@ export const BIOGRAPHY_PAGE = { width: 640, height: 800 } as const;
 /** A slot on the page art, in art pixels (measured on frame_biography.png). */
 const slot = (left: number, top: number, width: number, height: number): CSSProperties =>
   ({ left: `${left / 6.4}%`, top: `${top / 8}%`, width: `${width / 6.4}%`, height: `${height / 8}%` });
-const SLOTS = {
-  portrait: slot(62, 117, 196, 196), arms: slot(52, 352, 96, 116), mark: slot(189, 370, 86, 86), match: slot(36, 494, 262, 44),
-  header: slot(330, 44, 272, 146), life: slot(296, 196, 310, 326), relations: slot(40, 556, 562, 90), records: slot(40, 660, 562, 106),
-} as const;
+/** The printed circle, shield and small circle (their art is the frame's; the audit reads them as slots). */
+const SLOTS = { portrait: slot(62, 117, 196, 196), arms: slot(52, 352, 96, 116), mark: slot(189, 370, 86, 86) } as const;
+/** UI-AUDIT-1: the text slots, cut to the page's content box at its scale (paintedSlots.ts). */
+const TEXT_SLOTS = {
+  match: { left: 36, top: 494, width: 262, height: 44 }, header: { left: 330, top: 44, width: 272, height: 146 }, life: { left: 296, top: 196, width: 310, height: 326 },
+  relations: { left: 40, top: 556, width: 562, height: 90 }, records: { left: 40, top: 660, width: 562, height: 106 },
+} as const satisfies Record<string, ArtRect>;
 
 /** UI-7b: the printed shield and small circle (with their fleurons) and a blank parchment area of the right column to cover them with. */
 const PRINTED = { arms: { x: 42, y: 338, width: 114, height: 148 }, mark: { x: 166, y: 346, width: 134, height: 136 } } as const;
@@ -39,6 +43,7 @@ export function BiographyPage({ view, scale, onPerson, onRecord }: {
   const portrait = portraitStyle(view.portraitId, Math.round(196 * scale));
   const developer = usePresentationPreference("developerInfo");
   const page = wave19Url("frame_biography");
+  const text = (key: keyof typeof TEXT_SLOTS) => slotInside("biography", BIOGRAPHY_PAGE, scale, TEXT_SLOTS[key]);
   const cover = (key: keyof typeof PRINTED) => <span className={`chronicle-biography-cover chronicle-biography-cover--${key}`} aria-hidden="true"
     style={artPatchStyle(page, BIOGRAPHY_PAGE.width, BIOGRAPHY_PAGE.height, scale, PRINTED[key], BLANK[key], "var(--palette-parchment)")} />;
   return (
@@ -54,17 +59,17 @@ export function BiographyPage({ view, scale, onPerson, onRecord }: {
         style={{ ...SLOTS.portrait, ...personStateOrnamentStyle(view.ornament, Math.round(196 * scale)) }} />}
       {view.arms === null ? cover("arms") : <span className="chronicle-biography-arms" style={SLOTS.arms}><EmblemImage emblem={view.arms} size={Math.round(96 * scale)} label={view.emblemLabel} /></span>}
       {view.mark === null ? cover("mark") : <span className="chronicle-biography-mark" style={SLOTS.mark}><EmblemImage emblem={view.mark} size={Math.round(86 * scale)} label={view.emblemLabel} /></span>}
-      {developer ? <p className="chronicle-biography-match" data-exact={view.portraitExact ? "true" : "false"} style={SLOTS.match}>{view.portraitLine}</p> : null}
-      <header className="chronicle-biography-header" style={SLOTS.header}>
+      {developer ? <p className="chronicle-biography-match" data-exact={view.portraitExact ? "true" : "false"} style={text("match")}>{view.portraitLine}</p> : null}
+      <header className="chronicle-biography-header" style={text("header")}>
         <h3>{view.name}</h3>
         <p>{view.life}</p>
         {view.deathCause === null ? null : <p className="chronicle-biography-cause">{view.deathCause}</p>}
         <p>{COPY.roleHousehold(view.role, view.household)}</p>
         {view.offices.map(office => <p key={office} className="chronicle-biography-office">{COPY.employment(office)}</p>)}
-        {/* UI-7: the resemblance last in the header slot (it clips there, never over the life below). */}
+        {/* UI-7: the resemblance last in the header slot (UI-AUDIT-1: the slot scrolls, never over the life below). */}
         {view.resemblance === null ? null : <p className="chronicle-biography-resemblance">{view.resemblance}</p>}
       </header>
-      <section className="chronicle-biography-life" aria-label={COPY.lifeHeading} style={SLOTS.life}>
+      <section className="chronicle-biography-life" aria-label={COPY.lifeHeading} style={text("life")}>
         {view.events.length === 0 ? <p className="chronicle-biography-empty">{COPY.lifeEmpty}</p> : (
           <ol>{view.events.map(event => (
             <li key={event.id} data-last={event.last ? "true" : undefined}>
@@ -74,7 +79,7 @@ export function BiographyPage({ view, scale, onPerson, onRecord }: {
             </li>
           ))}</ol>)}
       </section>
-      <section className="chronicle-biography-band" aria-label={COPY.relationsHeading} style={SLOTS.relations}>
+      <section className="chronicle-biography-band" aria-label={COPY.relationsHeading} style={text("relations")}>
         <h4>{view.survivors ? COPY.survivors : COPY.relationsHeading}</h4>
         {view.relations.length === 0 ? <p className="chronicle-biography-empty">{COPY.noRelations}</p> : (
           <ul>{view.relations.map(relation => {
@@ -83,7 +88,7 @@ export function BiographyPage({ view, scale, onPerson, onRecord }: {
               {face === null ? null : <span aria-hidden="true" className="chronicle-biography-chip-face" style={face} />}{relation.line}</Button></li>;
           })}</ul>)}
       </section>
-      <section className="chronicle-biography-band" aria-label={COPY.recordsHeading} style={SLOTS.records}>
+      <section className="chronicle-biography-band" aria-label={COPY.recordsHeading} style={text("records")}>
         <h4>{COPY.recordsHeading}</h4>
         {view.records.length === 0 ? <p className="chronicle-biography-empty">{COPY.recordsEmpty}</p> : (
           <ul>{view.records.map(record => (

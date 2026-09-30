@@ -37,9 +37,10 @@ test("the lord's biography shows the house's arms in the shield and covers the s
   assert.match(html, /chronicle-biography-cover--mark/);
 });
 
-test("the person card covers a commoner's shield; the portrait's match line only with the developer display", () => {
+test("the person card covers the printed shield (UI-AUDIT-1: the lord's arms sit inside the content box, over the cover); the portrait's match line only with the developer display", () => {
   assert.match(card(baby.id), /person-card-emblem-cover/);
-  assert.equal(card(lord.id).includes("person-card-emblem-cover"), false);
+  assert.equal(card(baby.id).includes('class="person-card-emblem"'), false);
+  assert.match(card(lord.id), /class="person-card-emblem"/);
   assert.equal(page(baby.id).includes("chronicle-biography-match"), false);
   assert.equal(card(baby.id).includes("person-card-match"), false);
   setPresentationPreference("developerInfo", true);

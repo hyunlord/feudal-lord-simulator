@@ -115,3 +115,35 @@ test("the inspector renders name, state line, 왜?/조치 and a close button", (
   assert.match(markup, /class="left-inspector-line left-inspector-line--block">우물이 없습니다</);
   assert.match(markup, /<button type="button" class="left-inspector-close ui-btn[^"]*" aria-label="닫기">/);
 });
+
+test("UI-AUDIT-1: a barn the stuck-goods chip reports says the chip's reason and what to do, not '지금 할 일이 없습니다'", () => {
+  // Given: the chip's row for a barn (its harvest lost behind the full barn, the cart not keeping up); the seed city
+  // has no barn, so its mill carries the row
+  const state = seedGroundState(2);
+  const barn = state.buildings.find((candidate) => candidate.kind === "farmstead") ?? state.buildings.find((candidate) => candidate.kind === "mill")!;
+  const row = { buildingId: barn.id, kind: barn.kind, good: "wheat", amount: 932, since: null, reason: "no_carrier", spoiling: true,
+    carriers: 1, tile: { tx: barn.tx, ty: barn.ty } } as const;
+
+  // When
+  const model = inspectorModel(state, barn.id, [row]);
+  const markup = renderToStaticMarkup(createElement(Inspector, { state, buildingId: barn.id, onClose: () => undefined, stuck: [row] }));
+
+  // Then
+  assert.ok(model?.why.some((line) => line.block && line.text === "밀 932 묶임 — 운반꾼 부족 · 수확 버려짐"));
+  assert.deepEqual(model?.actions, ["이 건물 가까이에 곡창을 지어 수레 길을 줄이세요", "방앗간을 가까이 지으면 방앗간 수레가 밀을 가져갑니다"]);
+  assert.ok(!markup.includes("지금 할 일이 없습니다"));
+  // Another building's pile changes nothing here; without rows the inspector is as before.
+  assert.deepEqual(inspectorModel(state, barn.id, [{ ...row, buildingId: "elsewhere" }]), inspectorModel(state, barn.id));
+});
+
+test("UI-AUDIT-1: the stuck reasons read as actions with the store's particle (곡창과 · 창고를)", () => {
+  const state = seedGroundState(2);
+  const barn = state.buildings.find((candidate) => candidate.kind === "farmstead") ?? state.buildings.find((candidate) => candidate.kind === "mill")!;
+  const base = { buildingId: barn.id, kind: barn.kind, amount: 800, since: null, spoiling: false, carriers: 0, tile: { tx: barn.tx, ty: barn.ty } } as const;
+  const first = (good: "wheat" | "fleece", reason: "no_road" | "no_receiver" | "receiver_full" | "unknown") =>
+    inspectorModel(state, barn.id, [{ ...base, good, reason }])?.actions[0];
+  assert.equal(first("wheat", "no_road"), "곡창과 이 건물을 도로로 이어 주세요");
+  assert.equal(first("fleece", "no_receiver"), "창고를 지으세요");
+  assert.equal(first("wheat", "receiver_full"), "곡창을 하나 더 지으세요");
+  assert.equal(first("fleece", "unknown"), "창고까지 가는 길과 창고의 빈 자리를 확인하세요");
+});

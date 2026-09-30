@@ -49,7 +49,7 @@ export function StuckGoodsChip({ view, onInspect }: { readonly view: StuckGoodsC
   return (
     <Button type="button" className="stuck-goods-chip" aria-label={view.label} data-stuck-reason={view.row.reason}
       data-stuck-building={view.row.buildingId} onPress={() => pressStuckGoods(view.row, onInspect)} variant="secondary">
-      <span className="stuck-goods-bell" aria-hidden="true" style={wave8ImageStyle("icon_alert_bell_bad", 24)} />
+      <span className="stuck-goods-bell" aria-hidden="true" style={wave8ImageStyle("icon_alert_bell_bad", 16)} />
       <span className="stuck-goods-line">{view.line}</span>
       <span className="stuck-goods-reason">{view.reason}</span>
       {view.more === null ? null : <span className="stuck-goods-more">{view.more}</span>}
