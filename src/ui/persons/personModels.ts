@@ -4,6 +4,7 @@ import type { GameState } from "../../engine/engine.types";
 import { hashSeed } from "../../engine/prng";
 import { LORD_FAMILY_TAG, ageOf, currentYear, inTown, personById, personDisplayName } from "../../engine/persons";
 import { lordHouse } from "../../engine/lordshipState";
+import { stateCalendar } from "../../engine/scenarioState";
 import { persons } from "../../engine/personsApi";
 import { MANOR_HOUSEHOLD, type Person, type PersonClassBand } from "../../engine/persons.types";
 import type { PetitionRecord } from "../../engine/politics.types";
@@ -94,6 +95,12 @@ export function lordHouseholdRows(state: GameState): readonly PersonRow[] {
 }
 const LORD_FAMILY_ORDER: Readonly<Record<string, number>> = { head: 0, spouse: 1, kin: 2, child: 3 };
 
+/** UI-10 (F5-A LG-1): the year the ruling family left the manor for its country seat (null: it has not, or stayed). */
+export function familyCountrySeatYear(state: Pick<GameState, "legacy" | "scenarioId">): number | null {
+  const left = state.legacy?.family === "departed" ? state.legacy.steps.family_departure : undefined;
+  return left === undefined ? null : stateCalendar({ ...state, tick: left }).year;
+}
+
 /** A walker look's class band as a person's class (the bands without one match any class). */
 const LOOK_CLASS: Readonly<Partial<Record<WalkerClassBand, PersonClassBand>>> = {
   labor: "labour", servant: "poor_servant", poor: "poor_servant", textile: "artisan", artisan: "artisan", merchant: "merchant", gentry: "gentry",
@@ -148,7 +155,9 @@ export function personCardView(state: GameState, personId: string): PersonCardVi
   return {
     id: person.id, name: personDisplayName(person), role: PERSONS_COPY.cardRole(PERSONS_COPY.role(person.role), occupationOf(person)),
     life: PERSONS_COPY.cardLife(person.birthYear, ageOf(person, year)),
-    household: person.householdId === MANOR_HOUSEHOLD ? PERSONS_COPY.manor : PERSONS_COPY.householdOf(personDisplayName(head ?? person)),
+    household: person.householdId !== MANOR_HOUSEHOLD ? PERSONS_COPY.householdOf(personDisplayName(head ?? person))
+      // UI-10: the lord's family after it left the manor (the steward's office stays with the manor).
+      : person.tags.includes(LORD_FAMILY_TAG) && familyCountrySeatYear(state) !== null ? PERSONS_COPY.manorCountrySeat(familyCountrySeatYear(state)!) : PERSONS_COPY.manor,
     portraitId: portrait.portraitId, exact: portrait.exact,
     match: portrait.fixed ? PERSONS_COPY.stewardPortrait : PERSONS_COPY.portraitMatch(portrait.identityId, portrait.stage, portrait.exact),
     emblem, emblemLabel: emblem === null ? PERSONS_COPY.noEmblem : emblem.kind === "arms" ? PERSONS_COPY.arms : PERSONS_COPY.merchantMark,

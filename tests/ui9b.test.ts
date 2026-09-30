@@ -77,7 +77,8 @@ test("UI-9b chapter 5 opens over its Wave 31 painting (the opening screen and th
   assert.equal(chapterIntro(3), "chapter3_intro");
   assert.equal(chapterIntro(4), "chapter4_intro");
   assert.equal(chapterIntro(5), "chapter5_intro");
-  assert.equal(CHRONICLE_COPY.chapterOpening[5]?.title, "제5장 · 자치와 유산 · 1400–1450");
+  // UI-10: the title names the year the chapter began (the engine's chapter 4 end) to its planned end.
+  assert.equal(CHRONICLE_COPY.chapterOpening[5]?.title(1400), "제5장 · 자치와 유산 · 1400–1450");
   assert.equal(CHRONICLE_COPY.chapterOpening[5]?.start, "제5장 시작");
 });
 

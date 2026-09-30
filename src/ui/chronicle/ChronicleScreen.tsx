@@ -26,6 +26,7 @@ import type { FactionId } from "../../content/factionConfig";
 import { INTENT_ORDER } from "../../input/intentBus";
 import { platformServices } from "../../platform/platform";
 import { Button, Select, Tabs } from "../kit";
+import { LEGACY_SCREEN_COPY } from "../legacy/legacyScreenCopy.ko";
 
 // CHRON-1 chronicle screen (CHRONICLE_DESIGN 2.1, 2.2, 2.4): a full-screen modal over the town (the state machine's
 // `history` modal: time stops while it is up). The timeline on top, the filters, the record cards (a virtual list:
@@ -80,10 +81,13 @@ function ChronicleDetail({ state, item, view, compare, onView, onCompare, onLook
   );
 }
 
-export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = null }: {
+export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = null, onBook, onEnding }: {
   readonly state: GameState; readonly onClose: () => void; readonly onLookAt: (tile: Tile) => void;
   /** UI-5: opened from a person card's [전기 보기], on that person's biography. */
   readonly initialPersonId?: string | null;
+  /** UI-10 (LG-9): [연대기 책] opens the book so far; [결말 다시 보기] the campaign's ending once it is written. */
+  readonly onBook?: () => void;
+  readonly onEnding?: (() => void) | null;
 }) {
   const [filter, setFilter] = useState<ChronicleFilter>(DEFAULT_CHRONICLE_FILTER);
   const [selected, setSelected] = useState<string | null>(null);
@@ -233,6 +237,10 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
             ))}
           </ul>
         ) : <Button type="button" className="chronicle-back" onPress={() => setPersonId(null)} variant="secondary"><UiIcon sheet="action" cell="log" />{COPY.back}</Button>}
+        {onBook === undefined ? null : <Button type="button" className="chronicle-book" onPress={() => onBook()} variant="secondary">
+          <UiIcon sheet="action" cell="log" />{LEGACY_SCREEN_COPY.book.open}</Button>}
+        {onEnding === undefined || onEnding === null ? null : <Button type="button" className="chronicle-ending" onPress={() => onEnding()} variant="secondary">
+          <UiIcon sheet="action" cell="open" />{LEGACY_SCREEN_COPY.openEnding}</Button>}
         <Button type="button" className="chronicle-close" aria-label={COPY.closeLabel} onPress={() => onClose()} variant="icon">{COPY.close}</Button>
       </header>
       {personId !== null ? (

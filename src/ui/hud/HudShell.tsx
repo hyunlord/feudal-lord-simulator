@@ -182,6 +182,7 @@ export function RightsRegister({ view, onPerson }: { readonly view: LordshipView
         <div><p className="ledger-rights-house-name">{view.house}</p><p>{view.title}{view.demoted === null ? null : <> · <span className="ledger-rights-lost">{view.demoted}</span></>}</p>
           {view.pastHouses === null ? null : <p>{view.pastHouses}</p>}</div>
       </header>
+      {view.seat === null ? null : <p className="ledger-rights-seat">{view.seat}</p>}
       {view.household.length === 0 ? null : <section className="ledger-rights-household" aria-label={PERSONS_COPY.lordHouseholdHeading}>
         <h4>{PERSONS_COPY.lordHouseholdHeading}</h4><PersonList rows={view.household} onOpen={onPerson} /></section>}
       {view.decline === null ? null : <p className="ledger-rights-lost" role="status">{view.decline}</p>}

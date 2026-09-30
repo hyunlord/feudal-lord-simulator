@@ -3,6 +3,7 @@ import { scenarioById } from "../content/scenario/registry";
 import type { GameState } from "../engine/engine.types";
 import { WAVE21_IMAGES } from "../ui/wave21ArtManifest.generated";
 import { WAVE31_IMAGES } from "../ui/wave31ArtManifest.generated";
+import { WAVE33_IMAGES } from "../ui/wave33ArtManifest.generated";
 import { WAVE9_IMAGES } from "./wave9ArtManifest.generated";
 import { WAVE17_WORLD_IMAGES } from "./wave17WorldManifest.generated";
 import { WAVE12_GUILDHALL_IMAGES } from "./wave12GuildhallManifest.generated";
@@ -40,6 +41,9 @@ export const CHAPTER_ART: readonly ChapterArt[] = [
   { chapter: CHAPTER_FOUR.chapter, what: "Wave 12 guildhall world prop (UI-9: chapter 4 guild founded)", urls: urlsOf(WAVE12_GUILDHALL_IMAGES) },
   { chapter: CHAPTER_FIVE.chapter, what: "Wave 31 chapter 5 opening (UI-9b: the chronicle's chapter start, the opening screen)", urls: urlsOf(WAVE31_IMAGES, key => WAVE31_IMAGES[key].chapter === CHAPTER_FIVE.chapter) },
   { chapter: CHAPTER_FOUR.chapter, what: "Wave 17 lord's tax collector (UI-9b: chased from the market in 1381)", urls: urlsOf(WAVE17_WALKER_IMAGES) },
+  // UI-10: chapter 5 autonomy and legacy art (Wave 21 ch5_*) and its 1384–1400 interlude events (Wave 33).
+  { chapter: CHAPTER_FIVE.chapter, what: "Wave 21 chapter 5 illustrations (UI-10: decisions, events, chronicle, chapter-5 and campaign end)", urls: urlsOf(WAVE21_IMAGES, key => key.startsWith("ch5_")) },
+  { chapter: CHAPTER_FIVE.chapter, what: "Wave 33 chapter 5 interlude events (UI-10: 1391 staple … 1399 deposition)", urls: urlsOf(WAVE33_IMAGES) },
 ];
 
 const CHAPTER_OF_URL: ReadonlyMap<string, number> = new Map(CHAPTER_ART.flatMap(entry => entry.urls.map(url => [url, entry.chapter] as const)));

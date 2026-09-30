@@ -21,7 +21,9 @@ export type UiMode =
  * CHRON-1: `history` the full chronicle screen (the ledger drawer's tab, C, or the chapter page's [전체 연대기 보기]). */
 export type UiModal = "pause_menu" | "event" | "season_ledger" | "decision" | "petition" | "chronicle" | "chapter_preview" | "history"
   /** UI-5: a person's card (from a house's members, a petition's petitioners, the famine's steward). */
-  | "person_card";
+  | "person_card"
+  /** UI-10: the legacy verdict and the campaign's ending (after chapter 5's page), and the chronicle book (LG-9). */
+  | "legacy_ending" | "chronicle_book";
 export type UiState = Readonly<{ mode: UiMode; modals: readonly { readonly modal: UiModal; readonly under: UiMode }[]; hudHidden: boolean }>;
 export type UiEvent =
   | { readonly type: "open_build" } | { readonly type: "toggle_build" }

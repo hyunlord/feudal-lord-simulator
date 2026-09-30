@@ -1,4 +1,5 @@
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
+import type { LegacyInterludeId, LegacyStepId } from "../content/legacyConfig";
 import type { PlagueMark, ReorganisationMark, SeasonMarkKind } from "./seasonStrip";
 
 // UI-3 season strip: the year at a glance and what comes next. Times are calendar arrivals ("가을 초쯤"), never ticks.
@@ -27,6 +28,13 @@ export const SEASON_STRIP_COPY = {
     petitions_surge: "청원 물결", guild_demand: "길드 인가 청원", cloth_or_grain: "직물 대 곡물",
     overlord_warning: "백작의 경고", poll_tax: "인두세 징수",
     rebellion_rumour: "1381년 농민 반란 소문", autonomy_request: "자치 특허 협상", end: "4장 종료" } satisfies Record<ReorganisationMark["id"], string>,
+  /** UI-10: chapter 5's coming steps (F5-A `legacyForecast`), named as their cards and events are. */
+  legacy: { mayor_demand: "시장 선출 요구", royal_tax_envoy: "국왕의 과세 사절", succession: "늙은 영주의 후계자",
+    city_seal: "도시 인장", charter_sealing: "자치 특허의 인장", family_departure: "가문의 거처",
+    legacy_record: "남길 유산 하나", last_market: "1450년 마지막 장날" } satisfies Record<LegacyStepId, string>,
+  /** UI-10: the 1384–1400 interlude's coming events (FIX-9 LG-13 `legacyInterludes`). */
+  interlude: { staple: "양모 집산지 이전", guild_dispute: "길드와 상인의 다툼", market_fire: "장터 화재",
+    church_rebuilding: "교회 증축 청원", deposition: "리처드 2세 폐위" } satisfies Record<LegacyInterludeId, string>,
   /** Judgement 2026-09-26: the pill's food days, with the calendar point they reach ("식량 270일 — 가을 초까지"). */
   foodUntil: (days: number, season: 0 | 1 | 2 | 3, third: 0 | 1 | 2, nextYear: boolean) =>
     `식량 ${days}일 — ${nextYear ? "내년 " : ""}${SCENARIO_COPY.seasons[season]} ${THIRDS[third]}까지`,
