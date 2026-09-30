@@ -15,6 +15,12 @@
 }
 @media (pointer: coarse) { .app-shell { --hud-target: 48px; } }
 
+/* UI-AUDIT-1: the HUD's button groups have no fill of their own; each keeps the one gap around its buttons as a
+   transparent padding, the group placed that much further out, so the buttons stand where they did. The padding lets
+   the map's clicks through. */
+.app-shell :is(.layer-switch, .action-dock, .crisis-icons, .event-cards, .zone-toolbar) { padding: var(--frame-gap); pointer-events: none; }
+.app-shell :is(.layer-switch, .action-dock, .crisis-icons, .event-cards, .zone-toolbar) > * { pointer-events: auto; }
+
 /* contrast-audit selector=".status-pill" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
 .app-shell .status-pill {
   position: absolute; top: 8px; left: 8px; z-index: 4;
@@ -41,7 +47,7 @@
 .app-shell .hud-time-cluster[hidden] { display: none; }
 
 /* Crisis icons: under the speed, at most three, square. */
-.app-shell .crisis-icons { position: absolute; top: var(--hud-right-top); right: 8px; z-index: 4; display: flex; gap: 4px; }
+.app-shell .crisis-icons { position: absolute; top: calc(var(--hud-right-top) - var(--frame-gap)); right: 0; z-index: 4; display: flex; gap: 4px; }
 .app-shell .crisis-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; min-width: 44px; }
 .app-shell .crisis-icon--immediate { outline: 2px solid var(--palette-vermilion); outline-offset: -3px; }
 
@@ -111,15 +117,15 @@
 .app-shell .ledger-population-drawer { top: var(--hud-right-top); left: auto; right: 8px; }
 
 /* Layer switch bottom left (always on, locks visible). */
-.app-shell .layer-switch { position: absolute; left: 8px; bottom: 8px; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
+.app-shell .layer-switch { position: absolute; left: 0; bottom: 0; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
 .app-shell .layer-switch .control-layer { min-height: 44px; padding: 0 6px; font-size: 13px; }
 /* NAT-1: small token, fixed width so the note never resizes with content. */
-.app-shell .layer-switch-note { position: absolute; left: 0; bottom: 56px; margin: 0; width: min(var(--box-w-small), calc(100vw - 32px)); max-width: none;
+.app-shell .layer-switch-note { position: absolute; left: var(--frame-gap); bottom: calc(56px + var(--frame-gap)); margin: 0; width: min(var(--box-w-small), calc(100vw - 32px)); max-width: none;
   font-size: 13px; color: var(--palette-ink); background-color: var(--palette-vellum); }
 
 /* Action dock bottom right: build, ledger, steward (+ undo while a site can be taken back). */
 .app-shell :is(.layer-switch, .action-dock)[hidden] { display: none; }
-.app-shell .action-dock { position: absolute; right: 8px; bottom: 8px; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
+.app-shell .action-dock { position: absolute; right: 0; bottom: 0; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
 .app-shell .action-dock-button {
   display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
   min-width: 56px; min-height: 56px; padding: 2px 6px; font-size: 12px; font-weight: 700;
@@ -134,7 +140,7 @@
   color: var(--palette-ink); background-color: var(--palette-vellum);
 }
 /* The old advisor card placed itself under the resource bar (top / left): above the steward button instead. */
-.app-shell .action-dock .steward-bubble { top: auto; left: auto; right: 0; bottom: 64px; width: min(var(--box-w-medium), calc(100vw - 32px)); }
+.app-shell .action-dock .steward-bubble { top: auto; left: auto; right: var(--frame-gap); bottom: calc(64px + var(--frame-gap)); width: min(var(--box-w-medium), calc(100vw - 32px)); }
 /* NAT-1: quiet one-line bubble uses the small token. */
 .app-shell .action-dock .steward-bubble--line { width: min(var(--box-w-small), calc(100vw - 32px)); }
 .app-shell .steward-bubble--line .steward-line { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -216,7 +222,8 @@
 /* contrast-audit selector=".season-strip-panel" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
 .app-shell .season-strip-panel { position: absolute; top: calc(100% + var(--frame-tooltip-safe-bottom) + var(--hud-row-gap)); left: 0; z-index: 6; width: min(var(--box-w-medium), calc(100vw - 32px));
   color: var(--palette-ink); background-color: var(--palette-vellum); font-size: 13px; font-weight: 400; white-space: normal; line-height: 1.5; }
-.app-shell .season-strip-full { position: relative; margin: 14px 0 10px; }
+/* UI-AUDIT-1: the marks and the pin centre on the strip's ends; the strip keeps half a mark in from the gap. */
+.app-shell .season-strip-full { position: relative; margin: 14px 7px 10px; }
 .app-shell .season-strip-mark { position: absolute; top: -1px; transform: translateX(-50%); }
 .app-shell .season-strip-pin { position: absolute; top: -12px; transform: translateX(-50%); }
 .app-shell .season-strip-food { margin: 6px 0 4px; font-size: 14px; font-weight: 600; }
@@ -269,7 +276,7 @@
 @keyframes chapter-loading-out { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
 
 /* UX-3R2 zone toolbar (UX3R 5절): left of the map in the zone layer — brush, polygon, eraser, undo, redo, size. */
-.app-shell .zone-toolbar { position: absolute; left: 8px; top: 50%; z-index: 4; display: grid; gap: 4px; width: 148px; transform: translateY(-50%); }
+.app-shell .zone-toolbar { position: absolute; left: 0; top: 50%; z-index: 4; display: grid; gap: 4px; width: calc(148px + 2 * var(--frame-gap)); transform: translateY(-50%); }
 .app-shell .zone-toolbar[hidden] { display: none; }
 .app-shell :is(.zone-toolbar-kinds, .zone-toolbar-tools) { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 .app-shell .zone-toolbar-button { display: inline-flex; gap: 2px; align-items: center; justify-content: flex-start; min-width: 0; white-space: nowrap; min-height: 44px; padding: 0 4px; font-size: 12px; }
@@ -334,7 +341,7 @@
 .app-shell .inspector-blocker { margin: 0 0 4px; font-weight: 700; }
 
 /* UI-4 event chips and card (not modal): under the crisis bells, top right. */
-.app-shell .event-cards { position: absolute; top: calc(var(--hud-right-top) + var(--hud-target) + 6px); right: 8px; z-index: 5; display: grid; justify-items: end; gap: 6px; }
+.app-shell .event-cards { position: absolute; top: calc(var(--hud-right-top) + var(--hud-target) + 6px - var(--frame-gap)); right: 0; z-index: 5; display: grid; justify-items: end; gap: 6px; }
 .app-shell .event-chips { display: grid; justify-items: end; gap: 4px; }
 .app-shell .event-chip { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; padding: 0 10px 0 4px; font-size: 13px; font-weight: 600; }
 /* NAT-2 (QA-013): an open panel slot (goal log, population, inspector: 340 px; the ledger: the wide token) holds the top
@@ -343,7 +350,7 @@
 @media (min-width: 720px) {
   .app-shell [data-slot] { --slot-clear: calc(min(340px, 100% - 16px) + 8px); }
   .app-shell [data-slot="ledger"] { --slot-clear: calc(min(var(--box-w-wide), 100% - 16px) + 8px); }
-  .app-shell [data-slot] :is(.crisis-icons, .event-cards) { right: calc(8px + var(--slot-clear)); }
+  .app-shell [data-slot] :is(.crisis-icons, .event-cards) { right: var(--slot-clear); }
 }
 .app-shell .event-chip-art { display: inline-block; flex: 0 0 auto; width: 64px; height: 36px; border: 1px solid var(--palette-ink); }
 .app-shell .event-card { display: grid; gap: 6px; width: min(var(--box-w-medium), calc(100vw - 32px)); max-height: calc(100vh - 200px); overflow-y: auto; color: var(--palette-ink);
@@ -549,7 +556,7 @@
 .app-shell .qa-overlay { position: absolute; bottom: 72px; left: 8px; z-index: 4; display: grid; gap: 4px; width: min(var(--box-w-small), calc(100vw - 32px));
   color: var(--palette-ink); font-size: 12px; line-height: 1.4; pointer-events: none;
   background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--frame-tooltip-art); }
-.app-shell .qa-overlay-lines { display: grid; gap: 1px; margin: 0; }
+.app-shell .qa-overlay-lines { display: grid; gap: 1px; margin: 1px 0 0; }
 .app-shell .qa-overlay-line { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 6px; }
 .app-shell .qa-overlay-line dt { color: var(--palette-ink-muted); }
 .app-shell .qa-overlay-line dd { margin: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }

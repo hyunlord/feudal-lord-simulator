@@ -31,5 +31,6 @@ test("NAT-2 QA-013: the chip column clears each panel by its own width", () => {
   assert.equal(ledgerWidth, "min(var(--box-w-wide), calc(100% - 16px))");
   assert.match(rule(".app-shell [data-slot]"), /--slot-clear: calc\(min\(340px, 100% - 16px\) \+ 8px\)/);
   assert.match(rule(`.app-shell [data-slot="ledger"]`), /--slot-clear: calc\(min\(var\(--box-w-wide\), 100% - 16px\) \+ 8px\)/);
-  assert.match(rule(".app-shell [data-slot] :is(.crisis-icons, .event-cards)"), /right: calc\(8px \+ var\(--slot-clear\)\)/);
+  // UI-AUDIT-1: the groups carry the 8 px gap as their own transparent padding, so their edge is the slot's clearance.
+  assert.match(rule(".app-shell [data-slot] :is(.crisis-icons, .event-cards)"), /right: var\(--slot-clear\)/);
 });
