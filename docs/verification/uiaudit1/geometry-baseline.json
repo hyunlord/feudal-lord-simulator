@@ -1,8 +1,8 @@
 {
  "schema": 1,
- "run": "render-UIAUDIT-tool-base-80072c1",
- "commit": "80072c1f4cdb2b7126ec750b9aff9a1c4c364e62",
- "count": 24,
+ "run": "render-UIAUDIT-final-bda65e3",
+ "commit": "bda65e3d694877991ddeadc59ed470b36f7eef19",
+ "count": 0,
  "reasons": [
   {
    "run": "render-UIAUDIT-tool-base-9409e41",
@@ -11,30 +11,5 @@
    "reason": "the first baseline: UI-AUDIT-1 full run render-UIAUDIT-tool-base-9409e41 on the merged UI (tokens, money, stuck goods), before the fix groups"
   }
  ],
- "entries": [
-  "modal.chapter-preview.goals|1280x800/long/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1280x800/long/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1280x800/long/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1280x800/long/normal|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1280x800/normal/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1280x800/normal/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1280x800/normal/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1280x800/normal/normal|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1920x1080/long/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1920x1080/long/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1920x1080/long/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1920x1080/long/normal|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1920x1080/normal/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1920x1080/normal/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1920x1080/normal/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1920x1080/normal/normal|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|tablet-1180x820/long/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|tablet-1180x820/long/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|tablet-1180x820/long/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|tablet-1180x820/long/normal|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|tablet-1180x820/normal/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|tablet-1180x820/normal/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|tablet-1180x820/normal/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|tablet-1180x820/normal/normal|outside|section.chapter-preview-goals > ul > li"
- ]
+ "entries": []
 }

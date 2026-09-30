@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-UIAUDIT-tool-base-80072c1",
- "commit": "80072c1f4cdb2b7126ec750b9aff9a1c4c364e62",
+ "run": "render-UIAUDIT-final-bda65e3",
+ "commit": "bda65e3d694877991ddeadc59ed470b36f7eef19",
  "dirty": false,
  "inputs": 1660,
- "inputHash": "021ace3ca5c6333266e8b33427d8dad67a3804eeb98b8cd671a01734d0d63a2a",
- "measuredAt": "2026-09-30T17:54:26.067Z",
- "report": "docs/verification/uiaudit1/geometry/render-UIAUDIT-tool-base-80072c1/geometry.json",
+ "inputHash": "4231d17a6b6b9e6fee7918fdf2706a818758bf0db7b955e8e5cf5ca044c755d8",
+ "measuredAt": "2026-09-30T18:26:00.532Z",
+ "report": "docs/verification/uiaudit1/geometry/render-UIAUDIT-final-bda65e3/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -25,7 +25,7 @@
  "rows": 93,
  "conditions": 996,
  "measured": 996,
- "failures": 36,
+ "failures": 12,
  "unopened": 0,
  "unreachable": [
   "hud.goal-help",
@@ -35,7 +35,7 @@
  ],
  "warnings": 344,
  "byCheck": {
-  "outside": 24,
+  "outside": 0,
   "overflow": 12,
   "border": 0,
   "portrait": 0,
@@ -45,12 +45,12 @@
  },
  "unregisteredFramed": 0,
  "baseline": {
-  "entries": 1104,
-  "counted": 24,
+  "entries": 24,
+  "counted": 0,
   "excepted": 12,
   "exceptions": 1,
   "added": 0,
-  "fixed": 1080
+  "fixed": 24
  },
  "bySurface": {
   "hud.status-pill": {
@@ -364,11 +364,9 @@
    "byCheck": {}
   },
   "modal.chapter-preview.goals": {
-   "failures": 24,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 24
-   }
+   "byCheck": {}
   },
   "modal.chapter-loading": {
    "failures": 0,
@@ -504,30 +502,6 @@
   }
  },
  "failureKeys": [
-  "modal.chapter-preview.goals|1280x800/long/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1280x800/long/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1280x800/long/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1280x800/long/normal|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1280x800/normal/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1280x800/normal/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1280x800/normal/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1280x800/normal/normal|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1920x1080/long/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1920x1080/long/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1920x1080/long/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1920x1080/long/normal|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1920x1080/normal/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1920x1080/normal/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|1920x1080/normal/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|1920x1080/normal/normal|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|tablet-1180x820/long/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|tablet-1180x820/long/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|tablet-1180x820/long/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|tablet-1180x820/long/normal|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|tablet-1180x820/normal/extreme|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|tablet-1180x820/normal/extreme|outside|section.chapter-preview-goals > ul > li",
-  "modal.chapter-preview.goals|tablet-1180x820/normal/normal|outside|section.chapter-preview-goals > h3",
-  "modal.chapter-preview.goals|tablet-1180x820/normal/normal|outside|section.chapter-preview-goals > ul > li",
   "modal.history.factions|1280x800/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|1280x800/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|1280x800/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
