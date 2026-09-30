@@ -66,7 +66,7 @@ export function BiographyPage({ view, scale, onPerson, onRecord }: {
         {view.deathCause === null ? null : <p className="chronicle-biography-cause">{view.deathCause}</p>}
         <p>{COPY.roleHousehold(view.role, view.household)}</p>
         {view.offices.map(office => <p key={office} className="chronicle-biography-office">{COPY.employment(office)}</p>)}
-        {/* UI-7: the resemblance last in the header slot (it clips there, never over the life below). */}
+        {/* UI-7: the resemblance last in the header slot (UI-AUDIT-1: the slot scrolls, never over the life below). */}
         {view.resemblance === null ? null : <p className="chronicle-biography-resemblance">{view.resemblance}</p>}
       </header>
       <section className="chronicle-biography-life" aria-label={COPY.lifeHeading} style={text("life")}>
