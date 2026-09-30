@@ -9,13 +9,15 @@ import { UiIcon } from "../UiIcon";
 import type { UiIconSize } from "../uiArt";
 import { wave8ContentStyle, wave8FrameLayerStyle } from "../wave8Art";
 import { wave21Url } from "../wave21Art";
+import { endingArtUrl } from "../endingArt";
 import { LEGACY_SCREEN_COPY as COPY } from "./legacyScreenCopy.ko";
 import { exportChronicleText, type LegacyAxisView, type LegacyEndingView, type LegacyVerdictView } from "./legacyScreenModel";
 
-// UI-10 (LG-7, LG-8): the campaign's end — after chapter 5's page, the legacy verdict over the Wave 21 campaign-ending
-// painting (the one painting for all six endings): the ending's title plate in its own colours (legacy.css,
-// `data-ending`) with the leading axis's arms and icon, its sentence, the three axes with their parts, the chosen
-// legacy and the ledger records the sentence quotes. From here: the chronicle book, the sandbox, the text export.
+// UI-10 (LG-7, LG-8): the campaign's end — after chapter 5's page, the legacy verdict over the ending's painting
+// (INSTALL-33: one per ending; before, the one Wave 21 campaign-ending painting for all six): the ending's title plate in
+// its own colours (legacy.css, `data-ending`) with the leading axis's arms and icon, its sentence, the three axes with
+// their parts, the chosen legacy and the ledger records the sentence quotes. From here: the chronicle book, the
+// sandbox, the text export.
 
 /** The axis's icon (P0 sheets): the market for the town, the rights' seal for the house, the chapel for the church. */
 export function AxisIcon({ axis, size = 24 }: { readonly axis: LegacyAxis; readonly size?: UiIconSize }) {
@@ -85,12 +87,21 @@ export function LegacyEndingBlock({ ending, headingLevel = 2 }: { readonly endin
   );
 }
 
+/**
+ * INSTALL-33: the ending's own painting (one per ending) once the ending is written; a provisional view (the scores'
+ * ending before the last market day) keeps the shared Wave 21 ch5_campaign_ending, as it is not yet this town's end.
+ */
+export function endingBackdrop(ending: Pick<LegacyEndingView, "id" | "final">): { readonly id: string; readonly url: string } {
+  return ending.final ? { id: ending.id, url: endingArtUrl(ending.id) } : { id: "ch5_campaign_ending", url: wave21Url("ch5_campaign_ending") };
+}
+
 export function LegacyEndingScreen({ state, view, onBook, onKeepPlaying }: {
   readonly state: GameState; readonly view: LegacyVerdictView; readonly onBook: () => void; readonly onKeepPlaying: () => void;
 }) {
   const exporting = useChronicleExport(state);
   return (
-    <div className="story-modal-backdrop legacy-ending-backdrop" role="presentation" style={{ backgroundImage: `url("${wave21Url("ch5_campaign_ending")}")` }}>
+    <div className="story-modal-backdrop legacy-ending-backdrop" role="presentation" data-backdrop={endingBackdrop(view.ending).id}
+      style={{ backgroundImage: `url("${endingBackdrop(view.ending).url}")` }}>
       <section className="chronicle-page legacy-ending" role="dialog" aria-modal="true" aria-label={view.ending.title} data-ending={view.ending.id}
         data-final={view.ending.final}>
         <span className="chronicle-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_chronicle_page")} />

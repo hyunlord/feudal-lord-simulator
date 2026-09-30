@@ -4,6 +4,7 @@ import { plagueVacantPlots } from "../engine/plague";
 import { housePressureStatus } from "../population/housePressure";
 import { buildBuildingVisualState } from "./buildingVisualState";
 import { historicalHouseAssetMeta, historicalHouseReady, historicalHouseSpriteRect } from "./historicalHouseAssets";
+import { houseCompoundAssetMeta, houseCompoundSpriteRect } from "./houseCompoundAssets";
 import { drawStockPiles } from "./stockPiles";
 import { drawWave7, drawWave7Overlay, type Wave7Key } from "./wave7Art";
 import { drawWave9, drawWave9Overlay, type Wave9Key } from "./wave9Art";
@@ -11,6 +12,8 @@ import { tileToScreen } from "./iso";
 import { drawStoryProps } from "./storyWorldProps";
 import { seasonBlend, seasonForObject } from "./seasonTransition";
 import { drawWave26HouseLayers, houseStateLayerNow, shownHouseVariant } from "./wave26HouseArt";
+import { drawWave32GranaryLayers } from "./wave32GranaryArt";
+import { fittedBuildingSpriteRect } from "./buildingSpriteFit";
 
 // INSTALL-7 building overlays, drawn right after a finished building's art in the object pass (above block detail —
 // NAT-2: the small views too, by the same rules):
@@ -20,13 +23,17 @@ import { drawWave26HouseLayers, houseStateLayerNow, shownHouseVariant } from "./
 //  - UI-8/PLAGUE-b (chapter 3 plague): a plague-emptied house keeps the empty-house boards (vacantHouseBoards);
 //    only a base painting of L1–L3 takes event_plague_shut_lN instead. No door marks (historical accuracy).
 //  - stock piles at the door (stockPiles.ts).
-// Pair lots have no Wave 7 overlay yet (their roofs differ); they keep their walls bare in winter.
+// Pair lots have no Wave 7 overlay (their roofs differ). INSTALL-30: every pair wears a Wave 30 painting (the approved
+// pair, bare, only while it loads) and takes that painting's own layers by the same rules — its
+// weathered or fresh, its boarded when abandoned (plague-emptied too: a variant's boards, vacantHouseBoards), snow in winter.
 // UI-4 (Wave 9, world before UI): a house on fire (F0-B `events.burning`) shows its roof in flames (fire_roof_lN on the
 // level's canvas) under a black smoke column (four frames, 150 ms each) and, when its household draws water from a
 // well, two buckets set down on the way to the nearest well; once out, a burnt house (`burntTick`) is the burnt_lN
 // painting (same alpha as the house) until its rebuild completes. Pair lots show the smoke column and, burnt, soot.
 // INSTALL-26: a house showing a Wave 26 painting takes that painting's own layers instead of Wave 7's — its weathered
 // or fresh (houseVariantChoice.ts houseStateLayer), then boarded and snow by the same rules as above.
+// INSTALL-32: a granary showing a Wave 32 painting takes its layers (granaryVariantChoice.ts): weathered, its stock
+// (full / half / empty), boarded, snow — the stock in the painting, so the Wave 7 door sacks leave it (stockPiles.ts).
 const SMOKE_FRAME_MS = 150;
 
 /** PLAGUE-b: the boards an abandoned house shows. A house the plague emptied (died or fled — both in vacantHouseIds,
@@ -61,9 +68,22 @@ export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: G
       }
     }
   }
+  if (building.kind === "house" && building.houseLot !== undefined) drawPairHouseLayers(context, state, building);
+  if (building.kind === "granary") drawWave32GranaryLayers(context, state, building, fittedBuildingSpriteRect("barn", building));
   if (!props) return;
   drawStockPiles(context, state, building);
   drawStoryProps(context, state, building); // UI-4 petition crowd, S12 leaving family
+}
+
+function drawPairHouseLayers(context: CanvasRenderingContext2D, state: GameState, building: Building): void {
+  const level = buildBuildingVisualState(building, state.houses).houseLevel;
+  const house = state.houses.find(candidate => candidate.buildingId === building.id);
+  const wave30 = house === undefined ? null : shownHouseVariant(building, level);
+  const meta = wave30 === null ? null : houseCompoundAssetMeta(building, level);
+  if (wave30 === null || meta === null || house === undefined) return;
+  const boarded = housePressureStatus(house) === "abandoned";
+  const snow = seasonForObject(seasonBlend(state), building.tx * 31 + building.ty * 17) === 3;
+  drawWave26HouseLayers(context, wave30, meta.alphaBounds, houseCompoundSpriteRect(building, meta), { state: houseStateLayerNow(state, house), boarded, snow });
 }
 
 function drawHouseEventOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building): void {

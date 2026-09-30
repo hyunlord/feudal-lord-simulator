@@ -1,0 +1,294 @@
+{
+ "state": "chapter2-end.json",
+ "tick": 160000,
+ "year": 1340,
+ "middle": [
+  50.666666666666664,
+  32.5
+ ],
+ "views": {
+  "a-1340-z1.0-before": {
+   "game": "base",
+   "tile": [
+    50.666666666666664,
+    32.5
+   ],
+   "zoom": 1,
+   "tick": 160000,
+   "year": 1340,
+   "granaries": [
+    {
+     "id": "granary-42-37-0",
+     "tx": 42,
+     "ty": 34,
+     "painting": "a",
+     "stock": 0.75,
+     "fill": "full",
+     "workers": 2,
+     "paused": false
+    },
+    {
+     "id": "construction-site-000023",
+     "tx": 52,
+     "ty": 37,
+     "painting": "b",
+     "stock": 0.405,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    },
+    {
+     "id": "construction-site-000025",
+     "tx": 54,
+     "ty": 37,
+     "painting": "a",
+     "stock": 0.47,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    },
+    {
+     "id": "construction-site-000039",
+     "tx": 48,
+     "ty": 26,
+     "painting": "c",
+     "stock": 0.385,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    },
+    {
+     "id": "construction-site-000054",
+     "tx": 50,
+     "ty": 26,
+     "painting": "a",
+     "stock": 0.625,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    },
+    {
+     "id": "construction-site-000056",
+     "tx": 55,
+     "ty": 32,
+     "painting": "c",
+     "stock": 0.345,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    }
+   ]
+  },
+  "a-1340-z1.0-after": {
+   "game": "this",
+   "tile": [
+    50.666666666666664,
+    32.5
+   ],
+   "zoom": 1,
+   "tick": 160000,
+   "year": 1340,
+   "granaries": [
+    {
+     "id": "granary-42-37-0",
+     "tx": 42,
+     "ty": 34,
+     "painting": "a",
+     "stock": 0.75,
+     "fill": "full",
+     "workers": 2,
+     "paused": false
+    },
+    {
+     "id": "construction-site-000023",
+     "tx": 52,
+     "ty": 37,
+     "painting": "b",
+     "stock": 0.405,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    },
+    {
+     "id": "construction-site-000025",
+     "tx": 54,
+     "ty": 37,
+     "painting": "a",
+     "stock": 0.47,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    },
+    {
+     "id": "construction-site-000039",
+     "tx": 48,
+     "ty": 26,
+     "painting": "c",
+     "stock": 0.385,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    },
+    {
+     "id": "construction-site-000054",
+     "tx": 50,
+     "ty": 26,
+     "painting": "a",
+     "stock": 0.625,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    },
+    {
+     "id": "construction-site-000056",
+     "tx": 55,
+     "ty": 32,
+     "painting": "c",
+     "stock": 0.345,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    }
+   ]
+  },
+  "b-1": {
+   "game": "this",
+   "tile": [
+    42.5,
+    37.5
+   ],
+   "zoom": 2,
+   "tick": 0,
+   "year": 1300,
+   "granaries": [
+    {
+     "id": "granary-42-37-0",
+     "tx": 42,
+     "ty": 37,
+     "painting": "b",
+     "stock": 0.9,
+     "fill": "full",
+     "workers": 2,
+     "paused": false
+    }
+   ]
+  },
+  "b-2": {
+   "game": "this",
+   "tile": [
+    42.5,
+    37.5
+   ],
+   "zoom": 2,
+   "tick": 0,
+   "year": 1300,
+   "granaries": [
+    {
+     "id": "granary-42-37-0",
+     "tx": 42,
+     "ty": 37,
+     "painting": "b",
+     "stock": 0.4,
+     "fill": "half",
+     "workers": 2,
+     "paused": false
+    }
+   ]
+  },
+  "b-3": {
+   "game": "this",
+   "tile": [
+    42.5,
+    37.5
+   ],
+   "zoom": 2,
+   "tick": 0,
+   "year": 1300,
+   "granaries": [
+    {
+     "id": "granary-42-37-0",
+     "tx": 42,
+     "ty": 37,
+     "painting": "b",
+     "stock": 0.05,
+     "fill": "empty",
+     "workers": 2,
+     "paused": false
+    }
+   ]
+  },
+  "b-4": {
+   "game": "this",
+   "tile": [
+    42.5,
+    37.5
+   ],
+   "zoom": 2,
+   "tick": 3500,
+   "year": 1300,
+   "granaries": [
+    {
+     "id": "granary-42-37-0",
+     "tx": 42,
+     "ty": 37,
+     "painting": "b",
+     "stock": 0.9,
+     "fill": "full",
+     "workers": 2,
+     "paused": false
+    }
+   ]
+  },
+  "b-5": {
+   "game": "this",
+   "tile": [
+    42.5,
+    37.5
+   ],
+   "zoom": 2,
+   "tick": 0,
+   "year": 1300,
+   "granaries": [
+    {
+     "id": "granary-42-37-0",
+     "tx": 42,
+     "ty": 37,
+     "painting": "b",
+     "stock": 0.9,
+     "fill": "full",
+     "workers": 0,
+     "paused": true
+    }
+   ]
+  },
+  "b-6": {
+   "game": "this",
+   "tile": [
+    42.5,
+    37.5
+   ],
+   "zoom": 2,
+   "tick": 0,
+   "year": 1300,
+   "granaries": [
+    {
+     "id": "granary-42-37-0",
+     "tx": 42,
+     "ty": 37,
+     "painting": "b",
+     "stock": 0.4,
+     "fill": "half",
+     "workers": 1,
+     "paused": false
+    }
+   ]
+  }
+ },
+ "files": [
+  "a-1340-z1.0-before.jpg",
+  "a-1340-z1.0-after.jpg",
+  "b-granary-states.jpg"
+ ],
+ "jpegBytes": 446369,
+ "errors": []
+}

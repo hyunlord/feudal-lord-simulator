@@ -148,6 +148,12 @@ async function step(name, run) {
   }
 }
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+// INSTALL-30: when a paused save's petition does not open by itself (the chapter page's flake), open it as the player
+// does: the chip opens its event card, the card's decide button opens the petition (the chip alone never did).
+const openPetitionFromChip = async page => {
+  await page.locator('.event-chip').first().click(); await pause(400);
+  await page.locator('.event-card-decide').first().click({ timeout: 10_000 });
+};
 
 // Title (a fresh profile: the welcome and the tutorial switch), then the mode screen.
 await step('title', async () => {
@@ -355,7 +361,7 @@ if (states9 !== undefined) {
   };
   await step('reorg-petition', async () => {
     const { context, page } = await scene9('borough_charter', '&story-delay=0');
-    await page.locator('.petition-card').waitFor({ timeout: 60_000 }).catch(async () => { await page.locator('.event-chip').first().click(); });
+    await page.locator('.petition-card').waitFor({ timeout: 20_000 }).catch(async () => { await openPetitionFromChip(page); });
     await page.locator('.petition-card').waitFor({ timeout: 30_000 }); await pause(600);
     await audit('reorg-petition', page, 's25-reorg-petition.jpg');
     await context.close();
@@ -401,7 +407,7 @@ if (states10 !== undefined) {
   for (const [name, stateName, file] of [['legacy-petition', 'borough_autonomy', 's30-legacy-petition.jpg'], ['heir-petition', 'heir_choice', 's31-heir-petition.jpg']]) {
     await step(name, async () => {
       const { context, page } = await scene10(stateName, '&story-delay=0');
-      await page.locator('.petition-card').waitFor({ timeout: 60_000 }).catch(async () => { await page.locator('.event-chip').first().click(); });
+      await page.locator('.petition-card').waitFor({ timeout: 20_000 }).catch(async () => { await openPetitionFromChip(page); });
       await page.locator('.petition-card').waitFor({ timeout: 30_000 }); await pause(600);
       await audit(name, page, file);
       await context.close();

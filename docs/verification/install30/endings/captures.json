@@ -1,0 +1,44 @@
+{
+ "interlude.market_fire": {
+  "absent": true
+ },
+ "extra:heir_choice": {
+  "absent": true
+ },
+ "x-free_borough": {
+  "save": "ui10-ending-free_borough.save.json",
+  "engine": "free_borough",
+  "shown": "free_borough"
+ },
+ "x-house_remembered": {
+  "save": "ui10-ending-house_remembered.save.json",
+  "engine": "house_remembered",
+  "shown": "house_remembered"
+ },
+ "x-merchants_chantry": {
+  "save": "ui10-ending-merchants_chantry.save.json",
+  "engine": "merchants_chantry",
+  "shown": "merchants_chantry"
+ },
+ "x-house_seat": {
+  "save": "ui10-ending-house_seat.save.json",
+  "engine": "house_seat",
+  "shown": "house_seat"
+ },
+ "x-lords_town": {
+  "save": "ui10-ending-lords_town.save.json",
+  "engine": "lords_town",
+  "shown": "lords_town"
+ },
+ "x-pilgrim_town": {
+  "save": "ui10-ending-pilgrim_town.save.json",
+  "engine": "pilgrim_town",
+  "shown": "pilgrim_town"
+ },
+ "shots": {
+  "count": 6,
+  "bytes": 418766,
+  "budget": 2000000
+ },
+ "errors": []
+}

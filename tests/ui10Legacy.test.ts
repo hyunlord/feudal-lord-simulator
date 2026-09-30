@@ -16,7 +16,8 @@ import { legacyEnding } from "../src/engine/legacy";
 import { createMemoryPlatformServices } from "../src/platform/memoryPlatform";
 import { createWebPlatformServices } from "../src/platform/webPlatform";
 import { ChronicleBook } from "../src/ui/legacy/ChronicleBook";
-import { LegacyAxes, LegacyEndingBlock } from "../src/ui/legacy/LegacyEndingScreen";
+import { endingBackdrop, LegacyAxes, LegacyEndingBlock, LegacyEndingScreen } from "../src/ui/legacy/LegacyEndingScreen";
+import { ENDING_IMAGES } from "../src/ui/endingArtManifest.generated";
 import { LEGACY_SCREEN_COPY } from "../src/ui/legacy/legacyScreenCopy.ko";
 import { chronicleBookView, ENDING_AXIS, exportChronicleText, legacyVerdictView } from "../src/ui/legacy/legacyScreenModel";
 import { chapterOwnsRecord, chapterQuotes, recordSentence } from "../src/ui/legacy/chapterRecords";
@@ -39,9 +40,10 @@ const town = () => (base ??= legacyTown());
 const ends = new Map<string, GameState>();
 const endOf = (id: keyof typeof LEGACY_ENDING_ANSWERS) => { let end = ends.get(id); if (end === undefined) { end = throughLegacy(town(), LEGACY_ENDING_ANSWERS[id]); ends.set(id, end); } return end; };
 
-test("UI-10 L9 the six answer sets make the six ending views: title, sentence, the leading axis, its arms, the quoted records", () => {
+test("UI-10 L9 the six answer sets make the six ending views: title, sentence, the leading axis, its arms, the quoted records, its own painting (INSTALL-33)", () => {
   const css = readFileSync("src/styles/legacy.css", "utf8");
   const plates = new Set<string>();
+  const backdrops = new Set<string>();
   for (const id of LEGACY_ENDING_IDS) {
     const end = endOf(id);
     const view = legacyVerdictView(end)!;
@@ -70,8 +72,17 @@ test("UI-10 L9 the six answer sets make the six ending views: title, sentence, t
     assert.equal((markup.match(/class="legacy-quote"/g) ?? []).length, view.ending.quotes.length);
     const axes = renderToStaticMarkup(createElement(LegacyAxes, { axes: view.axes }));
     assert.equal((axes.match(/data-lead="true"/g) ?? []).length, 1);
+    // INSTALL-33: the screen's backdrop is the ending's own painting.
+    const screen = renderToStaticMarkup(createElement(LegacyEndingScreen, { state: end, view, onBook: () => undefined, onKeepPlaying: () => undefined }));
+    assert.ok(screen.includes(`data-backdrop="${id}"`) && screen.includes(ENDING_IMAGES[id].url), id);
+    backdrops.add(ENDING_IMAGES[id].url);
   }
   assert.equal(plates.size, LEGACY_ENDING_IDS.length, "six colourways");
+  assert.equal(backdrops.size, LEGACY_ENDING_IDS.length, "six paintings");
+  // A provisional ending (the scores' before the last market day) keeps the shared campaign-ending painting.
+  const early = legacyVerdictView(town())!;
+  assert.equal(early.ending.final, false);
+  assert.deepEqual(endingBackdrop(early.ending).id, "ch5_campaign_ending");
 });
 
 test("UI-10 LG-9 the chronicle book: a title page, five chapters, the family tree, nine factions, the legacy", () => {

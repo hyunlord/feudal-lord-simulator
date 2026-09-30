@@ -10,10 +10,12 @@ import { aleBarrelPile, aleStockPile } from "./aleWorldArt";
 import { clothStockPile } from "./clothWorldArt";
 import { spinDoorProp } from "./doorProps"; // NAT-1: varied spinning-house door prop allocation
 import { brewingDoor } from "./villageLife";
+import { shownGranaryVariant } from "./wave32GranaryArt";
 
 // INSTALL-7 stock piles (Wave 7, 3 levels each): what a building holds shows at its door, so the wheat -> bread -> home
 // chain reads on the map.
-//  - sacks at the barn's and granary's door: the wheat they hold (barn capacity 20, granary 200);
+//  - sacks at the barn's and granary's door: the wheat they hold (barn capacity 20, granary 200; INSTALL-32: not at a granary
+//    showing its Wave 32 painting, whose stock layer shows it);
 //  - bread beside the mill's oven: the bread baked and not yet carried (mill capacity 32);
 //  - crates at the storehouse door: everything it holds but its malt (capacity 200);
 //  - sheaves at the tended field's first harvested strip: the harvest waiting for the barn (strips harvested, one
@@ -46,7 +48,7 @@ export function buildingStockPiles(state: GameState, building: Building): readon
     const level = stockPileLevel(amount, capacity);
     if (level !== 0) piles.push({ key: `pile_${family}_${level}`, ...door });
   };
-  if (building.kind === "farmstead" || building.kind === "granary") add("sacks", building.inventory.wheat ?? 0);
+  if (building.kind === "farmstead" || (building.kind === "granary" && shownGranaryVariant(building) === null)) add("sacks", building.inventory.wheat ?? 0);
   if (building.kind === "mill") add("bread", building.inventory.bread ?? 0);
   // UI-10 (FIX-8): the storehouse's malt shows as its own sacks beside the crates, so the crates count the rest.
   if (building.kind === "storehouse") add("crates", Object.entries(building.inventory).reduce((sum, [resource, value]) => resource === "malt" ? sum : sum + (value ?? 0), 0));

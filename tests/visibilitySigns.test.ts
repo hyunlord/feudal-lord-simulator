@@ -8,6 +8,9 @@ import { houseSmokeStrength, millOvenBurning } from "../src/render/roofSmoke";
 import { historicalHouseAssetManifest } from "../src/render/historicalHouseAssetManifest.generated";
 import { ROOF_SMOKE_ANCHORS } from "../src/render/roofSmokeAnchors.generated";
 import { WAVE26_HOUSE_VARIANTS } from "../src/render/wave26HouseManifest.generated";
+import { WAVE30_PAIR_HOUSE_VARIANTS } from "../src/render/wave30PairHouseManifest.generated";
+import { houseCompoundAssetManifest } from "../src/render/houseCompoundAssetManifest.generated";
+import type { HousePainting } from "../src/render/houseVariantChoice";
 import { emphasisedSigns, MAX_EMPHASIS, worldSigns, type WorldSign } from "../src/render/worldSigns";
 import { SIGNAL_PERSIST_TICKS } from "../src/render/signalPersistence";
 import { isMarketDay } from "../src/render/presentation/residentTrips";
@@ -61,13 +64,17 @@ test("F0-V smoke: the mill oven burns only while the mill runs (workers, wheat o
 
 test("F0-V smoke anchors: every house art the game draws has a ridge point inside its bounds", () => {
   const anchors = Object.entries(ROOF_SMOKE_ANCHORS);
-  assert.equal(anchors.length, 49, "5 houses, 6 pairs, their 18 Wave 2 variants and the 20 Wave 26 paintings (INSTALL-26)");
+  assert.equal(anchors.length, 67, "5 houses, 6 pairs, their 18 Wave 2 variants, the 20 Wave 26 paintings (INSTALL-26) and the 18 Wave 30 pairs (INSTALL-30)");
   // INSTALL-26: a Wave 26 anchor is a fraction of the approved bounds; its ridge is inside the painting's own crop, which
-  // may reach above them (fy below 0; the 4-decimal rounding leaves up to a thousandth of the crop).
-  const crops = new Map(WAVE26_HOUSE_VARIANTS.map(variant => [`assets/wave26/house/${variant.key}.png`, variant]));
+  // may reach above them (fy below 0; the 4-decimal rounding leaves up to a thousandth of the crop). INSTALL-30: a
+  // Wave 30 pair's likewise, of the approved pair's bounds.
+  const crops = new Map<string, HousePainting>([...WAVE26_HOUSE_VARIANTS.map(variant => [`assets/wave26/house/${variant.key}.png`, variant] as const),
+    ...WAVE30_PAIR_HOUSE_VARIANTS.map(variant => [`assets/wave30/house_pair/${variant.key}.png`, variant] as const)]);
   for (const [url, anchor] of anchors) {
     const variant = crops.get(url);
-    const bounds = variant === undefined ? null : historicalHouseAssetManifest.find(meta => meta.level === variant.level)!.alphaBounds;
+    const bounds = variant === undefined ? null : "lot" in variant
+      ? houseCompoundAssetManifest.find(meta => meta.level === variant.level && meta.axis === variant.lot)!.alphaBounds
+      : historicalHouseAssetManifest.find(meta => meta.level === variant.level)!.alphaBounds;
     const x = variant === undefined || bounds === null ? anchor.fx : (bounds.x + anchor.fx * bounds.width - variant.crop.x) / variant.crop.width;
     const y = variant === undefined || bounds === null ? anchor.fy : (bounds.y + anchor.fy * bounds.height - variant.crop.y) / variant.crop.height;
     assert.ok(x > 0 && x < 1 && y > -0.001 && y < 0.5, url);

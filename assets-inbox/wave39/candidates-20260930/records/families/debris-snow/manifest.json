@@ -1,0 +1,998 @@
+[
+  {
+    "id": "ground_leaves_small-v1",
+    "width": 32,
+    "height": 16,
+    "subject": "A tiny irregular low oval scattered patch of 12 muted tan and golden oak and beech leaves. Transparent gaps between leaves, no soil base.",
+    "folder": "debris",
+    "prompt": "Use case: stylized-concept. Single game weather decal asset ground_leaves_small-v1. A tiny irregular low oval scattered patch of 12 muted tan and golden oak and beech leaves. Transparent gaps between leaves, no soil base. Target 32x16px. Isometric2:1 camera, restrained handpainted medieval southern England game style matching provided project reference colors. Soft upperleft light, no long shadows, no outline, NO TEXT, no grid, no ornamental red. Real transparent RGBA background. Draw large readable shapes for tiny final scale. Keep everything isolated with transparent outer margin. Reference image 1 is game style only; do not reproduce screenshot. Reference image2 is leaf shape/color reference only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-8c2ad027-5c23-4d7d-b5be-928103be35af.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      },
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      }
+    ],
+    "assetId": "debris/ground_leaves_small-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/debris/ground_leaves_small-v1.png",
+    "sourceSha256": "773152c302a0f552ebff969df094e46f4c95eabab937c3a80d2595af24788372",
+    "sha256": "c1334df88ac13eda6f504cbbd0f82c0dbdd1a9a08d4ce5ee069e84158b249aa9",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 32,
+    "frameHeight": 16,
+    "pivot": [
+      16,
+      8
+    ],
+    "recommendedAlpha": 0.85,
+    "recommendedSpeed": 0,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 0,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 0,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        97,
+        204,
+        1615,
+        513
+      ]
+    ],
+    "alphaPixels": 61,
+    "alphaCoverage": 0.119140625,
+    "kind": "ground_decal",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "ground_leaves_medium_oak_beech-v1",
+    "width": 64,
+    "height": 32,
+    "subject": "An irregular loose oval accumulation of oak and beech leaves, warm muted ochre and tan. Denser left center, transparent gaps and sparse far edge, no soil base.",
+    "folder": "debris",
+    "prompt": "Use case: stylized-concept. Single game weather decal asset ground_leaves_medium_oak_beech-v1. An irregular loose oval accumulation of oak and beech leaves, warm muted ochre and tan. Denser left center, transparent gaps and sparse far edge, no soil base. Target 64x32px. Isometric2:1 camera, restrained handpainted medieval southern England game style matching provided project reference colors. Soft upperleft light, no long shadows, no outline, NO TEXT, no grid, no ornamental red. Real transparent RGBA background. Draw large readable shapes for tiny final scale. Keep everything isolated with transparent outer margin. Reference image 1 is game style only; do not reproduce screenshot. Reference image2 is leaf shape/color reference only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-c83d4087-a1d4-41ca-8120-0bd122753597.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      },
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      }
+    ],
+    "assetId": "debris/ground_leaves_medium_oak_beech-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/debris/ground_leaves_medium_oak_beech-v1.png",
+    "sourceSha256": "a30babe8adf6c89fbc71156c5987c78fe4040acbff42ba57ba7086e19b458779",
+    "sha256": "df53c8c61de405b61df3687881814a70b53c186cb3ffcef77cbc7199afd369dd",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 64,
+    "frameHeight": 32,
+    "pivot": [
+      32,
+      16
+    ],
+    "recommendedAlpha": 0.85,
+    "recommendedSpeed": 0,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 0,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 0,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        153,
+        198,
+        1468,
+        512
+      ]
+    ],
+    "alphaPixels": 566,
+    "alphaCoverage": 0.2763671875,
+    "kind": "ground_decal",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "ground_leaves_medium_birch_maple-v1",
+    "width": 64,
+    "height": 32,
+    "subject": "An asymmetric crescent accumulation of small yellow birch and muted copper field maple leaves, distinct leaf shapes and silhouette, clear empty center/right notch. No soil base.",
+    "folder": "debris",
+    "prompt": "Use case: stylized-concept. Single game weather decal asset ground_leaves_medium_birch_maple-v1. An asymmetric crescent accumulation of small yellow birch and muted copper field maple leaves, distinct leaf shapes and silhouette, clear empty center/right notch. No soil base. Target 64x32px. Isometric2:1 camera, restrained handpainted medieval southern England game style matching provided project reference colors. Soft upperleft light, no long shadows, no outline, NO TEXT, no grid, no ornamental red. Real transparent RGBA background. Draw large readable shapes for tiny final scale. Keep everything isolated with transparent outer margin. Reference image 1 is game style only; do not reproduce screenshot. Reference image2 is leaf shape/color reference only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-5ddf84f5-2029-425f-b1d8-370968d2ae5a.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      },
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      }
+    ],
+    "assetId": "debris/ground_leaves_medium_birch_maple-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/debris/ground_leaves_medium_birch_maple-v1.png",
+    "sourceSha256": "c9ab4233744a192cb81b9b4d57b0edca64a309219b5f32da2d3818f57cf9411c",
+    "sha256": "4e9ac907e9691c911624cb0e774f516275d118ef624579703b3b1c78e2c18604",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 64,
+    "frameHeight": 32,
+    "pivot": [
+      32,
+      16
+    ],
+    "recommendedAlpha": 0.85,
+    "recommendedSpeed": 0,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 0,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 0,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        172,
+        123,
+        1412,
+        667
+      ]
+    ],
+    "alphaPixels": 438,
+    "alphaCoverage": 0.2138671875,
+    "kind": "ground_decal",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "ground_leaves_large-v1",
+    "width": 96,
+    "height": 48,
+    "subject": "Wide broken crescent of mixed oak beech birch field maple autumn leaves under a tree, NO TREE or trunk. Uneven density with two gaps, muted tan yellow brown ochre. No soil base.",
+    "folder": "debris",
+    "prompt": "Use case: stylized-concept. Single game weather decal asset ground_leaves_large-v1. Wide broken crescent of mixed oak beech birch field maple autumn leaves under a tree, NO TREE or trunk. Uneven density with two gaps, muted tan yellow brown ochre. No soil base. Target 96x48px. Isometric2:1 camera, restrained handpainted medieval southern England game style matching provided project reference colors. Soft upperleft light, no long shadows, no outline, NO TEXT, no grid, no ornamental red. Real transparent RGBA background. Draw large readable shapes for tiny final scale. Keep everything isolated with transparent outer margin. Reference image 1 is game style only; do not reproduce screenshot. Reference image2 is leaf shape/color reference only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-8e79afbc-7c36-46d4-9ed1-e3eef2f455a5.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      },
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      }
+    ],
+    "assetId": "debris/ground_leaves_large-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/debris/ground_leaves_large-v1.png",
+    "sourceSha256": "2f08c8de4ed5d268c01b8a9c25a38d5b27470b16fe0c23f7937d502765e2e943",
+    "sha256": "b35944ae1eb1b94bbd5742ee223719592296a57299a7f12cc9de0fd91c28effd",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 96,
+    "frameHeight": 48,
+    "pivot": [
+      48,
+      24
+    ],
+    "recommendedAlpha": 0.85,
+    "recommendedSpeed": 0,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 0,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 0,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        21,
+        84,
+        1730,
+        715
+      ]
+    ],
+    "alphaPixels": 1104,
+    "alphaCoverage": 0.23958333333333334,
+    "kind": "ground_decal",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "ground_leaves_windrow_a-v1",
+    "width": 96,
+    "height": 32,
+    "subject": "A narrow diagonal windblown line of tan oak and yellow beech leaves, uneven thicker middle-left, scattered ends, transparent holes. No road or soil.",
+    "folder": "debris",
+    "prompt": "Use case: stylized-concept. Single game weather decal ground_leaves_windrow_a-v1. A narrow diagonal windblown line of tan oak and yellow beech leaves, uneven thicker middle-left, scattered ends, transparent holes. No road or soil. Target 96x32px. Isometric2:1 camera, restrained handpainted medieval southern England game style matching provided project references. Soft upperleft light, no long shadows, no outline, no text or grid, no brightred. Actual transparent RGBA background. Large readable shapes at tiny final scale. Isolated leaves with transparent outer margin. Reference1 style only, reference2 leaf color and forms only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-034d1993-4b41-4475-b64d-b0ff393e58b7.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      },
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      }
+    ],
+    "assetId": "debris/ground_leaves_windrow_a-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/debris/ground_leaves_windrow_a-v1.png",
+    "sourceSha256": "4e2863e32268d44abfe884920d3350ba6c6bc61455c70903ca5d78f0613e815b",
+    "sha256": "84761e72804f62fdae58f8670f633468c4e359e32029087eab76e67e8599fdaa",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 96,
+    "frameHeight": 32,
+    "pivot": [
+      48,
+      16
+    ],
+    "recommendedAlpha": 0.85,
+    "recommendedSpeed": 0,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 0,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 0,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        82,
+        89,
+        2022,
+        551
+      ]
+    ],
+    "alphaPixels": 425,
+    "alphaCoverage": 0.13834635416666666,
+    "kind": "ground_decal",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "ground_leaves_windrow_b-v1",
+    "width": 96,
+    "height": 32,
+    "subject": "An irregular S shaped thin windblown drift of subdued yellow birch and brown field maple leaves, two separated clumps along line and broad gaps, distinct silhouette. No road or soil.",
+    "folder": "debris",
+    "prompt": "Use case: stylized-concept. Single game weather decal ground_leaves_windrow_b-v1. An irregular S shaped thin windblown drift of subdued yellow birch and brown field maple leaves, two separated clumps along line and broad gaps, distinct silhouette. No road or soil. Target 96x32px. Isometric2:1 camera, restrained handpainted medieval southern England game style matching provided project references. Soft upperleft light, no long shadows, no outline, no text or grid, no brightred. Actual transparent RGBA background. Large readable shapes at tiny final scale. Isolated leaves with transparent outer margin. Reference1 style only, reference2 leaf color and forms only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-2b68c467-9389-4636-b895-5eda34b4f767.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      },
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      }
+    ],
+    "assetId": "debris/ground_leaves_windrow_b-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/debris/ground_leaves_windrow_b-v1.png",
+    "sourceSha256": "7d4307d8e092654c041d6bea959ecda6f432e2e000fb45ee7cbe10df6f4448f2",
+    "sha256": "52a5c86f2cb936d3e66e2a5c8e4605c4e7b20e0fe173bba4912c822d8b16e35d",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 96,
+    "frameHeight": 32,
+    "pivot": [
+      48,
+      16
+    ],
+    "recommendedAlpha": 0.85,
+    "recommendedSpeed": 0,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 0,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 0,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        79,
+        65,
+        2015,
+        557
+      ]
+    ],
+    "alphaPixels": 426,
+    "alphaCoverage": 0.138671875,
+    "kind": "ground_decal",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "floating_leaves-v1",
+    "width": 64,
+    "height": 32,
+    "subject": "Seven individual fallen tan and ochre leaves lying flat on water, spaced loosely irregularly, tiny faint transparent contact ripple around three leaves. NO water rectangle, no ground.",
+    "folder": "debris",
+    "prompt": "Use case: stylized-concept. Single game weather decal floating_leaves-v1. Seven individual fallen tan and ochre leaves lying flat on water, spaced loosely irregularly, tiny faint transparent contact ripple around three leaves. NO water rectangle, no ground. Target 64x32px. Isometric2:1 camera, restrained handpainted medieval southern England game style matching provided project references. Soft upperleft light, no long shadows, no outline, no text or grid, no brightred. Actual transparent RGBA background. Large readable shapes at tiny final scale. Isolated leaves with transparent outer margin. Reference1 style only, reference2 leaf color and forms only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-005f250c-05f8-438d-a713-3f54048a724b.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      },
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      }
+    ],
+    "assetId": "debris/floating_leaves-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/debris/floating_leaves-v1.png",
+    "sourceSha256": "6897c47979ff55462bd27a02950ec147e262ce8c7965f67fa917bb7586f55436",
+    "sha256": "f430a619cd6b91f9fd988dbe4300293edbee9db8799d6bec8c6d0d183cb87dce",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 64,
+    "frameHeight": 32,
+    "pivot": [
+      32,
+      16
+    ],
+    "recommendedAlpha": 0.85,
+    "recommendedSpeed": 0,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 0,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 0,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        100,
+        223,
+        1526,
+        450
+      ]
+    ],
+    "alphaPixels": 277,
+    "alphaCoverage": 0.13525390625,
+    "kind": "ground_decal",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "roof_leaves-v1",
+    "width": 48,
+    "height": 32,
+    "subject": "Five dry tan curled oak and beech leaves caught together loosely on a sloping isometric roof surface, NO ROOF, no ground, transparent empty space.",
+    "folder": "debris",
+    "prompt": "Use case: stylized-concept. Single game weather decal roof_leaves-v1. Five dry tan curled oak and beech leaves caught together loosely on a sloping isometric roof surface, NO ROOF, no ground, transparent empty space. Target 48x32px. Isometric2:1 camera, restrained handpainted medieval southern England game style matching provided project references. Soft upperleft light, no long shadows, no outline, no text or grid, no brightred. Actual transparent RGBA background. Large readable shapes at tiny final scale. Isolated leaves with transparent outer margin. Reference1 style only, reference2 leaf color and forms only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-8b366c98-b811-43ab-92c7-e74a661f6464.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      },
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      }
+    ],
+    "assetId": "debris/roof_leaves-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/debris/roof_leaves-v1.png",
+    "sourceSha256": "7a3711dd1fefa9c93b3ba3c8a28c00f851bb98472f98bdffce8fb0cf2c3b56cd",
+    "sha256": "6803b9a7fb8a7c3f62fc205682e9a5856afaeb8a551a243a29a98e4dfa76f98e",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 48,
+    "frameHeight": 32,
+    "pivot": [
+      24,
+      16
+    ],
+    "recommendedAlpha": 0.85,
+    "recommendedSpeed": 0,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 0,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 0,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        229,
+        99,
+        1047,
+        812
+      ]
+    ],
+    "alphaPixels": 166,
+    "alphaCoverage": 0.10807291666666667,
+    "kind": "ground_decal",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "wind_leaves_group_a-v1",
+    "width": 384,
+    "height": 32,
+    "subject": "SIX sequential animation frames in one horizontal row, equal frame width, no borders. Each frame 64x32 target. Same seven tiny muted ochre oak and tan beech leaves fluttering across the frame: change individual locations and foreshortening at each step, not uniform rotation of a rigid group. Leaves only 3-7 pixels wide at final scale. Transparent gaps dominate.",
+    "folder": "debris",
+    "prompt": "Generate one transparent sprite sheet analogous to reference image1. SIX equal frames arranged3columns2rows. Each frame contains six isolated small tan oak and ochre beech autumn leaves swirling individually in the air. Vary individual leaf positions and foreshortening across6frames. Background is entirely alpha0. NO HAZE NO GLOW NO BACKDROP NO COLORED SMOKE NO SHADOW. Match isolated leaves treatment of reference image exactly, but use tan oak and golden beech, not maple. Keep leaves separated by large fully transparent spaces. Final frame64x32, leaves only3-7pixels wide. No text.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-52a87e5f-c745-4242-bf18-fe15a673c2e6.png",
+    "references": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-ff89a0b0-7088-43b2-85a7-c43c4a1a77ce.png",
+        "sha256": "bb8710accd080f4acdb101deaaccda0b2c3612290a4f1f92c3162c8daf398a00"
+      }
+    ],
+    "priorAttempts": [
+      {
+        "prompt": "Use case: stylized-concept. Single game weather particle asset wind_leaves_group_a-v1. SIX sequential animation frames in one horizontal row, equal frame width, no borders. Each frame 64x32 target. Same seven tiny muted ochre oak and tan beech leaves fluttering across the frame: change individual locations and foreshortening at each step, not uniform rotation of a rigid group. Leaves only 3-7 pixels wide at final scale. Transparent gaps dominate. Target 384x32px. Compose as SIX separate equally spaced square-ish frames in a 3 columns by2 rows CONTACT SHEET; each frame contains one64x32 animation state. Frame boundaries invisible but exact equal cells. We will mechanically crop and pack into horizontal384x32 sheet. Restrained painted game style matching provided projectreference, muted autumn colors or ivory snow as specified, no outlines, no text, no borders, no props, no scenery. Genuine transparent RGBA background. No haze, no glow. Preserve negative space.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-668753bf-2ad1-43f8-bfdb-e9c618ce2727.png",
+        "rejectedReason": "Unwanted glow background",
+        "sourceSha256": "dabc17d21cecda5cbeffca0845e89c0e886c834ef071a68cf1ff89e9a8ec68d1",
+        "references": [
+          {
+            "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+            "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+          }
+        ]
+      },
+      {
+        "prompt": "Edit this SIX FRAME 3x2 game leaf animation contact sheet: remove ALL brown yellow glow, haze, fog and halos. Keep ONLY the 42 individual painted leaves, their current locations, shapes and colours. Every pixel between the leaves must be fully transparent alpha zero, including right against leaf edges. No shadows. Preserve3columns2rows layout and exact leaf positions. Transparent background PNG.",
+        "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-1d6a4f61-7b40-4527-ac70-13ffdf098768.png",
+        "rejectedReason": "Edit retained glow background",
+        "sourceSha256": "7d723b2338cce6a02364b0f8010ed887ed5eda941ea54cd2c6a395df33806009",
+        "references": [
+          {
+            "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-668753bf-2ad1-43f8-bfdb-e9c618ce2727.png",
+            "sha256": "dabc17d21cecda5cbeffca0845e89c0e886c834ef071a68cf1ff89e9a8ec68d1"
+          }
+        ]
+      }
+    ],
+    "assetId": "debris/wind_leaves_group_a-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/debris/wind_leaves_group_a-v1.png",
+    "sourceSha256": "17202b912ec9ac9775d8754bb813a306b6df80e093f5588b0361d3a92f92ec8d",
+    "sha256": "e217fb392eda99516ce8a21400247059f9ecc8dd0240b727b2e0fbc80e6b8627",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 6,
+    "frameWidth": 64,
+    "frameHeight": 32,
+    "pivot": [
+      32,
+      16
+    ],
+    "recommendedAlpha": 0.85,
+    "recommendedSpeed": 24,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 20,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 1.2,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 3,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        0,
+        0,
+        591,
+        443
+      ],
+      [
+        591,
+        0,
+        591,
+        443
+      ],
+      [
+        1182,
+        0,
+        592,
+        443
+      ],
+      [
+        0,
+        443,
+        591,
+        444
+      ],
+      [
+        591,
+        443,
+        591,
+        444
+      ],
+      [
+        1182,
+        443,
+        592,
+        444
+      ]
+    ],
+    "alphaPixels": 463,
+    "alphaCoverage": 0.037679036458333336,
+    "kind": "animated_particle_group",
+    "repeat": "none",
+    "recommendedFrameRate": 5
+  },
+  {
+    "id": "wind_leaves_group_b-v1",
+    "width": 384,
+    "height": 32,
+    "subject": "SIX sequential animation frames in one horizontal row, equal frame width, no borders. Each frame64x32 target. Same five small yellow birch and brown maple leaves in an ascending gust arc: each leaf travels independently and changes foreshortening, nonuniform rotation, empty space dominates. Leaf3-7px at final scale.",
+    "folder": "debris",
+    "prompt": "Use case: stylized-concept. Single game weather particle asset wind_leaves_group_b-v1. SIX sequential animation frames in one horizontal row, equal frame width, no borders. Each frame64x32 target. Same five small yellow birch and brown maple leaves in an ascending gust arc: each leaf travels independently and changes foreshortening, nonuniform rotation, empty space dominates. Leaf3-7px at final scale. Target 384x32px. Compose as SIX separate equally spaced square-ish frames in a 3 columns by2 rows CONTACT SHEET; each frame contains one64x32 animation state. Frame boundaries invisible but exact equal cells. We will mechanically crop and pack into horizontal384x32 sheet. Restrained painted game style matching provided projectreference, muted autumn colors or ivory snow as specified, no outlines, no text, no borders, no props, no scenery. Genuine transparent RGBA background. No haze, no glow. Preserve negative space.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-ff89a0b0-7088-43b2-85a7-c43c4a1a77ce.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "assetId": "debris/wind_leaves_group_b-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/debris/wind_leaves_group_b-v1.png",
+    "sourceSha256": "bb8710accd080f4acdb101deaaccda0b2c3612290a4f1f92c3162c8daf398a00",
+    "sha256": "b290472e3cb9aadcf8b14ca819958e3c9be76b2673c6f7bfa1bd74cb1f17f786",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 6,
+    "frameWidth": 64,
+    "frameHeight": 32,
+    "pivot": [
+      32,
+      16
+    ],
+    "recommendedAlpha": 0.85,
+    "recommendedSpeed": 24,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 20,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 1.2,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        0,
+        0,
+        724,
+        362
+      ],
+      [
+        724,
+        0,
+        724,
+        362
+      ],
+      [
+        1448,
+        0,
+        724,
+        362
+      ],
+      [
+        0,
+        362,
+        724,
+        362
+      ],
+      [
+        724,
+        362,
+        724,
+        362
+      ],
+      [
+        1448,
+        362,
+        724,
+        362
+      ]
+    ],
+    "alphaPixels": 329,
+    "alphaCoverage": 0.026774088541666668,
+    "kind": "animated_particle_group",
+    "repeat": "none",
+    "recommendedFrameRate": 5
+  },
+  {
+    "id": "snowflake_small-v1",
+    "width": 8,
+    "height": 8,
+    "subject": "ONE tiny softly irregular off-white snow grain at center. Final canvas8x8, snowgrain itself2x2 pixels. NOT decorative six point icon. No glow.",
+    "folder": "snow",
+    "prompt": "Use case: stylized-concept. Single game weather particle asset snowflake_small-v1. ONE tiny softly irregular off-white snow grain at center. Final canvas8x8, snowgrain itself2x2 pixels. NOT decorative six point icon. No glow. Target 8x8px. One isolated centered small natural particle. Restrained painted game style matching provided projectreference, muted autumn colors or ivory snow as specified, no outlines, no text, no borders, no props, no scenery. Genuine transparent RGBA background. No haze, no glow. Preserve negative space.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-69fc9473-bc34-4b4a-918c-e5e1869e5ddc.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "assetId": "snow/snowflake_small-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/snow/snowflake_small-v1.png",
+    "sourceSha256": "ca1662d34024f3e42dce90eea6e10f3f48513d4b4271dd4693584d50240806ee",
+    "sha256": "ba132b99a3984b71e5e027c03dcf649250d3d11d67e2a7593838aa2caba7119b",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 8,
+    "frameHeight": 8,
+    "pivot": [
+      4,
+      4
+    ],
+    "recommendedAlpha": 0.7,
+    "recommendedSpeed": 12,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 20,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 4,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        602,
+        601,
+        57,
+        46
+      ]
+    ],
+    "alphaPixels": 4,
+    "alphaCoverage": 0.0625,
+    "kind": "single_particle",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "snowflake_medium-v1",
+    "width": 12,
+    "height": 12,
+    "subject": "ONE tiny softly irregular pale ivory snow flake at center. Final canvas12x12, snowflake itself3x3 pixels. Small natural broken round snow fleck, NOT ornamental star. No glow.",
+    "folder": "snow",
+    "prompt": "Use case: stylized-concept. Single game weather particle asset snowflake_medium-v1. ONE tiny softly irregular pale ivory snow flake at center. Final canvas12x12, snowflake itself3x3 pixels. Small natural broken round snow fleck, NOT ornamental star. No glow. Target 12x12px. One isolated centered small natural particle. Restrained painted game style matching provided projectreference, muted autumn colors or ivory snow as specified, no outlines, no text, no borders, no props, no scenery. Genuine transparent RGBA background. No haze, no glow. Preserve negative space.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-9abbda72-c81d-449b-9af7-28d8175eac6e.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "assetId": "snow/snowflake_medium-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/snow/snowflake_medium-v1.png",
+    "sourceSha256": "24bf0daf7074211596c4ec97bc0e67c07f769162ce150176c3b7c4eada3bef84",
+    "sha256": "5ef32c5293a2fb93169b78a3ba8b31f998ab210d81a1112e622a7121bac42f6e",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 12,
+    "frameHeight": 12,
+    "pivot": [
+      6,
+      6
+    ],
+    "recommendedAlpha": 0.7,
+    "recommendedSpeed": 12,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 20,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 4,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        598,
+        602,
+        58,
+        57
+      ]
+    ],
+    "alphaPixels": 7,
+    "alphaCoverage": 0.04861111111111111,
+    "kind": "single_particle",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "snowflake_large-v1",
+    "width": 16,
+    "height": 16,
+    "subject": "ONE irregular soft small pale grey ivory snow flake at center. Final canvas16x16, actual flake5x5 pixels, simple natural clustered snow grain NOT ornamental star. No glow.",
+    "folder": "snow",
+    "prompt": "Use case: stylized-concept. Single game weather particle asset snowflake_large-v1. ONE irregular soft small pale grey ivory snow flake at center. Final canvas16x16, actual flake5x5 pixels, simple natural clustered snow grain NOT ornamental star. No glow. Target 16x16px. One isolated centered small natural particle. Restrained painted game style matching provided projectreference, muted autumn colors or ivory snow as specified, no outlines, no text, no borders, no props, no scenery. Genuine transparent RGBA background. No haze, no glow. Preserve negative space.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-ab4b1752-1691-472b-8282-138215029ba1.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "assetId": "snow/snowflake_large-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/snow/snowflake_large-v1.png",
+    "sourceSha256": "a91d0534e96ecc7328b2fe00af63445726907febc2eda3fe1764019841c14976",
+    "sha256": "b5b88c929f5cb5b644887ec8a957cc849f1a9616ca3d7af66a1071750266dfa6",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.7,
+    "recommendedSpeed": 12,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 20,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 4,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        567,
+        563,
+        123,
+        143
+      ]
+    ],
+    "alphaPixels": 16,
+    "alphaCoverage": 0.0625,
+    "kind": "single_particle",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "blowing_snow_sheet-v1",
+    "width": 384,
+    "height": 32,
+    "subject": "SIX sequential animation frames in one horizontal row, equal framewidth, no borders. Frame64x32 target. Eight tiny irregular ivory snow flecks drift sideways and downward individually between frames, sparse2-4pixel flecks, transparent emptyspace dominates. Absolutely no fog sheet or white rectangle or cloudy backdrop.",
+    "folder": "snow",
+    "prompt": "Use case: stylized-concept. Single game weather particle asset blowing_snow_sheet-v1. SIX sequential animation frames in one horizontal row, equal framewidth, no borders. Frame64x32 target. Eight tiny irregular ivory snow flecks drift sideways and downward individually between frames, sparse2-4pixel flecks, transparent emptyspace dominates. Absolutely no fog sheet or white rectangle or cloudy backdrop. Target 384x32px. Compose as SIX separate equally spaced square-ish frames in a 3 columns by2 rows CONTACT SHEET; each frame contains one64x32 animation state. Frame boundaries invisible but exact equal cells. We will mechanically crop and pack into horizontal384x32 sheet. Restrained painted game style matching provided projectreference, muted autumn colors or ivory snow as specified, no outlines, no text, no borders, no props, no scenery. Genuine transparent RGBA background. No haze, no glow. Preserve negative space.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-e14cf79d-2bfc-4f0d-865e-3d4bc33d1a46.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "assetId": "snow/blowing_snow_sheet-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/snow/blowing_snow_sheet-v1.png",
+    "sourceSha256": "659b699d9390672e529e04a72b5cd4f784cb3631c415aa75c0e2fde9e69610f0",
+    "sha256": "bfe866c940f08e6c39e88accdf5927e1b94aae514d4838ce30f199e1066ba0a1",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 6,
+    "frameWidth": 64,
+    "frameHeight": 32,
+    "pivot": [
+      32,
+      16
+    ],
+    "recommendedAlpha": 0.7,
+    "recommendedSpeed": 24,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 20,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 1.2,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        0,
+        0,
+        724,
+        362
+      ],
+      [
+        724,
+        0,
+        724,
+        362
+      ],
+      [
+        1448,
+        0,
+        724,
+        362
+      ],
+      [
+        0,
+        362,
+        724,
+        362
+      ],
+      [
+        724,
+        362,
+        724,
+        362
+      ],
+      [
+        1448,
+        362,
+        724,
+        362
+      ]
+    ],
+    "alphaPixels": 187,
+    "alphaCoverage": 0.015218098958333334,
+    "kind": "animated_particle_group",
+    "repeat": "none",
+    "recommendedFrameRate": 5
+  },
+  {
+    "id": "footprints_snow_a-v1",
+    "width": 128,
+    "height": 64,
+    "subject": "A thin patch of southern England settled snow on ground, irregular flat2:1 oval footprint area, exposed muddy gaps, diagonal meandering line of eight human walking footprints each only4pixels long in final128x64, alternating left/right foot. Sparse thin ivory frost snow, no thick snowbank. Transparent outside patch and gaps.",
+    "folder": "snow",
+    "prompt": "Use case: stylized-concept. Single game ground decal footprints_snow_a-v1. A thin patch of southern England settled snow on ground, irregular flat2:1 oval footprint area, exposed muddy gaps, diagonal meandering line of eight human walking footprints each only4pixels long in final128x64, alternating left/right foot. Sparse thin ivory frost snow, no thick snowbank. Transparent outside patch and gaps. Final canvas128x64, 2:1 isometric ground plane, large simple readable marks, natural uneven outline, no square tile edge. Match provided game reference subdued painted winter palette, soft upperleft daylight, no long shadows. Genuine transparent RGBA background outside patch, no colored backdrop, no text. Snow shallow as southern England notalpine. No people, buildings, scenery.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-ee479d98-35af-4d6d-819a-086fc67a7acd.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "assetId": "snow/footprints_snow_a-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/snow/footprints_snow_a-v1.png",
+    "sourceSha256": "ae6d70b4feb4fc2d4b6a033c310b0bd4a2bd7043689c91be48af48a2c5013a75",
+    "sha256": "dfb133bf66a9bd6762792346eb35a0a8d107cd2d1df8dc8ef2511171e5b4893b",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 128,
+    "frameHeight": 64,
+    "pivot": [
+      64,
+      32
+    ],
+    "recommendedAlpha": 0.7,
+    "recommendedSpeed": 0,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 0,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 0,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        78,
+        150,
+        1617,
+        649
+      ]
+    ],
+    "alphaPixels": 3400,
+    "alphaCoverage": 0.4150390625,
+    "kind": "ground_decal",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  },
+  {
+    "id": "footprints_snow_b-v1",
+    "width": 128,
+    "height": 64,
+    "subject": "Irregular split thin snow patch on ground, flat2:1 projected area, two offset clumps connected by a narrow snow neck with eight small alternating human footprints on a gentle curve, muddy gaps exposed. Each footprint only4pixels long in final128x64. Sparse thin ivory frost, no thick snowbank. Distinct silhouette from oval patch.",
+    "folder": "snow",
+    "prompt": "Use case: stylized-concept. Single game ground decal footprints_snow_b-v1. Irregular split thin snow patch on ground, flat2:1 projected area, two offset clumps connected by a narrow snow neck with eight small alternating human footprints on a gentle curve, muddy gaps exposed. Each footprint only4pixels long in final128x64. Sparse thin ivory frost, no thick snowbank. Distinct silhouette from oval patch. Final canvas128x64, 2:1 isometric ground plane, large simple readable marks, natural uneven outline, no square tile edge. Match provided game reference subdued painted winter palette, soft upperleft daylight, no long shadows. Genuine transparent RGBA background outside patch, no colored backdrop, no text. Snow shallow as southern England notalpine. No people, buildings, scenery.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f229-5a73-7f33-9ec2-5838866b2a09/exec-6aa58fc4-3d59-43e7-8946-039a12701ecc.png",
+    "references": [
+      {
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "assetId": "snow/footprints_snow_b-v1",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/snow/footprints_snow_b-v1.png",
+    "sourceSha256": "75a5e1a51a206ed31497dffaa94d8582eb34b688fd40e4431189e4030b04656a",
+    "sha256": "b6837483aa1a344266c2981f9f6a7c030f83a5d3b29d002732ec619cd994d8e2",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "generatedDate": "2026-09-30",
+    "frames": 1,
+    "frameWidth": 128,
+    "frameHeight": 64,
+    "pivot": [
+      64,
+      32
+    ],
+    "recommendedAlpha": 0.7,
+    "recommendedSpeed": 0,
+    "speedUnit": "world pixels/second; tile128x64 at zoom1",
+    "windTilt": 0,
+    "windTiltUnit": "degrees from vertical; renderer controls sign",
+    "lifetime": 0,
+    "lifetimeUnit": "seconds; 0 means static persistent decal",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Distinct silhouette and transparent particle/decal coverage at intended scale.",
+    "manualEdits": "Native generated RGBA alpha retained; alpha bounds crop for static assets, aspect-preserving resize centered; animation3x2 equal-cell crop and horizontal six-frame packing; leaf groups36x22 centered in64x32 and snow groups60x28; roof leaf cluster28x18 centered; snow grain alone resized to2/3/5px. No procedural artwork.",
+    "crops": [
+      [
+        60,
+        90,
+        1667,
+        746
+      ]
+    ],
+    "alphaPixels": 2720,
+    "alphaCoverage": 0.33203125,
+    "kind": "ground_decal",
+    "repeat": "none",
+    "recommendedFrameRate": 0
+  }
+]

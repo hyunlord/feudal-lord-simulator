@@ -22,6 +22,7 @@ import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { wallStripsEnabled } from "./renderWallStripsFlag";
 import { beginBuildingVariantFrame } from "./buildingVariants";
 import { beginHouseVariantFrame } from "./wave26HouseArt";
+import { beginGranaryVariantFrame } from "./wave32GranaryArt";
 import { drawWarProp } from "./warWorldProps";
 import { drawVillageLifeItem } from "./villageLifeDraw";
 import { drawPlagueProp } from "./plagueWorldProps";
@@ -61,6 +62,7 @@ export function drawObjectRenderItems(
   probe?.enter("farmland");
   beginBuildingVariantFrame(input.state);
   beginHouseVariantFrame(input.state); // INSTALL-26 the Wave 26 house paintings
+  beginGranaryVariantFrame(input.state); // INSTALL-32 the Wave 32 granary paintings
   const viewMode = getObjectRenderViewMode();
   // RENDER_BOUNDARY_V2 draws road ribbons in the ground chunks, under frontage and objects. (The V1 wheat-farm soil
   // pass that stood here went with the retired farm art, C1f.)
