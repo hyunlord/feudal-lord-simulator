@@ -23,7 +23,7 @@ import { TutorialToggle } from "../tutorial/TutorialShell";
 import type { TutorialController } from "../tutorial/useTutorialController";
 import { chapterGoals } from "../../engine/politics";
 import { CHAPTER_COPY } from "../chapterCopy.ko";
-import { latestChapterEnd } from "../chronicleModel";
+import { chapterStartYear, latestChapterEnd } from "../chronicleModel";
 
 /**
  * CODE-1c (from App): the modal screens on top of the town — the season card, the famine decision, a petition, the
@@ -82,7 +82,7 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       // Goals shown are those of the next chapter. A built chapter (2, and 3–4 over their Wave 31 paintings) opens
       // with its title, line and goals; one not built yet shows "coming later" with its number.
       const nextChapter = (latestChapterEnd(state)?.chapter ?? 1) + 1;
-      return <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} chapter={nextChapter}
+      return <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} chapter={nextChapter} startYear={chapterStartYear(state, nextChapter)}
         goals={chapterGoals(state).filter(goal => goal.chapter === nextChapter).map(goal => CHAPTER_COPY.goals[goal.id] ?? goal.id)} />;
     })() : null}
     {top === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}

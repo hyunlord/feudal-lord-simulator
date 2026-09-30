@@ -32,6 +32,8 @@ export const HUD_COPY = {
   // NAT-2 (QA-006): the stores in one column (how many hold the good); a lit row lists them with their amounts.
   ledgerHeldIn: "보관",
   ledgerHeldCount: (stores: number) => stores === 0 ? "—" : `${stores}곳`,
+  // UI-10: "보관 N곳" unfolds the row to each store's amount, and folds it again (its state is aria-expanded's).
+  ledgerHeldToggle: (resource: string, stores: number) => `${resource} 보관 ${stores}곳 — 곳마다 양 펼치고 접기`,
   ledgerStoresOf: (resource: string) => `${resource} 보관처`,
   ledgerStoreAmount: (store: string, amount: number) => `${store} · ${amount}`,
   ledgerEmpty: "보관 중인 자원이 없습니다",
