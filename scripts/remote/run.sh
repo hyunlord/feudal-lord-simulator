@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # Remote runner (REMOTE-1): edit on the Mac, run heavy verification on the DGX Spark, bring back only the results.
 #
-#   scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <command ...>
+#   scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <command ...>
 #   scripts/remote/run.sh --task test|guardrail|browser|perf|clone-check [task args ...]   (label: $FLS_REMOTE_LABEL or branch)
 #   scripts/remote/run.sh --attach <run>     follow a detached/interrupted run, then fetch its results
 #   scripts/remote/run.sh --fetch <run>      fetch results only
-#   scripts/remote/run.sh --status           active remote runs and run folders
+#   scripts/remote/run.sh --status           active remote runs, run folders and kept runs
+#   scripts/remote/run.sh --release <run>    let a kept run go (the prune may take its folder again)
 #
 # One run:
 #  1. The working tree as git sees it (tracked + untracked-not-ignored; never node_modules, .git, dist) is rsynced to
@@ -17,7 +18,9 @@
 #  3. The run's .remote/ folder (logs, summaries, guardrail/perf raw) comes back to .remote-runs/<run>/, and files the
 #     command created or changed under docs/ seeds/ perf/ output/ fixtures/ come back into this working tree
 #     (rsync --update: a file edited here during the run is never overwritten).
-#  4. The DGX keeps the 10 newest run folders. The exit status is the command's.
+#  4. The DGX keeps the 10 newest run folders. A run started with --keep (or FLS_REMOTE_KEEP_RUN=1 for --task) is a
+#     judgement run: its folder is not pruned and its results are also copied to ~/fls-runs/_kept/<run>/, which no
+#     prune touches; --fetch reads from there once the folder is gone. The exit status is the command's.
 # The play server (port 4173, ~/fls-play) is never touched. Usage and rules: docs/REMOTE_RUNS.md.
 set -euo pipefail
 
@@ -39,10 +42,13 @@ default_label() {
 fetch_results() {
   local run=$1 local_dir="$REPO/.remote-runs/$1"
   mkdir -p "$local_dir"
-  rsync -a -e "ssh $SSH_OPTS" "$HOST:$RROOT/$run/.remote/" "$local_dir/" || { echo "remote: could not fetch $run/.remote" >&2; return 1; }
+  local src="$RROOT/$run"
+  # A kept run whose folder was pruned (by an older copy of remote-exec.sh) is read from _kept/.
+  rsh "[ -d $src/.remote ]" 2>/dev/null || { rsh "[ -d $RROOT/_kept/$run/.remote ]" 2>/dev/null && src="$RROOT/_kept/$run"; }
+  rsync -a -e "ssh $SSH_OPTS" "$HOST:$src/.remote/" "$local_dir/" || { echo "remote: could not fetch $run/.remote" >&2; return 1; }
   if [ -s "$local_dir/changed-files.txt" ]; then
     # --update: never replace a file that is newer here (edited while the run was going).
-    rsync -a --update -e "ssh $SSH_OPTS" --files-from="$local_dir/changed-files.txt" "$HOST:$RROOT/$run/" "$REPO/"
+    rsync -a --update -e "ssh $SSH_OPTS" --files-from="$local_dir/changed-files.txt" "$HOST:$src/" "$REPO/"
     echo "remote: $(wc -l < "$local_dir/changed-files.txt" | tr -d ' ') result file(s) copied into the working tree (list: .remote-runs/$run/changed-files.txt)"
   fi
 }
@@ -75,15 +81,17 @@ finish() {
 }
 
 case "${1:-}" in
-  ""|-h|--help) sed -n '2,23p' "$0"; exit 0 ;;
+  ""|-h|--help) sed -n '2,24p' "$0"; exit 0 ;;
   --status)
-    rsh "systemctl --user list-units 'fls-run-*' --no-pager --no-legend; systemctl --user status fls-runs.slice --no-pager 2>/dev/null | sed -n '1,8p'; ls -1t $RROOT | grep -v '^_'"
+    rsh "systemctl --user list-units 'fls-run-*' --no-pager --no-legend; systemctl --user status fls-runs.slice --no-pager 2>/dev/null | sed -n '1,8p'; ls -1t $RROOT | grep -v '^_'; echo '== kept:'; ls -1t $RROOT/_kept 2>/dev/null"
     exit 0 ;;
+  --release) [ -n "${2:-}" ] || die "--release <run>"
+    rsh "rm -rf $RROOT/_kept/${2:?}; rm -f $RROOT/${2:?}/.remote/keep"; echo "remote: released $2"; exit 0 ;;
   --fetch) [ -n "${2:-}" ] || die "--fetch <run>"; finish "$2"; exit $? ;;
   --attach) [ -n "${2:-}" ] || die "--attach <run>"; follow "$2" || true; finish "$2"; exit $? ;;
 esac
 
-SLOT=""; DETACH=0
+SLOT=""; DETACH=0; KEEP_RUN=${FLS_REMOTE_KEEP_RUN:-0}
 if [ "$1" = "--task" ]; then
   TASK=${2:-}; shift 2 || die "--task <name>"
   LABEL=${FLS_REMOTE_LABEL:-$(default_label)}
@@ -100,10 +108,11 @@ else
     case "$1" in
       --slot) SLOT=${2:-}; shift 2 ;;
       --detach) DETACH=1; shift ;;
+      --keep) KEEP_RUN=1; shift ;;
       *) die "unknown option $1 (did you forget -- before the command?)" ;;
     esac
   done
-  [ "${1:-}" = "--" ] || die "usage: run.sh <label> [--slot guardrail] [--detach] -- <command ...>"
+  [ "${1:-}" = "--" ] || die "usage: run.sh <label> [--slot guardrail] [--detach] [--keep] -- <command ...>"
   shift
 fi
 [ $# -gt 0 ] || die "no command"
@@ -127,6 +136,7 @@ if git bundle create "$TMP/head.bundle" HEAD --not --remotes=origin >/dev/null 2
 {
   printf 'RUN=%q\nLABEL=%q\nSHORT_SHA=%q\nFULL_SHA=%q\nDIRTY=%q\nSLOT=%q\nBRANCH=%q\nMAC_HOST=%q\n' \
     "$RUN" "$LABEL" "$SHORT" "$FULL" "$DIRTY" "$SLOT" "$(git rev-parse --abbrev-ref HEAD)" "$(hostname -s)"
+  printf 'KEEP_RUN=%q\n' "$KEEP_RUN"
   printf 'CMD=%q\n' "$(printf '%q ' "$@")"
 } > "$TMP/meta.env"
 

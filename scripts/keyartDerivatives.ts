@@ -21,6 +21,8 @@ import { PORTRAIT_IMAGES } from "../src/ui/portraitArtManifest.generated";
 import { WAVE16_IMAGES } from "../src/ui/wave16ArtManifest.generated";
 import { WAVE17_IMAGES } from "../src/ui/wave17ArtManifest.generated";
 import { WAVE21_IMAGES } from "../src/ui/wave21ArtManifest.generated";
+import { WAVE33_IMAGES } from "../src/ui/wave33ArtManifest.generated";
+import { ENDING_IMAGES } from "../src/ui/endingArtManifest.generated";
 
 const ROOT = path.resolve(new URL("..", import.meta.url).pathname);
 const ENCODER_VERSION = 1;
@@ -29,12 +31,13 @@ const PLAGUE = "assets-inbox/wave8/plague-fix-20260926/assets";
 
 export type KeyartDerivative = Readonly<{
   id: string;
-  /** The received PNG, repository-relative (Git LFS). */
+  /** The received PNG, repository-relative (Git LFS); INSTALL-33 `jpeg-received`: the received JPEG. */
   source: string;
   /** Where the game loads it (relative to the site base), and how it is made. */
   url: string;
-  /** `portrait` / `portrait-96`: a pool portrait at its 256 px size / area-averaged to 96 px, as JPEG. */
-  format: "jpeg" | "png-half" | "portrait" | "portrait-96";
+  /** `portrait` / `portrait-96`: a pool portrait at its 256 px size / area-averaged to 96 px, as JPEG.
+   *  INSTALL-33 `jpeg-received`: a painting received as a web-sized JPEG, shipped as it came (no second lossy encode). */
+  format: "jpeg" | "png-half" | "portrait" | "portrait-96" | "jpeg-received";
 }>;
 
 export const JPEG_QUALITY = 70;
@@ -59,9 +62,17 @@ export const WAVE16_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WA
 export const WAVE17_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE17_IMAGES)
   .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg" as const }));
 
-/** UI-8: the Wave 21 chapter 3 illustrations (decision cards, events, chronicle scenes, chapter-3 end; opaque, as JPEG). */
+/** UI-8 / UI-9 / UI-10: the Wave 21 chapter 3–5 illustrations (decision cards, events, chronicle scenes, chapter and campaign end; opaque, as JPEG). */
 export const WAVE21_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE21_IMAGES)
   .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg" as const }));
+
+/** UI-10: the Wave 33 chapter-5 interlude illustrations (1384–1400 events; opaque, as JPEG). */
+export const WAVE33_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE33_IMAGES)
+  .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg" as const }));
+
+/** INSTALL-33: the six campaign-ending paintings (1920 × 1080 JPEGs, quality 92 as received; copied as they came). */
+export const ENDING_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(ENDING_IMAGES)
+  .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg-received" as const }));
 
 /** CHRON-1: each pool portrait twice — at 256 px (biography) and 96 px (cards, lists). */
 export const PORTRAIT_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(PORTRAIT_IMAGES).flatMap(([id, image]) => [
@@ -69,8 +80,9 @@ export const PORTRAIT_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(
   { id: `${id}-96`, source: image.source, url: image.url96, format: "portrait-96" as const },
 ]);
 
-/** Every build-time web derivative (Wave 8 keyart, Wave 16, 17 and 21 illustrations, the portrait pool). */
-export const WEB_ART_DERIVATIVES: readonly KeyartDerivative[] = [...KEYART_DERIVATIVES, ...WAVE16_DERIVATIVES, ...WAVE17_DERIVATIVES, ...WAVE21_DERIVATIVES, ...PORTRAIT_DERIVATIVES];
+/** Every build-time web derivative (Wave 8 keyart, Wave 16, 17, 21 and 33 illustrations, the ending paintings, the portrait pool). */
+export const WEB_ART_DERIVATIVES: readonly KeyartDerivative[] = [...KEYART_DERIVATIVES, ...WAVE16_DERIVATIVES, ...WAVE17_DERIVATIVES, ...WAVE21_DERIVATIVES, ...WAVE33_DERIVATIVES,
+  ...ENDING_DERIVATIVES, ...PORTRAIT_DERIVATIVES];
 
 export const KEYART_DERIVATIVE_BY_URL: ReadonlyMap<string, KeyartDerivative> = new Map(WEB_ART_DERIVATIVES.map(item => [item.url, item]));
 
@@ -337,6 +349,11 @@ export function sha256(bytes: Uint8Array): string { return createHash("sha256").
 
 export function buildKeyartDerivative(item: KeyartDerivative, root = ROOT): Buffer {
   const source = readFileSync(path.join(root, item.source));
+  // INSTALL-33: a received JPEG ships as it came (a JPEG, checked by its start-of-image marker).
+  if (item.format === "jpeg-received") {
+    if (source[0] !== 0xff || source[1] !== 0xd8) throw new Error(`${item.source} is not a JPEG`);
+    return source;
+  }
   const cacheDir = path.join(root, "node_modules/.cache/keyart-derivatives");
   const quality = item.format === "jpeg" ? `-q${JPEG_QUALITY}` : item.format === "png-half" ? "" : `-q${PORTRAIT_QUALITY}`;
   const cached = path.join(cacheDir, `${sha256(source)}-v${ENCODER_VERSION}-${item.format}${quality}`);

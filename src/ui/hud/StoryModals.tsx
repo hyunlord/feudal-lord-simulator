@@ -3,6 +3,7 @@ import { CHRONICLE_COPY } from "../chronicleCopy.ko";
 import type { ChronicleView } from "../chronicleModel";
 import { DECISION_COPY } from "../decisionCopy.ko";
 import type { FamineDecisionView, PetitionDecisionView } from "../decisionModels";
+import type { HeirCandidateView } from "../heirCandidateModel";
 import { UiIcon } from "../UiIcon";
 import { wave8ContentStyle, wave8FrameLayerStyle, wave8ImageStyle, wave8Url } from "../wave8Art";
 import { wave16ImageStyle, wave16Url } from "../wave16Art";
@@ -17,6 +18,7 @@ import { PETITION_COPY } from "../petitionCopy.ko";
 import { wave14ImageStyle } from "../wave14Art";
 import { wave17ImageStyle, wave17Url } from "../wave17Art";
 import { wave21ImageStyle, wave21Url } from "../wave21Art";
+import { wave33ImageStyle } from "../wave33Art";
 import { storyArtStyle } from "../storyArt";
 
 // UI-4 story modals (state machine modals: time stops while one is up, and closing it returns to the state under it).
@@ -66,11 +68,28 @@ export function FamineDecisionModal({ view, onChoose, onLater, steward = null, o
 }
 
 /** UI-6: the scene of a petition's kind (Wave 16 for chapter 1's, the Wave 17 decision cards for the war's five).
- *  UI-8: extended to accept "wave21" for the chapter 3 plague decisions. */
+ *  UI-8: extended to accept "wave21" for the chapter 3 plague decisions. UI-10: "wave33" for the interlude's two. */
 function PetitionArt({ art }: { readonly art: PetitionDecisionView["presentation"]["art"] }) {
+  if (art === null) return null;
   // Wave 17 and Wave 21 decision cards are 4:3 (taller than Wave 16's): narrower so the three answers stay inside the frame.
   if (art.sheet === "wave21") return <div className="story-modal-art" aria-hidden="true" style={wave21ImageStyle(art.id, 208)} />;
+  // UI-10: the Wave 33 interlude illustrations are 16:9, as tall at 240 as a 4:3 card at 180.
+  if (art.sheet === "wave33") return <div className="story-modal-art" aria-hidden="true" style={wave33ImageStyle(art.id, 240)} />;
   return <div className="story-modal-art" aria-hidden="true" style={art.sheet === "wave16" ? wave16ImageStyle(art.id, 300) : wave17ImageStyle(art.id, 208)} />;
+}
+
+/** UI-10 (LG-3): the heir an answer names — the portrait, the name, who they are to the old lord, their likeness and records. */
+function HeirCandidate({ heir }: { readonly heir: HeirCandidateView }) {
+  return (
+    <span className="petition-heir" data-person={heir.personId} data-portrait-exact={heir.exact ? "true" : "false"}>
+      <PersonPortrait portraitId={heir.portraitId} size={48} />
+      <strong className="petition-heir-name">{heir.name}</strong>
+      <span className="petition-heir-who">{heir.who}</span>
+      <span className="petition-heir-line">{heir.lineage}</span>
+      <span className="petition-heir-line">{heir.resemblance}</span>
+      <span className="petition-heir-line">{heir.records}</span>
+    </span>
+  );
 }
 
 export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPerson }: {
@@ -116,6 +135,7 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
                 <Button type="button" className="petition-option" data-response={option.choice} aria-label={DECISION_COPY.choose(option.label)} onPress={() => onRespond(option.choice)} variant="primary">
                   <span className="petition-seal" aria-hidden="true" style={wave8ImageStyle(option.seal, 44)} />
                   <strong>{option.label}</strong>
+                  {option.heir === undefined ? null : <HeirCandidate heir={option.heir} />}
                   <span>{option.line}</span>
                   <PredictedLine className="petition-predicted" numbers={option.predicted} />
                 </Button>
@@ -129,10 +149,12 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
   );
 }
 
-export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChronicle }: {
+export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChronicle, nextLabel }: {
   readonly view: ChronicleView; readonly onNextChapter: () => void; readonly onKeepPlaying: () => void;
   /** CHRON-1: [전체 연대기 보기] opens the chronicle screen over the page (closing it comes back here). */
   readonly onOpenChronicle?: () => void;
+  /** UI-10: the next button's words when it leads elsewhere (chapter 5's page: to the legacy verdict). */
+  readonly nextLabel?: string;
 }) {
   return (
     <div className="story-modal-backdrop story-modal-backdrop--chronicle" role="presentation"
@@ -158,14 +180,17 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
             ))}
           </ol>
           <h3>{CHRONICLE_COPY.statsHeading}</h3>
-          <ul className="chronicle-stats">{view.stats.map(line => <li key={line}>{line}</li>)}</ul>
+          <ul className="chronicle-stats">{view.stats.map(line => <li key={line}>{line}</li>)}</ul></section>
+          </div>
+          {/* UI-10: the page's footer — the full panel's width, held at the bottom while a long page (chapter 5's six
+              decisions) scrolls under it; its buttons in the right column's place, as before. */}
+          <div className="chronicle-page-footer">
           <div className="chronicle-actions">
-            <Button type="button" className="chronicle-next" onPress={() => onNextChapter()} variant="secondary"><UiIcon sheet="action" cell="open" />{CHRONICLE_COPY.nextChapterOf(view.chapter)}</Button>
+            <Button type="button" className="chronicle-next" onPress={() => onNextChapter()} variant="secondary"><UiIcon sheet="action" cell="open" />{nextLabel ?? CHRONICLE_COPY.nextChapterOf(view.chapter)}</Button>
             <Button type="button" className="chronicle-keep" onPress={() => onKeepPlaying()} variant="secondary"><UiIcon sheet="time" cell="play" />{CHRONICLE_COPY.keepPlaying}</Button>
             {onOpenChronicle === undefined ? null : <Button type="button" className="chronicle-full" onPress={() => onOpenChronicle()} variant="primary">
               <UiIcon sheet="action" cell="log" />{CHRONICLE_COPY.openFull}</Button>}
-          </div></section>
-          </div>
+          </div></div>
         </div>
       </section>
     </div>
@@ -176,14 +201,16 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
  * The next chapter's screen after a chapter's page. UI-6: chapter 2 is played in the same town (FAIL-3 FL-8) — its
  * opening (Wave 16 chapter2_intro) names the chapter and lists its goals; a chapter not built yet (3 on) says so.
  */
-export function ChapterTwoPreview({ onContinue, chapter = 2, goals = [] }: {
+export function ChapterTwoPreview({ onContinue, chapter = 2, goals = [], startYear = null }: {
   readonly onContinue: () => void; readonly chapter?: number; readonly goals?: readonly string[];
+  /** UI-10: the year the chapter began (chronicleModel `chapterStartYear`), its title's first year. */
+  readonly startYear?: number | null;
 }) {
   // PLAGUE-b: chapter 3 on opens the same way over its Wave 31 painting when the game has built it (its copy line).
   const later = CHRONICLE_COPY.chapterOpening[chapter];
   const intro = chapterIntro(chapter);
   const opening = chapter === 2 ? { title: CHRONICLE_COPY.chapterTwoStartTitle, line: CHRONICLE_COPY.chapterTwoStartLine, start: CHRONICLE_COPY.chapterTwoStart }
-    : later !== undefined && intro !== null ? later : null;
+    : later !== undefined && intro !== null ? { ...later, title: later.title(startYear) } : null;
   const open = opening !== null;
   const art = intro === null ? wave16Url("chapter2_intro") : wave31Url(intro);
   return (

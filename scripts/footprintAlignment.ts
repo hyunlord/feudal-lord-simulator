@@ -22,6 +22,8 @@ import { houseCompoundAssetManifest } from "../src/render/houseCompoundAssetMani
 import { houseCompoundSpriteRect } from "../src/render/houseCompoundAssets";
 import { TILE_H, TILE_W, tileToScreen } from "../src/render/iso";
 import { spriteMeta } from "../src/render/worldAssets";
+import { wave26HouseRect } from "../src/render/wave26HouseArt";
+import { WAVE30_PAIR_HOUSE_VARIANTS } from "../src/render/wave30PairHouseManifest.generated";
 import { readPng, type RgbaImage } from "./processBuildingSprite";
 
 type Rect = { readonly x: number; readonly y: number; readonly width: number; readonly height: number };
@@ -81,6 +83,10 @@ export function artPlacements(): readonly ArtPlacement[] {
     add({ label: `house_pair_l${meta.level}_${meta.axis}`, kind: "house", png: meta.url, crop: meta.alphaBounds, declared: meta, dest, footprint: footprintOf(pair), path: "house_pair" });
     for (const v of pool("house", p => "level" in p && p.level === meta.level && p.lot === meta.axis))
       add({ label: `house_pair_l${meta.level}_${meta.axis}:${v.id}`, kind: "house", png: v.url, crop: scaleCrop(meta.alphaBounds, meta, v), declared: v, dest, footprint: footprintOf(pair), path: "house_pair" });
+    // INSTALL-30 the Wave 30 paintings: through their own crop, in the approved pair's rect grown to it (wave26HouseRect).
+    for (const v of WAVE30_PAIR_HOUSE_VARIANTS.filter(entry => entry.level === meta.level && entry.lot === meta.axis))
+      add({ label: `house_pair_l${meta.level}_${meta.axis}:wave30_${v.variant}`, kind: "house", png: `assets/wave30/house_pair/${v.key}.png`, crop: v.crop,
+        declared: meta, dest: wave26HouseRect(v, meta.alphaBounds, dest), footprint: footprintOf(pair), path: "house_pair" });
   }
   // Historical facilities (the rect comes from the kind's first manifest entry, the crop from the drawn id's own).
   for (const meta of historicalFacilityManifest) {

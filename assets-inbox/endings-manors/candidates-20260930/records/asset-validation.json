@@ -1,0 +1,100 @@
+{
+  "assets": 8,
+  "csvRows": 8,
+  "csvColumns": 27,
+  "csvRoundtrip": true,
+  "validation": [
+    {
+      "assetId": "campaign_ending_self_governing_city-v1",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "alpha": null,
+      "pivot": null,
+      "pass": true
+    },
+    {
+      "assetId": "campaign_ending_remembered_lineage-v1",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "alpha": null,
+      "pivot": null,
+      "pass": true
+    },
+    {
+      "assetId": "campaign_ending_merchants_chantry-v1",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "alpha": null,
+      "pivot": null,
+      "pass": true
+    },
+    {
+      "assetId": "campaign_ending_family_city-v1",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "alpha": null,
+      "pivot": null,
+      "pass": true
+    },
+    {
+      "assetId": "campaign_ending_lords_city-v1",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "alpha": null,
+      "pivot": null,
+      "pass": true
+    },
+    {
+      "assetId": "campaign_ending_pilgrims_city-v1",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "alpha": null,
+      "pivot": null,
+      "pass": true
+    },
+    {
+      "assetId": "manor_house_a_empty-v1",
+      "dimensions": [
+        416,
+        328
+      ],
+      "alpha": {
+        "visiblePixels": 63635,
+        "transparentPixels": 72813
+      },
+      "pivot": [
+        249,
+        319
+      ],
+      "pass": true
+    },
+    {
+      "assetId": "manor_house_b_empty-v1",
+      "dimensions": [
+        416,
+        328
+      ],
+      "alpha": {
+        "visiblePixels": 57572,
+        "transparentPixels": 78876
+      },
+      "pivot": [
+        251,
+        319
+      ],
+      "pass": true
+    }
+  ]
+}

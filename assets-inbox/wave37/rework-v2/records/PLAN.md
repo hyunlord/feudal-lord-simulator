@@ -1,0 +1,1 @@
+Wave37 rework: four assets only,28originals SHA preserved. One comparisonboard againstordinarybench/newcomercartB. Two miller props blind-reviewed by new independent reviewer beforekey. Preserveoldversions; noinstall. CSVfootanchors; lightweight /tmp archive.

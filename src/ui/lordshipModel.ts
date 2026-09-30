@@ -6,7 +6,7 @@ import { conscriptsAway, ringDefencePermille, warOf } from "../engine/war";
 import { DECISION_COPY } from "./decisionCopy.ko";
 import type { EmblemSpec } from "./heraldry/EmblemImage";
 import { LORDSHIP_COPY } from "./lordshipCopy.ko";
-import { lordHouseArms, lordHouseholdRows, type PersonRow } from "./persons/personModels";
+import { familyCountrySeatYear, lordHouseArms, lordHouseholdRows, type PersonRow } from "./persons/personModels";
 import type { Wave14ImageId } from "./wave14Art";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 // UI-9: revolt pressure shown on the rights tab (RG-8).
@@ -31,6 +31,8 @@ export type LordshipView = Readonly<{
   house: string; arms: EmblemSpec; armsLabel: string; pastHouses: string | null;
   /** UI-7: the lord's family, then the steward (`lordHouseholdRows`). */
   household: readonly PersonRow[];
+  /** UI-10 (F5-A LG-1): the family gone to its country manor since the year, or null. */
+  seat: string | null;
   title: string; demoted: string | null;
   rights: readonly LordshipRightRow[];
   granted: readonly string[];
@@ -63,6 +65,7 @@ export function lordshipView(state: GameState): LordshipView {
     house: LORDSHIP_COPY.house(house.name, house.order, yearOfTick(state, house.since)),
     arms: lordHouseArms(state), armsLabel: LORDSHIP_COPY.houseArms(house.name),
     household: lordHouseholdRows(state),
+    seat: familyCountrySeatYear(state) === null ? null : LORDSHIP_COPY.countrySeat(house.name, familyCountrySeatYear(state)!),
     pastHouses: lordship.pastHouses.length === 0 ? null : LORDSHIP_COPY.pastHouses(lordship.pastHouses.map(past => past.name)),
     title: LORDSHIP_COPY.title(title.rank), demoted: title.demoted && title.rank !== title.base ? LORDSHIP_COPY.demoted(title.base) : null,
     rights: lordRights(state).map(right => {

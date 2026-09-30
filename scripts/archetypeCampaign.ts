@@ -20,6 +20,8 @@ export function archetypeCampaign(archetypeId: string, seed: number, lastYear = 
   let last: GameState | null = null;
   let peak = 0;
   const decades: { year: number; population: number; treasury: number; chapter: number; l4: number }[] = [];
+  // BOT-4: each year's lowest L4 count and population at its four season starts (the late-wobble gate reads 1370–1450).
+  const years: { year: number; l4Min: number; populationMin: number }[] = [];
   class Stop extends Error {}
   let report: ReturnType<typeof runPhase19NaturalGrowth> | null = null;
   const started = performance.now();
@@ -30,6 +32,13 @@ export function archetypeCampaign(archetypeId: string, seed: number, lastYear = 
       if (state.tick % (10 * YEAR) === 0) decades.push({ year: stateCalendar(state).year, population: state.population,
         treasury: treasuryBalance(state), chapter: state.politics?.chapter.number ?? 1,
         l4: state.houses.filter(house => house.level >= 4 && house.residents > 0).length });
+      if (state.tick % (YEAR / 4) === 0) {
+        const year = stateCalendar(state).year;
+        const l4 = state.houses.filter(house => house.level >= 4 && house.residents > 0).length;
+        const entry = years.at(-1);
+        if (entry?.year === year) { entry.l4Min = Math.min(entry.l4Min, l4); entry.populationMin = Math.min(entry.populationMin, state.population); }
+        else years.push({ year, l4Min: l4, populationMin: state.population });
+      }
       if (chapterEnd(state, CHAPTER_FIVE.chapter) !== null || stateCalendar(state).year > lastYear) throw new Stop();
       // The growth run stops at the town's stability unless this holds (as `longRun.ts`): on to the campaign's end.
     }, additionalAcceptance: state => stateCalendar(state).year > lastYear });
@@ -52,7 +61,7 @@ export function archetypeCampaign(archetypeId: string, seed: number, lastYear = 
     raid: raid === undefined ? null : { year: year(raid.tick), defencePermille: raid.defencePermille, ...raid.losses },
     plague: plague?.first === undefined ? null : { populationAtArrival: plague.first.populationAtArrival, deathPermille: plague.first.deathPermille,
       dead: plague.first.dead, second: plague.second === undefined ? null : { deathPermille: plague.second.deathPermille, dead: plague.second.dead } },
-    failures: report?.failures ?? [], decades, elapsedSeconds: Math.round((performance.now() - started) / 100) / 10,
+    failures: report?.failures ?? [], decades, years, elapsedSeconds: Math.round((performance.now() - started) / 100) / 10,
   };
 }
 

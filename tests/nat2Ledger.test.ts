@@ -32,7 +32,8 @@ test("NAT-2 QA-006: the stock table has five columns for a town of 49 stores", (
   assert.doesNotMatch(markup, /ledger-store/, "no store buttons until a row is lit");
   const wheat = matrix.rows.find(row => row.resource === "wheat")!;
   const held = wheat.byStore.filter(amount => amount > 0).length;
-  assert.match(markup, new RegExp(`data-resource="wheat"[\\s\\S]*?<td class="ledger-held">${held}곳</td>`));
+  // UI-10: the count is the button that unfolds the row.
+  assert.match(markup, new RegExp(`data-resource="wheat"[\\s\\S]*?<td class="ledger-held"><button type="button" class="ledger-held-toggle ui-btn ui-btn--surface" aria-expanded="false"[^>]*>${held}곳</button></td>`));
 });
 
 test("NAT-2 QA-006: a lit row lists the stores that hold it with their amounts, the others stay folded", () => {

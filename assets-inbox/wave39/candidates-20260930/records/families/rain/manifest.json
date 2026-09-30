@@ -1,0 +1,1168 @@
+[
+  {
+    "id": "rain_streak_4px_1px_faint-v1",
+    "kind": "streak",
+    "len": 4,
+    "width": 16,
+    "strength": "faint",
+    "angle": 0,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 0 degrees clockwise. Render this one mark large for clean reduction to an actual 4px long and 1px thick streak within a 16x24 transparent cell. Subtle faint drizzle, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-f813f1b9-91e1-4a5b-84e7-3879fdfc922c.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_4px_1px_faint-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "5f43601d87b67e03a68400a28135530d02aad80d45c4a5067e19c26f1768b500",
+    "sha256": "1fc63a1881d103ca788e96cf332f90a9be12e07533c8af70e6937973261d96d7",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 95,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 0,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      7,
+      10,
+      8,
+      14
+    ]
+  },
+  {
+    "id": "rain_streak_4px_1px_strong-v1",
+    "kind": "streak",
+    "len": 4,
+    "width": 16,
+    "strength": "strong",
+    "angle": 0,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 0 degrees clockwise. Render this one mark large for clean reduction to an actual 4px long and 1px thick streak within a 16x24 transparent cell. Clearly visible but restrained heavy rain, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-27a7bba1-c4a5-4f1f-b82a-412c0e1b9539.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_4px_1px_strong-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "99e12fde4f7e6134aa53e0a2dcca06cf1e5ec08b6f2f202a76f50c1f56e9e39f",
+    "sha256": "9f24161d1e03f65e3f4d63353b4f0b07d8499df0246b7527e7045f3135b4304b",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 175,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 0,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      7,
+      10,
+      8,
+      14
+    ]
+  },
+  {
+    "id": "rain_streak_4px_2px_faint-v1",
+    "kind": "streak",
+    "len": 4,
+    "width": 16,
+    "strength": "faint",
+    "angle": 0,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 0 degrees clockwise. Render this one mark large for clean reduction to an actual 4px long and 2px thick streak within a 16x24 transparent cell. Subtle faint drizzle, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-cdea323d-295c-4050-b528-fa0ea57d294c.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_4px_2px_faint-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "f63a909ca6a0f0a6a6f82bf6d232ab7025b77415dbec32b2aa2bcd0bb4b9a5fc",
+    "sha256": "b6f2e50739aede8405fb6bf0858d01ef8b07f7c7b45f803dba4ffd2f727e8ee6",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 95,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 0,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      7,
+      10,
+      9,
+      14
+    ]
+  },
+  {
+    "id": "rain_streak_4px_2px_strong-v1",
+    "kind": "streak",
+    "len": 4,
+    "width": 16,
+    "strength": "strong",
+    "angle": 0,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 0 degrees clockwise. Render this one mark large for clean reduction to an actual 4px long and 2px thick streak within a 16x24 transparent cell. Clearly visible but restrained heavy rain, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-953d9384-9503-4d15-9ff1-11fabc1c0ea5.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_4px_2px_strong-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "12af0e5437cb5a8502eb1fc2e11773a3760f16874ab7370d5665da7fe95fd50c",
+    "sha256": "bc9f20aeffa72871057bea6f4efa449d77376e9c9c3a3f8218e012546581792b",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 175,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 0,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      7,
+      10,
+      9,
+      13
+    ]
+  },
+  {
+    "id": "rain_streak_7px_1px_faint-v1",
+    "kind": "streak",
+    "len": 7,
+    "width": 16,
+    "strength": "faint",
+    "angle": 12,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 12 degrees clockwise. Render this one mark large for clean reduction to an actual 7px long and 1px thick streak within a 16x24 transparent cell. Subtle faint drizzle, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-7df99515-5508-416c-8670-1b0f381d723a.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_7px_1px_faint-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "45bed32c85ef8863dfc67d90cbc9185f4798afe5207a22c531f1e5bc82f4957a",
+    "sha256": "57496056c06bf13ad877b0623100001a7d97b1a48abc4afa83d23492670e3ad8",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 95,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 12,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      6,
+      8,
+      9,
+      14
+    ]
+  },
+  {
+    "id": "rain_streak_7px_1px_strong-v1",
+    "kind": "streak",
+    "len": 7,
+    "width": 16,
+    "strength": "strong",
+    "angle": 12,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 12 degrees clockwise. Render this one mark large for clean reduction to an actual 7px long and 1px thick streak within a 16x24 transparent cell. Clearly visible but restrained heavy rain, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-3d9cd0d0-1687-4ffa-a746-e65c790df5af.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_7px_1px_strong-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "9b32a01a5c05ccb1a43abdfcfb74547c11e7af7ec283e57b022011c7759724e6",
+    "sha256": "8c7330fd3a382cf4c427518139945420b329c65364053fb9790ddbcc2544a86d",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 175,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 12,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      6,
+      8,
+      9,
+      14
+    ]
+  },
+  {
+    "id": "rain_streak_7px_2px_faint-v1",
+    "kind": "streak",
+    "len": 7,
+    "width": 16,
+    "strength": "faint",
+    "angle": 12,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 12 degrees clockwise. Render this one mark large for clean reduction to an actual 7px long and 2px thick streak within a 16x24 transparent cell. Subtle faint drizzle, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-6120988b-f0bd-498d-b810-f199bc1dbb30.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_7px_2px_faint-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "eca80a5e95dff0c06cfa7e0366c4463785c0d5e3f6dddc5af317760f61e686d1",
+    "sha256": "413a279af70c18c4a5174b4360ecc1211ce03aef87ab4d554b851272be293a1b",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 95,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 12,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      6,
+      8,
+      10,
+      15
+    ]
+  },
+  {
+    "id": "rain_streak_7px_2px_strong-v1",
+    "kind": "streak",
+    "len": 7,
+    "width": 16,
+    "strength": "strong",
+    "angle": 12,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 12 degrees clockwise. Render this one mark large for clean reduction to an actual 7px long and 2px thick streak within a 16x24 transparent cell. Clearly visible but restrained heavy rain, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-b7dfdd66-09f2-4589-8fe9-b50c296a8e13.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_7px_2px_strong-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "53c8fd20c0c9330faf0725db7251ebe33623582409b48577ccb6e181d71712b3",
+    "sha256": "cebef731c71bc1172c20ff2e973cf422144a9251d0a4c9dc8c75a0bba2598ae1",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 175,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 12,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      6,
+      8,
+      10,
+      15
+    ]
+  },
+  {
+    "id": "rain_streak_10px_1px_faint-v1",
+    "kind": "streak",
+    "len": 10,
+    "width": 16,
+    "strength": "faint",
+    "angle": 25,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 25 degrees clockwise. Render this one mark large for clean reduction to an actual 10px long and 1px thick streak within a 16x24 transparent cell. Subtle faint drizzle, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-6e2c5da2-2e0c-4bc1-8fcf-7fa102e9675c.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_10px_1px_faint-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "6900c398d42264c3af7d9910738646f4f96c748faf7ce7bc63a2a4128968ae4f",
+    "sha256": "0e7cc4453337d50bcd0033d29ed157656e8102890bbdbfefe612fcc3d5cffb57",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 95,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 25,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      5,
+      7,
+      11,
+      17
+    ]
+  },
+  {
+    "id": "rain_streak_10px_1px_strong-v1",
+    "kind": "streak",
+    "len": 10,
+    "width": 16,
+    "strength": "strong",
+    "angle": 25,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 25 degrees clockwise. Render this one mark large for clean reduction to an actual 10px long and 1px thick streak within a 16x24 transparent cell. Clearly visible but restrained heavy rain, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-094034a4-01bf-42b8-ae96-549e68af201c.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_10px_1px_strong-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "73f6b54758c8a02ec93b0a47858578f806becd5fa96f8a5704a59dcfa4ad9c48",
+    "sha256": "5950d862acb01245813337a48c604e796a78056719935410b0e0051e7f16c4c7",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 175,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 25,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      6,
+      7,
+      11,
+      15
+    ]
+  },
+  {
+    "id": "rain_streak_10px_2px_faint-v1",
+    "kind": "streak",
+    "len": 10,
+    "width": 16,
+    "strength": "faint",
+    "angle": 25,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 25 degrees clockwise. Render this one mark large for clean reduction to an actual 10px long and 2px thick streak within a 16x24 transparent cell. Subtle faint drizzle, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-bf718b8b-8bfc-42a2-9f5b-1223358b2550.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_10px_2px_faint-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "9dfd468e64711c0a243661a9fb6e4e2f4f1b9b8bf28061249ccbfbbcc2fbcf46",
+    "sha256": "fcc872c7283b6a89fd3f5187761bbd58127f4bcb5a364c812adf931b27931881",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 95,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 25,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      4,
+      7,
+      11,
+      17
+    ]
+  },
+  {
+    "id": "rain_streak_10px_2px_strong-v1",
+    "kind": "streak",
+    "len": 10,
+    "width": 16,
+    "strength": "strong",
+    "angle": 25,
+    "prompt": "Use case: stylized-concept. One isolated tiny rain streak sprite for a hand-painted medieval isometric game, NOT a rain sheet. Transparent background. Single slender cool pale grey water streak, slightly tapered tail, no teardrop blob, no glow, no text or other particles. Vertical motion leaning 25 degrees clockwise. Render this one mark large for clean reduction to an actual 10px long and 2px thick streak within a 16x24 transparent cell. Clearly visible but restrained heavy rain, desaturated grey white. Reference shows game water tones only: do not reproduce city or scenery. Only ONE mark centered with generous empty transparent surrounding area.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-f0c38132-fa41-4497-96ae-a6372e9457fa.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_streak_10px_2px_strong-v1.png",
+    "height": 24,
+    "frames": 1,
+    "frameWidth": 16,
+    "frameHeight": 24,
+    "pivot": [
+      8,
+      12
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "cd55d4e67df15b548987ec144f5827350f2539782962098c03d3e6db13e5b00b",
+    "sha256": "6a17c76101e30fc2b70065babf6e5aa2c90dc08f127069053e7dde38a64aaf2a",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 175,
+    "recommendedSpeed": "120–220 px/s",
+    "windAngle": 25,
+    "lifecycle": "world-space falling; occlude behind roofs; kill on ground contact",
+    "manualEdits": "Alpha bounding-box crop; fit to prescribed short streak envelope; center in16x24; alpha peak and neutral grey RGB normalized; integer-aligned crop avoids expanding particle envelope.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      120,
+      220
+    ],
+    "lifetimeSeconds": [
+      0.3,
+      0.7
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      4,
+      7,
+      11,
+      17
+    ]
+  },
+  {
+    "id": "rain_splash_soil_small-v1",
+    "kind": "splash",
+    "material": "soil",
+    "size": "small",
+    "prompt": "Use case: stylized-concept. Transparent-background sprite animation sheet of one tiny raindrop hitting damp earth with a tiny ochre-grey muddy flick. FOUR equally spaced frames arranged in a single horizontal row. Each frame has the same centered ground contact point and scale. Frame 1 a low contact dot, frame 2 a small broken crown with 2 tiny droplets, frame 3 low widening separated specks, frame 4 only two faint residual droplets. Distinct temporal silhouettes, not four copies. Hand-painted game effects, subtle muted grey water, no glowing white rings, no solid puddle plate, no ground or roof drawn, no background, no text, no borders, no labels. Designed for 16x12 pixels per frame, actual splash extent 8x5 pixels, smaller than a person. Show no more than a few simple water marks in each frame. Large empty margins above and below. Style reference game palette only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-3b65fe11-de97-49c2-9546-7e7cff107726.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_splash_soil_small-v1.png",
+    "width": 64,
+    "height": 12,
+    "frames": 4,
+    "frameWidth": 16,
+    "frameHeight": 12,
+    "pivot": [
+      8,
+      9
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "638b4b5ee38a2ed2101aa21a13da0fe4a6abfd7ee4c4e1b71e4192b6e907c99e",
+    "sha256": "5711cca7385b3f27411ec5a09a7d9abea5e16ee363a876f7a6e3d16addd30999",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 170,
+    "recommendedSpeed": "4 frames / 160–240 ms",
+    "windAngle": 0,
+    "lifecycle": "one shot at ground/roof contact",
+    "manualEdits": "Four equal source cells alpha-cropped; one common scale across temporal frames; shared contact baseline h-3; no painted pixels added.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      0,
+      0
+    ],
+    "lifetimeSeconds": [
+      0.16,
+      0.24
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": [
+      40,
+      60
+    ],
+    "actualAlphaBounds": [
+      5,
+      4,
+      58,
+      9
+    ]
+  },
+  {
+    "id": "rain_splash_soil_large-v1",
+    "kind": "splash",
+    "material": "soil",
+    "size": "large",
+    "prompt": "Use case: stylized-concept. Transparent-background sprite animation sheet of one tiny raindrop hitting damp earth with a tiny ochre-grey muddy flick. FOUR equally spaced frames arranged in a single horizontal row. Each frame has the same centered ground contact point and scale. Frame 1 a low contact dot, frame 2 a small broken crown with 2 tiny droplets, frame 3 low widening separated specks, frame 4 only two faint residual droplets. Distinct temporal silhouettes, not four copies. Hand-painted game effects, subtle muted grey water, no glowing white rings, no solid puddle plate, no ground or roof drawn, no background, no text, no borders, no labels. Designed for 24x16 pixels per frame, actual splash extent 13x8 pixels, smaller than a person. Show no more than a few simple water marks in each frame. Large empty margins above and below. Style reference game palette only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-db814690-f44a-43c8-ba2d-8a48bab8713d.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_splash_soil_large-v1.png",
+    "width": 96,
+    "height": 16,
+    "frames": 4,
+    "frameWidth": 24,
+    "frameHeight": 16,
+    "pivot": [
+      12,
+      13
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "038b2cc554514c1a541a3bf106764ac3770c7fb6555747087ce59d6684540e83",
+    "sha256": "3804623c5983139eb9770723c2da66e73570c6397b821b1753770b22ba1b5941",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 170,
+    "recommendedSpeed": "4 frames / 160–240 ms",
+    "windAngle": 0,
+    "lifecycle": "one shot at ground/roof contact",
+    "manualEdits": "Four equal source cells alpha-cropped; one common scale across temporal frames; shared contact baseline h-3; no painted pixels added.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      0,
+      0
+    ],
+    "lifetimeSeconds": [
+      0.16,
+      0.24
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": [
+      40,
+      60
+    ],
+    "actualAlphaBounds": [
+      7,
+      5,
+      87,
+      13
+    ]
+  },
+  {
+    "id": "rain_splash_stone_small-v1",
+    "kind": "splash",
+    "material": "stone",
+    "size": "small",
+    "prompt": "Use case: stylized-concept. Transparent-background sprite animation sheet of one tiny raindrop hitting grey stone paving with cool grey splash highlights. FOUR equally spaced frames arranged in a single horizontal row. Each frame has the same centered ground contact point and scale. Frame 1 a low contact dot, frame 2 a small broken crown with 2 tiny droplets, frame 3 low widening separated specks, frame 4 only two faint residual droplets. Distinct temporal silhouettes, not four copies. Hand-painted game effects, subtle muted grey water, no glowing white rings, no solid puddle plate, no ground or roof drawn, no background, no text, no borders, no labels. Designed for 16x12 pixels per frame, actual splash extent 8x5 pixels, smaller than a person. Show no more than a few simple water marks in each frame. Large empty margins above and below. Style reference game palette only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-370a0d08-da61-490a-b279-443e7754ec8d.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_splash_stone_small-v1.png",
+    "width": 64,
+    "height": 12,
+    "frames": 4,
+    "frameWidth": 16,
+    "frameHeight": 12,
+    "pivot": [
+      8,
+      9
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "083afc9ea25e6a7ae30aeb60e75cd7927fc313b99964e971aa1813fb6caa2c3e",
+    "sha256": "e4a7c8a55beddf75d3d0b9aab34717b8f0d48e8605a8530f355f8f9230536bdc",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 170,
+    "recommendedSpeed": "4 frames / 160–240 ms",
+    "windAngle": 0,
+    "lifecycle": "one shot at ground/roof contact",
+    "manualEdits": "Four equal source cells alpha-cropped; one common scale across temporal frames; shared contact baseline h-3; no painted pixels added.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      0,
+      0
+    ],
+    "lifetimeSeconds": [
+      0.16,
+      0.24
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": [
+      40,
+      60
+    ],
+    "actualAlphaBounds": [
+      5,
+      4,
+      58,
+      9
+    ]
+  },
+  {
+    "id": "rain_splash_stone_large-v1",
+    "kind": "splash",
+    "material": "stone",
+    "size": "large",
+    "prompt": "Use case: stylized-concept. Transparent-background sprite animation sheet of one tiny raindrop hitting grey stone paving with cool grey splash highlights. FOUR equally spaced frames arranged in a single horizontal row. Each frame has the same centered ground contact point and scale. Frame 1 a low contact dot, frame 2 a small broken crown with 2 tiny droplets, frame 3 low widening separated specks, frame 4 only two faint residual droplets. Distinct temporal silhouettes, not four copies. Hand-painted game effects, subtle muted grey water, no glowing white rings, no solid puddle plate, no ground or roof drawn, no background, no text, no borders, no labels. Designed for 24x16 pixels per frame, actual splash extent 13x8 pixels, smaller than a person. Show no more than a few simple water marks in each frame. Large empty margins above and below. Style reference game palette only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-bce9ec08-82f0-44e1-89ae-d54b2d16e8ff.png",
+    "referenceImages": [
+      "Wave29_물.jpg"
+    ],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_splash_stone_large-v1.png",
+    "width": 96,
+    "height": 16,
+    "frames": 4,
+    "frameWidth": 24,
+    "frameHeight": 16,
+    "pivot": [
+      12,
+      13
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "77c2c05bbd34e7da4b61090ea5576d764afbbf9c6b56d6af0857961e1a06464a",
+    "sha256": "6ec769947e4d2f39f4412ef66b9bb0e11c96defde417cdceab7c2ebce16ea46d",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 170,
+    "recommendedSpeed": "4 frames / 160–240 ms",
+    "windAngle": 0,
+    "lifecycle": "one shot at ground/roof contact",
+    "manualEdits": "Four equal source cells alpha-cropped; one common scale across temporal frames; shared contact baseline h-3; no painted pixels added.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      0,
+      0
+    ],
+    "lifetimeSeconds": [
+      0.16,
+      0.24
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": [
+      40,
+      60
+    ],
+    "actualAlphaBounds": [
+      8,
+      5,
+      86,
+      13
+    ]
+  },
+  {
+    "id": "rain_splash_roof_small-v1",
+    "kind": "splash",
+    "material": "roof",
+    "size": "small",
+    "prompt": "Use case: stylized-concept. Transparent-background sprite animation sheet of one tiny raindrop hitting a clay-tile roof, a low asymmetrical sideways scatter with no tile drawn. FOUR equally spaced frames arranged in a single horizontal row. Each frame has the same centered ground contact point and scale. Frame 1 a low contact dot, frame 2 a small broken crown with 2 tiny droplets, frame 3 low widening separated specks, frame 4 only two faint residual droplets. Distinct temporal silhouettes, not four copies. Hand-painted game effects, subtle muted grey water, no glowing white rings, no solid puddle plate, no ground or roof drawn, no background, no text, no borders, no labels. Designed for 16x12 pixels per frame, actual splash extent 8x5 pixels, smaller than a person. Show no more than a few simple water marks in each frame. Large empty margins above and below. Style reference game palette only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-81fc675b-a410-4aae-ad4c-4fb872e62809.png",
+    "referenceImages": [],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_splash_roof_small-v1.png",
+    "width": 64,
+    "height": 12,
+    "frames": 4,
+    "frameWidth": 16,
+    "frameHeight": 12,
+    "pivot": [
+      8,
+      9
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "27e9bceced26f2c2d61f9eb8d89acd3c1a452ab0c00bfaceead13428c0514391",
+    "sha256": "1fb4174cb053f2477e1ce9e360828a718f7878a3899854186767e5a0d07ed766",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 170,
+    "recommendedSpeed": "4 frames / 160–240 ms",
+    "windAngle": 0,
+    "lifecycle": "one shot at ground/roof contact",
+    "manualEdits": "Four equal source cells alpha-cropped; one common scale across temporal frames; shared contact baseline h-3; no painted pixels added.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      0,
+      0
+    ],
+    "lifetimeSeconds": [
+      0.16,
+      0.24
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": [
+      40,
+      60
+    ],
+    "actualAlphaBounds": [
+      7,
+      6,
+      55,
+      9
+    ]
+  },
+  {
+    "id": "rain_splash_roof_large-v1",
+    "kind": "splash",
+    "material": "roof",
+    "size": "large",
+    "prompt": "Use case: stylized-concept. Transparent-background sprite animation sheet of one tiny raindrop hitting a clay-tile roof, a low asymmetrical sideways scatter with no tile drawn. FOUR equally spaced frames arranged in a single horizontal row. Each frame has the same centered ground contact point and scale. Frame 1 a low contact dot, frame 2 a small broken crown with 2 tiny droplets, frame 3 low widening separated specks, frame 4 only two faint residual droplets. Distinct temporal silhouettes, not four copies. Hand-painted game effects, subtle muted grey water, no glowing white rings, no solid puddle plate, no ground or roof drawn, no background, no text, no borders, no labels. Designed for 24x16 pixels per frame, actual splash extent 13x8 pixels, smaller than a person. Show no more than a few simple water marks in each frame. Large empty margins above and below. Style reference game palette only.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-a79aa992-1a5d-489b-9834-dfd8f6c39abd.png",
+    "referenceImages": [],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_splash_roof_large-v1.png",
+    "width": 96,
+    "height": 16,
+    "frames": 4,
+    "frameWidth": 24,
+    "frameHeight": 16,
+    "pivot": [
+      12,
+      13
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "57caa718dfe131281318522209618c692fe4661522d7a83e4c7f0abf562ed1c2",
+    "sha256": "e79f792a72143561c99e1992f4a872050777319bad368eddaa0262364ef29d42",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 170,
+    "recommendedSpeed": "4 frames / 160–240 ms",
+    "windAngle": 0,
+    "lifecycle": "one shot at ground/roof contact",
+    "manualEdits": "Four equal source cells alpha-cropped; one common scale across temporal frames; shared contact baseline h-3; no painted pixels added.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      0,
+      0
+    ],
+    "lifetimeSeconds": [
+      0.16,
+      0.24
+    ],
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": [
+      40,
+      60
+    ],
+    "actualAlphaBounds": [
+      10,
+      7,
+      88,
+      13
+    ]
+  },
+  {
+    "id": "rain_cloud_shadow_a-v1",
+    "kind": "shadow",
+    "prompt": "Use case: stylized-concept. One flat translucent cloud shadow ground-overlay sprite, transparent background, landscape 2:1 canvas. An irregular low-contrast soft-edged long asymmetrical broken oval with a broad left shoulder and narrow trailing right end of neutral cool charcoal-grey transparent shade. This is a SHADOW CAST ON GROUND, not an illustration of a cloud. No white cloud, no volume, no highlights, no scenery, no texture grid, no text. Mostly smoothly varying opacity, generous completely transparent margin. Intended final512x256 with peak alpha 35/255; show subdued dark translucent mass, no opaque black areas. Non-tileable isolated natural shape.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-fbfed709-a352-40d1-9f93-cf08e1a44baf.png",
+    "referenceImages": [],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_cloud_shadow_a-v1.png",
+    "width": 512,
+    "height": 256,
+    "frames": 1,
+    "frameWidth": 512,
+    "frameHeight": 256,
+    "pivot": [
+      256,
+      128
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "d8a2d6d1e7cb2ee6903f9422eab53b227126512184a27ca3921bf6fa7e74c146",
+    "sha256": "044da6c343ffd5e00a6d036eebb8405be71efaabe7af674ef187bdb98f27d8cd",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 35,
+    "recommendedSpeed": "4–12 px/s",
+    "windAngle": 0,
+    "lifecycle": "non-tileable world-space soft shadow",
+    "manualEdits": "Mechanical canvas resize; shadow alpha-edge feather9px; wet native luminance extracted to low-contrast alpha; neutral dark tint RGB and low peak alpha normalization.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      4,
+      12
+    ],
+    "lifetimeSeconds": null,
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      13,
+      70,
+      489,
+      198
+    ]
+  },
+  {
+    "id": "rain_cloud_shadow_b-v1",
+    "kind": "shadow",
+    "prompt": "Use case: stylized-concept. One flat translucent cloud shadow ground-overlay sprite, transparent background, landscape 2:1 canvas. An irregular low-contrast soft-edged broad uneven oblique cloud mass with two uneven lobes and a deep off-center indentation of neutral cool charcoal-grey transparent shade. This is a SHADOW CAST ON GROUND, not an illustration of a cloud. No white cloud, no volume, no highlights, no scenery, no texture grid, no text. Mostly smoothly varying opacity, generous completely transparent margin. Intended final512x256 with peak alpha 35/255; show subdued dark translucent mass, no opaque black areas. Non-tileable isolated natural shape.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-aabfc853-f79a-407a-9de4-86ef971ec689.png",
+    "referenceImages": [],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_cloud_shadow_b-v1.png",
+    "width": 512,
+    "height": 256,
+    "frames": 1,
+    "frameWidth": 512,
+    "frameHeight": 256,
+    "pivot": [
+      256,
+      128
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "160d8f7cac40152758b5e0298b208f5360594adb782da55619d6fb7cea5c968e",
+    "sha256": "032389a56c42d81067f77a354e35895b1558d73f5285ae3ab77799a19c159f58",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 35,
+    "recommendedSpeed": "4–12 px/s",
+    "windAngle": 0,
+    "lifecycle": "non-tileable world-space soft shadow",
+    "manualEdits": "Mechanical canvas resize; shadow alpha-edge feather9px; wet native luminance extracted to low-contrast alpha; neutral dark tint RGB and low peak alpha normalization.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      4,
+      12
+    ],
+    "lifetimeSeconds": null,
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "none",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      3,
+      36,
+      512,
+      223
+    ]
+  },
+  {
+    "id": "rain_wet_mask_soil-v1",
+    "kind": "wet",
+    "material": "soil",
+    "prompt": "Use case: stylized-concept. Seamless XY tileable neutral dark tint overlay for wet packed earth, rectangular 2:1 flat texture, transparent background. Only extremely subtle fine low-contrast soft mineral brush grain suspended in translucent neutral cool grey. No landscape, no puddles, no plants, no objects, no large patches, no stamp, no border, no diamond outline, no directional shadow. Uniform distribution reaches all four edges with matching wrap, quiet matte hand-painted game texture. Final128x64 overlay at peak alpha 28/255. No white highlights or bright coloured marks. Only neutral darkening tint.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-e416ef24-562f-4500-a64f-64939a1994f2.png",
+    "referenceImages": [],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_wet_mask_soil-v1.png",
+    "width": 128,
+    "height": 64,
+    "frames": 1,
+    "frameWidth": 128,
+    "frameHeight": 64,
+    "pivot": [
+      64,
+      32
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "1dbaa35aefda4886b6fa52c07c8b092fab643c6614e3c0ca07d48bf22239dbe8",
+    "sha256": "adf4e2f15cee6924967d99f0a694d534927fdfeb085589afaf0acbd5c622a682",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 28,
+    "recommendedSpeed": "static; interpolate wetness 1–4 s",
+    "windAngle": 0,
+    "lifecycle": "XY tileable material wetness overlay",
+    "manualEdits": "Mechanical canvas resize; shadow alpha-edge feather9px; wet native luminance extracted to low-contrast alpha; neutral dark tint RGB and low peak alpha normalization. Opposite edge alpha pairs averaged to enforce exact XY seam continuity.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      0,
+      0
+    ],
+    "lifetimeSeconds": null,
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "XY",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      0,
+      0,
+      128,
+      64
+    ]
+  },
+  {
+    "id": "rain_wet_mask_grass-v1",
+    "kind": "wet",
+    "material": "grass",
+    "prompt": "Use case: stylized-concept. Seamless XY tileable neutral dark tint overlay for wet short grass, rectangular 2:1 flat texture, transparent background. Only extremely subtle fine low-contrast short muted broken brush strokes suspended in translucent neutral cool grey. No landscape, no puddles, no plants, no objects, no large patches, no stamp, no border, no diamond outline, no directional shadow. Uniform distribution reaches all four edges with matching wrap, quiet matte hand-painted game texture. Final128x64 overlay at peak alpha 28/255. No white highlights or bright coloured marks. Only neutral darkening tint.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-412f-7770-9981-7a048b33da99/exec-f1d13d73-0b45-49fd-9f3e-b399a00a8f40.png",
+    "referenceImages": [],
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/rain/rain_wet_mask_grass-v1.png",
+    "width": 128,
+    "height": 64,
+    "frames": 1,
+    "frameWidth": 128,
+    "frameHeight": 64,
+    "pivot": [
+      64,
+      32
+    ],
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not displayed",
+    "date": "2026-09-30",
+    "sourceSha256": "35070535496ae3cb8f00af493592be9582d40352a6ddf9b171afa0d6d98df0d3",
+    "sha256": "ca04a7c3bf6c789af987e2f44f23635bad4f1d2a9dc51a3d1699ce68fc8c88c6",
+    "recommendedAlpha": 1,
+    "encodedPeakAlpha": 28,
+    "recommendedSpeed": "static; interpolate wetness 1–4 s",
+    "windAngle": 0,
+    "lifecycle": "XY tileable material wetness overlay",
+    "manualEdits": "Mechanical canvas resize; shadow alpha-edge feather9px; wet native luminance extracted to low-contrast alpha; neutral dark tint RGB and low peak alpha normalization. Opposite edge alpha pairs averaged to enforce exact XY seam continuity.",
+    "candidateCount": 1,
+    "selectionReason": "Single native candidate, normalized to actual world-particle scale.",
+    "speedPxPerSec": [
+      0,
+      0
+    ],
+    "lifetimeSeconds": null,
+    "generationTool": "image_gen.imagegen",
+    "recommendedAlphaMultiplier": 1,
+    "repeat": "XY",
+    "frameDurationMs": null,
+    "actualAlphaBounds": [
+      0,
+      0,
+      128,
+      64
+    ]
+  }
+]

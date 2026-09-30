@@ -3,6 +3,7 @@ import type { Building } from "../content/buildingConfig";
 import type { ResourceType } from "../content/resourceConfig";
 import { ALE_BALANCE } from "../content/aleConfig";
 import { brewingSlot, isAlehouse } from "../engine/ale";
+import { acceptsResource } from "../economy/storage";
 import type { GameState } from "../engine/engine.types";
 import type { House } from "../population/population.types";
 import { variantRandom } from "./buildingVariants";
@@ -44,12 +45,15 @@ export function aleBarrelPile(house: Pick<House, "crafts">): Wave3AleKey | null 
 /**
  * The Wave 3 piles at a building's door, the Wave 7 stock piles' thresholds (stockPileLevel against the building's
  * storage capacity, as its wheat sacks): barley sacks at a barn by its barley (capacity 1000), malt sacks at the kiln
- * by its malt (capacity 40).
+ * by its malt (capacity 40). UI-10 (FIX-8, decision FX8-1): malt's store is the storehouse (the rules' `acceptsResource`),
+ * its sacks there by its malt against the share of the room malt may take (a quarter of 200); a granary shows none.
  */
 export function aleStockPile(building: Pick<Building, "kind" | "inventory">, capacity: number): Wave3AleKey | null {
-  const resource = building.kind === "farmstead" ? "barley" : building.kind === "malt_kiln" ? "malt" : null;
+  const store = building.kind !== "malt_kiln" && acceptsResource(building.kind, "malt");
+  const resource = building.kind === "farmstead" ? "barley" : building.kind === "malt_kiln" || store ? "malt" : null;
   if (resource === null) return null;
-  const level = stockPileLevel(building.inventory[resource] ?? 0, capacity);
+  const room = store ? Math.floor(capacity * ALE_BALANCE.maltStorePermille / 1000) : capacity;
+  const level = stockPileLevel(building.inventory[resource] ?? 0, room);
   return level === 0 ? null : resource === "barley" ? `barley_sacks_${level}` : `malt_sacks_${level}`;
 }
 

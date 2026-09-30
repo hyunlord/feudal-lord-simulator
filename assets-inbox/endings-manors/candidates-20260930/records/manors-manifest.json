@@ -1,0 +1,98 @@
+[
+  {
+    "assetId": "manor_house_a_empty-v1",
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "generationDate": "2026-09-30",
+    "prompt": "Use case: precise-object-edit. EDIT the attached original manor_house_a-v1 PNG into its EMPTY / UNOCCUPIED variant. This is the same exact building, not a redesign. Retain the exact camera, 2:1 isometric perspective, the orange tiled roof geometry, all architecture, masonry enclosure, original position, scale, outer silhouette and original transparent canvas framing. The source canvas is 416x328 and its ground pivot is (249,319). Preserve those relative proportions and layout exactly. Change only: all window shutters now visibly CLOSED in weathered muted oak, every entrance door firmly shut and crossed with a clear horizontal timber bar, an untended courtyard with irregular sparse clumps of low olive green grass growing between cobbles. The building is empty, structurally intact, not ruined. No people, smoke, lights, text, symbols, props or new structures. Keep the exact project's painted texture, terracotta roof, beige stone, dark oak, subdued greens and soft upper-left light. Output one sprite on genuinely transparent background; no ground expansion beyond original enclosure and existing ground silhouette. Same building edges and roof lines as original. Render window closures and door bars crisply enough for small game scale.",
+    "references": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave12/candidates-20260926/assets/bld/manor_house_a-v1.png",
+        "sha256": "916941e26116e6344755466e902e067b43fe1494994ea74fafe664bb53c6f745"
+      }
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1cf-fa1b-7b61-bb97-3ea16c00122b/exec-1c5cb1c2-75fa-4c0d-912c-006b909b74b7.png",
+    "sourceSha256": "356329a8a9d289196fb47b3c2168e2857db9570ea4f5bdc476312209f9ca62f7",
+    "outputPath": "/tmp/astra-endings-empty-manors-candidates-20260930/assets/manors/manor_house_a_empty-v1.png",
+    "outputSha256": "ad0b755915052398b438a754e1ae57f1ca66b72b989d66494afcb98d8c0ab9d8",
+    "dimensions": [
+      416,
+      328
+    ],
+    "pivot": [
+      249,
+      319
+    ],
+    "sourceBbox": [
+      59,
+      106,
+      1364,
+      1055
+    ],
+    "referenceBbox": [
+      20,
+      48,
+      395,
+      319
+    ],
+    "candidateCount": 1,
+    "selectionReason": "Original architectural arrangement retained; visibly closed shutters, barred doors, and overgrown courtyard.",
+    "manualEdits": "Mechanical alpha-bounding-box crop and resize to original bbox, placed in exact 416x328 canvas. No painted changes after native edit.",
+    "validation": {
+      "alphaSilhouetteIoU": 0.9902087214023021,
+      "outsideOriginalPixels": 250,
+      "canvasExact": true,
+      "pivotMetadataExact": true
+    },
+    "limitations": "Native edit is not pixel-identical registration of every architectural edge. Canvas and declared pivot exact; outer silhouette measured, architecture visually compared."
+  },
+  {
+    "assetId": "manor_house_b_empty-v1",
+    "status": "candidate",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed",
+    "generationDate": "2026-09-30",
+    "prompt": "Use case: precise-object-edit. EDIT the attached original manor_house_b-v1 PNG into its EMPTY / UNOCCUPIED variant. This is the same exact building, not a redesign. Retain the exact camera, 2:1 isometric perspective, the orange tiled roof geometry, all architecture, masonry enclosure, original position, scale, outer silhouette and original transparent canvas framing. The source canvas is 416x328 and its ground pivot is (251,319). Preserve those relative proportions and layout exactly. Change only: all window shutters now visibly CLOSED in weathered muted oak, every entrance door firmly shut and crossed with a clear horizontal timber bar, an untended courtyard with irregular sparse clumps of low olive green grass growing between cobbles. The building is empty, structurally intact, not ruined. No people, smoke, lights, text, symbols, props or new structures. Keep the exact project's painted texture, terracotta roof, beige stone, dark oak, subdued greens and soft upper-left light. Output one sprite on genuinely transparent background; no ground expansion beyond original enclosure and existing ground silhouette. Same building edges and roof lines as original. Render window closures and door bars crisply enough for small game scale.",
+    "references": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave12/candidates-20260926/assets/bld/manor_house_b-v1.png",
+        "sha256": "ee3335da84739e139156ed879342ee0312e4a13bd36ee0bf12ce4252fcc3edb4"
+      }
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1cf-fa1b-7b61-bb97-3ea16c00122b/exec-22d57b65-3f6f-4a05-9239-5417e0dd92ce.png",
+    "sourceSha256": "8d86c7324ba1a9ced64092db286dc6bb8f3d27a2d7babac13d4d24ff0b1e5228",
+    "outputPath": "/tmp/astra-endings-empty-manors-candidates-20260930/assets/manors/manor_house_b_empty-v1.png",
+    "outputSha256": "80e99ee14f83150401ea4be3ce6485109c651eeead2bd9017774334473ec724c",
+    "dimensions": [
+      416,
+      328
+    ],
+    "pivot": [
+      251,
+      319
+    ],
+    "sourceBbox": [
+      64,
+      178,
+      1366,
+      1093
+    ],
+    "referenceBbox": [
+      20,
+      55,
+      395,
+      319
+    ],
+    "candidateCount": 1,
+    "selectionReason": "Original architectural arrangement retained; visibly closed shutters, barred doors, and overgrown courtyard.",
+    "manualEdits": "Mechanical alpha-bounding-box crop and resize to original bbox, placed in exact 416x328 canvas. No painted changes after native edit.",
+    "validation": {
+      "alphaSilhouetteIoU": 0.9900150914259642,
+      "outsideOriginalPixels": 261,
+      "canvasExact": true,
+      "pivotMetadataExact": true
+    },
+    "limitations": "Native edit is not pixel-identical registration of every architectural edge. Canvas and declared pivot exact; outer silhouette measured, architecture visually compared."
+  }
+]

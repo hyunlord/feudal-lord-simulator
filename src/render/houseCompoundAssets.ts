@@ -8,6 +8,7 @@ import { tileToScreen, TILE_W, TILE_H } from "./iso";
 import { houseCompoundAssetManifest } from "./houseCompoundAssetManifest.generated";
 import { frameBuildingVariant } from "./buildingVariants";
 import { variantSprite } from "./buildingVariantAssets";
+import { drawWave26House, shownHouseVariant } from "./wave26HouseArt";
 
 type Axis = "horizontal" | "vertical";
 export type HouseCompoundAssetMeta = Readonly<{
@@ -65,12 +66,20 @@ export function houseCompoundAssetMeta(building: Building, level: number): House
   return records.find(record => record.meta.level === level && record.meta.axis === building.houseLot)?.meta ?? null;
 }
 
+/**
+ * A pair lot's painting at its level: INSTALL-30 the household's Wave 30 painting (houseVariantChoice.ts), through its
+ * own crop in the approved pair's frame (drawn once loaded, the approved pair need not be); else the approved pair or
+ * its Wave 2 variant.
+ */
 export function drawHouseCompoundSprite(context: CanvasRenderingContext2D, building: Building, level: number): boolean {
   void preloadHouseCompoundAssets();
   const record = records.find(candidate => candidate.meta.level === level && candidate.meta.axis === building.houseLot);
-  if (record?.status !== "ready" || record.image === null) return false;
+  if (record === undefined) return false;
   const rect = houseCompoundSpriteRect(building, record.meta);
   const bounds = record.meta.alphaBounds;
+  const wave30 = shownHouseVariant(building, level);
+  if (wave30 !== null && drawWave26House(context, wave30, bounds, rect)) return true;
+  if (record.status !== "ready" || record.image === null) return false;
   const url = frameBuildingVariant(building)?.url ?? null;
   const variant = url === null ? null : variantSprite(url, record.meta.width, record.meta.height, bounds, Math.ceil(rect.height * 2));
   drawCroppedWorldSprite(context, variant?.image ?? record.raster?.image ?? record.image, variant?.source ?? record.raster?.source ?? bounds, rect, false, true);

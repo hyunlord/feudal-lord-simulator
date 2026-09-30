@@ -13,10 +13,15 @@ Astra가 별도 클론에서 게임을 실행하며 관찰한 회차별 QA 기�
 
 ## 한 회차에 넣는 것
 
-- `docs/qa/roundNN/`에 `FINDINGS.md`·`CHECKLIST.md`·`REGRESSION.md`·`PLAN.md`와 `repro/`를 받은 그대로 둔다. 재현 스크립트(`tools/`)와 패키지의 `SHA256SUMS`도 함께 둔다.
+- `docs/qa/roundNN/`에 `FINDINGS.md`·`CHECKLIST.md`·`REGRESSION.md`·`PLAN.md`와 `repro/`를 받은 그대로 둔다(아래 256KB 규칙의 안내 파일과 gzip한 저장만 예외). 재현 스크립트(`tools/`)와 패키지의 `SHA256SUMS`도 함께 둔다.
 - 증거는 JPEG만 `roundNN/evidence/`에 둔다(Git LFS, `.gitattributes`의 `docs/qa/**/*.jpg`). **발견 하나당 저장소 안 JPEG 최소 한 장**(2026-09-30부터 원칙): 증거가 GIF뿐인 발견은 묶음에서 프레임을 펼친 JPEG를 찾아 넣는다. 그 위에 더하는 대표 그림은 문서가 가장 많이 가리키고 발견을 가장 넓게 덮는 것으로, 합계 10장 안팎을 넘기지 않는다.
 - GIF를 포함한 전체 증거와 원본 ZIP은 `~/feudal-lord-analysis/astra-raw/qa/roundNN/`에 둔다. 문서 안의 링크 가운데 저장소에 없는 증거는 그곳에서 연다. 문서는 고쳐 쓰지 않는다.
 - 이 표에 한 줄을 더한다.
+- **큰 기계 기록은 astra-raw에만**(2026-09-30 사용자 규칙, 03회차부터): 기계가 만든 기록 파일(JSON·JSONL·CSV·TSV·TXT·LOG·XML 등, `.gz`로 압축된 기록은 압축된 크기로 본다)이 256KB(262,144바이트)를 넘으면 저장소에 넣지 않는다. 원본은 `~/feudal-lord-analysis/astra-raw/qa/roundNN/`(받은 ZIP과 풀어 둔 묶음)에만 두고, 저장소의 같은 자리에는 `<파일 이름>.astra-raw.txt` 안내 파일 하나를 둔다. 안내 파일은 한 줄: `<파일 이름> · <바이트> bytes · sha256 <64자> · ~/feudal-lord-analysis/astra-raw/qa/roundNN/<ZIP>::<묶음 안 경로>; ~/feudal-lord-analysis/astra-raw/qa/roundNN/<풀어 둔 폴더>/<묶음 안 경로>`. 규칙의 원문은 [`docs/ASSET_INBOX.md`](../ASSET_INBOX.md) 8절과 같다.
+  - 사람이 읽는 문서(`FINDINGS`·`CHECKLIST`·`REGRESSION`·`PLAN`·`README` 같은 `.md`)와 증거 JPEG, 재현 스크립트(`tools/`, `repro/*.cjs` 같은 코드)는 크기와 관계없이 그대로 둔다.
+  - **재현용 게임 저장은 예외**로 크기와 관계없이 저장소에 둔다(`repro/saves/` 아래 파일과 `*.save.json*` 이름의 저장). 개발 세션이 이 저장을 열어 버그를 재현하기 때문이다. 압축되지 않은 저장(`*.json`)이 오면 `gzip -n -9`로 줄여 `<파일 이름>.gz`로 넣는다(`-n`은 이름·시각을 넣지 않아 같은 입력이면 같은 바이트가 나온다). `gunzip -k`로 받은 바이트가 그대로 돌아오며, 패키지 `SHA256SUMS`는 풀어서 확인한다.
+  - 깨끗한 클론 확인에서 `SHA256SUMS`와 어긋나도 되는 것은 일부러 뺀 증거, 안내 파일로 바꾼 기록(안내 파일의 sha256이 SUMS와 같아야 함), gzip한 저장(푼 바이트가 SUMS와 같아야 함)뿐이다.
+  - 이미 들어간 01·02회차는 그대로 둔다(사용자 판정).
 
 ## 01회차 대표 증거
 

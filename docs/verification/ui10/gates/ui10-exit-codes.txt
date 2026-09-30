@@ -1,0 +1,9 @@
+# run render-UI10-gate-d489f03 (full gate, base 4d128065, 1864.8 s): states cached, then
+endings=0
+captures=1
+# UI-6 set of that run: docs/verification/ui10/ui6/gates/exit-codes.txt (all 0)
+# run render-UI10-gate2-847719f (captures only, fixed selectors, 399.3 s):
+extra=0
+captures=1
+# captures=1 there: extra:heir_choice (another petition's chip first) and the 2 MB shot budget; re-run alone and merged:
+# render-UI10-heir5-a69cbb5 (the three-heir card) exit 0, render-UI10-stores4-90dde16 (b1/b2 whole frame) exit 0

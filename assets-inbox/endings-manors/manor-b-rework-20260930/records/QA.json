@@ -1,0 +1,46 @@
+{
+  "reviewedAt": "2026-09-30T10:44:43.650Z",
+  "verdict": "candidate_pass",
+  "blockingIssues": [],
+  "inspected": [
+    "assets/manors/manor_house_b_empty-v2.png",
+    "checks/01-original-empty-overlay.png"
+  ],
+  "checks": [
+    {
+      "criterion": "roof and edge treatment",
+      "result": "pass",
+      "evidence": "Original and v2 board retains same roof tone and original thin edge treatment; no added thick black contour."
+    },
+    {
+      "criterion": "local patch seams",
+      "result": "pass",
+      "evidence": "No conspicuous rectangular patch border or misregistered architecture visible at native-size review."
+    },
+    {
+      "criterion": "unoccupied changes",
+      "result": "pass",
+      "evidence": "Closed wooden shutters, horizontal door bar and increased courtyard grass visible."
+    },
+    {
+      "criterion": "alignment",
+      "result": "pass",
+      "evidence": "Original/empty/50% overlay board shows coincident silhouette and ground pivot."
+    }
+  ],
+  "manifestEvidence": {
+    "canvas": [
+      416,
+      328
+    ],
+    "pivot": [
+      251,
+      319
+    ],
+    "changedOutsideEditRegions": 0,
+    "alphaChangedPixels": 0
+  },
+  "limitations": [
+    "Visual review plus supplied pixel-validation manifest; no engine runtime test."
+  ]
+}

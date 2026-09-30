@@ -16,6 +16,9 @@ export const CHAPTER_COPY = {
   } as Readonly<Record<string, string>>,
   /** Dynamic resettled progress line shown while the goal is active (permille / target ‰). */
   resettledProgress: (permille: number) => `도래 때 사람의 ${Math.round(permille / 10)} % / 70 %`,
+  /** UI-10 (F5-A LG-1 / LG-8): chapter 5's progress — its steps come, the years to the last market day of 1450. */
+  legacyProgress: (steps: number, total: number, years: number) => years > 0
+    ? `유산의 여덟 단계 ${steps}/${total} · 마지막 장날까지 ${years}년` : `유산의 여덟 단계 ${steps}/${total} · 올해 여름 마지막 장날`,
   /** The goal card's title; the card shows the count itself (its progress, "0/2"). */
   card: (chapter: number) => CHAPTER_COPY.titles[chapter] ?? `제${chapter}장`,
   reached: (goal: string) => `${goal} — 이룸`,

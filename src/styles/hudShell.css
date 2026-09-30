@@ -300,7 +300,10 @@
 /* Ledger rows light their stores on the map; this week's change and how long food lasts. */
 .app-shell .ledger-row { display: inline-flex; gap: 4px; align-items: center; min-height: 44px; padding: 0 6px; font-weight: 600; text-align: left; }
 .app-shell .ledger-matrix tr[data-lit="true"] th, .app-shell .ledger-matrix tr[data-lit="true"] td { background-color: color-mix(in srgb, var(--palette-vermilion) 14%, transparent); }
-@media (pointer: coarse) { .app-shell .ledger-row { min-height: 48px; } }
+/* UI-10: "보관 N곳" unfolds its row to each store's amount (a surface cell button, 44 px, 48 on tablet). */
+.app-shell .ledger-held-toggle { display: inline-flex; align-items: center; justify-content: flex-end; min-width: 44px; min-height: 44px; padding: 0 6px; font-weight: 600; text-decoration: underline dotted; }
+.app-shell .ledger-held-toggle[aria-expanded="true"] { outline: 2px solid var(--palette-gold); outline-offset: -3px; }
+@media (pointer: coarse) { .app-shell :is(.ledger-row, .ledger-held-toggle, .ledger-store) { min-height: 48px; } }
 
 /* UX-3R2 tablet confirm bar (UX3R 8절): bottom centre while a tap has left a ghost waiting; 64 px targets. */
 .app-shell .placement-confirm-bar { position: absolute; left: 50%; bottom: 12px; z-index: 6; display: grid; grid-template-columns: auto auto; gap: 4px 8px;
@@ -358,6 +361,26 @@
 .petition-options { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .petition-option { display: grid; grid-template-columns: 48px 1fr; gap: 2px 10px; width: 100%; min-height: 64px; padding: 6px; text-align: left; font-size: 13px; }
 .petition-seal { grid-row: 1 / 4; }
+/* UI-10: chapter 5's two-answer cards carry long answers (the charter's sums): the full card's height, so
+   [나중에 정하기] shows below them; if a card still overflows, it stays in view at the body's bottom. */
+.petition-card[data-answers="2"]:is([data-def="borough_autonomy"], [data-def="royal_tax"], [data-def="guild_dispute"], [data-def="church_rebuilding"]) { min-height: 620px; }
+.petition-body > .story-modal-later { position: sticky; bottom: 0; z-index: 1; }
+/* UI-10: an answer with more than three lines (the heir's card) keeps them all beside the seal. */
+.petition-option > :not(.petition-seal) { grid-column: 2; min-width: 0; }
+/* UI-10 (LG-3): the heir's card — its answers side by side (a column each, the seal beside the label, the rest under
+   them), each with the heir it names: the portrait beside the name and relation, then lineage, likeness and records. */
+.petition-card[data-def="heir_choice"] { min-height: min(740px, 92vh); }
+.petition-card[data-def="heir_choice"] .petition-options { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); align-items: stretch; }
+.petition-card[data-def="heir_choice"] .petition-option { height: 100%; grid-template-columns: 44px minmax(0, 1fr); align-content: start; align-items: center;
+  word-break: keep-all; }
+.petition-card[data-def="heir_choice"] .petition-seal { grid-row: 1; }
+.petition-card[data-def="heir_choice"] .petition-option > :not(.petition-seal, strong) { grid-column: 1 / -1; }
+.petition-heir { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 1px 8px; align-items: center; margin: 2px 0; font-size: 12px; line-height: 1.35; }
+.petition-heir .person-portrait { grid-row: 1 / 3; }
+.petition-heir-name { font-size: 13px; }
+.petition-heir-name, .petition-heir-who, .petition-heir-line { min-width: 0; overflow-wrap: anywhere; }
+.petition-heir-line { grid-column: 1 / -1; }
+@media (max-width: 700px) { .petition-card[data-def="heir_choice"] .petition-options { grid-auto-flow: row; } }
 .chronicle-page { position: relative; width: min(920px, 96vw); height: min(780px, 94vh); }
 .chronicle-frame { position: absolute; inset: 0; box-sizing: border-box; }
 .chapter-page-body { display: grid; align-content: start; gap: 6px; overflow-y: auto; padding: 4px 10px; color: var(--palette-ink); }
@@ -373,6 +396,13 @@
 .chronicle-decisions li { display: grid; gap: 2px; font-size: 13px; }
 .chronicle-stats { margin: 0; padding-left: 18px; font-size: 13px; }
 .chronicle-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+/* UI-10: the chapter page's footer — the panel's full width, opaque in the panel's paper (the skin's --parchment), a top
+   rule, held at the scrolling body's bottom (a long page — chapter 5's six decisions — scrolls under it; the last line
+   scrolls clear above it, the footer being the body's last row). Its buttons stand where the right column's did.
+   Sticky insets count from the body's padding: -4px (the body's bottom padding) lays it on the scroll edge. */
+.chapter-page-body > .chronicle-page-footer { position: sticky; bottom: -4px; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 16px; margin: 0 -10px -4px; padding: 6px 10px 8px; background: var(--parchment); border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
+.chronicle-page-footer > .chronicle-actions { grid-column: 2; margin-top: 0; }
 .chronicle-actions button, .chapter-preview-continue { display: inline-flex; gap: 6px; align-items: center; min-height: 48px; font-size: 15px; font-weight: 700; }
 .chapter-preview { position: absolute; inset: 0; z-index: 45; display: grid; place-content: center; justify-items: center; gap: 8px;
   background-color: var(--palette-ink); background-position: center; background-size: cover; }

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "condition_prosperous_bench",
+    "prompt": "Use case: historical-scene. Create ONE replacement transparent sprite for a medieval city game. Image 1 is REJECTED old bench, use only its isometric orientation and approximate framing, NOT its painted color or slatted design. Image 2 is project-owned style reference, use only muted hand-painted detailed miniature style, not the scene. Subject: a 14th-century southern English oak SETTLE long seat: sturdy simple four wooden legs, a thick continuous seat, and a backrest made from exactly ONE SINGLE BROAD SOLID OAK PLANK between stout wooden uprights. Absolutely no multiple horizontal slats or chair slats. Freshly hewn bright natural pale warm oak, visible hand-tool grain, no paint, no green. Simple medieval pegged timber construction; no modern metal park bench, no wrought iron, no cushions. Maintain original long axis rising toward image-right in 2:1 isometric orthographic view; top surfaces visible, upper-left light. One independently standing settle only, isolated on true transparent RGBA, no ground slab, no landscape, no people, no wall, no text, no borders. Crisp readable silhouette for final 96x96 sprite. Entire legs and back visible, generous transparent margin. No flip.",
+    "references": [
+      "references/condition_prosperous_bench-original.png",
+      "references/style.jpg"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-8b0e-7281-9613-101a35e308be/exec-0b6cc1e0-0945-4f42-828d-59cb50f120cf.png",
+    "width": 96,
+    "height": 96,
+    "output_metadata": {
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-8b0e-7281-9613-101a35e308be as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-8b0e-7281-9613-101a35e308be/exec-0b6cc1e0-0945-4f42-828d-59cb50f120cf.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    }
+  },
+  {
+    "id": "trade_carpenter_a",
+    "prompt": "Precise object correction of provided carpenter sprite. KEEP the identical rough round log, both trestles, wooden frame saw, composition, isometric camera, handpainted style, transparent background, lighting and everything else. CHANGE ONLY THE SINGLE AXE LEANING NEXT TO THE FRAME SAW: replace its broad flat axe head with a medieval woodworking ADZE. An adze's small hooked chisel-like iron blade is oriented PERPENDICULAR across the wooden handle, not in the same plane as a hatchet. Make this unmistakably a long wooden adze handle with a short sideways projecting curved hoe-like iron blade at its top. Lean this adze diagonally against the trestle with its plain lower wooden handle end touching the invisible ground, the transverse iron head elevated near the trestle. Do not draw an axe or hatchet. No new objects, people, text or ground. Preserve genuine transparent RGBA and entire uncropped asset.",
+    "references": [
+      "raw/trade_carpenter_a-first.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-8b0e-7281-9613-101a35e308be/exec-42573038-5c02-410a-b2a0-a2b467af319a.png",
+    "width": 128,
+    "height": 96,
+    "output_metadata": {
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-8b0e-7281-9613-101a35e308be as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-8b0e-7281-9613-101a35e308be/exec-42573038-5c02-410a-b2a0-a2b467af319a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "prior_generation": {
+      "prompt": "Use case: historical-scene. Create ONE corrected medieval carpenter trade sprite, transparent background. Image 1 is REJECTED original: it wrongly looks like a seat or two planks; use only approximate isometric orientation, NOT that bench-like subject. Image 2 is project-owned miniature art style reference only. Subject: two sturdy rough oak SAWING TRESTLES spaced apart holding ONE chunky partly bark-covered ROUND ROUGH LOG, its circular cut end plainly visible. The log is not a flat plank or seat. Beside one trestle, an unmistakable medieval rectangular wooden FRAME SAW leans diagonally against it, with a narrow dark toothed steel blade visibly tensioned within the wooden frame. A separate recognisable ADZE with wooden handle and transverse dark iron cutting head also leans against the stand, its lower handle end touching the same invisible ground. Tools large enough to remain legible when reduced to 128x96. All elements independently ground-standing: complete feet and tool ground contacts. 14th-century southern England hand-hewn timber and forged iron. No workbench, no bench seat, no backrest, no people. Muted hand-painted detailed game sprite, warm oak and dark bark, restrained texture, 2:1 orthographic isometric, long log axis descends toward image-right as original, upper-left light. Isolated true transparent RGBA. No floor slab, shadow puddle, wall, scene, text, labels, borders, green paint, modern machinery. Do not flip. Entire object with generous transparent margin.",
+      "references": [
+        "references/trade_carpenter_a-original.png",
+        "references/style.jpg"
+      ],
+      "raw_path": "raw/trade_carpenter_a-first.png",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-8b0e-7281-9613-101a35e308be/exec-d04fa5de-796c-4c21-937d-a1368843a319.png",
+      "output_metadata": {
+        "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-8b0e-7281-9613-101a35e308be as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-8b0e-7281-9613-101a35e308be/exec-d04fa5de-796c-4c21-937d-a1368843a319.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+      },
+      "rejected_reason": "Adze rendered as conventional axe; targeted tool-only correction"
+    }
+  }
+]

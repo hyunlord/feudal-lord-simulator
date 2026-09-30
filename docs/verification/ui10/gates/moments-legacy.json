@@ -1,0 +1,529 @@
+{
+ "chapter4-end": {
+  "tick": 329000,
+  "year": 1382,
+  "end": {
+   "chapter": 4,
+   "tick": 329000,
+   "chronicle": {
+    "chapter": 4,
+    "fromYear": 1362,
+    "toYear": 1382,
+    "events": [
+     {
+      "recordId": "h-018126",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1362,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-018928",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1364,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-020085",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1368,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-020393",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1369,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-020475",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1369,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-024124",
+      "eventId": "era:specialisation",
+      "defId": "specialisation",
+      "year": 1380,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-024550",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1381,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-024807",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1382,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     }
+    ],
+    "decisions": [
+     {
+      "recordId": "h-020474",
+      "kind": "petition_response",
+      "tick": 276031,
+      "chosen": "accept",
+      "alternatives": [
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 16247,
+       "merchantGauge": 65
+      },
+      "actual": {
+       "treasury": 16705,
+       "merchantGauge": 65
+      }
+     },
+     {
+      "recordId": "h-020731",
+      "kind": "petition_response",
+      "tick": 280065,
+      "chosen": "accept",
+      "alternatives": [
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 17610,
+       "merchantGauge": 65
+      },
+      "actual": {
+       "treasury": 18611,
+       "merchantGauge": 65
+      }
+     },
+     {
+      "recordId": "h-023156",
+      "kind": "petition_response",
+      "tick": 308066,
+      "chosen": "accept",
+      "alternatives": [
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 30845,
+       "merchantGauge": 65
+      },
+      "actual": {
+       "treasury": 31793,
+       "merchantGauge": 65
+      }
+     }
+    ],
+    "stats": {
+     "populationStart": 611,
+     "populationEnd": 768,
+     "peakPopulation": 768,
+     "houses": 24,
+     "burntHouses": 1,
+     "departures": 0,
+     "harvestLost": 0,
+     "treasury": 41327,
+     "famine": {
+      "year": 1315,
+      "populationAtArrival": 527,
+      "populationAtEnd": 528
+     },
+     "reorganisation": {
+      "startYear": 1362,
+      "wageLeavers": 2,
+      "weaverLeavers": 0,
+      "clothSold": 882,
+      "clothIncome": 18114,
+      "guild": true,
+      "pollTax": 1814,
+      "rebellion": "quiet",
+      "charter": "partial",
+      "townInfluence": 93,
+      "merchantInfluence": 73
+     }
+    }
+   }
+  }
+ },
+ "chapter5-open": {
+  "tick": 329000,
+  "year": 1382,
+  "startTick": 329000
+ },
+ "legacy.mayor_demand": {
+  "tick": 333000,
+  "year": 1383,
+  "template": "legacy.mayor_demand",
+  "params": {
+   "candidate": "조앤 노스우드"
+  }
+ },
+ "legacy.royal_tax_envoy": {
+  "tick": 337000,
+  "year": 1384,
+  "template": "legacy.royal_tax_envoy",
+  "params": {}
+ },
+ "royal_tax": {
+  "tick": 337000,
+  "year": 1384,
+  "petitionId": "royal_tax@337000",
+  "options": null
+ },
+ "interlude.staple": {
+  "tick": 364000,
+  "year": 1391,
+  "template": "legacy.staple",
+  "params": {}
+ },
+ "interlude.guild_dispute": {
+  "tick": 376000,
+  "year": 1394,
+  "template": "legacy.guild_dispute",
+  "params": {}
+ },
+ "guild_dispute": {
+  "tick": 376000,
+  "year": 1394,
+  "petitionId": "guild_dispute@376000",
+  "options": null
+ },
+ "interlude.church_rebuilding": {
+  "tick": 384000,
+  "year": 1396,
+  "template": "legacy.church_rebuilding",
+  "params": {}
+ },
+ "church_rebuilding": {
+  "tick": 384000,
+  "year": 1396,
+  "petitionId": "church_rebuilding@384000",
+  "options": null
+ },
+ "legacy.nave_rebuilt": {
+  "tick": 384116,
+  "year": 1396,
+  "params": {}
+ },
+ "interlude.deposition": {
+  "tick": 398000,
+  "year": 1399,
+  "template": "legacy.deposition",
+  "params": {}
+ },
+ "legacy.succession": {
+  "tick": 408000,
+  "year": 1402,
+  "template": "legacy.succession",
+  "params": {
+   "lord": "존 드 포콩발",
+   "age": 5,
+   "candidates": 1
+  }
+ },
+ "heir_choice": {
+  "tick": 408000,
+  "year": 1402,
+  "petitionId": "heir_choice@408000",
+  "options": [
+   "refuse"
+  ],
+  "candidates": 1
+ },
+ "legacy.heir_seated": {
+  "tick": 408008,
+  "year": 1402,
+  "params": {
+   "heir": "리처드 드 포콩발",
+   "relation": "먼 친척"
+  }
+ },
+ "legacy.city_seal": {
+  "tick": 413000,
+  "year": 1403,
+  "template": "legacy.city_seal",
+  "params": {}
+ },
+ "borough_autonomy": {
+  "tick": 415000,
+  "year": 1403,
+  "petitionId": "borough_autonomy@415000",
+  "options": null
+ },
+ "legacy.charter_sealing": {
+  "tick": 415024,
+  "year": 1403,
+  "template": "legacy.charter_sealed",
+  "params": {
+   "mayor": "나이 든 비어트리스 노스우드"
+  }
+ },
+ "legacy.family_departure": {
+  "tick": 418000,
+  "year": 1404,
+  "template": "legacy.family_departed",
+  "params": {
+   "house": "de Fauconval"
+  }
+ },
+ "empty-manor": {
+  "tick": 418001,
+  "year": 1404,
+  "family": "departed",
+  "departedTick": 418000
+ },
+ "legacy_choice": {
+  "tick": 560000,
+  "year": 1440,
+  "petitionId": "legacy_choice@560000",
+  "options": null
+ },
+ "legacy.legacy_record": {
+  "tick": 561000,
+  "year": 1440,
+  "template": "legacy.legacy_record",
+  "params": {
+   "legacy": "길드홀과 시청"
+  }
+ },
+ "legacy.last_market": {
+  "tick": 601000,
+  "year": 1450,
+  "template": "legacy.last_market",
+  "params": {
+   "ending": "스스로 다스리는 도시"
+  }
+ },
+ "chapter5-end": {
+  "tick": 601000,
+  "year": 1450,
+  "end": {
+   "chapter": 5,
+   "tick": 601000,
+   "chronicle": {
+    "chapter": 5,
+    "fromYear": 1382,
+    "toYear": 1450,
+    "events": [
+     {
+      "recordId": "h-024915",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1382,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-025319",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1383,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-031431",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1399,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-032372",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1402,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-032480",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1402,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-033113",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1403,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-033276",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1404,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     },
+     {
+      "recordId": "h-047515",
+      "eventId": "era:",
+      "defId": "",
+      "year": 1440,
+      "losses": {
+       "burntHouses": 0,
+       "departures": 0,
+       "harvestLost": 0
+      }
+     }
+    ],
+    "decisions": [
+     {
+      "recordId": "h-025762",
+      "kind": "petition_response",
+      "tick": 337021,
+      "chosen": "accept",
+      "alternatives": [
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 44312,
+       "merchantGauge": 65
+      },
+      "actual": {
+       "treasury": 45173,
+       "merchantGauge": 65
+      }
+     },
+     {
+      "recordId": "h-029458",
+      "kind": "petition_response",
+      "tick": 376099,
+      "chosen": "accept",
+      "alternatives": [
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 60985,
+       "merchantGauge": 65
+      },
+      "actual": {
+       "treasury": 61824,
+       "merchantGauge": 65
+      }
+     },
+     {
+      "recordId": "h-030211",
+      "kind": "petition_response",
+      "tick": 384115,
+      "chosen": "accept",
+      "alternatives": [
+       "refuse"
+      ],
+      "predicted": {
+       "treasury": 64238,
+       "merchantGauge": 65
+      },
+      "actual": {
+       "treasury": 64757,
+       "merchantGauge": 65
+      }
+     }
+    ],
+    "stats": {
+     "populationStart": 768,
+     "populationEnd": 750,
+     "peakPopulation": 768,
+     "houses": 24,
+     "burntHouses": 1,
+     "departures": 0,
+     "harvestLost": 0,
+     "treasury": 158463,
+     "famine": {
+      "year": 1315,
+      "populationAtArrival": 527,
+      "populationAtEnd": 528
+     },
+     "legacy": {
+      "startYear": 1382,
+      "mayor": true,
+      "heir": "nephew",
+      "royalTax": "paid",
+      "charter": "sealed",
+      "family": "departed",
+      "legacy": "town",
+      "ending": "free_borough",
+      "scores": {
+       "town": 100,
+       "family": 37,
+       "church": 65
+      }
+     }
+    }
+   }
+  },
+  "outcome": "victory",
+  "ending": "free_borough"
+ },
+ "campaign-victory": {
+  "tick": 601008,
+  "year": 1450,
+  "outcome": "victory",
+  "ending": "free_borough"
+ }
+}

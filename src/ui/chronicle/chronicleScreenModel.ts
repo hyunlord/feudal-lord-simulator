@@ -14,7 +14,7 @@ import { calendar, scenarioOf } from "../../engine/scenarioState";
 import { factionDisplayName } from "../../content/factionCopy.ko";
 import type { FactionRecord } from "../../engine/faction.types";
 import { lordHouseHeraldrySeed, lordshipOf } from "../../engine/lordshipState";
-import { chronicleIllustration, reorgRecordArt } from "../chronicleModel";
+import { chronicleIllustration, legacyRecordArt, reorgRecordArt } from "../chronicleModel";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { armsRecipe, heraldryArms, heraldryMark, royalArms } from "../heraldry/heraldry";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
@@ -26,7 +26,10 @@ import type { Wave16ImageId } from "../wave16Art";
 import type { Wave17ImageId } from "../wave17Art";
 import type { Wave21ImageId } from "../wave21Art";
 import { chapterIntro, type Wave31ImageId } from "../wave31Art";
+import type { Wave33ImageId } from "../wave33Art";
+import { WAVE33_IMAGES } from "../wave33ArtManifest.generated";
 import { CHRONICLE_SCREEN_COPY, OCCUPATION_TITLES } from "./chronicleScreenCopy.ko";
+import { recordSentence } from "../legacy/chapterRecords";
 import { WAVE17_IMAGES } from "../wave17ArtManifest.generated";
 
 // CHRON-1 chronicle screen (CHRONICLE_DESIGN 2.1, 2.2, 2.4): the whole history ledger read on three axes — the town's
@@ -236,6 +239,7 @@ export type RecordFrameId = "frame_record_decision" | "frame_record_era" | "fram
 export type ChronicleArt = Readonly<{ kind: "wave16"; id: Wave16ImageId }> | Readonly<{ kind: "wave17"; id: Wave17ImageId }>
   | Readonly<{ kind: "wave21"; id: Wave21ImageId }>
   | Readonly<{ kind: "wave31"; id: Wave31ImageId }>
+  | Readonly<{ kind: "wave33"; id: Wave33ImageId }>
   | Readonly<{ kind: "portrait"; portraitId: string }> | Readonly<{ kind: "emblem"; emblem: EmblemSpec }> | null;
 export type RecordCard = Readonly<{
   id: string; kind: HistoryKind; frame: RecordFrameId; date: string; sentence: string; numbers: string | null; art: ChronicleArt;
@@ -370,6 +374,17 @@ function chapterFourArt(_state: unknown, record: HistoryRecord): ChronicleArt {
   return null;
 }
 
+/** F5-A (UI-10): chapter 5's records, decisions and end page; a family that stays shows its house's arms. */
+function chapterFiveArt(state: Pick<GameState, "seed" | "lordship">, record: HistoryRecord): ChronicleArt {
+  if (record.template === "legacy.family_stayed") {
+    const seed = lordshipOf(state as GameState).house.heraldrySeed;
+    return { kind: "emblem", emblem: { kind: "arms", recipe: armsRecipe(seed, MANOR_HOUSEHOLD) } };
+  }
+  const id = legacyRecordArt(record);
+  if (id === null) return null;
+  return id in WAVE33_IMAGES ? { kind: "wave33", id: id as Wave33ImageId } : { kind: "wave21", id: id as Wave21ImageId };
+}
+
 /** F3-A: the plague's records and chapter 3 milestones. */
 function chapterThreeArt(_state: unknown, record: HistoryRecord): ChronicleArt {
   const param = (key: string) => String(record.params?.[key] ?? "");
@@ -394,6 +409,9 @@ function chapterThreeArt(_state: unknown, record: HistoryRecord): ChronicleArt {
 export function recordArt(state: Pick<GameState, "persons" | "scenarioId" | "seed"> & Partial<Pick<GameState, "lordship" | "factions">>, record: HistoryRecord): ChronicleArt {
   if (record.template === "decision.stone_town") return { kind: "wave17", id: "stonewall_start" };
   if (record.template === "milestone.stone_town") return { kind: "wave17", id: "stonewall_complete" };
+  // UI-10: chapter 5's records first (its petitions share decision.petition_response).
+  const ch5 = chapterFiveArt(state as Pick<GameState, "seed" | "lordship">, record);
+  if (ch5 !== null) return ch5;
   // UI-9: chapter 4 reorganisation records checked first (reorg petitions share decision.petition_response).
   const ch4 = chapterFourArt(state, record);
   if (ch4 !== null) return ch4;
@@ -442,10 +460,11 @@ function recordNumbers(record: HistoryRecord, bundle: readonly HistoryRecord[] |
   return null;
 }
 
-export function recordCard(state: Pick<GameState, "history" | "persons" | "scenarioId" | "houses" | "seed"> & Partial<Pick<GameState, "lordship" | "factions">>, item: ChronicleItem): RecordCard {
+export function recordCard(state: Pick<GameState, "history" | "persons" | "scenarioId" | "houses" | "seed"> & Partial<Pick<GameState, "lordship" | "factions" | "legacy">>, item: ChronicleItem): RecordCard {
   const { record, bundle } = item;
   const person = recordPerson(state, record);
-  const summary = bundle !== null ? CHRONICLE_SCREEN_COPY.bundleTitle : history.summary(record);
+  // UI-10: the heir's answer in the heir's real relation (recordSentence), otherwise the ledger's own sentence.
+  const summary = bundle !== null ? CHRONICLE_SCREEN_COPY.bundleTitle : recordSentence(state, record);
   const personName = person === undefined ? null : personDisplayName(person);
   const sentence = personName === null || record.kind !== "person" ? summary
     : HOUSEHOLD_TEMPLATES.has(record.template) ? CHRONICLE_SCREEN_COPY.householdLine(personName, summary) : CHRONICLE_SCREEN_COPY.personLine(personName, summary);

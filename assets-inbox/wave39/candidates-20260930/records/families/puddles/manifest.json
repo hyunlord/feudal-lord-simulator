@@ -1,0 +1,290 @@
+[
+  {
+    "assetId": "puddle_small_a-v1",
+    "width": 32,
+    "height": 16,
+    "prompt": "Use case: stylized-concept. Produce ONE isolated game ground decal, puddle_small_a-v1. Target runtime canvas 32x16px. A medieval English city builder uses isometric 2:1 ground projection. Draw a compact asymmetric bean-shaped shallow puddle. True transparent background outside the irregular ground patch, not a square/diamond tile and not a landscape scene. Match ONLY painterly muted natural materials and subtle contrast of supplied project screenshots; references are style and palette only. The decal lies perfectly FLAT flush with ground: no raised banks, no rocks, no visible vertical side faces, no bowl, no pond landscaping, no vegetation. Water is quiet low-saturation grey-blue sky reflection, thin muddy soft irregular rim, clear broad plain interior reserved for separate rain ripple overlay. No painted ripples, splash, foam, fish, reflected buildings, or white gleaming highlights. Soft top-left overcast light, minimal contact shadow. Whole artwork is roughly 2:1 wide-to-high, centered with small transparent margin, simple readable masses at target runtime size. No tiny noise. No text/numbers/labels/watermark/grid/checkerboard.",
+    "referenceImages": [
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave29_물.jpg",
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/사용자_비_스크린샷.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-ff29-7d43-ae41-a93e49f022cb/exec-147a1ae1-542e-4007-859f-82f640947361.png",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generatedDate": "2026-09-30",
+    "candidateCount": 1,
+    "selectionReason": "Distinct irregular flat silhouette with broad muted ground material; no high contrast rings, stone rim or built-in ripple.",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/puddles/puddle_small_a-v1.png",
+    "sourceSha256": "7c5d9a0deb2ef24b817d3280ce57511042d78ab82d3b92f3813088f8b930eb87",
+    "outputSha256": "b85c1ca88d5bf9d9eb9d5979614c367537afd151fd2bf2da97513ab4bd7b7332",
+    "crop": [
+      213,
+      280,
+      1365,
+      403
+    ],
+    "pivot": [
+      16,
+      8
+    ],
+    "frames": 1,
+    "recommendedAlpha": 0.65,
+    "recommendedSpeed": 0,
+    "windTilt": 0,
+    "status": "candidate",
+    "repeat": "none",
+    "manualEdits": "Mechanical alpha-bbox crop at alpha>4; high-quality resize into 1px transparent runtime margin; no repaint, color change, or synthesized content."
+  },
+  {
+    "assetId": "puddle_small_b-v1",
+    "width": 32,
+    "height": 16,
+    "prompt": "Use case: stylized-concept. Produce ONE isolated game ground decal, puddle_small_b-v1. Target runtime canvas 32x16px. A medieval English city builder uses isometric 2:1 ground projection. Draw a small angular lobed puddle, narrow on left and broad on right. True transparent background outside the irregular ground patch, not a square/diamond tile and not a landscape scene. Match ONLY painterly muted natural materials and subtle contrast of supplied project screenshots; references are style and palette only. The decal lies perfectly FLAT flush with ground: no raised banks, no rocks, no visible vertical side faces, no bowl, no pond landscaping, no vegetation. Water is quiet low-saturation grey-blue sky reflection, thin muddy soft irregular rim, clear broad plain interior reserved for separate rain ripple overlay. No painted ripples, splash, foam, fish, reflected buildings, or white gleaming highlights. Soft top-left overcast light, minimal contact shadow. Whole artwork is roughly 2:1 wide-to-high, centered with small transparent margin, simple readable masses at target runtime size. No tiny noise. No text/numbers/labels/watermark/grid/checkerboard.",
+    "referenceImages": [
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave29_물.jpg",
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/사용자_비_스크린샷.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-ff29-7d43-ae41-a93e49f022cb/exec-bbc07b03-c62d-4a2f-8129-50e40503ac64.png",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generatedDate": "2026-09-30",
+    "candidateCount": 1,
+    "selectionReason": "Distinct irregular flat silhouette with broad muted ground material; no high contrast rings, stone rim or built-in ripple.",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/puddles/puddle_small_b-v1.png",
+    "sourceSha256": "bd55ade29061101ef1520fd48e46823ca7b92391452df3b0e93784b320f3b05b",
+    "outputSha256": "14fc94ed6010cccee86b52524ff3a70b6e374b529a6a529221adaf970e1ce5e7",
+    "crop": [
+      80,
+      268,
+      1615,
+      425
+    ],
+    "pivot": [
+      16,
+      8
+    ],
+    "frames": 1,
+    "recommendedAlpha": 0.65,
+    "recommendedSpeed": 0,
+    "windTilt": 0,
+    "status": "candidate",
+    "repeat": "none",
+    "manualEdits": "Mechanical alpha-bbox crop at alpha>4; high-quality resize into 1px transparent runtime margin; no repaint, color change, or synthesized content."
+  },
+  {
+    "assetId": "puddle_medium_a-v1",
+    "width": 64,
+    "height": 32,
+    "prompt": "Use case: stylized-concept. Produce ONE isolated game ground decal, puddle_medium_a-v1. Target runtime canvas 64x32px. A medieval English city builder uses isometric 2:1 ground projection. Draw a wide asymmetric three-lobed puddle with one narrow inlet. True transparent background outside the irregular ground patch, not a square/diamond tile and not a landscape scene. Match ONLY painterly muted natural materials and subtle contrast of supplied project screenshots; references are style and palette only. The decal lies perfectly FLAT flush with ground: no raised banks, no rocks, no visible vertical side faces, no bowl, no pond landscaping, no vegetation. Water is quiet low-saturation grey-blue sky reflection, thin muddy soft irregular rim, clear broad plain interior reserved for separate rain ripple overlay. No painted ripples, splash, foam, fish, reflected buildings, or white gleaming highlights. Soft top-left overcast light, minimal contact shadow. Whole artwork is roughly 2:1 wide-to-high, centered with small transparent margin, simple readable masses at target runtime size. No tiny noise. No text/numbers/labels/watermark/grid/checkerboard.",
+    "referenceImages": [
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave29_물.jpg",
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/사용자_비_스크린샷.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-ff29-7d43-ae41-a93e49f022cb/exec-08a30020-6115-4ea8-a071-cfee307da96d.png",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generatedDate": "2026-09-30",
+    "candidateCount": 1,
+    "selectionReason": "Distinct irregular flat silhouette with broad muted ground material; no high contrast rings, stone rim or built-in ripple.",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/puddles/puddle_medium_a-v1.png",
+    "sourceSha256": "b4ab1149e08076ee5b5174097b3475126385e5c36f0e4c2a138ad11a76fc583e",
+    "outputSha256": "11341ba0717b9e70f59db08dbf17a7794386fdb36471a089fd1781a3f77a9ac4",
+    "crop": [
+      34,
+      193,
+      1718,
+      547
+    ],
+    "pivot": [
+      32,
+      16
+    ],
+    "frames": 1,
+    "recommendedAlpha": 0.65,
+    "recommendedSpeed": 0,
+    "windTilt": 0,
+    "status": "candidate",
+    "repeat": "none",
+    "manualEdits": "Mechanical alpha-bbox crop at alpha>4; high-quality resize into 1px transparent runtime margin; no repaint, color change, or synthesized content."
+  },
+  {
+    "assetId": "puddle_medium_b-v1",
+    "width": 64,
+    "height": 32,
+    "prompt": "Use case: stylized-concept. Produce ONE isolated game ground decal, puddle_medium_b-v1. Target runtime canvas 64x32px. A medieval English city builder uses isometric 2:1 ground projection. Draw an elongated crooked puddle like two unequal shallow pools joined by a narrow waist. True transparent background outside the irregular ground patch, not a square/diamond tile and not a landscape scene. Match ONLY painterly muted natural materials and subtle contrast of supplied project screenshots; references are style and palette only. The decal lies perfectly FLAT flush with ground: no raised banks, no rocks, no visible vertical side faces, no bowl, no pond landscaping, no vegetation. Water is quiet low-saturation grey-blue sky reflection, thin muddy soft irregular rim, clear broad plain interior reserved for separate rain ripple overlay. No painted ripples, splash, foam, fish, reflected buildings, or white gleaming highlights. Soft top-left overcast light, minimal contact shadow. Whole artwork is roughly 2:1 wide-to-high, centered with small transparent margin, simple readable masses at target runtime size. No tiny noise. No text/numbers/labels/watermark/grid/checkerboard.",
+    "referenceImages": [
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave29_물.jpg",
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/사용자_비_스크린샷.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-ff29-7d43-ae41-a93e49f022cb/exec-104c756f-0378-42ee-8286-f6a8102a1018.png",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generatedDate": "2026-09-30",
+    "candidateCount": 1,
+    "selectionReason": "Distinct irregular flat silhouette with broad muted ground material; no high contrast rings, stone rim or built-in ripple.",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/puddles/puddle_medium_b-v1.png",
+    "sourceSha256": "e8b820c12e059a42d33a8e64c2649639728c7ceafcdf81b823fd12d276ff5bdf",
+    "outputSha256": "e1dc30363d94f93fedf087d430b226dc0420e5e42a1825c790b5eac9c6d1b080",
+    "crop": [
+      55,
+      189,
+      1652,
+      515
+    ],
+    "pivot": [
+      32,
+      16
+    ],
+    "frames": 1,
+    "recommendedAlpha": 0.65,
+    "recommendedSpeed": 0,
+    "windTilt": 0,
+    "status": "candidate",
+    "repeat": "none",
+    "manualEdits": "Mechanical alpha-bbox crop at alpha>4; high-quality resize into 1px transparent runtime margin; no repaint, color change, or synthesized content."
+  },
+  {
+    "assetId": "puddle_large_a-v1",
+    "width": 96,
+    "height": 48,
+    "prompt": "Use case: stylized-concept. Produce ONE isolated game ground decal, puddle_large_a-v1. Target runtime canvas 96x48px. A medieval English city builder uses isometric 2:1 ground projection. Draw a broad low irregular puddle with two gentle inward notches, uneven asymmetric shoreline. True transparent background outside the irregular ground patch, not a square/diamond tile and not a landscape scene. Match ONLY painterly muted natural materials and subtle contrast of supplied project screenshots; references are style and palette only. The decal lies perfectly FLAT flush with ground: no raised banks, no rocks, no visible vertical side faces, no bowl, no pond landscaping, no vegetation. Water is quiet low-saturation grey-blue sky reflection, thin muddy soft irregular rim, clear broad plain interior reserved for separate rain ripple overlay. No painted ripples, splash, foam, fish, reflected buildings, or white gleaming highlights. Soft top-left overcast light, minimal contact shadow. Whole artwork is roughly 2:1 wide-to-high, centered with small transparent margin, simple readable masses at target runtime size. No tiny noise. No text/numbers/labels/watermark/grid/checkerboard.",
+    "referenceImages": [
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave29_물.jpg",
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/사용자_비_스크린샷.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-ff29-7d43-ae41-a93e49f022cb/exec-6f0a6bee-f39e-493f-b88a-13bad730c847.png",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generatedDate": "2026-09-30",
+    "candidateCount": 1,
+    "selectionReason": "Distinct irregular flat silhouette with broad muted ground material; no high contrast rings, stone rim or built-in ripple.",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/puddles/puddle_large_a-v1.png",
+    "sourceSha256": "8560ace87a1cd9de5bf51ba98761c1781aa70003b5f8c14b4b5ec88cef5e15fb",
+    "outputSha256": "12a17b3cdad8468e5373e5992f753aa5447c444745fcabe1cd07a7312625ad5d",
+    "crop": [
+      59,
+      174,
+      1662,
+      555
+    ],
+    "pivot": [
+      48,
+      24
+    ],
+    "frames": 1,
+    "recommendedAlpha": 0.65,
+    "recommendedSpeed": 0,
+    "windTilt": 0,
+    "status": "candidate",
+    "repeat": "none",
+    "manualEdits": "Mechanical alpha-bbox crop at alpha>4; high-quality resize into 1px transparent runtime margin; no repaint, color change, or synthesized content."
+  },
+  {
+    "assetId": "puddle_large_b-v1",
+    "width": 96,
+    "height": 48,
+    "prompt": "Use case: stylized-concept. Produce ONE isolated game ground decal, puddle_large_b-v1. Target runtime canvas 96x48px. A medieval English city builder uses isometric 2:1 ground projection. Draw a long diagonal branching shallow puddle, wider at left and tapered at right. True transparent background outside the irregular ground patch, not a square/diamond tile and not a landscape scene. Match ONLY painterly muted natural materials and subtle contrast of supplied project screenshots; references are style and palette only. The decal lies perfectly FLAT flush with ground: no raised banks, no rocks, no visible vertical side faces, no bowl, no pond landscaping, no vegetation. Water is quiet low-saturation grey-blue sky reflection, thin muddy soft irregular rim, clear broad plain interior reserved for separate rain ripple overlay. No painted ripples, splash, foam, fish, reflected buildings, or white gleaming highlights. Soft top-left overcast light, minimal contact shadow. Whole artwork is roughly 2:1 wide-to-high, centered with small transparent margin, simple readable masses at target runtime size. No tiny noise. No text/numbers/labels/watermark/grid/checkerboard.",
+    "referenceImages": [
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave29_물.jpg",
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/사용자_비_스크린샷.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-ff29-7d43-ae41-a93e49f022cb/exec-f68323e0-485d-44e2-a405-a376cd3d487a.png",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generatedDate": "2026-09-30",
+    "candidateCount": 1,
+    "selectionReason": "Distinct irregular flat silhouette with broad muted ground material; no high contrast rings, stone rim or built-in ripple.",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/puddles/puddle_large_b-v1.png",
+    "sourceSha256": "b4d1f4a01fcee1e14cd6344bb2e5a76e9f0c63796e4a50975105024c21b97579",
+    "outputSha256": "02d0512bf29c6223e58dfa093e78b43e706f3a1ac17597b14b68bb9c471a6533",
+    "crop": [
+      36,
+      277,
+      1698,
+      389
+    ],
+    "pivot": [
+      48,
+      24
+    ],
+    "frames": 1,
+    "recommendedAlpha": 0.65,
+    "recommendedSpeed": 0,
+    "windTilt": 0,
+    "status": "candidate",
+    "repeat": "none",
+    "manualEdits": "Mechanical alpha-bbox crop at alpha>4; high-quality resize into 1px transparent runtime margin; no repaint, color change, or synthesized content."
+  },
+  {
+    "assetId": "mud_scar_medium-v1",
+    "width": 64,
+    "height": 32,
+    "prompt": "Use case: stylized-concept. Produce ONE isolated game ground decal, mud_scar_medium-v1. Target runtime canvas 64x32px. A medieval English city builder uses isometric 2:1 ground projection. Draw a dried puddle stain, NO liquid water, broad uneven warm grey-brown mud stain with flat cracked drying edges. True transparent background outside the irregular ground patch, not a square/diamond tile and not a landscape scene. Match ONLY painterly muted natural materials and subtle contrast of supplied project screenshots; references are style and palette only. The decal lies perfectly FLAT flush with ground: no raised banks, no rocks, no visible vertical side faces, no bowl, no pond landscaping, no vegetation. Dry mud has low-contrast broad painterly shapes with thin dark cracks, no stones and no raised edge. Soft top-left overcast light, minimal contact shadow. Whole artwork is roughly 2:1 wide-to-high, centered with small transparent margin, simple readable masses at target runtime size. No tiny noise. No text/numbers/labels/watermark/grid/checkerboard.",
+    "referenceImages": [
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave29_물.jpg",
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/사용자_비_스크린샷.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-ff29-7d43-ae41-a93e49f022cb/exec-7020b4b5-0d35-40a8-ae42-250c66336143.png",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generatedDate": "2026-09-30",
+    "candidateCount": 1,
+    "selectionReason": "Distinct irregular flat silhouette with broad muted ground material; no high contrast rings, stone rim or built-in ripple.",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/puddles/mud_scar_medium-v1.png",
+    "sourceSha256": "f2c1a11193559fd395551da3634f02da2443aa1a127a5af6bb1089d1bedaf07f",
+    "outputSha256": "2720eaee055082da674ec86f49cc1b0c86627e8a45404c790a07a98c5dd60f1b",
+    "crop": [
+      112,
+      264,
+      1567,
+      416
+    ],
+    "pivot": [
+      32,
+      16
+    ],
+    "frames": 1,
+    "recommendedAlpha": 0.55,
+    "recommendedSpeed": 0,
+    "windTilt": 0,
+    "status": "candidate",
+    "repeat": "none",
+    "manualEdits": "Mechanical alpha-bbox crop at alpha>4; high-quality resize into 1px transparent runtime margin; no repaint, color change, or synthesized content."
+  },
+  {
+    "assetId": "mud_scar_large-v1",
+    "width": 96,
+    "height": 48,
+    "prompt": "Use case: stylized-concept. Produce ONE isolated game ground decal, mud_scar_large-v1. Target runtime canvas 96x48px. A medieval English city builder uses isometric 2:1 ground projection. Draw a dried irregular branching puddle scar, NO liquid water, muted warm clay-brown thin flat stain with a few broad cracks concentrated along its broken edges. True transparent background outside the irregular ground patch, not a square/diamond tile and not a landscape scene. Match ONLY painterly muted natural materials and subtle contrast of supplied project screenshots; references are style and palette only. The decal lies perfectly FLAT flush with ground: no raised banks, no rocks, no visible vertical side faces, no bowl, no pond landscaping, no vegetation. Dry mud has low-contrast broad painterly shapes with thin dark cracks, no stones and no raised edge. Soft top-left overcast light, minimal contact shadow. Whole artwork is roughly 2:1 wide-to-high, centered with small transparent margin, simple readable masses at target runtime size. No tiny noise. No text/numbers/labels/watermark/grid/checkerboard.",
+    "referenceImages": [
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave29_물.jpg",
+      "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/사용자_비_스크린샷.png"
+    ],
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-ff29-7d43-ae41-a93e49f022cb/exec-279708e3-16ae-4197-854f-d22bd49e04bc.png",
+    "tool": "image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generatedDate": "2026-09-30",
+    "candidateCount": 1,
+    "selectionReason": "Distinct irregular flat silhouette with broad muted ground material; no high contrast rings, stone rim or built-in ripple.",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/puddles/mud_scar_large-v1.png",
+    "sourceSha256": "76abb9bcc909450a28d07176a7d2829f7de9cab0f05a56a770d92f8c0e6d3587",
+    "outputSha256": "f6bfc6b5903a46de653cf0af996a8a42fff29cf9b7c3bed710c3be1e71e01bb2",
+    "crop": [
+      40,
+      212,
+      1693,
+      480
+    ],
+    "pivot": [
+      48,
+      24
+    ],
+    "frames": 1,
+    "recommendedAlpha": 0.55,
+    "recommendedSpeed": 0,
+    "windTilt": 0,
+    "status": "candidate",
+    "repeat": "none",
+    "manualEdits": "Mechanical alpha-bbox crop at alpha>4; high-quality resize into 1px transparent runtime margin; no repaint, color change, or synthesized content."
+  }
+]

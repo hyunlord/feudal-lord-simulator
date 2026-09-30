@@ -18,7 +18,7 @@ const CACHES: readonly [RegExp, string][] = [
   [/src\/render\/(drawWallFaces|timberWallAssets|stoneWallAssets|gateArtAssets)\.ts/, "벽 캐시"],
   [/src\/render\/(seasonFx|seasonArt|weatherArt)\.ts/, "계절·날씨 그림"],
   [/src\/ui\/(portraitArt|portraitSilhouette)\.ts|assets\/.*portrait/, "초상"],
-  [/src\/ui\/(wave21Art|wave31Art|uiArt)\.ts|src\/ui\/chronicle|assets\/wave2[01]|assets\/wave31/, "삽화·UI 그림"],
+  [/src\/ui\/(wave21Art|wave31Art|wave33Art|endingArt|uiArt)\.ts|src\/ui\/chronicle|assets\/wave2[01]|assets\/wave3[13]|assets\/endings/, "삽화·UI 그림"],
   [/src\/ui\/heraldry/, "문장"],
 ];
 const cacheOf = (file: string, source: string) => CACHES.find(([pattern]) => pattern.test(file) || pattern.test(source))?.[1] ?? null;

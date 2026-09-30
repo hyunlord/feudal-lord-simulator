@@ -13,6 +13,8 @@ export const LORDSHIP_COPY = {
   heading: "영주 권리 등록부",
   house: (name: string, order: number, sinceYear: number) => `${house(name)} 가문 · ${order}대째 가문 · ${sinceYear}년부터`,
   houseArms: (name: string) => `${house(name)} 가문의 문장`,
+  /** UI-10 (F5-A LG-1): the family left the manor after the charter (towns without a keep read it here). */
+  countrySeat: (name: string, year: number) => `${house(name)} 가문은 ${year}년부터 시골 장원에 삽니다 — 영주관은 비었습니다`,
   pastHouses: (names: readonly string[]) => `앞선 가문: ${names.map(house).join(" · ")}`,
   titles: { manor: "장원 영주", market: "시장도시 영주", borough: "자치도시 영주" } as Readonly<Record<string, string>>,
   title: (rank: string) => `칭호: ${LORDSHIP_COPY.titles[rank] ?? rank}`,

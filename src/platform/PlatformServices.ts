@@ -3,7 +3,7 @@ import type { SaveStorage } from "../save/saveStorage";
 import type { SaveStorageKind } from "./saveStoragePlatform";
 
 // Platform layer (B9, design master 13.3): everything the game asks of its host — saves, small preferences, the
-// window, the locale and the input intent stream — sits behind this interface. The web build has one implementation
+// window, the locale, the files the player keeps and the input intent stream — sits behind this interface. The web build has one implementation
 // (webPlatform.ts); Electron / Capacitor / Steam implementations come later and game code does not change.
 // Achievements and cloud (13.3) are left out until a platform provides them.
 
@@ -40,11 +40,17 @@ export interface PlatformLocale {
   language(): string;
 }
 
+/** UI-10: a file the player keeps (the chronicle book's text), handed to the host to save; false when it could not. */
+export interface PlatformFiles {
+  saveText(fileName: string, text: string): Promise<boolean>;
+}
+
 export interface PlatformServices {
   readonly storage: PlatformStorage;
   readonly preferences: PlatformPreferences;
   readonly window: PlatformWindow;
   readonly locale: PlatformLocale;
+  readonly files: PlatformFiles;
   /** The input intent stream (src/input/intentBus.ts): translators emit, game and UI handlers subscribe. */
   readonly input: IntentBus;
 }

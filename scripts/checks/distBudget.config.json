@@ -22,7 +22,9 @@
     { "category": "illustrations", "label": "events, decisions, chronicle, chapter pages (Wave 16)", "patterns": ["assets/wave16/**"] },
     { "category": "illustrations", "label": "chapter 2 end, chronicle, decisions, events (Wave 17)", "patterns": ["assets/wave17/*.{jpg,png}", "assets/wave17/{chronicle,decision,event}/**"] },
     { "category": "illustrations", "label": "season ledger scenes (Wave 19)", "patterns": ["assets/wave19/scenes_*/**"] },
-    { "category": "illustrations", "label": "chapter 3 Black Death art: decisions, events, chronicle, chapter-3 end (Wave 21)", "patterns": ["assets/wave21/**"] },
+    { "category": "illustrations", "label": "chapter 3–5 art: decisions, events, chronicle, chapter and campaign end (Wave 21)", "patterns": ["assets/wave21/**"] },
+    { "category": "illustrations", "label": "chapter 5 interlude events, 1384–1400 (Wave 33)", "patterns": ["assets/wave33/**"] },
+    { "category": "illustrations", "label": "the campaign's six ending paintings (INSTALL-33)", "patterns": ["assets/endings/**"] },
     { "category": "ui", "label": "fonts (Noto Sans KR, Noto Serif KR; woff2 only)", "patterns": ["assets/*.{woff,woff2,ttf,otf}"] },
     { "category": "ui", "label": "P0 kit: frames, textures, icons, cursors, buttons", "patterns": ["assets/ui/**", "assets/ui-p0/**"] },
     { "category": "ui", "label": "Wave 8 frames, icons, ornaments, time strip", "patterns": ["assets/wave8/{frames,icons,ornaments,time}/**"] },
@@ -38,8 +40,10 @@
     { "category": "world", "label": "war props (Wave 17 world)", "patterns": ["assets/wave17/world/**"] },
     { "category": "world", "label": "village life, weather (Wave 23)", "patterns": ["assets/wave23/{life_birds,life_ground,life_props,weather}/**"] },
     { "category": "world", "label": "house variants and their state layers (Wave 26)", "patterns": ["assets/wave26/**"] },
+    { "category": "world", "label": "pair-house variants and their state layers (Wave 30)", "patterns": ["assets/wave30/**"] },
     { "category": "world", "label": "countryside outside the walls: field-edge strips, point props, wildflower patches (Wave 28)", "patterns": ["assets/wave28/**"] },
     { "category": "world", "label": "backyard decals (Wave 27)", "patterns": ["assets/wave27/yards/**"] },
-    { "category": "world", "label": "water motion (Wave 29)", "patterns": ["assets/wave29/water/**"] }
+    { "category": "world", "label": "water motion (Wave 29)", "patterns": ["assets/wave29/water/**"] },
+    { "category": "world", "label": "granary variants and their state layers, granary props (Wave 32)", "patterns": ["assets/wave32/**"] }
   ]
 }

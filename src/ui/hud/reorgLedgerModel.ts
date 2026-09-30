@@ -1,6 +1,7 @@
 import type { GameState } from "../../engine/engine.types";
 import { LEDGER_CATEGORY_LABELS } from "../../ledger/ledgerCopy.ko";
 import { ledgerView } from "../../ledger/ledgerView";
+import { chapterCash } from "./chapterLedgerTotals";
 import type { LedgerCategory } from "../../ledger/ledger.types";
 import { REORG_LEDGER_COPY } from "./reorgLedgerCopy.ko";
 
@@ -25,20 +26,20 @@ export interface ReorgLedgerView {
 /**
  * UI-9 (F4-A): the reorganisation ledger section in the LedgerDrawer stock tab. Returns null when chapter 4's
  * reorganisation has not yet started (state.reorganisation is absent); otherwise returns the five categories
- * with this-period, last-period and chapter-4 totals. The categories are chapter-4-exclusive (cloth_toll,
+ * with this-period, last-period and chapter-4 totals (UI-10: up to chapter 4's end once it has ended — chapterCash). The categories are chapter-4-exclusive (cloth_toll,
  * poll_tax, fee_farm) or significantly active only then (ulnage, fulling_toll), matching the wage-ledger pattern.
  */
 export function reorgLedgerView(state: GameState): ReorgLedgerView | null {
   if (state.reorganisation === null || state.reorganisation === undefined) return null;
   const recent = ledgerView(state, "cash", "recent");
   const previous = ledgerView(state, "cash", "previous");
-  const all = ledgerView(state, "cash", "all");
   const amountFor = (rows: typeof recent.byCategory, cat: LedgerCategory) =>
     rows.find(row => row.category === cat)?.amount ?? 0;
   const rows = REORG_CATEGORIES.map(category => {
     const thisSeason = amountFor(recent.byCategory, category);
     const lastSeason = amountFor(previous.byCategory, category);
-    const chapterTotal = amountFor(all.byCategory, category);
+    // UI-10: the chapter's money up to its end (chapterLedgerTotals), not the whole ledger's.
+    const chapterTotal = chapterCash(state, 4, category, true);
     const label = LEDGER_CATEGORY_LABELS[category];
     return { category, label, thisSeason, lastSeason, chapterTotal,
       shown: [REORG_LEDGER_COPY.amount(thisSeason), REORG_LEDGER_COPY.amount(lastSeason), REORG_LEDGER_COPY.amount(chapterTotal)] as const };

@@ -13,12 +13,18 @@ npm run remote:perf [-- --baseline perf/baseline-dgx-<sha>.json]   # 인자 없�
 npm run remote:clone-check                             # 커밋 깨끗한 클론(+LFS) → npm ci·typecheck·test·build
 npm run remote:trend [-- --commits a,b] [--rounds 3]  # 커밋마다 성능 추이(scripts/perf/trendRun.ts) → ~/fls-runs/_trend/<sha>.json
                                                        #   본선 푸시 때 pre-push가 뒤로 띄운다(FLS_TREND_OFF=1로 끔). 모으기: npm run perf:trend
-scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>   # 임의 명령
+scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 명령>   # 임의 명령
 ```
 
 - **label**: `FLS_REMOTE_LABEL=<세션>-<작업ID>`(예: `render-F0V`, `engine-F0A`). 지정하지 않으면 브랜치 이름을 쓴다. 원격 폴더는 `~/fls-runs/<label>-<짧은 해시>/`이다.
 - **긴 실행**: `FLS_REMOTE_DETACH=1 npm run remote:guardrail`(또는 `run.sh … --detach`)로 띄워 두고, 나중에 `scripts/remote/run.sh --attach <run>`으로 따라가거나 `--fetch <run>`으로 결과만 받는다. ssh가 끊겨도 원격 실행은 계속되고, 같은 방법으로 다시 붙는다.
-- **상태**: `scripts/remote/run.sh --status`로 도는 실행(스코프), 슬라이스 사용량, 폴더 목록을 본다.
+- **판정에 쓰는 실행은 `--keep`**(`--task`는 `FLS_REMOTE_KEEP_RUN=1`): 캠페인·가드레일·비교처럼 보고서의 수치가 되는 실행이다.
+  - 그 폴더는 정리에서 빠지고 10개에 세지 않는다.
+  - 끝나면 결과(`.remote/`와 가져올 결과 파일)를 `~/fls-runs/_kept/<run>/`에도 복사한다. `_`로 시작하는 폴더는 어느 브랜치의 정리도 지우지 않는다. 옛 `remote-exec.sh`를 가진 브랜치가 폴더를 지워도 결과는 남는다.
+  - `--fetch <run>`은 폴더가 없으면 `_kept/`에서 받는다.
+  - 결과를 저장소에 옮긴 뒤 `scripts/remote/run.sh --release <run>`으로 놓아준다.
+  - 까닭: FIX-10 때 습지 seed 1 캠페인의 결과를 정리가 지워 잃었다(2026-09-30).
+- **상태**: `scripts/remote/run.sh --status`로 도는 실행(스코프), 슬라이스 사용량, 폴더 목록, 붙잡아 둔 실행(`_kept`)을 본다.
 - **종료 코드**는 원격 명령의 것이다. 요약은 `.remote-runs/<run>/summary.txt`(가드레일은 `guardrail/summary.json`)에 있다.
 - **가드레일의 사람 경로**(CODE-1a): seed 실행 옆에서 `tests/humanPath*.test.ts`(명령 재생, 봇 없음)가 함께 돈다. 결과는 `guardrail/human-path.json`·`human-path.log`이고, 실패하면 가드레일 실행도 실패한다.
 
@@ -56,7 +62,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 4. **회수**:
    - 실행 폴더의 `.remote/`(로그·요약·가드레일/성능 원자료)는 Mac의 `.remote-runs/<run>/`으로 온다(git 무시).
    - 명령이 `docs/`·`seeds/`·`perf/`·`output/`·`fixtures/` 아래에 만들거나 바꾼 파일은 작업 트리로 온다. `rsync --update`라서 실행 중에 Mac에서 고친 파일은 덮지 않는다. 목록은 `.remote-runs/<run>/changed-files.txt`에 있다.
-5. **정리**: DGX는 최근 실행 폴더 10개만 남긴다(도는 중인 폴더는 지우지 않는다). node_modules 캐시는 최근 4개를 남긴다.
+5. **정리**: DGX는 최근 실행 폴더 10개만 남긴다(도는 중인 폴더와 `--keep` 실행은 지우지 않고 세지도 않는다). node_modules 캐시는 최근 4개를 남긴다.
 
 ## Node
 - **시스템 Node는 20, 게임은 `_tools`의 24다.**
@@ -134,7 +140,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 ## 배치
 ```
 ~/fls-runs/
-  <label>-<sha>/           실행 폴더(최근 10개)
+  <label>-<sha>/           실행 폴더(최근 10개, .remote/keep이 있는 --keep 실행은 빼고)
     .remote-in/            Mac이 보낸 목록·메타·bundle
     .remote/               로그·요약·원자료 → Mac .remote-runs/<run>/
   _cache/repo.git          bare 미러(실행 폴더 git의 객체 저장소)
@@ -142,4 +148,5 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
   _tools/                  node -> node-v24.21.0-linux-arm64, playwright-core, chromium-path, bin/git-lfs
   _locks/ _slots/ _ports/  실행·가드레일 슬롯·포트 잠금(flock)
   _clones/                 clone-check 임시 클론(끝나면 지운다)
+  _kept/<run>/             --keep 실행의 결과 사본(.remote/·결과 파일, --release로 지운다)
 ```
