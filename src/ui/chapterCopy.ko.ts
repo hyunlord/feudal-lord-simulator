@@ -21,6 +21,8 @@ export const CHAPTER_COPY = {
     ? `유산의 여덟 단계 ${steps}/${total} · 마지막 장날까지 ${years}년` : `유산의 여덟 단계 ${steps}/${total} · 올해 여름 마지막 장날`,
   /** The goal card's title; the card shows the count itself (its progress, "0/2"). */
   card: (chapter: number) => CHAPTER_COPY.titles[chapter] ?? `제${chapter}장`,
+  /** UI-AUDIT-1: the folded chip's short form at 1280 px and below ("2장", then the count). */
+  short: (chapter: number) => `${chapter}장`,
   reached: (goal: string) => `${goal} — 이룸`,
   cta: "목표 보기",
 } as const;

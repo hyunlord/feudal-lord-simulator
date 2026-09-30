@@ -79,6 +79,14 @@
 .app-shell .goal-chip-rail .goal-card-fold { display: flex; flex: 1 1 auto; gap: 8px; align-items: baseline; justify-content: space-between; min-width: 0; min-height: 44px; padding: 4px 8px; }
 .app-shell .goal-chip-rail .goal-card-fold .goal-card-title { flex: 1 1 auto; min-width: 0; font-size: 13px; text-align: left; }
 .app-shell .goal-chip-rail .goal-card--unfolded .goal-card-fold { flex: 1 0 100%; }
+/* UI-AUDIT-1 (user order, HUD area at 1280): at 1280 px and below with a mouse the folded chapter chip is its short
+   form — the goal icon, "2장", the count; pressed, it opens to the whole card as before. Wider views and the tablet keep
+   the title. */
+.app-shell .goal-chip-rail .goal-card-short { display: none; }
+@media (max-width: 1280px) and (pointer: fine) {
+  .app-shell .goal-chip-rail .goal-card--folded .goal-card-short { display: inline-flex; gap: 4px; align-items: center; font-size: 13px; font-weight: 700; }
+  .app-shell .goal-chip-rail .goal-card--folded .goal-card-title--full { display: none; }
+}
 .app-shell .goal-chip-rail .goal-card--unfolded .goal-card-why { display: block; flex: 1 0 100%; margin: 0 8px 2px 0; font-size: 12px; }
 /* Placement keeps only the tutorial's card (US-D5), not the log opener. */
 .app-shell .goal-chip-rail[data-placing="true"] .goal-drawer-toggle { display: none; }

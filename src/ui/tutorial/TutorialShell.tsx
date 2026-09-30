@@ -60,10 +60,15 @@ function FoldableGoalCard({ card, warn, onPress, onLook }: { readonly card: Goal
     const timer = window.setTimeout(() => setOpen(false), GOAL_CARD_UNFOLD_MS);
     return () => window.clearTimeout(timer);
   }, [card.foldKey]);
+  const count = card.progress === null ? null : TUTORIAL_COPY.progress(card.progress.current, card.progress.target);
+  // UI-AUDIT-1: at 1280 px and below the folded chip shows its short form (the goal icon, "2장", the count; CSS picks
+  // the form); its name stays the whole title and count.
   const chip = (
-    <Button type="button" className="goal-card-fold" aria-expanded={open} onPress={() => setOpen(value => !value)} variant="toggle">
-      <span className="goal-card-title">{card.title}</span>
-      {card.progress === null ? null : <span className="goal-card-count">{TUTORIAL_COPY.progress(card.progress.current, card.progress.target)}</span>}
+    <Button type="button" className="goal-card-fold" aria-expanded={open} onPress={() => setOpen(value => !value)} variant="toggle"
+      aria-label={card.shortTitle === undefined ? undefined : count === null ? card.title : `${card.title} ${count}`}>
+      <span className="goal-card-title goal-card-title--full">{card.title}</span>
+      {card.shortTitle === undefined ? null : <span className="goal-card-short"><UiIcon sheet="action" cell="open" />{card.shortTitle}</span>}
+      {count === null ? null : <span className="goal-card-count">{count}</span>}
     </Button>
   );
   if (!open) return <article className={warn ? "goal-card goal-card--folded goal-card--warn" : "goal-card goal-card--folded"} data-frame="objective" data-goal-card={card.key} data-folded="true">{chip}</article>;
