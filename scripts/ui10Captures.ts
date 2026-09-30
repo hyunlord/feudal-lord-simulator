@@ -187,9 +187,12 @@ for (const [index, name] of CARDS.entries()) {
     // As a player opens it (as scripts/ui10CardsCaptures.ts): the story's short wait, else the chip and [결정하기].
     const { page, close } = await named(name, 600);
     await page.waitForTimeout(2_000);
-    if (await page.locator(SEL.petitionCard).count() === 0 && await page.locator(SEL.eventChip).count() > 0) {
-      await page.locator(SEL.eventChip).first().click({ timeout: 5_000 }); await page.waitForTimeout(600);
-      await page.getByRole("button", { name: SEL.decideButton }).first().click({ timeout: 5_000 }); await page.waitForTimeout(600);
+    // Each waiting chip in turn until one's card offers [결정하기] (other events may wait before it).
+    const chips = await page.locator(SEL.eventChip).count();
+    for (let chip = 0; chip < chips && await page.locator(SEL.petitionCard).count() === 0; chip += 1) {
+      await page.locator(`${SEL.eventChip} >> nth=${chip}`).click({ timeout: 5_000 }); await page.waitForTimeout(600);
+      const decide = page.getByRole("button", { name: SEL.decideButton }).first();
+      if (await decide.count() > 0) { await decide.click({ timeout: 5_000 }); await page.waitForTimeout(600); }
     }
     await page.locator(SEL.petitionCard).waitFor({ timeout: 15_000 }); await page.waitForTimeout(700);
     await shootBox(page, SEL.petitionCard, `d${index + 1}-${name.replace("extra:", "")}${name.startsWith("extra:") ? "-three" : ""}.jpg`);
