@@ -108,3 +108,15 @@ test("TA-9 every receipt's reasons match the state the week started from (auditR
   }
   assert.ok(audited > 0);
 });
+
+test("TA-8 a lord-mode town saves and loads with its agency (save v36); a v35 save loads as a sandbox town", async () => {
+  const { decodeSave, encodeSave } = await import("../src/save/saveCodec");
+  const { readFileSync } = await import("node:fs");
+  const town = toWeek(gameReducer(lordTown(), { type: "set_market_dues", permille: 800 }), 6);
+  const at = "2026-10-01T00:00:00.000Z";
+  const loaded = decodeSave(encodeSave({ state: town, createdAt: at, savedAt: at }).bytes).envelope.state as GameState;
+  assert.deepEqual(loaded.agency, town.agency);
+  const old = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v35/chapter-five-town.save.json")));
+  assert.equal(old.migratedFrom, 35);
+  assert.equal((old.envelope.state as GameState).agency, undefined);
+});

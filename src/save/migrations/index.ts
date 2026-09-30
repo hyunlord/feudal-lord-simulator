@@ -30,6 +30,7 @@ import { migrateV31ToV32 } from './v31ToV32';
 import { migrateV32ToV33 } from './v32ToV33';
 import { migrateV33ToV34 } from './v33ToV34';
 import { migrateV34ToV35 } from './v34ToV35';
+import { migrateV35ToV36 } from './v35ToV36';
 import { SAVE_SCHEMA_VERSION } from "../saveTypes";
 import { migrateV0ToV1 } from "./v0ToV1";
 import { migrateV2ToV3 } from "./v2ToV3";
@@ -78,6 +79,7 @@ export const SAVE_MIGRATIONS: readonly SaveMigration[] = [
   { from: 32, to: 33, migrate: migrateV32ToV33 },
   { from: 33, to: 34, migrate: migrateV33ToV34 },
   { from: 34, to: 35, migrate: migrateV34ToV35 },
+  { from: 35, to: 36, migrate: migrateV35ToV36 },
 ];
 
 export class SaveMigrationError extends Error {}
