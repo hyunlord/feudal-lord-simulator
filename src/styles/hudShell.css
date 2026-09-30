@@ -361,7 +361,9 @@
 .petition-options { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .petition-option { display: grid; grid-template-columns: 48px 1fr; gap: 2px 10px; width: 100%; min-height: 64px; padding: 6px; text-align: left; font-size: 13px; }
 .petition-seal { grid-row: 1 / 4; }
-/* UI-10: [나중에 정하기] stays in view at the card's bottom when long answers (chapter 5's charter) scroll the body. */
+/* UI-10: chapter 5's two-answer cards carry long answers (the charter's sums): the full card's height, so
+   [나중에 정하기] shows below them; if a card still overflows, it stays in view at the body's bottom. */
+.petition-card[data-answers="2"]:is([data-def="borough_autonomy"], [data-def="royal_tax"], [data-def="guild_dispute"], [data-def="church_rebuilding"]) { min-height: 620px; }
 .petition-body > .story-modal-later { position: sticky; bottom: 0; z-index: 1; }
 /* UI-10: an answer with more than three lines (the heir's card) keeps them all beside the seal. */
 .petition-option > :not(.petition-seal) { grid-column: 2; min-width: 0; }
@@ -394,6 +396,9 @@
 .chronicle-decisions li { display: grid; gap: 2px; font-size: 13px; }
 .chronicle-stats { margin: 0; padding-left: 18px; font-size: 13px; }
 .chronicle-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+/* UI-10: a chapter page with many quoted decisions (chapter 5's six) scrolls; its buttons stay in view at its bottom. */
+.chronicle-columns .chronicle-actions { position: sticky; bottom: 0; z-index: 1; padding: 6px 0 2px; background: var(--palette-parchment);
+  border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
 .chronicle-actions button, .chapter-preview-continue { display: inline-flex; gap: 6px; align-items: center; min-height: 48px; font-size: 15px; font-weight: 700; }
 .chapter-preview { position: absolute; inset: 0; z-index: 45; display: grid; place-content: center; justify-items: center; gap: 8px;
   background-color: var(--palette-ink); background-position: center; background-size: cover; }

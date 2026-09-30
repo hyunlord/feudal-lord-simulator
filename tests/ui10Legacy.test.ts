@@ -226,7 +226,10 @@ test("UI-10 gate 4: the ledger drawer's stock tab has a chapter-5 section — th
 test("UI-10 gate 5–6: the buttons stay in view — the ending's three in a footer held at the panel's bottom, a card's [나중에 정하기] at its body's", () => {
   const css = readFileSync("src/styles/legacy.css", "utf8");
   assert.match(css, /\.legacy-ending-footer \{ position: sticky; bottom: 0;/);
-  assert.match(readFileSync("src/styles/hudShell.css", "utf8"), /\.petition-body > \.story-modal-later \{ position: sticky; bottom: 0;/);
+  const hud = readFileSync("src/styles/hudShell.css", "utf8");
+  assert.match(hud, /\.petition-body > \.story-modal-later \{ position: sticky; bottom: 0;/);
+  assert.match(hud, /\[data-def="borough_autonomy"\][^{]*\{ min-height: 620px; \}/, "the charter card's full height");
+  assert.match(hud, /\.chronicle-columns \.chronicle-actions \{ position: sticky; bottom: 0;/, "the chapter page's buttons");
   const source = readFileSync("src/ui/legacy/LegacyEndingScreen.tsx", "utf8");
   const footer = source.slice(source.indexOf('className="legacy-ending-footer"'));
   for (const button of ["legacy-open-book", "legacy-export", "legacy-keep"]) assert.ok(footer.includes(button), button);
