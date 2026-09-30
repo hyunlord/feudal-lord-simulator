@@ -7,6 +7,10 @@
 
 ## 현재 단계
 
+- **추이 문서 뒤처짐 경고·NAT-2 힙 확인 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 RR4)
+  - `check:merge`가 추이 문서가 본선 머리보다 10개 넘게 뒤처지면 경고 한 줄을 찍는다(실패 아님, `<git common dir>/fls-trend-lag.log`에 쌓임). 합치는 세션이 `npm run perf:trend`로 갱신하고, 경고가 쌓이면 인프라 세션이 모아 커밋한다.
+  - NAT-2 뒤 JS 힙 증가는 없었다: Mac A-B-A-B([기록](verification/perf-ab/2026-09-30-2310-00df3324-8ebdcf5c.md))에서 힙 끝 85.3 → 81.1 MB(소음 안), 할당 −13 %·GC −39 %(좋아짐). 추이의 표시는 GC 톱니 위 한 점을 잰 탓이었다. 밉맵 캐시는 JS 힙 밖(픽셀 0~2.1 MB)이다.
+  - 추이 지표 보정: GC 뒤 남은 힙을 판정, 다른 일 CPU를 함께 적음. 렌더가 볼 관찰 둘(카메라 뒤 목책 래스터 캐시, NAT-2 쪽 긴 프레임)은 [요청서](requests/render-telemetry-hooks.md) 덧붙임에 있다.
 - **성능 측정 재편: 기다리지 않고 추이로 판정 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 RR3)
   - perf:gate의 잠금·대기열·조용한 Mac 기다리기를 없앴다. 환경은 수치 옆 기록이다.
   - ① 개발 서버 텔레메트리 `~/.fls-telemetry/`(`npm run telemetry:report`).
