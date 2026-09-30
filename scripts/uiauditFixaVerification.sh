@@ -3,7 +3,7 @@
 # scripts/uiauditTokensVerification.sh):
 #   scripts/remote/run.sh render-UIAUDIT-fixa-<sha7> -- bash scripts/uiauditFixaVerification.sh <base-sha> hud|shots
 # hud: the HUD area measure (scripts/measureHudCoverage.ts) of both builds; hud-shots: this build's with its masks
-# (.remote/hud-shots); shots: scripts/uiauditFixaCaptures.mjs.
+# (.remote/hud-shots); exec <command…>: that command with URL and BASE_URL set; shots: scripts/uiauditFixaCaptures.mjs.
 set -u
 base_sha=${1:?base sha}
 what=${2:?hud or shots}
@@ -38,5 +38,6 @@ case "$what" in
     ;;
   cards) FIXA_CARDS_ONLY=1 node scripts/uiauditFixaCaptures.mjs "$out" --url "$URL" --base "$BASE_URL" --states "${UI5_STATES:-$HOME/fls-ui5-states-v22}" --states9 "$HOME/fls-ui9-states" ;;
   shots) node scripts/uiauditFixaCaptures.mjs "$out" --url "$URL" --base "$BASE_URL" --states "${UI5_STATES:-$HOME/fls-ui5-states-v22}" --states9 "$HOME/fls-ui9-states" ;;
+  exec) shift 2; "$@" ;;
   *) echo "unknown: $what"; exit 2 ;;
 esac
