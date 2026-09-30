@@ -1,0 +1,93 @@
+[
+  {
+    "id": "office_steward",
+    "prompt": "Use case: stylized-concept. Create one isolated medieval southern England 1300-1450 game UI asset, candidate only. Restrained hand-painted style matching project's warm parchment and oak UI kit: low saturation, dark brown contours, muted warm cream highlights, subtle brushwork, no modern gloss. Readable tiny silhouette with strong simple masses; avoid fine ornament and hairlines. Centered single object, full object visible, around 8% clear margin. Genuine transparent RGBA background, no ground, no cast shadow outside object, no border, no badge disc backdrop, no checkerboard painted in. Absolutely NO letters, numbers, text, fake writing, runes, labels, watermark. Square composition to be downsampled to 64px and office badges to 32px; subsidy_notice instead portrait 3:4 to become 192x256. Subject: Steward office badge: a bundle of THREE simple medieval iron keys on one large ring, broad distinct key silhouettes.",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "reference_usage": "Viewed references/ui-kit.jpg and references/wave19.jpg; visual style described in prompt; no image files submitted to generation tool.",
+    "status": "candidate",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "office_bailiff",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "reference_usage": "Viewed references/ui-kit.jpg and references/wave19.jpg; visual style described in prompt; no image files submitted to generation tool.",
+    "status": "candidate",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "office_reeve",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "reference_usage": "Viewed references/ui-kit.jpg and references/wave19.jpg; visual style described in prompt; no image files submitted to generation tool.",
+    "status": "candidate",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "office_receiver",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "reference_usage": "Viewed references/ui-kit.jpg and references/wave19.jpg; visual style described in prompt; no image files submitted to generation tool.",
+    "status": "candidate",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "office_clerk",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "reference_usage": "Viewed references/ui-kit.jpg and references/wave19.jpg; visual style described in prompt; no image files submitted to generation tool.",
+    "status": "candidate",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "policy_growth",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "reference_usage": "Viewed references/ui-kit.jpg and references/wave19.jpg; visual style described in prompt; no image files submitted to generation tool.",
+    "status": "candidate",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "policy_revenue",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "reference_usage": "Viewed references/ui-kit.jpg and references/wave19.jpg; visual style described in prompt; no image files submitted to generation tool.",
+    "status": "candidate",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "policy_stability",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "reference_usage": "Viewed references/ui-kit.jpg and references/wave19.jpg; visual style described in prompt; no image files submitted to generation tool.",
+    "status": "candidate",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "policy_defence",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "reference_usage": "Viewed references/ui-kit.jpg and references/wave19.jpg; visual style described in prompt; no image files submitted to generation tool.",
+    "status": "candidate",
+    "model": null,
+    "seed": null
+  },
+  {
+    "id": "subsidy_notice",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "reference_usage": "Viewed references/ui-kit.jpg and references/wave19.jpg; visual style described in prompt; no image files submitted to generation tool.",
+    "status": "candidate",
+    "model": null,
+    "seed": null
+  }
+]

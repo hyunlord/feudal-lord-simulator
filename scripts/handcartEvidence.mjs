@@ -6,6 +6,8 @@
 //    carter's foot point (green inside the clip, red outside) with its handcart direction.
 //  - carters.jpg: every carter cut out around its own foot point (220x210 device px), so cart and carter are seen whole.
 //  - carters.json: per carter id, foot point, direction, sheet, cloak, inside / outside the V2 clip.
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/handcartEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/handcartEvidence.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';

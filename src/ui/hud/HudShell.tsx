@@ -1,6 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
 
-import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../content/buildingConfig";
 import type { GameState } from "../../engine/engine.types";
 import { calendarLabel, stateCalendar } from "../../engine/scenarioState";
 import { platformServices } from "../../platform/platform";
@@ -13,13 +12,12 @@ import { TUTORIAL_COPY } from "../tutorial/tutorialCopy.ko";
 import type { TutorialController } from "../tutorial/useTutorialController";
 import type { ControlLayer } from "../tutorial/tutorialModel";
 import { HUD_COPY } from "./hudCopy.ko";
-import { resourceName } from "../../content/resourceCatalog.ko";
-import { resourceEntry } from "../../content/resourceCatalog";
 import { SeasonStripMini, SeasonStripPanel } from "./SeasonStrip";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
 import { wave8ImageStyle } from "../wave8Art";
 import { ledgerMatrix, statusPillModel } from "./statusPillModel";
-import { weeklyTotalChange, type StoreStockHistory } from "../storeStockHistory";
+import type { StoreStockHistory } from "../storeStockHistory";
+import { LedgerStockTable } from "./LedgerStockTable";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
 import { PersonList } from "../persons/PersonViews";
@@ -36,6 +34,8 @@ import { wageLedgerView } from "./wageLedgerModel";
 import { WAGE_LEDGER_COPY } from "./wageLedgerCopy.ko";
 // UI-9: chapter 4 reorganisation ledger (RG-3, RG-6, RG-9) and revolt pressure on the rights tab (RG-8).
 import { reorgLedgerView } from "./reorgLedgerModel";
+import { legacyLedgerView } from "./legacyLedgerModel";
+import { LEGACY_LEDGER_COPY } from "./legacyLedgerCopy.ko";
 import { REORG_LEDGER_COPY } from "./reorgLedgerCopy.ko";
 import { FACTION_INFLUENCE_COPY as INFLUENCE } from "../chronicle/factionInfluenceCopy.ko";
 
@@ -184,6 +184,7 @@ export function RightsRegister({ view, onPerson }: { readonly view: LordshipView
         <div><p className="ledger-rights-house-name">{view.house}</p><p>{view.title}{view.demoted === null ? null : <> · <span className="ledger-rights-lost">{view.demoted}</span></>}</p>
           {view.pastHouses === null ? null : <p>{view.pastHouses}</p>}</div>
       </header>
+      {view.seat === null ? null : <p className="ledger-rights-seat">{view.seat}</p>}
       {view.household.length === 0 ? null : <section className="ledger-rights-household" aria-label={PERSONS_COPY.lordHouseholdHeading}>
         <h4>{PERSONS_COPY.lordHouseholdHeading}</h4><PersonList rows={view.household} onOpen={onPerson} /></section>}
       {view.decline === null ? null : <p className="ledger-rights-lost" role="status">{view.decline}</p>}
@@ -238,6 +239,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   const wageLedger = wageLedgerView(state);
   // UI-9: RG-3/RG-6/RG-9 chapter 4 reorganisation ledger — null before chapter 4 starts.
   const reorgLedger = reorgLedgerView(state);
+  // UI-10: LG-2…LG-5 chapter 5 ledger — null before chapter 5 starts.
+  const legacyLedger = legacyLedgerView(state);
   return (
     <section className="ledger-drawer slot-panel" aria-label={HUD_COPY.ledgerTitle}>
       <header className="slot-panel-heading"><h2>{HUD_COPY.ledgerTitle}</h2>
@@ -253,25 +256,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
           aria-label={CHRONICLE_SCREEN_COPY.ledgerTabLabel} data-ledger-chronicle="open" onPress={() => onOpenChronicle()} variant="tab">{CHRONICLE_SCREEN_COPY.ledgerTab}</Button>}
       </div>
       {tab === "stock" ? (matrix.rows.length === 0 ? <p>{HUD_COPY.ledgerEmpty}</p> : (
-        // UX-0b: at 1280 the store columns pushed the total, the week and the lasts out of the drawer; they come first now.
-        <div className="ledger-matrix-scroll"><table className="ledger-matrix">
-          <thead><tr><th scope="col" /><th scope="col">{HUD_COPY.ledgerTotal}</th><th scope="col">{HUD_COPY.ledgerWeek}</th><th scope="col">{HUD_COPY.ledgerLasts}</th>
-            {matrix.stores.map(store => (
-            <th key={store.id} scope="col"><Button type="button" className="ledger-store" onPress={() => onInspect(store.id)} variant="secondary">
-              {HUD_COPY.ledgerStore(BUILDING_CONFIG_BY_KIND[store.kind as BuildingKind].name, store.index)}</Button></th>))}</tr></thead>
-          <tbody>{matrix.rows.map(row => {
-            const holders = matrix.stores.filter((_store, index) => (row.byStore[index] ?? 0) > 0).map(store => store.id);
-            const lit = holders.length > 0 && holders.every(id => highlighted.includes(id)) && highlighted.length === holders.length;
-            const week = history === null ? null : weeklyTotalChange(history, row.resource, state);
-            const lasts = resourceEntry(row.resource).group === "food" && food.days !== null ? HUD_COPY.ledgerDays(food.days) : HUD_COPY.ledgerNoLasts;
-            return (
-            <tr key={row.resource} data-resource={row.resource} data-lit={lit ? "true" : undefined}>
-              <th scope="row"><Button type="button" className="ledger-row" aria-pressed={lit} aria-label={HUD_COPY.ledgerRowLabel(resourceName(row.resource))}
-                onPress={() => onHighlight?.(lit ? [] : holders)} variant="surface"><ResourceGlyph resource={row.resource} />{resourceName(row.resource)}</Button></th>
-              <td className="ledger-total">{row.total}</td><td className="ledger-week">{HUD_COPY.ledgerWeekValue(week)}</td><td className="ledger-lasts">{lasts}</td>
-              {row.byStore.map((amount, index) => <td key={matrix.stores[index]!.id}>{amount === 0 ? "—" : amount}</td>)}</tr>);
-          })}</tbody>
-        </table></div>)) : null}
+        // UX-0b: the total, the week and the lasts first; NAT-2 (QA-006): the stores folded into one column (LedgerStockTable).
+        <LedgerStockTable state={state} matrix={matrix} history={history} food={food} highlighted={highlighted} onHighlight={onHighlight} onInspect={onInspect} />)) : null}
       {/* ECON-UI (FIX-7 townAle): the town's ale — kept in the houses, never in a store, so not in the table above. */}
       {tab === "stock" && townAle !== null ? <section className="ledger-town-ale" aria-label={TOWN_ALE_COPY.heading}>
         <h3><ResourceGlyph resource="ale" />{TOWN_ALE_COPY.heading}</h3>
@@ -297,6 +283,14 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
         <div className="ledger-matrix-scroll"><table className="ledger-matrix">
           <thead><tr><th scope="col">{REORG_LEDGER_COPY.category}</th><th scope="col">{REORG_LEDGER_COPY.thisSeason}</th><th scope="col">{REORG_LEDGER_COPY.lastSeason}</th><th scope="col">{REORG_LEDGER_COPY.chapterTotal}</th></tr></thead>
           <tbody>{reorgLedger.rows.map(row => <tr key={row.category}><th scope="row">{row.label}</th>{row.shown.map((amount, index) => <td key={index}>{amount}</td>)}</tr>)}</tbody>
+        </table></div>
+      </section> : null}
+      {/* UI-10: chapter 5's money — the Crown's tax, the relief, the endowment, the charter fee, the nave, the fee farm. */}
+      {tab === "stock" && legacyLedger !== null ? <section className="ledger-wage-ledger ledger-legacy-ledger" aria-label={LEGACY_LEDGER_COPY.heading}>
+        <h3>{LEGACY_LEDGER_COPY.heading}</h3>
+        <div className="ledger-matrix-scroll"><table className="ledger-matrix">
+          <thead><tr><th scope="col">{LEGACY_LEDGER_COPY.category}</th><th scope="col">{LEGACY_LEDGER_COPY.thisSeason}</th><th scope="col">{LEGACY_LEDGER_COPY.lastSeason}</th><th scope="col">{LEGACY_LEDGER_COPY.chapterTotal}</th></tr></thead>
+          <tbody>{legacyLedger.rows.map(row => <tr key={row.category}><th scope="row">{row.label}</th>{row.shown.map((amount, index) => <td key={index}>{amount}</td>)}</tr>)}</tbody>
         </table></div>
       </section> : null}
       {/* UI-6: the rights register (the house, its arms, the title, the lord's rights and the ones he granted, the war). */}

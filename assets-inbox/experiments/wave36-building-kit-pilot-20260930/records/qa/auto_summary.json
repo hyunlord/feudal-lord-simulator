@@ -1,0 +1,94 @@
+{
+  "pilot_auto_gate": "FAIL_NOT_ALL_VERIFIED",
+  "checks": [
+    {
+      "check": 1,
+      "verdict": "NOT_VERIFIED",
+      "rows": 25,
+      "counts": {
+        "NOT_VERIFIED": 1,
+        "PASS": 24
+      }
+    },
+    {
+      "check": 2,
+      "verdict": "FAIL",
+      "rows": 216,
+      "counts": {
+        "FAIL": 216
+      }
+    },
+    {
+      "check": 3,
+      "verdict": "NOT_VERIFIED",
+      "rows": 216,
+      "counts": {
+        "NOT_VERIFIED": 216
+      }
+    },
+    {
+      "check": 4,
+      "verdict": "FAIL",
+      "rows": 48,
+      "counts": {
+        "FAIL": 21,
+        "NOT_VERIFIED": 3
+      }
+    },
+    {
+      "check": 5,
+      "verdict": "FAIL",
+      "rows": 14,
+      "counts": {
+        "FAIL": 7,
+        "PASS": 7
+      }
+    },
+    {
+      "check": 6,
+      "verdict": "PASS",
+      "rows": 6,
+      "counts": {
+        "PASS": 6
+      }
+    },
+    {
+      "check": 7,
+      "verdict": "FAIL",
+      "rows": 144,
+      "counts": {
+        "NOT_VERIFIED": 29,
+        "PROXY": 24,
+        "PROXY_FAIL": 76,
+        "PROXY_PASS": 15
+      }
+    },
+    {
+      "check": 8,
+      "verdict": "NOT_VERIFIED",
+      "rows": 360,
+      "counts": {
+        "NOT_VERIFIED": 240,
+        "PROXY_PASS": 120
+      }
+    },
+    {
+      "check": 9,
+      "verdict": "FAIL",
+      "rows": 25,
+      "counts": {
+        "FAIL": 4,
+        "NOT_VERIFIED": 1,
+        "PASS": 20
+      }
+    },
+    {
+      "check": 10,
+      "verdict": "NOT_VERIFIED",
+      "rows": 30,
+      "counts": {
+        "NOT_VERIFIED": 30
+      }
+    }
+  ]
+}

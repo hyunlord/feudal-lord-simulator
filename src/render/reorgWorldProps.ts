@@ -1,6 +1,5 @@
 import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
-import { isAlehouse } from "../engine/ale";
 import { guildOf } from "../engine/reorganisation";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import { depthKey, tileToScreen } from "./iso";
@@ -19,7 +18,7 @@ import { drawCollector } from "./collectorWalker";
 //  1. Guildhall world prop: Wave 12 guildhall painting on a free 3 × 2 spot near the market (grass or felled forest, no road, building or site) while guildOf(state) !== null.
 //     Depth-sorted in the object queue via withReorgProps (called from renderObjectFrameCache.ts).
 //  2. Textile walkers: two walkers carrying bolts between weaver houses while textileStreetTick is set and ≥2 exist.
-//  3. Alehouse drinkers: 1–2 walkers per alehouse during alehouse_boom; wall-clock animated (visible while paused).
+//  3. Alehouse drinkers: NAT-2 draws them in the object pass at the ale barrels (alehouseCrowd.ts).
 //  4. Collector chase: 2 walkers hurrying toward the map edge after rebellion outcome "chased" (within a season).
 // Petition crowd (reorg.petitions_surge + open ch4 petitions): storyWorldProps.ts petitionGathering already covers
 //   this — openPetitions() returns ch4 petitions (guild_charter, tax_collection, etc.) from politics.petitions.
@@ -170,12 +169,11 @@ function walkerCell(ctx: CanvasRenderingContext2D, key: Wave9Key, dir: Dir, gait
 
 const buildingDoor = (b: Building) => { const fp = buildingFootprint(b); return tileToScreen(b.tx + fp.width / 2 - 0.5, b.ty + fp.height + 0.1); };
 
-/** UI-9: textile walkers, alehouse crowd and collector chase — drawn after the object pass. */
+/** UI-9: textile walkers and collector chase — drawn after the object pass (the alehouse crowd: alehouseCrowd.ts). */
 export function drawReorgOverlays(ctx: CanvasRenderingContext2D, state: GameState, nowMs: number): void {
   const reorg = state.reorganisation;
   if (reorg === undefined) return;
   drawTextileWalkers(ctx, state, reorg, nowMs);
-  drawAlehouseDrinkers(ctx, state, reorg, nowMs);
   drawCollectorChase(ctx, state, reorg, nowMs);
 }
 
@@ -198,26 +196,7 @@ function drawTextileWalkers(ctx: CanvasRenderingContext2D, state: GameState, reo
   walkerCell(ctx, "wk_petitioner_f", fwd ? dir : (DIR_COL[dir] <= 1 ? "SW" : "NE") as Dir, gait + 1, sx + 10, sy + 4);
 }
 
-// 2. Alehouse crowd (RG-1 the alehouses' boom): three or four drinkers clustered at each alehouse's door, turned to
-// one another (half face the door, half the street), swaying a little on the wall clock — a crowd, not passers-by.
-const ALE_WALKER_OFFSETS = [{ ox: -16, oy: 8, dir: "NE" }, { ox: 14, oy: 10, dir: "NW" }, { ox: -4, oy: 20, dir: "NE" }, { ox: 22, oy: 22, dir: "SW" }] as const;
-const ALE_LOOP_MS = 8_000;
-function drawAlehouseDrinkers(ctx: CanvasRenderingContext2D, state: GameState, reorg: GameState["reorganisation"] & object, nowMs: number): void {
-  if (reorg.alehouseBoomTick === undefined || reorg.endedTick !== undefined) return;
-  for (const house of state.houses) {
-    if (!isAlehouse(house)) continue;
-    const building = state.buildings.find(b => b.id === house.buildingId);
-    if (building === undefined) continue;
-    const at = buildingDoor(building);
-    const walkerCount = 3 + (hashI(state.seed, building.tx * 13, building.ty * 7) % 2); // 3 or 4 per alehouse
-    for (let i = 0; i < walkerCount; i += 1) {
-      const off = ALE_WALKER_OFFSETS[i]!;
-      const swing = Math.sin((nowMs / ALE_LOOP_MS + i * 0.37) * Math.PI * 2) * 2;
-      const key: Wave9Key = i % 2 === 0 ? "wk_petitioner_m" : "wk_petitioner_f";
-      walkerCell(ctx, key, off.dir, 0, at.sx + off.ox + swing, at.sy + off.oy);
-    }
-  }
-}
+// 2. Alehouse crowd (RG-1 the alehouses' boom): NAT-2 moved it into the object pass, at the ale barrels (alehouseCrowd.ts).
 
 // 3. Collector chase (RG-8, chased): for a season after the rumour, the lord's collector hurries from the market to the
 // keep with the townsfolk a few steps behind him — nobody armed, nobody hurt. UI-9b: the collector is Wave 17's

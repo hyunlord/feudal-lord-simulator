@@ -1,6 +1,8 @@
 // INSTALL-15 gate 4 evidence: per-frame work by render stage around the pop176 season turn (1x, autumn to winter at
 // tick 27,000), with the chunk cache's staging and fades and the idle callbacks the page got.
 //   PLAYWRIGHT_MODULE=... node scripts/turnTimeline.mjs <out.json> --url <url>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/turnTimeline.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/turnTimeline.mjs …", entry: import.meta.url });
 import { writeFileSync } from 'node:fs';
 import { loadChromium, openScene, sceneStates } from './renderCommitProbe.mjs';
 const [out] = process.argv.slice(2);

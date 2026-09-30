@@ -1,0 +1,100 @@
+{
+ "tag": "before",
+ "url": "http://127.0.0.1:5397/",
+ "result": {
+  "ledger-1600x1100": {
+   "drawer": {
+    "width": 440,
+    "scrollWidth": 438,
+    "clientWidth": 438
+   },
+   "scrolls": [
+    {
+     "scrollWidth": 3348,
+     "clientWidth": 414
+    },
+    {
+     "scrollWidth": 414,
+     "clientWidth": 414
+    },
+    {
+     "scrollWidth": 414,
+     "clientWidth": 414
+    }
+   ],
+   "columns": 61
+  },
+  "ledger-1280x800": {
+   "drawer": {
+    "width": 440,
+    "scrollWidth": 438,
+    "clientWidth": 438
+   },
+   "scrolls": [
+    {
+     "scrollWidth": 3348,
+     "clientWidth": 414
+    },
+    {
+     "scrollWidth": 414,
+     "clientWidth": 414
+    },
+    {
+     "scrollWidth": 414,
+     "clientWidth": 414
+    }
+   ],
+   "columns": 61
+  },
+  "ledger-tablet-1180x820": {
+   "drawer": {
+    "width": 440,
+    "scrollWidth": 438,
+    "clientWidth": 438
+   },
+   "scrolls": [
+    {
+     "scrollWidth": 3348,
+     "clientWidth": 414
+    },
+    {
+     "scrollWidth": 414,
+     "clientWidth": 414
+    },
+    {
+     "scrollWidth": 414,
+     "clientWidth": 414
+    }
+   ],
+   "columns": 61
+  },
+  "guild-dispute": {
+   "def": "guild_dispute",
+   "options": [
+    "길드 편을 든다길드 편을 든다두 계절 뒤 예측 ·",
+    "가격을 붙여 수락가격을 붙여 수락두 계절 뒤 예측 ·",
+    "상인 편을 든다상인 편을 든다두 계절 뒤 예측 ·"
+   ],
+   "predictedLines": [
+    "두 계절 뒤 예측 · ",
+    "두 계절 뒤 예측 · ",
+    "두 계절 뒤 예측 · "
+   ]
+  },
+  "church-rebuilding": {
+   "def": "church_rebuilding",
+   "options": [
+    "교회를 넓혀 짓는다교회를 넓혀 짓는다두 계절 뒤 예측 ·",
+    "가격을 붙여 수락가격을 붙여 수락두 계절 뒤 예측 ·",
+    "증축을 미룬다증축을 미룬다두 계절 뒤 예측 ·"
+   ],
+   "predictedLines": [
+    "두 계절 뒤 예측 · ",
+    "두 계절 뒤 예측 · ",
+    "두 계절 뒤 예측 · "
+   ]
+  },
+  "qa-overlay": "no overlay in this build"
+ },
+ "errors": []
+}

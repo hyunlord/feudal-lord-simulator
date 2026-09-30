@@ -21,6 +21,19 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
   - 긴 작업 하나로는 걸리지 않는다. 작업이 끝나면 다음 감시 전에 rAF가 온다.
   - 게이트 동안 `caffeinate -d -i`로 디스플레이가 잠들지 않게 한다.
   - Playwright의 Chrome은 앱 숨기기·창 최소화에도 계속 그린다. 이것은 판정을 흐리지 않아 막지 않는다.
+- **사람 입력**: 실행이 끝날 때 이 Mac의 하드웨어 입력 무입력 시간(`ioreg` `HIDIdleTime`)이 실행 길이보다 짧으면, 누가 키보드·마우스를 만진 것이다. 그 실행은 "판정 아님"이다. Playwright의 입력(CDP)은 세지 않는다.
+- **대기열**(`scripts/perf/perfQueue.ts`): 사용자가 Mac을 안 쓰는 시간에 판정 측정을 몰아서 돌린다.
+  ```sh
+  PLAYWRIGHT_MODULE=… npm run perf:gate -- --queue [--source <커밋>] [--label <이름>] [--idle-minutes 10] [게이트 옵션]
+  npm run perf:gate -- --queue-status          # 일과 판정
+  npm run perf:gate -- --queue-cancel <id>
+  ```
+  - 올리면 일을 `~/.fls-perf-queue/jobs/`에 두고, 실행기가 없으면 뒤에서 하나 띄운다.
+  - 실행기는 입력이 `--idle-minutes` 분(기본 10) 없고, 관문 밖 일이 1분 동안 코어의 15 % 이하일 때 시작한다.
+  - 게임은 그 커밋의 분리된 작업 트리에서 빌드한다(`package-lock.json`이 같으면 `node_modules`를 나눠 쓰고, 다르면 `npm ci`). 게이트 스크립트·장면 저장은 올린 체크아웃의 것을 쓴다.
+  - 도중에 입력이 들어오면 그 실행은 판정 아님이다. 판정 아님으로 끝난 일은 다시 줄에 서고, 세 번까지 돈다.
+  - 실행기가 사는 동안 `caffeinate -d -i`로 화면을 켜 둔다. 잠든 화면·잠긴 화면은 그리지 않기 때문이다.
+  - 결과는 올린 체크아웃의 `docs/verification/perf-gate/`에 평소처럼 쌓인다. 거기서 커밋한다. 실행기 기록은 `~/.fls-perf-queue/runner.log`다.
 - **종료 코드**: 0 통과 · 1 실패 · 2 판정 아님(기계·주사율·페이지 오류·끝나지 않은 실행·다른 일 CPU·잠금·창).
 
 ## 장면(각 3분, 차례로)
@@ -31,6 +44,13 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
 | `new-game-x3` | 새 게임 | 새 게임(튜토리얼 끔) | 3× | 없음 |
 | `season-x1` | 계절 전환 | 같은 도시 | 1× | 없음(3분에 계절 전환 3번과 자동 저장) |
 | `placement-x3` | 배치 끌기 | 같은 도시 | 3× | 길·집 도구와 구역 붓으로 끌기, 취소 |
+| `far-zoom-50-x5` | 먼 줌 0.5 | 같은 도시 | 5× | 없음. 휠로 최소 줌까지(0.5에서 정확히 멈춘다) |
+| `far-zoom-40-x5` | 먼 줌 0.4 | 같은 도시 | 5× | 없음. 지금은 **판정 아님(도달 불가)**: 게임의 최소 줌(`src/render/camera.ts` `MIN_ZOOM`)이 0.5다 |
+
+- **먼 줌**: 줌은 게임의 휠 단계(바깥 ×0.9, 안쪽 ×1.1, 화면 가운데)로 맞춘다.
+  - 줌 키(−/=)는 초점이 세계에 있을 때만 먹고, 배속 단추를 누른 뒤에는 초점이 단추에 있다.
+  - 빌드한 트리의 `MIN_ZOOM`을 읽는다. 목표가 그 아래면 그 장면은 판정 아님이다. 그 위면 최소까지 내린 뒤 ×1.1 단계로 가장 가까이 올린다.
+  - 휠 60번이면 0.5에서 정확히 멈춘다(증명 포트로 확인, 2026-09-30).
 
 모달(계절 결산 카드 등)이 뜨면 약 3초 뒤 닫고 배속을 되돌린다(SMOOTH-1과 같다).
 
@@ -71,12 +91,23 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
 | 2026-09-29 19:41 | `bbdf4f34` | 판정 아님 | big-town-x5 판정 아님 · new-game-x3 판정 아님 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-29-1941-bbdf4f34](2026-09-29-1941-bbdf4f34.md) |
 | 2026-09-29 19:44 | `353e5619` | 판정 아님 | big-town-x5 실패 · new-game-x3 판정 아님 · season-x1 실패 · placement-x3 판정 아님 | [2026-09-29-1944-353e5619](2026-09-29-1944-353e5619.md) |
 | 2026-09-29 19:58 | `353e5619`* | 판정 아님 | new-game-x3 판정 아님 · placement-x3 실패 | [2026-09-29-1958-353e5619](2026-09-29-1958-353e5619.md) |
+| 2026-09-29 22:22 | `c8937883` | 판정 아님 | big-town-x5 판정 아님 · new-game-x3 판정 아님 · season-x1 판정 아님 · placement-x3 통과 | [2026-09-29-2222-c8937883](2026-09-29-2222-c8937883.md) |
+| 2026-09-29 22:56 | `08da9556` | 판정 아님 | big-town-x5 판정 아님 · new-game-x3 실패 · season-x1 통과 · placement-x3 실패 | [2026-09-29-2256-08da9556](2026-09-29-2256-08da9556.md) |
+| 2026-09-29 23:18 | `f9b84918` | 실패 | big-town-x5 실패 · new-game-x3 통과 · season-x1 실패 · placement-x3 통과 | [2026-09-29-2318-f9b84918](2026-09-29-2318-f9b84918.md) |
+| 2026-09-29 23:36 | `c53a3815` | 실패 | big-town-x5 통과 · new-game-x3 통과 · season-x1 통과 · placement-x3 실패 | [2026-09-29-2336-c53a3815](2026-09-29-2336-c53a3815.md) |
+| 2026-09-29 23:50 | `d1dcff54` | 판정 아님 | big-town-x5 실패 · new-game-x3 판정 아님 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-29-2350-d1dcff54](2026-09-29-2350-d1dcff54.md) |
+| 2026-09-29 23:54 | `d1dcff54`* | 판정 아님 | big-town-x5 실패 · new-game-x3 판정 아님 · season-x1 통과 · placement-x3 판정 아님 | [2026-09-29-2354-d1dcff54](2026-09-29-2354-d1dcff54.md) |
+| 2026-09-30 01:21 | `924b7cb5` | 판정 아님 | big-town-x5 판정 아님 · new-game-x3 실패 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0121-924b7cb5](2026-09-30-0121-924b7cb5.md) |
+
 | 2026-09-29 20:14 | `b75574ce` | 판정 아님(SMOOTH-2E 브랜치; 렌더 세션의 측정과 겹침, 새 게임 창이 1.54분만 그려짐) | big-town-x5 실패 · new-game-x3 판정 아님 · season-x1 실패 · placement-x3 판정 아님 | [2026-09-29-2014-b75574ce](2026-09-29-2014-b75574ce.md) |
 | 2026-09-29 20:54 | `f5ae40ec` | 판정 아님(본선, 회귀 없음 비교) | big-town-x5 판정 아님 · new-game-x3 판정 아님 · season-x1 판정 아님 · placement-x3 실패 | [2026-09-29-2054-f5ae40ec](2026-09-29-2054-f5ae40ec.md) |
 | 2026-09-29 21:14 | `f5ae40ec`* | 판정 아님(본선) | big-town-x5 판정 아님 · new-game-x3 판정 아님 · season-x1 판정 아님 · placement-x3 실패 | [2026-09-29-2114-f5ae40ec](2026-09-29-2114-f5ae40ec.md) |
 | 2026-09-29 21:34 | `b75574ce`* | 판정 아님(SMOOTH-2E 브랜치) | big-town-x5 판정 아님 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2134-b75574ce](2026-09-29-2134-b75574ce.md) |
 | 2026-09-29 21:53 | `b75574ce`* | 실패(SMOOTH-2E 브랜치 — 회귀 없음 비교의 유효한 한 벌) | big-town-x5 실패 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2153-b75574ce](2026-09-29-2153-b75574ce.md) |
 | 2026-09-29 22:08 | `f5ae40ec`* | 실패(본선 — 회귀 없음 비교의 유효한 한 벌) | big-town-x5 실패 · new-game-x3 실패 · season-x1 실패 · placement-x3 실패 | [2026-09-29-2208-f5ae40ec](2026-09-29-2208-f5ae40ec.md) |
+| 2026-09-30 08:22 | `a1b5696b` | 판정 아님 | big-town-x5 판정 아님 · new-game-x3 통과 · season-x1 실패 · placement-x3 통과 | [2026-09-30-0822-a1b5696b](2026-09-30-0822-a1b5696b.md) |
+| 2026-09-30 08:48 | `4c2b3780` | 판정 아님 | season-x1 판정 아님 | [2026-09-30-0848-4c2b3780](2026-09-30-0848-4c2b3780.md) |
+
 | 2026-09-30 00:10 | `5ac904f0` | 판정 아님(본선, FIX-10 회귀 없음 비교; 이 세션의 DGX 동기화가 겹침) | big-town-x5 실패 · new-game-x3 실패 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0010-5ac904f0](2026-09-30-0010-5ac904f0.md) |
 | 2026-09-30 00:24 | `bcee3d90` | 판정 아님(FIX-10 브랜치) | big-town-x5 실패 · new-game-x3 통과 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0024-bcee3d90](2026-09-30-0024-bcee3d90.md) |
 | 2026-09-30 00:38 | `5ac904f0`* | 판정 아님(본선) | big-town-x5 판정 아님 · new-game-x3 통과 · season-x1 판정 아님 · placement-x3 실패 | [2026-09-30-0038-5ac904f0](2026-09-30-0038-5ac904f0.md) |
@@ -86,3 +117,5 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
 | 2026-09-30 01:13 | `5ac904f0`* | 판정 아님(본선, 두 장면만) | big-town-x5 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0113-5ac904f0](2026-09-30-0113-5ac904f0.md) |
 | 2026-09-30 02:17 | `bcee3d90`* | 판정 아님(FIX-10 브랜치, 두 장면만; 이 Mac의 다른 일) | big-town-x5 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0217-bcee3d90](2026-09-30-0217-bcee3d90.md) |
 | 2026-09-30 02:25 | `5ac904f0`* | 실패(본선, 두 장면만) | big-town-x5 실패 · placement-x3 실패 | [2026-09-30-0225-5ac904f0](2026-09-30-0225-5ac904f0.md) |
+| 2026-09-30 11:29 | `1168de6c` | 판정 아님 | big-town-x5 판정 아님 · new-game-x3 실패 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-1129-1168de6c](2026-09-30-1129-1168de6c.md) |
+| 2026-09-30 12:07 | `5f63c87f` | 판정 아님 | big-town-x5 실패 · new-game-x3 통과 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-1207-5f63c87f](2026-09-30-1207-5f63c87f.md) |

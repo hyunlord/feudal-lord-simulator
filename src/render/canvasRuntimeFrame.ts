@@ -1,3 +1,4 @@
+import { canvasBudget } from "./canvasBudget";
 import type { Walker } from "../agents/walker.types";
 import type { GameState, OverlayMode } from "../engine/engine.types";
 import type { TileCoordinate } from "../world/grid";
@@ -54,11 +55,14 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   palisadeCeremonyStartedAtMs?: number | null;
   /** INSTALL-23b: false while the game is paused (the village life's clock holds). */
   running?: boolean;
+  /** The frame's wall-clock time; tools and tests pass a fixed one (NAT-2: the wind, water and village life run on it). */
+  nowMs?: number;
 }>): void {
   const probe = renderStageProbe.current;
   probe?.frameStart();
+  canvasBudget.beginFrame(); // SMOOTH-2R: the canvas caches' byte cap, once per frame
   if (boundaryV2Enabled()) beginGroundSceneFrame();
-  const nowMs = performance.now();
+  const nowMs = input.nowMs ?? performance.now();
   if (!isPlacementFeedbackVisible(input.refs.feedbackRef.current, nowMs)) {
     input.refs.feedbackRef.current = null;
   }

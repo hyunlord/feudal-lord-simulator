@@ -11,6 +11,10 @@ export const LEDGER_ACTOR_LABELS: Readonly<Record<string, string>> = {
   parish: "교구",
   settlers: "새 이주민",
   labourers: "노동자",
+  // UI-10 (F4-A, F5-A): the town's charter money and fee farm, the heir's relief, the nave.
+  town: "도시 공동체",
+  overlord: "상위 영주",
+  bishop: "주교",
 };
 
 export const LEDGER_ACCOUNT_LABELS = {

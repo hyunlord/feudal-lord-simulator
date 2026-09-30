@@ -1,0 +1,1085 @@
+check,scope,metric,value,threshold,status,note
+1,add_firewood,canvas_matches_reference,1.0,1,PASS,
+4,add_firewood,halo_ratio,0.17777777777777778,<=0.01,FAIL,bad=16; edge=90; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,add_firewood,all_partial_alpha_difference_ratio,0.2072072072072072,diagnostic only,DIAGNOSTIC,bad=23; partial=111; includes translucent interiors; excluded from gate
+7,add_firewood,brightness_gradient_degrees,-122.24856858314294,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=3.682414093431653; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,add_lean_to,canvas_matches_reference,1.0,1,PASS,
+4,add_lean_to,halo_ratio,0.05855855855855856,<=0.01,FAIL,bad=13; edge=222; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,add_lean_to,all_partial_alpha_difference_ratio,0.07368421052631578,diagnostic only,DIAGNOSTIC,bad=21; partial=285; includes translucent interiors; excluded from gate
+7,add_lean_to,brightness_gradient_degrees,-162.70476727115084,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.783744506465745; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,add_porch,canvas_matches_reference,1.0,1,PASS,
+4,add_porch,halo_ratio,0.256,<=0.01,FAIL,bad=32; edge=125; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,add_porch,all_partial_alpha_difference_ratio,0.23376623376623376,diagnostic only,DIAGNOSTIC,bad=36; partial=154; includes translucent interiors; excluded from gate
+7,add_porch,brightness_gradient_degrees,30.198029400175816,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=2.091288626745918; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,add_shutters,canvas_matches_reference,1.0,1,PASS,
+4,add_shutters,halo_ratio,0.06666666666666667,<=0.01,FAIL,bad=6; edge=90; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,add_shutters,all_partial_alpha_difference_ratio,0.0718562874251497,diagnostic only,DIAGNOSTIC,bad=12; partial=167; includes translucent interiors; excluded from gate
+7,add_shutters,brightness_gradient_degrees,143.7071173462966,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=2.585656661237937; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,add_steps,canvas_matches_reference,1.0,1,PASS,
+4,add_steps,halo_ratio,0.1625,<=0.01,FAIL,bad=13; edge=80; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,add_steps,all_partial_alpha_difference_ratio,0.14782608695652175,diagnostic only,DIAGNOSTIC,bad=17; partial=115; includes translucent interiors; excluded from gate
+7,add_steps,brightness_gradient_degrees,138.2835080686618,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=2.47947994160534; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,body_boarded,canvas_matches_reference,1.0,1,PASS,
+4,body_boarded,halo_ratio,0.3103448275862069,<=0.01,FAIL,bad=171; edge=551; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,body_boarded,all_partial_alpha_difference_ratio,0.3005390835579515,diagnostic only,DIAGNOSTIC,bad=223; partial=742; includes translucent interiors; excluded from gate
+7,body_boarded,brightness_gradient_degrees,177.8540661671799,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.23970868696781555; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,body_cracked,canvas_matches_reference,1.0,1,PASS,
+4,body_cracked,halo_ratio,,<=0.01,NOT_VERIFIED,bad=0; edge=494; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,body_cracked,all_partial_alpha_difference_ratio,,diagnostic only,DIAGNOSTIC,bad=0; partial=494; includes translucent interiors; excluded from gate
+7,body_cracked,brightness_gradient_degrees,,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.0; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,body_curved,canvas_matches_reference,1.0,1,PASS,
+4,body_curved,halo_ratio,0.39087947882736157,<=0.01,FAIL,bad=240; edge=614; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,body_curved,all_partial_alpha_difference_ratio,0.36522911051212936,diagnostic only,DIAGNOSTIC,bad=271; partial=742; includes translucent interiors; excluded from gate
+7,body_curved,brightness_gradient_degrees,179.22175092344747,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.17007102421452946; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,body_scaffold,canvas_matches_reference,1.0,1,PASS,
+4,body_scaffold,halo_ratio,0.2902654867256637,<=0.01,FAIL,bad=328; edge=1130; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,body_scaffold,all_partial_alpha_difference_ratio,0.28793225123500354,diagnostic only,DIAGNOSTIC,bad=408; partial=1417; includes translucent interiors; excluded from gate
+7,body_scaffold,brightness_gradient_degrees,110.85257470689906,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=1.8176741181289338; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,body_square,canvas_matches_reference,1.0,1,PASS,
+4,body_square,halo_ratio,0.3702479338842975,<=0.01,FAIL,bad=224; edge=605; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,body_square,all_partial_alpha_difference_ratio,0.3587994542974079,diagnostic only,DIAGNOSTIC,bad=263; partial=733; includes translucent interiors; excluded from gate
+7,body_square,brightness_gradient_degrees,-130.24115734915955,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.3964092177966018; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,body_vertical,canvas_matches_reference,1.0,1,PASS,
+4,body_vertical,halo_ratio,0.45166402535657685,<=0.01,FAIL,bad=285; edge=631; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,body_vertical,all_partial_alpha_difference_ratio,0.4440052700922266,diagnostic only,DIAGNOSTIC,bad=337; partial=759; includes translucent interiors; excluded from gate
+7,body_vertical,brightness_gradient_degrees,-134.0831910056806,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.434965827982552; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,roof_fresh,canvas_matches_reference,1.0,1,PASS,
+4,roof_fresh,halo_ratio,0.8550247116968699,<=0.01,FAIL,bad=519; edge=607; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,roof_fresh,all_partial_alpha_difference_ratio,0.7600487210718636,diagnostic only,DIAGNOSTIC,bad=624; partial=821; includes translucent interiors; excluded from gate
+7,roof_fresh,brightness_gradient_degrees,,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.0; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,roof_moss,canvas_matches_reference,1.0,1,PASS,
+4,roof_moss,halo_ratio,0.016194331983805668,<=0.01,FAIL,bad=12; edge=741; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,roof_moss,all_partial_alpha_difference_ratio,0.026159334126040427,diagnostic only,DIAGNOSTIC,bad=22; partial=841; includes translucent interiors; excluded from gate
+7,roof_moss,brightness_gradient_degrees,,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.0; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,roof_snow,canvas_matches_reference,1.0,1,PASS,
+4,roof_snow,halo_ratio,0.08829174664107485,<=0.01,FAIL,bad=92; edge=1042; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,roof_snow,all_partial_alpha_difference_ratio,0.0699619771863118,diagnostic only,DIAGNOSTIC,bad=92; partial=1315; includes translucent interiors; excluded from gate
+7,roof_snow,brightness_gradient_degrees,-99.70988856390268,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.0680217463808948; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,roof_soot,canvas_matches_reference,1.0,1,PASS,
+4,roof_soot,halo_ratio,,<=0.01,NOT_VERIFIED,bad=0; edge=964; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,roof_soot,all_partial_alpha_difference_ratio,,diagnostic only,DIAGNOSTIC,bad=0; partial=2218; includes translucent interiors; excluded from gate
+7,roof_soot,brightness_gradient_degrees,,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.0; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,roof_stone,canvas_matches_reference,1.0,1,PASS,
+4,roof_stone,halo_ratio,0.27884615384615385,<=0.01,FAIL,bad=145; edge=520; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,roof_stone,all_partial_alpha_difference_ratio,0.2866779089376054,diagnostic only,DIAGNOSTIC,bad=170; partial=593; includes translucent interiors; excluded from gate
+7,roof_stone,brightness_gradient_degrees,-128.27332679305326,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.21516909976056697; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,roof_thatch,canvas_matches_reference,1.0,1,PASS,
+4,roof_thatch,halo_ratio,0.34807692307692306,<=0.01,FAIL,bad=181; edge=520; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,roof_thatch,all_partial_alpha_difference_ratio,0.31703204047217537,diagnostic only,DIAGNOSTIC,bad=188; partial=593; includes translucent interiors; excluded from gate
+7,roof_thatch,brightness_gradient_degrees,-99.07564976451391,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.4953923208335845; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,roof_tile,canvas_matches_reference,1.0,1,PASS,
+4,roof_tile,halo_ratio,0.25961538461538464,<=0.01,FAIL,bad=135; edge=520; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,roof_tile,all_partial_alpha_difference_ratio,0.28499156829679595,diagnostic only,DIAGNOSTIC,bad=169; partial=593; includes translucent interiors; excluded from gate
+7,roof_tile,brightness_gradient_degrees,147.60472604420048,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.1505062760780004; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,shadow,canvas_matches_reference,1.0,1,PASS,
+4,shadow,halo_ratio,,<=0.01,NOT_VERIFIED,bad=0; edge=439; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,shadow,all_partial_alpha_difference_ratio,,diagnostic only,DIAGNOSTIC,bad=0; partial=1554; includes translucent interiors; excluded from gate
+7,shadow,brightness_gradient_degrees,,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.0; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,sign_ale,canvas_matches_reference,1.0,1,PASS,
+4,sign_ale,halo_ratio,0.17543859649122806,<=0.01,FAIL,bad=30; edge=171; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,sign_ale,all_partial_alpha_difference_ratio,0.16055045871559634,diagnostic only,DIAGNOSTIC,bad=35; partial=218; includes translucent interiors; excluded from gate
+7,sign_ale,brightness_gradient_degrees,,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.0; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,sign_bread,canvas_matches_reference,1.0,1,PASS,
+4,sign_bread,halo_ratio,0.05194805194805195,<=0.01,FAIL,bad=4; edge=77; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,sign_bread,all_partial_alpha_difference_ratio,0.11965811965811966,diagnostic only,DIAGNOSTIC,bad=14; partial=117; includes translucent interiors; excluded from gate
+7,sign_bread,brightness_gradient_degrees,-77.57241799109624,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=5.0130658859814625; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,sign_merchant,canvas_matches_reference,1.0,1,PASS,
+4,sign_merchant,halo_ratio,0.11392405063291139,<=0.01,FAIL,bad=9; edge=79; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,sign_merchant,all_partial_alpha_difference_ratio,0.11650485436893204,diagnostic only,DIAGNOSTIC,bad=12; partial=103; includes translucent interiors; excluded from gate
+7,sign_merchant,brightness_gradient_degrees,-115.95496187884086,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=7.378621807313747; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,sign_smith,canvas_matches_reference,1.0,1,PASS,
+4,sign_smith,halo_ratio,0.14414414414414414,<=0.01,FAIL,bad=16; edge=111; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,sign_smith,all_partial_alpha_difference_ratio,0.1366906474820144,diagnostic only,DIAGNOSTIC,bad=19; partial=139; includes translucent interiors; excluded from gate
+7,sign_smith,brightness_gradient_degrees,,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=0.0; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,sign_textile,canvas_matches_reference,1.0,1,PASS,
+4,sign_textile,halo_ratio,0.1566265060240964,<=0.01,FAIL,bad=13; edge=83; support EDT<=2px; nearest alpha>=251; no opaque/edge means undefined
+4,sign_textile,all_partial_alpha_difference_ratio,0.11764705882352941,diagnostic only,DIAGNOSTIC,bad=14; partial=119; includes translucent interiors; excluded from gate
+7,sign_textile,brightness_gradient_degrees,-138.00449643705213,pairwise<=15 conditional proxy,PROXY,slope_luma_per_px=4.066553471775398; image x-right/y-down; upper-left=-135deg; material and geometry confounded
+1,all,engine_pivot,,same as source engine pivot,NOT_VERIFIED,Engine pivot metadata not supplied; full inherited image coordinates only.
+2,C001,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C001,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C002,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C002,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C003,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C003,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C004,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C004,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C005,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C005,double_dark_run_samples,21.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C006,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C006,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C007,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C007,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C008,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C008,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C009,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C009,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C010,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C010,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C011,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C011,double_dark_run_samples,21.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C012,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C012,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C013,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C013,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C014,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C014,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C015,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C015,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C016,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C016,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C017,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C017,double_dark_run_samples,21.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C018,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C018,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C019,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C019,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C020,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C020,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C021,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C021,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C022,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C022,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C023,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C023,double_dark_run_samples,21.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C024,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C024,double_dark_run_samples,30.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C025,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C025,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C026,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C026,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C027,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C027,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C028,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C028,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C029,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C029,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C030,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C030,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C031,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C031,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C032,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C032,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C033,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C033,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C034,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C034,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C035,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C035,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C036,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C036,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C037,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C037,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C038,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C038,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C039,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C039,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C040,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C040,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C041,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C041,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C042,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C042,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C043,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C043,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C044,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C044,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C045,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C045,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C046,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C046,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C047,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C047,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C048,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C048,double_dark_run_samples,31.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C049,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C049,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C050,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C050,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C051,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C051,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C052,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C052,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C053,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C053,double_dark_run_samples,20.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C054,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C054,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C055,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C055,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C056,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C056,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C057,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C057,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C058,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C058,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C059,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C059,double_dark_run_samples,20.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C060,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C060,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C061,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C061,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C062,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C062,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C063,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C063,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C064,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C064,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C065,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C065,double_dark_run_samples,20.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C066,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C066,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C067,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C067,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C068,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C068,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C069,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C069,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C070,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C070,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C071,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C071,double_dark_run_samples,20.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C072,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C072,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C073,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C073,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C074,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C074,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C075,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C075,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C076,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C076,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C077,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C077,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C078,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C078,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C079,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C079,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C080,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C080,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C081,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C081,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C082,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C082,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C083,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C083,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C084,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C084,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C085,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C085,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C086,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C086,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C087,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C087,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C088,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C088,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C089,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C089,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C090,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C090,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C091,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C091,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C092,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C092,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C093,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C093,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C094,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C094,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C095,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C095,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C096,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C096,double_dark_run_samples,24.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C097,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C097,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C098,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C098,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C099,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C099,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C100,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C100,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C101,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C101,double_dark_run_samples,21.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C102,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C102,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C103,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C103,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C104,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C104,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C105,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C105,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C106,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C106,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C107,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C107,double_dark_run_samples,21.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C108,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C108,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C109,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C109,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C110,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C110,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C111,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C111,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C112,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C112,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C113,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C113,double_dark_run_samples,21.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C114,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C114,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C115,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C115,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C116,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C116,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C117,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C117,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C118,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C118,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C119,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C119,double_dark_run_samples,21.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C120,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C120,double_dark_run_samples,29.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C121,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C121,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C122,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C122,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C123,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C123,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C124,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C124,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C125,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C125,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C126,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C126,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C127,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C127,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C128,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C128,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C129,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C129,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C130,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C130,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C131,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C131,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C132,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C132,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C133,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C133,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C134,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C134,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C135,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C135,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C136,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C136,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C137,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C137,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C138,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C138,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C139,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C139,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C140,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C140,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C141,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C141,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C142,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C142,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C143,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C143,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C144,uncovered_reference_interior_px,15.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C144,double_dark_run_samples,25.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C145,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C145,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C146,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C146,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C147,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C147,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C148,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C148,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C149,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C149,double_dark_run_samples,18.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C150,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C150,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C151,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C151,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C152,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C152,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C153,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C153,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C154,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C154,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C155,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C155,double_dark_run_samples,18.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C156,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C156,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C157,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C157,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C158,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C158,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C159,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C159,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C160,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C160,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C161,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C161,double_dark_run_samples,18.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C162,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C162,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C163,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C163,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C164,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C164,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C165,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C165,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C166,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C166,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C167,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C167,double_dark_run_samples,18.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C168,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C168,double_dark_run_samples,23.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C169,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C169,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C170,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C170,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C171,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C171,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C172,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C172,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C173,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C173,double_dark_run_samples,18.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C174,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C174,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C175,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C175,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C176,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C176,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C177,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C177,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C178,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C178,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C179,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C179,double_dark_run_samples,18.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C180,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C180,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C181,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C181,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C182,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C182,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C183,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C183,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C184,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C184,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C185,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C185,double_dark_run_samples,18.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C186,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C186,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C187,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C187,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C188,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C188,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C189,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C189,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C190,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C190,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C191,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C191,double_dark_run_samples,18.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C192,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C192,double_dark_run_samples,19.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C193,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C193,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C194,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C194,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C195,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C195,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C196,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C196,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C197,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C197,double_dark_run_samples,15.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C198,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C198,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C199,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C199,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C200,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C200,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C201,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C201,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C202,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C202,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C203,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C203,double_dark_run_samples,15.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C204,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C204,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C205,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C205,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C206,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C206,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C207,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C207,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C208,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C208,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C209,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C209,double_dark_run_samples,15.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C210,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C210,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C211,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C211,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C212,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C212,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C213,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C213,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C214,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C214,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C215,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C215,double_dark_run_samples,15.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+2,C216,uncovered_reference_interior_px,14.0,0,FAIL,"reference alpha>0 hull eroded2px AND refalpha>=250; 8759px; alpha sum, no shadow/addition"
+3,C216,double_dark_run_samples,17.0,not supplied,NOT_VERIFIED,116 normals; ±3px; luma<70; repeated run proxy not literal doubled-outline pixels
+5,roof_snow:final,overflow_px,0.0,0,PASS,
+5,roof_snow:preclip,overflow_px,269.0,0,FAIL,
+5,roof_moss:final,overflow_px,0.0,0,PASS,
+5,roof_moss:preclip,overflow_px,327.0,0,FAIL,
+5,roof_fresh:final,overflow_px,0.0,0,PASS,
+5,roof_fresh:preclip,overflow_px,236.0,0,FAIL,
+5,roof_soot:final,overflow_px,0.0,0,PASS,
+5,roof_soot:preclip,overflow_px,534.0,0,FAIL,
+5,body_boarded:final,overflow_px,0.0,0,PASS,
+5,body_boarded:preclip,overflow_px,122.0,0,FAIL,
+5,body_cracked:final,overflow_px,0.0,0,PASS,
+5,body_cracked:preclip,overflow_px,66.0,0,FAIL,
+5,body_scaffold:final,overflow_px,0.0,0,PASS,
+5,body_scaffold:preclip,overflow_px,495.0,0,FAIL,
+6,roof_thatch,snow_support_coverage,0.7631032094204572,0.60..0.80,PASS,Any nonzero snow alpha; not material-white classification
+6,roof_thatch,effective_bright_snow_coverage,0.6435003463403371,0.60..0.80,PASS,"Operational snow proxy: alpha>=128 AND luma>=180; thresholds define bright visible paint, not physical snow identification."
+6,roof_tile,snow_support_coverage,0.7631032094204572,0.60..0.80,PASS,Any nonzero snow alpha; not material-white classification
+6,roof_tile,effective_bright_snow_coverage,0.6435003463403371,0.60..0.80,PASS,"Operational snow proxy: alpha>=128 AND luma>=180; thresholds define bright visible paint, not physical snow identification."
+6,roof_stone,snow_support_coverage,0.7631032094204572,0.60..0.80,PASS,Any nonzero snow alpha; not material-white classification
+6,roof_stone,effective_bright_snow_coverage,0.6435003463403371,0.60..0.80,PASS,"Operational snow proxy: alpha>=128 AND luma>=180; thresholds define bright visible paint, not physical snow identification."
+7,add_firewood:add_lean_to,gradient_angle_difference,40.4561986880079,<=15 proxy only,PROXY_FAIL,
+8,add_firewood:add_lean_to,luma_histogram_L1,0.5617622998714502,not supplied,NOT_VERIFIED,
+8,add_firewood:add_lean_to,saturation_histogram_L1,1.1557121153942471,not supplied,NOT_VERIFIED,
+8,add_firewood:add_lean_to,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:add_porch,gradient_angle_difference,152.44659798331875,<=15 proxy only,PROXY_FAIL,
+8,add_firewood:add_porch,luma_histogram_L1,0.5250735002814905,not supplied,NOT_VERIFIED,
+8,add_firewood:add_porch,saturation_histogram_L1,0.5319960799849872,not supplied,NOT_VERIFIED,
+8,add_firewood:add_porch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:add_shutters,gradient_angle_difference,94.04431407056046,<=15 proxy only,PROXY_FAIL,
+8,add_firewood:add_shutters,luma_histogram_L1,0.7151675331675679,not supplied,NOT_VERIFIED,
+8,add_firewood:add_shutters,saturation_histogram_L1,0.7229225713341795,not supplied,NOT_VERIFIED,
+8,add_firewood:add_shutters,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:add_steps,gradient_angle_difference,99.46792334819526,<=15 proxy only,PROXY_FAIL,
+8,add_firewood:add_steps,luma_histogram_L1,0.6432595879832061,not supplied,NOT_VERIFIED,
+8,add_firewood:add_steps,saturation_histogram_L1,1.776893123626792,not supplied,NOT_VERIFIED,
+8,add_firewood:add_steps,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:body_curved,gradient_angle_difference,58.529680493409614,<=15 proxy only,PROXY_FAIL,
+8,add_firewood:body_curved,luma_histogram_L1,0.7129314995002286,not supplied,NOT_VERIFIED,
+8,add_firewood:body_curved,saturation_histogram_L1,0.8969315699870872,not supplied,NOT_VERIFIED,
+8,add_firewood:body_curved,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:body_square,gradient_angle_difference,7.99258876601661,<=15 proxy only,PROXY_PASS,
+8,add_firewood:body_square,luma_histogram_L1,0.8814101685355851,not supplied,NOT_VERIFIED,
+8,add_firewood:body_square,saturation_histogram_L1,1.1475832004919375,not supplied,NOT_VERIFIED,
+8,add_firewood:body_square,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:body_vertical,gradient_angle_difference,11.834622422537649,<=15 proxy only,PROXY_PASS,
+8,add_firewood:body_vertical,luma_histogram_L1,0.672730494475103,not supplied,NOT_VERIFIED,
+8,add_firewood:body_vertical,saturation_histogram_L1,0.921353308525875,not supplied,NOT_VERIFIED,
+8,add_firewood:body_vertical,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:roof_stone,gradient_angle_difference,6.024758209910317,<=15 proxy only,PROXY_PASS,
+8,add_firewood:roof_stone,luma_histogram_L1,0.74291129071748,not supplied,NOT_VERIFIED,
+8,add_firewood:roof_stone,saturation_histogram_L1,1.748809890908321,not supplied,NOT_VERIFIED,
+8,add_firewood:roof_stone,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:roof_thatch,gradient_angle_difference,23.17291881862903,<=15 proxy only,PROXY_FAIL,
+8,add_firewood:roof_thatch,luma_histogram_L1,1.245352387430966,not supplied,NOT_VERIFIED,
+8,add_firewood:roof_thatch,saturation_histogram_L1,0.7210850142204306,not supplied,NOT_VERIFIED,
+8,add_firewood:roof_thatch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:roof_tile,gradient_angle_difference,90.14670537265658,<=15 proxy only,PROXY_FAIL,
+8,add_firewood:roof_tile,luma_histogram_L1,0.7053386500582979,not supplied,NOT_VERIFIED,
+8,add_firewood:roof_tile,saturation_histogram_L1,1.5780826703970205,not supplied,NOT_VERIFIED,
+8,add_firewood:roof_tile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,add_firewood:sign_ale,luma_histogram_L1,0.7713762611507149,not supplied,NOT_VERIFIED,
+8,add_firewood:sign_ale,saturation_histogram_L1,0.48739823146741457,not supplied,NOT_VERIFIED,
+8,add_firewood:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:sign_bread,gradient_angle_difference,44.676150592046696,<=15 proxy only,PROXY_FAIL,
+8,add_firewood:sign_bread,luma_histogram_L1,0.4026012415016258,not supplied,NOT_VERIFIED,
+8,add_firewood:sign_bread,saturation_histogram_L1,0.8121982461326238,not supplied,NOT_VERIFIED,
+8,add_firewood:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:sign_merchant,gradient_angle_difference,6.2936067043020785,<=15 proxy only,PROXY_PASS,
+8,add_firewood:sign_merchant,luma_histogram_L1,0.554809978033882,not supplied,NOT_VERIFIED,
+8,add_firewood:sign_merchant,saturation_histogram_L1,0.4419703306953931,not supplied,NOT_VERIFIED,
+8,add_firewood:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,add_firewood:sign_smith,luma_histogram_L1,0.5858839652809502,not supplied,NOT_VERIFIED,
+8,add_firewood:sign_smith,saturation_histogram_L1,0.7378940155322065,not supplied,NOT_VERIFIED,
+8,add_firewood:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_firewood:sign_textile,gradient_angle_difference,15.755927853909185,<=15 proxy only,PROXY_FAIL,
+8,add_firewood:sign_textile,luma_histogram_L1,1.0465721464465183,not supplied,NOT_VERIFIED,
+8,add_firewood:sign_textile,saturation_histogram_L1,1.6699868389566883,not supplied,NOT_VERIFIED,
+8,add_firewood:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:add_porch,gradient_angle_difference,167.09720332867334,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:add_porch,luma_histogram_L1,0.287809652472395,not supplied,NOT_VERIFIED,
+8,add_lean_to:add_porch,saturation_histogram_L1,0.7730662659737253,not supplied,NOT_VERIFIED,
+8,add_lean_to:add_porch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:add_shutters,gradient_angle_difference,53.58811538255259,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:add_shutters,luma_histogram_L1,0.3962455023048891,not supplied,NOT_VERIFIED,
+8,add_lean_to:add_shutters,saturation_histogram_L1,0.9197599696513352,not supplied,NOT_VERIFIED,
+8,add_lean_to:add_shutters,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:add_steps,gradient_angle_difference,59.01172466018738,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:add_steps,luma_histogram_L1,0.881808114366254,not supplied,NOT_VERIFIED,
+8,add_lean_to:add_steps,saturation_histogram_L1,1.9900332225913622,not supplied,NOT_VERIFIED,
+8,add_lean_to:add_steps,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:body_curved,gradient_angle_difference,18.073481805401684,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:body_curved,luma_histogram_L1,0.738283907204571,not supplied,NOT_VERIFIED,
+8,add_lean_to:body_curved,saturation_histogram_L1,1.1857720838325134,not supplied,NOT_VERIFIED,
+8,add_lean_to:body_curved,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:body_square,gradient_angle_difference,32.46360992199129,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:body_square,luma_histogram_L1,0.8844433856487728,not supplied,NOT_VERIFIED,
+8,add_lean_to:body_square,saturation_histogram_L1,1.0325907665536804,not supplied,NOT_VERIFIED,
+8,add_lean_to:body_square,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:body_vertical,gradient_angle_difference,28.621576265470253,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:body_vertical,luma_histogram_L1,0.7503626136140782,not supplied,NOT_VERIFIED,
+8,add_lean_to:body_vertical,saturation_histogram_L1,1.1538219572009143,not supplied,NOT_VERIFIED,
+8,add_lean_to:body_vertical,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:roof_stone,gradient_angle_difference,34.431440478097585,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:roof_stone,luma_histogram_L1,0.9490216528698562,not supplied,NOT_VERIFIED,
+8,add_lean_to:roof_stone,saturation_histogram_L1,1.8885770108767455,not supplied,NOT_VERIFIED,
+8,add_lean_to:roof_stone,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:roof_thatch,gradient_angle_difference,63.62911750663693,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:roof_thatch,luma_histogram_L1,1.5403741544513636,not supplied,NOT_VERIFIED,
+8,add_lean_to:roof_thatch,saturation_histogram_L1,1.3432304048396313,not supplied,NOT_VERIFIED,
+8,add_lean_to:roof_thatch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:roof_tile,gradient_angle_difference,49.69050668464865,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:roof_tile,luma_histogram_L1,0.3980253688652608,not supplied,NOT_VERIFIED,
+8,add_lean_to:roof_tile,saturation_histogram_L1,0.7097778714967315,not supplied,NOT_VERIFIED,
+8,add_lean_to:roof_tile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,add_lean_to:sign_ale,luma_histogram_L1,0.9955703211517165,not supplied,NOT_VERIFIED,
+8,add_lean_to:sign_ale,saturation_histogram_L1,0.9258028792912514,not supplied,NOT_VERIFIED,
+8,add_lean_to:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:sign_bread,gradient_angle_difference,85.1323492800546,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:sign_bread,luma_histogram_L1,0.435671943195883,not supplied,NOT_VERIFIED,
+8,add_lean_to:sign_bread,saturation_histogram_L1,0.5423099472347078,not supplied,NOT_VERIFIED,
+8,add_lean_to:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:sign_merchant,gradient_angle_difference,46.74980539230998,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:sign_merchant,luma_histogram_L1,0.45990411204169734,not supplied,NOT_VERIFIED,
+8,add_lean_to:sign_merchant,saturation_histogram_L1,1.4103686315077486,not supplied,NOT_VERIFIED,
+8,add_lean_to:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,add_lean_to:sign_smith,luma_histogram_L1,0.6981274539414075,not supplied,NOT_VERIFIED,
+8,add_lean_to:sign_smith,saturation_histogram_L1,1.064557535487768,not supplied,NOT_VERIFIED,
+8,add_lean_to:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_lean_to:sign_textile,gradient_angle_difference,24.700270834098717,<=15 proxy only,PROXY_FAIL,
+8,add_lean_to:sign_textile,luma_histogram_L1,1.396594684385382,not supplied,NOT_VERIFIED,
+8,add_lean_to:sign_textile,saturation_histogram_L1,1.9039313399778517,not supplied,NOT_VERIFIED,
+8,add_lean_to:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:add_shutters,gradient_angle_difference,113.50908794612079,<=15 proxy only,PROXY_FAIL,
+8,add_porch:add_shutters,luma_histogram_L1,0.47816910508406435,not supplied,NOT_VERIFIED,
+8,add_porch:add_shutters,saturation_histogram_L1,0.7339660296630246,not supplied,NOT_VERIFIED,
+8,add_porch:add_shutters,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:add_steps,gradient_angle_difference,108.08547866848599,<=15 proxy only,PROXY_FAIL,
+8,add_porch:add_steps,luma_histogram_L1,0.893894487255483,not supplied,NOT_VERIFIED,
+8,add_porch:add_steps,saturation_histogram_L1,1.965727218839252,not supplied,NOT_VERIFIED,
+8,add_porch:add_steps,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:body_curved,gradient_angle_difference,149.02372152327166,<=15 proxy only,PROXY_FAIL,
+8,add_porch:body_curved,luma_histogram_L1,0.8810164156264929,not supplied,NOT_VERIFIED,
+8,add_porch:body_curved,saturation_histogram_L1,1.0261581355042995,not supplied,NOT_VERIFIED,
+8,add_porch:body_curved,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:body_square,gradient_angle_difference,160.43918674933536,<=15 proxy only,PROXY_FAIL,
+8,add_porch:body_square,luma_histogram_L1,1.0304848271200473,not supplied,NOT_VERIFIED,
+8,add_porch:body_square,saturation_histogram_L1,1.085597487734595,not supplied,NOT_VERIFIED,
+8,add_porch:body_square,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:body_vertical,gradient_angle_difference,164.2812204058564,<=15 proxy only,PROXY_FAIL,
+8,add_porch:body_vertical,luma_histogram_L1,0.8866329898557297,not supplied,NOT_VERIFIED,
+8,add_porch:body_vertical,saturation_histogram_L1,1.071745511307923,not supplied,NOT_VERIFIED,
+8,add_porch:body_vertical,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:roof_stone,gradient_angle_difference,158.4713561932291,<=15 proxy only,PROXY_FAIL,
+8,add_porch:roof_stone,luma_histogram_L1,0.951565824515314,not supplied,NOT_VERIFIED,
+8,add_porch:roof_stone,saturation_histogram_L1,1.877400481052414,not supplied,NOT_VERIFIED,
+8,add_porch:roof_stone,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:roof_thatch,gradient_angle_difference,129.27367916468972,<=15 proxy only,PROXY_FAIL,
+8,add_porch:roof_thatch,luma_histogram_L1,1.5344544776013387,not supplied,NOT_VERIFIED,
+8,add_porch:roof_thatch,saturation_histogram_L1,0.7854923684017847,not supplied,NOT_VERIFIED,
+8,add_porch:roof_thatch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:roof_tile,gradient_angle_difference,117.40669664402466,<=15 proxy only,PROXY_FAIL,
+8,add_porch:roof_tile,luma_histogram_L1,0.5133447786361147,not supplied,NOT_VERIFIED,
+8,add_porch:roof_tile,saturation_histogram_L1,1.3899682758937226,not supplied,NOT_VERIFIED,
+8,add_porch:roof_tile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,add_porch:sign_ale,luma_histogram_L1,1.0723406992827045,not supplied,NOT_VERIFIED,
+8,add_porch:sign_ale,saturation_histogram_L1,0.4788188748431922,not supplied,NOT_VERIFIED,
+8,add_porch:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:sign_bread,gradient_angle_difference,107.77044739127206,<=15 proxy only,PROXY_FAIL,
+8,add_porch:sign_bread,luma_histogram_L1,0.4947251376345836,not supplied,NOT_VERIFIED,
+8,add_porch:sign_bread,saturation_histogram_L1,0.48252108588940423,not supplied,NOT_VERIFIED,
+8,add_porch:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:sign_merchant,gradient_angle_difference,146.15299127901665,<=15 proxy only,PROXY_FAIL,
+8,add_porch:sign_merchant,luma_histogram_L1,0.5362138792953512,not supplied,NOT_VERIFIED,
+8,add_porch:sign_merchant,saturation_histogram_L1,0.7401545456804233,not supplied,NOT_VERIFIED,
+8,add_porch:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,add_porch:sign_smith,luma_histogram_L1,0.6867219917012448,not supplied,NOT_VERIFIED,
+8,add_porch:sign_smith,saturation_histogram_L1,0.7704639758581667,not supplied,NOT_VERIFIED,
+8,add_porch:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_porch:sign_textile,gradient_angle_difference,168.20252583722794,<=15 proxy only,PROXY_FAIL,
+8,add_porch:sign_textile,luma_histogram_L1,1.3493627741553054,not supplied,NOT_VERIFIED,
+8,add_porch:sign_textile,saturation_histogram_L1,1.8394586050187711,not supplied,NOT_VERIFIED,
+8,add_porch:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:add_steps,gradient_angle_difference,5.423609277634796,<=15 proxy only,PROXY_PASS,
+8,add_shutters:add_steps,luma_histogram_L1,1.042556059857098,not supplied,NOT_VERIFIED,
+8,add_shutters:add_steps,saturation_histogram_L1,1.7490974999625517,not supplied,NOT_VERIFIED,
+8,add_shutters:add_steps,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:body_curved,gradient_angle_difference,35.514633577150875,<=15 proxy only,PROXY_FAIL,
+8,add_shutters:body_curved,luma_histogram_L1,0.9178994456791896,not supplied,NOT_VERIFIED,
+8,add_shutters:body_curved,saturation_histogram_L1,0.7416506396968662,not supplied,NOT_VERIFIED,
+8,add_shutters:body_curved,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:body_square,gradient_angle_difference,86.05172530454388,<=15 proxy only,PROXY_FAIL,
+8,add_shutters:body_square,luma_histogram_L1,1.0503887676752421,not supplied,NOT_VERIFIED,
+8,add_shutters:body_square,saturation_histogram_L1,0.9954637028806297,not supplied,NOT_VERIFIED,
+8,add_shutters:body_square,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:body_vertical,gradient_angle_difference,82.20969164802284,<=15 proxy only,PROXY_FAIL,
+8,add_shutters:body_vertical,luma_histogram_L1,0.9140084816544283,not supplied,NOT_VERIFIED,
+8,add_shutters:body_vertical,saturation_histogram_L1,0.7357818363705367,not supplied,NOT_VERIFIED,
+8,add_shutters:body_vertical,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:roof_stone,gradient_angle_difference,88.01955586065014,<=15 proxy only,PROXY_FAIL,
+8,add_shutters:roof_stone,luma_histogram_L1,1.1941170091485447,not supplied,NOT_VERIFIED,
+8,add_shutters:roof_stone,saturation_histogram_L1,1.597148723313707,not supplied,NOT_VERIFIED,
+8,add_shutters:roof_stone,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:roof_thatch,gradient_angle_difference,117.21723288918952,<=15 proxy only,PROXY_FAIL,
+8,add_shutters:roof_thatch,luma_histogram_L1,1.7403377097016133,not supplied,NOT_VERIFIED,
+8,add_shutters:roof_thatch,saturation_histogram_L1,1.0335622823700736,not supplied,NOT_VERIFIED,
+8,add_shutters:roof_thatch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:roof_tile,gradient_angle_difference,3.897608697903877,<=15 proxy only,PROXY_PASS,
+8,add_shutters:roof_tile,luma_histogram_L1,0.5774363843974436,not supplied,NOT_VERIFIED,
+8,add_shutters:roof_tile,saturation_histogram_L1,1.522651738351075,not supplied,NOT_VERIFIED,
+8,add_shutters:roof_tile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,add_shutters:sign_ale,luma_histogram_L1,1.0563021378181916,not supplied,NOT_VERIFIED,
+8,add_shutters:sign_ale,saturation_histogram_L1,0.7428985274000162,not supplied,NOT_VERIFIED,
+8,add_shutters:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:sign_bread,gradient_angle_difference,138.72046466260713,<=15 proxy only,PROXY_FAIL,
+8,add_shutters:sign_bread,luma_histogram_L1,0.5970780469050366,not supplied,NOT_VERIFIED,
+8,add_shutters:sign_bread,saturation_histogram_L1,0.5797770088427527,not supplied,NOT_VERIFIED,
+8,add_shutters:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:sign_merchant,gradient_angle_difference,100.33792077486254,<=15 proxy only,PROXY_FAIL,
+8,add_shutters:sign_merchant,luma_histogram_L1,0.6563827362575887,not supplied,NOT_VERIFIED,
+8,add_shutters:sign_merchant,saturation_histogram_L1,1.0490023413380851,not supplied,NOT_VERIFIED,
+8,add_shutters:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,add_shutters:sign_smith,luma_histogram_L1,0.8869927650204467,not supplied,NOT_VERIFIED,
+8,add_shutters:sign_smith,saturation_histogram_L1,0.6014469959106638,not supplied,NOT_VERIFIED,
+8,add_shutters:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_shutters:sign_textile,gradient_angle_difference,78.28838621665125,<=15 proxy only,PROXY_FAIL,
+8,add_shutters:sign_textile,luma_histogram_L1,1.5546836381611469,not supplied,NOT_VERIFIED,
+8,add_shutters:sign_textile,saturation_histogram_L1,1.547660240566815,not supplied,NOT_VERIFIED,
+8,add_shutters:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:body_curved,gradient_angle_difference,40.93824285478567,<=15 proxy only,PROXY_FAIL,
+8,add_steps:body_curved,luma_histogram_L1,0.9222575593119136,not supplied,NOT_VERIFIED,
+8,add_steps:body_curved,saturation_histogram_L1,1.8000764090769936,not supplied,NOT_VERIFIED,
+8,add_steps:body_curved,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:body_square,gradient_angle_difference,91.47533458217868,<=15 proxy only,PROXY_FAIL,
+8,add_steps:body_square,luma_histogram_L1,0.9553805508598961,not supplied,NOT_VERIFIED,
+8,add_steps:body_square,saturation_histogram_L1,1.7971812547026889,not supplied,NOT_VERIFIED,
+8,add_steps:body_square,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:body_vertical,gradient_angle_difference,87.63330092565764,<=15 proxy only,PROXY_FAIL,
+8,add_steps:body_vertical,luma_histogram_L1,0.9262753611087918,not supplied,NOT_VERIFIED,
+8,add_steps:body_vertical,saturation_histogram_L1,1.745527412388897,not supplied,NOT_VERIFIED,
+8,add_steps:body_vertical,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:roof_stone,gradient_angle_difference,93.44316513828494,<=15 proxy only,PROXY_FAIL,
+8,add_steps:roof_stone,luma_histogram_L1,0.4280139139238428,not supplied,NOT_VERIFIED,
+8,add_steps:roof_stone,saturation_histogram_L1,1.0269647830880382,not supplied,NOT_VERIFIED,
+8,add_steps:roof_stone,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:roof_thatch,gradient_angle_difference,122.64084216682431,<=15 proxy only,PROXY_FAIL,
+8,add_steps:roof_thatch,luma_histogram_L1,0.7394810439319262,not supplied,NOT_VERIFIED,
+8,add_steps:roof_thatch,saturation_histogram_L1,1.9397884180607383,not supplied,NOT_VERIFIED,
+8,add_steps:roof_thatch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:roof_tile,gradient_angle_difference,9.321217975538673,<=15 proxy only,PROXY_PASS,
+8,add_steps:roof_tile,luma_histogram_L1,0.8004815832047858,not supplied,NOT_VERIFIED,
+8,add_steps:roof_tile,saturation_histogram_L1,1.964182249144061,not supplied,NOT_VERIFIED,
+8,add_steps:roof_tile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,add_steps:sign_ale,luma_histogram_L1,1.2783650458069062,not supplied,NOT_VERIFIED,
+8,add_steps:sign_ale,saturation_histogram_L1,1.9120104701500051,not supplied,NOT_VERIFIED,
+8,add_steps:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:sign_bread,gradient_angle_difference,144.14407394024192,<=15 proxy only,PROXY_FAIL,
+8,add_steps:sign_bread,luma_histogram_L1,0.744928274340039,not supplied,NOT_VERIFIED,
+8,add_steps:sign_bread,saturation_histogram_L1,1.8694508106272811,not supplied,NOT_VERIFIED,
+8,add_steps:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:sign_merchant,gradient_angle_difference,105.76153005249733,<=15 proxy only,PROXY_FAIL,
+8,add_steps:sign_merchant,luma_histogram_L1,0.7368120901055033,not supplied,NOT_VERIFIED,
+8,add_steps:sign_merchant,saturation_histogram_L1,1.9201337584571117,not supplied,NOT_VERIFIED,
+8,add_steps:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,add_steps:sign_smith,luma_histogram_L1,1.0443722943722942,not supplied,NOT_VERIFIED,
+8,add_steps:sign_smith,saturation_histogram_L1,1.7781385281385282,not supplied,NOT_VERIFIED,
+8,add_steps:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,add_steps:sign_textile,gradient_angle_difference,83.71199549428604,<=15 proxy only,PROXY_FAIL,
+8,add_steps:sign_textile,luma_histogram_L1,0.7581168831168831,not supplied,NOT_VERIFIED,
+8,add_steps:sign_textile,saturation_histogram_L1,1.2662337662337664,not supplied,NOT_VERIFIED,
+8,add_steps:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_curved:body_square,gradient_angle_difference,50.537091727392976,<=15 proxy only,PROXY_FAIL,
+8,body_curved:body_square,luma_histogram_L1,0.2994127069522031,not supplied,NOT_VERIFIED,
+8,body_curved:body_square,saturation_histogram_L1,0.3848276530189402,not supplied,NOT_VERIFIED,
+8,body_curved:body_square,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_curved:body_vertical,gradient_angle_difference,46.69505807087194,<=15 proxy only,PROXY_FAIL,
+8,body_curved:body_vertical,luma_histogram_L1,0.21585817260861095,not supplied,NOT_VERIFIED,
+8,body_curved:body_vertical,saturation_histogram_L1,0.1476719267484902,not supplied,NOT_VERIFIED,
+8,body_curved:body_vertical,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_curved:roof_stone,gradient_angle_difference,52.50492228349924,<=15 proxy only,PROXY_FAIL,
+8,body_curved:roof_stone,luma_histogram_L1,0.9401739897294004,not supplied,NOT_VERIFIED,
+8,body_curved:roof_stone,saturation_histogram_L1,1.58845769171587,not supplied,NOT_VERIFIED,
+8,body_curved:roof_stone,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_curved:roof_thatch,gradient_angle_difference,81.70259931203861,<=15 proxy only,PROXY_FAIL,
+8,body_curved:roof_thatch,luma_histogram_L1,1.2289750010787583,not supplied,NOT_VERIFIED,
+8,body_curved:roof_thatch,saturation_histogram_L1,0.9963538739685032,not supplied,NOT_VERIFIED,
+8,body_curved:roof_thatch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_curved:roof_tile,gradient_angle_difference,31.617024879246998,<=15 proxy only,PROXY_FAIL,
+8,body_curved:roof_tile,luma_histogram_L1,0.8405065756538442,not supplied,NOT_VERIFIED,
+8,body_curved:roof_tile,saturation_histogram_L1,1.5656348093568595,not supplied,NOT_VERIFIED,
+8,body_curved:roof_tile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_curved:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,body_curved:sign_ale,luma_histogram_L1,0.9208631789741708,not supplied,NOT_VERIFIED,
+8,body_curved:sign_ale,saturation_histogram_L1,0.8621369252307232,not supplied,NOT_VERIFIED,
+8,body_curved:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_curved:sign_bread,gradient_angle_difference,103.20583108545628,<=15 proxy only,PROXY_FAIL,
+8,body_curved:sign_bread,luma_histogram_L1,0.60548622332237,not supplied,NOT_VERIFIED,
+8,body_curved:sign_bread,saturation_histogram_L1,0.898037687703174,not supplied,NOT_VERIFIED,
+8,body_curved:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_curved:sign_merchant,gradient_angle_difference,64.8232871977117,<=15 proxy only,PROXY_FAIL,
+8,body_curved:sign_merchant,luma_histogram_L1,0.6248356588984509,not supplied,NOT_VERIFIED,
+8,body_curved:sign_merchant,saturation_histogram_L1,1.1009074778555106,not supplied,NOT_VERIFIED,
+8,body_curved:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_curved:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,body_curved:sign_smith,luma_histogram_L1,0.7214857517312221,not supplied,NOT_VERIFIED,
+8,body_curved:sign_smith,saturation_histogram_L1,0.7603253458016754,not supplied,NOT_VERIFIED,
+8,body_curved:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_curved:sign_textile,gradient_angle_difference,42.7737526395004,<=15 proxy only,PROXY_FAIL,
+8,body_curved:sign_textile,luma_histogram_L1,1.0746952492276864,not supplied,NOT_VERIFIED,
+8,body_curved:sign_textile,saturation_histogram_L1,1.5469267484901619,not supplied,NOT_VERIFIED,
+8,body_curved:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_square:body_vertical,gradient_angle_difference,3.842033656521039,<=15 proxy only,PROXY_PASS,
+8,body_square:body_vertical,luma_histogram_L1,0.29208350169209085,not supplied,NOT_VERIFIED,
+8,body_square:body_vertical,saturation_histogram_L1,0.3681015615948582,not supplied,NOT_VERIFIED,
+8,body_square:body_vertical,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_square:roof_stone,gradient_angle_difference,1.9678305561062928,<=15 proxy only,PROXY_PASS,
+8,body_square:roof_stone,luma_histogram_L1,0.94904066487244,not supplied,NOT_VERIFIED,
+8,body_square:roof_stone,saturation_histogram_L1,1.6036423512758051,not supplied,NOT_VERIFIED,
+8,body_square:roof_stone,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_square:roof_thatch,gradient_angle_difference,31.16550758464564,<=15 proxy only,PROXY_FAIL,
+8,body_square:roof_thatch,luma_histogram_L1,1.1983838412037564,not supplied,NOT_VERIFIED,
+8,body_square:roof_thatch,saturation_histogram_L1,1.3059496862498206,not supplied,NOT_VERIFIED,
+8,body_square:roof_thatch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_square:roof_tile,gradient_angle_difference,82.15411660663995,<=15 proxy only,PROXY_FAIL,
+8,body_square:roof_tile,luma_histogram_L1,0.9254863594777105,not supplied,NOT_VERIFIED,
+8,body_square:roof_tile,saturation_histogram_L1,1.329216300927569,not supplied,NOT_VERIFIED,
+8,body_square:roof_tile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_square:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,body_square:sign_ale,luma_histogram_L1,1.0138241887050095,not supplied,NOT_VERIFIED,
+8,body_square:sign_ale,saturation_histogram_L1,1.064096986834394,not supplied,NOT_VERIFIED,
+8,body_square:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_square:sign_bread,gradient_angle_difference,52.668739358063306,<=15 proxy only,PROXY_FAIL,
+8,body_square:sign_bread,luma_histogram_L1,0.7833789270449671,not supplied,NOT_VERIFIED,
+8,body_square:sign_bread,saturation_histogram_L1,0.8757940692514989,not supplied,NOT_VERIFIED,
+8,body_square:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_square:sign_merchant,gradient_angle_difference,14.286195470318688,<=15 proxy only,PROXY_PASS,
+8,body_square:sign_merchant,luma_histogram_L1,0.7101455701224209,not supplied,NOT_VERIFIED,
+8,body_square:sign_merchant,saturation_histogram_L1,1.41098239997013,not supplied,NOT_VERIFIED,
+8,body_square:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_square:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,body_square:sign_smith,luma_histogram_L1,0.8991532629490541,not supplied,NOT_VERIFIED,
+8,body_square:sign_smith,saturation_histogram_L1,1.0324169205696876,not supplied,NOT_VERIFIED,
+8,body_square:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_square:sign_textile,gradient_angle_difference,7.763339087892575,<=15 proxy only,PROXY_PASS,
+8,body_square:sign_textile,luma_histogram_L1,1.096305162750993,not supplied,NOT_VERIFIED,
+8,body_square:sign_textile,saturation_histogram_L1,1.609573915302676,not supplied,NOT_VERIFIED,
+8,body_square:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_vertical:roof_stone,gradient_angle_difference,5.809864212627332,<=15 proxy only,PROXY_PASS,
+8,body_vertical:roof_stone,luma_histogram_L1,0.9058860489540252,not supplied,NOT_VERIFIED,
+8,body_vertical:roof_stone,saturation_histogram_L1,1.5374154162434368,not supplied,NOT_VERIFIED,
+8,body_vertical:roof_stone,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_vertical:roof_thatch,gradient_angle_difference,35.00754124116668,<=15 proxy only,PROXY_FAIL,
+8,body_vertical:roof_thatch,luma_histogram_L1,1.2394951647257484,not supplied,NOT_VERIFIED,
+8,body_vertical:roof_thatch,saturation_histogram_L1,1.0739996370446567,not supplied,NOT_VERIFIED,
+8,body_vertical:roof_thatch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_vertical:roof_tile,gradient_angle_difference,78.3120829501189,<=15 proxy only,PROXY_FAIL,
+8,body_vertical:roof_tile,luma_histogram_L1,0.8777605501405567,not supplied,NOT_VERIFIED,
+8,body_vertical:roof_tile,saturation_histogram_L1,1.5278834516221933,not supplied,NOT_VERIFIED,
+8,body_vertical:roof_tile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_vertical:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,body_vertical:sign_ale,luma_histogram_L1,0.8355329627263626,not supplied,NOT_VERIFIED,
+8,body_vertical:sign_ale,saturation_histogram_L1,0.8664229178276451,not supplied,NOT_VERIFIED,
+8,body_vertical:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_vertical:sign_bread,gradient_angle_difference,56.510773014584345,<=15 proxy only,PROXY_FAIL,
+8,body_vertical:sign_bread,luma_histogram_L1,0.5836666246471314,not supplied,NOT_VERIFIED,
+8,body_vertical:sign_bread,saturation_histogram_L1,0.9093409426891739,not supplied,NOT_VERIFIED,
+8,body_vertical:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_vertical:sign_merchant,gradient_angle_difference,18.128229126839727,<=15 proxy only,PROXY_FAIL,
+8,body_vertical:sign_merchant,luma_histogram_L1,0.6398471321529939,not supplied,NOT_VERIFIED,
+8,body_vertical:sign_merchant,saturation_histogram_L1,1.128571611890188,not supplied,NOT_VERIFIED,
+8,body_vertical:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_vertical:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,body_vertical:sign_smith,luma_histogram_L1,0.7203168446593345,not supplied,NOT_VERIFIED,
+8,body_vertical:sign_smith,saturation_histogram_L1,0.7635708339974852,not supplied,NOT_VERIFIED,
+8,body_vertical:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,body_vertical:sign_textile,gradient_angle_difference,3.921305431371536,<=15 proxy only,PROXY_PASS,
+8,body_vertical:sign_textile,luma_histogram_L1,1.1241789819376027,not supplied,NOT_VERIFIED,
+8,body_vertical:sign_textile,saturation_histogram_L1,1.4993668420027273,not supplied,NOT_VERIFIED,
+8,body_vertical:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_stone:roof_thatch,gradient_angle_difference,29.197677028539346,<=15 proxy only,PROXY_FAIL,
+8,roof_stone:roof_thatch,luma_histogram_L1,0.7095075059257308,not supplied,NOT_VERIFIED,
+8,roof_stone:roof_thatch,saturation_histogram_L1,1.8277587569133527,not supplied,NOT_VERIFIED,
+8,roof_stone:roof_thatch,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_stone:roof_tile,gradient_angle_difference,84.12194716274627,<=15 proxy only,PROXY_FAIL,
+8,roof_stone:roof_tile,luma_histogram_L1,0.8717408480379247,not supplied,NOT_VERIFIED,
+8,roof_stone:roof_tile,saturation_histogram_L1,1.8419805109296812,not supplied,NOT_VERIFIED,
+8,roof_stone:roof_tile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_stone:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,roof_stone:sign_ale,luma_histogram_L1,1.2500811534197744,not supplied,NOT_VERIFIED,
+8,roof_stone:sign_ale,saturation_histogram_L1,1.8210500742119953,not supplied,NOT_VERIFIED,
+8,roof_stone:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_stone:sign_bread,gradient_angle_difference,50.70090880195701,<=15 proxy only,PROXY_FAIL,
+8,roof_stone:sign_bread,luma_histogram_L1,0.7958381315830696,not supplied,NOT_VERIFIED,
+8,roof_stone:sign_bread,saturation_histogram_L1,1.7784904146892713,not supplied,NOT_VERIFIED,
+8,roof_stone:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_stone:sign_merchant,gradient_angle_difference,12.318364914212395,<=15 proxy only,PROXY_PASS,
+8,roof_stone:sign_merchant,luma_histogram_L1,0.8466548598878093,not supplied,NOT_VERIFIED,
+8,roof_stone:sign_merchant,saturation_histogram_L1,1.856867776167444,not supplied,NOT_VERIFIED,
+8,roof_stone:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_stone:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,roof_stone:sign_smith,luma_histogram_L1,1.0193274594775779,not supplied,NOT_VERIFIED,
+8,roof_stone:sign_smith,saturation_histogram_L1,1.4289869993056719,not supplied,NOT_VERIFIED,
+8,roof_stone:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_stone:sign_textile,gradient_angle_difference,9.731169643998868,<=15 proxy only,PROXY_PASS,
+8,roof_stone:sign_textile,luma_histogram_L1,0.7847893700540527,not supplied,NOT_VERIFIED,
+8,roof_stone:sign_textile,saturation_histogram_L1,0.7563975945922219,not supplied,NOT_VERIFIED,
+8,roof_stone:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_thatch:roof_tile,gradient_angle_difference,113.31962419128558,<=15 proxy only,PROXY_FAIL,
+8,roof_thatch:roof_tile,luma_histogram_L1,1.4643139320516196,not supplied,NOT_VERIFIED,
+8,roof_thatch:roof_tile,saturation_histogram_L1,1.6739531208849092,not supplied,NOT_VERIFIED,
+8,roof_thatch:roof_tile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_thatch:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,roof_thatch:sign_ale,luma_histogram_L1,1.6373391477972206,not supplied,NOT_VERIFIED,
+8,roof_thatch:sign_ale,saturation_histogram_L1,0.621053340764741,not supplied,NOT_VERIFIED,
+8,roof_thatch:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_thatch:sign_bread,gradient_angle_difference,21.503231773417667,<=15 proxy only,PROXY_FAIL,
+8,roof_thatch:sign_bread,luma_histogram_L1,1.3389208198422904,not supplied,NOT_VERIFIED,
+8,roof_thatch:sign_bread,saturation_histogram_L1,1.0783435839439806,not supplied,NOT_VERIFIED,
+8,roof_thatch:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_thatch:sign_merchant,gradient_angle_difference,16.87931211432695,<=15 proxy only,PROXY_FAIL,
+8,roof_thatch:sign_merchant,luma_histogram_L1,1.4550298928085361,not supplied,NOT_VERIFIED,
+8,roof_thatch:sign_merchant,saturation_histogram_L1,0.4598209427865365,not supplied,NOT_VERIFIED,
+8,roof_thatch:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_thatch:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,roof_thatch:sign_smith,luma_histogram_L1,1.5071767184619436,not supplied,NOT_VERIFIED,
+8,roof_thatch:sign_smith,saturation_histogram_L1,0.934368041755453,not supplied,NOT_VERIFIED,
+8,roof_thatch:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_thatch:sign_textile,gradient_angle_difference,38.928846672538214,<=15 proxy only,PROXY_FAIL,
+8,roof_thatch:sign_textile,luma_histogram_L1,0.733641534043167,not supplied,NOT_VERIFIED,
+8,roof_thatch:sign_textile,saturation_histogram_L1,1.7854556228601528,not supplied,NOT_VERIFIED,
+8,roof_thatch:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_tile:sign_ale,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,roof_tile:sign_ale,luma_histogram_L1,1.2363371327424957,not supplied,NOT_VERIFIED,
+8,roof_tile:sign_ale,saturation_histogram_L1,1.452803416814172,not supplied,NOT_VERIFIED,
+8,roof_tile:sign_ale,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_tile:sign_bread,gradient_angle_difference,134.8228559647033,<=15 proxy only,PROXY_FAIL,
+8,roof_tile:sign_bread,luma_histogram_L1,0.5846101411330926,not supplied,NOT_VERIFIED,
+8,roof_tile:sign_bread,saturation_histogram_L1,1.1725476425316854,not supplied,NOT_VERIFIED,
+8,roof_tile:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_tile:sign_merchant,gradient_angle_difference,96.44031207695866,<=15 proxy only,PROXY_FAIL,
+8,roof_tile:sign_merchant,luma_histogram_L1,0.5086965915416993,not supplied,NOT_VERIFIED,
+8,roof_tile:sign_merchant,saturation_histogram_L1,1.8071058304775751,not supplied,NOT_VERIFIED,
+8,roof_tile:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_tile:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,roof_tile:sign_smith,luma_histogram_L1,0.9579332966217349,not supplied,NOT_VERIFIED,
+8,roof_tile:sign_smith,saturation_histogram_L1,1.5963499892259438,not supplied,NOT_VERIFIED,
+8,roof_tile:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,roof_tile:sign_textile,gradient_angle_difference,74.39077751874743,<=15 proxy only,PROXY_FAIL,
+8,roof_tile:sign_textile,luma_histogram_L1,1.308848150795741,not supplied,NOT_VERIFIED,
+8,roof_tile:sign_textile,saturation_histogram_L1,1.8719493459748922,not supplied,NOT_VERIFIED,
+8,roof_tile:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,sign_ale:sign_bread,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,sign_ale:sign_bread,luma_histogram_L1,0.8290013679890561,not supplied,NOT_VERIFIED,
+8,sign_ale:sign_bread,saturation_histogram_L1,0.6371789025687795,not supplied,NOT_VERIFIED,
+8,sign_ale:sign_bread,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,sign_ale:sign_merchant,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,sign_ale:sign_merchant,luma_histogram_L1,0.9053985053149516,not supplied,NOT_VERIFIED,
+8,sign_ale:sign_merchant,saturation_histogram_L1,0.5405932321403704,not supplied,NOT_VERIFIED,
+8,sign_ale:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,sign_ale:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,sign_ale:sign_smith,luma_histogram_L1,0.5926708949964764,not supplied,NOT_VERIFIED,
+8,sign_ale:sign_smith,saturation_histogram_L1,0.6028893587033122,not supplied,NOT_VERIFIED,
+8,sign_ale:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,sign_ale:sign_textile,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,sign_ale:sign_textile,luma_histogram_L1,1.5697674418604652,not supplied,NOT_VERIFIED,
+8,sign_ale:sign_textile,saturation_histogram_L1,1.7819767441860463,not supplied,NOT_VERIFIED,
+8,sign_ale:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,sign_bread:sign_merchant,gradient_angle_difference,38.38254388774462,<=15 proxy only,PROXY_FAIL,
+8,sign_bread:sign_merchant,luma_histogram_L1,0.3914132519275175,not supplied,NOT_VERIFIED,
+8,sign_bread:sign_merchant,saturation_histogram_L1,1.1362764666744942,not supplied,NOT_VERIFIED,
+8,sign_bread:sign_merchant,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,sign_bread:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,sign_bread:sign_smith,luma_histogram_L1,0.5815508021390374,not supplied,NOT_VERIFIED,
+8,sign_bread:sign_smith,saturation_histogram_L1,0.7685680332739155,not supplied,NOT_VERIFIED,
+8,sign_bread:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,sign_bread:sign_textile,gradient_angle_difference,60.43207844595588,<=15 proxy only,PROXY_FAIL,
+8,sign_bread:sign_textile,luma_histogram_L1,1.1792717086834734,not supplied,NOT_VERIFIED,
+8,sign_bread:sign_textile,saturation_histogram_L1,1.7287581699346406,not supplied,NOT_VERIFIED,
+8,sign_bread:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,sign_merchant:sign_smith,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,sign_merchant:sign_smith,luma_histogram_L1,0.6198965704953728,not supplied,NOT_VERIFIED,
+8,sign_merchant:sign_smith,saturation_histogram_L1,0.858056614044638,not supplied,NOT_VERIFIED,
+8,sign_merchant:sign_smith,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,sign_merchant:sign_textile,gradient_angle_difference,22.049534558211263,<=15 proxy only,PROXY_FAIL,
+8,sign_merchant:sign_textile,luma_histogram_L1,1.2665739948674082,not supplied,NOT_VERIFIED,
+8,sign_merchant:sign_textile,saturation_histogram_L1,1.791345879669233,not supplied,NOT_VERIFIED,
+8,sign_merchant:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+7,sign_smith:sign_textile,gradient_angle_difference,,<=15 proxy only,NOT_VERIFIED,
+8,sign_smith:sign_textile,luma_histogram_L1,1.4123376623376624,not supplied,NOT_VERIFIED,
+8,sign_smith:sign_textile,saturation_histogram_L1,1.3641774891774892,not supplied,NOT_VERIFIED,
+8,sign_smith:sign_textile,dark_line_width_difference_px,0.0,<=1 proxy only,PROXY_PASS,Median local DT ridge diameter 2d-1 of luma<70; includes non-timber dark shapes.
+9,body_curved_gray,wall_highpass_RMS_ratio,0.7544565470261945,>=0.8,FAIL,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_curved_gray,nonwall_changed_px,0.0,0,PASS,
+9,body_curved_ochre,wall_highpass_RMS_ratio,0.8302700520502913,>=0.8,PASS,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_curved_ochre,nonwall_changed_px,0.0,0,PASS,
+9,body_curved_pink,wall_highpass_RMS_ratio,0.8164940275816482,>=0.8,PASS,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_curved_pink,nonwall_changed_px,0.0,0,PASS,
+9,body_curved_white,wall_highpass_RMS_ratio,1.099024786290289,>=0.8,PASS,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_curved_white,nonwall_changed_px,0.0,0,PASS,
+9,body_square_gray,wall_highpass_RMS_ratio,0.779015303803771,>=0.8,FAIL,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_square_gray,nonwall_changed_px,0.0,0,PASS,
+9,body_square_ochre,wall_highpass_RMS_ratio,0.8500651725535611,>=0.8,PASS,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_square_ochre,nonwall_changed_px,0.0,0,PASS,
+9,body_square_pink,wall_highpass_RMS_ratio,0.838052083254982,>=0.8,PASS,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_square_pink,nonwall_changed_px,0.0,0,PASS,
+9,body_square_white,wall_highpass_RMS_ratio,1.119167781105814,>=0.8,PASS,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_square_white,nonwall_changed_px,0.0,0,PASS,
+9,body_vertical_gray,wall_highpass_RMS_ratio,0.7570757244387618,>=0.8,FAIL,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_vertical_gray,nonwall_changed_px,0.0,0,PASS,
+9,body_vertical_ochre,wall_highpass_RMS_ratio,0.7978249492553092,>=0.8,FAIL,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_vertical_ochre,nonwall_changed_px,0.0,0,PASS,
+9,body_vertical_pink,wall_highpass_RMS_ratio,0.838081051534475,>=0.8,PASS,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_vertical_pink,nonwall_changed_px,0.0,0,PASS,
+9,body_vertical_white,wall_highpass_RMS_ratio,1.3670780252793926,>=0.8,PASS,Gaussian sigma1; wall erosion2px; original body baseline; ratio not perceptual texture equivalence
+9,body_vertical_white,nonwall_changed_px,0.0,0,PASS,
+9,all,semantic_window_timber_protection,,0 recolored semantic window/timber pixels,NOT_VERIFIED,"Supplied color masks use brightness/chroma selection, not independent semantic window/timber labels."
+10,add_lean_to:body_vertical,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,add_lean_to:body_square,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,add_lean_to:body_curved,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,add_firewood:body_vertical,semantic_anchor_chebyshev_px,2.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=4.0; not independent engine attachment proof.
+10,add_firewood:body_square,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,add_firewood:body_curved,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,add_porch:body_vertical,semantic_anchor_chebyshev_px,2.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=4.0; not independent engine attachment proof.
+10,add_porch:body_square,semantic_anchor_chebyshev_px,2.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=4.0; not independent engine attachment proof.
+10,add_porch:body_curved,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,add_shutters:body_vertical,semantic_anchor_chebyshev_px,2.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=4.0; not independent engine attachment proof.
+10,add_shutters:body_square,semantic_anchor_chebyshev_px,2.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=4.0; not independent engine attachment proof.
+10,add_shutters:body_curved,semantic_anchor_chebyshev_px,2.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=4.0; not independent engine attachment proof.
+10,add_steps:body_vertical,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,add_steps:body_square,semantic_anchor_chebyshev_px,0.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=2.0; not independent engine attachment proof.
+10,add_steps:body_curved,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_bread:body_vertical,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_bread:body_square,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_bread:body_curved,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_smith:body_vertical,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_smith:body_square,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_smith:body_curved,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_textile:body_vertical,semantic_anchor_chebyshev_px,2.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=4.0; not independent engine attachment proof.
+10,sign_textile:body_square,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_textile:body_curved,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_ale:body_vertical,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_ale:body_square,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_ale:body_curved,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_merchant:body_vertical,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_merchant:body_square,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.
+10,sign_merchant:body_curved,semantic_anchor_chebyshev_px,1.0,<=1 including uncertainty,NOT_VERIFIED,Manual supplied coordinates; uncertainty=±2.0px; upper_bound=3.0; not independent engine attachment proof.

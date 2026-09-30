@@ -11,6 +11,8 @@
 // The device is reported through the proof port (`reportInputDevice`, proof mode only), as the gamepad translator
 // reports it. Beside the shots captures.json (what each shows).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/install23UiCaptures.ts <out-dir> --url <game> --states <ui6States dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install23UiCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/install23UiCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

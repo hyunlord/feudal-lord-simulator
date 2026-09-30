@@ -20,6 +20,8 @@ import { walkerVisualAnchor } from "./walkerAnchor";
 // is in front of. Walkers passing a stone gate
 // or on a bridge keep the queue's own order (the gate's arch and the bridge's rails are drawn around them by depth).
 type WalkerItem = Extract<RenderQueueItem, { readonly kind: "walker" }>;
+/** NAT-2: an alehouse drinker's place (alehouseCrowd.ts), placed like a walker at its foot. */
+type FigureItem = Extract<RenderQueueItem, { readonly kind: "ale_drinker" }>;
 /** The draw queue: the object items and the bridges' rails (drawObjectRenderItems). */
 type Queued = RenderQueueItem | Readonly<{ kind: "bridge_rail"; depth: number; anchorTx: number; id: string }>;
 type Box = { readonly x0: number; readonly x1: number; readonly y0: number; readonly y1: number };
@@ -131,26 +133,30 @@ function frontOf(foot: { tx: number; ty: number }, blocker: Blocker): boolean | 
 
 /**
  * The queue with every walker placed by the box rule (see the head of this file). `keepOrder(item)`: walkers that keep
- * the queue's own place (a stone gate's passage, a bridge). The rest of the queue keeps its order.
+ * the queue's own place (a stone gate's passage, a bridge). The rest of the queue keeps its order. NAT-2: the alehouse
+ * drinkers' places are placed the same way, at their foot.
  */
 export function placeWalkers<T extends Queued>(queue: readonly T[], state: Pick<GameState, "constructionSites">,
   keepOrder: (item: WalkerItem) => boolean): T[] {
   const base: T[] = [];
-  const moving: { item: T & WalkerItem; at: number; order: number }[] = [];
+  const moving: { item: T & (WalkerItem | FigureItem); at: number; order: number }[] = [];
   for (const item of queue) {
-    if (item.kind === "walker" && !keepOrder(item as T & WalkerItem)) moving.push({ item: item as T & WalkerItem, at: base.length, order: moving.length });
+    if ((item.kind === "walker" && !keepOrder(item as T & WalkerItem)) || item.kind === "ale_drinker") moving.push({ item: item as T & (WalkerItem | FigureItem), at: base.length, order: moving.length });
     else base.push(item);
   }
   if (moving.length === 0) return base;
   const buckets = bucketed(blockersOf(base, state));
   for (const entry of moving) {
-    const foot = walkerVisualAnchor(entry.item.walker.position);
-    const near = nearBlockers(buckets, foot);
+    // A drinker's place holds both ends of its short walk: where it stands and the door it comes out of.
+    const feet = entry.item.kind === "walker" ? [walkerVisualAnchor(entry.item.walker.position)] : [entry.item.stand.foot, entry.item.stand.door];
+    const near = nearBlockers(buckets, feet[0]!);
+    const both = (blockers: readonly Blocker[]) => feet.map(foot => bounds(foot, blockers))
+      .reduce((a, b) => ({ lo: Math.max(a.lo, b.lo), hi: Math.min(a.hi, b.hi) }));
     // `at` is the count of base items before the walker; lo / hi are base indices (after lo: at ≥ lo + 1; before hi: at ≤ hi).
     // The footprints first (a walker on a roof is the fault that shows), then the walls within what they allow.
-    const solid = bounds(foot, near.filter(blocker => blocker.box !== null));
+    const solid = both(near.filter(blocker => blocker.box !== null));
     const low = solid.lo + 1; const high = solid.lo + 1 <= solid.hi ? solid.hi : Number.POSITIVE_INFINITY;
-    const walls = bounds(foot, near.filter(blocker => blocker.box === null));
+    const walls = both(near.filter(blocker => blocker.box === null));
     let at = Math.min(Math.max(entry.at, low), high);
     at = Math.max(at, Math.min(walls.lo + 1, high));
     if (at > walls.hi && walls.hi >= low) at = walls.hi;
@@ -192,4 +198,21 @@ export function walkerHiddenBehind(queue: readonly Queued[], index: number, stat
   if (item === undefined || item.kind !== "walker") return false;
   const foot = walkerVisualAnchor(item.walker.position);
   return nearBlockers(bucketed(blockersOf(queue, state)), foot).some(blocker => blocker.index > index && bounds(foot, [blocker]).hi === blocker.index);
+}
+
+/**
+ * NAT-2 (QA-005): the box rule's faults of a figure that is not a walker — the alehouse crowd, drawn with its house's
+ * door props right after the queue's item `after` — standing at `foot` (tile units): `onRoof`, an object drawn before
+ * it that it stands behind (the figure shows on that object); `hidden`, one drawn after it that it stands in front of.
+ */
+export function figureOrderFaults(queue: readonly Queued[], state: Pick<GameState, "constructionSites">, foot: { tx: number; ty: number },
+  after: number): { onRoof: string[]; hidden: string[] } {
+  const onRoof: string[] = []; const hidden: string[] = [];
+  for (const blocker of nearBlockers(bucketed(blockersOf(queue, state)), foot)) {
+    const { lo, hi } = bounds(foot, [blocker]);
+    const id = queue[blocker.index]!.id;
+    if (hi === blocker.index && blocker.index <= after) onRoof.push(id);
+    if (lo === blocker.index && blocker.index > after) hidden.push(id);
+  }
+  return { onRoof, hidden };
 }

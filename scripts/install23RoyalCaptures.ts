@@ -2,6 +2,8 @@
 // seal (1337), the faction tab and the Crown's page in 1339 (England) and in 1340 (quartered with France), and the
 // chronicle's records of the Crown's favour (1338: England). States from scripts/ui6States.ts.
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/install23RoyalCaptures.ts <out-dir> --url <game> --states <ui6States dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install23RoyalCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/install23RoyalCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

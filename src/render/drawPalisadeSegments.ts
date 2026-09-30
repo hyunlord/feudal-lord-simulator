@@ -4,6 +4,7 @@ import { gateAssetStatuses } from "./gateArtAssets";
 import { timberWallAssetStatus } from "./timberWallAssets";
 import { timberWallPostPoints } from "./timberGateGeometry";
 import { drawRegisteredGate } from "./gateArtRenderer";
+import { gateOffAxisPiers } from "./gateArtGeometry";
 import { preloadTimberWallAssets } from "./timberWallAssets";
 import { drawGateMarker, drawPost } from "./timberGateRenderer";
 import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
@@ -15,7 +16,7 @@ import {
 } from "./palisadeRenderGeometry";
 import type { StoneWallNode } from "./stoneWallTopology";
 import { drawStoneWall } from "./stoneWallRenderer";
-import { applyInkOutline, applyPaletteStroke, snapToPixel } from "./style";
+import { applyInkOutline, applyPaletteStroke, snapToPixel, type CanvasTransform } from "./style";
 import { drawWallFaceSlice, drawWallModules, type WallFaceSlice } from "./drawWallFaces";
 import type { WallNode, WallPillar } from "../world/boundary/wallBaseline";
 import { wallFaceReadiness } from "./terrainVariantAssets";
@@ -44,7 +45,8 @@ export type PalisadeRunStyle =
   | "roof"
   | "completed";
 
-export function drawPalisadeSegment(context: CanvasRenderingContext2D, input: DrawPalisadeSegmentInput): void {
+/** `transform`: the context's current transform when the caller holds it (SMOOTH-2R, drawCachedWorldRaster). */
+export function drawPalisadeSegment(context: CanvasRenderingContext2D, input: DrawPalisadeSegmentInput, transform?: CanvasTransform): void {
   const points = palisadeScreenPath([...input.segment.edgePath,
     ...(input.stoneNodes ?? []).flatMap(node => [node.point, ...node.neighbors]),
     ...(input.face?.nodes ?? []).flatMap(node => [node.point, ...node.neighbors])]);
@@ -59,7 +61,7 @@ export function drawPalisadeSegment(context: CanvasRenderingContext2D, input: Dr
     right: Math.max(...points.map(point => point.x)) + 96,
     top: Math.min(...points.map(point => point.y)) - 128,
     bottom: Math.max(...points.map(point => point.y)) + 48,
-  }, paint => drawPalisadeSegmentUncached(paint, input));
+  }, paint => drawPalisadeSegmentUncached(paint, input), transform);
 }
 
 export function drawPalisadeSegmentUncached(
@@ -78,7 +80,12 @@ export function drawPalisadeSegmentUncached(
   drawCompletedPosts(context, input.segment.edgePath, input.zoom, "timber", input.gate, input.gates);
   if (input.stoneNodes !== undefined) {
     for (const node of input.stoneNodes) {
-      if (node.kind !== "gate" || drawRegisteredGate(context, node, "timber")) continue;
+      if (node.kind !== "gate") continue;
+      // NAT-2 QA-003: a corner gate's other arm ends in a post (behind the art first, in front of it after).
+      const piers = gateOffAxisPiers(node);
+      const post = (point: TileEdgePoint) => { const at = palisadeScreenPath([point])[0]; if (at !== undefined) drawPost(context, at, { width: 8, height: 30 }, input.zoom, "timber"); };
+      piers.behind.forEach(post);
+      if (drawRegisteredGate(context, node, "timber")) { piers.front.forEach(post); continue; }
       const path = node.neighbors.flatMap(point => [point, node.point]);
       drawGateMarker(context, path, node.point, input.zoom, node);
     }

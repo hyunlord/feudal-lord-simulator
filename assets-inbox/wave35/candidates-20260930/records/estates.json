@@ -1,0 +1,614 @@
+[
+  {
+    "id": "estate_ordinary",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": "not provided",
+    "seed": "not provided",
+    "reference": "references/wave31.jpg",
+    "attempts": [
+      {
+        "prompt": "Use case: historical-scene. Generate ONE new painted landscape illustration, one uninterrupted scene not a collage, for a medieval estate card. 16:9 landscape composition. Distant elevated eye-level panorama, all principal buildings and landscape comfortably inside safe center 85%, readable at 480x270. South England 1300–1450. Hand-painted realistic narrative illustration matching the uploaded PROJECT OWNED Wave31 reference's restrained detail, earthy muted greens, warm oak and plaster, subdued ochres and natural soft light; use its painting style only, not its collage layout or exact buildings. Flat opaque painted rectangular canvas with no frame. No text, letters, numbers, symbols, watermark, UI, heraldry or coat of arms. No chimneys of any sort, chimney pots, glazed blue windows, slate, brick houses, fantasy, modern objects. Roofs straw thatch or muted reddish plain flat clay tiles; timber framing and warm lime plaster with low rubble bases. Subject: An ordinary modest manor estate: timber-framed plaster manor hall, cultivated strip fields, small stone parish church, several thatched cottages. Balanced everyday maintained farmland, modest scale.",
+        "references": [
+          "references/wave31.jpg"
+        ],
+        "raw": "raw/estates/estate_ordinary-v1.png",
+        "sha256": "4c7b6075d9a907f97284f475fcdf046f011c989d7d1c71b31b717a9aa0aeafcb",
+        "status": "superseded"
+      },
+      {
+        "prompt": "Edit this exact project-owned estate illustration only to REMOVE EVERY CHIMNEY and chimney pot, every rectangular upright smoke stack on every roof, including tiny background ones. Replace these roof protrusions with continuous intact roof surface matching adjacent clay tiles or straw thatch and the sky or tree behind. There must be zero chimneys. Preserve the entire scene composition, manor identity, all buildings, landscape, figures, lighting, painting style and16:9 aspect ratio. Do not add text or symbols. Church towers, gables and roof finials may remain, but no chimney stacks. No other changes.",
+        "references": [
+          "raw/estates/estate_ordinary-v1.png"
+        ],
+        "raw": "raw/estates/estate_ordinary-v2.png",
+        "sha256": "c875c55a66cd06ed07def4fd126b86d7676cd7a666077cb90f9c53544877fa49",
+        "status": "selected"
+      }
+    ],
+    "selected_raw": "raw/estates/estate_ordinary-v2.png",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1672,
+      "height": 941,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    "output": "assets/A_estates/estate_ordinary.png",
+    "width": 480,
+    "height": 270,
+    "channels": 4,
+    "sha256": "6d5e32b472391bd0f1f6061cd9c416645fceb3762f26288037815eea9dc49ca7",
+    "postprocessing": "Sharp deterministic centre cover resize Lanczos3; ensureAlpha; PNG. Opaque painted illustration retained.",
+    "runtime_installed": false,
+    "visual_qa": {
+      "inspected": true,
+      "inspection": "All nine final delivered PNGs viewed individually at delivery dimensions; all initial raws viewed.",
+      "text_numbers": "No visible lettering or numbers",
+      "no_chimney": "No exterior chimney stacks visible in final panorama",
+      "subject": "Modest manor, church and cultivated fields visible.",
+      "limitations": [
+        "Candidate illustration only; no game installation or runtime verification",
+        "Opaque painted rectangular panorama/scene on RGBA canvas; no transparent cutout requirement applied"
+      ]
+    },
+    "alpha": {
+      "min": 255,
+      "max": 255,
+      "policy": "opaque painted rectangle permitted"
+    }
+  },
+  {
+    "id": "estate_moated",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": "not provided",
+    "seed": "not provided",
+    "reference": "references/wave31.jpg",
+    "attempts": [
+      {
+        "prompt": "Generate ONE new handpainted realistic 16:9 panorama, distant view for a small estate card, matching painting style only of project-owned Wave31 reference, not the collage layout. South England 1300–1450. Moated manor: timber-framed warm lime plaster hall on a grassy island surrounded on all sides by a broad visible water moat, narrow wooden bridge to fields beyond. Small outbuildings, soft natural daylight, muted earth palette, warm oak, olive fields. All principal buildings inside central85% for safe 480x270 crop. Flat opaque rectangle no border. NO text numbers symbols chimneys chimney pots brick slate blueglass fantasy towers or modern objects. Plain reddish flat clay roof tiles and thatch only.",
+        "references": [
+          "references/wave31.jpg"
+        ],
+        "raw": "raw/estates/estate_moated-v1.png",
+        "sha256": "45e1bfb0d23d935570e851ad2c75545d201323ca12fbc6447a282b1656ef3155",
+        "status": "superseded"
+      },
+      {
+        "prompt": "Edit this exact project-owned estate illustration only to REMOVE EVERY CHIMNEY and chimney pot, every rectangular upright smoke stack on every roof, including tiny background ones. Replace these roof protrusions with continuous intact roof surface matching adjacent clay tiles or straw thatch and the sky or tree behind. There must be zero chimneys. Preserve the entire scene composition, manor identity, all buildings, landscape, figures, lighting, painting style and16:9 aspect ratio. Do not add text or symbols. Church towers, gables and roof finials may remain, but no chimney stacks. No other changes.",
+        "references": [
+          "raw/estates/estate_moated-v1.png"
+        ],
+        "raw": "raw/estates/estate_moated-v2.png",
+        "sha256": "9198de0c25b7466ce5381b2816b348dcc6e6b0987cac9de9de465cd042656170",
+        "status": "selected"
+      }
+    ],
+    "selected_raw": "raw/estates/estate_moated-v2.png",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1672,
+      "height": 941,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    "output": "assets/A_estates/estate_moated.png",
+    "width": 480,
+    "height": 270,
+    "channels": 4,
+    "sha256": "2aac8767b718e73e0f3a905c57b70ee987586f0425a76bd5207953b0f6fe3c13",
+    "postprocessing": "Sharp deterministic centre cover resize Lanczos3; ensureAlpha; PNG. Opaque painted illustration retained.",
+    "runtime_installed": false,
+    "visual_qa": {
+      "inspected": true,
+      "inspection": "All nine final delivered PNGs viewed individually at delivery dimensions; all initial raws viewed.",
+      "text_numbers": "No visible lettering or numbers",
+      "no_chimney": "No exterior chimney stacks visible in final panorama",
+      "subject": "Water enclosure and approach bridge clearly distinguish the estate.",
+      "limitations": [
+        "Candidate illustration only; no game installation or runtime verification",
+        "Opaque painted rectangular panorama/scene on RGBA canvas; no transparent cutout requirement applied"
+      ]
+    },
+    "alpha": {
+      "min": 255,
+      "max": 255,
+      "policy": "opaque painted rectangle permitted"
+    }
+  },
+  {
+    "id": "estate_wealthy",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": "not provided",
+    "seed": "not provided",
+    "reference": "references/wave31.jpg",
+    "attempts": [
+      {
+        "prompt": "Use case: historical-scene. Generate ONE new painted landscape illustration, one uninterrupted scene not a collage, for a medieval estate card. 16:9 landscape composition. Distant elevated eye-level panorama, all principal buildings and landscape comfortably inside safe center 85%, readable at 480x270. South England 1300–1450. Hand-painted realistic narrative illustration matching the uploaded PROJECT OWNED Wave31 reference's restrained detail, earthy muted greens, warm oak and plaster, subdued ochres and natural soft light; use its painting style only, not its collage layout or exact buildings. Flat opaque painted rectangular canvas with no frame. No text, letters, numbers, symbols, watermark, UI, heraldry or coat of arms. No chimneys of any sort, chimney pots, glazed blue windows, slate, brick houses, fantasy, modern objects. Roofs straw thatch or muted reddish plain flat clay tiles; timber framing and warm lime plaster with low rubble bases. Subject: A wealthy prosperous manor estate: large long timber-framed warm plaster hall with reddish plain clay roof tiles, extensive orderly fruit orchard, visible sheep flock grazing sheltered meadow, well-maintained farm buildings.",
+        "references": [
+          "references/wave31.jpg"
+        ],
+        "raw": "raw/estates/estate_wealthy-v1.png",
+        "sha256": "0da0d54eef7f71fb1aa31b15b16aa8189d83d3caf4ad9f055c0a64fc938600a7",
+        "status": "selected"
+      }
+    ],
+    "selected_raw": "raw/estates/estate_wealthy-v1.png",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1672,
+      "height": 940,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1672,
+        "height": 940
+      }
+    },
+    "output": "assets/A_estates/estate_wealthy.png",
+    "width": 480,
+    "height": 270,
+    "channels": 4,
+    "sha256": "ba6db344f4ed7baa4df7b63ac5e1e991c9ab66b29f2f7b8974380f99378e45ec",
+    "postprocessing": "Sharp deterministic centre cover resize Lanczos3; ensureAlpha; PNG. Opaque painted illustration retained.",
+    "runtime_installed": false,
+    "visual_qa": {
+      "inspected": true,
+      "inspection": "All nine final delivered PNGs viewed individually at delivery dimensions; all initial raws viewed.",
+      "text_numbers": "No visible lettering or numbers",
+      "no_chimney": "No exterior chimney stacks visible in final panorama",
+      "subject": "Large hall, fruit orchard and sheep visible.",
+      "limitations": [
+        "Candidate illustration only; no game installation or runtime verification",
+        "Opaque painted rectangular panorama/scene on RGBA canvas; no transparent cutout requirement applied"
+      ]
+    },
+    "alpha": {
+      "min": 255,
+      "max": 255,
+      "policy": "opaque painted rectangle permitted"
+    }
+  },
+  {
+    "id": "estate_poor",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": "not provided",
+    "seed": "not provided",
+    "reference": "references/wave31.jpg",
+    "attempts": [
+      {
+        "prompt": "Use case: historical-scene. Generate ONE new painted landscape illustration, one uninterrupted scene not a collage, for a medieval estate card. 16:9 landscape composition. Distant elevated eye-level panorama, all principal buildings and landscape comfortably inside safe center 85%, readable at 480x270. South England 1300–1450. Hand-painted realistic narrative illustration matching the uploaded PROJECT OWNED Wave31 reference's restrained detail, earthy muted greens, warm oak and plaster, subdued ochres and natural soft light; use its painting style only, not its collage layout or exact buildings. Flat opaque painted rectangular canvas with no frame. No text, letters, numbers, symbols, watermark, UI, heraldry or coat of arms. No chimneys of any sort, chimney pots, glazed blue windows, slate, brick houses, fantasy, modern objects. Roofs straw thatch or muted reddish plain flat clay tiles; timber framing and warm lime plaster with low rubble bases. Subject: A poor small manor estate: squat modest thatched hall, collapsing low rubble boundary wall, neglected fallow strip fields, sparse worn outbuildings, thin scrub. Small humble architecture, no grand former mansion, no formal garden.",
+        "references": [
+          "references/wave31.jpg"
+        ],
+        "raw": "raw/estates/estate_poor-v1.png",
+        "sha256": "7cbaa75177bbf4c4e18c0e7218475dc9798692a1a2dade034298eae6b9507d03",
+        "status": "selected"
+      }
+    ],
+    "selected_raw": "raw/estates/estate_poor-v1.png",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1672,
+      "height": 941,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    "output": "assets/A_estates/estate_poor.png",
+    "width": 480,
+    "height": 270,
+    "channels": 4,
+    "sha256": "4042531b716e012d85d6a92bafc3a1267b524843e444f0437f023bd14eb99d2a",
+    "postprocessing": "Sharp deterministic centre cover resize Lanczos3; ensureAlpha; PNG. Opaque painted illustration retained.",
+    "runtime_installed": false,
+    "visual_qa": {
+      "inspected": true,
+      "inspection": "All nine final delivered PNGs viewed individually at delivery dimensions; all initial raws viewed.",
+      "text_numbers": "No visible lettering or numbers",
+      "no_chimney": "No exterior chimney stacks visible in final panorama",
+      "subject": "Humble thatched hall, rough fallow ground and broken wall visible.",
+      "limitations": [
+        "Candidate illustration only; no game installation or runtime verification",
+        "Opaque painted rectangular panorama/scene on RGBA canvas; no transparent cutout requirement applied"
+      ]
+    },
+    "alpha": {
+      "min": 255,
+      "max": 255,
+      "policy": "opaque painted rectangle permitted"
+    }
+  },
+  {
+    "id": "estate_ecclesiastical",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": "not provided",
+    "seed": "not provided",
+    "reference": "references/wave31.jpg",
+    "attempts": [
+      {
+        "prompt": "Use case: historical-scene. Generate ONE new painted landscape illustration, one uninterrupted scene not a collage, for a medieval estate card. 16:9 landscape composition. Distant elevated eye-level panorama, all principal buildings and landscape comfortably inside safe center 85%, readable at 480x270. South England 1300–1450. Hand-painted realistic narrative illustration matching the uploaded PROJECT OWNED Wave31 reference's restrained detail, earthy muted greens, warm oak and plaster, subdued ochres and natural soft light; use its painting style only, not its collage layout or exact buildings. Flat opaque painted rectangular canvas with no frame. No text, letters, numbers, symbols, watermark, UI, heraldry or coat of arms. No chimneys of any sort, chimney pots, glazed blue windows, slate, brick houses, fantasy, modern objects. Roofs straw thatch or muted reddish plain flat clay tiles; timber framing and warm lime plaster with low rubble bases. Subject: An ecclesiastical monastery-owned manor estate: stone chapel and restrained small monastic range, prominent timber granary raised clearly on mushroom-shaped staddle stones, orderly grain fields and simple orchard. The raised granary is the key foreground building.",
+        "references": [
+          "references/wave31.jpg"
+        ],
+        "raw": "raw/estates/estate_ecclesiastical-v1.png",
+        "sha256": "4473a4e45092c8555b33f209d1d1d53e109bc5fa357f9a911e224d0e3c40372c",
+        "status": "superseded"
+      },
+      {
+        "prompt": "Edit this exact project-owned estate illustration only to REMOVE EVERY CHIMNEY and chimney pot, every rectangular upright smoke stack on every roof, including tiny background ones. Replace these roof protrusions with continuous intact roof surface matching adjacent clay tiles or straw thatch and the sky or tree behind. There must be zero chimneys. Preserve the entire scene composition, manor identity, all buildings, landscape, figures, lighting, painting style and16:9 aspect ratio. Do not add text or symbols. Church towers, gables and roof finials may remain, but no chimney stacks. No other changes.",
+        "references": [
+          "raw/estates/estate_ecclesiastical-v1.png"
+        ],
+        "raw": "raw/estates/estate_ecclesiastical-v2.png",
+        "sha256": "b6a3f94764dd1128148de22109c54a82e1a2ecf2205e25519b3459dc3d90e5a8",
+        "status": "selected"
+      }
+    ],
+    "selected_raw": "raw/estates/estate_ecclesiastical-v2.png",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1672,
+      "height": 941,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    "output": "assets/A_estates/estate_ecclesiastical.png",
+    "width": 480,
+    "height": 270,
+    "channels": 4,
+    "sha256": "bcd9f98530dfc5b3e715725d306ebce127396d91ad428e03b50e56e3cacc3608",
+    "postprocessing": "Sharp deterministic centre cover resize Lanczos3; ensureAlpha; PNG. Opaque painted illustration retained.",
+    "runtime_installed": false,
+    "visual_qa": {
+      "inspected": true,
+      "inspection": "All nine final delivered PNGs viewed individually at delivery dimensions; all initial raws viewed.",
+      "text_numbers": "No visible lettering or numbers",
+      "no_chimney": "No exterior chimney stacks visible in final panorama",
+      "subject": "Church range and raised mushroom-staddle granary clearly visible.",
+      "limitations": [
+        "Candidate illustration only; no game installation or runtime verification",
+        "Opaque painted rectangular panorama/scene on RGBA canvas; no transparent cutout requirement applied"
+      ]
+    },
+    "alpha": {
+      "min": 255,
+      "max": 255,
+      "policy": "opaque painted rectangle permitted"
+    }
+  },
+  {
+    "id": "estate_riverside_mill",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": "not provided",
+    "seed": "not provided",
+    "reference": "references/wave31.jpg",
+    "attempts": [
+      {
+        "prompt": "Use case: historical-scene. Generate ONE new painted landscape illustration, one uninterrupted scene not a collage, for a medieval estate card. 16:9 landscape composition. Distant elevated eye-level panorama, all principal buildings and landscape comfortably inside safe center 85%, readable at 480x270. South England 1300–1450. Hand-painted realistic narrative illustration matching the uploaded PROJECT OWNED Wave31 reference's restrained detail, earthy muted greens, warm oak and plaster, subdued ochres and natural soft light; use its painting style only, not its collage layout or exact buildings. Flat opaque painted rectangular canvas with no frame. No text, letters, numbers, symbols, watermark, UI, heraldry or coat of arms. No chimneys of any sort, chimney pots, glazed blue windows, slate, brick houses, fantasy, modern objects. Roofs straw thatch or muted reddish plain flat clay tiles; timber framing and warm lime plaster with low rubble bases. Subject: A riverside manor estate: winding river through fertile farmland, timber watermill with one clearly visible large wooden vertical waterwheel at the bank and millrace, modest manor hall behind, footbridge. A genuine grain watermill, not windmill or bakery.",
+        "references": [
+          "references/wave31.jpg"
+        ],
+        "raw": "raw/estates/estate_riverside_mill-v1.png",
+        "sha256": "9f854b9fd52ac3bf6845e3a868ababc6d5225c58f417cf76146ed37457f569eb",
+        "status": "superseded"
+      },
+      {
+        "prompt": "Edit this exact project-owned estate illustration only to REMOVE EVERY CHIMNEY and chimney pot, every rectangular upright smoke stack on every roof, including tiny background ones. Replace these roof protrusions with continuous intact roof surface matching adjacent clay tiles or straw thatch and the sky or tree behind. There must be zero chimneys. Preserve the entire scene composition, manor identity, all buildings, landscape, figures, lighting, painting style and16:9 aspect ratio. Do not add text or symbols. Church towers, gables and roof finials may remain, but no chimney stacks. No other changes.",
+        "references": [
+          "raw/estates/estate_riverside_mill-v1.png"
+        ],
+        "raw": "raw/estates/estate_riverside_mill-v2.png",
+        "sha256": "a4926b682b36c9d6f8d2701bcc2a4ec09d8e230de16a6a8ebd44e064a97254ed",
+        "status": "selected"
+      }
+    ],
+    "selected_raw": "raw/estates/estate_riverside_mill-v2.png",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1672,
+      "height": 941,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    "output": "assets/A_estates/estate_riverside_mill.png",
+    "width": 480,
+    "height": 270,
+    "channels": 4,
+    "sha256": "48d7ddc3e2eb63bcca935467c31ca18a7e52a06c5937460dff4aa83c108393b7",
+    "postprocessing": "Sharp deterministic centre cover resize Lanczos3; ensureAlpha; PNG. Opaque painted illustration retained.",
+    "runtime_installed": false,
+    "visual_qa": {
+      "inspected": true,
+      "inspection": "All nine final delivered PNGs viewed individually at delivery dimensions; all initial raws viewed.",
+      "text_numbers": "No visible lettering or numbers",
+      "no_chimney": "No exterior chimney stacks visible in final panorama",
+      "subject": "Waterwheel, millrace, river and manor visible; no windmill.",
+      "limitations": [
+        "Candidate illustration only; no game installation or runtime verification",
+        "Opaque painted rectangular panorama/scene on RGBA canvas; no transparent cutout requirement applied"
+      ]
+    },
+    "alpha": {
+      "min": 255,
+      "max": 255,
+      "policy": "opaque painted rectangle permitted"
+    }
+  },
+  {
+    "id": "estate_hunting",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": "not provided",
+    "seed": "not provided",
+    "reference": "references/wave31.jpg",
+    "attempts": [
+      {
+        "prompt": "Use case: historical-scene. Generate ONE new painted landscape illustration, one uninterrupted scene not a collage, for a medieval estate card. 16:9 landscape composition. Distant elevated eye-level panorama, all principal buildings and landscape comfortably inside safe center 85%, readable at 480x270. South England 1300–1450. Hand-painted realistic narrative illustration matching the uploaded PROJECT OWNED Wave31 reference's restrained detail, earthy muted greens, warm oak and plaster, subdued ochres and natural soft light; use its painting style only, not its collage layout or exact buildings. Flat opaque painted rectangular canvas with no frame. No text, letters, numbers, symbols, watermark, UI, heraldry or coat of arms. No chimneys of any sort, chimney pots, glazed blue windows, slate, brick houses, fantasy, modern objects. Roofs straw thatch or muted reddish plain flat clay tiles; timber framing and warm lime plaster with low rubble bases. Subject: A woodland hunting manor estate: modest timber-framed hunting lodge set in a broad forest clearing, pale winding track, surrounding mature oak woodland, restrained deer silhouettes near woodland margin and small stable.",
+        "references": [
+          "references/wave31.jpg"
+        ],
+        "raw": "raw/estates/estate_hunting-v1.png",
+        "sha256": "2bdb6dcf35185f5c3b1217bc8cca4c5f47cb0b8f0a0ef68f8eea42c4b2d2c7a8",
+        "status": "superseded"
+      },
+      {
+        "prompt": "Edit this exact project-owned estate illustration only to REMOVE EVERY CHIMNEY and chimney pot, every rectangular upright smoke stack on every roof, including tiny background ones. Replace these roof protrusions with continuous intact roof surface matching adjacent clay tiles or straw thatch and the sky or tree behind. There must be zero chimneys. Preserve the entire scene composition, manor identity, all buildings, landscape, figures, lighting, painting style and16:9 aspect ratio. Do not add text or symbols. Church towers, gables and roof finials may remain, but no chimney stacks. No other changes.",
+        "references": [
+          "raw/estates/estate_hunting-v1.png"
+        ],
+        "raw": "raw/estates/estate_hunting-v2.png",
+        "sha256": "b81a31164cb93083c87c441b9ae9a5c9658b51286577c81ce9376d408ade59ea",
+        "status": "selected"
+      }
+    ],
+    "selected_raw": "raw/estates/estate_hunting-v2.png",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1672,
+      "height": 941,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    "output": "assets/A_estates/estate_hunting.png",
+    "width": 480,
+    "height": 270,
+    "channels": 4,
+    "sha256": "4776c256af5798e94c4dca222c9725677ca46732725e897bb6031b53e585f8c2",
+    "postprocessing": "Sharp deterministic centre cover resize Lanczos3; ensureAlpha; PNG. Opaque painted illustration retained.",
+    "runtime_installed": false,
+    "visual_qa": {
+      "inspected": true,
+      "inspection": "All nine final delivered PNGs viewed individually at delivery dimensions; all initial raws viewed.",
+      "text_numbers": "No visible lettering or numbers",
+      "no_chimney": "No exterior chimney stacks visible in final panorama",
+      "subject": "Forest clearing, lodge, deer and horses visible.",
+      "limitations": [
+        "Candidate illustration only; no game installation or runtime verification",
+        "Opaque painted rectangular panorama/scene on RGBA canvas; no transparent cutout requirement applied"
+      ]
+    },
+    "alpha": {
+      "min": 255,
+      "max": 255,
+      "policy": "opaque painted rectangle permitted"
+    }
+  },
+  {
+    "id": "estate_declining",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": "not provided",
+    "seed": "not provided",
+    "reference": "references/wave31.jpg",
+    "attempts": [
+      {
+        "prompt": "Use case: historical-scene. Generate ONE new painted landscape illustration, one uninterrupted scene not a collage, for a medieval estate card. 16:9 landscape composition. Distant elevated eye-level panorama, all principal buildings and landscape comfortably inside safe center 85%, readable at 480x270. South England 1300–1450. Hand-painted realistic narrative illustration matching the uploaded PROJECT OWNED Wave31 reference's restrained detail, earthy muted greens, warm oak and plaster, subdued ochres and natural soft light; use its painting style only, not its collage layout or exact buildings. Flat opaque painted rectangular canvas with no frame. No text, letters, numbers, symbols, watermark, UI, heraldry or coat of arms. No chimneys of any sort, chimney pots, glazed blue windows, slate, brick houses, fantasy, modern objects. Roofs straw thatch or muted reddish plain flat clay tiles; timber framing and warm lime plaster with low rubble bases. Subject: An old lord's declining formerly substantial manor estate: sizable aging timber-framed hall with a visibly sagging patched roof and weathered plaster, empty neglected outer paddocks and broken boundary wall, BUT a small clearly carefully tended rectangular flower and herb garden remains next to the hall, trimmed edges and flowering beds. Distinguish from a poor humble small estate: former status and tender care survive.",
+        "references": [
+          "references/wave31.jpg"
+        ],
+        "raw": "raw/estates/estate_declining-v1.png",
+        "sha256": "05129733bf5782d47f7b2b5a157327b74db987e713079b1b02eeec53120122d6",
+        "status": "superseded"
+      },
+      {
+        "prompt": "Edit this exact project-owned estate illustration only to REMOVE EVERY CHIMNEY and chimney pot, every rectangular upright smoke stack on every roof, including tiny background ones. Replace these roof protrusions with continuous intact roof surface matching adjacent clay tiles or straw thatch and the sky or tree behind. There must be zero chimneys. Preserve the entire scene composition, manor identity, all buildings, landscape, figures, lighting, painting style and16:9 aspect ratio. Do not add text or symbols. Church towers, gables and roof finials may remain, but no chimney stacks. No other changes.",
+        "references": [
+          "raw/estates/estate_declining-v1.png"
+        ],
+        "raw": "raw/estates/estate_declining-v2.png",
+        "sha256": "38b69cad514e78b5637270be5f36303a5809ca1a211dff4f96336df89ffd0437",
+        "status": "selected"
+      }
+    ],
+    "selected_raw": "raw/estates/estate_declining-v2.png",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1672,
+      "height": 941,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    "output": "assets/A_estates/estate_declining.png",
+    "width": 480,
+    "height": 270,
+    "channels": 4,
+    "sha256": "34d30744bb54d0c919217583cf974b0d4cde2645d5eb2c3da4ec4baf846bcf8e",
+    "postprocessing": "Sharp deterministic centre cover resize Lanczos3; ensureAlpha; PNG. Opaque painted illustration retained.",
+    "runtime_installed": false,
+    "visual_qa": {
+      "inspected": true,
+      "inspection": "All nine final delivered PNGs viewed individually at delivery dimensions; all initial raws viewed.",
+      "text_numbers": "No visible lettering or numbers",
+      "no_chimney": "No exterior chimney stacks visible in final panorama",
+      "subject": "Formerly substantial hall, neglected outer paddocks, damaged boundary walls, surviving cared garden visible. Targeted chimney edit made roof tidier than initial damaged roof; decline remains readable through grounds and walls.",
+      "limitations": [
+        "Candidate illustration only; no game installation or runtime verification",
+        "Opaque painted rectangular panorama/scene on RGBA canvas; no transparent cutout requirement applied"
+      ]
+    },
+    "alpha": {
+      "min": 255,
+      "max": 255,
+      "policy": "opaque painted rectangle permitted"
+    }
+  },
+  {
+    "id": "annual_audit",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": "not provided",
+    "seed": "not provided",
+    "reference": "references/wave31.jpg",
+    "attempts": [
+      {
+        "prompt": "Use case historical-scene. Generate ONE new landscape16:9 hand-painted realistic narrative illustration matching only the painting style of project-owned Wave31 reference, not collage composition. Annual Michaelmas audit at an English manor hall circa1300–1450. Modest timber oak hall interior, warm lime plaster, muted autumn daylight, restrained earthy browns and dark reds. A plainly dressed mature steward STANDS and opens a large BLANK parchment ledger across the oak table, hands naturally grasping covers, beside him a seated lord listens attentively, one other modest clerk nearby. All ledger pages and loose parchments completely blank without marks. Faces human distinct and natural. Muted realistic painterly detail, no fantasy luxury. Center safe composition intended for960x540. Single flat opaque painted rectangle. No writing, text, letters, numbers, heraldry, watermarks, UI, frames, chimneys, modern objects. No exaggerated crowns; lord wears fine restrained wool, steward plain wool.",
+        "references": [
+          "references/wave31.jpg"
+        ],
+        "raw": "raw/estates/annual_audit-v1.png",
+        "sha256": "73a35c7d4fd5a8322ad7e1e8e50d8731c2545424b47bdfa233a7b259383a256a",
+        "status": "selected"
+      }
+    ],
+    "selected_raw": "raw/estates/annual_audit-v1.png",
+    "raw_metadata": {
+      "format": "png",
+      "mediaType": "image/png",
+      "width": 1672,
+      "height": 941,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "isProgressive": false,
+      "isPalette": false,
+      "bitsPerSample": 8,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1672,
+        "height": 941
+      }
+    },
+    "output": "assets/D_operations/annual_audit.png",
+    "width": 960,
+    "height": 540,
+    "channels": 4,
+    "sha256": "13c4072c144d4908f4f0c3f593553eb9cd8d53b99a52698491f5eb26ea51a915",
+    "postprocessing": "Sharp deterministic centre cover resize Lanczos3; ensureAlpha; PNG. Opaque painted illustration retained.",
+    "runtime_installed": false,
+    "visual_qa": {
+      "inspected": true,
+      "inspection": "All nine final delivered PNGs viewed individually at delivery dimensions; all initial raws viewed.",
+      "text_numbers": "No visible lettering or numbers",
+      "no_chimney": "No exterior chimney stacks visible in final panorama",
+      "subject": "Standing steward presents blank ledger; seated lord listens; clerk and autumn hall visible. Blank pages verified visually.",
+      "limitations": [
+        "Candidate illustration only; no game installation or runtime verification",
+        "Opaque painted rectangular panorama/scene on RGBA canvas; no transparent cutout requirement applied"
+      ]
+    },
+    "alpha": {
+      "min": 255,
+      "max": 255,
+      "policy": "opaque painted rectangle permitted"
+    }
+  }
+]

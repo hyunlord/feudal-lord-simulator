@@ -1,0 +1,535 @@
+{
+ "note": "headless Chrome 1600x1100 DPR 1, ch4-1380, 240 frames after 8 s warm-up, two loads; trunk 653af2e2 vs NAT-2 (renderDetailLevel full above 0.35)",
+ "trunk": [
+  {
+   "zoom": 0.6,
+   "speed": 0,
+   "load": 1,
+   "lod": "simplified",
+   "frameMs": {
+    "p50": 4.9,
+    "p95": 5.1
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 0.9,
+    "p95": 1.3
+   },
+   "drawImagePerFrame": {
+    "p50": 623,
+    "p95": 623
+   }
+  },
+  {
+   "zoom": 0.6,
+   "speed": 0,
+   "load": 2,
+   "lod": "simplified",
+   "frameMs": {
+    "p50": 4.9,
+    "p95": 5.2
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 0.9,
+    "p95": 1.3
+   },
+   "drawImagePerFrame": {
+    "p50": 623,
+    "p95": 623
+   }
+  },
+  {
+   "zoom": 0.6,
+   "speed": 5,
+   "load": 1,
+   "lod": "simplified",
+   "frameMs": {
+    "p50": 7.6,
+    "p95": 8.4
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 0.9,
+    "p95": 1.3
+   },
+   "drawImagePerFrame": {
+    "p50": 736,
+    "p95": 738
+   }
+  },
+  {
+   "zoom": 0.6,
+   "speed": 5,
+   "load": 2,
+   "lod": "simplified",
+   "frameMs": {
+    "p50": 7.6,
+    "p95": 8.5
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 0.9,
+    "p95": 1.2
+   },
+   "drawImagePerFrame": {
+    "p50": 736,
+    "p95": 738
+   }
+  },
+  {
+   "zoom": 0.5,
+   "speed": 0,
+   "load": 1,
+   "lod": "blocks",
+   "frameMs": {
+    "p50": 4.4,
+    "p95": 4.8
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 284,
+    "p95": 284
+   }
+  },
+  {
+   "zoom": 0.5,
+   "speed": 0,
+   "load": 2,
+   "lod": "blocks",
+   "frameMs": {
+    "p50": 4.4,
+    "p95": 4.7
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.4
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 284,
+    "p95": 284
+   }
+  },
+  {
+   "zoom": 0.5,
+   "speed": 5,
+   "load": 1,
+   "lod": "blocks",
+   "frameMs": {
+    "p50": 7.2,
+    "p95": 7.9
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1
+   },
+   "drawImagePerFrame": {
+    "p50": 424,
+    "p95": 427
+   }
+  },
+  {
+   "zoom": 0.5,
+   "speed": 5,
+   "load": 2,
+   "lod": "blocks",
+   "frameMs": {
+    "p50": 7.3,
+    "p95": 8.2
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 424,
+    "p95": 427
+   }
+  },
+  {
+   "zoom": 0.4,
+   "speed": 0,
+   "load": 1,
+   "lod": "blocks",
+   "frameMs": {
+    "p50": 4.4,
+    "p95": 4.7
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1
+   },
+   "drawImagePerFrame": {
+    "p50": 284,
+    "p95": 284
+   }
+  },
+  {
+   "zoom": 0.4,
+   "speed": 0,
+   "load": 2,
+   "lod": "blocks",
+   "frameMs": {
+    "p50": 4.4,
+    "p95": 4.7
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 284,
+    "p95": 284
+   }
+  },
+  {
+   "zoom": 0.4,
+   "speed": 5,
+   "load": 1,
+   "lod": "blocks",
+   "frameMs": {
+    "p50": 7.2,
+    "p95": 7.9
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 291,
+    "p95": 294
+   }
+  },
+  {
+   "zoom": 0.4,
+   "speed": 5,
+   "load": 2,
+   "lod": "blocks",
+   "frameMs": {
+    "p50": 7.2,
+    "p95": 7.9
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 291,
+    "p95": 294
+   }
+  }
+ ],
+ "after": [
+  {
+   "zoom": 0.6,
+   "speed": 0,
+   "load": 1,
+   "lod": "full",
+   "frameMs": {
+    "p50": 5.8,
+    "p95": 25.3
+   },
+   "buildingsMs": {
+    "p50": 0.6,
+    "p95": 1.7
+   },
+   "natureMs": {
+    "p50": 1.6,
+    "p95": 6.7
+   },
+   "drawImagePerFrame": {
+    "p50": 2126,
+    "p95": 2127
+   }
+  },
+  {
+   "zoom": 0.6,
+   "speed": 0,
+   "load": 2,
+   "lod": "full",
+   "frameMs": {
+    "p50": 5.5,
+    "p95": 5.9
+   },
+   "buildingsMs": {
+    "p50": 0.6,
+    "p95": 0.9
+   },
+   "natureMs": {
+    "p50": 1.5,
+    "p95": 1.9
+   },
+   "drawImagePerFrame": {
+    "p50": 2126,
+    "p95": 2127
+   }
+  },
+  {
+   "zoom": 0.6,
+   "speed": 5,
+   "load": 1,
+   "lod": "full",
+   "frameMs": {
+    "p50": 9.7,
+    "p95": 10.9
+   },
+   "buildingsMs": {
+    "p50": 1,
+    "p95": 1.4
+   },
+   "natureMs": {
+    "p50": 1.6,
+    "p95": 2.1
+   },
+   "drawImagePerFrame": {
+    "p50": 2235,
+    "p95": 2245
+   }
+  },
+  {
+   "zoom": 0.6,
+   "speed": 5,
+   "load": 2,
+   "lod": "full",
+   "frameMs": {
+    "p50": 9.8,
+    "p95": 11.2
+   },
+   "buildingsMs": {
+    "p50": 1.1,
+    "p95": 1.5
+   },
+   "natureMs": {
+    "p50": 1.5,
+    "p95": 2.1
+   },
+   "drawImagePerFrame": {
+    "p50": 2235,
+    "p95": 2245
+   }
+  },
+  {
+   "zoom": 0.5,
+   "speed": 0,
+   "load": 1,
+   "lod": "full",
+   "frameMs": {
+    "p50": 5.4,
+    "p95": 5.7
+   },
+   "buildingsMs": {
+    "p50": 0.5,
+    "p95": 1
+   },
+   "natureMs": {
+    "p50": 1.5,
+    "p95": 1.9
+   },
+   "drawImagePerFrame": {
+    "p50": 1986,
+    "p95": 1987
+   }
+  },
+  {
+   "zoom": 0.5,
+   "speed": 0,
+   "load": 2,
+   "lod": "full",
+   "frameMs": {
+    "p50": 5.5,
+    "p95": 5.8
+   },
+   "buildingsMs": {
+    "p50": 0.6,
+    "p95": 0.9
+   },
+   "natureMs": {
+    "p50": 1.5,
+    "p95": 1.9
+   },
+   "drawImagePerFrame": {
+    "p50": 1986,
+    "p95": 1987
+   }
+  },
+  {
+   "zoom": 0.5,
+   "speed": 5,
+   "load": 1,
+   "lod": "full",
+   "frameMs": {
+    "p50": 9.8,
+    "p95": 11
+   },
+   "buildingsMs": {
+    "p50": 1.1,
+    "p95": 1.5
+   },
+   "natureMs": {
+    "p50": 1.6,
+    "p95": 2.1
+   },
+   "drawImagePerFrame": {
+    "p50": 2123,
+    "p95": 2132
+   }
+  },
+  {
+   "zoom": 0.5,
+   "speed": 5,
+   "load": 2,
+   "lod": "full",
+   "frameMs": {
+    "p50": 9.8,
+    "p95": 11
+   },
+   "buildingsMs": {
+    "p50": 1,
+    "p95": 1.5
+   },
+   "natureMs": {
+    "p50": 1.6,
+    "p95": 2.1
+   },
+   "drawImagePerFrame": {
+    "p50": 2123,
+    "p95": 2133
+   }
+  },
+  {
+   "zoom": 0.4,
+   "speed": 0,
+   "load": 1,
+   "lod": "full",
+   "frameMs": {
+    "p50": 5.6,
+    "p95": 5.9
+   },
+   "buildingsMs": {
+    "p50": 0.6,
+    "p95": 0.9
+   },
+   "natureMs": {
+    "p50": 1.5,
+    "p95": 1.9
+   },
+   "drawImagePerFrame": {
+    "p50": 2022,
+    "p95": 2023
+   }
+  },
+  {
+   "zoom": 0.4,
+   "speed": 0,
+   "load": 2,
+   "lod": "full",
+   "frameMs": {
+    "p50": 5.6,
+    "p95": 5.9
+   },
+   "buildingsMs": {
+    "p50": 0.5,
+    "p95": 0.8
+   },
+   "natureMs": {
+    "p50": 1.7,
+    "p95": 2.1
+   },
+   "drawImagePerFrame": {
+    "p50": 2022,
+    "p95": 2023
+   }
+  },
+  {
+   "zoom": 0.4,
+   "speed": 5,
+   "load": 1,
+   "lod": "full",
+   "frameMs": {
+    "p50": 9.8,
+    "p95": 11.3
+   },
+   "buildingsMs": {
+    "p50": 1,
+    "p95": 1.4
+   },
+   "natureMs": {
+    "p50": 1.7,
+    "p95": 2.2
+   },
+   "drawImagePerFrame": {
+    "p50": 2023,
+    "p95": 2035
+   }
+  },
+  {
+   "zoom": 0.4,
+   "speed": 5,
+   "load": 2,
+   "lod": "full",
+   "frameMs": {
+    "p50": 9.8,
+    "p95": 11.4
+   },
+   "buildingsMs": {
+    "p50": 1,
+    "p95": 1.5
+   },
+   "natureMs": {
+    "p50": 1.6,
+    "p95": 2.3
+   },
+   "drawImagePerFrame": {
+    "p50": 2023,
+    "p95": 2035
+   }
+  }
+ ]
+}

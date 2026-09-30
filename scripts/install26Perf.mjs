@@ -5,6 +5,8 @@
 // rounds, the builds alternating; the gate is the median of each view's p95 ≤ 110 % of the base's in the same view
 // (DGX with DGX; a run counts only at rAF 16.7 ms, docs: memory "DGX perf validity").
 //   PLAYWRIGHT_MODULE=... node scripts/install26Perf.mjs <out.json> --url <this> --base <base> --states <ui6States dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install26Perf.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/install26Perf.mjs …", entry: import.meta.url });
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene, rafMedian } from './renderCommitProbe.mjs';

@@ -5,6 +5,8 @@
 // UX-2 gate 1 (`--audit 1`): at every step, and with each build category open at the end, a DOM audit of development-UI
 // remnants: emoji / symbol glyphs standing in for icons, visible buttons without the P0 frame (default browser look),
 // near-black flat bars, and line-drawn SVG icons.
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/tutorialReplay.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/tutorialReplay.mjs …", entry: import.meta.url });
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 

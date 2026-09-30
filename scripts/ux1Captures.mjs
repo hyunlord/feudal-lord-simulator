@@ -2,6 +2,8 @@
 // (production category open; this build with the tutorial off so every card shows), and the tutorial's well step at
 // 1280x800, 1920x1080 and a 1024x768 tablet.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/ux1Captures.mjs <outDir> --base <url> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ux1Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/ux1Captures.mjs …", entry: import.meta.url });
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 

@@ -1,0 +1,94 @@
+{
+ "heir_choice": {
+  "tick": 400001,
+  "year": 1400,
+  "petitionId": "heir_choice@400000",
+  "options": [
+   "accept",
+   "accept_with_price",
+   "refuse"
+  ],
+  "candidates": [
+   {
+    "kind": "eldest_son",
+    "relation": "son",
+    "name": "리처드 드 포콩발",
+    "age": 40,
+    "created": false
+   },
+   {
+    "kind": "daughter_husband",
+    "relation": "husband",
+    "name": "토머스 드 코르벨",
+    "age": 40,
+    "created": true
+   },
+   {
+    "kind": "nephew",
+    "relation": "nephew",
+    "name": "로버트 드 포콩발",
+    "age": 19,
+    "created": true
+   }
+  ]
+ },
+ "interlude.market_fire": {
+  "tick": 376001,
+  "year": 1394,
+  "guildRemoved": false,
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "market_fire",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "ahead"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "ahead"
+   }
+  ]
+ },
+ "store-malt": {
+  "tick": 339068,
+  "year": 1384,
+  "stores": [
+   [
+    "construction-site-000036",
+    1
+   ]
+  ],
+  "granaryMalt": [
+   [
+    "granary-42-37-0",
+    0
+   ],
+   [
+    "construction-site-000020",
+    0
+   ],
+   [
+    "construction-site-000034",
+    0
+   ],
+   [
+    "construction-site-000064",
+    0
+   ],
+   [
+    "construction-site-000070",
+    0
+   ]
+  ]
+ }
+}

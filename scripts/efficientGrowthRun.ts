@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto';
+import { refuseHeavyOnMac } from './remote/localGuard.mjs';
 import type { AdvisorDiagnosticReceipt } from './economyHarnessAutoplay';
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -102,6 +103,7 @@ function stableLabourSummary(samples: readonly { tick: number; idle: number; pop
 }
 
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  refuseHeavyOnMac("가드레일(scripts/efficientGrowthRun.ts)", { remote: "npm run remote:guardrail" });
   const result = runEfficientGrowth(process.argv.slice(2));
   process.stdout.write(`${JSON.stringify(result)}\n`);
   if (!result.simulationPassed) process.exitCode = 1;

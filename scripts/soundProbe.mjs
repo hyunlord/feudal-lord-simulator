@@ -3,6 +3,8 @@
 // played by itself are listed; then each of the 15 is played once by hand, mute is switched on (nothing plays) and
 // off, and the stored preference is read back.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/soundProbe.mjs <out.json> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/soundProbe.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/soundProbe.mjs …", entry: import.meta.url });
 import { writeFile } from 'node:fs/promises';
 
 const [out] = process.argv.slice(2);

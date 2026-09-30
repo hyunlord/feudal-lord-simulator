@@ -12,6 +12,8 @@
 //   seams:    join coverage of the face, ridge and shore strips as the game joins them (a | b | c crossfades): the body
 //             rows must stay opaque across every join, and the colour step there must not exceed the strip's own.
 //   PLAYWRIGHT_MODULE=... node scripts/wallFaceEvidence.mjs seams <out.json> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/wallFaceEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/wallFaceEvidence.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';

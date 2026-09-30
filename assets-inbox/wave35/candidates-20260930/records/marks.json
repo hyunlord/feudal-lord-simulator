@@ -1,0 +1,395 @@
+[
+  {
+    "id": "promise_kept",
+    "group": "C_promises",
+    "width": 64,
+    "height": 64,
+    "prompt": "Use case: stylized-concept. Create ONE production raster game UI asset. One securely tied ochre linen ribbon with an intact muted red round wax seal at the knot; kept promise mark. Style: restrained hand-painted medieval manuscript UI, warm parchment and oak, muted red and aged brass, subtle material brush texture, 80% functional readability and 20% period ornament. South England 1300–1450 feel. Flat frontal icon, bold simple silhouette readable at 64 pixels. Entire isolated object fully visible with comfortable transparent padding. Actual RGBA transparent background. NO letters, numerals, pseudo-writing, words, watermark, frame, surrounding scene, UI screenshot, or checkerboard. Square canvas. References are style only: project UI kit and Wave19 parchment/wood tone, Wave14 painted surface; do not reproduce their text or layout.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-1c7d08a8-f57f-4235-8c62-89dd2fb28d25.png",
+    "references": [
+      "references/ui-kit.jpg",
+      "references/wave19.jpg",
+      "references/wave14.jpg"
+    ],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "raw": {
+      "path": "raw/marks/promise_kept.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "d002d895da016cd693d74321c989b7e1545d7bbb57a4cf2974f1754711b92ed0"
+    },
+    "output": "assets/C_promises/promise_kept.png",
+    "postprocess": "Alpha trim; proportional Lanczos3 fit with at least4px padding; exact RGBA canvas.",
+    "sha256": "f9c388ba345e0ba0e67a28a54171bf67c9c6110dde61ed3328ae742d62c83259",
+    "qa": {
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "transparentPixels": 2602,
+      "opaquePixels": 160,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  },
+  {
+    "id": "promise_active",
+    "group": "C_promises",
+    "width": 64,
+    "height": 64,
+    "prompt": "Use case: stylized-concept. Create ONE production raster game UI asset. One open loosely knotted ochre linen ribbon, two separated trailing ends, open loop; ongoing promise mark. No wax seal. Style: restrained hand-painted medieval manuscript UI, warm parchment and oak, muted red and aged brass, subtle material brush texture, 80% functional readability and 20% period ornament. South England 1300–1450 feel. Flat frontal icon, bold simple silhouette readable at 64 pixels. Entire isolated object fully visible with comfortable transparent padding. Actual RGBA transparent background. NO letters, numerals, pseudo-writing, words, watermark, frame, surrounding scene, UI screenshot, or checkerboard. Square canvas. References are style only: project UI kit and Wave19 parchment/wood tone, Wave14 painted surface; do not reproduce their text or layout.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-cfea75ce-fe09-4246-8977-4ccd624b03f9.png",
+    "references": [
+      "references/ui-kit.jpg",
+      "references/wave19.jpg",
+      "references/wave14.jpg"
+    ],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "raw": {
+      "path": "raw/marks/promise_active.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "b3c4d4dc4ffcd4a34096c02e8a9503a7e0a6a0823b275896ae998a8f15fc2100"
+    },
+    "output": "assets/C_promises/promise_active.png",
+    "postprocess": "Alpha trim; proportional Lanczos3 fit with at least4px padding; exact RGBA canvas.",
+    "sha256": "cef311cd372f54cc75e87dc8f66ed0eb615a55cf4fe5ee812ecb1e075ddf789f",
+    "qa": {
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "transparentPixels": 2729,
+      "opaquePixels": 196,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  },
+  {
+    "id": "promise_due",
+    "group": "C_promises",
+    "width": 64,
+    "height": 64,
+    "prompt": "Use case: stylized-concept. Create ONE production raster game UI asset. One ochre linen ribbon with one small oak and brass hourglass in front; clear hourglass silhouette, deadline soon mark. Style: restrained hand-painted medieval manuscript UI, warm parchment and oak, muted red and aged brass, subtle material brush texture, 80% functional readability and 20% period ornament. South England 1300–1450 feel. Flat frontal icon, bold simple silhouette readable at 64 pixels. Entire isolated object fully visible with comfortable transparent padding. Actual RGBA transparent background. NO letters, numerals, pseudo-writing, words, watermark, frame, surrounding scene, UI screenshot, or checkerboard. Square canvas. References are style only: project UI kit and Wave19 parchment/wood tone, Wave14 painted surface; do not reproduce their text or layout.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-56596452-d978-498a-89b9-f63ab738c4a5.png",
+    "references": [
+      "references/ui-kit.jpg",
+      "references/wave19.jpg",
+      "references/wave14.jpg"
+    ],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "raw": {
+      "path": "raw/marks/promise_due.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "58dced6f428da2f6110ed51ea8b06c8cb610b17b285cadf494c36796c1e42c8a"
+    },
+    "output": "assets/C_promises/promise_due.png",
+    "postprocess": "Alpha trim; proportional Lanczos3 fit with at least4px padding; exact RGBA canvas.",
+    "sha256": "2b69f532987007e9639eb6b2ceedd1330088a275cf7a3801ef989985022eb47c",
+    "qa": {
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "transparentPixels": 2748,
+      "opaquePixels": 119,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  },
+  {
+    "id": "promise_broken",
+    "group": "C_promises",
+    "width": 64,
+    "height": 64,
+    "prompt": "Use case: stylized-concept. Create ONE production raster game UI asset. One torn ochre linen ribbon with visibly separated ragged ends and a broken muted red wax seal split in two; broken promise mark. Style: restrained hand-painted medieval manuscript UI, warm parchment and oak, muted red and aged brass, subtle material brush texture, 80% functional readability and 20% period ornament. South England 1300–1450 feel. Flat frontal icon, bold simple silhouette readable at 64 pixels. Entire isolated object fully visible with comfortable transparent padding. Actual RGBA transparent background. NO letters, numerals, pseudo-writing, words, watermark, frame, surrounding scene, UI screenshot, or checkerboard. Square canvas. References are style only: project UI kit and Wave19 parchment/wood tone, Wave14 painted surface; do not reproduce their text or layout.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-cb129e79-0547-499d-a787-f7cac8509862.png",
+    "references": [
+      "references/ui-kit.jpg",
+      "references/wave19.jpg",
+      "references/wave14.jpg"
+    ],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "raw": {
+      "path": "raw/marks/promise_broken.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "0b68ba2d1681aabb484a85d2bea9213953000205b8622fc9a77822d54b87c8bf"
+    },
+    "output": "assets/C_promises/promise_broken.png",
+    "postprocess": "Alpha trim; proportional Lanczos3 fit with at least4px padding; exact RGBA canvas.",
+    "sha256": "4019cb7e43c35794f4540e0b69300870b3718d5421614b64622b979884cce96d",
+    "qa": {
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "transparentPixels": 3053,
+      "opaquePixels": 116,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  },
+  {
+    "id": "acceptance_scale",
+    "group": "B_negotiation",
+    "width": 640,
+    "height": 128,
+    "prompt": "Use case: stylized-concept. Create ONE production raster game UI asset. ONE horizontal sprite strip, exactly FIVE distinct separate balance scales spaced equally left to right in five equal square cells on transparent background. Each balance scale has identical oak upright, brass beam and two brass hanging pans, frontal view. Cell 1 beam LEFT END DEEPLY LOWER than right (30 degree rise toward right); cell 2 LEFT END SLIGHTLY LOWER (15 degree rise); cell 3 LEVEL HORIZONTAL; cell 4 RIGHT END SLIGHTLY LOWER (15 degree fall); cell 5 RIGHT END DEEPLY LOWER (30 degree fall). Five unmistakably different angles, no extra scales. Separate clear transparent gutters. All bases on same baseline. Wide 5:1 composition. No bar, no fill meter, no labels. Style: restrained hand-painted medieval manuscript UI, warm parchment and oak, muted red and aged brass, subtle material brush texture, 80% functional readability and 20% period ornament. South England 1300–1450 feel. Flat frontal view, bold simple silhouette. Entire objects fully visible with comfortable transparent padding. Actual RGBA transparent background. NO letters, numerals, pseudo-writing, words, watermark, surrounding scene, UI screenshot, or checkerboard. Wide horizontal canvas, five scales in one row. References are style only: project UI kit and Wave19 parchment/wood tone, Wave14 painted surface; do not reproduce their text or layout.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-d07a7781-dc32-4e7e-a0df-16b6776578b4.png",
+    "references": [
+      "references/ui-kit.jpg",
+      "references/wave19.jpg",
+      "references/wave14.jpg"
+    ],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "raw": {
+      "path": "raw/marks/acceptance_scale.png",
+      "width": 2172,
+      "height": 724,
+      "sha256": "860cb04197c585f80730aacb29b1f17843ce277752aa70f712cbe47219b3a278"
+    },
+    "output": "assets/B_negotiation/acceptance_scale.png",
+    "postprocess": "Split raw into five equal x intervals; alpha trim each; proportional fit112x112; center in128x128cell; baseline120. No repainting.",
+    "cell_order": [
+      "left_deep",
+      "left_slight",
+      "level",
+      "right_slight",
+      "right_deep"
+    ],
+    "sha256": "adfcbfe986bdf7e7fb0a7fdfae0ef0e9be50c816775523c3079ce64ce095301f",
+    "qa": {
+      "width": 640,
+      "height": 128,
+      "channels": 4,
+      "transparentPixels": 56848,
+      "opaquePixels": 2265,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  },
+  {
+    "id": "seal_stamped",
+    "group": "B_negotiation",
+    "width": 96,
+    "height": 96,
+    "prompt": "Use case: stylized-concept. Create ONE production raster game UI asset. One round muted red wax seal stamped with a simple abstract five-petal rosette. No real family arms or text. Style: restrained hand-painted medieval manuscript UI, warm parchment and oak, muted red and aged brass, subtle material brush texture, 80% functional readability and 20% period ornament. South England 1300–1450 feel. Flat frontal view, bold simple silhouette. Entire objects fully visible with comfortable transparent padding. Actual RGBA transparent background. NO letters, numerals, pseudo-writing, words, watermark, surrounding scene, UI screenshot, or checkerboard. Square canvas. References are style only: project UI kit and Wave19 parchment/wood tone, Wave14 painted surface; do not reproduce their text or layout.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-c63a91eb-d774-4338-b0d1-c3283d4c1220.png",
+    "references": [
+      "references/ui-kit.jpg",
+      "references/wave19.jpg",
+      "references/wave14.jpg"
+    ],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "raw": {
+      "path": "raw/marks/seal_stamped.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6ccf50ee05d73fce90b95918c385162acbfa419b5218aec78f3407a653294d1f"
+    },
+    "output": "assets/B_negotiation/seal_stamped.png",
+    "postprocess": "Alpha trim; proportional Lanczos3 fit with at least4px padding; exact RGBA canvas.",
+    "sha256": "0bbe10ccfe0bb3d842a45f09ee3cbe486bbdfeed10b8d03ec91a80bbc0710b03",
+    "qa": {
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 3164,
+      "opaquePixels": 193,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  },
+  {
+    "id": "seal_broken",
+    "group": "B_negotiation",
+    "width": 96,
+    "height": 96,
+    "prompt": "Use case: stylized-concept. Create ONE production raster game UI asset. One round muted red wax seal stamped with a simple abstract five-petal rosette, visibly split across its center into two separated jagged pieces. No real family arms or text. Style: restrained hand-painted medieval manuscript UI, warm parchment and oak, muted red and aged brass, subtle material brush texture, 80% functional readability and 20% period ornament. South England 1300–1450 feel. Flat frontal view, bold simple silhouette. Entire objects fully visible with comfortable transparent padding. Actual RGBA transparent background. NO letters, numerals, pseudo-writing, words, watermark, surrounding scene, UI screenshot, or checkerboard. Square canvas. References are style only: project UI kit and Wave19 parchment/wood tone, Wave14 painted surface; do not reproduce their text or layout.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-01e5729f-3f31-4f69-8afa-66cab8175dd6.png",
+    "references": [
+      "references/ui-kit.jpg",
+      "references/wave19.jpg",
+      "references/wave14.jpg"
+    ],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "raw": {
+      "path": "raw/marks/seal_broken.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1482bfc019bc0c2442353c4d09db801d87c337faaae5adddf5e8eb77a3187682"
+    },
+    "output": "assets/B_negotiation/seal_broken.png",
+    "postprocess": "Alpha trim; proportional Lanczos3 fit with at least4px padding; exact RGBA canvas.",
+    "sha256": "563e2fdef5d813f15bbe452552aa9119225f74ffc11cdd457ae3fea7578dfa7d",
+    "qa": {
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 3638,
+      "opaquePixels": 276,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  },
+  {
+    "id": "witness_seal",
+    "group": "C_promises",
+    "width": 64,
+    "height": 64,
+    "prompt": "Use case: stylized-concept. Create ONE production raster game UI asset. One muted red circular wax seal stamped with a single simple eye shape, almond contour and pupil only. No other markings. Style: restrained hand-painted medieval manuscript UI, warm parchment and oak, muted red and aged brass, subtle material brush texture, 80% functional readability and 20% period ornament. South England 1300–1450 feel. Flat frontal icon, bold simple silhouette readable at 64 pixels. Entire isolated object fully visible with comfortable transparent padding. Actual RGBA transparent background. NO letters, numerals, pseudo-writing, words, watermark, surrounding scene, UI screenshot, or checkerboard. Square canvas. References are style only: project UI kit and Wave19 parchment/wood tone, Wave14 painted surface; do not reproduce their text or layout.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-be731d80-51d6-4433-8bc7-fff19a38ed00.png",
+    "references": [
+      "references/ui-kit.jpg",
+      "references/wave19.jpg",
+      "references/wave14.jpg"
+    ],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "raw": {
+      "path": "raw/marks/witness_seal.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "469929f4d0352c411134afc8135209a4b6c6f1effe7fc691b9434cdd7ed1566c"
+    },
+    "output": "assets/C_promises/witness_seal.png",
+    "postprocess": "Alpha trim; proportional Lanczos3 fit with at least4px padding; exact RGBA canvas.",
+    "sha256": "749f53e93e0a6b623281a38e80cb5215a1022b97a5a97a3509f5b94d4526589b",
+    "qa": {
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "transparentPixels": 1685,
+      "opaquePixels": 102,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  },
+  {
+    "id": "debt_note",
+    "group": "C_promises",
+    "width": 128,
+    "height": 96,
+    "prompt": "Use case: stylized-concept. Create ONE production raster game UI asset. One folded blank warm parchment letter tied with thin brown cord, landscape rectangular folded packet. No writing anywhere. Style: restrained hand-painted medieval manuscript UI, warm parchment and oak, muted red and aged brass, subtle material brush texture, 80% functional readability and 20% period ornament. South England 1300–1450 feel. Flat frontal icon, bold simple silhouette readable at 128 pixels. Entire isolated object fully visible with comfortable transparent padding. Actual RGBA transparent background. NO letters, numerals, pseudo-writing, words, watermark, surrounding scene, UI screenshot, or checkerboard. Square canvas. References are style only: project UI kit and Wave19 parchment/wood tone, Wave14 painted surface; do not reproduce their text or layout.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-cdc1eea6-ba1c-4209-86ff-015f81548fde.png",
+    "references": [
+      "references/ui-kit.jpg",
+      "references/wave19.jpg",
+      "references/wave14.jpg"
+    ],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "raw": {
+      "path": "raw/marks/debt_note.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "85b14ab666c6e1205c51e4214b36f508de87343f0d6c1bce2d7cec41139232a1"
+    },
+    "output": "assets/C_promises/debt_note.png",
+    "postprocess": "Alpha trim; proportional Lanczos3 fit with at least4px padding; exact RGBA canvas.",
+    "sha256": "23a2bf0b8584dfce71fa1365f0a2ae3ccd3ceba5c6cd2e366ced217b337e7c61",
+    "qa": {
+      "width": 128,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 4733,
+      "opaquePixels": 303,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  },
+  {
+    "id": "deadline_marker",
+    "group": "C_promises",
+    "width": 64,
+    "height": 64,
+    "prompt": "Use case: stylized-concept. Create ONE production raster game UI asset. One small blank warm parchment calendar leaf, simple folded top edge and one muted red wax dot near bottom. No grid text or numerals. Style: restrained hand-painted medieval manuscript UI, warm parchment and oak, muted red and aged brass, subtle material brush texture, 80% functional readability and 20% period ornament. South England 1300–1450 feel. Flat frontal icon, bold simple silhouette readable at 64 pixels. Entire isolated object fully visible with comfortable transparent padding. Actual RGBA transparent background. NO letters, numerals, pseudo-writing, words, watermark, surrounding scene, UI screenshot, or checkerboard. Square canvas. References are style only: project UI kit and Wave19 parchment/wood tone, Wave14 painted surface; do not reproduce their text or layout.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-9f5600f0-e78e-436a-8692-5f972bb51204.png",
+    "references": [
+      "references/ui-kit.jpg",
+      "references/wave19.jpg",
+      "references/wave14.jpg"
+    ],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "raw": {
+      "path": "raw/marks/deadline_marker.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "7364835c0bff631af2cf3c8698734d1f28176ec9c842e15ce5e82e23495369ad"
+    },
+    "output": "assets/C_promises/deadline_marker.png",
+    "postprocess": "Alpha trim; proportional Lanczos3 fit with at least4px padding; exact RGBA canvas.",
+    "sha256": "eb9cdc22a28b4c969a970bf0b76854b64699570f87561009416f6b4660220ef5",
+    "qa": {
+      "width": 64,
+      "height": 64,
+      "channels": 4,
+      "transparentPixels": 1610,
+      "opaquePixels": 138,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  },
+  {
+    "id": "seal_empty",
+    "group": "B_negotiation",
+    "width": 96,
+    "height": 96,
+    "prompt": "Create ONE tiny empty wax-seal placement marker for a medieval game UI, transparent RGBA. Extremely restrained: a single plain thin circular brown embossed ring, with slightly irregular handpressed rim, low contrast parchment-brown edge, EMPTY TRANSPARENT center. NO ornament, NO gold, NO red, NO fleur-de-lis, NO points, NO leaves, NO decorative frame, NO flourishes, NO insignia, NO letters, NO background. Just a plain shallow circular indentation rim where wax will later be placed. Flat frontal view, muted painted material texture, square canvas, centered with 12 percent transparent padding. Readable at 96x96 pixels. This is a functional empty seal location, not a portrait frame.",
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f00a-f885-7383-8224-02ed1653b042/exec-e93d15a6-721e-4b82-9a6d-b80ccbc3e339.png",
+    "references": [],
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "model": null,
+    "seed": null,
+    "rejected": {
+      "raw": "raw/marks/seal_empty-rejected-v1.png",
+      "sha256": "02584901fb369968f22cc58aa534e906584590a95a0327c871d9604ccdf304bf",
+      "reason": "Excess ornament"
+    },
+    "raw": {
+      "path": "raw/marks/seal_empty.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "bbd9ef23dcd3150f7ca328d590bafbf31466750c8327940b02d4e38213e3f169"
+    },
+    "output": "assets/B_negotiation/seal_empty.png",
+    "postprocess": "Alpha trim; proportional Lanczos3 fit with at least4px padding; exact RGBA canvas.",
+    "sha256": "b5e0728ededf2c9643afc1427b4a6ca3d09ca10170bef403ec48565357b4a657",
+    "qa": {
+      "width": 96,
+      "height": 96,
+      "channels": 4,
+      "transparentPixels": 6850,
+      "opaquePixels": 362,
+      "text": "none visually observed",
+      "visual_inspected": true
+    }
+  }
+]

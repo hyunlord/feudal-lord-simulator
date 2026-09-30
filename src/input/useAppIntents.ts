@@ -3,6 +3,7 @@ import { playSound } from "../audio/audioEngine";
 import type { GameSpeed, GameState, OverlayMode } from "../engine/engine.types";
 import { platformServices } from "../platform/platform";
 import { applyPalisadeIntent, type PalisadeDraftState } from "../render/palisadeDraftInteraction";
+import { presentationPreference, setPresentationPreference } from "../render/presentationPreferences";
 import { steppedPlacementTool } from "../render/placementToolCycle";
 import type { PlacementTool } from "../render/renderer";
 import { DEFAULT_ZONE_BRUSH_RADIUS, type ZoneBrushTool } from "../render/zoneBrushInteraction";
@@ -67,6 +68,8 @@ export function useAppIntents(input: {
         return "handled";
       case "panel":
         if (intent.panel === "hud") setUi(current => reduceUi(current, { type: "toggle_hud" }));
+        // NAT-2: ` shows or hides the QA info overlay (the settings' developer switch).
+        else if (intent.panel === "qa") setPresentationPreference("qaOverlay", !presentationPreference("qaOverlay"));
         // CHRON-1: C opens the chronicle over a state with no modal up, and closes it.
         else if (intent.panel === "chronicle") setUi(current => topModal(current) === "history" ? reduceUi(current, { type: "pop_modal" })
           : current.modals.length === 0 ? reduceUi(current, { type: "push_modal", modal: "history" }) : current);

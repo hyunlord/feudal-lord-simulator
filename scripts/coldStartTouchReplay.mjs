@@ -6,6 +6,8 @@
 // clock, so the game is at the same moment when each tap lands. A hover has no touch form and is counted; Esc and
 // Space become the on-screen cancel, close and pause controls when there is one, otherwise "keyboard only".
 //   node scripts/coldStartTouchReplay.mjs <desktop actions.jsonl> <out-dir> --url <game> [--from-new 1]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/coldStartTouchReplay.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/coldStartTouchReplay.mjs …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 

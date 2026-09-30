@@ -19,6 +19,9 @@ import type { InputIntent, StrokeToolId } from "./inputIntent";
 //  - Right click (contextmenu) = cancel aimed at the map; a road stroke it cancels swallows the rest of that press.
 //  - Keys: Esc cancel, Z undo (Shift+Z / Y redo), [ ] brush size, O problem view, 1-4 overlays, Enter confirm, Q / E tool step,
 //    + / - zoom at the view centre, Space held = pan with the left button, Space tap = pause, WASD / arrows camera.
+//  - SMOOTH-2R: the DOM's mouse moves are queued (`queueMove`) and handled once per frame from the last one (`frame`,
+//    or any other input first, so the order stays): one hover, one road / palisade / pan step per frame. A zone brush
+//    stroke keeps every queued point (its sweep is painted through them), without the hover for each.
 
 export type ArmedTools = {
   readonly zone: boolean;
@@ -68,8 +71,8 @@ const PREVENT: Outcome = { preventDefault: true };
 const ZOOM_IN = 1.1;
 const ZOOM_OUT = 0.9;
 /** UX-3 panel keys: B build drawer, L ledger drawer, H hide the HUD. */
-/** CHRON-1: C opens (and closes) the chronicle screen. */
-const PANEL_KEYS: Readonly<Record<string, "build" | "ledger" | "hud" | "chronicle">> = { KeyB: "build", KeyL: "ledger", KeyH: "hud", KeyC: "chronicle" };
+/** CHRON-1: C opens (and closes) the chronicle screen. NAT-2: ` (Backquote, free on every layout) the QA info overlay. */
+const PANEL_KEYS: Readonly<Record<string, "build" | "ledger" | "hud" | "chronicle" | "qa">> = { KeyB: "build", KeyL: "ledger", KeyH: "hud", KeyC: "chronicle", Backquote: "qa" };
 const OVERLAY_SLOTS: Readonly<Record<string, 1 | 2 | 3 | 4>> = { Digit1: 1, Digit2: 2, Digit3: 3, Digit4: 4 };
 const ZOOM_KEYS: Readonly<Record<string, number>> = { Equal: ZOOM_IN, NumpadAdd: ZOOM_IN, Minus: ZOOM_OUT, NumpadSubtract: ZOOM_OUT };
 const TOOL_STEP_KEYS: Readonly<Record<string, -1 | 1>> = { KeyQ: -1, KeyE: 1 };
@@ -89,6 +92,8 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
   let strokeCancelled = false;
   let suppressClick = false;
   let suppressTimer: number | null = null;
+  /** SMOOTH-2R: mouse moves not handled yet (the last one; every one while a zone brush stroke is held). */
+  let queued: Pick<PointerData, "clientX" | "clientY">[] = [];
 
   const canvasPoint = (pointer: { readonly clientX: number; readonly clientY: number }): Point => clientToCanvas(pointer, context.bounds());
   const worldAt = (point: Point) => canvasToWorld(point, context.camera());
@@ -107,6 +112,34 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
     suppressClick = true;
   };
 
+  const move = (pointer: Pick<PointerData, "clientX" | "clientY">, hover: boolean) => {
+    const point = canvasPoint(pointer);
+    if (hover) {
+      updateCameraEdgePoint(cameraInput, point);
+      context.emit({ kind: "point", screen: point });
+    }
+    if (gesture === null) return;
+    gesture.moved = gesture.moved || cameraDragThresholdExceeded(gesture.start, point);
+    if (gesture.kind === "stroke") {
+      context.emit({ kind: "strokeMove", world: worldAt(point) });
+    } else {
+      const camera = context.camera();
+      gesture.startCamera ??= camera;
+      if (gesture.moved) {
+        context.emit({ kind: "pan", dx: gesture.startCamera.panX + point.x - gesture.start.x - camera.panX,
+          dy: gesture.startCamera.panY + point.y - gesture.start.y - camera.panY });
+      }
+    }
+    if (gesture.moved) { suppressClick = true; spaceTap = false; }
+  };
+  // Only a zone stroke queues more than one move: its earlier points step the stroke; the last one also hovers.
+  const flushMoves = () => {
+    if (queued.length === 0) return;
+    const moves = queued;
+    queued = [];
+    moves.forEach((pointer, index) => move(pointer, index === moves.length - 1));
+  };
+
   return {
     /** A pan gesture is in progress (keyboard and edge scrolling wait for it). */
     panning: () => gesture?.kind === "pan",
@@ -119,6 +152,7 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
      * press does nothing and its click is swallowed.
      */
     abortPress(pointer: Pick<PointerData, "clientX" | "clientY">): void {
+      flushMoves();
       if (gesture === null) return;
       const ended = gesture;
       gesture = null;
@@ -128,9 +162,10 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
     },
 
     /** The next click is spent (a long press became `inspect`). */
-    swallowClick(): void { suppressClick = true; },
+    swallowClick(): void { flushMoves(); suppressClick = true; },
 
     pointerDown(pointer: PointerData): Outcome {
+      flushMoves();
       if (pointer.button === 2 && gesture?.kind === "stroke" && gesture.tool === "road") return NONE;
       if (pointer.button === 0) strokeCancelled = false;
       spaceTap = false;
@@ -173,26 +208,22 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
     },
 
     pointerMove(pointer: Pick<PointerData, "clientX" | "clientY">): Outcome {
-      const point = canvasPoint(pointer);
-      updateCameraEdgePoint(cameraInput, point);
-      context.emit({ kind: "point", screen: point });
-      if (gesture === null) return NONE;
-      gesture.moved = gesture.moved || cameraDragThresholdExceeded(gesture.start, point);
-      if (gesture.kind === "stroke") {
-        context.emit({ kind: "strokeMove", world: worldAt(point) });
-      } else {
-        const camera = context.camera();
-        gesture.startCamera ??= camera;
-        if (gesture.moved) {
-          context.emit({ kind: "pan", dx: gesture.startCamera.panX + point.x - gesture.start.x - camera.panX,
-            dy: gesture.startCamera.panY + point.y - gesture.start.y - camera.panY });
-        }
-      }
-      if (gesture.moved) { suppressClick = true; spaceTap = false; }
+      flushMoves();
+      move(pointer, true);
+      return NONE;
+    },
+
+    /** SMOOTH-2R: a DOM mouse move, handled at the next `frame` (or before the next other input). */
+    queueMove(pointer: Pick<PointerData, "clientX" | "clientY">): Outcome {
+      // The drag threshold sees every move, as before (a move out and back within a frame still swallows the click).
+      if (gesture !== null) gesture.moved = gesture.moved || cameraDragThresholdExceeded(gesture.start, canvasPoint(pointer));
+      if (gesture?.kind === "stroke" && gesture.tool === "zone") queued.push(pointer);
+      else queued = [pointer];
       return NONE;
     },
 
     pointerUp(pointer: PointerData): Outcome {
+      flushMoves();
       if (strokeCancelled && pointer.button !== 0) return NONE;
       const cancelled = strokeCancelled;
       strokeCancelled = false;
@@ -212,6 +243,7 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
     },
 
     click(pointer: Pick<PointerData, "clientX" | "clientY">): Outcome {
+      flushMoves();
       if (suppressClick) { suppressClick = false; clearSuppressTimer(); return NONE; }
       if (space || gesture !== null) return NONE;
       context.emit({ kind: "select", world: worldAt(canvasPoint(pointer)) });
@@ -219,22 +251,26 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
     },
 
     contextMenu(pointer: Pick<PointerData, "clientX" | "clientY">): Outcome {
+      flushMoves();
       cancelRoadStroke();
       context.emit({ kind: "cancel", world: worldAt(canvasPoint(pointer)) });
       return PREVENT;
     },
 
     wheel(wheel: WheelData): Outcome {
+      flushMoves();
       context.emit({ kind: "zoom", factor: wheel.deltaY > 0 ? ZOOM_OUT : ZOOM_IN, anchor: canvasPoint(wheel) });
       return PREVENT;
     },
 
     leave(): void {
+      flushMoves();
       updateCameraEdgePoint(cameraInput, null);
       context.emit({ kind: "point", screen: null });
     },
 
     focusLost(): void {
+      flushMoves();
       resetCameraInputState(cameraInput);
       space = false;
       spaceTap = false;
@@ -245,6 +281,7 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
     },
 
     keyDown(key: KeyData): Outcome {
+      flushMoves();
       const target = targetOf(key.target);
       const at = { target };
       if (key.code === "Escape") {
@@ -287,6 +324,7 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
     },
 
     keyUp(key: KeyData): Outcome {
+      flushMoves();
       const cameraKey = cameraInputKeyUp(cameraInput, key.key, now());
       const tap = key.code === "Space" && spaceTap;
       if (key.code === "Space") { space = false; spaceTap = false; }
@@ -298,6 +336,7 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
 
     /** Held camera keys and edge scrolling, once per frame (not while a pan drag holds the camera). */
     frame(nowMs: number, previousMs: number, viewport: { readonly width: number; readonly height: number }): void {
+      flushMoves();
       if (gesture?.kind === "pan") return;
       const camera = context.camera();
       const next = advanceCameraMotion({ input: cameraInput, camera, nowMs, previousMs, viewport, world: context.world() });

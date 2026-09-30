@@ -6,6 +6,8 @@
 //  (cost, area, the fields taken in and when they turn to pasture) with those fields marked, the expansion proclaimed,
 //  then the pending line and the marked fields while zones are painted; the console's new buttons on a touch tablet.
 //   PLAYWRIGHT_MODULE=... node scripts/ux0b2Captures.mjs <out-dir> --url <url> --states <dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ux0b2Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/ux0b2Captures.mjs …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

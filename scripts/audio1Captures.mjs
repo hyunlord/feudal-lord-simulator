@@ -5,6 +5,8 @@
 // level asked) and the sounds started since the last sample; then 5x (loops sink), and the town's bus at 0 (the world
 // goes quiet, the rest stays). JSON logs, one JPEG of each moment.
 //   PLAYWRIGHT_MODULE=... node scripts/audio1Captures.mjs <out-dir> --url <url> --states <dir from scripts/audio1States.ts>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/audio1Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/audio1Captures.mjs …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium } from './renderCommitProbe.mjs';

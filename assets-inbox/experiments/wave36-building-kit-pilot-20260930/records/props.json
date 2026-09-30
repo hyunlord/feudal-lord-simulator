@@ -1,0 +1,547 @@
+[
+  {
+    "id": "add_lean_to",
+    "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. A tiny open-sided timber lean-to annex, one modest single-pitch roof of warm reddish flat clay tiles supported by two front oak posts and rear timber supports. Entire structure freestanding for later compositing against a house, open at front and sides, no enclosed room, no house wall. Roof slopes from back high to front low.",
+    "tool": "image_gen__imagegen",
+    "tool_arguments": {
+      "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. A tiny open-sided timber lean-to annex, one modest single-pitch roof of warm reddish flat clay tiles supported by two front oak posts and rear timber supports. Entire structure freestanding for later compositing against a house, open at front and sides, no enclosed room, no house wall. Roof slopes from back high to front low.",
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-6e14172f-4572-4a6b-860d-db2c72c95e56.png",
+    "status": "candidate",
+    "model": null,
+    "seed": null,
+    "references": [
+      {
+        "path": "references/house_l2-v2.png",
+        "role": "visually inspected style reference; not attached to generation"
+      },
+      {
+        "path": "references/reference-3.jpg",
+        "role": "visually inspected style reference; not attached to generation"
+      }
+    ],
+    "raw": "raw/props/add_lean_to.png",
+    "source": "sources/props/add_lean_to.png",
+    "postprocessing": "None; byte-identical copies",
+    "size": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "sha256": "84344b6123fa4212fa05d58415122807c9d6ccc53468a682ddaad90243dfd090",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      0,
+      54,
+      1311,
+      1173
+    ],
+    "visual_qa": "Standalone requested prop, no text/people/house; upper-left lighting, isometric. Technical fringe may require cleanup at final target size."
+  },
+  {
+    "id": "add_firewood",
+    "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One small neat waist-low pile of split firewood logs, irregular cut ends and brown bark, supported by two simple short timber chocks. No shed or roof.",
+    "tool": "image_gen__imagegen",
+    "tool_arguments": {
+      "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One small neat waist-low pile of split firewood logs, irregular cut ends and brown bark, supported by two simple short timber chocks. No shed or roof.",
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ff3be840-81b1-4984-ad5f-e378cdb96324.png",
+    "status": "candidate",
+    "model": null,
+    "seed": null,
+    "references": [
+      {
+        "path": "references/house_l2-v2.png",
+        "role": "visually inspected style reference; not attached to generation"
+      },
+      {
+        "path": "references/reference-3.jpg",
+        "role": "visually inspected style reference; not attached to generation"
+      }
+    ],
+    "raw": "raw/props/add_firewood.png",
+    "source": "sources/props/add_firewood.png",
+    "postprocessing": "None; byte-identical copies",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "sha256": "f4d3e60c6818ca5ff66314b9546b530ecab77f9851366c566c38a7aa71aea206",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "alpha_bbox": [
+      0,
+      32,
+      1450,
+      996
+    ],
+    "cleanup_attempt": {
+      "id": "add_firewood",
+      "tool_arguments": {
+        "prompt": "Use case: background-extraction. Remove ALL brown glow, haze, backdrop, gradient, and cast shadow surrounding this isolated medieval prop. Preserve the exact object, proportions, texture, colors and isometric view. Output a clean crisp alpha cutout of only the physical object, fully opaque solid object interior, absolutely transparent empty background. No halo, no shadow, no fringe, no new objects. Entire object inside generous margin.",
+        "referenced_image_paths": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ff3be840-81b1-4984-ad5f-e378cdb96324.png"
+        ],
+        "transparent_background": true
+      },
+      "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-c95b0e51-a0c3-4dfb-8c81-c6d2f01065d3.png",
+      "raw": "raw/props/add_firewood-cleanup-attempt.png",
+      "sha256": "cc703666fe90b529a3db5336303fc8f73b04a5374811e4caecf392537874ef0f",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "status": "rejected_halo_persists"
+    },
+    "visual_qa": "Physical prop matches request; brown semitransparent backdrop halo persists after built-in edit. Original retained as source pending alpha cleanup."
+  },
+  {
+    "id": "add_porch",
+    "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One small house entrance porch accessory: narrow pitched roof of warm reddish flat clay tiles on two oak front posts, rear support beam for attaching against a house. Open and empty underneath, no door and no house wall. Much smaller than a room.",
+    "tool": "image_gen__imagegen",
+    "tool_arguments": {
+      "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One small house entrance porch accessory: narrow pitched roof of warm reddish flat clay tiles on two oak front posts, rear support beam for attaching against a house. Open and empty underneath, no door and no house wall. Much smaller than a room.",
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-d9c9595a-7ac8-44b1-9f6f-ae9f787dc965.png",
+    "status": "candidate",
+    "model": null,
+    "seed": null,
+    "references": [
+      {
+        "path": "references/house_l2-v2.png",
+        "role": "visually inspected style reference; not attached to generation"
+      },
+      {
+        "path": "references/reference-3.jpg",
+        "role": "visually inspected style reference; not attached to generation"
+      }
+    ],
+    "raw": "raw/props/add_porch.png",
+    "source": "sources/props/add_porch.png",
+    "postprocessing": "None; byte-identical copies",
+    "size": [
+      1302,
+      1208
+    ],
+    "mode": "RGBA",
+    "sha256": "49cf983882e9f69ae9f5c8803441e3f7752c2f88cea8f1f44ac9e3964af2cf67",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      0,
+      33,
+      1288,
+      1208
+    ],
+    "visual_qa": "Standalone requested prop, no text/people/house; upper-left lighting, isometric. Technical fringe may require cleanup at final target size."
+  },
+  {
+    "id": "add_shutters",
+    "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One matched pair of simple brown oak board window shutters as a single accessory asset: two narrow rectangular shutter leaves aligned side by side, lightly open outward in the front facade plane shown in the house reference. Board grain and simple iron hinges, no window, glass, frame, or wall.",
+    "tool": "image_gen__imagegen",
+    "tool_arguments": {
+      "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One matched pair of simple brown oak board window shutters as a single accessory asset: two narrow rectangular shutter leaves aligned side by side, lightly open outward in the front facade plane shown in the house reference. Board grain and simple iron hinges, no window, glass, frame, or wall.",
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-c9ed373d-aee0-4634-b627-1b58f007ea2f.png",
+    "status": "candidate",
+    "model": null,
+    "seed": null,
+    "references": [
+      {
+        "path": "references/house_l2-v2.png",
+        "role": "visually inspected style reference; not attached to generation"
+      },
+      {
+        "path": "references/reference-3.jpg",
+        "role": "visually inspected style reference; not attached to generation"
+      }
+    ],
+    "raw": "raw/props/add_shutters.png",
+    "source": "sources/props/add_shutters.png",
+    "postprocessing": "None; byte-identical copies",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "sha256": "08d481815ed3d3efd700bd50461c421c0c7fa221ef34d547038aee5b10ca4099",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "alpha_bbox": [
+      0,
+      21,
+      1468,
+      990
+    ],
+    "cleanup_attempt": {
+      "id": "add_shutters",
+      "tool_arguments": {
+        "prompt": "Use case: background-extraction. Remove ALL brown glow, haze, backdrop, gradient, and cast shadow surrounding this isolated medieval prop. Preserve the exact object, proportions, texture, colors and isometric view. Output a clean crisp alpha cutout of only the physical object, fully opaque solid object interior, absolutely transparent empty background. No halo, no shadow, no fringe, no new objects. Entire object inside generous margin.",
+        "referenced_image_paths": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-c9ed373d-aee0-4634-b627-1b58f007ea2f.png"
+        ],
+        "transparent_background": true
+      },
+      "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-3a7b2787-9eec-4f36-b738-d087833c3f82.png",
+      "raw": "raw/props/add_shutters-cleanup-attempt.png",
+      "sha256": "054c9bed0cb9bdbbf89f3b1a62a2cc7bb28879160a4c1a759ecab8b217728ef2",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "status": "rejected_halo_persists"
+    },
+    "visual_qa": "Physical prop matches request; brown semitransparent backdrop halo persists after built-in edit. Original retained as source pending alpha cleanup."
+  },
+  {
+    "id": "add_steps",
+    "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. A short modest set of three rough warm-gray stone entrance steps as one accessory. Rectangular stairway seen in matching isometric view, climbs away from viewer toward a missing house entrance. No door, railings, wall or ground plane.",
+    "tool": "image_gen__imagegen",
+    "tool_arguments": {
+      "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. A short modest set of three rough warm-gray stone entrance steps as one accessory. Rectangular stairway seen in matching isometric view, climbs away from viewer toward a missing house entrance. No door, railings, wall or ground plane.",
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ab14662d-36f1-4252-a8fd-8ca0c1cdc953.png",
+    "status": "candidate",
+    "model": null,
+    "seed": null,
+    "references": [
+      {
+        "path": "references/house_l2-v2.png",
+        "role": "visually inspected style reference; not attached to generation"
+      },
+      {
+        "path": "references/reference-3.jpg",
+        "role": "visually inspected style reference; not attached to generation"
+      }
+    ],
+    "raw": "raw/props/add_steps.png",
+    "source": "sources/props/add_steps.png",
+    "postprocessing": "None; byte-identical copies",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "sha256": "064cf6742d088f3a123f219de1511caa62ea48c0f8f2a41b6d48232de8836560",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "alpha_bbox": [
+      0,
+      31,
+      1522,
+      1024
+    ],
+    "cleanup_attempt": {
+      "id": "add_steps",
+      "tool_arguments": {
+        "prompt": "Use case: background-extraction. Remove ALL brown glow, haze, backdrop, gradient, and cast shadow surrounding this isolated medieval prop. Preserve the exact object, proportions, texture, colors and isometric view. Output a clean crisp alpha cutout of only the physical object, fully opaque solid object interior, absolutely transparent empty background. No halo, no shadow, no fringe, no new objects. Entire object inside generous margin.",
+        "referenced_image_paths": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ab14662d-36f1-4252-a8fd-8ca0c1cdc953.png"
+        ],
+        "transparent_background": true
+      },
+      "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ec1d0d8f-14b2-4cae-a61a-56863aa06e5d.png",
+      "raw": "raw/props/add_steps-cleanup-attempt.png",
+      "sha256": "f8f615b0fcd7734706fdec5d28ed4cff7d9b8835d8857ddaa5353462b4baef9a",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "status": "rejected_halo_persists"
+    },
+    "visual_qa": "Physical prop matches request; brown semitransparent backdrop halo persists after built-in edit. Original retained as source pending alpha cleanup."
+  },
+  {
+    "id": "sign_bread",
+    "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One small shallow wicker basket containing three small rustic round brown bread loaves. An ordinary real basket prop, no signboard or text, no hanging support.",
+    "tool": "image_gen__imagegen",
+    "tool_arguments": {
+      "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One small shallow wicker basket containing three small rustic round brown bread loaves. An ordinary real basket prop, no signboard or text, no hanging support.",
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-51e33205-0324-4062-8cd0-dda0c4a714a4.png",
+    "status": "candidate",
+    "model": null,
+    "seed": null,
+    "references": [
+      {
+        "path": "references/house_l2-v2.png",
+        "role": "visually inspected style reference; not attached to generation"
+      },
+      {
+        "path": "references/reference-3.jpg",
+        "role": "visually inspected style reference; not attached to generation"
+      }
+    ],
+    "raw": "raw/props/sign_bread.png",
+    "source": "sources/props/sign_bread.png",
+    "postprocessing": "None; byte-identical copies",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "sha256": "ba5e15407961dbd1325a677b125ffc87dcab51593705a1d207274f3139c41bfb",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "alpha_bbox": [
+      0,
+      9,
+      1500,
+      1000
+    ],
+    "cleanup_attempt": {
+      "id": "sign_bread",
+      "tool_arguments": {
+        "prompt": "Use case: background-extraction. Remove ALL brown glow, haze, backdrop, gradient, and cast shadow surrounding this isolated medieval prop. Preserve the exact object, proportions, texture, colors and isometric view. Output a clean crisp alpha cutout of only the physical object, fully opaque solid object interior, absolutely transparent empty background. No halo, no shadow, no fringe, no new objects. Entire object inside generous margin.",
+        "referenced_image_paths": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-51e33205-0324-4062-8cd0-dda0c4a714a4.png"
+        ],
+        "transparent_background": true
+      },
+      "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-71c1f891-29d8-4025-83b9-fc7c49fb1437.png",
+      "raw": "raw/props/sign_bread-cleanup-attempt.png",
+      "sha256": "250794908c0650d31ab1458b92fbaa55c7eef3b2614844f918421f229549e331",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "status": "rejected_halo_persists"
+    },
+    "visual_qa": "Physical prop matches request; brown semitransparent backdrop halo persists after built-in edit. Original retained as source pending alpha cleanup."
+  },
+  {
+    "id": "sign_smith",
+    "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One simple dark hand-forged iron horseshoe hanging by a short iron loop from a modest L-shaped oak wall bracket. Real horseshoe object as a smith trade marker, no signboard, no wall.",
+    "tool": "image_gen__imagegen",
+    "tool_arguments": {
+      "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One simple dark hand-forged iron horseshoe hanging by a short iron loop from a modest L-shaped oak wall bracket. Real horseshoe object as a smith trade marker, no signboard, no wall.",
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-e261ad3c-62c3-44b4-b689-363b1e5ebe84.png",
+    "status": "candidate",
+    "model": null,
+    "seed": null,
+    "references": [
+      {
+        "path": "references/house_l2-v2.png",
+        "role": "visually inspected style reference; not attached to generation"
+      },
+      {
+        "path": "references/reference-3.jpg",
+        "role": "visually inspected style reference; not attached to generation"
+      }
+    ],
+    "raw": "raw/props/sign_smith.png",
+    "source": "sources/props/sign_smith.png",
+    "postprocessing": "None; byte-identical copies",
+    "size": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "sha256": "9b8353e09ba527153ddcb307ba4833d6a0c2b0a5361478e6aec2d0b57e154e85",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      0,
+      17,
+      1290,
+      1199
+    ],
+    "visual_qa": "Standalone requested prop, no text/people/house; upper-left lighting, isometric. Technical fringe may require cleanup at final target size."
+  },
+  {
+    "id": "sign_textile",
+    "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. A small compact bundle of two rolled undyed cream linen cloth bolts tied with a thin brown cord. Readable spiral rolled cloth ends. No table, basket, signboard or wall.",
+    "tool": "image_gen__imagegen",
+    "tool_arguments": {
+      "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. A small compact bundle of two rolled undyed cream linen cloth bolts tied with a thin brown cord. Readable spiral rolled cloth ends. No table, basket, signboard or wall.",
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ff2fae48-cb50-4596-bd2b-02dfd790d158.png",
+    "status": "candidate",
+    "model": null,
+    "seed": null,
+    "references": [
+      {
+        "path": "references/house_l2-v2.png",
+        "role": "visually inspected style reference; not attached to generation"
+      },
+      {
+        "path": "references/reference-3.jpg",
+        "role": "visually inspected style reference; not attached to generation"
+      }
+    ],
+    "raw": "raw/props/sign_textile.png",
+    "source": "sources/props/sign_textile.png",
+    "postprocessing": "None; byte-identical copies",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "sha256": "2311fd2629bfc03500e6a9bfe62aef341fbd2fa9f4d51f852d375fd1c3bc59b1",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "alpha_bbox": [
+      0,
+      57,
+      1504,
+      1024
+    ],
+    "cleanup_attempt": {
+      "id": "sign_textile",
+      "tool_arguments": {
+        "prompt": "Use case: background-extraction. Remove ALL brown glow, haze, backdrop, gradient, and cast shadow surrounding this isolated medieval prop. Preserve the exact object, proportions, texture, colors and isometric view. Output a clean crisp alpha cutout of only the physical object, fully opaque solid object interior, absolutely transparent empty background. No halo, no shadow, no fringe, no new objects. Entire object inside generous margin.",
+        "referenced_image_paths": [
+          "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ff2fae48-cb50-4596-bd2b-02dfd790d158.png"
+        ],
+        "transparent_background": true
+      },
+      "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-f084cf51-b790-42b7-98e5-c6b02db08d99.png",
+      "raw": "raw/props/sign_textile-cleanup-attempt.png",
+      "sha256": "272a088e7198855d22e311c8b4c9c06ee55484beb983899a6381f372f87a5538",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "status": "rejected_halo_persists"
+    },
+    "visual_qa": "Physical prop matches request; brown semitransparent backdrop halo persists after built-in edit. Original retained as source pending alpha cleanup."
+  },
+  {
+    "id": "sign_ale",
+    "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One traditional medieval ale-stake trade marker: a plain short oak pole with a small leafy twig bunch tied to its projecting end, simple angled wall mounting brace. Use ordinary oak leaves, NOT hops, no hop cones, no grapes, no barrel, no writing or signboard, no wall.",
+    "tool": "image_gen__imagegen",
+    "tool_arguments": {
+      "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One traditional medieval ale-stake trade marker: a plain short oak pole with a small leafy twig bunch tied to its projecting end, simple angled wall mounting brace. Use ordinary oak leaves, NOT hops, no hop cones, no grapes, no barrel, no writing or signboard, no wall.",
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-46b7dde1-b241-4959-9e20-4d6c1822e89c.png",
+    "status": "candidate",
+    "model": null,
+    "seed": null,
+    "references": [
+      {
+        "path": "references/house_l2-v2.png",
+        "role": "visually inspected style reference; not attached to generation"
+      },
+      {
+        "path": "references/reference-3.jpg",
+        "role": "visually inspected style reference; not attached to generation"
+      }
+    ],
+    "raw": "raw/props/sign_ale.png",
+    "source": "sources/props/sign_ale.png",
+    "postprocessing": "None; byte-identical copies",
+    "size": [
+      1312,
+      1199
+    ],
+    "mode": "RGBA",
+    "sha256": "1111f1e7000ab35c181b3407a8885f9995f0afa6aafb6c5a4988ac98dee91576",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      39,
+      21,
+      1296,
+      1199
+    ],
+    "visual_qa": "Standalone requested prop, no text/people/house; upper-left lighting, isometric. Technical fringe may require cleanup at final target size."
+  },
+  {
+    "id": "sign_merchant",
+    "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One small weathered oak merchant crate, closed plain plank box bound with simple wooden battens, compact and readable in matching isometric view. No metal modern fittings, no contents, markings, label or wall.",
+    "tool": "image_gen__imagegen",
+    "tool_arguments": {
+      "prompt": "Use case: historical-scene. Asset type: one standalone transparent raster sprite for a medieval South England city-building game, 1300\u20131450. Match the viewed project house_l2-v2.png and reference-3.jpg in hand-painted miniature architectural style: warm brown oak, softly weathered material, crisp readable edges, isometric orthographic camera seen from above showing front and right side, upper-left lighting. This is an isolated accessory for that small timber house, NOT a full house. Center the entire accessory alone with generous transparent margin. True transparent RGBA background, no ground plane, no people, no writing, no letters, no label, no watermark, no chimney, no glass, no modern objects, no vector icon style. One small weathered oak merchant crate, closed plain plank box bound with simple wooden battens, compact and readable in matching isometric view. No metal modern fittings, no contents, markings, label or wall.",
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-cc8e4f86-e71f-418b-9f60-2e5767fecb1e.png",
+    "status": "candidate",
+    "model": null,
+    "seed": null,
+    "references": [
+      {
+        "path": "references/house_l2-v2.png",
+        "role": "visually inspected style reference; not attached to generation"
+      },
+      {
+        "path": "references/reference-3.jpg",
+        "role": "visually inspected style reference; not attached to generation"
+      }
+    ],
+    "raw": "raw/props/sign_merchant.png",
+    "source": "sources/props/sign_merchant.png",
+    "postprocessing": "None; byte-identical copies",
+    "size": [
+      1399,
+      1124
+    ],
+    "mode": "RGBA",
+    "sha256": "fea00769f8d35a0ae96a7e0f2e6c75d9f0c8775bb23fd29ad59d0d4e7826349a",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_bbox": [
+      0,
+      21,
+      1289,
+      1124
+    ],
+    "visual_qa": "Standalone requested prop, no text/people/house; upper-left lighting, isometric. Technical fringe may require cleanup at final target size."
+  }
+]

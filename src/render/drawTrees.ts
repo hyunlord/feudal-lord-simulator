@@ -2,7 +2,7 @@ import { SEMANTIC_PALETTE } from "../content/palette";
 import type { Tile } from "../world/world.types";
 import { renderDetailLevel } from "./buildingVisualState";
 import { screenToTile } from "./iso";
-import { ambientOffset } from "./renderMotion";
+import { treeSway } from "./renderMotion";
 import {
   buildTreeCluster,
   type ForestLookup,
@@ -28,8 +28,7 @@ function drawSeasonalSprite(context: CanvasRenderingContext2D, key: string, tx: 
   const variant = seasonVariant(key, seasonForObject(blend, salt), salt);
   const image = variant === null ? null : seasonSprite(variant);
   if (image === null) return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, options);
-  const { tint: _tint, ...untinted } = options;
-  return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, { ...untinted, image });
+  return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, { ...options, image });
 }
 
 export { seasonBlend } from "./seasonTransition"; // one drawBuildings import for the object pass's season
@@ -38,47 +37,44 @@ const saltOf = (tx: number, ty: number): number => Math.floor(tx * 31 + ty * 17)
 
 export function drawTreeCluster(
   context: CanvasRenderingContext2D,
-  tick: number,
+  nowMs: number,
   tile: Tile,
   forestLookup: ForestLookup,
   seed: number,
   zoom: number,
 ): void {
   for (const tree of buildTreeCluster({ tile, forestLookup, seed })) {
-    drawTree(context, tick, tree, zoom);
+    drawTree(context, nowMs, tree, zoom);
   }
 }
 
 export function drawTreeDescriptor(
   context: CanvasRenderingContext2D,
   input: {
-    readonly tick: number;
+    /** NAT-2 (QA-001): the wall clock the crowns sway on (moving while paused, the same pace at every speed). */
+    readonly nowMs: number;
     readonly tree: TreeDescriptor;
     readonly zoom: number;
     readonly spriteOptions: WorldSpriteOptions;
     readonly season?: SeasonBlend;
   },
 ): void {
-  if (renderDetailLevel(input.zoom) === "full") {
-    const sway = ambientOffset({
-      tick: input.tick,
-      amplitude: 2 * input.tree.scale,
-      frequency: 0.72,
-      phase: input.tree.phase,
-    });
-    const anchor = screenToTile(input.tree.x + sway, input.tree.y);
+  // NAT-2 QA-008: the painted tree above block detail (its mip level when small); flat crowns on the strategic map.
+  if (renderDetailLevel(input.zoom) !== "blocks") {
+    // NAT-2 QA-001: the crown leans (a shear about the trunk's foot, which stays put) instead of the whole tree sliding.
+    const anchor = screenToTile(input.tree.x, input.tree.y);
     if (
       drawSeasonalSprite(context, input.tree.spriteKey, anchor.tx, anchor.ty, {
         ...input.spriteOptions,
         scale: input.tree.scale,
-        tint: input.tree.tone,
         flipX: input.tree.flipX,
+        shearX: treeSway(input.nowMs, input.tree.phase, input.tree.scale),
       }, input.season, saltOf(input.tree.anchorTx, input.tree.anchorTy))
     ) {
       return;
     }
   }
-  drawTree(context, input.tick, input.tree, input.zoom);
+  drawTree(context, input.nowMs, input.tree, input.zoom);
 }
 
 export function drawGroundCoverDescriptor(
@@ -132,7 +128,7 @@ export function drawStumpDescriptor(
 
 function drawTree(
   context: CanvasRenderingContext2D,
-  tick: number,
+  nowMs: number,
   tree: TreeDescriptor,
   zoom: number,
 ): void {
@@ -153,7 +149,7 @@ function drawTree(
     context.stroke();
     return;
   }
-  const sway = ambientOffset({ tick, amplitude: 2 * tree.scale, frequency: 0.72, phase: tree.phase });
+  const sway = treeSway(nowMs, tree.phase, tree.scale);
   context.fillStyle = SEMANTIC_PALETTE.earthDark;
   traceRect(context, tree.x - 2 * tree.scale, tree.y - 20 * tree.scale, 4 * tree.scale, 24 * tree.scale);
   context.fill();

@@ -4,19 +4,21 @@ import type { CameraState } from "./camera";
 import { worldToCanvas } from "./camera";
 import { tileToScreen } from "./iso";
 import { RAMPS, type PaletteColor } from "../content/palette";
-import { getSprite, spriteMeta } from "./worldAssets";
+import { getSprite, spriteMetaView } from "./worldAssets";
 import { recordWorldSpriteDraw } from "./worldSpriteDiagnostics";
+import { mippedSprite, spriteMipWorldScale } from "./spriteMipCache";
 
 export type WorldSpriteOptions = {
   readonly camera?: CameraState;
   readonly dpr?: number;
   readonly scale?: number;
   readonly alpha?: number;
-  readonly tint?: PaletteColor;
   readonly flipX?: boolean;
   readonly viewport?: { readonly width: number; readonly height: number };
   /** Same-size replacement image drawn with this sprite's registration (visual variants). */
   readonly image?: CanvasImageSource | null;
+  /** NAT-2: a lean — the sprite's top edge moved this far sideways (px at zoom 1), its anchor row (a trunk's foot) kept. */
+  readonly shearX?: number;
 };
 
 export type WorldSpriteContext = {
@@ -27,6 +29,7 @@ export type WorldSpriteContext = {
   restore(): void;
   setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void;
   drawImage(image: CanvasImageSource, dx: number, dy: number, width: number, height: number): void;
+  drawImage(image: CanvasImageSource, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, width: number, height: number): void;
 };
 
 type DeviceRect = {
@@ -34,6 +37,8 @@ type DeviceRect = {
   readonly dy: number;
   readonly width: number;
   readonly height: number;
+  /** The anchor's device row (a shear keeps it in place). */
+  readonly ay: number;
 };
 export type RampTintPixel = {
   readonly r: number;
@@ -43,7 +48,6 @@ export type RampTintPixel = {
 };
 
 const DEFAULT_CAMERA = { zoom: 1, panX: 0, panY: 0 } as const satisfies CameraState;
-const tintedSpriteCache = new WeakMap<CanvasImageSource, Map<string, CanvasImageSource>>();
 const FOLIAGE_RGB_TO_SHADE = new Map(RAMPS.foliage.map((hex, shade) => [hexToRgbKey(hex), shade]));
 const TIMBER_RGB_KEYS = new Set(RAMPS.timber.map(hexToRgbKey));
 const NEUTRAL_FOLIAGE_TINT_SHADE = 4;
@@ -55,7 +59,7 @@ export function drawWorldSprite(
   ty: number,
   options: WorldSpriteOptions = {},
 ): boolean {
-  const meta = spriteMeta(key);
+  const meta = spriteMetaView(key);
   if (meta === null) return false;
   return drawAtWorldAnchor(
     context,
@@ -83,7 +87,7 @@ function drawAtWorldAnchor(
   ty: number,
   options: WorldSpriteOptions,
 ): boolean {
-  const meta = spriteMeta(key);
+  const meta = spriteMetaView(key);
   if (meta === null) {
     recordWorldSpriteDraw({ key, drawn: false, reason: "meta_missing" });
     return false;
@@ -99,24 +103,36 @@ function drawAtWorldAnchor(
     recordWorldSpriteDraw({ key, drawn: false, reason: "culled" });
     return false;
   }
-  const source = options.tint === undefined ? image : tintedSprite(image, meta, options.tint);
 
+  // NAT-2 QA-008: from the mip level of the device size (spriteMipCache.ts) when it is under half the image's.
+  const width = (image as { readonly width?: number }).width ?? 0;
+  const mip = width > 0 && rect.width < width / 2 ? mippedSprite(image, { x: 0, y: 0, width, height: (image as { readonly height: number }).height }, rect.width / width) : null;
   context.save();
   try {
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.globalAlpha *= options.alpha ?? 1;
     context.imageSmoothingEnabled = false;
+    // NAT-2: a shear about the anchor row: x += k·(y − anchorY), the top row moving shearX (device px) and the foot none.
+    const lean = options.shearX ?? 0;
+    const k = lean === 0 || rect.ay <= rect.dy ? 0 : -lean * (options.camera ?? DEFAULT_CAMERA).zoom * (options.dpr ?? 1) / (rect.ay - rect.dy);
     if (options.flipX === true) {
-      context.setTransform(-1, 0, 0, 1, rect.dx + rect.width, 0);
-      context.drawImage(source, 0, rect.dy, rect.width, rect.height);
+      context.setTransform(-1, 0, k, 1, rect.dx + rect.width - k * rect.ay, 0);
+      drawWhole(context, mip, image, 0, rect.dy, rect.width, rect.height);
     } else {
-      context.drawImage(source, rect.dx, rect.dy, rect.width, rect.height);
+      if (k !== 0) context.setTransform(1, 0, k, 1, -k * rect.ay, 0);
+      drawWhole(context, mip, image, rect.dx, rect.dy, rect.width, rect.height);
     }
   } finally {
     context.restore();
   }
   recordWorldSpriteDraw({ key, drawn: true, reason: "drawn" });
   return true;
+}
+
+function drawWhole(context: WorldSpriteContext, mip: ReturnType<typeof mippedSprite> | null, image: CanvasImageSource,
+  dx: number, dy: number, width: number, height: number): void {
+  if (mip === null || mip.image === image) context.drawImage(image, dx, dy, width, height);
+  else context.drawImage(mip.image, mip.crop.x, mip.crop.y, mip.crop.width, mip.crop.height, dx, dy, width, height);
 }
 
 type SpriteCropRect = Readonly<{ x: number; y: number; width: number; height: number }>;
@@ -129,46 +145,38 @@ export function drawCroppedWorldSprite(
   destination: SpriteCropRect,
   snap = true,
   smoothing = false,
+  transform?: CanvasTransform,
 ): void {
-  const transform = context.getTransform();
-  const origin = snap ? snapPointToDevicePixel(destination, transform) : destination;
-  const scaleX = Math.hypot(transform.a, transform.b);
-  const scaleY = Math.hypot(transform.c, transform.d);
-  const width = snap && scaleX > 0 ? Math.round(destination.width * scaleX) / scaleX : destination.width;
-  const height = snap && scaleY > 0 ? Math.round(destination.height * scaleY) / scaleY : destination.height;
+  // SMOOTH-2R: only a snapped blit needs the transform; `transform` (the context's current one, when the caller holds
+  // it) spares the DOMMatrix each getTransform() allocates.
+  const t = snap ? transform ?? context.getTransform() : null;
+  const origin = t === null ? destination : snapPointToDevicePixel(destination, t);
+  const scaleX = t === null ? 0 : Math.hypot(t.a, t.b);
+  const scaleY = t === null ? 0 : Math.hypot(t.c, t.d);
+  const width = scaleX > 0 ? Math.round(destination.width * scaleX) / scaleX : destination.width;
+  const height = scaleY > 0 ? Math.round(destination.height * scaleY) / scaleY : destination.height;
   context.save();
   try {
     context.imageSmoothingEnabled = smoothing;
     const crop = runtimeAssetCrop(image, source);
-    context.drawImage(image, crop.x, crop.y, crop.width, crop.height,
-      origin.x, origin.y, width, height);
+    // NAT-2 QA-008: a world blit of the object pass draws from the mip level of its device size (spriteMipCache.ts).
+    const worldScale = smoothing ? spriteMipWorldScale(context) : null;
+    const mip = worldScale === null || crop.width <= 0 ? null : mippedSprite(image, crop, worldScale * width / crop.width);
+    if (mip === null) context.drawImage(image, crop.x, crop.y, crop.width, crop.height, origin.x, origin.y, width, height);
+    else context.drawImage(mip.image, mip.crop.x, mip.crop.y, mip.crop.width, mip.crop.height, origin.x, origin.y, width, height);
   } finally {
     context.restore();
   }
 }
 
-function tintedSprite(
-  image: CanvasImageSource,
-  meta: NonNullable<ReturnType<typeof spriteMeta>>,
-  tint: PaletteColor,
-): CanvasImageSource {
-  const dimensions = sourceDimensions(meta);
-  const cacheKey = `${tint}:${dimensions.width}x${dimensions.height}`;
-  const cached = tintedSpriteCache.get(image)?.get(cacheKey);
-  if (cached !== undefined) return cached;
-  const canvas = createTintCanvas(dimensions.width, dimensions.height);
-  if (canvas === null) return image;
-  const tintContext = canvas.getContext("2d");
-  if (tintContext === null) return image;
-  tintContext.imageSmoothingEnabled = false;
-  tintContext.drawImage(image, 0, 0, dimensions.width, dimensions.height);
-  tintContext.putImageData(tintImageData(tintContext.getImageData(0, 0, dimensions.width, dimensions.height), tint), 0, 0);
-  const imageCache = tintedSpriteCache.get(image) ?? new Map<string, CanvasImageSource>();
-  imageCache.set(cacheKey, canvas);
-  tintedSpriteCache.set(image, imageCache);
-  return canvas;
-}
-
+/**
+ * The tree tone's foliage ramp tint: recolours only the pixels that are exactly a foliage ramp colour. SMOOTH-2R: it
+ * no longer runs on sprites while the game plays (it read every tinted sprite back with getImageData: 34 reads, 0.3 s
+ * in the big town's first 30 s). The painted foliage art has no pixel of a ramp colour — counted per sprite at build
+ * time (pixelFacts.generated.ts FOLIAGE_RAMP_PIXELS, all 0; scripts/buildPixelFacts.ts stops if one ever has some) and
+ * measured in Chrome on the six trees' downscaled sprites in all six tones (0 pixels changed) — so the tinted sprite
+ * was the sprite itself, and the tint option is gone.
+ */
 export function foliageRampTintPixels(
   pixels: readonly RampTintPixel[],
   tint: PaletteColor,
@@ -187,26 +195,6 @@ export function foliageRampTintPixels(
     const [r, g, b] = hexToRgb(targetHex);
     return { r, g, b, a: pixel.a };
   });
-}
-
-function tintImageData(imageData: ImageData, tint: PaletteColor): ImageData {
-  const pixels: RampTintPixel[] = [];
-  for (let index = 0; index < imageData.data.length; index += 4) {
-    pixels.push({
-      r: imageData.data[index] ?? 0,
-      g: imageData.data[index + 1] ?? 0,
-      b: imageData.data[index + 2] ?? 0,
-      a: imageData.data[index + 3] ?? 0,
-    });
-  }
-  foliageRampTintPixels(pixels, tint).forEach((pixel, pixelIndex) => {
-    const index = pixelIndex * 4;
-    imageData.data[index] = pixel.r;
-    imageData.data[index + 1] = pixel.g;
-    imageData.data[index + 2] = pixel.b;
-    imageData.data[index + 3] = pixel.a;
-  });
-  return imageData;
 }
 
 function hexToRgb(hex: string): readonly [number, number, number] {
@@ -239,7 +227,7 @@ export function createTintCanvas(
 }
 
 function destinationRect(
-  meta: NonNullable<ReturnType<typeof spriteMeta>>,
+  meta: NonNullable<ReturnType<typeof spriteMetaView>>,
   tx: number,
   ty: number,
   options: WorldSpriteOptions,
@@ -255,13 +243,7 @@ function destinationRect(
     dy: Math.round((canvasAnchor.y - meta.anchor.y * zoomScale) * dpr),
     width: Math.round(meta.width * zoomScale * dpr),
     height: Math.round(meta.height * zoomScale * dpr),
-  };
-}
-
-function sourceDimensions(meta: NonNullable<ReturnType<typeof spriteMeta>>): { readonly width: number; readonly height: number } {
-  return {
-    width: Math.max(1, Math.round(meta.width * meta.renderScale)),
-    height: Math.max(1, Math.round(meta.height * meta.renderScale)),
+    ay: canvasAnchor.y * dpr,
   };
 }
 

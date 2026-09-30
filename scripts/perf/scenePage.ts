@@ -66,6 +66,24 @@ export async function windowReady(browser: any, page: any, seconds: number): Pro
   return state.visible ? `창에 초점이 없다(${seconds}초 기다림)` : `창이 가려졌거나 그려지지 않는다(${seconds}초 기다림)`;
 }
 
+/** Seconds since the last real (hardware) keyboard or mouse input on this Mac; null elsewhere. Playwright's own input
+ * (CDP) does not count, so a run that ends with less idle time than it lasted was touched by a person. */
+export function hidIdleSeconds(): number | null {
+  if (process.platform !== "darwin") return null;
+  const out = spawnSync("ioreg", ["-c", "IOHIDSystem", "-d", "4"], { encoding: "utf8" }).stdout ?? "";
+  const match = /"HIDIdleTime" = (\d+)/.exec(out); return match === null ? null : Number(match[1]) / 1e9;
+}
+
+/** The camera zoomed with the game's own wheel steps over the canvas centre (×0.9 out, ×1.1 in; the zoom keys only act
+ * with the focus on the world, and the speed button keeps it): `out` wheel steps out, then `in` steps in. */
+export async function zoomWithKeys(page: any, steps: { readonly out: number; readonly in: number }) {
+  const box = await page.locator("canvas").first().boundingBox();
+  await page.mouse.move((box?.x ?? 0) + (box?.width ?? 1600) / 2, (box?.y ?? 0) + (box?.height ?? 1000) / 2);
+  for (let i = 0; i < steps.out; i++) { await page.mouse.wheel(0, 120); await page.waitForTimeout(40); }
+  for (let i = 0; i < steps.in; i++) { await page.mouse.wheel(0, -120); await page.waitForTimeout(40); }
+  await page.waitForTimeout(2_000);   // the far view's chunks and sprites before recording
+}
+
 /** Goes to the build, loads the scene (a save, or a new game), closes what covers the town and sets the speed. */
 export async function openScene(page: any, input: { readonly url: string; readonly save?: string; readonly speed: number; readonly proof?: boolean }) {
   const proof = input.proof ?? true;

@@ -23,12 +23,14 @@ if [ "$mode" = "captures" ] || [ "$mode" = "all" ]; then
   step captures npx tsx scripts/ui6Captures.ts "$out/captures" --url "$URL" --states "$states"
 fi
 if [ "$mode" = "audit" ] || [ "$mode" = "all" ]; then
-  step audit node scripts/uiSkinAudit.mjs "$out/audit" --url "$URL" --states "$states5" --states6 "$states" ${UI8_STATES:+--states8 "$UI8_STATES"} ${UI9_STATES:+--states9 "$UI9_STATES"}
+  step audit node scripts/uiSkinAudit.mjs "$out/audit" --url "$URL" --states "$states5" --states6 "$states" ${UI8_STATES:+--states8 "$UI8_STATES"} ${UI9_STATES:+--states9 "$UI9_STATES"} ${UI10_STATES:+--states10 "$UI10_STATES"}
   step audit-base node scripts/uiSkinAudit.mjs "$out/audit-base" --url "$BASE_URL" --states "$states5"
 fi
 if [ "$mode" = "all" ]; then
   mkdir -p "$out/gates/replay" "$out/gates/replay-base" "$out/gates/gamepad"
   step hud-coverage npx tsx scripts/measureHudCoverage.ts "$out/gates/hud-coverage.json" --url "$URL"
+  # NAT-2 (QA-013): no open panel covers the crisis icons or event chips (the 1380 town, three views).
+  step slot-chips npx tsx scripts/slotChipOverlapCheck.ts "$out/gates/slot-chips.json" --url "$URL"
   step tutorial node scripts/tutorialReplay.mjs "$out/gates/replay" --url "$URL"
   step tutorial-base node scripts/tutorialReplay.mjs "$out/gates/replay-base" --url "$BASE_URL"
   step touch-targets node scripts/touchTargetAudit.mjs "$out/gates/touch-targets.json" --url "$URL"

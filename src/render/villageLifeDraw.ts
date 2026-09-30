@@ -151,15 +151,12 @@ function ridge(state: Pick<GameState, "houses" | "buildings">, buildingId: strin
 }
 
 /**
- * Which items a zoom draws: everything at full detail (zoom > 0.7), where the houses and people are painted art; at
- * simplified detail (0.5 < zoom <= 0.7, block houses) only the washing lines and the flying birds, whose silhouettes
- * still read there (Astra's proof 02-life: at 0.6 the small animals and toys are not identifiable, the line is); none at
- * block detail. The toys only from TOY_MIN_ZOOM (INSTALL-23b: under it they are a speck).
+ * Which items a zoom draws: everything above block detail (NAT-2: the small views too, by the same rules as close up),
+ * none at block detail. The toys only from TOY_MIN_ZOOM (INSTALL-23b: under it they are a speck).
  */
 export function villageLifeDrawnAt(entry: Pick<VillageLifeItem, "kind" | "motion">, zoom: number): boolean {
   if (TOYS.has(entry.kind) && zoom < TOY_MIN_ZOOM) return false;
-  const detail = renderDetailLevel(zoom);
-  return detail === "full" || (detail === "simplified" && (entry.motion === "flight" || entry.kind === "clothesline_a" || entry.kind === "clothesline_b"));
+  return renderDetailLevel(zoom) === "full";
 }
 
 export type VillageLifeDrawInput = { readonly state: GameState; readonly zoom: number; readonly nowMs: number; readonly camera: CameraState;

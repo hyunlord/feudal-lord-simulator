@@ -41,6 +41,7 @@ function fakeImages(): void {
 
 function drawFrame(context: CanvasRenderingContext2D, state: GameState, centre: readonly [number, number], zoom = 1): void {
   drawCurrentCanvasFrame({
+    nowMs: 0, // NAT-2: the same instant for every draw (the wind and the water move on the wall clock)
     canvas: { getBoundingClientRect: () => ({ width: 1280, height: 800 }) } as unknown as HTMLCanvasElement,
     context,
     refs: {

@@ -7,6 +7,8 @@
 //  ④ one biography with its portrait (the pool JPEG loaded, the match line)
 //  ⑤ a modal: time stops while it is up (the tick holds at 1x), and a ledger of 30,000 records opens in < 200 ms
 //   PLAYWRIGHT_MODULE=... node scripts/chron1Captures.mjs <out-dir> --url <url> --states <dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/chron1Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/chron1Captures.mjs …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

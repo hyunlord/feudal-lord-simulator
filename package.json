@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "play": "vite build && vite preview --host 127.0.0.1 --port 4173 --strictPort --open",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/*.test.ts",
+    "test": "node scripts/remote/localGuard.mjs \"전체 시험 스위트(npm test)\" \"npm run remote:test\" && tsx --test tests/*.test.ts",
     "harness": "tsx scripts/economyHarness.ts",
     "verify:provenance": "tsx scripts/verifyProvenance.ts",
     "verify:save-determinism": "tsx scripts/verifySaveDeterminism.ts",

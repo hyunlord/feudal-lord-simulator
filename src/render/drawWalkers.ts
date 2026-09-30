@@ -1,9 +1,10 @@
+import { BLOCKS_MAX_ZOOM } from "./buildingVisualState";
 import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { ResourceType } from "../content/resourceConfig";
 import { resourceEntry, type ResourceCartPileKey } from "../content/resourceCatalog";
 import type { GameState } from "../engine/engine.types";
 import type { Walker } from "../agents/walker.types";
-import { applyInkOutline, snapPointToDevicePixel, snapToPixel, withAlpha } from "./style";
+import { applyInkOutline, snapPointToDevicePixel, snapToPixel, withAlpha, type CanvasTransform } from "./style";
 import { walkerVisualAnchor } from "./walkerAnchor";
 import { drawProceduralWalkerSprite } from "./walkerProceduralSprite";
 import { walkerPresentationFor } from "./walkerPresentation";
@@ -55,9 +56,10 @@ export function drawWalker(
   zoom: number,
   viewMode: ObjectRenderViewMode = "normal",
   state: GameState | null = null,
+  current?: CanvasTransform, // SMOOTH-2R: the context's current transform when the caller holds it (read once per frame)
 ): void {
   const anchor = walkerVisualAnchor(walker.position);
-  const transform = context.getTransform?.();
+  const transform = current ?? context.getTransform?.();
   const foot = transform === undefined
     ? { x: snapToPixel(anchor.sx), y: snapToPixel(anchor.sy) }
     : snapPointToDevicePixel({ x: anchor.sx, y: anchor.sy }, transform);
@@ -72,11 +74,11 @@ export function drawWalker(
 
   drawWalkerShadow(context, footX, footY, scale);
   const presentation = walkerPresentationFor(walker);
-  // V2: the composed look (sheet, held prop, winter cloak) above the legacy LOD zoom; the legacy actor while its
-  // images load, the procedural sprite below that zoom.
-  const composed = state !== null && zoom > RUNTIME_ACTOR_MIN_ZOOM && drawComposedWalkerWithCart(context, state, walker, presentation, footX, footY, scale, zoom);
+  // V2: the composed look (sheet, held prop, winter cloak) above the block zoom (NAT-2: down to the status view 0.35,
+  // like the buildings and trees); the legacy actor while its images load, the procedural sprite below.
+  const composed = state !== null && zoom > BLOCKS_MAX_ZOOM && drawComposedWalkerWithCart(context, state, walker, presentation, footX, footY, scale, zoom);
   if (!composed && !drawRuntimeActor(context, presentation, footX, footY, scale, zoom, walker.kind === "carter")) {
-    drawWalkerHalo(context, footX, footY, scale);
+    drawWalkerHalo(context, footX, footY, scale, transform);
     drawProceduralWalkerSprite(context, {
       footX,
       footY,
@@ -91,11 +93,10 @@ export function drawWalker(
   const onCart = composed && walker.kind === "carter" && walker.cargo !== null && cartLoadArt(walker.cargo.resource, presentation.direction) !== null;
   if (walker.kind !== "builder" && walker.cargo !== null && !loafInHand && !onCart) {
     if (zoom >= CLOSE_ZOOM) drawCargoIcon(context, footX, footY, walker.cargo.resource, scale);
-    else if (!composed) drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom);
+    else if (!composed) drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom, transform);
   }
 }
 
-const RUNTIME_ACTOR_MIN_ZOOM = 0.7;
 const CLOSE_ZOOM = 1.3;
 // INSTALL-7: the Wave 7 cart loads, one per good and cart axis (NE / SW carts: the `_ne` load; SE / NW: `_nw`); the
 // F0-V Wave 6 pile stands in while they load. Coin rides in the collector's purse, not on a cart. RES-REG: a good with
@@ -195,8 +196,9 @@ function drawWalkerHalo(
   footX: number,
   footY: number,
   scale: number,
+  transform: CanvasTransform | undefined,
 ): void {
-  const halo = snappedCanvasPoint(context, footX - 5 * scale, footY - 13 * scale);
+  const halo = snappedCanvasPoint(transform, footX - 5 * scale, footY - 13 * scale);
   context.fillStyle = withAlpha(PALETTE.ink, 0.28);
   context.fillRect(
     halo.x,
@@ -225,9 +227,10 @@ function drawCargo(
   color: PaletteColor,
   scale: number,
   zoom: number,
+  transform: CanvasTransform | undefined,
 ): void {
   const size = 5 * scale;
-  const position = snappedCanvasPoint(context, footX - size / 2, footY - 38 * scale);
+  const position = snappedCanvasPoint(transform, footX - size / 2, footY - 38 * scale);
   const x = position.x;
   const y = position.y;
   context.fillStyle = color;
@@ -237,11 +240,10 @@ function drawCargo(
 }
 
 function snappedCanvasPoint(
-  context: CanvasRenderingContext2D,
+  transform: CanvasTransform | undefined, // drawWalker's, read once per walker (SMOOTH-2R)
   x: number,
   y: number,
 ): { readonly x: number; readonly y: number } {
-  const transform = context.getTransform?.();
   return transform === undefined
     ? { x: snapToPixel(x), y: snapToPixel(y) }
     : snapPointToDevicePixel({ x, y }, transform);

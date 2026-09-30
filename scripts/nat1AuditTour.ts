@@ -1,6 +1,8 @@
 // NAT-1 naturalness audit tour: for each state, a 3 × 2 grid of views over the town (the buildings' bounding box),
 // paused, zoom 1.25, JPEG — the material for the audit list (docs/verification/nat1/REPORT.md §4).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/nat1AuditTour.ts <out> --url <game> <name=state.json> ...
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/nat1AuditTour.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/nat1AuditTour.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

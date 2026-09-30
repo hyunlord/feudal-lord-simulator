@@ -2,6 +2,8 @@
 // (--base) and this build (--url), paused, from the default new game. Afterwards the game state (roads, buildings,
 // sites, zones, zone undo stack) and the camera (client point of a fixed tile) must match exactly.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/inputReplayCompare.mjs <out.json> --base <url> [--url <url>]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/inputReplayCompare.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/inputReplayCompare.mjs …", entry: import.meta.url });
 import { writeFile } from 'node:fs/promises';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 // Where the mouse rests between steps: over the old bottom console, and on the UX-3 map clear of the 20 px edge-pan

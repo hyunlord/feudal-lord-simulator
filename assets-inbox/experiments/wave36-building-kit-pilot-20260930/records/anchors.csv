@@ -1,0 +1,31 @@
+asset,body,target_x,target_y,measured_x,measured_y,measurement_method,confidence,uncertainty_px,semantic_anchor
+add_lean_to,body_vertical,26,101,26,102,manual visual reading from independent 4x nearest-neighbor source grid,low,2,front-left ground-floor post at foundation
+add_lean_to,body_square,26,101,25,101,manual visual reading from independent 4x nearest-neighbor source grid,low,2,front-left ground-floor post at foundation
+add_lean_to,body_curved,26,101,26,102,manual visual reading from independent 4x nearest-neighbor source grid,low,2,front-left ground-floor post at foundation
+add_firewood,body_vertical,38,110,39,112,manual visual reading from independent 4x nearest-neighbor source grid,low,2,ground contact below stall left-center
+add_firewood,body_square,38,110,38,111,manual visual reading from independent 4x nearest-neighbor source grid,low,2,ground contact below stall left-center
+add_firewood,body_curved,38,110,39,111,manual visual reading from independent 4x nearest-neighbor source grid,low,2,ground contact below stall left-center
+add_porch,body_vertical,73,101,74,103,manual visual reading from independent 4x nearest-neighbor source grid,low,2,front door header center
+add_porch,body_square,73,101,73,103,manual visual reading from independent 4x nearest-neighbor source grid,low,2,front door header center
+add_porch,body_curved,73,101,74,102,manual visual reading from independent 4x nearest-neighbor source grid,low,2,front door header center
+add_shutters,body_vertical,63,77,65,78,manual visual reading from independent 4x nearest-neighbor source grid,low,2,upper front right window left hinge
+add_shutters,body_square,63,77,65,78,manual visual reading from independent 4x nearest-neighbor source grid,low,2,upper front right window left hinge
+add_shutters,body_curved,63,77,65,77,manual visual reading from independent 4x nearest-neighbor source grid,low,2,upper front right window left hinge
+add_steps,body_vertical,74,122,75,123,manual visual reading from independent 4x nearest-neighbor source grid,low,2,front doorway threshold center
+add_steps,body_square,74,122,74,122,manual visual reading from independent 4x nearest-neighbor source grid,low,2,front doorway threshold center
+add_steps,body_curved,74,122,75,123,manual visual reading from independent 4x nearest-neighbor source grid,low,2,front doorway threshold center
+sign_bread,body_vertical,43,104,44,105,manual visual reading from independent 4x nearest-neighbor source grid,low,2,stall counter center
+sign_bread,body_square,43,104,43,105,manual visual reading from independent 4x nearest-neighbor source grid,low,2,stall counter center
+sign_bread,body_curved,43,104,44,105,manual visual reading from independent 4x nearest-neighbor source grid,low,2,stall counter center
+sign_smith,body_vertical,98,97,99,98,manual visual reading from independent 4x nearest-neighbor source grid,low,2,right wall floor beam near front corner
+sign_smith,body_square,98,97,99,96,manual visual reading from independent 4x nearest-neighbor source grid,low,2,right wall floor beam near front corner
+sign_smith,body_curved,98,97,99,97,manual visual reading from independent 4x nearest-neighbor source grid,low,2,right wall floor beam near front corner
+sign_textile,body_vertical,30,85,31,87,manual visual reading from independent 4x nearest-neighbor source grid,low,2,stall awning upper left attachment
+sign_textile,body_square,30,85,30,86,manual visual reading from independent 4x nearest-neighbor source grid,low,2,stall awning upper left attachment
+sign_textile,body_curved,30,85,31,86,manual visual reading from independent 4x nearest-neighbor source grid,low,2,stall awning upper left attachment
+sign_ale,body_vertical,23,61,24,61,manual visual reading from independent 4x nearest-neighbor source grid,low,2,left upper front corner stud face
+sign_ale,body_square,23,61,24,60,manual visual reading from independent 4x nearest-neighbor source grid,low,2,left upper front corner stud face
+sign_ale,body_curved,23,61,24,61,manual visual reading from independent 4x nearest-neighbor source grid,low,2,left upper front corner stud face
+sign_merchant,body_vertical,53,116,54,117,manual visual reading from independent 4x nearest-neighbor source grid,low,2,ground contact below stall right edge
+sign_merchant,body_square,53,116,53,117,manual visual reading from independent 4x nearest-neighbor source grid,low,2,ground contact below stall right edge
+sign_merchant,body_curved,53,116,54,117,manual visual reading from independent 4x nearest-neighbor source grid,low,2,ground contact below stall right edge

@@ -1,0 +1,111 @@
+{
+ "probe1": {
+  "dpr": 2,
+  "viewport": [
+   1600,
+   882
+  ],
+  "camera": {
+   "zoom": 2,
+   "lod": "full"
+  },
+  "chunkReRasters": {
+   "ground: season token changed (all within one 90 ms span)": 25,
+   "roads: season token changed (all within one 90 ms span)": 17
+  },
+  "newChunkCanvasesBy": {
+   "Object.prefetch": 25
+  },
+  "composeMisses": 112,
+  "distinctLooksMissed": 83,
+  "composerStats": {
+   "composed": 270,
+   "evicted": 206,
+   "composeMsTotal": 72.2999999076128,
+   "composeMsMax": 0.6000000089406967,
+   "firstComposeMs": 0.5999999940395355,
+   "cached": 64,
+   "cacheLimit": 64,
+   "bytesPerCanvas": 373248,
+   "cacheBytes": 23887872,
+   "cacheBytesLimit": 23887872,
+   "looks": 81
+  },
+  "chunkStats": {
+   "hits": 329977,
+   "prefetched": 15,
+   "contentRasters": 97,
+   "zoomRasters": 0,
+   "deferredZoom": 0,
+   "deferredContent": 88,
+   "evictions": 0,
+   "rasterMs": 61.5,
+   "entries": 57,
+   "pixels": 120238992,
+   "lastFrameRasters": 0,
+   "lastFrameRasterMs": 0,
+   "fades": 0,
+   "staged": 0,
+   "stagedUsed": 0
+  },
+  "sceneStats": {
+   "builds": 2,
+   "lastBuildMs": 35.5
+  }
+ },
+ "probe-season": {
+  "dpr": 2,
+  "viewport": [
+   1600,
+   882
+  ],
+  "camera": {
+   "zoom": 2,
+   "lod": "full"
+  },
+  "chunkReRasters": {
+   "ground: key part readiness (crop states) changed": 13
+  },
+  "newChunkCanvasesBy": {
+   "Object.prefetch": 27,
+   "Object.stage": 42,
+   "drawTerrainBoundaryV2": 42
+  },
+  "composeMisses": 212,
+  "distinctLooksMissed": 113,
+  "composerStats": {
+   "composed": 278,
+   "evicted": 214,
+   "composeMsTotal": 73.7000000178814,
+   "composeMsMax": 0.8999999910593033,
+   "firstComposeMs": 0.6000000089406967,
+   "cached": 64,
+   "cacheLimit": 64,
+   "bytesPerCanvas": 373248,
+   "cacheBytes": 23887872,
+   "cacheBytesLimit": 23887872,
+   "looks": 80
+  },
+  "chunkStats": {
+   "hits": 936159,
+   "prefetched": 17,
+   "contentRasters": 55,
+   "zoomRasters": 0,
+   "deferredZoom": 0,
+   "deferredContent": 8,
+   "evictions": 0,
+   "rasterMs": 68.49999988079071,
+   "entries": 59,
+   "pixels": 124457904,
+   "lastFrameRasters": 0,
+   "lastFrameRasterMs": 0,
+   "fades": 42,
+   "staged": 42,
+   "stagedUsed": 42
+  },
+  "sceneStats": {
+   "builds": 2,
+   "lastBuildMs": 36.400000005960464
+  }
+ }
+}

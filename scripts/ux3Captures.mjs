@@ -1,6 +1,8 @@
 // UX-3 evidence: placement validity in the normal and the colourblind palette, each also in grey scale (gate 4: fine
 // and blocked tiles still differ without colour), and the tutorial target before / after a tool is picked (gate 3).
 //   PLAYWRIGHT_MODULE=... node scripts/ux3Captures.mjs <out-dir> --url <url>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ux3Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/ux3Captures.mjs …", entry: import.meta.url });
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";

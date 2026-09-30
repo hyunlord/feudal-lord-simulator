@@ -7,6 +7,8 @@
 //  road click-click: the first click lays its tile and anchors, preview to the pointer, a second click lays the line,
 //    Enter ends (a click after it starts afresh: one tile);
 //  tablet (1180 × 820, touch): a tap leaves the ghost 80 px above the finger and the confirm bar; nothing is built until ✓.
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ux3r2Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/ux3r2Captures.mjs …", entry: import.meta.url });
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

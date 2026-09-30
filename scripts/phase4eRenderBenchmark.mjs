@@ -1,3 +1,5 @@
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/phase4eRenderBenchmark.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/phase4eRenderBenchmark.mjs …", entry: import.meta.url });
 import { writeFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 

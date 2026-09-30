@@ -2,6 +2,8 @@
 // walkers hidden, paused. Each view is opened twice (two pages) and the canvas pixels hashed (SHA-256 of the PNG
 // screenshot); with --base the trunk build is hashed too.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/c25BoardBrowser.mjs <out.json> [--url ...] [--base ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/c25BoardBrowser.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/c25BoardBrowser.mjs …", entry: import.meta.url });
 import { createHash } from 'node:crypto';
 import { writeFile } from 'node:fs/promises';
 import { openScene, sceneStates } from './renderCommitProbe.mjs';

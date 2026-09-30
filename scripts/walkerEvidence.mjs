@@ -7,6 +7,8 @@
 //    and winter; the looks on screen are written next to the shots.
 //  - cells: composed looks read back from the composer (window proof port walkerComposite): the 32 cells (4 body
 //    templates x 4 directions x 2 gait frames) with a held prop, and the winter cloak on / off.
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/walkerEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/walkerEvidence.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { gunzipSync } from 'node:zlib';

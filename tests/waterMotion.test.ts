@@ -76,9 +76,11 @@ test("Given the weather, the season and the zoom When the plan is made Then glin
   assert.equal(waterMotionPlan(1, "normal", 3).foam, false);
   // Full detail: everything; simplified: the area fills only; blocks: nothing.
   assert.deepEqual(waterMotionPlan(1, "normal", 1), { deepRipples: true, shallowRipples: true, flow: true, foam: true, reeds: true, glints: true, fish: true });
-  assert.deepEqual(waterMotionPlan(0.6, "normal", 1), { deepRipples: true, shallowRipples: false, flow: true, foam: false, reeds: false, glints: false, fish: false });
-  assert.deepEqual(Object.values(waterMotionPlan(0.5, "normal", 1)), [false, false, false, false, false, false, false]);
-  assert.deepEqual([liveReedsAt(0.7), liveReedsAt(0.75)], [false, true]);
+  // NAT-2 (user): the small views by the same rules as close up.
+  assert.deepEqual(waterMotionPlan(0.6, "normal", 1), waterMotionPlan(1, "normal", 1));
+  assert.deepEqual(waterMotionPlan(0.5, "normal", 1), waterMotionPlan(1, "normal", 1));
+  assert.deepEqual(Object.values(waterMotionPlan(0.35, "normal", 1)), [false, false, false, false, false, false, false]);
+  assert.deepEqual([liveReedsAt(0.35), liveReedsAt(0.36), liveReedsAt(0.7)], [false, true, true]); // NAT-2: live reeds above block detail
 });
 
 test("Given the wall clock When a sheet's frame is picked Then it steps at the sheet's fps, a static sheet stays at 0, and it keeps moving while the paused game holds the life clock", () => {
@@ -250,7 +252,7 @@ function drawOnce(input: Partial<WaterMotionInput>, zoom: number): string[] {
   return canvas.ops;
 }
 
-test("Given loaded water art When the water moves Then each effect draws at its alpha only under its condition, and the detail levels draw less", () => {
+test("Given loaded water art When the water moves Then each effect draws at its alpha only under its condition, and only block detail draws none", () => {
   const images = new Map<string, CanvasImageSource>();
   setWaterArtForTest(key => { if (!images.has(key)) images.set(key, { label: key } as unknown as CanvasImageSource); return images.get(key) ?? null; },
     (width, height) => ({ canvas: { label: `cut${width}x${height}`, width, height } as unknown as CanvasImageSource, context: recordingCanvas(width, height).context }));
@@ -259,7 +261,7 @@ test("Given loaded water art When the water moves Then each effect draws at its 
   try {
     // When
     const summer = drawOnce({}, 1); const winter = drawOnce({ season: 3 }, 1); const wet = drawOnce({ weather: "wet" }, 1);
-    const simplified = drawOnce({}, 0.6); const blocks = drawOnce({}, 0.5);
+    const simplified = drawOnce({}, 0.6); const blocks = drawOnce({}, 0.35); // NAT-2: blocks at zoom <= 0.35
 
     // Then: the ripples fill the deep diamonds and, clipped to the water, the shallow ones; the foam fills a quad a segment at 0.65.
     assert.ok(summer.some(op => op.startsWith("clip(path")), "clipped to the water");
@@ -272,7 +274,8 @@ test("Given loaded water art When the water moves Then each effect draws at its 
     assert.ok(ringFrames.some(Boolean) && ringFrames.filter(Boolean).length < ringFrames.length, `${ringFrames.filter(Boolean).length} of 200 frames with a ring`);
     assert.equal(winter.includes("set globalAlpha(0.65)"), false, "no foam in winter");
     assert.equal(wet.includes("set globalAlpha(0.4)"), false, "no glints on a wet day");
-    assert.equal(simplified.some(op => op.startsWith("drawImage")), false, "no sprites when simplified");
+    // NAT-2 (user): at 0.6 the water draws by the same rules as close up (its sprites and ripples).
+    assert.equal(simplified.some(op => op.startsWith("drawImage")), true, "sprites at 0.6 too");
     assert.equal(simplified.some(op => op.startsWith("fill(path")), true, "the deep ripples stay");
     assert.deepEqual(blocks, ["translate(1500,100)"], "nothing at blocks detail");
     // Deterministic: the same frame draws the same calls.

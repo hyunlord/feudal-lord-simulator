@@ -1,0 +1,78 @@
+[
+  {
+    "id": "trade_miller_a",
+    "prompt": "Use case: precise-object-edit. Create one corrected medieval miller's trade prop game sprite, variant A, using image 1 only for the handcart orientation/composition and image 2 only for muted hand-painted game-art style. Isolated true RGBA transparent background. Keep the two-wheeled wooden handcart facing lower left, handles projecting lower left, visible right wheel, elevated 2:1 isometric view and light from upper left. Replace all ambiguous brown round goods with clearly WHITE FLOUR-DUSTED LINEN SACKS, tied necks and cloth seams, heaped on the cart. On top of those white sacks place one prominently visible OPEN WOODEN BUSHEL GRAIN MEASURE: a DEEP open staved wooden measuring vessel with tall visible side wall, distinctly hollow oval rim and visible many tiny grain kernels inside; make this recognizable even when the sprite is reduced to 128x96. This open bushel must never resemble a solid cheese wheel or brown disk. No cheese, no round loose goods, no baskets, no people, no ground slab, no wall, no text, no painted background, no cast shadow outside the prop. Southern England 1300-1450 materials; subdued ochre timber, warm white sacks, restrained highlights and fine hand-painted contours. Single complete object, no cropping, generous transparent border. Preserve original orientation without flipping. The corrected load should be predominantly white cloth with the visibly open grain measure on top.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-rework-v2/references/trade_miller_a-original.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-rework-v2/references/style.jpg"
+    ],
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-rework-v2/raw/trade_miller_a-generated.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-rework-v2/assets/trade_miller_a.png",
+    "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-df0e-7882-b156-306e7c47cd1c as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-df0e-7882-b156-306e7c47cd1c/exec-a2ae0736-889d-4e6e-9a86-3340eff29cc9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "model": null,
+    "seed": null,
+    "width": 128,
+    "height": 96,
+    "normalization": {
+      "crop": {
+        "left": 65,
+        "top": 21,
+        "width": 1445,
+        "height": 963
+      },
+      "scale": 0.08304498269896193,
+      "width": 120,
+      "height": 80,
+      "left": 4,
+      "top": 12,
+      "method": "Sharp alpha>0 bounding crop, aspect-preserving fit 120x88, center horizontally, bottom align y=91, no flip, no alpha rewriting"
+    },
+    "sha256": "8d9212df0398364965986b7612ca1b39d070c8951caea9c4005010773ca85c73",
+    "raw_sha256": "d11eda222d6f6d4079919558dbb7bf7bb7b890f21551ac7afc2cf916f1878291",
+    "foot_uncertainty_px": 2,
+    "generator_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-df0e-7882-b156-306e7c47cd1c/exec-a2ae0736-889d-4e6e-9a86-3340eff29cc9.png",
+    "foot_x": 100,
+    "foot_y": 78,
+    "foot_method": "Visual actual contact at lowest visible right wheel rim; handle ends excluded as elevated handles. Estimated from native sprite and 6x nearest-neighbor inspection.",
+    "status": "candidate",
+    "visual_self_check": "Pass requested object distinction at native size; independent blind review pending."
+  },
+  {
+    "id": "trade_miller_b",
+    "prompt": "Use case: precise-object-edit. Completely redesign image 1's miller variant B trade prop, using image 2 only for muted hand-painted game-art style. REMOVE THE ENTIRE CART, all wheels, axles and handles. Instead show a standalone group of four upright WHITE FLOUR-DUSTED LINEN SACKS with tied cloth necks, in a compact stack, directly resting at one shared ground level. Lean ONE LARGE DISTINCT FLOUR SIEVE against the sacks in the foreground: a rectangular wooden frame, clearly visible fine taut pale woven cloth/mesh screen, flour dust around the rim, the entire rectangular screen plainly visible and occupying roughly one third of the group width. This must read as miller's flour sacks and sieve, and never as a newcomer luggage cart. No cart whatsoever. Southern English 14th century small game sprite, 2:1 isometric elevated view, matching original light from upper left, muted earth colors and warm white sacks, fine hand-painted contours and modeling, visibly cloth surfaces. True RGBA transparent background, no ground slab, no flooring, no wall, no people, no text, no symbols, no cheese, no loose round goods, no barrels, no shadow outside objects. Single complete compact group with generous transparent margins, designed to remain readable on a 128x96 sprite canvas. Avoid mirroring any reference. The flour sieve is a square/rectangular wooden frame containing FINE MESH, not a basket or cart panel.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-rework-v2/references/trade_miller_b-original.png",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-rework-v2/references/style.jpg"
+    ],
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-rework-v2/raw/trade_miller_b-generated.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-rework-v2/assets/trade_miller_b.png",
+    "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-df0e-7882-b156-306e7c47cd1c as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-df0e-7882-b156-306e7c47cd1c/exec-5f43756f-2668-4828-956e-131ae6beb3d9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "model": null,
+    "seed": null,
+    "width": 128,
+    "height": 96,
+    "normalization": {
+      "crop": {
+        "left": 0,
+        "top": 39,
+        "width": 1420,
+        "height": 1047
+      },
+      "scale": 0.08404966571155682,
+      "width": 119,
+      "height": 88,
+      "left": 4,
+      "top": 4,
+      "method": "Sharp alpha>0 bounding crop, aspect-preserving fit 120x88, center horizontally, bottom align y=91, no flip, no alpha rewriting"
+    },
+    "sha256": "788f8d03d7cf6e6dfcbad03b6793ee4d524a64d2f4b655a15bbbf1608e632ff9",
+    "raw_sha256": "279db7a8501c85c0ea41501ed27fd26c62e55717a01f5025f338f82544426969",
+    "foot_uncertainty_px": 2,
+    "generator_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f08a-df0e-7882-b156-306e7c47cd1c/exec-5f43756f-2668-4828-956e-131ae6beb3d9.png",
+    "foot_x": 65,
+    "foot_y": 79,
+    "foot_method": "Visual midpoint of grounded group front: sieve lower edge (55,82) and front sack base (75,76); estimated from native sprite and 6x nearest-neighbor inspection.",
+    "status": "candidate",
+    "visual_self_check": "Pass requested object distinction at native size; independent blind review pending."
+  }
+]

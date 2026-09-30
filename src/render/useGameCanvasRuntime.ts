@@ -9,12 +9,14 @@ import { createCanvasMutableRefs } from "./canvasRuntimeRefs";
 import { worldBounds } from "./interactions";
 import { publishMinimapViewport } from "./minimapCameraJump";
 import { preloadChapterArt, preloadFrameArt, preloadGameArt } from "./preloadGameArt";
+import { warmWalkerLooksFor } from "./walkerWarmup";
 import { artChapterLimit } from "./chapterArt";
 import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
 import { installPhase10ProofRuntime } from "../testing/phase10ProofRuntime";
-import { setGroundSceneZoneDeferral } from "./groundBoundaryScene";
+import { registerQaProbe } from "../ui/qa/qaProbe";
+import { setGroundSceneIncrementalBuild, setGroundSceneZoneDeferral } from "./groundBoundaryScene";
 import { installAutoplayPulseRuntime } from "./autoplayPulseRuntime";
 import { createCanvasIntentHandler } from "./canvasIntentHandler";
 import { bindMouseKeyboard, bindTouch } from "../input/domInputBindings";
@@ -116,6 +118,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       // BUDGET-1b: entering a chapter (or loading a later save) starts its art at once, before its content draws.
       const chapter = artChapterLimit(stateRef.current);
       if (chapter > artChapter) { artChapter = chapter; preloadChapterArt(chapter); }
+      warmWalkerLooksFor(stateRef.current, chapter); // SMOOTH-2R: the map's walker looks composed ahead (idle time)
       const work = proofFrameWork.current;
       const startedAt = work === null ? 0 : performance.now();
       drawCurrentCanvasFrame({ canvas, context, refs, publishPrediction, zoneBrush: zoneBrushView(zoneContext), state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current, running: getSpeedRef.current() !== 0 });
@@ -128,12 +131,14 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     resize();
     const disposeAutoplayPulse = installAutoplayPulseRuntime(refs.feedbackRef);
     const disposeProofRuntime = installPhase10ProofRuntime({ canvas, cameraRef: refs.cameraRef, stateRef, location: window.location, gamepadCursor: () => gamepad.cursor() });
+    // NAT-2: the QA info overlay reads these (a few times a second while it is shown; never from the frame).
+    const disposeQaProbe = registerQaProbe({ camera: () => refs.cameraRef.current, viewport, selection: () => selectionRef.current });
     const disposeEvents = bindMouseKeyboard(canvas, translator, resize);
-    const disposeZoneTouch = bindTouch(canvas, touch); setGroundSceneZoneDeferral(true);
+    const disposeZoneTouch = bindTouch(canvas, touch); setGroundSceneZoneDeferral(true); setGroundSceneIncrementalBuild(true);
     frameId = requestAnimationFrame(drawFrame);
     return () => {
-      disposeZoneTouch(); setGroundSceneZoneDeferral(false);
-      cancelAnimationFrame(frameId); disposeAutoplayPulse(); disposeEvents(); disposeProofRuntime(); disposeHandler();
+      disposeZoneTouch(); setGroundSceneZoneDeferral(false); setGroundSceneIncrementalBuild(false);
+      cancelAnimationFrame(frameId); disposeAutoplayPulse(); disposeEvents(); disposeProofRuntime(); disposeQaProbe(); disposeHandler();
     };
   }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection, setPrediction,
     // UI-KIT-1 (lint): the refs and the store's `interpolationAlpha` callback keep one identity, so listing them does not rebind the canvas.

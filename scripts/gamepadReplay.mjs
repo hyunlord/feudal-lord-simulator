@@ -5,6 +5,8 @@
 //   3. X three times = pasture brush; cursor to (52,46), A held while the stick moves the cursor to (55,46) = a stroke.
 // Afterwards: the site appeared and went, the pasture zone has cells. A capture shows the map cursor.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/gamepadReplay.mjs <outDir> [--url <url>]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/gamepadReplay.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/gamepadReplay.mjs …", entry: import.meta.url });
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

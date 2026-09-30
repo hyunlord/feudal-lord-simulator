@@ -138,6 +138,12 @@ export function drawFlatDiamondShadow(
   context.fill();
 }
 
+// NAT-2: the grounding shadow's three colours, made once: every tree and building on screen built the three rgba
+// strings again each frame (withAlpha was 1 % of the main thread at zoom 0.6 in the 1380 town, CPU profile).
+const GROUNDING_OUTER = withAlpha(SEMANTIC_PALETTE.earth, 0.16);
+const GROUNDING_BODY = withAlpha(SEMANTIC_PALETTE.earthDark, 0.32);
+const GROUNDING_CORE = withAlpha(SEMANTIC_PALETTE.ink, 0.18);
+
 export function drawGroundingShadow(
   context: Pick<
     CanvasRenderingContext2D,
@@ -155,21 +161,21 @@ export function drawGroundingShadow(
     centerY: shadow.centerY + height * 0.03,
     radiusX: shadow.baseRadiusX + height * 0.12,
     radiusY: shadow.baseRadiusY + height * 0.035,
-    color: withAlpha(SEMANTIC_PALETTE.earth, 0.16),
+    color: GROUNDING_OUTER,
   });
   drawWarmEllipse(context, {
     centerX: shadow.centerX,
     centerY: shadow.centerY,
     radiusX: shadow.baseRadiusX + height * 0.035,
     radiusY: shadow.baseRadiusY + height * 0.012,
-    color: withAlpha(SEMANTIC_PALETTE.earthDark, 0.32),
+    color: GROUNDING_BODY,
   });
   drawWarmEllipse(context, {
     centerX: shadow.centerX,
     centerY: shadow.centerY,
     radiusX: shadow.baseRadiusX * 0.72,
     radiusY: Math.max(1.5, shadow.baseRadiusY * 0.34),
-    color: withAlpha(SEMANTIC_PALETTE.ink, 0.18),
+    color: GROUNDING_CORE,
   });
 }
 

@@ -126,7 +126,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
     + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "");
   const visible = visibleChunks(scene, input.range);
   // INSTALL-15: the season (and its art's readiness) is in both chunk keys but not in their deferKeys, so the season's
-  // re-rasters may spread over a few frames; each crossfades from the old season's raster (fade token = the season).
+  // re-rasters may spread over a few frames; SMOOTH-2R: each chunk turns at its own moment (turn token = the season).
   const season = seasonOf(input.state);
   const seasonToken = seasonChunkToken(season);
   const fade = { token: `s${season}`, ms: seasonFadeMs() };
@@ -141,13 +141,14 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   });
   const paintRoads = (plan: GroundChunkPlan) => (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan, season);
   for (const plan of visible) {
-    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts, season));
+    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts, season), transform);
   }
   probe?.enter("terrain.water"); // INSTALL-29: the water motion, live over the chunks' still water (drawWaterMotion.ts)
   drawWaterMotion(context, { state: input.state, shore: scene.shore, chunks: visible, range: input.range, zoom: input.zoom, chunkZoom: zoom, nowMs: input.nowMs ?? 0, season }); probe?.enter("terrain.fill");
-  // INSTALL-15 staging: in the season's last STAGE_TICKS the visible chunks' next-season rasters are made in idle time,
-  // so the turn itself only blends (groundChunkCache header (d)). Same keys as the turn's requests will carry.
-  if (input.state.tick % SEASON_TICKS >= SEASON_TICKS - STAGE_TICKS && seasonFadeMs() > 0) {
+  // INSTALL-15 staging: in the season's last STAGE_TICKS the visible chunks' next-season rasters are made in idle time
+  // while the canvas budget has room, so at its moment in the turn a chunk only swaps (groundChunkCache header (d);
+  // SMOOTH-2R: at every speed). Same keys as the turn's requests will carry.
+  if (input.state.tick % SEASON_TICKS >= SEASON_TICKS - STAGE_TICKS) {
     const next = ((season + 1) % 4) as SeasonIndex;
     const nextToken = seasonChunkToken(next);
     const nextFade = { token: `s${next}`, ms: fade.ms };
@@ -166,7 +167,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   drawTownLandscape(context, input.state, input.tiles);
   probe?.enter("roads.ground");
   for (const plan of visible) {
-    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paintRoads(plan));
+    if (plan.hasRoads) cache.draw(context, roadRequest(plan), paintRoads(plan), transform);
   }
   for (const tile of input.tiles) if (tile.hasRoad && tile.terrain === "water") drawBridgeDeck(context, input.state, tile);
   if (scene.shore.bridgeEnds.length > 0) drawBridgeAbutments(context, scene.shore);

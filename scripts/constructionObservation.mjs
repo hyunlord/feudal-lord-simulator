@@ -5,6 +5,8 @@
 // history (delivered, builder ticks, stall per 100 ms sample) is written next to the captures.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/constructionObservation.mjs <outDir> [--url ...] [--kind farmstead] [--speed 5]
 // With --speed 5 the site is watched at 5x (the completion keeps only its dust and sound).
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/constructionObservation.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/constructionObservation.mjs …", entry: import.meta.url });
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 

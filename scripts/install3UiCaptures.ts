@@ -12,6 +12,8 @@
 //  not in the set (unit-tested instead, captures.json notDone): the bot's crop label, and a granary with malt.
 // Beside the shots captures.json (the state, tick and what each shows).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/install3UiCaptures.ts <out-dir> --url <game> --states <install3States dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install3UiCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/install3UiCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

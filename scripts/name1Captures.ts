@@ -6,6 +6,8 @@
 //  - with --states5, the walker card (UI-5's carrying state: a carter's line).
 // Beside the shots names.json: each surface's names and any Latin found (coin amounts such as "605d" are not names).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/name1Captures.ts <out-dir> --url <game> --states <ui6States dir> [--states5 <ui5States dir>]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/name1Captures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/name1Captures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

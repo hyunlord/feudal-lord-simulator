@@ -1,0 +1,101 @@
+{
+ "gate": "perf:gate stage 1",
+ "verdict": "통과(일부 장면)",
+ "commit": "d215eabadc265ee029359e27ff971ad59adbdb55",
+ "dirty": false,
+ "started": "2026-09-30T00:02:06.568Z",
+ "finished": "2026-09-30T00:05:18.416Z",
+ "machine": {
+  "platform": "darwin",
+  "model": "Mac16,5",
+  "cpus": 14,
+  "chrome": "Google Chrome 154.0.8037.58",
+  "loadAverage1m": [
+   4,
+   6.9
+  ]
+ },
+ "limits": {
+  "p99Ms": 16.7,
+  "maxMs": 100,
+  "over50PerMin": 1,
+  "over33PerMin": 3,
+  "momentAlpha": 0.05,
+  "otherCpu": 0.25
+ },
+ "seconds": 180,
+ "invalid": [],
+ "failures": [],
+ "scenes": [
+  {
+   "id": "season-x1",
+   "loadMax": 0.23,
+   "label": "계절 전환(가장 큰 도시 1배속)",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 1,
+   "action": "none",
+   "verdict": "통과",
+   "failed": [],
+   "invalid": [],
+   "stats": {
+    "frames": 21596,
+    "minutes": 3,
+    "p50": 8.3,
+    "p95": 9.3,
+    "p99": 9.3,
+    "max": 17.6,
+    "over25": 0,
+    "over33": 0,
+    "over50": 0,
+    "over25PerMin": 0,
+    "over33PerMin": 0,
+    "over50PerMin": 0
+   },
+   "loadSeconds": 3.463,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 3,
+    "autosave": 4,
+    "dialog": 3,
+    "chapter": 0
+   },
+   "worstFrames": [],
+   "longAnimationFrames": []
+  }
+ ],
+ "moments": {
+  "windows": 144,
+  "windowsWithLong": 0,
+  "baseline": 0,
+  "rows": [
+   {
+    "kind": "season",
+    "seen": 3,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0,
+    "pValue": 1,
+    "pass": true
+   },
+   {
+    "kind": "autosave",
+    "seen": 4,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0,
+    "pValue": 1,
+    "pass": true
+   }
+  ],
+  "pass": true
+ }
+}

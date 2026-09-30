@@ -1,0 +1,740 @@
+{
+ "gate": "perf:gate stage 1",
+ "verdict": "판정 아님",
+ "commit": "d1dcff5487548ed20cd5f5d3b51d06ad0ddf0260",
+ "dirty": true,
+ "started": "2026-09-29T14:54:59.760Z",
+ "finished": "2026-09-29T15:08:11.816Z",
+ "machine": {
+  "platform": "darwin",
+  "model": "Mac16,5",
+  "cpus": 14,
+  "chrome": "Google Chrome 154.0.8037.58",
+  "loadAverage1m": [
+   3.8,
+   3.7
+  ]
+ },
+ "limits": {
+  "p99Ms": 16.7,
+  "maxMs": 100,
+  "over50PerMin": 1,
+  "over33PerMin": 3,
+  "momentAlpha": 0.05,
+  "otherCpu": 0.25
+ },
+ "seconds": 180,
+ "invalid": [
+  "new-game-x3: 다른 일의 CPU 29% > 25%(10초 구간 최대, 코어 14): 다른 일이 돌았다",
+  "placement-x3: 다른 일의 CPU 27% > 25%(10초 구간 최대, 코어 14): 다른 일이 돌았다"
+ ],
+ "failures": [
+  "big-town-x5: 최대 1833.4 ms > 100",
+  "big-town-x5: 50 ms 초과 2.2/분 > 1",
+  "big-town-x5: 33 ms 초과 3.8/분 > 3",
+  "new-game-x3: 최대 2127.2 ms > 100",
+  "new-game-x3: 50 ms 초과 1.3/분 > 1",
+  "placement-x3: 최대 1587.6 ms > 100",
+  "placement-x3: 50 ms 초과 1.2/분 > 1",
+  "순간 season: 8% > 기준 1% (p 0.049)"
+ ],
+ "scenes": [
+  {
+   "id": "big-town-x5",
+   "loadMax": 0.11,
+   "label": "가장 큰 도시 5배속",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 5,
+   "action": "none",
+   "verdict": "실패",
+   "failed": [
+    "최대 1833.4 ms > 100",
+    "50 ms 초과 2.2/분 > 1",
+    "33 ms 초과 3.8/분 > 3"
+   ],
+   "invalid": [],
+   "stats": {
+    "frames": 21807,
+    "minutes": 3.14,
+    "p50": 8.3,
+    "p95": 9.3,
+    "p99": 16.7,
+    "max": 1833.4,
+    "over25": 19,
+    "over33": 12,
+    "over50": 7,
+    "over25PerMin": 6.1,
+    "over33PerMin": 3.8,
+    "over50PerMin": 2.2
+   },
+   "loadSeconds": 3.604,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 8,
+    "autosave": 9,
+    "dialog": 56,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 74.5,
+     "ms": 1833.4
+    },
+    {
+     "atSeconds": 75,
+     "ms": 457.5
+    },
+    {
+     "atSeconds": 72.7,
+     "ms": 175.3
+    },
+    {
+     "atSeconds": 75.1,
+     "ms": 91.3
+    },
+    {
+     "atSeconds": 75,
+     "ms": 59.1
+    },
+    {
+     "atSeconds": 75.2,
+     "ms": 50.4
+    },
+    {
+     "atSeconds": 75.6,
+     "ms": 50.3
+    },
+    {
+     "atSeconds": 81,
+     "ms": 49.9
+    },
+    {
+     "atSeconds": 75.3,
+     "ms": 49.7
+    },
+    {
+     "atSeconds": 78.3,
+     "ms": 49.3
+    }
+   ],
+   "longAnimationFrames": [
+    {
+     "start": 78630.90000000596,
+     "duration": 1789.7999999970198,
+     "blocking": 1739.8,
+     "renderStart": 78634.60000000894,
+     "styleAndLayoutStart": 80398.40000000596,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 2447416,
+       "duration": 906,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 835,
+       "forcedStyleAndLayout": 294
+      }
+     ],
+     "atSeconds": 72.7
+    },
+    {
+     "start": 80610.80000001192,
+     "duration": 306.5,
+     "blocking": 240.4,
+     "renderStart": 80636.30000001192,
+     "styleAndLayoutStart": 80917.20000000298,
+     "scripts": [
+      {
+       "invoker": "MessagePort.onmessage",
+       "fn": "performWorkUntilDeadline",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 20469,
+       "duration": 7,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 2447416,
+       "duration": 55,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 205,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 74.7
+    },
+    {
+     "start": 78452.60000000894,
+     "duration": 176.20000000298023,
+     "blocking": 126.2,
+     "renderStart": 78452.60000000894,
+     "styleAndLayoutStart": 78627.80000001192,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 169,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 72.5
+    },
+    {
+     "start": 80981.90000000596,
+     "duration": 86.40000000596046,
+     "blocking": 31.3,
+     "renderStart": 81003.30000001192,
+     "styleAndLayoutStart": 81068.20000000298,
+     "scripts": [
+      {
+       "invoker": "PerformanceObserverCallback",
+       "fn": "",
+       "url": "",
+       "charPosition": -1,
+       "duration": 10,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 2447416,
+       "duration": 42,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 23,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 75
+    },
+    {
+     "start": 80917.60000000894,
+     "duration": 63.8999999910593,
+     "blocking": 11.1,
+     "renderStart": 80922.40000000596,
+     "styleAndLayoutStart": 80981.5,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 2447416,
+       "duration": 43,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 16,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 75
+    },
+    {
+     "start": 81191.80000001192,
+     "duration": 55.29999999701977,
+     "blocking": 5.2,
+     "renderStart": 81212.20000000298,
+     "styleAndLayoutStart": 81247,
+     "scripts": [
+      {
+       "invoker": "PerformanceObserverCallback",
+       "fn": "",
+       "url": "",
+       "charPosition": -1,
+       "duration": 20,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 2447416,
+       "duration": 28,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 7,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 75.2
+    },
+    {
+     "start": 84169.30000001192,
+     "duration": 55.29999999701977,
+     "blocking": 2.9,
+     "renderStart": 84171.70000000298,
+     "styleAndLayoutStart": 84224.60000000894,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 2447416,
+       "duration": 44,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 8,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 78.2
+    },
+    {
+     "start": 81069,
+     "duration": 54.80000001192093,
+     "blocking": 0,
+     "renderStart": 81097.80000001192,
+     "styleAndLayoutStart": 81123.80000001192,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 2447416,
+       "duration": 16,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 10,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 75.1
+    },
+    {
+     "start": 81478.90000000596,
+     "duration": 54.20000000298023,
+     "blocking": 4.2,
+     "renderStart": 81478.90000000596,
+     "styleAndLayoutStart": 81532.80000001192,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 2447416,
+       "duration": 12,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 42,
+       "forcedStyleAndLayout": 34
+      }
+     ],
+     "atSeconds": 75.5
+    }
+   ]
+  },
+  {
+   "id": "new-game-x3",
+   "loadMax": 0.29,
+   "label": "새 게임 3배속",
+   "save": null,
+   "speed": 3,
+   "action": "none",
+   "verdict": "판정 아님",
+   "failed": [
+    "최대 2127.2 ms > 100",
+    "50 ms 초과 1.3/분 > 1"
+   ],
+   "invalid": [
+    "다른 일의 CPU 29% > 25%(10초 구간 최대, 코어 14): 다른 일이 돌았다"
+   ],
+   "stats": {
+    "frames": 21798,
+    "minutes": 3.07,
+    "p50": 8.3,
+    "p95": 9.8,
+    "p99": 10.3,
+    "max": 2127.2,
+    "over25": 6,
+    "over33": 5,
+    "over50": 4,
+    "over25PerMin": 2,
+    "over33PerMin": 1.6,
+    "over50PerMin": 1.3
+   },
+   "loadSeconds": 2.651,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 8,
+    "autosave": 8,
+    "dialog": 8,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 180,
+     "ms": 2127.2
+    },
+    {
+     "atSeconds": 180.3,
+     "ms": 159.3
+    },
+    {
+     "atSeconds": 180.1,
+     "ms": 141.4
+    },
+    {
+     "atSeconds": 183.5,
+     "ms": 65.6
+    },
+    {
+     "atSeconds": 180.4,
+     "ms": 34.7
+    }
+   ],
+   "longAnimationFrames": [
+    {
+     "start": 183519.39999999106,
+     "duration": 2063.7999999970198,
+     "blocking": 2009.2,
+     "renderStart": 183525.19999998808,
+     "styleAndLayoutStart": 185519.79999999702,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 1907,
+       "forcedStyleAndLayout": 638
+      }
+     ],
+     "atSeconds": 177.9
+    },
+    {
+     "start": 185795.29999999702,
+     "duration": 103.29999999701977,
+     "blocking": 0.4,
+     "renderStart": 185888,
+     "styleAndLayoutStart": 185898.59999999404,
+     "scripts": [
+      {
+       "invoker": "IdleRequestCallback",
+       "fn": "run",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 2358862,
+       "duration": 38,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 180.1
+    },
+    {
+     "start": 185727.89999999106,
+     "duration": 66.5,
+     "blocking": 4.4,
+     "renderStart": 185747.69999998808,
+     "styleAndLayoutStart": 185794.29999999702,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 11,
+       "forcedStyleAndLayout": 8
+      }
+     ],
+     "atSeconds": 180.1
+    },
+    {
+     "start": 189043.69999998808,
+     "duration": 66.5,
+     "blocking": 0,
+     "renderStart": 189107,
+     "styleAndLayoutStart": 189110.19999998808,
+     "scripts": [],
+     "atSeconds": 183.4
+    },
+    {
+     "start": 185899.89999999106,
+     "duration": 55.400000005960464,
+     "blocking": 0,
+     "renderStart": 185953.29999999702,
+     "styleAndLayoutStart": 185955.29999999702,
+     "scripts": [
+      {
+       "invoker": "MessagePort.onmessage",
+       "fn": "performWorkUntilDeadline",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 20469,
+       "duration": 13,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 180.2
+    }
+   ]
+  },
+  {
+   "id": "season-x1",
+   "loadMax": 0.24,
+   "label": "계절 전환(가장 큰 도시 1배속)",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 1,
+   "action": "none",
+   "verdict": "통과",
+   "failed": [],
+   "invalid": [],
+   "stats": {
+    "frames": 21583,
+    "minutes": 3,
+    "p50": 8.3,
+    "p95": 10.2,
+    "p99": 10.3,
+    "max": 23.1,
+    "over25": 0,
+    "over33": 0,
+    "over50": 0,
+    "over25PerMin": 0,
+    "over33PerMin": 0,
+    "over50PerMin": 0
+   },
+   "loadSeconds": 3.392,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 3,
+    "autosave": 4,
+    "dialog": 3,
+    "chapter": 0
+   },
+   "worstFrames": [],
+   "longAnimationFrames": []
+  },
+  {
+   "id": "placement-x3",
+   "loadMax": 0.27,
+   "label": "배치 끌기(가장 큰 도시 3배속)",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 3,
+   "action": "placement",
+   "verdict": "판정 아님",
+   "failed": [
+    "최대 1587.6 ms > 100",
+    "50 ms 초과 1.2/분 > 1"
+   ],
+   "invalid": [
+    "다른 일의 CPU 27% > 25%(10초 구간 최대, 코어 14): 다른 일이 돌았다"
+   ],
+   "stats": {
+    "frames": 24361,
+    "minutes": 3.42,
+    "p50": 8.3,
+    "p95": 10.1,
+    "p99": 10.3,
+    "max": 1587.6,
+    "over25": 9,
+    "over33": 6,
+    "over50": 4,
+    "over25PerMin": 2.6,
+    "over33PerMin": 1.8,
+    "over50PerMin": 1.2
+   },
+   "loadSeconds": 3.464,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 5,
+    "autosave": 8,
+    "dialog": 6,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 100,
+     "ms": 1587.6
+    },
+    {
+     "atSeconds": 98.4,
+     "ms": 229.5
+    },
+    {
+     "atSeconds": 100.2,
+     "ms": 73.6
+    },
+    {
+     "atSeconds": 100,
+     "ms": 73.3
+    },
+    {
+     "atSeconds": 100.1,
+     "ms": 49.7
+    },
+    {
+     "atSeconds": 100.3,
+     "ms": 48.3
+    }
+   ],
+   "longAnimationFrames": [
+    {
+     "start": 103981.09999999404,
+     "duration": 1792.7999999970198,
+     "blocking": 1313.5,
+     "renderStart": 104560.5,
+     "styleAndLayoutStart": 105750.59999999404,
+     "scripts": [
+      {
+       "invoker": "TimerHandler:setInterval",
+       "fn": "",
+       "url": "",
+       "charPosition": -1,
+       "duration": 22,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "TimerHandler:setInterval",
+       "fn": "",
+       "url": "",
+       "charPosition": -1,
+       "duration": 20,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 2447416,
+       "duration": 13,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 1156,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 98.2
+    },
+    {
+     "start": 105972.5,
+     "duration": 74.59999999403954,
+     "blocking": 17.3,
+     "renderStart": 105979.89999999106,
+     "styleAndLayoutStart": 106047.09999999404,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-B_dWkjKB.js",
+       "charPosition": 3860735,
+       "duration": 67,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 100.1
+    }
+   ]
+  }
+ ],
+ "moments": {
+  "windows": 605,
+  "windowsWithLong": 9,
+  "baseline": 0.01487603305785124,
+  "rows": [
+   {
+    "kind": "autosave",
+    "seen": 29,
+    "followedByLongFrame": 2,
+    "share": 0.06896551724137931,
+    "baseline": 0.01487603305785124,
+    "pValue": 0.0689559484710518,
+    "pass": true
+   },
+   {
+    "kind": "season",
+    "seen": 24,
+    "followedByLongFrame": 2,
+    "share": 0.08333333333333333,
+    "baseline": 0.01487603305785124,
+    "pValue": 0.04919597485514904,
+    "pass": false
+   }
+  ],
+  "pass": false
+ }
+}

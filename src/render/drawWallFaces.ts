@@ -251,6 +251,8 @@ export function drawWallModules(context: CanvasRenderingContext2D, nodes: readon
       continue;
     }
     if (node.kind === "tower" && kind === "stone" && drawCornerTower(context, node.point)) continue;
+    // NAT-2 QA-003: the end of a corner gate's off-axis arm (gateCornerModules) is capped by the painted pillar.
+    if ("gateEnd" in node && kind === "stone" && drawModuleSprite(context, MODULES.pillar, node.point)) continue;
     const size = node.kind === "tower" ? { radius: 0.2, height: FACE_HEIGHT + 10, post: { width: 11, height: FACE_HEIGHT + 10 } }
       : { radius: 0.15, height: FACE_HEIGHT + 4, post: { width: 9, height: FACE_HEIGHT + 4 } };
     drawModule(context, node.point, kind, size, zoom);

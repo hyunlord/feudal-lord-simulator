@@ -30,6 +30,8 @@ export const PERSONS_COPY = {
   memberLine: (role: string, age: string, occupation: string | null) => occupation === null ? `${role} · ${age}` : `${role} · ${age} · ${occupation}`,
   householdOf: (name: string) => `${name}의 집`,
   manor: "영주의 집안",
+  /** UI-10 (F5-A LG-1): the ruling family after the charter — gone from the manor to its country seat. */
+  manorCountrySeat: (year: number) => `영주의 집안 · ${year}년부터 시골 장원`,
   /** UI-7: the rights register's house page — the lord's family and the steward. */
   lordHouseholdHeading: "영주의 가솔",
   lordFamilyLine: (role: string, sex: "female" | "male", age: string) => `${LORD_FAMILY[role]?.[sex] ?? ROLES[role] ?? role} · ${age}`,

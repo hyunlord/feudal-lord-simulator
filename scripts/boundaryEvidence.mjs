@@ -3,6 +3,8 @@
 // The simulation never starts, so every capture draws the fixture's own tick.
 //   PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs node scripts/boundaryEvidence.mjs capture <outDir> [--url http://127.0.0.1:4195/]
 //   PLAYWRIGHT_MODULE=... node scripts/boundaryEvidence.mjs determinism <out.json> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/boundaryEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/boundaryEvidence.mjs …", entry: import.meta.url });
 import { createHash } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';

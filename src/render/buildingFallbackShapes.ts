@@ -13,7 +13,7 @@ type BuildingShapeInput = {
   readonly houseLevel: number;
   readonly houseMaterialEra: HouseMaterialEra;
   readonly zoom: number;
-  /** INSTALL-7: calendar winter, so the simplified roofs read snow-covered at the far zooms (0.5-0.7). */
+  /** INSTALL-7: calendar winter, so the fallback roofs (art still loading, or the block map) read snow-covered. */
   readonly winter?: boolean;
 };
 

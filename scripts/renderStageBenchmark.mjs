@@ -12,6 +12,8 @@
 // Cities come from repository fixtures only (clean-clone rule), migrated to the current save schema by
 // scripts/renderFixtureStates.ts: new game = DEFAULT_GAME_STATE, pop176 = newest fixtures/saves/vN/population-176,
 // lots24 = fixtures/determinism/seed1/final-state.json (24 lots, all L4).
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/renderStageBenchmark.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/renderStageBenchmark.mjs …", entry: import.meta.url });
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';

@@ -7,6 +7,8 @@
 //   e6 the same card with fleece for half the share in a storehouse (C5 CL-9: stored fleece first, the rest in coin).
 // Element JPEGs and captures.json (the lines read from the page).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/econUiCaptures.ts <out-dir> --url <game> --ale <install3States dir> --war <ui6States dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/econUiCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/econUiCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

@@ -1,10 +1,11 @@
 import { createIntentBus } from "../input/intentBus";
 import { lazyPlatformStorage, parseRenderScale, RENDER_SCALE_PREFERENCE_KEY,
-  type PlatformPreferences, type PlatformServices, type RenderScale } from "./PlatformServices";
+  type PlatformFiles, type PlatformPreferences, type PlatformServices, type RenderScale } from "./PlatformServices";
 import { openWebSaveAdapter } from "./saveStoragePlatform";
 
 // Web implementation of PlatformServices (B9): IndexedDB saves (memory fallback), localStorage preferences, the
-// browser window. The only module that touches localStorage, devicePixelRatio, fullscreen and navigator.language.
+// browser window, downloads (UI-10). The only module that touches localStorage, devicePixelRatio, fullscreen,
+// navigator.language and object URLs.
 
 type WebEnvironment = {
   readonly window?: (Window & typeof globalThis) | undefined;
@@ -18,6 +19,30 @@ function webPreferences(environment: WebEnvironment): PlatformPreferences {
   return {
     get: key => { try { return store()?.getItem(key) ?? null; } catch { return null; } },
     set: (key, value) => { try { store()?.setItem(key, value); } catch { /* storage blocked */ } },
+  };
+}
+
+/** How long an object URL outlives its download link (the browser has taken the file by then). */
+const DOWNLOAD_URL_MS = 1000;
+
+/** UI-10: a text file saved as a download — a Blob behind an object URL, a temporary <a download> pressed, the URL revoked. */
+function webFiles(environment: WebEnvironment): PlatformFiles {
+  return {
+    saveText: async (fileName, text) => {
+      const view = environment.window;
+      if (view === undefined || typeof view.URL?.createObjectURL !== "function") return false;
+      try {
+        // A byte-order mark first: Windows' older text editors read the Korean as UTF-8 only with it.
+        const url = view.URL.createObjectURL(new view.Blob(["\uFEFF", text], { type: "text/plain;charset=utf-8" }));
+        const link = view.document.createElement("a");
+        link.href = url; link.download = fileName; link.style.display = "none";
+        view.document.body.appendChild(link);
+        link.click();
+        link.remove();
+        view.setTimeout(() => view.URL.revokeObjectURL(url), DOWNLOAD_URL_MS);
+        return true;
+      } catch { return false; }
+    },
   };
 }
 
@@ -54,6 +79,7 @@ export function createWebPlatformServices(environment: WebEnvironment): Platform
       subscribeRenderScale: listener => { scaleListeners.add(listener); return () => { scaleListeners.delete(listener); }; },
     },
     locale: { language: () => view?.navigator.language || "ko" },
+    files: webFiles(environment),
     input: createIntentBus(),
   };
 }

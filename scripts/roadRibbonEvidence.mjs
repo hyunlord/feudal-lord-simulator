@@ -4,6 +4,8 @@
 //   PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs node scripts/roadRibbonEvidence.mjs captures <outDir> \
 //     [--url http://127.0.0.1:4196/] [--before-url http://127.0.0.1:4197/]
 //   PLAYWRIGHT_MODULE=... node scripts/roadRibbonEvidence.mjs c25 <out.json> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/roadRibbonEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/roadRibbonEvidence.mjs …", entry: import.meta.url });
 import { createHash } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
