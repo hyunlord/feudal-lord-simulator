@@ -115,7 +115,7 @@
   - 넷은 봇의 선택이 바뀐 것이다(`autoplayFoodNetFlow`·`autoplayPhase12Part5`·`autoplayWallSpace`·`autoplayStorageRecovery`). 2판의 GP-3은 방앗간이 굶지 않아도, 첫 수확 전에도 헛간을 더 지었다. 실현율은 한 해만으로 읽혀, 새 헛간의 첫해가 밭을 더 칠하게 했다. 규칙을 고쳤고(3판), 시험의 기대는 그대로다.
   - 둘은 장부 세계 해시(L-10)다. 추적이 수확 기록을 세계 해시에서 빼자, 3판에서는 옛 고정값과 그대로 맞는다.
   - 2회차 `cfb37c0`: 3,859/3,859.
-- 깨끗한 클론 `bdcfe2c`(DGX): 3,956/3,956, typecheck, build 통과.
+- 깨끗한 클론 `bdcfe2c`(DGX): 3,956/3,956, typecheck, build 통과. 본선(INSTALL-30~33)을 합친 머리 `be074be`: 3,971/3,971, build 통과(`engine-BOT4-clone2-be074be`).
 - 저장 v34: 이행 `v33ToV34`, 지문 `schemaFingerprint.v34.json`, 고정값 `fixtures/saves/v34/`(v33 묶음 열둘).
 
 ## 다음 후보
