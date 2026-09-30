@@ -129,10 +129,12 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
   );
 }
 
-export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChronicle }: {
+export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChronicle, nextLabel }: {
   readonly view: ChronicleView; readonly onNextChapter: () => void; readonly onKeepPlaying: () => void;
   /** CHRON-1: [전체 연대기 보기] opens the chronicle screen over the page (closing it comes back here). */
   readonly onOpenChronicle?: () => void;
+  /** UI-10: the next button's words when it leads elsewhere (chapter 5's page: to the legacy verdict). */
+  readonly nextLabel?: string;
 }) {
   return (
     <div className="story-modal-backdrop story-modal-backdrop--chronicle" role="presentation"
@@ -160,7 +162,7 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
           <h3>{CHRONICLE_COPY.statsHeading}</h3>
           <ul className="chronicle-stats">{view.stats.map(line => <li key={line}>{line}</li>)}</ul>
           <div className="chronicle-actions">
-            <Button type="button" className="chronicle-next" onPress={() => onNextChapter()} variant="secondary"><UiIcon sheet="action" cell="open" />{CHRONICLE_COPY.nextChapterOf(view.chapter)}</Button>
+            <Button type="button" className="chronicle-next" onPress={() => onNextChapter()} variant="secondary"><UiIcon sheet="action" cell="open" />{nextLabel ?? CHRONICLE_COPY.nextChapterOf(view.chapter)}</Button>
             <Button type="button" className="chronicle-keep" onPress={() => onKeepPlaying()} variant="secondary"><UiIcon sheet="time" cell="play" />{CHRONICLE_COPY.keepPlaying}</Button>
             {onOpenChronicle === undefined ? null : <Button type="button" className="chronicle-full" onPress={() => onOpenChronicle()} variant="primary">
               <UiIcon sheet="action" cell="log" />{CHRONICLE_COPY.openFull}</Button>}

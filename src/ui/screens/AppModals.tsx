@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { CHAPTER_FIVE } from "../../content/chapterConfig";
 import type { GameState } from "../../engine/engine.types";
 import { platformServices } from "../../platform/platform";
 import { PlacementPaletteToggle } from "../../render/PlacementPaletteToggle";
@@ -14,12 +15,17 @@ import { PauseMenu } from "../hud/HudShell";
 import { SeasonLedgerCard } from "../hud/SeasonLedgerCard";
 import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "../hud/StoryModals";
 import { Button } from "../kit";
+import { ChronicleBook } from "../legacy/ChronicleBook";
+import { LegacyEndingScreen } from "../legacy/LegacyEndingScreen";
+import { LEGACY_SCREEN_COPY } from "../legacy/legacyScreenCopy.ko";
+import { legacyVerdictView } from "../legacy/legacyScreenModel";
 import { personCardView, petitionerRows, type personRow } from "../persons/personModels";
 import { PersonCardModal } from "../persons/PersonViews";
 import { seasonLedgerCardModel } from "../seasonLedgerCard";
 import { SEASON_LEDGER_COPY } from "../seasonLedgerCopy.ko";
 import { topModal, type UiEvent, type UiState } from "../stateMachine/uiStateMachine";
 import { TutorialToggle } from "../tutorial/TutorialShell";
+import { UiIcon } from "../UiIcon";
 import type { TutorialController } from "../tutorial/useTutorialController";
 import { chapterGoals } from "../../engine/politics";
 import { CHAPTER_COPY } from "../chapterCopy.ko";
@@ -29,6 +35,9 @@ import { latestChapterEnd } from "../chronicleModel";
  * CODE-1c (from App): the modal screens on top of the town — the season card, the famine decision, a petition, the
  * chapter page, a person card, the chronicle, chapter 2's preview and the pause menu. They read the game themselves on
  * the UI channel, and only while one is up (otherwise this keeps its first state and does not re-render on a tick).
+ * UI-10 (LG-8, LG-9): chapter 5's page leads to the legacy verdict and the campaign's ending (not a chapter-6
+ * preview); the ending opens the chronicle book. The book (so far) opens from the chronicle screen and the pause menu at
+ * any time, and the ending again from the chronicle screen once it is written.
  */
 export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChroniclePerson, steward, onPerson, ledgerAuto, onLedgerAuto,
   onMenuRequest, tutorial }: {
@@ -53,13 +62,15 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const petitionView = top === "petition" ? petitionDecisionView(state) : null;
   const chronicle = top === "chronicle" ? chronicleView(state) : null;
   const personCard = top === "person_card" && personCardId !== null ? personCardView(state, personCardId) : null;
+  const legacyView = top === "legacy_ending" ? legacyVerdictView(state) : null;
+  const endingWritten = top === "history" && state.legacy?.ending !== undefined;
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
   const famineGone = famineView === null; const petitionGone = petitionView === null;
-  const chronicleGone = chronicle === null; const personCardGone = personCard === null;
+  const chronicleGone = chronicle === null; const personCardGone = personCard === null; const legacyGone = legacyView === null;
   useEffect(() => {
     if ((topModal(ui) === "decision" && famineGone) || (topModal(ui) === "petition" && petitionGone) || (topModal(ui) === "chronicle" && chronicleGone)
-      || (topModal(ui) === "person_card" && personCardGone)) sendUi({ type: "pop_modal" });
-  }, [ui, famineGone, petitionGone, chronicleGone, personCardGone, sendUi]);
+      || (topModal(ui) === "person_card" && personCardGone) || (topModal(ui) === "legacy_ending" && legacyGone)) sendUi({ type: "pop_modal" });
+  }, [ui, famineGone, petitionGone, chronicleGone, personCardGone, legacyGone, sendUi]);
   return <>
     {seasonCard === null ? null : <SeasonLedgerCard model={seasonCard} auto={ledgerAuto}
       onAutoChange={onLedgerAuto}
@@ -71,11 +82,18 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       petitioners={petitionerRows(state, state.politics?.petitions.find(petition => petition.id === petitionView.petitionId) ?? {})}
       onRespond={response => { dispatch({ type: "petition_response", petitionId: petitionView.petitionId, response }); sendUi({ type: "pop_modal" }); }} />}
     {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
-      onNextChapter={() => { sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "chapter_preview" }); }}
+      // UI-10 (LG-8): chapter 5's end is the campaign's — its page leads to the legacy verdict, not to a chapter 6.
+      {...(chronicle.chapter === CHAPTER_FIVE.chapter ? { nextLabel: LEGACY_SCREEN_COPY.toVerdict } : {})}
+      onNextChapter={() => { sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: chronicle.chapter === CHAPTER_FIVE.chapter ? "legacy_ending" : "chapter_preview" }); }}
       onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} />}
+    {legacyView === null ? null : <LegacyEndingScreen state={state} view={legacyView} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
+      onBook={() => sendUi({ type: "push_modal", modal: "chronicle_book" })} />}
+    {top === "chronicle_book" ? <ChronicleBook state={state} onClose={() => sendUi({ type: "pop_modal" })} /> : null}
     {top === "person_card" && personCard !== null ? <PersonCardModal view={personCard} onClose={() => sendUi({ type: "pop_modal" })}
       onBiography={id => { onChroniclePerson(id); sendUi({ type: "pop_modal" }); sendUi({ type: "push_modal", modal: "history" }); }} /> : null}
     {top === "history" ? <ChronicleScreen state={state} initialPersonId={chroniclePersonId} onClose={() => { onChroniclePerson(null); sendUi({ type: "pop_modal" }); }}
+      onBook={() => sendUi({ type: "push_modal", modal: "chronicle_book" })}
+      onEnding={endingWritten ? () => sendUi({ type: "push_modal", modal: "legacy_ending" }) : null}
       onLookAt={tile => { sendUi({ type: "pop_modal" }); platformServices().input.emit({ kind: "lookAt", tile }); }} /> : null}
     {top === "chapter_preview" ? (() => {
       // UI-8: the preview's chapter is always the one after the latest chapter end.
@@ -86,7 +104,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
         goals={chapterGoals(state).filter(goal => goal.chapter === nextChapter).map(goal => CHAPTER_COPY.goals[goal.id] ?? goal.id)} />;
     })() : null}
     {top === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
-      settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
+      settings={<><Button type="button" className="pause-menu-book" onPress={() => sendUi({ type: "push_modal", modal: "chronicle_book" })}
+        variant="secondary"><UiIcon sheet="action" cell="log" />{LEGACY_SCREEN_COPY.book.open}</Button><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
         <PresentationToggle preference="eventPause" /><PresentationToggle preference="weatherFx" /><PresentationToggle preference="rainOverlay" />
         <PresentationToggle preference="developerInfo" /><PresentationToggle preference="qaOverlay" />
         <Button type="button" className="autoplay-toggle season-ledger-auto-setting" aria-pressed={ledgerAuto}
