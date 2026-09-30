@@ -10,7 +10,7 @@ import type { BuildingDefinition } from "../economy/economy.types";
 import type { GameState } from "./engine.types";
 import { scenarioOf } from "./scenarioState";
 
-const NEUTRAL: ArchetypeRules = { arablePermille: 1000, pastoralPermille: 1000, timberPermille: 1000, floodPermille: 1000, coastalEventPermille: 1000 };
+const NEUTRAL: ArchetypeRules = { arablePermille: 1000, pastoralPermille: 1000, timberPermille: 1000, floodPermille: 1000, coastalEventPermille: 1000, coastalRaidPermille: 1000 };
 
 /** MA-6: the town's land. */
 export function stateArchetype(state: Pick<GameState, "scenarioId" | "archetypeId">): ArchetypeDef | undefined {

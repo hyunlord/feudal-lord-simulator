@@ -48,7 +48,7 @@ export function injectSceneState(moduleText, stateJson) {
     'import { decodeSave as __decodeSave, assertGameStateSnapshot as __assertSnapshot } from "/src/save/saveCodec.ts";',
     'import { migrateSaveToLatest as __migrate } from "/src/save/migrations/index.ts";',
     'import { advanceTick as __advanceTick } from "/src/engine/tick.ts";',
-    // NAT-2: staleStateKeys reads this set (ARCH-1b); without it every bare state threw a ReferenceError in the page.
+    // staleStateKeys reads this set (ARCH-1b); without it every bare state threw a ReferenceError in the page.
     `const OPTIONAL_NEW_GAME_KEYS = new Set(${JSON.stringify([...OPTIONAL_NEW_GAME_KEYS])});`,
     `const __staleStateKeys = ${staleStateKeys.toString()};`,
     `const __admitSceneState = ${admitSceneState.toString()};`,

@@ -32,6 +32,8 @@ export const LEDGER_CATEGORIES = [
   "royal_subsidy", "succession_relief", "legacy_endowment",
   // FIX-9 (LG-13): the parish's nave rebuilt.
   "church_rebuilding",
+  // FIX-10 (TT-2): timber bought from the market's traders.
+  "timber_purchase",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

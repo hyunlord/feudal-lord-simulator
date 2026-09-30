@@ -57,3 +57,11 @@ test("the page's store starts from admitSceneState, and no script replaces the s
   const parsed = producers.filter(name => /JSON\.parse\([^;]*(final-state\.json|\.save\.json|fixtures\/autoplay)/.test(readFileSync(`scripts/${name}`, "utf8")));
   assert.deepEqual(parsed, []);
 });
+
+test("the injected checks run on their own in the page: every name they read is declared in the prelude (ARCH-1b's OPTIONAL_NEW_GAME_KEYS was not)", () => {
+  const rewritten = injectSceneState("const [state, setState] = useState(DEFAULT_GAME_STATE);", "{\"tick\":1}");
+  const prelude = rewritten.slice(0, rewritten.indexOf("const __codec")).split("\n").filter(line => !line.startsWith("import ")).join("\n");
+  const staleKeys = new Function(`${prelude}\nreturn __staleStateKeys;`)() as (state: object, newGame: object, codec: object) => unknown;
+  // A state missing only the optional river, not past the new game: answered without the codec.
+  assert.deepEqual(staleKeys({ tick: 0 }, { tick: 0, river: null }, {}), []);
+});

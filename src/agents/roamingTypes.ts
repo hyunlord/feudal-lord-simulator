@@ -22,6 +22,8 @@ export interface RoamingRoutePort {
   readonly neighbors: (tile: TilePos) => readonly TilePos[];
   readonly isRoad: (tile: TilePos) => boolean;
   readonly canTraverse?: (from: TilePos, to: TilePos) => boolean;
+  /** FIX-10 (FD-2): a ford road tile (a step onto or off it goes at half pace). */
+  readonly isFord?: (tile: TilePos) => boolean;
   readonly servicePath?: (start: TilePos, house: RoamingHouse) => readonly TilePos[] | null;
   readonly canServiceHouse?: (tile: TilePos, house: RoamingHouse) => boolean;
 }

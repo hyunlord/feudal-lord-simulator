@@ -3,3 +3,4 @@ docs/asset-evidence/runtime-sources/**/*.png filter=lfs diff=lfs merge=lfs -text
 docs/asset-evidence/phase16-sources/**/*.png filter=lfs diff=lfs merge=lfs -text
 assets-inbox/**/*.png filter=lfs diff=lfs merge=lfs -text
 output/playtest-a-double-prime/*.pdf binary
+docs/qa/**/*.jpg filter=lfs diff=lfs merge=lfs -text

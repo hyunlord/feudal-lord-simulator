@@ -1,0 +1,3 @@
+const fs=require('fs'),path=require('path'),{execFileSync}=require('child_process');
+const root='/tmp/QA_ROUND_01/evidence',raw='/tmp/fls-qa-raw-round01';
+for(const ent of fs.readdirSync(root,{withFileTypes:true})){if(!ent.isDirectory()||!fs.existsSync(path.join(root,ent.name,'19.jpg')))continue;if(fs.existsSync('/tmp/fls-perf-measure.lock'))throw Error('PERF_LOCK_ACTIVE');const dir=path.join(root,ent.name);execFileSync('/opt/homebrew/bin/ffmpeg',['-v','error','-y','-framerate','10','-i',dir+'/%02d.jpg','-filter_complex','[0:v]scale=960:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=96[p];[b][p]paletteuse=dither=bayer:bayer_scale=4','-loop','0',root+'/'+ent.name+'.gif']);fs.renameSync(dir,path.join(raw,ent.name));console.log(ent.name)}

@@ -96,6 +96,8 @@ export interface GameState {
   readonly river?: import("../world/river").RiverData;
   /** ARCH-1b (MA-11, save v32): the fen's drainage works and the ground they drained; absent until the first. */
   readonly drainage?: import("./drainage").DrainageState;
+  /** FIX-10 (TT-1, save v33): timber ordered from the market's traders and not yet brought; absent when none. */
+  readonly timberOrder?: number;
   settlement?: import("./settlement.types").SettlementProgress;
   tick: number;
   seed: number;
