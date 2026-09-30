@@ -44,6 +44,8 @@ export const FACTION_AFFAIR_LINES: Readonly<Record<string, string>> = {
 
 export const FACTION_LEADER_LINES: Readonly<Record<string, string>> = {
   succeeded: "수장이 죽고 후계자가 뒤를 이었다", chosen: "새 수장이 섰다",
+  // UI-10: the Crown's head changes by the calendar (FX-5) — a king deposed (1327, 1399) as well as one dead; the world's line says which.
+  crown_succeeded: "새 왕이 왕위에 올랐다",
 };
 
 const PETITION_NAMES: Readonly<Record<string, string>> = {
@@ -70,7 +72,7 @@ export function factionReasonLine(reason: string): string {
   if (kind === "restored") return "권리를 되삼";
   if (kind === "house_change") return "영주 가문이 바뀜";
   if (kind === "raid") return a === "held" ? "습격에 성벽이 버팀" : "습격에 성벽이 뚫림";
-  if (kind === "legacy") return a === "deposition" ? "리처드 2세가 폐위되고 새 왕이 섬" : reason;
+  if (kind === "legacy") return a === "deposition" ? "리처드 2세가 폐위되고 헨리 4세의 치세가 시작됨" : reason;
   if (kind === "reorg") return a === "wage_competition" ? "더 높은 임금으로 가구를 데려감" : a === "overlord_warning" ? "도시가 커지는 것을 경계함"
     : b === "chased" ? "징수원을 쫓아낸 소동" : "반란 소문이 조용히 지나감";
   return reason;

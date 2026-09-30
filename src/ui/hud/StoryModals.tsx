@@ -3,6 +3,7 @@ import { CHRONICLE_COPY } from "../chronicleCopy.ko";
 import type { ChronicleView } from "../chronicleModel";
 import { DECISION_COPY } from "../decisionCopy.ko";
 import type { FamineDecisionView, PetitionDecisionView } from "../decisionModels";
+import type { HeirCandidateView } from "../heirCandidateModel";
 import { UiIcon } from "../UiIcon";
 import { wave8ContentStyle, wave8FrameLayerStyle, wave8ImageStyle, wave8Url } from "../wave8Art";
 import { wave16ImageStyle, wave16Url } from "../wave16Art";
@@ -17,6 +18,7 @@ import { PETITION_COPY } from "../petitionCopy.ko";
 import { wave14ImageStyle } from "../wave14Art";
 import { wave17ImageStyle, wave17Url } from "../wave17Art";
 import { wave21ImageStyle, wave21Url } from "../wave21Art";
+import { wave33ImageStyle } from "../wave33Art";
 import { storyArtStyle } from "../storyArt";
 
 // UI-4 story modals (state machine modals: time stops while one is up, and closing it returns to the state under it).
@@ -66,11 +68,28 @@ export function FamineDecisionModal({ view, onChoose, onLater, steward = null, o
 }
 
 /** UI-6: the scene of a petition's kind (Wave 16 for chapter 1's, the Wave 17 decision cards for the war's five).
- *  UI-8: extended to accept "wave21" for the chapter 3 plague decisions. */
+ *  UI-8: extended to accept "wave21" for the chapter 3 plague decisions. UI-10: "wave33" for the interlude's two. */
 function PetitionArt({ art }: { readonly art: PetitionDecisionView["presentation"]["art"] }) {
+  if (art === null) return null;
   // Wave 17 and Wave 21 decision cards are 4:3 (taller than Wave 16's): narrower so the three answers stay inside the frame.
   if (art.sheet === "wave21") return <div className="story-modal-art" aria-hidden="true" style={wave21ImageStyle(art.id, 208)} />;
+  // UI-10: the Wave 33 interlude illustrations are 16:9, as tall at 240 as a 4:3 card at 180.
+  if (art.sheet === "wave33") return <div className="story-modal-art" aria-hidden="true" style={wave33ImageStyle(art.id, 240)} />;
   return <div className="story-modal-art" aria-hidden="true" style={art.sheet === "wave16" ? wave16ImageStyle(art.id, 300) : wave17ImageStyle(art.id, 208)} />;
+}
+
+/** UI-10 (LG-3): the heir an answer names — the portrait, the name, who they are to the old lord, their likeness and records. */
+function HeirCandidate({ heir }: { readonly heir: HeirCandidateView }) {
+  return (
+    <span className="petition-heir" data-person={heir.personId} data-portrait-exact={heir.exact ? "true" : "false"}>
+      <PersonPortrait portraitId={heir.portraitId} size={48} />
+      <strong className="petition-heir-name">{heir.name}</strong>
+      <span className="petition-heir-who">{heir.who}</span>
+      <span className="petition-heir-line">{heir.lineage}</span>
+      <span className="petition-heir-line">{heir.resemblance}</span>
+      <span className="petition-heir-line">{heir.records}</span>
+    </span>
+  );
 }
 
 export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPerson }: {
@@ -116,6 +135,7 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
                 <Button type="button" className="petition-option" data-response={option.choice} aria-label={DECISION_COPY.choose(option.label)} onPress={() => onRespond(option.choice)} variant="primary">
                   <span className="petition-seal" aria-hidden="true" style={wave8ImageStyle(option.seal, 44)} />
                   <strong>{option.label}</strong>
+                  {option.heir === undefined ? null : <HeirCandidate heir={option.heir} />}
                   <span>{option.line}</span>
                   <PredictedLine className="petition-predicted" numbers={option.predicted} />
                 </Button>
