@@ -75,9 +75,11 @@ async function loadScene(scene, condition) {
     const base = scene.kind === 'state' ? loadState(scene.set, scene.name) : null;
     const state = base !== null && condition.numbers === 'extreme' ? extremeNumbers(base) : base;
     const opened = await openScene(browser, { state, tile: state === null ? [45, 41] : scene.focus !== undefined ? (({ tx, ty }) => [tx, ty])(mapTile(state, scene.focus)) : sceneTile(state, scene.tile), baseUrl: url, width: viewport.width, height: viewport.height,
-      zoom: scene.zoom ?? 1.1, run: scene.run ?? false, hasTouch: viewport.touch,
+      zoom: scene.zoom ?? 1.1, run: false, hasTouch: viewport.touch,
       initScript: scene.kind === 'state' ? `${NAME_SHIM}${TUTORIAL_OFF}` : NAME_SHIM, query: `${scene.query ?? ''}${long ? '&pseudo-long=1' : ''}` });
     opened.page.on('pageerror', error => pageErrors.push(String(error).slice(0, 200)));
+    // openScene starts the clock by the 1× seal's name, which the pseudo-long copy lengthens: press the second seal.
+    if (scene.run) await opened.page.locator('.speed-seals .speed-seal').nth(1).click({ timeout: 10_000 });
     return { ...opened, state: state ?? { buildings: [], constructionSites: [], walkers: [] } };
   }
   const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, hasTouch: viewport.touch });
