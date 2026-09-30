@@ -87,7 +87,27 @@ export const FIRE_NEIGHBOUR_POINTS = 2;
 /** TA-4 stuck: points a mill, granary or road gains per 100 wheat held stuck (FIX-11 stuckStock). */
 export const STUCK_POINTS_PER_100 = 5;
 /** TA-4: the order reasons are shown in when tied. */
-export const REASON_ORDER: readonly ReasonName[] = ["need", "subsidy", "policy", "dues", "stuck", "access", "relation", "risk", "cost"];
+export const REASON_ORDER: readonly ReasonName[] = ["need", "subsidy", "policy", "dues", "stuck", "access", "land", "plan", "relation", "risk", "cost"];
+
+/** TA-10: a building project's candidate sites — the plan's own and at most this many in all. */
+export const SITE_CANDIDATES_MAX = 5;
+/** TA-10: other sites are sought within this many tiles of the plan's (each axis). */
+export const SITE_SEARCH_RADIUS = 8;
+/** TA-10: at most this many sites (best by their site reasons first) go through the plan's full checks. */
+export const SITE_FULL_CHECKS_MAX = 12;
+/** TA-10 plan: the site the bot's planning step chose (it knows the chain it serves — fields, barns, lots). */
+export const PLAN_SITE_POINTS = 4;
+/**
+ * TA-10 land: land near the town's centre (its first market, else its houses' middle) — a home or a shop gains, a
+ * workshop pays: max(0, reach − distance) ÷ step points, at most 6 either way.
+ */
+export const LAND_REACH = 18;
+export const LAND_STEP = 3;
+/** TA-10 land: the kinds that gain by the centre (every other kind pays for it). */
+export const CENTRE_KINDS: readonly BuildingKind[] = ["house", "market", "well", "chapel", "church", "granary"];
+
+/** TA-6 ②: the subsidies offered, together, at most this share of the treasury (‰) when one is set. */
+export const SUBSIDY_TREASURY_PERMILLE = 250;
 /** TA-6: lord-mode opportunity projects: kinds an actor may propose without a need when a subsidy or the policy backs them. */
 // Houses come only as needs (a burgage plot, the housing step): a house on the first legal tile would break the lots' plan.
 export const OPPORTUNITY_KINDS: readonly BuildingKind[] = ["market", "granary", "storehouse", "well", "mill", "malt_kiln", "chapel",

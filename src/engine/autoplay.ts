@@ -140,11 +140,61 @@ function findBuildSite(
   for (const coordinate of coordinates) {
     // Every candidate still needs a service proof; an exhausted phase cannot supply one.
     if (autoplaySearchExhausted()) return null;
-    if (!hasAutoplayBuildingClearance(state, kind, coordinate) || !accepts(coordinate)) continue;
-    if (autoplayCanPlace(state, kind, coordinate.tx, coordinate.ty) && preservesAutoplayWallSpace(state, kind, coordinate)
-      && preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: coordinate.tx, ty: coordinate.ty })
-      && preserveRoadExpansion(state, { ...coordinate, kind })?.kind !== 'none') return coordinate;
+    const check = autoplaySiteCheck(state, kind, coordinate, accepts);
+    if (check === null || check === "road_first") return coordinate;
   }
+  return null;
+}
+
+/** LM-E1b (TA-10): the site check that failed, in the order the bot runs them. */
+export type SiteRefusal = "clearance" | "accepts" | "placement" | "wall_space" | "service_space" | "road_expansion";
+
+/**
+ * LM-E1b (TA-10): the bot's checks of one site, lifted out of its site search so the town's candidates take the same:
+ * the setback, the step's own test, the placement rules (zones, fields), the wall's room (the palisade still fits, or
+ * a house stands inside it), the town's service space, and the road's room to grow. `road_first` is a site that needs
+ * its road laid before the building (the bot lays the road; a town candidate is refused).
+ */
+export function autoplaySiteCheck(state: GameState, kind: BuildingKind, coordinate: TileCoordinate,
+  accepts: (coordinate: TileCoordinate) => boolean = () => true): SiteRefusal | "road_first" | null {
+  if (!hasAutoplayBuildingClearance(state, kind, coordinate)) return "clearance";
+  if (!accepts(coordinate)) return "accepts";
+  if (!autoplayCanPlace(state, kind, coordinate.tx, coordinate.ty)) return "placement";
+  if (!preservesAutoplayWallSpace(state, kind, coordinate)) return "wall_space";
+  if (!preservesAutoplayServiceSpace(state, { kind: 'place_building', building: kind, tx: coordinate.tx, ty: coordinate.ty })) return "service_space";
+  const expansion = preserveRoadExpansion(state, { ...coordinate, kind });
+  if (expansion?.kind === 'none') return "road_expansion";
+  return expansion === null ? null : "road_first";
+}
+
+/** LM-E1b (TA-10): what a town candidate fails beyond the bot's site checks. */
+export type TownSiteRefusal = SiteRefusal | "road_first" | "wall_side" | "house_lot" | "market_reach" | "route" | "house_sites";
+
+/**
+ * LM-E1b (TA-10): every check the bot's plan puts on a site, for one candidate of a town project — the wall and plot
+ * rules the bot applies inside its own steps, as one test:
+ * - `wall_side`: behind a wall, production and storage stand outside it when the plan's site is outside (LB-11);
+ * - `house_lot`: a house takes a grass lot beside a road that does not split a pair of houses (the housing step);
+ * - `market_reach`: with the markets at their cap, a new house stands where a market reaches it (AR-5);
+ * - `route`: a building that needs a road has its materials' route (FIX-1);
+ * - the bot's site checks above (setback, placement, the wall's room, service space, the road's room);
+ * - `house_sites`: behind a wall, a building that leaves the lots still wanted their house sites (AR-7).
+ * `planSite` is the site the bot's planning step chose (the wall side follows it). Null when the site passes.
+ */
+export function townSiteRefusal(state: GameState, kind: BuildingKind, coordinate: TileCoordinate, planSite: TileCoordinate,
+  policy: AutoplayPolicy): TownSiteRefusal | null {
+  if (state.palisade !== null && OUTSIDE_WALL_KINDS.has(kind) && outsideWall(state, kind, planSite) && !outsideWall(state, kind, coordinate)) return "wall_side";
+  if (kind === "house") {
+    const roads = [{ tx: 0, ty: -1 }, { tx: 1, ty: 0 }, { tx: 0, ty: 1 }, { tx: -1, ty: 0 }]
+      .some(({ tx, ty }) => getTile(state, { tx: coordinate.tx + tx, ty: coordinate.ty + ty })?.hasRoad === true);
+    if (!zoneRuleActive(state, "burgage") && (!isGrassOrigin(state, coordinate) || !roads || splitsExistingHousePair(state, coordinate))) return "house_lot";
+    if (!keepsHouseInMarketReach(state, policy.maxHousingLots)(coordinate)) return "market_reach";
+  }
+  const routed = (site: TileCoordinate) => !BUILDING_CONFIG_BY_KIND[kind].requiresRoad || hasConnectedConstructionRoute(state, virtualBuilding(kind, site));
+  const check = autoplaySiteCheck(state, kind, coordinate, routed);
+  if (check === "accepts") return "route";
+  if (check !== null) return check;
+  if (!keepsInteriorHouseSites(state, { kind: "place_building", building: kind, tx: coordinate.tx, ty: coordinate.ty }, policy.maxHousingLots)) return "house_sites";
   return null;
 }
 
@@ -472,6 +522,15 @@ function decidePlacement(state: GameState, policy: AutoplayPolicy, diagnostic?: 
   }
   clearZoneExclusions();
   return action;
+}
+
+/**
+ * LM-E1b (TA-11): the needs the bot's plan raises before its steps — the wall's priority when the construction reserve
+ * locks the work, or the stone wall's priority once the stone town is proclaimed — without walking the steps.
+ */
+export function planningEarlyNeeds(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY): readonly PlanningNeed[] {
+  const early = plannerPlan(state, policy).early;
+  return early === null || early.kind === "none" ? [] : [{ planner: "wall_priority", rank: 0, action: early }];
 }
 
 /** LM-E1 (TA-3): a need the bot's planning finds now — which step (its rank in the priority list) and the action. */
