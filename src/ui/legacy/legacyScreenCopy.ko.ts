@@ -35,6 +35,9 @@ export const LEGACY_SCREEN_COPY = {
     family: { house: "가문 연속", generations: "계보의 세대", heir: "후계자", stayed: "영주관에 남음", relations: "상위 영주·국왕 관계", treasury: "금고", legacy: "고른 유산" },
     church: { church: "교회", chapels: "예배당", bishop: "주교 관계", priest: "역병 때 수도원 사제", relief: "대기근 구휼", rebuilt: "회중석 증축", legacy: "고른 유산" },
   } as Readonly<Record<string, Readonly<Record<string, string>>>>,
+  /** A petition's decision in the ledger's words (historyCopy's `decision.petition_response`), for the heir's answer
+   *  when the heir seated was a distant kinsman (the ledger's line names the nephew). */
+  answered: (subject: string, answer: string) => `${subject}에 답했다: ${answer}`,
   /** Where the ending opens again (the chronicle screen's header). */
   openEnding: "결말 다시 보기",
   /** The chronicle book (LG-9). */

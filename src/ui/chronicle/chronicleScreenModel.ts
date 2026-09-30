@@ -29,6 +29,7 @@ import { chapterIntro, type Wave31ImageId } from "../wave31Art";
 import type { Wave33ImageId } from "../wave33Art";
 import { WAVE33_IMAGES } from "../wave33ArtManifest.generated";
 import { CHRONICLE_SCREEN_COPY, OCCUPATION_TITLES } from "./chronicleScreenCopy.ko";
+import { recordSentence } from "../legacy/chapterRecords";
 import { WAVE17_IMAGES } from "../wave17ArtManifest.generated";
 
 // CHRON-1 chronicle screen (CHRONICLE_DESIGN 2.1, 2.2, 2.4): the whole history ledger read on three axes — the town's
@@ -459,10 +460,11 @@ function recordNumbers(record: HistoryRecord, bundle: readonly HistoryRecord[] |
   return null;
 }
 
-export function recordCard(state: Pick<GameState, "history" | "persons" | "scenarioId" | "houses" | "seed"> & Partial<Pick<GameState, "lordship" | "factions">>, item: ChronicleItem): RecordCard {
+export function recordCard(state: Pick<GameState, "history" | "persons" | "scenarioId" | "houses" | "seed"> & Partial<Pick<GameState, "lordship" | "factions" | "legacy">>, item: ChronicleItem): RecordCard {
   const { record, bundle } = item;
   const person = recordPerson(state, record);
-  const summary = bundle !== null ? CHRONICLE_SCREEN_COPY.bundleTitle : history.summary(record);
+  // UI-10: the heir's answer in the heir's real relation (recordSentence), otherwise the ledger's own sentence.
+  const summary = bundle !== null ? CHRONICLE_SCREEN_COPY.bundleTitle : recordSentence(state, record);
   const personName = person === undefined ? null : personDisplayName(person);
   const sentence = personName === null || record.kind !== "person" ? summary
     : HOUSEHOLD_TEMPLATES.has(record.template) ? CHRONICLE_SCREEN_COPY.householdLine(personName, summary) : CHRONICLE_SCREEN_COPY.personLine(personName, summary);

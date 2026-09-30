@@ -184,7 +184,8 @@ test("UI-10: the chapter-5 chronicle page — its legacy lines, the ch5_ending p
   const view = chronicleView(state);
   assert.equal(view?.chapter, 5);
   const joined = view!.stats.join("\n");
-  for (const word of ["자치와 유산 시작", "후계자 조카", "국왕 과세 납부", "자치 특허 인장을 찍음", "영주관을 떠나", "남긴 유산 길드홀과 시청", "결말", "유산 점수"]) assert.ok(joined.includes(word), `${word} in\n${joined}`);
+  // UI-10 gate 3: the helper town's heir is a distant kinsman (the nephew's answer), named by his relation.
+  for (const word of ["자치와 유산 시작", "후계자 먼 친척", "국왕 과세 납부", "자치 특허 인장을 찍음", "영주관을 떠나", "남긴 유산 길드홀과 시청", "결말", "유산 점수"]) assert.ok(joined.includes(word), `${word} in\n${joined}`);
   assert.equal(chronicleIllustration({ template: "milestone.chapter_end", params: { chapter: 5 } }), "ch5_ending");
   const legacyRecords = state.history!.records.filter(record => record.template.startsWith("legacy."));
   assert.ok(legacyRecords.length >= 8);

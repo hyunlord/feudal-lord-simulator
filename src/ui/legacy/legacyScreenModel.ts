@@ -1,4 +1,4 @@
-import { HISTORY_CHOICE_LABELS, LORD_HOUSE_NAMES_KO, WAR_CHOICES } from "../../content/historyCopy.ko";
+import { LORD_HOUSE_NAMES_KO } from "../../content/historyCopy.ko";
 import { CHRONICLE_TEXT, LEGACY_AXIS_COPY } from "../../content/legacyCopy.ko";
 import type { LegacyAxis, LegacyEndingId } from "../../content/legacyConfig";
 import { campaignChronicle, campaignChronicleText, type ChronicleBookLine } from "../../engine/campaignChronicle";
@@ -7,6 +7,7 @@ import type { HistoryRecord } from "../../engine/history.types";
 import { legacyEnding, legacyOf, legacyScores, legacyWord } from "../../engine/legacy";
 import { MANOR_HOUSEHOLD } from "../../engine/persons.types";
 import { lordshipOf } from "../../engine/lordshipState";
+import { chronicleEntry } from "../../engine/politics";
 import type { PlatformFiles } from "../../platform/PlatformServices";
 import { factionEmblem, recordArt, recordCard, yearOfTick, type ChronicleArt } from "../chronicle/chronicleScreenModel";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
@@ -19,6 +20,7 @@ import { WAVE21_IMAGES } from "../wave21ArtManifest.generated";
 import type { Wave21ImageId } from "../wave21Art";
 import { WAVE31_IMAGES } from "../wave31ArtManifest.generated";
 import type { Wave31ImageId } from "../wave31Art";
+import { answerWords, chapterOpenedTick, chapterOwnsRecord, chapterQuotes, recordSentence } from "./chapterRecords";
 import { LEGACY_SCREEN_COPY as COPY } from "./legacyScreenCopy.ko";
 
 // UI-10 the campaign's end (spec docs/design/chapter-five-legacy.md LG-7…LG-9, LG-12): the legacy verdict (the three
@@ -125,16 +127,32 @@ function installedArt(art: ChronicleArt): ChronicleArt {
   return art;
 }
 
-function bookLine(state: GameState, records: ReadonlyMap<string, HistoryRecord>, line: ChronicleBookLine): BookLineView {
+function bookLine(state: GameState, records: ReadonlyMap<string, HistoryRecord>, line: Pick<ChronicleBookLine, "recordId" | "year" | "text" | "illustration">): BookLineView {
   const record = records.get(line.recordId);
   const art = illustrationArt(line.illustration) ?? (record === undefined ? null : installedArt(recordArt(state, record)));
-  return { id: line.recordId, year: COPY.book.year(line.year), text: line.text, art };
+  return { id: line.recordId, year: COPY.book.year(line.year), text: record === undefined ? line.text : recordSentence(state, record), art };
 }
 
-/** A decision's answer in words (the war's own answers, else the ledger's). */
-function answerLabel(record: HistoryRecord | undefined, key: string): string {
-  const defId = String(record?.params?.defId ?? "");
-  return WAR_CHOICES[defId]?.[key] ?? HISTORY_CHOICE_LABELS[key] ?? key;
+/** A decision's answer in words (the war's and chapter 5's own, the heir's by the heir's relation, else the ledger's). */
+function answerLabel(state: GameState, record: HistoryRecord | undefined, key: string): string {
+  return answerWords(state, String(record?.params?.defId ?? ""), key);
+}
+
+/**
+ * A chapter's page in the book, on the chapter page's rules (chapterRecords): the tick it opened on is the closing
+ * chapter's, and chapter 5 quotes its own cards' answers too. The engine's page gives the rest (its summary, its events).
+ */
+function bookDecisions(state: GameState, records: ReadonlyMap<string, HistoryRecord>, chapter: number, closed: boolean): readonly BookDecisionView[] {
+  const end = state.politics?.chapterEnds.find(entry => entry.chapter === chapter);
+  const page = closed && end !== undefined ? end.chronicle : chronicleEntry(state);
+  const year = (tick: number) => yearOfTick(state, tick);
+  return chapterQuotes(state, chapter, page.decisions, end?.tick ?? state.tick).flatMap(quote => {
+    const record = records.get(quote.recordId);
+    if (record === undefined) return [];
+    return [{ ...bookLine(state, records, { recordId: record.id, year: year(record.tick), text: "", ...(record.illustration === undefined ? {} : { illustration: record.illustration }) }),
+      chosen: COPY.book.chosen(answerLabel(state, record, quote.chosen)),
+      alternatives: COPY.book.alternatives(quote.alternatives.map(key => answerLabel(state, record, key))) }];
+  });
 }
 
 /** LG-9 API for the book screen: the book so far (at the campaign's end, the whole of it), page by page. */
@@ -144,12 +162,9 @@ export function chronicleBookView(state: GameState): ChronicleBookView {
   const chapters: BookPage[] = book.chapters.map(chapter => ({
     kind: "chapter", key: `chapter-${chapter.chapter}`, chapter: chapter.chapter, heading: CHRONICLE_TEXT.chapter({ chapter: chapter.chapter }),
     years: COPY.book.years(chapter.fromYear, chapter.toYear), closed: chapter.closed, summary: chapter.summary,
-    events: chapter.events.map(line => bookLine(state, records, line)),
-    decisions: chapter.decisions.map(decision => {
-      const record = records.get(decision.recordId);
-      return { ...bookLine(state, records, decision), chosen: COPY.book.chosen(answerLabel(record, decision.chosen)),
-        alternatives: COPY.book.alternatives(decision.alternatives.map(key => answerLabel(record, key))) };
-    }),
+    events: chapter.events.filter(line => { const record = records.get(line.recordId);
+      return record === undefined || chapterOwnsRecord(record, chapter.chapter, chapterOpenedTick(state, chapter.chapter)); }).map(line => bookLine(state, records, line)),
+    decisions: bookDecisions(state, records, chapter.chapter, chapter.closed),
   }));
   const names = new Map(book.family.people.map(person => [person.id, person.name]));
   const family: BookPage = {

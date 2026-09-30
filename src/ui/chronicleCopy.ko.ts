@@ -36,7 +36,8 @@ export const CHRONICLE_COPY = {
   alternatives: (labels: readonly string[]) => labels.length === 0 ? "" : `다른 길: ${labels.join(", ")}`,
   outcome: (predicted: Readonly<Record<string, number>>, actual: Readonly<Record<string, number>> | null) =>
     actual === null ? `예측 ${metricLine(predicted)}` : `예측 ${metricLine(predicted)} / 실제 ${metricLine(actual)}`,
-  stats: (stats: ChronicleEntry["stats"], chapter = 1) => [
+  /** UI-10: `heirWord` — the seated heir's relation in words (a distant kinsman is not a nephew), over the kind's word. */
+  stats: (stats: ChronicleEntry["stats"], chapter = 1, heirWord: string | null = null) => [
     `인구 처음 ${stats.populationStart} · 끝 ${stats.populationEnd} · 가장 많을 때 ${stats.peakPopulation}`,
     `집 ${stats.houses}채 · 불탄 집 ${stats.burntHouses} · 떠난 가구 ${stats.departures}`,
     `잃은 수확 밀 ${stats.harvestLost} · 금고 ${pence(stats.treasury)}`,
@@ -60,7 +61,7 @@ export const CHRONICLE_COPY = {
     ]),
     // UI-10 (F5-A LG-8): chapter 5's autonomy and legacy.
     ...(stats.legacy === undefined ? [] : [
-      `자치와 유산 시작 ${stats.legacy.startYear}년 · 도시가 뽑은 시장 ${stats.legacy.mayor ? "있음" : "없음"} · 후계자 ${stats.legacy.heir === null ? "정하지 않음" : HEIR_KIND_COPY[stats.legacy.heir] ?? stats.legacy.heir}`,
+      `자치와 유산 시작 ${stats.legacy.startYear}년 · 도시가 뽑은 시장 ${stats.legacy.mayor ? "있음" : "없음"} · 후계자 ${stats.legacy.heir === null ? "정하지 않음" : heirWord ?? HEIR_KIND_COPY[stats.legacy.heir] ?? stats.legacy.heir}`,
       `국왕 과세 ${stats.legacy.royalTax === null ? "없음" : ROYAL_TAX_OUTCOME[stats.legacy.royalTax]} · 자치 특허 ${stats.legacy.charter === null ? "없음" : AUTONOMY_OUTCOME[stats.legacy.charter]} · 가문 ${stats.legacy.family === null ? "정하지 않음" : FAMILY_OUTCOME[stats.legacy.family]}`,
       `남긴 유산 ${stats.legacy.legacy === null ? "없음" : LEGACY_AXIS_COPY[stats.legacy.legacy]?.legacy ?? stats.legacy.legacy} · 결말 ${stats.legacy.ending === null ? "아직 없음" : LEGACY_ENDING_COPY[stats.legacy.ending]?.title ?? stats.legacy.ending}`,
       ...(stats.legacy.scores === null ? [] : [`유산 점수 도시 ${stats.legacy.scores.town} · 가문 ${stats.legacy.scores.family} · 교회 ${stats.legacy.scores.church}`]),

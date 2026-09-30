@@ -15,7 +15,8 @@
 //    without a guild).
 // Beside the shots captures.json (what each shows, the shots' total size). The selectors are in SEL (UI-10's screens
 // land in parallel; adjust them there).
-//   PLAYWRIGHT_MODULE=... npx tsx scripts/ui10Captures.ts <out-dir> --url <game> --states <dir> [--endings <dir>] [--extra <dir>] [--only <prefix,…>]
+//   PLAYWRIGHT_MODULE=... npx tsx scripts/ui10Captures.ts <out-dir> --url <game> --states <dir> [--endings <dir>] [--extra <dir>] [--only <prefix,…>] [--size <w>x<h>]
+// (--size: the window, 1280x800 unless given — e.g. 1180x820 for the tablet check of the ending's buttons.)
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/ui10Captures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/ui10Captures.ts …", entry: import.meta.url });
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
@@ -80,6 +81,7 @@ type Proof = { tileClientPoint: (tile: object) => { clientX: number; clientY: nu
 const [out] = process.argv.slice(2);
 const flag = (name: string) => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
 const url = flag("url")!; const statesDir = flag("states")!; const endingsDir = flag("endings"); const extraDir = flag("extra");
+const [WIDTH, HEIGHT] = (flag("size") ?? "1280x800").split("x").map(Number) as [number, number];
 mkdirSync(out!, { recursive: true });
 const STORY_DELAY_MS = 5_000;
 const HELD = 600_000;
@@ -121,7 +123,7 @@ function focus(state: GameState): [number, number] {
   return [keep.tx, keep.ty];
 }
 async function scene(state: GameState, label: string, delay: number, view: { tile?: readonly number[]; zoom?: number } = {}): Promise<{ page: Page; close: () => Promise<void> }> {
-  const { context, page } = await openScene(browser, { state, tile: view.tile ?? focus(state), baseUrl: url, width: 1280, height: 800, zoom: view.zoom ?? 1.1, run: false,
+  const { context, page } = await openScene(browser, { state, tile: view.tile ?? focus(state), baseUrl: url, width: WIDTH, height: HEIGHT, zoom: view.zoom ?? 1.1, run: false,
     initScript: TUTORIAL_OFF, query: `&story-delay=${delay}` });
   (page as Page).on("pageerror", error => errors.push(`${label}: ${String(error).slice(0, 200)}`));
   return { page: page as Page, close: () => context.close() };

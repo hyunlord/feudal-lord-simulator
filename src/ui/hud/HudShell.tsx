@@ -34,6 +34,8 @@ import { wageLedgerView } from "./wageLedgerModel";
 import { WAGE_LEDGER_COPY } from "./wageLedgerCopy.ko";
 // UI-9: chapter 4 reorganisation ledger (RG-3, RG-6, RG-9) and revolt pressure on the rights tab (RG-8).
 import { reorgLedgerView } from "./reorgLedgerModel";
+import { legacyLedgerView } from "./legacyLedgerModel";
+import { LEGACY_LEDGER_COPY } from "./legacyLedgerCopy.ko";
 import { REORG_LEDGER_COPY } from "./reorgLedgerCopy.ko";
 import { FACTION_INFLUENCE_COPY as INFLUENCE } from "../chronicle/factionInfluenceCopy.ko";
 
@@ -237,6 +239,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   const wageLedger = wageLedgerView(state);
   // UI-9: RG-3/RG-6/RG-9 chapter 4 reorganisation ledger — null before chapter 4 starts.
   const reorgLedger = reorgLedgerView(state);
+  // UI-10: LG-2…LG-5 chapter 5 ledger — null before chapter 5 starts.
+  const legacyLedger = legacyLedgerView(state);
   return (
     <section className="ledger-drawer slot-panel" aria-label={HUD_COPY.ledgerTitle}>
       <header className="slot-panel-heading"><h2>{HUD_COPY.ledgerTitle}</h2>
@@ -279,6 +283,14 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
         <div className="ledger-matrix-scroll"><table className="ledger-matrix">
           <thead><tr><th scope="col">{REORG_LEDGER_COPY.category}</th><th scope="col">{REORG_LEDGER_COPY.thisSeason}</th><th scope="col">{REORG_LEDGER_COPY.lastSeason}</th><th scope="col">{REORG_LEDGER_COPY.chapterTotal}</th></tr></thead>
           <tbody>{reorgLedger.rows.map(row => <tr key={row.category}><th scope="row">{row.label}</th>{row.shown.map((amount, index) => <td key={index}>{amount}</td>)}</tr>)}</tbody>
+        </table></div>
+      </section> : null}
+      {/* UI-10: chapter 5's money — the Crown's tax, the relief, the endowment, the charter fee, the nave, the fee farm. */}
+      {tab === "stock" && legacyLedger !== null ? <section className="ledger-wage-ledger ledger-legacy-ledger" aria-label={LEGACY_LEDGER_COPY.heading}>
+        <h3>{LEGACY_LEDGER_COPY.heading}</h3>
+        <div className="ledger-matrix-scroll"><table className="ledger-matrix">
+          <thead><tr><th scope="col">{LEGACY_LEDGER_COPY.category}</th><th scope="col">{LEGACY_LEDGER_COPY.thisSeason}</th><th scope="col">{LEGACY_LEDGER_COPY.lastSeason}</th><th scope="col">{LEGACY_LEDGER_COPY.chapterTotal}</th></tr></thead>
+          <tbody>{legacyLedger.rows.map(row => <tr key={row.category}><th scope="row">{row.label}</th>{row.shown.map((amount, index) => <td key={index}>{amount}</td>)}</tr>)}</tbody>
         </table></div>
       </section> : null}
       {/* UI-6: the rights register (the house, its arms, the title, the lord's rights and the ones he granted, the war). */}

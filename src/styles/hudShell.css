@@ -361,6 +361,8 @@
 .petition-options { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .petition-option { display: grid; grid-template-columns: 48px 1fr; gap: 2px 10px; width: 100%; min-height: 64px; padding: 6px; text-align: left; font-size: 13px; }
 .petition-seal { grid-row: 1 / 4; }
+/* UI-10: [나중에 정하기] stays in view at the card's bottom when long answers (chapter 5's charter) scroll the body. */
+.petition-body > .story-modal-later { position: sticky; bottom: 0; z-index: 1; }
 /* UI-10: an answer with more than three lines (the heir's card) keeps them all beside the seal. */
 .petition-option > :not(.petition-seal) { grid-column: 2; min-width: 0; }
 /* UI-10 (LG-3): the heir's card — its answers side by side (a column each, the seal beside the label, the rest under

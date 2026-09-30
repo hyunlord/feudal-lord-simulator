@@ -19,6 +19,13 @@ import { ChronicleBook } from "../src/ui/legacy/ChronicleBook";
 import { LegacyAxes, LegacyEndingBlock } from "../src/ui/legacy/LegacyEndingScreen";
 import { LEGACY_SCREEN_COPY } from "../src/ui/legacy/legacyScreenCopy.ko";
 import { chronicleBookView, ENDING_AXIS, exportChronicleText, legacyVerdictView } from "../src/ui/legacy/legacyScreenModel";
+import { chapterOwnsRecord, chapterQuotes, recordSentence } from "../src/ui/legacy/chapterRecords";
+import { chronicleView } from "../src/ui/chronicleModel";
+import { recordCard } from "../src/ui/chronicle/chronicleScreenModel";
+import { legacyLedgerView } from "../src/ui/hud/legacyLedgerModel";
+import { LEGACY_LEDGER_COPY } from "../src/ui/hud/legacyLedgerCopy.ko";
+import { LedgerDrawer } from "../src/ui/hud/HudShell";
+import { HEIR_CHOICE_PETITION_ID, LEGACY_CARD_PETITION_IDS } from "../src/content/legacyConfig";
 import { clothTown } from "./helpers/clothTown";
 import { LEGACY_ENDING_ANSWERS, throughLegacy } from "./helpers/legacyEndings";
 import { legacyTown } from "./helpers/legacyTown";
@@ -77,8 +84,12 @@ test("UI-10 LG-9 the chronicle book: a title page, five chapters, the family tre
     const chapter = engine.chapters[index]!;
     assert.ok(page.heading.startsWith(`제${chapter.chapter}장 `) && page.heading.includes(chapter.title), page.heading);
     assert.equal(page.summary, chapter.summary);
-    assert.deepEqual(page.events.map(line => line.text), chapter.events.map(line => line.text));
-    assert.deepEqual(page.decisions.map(line => line.id), chapter.decisions.map(line => line.recordId));
+    const opened = end.politics!.chapterEnds[index - 1]?.tick ?? null;
+    const own = chapter.events.filter(line => chapterOwnsRecord(end.history!.records.find(record => record.id === line.recordId)!, chapter.chapter, opened));
+    assert.deepEqual(page.events.map(line => line.id), own.map(line => line.recordId), page.heading);
+    // The engine's quotes (none of the tick the chapter opened on), and in chapter 5 its cards' answers too (gate fix 1).
+    assert.ok(chapter.decisions.every(line => page.decisions.some(decision => decision.id === line.recordId)
+      || end.history!.records.find(record => record.id === line.recordId)!.tick <= (end.politics!.chapterEnds[index - 1]?.tick ?? -1)), page.heading);
     assert.ok(page.decisions.every(line => line.chosen.length > 0 && !line.chosen.includes("undefined")));
   }
   assert.ok(chapters.some(page => page.events.some(line => line.art !== null)), "the events' pictures");
@@ -147,4 +158,76 @@ test("UI-10 the web platform saves a text file as a download: a Blob URL, a temp
   assert.deepEqual(calls, ["create", "element a", "append", "click 연대기-시험-1450.txt", "remove", "later", "revoke blob:1"]);
   assert.deepEqual(blobs, [{ parts: ["\uFEFF", "첫 줄\n둘째 줄"], type: "text/plain;charset=utf-8" }]);
   assert.equal(await createWebPlatformServices({}).files.saveText("a.txt", "b"), false, "no window: not saved");
+});
+
+test("UI-10 gate 1–2: chapter 5's page and book quote its own four cards' answers, and neither opens on chapter 4's closing tick", () => {
+  const end = endOf("free_borough");
+  const opened = end.politics!.chapterEnds.find(entry => entry.chapter === 4)!.tick;
+  const byId = new Map(end.history!.records.map(record => [record.id, record]));
+  const cards = end.history!.records.filter(record => record.kind === "decision" && LEGACY_CARD_PETITION_IDS.includes(String(record.params?.defId) as never));
+  assert.equal(cards.length, 4, "the four chapter-5 cards were answered");
+  const page = chronicleView(end)!;
+  assert.equal(page.chapter, 5);
+  for (const card of cards) assert.ok(page.decisions.some(decision => decision.id === card.id), String(card.params?.defId));
+  assert.ok(page.entries.every(entry => byId.get(entry.id)!.tick > opened), "no record of chapter 4's closing tick");
+  const book = chronicleBookView(end).pages.find(entry => entry.kind === "chapter" && entry.chapter === 5)!;
+  assert.ok(book.kind === "chapter");
+  assert.deepEqual(book.decisions.map(line => line.id), page.decisions.map(decision => decision.id), "the book quotes what the page quotes");
+  assert.ok([...book.events, ...book.decisions].every(line => byId.get(line.id)!.tick > opened));
+  // The rule: the opening tick is the closing chapter's, except the new chapter's own start milestone; chapter 1 owns tick 0.
+  assert.equal(chapterOwnsRecord({ tick: 100, template: "reorg.charter", params: {} }, 5, 100), false);
+  assert.equal(chapterOwnsRecord({ tick: 100, template: "milestone.chapter_start", params: { chapter: 5 } }, 5, 100), true);
+  assert.equal(chapterOwnsRecord({ tick: 100, template: "milestone.chapter_end", params: { chapter: 4 } }, 5, 100), false);
+  assert.equal(chapterOwnsRecord({ tick: 101, template: "reorg.charter", params: {} }, 5, 100), true);
+  assert.equal(chapterOwnsRecord({ tick: 0, template: "milestone.first_building", params: {} }, 1, null), true);
+  // Other chapters keep the engine's three.
+  const four = end.politics!.chapterEnds.find(entry => entry.chapter === 4)!;
+  assert.ok(chapterQuotes(end, 4, four.chronicle.decisions, four.tick).length <= four.chronicle.decisions.length);
+});
+
+test("UI-10 gate 3: a distant kinsman seated for the nephew's answer is named 먼 친척 on the page, in the quotes, the cards and the book — never 조카", () => {
+  const end = endOf("free_borough");
+  const heir = end.legacy!.candidates.find(candidate => candidate.personId === end.legacy!.heir!.personId)!;
+  assert.equal(heir.relation, "kinsman", "the helper town's heir is a distant kinsman (as seed 2's)");
+  const record = end.history!.records.find(entry => entry.kind === "decision" && entry.params?.defId === HEIR_CHOICE_PETITION_ID)!;
+  assert.equal(record.params?.chosen, "refuse");
+  const kinsman = "먼 친척에게 잇게 한다";
+  assert.ok(recordSentence(end, record).endsWith(kinsman));
+  assert.ok(recordCard(end, { key: record.id, tick: record.tick, record, bundle: null }).sentence.endsWith(kinsman));
+  const page = chronicleView(end)!;
+  assert.ok(page.decisions.find(decision => decision.id === record.id)!.sentence.includes(kinsman));
+  assert.ok(page.stats.some(line => line.includes("후계자 먼 친척")) && !page.stats.some(line => line.includes("후계자 조카")));
+  const quotes = legacyVerdictView(end)!.ending.quotes;
+  assert.ok(quotes.some(quote => quote.id === record.id && quote.sentence.endsWith(kinsman)));
+  const book = chronicleBookView(end).pages.find(entry => entry.kind === "chapter" && entry.chapter === 5)!;
+  assert.ok(book.kind === "chapter");
+  const line = book.decisions.find(decision => decision.id === record.id)!;
+  assert.ok(line.text.endsWith(kinsman) && line.chosen.includes(kinsman));
+  assert.ok(![...quotes.map(quote => quote.sentence), ...page.stats, line.text, line.chosen].some(text => text.includes("조카")));
+});
+
+test("UI-10 gate 4: the ledger drawer's stock tab has a chapter-5 section — this period, last period and the chapter-5 total of its six categories", () => {
+  const end = endOf("free_borough");
+  const view = legacyLedgerView(end)!;
+  assert.deepEqual(view.rows.map(row => row.category), ["royal_subsidy", "succession_relief", "legacy_endowment", "charter_fee", "church_rebuilding", "fee_farm"]);
+  const since = end.legacy!.startTick;
+  for (const row of view.rows) {
+    const entries = end.ledger!.entries.filter(entry => entry.account === "cash" && entry.category === row.category && entry.tick >= since).reduce((sum, entry) => sum + entry.amount, 0);
+    const folded = end.ledger!.rollups.filter(rollup => rollup.account === "cash" && rollup.periodStart >= since).reduce((sum, rollup) => sum + (rollup.byCategory[row.category] ?? 0), 0);
+    assert.equal(row.chapterTotal, entries + folded, row.category);
+    assert.ok(row.label.length > 0 && row.shown.every(amount => amount.endsWith("d")));
+  }
+  assert.ok(view.rows.find(row => row.category === "royal_subsidy")!.chapterTotal < 0, "the Crown's tax was paid");
+  assert.equal(legacyLedgerView(clothTown()), null, "before chapter 5");
+  const markup = renderToStaticMarkup(createElement(LedgerDrawer, { state: end, onInspect: () => undefined, onClose: () => undefined, viewTab: null, mapTab: null }));
+  assert.ok(markup.includes("ledger-legacy-ledger") && markup.includes(LEGACY_LEDGER_COPY.heading) && markup.includes(LEGACY_LEDGER_COPY.chapterTotal));
+});
+
+test("UI-10 gate 5–6: the buttons stay in view — the ending's three in a footer held at the panel's bottom, a card's [나중에 정하기] at its body's", () => {
+  const css = readFileSync("src/styles/legacy.css", "utf8");
+  assert.match(css, /\.legacy-ending-footer \{ position: sticky; bottom: 0;/);
+  assert.match(readFileSync("src/styles/hudShell.css", "utf8"), /\.petition-body > \.story-modal-later \{ position: sticky; bottom: 0;/);
+  const source = readFileSync("src/ui/legacy/LegacyEndingScreen.tsx", "utf8");
+  const footer = source.slice(source.indexOf('className="legacy-ending-footer"'));
+  for (const button of ["legacy-open-book", "legacy-export", "legacy-keep"]) assert.ok(footer.includes(button), button);
 });

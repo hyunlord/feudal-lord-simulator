@@ -1,4 +1,4 @@
-import { HISTORY_CHOICE_LABELS, PETITION_SUBJECTS, WAR_CHOICES } from "../content/historyCopy.ko";
+import { PETITION_SUBJECTS } from "../content/historyCopy.ko";
 import type { GameState } from "../engine/engine.types";
 import { history } from "../engine/history";
 import type { HistoryRecord } from "../engine/history.types";
@@ -6,6 +6,7 @@ import type { ChapterEnd } from "../engine/politics.types";
 import { chapterEnd } from "../engine/politics";
 import { currentYear } from "../engine/persons";
 import { CHRONICLE_COPY } from "./chronicleCopy.ko";
+import { answerWords, chapterOpenedTick, chapterOwnsRecord, chapterQuotes, heirRelationWord, recordSentence } from "./legacy/chapterRecords";
 import type { StoryIllustration } from "./storyArt";
 import { chapterIntro } from "./wave31Art";
 import type { Wave21ImageId } from "./wave21Art";
@@ -164,25 +165,27 @@ export function chronicleView(state: GameState): ChronicleView | null {
   const records = history.query(state, { severity: 1, range: { from, to: end.tick } })
     .filter(record => record.kind !== "person" && record.kind !== "ledger")
     // The chapters meet on one tick: the page keeps its own chapter's start and end, not the one before's or after's.
-    .filter(record => !record.template.startsWith("milestone.chapter_") || String(record.params?.chapter ?? end.chapter) === String(end.chapter));
+    .filter(record => !record.template.startsWith("milestone.chapter_") || String(record.params?.chapter ?? end.chapter) === String(end.chapter))
+    // UI-10: the tick it opened on is the closing chapter's (chapter 4's charter line is not chapter 5's first event).
+    .filter(record => chapterOwnsRecord(record, end.chapter, chapterOpenedTick(state, end.chapter)));
   const chosen = [...records].sort((a, b) => b.severity - a.severity || a.tick - b.tick).slice(0, CHRONICLE_ENTRIES).sort((a, b) => a.tick - b.tick);
   const dateOf = (tick: number) => { const date = history.date({ tick }, state); return CHRONICLE_COPY.date(date.year, date.season); };
-  const label = (key: string) => HISTORY_CHOICE_LABELS[key] ?? key;
   return {
     chapter: end.chapter,
     title: CHRONICLE_COPY.title(end.chapter, end.chronicle.fromYear, end.chronicle.toYear),
-    entries: chosen.map(record => ({ id: record.id, date: dateOf(record.tick), sentence: history.summary(record), illustration: chronicleIllustration(record) })),
-    decisions: end.chronicle.decisions.map(quote => {
+    entries: chosen.map(record => ({ id: record.id, date: dateOf(record.tick), sentence: recordSentence(state, record), illustration: chronicleIllustration(record) })),
+    // UI-10: chapter 5's page also quotes its own cards' answers the engine's three left out (chapterQuotes).
+    decisions: chapterQuotes(state, end.chapter, end.chronicle.decisions, end.tick).map(quote => {
       // UI-6: a petition's quote by its kind (the war's demands are not the merchants' charter) and that kind's answer.
       const defId = String(state.history?.records.find(record => record.id === quote.recordId)?.params?.defId ?? "");
       const subject = quote.kind === "petition_response" && defId !== "" && defId !== "market_charter" ? PETITION_SUBJECTS[defId] : undefined;
-      const chosen = WAR_CHOICES[defId]?.[quote.chosen] ?? label(quote.chosen);
+      const chosen = answerWords(state, defId, quote.chosen);
       return {
       id: quote.recordId,
       sentence: CHRONICLE_COPY.decision(dateOf(quote.tick), subject ?? quote.kind, chosen),
-      alternatives: CHRONICLE_COPY.alternatives(quote.alternatives.map(alternative => WAR_CHOICES[defId]?.[alternative] ?? label(alternative))),
+      alternatives: CHRONICLE_COPY.alternatives(quote.alternatives.map(alternative => answerWords(state, defId, alternative))),
       outcome: CHRONICLE_COPY.outcome(quote.predicted, quote.actual ?? null),
     }; }),
-    stats: CHRONICLE_COPY.stats(end.chronicle.stats, end.chapter),
+    stats: CHRONICLE_COPY.stats(end.chronicle.stats, end.chapter, heirRelationWord(state)),
   };
 }

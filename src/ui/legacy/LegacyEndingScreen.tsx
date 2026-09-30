@@ -100,12 +100,15 @@ export function LegacyEndingScreen({ state, view, onBook, onKeepPlaying }: {
           <h3>{COPY.axesHeading}</h3>
           <LegacyAxes axes={view.axes} />
           <p className="legacy-verdict-lines"><span>{view.leadLine}</span><span>{view.chosenLine}</span></p>
-          <div className="chronicle-actions legacy-actions">
-            <Button type="button" className="legacy-open-book" onPress={() => onBook()} variant="primary"><UiIcon sheet="action" cell="log" />{COPY.openBook}</Button>
-            <Button type="button" className="legacy-export" onPress={() => exporting.run()} variant="secondary"><UiIcon sheet="action" cell="open" />{COPY.exportText}</Button>
-            <Button type="button" className="legacy-keep" onPress={() => onKeepPlaying()} variant="secondary"><UiIcon sheet="time" cell="play" />{COPY.keepPlaying}</Button>
+          {/* The three buttons stay in view (a footer held at the panel's bottom while the verdict scrolls under it). */}
+          <div className="legacy-ending-footer">
+            <div className="chronicle-actions legacy-actions">
+              <Button type="button" className="legacy-open-book" onPress={() => onBook()} variant="primary"><UiIcon sheet="action" cell="log" />{COPY.openBook}</Button>
+              <Button type="button" className="legacy-export" onPress={() => exporting.run()} variant="secondary"><UiIcon sheet="action" cell="open" />{COPY.exportText}</Button>
+              <Button type="button" className="legacy-keep" onPress={() => onKeepPlaying()} variant="secondary"><UiIcon sheet="time" cell="play" />{COPY.keepPlaying}</Button>
+            </div>
+            <p className="legacy-export-status" role="status">{exporting.status ?? ""}</p>
           </div>
-          <p className="legacy-export-status" role="status">{exporting.status ?? ""}</p>
         </div>
       </section>
     </div>
