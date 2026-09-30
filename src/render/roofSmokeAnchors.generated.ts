@@ -196,5 +196,77 @@ export const ROOF_SMOKE_ANCHORS: Readonly<Record<string, { readonly fx: number; 
  "assets/wave26/house/house_l4_f.png": {
   "fx": 0.1991,
   "fy": -0.0035
+ },
+ "assets/wave30/house_pair/house_pair_l2_horizontal_c.png": {
+  "fx": 0.1567,
+  "fy": -0.0113
+ },
+ "assets/wave30/house_pair/house_pair_l2_horizontal_d.png": {
+  "fx": 0.1601,
+  "fy": 0.0
+ },
+ "assets/wave30/house_pair/house_pair_l2_horizontal_e.png": {
+  "fx": 0.1332,
+  "fy": -0.0113
+ },
+ "assets/wave30/house_pair/house_pair_l2_vertical_c.png": {
+  "fx": 0.1769,
+  "fy": -0.0022
+ },
+ "assets/wave30/house_pair/house_pair_l2_vertical_d.png": {
+  "fx": 0.1804,
+  "fy": -0.0022
+ },
+ "assets/wave30/house_pair/house_pair_l2_vertical_e.png": {
+  "fx": 0.1834,
+  "fy": -0.0023
+ },
+ "assets/wave30/house_pair/house_pair_l3_horizontal_c.png": {
+  "fx": 0.1834,
+  "fy": 0.0063
+ },
+ "assets/wave30/house_pair/house_pair_l3_horizontal_d.png": {
+  "fx": 0.1556,
+  "fy": -0.004
+ },
+ "assets/wave30/house_pair/house_pair_l3_horizontal_e.png": {
+  "fx": 0.1554,
+  "fy": -0.0103
+ },
+ "assets/wave30/house_pair/house_pair_l3_vertical_c.png": {
+  "fx": 0.2046,
+  "fy": -0.0064
+ },
+ "assets/wave30/house_pair/house_pair_l3_vertical_d.png": {
+  "fx": 0.2016,
+  "fy": -0.0065
+ },
+ "assets/wave30/house_pair/house_pair_l3_vertical_e.png": {
+  "fx": 0.1956,
+  "fy": -0.0128
+ },
+ "assets/wave30/house_pair/house_pair_l4_horizontal_c.png": {
+  "fx": 0.1337,
+  "fy": -0.0184
+ },
+ "assets/wave30/house_pair/house_pair_l4_horizontal_d.png": {
+  "fx": 0.1634,
+  "fy": -0.0184
+ },
+ "assets/wave30/house_pair/house_pair_l4_horizontal_e.png": {
+  "fx": 0.1782,
+  "fy": -0.0184
+ },
+ "assets/wave30/house_pair/house_pair_l4_vertical_c.png": {
+  "fx": 0.1573,
+  "fy": -0.0152
+ },
+ "assets/wave30/house_pair/house_pair_l4_vertical_d.png": {
+  "fx": 0.1538,
+  "fy": -0.0159
+ },
+ "assets/wave30/house_pair/house_pair_l4_vertical_e.png": {
+  "fx": 0.1544,
+  "fy": -0.0035
  }
 };

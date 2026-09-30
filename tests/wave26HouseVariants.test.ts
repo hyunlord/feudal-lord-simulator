@@ -140,7 +140,7 @@ test("wealth: merchant, gentry and master-artisan heads and L4 houses are rich; 
   assert.ok(poor > 0.7 && rich < 0.4, `thatch share: labour ${poor.toFixed(2)}, merchant ${rich.toFixed(2)}`);
 });
 
-test("eligibility: pair lots, burning and burnt houses and an alehouse under its stake keep the approved painting", () => {
+test("eligibility: burning and burnt houses and an alehouse under its stake keep the approved painting; a pair lot picks among its own", () => {
   // Seed chosen so that every one of these households would otherwise draw a Wave 26 painting.
   const seed = [...Array(200).keys()].find(candidate => ["p", "f", "b", "a"].every(id => rawHouseBody(candidate, id, 2, "common").variant !== null))!;
   const brewing = [{ craftId: BREW_ALE_CRAFT_ID, workers: 1, input: { malt: 1 }, output: { ale: 2 }, stock: { ale: 3 } }];
@@ -151,8 +151,10 @@ test("eligibility: pair lots, burning and burnt houses and an alehouse under its
     events: { burning: [{ buildingId: "f", eventId: "fire@1", ignitedTick: 1, outTick: 90 }] },
   } as unknown as GameState;
   const assignments = houseBodyAssignments(state);
-  for (const id of ["p", "f", "b", "a"]) assert.equal(assignments.has(id), false, id);
+  for (const id of ["f", "b", "a"]) assert.equal(assignments.has(id), false, id);
   assert.equal(assignments.has("n"), true);
+  // INSTALL-30: the pair lot is in, among the pair's paintings (the approved pair or Wave 30's), never a single's.
+  assert.equal(assignments.get("p"), rawHouseBody(seed, "p", 2, "common", "horizontal").variant);
   // Put out, rebuilt, sold out: the household's own pick comes back.
   const after = houseBodyAssignments({ ...state, events: { burning: [] }, houses: [house("f", 2), house("b", 2), house("a", 2, { crafts: [{ ...brewing[0]!, stock: { ale: 0 } }] })] } as unknown as GameState);
   for (const id of ["f", "b", "a"]) assert.equal(after.get(id), rawHouseBody(seed, id, 2, "common").variant, id);

@@ -9,6 +9,7 @@ import type { House } from "../population/population.types";
 import { alehouseArt } from "./aleWorldArt";
 import { textRandom, touching } from "./buildingVariants";
 import { WAVE26_HOUSE_VARIANTS } from "./wave26HouseManifest.generated";
+import { WAVE30_PAIR_HOUSE_VARIANTS } from "./wave30PairHouseManifest.generated";
 
 // INSTALL-26 which painting a single-lot house shows (Wave 26) and which state layer lies on it: pure choices read
 // from the saved state, nothing stored. Weights and thresholds: src/content/houseVariantConfig.ts.
@@ -21,20 +22,35 @@ import { WAVE26_HOUSE_VARIANTS } from "./wave26HouseManifest.generated";
 // So a household whose wealth changes (a master appointed or dismissed, PS-4) repaints only when its roof changes.
 // Neighbour push, as Wave 2's: a touching house earlier in (ty, tx) order with the same raw pick takes the roof's
 // next painting (raw picks only, no cascade). A burning or burnt house (Wave 9's fire and ruin layers are painted on
-// the approved house), an alehouse under its stake and a pair lot keep the approved painting.
+// the approved house) and an alehouse under its stake keep the approved painting.
+// INSTALL-30 a pair lot (L2-L4, horizontal or vertical) by the same rule among its own four paintings: the approved
+// pair (with its Wave 2 variants at L3 and L4) and Wave 30's c-e. The household is the lot's building id (a merge
+// keeps the source house's id, so a merged household picks again among the pair's paintings). A pair has no fire or
+// ruin painting (it shows the smoke column and soot on whatever it wears), so a burning or burnt pair keeps its own.
 
 export type Wave26Variant = (typeof WAVE26_HOUSE_VARIANTS)[number];
-/** One of a level's paintings: a Wave 26 variant, or null for the approved one. */
-export type HouseBodyOption = { readonly roof: HouseRoof; readonly variant: Wave26Variant | null };
+export type Wave30PairVariant = (typeof WAVE30_PAIR_HOUSE_VARIANTS)[number];
+/** A house painting beside the approved one: a single lot's Wave 26 variant or a pair lot's Wave 30 one. */
+export type HousePainting = Wave26Variant | Wave30PairVariant;
+export type HouseLot = "single" | "horizontal" | "vertical";
+/** One of a level's paintings: a Wave 26 / Wave 30 variant, or null for the approved one. */
+export type HouseBodyOption = { readonly roof: HouseRoof; readonly variant: HousePainting | null };
 
 const ROOF_ORDER: readonly HouseRoof[] = ["thatch", "clay_tile", "stone_slate"];
+/** The roof of the approved pair paintings (L2-L4, both lots), read off the art: red clay tile, every one. */
+const PAIR_EXISTING_ROOF: HouseRoof = "clay_tile";
 const OPTIONS: readonly (readonly HouseBodyOption[])[] = [0, 1, 2, 3, 4].map(level => [
   { roof: HOUSE_VARIANT_CONFIG.existingRoof[level] as HouseRoof, variant: null },
   ...WAVE26_HOUSE_VARIANTS.filter(variant => variant.level === level).map(variant => ({ roof: variant.roof as HouseRoof, variant })),
 ]);
+const PAIR_OPTIONS = new Map<string, readonly HouseBodyOption[]>([2, 3, 4].flatMap(level => (["horizontal", "vertical"] as const).map(lot => [
+  `${level}:${lot}`, [{ roof: PAIR_EXISTING_ROOF, variant: null },
+    ...WAVE30_PAIR_HOUSE_VARIANTS.filter(variant => variant.level === level && variant.lot === lot).map(variant => ({ roof: variant.roof as HouseRoof, variant }))],
+] as const)));
 
-/** The level's five paintings, the approved one first. */
-export function houseBodyOptions(level: number): readonly HouseBodyOption[] {
+/** The level's paintings, the approved one first: five for a single lot, four for a pair (levels 2-4). */
+export function houseBodyOptions(level: number, lot: HouseLot = "single"): readonly HouseBodyOption[] {
+  if (lot !== "single") return PAIR_OPTIONS.get(`${Math.max(2, Math.min(4, level))}:${lot}`) as readonly HouseBodyOption[];
   return OPTIONS[Math.max(0, Math.min(4, level))] as readonly HouseBodyOption[];
 }
 
@@ -45,8 +61,8 @@ export function householdWealth(builtLevel: number, headClassBand: string | unde
 }
 
 /** The pick before the neighbour push. */
-export function rawHouseBody(worldSeed: number, householdId: string, level: number, wealth: HouseWealth): HouseBodyOption {
-  const options = houseBodyOptions(level);
+export function rawHouseBody(worldSeed: number, householdId: string, level: number, wealth: HouseWealth, lot: HouseLot = "single"): HouseBodyOption {
+  const options = houseBodyOptions(level, lot);
   const weights = HOUSE_VARIANT_CONFIG.roofWeight[wealth];
   const roofs = ROOF_ORDER.map(roof => ({ roof, weight: weights[roof] * options.filter(option => option.roof === roof).length }));
   let cursor = textRandom(worldSeed, householdId, 1) * roofs.reduce((sum, entry) => sum + entry.weight, 0);
@@ -64,14 +80,16 @@ type ChoiceState = Pick<GameState, "seed" | "buildings" | "houses"> & Partial<Pi
 
 /**
  * Whether the house may show a Wave 26 painting at all: a single lot, not on fire nor burnt, and not hanging out the
- * ale-stake (the INSTALL-3 alehouse painting is an edit of the approved L2 house).
+ * ale-stake (the INSTALL-3 alehouse painting is an edit of the approved L2 house). A pair lot a Wave 30 one: built to
+ * L2 or more (below that it has no painting).
  */
 export function houseBodyEligible(state: Pick<GameState, "seed"> & Partial<Pick<GameState, "events">>, building: Building, house: House): boolean {
-  return building.kind === "house" && building.houseLot === undefined && house.burntTick === undefined
+  if (building.kind === "house" && building.houseLot !== undefined) return houseBuiltLevel(house) >= 2;
+  return building.kind === "house" && house.burntTick === undefined
     && state.events?.burning.some(entry => entry.buildingId === building.id) !== true && alehouseArt(state, building, house, houseBuiltLevel(house)) === null;
 }
 
-export type HouseBodyEntry = { readonly building: Building; readonly level: number; readonly raw: HouseBodyOption };
+export type HouseBodyEntry = { readonly building: Building; readonly level: number; readonly lot: HouseLot; readonly raw: HouseBodyOption };
 
 /** Every eligible house with its level and raw pick (cheap: two hashes a house). */
 export function houseBodyEntries(state: ChoiceState): readonly HouseBodyEntry[] {
@@ -83,18 +101,19 @@ export function houseBodyEntries(state: ChoiceState): readonly HouseBodyEntry[] 
     const building = buildings.get(house.buildingId);
     if (building === undefined || !houseBodyEligible(state, building, house)) continue;
     const level = Math.max(0, Math.min(4, houseBuiltLevel(house)));
-    entries.push({ building, level, raw: rawHouseBody(state.seed, building.id, level, householdWealth(level, heads.get(building.id))) });
+    const lot = building.houseLot ?? "single";
+    entries.push({ building, level, lot, raw: rawHouseBody(state.seed, building.id, level, householdWealth(level, heads.get(building.id)), lot) });
   }
   return entries;
 }
 
 /** Every eligible house's painting by building id (null: the approved one), after the neighbour push. */
-export function houseBodyAssignments(state: ChoiceState, entries: readonly HouseBodyEntry[] = houseBodyEntries(state)): ReadonlyMap<string, Wave26Variant | null> {
-  const result = new Map<string, Wave26Variant | null>();
+export function houseBodyAssignments(state: ChoiceState, entries: readonly HouseBodyEntry[] = houseBodyEntries(state)): ReadonlyMap<string, HousePainting | null> {
+  const result = new Map<string, HousePainting | null>();
   for (const entry of entries) {
     const pushed = entries.some(other => other !== entry && other.level === entry.level && other.raw === entry.raw && touching(other.building, entry.building)
       && (other.building.ty < entry.building.ty || (other.building.ty === entry.building.ty && other.building.tx < entry.building.tx)));
-    const same = houseBodyOptions(entry.level).filter(option => option.roof === entry.raw.roof);
+    const same = houseBodyOptions(entry.level, entry.lot).filter(option => option.roof === entry.raw.roof);
     result.set(entry.building.id, pushed ? (same[(same.indexOf(entry.raw) + 1) % same.length] as HouseBodyOption).variant : entry.raw.variant);
   }
   return result;
