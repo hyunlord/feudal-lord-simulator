@@ -1,0 +1,240 @@
+{
+  "assetId": "manor_house_b_empty-v2",
+  "prompt": "Precise minimal edit of attached ORIGINAL manor_house_b-v1 project sprite. Make same manor unoccupied. Only alter WINDOW OPENINGS to closed weathered wooden shutters, add horizontal wooden BAR to closed doors, and sparse olive GRASS inside courtyard. Absolutely preserve original muted terracotta roof color, warmgrey beige stonewall color, subtle soft painted edges, lighting, entire roof tile detail, walls, geometry, original thin edge treatment and transparent canvas. DO NOT add any dark black outline or contour stroke around building/roof/walls. NO celshading, no inkline, no sharpening, no increased saturation/contrast. The previous rejected edit developed thick black outline and brighterorange roof; avoid that by editing the supplied ORIGINAL directly with extremely local changes. Leave all roof/wall/outeredge pixels visually unchanged except shutter openings and doorbar/courtyardgrass. Original416x328 canvas, same exact building position, groundpivot251,319, 2:1isometric. Preserve original silhouette and boundingbox; no zoom or reframe. Transparent PNG outside original, no people/smoke/text/props/newstructures. Return ONE building sprite.",
+  "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0d17d-1c31-7cf2-8b1e-99595160009b/exec-a8b72bda-6ac5-4b38-9b12-17a06a401632.png",
+  "referencePath": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave12/candidates-20260926/assets/bld/manor_house_b-v1.png",
+  "outputPath": "/tmp/astra-manor-b-empty-rework-candidates-20260930/assets/manors/manor_house_b_empty-v2.png",
+  "dimensions": [
+    416,
+    328
+  ],
+  "pivot": [
+    251,
+    319
+  ],
+  "crop": [
+    62,
+    163,
+    1348,
+    1069
+  ],
+  "originalBbox": [
+    20,
+    55,
+    395,
+    319
+  ],
+  "editPolygons": [
+    [
+      [
+        48,
+        140
+      ],
+      [
+        67,
+        149
+      ],
+      [
+        67,
+        165
+      ],
+      [
+        48,
+        157
+      ]
+    ],
+    [
+      [
+        86,
+        158
+      ],
+      [
+        105,
+        167
+      ],
+      [
+        105,
+        185
+      ],
+      [
+        86,
+        176
+      ]
+    ],
+    [
+      [
+        59,
+        180
+      ],
+      [
+        77,
+        189
+      ],
+      [
+        77,
+        213
+      ],
+      [
+        59,
+        205
+      ]
+    ],
+    [
+      [
+        142,
+        137
+      ],
+      [
+        159,
+        129
+      ],
+      [
+        159,
+        151
+      ],
+      [
+        142,
+        159
+      ]
+    ],
+    [
+      [
+        91,
+        205
+      ],
+      [
+        105,
+        211
+      ],
+      [
+        105,
+        241
+      ],
+      [
+        91,
+        234
+      ]
+    ],
+    [
+      [
+        182,
+        190
+      ],
+      [
+        194,
+        196
+      ],
+      [
+        194,
+        216
+      ],
+      [
+        182,
+        210
+      ]
+    ],
+    [
+      [
+        219,
+        214
+      ],
+      [
+        237,
+        222
+      ],
+      [
+        237,
+        250
+      ],
+      [
+        219,
+        243
+      ]
+    ],
+    [
+      [
+        274,
+        235
+      ],
+      [
+        287,
+        241
+      ],
+      [
+        287,
+        263
+      ],
+      [
+        274,
+        257
+      ]
+    ],
+    [
+      [
+        353,
+        243
+      ],
+      [
+        370,
+        234
+      ],
+      [
+        370,
+        261
+      ],
+      [
+        353,
+        270
+      ]
+    ],
+    [
+      [
+        132,
+        247
+      ],
+      [
+        185,
+        231
+      ],
+      [
+        298,
+        279
+      ],
+      [
+        252,
+        301
+      ]
+    ],
+    [
+      [
+        176,
+        276
+      ],
+      [
+        197,
+        286
+      ],
+      [
+        197,
+        291
+      ],
+      [
+        176,
+        281
+      ]
+    ]
+  ],
+  "validation": {
+    "changedPixels": 8573,
+    "changedOutsideEditRegions": 0,
+    "alphaChangedPixels": 0
+  },
+  "manualEdits": "Native image edit aligned by alpha bounds; only shutter/door-bar/courtyard polygons composited onto immutable original. Original pixels outside masks and original alpha retained exactly.",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed",
+  "generationDate": "2026-09-30",
+  "status": "candidate",
+  "referenceSha256": "ee3335da84739e139156ed879342ee0312e4a13bd36ee0bf12ce4252fcc3edb4",
+  "sourceSha256": "f2cab84a542a42db021e1baef1e5205410a9bf6745d2e75d9522c1efc9652f3f",
+  "outputSha256": "11e60c5363b9461d088b5cf05e956cf91b0bb1f9c1157bdac7a42e111a339f63"
+}
