@@ -122,7 +122,10 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
     const timer = window.setTimeout(() => setFresh(false), STEWARD_LINE_MS);
     return () => window.clearTimeout(timer);
   }, [advisorKey]);
+  // UI-AUDIT-1: the steward's bubble is the dock's sibling (placed over the steward button), not a part inside the dock's
+  // own button row: the dock is a row of buttons with the gap around them, the bubble a surface of its own.
   return (
+    <>
     <nav className="action-dock" aria-label={HUD_COPY.dock} hidden={hidden}>
       {undo.enabled ? <Button type="button" className="hud-undo action-dock-small" aria-label={undo.label} data-attention={undo.attention ? "true" : undefined}
         onPress={() => undo.onUndo()} variant="secondary"><UiIcon sheet="action" cell="up" />{HUD_COPY.undo}</Button> : null}
@@ -137,13 +140,14 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
         onPress={() => { if (speaking) setExpanded(open => !open); else setStewardOpen(open => !open); }} variant="secondary">
         <span className="action-dock-portrait" aria-hidden="true" style={stewardPortraitStyle(advisor?.tone ?? "neutral")} />{HUD_COPY.steward}
       </Button>
-      {speaking && (fresh || expanded) ? <aside data-frame="advisor" className={`steward-advisor steward-bubble steward-advisor--${advisor.tone}${expanded ? "" : " steward-bubble--line"}`}
+    </nav>
+      {hidden ? null : speaking && (fresh || expanded) ? <aside data-frame="advisor" className={`steward-advisor steward-bubble steward-advisor--${advisor.tone}${expanded ? "" : " steward-bubble--line"}`}
         aria-label={stewardName === null ? TUTORIAL_COPY.stewardName : PERSONS_COPY.steward(stewardName)} data-advisor={advisor.key} data-tone={advisor.tone}>
         {expanded && stewardName !== null ? <p className="steward-name">{PERSONS_COPY.steward(stewardName)}</p> : null}
         <p className="steward-line">{advisor.text}</p>
         {expanded ? <Button type="button" className="steward-button" onPress={() => onDismissAdvisor()} variant="primary">{TUTORIAL_COPY.advisorButton}</Button> : null}
       </aside> : speaking ? null : stewardOpen ? <aside className="steward-bubble" data-frame="advisor" role="status"><p className="steward-line">{HUD_COPY.stewardQuiet}</p></aside> : null}
-    </nav>
+    </>
   );
 }
 

@@ -139,10 +139,11 @@
   position: absolute; right: 0; bottom: 64px; display: grid; gap: 4px; width: min(var(--box-w-medium), calc(100vw - 32px));
   color: var(--palette-ink); background-color: var(--palette-vellum);
 }
-/* The old advisor card placed itself under the resource bar (top / left): above the steward button instead. */
-.app-shell .action-dock .steward-bubble { top: auto; left: auto; right: var(--frame-gap); bottom: calc(64px + var(--frame-gap)); width: min(var(--box-w-medium), calc(100vw - 32px)); }
+/* The old advisor card placed itself under the resource bar (top / left): above the steward button instead (the dock's
+   sibling, UI-AUDIT-1: 8 px from the view's edge and 64 px over the dock's buttons, as when it sat inside the dock). */
+.app-shell .action-dock + .steward-bubble { top: auto; left: auto; right: var(--hud-edge); bottom: calc(64px + var(--hud-edge)); width: min(var(--box-w-medium), calc(100vw - 32px)); }
 /* NAT-1: quiet one-line bubble uses the small token. */
-.app-shell .action-dock .steward-bubble--line { width: min(var(--box-w-small), calc(100vw - 32px)); }
+.app-shell .action-dock + .steward-bubble--line { width: min(var(--box-w-small), calc(100vw - 32px)); }
 .app-shell .steward-bubble--line .steward-line { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .app-shell .steward-bubble .steward-line { margin: 0; font-size: 13px; }
 .app-shell .steward-bubble .steward-button { min-height: 44px; }
@@ -279,7 +280,9 @@
 .app-shell .zone-toolbar { position: absolute; left: 0; top: 50%; z-index: 4; display: grid; gap: 4px; width: calc(148px + 2 * var(--frame-gap)); transform: translateY(-50%); }
 .app-shell .zone-toolbar[hidden] { display: none; }
 .app-shell :is(.zone-toolbar-kinds, .zone-toolbar-tools) { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-.app-shell .zone-toolbar-button { display: inline-flex; gap: 2px; align-items: center; justify-content: flex-start; min-width: 0; white-space: nowrap; min-height: 44px; padding: 0 4px; font-size: 12px; }
+/* UI-AUDIT-1: a long label wraps to a second line inside its 44 px button (it ran 20 px out of the 72 px column). */
+.app-shell .zone-toolbar-button { display: inline-flex; gap: 2px; align-items: center; justify-content: flex-start; min-width: 0; min-height: 44px; padding: 0 4px; font-size: 12px;
+  line-height: 1.15; text-align: left; overflow-wrap: anywhere; }
 .app-shell .zone-toolbar-button .ui-icon { flex: 0 0 auto; transform: scale(0.75); margin: 0 -3px; }
 /* Kind chips: a small swatch of the zone's map tint (the zone layer's colours, drawZones ZONE_STYLES). */
 .app-shell .zone-toolbar-kind { display: inline-block; flex: 0 0 12px; width: 12px; height: 12px; margin: 0 3px 0 2px; border: 1px solid var(--palette-ink); }
@@ -399,9 +402,9 @@
 .petition-option > :not(.petition-seal) { grid-column: 2; min-width: 0; }
 /* UI-10 (LG-3): the heir's card — its answers side by side (a column each, the seal beside the label, the rest under
    them), each with the heir it names: the portrait beside the name and relation, then lineage, likeness and records. */
-/* UI-AUDIT-1: the heir's three columns take the wide modal (900 px): in the 720 px card long names and lines ran past
+/* UI-AUDIT-1: the heir's three columns take a wider card (1080 px): in the 720 px card long names and lines ran past
    their answer (42 px sideways) and the body scrolled; a word breaks where it must (keep-all alone kept long words whole). */
-.petition-card[data-def="heir_choice"] { width: min(900px, 96vw); min-height: min(740px, 92vh); }
+.petition-card[data-def="heir_choice"] { width: min(1080px, 96vw); min-height: min(740px, 92vh); }
 .petition-card[data-def="heir_choice"] .petition-options { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); align-items: stretch; }
 .petition-card[data-def="heir_choice"] .petition-option { height: 100%; grid-template-columns: 44px minmax(0, 1fr); align-content: start; align-items: center;
   word-break: keep-all; overflow-wrap: anywhere; }
