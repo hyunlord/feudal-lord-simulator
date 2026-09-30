@@ -107,6 +107,12 @@ export function judgeMoments(runs: readonly Pick<Summary, "stats" | "longFrames"
   return { windows, windowsWithLong, baseline, rows, pass: rows.every(row => row.pass) };
 }
 
+// The audit's own error (the thrown line and the next), not Node's closing lines ("}" / "Node.js vNN").
+const auditError = (text: string) => {
+  const lines = text.split("\n"); const at = lines.findIndex(line => /\b\w*Error\b|error:/i.test(line));
+  return (at >= 0 ? lines.slice(at, at + 2) : lines.slice(-3)).map(line => line.trim()).filter(Boolean).join(" / ").slice(0, 400);
+};
+
 async function main() {
   // The queue (scripts/perf/perfQueue.ts): hold this gate for when nobody uses the Mac.
   if (argv.includes("--queue-status")) { console.log(queueStatus()); return; }
@@ -166,7 +172,7 @@ async function main() {
         if (audit.status !== 0 || !existsSync(file)) {
           const said = `${audit.stderr}\n${audit.stdout}`.split("\n").find(line => line.startsWith("판정 아님: "));
           results.push({ scene, summary: null, loadMax: busiest, failed: [], invalid: [said !== undefined ? said.slice("판정 아님: ".length)
-            : `실행이 끝나지 않았다: ${(audit.stderr || audit.stdout).trim().split("\n").slice(-3).join(" / ")}`] });
+            : `실행이 끝나지 않았다: ${auditError(audit.stderr || audit.stdout)}`] });
           continue;
         }
         const summary = JSON.parse(readFileSync(file, "utf8")) as Summary;
