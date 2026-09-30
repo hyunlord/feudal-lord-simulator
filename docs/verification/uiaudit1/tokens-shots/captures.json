@@ -1,0 +1,62 @@
+{
+ "errors": [
+  "after goal-chip: TimeoutError: locator.boundingBox: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('.goal-chip-rail .goal-card').first()\n",
+  "before goal-chip: TimeoutError: locator.boundingBox: Timeout 15000ms exceeded.\nCall log:\n  - waiting for locator('.goal-chip-rail .goal-card').first()\n"
+ ],
+ "shots": [
+  {
+   "file": "ledger-drawer-after.jpg",
+   "selector": ".ledger-drawer",
+   "frame": "ledger",
+   "border": "17px 11px 17px 12px",
+   "padding": "8px",
+   "width": 480,
+   "height": 496
+  },
+  {
+   "file": "person-card-after.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "33px 23px 35px",
+   "padding": "8px",
+   "width": 480,
+   "height": 300
+  },
+  {
+   "file": "event-card-after.jpg",
+   "selector": ".event-card",
+   "frame": "light",
+   "border": "2px",
+   "padding": "8px",
+   "width": 360,
+   "height": 368.5
+  },
+  {
+   "file": "ledger-drawer-before.jpg",
+   "selector": ".ledger-drawer",
+   "frame": null,
+   "border": "1px",
+   "padding": "20px 30px 28px 28px",
+   "width": 480,
+   "height": 496
+  },
+  {
+   "file": "person-card-before.jpg",
+   "selector": ".person-card",
+   "frame": null,
+   "border": "0px",
+   "padding": "0px",
+   "width": 480,
+   "height": 300
+  },
+  {
+   "file": "event-card-before.jpg",
+   "selector": ".event-card",
+   "frame": null,
+   "border": "1px",
+   "padding": "10px 12px",
+   "width": 360,
+   "height": 370.5
+  }
+ ]
+}

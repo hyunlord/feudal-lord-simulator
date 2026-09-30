@@ -113,12 +113,12 @@ test("UX-3: the actual app keeps one build drawer (closed at start) and only the
 
   // Then: the old full-width console became the build drawer — mounted once, closed until the dock opens it.
   assert.equal(markup.match(/class="court-console build-drawer"/g)?.length, 1);
-  assert.match(markup, /class="court-console build-drawer" aria-label="영주 명령대">/, "closed: no data-open");
+  assert.match(markup, /class="court-console build-drawer" aria-label="영주 명령대" data-frame="strip-bottom">/, "closed: no data-open");
   assert.match(markup, /class="build-menu"/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">오두막/);
   assert.match(markup, /class="build-seal-label" aria-hidden="true">우물/);
   // Always on (UX3R section 2): the status pill, the speed, the layer switch and the action dock.
-  assert.match(markup, /<nav class="status-pill" aria-label="마을 상태">/);
+  assert.match(markup, /<nav class="status-pill" aria-label="마을 상태" data-frame="tooltip">/);
   assert.match(markup, /aria-label="일시 정지"/);
   assert.match(markup, /aria-label="5배속"/);
   assert.match(markup, /class="layer-switch"/);
@@ -185,7 +185,8 @@ test("console CSS uses every generated surface and rejects web-dashboard styling
   const mobileRules = css.match(/@media \(max-width: 600px\) \{([\s\S]+)\}\s*$/)?.[1] ?? "";
   assert.match(consoleRule, /background-color:\s*var\(--palette-parchment\);/);
   assert.match(consoleRule, /background-image:\s*none;/);
-  assert.match(consoleRule, /border:\s*1px solid var\(--palette-ink\);/);
+  // UI-AUDIT-1: the strip's border and padding are the frame tokens' (kind strip-bottom), none of its own.
+  assert.doesNotMatch(consoleRule, /(?:^|;|\s)(?:border|padding):/);
   assert.match(buildSealsRule, /--seal-size:\s*64px;/);
   assert.match(buildSealsRule, /display:\s*flex;/);
   assert.match(buildSealsRule, /gap:\s*8px;/);

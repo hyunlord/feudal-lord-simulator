@@ -31,7 +31,7 @@ export function Inspector({ state, buildingId, onClose, storeHistory = null, onP
   const house = buildingId === null || state.persons === undefined ? null : state.houses.find(entry => entry.buildingId === buildingId) ?? null;
   const members = house === null ? [] : householdRows(state, house.buildingId);
   return (
-    <section className="left-inspector" aria-label={INSPECTOR_COPY.regionLabel} data-target={model.target}>
+    <section className="left-inspector" data-frame="light" aria-label={INSPECTOR_COPY.regionLabel} data-target={model.target}>
       <header className="left-inspector-heading">
         <div className="left-inspector-title">
           <h2>{model.name}</h2>

@@ -66,14 +66,14 @@ function FoldableGoalCard({ card, warn, onPress, onLook }: { readonly card: Goal
       {card.progress === null ? null : <span className="goal-card-count">{TUTORIAL_COPY.progress(card.progress.current, card.progress.target)}</span>}
     </Button>
   );
-  if (!open) return <article className={warn ? "goal-card goal-card--folded goal-card--warn" : "goal-card goal-card--folded"} data-goal-card={card.key} data-folded="true">{chip}</article>;
+  if (!open) return <article className={warn ? "goal-card goal-card--folded goal-card--warn" : "goal-card goal-card--folded"} data-frame="objective" data-goal-card={card.key} data-folded="true">{chip}</article>;
   return <GoalCardBody card={card} warn={warn} onPress={onPress} onLook={onLook} heading={chip} />;
 }
 
 function GoalCardBody({ card, warn, onPress, onLook, heading }: { readonly card: GoalCard; readonly warn: boolean; readonly onPress: () => void; readonly onLook: () => void; readonly heading?: ReactNode }) {
   if (card.status !== "active") {
     return (
-      <article className={`goal-card goal-card--${card.status}`} data-goal-card={card.key} role="status">
+      <article className={`goal-card goal-card--${card.status}`} data-frame="objective" data-goal-card={card.key} role="status">
         <h3 className="goal-card-title">{card.title}</h3>
         <p className="goal-card-status"><UiIcon sheet="prediction" cell="ok" />{card.status === "already" ? TUTORIAL_COPY.alreadyDone : TUTORIAL_COPY.done}</p>
       </article>
@@ -81,7 +81,7 @@ function GoalCardBody({ card, warn, onPress, onLook, heading }: { readonly card:
   }
   const ratio = card.progress === null ? null : card.progress.target === 0 ? 1 : Math.min(1, card.progress.current / card.progress.target);
   return (
-    <article className={`${warn ? "goal-card goal-card--warn" : "goal-card"}${heading === undefined ? "" : " goal-card--unfolded"}`} data-goal-card={card.key}>
+    <article className={`${warn ? "goal-card goal-card--warn" : "goal-card"}${heading === undefined ? "" : " goal-card--unfolded"}`} data-frame="objective" data-goal-card={card.key}>
       {heading ?? <header className="goal-card-heading">
         <h3 className="goal-card-title">{card.title}</h3>
         {card.progress === null ? null : <span className="goal-card-count">{TUTORIAL_COPY.progress(card.progress.current, card.progress.target)}</span>}
@@ -91,7 +91,7 @@ function GoalCardBody({ card, warn, onPress, onLook, heading }: { readonly card:
       <div className="goal-card-actions">
         {card.ctaLabel === null ? null : <Button type="button" className="goal-card-cta" data-tutorial-cta={card.key} onPress={() => onPress()} variant="primary">{card.ctaLabel}</Button>}
         {card.hasTarget ? <Button type="button" className="goal-card-secondary" onPress={() => onLook()} variant="secondary"><UiIcon sheet="action" cell="look" />{TUTORIAL_COPY.lookHere}</Button> : null}
-        {card.help === null ? null : <Disclosure className="goal-card-help" variant="icon" summaryLabel={TUTORIAL_COPY.help} summary={<UiIcon sheet="lock" cell="help" size={32} />}><p>{card.help}</p></Disclosure>}
+        {card.help === null ? null : <Disclosure className="goal-card-help" variant="icon" summaryLabel={TUTORIAL_COPY.help} summary={<UiIcon sheet="lock" cell="help" size={32} />}><p data-frame="tooltip">{card.help}</p></Disclosure>}
       </div>
     </article>
   );
@@ -113,7 +113,7 @@ export function StewardAdvisor({ advisor, onDismiss }: { readonly advisor: Tutor
 
 export function UnlockBanner({ text }: { readonly text: string | null }) {
   if (text === null) return null;
-  return <div className="unlock-banner" role="status"><UiIcon sheet="lock" cell="new" size={32} />{text}</div>;
+  return <div className="unlock-banner" data-frame="banner" role="status"><UiIcon sheet="lock" cell="new" size={32} />{text}</div>;
 }
 
 export function PauseVeil({ paused }: { readonly paused: boolean }) {
@@ -121,14 +121,14 @@ export function PauseVeil({ paused }: { readonly paused: boolean }) {
   if (!paused) return null;
   // UI-3: the Wave 8 pause vignette over the map and the hourglass badge behind the label.
   return <div className="pause-veil" aria-hidden="false" style={{ backgroundImage: `url("${wave8Url("pause_vignette")}")` }}>
-    <span className="pause-veil-label" role="status" data-input-device={device} style={{ backgroundImage: `url("${wave8Url("pause_badge")}")` }}>
+    <span className="pause-veil-label" data-frame="pause-badge" role="status" data-input-device={device} style={{ backgroundImage: `url("${wave8Url("pause_badge")}")` }}>
       {/* INSTALL-23 ⑤: the pad's pause buttons as glyphs; the keyboard's Space in words. */}
       {device === "gamepad" ? <PadHint parts={PAD_HINT_COPY.paused} /> : TUTORIAL_COPY.paused}</span></div>;
 }
 
 export function GoalDrawer({ open, log, children }: { readonly open: boolean; readonly log: TutorialController["log"]; readonly children?: ReactNode }) {
   return (
-    <section className="goal-drawer" hidden={!open} aria-label={TUTORIAL_COPY.drawer}>
+    <section className="goal-drawer" data-frame="light" hidden={!open} aria-label={TUTORIAL_COPY.drawer}>
       {log.length === 0 ? <p className="goal-drawer-empty">{TUTORIAL_COPY.drawerEmpty}</p>
         : <ol className="goal-drawer-log">{log.map(item => <li key={item.id}>{item.title} <span><UiIcon sheet="prediction" cell="ok" />{item.already ? TUTORIAL_COPY.alreadyDone : TUTORIAL_COPY.done}</span></li>)}</ol>}
       {children}

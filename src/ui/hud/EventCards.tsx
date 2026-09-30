@@ -46,7 +46,7 @@ function EventCardDetail({ open, onDismiss, onDecide }: {
   const [lineExpanded, setLineExpanded] = useState(false);
   const [adviceId, setAdviceId] = useState<string | null>(null);
   return (
-    <article className="event-card" data-story={open.kind}>
+    <article className="event-card" data-frame="light" data-story={open.kind}>
       <div className="event-card-art" aria-hidden="true" style={storyArtStyle(open.illustration, 296)} />
       {/* NAT-1: one line (ellipsis); "더 보기" shows it whole with the body (no hover-only title tooltip). */}
       <h2 className={lineExpanded ? "event-card-title--whole" : undefined}>{open.title}</h2>

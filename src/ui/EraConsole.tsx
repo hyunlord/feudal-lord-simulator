@@ -191,7 +191,7 @@ export function EraConsole({
     : model.action.targetEra === "stone_town" ? onProclaimStoneTown
     : model.draft.editing ? onConfirmProposal : onBeginDraw;
   return (
-    <section className="era-console" aria-label={KO_UI.eraConsole}>
+    <section className="era-console" data-frame="flat" aria-label={KO_UI.eraConsole}>
       <header className="era-console__header">
         <span className="era-console__kicker">{ERA_CONSOLE_COPY.currentEra}</span>
         <strong>{model.currentEraLabel}</strong>

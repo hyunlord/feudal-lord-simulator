@@ -45,7 +45,8 @@ test("Given an icon at 24, 32 and 48 CSS px When styled Then the 1x and 2x copie
 });
 
 test("Given the skin stylesheet When its urls are read Then each is an installed P0 file", () => {
-  const css = read("src/styles/uiSkin.css");
+  // UI-AUDIT-1: the frames' and buttons' urls moved into the frame tokens (the skin wears them as `--frame-*-art`).
+  const css = read("src/styles/uiSkin.css") + read("src/styles/frameTokens.generated.css");
   const urls = [...css.matchAll(/url\("\/(assets\/ui-p0\/[^"]+)"\)/g)].map(match => match[1]!);
   assert.ok(urls.length >= 30);
   assert.deepEqual([...new Set(urls)].filter(url => !existsSync(join(ROOT, "public", url))), []);

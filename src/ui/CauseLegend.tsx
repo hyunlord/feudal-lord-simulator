@@ -4,7 +4,7 @@ import { CAUSE_ICON } from './uiArt';
 import { UiIcon } from './UiIcon';
 
 export function CauseLegend() {
-  return <section className="cause-legend" aria-label="문제 원인 범례">
+  return <section className="cause-legend" data-frame="flat" aria-label="문제 원인 범례">
     <strong>문제만 보기 · O</strong>
     <ul>{Object.entries(CAUSE_REGISTRY).map(([id, entry]) => <li key={id}>
       {CAUSE_ICON[id] === undefined

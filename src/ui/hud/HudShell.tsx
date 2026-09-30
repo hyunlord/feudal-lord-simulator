@@ -52,7 +52,7 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation }: {
 }) {
   const [stripOpen, setStripOpen] = useState(false);
   return (
-    <nav className="status-pill" aria-label={HUD_COPY.pill}>
+    <nav className="status-pill" aria-label={HUD_COPY.pill} data-frame="tooltip">
       <Button type="button" className="status-pill-cell status-pill-date" data-testid="hud-calendar" aria-label={SEASON_STRIP_COPY.label}
         aria-expanded={stripOpen} onPress={() => setStripOpen(open => !open)} variant="surface">
         <span className="status-pill-date-text"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
@@ -95,7 +95,7 @@ export function LayerSwitch({ layer, access, onChange, pulse, hidden = false }: 
           </Button>
         );
       })}
-      {note === null ? null : <p className="layer-switch-note" role="status"><UiIcon sheet="lock" cell="locked" />{note}</p>}
+      {note === null ? null : <p className="layer-switch-note" data-frame="tooltip" role="status"><UiIcon sheet="lock" cell="locked" />{note}</p>}
     </div>
   );
 }
@@ -137,12 +137,12 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
         onPress={() => { if (speaking) setExpanded(open => !open); else setStewardOpen(open => !open); }} variant="secondary">
         <span className="action-dock-portrait" aria-hidden="true" style={stewardPortraitStyle(advisor?.tone ?? "neutral")} />{HUD_COPY.steward}
       </Button>
-      {speaking && (fresh || expanded) ? <aside className={`steward-advisor steward-bubble steward-advisor--${advisor.tone}${expanded ? "" : " steward-bubble--line"}`}
+      {speaking && (fresh || expanded) ? <aside data-frame="advisor" className={`steward-advisor steward-bubble steward-advisor--${advisor.tone}${expanded ? "" : " steward-bubble--line"}`}
         aria-label={stewardName === null ? TUTORIAL_COPY.stewardName : PERSONS_COPY.steward(stewardName)} data-advisor={advisor.key} data-tone={advisor.tone}>
         {expanded && stewardName !== null ? <p className="steward-name">{PERSONS_COPY.steward(stewardName)}</p> : null}
         <p className="steward-line">{advisor.text}</p>
         {expanded ? <Button type="button" className="steward-button" onPress={() => onDismissAdvisor()} variant="primary">{TUTORIAL_COPY.advisorButton}</Button> : null}
-      </aside> : speaking ? null : stewardOpen ? <aside className="steward-bubble" role="status"><p className="steward-line">{HUD_COPY.stewardQuiet}</p></aside> : null}
+      </aside> : speaking ? null : stewardOpen ? <aside className="steward-bubble" data-frame="advisor" role="status"><p className="steward-line">{HUD_COPY.stewardQuiet}</p></aside> : null}
     </nav>
   );
 }
@@ -181,7 +181,7 @@ type LedgerTab = "stock" | "alerts" | "rights" | "view" | "map";
  */
 export function RightsRegister({ view, onPerson }: { readonly view: LordshipView; readonly onPerson: ((personId: string) => void) | undefined }) {
   return (
-    <section className="ledger-rights" aria-label={LORDSHIP_COPY.heading} style={wave14FrameStyle("frame_rights_register")}>
+    <section className="ledger-rights" data-frame="rights" aria-label={LORDSHIP_COPY.heading} style={wave14FrameStyle("frame_rights_register")}>
       {/* The register is a book open on two pages: the house (its arms, title, a decline) on the left, its rights, what it
           granted and the war on the right. */}
       <div className="ledger-rights-page">
@@ -248,7 +248,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   // UI-10: LG-2…LG-5 chapter 5 ledger — null before chapter 5 starts.
   const legacyLedger = legacyLedgerView(state);
   return (
-    <section className="ledger-drawer slot-panel" aria-label={HUD_COPY.ledgerTitle}>
+    <section className="ledger-drawer slot-panel" data-frame="ledger" aria-label={HUD_COPY.ledgerTitle}>
       <header className="slot-panel-heading"><h2>{HUD_COPY.ledgerTitle}</h2>
         <Button type="button" className="slot-panel-close" aria-label={HUD_COPY.close} onPress={() => onClose()} variant="icon">{HUD_COPY.closeMark}</Button></header>
       <div className="ledger-tabs">
@@ -317,7 +317,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
 export function PauseMenu({ onResume, settings }: { readonly onResume: () => void; readonly settings: ReactNode }) {
   return (
     <div className="pause-menu-backdrop" role="presentation">
-      <section className="pause-menu" role="dialog" aria-modal="true" aria-label={HUD_COPY.pauseTitle}>
+      <section className="pause-menu" data-frame="modal" role="dialog" aria-modal="true" aria-label={HUD_COPY.pauseTitle}>
         <h2>{HUD_COPY.pauseTitle}</h2>
         <Button type="button" className="pause-menu-resume" onPress={() => onResume()} variant="primary"><UiIcon sheet="time" cell="play" />{HUD_COPY.pauseResume}</Button>
         <div className="pause-menu-settings">{settings}</div>

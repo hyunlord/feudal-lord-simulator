@@ -22,7 +22,7 @@
 /* NAT-1: medium width token for the crisis card slot. */
 .settlement-crisis-slot { position: fixed; right: 12px; bottom: calc(var(--command-height) + 66px); z-index: 4; width: min(var(--box-w-medium), calc(100vw - 32px)); pointer-events: none; }
 .settlement-crisis-slot:empty { display: none; }
-.settlement-crisis-slot .settlement-crisis { margin: 0; padding: 8px 12px; color: var(--palette-ink); background: var(--palette-vellum); border: 2px solid var(--palette-vermilion); }
+.settlement-crisis-slot .settlement-crisis { margin: 0; color: var(--palette-ink); background: var(--palette-vellum); }
 @media (max-width: 850px) {
   .settlement-progress summary { flex-wrap: wrap; }
   .settlement-progress summary strong { flex-basis: 60%; }

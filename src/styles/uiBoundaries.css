@@ -18,7 +18,7 @@
 .app-shell .onboarding-task-title { word-break: keep-all; overflow-wrap: normal; font-size: var(--font-body); line-height: 1.5; }
 .app-shell .onboarding-task-flourish { font-size: var(--font-badge); line-height: 1.4; }
 .app-shell .onboarding-task-hint { word-break: keep-all; overflow-wrap: normal; font-size: var(--font-body); line-height: 1.5; }
-.app-shell .settlement-status { border: 1px solid var(--ui-edge); border-left: 3px solid var(--palette-vermilion); border-radius: var(--ui-corner); padding: 8px 12px; }
+.app-shell .settlement-status { border-radius: var(--ui-corner); }
 .app-shell .settlement-priority { gap: 8px; font: var(--font-body)/1.5 var(--ui-body-font); word-break: keep-all; }
 .app-shell .settlement-status .problem-glyph { display: flex; align-items: center; justify-content: center; }
 .problem-symbol { width: 20px; height: 20px; flex-shrink: 0; color: var(--palette-vermilion); }
@@ -26,7 +26,6 @@
 @media (max-width: 700px) {
   .app-shell .build-menu-detail-heading { margin-bottom: 0; padding-bottom: 0; }
 
-  .app-shell .settlement-status { padding: 4px 8px; }
   .app-shell .settlement-priority { font-size: var(--font-body); }
 }
 

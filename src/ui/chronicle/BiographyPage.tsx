@@ -9,6 +9,7 @@ import { Button } from "../kit";
 import { artPatchStyle } from "../artPatch";
 import { EmblemImage } from "../heraldry/EmblemImage";
 import { usePresentationPreference } from "../../render/PresentationToggle";
+import { frameArtSpaceStyle, frameBoxStyle } from "../frameBox";
 
 // CHRON-1 biography (CHRONICLE_DESIGN 2.2): the Wave 19 `frame_biography` page (640 x 800 art, drawn at one scale so
 // its printed slots stay where they are): the portrait in the great circle (the pool picture of the person's age now;
@@ -16,7 +17,8 @@ import { usePresentationPreference } from "../../render/PresentationToggle";
 // small circle (UI-7b: an empty one covered with the page's own blank parchment; family stays in the relations below),
 // the name, the life and the house at the top of the right column (UI-7: with what they have of their parents,
 // "닮은 점"), the life along the page's own line (`biography_life_dot`, `biography_life_end` for a death or a leaving),
-// then the household and the offices, and the records they share with the town.
+// then the household and the offices, and the records they share with the town. UI-AUDIT-1: the page's border is the
+// painting's safe inset at the page's scale (frame kind `biography`), its parts in the art's coordinates over it.
 export const BIOGRAPHY_PAGE = { width: 640, height: 800 } as const;
 
 /** A slot on the page art, in art pixels (measured on frame_biography.png). */
@@ -40,9 +42,10 @@ export function BiographyPage({ view, scale, onPerson, onRecord }: {
   const cover = (key: keyof typeof PRINTED) => <span className={`chronicle-biography-cover chronicle-biography-cover--${key}`} aria-hidden="true"
     style={artPatchStyle(page, BIOGRAPHY_PAGE.width, BIOGRAPHY_PAGE.height, scale, PRINTED[key], BLANK[key], "var(--palette-parchment)")} />;
   return (
-    <article className="chronicle-biography" aria-label={COPY.biographyTitle(view.name)} data-person={view.id} data-portrait={view.portraitId}
+    <article className="chronicle-biography" data-frame="biography" aria-label={COPY.biographyTitle(view.name)} data-person={view.id} data-portrait={view.portraitId}
       data-portrait-exact={view.portraitExact ? "true" : "false"}
-      style={{ width: BIOGRAPHY_PAGE.width * scale, height: BIOGRAPHY_PAGE.height * scale, backgroundImage: `url("${page}")` }}>
+      style={{ width: BIOGRAPHY_PAGE.width * scale, height: BIOGRAPHY_PAGE.height * scale, backgroundImage: `url("${page}")`, ...frameBoxStyle("biography", scale) }}>
+      <div className="chronicle-page-art" style={frameArtSpaceStyle("biography", scale)}>
       <span className={`chronicle-biography-portrait ${personPortraitStateClass(view.ornament) === "" ? "" : "portrait-greyscale"}`} role="img"
         aria-label={view.ornament === null ? view.portraitLine : PERSON_STATE_COPY.withState(view.portraitLine, PERSON_STATE_COPY.label(view.ornament))}
         data-person-state={view.ornament ?? undefined} style={{ ...SLOTS.portrait, ...portrait }} />
@@ -88,6 +91,7 @@ export function BiographyPage({ view, scale, onPerson, onRecord }: {
               <span className="chronicle-biography-date">{record.date}</span>{record.sentence}</Button></li>
           ))}</ul>)}
       </section>
+      </div>
     </article>
   );
 }

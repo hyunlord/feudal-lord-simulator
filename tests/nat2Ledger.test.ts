@@ -57,7 +57,9 @@ test("NAT-2 QA-006: a lit row lists the stores that hold it with their amounts, 
 test("NAT-2 QA-006: the drawer's skin — the Wave 19 ledger-card frame, the wide width token, surfaces without the browser's button paint", () => {
   const kit = readFileSync("src/styles/uiKit.css", "utf8");
   const hud = readFileSync("src/styles/hudShell.css", "utf8");
-  assert.match(kit, /:root \.app-shell \.slot-panel\.ledger-drawer \{[^}]*border-image: url\("\/assets\/wave19\/cards\/frame_record_ledger\.png"\)/);
+  assert.match(kit, /:root \.app-shell \.slot-panel\.ledger-drawer \{[^}]*border-image: var\(--frame-ledger-art\)/);
+  // UI-AUDIT-1: the frame tokens carry the Wave 19 ledger card's art (its edges repeated) and the drawer's `data-frame`.
+  assert.match(readFileSync("src/styles/frameTokens.generated.css", "utf8"), /--frame-ledger-art: url\("\/assets\/wave19\/cards\/frame_record_ledger\.png"\) 30 40 40 32 fill \/ var\(--frame-ledger-width\) \/ 0 round;/);
   assert.match(hud, /\.app-shell \.ledger-drawer \{[^}]*width: min\(var\(--box-w-wide\)/);
   assert.match(kit, /:where\(\.ui-btn--surface\) \{ background-color: transparent; border: 0 solid transparent; \}/);
 });

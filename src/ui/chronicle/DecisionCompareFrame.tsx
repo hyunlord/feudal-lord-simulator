@@ -1,3 +1,4 @@
+import { frameArtSpaceStyle, frameBoxStyle, frameToken } from "../frameBox";
 import { wave19FrameLayerStyle, wave19ImageStyle } from "../wave19Art";
 import { ChronicleArtView } from "./ChronicleArtView";
 import type { DecisionCompareView } from "./chronicleScreenModel";
@@ -5,16 +6,19 @@ import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 
 // CHRON-1 decision record (CHRONICLE_DESIGN 2.4): the Wave 19 `frame_decision_compare` (512 x 240 art, three columns —
 // the way chosen, the other ways, each predicted number against what came with `icon_predicted` / `icon_actual` and
-// `icon_delta_up` / `icon_delta_down`), drawn at `scale`.
-export const DECISION_FRAME = { width: 512, height: 240 } as const;
+// `icon_delta_up` / `icon_delta_down`), drawn at `scale`. UI-AUDIT-1: the frame's border is its safe inset at `scale`
+// (frame kind `decision`); the columns sit in the art's coordinates over it.
+export const DECISION_FRAME = frameToken("decision").size;
 /** The three columns' content boxes on the art (below the header plates at the top of each). */
 const COLUMNS = [{ left: 16, right: 344 }, { left: 184, right: 176 }, { left: 350, right: 14 }] as const;
 
 export function DecisionCompareFrame({ view, scale }: { readonly view: DecisionCompareView; readonly scale: number }) {
   const column = (index: 0 | 1 | 2) => ({ left: COLUMNS[index].left * scale, right: COLUMNS[index].right * scale, top: 12 * scale, bottom: 14 * scale });
   return (
-    <section className="chronicle-decision" aria-label={view.heading} data-decision={view.id} style={{ width: DECISION_FRAME.width * scale, height: DECISION_FRAME.height * scale }}>
+    <section className="chronicle-decision" data-frame="decision" aria-label={view.heading} data-decision={view.id}
+      style={{ width: DECISION_FRAME.width * scale, height: DECISION_FRAME.height * scale, ...frameBoxStyle("decision", scale) }}>
       <span className="chronicle-decision-frame" aria-hidden="true" style={wave19FrameLayerStyle("frame_decision_compare", scale)} />
+      <div className="chronicle-decision-art" style={frameArtSpaceStyle("decision", scale)}>
       <div className="chronicle-decision-column" style={column(0)}>
         <h4>{COPY.chosenHeading}</h4>
         <ChronicleArtView art={view.art} size={Math.round(64 * scale)} className="chronicle-decision-art" />
@@ -39,6 +43,7 @@ export function DecisionCompareFrame({ view, scale }: { readonly view: DecisionC
           ))}
         </dl>
         {view.pending === null ? null : <p className="chronicle-decision-pending">{view.pending}</p>}
+      </div>
       </div>
     </section>
   );

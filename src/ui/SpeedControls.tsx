@@ -120,7 +120,7 @@ export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) 
         ))}
       </div>
       <Disclosure className="command-disclosure settings-disclosure" summary="설정">
-      <div className="command-popover autoplay-control" aria-label="자동 발전 제어">
+      <div className="command-popover autoplay-control" data-frame="dark" aria-label="자동 발전 제어">
         <Button
           className="autoplay-toggle"
           type="button"

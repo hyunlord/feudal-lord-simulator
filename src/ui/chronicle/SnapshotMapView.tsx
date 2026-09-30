@@ -3,7 +3,8 @@ import { PALETTE, RAMPS, type PaletteColor } from "../../content/palette";
 import type { GameState } from "../../engine/engine.types";
 import { history } from "../../engine/history";
 import { decodeSnapshot, rasterizeSnapshot, SNAPSHOT_PALETTE, type SnapshotCell } from "../../engine/historySnapshot";
-import { wave19FrameLayerStyle } from "../wave19Art";
+import { frameBoxStyle, frameContentStyle, frameToken } from "../frameBox";
+import { WAVE19_FRAME_KIND, wave19FrameLayerStyle } from "../wave19Art";
 import { chronicleDate, type SnapshotRef } from "./chronicleScreenModel";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 
@@ -23,9 +24,9 @@ const BYTES: readonly (readonly [number, number, number])[] = SNAPSHOT_PALETTE.m
   return [Number.parseInt(hex.slice(1, 3), 16), Number.parseInt(hex.slice(3, 5), 16), Number.parseInt(hex.slice(5, 7), 16)] as const;
 });
 
-/** The frames' inner square (the art's insets): the 320 frame 45–50 px, the 160 frame 23–25 px. */
-const FRAME = { large: { id: "frame_snapshot_map_320", size: 320, inset: { left: 45, top: 50, right: 45, bottom: 45 } },
-  small: { id: "frame_snapshot_map_160", size: 160, inset: { left: 23, top: 25, right: 23, bottom: 23 } } } as const;
+/** The two map frames (UI-AUDIT-1: their window is the frame tokens' safe inset — the 320 frame 45–50 px, the 160 frame
+ * 23–25 px — the map in the content box inside it). */
+const FRAME = { large: { id: "frame_snapshot_map_320" }, small: { id: "frame_snapshot_map_160" } } as const;
 
 /** The classes a settlement puts on the land (roads, houses, buildings, sites, zones, burnt and empty houses, walls). */
 const SETTLED = new Set(["road", "house", "building", "construction", "zone_burgage", "zone_arable", "burnt", "wall", "abandoned"].map(cell => SNAPSHOT_PALETTE.indexOf(cell as SnapshotCell)));
@@ -64,12 +65,12 @@ function FramedMap({ pixels, size, crop, frame, scale, label, caption, testId }:
   readonly pixels: Uint8Array; readonly size: number; readonly crop: MapCrop; readonly frame: "large" | "small"; readonly scale: number;
   readonly label: string; readonly caption: string; readonly testId: string;
 }) {
-  const art = FRAME[frame];
-  const box = art.size * scale;
+  const art = FRAME[frame]; const kind = WAVE19_FRAME_KIND[art.id];
+  const box = frameToken(kind).size.width * scale;
   return (
     <figure className="chronicle-map" data-map={testId} style={{ width: box }}>
-      <div className="chronicle-map-box" style={{ width: box, height: box }}>
-        <div className="chronicle-map-inner" style={{ left: art.inset.left * scale, top: art.inset.top * scale, right: art.inset.right * scale, bottom: art.inset.bottom * scale }}>
+      <div className="chronicle-map-box" data-frame={kind} style={{ width: box, height: box, ...frameBoxStyle(kind, scale) }}>
+        <div className="chronicle-map-inner" style={frameContentStyle()}>
           <SnapshotCanvas pixels={pixels} size={size} crop={crop} label={label} />
         </div>
         <span className="chronicle-map-frame" aria-hidden="true" style={wave19FrameLayerStyle(art.id, scale)} />
