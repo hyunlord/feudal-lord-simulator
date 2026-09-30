@@ -8,8 +8,9 @@
   align-items: flex-start;
   pointer-events: none;
 }
-/* UI-AUDIT-1: a flat frame (data-frame="flat": its own 3 px rule) with the 8 px gap inside it; the heading, the cause
-   lines and the body sit in that inner box as plates, and the card scrolls as one (the heading stays on top). */
+/* UI-AUDIT-1: the light panel frame (data-frame="light", as the inspector slot's body; its border-width and the 8 px gap
+   come from the frame tokens); the heading, the cause lines and the body sit in that inner box as plates, and the card
+   scrolls as one (the heading stays on top). */
 .app-shell .diagnostic-card {
   display: flex;
   flex-direction: column;
@@ -20,11 +21,9 @@
   overflow: hidden auto;
   overscroll-behavior: contain;
   scrollbar-color: var(--palette-earth) var(--palette-parchment);
-  border: 3px solid var(--palette-earth-dark);
-  border-top-color: var(--palette-earth);
-  border-bottom-color: var(--palette-ink);
-  border-radius: 2px;
-  background: var(--palette-vellum);
+  border-radius: 0;
+  border-image: var(--frame-light-art);
+  background: var(--parchment) var(--art-texture-light) repeat;
   font-family: var(--ui-body-font);
   color: var(--palette-ink);
 }
