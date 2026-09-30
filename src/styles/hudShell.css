@@ -175,9 +175,10 @@
 .setting-pair { display: inline-flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; max-width: 100%; }
 .pause-menu-resume { display: inline-flex; gap: 6px; align-items: center; justify-content: center; min-height: 48px; font-size: 15px; font-weight: 700; }
 
-/* Tablets: 48 px targets (research 15 section 8). */
+/* Tablets: 48 px targets (research 15 section 8). UI-AUDIT-1: over the 44 px floor, which is !important
+   (uiBoundaries.css) — without it these stayed 44 px on the tablet (the fix A captures). */
 @media (pointer: coarse) {
-  .app-shell :is(.status-pill-cell, .control-layer, .ledger-tab, .crisis-icon, .goal-card-cta, .goal-card-fold, .slot-panel-close, .build-drawer .build-menu-category) { min-height: 48px; }
+  .app-shell :is(.status-pill-cell, .control-layer, .ledger-tab, .crisis-icon, .goal-card-cta, .goal-card-fold, .slot-panel-close, .build-drawer .build-menu-category) { min-height: 48px !important; }
   .app-shell .status-pill { min-height: 48px; }
   .app-shell .crisis-icon { width: 48px; height: 48px; }
   .app-shell .action-dock-button { min-width: 64px; min-height: 64px; }
