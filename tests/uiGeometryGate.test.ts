@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { compareBaseline, gateMode, splitKey } from "../scripts/checks/uiGeometry.mjs";
+import { compareBaseline, gateMode, geometryInputs, splitKey, UI_INPUT_ROOTS } from "../scripts/checks/uiGeometry.mjs";
 import { failureKey } from "../scripts/uiGeometryMeasure";
 
 // UI-AUDIT-1: the geometry gate's baseline (scripts/checks/uiGeometry.mjs): new failures fail, fixed ones must be
@@ -37,4 +37,14 @@ test("Given an exception When its row, check and path fragment match Then it cov
 test("Given the gate When no override is set Then it enforces (the user's decision), and the environment can ask for a report only", () => {
   assert.equal(gateMode({}), "enforce");
   assert.equal(gateMode({ FLS_UI_GEOMETRY_GATE: "warn" }), "warn");
+});
+
+test("Given the UI inputs When listed from git Then they hold the UI, styles, copy and audit, and none of the engine", () => {
+  const inputs = geometryInputs("HEAD", new URL("../", import.meta.url).pathname);
+  const paths = inputs.map(line => line.slice(line.indexOf(" ") + 1));
+  assert.ok(paths.includes("src/ui/surfaces.registry.ts") && paths.includes("scripts/uiGeometryAudit.mjs") && paths.includes("vite.config.ts"));
+  assert.ok(paths.some(path => path.endsWith(".ko.ts") && path.startsWith("src/content/")));
+  assert.deepEqual(paths.filter(path => /^src\/(engine|sim|ledger|state)\//.test(path) || (path.startsWith("src/content/") && !path.endsWith(".ko.ts"))
+    || (path.startsWith("src/render/") && !path.endsWith(".tsx"))), []);
+  assert.ok(UI_INPUT_ROOTS.every(item => !item.root.startsWith("src/engine")));
 });

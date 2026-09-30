@@ -175,8 +175,8 @@ test("Given a state with a ledger When numbers go extreme Then the cash balance 
 });
 
 test("Given the summary step When its inputs and mode are read Then the hash is stable and the gate mode follows the environment", () => {
-  const inputs = { src: "a", assets: "b", audit: "c", measure: "d", scene: "e", vite: "f" };
-  assert.equal(geometryInputHash(inputs), geometryInputHash({ ...inputs }));
-  assert.notEqual(geometryInputHash(inputs), geometryInputHash({ ...inputs, src: "z" }));
+  const inputs = ["a1 src/ui/A.tsx", "b2 src/styles/b.css"];
+  assert.equal(geometryInputHash(inputs), geometryInputHash([...inputs]));
+  assert.notEqual(geometryInputHash(inputs), geometryInputHash(["a9 src/ui/A.tsx", "b2 src/styles/b.css"]));
   assert.equal(gateMode({ FLS_UI_GEOMETRY_GATE: "warn" }), "warn");
 });

@@ -20,7 +20,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
-import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_INPUTS, UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
+import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY, UI_INPUT_ROOTS } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
 import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures } from './uiGeometryMeasure.ts';
@@ -262,7 +262,8 @@ await browser.close();
 // --- Totals, the report, the committed summary.
 const git = args => { try { return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { return ''; } };
 const inputs = geometryInputs('HEAD');
-const dirty = process.env.DIRTY === '1' || git(['status', '--porcelain', '--untracked-files=no', '--', 'src', ...Object.values(UI_GEOMETRY_INPUTS).filter(path => path.startsWith('scripts/'))]) !== '';
+// public/assets is left out of the status check: its LFS files can show as changed where git-lfs is missing.
+const dirty = process.env.DIRTY === '1' || git(['status', '--porcelain', '--untracked-files=no', '--', ...UI_INPUT_ROOTS.map(item => item.root).filter(root => root !== 'public/assets')]) !== '';
 const totals = { rows: Object.keys(results).length, conditions: 0, measured: 0, failures: 0, unopened: 0, unreachable: [], warnings: 0, byCheck: Object.fromEntries(CHECKS.map(check => [check, 0])) };
 const bySurface = {};
 const kindNotes = [];
@@ -293,7 +294,7 @@ const failureKeys = Object.entries(results).flatMap(([id, row]) => Object.entrie
 const readDoc = path => { try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return null; } };
 const against = compareBaseline({ keys: failureKeys, baseline: readDoc(UI_GEOMETRY_BASELINE)?.entries ?? [], exceptions: readDoc(UI_GEOMETRY_EXCEPTIONS)?.exceptions ?? [] });
 const baselineLine = `Against the committed baseline: ${against.failures} failure key(s) counted (${against.excepted} more under ${against.exceptions} exception(s)); baseline ${against.baseline}, new ${against.added.length}, fixed ${against.fixed.length}.`;
-const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
+const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs: inputs.length, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
   axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
   kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results };
 writeFileSync(join(out, 'geometry.json'), `${JSON.stringify(report)}\n`);
@@ -318,7 +319,7 @@ writeFileSync(join(out, 'geometry.md'), `${md.join('\n')}\n`);
 
 if (summaryPath !== 'none') {
   mkdirSync(dirname(summaryPath), { recursive: true });
-  const summary = { schema: 1, run, commit: report.commit, dirty, inputs, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
+  const summary = { schema: 1, run, commit: report.commit, dirty, inputs: inputs.length, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
     axes: report.axes, rows: totals.rows, conditions: totals.conditions, measured: totals.measured, failures: totals.failures, unopened: totals.unopened,
     unreachable: totals.unreachable, warnings: totals.warnings, byCheck: totals.byCheck, unregisteredFramed: report.unregisteredFramed.length,
     baseline: { entries: against.baseline, counted: against.failures, excepted: against.excepted, exceptions: against.exceptions, added: against.added.length, fixed: against.fixed.length },

@@ -34,7 +34,7 @@ import { checkLintExceptions, formatLintResult } from './lintExceptions.mjs';
 import { checkInboxLedger, formatLedgerResult, ledgerOk } from './inboxLedger.mjs';
 import { checkKoreanStrings, formatKoreanResult } from './koreanStrings.mjs';
 import { checkSurfaceRegistry, formatSurfaceRegistryResult } from './surfaceRegistry.mjs';
-import { checkUiGeometry, formatUiGeometryResult } from './uiGeometry.mjs';
+import { checkUiGeometry, formatUiGeometryResult, logWarnOverride } from './uiGeometry.mjs';
 
 const CODE = /\.(ts|tsx|js|jsx|mjs|cjs)$/;
 const ESLINT_DIR = 'tools/eslint';
@@ -62,6 +62,7 @@ const surfaces = checkSurfaceRegistry({ head });
 report('surfaces', surfaces.missing.length === 0, formatSurfaceRegistryResult(surfaces));
 const geometry = checkUiGeometry({ base, head });
 report('ui-geometry', geometry.pass, formatUiGeometryResult(geometry));
+const geometryOverride = logWarnOverride(geometry, { top, head }); if (geometryOverride !== null) console.error(geometryOverride);
 
 // Files for ESLint and tsc: this checkout if it is exactly <head>, else a temporary worktree.
 const clean = git(['status', '--porcelain', '--untracked-files=no']).trim() === '';

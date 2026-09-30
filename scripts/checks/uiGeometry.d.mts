@@ -3,10 +3,12 @@ export type GeometryException = { readonly row: string; readonly check: string; 
 export declare const UI_GEOMETRY_SUMMARY: string;
 export declare const UI_GEOMETRY_BASELINE: string;
 export declare const UI_GEOMETRY_EXCEPTIONS: string;
-export declare const UI_GEOMETRY_INPUTS: Readonly<Record<string, string>>;
+export declare const UI_INPUT_ROOTS: readonly { readonly root: string; readonly only: RegExp | null }[];
+export declare const UI_GEOMETRY_SCRIPTS: readonly string[];
 export declare const UI_GEOMETRY_GATE: "warn" | "enforce";
-export declare function geometryInputs(rev: string, cwd?: string): Record<string, string | null>;
-export declare function geometryInputHash(inputs: Readonly<Record<string, string | null>>): string;
+export declare function geometryInputs(rev: string, cwd?: string): string[];
+export declare function geometryInputHash(inputs: readonly string[]): string;
+export declare function logWarnOverride(result: object, options?: { readonly top?: string; readonly head?: string }): string | null;
 export declare function gateMode(env?: Readonly<Record<string, string | undefined>>): "warn" | "enforce";
 export declare function splitKey(key: string): { readonly row: string; readonly condition: string; readonly check: string; readonly path: string };
 export declare function compareBaseline(options: { readonly keys: readonly string[]; readonly baseline?: readonly string[]; readonly exceptions?: readonly GeometryException[] }): {
