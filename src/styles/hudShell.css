@@ -18,12 +18,13 @@
 /* contrast-audit selector=".status-pill" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
 .app-shell .status-pill {
   position: absolute; top: 8px; left: 8px; z-index: 4;
-  display: flex; align-items: center; gap: 2px; min-height: 44px;
+  display: flex; align-items: center; gap: 0; min-height: 44px;
   color: var(--palette-ink); background-color: var(--palette-vellum);
-  font-size: 14px; font-weight: 700; white-space: nowrap;
+  font-size: 13px; font-weight: 700; white-space: nowrap;
 }
+/* UI-AUDIT-1: the framed pill is 63 px tall (the gap on both sides); its cells keep the area budget with 4 px sides. */
 .app-shell .status-pill-cell {
-  display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 6px;
+  display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 4px;
   color: inherit; font: inherit; background: none; border: 0; border-radius: 0; cursor: pointer;
 }
 .app-shell .status-pill-date { cursor: default; font-family: var(--ui-font-serif); }
