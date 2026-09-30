@@ -106,12 +106,15 @@ export function LegacyEndingScreen({ state, view, onBook, onKeepPlaying }: {
         data-final={view.ending.final}>
         <span className="chronicle-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_chronicle_page")} />
         <div className="chapter-page-body legacy-ending-body" style={wave8ContentStyle("frame_chronicle_page")}>
-          <p className="legacy-verdict-title">{COPY.verdictTitle}</p>
-          <LegacyEndingBlock ending={view.ending} />
-          <h3>{COPY.axesHeading}</h3>
-          <LegacyAxes axes={view.axes} />
-          <p className="legacy-verdict-lines"><span>{view.leadLine}</span><span>{view.chosenLine}</span></p>
-          {/* The three buttons stay in view (a footer held at the panel's bottom while the verdict scrolls under it). */}
+          <div className="legacy-ending-scroll">
+            <p className="legacy-verdict-title">{COPY.verdictTitle}</p>
+            <LegacyEndingBlock ending={view.ending} />
+            <h3>{COPY.axesHeading}</h3>
+            <LegacyAxes axes={view.axes} />
+            <p className="legacy-verdict-lines"><span>{view.leadLine}</span><span>{view.chosenLine}</span></p>
+          </div>
+          {/* The three buttons stay in view: the footer is the body's last row, the verdict scrolls in the row above it
+              (UI-AUDIT-1: beside it, not under it). */}
           <div className="legacy-ending-footer">
             <div className="chronicle-actions legacy-actions">
               <Button type="button" className="legacy-open-book" onPress={() => onBook()} variant="primary"><UiIcon sheet="action" cell="log" />{COPY.openBook}</Button>

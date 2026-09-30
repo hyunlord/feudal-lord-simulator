@@ -17,6 +17,8 @@ const PIN_SIZE = 20;
 const RING_SIZE = 28;
 
 const bandLeft = (x: number): CSSProperties => ({ left: `${(STRIP_BAND.left + x * (STRIP_BAND.right - STRIP_BAND.left)) * 100}%` });
+/** UI-AUDIT-1: an era's label stays inside its own share of the band (less a gap), never over the next one. */
+const eraLabelWidth = (eras: number): string => `calc(${(STRIP_BAND.right - STRIP_BAND.left) * 100 / Math.max(1, eras)}% - 8px)`;
 
 /** The band fraction (0–1) at a client x on the strip. */
 export function stripFraction(clientX: number, rect: { readonly left: number; readonly width: number }): number {
@@ -50,7 +52,7 @@ export function ChronicleTimeline({ segments, markers, chapters, nowTick, picked
       </div>
       <div className="chronicle-strip-labels" aria-hidden="true">
         {segments.map((segment, index) => (
-          <span key={segment.eraId} className="chronicle-era-label" data-entered={segment.entered ? "true" : undefined} style={bandLeft(index / segments.length)}>
+          <span key={segment.eraId} className="chronicle-era-label" data-entered={segment.entered ? "true" : undefined} style={{ ...bandLeft(index / segments.length), maxWidth: eraLabelWidth(segments.length) }}>
             {COPY.eraLabel(segment.fromYear, segment.label)}
             {segment.entered ? null : <span className="chronicle-era-ahead">{COPY.eraAhead}</span>}
           </span>
