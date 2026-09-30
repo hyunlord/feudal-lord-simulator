@@ -308,3 +308,4 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **큰 기계 기록은 astra-raw에만**(2026-09-30 사용자 규칙, Wave 39 다음 묶음부터): 기계가 만든 기록 파일(JSON·JSONL·CSV·TSV·TXT·LOG·XML 등)이 256KB(262,144바이트)를 넘으면 저장소에 넣지 않는다. 원본은 `~/feudal-lord-analysis/astra-raw/`(받은 ZIP과 작업 폴더)에만 두고, 저장소의 같은 자리에는 `<파일 이름>.astra-raw.txt` 안내 파일 하나를 둔다. 안내 파일은 한 줄: `<파일 이름> · <바이트> bytes · sha256 <64자> · <astra-raw 경로>`(ZIP 안이면 `zips/<ZIP>::<묶음 안 경로>`, 작업 폴더에도 있으면 그 경로를 `;`로 덧붙임).
   - 사람이 읽는 문서(README·REPORT·QA·PLAN 같은 `.md`, 갤러리 `index.html`)와 확인 그림은 크기와 관계없이 그대로 저장소에 둔다.
   - 이미 들어간 Wave 39 `records/proofs/placements.json`(약 60,000줄) 등 규칙 전의 파일은 그대로 둔다(사용자 판정).
+  - QA 회차(`docs/qa/roundNN/`)에도 03회차부터 같은 규칙을 쓴다. 단 재현용 게임 저장(`repro/saves/`)은 크기와 관계없이 저장소에 두고, 압축되지 않은 저장은 gzip해서 넣는다. 자세한 것은 [`docs/qa/README.md`](qa/README.md) "한 회차에 넣는 것".
