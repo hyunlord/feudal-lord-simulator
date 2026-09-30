@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-30 20시 갱신)
+## 3. 현재 장부 요약 (2026-09-30 21시 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -48,7 +48,7 @@ assets-inbox/
 | `d1` | 7 |  | 7 |  |  |  |  | 5 |
 | `d1b` | 4 |  | 4 |  |  |  |  | 2 |
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
-| `endings-manors` | 12 |  | 11 |  | 1 |  |  | 0 |
+| `endings-manors` | 12 |  | 11 |  | 1 |  |  | 6 |
 | `experiments` | 78 |  | 54 |  |  | 24 |  | 0 |
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
 | `lineage` | 374 |  | 333 |  | 41 |  |  | 260 |
@@ -80,13 +80,14 @@ assets-inbox/
 | `wave28` | 50 |  | 50 |  |  |  |  | 39 |
 | `wave29` | 32 |  | 32 |  |  |  |  | 14 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 62 |
-| `wave30` | 141 |  | 141 |  |  |  |  | 0 |
+| `wave30` | 141 |  | 141 |  |  |  |  | 90 |
 | `wave31` | 4 |  | 4 |  |  |  |  | 3 |
-| `wave32` | 41 |  | 39 |  | 2 |  |  | 0 |
+| `wave32` | 41 |  | 39 |  | 2 |  |  | 26 |
 | `wave33` | 6 |  | 6 |  |  |  |  | 5 |
 | `wave34` | 33 |  | 31 |  | 2 |  |  | 0 |
 | `wave35` | 57 |  | 57 |  |  |  |  | 0 |
 | `wave37` | 71 |  | 63 |  | 4 | 4 |  | 0 |
+| `wave39` | 61 |  | 61 |  |  |  |  | 0 |
 | `wave4-pilot` | 15 |  | 12 |  |  | 3 |  | 12 |
 | `wave4b` | 57 |  | 57 |  |  |  |  | 53 |
 | `wave4c` | 29 |  | 29 |  |  |  |  | 18 |
@@ -100,7 +101,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **4543** | **0** | **3312** | **0** | **258** | **937** | **36** | **1828** |
+| **합계** | **4604** | **0** | **3373** | **0** | **258** | **937** | **36** | **1950** |
 
 ## 4. 찾는 법
 
@@ -221,6 +222,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-wave37-rework-v2-lite.zip` (09-30 13:28, 경량판) | `wave37/rework-v2` | 828 KB | `8a0c102d9a268b15…` | 26 | 30 | `references/` 제외 | 32장 가운데 바뀐 것은 `condition_prosperous_bench`·`trade_carpenter_a`·`trade_miller_a`·`trade_miller_b` 넷뿐(해시 대조). 원본과 바이트가 같은 28장과, 같은 묶음 새 방앗간 그림과 바이트가 같은 판독 그림 2장(`blind/01`·`02`)은 넣지 않음. 작업 폴더 `output/astra-wave37-rework-v2`(9.5MB)는 `astra-raw/output/`에 보관
 | `/tmp/astra-endings-empty-manors-candidates-20260930.zip` (09-30 19:25) | `endings-manors/candidates-20260930` | 5,730 KB | `a65493ddf075fdf0…` | 23 | 0 | 없음 | `checks/` → `proofs/`. 결말 6장은 JPG라 각각 장부 한 행. 작업 폴더 `/tmp/astra-endings-empty-manors-work-20260930`(1MB)는 `astra-raw/output/`에 보관
 | `/tmp/astra-manor-b-empty-rework-candidates-20260930.zip` (09-30 19:45) | `endings-manors/manor-b-rework-20260930` | 411 KB | `3781bfc8d890b93b…` | 13 | 0 | 없음 | `checks/` → `proofs/`. 작업 폴더 `/tmp/astra-manor-b-empty-rework-work-20260930`(합성 중간본 `normalized.png` 포함)는 `astra-raw/output/`에 보관
+| `/tmp/astra-wave39-candidates-20260930.zip` (09-30 21:05) | `wave39/candidates-20260930` | 5,243 KB | `323c2ba015360594…` | 100 | 0 | 없음(참조는 ZIP에 없음) | `checks/` → `proofs/`. 작업 폴더 `/tmp/astra-wave39-work-20260930`(13MB, 참조 사본·재료별 작업 폴더 포함)은 `astra-raw/output/`에 보관
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -286,6 +288,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 37 재작업**(`wave37/rework-v2`, 2026-09-30 14시 판정): 새 4장(`condition_prosperous_bench`·`trade_carpenter_a`·`trade_miller_a`·`trade_miller_b`) `confirmed`, 비고 "재작업판(바이트 다름)" — 파일 이름이 원래 납품과 같다. 옛 4장(`rework_pending`)은 `superseded`, `replaced_by`에 새 경로. 비교판 3(혼동 쌍 JPG·6배 확대 PNG 2)은 확인 그림, 판독 기록 `recognition.jpg`는 기록 그림으로 `confirmed`. 나머지 28장은 원본과 바이트가 같아 새 행을 만들지 않았다.
 - **캠페인 결말·빈 영주관**(`endings-manors/candidates-20260930`, 2026-09-30 19시 판정): 결말 삽화 6장(1920×1080 JPG — 스스로 다스리는 도시·이름이 남은 가문·상인들의 기도처·가문의 도시·영주의 도시·순례자의 도시, 장부에 각각 한 행)과 `manor_house_a_empty-v1`(416×328, 피벗 (249,319)) `confirmed`. `manor_house_b_empty-v1`은 `rework_pending`(비고 "원본에 없는 짙은 외곽선"). 확인 그림 2(여섯 결말 비교 JPG·영주관 정렬 PNG) `confirmed`.
 - **빈 영주관 B 재작업**(`endings-manors/manor-b-rework-20260930`, 2026-09-30 20시 판정): `manor_house_b_empty-v2`(416×328, 피벗 (251,319)) `confirmed` — 닫힌 덧창·문 빗장·마당 풀 영역만 원본 Wave 12 `manor_house_b-v1`에 합성하고 외곽 알파·나머지 RGBA는 원본과 같다. 옛 `manor_house_b_empty-v1`(`rework_pending`, 짙은 외곽선)은 `superseded`, `replaced_by`에 새 경로. 확인 그림 1(원본·빈 판·50% 겹침) `confirmed`.
+- **Wave 39 날씨·낙엽 재료**(`wave39/candidates-20260930`, 2026-09-30 21시 판정): 에셋 58장(비 22·웅덩이·젖음 8·낙엽 12·눈 6·잔해 10)과 확인 그림 3(비 전후 비교·가을 수관과 길가 낙엽·입자 크기 비교) `confirmed`. 줌 1.0 타일 128×64 기준, 빗줄기 실제 높이 최대 10px(사람보다 작음). 비는 세계 좌표 입자로 화면 전체 격자에 반복하지 않고, 물 위 파문은 Wave 29를 재사용한다. 프레임·피벗·알파·속도는 `records/`의 CSV·manifest 기준(초기 권장값).
 ## 7. 찾지 못한 것
 
 | 항목 | 상태 |
