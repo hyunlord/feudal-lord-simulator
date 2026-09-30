@@ -3,6 +3,18 @@
    goal chip. One panel slot on the right (goal log / population / inspector / ledger); the build drawer bottom centre
    only while open. Budgets per state: scripts/measureHudCoverage.ts. Touch targets stay >= 44 px (48 on tablets). */
 
+/* UI-AUDIT-1: the HUD's rows follow its framed boxes. The pill and the speed cluster are a target tall plus their frame's
+   safe inset and the gap on both sides (the frame box contract), so what sits under them starts below that. */
+.app-shell {
+  --hud-edge: 8px; --hud-target: 44px; --hud-row-gap: 4px;
+  --hud-pill-height: calc(var(--hud-target) + var(--frame-tooltip-safe-top) + var(--frame-tooltip-safe-bottom) + 2 * var(--frame-gap));
+  --hud-cluster-height: calc(var(--hud-target) + var(--frame-strip-top-safe-top) + var(--frame-strip-top-safe-bottom) + 2 * var(--frame-gap));
+  /* The goal rail under the pill; the crisis bells, the panel slot and the selection card under the speed. */
+  --hud-left-top: calc(var(--hud-edge) + var(--hud-pill-height) + var(--hud-row-gap));
+  --hud-right-top: calc(var(--hud-edge) + var(--hud-cluster-height) + var(--hud-row-gap));
+}
+@media (pointer: coarse) { .app-shell { --hud-target: 48px; } }
+
 /* contrast-audit selector=".status-pill" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
 .app-shell .status-pill {
   position: absolute; top: 8px; left: 8px; z-index: 4;
@@ -25,12 +37,12 @@
 .app-shell .hud-time-cluster[hidden] { display: none; }
 
 /* Crisis icons: under the speed, at most three, square. */
-.app-shell .crisis-icons { position: absolute; top: 66px; right: 8px; z-index: 4; display: flex; gap: 4px; }
+.app-shell .crisis-icons { position: absolute; top: var(--hud-right-top); right: 8px; z-index: 4; display: flex; gap: 4px; }
 .app-shell .crisis-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; min-width: 44px; }
 .app-shell .crisis-icon--immediate { outline: 2px solid var(--palette-vermilion); outline-offset: -3px; }
 
 /* The goal chip: the active card, one line (title, count, the one button); the reason and help stay in the log. */
-.app-shell .goal-chip-rail { position: absolute; top: 60px; left: 8px; z-index: 3; width: min(340px, calc(100% - 16px)); pointer-events: none; }
+.app-shell .goal-chip-rail { position: absolute; top: var(--hud-left-top); left: 8px; z-index: 3; width: min(340px, calc(100% - 16px)); pointer-events: none; }
 .app-shell .goal-chip-rail > * { pointer-events: auto; }
 .app-shell .goal-chip-rail .goal-cards { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
 .app-shell .goal-chip-rail .goal-card { display: flex; flex: 0 1 240px; max-width: 240px; gap: 6px; align-items: center; min-height: 44px; }
@@ -66,7 +78,7 @@
 
 /* One panel slot (S-30) on the right. */
 .app-shell .slot-panel {
-  position: absolute; top: 66px; right: 8px; z-index: 5;
+  position: absolute; top: var(--hud-right-top); right: 8px; z-index: 5;
   width: min(340px, calc(100% - 16px)); max-height: min(460px, calc(100% - 150px)); overflow-y: auto;
   color: var(--palette-ink); background-color: var(--palette-vellum);
 }
@@ -92,7 +104,7 @@
 .app-shell .ledger-total { font-weight: 700; }
 .app-shell .ledger-alerts { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 13px; }
 .app-shell .ledger-alert-look { min-height: 44px; margin-top: 4px; }
-.app-shell .ledger-population-drawer { top: 66px; left: auto; right: 8px; }
+.app-shell .ledger-population-drawer { top: var(--hud-right-top); left: auto; right: 8px; }
 
 /* Layer switch bottom left (always on, locks visible). */
 .app-shell .layer-switch { position: absolute; left: 8px; bottom: 8px; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
@@ -182,7 +194,7 @@
 @media (pointer: coarse) { .app-shell .era-console :is(.era-action, .era-wall-priority button) { min-height: 48px !important; } }
 
 /* The map's selection card in the panel slot (S-25): right side, 312 x 400 at most (the 18 % budget with the HUD, with room for Linux font metrics). */
-.app-shell .diagnostic-card-position { inset: 66px 8px auto auto !important; width: min(312px, calc(100% - 16px)); }
+.app-shell .diagnostic-card-position { inset: var(--hud-right-top) 8px auto auto !important; width: min(312px, calc(100% - 16px)); }
 .app-shell .diagnostic-card-position .diagnostic-card { max-height: min(400px, calc(100vh - 150px)); overflow-y: auto; }
 
 /* UI-3 pause (Wave 8): the vignette darkens the edges only; the badge's hourglass sits left of the label (the badge is a
@@ -197,7 +209,7 @@
 .app-shell .season-strip-mini { position: relative; display: block; height: 5px; background-size: 100% 100%; background-repeat: no-repeat; }
 .app-shell .season-strip-mini-pin { position: absolute; top: -2px; width: 2px; height: 9px; background-color: var(--palette-ink); transform: translateX(-1px); }
 /* contrast-audit selector=".season-strip-panel" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
-.app-shell .season-strip-panel { position: absolute; top: 52px; left: 0; z-index: 6; width: min(var(--box-w-medium), calc(100vw - 32px));
+.app-shell .season-strip-panel { position: absolute; top: calc(100% + var(--frame-tooltip-safe-bottom) + var(--hud-row-gap)); left: 0; z-index: 6; width: min(var(--box-w-medium), calc(100vw - 32px));
   color: var(--palette-ink); background-color: var(--palette-vellum); font-size: 13px; font-weight: 400; white-space: normal; line-height: 1.5; }
 .app-shell .season-strip-full { position: relative; margin: 14px 0 10px; }
 .app-shell .season-strip-mark { position: absolute; top: -1px; transform: translateX(-50%); }
@@ -315,7 +327,7 @@
 .app-shell .inspector-blocker { margin: 0 0 4px; font-weight: 700; }
 
 /* UI-4 event chips and card (not modal): under the crisis bells, top right. */
-.app-shell .event-cards { position: absolute; top: 116px; right: 8px; z-index: 5; display: grid; justify-items: end; gap: 6px; }
+.app-shell .event-cards { position: absolute; top: calc(var(--hud-right-top) + var(--hud-target) + 6px); right: 8px; z-index: 5; display: grid; justify-items: end; gap: 6px; }
 .app-shell .event-chips { display: grid; justify-items: end; gap: 4px; }
 .app-shell .event-chip { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; padding: 0 10px 0 4px; font-size: 13px; font-weight: 600; }
 /* NAT-2 (QA-013): an open panel slot (goal log, population, inspector: 340 px; the ledger: the wide token) holds the top
