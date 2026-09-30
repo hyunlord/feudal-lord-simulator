@@ -14,7 +14,7 @@ import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("엔진 1384→1402(scripts/ui10ExtraStates.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/ui10ExtraStates.ts <디렉터리>", entry: import.meta.url });
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { HEIR_CHOICE_PETITION_ID, LEGACY_BALANCE as B, ROYAL_TAX_PETITION_ID } from "../src/content/legacyConfig";
+import { CHURCH_REBUILDING_PETITION_ID, GUILD_DISPUTE_PETITION_ID, HEIR_CHOICE_PETITION_ID, LEGACY_BALANCE as B, ROYAL_TAX_PETITION_ID } from "../src/content/legacyConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { heirCandidates, legacyInterludes } from "../src/engine/legacy";
 import { manorLord } from "../src/engine/persons";
@@ -51,7 +51,8 @@ const start = legacyTown();
 
 // The heir's card with three candidates.
 const envoy = withFamily(throughLegacy(start, LEGACY_ENDING_ANSWERS.free_borough, "royal_tax_envoy"));
-const asked = throughLegacy(envoy, { [ROYAL_TAX_PETITION_ID]: "accept" }, "succession");
+// The interlude's petitions answered on the way (the bot's answers), so the heir's card is the one open.
+const asked = throughLegacy(envoy, { [ROYAL_TAX_PETITION_ID]: "accept", [CHURCH_REBUILDING_PETITION_ID]: "accept", [GUILD_DISPUTE_PETITION_ID]: "accept" }, "succession");
 const heir = openPetitions(asked).find(petition => petition.defId === HEIR_CHOICE_PETITION_ID);
 if (heir !== undefined) save(HEIR_CHOICE_PETITION_ID, asked, { petitionId: heir.id, options: heir.options ?? null,
   candidates: heirCandidates(asked).map(({ kind, relation, name, age, created }) => ({ kind, relation, name, age, created })) });

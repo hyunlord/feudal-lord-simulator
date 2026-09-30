@@ -33,6 +33,9 @@ const SEL = {
   eventChip: ".event-chip",
   // The event card's button that opens the petition's card.
   decideButton: "결정하기",
+  // The event card's close (the event read).
+  closeButton: "닫기",
+  laterButton: ".petition-card .story-modal-later",
   storyModal: ".story-modal",
   modal: ".petition-card, .chronicle-page, .chapter-preview, .famine-card, .story-modal, .event-card",
   dismiss: [".chronicle-page .chronicle-keep", ".story-modal-later", ".season-ledger-resume"],
@@ -187,14 +190,23 @@ for (const [index, name] of CARDS.entries()) {
     // As a player opens it (as scripts/ui10CardsCaptures.ts): the story's short wait, else the chip and [결정하기].
     const { page, close } = await named(name, 600);
     await page.waitForTimeout(2_000);
-    // Each waiting chip in turn until one's card offers [결정하기] (other events may wait before it).
-    const chips = await page.locator(SEL.eventChip).count();
-    for (let chip = 0; chip < chips && await page.locator(SEL.petitionCard).count() === 0; chip += 1) {
-      await page.locator(`${SEL.eventChip} >> nth=${chip}`).click({ timeout: 5_000 }); await page.waitForTimeout(600);
+    // The waiting chips in turn: a card that offers [결정하기] opens the petition; another event's card is closed
+    // (read), which lets the next chip in (the rail shows a few at a time).
+    const wanted = `${SEL.petitionCard}[data-def='${name.replace("extra:", "")}']`;
+    for (let chip = 0; chip < 8 && await page.locator(wanted).count() === 0 && await page.locator(SEL.eventChip).count() > 0; chip += 1) {
+      // Another petition's card: later (it stays open), and on to the next chip.
+      if (await page.locator(SEL.petitionCard).count() > 0) { await page.locator(SEL.laterButton).first().click({ timeout: 5_000 }); await page.waitForTimeout(500); }
+      await page.locator(SEL.eventChip).first().click({ timeout: 5_000 }); await page.waitForTimeout(600);
       const decide = page.getByRole("button", { name: SEL.decideButton }).first();
-      if (await decide.count() > 0) { await decide.click({ timeout: 5_000 }); await page.waitForTimeout(600); }
+      if (await decide.count() > 0) { await decide.click({ timeout: 5_000 }); await page.waitForTimeout(600); continue; }
+      const read = page.getByRole("button", { name: SEL.closeButton, exact: true }).first();
+      if (await read.count() > 0) { await read.click({ timeout: 5_000 }); await page.waitForTimeout(500); }
     }
-    await page.locator(SEL.petitionCard).waitFor({ timeout: 15_000 }); await page.waitForTimeout(700);
+    await page.locator(wanted).waitFor({ timeout: 15_000 }).catch(async (error: unknown) => {
+      await shoot(page, `x-${name.replace("extra:", "extra-")}-timeout.jpg`, 0.5);
+      throw new Error(`${String(error).slice(0, 120)} · chips ${JSON.stringify(await texts(page, SEL.eventChip))} · modal ${JSON.stringify(await screen(page))}`);
+    });
+    await page.waitForTimeout(700);
     await shootBox(page, SEL.petitionCard, `d${index + 1}-${name.replace("extra:", "")}${name.startsWith("extra:") ? "-three" : ""}.jpg`);
     const state = load(name);
     result[name] = { ui: await screen(page), candidates: name.endsWith("heir_choice") ? await texts(page, SEL.heirCandidate) : undefined,
