@@ -118,7 +118,7 @@
 
 /* Layer switch bottom left (always on, locks visible). */
 .app-shell .layer-switch { position: absolute; left: 0; bottom: 0; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
-.app-shell .layer-switch .control-layer { min-height: 44px; padding: 0 6px; font-size: 13px; }
+.app-shell .layer-switch .control-layer { min-height: 44px; padding: 0 6px; font-size: 12px; }
 /* NAT-1: small token, fixed width so the note never resizes with content. */
 .app-shell .layer-switch-note { position: absolute; left: var(--frame-gap); bottom: calc(56px + var(--frame-gap)); margin: 0; width: min(var(--box-w-small), calc(100vw - 32px)); max-width: none;
   font-size: 13px; color: var(--palette-ink); background-color: var(--palette-vellum); }
