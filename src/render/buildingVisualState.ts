@@ -22,7 +22,7 @@ export type RoofShape =
   | "cone"
   | "tower";
 
-export type RenderDetailLevel = "full" | "simplified" | "blocks";
+export type RenderDetailLevel = "full" | "blocks";
 
 export type BodyProfile = {
   readonly width: number;
@@ -102,9 +102,18 @@ export function buildingBodyProfile(
   return nonHouseBodyProfile(kind);
 }
 
+/** NAT-2 QA-008: block pictures only at or under this zoom (a strategic map); the game's own MIN_ZOOM is 0.5. */
+export const BLOCKS_MAX_ZOOM = 0.35;
+
+/**
+ * The detail of the world at `zoom`: full above BLOCKS_MAX_ZOOM — every building, tree, prop and their seasons,
+ * weather, village life, water and smoke by one set of rules, the small views drawing each sprite from its pre-shrunk
+ * level (spriteMipCache.ts) — and blocks (block houses, flat crowns) on the strategic map at or under it. NAT-2 (user,
+ * 2026-09-30): the "simplified" level (0.35–0.7: white line-drawn houses, green circle forests, and a second set of
+ * rules the later features were fitted to) was the August prototype's stand-in for speed; it is gone.
+ */
 export function renderDetailLevel(zoom: number): RenderDetailLevel {
-  if (zoom <= 0.5) return "blocks";
-  return zoom <= 0.7 ? "simplified" : "full";
+  return zoom <= BLOCKS_MAX_ZOOM ? "blocks" : "full";
 }
 
 export function buildingLodColor(kind: BuildingKind): PaletteColor {

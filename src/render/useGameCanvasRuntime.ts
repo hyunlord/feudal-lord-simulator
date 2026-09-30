@@ -15,6 +15,7 @@ import { drawCurrentCanvasFrame } from "./canvasRuntimeFrame";
 import type { GameCanvasRuntimeInput } from "./gameCanvasRuntimeInput";
 import { useGameCanvasRuntimeRefs } from "./useGameCanvasRuntimeRefs";
 import { installPhase10ProofRuntime } from "../testing/phase10ProofRuntime";
+import { registerQaProbe } from "../ui/qa/qaProbe";
 import { setGroundSceneIncrementalBuild, setGroundSceneZoneDeferral } from "./groundBoundaryScene";
 import { installAutoplayPulseRuntime } from "./autoplayPulseRuntime";
 import { createCanvasIntentHandler } from "./canvasIntentHandler";
@@ -130,12 +131,14 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     resize();
     const disposeAutoplayPulse = installAutoplayPulseRuntime(refs.feedbackRef);
     const disposeProofRuntime = installPhase10ProofRuntime({ canvas, cameraRef: refs.cameraRef, stateRef, location: window.location, gamepadCursor: () => gamepad.cursor() });
+    // NAT-2: the QA info overlay reads these (a few times a second while it is shown; never from the frame).
+    const disposeQaProbe = registerQaProbe({ camera: () => refs.cameraRef.current, viewport, selection: () => selectionRef.current });
     const disposeEvents = bindMouseKeyboard(canvas, translator, resize);
     const disposeZoneTouch = bindTouch(canvas, touch); setGroundSceneZoneDeferral(true); setGroundSceneIncrementalBuild(true);
     frameId = requestAnimationFrame(drawFrame);
     return () => {
       disposeZoneTouch(); setGroundSceneZoneDeferral(false); setGroundSceneIncrementalBuild(false);
-      cancelAnimationFrame(frameId); disposeAutoplayPulse(); disposeEvents(); disposeProofRuntime(); disposeHandler();
+      cancelAnimationFrame(frameId); disposeAutoplayPulse(); disposeEvents(); disposeProofRuntime(); disposeQaProbe(); disposeHandler();
     };
   }, [canvasRef, dispatch, onPalisadeDraftCancel, onPalisadeDraftChange, setHoveredBuilding, setSelection, setPrediction,
     // UI-KIT-1 (lint): the refs and the store's `interpolationAlpha` callback keep one identity, so listing them does not rebind the canvas.

@@ -252,8 +252,11 @@ export function GameProvider({ children }: GameProviderProps) {
     if ((action.type === "restart_settlement" || action.type === "load_saved_state" || action.type === "start_new_game") && nextState !== currentState) {
       setSessionKey(key => key + 1);
     }
-    notify(action.type === "commit_simulation_state");
-    if (action.type === "commit_simulation_state" && seasonTurned(currentState, nextState)) noteSeasonTurnRef.current?.();
+    // NAT-2 QA-012: the tick that turns the season reaches the UI at once (not at the next throttle), so the calendar
+    // changes in the frame the world does (the tick loop's callback runs before the canvas's in each frame).
+    const turned = action.type === "commit_simulation_state" && seasonTurned(currentState, nextState);
+    notify(action.type === "commit_simulation_state" && !turned);
+    if (turned) noteSeasonTurnRef.current?.();
     const decision = action.type === "load_saved_state" || action.type === "restart_settlement" || action.type === "start_new_game"
       ? null : decisionSaveReason(currentState, nextState);
     if (action.type === "restart_settlement" && nextState !== currentState) newSessionRef.current?.();

@@ -3,6 +3,10 @@
 // (the P0 pieces under /assets/ui-p0/, the Astra UI waves under /assets/wave*/), or — a kit `surface` (a cell, row or
 // card of a framed strip or panel, `.ui-btn--surface`) or a kit list option — when a framed ancestor within six levels
 // carries that art. Native <select>, <input> (other than the kit slider) and <textarea> are failures too.
+// NAT-2 (QA-006): a surface fails when it paints the browser's own button (the fill or the outset border of a bare
+// <button>): the framed ancestor was its whole test, so the ledger's rows passed as white default buttons inside the
+// drawer's frame. A floating box fails when its only frame is the plain light panel (frame_panel_light: a flat fill with
+// a 1 px rule) where the kit asks for a decorated frame (DECORATED_BOXES: the ledger, a record book like the chronicle).
 // Writes <out>/audit.json (per state: counts and every skinless element) and a capture per state with the skinless
 // elements outlined, plus sheet-desktop.jpg (every state) and the gallery at desktop and tablet size (gate ③).
 //   PLAYWRIGHT_MODULE=... node scripts/uiSkinAudit.mjs <out-dir> --url <url> --states <dir of scripts/ui5States.ts> [--states6 <dir of scripts/ui6States.ts>]
@@ -35,15 +39,22 @@ function auditFloatingBoxes() {
     '.layer-switch-note', '.resource-bar__coin-detail',
     '.settlement-crisis-slot .settlement-crisis',
     '.command-popover', '.build-menu-details', '.slot-panel', '.ui-tooltip',
+    // NAT-2: the QA info overlay.
+    '.qa-overlay',
   ];
+  // NAT-2 (QA-006): boxes that must wear a decorated frame, not the plain light panel (the ledger drawer is a record book).
+  const DECORATED_BOXES = ['.ledger-drawer'];
   const ART = /url\("?[^")]*\/assets\/(ui-p0|wave\d+[a-z]?)\//i;
+  const PLAIN = /\/assets\/ui-p0\/frame_panel_light\.png/i;
   const visible = element => { const box = element.getBoundingClientRect(); return box.width > 0 && box.height > 0; };
   const hasFrame = element => ART.test(getComputedStyle(element).borderImageSource);
   const rows = [];
-  for (const selector of FLOATING_SELECTORS) {
+  for (const selector of [...FLOATING_SELECTORS, ...DECORATED_BOXES]) {
+    const decorated = DECORATED_BOXES.includes(selector);
     for (const element of document.querySelectorAll(selector)) {
       if (!visible(element)) continue;
       if (!hasFrame(element)) rows.push({ selector, class: element.className.toString().slice(0, 60) });
+      else if (decorated && PLAIN.test(getComputedStyle(element).borderImageSource)) rows.push({ selector, class: element.className.toString().slice(0, 60), plain: true });
     }
   }
   return rows;
@@ -65,6 +76,13 @@ function auditPage() {
   } return false; };
   const path = element => { const parts = []; for (let node = element; node !== null && node !== document.body && parts.length < 4; node = node.parentElement) {
     const classes = [...node.classList].filter(name => !name.startsWith('ui-btn')).slice(0, 2).join('.'); parts.unshift(`${node.tagName.toLowerCase()}${classes === '' ? '' : `.${classes}`}`); } return parts.join(' > '); };
+  // NAT-2 (QA-006): the browser's own button paint, read from a bare <button> outside the app (the UA sheet and the
+  // global `button { font: inherit }` only). A surface showing its fill or its border is a default button in a frame.
+  const probe = document.createElement('button'); document.body.append(probe);
+  const ua = getComputedStyle(probe); const uaPaint = { fill: ua.backgroundColor, border: `${ua.borderTopStyle} ${ua.borderTopWidth} ${ua.borderTopColor}` };
+  probe.remove();
+  const paintsUa = element => { const style = getComputedStyle(element);
+    return (uaPaint.fill !== 'rgba(0, 0, 0, 0)' && style.backgroundColor === uaPaint.fill) || `${style.borderTopStyle} ${style.borderTopWidth} ${style.borderTopColor}` === uaPaint.border; };
   const rows = [];
   for (const element of document.querySelectorAll(SELECTOR)) {
     if (!visible(element)) continue;
@@ -72,8 +90,9 @@ function auditPage() {
     const native = (tag === 'select' || tag === 'textarea' || (tag === 'input' && !element.classList.contains('ui-slider')));
     const surface = element.classList.contains('ui-btn--surface') || element.classList.contains('ui-select-option');
     const own = art(element);
-    const skinned = !native && (own || (surface && framedAncestor(element)));
-    rows.push({ skinned, native, surface, own, path: path(element), kit: element.classList.contains('ui-btn') || element.closest('.ui-select, .ui-slider') !== null,
+    const plain = surface && tag === 'button' && paintsUa(element);
+    const skinned = !native && (own || (surface && !plain && framedAncestor(element)));
+    rows.push({ skinned, native, surface, own, plain, path: path(element), kit: element.classList.contains('ui-btn') || element.closest('.ui-select, .ui-slider') !== null,
       text: (element.getAttribute('aria-label') ?? element.textContent ?? '').replace(/\s+/g, ' ').trim().slice(0, 40) });
     if (!skinned) element.setAttribute('data-skin-audit', 'skinless');
   }
@@ -88,14 +107,15 @@ async function audit(name, page, file) {
   const skinless = rows.filter(row => !row.skinned);
   result.states[name] = { elements: rows.length, kit: rows.filter(row => row.kit).length, surfaces: rows.filter(row => row.surface).length,
     skinless: skinless.length, native: rows.filter(row => row.native).length, frameless: frameless.length,
-    list: skinless.map(({ path, text, native }) => ({ path, text, native })), framelessList: frameless };
+    plain: rows.filter(row => row.plain).length,
+    list: skinless.map(({ path, text, native, plain }) => ({ path, text, native, plain })), framelessList: frameless };
   result.total.elements += rows.length; result.total.skinless += skinless.length; result.total.native += rows.filter(row => row.native).length;
   if (!result.total.frameless) result.total.frameless = 0;
   result.total.frameless += frameless.length;
   if (frameless.length > 0) console.warn(`NAT-1 frameless boxes in ${name}:`, frameless.map(f => f.selector).join(', '));
   await page.screenshot({ path: join(out, file), type: 'jpeg', quality: 70 });
   captures.push({ name, file });
-  console.log(`${name}: ${rows.length} elements, ${skinless.length} skinless, ${frameless.length} frameless-boxes`);
+  console.log(`${name}: ${rows.length} elements, ${skinless.length} skinless (${rows.filter(row => row.plain).length} default-painted surfaces), ${frameless.length} frameless-boxes`);
 }
 
 async function scene(stateName, tile, extra = {}) {
@@ -185,6 +205,15 @@ await step('ledger', async () => {
   await audit('chronicle', page, 's09-chronicle.jpg');
   await page.locator('.chronicle-select .ui-select-trigger').first().click(); await pause(400);
   await audit('chronicle-select-open', page, 's10-chronicle-select.jpg');
+  await context.close();
+});
+
+// NAT-2: the QA info overlay (the developer switch's key `), over the town at rest.
+await step('qa-overlay', async () => {
+  const { context, page } = await scene('merchant-town', houseTile(town()));
+  await pause(600);
+  await page.keyboard.press('Backquote'); await pause(700);
+  await audit('qa-overlay', page, 's12b-qa-overlay.jpg');
   await context.close();
 });
 
@@ -387,7 +416,7 @@ await step('sheet', async () => {
 });
 
 await browser.close();
-const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'chronicle-factions', 'chronicle-faction-page', 'gallery-desktop', 'gallery-tablet',
+const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'qa-overlay', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'chronicle-factions', 'chronicle-faction-page', 'gallery-desktop', 'gallery-tablet',
   ...(states6 === undefined ? [] : ['war-petition-writ', 'war-petition-refugees', 'rights-decline', 'rights-chapter2', 'chapter2-page']),
   ...(states8 === undefined ? [] : ['wage-ledger', 'chapter3-page']),
   ...(states9 === undefined ? [] : ['reorg-petition', 'factions-chapter4', 'rights-chapter4', 'reorg-ledger', 'chapter4-page'])];

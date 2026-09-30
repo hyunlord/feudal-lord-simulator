@@ -78,6 +78,7 @@ import { BUILD_MENU_COPY } from "./ui/buildMenuCopy.ko";
 import { tutorialTargetCanvasPoint } from "./ui/tutorial/tutorialMapChannel";
 import { readTutorialRecord } from "./ui/tutorial/tutorialStore";
 import { Inspector } from "./ui/InspectorView";
+import { QaOverlay } from "./ui/qa/QaOverlay";
 import { hudVisibility, reduceUi, topModal } from "./ui/stateMachine/uiStateMachine";
 import { useUiStateMachine } from "./ui/stateMachine/useUiStateMachine";
 import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, StatusPill } from "./ui/hud/HudShell";
@@ -417,6 +418,8 @@ export function App() {
     >
       <div
         className="app-interaction-layer"
+        // NAT-2 (QA-013): the open panel slot, so the crisis icons and event chips step left of it (hudShell.css).
+        data-slot={ui.mode === "goals" || ui.mode === "population" || ui.mode === "selection" || ui.mode === "ledger" ? ui.mode : undefined}
         inert={welcomeVisible ? true : undefined}
         aria-hidden={welcomeVisible ? true : undefined}
       >
@@ -439,6 +442,8 @@ export function App() {
           onZoneRadiusChange={radius => setZoneTool(current => current === null ? current : { ...current, radius })}
           selectionOpen={ui.mode === "selection"} onSelectionChange={onCanvasSelection} onPerson={openPerson}
         />
+        {/* NAT-2: the QA info overlay (settings → developer, key `): nothing mounted while it is off. */}
+        <QaOverlay store={store} />
         <PauseVeil paused={speed === 0 && !welcomeVisible && topModal(ui) === null} />
         <div className="hud-time-cluster" role="group" aria-label={SCENARIO_COPY.calendarAria} hidden={!visibility.speed}>
           <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}

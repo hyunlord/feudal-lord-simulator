@@ -100,7 +100,9 @@ export type ObjectRenderItem =
       readonly prop: import("./reorgWorldProps").ReorgProp;
       readonly depth: number;
       readonly anchorTx: number;
-    };
+    }
+  /** NAT-2 the alehouse crowd (alehouseCrowd.ts): one drinker's place, placed among the objects by the walkers' box rule. */
+  | import("./alehouseCrowd").AleDrinkerItem;
 
 export type WorldObjectRenderItem = ObjectRenderItem | PalisadeSegmentRenderItem;
 export type RenderQueueItem = WorldObjectRenderItem | ConstructionSiteRenderItem;

@@ -117,3 +117,5 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
 | 2026-09-30 01:13 | `5ac904f0`* | 판정 아님(본선, 두 장면만) | big-town-x5 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0113-5ac904f0](2026-09-30-0113-5ac904f0.md) |
 | 2026-09-30 02:17 | `bcee3d90`* | 판정 아님(FIX-10 브랜치, 두 장면만; 이 Mac의 다른 일) | big-town-x5 판정 아님 · placement-x3 판정 아님 | [2026-09-30-0217-bcee3d90](2026-09-30-0217-bcee3d90.md) |
 | 2026-09-30 02:25 | `5ac904f0`* | 실패(본선, 두 장면만) | big-town-x5 실패 · placement-x3 실패 | [2026-09-30-0225-5ac904f0](2026-09-30-0225-5ac904f0.md) |
+| 2026-09-30 11:29 | `1168de6c` | 판정 아님 | big-town-x5 판정 아님 · new-game-x3 실패 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-1129-1168de6c](2026-09-30-1129-1168de6c.md) |
+| 2026-09-30 12:07 | `5f63c87f` | 판정 아님 | big-town-x5 실패 · new-game-x3 통과 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-1207-5f63c87f](2026-09-30-1207-5f63c87f.md) |

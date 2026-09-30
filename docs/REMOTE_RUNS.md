@@ -28,7 +28,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 |---|---|
 | 전체 시험 스위트 `npm test` | `npm run remote:test` |
 | 가드레일 `scripts/efficientGrowthRun.ts` | `npm run remote:guardrail` |
-| 브라우저 캡처 스크립트(Playwright를 쓰는 `scripts/*`, 83개) | `scripts/remote/run.sh <세션>-<작업ID> -- <같은 명령>`, 브라우저 시험은 `npm run remote:browser` |
+| 브라우저 캡처 스크립트(Playwright를 쓰는 `scripts/*`, 90개) | `scripts/remote/run.sh <세션>-<작업ID> -- <같은 명령>`, 브라우저 시험은 `npm run remote:browser` |
 
 - **Mac에서 되는 것**: 단일 파일·소규모 시험(`npx tsx --test tests/<파일>.test.ts`), `npm run typecheck`, `npm run lint`, `npm run dev`, `npm run perf:gate`(끊김 판정은 Mac 실제 창), Astra QA.
 - **판별**: macOS이고 `scutil --get LocalHostName`이 있으면 Mac이다. Mac의 `os.hostname()`은 네트워크가 주는 이름(예 `172.25.nate.com`)이라 쓰지 않는다. DGX와 CI는 Linux라 그대로 돈다.

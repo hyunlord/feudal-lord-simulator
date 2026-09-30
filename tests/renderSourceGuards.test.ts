@@ -98,7 +98,8 @@ test("source files keep palette literals and sprite blits behind the Phase 4D bo
     if (relative !== "content/palette.ts" && /#[0-9A-Fa-f]{3,8}\b/.test(source)) {
       violations.push(`${relative}:hex`);
     }
-    if (/\bdrawImage\s*\(/.test(source) && relative !== "render/worldSprite.ts" && relative !== "render/worldAssetScaleCache.ts" && relative !== "render/worldRasterCache.ts") {
+    if (/\bdrawImage\s*\(/.test(source) && relative !== "render/worldSprite.ts" && relative !== "render/worldAssetScaleCache.ts" && relative !== "render/worldRasterCache.ts"
+      && relative !== "render/spriteMipCache.ts") { // NAT-2: the mip levels are shrunk copies, as the scale cache's
       violations.push(`${relative}:drawImage`);
     }
   }

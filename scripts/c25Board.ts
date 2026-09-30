@@ -66,6 +66,7 @@ function drawBoard(state: GameState, zoom: number, dpr: number): string {
   const rasters: Recording[] = [];
   setGroundChunkCacheFactoryForTest(() => createGroundChunkCache(((w: number, h: number) => { const made = recordingCanvas(w, h); rasters.push(made); return made; }) as unknown as Parameters<typeof createGroundChunkCache>[0]));
   drawCurrentCanvasFrame({
+    nowMs: 0, // NAT-2: the same instant for every draw (the wind and the water move on the wall clock)
     canvas: { getBoundingClientRect: () => ({ width, height }) } as unknown as HTMLCanvasElement,
     context: recording.context,
     refs: {

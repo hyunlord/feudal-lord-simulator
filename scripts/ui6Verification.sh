@@ -29,6 +29,8 @@ fi
 if [ "$mode" = "all" ]; then
   mkdir -p "$out/gates/replay" "$out/gates/replay-base" "$out/gates/gamepad"
   step hud-coverage npx tsx scripts/measureHudCoverage.ts "$out/gates/hud-coverage.json" --url "$URL"
+  # NAT-2 (QA-013): no open panel covers the crisis icons or event chips (the 1380 town, three views).
+  step slot-chips npx tsx scripts/slotChipOverlapCheck.ts "$out/gates/slot-chips.json" --url "$URL"
   step tutorial node scripts/tutorialReplay.mjs "$out/gates/replay" --url "$URL"
   step tutorial-base node scripts/tutorialReplay.mjs "$out/gates/replay-base" --url "$BASE_URL"
   step touch-targets node scripts/touchTargetAudit.mjs "$out/gates/touch-targets.json" --url "$URL"

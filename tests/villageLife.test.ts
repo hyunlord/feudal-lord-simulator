@@ -137,13 +137,12 @@ test("Given a town When the object queue is built Then village life joins it by 
   assert.ok(cachedMs <= scanMs);
 });
 
-test("Given the zoom When village life is drawn Then full detail draws all but the toys (from 1.35), 0.6 only washing lines and flying birds, blocks none", () => {
+test("Given the zoom When village life is drawn Then above block detail it draws all but the toys (from 1.35), blocks none (NAT-2: 0.6 by the same rules)", () => {
   const items = villageLife(inSeason(load("four-farms"), 1), { range: full(load("four-farms")) });
   assert.ok(items.some(item => TOYS.has(item.kind)), "the fixture has a toy");
   assert.ok(items.every(item => villageLifeDrawnAt(item, 1) === !TOYS.has(item.kind)));
   assert.ok(items.every(item => villageLifeDrawnAt(item, TOY_MIN_ZOOM)));
   assert.ok(items.every(item => villageLifeDrawnAt(item, 1.34) === !TOYS.has(item.kind)));
-  assert.ok(items.every(item => !villageLifeDrawnAt(item, 0.45)));
-  const simplified = items.filter(item => villageLifeDrawnAt(item, 0.6));
-  assert.ok(simplified.length > 0 && simplified.every(item => item.motion === "flight" || LINES.has(item.kind)), simplified.map(item => item.kind).join(" "));
+  assert.ok(items.every(item => !villageLifeDrawnAt(item, 0.35))); // NAT-2: block detail at zoom <= 0.35
+  assert.ok(items.every(item => villageLifeDrawnAt(item, 0.6) === !TOYS.has(item.kind)));
 });

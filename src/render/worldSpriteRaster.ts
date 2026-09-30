@@ -1,4 +1,5 @@
 import { createTintCanvas, drawCroppedWorldSprite } from "./worldSprite";
+import { markSpriteImmutable } from "./spriteMipCache";
 
 export type RasterizedWorldSprite = Readonly<{
   image: CanvasImageSource;
@@ -13,5 +14,5 @@ export function rasterizeWorldSprite(image: CanvasImageSource, source: Readonly<
   if (canvas === null || context === null || context === undefined) return null;
   const destination = { x: 0, y: 0, width, height };
   drawCroppedWorldSprite(context, image, source, destination, false, true);
-  return { image: canvas, source: destination };
+  return { image: markSpriteImmutable(canvas), source: destination }; // NAT-2: drawn once, so it may be mipped
 }

@@ -15,6 +15,11 @@ function pier(point: TileEdgePoint, radius: number, base: number, height: number
   return { footprint: [a, b, c, d], base, height };
 }
 
+/** A pier ending a gate's cleared arm, as the corner-gate fallback draws them (NAT-2 QA-003 reuses it by the art). */
+export function gatePierSolid(point: TileEdgePoint): StoneWallSolid {
+  return pier(point, 0.15, 0, 18);
+}
+
 export function stoneWallNodeSolids(node: StoneWallNode): readonly StoneWallSolid[] {
   if (node.kind !== "gate") return [pier(node.point, 0.105, 0, 14), pier(node.point, 0.115, 14, 4)];
   const [first, second] = node.neighbors;
@@ -41,7 +46,7 @@ export function stoneWallNodeSolids(node: StoneWallNode): readonly StoneWallSoli
         { footprint: [a, b, c, d], base: 20, height: 4 },
       ];
     }
-    return branches.filter(branch => branch.pier).map(branch => pier(branch.point, 0.15, 0, 18));
+    return branches.filter(branch => branch.pier).map(branch => gatePierSolid(branch.point));
   }
   const solids: StoneWallSolid[] = [];
   for (const branch of gatePortalBranches(node)) {

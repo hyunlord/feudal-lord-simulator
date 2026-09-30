@@ -1,3 +1,4 @@
+import { BLOCKS_MAX_ZOOM } from "./buildingVisualState";
 import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { ResourceType } from "../content/resourceConfig";
 import { resourceEntry, type ResourceCartPileKey } from "../content/resourceCatalog";
@@ -73,9 +74,9 @@ export function drawWalker(
 
   drawWalkerShadow(context, footX, footY, scale);
   const presentation = walkerPresentationFor(walker);
-  // V2: the composed look (sheet, held prop, winter cloak) above the legacy LOD zoom; the legacy actor while its
-  // images load, the procedural sprite below that zoom.
-  const composed = state !== null && zoom > RUNTIME_ACTOR_MIN_ZOOM && drawComposedWalkerWithCart(context, state, walker, presentation, footX, footY, scale, zoom);
+  // V2: the composed look (sheet, held prop, winter cloak) above the block zoom (NAT-2: down to the status view 0.35,
+  // like the buildings and trees); the legacy actor while its images load, the procedural sprite below.
+  const composed = state !== null && zoom > BLOCKS_MAX_ZOOM && drawComposedWalkerWithCart(context, state, walker, presentation, footX, footY, scale, zoom);
   if (!composed && !drawRuntimeActor(context, presentation, footX, footY, scale, zoom, walker.kind === "carter")) {
     drawWalkerHalo(context, footX, footY, scale, transform);
     drawProceduralWalkerSprite(context, {
@@ -96,7 +97,6 @@ export function drawWalker(
   }
 }
 
-const RUNTIME_ACTOR_MIN_ZOOM = 0.7;
 const CLOSE_ZOOM = 1.3;
 // INSTALL-7: the Wave 7 cart loads, one per good and cart axis (NE / SW carts: the `_ne` load; SE / NW: `_nw`); the
 // F0-V Wave 6 pile stands in while they load. Coin rides in the collector's purse, not on a cart. RES-REG: a good with

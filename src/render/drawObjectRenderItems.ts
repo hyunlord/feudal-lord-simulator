@@ -7,6 +7,7 @@ import { drawBuildings } from "./drawBuildings";
 import { drawConstructionSite } from "./drawConstructionSites";
 import { wallBaselinesFor } from "./wallBaselineCache";
 import { drawPalisadeSegment } from "./drawPalisadeSegments";
+import { cornerGateModules } from "./gateCornerModules";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { RenderQueueItem } from "./objectRenderOrder";
 import { getObjectRenderViewMode } from "./objectRenderViewMode";
@@ -25,8 +26,10 @@ import { drawWarProp } from "./warWorldProps";
 import { drawVillageLifeItem } from "./villageLifeDraw";
 import { drawPlagueProp } from "./plagueWorldProps";
 import { drawReorgPropAt } from "./reorgWorldProps";
+import { drawAleDrinker } from "./alehouseCrowd";
 import { drawCountrysideItem } from "./countrysideDraw";
 import { placeWalkers, walkerHiddenBehind } from "./walkerOcclusion";
+import { beginSpriteMipFrame, endSpriteMipFrame } from "./spriteMipCache";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -81,6 +84,8 @@ export function drawObjectRenderItems(
   // SMOOTH-2R: the camera transform, read once for the queue; walls and walkers read it per item before (a new
   // DOMMatrix each, 113 a frame in the 1380 town). Every item restores what it changes, so it holds at each item.
   const transform = context.getTransform?.();
+  // NAT-2 QA-008: the queue's world blits draw from the mip level of their device size (spriteMipCache.ts).
+  if (transform !== undefined) beginSpriteMipFrame(context, Math.hypot(transform.a, transform.b));
   for (const item of queue) {
     probe?.enter(stageForRenderItem(item.kind));
     if (item.kind === "bridge_rail") {
@@ -93,6 +98,10 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "plague_prop") { // UI-8 chapter 3 fresh graves in the churchyard
       if (viewMode === "normal") drawPlagueProp(context, item.prop);
+      continue;
+    }
+    if (item.kind === "ale_drinker") { // NAT-2 the alehouse crowd, on the village life's clock
+      if (viewMode === "normal") drawAleDrinker(context, input.state, item, input.lifeClockMs ?? input.nowMs ?? 0);
       continue;
     }
     if (item.kind === "reorg_prop") { // UI-9 chapter 4 guildhall world prop
@@ -180,6 +189,7 @@ export function drawObjectRenderItems(
     });
     context.restore();
   }
+  endSpriteMipFrame();
 }
 
 /** NAT-1: the selected walker's faint silhouette over the object that hides it. */
@@ -201,5 +211,7 @@ function wallFaceFor(state: DrawObjectRenderItemsInput["state"], item: { readonl
   // same depth the arm drawn after the owner painted its face over the tower; drawn again after that arm, it stays whole.
   const drawsNode = (node: (typeof walls.nodes)[number]): boolean => node.owner === key
     || (node.kind === "tower" && node.materials.includes("stone") && node.neighbors.some(neighbor => unitEdgeKey(node.point, neighbor) === key));
-  return { slice: own ? slice : null, nodes: own ? walls.nodes.filter(drawsNode) : [], pillars: own ? walls.pillars.filter(pillar => pillar.owner === key) : [] };
+  // NAT-2 QA-003: a corner gate's art and its off-axis pier are split between its two arms (gateCornerModules).
+  const nodes = own ? walls.nodes.flatMap(node => cornerGateModules(node, key) ?? (drawsNode(node) ? [node] : [])) : [];
+  return { slice: own ? slice : null, nodes, pillars: own ? walls.pillars.filter(pillar => pillar.owner === key) : [] };
 }

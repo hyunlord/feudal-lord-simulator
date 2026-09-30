@@ -27,8 +27,13 @@ export const HUD_COPY = {
   ledgerDays: (days: number) => `${days}일`,
   ledgerNoLasts: "—",
   /** A row button lights the buildings holding that resource on the map. */
-  ledgerRowLabel: (resource: string) => `${resource} — 지도에서 보관한 곳 밝히기`,
+  ledgerRowLabel: (resource: string) => `${resource} — 보관한 곳을 지도에서 밝히고 아래에 적기`,
   ledgerStore: (name: string, index: number) => `${name} ${index}`,
+  // NAT-2 (QA-006): the stores in one column (how many hold the good); a lit row lists them with their amounts.
+  ledgerHeldIn: "보관",
+  ledgerHeldCount: (stores: number) => stores === 0 ? "—" : `${stores}곳`,
+  ledgerStoresOf: (resource: string) => `${resource} 보관처`,
+  ledgerStoreAmount: (store: string, amount: number) => `${store} · ${amount}`,
   ledgerEmpty: "보관 중인 자원이 없습니다",
   ledgerNoAlerts: "알릴 일이 없습니다",
   ledgerTreasury: "금고",

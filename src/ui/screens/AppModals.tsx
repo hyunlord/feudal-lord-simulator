@@ -88,7 +88,7 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
     {top === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
       settings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /><PlacementPaletteToggle />
         <PresentationToggle preference="eventPause" /><PresentationToggle preference="weatherFx" /><PresentationToggle preference="rainOverlay" />
-        <PresentationToggle preference="developerInfo" />
+        <PresentationToggle preference="developerInfo" /><PresentationToggle preference="qaOverlay" />
         <Button type="button" className="autoplay-toggle season-ledger-auto-setting" aria-pressed={ledgerAuto}
           onPress={() => onLedgerAuto(!ledgerAuto)} variant="toggle">{ledgerAuto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</Button></>} /> : null}
   </>;
