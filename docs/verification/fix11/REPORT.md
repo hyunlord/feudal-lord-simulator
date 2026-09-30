@@ -91,6 +91,8 @@
 
 - 전체 회귀(DGX): `5e8dda5` 4,025/4,026. 실패 하나는 벽시계 예산 시험(`growthStateRecord`)이다. 부하 44~47의 DGX에서 났고 로컬에서는 통과했다. BOT-4 1회차와 같은 까닭이다.
 - 깨끗한 클론 `c832300`(DGX `engine-FIX11-clone-c832300`): 4,026/4,026, typecheck, build 통과.
+- 본선(성능 추이·텔레메트리 스크립트, `src`·`tests` 변경 없음)을 합친 머리 `56e3f83`: 4,025/4,026.
+  - 실패 하나는 렌더의 벽시계 예산 시험(`wave26HouseVariants` 프레임 캐시)이다. DGX 부하 22~29에서 났고, 로컬에서는 8/8 통과한다.
 - 저장 v35: 이행 `v34ToV35`(영주관), 지문 `schemaFingerprint.v35.json`, 고정값 `fixtures/saves/v35/`.
 - 규칙 10 캐시 측정: `scripts/perf/marketSaleCheck.ts`(FX11-13).
 
