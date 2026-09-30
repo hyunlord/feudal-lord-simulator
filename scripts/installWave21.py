@@ -1,13 +1,15 @@
-"""UI-8/UI-9: install the confirmed Wave 21 chapter 3 and chapter 4 illustrations.
+"""UI-8/UI-9/UI-10: install the confirmed Wave 21 chapter 3, 4 and 5 illustrations.
   UI-8: 19 ch3_* runtime images (4 decision cards, 6 chronicle scenes, 8 event illustrations, 1 chapter-3 ending).
   UI-9: 19 ch4_* runtime images (4 decision cards, 6 chronicle scenes, 9 event illustrations + chapter-4 ending).
+  UI-10: 20 ch5_* runtime images (4 decision cards, 6 chronicle scenes, 8 event illustrations, the chapter-5 end and
+  the campaign end).
 No C2PA chunks (asserted); the PNGs stay in assets-inbox; the game loads build-time JPEG derivatives
 (scripts/keyartDerivatives.ts WAVE21_DERIVATIVES → WEB_ART_DERIVATIVES).
 Writes:
   src/ui/wave21ArtManifest.generated.ts   (url, width, height, source for each id)
-  docs/provenance/assets.csv              (one row per image, replacing earlier UI-8 / UI-9 rows)
+  docs/provenance/assets.csv              (one row per image, replacing earlier UI-8 / UI-9 / UI-10 rows)
   docs/provenance/prompts/                (one .txt per image)
-  assets-inbox/INBOX_LEDGER.csv           (installed_by = UI-8/UI-9 for each confirmed file)
+  assets-inbox/INBOX_LEDGER.csv           (installed_by = UI-8/UI-9/UI-10 for each confirmed file)
 Run: python3 scripts/installWave21.py
 """
 import csv
@@ -24,10 +26,13 @@ CANDIDATES = ROOT / "assets-inbox/wave21/candidates-v1"
 REWORK = ROOT / "assets-inbox/wave21/rework-20260927"
 INSTALLED_BY_CH3 = "UI-8"
 INSTALLED_BY_CH4 = "UI-9"
+INSTALLED_BY_CH5 = "UI-10"
 INSTALLED_ON = "2026-09-29"
+INSTALLED_ON_CH5 = "2026-09-30"
 GENERATED_ON = "2026-09-27"
 USED_IN_CH3 = "src/ui/wave21ArtManifest.generated.ts (UI-8: chapter 3 decision cards, event illustrations, chronicle scenes, chapter-end page; build-time web derivatives)"
 USED_IN_CH4 = "src/ui/wave21ArtManifest.generated.ts (UI-9: chapter 4 decision cards, event illustrations, chronicle scenes, chapter-end page; build-time web derivatives)"
+USED_IN_CH5 = "src/ui/wave21ArtManifest.generated.ts (UI-10: chapter 5 decision cards, event illustrations, chronicle scenes, chapter-end and campaign-end pages; build-time web derivatives)"
 MANIFEST = ROOT / "src/ui/wave21ArtManifest.generated.ts"
 C2PA_CHUNKS = {b"caBX", b"jumb", b"c2pa"}
 
@@ -80,6 +85,34 @@ WAVE21_CH4 = [
     ("ch4_event_rebellion_1381",          "candidates-v1/assets/ch4_events/ch4_event_rebellion_1381.png",             "ch4_events"),
     ("ch4_event_autonomy_request",        "candidates-v1/assets/ch4_events/ch4_event_autonomy_request.png",           "ch4_events"),
     ("ch4_ending",                        "candidates-v1/assets/ch4_events/ch4_ending.png",                           "ch4_events"),
+]
+
+# UI-10: Wave 21 chapter 5 art. rework-20260927 where candidates-v1 was superseded, else candidates-v1.
+WAVE21_CH5 = [
+    # Decisions — all four use rework-20260927 (candidates-v1 versions are superseded)
+    ("ch5_decision_autonomy",             "rework-20260927/assets/ch5_records/ch5_decision_autonomy.png",             "ch5_records"),
+    ("ch5_decision_royal_tax_response",   "rework-20260927/assets/ch5_records/ch5_decision_royal_tax_response.png",   "ch5_records"),
+    ("ch5_decision_heir_choice",          "rework-20260927/assets/ch5_records/ch5_decision_heir_choice.png",          "ch5_records"),
+    ("ch5_decision_legacy",               "rework-20260927/assets/ch5_records/ch5_decision_legacy.png",               "ch5_records"),
+    # Chronicles — four from rework-20260927, two from candidates-v1
+    ("ch5_chronicle_charter_sealing",     "rework-20260927/assets/ch5_records/ch5_chronicle_charter_sealing.png",     "ch5_records"),
+    ("ch5_chronicle_city_seal",           "rework-20260927/assets/ch5_records/ch5_chronicle_city_seal.png",           "ch5_records"),
+    ("ch5_chronicle_heir",                "rework-20260927/assets/ch5_records/ch5_chronicle_heir.png",                "ch5_records"),
+    ("ch5_chronicle_legacy_sealing",      "rework-20260927/assets/ch5_records/ch5_chronicle_legacy_sealing.png",      "ch5_records"),
+    ("ch5_chronicle_mayor_election",      "candidates-v1/assets/ch5_records/ch5_chronicle_mayor_election.png",        "ch5_records"),
+    ("ch5_chronicle_last_market",         "candidates-v1/assets/ch5_records/ch5_chronicle_last_market.png",           "ch5_records"),
+    # Events — six from rework-20260927, two from candidates-v1
+    ("ch5_event_mayor_demand",            "rework-20260927/assets/ch5_events/ch5_event_mayor_demand.png",             "ch5_events"),
+    ("ch5_event_charter_sealing",         "rework-20260927/assets/ch5_events/ch5_event_charter_sealing.png",          "ch5_events"),
+    ("ch5_event_city_seal_making",        "rework-20260927/assets/ch5_events/ch5_event_city_seal_making.png",         "ch5_events"),
+    ("ch5_event_royal_tax_envoy",         "rework-20260927/assets/ch5_events/ch5_event_royal_tax_envoy.png",          "ch5_events"),
+    ("ch5_event_succession",              "rework-20260927/assets/ch5_events/ch5_event_succession.png",               "ch5_events"),
+    ("ch5_event_legacy_record",           "rework-20260927/assets/ch5_events/ch5_event_legacy_record.png",            "ch5_events"),
+    ("ch5_event_family_departure",        "candidates-v1/assets/ch5_events/ch5_event_family_departure.png",           "ch5_events"),
+    ("ch5_event_last_market",             "candidates-v1/assets/ch5_events/ch5_event_last_market.png",                "ch5_events"),
+    # The chapter-5 end page and the campaign end page (1920 × 1080), candidates-v1
+    ("ch5_ending",                        "candidates-v1/assets/ch5_events/ch5_ending.png",                           "ch5_events"),
+    ("ch5_campaign_ending",               "candidates-v1/assets/ch5_events/ch5_campaign_ending.png",                  "ch5_events"),
 ]
 
 csv.field_size_limit(sys.maxsize)
@@ -136,8 +169,9 @@ def process_batch(
     new_provenance_paths: set,
     installed_files: set,
     ledger_rows: list,
+    installed_on: str = INSTALLED_ON,
 ) -> None:
-    """Process one wave21 batch (ch3 or ch4), updating images / provenance / installed_files in place."""
+    """Process one wave21 batch (ch3, ch4 or ch5), updating images / provenance / installed_files in place."""
     for asset_id, inbox_rel, subfolder in batch:
         source = ROOT / "assets-inbox/wave21" / inbox_rel
         relative = f"wave21/{inbox_rel}"  # as in INBOX_LEDGER file column
@@ -163,7 +197,7 @@ def process_batch(
 
         runtime_path = str(source.relative_to(ROOT))
         notes = (f"Astra wave21 {asset_id} (confirmed in assets-inbox/INBOX_LEDGER.csv) installed by {installed_by} "
-                 f"on {INSTALLED_ON} from assets-inbox/wave21/{inbox_rel.split('/')[0]}; runtime is the web derivative "
+                 f"on {installed_on} from assets-inbox/wave21/{inbox_rel.split('/')[0]}; runtime is the web derivative "
                  f"{url} made at build time from this received file by scripts/keyartDerivatives.ts "
                  f"(the PNG stays in assets-inbox only; no C2PA chunk).")
         ledger_rows.append({
@@ -192,8 +226,9 @@ def main() -> None:
 
     process_batch(WAVE21_CH3, INSTALLED_BY_CH3, USED_IN_CH3, by_file, images, new_provenance_paths, installed_files, ledger_rows)
     process_batch(WAVE21_CH4, INSTALLED_BY_CH4, USED_IN_CH4, by_file, images, new_provenance_paths, installed_files, ledger_rows)
+    process_batch(WAVE21_CH5, INSTALLED_BY_CH5, USED_IN_CH5, by_file, images, new_provenance_paths, installed_files, ledger_rows, INSTALLED_ON_CH5)
 
-    # Update docs/provenance/assets.csv — replace any UI-8/UI-9 wave21 rows, keep everything else
+    # Update docs/provenance/assets.csv — replace any UI-8/UI-9/UI-10 wave21 rows, keep everything else
     header = next(csv.reader(open(LEDGER, encoding="utf-8")))
     kept = [row for row in csv.DictReader(open(LEDGER, encoding="utf-8"))
             if row["runtimePath"] not in new_provenance_paths]
@@ -214,15 +249,16 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(inbox)
 
-    # Write the generated manifest (ch3 + ch4 combined)
+    # Write the generated manifest (ch3 + ch4 + ch5 combined)
     body = "\n".join(
         f"  {key}: {json.dumps(value, separators=(', ', ': '), ensure_ascii=False)},"
         for key, value in images.items()
     )
     MANIFEST.write_text(
-        "// Generated by scripts/installWave21.py — Wave 21 chapter 3 illustrations (UI-8) and chapter 4 (UI-9):\n"
-        "// decision cards, event illustrations, chronicle scenes and the chapter end pages, loaded as build-time\n"
-        "// JPEG derivatives (scripts/keyartDerivatives.ts); `source` is the received PNG in assets-inbox.\n"
+        "// Generated by scripts/installWave21.py — Wave 21 chapter 3 illustrations (UI-8), chapter 4 (UI-9) and\n"
+        "// chapter 5 (UI-10): decision cards, event illustrations, chronicle scenes, the chapter end pages and the\n"
+        "// campaign end page, loaded as build-time JPEG derivatives (scripts/keyartDerivatives.ts); `source` is the\n"
+        "// received PNG in assets-inbox.\n"
         "export const WAVE21_IMAGES = {\n" + body + "\n} as const;\n"
     )
     print(f"wave21 {len(images)} images, {len(ledger_rows)} provenance rows")
