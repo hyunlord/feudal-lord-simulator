@@ -23,6 +23,10 @@ const MANOR_FROM_FIRST_COTTAGE = { dx: -10, dy: -4 } as const;
 const MANOR_SEARCH_REACH = 16;
 /** MH-1: no building or road within this many tiles of the manor house's footprint when it is placed. */
 const MANOR_CLEARANCE = 5;
+/** MH-1: the wanted site stays this far inside the map, else it is mirrored to the village's other side. */
+const MANOR_EDGE_ROOM = 8;
+/** MH-1: the manor house never stands within this many tiles of the map's edge. */
+const MANOR_MAP_MARGIN = 3;
 
 const COTTAGE_ORIGINS = [
   { tx: 44, ty: 40 },
@@ -186,6 +190,7 @@ export function placeManorSite<State extends GameState>(state: State): State {
       const index = (ty + dy) * state.width + tx + dx;
       const tile = state.tiles[index];
       if (tile === undefined || tile.terrain !== "grass" || zoned.has(index)) return false;
+      if (tx + dx < MANOR_MAP_MARGIN || ty + dy < MANOR_MAP_MARGIN || tx + dx >= state.width - MANOR_MAP_MARGIN || ty + dy >= state.height - MANOR_MAP_MARGIN) return false;
     }
     // MH-1: clear of the village by MANOR_CLEARANCE tiles, so the living core's wall (margin 2–3) and its roads keep
     // their room; the town grows up to it later.
@@ -198,8 +203,12 @@ export function placeManorSite<State extends GameState>(state: State): State {
     return true;
   };
   const cottage = state.buildings.filter(building => building.kind === "house").sort((left, right) => left.ty - right.ty || left.tx - right.tx)[0];
+  // MH-1: north-west of the village, or — where that runs to within MANOR_EDGE_ROOM of the map's edge — the mirrored
+  // side on that axis (a village opened in the map's corner keeps its wall's room on the edge side).
+  const along = (from: number, offset: number, size: number) =>
+    from + offset >= MANOR_EDGE_ROOM && from + offset <= size - MANOR_EDGE_ROOM ? from + offset : from - offset;
   const want = cottage === undefined ? { tx: MANOR_HOUSE_TX, ty: MANOR_HOUSE_TY }
-    : { tx: cottage.tx + MANOR_FROM_FIRST_COTTAGE.dx, ty: cottage.ty + MANOR_FROM_FIRST_COTTAGE.dy };
+    : { tx: along(cottage.tx, MANOR_FROM_FIRST_COTTAGE.dx, state.width), ty: along(cottage.ty, MANOR_FROM_FIRST_COTTAGE.dy, state.height) };
   const sites: { tx: number; ty: number; distance: number }[] = [];
   const low = (value: number) => Math.max(0, value - MANOR_SEARCH_REACH);
   for (let ty = low(want.ty); ty + def.height - 1 <= Math.min(state.height - 1, want.ty + MANOR_SEARCH_REACH); ty += 1) {
