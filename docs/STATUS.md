@@ -1,12 +1,15 @@
 # 현재 상태
 
-갱신: 2026-09-30(UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-30(INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
+- **INSTALL-30~33 합필 집·곡창·결말 그림(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 연쇄 F 3번): [보고서](verification/install30/REPORT.md), 결정 IN30-D1·D2·IN32-D1·IN33-D1(IN30-D1 승인된 합필 그림을 고르기에서 뺌은 판정 대기).
+  - Wave 30 합필 집 90장: Wave 26과 같은 고르기로 c·d·e, 변형마다 새것·낡음·눈·판자. Wave 32 곡창 26장: `barn.png` 대신 a·b·c, 재고 비율로 가득·반·빔(2/3·1/5), 낡음·판자·눈(B의 눈·판자는 재작업판). 캠페인 결말 그림 여섯(INBOX-2s)을 결말별 배경으로.
+  - 관문: 캡처 전후 · 스킨 감사 0 / 1266 · 면적·판·칩·튜토리얼 22 = 22·터치·입력 14/14·포커스 · 깨끗한 클론 `fbb3f319` 3,954/3,954·build. 감사의 청원 대체 경로(칩만 누름)를 고침.
 - **UI-10 5장·막간·캠페인 끝(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 연쇄 F 2번): [보고서](verification/ui10/REPORT.md), 결정 UI10-D1~D6(D1 결말 여섯의 그림 하나·D2 빈 영주관은 판정 대기).
   - Wave 21 5장 20장·Wave 33 막간 다섯(5장에 들어갈 때 불러옴). 결정 카드 넷 + 막간 청원 둘, 후계자 후보(초상·혈통·닮은 점·기록), 시장권 그림 대체 경로 없앰(청원 표가 모든 청원 id를 타입으로 덮음).
   - 사건 여덟·막간 다섯·계절 띠·5장 목표, 1399 새 왕이 세력 탭에. 유산 판정과 결말 여섯, 연대기 책(장 다섯·가문 계보·세력 아홉·유산) + 한국어 글 내보내기(플랫폼 `files.saveText`).
