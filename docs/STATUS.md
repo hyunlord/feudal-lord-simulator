@@ -7,6 +7,15 @@
 
 ## 현재 단계
 
+- **성능 측정 재편: 기다리지 않고 추이로 판정 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 RR3)
+  - perf:gate의 잠금·대기열·조용한 Mac 기다리기를 없앴다. 환경은 수치 옆 기록이다.
+  - ① 개발 서버 텔레메트리 `~/.fls-telemetry/`(`npm run telemetry:report`).
+  - ② 커밋마다 DGX 추이(본선 pre-push가 뒤로 띄움, `npm run remote:trend`).
+  - ③ `npm run perf:ab` A-B-A-B.
+  - ④ [`verification/perf-trend/`](verification/perf-trend/README.md)(`npm run perf:trend`).
+  - 렌더 요청: [텔레메트리 훅](requests/render-telemetry-hooks.md)(줌, 캐시 재생성 이름).
+  - 대기열이 남긴 유효 판정 둘은 `verification/perf-gate/`에 있다(`cf04b4a7` 실패, SMOOTH-2R `00df3324` 실패 — 큰 도시·배치 통과).
+- **보고서 실행 위치 필수·RR2 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션): 보고서의 검증마다 실행 위치(DGX/Mac/둘 다)를 적는다(AGENTS.md 보고 양식). 끊김·메모리는 Mac 실제 창, 처리량 기준선은 DGX(결정 RR2). 최소 줌은 0.5 그대로이고, perf:gate의 0.4 장면은 건너뛴다.
 - **INSTALL-30~33 합필 집·곡창·결말 그림(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 연쇄 F 3번): [보고서](verification/install30/REPORT.md), 결정 IN30-D1·D2·IN32-D1·IN33-D1(IN30-D1 승인된 합필 그림을 고르기에서 뺌은 판정 대기).
   - Wave 30 합필 집 90장: Wave 26과 같은 고르기로 c·d·e, 변형마다 새것·낡음·눈·판자. Wave 32 곡창 26장: `barn.png` 대신 a·b·c, 재고 비율로 가득·반·빔(2/3·1/5), 낡음·판자·눈(B의 눈·판자는 재작업판). 캠페인 결말 그림 여섯(INBOX-2s)을 결말별 배경으로.
   - 관문: 캡처 전후 · 스킨 감사 0 / 1266 · 면적·판·칩·튜토리얼 22 = 22·터치·입력 14/14·포커스 · 깨끗한 클론 `fbb3f319` 3,954/3,954·build. 감사의 청원 대체 경로(칩만 누름)를 고침.

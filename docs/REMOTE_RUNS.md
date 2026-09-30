@@ -11,6 +11,8 @@ npm run remote:guardrail -- --seeds 1,2,3,4,5          # 가드레일(기본 1,2
 npm run remote:browser -- --repeat 10 [tests/x.test.ts ...]  # 브라우저 테스트 N회 연속(기본 Part7)
 npm run remote:perf [-- --baseline perf/baseline-dgx-<sha>.json]   # 인자 없으면 기준선 기록, 있으면 p95 비교
 npm run remote:clone-check                             # 커밋 깨끗한 클론(+LFS) → npm ci·typecheck·test·build
+npm run remote:trend [-- --commits a,b] [--rounds 3]  # 커밋마다 성능 추이(scripts/perf/trendRun.ts) → ~/fls-runs/_trend/<sha>.json
+                                                       #   본선 푸시 때 pre-push가 뒤로 띄운다(FLS_TREND_OFF=1로 끔). 모으기: npm run perf:trend
 scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 명령>   # 임의 명령
 ```
 
@@ -87,7 +89,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
 
 ## 성능 기준선
 - 처리량 관문(p95 비교)은 **DGX 대 DGX로만** 한다. Mac 수치와 섞지 않는다.
-- 끊김 판정은 이것과 따로다. `npm run perf:gate`로 이 Mac의 실제 Chrome 창에서 한다([perf-gate](verification/perf-gate/README.md)). DGX 헤드리스는 소프트웨어 래스터라 끊김 판정에 쓰지 않는다.
+- 끊김 판정과 메모리 측정은 이것과 따로다. `npm run perf:gate`·`scripts/perf/memoryHolders.ts`로 이 Mac의 실제 Chrome 창에서 한다([perf-gate](verification/perf-gate/README.md)). DGX 헤드리스는 소프트웨어 래스터라 끊김 판정에 쓰지 않는다.
 - 기준선은 `perf/baseline-dgx-<sha>.json`이다. `scripts/renderStageBenchmark.mjs`로 한 칸을 3회 × 240 draw 재고(첫 회는 버린다), frameWork·tick·rAF의 중앙·p95를 기록한다. 서버는 DGX Vite 개발 서버(127.0.0.1, 4300~4399)다.
 - 기본 칸은 `lots24:1:still, lots24:1:drag, lots24:2:still, pop176:1:still, newgame:1:still`이다.
 - 비교: `npm run remote:perf -- --baseline perf/baseline-dgx-<sha>.json`을 실행하면 `.remote-runs/<run>/perf/compare.md`에 칸별 p95 비가 나온다.

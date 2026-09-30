@@ -48,6 +48,14 @@ if [ -n "$ranges" ]; then
       echo "pre-push: merge checks failed; push refused (AGENTS.md rule 19)." >&2
       exit 1
     fi
+    # The per-commit trend (docs/verification/perf-trend): the pushed trunk commit is measured on the DGX by a detached
+    # remote run in the background — the push never waits for it. FLS_TREND_OFF=1 skips it.
+    if [ "${FLS_TREND_OFF:-}" != 1 ] && [ -z "${FLS_REMOTE:-}" ] && [ -f "$top/scripts/perf/trendRun.ts" ]; then
+      mkdir -p "$top/.remote-runs"
+      ( cd "$top" && FLS_REMOTE_LABEL=infra-TREND FLS_REMOTE_DETACH=1 nohup scripts/remote/run.sh --task trend --commits "$local_sha" \
+          >> "$top/.remote-runs/trend-push.log" 2>&1 & ) || true
+      echo "pre-push: the trend of ${local_sha%"${local_sha#????????}"} is measured on the DGX in the background (.remote-runs/trend-push.log)" >&2
+    fi
   done
 fi
 

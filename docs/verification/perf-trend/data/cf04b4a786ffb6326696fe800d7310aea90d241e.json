@@ -1,0 +1,218 @@
+{
+ "commit": "cf04b4a786ffb6326696fe800d7310aea90d241e",
+ "subject": "QA-2: Astra observation QA round 02 kept in docs/qa/round02 — its documents, repro/ and tools/ as received and 11 eviden",
+ "committed": "2026-09-30T10:59:29+09:00",
+ "measured": "2026-09-30T13:17:55.437Z",
+ "host": "aitopatom-d6bb",
+ "machine": "dgx-headless",
+ "rounds": 3,
+ "seconds": 45,
+ "scenes": {
+  "big-town-x5": {
+   "runs": 3,
+   "medians": {
+    "scriptMsPerTick": 14.372,
+    "heapAllocKBPerTick": 499.1,
+    "canvasPer1kTicks": 1551.9,
+    "scriptMsPerFrame": 41.569,
+    "taskMsPerFrame": 57.859,
+    "heapAllocMBps": 24.1,
+    "gcPerMin": 99.7,
+    "canvasPerSec": 4.57,
+    "bitmapPerSec": 63.26,
+    "getImageDataPerSec": 0.09,
+    "heapEndMB": 63,
+    "p50": 66.6,
+    "p95": 100.1,
+    "p99": 150,
+    "max": 183.3,
+    "over33PerMin": 897
+   },
+   "values": {
+    "scriptMsPerTick": [
+     14.073,
+     14.372,
+     16.016
+    ],
+    "heapAllocKBPerTick": [
+     499.1,
+     486.5,
+     513.7
+    ],
+    "canvasPer1kTicks": [
+     1586.6,
+     1530.5,
+     1551.9
+    ],
+    "scriptMsPerFrame": [
+     37.426,
+     43,
+     41.569
+    ],
+    "taskMsPerFrame": [
+     52.251,
+     58.887,
+     57.859
+    ],
+    "heapAllocMBps": [
+     24.5,
+     24.1,
+     22.2
+    ],
+    "gcPerMin": [
+     95.8,
+     99.7,
+     102.2
+    ],
+    "canvasPerSec": [
+     4.57,
+     4.47,
+     4.65
+    ],
+    "bitmapPerSec": [
+     65.28,
+     63.26,
+     55.58
+    ],
+    "getImageDataPerSec": [
+     0.09,
+     0.09,
+     0.09
+    ],
+    "heapEndMB": [
+     63,
+     66.6,
+     53.7
+    ],
+    "p50": [
+     50,
+     66.6,
+     66.6
+    ],
+    "p95": [
+     100,
+     116.6,
+     100.1
+    ],
+    "p99": [
+     133.3,
+     150,
+     166.6
+    ],
+    "max": [
+     183.3,
+     183.3,
+     316.7
+    ],
+    "over33PerMin": [
+     931.3,
+     897,
+     873.5
+    ]
+   }
+  },
+  "new-game-x3": {
+   "runs": 3,
+   "medians": {
+    "scriptMsPerTick": 7.858,
+    "heapAllocKBPerTick": 518.5,
+    "canvasPer1kTicks": 145.2,
+    "scriptMsPerFrame": 9.445,
+    "taskMsPerFrame": 26.289,
+    "heapAllocMBps": 22.8,
+    "gcPerMin": 105.1,
+    "canvasPerSec": 2.57,
+    "bitmapPerSec": 3.19,
+    "getImageDataPerSec": 0,
+    "heapEndMB": 39.4,
+    "p50": 16.7,
+    "p95": 66.6,
+    "p99": 66.8,
+    "max": 149.9,
+    "over33PerMin": 753.3
+   },
+   "values": {
+    "scriptMsPerTick": [
+     8.623,
+     7.82,
+     7.858
+    ],
+    "heapAllocKBPerTick": [
+     480.5,
+     518.5,
+     545.9
+    ],
+    "canvasPer1kTicks": [
+     145.2,
+     145,
+     146.1
+    ],
+    "scriptMsPerFrame": [
+     10.364,
+     9.391,
+     9.445
+    ],
+    "taskMsPerFrame": [
+     26.326,
+     26.064,
+     26.289
+    ],
+    "heapAllocMBps": [
+     21.1,
+     22.8,
+     23.8
+    ],
+    "gcPerMin": [
+     113.1,
+     105.1,
+     104
+    ],
+    "canvasPerSec": [
+     2.57,
+     2.57,
+     2.58
+    ],
+    "bitmapPerSec": [
+     3.19,
+     3.19,
+     3.2
+    ],
+    "getImageDataPerSec": [
+     0,
+     0,
+     0
+    ],
+    "heapEndMB": [
+     21.3,
+     39.4,
+     42.2
+    ],
+    "p50": [
+     16.7,
+     16.7,
+     16.7
+    ],
+    "p95": [
+     66.6,
+     66.6,
+     66.5
+    ],
+    "p99": [
+     66.7,
+     66.8,
+     66.8
+    ],
+    "max": [
+     166.6,
+     100,
+     149.9
+    ],
+    "over33PerMin": [
+     753.3,
+     752,
+     774.4
+    ]
+   }
+  }
+ }
+}

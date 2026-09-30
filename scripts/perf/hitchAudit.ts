@@ -14,16 +14,14 @@ import { pipeline } from "node:stream/promises";
 import { join } from "node:path";
 import { analyseRun, type FrameRecord, type MomentMark } from "./hitchTrace";
 import { MODAL, SEASON_TEXT, TUTORIAL_OFF, closeModals as closeSceneModals, hidIdleSeconds, loadChromium, openScene, windowReady, zoomWithKeys, type PageWindow } from "./scenePage";
-import { holderText, takeMachineLock } from "./machineLock";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback?: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] : fallback; };
 const url = flag("url")!; const scene = flag("scene")!; const save = flag("save"); const speed = Number(flag("speed", "1"));
 const seconds = Number(flag("seconds", "180")); const action = flag("action", "none")!; const headed = argv.includes("--headed");
 const machine = flag("machine", headed ? "mac-chrome-window" : "dgx-headless")!; const out = flag("out")!; const traces = flag("traces")!;
-const noProof = argv.includes("--no-proof");
-const zoomOut = Number(flag("zoom-out", "0")); const zoomIn = Number(flag("zoom-in", "0"));   // camera keys before recording
-const lockWait = Number(flag("lock-wait", "30")); const focusWait = Number(flag("focus-wait", "60"));   // minutes · seconds   // the page as a player gets it: no proof port and its render recorders
+const noProof = argv.includes("--no-proof");   // the page as a player gets it: no proof port and its render recorders
+const zoomOut = Number(flag("zoom-out", "0")); const zoomIn = Number(flag("zoom-in", "0"));   // wheel steps before recording
 const noTrace = argv.includes("--no-trace");   // control: the same run without tracing (does tracing cause the hitches?)
 const width = Number(flag("width", "1600")); const height = Number(flag("height", "1000"));
 if (!url || !scene || !out || !traces || ![1, 3, 5].includes(speed)) throw new Error("--url --scene --speed 1|3|5 --out --traces are required");
@@ -35,6 +33,16 @@ const runName = `${machine}-${scene}-x${speed}${action === "none" ? "" : `-${act
 const OBSERVE = `(() => {
   globalThis.__name = globalThis.__name || ((fn) => fn);
   window.__hitch = { marks: [], frames: [], recording: false };
+  // Pixel owners made while recording (a cache rebuilding makes them again): counts only, no stacks — cheap.
+  const made = window.__made = { canvas: 0, offscreen: 0, bitmap: 0, getImageData: 0 };
+  const count = (kind) => { if (window.__hitch.recording) made[kind] += 1; };
+  const createElement = Document.prototype.createElement;
+  Document.prototype.createElement = function (name, options) { const element = createElement.call(this, name, options); if (String(name).toLowerCase() === 'canvas') count('canvas'); return element; };
+  if (globalThis.OffscreenCanvas) { const Offscreen = globalThis.OffscreenCanvas; const Wrapped = function OffscreenCanvas(w, h) { count('offscreen'); return new Offscreen(w, h); }; Wrapped.prototype = Offscreen.prototype; globalThis.OffscreenCanvas = Wrapped;
+    const transfer = Offscreen.prototype.transferToImageBitmap; Offscreen.prototype.transferToImageBitmap = function () { count('bitmap'); return transfer.call(this); }; }
+  const createBitmap = globalThis.createImageBitmap; globalThis.createImageBitmap = function (...args) { count('bitmap'); return createBitmap.apply(this, args); };
+  for (const proto of [CanvasRenderingContext2D.prototype, globalThis.OffscreenCanvasRenderingContext2D && OffscreenCanvasRenderingContext2D.prototype].filter(Boolean)) {
+    const read = proto.getImageData; proto.getImageData = function (...args) { count('getImageData'); return read.apply(this, args); }; }
   const mark = (kind, detail) => { if (!window.__hitch.recording) return; const t = performance.now(); window.__hitch.marks.push({ kind, t, detail }); performance.mark('hitch:' + kind); };
   window.__hitchMark = mark;
   // SMOOTH-2R: Chrome's Long Animation Frame entries (cheap, no tracing) say what a long frame spent its time on in
@@ -66,24 +74,26 @@ const OBSERVE = `(() => {
 })();`;
 
 async function main() {
-  // One measurement at a time on this machine (scripts/perf/machineLock.ts); inside perf:gate the gate holds it.
-  const lock = await takeMachineLock(`hitchAudit ${scene} x${speed}`, lockWait, holder => console.error(`측정 잠금을 기다린다: ${holderText(holder)}`));
-  if (!lock.held) { console.error(`판정 아님: 다른 측정이 돌고 있다 — ${holderText(lock.holder)}`); process.exitCode = 3; return; }
   const chromium = await loadChromium();
   const browser = await chromium.launch({ channel: "chrome", headless: !headed,
     args: headed ? [`--window-size=${width},${height + 90}`, "--window-position=40,40"] : [] });
   const context = await browser.newContext(headed ? { viewport: null } : { viewport: { width, height }, deviceScaleFactor: 1 });
   await context.addInitScript(TUTORIAL_OFF); await context.addInitScript(OBSERVE);
   const page = await context.newPage();
+  // Noise-resistant metrics beside the frames (perf:ab, the per-commit trend): Chrome's own script / task / layout time
+  // and the JS heap sampled every 250 ms from outside the page (allocation = the rises, a GC = a fall of 1 MB or more).
+  const cdp = await context.newCDPSession(page); await cdp.send("Performance.enable");
+  const cdpMetrics = async () => Object.fromEntries(((await cdp.send("Performance.getMetrics")).metrics as { name: string; value: number }[]).map(metric => [metric.name, metric.value]));
+  const heap = { samples: 0, rises: 0, falls: 0, gcs: 0, last: null as number | null, sampler: null as ReturnType<typeof setInterval> | null };
   const errors: string[] = []; page.on("pageerror", (error: Error) => errors.push(error.message));
   const load0 = Date.now();
   await openScene(page, { url, speed, proof: !noProof, ...(save === undefined ? {} : { save }) });
   const closeModals = () => closeSceneModals(page);
   const loadSeconds = (Date.now() - load0) / 1000;
   await page.waitForTimeout(1_000);
+  let windowAtStart: string | null = null;
   if (headed) {
-    const notReady = await windowReady(browser, page, focusWait);
-    if (notReady !== null) { console.error(`판정 아님: ${notReady}`); await browser.close(); process.exitCode = 3; return; }
+    windowAtStart = await windowReady(browser, page, 0);   // brought to front; its state is recorded, never waited for
   }
   const zoomOf = () => page.evaluate(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__?.diagnosis().camera.zoom ?? null);
   const zoomBefore: number | null = await zoomOf();
@@ -95,6 +105,11 @@ async function main() {
     categories: ["devtools.timeline", "disabled-by-default-devtools.timeline", "disabled-by-default-v8.cpu_profiler", "blink.user_timing", "v8.execute", "v8"] });
   await page.waitForTimeout(2_000);   // tracing's own start-up stall stays out of the recorded frames
   // The recorder: every rAF's timestamp, and every 250 ms the proof port's tick, chapter, season and weather.
+  const metricsStart = await cdpMetrics();
+  const tickStart: number | null = await page.evaluate(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__?.state().tick ?? null);
+  heap.sampler = setInterval(() => { cdp.send("Runtime.getHeapUsage").then((usage: { usedSize: number }) => {
+    if (heap.last !== null) { const change = usage.usedSize - heap.last; if (change > 0) heap.rises += change; else if (change < -1e6) { heap.falls -= change; heap.gcs += 1; } }
+    heap.last = usage.usedSize; heap.samples += 1; }, () => {}); }, 250);
   const startMarkPageMs: number = await page.evaluate((seasonText: string) => {
     const hitch = (window as unknown as PageWindow).__hitch; hitch.recording = true;
     const proof = (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__;
@@ -165,6 +180,8 @@ async function main() {
       await page.getByRole("button", { name: `${speed}배속`, exact: true }).click({ timeout: 2_000 }).catch(() => {});
     }
   }
+  clearInterval(heap.sampler!); const metricsEnd = await cdpMetrics();
+  const madeCounts = await page.evaluate(() => (window as unknown as PageWindow).__made) as Record<string, number>;
   const recorded = await page.evaluate(() => { const hitch = (window as unknown as PageWindow).__hitch; hitch.recording = false; clearInterval(hitch.poll);
     const state = (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__?.state();
     return { frames: hitch.frames, marks: hitch.marks, loaf: hitch.loaf ?? [], tick: state?.tick ?? null, population: state?.population ?? null, buildings: state?.buildings.length ?? null,
@@ -172,6 +189,19 @@ async function main() {
   if (!noTrace) await browser.stopTracing();
   await browser.close();
   const recordSeconds = ((recorded.frames.at(-1)?.t ?? 0) - (recorded.frames[0]?.t ?? 0)) / 1000;
+  const frameCount = Math.max(1, recorded.frames.length - 1);
+  const perFrame = (name: string) => Math.round((((metricsEnd[name] ?? 0) - (metricsStart[name] ?? 0)) * 1000 / frameCount) * 1000) / 1000;
+  const perSecond = (value: number) => Math.round((value / Math.max(1, recordSeconds)) * 100) / 100;
+  const metrics = { scriptMsPerFrame: perFrame("ScriptDuration"), taskMsPerFrame: perFrame("TaskDuration"), layoutMsPerFrame: perFrame("LayoutDuration"),
+    styleMsPerFrame: perFrame("RecalcStyleDuration"), heapAllocMBps: Math.round((heap.rises / 1e6 / Math.max(1, recordSeconds)) * 10) / 10,
+    gcPerMin: Math.round((heap.gcs / Math.max(1 / 60, recordSeconds / 60)) * 10) / 10, heapEndMB: heap.last === null ? null : Math.round(heap.last / 1e5) / 10,
+    canvasPerSec: perSecond(madeCounts.canvas ?? 0), offscreenPerSec: perSecond(madeCounts.offscreen ?? 0), bitmapPerSec: perSecond(madeCounts.bitmap ?? 0),
+    getImageDataPerSec: perSecond(madeCounts.getImageData ?? 0), heapSamples: heap.samples,
+    // Per game tick (with the proof port): a busy machine runs fewer ticks, so these hold still where per-second ones fall.
+    ticks: tickStart === null || recorded.tick === null ? null : recorded.tick - tickStart,
+    scriptMsPerTick: tickStart === null || recorded.tick === null || recorded.tick <= tickStart ? null : Math.round((((metricsEnd.ScriptDuration ?? 0) - (metricsStart.ScriptDuration ?? 0)) * 1000 / (recorded.tick - tickStart)) * 1000) / 1000,
+    heapAllocKBPerTick: tickStart === null || recorded.tick === null || recorded.tick <= tickStart ? null : Math.round(heap.rises / 1e3 / (recorded.tick - tickStart) * 10) / 10,
+    canvasPer1kTicks: tickStart === null || recorded.tick === null || recorded.tick <= tickStart ? null : Math.round(((madeCounts.canvas ?? 0) + (madeCounts.offscreen ?? 0)) * 1000 / (recorded.tick - tickStart) * 10) / 10 };
   const hidIdleAtEnd = headed ? hidIdleSeconds() : null;   // < recordSeconds: a person touched the Mac during the run
 
   // The page's record first, beside the trace: an analysis that fails can be redone from these two files.
@@ -180,7 +210,7 @@ async function main() {
   if (!noTrace) { await pipeline(createReadStream(rawTrace), createGzip({ level: 6 }), createWriteStream(gz)); rmSync(rawTrace); }
   const analysis = await analyseRun({ frames: recorded.frames as FrameRecord[], marks: recorded.marks as MomentMark[], startMarkPageMs, tracePath: noTrace ? null : gz });
   const summary = { run: runName, machine, scene, speed, action, seconds, url, save: save ?? null, loadSeconds, startMarkPageMs,
-    zoom: { before: zoomBefore, recorded: zoomRecorded, keys: { out: zoomOut, in: zoomIn } }, input: { hidIdleAtEnd, recordSeconds },
+    zoom: { before: zoomBefore, recorded: zoomRecorded, keys: { out: zoomOut, in: zoomIn } }, input: { hidIdleAtEnd, recordSeconds }, windowAtStart, metrics,
     page: { dpr: recorded.dpr, viewport: recorded.viewport, tickEnd: recorded.tick, population: recorded.population, buildings: recorded.buildings },
     trace: noTrace ? null : { file: gz, bytes: statSync(gz).size }, moments: recorded.marks, actions: [...new Set(actionLog)], errors,
     longAnimationFrames: recorded.loaf,
