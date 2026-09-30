@@ -11,7 +11,8 @@ const placements = artPlacements();
 test("R0-2: every building kind the game draws has its finished art checked (the retired wheat farm draws nothing)", () => {
   const kinds = new Set(placements.map(placement => placement.kind));
   // INSTALL-3 painted the malt kiln and CLOTH-UI the cloth chain's five (Wave 3, Wave 2's farm_pastoral): all are checked.
-  const noArtYet: readonly string[] = ["wheat_farm"];
+  // FIX-11 (MH-3): the manor house's Wave 12 pictures wait in the inbox for render to install.
+  const noArtYet: readonly string[] = ["wheat_farm", "manor_house"];
   const expected = (Object.keys(BUILDING_CONFIG_BY_KIND) as BuildingKind[]).filter(kind => !noArtYet.includes(kind));
   assert.deepEqual(expected.filter(kind => !kinds.has(kind)), []);
   assert.ok(placements.length >= 58, `${placements.length} arts`);

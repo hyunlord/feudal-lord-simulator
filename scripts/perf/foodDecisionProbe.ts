@@ -9,6 +9,7 @@ import { measuredFoodDecision } from "../../src/engine/autoplayFoodMeasuredDecis
 import { annualWheatNeed, arableSupplyShort, untendedArableCells } from "../../src/engine/autoplayArable";
 import { foodEfficiencyMetrics } from "../../src/engine/autoplayFoodEfficiency";
 import { foodFacilityCount, foodFacilityWithinLimit } from "../../src/engine/autoplayFoodLimits";
+import { expectedAnnualWheat, grainReserveOutlook, realisedHarvestPermille } from "../../src/zones/arableOutlook";
 import { runPhase19NaturalGrowth } from "../phase19NaturalGrowth";
 
 const [archetypeId = "core:coastal_port", seedText = "3", firstText = "1362", lastText = "1372"] = process.argv.slice(2);
@@ -38,6 +39,8 @@ try {
       window: { full: sample.fullWindow, produced: sample.breadProduced, requested: sample.requestedBread, consumed: sample.consumedBread, exported: sample.breadExported,
         wheatProduced: sample.wheatProduced, wheatConsumed: sample.wheatConsumed, starved: sample.rawStarvedTicks, millTicks: sample.eligibleMillTicks },
       arable: (state.zones ?? []).filter(zone => zone.kind === "arable").reduce((sum, zone) => sum + zone.membership.length, 0),
+      sites: state.constructionSites.map(site => site.kind), coin: state.treasuryCoin, expected: expectedAnnualWheat(state),
+      realised: realisedHarvestPermille(state), harvest: state.harvestRecord ?? null, reserve: grainReserveOutlook(state),
     })}\n`);
   }, additionalAcceptance: state => stateCalendar(state).year > last });
 } catch (error) { if (!(error instanceof Stop)) throw error; }

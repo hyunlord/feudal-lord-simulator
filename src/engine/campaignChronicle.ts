@@ -79,15 +79,21 @@ function line(record: HistoryRecord, year: (tick: number) => number): ChronicleB
     ...(record.illustration === undefined ? {} : { illustration: record.illustration }), ...(record.snapshotId === undefined ? {} : { snapshotId: record.snapshotId }) };
 }
 
-function bookChapter(state: GameState, page: ChronicleEntry, closed: boolean, year: (tick: number) => number): ChronicleBookChapter {
+/**
+ * FIX-11 (FX11-8, FX11-9): a chapter of the book is its page as the chapter wrote it — from FIX-11 on, every decision of
+ * the chapter (a page written before keeps its quotes, as the chapter page screen shows them). Its first year is the
+ * year of the tick the chapter began (`fromTick`), not a planned one.
+ */
+function bookChapter(state: GameState, page: ChronicleEntry, closed: boolean, year: (tick: number) => number, fromTick?: number): ChronicleBookChapter {
   const records = new Map((state.history?.records ?? []).map(record => [record.id, record]));
   const events = page.events.flatMap(event => { const record = records.get(event.recordId); return record === undefined ? [] : [line(record, year)]; });
   const decisions = page.decisions.flatMap(quote => {
     const record = records.get(quote.recordId);
     return record === undefined ? [] : [{ ...line(record, year), chosen: quote.chosen, alternatives: quote.alternatives }];
   });
-  return { chapter: page.chapter, title: CHAPTER_TITLES[page.chapter] ?? "", fromYear: page.fromYear, toYear: page.toYear, closed,
-    summary: chapterSummaryLine({ fromYear: page.fromYear, toYear: page.toYear, populationStart: page.stats.populationStart,
+  const fromYear = fromTick !== undefined ? year(fromTick) : page.fromYear;
+  return { chapter: page.chapter, title: CHAPTER_TITLES[page.chapter] ?? "", fromYear, toYear: page.toYear, closed,
+    summary: chapterSummaryLine({ fromYear, toYear: page.toYear, populationStart: page.stats.populationStart,
       populationEnd: page.stats.populationEnd, treasury: page.stats.treasury }), events, decisions };
 }
 
@@ -97,8 +103,9 @@ export function campaignChronicle(state: GameState): CampaignChronicle {
   const year = (tick: number) => calendar(tick, startYear).year;
   const politics = state.politics;
   const ends = politics?.chapterEnds ?? [];
-  const chapters = ends.map(end => bookChapter(state, end.chronicle, true, year));
-  if (politics !== undefined && chapterEnd(state, politics.chapter.number) === null) chapters.push(bookChapter(state, chronicleEntry(state), false, year));
+  const chapters = ends.map((end, index) => bookChapter(state, end.chronicle, true, year, index === 0 ? 0 : ends[index - 1]!.tick));
+  if (politics !== undefined && chapterEnd(state, politics.chapter.number) === null)
+    chapters.push(bookChapter(state, chronicleEntry(state), false, year, politics.chapter.startTick));
 
   // The family tree: everyone of the lord's houses (the manor's own), by house and generation.
   const everyone = [...(state.persons?.people ?? []), ...(state.persons?.past ?? [])];

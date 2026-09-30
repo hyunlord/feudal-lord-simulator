@@ -41,11 +41,11 @@ export async function closeModals(page: any) {
 }
 
 /**
- * A headed run needs the window in front and focused: Chrome stops drawing a covered window (visibilityState "hidden"),
- * so a run behind another window records a paused game. Brings the page to front (and, best effort, Chrome's process
- * to the front of macOS), then waits up to `seconds` for a visible, focused page. Null when ready, else the reason.
+ * Brings a headed run's window to front (and, best effort, Chrome's process to the front of macOS), then reads once
+ * whether it is visible, focused and drawing. Nothing waits for it (user decision 2026-09-30): the state is recorded
+ * with the run. Null when all three hold, else what did not.
  */
-export async function windowReady(browser: any, page: any, seconds: number): Promise<string | null> {
+export async function windowReady(browser: any, page: any, _seconds = 0): Promise<string | null> {
   await page.bringToFront().catch(() => {});
   try {
     const session = await browser.newBrowserCDPSession();
@@ -53,17 +53,10 @@ export async function windowReady(browser: any, page: any, seconds: number): Pro
     const pid = processes.find(process => process.type === "browser")?.id;
     if (pid !== undefined) spawnSync("osascript", ["-e", `tell application "System Events" to set frontmost of (first process whose unix id is ${pid}) to true`], { timeout: 5_000 });
   } catch { /* the window may still come to front by itself */ }
-  const deadline = Date.now() + seconds * 1000; let told = false; let state = { visible: false, focus: false };
-  while (Date.now() < deadline) {
-    state = await page.evaluate(() => new Promise<{ visible: boolean; focus: boolean }>(resolve => {
-      // Drawing too: at least 20 frames in half a second (a sleeping display or another Space draws none).
-      let frames = 0; const count = () => { frames += 1; requestAnimationFrame(count); }; requestAnimationFrame(count);
-      setTimeout(() => resolve({ visible: document.visibilityState === "visible" && frames >= 20, focus: document.hasFocus() }), 500); }));
-    if (state.visible && state.focus) return null;
-    if (!told) { console.error(`창을 기다린다: ${state.visible ? "보이지만 초점이 없다" : "가려져 있다"} — 측정용 Chrome 창을 앞으로 가져와 클릭해 주세요(${seconds}초).`); told = true; }
-    await page.waitForTimeout(1_000);
-  }
-  return state.visible ? `창에 초점이 없다(${seconds}초 기다림)` : `창이 가려졌거나 그려지지 않는다(${seconds}초 기다림)`;
+  const state = await page.evaluate(() => new Promise<{ visible: boolean; focus: boolean }>(resolve => {
+    let frames = 0; const count = () => { frames += 1; requestAnimationFrame(count); }; requestAnimationFrame(count);
+    setTimeout(() => resolve({ visible: document.visibilityState === "visible" && frames >= 20, focus: document.hasFocus() }), 500); }));
+  return state.visible && state.focus ? null : state.visible ? "창에 초점 없음" : "창이 가려졌거나 그려지지 않음";
 }
 
 /** Seconds since the last real (hardware) keyboard or mouse input on this Mac; null elsewhere. Playwright's own input

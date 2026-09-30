@@ -1,0 +1,947 @@
+{
+ "archetypeId": "core:chalk_downs",
+ "seed": 1,
+ "coastal": false,
+ "campaignEnded": true,
+ "ending": "free_borough",
+ "scores": {
+  "town": 100,
+  "family": 41,
+  "church": 69,
+  "parts": {
+   "town": {
+    "people": 25,
+    "houses": 20,
+    "cloth": 15,
+    "rights": 15,
+    "autonomy": 20,
+    "legacy": 25
+   },
+   "family": {
+    "house": 10,
+    "generations": 16,
+    "heir": 5,
+    "stayed": 0,
+    "relations": 0,
+    "treasury": 10,
+    "legacy": 0
+   },
+   "church": {
+    "church": 20,
+    "chapels": 4,
+    "bishop": 15,
+    "priest": 10,
+    "relief": 5,
+    "rebuilt": 15,
+    "legacy": 0
+   }
+  }
+ },
+ "chapterEnds": [
+  {
+   "chapter": 1,
+   "year": 1322
+  },
+  {
+   "chapter": 2,
+   "year": 1341
+  },
+  {
+   "chapter": 3,
+   "year": 1362
+  },
+  {
+   "chapter": 4,
+   "year": 1382
+  },
+  {
+   "chapter": 5,
+   "year": 1450
+  }
+ ],
+ "final": {
+  "year": 1450,
+  "chapter": 5,
+  "population": 768,
+  "peakPopulation": 768,
+  "treasury": 138557,
+  "abandoned": false,
+  "l4": 24
+ },
+ "raid": null,
+ "plague": {
+  "populationAtArrival": 768,
+  "deathPermille": 479,
+  "dead": 367,
+  "second": {
+   "deathPermille": 120,
+   "dead": 77
+  }
+ },
+ "failures": [],
+ "decades": [
+  {
+   "year": 1310,
+   "population": 490,
+   "treasury": 1429,
+   "chapter": 1,
+   "l4": 0
+  },
+  {
+   "year": 1320,
+   "population": 528,
+   "treasury": 4888,
+   "chapter": 1,
+   "l4": 0
+  },
+  {
+   "year": 1330,
+   "population": 528,
+   "treasury": 496,
+   "chapter": 2,
+   "l4": 0
+  },
+  {
+   "year": 1340,
+   "population": 768,
+   "treasury": 2980,
+   "chapter": 2,
+   "l4": 24
+  },
+  {
+   "year": 1350,
+   "population": 411,
+   "treasury": 6502,
+   "chapter": 3,
+   "l4": 20
+  },
+  {
+   "year": 1360,
+   "population": 627,
+   "treasury": 8965,
+   "chapter": 3,
+   "l4": 24
+  },
+  {
+   "year": 1370,
+   "population": 768,
+   "treasury": 21561,
+   "chapter": 4,
+   "l4": 24
+  },
+  {
+   "year": 1380,
+   "population": 768,
+   "treasury": 39500,
+   "chapter": 4,
+   "l4": 23
+  },
+  {
+   "year": 1390,
+   "population": 768,
+   "treasury": 35702,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1400,
+   "population": 768,
+   "treasury": 51880,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1410,
+   "population": 768,
+   "treasury": 69251,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1420,
+   "population": 768,
+   "treasury": 86729,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1430,
+   "population": 768,
+   "treasury": 103920,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1440,
+   "population": 768,
+   "treasury": 121394,
+   "chapter": 5,
+   "l4": 24
+  },
+  {
+   "year": 1450,
+   "population": 768,
+   "treasury": 138302,
+   "chapter": 5,
+   "l4": 24
+  }
+ ],
+ "years": [
+  {
+   "year": 1300,
+   "l4Min": 0,
+   "populationMin": 28
+  },
+  {
+   "year": 1301,
+   "l4Min": 0,
+   "populationMin": 56
+  },
+  {
+   "year": 1302,
+   "l4Min": 0,
+   "populationMin": 66
+  },
+  {
+   "year": 1303,
+   "l4Min": 0,
+   "populationMin": 94
+  },
+  {
+   "year": 1304,
+   "l4Min": 0,
+   "populationMin": 126
+  },
+  {
+   "year": 1305,
+   "l4Min": 0,
+   "populationMin": 263
+  },
+  {
+   "year": 1306,
+   "l4Min": 0,
+   "populationMin": 269
+  },
+  {
+   "year": 1307,
+   "l4Min": 0,
+   "populationMin": 345
+  },
+  {
+   "year": 1308,
+   "l4Min": 0,
+   "populationMin": 399
+  },
+  {
+   "year": 1309,
+   "l4Min": 0,
+   "populationMin": 452
+  },
+  {
+   "year": 1310,
+   "l4Min": 0,
+   "populationMin": 490
+  },
+  {
+   "year": 1311,
+   "l4Min": 0,
+   "populationMin": 499
+  },
+  {
+   "year": 1312,
+   "l4Min": 0,
+   "populationMin": 499
+  },
+  {
+   "year": 1313,
+   "l4Min": 0,
+   "populationMin": 512
+  },
+  {
+   "year": 1314,
+   "l4Min": 0,
+   "populationMin": 520
+  },
+  {
+   "year": 1315,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1316,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1317,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1318,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1319,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1320,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1321,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1322,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1323,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1324,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1325,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1326,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1327,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1328,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1329,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1330,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1331,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1332,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1333,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1334,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1335,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1336,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1337,
+   "l4Min": 23,
+   "populationMin": 758
+  },
+  {
+   "year": 1338,
+   "l4Min": 23,
+   "populationMin": 758
+  },
+  {
+   "year": 1339,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1340,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1341,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1342,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1343,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1344,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1345,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1346,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1347,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1348,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1349,
+   "l4Min": 0,
+   "populationMin": 406
+  },
+  {
+   "year": 1350,
+   "l4Min": 20,
+   "populationMin": 411
+  },
+  {
+   "year": 1351,
+   "l4Min": 20,
+   "populationMin": 431
+  },
+  {
+   "year": 1352,
+   "l4Min": 22,
+   "populationMin": 459
+  },
+  {
+   "year": 1353,
+   "l4Min": 24,
+   "populationMin": 487
+  },
+  {
+   "year": 1354,
+   "l4Min": 24,
+   "populationMin": 507
+  },
+  {
+   "year": 1355,
+   "l4Min": 24,
+   "populationMin": 527
+  },
+  {
+   "year": 1356,
+   "l4Min": 24,
+   "populationMin": 547
+  },
+  {
+   "year": 1357,
+   "l4Min": 24,
+   "populationMin": 567
+  },
+  {
+   "year": 1358,
+   "l4Min": 24,
+   "populationMin": 587
+  },
+  {
+   "year": 1359,
+   "l4Min": 24,
+   "populationMin": 607
+  },
+  {
+   "year": 1360,
+   "l4Min": 24,
+   "populationMin": 627
+  },
+  {
+   "year": 1361,
+   "l4Min": 24,
+   "populationMin": 575
+  },
+  {
+   "year": 1362,
+   "l4Min": 23,
+   "populationMin": 585
+  },
+  {
+   "year": 1363,
+   "l4Min": 23,
+   "populationMin": 736
+  },
+  {
+   "year": 1364,
+   "l4Min": 24,
+   "populationMin": 757
+  },
+  {
+   "year": 1365,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1366,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1367,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1368,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1369,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1370,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1371,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1372,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1373,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1374,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1375,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1376,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1377,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1378,
+   "l4Min": 23,
+   "populationMin": 768
+  },
+  {
+   "year": 1379,
+   "l4Min": 23,
+   "populationMin": 768
+  },
+  {
+   "year": 1380,
+   "l4Min": 23,
+   "populationMin": 768
+  },
+  {
+   "year": 1381,
+   "l4Min": 23,
+   "populationMin": 768
+  },
+  {
+   "year": 1382,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1383,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1384,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1385,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1386,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1387,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1388,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1389,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1390,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1391,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1392,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1393,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1394,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1395,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1396,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1397,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1398,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1399,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1400,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1401,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1402,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1403,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1404,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1405,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1406,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1407,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1408,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1409,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1410,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1411,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1412,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1413,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1414,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1415,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1416,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1417,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1418,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1419,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1420,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1421,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1422,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1423,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1424,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1425,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1426,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1427,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1428,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1429,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1430,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1431,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1432,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1433,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1434,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1435,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1436,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1437,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1438,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1439,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1440,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1441,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1442,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1443,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1444,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1445,
+   "l4Min": 23,
+   "populationMin": 767
+  },
+  {
+   "year": 1446,
+   "l4Min": 23,
+   "populationMin": 767
+  },
+  {
+   "year": 1447,
+   "l4Min": 23,
+   "populationMin": 767
+  },
+  {
+   "year": 1448,
+   "l4Min": 23,
+   "populationMin": 767
+  },
+  {
+   "year": 1449,
+   "l4Min": 24,
+   "populationMin": 768
+  },
+  {
+   "year": 1450,
+   "l4Min": 24,
+   "populationMin": 768
+  }
+ ],
+ "elapsedSeconds": 2410.4
+}

@@ -26,7 +26,9 @@ const STANDARD: LegacyAnswers = { [ROYAL_TAX_PETITION_ID]: "accept", [HEIR_CHOIC
 export const LEGACY_ENDING_ANSWERS: Readonly<Record<LegacyEndingId, LegacyAnswers>> = {
   free_borough: STANDARD,
   house_remembered: { ...STANDARD, [LEGACY_CHOICE_PETITION_ID]: "accept_with_price" },
-  merchants_chantry: { ...STANDARD, [LEGACY_CHOICE_PETITION_ID]: "refuse", [CHURCH_REBUILDING_PETITION_ID]: "refuse" },
+  // FIX-11 (FX11-2): with the death table's tail the refused legacy's church score passed the town's (a 74–74 tie
+  // before); the chantry is the town left without a chosen legacy (as chapterFiveLegacy L9).
+  merchants_chantry: { ...STANDARD, [LEGACY_CHOICE_PETITION_ID]: undefined, [CHURCH_REBUILDING_PETITION_ID]: "refuse" },
   house_seat: { ...STANDARD, [BOROUGH_AUTONOMY_PETITION_ID]: "refuse", [LEGACY_CHOICE_PETITION_ID]: "accept_with_price" },
   pilgrim_town: { ...STANDARD, [BOROUGH_AUTONOMY_PETITION_ID]: "refuse", [LEGACY_CHOICE_PETITION_ID]: "refuse", [CHURCH_REBUILDING_PETITION_ID]: "accept" },
   lords_town: { [ROYAL_TAX_PETITION_ID]: "refuse", [HEIR_CHOICE_PETITION_ID]: "refuse", [BOROUGH_AUTONOMY_PETITION_ID]: "refuse", [CHURCH_REBUILDING_PETITION_ID]: "refuse" },

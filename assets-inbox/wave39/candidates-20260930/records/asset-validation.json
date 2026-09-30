@@ -1,0 +1,1267 @@
+{
+  "assets": 58,
+  "csvRows": 58,
+  "csvColumns": 36,
+  "csvRoundtrip": true,
+  "validation": [
+    {
+      "assetId": "rain_streak_4px_1px_faint-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        4
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 95,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_4px_1px_strong-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        4
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 175,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_4px_2px_faint-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        6
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 95,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_4px_2px_strong-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        5
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 175,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_7px_1px_faint-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        4
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 95,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_7px_1px_strong-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        5
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 175,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_7px_2px_faint-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        6
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 95,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_7px_2px_strong-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        8
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 175,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_10px_1px_faint-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        6
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 95,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_10px_1px_strong-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        6
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 175,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_10px_2px_faint-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        12
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 95,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_streak_10px_2px_strong-v1",
+      "dimensions": [
+        16,
+        24
+      ],
+      "frameDimensions": [
+        16,
+        24
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        10
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 175,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_splash_soil_small-v1",
+      "dimensions": [
+        64,
+        12
+      ],
+      "frameDimensions": [
+        16,
+        12
+      ],
+      "frames": 4,
+      "nonemptyPixelsPerFrame": [
+        12,
+        17,
+        18,
+        4
+      ],
+      "distinctFramePixelHashes": 4,
+      "minAlpha": 0,
+      "maxAlpha": 170,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_splash_soil_large-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        24,
+        16
+      ],
+      "frames": 4,
+      "nonemptyPixelsPerFrame": [
+        18,
+        42,
+        28,
+        6
+      ],
+      "distinctFramePixelHashes": 4,
+      "minAlpha": 0,
+      "maxAlpha": 170,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_splash_stone_small-v1",
+      "dimensions": [
+        64,
+        12
+      ],
+      "frameDimensions": [
+        16,
+        12
+      ],
+      "frames": 4,
+      "nonemptyPixelsPerFrame": [
+        8,
+        18,
+        12,
+        2
+      ],
+      "distinctFramePixelHashes": 4,
+      "minAlpha": 0,
+      "maxAlpha": 170,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_splash_stone_large-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        24,
+        16
+      ],
+      "frames": 4,
+      "nonemptyPixelsPerFrame": [
+        18,
+        43,
+        34,
+        4
+      ],
+      "distinctFramePixelHashes": 4,
+      "minAlpha": 0,
+      "maxAlpha": 170,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_splash_roof_small-v1",
+      "dimensions": [
+        64,
+        12
+      ],
+      "frameDimensions": [
+        16,
+        12
+      ],
+      "frames": 4,
+      "nonemptyPixelsPerFrame": [
+        2,
+        10,
+        6,
+        2
+      ],
+      "distinctFramePixelHashes": 4,
+      "minAlpha": 0,
+      "maxAlpha": 170,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_splash_roof_large-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        24,
+        16
+      ],
+      "frames": 4,
+      "nonemptyPixelsPerFrame": [
+        5,
+        23,
+        18,
+        7
+      ],
+      "distinctFramePixelHashes": 4,
+      "minAlpha": 0,
+      "maxAlpha": 170,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_cloud_shadow_a-v1",
+      "dimensions": [
+        512,
+        256
+      ],
+      "frameDimensions": [
+        512,
+        256
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        39616
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 35,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_cloud_shadow_b-v1",
+      "dimensions": [
+        512,
+        256
+      ],
+      "frameDimensions": [
+        512,
+        256
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        62851
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 35,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "rain_wet_mask_soil-v1",
+      "dimensions": [
+        128,
+        64
+      ],
+      "frameDimensions": [
+        128,
+        64
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        8192
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 26,
+      "maxAlpha": 28,
+      "seam": {
+        "x": 0,
+        "y": 0
+      },
+      "pass": true
+    },
+    {
+      "assetId": "rain_wet_mask_grass-v1",
+      "dimensions": [
+        128,
+        64
+      ],
+      "frameDimensions": [
+        128,
+        64
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        8192
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 24,
+      "maxAlpha": 28,
+      "seam": {
+        "x": 0,
+        "y": 0
+      },
+      "pass": true
+    },
+    {
+      "assetId": "puddle_small_a-v1",
+      "dimensions": [
+        32,
+        16
+      ],
+      "frameDimensions": [
+        32,
+        16
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        171
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 254,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "puddle_small_b-v1",
+      "dimensions": [
+        32,
+        16
+      ],
+      "frameDimensions": [
+        32,
+        16
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        138
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "puddle_medium_a-v1",
+      "dimensions": [
+        64,
+        32
+      ],
+      "frameDimensions": [
+        64,
+        32
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        700
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 254,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "puddle_medium_b-v1",
+      "dimensions": [
+        64,
+        32
+      ],
+      "frameDimensions": [
+        64,
+        32
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        544
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "puddle_large_a-v1",
+      "dimensions": [
+        96,
+        48
+      ],
+      "frameDimensions": [
+        96,
+        48
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        1867
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 254,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "puddle_large_b-v1",
+      "dimensions": [
+        96,
+        48
+      ],
+      "frameDimensions": [
+        96,
+        48
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        1062
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 254,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "mud_scar_medium-v1",
+      "dimensions": [
+        64,
+        32
+      ],
+      "frameDimensions": [
+        64,
+        32
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        592
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 254,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "mud_scar_large-v1",
+      "dimensions": [
+        96,
+        48
+      ],
+      "frameDimensions": [
+        96,
+        48
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        1180
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 254,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_oak_yellow-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        49,
+        29,
+        16,
+        40,
+        20,
+        39
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 255,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_oak_orange-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        51,
+        30,
+        16,
+        34,
+        28,
+        52
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_oak_brown-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        35,
+        20,
+        13,
+        33,
+        16,
+        32
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_beech_yellow-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        43,
+        26,
+        15,
+        39,
+        25,
+        43
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_beech_orange-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        36,
+        18,
+        11,
+        35,
+        13,
+        32
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 254,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_beech_brown-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        39,
+        27,
+        14,
+        41,
+        26,
+        35
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_birch_yellow-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        46,
+        22,
+        17,
+        41,
+        24,
+        49
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_birch_orange-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        48,
+        33,
+        15,
+        44,
+        24,
+        45
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_birch_brown-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        41,
+        19,
+        13,
+        42,
+        21,
+        37
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 254,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_fieldmaple_yellow-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        68,
+        33,
+        20,
+        55,
+        36,
+        63
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_fieldmaple_orange-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        57,
+        41,
+        20,
+        58,
+        31,
+        59
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "leaves/falling_fieldmaple_brown-v1",
+      "dimensions": [
+        96,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        58,
+        32,
+        16,
+        46,
+        24,
+        49
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 254,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "debris/ground_leaves_small-v1",
+      "dimensions": [
+        32,
+        16
+      ],
+      "frameDimensions": [
+        32,
+        16
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        61
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "debris/ground_leaves_medium_oak_beech-v1",
+      "dimensions": [
+        64,
+        32
+      ],
+      "frameDimensions": [
+        64,
+        32
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        566
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "debris/ground_leaves_medium_birch_maple-v1",
+      "dimensions": [
+        64,
+        32
+      ],
+      "frameDimensions": [
+        64,
+        32
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        438
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "debris/ground_leaves_large-v1",
+      "dimensions": [
+        96,
+        48
+      ],
+      "frameDimensions": [
+        96,
+        48
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        1104
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "debris/ground_leaves_windrow_a-v1",
+      "dimensions": [
+        96,
+        32
+      ],
+      "frameDimensions": [
+        96,
+        32
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        425
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "debris/ground_leaves_windrow_b-v1",
+      "dimensions": [
+        96,
+        32
+      ],
+      "frameDimensions": [
+        96,
+        32
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        426
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "debris/floating_leaves-v1",
+      "dimensions": [
+        64,
+        32
+      ],
+      "frameDimensions": [
+        64,
+        32
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        277
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "debris/roof_leaves-v1",
+      "dimensions": [
+        48,
+        32
+      ],
+      "frameDimensions": [
+        48,
+        32
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        166
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "debris/wind_leaves_group_a-v1",
+      "dimensions": [
+        384,
+        32
+      ],
+      "frameDimensions": [
+        64,
+        32
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        82,
+        78,
+        74,
+        77,
+        77,
+        75
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "debris/wind_leaves_group_b-v1",
+      "dimensions": [
+        384,
+        32
+      ],
+      "frameDimensions": [
+        64,
+        32
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        65,
+        59,
+        59,
+        53,
+        52,
+        41
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "snow/snowflake_small-v1",
+      "dimensions": [
+        8,
+        8
+      ],
+      "frameDimensions": [
+        8,
+        8
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        4
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 205,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "snow/snowflake_medium-v1",
+      "dimensions": [
+        12,
+        12
+      ],
+      "frameDimensions": [
+        12,
+        12
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        7
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 252,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "snow/snowflake_large-v1",
+      "dimensions": [
+        16,
+        16
+      ],
+      "frameDimensions": [
+        16,
+        16
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        16
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "snow/blowing_snow_sheet-v1",
+      "dimensions": [
+        384,
+        32
+      ],
+      "frameDimensions": [
+        64,
+        32
+      ],
+      "frames": 6,
+      "nonemptyPixelsPerFrame": [
+        31,
+        29,
+        36,
+        33,
+        26,
+        32
+      ],
+      "distinctFramePixelHashes": 6,
+      "minAlpha": 0,
+      "maxAlpha": 252,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "snow/footprints_snow_a-v1",
+      "dimensions": [
+        128,
+        64
+      ],
+      "frameDimensions": [
+        128,
+        64
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        3400
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    },
+    {
+      "assetId": "snow/footprints_snow_b-v1",
+      "dimensions": [
+        128,
+        64
+      ],
+      "frameDimensions": [
+        128,
+        64
+      ],
+      "frames": 1,
+      "nonemptyPixelsPerFrame": [
+        2720
+      ],
+      "distinctFramePixelHashes": 1,
+      "minAlpha": 0,
+      "maxAlpha": 253,
+      "seam": null,
+      "pass": true
+    }
+  ]
+}

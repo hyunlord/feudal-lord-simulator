@@ -252,10 +252,13 @@ export function rightsEffectRegistry(state: GameState): EffectRegistry {
 export function chronicleEntry(state: GameState): ChronicleEntry {
   const politics = politicsOf(state);
   const startYear = scenarioOf(state).startYear;
-  const records = (state.events?.records ?? []).filter(record => record.arrivalTick >= politics.chapter.startTick && record.arrivalTick <= state.tick);
+  // FIX-11 (FX11-8): from chapter 2 on the range starts one tick after the previous chapter's end (its end tick's records
+  // are that chapter's); chapter 1 starts at its own start.
+  const from = politics.chapter.number > 1 ? politics.chapter.startTick + 1 : politics.chapter.startTick;
+  const records = (state.events?.records ?? []).filter(record => record.arrivalTick >= from && record.arrivalTick <= state.tick);
   const famine = famineRecord(state);
   // F0-C2 (HL-6): the page is edited from the history ledger — its weightiest events and eras, its big decisions.
-  const page = chapterPageRecords(state, politics.chapter.startTick, state.tick);
+  const page = chapterPageRecords(state, from, state.tick);
   const noLosses = { burntHouses: 0, departures: 0, harvestLost: 0 };
   const events = page.events.map(record => {
     const eventId = String(record.params?.eventId ?? `era:${String(record.params?.eraId ?? "")}`);

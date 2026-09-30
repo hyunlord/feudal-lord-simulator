@@ -14,6 +14,7 @@ import {
 } from "../world/palisadeGeometry";
 import type { GameState } from "./engine.types";
 
+const MANOR_FOOTPRINT_PREFIX = "manor-house-";
 const LIVING_CORE_KINDS = new Set<BuildingKind>([
   "house", "well", "storehouse", "granary", "chapel", "wheat_farm", "mill", "market", "church", "keep",
 ]);
@@ -177,6 +178,8 @@ export function computePalisadeProposalForState(
     state.constructionSites.filter(site => 'kind' in site).map(site => [site.id, site.kind])]);
   const acceptsGeometry = (path: PalisadePath) =>
     palisadePathEnclosesFootprints(path, core) && palisadePathHasBuildingClearance(path, all);
+  // FIX-11 (MH-1): the manor house keeps the wall clear of it but is never one of the envelope's anchors.
+  const anchored = all.filter(footprint => !footprint.id.startsWith(MANOR_FOOTPRINT_PREFIX));
   let cached = proposalCandidatesByTiles.get(state.tiles);
   if (cached?.layout !== layout || cached.candidateLimit !== candidateLimit) {
     const candidates = new Map<string, Extract<PalisadeProposalResult, { readonly ok: true }>>();
@@ -186,7 +189,7 @@ export function computePalisadeProposalForState(
     add(proposal);
     let attempts = 0;
     let limited = false;
-    candidateSearch: for (const anchors of [buildings, all]) {
+    candidateSearch: for (const anchors of [buildings, anchored]) {
       for (const subset of [anchors, ...anchors.map(omitted => anchors.filter(item => item !== omitted))]) {
         for (const margin of [2, 3]) {
           if (attempts++ >= candidateLimit) { limited = true; break candidateSearch; }
@@ -205,7 +208,7 @@ export function computePalisadeProposalForState(
   if (cached.compactCandidates === undefined) {
     const compactCandidates = new Map<string, Extract<PalisadeProposalResult, { readonly ok: true }>>();
     let attempts = 0;
-    compactSearch: for (const anchors of [buildings, all]) {
+    compactSearch: for (const anchors of [buildings, anchored]) {
       for (const subset of [anchors, ...anchors.map(omitted => anchors.filter(item => item !== omitted))]) {
         if (attempts++ >= candidateLimit) { cached.limited = true; break compactSearch; }
         const candidate = computePalisadeProposal(state, subset, acceptsGeometry, [1]);

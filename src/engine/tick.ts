@@ -1,3 +1,4 @@
+import { advanceStuckStock } from "./stuckStock";
 import { advanceTimberTrade } from "./timberTrade";
 import { BALANCE } from '../content/balanceConfig';
 import { feasibleDistributorDistance } from './distributorAccess';
@@ -277,7 +278,8 @@ function advanceWarTick(state: GameState): GameState {
 export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
   // F0-C2 (HL-2): the history ledger reads the tick's before and after; it never changes the simulation.
-  return advanceHistory(state, updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
+  // FIX-11 (SK-3): the stuck-stock since-ticks after the tick's moves.
+  return advanceHistory(state, advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
     advanceWarTick(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))))))))),
-  )))));
+  ))))));
 }

@@ -95,13 +95,21 @@ const NAME_FROM: Readonly<Record<string, string>> = {
 };
 
 const DEATH_CAUSES: Readonly<Record<string, string>> = {
-  age: "세상을 떠났다", famine: "굶주림 끝에 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
+  age: "세상을 떠났다", captivity: "유폐 중에 죽었다", famine: "굶주림 끝에 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
 };
 
 export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> = {
   "decision.bundle": params => (BUNDLE[s(params, "decisionKind")] ?? (() => s(params, "decisionKind")))(params),
   "decision.famine_response": params => { const label = choice(s(params, "chosen")); return `대기근에 ${label}${josa(label, "을", "를")} 택했다`; },
-  "decision.petition_response": params => { const label = choice(s(params, "chosen")); return `${PETITION_SUBJECTS[s(params, "defId")] ?? "상인의 시장권 청원"}에 답했다: ${WAR_CHOICES[s(params, "defId")]?.[s(params, "chosen")] ?? label}`; },
+  "decision.petition_response": params => {
+    const label = choice(s(params, "chosen"));
+    const defId = s(params, "defId");
+    // Item 8: heir choice — use the candidate's relation word when present (params.relation added by recordDecision)
+    const chosenText = defId === "heir_choice" && typeof params["relation"] === "string"
+      ? `${params["relation"]}에게 잇게 한다`
+      : (WAR_CHOICES[defId]?.[s(params, "chosen")] ?? label);
+    return `${PETITION_SUBJECTS[defId] ?? "상인의 시장권 청원"}에 답했다: ${chosenText}`;
+  },
   // F2-A (WR-1…WR-7): the war of 1337.
   "war.messenger": () => "국왕의 전령이 왔다 — 프랑스와 전쟁이 시작되었다",
   // F3-A (PL-1…PL-10): the Black Death.
@@ -134,7 +142,10 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "legacy.mayor_demand": params => s(params, "candidate") === "" ? "상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구했다"
     : `상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구했다 — 후보 ${s(params, "candidate")}`,
   "legacy.royal_tax_envoy": () => "국왕의 과세 사절이 왔다 — 15분의 1·10분의 1세",
-  "legacy.succession": params => { const lord = s(params, "lord"); return `늙은 영주 ${lord}(${n(params, "age")}세)${josa(lord, "이", "가")} 후계자를 정해야 한다 — 후보 ${n(params, "candidates")}명`; },
+  "legacy.succession": params => { const lord = s(params, "lord"); const age = n(params, "age"); return `${age >= 50 ? "늙은 영주" : "영주"} ${lord}(${age}세)${josa(lord, "이", "가")} 후계자를 정해야 한다 — 후보 ${n(params, "candidates")}명`; },
+  // FIX-11: wardship of a minor lord.
+  "lord.wardship_begun": params => { const lord = s(params, "lord"); const guardian = s(params, "guardian"); return guardian === "" ? `${lord}${josa(lord, "이", "가")} 미성년 영주다 — 상위 영주가 후견한다` : `${lord}${josa(lord, "이", "가")} 미성년 영주다 — 후견인 ${guardian}`; },
+  "lord.wardship_ended": params => { const lord = s(params, "lord"); return `${lord}${josa(lord, "이", "가")} 성년이 되어 후견이 끝났다`; },
   "legacy.heir_seated": params => { const heir = s(params, "heir"); return `${heir}${josa(heir, "이", "가")} 가문을 이었다 — ${s(params, "relation")}`; },
   "legacy.royal_subsidy": params => `국왕에게 과세를 냈다 — ${n(params, "amount")}d`,
   "legacy.city_seal": () => "도시가 제 인장을 새겼다",

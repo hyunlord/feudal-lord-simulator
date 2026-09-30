@@ -19,10 +19,15 @@ import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
 import type { DeclineState, LordshipState } from "./lordship.types";
 import { lordHouseHeraldrySeed, lordHouseName, lordshipOf, rightHeld, rightPresent } from "./lordshipState";
+import { HEIR_CANDIDATE_TAG, ageOf, currentYear, manorLord } from "./persons";
+import { MANOR_HOUSEHOLD, type Person } from "./persons.types";
 import type { PetitionRecord } from "./politics.types";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const SAMPLE = PRESSURE_BALANCE.sampleTicks;
+const YEAR = 4 * SEASON;
+/** FIX-11: a lord under this age is in wardship. */
+const WARDSHIP_AGE_YEARS = 21;
 
 /** FL-3: the share of the houses (permille) standing derelict, or null for a town under `minHouses` houses. */
 export function derelictPermille(state: Pick<GameState, "houses"> & Partial<Pick<GameState, "plague">>): number | null {
@@ -41,7 +46,28 @@ export function lordFamilyExtinct(state: Pick<GameState, "persons" | "lordship" 
   const tag = `lord-house:${lordshipOf(state).house.order}`;
   const persons = state.persons;
   if (persons === undefined || persons.people.some(person => person.tags.includes(tag))) return false;
+  // FIX-11: heir candidates are pending succession — do not fire extinction while the heir petition is open.
+  if (persons.people.some(person => person.tags.includes(HEIR_CANDIDATE_TAG))) return false;
   return persons.past.some(person => person.tags.includes(tag) && !person.alive && person.deathCause === "plague");
+}
+
+/** FIX-11: find the guardian for a minor lord (mother → adult blood kin → null = overlord wardship). */
+function findWardshipGuardian(state: GameState, lord: Person, houseOrder: number): string | null {
+  const year = currentYear(state);
+  const manorPeople = (state.persons?.people ?? []).filter(p => p.householdId === MANOR_HOUSEHOLD);
+  const houseTag = `lord-house:${houseOrder}`;
+  const mother = manorPeople.find(p => p.sex === "female" && p.role === "spouse");
+  if (mother !== undefined) return mother.id;
+  const kin = manorPeople.find(p => p.tags.includes(houseTag) && p.id !== lord.id && ageOf(p, year) >= WARDSHIP_AGE_YEARS);
+  if (kin !== undefined) return kin.id;
+  return null;
+}
+
+/** FIX-11: begin wardship for a minor lord — sets guardianId in lordship state. */
+export function beginWardship(state: GameState, tick: number, lord: Person): GameState {
+  const lordship = lordshipOf(state);
+  const guardianId = findWardshipGuardian(state, lord, lordship.house.order);
+  return { ...state, lordship: { ...lordship, wardship: { guardianId, since: tick } } };
 }
 
 /** FL-3: the distinct ledger periods over which unpaid upkeep is still owed. */
@@ -136,6 +162,19 @@ export function advanceLordship(state: GameState): GameState {
   if (state.tick % SEASON !== 0) return next;
   // F3-A (PL-2): the pestilence took the lord's whole family — a new house takes the town.
   if (lordFamilyExtinct(next)) return changeHouse(next, lordship);
+  // FIX-11: wardship — yearly check for minor lord start/end.
+  if (state.tick % YEAR === 0) {
+    const year = currentYear(next);
+    const lord = manorLord(next.persons?.people ?? [], lordship.house.order, year);
+    if (lord !== undefined && ageOf(lord, year) < WARDSHIP_AGE_YEARS && lordship.wardship === undefined) {
+      lordship = { ...lordship, wardship: { guardianId: findWardshipGuardian(next, lord, lordship.house.order), since: state.tick } };
+      next = { ...next, lordship };
+    } else if (lord !== undefined && ageOf(lord, year) >= WARDSHIP_AGE_YEARS && lordship.wardship !== undefined) {
+      const { wardship: _w, ...rest } = lordship;
+      lordship = rest;
+      next = { ...next, lordship };
+    }
+  }
   const decline = lordship.decline;
   if (decline === null) {
     const cause = declineCause(next);

@@ -239,7 +239,8 @@ test("X9 (FX-4, FX-5) the same seed and the same commands give the same factions
   // CODE-1a (decision FX6-2): the leaders and heirs wear their pool-3 faces (was 83ac82e83047d496f101ccb6f5974cc1512cde416ddbc4b08bc8949a5f17e0f9).
   // PERSON-1a (LN7): the factions' people carry traits and lineage; a noble heir is his father's son in the set L6/L7 (was 9dcbe59c…).
   // FIX-9 (decision FX9-5): the successors of the role's age (a bishop 40, an earl 25), the town's heads by age (was bac1f069…).
-  assert.equal(createHash("sha256").update(JSON.stringify(once)).digest("hex"), "da2175b70fe2414c6ed7a1d0f5cdbab76845ea299f0c5c103544843738f828d0");
+  // FIX-11 (decision FX11-7): deposition block added to advanceFactions — Richard II deposed at autumn 1399, Henry IV installed (was da2175b7…).
+  assert.equal(createHash("sha256").update(JSON.stringify(once)).digest("hex"), "4040e8299dc01f6a0e196730a92bb1b4a371084376c51cca84ba313a2a7b1437");
 });
 
 test("X5b (FIX-9) a successor is of the role's age: a bishop 40 or more, an earl 25 or more; the town community's head 30 or more", () => {

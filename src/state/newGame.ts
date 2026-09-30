@@ -8,7 +8,7 @@ import type { ArchetypeDef } from "../content/scenario/types";
 import type { GameState } from "../engine/engine.types";
 import { buildArchetypeWorld } from "../world/archetypeTerrain";
 import { DEFAULT_GAME_STATE } from "./gameStore";
-import { applyOpeningVillageToTile } from "./openingVillage";
+import { applyOpeningVillageToTile, placeManorSite } from "./openingVillage";
 
 export interface NewGameOptions {
   readonly scenarioId: string;
@@ -31,12 +31,13 @@ export function newGameState(options: NewGameOptions): GameState | null {
   const seed = options.seed ?? DEFAULT_GAME_STATE.seed;
   if (archetype === undefined || !Number.isInteger(seed) || seed < 1) return null;
   if (archetype.terrain.kind === "river") {
-    return seed === DEFAULT_GAME_STATE.seed ? { ...structuredClone(DEFAULT_GAME_STATE), scenarioId: options.scenarioId } : null;
+    return seed === DEFAULT_GAME_STATE.seed ? placeManorSite({ ...structuredClone(DEFAULT_GAME_STATE), scenarioId: options.scenarioId }) : null;
   }
   const { width, height } = DEFAULT_GAME_STATE;
   const world = buildArchetypeWorld(archetype, { width, height, seed });
   const { river: _river, ...opening } = structuredClone(DEFAULT_GAME_STATE);
-  return { ...opening, scenarioId: options.scenarioId, archetypeId: archetype.id, seed,
+  // FIX-11 (MH-1): the manor house on the land's nearest free grass to the opening village's north-west.
+  return placeManorSite({ ...opening, scenarioId: options.scenarioId, archetypeId: archetype.id, seed,
     ...(world.river === null ? {} : { river: world.river }),
-    tiles: world.terrains.map((terrain, index) => applyOpeningVillageToTile({ tx: index % width, ty: Math.floor(index / width), terrain, buildingId: null, hasRoad: false })) };
+    tiles: world.terrains.map((terrain, index) => applyOpeningVillageToTile({ tx: index % width, ty: Math.floor(index / width), terrain, buildingId: null, hasRoad: false })) });
 }

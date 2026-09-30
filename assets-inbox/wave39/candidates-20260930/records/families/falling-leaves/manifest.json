@@ -1,0 +1,1694 @@
+[
+  {
+    "assetId": "leaves/falling_oak_yellow-v1",
+    "species": "oak",
+    "color": "yellow",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling English oak, elongated blade with 4 pairs of soft rounded lobes leaf, muted ochre yellow. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-252b581e-a8ec-4bc4-9ea3-9e0782607efd.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_oak_yellow-v1.png",
+    "outputHash": "99ca3c3fc07a58c55e8acfc6c8739827876a87fcad58c318703f607479b39a09",
+    "sourceHash": "fcd6a2f585ed41cd21f1f91bf227d04c89ee1946360d7fb024131e76ff0410da",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2171,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 145,
+          "y": 239,
+          "w": 220,
+          "h": 231
+        },
+        {
+          "x": 522,
+          "y": 248,
+          "w": 198,
+          "h": 224
+        },
+        {
+          "x": 872,
+          "y": 248,
+          "w": 139,
+          "h": 226
+        },
+        {
+          "x": 1143,
+          "y": 284,
+          "w": 235,
+          "h": 191
+        },
+        {
+          "x": 1518,
+          "y": 248,
+          "w": 124,
+          "h": 228
+        },
+        {
+          "x": 1826,
+          "y": 254,
+          "w": 207,
+          "h": 206
+        }
+      ],
+      "uniformScale": 0.0425531914893617
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "7cf44771df3aa2c09e2bc3a213b4010d17bad180d9041246a94ec4423e3ccf6a",
+        "7e27e7eae4fcafc293d07c8f3ab005fe54c10976357932ff03402726eb024051",
+        "157286cb603a18d546c7842d44b68827251168c7bd8a338ec691384325dd7fda",
+        "d78aae33c09da760f21640671286d4c518ecb01f3cc0e3cf444cbe3202d85fdf",
+        "c60a85df528d5e67e3e87451e95dcb2d32387841684c337cd0b4fcc0b460dc5c",
+        "66530c5810326ca009db77fd6cd3ac9f514e2945bb62bf7800495430751cf474"
+      ],
+      "alphaBounds": [
+        [
+          3,
+          3,
+          12,
+          12
+        ],
+        [
+          4,
+          4,
+          10,
+          10
+        ],
+        [
+          5,
+          3,
+          10,
+          12
+        ],
+        [
+          3,
+          4,
+          12,
+          11
+        ],
+        [
+          5,
+          3,
+          10,
+          12
+        ],
+        [
+          4,
+          4,
+          11,
+          11
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_oak_orange-v1",
+    "species": "oak",
+    "color": "orange",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling English oak, elongated blade with 4 pairs of soft rounded lobes leaf, quiet tawny burnt orange, low saturation. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-df827af4-970d-4ec7-a3b4-ac9bcb67f38d.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_oak_orange-v1.png",
+    "outputHash": "c01502cfe2b595cef4d9019c5745228f9d383ac33688a9ca721b6506cd386a03",
+    "sourceHash": "1c55176484865d85f0eb715e610cf81304feaa3b3a6626cc4fa26142ca7effb9",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 113,
+          "y": 236,
+          "w": 266,
+          "h": 225
+        },
+        {
+          "x": 524,
+          "y": 216,
+          "w": 170,
+          "h": 266
+        },
+        {
+          "x": 881,
+          "y": 217,
+          "w": 103,
+          "h": 256
+        },
+        {
+          "x": 1158,
+          "y": 239,
+          "w": 174,
+          "h": 241
+        },
+        {
+          "x": 1502,
+          "y": 216,
+          "w": 148,
+          "h": 263
+        },
+        {
+          "x": 1791,
+          "y": 231,
+          "w": 272,
+          "h": 230
+        }
+      ],
+      "uniformScale": 0.03676470588235294
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "d8b79835cde01b53d1e4a1cd85aa5c687415671f1ba8d5c9f59e8b9f8f243ce8",
+        "2b65613751f2228195789f404774348607323cd65a658865e376e129f9bbf66e",
+        "63dbf0c446a034b3b2faec1da6fc2341586634d7b0bd1f019fd14f2ac619c87d",
+        "f180fc12a34deedeca99532d40467e2e19e064dbc17ca573fc6060a52b347419",
+        "a77d8f54b0f7a0036bc5f7aa480caffd31a2ff715850a5d07f5f7a605d63784a",
+        "4e129656f564848583f85d0970ccd4625af32dd183688f14485170d9cebea8d9"
+      ],
+      "alphaBounds": [
+        [
+          3,
+          4,
+          12,
+          11
+        ],
+        [
+          5,
+          3,
+          10,
+          12
+        ],
+        [
+          6,
+          3,
+          9,
+          10
+        ],
+        [
+          5,
+          4,
+          10,
+          11
+        ],
+        [
+          5,
+          3,
+          10,
+          10
+        ],
+        [
+          3,
+          4,
+          12,
+          11
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_oak_brown-v1",
+    "species": "oak",
+    "color": "brown",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling English oak, elongated blade with 4 pairs of soft rounded lobes leaf, warm dry umber brown. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-5b80267a-073a-4d0a-854f-a000bec71dba.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_oak_brown-v1.png",
+    "outputHash": "49dcf553927c49234ca1acacd767ff3604ea13ab205cdb408a24a51cb4c25f47",
+    "sourceHash": "37a8564bf0fbc98fd22635b762eaed70557cfb3eebee075672883b176ecb03e5",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 112,
+          "y": 287,
+          "w": 231,
+          "h": 164
+        },
+        {
+          "x": 504,
+          "y": 250,
+          "w": 187,
+          "h": 217
+        },
+        {
+          "x": 856,
+          "y": 249,
+          "w": 135,
+          "h": 218
+        },
+        {
+          "x": 1154,
+          "y": 288,
+          "w": 249,
+          "h": 167
+        },
+        {
+          "x": 1528,
+          "y": 259,
+          "w": 169,
+          "h": 208
+        },
+        {
+          "x": 1881,
+          "y": 290,
+          "w": 230,
+          "h": 166
+        }
+      ],
+      "uniformScale": 0.040160642570281124
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "228c6ca470b0c272ebb64c87764d01eb5e82d4924a1d36a69637c77713477c15",
+        "d0d37c43a0c8924029efdfc10e8d17e43c3acd8b375b86108869a54feef8a9e8",
+        "4cf0732759aaedeae0c486ae659702bd12ae5ba21176aba0ce98bdeff9ba9c90",
+        "e03a8ac4779737660d7958be16734dd767403d5954d45f4f3ec3cce1d7475658",
+        "3e798fbfe21cd024d8a856e0b57ce7dbd19e87cc6e0bea5a4070e007bbc4117f",
+        "1b9252e8e1e2be7db40289a7d40d8d00fda8aced8e457b8709b0bd496fbb1112"
+      ],
+      "alphaBounds": [
+        [
+          3,
+          5,
+          10,
+          9
+        ],
+        [
+          4,
+          4,
+          11,
+          11
+        ],
+        [
+          6,
+          4,
+          10,
+          11
+        ],
+        [
+          3,
+          5,
+          12,
+          10
+        ],
+        [
+          5,
+          4,
+          10,
+          10
+        ],
+        [
+          3,
+          5,
+          10,
+          9
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_beech_yellow-v1",
+    "species": "beech",
+    "color": "yellow",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling European beech, simple pointed oval blade with gently scalloped margin leaf, muted ochre yellow. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-3ec3c296-ad10-4d95-9145-5caf19a76334.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_beech_yellow-v1.png",
+    "outputHash": "3812e039e1e6752fbae6b04230aed2c26c2a1f0642abffb422b5e31ca9b4a0ef",
+    "sourceHash": "b1f7cb693ccb735d7ca255912ebde5a055a1576e4ab06f293e0603dcffc70b9d",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 74,
+          "y": 246,
+          "w": 244,
+          "h": 207
+        },
+        {
+          "x": 489,
+          "y": 243,
+          "w": 156,
+          "h": 239
+        },
+        {
+          "x": 846,
+          "y": 243,
+          "w": 110,
+          "h": 239
+        },
+        {
+          "x": 1137,
+          "y": 242,
+          "w": 233,
+          "h": 211
+        },
+        {
+          "x": 1535,
+          "y": 242,
+          "w": 139,
+          "h": 241
+        },
+        {
+          "x": 1854,
+          "y": 261,
+          "w": 233,
+          "h": 196
+        }
+      ],
+      "uniformScale": 0.040983606557377046
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "34dedd8d768ca9479a10e306ad975c30747f0af84ffe25ec3602cdcd2c12570c",
+        "10f5b3fdced7d66deda22957a19846f67b16dbce6911125a992d3db62d1dc8a1",
+        "232325f1c41a6026661b8e998dc6f6d9d32b2426717efac0f9af1dbf4acea288",
+        "b308fd18516ca4dff57331aac494a2bb328288e8e36d990c10176a82c84400a6",
+        "625a3253f8c40d79b6d548b9a14b875945368def98adcfa1ab98633aff882828",
+        "45e13cbb1ede571c3dba89c62e217f82068ed0e4ee9771d5af8c4aa3adf90b8e"
+      ],
+      "alphaBounds": [
+        [
+          3,
+          4,
+          11,
+          11
+        ],
+        [
+          5,
+          3,
+          10,
+          12
+        ],
+        [
+          6,
+          3,
+          9,
+          12
+        ],
+        [
+          3,
+          4,
+          11,
+          11
+        ],
+        [
+          5,
+          3,
+          10,
+          11
+        ],
+        [
+          3,
+          4,
+          11,
+          11
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_beech_orange-v1",
+    "species": "beech",
+    "color": "orange",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling European beech, simple pointed oval blade with gently scalloped margin leaf, quiet tawny burnt orange, low saturation. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-4d56ca3a-80a7-45e7-8697-f266d9d4d103.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_beech_orange-v1.png",
+    "outputHash": "7697b8821ad8920902e1b5907c5bb71092384ea52aae36323a9fccf2b10ddb5f",
+    "sourceHash": "8483b89664d60f25ecadd4deee7e7b49f5ae9a9145a84a121dbd5bd730db5d70",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 87,
+          "y": 249,
+          "w": 245,
+          "h": 213
+        },
+        {
+          "x": 473,
+          "y": 244,
+          "w": 178,
+          "h": 222
+        },
+        {
+          "x": 833,
+          "y": 237,
+          "w": 124,
+          "h": 237
+        },
+        {
+          "x": 1123,
+          "y": 263,
+          "w": 272,
+          "h": 197
+        },
+        {
+          "x": 1560,
+          "y": 246,
+          "w": 131,
+          "h": 228
+        },
+        {
+          "x": 1858,
+          "y": 253,
+          "w": 253,
+          "h": 195
+        }
+      ],
+      "uniformScale": 0.03676470588235294
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "6be6996ba39cba8cabca0cedbc658fc98022818b19ae56c02749198bda7491e6",
+        "b05b8584bf9d364cf2dbfc3ff1b3f70a1c1622bdbf9522974a351f43cc3248e3",
+        "23e2df0db8f4eaeacef7eef1b15fe2d8a74aa2dc935f171b3ee427ae9307140d",
+        "7b10f9705e89823124b7d5764ad5909d714294d0be573b1a84d835537bfd6994",
+        "ac4f42b960bd4414c19bfbc5095b66ef96d743c1780651c106b17a57f55a8f7e",
+        "886ccf3a206754fef36002cebecdf19b17d5d9feea161678c1c417f839616725"
+      ],
+      "alphaBounds": [
+        [
+          4,
+          5,
+          11,
+          10
+        ],
+        [
+          5,
+          4,
+          10,
+          10
+        ],
+        [
+          6,
+          4,
+          9,
+          11
+        ],
+        [
+          3,
+          4,
+          11,
+          11
+        ],
+        [
+          6,
+          4,
+          9,
+          11
+        ],
+        [
+          4,
+          5,
+          12,
+          11
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_beech_brown-v1",
+    "species": "beech",
+    "color": "brown",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling European beech, simple pointed oval blade with gently scalloped margin leaf, warm dry umber brown. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-fcd70471-f1f0-4c5c-81a9-22e9333a0ff7.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_beech_brown-v1.png",
+    "outputHash": "717d6d3a04f5c9487c5a9621961ae29387b57004661b31d56f676f4088660cc7",
+    "sourceHash": "ae8de590657c254a802b3e3ea9cc2b4cba2fd347c221e9605a115e2c4447aaa7",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 96,
+          "y": 247,
+          "w": 218,
+          "h": 194
+        },
+        {
+          "x": 463,
+          "y": 243,
+          "w": 184,
+          "h": 239
+        },
+        {
+          "x": 849,
+          "y": 243,
+          "w": 94,
+          "h": 239
+        },
+        {
+          "x": 1149,
+          "y": 259,
+          "w": 242,
+          "h": 196
+        },
+        {
+          "x": 1553,
+          "y": 245,
+          "w": 147,
+          "h": 237
+        },
+        {
+          "x": 1888,
+          "y": 247,
+          "w": 208,
+          "h": 204
+        }
+      ],
+      "uniformScale": 0.04132231404958678
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "9d5359584218e8c27d5b664b2bd3844b4e3ba9387b9e643c399de2d9622ea6e6",
+        "b9b4960badccba11853ea778d364ddebad6523ec1696ce4b18124fac6267ca49",
+        "a91b02611632eb6b971ca12c322339aebadc93dfb413279ab9b7a3b7916e0ad9",
+        "9963505b8971f64f94e9b1511b1b183c6f6b60c4cdeba50423ea4fcef3eba8dc",
+        "0de9d35e1c9344ecbe50240820ab4d7556ca1a7c010fcaebdfba114be8946918",
+        "e89b0ea388d76a9e548b8eacde46b7c032cdf1ec079ae99c93ef5de7bb6da534"
+      ],
+      "alphaBounds": [
+        [
+          4,
+          4,
+          11,
+          11
+        ],
+        [
+          4,
+          3,
+          11,
+          12
+        ],
+        [
+          6,
+          3,
+          9,
+          12
+        ],
+        [
+          3,
+          4,
+          12,
+          11
+        ],
+        [
+          5,
+          3,
+          10,
+          12
+        ],
+        [
+          4,
+          4,
+          11,
+          11
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_birch_yellow-v1",
+    "species": "birch",
+    "color": "yellow",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling silver birch, small triangular pointed blade with broad base and subtly serrated edge leaf, muted ochre yellow. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-b5a1edf4-5657-4ee1-8f79-78fe5954f040.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_birch_yellow-v1.png",
+    "outputHash": "4c166dbda2bce1096a672b1e30dd6850226309bc0eac9eec368c0d0ddcdab57d",
+    "sourceHash": "0bf569f381deabf85b62f440105535be9e82d83036bc76d3b94881f4909ff9ca",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 88,
+          "y": 253,
+          "w": 212,
+          "h": 230
+        },
+        {
+          "x": 535,
+          "y": 243,
+          "w": 111,
+          "h": 248
+        },
+        {
+          "x": 870,
+          "y": 244,
+          "w": 79,
+          "h": 252
+        },
+        {
+          "x": 1146,
+          "y": 246,
+          "w": 204,
+          "h": 249
+        },
+        {
+          "x": 1531,
+          "y": 242,
+          "w": 173,
+          "h": 246
+        },
+        {
+          "x": 1890,
+          "y": 246,
+          "w": 200,
+          "h": 246
+        }
+      ],
+      "uniformScale": 0.03968253968253968
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "c4af7b5650c570eccd120483a415f7255734021aa984556aa2b4bb96a133dbc1",
+        "fdf0ee4fc7d565a7b427d0ac5fb1b9ce9169225b38a556eb4cb74f6be7d7d042",
+        "8fffac551f3007340ba93914d1e9191681a2983c0a7a95e9f4b1f617f44fbecd",
+        "400cf1e352bda8ebdbeb45092bfda99cdcaa4883963943312278aff744fe1a7e",
+        "2d9736c4adba1406d069e9233a1914503137250f994ea69a0310c415fb56942b",
+        "4e99d9eaf9bd4eaceb972fa814cc857141c8c5a4b8a03e68e683001c811648dd"
+      ],
+      "alphaBounds": [
+        [
+          4,
+          4,
+          11,
+          11
+        ],
+        [
+          6,
+          3,
+          9,
+          11
+        ],
+        [
+          6,
+          4,
+          8,
+          12
+        ],
+        [
+          4,
+          3,
+          11,
+          12
+        ],
+        [
+          5,
+          3,
+          10,
+          10
+        ],
+        [
+          4,
+          3,
+          11,
+          12
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_birch_orange-v1",
+    "species": "birch",
+    "color": "orange",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling silver birch, small triangular pointed blade with broad base and subtly serrated edge leaf, quiet tawny burnt orange, low saturation. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-974b0bcf-6c11-4d37-8a85-082d252b097d.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_birch_orange-v1.png",
+    "outputHash": "a2dcf39a75f010f6eaf15f7764668c13a44a3c4bd5734657defd184550782611",
+    "sourceHash": "312d380370166e37cdbf9eb34ad81878b3aac8f431ffbae2d9d70959814904cf",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 97,
+          "y": 269,
+          "w": 225,
+          "h": 181
+        },
+        {
+          "x": 466,
+          "y": 251,
+          "w": 204,
+          "h": 204
+        },
+        {
+          "x": 862,
+          "y": 245,
+          "w": 112,
+          "h": 219
+        },
+        {
+          "x": 1131,
+          "y": 272,
+          "w": 225,
+          "h": 182
+        },
+        {
+          "x": 1520,
+          "y": 245,
+          "w": 145,
+          "h": 216
+        },
+        {
+          "x": 1892,
+          "y": 269,
+          "w": 216,
+          "h": 193
+        }
+      ],
+      "uniformScale": 0.044444444444444446
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "6a6d108154ee756b7e619a15a0653c9d0e132d1bf8d32b5620905278d4455b8f",
+        "266322fc574395d72e5cfb655ac36ec71915a257f0e1daf0930ba9b81d515fae",
+        "bc5e1293b8bfcf33270e7fe5227752dafe1e74f13dcbdcc3a5530a79d757a88c",
+        "f9ee45dd4bca5e2609ae0e073c70d629869e0a958646cc069ee353f917bbd033",
+        "96fe2ec94507ac52ec034eacf3b9d4c5810ac1f550cb9945377c61a42d20b067",
+        "1ff4cce1abb180819af8bb70732404616c54042cc7ae51a7fd4891c88176c6e7"
+      ],
+      "alphaBounds": [
+        [
+          3,
+          4,
+          12,
+          11
+        ],
+        [
+          4,
+          4,
+          11,
+          10
+        ],
+        [
+          6,
+          5,
+          8,
+          9
+        ],
+        [
+          3,
+          4,
+          11,
+          11
+        ],
+        [
+          5,
+          4,
+          10,
+          11
+        ],
+        [
+          3,
+          4,
+          12,
+          11
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_birch_brown-v1",
+    "species": "birch",
+    "color": "brown",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling silver birch, small triangular pointed blade with broad base and subtly serrated edge leaf, warm dry umber brown. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-17ee687a-380d-453d-b6ae-dfa612396276.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_birch_brown-v1.png",
+    "outputHash": "eb49235e615ea64fb2d80fb52c34bba8eea77934024a499c211c0a98fa07fe52",
+    "sourceHash": "b54d30a603bebcfeb2135700ebb08715aed8e63c66c4c9de2e47fea3f332594b",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 92,
+          "y": 216,
+          "w": 204,
+          "h": 269
+        },
+        {
+          "x": 516,
+          "y": 229,
+          "w": 126,
+          "h": 262
+        },
+        {
+          "x": 842,
+          "y": 227,
+          "w": 138,
+          "h": 260
+        },
+        {
+          "x": 1155,
+          "y": 235,
+          "w": 224,
+          "h": 259
+        },
+        {
+          "x": 1575,
+          "y": 226,
+          "w": 136,
+          "h": 265
+        },
+        {
+          "x": 1902,
+          "y": 238,
+          "w": 178,
+          "h": 256
+        }
+      ],
+      "uniformScale": 0.03717472118959108
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "e9f3e8b6a47eb7c56aad980cd22e695d2770746a593602cfa303fbf15c15ed0e",
+        "4599a6382749b84db656ab40927cb862437dad8d392a8f732c85da2ee4402afe",
+        "bf8b0b2b7bb05cfd1914a1a95819f7c0fc847e4edbe9353134e152b143ae8ed0",
+        "1dfb63f79aeddc1ff272f2dcc0bed96bd84642255f22dfe924f8fcb24a78975f",
+        "cb91314333a84163921dc1b06630414a51df6215995d6db246414d9d18102d8a",
+        "67d723d951a8c8796b30988f685ec0132836cfe3b460f2a538e4a1b772a24e1d"
+      ],
+      "alphaBounds": [
+        [
+          4,
+          3,
+          11,
+          12
+        ],
+        [
+          6,
+          4,
+          9,
+          10
+        ],
+        [
+          5,
+          3,
+          9,
+          9
+        ],
+        [
+          4,
+          4,
+          11,
+          12
+        ],
+        [
+          6,
+          4,
+          9,
+          10
+        ],
+        [
+          5,
+          4,
+          10,
+          11
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_fieldmaple_yellow-v1",
+    "species": "fieldmaple",
+    "color": "yellow",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling English field maple, compact small five rounded blunt lobes; NEVER pointed Canadian maple leaf, muted ochre yellow. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-475bcab1-fdbf-4f6a-8f84-8d9c37742e30.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_fieldmaple_yellow-v1.png",
+    "outputHash": "7056ea00377508ff008929d37aaad83e83156f38f62d0179a7bc07783f7be764",
+    "sourceHash": "b1701c5f220a275d0ac3ba30bd869737454ed867e88b179354941dde87d4fe2e",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 118,
+          "y": 240,
+          "w": 225,
+          "h": 222
+        },
+        {
+          "x": 543,
+          "y": 247,
+          "w": 142,
+          "h": 218
+        },
+        {
+          "x": 886,
+          "y": 244,
+          "w": 79,
+          "h": 219
+        },
+        {
+          "x": 1136,
+          "y": 250,
+          "w": 216,
+          "h": 212
+        },
+        {
+          "x": 1492,
+          "y": 247,
+          "w": 133,
+          "h": 222
+        },
+        {
+          "x": 1824,
+          "y": 239,
+          "w": 217,
+          "h": 221
+        }
+      ],
+      "uniformScale": 0.044444444444444446
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "6e0c0aacd7a19377e9bc2bb7e443afa1ad6fe3f91e08d8bfb2fe1bfbb52bdacc",
+        "bde1f07f47cd0307951de68888dd4740e2d4c7cbee4cfdccf0bdae4871600a67",
+        "248068678ae0765ae78cf80a7292bfb78562e35d51422a29c8522a47c1fbed24",
+        "26cb88bd1965665fa5ee5038e0f508c750523fce444867d46b0c870da88a1b19",
+        "40b0dbf46f634d01d2801868caff979e50338415b15b82279926a6146589086c",
+        "c5207d77a8eda0ecca84c3423df5f9dca0b0b86e66d7e596eb7b8d9b9baf2ff6"
+      ],
+      "alphaBounds": [
+        [
+          3,
+          3,
+          12,
+          12
+        ],
+        [
+          5,
+          3,
+          10,
+          12
+        ],
+        [
+          6,
+          3,
+          9,
+          12
+        ],
+        [
+          3,
+          3,
+          12,
+          11
+        ],
+        [
+          5,
+          3,
+          10,
+          12
+        ],
+        [
+          3,
+          3,
+          12,
+          12
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_fieldmaple_orange-v1",
+    "species": "fieldmaple",
+    "color": "orange",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling English field maple, compact small five rounded blunt lobes; NEVER pointed Canadian maple leaf, quiet tawny burnt orange, low saturation. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-317087e7-0db3-478f-98fd-e8fdb70848a9.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_fieldmaple_orange-v1.png",
+    "outputHash": "115f6ecf74d39f19009ac6d53c1bffbd1e1de8383c1ede3b6b9b9851bdfe78ec",
+    "sourceHash": "ac44daf63cb41aa14969b750802796422f5ba306625b9776b8393e4e7d499e94",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2171,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 126,
+          "y": 275,
+          "w": 194,
+          "h": 180
+        },
+        {
+          "x": 527,
+          "y": 275,
+          "w": 153,
+          "h": 184
+        },
+        {
+          "x": 889,
+          "y": 270,
+          "w": 93,
+          "h": 192
+        },
+        {
+          "x": 1180,
+          "y": 270,
+          "w": 173,
+          "h": 192
+        },
+        {
+          "x": 1533,
+          "y": 286,
+          "w": 147,
+          "h": 173
+        },
+        {
+          "x": 1879,
+          "y": 270,
+          "w": 184,
+          "h": 185
+        }
+      ],
+      "uniformScale": 0.05154639175257732
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "793edc3cefd79207c52b8d6f0f3d9fbcac6b94f1c4d55844fe6297ea230c1854",
+        "e9a710e817c0e9e16363f8275aad2d4a0c43bedd433a935627af8befb27e59f6",
+        "4533325c6639106bb912aad46abf2791af19fb47a99213747314907f305d4b82",
+        "93ac6a5257bf749b03a649e04a473c065a890ba71fcf4ed98dbdc3d73b51e421",
+        "365e81245f6b89e9f42d1a13ad3f7eaba3af7d4c05547844acf30e18964aa122",
+        "29240800a36291eccb75669643431852fc2860f6611e8388f15e977f62ba9efe"
+      ],
+      "alphaBounds": [
+        [
+          3,
+          4,
+          12,
+          12
+        ],
+        [
+          4,
+          3,
+          11,
+          12
+        ],
+        [
+          6,
+          3,
+          9,
+          12
+        ],
+        [
+          4,
+          3,
+          11,
+          11
+        ],
+        [
+          4,
+          4,
+          10,
+          11
+        ],
+        [
+          3,
+          3,
+          11,
+          11
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  },
+  {
+    "assetId": "leaves/falling_fieldmaple_brown-v1",
+    "species": "fieldmaple",
+    "color": "brown",
+    "prompt": "Create exactly ONE game sprite animation sheet containing exactly SIX isolated depictions of the SAME single falling English field maple, compact small five rounded blunt lobes; NEVER pointed Canadian maple leaf, warm dry umber brown. Reference 1 is project-owned leaf brushwork only, reference 2 is project seasonal palette only. SIX frames arranged in ONE straight horizontal row, equally spaced centers, transparent background, no labels no borders no ground no text. Each frame has only ONE leaf and short petiole. Flutter rotation around stable leaf center: frame0 broadside front; frame1 yaw45deg oblique narrow; frame2 nearly edge-on slender curling blade; frame3 underside broadside tilted other way; frame4 oblique narrow reversed; frame5 broadside front tilted approaching frame0. Actual 3D pitch/yaw causes clearly differing widths, not six flat copies rotated in image plane. Maintain identical leaf shape, length and color identity across frames. Soft top-left light, muted hand-painted medieval English city-builder style, no thick outline, no glow, crisp readable broad form, minimal vein detail. Each frame has ample transparent padding, leaf centers on same horizontal line, no frame touches another. Designed for final six 16x16 frames with blade length 8-10 pixels (whole sheet96x16): broad simplified silhouette, not a detailed botanical illustration. Use large consistent negative gutters between six sprites, no second row. True RGBA transparent output.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f228-962c-7482-8765-3524475790de/exec-f7d39ebf-9efe-445c-83e9-5ac3144dd19f.png",
+    "outputPath": "/tmp/astra-wave39-candidates-20260930/assets/leaves/falling_fieldmaple_brown-v1.png",
+    "outputHash": "636451066a9f1b372255840d915034c2fede9af52a42557f3d849ae1892d411b",
+    "sourceHash": "6864621e1663d31f0c50c1cb0171ce64694422b2daab384388f75507de0e0b9a",
+    "references": [
+      {
+        "filename": "falling_leaves_sheet-v1.png",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/falling_leaves_sheet-v1.png",
+        "sha256": "5d7a2fa5d7a306c55fb0e7310cb6da0874bc00f07d2c5aaadec534d18031b79d"
+      },
+      {
+        "filename": "Wave28_계절.jpg",
+        "path": "/tmp/astra-wave39-work-20260930/astra-wave39-reference-files/Wave28_계절.jpg",
+        "sha256": "f4716a5b2566349d8c792c6c04a145352f1067ecef004ca7801728c3e8532d1d"
+      }
+    ],
+    "tool": "native image_gen.imagegen",
+    "model": "not exposed by tool",
+    "generationDate": "2026-09-30",
+    "width": 96,
+    "height": 16,
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frames": 6,
+    "frameCount": 6,
+    "pivot": [
+      8,
+      8
+    ],
+    "recommendedAlpha": 0.9,
+    "recommendedSpeed": 14,
+    "worldPixelsPerSecond": 14,
+    "windTilt": 20,
+    "lifetime": 4,
+    "depth": "tree canopy emitter to world ground; depth sorted at particle world position",
+    "lifecycle": "emit within matching tree crown, flutter 6 frames at 8fps loop, descend 14 world-px/s, stop at ground; deposited leaf rendered separately",
+    "status": "candidate",
+    "candidateCount": 1,
+    "selectionReason": "Six distinct width-changing flutter views with species-shaped broadside frames and low-saturation seasonal tones",
+    "manualEdits": "Mechanical alpha-bound six-run extraction; one common uniform scale across six frames; centered each bounding box on (8,8); packed horizontal 96x16 RGBA. No recoloring or drawn replacement art.",
+    "normalization": {
+      "sourceDimensions": [
+        2172,
+        724
+      ],
+      "sourceBoxes": [
+        {
+          "x": 126,
+          "y": 247,
+          "w": 224,
+          "h": 218
+        },
+        {
+          "x": 548,
+          "y": 247,
+          "w": 143,
+          "h": 220
+        },
+        {
+          "x": 875,
+          "y": 238,
+          "w": 99,
+          "h": 231
+        },
+        {
+          "x": 1164,
+          "y": 271,
+          "w": 201,
+          "h": 196
+        },
+        {
+          "x": 1543,
+          "y": 260,
+          "w": 124,
+          "h": 205
+        },
+        {
+          "x": 1848,
+          "y": 281,
+          "w": 222,
+          "h": 188
+        }
+      ],
+      "uniformScale": 0.04329004329004329
+    },
+    "validation": {
+      "distinctFrames": 6,
+      "frameHashes": [
+        "ee2b6aa07ddb36546f49eff3aaf79bcd6de911e2cf260c218c491dd0e685ce4e",
+        "800008de728f6a1d35560b6f5f6b2beb938578e0e6029a94f614188d52191cf7",
+        "d940a2b67499bec7f61ac8c023df57db61d6041798cd1ca3a73b4f6ca8a3128a",
+        "5ecd0c394a4ab529bbc3c29962d349718d9dab36797c04802a27722079083b06",
+        "3b8db08fc2ee60f5766f76b5b84e0e6740b44805f2ffa16e002faf23db40ba9f",
+        "3a9aa25f4dbeb1715b644a71680e4b05d7e7c1cbd5cbc633c4e9e9b07f89e56c"
+      ],
+      "alphaBounds": [
+        [
+          3,
+          3,
+          12,
+          11
+        ],
+        [
+          5,
+          3,
+          10,
+          12
+        ],
+        [
+          6,
+          3,
+          9,
+          12
+        ],
+        [
+          4,
+          4,
+          11,
+          11
+        ],
+        [
+          5,
+          4,
+          9,
+          11
+        ],
+        [
+          3,
+          4,
+          12,
+          11
+        ]
+      ]
+    },
+    "visualCaveat": "At zoom0.6 each leaf is only about6px; species lobes are clearest in broadside frames and on enlarged QA, not all edge-on frames."
+  }
+]

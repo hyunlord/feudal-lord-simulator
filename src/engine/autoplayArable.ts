@@ -4,7 +4,8 @@
  *
  * - need: a year of the homes' bread as wheat (measured requests or today's rations, whichever is larger), times
  *   `ARABLE_MARGIN_PERMILLE`;
- * - supply: `expectedAnnualWheat` (tended strips, at most `predictedCellsPerFarmstead` cells per farmstead);
+ * - supply: `expectedAnnualWheat` (tended strips, at most `predictedCellsPerFarmstead` cells per farmstead). BOT-4 tried
+ *   the harvest record's realised share here (GP-2) and took it out: it stalled guardrail seed 1 in the hamlet;
  * - a field with untended strips gets a farmstead beside it first; otherwise the planner paints one 2×2 block
  *   (an old farm's footprint): beside a field whose farmstead has room, else a new block near a road with a
  *   free road-side cell for its farmstead, nearest the granaries by road.

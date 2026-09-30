@@ -15,6 +15,7 @@ import { openGoalFitsScenario } from "../src/ui/onboardingTaskModel";
 import { ResourceBar } from "../src/ui/ResourceBar";
 import { SettlementPanel } from "../src/ui/SettlementPanel";
 import { settlementGuidance } from "../src/ui/settlementGuidanceModel";
+import { placeManorSite } from "../src/state/openingVillage";
 
 const panel = (state: GameState) => renderToStaticMarkup(createElement(SettlementPanel, { state, onRestart: () => undefined }));
 const stoneCity = (): GameState => JSON.parse(readFileSync("fixtures/determinism/seed1/final-state.json", "utf8")) as GameState;
@@ -81,7 +82,7 @@ test("population guidance targets come from the scenario's stage and victory dat
 test("new game mode choice starts the default opening under the chosen scenario", () => {
   const played = { ...DEFAULT_GAME_STATE, tick: 500, population: 99 };
   const sandbox = gameReducer(played, { type: "start_new_game", scenarioId: SANDBOX_SCENARIO_ID });
-  assert.deepEqual(sandbox, { ...DEFAULT_GAME_STATE, scenarioId: SANDBOX_SCENARIO_ID });
+  assert.deepEqual(sandbox, placeManorSite({ ...DEFAULT_GAME_STATE, scenarioId: SANDBOX_SCENARIO_ID }), "FIX-11 (MH-1): with its manor house");
   assert.equal(gameReducer(played, { type: "start_new_game", scenarioId: "core:missing" }), played);
   assert.equal(gameReducer(played, { type: "start_new_game", scenarioId: DEFAULT_SCENARIO_ID }).scenarioId, DEFAULT_SCENARIO_ID);
 });

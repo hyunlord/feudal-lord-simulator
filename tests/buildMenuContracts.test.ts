@@ -3,7 +3,7 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { BUILDING_CONFIG } from "../src/content/buildingConfig";
+import { BUILDING_CONFIG, isRetiredBuildingKind } from "../src/content/buildingConfig";
 import { App } from "../src/App";
 import { DEFAULT_GAME_STATE, GameProvider } from "../src/state/gameStore";
 import { BuildSeals } from "../src/ui/BuildMenu";
@@ -13,8 +13,8 @@ import { buildingEntry } from "../src/content/buildingCatalog";
 
 test("build menu exposes all building tools plus road in reachable order", () => {
   // Given
-  // AF-12: every live kind; the retired wheat farm has no tool.
-  const buildingKinds = BUILDING_CONFIG.map((definition) => definition.kind).filter(kind => kind !== "wheat_farm");
+  // AF-12: every live kind; the retired wheat farm has no tool. FIX-11 (MH-4): nor the pre-placed manor house.
+  const buildingKinds = BUILDING_CONFIG.map((definition) => definition.kind).filter(kind => !isRetiredBuildingKind(kind));
 
   // When
   const tools = BUILD_TOOL_OPTIONS.map((option) => option.tool);
@@ -54,7 +54,8 @@ test("build menu options provide accessible labels for every selectable tool", (
   const labels = BUILD_TOOL_OPTIONS.map((option) => option.label.trim());
 
   // Then
-  assert.equal(labels.length, BUILDING_CONFIG.length - 1 + 1, "live kinds (all but the retired wheat farm) plus road");
+  assert.equal(labels.length, BUILDING_CONFIG.filter(definition => !isRetiredBuildingKind(definition.kind)).length + 1,
+    "placeable kinds (all but the retired wheat farm and the pre-placed manor house) plus road");
   assert.equal(labels.every((label) => label.length > 0), true);
 });
 

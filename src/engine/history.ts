@@ -15,7 +15,7 @@
  * - HL-10 (HIST-1): at each season's close, everyday records eight seasons old fold into one summary per season, and
  *   128² thumbnails that old are kept only at a year's end (winter's close). Everything else stays for good.
  */
-import { CHAPTER_ONE, PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
+import { PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
 import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
 import { HISTORY_TEMPLATES } from "../content/historyCopy.ko";
 import { MONEY_BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
@@ -41,9 +41,9 @@ import { lordshipOf } from "./lordshipState";
 import { beaconLit, raidEventId, warDecisionForecast } from "./war";
 import { plagueDecisionForecast } from "./plague";
 import { reorganisationDecisionForecast } from "./reorganisation";
-import { heirRelationWord, legacyDecisionForecast, legacyEnding, legacyWord } from "./legacy";
-import { LEGACY_BALANCE, LEGACY_PETITION_IDS, LEGACY_STEP_ART, BOROUGH_AUTONOMY_PETITION_ID } from "../content/legacyConfig";
-import { manorLord, personDisplayName } from "./persons";
+import { heirRelationWord, legacyDecisionForecast, legacyEnding, legacyOf, legacyWord } from "./legacy";
+import { LEGACY_BALANCE, LEGACY_PETITION_IDS, LEGACY_STEP_ART, BOROUGH_AUTONOMY_PETITION_ID, HEIR_CHOICE_PETITION_ID, HEIR_BY_RESPONSE } from "../content/legacyConfig";
+import { currentYear, manorLord, personDisplayName } from "./persons";
 import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
 import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
@@ -197,6 +197,12 @@ export function recordDecision(before: GameState, after: GameState, command: { r
   if (kind === "petition_response") {
     const defId = before.politics?.petitions.find(petition => petition.id === command.petitionId)?.defId;
     if (defId !== undefined) params.defId = defId;
+    // Item 8: heir choice — add the candidate's relation word so the sentence and chronicle can use it
+    if (defId === HEIR_CHOICE_PETITION_ID) {
+      const candidateKind = HEIR_BY_RESPONSE[decision.chosen as PetitionResponse];
+      const candidate = legacyOf(after)?.candidates.find(c => c.kind === candidateKind);
+      if (candidate !== undefined) params.relation = heirRelationWord(candidate);
+    }
   }
   const place = kind === "rebuild" ? after.buildings.find(entry => entry.id === command.buildingId) : undefined;
   // FACTION-0 (FX-3): a petition's decision names its faction.
@@ -491,6 +497,21 @@ function lordshipDrafts(before: GameState, after: GameState): Draft[] {
   if (chapter > (before.politics?.chapter.number ?? 1)) {
     drafts.push({ tick: after.tick, kind: "milestone", template: "milestone.chapter_start", params: { chapter }, subject: TOWN, severity: 2 });
   }
+  // FIX-11 (FX11-1): wardship begin and end — the ward is the lord the rule reads (`manorLord`), before or after.
+  const lordOf = (state: GameState) => manorLord(state.persons?.people ?? [], lordshipOf(state).house.order, currentYear(state));
+  if (was.wardship === undefined && now.wardship !== undefined) {
+    const lord = lordOf(after);
+    const guardianId = now.wardship.guardianId;
+    const guardian = guardianId === null ? undefined : after.persons?.people.find(person => person.id === guardianId);
+    drafts.push({ tick: after.tick, kind: "milestone", template: "lord.wardship_begun",
+      params: { lord: lord !== undefined ? personDisplayName(lord) : "", guardian: guardian !== undefined ? personDisplayName(guardian) : "" },
+      subject: TOWN, severity: 2 });
+  } else if (was.wardship !== undefined && now.wardship === undefined) {
+    const lord = lordOf(after) ?? lordOf(before);
+    drafts.push({ tick: after.tick, kind: "milestone", template: "lord.wardship_ended",
+      params: { lord: lord !== undefined ? personDisplayName(lord) : "" },
+      subject: TOWN, severity: 2 });
+  }
   return drafts;
 }
 
@@ -784,9 +805,10 @@ const QUOTE_WEIGHT: Readonly<Record<string, number>> = { famine_response: 0, pet
 export function chapterPageRecords(state: Pick<GameState, "history">, fromTick: number, toTick: number, limit = 8) {
   const records = historyQuery(state, { kinds: ["event", "era"], severity: 2, range: { from: fromTick, to: toTick } });
   const events = [...records].sort((a, b) => b.severity - a.severity || a.tick - b.tick).slice(0, limit).sort((a, b) => a.tick - b.tick);
+  // FIX-11 (FX11-8): every decision of the chapter (no three-quote limit). The caller starts a later chapter's range one
+  // tick after the previous chapter's end, whose records are that chapter's.
   const decisions = historyQuery(state, { kinds: ["decision"], severity: 1, range: { from: fromTick, to: toTick } })
     .filter(record => record.decision !== undefined)
-    .sort((a, b) => (QUOTE_WEIGHT[String(a.params?.decisionKind)] ?? 9) - (QUOTE_WEIGHT[String(b.params?.decisionKind)] ?? 9) || a.tick - b.tick)
-    .slice(0, CHAPTER_ONE.quotedDecisions);
+    .sort((a, b) => (QUOTE_WEIGHT[String(a.params?.decisionKind)] ?? 9) - (QUOTE_WEIGHT[String(b.params?.decisionKind)] ?? 9) || a.tick - b.tick);
   return { events, decisions };
 }

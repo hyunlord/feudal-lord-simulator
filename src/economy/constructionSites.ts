@@ -77,6 +77,8 @@ export const CONSTRUCTION = {
     fulling_mill: 800,
     dyehouse: 600,
     tenter_yard: 400,
+    // FIX-11 (11): the manor house is pre-placed; it is never built by players or bots. 0 ticks as a sentinel.
+    manor_house: 0,
   },
 } as const satisfies {
   readonly MAX_BUILDERS_PER_SITE: number;

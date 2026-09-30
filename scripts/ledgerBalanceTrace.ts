@@ -56,8 +56,11 @@ export async function ledgerBalanceTrace(root: string, kind: string, ticks: numb
   // after C2 while no upkeep goes unpaid and no stone-wall project is proclaimed.
   // F0-C2: the history ledger is a record of the world, not part of it (spec HL-9), so the world hash leaves it out.
   // FACTION-0 (FN7): the factions only remember the town and never feed it, so it leaves them out too.
-  const { treasuryCoin: _treasury, money: _money, history: _history, factions: _factions, buildings, ...world } = rest as AnyState & { money?: unknown; history?: unknown; factions?: unknown; buildings: Record<string, unknown>[] };
-  const worldBuildings = buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building);
+  // BOT-4 (GP-1): the harvest record is the bot's grain-plan bookkeeping; the world hash leaves it out (the world itself
+  // stays the pinned one while the bot's choices are unchanged).
+  const { treasuryCoin: _treasury, money: _money, history: _history, factions: _factions, harvestRecord: _harvest, buildings, ...world } = rest as AnyState & { money?: unknown; history?: unknown; factions?: unknown; harvestRecord?: unknown; buildings: Record<string, unknown>[] };
+  // FIX-11 (SK-3, FX11-14): the stuck-stock since-ticks and the dyed bolts' colour tally are records too.
+  const worldBuildings = buildings.map(({ upkeepUnpaid: _unpaid, stuckSinceTick: _stuck, dyedColours: _colours, ...building }) => building);
   return {
     kind, stateFile: stateFile ?? null, startTick, endTick: state.tick, ticks,
     treasurySequenceSha256: sequence.digest("hex"), finalTreasury: previous, treasuryChanges: changes,

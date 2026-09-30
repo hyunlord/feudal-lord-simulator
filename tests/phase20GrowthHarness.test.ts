@@ -5,10 +5,12 @@ import type { GameState } from "../src/engine/engine.types";
 import { parseGrowthOptions } from "../scripts/phase19GrowthMetrics";
 import { createGrowthInitialState, createGrowthStability } from "../scripts/phase19GrowthRunControl";
 import { createGrowthObservations } from "../scripts/phase19GrowthObservations";
+import { placeManorSite } from "../src/state/openingVillage";
 
 test("seed selection regenerates terrain deterministically and seed one preserves the opening state", () => {
   const original = structuredClone(DEFAULT_GAME_STATE);
-  assert.deepEqual(createGrowthInitialState(1), original);
+  // FIX-11 (MH-1): the opening state with its manor house.
+  assert.deepEqual(createGrowthInitialState(1), placeManorSite(original));
   assert.deepEqual(createGrowthInitialState(1), createGrowthInitialState(1));
   assert.deepEqual(DEFAULT_GAME_STATE, original);
 });

@@ -12,7 +12,7 @@ export type PersonClassBand = "labour" | "poor_servant" | "artisan" | "merchant"
 export type PersonBuild = "thin" | "average" | "heavy";
 /** PS-1: the person's place in the household (offices are tags: `reeve`, `manager:<buildingId>`, `petitioner:<petitionId>`). */
 export type PersonRole = "head" | "spouse" | "child" | "kin" | "steward";
-export type DeathCause = "age" | "famine" | "fire" | "plague";
+export type DeathCause = "age" | "captivity" | "famine" | "fire" | "plague";
 
 import type { PersonTraits } from "../content/personTraits";
 

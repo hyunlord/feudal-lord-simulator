@@ -47,9 +47,9 @@ export const PATRONYMIC_SURNAMES: Readonly<Record<string, string>> = {
   Geoffrey: "Jefferson", Ralph: "Rawlinson", Stephen: "Stevenson", Gilbert: "Gibson", Peter: "Pearson", Philip: "Phillipson",
 };
 
-/** Byname for namesakes in the town (PS-2): elder and younger first, then a byname, then an ordinal. */
+/** Byname for namesakes in the town (PS-2): same household senior/junior, father-son the father/the son, else elder/younger, then a byname. */
 export const NAMESAKE_EPITHETS: readonly string[] = [
-  "the elder", "the younger", "le Rous", "le Brun", "le Blund", "le Long", "le Petit", "le Wyte", "le Neve", "le Gode",
+  "senior", "junior", "the father", "the son", "the elder", "the younger", "le Rous", "le Brun", "le Blund", "le Long", "le Petit", "le Wyte", "le Neve", "le Gode",
 ];
 export const ORDINAL_EPITHETS: readonly string[] = ["the third", "the fourth", "the fifth", "the sixth", "the seventh", "the eighth", "the ninth", "the tenth"];
 

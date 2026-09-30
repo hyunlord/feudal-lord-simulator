@@ -221,7 +221,9 @@ test("L9 (LG-7) the scores and the endings: six answer sets of the same town end
   for (const [name, answers] of Object.entries({
     standard: STANDARD,
     remembered: { ...STANDARD, [LEGACY_CHOICE_PETITION_ID]: "accept_with_price" },
-    chantry: { ...STANDARD, [LEGACY_CHOICE_PETITION_ID]: "refuse", [CHURCH_REBUILDING_PETITION_ID]: "refuse" },
+    // FIX-11 (FX11-2): with the death table's tail past 85 the refused legacy's church score (74) passed the town's
+    // (72, was a 74–74 tie); a town left without a chosen legacy is the merchants' chantry by its highest score alone.
+    chantry: { ...STANDARD, [LEGACY_CHOICE_PETITION_ID]: undefined, [CHURCH_REBUILDING_PETITION_ID]: "refuse" },
     house: { ...STANDARD, [BOROUGH_AUTONOMY_PETITION_ID]: "refuse", [LEGACY_CHOICE_PETITION_ID]: "accept_with_price" },
     pilgrim: { ...STANDARD, [BOROUGH_AUTONOMY_PETITION_ID]: "refuse", [LEGACY_CHOICE_PETITION_ID]: "refuse", [CHURCH_REBUILDING_PETITION_ID]: "accept" },
     lords: { [ROYAL_TAX_PETITION_ID]: "refuse", [HEIR_CHOICE_PETITION_ID]: "refuse", [BOROUGH_AUTONOMY_PETITION_ID]: "refuse", [CHURCH_REBUILDING_PETITION_ID]: "refuse" },

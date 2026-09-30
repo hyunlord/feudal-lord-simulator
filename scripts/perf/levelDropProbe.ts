@@ -50,7 +50,13 @@ try {
         process.stdout.write(`${JSON.stringify({ year, pop: state.population, houses: state.houses.length, l4: state.houses.filter(house => house.level === 4).length,
           palisade: state.palisade === null ? null : { points: state.palisade.polygon.length, done: state.palisade.segments.filter(segment => segment.completed).length,
             of: state.palisade.segments.length, stone: state.palisade.segments.filter(segment => segment.material === "stone").length, expanded: state.palisade.expansion?.tick },
-          lastYearEvents: events, below })}\n`);
+          lastYearEvents: events, coin: state.treasuryCoin,
+          counts: Object.fromEntries(["farmstead", "mill", "granary", "house"].map(kind => [kind, state.buildings.filter(building => building.kind === kind).length])),
+          arable: (state.zones ?? []).filter(zone => zone.kind === "arable").reduce((sum, zone) => sum + zone.membership.length, 0),
+          harvest: state.harvestRecord === undefined ? null : { past: state.harvestRecord.past },
+          ledger: Object.entries((state.ledger?.entries ?? []).filter(entry => stateCalendar({ ...state, tick: entry.tick }).year === year - 1)
+            .reduce((sums, entry) => ({ ...sums, [entry.category]: (sums[entry.category] ?? 0) + entry.amount }), {} as Record<string, number>)),
+          below })}\n`);
       }
     }
     previous = state;

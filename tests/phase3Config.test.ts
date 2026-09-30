@@ -34,7 +34,8 @@ test("Phase 3 balance constants retain the foundation values plus the measured o
 test("Phase 3 building table includes chapel without changing ordinary building economics", () => {
   // Given / When / Then
   const phase3BuildingConfig = Object.fromEntries(
-    Object.entries(BUILDING_CONFIG_BY_KIND).filter(([kind]) => kind !== "church" && kind !== "keep"),
+    // FIX-11 (MH-4): the pre-placed manor house is no Phase 3 building either.
+    Object.entries(BUILDING_CONFIG_BY_KIND).filter(([kind]) => kind !== "church" && kind !== "keep" && kind !== "manor_house"),
   );
 
   assert.deepEqual(phase3BuildingConfig, {

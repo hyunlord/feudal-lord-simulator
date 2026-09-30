@@ -40,6 +40,21 @@ export function palisadeRingPoints(path: PalisadePath): readonly TileEdgePoint[]
   return points;
 }
 
+/**
+ * FIX-11 (12): a ring point at `index` is "straight" when its predecessor and successor lie on the same axis —
+ * the ring does not turn at this point. A gate on a straight segment avoids the awkward visual at ring corners.
+ * Falls back to corners only when no straight point qualifies.
+ */
+export function isStraightRingPoint(ring: readonly TileEdgePoint[], index: number): boolean {
+  const n = ring.length;
+  if (n < 3) return false;
+  const prev = ring[(index - 1 + n) % n];
+  const point = ring[index];
+  const next = ring[(index + 1) % n];
+  if (prev === undefined || point === undefined || next === undefined) return false;
+  return (prev.x === point.x && point.x === next.x) || (prev.y === point.y && point.y === next.y);
+}
+
 export function segmentPalisadePathForConstruction(
   path: PalisadePath,
 ): readonly PalisadeConstructionSegmentPath[] {

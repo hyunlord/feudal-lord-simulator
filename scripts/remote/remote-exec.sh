@@ -3,7 +3,9 @@
 #   remote-exec.sh launch <run>        start the run detached inside a resource-limited systemd user scope, print its pid
 #   remote-exec.sh run <run> <unit>    (inside the scope) prepare the run folder, run the command, record results
 # Layout under ~/fls-runs: <run>/ (one per <label>-<shortsha>), _cache/{repo.git,nm-<hash>/}, _tools/ (setup-dgx.sh),
-# _locks/, _slots/, _ports/, _clones/. Folders starting with "_" are never pruned.
+# _locks/, _slots/, _ports/, _clones/, _kept/. Folders starting with "_" are never pruned.
+# A kept run (run.sh --keep) copies its .remote/ and result files to _kept/<run>/ and marks its folder .remote/keep:
+# the prune skips a marked folder and never touches _kept/, whichever branch's copy of this script prunes.
 set -uo pipefail
 
 BASE=$HOME/fls-runs
@@ -50,9 +52,20 @@ finish() {
     echo "SYNC_S=${SYNC_S:-}"; echo "PREPARE_S=${PREPARE_S:-}"; echo "WAIT_S=${WAIT_S:-0}"
     echo "COMMAND_S=${COMMAND_S:-}"; echo "NM_CACHE=${NM_CACHE:-}"; echo "PORT=${FLS_REMOTE_PORT:-}"
   } > .remote/timing.env
-  prune_runs
   echo "$rc" > .remote/exit-code.tmp && mv .remote/exit-code.tmp .remote/exit-code
+  keep_results
+  prune_runs
   exit "$rc"
+}
+# A run used for a judgement (run.sh --keep): its results survive the prune — in _kept/<run>/ even if an older copy of
+# this script (another branch) prunes the folder itself.
+keep_results() {
+  [ "${KEEP_RUN:-0}" = 1 ] || return 0
+  local dest="$BASE/_kept/$RUN"
+  mkdir -p "$dest/.remote" && touch .remote/keep
+  rsync -a .remote/ "$dest/.remote/"
+  [ -s .remote/changed-files.txt ] && rsync -a --files-from=.remote/changed-files.txt ./ "$dest/"
+  echo "remote-exec: kept results in _kept/$RUN (release: run.sh --release $RUN)"
 }
 fail() { echo "remote-exec: $*" >&2; finish 2; }
 
@@ -64,6 +77,7 @@ prune_runs() {
   for dir in $(ls -1dt "$BASE"/*/ 2>/dev/null); do
     name=$(basename "$dir")
     case "$name" in _*) continue ;; esac
+    [ -f "$dir/.remote/keep" ] && continue
     count=$((count + 1))
     [ "$count" -le "$KEEP_RUNS" ] && continue
     [ "$name" = "$RUN" ] && continue

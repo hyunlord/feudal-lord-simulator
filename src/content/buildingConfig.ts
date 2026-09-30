@@ -25,7 +25,9 @@ export type BuildingKind =
   | "weaver_house"
   | "fulling_mill"
   | "dyehouse"
-  | "tenter_yard";
+  | "tenter_yard"
+  // FIX-11 (11): the lord's manor house — pre-placed at map generation, not in build menu.
+  | "manor_house";
 
 export interface ProductionSpec {
   readonly output: ResourceType;
@@ -88,6 +90,10 @@ export interface Building {
   readonly reserved: Partial<Record<ResourceType, number>>;
   readonly stockReserved: Partial<Record<ResourceType, number>>;
   readonly productionProgress: number;
+  /** FIX-11 (14): dyed cloth tally by colour (woad/madder/weld) in the dyehouse's stock. Absent = none recorded. */
+  readonly dyedColours?: { readonly woad: number; readonly madder: number; readonly weld: number };
+  /** FIX-11 (15): per-resource tick when the resource was first observed stuck (no delivery possible). Absent = not yet stuck. */
+  readonly stuckSinceTick?: Partial<Record<ResourceType, number>>;
 }
 
 /** C4 (AL-2): the crops a farmstead's strips can grow. */
@@ -118,8 +124,16 @@ export function barnHolds(building: Pick<Building, "kind" | "crop" | "inventory"
  */
 export const RETIRED_BUILDING_KINDS: readonly BuildingKind[] = ["wheat_farm"];
 
+/** FIX-11 (MH-4): kinds the map places and no one builds — never unlocked (the lord's manor house). */
+export const PREPLACED_BUILDING_KINDS: readonly BuildingKind[] = ["manor_house"];
+
+export function isPreplacedBuildingKind(kind: BuildingKind): boolean {
+  return PREPLACED_BUILDING_KINDS.includes(kind);
+}
+
+/** Not placeable by the menu, the reducer or the bot: a retired kind, or (FIX-11, MH-4) a pre-placed one. */
 export function isRetiredBuildingKind(kind: BuildingKind): boolean {
-  return RETIRED_BUILDING_KINDS.includes(kind);
+  return RETIRED_BUILDING_KINDS.includes(kind) || isPreplacedBuildingKind(kind);
 }
 
 /**
@@ -411,6 +425,13 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     kind: "tenter_yard", name: BUILDING_COPY.tenter_yard.name, width: 3, height: 2, workersRequired: 1, buildCost: { timber: 20 },
     requiresAdjacentTerrain: null, requiresRoad: true,
     production: { output: "finished_cloth", input: "dyed_cloth", inputPerOutput: 1, ticksPerOutput: 80, outputHoldLimit: 10 }, storageCapacity: 30, serviceRadius: 0,
+  },
+  // FIX-11 (11): the manor house — the lord's household. Pre-placed at map generation; not in build menu, not buildable or demolishable by player or bot.
+  manor_house: {
+    kind: "manor_house", name: BUILDING_COPY.manor_house.name, width: 2, height: 2,
+    workersRequired: 0, buildCost: {},
+    requiresAdjacentTerrain: null, requiresRoad: false,
+    production: null, storageCapacity: 0, serviceRadius: 0,
   },
 };
 

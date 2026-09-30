@@ -13,6 +13,11 @@
  * `MILL_NEAR_BARN` road tiles (seed 4's edge barn had a mill 4 tiles away as the crow flies and far by road). The new
  * mill goes within `MILL_NEAR_BARN` tiles of the barn. One mill at a time; the mill cap does not apply (the mill moves
  * hauling, it adds no demand).
+ *
+ * BOT-4 (GP-4, spec docs/design/arable-fields.md): one mill beside a barn is not always enough. FIX-10's coastal seed 3
+ * kept a barn at 900–1,000 wheat all year with a mill beside it (a mill grinds 266 wheat a year) while its fields lost
+ * some 800 ripe wheat each winter and the town's homes lost their levels for want of bread. A backed-up barn now counts
+ * until the mills within `MILL_NEAR_BARN` road tiles can grind its expected year (`farmsteadYears`): at least one.
  */
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { isBuildingConstructionSite } from "../economy/construction";
@@ -21,6 +26,12 @@ import type { AutoplayAction } from "./autoplay.types";
 import { BOT_RECOVERY_MIN_HOUSES, recordBotRecovery, type BotRecoveryCollector, type GapBuildAction } from "./autoplayBotRecovery";
 import type { GameState } from "./engine.types";
 import { resolveBuildingRoute } from "./routing";
+import { BALANCE } from "../content/balanceConfig";
+import { farmsteadYears } from "../zones/arableOutlook";
+
+/** GP-4: the wheat one mill grinds in a year (`inputPerOutput` per `ticksPerOutput` ticks). */
+const MILL_YEAR_WHEAT = Math.floor(BALANCE.TICKS_PER_YEAR * (BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2)
+  / (BUILDING_CONFIG_BY_KIND.mill.production?.ticksPerOutput ?? 30));
 
 /** Wheat in a barn that counts as a backlog (a third of a full farmstead's harvest). */
 export const BARN_BACKLOG_WHEAT = 400;
@@ -39,12 +50,13 @@ export function backedUpBarns(state: GameState): readonly Building[] {
   if (mills.filter(mill => (mill.inventory.wheat ?? 0) < perGrind).length * 2 < mills.length) return [];
   const fallen = state.houses.filter(house => house.residents > 0 && houseBuiltLevel(house) > house.level).length;
   if (fallen < BOT_RECOVERY_MIN_HOUSES) return [];
+  const years = new Map(farmsteadYears(state).map(year => [year.farmsteadId, year.wheat]));
   return state.buildings
     .filter(barn => barn.kind === "farmstead" && (barn.inventory.wheat ?? 0) >= BARN_BACKLOG_WHEAT
-      && !mills.some(mill => {
+      && mills.filter(mill => {
         const path = resolveBuildingRoute(state, barn, mill).path;
         return path !== null && path.length - 1 <= MILL_NEAR_BARN;
-      }))
+      }).length < Math.max(1, Math.ceil((years.get(barn.id) ?? 0) / MILL_YEAR_WHEAT)))
     .sort((a, b) => (b.inventory.wheat ?? 0) - (a.inventory.wheat ?? 0) || a.id.localeCompare(b.id));
 }
 

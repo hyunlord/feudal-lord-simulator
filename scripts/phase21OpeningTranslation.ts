@@ -1,3 +1,4 @@
+import { placeManorSite } from "../src/state/openingVillage";
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { buildingRoadAccessTiles } from "../src/engine/routing";
@@ -114,6 +115,7 @@ export function createGrowthOpening(seed: number, archetypeId?: string) {
     tx: index % size.width, ty: Math.floor(index / size.width), terrain, buildingId: null, hasRoad: false })) };
   const opening = selectGrowthOpening(world, seed);
   const { river: _river, ...state } = opening.state;
-  return { ...opening, state: { ...state, ...(archetype.terrain.kind === "river" ? {} : { archetypeId: archetype.id }),
-    ...(land.river === null ? {} : { river: land.river }) } };
+  // FIX-11 (MH-1): the manor house on the nearest free grass to the opening village's north-west.
+  return { ...opening, state: placeManorSite({ ...state, ...(archetype.terrain.kind === "river" ? {} : { archetypeId: archetype.id }),
+    ...(land.river === null ? {} : { river: land.river }) }) };
 }

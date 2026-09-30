@@ -5,7 +5,7 @@ import { canPlaceRoad, existingRoadComponent, getOrthogonalRoadNeighbors } from 
 import { canTraverseWallBoundary } from "../world/wallTraversal";
 import { canTraverseRoadBoundary } from "../world/bridges";
 import { buildingRoadAccessTiles } from "./routing";
-import { palisadeRingPoints } from "./palisadeSegments";
+import { isStraightRingPoint, palisadeRingPoints } from "./palisadeSegments";
 
 export function gatesForExteriorAccess(grid: Grid & { readonly buildings: readonly Building[] }, path: PalisadePath, primary: TileEdgePoint, selected: readonly TileEdgePoint[]): readonly TileEdgePoint[] {
   const plain = { ...grid, palisade: null };
@@ -64,7 +64,12 @@ export function gatesForExteriorAccess(grid: Grid & { readonly buildings: readon
       const component = reached([...gates, point]);
       return { point, component, connects: component.some(tile => target.has(`${tile.tx},${tile.ty}`)) };
     }).filter(option => option.component.length > current.length);
-    const best = options.sort((a, b) => Number(b.connects) - Number(a.connects) || b.component.length - a.component.length || a.point.y - b.point.y || a.point.x - b.point.x)[0];
+    // FIX-11 (12): among gates that reach the outside, a straight side first; a corner only when none is straight.
+    const straight = (point: TileEdgePoint) => Number(isStraightRingPoint(ring, ring.findIndex(p => p.x === point.x && p.y === point.y)));
+    const best = options.sort((a, b) =>
+      Number(b.connects) - Number(a.connects) || straight(b.point) - straight(a.point) || b.component.length - a.component.length
+      || a.point.y - b.point.y || a.point.x - b.point.x,
+    )[0];
     if (best === undefined) break;
     gates.push(best.point);
     current = best.component;

@@ -5,11 +5,28 @@ import {
 import type { House } from "../population/population.types";
 import type { GameState } from "../engine/engine.types";
 import { householdServices } from "../engine/householdServices";
+import { MANOR_HOUSEHOLD } from "../engine/persons.types";
+import { zonesOf } from "../zones/zoneEdits";
 import type { Tile } from "../world/world.types";
 
 export const OPENING_VILLAGE_CENTER = { tx: 45, ty: 41 } as const;
 export const STARTING_HOUSE_ID = "house-46-40-0";
 export const OPENING_VILLAGE_STARVATION_GRACE_TICKS = 6_000;
+
+// FIX-11 (11, MH-1): the manor house's wanted site, north-west of the opening village (ten tiles west and four north of
+// the first cottage); it takes the nearest free grass 2×2 to it.
+export const MANOR_HOUSE_TX = 36;
+export const MANOR_HOUSE_TY = 36;
+export const MANOR_HOUSE_ID = "manor-house-36-36-0";
+const MANOR_FROM_FIRST_COTTAGE = { dx: -10, dy: -4 } as const;
+/** MH-1: how far (tiles, each way) from the wanted site the manor house looks for free grass. */
+const MANOR_SEARCH_REACH = 16;
+/** MH-1: no building or road within this many tiles of the manor house's footprint when it is placed. */
+const MANOR_CLEARANCE = 5;
+/** MH-1: the wanted site stays this far inside the map, else it is mirrored to the village's other side. */
+const MANOR_EDGE_ROOM = 8;
+/** MH-1: the manor house never stands within this many tiles of the map's edge. */
+const MANOR_MAP_MARGIN = 3;
 
 const COTTAGE_ORIGINS = [
   { tx: 44, ty: 40 },
@@ -91,6 +108,7 @@ const OPENING_BUILDINGS = [
     stockReserved: {},
     productionProgress: 0,
   },
+
 ] as const satisfies readonly Building[];
 
 function cottageId(tx: number, ty: number): string {
@@ -154,4 +172,63 @@ export function withOpeningVillageServices<State extends GameState>(state: State
     const hasWater = services.houses.get(house.buildingId)?.water.kind === "served";
     return hasWater === house.hasWater ? house : { ...house, hasWater };
   }) };
+}
+
+/**
+ * FIX-11 (11, MH-1, MH-2): gives a town its manor house — a new map (every land, every opening) and a save from before
+ * FIX-11 (the v35 migration). The free 2×2 nearest to ten tiles west and four north of the first cottage (the opening
+ * village's north-west, (36,36) on the default opening), within sixteen tiles of it — free means grass and no painted
+ * zone, with no building or road within five tiles. A town with no free 2×2 left keeps no manor house (the family then shows as "시골 장원", UI10-D2).
+ * Pure: returns a new state.
+ */
+export function placeManorSite<State extends GameState>(state: State): State {
+  if (state.buildings.some(building => building.kind === "manor_house")) return state;
+  const def = BUILDING_CONFIG_BY_KIND.manor_house;
+  const zoned = new Set(zonesOf(state).flatMap(zone => zone.membership));
+  const free = (tx: number, ty: number): boolean => {
+    for (let dy = 0; dy < def.height; dy += 1) for (let dx = 0; dx < def.width; dx += 1) {
+      const index = (ty + dy) * state.width + tx + dx;
+      const tile = state.tiles[index];
+      if (tile === undefined || tile.terrain !== "grass" || zoned.has(index)) return false;
+      if (tx + dx < MANOR_MAP_MARGIN || ty + dy < MANOR_MAP_MARGIN || tx + dx >= state.width - MANOR_MAP_MARGIN || ty + dy >= state.height - MANOR_MAP_MARGIN) return false;
+    }
+    // MH-1: clear of the village by MANOR_CLEARANCE tiles, so the living core's wall (margin 2–3) and its roads keep
+    // their room; the town grows up to it later.
+    for (let y = ty - MANOR_CLEARANCE; y < ty + def.height + MANOR_CLEARANCE; y += 1) {
+      for (let x = tx - MANOR_CLEARANCE; x < tx + def.width + MANOR_CLEARANCE; x += 1) {
+        const tile = x < 0 || y < 0 || x >= state.width || y >= state.height ? undefined : state.tiles[y * state.width + x];
+        if (tile !== undefined && (tile.buildingId !== null || tile.hasRoad)) return false;
+      }
+    }
+    return true;
+  };
+  const cottage = state.buildings.filter(building => building.kind === "house").sort((left, right) => left.ty - right.ty || left.tx - right.tx)[0];
+  // MH-1: north-west of the village, or — where that runs to within MANOR_EDGE_ROOM of the map's edge — the mirrored
+  // side on that axis (a village opened in the map's corner keeps its wall's room on the edge side).
+  const along = (from: number, offset: number, size: number) =>
+    from + offset >= MANOR_EDGE_ROOM && from + offset <= size - MANOR_EDGE_ROOM ? from + offset : from - offset;
+  const want = cottage === undefined ? { tx: MANOR_HOUSE_TX, ty: MANOR_HOUSE_TY }
+    : { tx: along(cottage.tx, MANOR_FROM_FIRST_COTTAGE.dx, state.width), ty: along(cottage.ty, MANOR_FROM_FIRST_COTTAGE.dy, state.height) };
+  const sites: { tx: number; ty: number; distance: number }[] = [];
+  const low = (value: number) => Math.max(0, value - MANOR_SEARCH_REACH);
+  for (let ty = low(want.ty); ty + def.height - 1 <= Math.min(state.height - 1, want.ty + MANOR_SEARCH_REACH); ty += 1) {
+    for (let tx = low(want.tx); tx + def.width - 1 <= Math.min(state.width - 1, want.tx + MANOR_SEARCH_REACH); tx += 1) {
+      if (free(tx, ty)) sites.push({ tx, ty, distance: (tx - want.tx) ** 2 + (ty - want.ty) ** 2 });
+    }
+  }
+  const site = sites.sort((left, right) => left.distance - right.distance || left.ty - right.ty || left.tx - right.tx)[0];
+  if (site === undefined) return state;
+  const id = `manor-house-${site.tx}-${site.ty}-0`;
+  const manor: Building = { id, kind: "manor_house", tx: site.tx, ty: site.ty, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
+  const tiles = state.tiles.map(tile =>
+    tile.tx >= site.tx && tile.tx < site.tx + def.width && tile.ty >= site.ty && tile.ty < site.ty + def.height ? { ...tile, buildingId: id } : tile);
+  return { ...state, buildings: [...state.buildings, manor], tiles };
+}
+
+/**
+ * FIX-11 (11): true when the manor house has no lord's household members assigned (empty display — the lord's
+ * family has not yet been established or all members have died or left).
+ */
+export function manorVacant(state: GameState): boolean {
+  return !(state.persons?.people ?? []).some(p => p.householdId === MANOR_HOUSEHOLD);
 }
