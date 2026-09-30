@@ -83,12 +83,11 @@ function HeirCandidate({ heir }: { readonly heir: HeirCandidateView }) {
   return (
     <span className="petition-heir" data-person={heir.personId} data-portrait-exact={heir.exact ? "true" : "false"}>
       <PersonPortrait portraitId={heir.portraitId} size={48} />
-      <span className="petition-heir-text">
-        <strong>{heir.name}</strong>
-        <span>{heir.who} · {heir.lineage}</span>
-        <span>{heir.resemblance}</span>
-        <span>{heir.records}</span>
-      </span>
+      <strong className="petition-heir-name">{heir.name}</strong>
+      <span className="petition-heir-who">{heir.who}</span>
+      <span className="petition-heir-line">{heir.lineage}</span>
+      <span className="petition-heir-line">{heir.resemblance}</span>
+      <span className="petition-heir-line">{heir.records}</span>
     </span>
   );
 }
