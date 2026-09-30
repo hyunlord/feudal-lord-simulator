@@ -5,7 +5,7 @@
 //    (the Staple, the guild's quarrel or the market's fire, the parish's nave, the deposition) a small world shot before
 //    the story's pop-up (the story waits STORY_DELAY_MS) and the pop-up after; the season strip's chapter 5 forecast;
 //  ② the four decision cards (the heir's with its candidates) and the interlude's two petition cards;
-//  ③ the faction tab after 1399 (the new king), the ledger's chapter 5 money lines and its "보관 N곳" fold (malt, store by
+//  ③ the faction tab after 1399 (the new king), the coin ledger's chapter 5 money lines, the stock table's "보관 N곳" fold (malt, store by
 //    store), the storehouse inspector with malt and the granary's without it, the empty manor close up (paused, zoom
 //    1.6), the keep's inspector and the rights tab's seat line (the family gone to its country manor);
 //  ④ the campaign's end: chapter 5's page, the legacy verdict and ending (one screen), the chronicle book (title,
@@ -28,19 +28,21 @@ import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 /** The screens' selectors (src/ui/legacy/*, StoryModals, SeasonStrip, LedgerStockTable, InspectorView, HudShell). */
 const SEL = {
   petitionCard: ".petition-card",
-  // ui10-cards' heir card (not merged yet): each candidate's row.
-  heirCandidate: ".petition-card .heir-candidate",
+  // The heir's card (StoryModals HeirCandidate): each candidate.
+  heirCandidate: ".petition-card .petition-heir",
   eventChip: ".event-chip",
   storyModal: ".story-modal",
-  modal: ".petition-card, .chronicle-page, .chapter-preview, .famine-card, .story-modal",
+  modal: ".petition-card, .chronicle-page, .chapter-preview, .famine-card, .story-modal, .event-card",
   dismiss: [".chronicle-page .chronicle-keep", ".story-modal-later", ".season-ledger-resume"],
   calendar: "[data-testid='hud-calendar']",
   seasonStripLegacy: ".season-strip-list li[data-mark^='legacy_']",
   ledgerDock: "[data-dock='ledger']",
   ledgerDrawer: ".ledger-drawer",
   ledgerTab: (tab: string) => `[data-ledger-tab='${tab}']`,
-  // The stock tab's chapter ledgers (the wages', the reorganisation's; chapter 5's categories come with ui10-cards).
-  legacyLedger: ".ledger-wage-ledger",
+  // The coin's ledger (ResourceBar → LedgerPanel): its account and window tabs, its source and entry rows.
+  coin: ".resource-bar__coin",
+  coinPanel: ".ledger-panel",
+  coinPanelTab: ".ledger-panel .ledger-panel__tab",
   heldToggle: ".ledger-held-toggle",
   heldStores: (resource: string) => `[data-resource-stores='${resource}'] li`,
   rightsSeat: ".ledger-rights-seat",
@@ -205,18 +207,22 @@ await step("f1-factions-new-king", async () => {
   result["f1-factions-new-king"] = { state: name, rows: await texts(page, SEL.factionRow) };
   await close();
 });
-await step("l1-legacy-ledger", async () => {
-  const { page, close } = await named("chapter5-end", HELD);
-  await page.waitForTimeout(1_000); await dismiss(page);
-  await page.locator(SEL.ledgerDock).first().click(); await page.waitForTimeout(700);
-  await page.locator(SEL.ledgerTab("stock")).first().click(); await page.waitForTimeout(700);
-  await page.evaluate(query => { document.querySelector(query)?.scrollIntoView({ block: "end" }); }, SEL.legacyLedger); await page.waitForTimeout(300);
-  await page.evaluate(query => { const nodes = document.querySelectorAll(query); nodes[nodes.length - 1]?.scrollIntoView({ block: "end" }); }, SEL.legacyLedger);
-  await page.waitForTimeout(300);
-  await shootBox(page, SEL.ledgerDrawer, "l1-legacy-ledger.jpg");
-  result["l1-legacy-ledger"] = await texts(page, `${SEL.legacyLedger} tr, ${SEL.legacyLedger} li, ${SEL.legacyLedger} h4`);
-  await close();
-});
+// The coin's ledger (the resource bar's coin detail): chapter 5's money lines — the Crown's subsidy, the heir's relief,
+// the charter's fee, the fee farm, the endowment — the legacy's season (recent) and the whole campaign (전체).
+for (const [file, name, windowLabel] of [["l1-coin-ledger-legacy", "legacy.legacy_record", null], ["l1-coin-ledger-campaign", "chapter5-end", "전체"]] as const) {
+  await step(file, async () => {
+    const { page, close } = await named(name, HELD);
+    await page.waitForTimeout(1_000); await dismiss(page);
+    await page.locator(SEL.coin).first().click(); await page.waitForTimeout(700);
+    if (windowLabel !== null) {
+      await page.evaluate(([query, label]) => { for (const tab of document.querySelectorAll<HTMLElement>(query)) if (tab.textContent?.trim() === label) tab.click(); }, [SEL.coinPanelTab, windowLabel] as const);
+      await page.waitForTimeout(600);
+    }
+    await shootBox(page, SEL.coinPanel, `${file}.jpg`);
+    result[file] = await texts(page, `${SEL.coinPanel} li`);
+    await close();
+  });
+}
 // The stock table's "보관 N곳" unfolded for malt (each store's name and amount), the map unlit.
 await step("l2-ledger-fold-malt", async () => {
   const { page, close } = await named("chapter5-end", HELD);
