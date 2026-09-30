@@ -31,6 +31,8 @@ import { recordArt } from "../src/ui/chronicle/chronicleScreenModel";
 import { forecastStewardLine, storyBeats, type StoryBeat } from "../src/ui/eventStory";
 import { inspectorModel } from "../src/ui/inspectorModel";
 import { legacyGoalProgress } from "../src/ui/legacyGoalProgress";
+import { lordshipView } from "../src/ui/lordshipModel";
+import { familyCountrySeatYear, personCardView } from "../src/ui/persons/personModels";
 import { legacyMarks } from "../src/ui/seasonStrip";
 import { SEASON_STRIP_COPY } from "../src/ui/seasonStripCopy.ko";
 import { WAVE21_IMAGES } from "../src/ui/wave21ArtManifest.generated";
@@ -223,6 +225,23 @@ test("UI-10: the empty manor — the petitioners gather at the market, the keep'
   const before = town();
   assert.equal(inspectorModel({ ...before, buildings: [...before.buildings.filter(building => building.kind !== "market"), { ...before.buildings.find(building => building.kind === "market")!, id: "keep-test", kind: "keep" as const }] }, "keep-test")
     ?.why.some(line => line.text.includes("시골 장원")), false);
+});
+
+test("UI-10: the empty manor in a town without a keep — the house's page and the family's cards say the country manor", () => {
+  const { state } = standardRun();
+  assert.ok(!state.buildings.some(building => building.kind === "keep"), "the town has no keep");
+  const year = familyCountrySeatYear(state);
+  assert.equal(year, Math.floor(state.legacy!.steps.family_departure! / 4000) + 1300);
+  const seat = lordshipView(state).seat;
+  assert.ok(seat !== null && seat.includes(`${year}년부터 시골 장원`), String(seat));
+  // The lord's family's cards (the manor household's family members; the steward's office stays with the manor).
+  const family = state.persons!.people.filter(person => person.householdId === "manor" && person.tags.includes("lord-family")).map(person => personCardView(state, person.id)!);
+  assert.ok(family.length > 0 && family.every(card => card.household.includes(`${year}년부터 시골 장원`)), JSON.stringify(family.map(card => card.household)));
+  const steward = state.persons!.people.find(person => person.role === "steward")!;
+  assert.equal(personCardView(state, steward.id)!.household, "영주의 집안");
+  // Before the charter, and when the family stays: no such line.
+  assert.equal(lordshipView(town()).seat, null);
+  assert.equal(familyCountrySeatYear({ ...state, legacy: { ...state.legacy!, family: "stayed" } }), null);
 });
 
 test("UI-10: CHRONICLE_COPY.stats — no legacy lines without chapter 5", () => {
