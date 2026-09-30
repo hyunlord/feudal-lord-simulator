@@ -22,6 +22,7 @@
     "remote:clone-check": "scripts/remote/run.sh --task clone-check",
     "remote:perf": "scripts/remote/run.sh --task perf",
     "perf:gate": "tsx scripts/perf/perfGate.ts",
+    "perf:ab": "tsx scripts/perf/perfAB.ts",
     "hooks:install": "sh scripts/git-hooks/install.sh",
     "postinstall": "test ! -f scripts/git-hooks/install.sh || sh scripts/git-hooks/install.sh",
     "check:merge": "node scripts/checks/mergeChecks.mjs",

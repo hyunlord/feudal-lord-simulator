@@ -19,7 +19,7 @@
 import { spawn, spawnSync } from "node:child_process";
 import { appendFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { cpus, loadavg, tmpdir } from "node:os";
-import { otherCpuSeconds } from "./machineLoad";
+import { otherCpuSample, otherCpuShare } from "./machineLoad";
 import { join } from "node:path";
 
 const argv = process.argv.slice(2);
@@ -31,7 +31,7 @@ const sourceDir = flag("source-dir", ".");
 
 export const LIMITS = { p99Ms: 16.7, maxMs: 100, over50PerMin: 1, over33PerMin: 3, momentAlpha: 0.05, otherCpu: 0.25 } as const;
 const SAVE = "fixtures/perf-gate/ch4-1380.save.json.gz";
-const SCENES = [
+export const SCENES = [
   { id: "big-town-x5", label: "가장 큰 도시 5배속", save: SAVE, speed: 5, action: "none" },
   { id: "new-game-x3", label: "새 게임 3배속", save: null, speed: 3, action: "none" },
   { id: "season-x1", label: "계절 전환(가장 큰 도시 1배속)", save: SAVE, speed: 1, action: "none" },
@@ -139,9 +139,8 @@ async function main() {
           "--action", scene.action, "--machine", MACHINE, "--out", join(work, "runs"), "--traces", join(work, "records"), "--headed", "--no-trace", "--no-proof", "--zoom-out", String(steps.out), "--zoom-in", String(steps.in),
           ...(scene.save === null ? [] : ["--save", scene.save])];
         // The machine's 1-minute load, every 10 s of the run: another session's tests on this Mac make a run no judgement.
-        const loads: number[] = []; let previous = { cpu: otherCpuSeconds(), at: Date.now() };
-        const sampler = setInterval(() => { const now = { cpu: otherCpuSeconds(), at: Date.now() };
-          loads.push(Math.max(0, now.cpu - previous.cpu) / (((now.at - previous.at) / 1000) * cpus().length)); previous = now; }, 10_000);
+        const loads: number[] = []; let previous = otherCpuSample();
+        const sampler = setInterval(() => { const now = otherCpuSample(); loads.push(otherCpuShare(previous, now)); previous = now; }, 10_000);
         const audit = await new Promise<{ status: number | null; stdout: string; stderr: string }>(done => {
           const child = spawn("node_modules/.bin/tsx", args, { env: { ...process.env, NODE_OPTIONS: "--max-old-space-size=8192" } });
           let stdout = ""; let stderr = ""; child.stdout.on("data", data => { stdout += data; }); child.stderr.on("data", data => { stderr += data; });
