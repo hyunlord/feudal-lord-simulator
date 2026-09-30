@@ -1,0 +1,2556 @@
+{
+ "scene": "fixtures/perf-gate/ch4-1380.save.json.gz, camera on tile (44, 32), 1600x1100 DPR 1, headless Chrome, proof-port render stage probe (last 240 frames after 8 s)",
+ "before": "bb83298f~1 (ee62f618) src/, same probe",
+ "after": "bb83298f",
+ "rows": [
+  {
+   "side": "after",
+   "zoom": 0.4,
+   "speed": 0,
+   "load": 1,
+   "cameraZoom": 0.4,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 7.76,
+    "sprite-mip": 2.58,
+    "world-raster": 0.45,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.9,
+    "p95": 5.2
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.7
+   },
+   "drawImagePerFrame": {
+    "p50": 1625,
+    "p95": 1625
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 140
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1229
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.4,
+   "speed": 0,
+   "load": 2,
+   "cameraZoom": 0.4,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 7.76,
+    "world-raster": 0.45,
+    "asset-scale": 0.53,
+    "sprite-mip": 2.58,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.9,
+    "p95": 5.2
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.7
+   },
+   "drawImagePerFrame": {
+    "p50": 1625,
+    "p95": 1625
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 140
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1229
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.4,
+   "speed": 5,
+   "load": 1,
+   "cameraZoom": 0.4,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 8.7,
+    "sprite-mip": 2.69,
+    "world-raster": 0.45,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.8,
+    "p95": 9.3
+   },
+   "buildingsMs": {
+    "p50": 0.7,
+    "p95": 1
+   },
+   "natureMs": {
+    "p50": 1.4,
+    "p95": 1.8
+   },
+   "drawImagePerFrame": {
+    "p50": 1631,
+    "p95": 1634
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.7,
+     "drawImage": 139
+    },
+    "nature": {
+     "p50": 1.4,
+     "drawImage": 1229
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.7,
+     "drawImage": 96
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.4,
+   "speed": 5,
+   "load": 2,
+   "cameraZoom": 0.4,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 8.53,
+    "sprite-mip": 2.69,
+    "world-raster": 0.45,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.8,
+    "p95": 10.2
+   },
+   "buildingsMs": {
+    "p50": 0.6,
+    "p95": 1
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.8
+   },
+   "drawImagePerFrame": {
+    "p50": 1631,
+    "p95": 1634
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.6,
+     "drawImage": 139
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1229
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "effects": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.7,
+     "drawImage": 96
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.5,
+   "speed": 0,
+   "load": 1,
+   "cameraZoom": 0.5,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 11.91,
+    "sprite-mip": 2.29,
+    "world-raster": 0.64,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.7,
+    "p95": 5
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.8
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.7
+   },
+   "drawImagePerFrame": {
+    "p50": 1621,
+    "p95": 1621
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 139
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1226
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.5,
+   "speed": 0,
+   "load": 2,
+   "cameraZoom": 0.5,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 11.91,
+    "sprite-mip": 2.29,
+    "world-raster": 0.86,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.8,
+    "p95": 5.1
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.8
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.7
+   },
+   "drawImagePerFrame": {
+    "p50": 1621,
+    "p95": 1621
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 139
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1226
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.5,
+   "speed": 5,
+   "load": 1,
+   "cameraZoom": 0.5,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 11.91,
+    "sprite-mip": 2.39,
+    "world-raster": 0.64,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 8.1,
+    "p95": 10.6
+   },
+   "buildingsMs": {
+    "p50": 0.7,
+    "p95": 1.1
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.9
+   },
+   "drawImagePerFrame": {
+    "p50": 1760,
+    "p95": 1764
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.9,
+     "drawImage": 134
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.7,
+     "drawImage": 139
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1226
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "effects": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.7,
+     "drawImage": 94
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.5,
+   "speed": 5,
+   "load": 2,
+   "cameraZoom": 0.5,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 12.83,
+    "sprite-mip": 2.39,
+    "world-raster": 0.86,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.9,
+    "p95": 9.2
+   },
+   "buildingsMs": {
+    "p50": 0.7,
+    "p95": 1
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.7
+   },
+   "drawImagePerFrame": {
+    "p50": 1762,
+    "p95": 1764
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.9,
+     "drawImage": 134
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.7,
+     "drawImage": 139
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1226
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "effects": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.7,
+     "drawImage": 95
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.6,
+   "speed": 0,
+   "load": 1,
+   "cameraZoom": 0.6,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 17.11,
+    "world-raster": 0.87,
+    "asset-scale": 0.53,
+    "sprite-mip": 2.19,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.9,
+    "p95": 5.2
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.6
+   },
+   "drawImagePerFrame": {
+    "p50": 1803,
+    "p95": 1803
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.9,
+     "drawImage": 197
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 138
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1212
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.6,
+   "speed": 0,
+   "load": 2,
+   "cameraZoom": 0.6,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 17.11,
+    "world-raster": 0.87,
+    "asset-scale": 0.53,
+    "sprite-mip": 2.19,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.9,
+    "p95": 5.3
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.6
+   },
+   "drawImagePerFrame": {
+    "p50": 1803,
+    "p95": 1803
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.9,
+     "drawImage": 197
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 138
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1212
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.6,
+   "speed": 5,
+   "load": 1,
+   "cameraZoom": 0.6,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 18.05,
+    "world-raster": 0.87,
+    "asset-scale": 0.53,
+    "sprite-mip": 2.3,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.9,
+    "p95": 8.8
+   },
+   "buildingsMs": {
+    "p50": 0.6,
+    "p95": 1
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.7
+   },
+   "drawImagePerFrame": {
+    "p50": 1916,
+    "p95": 1918
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.7,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1,
+     "drawImage": 303
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.6,
+     "drawImage": 138
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1212
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "effects": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.7,
+     "drawImage": 95
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.6,
+   "speed": 5,
+   "load": 2,
+   "cameraZoom": 0.6,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 18.8,
+    "world-raster": 0.87,
+    "asset-scale": 0.53,
+    "sprite-mip": 2.3,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.8,
+    "p95": 9.1
+   },
+   "buildingsMs": {
+    "p50": 0.6,
+    "p95": 1
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.7
+   },
+   "drawImagePerFrame": {
+    "p50": 1916,
+    "p95": 1918
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.7,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1,
+     "drawImage": 303
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.6,
+     "drawImage": 138
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1212
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.7,
+     "drawImage": 95
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 1,
+   "speed": 0,
+   "load": 1,
+   "cameraZoom": 1,
+   "lod": "full",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 46.57,
+    "sprite-mip": 1.56,
+    "world-raster": 2.07,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 5,
+    "p95": 5.4
+   },
+   "buildingsMs": {
+    "p50": 1.2,
+    "p95": 1.5
+   },
+   "natureMs": {
+    "p50": 1,
+    "p95": 1.3
+   },
+   "drawImagePerFrame": {
+    "p50": 1560,
+    "p95": 1561
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.7,
+     "drawImage": 0
+    },
+    "terrain.water": {
+     "p50": 0.1,
+     "drawImage": 11
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 56
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 25
+    },
+    "terrain.grounding": {
+     "p50": 0.6,
+     "drawImage": 86
+    },
+    "buildings": {
+     "p50": 1.2,
+     "drawImage": 232
+    },
+    "nature": {
+     "p50": 1,
+     "drawImage": 839
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.4,
+     "drawImage": 143
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 92
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 1,
+   "speed": 5,
+   "load": 1,
+   "cameraZoom": 1,
+   "lod": "full",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 52.71,
+    "sprite-mip": 1.73,
+    "world-raster": 2.07,
+    "walker-cells": 41.6
+   },
+   "frameMs": {
+    "p50": 8.9,
+    "p95": 10.3
+   },
+   "buildingsMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "natureMs": {
+    "p50": 1.9,
+    "p95": 2.3
+   },
+   "drawImagePerFrame": {
+    "p50": 1601,
+    "p95": 1620
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.3,
+     "drawImage": 0
+    },
+    "terrain.water": {
+     "p50": 0.1,
+     "drawImage": 11
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 56
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 25
+    },
+    "terrain.grounding": {
+     "p50": 0.9,
+     "drawImage": 134
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.8,
+     "drawImage": 229
+    },
+    "nature": {
+     "p50": 1.9,
+     "drawImage": 839
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 1.3,
+     "drawImage": 135
+    },
+    "overlay.cause": {
+     "p50": 0.7,
+     "drawImage": 97
+    }
+   }
+  },
+  {
+   "side": "after",
+   "zoom": 0.6,
+   "speed": 0,
+   "load": 1,
+   "cameraZoom": 0.6,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 17.11,
+    "world-raster": 0.87,
+    "asset-scale": 0.53,
+    "sprite-mip": 2.19,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.9,
+    "p95": 5.2
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 1.6
+   },
+   "drawImagePerFrame": {
+    "p50": 1803,
+    "p95": 1803
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 0.9,
+     "drawImage": 197
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 138
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 1212
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.4,
+   "speed": 0,
+   "load": 1,
+   "cameraZoom": 0.4,
+   "lod": "blocks",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 7.76,
+    "world-raster": 0.45,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.3,
+    "p95": 4.6
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 284,
+    "p95": 284
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "terrain.grounding": {
+     "p50": 1.2,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.2,
+     "drawImage": 28
+    },
+    "nature": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.4,
+   "speed": 0,
+   "load": 2,
+   "cameraZoom": 0.4,
+   "lod": "blocks",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 7.76,
+    "world-raster": 0.45,
+    "asset-scale": 0.53,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.7,
+    "p95": 5
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 284,
+    "p95": 284
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.2,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.2,
+     "drawImage": 28
+    },
+    "nature": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.4,
+   "speed": 5,
+   "load": 1,
+   "cameraZoom": 0.4,
+   "lod": "blocks",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 8.45,
+    "world-raster": 0.45,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.3,
+    "p95": 8.2
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 291,
+    "p95": 294
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.7,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.2,
+     "drawImage": 0
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.2,
+     "drawImage": 28
+    },
+    "nature": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "effects": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.8,
+     "drawImage": 96
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.4,
+   "speed": 5,
+   "load": 2,
+   "cameraZoom": 0.4,
+   "lod": "blocks",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 8.62,
+    "world-raster": 0.45,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.3,
+    "p95": 8.2
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 291,
+    "p95": 294
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.7,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.2,
+     "drawImage": 0
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.2,
+     "drawImage": 28
+    },
+    "nature": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.8,
+     "drawImage": 96
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.5,
+   "speed": 0,
+   "load": 1,
+   "cameraZoom": 0.5,
+   "lod": "blocks",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 11.91,
+    "world-raster": 0.64,
+    "asset-scale": 0.53,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.5,
+    "p95": 4.7
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 284,
+    "p95": 284
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.2,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.2,
+     "drawImage": 28
+    },
+    "nature": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.5,
+   "speed": 0,
+   "load": 2,
+   "cameraZoom": 0.5,
+   "lod": "blocks",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 11.91,
+    "world-raster": 0.64,
+    "asset-scale": 0.53,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 4.5,
+    "p95": 4.7
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 284,
+    "p95": 284
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.2,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.2,
+     "drawImage": 28
+    },
+    "nature": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.5,
+   "speed": 5,
+   "load": 1,
+   "cameraZoom": 0.5,
+   "lod": "blocks",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 13.09,
+    "world-raster": 0.64,
+    "asset-scale": 0.53,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.4,
+    "p95": 8.3
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 424,
+    "p95": 427
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.7,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.3,
+     "drawImage": 134
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.2,
+     "drawImage": 28
+    },
+    "nature": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.8,
+     "drawImage": 95
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.5,
+   "speed": 5,
+   "load": 2,
+   "cameraZoom": 0.5,
+   "lod": "blocks",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 13.22,
+    "world-raster": 0.64,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.3,
+    "p95": 8.6
+   },
+   "buildingsMs": {
+    "p50": 0.2,
+    "p95": 0.5
+   },
+   "natureMs": {
+    "p50": 0.8,
+    "p95": 1.1
+   },
+   "drawImagePerFrame": {
+    "p50": 424,
+    "p95": 427
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.7,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "terrain.grounding": {
+     "p50": 1.3,
+     "drawImage": 134
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.2,
+     "drawImage": 28
+    },
+    "nature": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "effects": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.8,
+     "drawImage": 95
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.6,
+   "speed": 0,
+   "load": 1,
+   "cameraZoom": 0.6,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 17.11,
+    "world-raster": 0.87,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 5.2,
+    "p95": 5.5
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.8
+   },
+   "natureMs": {
+    "p50": 1,
+    "p95": 1.3
+   },
+   "drawImagePerFrame": {
+    "p50": 623,
+    "p95": 623
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.4,
+     "drawImage": 197
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 29
+    },
+    "nature": {
+     "p50": 1,
+     "drawImage": 141
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.6,
+   "speed": 0,
+   "load": 2,
+   "cameraZoom": 0.6,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 17.11,
+    "world-raster": 1.15,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 6.4,
+    "p95": 13.3
+   },
+   "buildingsMs": {
+    "p50": 0.6,
+    "p95": 1.2
+   },
+   "natureMs": {
+    "p50": 1.3,
+    "p95": 5
+   },
+   "drawImagePerFrame": {
+    "p50": 623,
+    "p95": 623
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.9,
+     "drawImage": 0
+    },
+    "terrain.water": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.5,
+     "drawImage": 197
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.6,
+     "drawImage": 29
+    },
+    "nature": {
+     "p50": 1.3,
+     "drawImage": 141
+    },
+    "walls": {
+     "p50": 0.6,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.4,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.2,
+     "drawImage": 89
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.6,
+   "speed": 5,
+   "load": 1,
+   "cameraZoom": 0.6,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 18.62,
+    "world-raster": 2.01,
+    "asset-scale": 0.53,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.8,
+    "p95": 8.7
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 0.9,
+    "p95": 1.3
+   },
+   "drawImagePerFrame": {
+    "p50": 736,
+    "p95": 738
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.7,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.4,
+     "drawImage": 303
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 29
+    },
+    "nature": {
+     "p50": 0.9,
+     "drawImage": 141
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "effects": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.8,
+     "drawImage": 95
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.6,
+   "speed": 5,
+   "load": 2,
+   "cameraZoom": 0.6,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 18.05,
+    "world-raster": 0.87,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 7.7,
+    "p95": 8.4
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 0.9,
+    "p95": 1.2
+   },
+   "drawImagePerFrame": {
+    "p50": 736,
+    "p95": 738
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.6,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.4,
+     "drawImage": 303
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 29
+    },
+    "nature": {
+     "p50": 0.9,
+     "drawImage": 141
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "effects": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.8,
+     "drawImage": 95
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 1,
+   "speed": 0,
+   "load": 1,
+   "cameraZoom": 1,
+   "lod": "full",
+   "frames": 240,
+   "budgetMB": {
+    "asset-scale": 0.53,
+    "ground-chunks#0": 46.57,
+    "world-raster": 2.76,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 5.4,
+    "p95": 5.6
+   },
+   "buildingsMs": {
+    "p50": 1.2,
+    "p95": 1.6
+   },
+   "natureMs": {
+    "p50": 0.9,
+    "p95": 1.3
+   },
+   "drawImagePerFrame": {
+    "p50": 1560,
+    "p95": 1561
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.7,
+     "drawImage": 0
+    },
+    "terrain.water": {
+     "p50": 0.1,
+     "drawImage": 11
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 56
+    },
+    "terrain.grounding": {
+     "p50": 1,
+     "drawImage": 86
+    },
+    "buildings": {
+     "p50": 1.2,
+     "drawImage": 232
+    },
+    "nature": {
+     "p50": 0.9,
+     "drawImage": 839
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.4,
+     "drawImage": 143
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 92
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 1,
+   "speed": 5,
+   "load": 1,
+   "cameraZoom": 1,
+   "lod": "full",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 50.15,
+    "world-raster": 2.07,
+    "asset-scale": 0.53,
+    "walker-cells": 41.51
+   },
+   "frameMs": {
+    "p50": 9.1,
+    "p95": 10.3
+   },
+   "buildingsMs": {
+    "p50": 0.8,
+    "p95": 1.2
+   },
+   "natureMs": {
+    "p50": 1.8,
+    "p95": 2.2
+   },
+   "drawImagePerFrame": {
+    "p50": 1601,
+    "p95": 1620
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 2.3,
+     "drawImage": 0
+    },
+    "terrain.water": {
+     "p50": 0.1,
+     "drawImage": 11
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 56
+    },
+    "terrain.grounding": {
+     "p50": 1.2,
+     "drawImage": 134
+    },
+    "farmland": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.8,
+     "drawImage": 229
+    },
+    "nature": {
+     "p50": 1.8,
+     "drawImage": 839
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 1.3,
+     "drawImage": 135
+    },
+    "overlay.cause": {
+     "p50": 0.7,
+     "drawImage": 97
+    },
+    "frame.publish": {
+     "p50": 0.1,
+     "drawImage": 0
+    }
+   }
+  },
+  {
+   "side": "before",
+   "zoom": 0.6,
+   "speed": 0,
+   "load": 1,
+   "cameraZoom": 0.6,
+   "lod": "simplified",
+   "frames": 240,
+   "budgetMB": {
+    "ground-chunks#0": 17.11,
+    "world-raster": 0.87,
+    "asset-scale": 0.53,
+    "walker-cells": 18.87
+   },
+   "frameMs": {
+    "p50": 5,
+    "p95": 5.2
+   },
+   "buildingsMs": {
+    "p50": 0.4,
+    "p95": 0.7
+   },
+   "natureMs": {
+    "p50": 0.9,
+    "p95": 1.2
+   },
+   "drawImagePerFrame": {
+    "p50": 623,
+    "p95": 623
+   },
+   "stages": {
+    "frame.setup": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "objects.sort": {
+     "p50": 0.8,
+     "drawImage": 0
+    },
+    "terrain.fill": {
+     "p50": 0.2,
+     "drawImage": 64
+    },
+    "terrain.landscape": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "roads.ground": {
+     "p50": 0.1,
+     "drawImage": 27
+    },
+    "terrain.grounding": {
+     "p50": 1.4,
+     "drawImage": 197
+    },
+    "roads.overlay": {
+     "p50": 0.1,
+     "drawImage": 0
+    },
+    "buildings": {
+     "p50": 0.4,
+     "drawImage": 29
+    },
+    "nature": {
+     "p50": 0.9,
+     "drawImage": 141
+    },
+    "walls": {
+     "p50": 0.4,
+     "drawImage": 76
+    },
+    "walkers": {
+     "p50": 0.3,
+     "drawImage": 0
+    },
+    "overlay.cause": {
+     "p50": 0.1,
+     "drawImage": 89
+    }
+   }
+  }
+ ]
+}
