@@ -1,18 +1,19 @@
 {
  "schema": 1,
- "run": "render-UIAUDIT-tool-23161ae",
- "commit": "23161ae8cac31f056d3436f1720fc8923e2701a2",
+ "run": "render-UIAUDIT-tool-real-b22a3a9",
+ "commit": "b22a3a9eaff310adacdde366a318b8ffdd32a55a",
  "dirty": false,
  "inputs": {
-  "src": "40c74d46464801a2b49bd77720f65244ecb62bf1",
+  "src": "9d4aa350fdbd1d1c77bd60b43471a2a921f0d5c3",
   "assets": "fc6bb7053839259339b5692145d7b172f5439ae7",
-  "audit": "fa43bebff17ddf2b92d83636f26e6a384b8486b0",
-  "measure": "931eb4b307d8f86b81aa7e228d5f5cb2d64cfdc2",
-  "scene": "60057c6e31df4dac028f85eb582ca9dff3a3e8bc"
+  "audit": "ec04f5b283146559d5cf6361c8c9cc929e490fc7",
+  "measure": "f3c3a71998182866b8670119821f4e7eab1691d2",
+  "scene": "60057c6e31df4dac028f85eb582ca9dff3a3e8bc",
+  "vite": "f566d8e9c353b1f79ab8310d47bce66c6b181254"
  },
- "inputHash": "36b8f886e7cd652a76c081bb986d645bc6a84dae23b6985b142bad6c5d6c51cb",
- "measuredAt": "2026-09-30T13:05:36.591Z",
- "report": "docs/verification/uiaudit1/geometry/render-UIAUDIT-tool-23161ae/geometry.json",
+ "inputHash": "82f25bc258c0562fdb1d8a3fbd5037eb51649651ec9659fe2e0fd141deedc57f",
+ "measuredAt": "2026-09-30T14:01:09.598Z",
+ "report": "docs/verification/uiaudit1/geometry/render-UIAUDIT-tool-real-b22a3a9/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -28,59 +29,56 @@
    "extreme"
   ]
  },
- "rows": 76,
- "conditions": 810,
- "measured": 795,
- "failures": 4887,
- "unopened": 15,
+ "rows": 88,
+ "conditions": 936,
+ "measured": 924,
+ "failures": 2050,
+ "unopened": 12,
  "unreachable": [
   "hud.goal-help",
   "hud.unlock-banner",
   "hud.era-ceremony",
   "hud.build-details"
  ],
- "warnings": 256,
+ "warnings": 293,
  "byCheck": {
-  "outside": 3658,
-  "overflow": 269,
-  "border": 556,
+  "outside": 832,
+  "overflow": 737,
+  "border": 60,
   "portrait": 12,
-  "overlap": 392,
+  "overlap": 409,
   "empty": 0,
   "controls": 0
  },
+ "unregisteredFramed": 0,
  "bySurface": {
   "hud.status-pill": {
-   "failures": 100,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 100
-   }
+   "byCheck": {}
   },
   "hud.season-strip-panel": {
-   "failures": 174,
+   "failures": 24,
    "unopened": 0,
    "byCheck": {
-    "outside": 102,
-    "border": 72
+    "outside": 24
    }
   },
   "hud.time-cluster": {
-   "failures": 132,
+   "failures": 48,
    "unopened": 0,
    "byCheck": {
-    "outside": 60,
+    "outside": 24,
     "overflow": 12,
-    "border": 60
+    "border": 12
    }
   },
   "hud.settings-popover": {
-   "failures": 224,
+   "failures": 16,
    "unopened": 0,
    "byCheck": {
-    "outside": 208,
+    "outside": 4,
     "overflow": 4,
-    "border": 4,
     "overlap": 8
    }
   },
@@ -92,11 +90,9 @@
    }
   },
   "hud.layer-switch-note": {
-   "failures": 12,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 12
-   }
+   "byCheck": {}
   },
   "hud.action-dock": {
    "failures": 48,
@@ -106,17 +102,22 @@
    }
   },
   "hud.steward-bubble": {
-   "failures": 12,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 12
-   }
+   "byCheck": {}
   },
   "hud.crisis-icons": {
-   "failures": 18,
+   "failures": 30,
    "unopened": 0,
    "byCheck": {
-    "outside": 18
+    "outside": 30
+   }
+  },
+  "hud.stuck-goods": {
+   "failures": 24,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24
    }
   },
   "hud.event-chips": {
@@ -127,35 +128,24 @@
    }
   },
   "hud.event-card": {
-   "failures": 120,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 72,
-    "border": 48
-   }
+   "byCheck": {}
   },
   "hud.goal-chips": {
-   "failures": 18,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 12,
-    "border": 6
-   }
+   "byCheck": {}
   },
   "hud.pause-veil": {
-   "failures": 12,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 12
-   }
+   "byCheck": {}
   },
   "hud.completion-toast": {
-   "failures": 18,
-   "unopened": 6,
-   "byCheck": {
-    "outside": 12,
-    "border": 6
-   }
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
   },
   "hud.cause-legend": {
    "failures": 12,
@@ -187,12 +177,9 @@
    }
   },
   "hud.prediction-chip": {
-   "failures": 78,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 54,
-    "border": 24
-   }
+   "byCheck": {}
   },
   "hud.hover-tooltip": {
    "failures": 0,
@@ -200,34 +187,41 @@
    "byCheck": {}
   },
   "hud.build-drawer": {
-   "failures": 192,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 96,
-    "border": 96
-   }
+   "byCheck": {}
   },
   "hud.build-pinned": {
-   "failures": 12,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 12
-   }
+   "byCheck": {}
   },
   "hud.qa-overlay": {
-   "failures": 144,
+   "failures": 24,
    "unopened": 0,
    "byCheck": {
-    "outside": 144
+    "outside": 24
    }
   },
   "slot.goals": {
+   "failures": 6,
+   "unopened": 0,
+   "byCheck": {
+    "overflow": 6
+   }
+  },
+  "slot.goals.drawer": {
    "failures": 18,
    "unopened": 0,
    "byCheck": {
     "outside": 12,
     "overflow": 6
    }
+  },
+  "slot.goals.status": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
   },
   "slot.goals.settlement": {
    "failures": 36,
@@ -243,93 +237,74 @@
    "byCheck": {}
   },
   "slot.population": {
-   "failures": 24,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 12,
-    "border": 12
-   }
+   "byCheck": {}
+  },
+  "slot.population.panel": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
   },
   "slot.inspector": {
-   "failures": 24,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 12,
-    "border": 12
-   }
+   "byCheck": {}
+  },
+  "slot.inspector.body": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
   },
   "slot.ledger.stock": {
-   "failures": 216,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 216
-   }
+   "byCheck": {}
   },
   "slot.ledger.alerts": {
-   "failures": 84,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 84
-   }
+   "byCheck": {}
   },
   "slot.ledger.view": {
-   "failures": 120,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 120
-   }
+   "byCheck": {}
   },
   "slot.ledger.map": {
-   "failures": 48,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 48
-   }
+   "byCheck": {}
   },
   "slot.ledger.map-overview": {
-   "failures": 12,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 12
-   }
+   "byCheck": {}
   },
   "slot.ledger.rights": {
-   "failures": 17,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 17
-   }
+   "byCheck": {}
   },
   "slot.ledger.rights-decline": {
-   "failures": 12,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 12
-   }
+   "byCheck": {}
   },
   "slot.ledger.wage": {
-   "failures": 288,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 276,
-    "border": 12
-   }
+   "byCheck": {}
   },
   "slot.ledger.reorg": {
-   "failures": 360,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 300,
-    "border": 60
-   }
+   "byCheck": {}
   },
   "slot.ledger.legacy": {
-   "failures": 360,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 300,
-    "border": 60
-   }
+   "byCheck": {}
   },
   "map.selection.house": {
    "failures": 48,
@@ -372,17 +347,15 @@
    }
   },
   "modal.pause": {
-   "failures": 72,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 72
-   }
+   "byCheck": {}
   },
   "modal.season-ledger": {
-   "failures": 42,
-   "unopened": 6,
+   "failures": 30,
+   "unopened": 0,
    "byCheck": {
-    "outside": 42
+    "overflow": 30
    }
   },
   "modal.famine": {
@@ -391,64 +364,57 @@
    "byCheck": {}
   },
   "modal.petition.ch1": {
-   "failures": 72,
+   "failures": 60,
    "unopened": 0,
    "byCheck": {
-    "outside": 36,
-    "overflow": 12,
+    "overflow": 36,
     "overlap": 24
    }
   },
   "modal.petition.ch2-war": {
-   "failures": 81,
+   "failures": 75,
    "unopened": 0,
    "byCheck": {
-    "outside": 30,
-    "overflow": 12,
+    "overflow": 36,
     "overlap": 39
    }
   },
   "modal.petition.ch4-reorg": {
-   "failures": 75,
+   "failures": 72,
    "unopened": 0,
    "byCheck": {
-    "outside": 30,
-    "overflow": 12,
-    "overlap": 33
+    "overflow": 36,
+    "overlap": 36
    }
   },
   "modal.petition.ch5-legacy": {
-   "failures": 51,
+   "failures": 57,
    "unopened": 0,
    "byCheck": {
-    "outside": 21,
-    "overflow": 6,
-    "overlap": 24
+    "overflow": 30,
+    "overlap": 27
    }
   },
   "modal.petition.heir": {
-   "failures": 92,
+   "failures": 82,
    "unopened": 0,
    "byCheck": {
-    "outside": 39,
-    "overflow": 15,
-    "overlap": 38
+    "overflow": 39,
+    "overlap": 43
    }
   },
   "modal.chapter-page.ch1": {
    "failures": 36,
    "unopened": 0,
    "byCheck": {
-    "outside": 24,
-    "overflow": 12
+    "overflow": 36
    }
   },
   "modal.chapter-page.ch2": {
    "failures": 38,
    "unopened": 0,
    "byCheck": {
-    "outside": 24,
-    "overflow": 12,
+    "overflow": 36,
     "overlap": 2
    }
   },
@@ -456,27 +422,24 @@
    "failures": 52,
    "unopened": 0,
    "byCheck": {
-    "outside": 24,
-    "overflow": 10,
+    "overflow": 34,
     "overlap": 18
    }
   },
   "modal.chapter-page.ch4": {
-   "failures": 60,
+   "failures": 62,
    "unopened": 0,
    "byCheck": {
-    "outside": 24,
-    "overflow": 6,
-    "overlap": 30
+    "overflow": 30,
+    "overlap": 32
    }
   },
   "modal.chapter-page.ch5": {
-   "failures": 146,
+   "failures": 132,
    "unopened": 0,
    "byCheck": {
-    "outside": 40,
-    "overflow": 12,
-    "overlap": 94
+    "overflow": 36,
+    "overlap": 96
    }
   },
   "modal.chapter-preview": {
@@ -484,16 +447,24 @@
    "unopened": 0,
    "byCheck": {}
   },
+  "modal.chapter-preview.goals": {
+   "failures": 24,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 24
+   }
+  },
   "modal.chapter-loading": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
   "modal.person-card": {
-   "failures": 72,
+   "failures": 96,
    "unopened": 0,
    "byCheck": {
     "outside": 36,
+    "overflow": 24,
     "border": 24,
     "portrait": 12
    }
@@ -506,41 +477,63 @@
    }
   },
   "modal.history.record-card": {
-   "failures": 120,
+   "failures": 48,
    "unopened": 0,
    "byCheck": {
-    "outside": 72,
-    "border": 48
+    "outside": 12,
+    "overflow": 24,
+    "border": 12
    }
   },
   "modal.history.snapshot-map": {
    "failures": 36,
    "unopened": 0,
    "byCheck": {
-    "outside": 24,
-    "border": 12
+    "outside": 12,
+    "overflow": 24
    }
   },
   "modal.select-list": {
-   "failures": 48,
+   "failures": 36,
    "unopened": 0,
    "byCheck": {
-    "outside": 48
+    "outside": 36
    }
   },
   "modal.history.decision": {
-   "failures": 60,
+   "failures": 48,
    "unopened": 0,
    "byCheck": {
-    "outside": 60
+    "outside": 12,
+    "overflow": 24,
+    "border": 12
    }
   },
   "modal.history.biography": {
+   "failures": 24,
+   "unopened": 0,
+   "byCheck": {
+    "overflow": 24
+   }
+  },
+  "modal.history.family-tree": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
   },
-  "modal.history.family-tree": {
+  "modal.history.tree-banner": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.tree-generation": {
+   "failures": 12,
+   "unopened": 0,
+   "byCheck": {
+    "outside": 12
+   }
+  },
+  "modal.history.tree-node": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
@@ -554,43 +547,52 @@
    }
   },
   "modal.history.faction-page": {
-   "failures": 28,
+   "failures": 52,
    "unopened": 0,
    "byCheck": {
-    "overflow": 24,
+    "overflow": 48,
     "overlap": 4
    }
   },
   "modal.legacy-ending": {
-   "failures": 118,
+   "failures": 112,
    "unopened": 0,
    "byCheck": {
-    "outside": 32,
-    "overflow": 12,
-    "overlap": 74
+    "overflow": 36,
+    "overlap": 76
    }
   },
   "modal.chronicle-book": {
-   "failures": 72,
+   "failures": 36,
    "unopened": 0,
    "byCheck": {
-    "outside": 60,
-    "overflow": 12
+    "overflow": 36
    }
   },
   "screen.welcome": {
-   "failures": 21,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "outside": 21
-   }
+   "byCheck": {}
   },
   "dev.ui-kit": {
-   "failures": 6,
+   "failures": 0,
    "unopened": 3,
-   "byCheck": {
-    "outside": 6
-   }
+   "byCheck": {}
+  },
+  "dev.ui-kit.section": {
+   "failures": 0,
+   "unopened": 3,
+   "byCheck": {}
+  },
+  "dev.ui-kit.dark": {
+   "failures": 0,
+   "unopened": 3,
+   "byCheck": {}
+  },
+  "dev.ui-kit.tooltip": {
+   "failures": 0,
+   "unopened": 3,
+   "byCheck": {}
   }
  }
 }
