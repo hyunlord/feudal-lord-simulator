@@ -18,7 +18,7 @@ test("GP-1 the record takes the year's expected harvest at its first harvest and
   const world = fieldWorld({ tick: 5 * YEAR + 1500 });
   assert.equal(nextHarvestRecord(world, 0), undefined, "no harvest, no record");
   const first = nextHarvestRecord(world, 12)!;
-  assert.deepEqual(first, { year: 5, wheat: 12, past: [], expected: expectedAnnualWheat(world) });
+  assert.deepEqual(first, { year: 5, wheat: 12, lost: 0, past: [], expected: expectedAnnualWheat(world) });
   assert.ok(first.expected! > 0);
   const second = nextHarvestRecord({ ...world, tick: world.tick + 10, harvestRecord: first }, 8)!;
   assert.equal(second.wheat, 20);
@@ -29,9 +29,9 @@ test("GP-1 the record takes the year's expected harvest at its first harvest and
 
 test("GP-1 a new calendar year moves the counted year into the past, keeps three and skips a year without a harvest", () => {
   const world = fieldWorld({ tick: 9 * YEAR });
-  const record = { year: 8, expected: 100, wheat: 70, past: [{ expected: 100, wheat: 90 }, { expected: 100, wheat: 80 }, { expected: 100, wheat: 60 }] };
+  const record = { year: 8, expected: 100, wheat: 70, lost: 5, past: [{ expected: 100, wheat: 90, lost: 0 }, { expected: 100, wheat: 80, lost: 0 }, { expected: 100, wheat: 60, lost: 0 }] };
   const rolled = nextHarvestRecord({ ...world, harvestRecord: record }, 0)!;
-  assert.deepEqual(rolled, { year: 9, wheat: 0, past: [{ expected: 100, wheat: 80 }, { expected: 100, wheat: 60 }, { expected: 100, wheat: 70 }] });
+  assert.deepEqual(rolled, { year: 9, wheat: 0, lost: 0, past: [{ expected: 100, wheat: 80, lost: 0 }, { expected: 100, wheat: 60, lost: 0 }, { expected: 100, wheat: 70, lost: 5 }] });
   assert.equal(rolled.past.length, HARVEST_RECORD_YEARS);
   const barren = nextHarvestRecord({ ...world, tick: 10 * YEAR, harvestRecord: rolled }, 0)!;
   assert.deepEqual(barren.past, rolled.past, "a year with no harvest has no expected harvest and is not kept");
@@ -51,21 +51,32 @@ test("GP-1 the simulation records a year's harvest: the barn's wheat against the
 
 test("GP-2 the realised share is Σ harvested ÷ Σ expected over the kept years, at most one, one with no record", () => {
   assert.equal(realisedHarvestPermille({}), 1000);
-  assert.equal(realisedHarvestPermille({ harvestRecord: { year: 3, wheat: 0, past: [{ expected: 1000, wheat: 700 }, { expected: 1000, wheat: 800 }] } }), 750);
-  assert.equal(realisedHarvestPermille({ harvestRecord: { year: 3, wheat: 0, past: [{ expected: 1000, wheat: 1400 }] } }), 1000);
+  assert.equal(realisedHarvestPermille({ harvestRecord: { year: 3, wheat: 0, lost: 0, past: [{ expected: 1000, wheat: 700, lost: 0 }, { expected: 1000, wheat: 800, lost: 0 }] } }), 750);
+  assert.equal(realisedHarvestPermille({ harvestRecord: { year: 3, wheat: 0, lost: 0, past: [{ expected: 1000, wheat: 1400, lost: 0 }] } }), 1000);
   const world = fieldWorld();
-  const halved = { ...world, harvestRecord: { year: 0, wheat: 0, past: [{ expected: 2000, wheat: 1000 }] } };
+  const halved = { ...world, harvestRecord: { year: 0, wheat: 0, lost: 0, past: [{ expected: 2000, wheat: 1000, lost: 0 }] } };
   assert.equal(realisedAnnualWheat(halved), Math.floor(expectedAnnualWheat(world) / 2));
 });
 
 test("GP-2 the grain step judges the shortage by the realised harvest: an ample expectation that the barns never took in is short", () => {
   const ample = replayFoodObservation(withAmpleGrain(observedFoodTown()), { wheat: 1000, bread: 40, exports: 0 });
   assert.equal(arableSupplyShort(ample), false, "the expected harvest alone is ample");
-  const poor = { ...ample, harvestRecord: { year: 0, wheat: 0, past: [{ expected: 10_000, wheat: 100 }, { expected: 10_000, wheat: 200 }] } };
+  const poor = { ...ample, harvestRecord: { year: 0, wheat: 0, lost: 0, past: [{ expected: 10_000, wheat: 100, lost: 0 }, { expected: 10_000, wheat: 200, lost: 0 }] } };
   assert.equal(realisedHarvestPermille(poor), 15);
   assert.equal(arableSupplyShort(poor), true);
-  const full = { ...ample, harvestRecord: { year: 0, wheat: 0, past: [{ expected: 10_000, wheat: 10_000 }] } };
+  const full = { ...ample, harvestRecord: { year: 0, wheat: 0, lost: 0, past: [{ expected: 10_000, wheat: 10_000, lost: 0 }] } };
   assert.equal(arableSupplyShort(full), false);
+});
+
+test("GP-2 ripe wheat left in the field because the barns were full counts as grown: a harvesting limit is not the land's", () => {
+  const ample = replayFoodObservation(withAmpleGrain(observedFoodTown()), { wheat: 1000, bread: 40, exports: 0 });
+  const backedUp = { ...ample, harvestRecord: { year: 0, wheat: 0, lost: 0, past: [{ expected: 10_000, wheat: 6_000, lost: 3_500 }] } };
+  assert.equal(realisedHarvestPermille(backedUp), 950);
+  assert.equal(arableSupplyShort(backedUp), false);
+  const world = fieldWorld({ tick: 3 * YEAR + 3000 });
+  const counted = { ...world, harvestRecord: { year: 3, expected: 500, wheat: 300, lost: 0, past: [] } };
+  assert.equal(nextHarvestRecord(counted, 0, 40)!.lost, 40, "winter's loss is added to the counted year");
+  assert.equal(nextHarvestRecord({ ...world, harvestRecord: { year: 3, wheat: 0, lost: 0, past: [] } }, 0, 40)!.lost, 0, "a year with no harvest keeps no loss");
 });
 
 function starvedMills(inventory: (kind: string) => Record<string, number>): GameState {

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 34,
-  "sha256": "3b486a864351fdb3cf472b4141de5f106e6179964535e618b20b4ba4b90a6894",
+  "sha256": "8e078780b0b328844f324e435e6297c06921f339b69cfb1b9e980f80d7fae746",
   "inputs": [
     "DEFAULT_GAME_STATE",
     "fixtures/saves/v1/new-game.save.json",
@@ -352,6 +352,7 @@
     "$.forestHarvests[]:object",
     "$.harvestRecord.<resource>:number",
     "$.harvestRecord.expected:number",
+    "$.harvestRecord.lost:number",
     "$.harvestRecord.past:array",
     "$.harvestRecord.year:number",
     "$.harvestRecord:object",

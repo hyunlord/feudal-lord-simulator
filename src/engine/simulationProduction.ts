@@ -23,7 +23,7 @@ export function runProduction(input: GameState): GameState {
   // AF-3…AF-9: the fields advance first; a harvest lands in the barn this tick and counts as wheat produced.
   const fields = stepArableFields(input);
   // GP-1: the year's expected and harvested wheat (the bot's grain plan reads the realised share, GP-2).
-  const harvestRecord = nextHarvestRecord(input, fields.activity.harvestedWheat);
+  const harvestRecord = nextHarvestRecord(input, fields.activity.harvestedWheat, fields.activity.lostWheat);
   const recorded = harvestRecord === input.harvestRecord || harvestRecord === undefined ? fields.state : { ...fields.state, harvestRecord };
   // EV-9: the wheat a dearth's harvest lost is the dearth's loss.
   const state = recordHarvestLoss(recorded, fields.activity.weatherLostWheat);

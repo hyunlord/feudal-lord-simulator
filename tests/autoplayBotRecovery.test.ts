@@ -176,7 +176,8 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // without persons, factions and petitioners the state is trunk's, decision LN7).
   // FIX-9: an heiress's widower or her nearest of the blood takes a headless house, the factions' leaders are of their
   // role's age (was 07fe070b…; without persons, factions and petitioners the state is trunk's, decisions FX9-3, FX9-5).
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "12e7d9b8ed31303f943016e0f17d40d8b468ceb06f9938e69b28c7478941199a");
+  // BOT-4 (GP-1): the state keeps the town's harvest record (was 12e7d9b8…; without `harvestRecord` the state is the same).
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "20e33b11cdfb66682a4f27b323d3f4d6b2dc90d562d3c9ee1c90ea924f143c75");
 });
 
 test("B8 seed 4 (F0-A run 1): backed-up edge barns get a mill beside them while homes lose levels, and the town reaches L4 24/24", () => {
