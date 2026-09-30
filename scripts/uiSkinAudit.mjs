@@ -387,6 +387,42 @@ if (states9 !== undefined) {
   });
 }
 
+// UI-10: chapter 5 — a legacy petition card, the heir's card (its candidates), the legacy verdict, the chronicle book
+// and chapter 5's end page. States from --states10 (scripts/ui10States.ts); the screens' selectors are UI-10's.
+const states10 = flag('states10');
+if (states10 !== undefined) {
+  const scene10 = async (stateName, query) => {
+    const state = JSON.parse(readFileSync(join(states10, `${stateName}.json`), 'utf8'));
+    const opened = await openScene(browser, { state, tile: houseTile(state), baseUrl: url, width: 1280, height: 800, zoom: 1.1, run: false, initScript: TUTORIAL_OFF, query });
+    opened.page.on('pageerror', error => result.errors.push(`${stateName}: ${String(error)}`));
+    return opened;
+  };
+  for (const [name, stateName, file] of [['legacy-petition', 'borough_autonomy', 's30-legacy-petition.jpg'], ['heir-petition', 'heir_choice', 's31-heir-petition.jpg']]) {
+    await step(name, async () => {
+      const { context, page } = await scene10(stateName, '&story-delay=0');
+      await page.locator('.petition-card').waitFor({ timeout: 60_000 }).catch(async () => { await page.locator('.event-chip').first().click(); });
+      await page.locator('.petition-card').waitFor({ timeout: 30_000 }); await pause(600);
+      await audit(name, page, file);
+      await context.close();
+    });
+  }
+  // The campaign's end: chapter 5's page, then (as the player goes on) the legacy verdict, the ending, the book.
+  await step('chapter5-page', async () => {
+    const { context, page } = await scene10('chapter5-end', '&story-delay=5000');
+    await page.locator('.chronicle-page').waitFor({ timeout: 90_000 }); await pause(800);
+    await audit('chapter5-page', page, 's32-chapter5-page.jpg');
+    await page.locator('.chronicle-page .chronicle-next').first().click();
+    await page.locator('.legacy-verdict').waitFor({ timeout: 30_000 }); await pause(800);
+    await audit('legacy-verdict', page, 's33-legacy-verdict.jpg');
+    await page.locator('.legacy-verdict .legacy-verdict-next').first().click();
+    await page.locator('.legacy-ending').waitFor({ timeout: 30_000 }); await pause(600);
+    await page.locator('.legacy-ending .legacy-ending-book').first().click();
+    await page.locator('.chronicle-book').waitFor({ timeout: 30_000 }); await pause(800);
+    await audit('chronicle-book', page, 's34-chronicle-book.jpg');
+    await context.close();
+  });
+}
+
 // Gate ③: the gallery at desktop and tablet size (full page), audited as well.
 for (const [name, viewport, touch] of [['gallery-desktop', { width: 1280, height: 800 }, false], ['gallery-tablet', { width: 1180, height: 820 }, true]]) {
   await step(name, async () => {
@@ -419,7 +455,8 @@ await browser.close();
 const expected = ['title', 'normal', 'drawer', 'placement', 'zone', 'selection', 'ledger', 'chronicle', 'biography', 'qa-overlay', 'pause-settings', 'petition', 'decision', 'season', 'chapter-end', 'chronicle-factions', 'chronicle-faction-page', 'gallery-desktop', 'gallery-tablet',
   ...(states6 === undefined ? [] : ['war-petition-writ', 'war-petition-refugees', 'rights-decline', 'rights-chapter2', 'chapter2-page']),
   ...(states8 === undefined ? [] : ['wage-ledger', 'chapter3-page']),
-  ...(states9 === undefined ? [] : ['reorg-petition', 'factions-chapter4', 'rights-chapter4', 'reorg-ledger', 'chapter4-page'])];
+  ...(states9 === undefined ? [] : ['reorg-petition', 'factions-chapter4', 'rights-chapter4', 'reorg-ledger', 'chapter4-page']),
+  ...(states10 === undefined ? [] : ['legacy-petition', 'heir-petition', 'chapter5-page', 'legacy-verdict', 'chronicle-book'])];
 result.missing = expected.filter(name => result.states[name] === undefined);
 // NAT-1: frameless floating boxes are also failures.
 result.pass = result.total.skinless === 0 && result.missing.length === 0 && (result.total.frameless ?? 0) === 0;
