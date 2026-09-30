@@ -134,31 +134,30 @@ function compareCandidates(left: SaleCandidate, right: SaleCandidate): number {
 }
 
 /**
- * FIX-11 (13, rule 10): the market-activity check (render's world signs and market art only; the settlement itself uses
- * `saleCandidates` directly) is computed at most once per market per `SALE_CHECK_TICKS` window.
- * (a) Key: the `tiles` array (weak; a road or building change makes a new one), the market id, the window
- *     `floor(tick / SALE_CHECK_TICKS)`, the `constructionSites` reference and the era.
- * (b) Left out: the stores' stock and reservations (in `buildings`, a new array every tick). A sale starting or ending
- *     inside a window shows up to 20 ticks (about two days) late on the market's sign; nothing in the simulation reads
- *     this answer. The market's own workers and suspension are checked before the memo, every call.
- * (c) Measured (`scripts/perf/marketSaleCheck.ts`, chapter-five-town v35, one market, 93 buildings, this Mac): a
- *     recompute is 0.17 ms with warm road caches; at 5× (a new state every frame) that was every frame (NAT-2: 0.23 ms).
- *     Now frames at 5× average 0.027 ms (one recompute per 20-tick window).
+ * FIX-11 (13, rule 10): the market-activity check (render's world signs and market art) keeps its answer exact and
+ * caches only its costly part, the road search for the stores connected to the market.
+ * (a) Key: the `tiles` array (weak), the market id and the number of buildings. A road, a building or a construction
+ *     site placed or removed makes a new tiles array (tile `hasRoad` / `buildingId`).
+ * (b) The stores' stock and reservations, the construction reserve and the era are read fresh on every call, so the
+ *     answer is the same as without the cache; only which stores the market's road reaches is remembered.
+ * (c) Measured (`scripts/perf/marketSaleCheck.ts`, chapter-five-town v35, one market, 93 buildings, this Mac): a check
+ *     with the road search was 0.17 ms with warm road caches (NAT-2: 0.23 ms a frame at 5×); a frame at 5× (new stock,
+ *     same tiles) is now 0.068 ms.
  */
-const SALE_CHECK_TICKS = 20;
-interface SaleCandidateMemo { readonly window: number; readonly sites: GameState["constructionSites"]; readonly era: GameState["era"]; readonly value: boolean }
-const saleCandidateMemo = new WeakMap<GameState["tiles"], Map<string, SaleCandidateMemo>>();
+interface ConnectedStores { readonly buildings: number; readonly ids: readonly string[] }
+const connectedStoreMemo = new WeakMap<GameState["tiles"], Map<string, ConnectedStores>>();
 
 export function marketHasSaleCandidate(state: GameState, market: Building): boolean {
   if (market.kind !== "market" || operationSuspended(market) || market.workers < BUILDING_CONFIG_BY_KIND.market.workersRequired) return false;
-  const window = Math.floor(state.tick / SALE_CHECK_TICKS);
-  let byMarket = saleCandidateMemo.get(state.tiles);
-  if (byMarket === undefined) { byMarket = new Map(); saleCandidateMemo.set(state.tiles, byMarket); }
-  const cached = byMarket.get(market.id);
-  if (cached !== undefined && cached.window === window && cached.sites === state.constructionSites && cached.era === state.era) return cached.value;
-  const value = saleCandidates(connectedStorageSources(state, market, state.buildings), state).length > 0;
-  byMarket.set(market.id, { window, sites: state.constructionSites, era: state.era, value });
-  return value;
+  let byMarket = connectedStoreMemo.get(state.tiles);
+  if (byMarket === undefined) { byMarket = new Map(); connectedStoreMemo.set(state.tiles, byMarket); }
+  let stores = byMarket.get(market.id);
+  if (stores === undefined || stores.buildings !== state.buildings.length) {
+    stores = { buildings: state.buildings.length, ids: connectedStorageSources(state, market, state.buildings).map(building => building.id) };
+    byMarket.set(market.id, stores);
+  }
+  const wanted = new Set(stores.ids);
+  return saleCandidates(state.buildings.filter(building => wanted.has(building.id)), state).length > 0;
 }
 
 function settleMarket(

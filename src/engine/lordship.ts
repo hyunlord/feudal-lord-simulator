@@ -46,7 +46,7 @@ export function lordFamilyExtinct(state: Pick<GameState, "persons" | "lordship" 
   const tag = `lord-house:${lordshipOf(state).house.order}`;
   const persons = state.persons;
   if (persons === undefined || persons.people.some(person => person.tags.includes(tag))) return false;
-  // FIX-11: heir candidates are pending succession — do not fire extinction during the petition window.
+  // FIX-11: heir candidates are pending succession — do not fire extinction while the heir petition is open.
   if (persons.people.some(person => person.tags.includes(HEIR_CANDIDATE_TAG))) return false;
   return persons.past.some(person => person.tags.includes(tag) && !person.alive && person.deathCause === "plague");
 }

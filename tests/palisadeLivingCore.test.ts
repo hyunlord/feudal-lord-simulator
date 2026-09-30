@@ -49,7 +49,7 @@ test('two-tile margin gives a shorter proposal than the former all-building enve
   assert.equal(current.ok, true);
   if (!former.ok || !current.ok) return;
   assert.ok(current.perimeterSteps < former.perimeterSteps, `${current.perimeterSteps} >= ${former.perimeterSteps}`);
-  assert.equal(all.length, 8);
+  assert.equal(all.length, 9, "the opening's eight and (FIX-11, MH-1) the manor house");
 });
 
 test('a manually widened wall cannot exclude a home merely because sixty percent of all plots fit', () => {
@@ -96,7 +96,9 @@ test('a compact legal wall remains selectable when the preliminary two-tile prop
   const state = createGrowthOpening(2).state;
   const all = palisadeFootprintsForState(state);
   const core = palisadeCoreFootprintsForState(state);
-  const compact = computePalisadeProposal(state, all, path =>
+  // FIX-11 (MH-1): the manor house is clearance for the wall, never one of its anchors.
+  const anchored = all.filter(footprint => !footprint.id.startsWith("manor-house-"));
+  const compact = computePalisadeProposal(state, anchored, path =>
     palisadePathEnclosesFootprints(path, core) && palisadePathHasBuildingClearance(path, all), [1]);
   assert.equal(palisadeCoreProposalForState(state).ok, false);
   assert.equal(compact.ok, true);

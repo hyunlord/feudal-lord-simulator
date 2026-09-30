@@ -59,7 +59,8 @@ export async function ledgerBalanceTrace(root: string, kind: string, ticks: numb
   // BOT-4 (GP-1): the harvest record is the bot's grain-plan bookkeeping; the world hash leaves it out (the world itself
   // stays the pinned one while the bot's choices are unchanged).
   const { treasuryCoin: _treasury, money: _money, history: _history, factions: _factions, harvestRecord: _harvest, buildings, ...world } = rest as AnyState & { money?: unknown; history?: unknown; factions?: unknown; harvestRecord?: unknown; buildings: Record<string, unknown>[] };
-  const worldBuildings = buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building);
+  // FIX-11 (SK-3, FX11-14): the stuck-stock since-ticks and the dyed bolts' colour tally are records too.
+  const worldBuildings = buildings.map(({ upkeepUnpaid: _unpaid, stuckSinceTick: _stuck, dyedColours: _colours, ...building }) => building);
   return {
     kind, stateFile: stateFile ?? null, startTick, endTick: state.tick, ticks,
     treasurySequenceSha256: sequence.digest("hex"), finalTreasury: previous, treasuryChanges: changes,

@@ -35,6 +35,7 @@ import { createGrowthOpening } from "../scripts/phase21OpeningTranslation";
 import { terrainResourcePreflight } from "../scripts/phase19NaturalGrowth";
 import { clothTown } from "./helpers/clothTown";
 import { PLAGUE_ERA_TICK, plagueTown } from "./helpers/plagueTown";
+import { placeManorSite } from "../src/state/openingVillage";
 
 const SIZE = { width: 64, height: 64 };
 const NEW_LANDS = [COASTAL_ARCHETYPE_ID, DOWNS_ARCHETYPE_ID, WOODLAND_ARCHETYPE_ID, FEN_ARCHETYPE_ID] as const;
@@ -219,13 +220,15 @@ test("MA-5 the ground layer names confirmed Wave 22 files; field edges are Wave 
 
 test("MA-6 a new game on a land: the start command takes the land and seed; the riverside town is today's map; a new land keeps its id through a save", () => {
   const riverside = newGameState({ scenarioId: DEFAULT_SCENARIO_ID })!;
-  assert.deepEqual(riverside, { ...structuredClone(DEFAULT_GAME_STATE), scenarioId: DEFAULT_SCENARIO_ID });
+  // FIX-11 (MH-1): a new game is the opening village with the manor house on its nearest free grass.
+  assert.deepEqual(riverside, placeManorSite({ ...structuredClone(DEFAULT_GAME_STATE), scenarioId: DEFAULT_SCENARIO_ID }));
   assert.equal(newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: RIVERSIDE_ARCHETYPE_ID, seed: 2 }), null, "the riverside town is seed 1");
   assert.equal(newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: "core:no_such_land" }), null);
   assert.equal(newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: FEN_ARCHETYPE_ID, seed: 0 }), null);
   const fen = newGameState({ scenarioId: SANDBOX_SCENARIO_ID, archetypeId: FEN_ARCHETYPE_ID, seed: 2 })!;
   assert.deepEqual([fen.archetypeId, fen.seed, fen.scenarioId], [FEN_ARCHETYPE_ID, 2, SANDBOX_SCENARIO_ID]);
-  assert.deepEqual(fen.buildings, DEFAULT_GAME_STATE.buildings, "the same opening village");
+  assert.deepEqual(fen.buildings.filter(building => building.kind !== "manor_house"), DEFAULT_GAME_STATE.buildings, "the same opening village");
+  assert.equal(fen.buildings.filter(building => building.kind === "manor_house").length, 1);
   assert.deepEqual(fen.tiles.map(tile => tile.terrain), archetypeTerrains(byId(FEN_ARCHETYPE_ID), { ...SIZE, seed: 2 }));
   assert.deepEqual(gameReducer(DEFAULT_GAME_STATE, { type: "start_new_game", scenarioId: SANDBOX_SCENARIO_ID, archetypeId: FEN_ARCHETYPE_ID, seed: 2 }), fen);
   assert.equal(gameReducer(DEFAULT_GAME_STATE, { type: "start_new_game", scenarioId: DEFAULT_SCENARIO_ID, archetypeId: "core:no_such_land" }), DEFAULT_GAME_STATE);

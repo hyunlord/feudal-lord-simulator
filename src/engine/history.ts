@@ -803,12 +803,12 @@ const QUOTE_WEIGHT: Readonly<Record<string, number>> = { famine_response: 0, pet
 
 /** HL-6: a chapter's page from the ledger — its top `limit` event and era records, and its quoted decisions. */
 export function chapterPageRecords(state: Pick<GameState, "history">, fromTick: number, toTick: number, limit = 8) {
-  // Item 8: exclude records at fromTick (previous chapter's end tick); milestone.chapter_start is kind "milestone" and not included here
   const records = historyQuery(state, { kinds: ["event", "era"], severity: 2, range: { from: fromTick, to: toTick } });
-  const events = [...records].filter(record => record.tick > fromTick).sort((a, b) => b.severity - a.severity || a.tick - b.tick).slice(0, limit).sort((a, b) => a.tick - b.tick);
-  // Item 8: include ALL decisions per chapter (no slice limit), exclude boundary tick records
+  const events = [...records].sort((a, b) => b.severity - a.severity || a.tick - b.tick).slice(0, limit).sort((a, b) => a.tick - b.tick);
+  // FIX-11 (FX11-8): every decision of the chapter (no three-quote limit). The caller starts a later chapter's range one
+  // tick after the previous chapter's end, whose records are that chapter's.
   const decisions = historyQuery(state, { kinds: ["decision"], severity: 1, range: { from: fromTick, to: toTick } })
-    .filter(record => record.decision !== undefined && record.tick > fromTick)
+    .filter(record => record.decision !== undefined)
     .sort((a, b) => (QUOTE_WEIGHT[String(a.params?.decisionKind)] ?? 9) - (QUOTE_WEIGHT[String(b.params?.decisionKind)] ?? 9) || a.tick - b.tick);
   return { events, decisions };
 }

@@ -76,25 +76,20 @@ test("X7c (FIX-11 item 7) kingAt: Richard II through the summer of 1399, Henry I
 // Item 8: chapter records — no 3-decision limit, boundary tick excluded, heir relation
 // ─────────────────────────────────────────────────────────────────────────────
 
-test("X8a (FIX-11 item 8) chapterPageRecords: decisions at fromTick are excluded (boundary tick)", () => {
+test("X8a (FIX-11 item 8) a later chapter's page leaves out the records of the tick it opened on (the previous chapter's end)", async () => {
+  const { chronicleEntry } = await import("../src/engine/politics");
   const state = legacyBase();
-  const fromTick = state.tick;
-  const toTick = state.tick + 2 * SEASON;
-  // inject a decision record at exactly fromTick into the history
+  const opened = state.politics!.chapter.startTick;
+  assert.ok(state.politics!.chapter.number > 1);
+  const fake = (id: string, tick: number) => ({ id, tick, kind: "decision" as const, template: "decision.petition_response",
+    params: { decisionKind: "petition_response", chosen: "accept", defId: "guild_charter" }, subject: { type: "town" as const, id: "town" },
+    severity: 1 as const, decision: { chosen: "accept", alternatives: ["refuse"] as readonly string[], predicted: {} as Readonly<Record<string, number>> } });
   const history = state.history!;
-  const fakeRecord = {
-    id: "d-boundary-test",
-    tick: fromTick, // at the boundary — should be excluded
-    kind: "decision" as const,
-    template: "decision.petition_response",
-    params: { decisionKind: "petition_response" as const, chosen: "accept", defId: "guild_charter" },
-    subject: { type: "town" as const, id: "town" },
-    severity: 1 as const,
-    decision: { chosen: "accept", alternatives: ["refuse"] as readonly string[], predicted: {} as Readonly<Record<string, number>> },
-  };
-  const fakeState: GameState = { ...state, history: { ...history, records: [...history.records, fakeRecord as never] } };
-  const { decisions } = chapterPageRecords(fakeState, fromTick, toTick);
-  assert.ok(!decisions.some(d => d.id === "d-boundary-test"), "decision at fromTick must be excluded");
+  const fakeState: GameState = { ...state, tick: opened + 10,
+    history: { ...history, records: [...history.records, fake("d-boundary", opened) as never, fake("d-inside", opened + 1) as never] } };
+  const ids = chronicleEntry(fakeState).decisions.map(quote => quote.recordId);
+  assert.ok(!ids.includes("d-boundary"), "the previous chapter's end tick is that chapter's");
+  assert.ok(ids.includes("d-inside"));
 });
 
 test("X8b (FIX-11 item 8) chapterPageRecords: all decisions included (no 3-decision slice limit)", () => {

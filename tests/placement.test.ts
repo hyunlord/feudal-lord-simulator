@@ -103,6 +103,8 @@ test("BUILDING_CONFIG defines all canonical building kinds with distinctive foot
     "fulling_mill",
     "dyehouse",
     "tenter_yard",
+    // FIX-11 (MH-1): the lord's manor house, pre-placed and never built (no cost).
+    "manor_house",
   ] as const satisfies readonly BuildingKind[];
   assert.deepEqual([...definitionsByKind.keys()].sort(), [...expectedKinds].sort());
   assert.ok(
@@ -112,7 +114,7 @@ test("BUILDING_CONFIG defines all canonical building kinds with distinctive foot
   for (const definition of BUILDING_CONFIG) {
     assert.ok(definition.name.length > 0);
     assert.ok(
-      definition.kind === "house" ||
+      definition.kind === "house" || definition.kind === "manor_house" ||
         Object.values(definition.buildCost).some((amount) => (amount ?? 0) > 0),
     );
     assert.ok(definition.width >= 1);

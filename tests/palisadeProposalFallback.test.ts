@@ -7,7 +7,9 @@ import { computePalisadeProposal, palisadePathHasBuildingClearance, validatePali
 test("original seed 3 opening admits a wall without moving its shoreline logging camp", () => {
   const { state, provenance } = createGrowthOpening(3);
   assert.deepEqual(provenance.offset, { tx: -33, ty: -34 });
-  const footprints = palisadeFootprintsForState(state);
+  // FIX-11 (MH-1): the manor house stands beside the village; it is no footprint a wall must enclose (the living core's
+  // proposal keeps clear of it), so the all-building envelope here is the village's eight.
+  const footprints = palisadeFootprintsForState(state).filter(footprint => !footprint.id.startsWith("manor-house-"));
   assert.equal(footprints.length, 8);
   const before = structuredClone(state);
   const proposal = computePalisadeProposal(state, footprints);

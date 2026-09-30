@@ -7,6 +7,7 @@ import { selectGrowthOpening } from "../scripts/phase21OpeningTranslation";
 import { RIVERSIDE_ARCHETYPE_ID } from "../src/content/scenario/archetypes";
 import { archetypeById } from "../src/content/scenario/registry";
 import { buildArchetypeWorld } from "../src/world/archetypeTerrain";
+import { placeManorSite } from "../src/state/openingVillage";
 
 test("approved verification seeds receive a rigid legal opening without changing raw terrain or economic fields", () => {
   const original = structuredClone(DEFAULT_GAME_STATE);
@@ -17,10 +18,13 @@ test("approved verification seeds receive a rigid legal opening without changing
     const land = buildArchetypeWorld(archetypeById(RIVERSIDE_ARCHETYPE_ID)!, { width: 64, height: 64, seed }, offset);
     assert.deepEqual(state.tiles.map(tile => tile.terrain), land.terrains);
     assert.deepEqual(state.river, land.river);
-    const first = state.buildings[0]; const before = original.buildings[0];
+    // FIX-11 (MH-1): the manor house takes its own nearest free grass; the opening village moves rigidly.
+    const opening = state.buildings.filter(building => building.kind !== "manor_house");
+    assert.equal(state.buildings.length - opening.length, 1);
+    const first = opening[0]; const before = original.buildings[0];
     assert.ok(first && before);
     const dx = first.tx - before.tx; const dy = first.ty - before.ty;
-    assert.deepEqual(state.buildings.map(b => ({ ...b, tx: b.tx - dx, ty: b.ty - dy })), original.buildings);
+    assert.deepEqual(opening.map(b => ({ ...b, tx: b.tx - dx, ty: b.ty - dy })), original.buildings);
     assert.equal(state.tiles.filter(t => t.hasRoad).length, original.tiles.filter(t => t.hasRoad).length);
     assert.deepEqual(state.tiles.filter(t => t.hasRoad).map(t => [t.tx - dx, t.ty - dy]), original.tiles.filter(t => t.hasRoad).map(t => [t.tx, t.ty]));
     const { tiles, buildings, seed: actualSeed, river, ...rest } = state;
@@ -28,7 +32,7 @@ test("approved verification seeds receive a rigid legal opening without changing
     assert.deepEqual(rest, originalRest);
     assert.deepEqual(createGrowthInitialState(seed), state);
   }
-  assert.deepEqual(createGrowthInitialState(1), original);
+  assert.deepEqual(createGrowthInitialState(1), placeManorSite(original));
   assert.deepEqual(DEFAULT_GAME_STATE, original);
 });
 

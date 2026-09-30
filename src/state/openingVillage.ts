@@ -6,7 +6,6 @@ import type { House } from "../population/population.types";
 import type { GameState } from "../engine/engine.types";
 import { householdServices } from "../engine/householdServices";
 import { MANOR_HOUSEHOLD } from "../engine/persons.types";
-import { TOWN_SITE } from "../world/archetypeTerrain";
 import { zonesOf } from "../zones/zoneEdits";
 import type { Tile } from "../world/world.types";
 
@@ -20,6 +19,10 @@ export const MANOR_HOUSE_TX = 36;
 export const MANOR_HOUSE_TY = 36;
 export const MANOR_HOUSE_ID = "manor-house-36-36-0";
 const MANOR_FROM_FIRST_COTTAGE = { dx: -10, dy: -4 } as const;
+/** MH-1: how far (tiles, each way) from the wanted site the manor house looks for free grass. */
+const MANOR_SEARCH_REACH = 16;
+/** MH-1: no building or road within this many tiles of the manor house's footprint when it is placed. */
+const MANOR_CLEARANCE = 5;
 
 const COTTAGE_ORIGINS = [
   { tx: 44, ty: 40 },
@@ -170,8 +173,8 @@ export function withOpeningVillageServices<State extends GameState>(state: State
 /**
  * FIX-11 (11, MH-1, MH-2): gives a town its manor house — a new map (every land, every opening) and a save from before
  * FIX-11 (the v35 migration). The free 2×2 nearest to ten tiles west and four north of the first cottage (the opening
- * village's north-west, (36,36) on the default opening) inside the town site — free means grass, no building, no road,
- * no painted zone. A town with no free 2×2 left keeps no manor house (the family then shows as "시골 장원", UI10-D2).
+ * village's north-west, (36,36) on the default opening), within sixteen tiles of it — free means grass and no painted
+ * zone, with no building or road within five tiles. A town with no free 2×2 left keeps no manor house (the family then shows as "시골 장원", UI10-D2).
  * Pure: returns a new state.
  */
 export function placeManorSite<State extends GameState>(state: State): State {
@@ -182,7 +185,15 @@ export function placeManorSite<State extends GameState>(state: State): State {
     for (let dy = 0; dy < def.height; dy += 1) for (let dx = 0; dx < def.width; dx += 1) {
       const index = (ty + dy) * state.width + tx + dx;
       const tile = state.tiles[index];
-      if (tile === undefined || tile.terrain !== "grass" || tile.buildingId !== null || tile.hasRoad || zoned.has(index)) return false;
+      if (tile === undefined || tile.terrain !== "grass" || zoned.has(index)) return false;
+    }
+    // MH-1: clear of the village by MANOR_CLEARANCE tiles, so the living core's wall (margin 2–3) and its roads keep
+    // their room; the town grows up to it later.
+    for (let y = ty - MANOR_CLEARANCE; y < ty + def.height + MANOR_CLEARANCE; y += 1) {
+      for (let x = tx - MANOR_CLEARANCE; x < tx + def.width + MANOR_CLEARANCE; x += 1) {
+        const tile = x < 0 || y < 0 || x >= state.width || y >= state.height ? undefined : state.tiles[y * state.width + x];
+        if (tile !== undefined && (tile.buildingId !== null || tile.hasRoad)) return false;
+      }
     }
     return true;
   };
@@ -190,8 +201,9 @@ export function placeManorSite<State extends GameState>(state: State): State {
   const want = cottage === undefined ? { tx: MANOR_HOUSE_TX, ty: MANOR_HOUSE_TY }
     : { tx: cottage.tx + MANOR_FROM_FIRST_COTTAGE.dx, ty: cottage.ty + MANOR_FROM_FIRST_COTTAGE.dy };
   const sites: { tx: number; ty: number; distance: number }[] = [];
-  for (let ty = TOWN_SITE.minTy; ty + def.height - 1 <= TOWN_SITE.maxTy; ty += 1) {
-    for (let tx = TOWN_SITE.minTx; tx + def.width - 1 <= TOWN_SITE.maxTx; tx += 1) {
+  const low = (value: number) => Math.max(0, value - MANOR_SEARCH_REACH);
+  for (let ty = low(want.ty); ty + def.height - 1 <= Math.min(state.height - 1, want.ty + MANOR_SEARCH_REACH); ty += 1) {
+    for (let tx = low(want.tx); tx + def.width - 1 <= Math.min(state.width - 1, want.tx + MANOR_SEARCH_REACH); tx += 1) {
       if (free(tx, ty)) sites.push({ tx, ty, distance: (tx - want.tx) ** 2 + (ty - want.ty) ** 2 });
     }
   }

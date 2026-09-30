@@ -145,12 +145,15 @@ test('natural seed3 full state including serialized pathCache stays identical af
   // portraits the state is unchanged).
   // PERSON-1a (LN7): the persons' traits, lineage, parents and the lord's family (was c11f6dbe…).
   // FIX-9: the headless house's succession and the factions' leaders' ages (was 9346b1b8…; the person layer only, FX9-3/FX9-5).
-  assert.equal(hash(warm), '8c7f244902b432b7498e22694cd54798b93e23177112a9f7d85c1f3e9d20a360');
+  // FIX-11: the manor house, one death table (FX11-2), the namesakes' bynames (FX11-3) and the stuck-stock since-ticks
+  // (SK-3) change the state (was 8c7f2449…); cold and warm caches still agree.
+  assert.equal(hash(warm), 'cedcdee0357ea50d97146a4b8d2764c1a1b8f53889c7b09ceface161c19a0ee0');
   const { coinLedger: _coinLedger, ledger: _ledger, treasuryCoin: _treasury, money: _money, history: _history, factions: _factions, ...withoutMoney } = warm as GameState & { coinLedger?: unknown };
   const moneyFree = { ...withoutMoney, buildings: withoutMoney.buildings.map(({ upkeepUnpaid: _unpaid, ...building }) => building) };
   // FIX-6: the same faces (was c0931baf…). PERSON-1a: the persons' lineage layer (was d86be291…). FIX-9: the person
-  // layer (was ce932f2b…).
-  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), '88180bbfc77e3f2ab394f8525489478d8e824637746a78c19841a2feefc56991');
+  // layer (was ce932f2b…). FIX-11: the manor house and the person layer (FX11-2, FX11-3), the stuck-stock since-ticks
+  // (was 88180bbf…).
+  assert.equal(createHash('sha256').update(JSON.stringify(moneyFree)).digest('hex'), 'f0858ae008a8238347176afb4f85d929a679b388ba313f73c048d14deb9aa9be');
   assert.equal(hash(coldState), hash(warm));
   assert.deepEqual(coldState.history, warm.history);
 });

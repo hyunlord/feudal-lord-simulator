@@ -45,7 +45,12 @@ test("MH-2 an old save gets the new game's site, or the nearest free 2×2 when t
   const again = placeManorSite(taken);
   const moved = again.buildings.find(building => building.kind === "manor_house")!;
   assert.notDeepEqual([moved.tx, moved.ty], [site.tx, site.ty]);
-  assert.ok((moved.tx - site.tx) ** 2 + (moved.ty - site.ty) ** 2 <= 4, `${moved.tx},${moved.ty}`);
+  assert.ok(Math.abs(moved.tx - site.tx) <= 16 && Math.abs(moved.ty - site.ty) <= 16, `${moved.tx},${moved.ty}`);
+  // Five tiles clear of every building and road (the village's wall keeps its room).
+  for (let y = moved.ty - 5; y < moved.ty + 7; y += 1) for (let x = moved.tx - 5; x < moved.tx + 7; x += 1) {
+    const tile = again.tiles[y * again.width + x];
+    if (tile !== undefined && x >= 0 && y >= 0 && x < again.width && tile.buildingId !== moved.id) assert.ok(tile.buildingId === null && !tile.hasRoad, `${x},${y}`);
+  }
   for (const tile of footprint(again, moved.tx, moved.ty)) assert.equal(tile.buildingId, moved.id);
 });
 
