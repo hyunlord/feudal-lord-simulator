@@ -1115,5 +1115,17 @@
   ],
   "desk_errors": [],
   "tablet_errors": []
+ },
+ "ui10-gate-fixes-2": {
+  "run": "render-UI10-fix4-fa9d998 (1280x800 and 1180x820, --only)",
+  "replaced": [
+   "c1-chapter5-page-tablet.jpg",
+   "c1-chapter5-page.jpg",
+   "l1-ledger-chapter5.jpg",
+   "x6-pilgrim_town-tablet.jpg",
+   "x6-pilgrim_town.jpg"
+  ],
+  "desk_errors": [],
+  "tablet_errors": []
  }
 }
