@@ -4,8 +4,9 @@ import test from "node:test";
 import { isWallConstructionSite, type WallConstructionSite } from "../src/economy/construction";
 import { palisadeConstructionSchedule } from "../src/economy/palisadeConstruction";
 import type { GameState } from "../src/engine/engine.types";
-import { wallSiteLabelAnchor, wallSiteLabelPlan, WALL_SEGMENT_LABEL_MIN_ZOOM } from "../src/render/wallSiteLabels";
+import { wallSiteLabelAnchor, wallSiteLabelPlan, wallWorksMaterial, WALL_SEGMENT_LABEL_MIN_ZOOM } from "../src/render/wallSiteLabels";
 import { decodeSave } from "../src/save/saveCodec";
+import { resourceName } from "../src/content/resourceCatalog.ko";
 import { currentConstructionSiteLabel } from "../src/ui/constructionAccessModel";
 import { WALL_CARRY_COPY, WALL_SITE_LABEL_COPY } from "../src/ui/wallCarryCopy.ko";
 
@@ -22,13 +23,14 @@ function segment(index: number, options: { wallId?: string; kind?: WallConstruct
 const carried = (site: WallConstructionSite) => WALL_CARRY_COPY.carried(site.segmentIndex + 3);
 const everywhere = { visible: () => true, centre: { x: 0, y: 0 }, selectedSiteId: null };
 
-test("a wall works shows one tag, at its segment nearest the gate, naming the segment count and that segment's cause", () => {
+test("a wall works shows one tag, at its segment nearest the gate, naming the segment count and that segment's material", () => {
   const sites = Array.from({ length: 12 }, (_, index) => segment(index, { gateDistance: (index + 5) % 12 }));
   const plan = wallSiteLabelPlan({ sites, labelOf: carried, zoom: 1, ...everywhere });
   assert.equal(plan.length, 1);
   const nearest = sites.find(site => site.gateDistance === 0)!;
   assert.equal(plan[0]!.siteId, nearest.id);
-  assert.equal(plan[0]!.text, WALL_SITE_LABEL_COPY.works(12, carried(nearest)));
+  assert.equal(plan[0]!.text, WALL_SITE_LABEL_COPY.works(12, wallWorksMaterial(nearest)!));
+  assert.equal(wallWorksMaterial(nearest), WALL_SITE_LABEL_COPY.material(resourceName("timber"), 0, 4), "its material, delivered of required");
   assert.deepEqual(plan[0]!.anchor, wallSiteLabelAnchor(nearest));
 });
 
@@ -51,7 +53,7 @@ test("each wall and material is its own works; the tag hangs on the nearest segm
   const offScreen = new Set([palisade[0]!.id, palisade[1]!.id].map(id => JSON.stringify(wallSiteLabelAnchor(palisade.find(site => site.id === id)!))));
   const plan = wallSiteLabelPlan({ sites: palisade, labelOf: carried, zoom: 1, ...everywhere, visible: point => !offScreen.has(JSON.stringify(point)) });
   assert.equal(plan[0]!.siteId, palisade[2]!.id);
-  assert.equal(plan[0]!.text, WALL_SITE_LABEL_COPY.works(6, carried(palisade[0]!)));
+  assert.equal(plan[0]!.text, WALL_SITE_LABEL_COPY.works(6, wallWorksMaterial(palisade[0]!)!));
   // No segment on screen, or no segment with a tag: no tag.
   assert.equal(wallSiteLabelPlan({ sites: palisade, labelOf: carried, zoom: 1, ...everywhere, visible: () => false }).length, 0);
   assert.equal(wallSiteLabelPlan({ sites: palisade, labelOf: () => "", zoom: 1, ...everywhere }).length, 0);
@@ -69,4 +71,14 @@ test("the chapter 2 town under wall construction: dozens of segment tags fold to
   const after = wallSiteLabelPlan({ sites, labelOf, zoom: 1, ...everywhere }).length;
   assert.ok(before >= 20, `segment tags before: ${before}`);
   assert.ok(after <= works && after >= 1, `tags after: ${after} for ${works} works`);
+  // UI-AUDIT-1: the works tag is the user's one short line.
+  const tags = wallSiteLabelPlan({ sites, labelOf, zoom: 1, ...everywhere });
+  assert.ok(tags.every(label => label.text.startsWith(WALL_SITE_LABEL_COPY.works(sites.filter(site => site.wallId === sites.find(other => other.id === label.siteId)!.wallId
+    && site.kind === sites.find(other => other.id === label.siteId)!.kind).length, ""))), tags.map(label => label.text).join(" | "));
+  assert.ok(tags.some(label => label.text.endsWith(WALL_SITE_LABEL_COPY.material(resourceName("timber"), 0, 60))), tags.map(label => label.text).join(" | "));
+});
+
+test("UI-AUDIT-1: a works whose gate segment needs no material names its cause", () => {
+  const sites = [{ ...segment(0), required: {} } as WallConstructionSite, segment(1)];
+  assert.equal(wallSiteLabelPlan({ sites, labelOf: carried, zoom: 1, ...everywhere })[0]!.text, WALL_SITE_LABEL_COPY.works(2, carried(sites[0]!)));
 });

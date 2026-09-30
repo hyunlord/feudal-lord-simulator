@@ -50,6 +50,8 @@ export type GoalCard = {
    * button) when pressed or when this key changes (the next goal); undefined = always open.
    */
   readonly foldKey?: string;
+  /** UI-AUDIT-1: the folded chip's short title at 1280 px and below (the chapter's number); undefined = the title. */
+  readonly shortTitle?: string;
 };
 
 type Transition = { readonly id: string; readonly title: string; readonly already: boolean; readonly until: number };
@@ -315,7 +317,7 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
       // UI-10: chapter 5's one goal counts its eight steps rather than 0/1.
       progress: legacyGoal !== null ? { current: legacyGoal.steps, target: legacyGoal.total } : { current: reached, target: goals.length },
       ctaLabel: CHAPTER_COPY.cta, status: "active", help: null, hasTarget: false,
-      foldKey: next?.id ?? "reached" });
+      foldKey: next?.id ?? "reached", shortTitle: CHAPTER_COPY.short(chapter) });
   }
   if (goal !== null) {
     const next = goal.criteria.find(item => !item.met) ?? goal.criteria[0];
