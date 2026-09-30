@@ -7,7 +7,7 @@ import { getTile } from "../world/grid";
 import type { PalisadePath, TileEdgePoint } from "../world/palisadeGeometry";
 import { canTraverseWallBoundary, type WallBoundary } from "../world/wallTraversal";
 import { canTraverseRoadBoundary } from "../world/bridges";
-import { palisadeRingPoints } from "./palisadeSegments";
+import { isStraightRingPoint, palisadeRingPoints } from "./palisadeSegments";
 
 type Crossing = readonly [TileCoordinate, TileCoordinate];
 
@@ -38,7 +38,12 @@ export function additionalRoadGates(grid: Grid & { readonly buildings?: readonly
       return { point, remaining, distance, gain: blocked.length - remaining.length };
     }).filter(choice => choice.gain > 0);
     const separated = choices.filter(choice => choice.distance >= 2);
-    const best = (separated.length > 0 ? separated : choices).sort((a, b) => b.gain - a.gain || b.distance - a.distance || a.point.y - b.point.y || a.point.x - b.point.x)[0];
+    // FIX-11 (12): prefer straight ring points over corners as a tiebreaker after gain and distance.
+    const best = (separated.length > 0 ? separated : choices).sort((a, b) =>
+      b.gain - a.gain || b.distance - a.distance
+      || Number(isStraightRingPoint(ring, indexOf(b.point))) - Number(isStraightRingPoint(ring, indexOf(a.point)))
+      || a.point.y - b.point.y || a.point.x - b.point.x,
+    )[0];
     if (best === undefined) break;
     selected.push(best.point);
     blocked = best.remaining;

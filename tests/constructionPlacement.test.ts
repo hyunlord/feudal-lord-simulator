@@ -36,6 +36,8 @@ const VALID_ORIGINS = {
   fulling_mill: { tx: 43, ty: 1 },
   dyehouse: { tx: 46, ty: 1 },
   tenter_yard: { tx: 49, ty: 1 },
+  // FIX-11 (11): manor_house is pre-placed, never constructable — add a placeholder to satisfy the exhaustive record.
+  manor_house: { tx: 52, ty: 1 },
 } as const satisfies Record<BuildingKind, { readonly tx: number; readonly ty: number }>;
 
 function constructionSites(state: GameState): readonly ConstructionSite[] {

@@ -63,11 +63,23 @@ export function stepProduction(
   inventory[production.output] =
     Math.max(0, inventory[production.output] ?? 0) + 1;
 
+  // FIX-11 (14): when the dyehouse completes a bolt, assign a dye colour deterministically. Colour cycles
+  // woad → madder → weld by total bolts produced so far (woad+madder+weld in dyedColours).
+  let dyedColours = building.dyedColours;
+  if (building.kind === "dyehouse" && production.output === "dyed_cloth") {
+    const dc = building.dyedColours ?? { woad: 0, madder: 0, weld: 0 };
+    const total = dc.woad + dc.madder + dc.weld;
+    const colours = ["woad", "madder", "weld"] as const;
+    const colour = colours[total % 3] ?? "woad";
+    dyedColours = { ...dc, [colour]: dc[colour] + 1 };
+  }
+
   return {
     building: {
       ...building,
       inventory,
       productionProgress: 0,
+      ...(dyedColours !== building.dyedColours ? { dyedColours } : {}),
     },
     produced: production.output,
   };

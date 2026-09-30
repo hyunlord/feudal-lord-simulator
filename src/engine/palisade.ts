@@ -19,6 +19,7 @@ import {
   type TileEdgePoint,
 } from "../world/palisadeGeometry";
 import {
+  isStraightRingPoint,
   PALISADE_SEGMENT_SITE_STEPS,
   palisadeRingPoints,
   palisadeStepPoints,
@@ -134,7 +135,10 @@ function nearestRingPoint(
   ring: readonly TileEdgePoint[],
   target: TileCoordinate | SettlementCenter,
 ): TileEdgePoint {
-  return [...ring].sort((left, right) => {
+  // FIX-11 (12): prefer straight-segment ring points; fall back to all points only when none are straight.
+  const straightIndices = new Set(ring.reduce<number[]>((acc, _, idx) => isStraightRingPoint(ring, idx) ? [...acc, idx] : acc, []));
+  const candidates = straightIndices.size > 0 ? ring.filter((_, idx) => straightIndices.has(idx)) : ring;
+  return [...candidates].sort((left, right) => {
     const distanceDelta = edgeDistanceSquared(left, target) - edgeDistanceSquared(right, target);
     return distanceDelta !== 0 ? distanceDelta : left.y === right.y ? left.x - right.x : left.y - right.y;
   })[0] ?? { x: 0, y: 0 };
@@ -144,11 +148,18 @@ function chooseGate(state: GameState, ring: readonly TileEdgePoint[], center: Se
   const scores = trafficScores(state);
   const crossed = crossedGateCandidates(state, ring, scores);
   const roads = roadTiles(state);
+  // FIX-11 (12): prefer straight ring points over corners as a tiebreaker.
+  const isStr = (point: TileEdgePoint): boolean => {
+    const idx = ring.findIndex(p => p.x === point.x && p.y === point.y);
+    return idx >= 0 && isStraightRingPoint(ring, idx);
+  };
   const target =
     crossed.length > 0
       ? [...crossed].sort((left, right) => {
           const scoreDelta = right.score - left.score;
           if (scoreDelta !== 0) return scoreDelta;
+          const strDelta = Number(isStr(right.point)) - Number(isStr(left.point));
+          if (strDelta !== 0) return strDelta;
           const distanceDelta = edgeDistanceSquared(left.point, center) - edgeDistanceSquared(right.point, center);
           return distanceDelta !== 0 ? distanceDelta : left.point.y === right.point.y ? left.point.x - right.point.x : left.point.y - right.point.y;
         })[0]?.point

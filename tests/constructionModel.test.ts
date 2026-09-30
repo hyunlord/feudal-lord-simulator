@@ -44,6 +44,8 @@ const BUILDING_KINDS = [
   "fulling_mill",
   "dyehouse",
   "tenter_yard",
+  // FIX-11 (11): manor_house is pre-placed; include so recipe and builder-tick tests stay exhaustive.
+  "manor_house",
 ] as const satisfies readonly BuildingKind[];
 
 test("BUILDING_CONFIG keeps the construction recipe inputs that the domain model mirrors", () => {
@@ -70,6 +72,7 @@ test("BUILDING_CONFIG keeps the construction recipe inputs that the domain model
     fulling_mill: { timber: 60 },
     dyehouse: { timber: 40 },
     tenter_yard: { timber: 20 },
+    manor_house: {},
   } as const satisfies Record<BuildingKind, object>;
 
   // When
@@ -110,6 +113,7 @@ test("CONSTRUCTION constants pin builder capacity, visibility floor, and require
     fulling_mill: 800,
     dyehouse: 600,
     tenter_yard: 400,
+    manor_house: 0,
   } satisfies Record<BuildingKind, number>);
 });
 
