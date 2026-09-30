@@ -16,7 +16,6 @@ import { createReadStream, createWriteStream, mkdirSync, mkdtempSync, readdirSyn
 import { createInterface } from "node:readline";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { holderText, takeMachineLock } from "./machineLock";
 import { SEASON_TEXT, TUTORIAL_OFF, MODAL, closeModals, loadChromium, openScene, type PageWindow } from "./scenePage";
 
 const argv = process.argv.slice(2);
@@ -164,8 +163,6 @@ async function gcBudget(browser: any, page: any, file: string, seconds: number) 
 }
 
 async function main() {
-  const lock = await takeMachineLock(`memoryHolders ${scene}`, 30, holder => console.error(`측정 잠금을 기다린다: ${holderText(holder)}`));
-  if (!lock.held) throw new Error(`다른 측정이 돌고 있다: ${holderText(lock.holder)}`);
   const work = mkdtempSync(join(tmpdir(), "fls-memory-")); const build = join(work, "build");
   const built = spawnSync("node_modules/.bin/vite", ["build", "--minify", "false", "--sourcemap", "true", "--outDir", build, "--emptyOutDir"], { encoding: "utf8" });
   if (built.status !== 0) throw new Error(`vite build failed:\n${built.stdout}\n${built.stderr}`);

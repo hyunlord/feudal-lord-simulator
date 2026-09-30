@@ -14,16 +14,14 @@ import { pipeline } from "node:stream/promises";
 import { join } from "node:path";
 import { analyseRun, type FrameRecord, type MomentMark } from "./hitchTrace";
 import { MODAL, SEASON_TEXT, TUTORIAL_OFF, closeModals as closeSceneModals, hidIdleSeconds, loadChromium, openScene, windowReady, zoomWithKeys, type PageWindow } from "./scenePage";
-import { holderText, takeMachineLock } from "./machineLock";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback?: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] : fallback; };
 const url = flag("url")!; const scene = flag("scene")!; const save = flag("save"); const speed = Number(flag("speed", "1"));
 const seconds = Number(flag("seconds", "180")); const action = flag("action", "none")!; const headed = argv.includes("--headed");
 const machine = flag("machine", headed ? "mac-chrome-window" : "dgx-headless")!; const out = flag("out")!; const traces = flag("traces")!;
-const noProof = argv.includes("--no-proof");
-const zoomOut = Number(flag("zoom-out", "0")); const zoomIn = Number(flag("zoom-in", "0"));   // camera keys before recording
-const lockWait = Number(flag("lock-wait", "30")); const focusWait = Number(flag("focus-wait", "60"));   // minutes · seconds   // the page as a player gets it: no proof port and its render recorders
+const noProof = argv.includes("--no-proof");   // the page as a player gets it: no proof port and its render recorders
+const zoomOut = Number(flag("zoom-out", "0")); const zoomIn = Number(flag("zoom-in", "0"));   // wheel steps before recording
 const noTrace = argv.includes("--no-trace");   // control: the same run without tracing (does tracing cause the hitches?)
 const width = Number(flag("width", "1600")); const height = Number(flag("height", "1000"));
 if (!url || !scene || !out || !traces || ![1, 3, 5].includes(speed)) throw new Error("--url --scene --speed 1|3|5 --out --traces are required");
@@ -66,9 +64,6 @@ const OBSERVE = `(() => {
 })();`;
 
 async function main() {
-  // One measurement at a time on this machine (scripts/perf/machineLock.ts); inside perf:gate the gate holds it.
-  const lock = await takeMachineLock(`hitchAudit ${scene} x${speed}`, lockWait, holder => console.error(`측정 잠금을 기다린다: ${holderText(holder)}`));
-  if (!lock.held) { console.error(`판정 아님: 다른 측정이 돌고 있다 — ${holderText(lock.holder)}`); process.exitCode = 3; return; }
   const chromium = await loadChromium();
   const browser = await chromium.launch({ channel: "chrome", headless: !headed,
     args: headed ? [`--window-size=${width},${height + 90}`, "--window-position=40,40"] : [] });
@@ -81,9 +76,9 @@ async function main() {
   const closeModals = () => closeSceneModals(page);
   const loadSeconds = (Date.now() - load0) / 1000;
   await page.waitForTimeout(1_000);
+  let windowAtStart: string | null = null;
   if (headed) {
-    const notReady = await windowReady(browser, page, focusWait);
-    if (notReady !== null) { console.error(`판정 아님: ${notReady}`); await browser.close(); process.exitCode = 3; return; }
+    windowAtStart = await windowReady(browser, page, 0);   // brought to front; its state is recorded, never waited for
   }
   const zoomOf = () => page.evaluate(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__?.diagnosis().camera.zoom ?? null);
   const zoomBefore: number | null = await zoomOf();
@@ -180,7 +175,7 @@ async function main() {
   if (!noTrace) { await pipeline(createReadStream(rawTrace), createGzip({ level: 6 }), createWriteStream(gz)); rmSync(rawTrace); }
   const analysis = await analyseRun({ frames: recorded.frames as FrameRecord[], marks: recorded.marks as MomentMark[], startMarkPageMs, tracePath: noTrace ? null : gz });
   const summary = { run: runName, machine, scene, speed, action, seconds, url, save: save ?? null, loadSeconds, startMarkPageMs,
-    zoom: { before: zoomBefore, recorded: zoomRecorded, keys: { out: zoomOut, in: zoomIn } }, input: { hidIdleAtEnd, recordSeconds },
+    zoom: { before: zoomBefore, recorded: zoomRecorded, keys: { out: zoomOut, in: zoomIn } }, input: { hidIdleAtEnd, recordSeconds }, windowAtStart,
     page: { dpr: recorded.dpr, viewport: recorded.viewport, tickEnd: recorded.tick, population: recorded.population, buildings: recorded.buildings },
     trace: noTrace ? null : { file: gz, bytes: statSync(gz).size }, moments: recorded.marks, actions: [...new Set(actionLog)], errors,
     longAnimationFrames: recorded.loaf,
