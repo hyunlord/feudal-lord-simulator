@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { EmblemImage } from "../heraldry/EmblemImage";
 import { portraitStyle } from "../portraitArt";
 import { UiIcon } from "../UiIcon";
 import { WAVE14_IMAGES } from "../wave14ArtManifest.generated";
-import { frameArtSpaceStyle, frameToken } from "../frameBox";
+import { frameArtSpaceStyle, frameBoxStyle, frameSafe } from "../frameBox";
+import { FRAME_GAP } from "../frameTokens.generated";
 import { assetUrlForBase } from "../../render/worldAssets";
 import type { PersonCardView, PersonRow } from "./personModels";
 import { PERSONS_COPY } from "./personsCopy.ko";
@@ -21,17 +22,20 @@ import { usePresentationPreference } from "../../render/PresentationToggle";
 // INSTALL-23 ④: a portrait wears its person's state ornament (`personStates.ts`) over the frame's bottom-right — the
 // ornament is not clipped by the round face — and a death draws the face greyscale; the state is also in words (the
 // chip's line and button name, the card's line), so the small ornament is never the only sign.
-// UI-AUDIT-1: the card's border is the painting's safe inset (frame kind `person-card`, its padding the gap); its parts
-// stay in the art's own coordinates on a layer over the border box.
+// UI-AUDIT-1: the card's border is the painting's safe inset (frame kind `person-card`, its padding the gap) at the
+// card's own scale; the text and the buttons are rows in that content box, and the painting (a 9-slice that grows down),
+// the portrait and the shield's cover stay in the art's own coordinates on a layer over the border box.
 const FADE_MS = 600;
 const CARD = WAVE14_IMAGES.frame_person_card;
-/** UI-7b: the card's printed shield with its fleurons, and a blank parchment area to cover it with. */
-const CARD_SHIELD = { x: 257, y: 20, width: 48, height: 60 } as const;
+/** UI-7b: the card's printed shield with its fleurons (x 260–304, y 23–75), covered inside the inner rule (y 20–22 and
+ * x 305–307 stay printed), and a blank parchment area to cover it with. */
+const CARD_SHIELD = { x: 258, y: 23, width: 47, height: 54 } as const;
 const CARD_BLANK = { x: 200, y: 96 } as const;
-const CARD_SCALE = frameToken("person-card").scale;
 
-export function PersonPortrait({ portraitId, size, className = "", ornament = null }: {
+export function PersonPortrait({ portraitId, size, className = "", ornament = null, ornamentBox }: {
   readonly portraitId: string; readonly size: number; readonly className?: string; readonly ornament?: PersonStateId | null;
+  /** Where the ornament's canvas lies over the portrait (default: the portrait's square). */
+  readonly ornamentBox?: CSSProperties;
 }) {
   const [shown, setShown] = useState(portraitId);
   const [previous, setPrevious] = useState<string | null>(null);
@@ -48,7 +52,7 @@ export function PersonPortrait({ portraitId, size, className = "", ornament = nu
       data-person-state={ornament ?? undefined} style={{ width: size, height: size }}>
       {previous === null ? null : <span className="person-portrait-layer person-portrait-layer--out" style={style(previous)} />}
       <span key={shown} className={`person-portrait-layer${previous === null ? "" : " person-portrait-layer--in"}`} style={style(shown)} />
-      {ornament === null ? null : <span className="person-state-ornament" data-ornament={ornament} style={personStateOrnamentStyle(ornament, size)} />}
+      {ornament === null ? null : <span className="person-state-ornament" data-ornament={ornament} style={{ ...personStateOrnamentStyle(ornament, size), ...ornamentBox }} />}
     </span>
   );
 }
@@ -90,27 +94,70 @@ export function PersonList({ rows, onOpen }: { readonly rows: readonly PersonRow
   );
 }
 
-const slot = (left: number, top: number, width: number, height: number) => ({ left: left * CARD_SCALE, top: top * CARD_SCALE, width: width * CARD_SCALE, height: height * CARD_SCALE });
+/** UI-AUDIT-1: the card is the medium box wide (NAT-1 `--box-w-medium`: 360, 414 on a coarse pointer), so the painting
+ * is drawn at that width over its 320; its height is its rows' (at least the painting's own 200 × scale). */
+const CARD_WIDTH = { fine: 360, coarse: 414 } as const;
+/** The painting as a 9-slice that only grows down (art px): the top keeps the ring and the shield (the ring's lower
+ * fleuron ends at y 139), the bottom the inner rule (y 177–179) and the wood; the band between is plain (PIL). */
+const CARD_SLICE = { top: 140, right: 64, bottom: 24, left: 112 } as const;
+/** The printed ring (PIL, UI-AUDIT-1 survey §4): centre (59.5, 83.5), its opening r 33.5. The manifest's portrait slot
+ * (60, 94, r 39) sits 10 art px low and is wider than the ring. */
+const CARD_RING = { x: 59.5, y: 83.5, opening: 33.5 } as const;
+/** The state ornament on the ring's bottom-right: its canvas `size` art px square, the canvas's far corner `far` px right
+ * and down of the ring's centre, so every Wave 23 ornament stays within 37 art px of it (on the printed ring, never
+ * outside it); the canvas beyond the face's square is clipped (it is transparent there). */
+const CARD_ORNAMENT = { size: 80, far: 28 } as const;
+/** The text column starts past the ring's right fleuron (x 104). */
+const CARD_TEXT_LEFT = 108;
+
+const COARSE_POINTER = "(pointer: coarse)";
+const coarseQuery = () => typeof window === "undefined" || typeof window.matchMedia !== "function" ? null : window.matchMedia(COARSE_POINTER);
+/** Whether the pointer is coarse (the touch box widths), following a change. */
+function useCoarsePointer(): boolean {
+  const [coarse, setCoarse] = useState(() => coarseQuery()?.matches ?? false);
+  useEffect(() => {
+    const query = coarseQuery();
+    if (query === null) return undefined;
+    const update = () => setCoarse(query.matches);
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+  return coarse;
+}
 
 export function PersonCardModal({ view, onClose, onBiography }: { readonly view: PersonCardView; readonly onClose: () => void; readonly onBiography: (personId: string) => void }) {
-  const portrait = CARD.slots.portrait; const emblem = CARD.slots.emblem;
+  const emblem = CARD.slots.emblem;
   const developer = usePresentationPreference("developerInfo");
   const cardUrl = assetUrlForBase(CARD.url, import.meta.env?.BASE_URL ?? "/");
+  const scale = (useCoarsePointer() ? CARD_WIDTH.coarse : CARD_WIDTH.fine) / CARD.width;
+  const art = (value: number) => value * scale;
+  const safe = frameSafe("person-card", scale);
+  const face = Math.round(art(CARD_RING.opening * 2));
+  const ornamentAt = face / 2 + art(CARD_ORNAMENT.far - CARD_ORNAMENT.size);
+  const { top, right, bottom, left } = CARD_SLICE;
+  const sliceWidth = `${art(top)}px ${art(right)}px ${art(bottom)}px ${art(left)}px`;
+  // why: the painting's 9-slice is handed to the art layer's ::before as custom properties (React has no type for them)
+  const artLayer = { ...frameArtSpaceStyle("person-card", scale), "--person-card-art": `url("${cardUrl}") ${top} ${right} ${bottom} ${left} fill / ${sliceWidth} / 0 stretch`,
+    "--person-card-art-width": sliceWidth } as CSSProperties;
   return (
     <div className="person-card-backdrop" role="presentation">
       <section className="person-card" data-frame="person-card" role="dialog" aria-modal="true" aria-label={PERSONS_COPY.cardTitle(view.name)} data-person={view.id}
         data-portrait={view.portraitId} data-portrait-exact={view.exact ? "true" : "false"}
-        style={{ width: CARD.width * CARD_SCALE, height: CARD.height * CARD_SCALE, backgroundImage: `url("${cardUrl}")` }}>
-        <div className="person-card-art" style={frameArtSpaceStyle("person-card")}>
-        <span className="person-card-portrait" style={slot(portrait.x - portrait.radius, portrait.y - portrait.radius, portrait.radius * 2, portrait.radius * 2)}>
-          <PersonPortrait portraitId={view.portraitId} size={Math.round(portrait.radius * 2 * CARD_SCALE)} ornament={view.ornament} />
-        </span>
-        {/* UI-7b: no arms or mark — the printed shield is covered with the card's own blank parchment. */}
-        {view.emblem === null ? <span className="person-card-emblem-cover" aria-hidden="true" data-emblem-kind="none"
-          style={artPatchStyle(cardUrl, CARD.width, CARD.height, CARD_SCALE, CARD_SHIELD, CARD_BLANK)} />
-          : <span className="person-card-emblem" style={slot(emblem.x - emblem.width / 2, emblem.y - emblem.height / 2, emblem.width, emblem.height)}
-            data-emblem-kind={view.emblem.kind}><EmblemImage emblem={view.emblem} size={Math.round(emblem.width * CARD_SCALE)} label={view.emblemLabel} /></span>}
-        <div className="person-card-text" style={slot(112, 24, 146, 122)}>
+        style={{ ...frameBoxStyle("person-card", scale), width: art(CARD.width), minHeight: art(CARD.height),
+          gridTemplateColumns: `${art(CARD_TEXT_LEFT) - safe.left - FRAME_GAP}px minmax(0, 1fr)` }}>
+        <div className="person-card-art" style={artLayer}>
+          <span className="person-card-portrait" style={{ left: art(CARD_RING.x) - face / 2, top: art(CARD_RING.y) - face / 2, width: face, height: face }}>
+            <PersonPortrait portraitId={view.portraitId} size={face} ornament={view.ornament}
+              ornamentBox={{ left: ornamentAt, top: ornamentAt, width: art(CARD_ORNAMENT.size), height: art(CARD_ORNAMENT.size) }} />
+          </span>
+          {/* UI-7b: the printed shield is covered with the card's own blank parchment; the arms or mark, when there are any,
+              sit in the text column's corner inside the content box. */}
+          <span className="person-card-emblem-cover" aria-hidden="true" data-emblem-kind={view.emblem === null ? "none" : undefined}
+            style={artPatchStyle(cardUrl, CARD.width, CARD.height, scale, CARD_SHIELD, CARD_BLANK)} />
+        </div>
+        <div className="person-card-text">
+          {view.emblem === null ? null : <span className="person-card-emblem" style={{ width: art(emblem.width), height: art(emblem.height) }}
+            data-emblem-kind={view.emblem.kind}><EmblemImage emblem={view.emblem} size={Math.round(art(emblem.width))} label={view.emblemLabel} /></span>}
           <h2>{view.name}</h2>
           <p>{view.role}</p>
           <p>{view.life}</p>
@@ -120,10 +167,9 @@ export function PersonCardModal({ view, onClose, onBiography }: { readonly view:
           {developer ? <p className="person-card-match" data-exact={view.exact ? "true" : "false"}>{view.match}</p> : null}
           {view.emblem === null ? null : <p className="person-card-emblem-label">{view.emblemLabel}</p>}
         </div>
-        <div className="person-card-actions" style={slot(112, 148, 196, 40)}>
+        <div className="person-card-actions">
           <Button type="button" className="person-card-action" onPress={() => onBiography(view.id)} variant="secondary"><UiIcon sheet="action" cell="log" />{PERSONS_COPY.biography}</Button>
           <Button type="button" className="person-card-action" aria-label={PERSONS_COPY.closeLabel} onPress={() => onClose()} variant="secondary">{PERSONS_COPY.close}</Button>
-        </div>
         </div>
       </section>
     </div>

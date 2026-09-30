@@ -469,18 +469,25 @@
 .inspector-members .person-list { margin: 0; }
 .person-list .person-chip { width: 100%; }
 .person-card-backdrop { position: absolute; inset: 0; z-index: 40; display: grid; place-items: center; background: color-mix(in srgb, var(--palette-ink) 45%, transparent); }
-.person-card { position: relative; background-size: 100% 100%; background-repeat: no-repeat; color: var(--palette-ink); }
-/* UI-AUDIT-1: the card's border is the painting's safe inset (kind `person-card`); its parts sit in the art's own
-   coordinates on a layer over the border box (frameArtSpaceStyle). */
+/* UI-AUDIT-1: the card's border is the painting's safe inset at its scale (kind `person-card`, set from TS); the text and
+   the buttons are rows of its content box, so the card is as tall as they are; the painting, the portrait and the
+   shield's cover sit in the art's own coordinates on a layer over the border box (frameArtSpaceStyle). The painting is
+   that layer's ::before (a 9-slice that grows down, under the rows): the root keeps no border-image of its own, so its
+   frame is its border. */
+.person-card { position: relative; isolation: isolate; display: grid; grid-template-rows: 1fr auto; row-gap: 8px; color: var(--palette-ink); }
+.person-card-art { pointer-events: none; }
+.person-card-art::before { content: ""; position: absolute; inset: 0; z-index: -1; box-sizing: border-box; border-style: solid; border-color: transparent;
+  border-width: var(--person-card-art-width); border-image: var(--person-card-art); }
 .person-card-art > * { position: absolute; box-sizing: border-box; }
-.person-card-portrait { display: grid; place-items: center; }
-.person-card-emblem { display: grid; place-items: center; }
-.person-card-text { display: grid; align-content: start; gap: 2px; overflow: hidden; }
+/* The face's square: the ornament's canvas reaches past it up and left, where it is transparent. */
+.person-card-portrait { overflow: hidden; }
+.person-card-emblem { float: right; display: grid; place-items: center; margin: 0 0 4px 8px; }
+.person-card-text { grid-column: 2; grid-row: 1; display: flow-root; min-width: 0; overflow-wrap: anywhere; }
 .person-card-text h2 { margin: 0; font-family: var(--ui-font-serif); font-size: 18px; line-height: 1.2; }
-.person-card-text p { margin: 0; font-size: 13px; line-height: 1.35; }
+.person-card-text p { margin: 2px 0 0; font-size: 13px; line-height: 1.35; }
 .person-card-text p.person-card-match { font-size: 12px; }
 .person-card-match[data-exact="false"] { font-style: italic; color: var(--palette-ink-muted); }
-.person-card-actions { display: flex; gap: 6px; align-items: center; justify-content: flex-end; }
+.person-card-actions { grid-column: 2; grid-row: 2; display: flex; flex-wrap: wrap; gap: 6px; align-items: end; justify-content: flex-end; }
 .person-card-action { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-height: 44px; padding: 0 14px; font-size: 13px; font-weight: 700; }
 .person-list-toggle { min-height: 44px; padding: 0 10px; font-size: 13px; font-weight: 700; justify-self: start; }
 .emblem-image { display: block; }
