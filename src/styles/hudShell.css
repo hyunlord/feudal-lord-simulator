@@ -398,9 +398,10 @@
 .chronicle-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 /* UI-10: the chapter page's footer — the panel's full width, opaque in the panel's paper (the skin's --parchment), a top
    rule, held at the scrolling body's bottom (a long page — chapter 5's six decisions — scrolls under it; the last line
-   scrolls clear above it, the footer being the body's last row). Its buttons stand where the right column's did. */
-.chapter-page-body > .chronicle-page-footer { position: sticky; bottom: 0; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 16px; margin: 0 -10px; padding: 6px 10px 4px; background: var(--parchment); border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
+   scrolls clear above it, the footer being the body's last row). Its buttons stand where the right column's did.
+   Sticky insets count from the body's padding: -4px (the body's bottom padding) lays it on the scroll edge. */
+.chapter-page-body > .chronicle-page-footer { position: sticky; bottom: -4px; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 16px; margin: 0 -10px -4px; padding: 6px 10px 8px; background: var(--parchment); border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
 .chronicle-page-footer > .chronicle-actions { grid-column: 2; margin-top: 0; }
 .chronicle-actions button, .chapter-preview-continue { display: inline-flex; gap: 6px; align-items: center; min-height: 48px; font-size: 15px; font-weight: 700; }
 .chapter-preview { position: absolute; inset: 0; z-index: 45; display: grid; place-content: center; justify-items: center; gap: 8px;

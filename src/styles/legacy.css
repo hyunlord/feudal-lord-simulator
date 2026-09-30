@@ -50,7 +50,7 @@
 .legacy-verdict-lines { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; font-size: 14px; font-weight: 700; }
 .legacy-actions button { min-height: 48px; }
 /* The ending's buttons: a footer held at the bottom of the scrolling verdict (1280×800, 1180×820: always in view). */
-.legacy-ending-footer { position: sticky; bottom: 0; z-index: 1; display: grid; gap: 2px; margin: 0 -10px; padding: 6px 10px 2px;
+.legacy-ending-footer { position: sticky; bottom: -4px; z-index: 1; display: grid; gap: 2px; margin: 0 -10px -4px; padding: 6px 10px 6px;
   background: var(--parchment); border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
 .legacy-ending-footer .legacy-actions { margin-top: 0; }
 .legacy-export-status { min-height: 18px; margin: 0; font-size: 13px; color: var(--palette-ink-muted); }

@@ -227,11 +227,11 @@ test("UI-10 gate 4: the ledger drawer's stock tab has a chapter-5 section — th
 
 test("UI-10 gate 5–6: the buttons stay in view — the ending's three in a footer held at the panel's bottom, a card's [나중에 정하기] at its body's", () => {
   const css = readFileSync("src/styles/legacy.css", "utf8");
-  assert.match(css, /\.legacy-ending-footer \{ position: sticky; bottom: 0;/);
+  assert.match(css, /\.legacy-ending-footer \{ position: sticky; bottom: -4px;[^}]*background: var\(--parchment\);[^}]*border-top:/);
   const hud = readFileSync("src/styles/hudShell.css", "utf8");
   assert.match(hud, /\.petition-body > \.story-modal-later \{ position: sticky; bottom: 0;/);
   assert.match(hud, /\[data-def="borough_autonomy"\][^{]*\{ min-height: 620px; \}/, "the charter card's full height");
-  assert.match(hud, /\.chapter-page-body > \.chronicle-page-footer \{ position: sticky; bottom: 0;[^}]*background: var\(--parchment\);[^}]*border-top:/, "the chapter page's footer");
+  assert.match(hud, /\.chapter-page-body > \.chronicle-page-footer \{ position: sticky; bottom: -4px;[^}]*background: var\(--parchment\);[^}]*border-top:/, "the chapter page's footer");
   assert.match(readFileSync("src/ui/hud/StoryModals.tsx", "utf8"), /<\/div>\s*\{\/\*[^]*?\*\/\}\s*<div className="chronicle-page-footer">\s*<div className="chronicle-actions">/, "the footer after the two columns");
   const source = readFileSync("src/ui/legacy/LegacyEndingScreen.tsx", "utf8");
   const footer = source.slice(source.indexOf('className="legacy-ending-footer"'));
