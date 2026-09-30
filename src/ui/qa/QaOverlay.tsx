@@ -45,7 +45,7 @@ function QaOverlayBox({ store }: { readonly store: Pick<GameStoreApi, "getState"
   }, [store]);
   const clipboard = typeof navigator === "undefined" ? undefined : navigator.clipboard;
   return (
-    <section className="qa-overlay" aria-label={COPY.region} data-testid="qa-overlay">
+    <section className="qa-overlay" data-frame="tooltip" aria-label={COPY.region} data-testid="qa-overlay">
       <dl className="qa-overlay-lines">
         {lines.map(entry => <div key={entry.key} className="qa-overlay-line" data-qa={entry.key}><dt>{entry.label}</dt><dd>{entry.value}</dd></div>)}
       </dl>

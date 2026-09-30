@@ -102,7 +102,7 @@ export function LegacyEndingScreen({ state, view, onBook, onKeepPlaying }: {
   return (
     <div className="story-modal-backdrop legacy-ending-backdrop" role="presentation" data-backdrop={endingBackdrop(view.ending).id}
       style={{ backgroundImage: `url("${endingBackdrop(view.ending).url}")` }}>
-      <section className="chronicle-page legacy-ending" role="dialog" aria-modal="true" aria-label={view.ending.title} data-ending={view.ending.id}
+      <section className="chronicle-page legacy-ending" data-frame="chapter-page" role="dialog" aria-modal="true" aria-label={view.ending.title} data-ending={view.ending.id}
         data-final={view.ending.final}>
         <span className="chronicle-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_chronicle_page")} />
         <div className="chapter-page-body legacy-ending-body" style={wave8ContentStyle("frame_chronicle_page")}>

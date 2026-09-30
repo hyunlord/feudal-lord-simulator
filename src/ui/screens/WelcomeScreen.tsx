@@ -53,6 +53,7 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
       <section
         ref={dialogRef}
         className="welcome-parchment"
+        data-frame="modal"
         role="dialog"
         aria-modal="true"
         aria-label={KO_UI.openingGuidance}

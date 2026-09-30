@@ -7,7 +7,7 @@ import { Button } from "../kit";
 // there, the tool stays for the next), ✕ = `cancel` (drop the ghost's spot, one step back). 64 px touch targets.
 export function PlacementConfirmBar() {
   return (
-    <div className="placement-confirm-bar" role="group" aria-label={PLACEMENT_CONFIRM_COPY.label}>
+    <div className="placement-confirm-bar" data-frame="flat" role="group" aria-label={PLACEMENT_CONFIRM_COPY.label}>
       <Button type="button" className="placement-confirm-button" data-confirm="ok" onPress={() => { platformServices().input.emit({ kind: "confirm" }); }} variant="primary">
         <UiIcon sheet="prediction" cell="ok" size={32} />{PLACEMENT_CONFIRM_COPY.confirm}</Button>
       <Button type="button" className="placement-confirm-button" data-confirm="cancel" onPress={() => { platformServices().input.emit({ kind: "cancel" }); }} variant="primary">

@@ -113,6 +113,7 @@ export function MapOverview({ grid, onJumpToTile, viewportRect }: MapOverviewPro
       <Button
         type="button"
         className="map-overview"
+        data-frame="dark"
         aria-label={KO_UI.map.jumpLabel}
         onPressAt={at => { if (!at.keyboard) jumpToTile({ clientX: at.clientX, clientY: at.clientY }, at.rect); }}
        variant="surface">

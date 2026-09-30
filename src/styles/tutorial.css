@@ -96,7 +96,7 @@
 }
 .goal-drawer-toggle { min-height: 44px; font-size: 13px; color: var(--palette-ink); cursor: pointer; background-color: var(--palette-parchment); border: 1px solid var(--palette-ink); }
 /* contrast-audit selector=".goal-drawer" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
-.goal-drawer { max-height: 50vh; padding: 8px 10px; overflow: auto; font-size: 13px; color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.goal-drawer { max-height: 50vh; overflow: auto; font-size: 13px; color: var(--palette-ink); background-color: var(--palette-vellum); }
 .goal-drawer-log { margin: 0 0 8px; padding-left: 18px; }
 .goal-drawer-empty { margin: 0 0 8px; }
 

@@ -9,19 +9,18 @@ import { App } from "../src/App";
 import { BUILD_CATEGORIES } from "../src/ui/buildMenuPresentation";
 
 const STYLESHEET = new URL("../src/styles/global.css", import.meta.url);
+// UI-AUDIT-1: the framed ones (the HUD strip, the welcome modal, the status toast, the minimap) take their border and
+// padding from the frame tokens (`data-frame`, src/styles/frameTokens.generated.css), none of their own here.
+const FRAMED_SELECTORS = [".court-console", ".welcome-parchment", ".settlement-status", ".map-overview"];
 const PANEL_SELECTORS = [
-  ".court-console",
-  ".welcome-parchment",
   ".era-ceremony__banner",
   ".building-inspector",
   ".diagnostic-card",
   ".population-event-panel",
   ".economy-overlays",
-  ".settlement-status",
   ".settlement-objective",
   ".onboarding-tasks[data-onboarding-state=\"open-goal\"]",
   ".onboarding-task",
-  ".map-overview",
   ".seal-tooltip",
   ".era-console",
   ".court-ledger",
@@ -55,6 +54,10 @@ test("Phase10 panel surfaces use flat parchment rectangles with ink borders", as
     assert.doesNotMatch(rule, /background-image:\s*url/, `${selector} has no texture ornament`);
   }
   assert.doesNotMatch(css, /\.court-ledger::(?:before|after)\s*\{[\s\S]*?content:\s*"";/);
+  for (const selector of FRAMED_SELECTORS) {
+    const rule = selectorRuleBodies(css, selector);
+    assert.doesNotMatch(rule, /(?:^|;|\s)(?:border|padding)(?:-left|-right)?:/, `${selector} leaves its border and padding to the frame tokens`);
+  }
 });
 
 test("Phase10 critical text wraps or scrolls instead of ellipsizing", async () => {

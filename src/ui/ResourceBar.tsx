@@ -61,7 +61,7 @@ export function ResourceBar({ state, paused = false, populationDrawerOpen, onPop
     : RESOURCE_BAR_COPY.breadUntil(occupiedLots, calendarArrivalLabel(state.tick, state.tick + durationTicks, scenarioOf(state).startYear));
   const breadTitle = RESOURCE_BAR_COPY.breadDetail(HOUSE_FOOD_INTERVAL);
   return (
-    <section className="resource-bar" aria-label={RESOURCE_BAR_COPY.regionLabel}>
+    <section className="resource-bar" data-frame="strip-top" aria-label={RESOURCE_BAR_COPY.regionLabel}>
       <Button type="button" className="resource-bar__cell resource-bar__population" aria-label={RESOURCE_BAR_COPY.populationRecord} aria-expanded={populationDrawerOpen} aria-controls="population-ledger-drawer" onPress={() => onPopulationDrawerToggle()} variant="surface">
         <ResourceArtwork kind="population" />
         <span className="resource-bar__detail">

@@ -3,6 +3,7 @@ import { EmblemImage } from "../heraldry/EmblemImage";
 import { portraitStyle } from "../portraitArt";
 import { UiIcon } from "../UiIcon";
 import { WAVE14_IMAGES } from "../wave14ArtManifest.generated";
+import { frameArtSpaceStyle, frameToken } from "../frameBox";
 import { assetUrlForBase } from "../../render/worldAssets";
 import type { PersonCardView, PersonRow } from "./personModels";
 import { PERSONS_COPY } from "./personsCopy.ko";
@@ -20,12 +21,14 @@ import { usePresentationPreference } from "../../render/PresentationToggle";
 // INSTALL-23 ④: a portrait wears its person's state ornament (`personStates.ts`) over the frame's bottom-right — the
 // ornament is not clipped by the round face — and a death draws the face greyscale; the state is also in words (the
 // chip's line and button name, the card's line), so the small ornament is never the only sign.
+// UI-AUDIT-1: the card's border is the painting's safe inset (frame kind `person-card`, its padding the gap); its parts
+// stay in the art's own coordinates on a layer over the border box.
 const FADE_MS = 600;
 const CARD = WAVE14_IMAGES.frame_person_card;
 /** UI-7b: the card's printed shield with its fleurons, and a blank parchment area to cover it with. */
 const CARD_SHIELD = { x: 257, y: 20, width: 48, height: 60 } as const;
 const CARD_BLANK = { x: 200, y: 96 } as const;
-const CARD_SCALE = 1.5;
+const CARD_SCALE = frameToken("person-card").scale;
 
 export function PersonPortrait({ portraitId, size, className = "", ornament = null }: {
   readonly portraitId: string; readonly size: number; readonly className?: string; readonly ornament?: PersonStateId | null;
@@ -95,9 +98,10 @@ export function PersonCardModal({ view, onClose, onBiography }: { readonly view:
   const cardUrl = assetUrlForBase(CARD.url, import.meta.env?.BASE_URL ?? "/");
   return (
     <div className="person-card-backdrop" role="presentation">
-      <section className="person-card" role="dialog" aria-modal="true" aria-label={PERSONS_COPY.cardTitle(view.name)} data-person={view.id}
+      <section className="person-card" data-frame="person-card" role="dialog" aria-modal="true" aria-label={PERSONS_COPY.cardTitle(view.name)} data-person={view.id}
         data-portrait={view.portraitId} data-portrait-exact={view.exact ? "true" : "false"}
         style={{ width: CARD.width * CARD_SCALE, height: CARD.height * CARD_SCALE, backgroundImage: `url("${cardUrl}")` }}>
+        <div className="person-card-art" style={frameArtSpaceStyle("person-card")}>
         <span className="person-card-portrait" style={slot(portrait.x - portrait.radius, portrait.y - portrait.radius, portrait.radius * 2, portrait.radius * 2)}>
           <PersonPortrait portraitId={view.portraitId} size={Math.round(portrait.radius * 2 * CARD_SCALE)} ornament={view.ornament} />
         </span>
@@ -119,6 +123,7 @@ export function PersonCardModal({ view, onClose, onBiography }: { readonly view:
         <div className="person-card-actions" style={slot(112, 148, 196, 40)}>
           <Button type="button" className="person-card-action" onPress={() => onBiography(view.id)} variant="secondary"><UiIcon sheet="action" cell="log" />{PERSONS_COPY.biography}</Button>
           <Button type="button" className="person-card-action" aria-label={PERSONS_COPY.closeLabel} onPress={() => onClose()} variant="secondary">{PERSONS_COPY.close}</Button>
+        </div>
         </div>
       </section>
     </div>

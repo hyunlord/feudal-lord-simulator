@@ -29,7 +29,7 @@ export function AlertStack({ state, onInspect }: AlertStackProps): ReactElement 
     <section className="alert-stack" aria-label={ALERT_STACK_COPY.regionLabel}>
       <ul className="alert-stack-list">
         {rows.map((row) => (
-          <li key={row.id} className={`alert-stack-row alert-stack-row--${row.severity}`}>
+          <li key={row.id} className={`alert-stack-row alert-stack-row--${row.severity}`} data-frame="toast">
             <UiIcon sheet="alert" cell={row.severity === "immediate" ? "urgent" : "warn"} size={32} className="alert-stack-shape" label={ALERT_STACK_COPY.severityLabel[row.severity]} />
             <div className="alert-stack-text">
               <p className="alert-stack-title"><strong>{row.title}</strong> · <span>{row.countLabel}</span></p>

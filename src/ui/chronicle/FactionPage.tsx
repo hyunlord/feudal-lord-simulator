@@ -4,6 +4,7 @@ import { Button } from "../kit";
 import { portraitStyle } from "../portraitArt";
 import { personPortraitStateClass, personStateOrnamentStyle } from "../persons/personStates";
 import { wave19ImageStyle, wave19Url } from "../wave19Art";
+import { frameArtSpaceStyle, frameBoxStyle } from "../frameBox";
 import { CHRONICLE_SCREEN_COPY as COPY } from "./chronicleScreenCopy.ko";
 import { leaderName, type FactionPageView } from "./factionTabModel";
 // UI-9: revolt pressure (RG-8); UI-9b: a cell on the page.
@@ -14,7 +15,8 @@ import { FACTION_INFLUENCE_COPY as INFLUENCE } from "./factionInfluenceCopy.ko";
 // the shield, the faction's name with its leader beside them, the relation scale (`relation_scale_track` +
 // `relation_scale_pin`, hostile −100 to friendly +100) with its reading under it, the demands and the promises in the
 // two boxes, and in the long box at the foot the records it remembers (each a link: that record in the chronicle) and
-// its own timeline.
+// its own timeline. UI-AUDIT-1: the page's border is the painting's safe inset at the page's scale (frame kind
+// `faction-page`), its bands and parts in the art's coordinates over it.
 export const FACTION_PAGE = { width: 640, height: 800 } as const;
 
 const slot = (left: number, top: number, width: number, height: number): CSSProperties =>
@@ -55,8 +57,9 @@ export function FactionPage({ view, scale, onRecord }: {
   const leader = view.leader === null ? null : portraitStyle(view.leader.portraitId, Math.round(148 * scale));
   const pressure = view.revoltPressure;
   return (
-    <article className="chronicle-faction" aria-label={COPY.factionTitle(view.name)} data-faction={view.id} data-relation={view.relation}
-      style={{ width: FACTION_PAGE.width * scale, height: FACTION_PAGE.height * scale }}>
+    <article className="chronicle-faction" data-frame="faction-page" aria-label={COPY.factionTitle(view.name)} data-faction={view.id} data-relation={view.relation}
+      style={{ width: FACTION_PAGE.width * scale, height: FACTION_PAGE.height * scale, ...frameBoxStyle("faction-page", scale) }}>
+      <div className="chronicle-page-art" style={frameArtSpaceStyle("faction-page", scale)}>
       <PageArt scale={scale} />
       {leader === null || view.leader === null ? null
         : <span className={`chronicle-faction-leader ${personPortraitStateClass(view.leader.ornament) === "" ? "" : "portrait-greyscale"}`} role="img"
@@ -121,6 +124,7 @@ export function FactionPage({ view, scale, onRecord }: {
           </div>
         </section>
       )}
+      </div>
     </article>
   );
 }

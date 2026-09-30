@@ -39,7 +39,7 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
   const milestoneTotal = scenario.objectives.length + (scenario.victory === null ? 0 : 1);
   const stoneReserve = scenario.walls.stoneWall === "off" ? undefined
     : scenario.walls.stoneWallPrereq?.all.find(condition => condition.kind === "spendable_resource_at_least" && condition.resource === "stone");
-  return <section className={`settlement-progress${highlight ? " settlement-progress--changed" : ""}`} aria-label={SETTLEMENT_PANEL_COPY.regionLabel}>
+  return <section className={`settlement-progress${highlight ? " settlement-progress--changed" : ""}`} data-frame="flat" aria-label={SETTLEMENT_PANEL_COPY.regionLabel}>
     <Disclosure onToggle={open => setExpanded(open)}
       summary={<><strong>{SETTLEMENT_PANEL_COPY.summaryTitle(title)}</strong><span>{SETTLEMENT_PANEL_COPY.suppliedHouses(view.metrics.suppliedHouses, view.metrics.occupiedHouses)}</span><span className="settlement-disclosure">{expanded ? SETTLEMENT_PANEL_COPY.collapse : SETTLEMENT_PANEL_COPY.expand}</span></>}>
       <div className="settlement-progress-body">
@@ -62,8 +62,8 @@ export function SettlementPanel({ state, onRestart, developmentContent }: {
       </div>
     </Disclosure>
     <div className="settlement-crisis-slot" aria-live="polite">
-      {view.crisis === "food_shortage" ? <p className="settlement-crisis" role="status">{SETTLEMENT_PANEL_COPY.foodShortage}</p> : null}
-      {view.crisis === "abandonment_risk" && view.outcome !== "abandoned" ? <p className="settlement-crisis" role="status">{SETTLEMENT_PANEL_COPY.abandonmentRisk(durationLabel(SETTLEMENT_CONFIG.abandonmentTicks - view.progress.emptyTicks))}</p> : null}
+      {view.crisis === "food_shortage" ? <p className="settlement-crisis" data-frame="toast" role="status">{SETTLEMENT_PANEL_COPY.foodShortage}</p> : null}
+      {view.crisis === "abandonment_risk" && view.outcome !== "abandoned" ? <p className="settlement-crisis" data-frame="toast" role="status">{SETTLEMENT_PANEL_COPY.abandonmentRisk(durationLabel(SETTLEMENT_CONFIG.abandonmentTicks - view.progress.emptyTicks))}</p> : null}
     </div>
     {view.outcome === "abandoned" ? <div className="settlement-restart">
       <p>{SETTLEMENT_PANEL_COPY.stopped}</p>

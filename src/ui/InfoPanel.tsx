@@ -197,7 +197,7 @@ export function SettlementStatusLine({
   const showProblemGlyph = activeToolStatus === null && placementFeedbackMessage === null;
 
   return (
-    <section className="settlement-status" aria-label={KO_UI.settlementStatus}>
+    <section className="settlement-status" data-frame="toast" aria-label={KO_UI.settlementStatus}>
       <span className="settlement-priority">
         {guidance.priority === null || !showProblemGlyph ? null : (
           <span

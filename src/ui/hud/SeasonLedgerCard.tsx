@@ -17,7 +17,7 @@ export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }
 }) {
   return (
     <div className="season-ledger-backdrop" role="presentation">
-      <section className="season-ledger-card" role="dialog" aria-modal="true" aria-label={model.title} data-season={model.key}>
+      <section className="season-ledger-card" data-frame="season-ledger" role="dialog" aria-modal="true" aria-label={model.title} data-season={model.key}>
         <span className="season-ledger-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_season_ledger")} />
         <ol className="season-ledger-scenes" aria-label={SEASON_LEDGER_COPY.label}>
           {model.scenes.map(scene => <li key={scene.id} className="season-ledger-scene" data-scene={scene.id}>

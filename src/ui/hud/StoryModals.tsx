@@ -40,7 +40,7 @@ export function FamineDecisionModal({ view, onChoose, onLater, steward = null, o
 }) {
   return (
     <div className="story-modal-backdrop story-modal-backdrop--famine" role="presentation" style={{ backgroundImage: `url("${wave8Url("loading_1315_famine")}")` }}>
-      <section className="story-modal famine-decision" role="dialog" aria-modal="true" aria-label={DECISION_COPY.famineTitle} data-decision={view.eventId}>
+      <section className="story-modal famine-decision" data-frame="flat" role="dialog" aria-modal="true" aria-label={DECISION_COPY.famineTitle} data-decision={view.eventId}>
         <div className="story-modal-art" aria-hidden="true" style={wave16ImageStyle("decision_famine_intro", 320)} />
         <h2>{DECISION_COPY.famineTitle}</h2>
         {steward === null ? null : <div className="decision-steward" data-steward={steward.id}>
@@ -105,7 +105,7 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
   const people = [...(from?.leader === null || from?.leader === undefined ? [] : [from.leader]), ...petitioners.filter(row => row.id !== from?.leader?.id)];
   return (
     <div className="story-modal-backdrop" role="presentation">
-      <section className="story-modal petition-card" role="dialog" aria-modal="true" aria-label={presentation.title} data-petition={view.petitionId}
+      <section className="story-modal petition-card" data-frame="petition" role="dialog" aria-modal="true" aria-label={presentation.title} data-petition={view.petitionId}
         data-def={presentation.defId} data-answers={view.options.length}>
         <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
         {/* UI-6b: the sender's arms in the frame's empty roundel (its top-left corner). */}
@@ -159,7 +159,7 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
   return (
     <div className="story-modal-backdrop story-modal-backdrop--chronicle" role="presentation"
       style={{ backgroundImage: `url("${view.chapter === 3 ? wave21Url("ch3_ending") : view.chapter === 2 ? wave17Url("chapter2_end") : wave16Url("chapter1_end")}")` }}>
-      <section className="chronicle-page" role="dialog" aria-modal="true" aria-label={view.title}>
+      <section className="chronicle-page" data-frame="chapter-page" role="dialog" aria-modal="true" aria-label={view.title}>
         <span className="chronicle-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_chronicle_page")} />
         <div className="chapter-page-body" style={wave8ContentStyle("frame_chronicle_page")}>
           <h2>{view.title}</h2>
@@ -218,7 +218,7 @@ export function ChapterTwoPreview({ onContinue, chapter = 2, goals = [], startYe
       data-chapter={chapter} style={{ backgroundImage: `url("${art}")` }}>
       <p className="chapter-loading-title">{opening?.title ?? CHRONICLE_COPY.laterTitle(chapter)}</p>
       <p className="chapter-loading-line">{opening?.line ?? CHRONICLE_COPY.laterLine}</p>
-      {open && goals.length > 0 ? <section className="chapter-preview-goals" aria-label={CHRONICLE_COPY.chapterTwoGoalsHeading}>
+      {open && goals.length > 0 ? <section className="chapter-preview-goals" data-frame="flat" aria-label={CHRONICLE_COPY.chapterTwoGoalsHeading}>
         <h3>{CHRONICLE_COPY.chapterTwoGoalsHeading}</h3><ul>{goals.map(goal => <li key={goal}>{goal}</li>)}</ul></section> : null}
       <Button type="button" className="chapter-preview-continue" onPress={() => onContinue()} variant="primary"><UiIcon sheet="time" cell="play" />
         {opening?.start ?? CHRONICLE_COPY.chapterTwoContinue}</Button>

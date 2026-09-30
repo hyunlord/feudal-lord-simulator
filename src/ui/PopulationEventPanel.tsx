@@ -22,7 +22,7 @@ export function PopulationEventPanel({
   const groups = [...groupPopulationEvents(events)].reverse();
 
   return (
-    <section className="population-event-panel" aria-label="인구 변화 기록">
+    <section className="population-event-panel" data-frame="flat" aria-label="인구 변화 기록">
       <h2>인구 변화 기록</h2>
       {note === null ? null : <p className="population-event-note" role="status">{note}</p>}
       {groups.length === 0 ? (

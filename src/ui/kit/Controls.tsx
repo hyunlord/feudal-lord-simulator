@@ -114,7 +114,7 @@ export function Chip(props: { readonly children: ReactNode; readonly tone?: "ok"
 /** A tooltip body (P0 `frame_tooltip`). It is shown by its owner on focus or press as well as hover (no hover-only text). */
 export function Tooltip(props: { readonly children: ReactNode; readonly id?: string; readonly className?: string }) {
   const { children, id, className } = props;
-  return <span role="tooltip" id={id} className={className === undefined ? "ui-tooltip" : `${className} ui-tooltip`}>{children}</span>;
+  return <span role="tooltip" id={id} data-frame="tooltip" className={className === undefined ? "ui-tooltip" : `${className} ui-tooltip`}>{children}</span>;
 }
 
 /** A manuscript rule (P0 `divider_manuscript_*`). */
