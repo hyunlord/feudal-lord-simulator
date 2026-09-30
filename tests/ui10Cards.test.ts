@@ -75,9 +75,9 @@ function withFamily(state: GameState): GameState {
 
 // The course, built once: the envoy's card (the tax petitioned), the interlude's two cards and the deposition, the
 // heir's card (with the family of three heirs, and the fixture's own house of one), the charter's card, the legacy's.
-let course: Readonly<Record<string, GameState>> | null = null;
-function states(): Readonly<Record<string, GameState>> {
-  if (course !== null) return course;
+let course: ReturnType<typeof build> | null = null;
+const states = () => (course ??= build());
+function build() {
   const answers: Answers = { ...STANDARD, [ROYAL_TAX_PETITION_ID]: "refuse" };
   const envoy = untilOpen(legacyTown(), ROYAL_TAX_PETITION_ID, answers);
   const petitioned = answer(envoy, ROYAL_TAX_PETITION_ID, "refuse");
@@ -91,13 +91,13 @@ function states(): Readonly<Record<string, GameState>> {
   const ownHeir = untilOpen(deposed, HEIR_CHOICE_PETITION_ID, answers);
   const charter = untilOpen(answer(heir, HEIR_CHOICE_PETITION_ID, "accept_with_price"), BOROUGH_AUTONOMY_PETITION_ID, answers);
   const legacy = untilOpen(answer(charter, BOROUGH_AUTONOMY_PETITION_ID, "accept"), LEGACY_CHOICE_PETITION_ID, answers);
-  return course = { envoy, quarrel, nave, deposed, heir, ownHeir, charter, legacy };
+  return { envoy, quarrel, nave, deposed, heir, ownHeir, charter, legacy };
 }
 const view = (state: GameState) => petitionDecisionView(state)!;
 const LATIN = /[A-Za-z]{2,}|undefined|NaN/;
 
 test("UI-10: every petition kind the engine can raise has its own card; chapter 5's and the interlude's each their own picture, none the market's", () => {
-  const raised = [MARKET_CHARTER_PETITION_ID, RESTORE_RIGHT_PETITION_ID, ...WAR_PETITION_IDS, ...PLAGUE_PETITION_IDS, ...REORGANISATION_PETITION_IDS, ...LEGACY_PETITION_IDS];
+  const raised: readonly PetitionDefId[] = [MARKET_CHARTER_PETITION_ID, RESTORE_RIGHT_PETITION_ID, ...WAR_PETITION_IDS, ...PLAGUE_PETITION_IDS, ...REORGANISATION_PETITION_IDS, ...LEGACY_PETITION_IDS];
   assert.deepEqual([...PETITION_DEFS.map(def => def.id)].sort(), [...raised].sort(), "the id lists are every def");
   for (const id of PETITION_DEFS.map(def => def.id)) assert.ok(isPetitionDefId(id), `${id} has a presentation`);
   const arts = LEGACY_PETITION_IDS.map(id => petitionArtOf(id));
@@ -110,8 +110,6 @@ test("UI-10: every petition kind the engine can raise has its own card; chapter 
   const unknown = petitionPresentation(legacyTown(), { id: "x@1", defId: "no_such_petition", petitioner: "townsfolk", arrivedTick: 1 });
   assert.equal(unknown.art, null);
   assert.equal(isPetitionDefId("toString"), false);
-  const _exhaustive: readonly PetitionDefId[] = raised;
-  assert.ok(_exhaustive.length > 0);
 });
 
 test("UI-10 (LG-4): the Crown's tax card — two answers, the tenth in pence, the confirmation it may cost, the relations, the forecast", () => {
