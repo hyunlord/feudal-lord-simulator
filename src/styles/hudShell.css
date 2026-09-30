@@ -386,7 +386,7 @@
 /* UI-8: a card with two answers (chapter 3's, PetitionDef.responses) is one answer shorter. */
 .petition-card[data-answers="2"] { min-height: 540px; }
 .petition-frame { position: absolute; inset: 0; box-sizing: border-box; }
-.petition-body { display: grid; align-content: start; gap: 6px; min-height: 0; overflow-y: auto; }
+.petition-body { display: grid; align-content: start; gap: 4px; min-height: 0; overflow-y: auto; }
 .petition-who { display: flex; gap: 6px; align-items: center; font-weight: 600; }
 .petition-options { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .petition-option { display: grid; grid-template-columns: 48px 1fr; gap: 2px 10px; width: 100%; min-height: 64px; padding: 6px; text-align: left; font-size: 13px; }
@@ -399,10 +399,12 @@
 .petition-option > :not(.petition-seal) { grid-column: 2; min-width: 0; }
 /* UI-10 (LG-3): the heir's card — its answers side by side (a column each, the seal beside the label, the rest under
    them), each with the heir it names: the portrait beside the name and relation, then lineage, likeness and records. */
-.petition-card[data-def="heir_choice"] { min-height: min(740px, 92vh); }
+/* UI-AUDIT-1: the heir's three columns take the wide modal (900 px): in the 720 px card long names and lines ran past
+   their answer (42 px sideways) and the body scrolled; a word breaks where it must (keep-all alone kept long words whole). */
+.petition-card[data-def="heir_choice"] { width: min(900px, 96vw); min-height: min(740px, 92vh); }
 .petition-card[data-def="heir_choice"] .petition-options { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); align-items: stretch; }
 .petition-card[data-def="heir_choice"] .petition-option { height: 100%; grid-template-columns: 44px minmax(0, 1fr); align-content: start; align-items: center;
-  word-break: keep-all; }
+  word-break: keep-all; overflow-wrap: anywhere; }
 .petition-card[data-def="heir_choice"] .petition-seal { grid-row: 1; }
 .petition-card[data-def="heir_choice"] .petition-option > :not(.petition-seal, strong) { grid-column: 1 / -1; }
 .petition-heir { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 1px 8px; align-items: center; margin: 2px 0; font-size: 12px; line-height: 1.35; }
