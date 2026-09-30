@@ -30,8 +30,13 @@ done
 echo "this $URL · base $BASE_URL ($base_sha)"
 case "$what" in
   hud)
+    # FIXA_HUD_ORDER=before-first measures the base first (the ch2 wall town's season card opens about a second after
+    # load, so which build loads first can decide whether the measure's dismissal catches it).
+    if [ "${FIXA_HUD_ORDER:-}" = "before-first" ]; then
+      npx tsx scripts/measureHudCoverage.ts "$out/hud-coverage-before.json" --url "$BASE_URL" > .remote/hud-before.log 2>&1; echo "before exit $?"
+    fi
     npx tsx scripts/measureHudCoverage.ts "$out/hud-coverage-after.json" --url "$URL" > .remote/hud-after.log 2>&1; echo "after exit $?"
-    npx tsx scripts/measureHudCoverage.ts "$out/hud-coverage-before.json" --url "$BASE_URL" > .remote/hud-before.log 2>&1; echo "before exit $?"
+    [ "${FIXA_HUD_ORDER:-}" = "before-first" ] || { npx tsx scripts/measureHudCoverage.ts "$out/hud-coverage-before.json" --url "$BASE_URL" > .remote/hud-before.log 2>&1; echo "before exit $?"; }
     ;;
   hud-shots)
     npx tsx scripts/measureHudCoverage.ts .remote/hud-coverage-shots.json --url "$URL" --shots .remote/hud-shots > .remote/hud-shots.log 2>&1; echo "exit $?"
