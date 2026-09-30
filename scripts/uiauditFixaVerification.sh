@@ -2,7 +2,8 @@
 # UI-AUDIT-1 fix group A on the DGX, this build beside the base before it (the base worktree outside the run folder, as
 # scripts/uiauditTokensVerification.sh):
 #   scripts/remote/run.sh render-UIAUDIT-fixa-<sha7> -- bash scripts/uiauditFixaVerification.sh <base-sha> hud|shots
-# hud: the HUD area measure (scripts/measureHudCoverage.ts) of both builds; shots: scripts/uiauditFixaCaptures.mjs.
+# hud: the HUD area measure (scripts/measureHudCoverage.ts) of both builds; hud-shots: this build's with its masks
+# (.remote/hud-shots); shots: scripts/uiauditFixaCaptures.mjs.
 set -u
 base_sha=${1:?base sha}
 what=${2:?hud or shots}
@@ -31,6 +32,9 @@ case "$what" in
   hud)
     npx tsx scripts/measureHudCoverage.ts "$out/hud-coverage-after.json" --url "$URL" > .remote/hud-after.log 2>&1; echo "after exit $?"
     npx tsx scripts/measureHudCoverage.ts "$out/hud-coverage-before.json" --url "$BASE_URL" > .remote/hud-before.log 2>&1; echo "before exit $?"
+    ;;
+  hud-shots)
+    npx tsx scripts/measureHudCoverage.ts .remote/hud-coverage-shots.json --url "$URL" --shots .remote/hud-shots > .remote/hud-shots.log 2>&1; echo "exit $?"
     ;;
   shots) node scripts/uiauditFixaCaptures.mjs "$out" --url "$URL" --base "$BASE_URL" --states "${UI5_STATES:-$HOME/fls-ui5-states-v22}" --states9 "$HOME/fls-ui9-states" ;;
   *) echo "unknown: $what"; exit 2 ;;
