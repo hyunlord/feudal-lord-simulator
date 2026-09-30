@@ -1,0 +1,75 @@
+{
+  "id": "trade_ale_a",
+  "prompt": "Use case: stylized-concept. Generate ONE isolated medieval game prop for Southern England 1300–1450. The provided project images are style references only: match their muted hand-painted wood, linen and earth palette and readable compact game sprite rendering, not their layout. Camera true 2:1 isometric, upper-left lighting. True transparent RGBA background. Entire object visible including all groundstanding feet, four-pixel-safe margin. No house, wall, people, animals, grass, dirt platform, base tile, text, watermark, modern metal. No cast shadow, only tiny contact shading. It must stand independently on the ground with no wall attachment. Not a collage or sheet. Do not mirror.\nSubject: A freestanding medieval ale-stake: a tall straight rough oak pole planted in a compact cross-foot wooden stand, a short lateral branch arm near its top carrying a dense tied bundle of leafy brown-green twigs (ale bush). NO hops cones, NO signboard, NO barrel, NO text. Ground feet complete.",
+  "references": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+  ],
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-727e-74d0-8fb9-e38305cde348/exec-36a9bd12-6ed0-423b-ab91-38de5b996b9b.png",
+  "width": 96,
+  "height": 96,
+  "tool": "builtin image_gen",
+  "model_version": null,
+  "seed": null,
+  "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_ale_a.png",
+  "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_ale_a.png",
+  "raw_width": 1268,
+  "raw_height": 1240,
+  "crop_bbox": {
+    "x": 378,
+    "y": 83,
+    "width": 664,
+    "height": 1042
+  },
+  "postprocess": {
+    "tool": "Sharp",
+    "alpha_bbox_threshold": 8,
+    "crop": {
+      "x": 378,
+      "y": 83,
+      "width": 664,
+      "height": 1042
+    },
+    "resize": {
+      "width": 55,
+      "height": 87,
+      "fit": "aspect-preserved"
+    },
+    "placement": {
+      "left": 20,
+      "top": 4
+    },
+    "rotation": 0,
+    "mirror": false,
+    "alpha_preserved": true
+  },
+  "foot_x": 48,
+  "foot_y": 90,
+  "foot_method": "Visual inspection of raw and 3x normalized contact sheet: front-right cross-foot timber end. Excludes shadow; corroborated by opaque pixels on row 89.",
+  "foot_uncertainty_px": 1,
+  "status": "candidate",
+  "generation_call_count": 1,
+  "visual_review": {
+    "reviewed": true,
+    "reference_style": "muted hand-painted isometric Southern England game props",
+    "freestanding": true,
+    "no_wall_or_house": true,
+    "no_text": true,
+    "no_mirroring": true,
+    "variant_structure_distinct": true,
+    "limitation": "Offline candidate only; runtime placement, occlusion, and user recognition not verified. Perspective is visually approximate, not camera-calibrated. Ale-bush historical semantics may not be recognizable without context."
+  },
+  "qa": {
+    "rgba": true,
+    "alpha_zero_pixels": 7109,
+    "alpha_opaque_pixels": 216,
+    "alpha_bbox": [
+      20,
+      4,
+      74,
+      90
+    ],
+    "four_px_margin": true,
+    "baseline_y90": true
+  }
+}

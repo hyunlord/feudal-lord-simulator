@@ -1,0 +1,75 @@
+{
+  "id": "trade_miller_a",
+  "prompt": "Use case: stylized-concept. Generate ONE isolated medieval game prop for Southern England 1300–1450. The provided project images are style references only: match their muted hand-painted wood, linen and earth palette and readable compact game sprite rendering, not their layout. Camera true 2:1 isometric, upper-left lighting. True transparent RGBA background. Entire object visible including all groundstanding feet, four-pixel-safe margin. No house, wall, people, animals, grass, dirt platform, base tile, text, watermark, modern metal. No cast shadow, only tiny contact shading. It must stand independently on the ground with no wall attachment. Not a collage or sheet. Do not mirror.\nSubject: A low two-wheeled wooden handcart with two long hand shafts resting on ground, side plank bed carrying three tied off-white linen flour sacks, two spoke wheels clearly visible, no person or animal. Compact workworn small cart, all wheel contact surfaces visible.",
+  "references": [
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+    "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+  ],
+  "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-727e-74d0-8fb9-e38305cde348/exec-023039a1-0877-4d0f-b65c-fbb77683d7fc.png",
+  "width": 128,
+  "height": 96,
+  "tool": "builtin image_gen",
+  "model_version": null,
+  "seed": null,
+  "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_miller_a.png",
+  "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_miller_a.png",
+  "raw_width": 1536,
+  "raw_height": 1024,
+  "crop_bbox": {
+    "x": 73,
+    "y": 94,
+    "width": 1411,
+    "height": 842
+  },
+  "postprocess": {
+    "tool": "Sharp",
+    "alpha_bbox_threshold": 8,
+    "crop": {
+      "x": 73,
+      "y": 94,
+      "width": 1411,
+      "height": 842
+    },
+    "resize": {
+      "width": 120,
+      "height": 72,
+      "fit": "aspect-preserved"
+    },
+    "placement": {
+      "left": 4,
+      "top": 19
+    },
+    "rotation": 0,
+    "mirror": false,
+    "alpha_preserved": true
+  },
+  "foot_x": 29,
+  "foot_y": 90,
+  "foot_method": "Visual inspection of raw and 3x normalized contact sheet: ground-resting hand shaft tip; wheel ground plane is farther back. Excludes shadow; corroborated by opaque pixels on row 89.",
+  "foot_uncertainty_px": 1,
+  "status": "candidate",
+  "generation_call_count": 1,
+  "visual_review": {
+    "reviewed": true,
+    "reference_style": "muted hand-painted isometric Southern England game props",
+    "freestanding": true,
+    "no_wall_or_house": true,
+    "no_text": true,
+    "no_mirroring": true,
+    "variant_structure_distinct": true,
+    "limitation": "Offline candidate only; runtime placement, occlusion, and user recognition not verified. Perspective is visually approximate, not camera-calibrated."
+  },
+  "qa": {
+    "rgba": true,
+    "alpha_zero_pixels": 8161,
+    "alpha_opaque_pixels": 296,
+    "alpha_bbox": [
+      4,
+      19,
+      123,
+      90
+    ],
+    "four_px_margin": true,
+    "baseline_y90": true
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "status": "offline candidate composite; no installation",
+  "zoom1_sprite_scale": 0.45,
+  "city_reported_zoom": 1.4,
+  "city_pixel_sprite_scale": 0.24,
+  "city_placements": [
+    [
+      "trade_inn_a",
+      862,
+      249
+    ],
+    [
+      "trade_baker_a",
+      729,
+      250
+    ]
+  ],
+  "blind_house_rect": [
+    22,
+    5,
+    137,
+    137
+  ],
+  "blind_prop_left": 162,
+  "minimum_rect_gap_px": 3,
+  "mirror": false,
+  "note": "City contact evaluated visually. Engine pivots and world renderer scale not supplied; chosen fixed proof scale disclosed. City supplied image is rescaled: local house width about60px vs reference114px yields .45*(60/114) approximately .24; not multiplied by nominal zoom again."
+}

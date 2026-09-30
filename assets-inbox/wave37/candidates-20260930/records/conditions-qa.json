@@ -1,0 +1,63 @@
+{
+  "status": "offline candidate only",
+  "assets": [
+    {
+      "id": "condition_prosperous_pots",
+      "channels": 4,
+      "clear": 6186,
+      "nontransparent": 2740,
+      "three_pixel_border_contamination": 0
+    },
+    {
+      "id": "condition_prosperous_bench",
+      "channels": 4,
+      "clear": 4745,
+      "nontransparent": 4122,
+      "three_pixel_border_contamination": 0
+    },
+    {
+      "id": "condition_ordinary_bench",
+      "channels": 4,
+      "clear": 6193,
+      "nontransparent": 2625,
+      "three_pixel_border_contamination": 0
+    },
+    {
+      "id": "condition_ordinary_water",
+      "channels": 4,
+      "clear": 2550,
+      "nontransparent": 1404,
+      "three_pixel_border_contamination": 0
+    },
+    {
+      "id": "condition_strained_barrel",
+      "channels": 4,
+      "clear": 2219,
+      "nontransparent": 1722,
+      "three_pixel_border_contamination": 0
+    },
+    {
+      "id": "condition_strained_firewood",
+      "channels": 4,
+      "clear": 2783,
+      "nontransparent": 1188,
+      "three_pixel_border_contamination": 0
+    },
+    {
+      "id": "condition_newcomer_cart_a",
+      "channels": 4,
+      "clear": 6944,
+      "nontransparent": 4741,
+      "three_pixel_border_contamination": 0
+    },
+    {
+      "id": "condition_newcomer_cart_b",
+      "channels": 4,
+      "clear": 7560,
+      "nontransparent": 4298,
+      "three_pixel_border_contamination": 0
+    }
+  ],
+  "visual_inspection": "All eight inspected on gray contact sheet; clean painted bench correction accepted; actual ground contact points estimated from raw objects, not shadow box.",
+  "decision": "Seven named conditions expanded to requested eight by two structurally distinct newcomer carts, as directed by leader."
+}

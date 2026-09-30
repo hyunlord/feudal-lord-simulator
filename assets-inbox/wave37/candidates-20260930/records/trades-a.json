@@ -1,0 +1,731 @@
+[
+  {
+    "id": "trade_baker_a",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated candidate game prop, trade_baker_a. A low oval wicker basket brimming with four round rustic bread loaves, basket raised on a very short three-legged timber display stand. One compact standalone bread display. Southern England 1300–1450. True 2:1 isometric view, camera looking down approximately 30 degrees, straight verticals. Muted hand-painted painterly game sprite with restrained detail and readable silhouette at 96 pixels; upper-left light. The supplied project images are STYLE REFERENCES ONLY: match wooden material and painterly treatment; do not copy their UI, text, houses, ground or panels. Entire object centered with generous transparent margins and all ground-contact feet visible. Fully freestanding, no attachment to building, wall or roof. Actual transparent RGBA background, no opaque backdrop, no grass or soil base, no people, animals, house, wall, signage, text, letters, symbols or watermark. Do not mirror any reference. Avoid dramatic cast shadow; at most very tiny soft contact shade.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "tool_metadata": {
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-6c234f5d-d3d0-4f61-9245-7ee69095501d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "tool": "image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_baker_a.png",
+    "asset_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_baker_a.png",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-6c234f5d-d3d0-4f61-9245-7ee69095501d.png",
+    "source_dimensions": {
+      "width": 1774,
+      "height": 887
+    },
+    "canvas": {
+      "width": 128,
+      "height": 96
+    },
+    "transform": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 549,
+        "top": 196,
+        "width": 676,
+        "height": 549
+      },
+      "scale": 0.15846994535519127,
+      "resized": {
+        "width": 107,
+        "height": 87
+      },
+      "placement": {
+        "left": 11,
+        "top": 4
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "status": "candidate",
+    "anchor": {
+      "x": 57,
+      "y": 89,
+      "method": "visual",
+      "uncertainty_px": 2
+    },
+    "limitations": [
+      "Offline candidate only; actual runtime scale, occlusion and placement unverified.",
+      "Small wood and linen details soften at game display scale."
+    ],
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_baker_a.png",
+    "width": 128,
+    "height": 96,
+    "foot_x": 57,
+    "foot_y": 89,
+    "foot_method": "Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded",
+    "foot_uncertainty_px": 2,
+    "postprocess": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 549,
+        "top": 196,
+        "width": 676,
+        "height": 549
+      },
+      "scale": 0.15846994535519127,
+      "resized": {
+        "width": 107,
+        "height": 87
+      },
+      "placement": {
+        "left": 11,
+        "top": 4
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "visual_review": {
+      "text": false,
+      "opaque_background": false,
+      "attached_to_building": false,
+      "structural_variant_not_mirror": true
+    }
+  },
+  {
+    "id": "trade_baker_b",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated candidate game prop, trade_baker_b. A rectangular shallow wicker bread tray on a squat four-legged trestle display stand, holding three elongated rustic bread loaves. Different construction from an oval basket. Southern England 1300–1450. True 2:1 isometric view, camera looking down approximately 30 degrees, straight verticals. Muted hand-painted painterly game sprite with restrained detail and readable silhouette at 96 pixels; upper-left light. The supplied project images are STYLE REFERENCES ONLY: match wooden material and painterly treatment; do not copy their UI, text, houses, ground or panels. Entire object centered with generous transparent margins and all ground-contact feet visible. Fully freestanding, no attachment to building, wall or roof. Actual transparent RGBA background, no opaque backdrop, no grass or soil base, no people, animals, house, wall, signage, text, letters, symbols or watermark. Do not mirror any reference. Avoid dramatic cast shadow; at most very tiny soft contact shade.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "tool_metadata": {
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-e73daa39-026f-47d8-a4d9-17413b5cd28a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "tool": "image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_baker_b.png",
+    "asset_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_baker_b.png",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-e73daa39-026f-47d8-a4d9-17413b5cd28a.png",
+    "source_dimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "canvas": {
+      "width": 128,
+      "height": 96
+    },
+    "transform": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 385,
+        "top": 177,
+        "width": 803,
+        "height": 695
+      },
+      "scale": 0.1251798561151079,
+      "resized": {
+        "width": 100,
+        "height": 86
+      },
+      "placement": {
+        "left": 14,
+        "top": 5
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "status": "candidate",
+    "anchor": {
+      "x": 75,
+      "y": 89,
+      "method": "visual",
+      "uncertainty_px": 2
+    },
+    "limitations": [
+      "Offline candidate only; actual runtime scale, occlusion and placement unverified.",
+      "Small wood and linen details soften at game display scale."
+    ],
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_baker_b.png",
+    "width": 128,
+    "height": 96,
+    "foot_x": 75,
+    "foot_y": 89,
+    "foot_method": "Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded",
+    "foot_uncertainty_px": 2,
+    "postprocess": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 385,
+        "top": 177,
+        "width": 803,
+        "height": 695
+      },
+      "scale": 0.1251798561151079,
+      "resized": {
+        "width": 100,
+        "height": 86
+      },
+      "placement": {
+        "left": 14,
+        "top": 5
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "visual_review": {
+      "text": false,
+      "opaque_background": false,
+      "attached_to_building": false,
+      "structural_variant_not_mirror": true
+    }
+  },
+  {
+    "id": "trade_smith_a",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated candidate game prop, trade_smith_a. One squat medieval iron anvil mounted on an oak stump, with one separate short freestanding wooden peg post beside it displaying two iron horseshoes; sturdy visible ground bases. Southern England 1300–1450. True 2:1 isometric view, camera looking down approximately 30 degrees, straight verticals. Muted hand-painted painterly game sprite with restrained detail and readable silhouette at 96 pixels; upper-left light. The supplied project images are STYLE REFERENCES ONLY: match wooden material and painterly treatment; do not copy their UI, text, houses, ground or panels. Entire object centered with generous transparent margins and all ground-contact feet visible. Fully freestanding, no attachment to building, wall or roof. Actual transparent RGBA background, no opaque backdrop, no grass or soil base, no people, animals, house, wall, signage, text, letters, symbols or watermark. Do not mirror any reference. Avoid dramatic cast shadow; at most very tiny soft contact shade.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "tool_metadata": {
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-7888e1e9-85dc-4421-8d7d-f98b1157d7ee.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "tool": "image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_smith_a.png",
+    "asset_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_smith_a.png",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-7888e1e9-85dc-4421-8d7d-f98b1157d7ee.png",
+    "source_dimensions": {
+      "width": 1774,
+      "height": 887
+    },
+    "canvas": {
+      "width": 96,
+      "height": 96
+    },
+    "transform": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 581,
+        "top": 169,
+        "width": 654,
+        "height": 600
+      },
+      "scale": 0.1345565749235474,
+      "resized": {
+        "width": 87,
+        "height": 80
+      },
+      "placement": {
+        "left": 5,
+        "top": 11
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "status": "candidate",
+    "anchor": {
+      "x": 86,
+      "y": 89,
+      "method": "visual recheck at 4x with alpha corroboration",
+      "uncertainty_px": 2
+    },
+    "limitations": [
+      "Offline candidate only; actual runtime scale, occlusion and placement unverified.",
+      "Small wood and linen details soften at game display scale."
+    ],
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_smith_a.png",
+    "width": 96,
+    "height": 96,
+    "foot_x": 86,
+    "foot_y": 89,
+    "foot_method": "Visual reading of nearest visible wooden ground-contact foot, rechecked at 4x and corroborated by alpha; excludes shadow",
+    "foot_uncertainty_px": 2,
+    "postprocess": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 581,
+        "top": 169,
+        "width": 654,
+        "height": 600
+      },
+      "scale": 0.1345565749235474,
+      "resized": {
+        "width": 87,
+        "height": 80
+      },
+      "placement": {
+        "left": 5,
+        "top": 11
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "visual_review": {
+      "text": false,
+      "opaque_background": false,
+      "attached_to_building": false,
+      "structural_variant_not_mirror": true
+    }
+  },
+  {
+    "id": "trade_smith_b",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated candidate game prop, trade_smith_b. One small blocky medieval iron anvil on a low four-legged wooden bench, beside a freestanding tall narrow timber post with a cross-shaped ground foot and three horseshoes hanging on pegs. Distinct bench structure. Southern England 1300–1450. True 2:1 isometric view, camera looking down approximately 30 degrees, straight verticals. Muted hand-painted painterly game sprite with restrained detail and readable silhouette at 96 pixels; upper-left light. The supplied project images are STYLE REFERENCES ONLY: match wooden material and painterly treatment; do not copy their UI, text, houses, ground or panels. Entire object centered with generous transparent margins and all ground-contact feet visible. Fully freestanding, no attachment to building, wall or roof. Actual transparent RGBA background, no opaque backdrop, no grass or soil base, no people, animals, house, wall, signage, text, letters, symbols or watermark. Do not mirror any reference. Avoid dramatic cast shadow; at most very tiny soft contact shade.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "tool_metadata": {
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-6be54144-04cd-400a-8cb2-a5bf0709fe4f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "tool": "image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_smith_b.png",
+    "asset_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_smith_b.png",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-6be54144-04cd-400a-8cb2-a5bf0709fe4f.png",
+    "source_dimensions": {
+      "width": 1774,
+      "height": 887
+    },
+    "canvas": {
+      "width": 96,
+      "height": 96
+    },
+    "transform": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 613,
+        "top": 69,
+        "width": 587,
+        "height": 752
+      },
+      "scale": 0.11569148936170212,
+      "resized": {
+        "width": 67,
+        "height": 87
+      },
+      "placement": {
+        "left": 15,
+        "top": 4
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "status": "candidate",
+    "anchor": {
+      "x": 33,
+      "y": 89,
+      "method": "visual",
+      "uncertainty_px": 2
+    },
+    "limitations": [
+      "Offline candidate only; actual runtime scale, occlusion and placement unverified.",
+      "Small wood and linen details soften at game display scale."
+    ],
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_smith_b.png",
+    "width": 96,
+    "height": 96,
+    "foot_x": 33,
+    "foot_y": 89,
+    "foot_method": "Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded",
+    "foot_uncertainty_px": 2,
+    "postprocess": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 613,
+        "top": 69,
+        "width": 587,
+        "height": 752
+      },
+      "scale": 0.11569148936170212,
+      "resized": {
+        "width": 67,
+        "height": 87
+      },
+      "placement": {
+        "left": 15,
+        "top": 4
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "visual_review": {
+      "text": false,
+      "opaque_background": false,
+      "attached_to_building": false,
+      "structural_variant_not_mirror": true
+    }
+  },
+  {
+    "id": "trade_weaver_a",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated candidate game prop, trade_weaver_a. One low freestanding wooden rack holding three rolls of UNDYED warm ivory and raw flax linen. Four visible wooden legs. Rolled cloth is exclusively uncolored natural linen; no loom. Southern England 1300–1450. True 2:1 isometric view, camera looking down approximately 30 degrees, straight verticals. Muted hand-painted painterly game sprite with restrained detail and readable silhouette at 96 pixels; upper-left light. The supplied project images are STYLE REFERENCES ONLY: match wooden material and painterly treatment; do not copy their UI, text, houses, ground or panels. Entire object centered with generous transparent margins and all ground-contact feet visible. Fully freestanding, no attachment to building, wall or roof. Actual transparent RGBA background, no opaque backdrop, no grass or soil base, no people, animals, house, wall, signage, text, letters, symbols or watermark. Do not mirror any reference. Avoid dramatic cast shadow; at most very tiny soft contact shade.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "tool_metadata": {
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-81f08faf-bbae-4419-ab71-6a0060191705.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "tool": "image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_weaver_a.png",
+    "asset_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_weaver_a.png",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-81f08faf-bbae-4419-ab71-6a0060191705.png",
+    "source_dimensions": {
+      "width": 1774,
+      "height": 887
+    },
+    "canvas": {
+      "width": 128,
+      "height": 96
+    },
+    "transform": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 515,
+        "top": 116,
+        "width": 779,
+        "height": 663
+      },
+      "scale": 0.13122171945701358,
+      "resized": {
+        "width": 102,
+        "height": 87
+      },
+      "placement": {
+        "left": 13,
+        "top": 4
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "status": "candidate",
+    "anchor": {
+      "x": 88,
+      "y": 89,
+      "method": "visual recheck at 4x with alpha corroboration",
+      "uncertainty_px": 2
+    },
+    "limitations": [
+      "Offline candidate only; actual runtime scale, occlusion and placement unverified.",
+      "Small wood and linen details soften at game display scale."
+    ],
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_weaver_a.png",
+    "width": 128,
+    "height": 96,
+    "foot_x": 88,
+    "foot_y": 89,
+    "foot_method": "Visual reading of nearest visible wooden ground-contact foot, rechecked at 4x and corroborated by alpha; excludes shadow",
+    "foot_uncertainty_px": 2,
+    "postprocess": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 515,
+        "top": 116,
+        "width": 779,
+        "height": 663
+      },
+      "scale": 0.13122171945701358,
+      "resized": {
+        "width": 102,
+        "height": 87
+      },
+      "placement": {
+        "left": 13,
+        "top": 4
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "visual_review": {
+      "text": false,
+      "opaque_background": false,
+      "attached_to_building": false,
+      "structural_variant_not_mirror": true
+    }
+  },
+  {
+    "id": "trade_weaver_b",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated candidate game prop, trade_weaver_b. One freestanding narrow A-frame wooden textile rack holding two thick UNDYED cream linen rolls at different heights and a folded undyed flax linen bundle on its low shelf. Clearly visible splayed feet. No dyed cloth. Southern England 1300–1450. True 2:1 isometric view, camera looking down approximately 30 degrees, straight verticals. Muted hand-painted painterly game sprite with restrained detail and readable silhouette at 96 pixels; upper-left light. The supplied project images are STYLE REFERENCES ONLY: match wooden material and painterly treatment; do not copy their UI, text, houses, ground or panels. Entire object centered with generous transparent margins and all ground-contact feet visible. Fully freestanding, no attachment to building, wall or roof. Actual transparent RGBA background, no opaque backdrop, no grass or soil base, no people, animals, house, wall, signage, text, letters, symbols or watermark. Do not mirror any reference. Avoid dramatic cast shadow; at most very tiny soft contact shade.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "tool_metadata": {
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-cbe8cefd-b66e-43b2-9b81-a888e6e3a80f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "tool": "image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_weaver_b.png",
+    "asset_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_weaver_b.png",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-cbe8cefd-b66e-43b2-9b81-a888e6e3a80f.png",
+    "source_dimensions": {
+      "width": 1536,
+      "height": 1024
+    },
+    "canvas": {
+      "width": 128,
+      "height": 96
+    },
+    "transform": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 425,
+        "top": 78,
+        "width": 729,
+        "height": 845
+      },
+      "scale": 0.10295857988165681,
+      "resized": {
+        "width": 75,
+        "height": 87
+      },
+      "placement": {
+        "left": 27,
+        "top": 4
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "status": "candidate",
+    "anchor": {
+      "x": 76,
+      "y": 89,
+      "method": "visual",
+      "uncertainty_px": 2
+    },
+    "limitations": [
+      "Offline candidate only; actual runtime scale, occlusion and placement unverified.",
+      "Small wood and linen details soften at game display scale."
+    ],
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_weaver_b.png",
+    "width": 128,
+    "height": 96,
+    "foot_x": 76,
+    "foot_y": 89,
+    "foot_method": "Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded",
+    "foot_uncertainty_px": 2,
+    "postprocess": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 425,
+        "top": 78,
+        "width": 729,
+        "height": 845
+      },
+      "scale": 0.10295857988165681,
+      "resized": {
+        "width": 75,
+        "height": 87
+      },
+      "placement": {
+        "left": 27,
+        "top": 4
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "visual_review": {
+      "text": false,
+      "opaque_background": false,
+      "attached_to_building": false,
+      "structural_variant_not_mirror": true
+    }
+  },
+  {
+    "id": "trade_dyer_a",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated candidate game prop, trade_dyer_a. A standalone cloth drying rack made from two upright rustic timber poles, each with its own stout cross foot, joined by one horizontal beam. Two short cloth panels drape from beam in muted madder red and dull ochre. Visible feet; no surrounding fence or wall. Southern England 1300–1450. True 2:1 isometric view, camera looking down approximately 30 degrees, straight verticals. Muted hand-painted painterly game sprite with restrained detail and readable silhouette at 96 pixels; upper-left light. The supplied project images are STYLE REFERENCES ONLY: match wooden material and painterly treatment; do not copy their UI, text, houses, ground or panels. Entire object centered with generous transparent margins and all ground-contact feet visible. Fully freestanding, no attachment to building, wall or roof. Actual transparent RGBA background, no opaque backdrop, no grass or soil base, no people, animals, house, wall, signage, text, letters, symbols or watermark. Do not mirror any reference. Avoid dramatic cast shadow; at most very tiny soft contact shade.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "tool_metadata": {
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-0df183a2-8f4d-4528-a7ef-698d97e25658.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "tool": "image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_dyer_a.png",
+    "asset_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_dyer_a.png",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-0df183a2-8f4d-4528-a7ef-698d97e25658.png",
+    "source_dimensions": {
+      "width": 1774,
+      "height": 887
+    },
+    "canvas": {
+      "width": 96,
+      "height": 96
+    },
+    "transform": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 445,
+        "top": 123,
+        "width": 954,
+        "height": 647
+      },
+      "scale": 0.09224318658280922,
+      "resized": {
+        "width": 88,
+        "height": 59
+      },
+      "placement": {
+        "left": 4,
+        "top": 32
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "status": "candidate",
+    "anchor": {
+      "x": 22,
+      "y": 90,
+      "method": "visual recheck at 4x with alpha corroboration",
+      "uncertainty_px": 2
+    },
+    "limitations": [
+      "Offline candidate only; actual runtime scale, occlusion and placement unverified.",
+      "Small wood and linen details soften at game display scale."
+    ],
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_dyer_a.png",
+    "width": 96,
+    "height": 96,
+    "foot_x": 22,
+    "foot_y": 90,
+    "foot_method": "Visual reading of nearest visible wooden ground-contact foot, rechecked at 4x and corroborated by alpha; excludes shadow",
+    "foot_uncertainty_px": 2,
+    "postprocess": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 445,
+        "top": 123,
+        "width": 954,
+        "height": 647
+      },
+      "scale": 0.09224318658280922,
+      "resized": {
+        "width": 88,
+        "height": 59
+      },
+      "placement": {
+        "left": 4,
+        "top": 32
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "visual_review": {
+      "text": false,
+      "opaque_background": false,
+      "attached_to_building": false,
+      "structural_variant_not_mirror": true
+    }
+  },
+  {
+    "id": "trade_dyer_b",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated candidate game prop, trade_dyer_b. One standalone three-legged wooden cloth drying frame with a central upright and two unequal horizontal arms, hanging short cloth strips in faded woad blue and muted moss green. Tripod ground feet clearly visible; different structure, no wall. Southern England 1300–1450. True 2:1 isometric view, camera looking down approximately 30 degrees, straight verticals. Muted hand-painted painterly game sprite with restrained detail and readable silhouette at 96 pixels; upper-left light. The supplied project images are STYLE REFERENCES ONLY: match wooden material and painterly treatment; do not copy their UI, text, houses, ground or panels. Entire object centered with generous transparent margins and all ground-contact feet visible. Fully freestanding, no attachment to building, wall or roof. Actual transparent RGBA background, no opaque backdrop, no grass or soil base, no people, animals, house, wall, signage, text, letters, symbols or watermark. Do not mirror any reference. Avoid dramatic cast shadow; at most very tiny soft contact shade.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "tool_metadata": {
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-8242dc39-9c39-499b-beca-cb31b0a87244.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    "tool": "image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_dyer_b.png",
+    "asset_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_dyer_b.png",
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-2915-79b3-9b7c-960f744763a9/exec-8242dc39-9c39-499b-beca-cb31b0a87244.png",
+    "source_dimensions": {
+      "width": 1774,
+      "height": 887
+    },
+    "canvas": {
+      "width": 96,
+      "height": 96
+    },
+    "transform": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 403,
+        "top": 81,
+        "width": 894,
+        "height": 700
+      },
+      "scale": 0.09843400447427293,
+      "resized": {
+        "width": 88,
+        "height": 68
+      },
+      "placement": {
+        "left": 4,
+        "top": 23
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "status": "candidate",
+    "anchor": {
+      "x": 69,
+      "y": 89,
+      "method": "visual",
+      "uncertainty_px": 2
+    },
+    "limitations": [
+      "Offline candidate only; actual runtime scale, occlusion and placement unverified.",
+      "Small wood and linen details soften at game display scale.",
+      "Asymmetric broad cloth arms on one tripod create a top-heavy silhouette; physics is not simulated."
+    ],
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_dyer_b.png",
+    "width": 96,
+    "height": 96,
+    "foot_x": 69,
+    "foot_y": 89,
+    "foot_method": "Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded",
+    "foot_uncertainty_px": 2,
+    "postprocess": {
+      "alpha_threshold": 8,
+      "crop": {
+        "left": 403,
+        "top": 81,
+        "width": 894,
+        "height": 700
+      },
+      "scale": 0.09843400447427293,
+      "resized": {
+        "width": 88,
+        "height": 68
+      },
+      "placement": {
+        "left": 4,
+        "top": 23
+      },
+      "baseline_target_y": 90,
+      "mirror": false,
+      "aspect_ratio_preserved": true
+    },
+    "visual_review": {
+      "text": false,
+      "opaque_background": false,
+      "attached_to_building": false,
+      "structural_variant_not_mirror": true
+    }
+  }
+]
