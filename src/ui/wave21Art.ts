@@ -2,9 +2,9 @@ import type { CSSProperties } from "react";
 import { assetUrlForBase } from "../render/worldAssets";
 import { WAVE21_IMAGES } from "./wave21ArtManifest.generated";
 
-// UI-8 Wave 21 chapter 3 illustrations (scripts/installWave21.py): decision cards (640 × 480),
-// chronicle scenes (384 × 384), event illustrations (960 × 540) and the chapter-3 end page (1920 × 1080),
-// loaded as build-time JPEG derivatives of the received PNGs.
+// UI-8 / UI-9 / UI-10 Wave 21 chapter 3–5 illustrations (scripts/installWave21.py): decision cards (640 × 480),
+// chronicle scenes (384 × 384), event illustrations (960 × 540), the chapter end pages and chapter 5's campaign end
+// page (1920 × 1080), loaded as build-time JPEG derivatives of the received PNGs.
 export type Wave21ImageId = keyof typeof WAVE21_IMAGES;
 
 export const wave21Url = (id: Wave21ImageId): string => assetUrlForBase(WAVE21_IMAGES[id].url, import.meta.env?.BASE_URL ?? "/");
