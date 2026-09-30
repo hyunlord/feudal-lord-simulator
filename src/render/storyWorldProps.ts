@@ -47,9 +47,14 @@ const door = (building: Building) => {
   return tileToScreen(building.tx + size.width / 2 - 0.5, building.ty + size.height + 0.1);
 };
 
-/** The building the petitioners gather before (null: no petition waiting). */
+/**
+ * The building the petitioners gather before (null: no petition waiting). UI-10 (F5-A LG-1): once the family has left
+ * the manor for its country seat, the keep's gate is shut — they gather before the market, the town's own, instead.
+ */
 export function petitionGathering(state: GameState): Building | null {
   if (openPetitions(state).length === 0) return null;
+  const market = state.legacy?.family === "departed" ? state.buildings.find(building => building.kind === "market") : undefined;
+  if (market !== undefined) return market;
   return state.buildings.find(building => building.kind === "keep") ?? state.buildings.find(building => building.kind === "church")
     ?? state.buildings.find(building => building.kind === "chapel") ?? state.buildings.find(building => building.kind === "house") ?? null;
 }

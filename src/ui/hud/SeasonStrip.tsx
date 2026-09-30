@@ -2,9 +2,10 @@ import { idleWheat } from "./statusPillModel";
 import type { GameState } from "../../engine/engine.types";
 import { eventForecast } from "../../engine/eventSchedule";
 import { warForecast } from "../../engine/war";
-import { arrivalOf, forecastMarks, plagueMarks, reorganisationMarks, seasonMarks, warMarks, yearFraction, type PlagueMark, type ReorganisationMark, type SeasonMarkKind, type WarMark } from "../seasonStrip";
+import { arrivalOf, forecastMarks, legacyMarks, plagueMarks, reorganisationMarks, seasonMarks, warMarks, yearFraction, type LegacyMark, type PlagueMark, type ReorganisationMark, type SeasonMarkKind, type WarMark } from "../seasonStrip";
 import { plagueForecast } from "../../engine/plague";
 import { reorganisationForecast } from "../../engine/reorganisation";
+import { legacyForecast, legacyInterludes } from "../../engine/legacy";
 import { UiIcon } from "../UiIcon";
 import type { UiIconCell } from "../uiArt";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
@@ -37,6 +38,16 @@ const REORG_ICON: Readonly<Record<ReorganisationMark["id"], UiIconCell<"cause">>
   overlord_warning: "rights", poll_tax: "rights", rebellion_rumour: "safety", autonomy_request: "rights", end: "rights",
 };
 
+// UI-10: chapter 5's steps and the interlude's events by the cause family they press on — the town's demands, the
+// Crown, the heir, the seal and the charter, the family, the legacy (rights); the Staple and the market (food); the fire
+// (safety); the guild's quarrel (labour).
+const LEGACY_ICON: Readonly<Record<LegacyMark["id"], UiIconCell<"cause">>> = {
+  mayor_demand: "rights", royal_tax_envoy: "rights", succession: "rights", city_seal: "rights", charter_sealing: "rights", family_departure: "rights",
+  legacy_record: "rights", last_market: "food", staple: "food", guild_dispute: "labour", market_fire: "safety", church_rebuilding: "rights", deposition: "rights",
+};
+const legacyLabel = (mark: LegacyMark) => mark.interlude ? SEASON_STRIP_COPY.interlude[mark.id as keyof typeof SEASON_STRIP_COPY.interlude]
+  : SEASON_STRIP_COPY.legacy[mark.id as keyof typeof SEASON_STRIP_COPY.legacy];
+
 export function SeasonStripMini({ tick }: { readonly tick: number }) {
   return (
     <span className="season-strip-mini" aria-hidden="true" style={{ backgroundImage: `url("${wave8Url("season_strip")}")` }}>
@@ -56,6 +67,7 @@ export function SeasonStripPanel({ state, food, onClose }: {
   const war = warMarks(warForecast(state), state.tick);
   const plague = plagueMarks(plagueForecast(state), state.tick);
   const reorg = reorganisationMarks(reorganisationForecast(state), state.tick);
+  const legacy = legacyMarks(legacyForecast(state), legacyInterludes(state), state.tick);
   const until = food.untilTick === null ? null : arrivalOf(state.tick, food.untilTick);
   return (
     <section className="season-strip-panel" aria-label={SEASON_STRIP_COPY.listTitle}>
@@ -73,6 +85,8 @@ export function SeasonStripPanel({ state, food, onClose }: {
           style={{ left: `${mark.fraction * 100}%` }}><UiIcon sheet="cause" cell={PLAGUE_ICON[mark.id]} /></span>)}
         {reorg.map(mark => <span key={`reorg:${mark.id}`} className="season-strip-mark season-strip-forecast" data-mark={`reorg_${mark.id}`}
           style={{ left: `${mark.fraction * 100}%` }}><UiIcon sheet="cause" cell={REORG_ICON[mark.id]} /></span>)}
+        {legacy.map(mark => <span key={`legacy:${mark.id}`} className="season-strip-mark season-strip-forecast" data-mark={`legacy_${mark.id}`}
+          style={{ left: `${mark.fraction * 100}%` }}><UiIcon sheet="cause" cell={LEGACY_ICON[mark.id]} /></span>)}
         <span className="season-strip-pin" data-fraction={yearFraction(state.tick).toFixed(3)}
           style={{ left: `${yearFraction(state.tick) * 100}%`, ...wave8ImageStyle("season_pin", 12) }} />
       </div>
@@ -97,6 +111,11 @@ export function SeasonStripPanel({ state, food, onClose }: {
           const when = arrivalOf(state.tick, mark.tick);
           return <li key={`reorg:${mark.id}`} data-mark={`reorg_${mark.id}`}><UiIcon sheet="cause" cell={REORG_ICON[mark.id]} />
             {SEASON_STRIP_COPY.row(SEASON_STRIP_COPY.reorg[mark.id] ?? mark.id, SEASON_STRIP_COPY.arrival(when.season, when.third, when.nextYear))}</li>;
+        })}
+        {legacy.map(mark => {
+          const when = arrivalOf(state.tick, mark.tick);
+          return <li key={`legacy:${mark.id}`} data-mark={`legacy_${mark.id}`}><UiIcon sheet="cause" cell={LEGACY_ICON[mark.id]} />
+            {SEASON_STRIP_COPY.row(legacyLabel(mark), SEASON_STRIP_COPY.arrival(when.season, when.third, when.nextYear))}</li>;
         })}
         {marks.map(mark => {
           const when = arrivalOf(state.tick, mark.tick);

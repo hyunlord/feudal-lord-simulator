@@ -1,6 +1,8 @@
 import { BALANCE } from "../content/balanceConfig";
 import { SEASON_BALANCE } from "../content/balanceConfig";
+import type { LegacyInterludeId } from "../content/legacyConfig";
 import type { GameState } from "../engine/engine.types";
+import type { LegacyStep } from "../engine/legacy.types";
 import type { PlagueStep, PlagueStepId } from "../engine/plague.types";
 import type { ReorganisationStep, ReorganisationStepId } from "../engine/reorganisation.types";
 import type { WarStep } from "../engine/war.types";
@@ -88,4 +90,21 @@ export function reorganisationMarks(steps: readonly Pick<ReorganisationStep, "id
   // The reorganisation's steps come a year (four seasons) apart: the next one, exactly a year ahead, still shows.
   return steps.filter(step => step.state === "ahead" && step.tick !== null && step.tick >= now && step.tick - now <= YEAR)
     .map(step => ({ id: step.id, tick: step.tick!, fraction: yearFraction(step.tick!) })).sort((a, b) => a.tick - b.tick);
+}
+
+/**
+ * UI-10 (F5-A LG-1, FIX-9 LG-13): chapter 5's coming steps (`legacyForecast`) and the interlude's coming events
+ * (`legacyInterludes`) within a year, on the strip: the mayor's demand, the Crown's envoy, the succession, the seal, the
+ * charter, the family's leaving or staying, the legacy, the last market day; the Staple, the guild's quarrel or the
+ * market's fire, the nave, the deposition. A step that waits on an answer (null tick) is left out.
+ */
+export type LegacyMark = { readonly id: LegacyStep["id"] | LegacyInterludeId; readonly interlude: boolean; readonly tick: number; readonly fraction: number };
+export function legacyMarks(steps: readonly Pick<LegacyStep, "id" | "tick" | "state">[],
+  interludes: readonly { readonly id: LegacyInterludeId; readonly tick: number; readonly state: "done" | "ahead" }[], now: number): readonly LegacyMark[] {
+  // Like the reorganisation's, chapter 5's steps come a year apart: the next one, exactly a year ahead, still shows.
+  const soon = (tick: number | null): tick is number => tick !== null && tick >= now && tick - now <= YEAR;
+  return [
+    ...steps.filter(step => step.state === "ahead" && soon(step.tick)).map(step => ({ id: step.id, interlude: false, tick: step.tick! })),
+    ...interludes.filter(entry => entry.state === "ahead" && soon(entry.tick)).map(entry => ({ id: entry.id, interlude: true, tick: entry.tick })),
+  ].map(mark => ({ ...mark, fraction: yearFraction(mark.tick) })).sort((a, b) => a.tick - b.tick);
 }

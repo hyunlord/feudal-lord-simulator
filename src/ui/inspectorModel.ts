@@ -1,6 +1,8 @@
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { constructionSiteDisplayName, type ConstructionSite } from "../economy/construction";
 import type { GameState } from "../engine/engine.types";
+import { lordshipOf } from "../engine/lordshipState";
+import { stateCalendar } from "../engine/scenarioState";
 import { houseHasFood } from "../population/houseFood";
 import { buildingInspectorModel } from "../render/buildingInspectorModel";
 import { ALERT_STACK_COPY } from "./alertStackCopy.ko";
@@ -125,6 +127,9 @@ function buildingInspector(state: GameState, building: Building): InspectorModel
   const blocker = presentation.blocker !== null && presentation.blocker.label !== "" ? presentation.blocker : null;
   const stopped = presentation.status === "blocked" || presentation.status === "risk";
   const lines: InspectorLine[] = blocker === null ? [] : [{ text: blocker.label, block: stopped }];
+  // UI-10 (F5-A LG-1): the keep stands empty of the lord's family once it has left for its country manor.
+  const left = building.kind === "keep" && state.legacy?.family === "departed" ? state.legacy.steps.family_departure : undefined;
+  if (left !== undefined) lines.unshift({ text: INSPECTOR_COPY.manorLeft(lordshipOf(state).house.name, stateCalendar({ ...state, tick: left }).year), block: false });
   for (const text of supportingCauses(state, building, blocker)) {
     if (!lines.some((line) => line.text === text)) lines.push({ text, block: false });
   }
