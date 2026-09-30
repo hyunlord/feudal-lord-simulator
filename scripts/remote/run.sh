@@ -2,7 +2,7 @@
 # Remote runner (REMOTE-1): edit on the Mac, run heavy verification on the DGX Spark, bring back only the results.
 #
 #   scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <command ...>
-#   scripts/remote/run.sh --task test|guardrail|browser|perf|clone-check [task args ...]   (label: $FLS_REMOTE_LABEL or branch)
+#   scripts/remote/run.sh --task test|guardrail|browser|perf|ui-geometry|clone-check [task args ...]   (label: $FLS_REMOTE_LABEL or branch)
 #   scripts/remote/run.sh --attach <run>     follow a detached/interrupted run, then fetch its results
 #   scripts/remote/run.sh --fetch <run>      fetch results only
 #   scripts/remote/run.sh --status           active remote runs and run folders
@@ -89,8 +89,8 @@ if [ "$1" = "--task" ]; then
   LABEL=${FLS_REMOTE_LABEL:-$(default_label)}
   case "$TASK" in
     guardrail) SLOT=guardrail ;;
-    test|browser|perf|clone-check) ;;
-    *) die "unknown task: $TASK (test|guardrail|browser|perf|clone-check)" ;;
+    test|browser|perf|ui-geometry|clone-check) ;;
+    *) die "unknown task: $TASK (test|guardrail|browser|perf|ui-geometry|clone-check)" ;;
   esac
   [ "${FLS_REMOTE_DETACH:-0}" = 1 ] && DETACH=1
   set -- bash scripts/remote/tasks.sh "$TASK" "$@"
