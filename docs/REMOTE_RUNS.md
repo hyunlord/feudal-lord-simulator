@@ -81,7 +81,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 
 ## 성능 기준선
 - 처리량 관문(p95 비교)은 **DGX 대 DGX로만** 한다. Mac 수치와 섞지 않는다.
-- 끊김 판정은 이것과 따로다. `npm run perf:gate`로 이 Mac의 실제 Chrome 창에서 한다([perf-gate](verification/perf-gate/README.md)). DGX 헤드리스는 소프트웨어 래스터라 끊김 판정에 쓰지 않는다.
+- 끊김 판정과 메모리 측정은 이것과 따로다. `npm run perf:gate`·`scripts/perf/memoryHolders.ts`로 이 Mac의 실제 Chrome 창에서 한다([perf-gate](verification/perf-gate/README.md)). DGX 헤드리스는 소프트웨어 래스터라 끊김 판정에 쓰지 않는다.
 - 기준선은 `perf/baseline-dgx-<sha>.json`이다. `scripts/renderStageBenchmark.mjs`로 한 칸을 3회 × 240 draw 재고(첫 회는 버린다), frameWork·tick·rAF의 중앙·p95를 기록한다. 서버는 DGX Vite 개발 서버(127.0.0.1, 4300~4399)다.
 - 기본 칸은 `lots24:1:still, lots24:1:drag, lots24:2:still, pop176:1:still, newgame:1:still`이다.
 - 비교: `npm run remote:perf -- --baseline perf/baseline-dgx-<sha>.json`을 실행하면 `.remote-runs/<run>/perf/compare.md`에 칸별 p95 비가 나온다.
