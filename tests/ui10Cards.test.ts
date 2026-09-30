@@ -7,7 +7,9 @@
  */
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { MARKET_CHARTER_PETITION_ID, PETITION_DEFS, RESTORE_RIGHT_PETITION_ID, type PetitionResponse } from "../src/content/chapterConfig";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { MARKET_CHARTER_PETITION_ID, PETITION_DEFS, RESTORE_RIGHT_PETITION_ID } from "../src/content/chapterConfig";
 import {
   BOROUGH_AUTONOMY_PETITION_ID,
   CHURCH_REBUILDING_PETITION_ID,
@@ -24,75 +26,19 @@ import { PLAGUE_PETITION_IDS } from "../src/content/plagueConfig";
 import { REORGANISATION_PETITION_IDS } from "../src/content/reorganisationConfig";
 import { WAR_PETITION_IDS } from "../src/content/warConfig";
 import type { GameState } from "../src/engine/engine.types";
-import { heirCandidates, legacyDecisionForecast, legacyForecast } from "../src/engine/legacy";
-import { manorLord, personDisplayName } from "../src/engine/persons";
-import type { Person } from "../src/engine/persons.types";
-import { openPetitions } from "../src/engine/politics";
+import { heirCandidates, legacyDecisionForecast } from "../src/engine/legacy";
+import { personDisplayName } from "../src/engine/persons";
 import { treasuryBalance } from "../src/ledger/ledger";
 import { LEDGER_ACTOR_LABELS, LEDGER_CATEGORY_LABELS } from "../src/ledger/ledgerCopy.ko";
-import { gameReducer } from "../src/state/gameStore";
 import { factionPageView, factionRows } from "../src/ui/chronicle/factionTabModel";
 import { DECISION_COPY } from "../src/ui/decisionCopy.ko";
 import { petitionDecisionView } from "../src/ui/decisionModels";
+import { PetitionModal } from "../src/ui/hud/StoryModals";
 import { isPetitionDefId, petitionArtOf, petitionPresentation, type PetitionDefId } from "../src/ui/petitionPresentation";
-import { at, legacyTown, movedTo, runAnswering } from "./helpers/legacyTown";
+import { at, legacyTown } from "./helpers/legacyTown";
+import { answer, ui10Course } from "./helpers/ui10Course";
 
-const SEASON = 1000;
-type Answers = Partial<Record<string, PetitionResponse>>;
-const STANDARD: Answers = { [ROYAL_TAX_PETITION_ID]: "accept", [HEIR_CHOICE_PETITION_ID]: "refuse", [BOROUGH_AUTONOMY_PETITION_ID]: "accept", [LEGACY_CHOICE_PETITION_ID]: "accept",
-  [GUILD_DISPUTE_PETITION_ID]: "accept", [CHURCH_REBUILDING_PETITION_ID]: "accept" };
-const without = (answers: Answers, defId: string): Answers => ({ ...answers, [defId]: undefined });
-
-/** Runs chapter 5 season by season (the calendar moved to each step's tick), answering, until `defId` is open. */
-function untilOpen(state: GameState, defId: string, answers: Answers): GameState {
-  let next = state;
-  for (let guard = 0; guard < 60 && !openPetitions(next).some(petition => petition.defId === defId); guard += 1) {
-    const step = legacyForecast(next).find(entry => entry.state !== "done");
-    const target = step?.tick !== null && step?.tick !== undefined && step.tick > next.tick ? step.tick : (Math.floor(next.tick / SEASON) + 1) * SEASON;
-    if (target > next.tick + 1) next = movedTo(next, target);
-    next = runAnswering(next, target + 1, without(answers, defId));
-  }
-  assert.ok(openPetitions(next).some(petition => petition.defId === defId), `${defId} did not come (tick ${next.tick})`);
-  return next;
-}
-/** The calendar moved to `tick` and one tick run (an interlude's season start). */
-const reach = (state: GameState, tick: number, answers: Answers) => runAnswering(movedTo(state, tick), tick + 1, answers);
-const answer = (state: GameState, defId: string, response: PetitionResponse) =>
-  gameReducer(state, { type: "petition_response", petitionId: openPetitions(state).find(petition => petition.defId === defId)!.id, response });
-
-/** The old lord (the fixture's widower) made the head, with a son, a daughter gone to marry and a brother gone (chapterFiveLegacy L4). */
-function withFamily(state: GameState): GameState {
-  const persons = state.persons!;
-  const lord = manorLord(persons.people, 1, 1386)!;
-  const kin = (id: string, fields: Partial<Person>): Person => ({ ...lord, id, role: "child", tags: ["lord-family", "lord-house:1"], ...fields });
-  const father = kin("m-900001", { givenName: "Robert", role: "head", birthYear: 1290, alive: false, deathYear: 1350, deathCause: "age" });
-  return { ...state, persons: { ...persons,
-    people: [...persons.people.map(person => person.id === lord.id ? { ...person, role: "head" as const, fatherId: father.id } : person),
-      kin("m-900002", { givenName: "Richard", sex: "male", birthYear: 1360, fatherId: lord.id })],
-    past: [...persons.past, father, kin("m-900003", { givenName: "Agnes", sex: "female", birthYear: 1362, fatherId: lord.id, leftYear: 1380 }),
-      kin("m-900004", { givenName: "Walter", sex: "male", birthYear: 1327, fatherId: father.id, leftYear: 1345 })] } };
-}
-
-// The course, built once: the envoy's card (the tax petitioned), the interlude's two cards and the deposition, the
-// heir's card (with the family of three heirs, and the fixture's own house of one), the charter's card, the legacy's.
-let course: ReturnType<typeof build> | null = null;
-const states = () => (course ??= build());
-function build() {
-  const answers: Answers = { ...STANDARD, [ROYAL_TAX_PETITION_ID]: "refuse" };
-  const envoy = untilOpen(legacyTown(), ROYAL_TAX_PETITION_ID, answers);
-  const petitioned = answer(envoy, ROYAL_TAX_PETITION_ID, "refuse");
-  // The fixture's chapter 4 founded no guild (1394 is the market's fire); a guild founded (the record alone) brings the quarrel.
-  const guilded = { ...petitioned, reorganisation: { ...petitioned.reorganisation!, guild: { foundedTick: petitioned.legacy!.startTick, headId: null } } };
-  const quarrel = reach(guilded, at(...B.guildDispute), {});
-  const nave = reach(reach(petitioned, at(...B.guildDispute), {}), at(...B.churchRebuilding), {});
-  // The spring of 1399 first (the year's turn crowns the calendar's king, FX-5), then the deposition's autumn.
-  const deposed = reach(reach(answer(nave, CHURCH_REBUILDING_PETITION_ID, "accept"), at(B.deposition[0]), {}), at(...B.deposition), {});
-  const heir = untilOpen(withFamily(deposed), HEIR_CHOICE_PETITION_ID, answers);
-  const ownHeir = untilOpen(deposed, HEIR_CHOICE_PETITION_ID, answers);
-  const charter = untilOpen(answer(heir, HEIR_CHOICE_PETITION_ID, "accept_with_price"), BOROUGH_AUTONOMY_PETITION_ID, answers);
-  const legacy = untilOpen(answer(charter, BOROUGH_AUTONOMY_PETITION_ID, "accept"), LEGACY_CHOICE_PETITION_ID, answers);
-  return { envoy, quarrel, nave, deposed, heir, ownHeir, charter, legacy };
-}
+const states = ui10Course;
 const view = (state: GameState) => petitionDecisionView(state)!;
 const LATIN = /[A-Za-z]{2,}|undefined|NaN/;
 
@@ -235,4 +181,18 @@ test("UI-10 (LG-13): after the 1399 deposition the faction tab's Crown shows Hen
   const moved = crown.memory.find(record => record.line.includes("치세가 시작됨"));
   assert.ok(moved !== undefined && /국왕과 왕실의 마음이 (누그러졌다|돌아섰다)\([+−-]?\d+, 이제 -?\d+\) — 리처드 2세가 폐위되고 헨리 4세의 치세가 시작됨/.test(moved.line), moved?.line);
   assert.ok(deposed.tick >= at(...B.deposition));
+});
+
+test("UI-10: the cards render — the heir's answers each with its candidate, the Wave 33 picture on the interlude's", () => {
+  const { heir, nave } = states();
+  const noop = () => undefined;
+  const card = view(heir);
+  const markup = renderToStaticMarkup(createElement(PetitionModal, { view: card, onRespond: noop, onLater: noop }));
+  assert.equal((markup.match(/class="petition-heir"/g) ?? []).length, 3);
+  for (const option of card.options) assert.ok(markup.includes(`data-person="${option.heir!.personId}"`) && markup.includes(option.heir!.resemblance));
+  assert.ok(markup.includes("ch5_decision_heir_choice"), "the Wave 21 card");
+  assert.doesNotMatch(markup, / title="/);
+  const interlude = renderToStaticMarkup(createElement(PetitionModal, { view: view(nave), onRespond: noop, onLater: noop }));
+  assert.ok(interlude.includes("interlude_church_rebuilding") && !interlude.includes("event_market_petition"));
+  assert.doesNotMatch(interlude, /petition-heir/);
 });

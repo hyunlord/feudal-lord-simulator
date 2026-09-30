@@ -29,9 +29,10 @@ test("NAT-2 QA-009: the guild's quarrel (no forecast yet) shows its answers with
   const town = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v32/chapter-five-town.save.json"))).envelope.state as GameState;
   const quarrel = runAnswering(movedTo(town, at(1394)), at(1394) + 1, {});
   assert.ok(openPetitions(quarrel).some(petition => petition.defId === GUILD_DISPUTE_PETITION_ID));
-  const view = petitionDecisionView(quarrel)!;
-  assert.equal(view.presentation.defId, GUILD_DISPUTE_PETITION_ID);
-  assert.ok(view.options.every(option => option.predicted === ""), "the engine gives these answers no numbers yet");
+  const shown = petitionDecisionView(quarrel)!;
+  assert.equal(shown.presentation.defId, GUILD_DISPUTE_PETITION_ID);
+  // UI-10: the quarrel's answers now carry the treasury (`legacyDecisionForecast`); the card is drawn with them taken away.
+  const view = { ...shown, options: shown.options.map(option => ({ ...option, predicted: "" })) };
 
   // When
   const markup = renderToStaticMarkup(createElement(PetitionModal, { view, onRespond: noop, onLater: noop }));
