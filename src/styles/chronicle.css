@@ -248,7 +248,9 @@
 @media (pointer: coarse) {
   .chronicle-screen :is(.chronicle-close, .chronicle-back, .chronicle-zoom, .chronicle-kind, .chronicle-card-action, .chronicle-detail-action,
     .chronicle-season-shift, .chronicle-season, .chronicle-biography-chip, .chronicle-select select, .chronicle-tab) { height: 48px; }
-  .chronicle-screen .chronicle-faction-record { height: 48px; }
+  /* UI-AUDIT-1: a remembered record grows with its two lines (a fixed 48 px cut the second under the next record);
+     the date line and one text line with this padding are 49 px, above the 48 px target. */
+  .chronicle-screen .chronicle-faction-record { height: auto; padding: 9px 8px; }
 }
 
 /* UI-7 the biography's family tree (가계도 tab; FamilyTree.tsx lays out Wave 25's parts in tree pixels, scaled). */
