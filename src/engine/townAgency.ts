@@ -304,7 +304,6 @@ export function advanceTownAgency(state: GameState): GameState {
   let started = 0;
   let ordinal = agency.nextReceipt;
   const needs = planningNeeds(next, LORD_MODE_POLICY);
-  const requests = needs.filter(need => LORD_REQUEST_KINDS.has(need.action.kind)).map(need => need.action);
   for (const proposal of townProposals(next, LORD_MODE_POLICY, needs)) {
     if (started >= STARTS_PER_WEEK || open() >= OPEN_SITES_MAX) break;
     if (proposal.score < START_SCORE) break;
@@ -337,29 +336,17 @@ export function advanceTownAgency(state: GameState): GameState {
   const kept = [...agency.receipts, ...receipts];
   const trimmed = kept.length <= RECEIPTS_KEPT ? kept
     : kept.filter((receipt, index) => receipt.what !== "road" || index >= kept.length - RECEIPTS_KEPT).slice(-RECEIPTS_KEPT);
-  const result: AgencyState = { ...next.agency!, actors, receipts: trimmed, nextReceipt: ordinal };
-  lordRequestsByAgency.set(result, requests);
-  return { ...next, agency: result };
+  return { ...next, agency: { ...next.agency!, actors, receipts: trimmed, nextReceipt: ordinal } };
 }
 
 /** TA-7: what the town asks of its lord this week — the era's proclamation, the wall's priority, the traders' timber. */
 const LORD_REQUEST_KINDS: ReadonlySet<string> = new Set(["proclaim_era", "set_wall_construction_priority", "order_timber"]);
-/**
- * TA-7: the requests the week's planning found, kept beside the agency the week wrote (a cache; the next week's agency
- * is a new object). Key: the `AgencyState` object (weak); only `advanceTownAgency` makes a new one, weekly, so the lord's
- * turns of the week read the same list. Without it (a loaded save), the planning runs again. Saves it an extra
- * `planningNeeds` a week.
- */
-const lordRequestsByAgency = new WeakMap<AgencyState, readonly AdvisorAction[]>();
-
+/** TA-7 API: what the town asks of its lord now — the era's proclamation, the wall's priority, the traders' timber
+ * (the bot's planning steps that are the lord's to grant). A cache beside the week's agency was measured and dropped:
+ * 21.5 s with it, 19.1 s without (lordModeRun, riverside seed 1 to 1304, this Mac). */
 export function lordRequests(state: GameState): readonly AdvisorAction[] {
-  const agency = state.agency;
-  if (agency === undefined) return [];
-  const cached = lordRequestsByAgency.get(agency);
-  if (cached !== undefined) return cached;
-  const requests = planningNeeds(state, LORD_MODE_POLICY).filter(need => LORD_REQUEST_KINDS.has(need.action.kind)).map(need => need.action);
-  lordRequestsByAgency.set(agency, requests);
-  return requests;
+  if (state.agency === undefined) return [];
+  return planningNeeds(state, LORD_MODE_POLICY).filter(need => LORD_REQUEST_KINDS.has(need.action.kind)).map(need => need.action);
 }
 
 // --- TA-5 why here? -----------------------------------------------------------------------------------------------------
