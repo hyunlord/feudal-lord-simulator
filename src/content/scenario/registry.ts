@@ -1,4 +1,4 @@
-import { BUILDING_CONFIG_BY_KIND } from "../buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, isPreplacedBuildingKind, type BuildingKind } from "../buildingConfig";
 import { EVENT_DEF_BY_ID, WEATHER_EVENT_ID } from "../eventConfig";
 import { WAR_SEQUENCE_ID } from "../warConfig";
 import { PLAGUE_SEQUENCE_ID } from "../plagueConfig";
@@ -123,7 +123,8 @@ function validateScenario(scenario: ScenarioDef, archetypes: ReadonlyMap<string,
       unlocked.add(kind);
     }
   }
-  const missing = Object.keys(BUILDING_CONFIG_BY_KIND).filter(kind => !unlocked.has(kind));
+  // FIX-11 (MH-4): a pre-placed kind (the manor house) is never unlocked.
+  const missing = Object.keys(BUILDING_CONFIG_BY_KIND).filter(kind => !unlocked.has(kind) && !isPreplacedBuildingKind(kind as BuildingKind));
   if (missing.length > 0) fail(id, `buildings never unlocked: ${missing.join(", ")}`);
   let previousYear = Number.NEGATIVE_INFINITY;
   const eraIds = new Set<string>();

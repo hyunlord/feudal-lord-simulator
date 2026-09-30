@@ -136,9 +136,9 @@ export const BUILDING_CATALOG = {
   tenter_yard: { category: "trade", group: "production", glyph: "wheat_farm", thumbnail: "facility",
     facilityArt: { quiet: "tenter_frames_a", active: "tenter_frames_dyed", activeWhen: "working" },
     body: { width: 84, height: 12, roof: 0, fill: "earth", roofColor: "parchment", roofShape: "none" }, details: ["field_rows"] },
-  // FIX-11 (11): the manor house — a hall the lord's household keeps; art ids reserved for Astra (manor_house_a/b).
-  manor_house: { category: "defense", group: "service", glyph: "keep", thumbnail: "facility",
-    facilityArt: { variants: ["manor_house_a", "manor_house_b"] },
+  // FIX-11 (MH-3): the manor house — the lord's household's hall, pre-placed and never built. Its pictures (Wave 12
+  // manor_house_a/b, empty manor_house_a_empty / manor_house_b_empty-v2) are in the inbox; render installs them.
+  manor_house: { category: "defense", group: "service", glyph: "keep",
     body: { width: 72, height: 56, roof: 24, fill: "parchment", roofColor: "earthDark", roofShape: "shed" } },
 } as const satisfies { readonly [K in BuildingKind]: BuildingCatalogEntry };
 

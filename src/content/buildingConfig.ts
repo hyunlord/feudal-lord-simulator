@@ -124,8 +124,16 @@ export function barnHolds(building: Pick<Building, "kind" | "crop" | "inventory"
  */
 export const RETIRED_BUILDING_KINDS: readonly BuildingKind[] = ["wheat_farm"];
 
+/** FIX-11 (MH-4): kinds the map places and no one builds — never unlocked (the lord's manor house). */
+export const PREPLACED_BUILDING_KINDS: readonly BuildingKind[] = ["manor_house"];
+
+export function isPreplacedBuildingKind(kind: BuildingKind): boolean {
+  return PREPLACED_BUILDING_KINDS.includes(kind);
+}
+
+/** Not placeable by the menu, the reducer or the bot: a retired kind, or (FIX-11, MH-4) a pre-placed one. */
 export function isRetiredBuildingKind(kind: BuildingKind): boolean {
-  return RETIRED_BUILDING_KINDS.includes(kind);
+  return RETIRED_BUILDING_KINDS.includes(kind) || isPreplacedBuildingKind(kind);
 }
 
 /**
