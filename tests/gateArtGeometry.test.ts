@@ -13,11 +13,12 @@ for (const axis of ['descending', 'ascending'] as const) {
     }
   });
 }
-test('only two opposite cardinal neighbors select generated gate art', () => {
+test('two opposite cardinal neighbors, or a corner with an axis arm (NAT-2 QA-003), select generated gate art', () => {
   const point = { x: 5, y: 5 };
   assert.equal(gateArtAxis({point, neighbors:[{x:4,y:5},{x:6,y:5}],kind:'gate'}), 'descending');
   assert.equal(gateArtAxis({point, neighbors:[{x:5,y:6},{x:5,y:4}],kind:'gate'}), 'ascending');
-  for (const neighbors of [[{x:4,y:5}], [{x:4,y:5},{x:5,y:6}], [{x:4,y:4},{x:6,y:6}]]) {
+  assert.equal(gateArtAxis({point, neighbors:[{x:4,y:5},{x:5,y:6}],kind:'gate'}), 'ascending');
+  for (const neighbors of [[{x:4,y:5}], [{x:4,y:4},{x:6,y:6}]]) {
     assert.equal(gateArtAxis({point,neighbors,kind:'gate'}), null);
   }
 });

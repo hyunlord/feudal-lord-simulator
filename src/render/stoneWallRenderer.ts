@@ -1,6 +1,7 @@
 import { drawMasonrySolid } from "./stoneWallMasonry";
 import { drawRegisteredGate } from "./gateArtRenderer";
-import { stoneWallNodeSolids } from "./stoneWallNodeGeometry";
+import { gatePierSolid, stoneWallNodeSolids } from "./stoneWallNodeGeometry";
+import { gateOffAxisPiers } from "./gateArtGeometry";
 import type { StoneWallNode } from "./stoneWallTopology";
 import type { TileEdgePoint } from "../world/palisadeGeometry";
 import { preloadStoneWallAssets, stoneWallImage, stoneWallMaterial } from "./stoneWallAssets";
@@ -31,7 +32,12 @@ export function drawStoneWall(context: CanvasRenderingContext2D, input: Readonly
     context.restore();
   }
   for (const node of input.nodes ?? []) {
-    if (node.kind === "gate" && drawRegisteredGate(context, node, "stone")) continue;
+    if (node.kind === "gate") {
+      // NAT-2 QA-003: a corner gate's other arm ends in a pier (behind the art first, in front of it after).
+      const piers = gateOffAxisPiers(node);
+      for (const point of piers.behind) drawMasonrySolid(context, gatePierSolid(point), stoneWallMaterial(), false);
+      if (drawRegisteredGate(context, node, "stone")) { for (const point of piers.front) drawMasonrySolid(context, gatePierSolid(point), stoneWallMaterial(), false); continue; }
+    }
     for (const solid of stoneWallNodeSolids(node)) drawMasonrySolid(context, solid, stoneWallMaterial(), node.kind !== "gate");
   }
 }

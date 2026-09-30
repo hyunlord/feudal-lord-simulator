@@ -4,6 +4,7 @@ import { gateAssetStatuses } from "./gateArtAssets";
 import { timberWallAssetStatus } from "./timberWallAssets";
 import { timberWallPostPoints } from "./timberGateGeometry";
 import { drawRegisteredGate } from "./gateArtRenderer";
+import { gateOffAxisPiers } from "./gateArtGeometry";
 import { preloadTimberWallAssets } from "./timberWallAssets";
 import { drawGateMarker, drawPost } from "./timberGateRenderer";
 import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
@@ -79,7 +80,12 @@ export function drawPalisadeSegmentUncached(
   drawCompletedPosts(context, input.segment.edgePath, input.zoom, "timber", input.gate, input.gates);
   if (input.stoneNodes !== undefined) {
     for (const node of input.stoneNodes) {
-      if (node.kind !== "gate" || drawRegisteredGate(context, node, "timber")) continue;
+      if (node.kind !== "gate") continue;
+      // NAT-2 QA-003: a corner gate's other arm ends in a post (behind the art first, in front of it after).
+      const piers = gateOffAxisPiers(node);
+      const post = (point: TileEdgePoint) => { const at = palisadeScreenPath([point])[0]; if (at !== undefined) drawPost(context, at, { width: 8, height: 30 }, input.zoom, "timber"); };
+      piers.behind.forEach(post);
+      if (drawRegisteredGate(context, node, "timber")) { piers.front.forEach(post); continue; }
       const path = node.neighbors.flatMap(point => [point, node.point]);
       drawGateMarker(context, path, node.point, input.zoom, node);
     }
