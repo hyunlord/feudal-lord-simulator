@@ -1,0 +1,901 @@
+{
+ "legacy.mayor_demand": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "시장을 뽑게 해 달라는 요구"
+   ],
+   "heading": null
+  },
+  "stage": "rumour",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "ahead"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "ahead"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "ahead"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "ahead"
+   }
+  ]
+ },
+ "legacy.royal_tax_envoy": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": "국왕의 과세 요구",
+   "def": "royal_tax",
+   "chips": [
+    "국왕의 과세 요구"
+   ],
+   "heading": "국왕의 과세 요구"
+  },
+  "stage": "arrival",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "ahead"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "ahead"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "ahead"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "ahead"
+   }
+  ]
+ },
+ "legacy.succession": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": "늙은 영주의 후계자",
+   "def": "heir_choice",
+   "chips": [
+    "늙은 영주의 후계자"
+   ],
+   "heading": "늙은 영주의 후계자"
+  },
+  "stage": "arrival",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "done"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "done"
+   }
+  ]
+ },
+ "legacy.city_seal": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "도시의 인장"
+   ],
+   "heading": null
+  },
+  "stage": "arrival",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "done"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "done"
+   }
+  ]
+ },
+ "legacy.charter_sealing": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "자치 특허의 인장"
+   ],
+   "heading": null
+  },
+  "stage": "arrival",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "done"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "done"
+   }
+  ]
+ },
+ "legacy.family_departure": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "가문이 영주관을 떠나다"
+   ],
+   "heading": null
+  },
+  "stage": "recovery",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "done"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "done"
+   }
+  ]
+ },
+ "legacy.legacy_record": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "유산의 기록"
+   ],
+   "heading": null
+  },
+  "stage": "recovery",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "done"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "done"
+   }
+  ]
+ },
+ "legacy.last_market": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": "제5장 연대기 · 1382–1450",
+   "def": null,
+   "chips": [
+    "1450년 마지막 장날"
+   ],
+   "heading": null
+  },
+  "stage": "done",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "done"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "done"
+   }
+  ]
+ },
+ "interlude.staple": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "양모 집산지 이전"
+   ],
+   "heading": null
+  },
+  "stage": "arrival",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "ahead"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "ahead"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "ahead"
+   }
+  ]
+ },
+ "interlude.guild_dispute": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": "길드와 상인의 다툼",
+   "def": "guild_dispute",
+   "chips": [
+    "길드와 상인의 다툼"
+   ],
+   "heading": "길드와 상인의 다툼"
+  },
+  "stage": "arrival",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "ahead"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "ahead"
+   }
+  ]
+ },
+ "interlude.market_fire": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "장터 화재"
+   ],
+   "heading": null
+  },
+  "stage": "arrival",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "market_fire",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "ahead"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "ahead"
+   }
+  ]
+ },
+ "interlude.church_rebuilding": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": "교회 증축 청원",
+   "def": "church_rebuilding",
+   "chips": [
+    "교회 증축 청원"
+   ],
+   "heading": "교회 증축 청원"
+  },
+  "stage": "arrival",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "done"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "ahead"
+   }
+  ]
+ },
+ "interlude.deposition": {
+  "world": {
+   "modal": null,
+   "def": null,
+   "chips": [],
+   "heading": null
+  },
+  "ui": {
+   "modal": null,
+   "def": null,
+   "chips": [
+    "리처드 2세 폐위"
+   ],
+   "heading": null
+  },
+  "stage": "arrival",
+  "interludes": [
+   {
+    "id": "staple",
+    "tick": 364000,
+    "state": "done"
+   },
+   {
+    "id": "guild_dispute",
+    "tick": 376000,
+    "state": "done"
+   },
+   {
+    "id": "church_rebuilding",
+    "tick": 384000,
+    "state": "done"
+   },
+   {
+    "id": "deposition",
+    "tick": 398000,
+    "state": "done"
+   }
+  ]
+ },
+ "season-strip": [
+  "국왕의 과세 사절 — 내년 여름 초쯤"
+ ],
+ "royal_tax": {
+  "ui": {
+   "modal": null,
+   "def": "royal_tax",
+   "chips": [
+    "국왕의 과세 요구"
+   ],
+   "heading": "국왕의 과세 요구"
+  }
+ },
+ "heir_choice": {
+  "ui": {
+   "modal": null,
+   "def": "heir_choice",
+   "chips": [
+    "늙은 영주의 후계자"
+   ],
+   "heading": "늙은 영주의 후계자"
+  },
+  "candidates": [
+   "리처드 드 포콩발먼 친척 · 20살가문의 먼 친척늙은 영주와 닮은 데가 없습니다1382년생 · 이번에 영지에 옴 · 원장 기록 1건"
+  ],
+  "engineCandidates": 1
+ },
+ "borough_autonomy": {
+  "ui": {
+   "modal": null,
+   "def": "borough_autonomy",
+   "chips": [
+    "자치 특허의 인장"
+   ],
+   "heading": "자치 특허의 인장"
+  }
+ },
+ "legacy_choice": {
+  "ui": {
+   "modal": null,
+   "def": "legacy_choice",
+   "chips": [
+    "남길 유산 하나"
+   ],
+   "heading": "남길 유산 하나"
+  }
+ },
+ "guild_dispute": {
+  "ui": {
+   "modal": null,
+   "def": "guild_dispute",
+   "chips": [
+    "길드와 상인의 다툼"
+   ],
+   "heading": "길드와 상인의 다툼"
+  }
+ },
+ "church_rebuilding": {
+  "ui": {
+   "modal": null,
+   "def": "church_rebuilding",
+   "chips": [
+    "교회 증축 청원"
+   ],
+   "heading": "교회 증축 청원"
+  }
+ },
+ "f1-factions-new-king": {
+  "state": "legacy.succession",
+  "rows": [
+   "에스트마치 백작상위 영주로버트 드 할라모어백작 · 70살냉담 −20요구 1건약속 없음",
+   "국왕과 왕실헨리 4세국왕 · 35살호의 +22요구 없음약속 없음",
+   "드 리종드 가문(이웃 영주)이웃 영주월터 드 리종드영주 · 58살무심 −4요구 없음약속 없음",
+   "드 손넬 가문(이웃 영주)이웃 영주니컬러스 드 손넬영주 · 34살무심 0요구 없음약속 없음",
+   "윈캐스터 주교주교존 드 캉드빌주교 · 51살호의 +23요구 없음약속 없음",
+   "노스우드 상인 가문상인 가문나이 든 비어트리스 노스우드가문의 수장 · 91살호의 +25요구 없음약속 1건힘 73",
+   "휴슨 상인 가문상인 가문나이 든 리처드 휴슨가문의 수장 · 74살무심 0요구 없음약속 없음힘 43",
+   "도시 공동체매슈 애덤슨도시의 대표 · 94살우호 +63요구 없음약속 3건힘 93",
+   "농민 공동체머틸다 쿼리어농민의 대표 · 60살호의 +40요구 없음약속 없음"
+  ]
+ },
+ "l1-ledger-chapter5": {
+  "sections": [
+   "임금 장부 (3장)",
+   "4장 재편 장부"
+  ],
+  "coinPanels": 0
+ },
+ "l2-ledger-fold-malt": {
+  "toggle": "밀 보관 11곳 — 곳마다 양 펼치고 접기",
+  "stores": [
+   "방앗간 2 · 1",
+   "방앗간 3 · 16",
+   "방앗간 4 · 1",
+   "방앗간 5 · 16",
+   "헛간 2 · 748",
+   "방앗간 6 · 6",
+   "방앗간 7 · 15",
+   "방앗간 8 · 1",
+   "헛간 3 · 427",
+   "방앗간 9 · 7",
+   "방앗간 10 · 12"
+  ]
+ },
+ "b1-storehouse-malt": {
+  "state": "extra:store-malt",
+  "store": "construction-site-000036",
+  "malt": 1,
+  "lines": [
+   "통나무목재원석석재엿기름에일양털실생베축융한 베염료물들인 베완성 직물",
+   "이 저장소는 위 품목을 모두 받습니다",
+   "에일은 집 안에 둡니다 — 도시에 148통, 그중 에일집 148통",
+   "창고에서 통나무 들여옴",
+   "제재소에서 목재 들여옴",
+   "엿기름 가마에서 엿기름 들여옴"
+  ]
+ },
+ "b2-granary-no-malt": {
+  "state": "extra:store-malt",
+  "store": "granary-42-37-0",
+  "malt": 0,
+  "lines": [
+   "밀빵보리",
+   "이 저장소는 위 품목을 모두 받습니다",
+   "에일은 집 안에 둡니다 — 도시에 148통, 그중 에일집 148통",
+   "배급꾼 2명이 여기서 떠남",
+   "방앗간에서 빵 들여옴",
+   "방앗간에서 빵 들여옴"
+  ]
+ },
+ "w1-empty-manor": {
+  "tick": 418001,
+  "family": "departed",
+  "at": [
+   56,
+   35
+  ],
+  "kind": "market"
+ },
+ "w2-keep-inspector": {
+  "keep": null
+ },
+ "w3-rights-seat": [
+  "드 포콩발 가문은 1404년부터 시골 장원에 삽니다 — 영주관은 비었습니다"
+ ],
+ "c-campaign-end": {
+  "page": [
+   "제5장 연대기 · 1382–1450"
+  ],
+  "ending": {
+   "id": "free_borough",
+   "final": "true",
+   "text": "유산 판정 — 1450년 마지막 장날결말스스로 다스리는 도시1403년 자치 특허에 도시 인장이 찍혔고, 나이 든 비어트리스 노스우드가 첫 시장이 되었다. 1450년 마지막 장날, 도시는 제 법정과 제 인장으로 스스로를 다스렸고, 길드홀에 그 이름을 새겼다.원장에 적힌 기록1403년 겨울자치 특허의 인장에 답했다: 자치 특허에 인장을 찍는다1402년 봄늙은 영주의 후계자에 답했다: 조카에게 잇게 한다1440년 봄남길 유산 하나에 답했다: 도시에 길드홀과 시청을 남긴다세 갈래의 점수도시100점가장 높음인구 +254단계 집 +195장에 판 직물 +15도시가 쥔 권리 +15자치 특허 +20고른 유산 +25가문37점가문 연속 +10계보의 세대 +12후계자 +5영주관에 남음 0상위 영주·국왕 관계 0금고 +10고른 유"
+  },
+  "endingExport": {
+   "file": "연대기-드_포콩발-1450.txt",
+   "status": [
+    "연대기-드_포콩발-1450.txt로 저장했다"
+   ]
+  },
+  "book-title": {
+   "reached": true,
+   "lines": [
+    "드 포콩발 가문과 도시의 연대기, 1300–1450",
+    "차례",
+    "제1장 촌락에서 시장도시로 · 1300–1319년",
+    "제2장 전쟁의 그늘 · 1319–1340년",
+    "제3장 흑사병 · 1340–1362년",
+    "제4장 재편 · 1362–1382년",
+    "제5장 자치와 유산 · 1382–1450년",
+    "가문 계보",
+    "세력 연대",
+    "유산"
+   ]
+  },
+  "book-chapter-5": {
+   "reached": true,
+   "lines": [
+    "제5장 자치와 유산",
+    "사건",
+    "1382년자치 특허를 맺었다 — 시장과 통행세 일부가 도시로 넘어갔다",
+    "1383년상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구했다 — 후보 조앤 노스우드",
+    "1399년리처드 2세가 폐위되고 헨리 4세가 즉위했다",
+    "1402년늙은 영주 존 드 포콩발(5세)이 후계자를 정해야 한다 — 후보 1명",
+    "1402년리처드 드 포콩발이 가문을 이었다 — 먼 친척",
+    "1403년자치 특허에 도시 인장이 찍혔다 — 첫 시장 나이 든 비어트리스 노스우드",
+    "1404년드 포콩발 가문이 영주관을 떠나 시골 장원으로 갔다",
+    "1440년유산 기록을 봉인했다 — 길드홀과 시청",
+    "결정",
+    "1384년국왕의 과세 사절에 답했다: 과세를 낸다고른 답: 과세를 낸다다른 길: 감면을 청원한다",
+    "1394년길드와 상인 사이의 다툼에 답했다: 길드 편을 든다고른 답: 길드 편을 든다다른 길: 상인 편을 든다",
+    "1396년교구 교회 증축 청원에 답했다: 교회를 넓혀 짓는다고른 답: 교회를 넓혀 짓는다다른 길: 증축을 미룬다"
+   ]
+  },
+  "book-family": {
+   "reached": true,
+   "lines": [
+    "가문 계보",
+    "피츠웬들 1300–1359년",
+    "1대존 피츠웬들1256–1342가장",
+    "1대줄리애나 피츠웬들1260–1336",
+    "1대조앤 피츠웬들1262–1348",
+    "1대나이 든 마거릿 피츠웬들1308–1352",
+    "2대앨리스 피츠웬들1290– (1308년 떠남)부모: 존 피츠웬들, 줄리애나 피츠웬들",
+    "2대머틸다 피츠웬들1293– (1311년 떠남)부모: 존 피츠웬들, 줄리애나 피츠웬들",
+    "2대나이 든 랠프 피츠웬들1302–1349가장부모: 존 피츠웬들, 줄리애나 피츠웬들",
+    "2대조앤 피츠웬들1303–1303부모: 존 피츠웬들, 줄리애나 피츠웬들",
+    "3대젊은 랠프 피츠웬들1345–1359가장부모: 나이 든 랠프 피츠웬들, 나이 든 마거릿 피츠웬들",
+    "3대존 피츠웬들1346–1349부모: 나이 든 랠프 피츠웬들, 나이 든 마거릿 피츠웬들",
+    "3대젊은 마거릿 피츠웬들1349–1349부모: 나이 든 랠프 피츠웬들, 나이 든 마거릿 피츠웬들",
+    "드 포콩발 1359년부터",
+    "1대존 드 포콩발1327–1395가장",
+    "1대머틸다 드 포콩발1330–1374",
+    "1대클래리스 드 포콩발1333–1361",
+    "1대마저리 드 포콩발1333–1409",
+    "1대이저벨 드 포콩발1357–1420",
+    "1대리처드 드 포콩발1382–1439가장",
+    "1대나이 든 앨리스 드 포콩발1387–",
+    "1대나이 든 마저리 드 포콩발1412–",
+    "2대조앤 드 포콩발1351– (1369년 떠남)부모: 존 드 포콩발, 클래리스 드 포콩발",
+    "2대휴 드 포콩발1354–1399가장부모: 존 드 포콩발, 클래리스 드 포콩발",
+    "2대비어트리스 드 포콩발1361–1361부모: 존 드 포콩발, 클래리스 드 포콩발",
+    "2대윌리엄 드 포콩발1365– (1383년 떠남)부모: 존 드 포콩발, 머틸다 드 포콩발",
+    "2대랠프 드 포콩발1369– (1387년 떠남)부모: 존 드 포콩발, 머틸다 드 포콩발",
+    "2대앨리스 드 포콩발1377– (1395년 떠남)부모: 존 드 포콩발, 마저리 드 포콩발",
+    "2대젊은 앨리스 드 포콩발1405–1415부모: 리처드 드 포콩발, 나이 든 앨리스 드 포콩발",
+    "2대토머스 드 포콩발1407–1409부모: 리처드 드 포콩발, 나이 든 앨리스 드 포콩발",
+    "2대윌리엄 드 포콩발1410–가장부모: 리처드 드 포콩발, 나이 든 앨리스 드 포콩발",
+    "2대루시 드 포콩발1412– (1430년 떠남)부모: 리처드 드 포콩발, 나이 든 앨리스 드 포콩발",
+    "3대존 드 포콩발1397–가장부모: 휴 드 포콩발, 이저벨 드 포콩발",
+    "3대토머스 드 포콩발1441–부모: 윌리엄 드 포콩발, 나이 든 마저리 드 포콩발",
+    "3대젊은 마저리 드 포콩발1442–부모: 윌리엄 드 포콩발, 나이 든 마저리 드 포콩발",
+    "3대조앤 드 포콩발1447–부모: 윌리엄 드 포콩발, 나이 든 마저리 드 포콩발",
+    "3대로버트 드 포콩발1449–1449부모: 윌리엄 드 포콩발, 나이 든 마저리 드 포콩발"
+   ]
+  },
+  "book-factions": {
+   "reached": true,
+   "lines": [
+    "세력 연대",
+    "에스트마치 백작 지금 관계 -40",
+    "1369년상위 영주가 커지는 도시를 경고했다 — 도시의 힘 68",
+    "1402년늙은 영주 존 드 포콩발(5세)이 후계자를 정해야 한다 — 후보 1명",
+    "1402년리처드 드 포콩발이 가문을 이었다 — 먼 친척",
+    "국왕과 왕실 지금 관계 +27",
+    "1337년국왕의 전령이 왔다 — 프랑스와 전쟁이 시작되었다",
+    "1339년왕실 조달 면허를 받았다",
+    "1351년노동자 조례가 낭독되었다 — 임금을 올린 영주에게 벌금 100d",
+    "1384년국왕의 과세 사절이 왔다 — 15분의 1·10분의 1세",
+    "1391년양모 집산지(Staple)가 옮겨지고 양모 수출이 묶였다 — 직물 값이 오른다",
+    "1399년리처드 2세가 폐위되고 헨리 4세가 즉위했다",
+    "드 리종드 가문(이웃 영주) 지금 관계 -4",
+    "1362년이웃 장원이 더 높은 임금으로 일꾼을 부른다",
+    "드 손넬 가문(이웃 영주) 지금 관계 0",
+    "윈캐스터 주교 지금 관계 +23",
+    "1348년항구에서 열병이 돈다는 소문이 들어왔다",
+    "1348년역병이 도시에 들어왔다",
+    "1348년사제가 역병으로 죽었다 — 교회가 비었다",
+    "1361년두 번째 역병이 왔다",
+    "1361년두 번째 역병이 물러갔다 — 81명이 죽었다",
+    "1396년교구가 낡은 교회의 증축을 청했다",
+    "1396년교회의 새 회중석이 섰다",
+    "아트웰 상인 가문 지금 관계 +40",
+    "1368년상인과 직인 무리의 청원이 쏟아진다",
+    "1383년상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구했다 — 후보 조앤 노스우드",
+    "1394년길드와 상인이 직물을 파는 권리를 두고 다툰다",
+    "아트브룩 상인 가문 지금 관계 0",
+    "도시 공동체 지금 관계 +98",
+    "1339년해안의 봉화가 올랐다",
+    "1339년해안 습격이 닥쳤다 — 불탄 집 3, 빼앗긴 물자 683, 빼앗긴 돈 324d",
+    "1348년교회 묘지에 새 무덤이 늘었다 — 67명",
+    "1348년거리가 비었다 — 빈집 1채",
+    "1349년역병이 물러갔다 — 762명 가운데 336명이 죽고, 빈 필지 4곳, 밭이 버려졌다",
+    "1352년빈집에 새 가족이 들기 시작했다",
+    "1364년직조공 집이 늘어 직물 거리가 생겼다",
+    "1369년직인 길드가 섰다",
+    "1382년도시가 자치 특허를 요구하는 문서를 올렸다",
+    "1382년자치 특허를 맺었다 — 시장과 통행세 일부가 도시로 넘어갔다",
+    "1403년도시가 제 인장을 새겼다"
+   ]
+  },
+  "book-legacy": {
+   "reached": true,
+   "lines": [
+    "유산",
+    "도시100점가장 높음인구 +254단계 집 +195장에 판 직물 +15도시가 쥔 권리 +15자치 특허 +20고른 유산 +25",
+    "인구 +25",
+    "4단계 집 +19",
+    "5장에 판 직물 +15",
+    "도시가 쥔 권리 +15",
+    "자치 특허 +20",
+    "고른 유산 +25",
+    "가문37점가문 연속 +10계보의 세대 +12후계자 +5영주관에 남음 0상위 영주·국왕 관계 0금고 +10고른 유산 0",
+    "가문 연속 +10",
+    "계보의 세대 +12",
+    "후계자 +5",
+    "영주관에 남음 0",
+    "상위 영주·국왕 관계 0",
+    "금고 +10",
+    "고른 유산 0",
+    "교회65점교회 +20예배당 +4주교 관계 +11역병 때 수도원 사제 +10대기근 구휼 +5회중석 증축 +15고른 유산 0",
+    "교회 +20",
+    "예배당 +4",
+    "주교 관계 +11",
+    "역병 때 수도원 사제 +10",
+    "대기근 구휼 +5",
+    "회중석 증축 +15",
+    "고른 유산 0",
+    "스스로 다스리는 도시",
+    "원장에 적힌 기록",
+    "1403년 겨울자치 특허의 인장에 답했다: 자치 특허에 인장을 찍는다",
+    "1402년 봄늙은 영주의 후계자에 답했다: 조카에게 잇게 한다",
+    "1440년 봄남길 유산 하나에 답했다: 도시에 길드홀과 시청을 남긴다"
+   ]
+  },
+  "bookExport": {
+   "file": "연대기-드_포콩발-1450.txt",
+   "status": [
+    "연대기-드_포콩발-1450.txt로 저장했다"
+   ]
+  }
+ },
+ "c0-campaign-victory": {
+  "outcome": "victory",
+  "ui": {
+   "modal": "제5장 연대기 · 1382–1450",
+   "def": null,
+   "chips": [
+    "1450년 마지막 장날"
+   ],
+   "heading": null
+  },
+  "shot": "c0-campaign-victory.jpg was byte-identical to c1-chapter5-page.jpg (the state 8 ticks on opens the same chapter 5 page); removed for the size budget"
+ },
+ "x-free_borough": {
+  "save": "ui10-ending-free_borough.save.json",
+  "engine": "free_borough",
+  "shown": "free_borough"
+ },
+ "x-house_remembered": {
+  "save": "ui10-ending-house_remembered.save.json",
+  "engine": "house_remembered",
+  "shown": "house_remembered"
+ },
+ "x-merchants_chantry": {
+  "save": "ui10-ending-merchants_chantry.save.json",
+  "engine": "merchants_chantry",
+  "shown": "merchants_chantry"
+ },
+ "x-house_seat": {
+  "save": "ui10-ending-house_seat.save.json",
+  "engine": "house_seat",
+  "shown": "house_seat"
+ },
+ "x-lords_town": {
+  "save": "ui10-ending-lords_town.save.json",
+  "engine": "lords_town",
+  "shown": "lords_town"
+ },
+ "x-pilgrim_town": {
+  "save": "ui10-ending-pilgrim_town.save.json",
+  "engine": "pilgrim_town",
+  "shown": "pilgrim_town"
+ },
+ "shots": {
+  "count": 56,
+  "note": "re-encoded after the run (PIL, JPEG quality 42, shots over 40 KB) for the 3 MB evidence budget"
+ },
+ "errors": [],
+ "extra:heir_choice": {
+  "ui": {
+   "modal": null,
+   "def": "heir_choice",
+   "chips": [
+    "늙은 영주의 후계자",
+    "교회 증축 청원",
+    "리처드 2세 폐위"
+   ],
+   "heading": "늙은 영주의 후계자"
+  },
+  "candidates": [
+   "리처드 드 포콩발맏아들 · 40살늙은 영주의 아들닮은 점: 늙은 영주의 얼굴 생김, 갈색 머리, 잿빛 눈1360년생 · 원장 기록 0건",
+   "토머스 드 코르벨딸의 남편 · 40살늙은 영주의 딸 애그니스 드 포콩발의 남편늙은 영주와 닮은 데가 없습니다1360년생 · 이번에 영지에 옴 · 원장 기록 1건",
+   "로버트 드 포콩발조카 · 19살늙은 영주의 형제 월터 드 포콩발의 아들닮은 점: 늙은 영주의 얼굴 생김1381년생 · 이번에 영지에 옴 · 원장 기록 1건"
+  ],
+  "engineCandidates": 3
+ },
+ "reruns": {
+  "extra:heir_choice": "render-UI10-heir5-a69cbb5 (the three-heir state regenerated with the interlude petitions answered)",
+  "b1-storehouse-malt": "render-UI10-stores4-90dde16 (the whole frame, the stock row at malt)",
+  "b2-granary-no-malt": "render-UI10-stores4-90dde16 (the whole frame, the stock row at malt)"
+ }
+}
