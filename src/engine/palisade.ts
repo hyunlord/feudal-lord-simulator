@@ -148,18 +148,18 @@ function chooseGate(state: GameState, ring: readonly TileEdgePoint[], center: Se
   const scores = trafficScores(state);
   const crossed = crossedGateCandidates(state, ring, scores);
   const roads = roadTiles(state);
-  // FIX-11 (12): prefer straight ring points over corners as a tiebreaker.
   const isStr = (point: TileEdgePoint): boolean => {
     const idx = ring.findIndex(p => p.x === point.x && p.y === point.y);
     return idx >= 0 && isStraightRingPoint(ring, idx);
   };
+  // FIX-11 (12): a crossing on a straight side comes first; a corner only when no crossing is straight.
   const target =
     crossed.length > 0
       ? [...crossed].sort((left, right) => {
-          const scoreDelta = right.score - left.score;
-          if (scoreDelta !== 0) return scoreDelta;
           const strDelta = Number(isStr(right.point)) - Number(isStr(left.point));
           if (strDelta !== 0) return strDelta;
+          const scoreDelta = right.score - left.score;
+          if (scoreDelta !== 0) return scoreDelta;
           const distanceDelta = edgeDistanceSquared(left.point, center) - edgeDistanceSquared(right.point, center);
           return distanceDelta !== 0 ? distanceDelta : left.point.y === right.point.y ? left.point.x - right.point.x : left.point.y - right.point.y;
         })[0]?.point

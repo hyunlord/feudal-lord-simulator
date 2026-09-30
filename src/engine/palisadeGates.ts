@@ -38,10 +38,10 @@ export function additionalRoadGates(grid: Grid & { readonly buildings?: readonly
       return { point, remaining, distance, gain: blocked.length - remaining.length };
     }).filter(choice => choice.gain > 0);
     const separated = choices.filter(choice => choice.distance >= 2);
-    // FIX-11 (12): prefer straight ring points over corners as a tiebreaker after gain and distance.
+    // FIX-11 (12): a gate on a straight side first; a corner only when no straight point opens a crossing.
     const best = (separated.length > 0 ? separated : choices).sort((a, b) =>
-      b.gain - a.gain || b.distance - a.distance
-      || Number(isStraightRingPoint(ring, indexOf(b.point))) - Number(isStraightRingPoint(ring, indexOf(a.point)))
+      Number(isStraightRingPoint(ring, indexOf(b.point))) - Number(isStraightRingPoint(ring, indexOf(a.point)))
+      || b.gain - a.gain || b.distance - a.distance
       || a.point.y - b.point.y || a.point.x - b.point.x,
     )[0];
     if (best === undefined) break;

@@ -134,21 +134,29 @@ function compareCandidates(left: SaleCandidate, right: SaleCandidate): number {
 }
 
 /**
- * FIX-11 (13): engine-side per-tick memo.
- * Invalidation key: `market.id` (stable string) × `state.tick` (monotone integer).
- * Inputs not in the key: `state.buildings`, `state.tiles` — these change iff `state.tick` advances, so the
- * combination (id, tick) uniquely identifies one market's sale-candidate set for the lifetime of a tick.
- * Before memo: saleCandidates + connectedStorageSources ran on every render frame (~60×/s per market).
- * After memo: computed once per market per tick; render's WeakMap<GameState> cache then hits on repeated reads.
+ * FIX-11 (13, rule 10): the market-activity check is computed once per market per state.
+ * (a) Key: the `state.buildings` array (weak) and, inside, the market id, checked against the same `tiles`,
+ *     `constructionSites` and `era` references. Every tick that moves any stock builds a new buildings array, so a
+ *     new tick misses and recomputes.
+ * (b) Everything the check reads is under that key: the market's workers and suspension and the stores' inventory and
+ *     reservations are in `buildings`; road connectivity is in `tiles` (and building access tiles); the construction
+ *     export reserve is in `constructionSites`; the era picks the goods. Nothing else enters `saleCandidates`.
+ * (c) Before/after: see the FIX-11 report (render's world signs and facility art ask it per frame per market).
  */
-const _saleCandidateCache = new Map<string, { tick: number; value: boolean }>();
+interface SaleCandidateMemo { readonly tiles: GameState["tiles"]; readonly sites: GameState["constructionSites"]; readonly era: GameState["era"]; readonly byMarket: Map<string, boolean> }
+const saleCandidateMemo = new WeakMap<readonly Building[], SaleCandidateMemo>();
 
 export function marketHasSaleCandidate(state: GameState, market: Building): boolean {
   if (market.kind !== "market" || operationSuspended(market) || market.workers < BUILDING_CONFIG_BY_KIND.market.workersRequired) return false;
-  const cached = _saleCandidateCache.get(market.id);
-  if (cached !== undefined && cached.tick === state.tick) return cached.value;
+  let memo = saleCandidateMemo.get(state.buildings);
+  if (memo === undefined || memo.tiles !== state.tiles || memo.sites !== state.constructionSites || memo.era !== state.era) {
+    memo = { tiles: state.tiles, sites: state.constructionSites, era: state.era, byMarket: new Map() };
+    saleCandidateMemo.set(state.buildings, memo);
+  }
+  const cached = memo.byMarket.get(market.id);
+  if (cached !== undefined) return cached;
   const value = saleCandidates(connectedStorageSources(state, market, state.buildings), state).length > 0;
-  _saleCandidateCache.set(market.id, { tick: state.tick, value });
+  memo.byMarket.set(market.id, value);
   return value;
 }
 

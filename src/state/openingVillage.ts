@@ -6,17 +6,20 @@ import type { House } from "../population/population.types";
 import type { GameState } from "../engine/engine.types";
 import { householdServices } from "../engine/householdServices";
 import { MANOR_HOUSEHOLD } from "../engine/persons.types";
+import { TOWN_SITE } from "../world/archetypeTerrain";
+import { zonesOf } from "../zones/zoneEdits";
 import type { Tile } from "../world/world.types";
 
 export const OPENING_VILLAGE_CENTER = { tx: 45, ty: 41 } as const;
 export const STARTING_HOUSE_ID = "house-46-40-0";
 export const OPENING_VILLAGE_STARVATION_GRACE_TICKS = 6_000;
 
-// FIX-11 (11): the manor house site — inside TOWN_SITE (minTx:30, maxTx:50, minTy:34, maxTy:62), NW of the opening
-// village, not overlapping any opening building or road. Width×Height = 2×2.
+// FIX-11 (11, MH-1): the manor house's wanted site, north-west of the opening village (ten tiles west and four north of
+// the first cottage); it takes the nearest free grass 2×2 to it.
 export const MANOR_HOUSE_TX = 36;
 export const MANOR_HOUSE_TY = 36;
 export const MANOR_HOUSE_ID = "manor-house-36-36-0";
+const MANOR_FROM_FIRST_COTTAGE = { dx: -10, dy: -4 } as const;
 
 const COTTAGE_ORIGINS = [
   { tx: 44, ty: 40 },
@@ -98,18 +101,7 @@ const OPENING_BUILDINGS = [
     stockReserved: {},
     productionProgress: 0,
   },
-  // FIX-11 (11): the manor house — pre-placed at map generation, linked to the lord's household.
-  {
-    id: MANOR_HOUSE_ID,
-    kind: "manor_house",
-    tx: MANOR_HOUSE_TX,
-    ty: MANOR_HOUSE_TY,
-    workers: 0,
-    inventory: {},
-    reserved: {},
-    stockReserved: {},
-    productionProgress: 0,
-  },
+
 ] as const satisfies readonly Building[];
 
 function cottageId(tx: number, ty: number): string {
@@ -176,29 +168,39 @@ export function withOpeningVillageServices<State extends GameState>(state: State
 }
 
 /**
- * FIX-11 (11): places the manor house site on an existing GameState. Used by the v35 save migration to add the
- * manor house to saves that pre-date FIX-11. Pure: returns a new state, does not mutate.
+ * FIX-11 (11, MH-1, MH-2): gives a town its manor house — a new map (every land, every opening) and a save from before
+ * FIX-11 (the v35 migration). The free 2×2 nearest to ten tiles west and four north of the first cottage (the opening
+ * village's north-west, (36,36) on the default opening) inside the town site — free means grass, no building, no road,
+ * no painted zone. A town with no free 2×2 left keeps no manor house (the family then shows as "시골 장원", UI10-D2).
+ * Pure: returns a new state.
  */
 export function placeManorSite<State extends GameState>(state: State): State {
-  if (state.buildings.some(b => b.id === MANOR_HOUSE_ID)) return state;
-  const def = BUILDING_CONFIG_BY_KIND["manor_house"];
-  const manor: Building = {
-    id: MANOR_HOUSE_ID,
-    kind: "manor_house",
-    tx: MANOR_HOUSE_TX,
-    ty: MANOR_HOUSE_TY,
-    workers: 0,
-    inventory: {},
-    reserved: {},
-    stockReserved: {},
-    productionProgress: 0,
+  if (state.buildings.some(building => building.kind === "manor_house")) return state;
+  const def = BUILDING_CONFIG_BY_KIND.manor_house;
+  const zoned = new Set(zonesOf(state).flatMap(zone => zone.membership));
+  const free = (tx: number, ty: number): boolean => {
+    for (let dy = 0; dy < def.height; dy += 1) for (let dx = 0; dx < def.width; dx += 1) {
+      const index = (ty + dy) * state.width + tx + dx;
+      const tile = state.tiles[index];
+      if (tile === undefined || tile.terrain !== "grass" || tile.buildingId !== null || tile.hasRoad || zoned.has(index)) return false;
+    }
+    return true;
   };
+  const cottage = state.buildings.filter(building => building.kind === "house").sort((left, right) => left.ty - right.ty || left.tx - right.tx)[0];
+  const want = cottage === undefined ? { tx: MANOR_HOUSE_TX, ty: MANOR_HOUSE_TY }
+    : { tx: cottage.tx + MANOR_FROM_FIRST_COTTAGE.dx, ty: cottage.ty + MANOR_FROM_FIRST_COTTAGE.dy };
+  const sites: { tx: number; ty: number; distance: number }[] = [];
+  for (let ty = TOWN_SITE.minTy; ty + def.height - 1 <= TOWN_SITE.maxTy; ty += 1) {
+    for (let tx = TOWN_SITE.minTx; tx + def.width - 1 <= TOWN_SITE.maxTx; tx += 1) {
+      if (free(tx, ty)) sites.push({ tx, ty, distance: (tx - want.tx) ** 2 + (ty - want.ty) ** 2 });
+    }
+  }
+  const site = sites.sort((left, right) => left.distance - right.distance || left.ty - right.ty || left.tx - right.tx)[0];
+  if (site === undefined) return state;
+  const id = `manor-house-${site.tx}-${site.ty}-0`;
+  const manor: Building = { id, kind: "manor_house", tx: site.tx, ty: site.ty, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
   const tiles = state.tiles.map(tile =>
-    tile.tx >= MANOR_HOUSE_TX && tile.tx < MANOR_HOUSE_TX + def.width &&
-    tile.ty >= MANOR_HOUSE_TY && tile.ty < MANOR_HOUSE_TY + def.height
-      ? { ...tile, buildingId: MANOR_HOUSE_ID }
-      : tile,
-  );
+    tile.tx >= site.tx && tile.tx < site.tx + def.width && tile.ty >= site.ty && tile.ty < site.ty + def.height ? { ...tile, buildingId: id } : tile);
   return { ...state, buildings: [...state.buildings, manor], tiles };
 }
 
