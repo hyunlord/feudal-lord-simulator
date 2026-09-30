@@ -40,8 +40,9 @@ export interface ProjectReceipt {
   readonly tx: number;
   readonly ty: number;
   readonly siteId: string | null;
-  /** The need that raised it (the bot's planning step), or "opportunity". */
+  /** The need that raised it (the bot's planning step), or "opportunity"; the step's rank in the bot's list (null then). */
   readonly planner: string;
+  readonly rank: number | null;
   /** The five largest reasons by size, and the score. */
   readonly reasons: readonly Reason[];
   readonly score: number;

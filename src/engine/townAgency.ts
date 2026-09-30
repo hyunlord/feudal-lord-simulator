@@ -100,6 +100,7 @@ export interface Proposal {
   readonly actor: ActorKind;
   readonly what: string;
   readonly planner: string;
+  readonly rank: number | null;
   readonly action: TownAction;
   readonly tx: number;
   readonly ty: number;
@@ -218,7 +219,7 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
     seen.add(key);
     const actor = actorOf(state, action);
     const scored = reasonsOf(state, agency, action, actor, rank, stuckWheat, stuckRoads);
-    proposals.push({ actor, what: whatOf(action), planner, action, tx: site.tx, ty: site.ty, reasons: scored.reasons,
+    proposals.push({ actor, what: whatOf(action), planner, rank, action, tx: site.tx, ty: site.ty, reasons: scored.reasons,
       score: scoreOf(scored.reasons), cost: scored.cost, subsidy: scored.subsidy });
   };
   for (const need of needs) propose(need.action, need.planner, need.rank);
@@ -328,7 +329,7 @@ export function advanceTownAgency(state: GameState): GameState {
     }
     const reasons = topReasons(proposal.reasons);
     receipts.push({ id: `receipt-${ordinal}`, tick: next.tick, actor: proposal.actor, what: proposal.what, tx: proposal.tx, ty: proposal.ty, siteId,
-      planner: proposal.planner, reasons, score: proposal.score, cost: proposal.cost, subsidy: paid, loan,
+      planner: proposal.planner, rank: proposal.rank, reasons, score: proposal.score, cost: proposal.cost, subsidy: paid, loan,
       decisionIds: lordDecisionIds(next, proposal.what, proposal.reasons) });
     ordinal += 1;
     started += 1;
@@ -375,4 +376,50 @@ export function whyHere(state: GameState, id: string): ProjectReceipt | null {
     if (receipt.what === building.kind && receipt.tx === building.tx && receipt.ty === building.ty) return receipt;
   }
   return null;
+}
+
+// --- TA-9 the receipts' audit ------------------------------------------------------------------------------------------
+
+/**
+ * TA-9 API: recomputes a receipt's reasons from the state of the tick it was written (the week's step), each by its own
+ * reading of the state — the need from its planning step's rank, the policy's weight, the subsidy in force, the road
+ * distance, the neighbouring houses, the faction's relation, the materials' cost — and lists what does not match.
+ */
+export function auditReceipt(state: GameState, receipt: ProjectReceipt): readonly string[] {
+  const rank = receipt.rank;
+  const agency = state.agency;
+  if (agency === undefined) return ["no agency"];
+  const expected = new Map<string, number>();
+  const kind = receipt.what in BUILDING_CONFIG_BY_KIND ? receipt.what as BuildingKind : null;
+  expected.set("need", rank === null ? 0 : NEED_TOP - NEED_STEP * (rank + 3));
+  const key = kind ?? (receipt.what === "road" ? "road" : receipt.what.startsWith("zone:") ? "zone" : receipt.what);
+  expected.set("policy", (POLICY_WEIGHTS[agency.policy][key] ?? 0) + (rank !== null && rank < -1 ? POLICY_WEIGHTS[agency.policy].fill_plot ?? 0 : 0));
+  const subsidy = kind === null ? 0 : agency.subsidies.filter(entry => entry.kind === kind).reduce((sum, entry) => sum + entry.amount, 0);
+  expected.set("subsidy", Math.min(60, Math.floor(subsidy / 10) * SUBSIDY_POINTS_PER_10D));
+  if (receipt.actor === "merchants") expected.set("dues", Math.round((1000 - agencyDuesPermille(state)) / 100 * DUES_POINTS_PER_100_PERMILLE));
+  if (kind !== null) {
+    const distance = roadDistance(state, receipt.tx, receipt.ty);
+    expected.set("access", distance <= 1 ? 5 : -Math.min(10, distance));
+    const cost = Object.entries(BUILDING_CONFIG_BY_KIND[kind].buildCost).reduce((sum, [resource, amount]) => sum + (amount ?? 0) * (MATERIAL_PENNIES[resource] ?? 0), 0);
+    expected.set("cost", Math.round(-cost / 40));
+  }
+  if (kind === "house") {
+    const near = state.buildings.filter(building => building.kind === "house" && !(building.tx === receipt.tx && building.ty === receipt.ty)
+      && Math.abs(building.tx - receipt.tx) <= 2 && Math.abs(building.ty - receipt.ty) <= 2).length;
+    expected.set("risk", -near * FIRE_NEIGHBOUR_POINTS);
+  }
+  const stuck = stuckStock(state);
+  if (kind === "mill" || kind === "granary") {
+    const wheat = stuck.filter(entry => entry.resource === "wheat").reduce((sum, entry) => sum + entry.amount, 0);
+    expected.set("stuck", Math.min(30, Math.floor(wheat / 100) * STUCK_POINTS_PER_100));
+  }
+  if (receipt.what === "road") expected.set("stuck", Math.min(20, stuck.filter(entry => entry.reason === "no_road").length * 10));
+  expected.set("relation", Math.round((state.factions?.factions.find(faction => faction.id === FACTION_OF_ACTOR[receipt.actor])?.relation ?? 0) / 10));
+  const mismatches: string[] = [];
+  for (const reason of receipt.reasons) {
+    const want = expected.get(reason.name);
+    if (want === undefined) { mismatches.push(`${reason.name}: not recomputed`); continue; }
+    if (want !== reason.value) mismatches.push(`${reason.name}: receipt ${reason.value}, state ${want}`);
+  }
+  return mismatches;
 }

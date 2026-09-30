@@ -12,7 +12,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
 import { AGENCY_WEEK_TICKS } from "../src/content/townAgencyConfig";
-import { initialAgency, lordRequests } from "../src/engine/townAgency";
+import { auditReceipt, initialAgency, lordRequests } from "../src/engine/townAgency";
 import type { EstatePolicy } from "../src/engine/townAgency.types";
 import { treasuryBalance } from "../src/ledger/ledger";
 import { gameReducer } from "../src/state/gameStore";
@@ -42,6 +42,12 @@ function lordTurn(state: GameState): GameState {
   return action === null ? state : gameReducer(state, action);
 }
 
+/** TA-9: a fixed-seed sample (the same run gives the same thirty). */
+function sampleOf<T>(items: readonly T[], seed: number, count: number): readonly T[] {
+  const order = items.map((item, index) => ({ item, key: (Math.imul(index + 1, 2654435761) ^ Math.imul(seed, 40503)) >>> 0 }));
+  return order.sort((left, right) => left.key - right.key).slice(0, count).map(entry => entry.item);
+}
+
 const levelAtLeast = (state: GameState, level: number) => state.houses.filter(house => house.level >= level && house.residents > 0).length;
 
 export function lordModeRun(options: LordModeOptions) {
@@ -52,8 +58,20 @@ export function lordModeRun(options: LordModeOptions) {
   if (options.duesPermille !== undefined) state = gameReducer(state, { type: "set_market_dues", permille: options.duesPermille });
   const years: { year: number; population: number; l2: number; l4: number; houses: number; treasury: number; funds: Record<string, number> }[] = [];
   let firstYear = stateCalendar(state).year;
+  // TA-9: every receipt audited against the state that entered its week's tick; thirty kept for the report (by hash).
+  const audits: { receipt: string; tick: number; actor: string; what: string; planner: string; reasons: string; mismatches: readonly string[] }[] = [];
+  let audited = 0, mismatched = 0;
   while (stateCalendar(state).year <= options.lastYear && state.settlement?.outcome !== "abandoned") {
-    state = advanceTick(lordTurn(state));
+    const before = lordTurn(state);
+    state = advanceTick(before);
+    const known = before.agency?.nextReceipt ?? 1;
+    for (const receipt of (state.agency?.receipts ?? []).filter(entry => Number(entry.id.slice(8)) >= known)) {
+      const mismatches = auditReceipt(before, receipt);
+      audited += 1;
+      if (mismatches.length > 0) mismatched += 1;
+      audits.push({ receipt: receipt.id, tick: receipt.tick, actor: receipt.actor, what: receipt.what, planner: receipt.planner,
+        reasons: receipt.reasons.map(reason => `${reason.name}${reason.value >= 0 ? "+" : ""}${reason.value}`).join(" "), mismatches });
+    }
     if (state.tick % YEAR === 0) {
       years.push({ year: stateCalendar(state).year - 1, population: state.population, l2: levelAtLeast(state, 2), l4: levelAtLeast(state, 4),
         houses: state.houses.length, treasury: treasuryBalance(state),
@@ -71,6 +89,7 @@ export function lordModeRun(options: LordModeOptions) {
       houses: state.houses.length, treasury: treasuryBalance(state), kinds,
       housePlots: state.buildings.filter(building => building.kind === "house").map(building => [building.tx, building.ty]).sort((a, b) => a[0]! - b[0]! || a[1]! - b[1]!) },
     receipts: { count: receipts.length, byPlanner, withDecisions: receipts.filter(receipt => receipt.decisionIds.length > 0).length },
+    audit: { audited, mismatched, sample: sampleOf(audits, options.seed, 30) },
     years, elapsedSeconds: Math.round((performance.now() - started) / 100) / 10,
   };
 }
