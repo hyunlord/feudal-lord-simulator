@@ -270,8 +270,8 @@ for (const [file, kind, wanted] of STORES) {
     await inspect(page, store, SEL.storeInspector);
     // The whole frame (the inspector's body scrolls inside its panel, so an element shot cuts it), its stock rows
     // scrolled to malt's.
-    await page.evaluate(query => { const rows = [...document.querySelectorAll(`${query} tr, ${query} li`)].filter(node => node.textContent?.includes("엿기름"));
-      rows[rows.length - 1]?.scrollIntoView({ block: "center" }); }, SEL.storeInspector);
+    await page.evaluate(query => { const rows = [...document.querySelectorAll(`${query} tr`)].filter(node => node.textContent?.includes("엿기름"));
+      rows[0]?.scrollIntoView({ block: "center" }); }, SEL.storeInspector);
     await page.waitForTimeout(300);
     await shoot(page, `${file}.jpg`);
     result[file] = { state: source, store: store.id, malt: store.inventory.malt ?? 0, lines: await texts(page, `${SEL.storeInspector} li, ${SEL.storeInspector} p`) };
