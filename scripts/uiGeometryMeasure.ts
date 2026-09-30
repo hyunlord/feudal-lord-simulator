@@ -47,7 +47,10 @@ export type Collected = {
     readonly path: string; readonly rect: Box; readonly frame: Sides; readonly padding: Sides;
     /** Its data-frame kind (null: none). */
     readonly kind: string | null;
+    /** scrollWidth − clientWidth, scrollHeight − clientHeight (the frame layer and art-space wrapper included). */
     readonly overflow: { readonly x: number; readonly y: number }; readonly scrollable: { readonly x: boolean; readonly y: boolean };
+    /** Its computed border widths (the padding box's edge). */
+    readonly border?: Sides;
   };
   readonly layer?: { readonly rect: Box; readonly frame: Sides } | null;
   readonly slot?: { readonly rect: Box; readonly padding: Sides } | null;
@@ -76,6 +79,8 @@ export type MeasureSpec = {
 export type CheckName = "outside" | "overflow" | "border" | "portrait" | "overlap" | "empty" | "controls";
 export const CHECKS: readonly CheckName[] = ["outside", "overflow", "border", "portrait", "overlap", "empty", "controls"];
 export type Failure = { readonly check: CheckName; readonly what: string; readonly path: string; readonly px: number; readonly rect: Box | null; readonly text?: string };
+/** A failure's key across runs (the baseline): its check and element path, not its px. */
+export const failureKey = (failure: Pick<Failure, "check" | "path">): string => `${failure.check}|${failure.path}`;
 export type Evaluation = {
   readonly found: boolean; readonly inner: Box | null; readonly safe: Box | null;
   readonly failures: readonly Failure[]; readonly counts: Readonly<Record<CheckName, number>>;
@@ -173,8 +178,16 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
     px(style.getPropertyValue(`border-${side.toLowerCase()}-width`)) >= 1 && !["none", "hidden"].includes(style.getPropertyValue(`border-${side.toLowerCase()}-style`))
     && !/rgba\([^)]*,\s*0\)|transparent/.test(style.getPropertyValue(`border-${side.toLowerCase()}-color`)));
   const scrollers: { path: string; axis: "x" | "y"; over: number; allowed: boolean }[] = [];
+  // The frame's own parts on the frame tokens: a data-frame root's direct child laid over its whole border box (a frame
+  // layer at -safe, a painting's art-space wrapper). Not content itself (the wrapper's children are) and not overflow.
+  const rootBox = root.getBoundingClientRect();
+  const framePart = (element: Element) => {
+    if (element.parentElement !== root || !root.hasAttribute("data-frame") || getComputedStyle(element).position !== "absolute") return false;
+    const box = element.getBoundingClientRect();
+    return Math.abs(box.left - rootBox.left) <= 1 && Math.abs(box.top - rootBox.top) <= 1 && Math.abs(box.right - rootBox.right) <= 1 && Math.abs(box.bottom - rootBox.bottom) <= 1;
+  };
   for (const element of root.querySelectorAll("*")) {
-    if (excluded(element) || !shown(element)) continue;
+    if (excluded(element) || framePart(element) || !shown(element)) continue;
     const style = getComputedStyle(element); const tag = element.tagName.toLowerCase();
     const full = boxOf(element.getBoundingClientRect());
     const region = element.parentElement === null ? null : regionFor(element.parentElement);
@@ -221,8 +234,9 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
 
   let portrait: Collected["portrait"] = null;
   if (spec.portraitRing !== undefined && spec.painting !== undefined) {
-    const ringSpec = spec.portraitRing; const scaleX = (rootRect.r - rootRect.l) / spec.painting.art.w; const scaleY = (rootRect.b - rootRect.t) / spec.painting.art.h;
-    const ring = { cx: rootRect.l + ringSpec.cx * scaleX, cy: rootRect.t + ringSpec.cy * scaleY, r: ringSpec.r * (scaleX + scaleY) / 2 };
+    // One scale, the width's (a painting 9-slice only grows downward): the ring from the top-left.
+    const ringSpec = spec.portraitRing; const scale = (rootRect.r - rootRect.l) / spec.painting.art.w;
+    const ring = { cx: rootRect.l + ringSpec.cx * scale, cy: rootRect.t + ringSpec.cy * scale, r: ringSpec.r * scale };
     const faceElement = [...root.querySelectorAll(ringSpec.face)].find(shown);
     const faceBox = faceElement === undefined ? null : boxOf(faceElement.getBoundingClientRect());
     const face = faceBox === null ? null : { cx: (faceBox.l + faceBox.r) / 2, cy: (faceBox.t + faceBox.b) / 2, r: Math.min(faceBox.r - faceBox.l, faceBox.b - faceBox.t) / 2, path: path(faceElement!) };
@@ -263,7 +277,7 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
   return {
     found: true, viewport, expectFound,
     root: { path: path(root), rect: rootRect, frame: frameInset(root), padding: sides(rootStyle, "padding"), kind: root.getAttribute("data-frame"),
-      overflow: { x: root.scrollWidth - root.clientWidth, y: root.scrollHeight - root.clientHeight },
+      overflow: { x: root.scrollWidth - root.clientWidth, y: root.scrollHeight - root.clientHeight }, border: sides(rootStyle, "border"),
       scrollable: { x: scrolls(rootStyle.overflowX), y: scrolls(rootStyle.overflowY) } },
     layer: layerRect, slot: slotRect, items, scrollers, portrait, siblings, unregistered,
   };
@@ -287,11 +301,13 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
   const tokens = root.kind !== null && root.kind !== undefined;
   const rootInner = inset(rootSafe, tokens ? { t: Math.max(root.padding.t, spec.gap), r: Math.max(root.padding.r, spec.gap), b: Math.max(root.padding.b, spec.gap), l: Math.max(root.padding.l, spec.gap) } : even(spec.gap));
   let safe = rootSafe; let inner = rootInner;
-  if (!tokens && spec.frame === "layer" && collected.slot) { safe = meet(rootSafe, collected.slot.rect); inner = meet(rootInner, inset(collected.slot.rect, even(spec.gap))); }
+  // A content slot is the art's content rect with the gap already inside it: its box is the inner box.
+  if (!tokens && spec.frame === "layer" && collected.slot) { safe = meet(rootSafe, collected.slot.rect); inner = meet(rootSafe, collected.slot.rect); }
   else if (!tokens && spec.frame === "layer" && collected.layer) { safe = meet(rootSafe, inset(collected.layer.rect, collected.layer.frame)); inner = meet(rootInner, inset(safe, even(spec.gap))); }
   else if (!tokens && spec.frame === "painting" && spec.painting !== undefined) {
-    const scaleX = (root.rect.r - root.rect.l) / spec.painting.art.w; const scaleY = (root.rect.b - root.rect.t) / spec.painting.art.h; const art = spec.painting.safe;
-    const painted = { l: root.rect.l + art.x * scaleX, t: root.rect.t + art.y * scaleY, r: root.rect.l + (art.x + art.w) * scaleX, b: root.rect.t + (art.y + art.h) * scaleY };
+    // One scale, the width's; the bottom edge keeps its distance from the bottom (a taller card keeps its bottom rule).
+    const scale = (root.rect.r - root.rect.l) / spec.painting.art.w; const art = spec.painting.safe; const size = spec.painting.art;
+    const painted = { l: root.rect.l + art.x * scale, t: root.rect.t + art.y * scale, r: root.rect.r - (size.w - art.x - art.w) * scale, b: root.rect.b - (size.h - art.y - art.h) * scale };
     safe = meet(rootSafe, painted); inner = meet(rootInner, inset(painted, even(spec.gap)));
   }
   // On an axis the surface scrolls, its content scrolls under the gap: the limit is the padding box there.
@@ -312,9 +328,14 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
     const over = beyond(item.rect, allowed);
     if (over > TOLERANCE) { failed.outside.add(index); fail("outside", `${item.kind} beyond the inner box`, item.path, over, item.rect, item.text); }
   });
-  // b. overflow: the root where it may not scroll, parts that scroll where none may, text cut without an ellipsis.
-  if (!scrollX && root.overflow.x > 1) fail("overflow", root.scrollable.x ? "the surface scrolls sideways" : "content wider than the surface", root.path, root.overflow.x, root.rect);
-  if (!scrollY && root.overflow.y > 1) fail("overflow", root.scrollable.y ? "the surface scrolls" : "content taller than the surface", root.path, root.overflow.y, root.rect);
+  // b. overflow: the root where it may not scroll, parts that scroll where none may, text cut without an ellipsis. The
+  // root's scroll overflow counts only as far as content reaches past its padding box: a frame layer or an art-space
+  // wrapper covers the border box by design (the frame tokens) and is no overflow.
+  const padEdge = { r: root.rect.r - (root.border?.r ?? 0), b: root.rect.b - (root.border?.b ?? 0) };
+  const reach = items.reduce((far, item) => item.rect === null || item.slot ? far : { r: Math.max(far.r, item.rect.r), b: Math.max(far.b, item.rect.b) }, { r: -Infinity, b: -Infinity });
+  const overflowX = Math.min(root.overflow.x, Math.max(0, reach.r - padEdge.r)); const overflowY = Math.min(root.overflow.y, Math.max(0, reach.b - padEdge.b));
+  if (!scrollX && overflowX > 1) fail("overflow", root.scrollable.x ? "the surface scrolls sideways" : "content wider than the surface", root.path, overflowX, root.rect);
+  if (!scrollY && overflowY > 1) fail("overflow", root.scrollable.y ? "the surface scrolls" : "content taller than the surface", root.path, overflowY, root.rect);
   for (const scroller of collected.scrollers ?? []) if (!scroller.allowed) fail("overflow", `a part scrolls (${scroller.axis})`, scroller.path, scroller.over, null);
   for (const item of items) {
     if (item.kind !== "text" || item.clipper === null || item.clipper.scroll || item.clipper.ellipsis) continue;

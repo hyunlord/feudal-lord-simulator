@@ -20,10 +20,10 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
-import { geometryInputHash, geometryInputs, UI_GEOMETRY_INPUTS, UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
+import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY, UI_INPUT_ROOTS } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
-import { CHECKS, collectSurface, evaluateSurface, markFailures } from './uiGeometryMeasure.ts';
+import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures } from './uiGeometryMeasure.ts';
 import { extremeNumbers, mapTile, sceneTile } from './uiGeometryScene.ts';
 
 const [out] = process.argv.slice(2);
@@ -76,7 +76,7 @@ async function loadScene(scene, condition) {
     const base = scene.kind === 'state' ? loadState(scene.set, scene.name) : null;
     const state = base !== null && condition.numbers === 'extreme' ? extremeNumbers(base) : base;
     const opened = await openScene(browser, { state, tile: state === null ? [45, 41] : scene.focus !== undefined ? (({ tx, ty }) => [tx, ty])(mapTile(state, scene.focus)) : sceneTile(state, scene.tile), baseUrl: url, width: viewport.width, height: viewport.height,
-      zoom: scene.zoom ?? 1.1, run: false, hasTouch: viewport.touch,
+      zoom: scene.zoom ?? 1.1, run: false, hasTouch: viewport.touch, loadTimeout: 120_000,
       initScript: scene.kind === 'state' ? `${NAME_SHIM}${TUTORIAL_OFF}` : NAME_SHIM, query: `${scene.query ?? ''}${long ? '&pseudo-long=1' : ''}` });
     opened.page.on('pageerror', error => pageErrors.push(String(error).slice(0, 200)));
     // openScene starts the clock by the 1× seal's name, which the pseudo-long copy lengthens: press the second seal.
@@ -90,7 +90,7 @@ async function loadScene(scene, condition) {
   await page.routeWebSocket('**', socket => socket.close());
   const target = new URL(scene.kind === 'route' ? scene.path : '', url);
   if (long) target.searchParams.set('pseudo-long', '1');
-  await page.goto(target.href);
+  await page.goto(target.href, { timeout: 120_000 });
   await page.locator(scene.kind === 'route' ? '[data-testid="ui-kit-gallery"]' : '.welcome-parchment').first().waitFor({ timeout: 60_000 });
   return { context, page, state: { buildings: [], constructionSites: [], walkers: [] } };
 }
@@ -123,6 +123,11 @@ async function runStep(page, state, step) {
       }
       await page.locator(shown(step.story)).first().waitFor({ timeout: 30_000 });
     }
+  } else if ('repeat' in step) {
+    for (let turn = 0; turn < (step.max ?? 10) && await page.locator(shown(step.until)).count() === 0; turn += 1) {
+      await page.locator(shown(step.repeat)).first().click({ timeout: 10_000 }); await pause(400);
+    }
+    await page.locator(shown(step.until)).first().waitFor({ timeout: 5_000 });
   } else if ('dismiss' in step) {
     for (const selector of step.dismiss) if (await page.locator(shown(selector)).count() > 0) { await page.locator(shown(selector)).first().click({ timeout: 10_000 }).catch(() => undefined); await pause(400); }
   } else if ('map' in step) {
@@ -175,7 +180,7 @@ async function measure(row, condition, page) {
   const kind = collected.root?.kind ?? null;
   const record = evaluation.found
     ? { status: 'measured', counts: evaluation.counts, failures: evaluation.failures.slice(0, 25).map(failure => ({ ...failure, rect: roundBox(failure.rect) })),
-      total: evaluation.failures.length, empty: evaluation.empty, ...(evaluation.expectMissed ? { expectMissed: row.expect } : {}),
+      total: evaluation.failures.length, keys: [...new Set(evaluation.failures.map(failureKey))].sort(), empty: evaluation.empty, ...(evaluation.expectMissed ? { expectMissed: row.expect } : {}),
       inner: roundBox(evaluation.inner), root: roundBox(collected.root.rect), kind }
     : { status: 'not-found', error: `${row.root} not on screen after the steps${evaluation.expectMissed ? ` (and ${row.expect} missing)` : ''}` };
   results[row.id].conditions[condition.id] = record;
@@ -257,7 +262,8 @@ await browser.close();
 // --- Totals, the report, the committed summary.
 const git = args => { try { return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { return ''; } };
 const inputs = geometryInputs('HEAD');
-const dirty = process.env.DIRTY === '1' || git(['status', '--porcelain', '--untracked-files=no', '--', 'src', ...Object.values(UI_GEOMETRY_INPUTS).filter(path => path.startsWith('scripts/'))]) !== '';
+// public/assets is left out of the status check: its LFS files can show as changed where git-lfs is missing.
+const dirty = process.env.DIRTY === '1' || git(['status', '--porcelain', '--untracked-files=no', '--', ...UI_INPUT_ROOTS.map(item => item.root).filter(root => root !== 'public/assets')]) !== '';
 const totals = { rows: Object.keys(results).length, conditions: 0, measured: 0, failures: 0, unopened: 0, unreachable: [], warnings: 0, byCheck: Object.fromEntries(CHECKS.map(check => [check, 0])) };
 const bySurface = {};
 const kindNotes = [];
@@ -282,13 +288,20 @@ for (const [id, row] of Object.entries(results)) {
   bySurface[id] = surface;
 }
 const run = process.env.RUN ?? `local-${new Date(started).toISOString().replace(/[:.]/g, '-')}`;
-const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
+// Every failure's key (the gate's baseline compares them) and the numbers against the committed baseline and exceptions.
+const failureKeys = Object.entries(results).flatMap(([id, row]) => Object.entries(row.conditions)
+  .flatMap(([condition, record]) => (record.keys ?? []).map(key => `${id}|${condition}|${key}`))).sort();
+const readDoc = path => { try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return null; } };
+const against = compareBaseline({ keys: failureKeys, baseline: readDoc(UI_GEOMETRY_BASELINE)?.entries ?? [], exceptions: readDoc(UI_GEOMETRY_EXCEPTIONS)?.exceptions ?? [] });
+const baselineLine = `Against the committed baseline: ${against.failures} failure key(s) counted (${against.excepted} more under ${against.exceptions} exception(s)); baseline ${against.baseline}, new ${against.added.length}, fixed ${against.fixed.length}.`;
+const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs: inputs.length, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
   axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
   kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results };
 writeFileSync(join(out, 'geometry.json'), `${JSON.stringify(report)}\n`);
 
 const md = [`# UI-AUDIT-1 geometry audit — ${run}`, '',
   `Commit ${report.commit.slice(0, 8)}${dirty ? ' (dirty tree)' : ''}, ${totals.rows} registry rows, ${totals.conditions} row × condition cells (${viewports.length} viewports × ${copies.length} copy × ${numberModes.length} numbers where they apply), ${Math.round(report.durationS / 60)} min.`,
+  baselineLine,
   `Measured ${totals.measured}, not opened ${totals.unopened}, not reachable by design ${totals.unreachable.length}. Failures ${totals.failures}: ${CHECKS.map(check => `${check} ${totals.byCheck[check]}`).join(', ')}. Empty-space warnings ${totals.warnings}.`, '',
   `| surface | frame (data-frame) | measured | failing conditions | ${CHECKS.join(' | ')} | empty (min) | not opened | first failure |`, `|---|---|---|---|${CHECKS.map(() => '---').join('|')}|---|---|---|`];
 for (const [id, row] of Object.entries(results)) {
@@ -306,11 +319,14 @@ writeFileSync(join(out, 'geometry.md'), `${md.join('\n')}\n`);
 
 if (summaryPath !== 'none') {
   mkdirSync(dirname(summaryPath), { recursive: true });
-  const summary = { schema: 1, run, commit: report.commit, dirty, inputs, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
+  const summary = { schema: 1, run, commit: report.commit, dirty, inputs: inputs.length, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
     axes: report.axes, rows: totals.rows, conditions: totals.conditions, measured: totals.measured, failures: totals.failures, unopened: totals.unopened,
     unreachable: totals.unreachable, warnings: totals.warnings, byCheck: totals.byCheck, unregisteredFramed: report.unregisteredFramed.length,
-    bySurface: Object.fromEntries(Object.entries(bySurface).map(([id, surface]) => [id, { failures: surface.failures, unopened: surface.unopened, byCheck: surface.byCheck }])) };
+    baseline: { entries: against.baseline, counted: against.failures, excepted: against.excepted, exceptions: against.exceptions, added: against.added.length, fixed: against.fixed.length },
+    bySurface: Object.fromEntries(Object.entries(bySurface).map(([id, surface]) => [id, { failures: surface.failures, unopened: surface.unopened, byCheck: surface.byCheck }])),
+    failureKeys };
   writeFileSync(summaryPath, `${JSON.stringify(summary, null, 1)}\n`);
 }
 console.log(JSON.stringify({ run, measured: totals.measured, failures: totals.failures, unopened: totals.unopened, byCheck: totals.byCheck, shots: shots.count }));
+console.log(baselineLine);
 process.exit(totals.failures === 0 && totals.unopened === 0 ? 0 : 1);

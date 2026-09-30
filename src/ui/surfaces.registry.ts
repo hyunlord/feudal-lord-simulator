@@ -46,6 +46,8 @@ export type OpenStep =
   /** Close whatever of these is open (a chapter page, a card that opened over the scene). */
   | { readonly dismiss: readonly string[] }
   | { readonly map: MapTarget; readonly action: "click" | "hover" | "tap" }
+  /** Click `repeat` (the first visible match) until `until` shows, at most `max` times (a book's next page). */
+  | { readonly repeat: string; readonly until: string; readonly max?: number }
   /** Hover buildings of these kinds one by one until `until` shows. */
   | { readonly hoverEach: readonly string[]; readonly until: string; readonly max?: number };
 
@@ -111,6 +113,8 @@ const PETITION = {
   root: ".story-modal.petition-card", frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", frameSlots: [".petition-roundel"],
   siblingsNoOverlap: [".petition-option", ".story-modal-later"],
 } as const;
+const BOOK = { root: ".chronicle-page.legacy-book", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-book-body", scrollParts: [".legacy-book-page"],
+  scene: { kind: "state", set: "ui10", name: "chapter5-end", tile: "house", zoom: 1.1, query: "&story-delay=5000" } } as const;
 const chapterScene = (set: StateSet, name: string) => ({ kind: "state", set, name, tile: "house", zoom: 1.1, query: "&story-delay=5000" }) as const;
 const CHAPTER_PAGE = {
   root: ".chronicle-page:not(.legacy-ending):not(.legacy-book)", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",
@@ -262,9 +266,12 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.history.records", root: ".chronicle-screen", frame: "flat", scene: TOWN, open: [...CHRONICLE], scrollParts: [".chronicle-list", ".chronicle-detail"],
     data: "the stone town's chronicle: timeline, filters, record list, detail" },
   { id: "modal.history.record-card", extends: "modal.history.records", root: ".chronicle-card", frame: "layer", frameLayer: ".chronicle-card-frame", scene: TOWN, open: [],
+    frameSlots: [".chronicle-card-art--portrait"],
     data: "the first record card" },
   { id: "modal.history.snapshot-map", extends: "modal.history.records", root: ".chronicle-map-box", frame: "layer", frameLayer: ".chronicle-map-frame", contentSlot: ".chronicle-map-inner",
     scene: TOWN, open: [{ click: ".chronicle-card:not([data-kind='decision']) .chronicle-card-body" }, { pause: 800 }], data: "a record's then-map" },
+  { id: "modal.history.snapshot-figure", extends: "modal.history.snapshot-map", root: ".chronicle-map", frame: "flat", scene: TOWN, open: [],
+    siblingsNoOverlap: [".chronicle-map-box", ".chronicle-map > figcaption"], data: "the then-map with its caption (the caption measured beside the framed box)" },
   { id: "modal.select-list", extends: "modal.history.records", root: ".ui-select-list", frame: "css", scene: TOWN, scroll: "y",
     open: [{ click: ".chronicle-select .ui-select-trigger" }, { pause: 400 }], data: "the severity filter's open list" },
   { id: "modal.history.decision", root: ".chronicle-decision", frame: "layer", frameLayer: ".chronicle-decision-frame",
@@ -286,16 +293,24 @@ export const SURFACES: readonly SurfaceRow[] = [
     open: [{ pause: 1000 }, DISMISS, ...CHRONICLE, { click: ".chronicle-tabs:not(.chronicle-person-tabs) .chronicle-tab:nth-child(2)" }, { pause: 900 }],
     siblingsNoOverlap: [".chronicle-factions-row"], data: "chapter 4's factions: influence, tug of war, relations" },
   { id: "modal.history.faction-page", extends: "modal.history.factions", root: ".chronicle-faction", frame: "painting", painting: FACTION_PAGE_ART,
-    frameSlots: [".chronicle-faction-band"],
+    frameSlots: [".chronicle-faction-band"], scrollParts: [".chronicle-faction-box > ul", ".chronicle-faction-pressure-body"],
     scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET },
     open: [{ click: [".chronicle-factions-row:not([data-memory='0'])", ".chronicle-factions-row"] }, { pause: 1200 }], data: "a faction that remembers something" },
   { id: "modal.legacy-ending", root: ".chronicle-page.legacy-ending", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-ending-body",
+    scrollParts: [".legacy-ending-scroll"],
     scene: chapterScene("ui10", "chapter5-end"),
     open: [{ wait: ".chronicle-page", timeout: 90_000 }, { pause: 800 }, { click: ".chronicle-page .chronicle-next" }, { wait: ".legacy-ending" }, { pause: 800 }],
     data: "the campaign's legacy verdict and ending" },
-  { id: "modal.chronicle-book", extends: "modal.legacy-ending", root: ".chronicle-page.legacy-book", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-book-body",
-    scene: chapterScene("ui10", "chapter5-end"), open: [{ click: ".legacy-ending .legacy-open-book" }, { wait: ".legacy-book" }, { pause: 800 }],
-    data: "the chronicle book's first page" },
+  { id: "modal.chronicle-book", extends: "modal.legacy-ending", ...BOOK, open: [{ click: ".legacy-ending .legacy-open-book" }, { wait: ".legacy-book" }, { pause: 800 }],
+    data: "the chronicle book's title page and contents" },
+  { id: "modal.chronicle-book.chapter", extends: "modal.chronicle-book", ...BOOK, open: [{ click: ".legacy-book-contents-entry" }, { wait: ".legacy-book-page[data-kind='chapter']" }, { pause: 600 }],
+    data: "the book's first chapter page" },
+  { id: "modal.chronicle-book.family", extends: "modal.chronicle-book.chapter", ...BOOK,
+    open: [{ repeat: ".legacy-book-next", until: ".legacy-book-page[data-kind='family']", max: 12 }, { pause: 600 }], data: "the book's family page" },
+  { id: "modal.chronicle-book.factions", extends: "modal.chronicle-book.family", ...BOOK,
+    open: [{ repeat: ".legacy-book-next", until: ".legacy-book-page[data-kind='factions']", max: 12 }, { pause: 600 }], data: "the book's factions page" },
+  { id: "modal.chronicle-book.legacy", extends: "modal.chronicle-book.factions", ...BOOK,
+    open: [{ repeat: ".legacy-book-next", until: ".legacy-book-page[data-kind='legacy']", max: 12 }, { pause: 600 }], data: "the book's legacy page" },
 
   // --- Screens outside the town.
   { id: "screen.welcome", root: ".welcome-parchment", frame: "css", scene: { kind: "title" }, numbers: false, open: [{ pause: 800 }],
