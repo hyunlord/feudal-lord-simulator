@@ -16,6 +16,7 @@ import { WAVE17_WORLD_IMAGES } from "../src/render/wave17WorldManifest.generated
 import { WAVE21_IMAGES } from "../src/ui/wave21ArtManifest.generated";
 import { WAVE31_IMAGES } from "../src/ui/wave31ArtManifest.generated";
 import { WAVE33_IMAGES } from "../src/ui/wave33ArtManifest.generated";
+import { ENDING_IMAGES } from "../src/ui/endingArtManifest.generated";
 import { WAVE12_GUILDHALL_IMAGES } from "../src/render/wave12GuildhallManifest.generated";
 import { WAVE17_WALKER_IMAGES } from "../src/render/wave17WalkerManifest.generated";
 
@@ -34,7 +35,9 @@ const CH5_INTRO = Object.values(WAVE31_IMAGES).filter(image => image.chapter ===
 // UI-10: chapter 5's Wave 21 art (ch5_*) and its Wave 33 interlude events (1384–1400).
 const WAVE21_CH5 = (Object.keys(WAVE21_IMAGES) as (keyof typeof WAVE21_IMAGES)[]).filter(k => k.startsWith("ch5_")).map(k => WAVE21_IMAGES[k].url);
 const INTERLUDE = Object.values(WAVE33_IMAGES).map(image => image.url);
-const CHAPTER_5 = [...WAVE21_CH5, ...INTERLUDE];
+// INSTALL-33: the six ending paintings (the ending screen) are chapter 5's too.
+const ENDINGS = Object.values(ENDING_IMAGES).map(image => image.url);
+const CHAPTER_5 = [...WAVE21_CH5, ...INTERLUDE, ...ENDINGS];
 const EVERY_CHAPTER = [...historicalFacilityManifest.map(meta => meta.url), WAVE9_IMAGES.event_burnt_l2.url, WAVE9_IMAGES.event_crowd_manor_gate.url];
 const URLS = [...EVERY_CHAPTER, ...WAR, ...PLAGUE, ...WAVE21, ...GUILDHALL, ...CHAPTER_5];
 
@@ -48,7 +51,7 @@ test("each image's chapter: war props 2, plague-shut houses 3, guildhall 4, chap
   for (const url of WAR) assert.equal(chapterOfArt(url), 2, url);
   for (const url of PLAGUE) assert.equal(chapterOfArt(url), 3, url);
   for (const url of GUILDHALL) assert.equal(chapterOfArt(url), 4, url); // UI-9: chapter 4 guildhall prop
-  assert.deepEqual([WAVE21_CH5.length, INTERLUDE.length], [20, 5]); // UI-10
+  assert.deepEqual([WAVE21_CH5.length, INTERLUDE.length, ENDINGS.length], [20, 5, 6]); // UI-10, INSTALL-33
   for (const url of CHAPTER_5) assert.equal(chapterOfArt(url), 5, url); // UI-10: ch5_* and the interlude
   for (const url of EVERY_CHAPTER) assert.equal(chapterOfArt(url), 1, url);
   assert.equal(chapterOfArt(`/${WAR[0]}`), 2, "a base-prefixed url is the same image");

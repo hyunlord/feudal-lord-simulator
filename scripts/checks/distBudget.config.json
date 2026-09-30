@@ -24,6 +24,7 @@
     { "category": "illustrations", "label": "season ledger scenes (Wave 19)", "patterns": ["assets/wave19/scenes_*/**"] },
     { "category": "illustrations", "label": "chapter 3–5 art: decisions, events, chronicle, chapter and campaign end (Wave 21)", "patterns": ["assets/wave21/**"] },
     { "category": "illustrations", "label": "chapter 5 interlude events, 1384–1400 (Wave 33)", "patterns": ["assets/wave33/**"] },
+    { "category": "illustrations", "label": "the campaign's six ending paintings (INSTALL-33)", "patterns": ["assets/endings/**"] },
     { "category": "ui", "label": "fonts (Noto Sans KR, Noto Serif KR; woff2 only)", "patterns": ["assets/*.{woff,woff2,ttf,otf}"] },
     { "category": "ui", "label": "P0 kit: frames, textures, icons, cursors, buttons", "patterns": ["assets/ui/**", "assets/ui-p0/**"] },
     { "category": "ui", "label": "Wave 8 frames, icons, ornaments, time strip", "patterns": ["assets/wave8/{frames,icons,ornaments,time}/**"] },
