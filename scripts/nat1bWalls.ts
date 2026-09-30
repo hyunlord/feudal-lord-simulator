@@ -6,8 +6,8 @@ import { decodeSave } from "../src/save/saveCodec";
 
 for (const path of process.argv.slice(2)) {
   const raw = readFileSync(path); const bytes = new Uint8Array(path.endsWith(".gz") ? gunzipSync(raw) : raw);
-  // why: a probe over saved JSON of any version; the fields it prints are read loosely.
-  const state = (decodeSave(bytes).envelope as unknown as { state: Record<string, any> }).state; // eslint-disable-line @typescript-eslint/no-explicit-any
+  // A probe over saved JSON of any version: the fields it prints are read loosely.
+  const state = (decodeSave(bytes).envelope as unknown as { state: Record<string, any> }).state;
   const wall = state.palisade;
   if (wall === null || wall === undefined) { console.log(path, "no wall"); continue; }
   const sites = new Map<string, any>((state.constructionSites ?? []).map((site: any) => [site.id, site]));
