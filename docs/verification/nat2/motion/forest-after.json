@@ -1,0 +1,26 @@
+{
+ "label": "after",
+ "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+ "camera": {
+  "zoom": 2,
+  "panX": -1504,
+  "panY": -1306
+ },
+ "roi": {
+  "x": 650,
+  "y": 390,
+  "width": 300,
+  "height": 320
+ },
+ "frames": "20 × 0.1 s",
+ "5x": {
+  "first19": 8.04,
+  "neighbourMean": 1.4,
+  "neighbourMax": 1.91
+ },
+ "paused": {
+  "first19": 4.6,
+  "neighbourMean": 2.49,
+  "neighbourMax": 2.72
+ }
+}

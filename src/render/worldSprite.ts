@@ -17,6 +17,8 @@ export type WorldSpriteOptions = {
   readonly viewport?: { readonly width: number; readonly height: number };
   /** Same-size replacement image drawn with this sprite's registration (visual variants). */
   readonly image?: CanvasImageSource | null;
+  /** NAT-2: a lean — the sprite's top edge moved this far sideways (px at zoom 1), its anchor row (a trunk's foot) kept. */
+  readonly shearX?: number;
 };
 
 export type WorldSpriteContext = {
@@ -35,6 +37,8 @@ type DeviceRect = {
   readonly dy: number;
   readonly width: number;
   readonly height: number;
+  /** The anchor's device row (a shear keeps it in place). */
+  readonly ay: number;
 };
 export type RampTintPixel = {
   readonly r: number;
@@ -108,10 +112,14 @@ function drawAtWorldAnchor(
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.globalAlpha *= options.alpha ?? 1;
     context.imageSmoothingEnabled = false;
+    // NAT-2: a shear about the anchor row: x += k·(y − anchorY), the top row moving shearX (device px) and the foot none.
+    const lean = options.shearX ?? 0;
+    const k = lean === 0 || rect.ay <= rect.dy ? 0 : -lean * (options.camera ?? DEFAULT_CAMERA).zoom * (options.dpr ?? 1) / (rect.ay - rect.dy);
     if (options.flipX === true) {
-      context.setTransform(-1, 0, 0, 1, rect.dx + rect.width, 0);
+      context.setTransform(-1, 0, k, 1, rect.dx + rect.width - k * rect.ay, 0);
       drawWhole(context, mip, image, 0, rect.dy, rect.width, rect.height);
     } else {
+      if (k !== 0) context.setTransform(1, 0, k, 1, -k * rect.ay, 0);
       drawWhole(context, mip, image, rect.dx, rect.dy, rect.width, rect.height);
     }
   } finally {
@@ -235,6 +243,7 @@ function destinationRect(
     dy: Math.round((canvasAnchor.y - meta.anchor.y * zoomScale) * dpr),
     width: Math.round(meta.width * zoomScale * dpr),
     height: Math.round(meta.height * zoomScale * dpr),
+    ay: canvasAnchor.y * dpr,
   };
 }
 

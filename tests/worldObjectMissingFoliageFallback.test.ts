@@ -100,7 +100,7 @@ const directTreeSpriteDrawn = drawWorldSpriteAtWorldAnchor(context, "tree_oak_la
 const directStumpSpriteDrawn = drawWorldSpriteAtWorldAnchor(context, "stump_fresh", 1, 1, spriteOptions);
 
 drawTreeDescriptor(context, {
-  tick: 0,
+  nowMs: 0,
   tree: {
     id: "tree:missing",
     x: 64,

@@ -1,0 +1,885 @@
+{
+ "label": "before",
+ "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+ "viewport": "1600x1100 DPR 1, start camera",
+ "stillTiles": 0.15,
+ "1x": {
+  "ticks": [
+   320036,
+   320236
+  ],
+  "zoom": 2,
+  "stillPx": 19.2,
+  "samples": 21,
+  "spanMs": 10000,
+  "peopleOnScreenMean": 119.2,
+  "peopleBySource": {
+   "drawComposedWalkerWithCart>drawComposedWalker": 59,
+   "drawAlehouseDrinkers>walkerCell": 59
+  },
+  "still10s": 59,
+  "stillBySource": {
+   "drawAlehouseDrinkers>walkerCell": 59
+  },
+  "stillWithReason": [],
+  "stillWithoutReason": 59,
+  "share": 0.495,
+  "gate": 0.05,
+  "pass": false,
+  "stillAt": [
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1016,
+     432
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1076,
+     436
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1045,
+     456
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     888,
+     368
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     948,
+     372
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     917,
+     392
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     962,
+     396
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     760,
+     432
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     820,
+     436
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     789,
+     456
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     888,
+     496
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     948,
+     500
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     917,
+     520
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     962,
+     524
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     696,
+     400
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     756,
+     404
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     725,
+     424
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     770,
+     428
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1208,
+     400
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1268,
+     404
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1237,
+     424
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1208,
+     464
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1268,
+     468
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1237,
+     488
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1282,
+     492
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1144,
+     496
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1204,
+     500
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1173,
+     520
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1218,
+     524
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1208,
+     528
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1268,
+     532
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1237,
+     552
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1272,
+     624
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1332,
+     628
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1301,
+     648
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1208,
+     336
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1268,
+     340
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1237,
+     360
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1336,
+     208
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1396,
+     212
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1365,
+     232
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1410,
+     236
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1400,
+     240
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1460,
+     244
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1429,
+     264
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1400,
+     304
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1460,
+     308
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1429,
+     328
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1474,
+     332
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1016,
+     176
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1076,
+     180
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1045,
+     200
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1090,
+     204
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1400,
+     112
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1460,
+     116
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1429,
+     136
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1592,
+     16
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1557,
+     8
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1429,
+     8
+    ]
+   }
+  ]
+ },
+ "5x": {
+  "ticks": [
+   320526,
+   321001
+  ],
+  "zoom": 2,
+  "stillPx": 19.2,
+  "samples": 21,
+  "spanMs": 10000,
+  "peopleOnScreenMean": 117.1,
+  "peopleBySource": {
+   "drawComposedWalkerWithCart>drawComposedWalker": 56,
+   "drawAlehouseDrinkers>walkerCell": 59
+  },
+  "still10s": 59,
+  "stillBySource": {
+   "drawAlehouseDrinkers>walkerCell": 59
+  },
+  "stillWithReason": [],
+  "stillWithoutReason": 59,
+  "share": 0.5039,
+  "gate": 0.05,
+  "pass": false,
+  "stillAt": [
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1022,
+     432
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1075,
+     436
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1041,
+     456
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     894,
+     368
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     947,
+     372
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     913,
+     392
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     969,
+     396
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     766,
+     432
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     819,
+     436
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     785,
+     456
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     894,
+     496
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     947,
+     500
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     913,
+     520
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     969,
+     524
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     702,
+     400
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     755,
+     404
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     721,
+     424
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     777,
+     428
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1214,
+     400
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1267,
+     404
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1233,
+     424
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1214,
+     464
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1267,
+     468
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1233,
+     488
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1289,
+     492
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1150,
+     496
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1203,
+     500
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1169,
+     520
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1225,
+     524
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1214,
+     528
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1267,
+     532
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1233,
+     552
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1278,
+     624
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1331,
+     628
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1297,
+     648
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1214,
+     336
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1267,
+     340
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1233,
+     360
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1342,
+     208
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1395,
+     212
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1361,
+     232
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1417,
+     236
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1406,
+     240
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1459,
+     244
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1425,
+     264
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1406,
+     304
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1459,
+     308
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1425,
+     328
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1481,
+     332
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1022,
+     176
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1075,
+     180
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1041,
+     200
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1097,
+     204
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1406,
+     112
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1459,
+     116
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1425,
+     136
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1598,
+     16
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1553,
+     8
+    ]
+   },
+   {
+    "source": "drawAlehouseDrinkers>walkerCell",
+    "foot": [
+     1425,
+     8
+    ]
+   }
+  ]
+ },
+ "pass": false
+}

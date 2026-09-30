@@ -1,0 +1,53 @@
+{
+ "label": "after",
+ "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+ "viewport": "1600x1100 DPR 1, start camera",
+ "stillTiles": 0.15,
+ "1x": {
+  "ticks": [
+   320036,
+   320237
+  ],
+  "zoom": 2,
+  "stillPx": 19.2,
+  "samples": 21,
+  "spanMs": 10000,
+  "peopleOnScreenMean": 71.4,
+  "peopleBySource": {
+   "drawComposedWalkerWithCart>drawComposedWalker": 59,
+   "drawObjectRenderItems>drawAleDrinker": 9
+  },
+  "still10s": 0,
+  "stillBySource": {},
+  "stillWithReason": [],
+  "stillWithoutReason": 0,
+  "share": 0,
+  "gate": 0.05,
+  "pass": true,
+  "stillAt": []
+ },
+ "5x": {
+  "ticks": [
+   320408,
+   321005
+  ],
+  "zoom": 2,
+  "stillPx": 19.2,
+  "samples": 21,
+  "spanMs": 10000,
+  "peopleOnScreenMean": 68.4,
+  "peopleBySource": {
+   "drawComposedWalkerWithCart>drawComposedWalker": 57,
+   "drawObjectRenderItems>drawAleDrinker": 5
+  },
+  "still10s": 0,
+  "stillBySource": {},
+  "stillWithReason": [],
+  "stillWithoutReason": 0,
+  "share": 0,
+  "gate": 0.05,
+  "pass": true,
+  "stillAt": []
+ },
+ "pass": true
+}

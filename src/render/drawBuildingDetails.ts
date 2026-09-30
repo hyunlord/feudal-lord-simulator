@@ -2,7 +2,7 @@ import { buildingEntry, type BuildingDetailPart } from "../content/buildingCatal
 import type { BuildingKind } from "../content/buildingConfig";
 import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import type { BuildingVisualState } from "./buildingVisualState";
-import { ambientOffset, objectPhase } from "./renderMotion";
+import { ambientOffset, objectPhase, wallClockWave } from "./renderMotion";
 import { applyInkOutline, applyPaletteStroke, shade, snapToPixel } from "./style";
 
 type Point = {
@@ -21,6 +21,8 @@ type ProblemMarkerKind = "water" | "bread" | "labour" | "storage";
 
 export type BuildingDetailInput = {
   readonly tick: number;
+  /** NAT-2 (QA-001): the wall clock of the landscape motion (the flag in the wind, the water wheel); 0 when absent. */
+  readonly nowMs?: number;
   readonly center: Point;
   readonly kind: BuildingKind;
   readonly zoom: number;
@@ -50,10 +52,10 @@ const DETAIL_PAINTERS: { readonly [P in BuildingDetailPart]: (context: CanvasRen
   well_rim: (context, input) => drawWellRim(context, input.center, input.zoom),
   crates: (context, input) => drawCrates(context, input.center, input.zoom),
   stilts: (context, input) => drawStilts(context, input.center, input.zoom),
-  flag: (context, input) => drawFlag(context, input.tick, input.center, input.zoom),
-  flag_when_working: (context, input) => { if (input.visualState.production === "working") drawFlag(context, input.tick, input.center, input.zoom); },
+  flag: (context, input) => drawFlag(context, input.nowMs ?? 0, input.center, input.zoom),
+  flag_when_working: (context, input) => { if (input.visualState.production === "working") drawFlag(context, input.nowMs ?? 0, input.center, input.zoom); },
   field_rows: (context, input) => drawFieldRows(context, input.center, input.zoom),
-  wheel: (context, input) => drawWheel(context, input.tick, input.center, input.zoom),
+  wheel: (context, input) => drawWheel(context, input.nowMs ?? 0, input.center, input.zoom),
   logging_rack: (context, input) => drawLoggingRack(context, input.center, input.zoom),
   saw: (context, input) => drawSaw(context, input.tick, input.center, input.zoom),
   planks: (context, input) => drawPlanks(context, input.center, input.zoom),
@@ -261,13 +263,10 @@ function drawFieldRows(context: CanvasRenderingContext2D, center: Point, zoom: n
   fillOutlinedRect(context, { origin: { x: center.x + 20, y: center.y - 22 }, width: 14, height: 12, zoom });
 }
 
-function drawFlag(context: CanvasRenderingContext2D, tick: number, center: Point, zoom: number): void {
-  const sway = ambientOffset({
-    tick,
-    amplitude: 3,
-    frequency: 1.1,
-    phase: objectPhase("flag", center.x, center.y),
-  });
+// NAT-2: the wind's flag (a 1.5 s flutter) and the water's wheel (2 s) on the wall clock, like the trees; the saw below
+// is work and stays on the tick (it runs with the game and stops when paused).
+function drawFlag(context: CanvasRenderingContext2D, nowMs: number, center: Point, zoom: number): void {
+  const sway = 3 * wallClockWave(nowMs, 1_500, objectPhase("flag", center.x, center.y));
   context.fillStyle = PALETTE.vermilion;
   traceTriangle(context, [
     { x: center.x, y: center.y - 62 },
@@ -279,13 +278,8 @@ function drawFlag(context: CanvasRenderingContext2D, tick: number, center: Point
   context.stroke();
 }
 
-function drawWheel(context: CanvasRenderingContext2D, tick: number, center: Point, zoom: number): void {
-  const turn = ambientOffset({
-    tick,
-    amplitude: 3,
-    frequency: 1.4,
-    phase: objectPhase("wheel", center.x, center.y),
-  });
+function drawWheel(context: CanvasRenderingContext2D, nowMs: number, center: Point, zoom: number): void {
+  const turn = 3 * wallClockWave(nowMs, 2_000, objectPhase("wheel", center.x, center.y));
   context.fillStyle = SEMANTIC_PALETTE.stoneDark;
   context.beginPath();
   context.arc(snapToPixel(center.x + 24), snapToPixel(center.y - 24), snapToPixel(11), 0, Math.PI * 2);
