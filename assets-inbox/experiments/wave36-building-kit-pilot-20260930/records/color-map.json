@@ -1,0 +1,28 @@
+{
+  "neutral_reference": 220,
+  "colors": {
+    "white": [
+      230,
+      228,
+      221
+    ],
+    "ochre": [
+      217,
+      191,
+      147
+    ],
+    "pink": [
+      217,
+      184,
+      178
+    ],
+    "gray": [
+      179,
+      182,
+      174
+    ]
+  },
+  "mask": "masks/wall_<body_id>.png",
+  "operation": "inside mask RGB=round(originalGray*targetRGB/220); outside pixels unchanged",
+  "note": "high frequency retention and timber/window mask spill require measured review"
+}

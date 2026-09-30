@@ -1,0 +1,64 @@
+{
+  "order": "left,top,right,bottom",
+  "margins": {
+    "treaty_frame": [
+      128,
+      160,
+      128,
+      112
+    ],
+    "clause_row": [
+      48,
+      18,
+      48,
+      18
+    ],
+    "clause_row_changed": [
+      48,
+      18,
+      48,
+      18
+    ],
+    "clause_row_rejected": [
+      48,
+      18,
+      48,
+      18
+    ],
+    "reason_chip_plus": [
+      44,
+      14,
+      24,
+      14
+    ],
+    "reason_chip_minus": [
+      44,
+      14,
+      24,
+      14
+    ],
+    "ledger_book": [
+      72,
+      72,
+      72,
+      72
+    ],
+    "litigation_track": [
+      72,
+      20,
+      72,
+      20
+    ],
+    "receipt_frame": [
+      40,
+      190,
+      40,
+      110
+    ]
+  },
+  "assembly": {
+    "treaty_frame": "treaty_divider centered, fixed16px width; stretch only its vertical middle",
+    "ledger_book": "ledger_spine centered, fixed24px width",
+    "receipt_frame": "portrait aperture top protected by190px; bottom separator protected by110px; minimumHeight301px"
+  }
+}

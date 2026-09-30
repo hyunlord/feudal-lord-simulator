@@ -1,0 +1,69 @@
+[
+  {
+    "scenario": "matching edge color",
+    "actual": [
+      0,
+      1,
+      0.0
+    ],
+    "expected": [
+      0,
+      1,
+      0.0
+    ],
+    "passed": true
+  },
+  {
+    "scenario": "white halo edge",
+    "actual": [
+      1,
+      1,
+      1.0
+    ],
+    "expected": [
+      1,
+      1,
+      1.0
+    ],
+    "passed": true
+  },
+  {
+    "scenario": "empty transparent image",
+    "actual": [
+      0,
+      0,
+      null
+    ],
+    "expected": [
+      0,
+      0,
+      null
+    ],
+    "passed": true
+  },
+  {
+    "scenario": "x-only gradient",
+    "actual": [
+      -1.1871836104491813e-13,
+      4.000000000000001
+    ],
+    "expected": [
+      0,
+      4
+    ],
+    "tolerance": 1e-08,
+    "passed": true
+  },
+  {
+    "scenario": "normalized histogram mass",
+    "actual": [
+      1.0,
+      1.0
+    ],
+    "expected": [
+      1,
+      1
+    ],
+    "passed": true
+  }
+]

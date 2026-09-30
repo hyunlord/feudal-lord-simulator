@@ -1,0 +1,120 @@
+{
+  "correct": 9,
+  "total": 12,
+  "percent": 75,
+  "target": 10,
+  "pass": false,
+  "first_round_correct": 7,
+  "free_response": true,
+  "scoring": "Explicit requested profession or clear synonym; fishmonger is not fisher, wool merchant is not shepherd; alternatives containing requested profession credited and disclosed",
+  "rows": [
+    {
+      "slot": "01",
+      "trade": "tanner",
+      "asset": "trade_tanner_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "tanner",
+      "correct": true
+    },
+    {
+      "slot": "02",
+      "trade": "dyer",
+      "asset": "trade_dyer_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "dyer",
+      "correct": true
+    },
+    {
+      "slot": "03",
+      "trade": "weaver",
+      "asset": "trade_weaver_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "cloth merchant or weaver",
+      "correct": true
+    },
+    {
+      "slot": "04",
+      "trade": "fisher",
+      "asset": "trade_fisher_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "fishmonger",
+      "correct": false
+    },
+    {
+      "slot": "05",
+      "trade": "baker",
+      "asset": "trade_baker_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "baker",
+      "correct": true
+    },
+    {
+      "slot": "06",
+      "trade": "ale",
+      "asset": "trade_ale_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "brewer",
+      "correct": true
+    },
+    {
+      "slot": "07",
+      "trade": "miller",
+      "asset": "trade_miller_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "cheesemonger",
+      "correct": false
+    },
+    {
+      "slot": "08",
+      "trade": "smith",
+      "asset": "trade_smith_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "blacksmith",
+      "correct": true
+    },
+    {
+      "slot": "09",
+      "trade": "carpenter",
+      "asset": "trade_carpenter_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "carpenter",
+      "correct": true
+    },
+    {
+      "slot": "10",
+      "trade": "inn",
+      "asset": "trade_inn_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "tavern keeper",
+      "correct": true
+    },
+    {
+      "slot": "11",
+      "trade": "shepherd",
+      "asset": "trade_shepherd_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "wool merchant",
+      "correct": false
+    },
+    {
+      "slot": "12",
+      "trade": "merchant",
+      "asset": "trade_merchant_a",
+      "zoom": 1,
+      "native_sprite_scale": 0.45,
+      "guess": "general merchant",
+      "correct": true
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+[
+  {
+    "id": "body_vertical",
+    "prompt": "Use case: precise-object-edit.\nAsset type: full-house source sprite for exact registered modular layer extraction, candidate body_vertical.\nInput image 1 is the EDIT TARGET and sole project-owned reference. Edit this exact image, do not redesign or reinterpret the house.\nPrimary request: Change only the exposed wall timber-frame pattern into predominantly closely spaced VERTICAL timber studs, with sparse horizontal floor rails and minimal diagonals. All wall plaster panels must be neutral bright gray-white lime plaster.\nLOCKED INVARIANTS: exactly the same house silhouette, gable slopes, ridge endpoints, eaves corners, roof plane shapes, footprint, two-floor proportions, perspective, camera, placement, all door and window positions and dimensions, wooden shutters, ground-floor recessed opening, stone foundation and alpha outline as the supplied house. Preserve the other house materials and colors unchanged. Preserve upper-left lighting and the same hand-painted medieval game-sprite treatment. Do not enlarge doors or windows. Do not add a chimney, glass, brick walls, dormers, props, people, ground plane or cast shadow.\nFraming: one complete isolated house, all of it visible, square canvas, matching the reference composition. Genuine transparent RGBA background. No text or labels. This is a material/pattern edit of the existing full house, not an independent new building. Pixel registration with the edit target is the highest priority.",
+    "tool": "image_gen.imagegen",
+    "mode": "edit",
+    "reference": "references/house_l2-v2.png",
+    "model_version": null,
+    "seed": null,
+    "tool_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-254b35fa-c83f-452d-8224-e03fc1bf853c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-254b35fa-c83f-452d-8224-e03fc1bf853c.png",
+    "status": "candidate",
+    "note": "Full-house generated source, not extracted layer. Registration and invariants not guaranteed by generation.",
+    "raw_path": "raw/core/body_vertical.png",
+    "source_path": "sources/core/body_vertical.png",
+    "prompt_path": "prompts/core/body_vertical.txt",
+    "raw_size": [
+      1254,
+      1254
+    ],
+    "raw_alpha_gt_8_bbox": {
+      "x": 115,
+      "y": 43,
+      "width": 1044,
+      "height": 1175
+    },
+    "normalization": {
+      "method": "alpha > 8 bounding-box crop, anisotropic Lanczos3 resize, transparent placement",
+      "canvas": [
+        137,
+        137
+      ],
+      "target_bbox": {
+        "x": 12,
+        "y": 4,
+        "width": 118,
+        "height": 131
+      },
+      "scale_x": 0.11302681992337164,
+      "scale_y": 0.11148936170212766,
+      "aspect_distortion_ratio": 1.0137901787019976,
+      "aspect_distortion_percent": 1.3790178701997613
+    },
+    "sha256_raw": "74ba2bc81b051839453c42a1faa0cb3bfc93dd149ab96078e7e87c8d8b6726e4",
+    "sha256_source": "c986dd4d1d9e55880dc2483106d454d75303c0449c3445496c3ba9ba33dffc72",
+    "verified": {
+      "canvas": [
+        137,
+        137
+      ],
+      "channels": 4,
+      "raw_preserved": true,
+      "normalization_only": true,
+      "exact_internal_registration": false
+    }
+  },
+  {
+    "id": "body_square",
+    "prompt": "Use case: precise-object-edit.\nAsset type: full-house source sprite for exact registered modular layer extraction, candidate body_square.\nInput image 1 is the EDIT TARGET and sole project-owned reference. Edit this exact image, do not redesign or reinterpret the house.\nPrimary request: Change only the exposed wall timber-frame pattern into clearly SQUARE timber framing panels formed by vertical posts and horizontal rails; no decorative diagonals. All wall plaster panels must be neutral bright gray-white lime plaster.\nLOCKED INVARIANTS: exactly the same house silhouette, gable slopes, ridge endpoints, eaves corners, roof plane shapes, footprint, two-floor proportions, perspective, camera, placement, all door and window positions and dimensions, wooden shutters, ground-floor recessed opening, stone foundation and alpha outline as the supplied house. Preserve the other house materials and colors unchanged. Preserve upper-left lighting and the same hand-painted medieval game-sprite treatment. Do not enlarge doors or windows. Do not add a chimney, glass, brick walls, dormers, props, people, ground plane or cast shadow.\nFraming: one complete isolated house, all of it visible, square canvas, matching the reference composition. Genuine transparent RGBA background. No text or labels. This is a material/pattern edit of the existing full house, not an independent new building. Pixel registration with the edit target is the highest priority.",
+    "tool": "image_gen.imagegen",
+    "mode": "edit",
+    "reference": "references/house_l2-v2.png",
+    "model_version": null,
+    "seed": null,
+    "tool_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-5b4672bd-5d83-429e-b766-dcd3c288d26b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-5b4672bd-5d83-429e-b766-dcd3c288d26b.png",
+    "status": "candidate",
+    "note": "Full-house generated source, not extracted layer. Registration and invariants not guaranteed by generation.",
+    "raw_path": "raw/core/body_square.png",
+    "source_path": "sources/core/body_square.png",
+    "prompt_path": "prompts/core/body_square.txt",
+    "raw_size": [
+      1254,
+      1254
+    ],
+    "raw_alpha_gt_8_bbox": {
+      "x": 98,
+      "y": 43,
+      "width": 1008,
+      "height": 1137
+    },
+    "normalization": {
+      "method": "alpha > 8 bounding-box crop, anisotropic Lanczos3 resize, transparent placement",
+      "canvas": [
+        137,
+        137
+      ],
+      "target_bbox": {
+        "x": 12,
+        "y": 4,
+        "width": 118,
+        "height": 131
+      },
+      "scale_x": 0.11706349206349206,
+      "scale_y": 0.11521547933157432,
+      "aspect_distortion_ratio": 1.0160396219556524,
+      "aspect_distortion_percent": 1.603962195565245
+    },
+    "sha256_raw": "47fd5d1f6050a01d24c3a75d090e66a887bb8c89439cab284ff1027fc8911c31",
+    "sha256_source": "ffb019b750b5ed60327a3d62206cdd751165049fa101f24264f3867065859f64",
+    "verified": {
+      "canvas": [
+        137,
+        137
+      ],
+      "channels": 4,
+      "raw_preserved": true,
+      "normalization_only": true,
+      "exact_internal_registration": false
+    }
+  },
+  {
+    "id": "body_curved",
+    "prompt": "Use case: precise-object-edit.\nAsset type: full-house source sprite for exact registered modular layer extraction, candidate body_curved.\nInput image 1 is the EDIT TARGET and sole project-owned reference. Edit this exact image, do not redesign or reinterpret the house.\nPrimary request: Change only the exposed wall timber-frame pattern into timber framing with visible CURVED diagonal braces and gently curved arch-like corner braces. All wall plaster panels must be neutral bright gray-white lime plaster.\nLOCKED INVARIANTS: exactly the same house silhouette, gable slopes, ridge endpoints, eaves corners, roof plane shapes, footprint, two-floor proportions, perspective, camera, placement, all door and window positions and dimensions, wooden shutters, ground-floor recessed opening, stone foundation and alpha outline as the supplied house. Preserve the other house materials and colors unchanged. Preserve upper-left lighting and the same hand-painted medieval game-sprite treatment. Do not enlarge doors or windows. Do not add a chimney, glass, brick walls, dormers, props, people, ground plane or cast shadow.\nFraming: one complete isolated house, all of it visible, square canvas, matching the reference composition. Genuine transparent RGBA background. No text or labels. This is a material/pattern edit of the existing full house, not an independent new building. Pixel registration with the edit target is the highest priority.",
+    "tool": "image_gen.imagegen",
+    "mode": "edit",
+    "reference": "references/house_l2-v2.png",
+    "model_version": null,
+    "seed": null,
+    "tool_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-bb9e3cef-7a83-41a1-9389-e85f23107f2f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-bb9e3cef-7a83-41a1-9389-e85f23107f2f.png",
+    "status": "candidate",
+    "note": "Full-house generated source, not extracted layer. Registration and invariants not guaranteed by generation.",
+    "raw_path": "raw/core/body_curved.png",
+    "source_path": "sources/core/body_curved.png",
+    "prompt_path": "prompts/core/body_curved.txt",
+    "raw_size": [
+      1254,
+      1254
+    ],
+    "raw_alpha_gt_8_bbox": {
+      "x": 109,
+      "y": 41,
+      "width": 1025,
+      "height": 1150
+    },
+    "normalization": {
+      "method": "alpha > 8 bounding-box crop, anisotropic Lanczos3 resize, transparent placement",
+      "canvas": [
+        137,
+        137
+      ],
+      "target_bbox": {
+        "x": 12,
+        "y": 4,
+        "width": 118,
+        "height": 131
+      },
+      "scale_x": 0.1151219512195122,
+      "scale_y": 0.11391304347826087,
+      "aspect_distortion_ratio": 1.0106125488735804,
+      "aspect_distortion_percent": 1.061254887358043
+    },
+    "sha256_raw": "20d9d2cb9a12f3cede012907fdca0f6b08240ae34b80651afa98e336431db654",
+    "sha256_source": "6def0687d23375bf4367dc66e5f150fa7c305cf27ae2ad3179cb31fe0a7681be",
+    "verified": {
+      "canvas": [
+        137,
+        137
+      ],
+      "channels": 4,
+      "raw_preserved": true,
+      "normalization_only": true,
+      "exact_internal_registration": false
+    }
+  },
+  {
+    "id": "roof_thatch",
+    "prompt": "Use case: precise-object-edit.\nAsset type: full-house source sprite for exact registered modular layer extraction, candidate roof_thatch.\nInput image 1 is the EDIT TARGET and sole project-owned reference. Edit this exact image, do not redesign or reinterpret the house.\nPrimary request: Change ONLY the roof covering material to weathered pale golden straw THATCH, with compact fine straw texture. Keep the exact existing roof edge and thickness; no bulky overhang, no ridge ornament.\nLOCKED INVARIANTS: exactly the same house silhouette, gable slopes, ridge endpoints, eaves corners, roof plane shapes, footprint, two-floor proportions, perspective, camera, placement, all door and window positions and dimensions, wooden shutters, ground-floor recessed opening, stone foundation and alpha outline as the supplied house. Preserve the other house materials and colors unchanged. Preserve upper-left lighting and the same hand-painted medieval game-sprite treatment. Do not enlarge doors or windows. Do not add a chimney, glass, brick walls, dormers, props, people, ground plane or cast shadow.\nFraming: one complete isolated house, all of it visible, square canvas, matching the reference composition. Genuine transparent RGBA background. No text or labels. This is a material/pattern edit of the existing full house, not an independent new building. Pixel registration with the edit target is the highest priority.",
+    "tool": "image_gen.imagegen",
+    "mode": "edit",
+    "reference": "references/house_l2-v2.png",
+    "model_version": null,
+    "seed": null,
+    "tool_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-a2659836-8b50-4146-9c38-8957a07f8ccb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-a2659836-8b50-4146-9c38-8957a07f8ccb.png",
+    "status": "candidate",
+    "note": "Full-house generated source, not extracted layer. Registration and invariants not guaranteed by generation.",
+    "raw_path": "raw/core/roof_thatch.png",
+    "source_path": "sources/core/roof_thatch.png",
+    "prompt_path": "prompts/core/roof_thatch.txt",
+    "raw_size": [
+      1254,
+      1254
+    ],
+    "raw_alpha_gt_8_bbox": {
+      "x": 121,
+      "y": 58,
+      "width": 1037,
+      "height": 1152
+    },
+    "normalization": {
+      "method": "alpha > 8 bounding-box crop, anisotropic Lanczos3 resize, transparent placement",
+      "canvas": [
+        137,
+        137
+      ],
+      "target_bbox": {
+        "x": 12,
+        "y": 4,
+        "width": 118,
+        "height": 131
+      },
+      "scale_x": 0.11378977820636452,
+      "scale_y": 0.11371527777777778,
+      "aspect_distortion_ratio": 1.000655148807114,
+      "aspect_distortion_percent": 0.06551488071140366
+    },
+    "sha256_raw": "c71562e63b6ba67a4f73e9845a2b5d568d9d20e012bbc56d26b71c145074b1db",
+    "sha256_source": "bb95daadf7f5e334cec60436f7fb9a138dbf034dba3eda5ffd948b5d8cb17a3f",
+    "verified": {
+      "canvas": [
+        137,
+        137
+      ],
+      "channels": 4,
+      "raw_preserved": true,
+      "normalization_only": true,
+      "exact_internal_registration": false
+    }
+  },
+  {
+    "id": "roof_tile",
+    "prompt": "Use case: precise-object-edit.\nAsset type: full-house source sprite for exact registered modular layer extraction, candidate roof_tile.\nInput image 1 is the EDIT TARGET and sole project-owned reference. Edit this exact image, do not redesign or reinterpret the house.\nPrimary request: Change ONLY the roof covering material to warm muted terracotta plain FLAT CLAY TILES, small flat overlapping rectangles, not barrel tiles or S tiles. Keep the exact existing roof edge and thickness.\nLOCKED INVARIANTS: exactly the same house silhouette, gable slopes, ridge endpoints, eaves corners, roof plane shapes, footprint, two-floor proportions, perspective, camera, placement, all door and window positions and dimensions, wooden shutters, ground-floor recessed opening, stone foundation and alpha outline as the supplied house. Preserve the other house materials and colors unchanged. Preserve upper-left lighting and the same hand-painted medieval game-sprite treatment. Do not enlarge doors or windows. Do not add a chimney, glass, brick walls, dormers, props, people, ground plane or cast shadow.\nFraming: one complete isolated house, all of it visible, square canvas, matching the reference composition. Genuine transparent RGBA background. No text or labels. This is a material/pattern edit of the existing full house, not an independent new building. Pixel registration with the edit target is the highest priority.",
+    "tool": "image_gen.imagegen",
+    "mode": "edit",
+    "reference": "references/house_l2-v2.png",
+    "model_version": null,
+    "seed": null,
+    "tool_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-48b908dd-31d3-489a-a8dc-8f8835026a1e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-48b908dd-31d3-489a-a8dc-8f8835026a1e.png",
+    "status": "candidate",
+    "note": "Full-house generated source, not extracted layer. Registration and invariants not guaranteed by generation.",
+    "raw_path": "raw/core/roof_tile.png",
+    "source_path": "sources/core/roof_tile.png",
+    "prompt_path": "prompts/core/roof_tile.txt",
+    "raw_size": [
+      1254,
+      1254
+    ],
+    "raw_alpha_gt_8_bbox": {
+      "x": 113,
+      "y": 44,
+      "width": 1026,
+      "height": 1134
+    },
+    "normalization": {
+      "method": "alpha > 8 bounding-box crop, anisotropic Lanczos3 resize, transparent placement",
+      "canvas": [
+        137,
+        137
+      ],
+      "target_bbox": {
+        "x": 12,
+        "y": 4,
+        "width": 118,
+        "height": 131
+      },
+      "scale_x": 0.11500974658869395,
+      "scale_y": 0.11552028218694885,
+      "aspect_distortion_ratio": 0.995580554439534,
+      "aspect_distortion_percent": -0.4419445560466029
+    },
+    "sha256_raw": "468234665b591a77cd96050bb56dcd48811b92d4f6ff3272047c1bec778b2df1",
+    "sha256_source": "6812abaf88bed0b8d053d07dbb7d467d927089372915ca23eeef83237a1b720b",
+    "verified": {
+      "canvas": [
+        137,
+        137
+      ],
+      "channels": 4,
+      "raw_preserved": true,
+      "normalization_only": true,
+      "exact_internal_registration": false
+    }
+  },
+  {
+    "id": "roof_stone",
+    "prompt": "Use case: precise-object-edit.\nAsset type: full-house source sprite for exact registered modular layer extraction, candidate roof_stone.\nInput image 1 is the EDIT TARGET and sole project-owned reference. Edit this exact image, do not redesign or reinterpret the house.\nPrimary request: Change ONLY the roof covering material to muted warm gray rough STONE FLAGSTONE SLABS, thin uneven rectangular stone roofing courses, not blue slate. Stone roof is explicitly allowed for this experimental brief. Keep the exact existing roof edge and thickness.\nLOCKED INVARIANTS: exactly the same house silhouette, gable slopes, ridge endpoints, eaves corners, roof plane shapes, footprint, two-floor proportions, perspective, camera, placement, all door and window positions and dimensions, wooden shutters, ground-floor recessed opening, stone foundation and alpha outline as the supplied house. Preserve the other house materials and colors unchanged. Preserve upper-left lighting and the same hand-painted medieval game-sprite treatment. Do not enlarge doors or windows. Do not add a chimney, glass, brick walls, dormers, props, people, ground plane or cast shadow.\nFraming: one complete isolated house, all of it visible, square canvas, matching the reference composition. Genuine transparent RGBA background. No text or labels. This is a material/pattern edit of the existing full house, not an independent new building. Pixel registration with the edit target is the highest priority.",
+    "tool": "image_gen.imagegen",
+    "mode": "edit",
+    "reference": "references/house_l2-v2.png",
+    "model_version": null,
+    "seed": null,
+    "tool_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-c53452b8-6483-4393-ae66-3ca8fb3505f7.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-52a9-7b70-8cd7-32be19914cb7/exec-c53452b8-6483-4393-ae66-3ca8fb3505f7.png",
+    "status": "candidate",
+    "note": "Full-house generated source, not extracted layer. Registration and invariants not guaranteed by generation.",
+    "raw_path": "raw/core/roof_stone.png",
+    "source_path": "sources/core/roof_stone.png",
+    "prompt_path": "prompts/core/roof_stone.txt",
+    "raw_size": [
+      1254,
+      1254
+    ],
+    "raw_alpha_gt_8_bbox": {
+      "x": 112,
+      "y": 56,
+      "width": 1033,
+      "height": 1142
+    },
+    "normalization": {
+      "method": "alpha > 8 bounding-box crop, anisotropic Lanczos3 resize, transparent placement",
+      "canvas": [
+        137,
+        137
+      ],
+      "target_bbox": {
+        "x": 12,
+        "y": 4,
+        "width": 118,
+        "height": 131
+      },
+      "scale_x": 0.11423039690222653,
+      "scale_y": 0.11471103327495621,
+      "aspect_distortion_ratio": 0.9958100249033793,
+      "aspect_distortion_percent": -0.41899750966206684
+    },
+    "sha256_raw": "244f151a69b837d040dce7baa83e9650c0850775a815d114cbf5d61e04008bf6",
+    "sha256_source": "d25098c7c04c80ab9ae5b099436c7952a587a7932038e0eea156dbb752daa037",
+    "verified": {
+      "canvas": [
+        137,
+        137
+      ],
+      "channels": 4,
+      "raw_preserved": true,
+      "normalization_only": true,
+      "exact_internal_registration": false
+    }
+  }
+]

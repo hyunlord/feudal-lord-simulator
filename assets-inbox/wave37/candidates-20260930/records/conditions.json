@@ -1,0 +1,418 @@
+[
+  {
+    "id": "condition_prosperous_pots",
+    "prompt": "Use case: historical-scene. Asset: single isolated game sprite condition_prosperous_pots. Exactly three small earthenware flowerpots in a neat ground-standing row along isometric axis, flourishing modest pale cream and dull rose flowers and green leaves. No shelf. Southern England 1300–1450. Muted hand-painted medieval city-builder art, restrained fine brush shading and readable small-scale silhouette. Fixed 2:1 isometric view looking down, upper-left warm light. Fully ground-standing independent prop. True RGBA transparent background, no opaque backdrop, no grass or dirt base, no house, no wall, no people, no attachment, no labels, no border. Very compact contact shadow only. Entire object centered with generous clear margins, no clipping. Style aligned to project Wave27 earthy timber and linen sprites viewed earlier; do not reproduce any reference scene.",
+    "references": [
+      {
+        "path": "references/reference-3.jpg",
+        "role": "project-owned Wave27 style reference visually inspected; not uploaded to generation tool"
+      },
+      {
+        "path": "references/reference-0.jpg",
+        "role": "project-owned scale/style reference visually inspected; not uploaded to generation tool"
+      }
+    ],
+    "raw_path": "raw/condition_prosperous_pots.png",
+    "output_path": "assets/condition_prosperous_pots.png",
+    "width": 96,
+    "height": 96,
+    "foot_x": 74.75,
+    "foot_y": 89.28,
+    "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+    "foot_uncertainty_px": 2,
+    "raw_foot": [
+      1130,
+      700
+    ],
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "left": 478,
+        "top": 192,
+        "width": 811,
+        "height": 533
+      },
+      "resize": [
+        88,
+        58
+      ],
+      "offset": [
+        4,
+        34
+      ],
+      "aspect_preserved": true,
+      "mirror": false
+    },
+    "tool": "builtin image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "status": "candidate",
+    "generation_count": 1,
+    "limitations": null
+  },
+  {
+    "id": "condition_prosperous_bench",
+    "prompt": "Use case: historical-scene. Asset: single isolated game sprite condition_prosperous_bench. One prosperous household's well-kept outdoor wooden bench with simple backrest and four sturdy legs. The bench has JUST BEEN REPAINTED in muted sage green opaque matte historical paint: CLEAN CONTINUOUS PAINT, no chipped paint, no scratched paint, no peeling, no weathering, no exposed woodgrain except minimal subtle construction texture. It must visibly look maintained and fresh, not distressed. Empty seat. Southern England 1300–1450. Muted hand-painted medieval city-builder art, restrained fine brush shading and readable small-scale silhouette. Fixed 2:1 isometric view looking down, upper-left warm light. Fully ground-standing independent prop. True RGBA transparent background, no opaque backdrop, no grass or dirt base, no house, no wall, no people, no attachment, no labels, no border. Compact contact shadow. Entire bench centered with generous clear margins, no clipping.",
+    "references": [
+      {
+        "path": "references/reference-3.jpg",
+        "role": "project-owned Wave27 style reference visually inspected; not uploaded to generation tool"
+      },
+      {
+        "path": "references/reference-0.jpg",
+        "role": "project-owned scale/style reference visually inspected; not uploaded to generation tool"
+      }
+    ],
+    "raw_path": "raw/condition_prosperous_bench.png",
+    "output_path": "assets/condition_prosperous_bench.png",
+    "width": 96,
+    "height": 96,
+    "foot_x": 26.28,
+    "foot_y": 89.76,
+    "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+    "foot_uncertainty_px": 2,
+    "raw_foot": [
+      701,
+      807
+    ],
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "left": 482,
+        "top": 43,
+        "width": 865,
+        "height": 786
+      },
+      "resize": [
+        88,
+        80
+      ],
+      "offset": [
+        4,
+        12
+      ],
+      "aspect_preserved": true,
+      "mirror": false
+    },
+    "tool": "builtin image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "status": "candidate",
+    "generation_count": 2,
+    "limitations": "First weathered paint output rejected and retained separately; clean painted revision selected."
+  },
+  {
+    "id": "condition_ordinary_bench",
+    "prompt": "Use case: historical-scene. Asset: single isolated game sprite condition_ordinary_bench. One plain unpainted weathered oak outdoor bench, simple backless plank seat and two sturdy trestle legs. Entirely empty. Southern England 1300–1450. Muted hand-painted medieval city-builder art, restrained fine brush shading, readable small-scale silhouette. Fixed 2:1 isometric view looking down, upper-left warm light. Fully ground-standing independent prop. True RGBA transparent background, no opaque backdrop, no grass or dirt base, no house, no wall, no people, no attachment, no labels, no border. Very compact contact shadow only. Entire object centered with generous clear margins, no clipping. Style aligned to project Wave27 earthy timber and linen sprites viewed earlier; do not reproduce any reference scene.",
+    "references": [
+      {
+        "path": "references/reference-3.jpg",
+        "role": "project-owned Wave27 style reference visually inspected; not uploaded to generation tool"
+      },
+      {
+        "path": "references/reference-0.jpg",
+        "role": "project-owned scale/style reference visually inspected; not uploaded to generation tool"
+      }
+    ],
+    "raw_path": "raw/condition_ordinary_bench.png",
+    "output_path": "assets/condition_ordinary_bench.png",
+    "width": 96,
+    "height": 96,
+    "foot_x": 71.85,
+    "foot_y": 90.27,
+    "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+    "foot_uncertainty_px": 2,
+    "raw_foot": [
+      1113,
+      760
+    ],
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "left": 463,
+        "top": 183,
+        "width": 843,
+        "height": 584
+      },
+      "resize": [
+        88,
+        61
+      ],
+      "offset": [
+        4,
+        30
+      ],
+      "aspect_preserved": true,
+      "mirror": false
+    },
+    "tool": "builtin image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "status": "candidate",
+    "generation_count": 1,
+    "limitations": null
+  },
+  {
+    "id": "condition_ordinary_water",
+    "prompt": "Use case: historical-scene. Asset: single isolated game sprite condition_ordinary_water. One small wooden stave water bucket with bent wooden handle and still water visibly inside, iron hoops dull and narrow. Southern England 1300–1450. Muted hand-painted medieval city-builder art, restrained fine brush shading, readable small-scale silhouette. Fixed 2:1 isometric view looking down, upper-left warm light. Fully ground-standing independent prop. True RGBA transparent background, no opaque backdrop, no grass or dirt base, no house, no wall, no people, no attachment, no labels, no border. Very compact contact shadow only. Entire object centered with generous clear margins, no clipping. Style aligned to project Wave27 earthy timber and linen sprites viewed earlier; do not reproduce any reference scene.",
+    "references": [
+      {
+        "path": "references/reference-3.jpg",
+        "role": "project-owned Wave27 style reference visually inspected; not uploaded to generation tool"
+      },
+      {
+        "path": "references/reference-0.jpg",
+        "role": "project-owned scale/style reference visually inspected; not uploaded to generation tool"
+      }
+    ],
+    "raw_path": "raw/condition_ordinary_water.png",
+    "output_path": "assets/condition_ordinary_water.png",
+    "width": 64,
+    "height": 64,
+    "foot_x": 31.06,
+    "foot_y": 57.03,
+    "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+    "foot_uncertainty_px": 2,
+    "raw_foot": [
+      905,
+      720
+    ],
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "left": 743,
+        "top": 205,
+        "width": 343,
+        "height": 545
+      },
+      "resize": [
+        34,
+        54
+      ],
+      "offset": [
+        15,
+        6
+      ],
+      "aspect_preserved": true,
+      "mirror": false
+    },
+    "tool": "builtin image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "status": "candidate",
+    "generation_count": 1,
+    "limitations": null
+  },
+  {
+    "id": "condition_strained_barrel",
+    "prompt": "Use case: historical-scene. Asset: single isolated game sprite condition_strained_barrel. One broken upright oak barrel with several missing upper staves and split rim, asymmetrical jagged opening, two loose damaged stave fragments beside it. Empty. Southern England 1300–1450. Muted hand-painted medieval city-builder art, restrained fine brush shading, readable small-scale silhouette. Fixed 2:1 isometric view looking down, upper-left warm light. Fully ground-standing independent prop. True RGBA transparent background, no opaque backdrop, no grass or dirt base, no house, no wall, no people, no attachment, no labels, no border. Very compact contact shadow only. Entire object centered with generous clear margins, no clipping. Style aligned to project Wave27 earthy timber and linen sprites viewed earlier; do not reproduce any reference scene.",
+    "references": [
+      {
+        "path": "references/reference-3.jpg",
+        "role": "project-owned Wave27 style reference visually inspected; not uploaded to generation tool"
+      },
+      {
+        "path": "references/reference-0.jpg",
+        "role": "project-owned scale/style reference visually inspected; not uploaded to generation tool"
+      }
+    ],
+    "raw_path": "raw/condition_strained_barrel.png",
+    "output_path": "assets/condition_strained_barrel.png",
+    "width": 64,
+    "height": 64,
+    "foot_x": 24.69,
+    "foot_y": 57.72,
+    "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+    "foot_uncertainty_px": 2,
+    "raw_foot": [
+      790,
+      785
+    ],
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "left": 593,
+        "top": 83,
+        "width": 590,
+        "height": 719
+      },
+      "resize": [
+        44,
+        54
+      ],
+      "offset": [
+        10,
+        5
+      ],
+      "aspect_preserved": true,
+      "mirror": false
+    },
+    "tool": "builtin image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "status": "candidate",
+    "generation_count": 1,
+    "limitations": null
+  },
+  {
+    "id": "condition_strained_firewood",
+    "prompt": "Use case: historical-scene. Asset: single isolated game sprite condition_strained_firewood. One very small scarce pile of only five short split firewood logs, loosely stacked low, with plenty of silhouette gaps. No stump or axe. Southern England 1300–1450. Muted hand-painted medieval city-builder art, restrained fine brush shading, readable small-scale silhouette. Fixed 2:1 isometric view looking down, upper-left warm light. Fully ground-standing independent prop. True RGBA transparent background, no opaque backdrop, no grass or dirt base, no house, no wall, no people, no attachment, no labels, no border. Very compact contact shadow only. Entire object centered with generous clear margins, no clipping. Style aligned to project Wave27 earthy timber and linen sprites viewed earlier; do not reproduce any reference scene.",
+    "references": [
+      {
+        "path": "references/reference-3.jpg",
+        "role": "project-owned Wave27 style reference visually inspected; not uploaded to generation tool"
+      },
+      {
+        "path": "references/reference-0.jpg",
+        "role": "project-owned scale/style reference visually inspected; not uploaded to generation tool"
+      }
+    ],
+    "raw_path": "raw/condition_strained_firewood.png",
+    "output_path": "assets/condition_strained_firewood.png",
+    "width": 64,
+    "height": 64,
+    "foot_x": 27.07,
+    "foot_y": 58.1,
+    "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+    "foot_uncertainty_px": 2,
+    "raw_foot": [
+      830,
+      666
+    ],
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "left": 526,
+        "top": 227,
+        "width": 738,
+        "height": 451
+      },
+      "resize": [
+        56,
+        34
+      ],
+      "offset": [
+        4,
+        25
+      ],
+      "aspect_preserved": true,
+      "mirror": false
+    },
+    "tool": "builtin image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "status": "candidate",
+    "generation_count": 1,
+    "limitations": "Small pile reads clearly; exact five-log count is partially occluded."
+  },
+  {
+    "id": "condition_newcomer_cart_a",
+    "prompt": "Use case: historical-scene. Asset: single isolated game sprite condition_newcomer_cart_a. One parked two-wheel medieval handcart carrying household belongings: low open flat plank bed, two large spoked wooden wheels, long twin straight pulling shafts extending down-left, one modest wooden chest and tied burlap sacks securely on bed, a small stool secured upright. Stable parked contact, no people. Southern England 1300–1450. Muted hand-painted medieval city-builder art, restrained fine brush shading, readable small-scale silhouette. Fixed 2:1 isometric view looking down, upper-left warm light. Fully ground-standing independent prop. True RGBA transparent background, no opaque backdrop, no grass or dirt base, no house, no wall, no people, no attachment, no labels, no border. Very compact contact shadow only. Entire object centered with generous clear margins, no clipping. Style aligned to project Wave27 earthy timber and linen sprites viewed earlier; do not reproduce any reference scene.",
+    "references": [
+      {
+        "path": "references/reference-3.jpg",
+        "role": "project-owned Wave27 style reference visually inspected; not uploaded to generation tool"
+      },
+      {
+        "path": "references/reference-0.jpg",
+        "role": "project-owned scale/style reference visually inspected; not uploaded to generation tool"
+      }
+    ],
+    "raw_path": "raw/condition_newcomer_cart_a.png",
+    "output_path": "assets/condition_newcomer_cart_a.png",
+    "width": 128,
+    "height": 96,
+    "foot_x": 22.49,
+    "foot_y": 89.93,
+    "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+    "foot_uncertainty_px": 2,
+    "raw_foot": [
+      500,
+      797
+    ],
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "left": 328,
+        "top": 72,
+        "width": 1116,
+        "height": 735
+      },
+      "resize": [
+        120,
+        79
+      ],
+      "offset": [
+        4,
+        12
+      ],
+      "aspect_preserved": true,
+      "mirror": false
+    },
+    "tool": "builtin image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "status": "candidate",
+    "generation_count": 1,
+    "limitations": "Ground anchor uses forward shaft tip; wheel contact is further up-screen."
+  },
+  {
+    "id": "condition_newcomer_cart_b",
+    "prompt": "Use case: historical-scene. Asset: single isolated game sprite condition_newcomer_cart_b. One parked medieval single-wheel barrow structurally distinct from a two-wheel cart: deep flared plank-sided box, ONE thick solid wooden front wheel at lower-right, two rear handles at upper-left and two short support legs on ground, carrying a tied burlap sack and a modest wooden stool tilted within box. Stable parked, no people. Southern England 1300–1450. Muted hand-painted medieval city-builder art, restrained fine brush shading, readable small-scale silhouette. Fixed 2:1 isometric view looking down, upper-left warm light. Fully ground-standing independent prop. True RGBA transparent background, no opaque backdrop, no grass or dirt base, no house, no wall, no people, no attachment, no labels, no border. Very compact contact shadow only. Entire object centered with generous clear margins, no clipping. Style aligned to project Wave27 earthy timber and linen sprites viewed earlier; do not reproduce any reference scene.",
+    "references": [
+      {
+        "path": "references/reference-3.jpg",
+        "role": "project-owned Wave27 style reference visually inspected; not uploaded to generation tool"
+      },
+      {
+        "path": "references/reference-0.jpg",
+        "role": "project-owned scale/style reference visually inspected; not uploaded to generation tool"
+      }
+    ],
+    "raw_path": "raw/condition_newcomer_cart_b.png",
+    "output_path": "assets/condition_newcomer_cart_b.png",
+    "width": 128,
+    "height": 96,
+    "foot_x": 104.78,
+    "foot_y": 88.89,
+    "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+    "foot_uncertainty_px": 2,
+    "raw_foot": [
+      1190,
+      781
+    ],
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "left": 370,
+        "top": 88,
+        "width": 956,
+        "height": 719
+      },
+      "resize": [
+        114,
+        86
+      ],
+      "offset": [
+        7,
+        6
+      ],
+      "aspect_preserved": true,
+      "mirror": false
+    },
+    "tool": "builtin image_gen.imagegen",
+    "model_version": null,
+    "seed": null,
+    "status": "candidate",
+    "generation_count": 1,
+    "limitations": null
+  }
+]

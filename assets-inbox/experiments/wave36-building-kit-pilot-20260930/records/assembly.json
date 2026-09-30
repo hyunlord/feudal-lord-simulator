@@ -1,0 +1,359 @@
+{
+  "canvas": [
+    137,
+    137
+  ],
+  "pivot": "unchanged reference coordinate frame; engine pivot not supplied",
+  "bodies": [
+    "body_vertical",
+    "body_square",
+    "body_curved"
+  ],
+  "roofs": [
+    "roof_thatch",
+    "roof_tile",
+    "roof_stone"
+  ],
+  "boxes": {
+    "add_lean_to": [
+      8,
+      80,
+      40,
+      43
+    ],
+    "add_firewood": [
+      20,
+      100,
+      26,
+      18
+    ],
+    "add_porch": [
+      58,
+      80,
+      30,
+      27
+    ],
+    "add_shutters": [
+      60,
+      66,
+      23,
+      26
+    ],
+    "add_steps": [
+      61,
+      117,
+      29,
+      17
+    ],
+    "sign_bread": [
+      25,
+      99,
+      27,
+      19
+    ],
+    "sign_smith": [
+      89,
+      79,
+      16,
+      24
+    ],
+    "sign_textile": [
+      28,
+      91,
+      25,
+      24
+    ],
+    "sign_ale": [
+      16,
+      57,
+      16,
+      42
+    ],
+    "sign_merchant": [
+      27,
+      105,
+      25,
+      22
+    ],
+    "roof_snow": [
+      12,
+      4,
+      118,
+      81
+    ],
+    "roof_moss": [
+      12,
+      4,
+      118,
+      81
+    ],
+    "roof_fresh": [
+      12,
+      4,
+      118,
+      81
+    ],
+    "roof_soot": [
+      12,
+      4,
+      118,
+      81
+    ],
+    "body_boarded": [
+      23,
+      60,
+      99,
+      70
+    ],
+    "body_cracked": [
+      22,
+      56,
+      104,
+      76
+    ],
+    "body_scaffold": [
+      18,
+      53,
+      107,
+      80
+    ],
+    "shadow": [
+      13,
+      108,
+      116,
+      27
+    ]
+  },
+  "repairs": [
+    {
+      "id": "body_vertical",
+      "canonical_pixels_not_opaque_in_source": 238,
+      "method": "intersection only; no fill of missing generated paint"
+    },
+    {
+      "id": "body_square",
+      "canonical_pixels_not_opaque_in_source": 307,
+      "method": "intersection only; no fill of missing generated paint"
+    },
+    {
+      "id": "body_curved",
+      "canonical_pixels_not_opaque_in_source": 271,
+      "method": "intersection only; no fill of missing generated paint"
+    },
+    {
+      "id": "roof_thatch",
+      "canonical_pixels_not_opaque_in_source": 181,
+      "method": "intersection only; no fill of missing generated paint"
+    },
+    {
+      "id": "roof_tile",
+      "canonical_pixels_not_opaque_in_source": 174,
+      "method": "intersection only; no fill of missing generated paint"
+    },
+    {
+      "id": "roof_stone",
+      "canonical_pixels_not_opaque_in_source": 174,
+      "method": "intersection only; no fill of missing generated paint"
+    }
+  ],
+  "align": [
+    {
+      "id": "add_lean_to",
+      "box": [
+        8,
+        80,
+        40,
+        43
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "add_firewood",
+      "box": [
+        20,
+        100,
+        26,
+        18
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "add_porch",
+      "box": [
+        58,
+        80,
+        30,
+        27
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "add_shutters",
+      "box": [
+        60,
+        66,
+        23,
+        26
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "add_steps",
+      "box": [
+        61,
+        117,
+        29,
+        17
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "sign_bread",
+      "box": [
+        25,
+        99,
+        27,
+        19
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "sign_smith",
+      "box": [
+        89,
+        79,
+        16,
+        24
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "sign_textile",
+      "box": [
+        28,
+        91,
+        25,
+        24
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "sign_ale",
+      "box": [
+        16,
+        57,
+        16,
+        42
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "sign_merchant",
+      "box": [
+        27,
+        105,
+        25,
+        22
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "roof_snow",
+      "box": [
+        12,
+        4,
+        118,
+        81
+      ],
+      "clipped_pixels": 269,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "roof_moss",
+      "box": [
+        12,
+        4,
+        118,
+        81
+      ],
+      "clipped_pixels": 327,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "roof_fresh",
+      "box": [
+        12,
+        4,
+        118,
+        81
+      ],
+      "clipped_pixels": 236,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "roof_soot",
+      "box": [
+        12,
+        4,
+        118,
+        81
+      ],
+      "clipped_pixels": 534,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "body_boarded",
+      "box": [
+        23,
+        60,
+        99,
+        70
+      ],
+      "clipped_pixels": 122,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "body_cracked",
+      "box": [
+        22,
+        56,
+        104,
+        76
+      ],
+      "clipped_pixels": 66,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "body_scaffold",
+      "box": [
+        18,
+        53,
+        107,
+        80
+      ],
+      "clipped_pixels": 495,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    },
+    {
+      "id": "shadow",
+      "box": [
+        13,
+        108,
+        116,
+        27
+      ],
+      "clipped_pixels": 0,
+      "method": "alpha>8 crop then rectangular fit; original retained; clipping final states to owner silhouette"
+    }
+  ]
+}

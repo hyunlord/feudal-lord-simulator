@@ -1,0 +1,608 @@
+[
+  {
+    "id": "trade_tanner_a",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated medieval game prop for Southern England 1300–1450. The provided project images are style references only: match their muted hand-painted wood, linen and earth palette and readable compact game sprite rendering, not their layout. Camera true 2:1 isometric, upper-left lighting. True transparent RGBA background. Entire object visible including all groundstanding feet, four-pixel-safe margin. No house, wall, people, animals, grass, dirt platform, base tile, text, watermark, modern metal. No cast shadow, only tiny contact shading. It must stand independently on the ground with no wall attachment. Not a collage or sheet. Do not mirror.\nSubject: A freestanding tall rectangular oak hide-stretching frame, a single tawny animal hide laced taut within the frame, visibly irregular four-lobed hide silhouette. Two stout uprights with two long transverse ground feet, simple corner pegs. Clear negative space between hide and frame.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-727e-74d0-8fb9-e38305cde348/exec-08abff89-d068-43ef-93b6-10617949261b.png",
+    "width": 96,
+    "height": 96,
+    "tool": "builtin image_gen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_tanner_a.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_tanner_a.png",
+    "raw_width": 1536,
+    "raw_height": 1024,
+    "crop_bbox": {
+      "x": 368,
+      "y": 40,
+      "width": 786,
+      "height": 937
+    },
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "x": 368,
+        "y": 40,
+        "width": 786,
+        "height": 937
+      },
+      "resize": {
+        "width": 73,
+        "height": 87,
+        "fit": "aspect-preserved"
+      },
+      "placement": {
+        "left": 11,
+        "top": 4
+      },
+      "rotation": 0,
+      "mirror": false,
+      "alpha_preserved": true
+    },
+    "foot_x": 58,
+    "foot_y": 90,
+    "foot_method": "Visual inspection of raw and 3x normalized contact sheet: front transverse timber foot lower-left tip. Excludes shadow; corroborated by opaque pixels on row 89.",
+    "foot_uncertainty_px": 1,
+    "status": "candidate",
+    "generation_call_count": 1,
+    "visual_review": {
+      "reviewed": true,
+      "reference_style": "muted hand-painted isometric Southern England game props",
+      "freestanding": true,
+      "no_wall_or_house": true,
+      "no_text": true,
+      "no_mirroring": true,
+      "variant_structure_distinct": true,
+      "limitation": "Offline candidate only; runtime placement, occlusion, and user recognition not verified. Perspective is visually approximate, not camera-calibrated."
+    },
+    "qa": {
+      "rgba": true,
+      "alpha_zero_pixels": 5899,
+      "alpha_opaque_pixels": 392,
+      "alpha_bbox": [
+        11,
+        4,
+        83,
+        90
+      ],
+      "four_px_margin": true,
+      "baseline_y90": true
+    }
+  },
+  {
+    "id": "trade_tanner_b",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated medieval game prop for Southern England 1300–1450. The provided project images are style references only: match their muted hand-painted wood, linen and earth palette and readable compact game sprite rendering, not their layout. Camera true 2:1 isometric, upper-left lighting. True transparent RGBA background. Entire object visible including all groundstanding feet, four-pixel-safe margin. No house, wall, people, animals, grass, dirt platform, base tile, text, watermark, modern metal. No cast shadow, only tiny contact shading. It must stand independently on the ground with no wall attachment. Not a collage or sheet. Do not mirror.\nSubject: A freestanding squat splayed A-frame hide-stretching rack with triangular side supports and low crossbar, broad pale cream animal hide laced within the front trapezoidal frame, clearly different construction from a rectangular two-post rack. Visible ground contact wooden feet.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-727e-74d0-8fb9-e38305cde348/exec-373a1799-f163-47a6-8f3d-f212cf68a952.png",
+    "width": 128,
+    "height": 96,
+    "tool": "builtin image_gen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_tanner_b.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_tanner_b.png",
+    "raw_width": 1536,
+    "raw_height": 1024,
+    "crop_bbox": {
+      "x": 294,
+      "y": 16,
+      "width": 960,
+      "height": 950
+    },
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "x": 294,
+        "y": 16,
+        "width": 960,
+        "height": 950
+      },
+      "resize": {
+        "width": 88,
+        "height": 87,
+        "fit": "aspect-preserved"
+      },
+      "placement": {
+        "left": 20,
+        "top": 4
+      },
+      "rotation": 0,
+      "mirror": false,
+      "alpha_preserved": true
+    },
+    "foot_x": 73,
+    "foot_y": 90,
+    "foot_method": "Visual inspection of raw and 3x normalized contact sheet: front upright foot. Excludes shadow; corroborated by opaque pixels on row 89.",
+    "foot_uncertainty_px": 1,
+    "status": "candidate",
+    "generation_call_count": 1,
+    "visual_review": {
+      "reviewed": true,
+      "reference_style": "muted hand-painted isometric Southern England game props",
+      "freestanding": true,
+      "no_wall_or_house": true,
+      "no_text": true,
+      "no_mirroring": true,
+      "variant_structure_distinct": true,
+      "limitation": "Offline candidate only; runtime placement, occlusion, and user recognition not verified. Perspective is visually approximate, not camera-calibrated."
+    },
+    "qa": {
+      "rgba": true,
+      "alpha_zero_pixels": 8364,
+      "alpha_opaque_pixels": 471,
+      "alpha_bbox": [
+        20,
+        4,
+        107,
+        90
+      ],
+      "four_px_margin": true,
+      "baseline_y90": true
+    }
+  },
+  {
+    "id": "trade_ale_a",
+    "prompt": "Edit this project-owned medieval game prop. Preserve the freestanding wooden ale-stake with its upper tied leafy twig bush and complete cross-shaped ground feet. ADD at the foot of the post one small squat wooden ALE CASK with wooden tap/spigot, and a prominently readable small wooden drinking cup on top of the cask. This is one compact groundstanding ale-selling assembly; beverage cue should be immediately readable when the entire asset is reduced to 87 pixels high. Keep bush and barrel simple and distinct. Southern England 1300-1450 muted hand-painted game sprite, same 2:1 isometric angle and upper-left light. Retain TRUE transparent RGBA background with no glow and no cast shadow. No letters, labels, text, hops, people, building, wall, grass, or platform. Do not mirror or flip. All feet and cask base visible, no cropping. Preserve independent groundstanding construction.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_ale_a.png"
+    ],
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-727e-74d0-8fb9-e38305cde348/exec-4734ead3-964e-4a1b-b40b-cd836b35216d.png",
+    "width": 96,
+    "height": 96,
+    "tool": "builtin image_gen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_ale_a-v2.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_ale_a.png",
+    "raw_width": 1268,
+    "raw_height": 1240,
+    "crop_bbox": {
+      "x": 311,
+      "y": 81,
+      "width": 735,
+      "height": 1045
+    },
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "x": 311,
+        "y": 81,
+        "width": 735,
+        "height": 1045
+      },
+      "resize": {
+        "width": 61,
+        "height": 87,
+        "fit": "aspect-preserved"
+      },
+      "placement": {
+        "left": 17,
+        "top": 4
+      },
+      "rotation": 0,
+      "mirror": false,
+      "alpha_preserved": true
+    },
+    "foot_x": 50,
+    "foot_y": 90,
+    "foot_method": "Visual review of v2 normalized 4x contact sheet: front-right cross-foot timber end. Excludes shadow; opaque row89 pixel check corroborates.",
+    "foot_uncertainty_px": 1,
+    "status": "candidate",
+    "generation_call_count": 2,
+    "visual_review": {
+      "reviewed": true,
+      "reference_style": "muted hand-painted isometric Southern England game props",
+      "freestanding": true,
+      "no_wall_or_house": true,
+      "no_text": true,
+      "no_mirroring": true,
+      "variant_structure_distinct": true,
+      "limitation": "Offline candidate only; runtime placement, occlusion, and user recognition not verified. Perspective is visually approximate, not camera-calibrated. Ale-bush historical semantics may not be recognizable without context.",
+      "revision_reason": "Blind round1 read as herbalist; added small ale cask and drinking cup",
+      "version2_reviewed": true
+    },
+    "qa": {
+      "rgba": true,
+      "alpha_zero_pixels": 6756,
+      "alpha_opaque_pixels": 235,
+      "alpha_bbox": [
+        17,
+        4,
+        77,
+        90
+      ],
+      "four_px_margin": true,
+      "baseline_y90": true
+    },
+    "version": 2,
+    "previous_version": "rejected/r1/trade_ale_a-record.json"
+  },
+  {
+    "id": "trade_ale_b",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated medieval game prop for Southern England 1300–1450. The provided project images are style references only: match their muted hand-painted wood, linen and earth palette and readable compact game sprite rendering, not their layout. Camera true 2:1 isometric, upper-left lighting. True transparent RGBA background. Entire object visible including all groundstanding feet, four-pixel-safe margin. No house, wall, people, animals, grass, dirt platform, base tile, text, watermark, modern metal. No cast shadow, only tiny contact shading. It must stand independently on the ground with no wall attachment. Not a collage or sheet. Do not mirror.\nSubject: A freestanding medieval ale-stake: a forked Y-shaped rustic timber upright with two divergent branches, a loosely bound round bundle of thin bush twigs and sparse dull green leaves nestled at the fork, three splayed wooden ground legs. NO hops cones, NO signboard, NO barrel, NO text. Clearly distinct Y-fork construction.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-727e-74d0-8fb9-e38305cde348/exec-c80fd1c9-754e-4e75-a4b6-b79e8028ea34.png",
+    "width": 96,
+    "height": 96,
+    "tool": "builtin image_gen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_ale_b.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_ale_b.png",
+    "raw_width": 1536,
+    "raw_height": 1024,
+    "crop_bbox": {
+      "x": 519,
+      "y": 27,
+      "width": 546,
+      "height": 963
+    },
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "x": 519,
+        "y": 27,
+        "width": 546,
+        "height": 963
+      },
+      "resize": {
+        "width": 49,
+        "height": 87,
+        "fit": "aspect-preserved"
+      },
+      "placement": {
+        "left": 23,
+        "top": 4
+      },
+      "rotation": 0,
+      "mirror": false,
+      "alpha_preserved": true
+    },
+    "foot_x": 52,
+    "foot_y": 90,
+    "foot_method": "Visual inspection of raw and 3x normalized contact sheet: foremost splayed timber foot. Excludes shadow; corroborated by opaque pixels on row 89.",
+    "foot_uncertainty_px": 1,
+    "status": "candidate",
+    "generation_call_count": 1,
+    "visual_review": {
+      "reviewed": true,
+      "reference_style": "muted hand-painted isometric Southern England game props",
+      "freestanding": true,
+      "no_wall_or_house": true,
+      "no_text": true,
+      "no_mirroring": true,
+      "variant_structure_distinct": true,
+      "limitation": "Offline candidate only; runtime placement, occlusion, and user recognition not verified. Perspective is visually approximate, not camera-calibrated. Ale-bush historical semantics may not be recognizable without context."
+    },
+    "qa": {
+      "rgba": true,
+      "alpha_zero_pixels": 7036,
+      "alpha_opaque_pixels": 205,
+      "alpha_bbox": [
+        23,
+        4,
+        71,
+        90
+      ],
+      "four_px_margin": true,
+      "baseline_y90": true
+    }
+  },
+  {
+    "id": "trade_miller_a",
+    "prompt": "Edit this project-owned medieval miller's handcart game prop. Preserve its two wooden spoke wheels, wooden plank bed and two shafts resting on the ground, same orientation. Make the cargo unmistakably GRAIN AND FLOUR for a MILL worker: replace the front sack by a prominent OPEN-MOUTH linen sack filled with visible golden grain kernels; place a compact bundle of several large golden wheat ears across this open sack so their familiar cereal silhouette is plainly visible at 128x96 sprite size. Keep two tied pale flour sacks behind, one showing a little white flour dust on its folded cloth surface. All cargo stays ON THE CART; no loose ground items. Preserve Southern England 1300-1450 muted hand-painted game style, same 2:1 isometric angle, upper-left light, no mirror/flip. True transparent RGBA background, remove any surrounding glow or haze, no cast shadow. No text, labels, letters, house, wall, grass platform, people, animals. Entire cart including both wheel ground contacts and shaft tips visible with margin.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_miller_a.png"
+    ],
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-727e-74d0-8fb9-e38305cde348/exec-ddc54961-196f-4184-b447-0abda72a2263.png",
+    "width": 128,
+    "height": 96,
+    "tool": "builtin image_gen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_miller_a-v2.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_miller_a.png",
+    "raw_width": 1536,
+    "raw_height": 1024,
+    "crop_bbox": {
+      "x": 36,
+      "y": 62,
+      "width": 1479,
+      "height": 920
+    },
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "x": 36,
+        "y": 62,
+        "width": 1479,
+        "height": 920
+      },
+      "resize": {
+        "width": 120,
+        "height": 75,
+        "fit": "aspect-preserved"
+      },
+      "placement": {
+        "left": 4,
+        "top": 16
+      },
+      "rotation": 0,
+      "mirror": false,
+      "alpha_preserved": true
+    },
+    "foot_x": 28,
+    "foot_y": 90,
+    "foot_method": "Visual review of v2 normalized 4x contact sheet: ground-resting lower hand shaft tip. Excludes shadow; opaque row89 pixel check corroborates.",
+    "foot_uncertainty_px": 1,
+    "status": "candidate",
+    "generation_call_count": 2,
+    "visual_review": {
+      "reviewed": true,
+      "reference_style": "muted hand-painted isometric Southern England game props",
+      "freestanding": true,
+      "no_wall_or_house": true,
+      "no_text": true,
+      "no_mirroring": true,
+      "variant_structure_distinct": true,
+      "limitation": "Offline candidate only; runtime placement, occlusion, and user recognition not verified. Perspective is visually approximate, not camera-calibrated.",
+      "revision_reason": "Blind round1 read as generic carrier; opened grain sack and added wheat ears",
+      "version2_reviewed": true
+    },
+    "qa": {
+      "rgba": true,
+      "alpha_zero_pixels": 7903,
+      "alpha_opaque_pixels": 272,
+      "alpha_bbox": [
+        4,
+        16,
+        123,
+        90
+      ],
+      "four_px_margin": true,
+      "baseline_y90": true
+    },
+    "version": 2,
+    "previous_version": "rejected/r1/trade_miller_a-record.json"
+  },
+  {
+    "id": "trade_miller_b",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated medieval game prop for Southern England 1300–1450. The provided project images are style references only: match their muted hand-painted wood, linen and earth palette and readable compact game sprite rendering, not their layout. Camera true 2:1 isometric, upper-left lighting. True transparent RGBA background. Entire object visible including all groundstanding feet, four-pixel-safe margin. No house, wall, people, animals, grass, dirt platform, base tile, text, watermark, modern metal. No cast shadow, only tiny contact shading. It must stand independently on the ground with no wall attachment. Not a collage or sheet. Do not mirror.\nSubject: A single-wheel wooden barrow for a mill worker: one broad solid wooden front wheel, two rear groundstanding parking legs, two hand handles, open slatted tray bearing two plump beige flour sacks and one smaller tied sack. Obviously single wheel barrow construction different from two wheel cart. No person or animal.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-727e-74d0-8fb9-e38305cde348/exec-f0602936-0d2e-41f9-97cd-14a6d6230b67.png",
+    "width": 128,
+    "height": 96,
+    "tool": "builtin image_gen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_miller_b.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_miller_b.png",
+    "raw_width": 1536,
+    "raw_height": 1024,
+    "crop_bbox": {
+      "x": 295,
+      "y": 127,
+      "width": 1163,
+      "height": 754
+    },
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "x": 295,
+        "y": 127,
+        "width": 1163,
+        "height": 754
+      },
+      "resize": {
+        "width": 120,
+        "height": 78,
+        "fit": "aspect-preserved"
+      },
+      "placement": {
+        "left": 4,
+        "top": 13
+      },
+      "rotation": 0,
+      "mirror": false,
+      "alpha_preserved": true
+    },
+    "foot_x": 17,
+    "foot_y": 90,
+    "foot_method": "Visual inspection of raw and 3x normalized contact sheet: single front wheel lowest contact. Excludes shadow; corroborated by opaque pixels on row 89.",
+    "foot_uncertainty_px": 1,
+    "status": "candidate",
+    "generation_call_count": 1,
+    "visual_review": {
+      "reviewed": true,
+      "reference_style": "muted hand-painted isometric Southern England game props",
+      "freestanding": true,
+      "no_wall_or_house": true,
+      "no_text": true,
+      "no_mirroring": true,
+      "variant_structure_distinct": true,
+      "limitation": "Offline candidate only; runtime placement, occlusion, and user recognition not verified. Perspective is visually approximate, not camera-calibrated."
+    },
+    "qa": {
+      "rgba": true,
+      "alpha_zero_pixels": 7946,
+      "alpha_opaque_pixels": 221,
+      "alpha_bbox": [
+        4,
+        13,
+        123,
+        90
+      ],
+      "four_px_margin": true,
+      "baseline_y90": true
+    }
+  },
+  {
+    "id": "trade_carpenter_a",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated medieval game prop for Southern England 1300–1450. The provided project images are style references only: match their muted hand-painted wood, linen and earth palette and readable compact game sprite rendering, not their layout. Camera true 2:1 isometric, upper-left lighting. True transparent RGBA background. Entire object visible including all groundstanding feet, four-pixel-safe margin. No house, wall, people, animals, grass, dirt platform, base tile, text, watermark, modern metal. No cast shadow, only tiny contact shading. It must stand independently on the ground with no wall attachment. Not a collage or sheet. Do not mirror.\nSubject: A carpenter's display of three long newly sawn squared oak timbers laid parallel across two low A-legged wooden trestles. Square end grain obvious, straight rectangular timber sections, ground feet visible. No saw, no tools, no logs with bark.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-727e-74d0-8fb9-e38305cde348/exec-f9ddf846-5aed-4059-89b7-8aadd2d945f7.png",
+    "width": 128,
+    "height": 96,
+    "tool": "builtin image_gen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_carpenter_a.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_carpenter_a.png",
+    "raw_width": 1774,
+    "raw_height": 887,
+    "crop_bbox": {
+      "x": 394,
+      "y": 104,
+      "width": 988,
+      "height": 734
+    },
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "x": 394,
+        "y": 104,
+        "width": 988,
+        "height": 734
+      },
+      "resize": {
+        "width": 117,
+        "height": 87,
+        "fit": "aspect-preserved"
+      },
+      "placement": {
+        "left": 5,
+        "top": 4
+      },
+      "rotation": 0,
+      "mirror": false,
+      "alpha_preserved": true
+    },
+    "foot_x": 89,
+    "foot_y": 90,
+    "foot_method": "Visual inspection of raw and 3x normalized contact sheet: nearest right trestle leg foot. Excludes shadow; corroborated by opaque pixels on row 89.",
+    "foot_uncertainty_px": 1,
+    "status": "candidate",
+    "generation_call_count": 1,
+    "visual_review": {
+      "reviewed": true,
+      "reference_style": "muted hand-painted isometric Southern England game props",
+      "freestanding": true,
+      "no_wall_or_house": true,
+      "no_text": true,
+      "no_mirroring": true,
+      "variant_structure_distinct": true,
+      "limitation": "Offline candidate only; runtime placement, occlusion, and user recognition not verified. Perspective is visually approximate, not camera-calibrated."
+    },
+    "qa": {
+      "rgba": true,
+      "alpha_zero_pixels": 7656,
+      "alpha_opaque_pixels": 288,
+      "alpha_bbox": [
+        5,
+        4,
+        121,
+        90
+      ],
+      "four_px_margin": true,
+      "baseline_y90": true
+    }
+  },
+  {
+    "id": "trade_carpenter_b",
+    "prompt": "Use case: stylized-concept. Generate ONE isolated medieval game prop for Southern England 1300–1450. The provided project images are style references only: match their muted hand-painted wood, linen and earth palette and readable compact game sprite rendering, not their layout. Camera true 2:1 isometric, upper-left lighting. True transparent RGBA background. Entire object visible including all groundstanding feet, four-pixel-safe margin. No house, wall, people, animals, grass, dirt platform, base tile, text, watermark, modern metal. No cast shadow, only tiny contact shading. It must stand independently on the ground with no wall attachment. Not a collage or sheet. Do not mirror.\nSubject: A carpenter's compact stack of short squared timber beams arranged in two staggered layers on a single broad low four-legged trestle bench, two upright thin sawn planks leaning securely within the stack. Square end grain, warm muted timber. No saw, no tools, no bark logs. Distinct compact high stack silhouette.",
+    "references": [
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-3.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/references/reference-0.jpg"
+    ],
+    "source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f05a-727e-74d0-8fb9-e38305cde348/exec-aa6b6e10-e018-4a3d-aabd-66a1c154dcea.png",
+    "width": 128,
+    "height": 96,
+    "tool": "builtin image_gen",
+    "model_version": null,
+    "seed": null,
+    "raw_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/raw/trade_carpenter_b.png",
+    "output_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave37-candidates-20260930/assets/trade_carpenter_b.png",
+    "raw_width": 1536,
+    "raw_height": 1024,
+    "crop_bbox": {
+      "x": 364,
+      "y": 94,
+      "width": 899,
+      "height": 830
+    },
+    "postprocess": {
+      "tool": "Sharp",
+      "alpha_bbox_threshold": 8,
+      "crop": {
+        "x": 364,
+        "y": 94,
+        "width": 899,
+        "height": 830
+      },
+      "resize": {
+        "width": 94,
+        "height": 87,
+        "fit": "aspect-preserved"
+      },
+      "placement": {
+        "left": 17,
+        "top": 4
+      },
+      "rotation": 0,
+      "mirror": false,
+      "alpha_preserved": true
+    },
+    "foot_x": 50,
+    "foot_y": 90,
+    "foot_method": "Visual inspection of raw and 3x normalized contact sheet: nearest bench leg foot. Excludes shadow; corroborated by opaque pixels on row 89.",
+    "foot_uncertainty_px": 1,
+    "status": "candidate",
+    "generation_call_count": 1,
+    "visual_review": {
+      "reviewed": true,
+      "reference_style": "muted hand-painted isometric Southern England game props",
+      "freestanding": true,
+      "no_wall_or_house": true,
+      "no_text": true,
+      "no_mirroring": true,
+      "variant_structure_distinct": true,
+      "limitation": "Offline candidate only; runtime placement, occlusion, and user recognition not verified. Perspective is visually approximate, not camera-calibrated."
+    },
+    "qa": {
+      "rgba": true,
+      "alpha_zero_pixels": 7812,
+      "alpha_opaque_pixels": 233,
+      "alpha_bbox": [
+        17,
+        4,
+        110,
+        90
+      ],
+      "four_px_margin": true,
+      "baseline_y90": true
+    }
+  }
+]

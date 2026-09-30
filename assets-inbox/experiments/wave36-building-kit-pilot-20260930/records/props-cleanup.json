@@ -1,0 +1,117 @@
+[
+  {
+    "id": "add_firewood",
+    "tool_arguments": {
+      "prompt": "Use case: background-extraction. Remove ALL brown glow, haze, backdrop, gradient, and cast shadow surrounding this isolated medieval prop. Preserve the exact object, proportions, texture, colors and isometric view. Output a clean crisp alpha cutout of only the physical object, fully opaque solid object interior, absolutely transparent empty background. No halo, no shadow, no fringe, no new objects. Entire object inside generous margin.",
+      "referenced_image_paths": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ff3be840-81b1-4984-ad5f-e378cdb96324.png"
+      ],
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-c95b0e51-a0c3-4dfb-8c81-c6d2f01065d3.png",
+    "raw": "raw/props/add_firewood-cleanup-attempt.png",
+    "sha256": "cc703666fe90b529a3db5336303fc8f73b04a5374811e4caecf392537874ef0f",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "status": "rejected_halo_persists"
+  },
+  {
+    "id": "add_shutters",
+    "tool_arguments": {
+      "prompt": "Use case: background-extraction. Remove ALL brown glow, haze, backdrop, gradient, and cast shadow surrounding this isolated medieval prop. Preserve the exact object, proportions, texture, colors and isometric view. Output a clean crisp alpha cutout of only the physical object, fully opaque solid object interior, absolutely transparent empty background. No halo, no shadow, no fringe, no new objects. Entire object inside generous margin.",
+      "referenced_image_paths": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-c9ed373d-aee0-4634-b627-1b58f007ea2f.png"
+      ],
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-3a7b2787-9eec-4f36-b738-d087833c3f82.png",
+    "raw": "raw/props/add_shutters-cleanup-attempt.png",
+    "sha256": "054c9bed0cb9bdbbf89f3b1a62a2cc7bb28879160a4c1a759ecab8b217728ef2",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "status": "rejected_halo_persists"
+  },
+  {
+    "id": "add_steps",
+    "tool_arguments": {
+      "prompt": "Use case: background-extraction. Remove ALL brown glow, haze, backdrop, gradient, and cast shadow surrounding this isolated medieval prop. Preserve the exact object, proportions, texture, colors and isometric view. Output a clean crisp alpha cutout of only the physical object, fully opaque solid object interior, absolutely transparent empty background. No halo, no shadow, no fringe, no new objects. Entire object inside generous margin.",
+      "referenced_image_paths": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ab14662d-36f1-4252-a8fd-8ca0c1cdc953.png"
+      ],
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ec1d0d8f-14b2-4cae-a61a-56863aa06e5d.png",
+    "raw": "raw/props/add_steps-cleanup-attempt.png",
+    "sha256": "f8f615b0fcd7734706fdec5d28ed4cff7d9b8835d8857ddaa5353462b4baef9a",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "status": "rejected_halo_persists"
+  },
+  {
+    "id": "sign_bread",
+    "tool_arguments": {
+      "prompt": "Use case: background-extraction. Remove ALL brown glow, haze, backdrop, gradient, and cast shadow surrounding this isolated medieval prop. Preserve the exact object, proportions, texture, colors and isometric view. Output a clean crisp alpha cutout of only the physical object, fully opaque solid object interior, absolutely transparent empty background. No halo, no shadow, no fringe, no new objects. Entire object inside generous margin.",
+      "referenced_image_paths": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-51e33205-0324-4062-8cd0-dda0c4a714a4.png"
+      ],
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-71c1f891-29d8-4025-83b9-fc7c49fb1437.png",
+    "raw": "raw/props/sign_bread-cleanup-attempt.png",
+    "sha256": "250794908c0650d31ab1458b92fbaa55c7eef3b2614844f918421f229549e331",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "status": "rejected_halo_persists"
+  },
+  {
+    "id": "sign_textile",
+    "tool_arguments": {
+      "prompt": "Use case: background-extraction. Remove ALL brown glow, haze, backdrop, gradient, and cast shadow surrounding this isolated medieval prop. Preserve the exact object, proportions, texture, colors and isometric view. Output a clean crisp alpha cutout of only the physical object, fully opaque solid object interior, absolutely transparent empty background. No halo, no shadow, no fringe, no new objects. Entire object inside generous margin.",
+      "referenced_image_paths": [
+        "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-ff2fae48-cb50-4596-bd2b-02dfd790d158.png"
+      ],
+      "transparent_background": true
+    },
+    "tool_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-8eff-7fb3-92ec-71d789422f22/exec-f084cf51-b790-42b7-98e5-c6b02db08d99.png",
+    "raw": "raw/props/sign_textile-cleanup-attempt.png",
+    "sha256": "272a088e7198855d22e311c8b4c9c06ee55484beb983899a6381f372f87a5538",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ],
+    "status": "rejected_halo_persists"
+  }
+]
