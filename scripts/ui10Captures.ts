@@ -267,8 +267,8 @@ for (const [file, kind, wanted] of STORES) {
     const { page, close } = await scene(state, file, HELD, { tile: [store.tx + 1, store.ty + 1], zoom: 1.2 });
     await dismiss(page);
     await inspect(page, store, SEL.storeInspector);
-    // The inspector's panel (its body scrolls: the store's own box would be cut by it).
-    await shootBox(page, SEL.inspector, `${file}.jpg`);
+    // The whole frame: the inspector's body scrolls inside its panel, so an element shot of either cuts it.
+    await shoot(page, `${file}.jpg`);
     result[file] = { state: source, store: store.id, malt: store.inventory.malt ?? 0, lines: await texts(page, `${SEL.storeInspector} li, ${SEL.storeInspector} p`) };
     await close();
   });
