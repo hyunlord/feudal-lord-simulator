@@ -1,4 +1,6 @@
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
+import { resourceName } from "../content/resourceCatalog.ko";
+import { STORAGE_KIND_BY_RESOURCE } from "../content/resourceConfig";
 import { constructionSiteDisplayName, type ConstructionSite } from "../economy/construction";
 import type { GameState } from "../engine/engine.types";
 import { lordshipOf } from "../engine/lordshipState";
@@ -13,10 +15,13 @@ import { houseDiagnosisModel } from "./houseDiagnosisModel";
 import { buildingCausePresentation, houseProgressModel } from "./houseProgressModel";
 import { INSPECTOR_COPY } from "./inspectorCopy.ko";
 import { buildingProblemCause } from "./problemCauseModel";
+import { STUCK_GOODS_COPY } from "./stuckGoodsCopy.ko";
+import type { StuckGoods } from "./stuckGoodsModel";
 
 // Left inspector: name, one state line, "왜?" (causes, the blocking one first) and "조치" (one or two things to do).
 // Causes come from the same models as the cause map and the warning stack (`buildingCauseSnapshot` for buildings,
-// `constructionAccessModel` for construction sites), so the three never disagree.
+// `constructionAccessModel` for construction sites), so the three never disagree. A pile the HUD's stuck-goods chip
+// reports (UI-AUDIT-1) is a "왜?" line here with the chip's own reason, and its "조치" comes first.
 
 export type InspectorLine = Readonly<{
   text: string;
@@ -91,6 +96,17 @@ function blockerActions(state: GameState, building: Building, blocker: CauseDeta
   }
 }
 
+/** The stuck pile's "왜?" line (the chip's reason words) and what the player can do about it. */
+function stuckExplanation(row: StuckGoods): Readonly<{ line: InspectorLine; actions: readonly string[] }> {
+  const store = BUILDING_CONFIG_BY_KIND[STORAGE_KIND_BY_RESOURCE[row.good]].name;
+  const cause = STUCK_GOODS_COPY.reason[row.reason](store);
+  const reason = row.spoiling ? STUCK_GOODS_COPY.spoiling(cause) : cause;
+  const copy = INSPECTOR_COPY.action;
+  const mill = row.good === "wheat" && (row.reason === "receiver_full" || row.reason === "no_carrier") ? [copy.stuckWheatMill] : [];
+  return { line: { text: INSPECTOR_COPY.stuckLine(resourceName(row.good), row.amount, reason), block: true },
+    actions: [copy.stuck[row.reason](store), ...mill] };
+}
+
 function houseState(state: GameState, building: Building, name: string): string {
   const progress = houseProgressModel(state, building.id);
   const residents = state.houses.find((house) => house.buildingId === building.id)?.residents ?? 0;
@@ -120,7 +136,7 @@ function supportingCauses(state: GameState, building: Building, blocker: CauseDe
   ];
 }
 
-function buildingInspector(state: GameState, building: Building): InspectorModel | null {
+function buildingInspector(state: GameState, building: Building, stuck: readonly StuckGoods[]): InspectorModel | null {
   const presentation = buildingCausePresentation(state, building.id);
   const basics = buildingInspectorModel(state, building.id);
   if (presentation === null || basics === null) return null;
@@ -130,6 +146,9 @@ function buildingInspector(state: GameState, building: Building): InspectorModel
   // UI-10 (F5-A LG-1): the keep stands empty of the lord's family once it has left for its country manor.
   const left = building.kind === "keep" && state.legacy?.family === "departed" ? state.legacy.steps.family_departure : undefined;
   if (left !== undefined) lines.unshift({ text: INSPECTOR_COPY.manorLeft(lordshipOf(state).house.name, stateCalendar({ ...state, tick: left }).year), block: false });
+  const pile = stuck.find((row) => row.buildingId === building.id);
+  const piled = pile === undefined ? null : stuckExplanation(pile);
+  if (piled !== null) lines.splice(blocker === null ? 0 : 1, 0, piled.line);
   for (const text of supportingCauses(state, building, blocker)) {
     if (!lines.some((line) => line.text === text)) lines.push({ text, block: false });
   }
@@ -142,7 +161,7 @@ function buildingInspector(state: GameState, building: Building): InspectorModel
     stateLine: building.kind === "house" ? houseState(state, building, basics.name)
       : required > 0 ? INSPECTOR_COPY.facilityState(building.workers, required, facilityStatus) : facilityStatus,
     why: lines.slice(0, MAX_WHY_LINES),
-    actions: (blocker === null ? [] : blockerActions(state, building, blocker)).slice(0, MAX_ACTIONS),
+    actions: [...new Set([...piled?.actions ?? [], ...blocker === null ? [] : blockerActions(state, building, blocker)])].slice(0, MAX_ACTIONS),
   };
 }
 
@@ -177,11 +196,14 @@ function siteInspector(state: GameState, site: ConstructionSite): InspectorModel
   };
 }
 
-/** Inspector content for a building or construction-site id; null when nothing is selected or the id is unknown. */
-export function inspectorModel(state: GameState, targetId: string | null): InspectorModel | null {
+/**
+ * Inspector content for a building or construction-site id; null when nothing is selected or the id is unknown.
+ * `stuck`: the HUD's stuck piles (App's `useStuckGoods`, with its memory), so the inspector says what the chip says.
+ */
+export function inspectorModel(state: GameState, targetId: string | null, stuck: readonly StuckGoods[] = []): InspectorModel | null {
   if (targetId === null) return null;
   const building = state.buildings.find((candidate) => candidate.id === targetId);
-  if (building !== undefined) return buildingInspector(state, building);
+  if (building !== undefined) return buildingInspector(state, building, stuck);
   const site = state.constructionSites.find((candidate) => candidate.id === targetId);
   return site === undefined ? null : siteInspector(state, site);
 }
