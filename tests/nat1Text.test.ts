@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
 
-import { isPseudoLongEnabled, pseudoLong } from "../src/ui/nat1PseudoLong";
+import { extendString, isPseudoLongEnabled, pseudoLong } from "../src/ui/nat1PseudoLong";
 import { NAT1_BOX_COPY } from "../src/ui/nat1TextBoxCopy.ko";
 
 const root = join(import.meta.dirname ?? __dirname, "..");
@@ -112,4 +112,12 @@ test("NAT-1: uiSkin.css adds a frame to .event-card", () => {
 });
 test("NAT-1: uiSkin.css adds a frame to .settlement-crisis", () => {
   assert.ok(cssFile("uiSkin.css").includes("settlement-crisis"), "settlement-crisis missing frame in uiSkin.css");
+});
+
+test("UI-AUDIT-1: the 1.4× copy keeps ids (a table's keys into other tables) and numbers, and grows words", () => {
+  assert.equal(extendString("select"), "select");
+  assert.equal(extendString("zoom_out"), "zoom_out");
+  assert.equal(extendString("12,400"), "12,400");
+  assert.equal(extendString("확정").length, 3);
+  assert.equal(extendString("Esc").length, 4);
 });

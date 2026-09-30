@@ -15,8 +15,9 @@
 //                                                    budgeted category (distBudget.config.json) within budget
 //  8. surfaces    scripts/checks/surfaceRegistry.mjs every dialog root, framed class name and border-image rule is in
 //                                                    src/ui/surfaces.registry.ts (UI-AUDIT-1)
-//  9. ui-geometry scripts/checks/uiGeometry.mjs      the committed DGX geometry result is of <head>'s inputs and has 0
-//                                                    failures (UI-AUDIT-1; report only while UI_GEOMETRY_GATE = 'warn')
+//  9. ui-geometry scripts/checks/uiGeometry.mjs      the committed DGX geometry result is of <head>'s inputs, opened
+//                                                    every surface, and has no failure outside its baseline and
+//                                                    exceptions, which only shrink (UI-AUDIT-1)
 // The layer rule (simulation folders do not import src/ui or src/render) is an ESLint rule: tools/eslint/layers.mjs.
 // 1, 2, 5, 6, 8 and 9 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
 // changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules; step 7
@@ -59,7 +60,7 @@ const korean = checkKoreanStrings({ head });
 report('korean', korean.added.length === 0, formatKoreanResult(korean));
 const surfaces = checkSurfaceRegistry({ head });
 report('surfaces', surfaces.missing.length === 0, formatSurfaceRegistryResult(surfaces));
-const geometry = checkUiGeometry({ head });
+const geometry = checkUiGeometry({ base, head });
 report('ui-geometry', geometry.pass, formatUiGeometryResult(geometry));
 
 // Files for ESLint and tsc: this checkout if it is exactly <head>, else a temporary worktree.

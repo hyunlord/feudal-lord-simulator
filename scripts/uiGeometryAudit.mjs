@@ -20,10 +20,10 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
-import { geometryInputHash, geometryInputs, UI_GEOMETRY_INPUTS, UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
+import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_INPUTS, UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
-import { CHECKS, collectSurface, evaluateSurface, markFailures } from './uiGeometryMeasure.ts';
+import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures } from './uiGeometryMeasure.ts';
 import { extremeNumbers, mapTile, sceneTile } from './uiGeometryScene.ts';
 
 const [out] = process.argv.slice(2);
@@ -123,6 +123,11 @@ async function runStep(page, state, step) {
       }
       await page.locator(shown(step.story)).first().waitFor({ timeout: 30_000 });
     }
+  } else if ('repeat' in step) {
+    for (let turn = 0; turn < (step.max ?? 10) && await page.locator(shown(step.until)).count() === 0; turn += 1) {
+      await page.locator(shown(step.repeat)).first().click({ timeout: 10_000 }); await pause(400);
+    }
+    await page.locator(shown(step.until)).first().waitFor({ timeout: 5_000 });
   } else if ('dismiss' in step) {
     for (const selector of step.dismiss) if (await page.locator(shown(selector)).count() > 0) { await page.locator(shown(selector)).first().click({ timeout: 10_000 }).catch(() => undefined); await pause(400); }
   } else if ('map' in step) {
@@ -175,7 +180,7 @@ async function measure(row, condition, page) {
   const kind = collected.root?.kind ?? null;
   const record = evaluation.found
     ? { status: 'measured', counts: evaluation.counts, failures: evaluation.failures.slice(0, 25).map(failure => ({ ...failure, rect: roundBox(failure.rect) })),
-      total: evaluation.failures.length, empty: evaluation.empty, ...(evaluation.expectMissed ? { expectMissed: row.expect } : {}),
+      total: evaluation.failures.length, keys: [...new Set(evaluation.failures.map(failureKey))].sort(), empty: evaluation.empty, ...(evaluation.expectMissed ? { expectMissed: row.expect } : {}),
       inner: roundBox(evaluation.inner), root: roundBox(collected.root.rect), kind }
     : { status: 'not-found', error: `${row.root} not on screen after the steps${evaluation.expectMissed ? ` (and ${row.expect} missing)` : ''}` };
   results[row.id].conditions[condition.id] = record;
@@ -282,6 +287,12 @@ for (const [id, row] of Object.entries(results)) {
   bySurface[id] = surface;
 }
 const run = process.env.RUN ?? `local-${new Date(started).toISOString().replace(/[:.]/g, '-')}`;
+// Every failure's key (the gate's baseline compares them) and the numbers against the committed baseline and exceptions.
+const failureKeys = Object.entries(results).flatMap(([id, row]) => Object.entries(row.conditions)
+  .flatMap(([condition, record]) => (record.keys ?? []).map(key => `${id}|${condition}|${key}`))).sort();
+const readDoc = path => { try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return null; } };
+const against = compareBaseline({ keys: failureKeys, baseline: readDoc(UI_GEOMETRY_BASELINE)?.entries ?? [], exceptions: readDoc(UI_GEOMETRY_EXCEPTIONS)?.exceptions ?? [] });
+const baselineLine = `Against the committed baseline: ${against.failures} failure key(s) counted (${against.excepted} more under ${against.exceptions} exception(s)); baseline ${against.baseline}, new ${against.added.length}, fixed ${against.fixed.length}.`;
 const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
   axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
   kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results };
@@ -289,6 +300,7 @@ writeFileSync(join(out, 'geometry.json'), `${JSON.stringify(report)}\n`);
 
 const md = [`# UI-AUDIT-1 geometry audit — ${run}`, '',
   `Commit ${report.commit.slice(0, 8)}${dirty ? ' (dirty tree)' : ''}, ${totals.rows} registry rows, ${totals.conditions} row × condition cells (${viewports.length} viewports × ${copies.length} copy × ${numberModes.length} numbers where they apply), ${Math.round(report.durationS / 60)} min.`,
+  baselineLine,
   `Measured ${totals.measured}, not opened ${totals.unopened}, not reachable by design ${totals.unreachable.length}. Failures ${totals.failures}: ${CHECKS.map(check => `${check} ${totals.byCheck[check]}`).join(', ')}. Empty-space warnings ${totals.warnings}.`, '',
   `| surface | frame (data-frame) | measured | failing conditions | ${CHECKS.join(' | ')} | empty (min) | not opened | first failure |`, `|---|---|---|---|${CHECKS.map(() => '---').join('|')}|---|---|---|`];
 for (const [id, row] of Object.entries(results)) {
@@ -309,8 +321,11 @@ if (summaryPath !== 'none') {
   const summary = { schema: 1, run, commit: report.commit, dirty, inputs, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
     axes: report.axes, rows: totals.rows, conditions: totals.conditions, measured: totals.measured, failures: totals.failures, unopened: totals.unopened,
     unreachable: totals.unreachable, warnings: totals.warnings, byCheck: totals.byCheck, unregisteredFramed: report.unregisteredFramed.length,
-    bySurface: Object.fromEntries(Object.entries(bySurface).map(([id, surface]) => [id, { failures: surface.failures, unopened: surface.unopened, byCheck: surface.byCheck }])) };
+    baseline: { entries: against.baseline, counted: against.failures, excepted: against.excepted, exceptions: against.exceptions, added: against.added.length, fixed: against.fixed.length },
+    bySurface: Object.fromEntries(Object.entries(bySurface).map(([id, surface]) => [id, { failures: surface.failures, unopened: surface.unopened, byCheck: surface.byCheck }])),
+    failureKeys };
   writeFileSync(summaryPath, `${JSON.stringify(summary, null, 1)}\n`);
 }
 console.log(JSON.stringify({ run, measured: totals.measured, failures: totals.failures, unopened: totals.unopened, byCheck: totals.byCheck, shots: shots.count }));
+console.log(baselineLine);
 process.exit(totals.failures === 0 && totals.unopened === 0 ? 0 : 1);

@@ -22,6 +22,7 @@
     "remote:clone-check": "scripts/remote/run.sh --task clone-check",
     "remote:perf": "scripts/remote/run.sh --task perf",
     "remote:ui-geometry": "scripts/remote/run.sh --task ui-geometry",
+    "ui-geometry:baseline": "node scripts/uiGeometryBaseline.mjs",
     "perf:gate": "tsx scripts/perf/perfGate.ts",
     "hooks:install": "sh scripts/git-hooks/install.sh",
     "postinstall": "test ! -f scripts/git-hooks/install.sh || sh scripts/git-hooks/install.sh",

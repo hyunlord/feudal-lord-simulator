@@ -60,8 +60,17 @@ test("Given clipped text When the clipper has no ellipsis Then overflow fails; w
   assert.deepEqual(bare.failures.map(failure => [failure.check, failure.px]), [["overflow", 60]]);
   assert.equal(evaluateSurface(surface([clipped({ path: "div.text", scroll: false, ellipsis: true })]), css).failures.length, 0);
   assert.equal(evaluateSurface(surface([clipped({ path: "div.list", scroll: true, ellipsis: false })]), css).failures.length, 0);
-  const tall = evaluateSurface(surface([fill(124, 124, 276, 176)], { overflow: { x: 0, y: 40 } }), css);
-  assert.deepEqual(tall.failures.map(failure => failure.what), ["content taller than the surface"]);
+  const tall = evaluateSurface(surface([fill(124, 124, 276, 150), text("p.last", box(124, 170, 200, 236))], { overflow: { x: 0, y: 40 }, border: even(16) }), css);
+  assert.deepEqual(tall.failures.filter(failure => failure.check === "overflow").map(failure => [failure.what, failure.px]), [["content taller than the surface", 40]]);
+});
+
+test("Given a root whose frame layer covers its border box When its scroll overflow is only that layer Then it is no overflow", () => {
+  // The layer (-safe, left out of the items) makes scrollHeight 20 px taller; the content ends inside the padding box.
+  const layered = evaluateSurface(surface([fill(124, 124, 276, 176)], { overflow: { x: 20, y: 20 }, border: even(16) }), css);
+  assert.deepEqual(layered.failures, []);
+  // Content that does reach past the padding box still counts, as far as it reaches (not the layer's 20).
+  const spilled = evaluateSurface(surface([fill(124, 124, 276, 176), { ...text("p.spill", box(124, 150, 290, 170)), slot: false }], { overflow: { x: 20, y: 20 }, border: even(16) }), css);
+  assert.deepEqual(spilled.failures.filter(failure => failure.check === "overflow").map(failure => [failure.what, failure.px]), [["content wider than the surface", 6]]);
 });
 
 test("Given a button on the frame band When evaluated Then border and outside both report it", () => {
@@ -102,14 +111,17 @@ test("Given a painting surface drawn at 1.5× When evaluated Then its safe rect 
   assert.deepEqual(result.inner, box(130.5, 141, 549.5, 357.5));
   assert.deepEqual(result.failures.map(failure => [failure.check, failure.what.split(" ").slice(0, 3).join(" "), failure.px]), [
     ["outside", "control beyond the", 22.5], ["border", "control on the", 14.5], ["portrait", "the face reaches", 10], ["portrait", "120 of 900", 18.4]]);
+  // Grown downward (a 9-slice card 480 × 450): one scale (the width's, 1.5), the bottom rule kept its distance from the bottom.
+  const grown = evaluateSurface(surface([], { rect: box(100, 100, 580, 550), frame: none, padding: none }), spec);
+  assert.deepEqual(grown.inner, box(130.5, 141, 549.5, 507.5));
 });
 
-test("Given a layer frame with a content slot When evaluated Then the slot's box inset by the gap is the inner box and frame slots are free", () => {
+test("Given a layer frame with a content slot When evaluated Then the slot's box is the inner box (its gap is inside it) and frame slots are free", () => {
   const spec: MeasureSpec = { root: ".petition-card", frame: "layer", gap: 8, frameLayer: ".petition-frame", contentSlot: ".petition-body", frameSlots: [".petition-roundel"] };
   const collected = surface([text("p.who", box(170, 140, 400, 160)), { ...text("span.roundel", box(100, 100, 130, 130)), slot: true }],
     { rect: box(100, 100, 600, 500), frame: none, padding: none }, { slot: { rect: box(160, 120, 580, 480), padding: none }, layer: { rect: box(100, 100, 600, 500), frame: { t: 86, r: 25, b: 27, l: 64 } } });
   const result = evaluateSurface(collected, spec);
-  assert.deepEqual(result.inner, box(168, 128, 572, 472));
+  assert.deepEqual(result.inner, box(160, 120, 580, 480));
   assert.equal(result.failures.length, 0);
 });
 
@@ -166,6 +178,5 @@ test("Given the summary step When its inputs and mode are read Then the hash is 
   const inputs = { src: "a", assets: "b", audit: "c", measure: "d", scene: "e", vite: "f" };
   assert.equal(geometryInputHash(inputs), geometryInputHash({ ...inputs }));
   assert.notEqual(geometryInputHash(inputs), geometryInputHash({ ...inputs, src: "z" }));
-  assert.equal(gateMode({ FLS_UI_GEOMETRY_GATE: "enforce" }), "enforce");
-  assert.equal(gateMode({}), "warn");
+  assert.equal(gateMode({ FLS_UI_GEOMETRY_GATE: "warn" }), "warn");
 });
