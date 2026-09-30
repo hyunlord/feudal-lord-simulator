@@ -60,8 +60,9 @@ const spikeWall = { ...palisade([
   palisadeSegment(0, { material: "stone", edgePath: [P, at(-3, 0)] }),
   palisadeSegment(1, { material: "stone", edgePath: [at(-3, 3), P] }),
 ]), gate: P };
-const grid = { width: 10, height: 10, palisade: spikeWall };
-const closed = { width: 10, height: 10, palisade: { ...spikeWall, gate: { x: -5, y: -5 } } };
+const tiles = Array.from({ length: 100 }, (_, index) => ({ tx: index % 10, ty: Math.floor(index / 10), terrain: "grass" as const, buildingId: null, hasRoad: false }));
+const grid = { width: 10, height: 10, tiles, palisade: spikeWall };
+const closed = { width: 10, height: 10, tiles, palisade: { ...spikeWall, gate: { x: -5, y: -5 } } };
 
 test("Given the spike's corner gate When walkers cross the wall Then every crossing the gate opens lies in the drawn passage or the off arm's clearance", () => {
   let axisCrossings = 0; let offCrossings = 0;
@@ -89,8 +90,7 @@ test("Given the spike's corner gate When walkers cross the wall Then every cross
 });
 
 test("Given the spike in wall strips When the items draw their modules Then the axis arm draws the art, the diagonal arm its end pier", () => {
-  const tiles = Array.from({ length: 100 }, (_, index) => ({ tx: index % 10, ty: Math.floor(index / 10), terrain: "grass", buildingId: null, hasRoad: false }));
-  const walls = wallBaselines(spikeWall, { width: 10, height: 10, tiles } as never);
+  const walls = wallBaselines(spikeWall, { width: 10, height: 10, tiles });
   const node = walls.nodes.find(candidate => candidate.kind === "gate");
   assert.ok(node !== undefined);
   const axisKey = unitEdgeKey(P, at(-1, 0)); const offKey = unitEdgeKey(P, at(-1, 1));
@@ -113,8 +113,7 @@ test("Given a 90 degree gate whose off arm runs back When the items draw Then th
     palisadeSegment(0, { material: "stone", edgePath: [P, at(-3, 0)] }),
     palisadeSegment(1, { material: "stone", edgePath: [at(0, -2), P] }),
   ]), gate: P };
-  const tiles = Array.from({ length: 100 }, (_, index) => ({ tx: index % 10, ty: Math.floor(index / 10), terrain: "grass", buildingId: null, hasRoad: false }));
-  const node = wallBaselines(wall, { width: 10, height: 10, tiles } as never).nodes.find(candidate => candidate.kind === "gate");
+  const node = wallBaselines(wall, { width: 10, height: 10, tiles }).nodes.find(candidate => candidate.kind === "gate");
   assert.ok(node !== undefined);
   const axisKey = unitEdgeKey(P, at(-1, 0)); const offKey = unitEdgeKey(P, at(0, -1));
   // Both unit edges reach depth 7 at the gate with anchor x 5; the ids break the tie ("stone:4,2:5,2" < "stone:5,1:5,2").
