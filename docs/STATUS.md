@@ -7,6 +7,14 @@
 
 ## 현재 단계
 
+- **성능 측정 재편: 기다리지 않고 추이로 판정 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 RR3)
+  - perf:gate의 잠금·대기열·조용한 Mac 기다리기를 없앴다. 환경은 수치 옆 기록이다.
+  - ① 개발 서버 텔레메트리 `~/.fls-telemetry/`(`npm run telemetry:report`).
+  - ② 커밋마다 DGX 추이(본선 pre-push가 뒤로 띄움, `npm run remote:trend`).
+  - ③ `npm run perf:ab` A-B-A-B.
+  - ④ [`verification/perf-trend/`](verification/perf-trend/README.md)(`npm run perf:trend`).
+  - 렌더 요청: [텔레메트리 훅](requests/render-telemetry-hooks.md)(줌, 캐시 재생성 이름).
+  - 대기열이 남긴 유효 판정 둘은 `verification/perf-gate/`에 있다(`cf04b4a7` 실패, SMOOTH-2R `00df3324` 실패 — 큰 도시·배치 통과).
 - **보고서 실행 위치 필수·RR2 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션): 보고서의 검증마다 실행 위치(DGX/Mac/둘 다)를 적는다(AGENTS.md 보고 양식). 끊김·메모리는 Mac 실제 창, 처리량 기준선은 DGX(결정 RR2). 최소 줌은 0.5 그대로이고, perf:gate의 0.4 장면은 건너뛴다.
 - **perf:gate 먼 줌·사람 입력·대기열 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 SG5)
   - 먼 줌 장면 둘(가장 큰 도시 5×, 줌 0.5·0.4). 0.4는 게임 최소 줌이 0.5라 "건너뜀(도달 불가)"이다.

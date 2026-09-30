@@ -14,6 +14,7 @@ import { join } from "node:path";
 import { otherCpuSample, otherCpuShare } from "./machineLoad";
 import { SCENES, zoomSteps } from "./perfGate";
 import { sourceTree } from "./sourceTree";
+import { freePort } from "./freePort";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] ?? fallback : fallback; };
@@ -58,7 +59,7 @@ async function main() {
   const urls: Record<"A" | "B", string> = { A: "", B: "" };
   const runs: { side: "A" | "B"; round: number; summary: any; otherCpu: number }[] = [];
   try {
-    for (const [side, commit, port] of [["A", a, 4396], ["B", b, 4397]] as const) {
+    for (const [side, commit, port] of [["A", a, await freePort()], ["B", b, await freePort()]] as const) {
       const tree = sourceTree(".", commit); trees.push(tree);
       const build = join(work, `build-${side}`);
       const built = spawnSync(join(tree, "node_modules/.bin/vite"), ["build", "--minify", "false", "--outDir", build, "--emptyOutDir"], { cwd: tree, encoding: "utf8" });

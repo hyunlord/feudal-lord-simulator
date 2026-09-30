@@ -11,6 +11,8 @@ npm run remote:guardrail -- --seeds 1,2,3,4,5          # 가드레일(기본 1,2
 npm run remote:browser -- --repeat 10 [tests/x.test.ts ...]  # 브라우저 테스트 N회 연속(기본 Part7)
 npm run remote:perf [-- --baseline perf/baseline-dgx-<sha>.json]   # 인자 없으면 기준선 기록, 있으면 p95 비교
 npm run remote:clone-check                             # 커밋 깨끗한 클론(+LFS) → npm ci·typecheck·test·build
+npm run remote:trend [-- --commits a,b] [--rounds 3]  # 커밋마다 성능 추이(scripts/perf/trendRun.ts) → ~/fls-runs/_trend/<sha>.json
+                                                       #   본선 푸시 때 pre-push가 뒤로 띄운다(FLS_TREND_OFF=1로 끔). 모으기: npm run perf:trend
 scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>   # 임의 명령
 ```
 

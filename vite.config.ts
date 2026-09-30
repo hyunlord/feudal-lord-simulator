@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 import { keyartDerivativesPlugin } from "./scripts/keyartDerivatives";
 import { woff2OnlyFontsPlugin } from "./scripts/woff2OnlyFonts";
+import { flsTelemetryPlugin } from "./scripts/telemetry/vitePlugin";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -72,7 +73,8 @@ function gameVersion(): string {
 }
 
 export default defineConfig({
-  plugins: [react(), keyartDerivativesPlugin(), woff2OnlyFontsPlugin(), nat1PseudoLongPlugin()],
+  // flsTelemetryPlugin: the dev server only — always-on performance telemetry into ~/.fls-telemetry (scripts/telemetry/).
+  plugins: [react(), keyartDerivativesPlugin(), woff2OnlyFontsPlugin(), nat1PseudoLongPlugin(), flsTelemetryPlugin()],
   base: process.env.GITHUB_PAGES === "true" ? "/feudal-lord-simulator/" : "/",
   define: { __GAME_VERSION__: JSON.stringify(gameVersion()) },
 });

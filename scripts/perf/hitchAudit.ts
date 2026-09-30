@@ -106,6 +106,7 @@ async function main() {
   await page.waitForTimeout(2_000);   // tracing's own start-up stall stays out of the recorded frames
   // The recorder: every rAF's timestamp, and every 250 ms the proof port's tick, chapter, season and weather.
   const metricsStart = await cdpMetrics();
+  const tickStart: number | null = await page.evaluate(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__?.state().tick ?? null);
   heap.sampler = setInterval(() => { cdp.send("Runtime.getHeapUsage").then((usage: { usedSize: number }) => {
     if (heap.last !== null) { const change = usage.usedSize - heap.last; if (change > 0) heap.rises += change; else if (change < -1e6) { heap.falls -= change; heap.gcs += 1; } }
     heap.last = usage.usedSize; heap.samples += 1; }, () => {}); }, 250);
@@ -195,7 +196,12 @@ async function main() {
     styleMsPerFrame: perFrame("RecalcStyleDuration"), heapAllocMBps: Math.round((heap.rises / 1e6 / Math.max(1, recordSeconds)) * 10) / 10,
     gcPerMin: Math.round((heap.gcs / Math.max(1 / 60, recordSeconds / 60)) * 10) / 10, heapEndMB: heap.last === null ? null : Math.round(heap.last / 1e5) / 10,
     canvasPerSec: perSecond(madeCounts.canvas ?? 0), offscreenPerSec: perSecond(madeCounts.offscreen ?? 0), bitmapPerSec: perSecond(madeCounts.bitmap ?? 0),
-    getImageDataPerSec: perSecond(madeCounts.getImageData ?? 0), heapSamples: heap.samples };
+    getImageDataPerSec: perSecond(madeCounts.getImageData ?? 0), heapSamples: heap.samples,
+    // Per game tick (with the proof port): a busy machine runs fewer ticks, so these hold still where per-second ones fall.
+    ticks: tickStart === null || recorded.tick === null ? null : recorded.tick - tickStart,
+    scriptMsPerTick: tickStart === null || recorded.tick === null || recorded.tick <= tickStart ? null : Math.round((((metricsEnd.ScriptDuration ?? 0) - (metricsStart.ScriptDuration ?? 0)) * 1000 / (recorded.tick - tickStart)) * 1000) / 1000,
+    heapAllocKBPerTick: tickStart === null || recorded.tick === null || recorded.tick <= tickStart ? null : Math.round(heap.rises / 1e3 / (recorded.tick - tickStart) * 10) / 10,
+    canvasPer1kTicks: tickStart === null || recorded.tick === null || recorded.tick <= tickStart ? null : Math.round(((madeCounts.canvas ?? 0) + (madeCounts.offscreen ?? 0)) * 1000 / (recorded.tick - tickStart) * 10) / 10 };
   const hidIdleAtEnd = headed ? hidIdleSeconds() : null;   // < recordSeconds: a person touched the Mac during the run
 
   // The page's record first, beside the trace: an analysis that fails can be redone from these two files.

@@ -116,6 +116,10 @@
   - **처리량 기준선**(프레임 p50·p95, 단계 시간 등): DGX 기준선(`perf/baseline-dgx-<sha>.json`)과만 비교한다. Mac 수치와 섞지 않는다.
   - **끊김 판정**(`npm run perf:gate`, 최대·33/50 ms 초과·순간): 이 Mac의 실제 Chrome 창에서만 판정한다. DGX 헤드리스는 소프트웨어 래스터라 끊김 판정에 쓰지 않는다([perf-gate](docs/verification/perf-gate/README.md), 결정 SG1~SG5).
   - **메모리 측정**(`scripts/perf/memoryHolders.ts`, 힙 스냅숏·픽셀 붙잡이): 이 Mac의 실제 Chrome 창에서 잰다. 픽셀 메모리는 DPR·GPU에 따라 달라서다. 판정에 써도 된다(결정 RR2).
+- **성능 판정은 추이로 한다**(사용자 판정 2026-09-30, 결정 RR3). 측정은 아무것도 기다리지 않는다: 잠금·대기열·조용한 기계 기다리기가 없고, 다른 세션을 막지도 막히지도 않는다. 그때의 환경은 수치 옆에 적는다.
+  - **커밋마다 추이**: 본선 푸시 때 pre-push 훅이 그 커밋을 DGX에서 뒤로 잰다(`scripts/perf/trendRun.ts`, 소음에 강한 지표: 틱당 스크립트 ms·틱당 할당·캔버스 생성·GC·힙). `npm run perf:trend`가 [`docs/verification/perf-trend/`](docs/verification/perf-trend/README.md)를 다시 쓰고, 나빠진 지표에 표시한다. 본선에 합치는 세션은 이 문서를 갱신해 함께 커밋한다.
+  - **두 커밋 비교**: `npm run perf:ab -- --a <커밋> --b <커밋>`. 같은 장면을 A-B-A-B로 번갈아 돌려, 같은 소음을 둘이 같이 맞게 한다. 짝지은 차이 ±2 표준오차가 0의 한쪽에 있을 때만 나빠짐·좋아짐이다. Mac 실제 창(기본)이나 DGX(`--headless`, `run.sh`로).
+  - **항상 켜진 텔레메트리**: 개발 서버(`npm run dev`)는 누가 돌리든 10초마다 프레임 분포·33/50 ms 초과·긴 프레임의 우리 함수·힙·GC·캔버스 생성·계절 전환/자동 저장을 그때의 환경(다른 CPU·입력·창·배속·인구)과 함께 `~/.fls-telemetry/`에 쌓는다(`scripts/telemetry/`, 배포판에는 없음, `FLS_TELEMETRY=0`으로 끔). `npm run telemetry:report`가 환경별로 나눠 본다. 게임 쪽 훅(줌·캐시 재생성 이름)은 [요청서](docs/requests/render-telemetry-hooks.md).
 - **원격 폴더 label은 `<세션>-<작업ID>`다**(예: `render-F0V`, `engine-F0A`). `FLS_REMOTE_LABEL`로 준다.
 - 원격 실행은 48GB·12코어·nice 10 안에서만 돈다(`fls-runs.slice`). 이 상한을 올리거나 우회하지 않는다. 플레이 서버(4173)는 건드리지 않는다. 원격 실행의 포트는 4300~4399다.
 

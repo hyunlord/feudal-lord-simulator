@@ -16,13 +16,14 @@ import { createReadStream, createWriteStream, mkdirSync, mkdtempSync, readdirSyn
 import { createInterface } from "node:readline";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { freePort } from "./freePort";
 import { SEASON_TEXT, TUTORIAL_OFF, MODAL, closeModals, loadChromium, openScene, type PageWindow } from "./scenePage";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback?: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] : fallback; };
 const scene = flag("scene")!; const save = flag("save"); const speed = Number(flag("speed", "5"));
 const playSeconds = Number(flag("play-seconds", "120")); const cameraSeconds = Number(flag("camera-seconds", "60"));
-const out = flag("out")!; const raw = flag("raw")!; const port = Number(flag("port", "4393"));
+const out = flag("out")!; const raw = flag("raw")!; const fixedPort = flag("port");
 const noProof = argv.includes("--no-proof"); const noSnapshot = argv.includes("--no-snapshot");   // the page as a player gets it (no proof port and its render recorders)
 if (!scene || !out || !raw) throw new Error("--scene --out --raw are required");
 mkdirSync(out, { recursive: true }); mkdirSync(raw, { recursive: true });
@@ -166,6 +167,7 @@ async function main() {
   const work = mkdtempSync(join(tmpdir(), "fls-memory-")); const build = join(work, "build");
   const built = spawnSync("node_modules/.bin/vite", ["build", "--minify", "false", "--sourcemap", "true", "--outDir", build, "--emptyOutDir"], { encoding: "utf8" });
   if (built.status !== 0) throw new Error(`vite build failed:\n${built.stdout}\n${built.stderr}`);
+  const port = fixedPort === undefined ? await freePort() : Number(fixedPort);   // never a port another session may hold
   const preview = spawn("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
   const url = `http://127.0.0.1:${port}/`;
   for (let i = 0; i < 60; i++) { if (await fetch(url).then(response => response.ok, () => false)) break; await new Promise(resolve => setTimeout(resolve, 1000)); }
