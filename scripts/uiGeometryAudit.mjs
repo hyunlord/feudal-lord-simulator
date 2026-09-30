@@ -20,9 +20,10 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
-import { geometryInputHash, geometryInputs, UI_GEOMETRY_INPUTS, UI_GEOMETRY_SUMMARY } from './checks/uiGeometry.mjs';
+import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY, UI_INPUT_ROOTS } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
-import { CHECKS, collectSurface, evaluateSurface, markFailures } from './uiGeometryMeasure.ts';
+import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
+import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures } from './uiGeometryMeasure.ts';
 import { extremeNumbers, mapTile, sceneTile } from './uiGeometryScene.ts';
 
 const [out] = process.argv.slice(2);
@@ -75,7 +76,7 @@ async function loadScene(scene, condition) {
     const base = scene.kind === 'state' ? loadState(scene.set, scene.name) : null;
     const state = base !== null && condition.numbers === 'extreme' ? extremeNumbers(base) : base;
     const opened = await openScene(browser, { state, tile: state === null ? [45, 41] : scene.focus !== undefined ? (({ tx, ty }) => [tx, ty])(mapTile(state, scene.focus)) : sceneTile(state, scene.tile), baseUrl: url, width: viewport.width, height: viewport.height,
-      zoom: scene.zoom ?? 1.1, run: false, hasTouch: viewport.touch,
+      zoom: scene.zoom ?? 1.1, run: false, hasTouch: viewport.touch, loadTimeout: 120_000,
       initScript: scene.kind === 'state' ? `${NAME_SHIM}${TUTORIAL_OFF}` : NAME_SHIM, query: `${scene.query ?? ''}${long ? '&pseudo-long=1' : ''}` });
     opened.page.on('pageerror', error => pageErrors.push(String(error).slice(0, 200)));
     // openScene starts the clock by the 1× seal's name, which the pseudo-long copy lengthens: press the second seal.
@@ -89,7 +90,7 @@ async function loadScene(scene, condition) {
   await page.routeWebSocket('**', socket => socket.close());
   const target = new URL(scene.kind === 'route' ? scene.path : '', url);
   if (long) target.searchParams.set('pseudo-long', '1');
-  await page.goto(target.href);
+  await page.goto(target.href, { timeout: 120_000 });
   await page.locator(scene.kind === 'route' ? '[data-testid="ui-kit-gallery"]' : '.welcome-parchment').first().waitFor({ timeout: 60_000 });
   return { context, page, state: { buildings: [], constructionSites: [], walkers: [] } };
 }
@@ -122,6 +123,11 @@ async function runStep(page, state, step) {
       }
       await page.locator(shown(step.story)).first().waitFor({ timeout: 30_000 });
     }
+  } else if ('repeat' in step) {
+    for (let turn = 0; turn < (step.max ?? 10) && await page.locator(shown(step.until)).count() === 0; turn += 1) {
+      await page.locator(shown(step.repeat)).first().click({ timeout: 10_000 }); await pause(400);
+    }
+    await page.locator(shown(step.until)).first().waitFor({ timeout: 5_000 });
   } else if ('dismiss' in step) {
     for (const selector of step.dismiss) if (await page.locator(shown(selector)).count() > 0) { await page.locator(shown(selector)).first().click({ timeout: 10_000 }).catch(() => undefined); await pause(400); }
   } else if ('map' in step) {
@@ -155,17 +161,27 @@ const results = {};
 for (const row of SURFACES) if (selected(row)) results[row.id] = { frame: row.frame, root: row.root, data: row.data, ...(row.unreachable ? { unreachable: row.unreachable } : {}), conditions: {} };
 const shots = { count: 0, bytes: 0, rows: new Set() };
 const specOf = row => ({ root: row.root, frame: row.frame, gap: FRAME_GAP_PX, frameLayer: row.frameLayer, contentSlot: row.contentSlot, frameSlots: row.frameSlots,
-  scroll: row.scroll, scrollParts: row.scrollParts, painting: row.painting, portraitRing: row.portraitRing, siblingsNoOverlap: row.siblingsNoOverlap, expect: row.expect });
+  scroll: row.scroll, scrollParts: row.scrollParts, painting: row.painting, portraitRing: row.portraitRing, siblingsNoOverlap: row.siblingsNoOverlap, expect: row.expect,
+  registryRoots: REGISTRY_ROOTS });
+const REGISTRY_ROOTS = [...new Set(SURFACES.map(row => row.root))];
+/** Framed roots on screen that no registry root matches: kind + class → the rows whose screens showed them. */
+const unregisteredFramed = new Map();
+/** The frame type a data-frame kind stands for (FRAME_TOKENS; "flat" has no art). */
+const kindType = kind => kind === 'flat' ? 'flat' : FRAME_TOKENS[kind]?.type ?? 'unknown';
 
 const roundBox = box => box === null ? null : Object.fromEntries(Object.entries(box).map(([key, value]) => [key, Math.round(value * 10) / 10]));
 async function measure(row, condition, page) {
   const spec = specOf(row);
   const collected = await page.evaluate(collectSurface, spec);
   const evaluation = evaluateSurface(collected, spec);
+  for (const { kind, path } of collected.unregistered ?? []) {
+    const key = `${kind} ${path}`; if (!unregisteredFramed.has(key)) unregisteredFramed.set(key, new Set()); unregisteredFramed.get(key).add(row.id);
+  }
+  const kind = collected.root?.kind ?? null;
   const record = evaluation.found
     ? { status: 'measured', counts: evaluation.counts, failures: evaluation.failures.slice(0, 25).map(failure => ({ ...failure, rect: roundBox(failure.rect) })),
-      total: evaluation.failures.length, empty: evaluation.empty, ...(evaluation.expectMissed ? { expectMissed: row.expect } : {}),
-      inner: roundBox(evaluation.inner), root: roundBox(collected.root.rect) }
+      total: evaluation.failures.length, keys: [...new Set(evaluation.failures.map(failureKey))].sort(), empty: evaluation.empty, ...(evaluation.expectMissed ? { expectMissed: row.expect } : {}),
+      inner: roundBox(evaluation.inner), root: roundBox(collected.root.rect), kind }
     : { status: 'not-found', error: `${row.root} not on screen after the steps${evaluation.expectMissed ? ` (and ${row.expect} missing)` : ''}` };
   results[row.id].conditions[condition.id] = record;
   if (evaluation.found && evaluation.failures.length > 0 && !shots.rows.has(row.id) && shots.count < shotLimit && shots.bytes < SHOT_BYTES) {
@@ -246,12 +262,20 @@ await browser.close();
 // --- Totals, the report, the committed summary.
 const git = args => { try { return execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { return ''; } };
 const inputs = geometryInputs('HEAD');
-const dirty = process.env.DIRTY === '1' || git(['status', '--porcelain', '--untracked-files=no', '--', 'src', ...Object.values(UI_GEOMETRY_INPUTS).filter(path => path.startsWith('scripts/'))]) !== '';
+// public/assets is left out of the status check: its LFS files can show as changed where git-lfs is missing.
+const dirty = process.env.DIRTY === '1' || git(['status', '--porcelain', '--untracked-files=no', '--', ...UI_INPUT_ROOTS.map(item => item.root).filter(root => root !== 'public/assets')]) !== '';
 const totals = { rows: Object.keys(results).length, conditions: 0, measured: 0, failures: 0, unopened: 0, unreachable: [], warnings: 0, byCheck: Object.fromEntries(CHECKS.map(check => [check, 0])) };
 const bySurface = {};
+const kindNotes = [];
 for (const [id, row] of Object.entries(results)) {
   if (row.unreachable) { totals.unreachable.push(id); continue; }
-  const surface = { measured: 0, failures: 0, unopened: 0, byCheck: {}, conditionsFailing: 0 };
+  const kinds = [...new Set(Object.values(row.conditions).filter(record => record.status === 'measured').map(record => record.kind ?? 'none'))];
+  row.kinds = kinds;
+  for (const kind of kinds) {
+    if (kind === 'none') kindNotes.push(`${id}: the root has no data-frame (${row.frame === 'flat' ? 'a container: its own border and the 8 px gap' : 'measured by its border and border-image'})`);
+    else if (kindType(kind) !== row.frame) kindNotes.push(`${id}: data-frame="${kind}" is ${kindType(kind)}, the registry says ${row.frame}`);
+  }
+  const surface = { measured: 0, failures: 0, unopened: 0, byCheck: {}, conditionsFailing: 0, kinds };
   for (const record of Object.values(row.conditions)) {
     totals.conditions += 1;
     if (record.status !== 'measured') { surface.unopened += 1; totals.unopened += 1; continue; }
@@ -264,31 +288,45 @@ for (const [id, row] of Object.entries(results)) {
   bySurface[id] = surface;
 }
 const run = process.env.RUN ?? `local-${new Date(started).toISOString().replace(/[:.]/g, '-')}`;
-const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
-  axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40), rows: results };
+// Every failure's key (the gate's baseline compares them) and the numbers against the committed baseline and exceptions.
+const failureKeys = Object.entries(results).flatMap(([id, row]) => Object.entries(row.conditions)
+  .flatMap(([condition, record]) => (record.keys ?? []).map(key => `${id}|${condition}|${key}`))).sort();
+const readDoc = path => { try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return null; } };
+const against = compareBaseline({ keys: failureKeys, baseline: readDoc(UI_GEOMETRY_BASELINE)?.entries ?? [], exceptions: readDoc(UI_GEOMETRY_EXCEPTIONS)?.exceptions ?? [] });
+const baselineLine = `Against the committed baseline: ${against.failures} failure key(s) counted (${against.excepted} more under ${against.exceptions} exception(s)); baseline ${against.baseline}, new ${against.added.length}, fixed ${against.fixed.length}.`;
+const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs: inputs.length, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
+  axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
+  kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results };
 writeFileSync(join(out, 'geometry.json'), `${JSON.stringify(report)}\n`);
 
 const md = [`# UI-AUDIT-1 geometry audit — ${run}`, '',
   `Commit ${report.commit.slice(0, 8)}${dirty ? ' (dirty tree)' : ''}, ${totals.rows} registry rows, ${totals.conditions} row × condition cells (${viewports.length} viewports × ${copies.length} copy × ${numberModes.length} numbers where they apply), ${Math.round(report.durationS / 60)} min.`,
+  baselineLine,
   `Measured ${totals.measured}, not opened ${totals.unopened}, not reachable by design ${totals.unreachable.length}. Failures ${totals.failures}: ${CHECKS.map(check => `${check} ${totals.byCheck[check]}`).join(', ')}. Empty-space warnings ${totals.warnings}.`, '',
-  `| surface | frame | measured | failing conditions | ${CHECKS.join(' | ')} | empty (min) | not opened | first failure |`, `|---|---|---|---|${CHECKS.map(() => '---').join('|')}|---|---|---|`];
+  `| surface | frame (data-frame) | measured | failing conditions | ${CHECKS.join(' | ')} | empty (min) | not opened | first failure |`, `|---|---|---|---|${CHECKS.map(() => '---').join('|')}|---|---|---|`];
 for (const [id, row] of Object.entries(results)) {
   if (row.unreachable) { md.push(`| ${id} | ${row.frame} | — | — | ${CHECKS.map(() => '').join(' | ')} | | | not reachable: ${row.unreachable} |`); continue; }
   const surface = bySurface[id]; const records = Object.values(row.conditions).filter(record => record.status === 'measured');
   const first = records.flatMap(record => record.failures)[0];
   const minEmpty = records.length === 0 ? '' : Math.min(...records.map(record => record.empty?.ratio ?? 1)).toFixed(2);
   const errors = Object.values(row.conditions).filter(record => record.status !== 'measured').map(record => record.error).filter(Boolean);
-  md.push(`| ${id} | ${row.frame} | ${surface.measured} | ${surface.conditionsFailing} | ${CHECKS.map(check => surface.byCheck[check] ?? 0).join(' | ')} | ${minEmpty} | ${surface.unopened}${errors.length ? ` (${errors[0].slice(0, 80).replace(/\|/g, '/')})` : ''} | ${first === undefined ? '' : `${first.check}: ${first.what} — \`${first.path.replace(/\|/g, '/')}\` ${first.px}px`} |`);
+  md.push(`| ${id} | ${row.frame} (${surface.kinds.join(', ')}) | ${surface.measured} | ${surface.conditionsFailing} | ${CHECKS.map(check => surface.byCheck[check] ?? 0).join(' | ')} | ${minEmpty} | ${surface.unopened}${errors.length ? ` (${errors[0].slice(0, 80).replace(/\|/g, '/')})` : ''} | ${first === undefined ? '' : `${first.check}: ${first.what} — \`${first.path.replace(/\|/g, '/')}\` ${first.px}px`} |`);
 }
+md.push('', `## Framed roots on screen that no registry row measures (${report.unregisteredFramed.length})`, '',
+  ...(report.unregisteredFramed.length === 0 ? ['none'] : report.unregisteredFramed.map(entry => `- \`${entry.root}\` (seen with ${entry.seenIn.join(', ')})`)),
+  '', `## Frame kind notes (${kindNotes.length})`, '', ...(kindNotes.length === 0 ? ['none'] : kindNotes.map(note => `- ${note}`)));
 writeFileSync(join(out, 'geometry.md'), `${md.join('\n')}\n`);
 
 if (summaryPath !== 'none') {
   mkdirSync(dirname(summaryPath), { recursive: true });
-  const summary = { schema: 1, run, commit: report.commit, dirty, inputs, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
+  const summary = { schema: 1, run, commit: report.commit, dirty, inputs: inputs.length, inputHash: report.inputHash, measuredAt: report.startedAt, report: join(out, 'geometry.json'),
     axes: report.axes, rows: totals.rows, conditions: totals.conditions, measured: totals.measured, failures: totals.failures, unopened: totals.unopened,
-    unreachable: totals.unreachable, warnings: totals.warnings, byCheck: totals.byCheck,
-    bySurface: Object.fromEntries(Object.entries(bySurface).map(([id, surface]) => [id, { failures: surface.failures, unopened: surface.unopened, byCheck: surface.byCheck }])) };
+    unreachable: totals.unreachable, warnings: totals.warnings, byCheck: totals.byCheck, unregisteredFramed: report.unregisteredFramed.length,
+    baseline: { entries: against.baseline, counted: against.failures, excepted: against.excepted, exceptions: against.exceptions, added: against.added.length, fixed: against.fixed.length },
+    bySurface: Object.fromEntries(Object.entries(bySurface).map(([id, surface]) => [id, { failures: surface.failures, unopened: surface.unopened, byCheck: surface.byCheck }])),
+    failureKeys };
   writeFileSync(summaryPath, `${JSON.stringify(summary, null, 1)}\n`);
 }
 console.log(JSON.stringify({ run, measured: totals.measured, failures: totals.failures, unopened: totals.unopened, byCheck: totals.byCheck, shots: shots.count }));
+console.log(baselineLine);
 process.exit(totals.failures === 0 && totals.unopened === 0 ? 0 : 1);

@@ -18,8 +18,9 @@ import { FAMILY_TREE_COPY } from "./familyTreeCopy.ko";
 //  - A unit with children folds (its descendants hidden, a count under it). The player's choice holds; without one, a
 //    tree wider than the view folds units off the selected person's line, deepest and widest first, until it fits.
 
+/** UI-AUDIT-1: a node is 144 tall so its face (64), two name lines and the years fit the frame's content box (safe 6 + gap 8). */
 export const TREE = {
-  nodeWidth: 112, nodeHeight: 136, spouseGap: 48, siblingGap: 20, rowGap: 64, labelColumn: 104, top: 88, margin: 16,
+  nodeWidth: 112, nodeHeight: 144, spouseGap: 48, siblingGap: 20, rowGap: 64, labelColumn: 104, top: 88, margin: 16,
   /** Branch line thickness (the Wave 25 lines are 8 px, drawn at 6) and the joint pieces (16 px, drawn at 12). */
   line: 6, joint: 12, toggle: 44,
 } as const;

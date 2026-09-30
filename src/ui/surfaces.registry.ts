@@ -2,8 +2,11 @@
 // drawers, pages, books — with how a player reaches it, the data state it is measured in and what its frame is. Data
 // only: scripts/uiGeometryAudit.mjs opens each row in three viewports × two copy lengths × two number ranges and
 // measures it (scripts/uiGeometryMeasure.ts); scripts/checks/surfaceRegistry.mjs (a check:merge step and
-// tests/surfacesRegistry.test.ts) fails when a dialog root, a framed class name in src/ui/** or src/render/*.tsx, or a
-// CSS selector that sets a border-image is in none of the selectors below and not in NOT_SURFACES.
+// tests/surfacesRegistry.test.ts) fails when a dialog root, a framed root (data-frame), a framed class name in src/ui/** or
+// src/render/*.tsx, or a CSS selector that sets a border-image is in none of the selectors below and not in NOT_SURFACES;
+// the audit also lists every framed root it meets on screen that no row's root matches. `frame` is the kind of frame
+// the surface wears; on the frame tokens its root's data-frame kind names it (FRAME_TOKENS type), and the audit
+// reports any row where the two disagree.
 // Frame kinds (docs survey §0.3): `css` — the root's own border-image; `layer` — a sibling span at inset 0 carries the
 // border-image (`frameLayer`), content sits in the art's content rect (`contentSlot`); `painting` — the whole card art
 // is the root's background, children sit in art-pixel slots (`painting` holds the art's size and its content-safe
@@ -43,6 +46,8 @@ export type OpenStep =
   /** Close whatever of these is open (a chapter page, a card that opened over the scene). */
   | { readonly dismiss: readonly string[] }
   | { readonly map: MapTarget; readonly action: "click" | "hover" | "tap" }
+  /** Click `repeat` (the first visible match) until `until` shows, at most `max` times (a book's next page). */
+  | { readonly repeat: string; readonly until: string; readonly max?: number }
   /** Hover buildings of these kinds one by one until `until` shows. */
   | { readonly hoverEach: readonly string[]; readonly until: string; readonly max?: number };
 
@@ -108,6 +113,8 @@ const PETITION = {
   root: ".story-modal.petition-card", frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", frameSlots: [".petition-roundel"],
   siblingsNoOverlap: [".petition-option", ".story-modal-later"],
 } as const;
+const BOOK = { root: ".chronicle-page.legacy-book", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-book-body", scrollParts: [".legacy-book-page"],
+  scene: { kind: "state", set: "ui10", name: "chapter5-end", tile: "house", zoom: 1.1, query: "&story-delay=5000" } } as const;
 const chapterScene = (set: StateSet, name: string) => ({ kind: "state", set, name, tile: "house", zoom: 1.1, query: "&story-delay=5000" }) as const;
 const CHAPTER_PAGE = {
   root: ".chronicle-page:not(.legacy-ending):not(.legacy-book)", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",
@@ -136,6 +143,8 @@ export const SURFACES: readonly SurfaceRow[] = [
     data: "the steward's line (quiet, or the advisor's line when he speaks)" },
   { id: "hud.crisis-icons", root: ".crisis-icons", frame: "flat", scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: QUIET },
     open: [DISMISS], data: "the famine's alerts (at most three bells)" },
+  { id: "hud.stuck-goods", root: ".crisis-icons .stuck-goods-chip", frame: "css", scene: { kind: "state", set: "ui10", name: "empty-manor", tile: "house", zoom: 1.1, query: QUIET },
+    open: [DISMISS, { wait: ".stuck-goods-chip" }], data: "the 1404 manor's worst stuck pile (a kit secondary button left of the bells)" },
   { id: "hud.event-chips", root: ".event-cards", frame: "flat", scene: { kind: "state", set: "ui9", name: "reorg.alehouse_boom", tile: "keep", zoom: 1.1, query: "&story-delay=0" },
     open: [{ wait: ".event-chip", timeout: 90_000 }, { pause: 500 }], data: "chapter 4's alehouse boom beat" },
   { id: "hud.event-card", extends: "hud.event-chips", root: ".event-card", frame: "css", scene: { kind: "state", set: "ui9", name: "reorg.alehouse_boom", tile: "keep", zoom: 1.1, query: "&story-delay=0" },
@@ -148,7 +157,8 @@ export const SURFACES: readonly SurfaceRow[] = [
     unreachable: "the help seal shows only on a tutorial card whose step has an advisor line; the opening card, the one after it and the chapter goal cards (tutorial off) carry none, and later steps need buildings finished (UI-AUDIT-1 smoke runs)" },
   { id: "hud.unlock-banner", root: ".unlock-banner", frame: "css", scene: { kind: "new-game" }, numbers: false, open: [], data: "a tutorial unlock",
     unreachable: "shows only when a tutorial step unlocks a tool; no scripted path completes one (survey §2: no browser script reaches it)" },
-  { id: "hud.pause-veil", root: ".pause-veil-label", frame: "css", scene: TOWN, open: [], data: "the paused town's badge (speed 0, no modal)" },
+  { id: "hud.pause-veil", root: ".pause-veil-label", frame: "painting", painting: { art: { w: 128, h: 48 }, safe: { x: 25, y: 2, w: 102, h: 44 } }, scene: TOWN, open: [],
+    data: "the paused town's badge (speed 0, no modal)" },
   { id: "hud.completion-toast", root: ".completion-toast", frame: "css", scene: { kind: "state", set: "ui5", name: "carrying", tile: "house", zoom: 1.1, query: QUIET, run: true },
     open: [{ key: "Digit3" }, { wait: ".completion-toast", timeout: 120_000 }], data: "the carter town's mill site finishing at speed 3" },
   { id: "hud.era-ceremony", root: ".era-ceremony", frame: "flat", scene: TOWN, open: [], data: "entering an era",
@@ -179,13 +189,17 @@ export const SURFACES: readonly SurfaceRow[] = [
   // --- The panel slot (S-30: one at a time).
   { id: "slot.goals", root: ".slot-panel.goal-slot", frame: "css", scene: TOWN, open: [{ click: ".goal-drawer-toggle" }, { pause: 600 }], scroll: "y",
     data: "the goal log, the settlement line and its progress" },
+  { id: "slot.goals.drawer", extends: "slot.goals", root: ".goal-drawer", frame: "css", scene: TOWN, open: [], data: "the goal log inside the slot" },
+  { id: "slot.goals.status", extends: "slot.goals", root: ".settlement-status", frame: "css", scene: TOWN, open: [], data: "the settlement line" },
   { id: "slot.goals.settlement", extends: "slot.goals", root: ".settlement-progress", frame: "flat", scene: TOWN,
     open: [{ click: ".settlement-progress > details > summary" }, { pause: 500 }], data: "the settlement's progress, opened" },
   { id: "slot.goals.era-console", extends: "slot.goals.settlement", root: ".era-console", frame: "flat", scene: TOWN, open: [], data: "the stone town's era console" },
   { id: "slot.population", root: ".ledger-population-drawer.slot-panel", frame: "css", scene: TOWN,
     open: [{ click: ".status-pill > .status-pill-cell:nth-of-type(2)" }, { pause: 600 }], scroll: "y", data: "the town's population events" },
+  { id: "slot.population.panel", extends: "slot.population", root: ".population-event-panel", frame: "flat", scene: TOWN, open: [], data: "the population log inside the slot" },
   { id: "slot.inspector", root: ".slot-panel.inspector-slot", frame: "css", scene: TOWN,
     open: [LEDGER, { click: ".ledger-held-toggle" }, { click: ".ledger-store" }, { pause: 700 }], scroll: "y", data: "the first store's inspector" },
+  { id: "slot.inspector.body", extends: "slot.inspector", root: ".left-inspector", frame: "css", scene: TOWN, open: [], scroll: "y", data: "the inspector inside the slot" },
   { id: "slot.ledger.stock", root: ".slot-panel.ledger-drawer", frame: "css", scene: TOWN, open: [LEDGER, { pause: 600 }], scroll: "y",
     scrollParts: [".ledger-matrix-scroll"], data: "the stone town's stocks" },
   { id: "slot.ledger.alerts", root: ".slot-panel.ledger-drawer", frame: "css", scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: QUIET },
@@ -239,6 +253,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.chapter-page.ch5", ...CHAPTER_PAGE, scene: chapterScene("ui10", "chapter5-end"), data: "chapter 5's end page (the campaign's)" },
   { id: "modal.chapter-preview", extends: "modal.chapter-page.ch1", root: ".chapter-preview", frame: "flat", scene: chapterScene("ui5", "chapter-end"),
     open: [{ click: ".chronicle-page .chronicle-next" }, { wait: ".chapter-preview" }, { pause: 800 }], data: "chapter 2's preview and goals" },
+  { id: "modal.chapter-preview.goals", extends: "modal.chapter-preview", root: ".chapter-preview-goals", frame: "flat", scene: chapterScene("ui5", "chapter-end"), open: [],
+    data: "chapter 2's goals on the preview" },
   { id: "modal.chapter-loading", root: ".chapter-loading", frame: "flat", scene: { kind: "title" }, numbers: false,
     open: [{ click: ".welcome-parchment [data-scenario]" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
   { id: "modal.person-card", extends: "map.selection.house", root: ".person-card", frame: "painting", painting: PERSON_CARD_ART, scene: TOWN_CLOSE,
@@ -250,9 +266,12 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.history.records", root: ".chronicle-screen", frame: "flat", scene: TOWN, open: [...CHRONICLE], scrollParts: [".chronicle-list", ".chronicle-detail"],
     data: "the stone town's chronicle: timeline, filters, record list, detail" },
   { id: "modal.history.record-card", extends: "modal.history.records", root: ".chronicle-card", frame: "layer", frameLayer: ".chronicle-card-frame", scene: TOWN, open: [],
+    frameSlots: [".chronicle-card-art--portrait"],
     data: "the first record card" },
-  { id: "modal.history.snapshot-map", extends: "modal.history.records", root: ".chronicle-map", frame: "layer", frameLayer: ".chronicle-map-frame", contentSlot: ".chronicle-map-inner",
+  { id: "modal.history.snapshot-map", extends: "modal.history.records", root: ".chronicle-map-box", frame: "layer", frameLayer: ".chronicle-map-frame", contentSlot: ".chronicle-map-inner",
     scene: TOWN, open: [{ click: ".chronicle-card:not([data-kind='decision']) .chronicle-card-body" }, { pause: 800 }], data: "a record's then-map" },
+  { id: "modal.history.snapshot-figure", extends: "modal.history.snapshot-map", root: ".chronicle-map", frame: "flat", scene: TOWN, open: [],
+    siblingsNoOverlap: [".chronicle-map-box", ".chronicle-map > figcaption"], data: "the then-map with its caption (the caption measured beside the framed box)" },
   { id: "modal.select-list", extends: "modal.history.records", root: ".ui-select-list", frame: "css", scene: TOWN, scroll: "y",
     open: [{ click: ".chronicle-select .ui-select-trigger" }, { pause: 400 }], data: "the severity filter's open list" },
   { id: "modal.history.decision", root: ".chronicle-decision", frame: "layer", frameLayer: ".chronicle-decision-frame",
@@ -266,26 +285,44 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.history.family-tree", extends: "modal.history.biography", root: ".family-tree", frame: "flat", scene: TOWN_CLOSE, scroll: "xy",
     open: [{ click: ".chronicle-person-tabs .chronicle-tab:nth-child(2)" }, { pause: 900 }], siblingsNoOverlap: [".family-tree-node", ".family-tree-toggle"],
     data: "that person's family tree" },
+  { id: "modal.history.tree-banner", extends: "modal.history.family-tree", root: ".family-tree-banner", frame: "css", scene: TOWN_CLOSE, open: [], data: "the lineage banner" },
+  { id: "modal.history.tree-generation", extends: "modal.history.tree-banner", root: ".family-tree-generation", frame: "css", scene: TOWN_CLOSE, open: [],
+    data: "the first generation label" },
+  { id: "modal.history.tree-node", extends: "modal.history.tree-generation", root: ".family-tree-node", frame: "css", scene: TOWN_CLOSE, open: [], data: "the first person node" },
   { id: "modal.history.factions", root: ".chronicle-factions", frame: "flat", scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET },
     open: [{ pause: 1000 }, DISMISS, ...CHRONICLE, { click: ".chronicle-tabs:not(.chronicle-person-tabs) .chronicle-tab:nth-child(2)" }, { pause: 900 }],
     siblingsNoOverlap: [".chronicle-factions-row"], data: "chapter 4's factions: influence, tug of war, relations" },
   { id: "modal.history.faction-page", extends: "modal.history.factions", root: ".chronicle-faction", frame: "painting", painting: FACTION_PAGE_ART,
-    frameSlots: [".chronicle-faction-band"],
+    frameSlots: [".chronicle-faction-band"], scrollParts: [".chronicle-faction-box > ul", ".chronicle-faction-pressure-body"],
     scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET },
     open: [{ click: [".chronicle-factions-row:not([data-memory='0'])", ".chronicle-factions-row"] }, { pause: 1200 }], data: "a faction that remembers something" },
   { id: "modal.legacy-ending", root: ".chronicle-page.legacy-ending", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-ending-body",
+    scrollParts: [".legacy-ending-scroll"],
     scene: chapterScene("ui10", "chapter5-end"),
     open: [{ wait: ".chronicle-page", timeout: 90_000 }, { pause: 800 }, { click: ".chronicle-page .chronicle-next" }, { wait: ".legacy-ending" }, { pause: 800 }],
     data: "the campaign's legacy verdict and ending" },
-  { id: "modal.chronicle-book", extends: "modal.legacy-ending", root: ".chronicle-page.legacy-book", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-book-body",
-    scene: chapterScene("ui10", "chapter5-end"), open: [{ click: ".legacy-ending .legacy-open-book" }, { wait: ".legacy-book" }, { pause: 800 }],
-    data: "the chronicle book's first page" },
+  { id: "modal.chronicle-book", extends: "modal.legacy-ending", ...BOOK, open: [{ click: ".legacy-ending .legacy-open-book" }, { wait: ".legacy-book" }, { pause: 800 }],
+    data: "the chronicle book's title page and contents" },
+  { id: "modal.chronicle-book.chapter", extends: "modal.chronicle-book", ...BOOK, open: [{ click: ".legacy-book-contents-entry" }, { wait: ".legacy-book-page[data-kind='chapter']" }, { pause: 600 }],
+    data: "the book's first chapter page" },
+  { id: "modal.chronicle-book.family", extends: "modal.chronicle-book.chapter", ...BOOK,
+    open: [{ repeat: ".legacy-book-next", until: ".legacy-book-page[data-kind='family']", max: 12 }, { pause: 600 }], data: "the book's family page" },
+  { id: "modal.chronicle-book.factions", extends: "modal.chronicle-book.family", ...BOOK,
+    open: [{ repeat: ".legacy-book-next", until: ".legacy-book-page[data-kind='factions']", max: 12 }, { pause: 600 }], data: "the book's factions page" },
+  { id: "modal.chronicle-book.legacy", extends: "modal.chronicle-book.factions", ...BOOK,
+    open: [{ repeat: ".legacy-book-next", until: ".legacy-book-page[data-kind='legacy']", max: 12 }, { pause: 600 }], data: "the book's legacy page" },
 
   // --- Screens outside the town.
   { id: "screen.welcome", root: ".welcome-parchment", frame: "css", scene: { kind: "title" }, numbers: false, open: [{ pause: 800 }],
     data: "a fresh profile's title parchment and mode buttons" },
   { id: "dev.ui-kit", root: ".ui-kit-gallery-frame", frame: "css", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [{ pause: 800 }],
     data: "the kit gallery's first frame" },
+  { id: "dev.ui-kit.section", extends: "dev.ui-kit", root: ".ui-kit-gallery-section", frame: "css", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
+    data: "the gallery's first section panel" },
+  { id: "dev.ui-kit.dark", extends: "dev.ui-kit.section", root: ".ui-kit-gallery-dark", frame: "css", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
+    data: "the gallery's dark panel" },
+  { id: "dev.ui-kit.tooltip", extends: "dev.ui-kit.dark", root: ".ui-tooltip", frame: "css", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
+    data: "the kit Tooltip in the gallery" },
 ];
 
 /**
@@ -312,14 +349,13 @@ export const NOT_SURFACES: Readonly<Record<string, string>> = {
   "legacy-book-title-page": "the title page inside modal.chronicle-book", "chronicle-biography-chip": "a record link inside modal.history.biography",
   "store-accept-chip": "a tag inside the store body (map.selection.store)", "resource-name-chip": "a resource tag inside ledger and store rows",
   "era-tooltip": "an era's line inside the era console (slot.goals.era-console)", "build-menu-body": "the build drawer's body (hud.build-drawer)",
-  "left-inspector": "the inspector inside its slot (slot.inspector)", "goal-drawer": "the goal log inside its slot (slot.goals)",
   "goal-card--done": "a goal card state", "goal-card--already": "a goal card state", "goal-card--warn": "a goal card state",
   "steward-advisor": "the steward bubble while he speaks (hud.steward-bubble)", "steward-advisor--concern": "the steward bubble's warning tone",
-  "settlement-status": "the settlement line inside slot.goals", "settlement-crisis": "a crisis line inside slot.goals.settlement",
-  "ledger-population-drawer": "with .slot-panel (slot.population)", "population-event-panel": "the body of slot.population",
+  "settlement-crisis": "a crisis line inside slot.goals.settlement (shown only in a food shortage or abandonment risk)",
+  "ledger-population-drawer": "with .slot-panel (slot.population)",
   "ledger-drawer": "with .slot-panel (slot.ledger.*)", "build-drawer": "with .court-console (hud.build-drawer)",
   // Kit parts (the gallery, dev.ui-kit) and unmounted components.
   "ui-frame": "the kit Panel / Card / Modal (used only in the gallery and the kit Select)", "ui-chip": "the kit Chip (gallery only)",
-  "ui-tooltip": "the kit Tooltip (gallery only)", "resource-bar": "ResourceBar is not mounted (survey §2)", "ledger-panel": "LedgerPanel is not mounted (survey §2)",
+  "resource-bar": "ResourceBar is not mounted (survey §2)", "ledger-panel": "LedgerPanel is not mounted (survey §2)",
   "resource-bar__coin-detail": "part of the unmounted ResourceBar", "alert-stack-row": "AlertStack is not mounted (survey §2)",
 };

@@ -28,6 +28,12 @@ test("Given an unregistered dialog, framed class and border-image rule When scan
   const css = cssCandidates("src/styles/x.css", "/* .old-card { border-image: url(a.png) 8 } */\n.app .new-drawer > p,\n.app :is(.a-seal, .b-seal) { border-image: url(\"/x.png\") 8 fill / 4px; }\n.quiet { border-image: none; }");
   assert.deepEqual(css.map(row => `${row.line} ${row.names.join(".")}`), ["2 new-drawer", "2 a-seal", "2 b-seal"]);
   assert.deepEqual(subjectClassSets(".a .b.c:not(.d) > span"), [["b", "c"]]);
+  const framed = tsxCandidates("src/ui/x/Framed.tsx", [
+    "export const A = () => <aside className=\"new-rail\" data-frame=\"light\">x</aside>;",
+    "export const B = () => <Disclosure className=\"help-seal\"><p data-frame=\"tooltip\">y</p></Disclosure>;",
+    "export const C = () => createElement(\"div\", { className: \"ceremony\", \"data-frame\": \"flat\" });",
+  ].join("\n")).filter(row => row.kind === "frame");
+  assert.deepEqual(framed.map(row => `${row.line} ${row.names.join(".")}`), ["1 new-rail", "2 help-seal", "3 ceremony"]);
 });
 
 test("Given the registry When its rows are read Then ids are unique, extends point back, frames carry what their kind needs", () => {

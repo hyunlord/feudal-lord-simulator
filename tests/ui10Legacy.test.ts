@@ -238,7 +238,10 @@ test("UI-10 gate 4: the ledger drawer's stock tab has a chapter-5 section — th
 
 test("UI-10 gate 5–6: the buttons stay in view — the ending's three in a footer held at the panel's bottom, a card's [나중에 정하기] its body's last row", () => {
   const css = readFileSync("src/styles/legacy.css", "utf8");
-  assert.match(css, /\.legacy-ending-footer \{ position: sticky; bottom: 0;[^}]*background: var\(--parchment\);[^}]*border-top:/);
+  // UI-AUDIT-1: the footer is the body's last row; the verdict scrolls in the row above it, not under it.
+  assert.match(css, /\.legacy-ending-body \{ grid-template-rows: minmax\(0, 1fr\) auto;[^}]*overflow: hidden; \}/);
+  assert.match(css, /\.legacy-ending-scroll \{[^}]*overflow-y: auto; \}/);
+  assert.match(css, /\.legacy-ending-footer \{[^}]*background: var\(--parchment\);[^}]*border-top:/);
   const hud = readFileSync("src/styles/hudShell.css", "utf8");
   // UI-AUDIT-1: the card grows with its body; [나중에 정하기] is the body's last row, never over an answer.
   assert.match(readFileSync("src/ui/hud/StoryModals.tsx", "utf8"), /<\/ol>\s*<Button type="button" className="story-modal-later"[^\n]*\n\s*<\/div>/, "the later button the body's last row");

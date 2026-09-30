@@ -822,11 +822,13 @@ button {
   opacity: 0.58;
 }
 
+/* UI-AUDIT-1: the pressed speed seal no longer sinks 1 px (it went past the time cluster's inner box); its lighter field
+   and the seal-red inner rule (uiSkin.css) mark it. */
 .build-seal[aria-pressed="true"],
 .speed-seal[aria-pressed="true"] {
   color: var(--palette-gold-dark);
-  transform: translateY(1px);
 }
+.build-seal[aria-pressed="true"] { transform: translateY(1px); }
 
 .build-seal:focus-visible,
 .speed-seal:focus-visible {

@@ -22,10 +22,18 @@
 .app-shell .overlay-legend, .app-shell .overlay-key { display: none; }
 .app-shell .overlay-label--full { display: inline; }
 .app-shell .overlay-label--compact { display: none; }
-.app-shell .speed-control-stack { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; width: 188px; }
+/* UI-AUDIT-1: the stack is as wide as its four seals and the settings button (a fixed 188 px pushed the settings button
+   past the cluster's frame). */
+.app-shell .speed-control-stack { display: flex; flex-wrap: nowrap; justify-content: flex-end; gap: 8px; width: auto; }
 .app-shell .speed-seals { display: flex; gap: 4px; }
 .app-shell .speed-seal { width: 36px; height: 32px; padding: 4px; background-image: none; }
+/* UI-AUDIT-1: the settings rows keep their height (a shrunk row let the tutorial note run under the sound sliders); the
+   sound mixer is two columns so the whole list fits under the cluster at 800 px high. */
 .app-shell .autoplay-control { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.app-shell .autoplay-control > * { flex-shrink: 0; }
+.app-shell .command-popover .audio-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; width: 100%; }
+.app-shell .command-popover .audio-controls > .autoplay-toggle { grid-column: 1 / -1; justify-self: start; }
+.app-shell .command-popover .audio-bus { min-width: 0; }
 .app-shell .autoplay-toggle { min-height: 32px; padding: 4px 8px; font: var(--font-body)/24px var(--ui-body-font); }
 .app-shell .autoplay-hint { color: var(--palette-parchment); font-size: var(--font-meta); }
 .app-shell .right-info-rail { display: flex; flex-direction: column; overscroll-behavior: contain; top: calc(var(--resource-height) + 56px); max-height: calc(100% - var(--resource-height) - var(--command-height) - 116px); overflow-y: auto; }

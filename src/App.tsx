@@ -487,7 +487,7 @@ export function App() {
             <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} note={menAwayLine(state)} />
           </div>
         ) : null}
-        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot" data-frame="slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} onClose={() => sendUi({ type: "deselect" })}
+        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot" data-frame="slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} stuck={stuckRows} onClose={() => sendUi({ type: "deselect" })}
           onPerson={openPerson} /></div> : null}
         {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })}
           history={storeHistoryRef.current} food={{ days: pillModel.foodDays }} highlighted={ledgerHighlight} onHighlight={setLedgerHighlight}

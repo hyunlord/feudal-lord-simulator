@@ -17,7 +17,7 @@ const button = (path: string, rect: Box, control: Item["control"] = { kit: true,
 /** A 200×100 surface at (100, 100): a 16 px frame (border 16), padding 8 → the inner box is (124, 124)–(276, 176). */
 const surface = (items: readonly Item[], overrides: Partial<NonNullable<Collected["root"]>> = {}, rest: Partial<Collected> = {}): Collected => ({
   found: true, viewport: { w: 1280, h: 800 }, expectFound: null,
-  root: { path: "section.card", rect: box(100, 100, 300, 200), frame: even(16), padding: even(8), overflow: { x: 0, y: 0 }, scrollable: { x: false, y: false }, ...overrides },
+  root: { path: "section.card", rect: box(100, 100, 300, 200), frame: even(16), padding: even(8), kind: null, overflow: { x: 0, y: 0 }, scrollable: { x: false, y: false }, ...overrides },
   layer: null, slot: null, items, scrollers: [], portrait: null, siblings: [], ...rest,
 });
 const css: MeasureSpec = { root: ".card", frame: "css", gap: 8 };
@@ -60,8 +60,17 @@ test("Given clipped text When the clipper has no ellipsis Then overflow fails; w
   assert.deepEqual(bare.failures.map(failure => [failure.check, failure.px]), [["overflow", 60]]);
   assert.equal(evaluateSurface(surface([clipped({ path: "div.text", scroll: false, ellipsis: true })]), css).failures.length, 0);
   assert.equal(evaluateSurface(surface([clipped({ path: "div.list", scroll: true, ellipsis: false })]), css).failures.length, 0);
-  const tall = evaluateSurface(surface([fill(124, 124, 276, 176)], { overflow: { x: 0, y: 40 } }), css);
-  assert.deepEqual(tall.failures.map(failure => failure.what), ["content taller than the surface"]);
+  const tall = evaluateSurface(surface([fill(124, 124, 276, 150), text("p.last", box(124, 170, 200, 236))], { overflow: { x: 0, y: 40 }, border: even(16) }), css);
+  assert.deepEqual(tall.failures.filter(failure => failure.check === "overflow").map(failure => [failure.what, failure.px]), [["content taller than the surface", 40]]);
+});
+
+test("Given a root whose frame layer covers its border box When its scroll overflow is only that layer Then it is no overflow", () => {
+  // The layer (-safe, left out of the items) makes scrollHeight 20 px taller; the content ends inside the padding box.
+  const layered = evaluateSurface(surface([fill(124, 124, 276, 176)], { overflow: { x: 20, y: 20 }, border: even(16) }), css);
+  assert.deepEqual(layered.failures, []);
+  // Content that does reach past the padding box still counts, as far as it reaches (not the layer's 20).
+  const spilled = evaluateSurface(surface([fill(124, 124, 276, 176), { ...text("p.spill", box(124, 150, 290, 170)), slot: false }], { overflow: { x: 20, y: 20 }, border: even(16) }), css);
+  assert.deepEqual(spilled.failures.filter(failure => failure.check === "overflow").map(failure => [failure.what, failure.px]), [["content wider than the surface", 6]]);
 });
 
 test("Given a button on the frame band When evaluated Then border and outside both report it", () => {
@@ -102,15 +111,30 @@ test("Given a painting surface drawn at 1.5× When evaluated Then its safe rect 
   assert.deepEqual(result.inner, box(130.5, 141, 549.5, 357.5));
   assert.deepEqual(result.failures.map(failure => [failure.check, failure.what.split(" ").slice(0, 3).join(" "), failure.px]), [
     ["outside", "control beyond the", 22.5], ["border", "control on the", 14.5], ["portrait", "the face reaches", 10], ["portrait", "120 of 900", 18.4]]);
+  // Grown downward (a 9-slice card 480 × 450): one scale (the width's, 1.5), the bottom rule kept its distance from the bottom.
+  const grown = evaluateSurface(surface([], { rect: box(100, 100, 580, 550), frame: none, padding: none }), spec);
+  assert.deepEqual(grown.inner, box(130.5, 141, 549.5, 507.5));
 });
 
-test("Given a layer frame with a content slot When evaluated Then the slot's box inset by the gap is the inner box and frame slots are free", () => {
+test("Given a layer frame with a content slot When evaluated Then the slot's box is the inner box (its gap is inside it) and frame slots are free", () => {
   const spec: MeasureSpec = { root: ".petition-card", frame: "layer", gap: 8, frameLayer: ".petition-frame", contentSlot: ".petition-body", frameSlots: [".petition-roundel"] };
   const collected = surface([text("p.who", box(170, 140, 400, 160)), { ...text("span.roundel", box(100, 100, 130, 130)), slot: true }],
     { rect: box(100, 100, 600, 500), frame: none, padding: none }, { slot: { rect: box(160, 120, 580, 480), padding: none }, layer: { rect: box(100, 100, 600, 500), frame: { t: 86, r: 25, b: 27, l: 64 } } });
   const result = evaluateSurface(collected, spec);
-  assert.deepEqual(result.inner, box(168, 128, 572, 472));
+  assert.deepEqual(result.inner, box(160, 120, 580, 480));
   assert.equal(result.failures.length, 0);
+});
+
+test("Given a root on the frame tokens (data-frame) When evaluated Then its computed content box is the inner box, whatever its kind", () => {
+  // A painting kind: border 20 (the safe inset), padding 8 → content box (128, 128)–(572, 372); the registry's art rect is not read.
+  const spec: MeasureSpec = { root: ".person-card", frame: "painting", gap: 8, painting: { art: { w: 320, h: 200 }, safe: { x: 15, y: 22, w: 290, h: 155 } } };
+  const result = evaluateSurface(surface([text("h2", box(128, 128, 300, 150))], { rect: box(100, 100, 600, 400), frame: even(20), padding: even(8), kind: "person-card" }), spec);
+  assert.deepEqual(result.inner, box(128, 128, 572, 372));
+  assert.equal(result.failures.length, 0);
+  // A padding under the gap still leaves the gap.
+  const thin = evaluateSurface(surface([text("p", box(124, 130, 200, 140))], { frame: even(2), padding: even(4), kind: "light" }), css);
+  assert.deepEqual(thin.inner, box(110, 110, 290, 190));
+  assert.deepEqual(thin.failures.map(failure => failure.px), []);
 });
 
 test("Given a mostly empty surface When evaluated Then the empty-space warning is set but nothing fails", () => {
@@ -151,9 +175,8 @@ test("Given a state with a ledger When numbers go extreme Then the cash balance 
 });
 
 test("Given the summary step When its inputs and mode are read Then the hash is stable and the gate mode follows the environment", () => {
-  const inputs = { src: "a", assets: "b", audit: "c", measure: "d", scene: "e" };
-  assert.equal(geometryInputHash(inputs), geometryInputHash({ ...inputs }));
-  assert.notEqual(geometryInputHash(inputs), geometryInputHash({ ...inputs, src: "z" }));
-  assert.equal(gateMode({ FLS_UI_GEOMETRY_GATE: "enforce" }), "enforce");
-  assert.equal(gateMode({}), "warn");
+  const inputs = ["a1 src/ui/A.tsx", "b2 src/styles/b.css"];
+  assert.equal(geometryInputHash(inputs), geometryInputHash([...inputs]));
+  assert.notEqual(geometryInputHash(inputs), geometryInputHash(["a9 src/ui/A.tsx", "b2 src/styles/b.css"]));
+  assert.equal(gateMode({ FLS_UI_GEOMETRY_GATE: "warn" }), "warn");
 });

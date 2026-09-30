@@ -64,7 +64,7 @@ export function Select<V extends string | number>(props: {
       </button>
       {open ? (
         <ul ref={list} id={`${id}-list`} role="listbox" tabIndex={-1} aria-label={label} aria-activedescendant={optionId(active)}
-          className="ui-frame ui-frame--light ui-select-list"
+          className="ui-frame ui-frame--light ui-select-list" data-frame="light"
           onKeyDown={event => {
             const last = options.length - 1;
             const move: Readonly<Record<string, number>> = { ArrowDown: Math.min(last, active + 1), ArrowUp: Math.max(0, active - 1), Home: 0, End: last };

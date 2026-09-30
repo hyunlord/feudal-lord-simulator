@@ -26,9 +26,11 @@ function fillerChar(i: number): string {
 
 /** Extend a Korean string to approximately 1.4× its length by appending syllable fillers.
  *  Strings that are purely numeric (digits, common punctuation) are returned unchanged so
- *  resource counters and dates remain readable. */
-function extendString(s: string): string {
-  if (s === "" || /^[\d\s.,+\-·%]+$/.test(s)) return s;
+ *  resource counters and dates remain readable. UI-AUDIT-1: so are ids (lower-case ASCII
+ *  words like "select" or "zoom_out" — a copy table's keys into other tables, e.g. PAD_HINT_COPY's
+ *  controller actions); inflated, they looked up nothing and the kit gallery threw. */
+export function extendString(s: string): string {
+  if (s === "" || /^[\d\s.,+\-·%]+$/.test(s) || /^[a-z][a-z0-9_]*$/.test(s)) return s;
   const extra = Math.round(s.length * 0.4);
   let suffix = "";
   for (let i = 0; i < extra; i++) suffix += fillerChar(i);

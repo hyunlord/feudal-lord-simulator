@@ -47,7 +47,7 @@ const MODES = {
 const WIDTH = 1280, HEIGHT = 800;
 
 /** Opens the game with an injected state (null = DEFAULT_GAME_STATE) centred on a tile, 1× speed running. */
-export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, height = HEIGHT, dpr = 1, rewrite = [], query = '', run = true, zoom = 1, hasTouch = false, isMobile = false, initScript = null }) {
+export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, height = HEIGHT, dpr = 1, rewrite = [], query = '', run = true, zoom = 1, hasTouch = false, isMobile = false, initScript = null, loadTimeout = 30_000 }) {
   const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: dpr, hasTouch, isMobile });
   if (initScript !== null) await context.addInitScript(initScript);
   const page = await context.newPage();
@@ -69,8 +69,9 @@ export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, 
   // A state the save codec refuses (an old bare save) fails the scene at once instead of at the 60 s wait; the
   // listener is on before the page loads (the store's first render throws during the load).
   const refused = sceneStateRefusal(page);
-  await page.goto(`${baseUrl}?phase10-proof=1${query}`);
-  await Promise.race([page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 }), refused]);
+  // UI-AUDIT-1: `loadTimeout` for a shared, busy DGX (the page's load and the proof port's first frame).
+  await page.goto(`${baseUrl}?phase10-proof=1${query}`, { timeout: loadTimeout });
+  await Promise.race([page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: Math.max(60_000, loadTimeout) }), refused]);
   if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click();
   await page.keyboard.press('Escape');
   // UX-3 S-31: Esc on the idle screen opens the pause menu; a scene starts without it.

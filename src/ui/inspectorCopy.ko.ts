@@ -5,6 +5,11 @@ import { BUILDING_OPERATION_COPY } from "./buildingOperationCopy.ko";
 import { CONSTRUCTION_DEADLOCK_COPY } from "./constructionDeadlockCopy.ko";
 import { HOUSEHOLD_LABOUR_COPY } from "./householdLabourCopy.ko";
 
+const finalOf = (word: string) => { const last = word.charCodeAt(word.length - 1); return last >= 0xac00 && last <= 0xd7a3 ? (last - 0xac00) % 28 : 0; };
+/** 을 / 를 and 과 / 와 after a building name (곡창을 · 창고를). */
+const object = (word: string) => `${word}${finalOf(word) !== 0 ? "을" : "를"}`;
+const withWord = (word: string) => `${word}${finalOf(word) !== 0 ? "과" : "와"}`;
+
 /** Left inspector copy: name, state line, "왜?" and "조치". */
 export const INSPECTOR_COPY = {
   regionLabel: "선택한 건물",
@@ -64,5 +69,20 @@ export const INSPECTOR_COPY = {
     siteWorkers: "주택을 늘리거나 다른 공사를 줄여 일꾼을 확보하세요",
     siteReserve: "비축분이 풀릴 때까지 기다리거나 공사 우선으로 바꾸세요",
     siteDeadlock: CONSTRUCTION_DEADLOCK_COPY.action,
+    /**
+     * UI-AUDIT-1: stock piled here that cannot leave (the HUD's stuck-goods chip, same reason); `store` is the good's
+     * store (곡창, 창고).
+     */
+    stuck: {
+      no_road: (store: string) => `${withWord(store)} 이 건물을 도로로 이어 주세요`,
+      no_receiver: (store: string) => `${object(store)} 지으세요`,
+      receiver_full: (store: string) => `${object(store)} 하나 더 지으세요`,
+      no_carrier: (store: string) => `이 건물 가까이에 ${object(store)} 지어 수레 길을 줄이세요`,
+      unknown: (store: string) => `${store}까지 가는 길과 ${store}의 빈 자리를 확인하세요`,
+    },
+    /** Wheat also leaves by a mill's own cart (AF-9). */
+    stuckWheatMill: "방앗간을 가까이 지으면 방앗간 수레가 밀을 가져갑니다",
   },
+  /** UI-AUDIT-1: the pile as the "왜?" line (`밀 932 묶임 — 운반꾼 부족 · 수확 버려짐`). */
+  stuckLine: (good: string, amount: number, reason: string) => `${good} ${amount.toLocaleString("ko-KR")} 묶임 — ${reason}`,
 } as const;

@@ -28,8 +28,9 @@
 .chronicle-strip-labels { position: relative; height: 36px; margin-right: 120px; }
 .chronicle-era-label { position: absolute; top: 0; font-size: 12px; white-space: nowrap; color: var(--palette-ink-muted); }
 .chronicle-era-label[data-entered="true"] { color: var(--palette-ink); font-weight: 700; }
-/* UI-KIT-1b: an era not entered yet (its nominal year, "아직 오지 않음" on a second line) reads faint; a label stays in its fifth of the strip. */
-.chronicle-era-label { max-width: calc(20% - 8px); overflow: hidden; text-overflow: ellipsis; }
+/* UI-KIT-1b: an era not entered yet (its nominal year, "아직 오지 않음" on a second line) reads faint; a label stays in its share of the band
+   (its max-width from ChronicleTimeline). */
+.chronicle-era-label { overflow: hidden; text-overflow: ellipsis; }
 .chronicle-era-label:not([data-entered]) { opacity: 0.6; }
 .chronicle-era-ahead { display: block; font-size: 12px; }
 .chronicle-chapter-bar { position: absolute; top: 18px; height: 16px; overflow: hidden; padding: 0 4px; box-sizing: border-box; font-size: 12px; line-height: 16px;
@@ -62,7 +63,8 @@
 .chronicle-list { position: relative; min-height: 0; overflow-y: auto; }
 .chronicle-list-space { position: relative; }
 .chronicle-empty, .chronicle-hint { margin: 12px 4px; font-size: 14px; }
-.chronicle-card { position: absolute; left: 0; right: 6px; height: 112px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+/* The card's height is set from its frame box (RecordCardView CARD_HEIGHT). */
+.chronicle-card { position: absolute; left: 0; right: 6px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
 .chronicle-card[data-selected="true"] { box-shadow: 0 0 0 3px var(--palette-vermilion); }
 .chronicle-card-body:focus-visible, .chronicle-card-action:focus-visible { outline: 3px solid var(--palette-ultramarine); outline-offset: -3px; }
 .chronicle-card-frame { position: absolute; box-sizing: border-box; pointer-events: none; }
@@ -75,9 +77,9 @@
 .chronicle-card-art--portrait { position: absolute; left: calc(8px - var(--frame-record-person-safe-left) - var(--frame-gap));
   top: calc(12px - var(--frame-record-person-safe-top) - var(--frame-gap)); border: 0; border-radius: 50%; }
 .chronicle-card-text { display: grid; gap: 2px; min-width: 0; }
-.chronicle-card-date { font-size: 12px; font-weight: 700; color: var(--palette-ink-muted); }
+.chronicle-card-date { font-size: 12px; line-height: 16px; font-weight: 700; color: var(--palette-ink-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .chronicle-card-line { font-size: 14px; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.chronicle-card-numbers { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chronicle-card-numbers { font-size: 12px; line-height: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .chronicle-card-actions { position: relative; z-index: 1; display: flex; gap: 4px; }
 .chronicle-card-action, .chronicle-detail-action { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 8px; font-size: 12px; white-space: nowrap;
   background: var(--palette-vellum); border: 1px solid var(--palette-ink-muted); }
@@ -96,8 +98,9 @@
 .chronicle-map-pair { display: flex; gap: 8px; }
 .chronicle-map { margin: 0; display: grid; gap: 2px; }
 .chronicle-map-box { position: relative; }
-.chronicle-map-inner { position: absolute; display: grid; place-items: center; }
-.chronicle-map-canvas { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+/* UI-AUDIT-1: one track the size of the content box (the canvas's own pixel size never grows it past the window). */
+.chronicle-map-inner { position: absolute; display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center; }
+.chronicle-map-canvas { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; image-rendering: pixelated; }
 .chronicle-map-frame { position: absolute; box-sizing: border-box; pointer-events: none; }
 .chronicle-map figcaption { font-size: 12px; font-weight: 700; }
 .chronicle-map-none { margin: 4px 0; font-size: 12px; }
@@ -109,7 +112,7 @@
 .chronicle-decision { position: relative; flex: none; }
 .chronicle-decision-frame { position: absolute; box-sizing: border-box; pointer-events: none; }
 .chronicle-decision-column { position: absolute; display: grid; align-content: start; justify-items: center; gap: 4px; overflow: hidden; text-align: center; }
-.chronicle-decision-column h4 { display: grid; place-items: center; height: 30px; margin: 0; font-size: 13px; }
+.chronicle-decision-column h4 { display: grid; place-items: center; margin: 0; font-size: 13px; line-height: 16px; }
 .chronicle-decision-column ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; font-size: 13px; }
 .chronicle-decision-column p { margin: 0; font-size: 12px; }
 .chronicle-decision-chosen { font-size: 15px; }
@@ -131,7 +134,8 @@
 .chronicle-biography-arms, .chronicle-biography-mark { display: grid; place-items: center; }
 .chronicle-biography-match { font-size: 12px; line-height: 1.35; }
 .chronicle-biography-match[data-exact="false"] { font-style: italic; color: var(--palette-ink-muted); }
-.chronicle-biography-header { display: grid; align-content: start; gap: 2px; overflow: hidden; }
+/* UI-AUDIT-1: a long header (long names, several offices) scrolls in its slot instead of losing its last lines. */
+.chronicle-biography-header { display: grid; align-content: start; gap: 2px; min-height: 0; overflow-x: hidden; overflow-y: auto; }
 .chronicle-biography-header h3 { margin: 0; font-family: var(--ui-font-serif); font-size: 17px; line-height: 1.2; }
 .chronicle-biography-header p { margin: 0; font-size: 13px; line-height: 1.35; }
 .chronicle-biography-office { font-weight: 700; }
@@ -142,8 +146,11 @@
 .chronicle-biography-dot { grid-row: 1 / 3; justify-self: center; margin-top: 1px; }
 .chronicle-biography-date { font-weight: 700; margin-right: 6px; }
 .chronicle-biography-empty { font-size: 12px; }
-.chronicle-biography-band { display: grid; align-content: start; gap: 4px; padding: 6px 10px; overflow: hidden; }
-.chronicle-biography-band h4 { margin: 0; font-size: 12px; }
+/* UI-AUDIT-1: the heading beside its row of chips: the relations band is about 75 px tall at the page's scale at
+   1280×800, which holds a 48 px chip row and its scrollbar beside the heading, not under it. */
+.chronicle-biography-band { display: grid; grid-template-columns: minmax(0, max-content) minmax(0, 1fr); align-items: center; gap: 4px 10px; padding: 2px 10px;
+  overflow: hidden; }
+.chronicle-biography-band h4 { max-width: 120px; margin: 0; font-size: 12px; line-height: 1.3; overflow-wrap: anywhere; }
 .chronicle-biography-band ul { display: flex; gap: 6px; margin: 0; padding: 0 0 4px; list-style: none; overflow-x: auto; }
 .chronicle-biography-chip { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; max-width: 280px; padding: 0 10px; font-size: 12px; white-space: nowrap;
   overflow: hidden; text-overflow: ellipsis; background: var(--palette-vellum); border: 1px solid var(--palette-ink-muted); }
@@ -157,7 +164,8 @@
 /* UI-6 faction tab: nine rows (kit buttons) and the world strip under them. */
 /* UI-9: grid-template-rows removed — tug-of-war strip is a conditional third row above the list. */
 .chronicle-page-body--factions { justify-items: stretch; }
-.chronicle-factions { display: grid; align-content: start; gap: 8px; width: 100%; max-width: 1180px; margin: 0 auto; }
+/* UI-AUDIT-1: a flat surface: its content keeps the gap from its edge. */
+.chronicle-factions { display: grid; align-content: start; gap: 8px; width: 100%; max-width: 1180px; margin: 0 auto; padding: var(--frame-gap); }
 .chronicle-factions-list { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
 .chronicle-factions-row { display: grid; width: 100%; min-height: 56px; padding: 4px 14px; box-sizing: border-box; align-items: center; gap: 14px; text-align: left;
   grid-template-columns: 48px minmax(0, 1.3fr) minmax(0, 1.4fr) auto minmax(0, 0.8fr); }
@@ -245,7 +253,9 @@
 @media (pointer: coarse) {
   .chronicle-screen :is(.chronicle-close, .chronicle-back, .chronicle-zoom, .chronicle-kind, .chronicle-card-action, .chronicle-detail-action,
     .chronicle-season-shift, .chronicle-season, .chronicle-biography-chip, .chronicle-select select, .chronicle-tab) { height: 48px; }
-  .chronicle-screen .chronicle-faction-record { height: 48px; }
+  /* UI-AUDIT-1: a remembered record grows with its two lines (a fixed 48 px cut the second under the next record);
+     the date line and one text line with this padding are 49 px, above the 48 px target. */
+  .chronicle-screen .chronicle-faction-record { height: auto; padding: 9px 8px; }
 }
 
 /* UI-7 the biography's family tree (가계도 tab; FamilyTree.tsx lays out Wave 25's parts in tree pixels, scaled). */
@@ -255,19 +265,21 @@
 .family-tree-canvas { position: relative; margin: 0 auto; }
 .family-tree-plane { position: absolute; top: 0; left: 0; transform-origin: 0 0; }
 .family-tree-banner { display: flex; gap: 8px; align-items: center; justify-content: center; box-sizing: border-box; font-family: var(--ui-font-serif, serif); font-size: 16px; font-weight: 600; }
-.family-tree-generation { display: grid; place-items: center; box-sizing: border-box; font-size: 12px; font-weight: 700; }
+.family-tree-generation { display: grid; place-items: center; box-sizing: border-box; font-size: 12px; font-weight: 700; line-height: 16px; }
+.family-tree-generation, .family-tree-banner-text { min-width: 0; max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .family-tree-line, .family-tree-joint, .family-tree-marriage { pointer-events: none; }
 .family-tree-joint--junction_t_up { transform: scaleY(-1); }
 .chronicle-screen .family-tree-node { display: flex; flex-direction: column; gap: 2px; align-items: center; justify-content: flex-start; box-sizing: border-box;
   min-height: 44px; background: none; box-shadow: none; }
 .chronicle-screen .family-tree-node:focus-visible { outline: 3px solid var(--palette-ultramarine); outline-offset: 2px; }
 .family-tree-face { flex: 0 0 auto; border-radius: 50%; border: 1px solid var(--palette-ink-muted); }
-.family-tree-outside { position: absolute; top: 6px; right: 6px; }
+/* UI-AUDIT-1: the marker and the cause tag sit in the node's content box's corners (the padding is the gap). */
+.family-tree-outside { position: absolute; top: var(--frame-gap); right: var(--frame-gap); }
 .chronicle-screen .family-tree-name { display: -webkit-box; overflow: hidden; max-width: 100%; font-size: 13px; font-weight: 700; line-height: 1.2; text-align: center;
   -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-.chronicle-screen .family-tree-years { font-size: 12px; color: var(--palette-ink-muted); }
+.chronicle-screen .family-tree-years { font-size: 12px; line-height: 16px; color: var(--palette-ink-muted); }
 /* UI-8: the plague-dead's cause, a tag in the frame's top corner (the name and years keep their lines). */
-.chronicle-screen .family-tree-cause { position: absolute; top: 6px; left: 6px; padding: 0 4px; font-size: 12px; line-height: 1.4; color: var(--palette-ink); background: var(--palette-parchment); border: 1px solid var(--palette-ink-muted); border-radius: 2px; }
+.chronicle-screen .family-tree-cause { position: absolute; top: var(--frame-gap); left: var(--frame-gap); padding: 0 4px; font-size: 12px; line-height: 1.4; color: var(--palette-ink); background: var(--palette-parchment); border: 1px solid var(--palette-ink-muted); border-radius: 2px; }
 .family-tree-toggle-slot { display: flex; flex-direction: column; align-items: center; width: 44px; }
 .chronicle-screen .family-tree-toggle { display: grid; place-items: center; width: 44px; height: 44px; min-height: 44px; padding: 0; background: none; box-shadow: none; }
 .family-tree-hidden { font-size: 12px; white-space: nowrap; color: var(--palette-ink-muted); }
