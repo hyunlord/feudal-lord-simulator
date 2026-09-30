@@ -6,13 +6,20 @@
 //   Without --commits: the run folder's own tree (FLS_REMOTE_COMMIT). Other commits come from the DGX's git mirror.
 // One JSON per commit in the store (outside the pruned run folders) and in .remote/trend/ (fetched back to the Mac).
 // scripts/perf/perfTrend.ts gathers them into docs/verification/perf-trend/.
+// Confirmation (decision RR7, scripts/perf/trendRule.ts): after measuring a commit, each scene where a judged metric is
+// outside the widened range of the nearest earlier measured commit (a suspicion) runs perf:ab --headless between the
+// two (45 s × 4 pairs) into <store>/ab/<a>-<b>-<scene>.json. The page marks "나빠짐" only when that A-B confirms it.
+//   --no-confirm     measure only
+//   --confirm-only   do not measure; confirm --commits against their stored comparison commits
+//   --force          run the A-B for every trend scene, suspicion or not (to check the rule)
 import { spawn, spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { homedir, hostname, tmpdir } from "node:os";
 import { join } from "node:path";
 import { SCENES } from "./perfGate";
 import { sourceTree } from "./sourceTree";
 import { otherCpuSample, otherCpuShare } from "./machineLoad";
+import { confirmationName, JUDGED, median, suspect } from "./trendRule";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] ?? fallback : fallback; };
@@ -26,7 +33,6 @@ export const TREND_METRICS = ["scriptMsPerTick", "heapAllocKBPerTick", "canvasPe
 // immune to it: a busy DGX runs fewer ticks while the page's per-frame work goes on (a597617b: 13.5 ms/tick measured
 // quiet, 19.9 ms/tick beside a full test run), so the page shows it beside the values.
 
-const median = (values: readonly number[]) => { const sorted = values.filter(Number.isFinite).sort((a, b) => a - b); return sorted.length === 0 ? null : sorted[Math.floor((sorted.length - 1) / 2)]!; };
 const git = (...args: string[]) => spawnSync("git", args, { encoding: "utf8" }).stdout.trim();
 
 async function measure(commit: string, tree: string) {
@@ -60,11 +66,54 @@ async function measure(commit: string, tree: string) {
   return scenes;
 }
 
+type Stored = { commit: string; scenes: Record<string, { values: Record<string, number[]> }> };
+const stored = (commit: string): Stored | null => { const file = join(store, `${commit}.json`); return existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) as Stored : null; };
+
+/** A second port of the 4300–4399 range, held (flock on the run system's lock file) until release() — perf:ab serves two builds. */
+async function holdPort(except: number): Promise<{ port: number; release: () => void } | null> {
+  for (let port = 4300; port <= 4399; port++) {
+    if (port === except || spawnSync("ss", ["-Hltn", `sport = :${port}`], { encoding: "utf8" }).stdout.trim() !== "") continue;
+    const holder = spawn("flock", ["-n", join(homedir(), "fls-runs", "_ports", `${port}.lock`), "sleep", "86400"], { stdio: "ignore" });
+    await new Promise(done => setTimeout(done, 300));   // flock -n exits at once when another run holds the port
+    if (holder.exitCode === null) return { port, release: () => holder.kill() };
+  }
+  return null;
+}
+
+/** The suspicions of `commit` against its nearest earlier measured ancestor, and the A-B runs that settle them. */
+async function confirm(commit: string, force: boolean) {
+  const row = stored(commit); if (row === null) { console.log(`confirm ${commit.slice(0, 8)}: not measured`); return; }
+  const earlier = git("rev-list", "--date-order", `${commit}^@`).split("\n").find(candidate => candidate !== "" && stored(candidate) !== null);
+  if (earlier === undefined) { console.log(`confirm ${commit.slice(0, 8)}: no earlier measured commit`); return; }
+  const before = stored(earlier)!;
+  mkdirSync(join(store, "ab"), { recursive: true }); mkdirSync(".remote/trend/ab", { recursive: true });
+  for (const scene of TREND_SCENES) {
+    const suspects = JUDGED.map(([key]) => ({ key, suspicion: suspect(median(row.scenes[scene]?.values?.[key] ?? []), before.scenes[scene]?.values?.[key] ?? []) }))
+      .filter(entry => entry.suspicion !== "");
+    const name = confirmationName(earlier, commit, scene);
+    console.log(`confirm ${commit.slice(0, 8)} ${scene} against ${earlier.slice(0, 8)}: ${suspects.length === 0 ? "no suspicion" : suspects.map(entry => `${entry.key} ${entry.suspicion}`).join(", ")}`);
+    if ((suspects.length === 0 && !force) || existsSync(join(store, "ab", name))) continue;
+    const second = await holdPort(port); if (second === null) { console.log("   no second port in 4300–4399; A-B left for later"); continue; }
+    const out = mkdtempSync(join(tmpdir(), "fls-trend-ab-"));
+    try {
+      const ab = spawnSync("node_modules/.bin/tsx", ["scripts/perf/perfAB.ts", "--headless", "--a", earlier, "--b", commit, "--scene", scene, "--rounds", "4", "--seconds", "45",
+        "--out", out, "--ports", `${port},${second.port}`], { encoding: "utf8", env: { ...process.env, NODE_OPTIONS: "--max-old-space-size=8192" } });
+      const file = readdirSync(out).find(entry => entry.endsWith(".json"));
+      if (ab.status !== 0 || file === undefined) { console.log(`   A-B failed: ${(ab.stderr || ab.stdout).split("\n").filter(Boolean).slice(-2).join(" / ")}`); continue; }
+      const record = { ...JSON.parse(readFileSync(join(out, file), "utf8")), suspects, forced: suspects.length === 0 };
+      for (const dir of [join(store, "ab"), ".remote/trend/ab"]) writeFileSync(join(dir, name), `${JSON.stringify(record, null, 1)}\n`);
+      console.log(`   A-B: ${JUDGED.map(([key]) => `${key} ${record.table.find((entry: { key: string }) => entry.key === key)?.verdict ?? "-"}`).join(", ")}`);
+    } finally { second.release(); rmSync(out, { recursive: true, force: true }); }
+  }
+}
+
 async function main() {
   mkdirSync(store, { recursive: true }); mkdirSync(".remote/trend", { recursive: true });
   const own = process.env.FLS_REMOTE_COMMIT ?? git("rev-parse", "HEAD");
   const commits = flag("commits", "").split(",").filter(Boolean).map(ref => git("rev-parse", "--verify", `${ref}^{commit}`) || ref);
+  const confirmOnly = argv.includes("--confirm-only"); const force = argv.includes("--force"); const noConfirm = argv.includes("--no-confirm");
   for (const commit of commits.length > 0 ? commits : [own]) {
+    if (confirmOnly) { await confirm(commit, force); continue; }
     const tree = commit === own && commits.length === 0 ? "." : sourceTree(".", commit);
     try {
       const scenes = await measure(commit, tree);
@@ -74,6 +123,7 @@ async function main() {
       writeFileSync(join(".remote/trend", `${commit}.json`), `${JSON.stringify(record, null, 1)}\n`);
       console.log(`trend ${commit.slice(0, 8)} → ${join(store, `${commit}.json`)}`);
     } finally { if (tree !== ".") spawnSync("git", ["worktree", "remove", "--force", tree], { encoding: "utf8" }); }
+    if (!noConfirm) await confirm(commit, force);
   }
 }
 

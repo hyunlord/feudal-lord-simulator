@@ -2,7 +2,8 @@
 // alike and the paired differences keep only what the commits change. Nothing waits for a quiet machine (user
 // decision 2026-09-30); each run's conditions (other work's CPU, a person's input) are recorded beside it.
 //   PLAYWRIGHT_MODULE=… npm run perf:ab -- [--a <commit>] [--b <commit>] [--scene big-town-x5] [--rounds 4] [--seconds 60]
-//     [--headless] [--out docs/verification/perf-ab]
+//     [--headless] [--out docs/verification/perf-ab] [--ports <A>,<B>]
+// --ports: the two preview ports (the DGX trend passes ports it holds in 4300–4399); otherwise the OS gives free ones.
 // Mac (default): the real Chrome window. DGX: scripts/remote/run.sh <label> -- node_modules/.bin/tsx scripts/perf/perfAB.ts --headless …
 // --a defaults to the trunk (origin/codex/phase15-organic-ground), --b to HEAD. Scenes are perf:gate's (perfGate.ts SCENES).
 // Per metric: the mean of A and of B, the mean paired difference B − A with a ±2 standard-error band, and how many rounds
@@ -61,7 +62,9 @@ async function main() {
   const urls: Record<"A" | "B", string> = { A: "", B: "" };
   const runs: { side: "A" | "B"; round: number; summary: any; otherCpu: number }[] = [];
   try {
-    for (const [side, commit, port] of [["A", a, await freePort()], ["B", b, await freePort()]] as const) {
+    const fixedPorts = flag("ports", "").split(",").filter(Boolean).map(Number);
+    const ports = fixedPorts.length === 2 ? fixedPorts : [await freePort(), await freePort()];
+    for (const [side, commit, port] of [["A", a, ports[0]!], ["B", b, ports[1]!]] as const) {
       const tree = sourceTree(".", commit); trees.push(tree);
       const build = join(work, `build-${side}`);
       const built = spawnSync(join(tree, "node_modules/.bin/vite"), ["build", "--minify", "false", "--outDir", build, "--emptyOutDir"], { cwd: tree, encoding: "utf8" });
