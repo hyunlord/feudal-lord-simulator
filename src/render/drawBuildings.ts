@@ -72,7 +72,7 @@ export function drawBuildings(
   for (const item of items) {
     if (item.kind === "tree") {
       drawTreeDescriptor(context, {
-        tick: input.state.tick,
+        nowMs: input.nowMs ?? 0, // NAT-2: the wind on the wall clock
         tree: item.descriptor,
         zoom: input.zoom,
         spriteOptions, season,
@@ -173,7 +173,7 @@ function drawBuildingDetail(
     if (spriteDrawn) {
       drawKindDetail(context, { hideProblemMarker: true,
         architecture: spriteMeta(spriteKey)?.bakedArchitecture === true ? "baked" : "procedural",
-        tick: input.state.tick,
+        tick: input.state.tick, nowMs: input.nowMs ?? 0, // NAT-2: the flag and the wheel on the wall clock
         center,
         kind: building.kind,
         zoom: input.zoom,
@@ -196,7 +196,7 @@ function drawBuildingDetail(
   drawRoof(context, shape);
   if (detailLevel === "full") {
     drawKindDetail(context, { hideProblemMarker: true,
-      tick: input.state.tick,
+      tick: input.state.tick, nowMs: input.nowMs ?? 0,
       center,
       kind: building.kind,
       zoom: input.zoom,
