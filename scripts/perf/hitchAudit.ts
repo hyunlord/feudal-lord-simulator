@@ -187,6 +187,10 @@ async function main() {
     return { frames: hitch.frames, marks: hitch.marks, loaf: hitch.loaf ?? [], tick: state?.tick ?? null, population: state?.population ?? null, buildings: state?.buildings.length ?? null,
       dpr: devicePixelRatio, viewport: [innerWidth, innerHeight] }; });
   if (!noTrace) await browser.stopTracing();
+  // What the page keeps: the heap after forced GCs, once the recording is over. heapEndMB is wherever the GC sawtooth
+  // happened to be at the end (61–90 MB within one commit on the DGX), so trends judge this one.
+  const heapAfterGc: number | null = await (async () => { for (let i = 0; i < 2; i++) await cdp.send("HeapProfiler.collectGarbage");
+    return ((await cdp.send("Runtime.getHeapUsage")) as { usedSize: number }).usedSize; })().catch(() => null);
   await browser.close();
   const recordSeconds = ((recorded.frames.at(-1)?.t ?? 0) - (recorded.frames[0]?.t ?? 0)) / 1000;
   const frameCount = Math.max(1, recorded.frames.length - 1);
@@ -195,6 +199,7 @@ async function main() {
   const metrics = { scriptMsPerFrame: perFrame("ScriptDuration"), taskMsPerFrame: perFrame("TaskDuration"), layoutMsPerFrame: perFrame("LayoutDuration"),
     styleMsPerFrame: perFrame("RecalcStyleDuration"), heapAllocMBps: Math.round((heap.rises / 1e6 / Math.max(1, recordSeconds)) * 10) / 10,
     gcPerMin: Math.round((heap.gcs / Math.max(1 / 60, recordSeconds / 60)) * 10) / 10, heapEndMB: heap.last === null ? null : Math.round(heap.last / 1e5) / 10,
+    heapAfterGcMB: heapAfterGc === null ? null : Math.round(heapAfterGc / 1e5) / 10,
     canvasPerSec: perSecond(madeCounts.canvas ?? 0), offscreenPerSec: perSecond(madeCounts.offscreen ?? 0), bitmapPerSec: perSecond(madeCounts.bitmap ?? 0),
     getImageDataPerSec: perSecond(madeCounts.getImageData ?? 0), heapSamples: heap.samples,
     // Per game tick (with the proof port): a busy machine runs fewer ticks, so these hold still where per-second ones fall.

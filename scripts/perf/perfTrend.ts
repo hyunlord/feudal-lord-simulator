@@ -14,16 +14,18 @@ const TRUNK = "origin/codex/phase15-organic-ground";
 // The judged metrics: [key, label, floor (a change smaller than this is never marked)].
 export const JUDGED: readonly [string, string, number][] = [
   ["scriptMsPerTick", "스크립트 ms/틱", 0.02], ["heapAllocKBPerTick", "JS 할당 KB/틱", 5], ["canvasPer1kTicks", "캔버스 생성/1천 틱", 1],
-  ["gcPerMin", "힙 하락(GC)/분", 3], ["heapEndMB", "JS 힙 끝 MB", 5], ["scriptMsPerFrame", "스크립트 ms/프레임", 0.2],
+  ["gcPerMin", "힙 하락(GC)/분", 3], ["heapAfterGcMB", "GC 뒤 남은 JS 힙 MB", 3], ["scriptMsPerFrame", "스크립트 ms/프레임", 0.2],
   ["bitmapPerSec", "비트맵/초", 1], ["getImageDataPerSec", "getImageData/초", 0.5],
 ];
-const INFO = [["p95", "p95 ms(DGX, 참고)"], ["over33PerMin", "33 ms 초과/분(DGX, 참고)"]] as const;
+// heapEndMB is not judged: it is wherever the GC sawtooth was at the end of a run (61–90 MB within one commit).
+const INFO = [["otherCpu", "다른 일 CPU(DGX 전체 코어 중)"], ["heapEndMB", "JS 힙 끝 MB(참고, GC 톱니 위 한 점)"], ["p95", "p95 ms(DGX, 참고)"], ["over33PerMin", "33 ms 초과/분(DGX, 참고)"]] as const;
 
 interface Row { commit: string; subject: string; committed: string; measured: string; scenes: Record<string, { runs: number; medians: Record<string, number | null> }> }
-const median = (values: readonly number[]) => { const sorted = [...values].sort((a, b) => a - b); return sorted.length === 0 ? null : sorted[Math.floor((sorted.length - 1) / 2)]!; };
+const median = (values: readonly number[]) => { const sorted = [...values].sort((a, b) => a - b); const middle = sorted.length / 2;
+  return sorted.length === 0 ? null : sorted.length % 2 === 1 ? sorted[Math.floor(middle)]! : (sorted[middle - 1]! + sorted[middle]!) / 2; };
 
 export function mark(value: number | null, previous: readonly number[], floor: number): "나빠짐" | "좋아짐" | "" {
-  if (value === null || previous.length < 2) return "";
+  if (value === null || previous.length < 3) return "";   // two earlier values are not a baseline
   const base = median(previous)!; const mad = median(previous.map(entry => Math.abs(entry - base)))!;
   const band = Math.max(3 * mad, Math.abs(base) * 0.1, floor);
   return value > base + band ? "나빠짐" : value < base - band ? "좋아짐" : "";
@@ -47,8 +49,8 @@ function main() {
   const scenes = [...new Set([...rows.values()].flatMap(row => Object.keys(row.scenes)))];
   const lines = ["# 성능 추이 (커밋마다, DGX)", "",
     "사용자 판정(2026-09-30): 이 표로 판정한다. 본선에 푸시할 때마다 pre-push 훅이 그 커밋을 DGX에서 뒤로 잰다(`scripts/perf/trendRun.ts`, 기다리지 않음). `npm run perf:trend`가 결과를 모아 이 문서를 다시 쓴다.", "",
-    "- **지표**(모두 클수록 나쁨): 틱당 값은 기계가 바빠 틱이 적게 돌아도 흔들리지 않는다. 프레임 시간(p95 등)은 DGX 소프트웨어 래스터라 참고만 한다.",
-    "- **표시**: 직전 측정된 본선 커밋(최대 5개)의 중앙값보다 max(3 × 중앙 절대 편차, 10 %, 지표 바닥값)을 넘게 크면 **나빠짐**, 그만큼 작으면 좋아짐.",
+    "- **지표**(모두 클수록 나쁨): 틱당 값도 DGX가 바쁘면 커진다(틱이 적게 돌아도 프레임마다 하는 일은 그대로라서. `a597617b` 큰 도시 스크립트: 조용할 때 13.5 ms/틱, 전체 시험과 함께 19.9 ms/틱). 그래서 **다른 일 CPU** 칸을 함께 본다. 그 칸이 앞 커밋들보다 크게 높은 줄의 표시는 기계 탓일 수 있으니 `npm run perf:ab`로 확인한다. 힙은 기록 뒤 강제 GC로 남은 양(GC 뒤 남은 JS 힙)을 판정한다. JS 힙 끝은 GC 톱니 위 한 점이라 참고만 한다(같은 커밋에서 61~90 MB). 프레임 시간(p95 등)은 DGX 소프트웨어 래스터라 참고만 한다.",
+    "- **표시**: 직전 측정된 본선 커밋(최대 5개, 3개 이상일 때만)의 중앙값보다 max(3 × 중앙 절대 편차, 10 %, 지표 바닥값)을 넘게 크면 **나빠짐**, 그만큼 작으면 좋아짐.",
     "- **장면**: 가장 큰 도시 5×(`fixtures/perf-gate/ch4-1380`), 새 게임 3×. 각 45초 × 3회, 중앙값. 증명 포트 켬(틱 수).",
     "- **비교가 필요하면**: `npm run perf:ab -- --a <커밋> --b <커밋>`(A-B-A-B 번갈아, 같은 소음을 둘이 같이 맞음).", ""];
   const flagged: string[] = [];

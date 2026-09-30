@@ -10,20 +10,22 @@
 //    the V8.GCIncrementalMarkingStart budget of the GCs in a 30 s trace.
 //  - JS heap: a heap snapshot at the last point (outside the repository), read by scripts/perf/heapSnapshot.ts.
 //   PLAYWRIGHT_MODULE=... tsx scripts/perf/memoryHolders.ts --scene big-town [--save fixtures/perf-gate/ch4-1380.save.json.gz]
-//     [--speed 5] [--play-seconds 120] [--camera-seconds 60] --out <summary dir> --raw <dir outside the repository>
+//     [--speed 5] [--play-seconds 120] [--camera-seconds 60] [--commit <sha>] --out <summary dir> --raw <dir outside the repository>
+//   --commit builds that commit (a temporary worktree, scripts/perf/sourceTree.ts) instead of this checkout.
 import { spawn, spawnSync } from "node:child_process";
 import { createReadStream, createWriteStream, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { createInterface } from "node:readline";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { freePort } from "./freePort";
+import { sourceTree } from "./sourceTree";
 import { SEASON_TEXT, TUTORIAL_OFF, MODAL, closeModals, loadChromium, openScene, type PageWindow } from "./scenePage";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback?: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] : fallback; };
 const scene = flag("scene")!; const save = flag("save"); const speed = Number(flag("speed", "5"));
 const playSeconds = Number(flag("play-seconds", "120")); const cameraSeconds = Number(flag("camera-seconds", "60"));
-const out = flag("out")!; const raw = flag("raw")!; const fixedPort = flag("port");
+const out = flag("out")!; const raw = flag("raw")!; const fixedPort = flag("port"); const commit = flag("commit");
 const noProof = argv.includes("--no-proof"); const noSnapshot = argv.includes("--no-snapshot");   // the page as a player gets it (no proof port and its render recorders)
 if (!scene || !out || !raw) throw new Error("--scene --out --raw are required");
 mkdirSync(out, { recursive: true }); mkdirSync(raw, { recursive: true });
@@ -165,7 +167,9 @@ async function gcBudget(browser: any, page: any, file: string, seconds: number) 
 
 async function main() {
   const work = mkdtempSync(join(tmpdir(), "fls-memory-")); const build = join(work, "build");
-  const built = spawnSync("node_modules/.bin/vite", ["build", "--minify", "false", "--sourcemap", "true", "--outDir", build, "--emptyOutDir"], { encoding: "utf8" });
+  const tree = commit === undefined ? null : sourceTree(".", commit);
+  const built = spawnSync(join(tree ?? ".", "node_modules/.bin/vite"), ["build", "--minify", "false", "--sourcemap", "true", "--outDir", build, "--emptyOutDir"], { encoding: "utf8", cwd: tree ?? "." });
+  if (tree !== null) spawnSync("git", ["worktree", "remove", "--force", tree], { encoding: "utf8" });
   if (built.status !== 0) throw new Error(`vite build failed:\n${built.stdout}\n${built.stderr}`);
   const port = fixedPort === undefined ? await freePort() : Number(fixedPort);   // never a port another session may hold
   const preview = spawn("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
@@ -231,7 +235,7 @@ async function main() {
       await cdp.send("HeapProfiler.takeHeapSnapshot", { reportProgress: false, captureNumericValue: false });
       await new Promise<void>(done => stream.end(done));
     }
-    writeFileSync(join(out, `${scene}.memory.json`), `${JSON.stringify({ scene, save: save ?? null, speed, proof: !noProof, playSeconds, cameraSeconds, errors, snapshot: snapshotFile, points }, null, 1)}\n`);
+    writeFileSync(join(out, `${scene}.memory.json`), `${JSON.stringify({ scene, commit: commit ?? null, save: save ?? null, speed, proof: !noProof, playSeconds, cameraSeconds, errors, snapshot: snapshotFile, points }, null, 1)}\n`);
     console.log(`${scene}: wrote ${join(out, `${scene}.memory.json`)}, snapshot ${snapshotFile}`);
   } finally {
     await browser.close(); preview.kill(); rmSync(work, { recursive: true, force: true });

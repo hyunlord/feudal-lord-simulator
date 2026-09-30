@@ -13,6 +13,8 @@
 //                                                    (parsed with tools/eslint's TypeScript 6)
 //  7. budget      scripts/checks/distBudget.mjs      `vite build` of <head> into a temporary folder: the total and each
 //                                                    budgeted category (distBudget.config.json) within budget
+//  8. trend       scripts/checks/trendLag.mjs        warning only: the perf-trend page lags <head> by more than 10
+//                                                    commits (logged to <git common dir>/fls-trend-lag.log)
 // The layer rule (simulation folders do not import src/ui or src/render) is an ESLint rule: tools/eslint/layers.mjs.
 // 1, 2, 5 and 6 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
 // changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules; step 7
@@ -28,6 +30,7 @@ import { checkPinChanges, formatPinResult } from './pinChanges.mjs';
 import { checkLintExceptions, formatLintResult } from './lintExceptions.mjs';
 import { checkInboxLedger, formatLedgerResult, ledgerOk } from './inboxLedger.mjs';
 import { checkKoreanStrings, formatKoreanResult } from './koreanStrings.mjs';
+import { checkTrendLag, formatTrendLag, logTrendLag } from './trendLag.mjs';
 
 const CODE = /\.(ts|tsx|js|jsx|mjs|cjs)$/;
 const ESLINT_DIR = 'tools/eslint';
@@ -72,6 +75,10 @@ try {
     rmSync(temporary, { recursive: true, force: true });
   }
 }
+
+// A warning, not a result: it never fails the push.
+const trend = checkTrendLag({ head });
+console.log(formatTrendLag(trend)); logTrendLag(trend, head);
 
 const failed = results.filter(result => !result.ok).map(result => result.name);
 console.log(failed.length === 0 ? 'check:merge: passed' : `check:merge: FAILED (${failed.join(', ')})`);
