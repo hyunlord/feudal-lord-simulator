@@ -10,6 +10,7 @@
 - 비교: [`compare-0.4-0.6-1.0.jpg`](lod/compare-0.4-0.6-1.0.jpg)(위 본선 `653af2e2`, 아래 NAT-2, 같은 장면·1600×1100) — 아래 줄은 세 줌이 같은 화풍. 사용자 스크린샷 구도(창 1850×1010 @2, 줌 0.5, 온 지도): [`screenshot-framing-before-after.jpg`](lod/screenshot-framing-before-after.jpg). 0.3은 블록([`after-zoom0.30.jpg`](lod/after-zoom0.30.jpg)).
 - 비용(헤드리스 1600×1100 DPR 1, 가장 큰 도시, 240프레임 × 두 번, p50 / p95 ms, [`probe-trunk-vs-after.json`](lod/probe-trunk-vs-after.json)): 줌 0.6 멈춤 4.9 / 5.2 → 5.5 / 5.9, 5× 7.6 / 8.4 → 9.8 / 11.2; 0.5 5× 7.2 / 7.9 → 9.8 / 11.0; 0.4 5× 7.2 / 7.9 → 9.8 / 11.4. 늘어난 몫: 합성 걷는 사람 +1.0 ms, 건물 +0.6, 자연(그림 약 1,400장/프레임, 대부분 땅덮개) +0.7. perf:gate 장면은 저장의 기본 카메라(줌 2)라 이 줌에 걸리지 않는다. 120 Hz 창에서 0.4~0.6 5×는 8.3 ms 예산을 넘는다 — 땅덮개를 뺄지(규칙 하나를 깨는 것)는 사용자 판정.
 - 나무 그림자 색을 한 번만 만드는 것으로 땅 단계 약 0.4 ms 줄였다(따로 적음).
+- C25 회귀판(`tests/fixtures/boundary/c25-board.json`, 16장)을 다시 썼다 — 의도한 변화: 0.6이 full이 되고, 나무가 벽시계 바람에 기운다. 판이 시계를 읽게 되어 두 번 그린 판이 달랐으므로 `drawCurrentCanvasFrame`에 `nowMs`를 넘길 수 있게 하고 판·역순 시험은 0을 넘긴다.
 
 ## 2. QA-001 나무 흔들림 — [`motion/`](motion/)
 - 원인(확인): `ambientOffset({ tick: state.tick, frequency: 0.72 })` — 시뮬레이션 틱이라 1×에 약 2.3번/초, 5×에 11번/초, 멈추면 선다. 그리고 줄기까지 통째로 ±2·배율 px 미끄러졌다.
