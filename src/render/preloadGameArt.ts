@@ -28,6 +28,7 @@ import { preloadWave11Art } from "./wave11Art";
 import { preloadWave3AleArt } from "./wave3AleArt";
 import { preloadWave3ClothArt } from "./wave3ClothArt";
 import { preloadWave26HouseLayers, preloadWave26HousePaintings } from "./wave26HouseArt";
+import { preloadWave32GranaryLayers, preloadWave32GranaryPaintings } from "./wave32GranaryArt";
 import { preloadCanvasIcons } from "../ui/uiArt";
 
 /** The world art, awaited by captures; `chapter` (chapterArt.ts): the facility paintings up to it (default: all). */
@@ -37,7 +38,7 @@ export async function preloadGameArt(chapter = Number.POSITIVE_INFINITY): Promis
     preloadHouseCompoundAssets(), preloadStoneWallAssets(),
     preloadRuntimeActorAssets(), preloadMillAssets(), preloadConstructionArtAssets(),
     preloadGateAssets(), preloadBridgeWaterAssets(), preloadTimberWallAssets(), preloadTownLandscapeAssets(), preloadBuildingVariantAssets(),
-    preloadWave26HousePaintings(), // INSTALL-26
+    preloadWave26HousePaintings(), preloadWave32GranaryPaintings(), // INSTALL-26, INSTALL-32
   ]);
 }
 
@@ -57,6 +58,7 @@ export function preloadFrameArt(chapter: number): void {
   // CLOTH-UI: the cloth chain's art at startup (same reasoning: any building can hold cloth in any chapter).
   preloadWave3ClothArt();
   preloadWave26HouseLayers(); // INSTALL-26 the house paintings' weathered, fresh, snow and boarded layers
+  preloadWave32GranaryLayers(); // INSTALL-32 the granary paintings' full / half / empty, weathered, boarded and snow layers
   preloadCanvasIcons();
 }
 
