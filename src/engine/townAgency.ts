@@ -7,8 +7,8 @@
  */
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingConfig";
 import {
-  ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, BUILDER_OF_KIND, DUES_POINTS_PER_100_PERMILLE,
-  FIRE_NEIGHBOUR_POINTS, MATERIAL_PENNIES, NEED_STEP, NEED_TOP, OPEN_SITES_MAX, OPPORTUNITY_KINDS, POLICY_WEIGHTS,
+  ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, builderOfKind, DUES_POINTS_PER_100_PERMILLE,
+  FIRE_NEIGHBOUR_POINTS, MATERIAL_PENNIES, NEED_STEP, NEED_TOP, OPEN_SITES_MAX, OPPORTUNITY_KINDS, policyWeight,
   LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, START_SCORE, STARTS_PER_WEEK, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D,
 } from "../content/townAgencyConfig";
 import { constructionSiteId, isBuildingConstructionSite } from "../economy/construction";
@@ -141,7 +141,7 @@ function siteOf(state: GameState, action: TownAction): { readonly tx: number; re
 function actorOf(state: GameState, action: TownAction): ActorKind {
   if (action.kind === "place_road") return "community";
   if (action.kind !== "place_building") return "households";
-  const builder = BUILDER_OF_KIND[action.building];
+  const builder = builderOfKind(action.building);
   return builder === "guild" && state.reorganisation?.guild === undefined ? "merchants" : builder;
 }
 
@@ -173,9 +173,9 @@ function roadDistance(state: GameState, tx: number, ty: number): number {
  * opportunity (no need behind it) takes the weight twice — the policy is why the actor builds it at all.
  */
 function policyPoints(policy: EstatePolicy, key: string, rank: number | null): number {
-  const weight = POLICY_WEIGHTS[policy][key] ?? 0;
+  const weight = policyWeight(policy, key);
   if (rank === null) return weight * OPPORTUNITY_POLICY_FACTOR;
-  return weight + (rank < -1 ? POLICY_WEIGHTS[policy].fill_plot ?? 0 : 0);
+  return weight + (rank < -1 ? policyWeight(policy, "fill_plot") : 0);
 }
 
 /** TA-4: a proposal's named reasons. */
@@ -237,7 +237,7 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
   // town has no more of it than one per four houses (so one more than that at most).
   const houses = state.houses.length;
   for (const kind of OPPORTUNITY_KINDS) {
-    const backed = agency.subsidies.some(subsidy => subsidy.kind === kind) || (POLICY_WEIGHTS[agency.policy][kind] ?? 0) >= 20;
+    const backed = agency.subsidies.some(subsidy => subsidy.kind === kind) || policyWeight(agency.policy, kind) >= 20;
     if (!backed || proposals.some(proposal => proposal.what === kind)) continue;
     const count = state.buildings.filter(building => building.kind === kind).length
       + state.constructionSites.filter(site => isBuildingConstructionSite(site) && site.kind === kind).length;

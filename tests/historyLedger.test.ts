@@ -108,7 +108,9 @@ test("H1 each of the twelve decision kinds is recorded: seven as the season's li
   const big = records(state).filter(record => record.kind === "decision").map(record => String(record.params?.decisionKind));
   // The big five of F0-C2, one record each (WALL-2's expansion, the sixth, is W6 in tests/wallExpansion.test.ts; ARCH-1b's
   // fen drainage, the seventh, is MA-11 in tests/riverAndDrainage.test.ts).
-  assert.deepEqual([...big].sort(), BIG_DECISION_KINDS.filter(kind => kind !== "wall_expand" && kind !== "drainage").sort(), "the big five, one record each");
+  // LM-E1's lord conditions (estate_policy, project_subsidy, market_dues) are TA-6 in tests/townAgency.test.ts.
+  const lordConditions: readonly string[] = ["estate_policy", "project_subsidy", "market_dues"];
+  assert.deepEqual([...big].sort(), BIG_DECISION_KINDS.filter(kind => kind !== "wall_expand" && kind !== "drainage" && !lordConditions.includes(kind)).sort(), "the big five, one record each");
   // Two seasons on, each big decision has its actual on its prediction's keys.
   const later = advanceHistory(state, { ...state, tick: state.tick + ACTUAL_AFTER_TICKS });
   for (const record of records(later).filter(entry => entry.kind === "decision")) {
@@ -120,7 +122,7 @@ test("H1 each of the twelve decision kinds is recorded: seven as the season's li
   const bundles = records(closed).filter(record => record.template === "decision.bundle").map(record => String(record.params?.decisionKind));
   assert.deepEqual(bundles.sort(), ["build", "cancel", "house", "operation", "road", "zone"]);
   assert.deepEqual(records(closeSeason(prioritised)).filter(record => record.template === "decision.bundle").map(record => record.params?.decisionKind), ["wall_priority"]);
-  assert.equal(DECISION_KINDS.length, 14, "twelve, WALL-2's wall expansion and ARCH-1b's drainage");
+  assert.equal(DECISION_KINDS.length, 17, "twelve, WALL-2's wall expansion, ARCH-1b's drainage and LM-E1's three lord conditions");
   assert.equal(before.history, undefined, "the fixture had no ledger");
   assert.equal(historySummary(records(closed).find(record => record.template === "decision.bundle" && record.params?.decisionKind === "build")!), "이번 계절 건물 1곳의 공사를 놓았다");
 });

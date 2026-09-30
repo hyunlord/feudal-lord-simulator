@@ -11,15 +11,18 @@ export const AGENCY_WEEK_TICKS = 78;
 /** TA-2: the actors, in their order of turns. */
 export const AGENCY_ACTORS: readonly ActorKind[] = ["community", "households", "merchants", "guild", "church"];
 
-/** TA-2: who builds each kind (the guild's work goes to the merchants until a guild is founded). */
-export const BUILDER_OF_KIND: Readonly<Record<BuildingKind, ActorKind>> = {
-  house: "households", farmstead: "households", mill: "households", malt_kiln: "households", pastoral_farm: "households",
-  logging_camp: "households", quarry: "households", wheat_farm: "households",
-  market: "merchants", storehouse: "merchants", granary: "merchants", sawmill: "merchants", masonry: "merchants",
-  weaver_house: "guild", fulling_mill: "guild", dyehouse: "guild", tenter_yard: "guild",
-  well: "community", keep: "community", manor_house: "community",
-  chapel: "church", church: "church",
-};
+/** TA-2: who builds which kinds; every other kind is the households' (the guild's work goes to the merchants until a
+ * guild is founded). A list by actor, not a table over every kind (BLD-REG: those live in the building catalog). */
+export const BUILDERS: readonly (readonly [ActorKind, readonly BuildingKind[]])[] = [
+  ["merchants", ["market", "storehouse", "granary", "sawmill", "masonry"]],
+  ["guild", ["weaver_house", "fulling_mill", "dyehouse", "tenter_yard"]],
+  ["community", ["well", "keep", "manor_house"]],
+  ["church", ["chapel", "church"]],
+];
+
+export function builderOfKind(kind: BuildingKind): ActorKind {
+  return BUILDERS.find(([, kinds]) => kinds.includes(kind))?.[0] ?? "households";
+}
 
 /** TA-2: an actor's funds at a town's start, pennies. */
 export const ACTOR_OPENING_FUNDS: Readonly<Record<ActorKind, number>> = { community: 240, households: 240, merchants: 120, guild: 0, church: 60 };
@@ -59,13 +62,19 @@ export const RECEIPTS_KEPT = 600;
 export const NEED_TOP = 100;
 export const NEED_STEP = 3;
 
-/** TA-6 ①: the policy's weight on each kind of project (added to its score). */
-export const POLICY_WEIGHTS: Readonly<Record<EstatePolicy, Readonly<Partial<Record<string, number>>>>> = {
-  growth: { house: 20, fill_plot: 20, market: 15, granary: 10, well: 10, road: 5, zone: 10 },
-  revenue: { market: 25, mill: 20, malt_kiln: 20, sawmill: 15, masonry: 15, weaver_house: 20, fulling_mill: 20, dyehouse: 20, tenter_yard: 20, house: -10 },
-  stability: { granary: 25, well: 20, farmstead: 20, chapel: 15, church: 15, storehouse: 10, market: -10 },
-  defence: { road: 15, storehouse: 20, quarry: 20, masonry: 20, keep: 25, logging_camp: 10, house: -10 },
+/** TA-6 ①: the policy's weight on each kind of project (added to its score); lists of pairs, not tables over the kinds. */
+export const POLICY_WEIGHTS: Readonly<Record<EstatePolicy, readonly (readonly [string, number])[]>> = {
+  growth: [["house", 20], ["fill_plot", 20], ["market", 15], ["granary", 10], ["well", 10], ["road", 5], ["zone", 10]],
+  revenue: [["market", 25], ["mill", 20], ["malt_kiln", 20], ["sawmill", 15], ["masonry", 15], ["weaver_house", 20], ["fulling_mill", 20],
+    ["dyehouse", 20], ["tenter_yard", 20], ["house", -10]],
+  stability: [["granary", 25], ["well", 20], ["farmstead", 20], ["chapel", 15], ["church", 15], ["storehouse", 10], ["market", -10]],
+  defence: [["road", 15], ["storehouse", 20], ["quarry", 20], ["masonry", 20], ["keep", 25], ["logging_camp", 10], ["house", -10]],
 };
+
+/** TA-6 ①: a policy's weight on a project key (a building kind, "road", "zone", "fill_plot"); 0 when it has none. */
+export function policyWeight(policy: EstatePolicy, key: string): number {
+  return POLICY_WEIGHTS[policy].find(([name]) => name === key)?.[1] ?? 0;
+}
 
 /** TA-4: an opportunity (no need behind it) counts its policy's weight this many times. */
 export const OPPORTUNITY_POLICY_FACTOR = 2;
