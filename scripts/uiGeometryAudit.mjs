@@ -76,7 +76,7 @@ async function loadScene(scene, condition) {
     const base = scene.kind === 'state' ? loadState(scene.set, scene.name) : null;
     const state = base !== null && condition.numbers === 'extreme' ? extremeNumbers(base) : base;
     const opened = await openScene(browser, { state, tile: state === null ? [45, 41] : scene.focus !== undefined ? (({ tx, ty }) => [tx, ty])(mapTile(state, scene.focus)) : sceneTile(state, scene.tile), baseUrl: url, width: viewport.width, height: viewport.height,
-      zoom: scene.zoom ?? 1.1, run: false, hasTouch: viewport.touch,
+      zoom: scene.zoom ?? 1.1, run: false, hasTouch: viewport.touch, loadTimeout: 120_000,
       initScript: scene.kind === 'state' ? `${NAME_SHIM}${TUTORIAL_OFF}` : NAME_SHIM, query: `${scene.query ?? ''}${long ? '&pseudo-long=1' : ''}` });
     opened.page.on('pageerror', error => pageErrors.push(String(error).slice(0, 200)));
     // openScene starts the clock by the 1× seal's name, which the pseudo-long copy lengthens: press the second seal.
@@ -90,7 +90,7 @@ async function loadScene(scene, condition) {
   await page.routeWebSocket('**', socket => socket.close());
   const target = new URL(scene.kind === 'route' ? scene.path : '', url);
   if (long) target.searchParams.set('pseudo-long', '1');
-  await page.goto(target.href);
+  await page.goto(target.href, { timeout: 120_000 });
   await page.locator(scene.kind === 'route' ? '[data-testid="ui-kit-gallery"]' : '.welcome-parchment').first().waitFor({ timeout: 60_000 });
   return { context, page, state: { buildings: [], constructionSites: [], walkers: [] } };
 }
