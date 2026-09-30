@@ -8,14 +8,18 @@
   align-items: flex-start;
   pointer-events: none;
 }
+/* UI-AUDIT-1: a flat frame (data-frame="flat": its own 3 px rule) with the 8 px gap inside it; the heading, the cause
+   lines and the body sit in that inner box as plates, and the card scrolls as one (the heading stays on top). */
 .app-shell .diagnostic-card {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: var(--frame-gap);
   max-height: 100%;
   min-height: 0;
-  padding: 0;
-  overflow: hidden;
+  padding: var(--frame-gap);
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--palette-earth) var(--palette-parchment);
   border: 3px solid var(--palette-earth-dark);
   border-top-color: var(--palette-earth);
   border-bottom-color: var(--palette-ink);
@@ -25,6 +29,9 @@
   color: var(--palette-ink);
 }
 .app-shell .inspector-heading {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: grid;
   grid-template-columns: 64px minmax(0, 1fr) 32px;
   align-items: center;
@@ -68,11 +75,8 @@
 .app-shell .inspector-body {
   display: grid;
   gap: 12px;
-  padding: 12px 16px 16px;
-  min-height: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-color: var(--palette-earth) var(--palette-parchment);
+  padding: 4px 8px 0;
+  flex-shrink: 0;
 }
 .app-shell .diagnostic-card p,
 .app-shell .diagnostic-card dl,
@@ -130,7 +134,7 @@
   .app-shell .inspector-heading { gap: 8px; padding: 8px; grid-template-columns: 56px minmax(0, 1fr) 32px; }
   .inspector-thumbnail { width: 56px; height: 56px; }
   .inspector-thumbnail img { width: 52px; height: 52px; }
-  .app-shell .inspector-body { padding: 12px; }
+  .app-shell .inspector-body { padding: 4px 4px 0; }
 }
 
 .inspector-merge { display: grid; gap: 8px; border-bottom: 1px solid var(--palette-parchment-dark); padding-bottom: 12px; }
@@ -149,7 +153,7 @@
 .inspector-cause-summary {
   flex-shrink: 0;
   padding: 8px 12px;
-  border-bottom: 1px solid var(--palette-earth);
+  border: 1px solid var(--palette-earth);
   color: var(--palette-ink);
   background: var(--palette-parchment);
   font: 600 13px/1.5 var(--ui-body-font);
@@ -159,19 +163,30 @@
   flex-shrink: 0;
   margin: 0;
   padding: 8px 12px;
-  border-bottom: 1px solid var(--palette-earth);
+  border: 1px solid var(--palette-earth);
   color: var(--palette-ink);
   background: var(--palette-parchment);
   font: 400 13px/1.5 var(--ui-body-font);
 }
+/* UI-AUDIT-1: the problem-only view's legend had no place of its own (it sat in the page flow under the map); it is a
+   bottom-left card above the layer switch now, the flat frame's 8 px gap inside its rule, the causes in two columns. */
+.app-shell .cause-legend {
+  position: absolute;
+  left: 8px;
+  bottom: 68px;
+  z-index: 4;
+  width: min(var(--box-w-medium), calc(100vw - 32px));
+  pointer-events: none;
+}
 .cause-legend {
-  padding: 8px 12px;
+  padding: var(--frame-gap);
   color: var(--palette-vellum);
   background: var(--palette-ink-muted);
   border: 1px solid var(--palette-earth);
-  font: 400 13px/1.4 var(--ui-body-font);
+  font: 400 13px/1.5 var(--ui-body-font);
 }
-.cause-legend ul { list-style: none; padding: 0; margin: 8px 0; }
+.cause-legend strong { display: block; }
+.cause-legend ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 8px; list-style: none; padding: 0; margin: 8px 0; }
 .cause-legend li { display: flex; align-items: center; gap: 8px; }
 .cause-legend-symbol { min-width: 26px; padding: 0 4px; background: var(--palette-vellum); font-weight: 700; }
 .cause-legend small { font-size: 12px; }
