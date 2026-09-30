@@ -94,7 +94,9 @@ test("L-3 before the first posting the treasury is the opening balance; the firs
     // FIX-9 (LG-13)
     "church_rebuilding",
     // FIX-10 (TT-2)
-    "timber_purchase"]);
+    "timber_purchase",
+    // LM-E1 (TA-6)
+    "project_subsidy"]);
 });
 
 test("L-4 roll-ups keep every account total while only the last 6 periods stay as entries", () => {

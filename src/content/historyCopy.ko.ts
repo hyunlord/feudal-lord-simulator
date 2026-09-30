@@ -1,3 +1,4 @@
+import { BUILDING_COPY } from "./buildingCatalog.ko";
 /**
  * F0-C2 history ledger sentences (spec docs/design/history-ledger.md HL-1): one template per record kind. A record
  * saves only the template id and its parameters; `historySummary` rebuilds the sentence from here.
@@ -98,6 +99,13 @@ const DEATH_CAUSES: Readonly<Record<string, string>> = {
   age: "세상을 떠났다", captivity: "유폐 중에 죽었다", famine: "굶주림 끝에 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
 };
 
+/** LM-E1: the estate's policies, the town's actors, a project's name. */
+const ESTATE_POLICY_KO: Readonly<Record<string, string>> = { growth: "성장", revenue: "세입", stability: "안정", defence: "방어" };
+const ACTOR_KO: Readonly<Record<string, string>> = { households: "가구들", merchants: "상인 가문", guild: "길드", community: "공동체", church: "교회" };
+const buildingWord = (kind: string) => BUILDING_COPY[kind as keyof typeof BUILDING_COPY]?.name ?? kind;
+const projectWord = (what: string) => what === "road" ? "길" : what.startsWith("zone:") ? "구역" : what === "rebuild_house" ? "집 재건"
+  : what === "demolish_house" ? "집 헐기" : what === "farmstead_crop" ? "작물 바꾸기" : buildingWord(what);
+
 export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> = {
   "decision.bundle": params => (BUNDLE[s(params, "decisionKind")] ?? (() => s(params, "decisionKind")))(params),
   "decision.famine_response": params => { const label = choice(s(params, "chosen")); return `대기근에 ${label}${josa(label, "을", "를")} 택했다`; },
@@ -186,6 +194,12 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "decision.wall_expand": () => "목책을 넓혀 새로 두르기로 했다",
   // ARCH-1b (MA-11): the fen's drainage.
   "decision.drainage": () => "습지의 웅덩이를 메우는 배수 공사를 시작했다",
+  // LM-E1 (TA-6): the lord's conditions; (TA-5) a project the town started.
+  "decision.estate_policy": params => `영지 방침을 정했다: ${ESTATE_POLICY_KO[s(params, "chosen")] ?? s(params, "chosen")}`,
+  "decision.project_subsidy": params => n(params, "amount") === 0 ? `${buildingWord(s(params, "kind"))} 장려금을 거두었다`
+    : `${buildingWord(s(params, "kind"))}에 장려금 ${n(params, "amount")}d를 걸었다`,
+  "decision.market_dues": params => `시장 부담을 평소의 ${Math.round(Number(s(params, "chosen")) / 10)}%로 정했다`,
+  "agency.project_started": params => `${ACTOR_KO[s(params, "actor")] ?? s(params, "actor")}${josa(ACTOR_KO[s(params, "actor")] ?? "", "이", "가")} ${projectWord(s(params, "what"))} 공사를 시작했다`,
   "drainage.done": params => `배수 공사가 끝나 웅덩이 ${n(params, "cells")}칸이 풀밭이 되었다`,
   "event.rumour": params => `${eventName(s(params, "defId"))}의 소문이 돌았다`,
   "event.sign": params => `${eventName(s(params, "defId"))}의 징후가 보였다`,

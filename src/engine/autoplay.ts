@@ -339,9 +339,13 @@ function storageAction(state: GameState): AutoplayAction {
 }
 
 
-function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
-  let metadata: FoodTransientMetadata = {};
-  if (reserveDeadlock(state) !== null) return { kind: 'set_wall_construction_priority', priority: 'priority' };
+/** LM-E1 (TA-3): one step of the bot's priority list — its name (the need it answers) and its decision. */
+interface PlannerStep { readonly name: string; readonly decide: () => AutoplayAction; readonly wide: boolean }
+interface PlannerPlan { readonly early: AutoplayAction | null; readonly steps: readonly PlannerStep[]; readonly accepts: (action: AutoplayAction) => boolean }
+
+/** The bot's priority list for this state, step by step (LM-E1 reads every step; the bot takes the first). */
+function plannerPlan(state: GameState, policy: AutoplayPolicy, diagnostic?: FoodDiagnosticCollector): PlannerPlan {
+  if (reserveDeadlock(state) !== null) return { early: { kind: 'set_wall_construction_priority', priority: 'priority' }, steps: [], accepts: () => true };
   // LB-14 (C3): a dense walled town's church and market search needs the era phase's work too (seed 2 kept a church
   // unbuilt for 100,000+ ticks at 192: every probe failed within the budget, at 768 the same search finds the site).
   // BOT-1 (AR-7): behind a wall the market or church takes a site that leaves the remaining lots their house sites.
@@ -363,6 +367,7 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   const upkeepHeld = careful && arrearsPeriods(state) >= LORDSHIP_BALANCE.botArrearsPeriods;
   const homesHeld = careful && (derelictPermille(state) ?? 0) >= LORDSHIP_BALANCE.botDerelictPermille;
   const keepsDebts = (action: AutoplayAction): boolean => !upkeepHeld || action.kind !== "place_building" || !(action.building in MONEY_BALANCE.upkeep);
+  const accepts = (action: AutoplayAction) => keepsSites(action) && keepsDebts(action);
   // F0-A (FP-6): the autumn winter-reserve check, before the ordinary food step; the naive variant has none.
   const winterReserve = (current: GameState): AutoplayAction => policy.naiveReserve === true ? NONE : winterReserveAction(current, buildAction);
   // F0-B (EV-7): the unprepared variant digs no wells.
@@ -370,53 +375,60 @@ function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy =
   // F0-A (AR-8): a mill beside a barn the mills cannot empty while homes lose their levels (seed 4, run 1).
   const barnMill = (current: GameState): AutoplayAction => barnMillAction(current, buildAction, diagnostic);
   const stoneFirst = policy.wallChoice === "wall" && (state.politics?.chapter.number ?? 1) >= 2;
-  if (state.era === "stone_town" && stoneFirst && wallConstructionPriority(state) !== "priority") return { kind: 'set_wall_construction_priority', priority: 'priority' };
-  if (state.era === "stone_town") {
-    for (const decide of [networkRoadAction, roadAccessAction, constructionRoadAction, winterReserve, barnMill,
-      (current: GameState) => aleFood(current, () => foodAction(current, buildAction, diagnostic)), (current: GameState) => aleChainAction(current, buildAction),
-      (current: GameState) => clothChainAction(current, buildAction), granaryGap, constructionLogisticsAction, serviceDecision, marketGap, water, materialRecoveryAction,
-      (current: GameState): AutoplayAction => homesHeld ? NONE : housingAction(current, policy)]) {
-      const action = runAutoplaySearchPhase(() => decide(state), decide === serviceDecision ? ERA_PHASE_SEARCH_WORK : undefined);
-      if (action.foodTransient !== undefined) metadata = action;
-      if (action.kind !== "none" && keepsSites(action) && keepsDebts(action)) return carryFoodTransient(action, metadata);
-    }
-    return carryFoodTransient(NONE, metadata);
+  if (state.era === "stone_town" && stoneFirst && wallConstructionPriority(state) !== "priority") {
+    return { early: { kind: 'set_wall_construction_priority', priority: 'priority' }, steps: [], accepts };
   }
-  const eraPhase = () => autoplayEraAction(state, buildAction, policy.maxHousingLots);
-  const servicePhase = () => serviceDecision(state);
-  const housingPhase = (): AutoplayAction => homesHeld ? NONE : housingAction(state, policy);
-  for (const decide of [
-    () => water(state),
-    () => roadAccessAction(state),
-    () => networkRoadAction(state),
-    () => constructionRoadAction(state),
+  const step = (name: string, decide: () => AutoplayAction, wide = false): PlannerStep => ({ name, decide, wide });
+  if (state.era === "stone_town") {
+    return { early: null, accepts, steps: [
+      step("network_roads", () => networkRoadAction(state)), step("road_access", () => roadAccessAction(state)),
+      step("construction_roads", () => constructionRoadAction(state)), step("winter_reserve", () => winterReserve(state)),
+      step("barn_mill", () => barnMill(state)), step("food", () => aleFood(state, () => foodAction(state, buildAction, diagnostic))),
+      step("ale", () => aleChainAction(state, buildAction)), step("cloth", () => clothChainAction(state, buildAction)),
+      step("granary_gap", () => granaryGap(state)), step("construction_logistics", () => constructionLogisticsAction(state)),
+      step("services", () => serviceDecision(state), true), step("market_gap", () => marketGap(state)), step("water", () => water(state)),
+      step("material_recovery", () => materialRecoveryAction(state)),
+      step("housing", (): AutoplayAction => homesHeld ? NONE : housingAction(state, policy)),
+    ] };
+  }
+  // C1c-2: the proclamation checks service space for the whole walled town; with fields taking land near the
+  // centre that first layout probe can exceed an ordinary phase, so the era phase gets four phases' work.
+  // BOT-1 (AR-7): so does housing behind a wall, whose interior sites each need a service-space proof.
+  return { early: null, accepts, steps: [
+    step("water", () => water(state)),
+    step("road_access", () => roadAccessAction(state)),
+    step("network_roads", () => networkRoadAction(state)),
+    step("construction_roads", () => constructionRoadAction(state)),
     // BOT-1: the granary site inside the wall before timber takes the stock (houses fill the interior for free).
-    () => granaryGap(state),
-    () => timberAction(state, diagnostic),
-    () => winterReserve(state),
-    () => barnMill(state),
-    () => aleFood(state, () => foodAction(state, buildAction, diagnostic)),
+    step("granary_gap", () => granaryGap(state)),
+    step("timber", () => timberAction(state, diagnostic)),
+    step("winter_reserve", () => winterReserve(state)),
+    step("barn_mill", () => barnMill(state)),
+    step("food", () => aleFood(state, () => foodAction(state, buildAction, diagnostic))),
     // C4 (AL-8): the ale chain once it is required.
-    () => aleChainAction(state, buildAction),
+    step("ale", () => aleChainAction(state, buildAction)),
     // C5 (CL-11): the cloth chain after chapter 3.
-    () => clothChainAction(state, buildAction),
+    step("cloth", () => clothChainAction(state, buildAction)),
     // FIX-5 (WR-11): the stone-wall variant seeks its project before homes.
-    ...(stoneFirst ? [() => stoneProjectAction(state, buildAction)] : []),
-    housingPhase,
+    ...(stoneFirst ? [step("stone_project", () => stoneProjectAction(state, buildAction))] : []),
+    step("housing", (): AutoplayAction => homesHeld ? NONE : housingAction(state, policy), state.palisade !== null),
     // WALL-2 (AR-12): a built wall too small for the lots still wanted is widened.
-    () => autoplayWallExpansionAction(state, policy.maxHousingLots),
-    servicePhase,
-    () => marketGap(state),
-    () => storageAction(state),
-    eraPhase,
-  ]) {
-    // C1c-2: the proclamation checks service space for the whole walled town; with fields taking land near the
-    // centre that first layout probe can exceed an ordinary phase, so the era phase gets four phases' work.
-    // BOT-1 (AR-7): so does housing behind a wall, whose interior sites each need a service-space proof.
-    const wide = decide === eraPhase || decide === servicePhase || (decide === housingPhase && state.palisade !== null);
-    const action = runAutoplaySearchPhase(decide, wide ? ERA_PHASE_SEARCH_WORK : undefined);
+    step("wall_expansion", () => autoplayWallExpansionAction(state, policy.maxHousingLots)),
+    step("services", () => serviceDecision(state), true),
+    step("market_gap", () => marketGap(state)),
+    step("storage", () => storageAction(state)),
+    step("era", () => autoplayEraAction(state, buildAction, policy.maxHousingLots), true),
+  ] };
+}
+
+function decideNextActionWithinBudget(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, diagnostic?: FoodDiagnosticCollector): AutoplayAction {
+  const plan = plannerPlan(state, policy, diagnostic);
+  if (plan.early !== null) return plan.early;
+  let metadata: FoodTransientMetadata = {};
+  for (const step of plan.steps) {
+    const action = runAutoplaySearchPhase(step.decide, step.wide ? ERA_PHASE_SEARCH_WORK : undefined);
     if (action.foodTransient !== undefined) metadata = action;
-    if (action.kind !== "none" && keepsSites(action) && keepsDebts(action)) return carryFoodTransient(action, metadata);
+    if (action.kind !== "none" && plan.accepts(action)) return carryFoodTransient(action, metadata);
   }
   return carryFoodTransient(NONE, metadata);
 }
@@ -460,4 +472,38 @@ function decidePlacement(state: GameState, policy: AutoplayPolicy, diagnostic?: 
   }
   clearZoneExclusions();
   return action;
+}
+
+/** LM-E1 (TA-3): a need the bot's planning finds now — which step (its rank in the priority list) and the action. */
+export interface PlanningNeed { readonly planner: string; readonly rank: number; readonly action: AdvisorAction }
+
+/**
+ * LM-E1 (TA-3): every need the bot's priority list finds in this state, not only its first — the rebuild of a burnt
+ * house, a burgage plot to fill, a home out of the market's reach, then each planning step in order, each searched
+ * within its own budget. The bot itself (`decideNextAction`) is unchanged; the town's actors read these as the "need"
+ * reason of their proposals (the answers to the chapters' petitions stay the lord's).
+ */
+export function planningNeeds(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY): readonly PlanningNeed[] {
+  const needs: PlanningNeed[] = [];
+  const add = (planner: string, rank: number, action: AdvisorAction | null | undefined) => {
+    if (action !== null && action !== undefined && action.kind !== "none") needs.push({ planner, rank, action });
+  };
+  add("rebuild", -3, rebuildBurntHouseAction(state));
+  if (zoneRuleActive(state, "burgage") && housingLotCount(state) < policy.maxHousingLots
+    && (policy.naiveReserve === true || !dearthHoldsGrowth(state))) add("fill_plot", -2, zoneFillAction(state));
+  add("market_reach", -1, marketRelocationAction(state, policy.maxHousingLots, undefined,
+    action => keepsInteriorHouseSites(state, action, policy.maxHousingLots)));
+  const margin = policy.naiveReserve === true ? NAIVE_ARABLE_MARGIN_PERMILLE : dearthArableMargin(state, ARABLE_MARGIN_PERMILLE);
+  withArableMargin(margin, () => {
+    resetAutoplayServiceSearch();
+    const plan = plannerPlan(state, policy);
+    if (plan.early !== null) add("wall_priority", 0, plan.early);
+    plan.steps.forEach((step, rank) => {
+      resetAutoplayServiceSearch();
+      const action = runAutoplaySearch(() => runAutoplaySearchPhase(step.decide, step.wide ? ERA_PHASE_SEARCH_WORK : undefined));
+      if (action.kind !== "none" && plan.accepts(action) && !zoneRefusesAction(state, action)) add(step.name, rank, action);
+    });
+    clearZoneExclusions();
+  });
+  return needs;
 }

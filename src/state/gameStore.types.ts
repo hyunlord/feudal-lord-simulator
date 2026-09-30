@@ -15,7 +15,11 @@ type GameCommand =
   | { readonly type: "record_autoplay_food_confirmation" }
   | { readonly type: "restart_settlement" }
   /** ARCH-1 (MA-6): and the land and its seed (absent = the riverside town, seed 1). */
-  | { readonly type: "start_new_game"; readonly scenarioId: string; readonly archetypeId?: string; readonly seed?: number }
+  | { readonly type: "start_new_game"; readonly scenarioId: string; readonly archetypeId?: string; readonly seed?: number; readonly mode?: "lord" | "sandbox" }
+  // LM-E1 (TA-6): the lord's conditions in lord mode — the estate's policy, a subsidy on a kind (0 withdraws), the market dues.
+  | { readonly type: "set_estate_policy"; readonly policy: import("../engine/townAgency.types").EstatePolicy }
+  | { readonly type: "set_project_subsidy"; readonly kind: import("../content/buildingConfig").BuildingKind; readonly amount: number }
+  | { readonly type: "set_market_dues"; readonly permille: number }
   /** ARCH-1b (MA-11): drain the fen's still water around a tile (`drainagePlan` says what it takes). */
   | { readonly type: "drain_fen"; readonly tx: number; readonly ty: number }
   | { readonly type: "order_timber"; readonly amount: number }

@@ -26,6 +26,7 @@ import { recordDecision } from "../engine/history";
 import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
+import { LORD_PUBLIC_WORKS, lordMode, setEstatePolicy, setMarketDues, setProjectSubsidy } from "../engine/townAgency";
 import { confirmPalisadeProclamation, expandPalisade } from "../engine/palisade";
 import { setWallConstructionPriority } from "../engine/constructionReserve";
 import { eraseZone, paintZone, removeZone, undoZoneStroke } from "../zones/zoneEdits";
@@ -115,7 +116,8 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
   // A new game is the default opening under the chosen scenario (B2 mode choice), ARCH-1 on the chosen land; unknown
   // ids are ignored.
   if (action.type === "start_new_game") return newGameState({ scenarioId: action.scenarioId,
-    ...(action.archetypeId === undefined ? {} : { archetypeId: action.archetypeId }), ...(action.seed === undefined ? {} : { seed: action.seed }) }) ?? state;
+    ...(action.archetypeId === undefined ? {} : { archetypeId: action.archetypeId }), ...(action.seed === undefined ? {} : { seed: action.seed }),
+    ...(action.mode === undefined ? {} : { mode: action.mode }) }) ?? state;
   if (state.settlement?.outcome === "abandoned") {
     return action.type === "restart_settlement" ? structuredClone(DEFAULT_GAME_STATE) : state;
   }
@@ -128,7 +130,12 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
       return state;
     case "commit_simulation_state":
       return state === action.previousState ? action.nextState : state;
+    case "set_estate_policy": return setEstatePolicy(state, action.policy);
+    case "set_project_subsidy": return setProjectSubsidy(state, action.kind, action.amount);
+    case "set_market_dues": return setMarketDues(state, action.permille);
     case "place_building": {
+      // LM-E1 (TA-1): in lord mode the town builds; the lord places only public works.
+      if (lordMode(state) && !LORD_PUBLIC_WORKS.includes(action.kind)) return state;
       const next = recordMaterialPlacement(state, placeBuilding(state, action.kind, { tx: action.tx, ty: action.ty }), action.materialRecovery);
       if (!action.autoplayFoodObservation || next === state ||
         (action.kind !== "granary" && action.kind !== "mill" && action.kind !== "wheat_farm")) return next;
