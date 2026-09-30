@@ -14,7 +14,9 @@
 // surface may scroll, content may reach the padding box (it scrolls under the gap). A text line counts by its line box
 // (the glyph box trimmed to the line height), so a font's taller glyph box is not a failure. A failure inside an
 // element that already fails the same check (a button's label and icon inside a button beyond the box) is not counted
-// again; a surface button (a cell, a whole-card hit area: it paints nothing) is checked by its contents.
+// again; a surface button (a cell, a whole-card hit area: it paints nothing) is checked by its contents. A flat or
+// unframed root that paints nothing (no fill, image, border or border image: a container like the action dock) has its
+// border box as the inner box — no frame, no gap — and its children are still checked.
 // Checks: outside (text, controls, images, rules beyond the inner box), overflow (the root or a part overflowing where
 // it may not scroll, text clipped without an ellipsis), border (controls, rules, images on the frame band), portrait (the
 // face beyond the printed ring, ornament pixels outside it), overlap (buttons with buttons, text with buttons, text with
@@ -51,6 +53,8 @@ export type Collected = {
     readonly overflow: { readonly x: number; readonly y: number }; readonly scrollable: { readonly x: boolean; readonly y: boolean };
     /** Its computed border widths (the padding box's edge). */
     readonly border?: Sides;
+    /** It paints something of its own: a fill, a background image, a visible border or a border image. */
+    readonly paints?: boolean;
   };
   readonly layer?: { readonly rect: Box; readonly frame: Sides } | null;
   readonly slot?: { readonly rect: Box; readonly padding: Sides } | null;
@@ -278,6 +282,8 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
     found: true, viewport, expectFound,
     root: { path: path(root), rect: rootRect, frame: frameInset(root), padding: sides(rootStyle, "padding"), kind: root.getAttribute("data-frame"),
       overflow: { x: root.scrollWidth - root.clientWidth, y: root.scrollHeight - root.clientHeight }, border: sides(rootStyle, "border"),
+      paints: !/^(transparent|rgba\([^)]*,\s*0\))$/.test(rootStyle.backgroundColor) || rootStyle.backgroundImage !== "none" || visibleBorder(rootStyle)
+        || (rootStyle.borderImageSource !== "none" && rootStyle.borderImageSource !== ""),
       scrollable: { x: scrolls(rootStyle.overflowX), y: scrolls(rootStyle.overflowY) } },
     layer: layerRect, slot: slotRect, items, scrollers, portrait, siblings, unregistered,
   };
@@ -301,8 +307,12 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
   const tokens = root.kind !== null && root.kind !== undefined;
   const rootInner = inset(rootSafe, tokens ? { t: Math.max(root.padding.t, spec.gap), r: Math.max(root.padding.r, spec.gap), b: Math.max(root.padding.b, spec.gap), l: Math.max(root.padding.l, spec.gap) } : even(spec.gap));
   let safe = rootSafe; let inner = rootInner;
+  // A flat (or unframed) root that paints nothing is a container: no frame to keep off, so its border box is the inner
+  // box, no gap. Decided from computed style: a container that gets a fill or a rule is measured with the gap again.
+  const container = root.paints === false && (root.kind === null || root.kind === undefined || root.kind === "flat") && !collected.layer && spec.frame !== "painting";
   // A content slot is the art's content rect with the gap already inside it: its box is the inner box.
-  if (!tokens && spec.frame === "layer" && collected.slot) { safe = meet(rootSafe, collected.slot.rect); inner = meet(rootSafe, collected.slot.rect); }
+  if (container) { safe = root.rect; inner = root.rect; }
+  else if (!tokens && spec.frame === "layer" && collected.slot) { safe = meet(rootSafe, collected.slot.rect); inner = meet(rootSafe, collected.slot.rect); }
   else if (!tokens && spec.frame === "layer" && collected.layer) { safe = meet(rootSafe, inset(collected.layer.rect, collected.layer.frame)); inner = meet(rootInner, inset(safe, even(spec.gap))); }
   else if (!tokens && spec.frame === "painting" && spec.painting !== undefined) {
     // One scale, the width's; the bottom edge keeps its distance from the bottom (a taller card keeps its bottom rule).

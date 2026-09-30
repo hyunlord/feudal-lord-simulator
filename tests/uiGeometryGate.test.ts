@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { compareBaseline, gateMode, geometryInputs, splitKey, UI_INPUT_ROOTS } from "../scripts/checks/uiGeometry.mjs";
+import { checkUiGeometry, compareBaseline, gateMode, geometryInputs, overridesInRange, splitKey, UI_INPUT_ROOTS } from "../scripts/checks/uiGeometry.mjs";
 import { failureKey } from "../scripts/uiGeometryMeasure";
 
 // UI-AUDIT-1: the geometry gate's baseline (scripts/checks/uiGeometry.mjs): new failures fail, fixed ones must be
@@ -47,4 +47,16 @@ test("Given the UI inputs When listed from git Then they hold the UI, styles, co
   assert.deepEqual(paths.filter(path => /^src\/(engine|sim|ledger|state)\//.test(path) || (path.startsWith("src/content/") && !path.endsWith(".ko.ts"))
     || (path.startsWith("src/render/") && !path.endsWith(".tsx"))), []);
   assert.ok(UI_INPUT_ROOTS.every(item => !item.root.startsWith("src/engine")));
+});
+
+test("Given a failing result When the warn override has no reason, or a reason the head commit does not record Then it is refused", () => {
+  // 9409e410 carries a result from before the failure keys: never green.
+  const cwd = new URL("../", import.meta.url).pathname;
+  const bare = checkUiGeometry({ head: "9409e410", cwd, mode: "warn", env: { FLS_UI_GEOMETRY_GATE: "warn" } });
+  assert.equal(bare.pass, false);
+  assert.ok(bare.reasons.some(reason => reason.includes("FLS_UI_GEOMETRY_REASON")));
+  const unrecorded = checkUiGeometry({ head: "9409e410", cwd, mode: "warn", env: { FLS_UI_GEOMETRY_GATE: "warn", FLS_UI_GEOMETRY_REASON: "the DGX is down tonight" } });
+  assert.equal(unrecorded.pass, false);
+  assert.ok(unrecorded.reasons.some(reason => reason.includes('--trailer "UI-Geometry-Override: the DGX is down tonight"')));
+  assert.deepEqual(overridesInRange("9409e410~1", "9409e410", cwd), []);
 });

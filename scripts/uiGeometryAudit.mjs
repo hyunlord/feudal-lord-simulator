@@ -49,7 +49,16 @@ const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const byId = new Map(SURFACES.map(row => [row.id, row]));
 const children = new Map(SURFACES.map(row => [row.id, SURFACES.filter(other => other.extends === row.id)]));
-const selected = row => only === null || only.some(entry => row.id === entry || (entry.endsWith('.') && row.id.startsWith(entry)));
+// --only: a term is a row id, or (when no id equals it) a prefix — "map.selection" and "map.selection." pick the same rows.
+const pickedBy = entry => SURFACES.some(row => row.id === entry) ? SURFACES.filter(row => row.id === entry)
+  : SURFACES.filter(row => row.id.startsWith(entry.endsWith('.') ? entry : `${entry}.`) || row.id.startsWith(entry));
+if (only !== null) {
+  const empty = only.filter(entry => pickedBy(entry).length === 0);
+  for (const entry of only) console.log(`--only ${entry}: ${pickedBy(entry).map(row => row.id).join(', ') || 'no row'}`);
+  if (empty.length > 0) { console.error(`--only: no registry row for ${empty.join(', ')}`); process.exit(2); }
+}
+const picked = only === null ? null : new Set(only.flatMap(entry => pickedBy(entry).map(row => row.id)));
+const selected = row => picked === null || picked.has(row.id);
 /** A row to open: selected, or on the way to a selected one. */
 const wanted = row => selected(row) || (children.get(row.id) ?? []).some(wanted);
 const chainOf = row => row.extends === undefined ? [row] : [...chainOf(byId.get(row.extends)), row];

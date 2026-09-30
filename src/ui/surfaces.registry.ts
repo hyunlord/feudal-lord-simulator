@@ -121,7 +121,7 @@ const BOOK = { root: ".chronicle-page.legacy-book", frame: "layer", frameLayer: 
 const CHAPTER_DELAY = "&story-delay=20000";
 const chapterScene = (set: StateSet, name: string) => ({ kind: "state", set, name, tile: "house", zoom: 1.1, query: CHAPTER_DELAY }) as const;
 const CHAPTER_PAGE = {
-  root: ".chronicle-page:not(.legacy-ending):not(.legacy-book)", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",
+  root: ".chronicle-page:not(.legacy-ending):not(.legacy-book)", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body", scrollParts: [".chapter-page-scroll"],
   open: [{ wait: ".chronicle-page", timeout: 90_000 }, { pause: 800 }],
 } as const;
 /** frame_person_card-v1.png 320×200: the painted rules end at x 14 / y 21 / x 305 / y 177 (PIL, UI-AUDIT-1 survey §4). */
@@ -225,16 +225,16 @@ export const SURFACES: readonly SurfaceRow[] = [
     open: [{ pause: 1000 }, DISMISS, LEDGER, { pause: 600 }], scroll: "y", scrollParts: [".ledger-matrix-scroll"], data: "chapter 5's money ledger" },
 
   // --- The map's selection card (GameCanvas, not the slot).
-  { id: "map.selection.house", root: ".diagnostic-card", frame: "flat", scene: TOWN_CLOSE, open: [{ map: { building: ["house"] }, action: "click" }, { pause: 800 }], scroll: "y",
+  { id: "map.selection.house", root: ".diagnostic-card", frame: "css", scene: TOWN_CLOSE, open: [{ map: { building: ["house"] }, action: "click" }, { pause: 800 }], scroll: "y",
     expect: ".inspector-members", data: "the first house: its household" },
-  { id: "map.selection.walker", root: ".diagnostic-card", frame: "flat", scene: townAt({ walker: true }), open: [{ map: { walker: true }, action: "click" }, { pause: 800 }], scroll: "y",
+  { id: "map.selection.walker", root: ".diagnostic-card", frame: "css", scene: townAt({ walker: true }), open: [{ map: { walker: true }, action: "click" }, { pause: 800 }], scroll: "y",
     expect: ".walker-headline", data: "the first walker" },
-  { id: "map.selection.site", root: ".diagnostic-card", frame: "flat",
+  { id: "map.selection.site", root: ".diagnostic-card", frame: "css",
     scene: { kind: "state", set: "ui9", name: "reorg.wage_competition", focus: { site: true }, zoom: 1.6, query: QUIET },
     open: [DISMISS, { map: { site: true }, action: "click" }, { pause: 800 }], scroll: "y", expect: "[data-action='cancel-construction']", data: "chapter 4's first cloth site" },
-  { id: "map.selection.farmstead", root: ".diagnostic-card", frame: "flat", scene: townAt({ building: ["farmstead"] }), open: [{ map: { building: ["farmstead"] }, action: "click" }, { pause: 800 }],
+  { id: "map.selection.farmstead", root: ".diagnostic-card", frame: "css", scene: townAt({ building: ["farmstead"] }), open: [{ map: { building: ["farmstead"] }, action: "click" }, { pause: 800 }],
     scroll: "y", expect: ".inspector-crop", data: "a farmstead and its crop choice" },
-  { id: "map.selection.store", root: ".diagnostic-card", frame: "flat", scene: townAt({ building: ["granary"] }), open: [{ map: { building: ["granary"] }, action: "click" }, { pause: 800 }],
+  { id: "map.selection.store", root: ".diagnostic-card", frame: "css", scene: townAt({ building: ["granary"] }), open: [{ map: { building: ["granary"] }, action: "click" }, { pause: 800 }],
     scroll: "y", expect: ".store-inspector", data: "a granary's store body" },
 
   // --- Modals (AppModals, time stopped).
@@ -283,7 +283,7 @@ export const SURFACES: readonly SurfaceRow[] = [
     open: [{ pause: 1000 }, DISMISS, ...CHRONICLE, { clickAll: ".chronicle-kind[aria-pressed='true']:not([data-kind='decision'])" }, { pause: 500 },
       { click: ".chronicle-card .chronicle-card-body" }, { pause: 800 }], data: "chapter 4's first decision record, compared" },
   { id: "modal.history.biography", extends: "modal.person-card", root: ".chronicle-biography", frame: "painting", painting: BIOGRAPHY_ART, scene: TOWN_CLOSE,
-    frameSlots: [".chronicle-biography-cover"], scrollParts: [".chronicle-biography-band > ul"],
+    frameSlots: [".chronicle-biography-cover"], scrollParts: [".chronicle-biography-band > ul", ".chronicle-biography-header", ".chronicle-biography-life"],
     portraitRing: { cx: 162, cy: 216, r: 112, inner: 100, face: ".chronicle-biography-portrait", ornament: ".chronicle-biography-ornament" },
     open: [{ click: ".person-card .person-card-action" }, { wait: ".chronicle-biography" }, { pause: 1200 }], data: "that person's biography page" },
   { id: "modal.history.family-tree", extends: "modal.history.biography", root: ".family-tree", frame: "flat", scene: TOWN_CLOSE, scroll: "xy",

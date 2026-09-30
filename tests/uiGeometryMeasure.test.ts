@@ -137,6 +137,18 @@ test("Given a root on the frame tokens (data-frame) When evaluated Then its comp
   assert.deepEqual(thin.failures.map(failure => failure.px), []);
 });
 
+test("Given a flat root that paints nothing When evaluated Then it is a container: its border box is the inner box, and its children are still checked", () => {
+  const dock = (paints: boolean) => surface([button("button.build", box(100, 100, 160, 140)), button("button.ledger", box(150, 100, 210, 140)), fill(100, 150, 300, 200)],
+    { frame: none, padding: none, kind: "flat", paints });
+  const container = evaluateSurface(dock(false), { ...css, frame: "flat" });
+  assert.deepEqual(container.inner, box(100, 100, 300, 200));
+  assert.deepEqual(container.failures.map(failure => [failure.check, failure.what]), [["overlap", "buttons overlap"]]);
+  // The same root with a fill (a vellum card): the 8 px gap is back, and the flush children are outside it.
+  const card = evaluateSurface(dock(true), { ...css, frame: "flat" });
+  assert.deepEqual(card.inner, box(108, 108, 292, 192));
+  assert.ok(card.failures.some(failure => failure.check === "outside"));
+});
+
 test("Given a mostly empty surface When evaluated Then the empty-space warning is set but nothing fails", () => {
   const result = evaluateSurface(surface([text("h2", box(124, 124, 180, 140))]), css);
   assert.equal(result.failures.length, 0);

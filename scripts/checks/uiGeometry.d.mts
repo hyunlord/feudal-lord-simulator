@@ -15,8 +15,11 @@ export declare function compareBaseline(options: { readonly keys: readonly strin
   readonly failures: number; readonly excepted: number; readonly baseline: number; readonly exceptions: number; readonly counted: readonly string[];
   readonly added: readonly string[]; readonly fixed: readonly string[]; readonly staleExceptions: readonly GeometryException[];
 };
-export declare function checkUiGeometry(options: { readonly base?: string | null; readonly head: string; readonly cwd?: string; readonly mode?: "warn" | "enforce" }): {
+export declare function overridesInRange(base: string | null, head: string, cwd?: string): { readonly commit: string; readonly reason: string }[];
+export declare function formatOverrideCount(base: string | null, head: string, cwd?: string): string;
+export declare function checkUiGeometry(options: { readonly base?: string | null; readonly head: string; readonly cwd?: string; readonly mode?: "warn" | "enforce";
+  readonly env?: Readonly<Record<string, string | undefined>> }): {
   readonly skipped: boolean; readonly mode: "warn" | "enforce"; readonly ok: boolean; readonly pass: boolean; readonly reasons: readonly string[];
-  readonly summary?: unknown; readonly hash?: string;
+  readonly summary?: unknown; readonly hash?: string; readonly override?: { readonly reason?: string; readonly refused?: string } | null;
 };
 export declare function formatUiGeometryResult(result: object): string;
