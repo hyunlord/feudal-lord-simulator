@@ -107,3 +107,16 @@ test("NAT-2: while the season turns every object switches once, whichever clock 
   assert.ok([...shown.values()].filter(seasons => seasons[0] === 1).length > 450);
   assert.ok(150 * 16 > SEASON_FADE_MS);
 });
+
+test("NAT-2: the fallback chapel's flag flutters on the wall clock, not the tick", async () => {
+  const { drawKindDetail } = await import("../src/render/drawBuildingDetails");
+  const flagTips = (tick: number, nowMs: number) => {
+    const points: number[] = [];
+    const context = new Proxy({}, { get: (_target, name) => name === "lineTo" ? (x: number, y: number) => points.push(x, y) : () => undefined, set: () => true }) as unknown as CanvasRenderingContext2D;
+    drawKindDetail(context, { tick, nowMs, center: { x: 100, y: 100 }, kind: "chapel", zoom: 1, architecture: "procedural",
+      visualState: { houseProblem: null, production: "idle" } as unknown as Parameters<typeof drawKindDetail>[1]["visualState"] });
+    return points.join(",");
+  };
+  assert.equal(flagTips(10, 1_000), flagTips(99, 1_000), "the tick does not move it");
+  assert.notEqual(flagTips(10, 1_000), flagTips(10, 1_400), "the wall clock does (also while paused)");
+});
