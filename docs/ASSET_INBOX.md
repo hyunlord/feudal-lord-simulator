@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-30 14시 갱신)
+## 3. 현재 장부 요약 (2026-09-30 19시 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -48,6 +48,7 @@ assets-inbox/
 | `d1` | 7 |  | 7 |  |  |  |  | 5 |
 | `d1b` | 4 |  | 4 |  |  |  |  | 2 |
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
+| `endings-manors` | 10 |  | 9 | 1 |  |  |  | 0 |
 | `experiments` | 78 |  | 54 |  |  | 24 |  | 0 |
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
 | `lineage` | 374 |  | 333 |  | 41 |  |  | 260 |
@@ -69,7 +70,7 @@ assets-inbox/
 | `wave19` | 57 |  | 57 |  |  |  |  | 53 |
 | `wave2` | 42 |  | 36 |  | 1 | 1 | 4 | 30 |
 | `wave20` | 97 |  | 82 |  | 15 |  |  | 0 |
-| `wave21` | 90 |  | 66 |  | 24 |  |  | 38 |
+| `wave21` | 90 |  | 66 |  | 24 |  |  | 58 |
 | `wave22` | 103 |  | 87 |  | 16 |  |  | 0 |
 | `wave23` | 120 |  | 120 |  |  |  |  | 82 |
 | `wave24` | 32 |  | 28 |  | 4 |  |  | 0 |
@@ -82,7 +83,7 @@ assets-inbox/
 | `wave30` | 141 |  | 141 |  |  |  |  | 0 |
 | `wave31` | 4 |  | 4 |  |  |  |  | 3 |
 | `wave32` | 41 |  | 39 |  | 2 |  |  | 0 |
-| `wave33` | 6 |  | 6 |  |  |  |  | 0 |
+| `wave33` | 6 |  | 6 |  |  |  |  | 5 |
 | `wave34` | 33 |  | 31 |  | 2 |  |  | 0 |
 | `wave35` | 57 |  | 57 |  |  |  |  | 0 |
 | `wave37` | 71 |  | 63 |  | 4 | 4 |  | 0 |
@@ -99,7 +100,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **4531** | **0** | **3301** | **0** | **257** | **937** | **36** | **1803** |
+| **합계** | **4541** | **0** | **3310** | **1** | **257** | **937** | **36** | **1828** |
 
 ## 4. 찾는 법
 
@@ -218,6 +219,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-wave36-building-kit-pilot-20260930-lite.zip` (09-30 12:08, 경량판) | `experiments/wave36-building-kit-pilot-20260930` | 25,308 KB | `42fbe518b780edb2…` | 139 | 3 | `references/`, `renders/`(216 기본·210 상태 조합과 간판 15·색 입힘 12, 453장), `sources/`, `blind/`의 개별 PNG 48(렌더 사본 24·Wave 26 원본 사본 24) 제외 — 사용자 지시로 저장소에 넣지 않고 astra-raw에만 | 실패한 실험 기록이라 새 최상위 폴더 `experiments/`에 둠. 문서·`prompts/`·`records/`·`tools/`·`qa/`·`masks/`·`blind/`의 시트와 CSV는 `records/` 아래로. 건너뛴 3장은 같은 묶음 안 같은 바이트 마스크(`roof_stone`·`roof_thatch`·`roof_tile` = `roof_canonical`). 작업 폴더 `output/astra-wave36-candidates-20260930`(89MB, 렌더·생성 원본 포함)은 `astra-raw/output/`에 보관
 | `/tmp/astra-wave37-doorstep-trade-props-20260930-lite.zip` (09-30 12:51, 경량판) | `wave37/candidates-20260930` | 4,388 KB | `7fbb88ef01f65d83…` | 116 | 0 | `references/` 제외 | `proofs/`의 확인 그림 JPG 3장만 `proofs/`에 두고 같은 폴더의 작업 접촉판 PNG 4장은 `records/contacts/`로. `blind/`(판독 시험)·`qa/`·`prompts/`·`tools/`·`rejected/r1/`(1차 교정 이력)은 `records/` 아래로. 경량판은 `raw/`를 빼고 `RAW_INDEX.csv`에 경로·해시를 실음. 작업 폴더 `output/astra-wave37-candidates-20260930`(56MB, `raw/` 포함)은 `astra-raw/output/`에 보관. 같은 폴더의 `output/astra-wave37-rework-v2`(진행 중인 재작업)는 받지 않음
 | `/tmp/astra-wave37-rework-v2-lite.zip` (09-30 13:28, 경량판) | `wave37/rework-v2` | 828 KB | `8a0c102d9a268b15…` | 26 | 30 | `references/` 제외 | 32장 가운데 바뀐 것은 `condition_prosperous_bench`·`trade_carpenter_a`·`trade_miller_a`·`trade_miller_b` 넷뿐(해시 대조). 원본과 바이트가 같은 28장과, 같은 묶음 새 방앗간 그림과 바이트가 같은 판독 그림 2장(`blind/01`·`02`)은 넣지 않음. 작업 폴더 `output/astra-wave37-rework-v2`(9.5MB)는 `astra-raw/output/`에 보관
+| `/tmp/astra-endings-empty-manors-candidates-20260930.zip` (09-30 19:25) | `endings-manors/candidates-20260930` | 5,730 KB | `a65493ddf075fdf0…` | 23 | 0 | 없음 | `checks/` → `proofs/`. 결말 6장은 JPG라 각각 장부 한 행. 작업 폴더 `/tmp/astra-endings-empty-manors-work-20260930`(1MB)는 `astra-raw/output/`에 보관
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -281,6 +283,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 36 조합형 집 키트 파일럿 — 실패 기록**(`experiments/wave36-building-kit-pilot-20260930`, 2026-09-30 12시 판정): 부품 24장 `rejected`, 비고 "조합형 파일럿 실패 — 눈가림 100%·어색 72/216, 윤곽 통일이 다양성을 없앰, 기록 보관". 독립 눈가림 판별 48/48(기준 ≤60%), 216 조합 중 72개 어색(기준 ≤5%), 자동 검사 열 가지 가운데 여럿 실패(`records/REPORT.md`). 확인 그림 3·눈가림 48채 시트·마스크 27·검수 그림 23은 기록 그림으로 `confirmed`. 216·210 조합 렌더 전체는 astra-raw에만 있다. `experiments/`는 설치 후보가 아닌 실험 자료를 두는 곳이다.
 - **Wave 37 집 앞 직업·형편 표지**(`wave37/candidates-20260930`, 2026-09-30 13시 판정, 경량판): 직업 12종 × a·b 24장과 형편 표지 8장 가운데 28장 `confirmed`. `rework_pending` 4장 — `condition_prosperous_bench` "19세기 공원 벤치로 보임", `trade_carpenter_a` "보통 벤치와 같은 물건으로 읽힘", `trade_miller_a` "치즈로 읽힘", `trade_miller_b` "새 입주 수레 B와 같음". 확인 그림 3(JPG) `confirmed`. 판독 시험 그림 12·검수 그림 8·작업 접촉판 4는 기록 그림으로 `confirmed`. 1차 교정 이력(`records/rejected/r1/`) 4장은 Astra가 반려한 판이라 `rejected`로 두었다(기록 보관).
 - **Wave 37 재작업**(`wave37/rework-v2`, 2026-09-30 14시 판정): 새 4장(`condition_prosperous_bench`·`trade_carpenter_a`·`trade_miller_a`·`trade_miller_b`) `confirmed`, 비고 "재작업판(바이트 다름)" — 파일 이름이 원래 납품과 같다. 옛 4장(`rework_pending`)은 `superseded`, `replaced_by`에 새 경로. 비교판 3(혼동 쌍 JPG·6배 확대 PNG 2)은 확인 그림, 판독 기록 `recognition.jpg`는 기록 그림으로 `confirmed`. 나머지 28장은 원본과 바이트가 같아 새 행을 만들지 않았다.
+- **캠페인 결말·빈 영주관**(`endings-manors/candidates-20260930`, 2026-09-30 19시 판정): 결말 삽화 6장(1920×1080 JPG — 스스로 다스리는 도시·이름이 남은 가문·상인들의 기도처·가문의 도시·영주의 도시·순례자의 도시, 장부에 각각 한 행)과 `manor_house_a_empty-v1`(416×328, 피벗 (249,319)) `confirmed`. `manor_house_b_empty-v1`은 `rework_pending`(비고 "원본에 없는 짙은 외곽선"). 확인 그림 2(여섯 결말 비교 JPG·영주관 정렬 PNG) `confirmed`.
 ## 7. 찾지 못한 것
 
 | 항목 | 상태 |
