@@ -236,11 +236,13 @@ test("UI-10 gate 4: the ledger drawer's stock tab has a chapter-5 section — th
   assert.ok(markup.includes("ledger-legacy-ledger") && markup.includes(LEGACY_LEDGER_COPY.heading) && markup.includes(LEGACY_LEDGER_COPY.chapterTotal));
 });
 
-test("UI-10 gate 5–6: the buttons stay in view — the ending's three in a footer held at the panel's bottom, a card's [나중에 정하기] at its body's", () => {
+test("UI-10 gate 5–6: the buttons stay in view — the ending's three in a footer held at the panel's bottom, a card's [나중에 정하기] under its body", () => {
   const css = readFileSync("src/styles/legacy.css", "utf8");
   assert.match(css, /\.legacy-ending-footer \{ position: sticky; bottom: 0;[^}]*background: var\(--parchment\);[^}]*border-top:/);
   const hud = readFileSync("src/styles/hudShell.css", "utf8");
-  assert.match(hud, /\.petition-body > \.story-modal-later \{ position: sticky; bottom: 0;/);
+  // UI-AUDIT-1: the card grows with its body; [나중에 정하기] is the row under the body, never over an answer.
+  assert.match(hud, /\.petition-card > \.story-modal-later \{ grid-row: 2; \}/);
+  assert.match(readFileSync("src/ui/hud/StoryModals.tsx", "utf8"), /<\/ol>\s*<\/div>\s*<Button type="button" className="story-modal-later"/, "the later button after the body");
   assert.match(hud, /\[data-def="borough_autonomy"\][^{]*\{ min-height: 620px; \}/, "the charter card's full height");
   assert.match(hud, /\.chapter-page-body > \.chronicle-page-footer \{ position: sticky; bottom: 0;[^}]*background: var\(--parchment\);[^}]*border-top:/, "the chapter page's footer");
   assert.match(readFileSync("src/ui/hud/StoryModals.tsx", "utf8"), /<\/div>\s*\{\/\*[^]*?\*\/\}\s*<div className="chronicle-page-footer">\s*<div className="chronicle-actions">/, "the footer after the two columns");

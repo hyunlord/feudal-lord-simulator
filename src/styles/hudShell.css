@@ -33,7 +33,9 @@
 
 /* Speed alone in the top right (the date moved into the pill). */
 .app-shell .hud-time-cluster { top: 8px; right: 8px; flex-direction: row; flex-wrap: nowrap; gap: 2px; height: auto; }
-.app-shell .hud-time-cluster .speed-control-stack { flex-wrap: nowrap; gap: 2px; }
+/* UI-AUDIT-1: the stack is as wide as its seals and the settings seal (the console's 188 px left the settings seal 54 px
+   outside the cluster's frame). */
+.app-shell .hud-time-cluster .speed-control-stack { flex-wrap: nowrap; gap: 2px; width: auto; }
 .app-shell .hud-time-cluster .settings-disclosure > summary { display: grid; place-items: center; min-width: 44px; min-height: 44px; padding: 0 6px; font-size: 12px; }
 .app-shell .hud-time-cluster[hidden] { display: none; }
 
@@ -226,7 +228,8 @@
    rect's offsets, kind `season-ledger`; the scenes are placed from the card's outer edge, over that border). */
 .season-ledger-backdrop { position: absolute; inset: 0; z-index: 8; display: grid; place-items: center; background: rgb(20 14 8 / 0.25); }
 /* contrast-audit selector=".season-ledger-card" fg="--palette-ink" bg="--palette-parchment" size="13" role="body" */
-.season-ledger-card { position: relative; width: 380px; height: 324px; color: var(--palette-ink); font-size: 13px; }
+/* UI-AUDIT-1: as tall as its lines (at least the scroll's 324 px, at most the view); the body is the content box. */
+.season-ledger-card { position: relative; display: grid; grid-template-rows: minmax(0, 1fr); width: 380px; min-height: 324px; max-height: 94vh; color: var(--palette-ink); font-size: 13px; }
 .season-ledger-frame { position: absolute; inset: 0; box-sizing: border-box; pointer-events: none; }
 .season-ledger-scenes { position: absolute; left: calc(24px - var(--frame-season-ledger-safe-left)); top: calc(24px - var(--frame-season-ledger-safe-top)); width: 202px; height: 35px; display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 3px; margin: 0; padding: 0; list-style: none; }
@@ -234,8 +237,9 @@
 .season-ledger-scene strong { white-space: nowrap; font-size: 12px; }
 .season-ledger-scene-icon { flex: none; }
 .season-ledger-scenes-line { margin: 0 0 3px; font-size: 12px; font-weight: 600; }
-/* INSTALL-3: the lines scroll inside the content rect; the actions row is pinned at its foot (계속 never below the fold). */
-.season-ledger-body { display: flex; flex-direction: column; gap: 4px; }
+/* INSTALL-3: the actions row is pinned at the body's foot (계속 never below the fold); the lines scroll only when the card
+   meets the view's height. */
+.season-ledger-body { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
 .season-ledger-content { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 .season-ledger-body h2 { margin: 0 0 4px; font-size: 16px; }
 .season-ledger-line { margin: 0 0 2px; }
@@ -367,19 +371,21 @@
 .famine-option strong { font-size: 16px; }
 .famine-option-predicted, .petition-predicted { font-size: 12px; font-weight: 600; }
 .story-modal-later { justify-self: end; min-height: 44px; }
-.petition-card { position: relative; width: min(720px, 96vw); min-height: 620px; overflow: visible; background: none; }
+/* UI-AUDIT-1: the card is as tall as its body (at least the frame's 620 px, at most the view): the body scrolls only past
+   that, and [나중에 정하기] is the row under it, never over an answer. */
+.petition-card { position: relative; grid-template-rows: minmax(0, 1fr) auto; width: min(720px, 96vw); min-height: 620px; overflow: visible; background: none; }
 /* UI-8: a card with two answers (chapter 3's, PetitionDef.responses) is one answer shorter. */
 .petition-card[data-answers="2"] { min-height: 540px; }
 .petition-frame { position: absolute; inset: 0; box-sizing: border-box; }
-.petition-body { display: grid; align-content: start; gap: 6px; overflow-y: auto; }
+.petition-body { display: grid; align-content: start; gap: 6px; min-height: 0; overflow-y: auto; }
 .petition-who { display: flex; gap: 6px; align-items: center; font-weight: 600; }
 .petition-options { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .petition-option { display: grid; grid-template-columns: 48px 1fr; gap: 2px 10px; width: 100%; min-height: 64px; padding: 6px; text-align: left; font-size: 13px; }
 .petition-seal { grid-row: 1 / 4; }
 /* UI-10: chapter 5's two-answer cards carry long answers (the charter's sums): the full card's height, so
-   [나중에 정하기] shows below them; if a card still overflows, it stays in view at the body's bottom. */
+   [나중에 정하기] shows below them. */
 .petition-card[data-answers="2"]:is([data-def="borough_autonomy"], [data-def="royal_tax"], [data-def="guild_dispute"], [data-def="church_rebuilding"]) { min-height: 620px; }
-.petition-body > .story-modal-later { position: sticky; bottom: 0; z-index: 1; }
+.petition-card > .story-modal-later { grid-row: 2; }
 /* UI-10: an answer with more than three lines (the heir's card) keeps them all beside the seal. */
 .petition-option > :not(.petition-seal) { grid-column: 2; min-width: 0; }
 /* UI-10 (LG-3): the heir's card — its answers side by side (a column each, the seal beside the label, the rest under

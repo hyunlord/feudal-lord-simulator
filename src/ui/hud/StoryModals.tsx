@@ -110,7 +110,7 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
         <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
         {/* UI-6b: the sender's arms in the frame's empty roundel (its top-left corner). */}
         {from === null ? null : <span className="petition-roundel"><EmblemImage emblem={from.arms} size={38} label={PETITION_COPY.arms(from.name)} /></span>}
-        <div className="petition-body" style={wave8ContentStyle("frame_petition")}>
+        <div className="petition-body">
           <div className="petition-scene">
             <PetitionArt art={presentation.art} />
             {people.length === 0 || onPerson === undefined ? null : (
@@ -142,8 +142,8 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
               </li>
             ))}
           </ol>
-          <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
         </div>
+        <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
       </section>
     </div>
   );
