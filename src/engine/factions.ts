@@ -89,9 +89,17 @@ function outsidePerson(state: Pick<GameState, "seed" | "persons" | "factions">, 
     hair: hairWords(traits), alive: true, portraitIdentity, lineageId: `faction:${fields.factionId}`, ...(father === undefined ? {} : { fatherId: father.id }) };
 }
 
-/** FX-5: the king reigning in `year`. */
+/** FX-5: the king reigning in `year` (by whole years: the year a reign ends already shows the next king). */
 export function kingOf(year: number): (typeof KINGS)[number] {
   return KINGS.find(king => year >= king.from && year < king.until) ?? KINGS[KINGS.length - 1]!;
+}
+
+/** FIX-11 (item 7) API: the king reigning in `year`'s `season` (0 spring … 3 winter) — Richard II until the autumn of
+ * 1399's deposition, Henry IV from it. Render reads this for the calendar's king. */
+export function kingAt(year: number, season: number): (typeof KINGS)[number] {
+  const [depYear, depSeason] = LEGACY_BALANCE.deposition;
+  if (year === depYear && season < depSeason) return kingOf(year - 1);
+  return kingOf(year);
 }
 
 /** FX-1: the seed's picks — the earldom, the two neighbours' houses (not the lord's own), the see. */
@@ -252,6 +260,32 @@ function withLeaderFaces(state: GameState): GameState {
   return { ...state, factions: { ...current, people: outside }, ...(state.persons === undefined || town === undefined ? {} : { persons: { ...state.persons, people: town } }) };
 }
 
+const DEPOSED_TAG = "deposed";
+const SEASONS_PER_YEAR = YEAR / SEASON;
+
+/** FIX-11 (item 7): the reigning king's deposition — he keeps his life (tagged deposed), his successor takes the crown. */
+function deposeKing(state: GameState, current: FactionState, year: number): FactionState {
+  const crown = current.factions.find(faction => faction.id === "crown");
+  const at = current.people.findIndex(person => person.id === crown?.leaderId);
+  const deposed = current.people[at];
+  const king = kingAt(year, LEGACY_BALANCE.deposition[1]);
+  if (crown === undefined || deposed === undefined || !deposed.alive || deposed.givenName === king.name) return current;
+  const people = [...current.people];
+  people[at] = { ...deposed, tags: [...deposed.tags, DEPOSED_TAG] };
+  const heir = outsidePerson(state, current.nextOrdinal, { factionId: "crown", givenName: king.name, birthYear: king.born,
+    classBand: "gentry", occupation: "king", year, predecessor: deposed }, people);
+  people.push(heir);
+  return { ...current, people, nextOrdinal: current.nextOrdinal + 1, factions: current.factions.map(faction => faction.id !== "crown" ? faction
+    : { ...faction, leaderId: heir.id, timeline: [...faction.timeline, { tick: state.tick, year, kind: "leader" as const, id: "succeeded", personId: heir.id }] }) };
+}
+
+/** FIX-11 (item 7): the deposed king dies in captivity. */
+function deathInCaptivity(current: FactionState, year: number): FactionState {
+  if (!current.people.some(person => person.alive && person.tags.includes(DEPOSED_TAG))) return current;
+  return { ...current, people: current.people.map(person => person.alive && person.tags.includes(DEPOSED_TAG)
+    ? { ...person, alive: false, deathYear: year, deathCause: "captivity" as const } : person) };
+}
+
 /** One tick of FACTION-0: the factions at the first tick; then at each season start the town's leaders, and each year's turn. */
 export function advanceFactions(state: GameState): GameState {
   if (state.tick <= 0) return state;
@@ -260,30 +294,11 @@ export function advanceFactions(state: GameState): GameState {
   else if (state.tick % SEASON !== 0) return state;
   else {
     if (state.tick % YEAR === 0) current = yearTurn(state, current);
-    // Item 7: Henry IV deposition at autumn 1399 — Richard II is removed with deathCause "deposed"
+    // FIX-11 (item 7, FX11-7): Richard II is deposed in the autumn of 1399 and Henry IV takes the crown that season (not
+    // at the year's spring); Richard lives on in captivity and dies that winter (February 1400), never of old age.
     const [depYear, depSeason] = LEGACY_BALANCE.deposition;
-    if (currentYear(state) === depYear && state.tick % YEAR === depSeason * SEASON) {
-      const crownFaction = current.factions.find(f => f.id === "crown");
-      const crownLeaderId = crownFaction?.leaderId ?? null;
-      if (crownLeaderId !== null) {
-        const depYearNow = currentYear(state);
-        const king = kingOf(depYearNow);
-        const leaderAt = current.people.findIndex(p => p.id === crownLeaderId);
-        const crownLeader = current.people[leaderAt];
-        if (crownLeader !== undefined && crownLeader.alive && crownLeader.givenName !== king.name) {
-          const people = [...current.people];
-          people[leaderAt] = { ...crownLeader, alive: false, deathYear: depYearNow, deathCause: "deposed" as const };
-          let ordinal = current.nextOrdinal;
-          const heir = outsidePerson(state, ordinal, { factionId: "crown", givenName: king.name, birthYear: king.born,
-            classBand: "gentry", occupation: "king", year: depYearNow, predecessor: crownLeader }, people);
-          ordinal += 1;
-          people.push(heir);
-          current = { ...current, people, nextOrdinal: ordinal, factions: current.factions.map(f =>
-            f.id !== "crown" ? f : { ...f, leaderId: heir.id,
-              timeline: [...f.timeline, { tick: state.tick, year: depYearNow, kind: "leader" as const, id: "succeeded", personId: heir.id }] }) };
-        }
-      }
-    }
+    if (currentYear(state) === depYear && state.tick % YEAR === depSeason * SEASON) current = deposeKing(state, current, depYear);
+    if (currentYear(state) === depYear && state.tick % YEAR === (SEASONS_PER_YEAR - 1) * SEASON) current = deathInCaptivity(current, depYear + 1);
     const leaders = townLeaders(state, current.factions);
     const changed = current.factions.some(faction => leaders.has(faction.id) && (leaders.get(faction.id)?.id ?? null) !== faction.leaderId);
     if (changed) {
