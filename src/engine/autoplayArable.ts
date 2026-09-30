@@ -4,8 +4,8 @@
  *
  * - need: a year of the homes' bread as wheat (measured requests or today's rations, whichever is larger), times
  *   `ARABLE_MARGIN_PERMILLE`;
- * - supply: `realisedAnnualWheat` (GP-2: `expectedAnnualWheat` — tended strips, at most `predictedCellsPerFarmstead` cells
- *   per farmstead — times the share the last three years' harvests realised);
+ * - supply: `expectedAnnualWheat` (tended strips, at most `predictedCellsPerFarmstead` cells per farmstead). BOT-4 tried
+ *   the harvest record's realised share here (GP-2) and took it out: it stalled guardrail seed 1 in the hamlet;
  * - a field with untended strips gets a farmstead beside it first; otherwise the planner paints one 2×2 block
  *   (an old farm's footprint): beside a field whose farmstead has room, else a new block near a road with a
  *   free road-side cell for its farmstead, nearest the granaries by road.
@@ -16,7 +16,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../co
 import { isBuildingConstructionSite } from "../economy/construction";
 import type { TileCoordinate } from "../geometry/tileGeometry";
 import { arableLayouts, stripTending } from "../zones/arableFields";
-import { farmsteadYears, homeWheatDemand, realisedAnnualWheat } from "../zones/arableOutlook";
+import { expectedAnnualWheat, farmsteadYears, homeWheatDemand } from "../zones/arableOutlook";
 import { cellInsideWall, zonesOf } from "../zones/zoneEdits";
 import type { ZoneStroke } from "../zones/zone.types";
 import { foodEfficiencyMetrics } from "./autoplayFoodEfficiency";
@@ -63,8 +63,7 @@ export function annualWheatNeed(state: GameState): number {
 
 /** AF-13: the expected harvest falls short of the need with margin (`margin` ‰, default the planner's). */
 export function arableSupplyShort(state: GameState, margin: number = activeMarginPermille): boolean {
-  // GP-2: the expected harvest as the last years realised it (the land's coefficient, the weather, short ripening).
-  return realisedAnnualWheat(state) * 1000 < annualWheatNeed(state) * margin;
+  return expectedAnnualWheat(state) * 1000 < annualWheatNeed(state) * margin;
 }
 
 export function hasPendingFarmstead(state: GameState): boolean {

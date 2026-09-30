@@ -60,21 +60,17 @@ test("GP-2 the realised share is Σ harvested ÷ Σ expected over the kept years
   assert.equal(realisedAnnualWheat(halved), Math.floor(expectedAnnualWheat(world) / 2));
 });
 
-test("GP-2 the grain step judges the shortage by the realised harvest: an ample expectation that the barns never took in is short", () => {
+test("GP-2 the bot's grain step reads the expected harvest, not the realised share (decision GP2: taken out)", () => {
   const ample = replayFoodObservation(withAmpleGrain(observedFoodTown()), { wheat: 1000, bread: 40, exports: 0 });
-  assert.equal(arableSupplyShort(ample), false, "the expected harvest alone is ample");
   const poor = { ...ample, harvestRecord: { year: 0, wheat: 0, lost: 0, past: [{ expected: 10_000, wheat: 100, lost: 0 }, { expected: 10_000, wheat: 200, lost: 0 }, { expected: 10_000, wheat: 150, lost: 0 }] } };
   assert.equal(realisedHarvestPermille(poor), 15);
-  assert.equal(arableSupplyShort(poor), true);
-  const full = { ...ample, harvestRecord: { year: 0, wheat: 0, lost: 0, past: [{ expected: 10_000, wheat: 10_000, lost: 0 }, { expected: 10_000, wheat: 10_000, lost: 0 }, { expected: 10_000, wheat: 10_000, lost: 0 }] } };
-  assert.equal(arableSupplyShort(full), false);
+  assert.equal(arableSupplyShort(poor), arableSupplyShort(ample));
 });
 
 test("GP-2 ripe wheat left in the field because the barns were full counts as grown: a harvesting limit is not the land's", () => {
-  const ample = replayFoodObservation(withAmpleGrain(observedFoodTown()), { wheat: 1000, bread: 40, exports: 0 });
+  const ample = fieldWorld();
   const backedUp = { ...ample, harvestRecord: { year: 0, wheat: 0, lost: 0, past: [{ expected: 10_000, wheat: 6_000, lost: 3_500 }, { expected: 10_000, wheat: 6_000, lost: 3_500 }, { expected: 10_000, wheat: 6_000, lost: 3_500 }] } };
   assert.equal(realisedHarvestPermille(backedUp), 950);
-  assert.equal(arableSupplyShort(backedUp), false);
   const world = fieldWorld({ tick: 3 * YEAR + 3000 });
   const counted = { ...world, harvestRecord: { year: 3, expected: 500, wheat: 300, lost: 0, past: [] } };
   assert.equal(nextHarvestRecord(counted, 0, 40)!.lost, 40, "winter's loss is added to the counted year");

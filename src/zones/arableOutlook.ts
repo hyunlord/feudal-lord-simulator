@@ -87,7 +87,7 @@ export function realisedHarvestPermille(state: Pick<GameState, "harvestRecord">)
   return Math.min(1000, Math.floor(past.reduce((sum, year) => sum + year.wheat + year.lost, 0) * 1000 / expected));
 }
 
-/** GP-2: the expected harvest scaled by what the last years realised — the bot's grain supply. */
+/** GP-2 (reading only; the bot's grain step does not use it, decision GP2): the expected harvest scaled by what the last years realised. */
 export function realisedAnnualWheat(state: GameState): number {
   return Math.floor(expectedAnnualWheat(state) * realisedHarvestPermille(state) / 1000);
 }
