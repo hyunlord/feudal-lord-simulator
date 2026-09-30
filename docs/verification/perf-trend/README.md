@@ -8,32 +8,36 @@
 - **장면**: 가장 큰 도시 5×(`fixtures/perf-gate/ch4-1380`), 새 게임 3×. 각 45초 × 3회, 중앙값. 증명 포트 켬(틱 수).
 - **비교가 필요하면**: `npm run perf:ab -- --a <커밋> --b <커밋>`(A-B-A-B 번갈아, 같은 소음을 둘이 같이 맞음).
 
-**지금 나빠진 지표(A-B 확정): 없음.**
+**나빠진 지표 1개(A-B 확정):** `8ebdcf5c new-game-x3 heapAllocMBps 14.2(비교 00df3324 21.5~23.1) → A-B 나빠짐`
 
-A-B를 기다리는 의심 9개: `00df3324 big-town-x5 heapAllocMBps 17.2(비교 cf04b4a7 24.7~27.8)` · `00df3324 big-town-x5 canvasPerSec 1.91(비교 cf04b4a7 5.84~6.5)` · `a597617b big-town-x5 gcPerMin 102.5(비교 8ebdcf5c 106.3~108.5)` · `00df3324 new-game-x3 gcPerMin 137.2(비교 cf04b4a7 106.5~110.6)` · `00df3324 new-game-x3 canvasPerSec 0.64(비교 cf04b4a7 2.57~2.58)` · `8ebdcf5c new-game-x3 heapAllocMBps 14.2(비교 00df3324 21.5~23.1)` · `8ebdcf5c new-game-x3 gcPerMin 72.6(비교 00df3324 109.3~145.3)` · `e6d08a6e new-game-x3 gcPerMin 86.4(비교 a597617b 69.2~71.5)` · `e6d08a6e new-game-x3 canvasPerSec 0.64(비교 a597617b 0.59~0.59)`
+A-B를 기다리는 의심 3개: `61d79e8e big-town-x5 canvasPerSec 1.88(비교 5e214ef7 1.69~1.73)` · `26507989 big-town-x5 canvasPerSec 2.06(비교 61d79e8e 1.74~1.89)` · `26507989 new-game-x3 heapAllocMBps 21.1(비교 61d79e8e 21.9~22.6)`
 
-A-B가 같음으로 끝낸 의심: 없음.
+A-B가 같음으로 끝낸 의심 5개: `a597617b big-town-x5 gcPerMin 102.5(비교 8ebdcf5c 106.3~108.5) → A-B 소음 안` · `00df3324 new-game-x3 gcPerMin 137.2(비교 cf04b4a7 106.5~110.6) → A-B 소음 안` · `8ebdcf5c new-game-x3 gcPerMin 72.6(비교 00df3324 109.3~145.3) → A-B 소음 안` · `e6d08a6e new-game-x3 gcPerMin 86.4(비교 a597617b 69.2~71.5) → A-B 소음 안` · `e6d08a6e new-game-x3 canvasPerSec 0.64(비교 a597617b 0.59~0.59) → A-B 소음 안`
 
 ## big-town-x5
 
 | 커밋 | 날짜 | JS 할당 MB/s | 힙 하락(GC)/분 | 캔버스 생성/초 | GC 뒤 남은 JS 힙 MB | 다른 일 CPU(DGX 전체 코어 중) | 스크립트 ms/틱(참고) | 스크립트 ms/프레임(참고) | JS 할당 KB/틱(참고) | 캔버스 생성/1천 틱(참고) | 비트맵/초(참고) | getImageData/초(참고) | JS 힙 끝 MB(참고, GC 톱니 위 한 점) | p95 ms(DGX, 참고) | 33 ms 초과/분(DGX, 참고) |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `26507989` LM-E1: clean clone 29c1a87 4,048/4,048; report gat | 2026-10-01 04:01 | 22.3 | 99.9 | 2.06 의심(A-B 대기) | 38 | 0 | 9.45 | 14.767 | 330.5 | 200.2 | 0 | 0 | 61.7 | 33.4 | 976.3 |
+| `61d79e8e` perf-trend judges four per-second metrics (JS allo | 2026-10-01 01:33 | 23.6 | 119.8 | 1.88 의심(A-B 대기) | 36.6 | 0.46 | 11.382 | 26.987 | 384.6 | 179.9 | 0 | 0 | 61.1 | 66.7 | 1223.9 |
 | `5e214ef7` Decisions: the keep-judgement-runs decision is RR5 | 2026-10-01 01:27 | 24.2 | 118.5 | 1.73 | 37.1 | 0.43 | 14.088 | 35.219 | 510.1 | 193.1 | 0 | 0 | 63.1 | 100 | 960.9 |
 | `bfb0d430` perf-trend: five trunk commits re-measured with th | 2026-10-01 00:54 | 23.2 | 123.8 | 1.91 | 37.4 | 0.37 | 10.118 | 23.115 | 346.5 | 194.6 | 0 | 0 | 69 | 50.1 | 1333.2 |
 | `e6d08a6e` perf-trend: the four backfilled trunk commits (big | 2026-09-30 22:39 | 23 | 105.7 | 1.62 | 36.7 | 0.42 | 17.442 | 47.796 | 577.2 | 220.7 | 0 | 0 | 56.1 | 133.3 | 810.3 |
-| `a597617b` Merge remote-tracking branch 'origin/codex/phase15 | 2026-09-30 13:53 | 23.1 | 102.5 의심(A-B 대기) | 1.77 | 36.5 | 0.44 | 18.429 | 54.793 | 615 | 276.4 | 0 | 0 | 74.8 | 166.7 | 679.4 |
+| `a597617b` Merge remote-tracking branch 'origin/codex/phase15 | 2026-09-30 13:53 | 23.1 | 102.5 의심→같음(A-B) | 1.77 | 36.5 | 0.44 | 18.429 | 54.793 | 615 | 276.4 | 0 | 0 | 74.8 | 166.7 | 679.4 |
 | `8ebdcf5c` NAT-2: decision D8 names the regenerated C25 board | 2026-09-30 13:39 | 22.2 | 107.5 | 1.73 | 35.7 | 0.42 | 18.314 | 53.819 | 569.1 | 223.7 | 0 | 0 | 70.9 | 150.1 | 703.6 |
-| `00df3324` INBOX-2q: Wave 37 doorstep trade and condition pro | 2026-09-30 13:21 | 17.2 의심(A-B 대기) | 113.2 | 1.91 의심(A-B 대기) | 37 | 0.21 | 9.782 | 17.935 | 256.5 | 202 | 0 | 0 | 68.3 | 50 | 1221.9 |
+| `00df3324` INBOX-2q: Wave 37 doorstep trade and condition pro | 2026-09-30 13:21 | 17.2 좋아짐(A-B) | 113.2 | 1.91 좋아짐(A-B) | 37 | 0.21 | 9.782 | 17.935 | 256.5 | 202 | 0 | 0 | 68.3 | 50 | 1221.9 |
 | `cf04b4a7` QA-2: Astra observation QA round 02 kept in docs/q | 2026-09-30 10:59 | 27.2 | 127.8 | 5.92 | 35.2 | 0.36 | 11.433 | 26.387 | 458.5 | 1723.8 | 85.68 | 0.1 | 66.9 | 66.7 | 1229.9 |
 
 ## new-game-x3
 
 | 커밋 | 날짜 | JS 할당 MB/s | 힙 하락(GC)/분 | 캔버스 생성/초 | GC 뒤 남은 JS 힙 MB | 다른 일 CPU(DGX 전체 코어 중) | 스크립트 ms/틱(참고) | 스크립트 ms/프레임(참고) | JS 할당 KB/틱(참고) | 캔버스 생성/1천 틱(참고) | 비트맵/초(참고) | getImageData/초(참고) | JS 힙 끝 MB(참고, GC 톱니 위 한 점) | p95 ms(DGX, 참고) | 33 ms 초과/분(DGX, 참고) |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `26507989` LM-E1: clean clone 29c1a87 4,048/4,048; report gat | 2026-10-01 04:01 | 21.1 의심(A-B 대기) | 94.6 | 0.64 | 20.4 | 0 | 5.216 | 3.902 | 479.3 | 49 | 0 | 0 | 40.4 | 16.8 | 75.9 |
+| `61d79e8e` perf-trend judges four per-second metrics (JS allo | 2026-10-01 01:33 | 22.1 | 95.9 | 0.64 | 20.9 | 0.44 | 6.581 | 6.787 | 506.3 | 49.3 | 0 | 0 | 35.7 | 50 | 814.1 |
 | `5e214ef7` Decisions: the keep-judgement-runs decision is RR5 | 2026-10-01 01:27 | 18.9 | 93.3 | 0.64 | 20.5 | 0.39 | 6.483 | 8.457 | 434.9 | 49 | 0 | 0 | 35 | 66.7 | 838.1 |
 | `bfb0d430` perf-trend: five trunk commits re-measured with th | 2026-10-01 00:54 | 18.6 | 93.3 | 0.64 | 20.3 | 0.38 | 6.803 | 9.197 | 430.3 | 50 | 0 | 0 | 41.1 | 66.7 | 909.7 |
-| `e6d08a6e` perf-trend: the four backfilled trunk commits (big | 2026-09-30 22:39 | 18.2 | 86.4 의심(A-B 대기) | 0.64 의심(A-B 대기) | 20.1 | 0.46 | 6.61 | 9.57 | 418.3 | 49.4 | 0 | 0 | 30.6 | 66.7 | 854.2 |
+| `e6d08a6e` perf-trend: the four backfilled trunk commits (big | 2026-09-30 22:39 | 18.2 | 86.4 의심→같음(A-B) | 0.64 의심→같음(A-B) | 20.1 | 0.46 | 6.61 | 9.57 | 418.3 | 49.4 | 0 | 0 | 30.6 | 66.7 | 854.2 |
 | `a597617b` Merge remote-tracking branch 'origin/codex/phase15 | 2026-09-30 13:53 | 15.1 | 69.2 | 0.59 | 20.2 | 0.43 | 6.538 | 11.583 | 382.9 | 52.3 | 0 | 0 | 41 | 100 | 778 |
-| `8ebdcf5c` NAT-2: decision D8 names the regenerated C25 board | 2026-09-30 13:39 | 14.2 의심(A-B 대기) | 72.6 의심(A-B 대기) | 0.64 | 20.1 | 0.44 | 6.503 | 12.132 | 365.5 | 49.4 | 0 | 0 | 29.2 | 100 | 763.1 |
-| `00df3324` INBOX-2q: Wave 37 doorstep trade and condition pro | 2026-09-30 13:21 | 22.2 | 137.2 의심(A-B 대기) | 0.64 의심(A-B 대기) | 19.9 | 0.18 | 6.704 | 4.955 | 504.5 | 48.4 | 0 | 0 | 35.9 | 16.8 | 26.6 |
+| `8ebdcf5c` NAT-2: decision D8 names the regenerated C25 board | 2026-09-30 13:39 | 14.2 **나빠짐**(A-B) | 72.6 의심→같음(A-B) | 0.64 | 20.1 | 0.44 | 6.503 | 12.132 | 365.5 | 49.4 | 0 | 0 | 29.2 | 100 | 763.1 |
+| `00df3324` INBOX-2q: Wave 37 doorstep trade and condition pro | 2026-09-30 13:21 | 22.2 | 137.2 의심→같음(A-B) | 0.64 좋아짐(A-B) | 19.9 | 0.18 | 6.704 | 4.955 | 504.5 | 48.4 | 0 | 0 | 35.9 | 16.8 | 26.6 |
 | `cf04b4a7` QA-2: Astra observation QA round 02 kept in docs/q | 2026-09-30 10:59 | 22.7 | 109.3 | 2.58 | 20 | 0.35 | 7.984 | 7.279 | 516.3 | 144.9 | 3.2 | 0 | 42.8 | 33.4 | 553.2 |

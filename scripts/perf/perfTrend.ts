@@ -66,8 +66,9 @@ function main() {
         const where = `${row.commit.slice(0, 8)} ${scene} ${key} ${value}(비교 ${against!.commit.slice(0, 8)} ${low}~${high})`;
         const verdict = abVerdict(confirmations.get(confirmationName(against!.commit, row.commit, scene)), key);
         if (verdict === null) { pending.push(where); return `${value} 의심(A-B 대기)`; }
-        if (verdict === "나빠짐" && suspicion === "위") { flagged.push(`${where} A-B 확정`); return `${value} **나빠짐**`; }
-        if (verdict === "좋아짐" && suspicion === "아래") return `${value} 좋아짐`;
+        // The A-B settles a suspected metric either way: it is the only comparison that takes the same noise on both sides.
+        if (verdict === "나빠짐") { flagged.push(`${where} → A-B 나빠짐`); return `${value} **나빠짐**(A-B)`; }
+        if (verdict === "좋아짐") return `${value} 좋아짐(A-B)`;
         cleared.push(`${where} → A-B ${verdict}`);
         return `${value} 의심→같음(A-B)`;
       });
