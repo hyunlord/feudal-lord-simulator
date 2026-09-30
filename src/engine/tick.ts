@@ -1,4 +1,5 @@
 import { advanceStuckStock } from "./stuckStock";
+import { advanceTownAgency } from "./townAgency";
 import { advanceTimberTrade } from "./timberTrade";
 import { BALANCE } from '../content/balanceConfig';
 import { feasibleDistributorDistance } from './distributorAccess';
@@ -279,7 +280,8 @@ export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
   // F0-C2 (HL-2): the history ledger reads the tick's before and after; it never changes the simulation.
   // FIX-11 (SK-3): the stuck-stock since-ticks after the tick's moves.
-  return advanceHistory(state, advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
+  // LM-E1 (TA-3): lord mode's town agency, each week, after the tick's moves (nothing without `state.agency`).
+  return advanceHistory(state, advanceTownAgency(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
     advanceWarTick(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))))))))),
-  ))))));
+  )))))));
 }

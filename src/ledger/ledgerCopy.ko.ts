@@ -37,6 +37,7 @@ export const LEDGER_CATEGORY_LABELS = {
   project: "공사 재원",
   famine_relief: "구휼",
   timber_purchase: "목재 구입",
+  project_subsidy: "사업 장려금",
   famine_sale: "기근 곡물 판매",
   charter_fee: "특허 대가",
   // FAIL-3 (FL-6, FL-7)

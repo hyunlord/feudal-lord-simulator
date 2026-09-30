@@ -1,0 +1,707 @@
+{
+ "archetypeId": "core:open_field",
+ "seed": 2,
+ "lastYear": 1318,
+ "policy": "growth",
+ "firstYear": 1300,
+ "abandoned": false,
+ "final": {
+  "year": 1319,
+  "population": 528,
+  "l2": 24,
+  "l4": 0,
+  "houses": 24,
+  "treasury": 3953,
+  "kinds": {
+   "house": 24,
+   "well": 4,
+   "granary": 5,
+   "logging_camp": 5,
+   "storehouse": 2,
+   "manor_house": 1,
+   "farmstead": 5,
+   "mill": 6,
+   "sawmill": 2,
+   "chapel": 1,
+   "market": 1
+  },
+  "housePlots": [
+   [
+    37,
+    28
+   ],
+   [
+    38,
+    27
+   ],
+   [
+    39,
+    28
+   ],
+   [
+    39,
+    39
+   ],
+   [
+    40,
+    40
+   ],
+   [
+    41,
+    30
+   ],
+   [
+    42,
+    30
+   ],
+   [
+    42,
+    33
+   ],
+   [
+    43,
+    39
+   ],
+   [
+    44,
+    29
+   ],
+   [
+    44,
+    37
+   ],
+   [
+    44,
+    39
+   ],
+   [
+    45,
+    30
+   ],
+   [
+    45,
+    31
+   ],
+   [
+    46,
+    31
+   ],
+   [
+    46,
+    34
+   ],
+   [
+    46,
+    37
+   ],
+   [
+    46,
+    39
+   ],
+   [
+    47,
+    32
+   ],
+   [
+    47,
+    35
+   ],
+   [
+    48,
+    36
+   ],
+   [
+    48,
+    37
+   ],
+   [
+    49,
+    37
+   ],
+   [
+    51,
+    38
+   ]
+  ]
+ },
+ "receipts": {
+  "count": 140,
+  "byPlanner": {
+   "food": 67,
+   "timber": 7,
+   "housing": 30,
+   "water": 3,
+   "era": 2,
+   "rebuild": 2,
+   "winter_reserve": 5,
+   "storage": 8,
+   "construction_roads": 15,
+   "services": 1
+  },
+  "withDecisions": 0
+ },
+ "audit": {
+  "audited": 140,
+  "mismatched": 0,
+  "sample": [
+   {
+    "receipt": "receipt-89",
+    "tick": 49686,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-34",
+    "tick": 9594,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-123",
+    "tick": 70668,
+    "actor": "community",
+    "what": "road",
+    "planner": "construction_roads",
+    "reasons": "need+82 policy+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-68",
+    "tick": 24102,
+    "actor": "households",
+    "what": "house",
+    "planner": "housing",
+    "reasons": "need+58 policy+20 risk-6 access+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-13",
+    "tick": 6864,
+    "actor": "households",
+    "what": "house",
+    "planner": "housing",
+    "reasons": "need+58 policy+20 access+5 risk-2 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-102",
+    "tick": 50622,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-47",
+    "tick": 14040,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "winter_reserve",
+    "reasons": "need+73 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-136",
+    "tick": 73710,
+    "actor": "households",
+    "what": "logging_camp",
+    "planner": "timber",
+    "reasons": "need+76 access+5 relation+3 cost-2",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-81",
+    "tick": 49140,
+    "actor": "community",
+    "what": "road",
+    "planner": "food",
+    "reasons": "need+67 policy+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-26",
+    "tick": 8268,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-115",
+    "tick": 70278,
+    "actor": "community",
+    "what": "road",
+    "planner": "construction_roads",
+    "reasons": "need+82 policy+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-60",
+    "tick": 23322,
+    "actor": "households",
+    "what": "house",
+    "planner": "housing",
+    "reasons": "need+58 policy+20 access+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-5",
+    "tick": 3588,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-94",
+    "tick": 49998,
+    "actor": "community",
+    "what": "road",
+    "planner": "food",
+    "reasons": "need+67 policy+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-39",
+    "tick": 12246,
+    "actor": "households",
+    "what": "house",
+    "planner": "housing",
+    "reasons": "need+58 policy+20 risk-8 access+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-128",
+    "tick": 71058,
+    "actor": "community",
+    "what": "road",
+    "planner": "construction_roads",
+    "reasons": "need+82 policy+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-73",
+    "tick": 30342,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-18",
+    "tick": 7410,
+    "actor": "households",
+    "what": "house",
+    "planner": "housing",
+    "reasons": "need+58 policy+20 access+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-107",
+    "tick": 52338,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-52",
+    "tick": 17238,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-86",
+    "tick": 49530,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-31",
+    "tick": 8424,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-120",
+    "tick": 70512,
+    "actor": "community",
+    "what": "road",
+    "planner": "construction_roads",
+    "reasons": "need+82 policy+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-65",
+    "tick": 23790,
+    "actor": "households",
+    "what": "house",
+    "planner": "housing",
+    "reasons": "need+58 policy+20 access+5 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-10",
+    "tick": 6396,
+    "actor": "households",
+    "what": "house",
+    "planner": "housing",
+    "reasons": "need+58 policy+20 access+5 risk-4 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-99",
+    "tick": 50388,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-44",
+    "tick": 13416,
+    "actor": "households",
+    "what": "house",
+    "planner": "housing",
+    "reasons": "need+58 policy+20 access+5 risk-2 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-133",
+    "tick": 72150,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+3",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-78",
+    "tick": 38688,
+    "actor": "households",
+    "what": "zone:arable",
+    "planner": "food",
+    "reasons": "need+67 policy+10 relation+1",
+    "mismatches": []
+   },
+   {
+    "receipt": "receipt-23",
+    "tick": 8034,
+    "actor": "community",
+    "what": "road",
+    "planner": "housing",
+    "reasons": "need+58 policy+5 relation+1",
+    "mismatches": []
+   }
+  ]
+ },
+ "years": [
+  {
+   "year": 1300,
+   "population": 56,
+   "l2": 4,
+   "l4": 0,
+   "houses": 5,
+   "treasury": 60,
+   "funds": {
+    "community": 432,
+    "households": 372,
+    "merchants": 156,
+    "guild": 0,
+    "church": 264
+   }
+  },
+  {
+   "year": 1301,
+   "population": 108,
+   "l2": 0,
+   "l4": 0,
+   "houses": 14,
+   "treasury": 87,
+   "funds": {
+    "community": 690,
+    "households": 860,
+    "merchants": 479,
+    "guild": 0,
+    "church": 587
+   }
+  },
+  {
+   "year": 1302,
+   "population": 142,
+   "l2": 2,
+   "l4": 0,
+   "houses": 16,
+   "treasury": 138,
+   "funds": {
+    "community": 1418,
+    "households": 2460,
+    "merchants": 974,
+    "guild": 0,
+    "church": 1082
+   }
+  },
+  {
+   "year": 1303,
+   "population": 163,
+   "l2": 7,
+   "l4": 0,
+   "houses": 19,
+   "treasury": 183,
+   "funds": {
+    "community": 2307,
+    "households": 4606,
+    "merchants": 1634,
+    "guild": 0,
+    "church": 1982
+   }
+  },
+  {
+   "year": 1304,
+   "population": 200,
+   "l2": 8,
+   "l4": 0,
+   "houses": 19,
+   "treasury": 301,
+   "funds": {
+    "community": 3204,
+    "households": 6516,
+    "merchants": 2531,
+    "guild": 0,
+    "church": 2879
+   }
+  },
+  {
+   "year": 1305,
+   "population": 254,
+   "l2": 12,
+   "l4": 0,
+   "houses": 22,
+   "treasury": 472,
+   "funds": {
+    "community": 4057,
+    "households": 8984,
+    "merchants": 3510,
+    "guild": 0,
+    "church": 3858
+   }
+  },
+  {
+   "year": 1306,
+   "population": 342,
+   "l2": 23,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 588,
+   "funds": {
+    "community": 5269,
+    "households": 12341,
+    "merchants": 4485,
+    "guild": 0,
+    "church": 5073
+   }
+  },
+  {
+   "year": 1307,
+   "population": 410,
+   "l2": 23,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 876,
+   "funds": {
+    "community": 6517,
+    "households": 16125,
+    "merchants": 5733,
+    "guild": 0,
+    "church": 6321
+   }
+  },
+  {
+   "year": 1308,
+   "population": 413,
+   "l2": 22,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 1217,
+   "funds": {
+    "community": 7739,
+    "households": 20273,
+    "merchants": 6717,
+    "guild": 0,
+    "church": 7545
+   }
+  },
+  {
+   "year": 1309,
+   "population": 428,
+   "l2": 23,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 1393,
+   "funds": {
+    "community": 8963,
+    "households": 24489,
+    "merchants": 7941,
+    "guild": 0,
+    "church": 8769
+   }
+  },
+  {
+   "year": 1310,
+   "population": 442,
+   "l2": 23,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 1761,
+   "funds": {
+    "community": 10210,
+    "households": 28909,
+    "merchants": 9189,
+    "guild": 0,
+    "church": 10017
+   }
+  },
+  {
+   "year": 1311,
+   "population": 442,
+   "l2": 23,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 2129,
+   "funds": {
+    "community": 11434,
+    "households": 33244,
+    "merchants": 10413,
+    "guild": 0,
+    "church": 11241
+   }
+  },
+  {
+   "year": 1312,
+   "population": 466,
+   "l2": 24,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 2323,
+   "funds": {
+    "community": 12644,
+    "households": 37543,
+    "merchants": 11397,
+    "guild": 0,
+    "church": 12465
+   }
+  },
+  {
+   "year": 1313,
+   "population": 512,
+   "l2": 24,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 2755,
+   "funds": {
+    "community": 13855,
+    "households": 42022,
+    "merchants": 12621,
+    "guild": 0,
+    "church": 13689
+   }
+  },
+  {
+   "year": 1314,
+   "population": 528,
+   "l2": 24,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 3215,
+   "funds": {
+    "community": 15103,
+    "households": 46854,
+    "merchants": 13869,
+    "guild": 0,
+    "church": 14937
+   }
+  },
+  {
+   "year": 1315,
+   "population": 528,
+   "l2": 24,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 3447,
+   "funds": {
+    "community": 16327,
+    "households": 51750,
+    "merchants": 15093,
+    "guild": 0,
+    "church": 16161
+   }
+  },
+  {
+   "year": 1316,
+   "population": 528,
+   "l2": 24,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 3908,
+   "funds": {
+    "community": 17551,
+    "households": 56646,
+    "merchants": 16317,
+    "guild": 0,
+    "church": 17385
+   }
+  },
+  {
+   "year": 1317,
+   "population": 528,
+   "l2": 24,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 4055,
+   "funds": {
+    "community": 18775,
+    "households": 61458,
+    "merchants": 17277,
+    "guild": 0,
+    "church": 18633
+   }
+  },
+  {
+   "year": 1318,
+   "population": 528,
+   "l2": 24,
+   "l4": 0,
+   "houses": 24,
+   "treasury": 3953,
+   "funds": {
+    "community": 19999,
+    "households": 66084,
+    "merchants": 19035,
+    "guild": 0,
+    "church": 19857
+   }
+  }
+ ],
+ "elapsedSeconds": 1011.9
+}

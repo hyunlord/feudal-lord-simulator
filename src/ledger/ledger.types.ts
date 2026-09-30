@@ -34,6 +34,8 @@ export const LEDGER_CATEGORIES = [
   "church_rebuilding",
   // FIX-10 (TT-2): timber bought from the market's traders.
   "timber_purchase",
+  // LM-E1 (TA-6): the lord's subsidy paid to the actor that starts a subsidised project.
+  "project_subsidy",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

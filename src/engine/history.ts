@@ -57,10 +57,13 @@ export const ACTUAL_AFTER_TICKS = 2 * SEASON;
 
 /** HL-2 ①: the decision kinds (twelve, and WALL-2's wall expansion) and the commands behind them. */
 export const DECISION_KINDS = ["build", "road", "zone", "house", "cancel", "operation", "wall_priority",
-  "rebuild", "market_town", "stone_town", "famine_response", "petition_response", "wall_expand", "drainage"] as const;
+  "rebuild", "market_town", "stone_town", "famine_response", "petition_response", "wall_expand", "drainage",
+  // LM-E1 (TA-6): the lord's conditions in lord mode.
+  "estate_policy", "project_subsidy", "market_dues"] as const;
 export type DecisionKind = (typeof DECISION_KINDS)[number];
 /** HL-3: the big five, one record each with alternatives, a prediction and (later) the actual. */
-export const BIG_DECISION_KINDS: readonly DecisionKind[] = ["market_town", "stone_town", "famine_response", "petition_response", "rebuild", "wall_expand", "drainage"];
+export const BIG_DECISION_KINDS: readonly DecisionKind[] = ["market_town", "stone_town", "famine_response", "petition_response", "rebuild", "wall_expand", "drainage",
+  "estate_policy", "project_subsidy", "market_dues"];
 
 export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = {
   place_building: "build", place_road_line: "road", remove_road: "road",
@@ -71,6 +74,8 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   famine_response: "famine_response", petition_response: "petition_response", expand_palisade: "wall_expand",
   // ARCH-1b (MA-11): the fen's drainage works.
   drain_fen: "drainage", order_timber: "operation",
+  // LM-E1 (TA-6): each condition the lord sets is a decision with a ledger id; the town's receipts point at it.
+  set_estate_policy: "estate_policy", set_project_subsidy: "project_subsidy", set_market_dues: "market_dues",
 };
 
 /** HL-2 ③: buildings whose first completion is a milestone. */
@@ -125,6 +130,17 @@ function pick(values: Readonly<Record<string, number>>, keys: readonly string[])
 function bigDecision(before: GameState, after: GameState, kind: DecisionKind, command: Readonly<Record<string, unknown>>): HistoryDecision {
   const now = metrics(before);
   const due = before.tick + ACTUAL_AFTER_TICKS;
+  // LM-E1 (TA-6): the lord's conditions — what was set and what it replaced; the treasury is the prediction's metric.
+  if (kind === "estate_policy") {
+    const chosen = String(command.policy);
+    return { chosen, alternatives: ["growth", "revenue", "stability", "defence"].filter(policy => policy !== chosen), predicted: pick(now, ["treasury"]), actualDueTick: due };
+  }
+  if (kind === "project_subsidy") {
+    return { chosen: `${String(command.kind)}:${Number(command.amount)}`, alternatives: [`${String(command.kind)}:0`], predicted: pick(now, ["treasury"]), actualDueTick: due };
+  }
+  if (kind === "market_dues") {
+    return { chosen: String(command.permille), alternatives: [String(before.agency?.duesPermille ?? 1000)], predicted: pick(now, ["treasury"]), actualDueTick: due };
+  }
   if (kind === "famine_response") {
     const chosen = String(command.choice) as FamineResponseChoice;
     const poor = famineShortHouses(before, true).length;
@@ -178,6 +194,7 @@ const BIG_KEYS: Readonly<Record<string, readonly string[]>> = {
   famine_response: ["population", "treasury"], petition_response: ["treasury", "merchantGauge"],
   stone_town: ["treasury", "lots"], market_town: ["population", "lots"], rebuild: ["population"], wall_expand: ["population", "lots"],
   drainage: ["population", "treasury"],
+  estate_policy: ["treasury"], project_subsidy: ["treasury"], market_dues: ["treasury"],
 };
 
 /** HL-2 ①: records the player's (or the bot's) command, if it changed the state. Called by `gameReducer`. */
@@ -204,6 +221,8 @@ export function recordDecision(before: GameState, after: GameState, command: { r
       if (candidate !== undefined) params.relation = heirRelationWord(candidate);
     }
   }
+  // LM-E1 (TA-6): a subsidy's decision names its kind and sum (the receipts find it by its kind).
+  if (kind === "project_subsidy") Object.assign(params, { kind: String(command.kind), amount: Number(command.amount) });
   const place = kind === "rebuild" ? after.buildings.find(entry => entry.id === command.buildingId) : undefined;
   // FACTION-0 (FX-3): a petition's decision names its faction.
   const petitioner = kind === "petition_response" ? before.politics?.petitions.find(petition => petition.id === command.petitionId)?.petitioner : undefined;
@@ -715,6 +734,8 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   drafts.push(...legacyDrafts(before, after));
   drafts.push(...factionDrafts(before, after));
   drafts.push(...personDrafts(before, after));
+  // LM-E1 (TA-5): each project the town started this tick, with its receipt.
+  drafts.push(...agencyDrafts(before, after));
   // ARCH-1b (MA-11): a drainage works finished — its cells are meadow now.
   for (const work of finishedDrainage(before, after)) {
     const cell = work.cells[0]!;
@@ -811,4 +832,16 @@ export function chapterPageRecords(state: Pick<GameState, "history">, fromTick: 
     .filter(record => record.decision !== undefined)
     .sort((a, b) => (QUOTE_WEIGHT[String(a.params?.decisionKind)] ?? 9) - (QUOTE_WEIGHT[String(b.params?.decisionKind)] ?? 9) || a.tick - b.tick);
   return { events, decisions };
+}
+
+/** LM-E1 (TA-5): a project the town started — `agency.project_started`, its receipt's who, what, where and top reasons. */
+function agencyDrafts(before: GameState, after: GameState): Draft[] {
+  const receipts = after.agency?.receipts ?? [];
+  const known = before.agency?.nextReceipt ?? 1;
+  return receipts.filter(receipt => Number(receipt.id.slice("receipt-".length)) >= known).map(receipt => ({
+    tick: after.tick, kind: "event" as const, template: "agency.project_started", subject: TOWN, severity: 1 as const,
+    place: { tx: receipt.tx, ty: receipt.ty, ...(receipt.siteId === null ? {} : { buildingId: receipt.siteId }) },
+    params: { receipt: receipt.id, actor: receipt.actor, what: receipt.what, planner: receipt.planner, score: receipt.score,
+      reasons: receipt.reasons.map(reason => `${reason.name}:${reason.value}`).join(","), decisions: receipt.decisionIds.join(",") },
+  }));
 }
