@@ -1,5 +1,5 @@
 // Types of scripts/checks/surfaceRegistry.mjs (a plain module: check:merge imports it with node, tests with types).
-export type SurfaceCandidate = { readonly kind: "dialog" | "class" | "css"; readonly path: string; readonly line: number; readonly names: readonly string[]; readonly selector?: string };
+export type SurfaceCandidate = { readonly kind: "dialog" | "class" | "frame" | "css"; readonly path: string; readonly line: number; readonly names: readonly string[]; readonly selector?: string };
 export type SurfaceReader = { readonly list: () => readonly string[]; readonly read: (path: string) => string };
 export declare const REGISTRY_PATH: string;
 export declare function stripComments(text: string, options?: { readonly css?: boolean }): string;

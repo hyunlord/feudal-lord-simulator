@@ -4,6 +4,7 @@
 //  - dialog:  an element with role="dialog" in src/ui/**, src/render/*.tsx or src/App.tsx (the kit's own Modal aside);
 //  - class:   a class name in a className of those files that names a framed thing (…-panel, -card, -modal, -drawer,
 //             -popover, -tooltip, -chip, -page, -book, -sheet, -dialog, or the word itself);
+//  - frame:   an element with a data-frame attribute (the frame tokens' framed root) in those files: its class names;
 //  - css:     the subject of a CSS selector (src/styles/*.css, src/ui/**/*.css) that sets a border-image.
 // It is registered when one of its class names appears in a selector string of the registry, or is a key of its
 // NOT_SURFACES (a control, a part of a registered surface, an unmounted component, with the reason). Every other one
@@ -84,6 +85,22 @@ export function tsxCandidates(path, source) {
   for (const match of text.matchAll(/className=/g)) {
     for (const token of classTokens(text, match.index + match[0].length)) {
       if (FRAMED_WORD.test(token)) rows.push({ kind: 'class', path, line: lineAt(text, match.index), names: [token] });
+    }
+  }
+  const tagClasses = index => {
+    const tag = text.slice(text.lastIndexOf('<', index), text.indexOf('>', index));
+    const at = tag.indexOf('className=');
+    return at < 0 ? [] : classTokens(tag, at + 'className='.length);
+  };
+  // A framed root (data-frame="<kind>", or the object-spread form "data-frame": kind).
+  if (!path.startsWith('src/ui/kit/')) {
+    for (const match of text.matchAll(/\bdata-frame=|"data-frame":/g)) {
+      // A root with no class of its own (<p data-frame=…> in a Disclosure) is named by the nearest className before it.
+      const before = text.lastIndexOf('className=', match.index);
+      const own = match[0] === 'data-frame=' ? tagClasses(match.index) : [];
+      const names = match[0] === 'data-frame=' ? (own.length > 0 || before < 0 ? own : classTokens(text, before + 'className='.length))
+        : literalTexts(text.slice(text.lastIndexOf('{', match.index), text.indexOf('}', match.index) + 1).replace(/"data-frame":\s*"[^"]*"/, '')).flatMap(body => body.split(/\s+/)).filter(token => /^[A-Za-z_][\w-]*$/.test(token));
+      rows.push({ kind: 'frame', path, line: lineAt(text, match.index), names });
     }
   }
   if (!path.startsWith('src/ui/kit/')) {

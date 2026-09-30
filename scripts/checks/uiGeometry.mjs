@@ -2,9 +2,9 @@
 // uiGeometryAudit.mjs) writes docs/verification/uiaudit1/geometry.json with the hash of its inputs at the commit it
 // measured: the tree of src (the registry is in it), the tree of public/assets, the audit script's, the measure's and
 // the scene helpers' blobs. A result file cannot carry its own commit's sha, so the step keys on those inputs instead:
-// it passes when the file at <head> carries <head>'s input hash, was measured from a clean tree, and has 0 failures
-// and 0 surface conditions that could not be opened. A commit that changes none of the inputs (docs, tests) keeps the
-// result valid.
+// it passes when the file at <head> carries <head>'s input hash, was measured from a clean tree, and has 0 failures,
+// 0 surface conditions that could not be opened and no framed root (data-frame) on screen outside the registry. A
+// commit that changes none of the inputs (docs, tests) keeps the result valid.
 //   node scripts/checks/uiGeometry.mjs [--head <rev>]
 // Mode: UI_GEOMETRY_GATE below ('warn': the step reports and never fails check:merge; 'enforce': it fails). The
 // environment variable FLS_UI_GEOMETRY_GATE=enforce|warn overrides it for one run.
@@ -13,7 +13,7 @@ import { git, isMain } from './gitRange.mjs';
 
 export const UI_GEOMETRY_SUMMARY = 'docs/verification/uiaudit1/geometry.json';
 export const UI_GEOMETRY_INPUTS = Object.freeze({ src: 'src', assets: 'public/assets', audit: 'scripts/uiGeometryAudit.mjs', measure: 'scripts/uiGeometryMeasure.ts',
-  scene: 'scripts/uiGeometryScene.ts' });
+  scene: 'scripts/uiGeometryScene.ts', vite: 'vite.config.ts' });
 // UI-AUDIT-1: report-only until the fix groups land and a DGX run of their merge is 0 failures; the lead flips this to
 // 'enforce' in the same commit that adds that run's geometry.json.
 export const UI_GEOMETRY_GATE = 'warn';
@@ -50,6 +50,7 @@ export function checkUiGeometry({ head, cwd = process.cwd(), mode = gateMode() }
     if (summary.dirty) reasons.push('the result was measured from a tree with uncommitted changes');
     if (summary.failures !== 0) reasons.push(`${summary.failures} failure(s)`);
     if (summary.unopened !== 0) reasons.push(`${summary.unopened} surface condition(s) could not be opened`);
+    if ((summary.unregisteredFramed ?? 0) !== 0) reasons.push(`${summary.unregisteredFramed} framed root(s) (data-frame) on screen that no registry row measures`);
   }
   const ok = reasons.length === 0;
   return { skipped: false, mode, ok, pass: ok || mode === 'warn', reasons, summary, hash };

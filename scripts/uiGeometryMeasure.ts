@@ -3,7 +3,11 @@
 // out) so tests/uiGeometryMeasure.test.ts runs it on synthetic surfaces. Both are passed to the page by their source
 // (`page.evaluate(collectSurface, spec)`): they use nothing from this module's scope, and the page gets a `__name`
 // shim for tsx's keepNames wrappers (scripts/uiGeometryAudit.mjs).
-// The inner box (work order §2.1): the frame's content-safe rect inset by the gap (8 px). The content-safe rect is, by frame kind: css / flat — the border box inset by max(border-width,
+// The inner box (work order §2.1): the frame's content-safe rect inset by the gap (8 px). A root that carries
+// `data-frame="<kind>"` (the frame tokens: src/ui/frameTokens.generated.ts) has border-width = the kind's safe inset and
+// padding = the gap, so its inner box is its computed content box (the padding counted as at least the gap); the
+// border-image then only paints and is not read. A root without data-frame (not converted) falls back to: the
+// content-safe rect is, by frame kind: css / flat — the border box inset by max(border-width,
 // border-image-width − border-image-outset) per side (a surface not yet converted to the frame tokens still has its
 // frame in border-image-width); layer — the content slot's box (the art's content rect), else the frame layer inset by
 // its own frame widths; painting — the registry's safe rect scaled from art pixels to the rendered size. On an axis the
@@ -41,6 +45,8 @@ export type Collected = {
   readonly expectFound: boolean | null;
   readonly root?: {
     readonly path: string; readonly rect: Box; readonly frame: Sides; readonly padding: Sides;
+    /** Its data-frame kind (null: none). */
+    readonly kind: string | null;
     readonly overflow: { readonly x: number; readonly y: number }; readonly scrollable: { readonly x: boolean; readonly y: boolean };
   };
   readonly layer?: { readonly rect: Box; readonly frame: Sides } | null;
@@ -53,6 +59,8 @@ export type Collected = {
     readonly ornament: { readonly path: string; readonly rect: Box; readonly opaque: number; readonly outside: number; readonly maxOut: number } | null;
   } | null;
   readonly siblings?: readonly { readonly selector: string; readonly rects: readonly { readonly path: string; readonly rect: Box }[]; readonly nested: readonly (readonly [number, number])[] }[];
+  /** Visible framed roots (data-frame) on the page that no registry root selector matches. */
+  readonly unregistered?: readonly { readonly kind: string; readonly path: string }[];
 };
 export type MeasureSpec = {
   readonly root: string; readonly frame: "css" | "layer" | "painting" | "flat"; readonly gap: number;
@@ -62,6 +70,8 @@ export type MeasureSpec = {
   readonly portraitRing?: { readonly cx: number; readonly cy: number; readonly r: number; readonly inner: number; readonly face: string; readonly ornament: string } | undefined;
   readonly siblingsNoOverlap?: readonly string[] | undefined;
   readonly expect?: string | undefined;
+  /** Every registry root selector (to list framed roots on the page that none of them matches). */
+  readonly registryRoots?: readonly string[] | undefined;
 };
 export type CheckName = "outside" | "overflow" | "border" | "portrait" | "overlap" | "empty" | "controls";
 export const CHECKS: readonly CheckName[] = ["outside", "overflow", "border", "portrait", "overlap", "empty", "controls"];
@@ -85,17 +95,22 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
     return check === undefined ? true : check.call(element, { opacityProperty: true, visibilityProperty: true });
   };
   const expectFound = spec.expect === undefined ? null : [...document.querySelectorAll(spec.expect)].some(shown);
+  const pathOf = (element: Element) => [...element.classList].slice(0, 2).join(".") || element.tagName.toLowerCase();
+  const registered = (element: Element) => (spec.registryRoots ?? []).some(selector => { try { return element.matches(selector); } catch { return false; } });
+  const unregistered = spec.registryRoots === undefined ? [] : [...document.querySelectorAll("[data-frame]")]
+    .filter(element => shown(element) && !registered(element)).map(element => ({ kind: element.getAttribute("data-frame") ?? "", path: pathOf(element) }));
   const root = [...document.querySelectorAll(spec.root)].find(shown);
-  if (root === undefined) return { found: false, viewport, expectFound };
+  if (root === undefined) return { found: false, viewport, expectFound, unregistered };
   const px = (value: string) => { const number = parseFloat(value); return Number.isFinite(number) ? number : 0; };
   const boxOf = (rect: DOMRect) => ({ l: rect.left, t: rect.top, r: rect.right, b: rect.bottom });
   const sides = (style: CSSStyleDeclaration, name: "border" | "padding") => name === "border"
     ? { t: px(style.borderTopWidth), r: px(style.borderRightWidth), b: px(style.borderBottomWidth), l: px(style.borderLeftWidth) }
     : { t: px(style.paddingTop), r: px(style.paddingRight), b: px(style.paddingBottom), l: px(style.paddingLeft) };
-  // The frame's inset per side: the border width, or the border image's width less its outset when that is more.
+  // The frame's inset per side: the border width, or (a surface not on the frame tokens) the border image's width less
+  // its outset when that is more.
   const frameInset = (element: Element) => {
     const style = getComputedStyle(element); const border = sides(style, "border");
-    if (style.borderImageSource === "none" || style.borderImageSource === "") return border;
+    if (element.hasAttribute("data-frame") || style.borderImageSource === "none" || style.borderImageSource === "") return border;
     const rect = element.getBoundingClientRect();
     const four = (value: string) => { const parts = value.trim().split(/\s+/); const a = parts[0] ?? "0"; const b = parts[1] ?? a; const c = parts[2] ?? a; const d = parts[3] ?? b; return [a, b, c, d]; };
     const base = [border.t, border.r, border.b, border.l]; const extent = [rect.height, rect.width, rect.height, rect.width];
@@ -247,10 +262,10 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
   const slotRect = slotElement === null ? null : { rect: boxOf(slotElement.getBoundingClientRect()), padding: sides(getComputedStyle(slotElement), "padding") };
   return {
     found: true, viewport, expectFound,
-    root: { path: path(root), rect: rootRect, frame: frameInset(root), padding: sides(rootStyle, "padding"),
+    root: { path: path(root), rect: rootRect, frame: frameInset(root), padding: sides(rootStyle, "padding"), kind: root.getAttribute("data-frame"),
       overflow: { x: root.scrollWidth - root.clientWidth, y: root.scrollHeight - root.clientHeight },
       scrollable: { x: scrolls(rootStyle.overflowX), y: scrolls(rootStyle.overflowY) } },
-    layer: layerRect, slot: slotRect, items, scrollers, portrait, siblings,
+    layer: layerRect, slot: slotRect, items, scrollers, portrait, siblings, unregistered,
   };
 }
 
@@ -268,11 +283,13 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
   const beyond = (box: Box, limit: Box) => Math.max(limit.l - box.l, box.r - limit.r, limit.t - box.t, box.b - limit.b);
   const root = collected.root;
   const rootSafe = inset(root.rect, root.frame);
-  const rootInner = inset(rootSafe, even(spec.gap));
+  // On the frame tokens: the content box, the padding counted as at least the gap.
+  const tokens = root.kind !== null && root.kind !== undefined;
+  const rootInner = inset(rootSafe, tokens ? { t: Math.max(root.padding.t, spec.gap), r: Math.max(root.padding.r, spec.gap), b: Math.max(root.padding.b, spec.gap), l: Math.max(root.padding.l, spec.gap) } : even(spec.gap));
   let safe = rootSafe; let inner = rootInner;
-  if (spec.frame === "layer" && collected.slot) { safe = meet(rootSafe, collected.slot.rect); inner = meet(rootInner, inset(collected.slot.rect, even(spec.gap))); }
-  else if (spec.frame === "layer" && collected.layer) { safe = meet(rootSafe, inset(collected.layer.rect, collected.layer.frame)); inner = meet(rootInner, inset(safe, even(spec.gap))); }
-  else if (spec.frame === "painting" && spec.painting !== undefined) {
+  if (!tokens && spec.frame === "layer" && collected.slot) { safe = meet(rootSafe, collected.slot.rect); inner = meet(rootInner, inset(collected.slot.rect, even(spec.gap))); }
+  else if (!tokens && spec.frame === "layer" && collected.layer) { safe = meet(rootSafe, inset(collected.layer.rect, collected.layer.frame)); inner = meet(rootInner, inset(safe, even(spec.gap))); }
+  else if (!tokens && spec.frame === "painting" && spec.painting !== undefined) {
     const scaleX = (root.rect.r - root.rect.l) / spec.painting.art.w; const scaleY = (root.rect.b - root.rect.t) / spec.painting.art.h; const art = spec.painting.safe;
     const painted = { l: root.rect.l + art.x * scaleX, t: root.rect.t + art.y * scaleY, r: root.rect.l + (art.x + art.w) * scaleX, b: root.rect.t + (art.y + art.h) * scaleY };
     safe = meet(rootSafe, painted); inner = meet(rootInner, inset(painted, even(spec.gap)));
