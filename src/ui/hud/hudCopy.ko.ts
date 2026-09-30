@@ -1,6 +1,4 @@
-
-/** A sum of money in pennies: "120d" (the coin icon goes beside it where there is room). */
-export const pence = (value: number | string): string => `${value}d`;
+import { moneyFull, moneyPence, moneyShort } from "../money.ko";
 
 // UX-3 HUD shell copy (status pill, action dock, ledger drawer, crisis icons, pause menu).
 export const HUD_COPY = {
@@ -8,8 +6,8 @@ export const HUD_COPY = {
   population: (count: number) => `인구 ${count}`,
   foodDays: (days: number) => `식량 ${days}일`,
   foodNone: "식량 —",
-  /** Money is pennies (judgement 2026-09-26): the coin icon, the number and "d". */
-  money: (coin: number) => pence(coin),
+  /** UI-AUDIT-1: the engine's pennies in English money, short ("£160 3s"); a press opens the ledger's exact treasury. */
+  money: (coin: number) => moneyShort(coin),
   pillOpensLedger: "자원 장부 열기",
   populationOpens: "인구 기록 열기",
   dock: "행동",
@@ -39,6 +37,8 @@ export const HUD_COPY = {
   ledgerEmpty: "보관 중인 자원이 없습니다",
   ledgerNoAlerts: "알릴 일이 없습니다",
   ledgerTreasury: "금고",
+  /** UI-AUDIT-1: the treasury the coin cell's press opens, to the penny, with the engine's penny count beside it. */
+  ledgerTreasuryLine: (coin: number) => `금고 ${moneyFull(coin)}${moneyFull(coin) === moneyPence(coin) ? "" : ` · ${moneyPence(coin)}`}`,
   crisis: "위기",
   pauseTitle: "일시정지",
   pauseResume: "계속",

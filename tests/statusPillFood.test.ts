@@ -50,9 +50,11 @@ test("UX-0b: wheat no mill can grind is not food — no mill, or the only mill s
   assert.equal(idleWheat(running), 0);
 });
 
-test("money reads as pennies everywhere the HUD shows it", () => {
-  assert.equal(HUD_COPY.money(120), "120d");
+// UI-AUDIT-1: the engine's pennies read as English money (£1 = 20s = 240d); under £1 the pence stay.
+test("money reads as English money everywhere the HUD shows it", () => {
+  assert.equal(HUD_COPY.money(120), "10s");
+  assert.equal(HUD_COPY.money(38_447), "£160 3s");
   assert.equal(PLACEMENT_CHIP_COPY.rent(3), "지대 +3d");
   assert.equal(PLACEMENT_CHIP_COPY.upkeep(2), "유지비 −2d");
-  assert.equal(SEASON_LEDGER_COPY.money(12, 4), "수입 +12d · 지출 −4d · 남음 +8d");
+  assert.equal(SEASON_LEDGER_COPY.money(12, 4), "수입 +1s · 지출 −4d · 남음 +8d");
 });

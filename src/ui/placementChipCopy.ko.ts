@@ -1,5 +1,5 @@
 import type { TileMarkReason } from "../render/placementTileMarks";
-import { pence } from "./hud/hudCopy.ko";
+import { moneyShort } from "./money.ko";
 
 // UX-3 S-53 / S-55: the placement chip beside the cursor — three short lines at most.
 export const PLACEMENT_CHIP_COPY = {
@@ -26,8 +26,8 @@ export const PLACEMENT_CHIP_COPY = {
   fromLabel: "재료",
   /** UI-3 (FP-2 placement ledger): per ledger period, only the parts that are not zero. */
   period: (parts: readonly string[]) => `장부 기간마다 ${parts.join(" · ")}`,
-  rent: (value: number) => `지대 +${pence(value)}`,
-  upkeep: (value: number) => `유지비 −${pence(value)}`,
+  rent: (value: number) => `지대 +${moneyShort(value)}`,
+  upkeep: (value: number) => `유지비 −${moneyShort(value)}`,
   labour: (adults: number) => `일꾼 ${adults}`,
   reasons: {
     building: (tiles: number) => `건물·공사장 ${tiles}칸 — 비운 땅에`,

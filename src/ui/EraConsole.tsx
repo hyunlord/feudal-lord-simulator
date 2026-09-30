@@ -203,7 +203,7 @@ export function EraConsole({
             key={requirement.key}
           >
             <dt>{requirement.label}</dt>
-            <dd>{requirement.current}/{requirement.target}
+            <dd>{ERA_CONSOLE_COPY.requirementProgress(requirement.key, requirement.current, requirement.target)}
               {requirement.key === 'coin' && model.coinHint !== null
                 ? <small className="era-requirement-hint">{model.coinHint}</small> : null}
             </dd>

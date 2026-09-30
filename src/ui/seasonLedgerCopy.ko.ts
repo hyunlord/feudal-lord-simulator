@@ -1,6 +1,6 @@
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import type { NextObjectiveHint } from "../engine/season.types";
-import { pence } from "./hud/hudCopy.ko";
+import { moneyDelta } from "./money.ko";
 import type { SeasonSceneId } from "./seasonLedgerScenes";
 
 // UI-3 season ledger card (FP-1): one closed season on the Wave 8 scroll. Signed numbers, no arrows or symbols.
@@ -11,8 +11,9 @@ export const SEASON_LEDGER_COPY = {
   label: "계절 결산",
   title: (year: number, season: 0 | 1 | 2 | 3) => `${year}년 ${SCENARIO_COPY.seasons[season]} 결산`,
   signed,
-  money: (income: number, expense: number) => `수입 ${pence(signed(income))} · 지출 ${pence(signed(-expense))} · 남음 ${pence(signed(income - expense))}`,
-  pence,
+  money: (income: number, expense: number) => `수입 ${moneyDelta(income)} · 지출 ${moneyDelta(-expense)} · 남음 ${moneyDelta(income - expense)}`,
+  /** UI-AUDIT-1: a change of money with its sign, in English money ("+£1 3s", "−7d"). */
+  moneyDelta,
   /** INSTALL-3b: the head count at the season's close, then its change (and the season before's, when there is one). */
   population: (count: number, delta: number, before: number | null) =>
     before === null ? `인구 ${count}명 (이번 계절 ${signed(delta)})` : `인구 ${count}명 (이번 계절 ${signed(delta)} · 지난 계절 ${signed(before)})`,

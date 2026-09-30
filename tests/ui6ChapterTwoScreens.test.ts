@@ -64,13 +64,13 @@ test("UI-6 the war's five demands each open their own card: Wave 17 scene, title
     assert.deepEqual(view.options.map(option => option.label), ["accept", "accept_with_price", "refuse"].map(response => WAR_CHOICES[defId]![response]), defId);
     // The market charter's copy is gone from the war's cards.
     assert.doesNotMatch(JSON.stringify(view), /시장권|상인 무리가/, defId);
-    assert.ok(view.options.every(option => /금고 \d+d/.test(option.predicted)), defId);
+    assert.ok(view.options.every(option => /금고 −?(?:£[\d,]+|\d+s|\d+d)/.test(option.predicted)), defId);
   }
   const wool = cards.get("wool_payment")!;
   assert.equal(wool.presentation.from?.writ, true);
   assert.equal(wool.presentation.from?.name, "국왕과 왕실");
   assert.equal(wool.presentation.from?.leader?.name, "에드워드 3세");
-  assert.match(wool.presentation.demand, /20d = \d+d/);
+  assert.match(wool.presentation.demand, /× 1s 8d = (?:£[\d,]+(?: \d+s)?|\d+s(?: \d+d)?|\d+d)\./);
   const markup = renderToStaticMarkup(createElement(PetitionModal, { view: wool, onRespond: () => undefined, onLater: () => undefined, onPerson: () => undefined }));
   assert.match(markup, /data-def="wool_payment"/);
   assert.match(markup, /wave17\/[^"]*wool_payment[^"]*\.jpg/);

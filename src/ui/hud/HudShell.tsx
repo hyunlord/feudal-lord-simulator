@@ -16,6 +16,7 @@ import { SeasonStripMini, SeasonStripPanel } from "./SeasonStrip";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
 import { wave8ImageStyle } from "../wave8Art";
 import { ledgerMatrix, statusPillModel } from "./statusPillModel";
+import { economyStockTotals } from "../ledgerModel";
 import type { StoreStockHistory } from "../storeStockHistory";
 import { LedgerStockTable } from "./LedgerStockTable";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
@@ -260,6 +261,9 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
         {onOpenChronicle === undefined ? null : <Button type="button" className="ledger-tab ledger-tab--chronicle" aria-haspopup="dialog"
           aria-label={CHRONICLE_SCREEN_COPY.ledgerTabLabel} data-ledger-chronicle="open" onPress={() => onOpenChronicle()} variant="tab">{CHRONICLE_SCREEN_COPY.ledgerTab}</Button>}
       </div>
+      {/* UI-AUDIT-1: the status pill's coin cell opens this drawer; here the treasury reads to the penny. */}
+      {tab === "stock" ? <p className="ledger-treasury" data-ledger-treasury="true"><UiIcon sheet="resource" cell="coin" />
+        {HUD_COPY.ledgerTreasuryLine(Math.floor(economyStockTotals(state).coin))}</p> : null}
       {tab === "stock" ? (matrix.rows.length === 0 ? <p>{HUD_COPY.ledgerEmpty}</p> : (
         // UX-0b: the total, the week and the lasts first; NAT-2 (QA-006): the stores folded into one column (LedgerStockTable).
         <LedgerStockTable state={state} matrix={matrix} history={history} food={food} highlighted={highlighted} onHighlight={onHighlight} onInspect={onInspect} />)) : null}

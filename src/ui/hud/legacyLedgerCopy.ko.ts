@@ -1,4 +1,4 @@
-import { pence } from "./hudCopy.ko";
+import { moneyFull } from "../money.ko";
 
 // UI-10 (F5-A LG-2…LG-5, LG-13): the chapter 5 ledger section in the LedgerDrawer stock tab — the Crown's tax and the
 // charter's confirmation, the succession's relief, the legacy's endowment, the charter fee, the nave and the fee farm;
@@ -9,5 +9,6 @@ export const LEGACY_LEDGER_COPY = {
   thisSeason: "이번 기간",
   lastSeason: "지난 기간",
   chapterTotal: "5장 합계",
-  amount: (value: number) => pence(value),
+  /** UI-AUDIT-1: the ledger keeps every penny ("£3 4s 2d"). */
+  amount: (value: number) => moneyFull(value),
 } as const;

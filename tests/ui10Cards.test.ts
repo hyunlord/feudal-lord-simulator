@@ -37,6 +37,7 @@ import { PetitionModal } from "../src/ui/hud/StoryModals";
 import { isPetitionDefId, petitionArtOf, petitionPresentation, type PetitionDefId } from "../src/ui/petitionPresentation";
 import { at, legacyTown } from "./helpers/legacyTown";
 import { answer, ui10Course } from "./helpers/ui10Course";
+import { moneyObject, moneyShort } from "../src/ui/money.ko";
 
 const states = ui10Course;
 const view = (state: GameState) => petitionDecisionView(state)!;
@@ -64,10 +65,10 @@ test("UI-10 (LG-4): the Crown's tax card — two answers, the tenth in pence, th
   assert.equal(card.presentation.defId, ROYAL_TAX_PETITION_ID);
   assert.deepEqual(card.options.map(option => option.choice), ["accept", "refuse"]);
   const due = Math.max(B.subsidyMin, Math.min(B.subsidyMax, Math.floor(treasuryBalance(envoy) * B.subsidyPermille / 1000)));
-  assert.ok(card.presentation.demand.includes(`${due}d`) && card.presentation.demand.includes("10 %"), card.presentation.demand);
+  assert.ok(card.presentation.demand.includes(moneyShort(due)) && card.presentation.demand.includes("10 %"), card.presentation.demand);
   const [pay, plead] = card.options;
-  assert.match(pay!.line, new RegExp(`금고에서 ${due}d · 관계 국왕 \\+10 · 도시 −5$`));
-  assert.match(plead!.line, new RegExp(`국왕 확인금 ${B.confirmationFine}d · 관계 국왕 −15 · 도시 \\+5$`));
+  assert.match(pay!.line, new RegExp(`금고에서 ${moneyShort(due)} · 관계 국왕 \\+10 · 도시 −5$`));
+  assert.match(plead!.line, new RegExp(`국왕 확인금 ${moneyShort(B.confirmationFine)} · 관계 국왕 −15 · 도시 \\+5$`));
   for (const option of card.options) {
     assert.equal(option.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(envoy) }, { treasury: legacyDecisionForecast(envoy, ROYAL_TAX_PETITION_ID, option.choice) }));
     assert.doesNotMatch(option.line, LATIN);
@@ -75,7 +76,7 @@ test("UI-10 (LG-4): the Crown's tax card — two answers, the tenth in pence, th
   assert.equal(card.presentation.from?.writ, true, "the Crown's writ");
 });
 
-test("UI-10 (LG-13): the interlude's two cards — the Wave 33 pictures, the guild's side or the merchants', the nave's 300d", () => {
+test("UI-10 (LG-13): the interlude's two cards — the Wave 33 pictures, the guild's side or the merchants', the nave's 300d (£1 5s)", () => {
   const { quarrel, nave } = states();
   const quarrelCard = view(quarrel);
   assert.equal(quarrelCard.presentation.defId, GUILD_DISPUTE_PETITION_ID);
@@ -86,8 +87,8 @@ test("UI-10 (LG-13): the interlude's two cards — the Wave 33 pictures, the gui
   const card = view(nave);
   assert.equal(card.presentation.defId, CHURCH_REBUILDING_PETITION_ID);
   assert.deepEqual(card.presentation.art, { sheet: "wave33", id: "interlude_church_rebuilding" });
-  assert.ok(card.presentation.demand.includes(`${B.churchRebuildingCost}d`));
-  assert.match(card.options[0]!.line, new RegExp(`금고에서 ${B.churchRebuildingCost}d · 교회 유산 점수 \\+${B.score.church.rebuilt} · 관계 주교 \\+10$`));
+  assert.ok(card.presentation.demand.includes(moneyShort(B.churchRebuildingCost)));
+  assert.match(card.options[0]!.line, new RegExp(`금고에서 ${moneyShort(B.churchRebuildingCost)} · 교회 유산 점수 \\+${B.score.church.rebuilt} · 관계 주교 \\+10$`));
   assert.match(card.options[1]!.line, /증축을 미룹니다 · 돈은 들지 않음 · 관계 주교 −10$/);
   assert.equal(card.options[0]!.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(nave) }, { treasury: treasuryBalance(nave) - B.churchRebuildingCost }));
   for (const option of card.options) assert.doesNotMatch(option.line, LATIN);
@@ -106,7 +107,7 @@ test("UI-10 (LG-3): the heir's card — only the answers the record allows, each
     assert.ok(option.heir!.who.includes(`${candidate.age}살`), option.heir!.who);
     assert.ok(option.heir!.records.startsWith(`${candidate.birthYear}년생`) && option.heir!.records.endsWith(`원장 기록 ${candidate.records}건`), option.heir!.records);
     assert.ok(option.heir!.portraitId.length > 0);
-    assert.match(option.line, new RegExp(`상속세 ${B.relief[({ accept: "eldest_son", accept_with_price: "daughter_husband", refuse: "nephew" } as const)[option.choice]]}d`));
+    assert.match(option.line, new RegExp(`상속세 ${moneyShort(B.relief[({ accept: "eldest_son", accept_with_price: "daughter_husband", refuse: "nephew" } as const)[option.choice]])}`));
     assert.equal(option.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(heir) }, { treasury: legacyDecisionForecast(heir, HEIR_CHOICE_PETITION_ID, option.choice) }));
     for (const line of [option.line, option.heir!.who, option.heir!.lineage, option.heir!.resemblance, option.heir!.records]) assert.doesNotMatch(line, LATIN);
   }
@@ -135,7 +136,7 @@ test("UI-10 (LG-2): the charter's card — the rights, the fine, the fee farm, t
   assert.deepEqual(card.presentation.art, { sheet: "wave21", id: "ch5_decision_autonomy" });
   assert.deepEqual(card.options.map(option => option.choice), ["accept", "refuse"]);
   const [seal, refuse] = card.options;
-  assert.match(seal!.line, new RegExp(`특허값 ${B.charterFine}d을 냄 · 도시의 연납금 해마다 ${B.feeFarm}d · 영주가 국왕 확인금 ${B.confirmationFine}d을 냄`));
+  assert.match(seal!.line, new RegExp(`특허값 ${moneyObject(B.charterFine)} 냄 · 도시의 연납금 해마다 ${moneyShort(B.feeFarm)} · 영주가 국왕 확인금 ${moneyObject(B.confirmationFine)} 냄`));
   assert.match(seal!.line, /관계 도시 \+25 · 상인 \+15 · 백작 −15 · 국왕 \+5$/);
   assert.match(refuse!.line, /도시의 반발 \d+ · 연납금은 그대로 · 가문은 영주관에 남음 · 관계 도시 −25 · 상인 −15 · 평민 −5 · 백작 \+10$/);
   const backlash = Number(/도시의 반발 (\d+)/.exec(refuse!.line)![1]);
@@ -155,9 +156,9 @@ test("UI-10 (LG-5): the legacy's card — three answers, the endowment the treas
   assert.deepEqual(card.options.map(option => option.choice), ["accept", "accept_with_price", "refuse"]);
   const spent = Math.min(B.endowment, Math.max(0, treasuryBalance(legacy)));
   assert.deepEqual(card.options.map(option => option.line), [
-    `길드홀과 시청을 남깁니다 · 금고에서 ${spent}d · 도시 유산 점수 +${B.legacyPoints} · 관계 도시 +10`,
-    `영주관·문장·혈통 기록을 남깁니다 · 금고에서 ${spent}d · 가문 유산 점수 +${B.legacyPoints} · 관계 백작 +5`,
-    `교회 증축과 기도처를 남깁니다 · 금고에서 ${spent}d · 교회 유산 점수 +${B.legacyPoints} · 관계 주교 +15`,
+    `길드홀과 시청을 남깁니다 · 금고에서 ${moneyShort(spent)} · 도시 유산 점수 +${B.legacyPoints} · 관계 도시 +10`,
+    `영주관·문장·혈통 기록을 남깁니다 · 금고에서 ${moneyShort(spent)} · 가문 유산 점수 +${B.legacyPoints} · 관계 백작 +5`,
+    `교회 증축과 기도처를 남깁니다 · 금고에서 ${moneyShort(spent)} · 교회 유산 점수 +${B.legacyPoints} · 관계 주교 +15`,
   ]);
   for (const option of card.options) assert.equal(option.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(legacy) }, { treasury: legacyDecisionForecast(legacy, LEGACY_CHOICE_PETITION_ID, option.choice) }));
 });
