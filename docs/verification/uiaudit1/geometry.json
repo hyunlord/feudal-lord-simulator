@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-UIAUDIT-final-bda65e3",
- "commit": "bda65e3d694877991ddeadc59ed470b36f7eef19",
+ "run": "render-UIAUDIT-final2-9d58b0e",
+ "commit": "9d58b0eda4c9eb9fae66446bc1665fac2be911a0",
  "dirty": false,
  "inputs": 1660,
- "inputHash": "4231d17a6b6b9e6fee7918fdf2706a818758bf0db7b955e8e5cf5ca044c755d8",
- "measuredAt": "2026-09-30T18:26:00.532Z",
- "report": "docs/verification/uiaudit1/geometry/render-UIAUDIT-final-bda65e3/geometry.json",
+ "inputHash": "6b4348b0841f5c9919e38fa2c52e7ada867ead6e2e307ca06027c62a9fe81b7e",
+ "measuredAt": "2026-09-30T23:13:32.284Z",
+ "report": "docs/verification/uiaudit1/geometry/render-UIAUDIT-final2-9d58b0e/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -45,12 +45,12 @@
  },
  "unregisteredFramed": 0,
  "baseline": {
-  "entries": 24,
+  "entries": 0,
   "counted": 0,
   "excepted": 12,
   "exceptions": 1,
   "added": 0,
-  "fixed": 24
+  "fixed": 0
  },
  "bySurface": {
   "hud.status-pill": {
