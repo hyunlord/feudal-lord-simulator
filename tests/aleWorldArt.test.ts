@@ -12,6 +12,7 @@ import { historicalFacilityAssetId, historicalFacilitySpriteRect } from "../src/
 import { TILE_H, tileToScreen } from "../src/render/iso";
 import { residentWalkers } from "../src/render/presentation/residentTrips";
 import { millOvenBurning } from "../src/render/roofSmoke";
+import { buildingStockPiles } from "../src/render/stockPiles";
 import { brewingDoor } from "../src/render/villageLife";
 import { walkerAppearance } from "../src/render/walkerComposer";
 import { walkerSheet } from "../src/render/walkerLook";
@@ -94,6 +95,16 @@ test("piles: ale barrels by the slot's ale (cap 8), barley at a barn and malt at
   assert.deepEqual([1, 14, 27].map(malt => aleStockPile(building("malt_kiln", { inventory: { malt } }), 40)), ["malt_sacks_1", "malt_sacks_2", "malt_sacks_3"]);
   assert.equal(aleStockPile(building("malt_kiln", { inventory: { barley: 30 } }), 40), null, "the kiln's barley is not shown");
   assert.equal(aleStockPile(building("granary", { inventory: { malt: 30, barley: 30 } }), 200), null);
+});
+
+test("UI-10 (FIX-8): malt's sacks show at the storehouse, by its malt against the quarter of its room malt may take; the crates count the rest", () => {
+  assert.deepEqual([1, 17, 34].map(malt => aleStockPile(building("storehouse", { inventory: { malt } }), 200)), ["malt_sacks_1", "malt_sacks_2", "malt_sacks_3"]);
+  assert.equal(aleStockPile(building("storehouse", { inventory: { timber: 80 } }), 200), null);
+  const state = { houses: [] } as unknown as GameState;
+  const keys = (store: Building) => buildingStockPiles(state, store).map(pile => pile.key);
+  assert.deepEqual(keys(building("storehouse", { inventory: { malt: 40 } })), ["malt_sacks_3"], "malt alone: its sacks, no crates");
+  assert.deepEqual(keys(building("storehouse", { inventory: { malt: 40, timber: 10 } })), ["pile_crates_1", "malt_sacks_3"]);
+  assert.deepEqual(keys(building("granary", { inventory: { malt: 40, wheat: 10 } })), ["pile_sacks_1"], "a granary's old malt shows no sacks");
 });
 
 test("cart loads: barley, malt and ale ride as Wave 3's loads, by the cart's axis like Wave 7's", () => {
