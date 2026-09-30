@@ -23,6 +23,7 @@ import { appendFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSyn
 import { cpus, loadavg, tmpdir } from "node:os";
 import { holderText, takeMachineLock } from "./machineLock";
 import { otherCpuSeconds } from "./machineLoad";
+import { hidIdleSeconds } from "./scenePage";
 import { cancel, enqueue, queueStatus } from "./perfQueue";
 import { join } from "node:path";
 
@@ -150,6 +151,16 @@ async function main() {
       for (let i = 0; i < 60; i++) { if (await fetch(url).then(response => response.ok, () => false)) break; await new Promise(resolve => setTimeout(resolve, 1000)); }
       const minZoom = minZoomOf(sourceDir);
       for (const scene of scenes as readonly Scene[]) {
+        // Queued (scripts/perf/perfQueue.ts): before each scene, wait for a quiet Mac — no input for 60 s and other work
+        // at most 15 % of the cores for 20 s (up to 30 min) — so a busy moment delays a scene instead of voiding it.
+        if (process.env.FLS_PERF_QUEUED !== undefined) {
+          const until = Date.now() + 30 * 60_000;
+          for (;;) {
+            const before = otherCpuSeconds(); const at = Date.now(); await new Promise(done => setTimeout(done, 20_000));
+            const share = (otherCpuSeconds() - before) / (((Date.now() - at) / 1000) * cpus().length);
+            if (((hidIdleSeconds() ?? 0) >= 60 && share <= 0.15) || Date.now() > until) break;
+          }
+        }
         console.log(`== ${new Date().toTimeString().slice(0, 8)} ${scene.id} (${seconds} s)`);
         const steps = "zoom" in scene ? zoomSteps(scene.zoom, minZoom) : { out: 0, in: 0, zoom: null };
         // A zoom below the game's minimum is skipped, not a verdict: it is reported and waits for the game to allow it.

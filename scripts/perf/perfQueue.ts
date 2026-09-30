@@ -5,7 +5,7 @@
 //  - the game is built from a detached worktree of the job's commit (node_modules shared when package-lock.json is
 //    the same, else `npm ci`), with this checkout's gate scripts (scenes, checks) and scene save;
 //  - a run a person touched (the Mac's hardware input idle time at its end is shorter than the run) is no judgement,
-//    and so is a covered or undrawn window; a job that came out "판정 아님" goes back in the queue, three tries in all.
+//    and so is a covered or undrawn window; a job that came out "판정 아님" goes back in the queue, five tries in all; queued, each scene also waits for a quiet Mac first.
 // While the runner lives, `caffeinate -d -i` keeps the display awake (a slept or locked screen draws nothing).
 // Jobs, the runner's pid and its log: ~/.fls-perf-queue (FLS_PERF_QUEUE). Results: the gate's usual files in the
 // queuing checkout's docs/verification/perf-gate/ (commit them from there).
@@ -25,7 +25,7 @@ export interface Job {
   readonly args: readonly string[]; readonly idleMinutes: number; readonly queuedAt: string; readonly playwrightModule: string;
   status: "queued" | "running" | "done" | "no-judgement" | "cancelled"; attempts: number; results: { at: string; verdict: string; file: string | null; exit: number | null }[];
 }
-const MAX_ATTEMPTS = 3; const CPU_LIMIT = 0.15;
+const MAX_ATTEMPTS = 5; const CPU_LIMIT = 0.15;
 const log = (text: string) => { mkdirSync(QUEUE_DIR, { recursive: true }); appendFileSync(LOG, `${new Date().toISOString()} ${text}\n`); };
 const readJob = (file: string) => JSON.parse(readFileSync(join(JOBS, file), "utf8")) as Job;
 const writeJob = (job: Job) => writeFileSync(join(JOBS, `${job.id}.json`), `${JSON.stringify(job, null, 1)}\n`);
