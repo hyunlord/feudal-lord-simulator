@@ -3,6 +3,7 @@ import { buildingFootprint } from "../geometry/buildingFootprint";
 import { BUILDING_SPRITE_ALPHA } from "./buildingSpriteFit.generated";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { worldSpriteVariantImage } from "./buildingVariantAssets";
+import { shownGranaryImage } from "./wave32GranaryArt";
 import { getSpriteSource } from "./worldAssets";
 import { drawCroppedWorldSprite, drawWorldSprite, type WorldSpriteOptions } from "./worldSprite";
 
@@ -39,7 +40,8 @@ export function fittedBuildingSpriteRect(key: FittedSpriteKey, building: Pick<Bu
 
 /** A finished building's sprite: fitted keys stand on their footprint; any other key keeps its authored anchor. */
 export function drawBuildingSprite(context: CanvasRenderingContext2D, building: Building, spriteKey: string, spriteOptions: WorldSpriteOptions): boolean {
-  const variant = worldSpriteVariantImage(building, spriteKey);
+  // INSTALL-32: a granary draws its Wave 32 painting in the barn's frame and fit (null: barn.png).
+  const variant = shownGranaryImage(building) ?? worldSpriteVariantImage(building, spriteKey);
   if (!isFittedSpriteKey(spriteKey)) return drawWorldSprite(context, spriteKey, building.tx, building.ty, { ...spriteOptions, image: variant });
   const image = variant ?? getSpriteSource(spriteKey);
   if (image === null) return false;
