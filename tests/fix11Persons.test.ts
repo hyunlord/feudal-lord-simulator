@@ -203,3 +203,17 @@ test("FIX-11 item 2: someone who left town ages out on the same table (was never
   const young = { ...state, persons: { people: [], past: gone.map(person => ({ ...person, birthYear: 1280 })), nextOrdinal: 41 } };
   assert.ok((advancePersons(young).persons?.past ?? []).filter(person => !person.alive).length <= 2);
 });
+
+test("FIX-11 item 2: a widowed head of 60 or more takes no new spouse of their own age (a 100-year-old took a bride of 100)", () => {
+  const house = (id: string) => ({ buildingId: id, level: 1, builtLevel: 1, residents: 3, hasWater: true, breadStock: 5, lastServicedTick: 0,
+    unmetRequirementTicks: 0, members: { adults: 3, children: 0, seed: 7 } });
+  const widower = (id: string, household: string, birthYear: number) => makePerson({ id, householdId: household, birthYear, role: "head" });
+  const state: GameState = { ...DEFAULT_GAME_STATE, tick: 1_000, houses: [house("house-old"), house("house-young")], population: 6,
+    persons: { people: [widower("p-1", "house-old", 1300 - 95), widower("p-2", "house-young", 1300 - 40)], past: [], nextOrdinal: 3 } };
+  const after = advancePersons(state);
+  const spouses = (household: string) => (after.persons?.people ?? []).filter(person => person.householdId === household && person.role === "spouse");
+  assert.equal(spouses("house-old").length, 0, "no bride for the 95-year-old");
+  assert.equal(spouses("house-young").length, 1, "the 40-year-old marries again");
+  const year = 1300;
+  for (const person of after.persons?.people ?? []) assert.ok(year - person.birthYear < 100 || person.id === "p-1", `${person.id} ${year - person.birthYear}`);
+});

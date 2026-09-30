@@ -44,6 +44,8 @@ export const ADULT_AGE = 14;
 export const HEIR_AGE = 12;
 const YOUTH_END = 29;
 const ELDER_AGE = 55;
+/** FIX-11 (FX11-2): the age from which a head without a spouse no longer takes one. */
+const REMARRY_MAX_AGE = 60;
 
 /** PS-3: yearly death rate by age, permille (a medieval village; dearth and famine weigh it). */
 // FIX-11 (item 2): the tail past 85 — at 200‰ a year from 75 on, one in two hundred lived past 100, and a town of
@@ -319,7 +321,9 @@ class Town {
       return;
     }
     const spouse = members.find(person => person.role === "spouse");
-    if (spouse === undefined && ageOf(head, this.year) >= 16) {
+    // FIX-11 (FX11-2): a widowed head under 60 marries again; the new spouse is of the head's age, so an older head no
+    // longer takes one (a 100-year-old widower took a bride of 100, again at each death — QA-010's 109 and 115).
+    if (spouse === undefined && ageOf(head, this.year) >= 16 && ageOf(head, this.year) < REMARRY_MAX_AGE) {
       const sex: PersonSex = head.sex === "male" ? "female" : "male";
       this.create({ sex, birthYear: head.birthYear + ((roll >>> 3) % 9) - 2 + (sex === "female" ? 2 : -2), householdId, role: "spouse", ...(head.surname === undefined ? {} : { surname: head.surname }) });
       return;
