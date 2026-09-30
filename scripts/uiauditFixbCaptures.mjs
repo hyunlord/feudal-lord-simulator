@@ -2,7 +2,8 @@
 // (src/ui/surfaces.registry.ts chains), measured with its checks (scripts/uiGeometryMeasure.ts) and captured, on this
 // build and on the base build beside it. The book is measured page by page (the audit's row stops at its title page).
 // Each surface is measured twice: `audit` is the audit's own reading; `box` reads the root's content box
-// (border = the frame's safe inset, padding = the gap: the frame token contract) instead of the frame layer's widths.
+// (border = the frame's safe inset, padding = the gap: the frame token contract) instead of the frame layer's widths,
+// with the registry changes asked of the lead (ASKED).
 //   PLAYWRIGHT_MODULE=… node_modules/.bin/tsx scripts/uiauditFixbCaptures.mjs <out> --url <this> [--base <base>] --states5 <dir> --states9 <dir> --states10 <dir>
 // On the DGX through scripts/uiauditFixbVerification.sh. Writes <out>/<build>-<name>.jpg (the listed captures) and
 // <out>/measures.json.
@@ -48,17 +49,26 @@ async function runStep(page, state, step) {
 
 const specOf = row => ({ root: row.root, frame: row.frame, gap: FRAME_GAP_PX, frameLayer: row.frameLayer, contentSlot: row.contentSlot, frameSlots: row.frameSlots,
   scroll: row.scroll, scrollParts: row.scrollParts, painting: row.painting, portraitRing: row.portraitRing, siblingsNoOverlap: row.siblingsNoOverlap });
-/** The content-box reading: a layer surface measured by its root's border and padding alone. */
-const boxSpec = spec => spec.frame === 'layer' ? { ...spec, frame: 'flat', frameLayer: undefined, contentSlot: undefined } : spec;
+/** The registry changes asked of the lead (designed scrollers, the snapshot's framed box, the ring's portrait). */
+const ASKED = {
+  'modal.history.faction-page': { scrollParts: ['.chronicle-faction-box > ul', '.chronicle-faction-pressure-body'] },
+  'modal.history.factions': { scrollParts: ['.chronicle-world-strip'] },
+  'modal.chronicle-book': { scrollParts: ['.legacy-book-page'] }, 'modal.legacy-ending': { scrollParts: ['.legacy-ending-scroll'] },
+  'modal.history.snapshot-map': { root: '.chronicle-map-box' }, 'modal.history.record-card': { frameSlots: ['.chronicle-card-art--portrait'] },
+};
+/** The content-box reading: a layer surface measured by its root's border and padding alone (the layer still excluded),
+ * with the asked registry changes. */
+const boxSpec = (spec, id) => ({ ...(spec.frame === 'layer' ? { ...spec, frame: 'flat', contentSlot: undefined } : spec), ...ASKED[id] });
 const brief = evaluation => ({ total: evaluation.failures.length, counts: Object.fromEntries(Object.entries(evaluation.counts).filter(([, count]) => count > 0)),
-  first: evaluation.failures.slice(0, 8).map(failure => `${failure.check}: ${failure.what} — ${failure.path} ${failure.px}px`) });
+  first: evaluation.failures.slice(0, 12).map(failure => `${failure.check}: ${failure.what} — ${failure.path} ${failure.px}px`) });
 
 async function measure(page, row, name, shot) {
+  const asked = boxSpec(specOf(row), row.id);
   const spec = specOf(row);
   const collected = await page.evaluate(collectSurface, spec);
   if (!collected.found) return { name, found: false };
   const audit = brief(evaluateSurface(collected, spec));
-  const box = brief(evaluateSurface(await page.evaluate(collectSurface, boxSpec(spec)), boxSpec(spec)));
+  const box = brief(evaluateSurface(await page.evaluate(collectSurface, asked), asked));
   if (shot !== null) {
     const rect = collected.root.rect; const view = collected.viewport;
     const clip = { x: Math.max(0, rect.l - 8), y: Math.max(0, rect.t - 8) };

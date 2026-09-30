@@ -23,7 +23,7 @@ export function DecisionCompareFrame({ view, scale }: { readonly view: DecisionC
     <section className="chronicle-decision" data-frame="decision" aria-label={view.heading} data-decision={view.id}
       style={{ width: DECISION_FRAME.width * scale, height: DECISION_FRAME.height * scale, ...frameBoxStyle("decision", scale) }}>
       <span className="chronicle-decision-frame" aria-hidden="true" style={wave19FrameLayerStyle("frame_decision_compare", scale)} />
-      <div className="chronicle-decision-art" style={frameArtSpaceStyle("decision", scale)}>
+      <div className="chronicle-decision-space" style={frameArtSpaceStyle("decision", scale)}>
       <div className="chronicle-decision-column" style={column(0)}>
         <h4 style={heading}>{COPY.chosenHeading}</h4>
         <ChronicleArtView art={view.art} size={Math.round(64 * scale)} className="chronicle-decision-art" />
