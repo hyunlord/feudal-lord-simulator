@@ -32,6 +32,6 @@ case "$what" in
     npx tsx scripts/measureHudCoverage.ts "$out/hud-coverage-after.json" --url "$URL" > .remote/hud-after.log 2>&1; echo "after exit $?"
     npx tsx scripts/measureHudCoverage.ts "$out/hud-coverage-before.json" --url "$BASE_URL" > .remote/hud-before.log 2>&1; echo "before exit $?"
     ;;
-  shots) node scripts/uiauditFixaCaptures.mjs "$out" --url "$URL" --base "$BASE_URL" --states "${UI5_STATES:-$HOME/fls-ui5-states-v22}" ;;
+  shots) node scripts/uiauditFixaCaptures.mjs "$out" --url "$URL" --base "$BASE_URL" --states "${UI5_STATES:-$HOME/fls-ui5-states-v22}" --states9 "$HOME/fls-ui9-states" ;;
   *) echo "unknown: $what"; exit 2 ;;
 esac
