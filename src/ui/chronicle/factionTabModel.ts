@@ -85,10 +85,11 @@ export function factionRows(state: GameState): readonly FactionRow[] {
   });
 }
 
-function timelineLine(state: GameState, entry: FactionTimelineEntry): string {
+function timelineLine(state: GameState, factionId: FactionId, entry: FactionTimelineEntry): string {
   if (entry.kind === "world") return WORLD_EVENT_LINES[entry.id] ?? "";
   if (entry.kind === "affair") return FACTION_AFFAIR_LINES[entry.id] ?? "";
-  const line = FACTION_LEADER_LINES[entry.id] ?? "";
+  // UI-10: the Crown's head is the king of the calendar — not "died" when he was deposed (Richard II, 1399).
+  const line = (factionId === "crown" && entry.id === "succeeded" ? FACTION_LEADER_LINES.crown_succeeded : FACTION_LEADER_LINES[entry.id]) ?? "";
   const person = entry.personId === undefined ? undefined : personById(state, entry.personId);
   return person === undefined ? line : COPY.timelineLeader(line, personDisplayName(person));
 }
@@ -120,7 +121,7 @@ export function factionPageView(state: GameState, id: FactionId): FactionPageVie
     }),
     memory: [...chronicle.records].reverse().map(record => ({ recordId: record.id, tick: record.tick, date: chronicleDate(state, record.tick), line: history.summary(record) })),
     timeline: [...chronicle.timeline].reverse().map((entry, index) => ({ key: `${entry.tick}:${entry.kind}:${entry.id}:${index}`, date: COPY.timelineYear(entry.year),
-      line: timelineLine(state, entry) })).filter(entry => entry.line !== ""),
+      line: timelineLine(state, faction.id, entry) })).filter(entry => entry.line !== ""),
     revoltPressure,
   };
 }

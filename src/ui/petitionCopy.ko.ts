@@ -3,6 +3,8 @@ import { pence } from "./hud/hudCopy.ko";
 // UI-6: what each petition asks and what each answer does, by the petition's defId (F2-A WR-2…WR-8, FAIL-3 FL-6). The
 // answers' labels are the ledger's own (historyCopy `WAR_CHOICES`); the numbers come from the rules (war.ts).
 const percent = (permille: number) => `${Math.round(permille / 10)} %`;
+/** The particle after a Korean word: the first form after a final consonant (받침), the second after a vowel. */
+const josa = (word: string, withFinal: string, without: string) => { const code = word.charCodeAt(word.length - 1) - 0xac00; return code >= 0 && code <= 11171 && code % 28 !== 0 ? withFinal : without; };
 export const PETITION_COPY = {
   restore_right: {
     title: "권리 복원 청원",
@@ -110,9 +112,74 @@ export const PETITION_COPY = {
     accept: (feeFarm: number, relations: string) => `일부 허용합니다 · 시장 좌판세 도시로 · 통행세 절반 도시로 · 도시가 해마다 봄에 ${pence(feeFarm)} · ${relations}`,
     refuse: (relations: string) => `거부합니다 · 권리는 그대로 · 5장에 도시의 반발 · ${relations}`,
   },
-  /** The relations an answer moves, short names (`REORGANISATION_RELATIONS`); the earl's line after his warning. */
+  // UI-10 (F5-A LG-2…LG-6): chapter 5's four cards; each answer's sums and relations are the engine's (`LEGACY_BALANCE`, `LEGACY_RELATIONS`).
+  royal_tax: {
+    title: "국왕의 과세 요구",
+    demand: (share: number, due: number, min: number, max: number) =>
+      `국왕의 과세 사절이 15분의 1·10분의 1세를 요구합니다: 금고의 ${percent(share)}, 지금이면 ${pence(due)}(적어도 ${pence(min)}, 많아야 ${pence(max)}).`,
+    accept: (due: number, relations: string) => `과세를 냅니다 · 금고에서 ${pence(due)} · ${relations}`,
+    refuse: (confirmation: number, relations: string) => `감면을 청원합니다 · 지금은 내지 않음 · 나중에 자치 특허를 내주면 국왕 확인금 ${pence(confirmation)} · ${relations}`,
+  },
+  heir_choice: {
+    title: "늙은 영주의 후계자",
+    demand: (lord: string, age: number) => lord === ""
+      ? "늙은 영주의 뒤를 이을 사람을 정해야 합니다. 상위 영주가 상속세를 받고 후계자를 인정합니다. 늙은 영주와 그 배우자는 가족으로 남습니다."
+      : `늙은 영주 ${lord}(${age}살)의 뒤를 이을 사람을 정해야 합니다. 상위 영주가 상속세를 받고 후계자를 인정합니다. 늙은 영주와 그 배우자는 가족으로 남습니다.`,
+    accept: (relief: number, relations: string) => `맏아들이 영주관의 가장이 됩니다 · 상위 영주에게 상속세 ${pence(relief)} · ${relations}`,
+    accept_with_price: (relief: number, relations: string) => `딸의 남편이 가장이 되고 딸이 영주관으로 돌아옵니다 · 상속세 ${pence(relief)} · 고르지 않은 새 후보는 떠남 · ${relations}`,
+    refuse: (kinsman: boolean, relief: number, relations: string) =>
+      `${kinsman ? "가문의 먼 친척이" : "조카가"} 가장이 됩니다 · 상속세 ${pence(relief)} · 고르지 않은 새 후보는 떠남 · ${relations}`,
+    /** The answer's label when the nephew's place is a distant kinsman's (LG-3: the lord has no brother or sister). */
+    kinsmanLabel: "먼 친척에게 잇게 한다",
+  },
+  borough_autonomy: {
+    title: "자치 특허의 인장",
+    demand: (mayor: string) => mayor === ""
+      ? "도시가 제 인장을 새기고 자치 특허에 찍어 달라고 청합니다. 시장을 뽑는 권리와 도시 인장을 도시에 넘기는 특허입니다."
+      : `도시가 제 인장을 새기고 자치 특허에 찍어 달라고 청합니다. 시장을 뽑는 권리와 도시 인장을 도시에 넘기는 특허입니다. 시장 후보는 ${mayor}입니다.`,
+    accept: (sums: { readonly fine: number; readonly feeFarm: number; readonly confirmation: number; readonly tolls: boolean }, relations: string) =>
+      `특허에 인장을 찍습니다 · 시장 선출권·도시 인장이 도시로${sums.tolls ? " · 좌판세와 통행세 절반도 도시로" : ""} · 도시가 특허값 ${pence(sums.fine)}을 냄`
+      + ` · 도시의 연납금 해마다 ${pence(sums.feeFarm)}${sums.confirmation > 0 ? ` · 영주가 국왕 확인금 ${pence(sums.confirmation)}을 냄` : ""} · 가문은 영주관을 떠남 · 도시의 반발 0 · ${relations}`,
+    refuse: (backlash: number, relations: string) => `가문이 계속 다스립니다 · 도시의 반발 ${backlash} · 연납금은 그대로 · 가문은 영주관에 남음 · ${relations}`,
+  },
+  legacy_choice: {
+    title: "남길 유산 하나",
+    demand: (endowment: number) => `영주가 도시에 무엇을 남길지 정할 때입니다. 금고에서 ${pence(endowment)}(모자라면 있는 만큼)을 하나에 씁니다.`,
+    /** LG-5: the legacy (`LEGACY_AXIS_COPY`), what it costs now, the axis it adds to. */
+    line: (legacy: string, spent: number, axis: string, points: number, relations: string) =>
+      `${legacy}${josa(legacy, "을", "를")} 남깁니다 · 금고에서 ${pence(spent)} · ${axis} 유산 점수 +${points} · ${relations}`,
+  },
+  // UI-10 (FIX-9 LG-13): the interlude's two petitions, the Wave 33 illustrations.
+  guild_dispute: {
+    title: "길드와 상인의 다툼",
+    demand: "길드와 첫 상인 가문이 직물을 파는 권리를 두고 다툽니다. 직인들이 영주에게 길드 편을 들어 달라고 청합니다.",
+    accept: (relations: string) => `길드 편을 듭니다 · 돈은 들지 않음 · ${relations}`,
+    refuse: (relations: string) => `상인 편을 듭니다 · 돈은 들지 않음 · ${relations}`,
+  },
+  church_rebuilding: {
+    title: "교회 증축 청원",
+    demand: (cost: number) => `교구가 낡은 교회에 새 회중석을 지어 달라고 청합니다. 증축에 ${pence(cost)}이 듭니다.`,
+    accept: (cost: number, points: number, relations: string) => `교회를 넓혀 짓습니다 · 금고에서 ${pence(cost)} · 교회 유산 점수 +${points} · ${relations}`,
+    refuse: (relations: string) => `증축을 미룹니다 · 돈은 들지 않음 · ${relations}`,
+  },
+  /** UI-10 (LG-3): an heir candidate on the heir's card — who, through whom, what of the old lord they have, their records. */
+  heir: {
+    who: (relation: string, age: string) => `${relation} · ${age}`,
+    son: "늙은 영주의 아들",
+    daughter: "늙은 영주의 딸",
+    husband: (daughter: string) => daughter === "" ? "늙은 영주의 딸의 남편" : `늙은 영주의 딸 ${daughter}의 남편`,
+    nephew: (parent: string, sister: boolean) => parent === "" ? "늙은 영주의 형제자매의 아들" : `늙은 영주의 ${sister ? "자매" : "형제"} ${parent}의 아들`,
+    kinsman: "가문의 먼 친척",
+    resemblance: (parts: readonly string[]) => parts.length === 0 ? "늙은 영주와 닮은 데가 없습니다" : `닮은 점: 늙은 영주의 ${parts.join(", ")}`,
+    /** The same pool face as the old lord (`portraitIdentity`). */
+    face: "얼굴 생김",
+    records: (born: number, left: number | null, records: number, newcomer: boolean) =>
+      [`${born}년생`, ...(left === null ? [] : [`${left}년 영주관을 떠남`]), ...(newcomer ? ["이번에 영지에 옴"] : []), `원장 기록 ${records}건`].join(" · "),
+    heading: "후보",
+  },
+  /** The relations an answer moves, short names (`REORGANISATION_RELATIONS`, `LEGACY_RELATIONS`); the earl's line after his warning. */
   relations: (moves: readonly (readonly [who: string, delta: number])[]) => `관계 ${moves.map(([who, delta]) => `${who} ${delta > 0 ? "+" : "−"}${Math.abs(delta)}`).join(" · ")}`,
-  relationNames: { town: "도시", merchant_house_1: "상인", overlord: "백작", crown: "국왕", commons: "평민" } as Readonly<Record<string, string>>,
+  relationNames: { town: "도시", merchant_house_1: "상인", overlord: "백작", crown: "국왕", commons: "평민", bishop: "주교", neighbour_1: "이웃 영주" } as Readonly<Record<string, string>>,
   /** The Crown's writ (its hanging seal carries the Crown's arms); the petitioner line for every card. */
   writ: "국왕의 칙서",
   senderHeading: "보낸 사람",
