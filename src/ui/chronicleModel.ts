@@ -4,6 +4,7 @@ import { history } from "../engine/history";
 import type { HistoryRecord } from "../engine/history.types";
 import type { ChapterEnd } from "../engine/politics.types";
 import { chapterEnd } from "../engine/politics";
+import { currentYear } from "../engine/persons";
 import { CHRONICLE_COPY } from "./chronicleCopy.ko";
 import type { StoryIllustration } from "./storyArt";
 import { chapterIntro } from "./wave31Art";
@@ -94,6 +95,15 @@ export function chronicleIllustration(record: Pick<HistoryRecord, "template" | "
 /** UI-6: the chapter the town finished last (chapter 1's end, then chapter 2's …). */
 export function latestChapterEnd(state: Pick<GameState, "politics">): ChapterEnd | null {
   return state.politics?.chapterEnds.at(-1) ?? chapterEnd(state);
+}
+
+/**
+ * UI-10: the year a chapter began — the engine starts each chapter at the tick the one before it ended
+ * (`endChapterTwo` …, `chapterEnd`), read as its calendar year (`currentYear`); null before that end.
+ */
+export function chapterStartYear(state: Pick<GameState, "politics" | "scenarioId" | "tick">, chapter: number): number | null {
+  const previous = chapterEnd(state, chapter - 1);
+  return previous === null ? null : currentYear({ ...state, tick: previous.tick });
 }
 
 export function chronicleView(state: GameState): ChronicleView | null {
