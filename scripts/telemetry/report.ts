@@ -49,7 +49,7 @@ function main() {
   const groups = new Map<string, any[]>();
   for (const sample of samples) { const c = conditions(sample); const key = by.map(name => c[name] ?? "?").join(" · "); (groups.get(key) ?? groups.set(key, []).get(key)!).push(sample); }
   const lines = [`# 텔레메트리 — 지난 ${days}일, 창 ${samples.length}개(10초 단위), 조건별`, "", `나눈 기준: ${by.join(", ")} · 자료 ${DIR}`, "",
-    "| 조건 | 창 | 분 | 프레임 | p50 | p95 | p99 | 최대 ms | 33 ms 초과/분 | 50 ms 초과/분 | GC/분 | 캔버스+비트맵/분 | 계절·저장 |", "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|"];
+    "| 조건 | 창 | 분 | 프레임 | p50 | p95 | p99 | 최대 ms | 33 ms 초과/분 | 50 ms 초과/분 | GC/분 | 캔버스+비트맵/분 | 계절·저장 | 텔레메트리 자기 시간 ms/s |", "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|"];
   const functions = new Map<string, Map<string, { ms: number; count: number }>>();
   for (const [key, list] of [...groups].sort((a, b) => b[1].length - a[1].length)) {
     const histogram = BUCKETS.map((_, i) => list.reduce((sum, sample) => sum + (sample.window?.histogram?.[i] ?? 0), 0));
@@ -57,7 +57,7 @@ function main() {
     const sum = (read: (sample: any) => number) => list.reduce((total, sample) => total + (read(sample) || 0), 0);
     const frames = sum(sample => sample.window?.frames); const max = Math.max(0, ...list.map(sample => sample.window?.max ?? 0));
     const perMin = (value: number) => minutes === 0 ? "-" : String(Math.round((value / minutes) * 10) / 10);
-    lines.push(`| ${key} | ${list.length} | ${Math.round(minutes * 10) / 10} | ${frames} | ≤${histogramPercentile(histogram, 0.5)} | ≤${histogramPercentile(histogram, 0.95)} | ≤${histogramPercentile(histogram, 0.99)} | ${Math.round(max)} | ${perMin(sum(sample => sample.window?.over33))} | ${perMin(sum(sample => sample.window?.over50))} | ${perMin(sum(sample => sample.window?.heap?.gcs))} | ${perMin(sum(sample => (sample.window?.made?.canvas ?? 0) + (sample.window?.made?.offscreen ?? 0) + (sample.window?.made?.bitmap ?? 0)))} | ${sum(sample => sample.window?.moments?.season)}·${sum(sample => sample.window?.moments?.autosave)} |`);
+    lines.push(`| ${key} | ${list.length} | ${Math.round(minutes * 10) / 10} | ${frames} | ≤${histogramPercentile(histogram, 0.5)} | ≤${histogramPercentile(histogram, 0.95)} | ≤${histogramPercentile(histogram, 0.99)} | ${Math.round(max)} | ${perMin(sum(sample => sample.window?.over33))} | ${perMin(sum(sample => sample.window?.over50))} | ${perMin(sum(sample => sample.window?.heap?.gcs))} | ${perMin(sum(sample => (sample.window?.made?.canvas ?? 0) + (sample.window?.made?.offscreen ?? 0) + (sample.window?.made?.bitmap ?? 0)))} | ${sum(sample => sample.window?.moments?.season)}·${sum(sample => sample.window?.moments?.autosave)} | ${minutes === 0 ? "-" : Math.round(sum(sample => sample.window?.selfMs) / (minutes * 60) * 100) / 100} |`);
     const table = functions.get(key) ?? new Map(); functions.set(key, table);
     for (const sample of list) for (const frame of sample.window?.longFrames ?? []) for (const script of frame.scripts ?? []) {
       const name = `${script.fn || "(익명)"} ${script.url || ""}`.trim(); const entry = table.get(name) ?? { ms: 0, count: 0 }; entry.ms += script.ms; entry.count += 1; table.set(name, entry);

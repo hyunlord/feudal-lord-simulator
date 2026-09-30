@@ -11,20 +11,23 @@
   const session = Math.random().toString(36).slice(2, 10);
   const fresh = () => ({ start: performance.now(), histogram: BUCKETS.map(() => 0), frames: 0, sum: 0, max: 0, over33: 0, over50: 0,
     longFrames: [], heap: { first: null, last: null, rises: 0, falls: 0, gcs: 0, max: 0 }, made: { canvas: 0, offscreen: 0, bitmap: 0, getImageData: 0 },
-    moments: { season: 0, autosave: 0, dialog: 0 }, events: {}, hidden: 0, blurred: 0, speeds: {}, marks: [] });
+    moments: { season: 0, autosave: 0, dialog: 0 }, events: {}, selfMs: 0, hidden: 0, blurred: 0, speeds: {}, marks: [] });
   let win = fresh(); let last = null;
   window.__flsTelemetry = { session, current: () => win };
   // The render session's hooks (docs/requests/render-telemetry-hooks.md): named events such as a cache rebuild
   // (`globalThis.__flsTelemetryEvent?.("groundChunk.rebuild")`) and the camera zoom (`window.__FLS_TELEMETRY_ZOOM__`).
   window.__flsTelemetryEvent = (name) => { win.events[name] = (win.events[name] ?? 0) + 1; };
 
+  // Its own cost, measured: every handler below adds its time to selfMs (sent per window; the report shows ms/s).
+  const now = () => performance.now();
   const frame = (t) => {
+    const t0 = now();
     if (last !== null && document.visibilityState === "visible") {
       const interval = t - last; win.frames += 1; win.sum += interval; if (interval > win.max) win.max = interval;
       let i = 0; while (interval >= BUCKETS[i]) i += 1; win.histogram[i] += 1;
       if (interval > 33) win.over33 += 1; if (interval > 50) win.over50 += 1;
     }
-    last = t; requestAnimationFrame(frame);
+    last = t; requestAnimationFrame(frame); win.selfMs += now() - t0;
   };
   requestAnimationFrame(frame);
   document.addEventListener("visibilitychange", () => { last = null; if (document.visibilityState === "hidden") win.hidden += 1; });
@@ -46,10 +49,10 @@
 
   // The JS heap once a second: rises are allocation, a fall of 1 MB or more a GC (performance.memory, Chrome).
   setInterval(() => {
-    const used = performance.memory?.usedJSHeapSize; if (typeof used !== "number") return;
+    const t0 = now(); const used = performance.memory?.usedJSHeapSize; if (typeof used !== "number") return;
     const heap = win.heap; if (heap.first === null) heap.first = used;
     if (heap.last !== null) { const change = used - heap.last; if (change > 0) heap.rises += change; else if (change < -1e6) { heap.falls -= change; heap.gcs += 1; } }
-    heap.last = used; if (used > heap.max) heap.max = used;
+    heap.last = used; if (used > heap.max) heap.max = used; win.selfMs += now() - t0;
   }, 1000);
 
   // Pixel owners made (a cache rebuilding makes them again) and pixel reads.
@@ -76,17 +79,17 @@
     return { date: cells[0] ?? null, population: cells[1] ?? null, speed: pressed ? pressed.getAttribute("aria-label") : null };
   };
   setInterval(() => {
-    const state = hud(); if (state.speed) win.speeds[state.speed] = (win.speeds[state.speed] ?? 0) + 1;
+    const t0 = now(); const state = hud(); if (state.speed) win.speeds[state.speed] = (win.speeds[state.speed] ?? 0) + 1;
     const word = /봄|여름|가을|겨울/.exec(state.date ?? "")?.[0] ?? null;
     if (word !== null && season !== null && word !== season) { win.moments.season += 1; win.marks.push({ kind: "season", at: Math.round(performance.now() - win.start) }); }
-    if (word !== null) season = word;
+    if (word !== null) season = word; win.selfMs += now() - t0;
   }, 500);
   new MutationObserver((records) => { for (const record of records) for (const node of record.addedNodes)
     if (node.nodeType === 1 && (node.matches?.('[role="dialog"]') || node.querySelector?.('[role="dialog"]'))) win.moments.dialog += 1; })
     .observe(document.documentElement, { childList: true, subtree: true });
 
   const send = () => {
-    const ended = win; win = fresh();
+    const t0 = now(); const ended = win; win = fresh();
     if (ended.frames === 0 && ended.longFrames.length === 0) return;
     const state = hud();
     const body = JSON.stringify({ session, page: location.pathname + location.search, sent: Date.now(), seconds: Math.round((performance.now() - ended.start) / 100) / 10,
@@ -94,6 +97,7 @@
       env: { visible: document.visibilityState === "visible", focus: document.hasFocus(), dpr: devicePixelRatio, width: innerWidth, height: innerHeight,
         date: state.date, population: state.population, speed: state.speed, zoom: window.__FLS_TELEMETRY_ZOOM__?.() ?? null } });
     try { fetch(ENDPOINT, { method: "POST", body, keepalive: true, headers: { "content-type": "application/json" } }).catch(() => {}); } catch { /* never in the game's way */ }
+    win.selfMs += now() - t0;   // the send's own time lands in the next window
   };
   setInterval(send, 10_000);
   addEventListener("pagehide", send);
