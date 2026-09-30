@@ -3,7 +3,7 @@ import { EmblemImage } from "../heraldry/EmblemImage";
 import { portraitStyle } from "../portraitArt";
 import { UiIcon } from "../UiIcon";
 import { WAVE14_IMAGES } from "../wave14ArtManifest.generated";
-import { frameArtSpaceStyle, frameBoxStyle, frameSafe } from "../frameBox";
+import { frameBoxStyle, frameSafe } from "../frameBox";
 import { FRAME_GAP } from "../frameTokens.generated";
 import { assetUrlForBase } from "../../render/worldAssets";
 import type { PersonCardView, PersonRow } from "./personModels";
@@ -23,8 +23,8 @@ import { usePresentationPreference } from "../../render/PresentationToggle";
 // ornament is not clipped by the round face — and a death draws the face greyscale; the state is also in words (the
 // chip's line and button name, the card's line), so the small ornament is never the only sign.
 // UI-AUDIT-1: the card's border is the painting's safe inset (frame kind `person-card`, its padding the gap) at the
-// card's own scale; the text and the buttons are rows in that content box, and the painting (a 9-slice that grows down),
-// the portrait and the shield's cover stay in the art's own coordinates on a layer over the border box.
+// card's own scale; the text and the buttons are rows in that content box, the portrait sits on the printed ring, and the
+// painting (a 9-slice that grows down, with the shield's cover) is a layer under the card.
 const FADE_MS = 600;
 const CARD = WAVE14_IMAGES.frame_person_card;
 /** UI-7b: the card's printed shield with its fleurons (x 260–304, y 23–75), covered inside the inner rule (y 20–22 and
@@ -136,25 +136,30 @@ export function PersonCardModal({ view, onClose, onBiography }: { readonly view:
   const ornamentAt = face / 2 + art(CARD_ORNAMENT.far - CARD_ORNAMENT.size);
   const { top, right, bottom, left } = CARD_SLICE;
   const sliceWidth = `${art(top)}px ${art(right)}px ${art(bottom)}px ${art(left)}px`;
-  // why: the painting's 9-slice is handed to the art layer's ::before as custom properties (React has no type for them)
-  const artLayer = { ...frameArtSpaceStyle("person-card", scale), "--person-card-art": `url("${cardUrl}") ${top} ${right} ${bottom} ${left} fill / ${sliceWidth} / 0 stretch`,
-    "--person-card-art-width": sliceWidth } as CSSProperties;
+  /** The painting's layer: the art as its own 9-slice (drawn over its border box, which the stage makes the card's). */
+  const painting: CSSProperties = { borderStyle: "solid", borderColor: "transparent", borderWidth: sliceWidth,
+    borderImage: `url("${cardUrl}") ${top} ${right} ${bottom} ${left} fill / ${sliceWidth} / 0 stretch` };
+  /** The shield's cover in the art's coordinates, placed from the layer's padding box (inside its slice-wide border). */
+  const cover: CSSProperties = { ...artPatchStyle(cardUrl, CARD.width, CARD.height, scale, CARD_SHIELD, CARD_BLANK),
+    left: art(CARD_SHIELD.x - left), top: art(CARD_SHIELD.y - top) };
   return (
     <div className="person-card-backdrop" role="presentation">
+      {/* The painting is the card's sibling under it, as large as the card (the stage's one cell): the card keeps no
+          art of its own, so its frame is its border. */}
+      <div className="person-card-stage">
+        <div className="person-card-painting" aria-hidden="true" style={painting}>
+          {/* UI-7b: the printed shield is covered with the card's own blank parchment; the arms or mark, when there are
+              any, sit in the text column's corner inside the content box. */}
+          <span className="person-card-emblem-cover" data-emblem-kind={view.emblem === null ? "none" : undefined} style={cover} />
+        </div>
       <section className="person-card" data-frame="person-card" role="dialog" aria-modal="true" aria-label={PERSONS_COPY.cardTitle(view.name)} data-person={view.id}
         data-portrait={view.portraitId} data-portrait-exact={view.exact ? "true" : "false"}
         style={{ ...frameBoxStyle("person-card", scale), width: art(CARD.width), minHeight: art(CARD.height),
           gridTemplateColumns: `${art(CARD_TEXT_LEFT) - safe.left - FRAME_GAP}px minmax(0, 1fr)` }}>
-        <div className="person-card-art" style={artLayer}>
-          <span className="person-card-portrait" style={{ left: art(CARD_RING.x) - face / 2, top: art(CARD_RING.y) - face / 2, width: face, height: face }}>
-            <PersonPortrait portraitId={view.portraitId} size={face} ornament={view.ornament}
-              ornamentBox={{ left: ornamentAt, top: ornamentAt, width: art(CARD_ORNAMENT.size), height: art(CARD_ORNAMENT.size) }} />
-          </span>
-          {/* UI-7b: the printed shield is covered with the card's own blank parchment; the arms or mark, when there are any,
-              sit in the text column's corner inside the content box. */}
-          <span className="person-card-emblem-cover" aria-hidden="true" data-emblem-kind={view.emblem === null ? "none" : undefined}
-            style={artPatchStyle(cardUrl, CARD.width, CARD.height, scale, CARD_SHIELD, CARD_BLANK)} />
-        </div>
+        <span className="person-card-portrait" style={{ left: art(CARD_RING.x) - face / 2 - safe.left, top: art(CARD_RING.y) - face / 2 - safe.top, width: face, height: face }}>
+          <PersonPortrait portraitId={view.portraitId} size={face} ornament={view.ornament}
+            ornamentBox={{ left: ornamentAt, top: ornamentAt, width: art(CARD_ORNAMENT.size), height: art(CARD_ORNAMENT.size) }} />
+        </span>
         <div className="person-card-text">
           {view.emblem === null ? null : <span className="person-card-emblem" style={{ width: art(emblem.width), height: art(emblem.height) }}
             data-emblem-kind={view.emblem.kind}><EmblemImage emblem={view.emblem} size={Math.round(art(emblem.width))} label={view.emblemLabel} /></span>}
@@ -172,6 +177,7 @@ export function PersonCardModal({ view, onClose, onBiography }: { readonly view:
           <Button type="button" className="person-card-action" aria-label={PERSONS_COPY.closeLabel} onPress={() => onClose()} variant="secondary">{PERSONS_COPY.close}</Button>
         </div>
       </section>
+      </div>
     </div>
   );
 }

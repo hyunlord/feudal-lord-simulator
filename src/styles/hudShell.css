@@ -470,20 +470,18 @@
 .person-list .person-chip { width: 100%; }
 .person-card-backdrop { position: absolute; inset: 0; z-index: 40; display: grid; place-items: center; background: color-mix(in srgb, var(--palette-ink) 45%, transparent); }
 /* UI-AUDIT-1: the card's border is the painting's safe inset at its scale (kind `person-card`, set from TS); the text and
-   the buttons are rows of its content box, so the card is as tall as they are; the painting, the portrait and the
-   shield's cover sit in the art's own coordinates on a layer over the border box (frameArtSpaceStyle). The painting is
-   that layer's ::before (a 9-slice that grows down, under the rows): the root keeps no border-image of its own, so its
-   frame is its border. */
-.person-card { position: relative; isolation: isolate; display: grid; grid-template-rows: 1fr auto; row-gap: 8px; color: var(--palette-ink); }
-.person-card-art { pointer-events: none; }
-.person-card-art::before { content: ""; position: absolute; inset: 0; z-index: -1; box-sizing: border-box; border-style: solid; border-color: transparent;
-  border-width: var(--person-card-art-width); border-image: var(--person-card-art); }
-.person-card-art > * { position: absolute; box-sizing: border-box; }
+   the buttons are rows of its content box, so the card is as tall as they are, and the portrait sits on the printed
+   ring. The painting is the card's sibling in one grid cell (so as large as the card), the art as a 9-slice that grows
+   down (set from TS), with the shield's cover. */
+.person-card-stage { display: grid; }
+.person-card-stage > * { grid-area: 1 / 1; }
+.person-card-painting { position: relative; pointer-events: none; }
+.person-card { position: relative; display: grid; grid-template-rows: 1fr auto; row-gap: 8px; color: var(--palette-ink); }
 /* The face's square: the ornament's canvas reaches past it up and left, where it is transparent. */
-.person-card-portrait { overflow: hidden; }
+.person-card-portrait { position: absolute; overflow: hidden; }
 .person-card-emblem { float: right; display: grid; place-items: center; margin: 0 0 4px 8px; }
 .person-card-text { grid-column: 2; grid-row: 1; display: flow-root; min-width: 0; overflow-wrap: anywhere; }
-.person-card-text h2 { margin: 0; font-family: var(--ui-font-serif); font-size: 18px; line-height: 1.2; }
+.person-card-text h2 { margin: 0; padding-top: 2px; font-family: var(--ui-font-serif); font-size: 18px; line-height: 1.2; }
 .person-card-text p { margin: 2px 0 0; font-size: 13px; line-height: 1.35; }
 .person-card-text p.person-card-match { font-size: 12px; }
 .person-card-match[data-exact="false"] { font-style: italic; color: var(--palette-ink-muted); }
@@ -509,6 +507,8 @@
 /* A chip is at least its 48 px portrait and padding tall; the card's text buttons take the tablet's 48 px (the shell's
    44 px minimum is !important, so a height, not a min-height). */
 @media (pointer: coarse) { .person-card-action, .person-list-toggle { height: 48px; } }
+/* The touch card is the touch box width (414): its lines a size up with it. */
+@media (pointer: coarse) { .person-card-text h2 { font-size: 20px; } .person-card-text p { font-size: 14px; } .person-card-text p.person-card-state { font-size: 13px; } }
 /* ECON-UI (FIX-7): the town's ale under the ledger's stock table, the stores' ale note, the barn's barley lock. */
 .ledger-town-ale { margin-top: 8px; font-size: 13px; }
 .ledger-town-ale h3 { display: flex; gap: 6px; align-items: center; margin: 0 0 2px; font-size: 14px; }
