@@ -82,6 +82,7 @@ import { QaOverlay } from "./ui/qa/QaOverlay";
 import { hudVisibility, reduceUi, topModal } from "./ui/stateMachine/uiStateMachine";
 import { useUiStateMachine } from "./ui/stateMachine/useUiStateMachine";
 import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, StatusPill } from "./ui/hud/HudShell";
+import { StuckGoodsChip, stuckGoodsChipView, useStuckGoods } from "./ui/hud/StuckGoodsChip";
 import { statusPillModel } from "./ui/hud/statusPillModel";
 import { ZoneToolbar } from "./ui/hud/ZoneToolbar";
 import { zoneEditHistory } from "./render/zoneEditHistory";
@@ -285,6 +286,9 @@ export function App() {
   // the warning stack, recomputed only when that sample changes).
   const guidanceState = guidanceSnapshotRef.current.state;
   const alertRows = useMemo(() => alertStackRows(guidanceState), [guidanceState]);
+  // UI-AUDIT-1: stock piled in one building that cannot leave (the HUD's totals hide it), beside the crisis bells.
+  const stuckRows = useStuckGoods(guidanceState);
+  const stuckChip = useMemo(() => stuckGoodsChipView(guidanceState, stuckRows), [guidanceState, stuckRows]);
   const immediateWarning = alertRows.some(row => row.severity === "immediate");
   // UX-3 cache (AGENTS rule 10): the status pill's numbers (food days walk every store, money the ledger totals) —
   // key: the sampled guidance state, reason: App renders every tick and the pill's numbers change slowly; measured on
@@ -449,7 +453,8 @@ export function App() {
           <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}
             extraSettings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /></>} />
         </div>
-        {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector} /> : null}
+        {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector}
+          lead={stuckChip === null ? null : <StuckGoodsChip view={stuckChip} onInspect={openInspector} />} /> : null}
         {visibility.crisis ? <EventCards beats={story.visible} onDismiss={story.dismiss}
           onDecide={beat => sendUi({ type: "push_modal", modal: beat.decision === "famine" ? "decision" : "petition" })} /> : null}
         {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>

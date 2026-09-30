@@ -146,12 +146,17 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
   );
 }
 
-/** Crisis icons (S-33): outside the slot, at most three, only while something is wrong; a tap looks at and inspects it. */
-export function CrisisIcons({ rows: all, onInspect }: { readonly rows: ReturnType<typeof alertStackRows>; readonly onInspect: (id: string) => void }) {
+/**
+ * Crisis icons (S-33): outside the slot, at most three, only while something is wrong; a tap looks at and inspects it.
+ * UI-AUDIT-1: `lead` (the stuck-goods chip) sits left of the bells in the same row.
+ */
+export function CrisisIcons({ rows: all, onInspect, lead = null }: { readonly rows: ReturnType<typeof alertStackRows>; readonly onInspect: (id: string) => void;
+  readonly lead?: ReactNode }) {
   const rows = all.slice(0, 3);
-  if (rows.length === 0) return null;
+  if (rows.length === 0 && lead === null) return null;
   return (
     <section className="crisis-icons" aria-label={HUD_COPY.crisis}>
+      {lead}
       {rows.map(row => (
         <Button key={row.id} type="button" className={`crisis-icon alert-stack-inspect crisis-icon--${row.severity}`} aria-label={HUD_COPY.crisisLabel(ALERT_STACK_COPY.inspectLabel(row.title), row.cause)}
           onPress={() => { const first = row.targetIds[0]; if (first === undefined) return; platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); }} variant="icon">
