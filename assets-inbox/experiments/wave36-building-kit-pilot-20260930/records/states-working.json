@@ -1,0 +1,74 @@
+[
+  {
+    "id": "roof_snow",
+    "version": 1,
+    "prompt": "Use case: precise-object-edit. Asset type: isolated RGBA state overlay for a medieval isometric game sprite. Edit target: supplied house_l2-v2.png, 137x137 canvas. Preserve its exact framing, isometric perspective, and coordinate alignment. PRIMARY REQUEST: Produce ONLY a separate overlay layer 'roof_snow', with ALL original house pixels REMOVED to transparency. Irregular softly shaded off-white snow cover patches occupy about 70% of the existing roof surface, with transparent gaps exposing underlying roof. Thin modest snow, preserve roof outline, no dangling icicles. Every pixel that is not the new overlay itself must be genuinely transparent. The source house is a positioning guide ONLY; do not redraw or retain its roof, walls, outlines, openings, stone base, or other original pixels. No background, letters, labels, sheet, legend, guide lines, borders or new scene. Same square canvas as reference, no cropping or centering independently. Historical painterly game sprite, restrained colors and detail readable at 137x137.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave36-candidates-20260930/references/house_l2-v2.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-e2fc-70a3-99c4-1263799c1410/exec-0c166fe6-b163-47df-91d0-5d02db1fea73.png",
+    "status": "rejected",
+    "rejection": "underlying tiles remain"
+  },
+  {
+    "id": "roof_moss",
+    "version": 1,
+    "prompt": "Use case: precise-object-edit. Asset type: isolated RGBA state overlay for a medieval isometric game sprite. Edit target: supplied house_l2-v2.png, 137x137 canvas. Preserve its exact framing, isometric perspective, and coordinate alignment. PRIMARY REQUEST: Produce ONLY a separate overlay layer 'roof_moss', with ALL original house pixels REMOVED to transparency. Modest sparse desaturated olive moss patches only on existing roof surface and its edges. Each patch is organic and small. Mostly transparent, not an opaque replacement roof. Every pixel that is not the new overlay itself must be genuinely transparent. The source house is a positioning guide ONLY; do not redraw or retain its roof, walls, outlines, openings, stone base, or other original pixels. No background, letters, labels, sheet, legend, guide lines, borders or new scene. Same square canvas as reference, no cropping or centering independently. Historical painterly game sprite, restrained colors and detail readable at 137x137. IMPORTANT: only isolated weather or light marks floating against transparency. Zero underlying roof material may remain; remove even thin roof-edge geometry.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave36-candidates-20260930/references/house_l2-v2.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-e2fc-70a3-99c4-1263799c1410/exec-4bb0ab1d-f182-4756-9209-72a22432c612.png",
+    "status": "candidate",
+    "rejection": null
+  },
+  {
+    "id": "roof_fresh",
+    "version": 1,
+    "prompt": "Use case: precise-object-edit. Asset type: isolated RGBA state overlay for a medieval isometric game sprite. Edit target: supplied house_l2-v2.png, 137x137 canvas. Preserve its exact framing, isometric perspective, and coordinate alignment. PRIMARY REQUEST: Produce ONLY a separate overlay layer 'roof_fresh', with ALL original house pixels REMOVED to transparency. Sparse subtle neutral warm light edge glints across the existing roof planes suggesting recently maintained roofing. Material-independent marks suitable over thatch, tile or flagstone. No orange tiles, no repeated tile pattern, no colored replacement roof; mostly transparent. Every pixel that is not the new overlay itself must be genuinely transparent. The source house is a positioning guide ONLY; do not redraw or retain its roof, walls, outlines, openings, stone base, or other original pixels. No background, letters, labels, sheet, legend, guide lines, borders or new scene. Same square canvas as reference, no cropping or centering independently. Historical painterly game sprite, restrained colors and detail readable at 137x137. IMPORTANT: only isolated weather or light marks floating against transparency. Zero underlying roof material may remain; remove even thin roof-edge geometry.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave36-candidates-20260930/references/house_l2-v2.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-e2fc-70a3-99c4-1263799c1410/exec-2cd87e3e-9943-4e36-9cc3-1a41a4efdcaa.png",
+    "status": "candidate",
+    "rejection": null
+  },
+  {
+    "id": "roof_soot",
+    "version": 1,
+    "prompt": "Use case: precise-object-edit. Asset type: isolated RGBA state overlay for a medieval isometric game sprite. Edit target: supplied house_l2-v2.png, 137x137 canvas. Preserve its exact framing, isometric perspective, and coordinate alignment. PRIMARY REQUEST: Produce ONLY a separate overlay layer 'roof_soot', with ALL original house pixels REMOVED to transparency. Irregular translucent charcoal soot patches across roof planes. Mostly transparent sparse dirty smudges, no fire or smoke, no roof tiles rendered. Every pixel that is not the new overlay itself must be genuinely transparent. The source house is a positioning guide ONLY; do not redraw or retain its roof, walls, outlines, openings, stone base, or other original pixels. No background, letters, labels, sheet, legend, guide lines, borders or new scene. Same square canvas as reference, no cropping or centering independently. Historical painterly game sprite, restrained colors and detail readable at 137x137. IMPORTANT: only isolated weather or light marks floating against transparency. Zero underlying roof material may remain; remove even thin roof-edge geometry.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave36-candidates-20260930/references/house_l2-v2.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-e2fc-70a3-99c4-1263799c1410/exec-f0a01c49-fd82-4bf1-b843-ae92d7ee0773.png",
+    "status": "candidate",
+    "rejection": null
+  },
+  {
+    "id": "body_boarded",
+    "version": 1,
+    "prompt": "Use case: precise-object-edit. Asset type: isolated RGBA state overlay for a medieval isometric game sprite. Edit target: supplied house_l2-v2.png, 137x137 canvas. Preserve its exact framing, isometric perspective, and coordinate alignment. PRIMARY REQUEST: Produce ONLY a separate overlay layer 'body_boarded', with ALL original house pixels REMOVED to transparency. Weathered narrow wooden X boards placed across the reference house's visible front ground-floor and upper openings and right facade openings. Only these few X boards are visible; spaces around boards are transparent. Every pixel that is not the new overlay itself must be genuinely transparent. The source house is a positioning guide ONLY; do not redraw or retain its roof, walls, outlines, openings, stone base, or other original pixels. No background, letters, labels, sheet, legend, guide lines, borders or new scene. Same square canvas as reference, no cropping or centering independently. Historical painterly game sprite, restrained colors and detail readable at 137x137.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave36-candidates-20260930/references/house_l2-v2.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-e2fc-70a3-99c4-1263799c1410/exec-ec571733-f40f-43c1-aac8-2a50a11875a7.png",
+    "status": "candidate",
+    "rejection": null
+  },
+  {
+    "id": "body_cracked",
+    "version": 1,
+    "prompt": "Use case: precise-object-edit. Asset type: isolated RGBA state overlay for a medieval isometric game sprite. Edit target: supplied house_l2-v2.png, 137x137 canvas. Preserve its exact framing, isometric perspective, and coordinate alignment. PRIMARY REQUEST: Produce ONLY a separate overlay layer 'body_cracked', with ALL original house pixels REMOVED to transparency. Thin understated branching plaster cracks aligned on the warm plaster wall panels of the reference house. Only fine dark brown-gray crack lines are visible. Avoid timber frames, roof, doors, windows, base, whole wall surfaces. Every pixel that is not the new overlay itself must be genuinely transparent. The source house is a positioning guide ONLY; do not redraw or retain its roof, walls, outlines, openings, stone base, or other original pixels. No background, letters, labels, sheet, legend, guide lines, borders or new scene. Same square canvas as reference, no cropping or centering independently. Historical painterly game sprite, restrained colors and detail readable at 137x137.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave36-candidates-20260930/references/house_l2-v2.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-e2fc-70a3-99c4-1263799c1410/exec-93de4d80-533d-4bf7-9075-a0ab044bde4e.png",
+    "status": "rejected",
+    "rejection": "underlying plaster patches remain"
+  },
+  {
+    "id": "body_scaffold",
+    "version": 1,
+    "prompt": "Use case: precise-object-edit. Asset type: isolated RGBA state overlay for a medieval isometric game sprite. Edit target: supplied house_l2-v2.png, 137x137 canvas. Preserve its exact framing, isometric perspective, and coordinate alignment. PRIMARY REQUEST: Produce ONLY a separate overlay layer 'body_scaffold', with ALL original house pixels REMOVED to transparency. Sparse simple medieval rough timber maintenance scaffolding, vertical posts and short horizontal braces fitted inside the reference house body silhouette below eaves. Only scaffold timbers are visible. No people, tools, roof or wall surfaces. Every pixel that is not the new overlay itself must be genuinely transparent. The source house is a positioning guide ONLY; do not redraw or retain its roof, walls, outlines, openings, stone base, or other original pixels. No background, letters, labels, sheet, legend, guide lines, borders or new scene. Same square canvas as reference, no cropping or centering independently. Historical painterly game sprite, restrained colors and detail readable at 137x137.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave36-candidates-20260930/references/house_l2-v2.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-e2fc-70a3-99c4-1263799c1410/exec-e4facb0d-1575-4a91-b9e3-337f41793fd2.png",
+    "status": "candidate",
+    "rejection": null
+  },
+  {
+    "id": "shadow",
+    "version": 1,
+    "prompt": "Use case: precise-object-edit. Asset type: isolated RGBA state overlay for a medieval isometric game sprite. Edit target: supplied house_l2-v2.png, 137x137 canvas. Preserve its exact framing, isometric perspective, and coordinate alignment. PRIMARY REQUEST: Produce ONLY a separate overlay layer 'shadow', with ALL original house pixels REMOVED to transparency. Only the soft low-opacity dark neutral ground contact shadow beneath the reference house footprint, with a slight short extension toward lower right. No structure whatsoever. Keep the shadow low on canvas at the existing building base. Entire upper canvas transparent. Every pixel that is not the new overlay itself must be genuinely transparent. The source house is a positioning guide ONLY; do not redraw or retain its roof, walls, outlines, openings, stone base, or other original pixels. No background, letters, labels, sheet, legend, guide lines, borders or new scene. Same square canvas as reference, no cropping or centering independently. Historical painterly game sprite, restrained colors and detail readable at 137x137.",
+    "reference": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave36-candidates-20260930/references/house_l2-v2.png",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f034-e2fc-70a3-99c4-1263799c1410/exec-c130d75e-7dce-4a1c-a250-c28963aa96e0.png",
+    "status": "candidate",
+    "rejection": null
+  }
+]

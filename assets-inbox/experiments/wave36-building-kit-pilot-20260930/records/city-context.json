@@ -1,0 +1,56 @@
+{
+  "status": "offline composite, not installed",
+  "input": "references/reference-0.jpg",
+  "background": "imagegen reconstructed ground limited to recorded polygon; outside retained from screenshot",
+  "polygon": [
+    [
+      632,
+      88
+    ],
+    [
+      720,
+      86
+    ],
+    [
+      844,
+      145
+    ],
+    [
+      839,
+      297
+    ],
+    [
+      800,
+      324
+    ],
+    [
+      688,
+      267
+    ],
+    [
+      637,
+      207
+    ]
+  ],
+  "inserts": [
+    [
+      "C001",
+      644,
+      109,
+      118
+    ],
+    [
+      "C085",
+      702,
+      154,
+      118
+    ],
+    [
+      "C161",
+      747,
+      192,
+      118
+    ]
+  ],
+  "note": "L2 role inferred visually, no runtime building-level data supplied. Reconstructed ground is a controlled compositing aid, not engine output."
+}

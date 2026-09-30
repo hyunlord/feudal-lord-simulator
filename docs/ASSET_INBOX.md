@@ -40,7 +40,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-09-30 11시 갱신)
+## 3. 현재 장부 요약 (2026-09-30 12시 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -48,6 +48,7 @@ assets-inbox/
 | `d1` | 7 |  | 7 |  |  |  |  | 5 |
 | `d1b` | 4 |  | 4 |  |  |  |  | 2 |
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
+| `experiments` | 78 |  | 54 |  |  | 24 |  | 0 |
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
 | `lineage` | 374 |  | 333 |  | 41 |  |  | 260 |
 | `lineage-pilot` | 117 |  | 79 |  | 30 | 8 |  | 66 |
@@ -97,7 +98,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **4382** | **0** | **3184** | **0** | **253** | **909** | **36** | **1803** |
+| **합계** | **4460** | **0** | **3238** | **0** | **253** | **933** | **36** | **1803** |
 
 ## 4. 찾는 법
 
@@ -213,6 +214,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-wave34-candidates-20260929.zip` (09-29 19:42) | `wave34/candidates-20260929` | 3,193 KB | `90db8e9bf0e3fb33…` | 55 | 0 | `references/`(7), `records/proof-inputs/`(확인 그림을 만들 때 쓴 기존 게임 그림 사본 10) 제외 | `ford/`·`drain/`·`props/` → `assets/` 아래, `checks/` → `proofs/`. ZIP 밖 `astra-wave34-sha-validation.txt`는 `records/sha-validation.txt`로. 작업 폴더 `/tmp/astra-wave34-work-20260929`(2.3MB)는 `astra-raw/output/`에 보관. 생성 원본 보존 폴더는 없음
 | `/tmp/astra-wave34-stage3-regions-candidates-20260929.zip` (09-29 20:45) | `wave34/stage3-regions-20260929` | 1,796 KB | `c37b68ece8e69edc…` | 22 | 0 | 없음(고해상도 원본·참조·기존 에셋은 ZIP에 없음) | `drain/` → `assets/drain/`, `checks/` → `proofs/`. 작업 폴더 `/tmp/astra-wave34-stage3-regions-work-20260929`는 `astra-raw/output/`에 보관. 중간 v2 ZIP(`astra-wave34-stage3-rework-candidates-20260929.zip`)은 사용자 판정대로 inbox에 넣지 않고 ZIP·작업 폴더만 astra-raw에 보관
 | `/tmp/astra-wave35-candidates-20260930-lite.zip` (09-30 11:21, 경량판) | `wave35/candidates-20260930` | 9,345 KB | `0b52373caf15fa4c…` | 137 | 0 | `references/` 제외 | `qa/`·`prompts/`·`tools/`는 `records/` 아래로. 경량판은 `raw/`(생성 원본·반려 이력)를 빼고 `RAW_INDEX.json`에 경로·크기·SHA를 실음. 작업 폴더 `output/astra-wave35-candidates-20260930`(`raw/` 114MB 포함)은 `astra-raw/output/`에 보관. 확인 그림 2장은 JPG
+| `/tmp/astra-wave36-building-kit-pilot-20260930-lite.zip` (09-30 12:08, 경량판) | `experiments/wave36-building-kit-pilot-20260930` | 25,308 KB | `42fbe518b780edb2…` | 139 | 3 | `references/`, `renders/`(216 기본·210 상태 조합과 간판 15·색 입힘 12, 453장), `sources/`, `blind/`의 개별 PNG 48(렌더 사본 24·Wave 26 원본 사본 24) 제외 — 사용자 지시로 저장소에 넣지 않고 astra-raw에만 | 실패한 실험 기록이라 새 최상위 폴더 `experiments/`에 둠. 문서·`prompts/`·`records/`·`tools/`·`qa/`·`masks/`·`blind/`의 시트와 CSV는 `records/` 아래로. 건너뛴 3장은 같은 묶음 안 같은 바이트 마스크(`roof_stone`·`roof_thatch`·`roof_tile` = `roof_canonical`). 작업 폴더 `output/astra-wave36-candidates-20260930`(89MB, 렌더·생성 원본 포함)은 `astra-raw/output/`에 보관
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -273,6 +275,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 34 여울·습지 배수**(`wave34/candidates-20260929`, 2026-09-29 20시 판정): 여울 12(폭 2·3·4 × ne·nw × 여름·겨울, 512×256), 배수 1·2단계 4와 완료 도랑 띠 2, 소품 6(흙수레·널다리·수문·흙더미·물튀김 2), 확인 그림 2 = 26장 `confirmed`. `drain_stage3_drying_summer-v1`·`_winter-v1` 2장은 `rework_pending`(비고 "무늬 없는 갈색 판 — 진흙·그루터기·웅덩이 자국 필요").
 - **Wave 34 배수 3단계 구역판**(`wave34/stage3-regions-20260929`, 2026-09-29 23시 판정): 칸 반복 대신 구역 한 장으로 다시 그린 `drain_stage3_drying_{summer,winter}_{5x5,3x3}-v3` 4장(5×5 640×320 피벗 (320,160), 3×3 384×192 피벗 (192,96), 반복하지 않음)과 단계 1→2→3→완료 비교 그림 1장 `confirmed`, 비고 "칸 반복 대신 구역 한 장(5×5·3×3)". 옛 칸판 2장(`drain_stage3_drying_summer-v1`·`_winter-v1`, `rework_pending`)은 `superseded`, `replaced_by`에 같은 계절의 5×5판과 3×3판 두 경로. 중간 v2 두 장은 받지 않아 행이 없다.
 - **Wave 35 영주 모드 화면 그림**(`wave35/candidates-20260930`, 2026-09-30 11시 판정, 경량판): PNG 50장 — 의뢰서 기본 43(영지 9·협상 10·약속 8·운영 12·영수증 4), 직책 32px 파생 5, 9-slice 조립 보조 2(`treaty_divider` 협상 중앙선 16px·`ledger_spine` 장부 접힘 24px, 배경만 늘리고 중앙 장식은 늘리지 않음) — 과 확인 그림 2(JPG, 1280×800 모의 화면) `confirmed`. 검수·기록 그림 5장(`records/qa/` 4, `records/` 1)도 `confirmed`. README 한계: 쇠락 영지가 가난한 영지보다 쇠락 표현이 완만하다.
+- **Wave 36 조합형 집 키트 파일럿 — 실패 기록**(`experiments/wave36-building-kit-pilot-20260930`, 2026-09-30 12시 판정): 부품 24장 `rejected`, 비고 "조합형 파일럿 실패 — 눈가림 100%·어색 72/216, 윤곽 통일이 다양성을 없앰, 기록 보관". 독립 눈가림 판별 48/48(기준 ≤60%), 216 조합 중 72개 어색(기준 ≤5%), 자동 검사 열 가지 가운데 여럿 실패(`records/REPORT.md`). 확인 그림 3·눈가림 48채 시트·마스크 27·검수 그림 23은 기록 그림으로 `confirmed`. 216·210 조합 렌더 전체는 astra-raw에만 있다. `experiments/`는 설치 후보가 아닌 실험 자료를 두는 곳이다.
 ## 7. 찾지 못한 것
 
 | 항목 | 상태 |
