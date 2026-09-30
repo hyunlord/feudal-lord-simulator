@@ -34,7 +34,7 @@ import { gameReducer } from "../src/state/gameStore";
 import { migrateStateV13ToV14 } from "../src/save/migrations/v13ToV14";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../src/content/houseFoodConfig";
 import { famineDecisionView } from "../src/ui/decisionModels";
-import { pence } from "../src/ui/hud/hudCopy.ko";
+import { moneyShort } from "../src/ui/money.ko";
 
 // F0-C1 chapter 1 scenarios (spec docs/design/flow-chapter-one.md FC-1…FC-6), C1–C10; FC-2a relief's cost, C11; FC-2b speculation's sales, C12.
 
@@ -336,7 +336,7 @@ test("C11 relief costs the bread it hands out at the market price — bought wit
   const t0 = broke.treasuryCoin;
   // The answer's card shows the cost before the choice; the history ledger keeps the same prediction with it.
   const card = famineDecisionView(broke)!.options.find(option => option.choice === "relief")!;
-  assert.ok(card.predicted.includes(`금고 ${pence(t0 - cost)}(지금 ${pence(t0)})`), card.predicted);
+  assert.ok(card.predicted.includes(`금고 ${moneyShort(t0 - cost)}(지금 ${moneyShort(t0)})`), card.predicted);
   const relieved = gameReducer(broke, { type: "famine_response", choice: "relief" });
   const record = relieved.history!.records.find(entry => entry.template === "decision.famine_response")!;
   assert.equal(record.decision!.predicted.treasury, t0 - cost);
@@ -396,7 +396,7 @@ test("C12 speculation earns the grain it sells at the market price — a quarter
   const t0 = stocked.treasuryCoin;
   // The answer's card shows the sale before the choice; the history ledger keeps the same prediction with it.
   const card = famineDecisionView(stocked)!.options.find(option => option.choice === "speculation")!;
-  assert.ok(card.predicted.includes(`금고 ${pence(t0 + first + second)}(지금 ${pence(t0)})`), card.predicted);
+  assert.ok(card.predicted.includes(`금고 ${moneyShort(t0 + first + second)}(지금 ${moneyShort(t0)})`), card.predicted);
   const sold = gameReducer(stocked, { type: "famine_response", choice: "speculation" });
   const record = sold.history!.records.find(entry => entry.template === "decision.famine_response")!;
   assert.equal(record.decision!.predicted.treasury, t0 + first + second);

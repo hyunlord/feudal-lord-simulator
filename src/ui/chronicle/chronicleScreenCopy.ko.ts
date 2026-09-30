@@ -1,5 +1,5 @@
 import { SCENARIO_COPY } from "../../content/scenario/scenarioCopy.ko";
-import { pence } from "../hud/hudCopy.ko";
+import { moneyFull, moneyShort } from "../money.ko";
 
 // CHRON-1 chronicle screen copy (the records' own sentences are src/content/historyCopy.ko.ts).
 const METRIC_NAMES: Readonly<Record<string, string>> = { population: "인구", treasury: "금고", merchantGauge: "상인 게이지", lots: "필지", l4: "도시 대가옥" };
@@ -74,13 +74,13 @@ export const CHRONICLE_SCREEN_COPY = {
   bundleTitle: "이번 계절의 손길",
   bundleLine: (parts: readonly { readonly kind: string; readonly count: number }[]) =>
     parts.map(part => `${BUNDLE_NAMES[part.kind] ?? part.kind} ${part.count}번`).join(" · "),
-  seasonNumbers: (income: number, expense: number) => `수입 ${pence(income)} · 지출 ${pence(expense)}`,
+  seasonNumbers: (income: number, expense: number) => `수입 ${moneyShort(income)} · 지출 ${moneyShort(expense)}`,
   rollupNumbers: (parts: readonly { readonly key: string; readonly count: number }[], population: number | null, popDelta: number | null) =>
     [...(population === null ? [] : [`인구 ${population}(${signed(popDelta ?? 0)})`]),
       ...parts.map(part => `${BUNDLE_NAMES[part.key] ?? (part.key === "person" ? "사람들의 일" : part.key)} ${part.count}`)].join(" · "),
   rollupNote: "여덟 계절이 지난 일상 기록은 계절마다 한 줄로 접힙니다",
   outcome: (predicted: string, actual: string | null) => actual === null ? `예측 ${predicted}` : `예측 ${predicted} / 실제 ${actual}`,
-  metrics: (values: Readonly<Record<string, number>>) => Object.entries(values).map(([key, value]) => `${METRIC_NAMES[key] ?? key} ${key === "treasury" ? pence(value) : value}`).join(" · "),
+  metrics: (values: Readonly<Record<string, number>>) => Object.entries(values).map(([key, value]) => `${METRIC_NAMES[key] ?? key} ${key === "treasury" ? moneyShort(value) : value}`).join(" · "),
   lookAt: "위치로",
   lookAtLabel: (date: string) => `${date}의 자리로 지금 지도를 옮깁니다`,
   thenMap: "그때 지도",
@@ -104,13 +104,14 @@ export const CHRONICLE_SCREEN_COPY = {
   alternativesHeading: "다른 길",
   compareHeading: "예측과 실제",
   noAlternatives: "다른 길이 없었습니다",
-  predictedValue: (key: string, value: number) => `${METRIC_NAMES[key] ?? key} ${key === "treasury" ? pence(value) : value}`,
-  actualValue: (key: string, value: number) => `${key === "treasury" ? pence(value) : value}`,
+  // UI-AUDIT-1: the forecast against the outcome keeps every penny (moneyFull), so a few pence apart still read apart.
+  predictedValue: (key: string, value: number) => `${METRIC_NAMES[key] ?? key} ${key === "treasury" ? moneyFull(value) : value}`,
+  actualValue: (key: string, value: number) => `${key === "treasury" ? moneyFull(value) : value}`,
   actualPending: (date: string) => `실제는 ${date}에 적힙니다`,
   deltaUp: (difference: string) => `예측보다 ${difference} 많음`,
   deltaDown: (difference: string) => `예측보다 ${difference} 적음`,
   deltaSame: "예측대로",
-  difference: (key: string, value: number) => key === "treasury" ? pence(value) : `${value}`,
+  difference: (key: string, value: number) => key === "treasury" ? moneyFull(value) : `${value}`,
   // Biography.
   back: "연대기로",
   biographyTitle: (name: string) => `${name}의 전기`,

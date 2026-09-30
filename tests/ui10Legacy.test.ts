@@ -228,7 +228,7 @@ test("UI-10 gate 4: the ledger drawer's stock tab has a chapter-5 section — th
   const fourEnd = end.politics!.chapterEnds.find(entry => entry.chapter === 4)!.tick;
   for (const row of view.rows) {
     assert.equal(row.chapterTotal, cashUpTo(end, row.category, end.tick) - cashUpTo(end, row.category, fourEnd), row.category);
-    assert.ok(row.label.length > 0 && row.shown.every(amount => amount.endsWith("d")));
+    assert.ok(row.label.length > 0 && row.shown.every(amount => /^−?(?:£[\d,]+(?: \d+s)?(?: \d+d)?|\d+s(?: \d+d)?|\d+d)$/.test(amount)));
   }
   assert.ok(view.rows.find(row => row.category === "royal_subsidy")!.chapterTotal < 0, "the Crown's tax was paid");
   assert.equal(legacyLedgerView(clothTown()), null, "before chapter 5");

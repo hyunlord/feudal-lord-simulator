@@ -1,4 +1,5 @@
 import { LORD_HOUSE_NAMES_KO } from "../content/historyCopy.ko";
+import { moneyObject } from "./money.ko";
 
 // UI-6: the ledger drawer's rights tab — the ruling house and its arms, the lord's title, the three rights (FAIL-3
 // FL-1…FL-8) and, in the war (F2-A), the Crown's favour, the men away and the ring's defence.
@@ -39,7 +40,7 @@ export const LORDSHIP_COPY = {
   rightsTransferLine: (id: string, year: number) =>
     `${RIGHTS_TRANSFER_NAMES[id] ?? id} → 도시 · ${year}년 자치 특허`,
   /** RG-9: the fee farm is the town's duty for the rights, not a right (decision RG6). */
-  feeFarmLine: (pence: number) => `도시가 해마다 봄에 영주에게 ${pence}d를 냅니다(fee farm) — 권리가 아니라 넘긴 권리의 대가`,
+  feeFarmLine: (pence: number) => `도시가 해마다 봄에 영주에게 ${moneyObject(pence)} 냅니다(fee farm) — 권리가 아니라 넘긴 권리의 대가`,
   /** A lord's right the charter passed to the town (the market's stall tax, half the tolls). */
   passedToTown: (year: number, half: boolean) => `${half ? "절반을 " : ""}도시로 넘김 · ${year}년`,
 } as const;

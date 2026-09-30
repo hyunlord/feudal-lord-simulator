@@ -1,4 +1,4 @@
-import { pence } from "./hudCopy.ko";
+import { moneyFull } from "../money.ko";
 
 // UI-8 (F3-A PL-5…PL-7): the wage-ledger section in the LedgerDrawer stock tab — visible once chapter 3's plague
 // arrives. Shows the four plague money categories (wages, statute_fine, church_fee, entry_fine) with this-season,
@@ -9,5 +9,6 @@ export const WAGE_LEDGER_COPY = {
   thisSeason: "이번 기간",
   lastSeason: "지난 기간",
   chapterTotal: "3장 합계",
-  amount: (value: number) => pence(value),
+  /** UI-AUDIT-1: the ledger keeps every penny ("£3 4s 2d"). */
+  amount: (value: number) => moneyFull(value),
 } as const;

@@ -129,13 +129,13 @@ test("CHRON-1 record cards: the kind's frame, the person named, the picture, the
   const born = card("person.born");
   assert.match(born.sentence, /^.+ — 아이가 태어났다$/);
   assert.equal(card("ledger.season").art, null);
-  assert.equal(card("ledger.season").numbers, "수입 30d · 지출 42d");
+  assert.equal(card("ledger.season").numbers, "수입 2s 6d · 지출 3s 6d");
   const bundle = recordCard(state, items.find(item => item.bundle !== null)!);
   assert.deepEqual([bundle.sentence, bundle.numbers, bundle.art], ["이번 계절의 손길", "공사 4번 · 길 2번", null]);
   const folded = card("ledger.rollup");
   assert.equal(folded.folded, true);
   assert.equal(folded.numbers, "인구 12(+3) · 공사 3 · 길 2 · 사람들의 일 4");
-  assert.equal(card("decision.famine_response").numbers, "예측 인구 60 · 금고 120d / 실제 인구 57 · 금고 150d");
+  assert.equal(card("decision.famine_response").numbers, "예측 인구 60 · 금고 10s / 실제 인구 57 · 금고 12s 6d");
 });
 
 test("CHRON-1 decision record: chosen, the other ways, each predicted number against what came with its delta, or when it comes", () => {
@@ -145,7 +145,7 @@ test("CHRON-1 decision record: chosen, the other ways, each predicted number aga
   assert.equal(famine.chosen, "구휼");
   assert.deepEqual(famine.alternatives, ["가격 통제", "방관", "투기"]);
   assert.deepEqual(famine.rows.map(row => [row.predicted, row.actual, row.delta, row.deltaLabel]),
-    [["인구 60", "57", "down", "예측보다 3 적음"], ["금고 120d", "150d", "up", "예측보다 30d 많음"]]);
+    [["인구 60", "57", "down", "예측보다 3 적음"], ["금고 10s", "12s 6d", "up", "예측보다 2s 6d 많음"]]);
   assert.equal(famine.pending, null);
   const stone = decisionCompare(state, state.history!.records.find(entry => entry.template === "decision.stone_town")!)!;
   assert.deepEqual([stone.chosen, stone.alternatives, stone.rows[0]!.actual, stone.pending], ["선포", ["미룸"], null, "실제는 1302년 겨울에 적힙니다"]);

@@ -15,6 +15,7 @@ import { petitionPresentation } from "../src/ui/petitionPresentation";
 import { storeInspectorModel } from "../src/ui/storeInspectorModel";
 import { TOWN_ALE_COPY } from "../src/ui/townAleCopy.ko";
 import { townAleView } from "../src/ui/townAleModel";
+import { moneyShort } from "../src/ui/money.ko";
 
 // ECON-UI (engine FIX-7): the town's ale on the ledger drawer, the stores and the season card; the barn's barley lock
 // with its reason; the wool levy's in-kind line (the town's stored fleece first — C5 CL-9 —, the rest in coin).
@@ -76,10 +77,10 @@ test("the wool levy's in-kind answer says what a season takes: the town's stored
   const petition = { id: "petition-test", defId: "wool_payment", petitioner: "crown", subject: "wool_payment", createdTick: town.tick, status: "open" } as never;
   const perSeason = woolInKindPerSeason(woolLevyAmount(town));
   const line = (state: GameState) => petitionPresentation(state, petition).line("accept");
-  assert.match(line(town), /창고에 양털이 없어 계절마다 \d+d 모두 현금/);
+  assert.ok(line(town).includes(`창고에 양털이 없어 계절마다 ${moneyShort(perSeason)} 모두 현금`), line(town));
   // Fleece for half the share in a storehouse (C5 CL-9: the levy takes it from the stores).
   const half = Math.floor(perSeason / CLOTH_BALANCE.fleeceValue / 2);
   const store = town.buildings.find(building => building.kind === "storehouse")!;
   const stocked = { ...town, buildings: town.buildings.map(building => building.id === store.id ? { ...building, inventory: { ...building.inventory, fleece: half } } : building) } as GameState;
-  assert.match(line(stocked), new RegExp(`계절마다 창고 양털 ${half}뭉치\\(${half * CLOTH_BALANCE.fleeceValue}d\\) \\+ 현금 ${perSeason - half * CLOTH_BALANCE.fleeceValue}d`));
+  assert.ok(line(stocked).includes(`계절마다 창고 양털 ${half}뭉치(${moneyShort(half * CLOTH_BALANCE.fleeceValue)}) + 현금 ${moneyShort(perSeason - half * CLOTH_BALANCE.fleeceValue)}`), line(stocked));
 });

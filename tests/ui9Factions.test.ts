@@ -140,7 +140,7 @@ test("UI-9 RG-7: rightsTransfer lists market_tolls and bridge_tolls granted to t
   assert.deepEqual(view.rightsTransfer.map(r => r.id), ["market_tolls", "bridge_tolls", "fee_farm"]);
   assert.match(view.rightsTransfer[0]!.line, /^시장 좌판세 → 도시 · \d+년 자치 특허$/);
   assert.match(view.rightsTransfer[1]!.line, /^통행세 절반 → 도시/);
-  assert.match(view.rightsTransfer[2]!.line, /120d.*권리가 아니라/);
+  assert.match(view.rightsTransfer[2]!.line, /10s을 냅니다.*권리가 아니라/);
   // The lord's own rights read as passed; the charter's rights are not repeated among the granted ones.
   assert.ok(view.granted.every(line => !line.includes("townsfolk")), view.granted.join(" | "));
   const market = view.rights.find(right => right.id === "market");

@@ -1,3 +1,5 @@
+import { moneyShort } from "./money.ko";
+
 // C5 (CL-10 API townCloth): the town's cloth chain on the ledger drawer and the season card.
 export const TOWN_CLOTH_COPY = {
   heading: "도시의 직물",
@@ -7,5 +9,5 @@ export const TOWN_CLOTH_COPY = {
   buildingsLine: (parts: readonly string[]) => parts.join(" · "),
   /** The season card's line: the closed season's cloth money by its ledger categories' own names. */
   closedSeason: (parts: readonly (readonly [label: string, amount: number])[]) =>
-    `이 계절 직물 수입: ${parts.map(([label, amount]) => `${label} +${amount}d`).join(" · ")}`,
+    `이 계절 직물 수입: ${parts.map(([label, amount]) => `${label} +${moneyShort(amount)}`).join(" · ")}`,
 } as const;

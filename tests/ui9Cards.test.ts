@@ -76,8 +76,8 @@ test("UI-9: the four cards' lines follow the spec — relations from the engine'
   assert.match(card("guild_charter").line("accept"), /관계 도시 \+10 · 상인 \+5 · 백작 −5$/);
   assert.match(card("guild_charter").line("refuse"), /직조공 2가구가 떠남.*관계 상인 −15 · 도시 −10$/);
   assert.match(card("tax_collection").line("refuse"), /영주의 징수원이 걷습니다 · 어른 한 사람당 3d · 반란 압력 \+40 · 관계 평민 −10 · 국왕 \+5$/);
-  assert.match(card("cloth_or_grain").line("accept"), /직물 값 50d · 흉년 수확 85 %로 줄어듦.*반란 압력 \+10/);
+  assert.match(card("cloth_or_grain").line("accept"), /직물 값 4s 2d · 흉년 수확 85 %로 줄어듦.*반란 압력 \+10/);
   assert.doesNotMatch(card("cloth_or_grain").line("accept"), /감소|줄어듦\(식량이 강/);
-  assert.match(card("borough_charter", { warningTick: undefined }).line("accept"), /시장 좌판세 도시로 · 통행세 절반 도시로 · 도시가 해마다 봄에 120d.*백작 −15/);
+  assert.match(card("borough_charter", { warningTick: undefined }).line("accept"), /시장 좌판세 도시로 · 통행세 절반 도시로 · 도시가 해마다 봄에 10s.*백작 −15/);
   assert.match(card("borough_charter", { warningTick: 1 }).line("accept"), /백작 −25/);
 });
