@@ -34,8 +34,9 @@
 /* Speed alone in the top right (the date moved into the pill). */
 .app-shell .hud-time-cluster { top: 8px; right: 8px; flex-direction: row; flex-wrap: nowrap; gap: 2px; height: auto; }
 /* UI-AUDIT-1: the stack is as wide as its seals and the settings seal (the console's 188 px left the settings seal 54 px
-   outside the cluster's frame). */
+   outside the cluster's frame); 2 px between the seals, as between the pill's cells, for the area budget. */
 .app-shell .hud-time-cluster .speed-control-stack { flex-wrap: nowrap; gap: 2px; width: auto; }
+.app-shell .hud-time-cluster .speed-seals { gap: 2px; }
 .app-shell .hud-time-cluster .settings-disclosure > summary { display: grid; place-items: center; min-width: 44px; min-height: 44px; padding: 0 6px; font-size: 12px; }
 .app-shell .hud-time-cluster[hidden] { display: none; }
 
@@ -111,7 +112,7 @@
 
 /* Layer switch bottom left (always on, locks visible). */
 .app-shell .layer-switch { position: absolute; left: 8px; bottom: 8px; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
-.app-shell .layer-switch .control-layer { min-height: 44px; padding: 0 8px; font-size: 13px; }
+.app-shell .layer-switch .control-layer { min-height: 44px; padding: 0 6px; font-size: 13px; }
 /* NAT-1: small token, fixed width so the note never resizes with content. */
 .app-shell .layer-switch-note { position: absolute; left: 0; bottom: 56px; margin: 0; width: min(var(--box-w-small), calc(100vw - 32px)); max-width: none;
   font-size: 13px; color: var(--palette-ink); background-color: var(--palette-vellum); }
