@@ -134,7 +134,10 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "legacy.mayor_demand": params => s(params, "candidate") === "" ? "상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구했다"
     : `상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구했다 — 후보 ${s(params, "candidate")}`,
   "legacy.royal_tax_envoy": () => "국왕의 과세 사절이 왔다 — 15분의 1·10분의 1세",
-  "legacy.succession": params => { const lord = s(params, "lord"); return `늙은 영주 ${lord}(${n(params, "age")}세)${josa(lord, "이", "가")} 후계자를 정해야 한다 — 후보 ${n(params, "candidates")}명`; },
+  "legacy.succession": params => { const lord = s(params, "lord"); const age = n(params, "age"); return `${age >= 50 ? "늙은 영주" : "영주"} ${lord}(${age}세)${josa(lord, "이", "가")} 후계자를 정해야 한다 — 후보 ${n(params, "candidates")}명`; },
+  // FIX-11: wardship of a minor lord.
+  "lord.wardship_begun": params => { const lord = s(params, "lord"); const guardian = s(params, "guardian"); return guardian === "" ? `${lord}${josa(lord, "이", "가")} 미성년 영주다 — 상위 영주가 후견한다` : `${lord}${josa(lord, "이", "가")} 미성년 영주다 — 후견인 ${guardian}`; },
+  "lord.wardship_ended": params => { const lord = s(params, "lord"); return `${lord}${josa(lord, "이", "가")} 성년이 되어 후견이 끝났다`; },
   "legacy.heir_seated": params => { const heir = s(params, "heir"); return `${heir}${josa(heir, "이", "가")} 가문을 이었다 — ${s(params, "relation")}`; },
   "legacy.royal_subsidy": params => `국왕에게 과세를 냈다 — ${n(params, "amount")}d`,
   "legacy.city_seal": () => "도시가 제 인장을 새겼다",

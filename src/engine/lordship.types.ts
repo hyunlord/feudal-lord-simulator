@@ -49,4 +49,6 @@ export interface LordshipState {
   /** FL-6: after a haggled restoration the title returns at this tick. */
   readonly titleReturnsTick?: number;
   readonly decline: DeclineState | null;
+  /** FIX-11: a lord under 21 is in wardship until they come of age; guardianId null means overlord wardship. */
+  readonly wardship?: { readonly guardianId: string | null; readonly since: number };
 }

@@ -39,7 +39,8 @@ import type { LedgerCategory } from "../ledger/ledger.types";
 import type { GameState } from "./engine.types";
 import type { HeirCandidate, LegacyEnding, LegacyScores, LegacyState, LegacyStep } from "./legacy.types";
 import { lordshipOf } from "./lordshipState";
-import { ageOf, currentYear, manorLord, offerHeirs, personDisplayName, seatHeir } from "./persons";
+import { beginWardship } from "./lordship";
+import { ADULT_AGE, ageOf, currentYear, inTown, manorLord, offerHeirs, personDisplayName, seatHeir } from "./persons";
 import { lineageGenerations } from "./personsApi";
 import type { PetitionRecord } from "./politics.types";
 import { calendar, scenarioOf } from "./scenarioState";
@@ -47,6 +48,8 @@ import { calendar, scenarioOf } from "./scenarioState";
 const SEASON = 1000;
 const YEAR = 4000;
 const B = LEGACY_BALANCE;
+/** FIX-11: a lord under this age is in wardship. */
+const WARDSHIP_AGE = 21;
 const TOWN_ACTOR: SourceRef = { type: "actor", id: "town" };
 const TOWN_HOLDERS = new Set(["townsfolk", "craftsmen"]);
 
@@ -119,6 +122,7 @@ function heirOptions(candidates: readonly HeirCandidate[]): PetitionResponse[] {
 export function heirCandidates(state: GameState): readonly (HeirCandidate & {
   readonly response: PetitionResponse; readonly name: string; readonly age: number; readonly birthYear: number;
   readonly portraitIdentity: string; readonly hair: string; readonly eye: string; readonly records: number; readonly through: string | null;
+  readonly leftYear?: number;
 })[] {
   const legacy = legacyOf(state);
   if (legacy === undefined) return [];
@@ -130,7 +134,8 @@ export function heirCandidates(state: GameState): readonly (HeirCandidate & {
     const records = recordsOf(state).filter(record => (record.subject.type === "person" && record.subject.id === person.id)
       || (record.actors ?? []).some(actor => actor.type === "person" && actor.id === person.id)).length;
     return [{ ...candidate, response, name: personDisplayName(person), age: ageOf(person, year), birthYear: person.birthYear,
-      portraitIdentity: person.portraitIdentity, hair: person.traits.hair, eye: person.traits.eye, records, through: candidate.throughId === null ? null : nameOf(state, candidate.throughId) }];
+      portraitIdentity: person.portraitIdentity, hair: person.traits.hair, eye: person.traits.eye, records, through: candidate.throughId === null ? null : nameOf(state, candidate.throughId),
+      ...(person.leftYear !== undefined ? { leftYear: person.leftYear } : {}) }];
   });
 }
 
@@ -174,7 +179,13 @@ export function answerLegacyPetition(state: GameState, petition: PetitionRecord,
         if (l.answers[ROYAL_TAX_PETITION_ID] !== "accept") {
           next = post(next, "royal_subsidy", -B.confirmationFine, [{ type: "actor", id: "crown" }, { type: "claim", id: "royal_subsidy", detail: "confirmation" }]).state;
         }
-        const mayor = personOf(next, l.mayorCandidateId)?.alive === true ? l.mayorCandidateId : merchantLeader(next);
+        const mayorCandidate = personOf(next, l.mayorCandidateId);
+        const mayorCandidateInTown = mayorCandidate !== undefined && inTown(mayorCandidate);
+        // FIX-11: candidate who left or died → next adult of same household, else merchantLeader.
+        const mayor = mayorCandidateInTown ? l.mayorCandidateId
+          : mayorCandidate !== undefined
+            ? ((next.persons?.people ?? []).find(p => p.householdId === mayorCandidate.householdId && ageOf(p, currentYear(next)) >= ADULT_AGE)?.id ?? merchantLeader(next))
+            : merchantLeader(next);
         next = withLegacy(next, { ...l, backlash: 0, feeFarm: B.feeFarm, mayorId: mayor });
       } else {
         const town = next.reorganisation?.chapterFiveStart?.influence.town ?? next.reorganisation?.influence.town ?? 0;
@@ -462,11 +473,15 @@ export function advanceLegacy(state: GameState, endChapter: (state: GameState) =
     const lord = lordOf(next);
     const old = lord !== undefined && ageOf(lord, yearOf(next, tick)) >= B.lordOldAge && tick % YEAR === 0;
     const latest = due(next, l, "succession")! + (B.successionLatestAfterEnvoy - B.successionAfterEnvoy) * SEASON;
-    if (old || tick >= latest || lord === undefined) {
+    // FIX-11: do not seat a new heir over a living minor lord (wardship instead).
+    const minorLord = lord !== undefined && ageOf(lord, yearOf(next, tick)) < WARDSHIP_AGE;
+    if (old || (tick >= latest && !minorLord) || lord === undefined) {
       const offered = offerHeirs(came(next, l, "succession"));
       next = withLegacy(offered.state, l = { ...legacyOf(offered.state)!, candidates: offered.candidates });
       next = addPetition(next, HEIR_CHOICE_PETITION_ID, "overlord", heirOptions(offered.candidates));
       l = legacyOf(next)!;
+    } else if (minorLord && lordshipOf(next).wardship === undefined) {
+      next = beginWardship(next, tick, lord);
     }
   }
   if (ready("city_seal")) {

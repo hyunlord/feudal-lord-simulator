@@ -34,6 +34,7 @@ export const SURNAMES_KO: Readonly<Record<string, string>> = {
 
 /** The namesakes' bynames as a Korean epithet before the name (the elder → 나이 든 존). */
 export const EPITHETS_KO: Readonly<Record<string, string>> = {
+  "senior": "큰", "junior": "작은", "the father": "아버지", "the son": "아들",
   "the elder": "나이 든", "the younger": "젊은", "le Rous": "붉은 머리", "le Brun": "갈색 머리", "le Blund": "금발", "le Long": "키다리",
   "le Petit": "꼬마", "le Wyte": "하얀", "le Neve": "조카", "le Gode": "착한",
   "the third": "셋째", "the fourth": "넷째", "the fifth": "다섯째", "the sixth": "여섯째", "the seventh": "일곱째", "the eighth": "여덟째",

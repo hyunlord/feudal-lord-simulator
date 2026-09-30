@@ -202,6 +202,13 @@ function yearTurn(state: GameState, factionState: FactionState): FactionState {
         timeline.push({ tick: state.tick, year, kind: "leader", id: "succeeded", personId: heir.id });
       }
     }
+    // FIX-11 (item 2): non-leaders of outside factions also age and die.
+    if (def.leaders === "outside") {
+      for (const person of people.filter(p => p.alive && p.tags.some(t => t === `faction:${faction.id}`) && p.id !== leaderId)) {
+        const dies = hashSeed(state.seed, "faction-death", Number(person.id.slice(2)), year) % 1000 < Math.min(1000, 4 * seasonDeathPermille(ageOf(person, year)));
+        if (dies) people[index.get(person.id)!] = { ...person, alive: false, deathYear: year, deathCause: "age" };
+      }
+    }
     const affairs = def.kind === "overlord" || def.kind === "neighbour" || def.kind === "church" ? FACTION_EVENTS[def.kind] : null;
     if (affairs !== null && hashSeed(state.seed, `faction-affair:${faction.id}`, year) % 1000 < FACTION_EVENT_PERMILLE) {
       timeline.push({ tick: state.tick, year, kind: "affair", id: affairs[hashSeed(state.seed, `faction-affair-kind:${faction.id}`, year) % affairs.length]! });

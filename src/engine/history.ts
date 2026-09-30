@@ -491,6 +491,21 @@ function lordshipDrafts(before: GameState, after: GameState): Draft[] {
   if (chapter > (before.politics?.chapter.number ?? 1)) {
     drafts.push({ tick: after.tick, kind: "milestone", template: "milestone.chapter_start", params: { chapter }, subject: TOWN, severity: 2 });
   }
+  // FIX-11: wardship begin and end.
+  if (was.wardship === undefined && now.wardship !== undefined) {
+    const lord = after.persons?.people.find(p => p.householdId === "manor" && p.role === "head");
+    const guardian = now.wardship.guardianId !== null
+      ? after.persons?.people.find(p => p.id === now.wardship!.guardianId)
+      : undefined;
+    drafts.push({ tick: after.tick, kind: "milestone", template: "lord.wardship_begun",
+      params: { lord: lord !== undefined ? personDisplayName(lord) : "", guardian: guardian !== undefined ? personDisplayName(guardian) : "" },
+      subject: TOWN, severity: 2 });
+  } else if (was.wardship !== undefined && now.wardship === undefined) {
+    const lord = after.persons?.people.find(p => p.householdId === "manor" && p.role === "head");
+    drafts.push({ tick: after.tick, kind: "milestone", template: "lord.wardship_ended",
+      params: { lord: lord !== undefined ? personDisplayName(lord) : "" },
+      subject: TOWN, severity: 2 });
+  }
   return drafts;
 }
 

@@ -46,7 +46,9 @@ const YOUTH_END = 29;
 const ELDER_AGE = 55;
 
 /** PS-3: yearly death rate by age, permille (a medieval village; dearth and famine weigh it). */
-const DEATH_PERMILLE_BY_AGE: readonly (readonly [number, number])[] = [[5, 40], [14, 10], [30, 8], [55, 12], [65, 40], [75, 90], [Infinity, 200]];
+// FIX-11 (item 2): the tail past 85 — at 200‰ a year from 75 on, one in two hundred lived past 100, and a town of
+// thousands over 150 years showed 109- and 115-year-olds (QA-010). From 85 350‰, from 95 700‰.
+const DEATH_PERMILLE_BY_AGE: readonly (readonly [number, number])[] = [[5, 40], [14, 10], [30, 8], [55, 12], [65, 40], [75, 90], [85, 200], [95, 350], [Infinity, 700]];
 /** PS-3: weights on the rate, permille: bread at 1.4× or dearer (dearth), 2× or dearer (famine); a plague when there is one. */
 export const MORTALITY_WEIGHTS = { dearth: 1_500, famine: 3_000, plague: 4_000 } as const;
 /** PS-3: chance, permille, that a person in a house dies when it burns. */
@@ -134,6 +136,9 @@ export function newbornCustomName(input: { readonly seed: number; readonly key: 
 }
 
 /** Working copy of the person state within one step (ordinal, the living, the gone). */
+/** FIX-11 (item 3): the bynames that only mark a pair of living namesakes; the one left alone drops it. */
+const PAIR_EPITHETS = new Set(["the elder", "the younger", "senior", "junior", "the father", "the son"]);
+
 class Town {
   people: Person[];
   past: Person[];
@@ -175,6 +180,16 @@ class Town {
     if (index < 0) return;
     const person = this.people[index]!;
     this.people.splice(index, 1);
+    // FIX-11: if the removed person had a paired epithet, the lone survivor loses theirs.
+    if (person.epithet !== undefined && PAIR_EPITHETS.has(person.epithet)) {
+      const survivors = this.people.filter(p => p.givenName === person.givenName && p.surname === person.surname);
+      const survivor = survivors.length === 1 ? survivors[0]! : undefined;
+      if (survivor?.epithet !== undefined && PAIR_EPITHETS.has(survivor.epithet)) {
+        const at = this.people.indexOf(survivor);
+        const { epithet: _dropped, ...rest } = survivor;
+        this.people[at] = rest;
+      }
+    }
     const tags = person.tags.filter(tag => !tag.startsWith("manager:") && tag !== "reeve" && tag !== "bailiff");
     // LN-10: a passing state ends with the life or the stay in town.
     const { condition: _condition, ...kept } = person;
@@ -213,6 +228,17 @@ class Town {
     const lone = namesakes.length === 1 && namesakes[0]!.epithet === undefined ? namesakes[0]! : undefined;
     if (lone !== undefined) {
       const newerIsYounger = birthYear >= lone.birthYear;
+      // FIX-11: father-son → "the father"/"the son" (checked first; father-in-same-household stays father/son).
+      const isFatherSon = custom?.father?.id === lone.id;
+      if (isFatherSon) {
+        this.replace(lone.id, { epithet: "the father" });
+        return { givenName, epithet: "the son", ...origin };
+      }
+      // FIX-11: same household → "senior"/"junior" instead of "the elder"/"the younger".
+      if (householdId === lone.householdId) {
+        this.replace(lone.id, { epithet: newerIsYounger ? "senior" : "junior" });
+        return { givenName, epithet: newerIsYounger ? "junior" : "senior", ...origin };
+      }
       this.replace(lone.id, { epithet: newerIsYounger ? "the elder" : "the younger" });
       return { givenName, epithet: newerIsYounger ? "the younger" : "the elder", ...origin };
     }
@@ -844,9 +870,8 @@ export function advancePersons(state: GameState): GameState {
         continue;
       }
       if (burnt.has(person.householdId) && rollPermille(state.seed, "fire-death", Number(person.id.slice(2)), state.tick) < FIRE_DEATH_PERMILLE) cause = "fire";
-      // A house that cannot grow already loses its people by the decline rule (famine deaths of the frailest); the
-      // season's deaths are the turnover of houses that can.
-      else if (deathDay && (home === undefined || canRefill(home, state.tick))) {
+      // FIX-11: all houses' people are eligible for age-death regardless of refill state.
+      else if (deathDay) {
         // A season is a quarter of the year's rate; the deaths dear bread adds on top are famine deaths.
         const usual = seasonDeathPermille(ageOf(person, year));
         const weighted = seasonDeathPermille(ageOf(person, year), weight);
@@ -860,6 +885,13 @@ export function advancePersons(state: GameState): GameState {
       // relative, as the growth rule would within its interval. A fire's dead are residents lost.
       if (home !== undefined && !canRefill(home, state.tick)) residents.set(person.householdId, Math.max(0, residents.get(person.householdId)! - 1));
     }
+    // FIX-11 (item 2): those who left town grow old too — the same table, so no one comes back as heir or mayor at 110.
+    if (deathDay) town.past.forEach((person, index) => {
+      if (!person.alive || person.leftYear === undefined) return;
+      if (rollPermille(state.seed, "death", Number(person.id.slice(2)), state.tick) >= seasonDeathPermille(ageOf(person, year))) return;
+      const { leftYear: _left, ...gone } = person;
+      town.past[index] = { ...gone, alive: false, deathYear: year, deathCause: "age" };
+    });
   }
 
   // PS-1: households of houses that are gone leave the town.
