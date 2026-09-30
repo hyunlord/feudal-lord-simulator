@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-09-30(BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-10-01(FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -56,7 +56,12 @@
   - 떠오르는 상자는 너비 토큰 280·360·480(태블릿 ×1.15)에 고정·줄 간격 1.5·제목 한 줄·본문 4줄 뒤 [더 보기]·UI-KIT 틀; 스킨 감사에 틀 없는 상자 규칙; 개발 서버 `?pseudo-long=1` 1.4배 글에서 너비 불변·넘침 0.
   - 감사 목록: 성벽이 호숫가를 따라 호수를 성 안에 넣음(엔진 규칙이 물가 가장자리 허용 + 렌더가 벽 두께를 가장자리 가운데로, 판정 대상), 물가 워커, 가을 풀빛, 낙엽 반복, 이름표 겹침, L4 돌기둥 집, 경고 표시 붐빔.
   - 관문: DGX 캡처·측정 오류 0, 스킨 감사 0 / 1263·틀 없는 상자 0, 면적 5.4 % / 6 %·태블릿 5.9 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 로컬 전체 시험 3,796 / 3,796, 깨끗한 클론 `55ad6ee` 3,796/3,796·build(ARCH-1b를 합친 뒤 `1f25c42` 3,811/3,811).
-- **FIX-11 쌓인 엔진 넘김 열다섯 — 진행 중**(Claude Code, 엔진 세션, 사용자 지시): 브랜치 `claude/fix11-engine-handoffs`. 렌더 UI-9·UI-10·NAT-2·UI-AUDIT-1과 Astra QA 1·2회차가 넘긴 것.
+- **FIX-11 쌓인 엔진 넘김 열다섯 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/fix11/REPORT.md), 명세 [영주관](design/manor-house.md)·[묶인 물자](design/stuck-stock.md), 결정 FX11-1~16.
+  - 인물: 미성년 영주 후견, 모든 사람이 같은 사망표, 60살부터 재혼 없음, 같은 집 "큰/작은", 시장 후보의 가구, 5장의 거짓 가문 끊김 막음, 후계자 떠난 해.
+    - 90살 넘은 인물의 가장 큰 원인은 100살 홀아비가 100살 신부를 맞는 재혼이었다.
+  - 기록: 헨리 4세는 1399 가을 폐위의 계절에 왕위에 오르고, 리처드 2세는 유폐 중 사망한다. 장 기록은 결정 전부를 싣고 경계를 지키며, 후계 결정에 관계를 담는다. 장의 실제 시작 해를 쓴다. `decisionForecast`는 답마다 금고와 관계를 준다.
+  - 세계: 영주관(`manor_house`, 저장 v35), 곧은 변 성문, 시장 검사 캐시(0.17 → 0.068 ms), 베마다 염색 색, `stuckStock`.
+  - 가드레일 `5e8dda5` 5/5, 새 기준선 `baseline-5e8dda5`. 클론 `c832300` 4,026/4,026. 렌더 넘김은 보고서에 있다.
 
 - **BOT-4 봇의 곡물 계획 — 관문 미달, 사용자 판정으로 "알려진 흔들림" 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/bot4/REPORT.md), [경작지 명세](design/arable-fields.md) GP-1~GP-4, 결정 GP1~GP8·RR1.
   - 병합한 것: 수확 기록(저장 v34 `harvestRecord`, 영주 모드 이유 점수 재료), 가득 찬 헛간 곁에 그 헛간의 한 해를 빻을 방앗간(GP-4). 실현율 판단(GP-2)은 가드레일 seed 1을 멈추게 해 뺐고, 빈 곡창의 방앗간(GP-3)은 본선 동작으로 되돌렸다.
