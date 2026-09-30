@@ -1,0 +1,179 @@
+{
+ "gate": "perf:gate stage 1",
+ "verdict": "실패",
+ "commit": "ac8e4ee63d389bbac1602554a1e4ceb3a5bad418",
+ "dirty": false,
+ "started": "2026-09-30T00:18:06.140Z",
+ "finished": "2026-09-30T00:21:22.239Z",
+ "machine": {
+  "platform": "darwin",
+  "model": "Mac16,5",
+  "cpus": 14,
+  "chrome": "Google Chrome 154.0.8037.58",
+  "loadAverage1m": [
+   3.6,
+   4.3
+  ]
+ },
+ "limits": {
+  "p99Ms": 16.7,
+  "maxMs": 100,
+  "over50PerMin": 1,
+  "over33PerMin": 3,
+  "momentAlpha": 0.05,
+  "otherCpu": 0.25
+ },
+ "seconds": 180,
+ "invalid": [],
+ "failures": [
+  "season-x1: 최대 1501.6 ms > 100",
+  "season-x1: 50 ms 초과 1.3/분 > 1"
+ ],
+ "scenes": [
+  {
+   "id": "season-x1",
+   "loadMax": 0.2,
+   "label": "계절 전환(가장 큰 도시 1배속)",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 1,
+   "action": "none",
+   "verdict": "실패",
+   "failed": [
+    "최대 1501.6 ms > 100",
+    "50 ms 초과 1.3/분 > 1"
+   ],
+   "invalid": [],
+   "stats": {
+    "frames": 21547,
+    "minutes": 3.03,
+    "p50": 8.3,
+    "p95": 10.2,
+    "p99": 10.3,
+    "max": 1501.6,
+    "over25": 5,
+    "over33": 5,
+    "over50": 4,
+    "over25PerMin": 1.7,
+    "over33PerMin": 1.7,
+    "over50PerMin": 1.3
+   },
+   "loadSeconds": 3.492,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 3,
+    "autosave": 4,
+    "dialog": 3,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 181.3,
+     "ms": 1501.6
+    },
+    {
+     "atSeconds": 179.8,
+     "ms": 183.9
+    },
+    {
+     "atSeconds": 181.4,
+     "ms": 133.5
+    },
+    {
+     "atSeconds": 181.6,
+     "ms": 92.5
+    },
+    {
+     "atSeconds": 181.5,
+     "ms": 41.6
+    }
+   ],
+   "longAnimationFrames": [
+    {
+     "start": 186117.89999999106,
+     "duration": 1675.2000000029802,
+     "blocking": 1450.8,
+     "renderStart": 187005.29999999702,
+     "styleAndLayoutStart": 187792.79999999702,
+     "scripts": [
+      {
+       "invoker": "TimerHandler:setInterval",
+       "fn": "",
+       "url": "",
+       "charPosition": -1,
+       "duration": 56,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "TimerHandler:setTimeout",
+       "fn": "publish",
+       "url": "index-Dbv7yng6.js",
+       "charPosition": 2376385,
+       "duration": 560,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "",
+       "url": "",
+       "charPosition": -1,
+       "duration": 22,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-Dbv7yng6.js",
+       "charPosition": 2461366,
+       "duration": 145,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-Dbv7yng6.js",
+       "charPosition": 3872785,
+       "duration": 569,
+       "forcedStyleAndLayout": 121
+      }
+     ],
+     "atSeconds": 179.6
+    }
+   ]
+  }
+ ],
+ "moments": {
+  "windows": 145,
+  "windowsWithLong": 2,
+  "baseline": 0.013793103448275862,
+  "rows": [
+   {
+    "kind": "season",
+    "seen": 3,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.013793103448275862,
+    "pValue": 1,
+    "pass": true
+   },
+   {
+    "kind": "autosave",
+    "seen": 4,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.013793103448275862,
+    "pValue": 1,
+    "pass": true
+   }
+  ],
+  "pass": true
+ }
+}
