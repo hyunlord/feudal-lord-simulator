@@ -233,6 +233,9 @@ export function legacyDecisionForecast(state: GameState, defId: string, response
       return out(B.endowment);
     case CHURCH_REBUILDING_PETITION_ID:
       return response === "accept" ? out(B.churchRebuildingCost) : treasury;
+    // Item 10: guild_dispute — no direct treasury movement; relations differ but money stays
+    case GUILD_DISPUTE_PETITION_ID:
+      return treasury;
     default:
       return treasury;
   }

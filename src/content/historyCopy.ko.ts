@@ -95,13 +95,21 @@ const NAME_FROM: Readonly<Record<string, string>> = {
 };
 
 const DEATH_CAUSES: Readonly<Record<string, string>> = {
-  age: "세상을 떠났다", famine: "굶주림 끝에 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
+  age: "세상을 떠났다", deposed: "폐위되었다", famine: "굶주림 끝에 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
 };
 
 export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> = {
   "decision.bundle": params => (BUNDLE[s(params, "decisionKind")] ?? (() => s(params, "decisionKind")))(params),
   "decision.famine_response": params => { const label = choice(s(params, "chosen")); return `대기근에 ${label}${josa(label, "을", "를")} 택했다`; },
-  "decision.petition_response": params => { const label = choice(s(params, "chosen")); return `${PETITION_SUBJECTS[s(params, "defId")] ?? "상인의 시장권 청원"}에 답했다: ${WAR_CHOICES[s(params, "defId")]?.[s(params, "chosen")] ?? label}`; },
+  "decision.petition_response": params => {
+    const label = choice(s(params, "chosen"));
+    const defId = s(params, "defId");
+    // Item 8: heir choice — use the candidate's relation word when present (params.relation added by recordDecision)
+    const chosenText = defId === "heir_choice" && typeof params["relation"] === "string"
+      ? `${params["relation"]}에게 잇게 한다`
+      : (WAR_CHOICES[defId]?.[s(params, "chosen")] ?? label);
+    return `${PETITION_SUBJECTS[defId] ?? "상인의 시장권 청원"}에 답했다: ${chosenText}`;
+  },
   // F2-A (WR-1…WR-7): the war of 1337.
   "war.messenger": () => "국왕의 전령이 왔다 — 프랑스와 전쟁이 시작되었다",
   // F3-A (PL-1…PL-10): the Black Death.

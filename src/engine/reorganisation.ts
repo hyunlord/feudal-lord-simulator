@@ -24,8 +24,10 @@ import {
   MARKET_TOLLS_RIGHT_ID,
   REORGANISATION_BALANCE,
   REORGANISATION_PETITION_IDS,
+  REORGANISATION_RELATIONS,
   REORGANISATION_SEQUENCE_ID,
   TAX_COLLECTION_PETITION_ID,
+  type ReorganisationPetitionId,
 } from "../content/reorganisationConfig";
 import { LEDGER_PERIOD_TICKS, postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { LedgerCategory } from "../ledger/ledger.types";
@@ -260,9 +262,34 @@ export function reorganisationDecisionForecast(state: GameState, defId: string, 
       const spring = Math.ceil((state.tick + 1) / YEAR) * YEAR;
       return treasury + (within(spring) ? B.feeFarm : 0);
     }
+    // Item 10: guild charter — accept keeps weavers, refuse loses B.refusedWeaverHouseholds households
+    case GUILD_CHARTER_PETITION_ID: {
+      if (response === "accept") return treasury;
+      const r = reorganisationOf(state);
+      const perSeason = r !== undefined && r.clothSeasons.length > 0 && r.clothIncome > 0 ? r.clothIncome / r.clothSeasons.length : B.clothPrice;
+      return treasury - Math.round(B.refusedWeaverHouseholds * perSeason * 2);
+    }
+    // Item 10: cloth or grain — accept earns the specialised price premium for two seasons
+    case CLOTH_OR_GRAIN_PETITION_ID: {
+      const r = reorganisationOf(state);
+      if (r === undefined || r.clothSeasons.length === 0) return treasury;
+      const avgPerSeason = r.clothIncome / r.clothSeasons.length;
+      if (response !== "accept") return treasury + Math.round(avgPerSeason * 2);
+      const premium = B.specialisedClothPrice / B.clothPrice;
+      return treasury + Math.round(avgPerSeason * premium * 2);
+    }
     default:
       return treasury;
   }
+}
+
+/** RG-12 (Item 10): the treasury and per-faction relation deltas after the answer, two seasons on. */
+export function reorganisationDecisionForecastRich(
+  state: GameState, defId: string, response: PetitionResponse
+): { readonly treasury: number; readonly relations: Readonly<Partial<Record<string, number>>> } {
+  const treasury = reorganisationDecisionForecast(state, defId, response);
+  const relations = REORGANISATION_RELATIONS[defId as ReorganisationPetitionId]?.[response] ?? {};
+  return { treasury, relations };
 }
 
 /** RG-1 API: the stage now — before the surge, from it to the town's demand, from the demand to the end, done (null before). */

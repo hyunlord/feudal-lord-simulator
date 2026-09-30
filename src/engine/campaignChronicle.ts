@@ -79,15 +79,24 @@ function line(record: HistoryRecord, year: (tick: number) => number): ChronicleB
     ...(record.illustration === undefined ? {} : { illustration: record.illustration }), ...(record.snapshotId === undefined ? {} : { snapshotId: record.snapshotId }) };
 }
 
-function bookChapter(state: GameState, page: ChronicleEntry, closed: boolean, year: (tick: number) => number): ChronicleBookChapter {
+function bookChapter(state: GameState, page: ChronicleEntry, closed: boolean, year: (tick: number) => number, fromTick?: number, toTick?: number): ChronicleBookChapter {
   const records = new Map((state.history?.records ?? []).map(record => [record.id, record]));
   const events = page.events.flatMap(event => { const record = records.get(event.recordId); return record === undefined ? [] : [line(record, year)]; });
-  const decisions = page.decisions.flatMap(quote => {
-    const record = records.get(quote.recordId);
-    return record === undefined ? [] : [{ ...line(record, year), chosen: quote.chosen, alternatives: quote.alternatives }];
-  });
-  return { chapter: page.chapter, title: CHAPTER_TITLES[page.chapter] ?? "", fromYear: page.fromYear, toYear: page.toYear, closed,
-    summary: chapterSummaryLine({ fromYear: page.fromYear, toYear: page.toYear, populationStart: page.stats.populationStart,
+  // Item 8: when tick range is known, reconstruct all decisions from history (corrects old saves with ≤3 frozen decisions)
+  const decisions: (ChronicleBookLine & { readonly chosen: string; readonly alternatives: readonly string[] })[] =
+    fromTick !== undefined && toTick !== undefined
+      ? (state.history?.records ?? [])
+          .filter(r => r.kind === "decision" && r.decision !== undefined && r.tick > fromTick && r.tick <= toTick)
+          .sort((a, b) => a.tick - b.tick)
+          .map(r => ({ ...line(r, year), chosen: r.decision!.chosen, alternatives: r.decision!.alternatives }))
+      : page.decisions.flatMap(quote => {
+          const record = records.get(quote.recordId);
+          return record === undefined ? [] : [{ ...line(record, year), chosen: quote.chosen, alternatives: quote.alternatives }];
+        });
+  // Item 9: use startTick-derived fromYear when available (corrects old saves with wrong fromYear)
+  const fromYear = fromTick !== undefined ? year(fromTick) : page.fromYear;
+  return { chapter: page.chapter, title: CHAPTER_TITLES[page.chapter] ?? "", fromYear, toYear: page.toYear, closed,
+    summary: chapterSummaryLine({ fromYear, toYear: page.toYear, populationStart: page.stats.populationStart,
       populationEnd: page.stats.populationEnd, treasury: page.stats.treasury }), events, decisions };
 }
 
@@ -97,8 +106,14 @@ export function campaignChronicle(state: GameState): CampaignChronicle {
   const year = (tick: number) => calendar(tick, startYear).year;
   const politics = state.politics;
   const ends = politics?.chapterEnds ?? [];
-  const chapters = ends.map(end => bookChapter(state, end.chronicle, true, year));
-  if (politics !== undefined && chapterEnd(state, politics.chapter.number) === null) chapters.push(bookChapter(state, chronicleEntry(state), false, year));
+  // Items 8 & 9: pass tick ranges so bookChapter can reconstruct all decisions and correct fromYear.
+  // ChapterEnd.tick is the end tick of that chapter; the next chapter's start = previous chapter's end.
+  const chapters = ends.map((end, i) => {
+    const ft = i === 0 ? 0 : ends[i - 1]!.tick;
+    return bookChapter(state, end.chronicle, true, year, ft, end.tick);
+  });
+  if (politics !== undefined && chapterEnd(state, politics.chapter.number) === null)
+    chapters.push(bookChapter(state, chronicleEntry(state), false, year, politics.chapter.startTick, state.tick));
 
   // The family tree: everyone of the lord's houses (the manor's own), by house and generation.
   const everyone = [...(state.persons?.people ?? []), ...(state.persons?.past ?? [])];
