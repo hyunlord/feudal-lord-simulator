@@ -300,7 +300,10 @@
 /* Ledger rows light their stores on the map; this week's change and how long food lasts. */
 .app-shell .ledger-row { display: inline-flex; gap: 4px; align-items: center; min-height: 44px; padding: 0 6px; font-weight: 600; text-align: left; }
 .app-shell .ledger-matrix tr[data-lit="true"] th, .app-shell .ledger-matrix tr[data-lit="true"] td { background-color: color-mix(in srgb, var(--palette-vermilion) 14%, transparent); }
-@media (pointer: coarse) { .app-shell .ledger-row { min-height: 48px; } }
+/* UI-10: "보관 N곳" unfolds its row to each store's amount (a surface cell button, 44 px, 48 on tablet). */
+.app-shell .ledger-held-toggle { display: inline-flex; align-items: center; justify-content: flex-end; min-width: 44px; min-height: 44px; padding: 0 6px; font-weight: 600; text-decoration: underline dotted; }
+.app-shell .ledger-held-toggle[aria-expanded="true"] { outline: 2px solid var(--palette-gold); outline-offset: -3px; }
+@media (pointer: coarse) { .app-shell :is(.ledger-row, .ledger-held-toggle, .ledger-store) { min-height: 48px; } }
 
 /* UX-3R2 tablet confirm bar (UX3R 8절): bottom centre while a tap has left a ghost waiting; 64 px targets. */
 .app-shell .placement-confirm-bar { position: absolute; left: 50%; bottom: 12px; z-index: 6; display: grid; grid-template-columns: auto auto; gap: 4px 8px;

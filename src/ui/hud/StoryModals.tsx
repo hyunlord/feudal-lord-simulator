@@ -197,14 +197,16 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
  * The next chapter's screen after a chapter's page. UI-6: chapter 2 is played in the same town (FAIL-3 FL-8) — its
  * opening (Wave 16 chapter2_intro) names the chapter and lists its goals; a chapter not built yet (3 on) says so.
  */
-export function ChapterTwoPreview({ onContinue, chapter = 2, goals = [] }: {
+export function ChapterTwoPreview({ onContinue, chapter = 2, goals = [], startYear = null }: {
   readonly onContinue: () => void; readonly chapter?: number; readonly goals?: readonly string[];
+  /** UI-10: the year the chapter began (chronicleModel `chapterStartYear`), its title's first year. */
+  readonly startYear?: number | null;
 }) {
   // PLAGUE-b: chapter 3 on opens the same way over its Wave 31 painting when the game has built it (its copy line).
   const later = CHRONICLE_COPY.chapterOpening[chapter];
   const intro = chapterIntro(chapter);
   const opening = chapter === 2 ? { title: CHRONICLE_COPY.chapterTwoStartTitle, line: CHRONICLE_COPY.chapterTwoStartLine, start: CHRONICLE_COPY.chapterTwoStart }
-    : later !== undefined && intro !== null ? later : null;
+    : later !== undefined && intro !== null ? { ...later, title: later.title(startYear) } : null;
   const open = opening !== null;
   const art = intro === null ? wave16Url("chapter2_intro") : wave31Url(intro);
   return (

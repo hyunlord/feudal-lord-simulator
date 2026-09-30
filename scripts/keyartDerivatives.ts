@@ -21,6 +21,7 @@ import { PORTRAIT_IMAGES } from "../src/ui/portraitArtManifest.generated";
 import { WAVE16_IMAGES } from "../src/ui/wave16ArtManifest.generated";
 import { WAVE17_IMAGES } from "../src/ui/wave17ArtManifest.generated";
 import { WAVE21_IMAGES } from "../src/ui/wave21ArtManifest.generated";
+import { WAVE33_IMAGES } from "../src/ui/wave33ArtManifest.generated";
 
 const ROOT = path.resolve(new URL("..", import.meta.url).pathname);
 const ENCODER_VERSION = 1;
@@ -59,8 +60,12 @@ export const WAVE16_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WA
 export const WAVE17_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE17_IMAGES)
   .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg" as const }));
 
-/** UI-8: the Wave 21 chapter 3 illustrations (decision cards, events, chronicle scenes, chapter-3 end; opaque, as JPEG). */
+/** UI-8 / UI-9 / UI-10: the Wave 21 chapter 3–5 illustrations (decision cards, events, chronicle scenes, chapter and campaign end; opaque, as JPEG). */
 export const WAVE21_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE21_IMAGES)
+  .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg" as const }));
+
+/** UI-10: the Wave 33 chapter-5 interlude illustrations (1384–1400 events; opaque, as JPEG). */
+export const WAVE33_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE33_IMAGES)
   .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg" as const }));
 
 /** CHRON-1: each pool portrait twice — at 256 px (biography) and 96 px (cards, lists). */
@@ -69,8 +74,8 @@ export const PORTRAIT_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(
   { id: `${id}-96`, source: image.source, url: image.url96, format: "portrait-96" as const },
 ]);
 
-/** Every build-time web derivative (Wave 8 keyart, Wave 16, 17 and 21 illustrations, the portrait pool). */
-export const WEB_ART_DERIVATIVES: readonly KeyartDerivative[] = [...KEYART_DERIVATIVES, ...WAVE16_DERIVATIVES, ...WAVE17_DERIVATIVES, ...WAVE21_DERIVATIVES, ...PORTRAIT_DERIVATIVES];
+/** Every build-time web derivative (Wave 8 keyart, Wave 16, 17, 21 and 33 illustrations, the portrait pool). */
+export const WEB_ART_DERIVATIVES: readonly KeyartDerivative[] = [...KEYART_DERIVATIVES, ...WAVE16_DERIVATIVES, ...WAVE17_DERIVATIVES, ...WAVE21_DERIVATIVES, ...WAVE33_DERIVATIVES, ...PORTRAIT_DERIVATIVES];
 
 export const KEYART_DERIVATIVE_BY_URL: ReadonlyMap<string, KeyartDerivative> = new Map(WEB_ART_DERIVATIVES.map(item => [item.url, item]));
 
