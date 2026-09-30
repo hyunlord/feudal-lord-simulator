@@ -36,6 +36,7 @@ case "$what" in
   hud-shots)
     npx tsx scripts/measureHudCoverage.ts .remote/hud-coverage-shots.json --url "$URL" --shots .remote/hud-shots > .remote/hud-shots.log 2>&1; echo "exit $?"
     ;;
+  cards) FIXA_CARDS_ONLY=1 node scripts/uiauditFixaCaptures.mjs "$out" --url "$URL" --base "$BASE_URL" --states "${UI5_STATES:-$HOME/fls-ui5-states-v22}" --states9 "$HOME/fls-ui9-states" ;;
   shots) node scripts/uiauditFixaCaptures.mjs "$out" --url "$URL" --base "$BASE_URL" --states "${UI5_STATES:-$HOME/fls-ui5-states-v22}" --states9 "$HOME/fls-ui9-states" ;;
   *) echo "unknown: $what"; exit 2 ;;
 esac

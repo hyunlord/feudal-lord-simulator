@@ -36,7 +36,9 @@ async function shot(page, selector, file) {
   const margin = 10;
   const clip = { x: Math.max(0, box.x - margin), y: Math.max(0, box.y - margin), width: box.width + margin * 2, height: box.height + margin * 2 };
   const metrics = await page.locator(selector).first().evaluate(element => { const style = getComputedStyle(element); const r = element.getBoundingClientRect();
-    return { frame: element.getAttribute('data-frame'), border: style.borderWidth, padding: style.padding, width: r.width, height: r.height }; });
+    const emblem = element.querySelector('.person-card-emblem'); const e = emblem?.getBoundingClientRect();
+    return { frame: element.getAttribute('data-frame'), border: style.borderWidth, padding: style.padding, width: r.width, height: r.height,
+      ...(emblem ? { emblem: { rect: [e.left - r.left, e.top - r.top, e.width, e.height], html: emblem.innerHTML.slice(0, 160) } } : {}) }; });
   await page.screenshot({ path: join(out, file), type: 'jpeg', quality: 72, clip });
   log.shots.push({ file, selector, ...metrics });
 }
@@ -66,9 +68,17 @@ for (const [when, base] of Object.entries(urls)) {
     });
     // The steward (the key ornament, the user's screenshot): from the famine decision's steward chip.
     await run(`${when} ${view} steward card`, async () => {
-      const { context, page } = await scene(base, 'famine-arrival', view, 1.1);
-      await pause(800);
-      await click(page, '.event-chip', 20_000); await click(page, '.event-card-decide'); await click(page, '.decision-steward .person-chip');
+      const { context, page } = await scene(base, 'famine-arrival', view, 1.1, false, statesDir, '&story-delay=5000');
+      // As the geometry audit's story step: the decision may open on its own, else the chips in turn.
+      if (!await page.locator('.famine-decision >> visible=true').first().waitFor({ timeout: 10_000 }).then(() => true).catch(() => false)) {
+        for (let chip = 0; chip < 8 && await page.locator('.famine-decision >> visible=true').count() === 0; chip += 1) {
+          if (await page.locator('.event-chip >> visible=true').count() === 0) break;
+          await click(page, '.event-chip');
+          if (await page.locator('.event-card-decide >> visible=true').count() > 0) { await click(page, '.event-card-decide'); continue; }
+          await page.locator('.event-card-actions > button:last-child >> visible=true').first().click({ timeout: 5_000 }).catch(() => undefined); await pause(500);
+        }
+      }
+      await click(page, '.decision-steward .person-chip');
       await shot(page, '.person-card', `person-card-steward-${view}-${when}.jpg`);
       await context.close();
     });
@@ -81,6 +91,7 @@ for (const [when, base] of Object.entries(urls)) {
       await shot(page, '.person-card', `person-card-lord-${view}-${when}.jpg`);
       await context.close();
     });
+    if (process.env.FIXA_CARDS_ONLY === '1') continue;
     await run(`${when} ${view} hud`, async () => {
       const { context, page } = await scene(base, 'merchant-town', view, 1.1, true);
       await pause(1200);
