@@ -20,7 +20,7 @@ const store = flag("store", join(homedir(), "fls-runs", "_trend")); const port =
 export const TREND_SCENES = ["big-town-x5", "new-game-x3"] as const;
 // The metrics kept per scene (hitchAudit summary.metrics / stats), medians over the rounds.
 export const TREND_METRICS = ["scriptMsPerTick", "heapAllocKBPerTick", "canvasPer1kTicks", "scriptMsPerFrame", "taskMsPerFrame", "heapAllocMBps", "gcPerMin",
-  "canvasPerSec", "bitmapPerSec", "getImageDataPerSec", "heapEndMB", "p50", "p95", "p99", "max", "over33PerMin"] as const;
+  "canvasPerSec", "bitmapPerSec", "getImageDataPerSec", "heapEndMB", "heapAfterGcMB", "p50", "p95", "p99", "max", "over33PerMin"] as const;
 
 const median = (values: readonly number[]) => { const sorted = values.filter(Number.isFinite).sort((a, b) => a - b); return sorted.length === 0 ? null : sorted[Math.floor((sorted.length - 1) / 2)]!; };
 const git = (...args: string[]) => spawnSync("git", args, { encoding: "utf8" }).stdout.trim();
