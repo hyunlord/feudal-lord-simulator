@@ -227,12 +227,16 @@ test("sprite-success building rendering keeps ground-pass contact before the spr
   assert.ok(!context.calls.slice(0, firstDrawImage).some((call) => call.startsWith("ellipse:")));
 });
 
-test("exact simplified LOD keeps ready building sprites on the procedural path", () => {
-  // Given / When
-  const context = drawHouseAtZoom(0.7);
+test("NAT-2: simplified detail draws the ready building sprite, block detail the procedural block", () => {
+  // Given / When: the exact simplified boundary, the lowest simplified zoom, the block boundary.
+  const simplified = drawHouseAtZoom(0.7);
+  const lowest = drawHouseAtZoom(0.36);
+  const blocks = drawHouseAtZoom(0.35);
 
-  // Then
-  assert.ok(!context.calls.includes("drawImage"));
+  // Then (QA-008: the zoomed-out town keeps its painted houses; blocks only on the strategic map)
+  assert.ok(simplified.calls.includes("drawImage"));
+  assert.ok(lowest.calls.includes("drawImage"));
+  assert.ok(!blocks.calls.includes("drawImage"));
 });
 
 test("full LOD just above the simplified boundary may use ready building sprites", () => {
@@ -326,7 +330,7 @@ test("Stone Town fallback sprite keys cover all new render kinds when manifest i
     },
     tiles: [tile(0, 0, "grass", "house-l4")],
     range: { minTx: 0, minTy: 0, maxTx: 6, maxTy: 1 },
-    zoom: 0.7,
+    zoom: 0.35, // block detail: no sprite (NAT-2: simplified detail draws the sprites now)
   });
 
   // Then
@@ -388,11 +392,11 @@ test("with curved ground a ready sprite's contact shadow is one small ellipse un
   }
 });
 
-test("simplified civic and production buildings preserve procedural grounding", () => {
+test("block-detail civic and production buildings preserve procedural grounding", () => {
   for (const kind of ["well", "storehouse", "granary", "logging_camp", "sawmill"] as const) {
-    // Given simplified detail, when rendering the same buildings.
-    const context = drawCivicAtZoom(kind, 0.7);
-    // Then ordinary grounding remains and no full-detail sprite is drawn.
+    // Given block detail (NAT-2: at simplified detail the sprites are drawn), when rendering the same buildings.
+    const context = drawCivicAtZoom(kind, 0.35);
+    // Then ordinary grounding remains and no sprite is drawn.
     assert.ok(context.calls.some(call => call.startsWith("ellipse:")), kind);
     assert.ok(!context.calls.includes("drawImage"), kind);
   }

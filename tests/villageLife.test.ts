@@ -143,7 +143,7 @@ test("Given the zoom When village life is drawn Then full detail draws all but t
   assert.ok(items.every(item => villageLifeDrawnAt(item, 1) === !TOYS.has(item.kind)));
   assert.ok(items.every(item => villageLifeDrawnAt(item, TOY_MIN_ZOOM)));
   assert.ok(items.every(item => villageLifeDrawnAt(item, 1.34) === !TOYS.has(item.kind)));
-  assert.ok(items.every(item => !villageLifeDrawnAt(item, 0.45)));
+  assert.ok(items.every(item => !villageLifeDrawnAt(item, 0.35))); // NAT-2: block detail at zoom <= 0.35
   const simplified = items.filter(item => villageLifeDrawnAt(item, 0.6));
   assert.ok(simplified.length > 0 && simplified.every(item => item.motion === "flight" || LINES.has(item.kind)), simplified.map(item => item.kind).join(" "));
 });

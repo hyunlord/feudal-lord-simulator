@@ -13,14 +13,14 @@ import { seasonBlend, seasonForObject } from "./seasonTransition";
 //    season decals (frost and leaves lie on them). Strips and point props are depth-sorted objects: a hedge piece sorts
 //    by the middle of its tile edge (as the yard hurdles), a prop by its anchor cell, so a hedge in front of a walker,
 //    house or tree covers it and one behind is covered.
-//  - Detail (renderDetailLevel, the building LOD): full (zoom > 0.7) draws everything; simplified (0.5 < zoom <= 0.7)
-//    keeps the strips and the farm props that read at that size (haystack, sheepfold: the zone haycocks stay too) and
-//    drops the trees (the forest is drawn as flat crowns there, a painted oak would stand out) and the small props
-//    (cross, skeps, stone); blocks (zoom <= 0.5) draws none. The patches follow the season decals (from DECAL_MIN_ZOOM).
+//  - Detail (renderDetailLevel, the building LOD): full (zoom > 0.7) draws everything; simplified (0.35 < zoom <= 0.7)
+//    keeps the strips, the trees (NAT-2: the forest is painted there too now, from its mip levels) and the farm props
+//    that read at that size (haystack, sheepfold: the zone haycocks stay too) and drops the small props (cross, skeps,
+//    stone); blocks (zoom <= 0.35) draws none. The patches follow the season decals (from DECAL_MIN_ZOOM).
 //  - Seasons: each piece turns to the new season's picture at its own moment of the season fade (seasonForObject).
 
 export type CountrysideRenderItem = Extract<ObjectRenderItem, { readonly kind: "countryside" }>;
-const SIMPLIFIED_PROPS: ReadonlySet<string> = new Set(["haystack", "hurdle_fold"]);
+const SIMPLIFIED_PROPS: ReadonlySet<string> = new Set(["oak_solitary", "willow_pollard", "haystack", "hurdle_fold"]);
 
 const itemsByLayout = new WeakMap<Countryside, readonly CountrysideRenderItem[]>();
 function countrysideItems(layout: Countryside): readonly CountrysideRenderItem[] {

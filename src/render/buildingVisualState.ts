@@ -102,9 +102,19 @@ export function buildingBodyProfile(
   return nonHouseBodyProfile(kind);
 }
 
+/** NAT-2 QA-008: block pictures only at or under this zoom (a strategic map); the game's own MIN_ZOOM is 0.5. */
+export const BLOCKS_MAX_ZOOM = 0.35;
+export const SIMPLIFIED_MAX_ZOOM = 0.7;
+
+/**
+ * The detail of the world at `zoom`. full (> 0.7): everything. simplified (0.35 < zoom <= 0.7, the status view): the
+ * same painted buildings, trees and forests from their mip levels (spriteMipCache.ts; before NAT-2 they were white line
+ * drawings and green circles here), without the details that are a speck at that size (ground cover, small props, the
+ * yard animals, roof smoke). blocks (<= 0.35): block houses and flat crowns.
+ */
 export function renderDetailLevel(zoom: number): RenderDetailLevel {
-  if (zoom <= 0.5) return "blocks";
-  return zoom <= 0.7 ? "simplified" : "full";
+  if (zoom <= BLOCKS_MAX_ZOOM) return "blocks";
+  return zoom <= SIMPLIFIED_MAX_ZOOM ? "simplified" : "full";
 }
 
 export function buildingLodColor(kind: BuildingKind): PaletteColor {

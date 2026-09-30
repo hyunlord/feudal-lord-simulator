@@ -24,10 +24,10 @@ import { WAVE29_WATER, type Wave29WaterKey } from "./wave29WaterManifest.generat
 // Clock: the frame's wall clock `nowMs` (the renderer's), like the smoke and the weather, so the water keeps moving
 // while the game is paused. Not the life clock (lifeClock.ts), which holds while paused, and not the game tick.
 //
-// Detail (renderDetailLevel): full (zoom > 0.7) draws everything; simplified (0.5 < zoom <= 0.7) keeps the area fills
+// Detail (renderDetailLevel): full (zoom > 0.7) draws everything; simplified (0.35 < zoom <= 0.7) keeps the area fills
 // only (deep ripples, river flow: their cost is bounded by the screen, and they carry the water's motion) and drops
 // the shallow ripples, the foam (one fill per shore segment, which grows as the view widens), the swaying reeds (the
-// chunks' static reeds instead), the glints and the fish rings (a few pixels wide there); blocks (zoom <= 0.5) draws
+// chunks' static reeds instead), the glints and the fish rings (a few pixels wide there); blocks (zoom <= 0.35) draws
 // no motion (the chunks' still water, with the ice rim in winter).
 export const WINTER: SeasonIndex = 3;
 export const FISH_INTERVAL_MS = { min: 8_000, max: 20_000 } as const;

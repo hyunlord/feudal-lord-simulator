@@ -65,6 +65,9 @@ export function getSpriteSource(key: string): HTMLImageElement | null {
   return record?.status === "ready" ? record.image : null;
 }
 
+/** The sprite's manifest entry itself, without its load status (spriteMeta copies it): NAT-2, for the per-draw path. */
+export function spriteMetaView(key: string): Omit<AssetMeta, "status"> | null { return records.get(key)?.meta ?? null; }
+
 export function spriteMeta(key: string): AssetMeta | null {
   const record = records.get(key);
   return record === undefined ? null : { ...record.meta, status: record.status };

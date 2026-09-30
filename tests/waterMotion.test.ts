@@ -77,7 +77,8 @@ test("Given the weather, the season and the zoom When the plan is made Then glin
   // Full detail: everything; simplified: the area fills only; blocks: nothing.
   assert.deepEqual(waterMotionPlan(1, "normal", 1), { deepRipples: true, shallowRipples: true, flow: true, foam: true, reeds: true, glints: true, fish: true });
   assert.deepEqual(waterMotionPlan(0.6, "normal", 1), { deepRipples: true, shallowRipples: false, flow: true, foam: false, reeds: false, glints: false, fish: false });
-  assert.deepEqual(Object.values(waterMotionPlan(0.5, "normal", 1)), [false, false, false, false, false, false, false]);
+  assert.deepEqual(waterMotionPlan(0.5, "normal", 1), waterMotionPlan(0.6, "normal", 1)); // NAT-2: 0.5 is simplified now
+  assert.deepEqual(Object.values(waterMotionPlan(0.35, "normal", 1)), [false, false, false, false, false, false, false]);
   assert.deepEqual([liveReedsAt(0.7), liveReedsAt(0.75)], [false, true]);
 });
 
@@ -259,7 +260,7 @@ test("Given loaded water art When the water moves Then each effect draws at its 
   try {
     // When
     const summer = drawOnce({}, 1); const winter = drawOnce({ season: 3 }, 1); const wet = drawOnce({ weather: "wet" }, 1);
-    const simplified = drawOnce({}, 0.6); const blocks = drawOnce({}, 0.5);
+    const simplified = drawOnce({}, 0.6); const blocks = drawOnce({}, 0.35); // NAT-2: blocks at zoom <= 0.35
 
     // Then: the ripples fill the deep diamonds and, clipped to the water, the shallow ones; the foam fills a quad a segment at 0.65.
     assert.ok(summer.some(op => op.startsWith("clip(path")), "clipped to the water");

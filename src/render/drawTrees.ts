@@ -58,7 +58,8 @@ export function drawTreeDescriptor(
     readonly season?: SeasonBlend;
   },
 ): void {
-  if (renderDetailLevel(input.zoom) === "full") {
+  // NAT-2 QA-008: the painted tree above block detail (its mip level when small); flat crowns on the strategic map.
+  if (renderDetailLevel(input.zoom) !== "blocks") {
     const sway = ambientOffset({
       tick: input.tick,
       amplitude: 2 * input.tree.scale,
