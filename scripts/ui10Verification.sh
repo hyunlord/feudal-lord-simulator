@@ -19,7 +19,7 @@ declare -a results=()
 step() { local name=$1; shift; "$@" > "$out/gates/$name.log" 2>&1; local code=$?; results+=("$name=$code"); echo "$name exit $code"; }
 if [ ! -f "$states/chapter5-end.json" ] || [ ! -f "$states/campaign-victory.json" ]; then step states npx tsx scripts/ui10States.ts 2 640000 "$states"; fi
 if [ "$(ls "$endings"/*.json 2>/dev/null | wc -l)" -lt 6 ]; then step endings npx tsx scripts/ui10EndingSaves.ts "$endings"; fi
-if [ ! -f "$extra/moments-extra.json" ]; then step extra npx tsx scripts/ui10ExtraStates.ts "$extra"; fi
+if [ ! -f "$extra/store-malt.json" ]; then step extra npx tsx scripts/ui10ExtraStates.ts "$extra"; fi
 cp "$states/moments-legacy.json" "$extra/moments-extra.json" "$out/gates/" 2>/dev/null || true
 step captures npx tsx scripts/ui10Captures.ts "$out/captures" --url "$URL" --states "$states" --endings "$endings" --extra "$extra"
 printf '%s\n' "${results[@]}" > "$out/gates/ui10-exit-codes.txt"

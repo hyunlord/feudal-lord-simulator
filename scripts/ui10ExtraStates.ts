@@ -4,7 +4,10 @@
 //    brother's son — the family scenario L4 gives the town's old lord (tests/chapterFiveLegacy.test.ts `withFamily`),
 //    the Crown paid, run to the succession (seed 2's own house has one heir, a distant kinsman);
 //  - `interlude.market_fire`: the market's fire of 1394 in a town without a guild (seed 2 formed one in chapter 4, so its
-//    1394 is the guild's quarrel). The town's chapter 4 guild, if it has one, is left out (the guild refused).
+//    1394 is the guild's quarrel). The town's chapter 4 guild, if it has one, is left out (the guild refused). The
+//    Crown's tax answered first (its card would stand before the fire's);
+//  - `store-malt`: the first tick a storehouse holds malt (FIX-8's store; seed 2's stores hold none at its moments), the
+//    storehouse inspector with malt and the granary's without it.
 // Beside them moments-extra.json (what each is).
 //   tsx scripts/ui10ExtraStates.ts <out-dir>
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
@@ -57,14 +60,22 @@ if (heir !== undefined) save(HEIR_CHOICE_PETITION_ID, asked, { petitionId: heir.
 const guilded = start.reorganisation?.guild !== undefined;
 const withoutGuild = (state: GameState): GameState => { const { guild: _guild, ...reorganisation } = state.reorganisation!; return { ...state, reorganisation }; };
 const guildless = guilded ? withoutGuild(start) : start;
-const staple = runAnswering(movedTo(guildless, at(...B.staple)), at(...B.staple) + 1, {});
-const fire = runAnswering(movedTo(staple, at(...B.guildDispute)), at(...B.guildDispute) + 1, {});
+const taxed = throughLegacy(guildless, LEGACY_ENDING_ANSWERS.free_borough, "royal_tax_envoy");
+const staple = runAnswering(movedTo(taxed, at(...B.staple)), at(...B.staple) + 1, LEGACY_ENDING_ANSWERS.free_borough);
+const fire = runAnswering(movedTo(staple, at(...B.guildDispute)), at(...B.guildDispute) + 1, LEGACY_ENDING_ANSWERS.free_borough);
 if (fire.history?.records.some(record => record.template === "legacy.market_fire" && record.tick === at(...B.guildDispute))) {
   save("interlude.market_fire", fire, { guildRemoved: guilded, interludes: legacyInterludes(fire) });
 }
 
+// A storehouse with malt: the town run on (the standard answers) until one holds some, a year at most.
+const maltIn = (state: GameState) => state.buildings.filter(building => building.kind === "storehouse" && (building.inventory.malt ?? 0) > 0);
+let malted = start;
+for (let step = 0; step < 4_000 && maltIn(malted).length === 0; step += 1) malted = runAnswering(malted, malted.tick + 1, LEGACY_ENDING_ANSWERS.free_borough);
+if (maltIn(malted).length > 0) save("store-malt", malted, { stores: maltIn(malted).map(building => [building.id, building.inventory.malt]),
+  granaryMalt: malted.buildings.filter(building => building.kind === "granary").map(building => [building.id, building.inventory.malt ?? 0]) });
+
 writeFileSync(join(out, "moments-extra.json"), JSON.stringify(found, null, 1) + "\n");
-const missing = [HEIR_CHOICE_PETITION_ID, "interlude.market_fire"].filter(name => found[name] === undefined);
+const missing = [HEIR_CHOICE_PETITION_ID, "interlude.market_fire", "store-malt"].filter(name => found[name] === undefined);
 const three = ((found[HEIR_CHOICE_PETITION_ID]?.candidates as unknown[] | undefined) ?? []).length === 3;
 console.log(JSON.stringify({ found: Object.fromEntries(Object.entries(found).map(([name, about]) => [name, about.year])), threeHeirs: three, guildRemoved: guilded, missing }));
 process.exitCode = missing.length === 0 && three ? 0 : 1;

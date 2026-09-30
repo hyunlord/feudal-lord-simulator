@@ -5,9 +5,9 @@
 //    (the Staple, the guild's quarrel or the market's fire, the parish's nave, the deposition) a small world shot before
 //    the story's pop-up (the story waits STORY_DELAY_MS) and the pop-up after; the season strip's chapter 5 forecast;
 //  ② the four decision cards (the heir's with its candidates) and the interlude's two petition cards;
-//  ③ the faction tab after 1399 (the new king), the coin ledger's chapter 5 money lines, the stock table's "보관 N곳" fold (malt, store by
-//    store), the storehouse inspector with malt and the granary's without it, the empty manor close up (paused, zoom
-//    1.6), the keep's inspector and the rights tab's seat line (the family gone to its country manor);
+//  ③ the faction tab after 1399 (the new king), the ledger's stock tab at the campaign's end and its "보관 N곳" fold,
+//    the storehouse inspector with malt and the granary's without it (--extra's store-malt), the empty manor close up
+//    (paused, zoom 1.6; the market in a town without a keep), the keep's inspector and the rights tab's seat line;
 //  ④ the campaign's end: chapter 5's page, the legacy verdict and ending (one screen), the chronicle book (title,
 //    chapter 5's page, the family tree, the factions, the legacy page) and its text export; the ending a few ticks on;
 //  ⑤ with --endings: each of the six endings' saves (ui10-ending-<id>.save.json), its ending screen;
@@ -31,6 +31,8 @@ const SEL = {
   // The heir's card (StoryModals HeirCandidate): each candidate.
   heirCandidate: ".petition-card .petition-heir",
   eventChip: ".event-chip",
+  // The event card's button that opens the petition's card.
+  decideButton: "결정하기",
   storyModal: ".story-modal",
   modal: ".petition-card, .chronicle-page, .chapter-preview, .famine-card, .story-modal, .event-card",
   dismiss: [".chronicle-page .chronicle-keep", ".story-modal-later", ".season-ledger-resume"],
@@ -39,19 +41,18 @@ const SEL = {
   ledgerDock: "[data-dock='ledger']",
   ledgerDrawer: ".ledger-drawer",
   ledgerTab: (tab: string) => `[data-ledger-tab='${tab}']`,
-  // The coin's ledger (ResourceBar → LedgerPanel): its account and window tabs, its source and entry rows.
-  coin: ".resource-bar__coin",
+  // The stock tab's chapter ledgers (the wages', the reorganisation's); the category panel (LedgerPanel) if mounted.
+  chapterLedger: ".ledger-wage-ledger",
   coinPanel: ".ledger-panel",
-  coinPanelTab: ".ledger-panel .ledger-panel__tab",
   heldToggle: ".ledger-held-toggle",
-  heldStores: (resource: string) => `[data-resource-stores='${resource}'] li`,
+  heldStores: "[data-resource-stores] li",
   rightsSeat: ".ledger-rights-seat",
   chronicleTab: ".ledger-tab--chronicle",
   chronicleSubTab: ".chronicle-tab",
   factionRow: ".chronicle-factions-row",
   historyEnding: ".chronicle-ending",
   inspector: ".left-inspector",
-  storeInspector: ".left-inspector .store-inspector",
+  storeInspector: ".store-inspector",
   chroniclePage: ".chronicle-page",
   chronicleNext: ".chronicle-page .chronicle-next",
   // The legacy verdict and the ending are one screen (LegacyEndingScreen).
@@ -70,7 +71,7 @@ type Locator = { first: () => Locator; last: () => Locator; click: (options?: ob
   screenshot: (options: object) => Promise<Buffer>; evaluate: <T>(f: (node: Element) => T) => Promise<T> };
 type Download = { suggestedFilename: () => string };
 type Page = { waitForTimeout: (ms: number) => Promise<void>; screenshot: (options: object) => Promise<Buffer>; evaluate: <T, A = void>(f: (arg: A) => T, arg?: A) => Promise<T>;
-  locator: (selector: string) => Locator; keyboard: { press: (key: string) => Promise<void> }; mouse: { click: (x: number, y: number) => Promise<void> };
+  locator: (selector: string) => Locator; getByRole: (role: string, options: object) => Locator; keyboard: { press: (key: string) => Promise<void> }; mouse: { click: (x: number, y: number) => Promise<void> };
   on: (event: string, handler: (error: unknown) => void) => void; waitForEvent: (event: "download", options: object) => Promise<Download>; close: () => Promise<void> };
 type Proof = { tileClientPoint: (tile: object) => { clientX: number; clientY: number } };
 const [out] = process.argv.slice(2);
@@ -94,7 +95,7 @@ const result: Record<string, unknown> = {};
 const errors: string[] = [];
 const shots: string[] = [];
 
-// The shots are re-encoded in a blank page (a canvas, scaled, JPEG): full frames at 3/4, world shots at 1/2, a box at
+// The shots are re-encoded in a blank page (a canvas, scaled, JPEG): full frames at 0.7, world shots at 0.4, a box at
 // its own size up to 960 px wide.
 const encoder = await (await (browser as unknown as { newContext: () => Promise<{ newPage: () => Promise<unknown> }> }).newContext()).newPage() as Page;
 async function save(file: string, png: Buffer, scale: number, quality = 0.62) {
@@ -109,7 +110,7 @@ async function save(file: string, png: Buffer, scale: number, quality = 0.62) {
   writeFileSync(join(out!, file), Buffer.from(jpeg, "base64"));
   shots.push(file);
 }
-const shoot = async (page: Page, file: string, scale = 0.75) => save(file, await page.screenshot({ type: "png" }), scale);
+const shoot = async (page: Page, file: string, scale = 0.7) => save(file, await page.screenshot({ type: "png" }), scale, 0.56);
 const shootBox = async (page: Page, selector: string, file: string) => save(file, await page.locator(selector).first().screenshot({ type: "png" }), 1);
 
 function focus(state: GameState): [number, number] {
@@ -155,7 +156,7 @@ for (const [index, name] of MOMENTS.entries()) {
     const { page, close } = await named(name, STORY_DELAY_MS);
     const prefix = `${name.startsWith("legacy.") ? "e" : "i"}${String(index + 1).padStart(2, "0")}-${name.slice(name.indexOf(".") + 1)}`;
     await page.waitForTimeout(600);
-    await shoot(page, `${prefix}-1-world.jpg`, 0.5);
+    await shoot(page, `${prefix}-1-world.jpg`, 0.4);
     const world = await screen(page);
     await page.waitForTimeout(STORY_DELAY_MS + 1_200);
     if ((await screen(page)).modal === null && await page.locator(SEL.eventChip).count() > 0) {
@@ -183,9 +184,14 @@ const CARDS = ["royal_tax", "heir_choice", "borough_autonomy", "legacy_choice", 
 for (const [index, name] of CARDS.entries()) {
   if (!has(name)) { result[name] = { absent: true }; continue; }
   await step(name, async () => {
-    const { page, close } = await named(name, 0);
-    await page.locator(SEL.petitionCard).waitFor({ timeout: 60_000 }).catch(async () => { await page.locator(SEL.eventChip).first().click(); });
-    await page.locator(SEL.petitionCard).waitFor({ timeout: 30_000 }); await page.waitForTimeout(700);
+    // As a player opens it (as scripts/ui10CardsCaptures.ts): the story's short wait, else the chip and [결정하기].
+    const { page, close } = await named(name, 600);
+    await page.waitForTimeout(2_000);
+    if (await page.locator(SEL.petitionCard).count() === 0 && await page.locator(SEL.eventChip).count() > 0) {
+      await page.locator(SEL.eventChip).first().click({ timeout: 5_000 }); await page.waitForTimeout(600);
+      await page.getByRole("button", { name: SEL.decideButton }).first().click({ timeout: 5_000 }); await page.waitForTimeout(600);
+    }
+    await page.locator(SEL.petitionCard).waitFor({ timeout: 15_000 }); await page.waitForTimeout(700);
     await shootBox(page, SEL.petitionCard, `d${index + 1}-${name.replace("extra:", "")}${name.startsWith("extra:") ? "-three" : ""}.jpg`);
     const state = load(name);
     result[name] = { ui: await screen(page), candidates: name.endsWith("heir_choice") ? await texts(page, SEL.heirCandidate) : undefined,
@@ -207,57 +213,58 @@ await step("f1-factions-new-king", async () => {
   result["f1-factions-new-king"] = { state: name, rows: await texts(page, SEL.factionRow) };
   await close();
 });
-// The coin's ledger (the resource bar's coin detail): chapter 5's money lines — the Crown's subsidy, the heir's relief,
-// the charter's fee, the fee farm, the endowment — the legacy's season (recent) and the whole campaign (전체).
-for (const [file, name, windowLabel] of [["l1-coin-ledger-legacy", "legacy.legacy_record", null], ["l1-coin-ledger-campaign", "chapter5-end", "전체"]] as const) {
-  await step(file, async () => {
-    const { page, close } = await named(name, HELD);
-    await page.waitForTimeout(1_000); await dismiss(page);
-    await page.locator(SEL.coin).first().click(); await page.waitForTimeout(700);
-    if (windowLabel !== null) {
-      await page.evaluate(([query, label]) => { for (const tab of document.querySelectorAll<HTMLElement>(query)) if (tab.textContent?.trim() === label) tab.click(); }, [SEL.coinPanelTab, windowLabel] as const);
-      await page.waitForTimeout(600);
-    }
-    await shootBox(page, SEL.coinPanel, `${file}.jpg`);
-    result[file] = await texts(page, `${SEL.coinPanel} li`);
-    await close();
-  });
-}
-// The stock table's "보관 N곳" unfolded for malt (each store's name and amount), the map unlit.
+// The ledger drawer's stock tab at the campaign's end (the chapters' money sections). Chapter 5's categories
+// (royal_subsidy, succession_relief, legacy_endowment, charter_fee) are drawn only by LedgerPanel, which no screen mounts.
+await step("l1-ledger-chapter5", async () => {
+  const { page, close } = await named("chapter5-end", HELD);
+  await page.waitForTimeout(1_000); await dismiss(page);
+  await page.locator(SEL.ledgerDock).first().click(); await page.waitForTimeout(700);
+  await page.locator(SEL.ledgerTab("stock")).first().click(); await page.waitForTimeout(700);
+  await page.evaluate(query => { const nodes = document.querySelectorAll(query); nodes[nodes.length - 1]?.scrollIntoView({ block: "end" }); }, SEL.chapterLedger);
+  await page.waitForTimeout(300);
+  await shootBox(page, SEL.ledgerDrawer, "l1-ledger-chapter5.jpg");
+  result["l1-ledger-chapter5"] = { sections: await texts(page, `${SEL.chapterLedger} h3, ${SEL.chapterLedger} h4`), coinPanels: await page.locator(SEL.coinPanel).count() };
+  await close();
+});
+// The stock table's "보관 N곳" unfolded (malt's if any store holds it, else the first row's), the map unlit.
 await step("l2-ledger-fold-malt", async () => {
   const { page, close } = await named("chapter5-end", HELD);
   await page.waitForTimeout(1_000); await dismiss(page);
   await page.locator(SEL.ledgerDock).first().click(); await page.waitForTimeout(700);
   await page.locator(SEL.ledgerTab("stock")).first().click(); await page.waitForTimeout(700);
   const opened = await page.evaluate(query => {
-    const toggle = [...document.querySelectorAll<HTMLElement>(query)].find(node => node.getAttribute("aria-label")?.includes("엿기름"));
-    toggle?.scrollIntoView({ block: "center" }); toggle?.click(); return toggle !== undefined;
+    const toggles = [...document.querySelectorAll<HTMLElement>(query)];
+    const toggle = toggles.find(node => node.getAttribute("aria-label")?.includes("엿기름")) ?? toggles[0];
+    toggle?.scrollIntoView({ block: "center" }); toggle?.click(); return toggle?.getAttribute("aria-label") ?? null;
   }, SEL.heldToggle);
   await page.waitForTimeout(600);
   await shootBox(page, SEL.ledgerDrawer, "l2-ledger-fold-malt.jpg");
-  result["l2-ledger-fold-malt"] = { toggle: opened, stores: await texts(page, SEL.heldStores("malt")) };
+  result["l2-ledger-fold-malt"] = { toggle: opened, stores: await texts(page, SEL.heldStores) };
   await close();
 });
 const STORES = [["b1-storehouse-malt", "storehouse", (held: number) => held > 0], ["b2-granary-no-malt", "granary", (held: number) => held === 0]] as const;
 for (const [file, kind, wanted] of STORES) {
   await step(file, async () => {
-    const state = load("chapter5-end");
+    const source = has("extra:store-malt") ? "extra:store-malt" : "chapter5-end";
+    const state = load(source);
     const store = state.buildings.filter(building => building.kind === kind).find(building => wanted(building.inventory.malt ?? 0))
       ?? state.buildings.find(building => building.kind === kind)!;
     const { page, close } = await scene(state, file, HELD, { tile: [store.tx + 1, store.ty + 1], zoom: 1.2 });
     await dismiss(page);
     await inspect(page, store, SEL.storeInspector);
     await shootBox(page, SEL.storeInspector, `${file}.jpg`);
-    result[file] = { store: store.id, malt: store.inventory.malt ?? 0, lines: await texts(page, `${SEL.storeInspector} li, ${SEL.storeInspector} p`) };
+    result[file] = { state: source, store: store.id, malt: store.inventory.malt ?? 0, lines: await texts(page, `${SEL.storeInspector} li, ${SEL.storeInspector} p`) };
     await close();
   });
 }
 await step("w1-empty-manor", async () => {
   const state = load("empty-manor");
-  const { page, close } = await scene(state, "empty-manor", HELD, { zoom: 1.6 });
+  // A town without a keep has no manor to show: the market, where the petitioners now gather (storyWorldProps).
+  const keep = state.buildings.find(building => building.kind === "keep") ?? state.buildings.find(building => building.kind === "market");
+  const { page, close } = await scene(state, "empty-manor", HELD, { zoom: 1.6, ...(keep === undefined ? {} : { tile: [keep.tx + 1, keep.ty + 1] }) });
   await page.waitForTimeout(1_000); await dismiss(page);
   await shoot(page, "w1-empty-manor.jpg");
-  result["w1-empty-manor"] = { tick: state.tick, family: state.legacy?.family ?? null, at: focus(state) };
+  result["w1-empty-manor"] = { tick: state.tick, family: state.legacy?.family ?? null, at: keep === undefined ? focus(state) : [keep.tx, keep.ty], kind: keep?.kind ?? null };
   await close();
 });
 await step("w2-keep-inspector", async () => {
