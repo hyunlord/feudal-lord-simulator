@@ -4,7 +4,6 @@ import test from "node:test";
 import { ARABLE_CONFIG } from "../src/content/arableConfig";
 import { BALANCE } from "../src/content/balanceConfig";
 import { arableSupplyShort } from "../src/engine/autoplayArable";
-import { measuredFoodDecision } from "../src/engine/autoplayFoodMeasuredDecision";
 import type { GameState } from "../src/engine/engine.types";
 import { runProduction } from "../src/engine/simulationProduction";
 import { expectedAnnualWheat, HARVEST_RECORD_YEARS, nextHarvestRecord, realisedAnnualWheat, realisedHarvestPermille, sownExpectedWheat } from "../src/zones/arableOutlook";
@@ -80,33 +79,4 @@ test("GP-2 ripe wheat left in the field because the barns were full counts as gr
   const counted = { ...world, harvestRecord: { year: 3, expected: 500, wheat: 300, lost: 0, past: [] } };
   assert.equal(nextHarvestRecord(counted, 0, 40)!.lost, 40, "winter's loss is added to the counted year");
   assert.equal(nextHarvestRecord({ ...world, harvestRecord: { year: 3, wheat: 0, lost: 0, past: [] } }, 0, 40)!.lost, 0, "a year with no harvest keeps no loss");
-});
-
-function starvedMills(inventory: (kind: string) => Record<string, number>): GameState {
-  const base = replayFoodObservation(withAmpleGrain(observedFoodTown()), { wheat: 1000, bread: 40, exports: 0 }, 2400);
-  return { ...base, buildings: base.buildings.map(b => ["farmstead", "mill", "granary"].includes(b.kind) ? { ...b, inventory: inventory(b.kind) } : b) };
-}
-
-test("GP-3 starving mills with no cart-load of wheat anywhere after years whose fields grew too little: more fields", () => {
-  const empty = { ...starvedMills(() => ({})), harvestRecord: { year: 0, wheat: 0, lost: 0, past: [{ expected: 10_000, wheat: 100, lost: 0 }, { expected: 10_000, wheat: 100, lost: 0 }, { expected: 10_000, wheat: 100, lost: 0 }] } };
-  assert.deepEqual(measuredFoodDecision(empty), { kind: "farmstead", reason: "actual_wheat_deficit" }, "the grain step (GP-2) sees it first");
-  assert.deepEqual(measuredFoodDecision(empty, { ignoreGrain: true }), { kind: "farmstead", reason: "grain_exhausted" });
-});
-
-test("GP-3 starving mills with no wheat and no year that grew too little: between harvests, nothing to build, not a hauling problem", () => {
-  assert.deepEqual(measuredFoodDecision(starvedMills(() => ({}))), { kind: null, reason: "grain_between_harvests" });
-  const grown = { ...starvedMills(() => ({})), harvestRecord: { year: 0, wheat: 0, lost: 0, past: [{ expected: 10_000, wheat: 7_000, lost: 3_000 }] } };
-  assert.deepEqual(measuredFoodDecision(grown), { kind: null, reason: "grain_between_harvests" });
-});
-
-test("GP-3 mills short of wheat now but not starving over the window: the old rules decide", () => {
-  const base = replayFoodObservation(withAmpleGrain(observedFoodTown()), { wheat: 1000, bread: 40, exports: 0 }, 0);
-  const idle = { ...base, buildings: base.buildings.map(b => ["farmstead", "mill", "granary"].includes(b.kind) ? { ...b, inventory: {} } : b) };
-  assert.notEqual(measuredFoodDecision(idle).reason, "grain_between_harvests");
-  assert.notEqual(measuredFoodDecision(idle).reason, "grain_exhausted");
-});
-
-test("GP-3 starving mills while a cart-load of wheat waits somewhere is still a hauling problem", () => {
-  const waiting = starvedMills(kind => kind === "farmstead" ? { wheat: BALANCE.CARTER_CAPACITY } : {});
-  assert.deepEqual(measuredFoodDecision(waiting), { kind: null, reason: "wheat_transport_blocked" });
 });

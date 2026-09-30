@@ -2,8 +2,7 @@ import { BALANCE } from '../content/balanceConfig';
 import { strandedFoodSupply } from './autoplayFoodRoutes';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { availableSpace, availableStock } from '../economy/storage';
-import { annualWheatNeed, arableSupplyShort } from './autoplayArable';
-import { realisedAnnualWheat } from '../zones/arableOutlook';
+import { arableSupplyShort } from './autoplayArable';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
 import { foodEfficiencyMetrics } from './autoplayFoodEfficiency';
 import { foodFacilityWithinLimit } from './autoplayFoodLimits';
@@ -12,8 +11,7 @@ import { resolveBuildingRoute } from './routing';
 import type { GameState } from './engine.types';
 
 export type MeasuredFoodReason = 'observation_warmup' | 'food_staff_shortage' | 'food_route_blocked'
-  | 'wheat_transport_blocked' | 'food_supply_sufficient' | 'actual_wheat_deficit' | 'actual_bread_deficit'
-  | 'grain_exhausted' | 'grain_between_harvests';
+  | 'wheat_transport_blocked' | 'food_supply_sufficient' | 'actual_wheat_deficit' | 'actual_bread_deficit';
 export interface MeasuredFoodDecision {
   readonly kind: 'farmstead' | 'mill' | null;
   readonly reason: MeasuredFoodReason;
@@ -68,20 +66,6 @@ export function measuredFoodDecision(state: GameState, options: { readonly ignor
     && stockedWheat >= Math.max(0, breadDeficit) * (BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2)) {
     return { kind: 'mill', reason: 'actual_bread_deficit' };
   }
-  if (!millsSupplied) {
-    // GP-3: mills starving (a fifth of their time) with no cart-load of wheat anywhere have nothing to be hauled — the
-    // grain ran out. A kept year whose fields grew less than a year's bread (GP-2) makes it a shortage (more fields);
-    // otherwise it is the weeks before a harvest (nothing to build, and no hauling remedy either).
-    const starving = sample.eligibleMillTicks > 0 && sample.rawStarvedTicks / sample.eligibleMillTicks >= 0.2;
-    if (starving && stockedWheat < BALANCE.CARTER_CAPACITY) {
-      return grownHarvestShort(state) ? { kind: 'farmstead', reason: 'grain_exhausted' } : { kind: null, reason: 'grain_between_harvests' };
-    }
-    return { kind: null, reason: 'wheat_transport_blocked' };
-  }
+  if (!millsSupplied) return { kind: null, reason: 'wheat_transport_blocked' };
   return { kind: 'mill', reason: 'actual_bread_deficit' };
-}
-
-/** GP-3: a kept year shows the fields grew less than a year's bread needs (no kept year: not known, not short). */
-function grownHarvestShort(state: GameState): boolean {
-  return (state.harvestRecord?.past.length ?? 0) > 0 && realisedAnnualWheat(state) < annualWheatNeed(state);
 }
