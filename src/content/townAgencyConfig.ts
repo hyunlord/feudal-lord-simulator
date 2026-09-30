@@ -67,6 +67,8 @@ export const POLICY_WEIGHTS: Readonly<Record<EstatePolicy, Readonly<Partial<Reco
   defence: { road: 15, storehouse: 20, quarry: 20, masonry: 20, keep: 25, logging_camp: 10, house: -10 },
 };
 
+/** TA-4: an opportunity (no need behind it) counts its policy's weight this many times. */
+export const OPPORTUNITY_POLICY_FACTOR = 2;
 /** TA-6 ②: a subsidy adds this many points per 10 pennies (and pays the pennies). */
 export const SUBSIDY_POINTS_PER_10D = 4;
 /** TA-6 ③: the merchants' projects gain this many points per 100 ‰ the dues are below the usual (lose above). */

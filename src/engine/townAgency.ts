@@ -9,7 +9,7 @@ import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingC
 import {
   ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, BUILDER_OF_KIND, DUES_POINTS_PER_100_PERMILLE,
   FIRE_NEIGHBOUR_POINTS, MATERIAL_PENNIES, NEED_STEP, NEED_TOP, OPEN_SITES_MAX, OPPORTUNITY_KINDS, POLICY_WEIGHTS,
-  LOAN_NEED, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, START_SCORE, STARTS_PER_WEEK, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D,
+  LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, START_SCORE, STARTS_PER_WEEK, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D,
 } from "../content/townAgencyConfig";
 import { constructionSiteId, isBuildingConstructionSite } from "../economy/construction";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
@@ -168,6 +168,16 @@ function roadDistance(state: GameState, tx: number, ty: number): number {
   return best;
 }
 
+/**
+ * TA-4 policy: the policy's weight on the kind; a burgage plot to fill takes the policy's `fill_plot` too; an
+ * opportunity (no need behind it) takes the weight twice — the policy is why the actor builds it at all.
+ */
+function policyPoints(policy: EstatePolicy, key: string, rank: number | null): number {
+  const weight = POLICY_WEIGHTS[policy][key] ?? 0;
+  if (rank === null) return weight * OPPORTUNITY_POLICY_FACTOR;
+  return weight + (rank < -1 ? POLICY_WEIGHTS[policy].fill_plot ?? 0 : 0);
+}
+
 /** TA-4: a proposal's named reasons. */
 function reasonsOf(state: GameState, agency: AgencyState, action: TownAction, actor: ActorKind, rank: number | null,
   stuckWheat: number, stuckRoads: number): { readonly reasons: readonly Reason[]; readonly subsidy: number; readonly cost: number } {
@@ -179,7 +189,7 @@ function reasonsOf(state: GameState, agency: AgencyState, action: TownAction, ac
   const add = (name: Reason["name"], value: number) => { const rounded = Math.round(value); if (rounded !== 0) reasons.push({ name, value: rounded }); };
   add("need", rank === null ? 0 : NEED_TOP - NEED_STEP * (rank + 3));
   const policyKey = kind ?? (action.kind === "place_road" ? "road" : action.kind === "paint_zone" ? "zone" : what);
-  add("policy", (POLICY_WEIGHTS[agency.policy][policyKey] ?? 0) + (rank !== null && rank < -1 ? POLICY_WEIGHTS[agency.policy].fill_plot ?? 0 : 0));
+  add("policy", policyPoints(agency.policy, policyKey, rank));
   const subsidy = kind === null ? 0 : agency.subsidies.filter(entry => entry.kind === kind).reduce((sum, entry) => sum + entry.amount, 0);
   add("subsidy", Math.min(60, Math.floor(subsidy / 10) * SUBSIDY_POINTS_PER_10D));
   if (actor === "merchants") add("dues", (1000 - agencyDuesPermille(state)) / 100 * DUES_POINTS_PER_100_PERMILLE);
@@ -380,7 +390,7 @@ export function auditReceipt(state: GameState, receipt: ProjectReceipt): readonl
   const kind = receipt.what in BUILDING_CONFIG_BY_KIND ? receipt.what as BuildingKind : null;
   expected.set("need", rank === null ? 0 : NEED_TOP - NEED_STEP * (rank + 3));
   const key = kind ?? (receipt.what === "road" ? "road" : receipt.what.startsWith("zone:") ? "zone" : receipt.what);
-  expected.set("policy", (POLICY_WEIGHTS[agency.policy][key] ?? 0) + (rank !== null && rank < -1 ? POLICY_WEIGHTS[agency.policy].fill_plot ?? 0 : 0));
+  expected.set("policy", policyPoints(agency.policy, key, rank));
   const subsidy = kind === null ? 0 : agency.subsidies.filter(entry => entry.kind === kind).reduce((sum, entry) => sum + entry.amount, 0);
   expected.set("subsidy", Math.min(60, Math.floor(subsidy / 10) * SUBSIDY_POINTS_PER_10D));
   if (receipt.actor === "merchants") expected.set("dues", Math.round((1000 - agencyDuesPermille(state)) / 100 * DUES_POINTS_PER_100_PERMILLE));
