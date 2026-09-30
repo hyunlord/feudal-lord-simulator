@@ -31,14 +31,21 @@ async function shot(page, selector, file) {
   log.shots.push({ file, selector, ...metrics });
 }
 async function run(name, fn) { try { await fn(); } catch (error) { log.errors.push(`${name}: ${String(error).slice(0, 300)}`); } }
-const scene = (base, name, tile, zoom = 1.4) => openScene(browser, { state: load(name), tile, baseUrl: base, width: 1280, height: 800, zoom, run: false, initScript: TUTORIAL_OFF, query: '' });
+// The goal chip is the tutorial's: its scene keeps the tutorial on (every other scene turns it off, as the skin audit does).
+const scene = (base, name, tile, zoom = 1.4, tutorial = false) => openScene(browser, { state: load(name), tile, baseUrl: base, width: 1280, height: 800, zoom, run: false,
+  initScript: tutorial ? '' : TUTORIAL_OFF, query: '' });
 
 for (const [when, base] of Object.entries(urls)) {
   const town = load('merchant-town');
-  await run(`${when} goal-chip+ledger`, async () => {
+  await run(`${when} goal-chip`, async () => {
+    const { context, page } = await scene(base, 'merchant-town', houseTile(town), 1.4, true);
+    await pause(1200);
+    await shot(page, '.goal-chip-rail .goal-card', `goal-chip-${when}.jpg`);
+    await context.close();
+  });
+  await run(`${when} ledger`, async () => {
     const { context, page } = await scene(base, 'merchant-town', houseTile(town));
     await pause(800);
-    await shot(page, '.goal-chip-rail .goal-card', `goal-chip-${when}.jpg`);
     await page.locator("[data-dock='ledger']").click(); await pause(600);
     await shot(page, '.ledger-drawer', `ledger-drawer-${when}.jpg`);
     await context.close();

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # UI-AUDIT-1 frame tokens on the DGX: the skin audit (UI-6's set, docs/verification/install30/ui6) and the four before /
 # after captures (docs/verification/uiaudit1/tokens-shots), this build beside the trunk before it:
-#   scripts/remote/run.sh render-UIAUDIT-tokens-<sha7> --detach -- bash scripts/uiauditTokensVerification.sh <base-sha>
+#   scripts/remote/run.sh render-UIAUDIT-tokens-<sha7> --detach -- bash scripts/uiauditTokensVerification.sh <base-sha> [shots]
+# (`shots`: the captures alone).
 # As scripts/remote/with-base-build.sh, but the base worktree lives outside the run folder: this build's Vite watches its
 # whole root, and with the base inside it the two servers pass the DGX's 65536 inotify watches (ENOSPC, the run's Vite
 # dies at start).
@@ -24,5 +25,5 @@ for url in "$URL" "$BASE_URL"; do
   curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; exit 1; }
 done
 echo "this $URL · base $BASE_URL ($base_sha)"
-bash scripts/install30Verification.sh audit
+[ "${2:-}" = "shots" ] || bash scripts/install30Verification.sh audit
 node scripts/uiauditTokenCaptures.mjs docs/verification/uiaudit1/tokens-shots --url "$URL" --base "$BASE_URL" --states "${UI5_STATES:-$HOME/fls-ui5-states-v22}"
