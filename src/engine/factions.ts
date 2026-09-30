@@ -184,7 +184,8 @@ function yearTurn(state: GameState, factionState: FactionState): FactionState {
     if (def.leaders === "outside" && leaderId !== null) {
       const leader = people[index.get(leaderId)!]!;
       const king = kingOf(year);
-      const dies = faction.id === "crown" ? leader.givenName !== king.name
+      // Item 7: skip the crown change at spring 1399 — deposition happens at autumn 1399 (LEGACY_BALANCE.deposition)
+      const dies = faction.id === "crown" ? (leader.givenName !== king.name && year !== LEGACY_BALANCE.deposition[0])
         : hashSeed(state.seed, "faction-death", Number(leader.id.slice(2)), year) % 1000 < Math.min(1000, 4 * seasonDeathPermille(ageOf(leader, year)));
       if (dies) {
         people[index.get(leaderId)!] = { ...leader, alive: false, deathYear: year, deathCause: "age" };
@@ -252,6 +253,30 @@ export function advanceFactions(state: GameState): GameState {
   else if (state.tick % SEASON !== 0) return state;
   else {
     if (state.tick % YEAR === 0) current = yearTurn(state, current);
+    // Item 7: Henry IV deposition at autumn 1399 — Richard II is removed with deathCause "deposed"
+    const [depYear, depSeason] = LEGACY_BALANCE.deposition;
+    if (currentYear(state) === depYear && state.tick % YEAR === depSeason * SEASON) {
+      const crownFaction = current.factions.find(f => f.id === "crown");
+      const crownLeaderId = crownFaction?.leaderId ?? null;
+      if (crownLeaderId !== null) {
+        const depYearNow = currentYear(state);
+        const king = kingOf(depYearNow);
+        const leaderAt = current.people.findIndex(p => p.id === crownLeaderId);
+        const crownLeader = current.people[leaderAt];
+        if (crownLeader !== undefined && crownLeader.alive && crownLeader.givenName !== king.name) {
+          const people = [...current.people];
+          people[leaderAt] = { ...crownLeader, alive: false, deathYear: depYearNow, deathCause: "deposed" as const };
+          let ordinal = current.nextOrdinal;
+          const heir = outsidePerson(state, ordinal, { factionId: "crown", givenName: king.name, birthYear: king.born,
+            classBand: "gentry", occupation: "king", year: depYearNow, predecessor: crownLeader }, people);
+          ordinal += 1;
+          people.push(heir);
+          current = { ...current, people, nextOrdinal: ordinal, factions: current.factions.map(f =>
+            f.id !== "crown" ? f : { ...f, leaderId: heir.id,
+              timeline: [...f.timeline, { tick: state.tick, year: depYearNow, kind: "leader" as const, id: "succeeded", personId: heir.id }] }) };
+        }
+      }
+    }
     const leaders = townLeaders(state, current.factions);
     const changed = current.factions.some(faction => leaders.has(faction.id) && (leaders.get(faction.id)?.id ?? null) !== faction.leaderId);
     if (changed) {
