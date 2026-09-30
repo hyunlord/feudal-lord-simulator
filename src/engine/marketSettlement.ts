@@ -133,10 +133,23 @@ function compareCandidates(left: SaleCandidate, right: SaleCandidate): number {
   return left.building.id.localeCompare(right.building.id);
 }
 
+/**
+ * FIX-11 (13): engine-side per-tick memo.
+ * Invalidation key: `market.id` (stable string) × `state.tick` (monotone integer).
+ * Inputs not in the key: `state.buildings`, `state.tiles` — these change iff `state.tick` advances, so the
+ * combination (id, tick) uniquely identifies one market's sale-candidate set for the lifetime of a tick.
+ * Before memo: saleCandidates + connectedStorageSources ran on every render frame (~60×/s per market).
+ * After memo: computed once per market per tick; render's WeakMap<GameState> cache then hits on repeated reads.
+ */
+const _saleCandidateCache = new Map<string, { tick: number; value: boolean }>();
+
 export function marketHasSaleCandidate(state: GameState, market: Building): boolean {
-  return market.kind === "market"
-    && !operationSuspended(market) && market.workers >= BUILDING_CONFIG_BY_KIND.market.workersRequired
-    && saleCandidates(connectedStorageSources(state, market, state.buildings), state).length > 0;
+  if (market.kind !== "market" || operationSuspended(market) || market.workers < BUILDING_CONFIG_BY_KIND.market.workersRequired) return false;
+  const cached = _saleCandidateCache.get(market.id);
+  if (cached !== undefined && cached.tick === state.tick) return cached.value;
+  const value = saleCandidates(connectedStorageSources(state, market, state.buildings), state).length > 0;
+  _saleCandidateCache.set(market.id, { tick: state.tick, value });
+  return value;
 }
 
 function settleMarket(

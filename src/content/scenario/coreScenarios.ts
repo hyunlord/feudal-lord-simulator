@@ -13,7 +13,8 @@ const STAGES: readonly StageDef[] = [
   {
     id: "village",
     enterWhen: { all: [] },
-    unlocks: ["house", "well", "storehouse", "granary", "chapel", "wheat_farm", "farmstead", "mill", "logging_camp", "sawmill"],
+    // FIX-11 (11): manor_house is pre-placed; listed here so the scenario exhaustiveness check passes.
+    unlocks: ["house", "well", "storehouse", "granary", "chapel", "wheat_farm", "farmstead", "mill", "logging_camp", "sawmill", "manor_house"],
   },
   {
     id: "market_town",

@@ -62,7 +62,17 @@ export const BUILDING_COPY = {
     inspector: "축융한 베를 물들입니다", worldTarget: "여기에 염색집을 지으세요", history: "염색집" },
   tenter_yard: { name: "텐터 틀", card: "베를 펴 말립니다", purpose: "물들인 베를 틀에 걸어 펴 말리고 다듬어 완성 직물로 만듭니다",
     inspector: "물들인 베를 펴 말립니다", worldTarget: "여기에 텐터 틀을 세우세요", history: "텐터 틀" },
+  // FIX-11 (11): the manor house.
+  manor_house: { name: "영주관", card: "영주 가문의 저택", purpose: "영주 가문이 거처하는 저택입니다",
+    inspector: "영주 가문의 저택", worldTarget: "여기에 영주관을 지으세요", history: "영주관" },
 } as const satisfies { readonly [K in BuildingKind]: BuildingCopy };
+
+// FIX-11 (14): Korean names for the three dye colours the dyehouse assigns to each bolt.
+export const DYE_COLOUR_COPY = {
+  woad: "대청",
+  madder: "꼭두서니",
+  weld: "목서초",
+} as const;
 
 export const buildingCopy = (kind: BuildingKind): BuildingCopy => (BUILDING_COPY as { readonly [K in BuildingKind]: BuildingCopy })[kind];
 

@@ -5,11 +5,18 @@ import {
 import type { House } from "../population/population.types";
 import type { GameState } from "../engine/engine.types";
 import { householdServices } from "../engine/householdServices";
+import { MANOR_HOUSEHOLD } from "../engine/persons.types";
 import type { Tile } from "../world/world.types";
 
 export const OPENING_VILLAGE_CENTER = { tx: 45, ty: 41 } as const;
 export const STARTING_HOUSE_ID = "house-46-40-0";
 export const OPENING_VILLAGE_STARVATION_GRACE_TICKS = 6_000;
+
+// FIX-11 (11): the manor house site — inside TOWN_SITE (minTx:30, maxTx:50, minTy:34, maxTy:62), NW of the opening
+// village, not overlapping any opening building or road. Width×Height = 2×2.
+export const MANOR_HOUSE_TX = 36;
+export const MANOR_HOUSE_TY = 36;
+export const MANOR_HOUSE_ID = "manor-house-36-36-0";
 
 const COTTAGE_ORIGINS = [
   { tx: 44, ty: 40 },
@@ -91,6 +98,18 @@ const OPENING_BUILDINGS = [
     stockReserved: {},
     productionProgress: 0,
   },
+  // FIX-11 (11): the manor house — pre-placed at map generation, linked to the lord's household.
+  {
+    id: MANOR_HOUSE_ID,
+    kind: "manor_house",
+    tx: MANOR_HOUSE_TX,
+    ty: MANOR_HOUSE_TY,
+    workers: 0,
+    inventory: {},
+    reserved: {},
+    stockReserved: {},
+    productionProgress: 0,
+  },
 ] as const satisfies readonly Building[];
 
 function cottageId(tx: number, ty: number): string {
@@ -154,4 +173,39 @@ export function withOpeningVillageServices<State extends GameState>(state: State
     const hasWater = services.houses.get(house.buildingId)?.water.kind === "served";
     return hasWater === house.hasWater ? house : { ...house, hasWater };
   }) };
+}
+
+/**
+ * FIX-11 (11): places the manor house site on an existing GameState. Used by the v35 save migration to add the
+ * manor house to saves that pre-date FIX-11. Pure: returns a new state, does not mutate.
+ */
+export function placeManorSite<State extends GameState>(state: State): State {
+  if (state.buildings.some(b => b.id === MANOR_HOUSE_ID)) return state;
+  const def = BUILDING_CONFIG_BY_KIND["manor_house"];
+  const manor: Building = {
+    id: MANOR_HOUSE_ID,
+    kind: "manor_house",
+    tx: MANOR_HOUSE_TX,
+    ty: MANOR_HOUSE_TY,
+    workers: 0,
+    inventory: {},
+    reserved: {},
+    stockReserved: {},
+    productionProgress: 0,
+  };
+  const tiles = state.tiles.map(tile =>
+    tile.tx >= MANOR_HOUSE_TX && tile.tx < MANOR_HOUSE_TX + def.width &&
+    tile.ty >= MANOR_HOUSE_TY && tile.ty < MANOR_HOUSE_TY + def.height
+      ? { ...tile, buildingId: MANOR_HOUSE_ID }
+      : tile,
+  );
+  return { ...state, buildings: [...state.buildings, manor], tiles };
+}
+
+/**
+ * FIX-11 (11): true when the manor house has no lord's household members assigned (empty display — the lord's
+ * family has not yet been established or all members have died or left).
+ */
+export function manorVacant(state: GameState): boolean {
+  return !(state.persons?.people ?? []).some(p => p.householdId === MANOR_HOUSEHOLD);
 }
