@@ -2,6 +2,8 @@
 //   capture: PLAYWRIGHT_MODULE=... node scripts/variantEvidence.mjs capture <outDir> --after http://127.0.0.1:4197/ --before http://127.0.0.1:4196/
 //     before = the pre-V1 trunk with the curved ground switched on (same ground as after), after = this checkout (defaults).
 //   determinism: PLAYWRIGHT_MODULE=... node scripts/variantEvidence.mjs determinism <out.json> --after http://127.0.0.1:4197/
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/variantEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/variantEvidence.mjs …", entry: import.meta.url });
 import { createHash } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';

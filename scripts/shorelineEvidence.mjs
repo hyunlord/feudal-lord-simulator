@@ -9,6 +9,8 @@
 //   flag:     gate 5, curved ground off (`render-boundary-v2=0`): an FNV-1a hash over the canvas RGBA of the same views in
 //             both builds (software raster) must match.
 //   PLAYWRIGHT_MODULE=... node scripts/shorelineEvidence.mjs flag <out.json> --seed2Bridge <s> --riverBridges <s> --base <url> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/shorelineEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/shorelineEvidence.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';

@@ -2,6 +2,8 @@
 // row), with every building's footprint diamond drawn over the screenshot in red (the camera is the one openScene
 // sets, so a tile's screen point is known exactly). `--label before|after` names the files.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/footprintCaptures.mjs <outDir> --url <url> --label after
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/footprintCaptures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/footprintCaptures.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';

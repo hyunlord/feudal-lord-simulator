@@ -3,6 +3,8 @@
 // walkers on roofs (scripts/nat1Occlusion.ts), close up at zoom 1.8 — before → after — and the whole-town count for the
 // states given (the "0 walkers on roofs" check).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/nat1Captures.ts <out> --url <this> --base <trunk> --states <UI-9 states dir> [--extra <state.json> ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/nat1Captures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/nat1Captures.ts …", entry: import.meta.url });
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { occlusionFaults } from "../src/render/walkerOcclusion";

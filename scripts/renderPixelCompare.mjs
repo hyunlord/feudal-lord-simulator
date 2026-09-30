@@ -2,6 +2,8 @@
 // Used to show that a render-only change leaves the picture as it was.
 //   capture: PLAYWRIGHT_MODULE=... node scripts/renderPixelCompare.mjs capture <outDir> [--url http://127.0.0.1:4194/] [--gpu off] [--query '&x=1']
 //   compare: PLAYWRIGHT_MODULE=... node scripts/renderPixelCompare.mjs compare <beforeDir> <afterDir> [--out result.json]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/renderPixelCompare.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/renderPixelCompare.mjs …", entry: import.meta.url });
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { loadChromium, openScene, sceneStates } from './renderCommitProbe.mjs';

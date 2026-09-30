@@ -3,6 +3,8 @@
 // scripts/ageBandWalkerEvidence.ts (the resident walkers shown, centred on its first child).
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/install5cEvidence.mjs <outDir> --base <url> [--url ...]
 // Writes <view>-before.jpg / <view>-after.jpg and captures.json (the views, their tiles and sources).
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install5cEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/install5cEvidence.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';

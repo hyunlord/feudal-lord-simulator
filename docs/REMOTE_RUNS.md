@@ -20,6 +20,28 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 - **종료 코드**는 원격 명령의 것이다. 요약은 `.remote-runs/<run>/summary.txt`(가드레일은 `guardrail/summary.json`)에 있다.
 - **가드레일의 사람 경로**(CODE-1a): seed 실행 옆에서 `tests/humanPath*.test.ts`(명령 재생, 봇 없음)가 함께 돈다. 결과는 `guardrail/human-path.json`·`human-path.log`이고, 실패하면 가드레일 실행도 실패한다.
 
+## Mac에서 막는 것
+
+`scripts/remote/localGuard.mjs`가 무거운 검증을 Mac에서 시작하면 거부하고(종료 3), 쓸 명령을 알려 준다(결정 RR1).
+
+| 막는 것 | 대신 쓸 것 |
+|---|---|
+| 전체 시험 스위트 `npm test` | `npm run remote:test` |
+| 가드레일 `scripts/efficientGrowthRun.ts` | `npm run remote:guardrail` |
+| 브라우저 캡처 스크립트(Playwright를 쓰는 `scripts/*`, 83개) | `scripts/remote/run.sh <세션>-<작업ID> -- <같은 명령>`, 브라우저 시험은 `npm run remote:browser` |
+
+- **Mac에서 되는 것**: 단일 파일·소규모 시험(`npx tsx --test tests/<파일>.test.ts`), `npm run typecheck`, `npm run lint`, `npm run dev`, `npm run perf:gate`(끊김 판정은 Mac 실제 창), Astra QA.
+- **판별**: macOS이고 `scutil --get LocalHostName`이 있으면 Mac이다. Mac의 `os.hostname()`은 네트워크가 주는 이름(예 `172.25.nate.com`)이라 쓰지 않는다. DGX와 CI는 Linux라 그대로 돈다.
+- **급할 때**: `FLS_ALLOW_LOCAL=1 <같은 명령>`.
+  - 보고서에 적을 문장이 출력된다. 그 보고서에 반드시 적는다.
+  - `.remote-runs/local-heavy.log`(git 밖)에 시각·호스트·커밋·명령이 남는다.
+- **새 브라우저 캡처 스크립트**: 첫 `import` 앞에 두 줄을 넣는다.
+  ```js
+  import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+  refuseHeavyOnMac("브라우저 캡처(scripts/<이름>)", { entry: import.meta.url });
+  ```
+  `entry`가 있으면 다른 모듈이 import할 때는 막지 않는다.
+
 ## 한 번 실행에서 일어나는 일
 1. **동기화**: git이 보는 작업 트리를 보낸다. 추적 파일과 무시되지 않은 새 파일이 대상이고, `node_modules`·`.git`·`dist`는 보내지 않는다.
    - 바뀌지 않은 파일은 DGX에서 직전 실행 폴더로부터 복사한다(`rsync --copy-dest --checksum`). 그래서 네트워크로는 편집한 파일만 건너간다.
@@ -58,7 +80,8 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] -- <아무 명령>  
 - 한글 캡처에 쓰는 폰트는 Noto CJK(`fonts-noto-cjk`)다. 이미 설치되어 있다.
 
 ## 성능 기준선
-- 성능 관문(p95 비교)은 **DGX 대 DGX로만** 한다. Mac 수치와 섞지 않는다.
+- 처리량 관문(p95 비교)은 **DGX 대 DGX로만** 한다. Mac 수치와 섞지 않는다.
+- 끊김 판정은 이것과 따로다. `npm run perf:gate`로 이 Mac의 실제 Chrome 창에서 한다([perf-gate](verification/perf-gate/README.md)). DGX 헤드리스는 소프트웨어 래스터라 끊김 판정에 쓰지 않는다.
 - 기준선은 `perf/baseline-dgx-<sha>.json`이다. `scripts/renderStageBenchmark.mjs`로 한 칸을 3회 × 240 draw 재고(첫 회는 버린다), frameWork·tick·rAF의 중앙·p95를 기록한다. 서버는 DGX Vite 개발 서버(127.0.0.1, 4300~4399)다.
 - 기본 칸은 `lots24:1:still, lots24:1:drag, lots24:2:still, pop176:1:still, newgame:1:still`이다.
 - 비교: `npm run remote:perf -- --baseline perf/baseline-dgx-<sha>.json`을 실행하면 `.remote-runs/<run>/perf/compare.md`에 칸별 p95 비가 나온다.

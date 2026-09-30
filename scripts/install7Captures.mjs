@@ -9,6 +9,8 @@
 //    true in the state: sheaves (a tended strip harvested), a sack cart (a carter carrying wheat), the mill working
 //    (oven smoke), bread at the mill, a bread basket (a distributor out), roof smoke (a house whose bread rose).
 //   PLAYWRIGHT_MODULE=... node scripts/install7Captures.mjs <outDir> --url <this> --base <trunk> [--only chain|views]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install7Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/install7Captures.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';

@@ -12,6 +12,8 @@
 //          place four cottages on plot frontage cells, run at 5x until they stand, pause, then capture the scene and
 //          run the wedge check (full frame and ground layer) on that page. Walkers stay (ground layer skips them).
 //   PLAYWRIGHT_MODULE=... node scripts/buildingGroundEvidence.mjs scene <outDir> --snapshot <state.json.gz> --plan <plan.json> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/buildingGroundEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/buildingGroundEvidence.mjs …", entry: import.meta.url });
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';

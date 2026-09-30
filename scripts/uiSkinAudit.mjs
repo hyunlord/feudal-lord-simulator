@@ -7,6 +7,8 @@
 // elements outlined, plus sheet-desktop.jpg (every state) and the gallery at desktop and tablet size (gate ③).
 //   PLAYWRIGHT_MODULE=... node scripts/uiSkinAudit.mjs <out-dir> --url <url> --states <dir of scripts/ui5States.ts> [--states6 <dir of scripts/ui6States.ts>]
 // Exit 1 when any state has a skinless element or a state could not be opened.
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/uiSkinAudit.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/uiSkinAudit.mjs …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

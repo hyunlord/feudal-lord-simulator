@@ -5,6 +5,8 @@
 // without input: +800 ticks (spring: ploughed, sown, fallow strips) and +2500 ticks (harvest: ripe, growing, sown,
 // fallow, harvested strips; every farmstead harvesting), a prepared five-state board, and the C25 zoned board (pasture).
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/farmsteadEvidence.mjs <outDir> --base <url> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/farmsteadEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/farmsteadEvidence.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { join, resolve } from 'node:path';

@@ -8,6 +8,8 @@
 //    change into one frame; a crossfade spreads it. Recorded per turn: the largest one-frame share of the total change,
 //    frames with empty ground (canvas background showing), the chunk cache's fades and deferred rasters, and three
 //    shots (just before, mid-fade, after).
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install15Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/install15Captures.mjs …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

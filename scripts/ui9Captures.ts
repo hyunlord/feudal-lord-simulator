@@ -10,6 +10,8 @@
 //    revolt pressure and its causes, both rumours), the chapter 4 ledger.
 // Beside the shots captures.json (what each shows).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/ui9Captures.ts <out-dir> --url <game> --states <dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ui9Captures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/ui9Captures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

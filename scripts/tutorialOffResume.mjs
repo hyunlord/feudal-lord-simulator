@@ -2,6 +2,8 @@
 // shows the same goal card and the same locks; (b) switching the tutorial off in the settings opens every category and
 // the zone layer at once, and switching it back on restores the card.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/tutorialOffResume.mjs <out.json> [--url ...] [--presses 11]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/tutorialOffResume.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/tutorialOffResume.mjs …", entry: import.meta.url });
 import { writeFile } from 'node:fs/promises';
 
 const [out] = process.argv.slice(2);

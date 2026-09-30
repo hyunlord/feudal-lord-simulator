@@ -9,6 +9,8 @@
 //  2 the famine modal's four answers, then an answer: the modal closes, the state under it comes back, the answer is
 //    the engine's; 3 the chronicle page, then 제2장으로 (the chapter 2 preview); 4 S12, the family at the door of a
 //    leaving house and the family walking out of a house just left.
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ui4Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/ui4Captures.mjs …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

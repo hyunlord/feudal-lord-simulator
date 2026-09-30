@@ -14,6 +14,8 @@
 //    on the canvas, so this state's hidden shot also hides them (the proof port's constructionLabels) and their boxes (the
 //    port's constructionTagBoxes, the frame of the first shot) join the DOM boxes.
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/measureHudCoverage.ts <out.json> --url <url> [--shots <dir>] [--only walls]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/measureHudCoverage.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/measureHudCoverage.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { inflateSync } from "node:zlib";

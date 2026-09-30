@@ -3,6 +3,8 @@
 // new game, paused: press the "1배속" speed seal, then "일시 정지" (focus stays on that button), press / tap an empty map
 // point, then press E (next placement tool). The road tool must be armed and the focus no longer on the button.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/focusReturnCheck.mjs <out.json> --base <url> [--url <url>]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/focusReturnCheck.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/focusReturnCheck.mjs …", entry: import.meta.url });
 import { writeFile } from 'node:fs/promises';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 

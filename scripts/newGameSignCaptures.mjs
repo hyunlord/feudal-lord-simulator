@@ -2,6 +2,8 @@
 // four opening houses. Before, their empty larders raised three cold-house rings at once; now S2 / S4 / S8 wait one
 // distribution cycle (250 ticks).
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/newGameSignCaptures.mjs <outDir> --base <url> --url <url>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/newGameSignCaptures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/newGameSignCaptures.mjs …", entry: import.meta.url });
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

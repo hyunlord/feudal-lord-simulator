@@ -6,6 +6,8 @@
 //   s1 the same town in winter (the state's tick moved to the next winter: snow on the Wave 26 roofs, winter yards).
 // Full-view JPEGs and captures.json (the state, the tile of each view and what the page drew).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/install26Captures.ts <out-dir> --url <this> --base <trunk> --states <ui6States dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install26Captures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/install26Captures.ts …", entry: import.meta.url });
 import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { BALANCE } from "../src/content/balanceConfig";

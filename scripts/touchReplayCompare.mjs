@@ -10,6 +10,8 @@
 //   site = two-finger tap there · UI buttons = taps on them. Keys stay keys (Esc, Z, ], D held).
 // The pinch reaches the wheel's zoom through a product of ratios, so zoom and camera are compared to 1e-6 / 0.01 px
 // there; everything else must be identical.
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/touchReplayCompare.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/touchReplayCompare.mjs …", entry: import.meta.url });
 import { writeFile } from 'node:fs/promises';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 // Where the mouse rests between steps: over the old bottom console, and on the UX-3 map clear of the 20 px edge-pan

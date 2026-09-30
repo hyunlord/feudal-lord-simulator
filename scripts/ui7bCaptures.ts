@@ -5,6 +5,8 @@
 //   p4 a commoner's person card (the shield covered) and p5 the lord's (the arms).
 // Element JPEGs and captures.json (what each page holds).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/ui7bCaptures.ts <out-dir> --url <game> --states <ui7States dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ui7bCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/ui7bCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

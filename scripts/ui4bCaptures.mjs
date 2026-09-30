@@ -3,6 +3,8 @@
 //   PLAYWRIGHT_MODULE=... node scripts/ui4bCaptures.mjs <out-dir> --url <url> --states <dir from scripts/ui4bSeasonStates.ts>
 // Each state is 30 ticks before a season closes; at 1x the card opens by itself. Recorded: the scenes (data-scene),
 // whether each icon loaded (its image decoded), the scenes line and the title; a shot of the card.
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ui4bCaptures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/ui4bCaptures.mjs …", entry: import.meta.url });
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

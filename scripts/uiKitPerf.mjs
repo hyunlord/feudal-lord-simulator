@@ -5,6 +5,8 @@
 // Five rounds, base and this alternating; the gate is the median of this build's p95 ≤ 105 % of base's (DGX with DGX;
 // a run counts only at rAF 16.7 ms, docs: memory "DGX perf validity").
 //   PLAYWRIGHT_MODULE=... node scripts/uiKitPerf.mjs <out.json> --url <this> --base <base> --states <dir of scripts/ui5States.ts>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/uiKitPerf.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/uiKitPerf.mjs …", entry: import.meta.url });
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene, rafMedian, sceneStates } from './renderCommitProbe.mjs';

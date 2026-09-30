@@ -12,6 +12,8 @@
 //   {op:'touchdrag', x1, y1, x2, y2, steps?} · {op:'save', name} storage state to <outDir>/storage · {op:'errors'}
 //   {op:'note', text} · {op:'scene', state, w?, h?, touch?} a saved state from <states dir> (the chapter moments of
 //   scripts/ui4ChapterStates.ts), opened as a returning player would: welcome dismissed, tutorial done · {op:'quit'}
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/coldStartDriver.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/coldStartDriver.mjs …", entry: import.meta.url });
 import { createServer } from 'node:http';
 import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';

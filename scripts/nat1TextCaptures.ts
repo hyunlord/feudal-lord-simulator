@@ -5,6 +5,8 @@
 // 280 · 360 · 480 px, and the same in both modes), overflow (the box or any line inside it wider than the box), the
 // frame (a UI-KIT border-image), and a JPEG of the box in each mode.
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/nat1TextCaptures.ts <out> --url <game> --states <UI-9 states dir> --lands <NAT-1 land states dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/nat1TextCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/nat1TextCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

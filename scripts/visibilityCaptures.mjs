@@ -6,6 +6,8 @@
 //  - signs (gate 5): the C25 zoned board (empty plot stakes) and the fixed12 fixture (cold houses, road cuts); at most
 //    three emphasis rings.
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/visibilityCaptures.mjs <outDir> --base <url> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/visibilityCaptures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/visibilityCaptures.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';

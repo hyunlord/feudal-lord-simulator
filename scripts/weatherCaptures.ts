@@ -6,6 +6,8 @@
 // (element, blend, alpha, moving), the alpha stacked on one pixel, and the draw cost in the page (headless Chromium,
 // software raster: `--disable-gpu`; the platform is in weather.json).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/weatherCaptures.ts <out-dir> --url <game> --state <state.json> [--tile 44,38]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/weatherCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/weatherCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { WeatherKind } from "../src/content/eventConfig";

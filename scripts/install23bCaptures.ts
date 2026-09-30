@@ -9,6 +9,8 @@
 //     frames 1.63 s apart. Changed pixels inside the village's ground animals' and the walkers' boxes and in the whole
 //     view, with the difference images (x4).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/install23bCaptures.ts <out-dir> --url <game> --states <ui6States dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install23bCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/install23bCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

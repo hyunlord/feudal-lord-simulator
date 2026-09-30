@@ -5,6 +5,8 @@
 //  2 the season strip opened, its pin beside the calendar;  4 a naive-reserve bot town (scripts/ui3PressureState.ts):
 //    a leaving house (sign + cause icon), an abandoned house (boarded), the inspector's first line;
 //  6 title -> mode -> game, save, reload -> title with 이어하기, the mode backdrop, continue.
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ui3Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/ui3Captures.mjs …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

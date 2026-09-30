@@ -9,6 +9,8 @@
 //        chronicle's chapter starts (milestones only) with their Wave 31 paintings;
 //  f1    the pastoral farm on its 2 × 1 plot (CLOTH-UI's state after the shearing), before → after.
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/ui9bCaptures.ts <out> --url <this> --base <trunk> --states <UI-9 states> --states6 <UI-6> --cloth <CLOTH-UI>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ui9bCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/ui9bCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

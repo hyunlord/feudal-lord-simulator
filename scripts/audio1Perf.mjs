@@ -4,6 +4,8 @@
 // (median, p95 of the 480) and the rAF interval. Five rounds, base and this alternating; the gate is the median of this
 // build's p95 ≤ 105 % of base's (DGX with DGX; frame times come in 0.1 ms steps, so one step is 3 % of a 3.7 ms p95).
 //   PLAYWRIGHT_MODULE=... node scripts/audio1Perf.mjs <out.json> --url <this> --base <base> --states <dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/audio1Perf.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/audio1Perf.mjs …", entry: import.meta.url });
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene, rafMedian, sceneStates } from './renderCommitProbe.mjs';

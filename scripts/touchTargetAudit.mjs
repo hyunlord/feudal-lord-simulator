@@ -4,6 +4,8 @@
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/touchTargetAudit.mjs <out.json> [--url http://127.0.0.1:4241/]
 // States (UX-3): welcome screen, HUD, build drawer, zone chip armed, ledger drawer and its tabs, population drawer,
 // goal log (+ settlement disclosure), settings, pause menu, and the diagnostic card (a house selected).
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/touchTargetAudit.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/touchTargetAudit.mjs …", entry: import.meta.url });
 import { writeFile } from 'node:fs/promises';
 import { loadChromium, sceneStates } from './renderCommitProbe.mjs';
 import { routeSceneState } from './sceneInjection.mjs';

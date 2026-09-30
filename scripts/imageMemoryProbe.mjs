@@ -20,6 +20,8 @@
 //     --state <dir>/chapter-end.json --out <path>.json [--width 1600 --height 1100 --dpr 1] [--channel chrome]
 // The chapter-1-end state: `npx tsx scripts/ui4ChapterStates.ts 2 90000 <dir>` writes <dir>/chapter-end.json (seed 2,
 // the guardrail bot, deterministic; chapter 1 ends at tick 77,500, about 2.5 min on the Mac).
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/imageMemoryProbe.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/imageMemoryProbe.mjs …", entry: import.meta.url });
 import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';

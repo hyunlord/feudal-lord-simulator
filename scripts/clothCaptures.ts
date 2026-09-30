@@ -8,6 +8,8 @@
 //   icons, u3 the season card at the next close with its cloth row (the first-sale state run at 5x).
 // JPEGs and captures.json (what each frame holds and the lines read from the page).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/clothCaptures.ts <out-dir> --url <game> --states <clothStates dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/clothCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/clothCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

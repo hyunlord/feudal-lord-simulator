@@ -4,6 +4,8 @@
 // which reaches a few tiles past the screen edge; and the part of it that zoom draws),
 // and the blit benchmark behind the raster cache in villageLifeDraw.ts (software raster: Chrome with --disable-gpu).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/villageLifeCaptures.ts <out-dir> --url <game> --states <dir> [--town chapter2-end]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/villageLifeCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/villageLifeCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

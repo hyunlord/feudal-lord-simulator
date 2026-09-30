@@ -6,6 +6,8 @@
 //   biography's portrait, and the ledger sentence of each in the biography's life (the chronicle's own words).
 // JPEG shots (the element or the screen) and captures.json (the checks read from the page).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/ui7Captures.ts <out-dir> --url <game> --states <ui7States dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ui7Captures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/ui7Captures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

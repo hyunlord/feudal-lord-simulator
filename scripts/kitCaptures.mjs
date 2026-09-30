@@ -5,6 +5,8 @@
 //  - the church at its frame stage at 1.35 (treadwheel crane, hoisted block, centring arch, mortar, the mason);
 //  - the stone wall sites (the tower kit at each corner turn).
 //   PLAYWRIGHT_MODULE=... node scripts/kitCaptures.mjs <outDir> --url <this> --base <trunk>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/kitCaptures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/kitCaptures.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';

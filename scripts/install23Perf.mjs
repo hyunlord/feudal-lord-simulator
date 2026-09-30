@@ -6,6 +6,8 @@
 // interval. Five rounds, the builds alternating; the gate is the median of each weather scene's p95 ≤ 110 % of the
 // base's (DGX with DGX; a run counts only at rAF 16.7 ms, docs: memory "DGX perf validity").
 //   PLAYWRIGHT_MODULE=... node scripts/install23Perf.mjs <out.json> --url <this> --base <base>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install23Perf.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/install23Perf.mjs …", entry: import.meta.url });
 import { writeFileSync } from 'node:fs';
 import { loadChromium, openScene, rafMedian, sceneStates } from './renderCommitProbe.mjs';
 

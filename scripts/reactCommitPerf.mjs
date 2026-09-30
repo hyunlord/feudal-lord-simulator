@@ -3,6 +3,8 @@
 // the last 240 frames of frame work; the game's tick shows how fast the town ran. Five rounds, base and this
 // alternating; a round counts only at rAF 16.7 ms (DGX perf validity).
 //   PLAYWRIGHT_MODULE=... node scripts/reactCommitPerf.mjs <out.json> --url <this> --base <base>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/reactCommitPerf.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/reactCommitPerf.mjs …", entry: import.meta.url });
 import { writeFileSync } from 'node:fs';
 import { loadChromium, openScene, rafMedian, sceneStates } from './renderCommitProbe.mjs';
 

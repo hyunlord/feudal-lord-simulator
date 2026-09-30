@@ -6,6 +6,8 @@
 //   w4 this build, zoom 1, a segment of the works selected: every segment's own tag with the card.
 // Full-view JPEGs (1280 x 800) and walls.json (the tags each shot drew, read from the proof port where it has one).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/install3bWallCaptures.ts <out-dir> --url <game> --base <trunk game>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install3bWallCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/install3bWallCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { CHAPTER_TWO } from "../src/content/chapterConfig";

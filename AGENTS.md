@@ -28,7 +28,7 @@
 - 지시서: ID·목표·만들 것·만들지 않을 것·관문(수치)·필수 조건·시간 상한. 보고 첫 줄은 관문 결과. 한 지시서는 한 세션에만. 의존 없는 작업은 연쇄 진행 가능.
 - 세션 범위: 엔진(규칙·봇·저장·콘텐츠) / 렌더(화면·UI·에셋 설치·입력) / INBOX(Astra 보관) / REMOTE(DGX·플레이 서버) / Astra(그림 후보만, 설치 금지). 다른 세션 범위의 파일은 건드리지 않는다(예외: 상태 분기 한 줄).
 - 가드레일 실행은 작업당 2회, 순환 금지. 4/5면 "알려진 정지"로 기록·병합, 봇 문제는 별도 작업(BOT-n).
-- 무거운 검증(가드레일·전체 회귀·브라우저·캡처·성능·클론)은 `scripts/remote/run.sh`로 DGX. 성능은 DGX 기준선끼리만.
+- 무거운 검증(가드레일·전체 회귀·브라우저·캡처·성능·클론)은 `scripts/remote/run.sh`로 DGX. 성능은 둘로 나눈다: 처리량 기준선(p95 등)은 DGX 기준선끼리, 끊김 판정(`npm run perf:gate`)은 이 Mac의 실제 Chrome 창에서. Mac에서 무거운 검증을 시작하면 장치가 거부한다(급할 때 `FLS_ALLOW_LOCAL=1`, 보고서에 적음).
 - 본선 합치기: 작업 브랜치 → 관문 → 깨끗한 클론 → merge·push → 브랜치 삭제. 본선이 움직였으면 양쪽을 살린다. C25 판·문서·STATUS 갱신.
 - 판정이 필요한 선택지는 물어보고, 기다리는 동안 다른 일을 한다. 판정 전제(예: "N일")가 게임 구조와 안 맞으면 지적하고 대안을 제시한다.
 - 시간 표기는 달력 도착점("봄 말쯤"). 틱·게임초 금지. 새 문구는 `*.ko.ts`.
@@ -107,8 +107,14 @@
   - 브라우저·Playwright 테스트 → `remote:browser`, 또는 `run.sh`에 명령을 준다
   - 캡처·성능 측정 → `remote:perf`, 또는 `run.sh`
   - 깨끗한 클론 검증 → `remote:clone-check`
-- **로컬 허용**: typecheck, 단일 파일·소규모 단위 테스트, 린트.
-- **성능 관문 수치는 DGX 기준선(`perf/baseline-dgx-<sha>.json`)과만 비교한다.** Mac 수치와 섞지 않는다.
+- **로컬 허용**: typecheck, 단일 파일·소규모 단위 테스트(`npx tsx --test tests/<파일>.test.ts`), 린트, 개발 서버, `npm run perf:gate`, Astra QA.
+- **장치로 막는다**(`scripts/remote/localGuard.mjs`): 전체 시험 스위트(`npm test`), 가드레일(`scripts/efficientGrowthRun.ts`), 브라우저 캡처 스크립트(`scripts/*Captures*`·`*Evidence*` 등 Playwright를 쓰는 스크립트)는 Mac에서 시작하면 거부하고 쓸 명령(`npm run remote:*`·`scripts/remote/run.sh`)을 알려 준다.
+  - Mac 판별은 macOS와 `scutil --get LocalHostName`이다. Mac의 `os.hostname()`은 네트워크가 주는 이름이라 쓰지 않는다.
+  - 급할 때만 `FLS_ALLOW_LOCAL=1`로 푼다. 그 경우 보고서에 반드시 적는다. 실행은 `.remote-runs/local-heavy.log`에 남는다.
+  - 새 브라우저 캡처 스크립트는 첫 import 앞에 `refuseHeavyOnMac("브라우저 캡처(<경로>)", { entry: import.meta.url })`를 넣는다.
+- **성능은 두 가지이고, 재는 곳이 다르다.**
+  - **처리량 기준선**(프레임 p50·p95, 단계 시간 등): DGX 기준선(`perf/baseline-dgx-<sha>.json`)과만 비교한다. Mac 수치와 섞지 않는다.
+  - **끊김 판정**(`npm run perf:gate`, 최대·33/50 ms 초과·순간): 이 Mac의 실제 Chrome 창에서만 판정한다. DGX 헤드리스는 소프트웨어 래스터라 끊김 판정에 쓰지 않는다([perf-gate](docs/verification/perf-gate/README.md), 결정 SG1~SG4).
 - **원격 폴더 label은 `<세션>-<작업ID>`다**(예: `render-F0V`, `engine-F0A`). `FLS_REMOTE_LABEL`로 준다.
 - 원격 실행은 48GB·12코어·nice 10 안에서만 돈다(`fls-runs.slice`). 이 상한을 올리거나 우회하지 않는다. 플레이 서버(4173)는 건드리지 않는다. 원격 실행의 포트는 4300~4399다.
 

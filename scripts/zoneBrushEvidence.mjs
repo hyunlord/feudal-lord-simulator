@@ -12,6 +12,8 @@
 //   freshness: chunk cache after zone edits (software raster): paint plots, then a stroke that grows the same zone, then
 //         compare the live frame with the frame after every chunk raster is dropped and redrawn.
 //   PLAYWRIGHT_MODULE=... node scripts/zoneBrushEvidence.mjs freshness <out.json> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/zoneBrushEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/zoneBrushEvidence.mjs …", entry: import.meta.url });
 import { createHash } from 'node:crypto';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';

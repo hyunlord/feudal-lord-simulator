@@ -10,6 +10,8 @@
 //   PLAYWRIGHT_MODULE=... node scripts/fieldStripEvidence.mjs captures <outDir> --arable <state.json.gz> --yard <state.json.gz> [--url ...]
 //   seams:    gate 2, the colour step across every ridge / road v3 strip wrap and every joined a | b ridge join.
 //   PLAYWRIGHT_MODULE=... node scripts/fieldStripEvidence.mjs seams <out.json> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/fieldStripEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/fieldStripEvidence.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';

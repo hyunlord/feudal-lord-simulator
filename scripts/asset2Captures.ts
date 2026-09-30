@@ -2,6 +2,8 @@
 // before the chapel, UI-5's petition-open state, zoom 2), and the resource bar (raw stone's second line without the
 // retired icon), on the trunk before (--base) and this build (--url).
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/asset2Captures.ts <out-dir> --url <game> --base <trunk game> --states5 <ui5States dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/asset2Captures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/asset2Captures.ts …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";

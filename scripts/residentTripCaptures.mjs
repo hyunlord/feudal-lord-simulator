@@ -7,6 +7,8 @@
 //  - town: the whole 1280 x 800 view at zoom 1 centred on the market / mill quarter (48,35);
 //  - street: the V2 street clip at zoom 2, DPR 2 (500 x 375 CSS px).
 // The looks on screen (proof port walkerLooks) are written next to the shots.
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/residentTripCaptures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/residentTripCaptures.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { gunzipSync } from 'node:zlib';

@@ -10,6 +10,8 @@
 //  + the aging crossfade (a member's portrait moving to the next picture of the chain while the house card is open, 5x)
 //  + a touch tablet (1180 x 820): the person card's and chips' targets ≥ 48 px, text ≥ 12 px
 //   PLAYWRIGHT_MODULE=... node scripts/ui5Captures.mjs <out-dir> --url <url> --states <dir>
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/ui5Captures.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/ui5Captures.mjs …", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';

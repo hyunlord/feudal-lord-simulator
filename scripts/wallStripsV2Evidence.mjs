@@ -9,6 +9,8 @@
 //            water at the bank (0.08 / 0.2 / 0.35 tile in from straight banks) against the deep water (3+ tiles from
 //            land): CIE L* difference (a light rim is a positive one) and CIE76 difference.
 //   PLAYWRIGHT_MODULE=... node scripts/wallStripsV2Evidence.mjs water <outDir> --base <url> [--url ...]
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/wallStripsV2Evidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/wallStripsV2Evidence.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';

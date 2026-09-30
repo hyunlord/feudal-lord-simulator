@@ -3,6 +3,8 @@
 // C1f arable scene and docs/verification/install4e/scene/ (scripts/install4eScenes.ts).
 //   PLAYWRIGHT_MODULE=/abs/playwright-core/index.mjs node scripts/install4eEvidence.mjs <outDir> --base <url> [--url ...]
 // Writes <view>-before.jpg / <view>-after.jpg and captures.json (the views, their tiles and sources).
+import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
+refuseHeavyOnMac("브라우저 캡처(scripts/install4eEvidence.mjs)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node scripts/install4eEvidence.mjs …", entry: import.meta.url });
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
