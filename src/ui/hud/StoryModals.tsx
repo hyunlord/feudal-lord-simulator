@@ -25,6 +25,12 @@ import { storyArtStyle } from "../storyArt";
 //  - The merchants' petition: the Wave 8 petition frame, the petitioners and their demand, three answers with seals.
 //  - The chronicle page at the chapter's end, and the chapter 2 preview.
 
+/** NAT-2 (QA-009): an answer's forecast line, none while the engine gives it no numbers (it shows once it does). */
+function PredictedLine({ className, numbers }: { readonly className: string; readonly numbers: string }) {
+  const line = DECISION_COPY.predictedLine(numbers);
+  return line === null ? null : <span className={className}>{line}</span>;
+}
+
 export function FamineDecisionModal({ view, onChoose, onLater, steward = null, onPerson }: {
   readonly view: FamineDecisionView; readonly onChoose: (choice: FamineResponseChoice) => void; readonly onLater: () => void;
   /** UI-5: the lord's steward, who brings the matter (the fixed portrait's look of concern, the name; the chip opens the card). */
@@ -48,7 +54,7 @@ export function FamineDecisionModal({ view, onChoose, onLater, steward = null, o
                 <span className="famine-option-art" aria-hidden="true" style={wave16ImageStyle(option.illustration, 132)} />
                 <strong>{option.label}</strong>
                 <span className="famine-option-line">{option.line}</span>
-                <span className="famine-option-predicted">{DECISION_COPY.predictedLine(option.predicted)}</span>
+                <PredictedLine className="famine-option-predicted" numbers={option.predicted} />
               </Button>
             </li>
           ))}
@@ -111,7 +117,7 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
                   <span className="petition-seal" aria-hidden="true" style={wave8ImageStyle(option.seal, 44)} />
                   <strong>{option.label}</strong>
                   <span>{option.line}</span>
-                  <span className="petition-predicted">{DECISION_COPY.predictedLine(option.predicted)}</span>
+                  <PredictedLine className="petition-predicted" numbers={option.predicted} />
                 </Button>
               </li>
             ))}
