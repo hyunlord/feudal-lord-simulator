@@ -372,8 +372,8 @@
 .famine-option-predicted, .petition-predicted { font-size: 12px; font-weight: 600; }
 .story-modal-later { justify-self: end; min-height: 44px; }
 /* UI-AUDIT-1: the card is as tall as its body (at least the frame's 620 px, at most the view): the body scrolls only past
-   that, and [나중에 정하기] is the row under it, never over an answer. */
-.petition-card { position: relative; grid-template-rows: minmax(0, 1fr) auto; width: min(720px, 96vw); min-height: 620px; overflow: visible; background: none; }
+   that, and [나중에 정하기] is its last row, never over an answer. */
+.petition-card { position: relative; grid-template-rows: minmax(0, 1fr); width: min(720px, 96vw); min-height: 620px; overflow: visible; background: none; }
 /* UI-8: a card with two answers (chapter 3's, PetitionDef.responses) is one answer shorter. */
 .petition-card[data-answers="2"] { min-height: 540px; }
 .petition-frame { position: absolute; inset: 0; box-sizing: border-box; }
@@ -385,7 +385,7 @@
 /* UI-10: chapter 5's two-answer cards carry long answers (the charter's sums): the full card's height, so
    [나중에 정하기] shows below them. */
 .petition-card[data-answers="2"]:is([data-def="borough_autonomy"], [data-def="royal_tax"], [data-def="guild_dispute"], [data-def="church_rebuilding"]) { min-height: 620px; }
-.petition-card > .story-modal-later { grid-row: 2; }
+.petition-body > .story-modal-later { margin-top: 2px; }
 /* UI-10: an answer with more than three lines (the heir's card) keeps them all beside the seal. */
 .petition-option > :not(.petition-seal) { grid-column: 2; min-width: 0; }
 /* UI-10 (LG-3): the heir's card — its answers side by side (a column each, the seal beside the label, the rest under
@@ -405,6 +405,10 @@
 .chronicle-page { position: relative; width: min(920px, 96vw); height: min(780px, 94vh); }
 .chronicle-frame { position: absolute; inset: 0; box-sizing: border-box; }
 .chapter-page-body { display: grid; align-content: start; gap: 6px; overflow-y: auto; color: var(--palette-ink); }
+/* UI-AUDIT-1: the chapter's own page (not the legacy ending or book, which share .chapter-page-body): its lines scroll in
+   their own region, the footer the row under it. */
+.chapter-page-main { grid-template-rows: minmax(0, 1fr) auto; align-content: stretch; overflow-y: visible; }
+.chapter-page-scroll { display: grid; align-content: start; gap: 6px; min-height: 0; overflow-y: auto; }
 .chapter-page-body h2 { margin: 0; font-size: 22px; }
 .chapter-page-body h3 { margin: 6px 0 0; font-size: 15px; }
 .chronicle-timeline, .chronicle-decisions { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
@@ -418,10 +422,9 @@
 .chronicle-stats { margin: 0; padding-left: 18px; font-size: 13px; }
 .chronicle-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 /* UI-10: the chapter page's footer — the panel's full width, opaque in the panel's paper (the skin's --parchment), a top
-   rule, held at the scrolling body's bottom (a long page — chapter 5's six decisions — scrolls under it; the last line
-   scrolls clear above it, the footer being the body's last row). Its buttons stand where the right column's did.
-   The body has no padding of its own (the page's gap is outside it), so the footer's bottom 0 is the scroll edge. */
-.chapter-page-body > .chronicle-page-footer { position: sticky; bottom: 0; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+   rule. UI-AUDIT-1: the body's last row, under the scrolling lines (it held at the scroll's bottom over them before). Its
+   buttons stand where the right column's did. */
+.chapter-page-main > .chronicle-page-footer { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   gap: 16px; margin: 0; padding: 6px 0 0; background: var(--parchment); border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
 .chronicle-page-footer > .chronicle-actions { grid-column: 2; margin-top: 0; }
 .chronicle-actions button, .chapter-preview-continue { display: inline-flex; gap: 6px; align-items: center; min-height: 48px; font-size: 15px; font-weight: 700; }

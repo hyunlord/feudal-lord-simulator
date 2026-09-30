@@ -142,8 +142,8 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
               </li>
             ))}
           </ol>
+          <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
         </div>
-        <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
       </section>
     </div>
   );
@@ -161,7 +161,9 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
       style={{ backgroundImage: `url("${view.chapter === 3 ? wave21Url("ch3_ending") : view.chapter === 2 ? wave17Url("chapter2_end") : wave16Url("chapter1_end")}")` }}>
       <section className="chronicle-page" data-frame="chapter-page" role="dialog" aria-modal="true" aria-label={view.title}>
         <span className="chronicle-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_chronicle_page")} />
-        <div className="chapter-page-body" style={wave8ContentStyle("frame_chronicle_page")}>
+        <div className="chapter-page-body chapter-page-main" style={wave8ContentStyle("frame_chronicle_page")}>
+          {/* UI-AUDIT-1: the page's lines scroll in their own region; the footer is the row under it, never over a line. */}
+          <div className="chapter-page-scroll">
           <h2>{view.title}</h2>
           <div className="chronicle-columns">
           <section><h3>{CHRONICLE_COPY.timelineHeading}</h3>
@@ -182,8 +184,9 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
           <h3>{CHRONICLE_COPY.statsHeading}</h3>
           <ul className="chronicle-stats">{view.stats.map(line => <li key={line}>{line}</li>)}</ul></section>
           </div>
-          {/* UI-10: the page's footer — the full panel's width, held at the bottom while a long page (chapter 5's six
-              decisions) scrolls under it; its buttons in the right column's place, as before. */}
+          </div>
+          {/* UI-10: the page's footer — the full panel's width, under the lines (a long page — chapter 5's six decisions —
+              scrolls above it); its buttons in the right column's place, as before. */}
           <div className="chronicle-page-footer">
           <div className="chronicle-actions">
             <Button type="button" className="chronicle-next" onPress={() => onNextChapter()} variant="secondary"><UiIcon sheet="action" cell="open" />{nextLabel ?? CHRONICLE_COPY.nextChapterOf(view.chapter)}</Button>
