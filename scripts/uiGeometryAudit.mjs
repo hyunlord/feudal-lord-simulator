@@ -4,7 +4,8 @@
 // population 1,234, every stock 99,999 and every person with a long name no name list has), measured in the page
 // (scripts/uiGeometryMeasure.ts: outside, overflow, border, portrait, overlap, empty, controls).
 // One scene load serves a row and its first `extends` child; another child loads the scene again and replays the
-// chain. A step that timed out before anything was measured is tried again (up to three times).
+// chain. A step that timed out before anything was measured is tried again (up to three times); a tree with a condition
+// still not opened after the pass runs again (two more rounds, half the pages).
 // Writes <out>/geometry.json (row × condition → checks, the first 25 failures with the element path and px), <out>/geometry.md (the
 // table), <out>/shots/*.jpg (a capture per failing row, the failures outlined red and the inner box dashed blue;
 // ≤ --shots captures, ≤ 2 MB), and the committed summary (--summary, default docs/verification/uiaudit1/geometry.json:
@@ -256,7 +257,19 @@ const started = Date.now();
 { const warm = await browser.newPage(); await warm.goto(url, { timeout: 180_000 }).catch(() => undefined); await warm.waitForTimeout(3_000); await warm.close(); }
 const queue = [];
 for (const row of SURFACES) if (row.extends === undefined) for (const condition of new Map(SURFACES.filter(other => chainOf(other)[0] === row).flatMap(conditionsOf).map(item => [item.id, item])).values()) queue.push([row, condition]);
-await Promise.all(Array.from({ length: Math.max(1, jobs) }, async () => { for (let next = queue.shift(); next !== undefined; next = queue.shift()) await runTree(...next); }));
+const drain = async (list, width) => { await Promise.all(Array.from({ length: Math.max(1, width) }, async () => { for (let next = list.shift(); next !== undefined; next = list.shift()) await runTree(...next); })); };
+const trees = [...queue];
+await drain(queue, jobs);
+// A busy shared DGX (and the paused save's chapter page that sometimes never opens, UI-9b) leaves conditions unopened:
+// their trees run again, up to two more rounds, on half the pages.
+const retried = [];
+for (let round = 1; round <= 2; round += 1) {
+  const again = trees.filter(([root, condition]) => SURFACES.some(row => chainOf(row)[0] === root && results[row.id]?.conditions[condition.id]?.status === 'error'));
+  if (again.length === 0) break;
+  retried.push(again.length);
+  console.log(`retry round ${round}: ${again.length} tree(s) with a condition not opened`);
+  await drain(again, Math.ceil(jobs / 2));
+}
 await browser.close();
 
 // --- Totals, the report, the committed summary.
@@ -295,7 +308,7 @@ const readDoc = path => { try { return JSON.parse(readFileSync(path, 'utf8')); }
 const against = compareBaseline({ keys: failureKeys, baseline: readDoc(UI_GEOMETRY_BASELINE)?.entries ?? [], exceptions: readDoc(UI_GEOMETRY_EXCEPTIONS)?.exceptions ?? [] });
 const baselineLine = `Against the committed baseline: ${against.failures} failure key(s) counted (${against.excepted} more under ${against.exceptions} exception(s)); baseline ${against.baseline}, new ${against.added.length}, fixed ${against.fixed.length}.`;
 const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs: inputs.length, inputHash: geometryInputHash(inputs), startedAt: new Date(started).toISOString(), durationS: Math.round((Date.now() - started) / 1000),
-  axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
+  axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, retried, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
   kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results };
 writeFileSync(join(out, 'geometry.json'), `${JSON.stringify(report)}\n`);
 
