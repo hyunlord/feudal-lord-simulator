@@ -279,7 +279,7 @@
 .app-shell .zone-toolbar-kind--arable { background-color: var(--palette-gold); }
 .app-shell .zone-toolbar-kind--pasture { background-color: var(--palette-sage); }
 .app-shell .zone-toolbar-kind--orchard { background-color: var(--palette-forest); }
-.app-shell .zone-toolbar .zone-land-legend { display: grid; gap: 2px; padding: 4px 6px; line-height: 15px; background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.app-shell .zone-toolbar .zone-land-legend { display: grid; gap: 2px; padding: var(--frame-gap); line-height: 15px; background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
 .app-shell .zone-toolbar-button[aria-pressed="true"] { outline: 2px solid var(--palette-ink); outline-offset: -2px; font-weight: 700; }
 .app-shell .zone-toolbar-button[aria-disabled="true"] { opacity: 0.5; }
 .app-shell .zone-toolbar-redo-icon { transform: scaleX(-1); }
@@ -327,7 +327,7 @@
 
 /* UX-3R2 tablet confirm bar (UX3R 8절): bottom centre while a tap has left a ghost waiting; 64 px targets. */
 .app-shell .placement-confirm-bar { position: absolute; left: 50%; bottom: 12px; z-index: 6; display: grid; grid-template-columns: auto auto; gap: 4px 8px;
-  justify-items: center; padding: 6px 10px; transform: translateX(-50%); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+  justify-items: center; padding: var(--frame-gap); transform: translateX(-50%); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
 .app-shell .placement-confirm-button { display: inline-flex; gap: 6px; align-items: center; justify-content: center; min-width: 120px; min-height: 64px; font-size: 16px; font-weight: 700; }
 .app-shell .placement-confirm-hint { grid-column: 1 / -1; margin: 0; font-size: 12px; }
 .app-shell .inspector-blocker { margin: 0 0 4px; font-weight: 700; }
