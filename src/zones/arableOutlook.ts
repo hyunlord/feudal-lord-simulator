@@ -21,7 +21,8 @@ export interface FarmsteadYear {
 }
 
 /** AF-10: the season's expected wheat per farmstead (strip order; cells past its labour share do not count). */
-export function farmsteadYears(state: GameState, layouts: readonly ArableZoneLayout[] = arableLayouts(state)): readonly FarmsteadYear[] {
+export function farmsteadYears(state: GameState, layouts: readonly ArableZoneLayout[] = arableLayouts(state),
+  counts: (stripId: string) => boolean = () => true): readonly FarmsteadYear[] {
   const tending = stripTending(state, layouts);
   // C4 (AL-2): a barley farmstead's strips feed no one (the town's wheat outlook leaves them out).
   const barley = new Set(state.buildings.filter(building => building.crop === "barley").map(building => building.id));
@@ -29,7 +30,7 @@ export function farmsteadYears(state: GameState, layouts: readonly ArableZoneLay
   for (const layout of layouts) {
     for (const strip of layout.strips) {
       const assigned = tending.get(strip.id);
-      if (assigned?.status !== "tended" || assigned.farmsteadId === null || barley.has(assigned.farmsteadId)) continue;
+      if (assigned?.status !== "tended" || assigned.farmsteadId === null || barley.has(assigned.farmsteadId) || !counts(strip.id)) continue;
       const year = years.get(assigned.farmsteadId) ?? { strips: 0, cells: 0, wheat: 0 };
       if (year.cells < ARABLE_CONFIG.predictedCellsPerFarmstead) year.wheat += stripSeasonYield(strip);
       year.strips += 1;
@@ -63,16 +64,24 @@ export function nextHarvestRecord(before: GameState, harvested: number, lost = 0
   }
   if (harvested <= 0 && (lost <= 0 || record?.expected === undefined)) return record;
   const counted = record ?? { year, wheat: 0, lost: 0, past: [] };
-  return { ...counted, expected: counted.expected ?? expectedAnnualWheat(before), wheat: counted.wheat + harvested, lost: counted.lost + lost };
+  return { ...counted, expected: counted.expected ?? sownExpectedWheat(before), wheat: counted.wheat + harvested, lost: counted.lost + lost };
+}
+
+/** GP-1: the expected harvest of this year's crop — the strips sown, growing or ripe (a strip painted after sowing is not). */
+export function sownExpectedWheat(state: GameState): number {
+  const crop = new Set((state.arableFields ?? []).flatMap(field => field.strips)
+    .filter(record => record.stage === "sown" || record.stage === "growing" || record.stage === "ripe").map(record => record.id));
+  return farmsteadYears(state, arableLayouts(state), id => crop.has(id)).reduce((sum, year) => sum + year.wheat, 0);
 }
 
 /**
  * GP-2: the share of the expected harvest the last years' fields really grew, ‰ — taken in plus the ripe wheat lost at
  * winter (a full barn or too few hands is a harvesting limit, not the land's; more fields would not mend it). At most
- * 1,000; none recorded = 1,000.
+ * 1,000. Read only over three kept years (a new farmstead's first, late-sown year alone reads short); fewer = 1,000.
  */
 export function realisedHarvestPermille(state: Pick<GameState, "harvestRecord">): number {
   const past = state.harvestRecord?.past ?? [];
+  if (past.length < HARVEST_RECORD_YEARS) return 1000;
   const expected = past.reduce((sum, year) => sum + year.expected, 0);
   if (expected <= 0) return 1000;
   return Math.min(1000, Math.floor(past.reduce((sum, year) => sum + year.wheat + year.lost, 0) * 1000 / expected));

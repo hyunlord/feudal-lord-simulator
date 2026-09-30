@@ -2,8 +2,8 @@ import { BALANCE } from '../content/balanceConfig';
 import { strandedFoodSupply } from './autoplayFoodRoutes';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { availableSpace, availableStock } from '../economy/storage';
-import { arableSupplyShort } from './autoplayArable';
-import { grainReserveOutlook } from '../zones/arableOutlook';
+import { annualWheatNeed, arableSupplyShort } from './autoplayArable';
+import { realisedAnnualWheat } from '../zones/arableOutlook';
 import { buildingHasRequiredRoadAccess } from './roadAccess';
 import { foodEfficiencyMetrics } from './autoplayFoodEfficiency';
 import { foodFacilityWithinLimit } from './autoplayFoodLimits';
@@ -69,12 +69,19 @@ export function measuredFoodDecision(state: GameState, options: { readonly ignor
     return { kind: 'mill', reason: 'actual_bread_deficit' };
   }
   if (!millsSupplied) {
-    // GP-3: starving mills with no cart-load of wheat anywhere have nothing to be hauled — the grain ran out. The
-    // reserve outlook tells a harvest too small (more fields) from the weeks before a harvest (nothing to build).
-    if (stockedWheat < BALANCE.CARTER_CAPACITY) {
-      return grainReserveOutlook(state).short ? { kind: 'farmstead', reason: 'grain_exhausted' } : { kind: null, reason: 'grain_between_harvests' };
+    // GP-3: mills starving (a fifth of their time) with no cart-load of wheat anywhere have nothing to be hauled — the
+    // grain ran out. A kept year whose fields grew less than a year's bread (GP-2) makes it a shortage (more fields);
+    // otherwise it is the weeks before a harvest (nothing to build, and no hauling remedy either).
+    const starving = sample.eligibleMillTicks > 0 && sample.rawStarvedTicks / sample.eligibleMillTicks >= 0.2;
+    if (starving && stockedWheat < BALANCE.CARTER_CAPACITY) {
+      return grownHarvestShort(state) ? { kind: 'farmstead', reason: 'grain_exhausted' } : { kind: null, reason: 'grain_between_harvests' };
     }
     return { kind: null, reason: 'wheat_transport_blocked' };
   }
   return { kind: 'mill', reason: 'actual_bread_deficit' };
+}
+
+/** GP-3: a kept year shows the fields grew less than a year's bread needs (no kept year: not known, not short). */
+function grownHarvestShort(state: GameState): boolean {
+  return (state.harvestRecord?.past.length ?? 0) > 0 && realisedAnnualWheat(state) < annualWheatNeed(state);
 }
