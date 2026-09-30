@@ -13,7 +13,7 @@ import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 type Locator = { first: () => Locator; count: () => Promise<number>; waitFor: (options?: object) => Promise<void>; click: (options?: object) => Promise<void>;
   screenshot: (options: object) => Promise<unknown> };
-type Page = { waitForTimeout: (ms: number) => Promise<void>; evaluate: <T>(f: () => T) => Promise<T>; locator: (selector: string) => Locator;
+type Page = { waitForTimeout: (ms: number) => Promise<void>; evaluate: <T>(expression: string) => Promise<T>; locator: (selector: string) => Locator;
   getByRole: (role: string, options: object) => Locator; on: (event: string, handler: (error: unknown) => void) => void };
 const [out] = process.argv.slice(2);
 const flag = (name: string) => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
@@ -42,11 +42,12 @@ async function card(state: GameState, defId: string, viewport: (typeof VIEWPORTS
   await page.waitForTimeout(800);
   await page.locator(".petition-card").first().screenshot({ path: join(out!, file), type: "jpeg", quality: 70 });
   files.push(file);
-  const measures = await page.evaluate(() => {
-    const cardNode = document.querySelector(".petition-card")!;
+  // A string, not a function: tsx's names (`__name`) do not exist in the page.
+  const measures = await page.evaluate<Record<string, unknown>>(`(() => {
+    const cardNode = document.querySelector(".petition-card");
     const rect = cardNode.getBoundingClientRect();
-    const heights = (selector: string) => [...cardNode.querySelectorAll(selector)].map(node => Math.round(node.getBoundingClientRect().height));
-    const fonts = [...cardNode.querySelectorAll("*")].filter(node => node.childNodes.length > 0 && [...node.childNodes].some(child => child.nodeType === 3 && (child.textContent ?? "").trim() !== ""))
+    const heights = selector => [...cardNode.querySelectorAll(selector)].map(node => Math.round(node.getBoundingClientRect().height));
+    const fonts = [...cardNode.querySelectorAll("*")].filter(node => [...node.childNodes].some(child => child.nodeType === 3 && (child.textContent || "").trim() !== ""))
       .map(node => parseFloat(getComputedStyle(node).fontSize));
     return {
       pageScrollX: document.documentElement.scrollWidth - window.innerWidth,
@@ -55,9 +56,9 @@ async function card(state: GameState, defId: string, viewport: (typeof VIEWPORTS
       card: { left: Math.round(rect.left), top: Math.round(rect.top), right: Math.round(rect.right), bottom: Math.round(rect.bottom), inside: rect.left >= 0 && rect.right <= window.innerWidth },
       answers: heights(".petition-option"), later: heights(".story-modal-later"), heirs: cardNode.querySelectorAll(".petition-heir").length,
       smallestText: Math.min(...fonts), titled: cardNode.querySelectorAll("[title]").length,
-      lines: [...cardNode.querySelectorAll(".petition-option")].map(node => node.textContent?.trim() ?? ""),
+      lines: [...cardNode.querySelectorAll(".petition-option")].map(node => (node.textContent || "").trim()),
     };
-  });
+  })()`);
   await context.close();
   return measures;
 }
