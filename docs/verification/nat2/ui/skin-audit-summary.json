@@ -1,0 +1,235 @@
+{
+ "note": "scripts/uiSkinAudit.mjs on UI-5 states (ui5States.ts 2 200000), local Vite; old rule = the script at ee62f618",
+ "runs": {
+  "audit-old-rule-old-ledger": {
+   "pass": true,
+   "total": {
+    "elements": 815,
+    "skinless": 0,
+    "native": 0,
+    "frameless": 0
+   },
+   "missing": [],
+   "errors": [],
+   "failing": {},
+   "ledgerElements": 53
+  },
+  "audit-new-rule-old-ledger": {
+   "pass": false,
+   "total": {
+    "elements": 815,
+    "skinless": 22,
+    "native": 0,
+    "frameless": 3
+   },
+   "missing": [],
+   "errors": [],
+   "failing": {
+    "ledger": {
+     "skinless": 6,
+     "plain": 6,
+     "frameless": 1,
+     "list": [
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "밀 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "빵 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "통나무 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "목재 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "원석 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "석재 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      }
+     ],
+     "framelessList": [
+      {
+       "selector": ".ledger-drawer",
+       "class": "ledger-drawer slot-panel",
+       "plain": true
+      }
+     ]
+    },
+    "chronicle": {
+     "skinless": 6,
+     "plain": 6,
+     "frameless": 1,
+     "list": [
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "밀 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "빵 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "통나무 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "목재 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "원석 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "석재 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      }
+     ],
+     "framelessList": [
+      {
+       "selector": ".ledger-drawer",
+       "class": "ledger-drawer slot-panel",
+       "plain": true
+      }
+     ]
+    },
+    "chronicle-select-open": {
+     "skinless": 6,
+     "plain": 6,
+     "frameless": 1,
+     "list": [
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "밀 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "빵 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "통나무 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "목재 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "원석 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "tbody > tr > th > button.ledger-row",
+       "text": "석재 — 지도에서 보관한 곳 밝히기",
+       "native": false,
+       "plain": true
+      }
+     ],
+     "framelessList": [
+      {
+       "selector": ".ledger-drawer",
+       "class": "ledger-drawer slot-panel",
+       "plain": true
+      }
+     ]
+    },
+    "gallery-desktop": {
+     "skinless": 2,
+     "plain": 2,
+     "frameless": 0,
+     "list": [
+      {
+       "path": "div.app-shell.ui-kit-gallery > section.ui-kit-gallery-section.ui-frame > div.ui-kit-gallery-row > button",
+       "text": "표면(틀 안의 칸)",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "div.app-shell.ui-kit-gallery > section.ui-kit-gallery-section.ui-kit-gallery-frames > section.ui-kit-gallery-dark.ui-frame > button",
+       "text": "표면(틀 안의 칸)",
+       "native": false,
+       "plain": true
+      }
+     ],
+     "framelessList": []
+    },
+    "gallery-tablet": {
+     "skinless": 2,
+     "plain": 2,
+     "frameless": 0,
+     "list": [
+      {
+       "path": "div.app-shell.ui-kit-gallery > section.ui-kit-gallery-section.ui-frame > div.ui-kit-gallery-row > button",
+       "text": "표면(틀 안의 칸)",
+       "native": false,
+       "plain": true
+      },
+      {
+       "path": "div.app-shell.ui-kit-gallery > section.ui-kit-gallery-section.ui-kit-gallery-frames > section.ui-kit-gallery-dark.ui-frame > button",
+       "text": "표면(틀 안의 칸)",
+       "native": false,
+       "plain": true
+      }
+     ],
+     "framelessList": []
+    }
+   },
+   "ledgerElements": 53
+  },
+  "audit-new-rule-new-ledger": {
+   "pass": true,
+   "total": {
+    "elements": 762,
+    "skinless": 0,
+    "native": 0,
+    "frameless": 0
+   },
+   "missing": [],
+   "errors": [],
+   "failing": {},
+   "ledgerElements": 29
+  }
+ }
+}

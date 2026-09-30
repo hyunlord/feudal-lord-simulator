@@ -1,0 +1,126 @@
+{
+ "tag": "after",
+ "url": "http://127.0.0.1:5397/",
+ "result": {
+  "ledger-1600x1100": {
+   "drawer": {
+    "width": 480,
+    "scrollWidth": 478,
+    "clientWidth": 478
+   },
+   "scrolls": [
+    {
+     "scrollWidth": 420,
+     "clientWidth": 420
+    },
+    {
+     "scrollWidth": 420,
+     "clientWidth": 420
+    },
+    {
+     "scrollWidth": 420,
+     "clientWidth": 420
+    }
+   ],
+   "columns": 13
+  },
+  "ledger-1600x1100-row-pressed": [
+   "헛간 1 · 179",
+   "방앗간 1 · 16",
+   "방앗간 2 · 15",
+   "방앗간 3 · 9",
+   "곡창 2 · 36",
+   "방앗간 4 · 1",
+   "곡창 3 · 53",
+   "방앗간 5 · 19",
+   "방앗간 6 · 8",
+   "헛간 2 · 831",
+   "방앗간 7 · 1",
+   "헛간 3 · 1",
+   "방앗간 8 · 23",
+   "방앗간 9 · 1",
+   "방앗간 10 · 8",
+   "방앗간 11 · 11",
+   "방앗간 12 · 4"
+  ],
+  "ledger-1280x800": {
+   "drawer": {
+    "width": 480,
+    "scrollWidth": 478,
+    "clientWidth": 478
+   },
+   "scrolls": [
+    {
+     "scrollWidth": 420,
+     "clientWidth": 420
+    },
+    {
+     "scrollWidth": 420,
+     "clientWidth": 420
+    },
+    {
+     "scrollWidth": 420,
+     "clientWidth": 420
+    }
+   ],
+   "columns": 13
+  },
+  "ledger-tablet-1180x820": {
+   "drawer": {
+    "width": 552,
+    "scrollWidth": 550,
+    "clientWidth": 550
+   },
+   "scrolls": [
+    {
+     "scrollWidth": 492,
+     "clientWidth": 492
+    },
+    {
+     "scrollWidth": 492,
+     "clientWidth": 492
+    },
+    {
+     "scrollWidth": 492,
+     "clientWidth": 492
+    }
+   ],
+   "columns": 13
+  },
+  "guild-dispute": {
+   "def": "guild_dispute",
+   "options": [
+    "길드 편을 든다길드 편을 든다",
+    "가격을 붙여 수락가격을 붙여 수락",
+    "상인 편을 든다상인 편을 든다"
+   ],
+   "predictedLines": []
+  },
+  "church-rebuilding": {
+   "def": "church_rebuilding",
+   "options": [
+    "교회를 넓혀 짓는다교회를 넓혀 짓는다",
+    "가격을 붙여 수락가격을 붙여 수락",
+    "증축을 미룬다증축을 미룬다"
+   ],
+   "predictedLines": []
+  },
+  "qa-overlay": {
+   "walker": "carter:construction-site-000051:319840",
+   "lines": [
+    "틱320000",
+    "연도·계절1380년 봄",
+    "속도멈춤",
+    "줌1.000",
+    "카메라 이동(576, -746)",
+    "화면 중심 월드(224, 1296)",
+    "화면 중심 칸(44, 37)",
+    "마지막 클릭 칸(46, 36)",
+    "선택배급자 루시 해치 · distributor:construction-site-000025:319560",
+    "상태곡창으로 귀환 중 · 곡창으로 돌아가는 중",
+    "가는 길남은 길 10.8칸 · 도착까지 99틱"
+   ]
+  }
+ },
+ "errors": []
+}

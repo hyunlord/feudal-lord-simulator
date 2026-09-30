@@ -1,6 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
 
-import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../content/buildingConfig";
 import type { GameState } from "../../engine/engine.types";
 import { calendarLabel, stateCalendar } from "../../engine/scenarioState";
 import { platformServices } from "../../platform/platform";
@@ -13,13 +12,12 @@ import { TUTORIAL_COPY } from "../tutorial/tutorialCopy.ko";
 import type { TutorialController } from "../tutorial/useTutorialController";
 import type { ControlLayer } from "../tutorial/tutorialModel";
 import { HUD_COPY } from "./hudCopy.ko";
-import { resourceName } from "../../content/resourceCatalog.ko";
-import { resourceEntry } from "../../content/resourceCatalog";
 import { SeasonStripMini, SeasonStripPanel } from "./SeasonStrip";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
 import { wave8ImageStyle } from "../wave8Art";
 import { ledgerMatrix, statusPillModel } from "./statusPillModel";
-import { weeklyTotalChange, type StoreStockHistory } from "../storeStockHistory";
+import type { StoreStockHistory } from "../storeStockHistory";
+import { LedgerStockTable } from "./LedgerStockTable";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
 import { PersonList } from "../persons/PersonViews";
@@ -253,25 +251,8 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
           aria-label={CHRONICLE_SCREEN_COPY.ledgerTabLabel} data-ledger-chronicle="open" onPress={() => onOpenChronicle()} variant="tab">{CHRONICLE_SCREEN_COPY.ledgerTab}</Button>}
       </div>
       {tab === "stock" ? (matrix.rows.length === 0 ? <p>{HUD_COPY.ledgerEmpty}</p> : (
-        // UX-0b: at 1280 the store columns pushed the total, the week and the lasts out of the drawer; they come first now.
-        <div className="ledger-matrix-scroll"><table className="ledger-matrix">
-          <thead><tr><th scope="col" /><th scope="col">{HUD_COPY.ledgerTotal}</th><th scope="col">{HUD_COPY.ledgerWeek}</th><th scope="col">{HUD_COPY.ledgerLasts}</th>
-            {matrix.stores.map(store => (
-            <th key={store.id} scope="col"><Button type="button" className="ledger-store" onPress={() => onInspect(store.id)} variant="secondary">
-              {HUD_COPY.ledgerStore(BUILDING_CONFIG_BY_KIND[store.kind as BuildingKind].name, store.index)}</Button></th>))}</tr></thead>
-          <tbody>{matrix.rows.map(row => {
-            const holders = matrix.stores.filter((_store, index) => (row.byStore[index] ?? 0) > 0).map(store => store.id);
-            const lit = holders.length > 0 && holders.every(id => highlighted.includes(id)) && highlighted.length === holders.length;
-            const week = history === null ? null : weeklyTotalChange(history, row.resource, state);
-            const lasts = resourceEntry(row.resource).group === "food" && food.days !== null ? HUD_COPY.ledgerDays(food.days) : HUD_COPY.ledgerNoLasts;
-            return (
-            <tr key={row.resource} data-resource={row.resource} data-lit={lit ? "true" : undefined}>
-              <th scope="row"><Button type="button" className="ledger-row" aria-pressed={lit} aria-label={HUD_COPY.ledgerRowLabel(resourceName(row.resource))}
-                onPress={() => onHighlight?.(lit ? [] : holders)} variant="surface"><ResourceGlyph resource={row.resource} />{resourceName(row.resource)}</Button></th>
-              <td className="ledger-total">{row.total}</td><td className="ledger-week">{HUD_COPY.ledgerWeekValue(week)}</td><td className="ledger-lasts">{lasts}</td>
-              {row.byStore.map((amount, index) => <td key={matrix.stores[index]!.id}>{amount === 0 ? "—" : amount}</td>)}</tr>);
-          })}</tbody>
-        </table></div>)) : null}
+        // UX-0b: the total, the week and the lasts first; NAT-2 (QA-006): the stores folded into one column (LedgerStockTable).
+        <LedgerStockTable state={state} matrix={matrix} history={history} food={food} highlighted={highlighted} onHighlight={onHighlight} onInspect={onInspect} />)) : null}
       {/* ECON-UI (FIX-7 townAle): the town's ale — kept in the houses, never in a store, so not in the table above. */}
       {tab === "stock" && townAle !== null ? <section className="ledger-town-ale" aria-label={TOWN_ALE_COPY.heading}>
         <h3><ResourceGlyph resource="ale" />{TOWN_ALE_COPY.heading}</h3>

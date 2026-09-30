@@ -25,6 +25,9 @@
 :where(.ui-btn--tab) { color: var(--parchment-light); }
 :where(.ui-btn--quiet.ui-btn--dark) { color: var(--parchment-light); }
 :where(.ui-btn--surface) { color: inherit; text-align: inherit; justify-content: flex-start; }
+/* NAT-2 (QA-006): a surface a screen gives no fill or border of its own is not the browser's button (grey fill, outset
+   border): the ledger's rows and the gallery's samples were. At 0 specificity: a screen's own fill and border win. */
+:where(.ui-btn--surface) { background-color: transparent; border: 0 solid transparent; }
 :root .ui-btn.ui-btn:not(.ui-btn--surface) {
   background: none;
   border-color: transparent;
@@ -64,6 +67,11 @@
 /* The HUD's panel slot (goal log, ledger drawer, inspector): the light panel frame, drawn 10 px wide so it fits the
    slot's own 10 px padding (was a flat vellum box with an ink rule). */
 :root .app-shell .slot-panel { background: var(--parchment) var(--art-texture-light) repeat; border-color: transparent; border-image: url("/assets/ui-p0/frame_panel_light.png") 32 fill / 10px / 0 stretch; }
+/* NAT-2 (QA-006): the ledger drawer is a record book: the chronicle's ledger card (Wave 19 frame_record_ledger: the
+   double rule, gilt corners, the ruled margin, the turned corner) at the cards' 0.7, its edges repeated; the padding
+   keeps the tables inside the frame. */
+:root .app-shell .slot-panel.ledger-drawer { padding: 20px 30px 28px 28px;
+  border-image: url("/assets/wave19/cards/frame_record_ledger.png") 30 40 40 32 fill / 21px 28px 28px 22px / 0 round; }
 
 /* The pause menu's settings are on the light plate: the console's light hint colour read as blank there. */
 :root .app-shell .pause-menu-settings .autoplay-hint { color: var(--ink-soft); }
