@@ -158,7 +158,7 @@ export const PETITION_COPY = {
   },
   church_rebuilding: {
     title: "교회 증축 청원",
-    demand: (cost: number) => `교구가 낡은 교회에 새 회중석을 지어 달라고 청합니다. 증축에 ${pence(cost)}이 듭니다.`,
+    demand: (cost: number) => `교구가 낡은 교회에 새 회중석을 지어 달라고 청합니다. 증축에 드는 돈은 ${pence(cost)}입니다.`,
     accept: (cost: number, points: number, relations: string) => `교회를 넓혀 짓습니다 · 금고에서 ${pence(cost)} · 교회 유산 점수 +${points} · ${relations}`,
     refuse: (relations: string) => `증축을 미룹니다 · 돈은 들지 않음 · ${relations}`,
   },

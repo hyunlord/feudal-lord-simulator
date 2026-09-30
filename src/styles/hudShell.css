@@ -367,7 +367,8 @@
    them), each with the heir it names: the portrait beside the name and relation, then lineage, likeness and records. */
 .petition-card[data-def="heir_choice"] { min-height: min(740px, 92vh); }
 .petition-card[data-def="heir_choice"] .petition-options { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); align-items: stretch; }
-.petition-card[data-def="heir_choice"] .petition-option { height: 100%; grid-template-columns: 44px minmax(0, 1fr); align-content: start; align-items: center; }
+.petition-card[data-def="heir_choice"] .petition-option { height: 100%; grid-template-columns: 44px minmax(0, 1fr); align-content: start; align-items: center;
+  word-break: keep-all; }
 .petition-card[data-def="heir_choice"] .petition-seal { grid-row: 1; }
 .petition-card[data-def="heir_choice"] .petition-option > :not(.petition-seal, strong) { grid-column: 1 / -1; }
 .petition-heir { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 1px 8px; align-items: center; margin: 2px 0; font-size: 12px; line-height: 1.35; }
