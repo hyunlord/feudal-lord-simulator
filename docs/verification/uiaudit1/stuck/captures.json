@@ -1,0 +1,122 @@
+{
+  "url": "http://127.0.0.1:4301/",
+  "views": {
+    "a-empty-manor-press": {
+      "tick": 418001,
+      "rows": [
+        {
+          "buildingId": "construction-site-000047",
+          "kind": "farmstead",
+          "good": "wheat",
+          "amount": 932,
+          "since": 418001,
+          "reason": "no_carrier",
+          "spoiling": true,
+          "carriers": 1,
+          "tile": {
+            "tx": 55,
+            "ty": 48
+          }
+        },
+        {
+          "buildingId": "construction-site-000064",
+          "kind": "farmstead",
+          "good": "wheat",
+          "amount": 897,
+          "since": 418001,
+          "reason": "no_carrier",
+          "spoiling": true,
+          "carriers": 1,
+          "tile": {
+            "tx": 41,
+            "ty": 43
+          }
+        },
+        {
+          "buildingId": "construction-site-000082",
+          "kind": "pastoral_farm",
+          "good": "fleece",
+          "amount": 328,
+          "since": 418001,
+          "reason": "receiver_full",
+          "spoiling": false,
+          "carriers": 0,
+          "tile": {
+            "tx": 33,
+            "ty": 31
+          }
+        }
+      ],
+      "chip": {
+        "text": "남서쪽 헛간에 밀 932 묶임운반꾼 부족 · 수확 버려짐외 2곳",
+        "label": "남서쪽 헛간에 밀 932 묶임 — 운반꾼 부족 · 수확 버려짐. 누르면 그 건물로 갑니다",
+        "reason": "no_carrier",
+        "building": "construction-site-000047",
+        "box": {
+          "x": 763.6875,
+          "y": 66,
+          "width": 364.3125,
+          "height": 44
+        }
+      },
+      "pressed": {
+        "inspectorOpen": true,
+        "inspectorHeading": "헛간"
+      }
+    },
+    "b-staged-no-road": {
+      "tick": 329000,
+      "staged": {
+        "barnId": "construction-site-000064",
+        "wheat": 800,
+        "cutRoadTiles": [
+          2729,
+          2794
+        ]
+      },
+      "rows": [
+        {
+          "buildingId": "construction-site-000064",
+          "kind": "farmstead",
+          "good": "wheat",
+          "amount": 800,
+          "since": 329000,
+          "reason": "no_road",
+          "spoiling": false,
+          "carriers": 1,
+          "tile": {
+            "tx": 41,
+            "ty": 43
+          }
+        },
+        {
+          "buildingId": "construction-site-000082",
+          "kind": "pastoral_farm",
+          "good": "fleece",
+          "amount": 160,
+          "since": 329000,
+          "reason": "receiver_full",
+          "spoiling": false,
+          "carriers": 0,
+          "tile": {
+            "tx": 33,
+            "ty": 31
+          }
+        }
+      ],
+      "chip": {
+        "text": "서쪽 헛간에 밀 800 묶임길 없음외 1곳",
+        "label": "서쪽 헛간에 밀 800 묶임 — 길 없음. 누르면 그 건물로 갑니다",
+        "reason": "no_road",
+        "building": "construction-site-000064",
+        "box": {
+          "x": 916.203125,
+          "y": 66,
+          "width": 259.796875,
+          "height": 44
+        }
+      }
+    }
+  },
+  "errors": []
+}
