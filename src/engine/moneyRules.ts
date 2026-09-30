@@ -10,6 +10,7 @@
 import { plagueRentPermille, plagueUpkeepPermille } from "./plague";
 import { reorganisationRentPermille, reorganisationTollPermille } from "./reorganisation";
 import { stallFeePermille, stallFeeRightSource } from "./politics";
+import { agencyDuesPermille } from "./townAgencyDues";
 import { marketExpansionPermille, murageTollPermille, warTaxPermille } from "./war";
 import type { SourceRef } from "../contracts";
 import { MONEY_BALANCE } from "../content/balanceConfig";
@@ -141,7 +142,9 @@ function periodIncome(state: GameState, money: MoneyState): { readonly postings:
     // FC-3/FC-4: a market charter lowers the dues (the right is a source of the posting).
     const right = stallFeeRightSource(state);
     // F2-A (WR-8): the market chosen over the wall raises the dues a quarter.
-    const fee = Math.round(stalls * MONEY_BALANCE.stallFeePerStall * stallFeePermille(state) / 1000 * marketExpansionPermille(state) / 1000);
+    // LM-E1 (TA-6 ③): in lord mode the lord's market dues scale the fee (1000‰ otherwise).
+    const fee = Math.round(stalls * MONEY_BALANCE.stallFeePerStall * stallFeePermille(state) / 1000 * marketExpansionPermille(state) / 1000
+      * agencyDuesPermille(state) / 1000);
     if (stalls > 0 && fee > 0) postings.push({ account: "cash", category: "stall_fee", amount: fee,
       sourceRefs: [buildingSource(market.id, `stalls:${stalls}`), ...(right === null ? [] : [right])] });
   }

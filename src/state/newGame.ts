@@ -9,6 +9,7 @@ import type { GameState } from "../engine/engine.types";
 import { buildArchetypeWorld } from "../world/archetypeTerrain";
 import { DEFAULT_GAME_STATE } from "./gameStore";
 import { applyOpeningVillageToTile, placeManorSite } from "./openingVillage";
+import { initialAgency } from "../engine/townAgency";
 
 export interface NewGameOptions {
   readonly scenarioId: string;
@@ -16,6 +17,11 @@ export interface NewGameOptions {
   readonly archetypeId?: string;
   /** The map's seed, a whole number from 1; the riverside town's map is seed 1 only. */
   readonly seed?: number;
+  /**
+   * LM-E1 (TA-1): "lord" — the town builds itself (the town agency) and the player sets its conditions; "sandbox"
+   * (the default, today's game) — the player builds. A different axis from the scenario's campaign / sandbox.
+   */
+  readonly mode?: "lord" | "sandbox";
 }
 
 /** MA-6: the lands a new game can start on, in the start screen's order. */
@@ -25,6 +31,12 @@ export function mapArchetypes(): readonly ArchetypeDef[] {
 
 /** MA-6: the opening state of a new game, or null for an unknown scenario, land or seed. */
 export function newGameState(options: NewGameOptions): GameState | null {
+  const state = openingState(options);
+  // LM-E1 (TA-1): lord mode's town starts with its actors (the campaign's default stays sandbox).
+  return state === null || options.mode !== "lord" ? state : { ...state, agency: initialAgency() };
+}
+
+function openingState(options: NewGameOptions): GameState | null {
   const scenario = SCENARIOS.get(options.scenarioId);
   if (scenario === undefined) return null;
   const archetype = archetypeById(options.archetypeId ?? scenario.archetype);
