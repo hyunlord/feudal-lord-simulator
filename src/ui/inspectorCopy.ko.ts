@@ -1,4 +1,5 @@
 import type { ResourceType } from "../content/resourceConfig";
+import { LORD_HOUSE_NAMES_KO } from "../content/historyCopy.ko";
 import { A_TRIPLE_PRIME_ROAD_COPY } from "./aTriplePrimeRoadCopy";
 import { BUILDING_OPERATION_COPY } from "./buildingOperationCopy.ko";
 import { CONSTRUCTION_DEADLOCK_COPY } from "./constructionDeadlockCopy.ko";
@@ -20,6 +21,8 @@ export const INSPECTOR_COPY = {
   houseRisk: (level: number) => `생활 L${level} 유지 위험`,
   /** `일꾼 2/3 · 멈춤`. */
   facilityState: (workers: number, required: number, status: string) => `일꾼 ${workers}/${required} · ${status}`,
+  /** UI-10 (F5-A LG-1): the keep, the lord's seat, after the charter — the family gone to its country manor. */
+  manorLeft: (house: string, year: number) => `${LORD_HOUSE_NAMES_KO[house] ?? house} 가문이 ${year}년 영주관을 비우고 시골 장원으로 떠났습니다`,
   facilityRunning: "운영 중",
   facilityStopped: "멈춤",
   /** Same wording as the construction-site card (`목책 구간 부지`). */

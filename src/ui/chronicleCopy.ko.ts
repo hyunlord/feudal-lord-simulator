@@ -1,4 +1,5 @@
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
+import { HEIR_KIND_COPY, LEGACY_AXIS_COPY, LEGACY_ENDING_COPY } from "../content/legacyCopy.ko";
 import type { ChronicleEntry } from "../engine/politics.types";
 import { pence } from "./hud/hudCopy.ko";
 
@@ -16,6 +17,10 @@ const WALL_OUTCOME: Readonly<Record<string, string>> = { stone_wall: "석벽 완
 const PLAGUE_OUTCOME: Readonly<Record<string, string>> = { resettled: "재정착 완료", calendar: "세월로 마감" };
 // UI-9 (F4-A RG-9/RG-10): chapter 4 charter outcomes.
 const CHARTER_OUTCOME: Readonly<Record<string, string>> = { partial: "부분 허용", refused: "거부", calendar: "세월로 마감" };
+// UI-10 (F5-A LG-8): chapter 5's answers and the family's leaving or staying.
+const ROYAL_TAX_OUTCOME: Readonly<Record<string, string>> = { paid: "납부", petitioned: "감면 청원" };
+const AUTONOMY_OUTCOME: Readonly<Record<string, string>> = { sealed: "인장을 찍음", refused: "거절" };
+const FAMILY_OUTCOME: Readonly<Record<string, string>> = { departed: "영주관을 떠나 시골 장원으로", stayed: "영주관에 남음" };
 
 export const CHRONICLE_COPY = {
   label: "연대기",
@@ -49,6 +54,13 @@ export const CHRONICLE_COPY = {
       `팔린 직물 ${stats.reorganisation.clothSold}필 · 직물 수입 ${pence(stats.reorganisation.clothIncome)} · 길드 ${stats.reorganisation.guild ? "있음" : "없음"}`,
       `인두세 ${pence(stats.reorganisation.pollTax)} · 반란 소문 ${stats.reorganisation.rebellion === "chased" ? "징수원 쫓음" : stats.reorganisation.rebellion === "quiet" ? "조용히 지남" : "없음"} · 특허 ${CHARTER_OUTCOME[stats.reorganisation.charter] ?? stats.reorganisation.charter}`,
       `도시 세력 ${stats.reorganisation.townInfluence} · 상인 세력 ${stats.reorganisation.merchantInfluence}`,
+    ]),
+    // UI-10 (F5-A LG-8): chapter 5's autonomy and legacy.
+    ...(stats.legacy === undefined ? [] : [
+      `자치와 유산 시작 ${stats.legacy.startYear}년 · 도시가 뽑은 시장 ${stats.legacy.mayor ? "있음" : "없음"} · 후계자 ${stats.legacy.heir === null ? "정하지 않음" : HEIR_KIND_COPY[stats.legacy.heir] ?? stats.legacy.heir}`,
+      `국왕 과세 ${stats.legacy.royalTax === null ? "없음" : ROYAL_TAX_OUTCOME[stats.legacy.royalTax]} · 자치 특허 ${stats.legacy.charter === null ? "없음" : AUTONOMY_OUTCOME[stats.legacy.charter]} · 가문 ${stats.legacy.family === null ? "정하지 않음" : FAMILY_OUTCOME[stats.legacy.family]}`,
+      `남긴 유산 ${stats.legacy.legacy === null ? "없음" : LEGACY_AXIS_COPY[stats.legacy.legacy]?.legacy ?? stats.legacy.legacy} · 결말 ${stats.legacy.ending === null ? "아직 없음" : LEGACY_ENDING_COPY[stats.legacy.ending]?.title ?? stats.legacy.ending}`,
+      ...(stats.legacy.scores === null ? [] : [`유산 점수 도시 ${stats.legacy.scores.town} · 가문 ${stats.legacy.scores.family} · 교회 ${stats.legacy.scores.church}`]),
     ]),
   ],
   nextChapter: "제2장으로",

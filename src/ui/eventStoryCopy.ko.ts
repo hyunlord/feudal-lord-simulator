@@ -1,5 +1,5 @@
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
-import { HISTORY_CHOICE_LABELS } from "../content/historyCopy.ko";
+import { HISTORY_CHOICE_LABELS, LORD_HOUSE_NAMES_KO } from "../content/historyCopy.ko";
 import type { GameState } from "../engine/engine.types";
 import { calendarArrivalLabel } from "./calendarArrival";
 import { stateCalendar } from "../engine/scenarioState";
@@ -182,6 +182,62 @@ export const EVENT_STORY_COPY = {
       quiet: "소문은 조용히 지나갔습니다" },
     /** Chip advice for a reorganisation petition (craftsmen, merchants, townsfolk — not the Crown). */
     demand: { advice: "한 계절 안에 답하지 않으면 거절로 칩니다. 재편 시대의 선택은 4장 끝까지 남습니다" },
+  },
+  // UI-10 (F5-A LG-1…LG-8): chapter 5's eight steps, the lord's names quoted from the ledger's records.
+  legacy: {
+    /** LG-1: the merchant elite asks that the town choose its mayor. */
+    mayorDemand: { title: "시장을 뽑게 해 달라는 요구", line: "상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구합니다",
+      advice: "요구는 자치 특허로 이어집니다. 특허에 인장을 찍으면 이 후보가 첫 시장이 됩니다",
+      candidate: (name: string) => `시장 후보 — ${name}` },
+    /** LG-4: the Crown's envoy and the tenth and fifteenth. */
+    royalTax: { title: "국왕의 과세 사절", line: "국왕의 과세 사절이 15분의 1·10분의 1세를 걷으러 왔습니다",
+      advice: "감면을 청원했다면, 나중에 자치 특허를 내줄 때 국왕의 확인금을 냅니다",
+      paid: (amount: string) => `국왕에게 낸 돈 ${amount}`, petitioned: "내지 않고 감면을 청원했습니다" },
+    /** LG-3: the old lord names his heir. */
+    succession: { title: "늙은 영주의 후계자", line: "영주가 늙었습니다. 가문을 이을 사람을 정해야 합니다",
+      advice: "고른 후계자가 영주관의 가장이 되고, 상위 영주에게 상속세를 냅니다",
+      lord: (name: string, age: number) => `늙은 영주 — ${name} (${age}세)`, candidates: (n: number) => `후보 ${n}명`,
+      heir: (name: string, relation: string) => `후계자 — ${name} (${relation})` },
+    /** LG-1: the town makes its own seal. */
+    citySeal: { title: "도시의 인장", line: "도시가 제 인장을 새겼습니다. 이제 특허에 찍을 인장이 있습니다",
+      advice: "두 계절 뒤에 자치 특허에 인장을 찍을지 묻습니다" },
+    /** LG-2: the charter sealed or refused. */
+    charter: { title: "자치 특허의 인장", sealed: "자치 특허에 도시 인장이 찍혔습니다. 도시가 제 시장과 법정을 가집니다",
+      refused: "영주가 자치 특허를 거절했습니다. 가문이 계속 도시를 다스립니다",
+      advice: "특허를 내주면 가문은 영주관을 떠나고, 거절하면 도시의 반발이 남습니다",
+      mayor: (name: string) => `첫 시장 — ${name}`, backlash: (n: number) => `도시의 반발 ${n}` },
+    /** LG-1: the family leaves the manor for its country seat, or stays. */
+    departure: {
+      departedTitle: "가문이 영주관을 떠나다", departed: (house: string) => `${LORD_HOUSE_NAMES_KO[house] ?? house} 가문이 영주관을 비우고 시골 장원으로 옮겼습니다`,
+      departedAdvice: "영주관은 비었습니다. 도시는 이제 시장과 도시 법정이 다스립니다",
+      stayedTitle: "가문이 영주관에 남다", stayed: (house: string) => `${LORD_HOUSE_NAMES_KO[house] ?? house} 가문이 영주관에 남아 도시를 다스립니다`,
+      stayedAdvice: "영주관에 남으면 가문의 유산 점수가 오릅니다. 도시의 반발은 그대로입니다" },
+    /** LG-5: the legacy's record sealed. */
+    legacyRecord: { title: "유산의 기록", line: "영주가 남길 것 하나를 정하고 그 기록을 봉인했습니다",
+      advice: "1450년 여름 마지막 장날에 도시·가문·교회 세 축으로 유산을 판정합니다",
+      chosen: (legacy: string) => `남긴 것 — ${legacy}`, none: "남긴 것 없음" },
+    /** LG-8: the last market day of 1450, the campaign's end. */
+    lastMarket: { title: "1450년 마지막 장날", line: "마지막 장날입니다. 도시와 가문이 남긴 것을 판정합니다",
+      advice: "연대기 책에서 다섯 장의 기록을 볼 수 있습니다", ending: (title: string) => `결말 — ${title}` },
+    /** Chip advice for a chapter-5 petition (the Crown, the overlord, the town, the craftsmen, the parish). */
+    demand: { advice: "한 계절 안에 답하지 않으면 영주의 침묵이 답합니다. 5장의 선택은 1450년 유산 판정에 남습니다" },
+  },
+  // UI-10 (FIX-9 LG-13): the 1384–1400 interlude, by the calendar.
+  interlude: {
+    staple: { title: "양모 집산지 이전", line: "양모 집산지(Staple)가 옮겨지고 양모 수출이 묶였습니다. 직조공의 시장이 넓어집니다",
+      advice: "여덟 계절 동안 직물이 더 비싸게 팔립니다. 직조공 집을 멈추지 마십시오", fact: "직물 값 1.1배 · 여덟 계절" },
+    guildDispute: { title: "길드와 상인의 다툼", line: "길드와 상인이 직물을 파는 권리를 두고 다툽니다",
+      advice: "어느 편을 들든 한쪽 세력이 등을 돌립니다" },
+    marketFire: { title: "장터 화재", line: "장터에 불이 났습니다. 도시가 장터를 고칩니다",
+      advice: "수리비는 금고에서 이미 나갔습니다", repair: (amount: string) => `수리 ${amount}` },
+    churchRebuilding: { title: "교회 증축 청원", line: "교구가 낡은 교회를 넓혀 새 회중석을 짓자고 청합니다",
+      advice: "증축하면 교회의 유산 점수와 주교의 관계가 오릅니다", rebuilt: "새 회중석이 섰습니다", deferred: "증축을 미뤘습니다" },
+    deposition: { title: "리처드 2세 폐위", line: "리처드 2세가 폐위되고 헨리 4세가 즉위했습니다. 새 왕의 치세가 시작됩니다",
+      advice: "새 왕 아래에서 왕실과의 관계가 처음 값 쪽으로 절반 돌아갑니다" },
+  },
+  /** UI-10: the steward's one line when chapter 5's next step or the interlude's next event comes within a season. */
+  stewardLegacy: {
+    soon: (what: string) => `다음 계절에 ${what} — 금고를 살펴 두십시오`,
   },
   /** UI-9: the steward's one line when the reorganisation is the nearest coming event. */
   stewardReorg: {
