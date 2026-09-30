@@ -93,3 +93,18 @@ test("TA-6 a subsidy raises its kind's score, pays from the treasury, and the re
   const receipt = later.agency!.receipts.find(entry => entry.what === "granary" && entry.subsidy > 0);
   if (receipt !== undefined) assert.ok(receipt.decisionIds.includes(decision.id));
 });
+
+test("TA-9 every receipt's reasons match the state the week started from (auditReceipt)", async () => {
+  const { auditReceipt } = await import("../src/engine/townAgency");
+  let state = gameReducer(lordTown(), { type: "set_estate_policy", policy: "stability" });
+  let audited = 0;
+  while (state.tick < AGENCY_WEEK_TICKS * 16) {
+    const before = state;
+    state = advanceTick(state);
+    for (const receipt of (state.agency?.receipts ?? []).filter(entry => Number(entry.id.slice(8)) >= (before.agency?.nextReceipt ?? 1))) {
+      assert.deepEqual(auditReceipt(before, receipt), [], `${receipt.id} ${receipt.what}`);
+      audited += 1;
+    }
+  }
+  assert.ok(audited > 0);
+});

@@ -176,7 +176,7 @@ function reasonsOf(state: GameState, agency: AgencyState, action: TownAction, ac
   const site = siteOf(state, action);
   const cost = costOf(action);
   const reasons: Reason[] = [];
-  const add = (name: Reason["name"], value: number) => { if (value !== 0) reasons.push({ name, value: Math.round(value) }); };
+  const add = (name: Reason["name"], value: number) => { const rounded = Math.round(value); if (rounded !== 0) reasons.push({ name, value: rounded }); };
   add("need", rank === null ? 0 : NEED_TOP - NEED_STEP * (rank + 3));
   const policyKey = kind ?? (action.kind === "place_road" ? "road" : action.kind === "paint_zone" ? "zone" : what);
   add("policy", (POLICY_WEIGHTS[agency.policy][policyKey] ?? 0) + (rank !== null && rank < -1 ? POLICY_WEIGHTS[agency.policy].fill_plot ?? 0 : 0));
@@ -403,6 +403,8 @@ export function auditReceipt(state: GameState, receipt: ProjectReceipt): readonl
     const cost = Object.entries(BUILDING_CONFIG_BY_KIND[kind].buildCost).reduce((sum, [resource, amount]) => sum + (amount ?? 0) * (MATERIAL_PENNIES[resource] ?? 0), 0);
     expected.set("cost", Math.round(-cost / 40));
   }
+  // A road's length is not on its receipt: its cost reason is read from the receipt's pennies.
+  if (receipt.what === "road") expected.set("cost", Math.round(-receipt.cost / 40));
   if (kind === "house") {
     const near = state.buildings.filter(building => building.kind === "house" && !(building.tx === receipt.tx && building.ty === receipt.ty)
       && Math.abs(building.tx - receipt.tx) <= 2 && Math.abs(building.ty - receipt.ty) <= 2).length;
