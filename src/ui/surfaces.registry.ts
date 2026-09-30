@@ -114,8 +114,12 @@ const PETITION = {
   siblingsNoOverlap: [".petition-option", ".story-modal-later"],
 } as const;
 const BOOK = { root: ".chronicle-page.legacy-book", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-book-body", scrollParts: [".legacy-book-page"],
-  scene: { kind: "state", set: "ui10", name: "chapter5-end", tile: "house", zoom: 1.1, query: "&story-delay=5000" } } as const;
-const chapterScene = (set: StateSet, name: string) => ({ kind: "state", set, name, tile: "house", zoom: 1.1, query: "&story-delay=5000" }) as const;
+  scene: { kind: "state", set: "ui10", name: "chapter5-end", tile: "house", zoom: 1.1, query: "&story-delay=20000" } } as const;
+/** A chapter's end page opens by itself after the story's delay; the delay must outlast the page load, or openScene's
+ * opening Escape closes the page as it opens and it never comes back (the UI-9b "page does not open" flake on a busy
+ * DGX). 20 s leaves the load that margin; the open step waits 90 s. */
+const CHAPTER_DELAY = "&story-delay=20000";
+const chapterScene = (set: StateSet, name: string) => ({ kind: "state", set, name, tile: "house", zoom: 1.1, query: CHAPTER_DELAY }) as const;
 const CHAPTER_PAGE = {
   root: ".chronicle-page:not(.legacy-ending):not(.legacy-book)", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".chapter-page-body",
   open: [{ wait: ".chronicle-page", timeout: 90_000 }, { pause: 800 }],
