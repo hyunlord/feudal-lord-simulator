@@ -5,7 +5,8 @@
 //   p1 before / p2 after at zoom 1.0 over the pairs; p3 the same town in its next winter (snow on the Wave 30 roofs);
 //   p4 the pairs abandoned (abandonedTick set on each pair: its own boarded layer).
 // Paused. JPEGs of the middle of the view and captures.json (the merges, each pair's painting, what the page drew).
-//   PLAYWRIGHT_MODULE=... npx tsx scripts/install30PairCaptures.ts <out-dir> --url <this> --base <trunk> --states <ui6States dir>
+//   PLAYWRIGHT_MODULE=... npx tsx scripts/install30PairCaptures.ts <out-dir> --url <this> --base <trunk> --states <ui6States dir> [--after-only]
+// --after-only: p2-p4 again (this build changed, the trunk did not); p1 and its record are kept from the earlier run.
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/install30PairCaptures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/install30PairCaptures.ts …", entry: import.meta.url });
 import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
@@ -23,7 +24,7 @@ type Page = { waitForTimeout: (ms: number) => Promise<void>; screenshot: (option
   locator: (selector: string) => { count: () => Promise<number>; first: () => { click: () => Promise<void> } }; on: (event: string, handler: (error: unknown) => void) => void };
 const [out] = process.argv.slice(2);
 const flag = (name: string) => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
-const url = flag("url")!; const base = flag("base")!; const statesDir = flag("states")!;
+const url = flag("url")!; const base = flag("base")!; const statesDir = flag("states")!; const afterOnly = process.argv.includes("--after-only");
 mkdirSync(out!, { recursive: true });
 const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
 const YEAR = BALANCE.TICKS_PER_YEAR;
@@ -73,7 +74,7 @@ async function view(name: string, game: string, scene: GameState, zoom: number) 
 const step = async (name: string, run: () => Promise<void>) => { try { await run(); console.log(name, "ok"); } catch (error) { errors.push(`${name}: ${String(error).slice(0, 300)}`); console.log(name, "FAILED"); } };
 
 await step("town", async () => {
-  await view("p1-pairs-z1.0-before", base, state, 1);
+  if (!afterOnly) await view("p1-pairs-z1.0-before", base, state, 1);
   await view("p2-pairs-z1.0-after", url, state, 1);
 });
 await step("winter", async () => {
@@ -88,6 +89,9 @@ await step("boarded", async () => {
   await view("p4-pairs-boarded-z1.0", url, { ...state, houses: state.houses.map(house => ids.has(house.buildingId) ? { ...house, abandonedTick: state.tick - 1 } : house) }, 1);
 });
 await browser.close();
+// Kept from the earlier run (--after-only): the trunk's p1 and its view record.
+const earlier = afterOnly ? JSON.parse(readFileSync(join(out!, "captures.json"), "utf8")) as { views: Record<string, unknown>; run?: string } : null;
+if (earlier !== null) { files.unshift("p1-pairs-z1.0-before.jpg"); views["p1-pairs-z1.0-before"] = earlier.views["p1-pairs-z1.0-before"]; }
 const bytes = files.reduce((total, file) => total + statSync(join(out!, file)).size, 0);
 writeFileSync(join(out!, "captures.json"), JSON.stringify({ state: town.file, tick: state.tick, year: 1300 + Math.floor(state.tick / YEAR), merges, pairs: painted, middle, clip: CLIP,
   views, files, jpegBytes: bytes, errors }, null, 1) + "\n");
