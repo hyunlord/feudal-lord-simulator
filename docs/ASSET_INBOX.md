@@ -15,6 +15,7 @@ assets-inbox/
       assets/               ← 에셋 PNG(+ masters·templates·masks·retained·original-assets 등 하위 경로 유지)
       proofs/               ← 확인 그림(checks·proofs·contact·preview)
       records/              ← CSV·검수표·생성 기록·SHA256SUMS·index.html 등 (records 안의 PNG 포함)
+                              256KB를 넘는 기계 기록은 `<파일 이름>.astra-raw.txt` 안내 한 줄만(8절)
       workdir-variant/      ← 같은 경로인데 작업 폴더(output/) 쪽 바이트가 ZIP과 다른 경우만
 ```
 
@@ -304,3 +305,6 @@ git lfs pull --include="assets-inbox/wave7/**"
 - 장부는 여러 세션이 고친다. 다시 생성하지 말고 해당 행만 고치거나 행을 더한다.
 - 판정·재작업·설치가 바뀌면 장부 행의 `status`·`replaced_by`·`installed_by`만 고친다. 파일은 지우거나 덮어쓰지 않는다.
 - 장부 행 수 = inbox 그림(PNG·JPG) 수를 유지한다. JPG 행은 Wave 24부터(판정이 따로 온 파생본).
+- **큰 기계 기록은 astra-raw에만**(2026-09-30 사용자 규칙, Wave 39 다음 묶음부터): 기계가 만든 기록 파일(JSON·JSONL·CSV·TSV·TXT·LOG·XML 등)이 256KB(262,144바이트)를 넘으면 저장소에 넣지 않는다. 원본은 `~/feudal-lord-analysis/astra-raw/`(받은 ZIP과 작업 폴더)에만 두고, 저장소의 같은 자리에는 `<파일 이름>.astra-raw.txt` 안내 파일 하나를 둔다. 안내 파일은 한 줄: `<파일 이름> · <바이트> bytes · sha256 <64자> · <astra-raw 경로>`(ZIP 안이면 `zips/<ZIP>::<묶음 안 경로>`, 작업 폴더에도 있으면 그 경로를 `;`로 덧붙임).
+  - 사람이 읽는 문서(README·REPORT·QA·PLAN 같은 `.md`, 갤러리 `index.html`)와 확인 그림은 크기와 관계없이 그대로 저장소에 둔다.
+  - 이미 들어간 Wave 39 `records/proofs/placements.json`(약 60,000줄) 등 규칙 전의 파일은 그대로 둔다(사용자 판정).
