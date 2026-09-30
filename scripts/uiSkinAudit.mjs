@@ -387,8 +387,9 @@ if (states9 !== undefined) {
   });
 }
 
-// UI-10: chapter 5 — a legacy petition card, the heir's card (its candidates), the legacy verdict, the chronicle book
-// and chapter 5's end page. States from --states10 (scripts/ui10States.ts); the screens' selectors are UI-10's.
+// UI-10: chapter 5 — a legacy petition card, the heir's card (its candidates), chapter 5's end page, the legacy
+// verdict and ending (LegacyEndingScreen) and the chronicle book (ChronicleBook). States from --states10
+// (scripts/ui10States.ts).
 const states10 = flag('states10');
 if (states10 !== undefined) {
   const scene10 = async (stateName, query) => {
@@ -412,12 +413,10 @@ if (states10 !== undefined) {
     await page.locator('.chronicle-page').waitFor({ timeout: 90_000 }); await pause(800);
     await audit('chapter5-page', page, 's32-chapter5-page.jpg');
     await page.locator('.chronicle-page .chronicle-next').first().click();
-    await page.locator('.legacy-verdict').waitFor({ timeout: 30_000 }); await pause(800);
+    await page.locator('.legacy-ending').waitFor({ timeout: 30_000 }); await pause(800);
     await audit('legacy-verdict', page, 's33-legacy-verdict.jpg');
-    await page.locator('.legacy-verdict .legacy-verdict-next').first().click();
-    await page.locator('.legacy-ending').waitFor({ timeout: 30_000 }); await pause(600);
-    await page.locator('.legacy-ending .legacy-ending-book').first().click();
-    await page.locator('.chronicle-book').waitFor({ timeout: 30_000 }); await pause(800);
+    await page.locator('.legacy-ending .legacy-open-book').first().click();
+    await page.locator('.legacy-book').waitFor({ timeout: 30_000 }); await pause(800);
     await audit('chronicle-book', page, 's34-chronicle-book.jpg');
     await context.close();
   });

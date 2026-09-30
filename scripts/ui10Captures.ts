@@ -5,14 +5,17 @@
 //    (the Staple, the guild's quarrel or the market's fire, the parish's nave, the deposition) a small world shot before
 //    the story's pop-up (the story waits STORY_DELAY_MS) and the pop-up after; the season strip's chapter 5 forecast;
 //  ② the four decision cards (the heir's with its candidates) and the interlude's two petition cards;
-//  ③ the faction tab after 1399 (the new king), the ledger's chapter 5 money lines, the storehouse inspector with malt
-//    and the granary's without it, the empty manor close up (paused, zoom 1.6);
-//  ④ the campaign's end: chapter 5's page, the legacy verdict, the ending screen, the chronicle book (title, a chapter
-//    page, the family tree, the factions, the legacy page) and its text export; the ending screen a few ticks on;
-//  ⑤ with --endings: each of the six endings' saves, its ending screen.
+//  ③ the faction tab after 1399 (the new king), the ledger's chapter 5 money lines and its "보관 N곳" fold (malt, store by
+//    store), the storehouse inspector with malt and the granary's without it, the empty manor close up (paused, zoom
+//    1.6), the keep's inspector and the rights tab's seat line (the family gone to its country manor);
+//  ④ the campaign's end: chapter 5's page, the legacy verdict and ending (one screen), the chronicle book (title,
+//    chapter 5's page, the family tree, the factions, the legacy page) and its text export; the ending a few ticks on;
+//  ⑤ with --endings: each of the six endings' saves (ui10-ending-<id>.save.json), its ending screen;
+//  ⑥ with --extra (scripts/ui10ExtraStates.ts): the heir's card with three candidates, the market's fire (a town
+//    without a guild).
 // Beside the shots captures.json (what each shows, the shots' total size). The selectors are in SEL (UI-10's screens
 // land in parallel; adjust them there).
-//   PLAYWRIGHT_MODULE=... npx tsx scripts/ui10Captures.ts <out-dir> --url <game> --states <dir> [--endings <dir>]
+//   PLAYWRIGHT_MODULE=... npx tsx scripts/ui10Captures.ts <out-dir> --url <game> --states <dir> [--endings <dir>] [--extra <dir>] [--only <prefix>]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/ui10Captures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/ui10Captures.ts …", entry: import.meta.url });
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
@@ -22,36 +25,44 @@ import type { GameState } from "../src/engine/engine.types";
 import { legacyInterludes, legacyStage } from "../src/engine/legacy";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
-/** The screens' selectors (UI-10 lands beside this script: adjust here). */
+/** The screens' selectors (src/ui/legacy/*, StoryModals, SeasonStrip, LedgerStockTable, InspectorView, HudShell). */
 const SEL = {
   petitionCard: ".petition-card",
+  // ui10-cards' heir card (not merged yet): each candidate's row.
   heirCandidate: ".petition-card .heir-candidate",
   eventChip: ".event-chip",
   storyModal: ".story-modal",
-  modal: ".petition-card, .chronicle-page, .chapter-preview, .famine-card, .story-modal, .legacy-verdict, .legacy-ending, .chronicle-book",
+  modal: ".petition-card, .chronicle-page, .chapter-preview, .famine-card, .story-modal",
   dismiss: [".chronicle-page .chronicle-keep", ".story-modal-later", ".season-ledger-resume"],
   calendar: "[data-testid='hud-calendar']",
-  seasonStripLegacy: ".season-strip-list li[data-mark^='legacy']",
+  seasonStripLegacy: ".season-strip-list li[data-mark^='legacy_']",
   ledgerDock: "[data-dock='ledger']",
   ledgerDrawer: ".ledger-drawer",
   ledgerTab: (tab: string) => `[data-ledger-tab='${tab}']`,
-  legacyLedger: ".ledger-legacy-ledger",
+  // The stock tab's chapter ledgers (the wages', the reorganisation's; chapter 5's categories come with ui10-cards).
+  legacyLedger: ".ledger-wage-ledger",
+  heldToggle: ".ledger-held-toggle",
+  heldStores: (resource: string) => `[data-resource-stores='${resource}'] li`,
+  rightsSeat: ".ledger-rights-seat",
   chronicleTab: ".ledger-tab--chronicle",
   chronicleSubTab: ".chronicle-tab",
   factionRow: ".chronicle-factions-row",
-  storeInspector: ".store-inspector",
+  historyEnding: ".chronicle-ending",
+  inspector: ".left-inspector",
+  storeInspector: ".left-inspector .store-inspector",
   chroniclePage: ".chronicle-page",
   chronicleNext: ".chronicle-page .chronicle-next",
-  legacyVerdict: ".legacy-verdict",
-  verdictNext: ".legacy-verdict .legacy-verdict-next",
+  // The legacy verdict and the ending are one screen (LegacyEndingScreen).
   endingScreen: ".legacy-ending",
-  openBook: ".legacy-ending .legacy-ending-book",
-  chronicleBook: ".chronicle-book",
-  bookPage: (page: string) => `.chronicle-book [data-book-page='${page}']`,
-  bookNav: (page: string) => `.chronicle-book [data-book-tab='${page}']`,
-  bookExport: ".chronicle-book .chronicle-book-export",
+  openBook: ".legacy-ending .legacy-open-book",
+  endingExport: ".legacy-ending .legacy-export",
+  chronicleBook: ".legacy-book",
+  bookNext: ".legacy-book .legacy-book-next",
+  bookExport: ".legacy-book .legacy-export",
+  exportStatus: ".legacy-export-status",
 } as const;
-const BOOK_PAGES = ["title", "chapter", "family", "factions", "legacy"] as const;
+/** The book's pages shown (`data-page` of `.legacy-book`). */
+const BOOK_PAGES = ["title", "chapter-5", "family", "factions", "legacy"] as const;
 
 type Locator = { first: () => Locator; last: () => Locator; click: (options?: object) => Promise<void>; count: () => Promise<number>; waitFor: (options?: object) => Promise<void>;
   screenshot: (options: object) => Promise<Buffer>; evaluate: <T>(f: (node: Element) => T) => Promise<T> };
@@ -62,7 +73,7 @@ type Page = { waitForTimeout: (ms: number) => Promise<void>; screenshot: (option
 type Proof = { tileClientPoint: (tile: object) => { clientX: number; clientY: number } };
 const [out] = process.argv.slice(2);
 const flag = (name: string) => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
-const url = flag("url")!; const statesDir = flag("states")!; const endingsDir = flag("endings");
+const url = flag("url")!; const statesDir = flag("states")!; const endingsDir = flag("endings"); const extraDir = flag("extra");
 mkdirSync(out!, { recursive: true });
 const STORY_DELAY_MS = 5_000;
 const HELD = 600_000;
@@ -70,8 +81,11 @@ const BUDGET_BYTES = 2_000_000;
 const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
 const readJson = (path: string) => JSON.parse(readFileSync(path, "utf8")) as GameState | { schemaVersion: number; state: GameState };
 const bare = (input: ReturnType<typeof readJson>): GameState => "schemaVersion" in input && "state" in input ? input.state : input as GameState;
-const has = (name: string) => existsSync(join(statesDir, `${name}.json`));
-const load = (name: string) => bare(readJson(join(statesDir, `${name}.json`)));
+// A state by name: seed 2's (--states), else --extra's; `extra:<name>` only --extra's.
+const pathOf = (name: string) => (name.startsWith("extra:") ? [extraDir] : [statesDir, extraDir]).filter(dir => dir !== undefined)
+  .map(dir => join(dir!, `${name.replace(/^extra:/, "")}.json`)).find(path => existsSync(path));
+const has = (name: string) => pathOf(name) !== undefined;
+const load = (name: string) => bare(readJson(pathOf(name)!));
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const result: Record<string, unknown> = {};
@@ -117,6 +131,15 @@ const texts = (page: Page, selector: string) => page.evaluate(query => [...docum
 async function dismiss(page: Page) {
   for (const selector of SEL.dismiss) if (await page.locator(selector).count() > 0) { await page.locator(selector).first().click(); await page.waitForTimeout(400); }
 }
+/** Clicks a building's footprint (a few points, as clothCaptures) until `selector` opens. */
+async function inspect(page: Page, building: { tx: number; ty: number }, selector: string) {
+  for (const [dx, dy, lift] of [[0.5, 0.5, 8], [0.5, 0.5, 28], [1, 1, 8], [1, 1, 36], [0.3, 0.3, 8]] as const) {
+    const at = await page.evaluate(tile => (window as unknown as { __FEUDAL_PHASE10_PROOF__: Proof }).__FEUDAL_PHASE10_PROOF__.tileClientPoint(tile), { tx: building.tx + dx, ty: building.ty + dy });
+    await page.mouse.click(at.clientX, at.clientY - lift); await page.waitForTimeout(700);
+    if (await page.locator(selector).count() > 0) return;
+    await page.keyboard.press("Escape"); await page.waitForTimeout(200);
+  }
+}
 async function step(name: string, run: () => Promise<void>) {
   if (process.argv.includes("--only") && !name.startsWith(flag("only")!)) return;
   try { await run(); } catch (error) { errors.push(`${name}: ${String(error).slice(0, 300)}`); }
@@ -154,17 +177,17 @@ await step("season-strip", async () => {
 });
 
 // ② the decision cards, then the interlude's two petitions (their open states; the card itself at full size).
-const CARDS = ["royal_tax", "heir_choice", "borough_autonomy", "legacy_choice", "guild_dispute", "church_rebuilding"];
+const CARDS = ["royal_tax", "heir_choice", "borough_autonomy", "legacy_choice", "guild_dispute", "church_rebuilding", "extra:heir_choice"];
 for (const [index, name] of CARDS.entries()) {
   if (!has(name)) { result[name] = { absent: true }; continue; }
   await step(name, async () => {
     const { page, close } = await named(name, 0);
     await page.locator(SEL.petitionCard).waitFor({ timeout: 60_000 }).catch(async () => { await page.locator(SEL.eventChip).first().click(); });
     await page.locator(SEL.petitionCard).waitFor({ timeout: 30_000 }); await page.waitForTimeout(700);
-    await shootBox(page, SEL.petitionCard, `d${index + 1}-${name}.jpg`);
+    await shootBox(page, SEL.petitionCard, `d${index + 1}-${name.replace("extra:", "")}${name.startsWith("extra:") ? "-three" : ""}.jpg`);
     const state = load(name);
-    result[name] = { ui: await screen(page), candidates: name === "heir_choice" ? await texts(page, SEL.heirCandidate) : undefined,
-      engineCandidates: name === "heir_choice" ? state.legacy?.candidates.length ?? 0 : undefined };
+    result[name] = { ui: await screen(page), candidates: name.endsWith("heir_choice") ? await texts(page, SEL.heirCandidate) : undefined,
+      engineCandidates: name.endsWith("heir_choice") ? state.legacy?.candidates.length ?? 0 : undefined };
     await close();
   });
 }
@@ -188,8 +211,25 @@ await step("l1-legacy-ledger", async () => {
   await page.locator(SEL.ledgerDock).first().click(); await page.waitForTimeout(700);
   await page.locator(SEL.ledgerTab("stock")).first().click(); await page.waitForTimeout(700);
   await page.evaluate(query => { document.querySelector(query)?.scrollIntoView({ block: "end" }); }, SEL.legacyLedger); await page.waitForTimeout(300);
+  await page.evaluate(query => { const nodes = document.querySelectorAll(query); nodes[nodes.length - 1]?.scrollIntoView({ block: "end" }); }, SEL.legacyLedger);
+  await page.waitForTimeout(300);
   await shootBox(page, SEL.ledgerDrawer, "l1-legacy-ledger.jpg");
   result["l1-legacy-ledger"] = await texts(page, `${SEL.legacyLedger} tr, ${SEL.legacyLedger} li, ${SEL.legacyLedger} h4`);
+  await close();
+});
+// The stock table's "보관 N곳" unfolded for malt (each store's name and amount), the map unlit.
+await step("l2-ledger-fold-malt", async () => {
+  const { page, close } = await named("chapter5-end", HELD);
+  await page.waitForTimeout(1_000); await dismiss(page);
+  await page.locator(SEL.ledgerDock).first().click(); await page.waitForTimeout(700);
+  await page.locator(SEL.ledgerTab("stock")).first().click(); await page.waitForTimeout(700);
+  const opened = await page.evaluate(query => {
+    const toggle = [...document.querySelectorAll<HTMLElement>(query)].find(node => node.getAttribute("aria-label")?.includes("엿기름"));
+    toggle?.scrollIntoView({ block: "center" }); toggle?.click(); return toggle !== undefined;
+  }, SEL.heldToggle);
+  await page.waitForTimeout(600);
+  await shootBox(page, SEL.ledgerDrawer, "l2-ledger-fold-malt.jpg");
+  result["l2-ledger-fold-malt"] = { toggle: opened, stores: await texts(page, SEL.heldStores("malt")) };
   await close();
 });
 const STORES = [["b1-storehouse-malt", "storehouse", (held: number) => held > 0], ["b2-granary-no-malt", "granary", (held: number) => held === 0]] as const;
@@ -200,12 +240,7 @@ for (const [file, kind, wanted] of STORES) {
       ?? state.buildings.find(building => building.kind === kind)!;
     const { page, close } = await scene(state, file, HELD, { tile: [store.tx + 1, store.ty + 1], zoom: 1.2 });
     await dismiss(page);
-    for (const [dx, dy, lift] of [[0.5, 0.5, 8], [0.5, 0.5, 28], [1, 1, 8], [1, 1, 36], [0.3, 0.3, 8]] as const) {
-      const at = await page.evaluate(tile => (window as unknown as { __FEUDAL_PHASE10_PROOF__: Proof }).__FEUDAL_PHASE10_PROOF__.tileClientPoint(tile), { tx: store.tx + dx, ty: store.ty + dy });
-      await page.mouse.click(at.clientX, at.clientY - lift); await page.waitForTimeout(700);
-      if (await page.locator(SEL.storeInspector).count() > 0) break;
-      await page.keyboard.press("Escape"); await page.waitForTimeout(200);
-    }
+    await inspect(page, store, SEL.storeInspector);
     await shootBox(page, SEL.storeInspector, `${file}.jpg`);
     result[file] = { store: store.id, malt: store.inventory.malt ?? 0, lines: await texts(page, `${SEL.storeInspector} li, ${SEL.storeInspector} p`) };
     await close();
@@ -219,29 +254,64 @@ await step("w1-empty-manor", async () => {
   result["w1-empty-manor"] = { tick: state.tick, family: state.legacy?.family ?? null, at: focus(state) };
   await close();
 });
+await step("w2-keep-inspector", async () => {
+  const state = load("empty-manor");
+  const keep = state.buildings.find(building => building.kind === "keep");
+  if (keep === undefined) { result["w2-keep-inspector"] = { keep: null }; return; }
+  const { page, close } = await scene(state, "keep-inspector", HELD, { tile: [keep.tx + 1, keep.ty + 1], zoom: 1.2 });
+  await dismiss(page);
+  await inspect(page, keep, SEL.inspector);
+  await shootBox(page, SEL.inspector, "w2-keep-inspector.jpg");
+  result["w2-keep-inspector"] = await texts(page, `${SEL.inspector} p, ${SEL.inspector} li`);
+  await close();
+});
+await step("w3-rights-seat", async () => {
+  const { page, close } = await named("empty-manor", HELD);
+  await page.waitForTimeout(1_000); await dismiss(page);
+  await page.locator(SEL.ledgerDock).first().click(); await page.waitForTimeout(700);
+  await page.locator(SEL.ledgerTab("rights")).first().click(); await page.waitForTimeout(700);
+  await shootBox(page, SEL.ledgerDrawer, "w3-rights-seat.jpg");
+  result["w3-rights-seat"] = await texts(page, SEL.rightsSeat);
+  await close();
+});
 
-// ④ the campaign's end: chapter 5's page → the legacy verdict → the ending → the chronicle book and its export.
+// ④ the campaign's end: chapter 5's page → the legacy verdict and ending → the chronicle book and its export.
+/** The book turned to `key` (its next button, at most one turn per page). */
+async function turnTo(page: Page, key: string) {
+  for (let turn = 0; turn < 12; turn += 1) {
+    if (await page.locator(SEL.chronicleBook).first().evaluate(node => node.getAttribute("data-page")) === key) return true;
+    if (await page.locator(`${SEL.bookNext}:not([disabled])`).count() === 0) return false;
+    await page.locator(SEL.bookNext).first().click(); await page.waitForTimeout(500);
+  }
+  return false;
+}
+async function exported(page: Page, button: string) {
+  const download = page.waitForEvent("download", { timeout: 10_000 }).then(file => file.suggestedFilename()).catch(() => null);
+  await page.locator(button).first().click();
+  const file = await download; await page.waitForTimeout(400);
+  return { file, status: (await texts(page, SEL.exportStatus)).filter(line => line !== "") };
+}
 await step("c-campaign-end", async () => {
   const { page, close } = await named("chapter5-end", STORY_DELAY_MS);
   await page.locator(SEL.chroniclePage).waitFor({ timeout: 90_000 }); await page.waitForTimeout(800);
   await shoot(page, "c1-chapter5-page.jpg");
   const flow: Record<string, unknown> = { page: await texts(page, `${SEL.chroniclePage} h2, ${SEL.chroniclePage} p`) };
-  await page.locator(SEL.chronicleNext).first().click(); await page.locator(SEL.legacyVerdict).waitFor({ timeout: 30_000 }); await page.waitForTimeout(800);
+  await page.locator(SEL.chronicleNext).first().click(); await page.locator(SEL.endingScreen).waitFor({ timeout: 30_000 }); await page.waitForTimeout(800);
   await shoot(page, "c2-legacy-verdict.jpg");
-  flow.verdict = await texts(page, `${SEL.legacyVerdict} h2, ${SEL.legacyVerdict} p, ${SEL.legacyVerdict} li`);
-  await page.locator(SEL.verdictNext).first().click(); await page.locator(SEL.endingScreen).waitFor({ timeout: 30_000 }); await page.waitForTimeout(800);
-  await shoot(page, "c3-ending.jpg");
-  flow.ending = await page.locator(SEL.endingScreen).first().evaluate(node => ({ id: node.getAttribute("data-ending"), text: node.textContent?.trim().slice(0, 300) ?? "" }));
+  flow.ending = await page.locator(SEL.endingScreen).first().evaluate(node => ({ id: node.getAttribute("data-ending"), final: node.getAttribute("data-final"),
+    text: node.textContent?.trim().slice(0, 400) ?? "" }));
+  // The verdict's lower half (the axes, the chosen legacy, the buttons), scrolled to as the player scrolls.
+  await page.evaluate(query => { document.querySelector(`${query} .legacy-actions`)?.scrollIntoView({ block: "end" }); }, SEL.endingScreen); await page.waitForTimeout(400);
+  await shoot(page, "c3-legacy-ending.jpg");
+  flow.endingExport = await exported(page, SEL.endingExport);
   await page.locator(SEL.openBook).first().click(); await page.locator(SEL.chronicleBook).waitFor({ timeout: 30_000 }); await page.waitForTimeout(800);
-  for (const [index, name] of BOOK_PAGES.entries()) {
-    if (await page.locator(SEL.bookNav(name)).count() > 0) { await page.locator(SEL.bookNav(name)).first().click(); await page.waitForTimeout(700); }
-    await shoot(page, `c${index + 4}-book-${name}.jpg`);
-    flow[`book-${name}`] = await texts(page, `${SEL.bookPage(name)} h2, ${SEL.bookPage(name)} h3, ${SEL.bookPage(name)} li`);
+  for (const [index, key] of BOOK_PAGES.entries()) {
+    const reached = await turnTo(page, key);
+    await shoot(page, `c${index + 4}-book-${key}.jpg`);
+    flow[`book-${key}`] = { reached, lines: await texts(page, `${SEL.chronicleBook} h2, ${SEL.chronicleBook} h3, ${SEL.chronicleBook} li`) };
   }
   await shootBox(page, SEL.bookExport, "c9-book-export.jpg");
-  const download = page.waitForEvent("download", { timeout: 10_000 }).then(file => file.suggestedFilename()).catch(() => null);
-  await page.locator(SEL.bookExport).first().click();
-  flow.exported = await download;
+  flow.bookExport = await exported(page, SEL.bookExport);
   result["c-campaign-end"] = flow;
   await close();
 });
@@ -258,14 +328,20 @@ await step("c0-campaign-victory", async () => {
 if (endingsDir !== undefined) {
   const files = readdirSync(endingsDir);
   for (const [index, id] of LEGACY_ENDING_IDS.entries()) {
-    const file = files.find(entry => entry.startsWith(id) && entry.endsWith(".json"));
+    const file = files.find(entry => entry.includes(id) && entry.endsWith(".json"));
     if (file === undefined) { errors.push(`ending ${id}: no save in ${endingsDir}`); continue; }
     await step(`x-${id}`, async () => {
       const state = bare(readJson(join(endingsDir, file)));
       const { page, close } = await scene(state, id, STORY_DELAY_MS);
       await page.waitForTimeout(STORY_DELAY_MS + 1_200);
-      // The save may stand before the verdict: go on through the page and the verdict to the ending.
-      for (const next of [SEL.chronicleNext, SEL.verdictNext]) if (await page.locator(SEL.endingScreen).count() === 0 && await page.locator(next).count() > 0) { await page.locator(next).first().click(); await page.waitForTimeout(900); }
+      // The save opens chapter 5's page: on to the verdict. Else the chronicle's [결말 보기] (the ending written).
+      if (await page.locator(SEL.chroniclePage).count() > 0 && await page.locator(SEL.chronicleNext).count() > 0) { await page.locator(SEL.chronicleNext).first().click(); await page.waitForTimeout(900); }
+      if (await page.locator(SEL.endingScreen).count() === 0) {
+        await dismiss(page);
+        await page.locator(SEL.ledgerDock).first().click(); await page.waitForTimeout(600);
+        await page.locator(SEL.chronicleTab).first().click(); await page.waitForTimeout(1_200);
+        await page.locator(SEL.historyEnding).first().click(); await page.waitForTimeout(900);
+      }
       await page.locator(SEL.endingScreen).waitFor({ timeout: 30_000 }); await page.waitForTimeout(700);
       await shoot(page, `x${index + 1}-${id}.jpg`);
       result[`x-${id}`] = { save: file, engine: state.legacy?.ending?.id ?? null,
