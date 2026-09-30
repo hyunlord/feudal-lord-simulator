@@ -15,7 +15,7 @@
 //    without a guild).
 // Beside the shots captures.json (what each shows, the shots' total size). The selectors are in SEL (UI-10's screens
 // land in parallel; adjust them there).
-//   PLAYWRIGHT_MODULE=... npx tsx scripts/ui10Captures.ts <out-dir> --url <game> --states <dir> [--endings <dir>] [--extra <dir>] [--only <prefix>]
+//   PLAYWRIGHT_MODULE=... npx tsx scripts/ui10Captures.ts <out-dir> --url <game> --states <dir> [--endings <dir>] [--extra <dir>] [--only <prefix,…>]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/ui10Captures.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/ui10Captures.ts …", entry: import.meta.url });
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
@@ -147,7 +147,7 @@ async function inspect(page: Page, building: { tx: number; ty: number }, selecto
   }
 }
 async function step(name: string, run: () => Promise<void>) {
-  if (process.argv.includes("--only") && !name.startsWith(flag("only")!)) return;
+  if (process.argv.includes("--only") && !flag("only")!.split(",").some(prefix => name.startsWith(prefix))) return;
   try { await run(); } catch (error) { errors.push(`${name}: ${String(error).slice(0, 300)}`); }
 }
 
@@ -267,7 +267,8 @@ for (const [file, kind, wanted] of STORES) {
     const { page, close } = await scene(state, file, HELD, { tile: [store.tx + 1, store.ty + 1], zoom: 1.2 });
     await dismiss(page);
     await inspect(page, store, SEL.storeInspector);
-    await shootBox(page, SEL.storeInspector, `${file}.jpg`);
+    // The inspector's panel (its body scrolls: the store's own box would be cut by it).
+    await shootBox(page, SEL.inspector, `${file}.jpg`);
     result[file] = { state: source, store: store.id, malt: store.inventory.malt ?? 0, lines: await texts(page, `${SEL.storeInspector} li, ${SEL.storeInspector} p`) };
     await close();
   });
