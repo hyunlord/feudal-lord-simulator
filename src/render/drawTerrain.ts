@@ -140,12 +140,13 @@ function drawObjectGrounding(
       const meta = spriteMeta(buildingSpriteKey(item.building, visualState.houseLevel));
       const body = buildingBodyProfile(item.building.kind, visualState.houseLevel);
       const historicalHouse = item.building.kind === "house" && historicalHouseReady(visualState.houseLevel);
-      if (renderDetailLevel(input.zoom) === "full" && (historicalHouse || historicalFacilityReady(item.building, input.state))) {
+      // NAT-2 QA-008: the painted art (and so its contact shadow) above block detail.
+      if (renderDetailLevel(input.zoom) !== "blocks" && (historicalHouse || historicalFacilityReady(item.building, input.state))) {
         if (historicalHouse && item.building.houseLot === undefined) drawHouseContactShadow(context, tileToScreen(item.building.tx, item.building.ty));
         else drawBuildingContactShadow(context, item.building);
         continue;
       }
-      const baked = meta?.bakedArchitecture === true && meta.status === "ready" && renderDetailLevel(input.zoom) === "full";
+      const baked = meta?.bakedArchitecture === true && meta.status === "ready" && renderDetailLevel(input.zoom) !== "blocks";
       // R0-2: a fitted sprite stands on its footprint's centre, not on the far tile its authored anchor named.
       const base = baked && !isFittedSpriteKey(buildingSpriteKey(item.building, visualState.houseLevel)) ? tileToScreen(
         item.building.tx + meta.footprint.width - 1,

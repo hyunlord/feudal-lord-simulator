@@ -22,7 +22,7 @@ import { WAVE17_WORLD_IMAGES } from "./wave17WorldManifest.generated";
 //    painting like any fire's (buildingOverlays.ts, `burntTick`).
 // UI-6b: the burning quay lies on the Wave 12 quay (its cell and ground pivot), drawn just before it on the same tile.
 // All three join the object queue (drawObjectRenderItems): beacon and quay sorted by their tile like farm props and drawn
-// at every zoom; each smoke column right after its house, at full and simplified detail (zoom > 0.5) so it reads at 0.6.
+// at every zoom; each smoke column right after its house, at full and simplified detail (zoom > 0.35) so it reads at 0.6.
 export type WarPropKind = "beacon_idle" | "beacon_lit" | "quay" | "raid_burning_quay" | "raid_smoke_column_sheet";
 /** `tx`, `ty`: the tile it sorts and culls by; `x`, `y`: its foot (tile units); `depth`: its place in the object queue. */
 export type WarProp = { readonly kind: WarPropKind; readonly tx: number; readonly ty: number; readonly x: number; readonly y: number;
@@ -193,7 +193,7 @@ export function warProps(state: GameState): readonly WarProp[] {
 
 /**
  * Draws a war prop with its ground pivot on its foot (Astra's zoom 1 scale); in the normal view only. The smoke is
- * left out at block detail (zoom <= 0.5) and runs its four frames by presentation time, each column from its own frame.
+ * left out at block detail (zoom <= 0.35) and runs its four frames by presentation time, each column from its own frame.
  */
 export function drawWarProp(context: CanvasRenderingContext2D, prop: WarProp, zoom: number, nowMs: number): boolean {
   const foot = tileToScreen(prop.x, prop.y);

@@ -152,8 +152,8 @@ function ridge(state: Pick<GameState, "houses" | "buildings">, buildingId: strin
 
 /**
  * Which items a zoom draws: everything at full detail (zoom > 0.7), where the houses and people are painted art; at
- * simplified detail (0.5 < zoom <= 0.7, block houses) only the washing lines and the flying birds, whose silhouettes
- * still read there (Astra's proof 02-life: at 0.6 the small animals and toys are not identifiable, the line is); none at
+ * simplified detail (0.35 < zoom <= 0.7, the same houses small) only the washing lines and the flying birds, whose
+ * silhouettes still read there (Astra's proof 02-life: at 0.6 the small animals and toys are not identifiable, the line is); none at
  * block detail. The toys only from TOY_MIN_ZOOM (INSTALL-23b: under it they are a speck).
  */
 export function villageLifeDrawnAt(entry: Pick<VillageLifeItem, "kind" | "motion">, zoom: number): boolean {

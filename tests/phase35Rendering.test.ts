@@ -50,8 +50,11 @@ test("every building kind and house level has a unique body and roof signature",
 });
 
 test("zoom detail policy preserves city mass at overview scale", () => {
-  assert.equal(renderDetailLevel(0.49), "blocks");
-  assert.equal(renderDetailLevel(0.5), "blocks");
+  // NAT-2 QA-008: blocks only on the strategic map (<= 0.35); 0.5 (the game's widest) keeps the painted art.
+  assert.equal(renderDetailLevel(0.3), "blocks");
+  assert.equal(renderDetailLevel(0.35), "blocks");
+  assert.equal(renderDetailLevel(0.36), "simplified");
+  assert.equal(renderDetailLevel(0.5), "simplified");
   assert.equal(renderDetailLevel(0.69), "simplified");
   assert.equal(renderDetailLevel(0.7), "simplified");
   assert.equal(renderDetailLevel(0.7001), "full");

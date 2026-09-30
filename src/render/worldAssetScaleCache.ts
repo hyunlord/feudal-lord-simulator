@@ -1,4 +1,5 @@
 import { canvasBudget, type BudgetOwner } from "./canvasBudget";
+import { markSpriteImmutable } from "./spriteMipCache";
 
 export type ScaledSourceInput = {
   readonly source: HTMLImageElement;
@@ -56,7 +57,7 @@ export function scaledWorldAssetSource(input: ScaledSourceInput): CanvasImageSou
   scaledSourceCache.set(input.source, sourceCache);
   budgetEntries.set(`${sourceKey}:${cacheKey}`, { source: new WeakRef(input.source), cacheKey });
   canvasBudget.track(owner, `${sourceKey}:${cacheKey}`, dimensions.width * dimensions.height * 4, "onscreen");
-  return canvas;
+  return markSpriteImmutable(canvas); // NAT-2: drawn once, so it may be mipped (spriteMipCache.ts)
 }
 
 function createScaleCanvas(

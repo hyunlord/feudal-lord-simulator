@@ -27,6 +27,7 @@ import { drawPlagueProp } from "./plagueWorldProps";
 import { drawReorgPropAt } from "./reorgWorldProps";
 import { drawCountrysideItem } from "./countrysideDraw";
 import { placeWalkers, walkerHiddenBehind } from "./walkerOcclusion";
+import { beginSpriteMipFrame, endSpriteMipFrame } from "./spriteMipCache";
 
 type DrawObjectRenderItemsInput = {
   readonly state: GameState;
@@ -81,6 +82,8 @@ export function drawObjectRenderItems(
   // SMOOTH-2R: the camera transform, read once for the queue; walls and walkers read it per item before (a new
   // DOMMatrix each, 113 a frame in the 1380 town). Every item restores what it changes, so it holds at each item.
   const transform = context.getTransform?.();
+  // NAT-2 QA-008: the queue's world blits draw from the mip level of their device size (spriteMipCache.ts).
+  if (transform !== undefined) beginSpriteMipFrame(context, Math.hypot(transform.a, transform.b));
   for (const item of queue) {
     probe?.enter(stageForRenderItem(item.kind));
     if (item.kind === "bridge_rail") {
@@ -180,6 +183,7 @@ export function drawObjectRenderItems(
     });
     context.restore();
   }
+  endSpriteMipFrame();
 }
 
 /** NAT-1: the selected walker's faint silhouette over the object that hides it. */

@@ -4,8 +4,9 @@ import type { CameraState } from "./camera";
 import { worldToCanvas } from "./camera";
 import { tileToScreen } from "./iso";
 import { RAMPS, type PaletteColor } from "../content/palette";
-import { getSprite, spriteMeta } from "./worldAssets";
+import { getSprite, spriteMetaView } from "./worldAssets";
 import { recordWorldSpriteDraw } from "./worldSpriteDiagnostics";
+import { mippedSprite, spriteMipWorldScale } from "./spriteMipCache";
 
 export type WorldSpriteOptions = {
   readonly camera?: CameraState;
@@ -26,6 +27,7 @@ export type WorldSpriteContext = {
   restore(): void;
   setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void;
   drawImage(image: CanvasImageSource, dx: number, dy: number, width: number, height: number): void;
+  drawImage(image: CanvasImageSource, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, width: number, height: number): void;
 };
 
 type DeviceRect = {
@@ -53,7 +55,7 @@ export function drawWorldSprite(
   ty: number,
   options: WorldSpriteOptions = {},
 ): boolean {
-  const meta = spriteMeta(key);
+  const meta = spriteMetaView(key);
   if (meta === null) return false;
   return drawAtWorldAnchor(
     context,
@@ -81,7 +83,7 @@ function drawAtWorldAnchor(
   ty: number,
   options: WorldSpriteOptions,
 ): boolean {
-  const meta = spriteMeta(key);
+  const meta = spriteMetaView(key);
   if (meta === null) {
     recordWorldSpriteDraw({ key, drawn: false, reason: "meta_missing" });
     return false;
@@ -98,6 +100,9 @@ function drawAtWorldAnchor(
     return false;
   }
 
+  // NAT-2 QA-008: from the mip level of the device size (spriteMipCache.ts) when it is under half the image's.
+  const width = (image as { readonly width?: number }).width ?? 0;
+  const mip = width > 0 && rect.width < width / 2 ? mippedSprite(image, { x: 0, y: 0, width, height: (image as { readonly height: number }).height }, rect.width / width) : null;
   context.save();
   try {
     context.setTransform(1, 0, 0, 1, 0, 0);
@@ -105,15 +110,21 @@ function drawAtWorldAnchor(
     context.imageSmoothingEnabled = false;
     if (options.flipX === true) {
       context.setTransform(-1, 0, 0, 1, rect.dx + rect.width, 0);
-      context.drawImage(image, 0, rect.dy, rect.width, rect.height);
+      drawWhole(context, mip, image, 0, rect.dy, rect.width, rect.height);
     } else {
-      context.drawImage(image, rect.dx, rect.dy, rect.width, rect.height);
+      drawWhole(context, mip, image, rect.dx, rect.dy, rect.width, rect.height);
     }
   } finally {
     context.restore();
   }
   recordWorldSpriteDraw({ key, drawn: true, reason: "drawn" });
   return true;
+}
+
+function drawWhole(context: WorldSpriteContext, mip: ReturnType<typeof mippedSprite> | null, image: CanvasImageSource,
+  dx: number, dy: number, width: number, height: number): void {
+  if (mip === null || mip.image === image) context.drawImage(image, dx, dy, width, height);
+  else context.drawImage(mip.image, mip.crop.x, mip.crop.y, mip.crop.width, mip.crop.height, dx, dy, width, height);
 }
 
 type SpriteCropRect = Readonly<{ x: number; y: number; width: number; height: number }>;
@@ -140,8 +151,11 @@ export function drawCroppedWorldSprite(
   try {
     context.imageSmoothingEnabled = smoothing;
     const crop = runtimeAssetCrop(image, source);
-    context.drawImage(image, crop.x, crop.y, crop.width, crop.height,
-      origin.x, origin.y, width, height);
+    // NAT-2 QA-008: a world blit of the object pass draws from the mip level of its device size (spriteMipCache.ts).
+    const worldScale = smoothing ? spriteMipWorldScale(context) : null;
+    const mip = worldScale === null || crop.width <= 0 ? null : mippedSprite(image, crop, worldScale * width / crop.width);
+    if (mip === null) context.drawImage(image, crop.x, crop.y, crop.width, crop.height, origin.x, origin.y, width, height);
+    else context.drawImage(mip.image, mip.crop.x, mip.crop.y, mip.crop.width, mip.crop.height, origin.x, origin.y, width, height);
   } finally {
     context.restore();
   }
@@ -205,7 +219,7 @@ export function createTintCanvas(
 }
 
 function destinationRect(
-  meta: NonNullable<ReturnType<typeof spriteMeta>>,
+  meta: NonNullable<ReturnType<typeof spriteMetaView>>,
   tx: number,
   ty: number,
   options: WorldSpriteOptions,

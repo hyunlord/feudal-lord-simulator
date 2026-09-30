@@ -12,7 +12,8 @@ import { drawStoryProps } from "./storyWorldProps";
 import { seasonBlend, seasonForObject } from "./seasonTransition";
 import { drawWave26HouseLayers, houseStateLayerNow, shownHouseVariant } from "./wave26HouseArt";
 
-// INSTALL-7 building overlays, drawn right after a finished building's art in the object pass (full detail only):
+// INSTALL-7 building overlays, drawn right after a finished building's art in the object pass (full detail; NAT-2: the
+// pictures, not the piles and story props, at simplified detail too):
 //  - winter (calendar season 3): snow on the roof of a single-lot house, the Wave 7 layer painted on that level's own
 //    canvas (roof_snow_l0..l4), drawn into the same rect and crop as the house; gone in spring;
 //  - an abandoned house (F0-A stage 2): the boarded windows (boarded_l0..l4), same registration;
@@ -36,7 +37,8 @@ export function vacantHouseBoards(level: number, variant: boolean, plagueVacant:
   if (variant) return "variant_boarded";
   return plagueVacant && level >= 1 && level <= 3 ? "plague_shut" : "boarded";
 }
-export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building): void {
+/** `props` false (NAT-2: the zoomed-out status view) leaves out the door piles and story props, a speck there. */
+export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building, props = true): void {
   if (building.kind === "house") drawHouseEventOverlays(context, state, building);
   if (building.kind === "house" && building.houseLot === undefined) {
     const level = buildBuildingVisualState(building, state.houses).houseLevel;
@@ -59,6 +61,7 @@ export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: G
       }
     }
   }
+  if (!props) return;
   drawStockPiles(context, state, building);
   drawStoryProps(context, state, building); // UI-4 petition crowd, S12 leaving family
 }
