@@ -31,6 +31,8 @@ async function boxes(page, label) {
   log.boxes.push({ label, found });
 }
 async function shot(page, selector, file) {
+  // Arms and marks are composed in the page: the card is shot once its emblem is drawn.
+  await page.waitForFunction(() => document.querySelector('.person-card .emblem-image--pending') === null, null, { timeout: 5_000 }).catch(() => undefined);
   const box = await page.locator(selector).first().boundingBox({ timeout: 15_000 });
   if (box === null) throw new Error(`${selector}: no box`);
   const margin = 10;
