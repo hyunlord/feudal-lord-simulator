@@ -418,6 +418,8 @@ export function App() {
     >
       <div
         className="app-interaction-layer"
+        // NAT-2 (QA-013): the open panel slot, so the crisis icons and event chips step left of it (hudShell.css).
+        data-slot={ui.mode === "goals" || ui.mode === "population" || ui.mode === "selection" || ui.mode === "ledger" ? ui.mode : undefined}
         inert={welcomeVisible ? true : undefined}
         aria-hidden={welcomeVisible ? true : undefined}
       >
