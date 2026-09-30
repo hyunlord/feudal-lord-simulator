@@ -10,6 +10,11 @@ import { beaconSpot, raidQuaySpot } from "../render/warWorldProps";
 import { EVENT_STORY_COPY } from "./eventStoryCopy.ko";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { reorganisationOf } from "../engine/reorganisation";
+import { CHURCH_REBUILDING_PETITION_ID, GUILD_DISPUTE_PETITION_ID, LEGACY_BALANCE, type LegacyInterludeId, type LegacyStepId } from "../content/legacyConfig";
+import { legacyEnding, legacyForecast, legacyInterludes, legacyOf, legacyWord } from "../engine/legacy";
+import { lordshipOf } from "../engine/lordshipState";
+import { interludeImageId } from "./wave33Art";
+import { SEASON_STRIP_COPY } from "./seasonStripCopy.ko";
 import { beaconLit, conscriptsAway, warForecast, warOf } from "../engine/war";
 import { pence } from "./hud/hudCopy.ko";
 import { petitionPresentation } from "./petitionPresentation";
@@ -28,7 +33,11 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   | "plague_abandoned_fields" | "plague_ordinance" | "plague_resettlement" | "plague_second"
   // UI-9: seven reorganisation informational beats (F4-A RG-1…RG-9; guild/charter petition beats share the "petition" kind).
   | "reorg_wage_competition" | "reorg_textile_street" | "reorg_alehouse" | "reorg_petitions_surge"
-  | "reorg_overlord_warning" | "reorg_poll_tax" | "reorg_rebellion";
+  | "reorg_overlord_warning" | "reorg_poll_tax" | "reorg_rebellion"
+  // UI-10: chapter 5's eight steps (F5-A LG-1; its four petitions share the "petition" kind) and the interlude's five (LG-13).
+  | "legacy_mayor_demand" | "legacy_royal_tax" | "legacy_succession" | "legacy_city_seal" | "legacy_charter"
+  | "legacy_departure" | "legacy_record" | "legacy_last_market"
+  | "interlude_staple" | "interlude_guild_dispute" | "interlude_market_fire" | "interlude_church_rebuilding" | "interlude_deposition";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
@@ -121,11 +130,15 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
     const war = WAR_DEMAND_ART[petition.defId];
     const plaguePetition = PLAGUE_DEMAND_ART[petition.defId];
     const reorgPetition = REORG_DEMAND_ART[petition.defId];
+    const legacyPetition = LEGACY_DEMAND_ART[petition.defId];
+    const merchants = war === undefined && plaguePetition === undefined && reorgPetition === undefined && legacyPetition === undefined && petition.defId === "market_charter";
     beats.push({ id: `petition:${petition.id}`, kind: "petition",
-      illustration: war ?? plaguePetition ?? reorgPetition ?? "event_market_petition", tile: keepTile(state), decision: "petition",
-      title: war === undefined && plaguePetition === undefined && reorgPetition === undefined && petition.defId === "market_charter" ? copy.petition.title : presentation.title,
-      line: war === undefined && plaguePetition === undefined && reorgPetition === undefined && petition.defId === "market_charter" ? copy.petition.line : presentation.demand,
-      advice: petition.petitioner === "crown" ? copy.war.demand.advice
+      illustration: war ?? plaguePetition ?? reorgPetition ?? legacyPetition ?? "event_market_petition", tile: keepTile(state), decision: "petition",
+      title: merchants ? copy.petition.title : presentation.title,
+      line: merchants ? copy.petition.line : presentation.demand,
+      // UI-10: the Crown's tax is chapter 5's (its silence is not the war's refusal).
+      advice: legacyPetition !== undefined ? copy.legacy.demand.advice
+        : petition.petitioner === "crown" ? copy.war.demand.advice
         : plaguePetition !== undefined ? copy.plague.demand.advice
         : reorgPetition !== undefined ? copy.reorg.demand.advice
         : copy.petition.advice, facts: [] });
@@ -133,6 +146,7 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
   beats.push(...warBeats(state));
   beats.push(...plagueBeats(state));
   beats.push(...reorgBeats(state));
+  beats.push(...legacyBeats(state));
   const right = state.politics?.rights?.[0];
   if (right !== undefined && state.tick - right.grantedTick < SEASON) beats.push({ id: `charter:${right.id}`, kind: "market_charter", illustration: "event_market_charter", tile: marketTile(state), decision: null,
     title: copy.charter.title, line: copy.charter.line, advice: copy.charter.advice, facts: [] });
@@ -162,6 +176,12 @@ const PLAGUE_DEMAND_ART: Readonly<Record<string, StoryIllustration>> = {
 const REORG_DEMAND_ART: Readonly<Record<string, StoryIllustration>> = {
   guild_charter: "ch4_event_guild_foundation", tax_collection: "ch4_event_petitions",
   cloth_or_grain: "ch4_event_textile_growth", borough_charter: "ch4_event_autonomy_request",
+};
+
+/** UI-10: chapter 5's petitions' chip illustrations (Wave 21 event art, Wave 33 for the interlude's two). */
+const LEGACY_DEMAND_ART: Readonly<Record<string, StoryIllustration>> = {
+  royal_tax: "ch5_event_royal_tax_envoy", heir_choice: "ch5_event_succession", borough_autonomy: "ch5_event_charter_sealing",
+  legacy_choice: "ch5_event_legacy_record", guild_dispute: interludeImageId("guild_dispute"), church_rebuilding: interludeImageId("church_rebuilding"),
 };
 
 /**
@@ -345,8 +365,114 @@ function reorgBeats(state: GameState): readonly StoryBeat[] {
 }
 
 /**
+ * UI-10 (F5-A LG-1…LG-8, FIX-9 LG-13): chapter 5's beats — each of the eight steps for two seasons after it came
+ * (`legacyForecast`, the step's own tick in `legacy.steps`), and each interlude event for two seasons after it came
+ * (`legacyInterludes`). A step or event whose petition waits shows as the petition's chip instead (the card); once
+ * answered, its beat says what was answered. Names are the ledger's own (the step's `legacy.*` record's params: the
+ * mayor's candidate, the old lord, the heir) and the house's.
+ */
+function legacyBeats(state: GameState): readonly StoryBeat[] {
+  const legacy = legacyOf(state);
+  if (legacy === undefined) return [];
+  const copy = EVENT_STORY_COPY.legacy;
+  const beats: StoryBeat[] = [];
+  const open = new Set(openPetitions(state).map(petition => petition.defId));
+  const recent = (tick: number | undefined): tick is number => tick !== undefined && state.tick - tick < 2 * SEASON;
+  // The newest ledger record of a template (its params: the names the engine wrote).
+  const params = (template: string) => { const records = state.history?.records ?? [];
+    for (let index = records.length - 1; index >= 0; index -= 1) if (records[index]!.template === template) return records[index]!.params ?? {};
+    return {}; };
+  const text = (value: unknown) => typeof value === "string" ? value : "";
+  const push = (step: LegacyStepId, kind: StoryKind, illustration: StoryIllustration, tile: StoryBeat["tile"], body: Pick<StoryBeat, "title" | "line" | "advice" | "facts">) => {
+    beats.push({ id: `legacy_${step}:${legacy.steps[step]}`, kind, illustration, tile, decision: null, ...body });
+  };
+  const came = legacy.steps;
+  const answered = (defId: string) => legacy.answers[defId];
+  if (recent(came.mayor_demand)) {
+    const candidate = text(params("legacy.mayor_demand").candidate);
+    push("mayor_demand", "legacy_mayor_demand", "ch5_event_mayor_demand", marketTile(state), { ...copy.mayorDemand, facts: candidate === "" ? [] : [copy.mayorDemand.candidate(candidate)] });
+  }
+  if (recent(came.royal_tax_envoy) && !open.has("royal_tax")) {
+    const answer = answered("royal_tax");
+    push("royal_tax_envoy", "legacy_royal_tax", "ch5_event_royal_tax_envoy", keepTile(state), { ...copy.royalTax,
+      facts: answer === undefined ? [] : legacy.royalSubsidy > 0 ? [copy.royalTax.paid(pence(legacy.royalSubsidy))] : [copy.royalTax.petitioned] });
+  }
+  if (recent(came.succession) && !open.has("heir_choice")) {
+    const called = params("legacy.succession"), seated = params("legacy.heir_seated");
+    const lord = text(called.lord), heir = text(seated.heir);
+    push("succession", "legacy_succession", "ch5_event_succession", keepTile(state), { ...copy.succession, facts: [
+      ...(lord === "" ? [] : [copy.succession.lord(lord, Number(called.age ?? 0))]),
+      legacy.heir !== undefined && heir !== "" ? copy.succession.heir(heir, text(seated.relation)) : copy.succession.candidates(legacy.candidates.length)] });
+  }
+  if (recent(came.city_seal)) push("city_seal", "legacy_city_seal", "ch5_event_city_seal_making", marketTile(state), { ...copy.citySeal, facts: [] });
+  const charter = answered("borough_autonomy");
+  if (recent(came.charter_sealing) && !open.has("borough_autonomy") && charter !== undefined) {
+    const mayor = text(params("legacy.charter_sealed").mayor);
+    push("charter_sealing", "legacy_charter", charter === "accept" ? "ch5_event_charter_sealing" : "ch5_decision_autonomy", marketTile(state), charter === "accept"
+      ? { title: copy.charter.title, line: copy.charter.sealed, advice: copy.charter.advice, facts: mayor === "" ? [] : [copy.charter.mayor(mayor)] }
+      : { title: copy.charter.title, line: copy.charter.refused, advice: copy.charter.advice, facts: [copy.charter.backlash(legacy.backlash)] });
+  }
+  if (recent(came.family_departure)) {
+    const house = lordshipOf(state).house.name;
+    const d = copy.departure;
+    // The family's leaving has its own painting; a family that stays is the succession's manor hall.
+    push("family_departure", "legacy_departure", legacy.family === "departed" ? "ch5_event_family_departure" : "ch5_event_succession", manorTile(state),
+      legacy.family === "departed" ? { title: d.departedTitle, line: d.departed(house), advice: d.departedAdvice, facts: [] }
+        : { title: d.stayedTitle, line: d.stayed(house), advice: d.stayedAdvice, facts: [] });
+  }
+  if (recent(came.legacy_record)) {
+    const axis = legacy.legacy ?? null;
+    push("legacy_record", "legacy_record", "ch5_event_legacy_record", axis === "town" ? marketTile(state) : axis === "church" ? churchTile(state) : manorTile(state),
+      { ...copy.legacyRecord, facts: [axis === null ? copy.legacyRecord.none : copy.legacyRecord.chosen(legacyWord(axis))] });
+  }
+  if (recent(came.last_market)) {
+    const ending = legacyEnding(state);
+    push("last_market", "legacy_last_market", "ch5_event_last_market", marketTile(state), { ...copy.lastMarket, facts: ending === null ? [] : [copy.lastMarket.ending(ending.title)] });
+  }
+  beats.push(...interludeBeats(state, open, recent));
+  return beats;
+}
+
+/** UI-10 (FIX-9 LG-13): the interlude's beats, each with its Wave 33 painting (the two petitions' once answered). */
+function interludeBeats(state: GameState, open: ReadonlySet<string>, recent: (tick: number | undefined) => tick is number): readonly StoryBeat[] {
+  const legacy = legacyOf(state)!;
+  const copy = EVENT_STORY_COPY.interlude;
+  const KIND: Readonly<Record<LegacyInterludeId, StoryKind>> = { staple: "interlude_staple", guild_dispute: "interlude_guild_dispute", market_fire: "interlude_market_fire",
+    church_rebuilding: "interlude_church_rebuilding", deposition: "interlude_deposition" };
+  const beats: StoryBeat[] = [];
+  for (const entry of legacyInterludes(state)) {
+    const tick = legacy.interludes?.[entry.id];
+    if (!recent(tick)) continue;
+    if ((entry.id === "guild_dispute" && open.has(GUILD_DISPUTE_PETITION_ID)) || (entry.id === "church_rebuilding" && open.has(CHURCH_REBUILDING_PETITION_ID))) continue;
+    const body = entry.id === "staple" ? { ...copy.staple, facts: [copy.staple.fact] }
+      : entry.id === "guild_dispute" ? { ...copy.guildDispute, facts: [] }
+      : entry.id === "market_fire" ? { ...copy.marketFire, facts: [copy.marketFire.repair(pence(LEGACY_BALANCE.marketFireRepair))] }
+      : entry.id === "church_rebuilding" ? { ...copy.churchRebuilding, facts: legacy.answers[CHURCH_REBUILDING_PETITION_ID] === undefined ? []
+        : [legacy.naveRebuilt === true ? copy.churchRebuilding.rebuilt : copy.churchRebuilding.deferred] }
+      : { ...copy.deposition, facts: [] };
+    const tile = entry.id === "church_rebuilding" ? churchTile(state) : entry.id === "deposition" ? keepTile(state) : marketTile(state);
+    beats.push({ id: `interlude_${entry.id}:${tick}`, kind: KIND[entry.id], illustration: interludeImageId(entry.id), tile, decision: null,
+      title: body.title, line: body.line, advice: body.advice, facts: body.facts });
+  }
+  return beats;
+}
+
+/**
+ * UI-10: the steward's line for chapter 5 — the next step (with its date) or the interlude's next event, when it comes
+ * within a season.
+ */
+function legacyStewardLine(state: GameState): { readonly key: string; readonly text: string } | null {
+  const coming = [
+    ...legacyForecast(state).filter(step => step.state === "ahead" && step.tick !== null)
+      .map(step => ({ key: step.id, tick: step.tick!, label: SEASON_STRIP_COPY.legacy[step.id] })),
+    ...legacyInterludes(state).filter(entry => entry.state === "ahead").map(entry => ({ key: entry.id, tick: entry.tick, label: SEASON_STRIP_COPY.interlude[entry.id] })),
+  ].filter(entry => entry.tick > state.tick && entry.tick - state.tick <= SEASON).sort((a, b) => a.tick - b.tick)[0];
+  return coming === undefined ? null : { key: `legacy:${coming.key}:${coming.tick}`, text: EVENT_STORY_COPY.stewardLegacy.soon(coming.label) };
+}
+
+/**
  * UI-4 forecast (the ladder's rumour and sign): the steward's one line for the nearest coming fire or dearth;
- * UI-6: the war's; UI-8: the plague's (while rumour, arrival, or second pestilence active).
+ * UI-6: the war's; UI-8: the plague's (while rumour, arrival, or second pestilence active); UI-10: chapter 5's.
  */
 export function forecastStewardLine(state: GameState): { readonly key: string; readonly text: string } | null {
   const war = warOf(state);
@@ -369,6 +495,9 @@ export function forecastStewardLine(state: GameState): { readonly key: string; r
     if (stage === "rumour" && plague.rumourTick !== undefined)
       return { key: `plague:rumour:${plague.rumourTick}`, text: plines.rumour };
   }
+  // UI-10: chapter 5's next step or interlude event.
+  const legacy = legacyStewardLine(state);
+  if (legacy !== null) return legacy;
   const entry = eventForecast(state).find(candidate => candidate.stage === "rumour" || candidate.stage === "sign");
   if (entry === undefined) return null;
   const lines = EVENT_STORY_COPY.steward;
@@ -390,6 +519,11 @@ function keepTile(state: GameState) {
 function churchTile(state: GameState) {
   const church = state.buildings.find(building => building.kind === "church" || building.kind === "chapel");
   return church === undefined ? null : { tx: church.tx, ty: church.ty };
+}
+/** UI-10: the lord's seat in the world — the keep, where the petitioners gather at the manor gate (null without one). */
+function manorTile(state: GameState) {
+  const keep = state.buildings.find(building => building.kind === "keep");
+  return keep === undefined ? null : { tx: keep.tx, ty: keep.ty };
 }
 function marketTile(state: GameState) {
   const market = state.buildings.find(building => building.kind === "market");
