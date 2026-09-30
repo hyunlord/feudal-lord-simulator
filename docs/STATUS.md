@@ -12,7 +12,8 @@
   - 설계서 [`design/lord-mode.md`](design/lord-mode.md), 딥리서치 둘 `research/2026-09-30-*`.
   - 로드맵 LM 단계(LM-E1~E4 엔진 · LM-R1~R3 렌더 · G-LM 사용자, 설계서 6절 순서), 정체성 7 "조건을 만드는 영주".
   - **다음**: 엔진은 LM-E1(자율 성장 1차)부터.
-  - 종합 문서 `design/lord-mode-synthesis.md`는 받지 못해 아직 없다.
+  - 종합 문서는 [`design/lord-mode-synthesis.md`](design/lord-mode-synthesis.md)에 있다.
+  - 사용자 판정으로 정체성 2(조작 층위 셋: 조건 → 명령 핀 → 직접 건물은 샌드박스 도구)와 로드맵 1절 플레이어 판타지를 고쳤다(결정 LM-D0).
 - **perf:gate 한 번에 하나·창 조건 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 SG5): Mac 전체 측정 잠금(다른 세션의 게이트·측정이 돌면 30분 기다리고 판정 아님), 장면은 창이 보이고 초점이 있고 그려질 때만 시작, 도중에 가려지거나 그려지지 않으면 판정 아님, 게이트 동안 디스플레이 잠 막기. [사용법](verification/perf-gate/README.md).
 - **SMOOTH-2E 끊김 없애기(엔진) — 관문 통과(회귀 없음, 사용자 판정 SG4), 본선 병합**(Claude Code, 엔진 세션): [보고서](verification/smooth2e/REPORT.md), [명세](design/engine-frame-budget.md) FB-1~FB-4, 결정 SE1~SE3·SG4.
   - 틱 시간 예산 8 ms(남은 틱은 다음 프레임, 순서·결과 같음). 저장은 계절 전환 2초 뒤에 유휴 4 ms 조각으로 쓴다(같은 바이트).
