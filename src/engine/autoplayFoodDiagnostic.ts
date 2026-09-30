@@ -60,6 +60,7 @@ export function diagnosticAction(action: AdvisorAction): DiagnosticAction {
     case 'proclaim_era': return { kind: action.kind, foodTransient };
     case 'set_wall_construction_priority': return { kind: action.kind, foodTransient };
     case 'set_farmstead_crop': return { kind: action.kind, building: action.buildingId, foodTransient };
+    case 'order_timber': return { kind: action.kind, foodTransient };
     case 'paint_zone': return { kind: action.kind, building: action.zone, tx: Math.floor(action.stroke.points[0]?.x ?? 0), ty: Math.floor(action.stroke.points[0]?.y ?? 0), foodTransient };
     case 'none': return { kind: action.kind, foodTransient };
   }

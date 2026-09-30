@@ -61,13 +61,13 @@ function marketConnection(grid: WallGrid): (home: Building, market: Building) =>
  */
 // SMOOTH-2E: keyed by the immutable tile array and wall (the road graph's whole input), not the grid object — the grid
 // is the game state, a new object every tick, so every market's search ran again each tick.
-const roadDistanceCache = new WeakMap<WallGrid["tiles"], { readonly width: number; readonly height: number; readonly wall: WallGrid["palisade"];
+const roadDistanceCache = new WeakMap<WallGrid["tiles"], { readonly width: number; readonly height: number; readonly wall: WallGrid["palisade"]; readonly river: WallGrid["river"];
   readonly byMarket: Map<string, ReadonlyMap<string, number>> }>();
 
 export function marketRoadDistanceMap(grid: WallGrid, market: Building): ReadonlyMap<string, number> {
   let entry = typeof grid.tiles === "object" && grid.tiles !== null ? roadDistanceCache.get(grid.tiles) : undefined;
-  if (entry === undefined || entry.width !== grid.width || entry.height !== grid.height || entry.wall !== grid.palisade) {
-    entry = { width: grid.width, height: grid.height, wall: grid.palisade, byMarket: new Map() };
+  if (entry === undefined || entry.width !== grid.width || entry.height !== grid.height || entry.wall !== grid.palisade || entry.river !== grid.river) {
+    entry = { width: grid.width, height: grid.height, wall: grid.palisade, river: grid.river, byMarket: new Map() };
     if (typeof grid.tiles === "object" && grid.tiles !== null) roadDistanceCache.set(grid.tiles, entry);
   }
   const byMarket = entry.byMarket;

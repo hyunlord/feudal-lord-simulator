@@ -1,13 +1,20 @@
 # 현재 상태
 
-갱신: 2026-09-29(SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-09-30(FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
-- **perf:gate 한 번에 하나·창 조건 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 SG4): Mac 전체 측정 잠금(다른 세션의 게이트·측정이 돌면 30분 기다리고 판정 아님), 장면은 창이 보이고 초점이 있고 그려질 때만 시작, 도중에 가려지거나 그려지지 않으면 판정 아님, 게이트 동안 디스플레이 잠 막기. [사용법](verification/perf-gate/README.md).
+- **방향 전환: 영주 모드가 기본 — 문서 반입**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 사용자 확정 2026-09-30)
+  - 직접 배치는 샌드박스 도구로 남는다.
+  - 설계서 [`design/lord-mode.md`](design/lord-mode.md), 딥리서치 둘 `research/2026-09-30-*`.
+  - 로드맵 LM 단계(LM-E1~E4 엔진 · LM-R1~R3 렌더 · G-LM 사용자, 설계서 6절 순서), 정체성 7 "조건을 만드는 영주".
+  - **다음**: 엔진은 LM-E1(자율 성장 1차)부터.
+  - 종합 문서는 [`design/lord-mode-synthesis.md`](design/lord-mode-synthesis.md)에 있다.
+  - 사용자 판정으로 정체성 2(조작 층위 셋: 조건 → 명령 핀 → 직접 건물은 샌드박스 도구)와 로드맵 1절 플레이어 판타지를 고쳤다(결정 LM-D0).
+- **perf:gate 한 번에 하나·창 조건 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 SG5): Mac 전체 측정 잠금(다른 세션의 게이트·측정이 돌면 30분 기다리고 판정 아님), 장면은 창이 보이고 초점이 있고 그려질 때만 시작, 도중에 가려지거나 그려지지 않으면 판정 아님, 게이트 동안 디스플레이 잠 막기. [사용법](verification/perf-gate/README.md).
 - **SMOOTH-2E 끊김 없애기(엔진) — 관문 통과(회귀 없음, 사용자 판정 SG4), 본선 병합**(Claude Code, 엔진 세션): [보고서](verification/smooth2e/REPORT.md), [명세](design/engine-frame-budget.md) FB-1~FB-4, 결정 SE1~SE3·SG4.
   - 틱 시간 예산 8 ms(남은 틱은 다음 프레임, 순서·결과 같음). 저장은 계절 전환 2초 뒤에 유휴 4 ms 조각으로 쓴다(같은 바이트).
   - 길 찾기·분배의 할당: 틱당 3.44 → 1.10 MB(1380 도시), 3,000틱 3.85 → 2.7 s. 상태 해시 같음.
@@ -31,6 +38,13 @@
   - 떠오르는 상자는 너비 토큰 280·360·480(태블릿 ×1.15)에 고정·줄 간격 1.5·제목 한 줄·본문 4줄 뒤 [더 보기]·UI-KIT 틀; 스킨 감사에 틀 없는 상자 규칙; 개발 서버 `?pseudo-long=1` 1.4배 글에서 너비 불변·넘침 0.
   - 감사 목록: 성벽이 호숫가를 따라 호수를 성 안에 넣음(엔진 규칙이 물가 가장자리 허용 + 렌더가 벽 두께를 가장자리 가운데로, 판정 대상), 물가 워커, 가을 풀빛, 낙엽 반복, 이름표 겹침, L4 돌기둥 집, 경고 표시 붐빔.
   - 관문: DGX 캡처·측정 오류 0, 스킨 감사 0 / 1263·틀 없는 상자 0, 면적 5.4 % / 6 %·태블릿 5.9 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 로컬 전체 시험 3,796 / 3,796, 깨끗한 클론 `55ad6ee` 3,796/3,796·build(ARCH-1b를 합친 뒤 `1f25c42` 3,811/3,811).
+- **FIX-10 해안 습격 1.5·목재 사 오기·여울 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/fix10/REPORT.md), [목재 명세](design/timber-trade.md) TT-1~TT-4b, [지도 명세](design/map-archetypes.md) MA-13·FD-1~FD-4, 결정 FX10-1~7. 브랜치 `claude/fix10-timber-fords`(SMOOTH-2E 위).
+  - 해안 습격 1.5(역병 1.2 그대로). 목재 사 오기: 장날 2개·하나 18d, 명령 `order_timber`, 봇은 목책이 기다릴 때와 제재소가 멈췄을 때. 여울: 칸당 목재 1·반 속도. 봇은 물 건너 바위·숲으로 건넌다. 저장 v33.
+  - 백악 seed 2: 1450 L4 0 → 24(인구 768, 금고 135,158).
+  - 가드레일 1회차 `37233ab` 5/5 새 기준선 `baseline-37233ab`(seed 3 불변), 사람 경로 10/10.
+  - 늦은 L4 흔들림(해안 seed 3·강가 seed 2): 등급이 내려간 96번 가운데 94번이 빵만 없었다. 봇은 기대 수확이 충분하다고 보고, 노는 방앗간을 운반 막힘으로 읽어 농가를 늘리지 않는다. 본선도 같은 판에서 1373~1377년 빵으로 내려간다. 받아들이고 BOT-4로 뺐다(FX10-6). 목재 구매는 그대로다.
+  - perf:gate 회귀 없음 비교(00:10~02:32, 유효 실행만): 새 게임·계절 전환은 같다. 가장 큰 도시의 33 ms 초과(4.9 대 3.8, 1.29배)와 배치 끌기의 최대 한 번(1,412 ms)이 본선 폭 밖이다. DGX 틱 측정은 두 쪽이 같다(평균 0.94~1.04 ms). 사용자 판정으로 흔들림으로 보고 병합했다(FX10-7). SG4의 같음의 폭은 "본선이 제 실행끼리 보인 범위(최소 세 번) 안"으로 바꿨다.
+  - 회귀 `a174b87` 3,838/3,838(1회차의 계층 위반 둘을 고침), 깨끗한 클론 `a174b87` 통과.
 
 - **SMOOTH-G 부드러움 관문·메모리 붙잡이 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): [보고서](verification/smooth-g/REPORT.md), [관문 사용법·기록](verification/perf-gate/README.md), 결정 SG1~SG3.
   - `npm run perf:gate`(1단계, 사용자 판정 2026-09-29)

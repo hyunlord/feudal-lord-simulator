@@ -1,0 +1,7 @@
+const fs=require('fs'),path=require('path'),cp=require('child_process');
+const root='/tmp/QA_ROUND_01/evidence',raw='/tmp/fls-qa-raw-round01';
+for(const d of fs.readdirSync(root,{withFileTypes:true})){if(d.isDirectory()&&fs.existsSync(path.join(root,d.name,'19.jpg'))&&!fs.existsSync(path.join(raw,d.name)))fs.renameSync(path.join(root,d.name),path.join(raw,d.name));}
+const names=fs.readdirSync(raw,{withFileTypes:true}).filter(d=>d.isDirectory()&&fs.existsSync(path.join(raw,d.name,'19.jpg'))).map(d=>d.name).filter(n=>!['newgame-1x','newgame-3x','newgame-paused','newgame-restart-1x','middle-1x','middle-3x','middle-5x','middle-paused'].includes(n));
+for(const name of names){if(fs.existsSync('/tmp/fls-perf-measure.lock'))throw Error('PERF_LOCK_ACTIVE');let filter=name.startsWith('1380-forest')?'crop=400:450:600:80,scale=400:-1:flags=lanczos':'scale=480:-1:flags=lanczos';cp.execFileSync('/opt/homebrew/bin/ffmpeg',['-v','error','-y','-framerate','10','-i',raw+'/'+name+'/%02d.jpg','-filter_complex',`[0:v]${filter},split[a][b];[a]palettegen=max_colors=64[p];[b][p]paletteuse=dither=bayer:bayer_scale=5`,'-loop','0',root+'/'+name+'.gif']);console.log(name)}
+for(const name of ['newgame-1x','newgame-3x','newgame-paused'])if(fs.existsSync(root+'/'+name+'.gif'))fs.renameSync(root+'/'+name+'.gif',raw+'/'+name+'-preview.gif');
+for(const scene of ['1380-forest-5x','1380-forest-paused'])for(const n of ['00','19'])fs.copyFileSync(raw+'/'+scene+'/'+n+'.jpg',root+'/raw-'+scene+'-'+n+'.jpg');

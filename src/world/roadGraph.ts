@@ -50,13 +50,13 @@ const STEP_X = [0, 1, 0, -1] as const;
 const STEP_Y = [-1, 0, 1, 0] as const;
 const COMPUTED = 0x80;
 const ROAD = 0x10;
-interface RoadSteps { readonly width: number; readonly height: number; readonly wall: WallGrid["palisade"]; readonly masks: Uint8Array }
+interface RoadSteps { readonly width: number; readonly height: number; readonly wall: WallGrid["palisade"]; readonly river: WallGrid["river"]; readonly masks: Uint8Array }
 const roadSteps = new WeakMap<WallGrid["tiles"], RoadSteps>();
 
 function roadStepsOf(grid: WallGrid): RoadSteps {
   const cached = typeof grid.tiles === "object" && grid.tiles !== null ? roadSteps.get(grid.tiles) : undefined;
-  if (cached?.width === grid.width && cached.height === grid.height && cached.wall === grid.palisade) return cached;
-  const fresh = { width: grid.width, height: grid.height, wall: grid.palisade, masks: new Uint8Array(Math.max(0, grid.width * grid.height) || 0) };
+  if (cached?.width === grid.width && cached.height === grid.height && cached.wall === grid.palisade && cached.river === grid.river) return cached;
+  const fresh = { width: grid.width, height: grid.height, wall: grid.palisade, river: grid.river, masks: new Uint8Array(Math.max(0, grid.width * grid.height) || 0) };
   if (typeof grid.tiles === "object" && grid.tiles !== null) roadSteps.set(grid.tiles, fresh);
   return fresh;
 }
@@ -250,13 +250,14 @@ const componentLabels = new WeakMap<WallGrid["tiles"], {
   readonly width: number;
   readonly height: number;
   readonly wall: WallGrid["palisade"];
+  readonly river: WallGrid["river"];
   readonly labels: ReadonlyMap<string, number>;
 }>();
 
 /** Membership only: ordered BFS and transport route selection remain unchanged. */
 export function labelRoadComponents(grid: WallGrid): ReadonlyMap<string, number> {
   const cached = componentLabels.get(grid.tiles);
-  if (cached?.width === grid.width && cached.height === grid.height && cached.wall === grid.palisade) return cached.labels;
+  if (cached?.width === grid.width && cached.height === grid.height && cached.wall === grid.palisade && cached.river === grid.river) return cached.labels;
   const labels = new Map<string, number>();
   let component = 0;
   for (let index = 0; index < grid.width * grid.height; index += 1) {
@@ -265,6 +266,6 @@ export function labelRoadComponents(grid: WallGrid): ReadonlyMap<string, number>
     for (const coordinate of existingRoadComponent(grid, [tile])) labels.set(roadCoordinateKey(coordinate), component);
     component += 1;
   }
-  componentLabels.set(grid.tiles, { width: grid.width, height: grid.height, wall: grid.palisade, labels });
+  componentLabels.set(grid.tiles, { width: grid.width, height: grid.height, wall: grid.palisade, river: grid.river, labels });
   return labels;
 }

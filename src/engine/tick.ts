@@ -1,3 +1,4 @@
+import { advanceTimberTrade } from "./timberTrade";
 import { BALANCE } from '../content/balanceConfig';
 import { feasibleDistributorDistance } from './distributorAccess';
 import { recordTimberAvailability, runProduction } from './simulationProduction';
@@ -272,10 +273,11 @@ function advanceWarTick(state: GameState): GameState {
   return advanceCloth(advanceAle(advanceFactions(advanceLegacy(advanceReorganisation(advancePlague(advanceWar(state, endChapterTwo), endChapterThree), endChapterFour), endChapterFive))));
 }
 
+// FIX-10 (TT-2): the traders' timber on a market day comes after the substep's market round.
 export function advanceTick(state: GameState): GameState {
   if (state.settlement?.outcome === "abandoned") return state;
   // F0-C2 (HL-2): the history ledger reads the tick's before and after; it never changes the simulation.
   return advanceHistory(state, updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
-    advanceWarTick(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))))))))))),
+    advanceWarTick(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))))))))),
   )))));
 }

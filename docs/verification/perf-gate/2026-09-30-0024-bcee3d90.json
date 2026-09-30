@@ -1,0 +1,359 @@
+{
+ "gate": "perf:gate stage 1",
+ "verdict": "판정 아님",
+ "commit": "bcee3d90f174e9effb29823655d0c4fac0240997",
+ "dirty": false,
+ "started": "2026-09-29T15:24:56.094Z",
+ "finished": "2026-09-29T15:37:41.959Z",
+ "machine": {
+  "platform": "darwin",
+  "model": "Mac16,5",
+  "cpus": 14,
+  "chrome": "Google Chrome 154.0.8037.58",
+  "loadAverage1m": [
+   3.6,
+   3.3
+  ]
+ },
+ "limits": {
+  "p99Ms": 16.7,
+  "maxMs": 100,
+  "over50PerMin": 1,
+  "over33PerMin": 3,
+  "momentAlpha": 0.05,
+  "otherCpu": 0.25
+ },
+ "seconds": 180,
+ "invalid": [
+  "season-x1: 다른 일의 CPU 27% > 25%(10초 구간 최대, 코어 14): 다른 일이 돌았다",
+  "placement-x3: 다른 일의 CPU 26% > 25%(10초 구간 최대, 코어 14): 다른 일이 돌았다"
+ ],
+ "failures": [
+  "big-town-x5: 최대 341.8 ms > 100",
+  "big-town-x5: 50 ms 초과 2.6/분 > 1",
+  "big-town-x5: 33 ms 초과 4.9/분 > 3",
+  "season-x1: 최대 117.8 ms > 100",
+  "placement-x3: 최대 1388.8 ms > 100",
+  "placement-x3: 50 ms 초과 1.7/분 > 1"
+ ],
+ "scenes": [
+  {
+   "id": "big-town-x5",
+   "loadMax": 0.11,
+   "label": "가장 큰 도시 5배속",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 5,
+   "action": "none",
+   "verdict": "실패",
+   "failed": [
+    "최대 341.8 ms > 100",
+    "50 ms 초과 2.6/분 > 1",
+    "33 ms 초과 4.9/분 > 3"
+   ],
+   "invalid": [],
+   "stats": {
+    "frames": 21696,
+    "minutes": 3.06,
+    "p50": 8.3,
+    "p95": 9.3,
+    "p99": 9.4,
+    "max": 341.8,
+    "over25": 24,
+    "over33": 15,
+    "over50": 8,
+    "over25PerMin": 7.8,
+    "over33PerMin": 4.9,
+    "over50PerMin": 2.6
+   },
+   "loadSeconds": 3.795,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 8,
+    "autosave": 9,
+    "dialog": 56,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 83.6,
+     "ms": 341.8
+    },
+    {
+     "atSeconds": 82,
+     "ms": 232.4
+    },
+    {
+     "atSeconds": 81.7,
+     "ms": 208.1
+    },
+    {
+     "atSeconds": 83.1,
+     "ms": 199.8
+    },
+    {
+     "atSeconds": 83.8,
+     "ms": 174.9
+    },
+    {
+     "atSeconds": 81.8,
+     "ms": 133.7
+    },
+    {
+     "atSeconds": 84.8,
+     "ms": 66.9
+    },
+    {
+     "atSeconds": 83.9,
+     "ms": 57.5
+    },
+    {
+     "atSeconds": 82.8,
+     "ms": 42.6
+    },
+    {
+     "atSeconds": 82.2,
+     "ms": 41.9
+    }
+   ]
+  },
+  {
+   "id": "new-game-x3",
+   "loadMax": 0.23,
+   "label": "새 게임 3배속",
+   "save": null,
+   "speed": 3,
+   "action": "none",
+   "verdict": "통과",
+   "failed": [],
+   "invalid": [],
+   "stats": {
+    "frames": 22059,
+    "minutes": 3.06,
+    "p50": 8.3,
+    "p95": 10.2,
+    "p99": 10.3,
+    "max": 10.5,
+    "over25": 0,
+    "over33": 0,
+    "over50": 0,
+    "over25PerMin": 0,
+    "over33PerMin": 0,
+    "over50PerMin": 0
+   },
+   "loadSeconds": 2.672,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 8,
+    "autosave": 8,
+    "dialog": 8,
+    "chapter": 0
+   },
+   "worstFrames": []
+  },
+  {
+   "id": "season-x1",
+   "loadMax": 0.27,
+   "label": "계절 전환(가장 큰 도시 1배속)",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 1,
+   "action": "none",
+   "verdict": "판정 아님",
+   "failed": [
+    "최대 117.8 ms > 100"
+   ],
+   "invalid": [
+    "다른 일의 CPU 27% > 25%(10초 구간 최대, 코어 14): 다른 일이 돌았다"
+   ],
+   "stats": {
+    "frames": 21533,
+    "minutes": 3,
+    "p50": 8.3,
+    "p95": 9.4,
+    "p99": 10.3,
+    "max": 117.8,
+    "over25": 11,
+    "over33": 8,
+    "over50": 3,
+    "over25PerMin": 3.7,
+    "over33PerMin": 2.7,
+    "over50PerMin": 1
+   },
+   "loadSeconds": 3.69,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 3,
+    "autosave": 4,
+    "dialog": 3,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 4.2,
+     "ms": 117.8
+    },
+    {
+     "atSeconds": 0.1,
+     "ms": 90.8
+    },
+    {
+     "atSeconds": 0,
+     "ms": 88.8
+    },
+    {
+     "atSeconds": 0.2,
+     "ms": 49
+    },
+    {
+     "atSeconds": 0.2,
+     "ms": 41.9
+    },
+    {
+     "atSeconds": 0.4,
+     "ms": 41.6
+    },
+    {
+     "atSeconds": 0.6,
+     "ms": 33.9
+    },
+    {
+     "atSeconds": 0.3,
+     "ms": 33.1
+    }
+   ]
+  },
+  {
+   "id": "placement-x3",
+   "loadMax": 0.26,
+   "label": "배치 끌기(가장 큰 도시 3배속)",
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 3,
+   "action": "placement",
+   "verdict": "판정 아님",
+   "failed": [
+    "최대 1388.8 ms > 100",
+    "50 ms 초과 1.7/분 > 1"
+   ],
+   "invalid": [
+    "다른 일의 CPU 26% > 25%(10초 구간 최대, 코어 14): 다른 일이 돌았다"
+   ],
+   "stats": {
+    "frames": 21504,
+    "minutes": 3.02,
+    "p50": 8.3,
+    "p95": 9.3,
+    "p99": 9.4,
+    "max": 1388.8,
+    "over25": 12,
+    "over33": 8,
+    "over50": 5,
+    "over25PerMin": 4,
+    "over33PerMin": 2.6,
+    "over50PerMin": 1.7
+   },
+   "loadSeconds": 3.74,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 5,
+    "autosave": 7,
+    "dialog": 5,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 111.4,
+     "ms": 1388.8
+    },
+    {
+     "atSeconds": 112.7,
+     "ms": 174.4
+    },
+    {
+     "atSeconds": 111.8,
+     "ms": 73.5
+    },
+    {
+     "atSeconds": 111.7,
+     "ms": 66
+    },
+    {
+     "atSeconds": 111.5,
+     "ms": 58.3
+    },
+    {
+     "atSeconds": 111.9,
+     "ms": 41.9
+    },
+    {
+     "atSeconds": 111.4,
+     "ms": 34
+    },
+    {
+     "atSeconds": 111.6,
+     "ms": 33.6
+    }
+   ]
+  }
+ ],
+ "moments": {
+  "windows": 580,
+  "windowsWithLong": 8,
+  "baseline": 0.013793103448275862,
+  "rows": [
+   {
+    "kind": "season",
+    "seen": 24,
+    "followedByLongFrame": 1,
+    "share": 0.041666666666666664,
+    "baseline": 0.013793103448275862,
+    "pValue": 0.28347252896520103,
+    "pass": true
+   },
+   {
+    "kind": "autosave",
+    "seen": 28,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.013793103448275862,
+    "pValue": 1,
+    "pass": true
+   }
+  ],
+  "pass": true
+ }
+}

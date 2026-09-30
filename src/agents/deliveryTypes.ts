@@ -54,6 +54,8 @@ export interface DeliveryRoutePort {
   readonly canAccessDestination?: (tile: TilePos, destination: CarterDestination) => boolean;
   readonly canCarryForDestination?: (tile: TilePos, destination: CarterDestination) => boolean;
   readonly canTraverse?: (from: TilePos, to: TilePos) => boolean;
+  /** FIX-10 (FD-2): a ford road tile — a step onto or off it goes at `1 / FORD_PACE_DIVISOR` of the pace. */
+  readonly isFord?: (tile: TilePos) => boolean;
 }
 
 export interface DeliveryStepInput {

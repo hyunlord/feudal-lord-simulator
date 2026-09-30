@@ -70,7 +70,7 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   confirm_palisade_proclamation: "market_town", confirm_stone_town_proclamation: "stone_town",
   famine_response: "famine_response", petition_response: "petition_response", expand_palisade: "wall_expand",
   // ARCH-1b (MA-11): the fen's drainage works.
-  drain_fen: "drainage",
+  drain_fen: "drainage", order_timber: "operation",
 };
 
 /** HL-2 ③: buildings whose first completion is a milestone. */

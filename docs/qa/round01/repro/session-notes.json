@@ -1,0 +1,17 @@
+{
+  "head": "4ad2d2a444d7d0e3dbbcdb112f55f942dc1f331c",
+  "url": "http://127.0.0.1:4400/",
+  "fixture": "fixtures/perf-gate/ch4-1380.save.json.gz",
+  "actions": [
+    "manual slot original gzip decompressed no field edits",
+    "이어하기",
+    "1x3x5x bursts",
+    "season spring to summer normal ticks",
+    "season ledger popup disabled via visible button",
+    "paused",
+    "calendar, ledger, chronicle opened",
+    "zoom 20 out then2in5in4in center800550",
+    "forest1x/pause/5x bursts"
+  ],
+  "harnessInterruption": "Earlier newgame locator timeout reset REPL before ten-minute completion; fresh run needed"
+}
