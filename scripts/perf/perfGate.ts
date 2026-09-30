@@ -22,45 +22,48 @@ import { spawn, spawnSync } from "node:child_process";
 import { appendFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { cpus, loadavg, tmpdir } from "node:os";
 import { holderText, takeMachineLock } from "./machineLock";
+import { otherCpuSeconds } from "./machineLoad";
+import { cancel, enqueue, queueStatus } from "./perfQueue";
 import { join } from "node:path";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] ?? fallback : fallback; };
 const seconds = Number(flag("seconds", "180")); const port = Number(flag("port", "4392"));
 const outDir = flag("out", "docs/verification/perf-gate"); const only = flag("only", "").split(",").filter(Boolean);
-const lockWait = Number(flag("lock-wait", "30")); const focusWait = Number(flag("focus-wait", "120"));   // minutes · seconds
+const lockWait = Number(flag("lock-wait", "30"));
+// The game is built from this tree (a queued job's worktree of another commit); the gate's own scripts stay these.
+const sourceDir = flag("source-dir", "."); const focusWait = Number(flag("focus-wait", "120"));   // minutes · seconds
 
 export const LIMITS = { p99Ms: 16.7, maxMs: 100, over50PerMin: 1, over33PerMin: 3, momentAlpha: 0.05, otherCpu: 0.25 } as const;
-// CPU seconds used so far by every process outside this gate's own tree (the gate, its build server, the audit and
-// its Chrome): `ps -A -o pid=,ppid=,time=`. Between two samples, over the elapsed time × cores, it is the share of the
-// machine that other work took (another session's tests, an inference run, a build).
-function otherCpuSeconds(): number {
-  const rows = spawnSync("ps", ["-A", "-o", "pid=,ppid=,time="], { encoding: "utf8" }).stdout.trim().split("\n").map(line => line.trim().split(/\s+/));
-  const parent = new Map<number, number>(); const seconds = new Map<number, number>();
-  for (const [pid, ppid, time] of rows) {
-    if (pid === undefined || ppid === undefined || time === undefined) continue;
-    const [clock, days] = time.includes("-") ? [time.split("-")[1]!, Number(time.split("-")[0])] : [time, 0];
-    const parts = clock.split(":").map(Number); const value = parts.reduce((sum, part) => sum * 60 + part, 0) + days * 86_400;
-    parent.set(Number(pid), Number(ppid)); seconds.set(Number(pid), value);
-  }
-  const ours = (pid: number) => { for (let at = pid, hops = 0; at > 1 && hops < 64; at = parent.get(at) ?? 0, hops++) if (at === process.pid) return true; return false; };
-  let total = 0; for (const [pid, value] of seconds) if (!ours(pid)) total += value;
-  return total;
-}
 const SAVE = "fixtures/perf-gate/ch4-1380.save.json.gz";
 const SCENES = [
   { id: "big-town-x5", label: "가장 큰 도시 5배속", save: SAVE, speed: 5, action: "none" },
   { id: "new-game-x3", label: "새 게임 3배속", save: null, speed: 3, action: "none" },
   { id: "season-x1", label: "계절 전환(가장 큰 도시 1배속)", save: SAVE, speed: 1, action: "none" },
   { id: "placement-x3", label: "배치 끌기(가장 큰 도시 3배속)", save: SAVE, speed: 3, action: "placement" },
+  // The far view (NAT-2: the block map drawn with reduced real art): the same town zoomed out with the wheel.
+  { id: "far-zoom-50-x5", label: "먼 줌 0.5(가장 큰 도시 5배속)", save: SAVE, speed: 5, action: "none", zoom: 0.5 },
+  { id: "far-zoom-40-x5", label: "먼 줌 0.4(가장 큰 도시 5배속)", save: SAVE, speed: 5, action: "none", zoom: 0.4 },
 ] as const;
+type Scene = (typeof SCENES)[number];
+
+/**
+ * The wheel steps to a zoom: out to the game's minimum (it clamps there, exactly), then in by x1.1 steps to the nearest
+ * of the target. Null when the target is below the game's minimum (src/render/camera.ts MIN_ZOOM of the built tree).
+ */
+export function zoomSteps(target: number, minZoom: number): { out: number; in: number; zoom: number } | null {
+  if (target < minZoom - 1e-9) return null;
+  const up = Math.round(Math.log(target / minZoom) / Math.log(1.1));
+  return { out: 60, in: up, zoom: Math.round(minZoom * Math.pow(1.1, up) * 1000) / 1000 };
+}
+const minZoomOf = (tree: string) => { const match = /export const MIN_ZOOM = ([\d.]+)/.exec(readFileSync(join(tree, "src/render/camera.ts"), "utf8")); return match === null ? 0.5 : Number(match[1]); };
 const MACHINE = "mac-chrome-window";
-const run = (command: string, args: readonly string[]) => spawnSync(command, args, { encoding: "utf8" });
-const git = (...args: string[]) => run("git", args).stdout.trim();
+const run = (command: string, args: readonly string[], cwd = ".") => spawnSync(command, args, { encoding: "utf8", cwd });
+const git = (...args: string[]) => run("git", ["-C", sourceDir, ...args]).stdout.trim();
 
 interface Frame { readonly from: number; readonly to: number; readonly ms: number }
 type LongAnimationFrame = { readonly start: number; readonly duration: number; readonly [field: string]: unknown };
-interface Summary { readonly longAnimationFrames?: readonly LongAnimationFrame[]; readonly startMarkPageMs?: number; readonly stats: Record<string, number | null>; readonly longFrames: readonly Frame[]; readonly moments: readonly { kind: string; t: number }[]; readonly errors: readonly string[]; readonly loadSeconds: number; readonly page: Record<string, unknown> }
+interface Summary { readonly input?: { readonly hidIdleAtEnd: number | null; readonly recordSeconds: number }; readonly longAnimationFrames?: readonly LongAnimationFrame[]; readonly startMarkPageMs?: number; readonly stats: Record<string, number | null>; readonly longFrames: readonly Frame[]; readonly moments: readonly { kind: string; t: number }[]; readonly errors: readonly string[]; readonly loadSeconds: number; readonly page: Record<string, unknown> }
 
 // P(X >= k) for X ~ Binomial(n, p).
 export function binomialTail(k: number, n: number, p: number): number {
@@ -105,6 +108,16 @@ export function judgeMoments(runs: readonly Pick<Summary, "stats" | "longFrames"
 }
 
 async function main() {
+  // The queue (scripts/perf/perfQueue.ts): hold this gate for when nobody uses the Mac.
+  if (argv.includes("--queue-status")) { console.log(queueStatus()); return; }
+  if (argv.includes("--queue-cancel")) { cancel(flag("queue-cancel", "")); console.log(queueStatus()); return; }
+  if (argv.includes("--queue")) {
+    const drop = new Set(["--queue"]); const valued = new Set(["--source", "--label", "--idle-minutes"]); const rest: string[] = [];
+    for (let i = 0; i < argv.length; i++) { if (drop.has(argv[i]!)) continue; if (valued.has(argv[i]!)) { i++; continue; } rest.push(argv[i]!); }
+    const job = enqueue({ repo: ".", source: flag("source", "HEAD"), label: flag("label", flag("source", "HEAD")), args: rest, idleMinutes: Number(flag("idle-minutes", "10")) });
+    console.log(`대기열에 올렸다: ${job.id} ${job.label} (${job.commit.slice(0, 8)}). 이 Mac에 ${job.idleMinutes}분 입력이 없고 다른 일이 조용할 때 시작한다.`);
+    console.log(queueStatus()); return;
+  }
   const invalid: string[] = [];
   if (process.platform !== "darwin") invalid.push(`이 기계(${process.platform})는 판정하지 않는다: Mac 실제 Chrome 창에서만 판정한다`);
   // One measurement at a time on this Mac: wait for another session's gate or measurement, else no judgement.
@@ -118,21 +131,25 @@ async function main() {
   const scenes = SCENES.filter(scene => only.length === 0 || only.includes(scene.id));
   const work = mkdtempSync(join(tmpdir(), "fls-perf-gate-")); const build = join(work, "build");
   let preview: ReturnType<typeof spawn> | null = null;
-  const results: { scene: (typeof SCENES)[number]; summary: Summary | null; loadMax: number; failed: string[]; invalid: string[] }[] = [];
+  const results: { scene: Scene; summary: Summary | null; loadMax: number; skipped?: string; failed: string[]; invalid: string[] }[] = [];
   try {
     if (invalid.length === 0) {
       console.log(`perf:gate ${commit.slice(0, 8)}${dirty ? " (dirty)" : ""}: build`);
       // Keep the display awake for the whole gate (macOS caffeinate, ends with this process).
       spawn("caffeinate", ["-d", "-i", "-w", String(process.pid)], { stdio: "ignore", detached: true }).unref();
-      const built = run("node_modules/.bin/vite", ["build", "--minify", "false", "--outDir", build, "--emptyOutDir"]);
+      const built = run(join(sourceDir, "node_modules/.bin/vite"), ["build", "--minify", "false", "--outDir", build, "--emptyOutDir"], sourceDir);
       if (built.status !== 0) throw new Error(`vite build failed:\n${built.stdout}\n${built.stderr}`);
       preview = spawn("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
       const url = `http://127.0.0.1:${port}/`;
       for (let i = 0; i < 60; i++) { if (await fetch(url).then(response => response.ok, () => false)) break; await new Promise(resolve => setTimeout(resolve, 1000)); }
-      for (const scene of scenes) {
+      const minZoom = minZoomOf(sourceDir);
+      for (const scene of scenes as readonly Scene[]) {
         console.log(`== ${new Date().toTimeString().slice(0, 8)} ${scene.id} (${seconds} s)`);
+        const steps = "zoom" in scene ? zoomSteps(scene.zoom, minZoom) : { out: 0, in: 0, zoom: null };
+        // A zoom below the game's minimum is skipped, not a verdict: it is reported and waits for the game to allow it.
+        if (steps === null) { results.push({ scene, summary: null, loadMax: 0, failed: [], invalid: [], skipped: `도달 불가: 게임의 최소 줌이 ${minZoom}이라 ${"zoom" in scene ? scene.zoom : ""}에 닿지 않는다(src/render/camera.ts MIN_ZOOM)` }); continue; }
         const args = ["scripts/perf/hitchAudit.ts", "--url", url, "--scene", scene.id, "--speed", String(scene.speed), "--seconds", String(seconds),
-          "--action", scene.action, "--machine", MACHINE, "--out", join(work, "runs"), "--traces", join(work, "records"), "--headed", "--no-trace", "--no-proof", "--focus-wait", String(focusWait),
+          "--action", scene.action, "--machine", MACHINE, "--out", join(work, "runs"), "--traces", join(work, "records"), "--headed", "--no-trace", "--no-proof", "--focus-wait", String(focusWait), "--zoom-out", String(steps.out), "--zoom-in", String(steps.in),
           ...(scene.save === null ? [] : ["--save", scene.save])];
         // The machine's 1-minute load, every 10 s of the run: another session's tests on this Mac make a run no judgement.
         const loads: number[] = []; let previous = { cpu: otherCpuSeconds(), at: Date.now() };
@@ -158,6 +175,8 @@ async function main() {
         if (p50 < 7.9 || p50 > 8.8) runInvalid.push(`rAF p50 ${p50} ms: 120 Hz 창이 아니다(가려진 창·60 Hz·부하)`);
         if ((summary.stats.minutes ?? 0) < (seconds / 60) * 0.95) runInvalid.push(`기록 ${summary.stats.minutes}분 < ${seconds / 60}분`);
         if (busiest > LIMITS.otherCpu) runInvalid.push(`다른 일의 CPU ${Math.round(busiest * 100)}% > ${LIMITS.otherCpu * 100}%(10초 구간 최대, 코어 ${cpus().length}): 다른 일이 돌았다`);
+        const idle = summary.input?.hidIdleAtEnd; const lasted = summary.input?.recordSeconds ?? 0;
+        if (idle !== undefined && idle !== null && idle < lasted - 0.5) runInvalid.push(`도중에 사람 입력이 있었다(끝에서 ${Math.round(idle)}초 전): 이 Mac을 쓰는 동안은 판정하지 않는다`);
         const notDrawn = summary.moments.find(moment => moment.kind === "not-drawn");
         if (notDrawn !== undefined) runInvalid.push(`도중에 창이 그려지지 않았다(기록 시작 뒤 ${Math.round((notDrawn.t - (summary.startMarkPageMs ?? 0)) / 1000)}초: 화면 잠김·디스플레이 잠·다른 데스크톱)`);
         const hidden = summary.moments.find(moment => moment.kind === "hidden");
@@ -179,15 +198,16 @@ async function main() {
   const failures = [...results.flatMap(result => result.failed.map(reason => `${result.scene.id}: ${reason}`)),
     ...moments.rows.filter(row => !row.pass).map(row => `순간 ${row.kind}: ${Math.round(row.share * 100)}% > 기준 ${Math.round(row.baseline * 100)}% (p ${row.pValue.toFixed(3)})`)];
   const partial = only.length > 0;
-  const verdict = allInvalid.length > 0 ? "판정 아님" : failures.length > 0 ? "실패" : partial ? "통과(일부 장면)" : "통과";
+  const skippedAny = results.some(result => result.skipped !== undefined);
+  const verdict = allInvalid.length > 0 ? "판정 아님" : failures.length > 0 ? "실패" : partial ? "통과(일부 장면)" : skippedAny ? "통과(건너뛴 장면 있음)" : "통과";
 
   const stamp = `${started.toLocaleDateString("sv-SE")}-${started.toTimeString().slice(0, 5).replace(":", "")}-${commit.slice(0, 8)}`;
   mkdirSync(outDir, { recursive: true });
   const record = { gate: "perf:gate stage 1", verdict, commit, dirty, started: started.toISOString(), finished: new Date().toISOString(),
     machine: { platform: process.platform, model, cpus: cpus().length, chrome, loadAverage1m: load.map(value => Math.round(value * 10) / 10) },
     limits: LIMITS, seconds, invalid: allInvalid, failures,
-    scenes: results.map(({ scene, summary, loadMax, failed, invalid: runInvalid }) => ({ id: scene.id, loadMax, label: scene.label, save: scene.save, speed: scene.speed, action: scene.action,
-      verdict: runInvalid.length ? "판정 아님" : failed.length ? "실패" : "통과", failed, invalid: runInvalid,
+    scenes: results.map(({ scene, summary, loadMax, skipped, failed, invalid: runInvalid }) => ({ id: scene.id, loadMax, label: scene.label, zoom: "zoom" in scene ? scene.zoom : null, skipped: skipped ?? null, save: scene.save, speed: scene.speed, action: scene.action,
+      verdict: skipped !== undefined ? "건너뜀" : runInvalid.length ? "판정 아님" : failed.length ? "실패" : "통과", failed, invalid: runInvalid,
       stats: summary?.stats ?? null, loadSeconds: summary?.loadSeconds ?? null, page: summary?.page ?? null,
       moments: summary === null ? null : Object.fromEntries(["season", "autosave", "dialog", "chapter"].map(kind => [kind, summary.moments.filter(moment => moment.kind === kind).length])),
       worstFrames: summary === null ? [] : [...summary.longFrames].sort((a, b) => b.ms - a.ms).slice(0, 10).map(frame => ({ atSeconds: Math.round((frame.to - (summary.startMarkPageMs ?? 0)) / 100) / 10, ms: Math.round(frame.ms * 10) / 10 })),
@@ -201,6 +221,7 @@ async function main() {
     `- 커밋 \`${commit.slice(0, 8)}\`${dirty ? " (커밋 안 된 변경 있음)" : ""} · ${started.toISOString()} · ${model} · ${chrome} · 1분 부하 ${record.machine.loadAverage1m.join(" → ")}`,
     `- 기준: p99 ≤ ${LIMITS.p99Ms} ms · 최대 ≤ ${LIMITS.maxMs} ms · 50 ms 초과 ≤ ${LIMITS.over50PerMin}/분 · 33 ms 초과 ≤ ${LIMITS.over33PerMin}/분 · 계절 전환·자동 저장 뒤 긴 프레임 비율 ≤ 아무 1.25초 구간(단측 이항 5 %)`,
     ...(allInvalid.length ? ["", "**판정 아님:**", ...allInvalid.map(reason => `- ${reason}`)] : []),
+    ...(results.some(result => result.skipped !== undefined) ? ["", "**건너뜀(판정에 넣지 않음):**", ...results.filter(result => result.skipped !== undefined).map(result => `- ${result.scene.id}: ${result.skipped}`)] : []),
     ...(failures.length ? ["", "**실패:**", ...failures.map(reason => `- ${reason}`)] : []),
     "", "| 장면 | 판정 | p50 | p99 | 최대 | 50 ms 초과/분 | 33 ms 초과/분 | 계절·저장·모달 | 다른 일 CPU 최대 | 가장 긴 프레임(기록 시작 뒤 초: ms) |", "|---|---|---:|---:|---:|---:|---:|---|---:|---|",
     ...record.scenes.map(scene => `| ${scene.label} | ${scene.verdict} | ${cell(scene.stats?.p50)} | ${cell(scene.stats?.p99)} | ${cell(scene.stats?.max)} | ${cell(scene.stats?.over50PerMin)} | ${cell(scene.stats?.over33PerMin)} | ${scene.moments ? `${scene.moments.season}·${scene.moments.autosave}·${scene.moments.dialog}` : "-"} | ${Math.round(scene.loadMax * 100)}% | ${scene.worstFrames.slice(0, 3).map(frame => `${frame.atSeconds}: ${frame.ms}`).join(", ")} |`),
