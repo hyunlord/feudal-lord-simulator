@@ -12,6 +12,7 @@ import { homedir, hostname, tmpdir } from "node:os";
 import { join } from "node:path";
 import { SCENES } from "./perfGate";
 import { sourceTree } from "./sourceTree";
+import { otherCpuSample, otherCpuShare } from "./machineLoad";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] ?? fallback : fallback; };
@@ -20,7 +21,10 @@ const store = flag("store", join(homedir(), "fls-runs", "_trend")); const port =
 export const TREND_SCENES = ["big-town-x5", "new-game-x3"] as const;
 // The metrics kept per scene (hitchAudit summary.metrics / stats), medians over the rounds.
 export const TREND_METRICS = ["scriptMsPerTick", "heapAllocKBPerTick", "canvasPer1kTicks", "scriptMsPerFrame", "taskMsPerFrame", "heapAllocMBps", "gcPerMin",
-  "canvasPerSec", "bitmapPerSec", "getImageDataPerSec", "heapEndMB", "heapAfterGcMB", "p50", "p95", "p99", "max", "over33PerMin"] as const;
+  "canvasPerSec", "bitmapPerSec", "getImageDataPerSec", "heapEndMB", "heapAfterGcMB", "p50", "p95", "p99", "max", "over33PerMin", "otherCpu"] as const;
+// otherCpu: the share of the DGX's cores other work took during the run (machineLoad.ts). The per-tick metrics are not
+// immune to it: a busy DGX runs fewer ticks while the page's per-frame work goes on (a597617b: 13.5 ms/tick measured
+// quiet, 19.9 ms/tick beside a full test run), so the page shows it beside the values.
 
 const median = (values: readonly number[]) => { const sorted = values.filter(Number.isFinite).sort((a, b) => a - b); return sorted.length === 0 ? null : sorted[Math.floor((sorted.length - 1) / 2)]!; };
 const git = (...args: string[]) => spawnSync("git", args, { encoding: "utf8" }).stdout.trim();
@@ -41,12 +45,14 @@ async function measure(commit: string, tree: string) {
         const args = ["scripts/perf/hitchAudit.ts", "--url", url, "--scene", `trend-${sceneId}-${round}`, "--speed", String(scene.speed), "--seconds", String(seconds),
           "--action", scene.action, "--machine", "dgx-headless", "--out", join(work, "runs"), "--traces", join(work, "records"), "--no-trace",
           ...(scene.save === null ? [] : ["--save", scene.save])];
+        const before = otherCpuSample();
         const audit = spawnSync("node_modules/.bin/tsx", args, { encoding: "utf8", env: { ...process.env, NODE_OPTIONS: "--max-old-space-size=8192" } });
+        const otherCpu = Math.round(otherCpuShare(before, otherCpuSample()) * 100) / 100;
         const file = join(work, "runs", `dgx-headless-trend-${sceneId}-${round}-x${scene.speed}${scene.action === "none" ? "" : `-${scene.action}`}-notrace.json`);
         if (audit.status !== 0 || !existsSync(file)) { console.log(`${commit.slice(0, 8)} ${sceneId} ${round}: failed ${(audit.stderr || "").split("\n").find(line => /Error/.test(line)) ?? audit.status}`); continue; }
         const summary = JSON.parse(readFileSync(file, "utf8"));
-        for (const key of TREND_METRICS) { const value = summary.metrics?.[key] ?? summary.stats?.[key]; if (typeof value === "number") values[key]!.push(value); }
-        console.log(`${commit.slice(0, 8)} ${sceneId} ${round}: script ${summary.metrics?.scriptMsPerTick} ms/tick alloc ${summary.metrics?.heapAllocKBPerTick} KB/tick canvas ${summary.metrics?.canvasPer1kTicks}/1k ticks`);
+        for (const key of TREND_METRICS) { const value = key === "otherCpu" ? otherCpu : summary.metrics?.[key] ?? summary.stats?.[key]; if (typeof value === "number") values[key]!.push(value); }
+        console.log(`${commit.slice(0, 8)} ${sceneId} ${round}: script ${summary.metrics?.scriptMsPerTick} ms/tick alloc ${summary.metrics?.heapAllocKBPerTick} KB/tick canvas ${summary.metrics?.canvasPer1kTicks}/1k ticks · other CPU ${Math.round(otherCpu * 100)}%`);
       }
       scenes[sceneId] = { runs: values.p50!.length, medians: Object.fromEntries(TREND_METRICS.map(key => [key, median(values[key]!)])), values };
     }
