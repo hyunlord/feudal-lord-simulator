@@ -7,6 +7,7 @@
 
 ## 현재 단계
 
+- **로드맵: LM-E5 살아 있는 성장 추가, NAT-3 항목 추가**(Claude Code, 인프라·문서 세션, 사용자 지시 2026-10-02): LM-E5(무작위 seed·확률적 선택·땅의 변화 과정·1배속 속도 수치 보고)는 LM-E4 뒤, G-LM이 기다린다. NAT-3(렌더 연쇄 G 3번)에 "계절이 대상마다 천천히 바뀜"이 합쳐졌다.
 - **직업 확장·영주의 무력 조사 반입 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 딥리서치 둘(원문 그대로 [`research/2026-10-02-market-town-trades-gpt.md`](research/2026-10-02-market-town-trades-gpt.md)·[`research/2026-10-02-lordly-force-gpt.md`](research/2026-10-02-lordly-force-gpt.md))과 종합 [`design/trades-and-force.md`](design/trades-and-force.md). 영주 모드 설계서에 다음 확장 한 줄, 로드맵에 LM-E6(직업 확장)·LM-E7(가솔과 봉사)을 G-LM 뒤에(todo).
 - **UIAUDIT-R15 감사 규칙 셋(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시 2026-10-01): [보고서](verification/uiaudit-r15/REPORT.md), 결정 UIAUDIT-R15-D1~D3(D1 장면 칸 짧은 형태는 판정 대기). 내용 존재·HUD 겹침·글과 장식선 규칙, 1024 × 768·1280 × 720 보기. 첫 실행 1,271 실패·100 미측정 → 0. QA-035 설정 펼침·QA-015 전기 빈 문구·인구 서랍·장부 보기 제목 등 고침. 남은 것: 1280 성벽 줄 면적 판정, 청지기 말풍선과 장부 서랍(NAT-4).
 - **QA-034 결정 카드 내용 사라짐(렌더, 급한 수정) — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시 2026-10-01): [보고서](verification/qa034/REPORT.md). 청원 카드의 본문이 틀 층(채운 9-slice) 밑에 그려져 1·2·3·4·5장·막간 결정 카드가 모두 틀만 보였다(UI-AUDIT-1 fix A `272952a8`부터). 본문을 위치 지정해 틀 위로. 같은 원인의 계절 결산 카드도 고쳤다(새 내용 존재 규칙이 잡음).
