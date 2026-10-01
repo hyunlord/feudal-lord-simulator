@@ -1,0 +1,65 @@
+{
+  "note": "GIF spatial downscale only; every frame retained. JPEG evidence unchanged. Source originals untouched.",
+  "rows": [
+    {
+      "file": "14-control14-1322-immediate100.gif",
+      "before": {
+        "width": 800,
+        "height": 550,
+        "nb_read_frames": "100"
+      },
+      "after": {
+        "width": 640,
+        "height": 440,
+        "nb_read_frames": "100"
+      },
+      "bytesBefore": 1091345,
+      "bytesAfter": 437808
+    },
+    {
+      "file": "13-root13-firstwinter-build100.gif",
+      "before": {
+        "width": 800,
+        "height": 550,
+        "nb_read_frames": "100"
+      },
+      "after": {
+        "width": 640,
+        "height": 440,
+        "nb_read_frames": "100"
+      },
+      "bytesBefore": 9873214,
+      "bytesAfter": 4231878
+    },
+    {
+      "file": "14-wall14-john80.gif",
+      "before": {
+        "width": 800,
+        "height": 550,
+        "nb_read_frames": "80"
+      },
+      "after": {
+        "width": 640,
+        "height": 440,
+        "nb_read_frames": "80"
+      },
+      "bytesBefore": 10726528,
+      "bytesAfter": 4786606
+    },
+    {
+      "file": "14-wall14-roger80.gif",
+      "before": {
+        "width": 800,
+        "height": 550,
+        "nb_read_frames": "80"
+      },
+      "after": {
+        "width": 640,
+        "height": 440,
+        "nb_read_frames": "80"
+      },
+      "bytesBefore": 14659101,
+      "bytesAfter": 5453470
+    }
+  ]
+}
