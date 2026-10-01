@@ -7,8 +7,11 @@
 //     the widened one none.
 //  2. Confirmation: a suspicion runs perf:ab (A-B-A-B, the comparison commit against this one, the same scene) on the
 //     DGX. Both sides take the same noise, so only the paired difference is left: "나빠짐" only when the difference's
-//     ±2 standard-error band is above zero (and "좋아짐" only when below). Otherwise the suspicion ends as "같음".
+//     95 % band for that many pairs (Student's t, ±3.18 SE at 4 pairs) is above zero (and "좋아짐" only when below).
+//     Otherwise the suspicion ends as "같음". The first version used ±2 SE, the many-pairs approximation: at 4 pairs
+//     a band of about 80 %, which confirmed 3 of 20 same-code A-B verdicts; with t, none.
 // Every judged metric is worse when higher.
+import { t95 } from "./pairedStats";
 
 // The judged metrics (RR6): rates per second, not per tick — a busy DGX runs fewer ticks while the per-frame work goes
 // on, so per-tick values rise with the load (big town canvases 194–306 per 1k ticks at one commit, 1.56–1.91 per s).
@@ -33,9 +36,16 @@ export function suspect(value: number | null, comparisonRuns: readonly number[])
   return value > high + width ? "위" : value < low - width ? "아래" : "";
 }
 
-/** A perf:ab record's verdict for one metric ("나빠짐" | "좋아짐" | "소음 안"), or null when it has no such row. */
-export function abVerdict(record: { table?: readonly { key: string; verdict: string }[] } | null | undefined, key: string): string | null {
-  return record?.table?.find(row => row.key === key)?.verdict ?? null;
+type AbRow = { key: string; verdict: string; diff?: number; band?: number; se?: number; n?: number; bandRule?: string };
+/**
+ * A perf:ab record's verdict for one metric ("나빠짐" | "좋아짐" | "소음 안"), or null when it has no such row. Judged
+ * again with the 95 % t band: records written before RR7's correction kept a ±2 SE band (their se is band / 2).
+ */
+export function abVerdict(record: { table?: readonly AbRow[] } | null | undefined, key: string): string | null {
+  const row = record?.table?.find(entry => entry.key === key); if (row === undefined) return null;
+  if (row.diff === undefined || row.band === undefined || row.n === undefined) return row.verdict;
+  const se = row.se ?? (row.bandRule === "t95" ? row.band / t95(row.n - 1) : row.band / 2); const band = t95(row.n - 1) * se;
+  return row.diff - band > 0 ? "나빠짐" : row.diff + band < 0 ? "좋아짐" : "소음 안";
 }
 
 /** The file name of a confirmation: comparison commit, commit, scene. */
