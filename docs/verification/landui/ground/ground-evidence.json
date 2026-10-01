@@ -1,0 +1,94 @@
+{
+  "calls:chalk_downs-summer": {
+    "tile": [
+      42,
+      30
+    ],
+    "rasters": 60,
+    "fill": 20167,
+    "drawImage": 8429,
+    "fillRect": 0,
+    "stroke": 340,
+    "perRaster": 482
+  },
+  "calls:coastal_port-summer": {
+    "tile": [
+      14,
+      20
+    ],
+    "rasters": 38,
+    "fill": 13056,
+    "drawImage": 6781,
+    "fillRect": 0,
+    "stroke": 295,
+    "perRaster": 530
+  },
+  "calls:fen_drainage-summer": {
+    "tile": [
+      20,
+      52
+    ],
+    "rasters": 46,
+    "fill": 17601,
+    "drawImage": 2537,
+    "fillRect": 0,
+    "stroke": 327,
+    "perRaster": 445
+  },
+  "calls:forest_edge-summer": {
+    "tile": [
+      52,
+      40
+    ],
+    "rasters": 41,
+    "fill": 12415,
+    "drawImage": 10922,
+    "fillRect": 0,
+    "stroke": 102,
+    "perRaster": 572
+  },
+  "calls:chalk_downs-winter": {
+    "tile": [
+      42,
+      30
+    ],
+    "rasters": 60,
+    "fill": 20676,
+    "drawImage": 8429,
+    "fillRect": 0,
+    "stroke": 340,
+    "perRaster": 491
+  },
+  "calls:open_field-summer": {
+    "tile": [
+      40,
+      44
+    ],
+    "rasters": 46,
+    "fill": 14361,
+    "drawImage": 11041,
+    "fillRect": 0,
+    "stroke": 172,
+    "perRaster": 556
+  },
+  "riverside": {
+    "chunks": 42,
+    "afterChunks": 42,
+    "differing": [],
+    "sample": {
+      "1,2": [
+        "162926234|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #27eab6d 516x260",
+        "162926234|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #27eab6d 516x260"
+      ],
+      "2,2": [
+        "2310667802|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #fbaa7390 516x260",
+        "2310667802|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #fbaa7390 516x260"
+      ],
+      "3,2": [
+        "3834776865|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #425d074e 516x260",
+        "3834776865|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #425d074e 516x260"
+      ]
+    }
+  },
+  "errors": []
+}
