@@ -52,12 +52,12 @@ export function landOf(state: Pick<GameState, "land">): LandState {
 function walkCells(width: number, from: { tx: number; ty: number }, to: { tx: number; ty: number }): number[] {
   const cells: number[] = [];
   let x = from.tx, y = from.ty;
-  const dx = Math.abs(to.tx - x), dy = -Math.abs(to.ty - y), sx = x < to.tx ? 1 : -1, sy = y < to.ty ? 1 : -1;
+  const dx = Math.abs(to.tx - x), dy = -Math.abs(to.ty - y), stepX = x < to.tx ? 1 : -1, stepY = y < to.ty ? 1 : -1;
   let error = dx + dy;
   for (let guard = 0; guard < 512 && (x !== to.tx || y !== to.ty); guard += 1) {
     const twice = 2 * error;
-    if (twice >= dy) { error += dy; x += sx; }
-    if (twice <= dx) { error += dx; y += sy; }
+    if (twice >= dy) { error += dy; x += stepX; }
+    if (twice <= dx) { error += dx; y += stepY; }
     if (x !== to.tx || y !== to.ty) cells.push(y * width + x);
   }
   return cells;

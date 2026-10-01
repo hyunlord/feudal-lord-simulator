@@ -218,11 +218,15 @@ test("MA-5 the ground layer names confirmed Wave 22 files; field edges are Wave 
   assert.equal(byId(DOWNS_ARCHETYPE_ID).ground.fieldBoundary, "dry_stone_wall");
 });
 
-test("MA-6 a new game on a land: the start command takes the land and seed; the riverside town is today's map; a new land keeps its id through a save", () => {
+test("MA-6 a new game on a land: the start command takes the land and seed; the riverside town is today's map at seed 1 (another seed its own, LM-E5); a new land keeps its id through a save", () => {
   const riverside = newGameState({ scenarioId: DEFAULT_SCENARIO_ID })!;
   // FIX-11 (MH-1): a new game is the opening village with the manor house on its nearest free grass.
   assert.deepEqual(riverside, placeManorSite({ ...structuredClone(DEFAULT_GAME_STATE), scenarioId: DEFAULT_SCENARIO_ID }));
-  assert.equal(newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: RIVERSIDE_ARCHETYPE_ID, seed: 2 }), null, "the riverside town is seed 1");
+  // LM-E5 (LG-1): the riverside town takes any seed — seed 2 is its own map with the same opening village moved onto it.
+  const two = newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: RIVERSIDE_ARCHETYPE_ID, seed: 2 })!;
+  assert.equal(two.seed, 2);
+  assert.notEqual(two.tiles.map(tile => tile.terrain).join(), riverside.tiles.map(tile => tile.terrain).join(), "another seed, another map");
+  assert.equal(two.buildings.length, riverside.buildings.length);
   assert.equal(newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: "core:no_such_land" }), null);
   assert.equal(newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: FEN_ARCHETYPE_ID, seed: 0 }), null);
   const fen = newGameState({ scenarioId: SANDBOX_SCENARIO_ID, archetypeId: FEN_ARCHETYPE_ID, seed: 2 })!;
