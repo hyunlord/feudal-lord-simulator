@@ -29,7 +29,7 @@ export function drawPlacementPrediction(context: PredictionDrawingContext, state
   drawHomeOutlines(context, state, prediction.houseIds, zoom);
   for (const segment of prediction.roadSegments) {
     const center = tileToScreen(segment.tile.tx, segment.tile.ty);
-    applyPaletteStroke(context, segment.kind === 'bridge' ? PALETTE.ultramarine : PALETTE.ink, zoom);
+    applyPaletteStroke(context, segment.kind === 'land' ? PALETTE.ink : PALETTE.ultramarine, zoom); // a ford: water colour, no planks
     context.beginPath();
     if (segment.kind === 'bridge') {
       for (const offset of [-6, 0, 6]) {

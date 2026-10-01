@@ -30,6 +30,7 @@ import { getSprite } from "./worldAssets";
 import { preloadSeasonArt, seasonArtStatuses, seasonOf, type SeasonIndex } from "./seasonArt";
 import { drawSeasonGrass, seasonChunkToken } from "./seasonGround";
 import { seasonFadeMs } from "./seasonTransition";
+import { drawLandWorksInChunk, landWorksChunkToken } from "./landWorksDraw";
 import { landGroundOf } from "./archetypeGroundModel";
 import { drawLandDecals, drawLandEdges, drawLandFills, hasLandFill, landChunkToken, landShoreStrips } from "./archetypeGroundDraw";
 
@@ -129,7 +130,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const shoreReadiness = scene.shore.loops.length > 0 ? `:w${shoreAssetReadiness()}${wallStripsEnabled() ? ":ws" : ""}${waterChunkToken(zoom)}` : "";
   const cropStates = scene.zones.arableBands.length > 0 ? arableStripStateLookup(input.state) : null;
   const groundReadiness = (plan: GroundChunkPlan): string => (plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness)
-    + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "");
+    + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "") + landWorksChunkToken(input.state, plan);
   const visible = visibleChunks(scene, input.range);
   // INSTALL-15: the season (and its art's readiness) is in both chunk keys but not in their deferKeys, so the season's
   // re-rasters may spread over a few frames; SMOOTH-2R: each chunk turns at its own moment (turn token = the season).
@@ -214,6 +215,7 @@ function drawGroundChunk(
   drawForestFringeDecals(context, scene.forest, plan.forestLoops, season);
   drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, box, bounds, input.state.seed, liveReeds(zoom), land === null ? undefined : landShoreStrips(context, land, scene.shore, plan.waterLoops, bounds));
   if (iceRimDrawn(season)) drawIceRim(context, scene.shore, plan.waterLoops, box); // INSTALL-29: winter, static: baked with the strips
+  drawLandWorksInChunk(context, input.state, plan, season); // LAND-UI Wave 34: fords, drainage works, drained edge
   if (land !== null) drawLandDecals(context, land, input.state.tiles, plan);
   if (plan.zoneIndexes.length > 0) {
     // A plot's tone stops at a yard: the yard is its own trodden ground.

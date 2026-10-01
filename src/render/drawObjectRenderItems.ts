@@ -15,7 +15,8 @@ import type { TileRange, ViewportSize } from "./renderer";
 import type { TileCoordinate } from "../world/grid";
 import { drawRoadReadabilityOverlay } from "./roadReadabilityOverlay";
 import { bridgeRailPieces, drawBridgeRail } from "./drawBridges";
-import { bridgeAt } from "../world/bridges";
+import { bridgeDeckAt } from "./landWorksModel";
+import { drawFordSplash } from "./landWorksDraw";
 import { sortRenderItems } from "./objectRenderSort";
 import { renderStageProbe, stageForRenderItem } from "./renderStageProbe";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
@@ -82,7 +83,7 @@ export function drawObjectRenderItems(
   // the queue's own place, where the gate's arch and the bridge's rails are drawn around them by depth.
   const queue = placeWalkers(sortRenderItems([...input.objectRenderItems, ...rails]), input.state, item =>
     stoneGates.some(gate => Math.hypot(item.walker.position.tx - gate.x, item.walker.position.ty - gate.y) < 1.5)
-    || bridgeAt(input.state, { tx: Math.round(item.walker.position.tx), ty: Math.round(item.walker.position.ty) }) !== null);
+    || bridgeDeckAt(input.state, { tx: Math.round(item.walker.position.tx), ty: Math.round(item.walker.position.ty) }) !== null);
   // SMOOTH-2R: the camera transform, read once for the queue; walls and walkers read it per item before (a new
   // DOMMatrix each, 113 a frame in the 1380 town). Every item restores what it changes, so it holds at each item.
   const transform = context.getTransform?.();
@@ -147,6 +148,7 @@ export function drawObjectRenderItems(
       }, transform);
       continue;
     }
+    if (item.kind === "walker" && viewMode === "normal") drawFordSplash(context, input.state, item.walker, input.nowMs ?? 0); // LAND-UI FD-2 wading
     context.save();
     if (item.kind === "building" && input.problemOnly && causeBuildingAlpha(input.state, item.building.id, true) < 1) context.globalAlpha *= 0.4;
     drawBuildings(context, {

@@ -30,6 +30,8 @@ import type { UiIconCell } from "./uiArt";
 import { ZoneLandLegend } from "./hud/ZoneToolbar";
 import { Button } from "./kit";
 import { resourceName } from "../content/resourceCatalog.ko";
+import { DRAINAGE_COPY } from "./drainageCopy.ko";
+import { drainToolAvailable } from "./drainToolModel";
 
 /** Zone cards (C1b): plots, arable, pasture, orchard and the eraser, in the zone layer (UX-1); UX-2 painted icons. */
 type ZoneCardIcon = { readonly sheet: "building"; readonly cell: UiIconCell<"building"> } | { readonly sheet: "prediction"; readonly cell: UiIconCell<"prediction"> };
@@ -68,12 +70,15 @@ type BuildSealsProps = {
   readonly onOpenChange?: (open: boolean) => void;
   /** UX-3: the layer switch lives outside the drawer (bottom left); true keeps the old top row (tests, old shells). */
   readonly showLayers?: boolean;
+  /** LAND-UI (LU-D6): the fen's drain tool — a card in the trade (생업) category beside the arable brush, on the fen only. */
+  readonly drainTool?: boolean;
+  readonly onDrainToolChange?: (armed: boolean) => void;
 };
 
 const OPEN_ACCESS = tutorialAccess(false, 0);
 
 export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelect, palisadeDrawing = false, onStartPalisadeDrawing, zoneTool = null, onZoneToolChange,
-  access = OPEN_ACCESS, layer = "direct", onLayerChange, pulse = null, openRequest = null, open, onOpenChange, showLayers = true }: BuildSealsProps) {
+  access = OPEN_ACCESS, layer = "direct", onLayerChange, pulse = null, openRequest = null, open, onOpenChange, showLayers = true, drainTool = false, onDrainToolChange }: BuildSealsProps) {
   const id = useId().replaceAll(":", "");
   const menuState = state ?? DEFAULT_GAME_STATE;
   // Era-locked buildings stay visible with their lock and the stage that opens them (UX-0 "잠긴 건물은 숨기지 말고").
@@ -229,6 +234,15 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           {BUILD_CATEGORIES.map((item) => (
             <section key={item.key} id={`${id}-${item.key}`} hidden={layer === "zone" || category !== item.key} aria-label={BUILD_MENU_COPY.toolsLabel(item.label)} className="build-menu-tools">
               {item.key === "trade" && access.arableCard && onZoneToolChange !== undefined ? zoneCard(ARABLE_CARD, true) : null}
+              {item.key === "trade" && onDrainToolChange !== undefined && drainToolAvailable(menuState) ? (
+                <Button type="button" className={`build-seal build-tool drain-tool${drainTool ? " build-tool--selected" : ""}`}
+                  aria-label={DRAINAGE_COPY.card} aria-pressed={drainTool} data-drain-tool="fen"
+                  onPress={() => { onDrainToolChange(!drainTool); setLockNote(null); setPinned(null); closeAfterPick(); }} variant="primary">
+                  <span className="build-tool-art" aria-hidden="true"><UiIcon sheet="cause" cell="water" size={48} /></span>
+                  <span className="build-seal-label" aria-hidden="true">{DRAINAGE_COPY.card}</span>
+                  <span className="build-tool-cost">{DRAINAGE_COPY.cardHint}</span>
+                </Button>
+              ) : null}
               {options.filter((option) => buildCategory(option.tool) === item.key).map(toolButton)}
               {item.key === 'defense' && onStartPalisadeDrawing !== undefined ? (
                 <Button type="button" className={`build-seal build-tool${palisadeDrawing ? ' build-tool--selected' : ''}`}

@@ -1,0 +1,108 @@
+{
+  "coast-ford-summer": {
+    "wave34": [
+      "ford_w2_nw_summer",
+      "ford_w2_nw_winter"
+    ],
+    "works": {
+      "token": ":lw1f1421nw",
+      "fords": 8,
+      "roadFords": [
+        [
+          1421,
+          1422
+        ]
+      ]
+    }
+  },
+  "coast-ford-winter": {
+    "wave34": [
+      "ford_w2_nw_summer",
+      "ford_w2_nw_winter"
+    ],
+    "works": {
+      "token": ":lw1f1421nw",
+      "fords": 8,
+      "roadFords": [
+        [
+          1421,
+          1422
+        ]
+      ]
+    }
+  },
+  "downs-ford1-summer": {
+    "wave34": [
+      "ford_w2_ne_summer",
+      "ford_w2_ne_winter"
+    ],
+    "works": {
+      "token": ":lw1f1388ne",
+      "fords": 4,
+      "roadFords": [
+        [
+          1388
+        ]
+      ]
+    }
+  },
+  "fen-works-a-summer": {
+    "wave34": [
+      "drain_done_edge_summer",
+      "drain_done_edge_winter",
+      "drain_earth_cart",
+      "drain_plank_bridge",
+      "drain_soil_heap",
+      "drain_stage1_staked_summer",
+      "drain_stage1_staked_winter",
+      "drain_stage3_drying_summer_5x5",
+      "drain_stage3_drying_winter_5x5"
+    ],
+    "works": {
+      "token": ":lw1wdrainage-20-35-29.1d,wdrainage-20-35-24.3",
+      "fords": 0,
+      "roadFords": []
+    }
+  },
+  "fen-works-a-winter": {
+    "wave34": [
+      "drain_done_edge_summer",
+      "drain_done_edge_winter",
+      "drain_earth_cart",
+      "drain_plank_bridge",
+      "drain_soil_heap",
+      "drain_stage1_staked_summer",
+      "drain_stage1_staked_winter",
+      "drain_stage3_drying_summer_5x5",
+      "drain_stage3_drying_winter_5x5"
+    ],
+    "works": {
+      "token": ":lw1wdrainage-20-35-29.1d,wdrainage-20-35-24.3",
+      "fords": 0,
+      "roadFords": []
+    }
+  },
+  "fen-works-b-summer": {
+    "wave34": [
+      "drain_done_edge_summer",
+      "drain_done_edge_winter",
+      "drain_earth_cart",
+      "drain_plank_bridge",
+      "drain_sluice",
+      "drain_soil_heap",
+      "drain_stage2_ditched_summer",
+      "drain_stage2_ditched_winter",
+      "drain_stage3_drying_summer_5x5",
+      "drain_stage3_drying_winter_5x5"
+    ],
+    "works": {
+      "token": ":lw1wdrainage-20-35-29.2d,wdrainage-20-35-24.3",
+      "fords": 0,
+      "roadFords": []
+    }
+  },
+  "drainCards": 1,
+  "chipMere": "배수 공사 · 메울 물 10칸\n목재 50\n일꾼 4명이면 약 1계절\n클릭하여 공사 시작 · Esc/우클릭 취소",
+  "chipRefusal": "고인 물(웅덩이·늪)을 고르세요 — 강물과 길은 안 됩니다",
+  "errors": []
+}

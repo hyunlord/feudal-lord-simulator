@@ -32,6 +32,9 @@ export type GameCanvasRuntimeInput = {
   /** Armed zone brush (C1b), or null. */
   readonly zoneTool?: import("./zoneBrushInteraction").ZoneBrushTool | null;
   readonly onZoneRadiusChange?: ((radius: number) => void) | undefined;
+  /** LAND-UI (LU-D6): the fen's drain tool is armed; `onDrainToolChange(false)` disarms it (a right click). */
+  readonly drainTool?: boolean;
+  readonly onDrainToolChange?: ((armed: boolean) => void) | undefined;
   /** UX-3R2: the tablet placement waiting for ✓ changed (GameCanvas shows the confirm bar). */
   readonly setPendingPlacement?: ((tile: import("../world/grid").TileCoordinate | null) => void) | undefined;
 };

@@ -5,6 +5,7 @@ import { worldToCanvas, type CameraState, type WorldBounds } from "./camera";
 import { cancelRoadPreview } from "./cancelRoadPreview";
 import { handleCanvasSelect } from "./canvasClickRuntime";
 import { handleAimedCancel } from "./canvasContextMenuHandler";
+import { drainCancel, drainSelect, type DrainToolContext } from "./canvasDrainRuntime";
 import { advanceCanvasDrag, beginCanvasDrag, finishedRoadAttempt } from "./canvasDragResolution";
 import { updateCanvasHover } from "./canvasHoverRuntime";
 import { advancePalisadeDraftDrag, beginPalisadeDraftDrag, finishPalisadeDraftDrag, palisadeEdgePointAtCanvas } from "./canvasPalisadeDraftRuntime";
@@ -34,6 +35,8 @@ type Deps = {
   readonly selectedToolRef: { current: GameCanvasRuntimeInput["selectedTool"] };
   readonly palisadeDraftRef: { current: PalisadeDraftState | null };
   readonly zone: ReturnType<typeof createZoneBrushContext>;
+  /** LAND-UI (LU-D6): the fen's drain tool (absent in callers without one). */
+  readonly drain?: DrainToolContext;
   readonly dispatch: GameCanvasRuntimeInput["dispatch"];
   readonly setSelection: GameCanvasRuntimeInput["setSelection"];
   readonly setHoveredBuilding: GameCanvasRuntimeInput["setHoveredBuilding"];
@@ -122,6 +125,7 @@ export function createCanvasIntentHandler(deps: Deps): IntentHandler {
       case "strokeEnd": strokeEnd(intent); return "handled";
       case "select": {
         if (zone.zone.toolRef.current !== null) return;
+        if (deps.drain !== undefined && drainSelect(deps.drain, intent.world)) return "handled";
         // UX-3R2 palisade click-click: in the open draw a click extends the line from its end to the point.
         const draft = palisadeDraftRef.current;
         if (draft !== null && draft.mode === "draw" && draft.candidate === null) {
@@ -154,6 +158,7 @@ export function createCanvasIntentHandler(deps: Deps): IntentHandler {
             return "handled";
           }
           if (zoneAimedCancel(zone, intent.world)) return "handled";
+          if (deps.drain !== undefined && drainCancel(deps.drain)) return "handled";
           if (cancelRoadPreview(refs)) return "handled";
           handleAimedCancel({ world: intent.world, dispatch: deps.dispatch, selectedToolRef, setSelection: deps.setSelection, stateRef });
           return "handled";

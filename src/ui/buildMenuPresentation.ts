@@ -3,7 +3,8 @@ import type { PlacementTool } from "../render/renderer";
 import type { BuildToolOption } from "./buildMenuModel";
 import { getHistoricalFacilityPresentation } from "../render/historicalFacilityAssets";
 import { historicalHouseAssetMeta } from "../render/historicalHouseAssets";
-import { BRIDGE_TIMBER_PER_TILE } from "../world/bridges";
+import { BRIDGE_TIMBER_PER_TILE, FORD_TIMBER_PER_TILE } from "../world/bridges";
+import { BUILD_MENU_COPY } from "./buildMenuCopy.ko";
 import { TUTORIAL_COPY } from "./tutorial/tutorialCopy.ko";
 import type { BuildCategoryKey } from "./tutorial/tutorialModel";
 import { RESOURCE_TYPES } from "../content/resourceConfig";
@@ -41,7 +42,7 @@ export function buildThumbnail(tool: PlacementTool): string | null {
 }
 
 export function buildCostLabel(option: BuildToolOption): string {
-  if (option.tool === "road") return `육지 무료 · 다리 목재 ${BRIDGE_TIMBER_PER_TILE}/칸`;
+  if (option.tool === "road") return BUILD_MENU_COPY.roadCost(BRIDGE_TIMBER_PER_TILE, FORD_TIMBER_PER_TILE);
   const parts = RESOURCE_TYPES.flatMap(resource => {
     const amount = option.cost[resource] ?? 0;
     return amount > 0 ? [`${resourceName(resource)} ${amount}`] : [];

@@ -129,6 +129,8 @@ export function App() {
   const welcomeVisible = welcomeOpen || saveSystem.offerContinue;
   const [palisadeDraft, setPalisadeDraft] = useState<PalisadeDraftState | null>(null);
   const [zoneTool, setZoneTool] = useState<ZoneBrushTool | null>(null);
+  // LAND-UI (LU-D6): the fen's drain tool (its card in the build drawer); arming it drops the other tools, and they drop it.
+  const [drainTool, setDrainTool] = useState(false);
   // UX-1: the control layer (직접 / 구역 / 방향) and the goal drawer.
   const [layer, setLayer] = useState<ControlLayer>("direct");
   // UX-1: the left inspector (a warning's `[보기]`: cause and action of that building).
@@ -205,8 +207,12 @@ export function App() {
   accessRef.current = tutorial.access;
   const selectPlacementTool = (tool: PlacementTool | null) => {
     if (tool !== null && !accessRef.current.tools(tool)) return;
-    setPalisadeDraft(null); setSelectedTool(tool); if (tool !== null) { setZoneTool(null); setLayer("direct"); }
+    setPalisadeDraft(null); setSelectedTool(tool); setDrainTool(false); if (tool !== null) { setZoneTool(null); setLayer("direct"); }
   };
+  const selectDrainTool = (armed: boolean) => {
+    setDrainTool(armed); if (armed) { setPalisadeDraft(null); setSelectedTool(null); setZoneTool(null); setLayer("direct"); }
+  };
+  useEffect(() => { if (zoneTool !== null || palisadeDraft !== null) setDrainTool(false); }, [zoneTool, palisadeDraft]);
   // The app shell's input intents (B9, src/input/useAppIntents.ts).
   const { selectedToolRef } = useAppIntents({ speed, setSpeed, selectedTool, setSelectedTool, selectPlacementTool, palisadeDraftRef, setPalisadeDraft,
     gameStateRef, uiRef, setUi, setProblemOnly, setOverlayMode, setZoneTool, setLayer, accessRef });
@@ -216,15 +222,16 @@ export function App() {
   // closes and the marked land is in view (the audit painted blind under the open drawer).
   const directBrush = zoneTool !== null && layer === "direct";
   useEffect(() => {
-    if (selectedTool !== null || palisadeDraft?.mode === "draw" || directBrush) sendUi({ type: "pick_tool", line: selectedTool === "road" || palisadeDraft?.mode === "draw" || directBrush });
+    if (selectedTool !== null || palisadeDraft?.mode === "draw" || directBrush || drainTool) sendUi({ type: "pick_tool", line: selectedTool === "road" || palisadeDraft?.mode === "draw" || directBrush });
     else sendUi({ type: "tool_cleared" });
-  }, [selectedTool, palisadeDraft?.mode, directBrush, sendUi]);
+  }, [selectedTool, palisadeDraft?.mode, directBrush, drainTool, sendUi]);
   useEffect(() => { sendUi({ type: layer === "zone" ? "zone_on" : "zone_off" }); }, [layer, sendUi]);
   useEffect(() => {
     const placing = ui.mode === "placement" || ui.mode === "line";
     if (placing) releaseControlFocus(); // the picked card closed with the drawer; Space, Esc and ] go to the map
     if (!placing && selectedToolRef.current !== null) setSelectedTool(null);
     if (!placing && palisadeDraftRef.current?.mode === "draw") setPalisadeDraft(null);
+    if (!placing) setDrainTool(false);
     if (ui.mode !== "zone" && ui.mode !== "build" && !placing) { setZoneTool(null); setLayer(current => current === "zone" ? "direct" : current); }
     if (ui.mode !== "selection") setInspectedId(null);
     if (ui.mode !== "ledger") setLedgerHighlight([]);
@@ -450,6 +457,7 @@ export function App() {
           onPalisadeDraftCancel={cancelPalisadeDraft}
           zoneTool={zoneTool}
           onZoneRadiusChange={radius => setZoneTool(current => current === null ? current : { ...current, radius })}
+          drainTool={drainTool} onDrainToolChange={selectDrainTool}
           selectionOpen={ui.mode === "selection"} onSelectionChange={onCanvasSelection} onPerson={openPerson}
         />
         {/* NAT-2: the QA info overlay (settings → developer, key `): nothing mounted while it is off. */}
@@ -537,6 +545,7 @@ export function App() {
             }}
             palisadeDrawing={palisadeDraft?.mode === 'draw'}
             onStartPalisadeDrawing={beginPalisadeDraw}
+            drainTool={drainTool} onDrainToolChange={selectDrainTool}
             access={tutorial.access}
             layer={layer}
             onLayerChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }}
