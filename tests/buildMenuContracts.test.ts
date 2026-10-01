@@ -203,7 +203,7 @@ test("resource costs retain all canonical amounts and show free roads plainly", 
   const road = BUILD_TOOL_OPTIONS.find((option) => option.tool === "road");
   assert.ok(church); assert.ok(road);
   assert.equal(buildCostLabel(church), "목재 100 · 석재 60");
-  assert.equal(buildCostLabel(road), "육지 무료 · 다리 목재 4/칸");
+  assert.equal(buildCostLabel(road), "육지 무료 · 다리 목재 4/칸 · 여울 목재 1/칸");
 });
 
 test("browser build-menu proof includes every app stylesheet in production order", async () => {

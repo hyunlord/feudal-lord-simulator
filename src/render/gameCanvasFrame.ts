@@ -16,6 +16,7 @@ import { hoverOcclusionActive } from "./selectionOcclusion";
 import { drawConstructionCrewLinks } from "./constructionCrewLinks";
 import { drawWallSiteLabels } from "./wallSiteLabels";
 import { beginConstructionTagFrame } from "./constructionTagProbe";
+import { drawDrainPreview } from "./canvasDrainRuntime";
 
 type GameCanvasFrameInput = {
   readonly context: CanvasRenderingContext2D;
@@ -39,6 +40,8 @@ type GameCanvasFrameInput = {
   readonly highlightedHouseIds?: readonly string[];
   readonly palisadeDraft?: PalisadeDraftState | null;
   readonly zoneBrush?: import("./zoneBrushOverlay").ZoneBrushView | null;
+  /** LAND-UI (LU-D6): the drain tool's plan at the pointer, drawn over the map. */
+  readonly drainPreview?: import("../ui/drainToolModel").DrainPreview | null;
   readonly houseMaterialWave?: HouseMaterialWave | null;
   readonly palisadeCeremonyStartedAtMs?: number | null;
   readonly completionTracker: ConstructionCompletionTracker;
@@ -86,10 +89,11 @@ export function drawGameCanvasFrame(input: GameCanvasFrameInput): PlacementPrevi
     completionTracker: input.completionTracker,
     hoveredTile: input.hoveredTile,
     selectionMode: hoverOcclusionActive({
-      toolArmed: input.selectedTool !== null || input.palisadeDraft != null || input.zoneBrush != null,
+      toolArmed: input.selectedTool !== null || input.palisadeDraft != null || input.zoneBrush != null || input.drainPreview != null,
       selectedBuildingId: input.selectedBuildingId ?? null,
     }),
   });
+  if (input.drainPreview !== undefined && input.drainPreview !== null) drawDrainPreview(input.context, input.state, input.drainPreview, input.camera.zoom);
   // INSTALL-3b ①: one tag per wall works (every segment's with the works selected or from zoom 1.35).
   drawWallSiteLabels(input.context, { state: input.state, camera: input.camera, viewport: input.viewport, selectedSiteId: input.selectedConstructionSiteId ?? null });
   if (input.selectedConstructionSiteId !== undefined && input.selectedConstructionSiteId !== null) {

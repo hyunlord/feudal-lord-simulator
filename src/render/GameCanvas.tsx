@@ -49,6 +49,9 @@ type GameCanvasProps = {
   readonly onPalisadeDraftCancel?: () => void;
   readonly zoneTool?: ZoneBrushTool | null;
   readonly onZoneRadiusChange?: (radius: number) => void;
+  /** LAND-UI (LU-D6): the fen's drain tool is armed; a right click on the map disarms it through `onDrainToolChange`. */
+  readonly drainTool?: boolean;
+  readonly onDrainToolChange?: (armed: boolean) => void;
   /** UX-3 S-30: the selection card holds the one panel slot — false (another panel took it, or Esc) drops it. */
   readonly selectionOpen?: boolean;
   readonly onSelectionChange?: (open: boolean) => void;
@@ -70,6 +73,8 @@ export function GameCanvas({
   onPalisadeDraftCancel,
   zoneTool = null,
   onZoneRadiusChange,
+  drainTool = false,
+  onDrainToolChange,
   selectionOpen,
   onSelectionChange,
   onPerson,
@@ -113,6 +118,8 @@ export function GameCanvas({
     onPalisadeDraftCancel,
     zoneTool,
     onZoneRadiusChange,
+    drainTool,
+    onDrainToolChange,
     setPendingPlacement,
   });
 
@@ -177,14 +184,14 @@ export function GameCanvas({
     <>
       <canvas
         ref={canvasRef}
-        className={canvasCursorClass(selectedTool, zoneTool, hoveredBuilding !== null)}
+        className={canvasCursorClass(selectedTool, zoneTool, hoveredBuilding !== null, drainTool)}
         // UX-3R2: road / palisade click-click and the tablet ✓ (the input replays read it to drive the new baseline).
         data-line-tools="click-click"
         aria-label={KO_UI.simulationCanvas}
       />
       {prediction === null ? null : <PredictionPanel {...prediction} />}
       {pendingPlacement !== null && selectedTool !== null && selectedTool !== "road" ? <PlacementConfirmBar /> : null}
-      <BuildingInspector state={state} hover={selectedTool === null && zoneTool === null && selection === null ? hoveredBuilding : null} />
+      <BuildingInspector state={state} hover={selectedTool === null && zoneTool === null && !drainTool && selection === null ? hoveredBuilding : null} />
       {selection !== null && cardModel !== null ? (
         <DiagnosticCard
           model={cardModel}
@@ -216,8 +223,9 @@ export function GameCanvas({
 
 /** UX-2 cursor art by the armed tool: select, inspect (a building under the pointer), road, zone brush, placement
  * (valid / invalid from the frame's `data-placement`). */
-export function canvasCursorClass(selectedTool: PlacementTool | null, zoneTool: ZoneBrushTool | null, overBuilding: boolean): string {
+export function canvasCursorClass(selectedTool: PlacementTool | null, zoneTool: ZoneBrushTool | null, overBuilding: boolean, drainTool = false): string {
   if (zoneTool !== null) return "game-canvas game-canvas--placement-armed game-canvas--zone";
+  if (drainTool) return "game-canvas game-canvas--placement-armed game-canvas--place";
   if (selectedTool === "road") return "game-canvas game-canvas--placement-armed game-canvas--road";
   if (selectedTool !== null) return "game-canvas game-canvas--placement-armed game-canvas--place";
   return overBuilding ? "game-canvas game-canvas--inspect" : "game-canvas";

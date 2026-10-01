@@ -10,6 +10,7 @@ import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import type { TileCoordinate } from "../world/grid";
 import { PlacementFailure } from "../world/placement";
 import { resourceName } from "../content/resourceCatalog.ko";
+import { adjacentTerrainNeed } from "./adjacentTerrainNeed";
 
 const PLACEMENT_FEEDBACK_DURATION_MS = {
   success: 600,
@@ -81,8 +82,8 @@ export function formatPlacementFailure(
       return PLACEMENT_FEEDBACK_COPY.outOfBounds;
     case PlacementFailure.needs_road:
       return PLACEMENT_FEEDBACK_COPY.needsRoad;
-    case PlacementFailure.needs_adjacent_terrain:
-      return PLACEMENT_FEEDBACK_COPY.needsForest;
+    case PlacementFailure.needs_adjacent_terrain: // MA-10: by what the building needs beside it
+      return PLACEMENT_FEEDBACK_COPY.needsAdjacent[adjacentTerrainNeed(request.buildingKind)];
     case PlacementFailure.insufficient_materials: {
       const shortfallLabel = resourceAmountsLabel(request.shortfalls ?? {});
       if (shortfallLabel !== PLACEMENT_FEEDBACK_COPY.none) return PLACEMENT_FEEDBACK_COPY.resourcesShort(shortfallLabel);

@@ -4,6 +4,8 @@ import type { GameState } from "../engine/engine.types";
 import { ZonePlacementFailure } from "../zones/zonePlacement";
 import { getTile, type TileCoordinate } from "../world/grid";
 import { PlacementFailure } from "../world/placement";
+import { isFlowingWater } from "../world/river";
+import { adjacentTerrainNeed } from "./adjacentTerrainNeed";
 
 // UX-3 S-52 placement validity, per tile: only the ghost's footprint and the one-tile ring around it are judged (not
 // the whole screen). A footprint tile is fine or blocked by what stands on it (a building or site, a road, water, the
@@ -11,7 +13,9 @@ import { PlacementFailure } from "../world/placement";
 // footprint tile and draws its icon once, on the centre tile. The ring shows what the building touches: the road that
 // gives it access, the forest a logging camp needs — and, when that contact is missing, the ring itself is marked.
 // Forest is buildable ground (placement.isBuildableTerrain), so a tree is never a reason here.
-export type TileMarkReason = "building" | "road" | "water" | "edge" | "wall" | "needs_road" | "needs_forest" | "materials" | "zone" | "locked";
+export type TileMarkReason = "building" | "road" | "water" | "edge" | "wall" | "needs_road" | "needs_forest" | "needs_water" | "needs_flowing_water"
+  | "needs_rock" | "materials" | "zone" | "locked";
+const NEED_MARK = { forest: "needs_forest", water: "needs_water", flowing_water: "needs_flowing_water", rock: "needs_rock" } as const;
 export type TileMark = {
   readonly tx: number; readonly ty: number;
   /** false: blocked (hatched). */
@@ -29,7 +33,7 @@ type Result = { readonly ok: boolean; readonly reason: PlacementFailure | ZonePl
 const WHOLE_BUILDING: Partial<Record<PlacementFailure | ZonePlacementFailure, TileMarkReason>> = {
   [PlacementFailure.wall_clearance]: "wall", [PlacementFailure.insufficient_materials]: "materials",
   [PlacementFailure.locked_era]: "locked", [PlacementFailure.needs_road]: "needs_road",
-  [PlacementFailure.needs_adjacent_terrain]: "needs_forest",
+  [PlacementFailure.needs_adjacent_terrain]: "needs_forest", // MA-10: buildingTileMarks names the need by kind
   [ZonePlacementFailure.outside_zone]: "zone", [ZonePlacementFailure.arable_inside_wall]: "zone",
 };
 
@@ -53,7 +57,8 @@ function tileReason(state: GameState, coordinate: TileCoordinate): TileMarkReaso
 /** Footprint + ring marks for a building ghost; `footprint` is the ghost's tiles, `result` the engine's verdict. */
 export function buildingTileMarks(state: GameState, kind: BuildingKind, footprint: readonly TileCoordinate[], result: Result): readonly TileMark[] {
   if (footprint.length === 0) return [];
-  const whole = result.ok || result.reason === null ? null : WHOLE_BUILDING[result.reason] ?? null;
+  const whole = result.ok || result.reason === null ? null : result.reason === PlacementFailure.needs_adjacent_terrain ? NEED_MARK[adjacentTerrainNeed(kind)]
+    : WHOLE_BUILDING[result.reason] ?? null;
   const xs = footprint.map(tile => tile.tx), ys = footprint.map(tile => tile.ty);
   const [minX, maxX, minY, maxY] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
   const centre = footprint.reduce((best, tile) =>
@@ -67,13 +72,14 @@ export function buildingTileMarks(state: GameState, kind: BuildingKind, footprin
   });
   const definition = BUILDING_CONFIG_BY_KIND[kind];
   const wantsRoad = definition.requiresRoad, wantsTerrain = definition.requiresAdjacentTerrain;
-  const ringFailed = whole === "needs_road" || whole === "needs_forest" || whole === "wall";
+  const ringFailed = whole === "needs_road" || whole === "needs_forest" || whole === "needs_water" || whole === "needs_flowing_water" || whole === "needs_rock" || whole === "wall";
   for (let ty = minY - 1; ty <= maxY + 1; ty += 1) {
     for (let tx = minX - 1; tx <= maxX + 1; tx += 1) {
       if (tx >= minX && tx <= maxX && ty >= minY && ty <= maxY) continue;
       const tile = getTile(state, { tx, ty });
       if (tile === null) continue;
-      const contact = (wantsRoad && tile.hasRoad) || (wantsTerrain !== null && tile.terrain === wantsTerrain);
+      const contact = (wantsRoad && tile.hasRoad) || (wantsTerrain !== null && tile.terrain === wantsTerrain
+        && (definition.requiresFlowingWater !== true || isFlowingWater(state, ty * state.width + tx)));
       marks.push({ tx, ty, ok: !ringFailed, reason: ringFailed ? whole : null, icon: false, ring: true, ...(contact ? { contact: true } : {}) });
     }
   }
@@ -84,6 +90,7 @@ export function buildingTileMarks(state: GameState, kind: BuildingKind, footprin
 export function blockingReasons(marks: readonly TileMark[]): readonly { readonly reason: TileMarkReason; readonly count: number }[] {
   const counts = new Map<TileMarkReason, number>();
   for (const mark of marks) if (!mark.ok && !mark.ring && mark.reason !== null) counts.set(mark.reason, (counts.get(mark.reason) ?? 0) + 1);
-  const order: readonly TileMarkReason[] = ["edge", "water", "building", "road", "wall", "needs_road", "needs_forest", "zone", "locked", "materials"];
+  const order: readonly TileMarkReason[] = ["edge", "water", "building", "road", "wall", "needs_road", "needs_forest", "needs_water", "needs_flowing_water", "needs_rock",
+    "zone", "locked", "materials"];
   return order.filter(reason => counts.has(reason)).map(reason => ({ reason, count: counts.get(reason)! }));
 }

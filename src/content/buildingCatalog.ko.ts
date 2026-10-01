@@ -56,7 +56,7 @@ export const BUILDING_COPY = {
     inspector: "목초지의 양을 치고 털을 깎습니다", worldTarget: "여기에 목축 농장을 지으세요", history: "목축 농장" },
   weaver_house: { name: "직조공 집", card: "실을 베로 짭니다", purpose: "베틀로 실 네 타래를 생베 한 필로 짭니다",
     inspector: "실을 생베로 짭니다", worldTarget: "여기에 직조공 집을 지으세요", history: "직조공 집" },
-  fulling_mill: { name: "축융 방앗간", card: "베를 두드려 다집니다", purpose: "물레방아 망치로 생베를 두드려 다집니다. 물가에만 짓습니다",
+  fulling_mill: { name: "축융 방앗간", card: "베를 두드려 다집니다", purpose: "물레방아 망치로 생베를 두드려 다집니다. 흐르는 물가에만 짓습니다",
     inspector: "생베를 축융합니다", worldTarget: "여기에 축융 방앗간을 지으세요", history: "축융 방앗간" },
   dyehouse: { name: "염색집", card: "베를 물들입니다", purpose: "상인이 들여온 대청·꼭두서니·목서초로 베를 물들입니다. 물가에만 짓습니다",
     inspector: "축융한 베를 물들입니다", worldTarget: "여기에 염색집을 지으세요", history: "염색집" },

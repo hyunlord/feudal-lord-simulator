@@ -7,7 +7,8 @@ import type { RoadRibbonLayout } from "../world/boundary/roadRibbonLayout";
 import type { Shoreline } from "../world/boundary/shoreline";
 import type { FieldCluster, ForestBoundary } from "../world/boundary/terrainBoundaries";
 import type { YardProps } from "../world/boundary/yardProps";
-import { bridgeAt, type BridgeSpan } from "../world/bridges";
+import { type BridgeSpan } from "../world/bridges";
+import { bridgeDeckAt } from "./landWorksModel";
 import type { Tile } from "../world/world.types";
 import { wallBaselinesFor } from "./wallBaselineCache";
 import type { ZoneLayer } from "./zoneLayer";
@@ -83,12 +84,12 @@ export function waterSideWalls(state: GameState): BoundaryPoint[][] {
   return lines;
 }
 
-/** Every bridge span once (bridgeAt lists it for each of its water tiles), in tile order. */
+/** Every bridge span once (bridgeAt lists it for each of its water tiles), in tile order; a ford road has none (LU-D3). */
 export function bridgeSpans(state: GameState, tiles: readonly Tile[]): BridgeSpan[] {
   const spans = new Map<string, BridgeSpan>();
   for (const tile of tiles) {
     if (tile.terrain !== "water" || !tile.hasRoad) continue;
-    const span = bridgeAt(state, tile);
+    const span = bridgeDeckAt(state, tile);
     if (span !== null) spans.set(span.banks.map(bank => `${bank.tx},${bank.ty}`).join("|"), span);
   }
   return [...spans.entries()].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)).map(([, span]) => span);

@@ -126,6 +126,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/wave28CountryManifest.generated.ts",
     "src/render/wave27YardManifest.generated.ts",
     "src/render/wave29WaterManifest.generated.ts", // INSTALL-29 water motion
+    "src/render/wave34WorksManifest.generated.ts", // LAND-UI fords and fen drainage works
     "src/render/wave12GuildhallManifest.generated.ts", // UI-9 chapter 4 guildhall world prop
     "src/render/wave17WalkerManifest.generated.ts", // UI-9b the lord's tax collector
   ];

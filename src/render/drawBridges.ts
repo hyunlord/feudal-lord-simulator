@@ -1,6 +1,6 @@
 import { applyPaletteStroke } from "./style";
 import { drawCroppedWorldSprite } from "./worldSprite";
-import { bridgeAt } from "../world/bridges";
+import { bridgeDeckAt } from "./landWorksModel";
 import type { WallGrid } from "../world/wallTraversal";
 import type { Tile } from "../world/world.types";
 import { bridgeWaterImage } from "./bridgeWaterAssets";
@@ -10,7 +10,7 @@ import { SEMANTIC_PALETTE } from "../content/palette";
 export type BridgeRailPiece={readonly tx:number;readonly ty:number;readonly axis:"x"|"y";readonly side:"rear"|"front";readonly depth:number};
 export function bridgeRailPieces(state:WallGrid,tiles:readonly Tile[]):readonly BridgeRailPiece[]{
   return tiles.flatMap(tile=>{
-    const bridge=bridgeAt(state,tile);
+    const bridge=bridgeDeckAt(state,tile);
     return bridge===null?[]:(["rear","front"] as const).map(side=>({tx:tile.tx,ty:tile.ty,axis:bridge.axis,side,depth:tile.tx+tile.ty+(side==="rear"?-.45:.65)}));
   });
 }
@@ -29,7 +29,7 @@ function affine(context:CanvasRenderingContext2D,source:readonly [Point,Point,Po
   context.transform(ax,bx,ay,by,p.x-ax*a.x-ay*a.y,p.y-bx*a.x-by*a.y);
 }
 export function drawBridgeDeck(context:CanvasRenderingContext2D,state:WallGrid,tile:Tile):void{
-  const span=bridgeAt(state,tile);if(span===null)return;
+  const span=bridgeDeckAt(state,tile);if(span===null)return;
   const image=bridgeWaterImage(span.axis==="x"?"woodX":"woodY");
   const target=deckCorners(tile.tx,tile.ty,span.axis);
   if(image===null){

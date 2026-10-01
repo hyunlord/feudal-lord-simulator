@@ -2,6 +2,7 @@ import { createPredictionPublisher } from "./placementPredictionRuntime";
 import { proofFrameWork } from "../testing/proofFrameWork";
 import { useEffect, useRef } from "react";
 import { createZoneBrushContext, zoneBrushView } from "./canvasZoneBrushRuntime";
+import { drainToolPreview, type DrainToolContext } from "./canvasDrainRuntime";
 
 import { clampPan, type CameraState } from "./camera";
 import { cameraAfterViewportResize, initialCamera, resizeCanvas } from "./canvasRuntime";
@@ -58,6 +59,8 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
   // INSTALL-23b: the frame reads the game speed (paused holds the village life's clock) through a ref, so the canvas does not rebind.
   const getSpeedRef = useRef(store.getSpeed); getSpeedRef.current = store.getSpeed;
   const pendingRef = useRef(input.setPendingPlacement); pendingRef.current = input.setPendingPlacement;
+  const drainArmedRef = useRef(input.drainTool === true); drainArmedRef.current = input.drainTool === true; // LAND-UI drain tool
+  const drainDisarmRef = useRef<(() => void) | undefined>(undefined); drainDisarmRef.current = () => input.onDrainToolChange?.(false);
 
   useEffect(() => {
     const canvas = canvasRef.current, context = canvas?.getContext("2d") ?? null;
@@ -84,17 +87,18 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
     const world = () => worldBounds(stateRef.current.width, stateRef.current.height);
     const clampCamera = (camera: CameraState): CameraState => clampPan(camera, viewport(), world());
     const zoneContext = createZoneBrushContext({ toolRef: zoneToolRef, radiusRef: zoneRadiusRef, refs, stateRef, dispatch, clampCamera });
+    const drain: DrainToolContext = { armedRef: drainArmedRef, disarmRef: drainDisarmRef, refs, stateRef, dispatch };
     const armed = (): ArmedTools => ({
       zone: zoneToolRef.current !== null,
       zonePolygon: zoneToolRef.current?.polygon === true || zoneContext.zone.gestureRef.current?.mode === "polygon",
       palisade: palisadeDraftRef.current !== null,
       road: selectedToolRef.current === "road",
-      tool: selectedToolRef.current !== null || zoneToolRef.current !== null || palisadeDraftRef.current !== null,
+      tool: selectedToolRef.current !== null || zoneToolRef.current !== null || palisadeDraftRef.current !== null || drainArmedRef.current,
       building: selectedToolRef.current !== null && selectedToolRef.current !== "road" && zoneToolRef.current === null && palisadeDraftRef.current === null,
     });
     const setPending = (tile: { readonly tx: number; readonly ty: number } | null) => { refs.pendingPlacement.current = tile; pendingRef.current?.(tile); };
     const disposeHandler = bus.subscribe(createCanvasIntentHandler({
-      canvas, refs, stateRef, selectedToolRef, palisadeDraftRef, zone: zoneContext, dispatch, setSelection, setHoveredBuilding, setPending,
+      canvas, refs, stateRef, selectedToolRef, palisadeDraftRef, zone: zoneContext, drain, dispatch, setSelection, setHoveredBuilding, setPending,
       onPalisadeDraftChange, clampCamera, viewport, world, markUserControlled: () => { userControlledCamera = true; },
     }), INTENT_ORDER.world);
     const translator = createMouseKeyboardTranslator({
@@ -121,7 +125,7 @@ export function useGameCanvasRuntime(input: GameCanvasRuntimeInput): void {
       warmWalkerLooksFor(stateRef.current, chapter); // SMOOTH-2R: the map's walker looks composed ahead (idle time)
       const work = proofFrameWork.current;
       const startedAt = work === null ? 0 : performance.now();
-      drawCurrentCanvasFrame({ canvas, context, refs, publishPrediction, zoneBrush: zoneBrushView(zoneContext), state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current, running: getSpeedRef.current() !== 0 });
+      drawCurrentCanvasFrame({ canvas, context, refs, publishPrediction, zoneBrush: zoneBrushView(zoneContext), drainPreview: drainToolPreview(drain), state: stateRef.current, selectedTool: selectedToolRef.current, overlayMode: overlayModeRef.current, problemOnly: problemOnlyRef.current, selection: selectionRef.current, previousRenderState: previousRenderStateRef.current, interpolationAlpha, highlightedHouseIds: highlightedHouseIdsRef.current, palisadeDraft: palisadeDraftRef.current, houseMaterialWave: houseMaterialWaveRef.current, palisadeCeremonyStartedAtMs: palisadeCeremonyStartedAtMsRef.current, running: getSpeedRef.current() !== 0 });
       const cursor = gamepad.cursor();
       if (cursor !== null && lastInputDevice() === "gamepad") drawMapCursor(context, cursor, refs.cameraRef.current, refs.pixelRatioRef.current);
       if (work !== null) work.recordFrame(performance.now() - startedAt);

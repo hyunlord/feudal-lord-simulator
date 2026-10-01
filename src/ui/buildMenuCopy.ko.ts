@@ -16,6 +16,8 @@ export const BUILD_MENU_COPY = {
   toolsLabel: (group: string) => `${group} 도구`,
   pathsHint: "드래그로 길을 연결하세요. 강 양쪽을 직선으로 이으면 목교를 놓습니다.",
   bridgeHint: "다리는 물 한 칸당 목재 4, 최대 8칸입니다. 다리나 접속 길을 누르면 다리 전체를 걷습니다.",
+  /** FD-1 (LAND-UI): the road card's cost — land free, a bridge's timber a water cell, a ford's a ford cell. */
+  roadCost: (bridgeTimber: number, fordTimber: number) => `육지 무료 · 다리 목재 ${bridgeTimber}/칸 · 여울 목재 ${fordTimber}/칸`,
   keepLocked: "성채는 석조 도시에서 건설할 수 있습니다.",
   radius: (radius: number) => `반경 ${radius}칸`,
   capacity: (capacity: number) => `수용 ${capacity}필지`,

@@ -40,6 +40,7 @@ export interface PlacementPrediction {
   readonly range: { readonly center: TileCoordinate; readonly radius: number } | null;
   /** UX-0b2 MARKET-1: a market's reach is road tiles within MARKET_ROAD_REACH steps, not a radius (`range` is null). */
   readonly reachTiles?: readonly TileCoordinate[];
-  readonly roadSegments: readonly { readonly tile: TileCoordinate; readonly kind: 'land' | 'bridge' }[];
+  /** FD-1: a road tile on a ford cell is a `ford` (a timber a cell, no bridge). */
+  readonly roadSegments: readonly { readonly tile: TileCoordinate; readonly kind: 'land' | 'bridge' | 'ford' }[];
   readonly placement: PlacementResult;
 }

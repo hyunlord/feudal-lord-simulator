@@ -5,7 +5,13 @@ export const PLACEMENT_FEEDBACK_COPY = {
   wrongTerrain: "물 위에는 지을 수 없습니다",
   outOfBounds: "영지 밖입니다",
   needsRoad: "길에 닿아야 합니다 — 먼저 길을 놓으세요",
-  needsForest: "숲 옆에 지어야 합니다",
+  /** Next to what the building needs (MA-10: the fulling mill's wheel running water — the river or brook —, the dyehouse any water). */
+  needsAdjacent: {
+    forest: "숲 옆에 지어야 합니다",
+    water: "물가 옆에 지어야 합니다",
+    flowing_water: "흐르는 물가 옆에 지어야 합니다 — 강이나 개울",
+    rock: "바위 옆에 지어야 합니다",
+  },
   resourcesShort: (shortfall: string) => `자원이 부족합니다 — ${shortfall}`,
   timberShort: (timberCost: number) => `목재가 부족합니다 (필요 ${timberCost})`,
   lockedEra: "목책마을 이후 건설할 수 있습니다",

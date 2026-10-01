@@ -51,6 +51,8 @@ export function drawCurrentCanvasFrame(input: Readonly<{
   palisadeDraft?: PalisadeDraftState | null;
   /** Armed zone brush with its gesture and pointer (C1b), or null. */
   zoneBrush?: import("./zoneBrushOverlay").ZoneBrushView | null;
+  /** LAND-UI (LU-D6): the armed drain tool's plan at the pointer, or null. */
+  drainPreview?: import("../ui/drainToolModel").DrainPreview | null;
   houseMaterialWave?: HouseMaterialWave | null;
   palisadeCeremonyStartedAtMs?: number | null;
   /** INSTALL-23b: false while the game is paused (the village life's clock holds). */
@@ -101,13 +103,20 @@ export function drawCurrentCanvasFrame(input: Readonly<{
     highlightedHouseIds: input.highlightedHouseIds,
     palisadeDraft: input.palisadeDraft ?? null,
     zoneBrush: input.zoneBrush ?? null,
+    drainPreview: input.drainPreview ?? null,
     houseMaterialWave: input.houseMaterialWave ?? null,
     palisadeCeremonyStartedAtMs: input.palisadeCeremonyStartedAtMs ?? null,
     completionTracker: input.refs.completionTracker,
   });
   probe?.enter("frame.publish");
   const zoneBrush = input.zoneBrush ?? null;
-  if (zoneBrush === null) input.publishPrediction?.(preview, input.refs.cameraRef.current);
+  const drain = input.drainPreview ?? null;
+  if (drain !== null) {
+    // LAND-UI: while the drain tool is armed the prediction panel shows its plan (cells, timber, seasons) or refusal;
+    // why the cast: the publisher only reads `lines` from the prediction, as for the zone brush below.
+    const { prediction: _placementPrediction, ...base } = preview;
+    input.publishPrediction?.({ ...base, cursor: drain.tile, prediction: { lines: drain.lines } as unknown as NonNullable<typeof preview.prediction> }, input.refs.cameraRef.current);
+  } else if (zoneBrush === null) input.publishPrediction?.(preview, input.refs.cameraRef.current);
   else {
     // While a zone tool is armed the prediction panel shows the paint lines at the pointer.
     const lines = zoneBrushPreview(input.state, zoneBrush).lines;

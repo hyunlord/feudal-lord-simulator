@@ -16,6 +16,7 @@ const ICON_PX = 20;
 const REASON_ICON: Readonly<Record<TileMarkReason, readonly [UiIconSheet, string]>> = {
   building: ["building", "hut"], road: ["building", "road"], water: ["cause", "water"], edge: ["prediction", "block"],
   wall: ["building", "palisade"], needs_road: ["building", "road"], needs_forest: ["resource", "timber"],
+  needs_water: ["cause", "water"], needs_flowing_water: ["cause", "water"], needs_rock: ["resource", "stone"],
   materials: ["resource", "timber"], zone: ["layer", "zone"], locked: ["lock", "locked"],
 };
 

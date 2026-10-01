@@ -13,7 +13,7 @@ import { buildingRoadAccessTiles } from '../engine/routing';
 import { buildingFootprintDistance } from '../geometry/buildingDistance';
 import { allocateBuildingAndConstructionLabour } from '../population/labour';
 import { allocateHouseServices, type HouseholdService } from '../population/serviceAllocation';
-import { BRIDGE_TIMBER_PER_TILE } from '../world/bridges';
+import { BRIDGE_TIMBER_PER_TILE, FORD_TIMBER_PER_TILE, isFordCell } from '../world/bridges';
 import { getTile, type TileCoordinate } from '../world/grid';
 import { canPlaceBuilding, constructionShortfalls, PlacementFailure, type PlacementResult } from '../world/placement';
 import { predictionStateKey } from './predictionCache';
@@ -104,13 +104,18 @@ export function roadPlacementPrediction(state: GameState, path: readonly TileCoo
     const placement: PlacementResult = reason === null ? { ok: true }
       : reason === PlacementFailure.insufficient_materials ? { ok: false, reason, shortfalls: constructionShortfalls(state, { timber: roadTimberCost(state, path) }) }
       : { ok: false, reason };
-    const roadSegments = assessment.newTiles.map(tile => ({ tile, kind: getTile(state, tile)?.terrain === 'water' ? 'bridge' as const : 'land' as const }));
+    // FD-1: water on a ford cell takes a ford (a timber a cell), other water a bridge.
+    const roadSegments = assessment.newTiles.map(tile => ({ tile, kind: getTile(state, tile)?.terrain !== 'water' ? 'land' as const
+      : isFordCell(state, tile) ? 'ford' as const : 'bridge' as const }));
     const bridges = roadSegments.filter(s => s.kind === 'bridge').length;
+    const fords = roadSegments.filter(s => s.kind === 'ford').length;
     const lines = assessment.newTiles.length === 0 && reason === null
       ? [{ id: 'placement', severity: 'info' as const, sources: [], text: ROAD_PLACEMENT_COPY.alreadyExists }]
       : failureLine(placement);
     return { placement, range: null, houseIds: [], roadSegments, lines: [...lines,
-      { id: 'road-cost', severity: 'info', sources: [], text: ROAD_PLACEMENT_COPY.previewCost(roadSegments.length - bridges,
-        bridges, assessment.existingTiles.length, BRIDGE_TIMBER_PER_TILE, roadTimberCost(state, path)) }] };
+      { id: 'road-cost', severity: 'info', sources: [], text: fords === 0 ? ROAD_PLACEMENT_COPY.previewCost(roadSegments.length - bridges,
+        bridges, assessment.existingTiles.length, BRIDGE_TIMBER_PER_TILE, roadTimberCost(state, path))
+        : ROAD_PLACEMENT_COPY.previewCostWithFords(roadSegments.length - bridges - fords, bridges, fords, assessment.existingTiles.length,
+          BRIDGE_TIMBER_PER_TILE, FORD_TIMBER_PER_TILE, roadTimberCost(state, path)) }] };
   });
 }
