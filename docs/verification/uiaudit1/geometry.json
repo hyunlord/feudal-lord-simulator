@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-UIAUDITR15-final-7ec9052",
- "commit": "7ec90521bdbf6219f02390033d580ababf306dfe",
+ "run": "render-UIAUDITR15-final3-543a9f4",
+ "commit": "543a9f4748a148b270f21267a289d34be2afa231",
  "dirty": false,
  "inputs": 1660,
- "inputHash": "eca78d586eefaf8d133cd79c43e2101819fe7c7de437e565d51a09106fe05c47",
- "measuredAt": "2026-10-01T10:07:41.147Z",
- "report": "docs/verification/uiaudit1/geometry/render-UIAUDITR15-final-7ec9052/geometry.json",
+ "inputHash": "872bce27d591b2e0a87d59b9f0d938cdad3d6ec4fff7735dd497e0d75f69bbec",
+ "measuredAt": "2026-10-01T12:04:32.037Z",
+ "report": "docs/verification/uiaudit1/geometry/render-UIAUDITR15-final3-543a9f4/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -27,7 +27,7 @@
  "rows": 101,
  "conditions": 1812,
  "measured": 1812,
- "failures": 30,
+ "failures": 20,
  "unopened": 0,
  "unreachable": [
   "hud.goal-help",
@@ -46,15 +46,15 @@
   "controls": 0,
   "content": 0,
   "hud": 0,
-  "ornament": 10
+  "ornament": 0
  },
  "unregisteredFramed": 0,
  "baseline": {
   "entries": 0,
-  "counted": 10,
+  "counted": 0,
   "excepted": 20,
   "exceptions": 1,
-  "added": 10,
+  "added": 0,
   "fixed": 0
  },
  "bySurface": {
@@ -304,11 +304,9 @@
    "byCheck": {}
   },
   "modal.season-ledger": {
-   "failures": 10,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "ornament": 10
-   }
+   "byCheck": {}
   },
   "modal.famine": {
    "failures": 0,
@@ -568,16 +566,6 @@
   "modal.history.factions|tablet-1180x820/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|tablet-1180x820/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|tablet-1180x820/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|tablet-1180x820/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.season-ledger|1024x768/long/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
-  "modal.season-ledger|1024x768/normal/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
-  "modal.season-ledger|1280x720/long/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
-  "modal.season-ledger|1280x720/normal/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
-  "modal.season-ledger|1280x800/long/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
-  "modal.season-ledger|1280x800/normal/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
-  "modal.season-ledger|1920x1080/long/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
-  "modal.season-ledger|1920x1080/normal/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
-  "modal.season-ledger|tablet-1180x820/long/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
-  "modal.season-ledger|tablet-1180x820/normal/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong"
+  "modal.history.factions|tablet-1180x820/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip"
  ]
 }
