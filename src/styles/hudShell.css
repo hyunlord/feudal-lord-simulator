@@ -172,6 +172,9 @@
   /* R15 (tablet, long copy): centred, it ends left of the steward's line (its small box at the edge) and the dock — at
      1180 px the long category names widened it under the line. */
   width: auto; max-width: min(760px, calc(100% - 2 * (var(--box-w-small) + var(--hud-edge) + var(--frame-gap)))); height: auto; transform: translateX(-50%);
+  /* LAND-UI (1024 px, long copy): grown upward it reached the right column's chip row (the stuck-goods chip painted over
+     its top); its top stays below that row and the cards scroll inside. Short at 1280 × 800, so nothing changes there. */
+  max-height: calc(100% - 8px - var(--hud-right-top) - 44px - var(--frame-gap)); overflow-y: auto;
 }
 .app-shell .build-drawer.court-console[data-open="true"] { display: block; }
 .app-shell .build-drawer .build-menu { height: auto; }
