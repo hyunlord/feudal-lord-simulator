@@ -1,0 +1,110 @@
+{
+ "hitchAudit_dgx_fen_x3_60s": {
+  "fen-this1": {
+   "stats": {
+    "frames": 3665,
+    "p95": 16.8,
+    "p99": 33.3,
+    "max": 66.6,
+    "over33": 65,
+    "over50": 1
+   },
+   "metrics": {
+    "scriptMsPerFrame": 4.288,
+    "taskMsPerFrame": 14.167
+   }
+  },
+  "fen-this2": {
+   "stats": {
+    "frames": 3658,
+    "p95": 16.8,
+    "p99": 33.3,
+    "max": 66.7,
+    "over33": 72,
+    "over50": 2
+   },
+   "metrics": {
+    "scriptMsPerFrame": 4.321,
+    "taskMsPerFrame": 14.182
+   }
+  },
+  "fen-trunk1": {
+   "stats": {
+    "frames": 3544,
+    "p95": 16.8,
+    "p99": 33.4,
+    "max": 466.6,
+    "over33": 99,
+    "over50": 6
+   },
+   "metrics": {
+    "scriptMsPerFrame": 5.343,
+    "taskMsPerFrame": 16.064
+   }
+  },
+  "fen-trunk2": {
+   "stats": {
+    "frames": 3597,
+    "p95": 16.8,
+    "p99": 33.3,
+    "max": 533.3,
+    "over33": 40,
+    "over50": 5
+   },
+   "metrics": {
+    "scriptMsPerFrame": 4.425,
+    "taskMsPerFrame": 14.52
+   }
+  }
+ },
+ "groundPassPerFrame_node_mockCanvas_ms": {
+  "trunk_0f7a45fa": {
+   "fen": [
+    0.073,
+    0.074,
+    0.072
+   ],
+   "riverside": [
+    0.072,
+    0.069,
+    0.071
+   ]
+  },
+  "landui_59e4d02c": {
+   "fen": [
+    0.204,
+    0.206,
+    0.205
+   ],
+   "riverside": [
+    0.074,
+    0.072,
+    0.075
+   ]
+  },
+  "readinessCached": {
+   "fen": [
+    0.087,
+    0.083,
+    0.083
+   ],
+   "riverside": [
+    0.075,
+    0.073,
+    0.074
+   ]
+  }
+ },
+ "proposalColdMs_tsx_dgx": {
+  "trunk_0f7a45fa": [
+   410.3,
+   354.7,
+   352.9
+  ],
+  "landui_59e4d02c": [
+   519.9,
+   379,
+   356.9
+  ]
+ }
+}
