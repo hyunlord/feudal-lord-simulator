@@ -38,6 +38,7 @@ import { checkKoreanStrings, formatKoreanResult } from './koreanStrings.mjs';
 import { checkSurfaceRegistry, formatSurfaceRegistryResult } from './surfaceRegistry.mjs';
 import { checkUiGeometry, formatOverrideCount, formatUiGeometryResult, logWarnOverride } from './uiGeometry.mjs';
 import { checkTrendLag, formatTrendLag, logTrendLag } from './trendLag.mjs';
+import { checkDecisionIds, formatDecisionIdResult } from './decisionIds.mjs';
 
 const CODE = /\.(ts|tsx|js|jsx|mjs|cjs)$/;
 const ESLINT_DIR = 'tools/eslint';
@@ -61,6 +62,8 @@ report('ledger', ledgerOk(ledger), formatLedgerResult(ledger));
 ensureEslint();   // koreanStrings parses with tools/eslint's TypeScript
 const korean = checkKoreanStrings({ head });
 report('korean', korean.added.length === 0, formatKoreanResult(korean));
+const decisionIds = checkDecisionIds({ head });
+report('decisions', decisionIds.duplicates.size === 0, formatDecisionIdResult(decisionIds));
 const surfaces = checkSurfaceRegistry({ head });
 report('surfaces', surfaces.missing.length === 0, formatSurfaceRegistryResult(surfaces));
 const geometry = checkUiGeometry({ base, head });

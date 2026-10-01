@@ -148,6 +148,7 @@
     - Astra 산출물은 도착하면 설치 여부와 관계없이 `assets-inbox/<wave>/`에 보관하고 `INBOX_LEDGER.csv`에 상태를 기록한다([구조·상태 뜻](docs/ASSET_INBOX.md)).
 18. **렌더 수정 금지의 예외**: 새 건물 종류를 추가할 때 렌더의 종류별 분기 세 곳(`buildingInspectorModel` 용도 문구, `buildingVisualState` 몸체, `historicalFacilityAssets` 그림 id)에 최소 줄을 넣는 것은 렌더 수정 금지의 예외다. 그 밖의 렌더는 건드리지 않고, 보고서에 "렌더 세션이 넘겨받을 것"으로 적는다.
 19. **병합 전 자동 검사**: 본선·main 푸시마다 pre-push 훅이 `npm run check:merge`를 푸시하는 범위(원격 머리..로컬 머리)에 돌린다(`FLS_PUSH_OK=1`일 때도). 하나라도 실패하면 푸시를 거부한다. 기존 위반은 목록으로 두고 새 것만 본다. [사용법](docs/REMOTE_RUNS.md#병합-전-자동-검사)
+    - **결정 ID는 하나뿐이다**(`scripts/checks/decisionIds.mjs`, 결정 RR8): `docs/decisions/README.md`에서 같은 ID가 두 행에 있으면 푸시를 거부한다. 다른 세션이 먼저 쓴 번호면 내 것에 새 번호를 준다.
     - **고정값 재기록은 결정 목록에 이유와 함께 한다.**
       - 대상: 가드레일 기준선 `seeds/baseline-*`, DGX 성능 기준선 `perf/baseline-dgx-*`, 저장 지문 `src/save/schemaFingerprint*.json`, C25 판 `c25-board*.json`, 장부 세계 기준 `fixtures/ledger/world-baseline-*`, `fixtures/determinism/`, `fixtures/saves/`, 테스트 파일 안의 16자 이상 해시 값.
       - 이 가운데 하나를 추가·변경·삭제한 브랜치는 같은 브랜치에서 `docs/decisions/README.md`(또는 `docs/DECISIONS.md`)에 그 파일 이름(또는 두 단계 이상의 상위 폴더)과 재기록 이유를 적은 줄을 더한다.
