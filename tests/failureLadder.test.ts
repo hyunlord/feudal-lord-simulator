@@ -18,6 +18,7 @@ import { advanceTick } from "../src/engine/tick";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../src/content/houseFoodConfig";
 import { seasonLedgerCardModel } from "../src/ui/seasonLedgerCard";
 import { lordHouse, lordRights, lordshipOf, lordTitle } from "../src/engine/lordshipState";
+import { lordRightsLost } from "../src/engine/estates";
 import { settleMoneyPeriod } from "../src/engine/moneyRules";
 import { advancePolitics, chapterGoals, initialPolitics, openPetitions, respondToPetition } from "../src/engine/politics";
 import { advanceSeasons } from "../src/engine/seasonPressure";
@@ -166,7 +167,7 @@ test("F5 (FL-7) a decline two years unbroken: the house withdraws, a new one car
   assert.equal(treasuryBalance(changed), cash - Math.floor(cash / 2));
   assert.equal(changed.politics!.merchantGauge, 30, "halfway back to 50");
   const lordship = lordshipOf(changed);
-  assert.deepEqual([lordship.decline, lordship.lostRights, lordship.titleDemoted], [null, [], false]);
+  assert.deepEqual([lordship.decline, lordRightsLost(changed), lordship.titleDemoted], [null, [], false]);
   assert.deepEqual(lordship.pastHouses.map(past => [past.order, past.name, past.until]), [[1, first.name, changed.tick]]);
   assert.ok(changed.houses.length === 24 && changed.buildings.length === almost.buildings.length, "the town stays");
   const recorded = advanceHistory(almost, changed).history!.records.filter(record => record.template.startsWith("house."));

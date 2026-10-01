@@ -1,7 +1,7 @@
 /**
  * FIX-6 ③ (decision FX6-4): the Korean readings of every person's name — each given name and surname the game gives
  * (`personNames.ts`, the steward's, the gentry's `GENTRY_NAMES_KO`), the kings' regnal names, and the bynames that tell
- * namesakes apart, read as a Korean epithet before the name ("나이 든 토머스 애덤슨"). The period English stays in the
+ * namesakes apart, read as a Korean epithet before the name ("큰 토머스 애덤슨"). The period English stays in the
  * state; screens show `personDisplayName`.
  */
 import { GENTRY_NAMES_KO } from "./gentryNames";
@@ -32,10 +32,11 @@ export const SURNAMES_KO: Readonly<Record<string, string>> = {
   ...GENTRY_NAMES_KO,
 };
 
-/** The namesakes' bynames as a Korean epithet before the name (the elder → 나이 든 존). */
+/** The namesakes' bynames as a Korean epithet before the name (the elder → 큰 존). QA010: the elder and the younger of a
+ * pair are 큰/작은 as senior and junior are — the pair's order, not an age ("젊은" for an 82-year-old read wrong). */
 export const EPITHETS_KO: Readonly<Record<string, string>> = {
   "senior": "큰", "junior": "작은", "the father": "아버지", "the son": "아들",
-  "the elder": "나이 든", "the younger": "젊은", "le Rous": "붉은 머리", "le Brun": "갈색 머리", "le Blund": "금발", "le Long": "키다리",
+  "the elder": "큰", "the younger": "작은", "le Rous": "붉은 머리", "le Brun": "갈색 머리", "le Blund": "금발", "le Long": "키다리",
   "le Petit": "꼬마", "le Wyte": "하얀", "le Neve": "조카", "le Gode": "착한",
   "the third": "셋째", "the fourth": "넷째", "the fifth": "다섯째", "the sixth": "여섯째", "the seventh": "일곱째", "the eighth": "여덟째",
   "the ninth": "아홉째", "the tenth": "열째",

@@ -8,6 +8,7 @@ import type { LordHouse, LordRightHolder, LordshipState } from "./lordship.types
 import { hashSeed } from "./prng";
 import { scenarioOf } from "./scenarioState";
 import { builtGatePointIds } from "./tollCrossings";
+import { lordPossesses, lordRightsLost } from "./estates";
 
 /** FL-7: the house's name, by seed and order (a new house never takes the name of the one before it). */
 export function lordHouseName(seed: number, order: number): string {
@@ -27,7 +28,7 @@ export function firstLordHouse(state: Pick<GameState, "seed">): LordHouse {
 
 /** The lordship, or the one a game opens with (the first house, every right held, no decline). */
 export function lordshipOf(state: Pick<GameState, "lordship" | "seed">): LordshipState {
-  return state.lordship ?? { house: firstLordHouse(state), pastHouses: [], lostRights: [], titleDemoted: false, decline: null };
+  return state.lordship ?? { house: firstLordHouse(state), pastHouses: [], titleDemoted: false, decline: null };
 }
 
 /** FL-7 API: the ruling house (name, arms seed, since). */
@@ -35,9 +36,10 @@ export function lordHouse(state: Pick<GameState, "lordship" | "seed">): LordHous
   return lordshipOf(state).house;
 }
 
-/** FL-1: the lord still collects the right's income (a right lost to the overlord or the merchants does not pay). */
-export function rightHeld(state: Pick<GameState, "lordship" | "seed">, id: LordRightId): boolean {
-  return !lordshipOf(state).lostRights.some(right => right.id === id);
+/** FL-1: the lord still collects the right's income (a right lost to the overlord or the merchants does not pay) —
+ * LM-E2 (ES-3): the lord possesses the home estate's piece (the title may stay the lord's without it). */
+export function rightHeld(state: Pick<GameState, "estates">, id: LordRightId): boolean {
+  return lordPossesses(state, id);
 }
 
 /** FL-1: the town has the right to collect: a market standing, a built gate, the mill monopoly with a mill. */
@@ -60,11 +62,11 @@ export interface LordRightView {
 
 /** FL-1 API: the lord's three rights and their standing. */
 export function lordRights(state: GameState): readonly LordRightView[] {
-  const lost = lordshipOf(state).lostRights;
+  const lost = lordRightsLost(state);
   return LORD_RIGHT_IDS.map(id => {
     const right = lost.find(entry => entry.id === id);
     return right === undefined ? { id, present: rightPresent(state, id), status: "held" as const }
-      : { id, present: rightPresent(state, id), status: right.status, by: right.by, since: right.since };
+      : { id, present: rightPresent(state, id), status: right.status, by: right.by as LordRightHolder, since: right.since };
   });
 }
 

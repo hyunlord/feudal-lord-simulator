@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-UIAUDIT-final4-ab9a062",
- "commit": "ab9a0629e0a1f876f126fa94fe51cea33b9d086c",
+ "run": "render-QA034b-geom-4d1d089",
+ "commit": "4d1d089d4488a9e47e3ed68a354bc6e841faa749",
  "dirty": false,
  "inputs": 1660,
- "inputHash": "d93ee9ff0ff0b943d5d8320edd9e0ce14426c1dc087598eeb7a4b8f5e1b26a6d",
- "measuredAt": "2026-10-01T03:42:44.398Z",
- "report": "docs/verification/uiaudit1/geometry/render-UIAUDIT-final4-ab9a062/geometry.json",
+ "inputHash": "df656de9fcf17c36ce86513f7745cc5e3b41303c3ee5ce5338820a20a0a36c96",
+ "measuredAt": "2026-10-01T07:55:15.345Z",
+ "report": "docs/verification/uiaudit1/geometry/render-QA034b-geom-4d1d089/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,16 +24,16 @@
  },
  "rows": 93,
  "conditions": 996,
- "measured": 996,
+ "measured": 994,
  "failures": 12,
- "unopened": 0,
+ "unopened": 2,
  "unreachable": [
   "hud.goal-help",
   "hud.unlock-banner",
   "hud.era-ceremony",
   "hud.build-details"
  ],
- "warnings": 344,
+ "warnings": 345,
  "byCheck": {
   "outside": 0,
   "overflow": 12,
@@ -370,7 +370,7 @@
   },
   "modal.chapter-loading": {
    "failures": 0,
-   "unopened": 0,
+   "unopened": 2,
    "byCheck": {}
   },
   "modal.person-card": {

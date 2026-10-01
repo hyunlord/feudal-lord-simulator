@@ -18,6 +18,8 @@ import { houseLotArea } from "../geometry/buildingFootprint";
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../content/houseFoodConfig";
 import type { DeclineState, LordshipState } from "./lordship.types";
+import { HOME_ESTATE_ID } from "../content/estateConfig";
+import { houseChanged, PIECE_OF_RIGHT, restorePossession, takePossession } from "./estates";
 import { lordHouseHeraldrySeed, lordHouseName, lordshipOf, rightHeld, rightPresent } from "./lordshipState";
 import { HEIR_CANDIDATE_TAG, ageOf, currentYear, manorLord } from "./persons";
 import { MANOR_HOUSEHOLD, type Person } from "./persons.types";
@@ -94,21 +96,19 @@ export function declineCause(state: GameState): DeclineState["cause"] | null {
   return townEmpty(state) ? "empty" : depopulated(state) ? "depopulated" : null;
 }
 
-/** FL-4: stage 3 begins — the first right held in the path's order is lost, and the title is demoted. */
-function enterDecline(state: GameState, lordship: LordshipState, cause: DeclineState["cause"]): LordshipState {
+/**
+ * FL-4: stage 3 begins — the first right held in the path's order is lost, and the title is demoted. LM-E2 (ES-3): the
+ * right's piece passes into the overlord's custody or the merchants' hands; the lord keeps its title.
+ */
+function enterDecline(state: GameState, lordship: LordshipState, cause: DeclineState["cause"]): GameState {
   // FL-13/FL-14: a town that cannot render its dues for want of people is taken in custody like one in arrears.
   const custody = cause !== "derelict";
   const by = custody ? "overlord" as const : "merchants" as const;
   const order = custody ? SUSPENSION_ORDER : SEIZURE_ORDER;
   const lost = order.find(id => rightPresent(state, id) && rightHeld(state, id)) ?? null;
   const { titleReturnsTick: _returns, ...rest } = lordship;
-  return {
-    ...rest,
-    lostRights: lost === null ? lordship.lostRights
-      : [...lordship.lostRights, { id: lost, status: cause === "arrears" ? "suspended" : "seized", by, since: state.tick }],
-    titleDemoted: true,
-    decline: { since: state.tick, cause, lost, by },
-  };
+  const next = lost === null ? state : takePossession(state, HOME_ESTATE_ID, PIECE_OF_RIGHT[lost], by, cause === "arrears" ? "suspended" : "seized");
+  return { ...next, lordship: { ...rest, titleDemoted: true, decline: { since: state.tick, cause, lost, by } } };
 }
 
 function openRestoration(state: GameState): PetitionRecord | undefined {
@@ -135,8 +135,13 @@ function changeHouse(state: GameState, lordship: LordshipState): GameState {
   return {
     ...next,
     ...(politics === undefined ? {} : { politics }),
-    lordship: { house, pastHouses: [...lordship.pastHouses, { ...lordship.house, until: state.tick }], lostRights: [], titleDemoted: false, decline: null },
+    lordship: { house, pastHouses: [...lordship.pastHouses, { ...lordship.house, until: state.tick }], titleDemoted: false, decline: null },
   };
+}
+
+/** FL-7 with LM-E2 (ES-6): the house changes, the rights it lost come back to the town's lord, its kin keeps a claim. */
+function changeHouseAndEstate(state: GameState, lordship: LordshipState): GameState {
+  return houseChanged(changeHouse(state, lordship), lordship.house.order);
 }
 
 /** One tick of FAIL-3 (a no-op except at season starts, and while a haggled title has not yet come back). */
@@ -148,10 +153,10 @@ export function advanceLordship(state: GameState): GameState {
   // its house and is resettled there and then (before the settlement's abandonment count can run out).
   if (state.tick % SAMPLE === 0 && (townEmpty(state) || (lordship.decline === null && depopulated(state)))) {
     if (lordship.decline === null) {
-      lordship = enterDecline(state, lordship, townEmpty(state) ? "empty" : "depopulated");
-      next = { ...next, lordship };
+      next = enterDecline(next, lordship, townEmpty(state) ? "empty" : "depopulated");
+      lordship = lordshipOf(next);
     }
-    return townEmpty(next) ? resettleTown(changeHouse(next, lordship)) : next;
+    return townEmpty(next) ? resettleTown(changeHouseAndEstate(next, lordship)) : next;
   }
   // FL-6: a haggled restoration gives the title back a year later.
   if (lordship.titleReturnsTick !== undefined && state.tick >= lordship.titleReturnsTick) {
@@ -161,7 +166,7 @@ export function advanceLordship(state: GameState): GameState {
   }
   if (state.tick % SEASON !== 0) return next;
   // F3-A (PL-2): the pestilence took the lord's whole family — a new house takes the town.
-  if (lordFamilyExtinct(next)) return changeHouse(next, lordship);
+  if (lordFamilyExtinct(next)) return changeHouseAndEstate(next, lordship);
   // FIX-11: wardship — yearly check for minor lord start/end.
   if (state.tick % YEAR === 0) {
     const year = currentYear(next);
@@ -178,10 +183,10 @@ export function advanceLordship(state: GameState): GameState {
   const decline = lordship.decline;
   if (decline === null) {
     const cause = declineCause(next);
-    return cause === null ? next : { ...next, lordship: enterDecline(next, lordship, cause) };
+    return cause === null ? next : enterDecline(next, lordship, cause);
   }
   // FL-7: two years unbroken.
-  if (state.tick - decline.since >= LORDSHIP_BALANCE.houseChangeTicks) return changeHouse(next, lordship);
+  if (state.tick - decline.since >= LORDSHIP_BALANCE.houseChangeTicks) return changeHouseAndEstate(next, lordship);
   // FL-6: the cause cleared — the holder offers the right back (the merchants when nothing was lost).
   if (declineCause(next) === null && state.tick >= (decline.petitionFrom ?? 0) && next.politics !== undefined && openRestoration(next) === undefined) {
     const petition: PetitionRecord = { id: `${RESTORE_RIGHT_PETITION_ID}@${state.tick}`, defId: RESTORE_RIGHT_PETITION_ID,
@@ -207,12 +212,13 @@ export function answerRestoration(state: GameState, petition: PetitionRecord, re
     sourceRefs: [{ type: "right", id: decline.lost ?? "title", detail: `petition:${petition.id}` }, { type: "actor", id: petition.petitioner }] }]);
   const restored: LordshipState = {
     ...lordship,
-    lostRights: lordship.lostRights.filter(right => right.id !== decline.lost),
     titleDemoted: response !== "accept",
     ...(response === "accept" ? {} : { titleReturnsTick: state.tick + LORDSHIP_BALANCE.titleReturnTicks }),
     decline: null,
   };
-  return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger, lordship: restored };
+  // LM-E2 (ES-3): the holder hands the piece back — the lord's title never left.
+  const back = decline.lost === null ? state : restorePossession(state, HOME_ESTATE_ID, PIECE_OF_RIGHT[decline.lost]);
+  return { ...back, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger, lordship: restored };
 }
 
 /**

@@ -15,6 +15,7 @@
  * - HL-10 (HIST-1): at each season's close, everyday records eight seasons old fold into one summary per season, and
  *   128² thumbnails that old are kept only at a year's end (winter's close). Everything else stays for good.
  */
+import { estatesOf } from "./estates";
 import { PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
 import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
 import { HISTORY_TEMPLATES } from "../content/historyCopy.ko";
@@ -59,7 +60,9 @@ export const ACTUAL_AFTER_TICKS = 2 * SEASON;
 export const DECISION_KINDS = ["build", "road", "zone", "house", "cancel", "operation", "wall_priority",
   "rebuild", "market_town", "stone_town", "famine_response", "petition_response", "wall_expand", "drainage",
   // LM-E1 (TA-6): the lord's conditions in lord mode.
-  "estate_policy", "project_subsidy", "market_dues"] as const;
+  "estate_policy", "project_subsidy", "market_dues",
+  // LM-E2 (ES-7): the lord's suit commands (the suit's own course is in the ledger as `estate.*` events).
+  "lawsuit"] as const;
 export type DecisionKind = (typeof DECISION_KINDS)[number];
 /** HL-3: the big five, one record each with alternatives, a prediction and (later) the actual. */
 export const BIG_DECISION_KINDS: readonly DecisionKind[] = ["market_town", "stone_town", "famine_response", "petition_response", "rebuild", "wall_expand", "drainage",
@@ -76,6 +79,7 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   drain_fen: "drainage", order_timber: "operation",
   // LM-E1 (TA-6): each condition the lord sets is a decision with a ledger id; the town's receipts point at it.
   set_estate_policy: "estate_policy", set_project_subsidy: "project_subsidy", set_market_dues: "market_dues",
+  file_suit: "lawsuit", add_suit_evidence: "lawsuit", seek_suit_patron: "lawsuit", enforce_possession: "lawsuit",
 };
 
 /** HL-2 ③: buildings whose first completion is a milestone. */
@@ -198,9 +202,12 @@ const BIG_KEYS: Readonly<Record<string, readonly string[]>> = {
 };
 
 /** HL-2 ①: records the player's (or the bot's) command, if it changed the state. Called by `gameReducer`. */
-export function recordDecision(before: GameState, after: GameState, command: { readonly type: string } & Readonly<Record<string, unknown>>): GameState {
+export function recordDecision(before: GameState, reduced: GameState, command: { readonly type: string } & Readonly<Record<string, unknown>>): GameState {
   const kind = DECISION_KIND_BY_COMMAND[command.type];
-  if (kind === undefined || after === before) return after;
+  if (kind === undefined || reduced === before) return reduced;
+  // LM-E2 (ES-7): a suit command's effect (a suit filed, evidence, a patron, an enforcement) is in the ledger as well.
+  const lines = kind === "lawsuit" ? estateDrafts(before, reduced) : [];
+  const after = lines.length === 0 ? reduced : { ...reduced, history: append(historyOf(reduced), lines) };
   // LM-E1b (TA-6 ②): a subsidy refused is no decision; the ledger keeps its reason as an event.
   const refusal = after.agency?.lastRefusal;
   if (command.type === "set_project_subsidy" && refusal !== undefined && refusal !== before.agency?.lastRefusal) {
@@ -742,6 +749,8 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   drafts.push(...personDrafts(before, after));
   // LM-E1 (TA-5): each project the town started this tick, with its receipt.
   drafts.push(...agencyDrafts(before, after));
+  // LM-E2 (ES-5…ES-7): the estates' claims, suits, titles and possessions that changed this tick.
+  drafts.push(...estateDrafts(before, after));
   // ARCH-1b (MA-11): a drainage works finished — its cells are meadow now.
   for (const work of finishedDrainage(before, after)) {
     const cell = work.cells[0]!;
@@ -838,6 +847,40 @@ export function chapterPageRecords(state: Pick<GameState, "history">, fromTick: 
     .filter(record => record.decision !== undefined)
     .sort((a, b) => (QUOTE_WEIGHT[String(a.params?.decisionKind)] ?? 9) - (QUOTE_WEIGHT[String(b.params?.decisionKind)] ?? 9) || a.tick - b.tick);
   return { events, decisions };
+}
+
+/**
+ * LM-E2 (ES-5…ES-7): what changed in the estates — a claim raised, a suit filed, a suit's stage, its judgment, an
+ * enforcement, a piece's title or possessor. FAIL-3's own losses (suspended, seized) are the lordship's lines already.
+ */
+function estateDrafts(before: GameState, after: GameState): Draft[] {
+  if (after.estates === before.estates || after.estates === undefined) return [];
+  const was = estatesOf(before);
+  const now = after.estates;
+  const drafts: Draft[] = [];
+  const line = (template: string, params: Record<string, string | number>) => drafts.push({ tick: after.tick, kind: "event", template, subject: TOWN, severity: 2, params });
+  for (const claim of now.claims) if (!was.claims.some(entry => entry.id === claim.id)) {
+    line("estate.claim_raised", { claim: claim.id, claimant: claim.claimant, estate: claim.estateId, piece: claim.pieceId ?? "", basis: claim.basis });
+  }
+  for (const suit of now.suits) {
+    const old = was.suits.find(entry => entry.id === suit.id);
+    if (old === undefined) { line("estate.suit_filed", { suit: suit.id, claim: suit.claimId, plaintiff: suit.plaintiff, defendant: suit.defendant, piece: suit.pieceId ?? "" }); continue; }
+    if (old.stage !== suit.stage && suit.verdict !== undefined && old.verdict === undefined) line("estate.suit_judged", { suit: suit.id, verdict: suit.verdict, piece: suit.pieceId ?? "" });
+    else if (old.stage !== suit.stage && suit.stage !== "closed") line("estate.suit_stage", { suit: suit.id, stage: suit.stage });
+    if (suit.enforcements > old.enforcements) line("estate.possession_enforced", { suit: suit.id, attempt: suit.enforcements, succeeded: suit.enforced === true ? 1 : 0, piece: suit.pieceId ?? "" });
+    if (suit.patron !== undefined && old.patron === undefined) line("estate.suit_patron", { suit: suit.id, patron: suit.patron, support: suit.patronSupport });
+  }
+  for (const estate of now.estates) {
+    const old = was.estates.find(entry => entry.id === estate.id);
+    for (const piece of estate.pieces) {
+      const prior = old?.pieces.find(entry => entry.id === piece.id);
+      if (prior === undefined) continue;
+      if (prior.titleHolder !== piece.titleHolder) line("estate.title_changed", { estate: estate.id, piece: piece.id, from: prior.titleHolder, to: piece.titleHolder });
+      const lordship = piece.loss === "suspended" || piece.loss === "seized" || prior.loss === "suspended" || prior.loss === "seized";
+      if (prior.possessor !== piece.possessor && !lordship) line("estate.possession_changed", { estate: estate.id, piece: piece.id, from: prior.possessor, to: piece.possessor });
+    }
+  }
+  return drafts;
 }
 
 /** LM-E1 (TA-5): a project the town started — `agency.project_started`, its receipt's who, what, where and top reasons. */

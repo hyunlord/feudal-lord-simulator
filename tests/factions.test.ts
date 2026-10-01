@@ -111,7 +111,7 @@ test("X4 (FX-4) the famine's answer, a decline and its end, a new lord's house a
     losses: { burntHouses: 0, departures: 0, harvestLost: 0 } }], burning: [] } };
   const relieved = { ...famine, events: { ...famine.events, records: [{ ...famine.events.records[0]!, response: { choice: "relief" as const, tick: base.tick } }] } };
   assert.deepEqual(factionChanges(famine, relieved), [{ factionId: "commons", delta: 15, reason: "famine:relief" }, { factionId: "bishop", delta: 10, reason: "famine:relief" }]);
-  const lordship = { house: { order: 1, name: "de Haverel", heraldrySeed: 1, since: 0 }, pastHouses: [], lostRights: [], titleDemoted: false, decline: null };
+  const lordship = { house: { order: 1, name: "de Haverel", heraldrySeed: 1, since: 0 }, pastHouses: [], titleDemoted: false, decline: null };
   const declined = { ...base, lordship: { ...lordship, titleDemoted: true, decline: { since: base.tick, cause: "arrears" as const, lost: "tolls" as const, by: "overlord" as const } } };
   assert.deepEqual(factionChanges({ ...base, lordship }, declined), [{ factionId: "overlord", delta: -20, reason: "decline:arrears" }]);
   assert.deepEqual(factionChanges(declined, { ...base, lordship }), [{ factionId: "overlord", delta: 10, reason: "restored" }]);

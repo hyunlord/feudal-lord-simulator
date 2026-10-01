@@ -197,6 +197,32 @@
       "palisadeSegments": 20,
       "completedPalisadeSegments": 20,
       "saveSerializeMs": 11.87
+    },
+    {
+      "id": "chapter-two-town",
+      "description": "a town at chapter 2's first tick: the guardrail's growth run of seed 1 (the bot and its answers); its path cache emptied",
+      "file": "chapter-two-town.save.json",
+      "bytes": 1858577,
+      "sha256": "0fd6c15bdc7b5557ac2b0644892e1bbdbde05fdb2102ea74bc56eeeea4cac0c2",
+      "tick": 77500,
+      "year": 1319,
+      "population": 528,
+      "era": "palisade",
+      "buildings": 56,
+      "houses": 24
+    },
+    {
+      "id": "chapter-three-town",
+      "description": "a town at chapter 3's first tick: the guardrail's growth run of seed 1 (the bot and its answers); its path cache emptied",
+      "file": "chapter-three-town.save.json",
+      "bytes": 2365085,
+      "sha256": "e259a5fc753727e4925329f9e2951cf41511b18b78b9b646ea48fbfd2331e0f5",
+      "tick": 160000,
+      "year": 1340,
+      "population": 753,
+      "era": "palisade",
+      "buildings": 72,
+      "houses": 24
     }
   ],
   "v0Fixtures": [

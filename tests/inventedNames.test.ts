@@ -46,7 +46,7 @@ test("N3 (save v22) a v21 town's real names become the invented ones at the same
   const faction = (id: string, name: string, leaderId: string | null) => ({ id, kind: "overlord", name, leaderId, heraldrySeed: 1, relation: 0, memory: [], timeline: [] });
   const v21 = {
     lordship: { house: { order: 2, name: "Neville", heraldrySeed: 2, since: 10 }, pastHouses: [{ order: 1, name: "Mortimer", heraldrySeed: 1, since: 0, until: 10 }],
-      lostRights: [], titleDemoted: false, decline: null },
+      titleDemoted: false, decline: null },
     factions: { nextOrdinal: 4, people: [person("f-000001", "faction:overlord", "Beauchamp"), person("f-000002", "faction:neighbour_1", "Basset"), person("f-000003", "faction:bishop", "de Stratford")],
       factions: [faction("overlord", "Warwick", "f-000001"), faction("neighbour_1", "Basset", "f-000002"), faction("bishop", "Winchester", "f-000003"), faction("merchant_house_1", "Chapman", null)] },
     history: { records: [

@@ -449,3 +449,11 @@ export function advancePolitics(state: GameState): GameState {
   }
   return next === state ? state : next;
 }
+
+/** QA032 API: the chapter's page was seen (its end keeps the tick; the same answer again changes nothing). */
+export function markChapterPageSeen(state: GameState, chapter: number): GameState {
+  const politics = state.politics;
+  const end = politics?.chapterEnds.find(entry => entry.chapter === chapter);
+  if (politics === undefined || end === undefined || end.seenTick !== undefined) return state;
+  return { ...state, politics: { ...politics, chapterEnds: politics.chapterEnds.map(entry => entry === end ? { ...entry, seenTick: state.tick } : entry) } };
+}

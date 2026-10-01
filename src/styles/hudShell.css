@@ -257,7 +257,9 @@
 .season-ledger-scenes-line { margin: 0 0 3px; font-size: 12px; font-weight: 600; }
 /* INSTALL-3: the actions row is pinned at the body's foot (계속 never below the fold); the lines scroll only when the card
    meets the view's height. */
-.season-ledger-body { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
+/* QA-034 (the same as the petition): the body paints above its frame layer, an absolutely placed earlier sibling whose
+   9-slice fills the parchment centre; in flow it was under it and the season close showed only its scenes and toggle. */
+.season-ledger-body { position: relative; display: flex; flex-direction: column; gap: 4px; min-height: 0; }
 .season-ledger-content { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 .season-ledger-body h2 { margin: 0 0 4px; font-size: 16px; }
 .season-ledger-line { margin: 0 0 2px; }
@@ -397,7 +399,9 @@
 /* UI-8: a card with two answers (chapter 3's, PetitionDef.responses) is one answer shorter. */
 .petition-card[data-answers="2"] { min-height: 540px; }
 .petition-frame { position: absolute; inset: 0; box-sizing: border-box; }
-.petition-body { display: grid; align-content: start; gap: 4px; min-height: 0; overflow-y: auto; }
+/* QA-034: the body is positioned so it paints above the frame layer (an absolutely placed earlier sibling whose 9-slice
+   fills the parchment centre); in flow it was painted under it and the card showed only its frame. */
+.petition-body { position: relative; display: grid; align-content: start; gap: 4px; min-height: 0; overflow-y: auto; }
 .petition-who { display: flex; gap: 6px; align-items: center; font-weight: 600; }
 .petition-options { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .petition-option { display: grid; grid-template-columns: 48px 1fr; gap: 2px 10px; width: 100%; min-height: 64px; padding: 6px; text-align: left; font-size: 13px; }
