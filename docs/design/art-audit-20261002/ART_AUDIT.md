@@ -1,5 +1,7 @@
 # ART_AUDIT — 설치 미술 일관성 전수 감사
 
+> 원본: Astra ART_AUDIT.md(sha256 22f3673bbbd7c1c524f039cd61e7fdd101191d842f31dbe7b7acfc75f10d2d5c), 링크 경로만 저장소에 맞게 고침(ART_BIBLE_v2.md → ../art-bible.md).
+
 2026-10-02 · 검토만 · 그림 생성/설치/삭제·게임 코드 수정 없음
 
 ## 결과와 우선순위
@@ -512,7 +514,7 @@ rock.png은 화면을 채우는 큰 돌 단면, 매우 깊은 검은 틈, 균일
 
 ## 색 견본과 고증 기준의 해석
 
-[ART_BIBLE_v2.md](ART_BIBLE_v2.md)의5개 색은 승인 계열 설치 그림의 선택1픽셀 RGB다. 좌표·소스는 `palette.csv`. 이미지 전체 평균이 아니며 젖음/그늘/노후를 같은 재료의 오류로 오인하지 않는다. 초가#C78D45, 평기와#B86E44, 석회칠#F7E8CD, oak#825C3D, 잡석#93806D. 다음 제작의 비교 시작점이며 역사적 재료의 물리 표준색이라는 뜻이 아니다.
+[ART_BIBLE_v2.md](../art-bible.md)의5개 색은 승인 계열 설치 그림의 선택1픽셀 RGB다. 좌표·소스는 `palette.csv`. 이미지 전체 평균이 아니며 젖음/그늘/노후를 같은 재료의 오류로 오인하지 않는다. 초가#C78D45, 평기와#B86E44, 석회칠#F7E8CD, oak#825C3D, 잡석#93806D. 다음 제작의 비교 시작점이며 역사적 재료의 물리 표준색이라는 뜻이 아니다.
 
 약1290년 Old Soar Manor의 벽난로와 유리창, 후기14세기 madder 염색 실크가 확인된다. 따라서 굴뚝·유리·빨강 옷 자체를 시대 오류로 기록하지 않았다. 프로젝트의 일반 주택·재료·옷채도 금지는 별도 미술 규약으로 유지한다. [English Heritage](https://www.english-heritage.org.uk/visit/places/old-soar-manor/history/), [London Museum](https://www.londonmuseum.org.uk/collections/v/object-731999/fragment/)
 
