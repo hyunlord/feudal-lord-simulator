@@ -4,9 +4,11 @@ import test from "node:test";
 import type { Building, BuildingKind } from "../src/content/buildingConfig";
 import { DEFAULT_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
 import { COASTAL_ARCHETYPE_ID, DOWNS_ARCHETYPE_ID, FEN_ARCHETYPE_ID, RIVERSIDE_ARCHETYPE_ID, WOODLAND_ARCHETYPE_ID } from "../src/content/scenario/archetypes";
+import type { DrainageWork } from "../src/engine/drainage";
 import type { GameState } from "../src/engine/engine.types";
 import { drawWaterMotion, liveReeds, waterChunkToken, waterMapFor } from "../src/render/drawWaterMotion";
 import type { GroundChunkPlan } from "../src/render/groundBoundaryScene";
+import { landWorksWaterCells } from "../src/render/landWorksDraw";
 import { setWaterArtForTest } from "../src/render/waterMotionArt";
 import { RACE_MIRROR, landWaterEffects, landWaterPlan, waterMotionPlan } from "../src/render/waterMotionModel";
 import { KIND, analyseWater, chunkWater } from "../src/render/waterMotionPlacement";
@@ -201,7 +203,9 @@ function drawState(state: GameState): { readonly ops: readonly string[]; readonl
     const shore = shoreline({ width: state.width, height: state.height, tiles: state.tiles, seed: state.seed, bridges: [] });
     const loops = shore.loops.map((_, index) => index);
     const chunks = Array.from({ length: 64 }, (_, at) => ({ cx: at % 8, cy: Math.floor(at / 8), waterLoops: loops, waterParity: false }) as unknown as GroundChunkPlan);
-    const { canvas, context } = recordingCanvas(4_000, 4_000);
+    // The whole 64 x 64 map in view (screen x -2,016..2,016, y 0..2,048).
+    const { canvas, context } = recordingCanvas(4_400, 2_200);
+    context.translate(2_200, 50);
     drawWaterMotion(context, { state, shore, chunks, range: { minTx: 0, minTy: 0, maxTx: 63, maxTy: 63 }, zoom: 1, chunkZoom: 1, nowMs: 1_234, weather: "normal", season: 1 });
     return { ops: canvas.ops, asked };
   } finally {
@@ -233,4 +237,44 @@ test("Given the drawn water When a land and a fulling mill are on screen Then th
     const mirror = RACE_MIRROR[direction];
     assert.ok(drawn.ops.includes(`pattern.setTransform(${0.5 * mirror.x},0,0,${0.5 * mirror.y},0,0)`), direction);
   }
+});
+
+test("Given land works on the water When the motion is laid Then no flow, ripple, glint, fish ring or live reed is on their cells (road fords, stage-3 drainage)", () => {
+  // Given: a fen work over the still water round a reed clump, at stage 1 and at stage 3 (LU-D5: done >= 2/3).
+  const fen = land(FEN_ARCHETYPE_ID);
+  const shore = shoreline({ width: fen.width, height: fen.height, tiles: fen.tiles, seed: fen.seed, bridges: [] });
+  const river = new Set(fen.river?.cells ?? []);
+  const still = (index: number) => fen.tiles[index]?.terrain === "water" && !river.has(index);
+  const clump = shore.loops.flatMap(loop => loop.decals).find(decal => decal.kind === "weed" && still(Math.round(decal.anchor.y) * 64 + Math.round(decal.anchor.x)));
+  assert.ok(clump !== undefined);
+  const centre = { tx: Math.round(clump.anchor.x), ty: Math.round(clump.anchor.y) };
+  const cells = [-1, 0, 1].flatMap(dy => [-1, 0, 1].map(dx => (centre.ty + dy) * 64 + centre.tx + dx)).filter(still);
+  const work = (done: number): DrainageWork => ({ id: "drainage-test", cells, startedTick: 0, timber: cells.length * 5, workNeeded: cells.length * 320, workDone: done * cells.length * 320 });
+  const staked = { ...fen, drainage: { works: [work(0.1)], drained: [] } };
+  const drying = { ...fen, drainage: { works: [work(0.9)], drained: [] } };
+  const listed = (state: GameState) => {
+    const entry = waterMapFor(state); const found = new Set<number>();
+    for (let cy = 0; cy < 8; cy += 1) for (let cx = 0; cx < 8; cx += 1) {
+      const chunk = chunkWater(entry.map, state.tiles, state.seed, cx, cy, entry.race, entry.masked);
+      for (const tile of [...chunk.deep, ...chunk.shallow, ...Object.values(chunk.flow).flat()]) found.add(tile.ty * 64 + tile.tx);
+      for (const spot of [...chunk.glints, ...chunk.fish]) found.add(Math.round((spot.y / 16 + spot.x / 32) / 2) + Math.round((spot.y / 16 - spot.x / 32) / 2) * 64);
+    }
+    return found;
+  };
+
+  // Then: stage 1 leaves the water moving; stage 3 masks every cell of the work.
+  assert.equal(landWorksWaterCells(staked).size, 0);
+  assert.deepEqual([...landWorksWaterCells(drying)].sort((a, b) => a - b), [...cells].sort((a, b) => a - b));
+  assert.ok(cells.some(index => listed(staked).has(index)), "the stage-1 water is in the motion lists");
+  const masked = listed(drying);
+  assert.ok(cells.every(index => !masked.has(index)), "no stage-3 cell in any list");
+  // The live reeds: the clump on the work draws at stage 1, not at stage 3.
+  const reeds = (state: GameState) => drawState(state).ops.filter(op => op.startsWith("drawImage(reeds_sway")).length;
+  assert.ok(reeds(drying) < reeds(staked), `${reeds(drying)} reeds at stage 3, ${reeds(staked)} at stage 1`);
+  // A road ford: its group's cells are masked too (and carry no flow already, FD-1).
+  const coast = land(COASTAL_ARCHETYPE_ID);
+  const roads = new Set(coast.river?.fords ?? []);
+  const forded = { ...coast, tiles: coast.tiles.map((tile, index) => roads.has(index) ? { ...tile, hasRoad: true } : tile) };
+  const fordMask = waterMapFor(forded).masked;
+  assert.ok(fordMask.size > 0 && [...fordMask].every(index => !listed(forded).has(index)));
 });

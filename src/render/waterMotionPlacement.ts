@@ -22,7 +22,8 @@ import { mix } from "./weatherPlacement";
 //    LAND-UI: with the engine's river (`state.river`) the channel and its flow are the river's instead
 //    (waterRiverFlow.ts, passed as `options.river`): its cells are river, every other water is deep or shallow as above.
 //    Ford roads (`options.fordRoads`) and the land beside them keep their class (so no neighbour's changes) but lose
-//    their flow: the ford art covers them. The mill race cells (`chunkWater`'s `race`) leave the flow lists for the race's.
+//    their flow: the ford art covers them. The mill race cells (`chunkWater`'s `race`) leave the flow lists for the race's,
+//    and the land works' water cells (`masked`: road fords, stage-3 drainage) leave every list (no motion over them).
 //  - Glints and fish rings: sparse seeded picks of deep tiles (GLINT_PICK, FISH_PICK), jittered inside the tile.
 //  - The foam and ice bands along the shore: waterShoreBand.ts.
 export const KIND = { none: 0, deep: 1, shallow: 2, river: 3 } as const;
@@ -194,14 +195,15 @@ export function analyseWater(tiles: readonly Tile[], width: number, height: numb
 }
 
 /** The tiles of chunk (cx, cy) by class, and its glint / fish spots (world px). */
-export function chunkWater(map: WaterMap, tiles: readonly Tile[], seed: number, cx: number, cy: number, race?: ReadonlyMap<number, FlowDirection>): ChunkWater {
+export function chunkWater(map: WaterMap, tiles: readonly Tile[], seed: number, cx: number, cy: number, race?: ReadonlyMap<number, FlowDirection>,
+  masked?: ReadonlySet<number>): ChunkWater {
   const deep: Tile[] = []; const shallow: Tile[] = []; const flow: Record<FlowDirection, Tile[]> = { ne: [], nw: [], se: [], sw: [] };
   const races: Record<FlowDirection, Tile[]> = { ne: [], nw: [], se: [], sw: [] };
   const glints: WaterSpot[] = []; const fish: WaterSpot[] = [];
   for (let ty = cy * GROUND_CHUNK_TILES; ty < Math.min(map.height, (cy + 1) * GROUND_CHUNK_TILES); ty += 1) {
     for (let tx = cx * GROUND_CHUNK_TILES; tx < Math.min(map.width, (cx + 1) * GROUND_CHUNK_TILES); tx += 1) {
       const index = ty * map.width + tx; const tile = tiles[index];
-      if (tile === undefined) continue;
+      if (tile === undefined || masked?.has(index) === true) continue;
       const kind = map.kind[index]; const raced = race?.get(index);
       if (raced !== undefined) races[raced].push(tile);
       else if (kind === KIND.shallow) shallow.push(tile);
