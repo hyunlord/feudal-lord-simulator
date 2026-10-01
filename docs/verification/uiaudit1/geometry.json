@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "engine-LME2-uigeom-4030083",
- "commit": "4030083dea9be23b5a583e8bcdecf4bceaed2460",
+ "run": "engine-QA14-uigeom-9cf1e1d",
+ "commit": "9cf1e1d73413f82d6002d7f1ecf646e9f0cd5118",
  "dirty": false,
  "inputs": 1660,
- "inputHash": "802b5b80947c0460755d22e6addc8e310f43bcc91c1358bc485bd8801a4e5077",
- "measuredAt": "2026-10-01T04:37:42.598Z",
- "report": "docs/verification/uiaudit1/geometry/engine-LME2-uigeom-4030083/geometry.json",
+ "inputHash": "ae440899ff3f75a7af8e954a37542fdc733bba320711fdd462e279cdd740fa5a",
+ "measuredAt": "2026-10-01T05:18:42.741Z",
+ "report": "docs/verification/uiaudit1/geometry/engine-QA14-uigeom-9cf1e1d/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -33,7 +33,7 @@
   "hud.era-ceremony",
   "hud.build-details"
  ],
- "warnings": 344,
+ "warnings": 347,
  "byCheck": {
   "outside": 0,
   "overflow": 12,
