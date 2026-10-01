@@ -119,7 +119,7 @@ export function factionPageView(state: GameState, id: FactionId): FactionPageVie
       const date = right === undefined ? "" : chronicleDate(state, right.grantedTick);
       return { key, date, line: promise.kind === "right" ? COPY.promiseRight(date) : promise.kind === "loan" ? COPY.promiseLoan(promise.count) : COPY.promiseInstalment(promise.count) };
     }),
-    memory: [...chronicle.records].reverse().map(record => ({ recordId: record.id, tick: record.tick, date: chronicleDate(state, record.tick), line: history.summary(record) })),
+    memory: [...chronicle.records].reverse().map(record => ({ recordId: record.id, tick: record.tick, date: chronicleDate(state, record.tick), line: history.summary(record, state) })),
     timeline: [...chronicle.timeline].reverse().map((entry, index) => ({ key: `${entry.tick}:${entry.kind}:${entry.id}:${index}`, date: COPY.timelineYear(entry.year),
       line: timelineLine(state, faction.id, entry) })).filter(entry => entry.line !== ""),
     revoltPressure,

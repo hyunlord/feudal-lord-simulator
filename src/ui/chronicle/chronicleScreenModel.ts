@@ -583,6 +583,6 @@ export function biographyView(state: GameState, personId: string): BiographyView
     events: biography.events.map((event, index) => ({ id: event.id, date: CHRONICLE_SCREEN_COPY.date(event.date.year, event.date.season), sentence: event.summary,
       last: index === biography.events.length - 1 && end !== null })),
     relations, survivors: !person.alive || person.leftYear !== undefined, offices,
-    records: shared.map(record => ({ id: record.id, tick: record.tick, date: chronicleDate(state, record.tick), sentence: history.summary(record) })),
+    records: shared.map(record => ({ id: record.id, tick: record.tick, date: chronicleDate(state, record.tick), sentence: history.summary(record, state) })),
   };
 }
