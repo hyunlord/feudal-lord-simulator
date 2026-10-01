@@ -30,6 +30,8 @@ import { getSprite } from "./worldAssets";
 import { preloadSeasonArt, seasonArtStatuses, seasonOf, type SeasonIndex } from "./seasonArt";
 import { drawSeasonGrass, seasonChunkToken } from "./seasonGround";
 import { seasonFadeMs } from "./seasonTransition";
+import { landGroundOf } from "./archetypeGroundModel";
+import { drawLandDecals, drawLandEdges, drawLandFills, hasLandFill, landChunkToken, landShoreStrips } from "./archetypeGroundDraw";
 
 // RENDER_BOUNDARY_V2 ground pass. Order: water (live) -> ground chunks (diamonds, seams, forest outline + fringe,
 // zone fills, building yards, field clusters, zone lines, building aprons) -> town landscape (live) -> road-ribbon
@@ -42,6 +44,10 @@ import { seasonFadeMs } from "./seasonTransition";
 // D3a: water moved into the ground chunks. Water cells are laid as grass, then the curved water body (the old water
 // surface), a shallow band, shallow stones / weed and the shore strips are drawn from the shoreline loops right after
 // the forest; bridge abutments follow the live bridge decks. The old per-tile shore seams are off in V2.
+// LAND-UI: a land other than the riverside town lays its Wave 22 ground (archetypeGroundDraw.ts) — fills over the grass
+// diamonds, transition strips after the seams, its shore / reed strips in place of the old shore strip, decals and
+// props after the shore; its chunk content key adds the land, its layer's chunk hash and its art readiness. The
+// riverside (no land layer) adds nothing: its keys and pictures are unchanged (LU-D2).
 
 export type TerrainV2Input = {
   readonly state: GameState;
@@ -130,8 +136,10 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const season = seasonOf(input.state);
   const seasonToken = seasonChunkToken(season);
   const fade = { token: `s${season}`, ms: seasonFadeMs() };
+  const land = landGroundOf(input.state);
+  const landToken = (plan: GroundChunkPlan, at: SeasonIndex): string => (land === null ? "" : landChunkToken(land, plan, scene.shore, at));
   const groundRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
-    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
+    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}${landToken(plan, season)}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
     // Same ground base = the chunk only changed its zones: its old raster may stand in until the frame budget allows.
     deferKey: `${plan.groundBaseKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, fade,
   });
@@ -153,7 +161,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
     const nextToken = seasonChunkToken(next);
     const nextFade = { token: `s${next}`, ms: fade.ms };
     scheduleStaging(context, cache, visible.flatMap(plan => [
-      { request: { ...groundRequest(plan), contentKey: `${plan.groundKey}|${groundReadiness(plan)}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
+      { request: { ...groundRequest(plan), contentKey: `${plan.groundKey}|${groundReadiness(plan)}${landToken(plan, next)}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
         paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts, next) },
       ...(plan.hasRoads ? [{ request: { ...roadRequest(plan), contentKey: `${plan.roadKey}|${readiness}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
         paint: (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan, next) }] : []),
@@ -185,23 +193,28 @@ function drawGroundChunk(
   season: SeasonIndex,
 ): void {
   const tiles = chunkTiles(input.state, plan, 1);
+  const land = landGroundOf(input.state);
   for (const tile of tiles) {
     // Forest and water tiles are laid as grass; the smoothed forest outline and shoreline below paint over them.
     parts.drawGroundDiamond(context, tile.terrain === "forest" || tile.terrain === "water" ? { ...tile, terrain: "grass" } : tile, input.state.seed, input.terrainPatterns);
   }
   if (season !== 1) drawSeasonGrass(context, tiles, season);
-  for (const tile of tiles) {
-    if (tile.terrain === "water") continue;
-    if (zoom > 0.7) drawGroundDecalDetail(context, tile, input.state.seed);
-    drawTerrainTransitions(context, input.state, tile, zoom, input.terrainPatterns, false, false);
-  }
   const bounds = chunkTileBounds(plan.cx, plan.cy);
   const diamond = chunkDiamond(plan);
   const box = { left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4 };
+  // The land fills carry their own seasons: over the season grass, which (and the code-drawn tufts) shows on the meadow.
+  if (land !== null) drawLandFills(context, land, plan, tiles, box, season);
+  for (const tile of tiles) {
+    if (tile.terrain === "water") continue;
+    if (zoom > 0.7 && (land === null || !hasLandFill(land, tile))) drawGroundDecalDetail(context, tile, input.state.seed);
+    drawTerrainTransitions(context, input.state, tile, zoom, input.terrainPatterns, false, false);
+  }
+  if (land !== null) drawLandEdges(context, land, plan);
   drawForestFill(context, scene.forest, plan.forestLoops, plan.forestParity, box, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
   drawForestFringeDecals(context, scene.forest, plan.forestLoops, season);
-  drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, box, bounds, input.state.seed, liveReeds(zoom));
+  drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, box, bounds, input.state.seed, liveReeds(zoom), land === null ? undefined : landShoreStrips(context, land, scene.shore, plan.waterLoops, bounds));
   if (iceRimDrawn(season)) drawIceRim(context, scene.shore, plan.waterLoops, box); // INSTALL-29: winter, static: baked with the strips
+  if (land !== null) drawLandDecals(context, land, input.state.tiles, plan);
   if (plan.zoneIndexes.length > 0) {
     // A plot's tone stops at a yard: the yard is its own trodden ground.
     context.save();
