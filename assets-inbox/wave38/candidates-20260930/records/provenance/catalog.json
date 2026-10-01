@@ -1,0 +1,1852 @@
+[
+  {
+    "id": "button_primary_normal",
+    "file": "assets/button_primary_normal.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_primary",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Create ONE blank rectangular medieval strategy game UI primary button NORMAL state. The two reference images define restrained warm parchment and oak craft, not their layouts. Orthographic flat frontal game sprite, 3.2:1 aspect ratio. Center object on transparent canvas, tightly framed. Target 128x40 pixels after reduction. Dark oak narrow beveled rim, tiny restrained brass corner pins in all four corners, parchment #e8d8b1 center. Entire text center is absolutely FLAT SINGLE COLOR, no grain, no mottling, no symbols. Border details restricted to outer 10px at final scale, blank center x14..113 y12..27 must accommodate 16px label later. Real slightly raised handmade timber edge, sharp clean corners softly clipped, subtle warm upper edge light. No text, no letters, no icons, no watermark, no multiple buttons, no cast shadow outside object. Keep width-height ratio exactly 3.2:1 and perimeter simple for 9slice. Transparent exterior including corner pixels. Render high resolution for downsampling.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-fcd20d28-8f4e-4dcb-9905-006ffdadf4a3.png",
+    "source_sha256": "71c320e7e2252baac671eee78807cb19c6eb8d8086821942a7b73a49ed8b53ef",
+    "processing": {
+      "crop": {
+        "left": 74,
+        "top": 210,
+        "width": 1835,
+        "height": 340
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        227,
+        206,
+        163
+      ]
+    },
+    "lane": "buttons_a",
+    "sha256": "102280245adce3ca6ae27fa80620d2e422307325f69baf30dcaf2e7931dbfdd2"
+  },
+  {
+    "id": "button_secondary_normal",
+    "file": "assets/button_secondary_normal.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_secondary",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Create ONE blank rectangular medieval strategy game UI secondary button NORMAL state. The two reference images define restrained warm parchment and oak craft, not their layouts. Orthographic flat frontal game sprite, 3.2:1 aspect ratio. Center object on transparent canvas, tightly framed. Target 128x40 pixels after reduction. Thin warm oak narrow beveled rim, lighter parchment #f1e4c6 center, no metal ornaments. Entire text center is absolutely FLAT SINGLE COLOR, no grain, no mottling, no symbols. Border details restricted to outer 10px at final scale, blank center x14..113 y12..27 must accommodate 16px label later. Real slightly raised handmade timber edge, sharp clean corners softly clipped, subtle warm upper edge light. No text, no letters, no icons, no watermark, no multiple buttons, no cast shadow outside object. Keep width-height ratio exactly 3.2:1 and perimeter simple for 9slice. Transparent exterior including corner pixels. Render high resolution for downsampling.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-65383056-af4d-4c51-bd60-db27d5689710.png",
+    "source_sha256": "baf21fb5f9b7e6c45917dac19e1a0502177bf0e08d077a47e9f28de8825d5177",
+    "processing": {
+      "crop": {
+        "left": 49,
+        "top": 206,
+        "width": 1885,
+        "height": 379
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        236,
+        218,
+        179
+      ]
+    },
+    "lane": "buttons_a",
+    "sha256": "dd47f5b24d43cc3e4b4529d0a76e45eec8e2d6844f628d16daec3d7895d35c42"
+  },
+  {
+    "id": "button_primary_hover",
+    "file": "assets/button_primary_hover.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_primary",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval primary button into its HOVER UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Brighten upper rim highlight, add subtle warm brass glint and slightly lighter parchment flat fill; clearly highlighted but tasteful. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-1faecde9-8e42-422b-a837-f79b4b97fd73.png",
+    "source_sha256": "de71c104772c78b4520d27e79a5780b849f0aeee99ec6d514ac959b49e1b4b33",
+    "processing": {
+      "crop": {
+        "left": 71,
+        "top": 207,
+        "width": 1841,
+        "height": 345
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        245,
+        227,
+        189
+      ]
+    },
+    "lane": "buttons_a",
+    "sha256": "56c523665ef7fac3038d0bb03c874ab187933bcdb0a3161b797f3c99023c5e01"
+  },
+  {
+    "id": "button_primary_pressed",
+    "file": "assets/button_primary_pressed.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_primary",
+    "state": "pressed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval primary button into its PRESSED UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Make the face visibly inset/depressed 1 to 2 target pixels: darker inner top edge, inverted bevel lighting, subdued lower edge highlight; flat center slightly darker, border remains same silhouette. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-3e569435-5519-456b-b3c4-d877434d2c16.png",
+    "source_sha256": "0e21f5f75c363f4da62b9dec261ec3bddd6795f1898bb3753801a2a64856c659",
+    "processing": {
+      "crop": {
+        "left": 72,
+        "top": 208,
+        "width": 1840,
+        "height": 344
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        186,
+        164,
+        125
+      ]
+    },
+    "lane": "buttons_a",
+    "sha256": "5a55247be59bbdd3328a138cec819c3be225642a93c9bdad39bee8b707cd8cc8"
+  },
+  {
+    "id": "button_primary_disabled",
+    "file": "assets/button_primary_disabled.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_primary",
+    "state": "disabled",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval primary button into its DISABLED UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Use muted desaturated gray-brown timber and low contrast dull corners, opaque warm gray parchment face. Clearly unavailable and subdued, not merely opacity lowered. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-44ad4e5f-f15f-491f-bc64-e8a774b25d23.png",
+    "source_sha256": "74d00780622af9749fc366d8c1c76c0203eb14e0e09c4224af19a96d228f56ec",
+    "processing": {
+      "crop": {
+        "left": 73,
+        "top": 208,
+        "width": 1838,
+        "height": 344
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        181,
+        172,
+        161
+      ]
+    },
+    "lane": "buttons_a",
+    "sha256": "2a32d33513278e38eabdb084b2a669a5a85422d7ce7e9077352eb29900847cea"
+  },
+  {
+    "id": "button_secondary_hover",
+    "file": "assets/button_secondary_hover.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_secondary",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval secondary button into its HOVER UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Brighten upper rim highlight, add subtle warm brass glint and slightly lighter parchment flat fill; clearly highlighted but tasteful. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-8fc64743-a733-49e0-ba33-c200a2da9ec0.png",
+    "source_sha256": "d6e03fa261223f749dec30f5888d379787e1421f2df3e4973c9e3d6c35f27563",
+    "processing": {
+      "crop": {
+        "left": 47,
+        "top": 197,
+        "width": 1892,
+        "height": 390
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        247,
+        231,
+        197
+      ]
+    },
+    "lane": "buttons_a",
+    "sha256": "de30999c6a215d1e7963d16f39229978059378195e147b6151be4f6dc2d991c3"
+  },
+  {
+    "id": "button_secondary_pressed",
+    "file": "assets/button_secondary_pressed.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_secondary",
+    "state": "pressed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval secondary button into its PRESSED UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Make the face visibly inset/depressed 1 to 2 target pixels: darker inner top edge, inverted bevel lighting, subdued lower edge highlight; flat center slightly darker, border remains same silhouette. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-77040f2b-0db6-4027-a19f-ca7258a868ee.png",
+    "source_sha256": "f3456c512c02b406e9c52fe7d202c99ef28bdd00c77a603e3993bb75d0b55346",
+    "processing": {
+      "crop": {
+        "left": 47,
+        "top": 205,
+        "width": 1889,
+        "height": 383
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        208,
+        187,
+        151
+      ]
+    },
+    "lane": "buttons_a",
+    "sha256": "7543ef75105bc5eebe482d51f1e7b83a032f0855040caef6c863a4d7a2fc552e"
+  },
+  {
+    "id": "button_secondary_disabled",
+    "file": "assets/button_secondary_disabled.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_secondary",
+    "state": "disabled",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval secondary button into its DISABLED UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Use muted desaturated gray-brown timber and low contrast dull corners, opaque warm gray parchment face. Clearly unavailable and subdued, not merely opacity lowered. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-fd8f5bda-d5b9-42a6-acfb-e4e7ed52495d.png",
+    "source_sha256": "0007cef5f75e20b846e8d52da8755541b63954bcbe48c66fe3c2f386d690ed5e",
+    "processing": {
+      "crop": {
+        "left": 47,
+        "top": 202,
+        "width": 1889,
+        "height": 386
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        186,
+        180,
+        170
+      ]
+    },
+    "lane": "buttons_a",
+    "sha256": "6efc8b3baff434e183e977bb7cfc39db515e8833c00a5b584b17cbebd961537b"
+  },
+  {
+    "id": "button_danger_normal",
+    "file": "assets/button_danger_normal.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_danger",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: ui-mockup. Asset type: transparent medieval strategy game raster UI control, NORMAL raised state. Single blank danger button, horizontal exact aspect ratio 3.2:1, for final 128x40 pixels. Narrow muted sealing wax red #843e32 raised rim with modest worn brass accents ONLY in corners, warm completely FLAT uniform parchment #e8d8b1 label area. Border total width <= 7% of width and <=23% of height. Rectangular silhouette with very slightly chamfered corners. Center must be smooth opaque solid color with NO grain, texture or gradient. Reference 1 is material/style ONLY; reference 2 is current controls to improve. Show just ONE isolated button, straight front orthographic, no perspective. Button centered filling most canvas. True transparent surrounding background and transparent corner pixels. Consistent high quality hand painted oak/parchment game UI matching references, restrained historical design. Absolutely NO text, letters, numbers, icons, symbols, scenery, watermark, panel, checkerboard or extra buttons. Keep long straight edge segments perfectly uniform for nine-slice scaling; corners fit within 10px in final image.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-bc0d32ee-6d06-4e04-a918-b22b5b1637a1.png",
+    "source_sha256": "06af85ffe54001fe79a5f3782a2dd8049d42eae4cfc0ab8bc6dd4dd502d1a8b3",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 56,
+        "top": 181,
+        "width": 2060,
+        "height": 358
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        10,
+        9,
+        108,
+        22
+      ],
+      "flat_center_rgba": [
+        230,
+        208,
+        167,
+        255
+      ]
+    },
+    "sha256": "064c1caa8c07f74fa9d9d585d93390d458c7e1eee3f5a3ac6425ad60280fc495",
+    "lane": "buttons_b"
+  },
+  {
+    "id": "button_danger_hover",
+    "file": "assets/button_danger_hover.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_danger",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install. Revision: stronger top and side warm red/brass highlights and lighter parchment center.",
+    "prompt": "Use case: precise-object-edit. Asset: ONE blank medieval game danger button HOVER state. Input image is current normal danger control. Keep exactly the same narrow wax-red and brass frame, silhouette, corner notches, rectangular proportions 128:40, corner decorations and broad blank parchment center. Make HOVER unmistakably brighter: warm red-copper upper rim highlight, brighter brass along top and side edges, visibly lighter cream parchment face (target #f3e4c3 compared with normal #e6d0a7). Stronger lighting is ONLY within existing frame and face; NO exterior glow and NO larger outer bounding box. Keep muted sealing-wax red identity, not yellow or saturated orange. Center must be completely FLAT opaque single cream color without texture, grain, gradient, marks. True transparent background and corners. No text, no glyph, no symbol, no extra shapes. Front orthographic view, same 10px final nine-slice margins, same 128x40 final canvas, text-safe center x14..113 y12..27. Render at high resolution if needed but preserve geometry exactly.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-d5f1553e-91c1-4043-a95a-7cf42132c14f.png",
+    "source_sha256": "97afa381fe36e00a0dcc8a0b887e8fb69cd73f5de979c9ac5565bafb1646ca1f",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 58,
+        "top": 96,
+        "width": 2049,
+        "height": 523
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        10,
+        9,
+        108,
+        22
+      ],
+      "flat_center_rgba": [
+        244,
+        224,
+        186,
+        255
+      ]
+    },
+    "sha256": "48312602a61afc71781fa01ebe912f71dc72774e94a84710c7bce7f1a356a370",
+    "lane": "buttons_b"
+  },
+  {
+    "id": "button_danger_pressed",
+    "file": "assets/button_danger_pressed.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_danger",
+    "state": "pressed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: precise-object-edit. Edit target is the supplied NORMAL blank medieval game button. Create exactly ONE PRESSED state version of this same danger button. PRESSED state: darker inset rim, reverse bevel with clearly visible inner shadow at top and left, depressed face offset inward 1-2 final pixels, parchment center slightly darker but flat. Preserve SAME canvas/aspect ratio, outer silhouette, transparent corners, exact frame geometry, corner cap positions, and blank interior; no added details or glyphs. Narrow perimeter only, broad completely flat solid color opaque text-safe interior (no grain/no gradient). Straight orthographic front view. Genuine transparent background, no checkerboard. No text, letters, icons, symbols, watermark. Final target 128x40; keep 10px slice margins same across states.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-44468074-dd04-424e-bc65-3b4115974f6e.png",
+    "source_sha256": "c5ec8d22b5b27bf4a1228a2934ffd0ea70fcd72f3b149cb8f11019a542642131",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 55,
+        "top": 179,
+        "width": 2064,
+        "height": 364
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        10,
+        9,
+        108,
+        22
+      ],
+      "flat_center_rgba": [
+        201,
+        177,
+        138,
+        255
+      ]
+    },
+    "sha256": "30edb289d9d02c9bb393707a56fbe7e43696a4500460abab02d05f034e8384ca",
+    "lane": "buttons_b"
+  },
+  {
+    "id": "button_danger_disabled",
+    "file": "assets/button_danger_disabled.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_danger",
+    "state": "disabled",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: precise-object-edit. Edit target is the supplied NORMAL blank medieval game button. Create exactly ONE DISABLED state version of this same danger button. DISABLED state: fully opaque subdued gray taupe muted surface, desaturate red/oak/brass edges to gray-brown and lower contrast, no bright highlights. Do NOT lower whole image opacity. Center solid muted parchment. Preserve SAME canvas/aspect ratio, outer silhouette, transparent corners, exact frame geometry, corner cap positions, and blank interior; no added details or glyphs. Narrow perimeter only, broad completely flat solid color opaque text-safe interior (no grain/no gradient). Straight orthographic front view. Genuine transparent background, no checkerboard. No text, letters, icons, symbols, watermark. Final target 128x40; keep 10px slice margins same across states.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-e408e3ad-00b2-4b47-8405-5e87cde1a336.png",
+    "source_sha256": "2b8acb4c47beceef859079408defcb062f46ba2bb8992be5964259ba1b94a418",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 54,
+        "top": 176,
+        "width": 2066,
+        "height": 364
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        10,
+        9,
+        108,
+        22
+      ],
+      "flat_center_rgba": [
+        175,
+        163,
+        150,
+        255
+      ]
+    },
+    "sha256": "2330d49d19d8b96b49743e453f82f66111a50529c73b01bc79ac2e0e4e91dee5",
+    "lane": "buttons_b"
+  },
+  {
+    "id": "button_icon_normal",
+    "file": "assets/button_icon_normal.png",
+    "width": 48,
+    "height": 48,
+    "component": "button_icon",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 48,
+    "min_height": 48,
+    "text_safe": null,
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: ui-mockup. Asset type: transparent medieval strategy game raster UI control, NORMAL raised state. Single blank square icon button, exact square aspect ratio for final 48x48 pixels. Low saturation oak #674124 raised rim with subtle worn brass #b29658 thin inset line, restrained tiny brass corner caps. Broad flat blank warm parchment #e8d8b1 center. No glyph at all. Border occupies at most 18% width eachside. Reference 1 is material/style ONLY; reference 2 is current controls to improve. Show just ONE isolated button, straight front orthographic, no perspective. Button centered filling most canvas. True transparent surrounding background and transparent corner pixels. Consistent high quality hand painted oak/parchment game UI matching references, restrained historical design. Absolutely NO text, letters, numbers, icons, symbols, scenery, watermark, panel, checkerboard or extra buttons. Keep long straight edge segments perfectly uniform for nine-slice scaling; corners fit within 10px in final image.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-97328f4b-351a-4f05-963b-0e868eb6bb1d.png",
+    "source_sha256": "fdb90f30408f70eac181fec184eec40cb938a778203cff9c73d739beacbdea68",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 105,
+        "top": 103,
+        "width": 1045,
+        "height": 1045
+      },
+      "resize": [
+        46,
+        46
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        7,
+        7,
+        34,
+        34
+      ],
+      "flat_center_rgba": [
+        227,
+        207,
+        168,
+        255
+      ]
+    },
+    "sha256": "eef065c39194c83cb7b01305cbfe77bd81fa6de1dbe6b8f67852f445d8d29908",
+    "lane": "buttons_b"
+  },
+  {
+    "id": "button_icon_hover",
+    "file": "assets/button_icon_hover.png",
+    "width": 48,
+    "height": 48,
+    "component": "button_icon",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 48,
+    "min_height": 48,
+    "text_safe": null,
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: precise-object-edit. Edit target is the supplied NORMAL blank medieval game button. Create exactly ONE HOVER state version of this same icon button. HOVER state: raise bright warm brass highlight along top and sides of rim, slight stronger raised edge; keep center parchment light and flat. Preserve SAME canvas/aspect ratio, outer silhouette, transparent corners, exact frame geometry, corner cap positions, and blank interior; no added details or glyphs. Narrow perimeter only, broad completely flat solid color opaque text-safe interior (no grain/no gradient). Straight orthographic front view. Genuine transparent background, no checkerboard. No text, letters, icons, symbols, watermark. Final target 48x48; keep 10px slice margins same across states.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-03fd46fd-46bd-440b-ad1f-3bd65a3c22db.png",
+    "source_sha256": "39352bc2d9dc90a24461d0d82810f6e13914b2bce68e58d6d3cc91a42a1243d3",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 99,
+        "top": 98,
+        "width": 1057,
+        "height": 1055
+      },
+      "resize": [
+        46,
+        46
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        7,
+        7,
+        34,
+        34
+      ],
+      "flat_center_rgba": [
+        243,
+        226,
+        195,
+        255
+      ]
+    },
+    "sha256": "c202d26b1fef44ed14f228ed2e4e10e4a7294fb7b7fbbc6cbd132f1cfc02cf81",
+    "lane": "buttons_b"
+  },
+  {
+    "id": "button_icon_pressed",
+    "file": "assets/button_icon_pressed.png",
+    "width": 48,
+    "height": 48,
+    "component": "button_icon",
+    "state": "pressed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 48,
+    "min_height": 48,
+    "text_safe": null,
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: precise-object-edit. Edit target is the supplied NORMAL blank medieval game button. Create exactly ONE PRESSED state version of this same icon button. PRESSED state: darker inset rim, reverse bevel with clearly visible inner shadow at top and left, depressed face offset inward 1-2 final pixels, parchment center slightly darker but flat. Preserve SAME canvas/aspect ratio, outer silhouette, transparent corners, exact frame geometry, corner cap positions, and blank interior; no added details or glyphs. Narrow perimeter only, broad completely flat solid color opaque text-safe interior (no grain/no gradient). Straight orthographic front view. Genuine transparent background, no checkerboard. No text, letters, icons, symbols, watermark. Final target 48x48; keep 10px slice margins same across states.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-cc18ae30-b486-49ff-9670-cb9dca5ab351.png",
+    "source_sha256": "15e171f3c63f6cb8b1cdd5972fe0ea447087f1ac47dddbe0d553e91e47bfb0b4",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 102,
+        "top": 101,
+        "width": 1051,
+        "height": 1048
+      },
+      "resize": [
+        46,
+        46
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        7,
+        7,
+        34,
+        34
+      ],
+      "flat_center_rgba": [
+        209,
+        185,
+        143,
+        255
+      ]
+    },
+    "sha256": "b5ac211afdd0015ef8e7c8d0b6c9cc758fdbf935cb17ec398e509e78d07a8108",
+    "lane": "buttons_b"
+  },
+  {
+    "id": "button_icon_disabled",
+    "file": "assets/button_icon_disabled.png",
+    "width": 48,
+    "height": 48,
+    "component": "button_icon",
+    "state": "disabled",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 48,
+    "min_height": 48,
+    "text_safe": null,
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: precise-object-edit. Edit target is the supplied NORMAL blank medieval game button. Create exactly ONE DISABLED state version of this same icon button. DISABLED state: fully opaque subdued gray taupe muted surface, desaturate red/oak/brass edges to gray-brown and lower contrast, no bright highlights. Do NOT lower whole image opacity. Center solid muted parchment. Preserve SAME canvas/aspect ratio, outer silhouette, transparent corners, exact frame geometry, corner cap positions, and blank interior; no added details or glyphs. Narrow perimeter only, broad completely flat solid color opaque text-safe interior (no grain/no gradient). Straight orthographic front view. Genuine transparent background, no checkerboard. No text, letters, icons, symbols, watermark. Final target 48x48; keep 10px slice margins same across states.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-fa57a21d-d126-4b95-9d40-94b79243c45f.png",
+    "source_sha256": "3371f2bb494e8313949f653ec6582db0ad606c3c90c4d787fbdd65ed38fbe928",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 101,
+        "top": 98,
+        "width": 1052,
+        "height": 1053
+      },
+      "resize": [
+        46,
+        46
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        7,
+        7,
+        34,
+        34
+      ],
+      "flat_center_rgba": [
+        178,
+        167,
+        155,
+        255
+      ]
+    },
+    "sha256": "3623b0cc9a9dbeaa06714f47246414e080fd506e8f0d6ca1d2331ce61d24dcac",
+    "lane": "buttons_b"
+  },
+  {
+    "id": "tab_selected",
+    "file": "assets/tab_selected.png",
+    "width": 128,
+    "height": 40,
+    "component": "tab",
+    "state": "selected",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Flat text-safe center; generated painted frame retained.",
+    "prompt": "Create ONE isolated raster UI control for a historically grounded medieval English lord simulation. Match reference warm parchment, subdued oak and antique brass craft. Clean orthographic front view, real transparent background, no cast shadow outside silhouette, no checkerboard, no lettering or logo, no elaborate fantasy ornament. Small-scale readable restrained painted game UI. Selected navigation tab, width to height ratio 3.2:1, nearly rectangular silhouette with tiny clipped corners. Narrow oak outer perimeter and fine antique brass inner bevel; bright light parchment #f1e4c6 raised face. Broad completely FLAT opaque solid-color blank center for later text, absolutely no grain/gradient in central 80 percent. Edge relief only within outer quarter height. No protrusions. Tab will be downscaled to128x40. transparent canvas margins.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-340211a7-12df-423a-9874-51981a85115a.png",
+    "source_sha256": "a65245c9b6a06959ff744eb9e8511085386da5a9e922098cb8a6f56f80ffb9b4",
+    "processing": {
+      "alpha_crop": [
+        73,
+        223,
+        1837,
+        334
+      ],
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        10,
+        8,
+        108,
+        24
+      ],
+      "flat_rgb": [
+        238,
+        220,
+        182
+      ]
+    },
+    "lane": "tabs_close",
+    "sha256": "0dea705d35749fff366029435a14d17aca3b4f9a2ec8cc97d0885c37f4bdb1c8"
+  },
+  {
+    "id": "tab_unselected",
+    "file": "assets/tab_unselected.png",
+    "width": 128,
+    "height": 40,
+    "component": "tab",
+    "state": "unselected",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Flat text-safe center; generated painted frame retained.",
+    "prompt": "Edit reference selected tab into UNSELECTED state. Preserve exactly same outline, dimensions, clipped corners, narrow oak perimeter, brass inset, alignment and blank center. Only state: recessed muted darker parchment #cabb96, muted brass edge, inward shadow. Central 80percent blank opaque flat solid color absolutely texture-free. No glyph or words. Real transparent outside.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-41f2f8c2-cb67-4b93-b7e1-78a3cb634353.png",
+    "source_sha256": "ec69f573bf3edc082c2983a7567e7f80bf30a5e71ba2213fe8f78e14936a618d",
+    "processing": {
+      "alpha_crop": [
+        71,
+        220,
+        1842,
+        339
+      ],
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        10,
+        8,
+        108,
+        24
+      ],
+      "flat_rgb": [
+        197,
+        180,
+        140
+      ]
+    },
+    "lane": "tabs_close",
+    "sha256": "b83bc0a5d8c43751f319023ee2b58fafdd55e6a1662aff29444cfa046a3471a8"
+  },
+  {
+    "id": "tab_hover",
+    "file": "assets/tab_hover.png",
+    "width": 128,
+    "height": 40,
+    "component": "tab",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Flat text-safe center; generated painted frame retained.",
+    "prompt": "Edit reference selected tab into HOVER state. Preserve exactly same outline, dimensions, clipped corners, narrow oak perimeter, brass inset, alignment and blank center. Only state: stronger bright brass top/side edge, light warm parchment #f6ead0 face, lifted highlight. Central 80percent blank opaque flat solid color absolutely texture-free. No glyph or words. Real transparent outside.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-1922bbef-e32b-4519-843b-3439dcf0615e.png",
+    "source_sha256": "9ce387161b5537ede74aadc585bb86a041615718eb37ea10e42dbbc45210da49",
+    "processing": {
+      "alpha_crop": [
+        69,
+        219,
+        1848,
+        340
+      ],
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        10,
+        8,
+        108,
+        24
+      ],
+      "flat_rgb": [
+        242,
+        227,
+        196
+      ]
+    },
+    "lane": "tabs_close",
+    "sha256": "3028d9edac48ecbd1d6ea0f7d6fdf244d8a7ff99e97ac3fb25a8cf5574f1f7ee"
+  },
+  {
+    "id": "close_normal",
+    "file": "assets/close_normal.png",
+    "width": 32,
+    "height": 32,
+    "component": "close",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 32,
+    "min_height": 32,
+    "text_safe": null,
+    "notes": "Fixed size. Generated X glyph retained without modification.",
+    "prompt": "Create ONE isolated raster UI control for a historically grounded medieval English lord simulation. Match reference warm parchment, subdued oak and antique brass craft. Clean orthographic front view, real transparent background, no cast shadow outside silhouette, no checkerboard, no lettering or logo, no elaborate fantasy ornament. Small-scale readable restrained painted game UI. Square 32x32 close button at large drawing resolution. Tiny clipped corners, dark oak square base, narrow antique brass raised beveled rim, warm medium oak face. ONE prominent centered ivory/brass X CLOSE GLYPH made of two simple thick diagonal bars, clearly visible at32px; not a letter label. No other symbol. Front face raised normal state. compact consistent square silhouette.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-9914f404-c8a8-4980-a854-9170ca5bb494.png",
+    "source_sha256": "54875706e81eb852fbe38740ed008ed250eabbc7e58fa98531b7288a0c24a3b1",
+    "processing": {
+      "alpha_crop": [
+        105,
+        104,
+        1056,
+        1034
+      ],
+      "resize": [
+        30,
+        30
+      ],
+      "transparent_padding": 1,
+      "flat_center": null,
+      "flat_rgb": null
+    },
+    "lane": "tabs_close",
+    "sha256": "dafe080b52f849c3816db5be7c79264154f266f04271130a3f95e669c6369496"
+  },
+  {
+    "id": "close_hover",
+    "file": "assets/close_hover.png",
+    "width": 32,
+    "height": 32,
+    "component": "close",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 32,
+    "min_height": 32,
+    "text_safe": null,
+    "notes": "Fixed size. Generated X glyph retained without modification.",
+    "prompt": "Edit reference square close button into HOVER state. Preserve exact outline size, corners, oak face, brass rim and large ivory/brass X glyph geometry/position. Change only state: noticeably brighter golden rim especially top edge, slightly brighter oak face. No new symbols, no words, unchanged silhouette. Transparent background.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-65d5ed92-5115-4a30-a6d0-81a8694a1a81.png",
+    "source_sha256": "0b781d3651e4a026c6b02f22aefd0ee800a0245af4de65782579754df10fbc17",
+    "processing": {
+      "alpha_crop": [
+        104,
+        102,
+        1058,
+        1038
+      ],
+      "resize": [
+        30,
+        30
+      ],
+      "transparent_padding": 1,
+      "flat_center": null,
+      "flat_rgb": null
+    },
+    "lane": "tabs_close",
+    "sha256": "d9e75e832481bad9b0a738024f6c09a7459eab3c763b6d3aba726971b88e5093"
+  },
+  {
+    "id": "close_pressed",
+    "file": "assets/close_pressed.png",
+    "width": 32,
+    "height": 32,
+    "component": "close",
+    "state": "pressed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 32,
+    "min_height": 32,
+    "text_safe": null,
+    "notes": "Fixed size. Generated X glyph retained without modification.",
+    "prompt": "Edit reference square close button into PRESSED state. Preserve exact outline size, corners, oak face, brass rim and large ivory/brass X glyph geometry/position. Change only state: button face inset, darker oak, subdued brass lower bevel and strong interior top shadow suggesting 1pixel depressed face at32px. No new symbols, no words, unchanged silhouette. Transparent background.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-70c8d273-4074-449f-935b-dd06cb5294a0.png",
+    "source_sha256": "5a87145412290ef7373a96f9081093b6ff3b664e961ac5245e456c85bae88ce6",
+    "processing": {
+      "alpha_crop": [
+        105,
+        103,
+        1057,
+        1035
+      ],
+      "resize": [
+        30,
+        30
+      ],
+      "transparent_padding": 1,
+      "flat_center": null,
+      "flat_rgb": null
+    },
+    "lane": "tabs_close",
+    "sha256": "39ed81cb8a71751f123ed2e275c0e8f154f5081876f4c7677795ff1f99a8c6f0"
+  },
+  {
+    "id": "checkbox_empty",
+    "file": "assets/checkbox_empty.png",
+    "width": 24,
+    "height": 24,
+    "component": "checkbox",
+    "state": "empty",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: ui-mockup. Input images are style references ONLY: Wave35 oak, brass and parchment. Create ONE isolated EMPTY checkbox raster game UI asset. Square bevelled dark oak rim with thin aged brass inner lip, opaque smooth warm parchment center, blank with NO check. Bold simple silhouette for eventual 24x24 pixels, rim about 3px native. Slight clipped/rounded corners. Front-on orthographic. No ornate detail. Transparent outside shape and transparent cornerpixels; centered object occupies 85% canvas. NO text, labels, contact sheet, extra objects, drop shadow or background. Polished hand-painted medieval strategy UI, warm low-saturation palette oak #674124, darkoak #3c291c, brass #b29658, parchment #e8d8b1. Preserve flat opaque inner surface and precise symmetric geometry.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-e1847be3-e52a-49fe-9235-d9711f1e7e1f.png",
+    "source_sha256": "530d8e229bf5e8f287d9ab3b7c931237fa5e5a82ae89475ee3f11dc5b07a13be",
+    "sha256": "65e78bd6bfb785a2289f80cd8ab71e1cbb7f9b92b2902e3cdbf118768bfa43f7",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        166,
+        179,
+        922,
+        886
+      ],
+      "content_size": [
+        22,
+        22
+      ]
+    },
+    "lane": "choices"
+  },
+  {
+    "id": "checkbox_checked",
+    "file": "assets/checkbox_checked.png",
+    "width": 24,
+    "height": 24,
+    "component": "checkbox",
+    "state": "checked",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: precise-object-edit. Input image is exact edit target. Add only ONE extremely bold dark ink #35291c check mark centered in the parchment square, occupying 65% inner area width and 55% height, broad stroke to remain readable at 24x24 final pixels. Preserve the exact square frame shape, crop, outer silhouette, warm parchment and oak-brass border. No text. One isolated medieval strategy game raster UI control on genuinely transparent background. No matte, no checkerboard. Preserve transparent outside corners and exact front-on geometry. Do not add any other object.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-917e7d8a-29b8-4fd4-b23a-8f5145bbb33e.png",
+    "source_sha256": "af211394c3689965862c3b979a165671d8c52f8e7e39ae77063b0a6bbe287461",
+    "sha256": "2200d83fe03f9e22807f3c0f53f6333ca5a6b57b0267f6ecfe077cf8aaa2d944",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        165,
+        178,
+        925,
+        888
+      ],
+      "content_size": [
+        22,
+        22
+      ]
+    },
+    "lane": "choices"
+  },
+  {
+    "id": "checkbox_disabled",
+    "file": "assets/checkbox_disabled.png",
+    "width": 24,
+    "height": 24,
+    "component": "checkbox",
+    "state": "disabled",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: precise-object-edit. Input image is exact edit target. Make this EMPTY checkbox DISABLED. Keep identical exact square frame shape, crop and outer silhouette, blank center. Change its material colors to opaque desaturated muted gray brown #99917c with reduced contrast, subdued dark grey-brown oak rim and dull pale metal. Strongly visibly disabled, still opaque, NOT translucent. NO check, slash, lock or other glyph. No text. One isolated medieval strategy game raster UI control on genuinely transparent background. No matte, no checkerboard. Preserve transparent outside corners and exact front-on geometry. Do not add any other object.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-9087539c-7889-4167-a272-0d203448f993.png",
+    "source_sha256": "f317e7c067eb6558b15997ee6f6941b1c00bcaa51eb60436f44d61b08d2ea072",
+    "sha256": "bfb4abda8776f114a1af24b1955eed3aebb02460820453be184ef8e6ffca70a0",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        165,
+        179,
+        924,
+        886
+      ],
+      "content_size": [
+        22,
+        22
+      ]
+    },
+    "lane": "choices"
+  },
+  {
+    "id": "radio_empty",
+    "file": "assets/radio_empty.png",
+    "width": 24,
+    "height": 24,
+    "component": "radio",
+    "state": "empty",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: ui-mockup. Input images are style references ONLY: Wave35 oak, brass and parchment. Create ONE isolated EMPTY radio button raster game UI asset. Perfect circular bevelled dark oak rim with thin aged brass inner lip, opaque smooth warm parchment center, blank with NO dot. Bold simple silhouette for eventual 24x24 pixels, rim about 3px native. Front-on orthographic. No ornate detail. Transparent outside shape and transparent cornerpixels; centered object occupies 85% canvas. NO text, labels, contact sheet, extra objects, drop shadow or background. Polished hand-painted medieval strategy UI, warm low-saturation palette oak #674124, darkoak #3c291c, brass #b29658, parchment #e8d8b1. Preserve flat opaque inner surface and precise symmetric geometry.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-ab4ebcd5-6654-4552-8f8c-4041a6adeb3c.png",
+    "source_sha256": "889cd1db1e16b848e158ad3d311398b004ebda323faf64436267869cdd626256",
+    "sha256": "125c2e671b4f1701304e2eb7df16413d60ad422345f69917e3705ca8e74b137d",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        95,
+        84,
+        1062,
+        1074
+      ],
+      "content_size": [
+        22,
+        22
+      ]
+    },
+    "lane": "choices"
+  },
+  {
+    "id": "radio_selected",
+    "file": "assets/radio_selected.png",
+    "width": 24,
+    "height": 24,
+    "component": "radio",
+    "state": "selected",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: precise-object-edit. Input image is exact edit target. Add only ONE large bold SOLID dark ink #35291c round dot precisely centered on parchment, diameter 48% of full outside circle, to remain clearly readable at 24x24 pixels. Preserve identical circular border, crop, outer silhouette, colors and all surrounding frame. No text. One isolated medieval strategy game raster UI control on genuinely transparent background. No matte, no checkerboard. Preserve transparent outside corners and exact front-on geometry. Do not add any other object.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-544d899f-838c-4b49-be1c-9f425af6ebd4.png",
+    "source_sha256": "1bd2417aa11331ddb52535175478fe539ecb7a38bf1e99cc5ed9e7750c3ad03d",
+    "sha256": "e3598ea6aa3b09caba73b65945e77d92bc67aeb553d4445e95953b860697e0a9",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        94,
+        82,
+        1066,
+        1077
+      ],
+      "content_size": [
+        22,
+        22
+      ]
+    },
+    "lane": "choices"
+  },
+  {
+    "id": "toggle_on",
+    "file": "assets/toggle_on.png",
+    "width": 56,
+    "height": 28,
+    "component": "toggle",
+    "state": "on",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 12,
+    "slice_bottom": 10,
+    "slice_left": 12,
+    "min_width": 56,
+    "min_height": 28,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: ui-mockup. Input images are style references ONLY: Wave35 oak, brass and parchment. Create ONE isolated ON toggle switch raster game UI asset. Horizontal pill at exact visual ratio 2:1 for eventual 56x28 pixels. Dark oak rim, subtle aged brass inner lip, opaque brass-olive track. Large pale warm parchment round knob firmly at RIGHT end. Simple thick readable shape, minimal bevel. Front-on orthographic. No text or glyph. Transparent outside shape and transparent cornerpixels; centered object occupies 85% canvas. NO text, labels, contact sheet, extra objects, drop shadow or background. Polished hand-painted medieval strategy UI, warm low-saturation palette oak #674124, darkoak #3c291c, brass #b29658, parchment #e8d8b1. Preserve flat opaque inner surface and precise symmetric geometry.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-1598e2c2-c5d1-47a3-957f-6936f7cf1631.png",
+    "source_sha256": "d39bdfb2b2eb8b46bc49844f42250c981e7d2dc5cde3cb5dd847e46ad846f6a4",
+    "sha256": "577f187ba285f85bdacbcd8332db995145cb144c827aa662c468d1226fa7420e",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        192,
+        151,
+        1389,
+        560
+      ],
+      "content_size": [
+        54,
+        26
+      ]
+    },
+    "lane": "choices"
+  },
+  {
+    "id": "toggle_off",
+    "file": "assets/toggle_off.png",
+    "width": 56,
+    "height": 28,
+    "component": "toggle",
+    "state": "off",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 12,
+    "slice_bottom": 10,
+    "slice_left": 12,
+    "min_width": 56,
+    "min_height": 28,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: precise-object-edit. Input image is exact edit target. Change only switch state to OFF: move the large round parchment knob to LEFT end and change olive track to muted grey-brown #79664e, reduce brass brightness mildly. Keep identical outer pill silhouette, framing, rim geometry and scale. No text and no glyph. This must read clearly as counterpart of input ON switch. One isolated medieval strategy game raster UI control on genuinely transparent background. No matte, no checkerboard. Preserve transparent outside corners and exact front-on geometry. Do not add any other object.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-c11d24a8-3a83-4bd0-af6c-0b2e0558d318.png",
+    "source_sha256": "f6a952b4cbfb1f68fa59872f776056d1721a71e95d95489d4080a8a1c421cc23",
+    "sha256": "83350aee6068c0382477c948f2e9a37ee09967ed0e213b4abc6264349ba4cabc",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        192,
+        150,
+        1389,
+        563
+      ],
+      "content_size": [
+        54,
+        26
+      ]
+    },
+    "lane": "choices"
+  },
+  {
+    "id": "select_closed",
+    "file": "assets/select_closed.png",
+    "width": 160,
+    "height": 40,
+    "component": "select",
+    "state": "closed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 26,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 80,
+    "min_height": 40,
+    "text_safe": [
+      10,
+      10,
+      122,
+      20
+    ],
+    "notes": "Height fixed40px; horizontal9slice only to preserve generated down-chevron aspect. Right26px slice protects glyph from width stretch.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, select_closed, intended final resolution 160x40px. Closed dropdown selector. A single small dark brown downward chevron in the rightmost 20px zone only, no vertical divider. Completely blank parchment center. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 160:40, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-fe970b72-6d49-4732-807a-16991e722238.png",
+    "source_sha256": "475a5ecc8f855f022ad66f97c413ead1e6c73ee0704bbca6e88d0d218fcde462",
+    "processing": {
+      "alpha_crop": [
+        68,
+        227,
+        1847,
+        325
+      ],
+      "resize": [
+        158,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          10,
+          10,
+          122,
+          20
+        ],
+        "rgba": [
+          229,
+          207,
+          165,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    },
+    "lane": "forms",
+    "sha256": "f227c01afd33703e3fc0d5bdba767de7555cfcaeef376e092ddfcc233e613ae8"
+  },
+  {
+    "id": "select_open_list",
+    "file": "assets/select_open_list.png",
+    "width": 160,
+    "height": 120,
+    "component": "select",
+    "state": "open_list",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 52,
+    "text_safe": [
+      10,
+      10,
+      140,
+      100
+    ],
+    "notes": "Blank label region, transparent external pixels.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, select_open_list, intended final resolution 160x120px. An open dropdown list background panel, aspect ratio 4:3, blank continuous parchment interior, no rows no icons no text. Delicate 5px oak and muted brass rim, nearly square corners. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 160:120, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-9524d9af-488c-4042-977c-beaef6dd17c2.png",
+    "source_sha256": "e4975f380796292949fead1d83fa8165a1672e9805efe901e8e0c3bf2cdbda72",
+    "processing": {
+      "alpha_crop": [
+        63,
+        99,
+        1323,
+        865
+      ],
+      "resize": [
+        158,
+        118
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          10,
+          10,
+          140,
+          100
+        ],
+        "rgba": [
+          227,
+          208,
+          171,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    },
+    "lane": "forms",
+    "sha256": "62d18263f3ca7e9a2e99de14d5686be0ff0c9a23e44f79ecee00fee686544fea"
+  },
+  {
+    "id": "select_row_hover",
+    "file": "assets/select_row_hover.png",
+    "width": 144,
+    "height": 32,
+    "component": "select",
+    "state": "row_hover",
+    "status": "candidate",
+    "slice_top": 6,
+    "slice_right": 6,
+    "slice_bottom": 6,
+    "slice_left": 6,
+    "min_width": 48,
+    "min_height": 28,
+    "text_safe": [
+      6,
+      6,
+      132,
+      20
+    ],
+    "notes": "Blank label region, transparent external pixels.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, select_row_hover, intended final resolution 144x32px. An individual hovered menu row background strip aspect 4.5:1, subtle warm pale brass highlight fill and very thin darker gold edging. Blank interior, no icon. At final 32px height edges only 3px thick. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 144:32, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-afc9ea63-2406-4523-98a3-72db0bc1e653.png",
+    "source_sha256": "01418d934096b1f741dbfd5091eadc8ee3677096b7d7800163696b8518ee8826",
+    "processing": {
+      "alpha_crop": [
+        33,
+        222,
+        2048,
+        292
+      ],
+      "resize": [
+        142,
+        30
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          6,
+          6,
+          132,
+          20
+        ],
+        "rgba": [
+          228,
+          209,
+          161,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    },
+    "lane": "forms",
+    "sha256": "53fcb8e0d98b9b71a40129351abca85139822111d9aacd250bf29d0bfa2fdc03"
+  },
+  {
+    "id": "input_normal",
+    "file": "assets/input_normal.png",
+    "width": 160,
+    "height": 40,
+    "component": "input",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      10,
+      10,
+      140,
+      20
+    ],
+    "notes": "Blank label region, transparent external pixels.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, input_normal, intended final resolution 160x40px. Normal text input, shallow inset parchment field with thin dark oak inner rim and understated muted brass outline. Blank center. Thin frame 5px at final size. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 160:40, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-027c5922-3ba9-4650-91e2-0ada439ed4ea.png",
+    "source_sha256": "05c0269621cb88c0457430168585f80cb3ed424012d5087c9eb0f029f12da554",
+    "processing": {
+      "alpha_crop": [
+        42,
+        210,
+        1899,
+        358
+      ],
+      "resize": [
+        158,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          10,
+          10,
+          140,
+          20
+        ],
+        "rgba": [
+          224,
+          204,
+          161,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    },
+    "lane": "forms",
+    "sha256": "b2d7fa7fd43de7096015cfb211cadcc933ceff383c676097599980200d4f31b6"
+  },
+  {
+    "id": "input_focus",
+    "file": "assets/input_focus.png",
+    "width": 160,
+    "height": 40,
+    "component": "input",
+    "state": "focus",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      10,
+      10,
+      140,
+      20
+    ],
+    "notes": "Blank label region, transparent external pixels.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, input_focus, intended final resolution 160x40px. Focused text input, shallow inset parchment field with clear luminous warm brass double rim indicating keyboard focus, NEVER blue. Blank center. Thin frame 5px at final size, same shape as normal input. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 160:40, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-576af9a9-8c01-4bbb-929f-763c90e5849b.png",
+    "source_sha256": "5c5d2cbfafda6fe69cd1c39e647dade8888d575de7f2e2aea2b5efcfce59e55e",
+    "processing": {
+      "alpha_crop": [
+        25,
+        192,
+        1936,
+        394
+      ],
+      "resize": [
+        158,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          10,
+          10,
+          140,
+          20
+        ],
+        "rgba": [
+          225,
+          204,
+          157,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    },
+    "lane": "forms",
+    "sha256": "bbd96bbc0e0f5ce4b4b68f5c6c26115eaf3bd88f0f9778d521d2bf6f80d4cb47"
+  },
+  {
+    "id": "chip_normal",
+    "file": "assets/chip_normal.png",
+    "width": 88,
+    "height": 28,
+    "component": "chip",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 8,
+    "slice_right": 8,
+    "slice_bottom": 8,
+    "slice_left": 8,
+    "min_width": 48,
+    "min_height": 28,
+    "text_safe": [
+      8,
+      6,
+      72,
+      16
+    ],
+    "notes": "Height fixed28px; horizontal stretch only.16px flat label region spans inside vertical8px slices. Do not vertically shrink or stretch.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, chip_normal, intended final resolution 88x28px. Normal small filter chip, aspect ratio 22:7, clipped corners confined to 4px corner radius, pale parchment surface with narrow oak outline and thin muted brass trim. Thin 3px frame at final size. Blank center. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 88:28, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-45ba7aed-c07a-4733-a2d9-171b55e5dcd8.png",
+    "source_sha256": "d4899d0a15119123f3b5726b2d650711e899873e2fe75eccf7bce6d0e9e8fb1d",
+    "processing": {
+      "alpha_crop": [
+        64,
+        211,
+        1855,
+        366
+      ],
+      "resize": [
+        86,
+        26
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          8,
+          6,
+          72,
+          16
+        ],
+        "rgba": [
+          225,
+          203,
+          159,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    },
+    "lane": "forms",
+    "sha256": "23bd5126fe215a54a724e99a8c17ecef550511bee52081afcd1a4a4e96bbf762"
+  },
+  {
+    "id": "chip_selected",
+    "file": "assets/chip_selected.png",
+    "width": 88,
+    "height": 28,
+    "component": "chip",
+    "state": "selected",
+    "status": "candidate",
+    "slice_top": 8,
+    "slice_right": 8,
+    "slice_bottom": 8,
+    "slice_left": 8,
+    "min_width": 48,
+    "min_height": 28,
+    "text_safe": [
+      8,
+      6,
+      72,
+      16
+    ],
+    "notes": "Height fixed28px; horizontal stretch only.16px flat label region spans inside vertical8px slices. Do not vertically shrink or stretch.",
+    "prompt": "Use case: precise-object-edit. Reference image1 is approved chip_selected88x28, image2 is normal chip88x28. Edit selected ONLY. Preserve the selected chip silhouette, corner geometry, thin painted beveled brass rim, border placement, aspect ratio88:28, and transparent background. Make selected state unmistakable by replacing ALL pale parchment interior with a flat solid warm muted brass gold fill RGB178,150,88 (#b29658), sufficiently light for dark ink #35291c text. Slightly stronger warm brass outer rim. Entire center must be blank completely untextured solid brass, no text no icons no gradients no grain. Keep4px thin border, generous interior16px text height, no protrusions. Single standalone chip centered tightly on true transparent background. Not bright yellow; restrained historical medieval oak/brass style. Do not render the normal reference as an extra object. Output exactly one selectedchip only.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-998cff37-da3a-4b6f-894a-c89aaecac3be.png",
+    "source_sha256": "cd32ec0e067f4527330d6060b7e23b0d62d835d2f6eda3101cebff36769f91d1",
+    "processing": {
+      "alpha_crop": [
+        73,
+        113,
+        2020,
+        494
+      ],
+      "resize": [
+        86,
+        26
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          8,
+          6,
+          72,
+          16
+        ],
+        "rgba": [
+          178,
+          150,
+          88,
+          255
+        ]
+      },
+      "revision": "Builtin imagegen edit using previous selected and approved normal references; selected now brass filled; prior source retained in revision-history record."
+    },
+    "lane": "forms",
+    "sha256": "81dc18889ee4328d3741ebfe224241c6ae158eacef7c8dd8731178b84a82186c"
+  },
+  {
+    "id": "slider_track",
+    "file": "assets/slider_track.png",
+    "width": 128,
+    "height": 12,
+    "component": "slider_track",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 4,
+    "slice_right": 5,
+    "slice_bottom": 4,
+    "slice_left": 5,
+    "min_width": 32,
+    "min_height": 12,
+    "text_safe": null,
+    "notes": "Generated raster; slider thumb fixed size. Direction-specific source; no glyphs or text.",
+    "prompt": "Use case: stylized-concept. Single raster game UI component for restrained historical feudal management game. Front-facing orthographic cutout on genuinely transparent background, no perspective, no cast shadow outside the component, no text, no symbols, no extra objects. Low saturation warm oak #674124 dark oak #3c291c and old brass #b29658. Fine painted bevel, simple utilitarian historical craft, no fantasy ornament, no glossy modern plastic. Clean anti-aliased silhouette, transparent rounded corner pixels. Render large enough for clean reduction. One very thin HORIZONTAL slider track, actual component aspect ratio exactly 128:12, wide bar running left to right. Oak inset groove with thin upper and lower oak rails, darker recessed uninterrupted horizontal center. End caps simple rounded wood, no brass slider thumb. Uniform middle permits horizontal stretching. Ends within left/right 5 of final128 and top/bottom 4 of final12. Place full uncut bar centrally, occupying 90% image width.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-ff4c-7fb0-b991-eb9a042d17c1/exec-2c5f05ec-8cd6-45ee-9d15-54b2fa20b26d.png",
+    "source_sha256": "ea016a3f28d3290d77c7ead58fd895bade584a2ad2cf3df0ed7a2817e2f91aab",
+    "sha256": "659cf09986ce7d58bb5505c7c0ddea46047448dac74d1869b4aaf453e021e7c4",
+    "processing": {
+      "alpha_bbox": {
+        "left": 35,
+        "top": 564,
+        "width": 1229,
+        "height": 83
+      },
+      "resize": [
+        128,
+        12
+      ],
+      "method": "Generated RGBA alpha crop threshold8; Lanczos resize; thumbs centered with 1px transparent border. No painted artwork added.",
+      "transparent_padding": 0
+    },
+    "lane": "tracks"
+  },
+  {
+    "id": "slider_thumb",
+    "file": "assets/slider_thumb.png",
+    "width": 24,
+    "height": 24,
+    "component": "slider_thumb",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Generated raster; slider thumb fixed size. Direction-specific source; no glyphs or text.",
+    "prompt": "Use case: stylized-concept. Single raster game UI component for restrained historical feudal management game. Front-facing orthographic cutout on genuinely transparent background, no perspective, no cast shadow outside the component, no text, no symbols, no extra objects. Low saturation warm oak #674124 dark oak #3c291c and old brass #b29658. Fine painted bevel, simple utilitarian historical craft, no fantasy ornament, no glossy modern plastic. Clean anti-aliased silhouette, transparent rounded corner pixels. Render large enough for clean reduction. One compact SQUARE brass slider thumb handle, aspect ratio1:1. Subtle bevel rounded corners, antique brass flat broad face with only a discreet narrow central vertical grip indentation. Symmetric consistent small edge frame. Designed to sit atop an oak groove at final24x24. No track behind, no screws or elaborate ornament. Full uncut object occupying 85% canvas.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-ff4c-7fb0-b991-eb9a042d17c1/exec-a1e52c89-aad3-4285-a155-ce0ba985750e.png",
+    "source_sha256": "13f4eec450f5f09e88a665681e0963dbedb1df6ecf345faf3d0f84031189755c",
+    "sha256": "bbab90033ca758853fd1dbf4f03ffc5f332908ad7b9598398e5fb53bed53f57b",
+    "processing": {
+      "alpha_bbox": {
+        "left": 119,
+        "top": 144,
+        "width": 1018,
+        "height": 970
+      },
+      "resize": [
+        24,
+        24
+      ],
+      "method": "Generated RGBA alpha crop threshold8; Lanczos resize; thumbs centered with 1px transparent border. No painted artwork added.",
+      "transparent_padding": 1
+    },
+    "lane": "tracks"
+  },
+  {
+    "id": "scrollbar_track",
+    "file": "assets/scrollbar_track.png",
+    "width": 12,
+    "height": 128,
+    "component": "scrollbar_track",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 5,
+    "slice_right": 4,
+    "slice_bottom": 5,
+    "slice_left": 4,
+    "min_width": 12,
+    "min_height": 32,
+    "text_safe": null,
+    "notes": "Generated raster; slider thumb fixed size. Direction-specific source; no glyphs or text.",
+    "prompt": "Use case: stylized-concept. Single raster game UI component for restrained historical feudal management game. Front-facing orthographic cutout on genuinely transparent background, no perspective, no cast shadow outside the component, no text, no symbols, no extra objects. Low saturation warm oak #674124 dark oak #3c291c and old brass #b29658. Fine painted bevel, simple utilitarian historical craft, no fantasy ornament, no glossy modern plastic. Clean anti-aliased silhouette, transparent rounded corner pixels. Render large enough for clean reduction. One very thin VERTICAL scrollbar track, actual component aspect ratio exactly12:128, tall bar running top to bottom. Oak inset groove with narrow left and right oak rails, darker recessed uninterrupted vertical center. End caps simple rounded wood, no handle or arrows. Uniform middle permits vertical stretching. Ends within top/bottom5 of final128 and left/right4 of final12. Place full uncut bar centrally occupying90%image height.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-ff4c-7fb0-b991-eb9a042d17c1/exec-a2855705-5166-419e-a3cd-e7c4815d9509.png",
+    "source_sha256": "a6306d0cdb40db185dcf58453f3828fc35203236827212589f05a5335b46d5a8",
+    "sha256": "08ba2aa30e468574fa52605bf4bc2aa86d7b95b07912f50c1f723b02205f01f3",
+    "processing": {
+      "alpha_bbox": {
+        "left": 560,
+        "top": 44,
+        "width": 92,
+        "height": 1207
+      },
+      "resize": [
+        12,
+        128
+      ],
+      "method": "Generated RGBA alpha crop threshold8; Lanczos resize; thumbs centered with 1px transparent border. No painted artwork added.",
+      "transparent_padding": 0
+    },
+    "lane": "tracks"
+  },
+  {
+    "id": "scrollbar_thumb",
+    "file": "assets/scrollbar_thumb.png",
+    "width": 12,
+    "height": 40,
+    "component": "scrollbar_thumb",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 5,
+    "slice_right": 4,
+    "slice_bottom": 5,
+    "slice_left": 4,
+    "min_width": 12,
+    "min_height": 20,
+    "text_safe": null,
+    "notes": "Generated raster; slider thumb fixed size. Direction-specific source; no glyphs or text.",
+    "prompt": "Use case: stylized-concept. Single raster game UI component for restrained historical feudal management game. Front-facing orthographic cutout on genuinely transparent background, no perspective, no cast shadow outside the component, no text, no symbols, no extra objects. Low saturation warm oak #674124 dark oak #3c291c and old brass #b29658. Fine painted bevel, simple utilitarian historical craft, no fantasy ornament, no glossy modern plastic. Clean anti-aliased silhouette, transparent rounded corner pixels. Render large enough for clean reduction. One elongated VERTICAL scrollbar handle, actual component aspect ratio12:40. Straight tall narrow handle with warm dark oak central face and a slim old brass beveled perimeter. Simple slightly rounded end caps. No decorative repeated symbols, no track, no arrows, no screws. Uniform plain middle so stretch vertically while endcaps fixed. Final left/right4 and top/bottom5 pixels edges. Full uncut object centered occupying85%image height. CRITICAL: handle is a SHORT CHUNKY RECTANGLE, width 30% of height, about 300px wide and 1000px high, NOT A LONG RAIL. No glow, no haze, no aura, no background color, no bloom, no drop shadow; everything outside the clean silhouette must have alpha ZERO. Matte understated brass corners only.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-ff4c-7fb0-b991-eb9a042d17c1/exec-d9f0dedd-92b3-4c30-9618-fd23b0376127.png",
+    "source_sha256": "e3455a5a53101a0413f5ac151bf572b481d7d4b3c3540c1a27cc8f84b81cb16f",
+    "sha256": "b111ee59d9cc5a3695fb8e324e8ef836da7287dc2d717d8ad76870085fb953d5",
+    "processing": {
+      "alpha_bbox": {
+        "left": 388,
+        "top": 90,
+        "width": 305,
+        "height": 1268
+      },
+      "resize": [
+        12,
+        40
+      ],
+      "method": "Generated RGBA alpha crop threshold8; Lanczos resize; thumbs centered with 1px transparent border. No painted artwork added.",
+      "transparent_padding": 1
+    },
+    "lane": "tracks"
+  }
+]
