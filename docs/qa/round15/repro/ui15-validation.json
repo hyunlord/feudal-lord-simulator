@@ -1,0 +1,24 @@
+{
+  "staticJPEG": 18,
+  "matchingMetadata": 18,
+  "sources": [
+    {
+      "source": "/tmp/QA_ROUND_03/repro/saves/normal-ui-1407.json.gz",
+      "unchanged": true
+    },
+    {
+      "source": "/tmp/QA_ROUND_04/repro/saves/normal-ui-1384-before-tax.json.gz",
+      "unchanged": true
+    }
+  ],
+  "urgentZipEntries": 10,
+  "urgentZipCRC": "PASS",
+  "browserClosed": true,
+  "productModified": false,
+  "errors": [],
+  "verdict": {
+    "015": "reproduced",
+    "016": "unverified blocked by invisible content and guild not reached",
+    "020": "same two-line clipping fixed in sampled widths1600/1280/1024"
+  }
+}

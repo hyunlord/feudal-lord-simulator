@@ -1,0 +1,48 @@
+{
+  "round": 15,
+  "head": "3acc04ff5f1eada7d73e2a1a3b0431c22de531ab",
+  "priorHead": "267b43b8e203a64a9971f2b1a53a4eb69d935f73",
+  "srcTree": "e9fd21f3dadab3631950bcb1bdb9401760ca0839",
+  "publicTree": "6d6b7f5b752a73d1a754a6d92879caa3f0872268",
+  "checkout": "/Users/rexxa/fls-qa",
+  "url": "http://127.0.0.1:4830/",
+  "proofMode": false,
+  "productEdits": false,
+  "performanceMeasured": false,
+  "minimumWidth": 1024,
+  "viewports": [
+    [
+      1600,
+      1100
+    ],
+    [
+      1280,
+      720
+    ],
+    [
+      1024,
+      768
+    ]
+  ],
+  "startedAt": "2026-10-01T05:06:40.583Z",
+  "sourceSaves": [
+    {
+      "source": "/tmp/QA_ROUND_03/repro/saves/normal-ui-1407.json.gz",
+      "edited": false,
+      "sha256": "86678ba1102001077d706d3223356792cac68dc279ea5c479c64057bf9a5d15b",
+      "rawSha256": "56eb5064e79ac29354478946fdea762bf3dbc4518a6d91d5dec8ad108a37c3e3"
+    },
+    {
+      "source": "/tmp/QA_ROUND_04/repro/saves/normal-ui-1384-before-tax.json.gz",
+      "edited": false,
+      "sha256": "faa99495902ce46e05fc4143ebefda66e4164070da65347378ec3d8263b033bd",
+      "rawSha256": "21ec4cdc416995db07b196f5791008b528fef0a48d91b36aa8cd24902459183c"
+    }
+  ],
+  "sourceSaveAccess": "immutable bytes via public save adapter then normal Continue; payload not parsed",
+  "historicalBaseline": "/tmp/fls-qa-round03-14-consolidated-lite.zip",
+  "endedAt": "2026-10-01T05:19:41.004Z",
+  "elapsedMinutes": 13.007016666666667,
+  "gitStatusClean": true,
+  "browserAndServersClosed": true
+}
