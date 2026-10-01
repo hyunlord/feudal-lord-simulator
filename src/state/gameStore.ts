@@ -25,6 +25,7 @@ import { famineResponse, respondToPetition } from "../engine/politics";
 import { recordDecision } from "../engine/history";
 import { markChapterPageSeen } from "../engine/politics";
 import { answerCounter, answerWillChange, keepPromise, proposeMarriage } from "../engine/marriage";
+import { answerAudit, answerEstatePetition, setAuditMode, setEstateOversight, setExceptionRules } from "../engine/stewardship";
 import { estatesOf, LORD } from "../engine/estates";
 import { addSuitEvidence, enforcePossession, fileSuit, seekSuitPatron } from "../engine/estateSuits";
 
@@ -152,6 +153,11 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
     case "answer_counter": return answerCounter(state, action.negotiationId, action.accept);
     case "keep_promise": return keepPromise(state, action.promiseId);
     case "answer_will_change": return answerWillChange(state, action.choice);
+    case "set_estate_oversight": return setEstateOversight(state, action.estateId, action.mode, action.stewardId);
+    case "set_exception_rules": return setExceptionRules(state, action.rules);
+    case "answer_estate_petition": return answerEstatePetition(state, action.petitionId, action.grant);
+    case "set_audit_mode": return setAuditMode(state, action.estateId, action.mode);
+    case "answer_audit": return answerAudit(state, action.auditId, action.choice, false, action.replacementId);
     case "place_building": {
       // LM-E1 (TA-1): in lord mode the town builds; the lord places only public works.
       if (lordMode(state) && !LORD_PUBLIC_WORKS.includes(action.kind)) return state;

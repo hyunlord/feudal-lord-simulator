@@ -37,6 +37,7 @@ import type { GameAction } from "../src/state/gameStore.types";
 import { canPlaceBuildingWithZones } from "../src/zones/zonePlacement";
 import { palisadeFootprintsForState } from "../src/engine/palisadeFootprints";
 import { computePalisadeProposal } from "../src/world/palisadeGeometry";
+import { recordCodeBudget } from "./helpers/codeBudget";
 
 // F0-C2 history ledger scenarios (spec docs/design/history-ledger.md HL-1…HL-9), work order H1–H8.
 
@@ -122,7 +123,7 @@ test("H1 each of the twelve decision kinds is recorded: seven as the season's li
   const bundles = records(closed).filter(record => record.template === "decision.bundle").map(record => String(record.params?.decisionKind));
   assert.deepEqual(bundles.sort(), ["build", "cancel", "house", "operation", "road", "zone"]);
   assert.deepEqual(records(closeSeason(prioritised)).filter(record => record.template === "decision.bundle").map(record => record.params?.decisionKind), ["wall_priority"]);
-  assert.equal(DECISION_KINDS.length, 19, "twelve, WALL-2's wall expansion, ARCH-1b's drainage, LM-E1's three lord conditions, LM-E2's suits and LM-E3's marriage");
+  assert.equal(DECISION_KINDS.length, 20, "twelve, WALL-2's wall expansion, ARCH-1b's drainage, LM-E1's three lord conditions, LM-E2's suits, LM-E3's marriage and LM-E4's stewardship");
   assert.equal(before.history, undefined, "the fixture had no ledger");
   assert.equal(historySummary(records(closed).find(record => record.template === "decision.bundle" && record.params?.decisionKind === "build")!), "이번 계절 건물 1곳의 공사를 놓았다");
 });
@@ -240,15 +241,18 @@ test("H7 the chapter page is the ledger's top events and eras and its weightiest
   assert.deepEqual(page.decisions.map(quote => quote.recordId), ["h-000902", "h-000901"]);
 });
 
-test("H8 a query over 10,000 records takes under 5 ms", () => {
+test("H8 a query over 10,000 records answers (its time, budget 5 ms, goes to the DGX trend)", () => {
   const state = { history: syntheticHistory(10_000) };
-  let best = Infinity;
+  // The H8 budget is a wall-clock time, so it is not asserted here: the DGX trend keeps it (docs/verification/wall-clock-tests.md).
+  let best = Infinity; let answered = 0;
   for (let attempt = 0; attempt < 5; attempt += 1) {
     const started = performance.now();
-    historyQuery(state, { severity: 2, kinds: ["event", "era"], actors: [{ type: "town", id: "town" }], range: { from: 5_000, to: 90_000 } });
+    const result = historyQuery(state, { severity: 2, kinds: ["event", "era"], actors: [{ type: "town", id: "town" }], range: { from: 5_000, to: 90_000 } });
     best = Math.min(best, performance.now() - started);
+    answered = result.length;
   }
-  assert.ok(best < 5, `${best.toFixed(2)} ms`);
+  assert.ok(answered > 0, "the query finds records");
+  recordCodeBudget("h8-query-10k", "H8 기록 10,000건 질의 ms", best, 5);
 });
 
 /** A ledger of `seasons` seasons: per season three level-ups, a move-in, a bundle, a milestone and the season line with its thumbnail. */

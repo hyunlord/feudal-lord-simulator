@@ -7,10 +7,18 @@ import { BUILDING_COPY } from "./buildingCatalog.ko";
 import { buildingHistoryName } from "./buildingCatalog.ko";
 import { factionDisplayName, factionReasonLine } from "./factionCopy.ko";
 import { GENTRY_NAMES_KO } from "./gentryNames";
+import { SURNAMES_KO } from "./personNames.ko";
 
 type P = Readonly<Record<string, number | string>>;
 const n = (params: P, key: string): number => Number(params[key] ?? 0);
 const s = (params: P, key: string): string => String(params[key] ?? "");
+
+/** LM-E4: an off-map estate by its house's name, an estate petition's subject, an exception's rule. */
+const estateWord = (house: string) => `${SURNAMES_KO[house] ?? house} 영지`;
+const ESTATE_PETITION_KO: Readonly<Record<string, string>> = { rent_relief: "소작인의 지대 감면 청원", market_dues: "상인의 장세 인하 청원", repair: "제방·헛간 수리 청원",
+  common_dispute: "공유지 다툼", charter_request: "상인의 특허 청원", marriage_licence: "소작인 딸의 혼인 허가" };
+const estatePetitionWord = (kind: string) => ESTATE_PETITION_KO[kind] ?? kind;
+const EXCEPTION_RULE_KO: Readonly<Record<string, string>> = { amount: "정한 금액 이상", rights: "권리 변경", marriage: "혼인" };
 
 /** FIX-12 (item 2): who the groom of a marriage contract is to the lord. */
 export const GROOM_RELATION_KO: Readonly<Record<string, string>> = {
@@ -19,7 +27,7 @@ export const GROOM_RELATION_KO: Readonly<Record<string, string>> = {
 
 /** FIX-12 (item 4): the word a sentence uses for a person no reader can name (the record keeps only the id). */
 export const PERSON_NAME_FALLBACK: Readonly<Record<string, string>> = {
-  lord: "영주", guardian: "후견인", candidate: "", heir: "후계자", mayor: "", leader: "새 수장", predecessor: "수장",
+  lord: "영주", guardian: "후견인", candidate: "", heir: "후계자", mayor: "", leader: "새 수장", predecessor: "수장", steward: "청지기",
 };
 
 // BLD-REG: a building's name in the ledger's sentences is its catalog line (`buildingCatalog.ko.ts` `history`).
@@ -212,6 +220,29 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
     return `${factionDisplayName(s(params, "faction"), s(params, "name"))}의 ${before}${josa(before, "이", "가")} 세상을 떠나 ${next}${josa(next, "이", "가")} 무리를 이끈다`; },
   "petition.representative_replaced": params => { const before = s(params, "predecessor"), next = s(params, "leader");
     return `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}의 대표 ${before}${josa(before, "이", "가")} ${s(params, "gone") === "left" ? "마을을" : "세상을"} 떠나 ${next}${josa(next, "이", "가")} 대신 나섰다`; },
+  // LM-E4 (SW-2…SW-7): the off-map estates' oversight; the steward is named from his id when read.
+  "stewardship.began": params => `${estateWord(s(params, "house"))}${josa(estateWord(s(params, "house")), "이", "가")} 영주의 손에 들어왔다 — 영주가 직접 보고, ${s(params, "steward")}${josa(s(params, "steward"), "이", "가")} 장부를 맡는다`,
+  "stewardship.oversight": params => s(params, "mode") === "steward" ? `${estateWord(s(params, "house"))}${josa(estateWord(s(params, "house")), "을", "를")} 청지기 ${s(params, "steward")}에게 맡겼다`
+    : `${estateWord(s(params, "house"))}${josa(estateWord(s(params, "house")), "을", "를")} 영주가 직접 본다 — 장부는 ${s(params, "steward")}`,
+  "stewardship.audit_mode": params => `${estateWord(s(params, "house"))}의 미카엘마스 감사: ${s(params, "mode") === "visit" ? "영주가 직접 찾아간다" : "장부로 받는다"}`,
+  "stewardship.rules": params => { const parts = [...(n(params, "amount") >= 0 ? [`${moneyWords(n(params, "amount"))} 이상`] : []), ...(n(params, "rights") === 1 ? ["권리 변경"] : []), ...(n(params, "marriage") === 1 ? ["혼인"] : [])];
+    return parts.length === 0 ? "예외를 거뒀다: 청지기가 모두 정한다" : `예외를 정했다: ${parts.join("·")}${josa(parts.at(-1)!, "은", "는")} 영주에게`; },
+  "stewardship.season": params => `${estateWord(s(params, "house"))}의 한 철 — 장부상 수입 ${moneyWords(n(params, "reported"))}${n(params, "overloaded") === 1 ? " (영주의 눈이 닿지 못함)" : ""}`,
+  "stewardship.steward_decided": params => s(params, "kind") === "common_dispute"
+    ? `청지기 ${s(params, "steward")}${josa(s(params, "steward"), "이", "가")} 공유지 다툼에서 ${n(params, "granted") === 1 ? "소작인" : "상인"} 편을 들었다`
+    : `청지기 ${s(params, "steward")}${josa(s(params, "steward"), "이", "가")} ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "을", "를")} ${n(params, "granted") === 1 ? "허락했다" : "기각했다"}`,
+  "stewardship.escalated": params => `청지기 ${s(params, "steward")}${josa(s(params, "steward"), "이", "가")} ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "을", "를")} 영주에게 올렸다 — ${EXCEPTION_RULE_KO[s(params, "rule")] ?? s(params, "rule")}`,
+  "stewardship.brought": params => `${estateWord(s(params, "house"))}의 ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "이", "가")} 영주에게 왔다${n(params, "late") === 1 ? " — 한 철 늦게 닿는다" : ""}`,
+  "stewardship.lord_decided": params => s(params, "kind") === "common_dispute"
+    ? `영주가 ${estateWord(s(params, "house"))}의 공유지 다툼에서 ${n(params, "granted") === 1 ? "소작인" : "상인"} 편을 들었다`
+    : `영주가 ${estateWord(s(params, "house"))}의 ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "을", "를")} ${n(params, "granted") === 1 ? "허락했다" : "기각했다"}`,
+  "stewardship.lapsed": params => `${estateWord(s(params, "house"))}의 ${estatePetitionWord(s(params, "kind"))}에 답하지 않았다 — 기다리다 거둬졌다`,
+  "stewardship.audit_clean": params => `미카엘마스 감사(${s(params, "mode") === "visit" ? "방문" : "장부"}): ${estateWord(s(params, "house"))}의 장부가 맞았다`,
+  "stewardship.audit_found": params => `미카엘마스 감사(${s(params, "mode") === "visit" ? "방문" : "장부"}): 청지기 ${s(params, "steward")}의 장부에서 ${moneyWords(n(params, "kept") + n(params, "errors"))}${josa(moneyWords(n(params, "kept") + n(params, "errors")), "이", "가")} 비었다 — 빼돌림 ${moneyWords(n(params, "kept"))}, 잘못 ${moneyWords(n(params, "errors"))}`,
+  "stewardship.audit_answered": params => s(params, "choice") === "punished" ? (n(params, "recovered") > 0
+    ? `영주가 청지기 ${s(params, "steward")}${josa(s(params, "steward"), "을", "를")} 벌하고 ${moneyWords(n(params, "recovered"))}${josa(moneyWords(n(params, "recovered")), "을", "를")} 되찾았다`
+    : `영주가 청지기 ${s(params, "steward")}${josa(s(params, "steward"), "을", "를")} 장부의 잘못으로 벌했다`)
+    : s(params, "choice") === "replaced" ? `영주가 청지기 ${s(params, "steward")}${josa(s(params, "steward"), "을", "를")} 갈았다` : `영주가 청지기 ${s(params, "steward")}의 장부를 묵인했다`,
   "faction.relation": params => `${factionDisplayName(s(params, "faction"), s(params, "name"))}의 마음이 ${n(params, "delta") > 0 ? "누그러졌다" : "돌아섰다"}(${n(params, "delta") > 0 ? "+" : ""}${n(params, "delta")}, 이제 ${n(params, "relation")}) — ${factionReasonLine(s(params, "reason"))}`,
   // FAIL-3 (FL-5…FL-8): the lordship's fall and the chapter's turn.
   "decline.entered": params => `영지가 쇠퇴했다 — ${DECLINE_CAUSES[s(params, "cause")] ?? s(params, "cause")}, ${s(params, "right") === "none" ? "잃은 권리 없이" : `${LORD_RIGHT_NAMES[s(params, "right")] ?? s(params, "right")}${josa(LORD_RIGHT_NAMES[s(params, "right")] ?? "", "을", "를")} ${s(params, "by") === "overlord" ? "상위 영주가 맡았고" : "상인들이 가져갔고"}`} 칭호가 강등되었다`,

@@ -41,6 +41,8 @@ export const LEDGER_CATEGORY_LABELS = {
   project_subsidy: "사업 장려금",
   lawsuit: "소송 비용",
   marriage_portion: "혼인 계약금",
+  estate_income: "영지 수입",
+  audit_recovery: "감사로 되찾은 돈",
   promise_payment: "약속 이행 지급",
   famine_sale: "기근 곡물 판매",
   charter_fee: "특허 대가",

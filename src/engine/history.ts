@@ -16,6 +16,7 @@
  *   128² thumbnails that old are kept only at a year's end (winter's close). Everything else stays for good.
  */
 import { WITNESS_RELATION_LOSS } from "../content/diplomacyConfig";
+import { PUNISH_CONNECTION_RELATION, PUNISH_RECOVERY } from "../content/stewardshipConfig";
 import { estatesOf } from "./estates";
 import { PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
 import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
@@ -68,7 +69,9 @@ export const DECISION_KINDS = ["build", "road", "zone", "house", "cancel", "oper
   // LM-E2 (ES-7): the lord's suit commands (the suit's own course is in the ledger as `estate.*` events).
   "lawsuit",
   // LM-E3 (NG-7): the marriage — the offer, the answer to a counter, a promise kept, the will-change answer.
-  "marriage"] as const;
+  "marriage",
+  // LM-E4 (SW-2, SW-4…SW-6): an estate's oversight, the exceptions, an estate petition answered, the audit's mode and answer.
+  "stewardship"] as const;
 export type DecisionKind = (typeof DECISION_KINDS)[number];
 /** HL-3: the big five, one record each with alternatives, a prediction and (later) the actual. */
 export const BIG_DECISION_KINDS: readonly DecisionKind[] = ["market_town", "stone_town", "famine_response", "petition_response", "rebuild", "wall_expand", "drainage",
@@ -87,6 +90,7 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   set_estate_policy: "estate_policy", set_project_subsidy: "project_subsidy", set_market_dues: "market_dues",
   file_suit: "lawsuit", add_suit_evidence: "lawsuit", seek_suit_patron: "lawsuit", enforce_possession: "lawsuit",
   propose_marriage: "marriage", answer_counter: "marriage", keep_promise: "marriage", answer_will_change: "marriage",
+  set_estate_oversight: "stewardship", set_exception_rules: "stewardship", answer_estate_petition: "stewardship", set_audit_mode: "stewardship", answer_audit: "stewardship",
 };
 
 /** HL-2 ③: buildings whose first completion is a milestone. */
@@ -213,7 +217,8 @@ export function recordDecision(before: GameState, reduced: GameState, command: {
   const kind = DECISION_KIND_BY_COMMAND[command.type];
   if (kind === undefined || reduced === before) return reduced;
   // LM-E2 (ES-7): a suit command's effect (a suit filed, evidence, a patron, an enforcement) is in the ledger as well.
-  const lines = kind === "lawsuit" ? estateDrafts(before, reduced) : kind === "marriage" ? [...diplomacyDrafts(before, reduced), ...estateDrafts(before, reduced)] : [];
+  const lines = kind === "lawsuit" ? estateDrafts(before, reduced) : kind === "marriage" ? [...diplomacyDrafts(before, reduced), ...estateDrafts(before, reduced)]
+    : kind === "stewardship" ? stewardshipDrafts(before, reduced) : [];
   const after = lines.length === 0 ? reduced : { ...reduced, history: append(historyOf(reduced), lines) };
   // LM-E1b (TA-6 ②): a subsidy refused is no decision; the ledger keeps its reason as an event.
   const refusal = after.agency?.lastRefusal;
@@ -795,6 +800,8 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   drafts.push(...estateDrafts(before, after));
   // LM-E3 (NG-5…NG-8): offers, counters, promises and the marriage's stages that changed this tick.
   drafts.push(...diplomacyDrafts(before, after));
+  // LM-E4 (SW-7, SW-6): the off-map estates' seasons, their petitions and Michaelmas.
+  drafts.push(...stewardshipDrafts(before, after));
   // ARCH-1b (MA-11): a drainage works finished — its cells are meadow now.
   for (const work of finishedDrainage(before, after)) {
     const cell = work.cells[0]!;
@@ -900,6 +907,73 @@ export function chapterPageRecords(state: Pick<GameState, "history">, fromTick: 
  * let go, a promise made, kept or broken (a broken one also moves each witness faction's relation, its memory), and
  * each of the marriage's middle events.
  */
+/**
+ * LM-E4 (SW-2…SW-7): what changed in the oversight — an estate taken in hand, its mode or steward, the exceptions, a
+ * season's accounts, a petition the steward answered or brought up, one the lord answered or let lapse, an audit and
+ * its answer (a punished steward's faction remembers it).
+ */
+function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
+  if (after.stewardship === before.stewardship || after.stewardship === undefined) return [];
+  const was = before.stewardship;
+  const now = after.stewardship;
+  const drafts: Draft[] = [];
+  const house = (estateId: string) => estatesOf(after).estates.find(estate => estate.id === estateId)?.name ?? estateId;
+  const line = (template: string, params: Record<string, string | number>, severity: 0 | 1 | 2 = 1) =>
+    drafts.push({ tick: after.tick, kind: "event", template, subject: TOWN, severity, params });
+  for (const oversight of now.oversight) {
+    if (was?.oversight.some(entry => entry.estateId === oversight.estateId) !== true) {
+      line("stewardship.began", { estate: oversight.estateId, house: house(oversight.estateId), stewardId: oversight.stewardId }, 2);
+    }
+  }
+  const rules = now.rules, oldRules = was?.rules;
+  if (oldRules !== undefined && (oldRules.amountAtLeast !== rules.amountAtLeast || oldRules.rights !== rules.rights || oldRules.marriage !== rules.marriage)) {
+    line("stewardship.rules", { amount: rules.amountAtLeast ?? -1, rights: rules.rights ? 1 : 0, marriage: rules.marriage ? 1 : 0 });
+  }
+  for (const summary of now.summaries.filter(entry => !(was?.summaries ?? []).includes(entry))) {
+    line("stewardship.season", { house: house(summary.estateId), reported: summary.reported, mode: summary.mode, overloaded: summary.overloaded ? 1 : 0 }, 0);
+  }
+  for (const petition of now.petitions) {
+    const old = was?.petitions.find(entry => entry.id === petition.id);
+    const stewardId = now.oversight.find(entry => entry.estateId === petition.estateId)?.stewardId ?? "";
+    if (old === undefined && petition.decidedBy === "steward") {
+      line("stewardship.steward_decided", { stewardId, kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 0);
+    } else if (old === undefined && petition.escalated !== undefined && petition.escalated !== "direct") {
+      line("stewardship.escalated", { stewardId, kind: petition.kind, rule: petition.escalated, amount: petition.amount });
+    } else if (old === undefined && petition.escalated === "direct") {
+      line("stewardship.brought", { house: house(petition.estateId), kind: petition.kind, late: petition.reachesLord === undefined ? 0 : 1, amount: petition.amount }, 0);
+    } else if (old !== undefined && old.status === "open" && petition.status !== "open") {
+      line(petition.status === "lapsed" ? "stewardship.lapsed" : "stewardship.lord_decided", { house: house(petition.estateId), kind: petition.kind, granted: petition.status === "granted" ? 1 : 0 });
+    }
+  }
+  // An audit's answer before the steward it brings in.
+  for (const audit of now.audits) {
+    const old = was?.audits.find(entry => entry.id === audit.id);
+    if (old === undefined) {
+      line(audit.status === "clean" ? "stewardship.audit_clean" : "stewardship.audit_found",
+        { house: house(audit.estateId), stewardId: audit.stewardId, mode: audit.mode, kept: audit.revealedKept, errors: audit.revealedErrors }, 2);
+    } else if (old.status === "pending" && audit.status !== "pending") {
+      line("stewardship.audit_answered", { stewardId: audit.stewardId, choice: audit.status, recovered: audit.status === "punished" ? Math.round(audit.revealedKept * PUNISH_RECOVERY / 1000) : 0 }, 2);
+      // A punished steward's faction remembers it (its relation moves through the ledger).
+      const connection = now.stewards.find(entry => entry.personId === audit.stewardId)?.connection ?? null;
+      const faction = connection === null ? undefined : after.factions?.factions.find(entry => entry.id === connection);
+      if (audit.status === "punished" && faction !== undefined) {
+        drafts.push({ tick: after.tick, kind: "faction", template: "faction.relation", subject: { type: "faction", id: faction.id }, severity: 1,
+          params: { faction: faction.id, name: faction.name, delta: PUNISH_CONNECTION_RELATION, reason: `steward_punished:${audit.id}`,
+            relation: Math.max(-100, Math.min(100, faction.relation + PUNISH_CONNECTION_RELATION)) } });
+      }
+    }
+  }
+  for (const oversight of now.oversight) {
+    const old = was?.oversight.find(entry => entry.estateId === oversight.estateId);
+    if (old === undefined) continue;
+    if (old.mode !== oversight.mode || old.stewardId !== oversight.stewardId) {
+      line("stewardship.oversight", { estate: oversight.estateId, house: house(oversight.estateId), mode: oversight.mode, stewardId: oversight.stewardId });
+    }
+    if (old.auditMode !== oversight.auditMode) line("stewardship.audit_mode", { house: house(oversight.estateId), mode: oversight.auditMode });
+  }
+  return drafts;
+}
+
 function diplomacyDrafts(before: GameState, after: GameState): Draft[] {
   if (after.diplomacy === before.diplomacy || after.diplomacy === undefined) return [];
   const was = before.diplomacy;

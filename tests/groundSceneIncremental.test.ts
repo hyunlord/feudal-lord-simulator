@@ -30,10 +30,20 @@ function withRoad(state: GameState, ty: number, count: number): GameState {
   }) };
 }
 
+/**
+ * The stepped build spends a 4 ms budget per frame, read on performance.now(): on the real clock how many frames a
+ * build takes depends on the machine and its load (docs/verification/wall-clock-tests.md). Here the clock is a counter that moves
+ * 1 ms at each read, so every step costs the same and the frame counts are the same everywhere.
+ */
 function live(run: () => void): void {
+  const realNow = performance.now; let fakeMs = 0;
+  performance.now = () => (fakeMs += 1);
   setGroundSceneReverseInput(false); // drops the cached scene
   setGroundSceneZoneDeferral(true); setGroundSceneIncrementalBuild(true);
-  try { run(); } finally { setGroundSceneZoneDeferral(false); setGroundSceneIncrementalBuild(false); setGroundSceneReverseInput(false); }
+  try { run(); } finally {
+    setGroundSceneZoneDeferral(false); setGroundSceneIncrementalBuild(false); setGroundSceneReverseInput(false);
+    performance.now = realNow;
+  }
 }
 
 /** Frames until the scene is no longer `shown`: the scenes returned on the way and the number of frames. */

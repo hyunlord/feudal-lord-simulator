@@ -17,6 +17,7 @@ import {
 } from "../src/render/houseVariantChoice";
 import { beginHouseVariantFrame } from "../src/render/wave26HouseArt";
 import { WAVE26_HOUSE_IMAGES, WAVE26_HOUSE_VARIANTS } from "../src/render/wave26HouseManifest.generated";
+import { recordCodeBudget } from "./helpers/codeBudget";
 
 // INSTALL-26 the Wave 26 house variants: install consistency, the per-household choice and its weights, the state layers.
 
@@ -210,7 +211,7 @@ test("state layers: fresh two seasons after completion or while awaiting its hou
   assert.equal(houseStateLayer(1_500, house("a", 1, { foodShortSinceTick: 1_200 }), completions.get("a")), "fresh");
 });
 
-test("frame cache: remade only when its inputs change; measured on a 400-house, 2,000-person town", () => {
+test("frame cache: entries and assignments for a 400-house, 2,000-person town (its times go to the DGX trend)", () => {
   const ids = Array.from({ length: 400 }, (_, index) => `t${index}`);
   const state = {
     seed: 21, buildings: ids.map((id, index) => building(id, (index % 20) * 2, Math.floor(index / 20) * 2)),
@@ -231,5 +232,11 @@ test("frame cache: remade only when its inputs change; measured on a 400-house, 
   const newTickMs = performance.now() - start;
   console.log(`# INSTALL-26 frame cache: entries ${entriesMs.toFixed(2)} ms, push ${pushMs.toFixed(2)} ms, held frame ${heldMs.toFixed(4)} ms, new houses array ${newTickMs.toFixed(2)} ms`);
   assert.equal(entries.length, 400);
-  assert.ok(entriesMs < 50 && pushMs < 100 && heldMs < 0.5 && newTickMs < 50);
+  // The INSTALL-26 budgets are wall-clock times (one failed a clean clone on a loaded DGX, FIX-11), so the DGX trend
+  // keeps them (docs/verification/wall-clock-tests.md). Whether a held frame is really reused cannot be seen without the clock until
+  // the frame cache tells (render session, listed there).
+  recordCodeBudget("install26-entries", "INSTALL-26 집 400채 항목 ms", entriesMs, 50);
+  recordCodeBudget("install26-assign", "INSTALL-26 집 그림 배정 ms", pushMs, 100);
+  recordCodeBudget("install26-held", "INSTALL-26 같은 입력 프레임 ms", heldMs, 0.5);
+  recordCodeBudget("install26-new-houses", "INSTALL-26 새 집 배열 프레임 ms", newTickMs, 50);
 });

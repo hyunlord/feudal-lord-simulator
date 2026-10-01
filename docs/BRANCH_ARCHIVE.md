@@ -27,3 +27,11 @@
 | 브랜치 | 본선에 없는 커밋 | 마지막 날짜 |
 |---|---|---|
 | `claude/c4-ale-chain` | 19 | 2026-09-28 |
+
+## 2026-10-02 로컬 브랜치 정리 (본선 `ff2a5c51` 기준)
+
+원격에 없던 로컬 브랜치다. 어느 워크트리에서도 체크아웃 중이 아니고(`git worktree list`), 끝 커밋이 본선의 조상이라 지웠다. 끝 커밋은 위 표의 `codex/phase14-scale-occlusion-performance`와 같다.
+
+| 브랜치 | 끝 커밋 | 마지막 날짜 | 마지막 커밋 제목 |
+|---|---|---|---|
+| `hyunlord/organic-curved-land-design` | `251f397eb6646b81fd1dda0597255ee474806b49` | 2026-08-10 | Bind the Phase 14 report to its public deployment |
