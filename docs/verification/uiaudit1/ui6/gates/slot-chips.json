@@ -1,0 +1,478 @@
+{
+ "url": "http://127.0.0.1:4307/",
+ "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+ "failures": [],
+ "result": {
+  "desktop-1600x1100": {
+   "goal-unfolded": {
+    "panel": {
+     "x": 8,
+     "y": 75,
+     "width": 220,
+     "height": 150
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 1548,
+       "y": 76,
+       "width": 44,
+       "height": 44
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 1441,
+       "y": 126,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "goal-log": {
+    "panel": {
+     "x": 1252,
+     "y": 76,
+     "width": 340,
+     "height": 189
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 1200,
+       "y": 76,
+       "width": 44,
+       "height": 44
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 1093,
+       "y": 126,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "ledger": {
+    "panel": {
+     "x": 1112,
+     "y": 76,
+     "width": 480,
+     "height": 560
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 1060,
+       "y": 76,
+       "width": 44,
+       "height": 44
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 953,
+       "y": 126,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "population": {
+    "panel": {
+     "x": 1252,
+     "y": 76,
+     "width": 340,
+     "height": 18
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 1200,
+       "y": 76,
+       "width": 44,
+       "height": 44
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 1093,
+       "y": 126,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "inspector": {
+    "panel": {
+     "x": 1252,
+     "y": 76,
+     "width": 340,
+     "height": 207
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 1200,
+       "y": 76,
+       "width": 44,
+       "height": 44
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 1093,
+       "y": 126,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   }
+  },
+  "desktop-1280x800": {
+   "goal-unfolded": {
+    "panel": {
+     "x": 8,
+     "y": 75,
+     "width": 220,
+     "height": 150
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 1228,
+       "y": 76,
+       "width": 44,
+       "height": 44
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 1121,
+       "y": 126,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "goal-log": {
+    "panel": {
+     "x": 932,
+     "y": 76,
+     "width": 340,
+     "height": 189
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 880,
+       "y": 76,
+       "width": 44,
+       "height": 44
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 773,
+       "y": 126,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "ledger": {
+    "panel": {
+     "x": 792,
+     "y": 76,
+     "width": 480,
+     "height": 560
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 740,
+       "y": 76,
+       "width": 44,
+       "height": 44
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 633,
+       "y": 126,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "population": {
+    "panel": {
+     "x": 932,
+     "y": 76,
+     "width": 340,
+     "height": 18
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 880,
+       "y": 76,
+       "width": 44,
+       "height": 44
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 773,
+       "y": 126,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "inspector": {
+    "panel": {
+     "x": 932,
+     "y": 76,
+     "width": 340,
+     "height": 207
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 880,
+       "y": 76,
+       "width": 44,
+       "height": 44
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 773,
+       "y": 126,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   }
+  },
+  "tablet-1180x820": {
+   "goal-unfolded": {
+    "panel": {
+     "x": 8,
+     "y": 79,
+     "width": 220,
+     "height": 158
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 1124,
+       "y": 80,
+       "width": 48,
+       "height": 48
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 1021,
+       "y": 134,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "goal-log": {
+    "panel": {
+     "x": 832,
+     "y": 80,
+     "width": 340,
+     "height": 189
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 776,
+       "y": 80,
+       "width": 48,
+       "height": 48
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 673,
+       "y": 134,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "ledger": {
+    "panel": {
+     "x": 620,
+     "y": 80,
+     "width": 552,
+     "height": 560
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 564,
+       "y": 80,
+       "width": 48,
+       "height": 48
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 461,
+       "y": 134,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "population": {
+    "panel": {
+     "x": 832,
+     "y": 80,
+     "width": 340,
+     "height": 18
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 776,
+       "y": 80,
+       "width": 48,
+       "height": 48
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 673,
+       "y": 134,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   },
+   "inspector": {
+    "panel": {
+     "x": 832,
+     "y": 80,
+     "width": 340,
+     "height": 207
+    },
+    "panelTopmost": true,
+    "chips": [
+     {
+      "text": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "box": {
+       "x": 776,
+       "y": 80,
+       "width": 48,
+       "height": 48
+      },
+      "topmost": true
+     },
+     {
+      "text": "인두세 징수",
+      "box": {
+       "x": 673,
+       "y": 134,
+       "width": 151,
+       "height": 44
+      },
+      "topmost": true
+     }
+    ]
+   }
+  }
+ }
+}

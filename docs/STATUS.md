@@ -1,12 +1,17 @@
 # 현재 상태
 
-갱신: 2026-10-01(LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-10-01(UI-AUDIT-1 · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
+- **UI-AUDIT-1 모든 화면의 삐져나옴·넘침(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시, INSTALL-30~33 다음·LAND-UI 앞): [보고서](verification/uiaudit1/REPORT.md), 결정 UIAUDIT-D1~D7.
+  - 틀 두께·안쪽 여백을 한 토큰으로(틀 33종, 안전 여백 + 8 px), 표면 등록부 93줄 + 누락 검사, DGX 기하 감사(세 해상도 × 1.4배 글 × 극단 숫자 996칸), 병합 전 검사가 기준 목록(1,104 → 24 → 0, 줄기만)·예외 1·새 실패를 막음.
+  - 실패 4,887(본선) → 0(예외 1). 인물 카드(사용자 사진의 다섯 가지)·결정 카드·HUD·장부·연대기·지도 선택 카드·설정·목표 서랍·원인 범례 고침.
+  - 돈은 화면에서 "£160 3s"(장부·누름은 펜스까지), 한 곳에 묶인 물자 경고 칩(누르면 그 건물로). 엔진 FIX-11: 묶인 물자 API·돈 문구 넷·같은 이름 호칭.
+  - 관문: 등록부 누락 0 · 기하 감사 996칸 실패 0(예외 1) · 스킨 감사 0 / 1275 · 면적 세 번 · 튜토리얼 22 = 22·터치·입력 14/14·포커스 · 깨끗한 클론 `249f7dfa` 4,100/4,100·build.
 - **추이 문서 뒤처짐 경고·NAT-2 힙 확인 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 RR4)
   - `check:merge`가 추이 문서가 본선 머리보다 10개 넘게 뒤처지면 경고 한 줄을 찍는다(실패 아님, `<git common dir>/fls-trend-lag.log`에 쌓임). 합치는 세션이 `npm run perf:trend`로 갱신하고, 경고가 쌓이면 인프라 세션이 모아 커밋한다.
   - NAT-2 뒤 JS 힙 증가는 없었다: Mac A-B-A-B([기록](verification/perf-ab/2026-09-30-2310-00df3324-8ebdcf5c.md))에서 힙 끝 85.3 → 81.1 MB(소음 안), 할당 −13 %·GC −39 %(좋아짐). 추이의 표시는 GC 톱니 위 한 점을 잰 탓이었다. 밉맵 캐시는 JS 힙 밖(픽셀 0~2.1 MB)이다.
