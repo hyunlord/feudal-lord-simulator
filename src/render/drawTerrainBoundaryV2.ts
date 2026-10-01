@@ -141,8 +141,9 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const landToken = (plan: GroundChunkPlan, at: SeasonIndex): string => (land === null ? "" : landChunkToken(land, plan, scene.shore, at));
   const groundRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
     id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}${landToken(plan, season)}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
-    // Same ground base = the chunk only changed its zones: its old raster may stand in until the frame budget allows.
-    deferKey: `${plan.groundBaseKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, fade,
+    // Same local ground = the chunk only changed its zones, or a water loop changed elsewhere: its old raster may stand
+    // in until the frame budget allows (groundSceneParts.ts groundLocalKey).
+    deferKey: `${plan.groundLocalKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, fade,
   });
   const roadRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
     id: `roads:${plan.cx},${plan.cy}`, contentKey: `${plan.roadKey}|${readiness}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),

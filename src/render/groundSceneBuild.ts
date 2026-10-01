@@ -10,7 +10,7 @@ import { buildZoneLayer } from "./zoneLayer";
 import { buildingRoadAccessTiles } from "../engine/routing";
 import { buildingGroundsSteps } from "../world/boundary/buildingGrounds";
 import { yardProps } from "../world/boundary/yardProps";
-import { shoreline } from "../world/boundary/shoreline";
+import { shoreline, type Shoreline } from "../world/boundary/shoreline";
 import {
   GROUND_CHUNK_TILES, PRIMITIVE_MARGIN, TILE_RING, apronKeepOut, bridgeSpans, chunkTileBounds, overlaps, pointInPolygon, terrainCode, waterSideWalls,
   zoneChunkKey, type GroundBoundaryScene, type GroundChunkPlan,
@@ -161,6 +161,14 @@ export function* groundSceneSteps(state: GameState, reverseInput = false, ground
         ...(yards.length + aprons.length === 0 ? [] : [-7, ...yards.map(index => built.yards[index]?.hash ?? 0), -8, ...aprons.map(index => built.aprons[index]?.hash ?? 0)]),
         ...(beds.length === 0 ? [] : [-9, ...beds.map(index => yard.beds[index]?.hash ?? 0)]),
       ]);
+      const groundLocalKey = hashNumbers([
+        state.seed, enclosing % 2, ...tileValues,
+        ...(waterLoops.length === 0 && !waterParity ? [] : [-10, waterParity ? 1 : 0, ...waterLoops.map(index => localLoopHash(shore.loops[index], box, centre))]),
+        ...forestLoops.flatMap(index => [forest.loops[index]?.hash ?? 0, forestDecalHashes[index] ?? 0]),
+        ...fieldIndexes.flatMap(index => [fields[index]?.hash ?? 0, fieldDecalHashes[index] ?? 0]),
+        ...(yards.length + aprons.length === 0 ? [] : [-7, ...yards.map(index => built.yards[index]?.hash ?? 0), -8, ...aprons.map(index => built.aprons[index]?.hash ?? 0)]),
+        ...(beds.length === 0 ? [] : [-9, ...beds.map(index => yard.beds[index]?.hash ?? 0)]),
+      ]);
       const groundKey = hashNumbers([groundBaseKey, ...zonePart(box, zoneIndexes, zoneChains)]);
       const roadKey = hashNumbers([
         strips, ribbons.width,
@@ -175,12 +183,26 @@ export function* groundSceneSteps(state: GameState, reverseInput = false, ground
       ]);
       chunks.push({
         cx, cy, forestLoops, forestParity: enclosing % 2 === 1, waterLoops, waterParity, fieldClusters: fieldIndexes, zoneIndexes, zoneChains, yards, aprons, beds, arableBands, chains, fixedPoints, plazas,
-        groundKey, groundBaseKey, roadKey, hasRoads: chains.length + fixedPoints.length + plazas.length > 0,
+        groundKey, groundBaseKey, groundLocalKey, roadKey, hasRoads: chains.length + fixedPoints.length + plazas.length > 0,
       });
     }
     yield "chunks";
   }
   return scene();
+}
+
+/**
+ * A water loop as one chunk sees it: its line within reach of the chunk, its land side, and the centre's side. Its
+ * decals are left out: they are placed from the whole loop's hash, so any change anywhere on the loop moves them all
+ * (the content key, which keeps drawHash, still re-rasters the chunk for them).
+ */
+function localLoopHash(loop: Shoreline["loops"][number] | undefined, box: BoundaryBounds, centre: { readonly x: number; readonly y: number }): number {
+  if (loop === undefined) return 0;
+  const reach = { left: box.left - PRIMITIVE_MARGIN, top: box.top - PRIMITIVE_MARGIN, right: box.right + PRIMITIVE_MARGIN, bottom: box.bottom + PRIMITIVE_MARGIN };
+  const near = (point: { readonly x: number; readonly y: number }) => point.x >= reach.left && point.x <= reach.right && point.y >= reach.top && point.y <= reach.bottom;
+  const values: number[] = [loop.landSide, pointInPolygon(centre, loop.smoothed) ? 1 : 0];
+  loop.smoothed.forEach((point, index) => { if (near(point)) values.push(index === 0 ? -1 : 0, point.x, point.y, loop.walled[index] === true ? 1 : 0); });
+  return hashNumbers(values);
 }
 
 function now(): number { return typeof performance === "undefined" ? 0 : performance.now(); }
