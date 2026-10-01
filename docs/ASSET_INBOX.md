@@ -41,7 +41,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-10-01 20시 갱신)
+## 3. 현재 장부 요약 (2026-10-02 01시 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -54,6 +54,7 @@ assets-inbox/
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
 | `lineage` | 374 |  | 333 |  | 41 |  |  | 260 |
 | `lineage-pilot` | 117 |  | 79 |  | 30 | 8 |  | 66 |
+| `lord-components` | 43 |  | 43 |  |  |  |  | 0 |
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
 | `portrait-pool` | 340 |  | 340 |  |  |  |  | 304 |
 | `retired` | 29 |  |  |  |  |  | 29 | 16 |
@@ -104,7 +105,7 @@ assets-inbox/
 | `wave8` | 41 |  | 40 |  | 1 |  |  | 37 |
 | `wave9` | 52 |  | 45 |  | 4 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **4668** | **0** | **3432** | **0** | **263** | **937** | **36** | **1950** |
+| **합계** | **4711** | **0** | **3475** | **0** | **263** | **937** | **36** | **1950** |
 
 ## 4. 찾는 법
 
@@ -229,6 +230,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-wave38-candidates.zip` (09-30 20:20, 10-01에 받음) | `wave38/candidates-20260930` | 913 KB | `3cbdfb969a1c07c4…` | 121 | 0 | 없음(참조는 ZIP에 없음) | `assets/`·`proofs/`는 그대로, `README.md`·`QA_CHECKLIST.md`·`assets.csv`·`SHA256SUMS`·`provenance/`·`qa/`는 `records/` 아래로. 9-30에 판정만 하고 inbox에 넣지 않았던 것을 재작업 묶음과 함께 받음. 작업 폴더 `/tmp/astra-wave38-work`(16MB, 참조 사본·생성 원본 포함)은 `astra-raw/output/astra-wave38-work-20260930`에 보관
 | `/tmp/astra-wave40-with-wave38-rework-20261001.zip` (10-01 19:46) 중 `wave38-rework/` | `wave38/rework-20261001` | 6,569 KB(묶음 전체) | `b0ff022ba4ef66fa…` | 17 | 0 | `reference/`(원본 Wave 38 11장, 바이트 같음) 제외 | `9slice-proof.png`·`comparison.jpg` → `proofs/`, 나머지 기록은 `records/`. 묶음 맨 위 `README.md`·`SHA256SUMS`는 두 묶음의 `records/`에 같은 사본. 작업 폴더 `/tmp/astra-wave40-work`(9.2MB, 두 묶음 공용)은 `astra-raw/output/astra-wave40-work-20261001`에 보관
 | 같은 ZIP 중 `wave40/` | `wave40/candidates-20261001` | — | — | 25 | 0 | `reference/`(Wave 21·33 화풍 참조 2), `revision-reference/`(13번 수정 전 v1 JPG 1) 제외 | `contact-sheet.jpg` → `proofs/`, 나머지 기록은 `records/`. 사건 JPG 14장은 장부에 각각 한 행
+| `/tmp/astra-lord-components-20261002-lite.zip` (10-02 00:59, 경량판) | `lord-components/candidates-20261002` | 5,381 KB | `ef31988f33711b59…` | 88 | 0 | 없음(`raw/`·`references/`는 비어 있고 ZIP에 없음) | `assets/` 40·`proofs/` 3은 그대로, `README.md`·`QA.md`·`assets.csv`·`SHA256SUMS.txt`·`prompts/`(최종 프롬프트 34)는 `records/` 아래로, ZIP의 `records/`는 `records/`에 그대로. 생성 원본은 Astra 도구 폴더에 있고 경로·해시는 `records/generations.json`. 작업 폴더 `/tmp/astra-lord-components-20261002`(ZIP과 같은 내용)는 `astra-raw/output/`에 보관
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -298,6 +300,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 38 UI 조작 부품**(`wave38/candidates-20260930`, 2026-09-30 판정, Claude — 재조립한 인물 카드에서 버튼이 양피지 여백 위에 앉음 확인): 투명 PNG 40장(버튼 4종 × 4상태 16·기타 조작 24, 기본 버튼 128×40·아이콘 버튼 48×48, 9-slice 여백과 `text_safe`는 `records/assets.csv`) 가운데 35장과 확인 그림 2(전체 조작·인물 카드 비교) `confirmed`. 주 버튼 4장(`button_primary_*`)과 `tab_hover`는 재작업 요청(`rework_pending`)이었고 재작업판이 같은 날 함께 들어와 `superseded`, `replaced_by`에 새 경로.
 - **Wave 38 재작업**(`wave38/rework-20261001`, 2026-10-01 판정): 새 5장 `confirmed`, 비고 "재작업판(바이트 다름)" — 파일 이름이 원래 납품과 같다. 주 버튼 4상태는 바탕을 짙은 oak로 바꿔 보조 버튼과 구분하고, `tab_hover`는 중앙 상대휘도 0.381로 `tab_selected`(0.727)보다 어둡게 했다. 128×40·알파·9-slice·`text_safe`는 원본 그대로(알파 변경 0픽셀). 확인 그림 2(전후 비교 JPG·Chrome 9-slice 렌더 PNG)도 `confirmed`. Astra 권장: 주 버튼 글자색은 밝은 양피지(#f1e4c6).
 - **Wave 40 영주 모드 사건 삽화**(`wave40/candidates-20261001`, 2026-10-01 판정): 960×540 JPG 14장(혼인·상속 8 — 혼인 협상·교회 문 봉인·신부 도착·첫아이·처남 출생·옛 영주 병상·유언 변경 시도·상속 신서, 소송·점유 4 — 소송 제기·문서 대조·점유 거부·점유 인도, 후견 2 — 어린 영주와 후견인·후견 종료)과 모아보기 1장(`proofs/contact-sheet.jpg`, 제목은 이 그림에만 있음) `confirmed`. 장부에 각각 한 행. 13번은 검수에서 문서에 글자 비슷한 무늬가 있다고 지적받아 불필요한 문서를 지운 수정판이며, 수정 전 v1은 `revision-reference/`라 넣지 않았다(astra-raw에 있음). 게임 카드 연결·잘림·런타임 확인은 아직 안 함.
+- **영주 화면 부품**(`lord-components/candidates-20261002`, 2026-10-02 판정): 인물 중심 영주 화면용 34종 PNG 40장 — 성격 특성 6(48×48·24×24 두 크기 = 12), 지역 지도 바탕 1600×1000 1(불투명, 가상의 잉글랜드 남부 고을, 글자·실제 지명 없음), 지도 거점 96×96 4(장원·시장도시·수도원·방앗간, 공통 하단 y=88), 깃발 받침 64×96 3(직할·위임·이웃, 문장 없는 빈 깃발, 피벗 (14,90)), 직책 40×40 5, 알림 32×32 4, 건강 32×32 3, 왼쪽 메뉴 40×40 8 — 과 확인 그림 3(JPEG: 실제 크기·부품 모아보기·지도 조립) `confirmed`. 규격·피벗은 `records/assets.csv`, 다음 화면 개정 방향(초상·화면)은 `records/NEXT_SCREEN_DIRECTION.md`. 게임 미설치, 클릭 영역·DPR·문장 합성은 미검증.
 ## 7. 찾지 못한 것
 
 | 항목 | 상태 |
