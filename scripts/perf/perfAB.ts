@@ -2,11 +2,14 @@
 // alike and the paired differences keep only what the commits change. Nothing waits for a quiet machine (user
 // decision 2026-09-30); each run's conditions (other work's CPU, a person's input) are recorded beside it.
 //   PLAYWRIGHT_MODULE=… npm run perf:ab -- [--a <commit>] [--b <commit>] [--scene big-town-x5] [--rounds 4] [--seconds 60]
-//     [--headless] [--out docs/verification/perf-ab]
+//     [--headless] [--out docs/verification/perf-ab] [--ports <A>,<B>]
+// --ports: the two preview ports (the DGX trend passes ports it holds in 4300–4399); otherwise the OS gives free ones.
 // Mac (default): the real Chrome window. DGX: scripts/remote/run.sh <label> -- node_modules/.bin/tsx scripts/perf/perfAB.ts --headless …
 // --a defaults to the trunk (origin/codex/phase15-organic-ground), --b to HEAD. Scenes are perf:gate's (perfGate.ts SCENES).
-// Per metric: the mean of A and of B, the mean paired difference B − A with a ±2 standard-error band, and how many rounds
-// B was worse. "나빠짐" / "좋아짐" only when the whole band is on one side of zero; otherwise "소음 안".
+// Per metric: the mean of A and of B, the mean paired difference B − A with its 95 % band for that many pairs (Student's
+// t: ±3.18 standard errors at 4 pairs, ±2.26 at 10, towards ±1.96 with many), and how many rounds B was worse.
+// "나빠짐" / "좋아짐" only when the whole band is on one side of zero; otherwise "소음 안" (decision RR7: ±2 SE is the
+// many-pairs approximation; at 4 pairs it was a band of about 80 %).
 import { spawn, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -15,6 +18,7 @@ import { otherCpuSample, otherCpuShare } from "./machineLoad";
 import { SCENES, zoomSteps } from "./perfGate";
 import { sourceTree } from "./sourceTree";
 import { freePort } from "./freePort";
+import { t95 } from "./pairedStats";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] ?? fallback : fallback; };
@@ -41,15 +45,15 @@ export const AB_METRICS: readonly [string, string, (summary: any) => number | nu
   ["over50PerMin", "50 ms 초과/분", summary => summary.stats?.over50PerMin ?? null],
 ];
 
-/** Paired comparison: B − A per round; worse when the ±2 SE band is above zero (all metrics: higher is worse). */
+/** Paired comparison: B − A per round; worse when the 95 % band (t, by the number of pairs) is above zero (all metrics: higher is worse). */
 export function paired(a: readonly number[], b: readonly number[]) {
   const diffs = a.map((value, index) => b[index]! - value);
   const n = diffs.length; const mean = diffs.reduce((sum, value) => sum + value, 0) / Math.max(1, n);
   const sd = n > 1 ? Math.sqrt(diffs.reduce((sum, value) => sum + (value - mean) ** 2, 0) / (n - 1)) : 0;
-  const band = n > 1 ? 2 * sd / Math.sqrt(n) : Number.POSITIVE_INFINITY;
+  const se = n > 1 ? sd / Math.sqrt(n) : Number.POSITIVE_INFINITY; const band = n > 1 ? t95(n - 1) * se : Number.POSITIVE_INFINITY;
   const meanA = a.reduce((sum, value) => sum + value, 0) / Math.max(1, a.length); const meanB = b.reduce((sum, value) => sum + value, 0) / Math.max(1, b.length);
   const verdict = mean - band > 0 ? "나빠짐" : mean + band < 0 ? "좋아짐" : "소음 안";
-  return { meanA, meanB, diff: mean, band, percent: meanA === 0 ? null : (mean / meanA) * 100, worseRounds: diffs.filter(value => value > 0).length, n, verdict };
+  return { meanA, meanB, diff: mean, se, band, bandRule: "t95", percent: meanA === 0 ? null : (mean / meanA) * 100, worseRounds: diffs.filter(value => value > 0).length, n, verdict };
 }
 
 async function main() {
@@ -61,7 +65,9 @@ async function main() {
   const urls: Record<"A" | "B", string> = { A: "", B: "" };
   const runs: { side: "A" | "B"; round: number; summary: any; otherCpu: number }[] = [];
   try {
-    for (const [side, commit, port] of [["A", a, await freePort()], ["B", b, await freePort()]] as const) {
+    const fixedPorts = flag("ports", "").split(",").filter(Boolean).map(Number);
+    const ports = fixedPorts.length === 2 ? fixedPorts : [await freePort(), await freePort()];
+    for (const [side, commit, port] of [["A", a, ports[0]!], ["B", b, ports[1]!]] as const) {
       const tree = sourceTree(".", commit); trees.push(tree);
       const build = join(work, `build-${side}`);
       const built = spawnSync(join(tree, "node_modules/.bin/vite"), ["build", "--minify", "false", "--outDir", build, "--emptyOutDir"], { cwd: tree, encoding: "utf8" });
@@ -108,9 +114,9 @@ async function main() {
   const f = (value: number | null, digits = 2) => value === null || !Number.isFinite(value) ? "-" : String(Math.round(value * 10 ** digits) / 10 ** digits);
   const lines = [`# perf:ab — A \`${a.slice(0, 8)}\` 대 B \`${b.slice(0, 8)}\``, "",
     `- 실행 위치: ${machine} · 장면 \`${sceneId}\` · ${seconds}초 × ${rounds}쌍(짝 맞은 ${roundsBoth.length}쌍), A-B 번갈아 · ${started.toISOString()}`,
-    `- 판정: 짝지은 차이(B − A)의 평균 ± 2 표준오차가 0의 한쪽에 있을 때만 나빠짐/좋아짐. 모든 지표는 클수록 나쁘다.`,
+    `- 판정: 짝지은 차이(B − A)의 평균과 그 95 % 폭(쌍 수에 맞춘 t 분포: 4쌍이면 ±3.18 표준오차)이 0의 한쪽에 있을 때만 나빠짐/좋아짐(결정 RR7). 모든 지표는 클수록 나쁘다.`,
     `- 그때의 환경(관문 밖 CPU): ${runs.map(run => `${run.side}${run.round} ${Math.round(run.otherCpu * 100)}%${run.summary.input && run.summary.input.hidIdleAtEnd !== null && run.summary.input.hidIdleAtEnd < run.summary.input.recordSeconds ? "·입력" : ""}`).join(" · ")}`, "",
-    "| 지표 | A 평균 | B 평균 | B − A | ±2SE | % | B가 나쁜 쌍 | 판정 |", "|---|---:|---:|---:|---:|---:|---:|---|",
+    "| 지표 | A 평균 | B 평균 | B − A | 95 % 폭 | % | B가 나쁜 쌍 | 판정 |", "|---|---:|---:|---:|---:|---:|---:|---|",
     ...table.map(row => `| ${row.label} | ${f(row.meanA)} | ${f(row.meanB)} | ${f(row.diff)} | ${f(row.band)} | ${f(row.percent, 1)} | ${row.worseRounds}/${row.n} | ${row.verdict} |`), ""];
   writeFileSync(join(outDir, `${stamp}.md`), lines.join("\n"));
   console.log(`perf:ab → ${join(outDir, `${stamp}.md`)}`);
