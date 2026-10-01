@@ -1,0 +1,80 @@
+{
+  "source": "사용자_인물카드.png",
+  "source_size": [
+    3456,
+    2234
+  ],
+  "normalized_width": 1920,
+  "crop": [
+    664,
+    462,
+    544,
+    312
+  ],
+  "interior": [
+    28,
+    29,
+    482,
+    256
+  ],
+  "controls": [
+    {
+      "id": "button_primary_normal",
+      "rect": [
+        224,
+        230,
+        128,
+        40
+      ],
+      "label": "전기 보기"
+    },
+    {
+      "id": "button_secondary_normal",
+      "rect": [
+        364,
+        230,
+        128,
+        40
+      ],
+      "label": "닫기"
+    },
+    {
+      "id": "close_normal",
+      "rect": [
+        462,
+        45,
+        32,
+        32
+      ]
+    }
+  ],
+  "minimumClearance": 15,
+  "cleanup": "Clone blank original parchment onto old footer and clone existing frame strips to restore occluded bottom/right borders; preserve portrait/text.",
+  "measuredClearance": [
+    {
+      "id": "button_primary_normal",
+      "left": 196,
+      "top": 201,
+      "right": 158,
+      "bottom": 15,
+      "inside": true
+    },
+    {
+      "id": "button_secondary_normal",
+      "left": 336,
+      "top": 201,
+      "right": 18,
+      "bottom": 15,
+      "inside": true
+    },
+    {
+      "id": "close_normal",
+      "left": 434,
+      "top": 16,
+      "right": 16,
+      "bottom": 208,
+      "inside": true
+    }
+  ],
+  "portraitAndTextPreservedBeforeOverlay": true
+}

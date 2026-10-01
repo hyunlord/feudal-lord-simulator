@@ -34,6 +34,7 @@ import { advancePolitics, endChapterFive, endChapterFour, endChapterThree, endCh
 import { advanceLordship } from "./lordship";
 import { advanceEstates } from "./estates";
 import { advanceSuits } from "./estateSuits";
+import { advanceDiplomacy } from "./marriage";
 import { advancePlague, plagueHousing } from "./plague";
 import { advanceReorganisation } from "./reorganisation";
 import { advanceLegacy } from "./legacy";
@@ -284,6 +285,6 @@ export function advanceTick(state: GameState): GameState {
   // FIX-11 (SK-3): the stuck-stock since-ticks after the tick's moves.
   // LM-E1 (TA-3): lord mode's town agency, each week, after the tick's moves (nothing without `state.agency`).
   return advanceHistory(state, advanceTownAgency(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
-    advanceWarTick(advanceSuits(advanceEstates(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))))))))))),
+    advanceWarTick(advanceDiplomacy(advanceSuits(advanceEstates(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))))))))))))))),
   )))))));
 }

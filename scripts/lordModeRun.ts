@@ -15,6 +15,8 @@ import { stateCalendar } from "../src/engine/scenarioState";
 import { advanceTick } from "../src/engine/tick";
 import { AGENCY_WEEK_TICKS } from "../src/content/townAgencyConfig";
 import { auditReceipt, initialAgency, lordRequests, subsidyRefusal } from "../src/engine/townAgency";
+import { lordBotMarriageCommands } from "../src/engine/marriage";
+import { diplomacyOf } from "../src/engine/negotiation";
 import type { EstatePolicy } from "../src/engine/townAgency.types";
 import { treasuryBalance } from "../src/ledger/ledger";
 import { gameReducer } from "../src/state/gameStore";
@@ -41,6 +43,10 @@ function lordTurn(state: GameState, subsidy: LordModeOptions["subsidy"]): GameSt
     if (action !== null) return gameReducer(state, action);
   }
   if (state.tick % AGENCY_WEEK_TICKS !== 1) return state;
+  // LM-E3 (NG-9): the lord tries one marriage with the third neighbour's house once his son is of age.
+  let wed = state;
+  for (const command of lordBotMarriageCommands(state)) wed = gameReducer(wed, command);
+  if (wed !== state) return wed;
   if (subsidy !== undefined && !(state.agency?.subsidies ?? []).some(entry => entry.kind === subsidy.kind)
     && subsidyRefusal(state, subsidy.kind, subsidy.amount) === null) {
     return gameReducer(state, { type: "set_project_subsidy", kind: subsidy.kind, amount: subsidy.amount });
@@ -117,6 +123,10 @@ export function lordModeRun(options: LordModeOptions) {
         siteReasons: receipt.sites!.reasons, runnerUp: receipt.sites!.runnerUp })) },
     subsidy: options.subsidy === undefined ? null : { firstRefusal, inForceFrom: subsidyYear },
     eras,
+    // LM-E3 (NG-9): the lord bot's marriage attempt and where it stands.
+    marriage: { negotiations: diplomacyOf(state).negotiations.map(entry => ({ status: entry.status, tier: entry.acceptance.tier, score: entry.acceptance.score,
+      counter: entry.counter?.changes ?? null, year: stateCalendar({ ...state, tick: entry.tick }).year })), stage: diplomacyOf(state).marriage?.stage ?? null,
+      promises: diplomacyOf(state).promises.map(entry => `${entry.term}:${entry.status}`) },
     audit: { audited, mismatched, sample: sampleOf(audits, options.seed, 30) },
     years, elapsedSeconds: Math.round((performance.now() - started) / 100) / 10,
   };

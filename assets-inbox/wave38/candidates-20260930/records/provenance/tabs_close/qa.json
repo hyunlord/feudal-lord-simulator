@@ -1,0 +1,79 @@
+{
+  "checks": [
+    {
+      "id": "tab_selected",
+      "width": 128,
+      "height": 40,
+      "rgba": true,
+      "transparent_corners": true,
+      "flat_center_rgb": [
+        238,
+        220,
+        182
+      ],
+      "sha256": "0dea705d35749fff366029435a14d17aca3b4f9a2ec8cc97d0885c37f4bdb1c8"
+    },
+    {
+      "id": "tab_unselected",
+      "width": 128,
+      "height": 40,
+      "rgba": true,
+      "transparent_corners": true,
+      "flat_center_rgb": [
+        197,
+        180,
+        140
+      ],
+      "sha256": "b83bc0a5d8c43751f319023ee2b58fafdd55e6a1662aff29444cfa046a3471a8"
+    },
+    {
+      "id": "tab_hover",
+      "width": 128,
+      "height": 40,
+      "rgba": true,
+      "transparent_corners": true,
+      "flat_center_rgb": [
+        242,
+        227,
+        196
+      ],
+      "sha256": "3028d9edac48ecbd1d6ea0f7d6fdf244d8a7ff99e97ac3fb25a8cf5574f1f7ee"
+    },
+    {
+      "id": "close_normal",
+      "width": 32,
+      "height": 32,
+      "rgba": true,
+      "transparent_corners": true,
+      "flat_center_rgb": null,
+      "sha256": "dafe080b52f849c3816db5be7c79264154f266f04271130a3f95e669c6369496"
+    },
+    {
+      "id": "close_hover",
+      "width": 32,
+      "height": 32,
+      "rgba": true,
+      "transparent_corners": true,
+      "flat_center_rgb": null,
+      "sha256": "d9e75e832481bad9b0a738024f6c09a7459eab3c763b6d3aba726971b88e5093"
+    },
+    {
+      "id": "close_pressed",
+      "width": 32,
+      "height": 32,
+      "rgba": true,
+      "transparent_corners": true,
+      "flat_center_rgb": null,
+      "sha256": "39ed81cb8a71751f123ed2e275c0e8f154f5081876f4c7677795ff1f99a8c6f0"
+    }
+  ],
+  "known_limitations": [
+    "Offline raster verification only; no runtime UI integration.",
+    "Close buttons fixed at 32px."
+  ],
+  "visual_review": {
+    "native_and_2x": "PASS: flat tab center, generated frames preserved, close X readable, hover brighter and pressed inset darker",
+    "nine_slice": "Rendered original128x40, minimum64x32 and192x56 for each tab; close fixed32x32",
+    "states_distinct": true
+  }
+}

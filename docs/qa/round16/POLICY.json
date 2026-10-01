@@ -1,0 +1,38 @@
+{
+  "policyDate": "2026-10-01",
+  "branch": "origin/codex/phase15-organic-ground",
+  "lastObservedHead": "c52e6634146c224439df5a7cd84616b09e140a5d",
+  "lastObservedSrcTree": "d7d1e97392ee79e380229d5d1b487f108ef64652",
+  "lastObservedPublicTree": "6d6b7f5b752a73d1a754a6d92879caa3f0872268",
+  "latestFetchedHead": "c52e6634146c224439df5a7cd84616b09e140a5d",
+  "latestFetchedSrcTree": "d7d1e97392ee79e380229d5d1b487f108ef64652",
+  "latestFetchedPublicTree": "6d6b7f5b752a73d1a754a6d92879caa3f0872268",
+  "pendingChangedCodeRound": false,
+  "noNewObservationBeforeConsolidatedDelivery": false,
+  "maxRoundMinutes": 120,
+  "fullRegressionLastDateKST": "2026-10-01",
+  "fullRegressionMaxPerDay": 1,
+  "sameGameCodeRepeat": false,
+  "state": "idle_until_game_code_changes",
+  "minimumViewportWidth": 1024,
+  "outOfScopeIds": [
+    "013-375-reopened",
+    "017",
+    "023",
+    "024",
+    "029"
+  ],
+  "roundStartedAt": "2026-10-01T07:37:41.935Z",
+  "roundEndedAt": "2026-10-01T08:09:02.310279+00:00",
+  "nextPriority": [
+    "QA015",
+    "QA035",
+    "QA036"
+  ],
+  "fixedThisRound": [
+    "QA034",
+    "QA016",
+    "QA010"
+  ],
+  "lastRoundZip": "/tmp/fls-qa-round16-lite.zip"
+}

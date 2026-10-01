@@ -24,6 +24,7 @@ import { rebuildBurntHouse } from "../engine/fire";
 import { famineResponse, respondToPetition } from "../engine/politics";
 import { recordDecision } from "../engine/history";
 import { markChapterPageSeen } from "../engine/politics";
+import { answerCounter, answerWillChange, keepPromise, proposeMarriage } from "../engine/marriage";
 import { estatesOf, LORD } from "../engine/estates";
 import { addSuitEvidence, enforcePossession, fileSuit, seekSuitPatron } from "../engine/estateSuits";
 
@@ -147,6 +148,10 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
     case "seek_suit_patron": return lordSuit(state, action.suitId) ? seekSuitPatron(state, action.suitId, action.factionId) : state;
     case "enforce_possession": return lordSuit(state, action.suitId) ? enforcePossession(state, action.suitId) : state;
     case "mark_chapter_page_seen": return markChapterPageSeen(state, action.chapter);
+    case "propose_marriage": return proposeMarriage(state, action.terms);
+    case "answer_counter": return answerCounter(state, action.negotiationId, action.accept);
+    case "keep_promise": return keepPromise(state, action.promiseId);
+    case "answer_will_change": return answerWillChange(state, action.choice);
     case "place_building": {
       // LM-E1 (TA-1): in lord mode the town builds; the lord places only public works.
       if (lordMode(state) && !LORD_PUBLIC_WORKS.includes(action.kind)) return state;

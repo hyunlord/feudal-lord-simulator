@@ -1,0 +1,199 @@
+{
+  "count": 8,
+  "checks": [
+    {
+      "id": "button_danger_normal",
+      "width": 128,
+      "height": 40,
+      "channels": 4,
+      "transparent_corners": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flat_center_unique_rgba": 1,
+      "center_alpha": 255,
+      "source_sha256": "06af85ffe54001fe79a5f3782a2dd8049d42eae4cfc0ab8bc6dd4dd502d1a8b3",
+      "sha256": "064c1caa8c07f74fa9d9d585d93390d458c7e1eee3f5a3ac6425ad60280fc495"
+    },
+    {
+      "id": "button_danger_hover",
+      "width": 128,
+      "height": 40,
+      "channels": 4,
+      "transparent_corners": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flat_center_unique_rgba": 1,
+      "center_alpha": 255,
+      "source_sha256": "97afa381fe36e00a0dcc8a0b887e8fb69cd73f5de979c9ac5565bafb1646ca1f",
+      "sha256": "48312602a61afc71781fa01ebe912f71dc72774e94a84710c7bce7f1a356a370"
+    },
+    {
+      "id": "button_danger_pressed",
+      "width": 128,
+      "height": 40,
+      "channels": 4,
+      "transparent_corners": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flat_center_unique_rgba": 1,
+      "center_alpha": 255,
+      "source_sha256": "c5ec8d22b5b27bf4a1228a2934ffd0ea70fcd72f3b149cb8f11019a542642131",
+      "sha256": "30edb289d9d02c9bb393707a56fbe7e43696a4500460abab02d05f034e8384ca"
+    },
+    {
+      "id": "button_danger_disabled",
+      "width": 128,
+      "height": 40,
+      "channels": 4,
+      "transparent_corners": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flat_center_unique_rgba": 1,
+      "center_alpha": 255,
+      "source_sha256": "2b8acb4c47beceef859079408defcb062f46ba2bb8992be5964259ba1b94a418",
+      "sha256": "2330d49d19d8b96b49743e453f82f66111a50529c73b01bc79ac2e0e4e91dee5"
+    },
+    {
+      "id": "button_icon_normal",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparent_corners": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flat_center_unique_rgba": 1,
+      "center_alpha": 255,
+      "source_sha256": "fdb90f30408f70eac181fec184eec40cb938a778203cff9c73d739beacbdea68",
+      "sha256": "eef065c39194c83cb7b01305cbfe77bd81fa6de1dbe6b8f67852f445d8d29908"
+    },
+    {
+      "id": "button_icon_hover",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparent_corners": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flat_center_unique_rgba": 1,
+      "center_alpha": 255,
+      "source_sha256": "39352bc2d9dc90a24461d0d82810f6e13914b2bce68e58d6d3cc91a42a1243d3",
+      "sha256": "c202d26b1fef44ed14f228ed2e4e10e4a7294fb7b7fbbc6cbd132f1cfc02cf81"
+    },
+    {
+      "id": "button_icon_pressed",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparent_corners": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flat_center_unique_rgba": 1,
+      "center_alpha": 255,
+      "source_sha256": "15e171f3c63f6cb8b1cdd5972fe0ea447087f1ac47dddbe0d553e91e47bfb0b4",
+      "sha256": "b5ac211afdd0015ef8e7c8d0b6c9cc758fdbf935cb17ec398e509e78d07a8108"
+    },
+    {
+      "id": "button_icon_disabled",
+      "width": 48,
+      "height": 48,
+      "channels": 4,
+      "transparent_corners": true,
+      "corners_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "flat_center_unique_rgba": 1,
+      "center_alpha": 255,
+      "source_sha256": "3371f2bb494e8313949f653ec6582db0ad606c3c90c4d787fbdd65ed38fbe928",
+      "sha256": "3623b0cc9a9dbeaa06714f47246414e080fd506e8f0d6ca1d2331ce61d24dcac"
+    }
+  ],
+  "states_unique": true,
+  "known_issues": [
+    "Independent state generation can produce subtle painted edge variations; geometry normalized by alpha crop and common target bounds.",
+    "No runtime, interaction, or in-engine rendering validation."
+  ],
+  "visual_review": {
+    "contact": "contact.png",
+    "scales": [
+      1,
+      2
+    ],
+    "result": "PASS",
+    "notes": "All eight controls visually checked at native and 2x. Danger uses thin wax-red frame with brass corners; icon blank center. Hover visibly brighter, pressed darker inset, disabled gray opaque. Icon disabled generation had central dark/alpha artifact; permitted flat interior normalization removed it while preserving painted frame."
+  },
+  "hover_revision": {
+    "other7_unchanged": true,
+    "flat_center_rgba": [
+      244,
+      224,
+      186,
+      255
+    ],
+    "normal_center_rgba": [
+      230,
+      208,
+      167,
+      255
+    ],
+    "bounds": [
+      {
+        "state": "normal",
+        "canvas": [
+          128,
+          40
+        ],
+        "bbox": [
+          1,
+          1,
+          126,
+          38
+        ]
+      },
+      {
+        "state": "hover",
+        "canvas": [
+          128,
+          40
+        ],
+        "bbox": [
+          1,
+          1,
+          126,
+          38
+        ]
+      }
+    ],
+    "visual_review": "PASS native/2x: visibly brighter warm red upper rim and light cream center, same dimensions and bounds."
+  }
+}

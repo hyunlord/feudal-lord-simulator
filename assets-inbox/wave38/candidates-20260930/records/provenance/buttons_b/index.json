@@ -1,0 +1,398 @@
+[
+  {
+    "id": "button_danger_normal",
+    "file": "assets/button_danger_normal.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_danger",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: ui-mockup. Asset type: transparent medieval strategy game raster UI control, NORMAL raised state. Single blank danger button, horizontal exact aspect ratio 3.2:1, for final 128x40 pixels. Narrow muted sealing wax red #843e32 raised rim with modest worn brass accents ONLY in corners, warm completely FLAT uniform parchment #e8d8b1 label area. Border total width <= 7% of width and <=23% of height. Rectangular silhouette with very slightly chamfered corners. Center must be smooth opaque solid color with NO grain, texture or gradient. Reference 1 is material/style ONLY; reference 2 is current controls to improve. Show just ONE isolated button, straight front orthographic, no perspective. Button centered filling most canvas. True transparent surrounding background and transparent corner pixels. Consistent high quality hand painted oak/parchment game UI matching references, restrained historical design. Absolutely NO text, letters, numbers, icons, symbols, scenery, watermark, panel, checkerboard or extra buttons. Keep long straight edge segments perfectly uniform for nine-slice scaling; corners fit within 10px in final image.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-bc0d32ee-6d06-4e04-a918-b22b5b1637a1.png",
+    "source_sha256": "06af85ffe54001fe79a5f3782a2dd8049d42eae4cfc0ab8bc6dd4dd502d1a8b3",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 56,
+        "top": 181,
+        "width": 2060,
+        "height": 358
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        10,
+        9,
+        108,
+        22
+      ],
+      "flat_center_rgba": [
+        230,
+        208,
+        167,
+        255
+      ]
+    },
+    "sha256": "064c1caa8c07f74fa9d9d585d93390d458c7e1eee3f5a3ac6425ad60280fc495"
+  },
+  {
+    "id": "button_danger_hover",
+    "file": "assets/button_danger_hover.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_danger",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install. Revision: stronger top and side warm red/brass highlights and lighter parchment center.",
+    "prompt": "Use case: precise-object-edit. Asset: ONE blank medieval game danger button HOVER state. Input image is current normal danger control. Keep exactly the same narrow wax-red and brass frame, silhouette, corner notches, rectangular proportions 128:40, corner decorations and broad blank parchment center. Make HOVER unmistakably brighter: warm red-copper upper rim highlight, brighter brass along top and side edges, visibly lighter cream parchment face (target #f3e4c3 compared with normal #e6d0a7). Stronger lighting is ONLY within existing frame and face; NO exterior glow and NO larger outer bounding box. Keep muted sealing-wax red identity, not yellow or saturated orange. Center must be completely FLAT opaque single cream color without texture, grain, gradient, marks. True transparent background and corners. No text, no glyph, no symbol, no extra shapes. Front orthographic view, same 10px final nine-slice margins, same 128x40 final canvas, text-safe center x14..113 y12..27. Render at high resolution if needed but preserve geometry exactly.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-d5f1553e-91c1-4043-a95a-7cf42132c14f.png",
+    "source_sha256": "97afa381fe36e00a0dcc8a0b887e8fb69cd73f5de979c9ac5565bafb1646ca1f",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 58,
+        "top": 96,
+        "width": 2049,
+        "height": 523
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        10,
+        9,
+        108,
+        22
+      ],
+      "flat_center_rgba": [
+        244,
+        224,
+        186,
+        255
+      ]
+    },
+    "sha256": "48312602a61afc71781fa01ebe912f71dc72774e94a84710c7bce7f1a356a370"
+  },
+  {
+    "id": "button_danger_pressed",
+    "file": "assets/button_danger_pressed.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_danger",
+    "state": "pressed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: precise-object-edit. Edit target is the supplied NORMAL blank medieval game button. Create exactly ONE PRESSED state version of this same danger button. PRESSED state: darker inset rim, reverse bevel with clearly visible inner shadow at top and left, depressed face offset inward 1-2 final pixels, parchment center slightly darker but flat. Preserve SAME canvas/aspect ratio, outer silhouette, transparent corners, exact frame geometry, corner cap positions, and blank interior; no added details or glyphs. Narrow perimeter only, broad completely flat solid color opaque text-safe interior (no grain/no gradient). Straight orthographic front view. Genuine transparent background, no checkerboard. No text, letters, icons, symbols, watermark. Final target 128x40; keep 10px slice margins same across states.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-44468074-dd04-424e-bc65-3b4115974f6e.png",
+    "source_sha256": "c5ec8d22b5b27bf4a1228a2934ffd0ea70fcd72f3b149cb8f11019a542642131",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 55,
+        "top": 179,
+        "width": 2064,
+        "height": 364
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        10,
+        9,
+        108,
+        22
+      ],
+      "flat_center_rgba": [
+        201,
+        177,
+        138,
+        255
+      ]
+    },
+    "sha256": "30edb289d9d02c9bb393707a56fbe7e43696a4500460abab02d05f034e8384ca"
+  },
+  {
+    "id": "button_danger_disabled",
+    "file": "assets/button_danger_disabled.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_danger",
+    "state": "disabled",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: precise-object-edit. Edit target is the supplied NORMAL blank medieval game button. Create exactly ONE DISABLED state version of this same danger button. DISABLED state: fully opaque subdued gray taupe muted surface, desaturate red/oak/brass edges to gray-brown and lower contrast, no bright highlights. Do NOT lower whole image opacity. Center solid muted parchment. Preserve SAME canvas/aspect ratio, outer silhouette, transparent corners, exact frame geometry, corner cap positions, and blank interior; no added details or glyphs. Narrow perimeter only, broad completely flat solid color opaque text-safe interior (no grain/no gradient). Straight orthographic front view. Genuine transparent background, no checkerboard. No text, letters, icons, symbols, watermark. Final target 128x40; keep 10px slice margins same across states.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-e408e3ad-00b2-4b47-8405-5e87cde1a336.png",
+    "source_sha256": "2b8acb4c47beceef859079408defcb062f46ba2bb8992be5964259ba1b94a418",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 54,
+        "top": 176,
+        "width": 2066,
+        "height": 364
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        10,
+        9,
+        108,
+        22
+      ],
+      "flat_center_rgba": [
+        175,
+        163,
+        150,
+        255
+      ]
+    },
+    "sha256": "2330d49d19d8b96b49743e453f82f66111a50529c73b01bc79ac2e0e4e91dee5"
+  },
+  {
+    "id": "button_icon_normal",
+    "file": "assets/button_icon_normal.png",
+    "width": 48,
+    "height": 48,
+    "component": "button_icon",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 48,
+    "min_height": 48,
+    "text_safe": null,
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: ui-mockup. Asset type: transparent medieval strategy game raster UI control, NORMAL raised state. Single blank square icon button, exact square aspect ratio for final 48x48 pixels. Low saturation oak #674124 raised rim with subtle worn brass #b29658 thin inset line, restrained tiny brass corner caps. Broad flat blank warm parchment #e8d8b1 center. No glyph at all. Border occupies at most 18% width eachside. Reference 1 is material/style ONLY; reference 2 is current controls to improve. Show just ONE isolated button, straight front orthographic, no perspective. Button centered filling most canvas. True transparent surrounding background and transparent corner pixels. Consistent high quality hand painted oak/parchment game UI matching references, restrained historical design. Absolutely NO text, letters, numbers, icons, symbols, scenery, watermark, panel, checkerboard or extra buttons. Keep long straight edge segments perfectly uniform for nine-slice scaling; corners fit within 10px in final image.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-97328f4b-351a-4f05-963b-0e868eb6bb1d.png",
+    "source_sha256": "fdb90f30408f70eac181fec184eec40cb938a778203cff9c73d739beacbdea68",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 105,
+        "top": 103,
+        "width": 1045,
+        "height": 1045
+      },
+      "resize": [
+        46,
+        46
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        7,
+        7,
+        34,
+        34
+      ],
+      "flat_center_rgba": [
+        227,
+        207,
+        168,
+        255
+      ]
+    },
+    "sha256": "eef065c39194c83cb7b01305cbfe77bd81fa6de1dbe6b8f67852f445d8d29908"
+  },
+  {
+    "id": "button_icon_hover",
+    "file": "assets/button_icon_hover.png",
+    "width": 48,
+    "height": 48,
+    "component": "button_icon",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 48,
+    "min_height": 48,
+    "text_safe": null,
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: precise-object-edit. Edit target is the supplied NORMAL blank medieval game button. Create exactly ONE HOVER state version of this same icon button. HOVER state: raise bright warm brass highlight along top and sides of rim, slight stronger raised edge; keep center parchment light and flat. Preserve SAME canvas/aspect ratio, outer silhouette, transparent corners, exact frame geometry, corner cap positions, and blank interior; no added details or glyphs. Narrow perimeter only, broad completely flat solid color opaque text-safe interior (no grain/no gradient). Straight orthographic front view. Genuine transparent background, no checkerboard. No text, letters, icons, symbols, watermark. Final target 48x48; keep 10px slice margins same across states.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-03fd46fd-46bd-440b-ad1f-3bd65a3c22db.png",
+    "source_sha256": "39352bc2d9dc90a24461d0d82810f6e13914b2bce68e58d6d3cc91a42a1243d3",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 99,
+        "top": 98,
+        "width": 1057,
+        "height": 1055
+      },
+      "resize": [
+        46,
+        46
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        7,
+        7,
+        34,
+        34
+      ],
+      "flat_center_rgba": [
+        243,
+        226,
+        195,
+        255
+      ]
+    },
+    "sha256": "c202d26b1fef44ed14f228ed2e4e10e4a7294fb7b7fbbc6cbd132f1cfc02cf81"
+  },
+  {
+    "id": "button_icon_pressed",
+    "file": "assets/button_icon_pressed.png",
+    "width": 48,
+    "height": 48,
+    "component": "button_icon",
+    "state": "pressed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 48,
+    "min_height": 48,
+    "text_safe": null,
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: precise-object-edit. Edit target is the supplied NORMAL blank medieval game button. Create exactly ONE PRESSED state version of this same icon button. PRESSED state: darker inset rim, reverse bevel with clearly visible inner shadow at top and left, depressed face offset inward 1-2 final pixels, parchment center slightly darker but flat. Preserve SAME canvas/aspect ratio, outer silhouette, transparent corners, exact frame geometry, corner cap positions, and blank interior; no added details or glyphs. Narrow perimeter only, broad completely flat solid color opaque text-safe interior (no grain/no gradient). Straight orthographic front view. Genuine transparent background, no checkerboard. No text, letters, icons, symbols, watermark. Final target 48x48; keep 10px slice margins same across states.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-cc18ae30-b486-49ff-9670-cb9dca5ab351.png",
+    "source_sha256": "15e171f3c63f6cb8b1cdd5972fe0ea447087f1ac47dddbe0d553e91e47bfb0b4",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 102,
+        "top": 101,
+        "width": 1051,
+        "height": 1048
+      },
+      "resize": [
+        46,
+        46
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        7,
+        7,
+        34,
+        34
+      ],
+      "flat_center_rgba": [
+        209,
+        185,
+        143,
+        255
+      ]
+    },
+    "sha256": "b5ac211afdd0015ef8e7c8d0b6c9cc758fdbf935cb17ec398e509e78d07a8108"
+  },
+  {
+    "id": "button_icon_disabled",
+    "file": "assets/button_icon_disabled.png",
+    "width": 48,
+    "height": 48,
+    "component": "button_icon",
+    "state": "disabled",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 48,
+    "min_height": 48,
+    "text_safe": null,
+    "notes": "Generated raster, blank center; opaque disabled surface. Candidate only; no game install.",
+    "prompt": "Use case: precise-object-edit. Edit target is the supplied NORMAL blank medieval game button. Create exactly ONE DISABLED state version of this same icon button. DISABLED state: fully opaque subdued gray taupe muted surface, desaturate red/oak/brass edges to gray-brown and lower contrast, no bright highlights. Do NOT lower whole image opacity. Center solid muted parchment. Preserve SAME canvas/aspect ratio, outer silhouette, transparent corners, exact frame geometry, corner cap positions, and blank interior; no added details or glyphs. Narrow perimeter only, broad completely flat solid color opaque text-safe interior (no grain/no gradient). Straight orthographic front view. Genuine transparent background, no checkerboard. No text, letters, icons, symbols, watermark. Final target 48x48; keep 10px slice margins same across states.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-0fba-7f42-8884-20f3220888c3/exec-fa57a21d-d126-4b95-9d40-94b79243c45f.png",
+    "source_sha256": "3371f2bb494e8313949f653ec6582db0ad606c3c90c4d787fbdd65ed38fbe928",
+    "processing": {
+      "alpha_threshold_crop": 20,
+      "crop": {
+        "left": 101,
+        "top": 98,
+        "width": 1052,
+        "height": 1053
+      },
+      "resize": [
+        46,
+        46
+      ],
+      "transparent_padding": 1,
+      "flat_center_rectangle": [
+        7,
+        7,
+        34,
+        34
+      ],
+      "flat_center_rgba": [
+        178,
+        167,
+        155,
+        255
+      ]
+    },
+    "sha256": "3623b0cc9a9dbeaa06714f47246414e080fd506e8f0d6ca1d2331ce61d24dcac"
+  }
+]
