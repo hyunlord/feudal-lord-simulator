@@ -49,7 +49,10 @@ export type OpenStep =
   /** Click `repeat` (the first visible match) until `until` shows, at most `max` times (a book's next page). */
   | { readonly repeat: string; readonly until: string; readonly max?: number }
   /** Hover buildings of these kinds one by one until `until` shows. */
-  | { readonly hoverEach: readonly string[]; readonly until: string; readonly max?: number };
+  | { readonly hoverEach: readonly string[]; readonly until: string; readonly max?: number }
+  /** Stop the page's timers (Playwright's clock) before a step that opens a surface shown for a moment (the 900 ms
+   * loading screen): it stays until measured, as the player sees it while it shows. */
+  | { readonly holdTimers: true };
 
 /** Art pixels. */
 export type ArtRect = { readonly x: number; readonly y: number; readonly w: number; readonly h: number };
@@ -285,7 +288,7 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.chapter-preview.goals", extends: "modal.chapter-preview", root: ".chapter-preview-goals", frame: "flat", scene: chapterScene("ui5", "chapter-end"), open: [],
     data: "chapter 2's goals on the preview" },
   { id: "modal.chapter-loading", root: ".chapter-loading", frame: "flat", scene: { kind: "title" }, numbers: false,
-    open: [{ click: ".welcome-parchment [data-scenario]" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
+    open: [{ holdTimers: true }, { click: ".welcome-parchment [data-scenario]" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
   { id: "modal.person-card", extends: "map.selection.house", root: ".person-card", frame: "painting", painting: PERSON_CARD_ART, scene: TOWN_CLOSE,
     frameSlots: [".person-card-emblem-cover"],
     portraitRing: { cx: 59.5, cy: 83.5, r: 43, inner: 33.5, face: ".person-card-portrait .person-portrait-layer", ornament: ".person-card-portrait .person-state-ornament" },

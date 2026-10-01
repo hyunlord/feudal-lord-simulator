@@ -156,6 +156,9 @@ async function runStep(page, state, step) {
       if (await page.locator(shown(step.until)).count() > 0) return;
     }
     throw new Error(`no hovered building showed ${step.until}`);
+  } else if ('holdTimers' in step) {
+    // The page's timers stop (its CSS animations are held when the measure starts): a surface shown for a moment stays.
+    await page.clock.install(); await page.clock.pauseAt(Date.now() + 1_000);
   } else throw new Error(`unknown step ${JSON.stringify(step)}`);
 }
 
@@ -182,6 +185,9 @@ const unregisteredFramed = new Map();
 /** The frame type a data-frame kind stands for (FRAME_TOKENS; "flat" has no art). */
 const kindType = kind => kind === 'flat' ? 'flat' : FRAME_TOKENS[kind]?.type ?? 'unknown';
 
+/** Two frames rendered (a page whose timers a holdTimers step stopped has no requestAnimationFrame: 250 ms then). */
+const twoFrames = page => Promise.race([page.evaluate(() => new Promise(done => requestAnimationFrame(() => requestAnimationFrame(done)))), pause(250)]);
+
 /** The two captures of the measured root (marked data-geometry-root by collectSurface): as it is, then its text transparent
  * and its controls hidden; the root's attribute and both styles are gone afterwards. The captures cover the part of the
  * root on screen (what its scrolling ancestors show, within the viewport); none of it on screen: no paint pass (undefined). */
@@ -195,7 +201,7 @@ async function paintPass(page, collected) {
   }
   const clip = { x, y, width: r - x, height: b - y };
   const style = css => page.evaluate(text => { const element = document.createElement('style'); element.dataset.geometryPaint = ''; element.textContent = text; document.head.append(element); }, css);
-  const frames = () => page.evaluate(() => new Promise(done => requestAnimationFrame(() => requestAnimationFrame(done))));
+  const frames = () => twoFrames(page);
   try {
     await style(STILL_CSS); await frames();
     const first = decodePng(await page.screenshot({ clip, type: 'png' }));
@@ -211,8 +217,12 @@ async function paintPass(page, collected) {
 const roundBox = box => box === null ? null : Object.fromEntries(Object.entries(box).map(([key, value]) => [key, Math.round(value * 10) / 10]));
 async function measure(row, condition, page) {
   const spec = specOf(row);
+  // The surface holds still from the moment it is measured (its CSS animations paused where they are; the paint pass's
+  // STILL_CSS keeps them so): a fading screen is measured as it showed when the steps reached it, not half gone.
+  await page.evaluate(selector => { for (const animation of document.getAnimations()) { const target = animation.effect?.target;
+    if (target instanceof Element && [...document.querySelectorAll(selector)].some(root => root === target || root.contains(target))) animation.pause(); } }, row.root);
   // A root its scrolling ancestors show nothing of is scrolled to first (as a player does: the family tree's banner).
-  if (await page.evaluate(revealSurface, row.root)) await page.evaluate(() => new Promise(done => requestAnimationFrame(() => requestAnimationFrame(done))));
+  if (await page.evaluate(revealSurface, row.root)) await twoFrames(page);
   let collected = await page.evaluate(collectSurface, spec);
   if (collected.found) { const paint = await paintPass(page, collected); if (paint !== undefined) collected = { ...collected, paint }; }
   const evaluation = evaluateSurface(collected, spec);
