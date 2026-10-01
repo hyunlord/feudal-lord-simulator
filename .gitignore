@@ -12,3 +12,6 @@ coverage/
 /.remote-runs/
 /.remote/
 /.remote-in/
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
