@@ -26,6 +26,7 @@ import type { FactionMemory, FactionRecord, FactionState, FactionTimelineEntry, 
 import type { HistoryRecord } from "./history.types";
 import { lordshipOf } from "./lordshipState";
 import { ageBandOf, ageOf, currentYear, seasonDeathPermille, weightedName } from "./persons";
+import { historyParams, namesPerson } from "./historyNames";
 import type { Person, PersonBuild, PersonClassBand } from "./persons.types";
 import { hairWords, inheritTraits, populationTraits } from "./heredity";
 import { chooseFactionPortraitIdentity, choosePortraitIdentity, identityFaction, identityLineage, PORTRAIT_BAND, setPlaces } from "./portraits";
@@ -286,13 +287,35 @@ function deathInCaptivity(current: FactionState, year: number): FactionState {
     ? { ...person, alive: false, deathYear: year, deathCause: "captivity" as const } : person) };
 }
 
+/** FIX-12 (item 3): the town factions whose leader is no longer among the living get the next head (`townLeaders`). */
+function followDeadTownLeaders(state: GameState, current: FactionState): FactionState {
+  if (state.tick % SEASON !== 1 && !state.houses.some(house => house.burntTick === state.tick)) return current;
+  const living = new Set((state.persons?.people ?? []).map(person => person.id));
+  const dead = (faction: FactionRecord) => FACTION_DEF_BY_ID.get(faction.id)?.leaders === "town" && faction.leaderId !== null && !living.has(faction.leaderId);
+  if (!current.factions.some(dead)) return current;
+  const leaders = townLeaders(state, current.factions.map(faction => dead(faction) ? { ...faction, leaderId: null } : faction));
+  const year = currentYear(state);
+  return { ...current, factions: current.factions.map(faction => {
+    if (!dead(faction)) return faction;
+    const leader = leaders.get(faction.id) ?? null;
+    const def = FACTION_DEFS.find(entry => entry.id === faction.id)!;
+    return { ...faction, leaderId: leader?.id ?? null, name: townFactionName(def, leader),
+      timeline: leader === null ? faction.timeline : [...faction.timeline, { tick: state.tick, year, kind: "leader" as const, id: "succeeded", personId: leader.id }] };
+  }) };
+}
+
 /** One tick of FACTION-0: the factions at the first tick; then at each season start the town's leaders, and each year's turn. */
 export function advanceFactions(state: GameState): GameState {
   if (state.tick <= 0) return state;
   let current = state.factions;
   if (current === undefined) current = initialFactions(state);
-  else if (state.tick % SEASON !== 0) return state;
-  else {
+  else if (state.tick % SEASON !== 0) {
+    // FIX-12 (item 3, QA-036): a town faction's leader who died this tick (the season's death day, a fire) is followed at
+    // once by the next living head of the same group, not at the next season (a petition must not come in a dead man's name).
+    const followed = followDeadTownLeaders(state, current);
+    if (followed === current) return state;
+    current = followed;
+  } else {
     if (state.tick % YEAR === 0) current = yearTurn(state, current);
     // FIX-11 (item 7, FX11-7): Richard II is deposed in the autumn of 1399 and Henry IV takes the crown that season (not
     // at the year's spring); Richard lives on in captivity and dies that winter (February 1400), never of old age.
@@ -452,8 +475,10 @@ export function factionChronicle(state: GameState, id: FactionId): { readonly fa
   readonly timeline: readonly FactionTimelineEntry[] } | null {
   const view = faction(state, id);
   if (view === undefined) return null;
+  // FIX-12 (item 4): a record naming a person by id comes with the person's name now.
   const records = (state.history?.records ?? []).filter(record => record.subject.type === "faction" && record.subject.id === id
-    || (record.actors ?? []).some(actor => actor.type === "faction" && actor.id === id));
+    || (record.actors ?? []).some(actor => actor.type === "faction" && actor.id === id))
+    .map(record => namesPerson(record) ? { ...record, params: historyParams(record, state) } : record);
   return { faction: view, records, timeline: view.timeline };
 }
 

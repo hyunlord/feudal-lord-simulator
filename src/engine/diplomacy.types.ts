@@ -15,7 +15,7 @@ export interface Term {
   readonly kind: TermKind;
   /** Who gives it. */
   readonly giver: "proposer" | "counterpart";
-  /** Pennies (cash, a year's pension, debt), years (pension, support), or nothing. */
+  /** Pennies (cash, a year's pension, debt), years (pension, support, the debt's instalments — FIX-12), or nothing. */
   readonly amount?: number;
   readonly years?: number;
   /** A right piece's id (right_piece, land_use). */

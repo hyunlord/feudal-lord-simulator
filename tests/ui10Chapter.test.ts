@@ -7,6 +7,7 @@
  */
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { historyParams } from "../src/engine/history";
 import type { PetitionResponse } from "../src/content/chapterConfig";
 import { HISTORY_TEMPLATES } from "../src/content/historyCopy.ko";
 import {
@@ -99,8 +100,8 @@ test("UI-10: the eight steps each show a beat with its Wave 21 chapter-5 picture
   assert.equal(beat("legacy_city_seal").illustration, "ch5_event_city_seal_making");
   assert.equal(beat("legacy_last_market").illustration, "ch5_event_last_market");
   for (const entry of seen.beats.filter(item => item.kind.startsWith("legacy_"))) assert.ok(entry.illustration in WAVE21_IMAGES && entry.illustration.startsWith("ch5_"), `${entry.kind}: ${entry.illustration}`);
-  // The names: the merchants' candidate, the old lord and his heir, the first mayor — as the ledger wrote them.
-  const params = (template: string) => state.history!.records.find(record => record.template === template)?.params ?? {};
+  // The names: the merchants' candidate, the old lord and his heir, the first mayor — the ledger's persons (FIX-12: by id, named now).
+  const params = (template: string) => { const record = state.history!.records.find(entry => entry.template === template); return record === undefined ? {} : historyParams(record, state); };
   const candidate = String(params("legacy.mayor_demand").candidate ?? "");
   if (candidate !== "") assert.ok(beat("legacy_mayor_demand").facts.some(fact => fact.includes(candidate)), candidate);
   const heir = String(params("legacy.heir_seated").heir ?? "");

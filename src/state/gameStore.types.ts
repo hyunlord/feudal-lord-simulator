@@ -26,7 +26,7 @@ type GameCommand =
   | { readonly type: "seek_suit_patron"; readonly suitId: string; readonly factionId: string }
   | { readonly type: "enforce_possession"; readonly suitId: string }
   // LM-E3 (NG-7, NG-5, NG-6, NG-8): a marriage offer, the answer to its counter, a promise kept, the will-change answer.
-  | { readonly type: "propose_marriage"; readonly terms: readonly import("../engine/diplomacy.types").Term[] }
+  | { readonly type: "propose_marriage"; readonly terms: readonly import("../engine/diplomacy.types").Term[]; readonly groomId?: string }
   | { readonly type: "answer_counter"; readonly negotiationId: string; readonly accept: boolean }
   | { readonly type: "keep_promise"; readonly promiseId: string }
   | { readonly type: "answer_will_change"; readonly choice: "favour" | "support_promise" | "let_it_be" }
