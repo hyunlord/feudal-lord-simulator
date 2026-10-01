@@ -45,7 +45,9 @@ export type LandGround = {
   /** The fill regions and their per-chunk view (archetypeGroundRegions.ts), made on first use. */
   readonly cache: { regions?: readonly FillRegion[]; readonly chunks: Map<number, readonly ChunkRegion[]>;
     /** Per season: the art keys (landArtKeys), and the readiness once every file has loaded (it cannot change after). */
-    readonly artKeys: Map<SeasonIndex, readonly Wave22GroundKey[]>; readonly allReady: Map<SeasonIndex, string> };
+    readonly artKeys: Map<SeasonIndex, readonly Wave22GroundKey[]>; readonly allReady: Map<SeasonIndex, string>;
+    /** Every season's art has been asked for (archetypeGroundDraw preloadLandArt). */
+    preloaded?: boolean };
 };
 
 /** The X-repeating strip families, each drawn as its a | b pair joined into one repeat. */

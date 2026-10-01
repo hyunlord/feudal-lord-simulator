@@ -106,5 +106,28 @@
    379,
    356.9
   ]
+ },
+ "seasonTurnStaging_node_dgx": {
+  "method": "scratch landuiSeasonTurn.mts: real chunk cache and staging, mock canvases, art loads 30 ms after its request, idle callbacks between frames, the 450 ticks before a turn and 60 after",
+  "10678bb9": {
+   "fen": {
+    "stageRasters": 42,
+    "rastersAtTurnFrames": 0
+   },
+   "riverside": {
+    "stageRasters": 22,
+    "rastersAtTurnFrames": 0
+   }
+  },
+  "preloaded": {
+   "fen": {
+    "stageRasters": 22,
+    "rastersAtTurnFrames": 0
+   },
+   "riverside": {
+    "stageRasters": 22,
+    "rastersAtTurnFrames": 0
+   }
+  }
  }
 }

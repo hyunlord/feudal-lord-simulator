@@ -46,12 +46,24 @@ type ScreenBox = { readonly left: number; readonly top: number; readonly right: 
 
 /** The land's Wave 22 readiness in `season` (one bit per file it draws): part of the chunk content key. */
 export function landArtReadiness(land: LandGround, season: SeasonIndex): string {
+  preloadLandArt(land);
   // Asked for every chunk request of every frame: once all the season's files are ready the bits cannot change.
   const ready = land.cache.allReady.get(season);
   if (ready !== undefined) return ready;
   const bits = landArtKeys(land, season).map(key => (art.art(key) === null ? 0 : 1)).join("");
   if (!bits.includes("0")) land.cache.allReady.set(season, bits);
   return bits;
+}
+
+/**
+ * Every season's land art starts loading on the land's first draw, as the Wave 15 grass does (preloadSeasonArt): the
+ * staging before a season turn then finds the next season's files ready, so its rasters are made once and match the
+ * turn's keys (before, each file landing during the staging moved the readiness bits and re-staged every chunk).
+ */
+function preloadLandArt(land: LandGround): void {
+  if (land.cache.preloaded === true) return;
+  for (const season of [0, 1, 2, 3] as const) for (const key of landArtKeys(land, season)) art.art(key);
+  land.cache.preloaded = true;
 }
 
 /**

@@ -174,6 +174,18 @@ test("the chalk downs' field edges are dry-stone walls; the riverside keeps its 
   assert.ok(countrysideOf(town).strips.filter(piece => piece.family !== "baulk").every(piece => piece.family.startsWith("hedgerow")));
 });
 
+test("the land's first readiness check starts every season's art loading (the turn's staging then finds it ready)", () => {
+  const requested = new Set<string>();
+  // The first test here to touch the art: manifestArt keeps its entries for the file's later tests.
+  (globalThis as unknown as { Image: unknown }).Image = class { naturalWidth = 512; naturalHeight = 64; onload: (() => void) | null = null; onerror: unknown = null;
+    set src(url: string) { requested.add(url); queueMicrotask(() => this.onload?.()); } };
+  const ground = landGroundOf({ ...land("core:chalk_downs", 2), tiles: [...land("core:chalk_downs", 2).tiles] })!;
+  landArtReadiness(ground, 1);
+  for (const season of SEASONS) for (const key of landArtKeys(ground, season)) {
+    assert.ok([...requested].some(url => url.endsWith(WAVE22_GROUND_IMAGES[key].url)), `${key} requested`);
+  }
+});
+
 /** A context that counts the calls a chunk raster pays (fills, image draws) and keeps patterns inert. */
 function countingContext() {
   const counts = { fill: 0, drawImage: 0, setTransform: 0 };
@@ -245,3 +257,4 @@ test("a fen work drying a mere moves the deferKey (groundLocalKey) only of the c
   assert.ok(changed.length > 0 && changed.every(reach), `local keys changed: ${changed.map(plan => `${plan.cx},${plan.cy}`).join(" ")}`);
   assert.ok(a.filter((plan, index) => plan.groundBaseKey !== b[index]!.groundBaseKey).length > changed.length, "the whole-loop key still moves further out");
 });
+
