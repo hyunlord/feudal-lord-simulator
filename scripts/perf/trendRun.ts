@@ -8,7 +8,8 @@
 // scripts/perf/perfTrend.ts gathers them into docs/verification/perf-trend/.
 // Confirmation (decision RR7, scripts/perf/trendRule.ts): after measuring a commit, each scene where a judged metric is
 // outside the widened range of the nearest earlier measured commit (a suspicion) runs perf:ab --headless between the
-// two (45 s × 4 pairs) into <store>/ab/<a>-<b>-<scene>.json. The page marks "나빠짐" only when that A-B confirms it.
+// two (45 s × 4 pairs) into <store>/ab/<a>-<b>-<scene>.json; a suspected metric that A-B finds worse runs a second A-B
+// (kept in the same record as `second`). The page marks "나빠짐" only when both A-B runs find it worse.
 //   --no-confirm     measure only
 //   --confirm-only   do not measure; confirm --commits against their stored comparison commits
 //   --force          run the A-B for every trend scene, suspicion or not (to check the rule)
@@ -19,7 +20,7 @@ import { join } from "node:path";
 import { SCENES } from "./perfGate";
 import { sourceTree } from "./sourceTree";
 import { otherCpuSample, otherCpuShare } from "./machineLoad";
-import { confirmationName, JUDGED, median, suspect } from "./trendRule";
+import { abVerdict, confirmationName, JUDGED, median, suspect } from "./trendRule";
 
 const argv = process.argv.slice(2);
 const flag = (name: string, fallback: string) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] ?? fallback : fallback; };
@@ -81,29 +82,50 @@ async function holdPort(except: number): Promise<{ port: number; release: () => 
 }
 
 /** The suspicions of `commit` against its nearest earlier measured ancestor, and the A-B runs that settle them. */
+/** One perf:ab --headless (45 s × 4 pairs) of `a` against `b` on `scene`; its record, or null when it failed. */
+async function runAb(a: string, b: string, scene: string): Promise<any | null> {
+  const second = await holdPort(port); if (second === null) { console.log("   no second port in 4300–4399; A-B left for later"); return null; }
+  const out = mkdtempSync(join(tmpdir(), "fls-trend-ab-"));
+  try {
+    const ab = spawnSync("node_modules/.bin/tsx", ["scripts/perf/perfAB.ts", "--headless", "--a", a, "--b", b, "--scene", scene, "--rounds", "4", "--seconds", "45",
+      "--out", out, "--ports", `${port},${second.port}`], { encoding: "utf8", env: { ...process.env, NODE_OPTIONS: "--max-old-space-size=8192" } });
+    const file = readdirSync(out).find(entry => entry.endsWith(".json"));
+    if (ab.status !== 0 || file === undefined) { console.log(`   A-B failed: ${(ab.stderr || ab.stdout).split("\n").filter(Boolean).slice(-2).join(" / ")}`); return null; }
+    return JSON.parse(readFileSync(join(out, file), "utf8"));
+  } finally { second.release(); rmSync(out, { recursive: true, force: true }); }
+}
+
+/**
+ * The suspicions of `commit` against its nearest earlier measured ancestor, and the A-B runs that settle them. A
+ * suspected metric the A-B finds worse gets a second A-B; it is "나빠짐" only when both are (user instruction
+ * 2026-10-01: at a 95 % band identical code is still judged worse about once in twenty).
+ */
 async function confirm(commit: string, force: boolean) {
   const row = stored(commit); if (row === null) { console.log(`confirm ${commit.slice(0, 8)}: not measured`); return; }
   const earlier = git("rev-list", "--date-order", `${commit}^@`).split("\n").find(candidate => candidate !== "" && stored(candidate) !== null);
   if (earlier === undefined) { console.log(`confirm ${commit.slice(0, 8)}: no earlier measured commit`); return; }
   const before = stored(earlier)!;
   mkdirSync(join(store, "ab"), { recursive: true }); mkdirSync(".remote/trend/ab", { recursive: true });
+  const verdicts = (record: any) => JUDGED.map(([key]) => `${key} ${abVerdict(record, key) ?? "-"}`).join(", ");
   for (const scene of TREND_SCENES) {
     const suspects = JUDGED.map(([key]) => ({ key, suspicion: suspect(median(row.scenes[scene]?.values?.[key] ?? []), before.scenes[scene]?.values?.[key] ?? []) }))
       .filter(entry => entry.suspicion !== "");
-    const name = confirmationName(earlier, commit, scene);
+    const name = confirmationName(earlier, commit, scene); const file = join(store, "ab", name);
     console.log(`confirm ${commit.slice(0, 8)} ${scene} against ${earlier.slice(0, 8)}: ${suspects.length === 0 ? "no suspicion" : suspects.map(entry => `${entry.key} ${entry.suspicion}`).join(", ")}`);
-    if ((suspects.length === 0 && !force) || existsSync(join(store, "ab", name))) continue;
-    const second = await holdPort(port); if (second === null) { console.log("   no second port in 4300–4399; A-B left for later"); continue; }
-    const out = mkdtempSync(join(tmpdir(), "fls-trend-ab-"));
-    try {
-      const ab = spawnSync("node_modules/.bin/tsx", ["scripts/perf/perfAB.ts", "--headless", "--a", earlier, "--b", commit, "--scene", scene, "--rounds", "4", "--seconds", "45",
-        "--out", out, "--ports", `${port},${second.port}`], { encoding: "utf8", env: { ...process.env, NODE_OPTIONS: "--max-old-space-size=8192" } });
-      const file = readdirSync(out).find(entry => entry.endsWith(".json"));
-      if (ab.status !== 0 || file === undefined) { console.log(`   A-B failed: ${(ab.stderr || ab.stdout).split("\n").filter(Boolean).slice(-2).join(" / ")}`); continue; }
-      const record = { ...JSON.parse(readFileSync(join(out, file), "utf8")), suspects, forced: suspects.length === 0 };
-      for (const dir of [join(store, "ab"), ".remote/trend/ab"]) writeFileSync(join(dir, name), `${JSON.stringify(record, null, 1)}\n`);
-      console.log(`   A-B: ${JUDGED.map(([key]) => `${key} ${record.table.find((entry: { key: string }) => entry.key === key)?.verdict ?? "-"}`).join(", ")}`);
-    } finally { second.release(); rmSync(out, { recursive: true, force: true }); }
+    let record: any = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : null;
+    if (record === null) {
+      if (suspects.length === 0 && !force) continue;
+      const first = await runAb(earlier, commit, scene); if (first === null) continue;
+      record = { ...first, suspects, forced: suspects.length === 0 };
+      console.log(`   A-B: ${verdicts(record)}`);
+    }
+    const worse = (record.suspects ?? []).filter((entry: { key: string }) => abVerdict(record, entry.key) === "나빠짐");
+    if (worse.length > 0 && record.second === undefined) {
+      console.log(`   worse on ${worse.map((entry: { key: string }) => entry.key).join(", ")}: a second A-B`);
+      const again = await runAb(earlier, commit, scene);
+      if (again !== null) { record = { ...record, second: again }; console.log(`   second A-B: ${verdicts(again)}`); }
+    }
+    for (const dir of [join(store, "ab"), ".remote/trend/ab"]) writeFileSync(join(dir, name), `${JSON.stringify(record, null, 1)}\n`);
   }
 }
 

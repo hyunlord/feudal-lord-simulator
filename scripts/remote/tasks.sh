@@ -30,8 +30,12 @@ summarise_tap() {  # node --test totals as one line: TAP ("# pass 12", Node 20) 
 
 case "$TASK" in
 trend)
+  # Trend runs are not --keep runs, so the prune takes their folders after ten newer runs; the results are in
+  # ~/fls-runs/_trend/ and the log is copied to _trend/logs/ (folders starting with "_" are never pruned).
   node_modules/.bin/tsx scripts/perf/trendRun.ts "$@" 2>&1 | tee "$OUT/trend.log"
-  exit "${PIPESTATUS[0]}"
+  rc=${PIPESTATUS[0]}
+  mkdir -p "$HOME/fls-runs/_trend/logs" && cp "$OUT/trend.log" "$HOME/fls-runs/_trend/logs/$FLS_REMOTE_RUN.log"
+  exit "$rc"
   ;;
 
 test)

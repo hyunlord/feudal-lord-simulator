@@ -63,6 +63,9 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
    - 실행 폴더의 `.remote/`(로그·요약·가드레일/성능 원자료)는 Mac의 `.remote-runs/<run>/`으로 온다(git 무시).
    - 명령이 `docs/`·`seeds/`·`perf/`·`output/`·`fixtures/` 아래에 만들거나 바꾼 파일은 작업 트리로 온다. `rsync --update`라서 실행 중에 Mac에서 고친 파일은 덮지 않는다. 목록은 `.remote-runs/<run>/changed-files.txt`에 있다.
 5. **정리**: DGX는 최근 실행 폴더 10개만 남긴다(도는 중인 폴더와 `--keep` 실행은 지우지 않고 세지도 않는다). node_modules 캐시는 최근 4개를 남긴다.
+   - 정리는 어느 세션의 실행이 끝날 때든 돈다. `_`로 시작하는 폴더(`_kept`·`_trend`·`_clones` 등), `.remote/keep`이 있는 폴더, 아직 도는 폴더(잠금)는 건드리지 않는다(2026-10-01 DGX 임시 폴더에서 `prune_runs`를 그대로 돌려 확인: 14개 중 보존·도는 폴더를 빼고 가장 오래된 둘만 지움).
+   - 그래서 `--keep` 없이 돈 실행의 폴더는 다른 세션의 실행이 지울 수 있다. 남겨야 할 실행은 `--keep`으로 돌린다.
+   - 추이 실행(`--task trend`)은 결과를 `_trend/`(측정 `<sha>.json`, A-B 확인 `ab/`)에 두고, 로그도 `_trend/logs/<run>.log`로 복사한다.
 
 ## Node
 - **시스템 Node는 20, 게임은 `_tools`의 24다.**
@@ -98,7 +101,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
 ## 병합 전 자동 검사
 본선(`codex/phase15-organic-ground`)과 main에 들어가는 것은 pre-push 훅이 먼저 검사한다(AGENTS.md 규칙 19, REVIEW-1).
 - **실행**: `npm run check:merge [-- --base <rev> --head <rev>]`. 기본 범위는 본선과의 merge-base..HEAD다. 훅은 `FLS_PUSH_OK=1 git push …`로 푸시할 때 원격 머리..로컬 머리를 넘긴다.
-  - 검사 일곱 가지(1~7) 가운데 하나라도 실패하면 푸시를 거부한다. 8번(추이 문서 뒤처짐)은 경고만 한다.
+  - 검사 여덟 가지(1~8) 가운데 하나라도 실패하면 푸시를 거부한다. 9번(추이 문서 뒤처짐)은 경고만 한다.
   - 이 작업 트리가 `<head>`와 다르거나 수정돼 있으면, `<head>`의 임시 워크트리(LFS는 포인터)에서 ESLint·tsc·빌드 크기 예산을 돌린다. 예산 검사는 빌드가 웹 파생본으로 바꾸는 받은 PNG(키아트·삽화·초상 풀)만 로컬 LFS 저장소에서 꺼낸다(`git lfs checkout`).
 - **검사**:
   1. `scripts/checks/pinChanges.mjs`: 고정값 파일·테스트 해시 값이 바뀌었으면, 같은 범위에서 결정 목록(`docs/decisions/**`, `docs/DECISIONS.md`)에 더한 줄에 그 파일 이름이나 상위 폴더가 있어야 한다.
@@ -112,7 +115,8 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
   7. `scripts/checks/distBudget.mjs`(BUDGET-1): `<head>`를 임시 폴더에 `vite build --outDir`로 빌드해(작업 트리의 `dist`는 그대로) 파일 크기를 범주별(세계 그림·초상·삽화·키아트·UI·소리·코드, 규칙에 안 걸리면 기타)로 더하고, 전체나 예산 있는 범주가 넘으면 실패한다. 빌드 폴더는 지운다.
      - 범주 규칙과 예산(전체 150 MB, 초상 20 MB, 삽화 25 MB; MB = 1,000,000바이트)은 `scripts/checks/distBudget.config.json` 한 파일이다. 새 에셋 폴더가 기타로 잡히면 목록에 이름이 나오니 규칙을 더한다.
      - 따로 재기: `npm run budget:dist`(같은 빌드·표), 이미 있는 빌드는 `node scripts/checks/distBudget.mjs --dist dist`.
-  8. `scripts/checks/trendLag.mjs`(경고만, 결정 RR4): `<head>`의 `docs/verification/perf-trend/trend.json`이 본선 머리를 몇 개 뒤처졌는지 센다. 10개를 넘으면 경고 한 줄을 찍고 푸시는 막지 않는다.
+  8. `scripts/checks/decisionIds.mjs`(결정 RR8): `<head>`의 `docs/decisions/README.md`에서 같은 결정 ID가 두 행에 있으면 실패한다. ID는 표 행의 첫 칸이 ID 모양(영문·숫자·`-`·`~`·`·`, 예: `FX7-1`, `RR7`, `INSTALL27-D1~D4`)일 때다. 세션들이 같은 날 같은 번호를 쓰거나(RR4·RR5), 병합이 한 행의 옛 판과 고친 판을 둘 다 남길 때(FX7-1, 병합 `e1b8119c`) 걸린다. 나중 것에 새 번호를 주거나, 같은 행의 묵은 사본이면 지운다.
+  9. `scripts/checks/trendLag.mjs`(경고만, 결정 RR4): `<head>`의 `docs/verification/perf-trend/trend.json`이 본선 머리를 몇 개 뒤처졌는지 센다. 10개를 넘으면 경고 한 줄을 찍고 푸시는 막지 않는다.
      - 세는 단위는 본선 머리(추이가 재는 단위)다: 이 저장소의 `origin/codex/phase15-organic-ground` reflog(워크트리끼리 공유)에 있던 커밋과 `<head>` 가운데, 문서의 측정 커밋 어느 것에서도 닿지 않는 것. reflog가 없는 새 클론에서는 그 범위의 커밋 전부를 센다(병합된 브랜치의 커밋까지 세어 많게 나온다).
      - 경고는 `<git common dir>/fls-trend-lag.log`에도 한 줄씩 쌓인다. 어느 워크트리에서든 `cat "$(git rev-parse --git-common-dir)/fls-trend-lag.log"`로 본다.
      - 갱신: `npm run perf:trend`로 DGX 결과를 모아 `docs/verification/perf-trend`를 커밋한다. 합치는 세션이 하고, 경고가 쌓이면 인프라 세션이 모아 커밋한다.
@@ -153,4 +157,5 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
   _locks/ _slots/ _ports/  실행·가드레일 슬롯·포트 잠금(flock)
   _clones/                 clone-check 임시 클론(끝나면 지운다)
   _kept/<run>/             --keep 실행의 결과 사본(.remote/·결과 파일, --release로 지운다)
+  _trend/                  추이: <sha>.json(측정)·ab/(A-B 확인)·logs/(실행 로그)
 ```

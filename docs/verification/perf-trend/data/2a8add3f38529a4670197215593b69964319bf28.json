@@ -1,0 +1,242 @@
+{
+ "commit": "2a8add3f38529a4670197215593b69964319bf28",
+ "subject": "Wire Graft context graph into Claude Code and Codex",
+ "committed": "2026-10-01T19:12:43+09:00",
+ "measured": "2026-10-01T10:21:22.414Z",
+ "host": "aitopatom-d6bb",
+ "machine": "dgx-headless",
+ "rounds": 3,
+ "seconds": 45,
+ "scenes": {
+  "big-town-x5": {
+   "runs": 3,
+   "medians": {
+    "scriptMsPerTick": 9.92,
+    "heapAllocKBPerTick": 292.6,
+    "canvasPer1kTicks": 200.6,
+    "scriptMsPerFrame": 20.348,
+    "taskMsPerFrame": 30.073,
+    "heapAllocMBps": 19.8,
+    "gcPerMin": 129.2,
+    "canvasPerSec": 1.91,
+    "bitmapPerSec": 0,
+    "getImageDataPerSec": 0,
+    "heapEndMB": 74.8,
+    "heapAfterGcMB": 38.1,
+    "p50": 33.3,
+    "p95": 50,
+    "p99": 66.7,
+    "max": 83.4,
+    "over33PerMin": 1353.2,
+    "otherCpu": 0.31
+   },
+   "values": {
+    "scriptMsPerTick": [
+     9.92,
+     9.874,
+     10.095
+    ],
+    "heapAllocKBPerTick": [
+     292.2,
+     320.4,
+     292.6
+    ],
+    "canvasPer1kTicks": [
+     207.5,
+     197.1,
+     200.6
+    ],
+    "scriptMsPerFrame": [
+     20.348,
+     20.313,
+     21.796
+    ],
+    "taskMsPerFrame": [
+     29.732,
+     30.073,
+     31.694
+    ],
+    "heapAllocMBps": [
+     19.8,
+     21.5,
+     19.5
+    ],
+    "gcPerMin": [
+     118.5,
+     129.2,
+     145.2
+    ],
+    "canvasPerSec": [
+     1.91,
+     1.89,
+     1.91
+    ],
+    "bitmapPerSec": [
+     0,
+     0,
+     0
+    ],
+    "getImageDataPerSec": [
+     0,
+     0,
+     0
+    ],
+    "heapEndMB": [
+     74.8,
+     68.1,
+     77.8
+    ],
+    "heapAfterGcMB": [
+     37.8,
+     38.1,
+     38.7
+    ],
+    "p50": [
+     33.3,
+     33.3,
+     33.3
+    ],
+    "p95": [
+     50,
+     50,
+     50.1
+    ],
+    "p99": [
+     66.7,
+     66.6,
+     66.7
+    ],
+    "max": [
+     83.4,
+     83.4,
+     83.4
+    ],
+    "over33PerMin": [
+     1355.9,
+     1341.2,
+     1353.2
+    ],
+    "otherCpu": [
+     0.25,
+     0.31,
+     0.31
+    ]
+   }
+  },
+  "new-game-x3": {
+   "runs": 3,
+   "medians": {
+    "scriptMsPerTick": 6.508,
+    "heapAllocKBPerTick": 532.8,
+    "canvasPer1kTicks": 48.6,
+    "scriptMsPerFrame": 5.6,
+    "taskMsPerFrame": 19.297,
+    "heapAllocMBps": 23.3,
+    "gcPerMin": 107.9,
+    "canvasPerSec": 0.64,
+    "bitmapPerSec": 0,
+    "getImageDataPerSec": 0,
+    "heapEndMB": 37.4,
+    "heapAfterGcMB": 20.5,
+    "p50": 16.7,
+    "p95": 33.4,
+    "p99": 50,
+    "max": 50.1,
+    "over33PerMin": 489,
+    "otherCpu": 0.3
+   },
+   "values": {
+    "scriptMsPerTick": [
+     6.532,
+     6.385,
+     6.508
+    ],
+    "heapAllocKBPerTick": [
+     510.4,
+     532.8,
+     547.6
+    ],
+    "canvasPer1kTicks": [
+     49.3,
+     48.2,
+     48.6
+    ],
+    "scriptMsPerFrame": [
+     5.6,
+     5.606,
+     5.589
+    ],
+    "taskMsPerFrame": [
+     19.297,
+     19.716,
+     19.218
+    ],
+    "heapAllocMBps": [
+     22.3,
+     23.3,
+     24
+    ],
+    "gcPerMin": [
+     111.9,
+     107.9,
+     107.9
+    ],
+    "canvasPerSec": [
+     0.64,
+     0.64,
+     0.64
+    ],
+    "bitmapPerSec": [
+     0,
+     0,
+     0
+    ],
+    "getImageDataPerSec": [
+     0,
+     0,
+     0
+    ],
+    "heapEndMB": [
+     24,
+     53,
+     37.4
+    ],
+    "heapAfterGcMB": [
+     20.6,
+     20.5,
+     20.5
+    ],
+    "p50": [
+     16.7,
+     16.7,
+     16.7
+    ],
+    "p95": [
+     33.4,
+     33.4,
+     33.4
+    ],
+    "p99": [
+     50,
+     50,
+     50
+    ],
+    "max": [
+     66.8,
+     50.1,
+     50.1
+    ],
+    "over33PerMin": [
+     489,
+     551.6,
+     487.7
+    ],
+    "otherCpu": [
+     0.3,
+     0.3,
+     0.3
+    ]
+   }
+  }
+ }
+}
