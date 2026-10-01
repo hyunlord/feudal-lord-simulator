@@ -1,0 +1,373 @@
+[
+  {
+    "id": "select_closed",
+    "file": "assets/select_closed.png",
+    "width": 160,
+    "height": 40,
+    "component": "select",
+    "state": "closed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 26,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 80,
+    "min_height": 40,
+    "text_safe": [
+      10,
+      10,
+      122,
+      20
+    ],
+    "notes": "Height fixed40px; horizontal9slice only to preserve generated down-chevron aspect. Right26px slice protects glyph from width stretch.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, select_closed, intended final resolution 160x40px. Closed dropdown selector. A single small dark brown downward chevron in the rightmost 20px zone only, no vertical divider. Completely blank parchment center. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 160:40, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-fe970b72-6d49-4732-807a-16991e722238.png",
+    "source_sha256": "475a5ecc8f855f022ad66f97c413ead1e6c73ee0704bbca6e88d0d218fcde462",
+    "processing": {
+      "alpha_crop": [
+        68,
+        227,
+        1847,
+        325
+      ],
+      "resize": [
+        158,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          10,
+          10,
+          122,
+          20
+        ],
+        "rgba": [
+          229,
+          207,
+          165,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    }
+  },
+  {
+    "id": "select_open_list",
+    "file": "assets/select_open_list.png",
+    "width": 160,
+    "height": 120,
+    "component": "select",
+    "state": "open_list",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 52,
+    "text_safe": [
+      10,
+      10,
+      140,
+      100
+    ],
+    "notes": "Blank label region, transparent external pixels.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, select_open_list, intended final resolution 160x120px. An open dropdown list background panel, aspect ratio 4:3, blank continuous parchment interior, no rows no icons no text. Delicate 5px oak and muted brass rim, nearly square corners. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 160:120, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-9524d9af-488c-4042-977c-beaef6dd17c2.png",
+    "source_sha256": "e4975f380796292949fead1d83fa8165a1672e9805efe901e8e0c3bf2cdbda72",
+    "processing": {
+      "alpha_crop": [
+        63,
+        99,
+        1323,
+        865
+      ],
+      "resize": [
+        158,
+        118
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          10,
+          10,
+          140,
+          100
+        ],
+        "rgba": [
+          227,
+          208,
+          171,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    }
+  },
+  {
+    "id": "select_row_hover",
+    "file": "assets/select_row_hover.png",
+    "width": 144,
+    "height": 32,
+    "component": "select",
+    "state": "row_hover",
+    "status": "candidate",
+    "slice_top": 6,
+    "slice_right": 6,
+    "slice_bottom": 6,
+    "slice_left": 6,
+    "min_width": 48,
+    "min_height": 28,
+    "text_safe": [
+      6,
+      6,
+      132,
+      20
+    ],
+    "notes": "Blank label region, transparent external pixels.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, select_row_hover, intended final resolution 144x32px. An individual hovered menu row background strip aspect 4.5:1, subtle warm pale brass highlight fill and very thin darker gold edging. Blank interior, no icon. At final 32px height edges only 3px thick. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 144:32, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-afc9ea63-2406-4523-98a3-72db0bc1e653.png",
+    "source_sha256": "01418d934096b1f741dbfd5091eadc8ee3677096b7d7800163696b8518ee8826",
+    "processing": {
+      "alpha_crop": [
+        33,
+        222,
+        2048,
+        292
+      ],
+      "resize": [
+        142,
+        30
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          6,
+          6,
+          132,
+          20
+        ],
+        "rgba": [
+          228,
+          209,
+          161,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    }
+  },
+  {
+    "id": "input_normal",
+    "file": "assets/input_normal.png",
+    "width": 160,
+    "height": 40,
+    "component": "input",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      10,
+      10,
+      140,
+      20
+    ],
+    "notes": "Blank label region, transparent external pixels.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, input_normal, intended final resolution 160x40px. Normal text input, shallow inset parchment field with thin dark oak inner rim and understated muted brass outline. Blank center. Thin frame 5px at final size. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 160:40, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-027c5922-3ba9-4650-91e2-0ada439ed4ea.png",
+    "source_sha256": "05c0269621cb88c0457430168585f80cb3ed424012d5087c9eb0f029f12da554",
+    "processing": {
+      "alpha_crop": [
+        42,
+        210,
+        1899,
+        358
+      ],
+      "resize": [
+        158,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          10,
+          10,
+          140,
+          20
+        ],
+        "rgba": [
+          224,
+          204,
+          161,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    }
+  },
+  {
+    "id": "input_focus",
+    "file": "assets/input_focus.png",
+    "width": 160,
+    "height": 40,
+    "component": "input",
+    "state": "focus",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 40,
+    "text_safe": [
+      10,
+      10,
+      140,
+      20
+    ],
+    "notes": "Blank label region, transparent external pixels.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, input_focus, intended final resolution 160x40px. Focused text input, shallow inset parchment field with clear luminous warm brass double rim indicating keyboard focus, NEVER blue. Blank center. Thin frame 5px at final size, same shape as normal input. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 160:40, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-576af9a9-8c01-4bbb-929f-763c90e5849b.png",
+    "source_sha256": "5c5d2cbfafda6fe69cd1c39e647dade8888d575de7f2e2aea2b5efcfce59e55e",
+    "processing": {
+      "alpha_crop": [
+        25,
+        192,
+        1936,
+        394
+      ],
+      "resize": [
+        158,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          10,
+          10,
+          140,
+          20
+        ],
+        "rgba": [
+          225,
+          204,
+          157,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    }
+  },
+  {
+    "id": "chip_normal",
+    "file": "assets/chip_normal.png",
+    "width": 88,
+    "height": 28,
+    "component": "chip",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 8,
+    "slice_right": 8,
+    "slice_bottom": 8,
+    "slice_left": 8,
+    "min_width": 48,
+    "min_height": 28,
+    "text_safe": [
+      8,
+      6,
+      72,
+      16
+    ],
+    "notes": "Height fixed28px; horizontal stretch only.16px flat label region spans inside vertical8px slices. Do not vertically shrink or stretch.",
+    "prompt": "Use case: ui-mockup. Generate exactly ONE standalone medieval historical strategy game UI asset, chip_normal, intended final resolution 88x28px. Normal small filter chip, aspect ratio 22:7, clipped corners confined to 4px corner radius, pale parchment surface with narrow oak outline and thin muted brass trim. Thin 3px frame at final size. Blank center. Style: restrained hand-painted historical 2D UI, aged muted oak #674124 and darkoak #3c291c, brass #b29658, light parchment #e8d8b1. Clean blank FLAT UNTEXTURED opaque center for later 16px text; absolutely no letters, numbers, watermark, text. Orthographic front view. Aspect ratio exactly 88:28, centered object, transparent background and genuinely transparent corner pixels, tight bounds. Slim softly beveled painted edges, almost rectangular corners, ornament only within tiny corner squares; top and bottom straight repeatable edges suitable for 9slice. NO ornamental protrusions, no leaf flourishes, no fantasy gemstones, no surrounding shadow. Warm desaturated palette, avoid orange/gold saturation. Show the single isolated component occupying almost full image width, ample alpha around it.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-45ba7aed-c07a-4733-a2d9-171b55e5dcd8.png",
+    "source_sha256": "d4899d0a15119123f3b5726b2d650711e899873e2fe75eccf7bce6d0e9e8fb1d",
+    "processing": {
+      "alpha_crop": [
+        64,
+        211,
+        1855,
+        366
+      ],
+      "resize": [
+        86,
+        26
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          8,
+          6,
+          72,
+          16
+        ],
+        "rgba": [
+          225,
+          203,
+          159,
+          255
+        ]
+      },
+      "raster_border": "Generated border preserved; no procedural border or glyph artwork."
+    }
+  },
+  {
+    "id": "chip_selected",
+    "file": "assets/chip_selected.png",
+    "width": 88,
+    "height": 28,
+    "component": "chip",
+    "state": "selected",
+    "status": "candidate",
+    "slice_top": 8,
+    "slice_right": 8,
+    "slice_bottom": 8,
+    "slice_left": 8,
+    "min_width": 48,
+    "min_height": 28,
+    "text_safe": [
+      8,
+      6,
+      72,
+      16
+    ],
+    "notes": "Height fixed28px; horizontal stretch only.16px flat label region spans inside vertical8px slices. Do not vertically shrink or stretch.",
+    "prompt": "Use case: precise-object-edit. Reference image1 is approved chip_selected88x28, image2 is normal chip88x28. Edit selected ONLY. Preserve the selected chip silhouette, corner geometry, thin painted beveled brass rim, border placement, aspect ratio88:28, and transparent background. Make selected state unmistakable by replacing ALL pale parchment interior with a flat solid warm muted brass gold fill RGB178,150,88 (#b29658), sufficiently light for dark ink #35291c text. Slightly stronger warm brass outer rim. Entire center must be blank completely untextured solid brass, no text no icons no gradients no grain. Keep4px thin border, generous interior16px text height, no protrusions. Single standalone chip centered tightly on true transparent background. Not bright yellow; restrained historical medieval oak/brass style. Do not render the normal reference as an extra object. Output exactly one selectedchip only.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-c3ed-7a63-a2ad-8aec5d2f7a66/exec-998cff37-da3a-4b6f-894a-c89aaecac3be.png",
+    "source_sha256": "cd32ec0e067f4527330d6060b7e23b0d62d835d2f6eda3101cebff36769f91d1",
+    "processing": {
+      "alpha_crop": [
+        73,
+        113,
+        2020,
+        494
+      ],
+      "resize": [
+        86,
+        26
+      ],
+      "transparent_padding": 1,
+      "flat_center": {
+        "rect": [
+          8,
+          6,
+          72,
+          16
+        ],
+        "rgba": [
+          178,
+          150,
+          88,
+          255
+        ]
+      },
+      "revision": "Builtin imagegen edit using previous selected and approved normal references; selected now brass filled; prior source retained in revision-history record."
+    }
+  }
+]

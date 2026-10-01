@@ -1,0 +1,254 @@
+[
+  {
+    "id": "tab_selected",
+    "file": "assets/tab_selected.png",
+    "width": 128,
+    "height": 40,
+    "component": "tab",
+    "state": "selected",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Flat text-safe center; generated painted frame retained.",
+    "prompt": "Create ONE isolated raster UI control for a historically grounded medieval English lord simulation. Match reference warm parchment, subdued oak and antique brass craft. Clean orthographic front view, real transparent background, no cast shadow outside silhouette, no checkerboard, no lettering or logo, no elaborate fantasy ornament. Small-scale readable restrained painted game UI. Selected navigation tab, width to height ratio 3.2:1, nearly rectangular silhouette with tiny clipped corners. Narrow oak outer perimeter and fine antique brass inner bevel; bright light parchment #f1e4c6 raised face. Broad completely FLAT opaque solid-color blank center for later text, absolutely no grain/gradient in central 80 percent. Edge relief only within outer quarter height. No protrusions. Tab will be downscaled to128x40. transparent canvas margins.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-340211a7-12df-423a-9874-51981a85115a.png",
+    "source_sha256": "a65245c9b6a06959ff744eb9e8511085386da5a9e922098cb8a6f56f80ffb9b4",
+    "processing": {
+      "alpha_crop": [
+        73,
+        223,
+        1837,
+        334
+      ],
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        10,
+        8,
+        108,
+        24
+      ],
+      "flat_rgb": [
+        238,
+        220,
+        182
+      ]
+    }
+  },
+  {
+    "id": "tab_unselected",
+    "file": "assets/tab_unselected.png",
+    "width": 128,
+    "height": 40,
+    "component": "tab",
+    "state": "unselected",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Flat text-safe center; generated painted frame retained.",
+    "prompt": "Edit reference selected tab into UNSELECTED state. Preserve exactly same outline, dimensions, clipped corners, narrow oak perimeter, brass inset, alignment and blank center. Only state: recessed muted darker parchment #cabb96, muted brass edge, inward shadow. Central 80percent blank opaque flat solid color absolutely texture-free. No glyph or words. Real transparent outside.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-41f2f8c2-cb67-4b93-b7e1-78a3cb634353.png",
+    "source_sha256": "ec69f573bf3edc082c2983a7567e7f80bf30a5e71ba2213fe8f78e14936a618d",
+    "processing": {
+      "alpha_crop": [
+        71,
+        220,
+        1842,
+        339
+      ],
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        10,
+        8,
+        108,
+        24
+      ],
+      "flat_rgb": [
+        197,
+        180,
+        140
+      ]
+    }
+  },
+  {
+    "id": "tab_hover",
+    "file": "assets/tab_hover.png",
+    "width": 128,
+    "height": 40,
+    "component": "tab",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Flat text-safe center; generated painted frame retained.",
+    "prompt": "Edit reference selected tab into HOVER state. Preserve exactly same outline, dimensions, clipped corners, narrow oak perimeter, brass inset, alignment and blank center. Only state: stronger bright brass top/side edge, light warm parchment #f6ead0 face, lifted highlight. Central 80percent blank opaque flat solid color absolutely texture-free. No glyph or words. Real transparent outside.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-1922bbef-e32b-4519-843b-3439dcf0615e.png",
+    "source_sha256": "9ce387161b5537ede74aadc585bb86a041615718eb37ea10e42dbbc45210da49",
+    "processing": {
+      "alpha_crop": [
+        69,
+        219,
+        1848,
+        340
+      ],
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        10,
+        8,
+        108,
+        24
+      ],
+      "flat_rgb": [
+        242,
+        227,
+        196
+      ]
+    }
+  },
+  {
+    "id": "close_normal",
+    "file": "assets/close_normal.png",
+    "width": 32,
+    "height": 32,
+    "component": "close",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 32,
+    "min_height": 32,
+    "text_safe": null,
+    "notes": "Fixed size. Generated X glyph retained without modification.",
+    "prompt": "Create ONE isolated raster UI control for a historically grounded medieval English lord simulation. Match reference warm parchment, subdued oak and antique brass craft. Clean orthographic front view, real transparent background, no cast shadow outside silhouette, no checkerboard, no lettering or logo, no elaborate fantasy ornament. Small-scale readable restrained painted game UI. Square 32x32 close button at large drawing resolution. Tiny clipped corners, dark oak square base, narrow antique brass raised beveled rim, warm medium oak face. ONE prominent centered ivory/brass X CLOSE GLYPH made of two simple thick diagonal bars, clearly visible at32px; not a letter label. No other symbol. Front face raised normal state. compact consistent square silhouette.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-9914f404-c8a8-4980-a854-9170ca5bb494.png",
+    "source_sha256": "54875706e81eb852fbe38740ed008ed250eabbc7e58fa98531b7288a0c24a3b1",
+    "processing": {
+      "alpha_crop": [
+        105,
+        104,
+        1056,
+        1034
+      ],
+      "resize": [
+        30,
+        30
+      ],
+      "transparent_padding": 1,
+      "flat_center": null,
+      "flat_rgb": null
+    }
+  },
+  {
+    "id": "close_hover",
+    "file": "assets/close_hover.png",
+    "width": 32,
+    "height": 32,
+    "component": "close",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 32,
+    "min_height": 32,
+    "text_safe": null,
+    "notes": "Fixed size. Generated X glyph retained without modification.",
+    "prompt": "Edit reference square close button into HOVER state. Preserve exact outline size, corners, oak face, brass rim and large ivory/brass X glyph geometry/position. Change only state: noticeably brighter golden rim especially top edge, slightly brighter oak face. No new symbols, no words, unchanged silhouette. Transparent background.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-65d5ed92-5115-4a30-a6d0-81a8694a1a81.png",
+    "source_sha256": "0b781d3651e4a026c6b02f22aefd0ee800a0245af4de65782579754df10fbc17",
+    "processing": {
+      "alpha_crop": [
+        104,
+        102,
+        1058,
+        1038
+      ],
+      "resize": [
+        30,
+        30
+      ],
+      "transparent_padding": 1,
+      "flat_center": null,
+      "flat_rgb": null
+    }
+  },
+  {
+    "id": "close_pressed",
+    "file": "assets/close_pressed.png",
+    "width": 32,
+    "height": 32,
+    "component": "close",
+    "state": "pressed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 32,
+    "min_height": 32,
+    "text_safe": null,
+    "notes": "Fixed size. Generated X glyph retained without modification.",
+    "prompt": "Edit reference square close button into PRESSED state. Preserve exact outline size, corners, oak face, brass rim and large ivory/brass X glyph geometry/position. Change only state: button face inset, darker oak, subdued brass lower bevel and strong interior top shadow suggesting 1pixel depressed face at32px. No new symbols, no words, unchanged silhouette. Transparent background.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-5cba-71b3-abc7-b7378744815f/exec-70c8d273-4074-449f-935b-dd06cb5294a0.png",
+    "source_sha256": "5a87145412290ef7373a96f9081093b6ff3b664e961ac5245e456c85bae88ce6",
+    "processing": {
+      "alpha_crop": [
+        105,
+        103,
+        1057,
+        1035
+      ],
+      "resize": [
+        30,
+        30
+      ],
+      "transparent_padding": 1,
+      "flat_center": null,
+      "flat_rgb": null
+    }
+  }
+]

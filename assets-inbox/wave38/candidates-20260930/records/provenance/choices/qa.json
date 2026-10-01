@@ -1,0 +1,117 @@
+{
+  "status": "candidate",
+  "asset_count": 7,
+  "checks": [
+    {
+      "id": "checkbox_empty",
+      "dimensions": [
+        24,
+        24
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "center_alpha": 255
+    },
+    {
+      "id": "checkbox_checked",
+      "dimensions": [
+        24,
+        24
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "center_alpha": 255
+    },
+    {
+      "id": "checkbox_disabled",
+      "dimensions": [
+        24,
+        24
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "center_alpha": 255
+    },
+    {
+      "id": "radio_empty",
+      "dimensions": [
+        24,
+        24
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "center_alpha": 255
+    },
+    {
+      "id": "radio_selected",
+      "dimensions": [
+        24,
+        24
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "center_alpha": 255
+    },
+    {
+      "id": "toggle_on",
+      "dimensions": [
+        56,
+        28
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "center_alpha": 255
+    },
+    {
+      "id": "toggle_off",
+      "dimensions": [
+        56,
+        28
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "center_alpha": 255
+    }
+  ],
+  "visual_review": "PASS: native and 2x sheet inspected. Check and dot bold readable; blank disabled visibly desaturated; toggle on knob right and olive track, off knob left and brown track. Same output bounds within each family.",
+  "known_limits": [
+    "Fixed-size controls: supplied slice metadata must not be used to stretch the circular glyphs or toggle knobs.",
+    "Generated source has mild material detail; no label-bearing surfaces in this lane."
+  ],
+  "runtime_validation": "NOT_PERFORMED"
+}

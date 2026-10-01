@@ -1,0 +1,170 @@
+{
+  "checks": [
+    {
+      "id": "button_primary_normal",
+      "dimensions": [
+        128,
+        40
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "source_sha256": "71c320e7e2252baac671eee78807cb19c6eb8d8086821942a7b73a49ed8b53ef",
+      "output_sha256": "102280245adce3ca6ae27fa80620d2e422307325f69baf30dcaf2e7931dbfdd2",
+      "text_safe_opaque": true,
+      "pass": true
+    },
+    {
+      "id": "button_secondary_normal",
+      "dimensions": [
+        128,
+        40
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "source_sha256": "baf21fb5f9b7e6c45917dac19e1a0502177bf0e08d077a47e9f28de8825d5177",
+      "output_sha256": "dd47f5b24d43cc3e4b4529d0a76e45eec8e2d6844f628d16daec3d7895d35c42",
+      "text_safe_opaque": true,
+      "pass": true
+    },
+    {
+      "id": "button_primary_hover",
+      "dimensions": [
+        128,
+        40
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "source_sha256": "de71c104772c78b4520d27e79a5780b849f0aeee99ec6d514ac959b49e1b4b33",
+      "output_sha256": "56c523665ef7fac3038d0bb03c874ab187933bcdb0a3161b797f3c99023c5e01",
+      "text_safe_opaque": true,
+      "pass": true
+    },
+    {
+      "id": "button_primary_pressed",
+      "dimensions": [
+        128,
+        40
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "source_sha256": "0e21f5f75c363f4da62b9dec261ec3bddd6795f1898bb3753801a2a64856c659",
+      "output_sha256": "5a55247be59bbdd3328a138cec819c3be225642a93c9bdad39bee8b707cd8cc8",
+      "text_safe_opaque": true,
+      "pass": true
+    },
+    {
+      "id": "button_primary_disabled",
+      "dimensions": [
+        128,
+        40
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "source_sha256": "74d00780622af9749fc366d8c1c76c0203eb14e0e09c4224af19a96d228f56ec",
+      "output_sha256": "2a32d33513278e38eabdb084b2a669a5a85422d7ce7e9077352eb29900847cea",
+      "text_safe_opaque": true,
+      "pass": true
+    },
+    {
+      "id": "button_secondary_hover",
+      "dimensions": [
+        128,
+        40
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "source_sha256": "d6e03fa261223f749dec30f5888d379787e1421f2df3e4973c9e3d6c35f27563",
+      "output_sha256": "de30999c6a215d1e7963d16f39229978059378195e147b6151be4f6dc2d991c3",
+      "text_safe_opaque": true,
+      "pass": true
+    },
+    {
+      "id": "button_secondary_pressed",
+      "dimensions": [
+        128,
+        40
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "source_sha256": "f3456c512c02b406e9c52fe7d202c99ef28bdd00c77a603e3993bb75d0b55346",
+      "output_sha256": "7543ef75105bc5eebe482d51f1e7b83a032f0855040caef6c863a4d7a2fc552e",
+      "text_safe_opaque": true,
+      "pass": true
+    },
+    {
+      "id": "button_secondary_disabled",
+      "dimensions": [
+        128,
+        40
+      ],
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "source_sha256": "0007cef5f75e20b846e8d52da8755541b63954bcbe48c66fe3c2f386d690ed5e",
+      "output_sha256": "6efc8b3baff434e183e977bb7cfc39db515e8833c00a5b584b17cbebd961537b",
+      "text_safe_opaque": true,
+      "pass": true
+    }
+  ],
+  "visual_review": {
+    "status": "pass",
+    "evidence": "contact.png",
+    "scale": [
+      1,
+      2
+    ],
+    "notes": "All8sprites inspected at native and2x. Primary brass corner pins identifiable; secondary plain oak rim. Hover brighter, pressed darker/inset, disabled opaque neutral gray. Flat centers free of glyphs. Uniform alpha bounding boxes after normalization."
+  },
+  "known_limits": [
+    "Offline asset QA only; no runtime installation or testing."
+  ],
+  "distinct_state_hashes": true,
+  "asset_count": 8
+}

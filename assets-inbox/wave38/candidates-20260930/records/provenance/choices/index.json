@@ -1,0 +1,240 @@
+[
+  {
+    "id": "checkbox_empty",
+    "file": "assets/checkbox_empty.png",
+    "width": 24,
+    "height": 24,
+    "component": "checkbox",
+    "state": "empty",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: ui-mockup. Input images are style references ONLY: Wave35 oak, brass and parchment. Create ONE isolated EMPTY checkbox raster game UI asset. Square bevelled dark oak rim with thin aged brass inner lip, opaque smooth warm parchment center, blank with NO check. Bold simple silhouette for eventual 24x24 pixels, rim about 3px native. Slight clipped/rounded corners. Front-on orthographic. No ornate detail. Transparent outside shape and transparent cornerpixels; centered object occupies 85% canvas. NO text, labels, contact sheet, extra objects, drop shadow or background. Polished hand-painted medieval strategy UI, warm low-saturation palette oak #674124, darkoak #3c291c, brass #b29658, parchment #e8d8b1. Preserve flat opaque inner surface and precise symmetric geometry.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-e1847be3-e52a-49fe-9235-d9711f1e7e1f.png",
+    "source_sha256": "530d8e229bf5e8f287d9ab3b7c931237fa5e5a82ae89475ee3f11dc5b07a13be",
+    "sha256": "65e78bd6bfb785a2289f80cd8ab71e1cbb7f9b92b2902e3cdbf118768bfa43f7",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        166,
+        179,
+        922,
+        886
+      ],
+      "content_size": [
+        22,
+        22
+      ]
+    }
+  },
+  {
+    "id": "checkbox_checked",
+    "file": "assets/checkbox_checked.png",
+    "width": 24,
+    "height": 24,
+    "component": "checkbox",
+    "state": "checked",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: precise-object-edit. Input image is exact edit target. Add only ONE extremely bold dark ink #35291c check mark centered in the parchment square, occupying 65% inner area width and 55% height, broad stroke to remain readable at 24x24 final pixels. Preserve the exact square frame shape, crop, outer silhouette, warm parchment and oak-brass border. No text. One isolated medieval strategy game raster UI control on genuinely transparent background. No matte, no checkerboard. Preserve transparent outside corners and exact front-on geometry. Do not add any other object.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-917e7d8a-29b8-4fd4-b23a-8f5145bbb33e.png",
+    "source_sha256": "af211394c3689965862c3b979a165671d8c52f8e7e39ae77063b0a6bbe287461",
+    "sha256": "2200d83fe03f9e22807f3c0f53f6333ca5a6b57b0267f6ecfe077cf8aaa2d944",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        165,
+        178,
+        925,
+        888
+      ],
+      "content_size": [
+        22,
+        22
+      ]
+    }
+  },
+  {
+    "id": "checkbox_disabled",
+    "file": "assets/checkbox_disabled.png",
+    "width": 24,
+    "height": 24,
+    "component": "checkbox",
+    "state": "disabled",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: precise-object-edit. Input image is exact edit target. Make this EMPTY checkbox DISABLED. Keep identical exact square frame shape, crop and outer silhouette, blank center. Change its material colors to opaque desaturated muted gray brown #99917c with reduced contrast, subdued dark grey-brown oak rim and dull pale metal. Strongly visibly disabled, still opaque, NOT translucent. NO check, slash, lock or other glyph. No text. One isolated medieval strategy game raster UI control on genuinely transparent background. No matte, no checkerboard. Preserve transparent outside corners and exact front-on geometry. Do not add any other object.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-9087539c-7889-4167-a272-0d203448f993.png",
+    "source_sha256": "f317e7c067eb6558b15997ee6f6941b1c00bcaa51eb60436f44d61b08d2ea072",
+    "sha256": "bfb4abda8776f114a1af24b1955eed3aebb02460820453be184ef8e6ffca70a0",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        165,
+        179,
+        924,
+        886
+      ],
+      "content_size": [
+        22,
+        22
+      ]
+    }
+  },
+  {
+    "id": "radio_empty",
+    "file": "assets/radio_empty.png",
+    "width": 24,
+    "height": 24,
+    "component": "radio",
+    "state": "empty",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: ui-mockup. Input images are style references ONLY: Wave35 oak, brass and parchment. Create ONE isolated EMPTY radio button raster game UI asset. Perfect circular bevelled dark oak rim with thin aged brass inner lip, opaque smooth warm parchment center, blank with NO dot. Bold simple silhouette for eventual 24x24 pixels, rim about 3px native. Front-on orthographic. No ornate detail. Transparent outside shape and transparent cornerpixels; centered object occupies 85% canvas. NO text, labels, contact sheet, extra objects, drop shadow or background. Polished hand-painted medieval strategy UI, warm low-saturation palette oak #674124, darkoak #3c291c, brass #b29658, parchment #e8d8b1. Preserve flat opaque inner surface and precise symmetric geometry.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-ab4ebcd5-6654-4552-8f8c-4041a6adeb3c.png",
+    "source_sha256": "889cd1db1e16b848e158ad3d311398b004ebda323faf64436267869cdd626256",
+    "sha256": "125c2e671b4f1701304e2eb7df16413d60ad422345f69917e3705ca8e74b137d",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        95,
+        84,
+        1062,
+        1074
+      ],
+      "content_size": [
+        22,
+        22
+      ]
+    }
+  },
+  {
+    "id": "radio_selected",
+    "file": "assets/radio_selected.png",
+    "width": 24,
+    "height": 24,
+    "component": "radio",
+    "state": "selected",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: precise-object-edit. Input image is exact edit target. Add only ONE large bold SOLID dark ink #35291c round dot precisely centered on parchment, diameter 48% of full outside circle, to remain clearly readable at 24x24 pixels. Preserve identical circular border, crop, outer silhouette, colors and all surrounding frame. No text. One isolated medieval strategy game raster UI control on genuinely transparent background. No matte, no checkerboard. Preserve transparent outside corners and exact front-on geometry. Do not add any other object.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-544d899f-838c-4b49-be1c-9f425af6ebd4.png",
+    "source_sha256": "1bd2417aa11331ddb52535175478fe539ecb7a38bf1e99cc5ed9e7750c3ad03d",
+    "sha256": "e3598ea6aa3b09caba73b65945e77d92bc67aeb553d4445e95953b860697e0a9",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        94,
+        82,
+        1066,
+        1077
+      ],
+      "content_size": [
+        22,
+        22
+      ]
+    }
+  },
+  {
+    "id": "toggle_on",
+    "file": "assets/toggle_on.png",
+    "width": 56,
+    "height": 28,
+    "component": "toggle",
+    "state": "on",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 12,
+    "slice_bottom": 10,
+    "slice_left": 12,
+    "min_width": 56,
+    "min_height": 28,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: ui-mockup. Input images are style references ONLY: Wave35 oak, brass and parchment. Create ONE isolated ON toggle switch raster game UI asset. Horizontal pill at exact visual ratio 2:1 for eventual 56x28 pixels. Dark oak rim, subtle aged brass inner lip, opaque brass-olive track. Large pale warm parchment round knob firmly at RIGHT end. Simple thick readable shape, minimal bevel. Front-on orthographic. No text or glyph. Transparent outside shape and transparent cornerpixels; centered object occupies 85% canvas. NO text, labels, contact sheet, extra objects, drop shadow or background. Polished hand-painted medieval strategy UI, warm low-saturation palette oak #674124, darkoak #3c291c, brass #b29658, parchment #e8d8b1. Preserve flat opaque inner surface and precise symmetric geometry.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-1598e2c2-c5d1-47a3-957f-6936f7cf1631.png",
+    "source_sha256": "d39bdfb2b2eb8b46bc49844f42250c981e7d2dc5cde3cb5dd847e46ad846f6a4",
+    "sha256": "577f187ba285f85bdacbcd8332db995145cb144c827aa662c468d1226fa7420e",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        192,
+        151,
+        1389,
+        560
+      ],
+      "content_size": [
+        54,
+        26
+      ]
+    }
+  },
+  {
+    "id": "toggle_off",
+    "file": "assets/toggle_off.png",
+    "width": 56,
+    "height": 28,
+    "component": "toggle",
+    "state": "off",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 12,
+    "slice_bottom": 10,
+    "slice_left": 12,
+    "min_width": 56,
+    "min_height": 28,
+    "text_safe": null,
+    "notes": "Fixed-size control; do not stretch. Generated glyph preserved. Native and 2x inspected.",
+    "prompt": "Use case: precise-object-edit. Input image is exact edit target. Change only switch state to OFF: move the large round parchment knob to LEFT end and change olive track to muted grey-brown #79664e, reduce brass brightness mildly. Keep identical outer pill silhouette, framing, rim geometry and scale. No text and no glyph. This must read clearly as counterpart of input ON switch. One isolated medieval strategy game raster UI control on genuinely transparent background. No matte, no checkerboard. Preserve transparent outside corners and exact front-on geometry. Do not add any other object.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-91e8-7f12-9125-c0f6f9fdddcb/exec-c11d24a8-3a83-4bd0-af6c-0b2e0558d318.png",
+    "source_sha256": "f6a952b4cbfb1f68fa59872f776056d1721a71e95d95489d4080a8a1c421cc23",
+    "sha256": "83350aee6068c0382477c948f2e9a37ee09967ed0e213b4abc6264349ba4cabc",
+    "processing": {
+      "method": "Alpha-bounds crop at alpha >16; Lanczos3 normalization to content dimensions; 1px transparent canvas border. Interior alpha >=250 normalized to 255. No glyph or border drawing.",
+      "crop": [
+        192,
+        150,
+        1389,
+        563
+      ],
+      "content_size": [
+        54,
+        26
+      ]
+    }
+  }
+]

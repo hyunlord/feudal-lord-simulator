@@ -1,0 +1,1037 @@
+{
+  "passed": 166,
+  "total": 166,
+  "failures": [],
+  "checks": [
+    {
+      "id": "button_primary_normal",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_primary_normal",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_primary_normal",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_primary_normal",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_secondary_normal",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_normal",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_normal",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_normal",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_primary_hover",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_primary_hover",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_primary_hover",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_primary_hover",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_primary_pressed",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_primary_pressed",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_primary_pressed",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_primary_pressed",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_primary_disabled",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_primary_disabled",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_primary_disabled",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_primary_disabled",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_secondary_hover",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_hover",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_hover",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_hover",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_secondary_pressed",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_pressed",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_pressed",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_pressed",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_secondary_disabled",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_disabled",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_disabled",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_secondary_disabled",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_danger_normal",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_danger_normal",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_danger_normal",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_danger_normal",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_danger_hover",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_danger_hover",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_danger_hover",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_danger_hover",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_danger_pressed",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_danger_pressed",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_danger_pressed",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_danger_pressed",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_danger_disabled",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_danger_disabled",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_danger_disabled",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_danger_disabled",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "button_icon_normal",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_icon_normal",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_icon_normal",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_icon_hover",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_icon_hover",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_icon_hover",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_icon_pressed",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_icon_pressed",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_icon_pressed",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_icon_disabled",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "button_icon_disabled",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "button_icon_disabled",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "tab_selected",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "tab_selected",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "tab_selected",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "tab_selected",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "tab_unselected",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "tab_unselected",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "tab_unselected",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "tab_unselected",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "tab_hover",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "tab_hover",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "tab_hover",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "tab_hover",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "close_normal",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "close_normal",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "close_normal",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "close_hover",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "close_hover",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "close_hover",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "close_pressed",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "close_pressed",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "close_pressed",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "checkbox_empty",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "checkbox_empty",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "checkbox_empty",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "checkbox_checked",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "checkbox_checked",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "checkbox_checked",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "checkbox_disabled",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "checkbox_disabled",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "checkbox_disabled",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "radio_empty",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "radio_empty",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "radio_empty",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "radio_selected",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "radio_selected",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "radio_selected",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "toggle_on",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "toggle_on",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "toggle_on",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "toggle_off",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "toggle_off",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "toggle_off",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "select_closed",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "select_closed",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "select_closed",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "select_closed",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "select_open_list",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "select_open_list",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "select_open_list",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "select_open_list",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "select_row_hover",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "select_row_hover",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "select_row_hover",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "select_row_hover",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "input_normal",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "input_normal",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "input_normal",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "input_normal",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "input_focus",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "input_focus",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "input_focus",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "input_focus",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "chip_normal",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "chip_normal",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "chip_normal",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "chip_normal",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "chip_selected",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "chip_selected",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "chip_selected",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "chip_selected",
+      "rule": "flat opaque text-safe center",
+      "pass": true,
+      "observed": {
+        "range": [
+          0,
+          0,
+          0
+        ],
+        "minAlpha": 255
+      }
+    },
+    {
+      "id": "slider_track",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "slider_track",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "slider_track",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "slider_thumb",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "slider_thumb",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "slider_thumb",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "scrollbar_track",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "scrollbar_track",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "scrollbar_track",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "scrollbar_thumb",
+      "rule": "transparent corners",
+      "pass": true
+    },
+    {
+      "id": "scrollbar_thumb",
+      "rule": "valid slice",
+      "pass": true
+    },
+    {
+      "id": "scrollbar_thumb",
+      "rule": "minimum fits slices",
+      "pass": true
+    },
+    {
+      "id": "button_primary_hover",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 15.05322265625
+    },
+    {
+      "id": "button_primary_pressed",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 24.723974609375
+    },
+    {
+      "id": "button_primary_pressed",
+      "rule": "distinct from hover",
+      "pass": true,
+      "observed": 37.109619140625
+    },
+    {
+      "id": "button_primary_disabled",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 19.367041015625
+    },
+    {
+      "id": "button_primary_disabled",
+      "rule": "distinct from hover",
+      "pass": true,
+      "observed": 31.349560546875
+    },
+    {
+      "id": "button_primary_disabled",
+      "rule": "distinct from pressed",
+      "pass": true,
+      "observed": 15.78857421875
+    },
+    {
+      "id": "button_secondary_hover",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 14.500439453125
+    },
+    {
+      "id": "button_secondary_pressed",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 19.270947265625
+    },
+    {
+      "id": "button_secondary_pressed",
+      "rule": "distinct from hover",
+      "pass": true,
+      "observed": 29.891796875
+    },
+    {
+      "id": "button_secondary_disabled",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 22.4310546875
+    },
+    {
+      "id": "button_secondary_disabled",
+      "rule": "distinct from hover",
+      "pass": true,
+      "observed": 31.819189453125
+    },
+    {
+      "id": "button_secondary_disabled",
+      "rule": "distinct from pressed",
+      "pass": true,
+      "observed": 14.781005859375
+    },
+    {
+      "id": "button_danger_hover",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 16.681103515625
+    },
+    {
+      "id": "button_danger_pressed",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 19.63349609375
+    },
+    {
+      "id": "button_danger_pressed",
+      "rule": "distinct from hover",
+      "pass": true,
+      "observed": 34.695947265625
+    },
+    {
+      "id": "button_danger_disabled",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 25.7412109375
+    },
+    {
+      "id": "button_danger_disabled",
+      "rule": "distinct from hover",
+      "pass": true,
+      "observed": 39.828564453125
+    },
+    {
+      "id": "button_danger_disabled",
+      "rule": "distinct from pressed",
+      "pass": true,
+      "observed": 15.03857421875
+    },
+    {
+      "id": "button_icon_hover",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 14.971028645833334
+    },
+    {
+      "id": "button_icon_pressed",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 15.490668402777779
+    },
+    {
+      "id": "button_icon_pressed",
+      "rule": "distinct from hover",
+      "pass": true,
+      "observed": 29.01030815972222
+    },
+    {
+      "id": "button_icon_disabled",
+      "rule": "distinct from normal",
+      "pass": true,
+      "observed": 21.107530381944443
+    },
+    {
+      "id": "button_icon_disabled",
+      "rule": "distinct from hover",
+      "pass": true,
+      "observed": 32.96050347222222
+    },
+    {
+      "id": "button_icon_disabled",
+      "rule": "distinct from pressed",
+      "pass": true,
+      "observed": 15.994466145833334
+    }
+  ]
+}
