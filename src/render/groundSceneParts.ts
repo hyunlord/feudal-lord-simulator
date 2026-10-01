@@ -65,6 +65,14 @@ export type GroundChunkPlan = {
   readonly groundKey: number;
   /** groundKey without the zone part: equal before and after a zone-only edit (lets that re-raster wait a frame). */
   readonly groundBaseKey: number;
+  /**
+   * groundBaseKey with each water loop entered only by what lies in the chunk (its line there, and whether
+   * the chunk's centre is inside it), not its whole-loop hash: equal when a loop changed only elsewhere. The chunk's
+   * picture still moves then (the shallow band's pick, the strip's phase and the reeds run along the whole loop), so the content
+   * key keeps the whole hash; this is the deferKey, so those chunks re-raster through the per-frame budget (LAND-UI: a
+   * fen work drying a mere on the river's loop changed 40 of 64 chunks' keys at once — a 1.6 s frame).
+   */
+  readonly groundLocalKey: number;
   readonly roadKey: number;
   readonly hasRoads: boolean;
 };

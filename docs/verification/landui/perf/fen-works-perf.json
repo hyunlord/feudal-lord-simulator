@@ -1,0 +1,1156 @@
+{
+ "base-534643c0": {
+  "stats": {
+   "frames": 3017,
+   "minutes": 1.25,
+   "p50": 16.7,
+   "p95": 50,
+   "p99": 66.7,
+   "max": 916.6,
+   "over25": 884,
+   "over33": 884,
+   "over50": 129,
+   "over25PerMin": 706.6,
+   "over33PerMin": 706.6,
+   "over50PerMin": 103.1
+  },
+  "moments": [
+   {
+    "kind": "dialog",
+    "t": 15294.400000035763,
+    "detail": "season-ledger-backdrop"
+   },
+   {
+    "kind": "season",
+    "t": 15501.300000011921,
+    "detail": "1->2 @34003"
+   },
+   {
+    "kind": "autosave",
+    "t": 19386.69999998808,
+    "detail": "auto-2"
+   },
+   {
+    "kind": "season",
+    "t": 42282.69999998808,
+    "detail": "2->3 @35001"
+   },
+   {
+    "kind": "dialog",
+    "t": 42284.90000003576,
+    "detail": "season-ledger-backdrop"
+   },
+   {
+    "kind": "autosave",
+    "t": 47889.40000003576,
+    "detail": "auto-3"
+   },
+   {
+    "kind": "dialog",
+    "t": 63894.19999998808,
+    "detail": "season-ledger-backdrop"
+   },
+   {
+    "kind": "season",
+    "t": 63985.10000002384,
+    "detail": "3->0 @36003"
+   },
+   {
+    "kind": "autosave",
+    "t": 66365.90000003576,
+    "detail": "auto-1"
+   }
+  ],
+  "longFramesOver90ms": [
+   {
+    "atS": 13.9,
+    "ms": 100,
+    "self": [
+     {
+      "name": "restore",
+      "ms": 41.5
+     },
+     {
+      "name": "drawImage",
+      "ms": 2.6
+     },
+     {
+      "name": "stumpRenderItemForTile index-CxcetXLQ.js:113384",
+      "ms": 1.4
+     },
+     {
+      "name": "setTransform",
+      "ms": 1.2
+     },
+     {
+      "name": "now index-CxcetXLQ.js:117285",
+      "ms": 0.7
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "drawCurrentCanvasFrame index-CxcetXLQ.js:128594",
+      "ms": 49
+     },
+     {
+      "name": "drawFrame index-CxcetXLQ.js:135242",
+      "ms": 49
+     },
+     {
+      "name": "renderFrame index-CxcetXLQ.js:127979",
+      "ms": 48.8
+     },
+     {
+      "name": "drawGameCanvasFrame index-CxcetXLQ.js:128371",
+      "ms": 48.8
+     },
+     {
+      "name": "runRenderPasses index-CxcetXLQ.js:128146",
+      "ms": 46.5
+     },
+     {
+      "name": "drawCroppedWorldSprite index-CxcetXLQ.js:14382",
+      "ms": 43.2
+     },
+     {
+      "name": "ground index-CxcetXLQ.js:128002",
+      "ms": 42.2
+     },
+     {
+      "name": "blit index-CxcetXLQ.js:123562",
+      "ms": 41.6
+     },
+     {
+      "name": "draw index-CxcetXLQ.js:123473",
+      "ms": 41.6
+     },
+     {
+      "name": "drawTerrainBoundaryV2 index-CxcetXLQ.js:125283",
+      "ms": 41.6
+     },
+     {
+      "name": "drawTerrain index-CxcetXLQ.js:125579",
+      "ms": 41.6
+     },
+     {
+      "name": "restore",
+      "ms": 41.5
+     }
+    ]
+   },
+   {
+    "atS": 24.7,
+    "ms": 767,
+    "self": [
+     {
+      "name": "existingRoadComponent index-CxcetXLQ.js:16378",
+      "ms": 126.6
+     },
+     {
+      "name": "gatesForExteriorAccess index-CxcetXLQ.js:18231",
+      "ms": 76.7
+     },
+     {
+      "name": "bridgeEndAllows index-CxcetXLQ.js:16258",
+      "ms": 53.8
+     },
+     {
+      "name": "(garbage collector)",
+      "ms": 41.1
+     },
+     {
+      "name": "computePalisadeProposal index-CxcetXLQ.js:16015",
+      "ms": 38.6
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "performWorkOnRoot index-CxcetXLQ.js:7028",
+      "ms": 659.3
+     },
+     {
+      "name": "performSyncWorkOnRoot index-CxcetXLQ.js:7841",
+      "ms": 659.3
+     },
+     {
+      "name": "flushSyncWorkAcrossRoots_impl index-CxcetXLQ.js:7750",
+      "ms": 659.3
+     },
+     {
+      "name": "processRootScheduleInMicrotask index-CxcetXLQ.js:7776",
+      "ms": 659.3
+     },
+     {
+      "name": "(anonymous) index-CxcetXLQ.js:7846",
+      "ms": 659.3
+     },
+     {
+      "name": "performUnitOfWork index-CxcetXLQ.js:7383",
+      "ms": 659
+     },
+     {
+      "name": "workLoopSync index-CxcetXLQ.js:7287",
+      "ms": 659
+     },
+     {
+      "name": "renderRootSync index-CxcetXLQ.js:7239",
+      "ms": 659
+     },
+     {
+      "name": "renderWithHooks index-CxcetXLQ.js:3595",
+      "ms": 658.8
+     },
+     {
+      "name": "updateFunctionComponent index-CxcetXLQ.js:4979",
+      "ms": 658.8
+     },
+     {
+      "name": "beginWork index-CxcetXLQ.js:5338",
+      "ms": 658.8
+     },
+     {
+      "name": "App index-CxcetXLQ.js:154061",
+      "ms": 658.2
+     }
+    ]
+   },
+   {
+    "atS": 25.5,
+    "ms": 200,
+    "self": [
+     {
+      "name": "drawImage",
+      "ms": 171.2
+     },
+     {
+      "name": "fill",
+      "ms": 2.4
+     },
+     {
+      "name": "(garbage collector)",
+      "ms": 2
+     },
+     {
+      "name": "drawGroundDiamond index-CxcetXLQ.js:125685",
+      "ms": 1.2
+     },
+     {
+      "name": "terrainPatternQuarterTurn index-CxcetXLQ.js:119432",
+      "ms": 1.2
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "drawCurrentCanvasFrame index-CxcetXLQ.js:128594",
+      "ms": 191.9
+     },
+     {
+      "name": "drawFrame index-CxcetXLQ.js:135242",
+      "ms": 191.9
+     },
+     {
+      "name": "renderFrame index-CxcetXLQ.js:127979",
+      "ms": 188.3
+     },
+     {
+      "name": "drawGameCanvasFrame index-CxcetXLQ.js:128371",
+      "ms": 188.3
+     },
+     {
+      "name": "drawTerrainBoundaryV2 index-CxcetXLQ.js:125283",
+      "ms": 186.9
+     },
+     {
+      "name": "drawTerrain index-CxcetXLQ.js:125579",
+      "ms": 186.9
+     },
+     {
+      "name": "ground index-CxcetXLQ.js:128002",
+      "ms": 186.9
+     },
+     {
+      "name": "runRenderPasses index-CxcetXLQ.js:128146",
+      "ms": 186.9
+     },
+     {
+      "name": "draw index-CxcetXLQ.js:123473",
+      "ms": 185.5
+     },
+     {
+      "name": "drawCroppedWorldSprite index-CxcetXLQ.js:14382",
+      "ms": 172.6
+     },
+     {
+      "name": "blit index-CxcetXLQ.js:123562",
+      "ms": 171.4
+     },
+     {
+      "name": "drawImage",
+      "ms": 171.2
+     }
+    ]
+   },
+   {
+    "atS": 26.9,
+    "ms": 550,
+    "self": [
+     {
+      "name": "existingRoadComponent index-CxcetXLQ.js:16378",
+      "ms": 179.7
+     },
+     {
+      "name": "gatesForExteriorAccess index-CxcetXLQ.js:18231",
+      "ms": 71.4
+     },
+     {
+      "name": "bridgeEndAllows index-CxcetXLQ.js:16258",
+      "ms": 58.5
+     },
+     {
+      "name": "(anonymous) index-CxcetXLQ.js:18252",
+      "ms": 42
+     },
+     {
+      "name": "intersects$1 index-CxcetXLQ.js:16116",
+      "ms": 34.8
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "performSyncWorkOnRoot index-CxcetXLQ.js:7841",
+      "ms": 534.7
+     },
+     {
+      "name": "flushSyncWorkAcrossRoots_impl index-CxcetXLQ.js:7750",
+      "ms": 534.7
+     },
+     {
+      "name": "processRootScheduleInMicrotask index-CxcetXLQ.js:7776",
+      "ms": 534.7
+     },
+     {
+      "name": "(anonymous) index-CxcetXLQ.js:7846",
+      "ms": 534.7
+     },
+     {
+      "name": "beginWork index-CxcetXLQ.js:5338",
+      "ms": 533.7
+     },
+     {
+      "name": "performUnitOfWork index-CxcetXLQ.js:7383",
+      "ms": 533.7
+     },
+     {
+      "name": "workLoopSync index-CxcetXLQ.js:7287",
+      "ms": 533.7
+     },
+     {
+      "name": "renderRootSync index-CxcetXLQ.js:7239",
+      "ms": 533.7
+     },
+     {
+      "name": "performWorkOnRoot index-CxcetXLQ.js:7028",
+      "ms": 533.7
+     },
+     {
+      "name": "renderWithHooks index-CxcetXLQ.js:3595",
+      "ms": 533.5
+     },
+     {
+      "name": "updateFunctionComponent index-CxcetXLQ.js:4979",
+      "ms": 533.5
+     },
+     {
+      "name": "buildEraConsoleModel index-CxcetXLQ.js:140449",
+      "ms": 532.9
+     }
+    ]
+   },
+   {
+    "atS": 30.8,
+    "ms": 100,
+    "self": [
+     {
+      "name": "drawImage",
+      "ms": 17.3
+     },
+     {
+      "name": "restore",
+      "ms": 4.2
+     },
+     {
+      "name": "(garbage collector)",
+      "ms": 2.5
+     },
+     {
+      "name": "analyseWater index-CxcetXLQ.js:122584",
+      "ms": 2
+     },
+     {
+      "name": "fill",
+      "ms": 1.9
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "drawCurrentCanvasFrame index-CxcetXLQ.js:128594",
+      "ms": 41.5
+     },
+     {
+      "name": "drawFrame index-CxcetXLQ.js:135242",
+      "ms": 41.5
+     },
+     {
+      "name": "drawGameCanvasFrame index-CxcetXLQ.js:128371",
+      "ms": 37.3
+     },
+     {
+      "name": "renderFrame index-CxcetXLQ.js:127979",
+      "ms": 37.2
+     },
+     {
+      "name": "runRenderPasses index-CxcetXLQ.js:128146",
+      "ms": 35.6
+     },
+     {
+      "name": "ground index-CxcetXLQ.js:128002",
+      "ms": 27.8
+     },
+     {
+      "name": "drawTerrainBoundaryV2 index-CxcetXLQ.js:125283",
+      "ms": 26.7
+     },
+     {
+      "name": "drawTerrain index-CxcetXLQ.js:125579",
+      "ms": 26.7
+     },
+     {
+      "name": "draw index-CxcetXLQ.js:123473",
+      "ms": 21.6
+     },
+     {
+      "name": "drawCroppedWorldSprite index-CxcetXLQ.js:14382",
+      "ms": 20.6
+     },
+     {
+      "name": "countedCanvasCall index-CxcetXLQ.js:117343",
+      "ms": 19.8
+     },
+     {
+      "name": "blit index-CxcetXLQ.js:123562",
+      "ms": 19.5
+     }
+    ]
+   },
+   {
+    "atS": 31.0,
+    "ms": 917,
+    "self": [
+     {
+      "name": "existingRoadComponent index-CxcetXLQ.js:16378",
+      "ms": 190.2
+     },
+     {
+      "name": "drawImage",
+      "ms": 171.3
+     },
+     {
+      "name": "palisadeLandEnvelopes index-CxcetXLQ.js:15291",
+      "ms": 90.3
+     },
+     {
+      "name": "bridgeEndAllows index-CxcetXLQ.js:16258",
+      "ms": 54.2
+     },
+     {
+      "name": "getTile index-CxcetXLQ.js:15284",
+      "ms": 41.9
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "processRootScheduleInMicrotask index-CxcetXLQ.js:7776",
+      "ms": 682.7
+     },
+     {
+      "name": "(anonymous) index-CxcetXLQ.js:7846",
+      "ms": 682.7
+     },
+     {
+      "name": "performWorkOnRoot index-CxcetXLQ.js:7028",
+      "ms": 682.6
+     },
+     {
+      "name": "performSyncWorkOnRoot index-CxcetXLQ.js:7841",
+      "ms": 682.6
+     },
+     {
+      "name": "flushSyncWorkAcrossRoots_impl index-CxcetXLQ.js:7750",
+      "ms": 682.6
+     },
+     {
+      "name": "renderWithHooks index-CxcetXLQ.js:3595",
+      "ms": 682.1
+     },
+     {
+      "name": "updateFunctionComponent index-CxcetXLQ.js:4979",
+      "ms": 682.1
+     },
+     {
+      "name": "beginWork index-CxcetXLQ.js:5338",
+      "ms": 682.1
+     },
+     {
+      "name": "performUnitOfWork index-CxcetXLQ.js:7383",
+      "ms": 682.1
+     },
+     {
+      "name": "workLoopSync index-CxcetXLQ.js:7287",
+      "ms": 682.1
+     },
+     {
+      "name": "renderRootSync index-CxcetXLQ.js:7239",
+      "ms": 682.1
+     },
+     {
+      "name": "App index-CxcetXLQ.js:154061",
+      "ms": 681.2
+     }
+    ]
+   },
+   {
+    "atS": 32.3,
+    "ms": 600,
+    "self": [
+     {
+      "name": "existingRoadComponent index-CxcetXLQ.js:16378",
+      "ms": 163.7
+     },
+     {
+      "name": "gatesForExteriorAccess index-CxcetXLQ.js:18231",
+      "ms": 68.7
+     },
+     {
+      "name": "wallCarryRoute index-CxcetXLQ.js:17878",
+      "ms": 39.5
+     },
+     {
+      "name": "intersects$1 index-CxcetXLQ.js:16116",
+      "ms": 37.9
+     },
+     {
+      "name": "solidSegments index-CxcetXLQ.js:16129",
+      "ms": 35.1
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "performSyncWorkOnRoot index-CxcetXLQ.js:7841",
+      "ms": 525.9
+     },
+     {
+      "name": "flushSyncWorkAcrossRoots_impl index-CxcetXLQ.js:7750",
+      "ms": 525.9
+     },
+     {
+      "name": "processRootScheduleInMicrotask index-CxcetXLQ.js:7776",
+      "ms": 525.9
+     },
+     {
+      "name": "(anonymous) index-CxcetXLQ.js:7846",
+      "ms": 525.9
+     },
+     {
+      "name": "performWorkOnRoot index-CxcetXLQ.js:7028",
+      "ms": 525.8
+     },
+     {
+      "name": "performUnitOfWork index-CxcetXLQ.js:7383",
+      "ms": 525.1
+     },
+     {
+      "name": "workLoopSync index-CxcetXLQ.js:7287",
+      "ms": 525.1
+     },
+     {
+      "name": "renderRootSync index-CxcetXLQ.js:7239",
+      "ms": 525.1
+     },
+     {
+      "name": "beginWork index-CxcetXLQ.js:5338",
+      "ms": 524.9
+     },
+     {
+      "name": "renderWithHooks index-CxcetXLQ.js:3595",
+      "ms": 524.7
+     },
+     {
+      "name": "updateFunctionComponent index-CxcetXLQ.js:4979",
+      "ms": 524.7
+     },
+     {
+      "name": "App index-CxcetXLQ.js:154061",
+      "ms": 523.5
+     }
+    ]
+   }
+  ]
+ },
+ "this": {
+  "stats": {
+   "frames": 2896,
+   "minutes": 1.25,
+   "p50": 16.7,
+   "p95": 50,
+   "p99": 66.7,
+   "max": 700,
+   "over25": 972,
+   "over33": 972,
+   "over50": 107,
+   "over25PerMin": 777.1,
+   "over33PerMin": 777.1,
+   "over50PerMin": 85.5
+  },
+  "moments": [
+   {
+    "kind": "dialog",
+    "t": 15317.100000023842,
+    "detail": "season-ledger-backdrop"
+   },
+   {
+    "kind": "season",
+    "t": 15411.199999988079,
+    "detail": "1->2 @34001"
+   },
+   {
+    "kind": "autosave",
+    "t": 18928.600000023842,
+    "detail": "auto-2"
+   },
+   {
+    "kind": "dialog",
+    "t": 41993.80000001192,
+    "detail": "season-ledger-backdrop"
+   },
+   {
+    "kind": "season",
+    "t": 42194.5,
+    "detail": "2->3 @35003"
+   },
+   {
+    "kind": "autosave",
+    "t": 49204.69999998808,
+    "detail": "auto-3"
+   },
+   {
+    "kind": "dialog",
+    "t": 64000.89999997616,
+    "detail": "season-ledger-backdrop"
+   },
+   {
+    "kind": "season",
+    "t": 64191.60000002384,
+    "detail": "3->0 @36003"
+   },
+   {
+    "kind": "autosave",
+    "t": 70468.39999997616,
+    "detail": "auto-1"
+   }
+  ],
+  "longFramesOver90ms": [
+   {
+    "atS": 25.0,
+    "ms": 700,
+    "self": [
+     {
+      "name": "existingRoadComponent index-CAP2uDWc.js:16378",
+      "ms": 118.4
+     },
+     {
+      "name": "gatesForExteriorAccess index-CAP2uDWc.js:18231",
+      "ms": 61.7
+     },
+     {
+      "name": "getOrthogonalRoadNeighbors index-CAP2uDWc.js:16351",
+      "ms": 56.4
+     },
+     {
+      "name": "(garbage collector)",
+      "ms": 46.6
+     },
+     {
+      "name": "resolveBuildingToConstructionSiteRoute index-CAP2uDWc.js:18168",
+      "ms": 37.9
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "processRootScheduleInMicrotask index-CAP2uDWc.js:7776",
+      "ms": 594.5
+     },
+     {
+      "name": "(anonymous) index-CAP2uDWc.js:7846",
+      "ms": 594.5
+     },
+     {
+      "name": "performWorkOnRoot index-CAP2uDWc.js:7028",
+      "ms": 594.4
+     },
+     {
+      "name": "performSyncWorkOnRoot index-CAP2uDWc.js:7841",
+      "ms": 594.4
+     },
+     {
+      "name": "flushSyncWorkAcrossRoots_impl index-CAP2uDWc.js:7750",
+      "ms": 594.4
+     },
+     {
+      "name": "beginWork index-CAP2uDWc.js:5338",
+      "ms": 593.4
+     },
+     {
+      "name": "performUnitOfWork index-CAP2uDWc.js:7383",
+      "ms": 593.4
+     },
+     {
+      "name": "workLoopSync index-CAP2uDWc.js:7287",
+      "ms": 593.4
+     },
+     {
+      "name": "renderRootSync index-CAP2uDWc.js:7239",
+      "ms": 593.4
+     },
+     {
+      "name": "updateFunctionComponent index-CAP2uDWc.js:4979",
+      "ms": 593.2
+     },
+     {
+      "name": "renderWithHooks index-CAP2uDWc.js:3595",
+      "ms": 592.7
+     },
+     {
+      "name": "App index-CAP2uDWc.js:154101",
+      "ms": 591.5
+     }
+    ]
+   },
+   {
+    "atS": 25.7,
+    "ms": 117,
+    "self": [
+     {
+      "name": "drawImage",
+      "ms": 72.2
+     },
+     {
+      "name": "(garbage collector)",
+      "ms": 1.6
+     },
+     {
+      "name": "fill",
+      "ms": 1.6
+     },
+     {
+      "name": "restore",
+      "ms": 1.4
+     },
+     {
+      "name": "countedCanvasCall index-CAP2uDWc.js:117383",
+      "ms": 0.9
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "drawCurrentCanvasFrame index-CAP2uDWc.js:128634",
+      "ms": 92.6
+     },
+     {
+      "name": "drawFrame index-CAP2uDWc.js:135282",
+      "ms": 92.6
+     },
+     {
+      "name": "renderFrame index-CAP2uDWc.js:128019",
+      "ms": 88.5
+     },
+     {
+      "name": "drawGameCanvasFrame index-CAP2uDWc.js:128411",
+      "ms": 88.5
+     },
+     {
+      "name": "runRenderPasses index-CAP2uDWc.js:128186",
+      "ms": 86.1
+     },
+     {
+      "name": "ground index-CAP2uDWc.js:128042",
+      "ms": 82.9
+     },
+     {
+      "name": "drawTerrainBoundaryV2 index-CAP2uDWc.js:125323",
+      "ms": 82.5
+     },
+     {
+      "name": "drawTerrain index-CAP2uDWc.js:125619",
+      "ms": 82.5
+     },
+     {
+      "name": "draw index-CAP2uDWc.js:123513",
+      "ms": 79.5
+     },
+     {
+      "name": "drawCroppedWorldSprite index-CAP2uDWc.js:14382",
+      "ms": 73.8
+     },
+     {
+      "name": "countedCanvasCall index-CAP2uDWc.js:117383",
+      "ms": 72.5
+     },
+     {
+      "name": "drawImage",
+      "ms": 72.2
+     }
+    ]
+   },
+   {
+    "atS": 27.0,
+    "ms": 500,
+    "self": [
+     {
+      "name": "existingRoadComponent index-CAP2uDWc.js:16378",
+      "ms": 107.1
+     },
+     {
+      "name": "intersects$1 index-CAP2uDWc.js:16116",
+      "ms": 63.6
+     },
+     {
+      "name": "getOrthogonalRoadNeighbors index-CAP2uDWc.js:16351",
+      "ms": 46.5
+     },
+     {
+      "name": "gatesForExteriorAccess index-CAP2uDWc.js:18231",
+      "ms": 36
+     },
+     {
+      "name": "resolveBuildingToConstructionSiteRoute index-CAP2uDWc.js:18168",
+      "ms": 33.8
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "performWorkOnRoot index-CAP2uDWc.js:7028",
+      "ms": 446.1
+     },
+     {
+      "name": "performSyncWorkOnRoot index-CAP2uDWc.js:7841",
+      "ms": 446.1
+     },
+     {
+      "name": "flushSyncWorkAcrossRoots_impl index-CAP2uDWc.js:7750",
+      "ms": 446.1
+     },
+     {
+      "name": "processRootScheduleInMicrotask index-CAP2uDWc.js:7776",
+      "ms": 446.1
+     },
+     {
+      "name": "(anonymous) index-CAP2uDWc.js:7846",
+      "ms": 446.1
+     },
+     {
+      "name": "beginWork index-CAP2uDWc.js:5338",
+      "ms": 445.7
+     },
+     {
+      "name": "performUnitOfWork index-CAP2uDWc.js:7383",
+      "ms": 445.7
+     },
+     {
+      "name": "workLoopSync index-CAP2uDWc.js:7287",
+      "ms": 445.7
+     },
+     {
+      "name": "renderRootSync index-CAP2uDWc.js:7239",
+      "ms": 445.7
+     },
+     {
+      "name": "renderWithHooks index-CAP2uDWc.js:3595",
+      "ms": 445.5
+     },
+     {
+      "name": "updateFunctionComponent index-CAP2uDWc.js:4979",
+      "ms": 445.5
+     },
+     {
+      "name": "App index-CAP2uDWc.js:154101",
+      "ms": 444.6
+     }
+    ]
+   },
+   {
+    "atS": 30.8,
+    "ms": 650,
+    "self": [
+     {
+      "name": "existingRoadComponent index-CAP2uDWc.js:16378",
+      "ms": 109.7
+     },
+     {
+      "name": "getOrthogonalRoadNeighbors index-CAP2uDWc.js:16351",
+      "ms": 74.7
+     },
+     {
+      "name": "intersects$1 index-CAP2uDWc.js:16116",
+      "ms": 59.8
+     },
+     {
+      "name": "palisadeLandEnvelopes index-CAP2uDWc.js:15291",
+      "ms": 52.7
+     },
+     {
+      "name": "wallCarryRoute index-CAP2uDWc.js:17878",
+      "ms": 46.8
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "performWorkOnRoot index-CAP2uDWc.js:7028",
+      "ms": 576.8
+     },
+     {
+      "name": "performSyncWorkOnRoot index-CAP2uDWc.js:7841",
+      "ms": 576.8
+     },
+     {
+      "name": "flushSyncWorkAcrossRoots_impl index-CAP2uDWc.js:7750",
+      "ms": 576.8
+     },
+     {
+      "name": "processRootScheduleInMicrotask index-CAP2uDWc.js:7776",
+      "ms": 576.8
+     },
+     {
+      "name": "(anonymous) index-CAP2uDWc.js:7846",
+      "ms": 576.8
+     },
+     {
+      "name": "renderWithHooks index-CAP2uDWc.js:3595",
+      "ms": 576.5
+     },
+     {
+      "name": "updateFunctionComponent index-CAP2uDWc.js:4979",
+      "ms": 576.5
+     },
+     {
+      "name": "beginWork index-CAP2uDWc.js:5338",
+      "ms": 576.5
+     },
+     {
+      "name": "performUnitOfWork index-CAP2uDWc.js:7383",
+      "ms": 576.5
+     },
+     {
+      "name": "workLoopSync index-CAP2uDWc.js:7287",
+      "ms": 576.5
+     },
+     {
+      "name": "renderRootSync index-CAP2uDWc.js:7239",
+      "ms": 576.5
+     },
+     {
+      "name": "App index-CAP2uDWc.js:154101",
+      "ms": 575.8
+     }
+    ]
+   },
+   {
+    "atS": 31.8,
+    "ms": 550,
+    "self": [
+     {
+      "name": "existingRoadComponent index-CAP2uDWc.js:16378",
+      "ms": 161.6
+     },
+     {
+      "name": "getOrthogonalRoadNeighbors index-CAP2uDWc.js:16351",
+      "ms": 76.1
+     },
+     {
+      "name": "gatesForExteriorAccess index-CAP2uDWc.js:18231",
+      "ms": 66.2
+     },
+     {
+      "name": "wallCarryRoute index-CAP2uDWc.js:17878",
+      "ms": 50.3
+     },
+     {
+      "name": "bridgeEndAllows index-CAP2uDWc.js:16258",
+      "ms": 30.7
+     }
+    ],
+    "inclusive": [
+     {
+      "name": "performWorkOnRoot index-CAP2uDWc.js:7028",
+      "ms": 504.9
+     },
+     {
+      "name": "performSyncWorkOnRoot index-CAP2uDWc.js:7841",
+      "ms": 504.9
+     },
+     {
+      "name": "flushSyncWorkAcrossRoots_impl index-CAP2uDWc.js:7750",
+      "ms": 504.9
+     },
+     {
+      "name": "processRootScheduleInMicrotask index-CAP2uDWc.js:7776",
+      "ms": 504.9
+     },
+     {
+      "name": "(anonymous) index-CAP2uDWc.js:7846",
+      "ms": 504.9
+     },
+     {
+      "name": "renderRootSync index-CAP2uDWc.js:7239",
+      "ms": 504.7
+     },
+     {
+      "name": "beginWork index-CAP2uDWc.js:5338",
+      "ms": 504.5
+     },
+     {
+      "name": "performUnitOfWork index-CAP2uDWc.js:7383",
+      "ms": 504.5
+     },
+     {
+      "name": "workLoopSync index-CAP2uDWc.js:7287",
+      "ms": 504.5
+     },
+     {
+      "name": "renderWithHooks index-CAP2uDWc.js:3595",
+      "ms": 504.3
+     },
+     {
+      "name": "updateFunctionComponent index-CAP2uDWc.js:4979",
+      "ms": 504.3
+     },
+     {
+      "name": "App index-CAP2uDWc.js:154101",
+      "ms": 503.8
+     }
+    ]
+   }
+  ]
+ },
+ "chunkKeysOnDrain": {
+  "chunks": 64,
+  "newlyDrained": [
+   [
+    35,
+    22
+   ],
+   [
+    36,
+    22
+   ],
+   [
+    35,
+    23
+   ],
+   [
+    36,
+    23
+   ],
+   [
+    37,
+    23
+   ],
+   [
+    35,
+    24
+   ],
+   [
+    36,
+    24
+   ],
+   [
+    37,
+    24
+   ],
+   [
+    38,
+    24
+   ],
+   [
+    35,
+    25
+   ],
+   [
+    36,
+    25
+   ],
+   [
+    37,
+    25
+   ],
+   [
+    38,
+    25
+   ],
+   [
+    39,
+    25
+   ],
+   [
+    35,
+    26
+   ],
+   [
+    36,
+    26
+   ],
+   [
+    37,
+    26
+   ],
+   [
+    38,
+    26
+   ],
+   [
+    39,
+    26
+   ]
+  ],
+  "groundKeyChanged": 40,
+  "baseKeyChanged": 40,
+  "localKeyChanged": [
+   "4,2",
+   "5,2",
+   "4,3",
+   "5,3"
+  ],
+  "roadKeyChanged": 0,
+  "landHashChanged": 54,
+  "worksChanged": 4
+ },
+ "proposalTiming": {
+  "fenColdMs": [
+   618.3,
+   680
+  ],
+  "riversideColdMs": 82.2,
+  "fenRecomputesOver2000Ticks": 10,
+  "fenRecomputeTotalMs": 3192,
+  "source": "tsx on the DGX, scratch landuiPerfProposal.ts"
+ },
+ "renderRecomputeColdMs": {
+  "landGroundOf": 2.39,
+  "fillRegions": 1.96,
+  "groundBoundaryScene": 17.75,
+  "chunkHashAll64": "~4 (21.8 incl. scene)",
+  "countrysideOf": 2.11,
+  "waterMapFor": 1.59,
+  "landWorksIndex": 0.02,
+  "objectRenderItems": 12.11
+ }
+}

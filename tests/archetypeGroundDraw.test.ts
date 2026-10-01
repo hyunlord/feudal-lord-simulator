@@ -220,3 +220,28 @@ test("draw calls one land chunk adds: two fills per fill region, one per strip q
     }, 20);
   });
 });
+
+test("a fen work drying a mere moves the deferKey (groundLocalKey) only of the chunks near it; the rest re-raster through the budget", async () => {
+  const { gunzipSync } = await import("node:zlib");
+  const { migrateSaveToLatest } = await import("../src/save/migrations/index");
+  const { advanceTick } = await import("../src/engine/tick");
+  const raw = JSON.parse(gunzipSync(readFileSync(new URL("../fixtures/perf-gate/fen_drainage-works.save.json.gz", import.meta.url))).toString("utf8"));
+  let state = (migrateSaveToLatest(raw).value as { state: GameState }).state;
+  let before = state;
+  for (let ticks = 0; ticks < 2_000; ticks += 1) {
+    const next = advanceTick(state);
+    if ((next.drainage?.drained.length ?? 0) > (state.drainage?.drained.length ?? 0)) { before = state; state = next; break; }
+    state = next;
+  }
+  const after = state;
+  assert.ok((after.drainage?.drained.length ?? 0) > (before.drainage?.drained.length ?? 0), "the work finishes");
+  const fresh = new Set((after.drainage?.drained ?? []).filter(cell => !(before.drainage?.drained ?? []).includes(cell)));
+  const a = groundBoundaryScene(before).chunks; const b = groundBoundaryScene(after).chunks;
+  const changed = a.filter((plan, index) => plan.groundLocalKey !== b[index]!.groundLocalKey);
+  const reach = (plan: { cx: number; cy: number }) => [...fresh].some(cell => {
+    const tx = cell % after.width, ty = Math.floor(cell / after.width);
+    return tx >= plan.cx * GROUND_CHUNK_TILES - 5 && tx < (plan.cx + 1) * GROUND_CHUNK_TILES + 5 && ty >= plan.cy * GROUND_CHUNK_TILES - 5 && ty < (plan.cy + 1) * GROUND_CHUNK_TILES + 5;
+  });
+  assert.ok(changed.length > 0 && changed.every(reach), `local keys changed: ${changed.map(plan => `${plan.cx},${plan.cy}`).join(" ")}`);
+  assert.ok(a.filter((plan, index) => plan.groundBaseKey !== b[index]!.groundBaseKey).length > changed.length, "the whole-loop key still moves further out");
+});
