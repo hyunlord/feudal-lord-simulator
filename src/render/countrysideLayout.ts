@@ -1,6 +1,5 @@
 import type { GameState } from "../engine/engine.types";
-import { archetypeOf } from "../content/scenario/registry";
-import { scenarioOf } from "../engine/scenarioState";
+import { stateArchetype } from "../engine/archetype";
 import { constructionSiteFootprint, isWallConstructionSite } from "../economy/constructionSiteAccessors";
 import type { Tile } from "../world/world.types";
 import { zonesOf } from "../zones/zoneEdits";
@@ -50,7 +49,7 @@ const ALPHA_PIXELS: Readonly<Record<CountryPropFamily | CountryFieldFamily, numb
 export const paintedTiles = (family: CountryPropFamily | CountryFieldFamily): number => ALPHA_PIXELS[family] * COUNTRY_SCALE[family] ** 2 / 1_024;
 const TALL: ReadonlySet<string> = new Set(["oak_solitary", "willow_pollard", "haystack", "hurdle_fold"]);
 const ROOMY: ReadonlySet<string> = new Set(["oak_solitary", "hurdle_fold", "wildflower_large"]);
-/** Map archetypes whose field edges are stone (none of today's scenarios; `core:open_field` has hedges). */
+/** Map archetypes whose field edges are stone (`core:chalk_downs`; `core:open_field` has hedges). */
 const STONY_ARCHETYPE = /chalk|heath|downland/;
 
 type Spot = { readonly nearWater: boolean; readonly nearRoad: boolean; readonly nearField: boolean };
@@ -150,13 +149,14 @@ export function stonyArchetype(archetypeId: string | undefined): boolean {
 // Cache (AGENTS rule 10): the last layout, keyed on the tiles array (a road, terrain or building-footprint change
 // replaces it), the zones array (a zone edit replaces it), the wall line (the palisade polygon array: proclaiming or
 // moving the wall replaces it; segment progress does not), the construction sites' cells (a site placed, moved or
-// finished; recomputed only when the sites array is replaced), the seed and the scenario (its archetype).
+// finished; recomputed only when the sites array is replaced), the seed and the map's land (LAND-UI: `stateArchetype`,
+// which honours `state.archetypeId`; before, the scenario's land, so a chalk-downs game got hedges).
 // Left out on purpose: ticks, walkers, stocks, crops, house levels and the season — none of them decides which land is
 // open or where a zone's edge runs (the season only picks the picture at draw time). Measured (Mac, tsx; the v26 save
 // fixtures, tests/countryside.test.ts `countrysideBuildMs`): a build 0.7–3.8 ms, a hit 0.001–0.007 ms; without the
 // cache every frame would pay the build.
 let last: { readonly tiles: readonly Tile[]; readonly zones: GameState["zones"]; readonly wall: unknown; readonly sites: string;
-  readonly seed: number; readonly scenario: string | undefined; readonly layout: Countryside } | null = null;
+  readonly seed: number; readonly land: string | undefined; readonly layout: Countryside } | null = null;
 let lastSites: { readonly sites: GameState["constructionSites"]; readonly key: string; readonly cells: readonly number[] } | null = null;
 
 export function countrysideOf(state: GameState): Countryside {
@@ -165,11 +165,12 @@ export function countrysideOf(state: GameState): Countryside {
     lastSites = { sites: state.constructionSites, key: cells.join(","), cells };
   }
   const sites = lastSites.key; const wall = state.palisade?.polygon ?? null;
+  const land = stateArchetype(state)?.id;
   if (last !== null && last.tiles === state.tiles && last.zones === state.zones && last.wall === wall && last.sites === sites
-    && last.seed === state.seed && last.scenario === state.scenarioId) return last.layout;
+    && last.seed === state.seed && last.land === land) return last.layout;
   const layout = buildCountryside({ width: state.width, height: state.height, tiles: state.tiles, zones: zonesOf(state),
-    wall, siteCells: lastSites.cells, seed: state.seed, stony: stonyArchetype(archetypeOf(scenarioOf(state))?.id) });
-  last = { tiles: state.tiles, zones: state.zones, wall, sites, seed: state.seed, scenario: state.scenarioId, layout };
+    wall, siteCells: lastSites.cells, seed: state.seed, stony: stonyArchetype(land) });
+  last = { tiles: state.tiles, zones: state.zones, wall, sites, seed: state.seed, land, layout };
   return layout;
 }
 

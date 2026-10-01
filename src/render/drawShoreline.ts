@@ -59,8 +59,11 @@ function traceWater(context: CanvasRenderingContext2D, shore: Shoreline, loops: 
   }
 }
 
+/** LAND-UI: loops whose shore strip a land draws itself (Wave 22 shore and reed strips, archetypeGroundDraw.ts). */
+export type ShoreStripOverride = { readonly loops: ReadonlySet<number>; readonly draw: (loop: number) => void };
+
 export function drawShoreline(context: CanvasRenderingContext2D, shore: Shoreline, loops: readonly number[], parity: boolean,
-  chunk: ScreenBounds, tileBounds: BoundaryBounds, seed: number, liveReeds = false): void {
+  chunk: ScreenBounds, tileBounds: BoundaryBounds, seed: number, liveReeds = false, strips?: ShoreStripOverride): void {
   if (loops.length === 0 && !parity) return;
   // 1. Deep water.
   traceWater(context, shore, loops, parity, chunk);
@@ -87,7 +90,8 @@ export function drawShoreline(context: CanvasRenderingContext2D, shore: Shorelin
   // 3. Shore strips (they reach over the land too).
   for (const index of loops) {
     const loop = shore.loops[index];
-    if (loop !== undefined) drawShoreStrip(context, loop, tileBounds);
+    if (strips?.loops.has(index) === true) strips.draw(index);
+    else if (loop !== undefined) drawShoreStrip(context, loop, tileBounds);
   }
   // 4. Reeds and mudstones over the strips (not clipped: reeds stand above the waterline).
   if (sprites) {
