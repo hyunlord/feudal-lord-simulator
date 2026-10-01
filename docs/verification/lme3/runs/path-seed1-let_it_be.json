@@ -1,0 +1,138 @@
+{
+ "seed": 1,
+ "willAnswer": "let_it_be",
+ "stage": "inherited",
+ "events": {
+  "bride_arrived": 1307,
+  "child_born": 1308,
+  "father_ill": 1310,
+  "will_change": 1310,
+  "father_died": 1311
+ },
+ "estate": {
+  "titleHolder": "lord",
+  "possessor": "lord"
+ },
+ "negotiations": [
+  {
+   "id": "negotiation-1",
+   "status": "accepted",
+   "tier": "impossible",
+   "score": 13,
+   "top": "urgency+18 concession-12 base+10 inheritance_risk-10 material+5",
+   "counter": {
+    "tier": "likely",
+    "score": 35,
+    "changes": [
+     {
+      "kind": "debt_assumption",
+      "change": "added",
+      "to": 660
+     }
+    ]
+   }
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise-1",
+   "term": "inheritance_non_infringement",
+   "promisor": "estate:estate-neighbour-3",
+   "amount": 0,
+   "status": "broken"
+  },
+  {
+   "id": "promise-2",
+   "term": "debt_assumption",
+   "promisor": "lord",
+   "amount": 660,
+   "status": "broken"
+  }
+ ],
+ "commands": [
+  {
+   "year": 1306,
+   "command": "petition_response"
+  },
+  {
+   "year": 1307,
+   "command": "propose_marriage(200)"
+  },
+  {
+   "year": 1307,
+   "command": "answer_counter"
+  },
+  {
+   "year": 1310,
+   "command": "answer_will_change(let_it_be)"
+  },
+  {
+   "year": 1311,
+   "command": "file_suit"
+  },
+  {
+   "year": 1311,
+   "command": "add_suit_evidence(deed)"
+  },
+  {
+   "year": 1311,
+   "command": "add_suit_evidence(witnesses)"
+  },
+  {
+   "year": 1311,
+   "command": "add_suit_evidence(charter)"
+  },
+  {
+   "year": 1312,
+   "command": "enforce_possession"
+  },
+  {
+   "year": 1312,
+   "command": "enforce_possession"
+  },
+  {
+   "year": 1312,
+   "command": "enforce_possession"
+  }
+ ],
+ "ledger": [
+  "1307 이웃 영주에게 혼인을 청했다 — 불가능(점수 13)",
+  "1307 이웃 영주가 조건을 고쳐 되물었다 — 채무 인수",
+  "1307 혼인 계약이 맺어졌다",
+  "1307 약속을 했다: 상속 기대권 불침해",
+  "1307 약속을 했다: 채무 인수 £2 15s",
+  "1307 혼인 계약 — 아들과 이웃 영주의 맏딸",
+  "1307 영주가 영지 전체에 혼인을 근거로 청구를 냈다",
+  "1307 신부가 영주관에 들어왔다",
+  "1308 부부의 첫아이가 태어났다",
+  "1308 영주가 약속을 어겼다: 채무 인수",
+  "1310 이웃 영주가 병들었다",
+  "1310 이웃 영주가 유언을 고치려 한다",
+  "1310 이웃 영주가 약속을 어겼다: 상속 기대권 불침해",
+  "1310 옛 가문의 친족이 영지 전체에 하사를 근거로 청구를 냈다",
+  "1311 영지 전체의 권원이 이웃 영주에게서 옛 가문의 친족에게 넘어갔다",
+  "1311 영지 전체의 점유가 이웃 영주에게서 옛 가문의 친족에게 넘어갔다",
+  "1311 이웃 영주가 죽었다",
+  "1311 새 유언대로 조카가 영지를 차지했다 — 소송으로 다툴 수 있다",
+  "1311 영주가 옛 가문의 친족을 상대로 영지 소송을 냈다",
+  "1312 소송이 증거 단계로 넘어갔다",
+  "1312 소송이 후원 단계로 넘어갔다",
+  "1312 소송이 심리 단계로 넘어갔다",
+  "1312 판결이 났다: 영지의 권원이 원고에게 넘어갔다(점유는 따로)",
+  "1312 영지 전체의 권원이 옛 가문의 친족에게서 영주에게 넘어갔다",
+  "1312 점유자가 버텼다: 영지 점유 집행이 막혔다(1번째)",
+  "1312 점유자가 버텼다: 영지 점유 집행이 막혔다(2번째)",
+  "1312 판결대로 영지의 점유를 넘겨받았다(3번째)",
+  "1312 영지 전체의 점유가 옛 가문의 친족에게서 영주에게 넘어갔다",
+  "1312 토지 지대의 권원이 옛 가문의 친족에게서 영주에게 넘어갔다",
+  "1312 토지 지대의 점유가 옛 가문의 친족에게서 영주에게 넘어갔다",
+  "1312 장원 법정의 권원이 옛 가문의 친족에게서 영주에게 넘어갔다",
+  "1312 장원 법정의 점유가 옛 가문의 친족에게서 영주에게 넘어갔다",
+  "1312 교회 추천권의 권원이 옛 가문의 친족에게서 영주에게 넘어갔다",
+  "1312 교회 추천권의 점유가 옛 가문의 친족에게서 영주에게 넘어갔다",
+  "1312 사냥권의 권원이 옛 가문의 친족에게서 영주에게 넘어갔다",
+  "1312 사냥권의 점유가 옛 가문의 친족에게서 영주에게 넘어갔다",
+  "1312 아내를 통해 이웃 영지를 물려받았다 — 이제 우리 영지다"
+ ],
+ "finalYear": 1312
+}

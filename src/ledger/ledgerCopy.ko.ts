@@ -40,6 +40,8 @@ export const LEDGER_CATEGORY_LABELS = {
   timber_purchase: "목재 구입",
   project_subsidy: "사업 장려금",
   lawsuit: "소송 비용",
+  marriage_portion: "혼인 계약금",
+  promise_payment: "약속 이행 지급",
   famine_sale: "기근 곡물 판매",
   charter_fee: "특허 대가",
   // FAIL-3 (FL-6, FL-7)

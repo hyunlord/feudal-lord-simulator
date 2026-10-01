@@ -1,0 +1,22 @@
+{
+  "time": "2026-10-01T07:56:32.717Z",
+  "staticJPEG": 30,
+  "matchingMetadata": 30,
+  "sources": [
+    {
+      "source": "/tmp/QA_ROUND_04/repro/saves/normal-ui-1384-before-tax.json.gz",
+      "unchanged": true
+    }
+  ],
+  "browserClosed": true,
+  "sharedServerUntouched": true,
+  "productModified": false,
+  "errors": [],
+  "verdict": {
+    "QA034": "same tax empty content fixed at 1600/1280/1024",
+    "QA016": "same 1394 guild overlap fixed at 1600/1280/1024",
+    "QA015": "reproduced same king empty biography at1600",
+    "QA011": "same guild/church artwork duplication not reproduced",
+    "QA010": "live petitioner small Thomas82 and big Petronilla55; historical text not examined"
+  }
+}

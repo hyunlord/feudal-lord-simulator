@@ -47,6 +47,7 @@ const BUNDLE: Readonly<Record<string, (params: P) => string>> = {
   operation: params => `이번 계절 시설 가동을 ${n(params, "count")}번 바꿨다`,
   wall_priority: params => `이번 계절 성벽 공사 우선을 ${n(params, "count")}번 정했다`,
   lawsuit: params => `이번 계절 소송에 ${n(params, "count")}번 손을 썼다`,
+  marriage: params => `이번 계절 혼인 협상·약속에 ${n(params, "count")}번 손을 썼다`,
 };
 
 /** PERSON-0: trades a household head takes (PS-4). */
@@ -103,6 +104,11 @@ const DEATH_CAUSES: Readonly<Record<string, string>> = {
 
 /** LM-E1: the estate's policies, the town's actors, a project's name. */
 const ESTATE_POLICY_KO: Readonly<Record<string, string>> = { growth: "성장", revenue: "세입", stability: "안정", defence: "방어" };
+// LM-E3: the negotiation's words — the tiers and the terms.
+const TIER_KO: Readonly<Record<string, string>> = { impossible: "불가능", unlikely: "불리", close: "박빙", likely: "유력", almost_certain: "거의 확실" };
+const TERM_KO: Readonly<Record<string, string>> = { cash: "계약금", pension: "연금", right_piece: "권리 조각", political_support: "정치적 지원",
+  debt_assumption: "채무 인수", consent: "혼인 동의", inheritance_non_infringement: "상속 기대권 불침해", residence: "배우자 거주", land_use: "토지 사용수익",
+  wardship: "후견 합의" };
 // LM-E2: the estates' words — holders, pieces, a claim's basis, a suit's stages.
 const HOLDER_KO: Readonly<Record<string, string>> = { lord: "영주", overlord: "대영주", crown: "국왕", merchants: "상인들", townsfolk: "주민들",
   neighbour_1: "첫째 이웃 영주", neighbour_2: "둘째 이웃 영주", bishop: "주교" };
@@ -211,6 +217,26 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "decision.project_subsidy": params => n(params, "amount") === 0 ? `${buildingWord(s(params, "kind"))} 장려금을 거두었다`
     : `${buildingWord(s(params, "kind"))}에 장려금 ${moneyWords(n(params, "amount"))}${moneyWordsJosa(moneyWords(n(params, "amount")), "을", "를")} 걸었다`,
   "decision.market_dues": params => `시장 부담을 평소의 ${Math.round(Number(s(params, "chosen")) / 10)}%로 정했다`,
+  // LM-E3 (NG-5…NG-8): offers, counters, promises and the marriage's stages.
+  "negotiation.offered": params => `이웃 영주에게 혼인을 청했다 — ${TIER_KO[s(params, "tier")] ?? s(params, "tier")}(점수 ${n(params, "score")})`,
+  "negotiation.accepted": () => "혼인 계약이 맺어졌다",
+  "negotiation.countered": params => `이웃 영주가 조건을 고쳐 되물었다 — ${s(params, "changes").split(",").filter(kind => kind !== "").map(kind => TERM_KO[kind] ?? kind).join("·")}`,
+  "negotiation.rejected": () => "이웃 영주가 혼인을 거절했다",
+  "negotiation.withdrawn": () => "고쳐 온 조건을 받지 않아 혼담이 끝났다",
+  "promise.made": params => `약속을 했다: ${TERM_KO[s(params, "term")] ?? s(params, "term")}${n(params, "amount") > 0 ? ` ${moneyWords(n(params, "amount"))}` : ""}`,
+  "promise.kept": params => `${s(params, "promisor") === "lord" ? "영주가" : "이웃 영주가"} 약속을 지켰다: ${TERM_KO[s(params, "term")] ?? s(params, "term")}`,
+  "promise.broken": params => `${s(params, "promisor") === "lord" ? "영주가" : "이웃 영주가"} 약속을 어겼다: ${TERM_KO[s(params, "term")] ?? s(params, "term")}`,
+  "marriage.contracted": () => "혼인 계약 — 아들과 이웃 영주의 맏딸",
+  "marriage.bride_arrived": () => "신부가 영주관에 들어왔다",
+  "marriage.child_born": () => "부부의 첫아이가 태어났다",
+  "marriage.brother_in_law_born": () => "이웃 영주가 다시 장가들어 아들을 얻었다 — 상속 기대가 줄었다",
+  "marriage.father_ill": () => "이웃 영주가 병들었다",
+  "marriage.will_change": () => "이웃 영주가 유언을 고치려 한다",
+  "marriage.will_dropped": () => "이웃 영주가 유언을 고치지 않기로 했다",
+  "marriage.father_died": () => "이웃 영주가 죽었다",
+  "marriage.inherited": () => "아내를 통해 이웃 영지를 물려받았다 — 이제 우리 영지다",
+  "marriage.lost": () => "이웃 영지는 그의 아들에게 갔다",
+  "marriage.contested": () => "새 유언대로 조카가 영지를 차지했다 — 소송으로 다툴 수 있다",
   // LM-E2 (ES-5…ES-7): claims, suits, titles and possessions.
   "estate.claim_raised": params => `${holderWord(s(params, "claimant"))}${josa(holderWord(s(params, "claimant")), "이", "가")} ${pieceWord(s(params, "piece"), s(params, "estate"))}에 ${basisWord(s(params, "basis"))}${josa(basisWord(s(params, "basis")), "을", "를")} 근거로 청구를 냈다`,
   "estate.suit_filed": params => `${holderWord(s(params, "plaintiff"))}${josa(holderWord(s(params, "plaintiff")), "이", "가")} ${holderWord(s(params, "defendant"))}${josa(holderWord(s(params, "defendant")), "을", "를")} 상대로 ${pieceWord(s(params, "piece"), "")} 소송을 냈다`,

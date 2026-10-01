@@ -1,0 +1,35 @@
+{
+  "head": "c52e6634146c224439df5a7cd84616b09e140a5d",
+  "srcTree": "d7d1e97392ee79e380229d5d1b487f108ef64652",
+  "publicTree": "6d6b7f5b752a73d1a754a6d92879caa3f0872268",
+  "url": "http://127.0.0.1:4830/",
+  "proofMode": false,
+  "sourcePayloadParsed": false,
+  "sourcePayloadEdited": false,
+  "sourceRestore": "unchanged bytes through public IndexedDB save adapter then normal Continue",
+  "productModified": false,
+  "performanceMeasured": false,
+  "sources": [
+    {
+      "path": "/tmp/QA_ROUND_03/repro/saves/normal-ui-1407.json.gz",
+      "sha256": "86678ba1102001077d706d3223356792cac68dc279ea5c479c64057bf9a5d15b"
+    },
+    {
+      "path": "/tmp/QA_ROUND_04/repro/saves/normal-ui-1384-before-tax.json.gz",
+      "sha256": "faa99495902ce46e05fc4143ebefda66e4164070da65347378ec3d8263b033bd"
+    },
+    {
+      "path": "/tmp/QA_ROUND_02/repro/saves/chapter3-plague1348.json.gz",
+      "sha256": "71bb71e741e8bb5e6b34217a64e6bf847acc80051bad193c5c0ba93a88addb6d"
+    },
+    {
+      "path": "/tmp/QA_ROUND_09/repro/saves/natural1362-ch4-start.json.gz",
+      "sha256": "ec321e875bc690f3c467c1e974e4db437d12c96131ae0a5d8c28ae3f688ed864"
+    }
+  ],
+  "otherSources": "repro/cards16-observation.md 원본 계보 표",
+  "start": "2026-10-01T07:37:41.935Z",
+  "browser": "Chrome via Playwright input/screenshot only; viewport1600x1100,1280x720,1024x768 DPR1",
+  "excludedExploration": "fixtures/perf-gate/ch4-1380.save.json.gz explored without editing; natural-play provenance not established; excluded from all pass/close verdicts and selected JPEG delivery",
+  "ended": "2026-10-01T08:08:35.604898+00:00"
+}

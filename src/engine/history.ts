@@ -15,6 +15,7 @@
  * - HL-10 (HIST-1): at each season's close, everyday records eight seasons old fold into one summary per season, and
  *   128² thumbnails that old are kept only at a year's end (winter's close). Everything else stays for good.
  */
+import { WITNESS_RELATION_LOSS } from "../content/diplomacyConfig";
 import { estatesOf } from "./estates";
 import { PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
 import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
@@ -62,7 +63,9 @@ export const DECISION_KINDS = ["build", "road", "zone", "house", "cancel", "oper
   // LM-E1 (TA-6): the lord's conditions in lord mode.
   "estate_policy", "project_subsidy", "market_dues",
   // LM-E2 (ES-7): the lord's suit commands (the suit's own course is in the ledger as `estate.*` events).
-  "lawsuit"] as const;
+  "lawsuit",
+  // LM-E3 (NG-7): the marriage — the offer, the answer to a counter, a promise kept, the will-change answer.
+  "marriage"] as const;
 export type DecisionKind = (typeof DECISION_KINDS)[number];
 /** HL-3: the big five, one record each with alternatives, a prediction and (later) the actual. */
 export const BIG_DECISION_KINDS: readonly DecisionKind[] = ["market_town", "stone_town", "famine_response", "petition_response", "rebuild", "wall_expand", "drainage",
@@ -80,6 +83,7 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   // LM-E1 (TA-6): each condition the lord sets is a decision with a ledger id; the town's receipts point at it.
   set_estate_policy: "estate_policy", set_project_subsidy: "project_subsidy", set_market_dues: "market_dues",
   file_suit: "lawsuit", add_suit_evidence: "lawsuit", seek_suit_patron: "lawsuit", enforce_possession: "lawsuit",
+  propose_marriage: "marriage", answer_counter: "marriage", keep_promise: "marriage", answer_will_change: "marriage",
 };
 
 /** HL-2 ③: buildings whose first completion is a milestone. */
@@ -206,7 +210,7 @@ export function recordDecision(before: GameState, reduced: GameState, command: {
   const kind = DECISION_KIND_BY_COMMAND[command.type];
   if (kind === undefined || reduced === before) return reduced;
   // LM-E2 (ES-7): a suit command's effect (a suit filed, evidence, a patron, an enforcement) is in the ledger as well.
-  const lines = kind === "lawsuit" ? estateDrafts(before, reduced) : [];
+  const lines = kind === "lawsuit" ? estateDrafts(before, reduced) : kind === "marriage" ? [...diplomacyDrafts(before, reduced), ...estateDrafts(before, reduced)] : [];
   const after = lines.length === 0 ? reduced : { ...reduced, history: append(historyOf(reduced), lines) };
   // LM-E1b (TA-6 ②): a subsidy refused is no decision; the ledger keeps its reason as an event.
   const refusal = after.agency?.lastRefusal;
@@ -751,6 +755,8 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   drafts.push(...agencyDrafts(before, after));
   // LM-E2 (ES-5…ES-7): the estates' claims, suits, titles and possessions that changed this tick.
   drafts.push(...estateDrafts(before, after));
+  // LM-E3 (NG-5…NG-8): offers, counters, promises and the marriage's stages that changed this tick.
+  drafts.push(...diplomacyDrafts(before, after));
   // ARCH-1b (MA-11): a drainage works finished — its cells are meadow now.
   for (const work of finishedDrainage(before, after)) {
     const cell = work.cells[0]!;
@@ -850,6 +856,53 @@ export function chapterPageRecords(state: Pick<GameState, "history">, fromTick: 
 }
 
 /**
+ * LM-E3 (NG-5…NG-8): what changed in the diplomacy — an offer made (accepted, countered or refused), a counter taken or
+ * let go, a promise made, kept or broken (a broken one also moves each witness faction's relation, its memory), and
+ * each of the marriage's middle events.
+ */
+function diplomacyDrafts(before: GameState, after: GameState): Draft[] {
+  if (after.diplomacy === before.diplomacy || after.diplomacy === undefined) return [];
+  const was = before.diplomacy;
+  const now = after.diplomacy;
+  const drafts: Draft[] = [];
+  const line = (template: string, params: Record<string, string | number>, severity: 1 | 2 | 3 = 2) =>
+    drafts.push({ tick: after.tick, kind: "event", template, subject: TOWN, severity, params });
+  for (const negotiation of now.negotiations) {
+    const old = was?.negotiations.find(entry => entry.id === negotiation.id);
+    if (old === undefined) {
+      line("negotiation.offered", { negotiation: negotiation.id, counterpart: negotiation.counterpart, tier: negotiation.acceptance.tier, score: negotiation.acceptance.score });
+      line(`negotiation.${negotiation.status === "countered" ? "countered" : negotiation.status === "accepted" ? "accepted" : "rejected"}`,
+        { negotiation: negotiation.id, changes: (negotiation.counter?.changes ?? []).map(change => change.kind).join(",") });
+    } else if (old.status !== negotiation.status) line(`negotiation.${negotiation.status === "accepted" ? "accepted" : "withdrawn"}`, { negotiation: negotiation.id, changes: "" });
+  }
+  for (const record of now.promises) {
+    const old = was?.promises.find(entry => entry.id === record.id);
+    if (old === undefined) line("promise.made", { promise: record.id, promisor: record.promisor, term: record.term, amount: record.amount ?? 0, deadline: record.deadline }, 1);
+    if (old?.status === record.status || record.status === "open") continue;
+    line(`promise.${record.status}`, { promise: record.id, promisor: record.promisor, term: record.term });
+    if (record.status === "broken" && record.promisor === "lord") for (const witness of record.witnesses) {
+      const faction = after.factions?.factions.find(entry => entry.id === witness);
+      if (faction === undefined) continue;
+      drafts.push({ tick: after.tick, kind: "faction", template: "faction.relation", subject: { type: "faction", id: witness }, severity: 1,
+        params: { faction: witness, name: faction.name, delta: -WITNESS_RELATION_LOSS, reason: `promise_broken:${record.id}`,
+          relation: Math.max(-100, Math.min(100, faction.relation - WITNESS_RELATION_LOSS)) } });
+    }
+  }
+  const plan = now.marriage;
+  if (plan !== undefined) {
+    if (was?.marriage === undefined) line("marriage.contracted", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId }, 3);
+    for (const [event, tick] of Object.entries(plan.events)) {
+      if (tick === undefined || tick < 0 || (was?.marriage?.events as Record<string, number | undefined> | undefined)?.[event] !== undefined) continue;
+      line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? "" }, event === "father_died" ? 3 : 2);
+    }
+    if (was?.marriage?.stage !== plan.stage && (plan.stage === "inherited" || plan.stage === "lost" || plan.stage === "contested")) {
+      line(`marriage.${plan.stage}`, { estate: plan.estateId, rival: plan.rival ?? "" }, 3);
+    }
+  }
+  return drafts;
+}
+
+/**
  * LM-E2 (ES-5…ES-7): what changed in the estates — a claim raised, a suit filed, a suit's stage, its judgment, an
  * enforcement, a piece's title or possessor. FAIL-3's own losses (suspended, seized) are the lordship's lines already.
  */
@@ -872,6 +925,12 @@ function estateDrafts(before: GameState, after: GameState): Draft[] {
   }
   for (const estate of now.estates) {
     const old = was.estates.find(entry => entry.id === estate.id);
+    // LM-E3 (NG-8): a whole estate changing hands is one line, not one for each of its pieces.
+    if (old !== undefined && (old.titleHolder !== estate.titleHolder || old.possessor !== estate.possessor)) {
+      if (old.titleHolder !== estate.titleHolder) line("estate.title_changed", { estate: estate.id, piece: "", from: old.titleHolder, to: estate.titleHolder });
+      if (old.possessor !== estate.possessor) line("estate.possession_changed", { estate: estate.id, piece: "", from: old.possessor, to: estate.possessor });
+      continue;
+    }
     for (const piece of estate.pieces) {
       const prior = old?.pieces.find(entry => entry.id === piece.id);
       if (prior === undefined) continue;

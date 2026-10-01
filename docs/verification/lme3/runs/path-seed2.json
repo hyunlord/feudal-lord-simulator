@@ -1,0 +1,99 @@
+{
+ "seed": 2,
+ "willAnswer": "favour",
+ "stage": "inherited",
+ "events": {
+  "bride_arrived": 1316,
+  "child_born": 1317,
+  "father_ill": 1319,
+  "will_change": 1319,
+  "will_dropped": 1319,
+  "father_died": 1320
+ },
+ "estate": {
+  "titleHolder": "lord",
+  "possessor": "lord"
+ },
+ "negotiations": [
+  {
+   "id": "negotiation-1",
+   "status": "accepted",
+   "tier": "unlikely",
+   "score": 16,
+   "top": "urgency+18 concession-12 base+10 inheritance_risk-10 material+5",
+   "counter": {
+    "tier": "likely",
+    "score": 32,
+    "changes": [
+     {
+      "kind": "debt_assumption",
+      "change": "added",
+      "to": 480
+     }
+    ]
+   }
+  }
+ ],
+ "promises": [
+  {
+   "id": "promise-1",
+   "term": "inheritance_non_infringement",
+   "promisor": "estate:estate-neighbour-3",
+   "amount": 0,
+   "status": "open"
+  },
+  {
+   "id": "promise-2",
+   "term": "debt_assumption",
+   "promisor": "lord",
+   "amount": 480,
+   "status": "kept"
+  }
+ ],
+ "commands": [
+  {
+   "year": 1307,
+   "command": "petition_response"
+  },
+  {
+   "year": 1316,
+   "command": "propose_marriage(200)"
+  },
+  {
+   "year": 1316,
+   "command": "answer_counter"
+  },
+  {
+   "year": 1316,
+   "command": "keep_promise(debt_assumption)"
+  },
+  {
+   "year": 1319,
+   "command": "answer_will_change(favour)"
+  },
+  {
+   "year": 1320,
+   "command": "famine_response"
+  }
+ ],
+ "ledger": [
+  "1316 이웃 영주에게 혼인을 청했다 — 불리(점수 16)",
+  "1316 이웃 영주가 조건을 고쳐 되물었다 — 채무 인수",
+  "1316 혼인 계약이 맺어졌다",
+  "1316 약속을 했다: 상속 기대권 불침해",
+  "1316 약속을 했다: 채무 인수 £2",
+  "1316 혼인 계약 — 아들과 이웃 영주의 맏딸",
+  "1316 영주가 영지 전체에 혼인을 근거로 청구를 냈다",
+  "1316 영주가 약속을 지켰다: 채무 인수",
+  "1316 신부가 영주관에 들어왔다",
+  "1317 부부의 첫아이가 태어났다",
+  "1319 이웃 영주가 병들었다",
+  "1319 이웃 영주가 유언을 고치려 한다",
+  "1319 이웃 영주가 유언을 고치지 않기로 했다",
+  "1320 영지 전체의 권원이 이웃 영주에게서 영주에게 넘어갔다",
+  "1320 영지 전체의 점유가 이웃 영주에게서 영주에게 넘어갔다",
+  "1320 이웃 영주가 죽었다",
+  "1320 아내를 통해 이웃 영지를 물려받았다 — 이제 우리 영지다"
+ ],
+ "finalYear": 1320
+}

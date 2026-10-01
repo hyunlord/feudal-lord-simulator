@@ -12,6 +12,7 @@ Astra가 별도 클론에서 게임을 실행하며 관찰한 회차별 QA 기�
 | [02](round02/FINDINGS.md) | 2026-09-30 | `d5b3f88a` | 새 발견 QA-012~013 (2건) + 기존 11항목 재검토 | 새 발견 2건 재현(QA-012 계절 외형 급교체·달력 한 샘플 지연, QA-013 목표 패널이 사건 칩을 가림). 기존 11: 재현된 실패 7 · 미재현 3(QA-001 독립 나무 1개 표본, QA-004, QA-007) · 판정 보류 1(QA-011, 삽화 설치 전). 해안·습지 새 지형은 접근 경로가 없어 미검증 | 문서 6 · `repro/` · `tools/` · 증거 JPEG 11(발견마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round02/` — 경량 ZIP(`d7d8242d…`)·해시 파일·풀어 둔 전체(JPEG 54·GIF 15)·`raw-sequences/`(1600×1100 원본 연속 촬영 634MB, Astra의 `/tmp/fls-qa-raw-round02`) |
 | [03~14 통합](round03-14/FINDINGS.md) · [판정](round03-14/TRIAGE.md) | 2026-10-01 | `267b43b8`(마지막 관찰. 통합 중 원격 `3acc04ff` UI-AUDIT-1 이후는 미검증) | QA001~033 (33개 번호: 열림 24 · 닫힘 4 · 미재현 3 · 미검증 1 · 후보 1) + 번호 없는 후보 12묶음([CANDIDATES](round03-14/CANDIDATES.md)) | 사용자 판정([TRIAGE](round03-14/TRIAGE.md)): 최소 지원 폭 1024px — 375px에서만 나온 013·017·023·024·029는 범위 밖으로 닫음. 높음: 030 저장 왕복 식량 일수 · 032 장 결산 재노출 · 025 목표 보기가 정지를 풂. 015·016·018~021·031은 UI-AUDIT-1 이후 본선에서 재확인. 닫힘 006·008·009·011 인정, 미재현 001·004·007 · 미검증 002 유지 | 문서 8(`TRIAGE.md` 포함) · `ISSUES.csv`·`PROVENANCE.json`·`VALIDATION.json`·`SHA256SUMS.txt` · `history/`(3~14회차 원 보고 52) · `repro/` · `tools/` · 재현 저장 2(12회차 묶음에서, 아래) · 증거 JPEG 35(발견 번호마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round03-14/` — 통합 ZIP(`afe8c6e6…`)·검증 전 ZIP·검증 JSON·풀어 둔 전체(JPEG 91·GIF 6) · `rounds/`(회차별 `QA_ROUND_03~14`·전달 폴더·회차 ZIP 03~13과 검증 JSON) · `raw-sequences/round03~14`(원시 연속 프레임) · 합계 약 14GB |
 | [15](round15/README.md) | 2026-10-01 | `3acc04ff`(UI-AUDIT-1 이후) | UI-AUDIT-1 지정 7건 재검증 + 새 발견 QA034~035 (2건). 누적 35개 번호: 열림 16 · 닫힘 9 · 지원 범위 밖 5 · 미재현 3 · 미검증 1 · 후보 1 | 수정 확인 5(018·019·020·021·031, 같은 조건 범위만) · 재현 1(015 전기 장식선) · 미검증 1(016, QA034 때문에 판독 불가). 새 결함: **QA034 결정창 제목·본문·선택지가 안 보임(높음, 긴급 ZIP 먼저 전달)** · QA035 설정 최하단 불러오기 행을 건설·장부·청지기 버튼이 덮음(1024·1280). 1024px 미만은 이번부터 시험 안 함 | 문서 7 · `ISSUES.csv`·`POLICY.json`·`PROVENANCE.json`·`SHA256SUMS.txt` · `repro/` · `tools/` · `urgent/`(QA034 긴급 묶음 그대로: JPEG 4 · JSON 5 · README) · 재현 저장 2(03·04회차 묶음에서, 아래) · 증거 JPEG 9(발견 번호마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round15/` — 경량 ZIP(`241ef2d1…`)·긴급 ZIP(`5851e2fa…`, `urgent/`와 같은 내용)·풀어 둔 전체(JPEG 39) |
+| [16](round16/README.md) | 2026-10-01 | `c52e6634`(QA034 수정 `e531560e` 포함) | 재검증 5건(QA034·016·010·035·015) + 돈 표기 회귀 관찰 + 새 후보 QA036 (1건). 누적 36개 번호: 열림 13 · 닫힘 12 · 지원 범위 밖 5 · 미재현 3 · 후보 2 · 미검증 1 | 닫힘 3(QA034 과세 본문, QA016 길드 보류 버튼, QA010 82살 ‘젊은’→‘작은’; 같은 원본·사건 범위만). 열림 유지 2(QA015 전기 장식선, QA035 설정 저장행 가림). 돈 표기 £·s 통과 표본(원시 d 보조합계는 남음). 새 후보 **QA036: 1349 임금 청원 첫 대표가 ‘세상을 떠남’**(원인 미확정, 선택은 됨; 소형 ZIP 먼저 전달). 청원 7종 × 3폭 = 21화면 확인 | 문서 7 · `early/QA036.md` · `ISSUES.csv`·`DELIVERY_MANIFEST.json`·`POLICY.json`·`PROVENANCE.json`·`VALIDATION.json`·`SHA256SUMS.txt` · `repro/` · `tools/` · 재현 저장 4(`PROVENANCE.json`이 가리키는 것만, 아래) · 증거 JPEG 7(발견마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round16/` — 경량 ZIP(`767d5500…`)·QA036 먼저 받은 ZIP·ZIP 검증 JSON·풀어 둔 전체(JPEG 38) · `work/QA_ROUND_16`(작업 폴더 전체, JPEG 116) |
 
 ## 한 회차에 넣는 것
 
@@ -121,3 +122,25 @@ QA-012의 연속 변화는 GIF(`clips/season-autumn-winter.gif`·`season-winter-
 - `normal-ui-1407.json.gz`(`86678ba1…`): 03회차 묶음에서 가져왔다. QA020 가계도 재현 출발점이다.
 
 두 파일은 astra-raw `round03-14/rounds/`에도 있다. 15회차 `SHA256SUMS.txt`에는 없다.
+
+## 16회차 증거
+
+| 발견 | 파일 |
+|---|---|
+| QA034 결정 내용(닫힘) | `ui16-03-tax1600.jpg` |
+| QA016 결정 버튼 겹침(닫힘) | `ui16-18-guild1024.jpg` |
+| QA010 호칭·나이(닫힘) | `root16-007-tree-expanded.jpg` |
+| QA035 설정 저장행 가림(열림) | `root16-020-settings-bottom1024-after-scroll.jpg` |
+| 돈 표기(회귀 관찰, 통과 표본) | `root16-018-history-1351.jpg` |
+| QA015 전기 장식선(열림) | `ui16-30-king-empty-bio1600.jpg` |
+| QA036 청원자 ‘세상을 떠남’(새 후보) | `root16-025-wages.jpg` |
+
+`early/`는 그대로 넣었다(사용자 지시). 먼저 받은 소형 ZIP `fls-qa-round16-early-petitioner.zip`은 `early/QA036.md`·`evidence/root16-025-wages.jpg`·`repro/root16-025-wages.json` 세 파일이고, 경량 ZIP의 같은 파일과 바이트가 같다.
+
+**재현 저장.** `PROVENANCE.json` `sources`가 가리키는 4개만 `round16/repro/saves/`에 넣었다. 모두 그 sha256과 같다.
+- `normal-ui-1407.json.gz`(`86678ba1…`, 03회차)
+- `normal-ui-1384-before-tax.json.gz`(`faa99495…`, 04회차)
+- `chapter3-plague1348.json.gz`(`71bb71e7…`, 02회차)
+- `natural1362-ch4-start.json.gz`(`ec321e87…`, 09회차)
+
+앞의 회차 폴더에 같은 바이트가 이미 있어서 Git 저장 공간은 늘지 않는다. 탐색 중 열었지만 판정에서 뺀 `fixtures/perf-gate/ch4-1380.save.json.gz`는 넣지 않았다.
