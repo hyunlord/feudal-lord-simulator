@@ -8,7 +8,7 @@
  */
 import {
   BREACHED_NON_INFRINGEMENT_GAIN, BROTHER_IN_LAW_CLAIM_LOSS, BROTHER_IN_LAW_PERMILLE, CONTRACT_RELATION_GAIN, COUNTER_ANSWER_TICKS, DEBT_INSTALMENT_MAX_YEARS,
-  GROOM_MAX_AGE, GROOM_MIN_AGE, MARRIAGE_TIMES, MARRIAGE_WITNESSES, PROMISE_PAYMENT_TICKS, PROMISE_STAKE, PROMISE_SUPPORT_TICKS, WILL_CHANGE_PERMILLE,
+  BOT_OFFER_TREASURY, GROOM_MAX_AGE, GROOM_MIN_AGE, MARRIAGE_TIMES, MARRIAGE_WITNESSES, PROMISE_PAYMENT_TICKS, PROMISE_STAKE, PROMISE_SUPPORT_TICKS, WILL_CHANGE_PERMILLE,
   WILL_FAVOUR_PENNIES,
 } from "../content/diplomacyConfig";
 import { FEMALE_GIVEN_NAMES, MALE_GIVEN_NAMES } from "../content/personNames";
@@ -18,7 +18,7 @@ import type { GameState } from "./engine.types";
 import { estatesOf, LORD, raiseClaim } from "./estates";
 import { hairWords, populationTraits } from "./heredity";
 import { lordshipOf } from "./lordshipState";
-import { counterOffer, diplomacyOf, evaluateOffer, offerDraw } from "./negotiation";
+import { counterOffer, debtInstalmentCap, diplomacyOf, evaluateOffer, offerDraw } from "./negotiation";
 import { ageBandOf, ageOf, currentYear, manorLord, weightedName } from "./persons";
 import { MANOR_HOUSEHOLD, type Person } from "./persons.types";
 import { choosePortraitIdentity } from "./portraits";
@@ -473,6 +473,9 @@ export function lordBotMarriageCommands(state: GameState): readonly ({ readonly 
   if (diplomacy.negotiations.length > 0) return [];
   const { groom, bride } = marriageCandidates(state);
   if (groom === null || bride === null) return [];
+  // FIX-12 (NG-9): the one offer waits until the lord can pay — his estates have paid a year in (a counter's yearly dues
+  // have room) and the treasury holds BOT_OFFER_TREASURY (a third of it is the portion).
+  if (debtInstalmentCap(state) <= 0 || treasuryBalance(state) < BOT_OFFER_TREASURY) return [];
   const portion = Math.floor(Math.max(0, treasuryBalance(state)) / 3);
   return [{ type: "propose_marriage", terms: [{ kind: "cash", giver: "proposer", amount: portion }, { kind: "inheritance_non_infringement", giver: "counterpart" },
     { kind: "residence", giver: "counterpart" }] }];

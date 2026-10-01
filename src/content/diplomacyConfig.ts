@@ -74,6 +74,8 @@ export const CONTRACT_RELATION_GAIN = 10;
 /** NG-7: a groom is a man of the lord's house this old (FIX-12: up to 60 — a widowed lord, a cousin), unmarried. */
 export const GROOM_MIN_AGE = 14;
 export const GROOM_MAX_AGE = 60;
+/** NG-9 (FIX-12): the lord-mode bot's one offer waits for this much in the treasury (and an estate year paid in). */
+export const BOT_OFFER_TREASURY = 600;
 
 /** NG-8: the middle events after the contract (ticks from it) and their chances (permille, from the seed). */
 export const MARRIAGE_TIMES = {
