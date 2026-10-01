@@ -25,7 +25,7 @@ import { loadChromium, openScene } from './renderCommitProbe.mjs';
 import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY, UI_INPUT_ROOTS } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, HUD_ALWAYS, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
-import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures } from './uiGeometryMeasure.ts';
+import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface } from './uiGeometryMeasure.ts';
 import { HIDE_CSS, paintFacts, STILL_CSS } from './uiGeometryPaint.ts';
 import { decodePng } from './keyartDerivatives.ts';
 import { extremeNumbers, mapTile, sceneTile } from './uiGeometryScene.ts';
@@ -183,11 +183,17 @@ const unregisteredFramed = new Map();
 const kindType = kind => kind === 'flat' ? 'flat' : FRAME_TOKENS[kind]?.type ?? 'unknown';
 
 /** The two captures of the measured root (marked data-geometry-root by collectSurface): as it is, then its text transparent
- * and its controls hidden; the root's attribute and both styles are gone afterwards. */
+ * and its controls hidden; the root's attribute and both styles are gone afterwards. The captures cover the part of the
+ * root on screen (what its scrolling ancestors show, within the viewport); none of it on screen: no paint pass (undefined). */
 async function paintPass(page, collected) {
-  const box = collected.root.rect; const view = collected.viewport;
-  const x = Math.max(0, Math.floor(box.l)); const y = Math.max(0, Math.floor(box.t));
-  const clip = { x, y, width: Math.max(1, Math.min(view.w, Math.ceil(box.r)) - x), height: Math.max(1, Math.min(view.h, Math.ceil(box.b)) - y) };
+  const box = collected.root.visible === undefined ? collected.root.rect : collected.root.visible; const view = collected.viewport;
+  const x = box === null ? 0 : Math.max(0, Math.floor(box.l)); const y = box === null ? 0 : Math.max(0, Math.floor(box.t));
+  const r = box === null ? 0 : Math.min(view.w, Math.ceil(box.r)); const b = box === null ? 0 : Math.min(view.h, Math.ceil(box.b));
+  if (r - x < 1 || b - y < 1) {
+    await page.evaluate(() => { for (const element of document.querySelectorAll('[data-geometry-root]')) element.removeAttribute('data-geometry-root'); }).catch(() => undefined);
+    return undefined;
+  }
+  const clip = { x, y, width: r - x, height: b - y };
   const style = css => page.evaluate(text => { const element = document.createElement('style'); element.dataset.geometryPaint = ''; element.textContent = text; document.head.append(element); }, css);
   const frames = () => page.evaluate(() => new Promise(done => requestAnimationFrame(() => requestAnimationFrame(done))));
   try {
@@ -205,8 +211,10 @@ async function paintPass(page, collected) {
 const roundBox = box => box === null ? null : Object.fromEntries(Object.entries(box).map(([key, value]) => [key, Math.round(value * 10) / 10]));
 async function measure(row, condition, page) {
   const spec = specOf(row);
+  // A root its scrolling ancestors show nothing of is scrolled to first (as a player does: the family tree's banner).
+  if (await page.evaluate(revealSurface, row.root)) await page.evaluate(() => new Promise(done => requestAnimationFrame(() => requestAnimationFrame(done))));
   let collected = await page.evaluate(collectSurface, spec);
-  if (collected.found) collected = { ...collected, paint: await paintPass(page, collected) };
+  if (collected.found) { const paint = await paintPass(page, collected); if (paint !== undefined) collected = { ...collected, paint }; }
   const evaluation = evaluateSurface(collected, spec);
   for (const { kind, path } of collected.unregistered ?? []) {
     const key = `${kind} ${path}`; if (!unregisteredFramed.has(key)) unregisteredFramed.set(key, new Set()); unregisteredFramed.get(key).add(row.id);

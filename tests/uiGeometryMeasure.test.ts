@@ -155,6 +155,14 @@ test("Given a mostly empty surface When evaluated Then the empty-space warning i
   assert.ok(result.empty !== null && result.empty.ratio < 0.4 && result.empty.warn);
 });
 
+test("Given a root its scrolling ancestor shows in part When evaluated Then empty space counts only the shown part", () => {
+  // R15 triage: a part of the panel slot runs below the slot's scrolled view; what is scrolled out holds no content to count.
+  const items = [text("p", box(124, 124, 276, 148))];
+  const whole = evaluateSurface(surface(items), css);
+  const shown = evaluateSurface(surface(items, { visible: box(100, 100, 300, 150) }), css);
+  assert.ok(whole.empty !== null && shown.empty !== null && shown.empty.ratio > whole.empty.ratio && !shown.empty.warn);
+});
+
 test("Given a registry-listed sibling group When two members overlap Then overlap fails unless one holds the other", () => {
   const siblings = [{ selector: ".slot", rects: [{ path: "a", rect: box(120, 120, 200, 180) }, { path: "b", rect: box(190, 130, 260, 170) }, { path: "c", rect: box(125, 125, 150, 150) }], nested: [[0, 2]] as const }];
   const result = evaluateSurface(surface([], {}, { siblings }), css);

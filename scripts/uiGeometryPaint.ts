@@ -89,7 +89,10 @@ export function paintFacts(collected: Collected, a: Rgba, b: Rgba, origin: Origi
   // nothing of its own by design.
   const sampled = (item: Item) => item.rect !== null && !(item.kind === "text" && item.inControls.length > 0) && !(item.kind === "control" && item.control?.variant === "surface")
     && (item.kind === "text" || item.kind === "control");
-  const counts = items.map(item => !sampled(item) ? null : changedPixels(a, b, origin, item.kind === "text" ? item.lines ?? [item.rect!] : [item.rect!]));
+  // A line or a control a scroller cuts is not judged: it is reachable, and its visible sliver can be the line's leading
+  // alone (no ink to change). What is wholly in the scroller's view is.
+  const boxes = (item: Item) => item.kind === "text" ? item.wholeLines ?? item.lines ?? [item.rect!] : item.scrollCut === true ? [] : [item.rect!];
+  const counts = items.map(item => !sampled(item) || boxes(item).length === 0 ? null : changedPixels(a, b, origin, boxes(item)));
   const requires = (collected.requires ?? []).map(required => required.rects.map(rect => changedPixels(a, b, origin, [rect])).filter((count): count is number => count !== null));
   const crossings: { item: number; line: Box; axis: "x" | "y" }[] = [];
   items.forEach((item, index) => {

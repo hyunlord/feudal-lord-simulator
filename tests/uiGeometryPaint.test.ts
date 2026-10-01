@@ -72,3 +72,26 @@ test("ornament: a crossing found on the second capture fails the text", () => {
   const result = evaluateSurface({ ...collected, paint: paintFacts(collected, rule, rule, origin) }, { ...spec, requires: [] });
   assert.deepEqual(result.failures.filter(failure => failure.check === "ornament").map(failure => failure.what), ["text crossed by a drawn vertical line"]);
 });
+
+test("content: a line a scroller cuts (its visible sliver only leading) is not judged; the same line wholly in view and covered still fails", () => {
+  // R15 triage: slot.ledger.* table rows and the chapter page's last entry, 3 px of their line box above the scroller's edge.
+  const sliver = box(10, 26, 40, 30);
+  const cut = base({ requires: [], items: [{ kind: "text", path: "table.ledger-matrix > tbody > tr > td", text: "965", rect: sliver, full: box(10, 26, 40, 46), clipper: { path: "aside.slot-panel", scroll: true, ellipsis: false },
+    slot: false, lines: [sliver], wholeLines: [], scrollCut: true, inControls: [], within: [] }] });
+  const cutResult = evaluateSurface({ ...cut, paint: paintFacts(cut, parchment, parchment, origin) }, { ...spec, requires: [] });
+  assert.deepEqual(cutResult.failures.filter(failure => failure.check === "content"), []);
+  const line = box(10, 10, 40, 22);
+  const whole = base({ requires: [], items: [{ kind: "text", path: "table.ledger-matrix > tbody > tr > td", text: "965", rect: line, full: line, clipper: { path: "aside.slot-panel", scroll: true, ellipsis: false },
+    slot: false, lines: [line], wholeLines: [line], scrollCut: false, inControls: [], within: [] }] });
+  const wholeResult = evaluateSurface({ ...whole, paint: paintFacts(whole, parchment, parchment, origin) }, { ...spec, requires: [] });
+  assert.deepEqual(wholeResult.failures.filter(failure => failure.check === "content").map(failure => failure.what), ["text not painted (covered by another layer)"]);
+});
+
+test("content: a control half scrolled out is not judged; one wholly in view that the frame covers fails", () => {
+  const control = (scrollCut: boolean) => base({ requires: [], items: [{ kind: "control", path: "ol.legacy-book-contents > li > button", text: "Factions", rect: box(10, 20, 50, 30), full: box(10, 20, 50, scrollCut ? 44 : 30),
+    clipper: { path: "div.legacy-book-page", scroll: true, ellipsis: false }, slot: false, scrollCut, inControls: [], within: [], control: { kit: true, art: true, variant: "quiet" } }] });
+  const content = (collected: Collected) => evaluateSurface({ ...collected, paint: paintFacts(collected, parchment, parchment, origin) }, { ...spec, requires: [] })
+    .failures.filter(failure => failure.check === "content").map(failure => failure.what);
+  assert.deepEqual(content(control(true)), []);
+  assert.deepEqual(content(control(false)), ["control not painted (covered by another layer)"]);
+});
