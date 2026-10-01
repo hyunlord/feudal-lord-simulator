@@ -111,7 +111,7 @@ export interface Suit {
   readonly verdict?: "plaintiff" | "defendant";
   /** Enforcement attempts after a judgment for the plaintiff, and how the last went. */
   readonly enforcements: number;
-  /** The possessor's hold left against enforcement (half its estate's on the judgment, worn by each attempt). */
+  /** The possessor's hold left against enforcement (three quarters of its estate's on the judgment, worn by each attempt). */
   readonly hold?: number;
   readonly enforced?: boolean;
   /** Pennies the plaintiff has spent on it. */

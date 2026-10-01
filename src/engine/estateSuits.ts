@@ -8,7 +8,7 @@
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import {
   DEFENCE_POSSESSION_PERMILLE, DEFENCE_TITLE_PERMILLE, ENFORCEMENT_BASE, ENFORCEMENT_WEAR, EVIDENCE_COST, EVIDENCE_WEIGHT,
-  PATRON_MIN_RELATION, PATRON_SUPPORT_MAX, SUIT_STAGE_COST,
+  JUDGMENT_HOLD_PERMILLE, PATRON_MIN_RELATION, PATRON_SUPPORT_MAX, SUIT_STAGE_COST,
 } from "../content/estateConfig";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { GameState } from "./engine.types";
@@ -135,7 +135,7 @@ function judge(state: GameState, suit: Suit): GameState {
   }
   const holding = won && possessorOf(found) !== suit.plaintiff;
   return withSuit(next, { ...suit, verdict: won ? "plaintiff" : "defendant", stage: holding ? "enforcing" : "closed", stageSince: state.tick,
-    ...(holding ? { hold: Math.floor(found.estate.possessionStrength / 2) } : {}) });
+    ...(holding ? { hold: Math.floor(found.estate.possessionStrength * JUDGMENT_HOLD_PERMILLE / 1000) } : {}) });
 }
 
 /** ES-7: one attempt to put the judgment's loser out — the plaintiff's force against the possessor's hold. */

@@ -86,6 +86,8 @@ export const PATRON_MIN_RELATION = 10;
 /** ES-7: the defendant's side in the hearing: a share of its title's strength and of its hold on the ground. */
 export const DEFENCE_TITLE_PERMILLE = 600;
 export const DEFENCE_POSSESSION_PERMILLE = 200;
+/** ES-7: the judgment's loser still holds this share (‰) of its estate's possession strength on the ground. */
+export const JUDGMENT_HOLD_PERMILLE = 750;
 /** ES-7: enforcing a judgment: the plaintiff's force (patron support + this) against the possessor's hold. */
 export const ENFORCEMENT_BASE = 40;
 /** ES-7: each failed enforcement weakens the hold this much (the possessor's men tire, the sheriff comes again). */

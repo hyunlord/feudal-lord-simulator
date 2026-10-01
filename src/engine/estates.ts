@@ -278,7 +278,10 @@ export function estatePortfolio(state: GameState): readonly EstateView[] {
   return estates.estates.map(estate => {
     const pieces = estate.pieces.map(piece => ({ ...piece, yearValue: estate.offMap ? piece.annualValue : year(piece.kind) ?? piece.annualValue,
       claims: estates.claims.filter(claim => claim.pieceId === piece.id && (claim.status === "open" || claim.status === "suing")) }));
-    return { ...estate, pieces, annualValue: estate.offMap ? estate.annualValue : pieces.reduce((sum, piece) => sum + piece.yearValue, 0),
+    // A faction's estate is led by the faction's leader now (the stored id is the one it had when stored).
+    const leader = estate.house === undefined ? undefined : state.factions?.factions.find(faction => faction.id === estate.titleHolder)?.leaderId;
+    const house = estate.house === undefined || leader == null ? estate.house : { ...estate.house, lordId: leader, familyIds: [leader] };
+    return { ...estate, ...(house === undefined ? {} : { house }), pieces, annualValue: estate.offMap ? estate.annualValue : pieces.reduce((sum, piece) => sum + piece.yearValue, 0),
       claims: estates.claims.filter(claim => claim.estateId === estate.id && claim.pieceId === undefined && (claim.status === "open" || claim.status === "suing")) };
   });
 }
