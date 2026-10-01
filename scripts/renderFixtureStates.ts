@@ -1,6 +1,9 @@
 // Prints the benchmark cities as JSON, migrated to the current save schema through the save codec, so render
 // scripts never inject an old-shape GameState. new game = DEFAULT_GAME_STATE (null: the page's own default).
-// Usage: npx tsx scripts/renderFixtureStates.ts > states.json
+// Usage: npx tsx scripts/renderFixtureStates.ts [--cities fen_works,coastal_port,...] > states.json
+// LAND-UI: the land cities (a grown town per new land, scripts/landStates.ts: seed 1, the bot from a new game for 30,000
+// ticks and on to mid-summer; fen_works = the fen town with its three drainage works) take the bot's run each, so they are
+// built only when --cities names them; `landTiles` gives each one's camera tile (its town centre, the works' centre).
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -9,6 +12,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { decodeSave } from "../src/save/saveCodec";
 import { fixedSceneState, seedGroundState } from "./boundaryFixtureStates";
 import { c25ZonedState } from "./c25Board";
+import { fenWorks, grownLand, townCentre } from "./landStates";
 import { variantGallery } from "./variantGalleryState";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
@@ -48,6 +52,24 @@ export function benchmarkCities(): { readonly newgame: null; readonly pop176: Ga
   };
 }
 
+/** LAND-UI land cities by name, the four new lands and the fen works (the riverside is newgame, pop176, lots24). */
+export const LAND_CITIES = { coastal_port: "core:coastal_port", chalk_downs: "core:chalk_downs", forest_edge: "core:forest_edge", fen_drainage: "core:fen_drainage",
+  fen_works: "core:fen_drainage" } as const;
+export function landBenchmarkCities(names: readonly string[], ticks = 30_000): { cities: Record<string, GameState>; landTiles: Record<string, [number, number]> } {
+  const cities: Record<string, GameState> = {}; const landTiles: Record<string, [number, number]> = {};
+  for (const name of names) {
+    if (!(name in LAND_CITIES)) continue;
+    const { summer } = grownLand(LAND_CITIES[name as keyof typeof LAND_CITIES], ticks);
+    const city = name === "fen_works" ? fenWorks(summer) : null;
+    cities[name] = city?.state ?? summer;
+    const tile = city?.focus ?? townCentre(summer);
+    landTiles[name] = [tile.tx, tile.ty];
+  }
+  return { cities, landTiles };
+}
+
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  process.stdout.write(JSON.stringify({ ...benchmarkCities(), galleryEntries: variantGallery().entries }));
+  const at = process.argv.indexOf("--cities");
+  const lands = landBenchmarkCities(at > 0 ? (process.argv[at + 1] ?? "").split(",").filter(Boolean) : []);
+  process.stdout.write(JSON.stringify({ ...benchmarkCities(), ...lands.cities, landTiles: lands.landTiles, galleryEntries: variantGallery().entries }));
 }

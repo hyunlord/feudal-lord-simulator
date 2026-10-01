@@ -25,11 +25,12 @@ export async function loadChromium(path = flags.playwright ?? process.env.PLAYWR
   return (await import(path.startsWith('/') ? pathToFileURL(path).href : path)).chromium;
 }
 
-/** Benchmark cities migrated to the current save schema (scripts/renderFixtureStates.ts via tsx). */
-export async function sceneStates() {
+/** Benchmark cities migrated to the current save schema (scripts/renderFixtureStates.ts via tsx); `cities` adds the land cities it names. */
+export async function sceneStates(cities = []) {
   const { execFileSync } = await import('node:child_process');
   const tsx = resolve(ROOT, 'node_modules/.bin/tsx');
-  return JSON.parse(execFileSync(tsx, [resolve(ROOT, 'scripts/renderFixtureStates.ts')], { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 2 ** 20 }));
+  return JSON.parse(execFileSync(tsx, [resolve(ROOT, 'scripts/renderFixtureStates.ts'), ...(cities.length > 0 ? ['--cities', cities.join(',')] : [])],
+    { cwd: ROOT, encoding: 'utf8', maxBuffer: 256 * 2 ** 20 }));
 }
 const SCENES = {
   'pop176-village': { city: 'pop176', tile: [46, 39] },
