@@ -8,7 +8,7 @@ import type { LordRightId } from "../content/lordshipConfig";
 /** FL-4: who holds a lost right — the overlord in custody (breach-based suspension) or the merchant elite (seizure). */
 export type LordRightHolder = "overlord" | "merchants";
 
-/** FL-1: a right the lord has lost. */
+/** FL-1: a right the lord has lost — LM-E2 (ES-3): read from the home estate's piece, its possession another's. */
 export interface LostRight {
   readonly id: LordRightId;
   readonly status: "suspended" | "seized";
@@ -44,7 +44,7 @@ export interface DeclineState {
 export interface LordshipState {
   readonly house: LordHouse;
   readonly pastHouses: readonly LordHouse[];
-  readonly lostRights: readonly LostRight[];
+  /** LM-E2 (ES-3): the lost rights moved to the estates (`lordRightsLost`): the title stays the lord's, the possession goes. */
   readonly titleDemoted: boolean;
   /** FL-6: after a haggled restoration the title returns at this tick. */
   readonly titleReturnsTick?: number;

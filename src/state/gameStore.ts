@@ -23,6 +23,13 @@ import { demolishHouse } from "../engine/houseDemolition";
 import { rebuildBurntHouse } from "../engine/fire";
 import { famineResponse, respondToPetition } from "../engine/politics";
 import { recordDecision } from "../engine/history";
+import { estatesOf, LORD } from "../engine/estates";
+import { addSuitEvidence, enforcePossession, fileSuit, seekSuitPatron } from "../engine/estateSuits";
+
+/** LM-E2 (ES-7): the suit is the lord's (the player commands only the lord's suits). */
+function lordSuit(state: GameState, suitId: string): boolean {
+  return estatesOf(state).suits.some(suit => suit.id === suitId && suit.plaintiff === LORD);
+}
 import { cancelConstruction } from "../engine/constructionCancellation";
 import { confirmStoneTownProclamation } from "../engine/era";
 import { placeBuilding, placeRoadLine, removeRoad } from "../engine/gameActions";
@@ -133,6 +140,11 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
     case "set_estate_policy": return setEstatePolicy(state, action.policy);
     case "set_project_subsidy": return setProjectSubsidy(state, action.kind, action.amount);
     case "set_market_dues": return setMarketDues(state, action.permille);
+    // LM-E2 (ES-7): the lord's own claims only (a neighbour's suit against the lord is filed by the engine).
+    case "file_suit": return estatesOf(state).claims.find(claim => claim.id === action.claimId)?.claimant === LORD ? fileSuit(state, action.claimId) : state;
+    case "add_suit_evidence": return lordSuit(state, action.suitId) ? addSuitEvidence(state, action.suitId, action.evidence) : state;
+    case "seek_suit_patron": return lordSuit(state, action.suitId) ? seekSuitPatron(state, action.suitId, action.factionId) : state;
+    case "enforce_possession": return lordSuit(state, action.suitId) ? enforcePossession(state, action.suitId) : state;
     case "place_building": {
       // LM-E1 (TA-1): in lord mode the town builds; the lord places only public works.
       if (lordMode(state) && !LORD_PUBLIC_WORKS.includes(action.kind)) return state;

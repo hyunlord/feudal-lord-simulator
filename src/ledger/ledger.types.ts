@@ -36,6 +36,8 @@ export const LEDGER_CATEGORIES = [
   "timber_purchase",
   // LM-E1 (TA-6): the lord's subsidy paid to the actor that starts a subsidised project.
   "project_subsidy",
+  // LM-E2 (ES-7): a suit's costs — filing, evidence, the hearing, enforcing the judgment.
+  "lawsuit",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

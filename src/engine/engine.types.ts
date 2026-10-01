@@ -177,6 +177,9 @@ export interface GameState {
   readonly politics?: import("./politics.types").PoliticsState;
   /** FAIL-3 (save v19, FL-*): the lord's house, lost rights, title demotion and decline. Absent = the first house, all held. */
   readonly lordship?: import("./lordship.types").LordshipState;
+  /** LM-E2 (ES-1…ES-10, save v38): the estates and their rights' title holders and possessors, claims and suits — absent
+   * while nothing differs from the opening portfolio (ES-9). */
+  readonly estates?: import("./estates.types").EstatesState;
   /** C4 AL-10 (FIX-7, save v25): the town's ale counted this season and the last. Absent until the first brew or drink. */
   readonly ale?: import("./ale.types").AleState;
   /** F3-A the Black Death of 1348 (save v26, spec PL-1…PL-11). Absent until the collapse era. */

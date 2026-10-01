@@ -20,6 +20,11 @@ type GameCommand =
   | { readonly type: "set_estate_policy"; readonly policy: import("../engine/townAgency.types").EstatePolicy }
   | { readonly type: "set_project_subsidy"; readonly kind: import("../content/buildingConfig").BuildingKind; readonly amount: number }
   | { readonly type: "set_market_dues"; readonly permille: number }
+  // LM-E2 (ES-7): the lord's suits — file a claim, bring evidence, win a patron, enforce a judgment's possession.
+  | { readonly type: "file_suit"; readonly claimId: string }
+  | { readonly type: "add_suit_evidence"; readonly suitId: string; readonly evidence: import("../engine/estates.types").Evidence["kind"] }
+  | { readonly type: "seek_suit_patron"; readonly suitId: string; readonly factionId: string }
+  | { readonly type: "enforce_possession"; readonly suitId: string }
   /** ARCH-1b (MA-11): drain the fen's still water around a tile (`drainagePlan` says what it takes). */
   | { readonly type: "drain_fen"; readonly tx: number; readonly ty: number }
   | { readonly type: "order_timber"; readonly amount: number }

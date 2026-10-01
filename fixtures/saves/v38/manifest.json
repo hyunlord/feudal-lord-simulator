@@ -1,12 +1,12 @@
 {
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "fixtures": [
     {
       "id": "new-game",
       "description": "DEFAULT_GAME_STATE before the first tick",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/new-game.save.json",
-      "sourceSha256": "0f8d5cf6c9bf200659b8ff0afd1ae034a7f023ce700c35e1d59ba1501f8a9ce3",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/new-game.save.json",
+      "sourceSha256": "add5810c5b221ed231af4c3c8a7cf5d0454c33cdeb622e7ea7cf48b2d9729909",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "new-game.save.json",
       "bytes": 296096,
@@ -17,14 +17,14 @@
       "houses": 4,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 1.19
+      "saveSerializeMs": 1.31
     },
     {
       "id": "population-176",
       "description": "autoplay growth from the default opening, first tick with population >= 176",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/population-176.save.json",
-      "sourceSha256": "29d170284202e4f4fbdc72acca8b25b9e24593e8093d68925dce212af76c82fa",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/population-176.save.json",
+      "sourceSha256": "1197768327e6367878f683721117c525d8e100228f881d71e8ff52c7abf7a3e1",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "population-176.save.json",
       "bytes": 921712,
@@ -35,14 +35,14 @@
       "houses": 15,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 2.64
+      "saveSerializeMs": 2.74
     },
     {
       "id": "palisade-construction",
       "description": "autoplay growth, palisade proclaimed and segments still under construction",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/palisade-construction.save.json",
-      "sourceSha256": "b0047e47bfd145b4417ea7e783a39197997515b2eb671ce311146831a41234ef",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/palisade-construction.save.json",
+      "sourceSha256": "555bc7a07dbe98636e8fbe005b03b6694d1b6e632b7335e68affc08b4ce5f7f6",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "palisade-construction.save.json",
       "bytes": 1159178,
@@ -53,13 +53,13 @@
       "houses": 24,
       "palisadeSegments": 33,
       "completedPalisadeSegments": 1,
-      "saveSerializeMs": 3.2
+      "saveSerializeMs": 3.41
     },
     {
       "id": "timber-shortage",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/timber-shortage.save.json",
-      "sourceSha256": "e223a247df447492c5362c73252b454ce241ca521c452bdf05cbb836adb347bd",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/timber-shortage.save.json",
+      "sourceSha256": "645f551a2e790b5531d5c30d20d462cf6532a4222aeb0e7c3b1fa9f5e4cd60ab",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "timber-shortage.save.json",
       "bytes": 1165582,
@@ -70,14 +70,14 @@
       "houses": 24,
       "palisadeSegments": 33,
       "completedPalisadeSegments": 2,
-      "saveSerializeMs": 3.18
+      "saveSerializeMs": 3.21
     },
     {
       "id": "zoned-opening",
       "description": "DEFAULT_GAME_STATE plus a road, a burgage brush, an arable block and the first ZoneFillAgent batch (actions only, no ticks)",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/zoned-opening.save.json",
-      "sourceSha256": "21cf35709ee4ce27118b7f118add1db52a8d4525b5f6c127871ce4cbebd08f3f",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/zoned-opening.save.json",
+      "sourceSha256": "ecfadd83801b49984c554d6dc25e72f0fadc27843acddfc90752b16d0514be80",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "zoned-opening.save.json",
       "bytes": 298166,
@@ -88,14 +88,14 @@
       "houses": 4,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 0.85
+      "saveSerializeMs": 0.93
     },
     {
       "id": "ledger-rollup",
       "description": "DEFAULT_GAME_STATE with market-sale ledger entries over 9 periods, the oldest rolled up",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/ledger-rollup.save.json",
-      "sourceSha256": "94159b14405444f3eac1ddb10cceed35f3deee469285cfcb50094308c6511ccc",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/ledger-rollup.save.json",
+      "sourceSha256": "e993412cb2047266a4742da41ab2d1a90332847b29ad513f11d07cc2d457d3bb",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "ledger-rollup.save.json",
       "bytes": 298240,
@@ -106,14 +106,14 @@
       "houses": 4,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 0.94
+      "saveSerializeMs": 0.91
     },
     {
       "id": "money-arrears",
       "description": "DEFAULT_GAME_STATE after one period close with no rent: well and storehouse upkeep in arrears, pending toll and mill counts",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/money-arrears.save.json",
-      "sourceSha256": "c858c02570f71ddcadbb7224bea27ae4c96282a7ae782bd1bd9f1cf6a27ba827",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/money-arrears.save.json",
+      "sourceSha256": "fb36f8bdeeb414f08ea135f1b2f23599edc57fe9730a7fb478fe6b9e067e03cd",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "money-arrears.save.json",
       "bytes": 296797,
@@ -124,14 +124,14 @@
       "houses": 4,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 0.9
+      "saveSerializeMs": 0.94
     },
     {
       "id": "zone-undo",
       "description": "zoned opening plus a merged burgage stroke and a pasture stroke: an undo stack of paint records",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/zone-undo.save.json",
-      "sourceSha256": "ea0208037fb63e6d8efee05bf588549ce4b0cc69c926525d97586c091b09ba6a",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/zone-undo.save.json",
+      "sourceSha256": "0c9d36c6b34e5b878cf3749b34840ec545a47ce9a23e03c78db9479c8a69ce4c",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "zone-undo.save.json",
       "bytes": 299037,
@@ -142,14 +142,14 @@
       "houses": 4,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 0.91
+      "saveSerializeMs": 0.9
     },
     {
       "id": "four-farms",
       "description": "autoplay seed 2 at trunk d823005 (the last wheat-farm rules), first tick with exactly four finished wheat farms and no farm site",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/four-farms.save.json",
-      "sourceSha256": "98568264acaa3b8f43bd458d9cc4a7a07c9a688cf787b937899e7335d64713a3",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/four-farms.save.json",
+      "sourceSha256": "ad7dd405a0f056764726d3acdc503163d0ebe71fe14290c379e0fc34d743c3d9",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "four-farms.save.json",
       "bytes": 880150,
@@ -160,14 +160,14 @@
       "houses": 9,
       "palisadeSegments": 0,
       "completedPalisadeSegments": 0,
-      "saveSerializeMs": 2.46
+      "saveSerializeMs": 2.38
     },
     {
       "id": "chapter-four-town",
       "description": "a town that came through chapters 1-3: the F3-A guardrail's seed 1 at its end (1368, chapter 4, 24 L4 lots); its path cache emptied (a cache, rebuilt as routes are asked)",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/chapter-four-town.save.json",
-      "sourceSha256": "8b2dce7e84fdbfab29d03bc82e788cea094a7feac8447f192737c16fb60d6a63",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/chapter-four-town.save.json",
+      "sourceSha256": "764070e0620488e57297919eaf7d54500a5c548aa1a91429994b799892c00f1b",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "chapter-four-town.save.json",
       "bytes": 3352220,
@@ -178,14 +178,14 @@
       "houses": 24,
       "palisadeSegments": 20,
       "completedPalisadeSegments": 20,
-      "saveSerializeMs": 9.89
+      "saveSerializeMs": 9.49
     },
     {
       "id": "chapter-five-town",
       "description": "a town that came through chapters 1-4: the guardrail's growth run of seed 1 (the bot and its answers) at chapter 5's first tick; its path cache emptied",
-      "migratedFrom": 36,
-      "sourceFile": "fixtures/saves/v36/chapter-five-town.save.json",
-      "sourceSha256": "bd6f0afa702af0fe753ae9cb8be600b2131796528f5564a2ba019c030bd81a74",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/chapter-five-town.save.json",
+      "sourceSha256": "38dff527d356b4c0f02f0a332cfa39053cc2fbc34047f7df03099b9a0ec2a380",
       "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "chapter-five-town.save.json",
       "bytes": 3854043,
@@ -196,33 +196,43 @@
       "houses": 24,
       "palisadeSegments": 20,
       "completedPalisadeSegments": 20,
-      "saveSerializeMs": 11.87
+      "saveSerializeMs": 11.5
     },
     {
       "id": "chapter-two-town",
       "description": "a town at chapter 2's first tick: the guardrail's growth run of seed 1 (the bot and its answers); its path cache emptied",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/chapter-two-town.save.json",
+      "sourceSha256": "0fd6c15bdc7b5557ac2b0644892e1bbdbde05fdb2102ea74bc56eeeea4cac0c2",
+      "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "chapter-two-town.save.json",
-      "bytes": 1858577,
-      "sha256": "0fd6c15bdc7b5557ac2b0644892e1bbdbde05fdb2102ea74bc56eeeea4cac0c2",
+      "bytes": 1858561,
       "tick": 77500,
-      "year": 1319,
       "population": 528,
       "era": "palisade",
       "buildings": 56,
-      "houses": 24
+      "houses": 24,
+      "palisadeSegments": 23,
+      "completedPalisadeSegments": 3,
+      "saveSerializeMs": 5.47
     },
     {
       "id": "chapter-three-town",
       "description": "a town at chapter 3's first tick: the guardrail's growth run of seed 1 (the bot and its answers); its path cache emptied",
+      "migratedFrom": 37,
+      "sourceFile": "fixtures/saves/v37/chapter-three-town.save.json",
+      "sourceSha256": "e259a5fc753727e4925329f9e2951cf41511b18b78b9b646ea48fbfd2331e0f5",
+      "provenance": "Original natural-growth state preserved; re-encoded with the current save schema. Not a new growth run.",
       "file": "chapter-three-town.save.json",
-      "bytes": 2365085,
-      "sha256": "e259a5fc753727e4925329f9e2951cf41511b18b78b9b646ea48fbfd2331e0f5",
+      "bytes": 2365069,
       "tick": 160000,
-      "year": 1340,
       "population": 753,
       "era": "palisade",
       "buildings": 72,
-      "houses": 24
+      "houses": 24,
+      "palisadeSegments": 23,
+      "completedPalisadeSegments": 23,
+      "saveSerializeMs": 6.97
     }
   ],
   "v0Fixtures": [

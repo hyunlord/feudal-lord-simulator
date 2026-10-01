@@ -141,7 +141,7 @@ test("H6 (LN-5, LN-9) lineages: the lord's family in the manor (L3), a merchant 
   assert.ok(generations[1]!.every(child => child.fatherId === lord.id));
   // A new house (FL-7): the old family leaves, the new house's forms and takes L1.
   const house2 = advancePersons({ ...state, tick: 3 * SEASON, lordship: { house: { order: 2, name: "de Querney", heraldrySeed: 2, since: 3 * SEASON },
-    pastHouses: [], lostRights: [], titleDemoted: false, decline: null } });
+    pastHouses: [], titleDemoted: false, decline: null } });
   assert.ok(house2.persons!.people.filter(entry => entry.tags.includes(LORD_FAMILY_TAG)).every(entry => entry.tags.includes("lord-house:2")));
   assert.equal(house2.persons!.lineages!.find(lineage => lineage.id === "lord:2")!.set, "L1");
 });
