@@ -1,17 +1,19 @@
 {
  "schema": 1,
- "run": "render-QA034b-geom-4d1d089",
- "commit": "4d1d089d4488a9e47e3ed68a354bc6e841faa749",
+ "run": "render-UIAUDITR15-final-7ec9052",
+ "commit": "7ec90521bdbf6219f02390033d580ababf306dfe",
  "dirty": false,
  "inputs": 1660,
- "inputHash": "df656de9fcf17c36ce86513f7745cc5e3b41303c3ee5ce5338820a20a0a36c96",
- "measuredAt": "2026-10-01T07:55:15.345Z",
- "report": "docs/verification/uiaudit1/geometry/render-QA034b-geom-4d1d089/geometry.json",
+ "inputHash": "eca78d586eefaf8d133cd79c43e2101819fe7c7de437e565d51a09106fe05c47",
+ "measuredAt": "2026-10-01T10:07:41.147Z",
+ "report": "docs/verification/uiaudit1/geometry/render-UIAUDITR15-final-7ec9052/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
    "1920x1080",
-   "tablet-1180x820"
+   "tablet-1180x820",
+   "1024x768",
+   "1280x720"
   ],
   "copies": [
    "normal",
@@ -22,34 +24,37 @@
    "extreme"
   ]
  },
- "rows": 93,
- "conditions": 996,
- "measured": 994,
- "failures": 12,
- "unopened": 2,
+ "rows": 101,
+ "conditions": 1812,
+ "measured": 1812,
+ "failures": 30,
+ "unopened": 0,
  "unreachable": [
   "hud.goal-help",
   "hud.unlock-banner",
   "hud.era-ceremony",
   "hud.build-details"
  ],
- "warnings": 345,
+ "warnings": 623,
  "byCheck": {
   "outside": 0,
-  "overflow": 12,
+  "overflow": 20,
   "border": 0,
   "portrait": 0,
   "overlap": 0,
   "empty": 0,
-  "controls": 0
+  "controls": 0,
+  "content": 0,
+  "hud": 0,
+  "ornament": 10
  },
  "unregisteredFramed": 0,
  "baseline": {
   "entries": 0,
-  "counted": 0,
-  "excepted": 12,
+  "counted": 10,
+  "excepted": 20,
   "exceptions": 1,
-  "added": 0,
+  "added": 10,
   "fixed": 0
  },
  "bySurface": {
@@ -299,9 +304,11 @@
    "byCheck": {}
   },
   "modal.season-ledger": {
-   "failures": 0,
+   "failures": 10,
    "unopened": 0,
-   "byCheck": {}
+   "byCheck": {
+    "ornament": 10
+   }
   },
   "modal.famine": {
    "failures": 0,
@@ -329,6 +336,36 @@
    "byCheck": {}
   },
   "modal.petition.heir": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch3-plague": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch4-guild": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch5-royal-tax": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch5-legacy-choice": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.interlude-guild": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.interlude-church": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
@@ -370,7 +407,7 @@
   },
   "modal.chapter-loading": {
    "failures": 0,
-   "unopened": 2,
+   "unopened": 0,
    "byCheck": {}
   },
   "modal.person-card": {
@@ -413,6 +450,16 @@
    "unopened": 0,
    "byCheck": {}
   },
+  "modal.person-card.king": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.biography.king": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
   "modal.history.family-tree": {
    "failures": 0,
    "unopened": 0,
@@ -434,10 +481,10 @@
    "byCheck": {}
   },
   "modal.history.factions": {
-   "failures": 12,
+   "failures": 20,
    "unopened": 0,
    "byCheck": {
-    "overflow": 12
+    "overflow": 20
    }
   },
   "modal.history.faction-page": {
@@ -502,6 +549,14 @@
   }
  },
  "failureKeys": [
+  "modal.history.factions|1024x768/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1024x768/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1024x768/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1024x768/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1280x720/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1280x720/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1280x720/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1280x720/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|1280x800/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|1280x800/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|1280x800/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
@@ -513,6 +568,16 @@
   "modal.history.factions|tablet-1180x820/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|tablet-1180x820/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|tablet-1180x820/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|tablet-1180x820/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip"
+  "modal.history.factions|tablet-1180x820/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.season-ledger|1024x768/long/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
+  "modal.season-ledger|1024x768/normal/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
+  "modal.season-ledger|1280x720/long/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
+  "modal.season-ledger|1280x720/normal/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
+  "modal.season-ledger|1280x800/long/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
+  "modal.season-ledger|1280x800/normal/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
+  "modal.season-ledger|1920x1080/long/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
+  "modal.season-ledger|1920x1080/normal/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
+  "modal.season-ledger|tablet-1180x820/long/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong",
+  "modal.season-ledger|tablet-1180x820/normal/extreme|ornament|section.season-ledger-card > ol.season-ledger-scenes > li.season-ledger-scene > strong"
  ]
 }
