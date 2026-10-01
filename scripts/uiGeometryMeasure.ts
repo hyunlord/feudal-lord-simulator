@@ -420,7 +420,8 @@ export function revealSurface(selector: string): boolean {
 /** Chrome's text rects use whole-pixel ascent and descent, so a line box centred on the glyph box can sit up to 1 px from
  * where layout put it (R15: the welcome's 18.4 px title — a 26 px content area, ascent 21 / descent 5 — came out 0.7 px
  * above its own block, which starts on the inner box). A line past its block's content box by less than 1 px, top or
- * bottom, is moved back by that much; a line further out (a block overflowing its height) is left as measured. */
+ * bottom, is moved back by that much; a line further out (a block overflowing its height) is left as measured, and so
+ * is a text a clipper cuts (evaluateSurface: its cut edge is the clipper's). */
 export function snapLine(line: Box, block: Box | undefined): Box {
   if (block === undefined) return line;
   const above = block.t - line.t; const below = line.b - block.b;
@@ -470,8 +471,10 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
   const fail = (check: CheckName, what: string, path: string, px: number, rect: Box | null, text?: string) =>
     failures.push(text === undefined ? { check, what, path, px: round(px), rect } : { check, what, path, px: round(px), rect, text });
   // Text line boxes back on their block where the whole-pixel glyph box put them a fraction off it (snapLine).
+  // Only a text no clipper cuts: a cut line's edge is the clipper's, not the glyph box's estimate.
+  const uncut = (item: Item) => item.rect !== null && Math.max(Math.abs(item.rect.l - item.full.l), Math.abs(item.rect.t - item.full.t), Math.abs(item.rect.r - item.full.r), Math.abs(item.rect.b - item.full.b)) < 0.01;
   const items = (collected.items ?? []).map(item => {
-    if (item.kind !== "text" || item.block === undefined) return item;
+    if (item.kind !== "text" || item.block === undefined || !uncut(item)) return item;
     const snap = (line: Box) => snapLine(line, item.block);
     const lines = (item.lines ?? []).map(snap);
     const span = (boxes: readonly Box[]) => boxes.length === 0 ? null : { l: Math.min(...boxes.map(line => line.l)), t: Math.min(...boxes.map(line => line.t)), r: Math.max(...boxes.map(line => line.r)), b: Math.max(...boxes.map(line => line.b)) };

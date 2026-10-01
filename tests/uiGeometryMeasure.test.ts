@@ -182,6 +182,10 @@ test("Given a title line centred on a whole-pixel glyph box 0.7 px above its blo
   assert.deepEqual(out.failures.map(failure => failure.check), ["outside"]);
   const overflowing = box(150, 140, 250, 159.4);
   assert.deepEqual(snapLine(overflowing, block), overflowing);
+  // A line a scroller cuts at its padding edge (124) keeps that edge: snapped down it would reach past the scroller.
+  const sliver = box(150, 174.6, 250, 176);
+  const cut = evaluateSurface(surface([text("span", sliver, { full: box(150, 174.6, 250, 189.6), block: box(140, 175.2, 260, 190), clipper: { path: "div.save-controls", scroll: true, ellipsis: false } })]), css);
+  assert.deepEqual(cut.failures, []);
 });
 
 test("Given a registry-listed sibling group When two members overlap Then overlap fails unless one holds the other", () => {
