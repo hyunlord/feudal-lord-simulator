@@ -8,6 +8,9 @@
 //   PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs node scripts/renderStageBenchmark.mjs \
 //     --output docs/verification/b11-render-metrics/baseline [--url http://127.0.0.1:4194/] [--matrix b11]
 //   Single cell: --city lots24|pop176|newgame --dpr 1|2 --camera still|drag [--cpu 4] [--width 1280 --height 800]
+//   LAND-UI land cities: --city coastal_port|chalk_downs|forest_edge|fen_drainage|fen_works (built from the code by the
+//   bot when named, scripts/renderFixtureStates.ts LAND_CITIES; the camera on the town centre or the works).
+//   --states <file>: the cities from a file renderFixtureStates.ts wrote (built once for many cells and builds).
 //   --stages 0 measures the same loop with the stage probe off (probe overhead).
 // Cities come from repository fixtures only (clean-clone rule), migrated to the current save schema by
 // scripts/renderFixtureStates.ts: new game = DEFAULT_GAME_STATE, pop176 = newest fixtures/saves/vN/population-176,
@@ -41,7 +44,7 @@ async function measureCell(chromium, states, cell, options) {
     for (let round = 0; round < options.rounds; round++) {
       // `story-delay`: UI-4 story modals stop time (the petition pop176 carries opens ~1.5 s in: 0 ticks, a false
       // 38 % p95). Holding the world-first delay past the window keeps time running, as before UI-4; older builds ignore it.
-      const { context, page } = await openScene(browser, { state: states[city], tile: TILES[city], baseUrl: options.url, width, height, dpr,
+      const { context, page } = await openScene(browser, { state: states[city], tile: TILES[city] ?? states.landTiles?.[city], baseUrl: options.url, width, height, dpr,
         query: (options.stages ? '' : '&render-stages=0') + '&story-delay=600000' + options.query });
       const errors = []; page.on('pageerror', error => errors.push(error.message));
       const cdp = await context.newCDPSession(page);
@@ -138,12 +141,13 @@ async function main() {
   const dirty = execFileSync('git', ['status', '--porcelain', '--untracked-files=no', '--', 'src'], { cwd: ROOT, encoding: 'utf8' }).trim();
   if (dirty !== '' && flags['allow-dirty'] !== 'true') throw new Error(`Dirty src/ in measured checkout:\n${dirty}`);
   const chromium = await loadChromium();
-  const states = await sceneStates();
+  const cells = flags.matrix === 'b11' ? B11_MATRIX
+    : [{ city: flags.city ?? 'lots24', dpr: Number(flags.dpr ?? 1), camera: flags.camera ?? 'still', cpu: Number(flags.cpu ?? 1), width: Number(flags.width ?? 1280), height: Number(flags.height ?? 800) }];
+  const states = flags.states !== undefined ? JSON.parse(await readFile(flags.states, 'utf8')) : await sceneStates(cells.map(cell => cell.city).filter(city => !(city in TILES)));
+  for (const cell of cells) if (states[cell.city] === undefined) throw new Error(`No benchmark city ${cell.city}`);
   // --query appends to the page URL (e.g. `&render-boundary-v2=1`); --label suffixes the output file names.
   const options = { url: flags.url ?? 'http://127.0.0.1:4194/', rounds: Number(flags.rounds ?? 3), stages: flags.stages !== '0', trace: flags.trace !== 'false',
     query: flags.query ?? '', label: flags.label === undefined ? '' : `-${flags.label}` };
-  const cells = flags.matrix === 'b11' ? B11_MATRIX
-    : [{ city: flags.city ?? 'lots24', dpr: Number(flags.dpr ?? 1), camera: flags.camera ?? 'still', cpu: Number(flags.cpu ?? 1), width: Number(flags.width ?? 1280), height: Number(flags.height ?? 800) }];
   const browserVersion = await (async () => { const browser = await chromium.launch({ channel: 'chrome', headless: true }); const version = browser.version(); await browser.close(); return version; })();
   const results = [];
   for (const cell of cells) {

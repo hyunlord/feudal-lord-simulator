@@ -40,6 +40,10 @@ export const SCENES = [
   // The far view (NAT-2: the block map drawn with reduced real art): the same town zoomed out with the wheel.
   { id: "far-zoom-50-x5", label: "먼 줌 0.5(가장 큰 도시 5배속)", save: SAVE, speed: 5, action: "none", zoom: 0.5 },
   { id: "far-zoom-40-x5", label: "먼 줌 0.4(가장 큰 도시 5배속)", save: SAVE, speed: 5, action: "none", zoom: 0.4 },
+  // LAND-UI (opt-in: only with --only, not in the stage-1 set): the fen town of scripts/landStates.ts with its three
+  // drainage works (a drained patch, stage 1, stage 3 with diggers) at 3x — the fen's ground, reeds and meres, and the
+  // works digging on (the 80 % one finishes in the run and its cells turn to meadow).
+  { id: "land-fen-works-x3", label: "소택지 배수 공사 3배속", save: "fixtures/perf-gate/fen_drainage-works.save.json.gz", speed: 3, action: "none", optIn: true },
 ] as const;
 type Scene = (typeof SCENES)[number];
 
@@ -116,7 +120,7 @@ async function main() {
   const chrome = run("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", ["--version"]).stdout?.trim() ?? "";
   const model = run("sysctl", ["-n", "hw.model"]).stdout?.trim() ?? "";
   const started = new Date(); const load: number[] = [loadavg()[0] ?? 0];
-  const scenes = SCENES.filter(scene => only.length === 0 || only.includes(scene.id));
+  const scenes = SCENES.filter(scene => only.length === 0 ? !("optIn" in scene) : only.includes(scene.id));
   const work = mkdtempSync(join(tmpdir(), "fls-perf-gate-")); const build = join(work, "build");
   let preview: ReturnType<typeof spawn> | null = null;
   const results: { scene: Scene; summary: Summary | null; loadMax: number; skipped?: string; failed: string[]; invalid: string[]; conditions?: string[] }[] = [];

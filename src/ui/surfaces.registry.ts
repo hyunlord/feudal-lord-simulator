@@ -14,8 +14,8 @@
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
 export type FrameKind = "css" | "layer" | "painting" | "flat";
-/** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts). */
-export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra";
+/** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states). */
+export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820";
 
 export type SceneRef =
