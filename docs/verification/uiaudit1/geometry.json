@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-UIAUDITR15-final3-543a9f4",
- "commit": "543a9f4748a148b270f21267a289d34be2afa231",
+ "run": "render-LANDUI-geom2-10678bb",
+ "commit": "10678bb94b85be2bbec9e705e9d1eb0a007f34af",
  "dirty": false,
- "inputs": 1660,
- "inputHash": "872bce27d591b2e0a87d59b9f0d938cdad3d6ec4fff7735dd497e0d75f69bbec",
- "measuredAt": "2026-10-01T12:04:32.037Z",
- "report": "docs/verification/uiaudit1/geometry/render-UIAUDITR15-final3-543a9f4/geometry.json",
+ "inputs": 1773,
+ "inputHash": "ff1dd76c732b0ffb86641c84c7d9e3dc0f41584fd2254c97cda57556a335505e",
+ "measuredAt": "2026-10-01T15:09:32.430Z",
+ "report": "docs/verification/uiaudit1/geometry/render-LANDUI-geom2-10678bb/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,18 +24,18 @@
    "extreme"
   ]
  },
- "rows": 101,
- "conditions": 1812,
- "measured": 1812,
+ "rows": 103,
+ "conditions": 1852,
+ "measured": 1851,
  "failures": 20,
- "unopened": 0,
+ "unopened": 1,
  "unreachable": [
   "hud.goal-help",
   "hud.unlock-banner",
   "hud.era-ceremony",
   "hud.build-details"
  ],
- "warnings": 623,
+ "warnings": 633,
  "byCheck": {
   "outside": 0,
   "overflow": 20,
@@ -130,7 +130,7 @@
   },
   "hud.completion-toast": {
    "failures": 0,
-   "unopened": 0,
+   "unopened": 1,
    "byCheck": {}
   },
   "hud.cause-legend": {
@@ -164,6 +164,16 @@
    "byCheck": {}
   },
   "hud.build-drawer": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.build-drawer.fen": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.prediction-chip.drain": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}

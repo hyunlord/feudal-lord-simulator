@@ -1,0 +1,266 @@
+{
+ "gate": "perf:gate stage 1",
+ "verdict": "실패",
+ "commit": "10678bb94b85be2bbec9e705e9d1eb0a007f34af",
+ "dirty": false,
+ "started": "2026-10-01T15:10:15.842Z",
+ "finished": "2026-10-01T15:16:36.269Z",
+ "machine": {
+  "platform": "darwin",
+  "model": "Mac16,5",
+  "cpus": 14,
+  "chrome": "Google Chrome 154.0.8037.58",
+  "loadAverage1m": [
+   4.8,
+   4.4
+  ]
+ },
+ "limits": {
+  "p99Ms": 16.7,
+  "maxMs": 100,
+  "over50PerMin": 1,
+  "over33PerMin": 3,
+  "momentAlpha": 0.05,
+  "otherCpu": 0.25
+ },
+ "seconds": 180,
+ "invalid": [],
+ "failures": [
+  "land-fen-works-x3: 최대 216.7 ms > 100",
+  "land-fen-works-x3: 50 ms 초과 1.3/분 > 1"
+ ],
+ "scenes": [
+  {
+   "id": "big-town-x5",
+   "loadMax": 0.23,
+   "conditions": [
+    "사람 입력 있음"
+   ],
+   "label": "가장 큰 도시 5배속",
+   "zoom": null,
+   "skipped": null,
+   "save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+   "speed": 5,
+   "action": "none",
+   "verdict": "통과",
+   "failed": [],
+   "invalid": [],
+   "stats": {
+    "frames": 21606,
+    "minutes": 3,
+    "p50": 8.3,
+    "p95": 9.2,
+    "p99": 9.3,
+    "max": 10.9,
+    "over25": 0,
+    "over33": 0,
+    "over50": 0,
+    "over25PerMin": 0,
+    "over33PerMin": 0,
+    "over50PerMin": 0
+   },
+   "loadSeconds": 3.438,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 0,
+    "autosave": 0,
+    "dialog": 0,
+    "chapter": 0
+   },
+   "worstFrames": [],
+   "longAnimationFrames": []
+  },
+  {
+   "id": "land-fen-works-x3",
+   "loadMax": 0.37,
+   "conditions": [
+    "다른 일 CPU 최대 37%"
+   ],
+   "label": "소택지 배수 공사 3배속",
+   "zoom": null,
+   "skipped": null,
+   "save": "fixtures/perf-gate/fen_drainage-works.save.json.gz",
+   "speed": 3,
+   "action": "none",
+   "verdict": "실패",
+   "failed": [
+    "최대 216.7 ms > 100",
+    "50 ms 초과 1.3/분 > 1"
+   ],
+   "invalid": [],
+   "stats": {
+    "frames": 21521,
+    "minutes": 3,
+    "p50": 8.3,
+    "p95": 9.2,
+    "p99": 9.3,
+    "max": 216.7,
+    "over25": 7,
+    "over33": 6,
+    "over50": 4,
+    "over25PerMin": 2.3,
+    "over33PerMin": 2,
+    "over50PerMin": 1.3
+   },
+   "loadSeconds": 3.001,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 8,
+    "autosave": 8,
+    "dialog": 8,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 85.8,
+     "ms": 216.7
+    },
+    {
+     "atSeconds": 88.7,
+     "ms": 141.6
+    },
+    {
+     "atSeconds": 86.1,
+     "ms": 74.6
+    },
+    {
+     "atSeconds": 86,
+     "ms": 66.6
+    },
+    {
+     "atSeconds": 85.9,
+     "ms": 49.5
+    },
+    {
+     "atSeconds": 88.9,
+     "ms": 41.9
+    }
+   ],
+   "longAnimationFrames": [
+    {
+     "start": 91827.79999998212,
+     "duration": 216.59999999403954,
+     "blocking": 166.5,
+     "renderStart": 91827.79999998212,
+     "styleAndLayoutStart": 92044.29999998212,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-CaacE9w4.js",
+       "charPosition": 2780553,
+       "duration": 12,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-CaacE9w4.js",
+       "charPosition": 4349546,
+       "duration": 204,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 85.6
+    },
+    {
+     "start": 94828.09999999404,
+     "duration": 149.09999999403954,
+     "blocking": 92.4,
+     "renderStart": 94834.79999998212,
+     "styleAndLayoutStart": 94975.5,
+     "scripts": [
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-CaacE9w4.js",
+       "charPosition": 4349546,
+       "duration": 139,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 88.6
+    },
+    {
+     "start": 92133.89999997616,
+     "duration": 74.30000001192093,
+     "blocking": 0,
+     "renderStart": 92194,
+     "styleAndLayoutStart": 92208.19999998808,
+     "scripts": [
+      {
+       "invoker": "PerformanceObserverCallback",
+       "fn": "",
+       "url": "",
+       "charPosition": -1,
+       "duration": 9,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-CaacE9w4.js",
+       "charPosition": 4349546,
+       "duration": 12,
+       "forcedStyleAndLayout": 0
+      }
+     ],
+     "atSeconds": 85.9
+    },
+    {
+     "start": 92296,
+     "duration": 65.7999999821186,
+     "blocking": 0,
+     "renderStart": 92357.59999999404,
+     "styleAndLayoutStart": 92361.69999998808,
+     "scripts": [],
+     "atSeconds": 86.1
+    }
+   ]
+  }
+ ],
+ "moments": {
+  "windows": 288,
+  "windowsWithLong": 3,
+  "baseline": 0.010416666666666666,
+  "rows": [
+   {
+    "kind": "season",
+    "seen": 8,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.010416666666666666,
+    "pValue": 1,
+    "pass": true
+   },
+   {
+    "kind": "autosave",
+    "seen": 8,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.010416666666666666,
+    "pValue": 1,
+    "pass": true
+   }
+  ],
+  "pass": true
+ }
+}

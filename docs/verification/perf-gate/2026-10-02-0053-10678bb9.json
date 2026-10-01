@@ -1,0 +1,166 @@
+{
+ "gate": "perf:gate stage 1",
+ "verdict": "실패",
+ "commit": "10678bb94b85be2bbec9e705e9d1eb0a007f34af",
+ "dirty": true,
+ "started": "2026-10-01T15:53:38.971Z",
+ "finished": "2026-10-01T15:56:49.932Z",
+ "machine": {
+  "platform": "darwin",
+  "model": "Mac16,5",
+  "cpus": 14,
+  "chrome": "Google Chrome 154.0.8037.58",
+  "loadAverage1m": [
+   3.3,
+   3.6
+  ]
+ },
+ "limits": {
+  "p99Ms": 16.7,
+  "maxMs": 100,
+  "over50PerMin": 1,
+  "over33PerMin": 3,
+  "momentAlpha": 0.05,
+  "otherCpu": 0.25
+ },
+ "seconds": 180,
+ "invalid": [],
+ "failures": [
+  "land-fen-works-x3: 최대 1274.1 ms > 100"
+ ],
+ "scenes": [
+  {
+   "id": "land-fen-works-x3",
+   "loadMax": 0.11,
+   "conditions": [
+    "사람 입력 있음"
+   ],
+   "label": "소택지 배수 공사 3배속",
+   "zoom": null,
+   "skipped": null,
+   "save": "fixtures/perf-gate/fen_drainage-works.save.json.gz",
+   "speed": 3,
+   "action": "none",
+   "verdict": "실패",
+   "failed": [
+    "최대 1274.1 ms > 100"
+   ],
+   "invalid": [],
+   "stats": {
+    "frames": 21400,
+    "minutes": 3,
+    "p50": 8.3,
+    "p95": 10,
+    "p99": 10.3,
+    "max": 1274.1,
+    "over25": 6,
+    "over33": 3,
+    "over50": 2,
+    "over25PerMin": 2,
+    "over33PerMin": 1,
+    "over50PerMin": 0.7
+   },
+   "loadSeconds": 3.096,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 8,
+    "autosave": 8,
+    "dialog": 8,
+    "chapter": 0
+   },
+   "worstFrames": [
+    {
+     "atSeconds": 83.7,
+     "ms": 1274.1
+    },
+    {
+     "atSeconds": 82.4,
+     "ms": 246.5
+    },
+    {
+     "atSeconds": 83.7,
+     "ms": 42.8
+    }
+   ],
+   "longAnimationFrames": [
+    {
+     "start": 88452.5,
+     "duration": 1497.7000000178814,
+     "blocking": 1180.1,
+     "renderStart": 89302.59999999404,
+     "styleAndLayoutStart": 89934.59999999404,
+     "scripts": [
+      {
+       "invoker": "TimerHandler:setTimeout",
+       "fn": "publish",
+       "url": "index-CaacE9w4.js",
+       "charPosition": 2702600,
+       "duration": 489,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "",
+       "url": "",
+       "charPosition": -1,
+       "duration": 10,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "runFrame",
+       "url": "index-CaacE9w4.js",
+       "charPosition": 2780553,
+       "duration": 76,
+       "forcedStyleAndLayout": 0
+      },
+      {
+       "invoker": "FrameRequestCallback",
+       "fn": "drawFrame",
+       "url": "index-CaacE9w4.js",
+       "charPosition": 4349546,
+       "duration": 530,
+       "forcedStyleAndLayout": 179
+      }
+     ],
+     "atSeconds": 82.2
+    }
+   ]
+  }
+ ],
+ "moments": {
+  "windows": 144,
+  "windowsWithLong": 3,
+  "baseline": 0.020833333333333332,
+  "rows": [
+   {
+    "kind": "season",
+    "seen": 8,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.020833333333333332,
+    "pValue": 1,
+    "pass": true
+   },
+   {
+    "kind": "autosave",
+    "seen": 8,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0.020833333333333332,
+    "pValue": 1,
+    "pass": true
+   }
+  ],
+  "pass": true
+ }
+}

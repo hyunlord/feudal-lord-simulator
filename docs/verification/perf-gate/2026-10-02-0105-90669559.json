@@ -1,0 +1,106 @@
+{
+ "gate": "perf:gate stage 1",
+ "verdict": "통과(일부 장면)",
+ "commit": "90669559d25e68d10f0280478a47974b25ab7483",
+ "dirty": true,
+ "started": "2026-10-01T16:05:21.734Z",
+ "finished": "2026-10-01T16:08:33.386Z",
+ "machine": {
+  "platform": "darwin",
+  "model": "Mac16,5",
+  "cpus": 14,
+  "chrome": "Google Chrome 154.0.8037.58",
+  "loadAverage1m": [
+   4.3,
+   5.9
+  ]
+ },
+ "limits": {
+  "p99Ms": 16.7,
+  "maxMs": 100,
+  "over50PerMin": 1,
+  "over33PerMin": 3,
+  "momentAlpha": 0.05,
+  "otherCpu": 0.25
+ },
+ "seconds": 180,
+ "invalid": [],
+ "failures": [],
+ "scenes": [
+  {
+   "id": "land-fen-works-x3",
+   "loadMax": 0.25,
+   "conditions": [
+    "사람 입력 있음"
+   ],
+   "label": "소택지 배수 공사 3배속",
+   "zoom": null,
+   "skipped": null,
+   "save": "fixtures/perf-gate/fen_drainage-works.save.json.gz",
+   "speed": 3,
+   "action": "none",
+   "verdict": "통과",
+   "failed": [],
+   "invalid": [],
+   "stats": {
+    "frames": 21596,
+    "minutes": 3,
+    "p50": 8.3,
+    "p95": 9.2,
+    "p99": 9.3,
+    "max": 17.6,
+    "over25": 0,
+    "over33": 0,
+    "over50": 0,
+    "over25PerMin": 0,
+    "over33PerMin": 0,
+    "over50PerMin": 0
+   },
+   "loadSeconds": 3.147,
+   "page": {
+    "dpr": 2,
+    "viewport": [
+     1600,
+     877
+    ],
+    "tickEnd": null,
+    "population": null,
+    "buildings": null
+   },
+   "moments": {
+    "season": 8,
+    "autosave": 8,
+    "dialog": 8,
+    "chapter": 0
+   },
+   "worstFrames": [],
+   "longAnimationFrames": []
+  }
+ ],
+ "moments": {
+  "windows": 144,
+  "windowsWithLong": 0,
+  "baseline": 0,
+  "rows": [
+   {
+    "kind": "season",
+    "seen": 8,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0,
+    "pValue": 1,
+    "pass": true
+   },
+   {
+    "kind": "autosave",
+    "seen": 8,
+    "followedByLongFrame": 0,
+    "share": 0,
+    "baseline": 0,
+    "pValue": 1,
+    "pass": true
+   }
+  ],
+  "pass": true
+ }
+}
