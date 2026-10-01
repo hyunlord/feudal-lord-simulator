@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-10-01(LM-E4 · FIX-12 · LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-10-02(LM-E5 · LM-E4 · FIX-12 · LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -78,9 +78,12 @@
   - 떠오르는 상자는 너비 토큰 280·360·480(태블릿 ×1.15)에 고정·줄 간격 1.5·제목 한 줄·본문 4줄 뒤 [더 보기]·UI-KIT 틀; 스킨 감사에 틀 없는 상자 규칙; 개발 서버 `?pseudo-long=1` 1.4배 글에서 너비 불변·넘침 0.
   - 감사 목록: 성벽이 호숫가를 따라 호수를 성 안에 넣음(엔진 규칙이 물가 가장자리 허용 + 렌더가 벽 두께를 가장자리 가운데로, 판정 대상), 물가 워커, 가을 풀빛, 낙엽 반복, 이름표 겹침, L4 돌기둥 집, 경고 표시 붐빔.
   - 관문: DGX 캡처·측정 오류 0, 스킨 감사 0 / 1263·틀 없는 상자 0, 면적 5.4 % / 6 %·태블릿 5.9 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 로컬 전체 시험 3,796 / 3,796, 깨끗한 클론 `55ad6ee` 3,796/3,796·build(ARCH-1b를 합친 뒤 `1f25c42` 3,811/3,811).
+- **LM-E5 살아 있는 성장 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/lme5/REPORT.md), [명세](design/living-growth.md) LG-1~LG-6, 결정 LM5-1~5.
+  - 새 게임 seed(강가도 어떤 seed든, 무작위 기본값, 같은 seed 같은 판), 행위자 성향과 확률적 선택(영수증에 확률), 땅의 변화(나무 그루터기 → 어린나무 → 숲, 발길 길, 버려진 땅). 저장 v43.
+  - 1배속 분석: 선택지 셋, 추천 A(판정 대기 LM5-4). 렌더 넘김: 새 게임 seed 칸(렌더 세션 합의), 영수증의 확률, 땅 그림. **다음**: 판정 대기.
 - **LM-E4 위임·주의력·연례 감사 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/lme4/REPORT.md), [위임·감사 명세](design/stewardship.md) SW-1~SW-10, 결정 LM4-1~6.
   - 상속한 지도 밖 영지를 직접 보거나 청지기(성향 셋·능력·충성·연줄)에게 맡긴다. 주의력 한도(기본 2), 예외 규칙, 철 요약, 미카엘마스 감사(장부·방문)와 처벌·교체·묵인. 저장 v42.
-  - 렌더 넘김(LM-R2/R3): 포트폴리오의 관리 방식·주의력·철 요약·감사 결과·명령 다섯. **다음**: 판정 대기(보고서 다음 후보).
+  - 렌더 넘김(LM-R2/R3): 포트폴리오의 관리 방식·주의력·철 요약·감사 결과·명령 다섯.
 - **FIX-12 짧은 정리 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/fix12/REPORT.md), 결정 FX12-1~6.
   - 채무는 분할로만(영지가 낸 1년의 25%, 5년까지, 연금과 나눔), 신랑은 아들 → 홀아비 영주 → 동생·조카·사촌, QA036 죽은 수장·대표는 그 틱에 다음 사람으로(원장 한 줄), 원장 문장의 사람은 id(저장 v41), 습지 성벽 제안은 배치 서명 캐시(봇은 정확한 키).
   - 렌더 넘김: 시대 콘솔이 `palisadeProposalForPlacement`를 쓴다(렌더 세션 합의).
