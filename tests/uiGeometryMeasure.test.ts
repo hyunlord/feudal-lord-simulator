@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { gateMode, geometryInputHash } from "../scripts/checks/uiGeometry.mjs";
-import { evaluateSurface, type Box, type Collected, type Item, type MeasureSpec } from "../scripts/uiGeometryMeasure";
+import { evaluateSurface, snapLine, type Box, type Collected, type Item, type MeasureSpec } from "../scripts/uiGeometryMeasure";
 import { EXTREME, extremeNumbers, mapTile } from "../scripts/uiGeometryScene";
 import { ledgerStateProblem } from "../src/ledger/ledgerValidation";
 
@@ -153,6 +153,39 @@ test("Given a mostly empty surface When evaluated Then the empty-space warning i
   const result = evaluateSurface(surface([text("h2", box(124, 124, 180, 140))]), css);
   assert.equal(result.failures.length, 0);
   assert.ok(result.empty !== null && result.empty.ratio < 0.4 && result.empty.warn);
+});
+
+test("Given a root its scrolling ancestor shows in part When evaluated Then empty space counts only the shown part", () => {
+  // R15 triage: a part of the panel slot runs below the slot's scrolled view; what is scrolled out holds no content to count.
+  const items = [text("p", box(124, 124, 276, 148))];
+  const whole = evaluateSurface(surface(items), css);
+  const shown = evaluateSurface(surface(items, { visible: box(100, 100, 300, 150) }), css);
+  assert.ok(whole.empty !== null && shown.empty !== null && shown.empty.ratio > whole.empty.ratio && !shown.empty.warn);
+});
+
+test("Given a drawer whose view collapsed to its frame When none of its text is in view Then content fails; one line in view passes", () => {
+  // R15: the population drawer opened 18 px tall (top and bottom both set): its log clipped away entirely.
+  const clipper = { path: "div.slot-panel", scroll: true, ellipsis: false };
+  const hidden = [text("h2", box(124, 124, 220, 140), { rect: null, clipper }), text("p", box(124, 144, 260, 160), { rect: null, clipper })];
+  assert.deepEqual(evaluateSurface(surface(hidden), css).failures.map(failure => failure.check), ["content"]);
+  const one = [text("h2", box(124, 124, 220, 140), { clipper }), text("p", box(124, 144, 260, 160), { rect: null, clipper })];
+  assert.deepEqual(evaluateSurface(surface(one), css).failures, []);
+});
+
+test("Given a title line centred on a whole-pixel glyph box 0.7 px above its block When evaluated Then it is snapped onto the block; 3 px out still fails", () => {
+  // R15: screen.welcome at 1024×768 — the h2 block starts on the inner box (124), its estimated line box at 123.3.
+  const block = box(140, 124, 260, 143.4);
+  const snapped = snapLine(box(150, 123.3, 250, 142.7), block);
+  assert.deepEqual([snapped.t, snapped.b].map(value => Math.round(value * 100) / 100), [124, 143.4]);
+  assert.deepEqual(evaluateSurface(surface([text("h2", box(150, 123.3, 250, 142.7), { block })]), css).failures, []);
+  const out = evaluateSurface(surface([text("h2", box(150, 121, 250, 140.4), { block: box(140, 121, 260, 140.4) })]), css);
+  assert.deepEqual(out.failures.map(failure => failure.check), ["outside"]);
+  const overflowing = box(150, 140, 250, 159.4);
+  assert.deepEqual(snapLine(overflowing, block), overflowing);
+  // A line a scroller cuts at its padding edge (124) keeps that edge: snapped down it would reach past the scroller.
+  const sliver = box(150, 174.6, 250, 176);
+  const cut = evaluateSurface(surface([text("span", sliver, { full: box(150, 174.6, 250, 189.6), block: box(140, 175.2, 260, 190), clipper: { path: "div.save-controls", scroll: true, ellipsis: false } })]), css);
+  assert.deepEqual(cut.failures, []);
 });
 
 test("Given a registry-listed sibling group When two members overlap Then overlap fails unless one holds the other", () => {

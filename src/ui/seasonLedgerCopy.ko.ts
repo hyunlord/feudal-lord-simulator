@@ -1,11 +1,15 @@
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import type { NextObjectiveHint } from "../engine/season.types";
-import { moneyDelta } from "./money.ko";
+import { manCount, moneyDelta } from "./money.ko";
 import type { SeasonSceneId } from "./seasonLedgerScenes";
 
 // UI-3 season ledger card (FP-1): one closed season on the Wave 8 scroll. Signed numbers, no arrows or symbols.
 // INSTALL-3b: a change of nothing reads "±0", so it is never taken for a count ("인구 0" read as an empty town).
 const signed = (value: number): string => value > 0 ? `+${value}` : value < 0 ? `−${-value}` : "±0";
+
+/** UIAUDIT-R15-D1: a scene box's count (about four characters fit beside its icon): over 9,999 in 만 — "+20만". A number
+ * form like money.ko.ts's, outside the copy object (the dev server's pseudo-long copy lengthens words, not figures). */
+export const sceneBoxCount = (value: number): string => value > 0 ? `+${manCount(value)}` : value < 0 ? `−${manCount(value)}` : "±0";
 
 export const SEASON_LEDGER_COPY = {
   label: "계절 결산",
@@ -14,6 +18,7 @@ export const SEASON_LEDGER_COPY = {
   money: (income: number, expense: number) => `수입 ${moneyDelta(income)} · 지출 ${moneyDelta(-expense)} · 남음 ${moneyDelta(income - expense)}`,
   /** UI-AUDIT-1: a change of money with its sign, in English money ("+£1 3s", "−7d"). */
   moneyDelta,
+
   /** INSTALL-3b: the head count at the season's close, then its change (and the season before's, when there is one). */
   population: (count: number, delta: number, before: number | null) =>
     before === null ? `인구 ${count}명 (이번 계절 ${signed(delta)})` : `인구 ${count}명 (이번 계절 ${signed(delta)} · 지난 계절 ${signed(before)})`,

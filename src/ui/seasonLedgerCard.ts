@@ -24,7 +24,8 @@ import { townClothView } from "./townClothModel";
 export type SeasonLedgerCardModel = Readonly<{
   key: string;
   title: string;
-  scenes: readonly { readonly id: SeasonSceneId; readonly name: string; readonly value: string | null }[];
+  /** `value` the exact figure (the scenes line), `box` what the printed scene box shows (its short form, UIAUDIT-R15-D1). */
+  scenes: readonly { readonly id: SeasonSceneId; readonly name: string; readonly value: string | null; readonly box: string | null }[];
   scenesLine: string;
   lines: readonly string[];
   events: readonly string[];
@@ -104,7 +105,7 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
   if (ledger === undefined) return null;
   const before = history.at(-2);
   const year = ledger.year;
-  const scenes = seasonLedgerScenes(state, ledger, before).map(scene => ({ ...scene, name: SEASON_LEDGER_COPY.scene[scene.id] }));
+  const scenes = seasonLedgerScenes(state, ledger, before).map(scene => ({ id: scene.id, value: scene.value, box: scene.box ?? scene.value, name: SEASON_LEDGER_COPY.scene[scene.id] }));
   // INSTALL-3b: the count at the close is the open tally's start (seasonPressure closeSeason opens it at the close).
   const population = SEASON_LEDGER_COPY.population(state.seasons?.current?.population ?? state.population ?? 0, ledger.popDelta, before?.popDelta ?? null);
   const stock = SEASON_STOCK_KEYS.map(key => SEASON_LEDGER_COPY.stock(resourceName(key), Math.round(ledger.stockDelta[key]))).join(" · ");
