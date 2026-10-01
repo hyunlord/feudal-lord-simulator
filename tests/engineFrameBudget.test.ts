@@ -52,7 +52,12 @@ test("FB-2 a paced autosave writes the same file as one written in a single task
   const sliced = new MemorySaveStorage();
   await createSaveService({ storage: whole, now: at }).autosave(state);
   let paces = 0;
-  const result = await createSaveService({ storage: sliced, now: at }).autosave(state, async () => { paces += 1; });
+  // The slices are cut on performance.now() (SAVE_SLICE_MS): on the real clock a fast machine may write the save in one
+  // slice and a loaded one in many. A counter that moves 1 ms at each read makes the slicing the same everywhere
+  // (docs/verification/wall-clock-tests.md).
+  const realNow = performance.now; let fakeMs = 0; performance.now = () => (fakeMs += 1);
+  let result: Awaited<ReturnType<ReturnType<typeof createSaveService>["autosave"]>>;
+  try { result = await createSaveService({ storage: sliced, now: at }).autosave(state, async () => { paces += 1; }); } finally { performance.now = realNow; }
   assert.ok(Buffer.from((await sliced.read(result.meta.slotId))!).equals(Buffer.from((await whole.read("auto-1"))!)));
   assert.ok(paces >= 1 && result.longestSliceMs !== undefined, `${paces} slices, the longest ${result.longestSliceMs} ms`);
 });

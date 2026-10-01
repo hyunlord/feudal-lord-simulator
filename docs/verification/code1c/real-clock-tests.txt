@@ -1,4 +1,5 @@
 CODE-1c part B: tests that use the real clock -> fake clock
+(2026-10-01) Superseded by docs/verification/wall-clock-tests.md (decision RR9): CHRON-1, H8 and the INSTALL-26 budgets moved to the DGX trend.
 Base: trunk codex/phase15-organic-ground 5f7584a2.
 Search: tests/** (incl. tests/helpers, fixtures, *.py) for setTimeout, setInterval, setImmediate, waitForTimeout,
 performance.now(), Date.now(), new Date(), delay(, sleep(, requestAnimationFrame, and `timeout:` options.

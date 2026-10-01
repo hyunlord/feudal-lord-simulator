@@ -67,6 +67,29 @@ async function measure(commit: string, tree: string) {
   return scenes;
 }
 
+// The code budgets moved out of the regression tests (tests/helpers/codeBudget.ts, docs/verification/wall-clock-tests.md): their tests
+// run here in the commit's tree with FLS_CODE_BUDGETS set, three rounds, the median per budget. Commits from before the
+// move have no such helper and no code budgets.
+export const CODE_BUDGET_TESTS = ["tests/chronicleScreen.test.ts", "tests/historyLedger.test.ts", "tests/wave26HouseVariants.test.ts"] as const;
+function measureCodeBudgets(tree: string) {
+  if (!existsSync(join(tree, "tests/helpers/codeBudget.ts"))) return null;
+  const budgets: Record<string, { label: string; budgetMs: number; values: number[]; median: number | null }> = {}; const otherCpu: number[] = [];
+  for (let round = 1; round <= rounds; round++) {
+    const file = join(mkdtempSync(join(tmpdir(), "fls-code-budgets-")), "budgets.jsonl"); const before = otherCpuSample();
+    const run = spawnSync(join(tree, "node_modules/.bin/tsx"), ["--test", ...CODE_BUDGET_TESTS], { cwd: tree, encoding: "utf8", env: { ...process.env, FLS_CODE_BUDGETS: file } });
+    otherCpu.push(Math.round(otherCpuShare(before, otherCpuSample()) * 100) / 100);
+    if (run.status !== 0 || !existsSync(file)) { console.log(`code budgets ${round}: tests failed (${run.status})`); continue; }
+    for (const line of readFileSync(file, "utf8").split("\n").filter(Boolean)) {
+      const entry = JSON.parse(line) as { id: string; label: string; ms: number; budgetMs: number };
+      (budgets[entry.id] ??= { label: entry.label, budgetMs: entry.budgetMs, values: [], median: null }).values.push(Math.round(entry.ms * 1000) / 1000);
+    }
+    rmSync(join(file, ".."), { recursive: true, force: true });
+  }
+  for (const budget of Object.values(budgets)) budget.median = median(budget.values);
+  console.log(`code budgets: ${Object.entries(budgets).map(([id, budget]) => `${id} ${budget.median} ms (budget ${budget.budgetMs})`).join(", ")}`);
+  return { budgets, otherCpu };
+}
+
 type Stored = { commit: string; scenes: Record<string, { values: Record<string, number[]> }> };
 const stored = (commit: string): Stored | null => { const file = join(store, `${commit}.json`); return existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) as Stored : null; };
 
@@ -139,8 +162,9 @@ async function main() {
     const tree = commit === own && commits.length === 0 ? "." : sourceTree(".", commit);
     try {
       const scenes = await measure(commit, tree);
+      const codeBudgets = measureCodeBudgets(tree);
       const record = { commit, subject: git("log", "-1", "--format=%s", commit).slice(0, 120), committed: git("log", "-1", "--format=%cI", commit),
-        measured: new Date().toISOString(), host: hostname(), machine: "dgx-headless", rounds, seconds, scenes };
+        measured: new Date().toISOString(), host: hostname(), machine: "dgx-headless", rounds, seconds, scenes, ...(codeBudgets === null ? {} : { codeBudgets }) };
       writeFileSync(join(store, `${commit}.json`), `${JSON.stringify(record, null, 1)}\n`);
       writeFileSync(join(".remote/trend", `${commit}.json`), `${JSON.stringify(record, null, 1)}\n`);
       console.log(`trend ${commit.slice(0, 8)} → ${join(store, `${commit}.json`)}`);

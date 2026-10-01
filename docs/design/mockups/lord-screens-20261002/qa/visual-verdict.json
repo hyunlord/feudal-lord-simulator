@@ -1,0 +1,29 @@
+{
+  "verdict": "PASS",
+  "scope": "Static review mockups only; no runtime or interaction validation",
+  "screens": 16,
+  "viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1280,
+      800
+    ]
+  ],
+  "layout_checks": {
+    "missing_images": 0,
+    "overflow": 0,
+    "clipped_elements": 0
+  },
+  "reviewers": {
+    "visual": "PASS: all 8 compact and key desktop screens opened; final genealogy stem re-opened",
+    "contract": "PASS: 8 required views, consistent estate heraldry and story, font documentation, no engine claims"
+  },
+  "remaining_limits": [
+    "Map is assembled concept, bespoke cartographic art listed missing",
+    "Small labels 10–11px require product accessibility review",
+    "Portraits 256px slightly enlarged in desktop hero"
+  ]
+}
