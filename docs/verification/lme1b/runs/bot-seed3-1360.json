@@ -1,0 +1,432 @@
+{
+ "archetypeId": "core:open_field",
+ "seed": 3,
+ "coastal": true,
+ "campaignEnded": false,
+ "ending": null,
+ "scores": null,
+ "chapterEnds": [
+  {
+   "chapter": 1,
+   "year": 1323
+  },
+  {
+   "chapter": 2,
+   "year": 1340
+  }
+ ],
+ "final": {
+  "year": 1361,
+  "chapter": 3,
+  "population": 680,
+  "peakPopulation": 758,
+  "treasury": 12440,
+  "abandoned": false,
+  "l4": 24
+ },
+ "raid": {
+  "year": 1339,
+  "defencePermille": 600,
+  "burntHouses": 3,
+  "looted": 436,
+  "coin": 421
+ },
+ "plague": {
+  "populationAtArrival": 758,
+  "deathPermille": 428,
+  "dead": 324,
+  "second": {
+   "deathPermille": 120,
+   "dead": 0
+  }
+ },
+ "lordHouses": 1,
+ "records": {
+  "lord.wardship_begun": [
+   {
+    "year": 1305,
+    "lord": "조앤 드 메로언",
+    "guardian": "앨리스 드 메로언"
+   }
+  ],
+  "lord.wardship_ended": [
+   {
+    "year": 1311,
+    "lord": "조앤 드 메로언"
+   }
+  ],
+  "legacy.heir_seated": [],
+  "legacy.succession": []
+ },
+ "oldestEver": 85,
+ "failures": [],
+ "decades": [
+  {
+   "year": 1310,
+   "population": 256,
+   "treasury": 717,
+   "chapter": 1,
+   "l4": 0,
+   "oldest": 75,
+   "oldestOutside": 59
+  },
+  {
+   "year": 1320,
+   "population": 349,
+   "treasury": 2775,
+   "chapter": 1,
+   "l4": 0,
+   "oldest": 79,
+   "oldestOutside": 69
+  },
+  {
+   "year": 1330,
+   "population": 347,
+   "treasury": 3910,
+   "chapter": 2,
+   "l4": 0,
+   "oldest": 77,
+   "oldestOutside": 66
+  },
+  {
+   "year": 1340,
+   "population": 528,
+   "treasury": 4776,
+   "chapter": 3,
+   "l4": 0,
+   "oldest": 77,
+   "oldestOutside": 76
+  },
+  {
+   "year": 1350,
+   "population": 449,
+   "treasury": 8759,
+   "chapter": 3,
+   "l4": 20,
+   "oldest": 80,
+   "oldestOutside": 61
+  },
+  {
+   "year": 1360,
+   "population": 660,
+   "treasury": 12156,
+   "chapter": 3,
+   "l4": 24,
+   "oldest": 76,
+   "oldestOutside": 60
+  }
+ ],
+ "years": [
+  {
+   "year": 1300,
+   "l4Min": 0,
+   "populationMin": 28
+  },
+  {
+   "year": 1301,
+   "l4Min": 0,
+   "populationMin": 55
+  },
+  {
+   "year": 1302,
+   "l4Min": 0,
+   "populationMin": 67
+  },
+  {
+   "year": 1303,
+   "l4Min": 0,
+   "populationMin": 123
+  },
+  {
+   "year": 1304,
+   "l4Min": 0,
+   "populationMin": 128
+  },
+  {
+   "year": 1305,
+   "l4Min": 0,
+   "populationMin": 125
+  },
+  {
+   "year": 1306,
+   "l4Min": 0,
+   "populationMin": 157
+  },
+  {
+   "year": 1307,
+   "l4Min": 0,
+   "populationMin": 195
+  },
+  {
+   "year": 1308,
+   "l4Min": 0,
+   "populationMin": 207
+  },
+  {
+   "year": 1309,
+   "l4Min": 0,
+   "populationMin": 254
+  },
+  {
+   "year": 1310,
+   "l4Min": 0,
+   "populationMin": 256
+  },
+  {
+   "year": 1311,
+   "l4Min": 0,
+   "populationMin": 264
+  },
+  {
+   "year": 1312,
+   "l4Min": 0,
+   "populationMin": 278
+  },
+  {
+   "year": 1313,
+   "l4Min": 0,
+   "populationMin": 308
+  },
+  {
+   "year": 1314,
+   "l4Min": 0,
+   "populationMin": 333
+  },
+  {
+   "year": 1315,
+   "l4Min": 0,
+   "populationMin": 341
+  },
+  {
+   "year": 1316,
+   "l4Min": 0,
+   "populationMin": 344
+  },
+  {
+   "year": 1317,
+   "l4Min": 0,
+   "populationMin": 343
+  },
+  {
+   "year": 1318,
+   "l4Min": 0,
+   "populationMin": 340
+  },
+  {
+   "year": 1319,
+   "l4Min": 0,
+   "populationMin": 340
+  },
+  {
+   "year": 1320,
+   "l4Min": 0,
+   "populationMin": 349
+  },
+  {
+   "year": 1321,
+   "l4Min": 0,
+   "populationMin": 350
+  },
+  {
+   "year": 1322,
+   "l4Min": 0,
+   "populationMin": 350
+  },
+  {
+   "year": 1323,
+   "l4Min": 0,
+   "populationMin": 352
+  },
+  {
+   "year": 1324,
+   "l4Min": 0,
+   "populationMin": 352
+  },
+  {
+   "year": 1325,
+   "l4Min": 0,
+   "populationMin": 351
+  },
+  {
+   "year": 1326,
+   "l4Min": 0,
+   "populationMin": 348
+  },
+  {
+   "year": 1327,
+   "l4Min": 0,
+   "populationMin": 347
+  },
+  {
+   "year": 1328,
+   "l4Min": 0,
+   "populationMin": 340
+  },
+  {
+   "year": 1329,
+   "l4Min": 0,
+   "populationMin": 345
+  },
+  {
+   "year": 1330,
+   "l4Min": 0,
+   "populationMin": 347
+  },
+  {
+   "year": 1331,
+   "l4Min": 0,
+   "populationMin": 346
+  },
+  {
+   "year": 1332,
+   "l4Min": 0,
+   "populationMin": 346
+  },
+  {
+   "year": 1333,
+   "l4Min": 0,
+   "populationMin": 375
+  },
+  {
+   "year": 1334,
+   "l4Min": 0,
+   "populationMin": 417
+  },
+  {
+   "year": 1335,
+   "l4Min": 0,
+   "populationMin": 429
+  },
+  {
+   "year": 1336,
+   "l4Min": 0,
+   "populationMin": 469
+  },
+  {
+   "year": 1337,
+   "l4Min": 0,
+   "populationMin": 471
+  },
+  {
+   "year": 1338,
+   "l4Min": 0,
+   "populationMin": 477
+  },
+  {
+   "year": 1339,
+   "l4Min": 0,
+   "populationMin": 509
+  },
+  {
+   "year": 1340,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1341,
+   "l4Min": 0,
+   "populationMin": 528
+  },
+  {
+   "year": 1342,
+   "l4Min": 18,
+   "populationMin": 720
+  },
+  {
+   "year": 1343,
+   "l4Min": 20,
+   "populationMin": 726
+  },
+  {
+   "year": 1344,
+   "l4Min": 20,
+   "populationMin": 730
+  },
+  {
+   "year": 1345,
+   "l4Min": 22,
+   "populationMin": 743
+  },
+  {
+   "year": 1346,
+   "l4Min": 22,
+   "populationMin": 748
+  },
+  {
+   "year": 1347,
+   "l4Min": 23,
+   "populationMin": 757
+  },
+  {
+   "year": 1348,
+   "l4Min": 0,
+   "populationMin": 693
+  },
+  {
+   "year": 1349,
+   "l4Min": 0,
+   "populationMin": 439
+  },
+  {
+   "year": 1350,
+   "l4Min": 20,
+   "populationMin": 449
+  },
+  {
+   "year": 1351,
+   "l4Min": 20,
+   "populationMin": 469
+  },
+  {
+   "year": 1352,
+   "l4Min": 22,
+   "populationMin": 497
+  },
+  {
+   "year": 1353,
+   "l4Min": 24,
+   "populationMin": 525
+  },
+  {
+   "year": 1354,
+   "l4Min": 24,
+   "populationMin": 545
+  },
+  {
+   "year": 1355,
+   "l4Min": 21,
+   "populationMin": 565
+  },
+  {
+   "year": 1356,
+   "l4Min": 21,
+   "populationMin": 580
+  },
+  {
+   "year": 1357,
+   "l4Min": 21,
+   "populationMin": 600
+  },
+  {
+   "year": 1358,
+   "l4Min": 21,
+   "populationMin": 620
+  },
+  {
+   "year": 1359,
+   "l4Min": 24,
+   "populationMin": 640
+  },
+  {
+   "year": 1360,
+   "l4Min": 24,
+   "populationMin": 660
+  },
+  {
+   "year": 1361,
+   "l4Min": 24,
+   "populationMin": 680
+  }
+ ],
+ "elapsedSeconds": 882.3
+}
