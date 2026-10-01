@@ -257,7 +257,9 @@
 .season-ledger-scenes-line { margin: 0 0 3px; font-size: 12px; font-weight: 600; }
 /* INSTALL-3: the actions row is pinned at the body's foot (계속 never below the fold); the lines scroll only when the card
    meets the view's height. */
-.season-ledger-body { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
+/* QA-034 (the same as the petition): the body paints above its frame layer, an absolutely placed earlier sibling whose
+   9-slice fills the parchment centre; in flow it was under it and the season close showed only its scenes and toggle. */
+.season-ledger-body { position: relative; display: flex; flex-direction: column; gap: 4px; min-height: 0; }
 .season-ledger-content { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 .season-ledger-body h2 { margin: 0 0 4px; font-size: 16px; }
 .season-ledger-line { margin: 0 0 2px; }

@@ -17,3 +17,8 @@ test("QA-034: the petition body paints above its frame layer", () => {
   assert.match(rule(".petition-frame"), /position: absolute/);
   assert.match(rule(".petition-body"), /position: (relative|absolute)/);
 });
+
+test("QA-034: the season close's body paints above its frame layer", () => {
+  assert.match(rule(".season-ledger-frame"), /position: absolute/);
+  assert.match(rule(".season-ledger-body"), /position: (relative|absolute)/);
+});
