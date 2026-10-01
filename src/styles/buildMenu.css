@@ -43,3 +43,12 @@
    polygon hint while the polygon toggle is pressed. */
 .build-menu-pinned { margin: 0 0 8px; font-size: var(--font-meta); line-height: 1.5; color: var(--palette-ink); background: var(--palette-vellum); }
 .zone-polygon-hint { font-size: var(--font-meta); line-height: 1.4; }
+/* UI-AUDIT-1 (user decision, UIAUDIT-D1): at 1280 × 800 the build state sat 0.1 pt over its 15.5 % budget. At 1280 with a
+   fine pointer only, the tool cards are tighter: smaller gaps, a shorter art box and minimum height. The cards stay
+   ≥ 44 px targets, the text sizes stay, and the category buttons keep their height. Revisit when lord mode makes the
+   drawer command pins. */
+@media (max-width: 1280px) and (pointer: fine) {
+  .build-menu-tools { gap: 6px; }
+  .app-shell .build-menu .build-tool { min-height: 112px; gap: 2px; }
+  .app-shell .build-tool-art, .app-shell .build-tool-art img { height: 42px; }
+}
