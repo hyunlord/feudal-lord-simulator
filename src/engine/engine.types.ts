@@ -182,6 +182,8 @@ export interface GameState {
   readonly estates?: import("./estates.types").EstatesState;
   /** LM-E3 (NG-1…NG-10, save v40): negotiations, the promise ledger and the marriage — absent until the first offer. */
   readonly diplomacy?: import("./diplomacy.types").DiplomacyState;
+  /** LM-E4 (SW-1…SW-9, save v42): the oversight of the estates the lord holds off the map — absent until he holds one. */
+  readonly stewardship?: import("./stewardship.types").StewardshipState;
   /** C4 AL-10 (FIX-7, save v25): the town's ale counted this season and the last. Absent until the first brew or drink. */
   readonly ale?: import("./ale.types").AleState;
   /** F3-A the Black Death of 1348 (save v26, spec PL-1…PL-11). Absent until the collapse era. */

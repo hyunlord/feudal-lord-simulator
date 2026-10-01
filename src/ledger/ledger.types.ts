@@ -40,6 +40,8 @@ export const LEDGER_CATEGORIES = [
   "lawsuit",
   // LM-E3 (NG-6, NG-7): the cash a marriage contract pays, and the promised payments kept (pension, debt, a favour).
   "marriage_portion", "promise_payment",
+  // LM-E4 (SW-7, SW-6): an off-map estate's season as its accounts show it, and what an audit's punishment recovered.
+  "estate_income", "audit_recovery",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 

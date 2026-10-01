@@ -30,6 +30,12 @@ type GameCommand =
   | { readonly type: "answer_counter"; readonly negotiationId: string; readonly accept: boolean }
   | { readonly type: "keep_promise"; readonly promiseId: string }
   | { readonly type: "answer_will_change"; readonly choice: "favour" | "support_promise" | "let_it_be" }
+  // LM-E4 (SW-2, SW-4…SW-6): the off-map estates' oversight.
+  | { readonly type: "set_estate_oversight"; readonly estateId: string; readonly mode: import("../engine/stewardship.types").OversightMode; readonly stewardId?: string }
+  | { readonly type: "set_exception_rules"; readonly rules: import("../engine/stewardship.types").ExceptionRules }
+  | { readonly type: "answer_estate_petition"; readonly petitionId: string; readonly grant: boolean }
+  | { readonly type: "set_audit_mode"; readonly estateId: string; readonly mode: "accounts" | "visit" }
+  | { readonly type: "answer_audit"; readonly auditId: string; readonly choice: "punish" | "replace" | "tolerate"; readonly replacementId?: string }
   /** QA032: the player saw the chapter's page (the screens open it once; kept in the save). */
   | { readonly type: "mark_chapter_page_seen"; readonly chapter: number }
   /** ARCH-1b (MA-11): drain the fen's still water around a tile (`drainagePlan` says what it takes). */
