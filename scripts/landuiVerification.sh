@@ -43,6 +43,10 @@ if [ "$mode" = perf ] || [ "$mode" = all ]; then
     done
   done
   step perf-base node scripts/remote/perf-baseline.mjs --raw "$out/perf/base" --out "$out/perf/base.json" --report "$out/perf/base.md"
+  # The benchmark records this tree's commit for both builds; the base cells were measured on the base build's page.
+  base_sha=$(git -C .remote/base-build rev-parse HEAD 2>/dev/null || echo "base-build")
+  node -e 'const fs = require("fs"); const [file, sha] = process.argv.slice(1); const record = JSON.parse(fs.readFileSync(file, "utf8"));
+    fs.writeFileSync(file, JSON.stringify({ ...record, commit: sha, measuredPage: "base build (with-base-build.sh), this tree'"'"'s harness" }, null, 2) + "\n");' "$out/perf/base.json" "$base_sha"
   step perf-compare node scripts/remote/perf-baseline.mjs --raw "$out/perf/this" --out "$out/perf/this.json" --compare "$out/perf/base.json" --report "$out/perf/compare.md"
   cat "$out/perf/compare.md" 2>/dev/null
 fi

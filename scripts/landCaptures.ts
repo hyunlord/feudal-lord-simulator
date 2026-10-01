@@ -13,7 +13,7 @@ import { join } from "node:path";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 type Page = { waitForTimeout: (ms: number) => Promise<void>; screenshot: (options: object) => Promise<Buffer>; on: (event: string, handler: (error: Error) => void) => void;
-  setContent: (html: string, options?: object) => Promise<void>; evaluate: <T>(fn: () => T) => Promise<T> };
+  setContent: (html: string, options?: object) => Promise<void>; evaluate: <T>(fn: () => T) => Promise<T>; setViewportSize: (size: { width: number; height: number }) => Promise<void> };
 type Tile = { tx: number; ty: number };
 type Entry = { land: string; tick: number; season: number; centre: Tile; character: Tile | null; characterWhat: string | null; focus?: Tile;
   works?: { stage: string; origin: Tile }[]; fords?: { width: number; cells: Tile[] }[] };
@@ -87,8 +87,10 @@ const rows = [...new Set(shots.map(shot => shot.row))].flatMap(row => builds.map
 const sheet = await browser.newPage({ viewport: { width: 1900, height: 400 } }) as Page;
 await sheet.setContent(`<html><body style="margin:6px;background:#222;color:#ddd;font:11px sans-serif">
   <style>.row{display:flex;gap:4px;margin-bottom:6px;align-items:flex-start}.row b{width:84px;flex:none}.cell{width:288px;display:flex;flex-direction:column}
-  .cell img{width:288px;height:180px}.missing{height:180px;background:#633}</style>${rows.join("")}</body></html>`, { waitUntil: "load" });
-await sheet.screenshot({ path: join(out, "contact.jpg"), type: "jpeg", quality: 62, fullPage: true });
+  .cell img{width:288px;height:180px}.missing{height:180px;background:#633}</style>${rows.join("")}<div style="height:12px"></div></body></html>`, { waitUntil: "load" });
+// The sheet's whole height as the viewport (a full-page shot cut the last row's labels).
+await sheet.setViewportSize({ width: 1900, height: await sheet.evaluate(() => document.documentElement.scrollHeight) });
+await sheet.screenshot({ path: join(out, "contact.jpg"), type: "jpeg", quality: 62 });
 await browser.close();
 const failed = records.filter(record => record.file === null || (record.errors as string[]).length > 0);
 console.log(JSON.stringify({ shots: records.length, failed: failed.length, contact: join(out, "contact.jpg") }));
