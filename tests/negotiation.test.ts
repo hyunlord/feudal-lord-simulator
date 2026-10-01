@@ -7,7 +7,7 @@ import { ACCEPT_THETA, COUNTER_MARGIN, GREED_MAX, MATERIAL_CAP, MARRIAGE_TIMES, 
 import type { GameState } from "../src/engine/engine.types";
 import { estateById, estatesOf, LORD } from "../src/engine/estates";
 import {
-  advanceDiplomacy, answerCounter, answerWillChange, keepPromise, lordBotMarriageCommands, marriageCandidates, marriageRefusal, MARRIAGE_ESTATE_ID, proposeMarriage,
+  advanceDiplomacy, answerCounter, answerWillChange, keepPromise, lordBotMarriageCommands, lordHouseKin, marriageCandidates, marriageRefusal, MARRIAGE_ESTATE_ID, proposeMarriage,
 } from "../src/engine/marriage";
 import { counterOffer, diplomacyOf, evaluateOffer, materialCeiling } from "../src/engine/negotiation";
 import type { Term } from "../src/engine/diplomacy.types";
@@ -80,7 +80,10 @@ test("NG-5 the counter is the smallest bundle just over the line: its desires in
 });
 
 test("NG-7 an offer: refused without a groom, a bride or the money; under way while one waits", () => {
-  const young = { ...base, persons: { ...base.persons!, people: base.persons!.people.map(person => person.householdId === "manor" && person.role === "child" ? { ...person, birthYear: 1295 } : person) } };
+  // FIX-12 (NG-7a): no son of age and the house's men off the map all married (a manor wife's spouse-of tag names each).
+  const kinWives = lordHouseKin(base).map(entry => `spouse-of:${entry.person.id}`);
+  const young = { ...base, persons: { ...base.persons!, people: base.persons!.people.map(person => person.householdId === "manor" && person.role === "child" ? { ...person, birthYear: 1295 }
+    : person.role === "spouse" ? { ...person, tags: [...person.tags, ...kinWives] } : person) } };
   assert.equal(marriageRefusal(young, OFFER), "no_groom");
   assert.equal(marriageRefusal(town(50), OFFER), "treasury");
   const offered = proposeMarriage(base, OFFER);

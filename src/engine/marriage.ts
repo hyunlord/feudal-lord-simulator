@@ -7,8 +7,8 @@
  * new will, his death — and the inheritance: the estate becomes the lord's, or a brother's, or a rival's to be sued.
  */
 import {
-  BREACHED_NON_INFRINGEMENT_GAIN, BROTHER_IN_LAW_CLAIM_LOSS, BROTHER_IN_LAW_PERMILLE, CONTRACT_RELATION_GAIN, COUNTER_ANSWER_TICKS,
-  GROOM_MIN_AGE, MARRIAGE_TIMES, MARRIAGE_WITNESSES, PROMISE_PAYMENT_TICKS, PROMISE_STAKE, PROMISE_SUPPORT_TICKS, WILL_CHANGE_PERMILLE,
+  BREACHED_NON_INFRINGEMENT_GAIN, BROTHER_IN_LAW_CLAIM_LOSS, BROTHER_IN_LAW_PERMILLE, CONTRACT_RELATION_GAIN, COUNTER_ANSWER_TICKS, DEBT_INSTALMENT_MAX_YEARS,
+  GROOM_MAX_AGE, GROOM_MIN_AGE, MARRIAGE_TIMES, MARRIAGE_WITNESSES, PROMISE_PAYMENT_TICKS, PROMISE_STAKE, PROMISE_SUPPORT_TICKS, WILL_CHANGE_PERMILLE,
   WILL_FAVOUR_PENNIES,
 } from "../content/diplomacyConfig";
 import { FEMALE_GIVEN_NAMES, MALE_GIVEN_NAMES } from "../content/personNames";
@@ -19,7 +19,7 @@ import { estatesOf, LORD, raiseClaim } from "./estates";
 import { hairWords, populationTraits } from "./heredity";
 import { lordshipOf } from "./lordshipState";
 import { counterOffer, diplomacyOf, evaluateOffer, offerDraw } from "./negotiation";
-import { ageBandOf, ageOf, currentYear, weightedName } from "./persons";
+import { ageBandOf, ageOf, currentYear, manorLord, weightedName } from "./persons";
 import { MANOR_HOUSEHOLD, type Person } from "./persons.types";
 import { choosePortraitIdentity } from "./portraits";
 import { hashSeed } from "./prng";
@@ -37,24 +37,81 @@ function withDiplomacy(state: GameState, diplomacy: DiplomacyState): GameState {
 
 // --- NG-7 the two candidates -------------------------------------------------------------------------------------------
 
-/** NG-7 API: the groom — the lord's house's eldest son of age and unmarried; the bride — the old lord's elder unmarried daughter. */
-export function marriageCandidates(state: GameState): { readonly groom: Person | null; readonly bride: Person | null } {
+/** FIX-12 (item 2, NG-7a): who a groom is to the lord — a son, the widowed lord himself, a brother, a nephew, a cousin. */
+export type GroomRelation = "son" | "widowed_lord" | "brother" | "nephew" | "cousin";
+export interface GroomCandidate { readonly person: Person; readonly relation: GroomRelation }
+
+/** FIX-12 (item 2): the off-map kin's provisional ids (`kin:<house order>:<n>`); a groom chosen becomes a manor person. */
+const KIN_PREFIX = "kin:";
+
+/**
+ * FIX-12 (item 2, NG-7a): the lord's house's men off the map (on the home estate's lands, not in the town) — from the
+ * seed and the house: a younger brother (six houses in ten; married seven in ten), his son when the brother is old
+ * enough (a nephew), and a cousin (always). Their ages run from the house's first year; nothing is stored until one of
+ * them is married.
+ */
+export function lordHouseKin(state: GameState): readonly GroomCandidate[] {
+  const house = lordshipOf(state).house;
+  const startYear = currentYear({ ...state, tick: house.since });
+  const salt = (what: string) => hashSeed(state.seed, `lord-kin:${what}`, house.order);
+  const surname = (state.persons?.people ?? []).find(person => person.tags.includes(`lord-house:${house.order}`) && person.surname !== undefined)?.surname;
+  const lineageId = (state.persons?.people ?? []).find(person => person.tags.includes(`lord-house:${house.order}`) && person.role === "head")?.lineageId ?? `lin:house-${house.order}`;
+  const kin: GroomCandidate[] = [];
+  const make = (index: number, relation: GroomRelation, born: number, fatherId?: string, married = false) => {
+    const traits = populationTraits(state.seed, `lord-kin:${house.order}`, index);
+    const id = `${KIN_PREFIX}${house.order}:${index}`;
+    const draft = { id, sex: "male" as const, classBand: "gentry" as const, build: traits.buildBias, occupation: "", tags: ["lord-family", `lord-kin:${relation}`, ...(married ? ["married"] : [])], role: "kin" as const, traits };
+    const person: Person = { ...draft, givenName: weightedName(MALE_GIVEN_NAMES, hashSeed(state.seed, `lord-kin-name:${house.order}`, index)),
+      ...(surname === undefined ? {} : { surname }), birthYear: born, householdId: `lord-kin:${house.order}`, hair: hairWords(traits), alive: true, lineageId,
+      ...(fatherId === undefined ? {} : { fatherId }), portraitIdentity: choosePortraitIdentity(state.seed, draft, ageBandOf(Math.max(0, startYear - born)), new Map()) };
+    kin.push({ person, relation });
+    return person;
+  };
+  if (salt("brother") % 10 < 6) {
+    const brotherAge = 28 + salt("brother-age") % 12;
+    const brother = make(1, "brother", startYear - brotherAge, undefined, salt("brother-married") % 10 < 7);
+    if (brotherAge >= 36) make(2, "nephew", startYear - (brotherAge - 20 - salt("nephew-age") % 5), brother.id);
+  }
+  make(3, "cousin", startYear - (14 + salt("cousin-age") % 10));
+  return kin;
+}
+
+/**
+ * NG-7 / FIX-12 (item 2, NG-7a) API: the grooms the lord's house can offer, in order — its unmarried sons of age (eldest
+ * first), the lord himself when widowed, then its men off the map (a brother, a nephew, a cousin) of age and unmarried.
+ * A groom is GROOM_MIN_AGE…GROOM_MAX_AGE.
+ */
+export function marriageGrooms(state: GameState): readonly GroomCandidate[] {
   const order = lordshipOf(state).house.order;
   const year = currentYear(state);
   const people = state.persons?.people ?? [];
   const married = new Set(people.flatMap(person => person.tags.filter(tag => tag.startsWith("spouse-of:")).map(tag => tag.slice("spouse-of:".length))));
-  const groom = people.filter(person => person.householdId === MANOR_HOUSEHOLD && person.tags.includes(`lord-house:${order}`) && person.sex === "male"
-    && person.role === "child" && ageOf(person, year) >= GROOM_MIN_AGE && !married.has(person.id))
-    .sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id))[0] ?? null;
+  const ofAge = (person: Person) => ageOf(person, year) >= GROOM_MIN_AGE && ageOf(person, year) <= GROOM_MAX_AGE && !married.has(person.id);
+  const sons = people.filter(person => person.householdId === MANOR_HOUSEHOLD && person.tags.includes(`lord-house:${order}`) && person.sex === "male"
+    && person.role === "child" && ofAge(person)).sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id));
+  const lord = manorLord(people, order, year);
+  const widowed = lord !== undefined && lord.sex === "male" && ofAge(lord)
+    && !people.some(person => person.alive && person.householdId === MANOR_HOUSEHOLD && person.tags.includes(`lord-house:${order}`)
+      && person.id !== lord.id && (person.role === "spouse" || (person.role === "head" && person.sex === "female")));
+  // A kin already married into the manor (a contract made) is a manor person now, no longer off the map.
+  const materialised = new Set(people.flatMap(person => person.tags.filter(tag => tag.startsWith("kin-of:")).map(tag => tag.slice("kin-of:".length))));
+  const kin = lordHouseKin(state).filter(entry => !materialised.has(entry.person.id) && !entry.person.tags.includes("married") && ofAge(entry.person));
+  return [...sons.map(person => ({ person, relation: "son" as const })), ...(widowed ? [{ person: lord, relation: "widowed_lord" as const }] : []), ...kin];
+}
+
+/** NG-7 API: the groom (the first of `marriageGrooms`, or the one asked for) and the bride — the old lord's elder unmarried daughter. */
+export function marriageCandidates(state: GameState, groomId?: string): { readonly groom: Person | null; readonly bride: Person | null; readonly relation: GroomRelation | null } {
+  const grooms = marriageGrooms(state);
+  const chosen = groomId === undefined ? grooms[0] : grooms.find(entry => entry.person.id === groomId);
   const estate = estatesOf(state).estates.find(entry => entry.id === MARRIAGE_ESTATE_ID);
   const bride = estatesOf(state).people.filter(person => person.alive && person.sex === "female" && person.fatherId === estate?.house?.lordId
     && !person.tags.includes("married-out")).sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id))[0] ?? null;
-  return { groom, bride };
+  return { groom: chosen?.person ?? null, bride, relation: chosen?.relation ?? null };
 }
 
 /** NG-7 API: why a marriage offer would be refused now, or null. */
-export function marriageRefusal(state: GameState, terms: readonly Term[]): MarriageRefusal | null {
-  const { groom, bride } = marriageCandidates(state);
+export function marriageRefusal(state: GameState, terms: readonly Term[], groomId?: string): MarriageRefusal | null {
+  const { groom, bride } = marriageCandidates(state, groomId);
   if (groom === null) return "no_groom";
   if (bride === null) return "no_bride";
   const diplomacy = diplomacyOf(state);
@@ -76,9 +133,9 @@ function withConsent(terms: readonly Term[]): readonly Term[] {
  * NG-7: the lord's marriage offer — weighed now and answered by the seed's draw: accepted (the contract is made),
  * countered (the counter waits a season for the lord), or refused. Refused offers (`marriageRefusal`) change nothing.
  */
-export function proposeMarriage(state: GameState, offered: readonly Term[]): GameState {
-  if (marriageRefusal(state, offered) !== null) return state;
-  const { groom, bride } = marriageCandidates(state);
+export function proposeMarriage(state: GameState, offered: readonly Term[], groomId?: string): GameState {
+  if (marriageRefusal(state, offered, groomId) !== null) return state;
+  const { groom, bride } = marriageCandidates(state, groomId);
   const terms = withConsent(offered);
   const diplomacy = diplomacyOf(state);
   const ordinal = diplomacy.nextNegotiation;
@@ -123,8 +180,16 @@ function contractPromises(diplomacy: DiplomacyState, negotiation: Negotiation, t
   let next = diplomacy;
   const base = { negotiationId: negotiation.id, witnesses: MARRIAGE_WITNESSES, stake: PROMISE_STAKE };
   for (const term of terms) {
+    // FIX-12 (item 1, NG-6): a debt taken on by instalments is a promise a year, the last one taking the remainder.
     if (term.giver === "proposer" && term.kind === "debt_assumption") {
-      next = promise(next, { ...base, promisor: LORD, promisee: negotiation.counterpart, term: term.kind, amount: term.amount ?? 0, deadline: tick + PROMISE_PAYMENT_TICKS }).diplomacy;
+      const total = term.amount ?? 0;
+      const years = Math.max(1, Math.min(DEBT_INSTALMENT_MAX_YEARS, term.years ?? 1));
+      const instalment = Math.ceil(total / years);
+      for (let year = 1; year <= years; year += 1) {
+        const amount = year < years ? instalment : total - instalment * (years - 1);
+        if (amount <= 0) continue;
+        next = promise(next, { ...base, promisor: LORD, promisee: negotiation.counterpart, term: term.kind, amount, deadline: tick + year * PROMISE_PAYMENT_TICKS }).diplomacy;
+      }
     }
     if (term.giver === "proposer" && term.kind === "pension") {
       for (let year = 1; year <= (term.years ?? 1); year += 1) {
@@ -199,9 +264,28 @@ function contract(state: GameState, negotiation: Negotiation, terms: readonly Te
   const claimId = estatesOf(claimed).claims.at(-1)!.id;
   let diplomacy = contractPromises(diplomacyOf(claimed), negotiation, terms, state.tick);
   diplomacy = { ...diplomacy, relations: { ...diplomacy.relations, [negotiation.counterpart]: (diplomacy.relations[negotiation.counterpart] ?? 0) + CONTRACT_RELATION_GAIN } };
-  const plan: MarriagePlan = { negotiationId: negotiation.id, groomId: negotiation.groomId, brideId: negotiation.brideId, estateId: MARRIAGE_ESTATE_ID,
+  const groomed = groomToManor(claimed, negotiation.groomId);
+  const plan: MarriagePlan = { negotiationId: negotiation.id, groomId: groomed.groomId, brideId: negotiation.brideId, estateId: MARRIAGE_ESTATE_ID,
     contractedTick: state.tick, stage: "contracted", claimId, events: {} };
-  return withDiplomacy(claimed, { ...diplomacy, marriage: plan });
+  return withDiplomacy(groomed.state, { ...diplomacy, marriage: plan });
+}
+
+/**
+ * FIX-12 (item 2, NG-7a): a groom from off the map comes to the manor at the contract — a manor person of the lord's
+ * house (the family's own ordinal), tagged with the kin id he had (`kin-of:`), so he is no longer offered.
+ */
+function groomToManor(state: GameState, groomId: string): { readonly state: GameState; readonly groomId: string } {
+  const persons = state.persons;
+  if (!groomId.startsWith(KIN_PREFIX) || persons === undefined) return { state, groomId };
+  const kin = lordHouseKin(state).find(entry => entry.person.id === groomId);
+  if (kin === undefined) return { state, groomId };
+  const ordinal = persons.lordOrdinal ?? 1;
+  const id = `m-${String(ordinal).padStart(6, "0")}`;
+  const order = lordshipOf(state).house.order;
+  const { fatherId: _offMapFather, ...person } = kin.person;
+  const groom: Person = { ...person, id, householdId: MANOR_HOUSEHOLD, role: "kin",
+    tags: ["lord-family", `lord-house:${order}`, `lord-kin:${kin.relation}`, `kin-of:${groomId}`] };
+  return { state: { ...state, persons: { ...persons, people: [...persons.people, groom].sort((a, b) => a.id.localeCompare(b.id)), lordOrdinal: ordinal + 1 } }, groomId: id };
 }
 
 function withPlan(state: GameState, plan: MarriagePlan): GameState {
@@ -377,8 +461,13 @@ function advanceMarriage(state: GameState): GameState {
  * standard terms (a portion of a third of the treasury, the counterpart's word and the bride's residence) and takes a
  * counter it can pay at signing; it never offers twice. Returns the commands it would send (the caller dispatches them).
  */
-export function lordBotMarriageCommands(state: GameState): readonly ({ readonly type: "propose_marriage"; readonly terms: readonly Term[] } | { readonly type: "answer_counter"; readonly negotiationId: string; readonly accept: boolean })[] {
+export function lordBotMarriageCommands(state: GameState): readonly ({ readonly type: "propose_marriage"; readonly terms: readonly Term[] }
+  | { readonly type: "answer_counter"; readonly negotiationId: string; readonly accept: boolean } | { readonly type: "keep_promise"; readonly promiseId: string })[] {
   const diplomacy = diplomacyOf(state);
+  // FIX-12 (item 1): the lord keeps each of his promises once the treasury carries it (the earliest first).
+  const due = diplomacy.promises.find(entry => entry.status === "open" && entry.promisor === LORD && state.tick <= entry.deadline
+    && (entry.amount ?? 0) <= treasuryBalance(state));
+  if (due !== undefined) return [{ type: "keep_promise", promiseId: due.id }];
   const countered = diplomacy.negotiations.find(entry => entry.status === "countered");
   if (countered !== undefined) return [{ type: "answer_counter", negotiationId: countered.id, accept: cashOf(countered.counter?.terms ?? []) <= treasuryBalance(state) }];
   if (diplomacy.negotiations.length > 0) return [];
