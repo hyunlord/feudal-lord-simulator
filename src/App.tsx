@@ -92,6 +92,7 @@ import { personRow, stewardPerson } from "./ui/persons/personModels";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
 import { AppModals } from "./ui/screens/AppModals";
 import { readWelcomeDismissed, WelcomeParchment, writeWelcomeDismissed } from "./ui/screens/WelcomeScreen";
+import { isDefaultLand, landStartCommand, type LandChoice } from "./ui/landChoice";
 import { menAwayLine } from "./ui/lordshipModel";
 
 /** UX-0b: how long the season card waits after the last press before it opens (a press in flight is not swallowed). */
@@ -386,24 +387,29 @@ export function App() {
     const timer = window.setTimeout(() => setChapterLoading(false), CHAPTER_LOADING_MS);
     return () => window.clearTimeout(timer);
   }, [chapterLoading]);
-  const dismissWelcome = () => {
+  // LAND-UI (LU-D7): every start takes the land picked on the welcome; the riverside on map 1 (the default) is today's
+  // start exactly, any other land sends its land and seed and gives the tutorial no state (as a start over a save does).
+  // A click anywhere starts the picked land too.
+  const dismissWelcome = (land: LandChoice) => {
+    if (!saveSystem.offerContinue && !isDefaultLand(land)) { startScenarioWithoutSave(DEFAULT_SCENARIO_ID, land); return; }
     writeWelcomeDismissed();
     setWelcomeVisible(false);
     if (saveSystem.offerContinue) saveSystem.declineContinue();
     else tutorial.startNewGame(welcomeTutorial, state);
   };
-  const startNewGameOverSave = (scenarioId: string) => {
+  const startNewGameOverSave = (scenarioId: string, land: LandChoice) => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
-    dispatch({ type: "start_new_game", scenarioId });
+    dispatch(landStartCommand(scenarioId, land, true) ?? { type: "start_new_game", scenarioId });
     saveSystem.startNewGame();
     tutorial.startNewGame(welcomeTutorial && scenarioId === DEFAULT_SCENARIO_ID, null);
   };
-  const startScenarioWithoutSave = (scenarioId: string) => {
+  const startScenarioWithoutSave = (scenarioId: string, land: LandChoice) => {
     writeWelcomeDismissed();
     setWelcomeVisible(false);
-    if (scenarioId !== DEFAULT_SCENARIO_ID) dispatch({ type: "start_new_game", scenarioId });
-    tutorial.startNewGame(welcomeTutorial && scenarioId === DEFAULT_SCENARIO_ID, scenarioId === DEFAULT_SCENARIO_ID ? state : null);
+    const command = landStartCommand(scenarioId, land, false);
+    if (command !== null) dispatch(command);
+    tutorial.startNewGame(welcomeTutorial && scenarioId === DEFAULT_SCENARIO_ID, command === null ? state : null);
   };
   // Undo (UX-1 HUD "undo"): cancels the newest construction site; the tutorial draws attention to it after the well.
   const newestSite = [...state.constructionSites].reverse().find(site => site.kind !== "palisade_segment" && site.kind !== "stone_wall_segment");
@@ -556,8 +562,8 @@ export function App() {
         continueLine={saveSystem.offerContinue ? saveSystem.latest?.summary?.line ?? "" : null}
         archiveNotice={saveSystem.latest?.summary ? formatNewGameArchiveNotice(saveSystem.latest.summary) : null}
         onContinue={continueSavedGame}
-        onNewGame={scenarioId => { setChapterLoading(true); startNewGameOverSave(scenarioId); }}
-        onChooseMode={scenarioId => { setChapterLoading(true); startScenarioWithoutSave(scenarioId); }}
+        onNewGame={(scenarioId, land) => { setChapterLoading(true); startNewGameOverSave(scenarioId, land); }}
+        onChooseMode={(scenarioId, land) => { setChapterLoading(true); startScenarioWithoutSave(scenarioId, land); }}
         tutorialEnabled={welcomeTutorial}
         onTutorialChange={setWelcomeTutorial}
       /> : null}
