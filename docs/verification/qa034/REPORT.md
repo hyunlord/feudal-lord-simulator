@@ -49,3 +49,15 @@
 ## 남은 것
 - 감사 규칙 셋(내용 존재·HUD 겹침·글과 장식선, 1024 × 768·1280 × 720 보기)과 QA-035·QA-015 고침: UIAUDIT-R15로 이어서 푸시.
 - LAND-UI: 멈춤, UIAUDIT-R15 뒤에 다시.
+
+## 두 번째 표면: 계절 결산 (QA-034 같은 원인, 2026-10-01 저녁)
+- UIAUDIT-R15의 새 내용 존재 규칙 첫 전체 실행(`render-UIAUDITR15-full-6a52380`)이 계절 결산 카드의 제목·줄·계속 버튼이 칠해지지 않음을 20조건 모두에서 잡았다.
+  - 원인은 같다: `.season-ledger-body`가 보통 흐름, 틀 층(`span.season-ledger-frame`, 채운 9-slice)이 그 위.
+  - 처음 탐침은 `elementFromPoint`로 맨 위 요소를 봤다. 이 틀 층은 `pointer-events: none`이라 탐침이 건너뛰어 "가림 0"으로 잘못 읽었다. 새 규칙은 칠해진 픽셀을 비교해서 잡았다.
+- 고침: `.season-ledger-body { position: relative; }`, 시험 `frameLayerPaintOrder` 둘째 항목. 캡처: [본선](season-ledger-trunk-1280.jpg) · [고친 뒤](season-ledger-after-1280.jpg).
+- 관문(DGX):
+  - 기하 감사 `render-QA034b-geom-4d1d089`: 996칸 중 994 측정, 센 실패 0(예외 1이 덮는 12), 기준 목록 0, 새 실패 0. 측정 못 한 2칸은 태블릿의 장 불러오기 화면(잠깐 떴다 사라지는 화면, DGX 부하 39)이다.
+  - 같은 줄을 다시 잰 `render-QA034b-loading-4d1d089`: 그 2칸 측정, 실패 0.
+  - 그래서 경고 무시 **1회**(이유: 측정 못 한 2칸을 따로 다시 재어 통과).
+  - 깨끗한 클론 `render-QA034b-clone-4d1d089`: 4,175/4,175, build 통과.
+- 실행 위치: DGX(기하 감사·재측정·클론), Mac(새 규칙 부분 감사 — `FLS_ALLOW_LOCAL=1`, 짧은 `--only` 두 번, 계절 결산 캡처).
