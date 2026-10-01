@@ -32,8 +32,9 @@ function pixels(capture: Rgba, origin: Origin, box: Box, by = 0) {
   return { l, t, r, b, empty: r <= l || b <= t };
 }
 
-/** Pixels inside `boxes` (each once) that differ between the two captures. */
-export function changedPixels(a: Rgba, b: Rgba, origin: Origin, boxes: readonly Box[]): number {
+/** Pixels inside `boxes` (each once) that differ between the two captures; null when no pixel of them is in the capture
+ * (scrolled out of the root, or beyond the screen: nothing to judge). */
+export function changedPixels(a: Rgba, b: Rgba, origin: Origin, boxes: readonly Box[]): number | null {
   if (a.width !== b.width || a.height !== b.height) throw new Error("the two captures differ in size");
   const seen = new Set<number>(); let changed = 0;
   for (const box of boxes) {
@@ -44,7 +45,8 @@ export function changedPixels(a: Rgba, b: Rgba, origin: Origin, boxes: readonly 
       if (Math.abs(a.data[i]! - b.data[i]!) > CHANGE || Math.abs(a.data[i + 1]! - b.data[i + 1]!) > CHANGE || Math.abs(a.data[i + 2]! - b.data[i + 2]!) > CHANGE) changed += 1;
     }
   }
-  return changed;
+  // A few pixels at a box's edge are not enough to judge (a line half scrolled out).
+  return seen.size < 12 ? null : changed;
 }
 
 const luminance = (data: Uint8Array, i: number) => 0.299 * data[i]! + 0.587 * data[i + 1]! + 0.114 * data[i + 2]!;
@@ -88,7 +90,7 @@ export function paintFacts(collected: Collected, a: Rgba, b: Rgba, origin: Origi
   const sampled = (item: Item) => item.rect !== null && !(item.kind === "text" && item.inControls.length > 0) && !(item.kind === "control" && item.control?.variant === "surface")
     && (item.kind === "text" || item.kind === "control");
   const counts = items.map(item => !sampled(item) ? null : changedPixels(a, b, origin, item.kind === "text" ? item.lines ?? [item.rect!] : [item.rect!]));
-  const requires = (collected.requires ?? []).map(required => required.rects.map(rect => changedPixels(a, b, origin, [rect])));
+  const requires = (collected.requires ?? []).map(required => required.rects.map(rect => changedPixels(a, b, origin, [rect])).filter((count): count is number => count !== null));
   const crossings: { item: number; line: Box; axis: "x" | "y" }[] = [];
   items.forEach((item, index) => {
     if (item.kind !== "text" || item.inControls.length > 0 || item.rect === null) return;

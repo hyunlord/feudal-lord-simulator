@@ -17,7 +17,7 @@ const box = (l: number, t: number, r: number, b: number) => ({ l: origin.x + l, 
 
 test("changed pixels: glyphs that the second capture hides change; a covered text does not", () => {
   const withText = capture((x, y) => (x >= 10 && x < 40 && y >= 10 && y < 18 && x % 3 === 0 ? 40 : 220));
-  assert.ok(changedPixels(withText, parchment, origin, [box(10, 10, 40, 18)]) > 50);
+  assert.ok((changedPixels(withText, parchment, origin, [box(10, 10, 40, 18)]) ?? 0) > 50);
   assert.equal(changedPixels(parchment, parchment, origin, [box(10, 10, 40, 18)]), 0);
 });
 

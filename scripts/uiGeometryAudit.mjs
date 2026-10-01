@@ -29,7 +29,6 @@ import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures } fro
 import { HIDE_CSS, paintFacts, STILL_CSS } from './uiGeometryPaint.ts';
 import { decodePng } from './keyartDerivatives.ts';
 import { extremeNumbers, mapTile, sceneTile } from './uiGeometryScene.ts';
-import { DEFAULT_GAME_STATE } from '../src/state/gameStore.ts';
 
 const [out] = process.argv.slice(2);
 const flag = name => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
@@ -95,8 +94,7 @@ async function loadScene(scene, condition) {
     opened.page.on('pageerror', error => pageErrors.push(String(error).slice(0, 200)));
     // openScene starts the clock by the 1× seal's name, which the pseudo-long copy lengthens: press the second seal.
     if (scene.run) await opened.page.locator('.speed-seals .speed-seal').nth(1).click({ timeout: 10_000 });
-    // A new game's map steps read today's opening (the state the page starts from).
-    return { ...opened, state: state ?? DEFAULT_GAME_STATE };
+    return { ...opened, state: state ?? { buildings: [], constructionSites: [], walkers: [] } };
   }
   const context = await browser.newContext({ viewport: { width: viewport.width, height: viewport.height }, hasTouch: viewport.touch });
   await context.addInitScript(NAME_SHIM);

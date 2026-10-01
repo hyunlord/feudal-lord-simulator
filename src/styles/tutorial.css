@@ -230,7 +230,11 @@
 
 /* The settings popover opens downward from the top cluster (it opened upward from the bottom console before UX-1). */
 .hud-time-cluster .command-disclosure { position: relative; }
-.hud-time-cluster .command-popover { top: calc(100% + 8px); bottom: auto; right: 0; z-index: 30; max-height: calc(100vh - 96px); }
+/* QA-035: it stops above the action dock (the popover's top is 74 px down; the dock's 63 px and a gap at the foot) and
+   scrolls inside; while it is open, the right-hand column it would sit under (crisis icons, event chips, stuck goods) and
+   the steward's line are hidden — the dock's buttons covered the settings' last row ("불러오기") at 1024×768 and 1280×720. */
+.hud-time-cluster .command-popover { top: calc(100% + 8px); bottom: auto; right: 0; z-index: 30; max-height: calc(100vh - 152px); }
+.app-shell:has(.hud-time-cluster .settings-disclosure[open]) :is(.crisis-icons, .event-cards, .action-dock + .steward-bubble, .steward-line) { visibility: hidden; }
 /* The zone layer hides the categories (the flex display must not override `hidden`). */
 .build-menu-categories[hidden] { display: none; }
 /* The pause label and the unlock banner sit below the resource bar (72 px tall with its top gap; 120 px when it wraps). */

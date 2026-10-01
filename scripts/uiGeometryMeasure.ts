@@ -76,7 +76,7 @@ export type Collected = {
   /** Visible framed roots (data-frame) on the page that no registry root selector matches. */
   readonly unregistered?: readonly { readonly kind: string; readonly path: string }[];
   /** The row's required elements: each selector's shown matches (rects) and how many matches are not shown. */
-  readonly requires?: readonly { readonly selector: string; readonly rects: readonly Box[]; readonly hidden: number }[];
+  readonly requires?: readonly { readonly selector: string; readonly rects: readonly Box[]; readonly hidden: number; readonly scrolled?: number }[];
   /** Always-on HUD controls (not inside the root, not holding it) whose box meets the root's: the shared part, whether
    * the HUD is the topmost element there (it paints over the surface), and whether it is live elsewhere (topmost at its
    * own points, or under a layer that paints nothing). */
@@ -266,7 +266,9 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
   const requires = (spec.requires ?? []).map(selector => {
     const matches = [...root.querySelectorAll(selector)].filter(element => !excluded(element));
     const visible = matches.filter(shown);
-    return { selector, rects: visible.slice(0, 12).map(element => boxOf(element.getBoundingClientRect())), hidden: matches.length - visible.length };
+    // The visible part (an inner scroller clips it; scrolled wholly out, it is reachable and not judged).
+    const parts = visible.map(element => element.parentElement === null ? null : visiblePart(boxOf(element.getBoundingClientRect()), regionFor(element.parentElement)));
+    return { selector, rects: parts.filter((part): part is Box => part !== null).slice(0, 12), hidden: matches.length - visible.length, scrolled: parts.filter(part => part === null).length };
   });
   // The HUD: hit tests with every element taking the pointer (a container that lets clicks through still paints).
   const hud: NonNullable<Collected["hud"]>[number][] = [];
@@ -493,6 +495,7 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
   }
   // h. content: the required elements are there, shown and painted; no text or control is painted over.
   for (const required of collected.requires ?? []) {
+    if (required.rects.length === 0 && (required.scrolled ?? 0) > 0) continue;
     if (required.rects.length === 0) { fail("content", required.hidden > 0 ? `required ${required.selector} not shown (no size, hidden or transparent)` : `required ${required.selector} missing`, required.selector, 0, null); continue; }
     const changed = collected.paint?.requires[(collected.requires ?? []).indexOf(required)];
     if (changed !== undefined && changed.length > 0 && changed.every(count => count < PAINTED_MIN)) fail("content", `required ${required.selector} not painted (covered by another layer)`, required.selector, 0, required.rects[0]!);
