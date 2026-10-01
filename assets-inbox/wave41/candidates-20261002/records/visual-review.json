@@ -1,0 +1,19 @@
+{
+  "status": "PASS_WITH_RECORDED_LIMITATIONS",
+  "reviewed_assets": 29,
+  "root_viewed_all_final_asset_groups": true,
+  "independent_reviews": [
+    "overlay-independent-review.md",
+    "wood-independent-review.md",
+    "title-independent-review.md"
+  ],
+  "offline_scales": [
+    0.5,
+    1,
+    1.4
+  ],
+  "runtime_verified": false,
+  "title_limit": "generated 1672x941, final1920x1080 single resample; slightly warmer sunset",
+  "preservation": "original canvas and alpha support retained; smoke density intentionally reduced; localized title chimney edits; internal material repaint not pixel identity",
+  "rock_repeat": "opposite edge RGB MAE=0 after original boundary restoration"
+}

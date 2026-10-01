@@ -1,0 +1,129 @@
+{
+  "ordinal": 21,
+  "attempt": 1,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "prompt": "Precise material-only edit of input farmhouse sprite. Maintain exact original160:136 canvas aspect, padding, footprint, contact, roof and building outline, perspective, every beam, door and stacked logs position. Do not add snow: retain the actual state visible in this reference. Reduce stippled noisy straw and limewash to quiet hand-painted material planes with a few directional brush strokes. Original muted palette and upper-left illumination. No redesign or newly invented objects. Transparent original empty regions. No crop, rotate, recenter, enlargement or text. Output one sprite.",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-787ebfe5-95e1-4278-901a-8e913e2987b6.png",
+  "raw_copy": "raw/21-attempt1.png",
+  "inspection": {
+    "status": "PASS_WITH_LIMITATIONS",
+    "alpha_difference_pixels": 0,
+    "raw_geometry_pass": false,
+    "proof": "proofs/lane-material/21-final-comparison.jpg",
+    "limitation": "Selective roof and wood/limewash interior material improvement. Thin tools, framing and remaining boundary noise preserved.",
+    "visual_review": "Final 3x comparison viewed: roof texture less stippled; selected wood and limewash internal color fields quieter. Cart/plough, structural outlines and openings retained. Rock major slab/crack arrangement retained with reduced contrast.",
+    "outside_edit_mask_difference_pixels": 0
+  },
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/21-farmstead_winter-v1.png",
+      "sha256": "d82cc06d1983df7df8d7b2eee0d9e8f6bb89b2904874056fdc4c562fafcdcbb5",
+      "role": "immutable_geometry"
+    }
+  ],
+  "raw_sha256": "0bbce08a0a42b082b11c81b34a20f9825d897b77d134c12aaafa0d11a4de6b36",
+  "raw_alpha_iou": 0.8540698204356941,
+  "raw_alpha_different_pixels": 10856,
+  "final_path": "assets/21-farmstead_winter-v1-wave41-v1.png",
+  "final_sha256": "7f33b288f3a7ce8904b4793e31e17b04feef4772ed0c08010a8a374c0458212d",
+  "postprocessing": {
+    "resize": "one full-canvas resize, no trim",
+    "method": "Selective roof-interior generated-RGB composite (max0.92,2px feather) and selected wood/limewash interiors (0.5, same-material color gates excluding dark structural pixels). Original alpha bit-exact. No geometry transform.",
+    "polygons": [
+      [
+        [
+          13,
+          60
+        ],
+        [
+          47,
+          19
+        ],
+        [
+          146,
+          69
+        ],
+        [
+          87,
+          92
+        ],
+        [
+          57,
+          76
+        ],
+        [
+          41,
+          52
+        ],
+        [
+          35,
+          54
+        ],
+        [
+          17,
+          62
+        ]
+      ]
+    ],
+    "modified_region_pixels": 4413,
+    "wall_polygons": [
+      [
+        [
+          26,
+          70
+        ],
+        [
+          48,
+          81
+        ],
+        [
+          48,
+          103
+        ],
+        [
+          26,
+          91
+        ]
+      ],
+      [
+        [
+          59,
+          87
+        ],
+        [
+          68,
+          92
+        ],
+        [
+          68,
+          107
+        ],
+        [
+          59,
+          103
+        ]
+      ],
+      [
+        [
+          18,
+          66
+        ],
+        [
+          23,
+          69
+        ],
+        [
+          23,
+          81
+        ],
+        [
+          18,
+          78
+        ]
+      ]
+    ],
+    "source_retained": "all alpha; pixels outside selected roof/wood/limewash interiors; cart, plough, wheels, openings, bags, logs and roof boundaries"
+  }
+}

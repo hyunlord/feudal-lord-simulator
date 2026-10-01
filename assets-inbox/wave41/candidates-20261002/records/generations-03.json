@@ -1,0 +1,58 @@
+{
+  "ordinal": 3,
+  "attempt": 1,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "prompt": "Use case: precise-object-edit / style-transfer.\nAsset: one existing installed Feudal Lord Simulator game image; non-destructive Wave41 revision.\nInput1 is the immutable geometry reference. Edit this image, do not design a different asset.\nUnify wooden planks with the project bridge SW/NW-B reference: warm weathered oak grain, subtle worn corners, painterly surface. Do not add/remove/move any plank, support, shore earth or fastener.\nART_BIBLE_v2: soft hand-painted prerender, muted southern English1300-1450 material palette, upper-left world lighting, no black cartoon outline, no added text/watermark.\nMaintain EXACT original canvas aspect 256:192, original transparent padding, anchor/pivot, ground contact, silhouette, perspective and occupied bounds. Do not crop, recenter or rotate. Output exactly one image; no comparison sheet.\nGenuine transparent background. All originally empty regions remain transparent.\nInput2 and Input3 are material/brushwork references ONLY. Keep Input1's exact perspective, outline, transparent margins, every plank seam and support positions. Render at the same 4:3 canvas aspect. Do not copy the geometry of Input2/3. Preserve the existing visible plank count.",
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/03-bridge_abutment_se_a-v1.png",
+      "sha256": "7b126c2afdd3e38a029959e32339bf179e4ae973e760242d46ade4ba217ae9f4"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/module/bridge_abutment_sw_a-v1.png",
+      "sha256": "045aa0fa3b4c1a676e2de83b199dace9daa98d92e46c58f914dcabe24c88ab4f"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/module/bridge_abutment_nw_b-v1.png",
+      "sha256": "43ebadff4c81f40a7d4aa6f84b86420ce4b993cc3b7da4eea11fb647bd329709"
+    }
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-a3fb-7f81-8832-01110f2fccc6/exec-b26ec513-c58a-40cb-8645-ef66098c1f80.png",
+  "raw_copy": "raw/03-attempt1.png",
+  "inspection": {
+    "status": "candidate_offline_reviewed",
+    "proof": "proofs/lane-wood/03-comparison.jpg",
+    "actual_size_proof": "proofs/lane-wood/actual-size.jpg",
+    "columns": "original / generated registered before original-alpha / final",
+    "reviewer": "audit_history wood lane",
+    "findings": "Warm oak grain and worn surfaces improved; original plank count, broad layout and direction retained. Cyan lower rim removed on 01/02.",
+    "geometry": "Final canvas and all original alpha values are pixel-exact. Generated raw silhouette drift was explicitly registered and masked; raw is not geometry-perfect. Internal material/seam shading is not pixel-identical to source.",
+    "remaining_risk": "Internal seam shading and support bevels vary slightly; verify actual adjoining bridge/fence sockets before installation.",
+    "runtime_installed": false
+  },
+  "raw_sha256": "8d70a6a0e3bc20eb513d1cb93aa00e3e5778dc42f6f7ffac270c30c2232199da",
+  "processing": {
+    "method": "generated alpha bbox registered by affine crop+single Lanczos resize into original alpha bbox; original alpha reapplied pixel-exact; generated RGB extended up to 8px into uncovered original edge. No original geometry rescale. Explicit registration and pre-alpha proof retained.",
+    "original_bbox": {
+      "left": 24,
+      "top": 19,
+      "width": 218,
+      "height": 137
+    },
+    "generated_bbox": {
+      "left": 143,
+      "top": 115,
+      "width": 1266,
+      "height": 803
+    },
+    "registered_alpha_iou": 0.9397692688796093,
+    "uncovered_original_pixels": 43,
+    "alpha_difference_pixels": 0,
+    "output_width": 256,
+    "output_height": 192
+  },
+  "output": "assets/03-bridge_abutment_se_a-v1-wave41-v1.png",
+  "output_sha256": "dc062745c18a355138733b3917868f434b1e1dffa3bdd80983be2d7c8e6507c6"
+}

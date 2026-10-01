@@ -1,0 +1,59 @@
+{
+  "ordinal": 13,
+  "prompt": "Use case: precise-object-edit / style-transfer.\nAsset: one existing installed Feudal Lord Simulator game image; non-destructive Wave41 revision.\nInput1 is the immutable geometry reference. Edit this image, do not design a different asset.\nRetexture the smooth cloud canopy with small readable leaf clumps and broken painterly internal edges, keep original fruit species/color, trunks, every branch position and exact canopy silhouette. Not a species change.\nART_BIBLE_v2: soft hand-painted prerender, muted southern English1300-1450 material palette, upper-left world lighting, no black cartoon outline, no added text/watermark.\nMaintain EXACT original canvas aspect 256:256, original transparent padding, anchor/pivot, ground contact, silhouette, perspective and occupied bounds. Do not crop, recenter or rotate. Output exactly one image; no comparison sheet.\nGenuine transparent background. All originally empty regions remain transparent.\nInput 2 is ONLY a material brushwork reference, never a geometry reference. Preserve Input 1's exact silhouette, occupied bounds and all empty padding. Preserve original fruit color/species and every original trunk and branch; never copy oak shape or species.\nPear foliage: small simple oval pointed leaves, never lobed oak leaves. Do not invent fruit where Input 1 has none.",
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/13-orchard_pear_e-v1.png",
+      "sha256": "ca45bfa3299dc8978918163a41692767af2677d0e907cfb2acb4c2f89eb9cf61"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/wave28/prop/oak_solitary_summer.png",
+      "sha256": "b3c506ba65c937e260fd3311235566c29005c2bfb33d0dd1abfa413683167d12"
+    }
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f80e-2ad3-7712-bae5-a96a3a883ef1/exec-8a9951a4-e949-42ae-83c0-b0f545e17405.png",
+  "raw_copy": "raw/13-attempt1.png",
+  "attempt": 1,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "inspection": {
+    "status": "offline_visual_review_pass_with_disclosed_postprocessing",
+    "proof": "proofs/lane-environment/13-compare.jpg",
+    "views": [
+      "0.5x",
+      "1x",
+      "2x"
+    ],
+    "evidence": "Leaf-clump brush texture replaces cloud fill; original non-foliage RGB, trunks and branch positions retained; original alpha including internal holes unchanged.",
+    "raw_geometry": "Model raw contour and branch drift are NOT claimed to pass. Final uses immutable original alpha; trees also use original non-foliage RGB.",
+    "limitations": [
+      "Offline standalone review only; not installed or runtime-tested.",
+      "Small preserved original foliage edge areas remain where raw generated alpha was absent; no added fruit."
+    ],
+    "measurements": {
+      "ordinal": 13,
+      "dimensions_match": true,
+      "alpha_mismatch_pixels": 0,
+      "protected_nonfoliage_rgb_mismatch_pixels": 0,
+      "visible_changed_pixels": 16891,
+      "source_hash_intact": true
+    }
+  },
+  "raw_sha256": "40c1f2c120e0529f7ce53d075d06ee9a2fc960cbf77e962231913371f2026b74",
+  "output": "assets/13-orchard_pear_e-v1-wave41-v1.png",
+  "output_sha256": "ded1852c37d7a24c33216b7b7b63b2a4ca2ca8428d19462bd4bbcf3954708bf5",
+  "processing": {
+    "raw_dimensions": [
+      1254,
+      1254
+    ],
+    "resize": "one full-canvas downsample to original dimensions; no trim, recenter, crop or rotation",
+    "alpha": "every original alpha byte copied exactly",
+    "rgb": "foliage-only selection from original G >= R*0.97 and G > B*1.18; original trunks/branches/non-green RGB unchanged; 88% generated RGB + 12% original RGB; original fallback where generated alpha <128",
+    "eligible_pixels": 17707,
+    "generated_texture_pixels": 16891,
+    "edge_extension_or_original_fallback_pixels": 816,
+    "alpha_mismatch_pixels": 0
+  }
+}

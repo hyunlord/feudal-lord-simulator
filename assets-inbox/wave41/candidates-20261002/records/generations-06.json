@@ -1,0 +1,59 @@
+{
+  "ordinal": 6,
+  "prompt": "Use case: precise-object-edit / style-transfer.\nAsset: one existing installed Feudal Lord Simulator game image; non-destructive Wave41 revision.\nInput1 is the immutable geometry reference. Edit this image, do not design a different asset.\nRetexture the smooth clay-like hay mound into tangled dry hay fibers organized into medium-sized painterly bundles, warm straw palette, irregular fiber detail INSIDE the original boundary. No alteration to mound outline or base.\nART_BIBLE_v2: soft hand-painted prerender, muted southern English1300-1450 material palette, upper-left world lighting, no black cartoon outline, no added text/watermark.\nMaintain EXACT original canvas aspect 128:128, original transparent padding, anchor/pivot, ground contact, silhouette, perspective and occupied bounds. Do not crop, recenter or rotate. Output exactly one image; no comparison sheet.\nGenuine transparent background. All originally empty regions remain transparent.\nInput 2 is ONLY a material brushwork reference, never a geometry reference. Preserve Input 1's exact silhouette, occupied bounds and all empty padding. Do not add the reference pole or copy its shape.",
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/06-haycock_b-v1.png",
+      "sha256": "42bf67528aad5e618205b25b9ea932b04031419444d4955d1ee6973508424cae"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/wave28/prop/haystack_summer.png",
+      "sha256": "f25afa933ebbf5091dad06a4b3f61cf8b31c8ec20fce813332e00537ccd2ffa5"
+    }
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f80e-2ad3-7712-bae5-a96a3a883ef1/exec-853e0119-302a-4421-a3b3-eea3cee0a54a.png",
+  "raw_copy": "raw/06-attempt1.png",
+  "attempt": 1,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "inspection": {
+    "status": "offline_visual_review_pass_with_disclosed_postprocessing",
+    "proof": "proofs/lane-environment/06-compare.jpg",
+    "views": [
+      "0.5x",
+      "1x",
+      "2x"
+    ],
+    "evidence": "Fibrous straw now legible at native size; original per-asset mound silhouette and contact preserved. Initial smooth rim fixed by reflected generated texture extension inside original alpha.",
+    "raw_geometry": "Model raw contour and branch drift are NOT claimed to pass. Final uses immutable original alpha; trees also use original non-foliage RGB.",
+    "limitations": [
+      "Offline standalone review only; not installed or runtime-tested.",
+      "Reflected texture fills uncovered edge pixels; this is disclosed local texture synthesis, not geometry registration."
+    ],
+    "measurements": {
+      "ordinal": 6,
+      "dimensions_match": true,
+      "alpha_mismatch_pixels": 0,
+      "protected_nonfoliage_rgb_mismatch_pixels": 0,
+      "visible_changed_pixels": 3739,
+      "source_hash_intact": true
+    }
+  },
+  "raw_sha256": "5510ea82a414e0657eb2c3a8467d3f9c4b18d1acddb391955286bd2bb158be2d",
+  "output": "assets/06-haycock_b-v1-wave41-v1.png",
+  "output_sha256": "dbe5d03f6b30b994761c8afb49e35b8e4165038b07208778c4ca45101631ac53",
+  "processing": {
+    "raw_dimensions": [
+      1254,
+      1254
+    ],
+    "resize": "one full-canvas downsample to original dimensions; no trim, recenter, crop or rotation",
+    "alpha": "every original alpha byte copied exactly",
+    "rgb": "88% generated RGB + 12% original RGB inside original silhouette; reflected nearest opaque generated texture extension within 16px for uncovered original edge pixels (no shape movement)",
+    "eligible_pixels": 3739,
+    "generated_texture_pixels": 3739,
+    "edge_extension_or_original_fallback_pixels": 773,
+    "alpha_mismatch_pixels": 0
+  }
+}

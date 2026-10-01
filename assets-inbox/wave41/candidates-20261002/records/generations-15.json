@@ -1,0 +1,58 @@
+{
+  "ordinal": 15,
+  "attempt": 1,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "prompt": "Use case: precise-object-edit / style-transfer.\nAsset: one existing installed Feudal Lord Simulator game image; non-destructive Wave41 revision.\nInput1 is the immutable geometry reference. Edit this image, do not design a different asset.\nUnify oak hurdle posts and slats with the project gate/corner reference: visible restrained grain, warm brown midtones, worn ends. Preserve all rail geometry and connections.\nART_BIBLE_v2: soft hand-painted prerender, muted southern English1300-1450 material palette, upper-left world lighting, no black cartoon outline, no added text/watermark.\nMaintain EXACT original canvas aspect 128:64, original transparent padding, anchor/pivot, ground contact, silhouette, perspective and occupied bounds. Do not crop, recenter or rotate. Output exactly one image; no comparison sheet.\nGenuine transparent background. All originally empty regions remain transparent.\nInput2 and Input3 provide wood grain/brushwork ONLY. Keep Input1's number of posts, all rail endpoints, interwoven connections, EXACT silhouette and image placement unchanged. Subtle irregular weathered oak grain only, no new gate hardware. Full canvas same 2:1 aspect ratio.",
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/15-hurdle_straight-v1.png",
+      "sha256": "163add14852b5b069c5e938d161e2ccbdb859c8bb8167a073d7d662eee151634"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/yards/hurdle_gate-v1.png",
+      "sha256": "b51749af62f59d82cd4c4d3faf42d95c0a7aa048f7e94320cb0c25c5f7ff1579"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/yards/hurdle_corner_e-v1.png",
+      "sha256": "66f0fa08db83db46cb1f4c6cfa218a03283631cc6a403d76d4bed8ad5a398497"
+    }
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-a3fb-7f81-8832-01110f2fccc6/exec-34053454-86ad-4a45-8786-91a7606fe337.png",
+  "raw_copy": "raw/15-attempt1.png",
+  "inspection": {
+    "status": "candidate_offline_reviewed",
+    "proof": "proofs/lane-wood/15-comparison.jpg",
+    "actual_size_proof": "proofs/lane-wood/actual-size.jpg",
+    "columns": "original / generated registered before original-alpha / final",
+    "reviewer": "audit_history wood lane",
+    "findings": "Warm oak grain and post/end detail improved; original post/rail counts and broad connections retained.",
+    "geometry": "Final canvas and all original alpha values are pixel-exact. Generated raw silhouette drift was explicitly registered and masked; raw is not geometry-perfect. Internal material/seam shading is not pixel-identical to source.",
+    "remaining_risk": "Internal seam shading and support bevels vary slightly; verify actual adjoining bridge/fence sockets before installation.",
+    "runtime_installed": false
+  },
+  "raw_sha256": "0db767557026ca98f409fd5513725665ca0b4898b5e55897bccb7649314dd990",
+  "processing": {
+    "method": "generated alpha bbox registered by affine crop+single Lanczos resize into original alpha bbox; original alpha reapplied pixel-exact; generated RGB extended up to 8px into uncovered original edge. No original geometry rescale. Explicit registration and pre-alpha proof retained.",
+    "original_bbox": {
+      "left": 27,
+      "top": 2,
+      "width": 74,
+      "height": 58
+    },
+    "generated_bbox": {
+      "left": 407,
+      "top": 7,
+      "width": 1031,
+      "height": 831
+    },
+    "registered_alpha_iou": 0.8600319318786589,
+    "uncovered_original_pixels": 105,
+    "alpha_difference_pixels": 0,
+    "output_width": 128,
+    "output_height": 64
+  },
+  "output": "assets/15-hurdle_straight-v1-wave41-v1.png",
+  "output_sha256": "995fcc5fc43d171add99009a91f2d9b1b5ddbaf21cce6cc8094a004db192189e"
+}

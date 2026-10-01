@@ -1,0 +1,21 @@
+{
+  "ordinal": 18,
+  "attempt": 2,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "prompt": "STRICT PIXEL-ALIGNED TEXTURE EDIT. Use provided farmstead sprite as locked base. Keep exact pixel locations of every outline and structure; this is a texture replacement only. Keep original roof ridge from x45,y12 to x131,y51, original cart and plough proportions and positions, every doorway/post. Do NOT redraw objects at new proportions. Work at original160x136 image layout. Remove only checker-like stippling from straw and wall areas, replacing those small internal marks with hand-painted color patches. Keep all original padding and all contours. No new clean vector/cartoon outlines. Background transparent. Output one same-layout sprite.",
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/18-farmstead_a-v1.png",
+      "sha256": "b1ed6db5a0c20ec5a70e58b81b9f707294184f83c5fc551cc446445aa9166846"
+    }
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-137e5b45-1a79-4484-989e-804b2214b4c2.png",
+  "raw_copy": "raw/18-attempt2.png",
+  "inspection": {
+    "status": "rejected",
+    "reason": "Cart and plough reinterpreted despite pixel-aligned prompt."
+  },
+  "raw_sha256": "2200432b7369421fb936d3553c07d7198ddbd52779fd64a12b05cb2f0ab8b283"
+}

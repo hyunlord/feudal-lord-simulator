@@ -1,0 +1,66 @@
+{
+  "ordinal": 16,
+  "attempt": 1,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "prompt": "Use case: precise-object-edit / style-transfer.\nAsset: one existing installed Feudal Lord Simulator game image; non-destructive Wave41 revision.\nInput1 is the immutable geometry reference. Edit this image, do not design a different asset.\nUnify oak hurdle posts and slats with the project gate/corner reference: visible restrained grain, warm brown midtones, worn ends. Preserve all rail geometry and connections.\nART_BIBLE_v2: soft hand-painted prerender, muted southern English1300-1450 material palette, upper-left world lighting, no black cartoon outline, no added text/watermark.\nMaintain EXACT original canvas aspect 128:96, original transparent padding, anchor/pivot, ground contact, silhouette, perspective and occupied bounds. Do not crop, recenter or rotate. Output exactly one image; no comparison sheet.\nGenuine transparent background. All originally empty regions remain transparent.\nInput2 and Input3 provide wood grain/brushwork ONLY. Keep Input1's number of posts, all rail endpoints, joints, EXACT silhouette and image placement unchanged. Subtle irregular weathered oak grain only, no new gate hardware. Full canvas same 4:3 aspect ratio. Keep the flat squared cut timber cross-sections; do not round into logs.",
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/16-hurdle_end_corner-v1.png",
+      "sha256": "089ac5f4e2b9d7c808af72068ebecbfbdce81d0b62b2ef917c8677f99f3296cb"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/yards/hurdle_gate-v1.png",
+      "sha256": "b51749af62f59d82cd4c4d3faf42d95c0a7aa048f7e94320cb0c25c5f7ff1579"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/yards/hurdle_corner_e-v1.png",
+      "sha256": "66f0fa08db83db46cb1f4c6cfa218a03283631cc6a403d76d4bed8ad5a398497"
+    }
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-a3fb-7f81-8832-01110f2fccc6/exec-c8d539bb-2d30-4766-82dc-b5309fedd97c.png",
+  "raw_copy": "raw/16-attempt1.png",
+  "inspection": {
+    "status": "restored_candidate_offline_reviewed_pending_independent_recheck",
+    "geometry": "Original center joint and source high-gradient structural boundaries retained exactly. Grain only in face interiors.",
+    "proof": "proofs/lane-wood/16-junction-restored-comparison.png",
+    "columns": "source / previous candidate / restored final",
+    "runtime_installed": false,
+    "visual_observation": "Source center-post no longer a separate bright upright; source rail-junction positions and broad shading restored. Subtle generated wood grain survives only inside safe opaque face regions. Bright/dark proof and native128x96 opened."
+  },
+  "raw_sha256": "01d68700ff8208f7ff42ecf9826fc13e7cacb1ccca5e5ee361fe9947019fc495",
+  "processing": {
+    "method": "generated alpha bbox registered by affine crop+single Lanczos resize into original alpha bbox; original alpha reapplied pixel-exact; generated RGB extended up to 8px into uncovered original edge. No original geometry rescale. Explicit registration and pre-alpha proof retained.",
+    "original_bbox": {
+      "left": 0,
+      "top": 30,
+      "width": 128,
+      "height": 58
+    },
+    "generated_bbox": {
+      "left": 97,
+      "top": 310,
+      "width": 1255,
+      "height": 577
+    },
+    "registered_alpha_iou": 0.8107946026986507,
+    "uncovered_original_pixels": 208,
+    "alpha_difference_pixels": 0,
+    "output_width": 128,
+    "output_height": 96
+  },
+  "output": "assets/16-hurdle_end_corner-v1-wave41-v1.png",
+  "output_sha256": "9beb7e9e898498067b477b286fbf91cea3a8d5adeb89df97de133f68ccdec9f6",
+  "previous_output_sha256": "00c16103d03ccc775eb88beb16c15d5a368277ea34b3bb2bd65a234ea900a8cf",
+  "post_review_revision": {
+    "reason": "Restore original center-post and rail junction geometry; strong generated center-post face read as separate upright.",
+    "method": "Original RGB/alpha restored as structural base. Exact source junction ROI x51..77,y24..69 retained. Generated wood luminance grain extracted minus Gaussian sigma1 lowpass and transferred at gain1.7 clamped +/-11 only into opaque, low-source-gradient face interiors. All source high-gradient/alpha boundaries remain exact.",
+    "changed_interior_pixels": 969,
+    "protected_opaque_pixels": 1903,
+    "original_alpha_difference_pixels": 0,
+    "central_roi_rgb_difference_pixels": 0,
+    "previous_candidate": "proofs/lane-wood/16-before-junction-restore.png",
+    "proof": "proofs/lane-wood/16-junction-restored-comparison.png"
+  }
+}

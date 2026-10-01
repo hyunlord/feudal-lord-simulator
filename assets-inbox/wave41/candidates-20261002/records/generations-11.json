@@ -1,0 +1,69 @@
+{
+  "ordinal": 11,
+  "prompt": "Use case: precise-object-edit / style-transfer.\nAsset: one existing installed Feudal Lord Simulator game image; non-destructive Wave41 revision.\nInput1 is the immutable geometry reference. Edit this image, do not design a different asset.\nRetexture the smooth cloud canopy with small readable leaf clumps and broken painterly internal edges, keep original fruit species/color, trunks, every branch position and exact canopy silhouette. Not a species change.\nART_BIBLE_v2: soft hand-painted prerender, muted southern English1300-1450 material palette, upper-left world lighting, no black cartoon outline, no added text/watermark.\nMaintain EXACT original canvas aspect 256:256, original transparent padding, anchor/pivot, ground contact, silhouette, perspective and occupied bounds. Do not crop, recenter or rotate. Output exactly one image; no comparison sheet.\nGenuine transparent background. All originally empty regions remain transparent.\nInput 2 is ONLY a material brushwork reference, never a geometry reference. Preserve Input 1's exact silhouette, occupied bounds and all empty padding. Preserve original fruit color/species and every original trunk and branch; never copy oak shape or species.\nCRITICAL species correction: the tree is an APPLE tree. Draw simple small oval leaves with smooth/finely serrated edges. NO lobed leaves, NO oak leaves, NO maple shapes. Input2 supplies brush texture only. The unfruited original stays unfruited.",
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/11-orchard_apple_c-v1.png",
+      "sha256": "3806c241d195a6e8ab2d071e6883218909e0489993c4651d61eb91f79704a060"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/wave28/prop/oak_solitary_summer.png",
+      "sha256": "b3c506ba65c937e260fd3311235566c29005c2bfb33d0dd1abfa413683167d12"
+    }
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f80e-2ad3-7712-bae5-a96a3a883ef1/exec-e0b20f5d-67e0-4830-8710-208efa08e799.png",
+  "raw_copy": "raw/11-attempt2.png",
+  "attempt": 2,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "inspection": {
+    "status": "offline_visual_review_pass_with_disclosed_postprocessing",
+    "proof": "proofs/lane-environment/11-compare.jpg",
+    "views": [
+      "0.5x",
+      "1x",
+      "2x"
+    ],
+    "evidence": "Leaf-clump brush texture replaces cloud fill; original non-foliage RGB, trunks and branch positions retained; original alpha including internal holes unchanged.",
+    "raw_geometry": "Model raw contour and branch drift are NOT claimed to pass. Final uses immutable original alpha; trees also use original non-foliage RGB.",
+    "limitations": [
+      "Offline standalone review only; not installed or runtime-tested.",
+      "Small preserved original foliage edge areas remain where raw generated alpha was absent; no added fruit."
+    ],
+    "measurements": {
+      "ordinal": 11,
+      "dimensions_match": true,
+      "alpha_mismatch_pixels": 0,
+      "protected_nonfoliage_rgb_mismatch_pixels": 0,
+      "visible_changed_pixels": 20105,
+      "source_hash_intact": true
+    }
+  },
+  "raw_sha256": "af953f7873569768a48b28b7147f5eeb11de2d49046ea997a11f33b298618c42",
+  "output": "assets/11-orchard_apple_c-v1-wave41-v1.png",
+  "output_sha256": "9b4e11045540c46e1c477554ae0363b6ee1d9b202ab49905637c8521e09e8753",
+  "processing": {
+    "raw_dimensions": [
+      1254,
+      1254
+    ],
+    "resize": "one full-canvas downsample to original dimensions; no trim, recenter, crop or rotation",
+    "alpha": "every original alpha byte copied exactly",
+    "rgb": "foliage-only selection from original G >= R*0.97 and G > B*1.18; original trunks/branches/non-green RGB unchanged; 88% generated RGB + 12% original RGB; original fallback where generated alpha <128",
+    "eligible_pixels": 20943,
+    "generated_texture_pixels": 20106,
+    "edge_extension_or_original_fallback_pixels": 837,
+    "alpha_mismatch_pixels": 0
+  },
+  "previous_attempts": [
+    {
+      "attempt": 1,
+      "prompt": "Use case: precise-object-edit / style-transfer.\nAsset: one existing installed Feudal Lord Simulator game image; non-destructive Wave41 revision.\nInput1 is the immutable geometry reference. Edit this image, do not design a different asset.\nRetexture the smooth cloud canopy with small readable leaf clumps and broken painterly internal edges, keep original fruit species/color, trunks, every branch position and exact canopy silhouette. Not a species change.\nART_BIBLE_v2: soft hand-painted prerender, muted southern English1300-1450 material palette, upper-left world lighting, no black cartoon outline, no added text/watermark.\nMaintain EXACT original canvas aspect 256:256, original transparent padding, anchor/pivot, ground contact, silhouette, perspective and occupied bounds. Do not crop, recenter or rotate. Output exactly one image; no comparison sheet.\nGenuine transparent background. All originally empty regions remain transparent.\nInput 2 is ONLY a material brushwork reference, never a geometry reference. Preserve Input 1's exact silhouette, occupied bounds and all empty padding. Preserve original fruit color/species and every original trunk and branch; never copy oak shape or species.",
+      "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f80e-2ad3-7712-bae5-a96a3a883ef1/exec-29d8fc63-388d-45ff-be7c-f9fed5a945e8.png",
+      "raw_copy": "raw/11-attempt1.png",
+      "raw_sha256": "1a4a71460ac707a5e599cddd0cdee12d61d70c975f8dffdd6e4a1e6eb90bb46d",
+      "rejection": "Some leaf shapes read as lobed oak; retry with explicit simple oval apple leaves."
+    }
+  ]
+}
