@@ -161,9 +161,16 @@ function moveTo(state: GameState, since: number): GameState {
   const contracted = diplomacyOf(state).marriage!.contractedTick;
   for (const at of [MARRIAGE_TIMES.brideArrives, MARRIAGE_TIMES.childBorn, MARRIAGE_TIMES.brotherInLaw, MARRIAGE_TIMES.fatherIll, MARRIAGE_TIMES.willChange,
     MARRIAGE_TIMES.willChange + MARRIAGE_TIMES.willAnswer, MARRIAGE_TIMES.fatherDies].filter(at => at <= since)) {
+    // FIX-13 (item 3): the old lord dies by the death table; here at the old fixed time, so the scenarios keep their order.
+    if (at === MARRIAGE_TIMES.fatherDies) next = oldLordDies(next);
     next = advanceDiplomacy({ ...next, tick: contracted + at });
   }
   return next;
+}
+function oldLordDies(state: GameState): GameState {
+  const estates = estatesOf(state);
+  const lordId = estates.estates.find(estate => estate.id === MARRIAGE_ESTATE_ID)?.house?.lordId;
+  return { ...state, estates: { ...estates, people: estates.people.map(person => person.id === lordId ? { ...person, alive: false, deathYear: 1310 } : person) } };
 }
 
 test("NG-8 the middle events in order: the bride comes to the manor, a first child is born to the couple", () => {

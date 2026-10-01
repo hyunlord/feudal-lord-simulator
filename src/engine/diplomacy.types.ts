@@ -9,6 +9,9 @@ import type { HolderId } from "./estates.types";
 /** NG-2: the kinds of term. The lord's side gives the first five, the counterpart's the last five. */
 export type TermKind =
   | "cash" | "pension" | "right_piece" | "political_support" | "debt_assumption"
+  // FIX-13 (NG-5b): what is not cash — a jointure on one of the lord's pieces, the counterpart's debt repaid from the
+  // estate once it is inherited.
+  | "jointure" | "debt_after_inheritance"
   | "consent" | "inheritance_non_infringement" | "residence" | "land_use" | "wardship";
 
 export interface Term {
@@ -105,6 +108,11 @@ export interface MarriagePlan {
   /** The will-change attempt's answer, and the rival it named when it stood. */
   readonly willAnswer?: "favour" | "support_promise" | "let_it_be";
   readonly rival?: HolderId;
+  /** FIX-13 (NG-5b): the jointure's piece (the bride holds it for her life if the groom dies first), once settled. */
+  readonly jointurePieceId?: string;
+  readonly jointureSettled?: boolean;
+  /** FIX-13 (NG-5b): the counterpart's debt the lord repays from the estate once inherited (pennies; void if not). */
+  readonly deferredDebt?: number;
 }
 
 export interface DiplomacyState {

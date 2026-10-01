@@ -23,6 +23,8 @@ export interface DrainageWork {
   readonly workDone: number;
   /** The men digging this tick (for the render's diggers); absent when none. */
   readonly diggers?: number;
+  /** FIX-13 (LAND-UI handoff): the cell the works were started from (the stage's anchor); absent on works before v44. */
+  readonly origin?: { readonly tx: number; readonly ty: number };
 }
 
 export interface DrainageState {
@@ -35,7 +37,8 @@ export type DrainageRefusal = "not_fen" | "not_still_water" | "no_bank" | "busy"
 
 export type DrainagePlan =
   | { readonly ok: true; readonly cells: readonly number[]; readonly timber: number; readonly workNeeded: number; readonly seasons: number }
-  | { readonly ok: false; readonly reason: DrainageRefusal };
+  // FIX-13 (LAND-UI handoff): too little timber says how much is needed and how much can be spent.
+  | { readonly ok: false; readonly reason: DrainageRefusal; readonly timberNeeded?: number; readonly timberHave?: number };
 
 const NEIGHBOURS = [[0, -1], [1, 0], [0, 1], [-1, 0]] as const;
 
@@ -71,7 +74,8 @@ export function drainagePlan(state: GameState, tx: number, ty: number): Drainage
   }));
   if (!onBank) return { ok: false, reason: "no_bank" };
   const timber = cells.length * B.timberPerCell;
-  if (placementSpendableResource(state, "timber") < timber) return { ok: false, reason: "insufficient_timber" };
+  const have = placementSpendableResource(state, "timber");
+  if (have < timber) return { ok: false, reason: "insufficient_timber", timberNeeded: timber, timberHave: have };
   const workNeeded = cells.length * B.workPerCell;
   return { ok: true, cells: cells.sort((a, b) => a - b), timber, workNeeded, seasons: Math.ceil(workNeeded / B.diggers / PRESSURE_BALANCE.seasonTicks) };
 }
@@ -82,7 +86,7 @@ export function startDrainage(state: GameState, tx: number, ty: number): GameSta
   if (!plan.ok) return state;
   const drainage = state.drainage ?? { works: [], drained: [] };
   const work: DrainageWork = { id: `drainage-${state.tick}-${tx}-${ty}`, cells: plan.cells, startedTick: state.tick, timber: plan.timber,
-    workNeeded: plan.workNeeded, workDone: 0 };
+    workNeeded: plan.workNeeded, workDone: 0, origin: { tx, ty } };
   return { ...state, ...chargeRoadTimber(state, plan.timber), drainage: { ...drainage, works: [...drainage.works, work] } };
 }
 

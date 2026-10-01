@@ -102,8 +102,10 @@ test("MA-11 ① the drainage plan: the fen's still water within two tiles, on a 
   assert.deepEqual(drainagePlan({ ...town, archetypeId: RIVERSIDE_ARCHETYPE_ID }, at.tx, at.ty), { ok: false, reason: "not_fen" });
   assert.deepEqual(drainagePlan({ ...town, river: { ...town.river!, cells: [at.ty * 64 + at.tx], flow: "s" } }, at.tx, at.ty), { ok: false, reason: "not_still_water" });
   assert.deepEqual(drainagePlan({ ...town, treasuryTimber: 0, buildings: town.buildings.map(building => ({ ...building, inventory: { ...building.inventory, timber: 0 } })) }, at.tx, at.ty),
-    { ok: false, reason: "insufficient_timber" });
+    // FIX-13 (LAND-UI handoff): the refusal says how much timber it needs and how much can be spent.
+    { ok: false, reason: "insufficient_timber", timberNeeded: plan.timber, timberHave: 0 });
   const started = gameReducer(town, { type: "drain_fen", tx: at.tx, ty: at.ty });
+  assert.deepEqual(started.drainage?.works.at(-1)?.origin, { tx: at.tx, ty: at.ty }, "the works keep the cell they were started from");
   assert.equal(started.drainage!.works.length, 1);
   assert.equal(placementSpendableResource(started, "timber"), placementSpendableResource(town, "timber") - plan.timber, "the timber is paid at the command");
   assert.deepEqual(drainagePlan(started, at.tx, at.ty), { ok: false, reason: "busy" });

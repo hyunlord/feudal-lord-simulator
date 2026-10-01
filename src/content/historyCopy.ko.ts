@@ -27,7 +27,7 @@ export const GROOM_RELATION_KO: Readonly<Record<string, string>> = {
 
 /** FIX-12 (item 4): the word a sentence uses for a person no reader can name (the record keeps only the id). */
 export const PERSON_NAME_FALLBACK: Readonly<Record<string, string>> = {
-  lord: "영주", guardian: "후견인", candidate: "", heir: "후계자", mayor: "", leader: "새 수장", predecessor: "수장", steward: "청지기",
+  lord: "영주", guardian: "후견인", candidate: "", heir: "후계자", mayor: "", leader: "새 수장", predecessor: "수장", steward: "청지기", deceased: "이웃 가문 사람",
 };
 
 // BLD-REG: a building's name in the ledger's sentences is its catalog line (`buildingCatalog.ko.ts` `history`).
@@ -126,7 +126,7 @@ const ESTATE_POLICY_KO: Readonly<Record<string, string>> = { growth: "성장", r
 const TIER_KO: Readonly<Record<string, string>> = { impossible: "불가능", unlikely: "불리", close: "박빙", likely: "유력", almost_certain: "거의 확실" };
 const TERM_KO: Readonly<Record<string, string>> = { cash: "계약금", pension: "연금", right_piece: "권리 조각", political_support: "정치적 지원",
   debt_assumption: "채무 인수", consent: "혼인 동의", inheritance_non_infringement: "상속 기대권 불침해", residence: "배우자 거주", land_use: "토지 사용수익",
-  wardship: "후견 합의" };
+  wardship: "후견 합의", jointure: "과부산", debt_after_inheritance: "상속 뒤 빚 갚기" };
 // LM-E2: the estates' words — holders, pieces, a claim's basis, a suit's stages.
 const HOLDER_KO: Readonly<Record<string, string>> = { lord: "영주", overlord: "대영주", crown: "국왕", merchants: "상인들", townsfolk: "주민들",
   neighbour_1: "첫째 이웃 영주", neighbour_2: "둘째 이웃 영주", bishop: "주교" };
@@ -136,6 +136,7 @@ const PIECE_KO: Readonly<Record<string, string>> = { land_rent: "토지 지대",
 const pieceWord = (piece: string, estate: string) => piece === "" ? (estate === "" ? "영지" : "영지 전체") : PIECE_KO[piece.slice(piece.lastIndexOf(":") + 1)] ?? piece;
 const CLAIM_BASIS_KO: Readonly<Record<string, string>> = { inheritance: "상속", marriage: "혼인", purchase_deed: "매입 문서", grant: "하사", old_possession: "오래된 점유" };
 const basisWord = (basis: string) => CLAIM_BASIS_KO[basis] ?? basis;
+const ESTATE_ROLE_KO: Readonly<Record<string, string>> = { head: "이웃 영주", steward: "청지기", kin: "이웃 가문" };
 const SUIT_STAGE_KO: Readonly<Record<string, string>> = { evidence: "증거", patronage: "후원", hearing: "심리", enforcing: "점유 집행" };
 const ACTOR_KO: Readonly<Record<string, string>> = { households: "가구들", merchants: "상인 가문", guild: "길드", community: "공동체", church: "교회" };
 const buildingWord = (kind: string) => BUILDING_COPY[kind as keyof typeof BUILDING_COPY]?.name ?? kind;
@@ -221,6 +222,9 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "petition.representative_replaced": params => { const before = s(params, "predecessor"), next = s(params, "leader");
     return `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}의 대표 ${before}${josa(before, "이", "가")} ${s(params, "gone") === "left" ? "마을을" : "세상을"} 떠나 ${next}${josa(next, "이", "가")} 대신 나섰다`; },
   // LM-E4 (SW-2…SW-7): the off-map estates' oversight; the steward is named from his id when read.
+  // FIX-13 (ES-11): the people off the map die by the table; a dead steward's place goes to the most loyal candidate.
+  "estate.person_died": params => `${s(params, "deceased")}(${ESTATE_ROLE_KO[s(params, "role")] ?? s(params, "role")})${josa(s(params, "deceased"), "이", "가")} ${n(params, "age")}세로 세상을 떠났다`,
+  "stewardship.steward_died": params => `${estateWord(s(params, "house"))}의 청지기 ${s(params, "deceased")}${josa(s(params, "deceased"), "이", "가")} 죽어 ${s(params, "steward")}${josa(s(params, "steward"), "이", "가")} 뒤를 잇는다`,
   "stewardship.began": params => `${estateWord(s(params, "house"))}${josa(estateWord(s(params, "house")), "이", "가")} 영주의 손에 들어왔다 — 영주가 직접 보고, ${s(params, "steward")}${josa(s(params, "steward"), "이", "가")} 장부를 맡는다`,
   "stewardship.oversight": params => s(params, "mode") === "steward" ? `${estateWord(s(params, "house"))}${josa(estateWord(s(params, "house")), "을", "를")} 청지기 ${s(params, "steward")}에게 맡겼다`
     : `${estateWord(s(params, "house"))}${josa(estateWord(s(params, "house")), "을", "를")} 영주가 직접 본다 — 장부는 ${s(params, "steward")}`,
@@ -283,6 +287,9 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "marriage.father_died": () => "이웃 영주가 죽었다",
   "marriage.inherited": () => "아내를 통해 이웃 영지를 물려받았다 — 이제 우리 영지다",
   "marriage.lost": () => "이웃 영지는 그의 아들에게 갔다",
+  // FIX-13 (NG-5b): what was not cash.
+  "marriage.deferred_void": params => `영지가 오지 않아 상속 뒤 갚기로 한 이웃의 빚 ${moneyWords(n(params, "amount"))}도 함께 사라졌다`,
+  "marriage.jointure_settled": params => `남편을 먼저 보낸 아내가 과부산으로 ${pieceWord(s(params, "piece"), "")}${josa(pieceWord(s(params, "piece"), ""), "을", "를")} 평생 갖는다`,
   "marriage.contested": () => "새 유언대로 조카가 영지를 차지했다 — 소송으로 다툴 수 있다",
   // LM-E2 (ES-5…ES-7): claims, suits, titles and possessions.
   "estate.claim_raised": params => `${holderWord(s(params, "claimant"))}${josa(holderWord(s(params, "claimant")), "이", "가")} ${pieceWord(s(params, "piece"), s(params, "estate"))}에 ${basisWord(s(params, "basis"))}${josa(basisWord(s(params, "basis")), "을", "를")} 근거로 청구를 냈다`,

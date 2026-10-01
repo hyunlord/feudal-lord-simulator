@@ -8,17 +8,18 @@
  */
 import {
   BREACHED_NON_INFRINGEMENT_GAIN, BROTHER_IN_LAW_CLAIM_LOSS, BROTHER_IN_LAW_PERMILLE, CONTRACT_RELATION_GAIN, COUNTER_ANSWER_TICKS, DEBT_INSTALMENT_MAX_YEARS,
-  BOT_OFFER_TREASURY, GROOM_MAX_AGE, GROOM_MIN_AGE, MARRIAGE_TIMES, MARRIAGE_WITNESSES, PROMISE_PAYMENT_TICKS, PROMISE_STAKE, PROMISE_SUPPORT_TICKS, WILL_CHANGE_PERMILLE,
+  BOT_OFFER_TREASURY, DEFERRED_DEBT_YEARS, GROOM_MAX_AGE, GROOM_MIN_AGE, MARRIAGE_TIMES, MARRIAGE_WITNESSES, PROMISE_PAYMENT_TICKS, PROMISE_STAKE, PROMISE_SUPPORT_TICKS, WILL_CHANGE_PERMILLE,
   WILL_FAVOUR_PENNIES,
 } from "../content/diplomacyConfig";
 import { FEMALE_GIVEN_NAMES, MALE_GIVEN_NAMES } from "../content/personNames";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { DiplomacyState, MarriagePlan, Negotiation, PromiseRecord, Term } from "./diplomacy.types";
 import type { GameState } from "./engine.types";
-import { estatesOf, LORD, raiseClaim } from "./estates";
+import { estatesOf, LORD, raiseClaim, settleForLife } from "./estates";
+import { HOME_ESTATE_ID } from "../content/estateConfig";
 import { hairWords, populationTraits } from "./heredity";
 import { lordshipOf } from "./lordshipState";
-import { counterOffer, debtInstalmentCap, diplomacyOf, evaluateOffer, offerDraw } from "./negotiation";
+import { counterOffer, diplomacyOf, evaluateOffer, offerDraw } from "./negotiation";
 import { ageBandOf, ageOf, currentYear, manorLord, weightedName } from "./persons";
 import { MANOR_HOUSEHOLD, type Person } from "./persons.types";
 import { choosePortraitIdentity } from "./portraits";
@@ -265,8 +266,12 @@ function contract(state: GameState, negotiation: Negotiation, terms: readonly Te
   let diplomacy = contractPromises(diplomacyOf(claimed), negotiation, terms, state.tick);
   diplomacy = { ...diplomacy, relations: { ...diplomacy.relations, [negotiation.counterpart]: (diplomacy.relations[negotiation.counterpart] ?? 0) + CONTRACT_RELATION_GAIN } };
   const groomed = groomToManor(claimed, negotiation.groomId);
+  // FIX-13 (NG-5b): what is not cash waits — the jointure for the groom's death, the deferred debt for the inheritance.
+  const jointure = terms.find(term => term.kind === "jointure" && term.giver === "proposer")?.pieceId;
+  const deferred = terms.filter(term => term.kind === "debt_after_inheritance" && term.giver === "proposer").reduce((sum, term) => sum + (term.amount ?? 0), 0);
   const plan: MarriagePlan = { negotiationId: negotiation.id, groomId: groomed.groomId, brideId: negotiation.brideId, estateId: MARRIAGE_ESTATE_ID,
-    contractedTick: state.tick, stage: "contracted", claimId, events: {} };
+    contractedTick: state.tick, stage: "contracted", claimId, events: {}, ...(jointure === undefined ? {} : { jointurePieceId: jointure }),
+    ...(deferred > 0 ? { deferredDebt: deferred } : {}) };
   return withDiplomacy(groomed.state, { ...diplomacy, marriage: plan });
 }
 
@@ -411,7 +416,38 @@ function inheritance(state: GameState, plan: MarriagePlan): GameState {
   }
   if (plan.rival !== undefined) return withPlan(estateTo(next, MARRIAGE_ESTATE_ID, plan.rival), { ...plan, stage: "contested", events });
   next = claimStatus(estateTo(next, MARRIAGE_ESTATE_ID, LORD), plan.claimId, "won");
-  return withPlan(next, { ...plan, stage: "inherited", events });
+  return withPlan(deferredDebtDue(next, plan), { ...plan, stage: "inherited", events });
+}
+
+/**
+ * FIX-13 (NG-5b): the estate inherited, the deferred debt falls due — a promise a year, over at most DEFERRED_DEBT_YEARS
+ * (the last taking the remainder), paid from the estate's income as the treasury carries it.
+ */
+function deferredDebtDue(state: GameState, plan: MarriagePlan): GameState {
+  const total = plan.deferredDebt ?? 0;
+  if (total <= 0) return state;
+  let diplomacy = diplomacyOf(state);
+  const instalment = Math.ceil(total / DEFERRED_DEBT_YEARS);
+  for (let year = 1; year <= DEFERRED_DEBT_YEARS; year += 1) {
+    const amount = year < DEFERRED_DEBT_YEARS ? instalment : total - instalment * (DEFERRED_DEBT_YEARS - 1);
+    if (amount <= 0) continue;
+    diplomacy = promise(diplomacy, { negotiationId: plan.negotiationId, witnesses: MARRIAGE_WITNESSES, stake: PROMISE_STAKE, promisor: LORD,
+      promisee: COUNTERPART, term: "debt_after_inheritance", amount, deadline: state.tick + year * PROMISE_PAYMENT_TICKS }).diplomacy;
+  }
+  return withDiplomacy(state, diplomacy);
+}
+
+/**
+ * FIX-13 (NG-5b): the jointure — once the groom has died and the bride lives, she holds its piece for her life (the
+ * lord's house the remainder). Read each year.
+ */
+function settleJointure(state: GameState, plan: MarriagePlan): GameState {
+  if (plan.jointurePieceId === undefined || plan.jointureSettled === true || state.tick % PROMISE_PAYMENT_TICKS !== 0) return state;
+  const people = state.persons?.people ?? [];
+  const groomDead = (state.persons?.past ?? []).some(person => person.id === plan.groomId && !person.alive);
+  const brideAlive = people.some(person => person.id === plan.brideId);
+  if (!groomDead || !brideAlive) return state;
+  return withPlan(settleForLife(state, HOME_ESTATE_ID, `person:${plan.brideId}`, LORD, [plan.jointurePieceId]), { ...plan, jointureSettled: true });
 }
 
 /**
@@ -421,7 +457,10 @@ function inheritance(state: GameState, plan: MarriagePlan): GameState {
  */
 function advanceMarriage(state: GameState): GameState {
   const plan = state.diplomacy?.marriage;
-  if (plan === undefined || plan.stage === "inherited" || plan.stage === "lost") return state;
+  if (plan === undefined) return state;
+  const settled = settleJointure(state, plan);
+  if (settled !== state) return settled;
+  if (plan.stage === "inherited" || plan.stage === "lost") return state;
   const since = state.tick - plan.contractedTick;
   const ev = plan.events;
   const t = MARRIAGE_TIMES;
@@ -431,8 +470,11 @@ function advanceMarriage(state: GameState): GameState {
   if (ev.child_born === undefined && since >= t.childBorn) {
     return withPlan(firstChild(state, plan), { ...plan, stage: "child_born", events: { ...ev, child_born: state.tick } });
   }
+  // FIX-13 (item 3): the old lord lives by the death table — what needs him alive happens only while he lives, and the
+  // inheritance is read when he dies (not at a fixed time after the contract).
+  const alive = oldLord(state)?.alive === true;
   if (ev.brother_in_law_born === undefined && since >= t.brotherInLaw && plan.brotherInLawId === undefined) {
-    const born = hashSeed(state.seed, "marriage-brother-in-law", plan.contractedTick) % 1000 < BROTHER_IN_LAW_PERMILLE;
+    const born = alive && hashSeed(state.seed, "marriage-brother-in-law", plan.contractedTick) % 1000 < BROTHER_IN_LAW_PERMILLE;
     if (!born) return withPlan(state, { ...plan, events: { ...ev, brother_in_law_born: -1 } });
     const lord = oldLord(state);
     const son = estatePerson(nextEstateOrdinal(state), state, { sex: "male", age: 0, tag: `estate:${MARRIAGE_ESTATE_ID}`,
@@ -440,17 +482,18 @@ function advanceMarriage(state: GameState): GameState {
     const next = claimStrength(withEstatePeople(state, [...estatesOf(state).people, son]), plan.claimId, -BROTHER_IN_LAW_CLAIM_LOSS);
     return withPlan(next, { ...plan, brotherInLawId: son.id, events: { ...ev, brother_in_law_born: state.tick } });
   }
-  if (ev.father_ill === undefined && since >= t.fatherIll) return withPlan(state, { ...plan, stage: "father_ill", events: { ...ev, father_ill: state.tick } });
-  if (ev.will_change === undefined && since >= t.willChange) {
+  if (ev.father_died === undefined && !alive && since >= t.brideArrives) return inheritance(state, plan);
+  if (ev.father_ill === undefined && since >= t.fatherIll && alive) return withPlan(state, { ...plan, stage: "father_ill", events: { ...ev, father_ill: state.tick } });
+  if (ev.will_change === undefined && since >= t.willChange && alive) {
     const tried = plan.brotherInLawId === undefined && hashSeed(state.seed, "marriage-will", plan.contractedTick) % 1000 < WILL_CHANGE_PERMILLE;
     return withPlan(state, { ...plan, ...(tried ? { stage: "will_change" as const } : {}), events: { ...ev, will_change: tried ? state.tick : -1 } });
   }
   if (plan.stage === "will_change" && plan.willAnswer === undefined && since >= t.willChange + t.willAnswer) return answerWillChange(state, "let_it_be");
-  if (ev.father_died === undefined && since >= t.fatherDies) return inheritance(state, plan);
+
   if (plan.stage === "contested") {
     const estate = estatesOf(state).estates.find(entry => entry.id === MARRIAGE_ESTATE_ID);
     if (estate !== undefined && estate.titleHolder === LORD && estate.possessor === LORD) {
-      return withPlan(estateTo(state, MARRIAGE_ESTATE_ID, LORD), { ...plan, stage: "inherited" });
+      return withPlan(deferredDebtDue(estateTo(state, MARRIAGE_ESTATE_ID, LORD), plan), { ...plan, stage: "inherited" });
     }
   }
   return state;
@@ -473,9 +516,9 @@ export function lordBotMarriageCommands(state: GameState): readonly ({ readonly 
   if (diplomacy.negotiations.length > 0) return [];
   const { groom, bride } = marriageCandidates(state);
   if (groom === null || bride === null) return [];
-  // FIX-12 (NG-9): the one offer waits until the lord can pay — his estates have paid a year in (a counter's yearly dues
-  // have room) and the treasury holds BOT_OFFER_TREASURY (a third of it is the portion).
-  if (debtInstalmentCap(state) <= 0 || treasuryBalance(state) < BOT_OFFER_TREASURY) return [];
+  // FIX-12/FIX-13 (NG-9): the one offer waits until the treasury holds BOT_OFFER_TREASURY (a third of it is the portion);
+  // what the lord's year cannot carry the counter now asks as a jointure or a debt repaid after the inheritance.
+  if (treasuryBalance(state) < BOT_OFFER_TREASURY) return [];
   const portion = Math.floor(Math.max(0, treasuryBalance(state)) / 3);
   return [{ type: "propose_marriage", terms: [{ kind: "cash", giver: "proposer", amount: portion }, { kind: "inheritance_non_infringement", giver: "counterpart" },
     { kind: "residence", giver: "counterpart" }] }];

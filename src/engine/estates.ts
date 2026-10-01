@@ -17,7 +17,7 @@ import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import type { GameState } from "./engine.types";
 import type { Claim, ClaimBasis, Estate, EstatesState, HolderId, PossessionLoss, RightPiece, RightPieceKind } from "./estates.types";
 import { hairWords, populationTraits } from "./heredity";
-import { ageBandOf, currentYear, weightedName } from "./persons";
+import { ageBandOf, ageOf, currentYear, seasonDeathPermille, weightedName } from "./persons";
 import type { Person } from "./persons.types";
 import { choosePortraitIdentity } from "./portraits";
 import { hashSeed } from "./prng";
@@ -222,22 +222,44 @@ function holderAlive(state: GameState, holder: HolderId): boolean {
 }
 
 /**
+ * FIX-13 (item 3, ES-11): the people off the map age and die by the town's table (FIX-11's, a year's chance four
+ * seasons' rate) — the neighbour houses, the old lord, the stewards and their candidates. A bride gone to the manor is
+ * the town's (her copy here stays as it was).
+ */
+function ageEstatePeople(state: GameState, estates: EstatesState): EstatesState {
+  const year = currentYear(state);
+  let changed = false;
+  const people = estates.people.map(person => {
+    if (!person.alive || person.tags.includes("married-out")) return person;
+    const dies = hashSeed(state.seed, "estate-death", Number(person.id.replace(/\D+/g, "")) || 0, year) % 1000
+      < Math.min(1000, 4 * seasonDeathPermille(ageOf(person, year)));
+    if (!dies) return person;
+    changed = true;
+    return { ...person, alive: false, deathYear: year, deathCause: "age" as const };
+  });
+  return changed ? { ...estates, people } : estates;
+}
+
+/**
  * ES-4, ES-6: the estates' year, at each year's first tick — a life tenant dead passes title and possession to the
  * remainder; a possessor without the title for `OLD_POSSESSION_YEARS` gains a claim by old possession. Nothing runs
  * with no stored estates (nothing differs from the opening).
  */
 export function advanceEstates(state: GameState): GameState {
-  if (state.estates === undefined || state.tick <= 0 || state.tick % YEAR !== 0) return state;
-  let estates = state.estates;
-  let next: GameState = state;
+  if (state.tick <= 0 || state.tick % YEAR !== 0) return state;
+  // FIX-13 (item 3): lord mode keeps its estates from the first year, so the people off the map age from the start.
+  if (state.estates === undefined && state.agency !== undefined) return advanceEstates({ ...state, estates: estatesOf(state) });
+  if (state.estates === undefined) return state;
+  let estates = ageEstatePeople(state, state.estates);
+  let next: GameState = estates === state.estates ? state : { ...state, estates };
   for (const estate of estates.estates) {
     let changed = estate;
     for (const piece of estate.pieces) {
-      if (piece.lifeTenant === undefined || piece.remainder === undefined || holderAlive(state, piece.lifeTenant)) continue;
+      if (piece.lifeTenant === undefined || piece.remainder === undefined || holderAlive(next, piece.lifeTenant)) continue;
       const { lifeTenant: _tenant, remainder, loss: _loss, ...rest } = piece;
       changed = withPiece(changed, { ...rest, titleHolder: remainder, possessor: remainder, possessedSince: state.tick });
     }
-    if (changed.lifeTenant !== undefined && changed.remainder !== undefined && !holderAlive(state, changed.lifeTenant)) {
+    if (changed.lifeTenant !== undefined && changed.remainder !== undefined && !holderAlive(next, changed.lifeTenant)) {
       const { lifeTenant: _tenant, remainder, ...rest } = changed;
       changed = { ...rest, titleHolder: remainder, possessor: remainder };
     }

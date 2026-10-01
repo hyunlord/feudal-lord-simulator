@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { BALANCE } from "../src/content/balanceConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
@@ -14,7 +15,8 @@ test("save → fresh-process load → N ticks equals N ticks without saving (CI 
   assert.equal(report.gateMatches, 2);
   assert.equal(report.passed, true);
   for (const row of report.rows) {
-    assert.equal(row.autosaves, 1);
+    // An autosave every 60 s at 1× (FIX-13: ten ticks a second, so two in 1,200 ticks).
+    assert.equal(row.autosaves, Math.floor(1200 / (60 * BALANCE.TICKS_PER_SECOND)));
     assert.equal(row.autosaveRoundTripMismatches, 0);
   }
 });

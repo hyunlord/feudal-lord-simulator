@@ -72,7 +72,7 @@ test("FX12-1 in the first year (no estate year paid in yet) the counter asks not
     JSON.stringify(counter?.terms));
 });
 
-test("FX12-1 a debt the lord's year cannot carry is not asked: the counter turns to the next desire (cash)", () => {
+test("FX12-1 a debt the lord's year cannot carry is not asked now: the counter turns to the next desire (FIX-13: the debt repaid after the inheritance)", () => {
   const state = at(1);
   // The lord holds no estate in possession (its possession lost, LM-E2): his year carries no instalment.
   const estates = estatesOf(state);
@@ -80,7 +80,7 @@ test("FX12-1 a debt the lord's year cannot carry is not asked: the counter turns
   assert.equal(debtInstalmentCap(poor), 0);
   const counter = counterOffer(poor, LORD, COUNTERPART, OFFER, "k");
   assert.ok(counter === null || !counter.terms.some(term => term.kind === "debt_assumption"), JSON.stringify(counter?.terms));
-  if (counter !== null) assert.ok(counter.terms.some(term => term.kind === "cash" && (term.amount ?? 0) > 200), "cash raised instead");
+  if (counter !== null) assert.ok(counter.terms.some(term => term.kind === "debt_after_inheritance" && (term.amount ?? 0) > 0), "repaid after the inheritance instead");
 });
 
 test("FX12-1 the instalments are a promise a year in the ledger, their sum the debt, each due a year after the last", () => {
