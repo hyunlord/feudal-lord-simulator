@@ -41,6 +41,15 @@ const wave34 = (page: Page) => page.evaluate(async () => {
   const manifest = await import(/* @vite-ignore */ paths[1]!) as { WAVE34_WORKS: Record<string, unknown> };
   return Object.keys(manifest.WAVE34_WORKS).filter(key => art.worksArt(key) !== null);
 });
+/** The land works the page's own modules see at a tile's chunk (the token in the chunk key, the road fords). */
+const works = (page: Page, tile: readonly [number, number]) => (page as unknown as { evaluate: <T, A>(fn: (arg: A) => T, arg: A) => Promise<T> }).evaluate(async ([tx, ty]) => {
+  const paths = ["/src/render/landWorksIndex.ts", "/src/render/landWorksModel.ts"];
+  const index = await import(/* @vite-ignore */ paths[0]!) as { landWorksChunkToken: (state: unknown, plan: { cx: number; cy: number }) => string };
+  const model = await import(/* @vite-ignore */ paths[1]!) as { fordGroups: (state: unknown) => { road: boolean; cells: number[] }[] };
+  const state = (window as unknown as { __FEUDAL_PHASE10_PROOF__: { state: () => { river?: { fords: number[] } } } }).__FEUDAL_PHASE10_PROOF__.state();
+  return { token: index.landWorksChunkToken(state, { cx: Math.floor(tx / 8), cy: Math.floor(ty / 8) }), fords: state.river?.fords.length ?? null,
+    roadFords: model.fordGroups(state).filter(group => group.road).map(group => group.cells) };
+}, tile);
 /** The canvas pixel of a tile, with the scene's camera centred on `centre` at `zoom`. */
 const pixel = (tile: readonly [number, number], centre: readonly [number, number], zoom: number) =>
   ({ x: W / 2 + ((tile[0] - tile[1]) - (centre[0] - centre[1])) * 32 * zoom, y: H / 2 + ((tile[0] + tile[1]) - (centre[0] + centre[1])) * 16 * zoom });
@@ -57,7 +66,7 @@ try {
       const page = opened as Page;
       await page.waitForTimeout(6_000);
       await shot(page, name);
-      result[name] = { wave34: await wave34(page) };
+      result[name] = { wave34: await wave34(page), works: await works(page, tiles[name]!) };
       await context.close();
     } catch (error) { errors.push(`${name}: ${String(error).slice(0, 300)}`); }
   }
@@ -69,7 +78,7 @@ try {
     const page = opened as Page;
     await page.keyboard.press("b");
     await page.waitForTimeout(500);
-    await page.locator('[data-category="paths"]').first().click();
+    await page.locator('[data-category="trade"]').first().click();
     await page.waitForTimeout(500);
     result.drainCards = await page.locator("[data-drain-tool]").count();
     await page.locator("[data-drain-tool]").first().click();
