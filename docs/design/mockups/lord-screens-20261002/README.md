@@ -33,3 +33,5 @@ Pool3 초상, Wave14 문장, Wave25 가계도 틀, Wave35 영지·협상 틀, Wa
 `index.html?screen=0`부터 `screen=7`까지 로컬 브라우저에서 열면 조립 원본을 볼 수 있다. 내비게이션과 버튼은 정적 시안용이다. 스크린샷이 정본이며 HTML 폰트는 다른 OS에서 달라질 수 있다. `source/build.mjs`는 최종 조립 소스, `source/render.mjs`는 사용한 로컬 Playwright/Chrome 렌더 기록이다. 경로는 이 제작 환경의 절대경로로, 재현 시 도구 경로만 조정해야 한다.
 
 `QA.md`, `qa/layout-metrics.json`, `SHA256SUMS.txt`를 함께 제공한다. 클릭 동작·게임 시뮬레이션·성능·실제 폰트 확대는 검증 범위가 아니다.
+
+`index.html`·`SHA256SUMS.txt`는 저장소에 넣지 않고 astra-raw에만 보관(`~/feudal-lord-analysis/astra-raw/zips/astra-lord-screens-20261002-lite.zip`, 같은 내용의 작업 폴더 `astra-raw/output/astra-lord-screens-20261002/`). `source/LORD_MODE_DESIGN_v1 (1).md`는 `assets-inbox/wave40/candidates-20261001/records/provenance/LORD_MODE_DESIGN_v1.md`와 같은 바이트라 뺐다.
