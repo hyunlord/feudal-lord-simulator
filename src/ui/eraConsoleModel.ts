@@ -1,6 +1,6 @@
 export { palisadeFootprintsForState } from "../engine/palisadeFootprints";
 import type { GameState } from "../engine/engine.types";
-import { computeReachablePalisadeProposalForState } from "../engine/palisadeRouteAccess";
+import { palisadeProposalForPlacement } from "../engine/palisadeRouteAccess";
 import {
   palisadePerimeterSteps,
   type PalisadeFailureReason,
@@ -30,7 +30,8 @@ export function proposalSummaryForState(
   state: GameState,
   _footprints: readonly PalisadeFootprint[],
 ): PalisadeProposalSummary {
-  const proposal = computeReachablePalisadeProposalForState(state);
+  // FIX-12: the same placement gives the same proposal (the engine caches it by the placement signature).
+  const proposal = palisadeProposalForPlacement(state);
   if (!proposal.ok) return proposal;
   return {
     ok: true,
