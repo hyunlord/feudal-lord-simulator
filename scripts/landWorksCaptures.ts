@@ -64,9 +64,14 @@ try {
       const { context, page: opened } = await openScene(browser, { state: state(name), tile: tiles[name]!, baseUrl: url, width: W, height: H, zoom, run: false,
         initScript: TUTORIAL_OFF, query: "&story-delay=600000" });
       const page = opened as Page;
+      const pageErrors: string[] = [];
+      (opened as unknown as { on: (event: string, handler: (value: { message?: string; type?: () => string; text?: () => string }) => void) => void })
+        .on("pageerror", error => { pageErrors.push(String(error.message).slice(0, 300)); });
+      (opened as unknown as { on: (event: string, handler: (value: { type: () => string; text: () => string }) => void) => void })
+        .on("console", message => { if (message.type() === "error") pageErrors.push(message.text().slice(0, 300)); });
       await page.waitForTimeout(6_000);
       await shot(page, name);
-      result[name] = { wave34: await wave34(page), works: await works(page, tiles[name]!) };
+      result[name] = { wave34: await wave34(page), works: await works(page, tiles[name]!), pageErrors };
       await context.close();
     } catch (error) { errors.push(`${name}: ${String(error).slice(0, 300)}`); }
   }
