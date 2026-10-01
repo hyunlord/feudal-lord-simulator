@@ -11,7 +11,8 @@ import { placementSpendableResource } from "../src/world/placement";
 test("Phase 3 balance constants retain the foundation values plus the measured opening grant", () => {
   // Given / When / Then
   assert.deepEqual(BALANCE, {
-    TICKS_PER_SECOND: 20,
+    // FIX-13 (the user's decision A): ten ticks a second at 1x (was 20); the rules count ticks.
+    TICKS_PER_SECOND: 10,
     CARTER_SPEED: 0.14,
     CARTER_CAPACITY: 8,
     DISTRIBUTOR_SPEED: 0.11,

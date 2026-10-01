@@ -1,5 +1,10 @@
 export const BALANCE = {
-  TICKS_PER_SECOND: 20,
+  /**
+   * FIX-13 (the user's decision A, LM5-4): ten ticks a second at 1x (a year 400 s, a season 100 s, a carter 1.4 tiles
+   * a second); the rules count ticks, so the simulation, saves and replays are unchanged. 10x (100 ticks a second) keeps
+   * the old 5x's pace as the fastest.
+   */
+  TICKS_PER_SECOND: 10,
   CARTER_SPEED: 0.14,
   CARTER_CAPACITY: 8,
   DISTRIBUTOR_SPEED: 0.11,

@@ -14,7 +14,8 @@ export type OverlayMode =
   | "roads"
   | "distribution"
   | "road_component";
-export type GameSpeed = 0 | 1 | 3 | 5;
+/** FIX-13: 10x added (the old 5x's pace at the new 1x of ten ticks a second). */
+export type GameSpeed = 0 | 1 | 3 | 5 | 10;
 export type RoadPathCache = Record<string, readonly TileCoordinate[]>;
 export type { Era, EraRequirementKey } from "../content/eraConfig";
 
