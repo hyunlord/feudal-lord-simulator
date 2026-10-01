@@ -15,3 +15,6 @@ coverage/
 
 # graft's local graph cache — regenerable, not committed (run `graft build`).
 /graft/
+
+# Personal Claude Code settings (status line, own permissions, own env) — never shared; see AGENTS.md rule 20.
+.claude/settings.local.json
