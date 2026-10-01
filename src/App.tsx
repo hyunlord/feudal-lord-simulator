@@ -332,7 +332,9 @@ export function App() {
       targetMaterialEra: eraPresentation.ceremony.targetEra === "stone_town" ? "stone" : "palisade",
     });
   const highlightedTools: readonly PlacementTool[] = [];
-  const eraModel = buildEraConsoleModel({ state, draft: palisadeDraft });
+  // LAND-UI perf: the era console is shown only in the goal drawer; its model (the hamlet's palisade proposal, 0.6 s on a
+  // water-heavy map whenever the terrain or the timber flags change) is built only while the drawer is open.
+  const eraModel = ui.mode === "goals" ? buildEraConsoleModel({ state, draft: palisadeDraft }) : null;
   const beginPalisadeDraw = () => {
     if (!canProclaimPalisadeEra(state)) return;
     setSelectedTool(null);
@@ -479,7 +481,7 @@ export function App() {
           <GoalDrawer open log={tutorial.log}>
             <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
             <SettlementPanel state={state} onRestart={() => dispatch({ type: "restart_settlement" })} developmentContent={
-              <EraConsole
+              eraModel === null ? null : <EraConsole
                 model={eraModel}
                 priority={wallConstructionPriority(state)}
                 onPriorityChange={priority => dispatch({ type: 'set_wall_construction_priority', priority })}
