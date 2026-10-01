@@ -53,7 +53,11 @@ for (const [name, id] of [["riverside", RIVERSIDE_ARCHETYPE_ID], ["fen", FEN_ARC
   const river = new Set(state.river?.cells ?? []);
   const water = (index: number) => state.tiles[index]?.terrain === "water";
   writeFileSync(join(out!, `${name}-summer.json`), JSON.stringify(state));
-  scenes[`${name}-river`] = { tile: nearest(state, index => water(index) && river.has(index)), zoom: 1.3 };
+  // A narrow reach of the channel (water at most 4 wide along a row or a column), not the lakes it runs through.
+  const run = (index: number, step: number) => { let length = 1; for (const sign of [-1, 1]) for (let at = index + sign * step; water(at) && length <= 4; at += sign * step) length += 1; return length; };
+  const narrow = (index: number) => water(index) && river.has(index) && Math.min(run(index, 1), run(index, state.width)) <= 4;
+  scenes[`${name}-river`] = { tile: nearest(state, narrow), zoom: 1.3 };
+  if (name === "riverside") scenes["riverside-river-close"] = { tile: nearest(state, narrow), zoom: 2.2 };
   if (name === "fen") {
     // A mere's shore: still water with land beside it.
     scenes["fen-mere"] = { tile: nearest(state, index => water(index) && !river.has(index) && [-1, 1, -state.width, state.width].some(step => state.tiles[index + step]?.terrain === "grass")), zoom: 1.3 };
