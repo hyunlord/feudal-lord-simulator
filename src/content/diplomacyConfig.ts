@@ -51,6 +51,12 @@ export const COUNTER_MARGIN = 4;
 export const GREED_MAX = 6;
 /** NG-5: the order the counterpart asks for things (its most wanted first). */
 export const COUNTER_DESIRES: readonly TermKind[] = ["debt_assumption", "cash", "pension", "political_support"];
+/**
+ * FIX-12 (item 1, NG-5a): a debt is taken on by instalments (deeds paid year by year): a year's instalment is at most
+ * this share of the lord's estates' year, over five years at most. A debt the lord cannot carry so is not asked.
+ */
+export const DEBT_INSTALMENT_SHARE = 0.25;
+export const DEBT_INSTALMENT_MAX_YEARS = 5;
 /** NG-5: a counter is answered within a season, else it lapses. */
 export const COUNTER_ANSWER_TICKS = 1000;
 
@@ -65,8 +71,11 @@ export const WITNESS_RELATION_LOSS = 5;
 /** NG-7: a contract made raises the relation with the house. */
 export const CONTRACT_RELATION_GAIN = 10;
 
-/** NG-7: a groom is a son of the lord's house at least this old, unmarried. */
+/** NG-7: a groom is a man of the lord's house this old (FIX-12: up to 60 — a widowed lord, a cousin), unmarried. */
 export const GROOM_MIN_AGE = 14;
+export const GROOM_MAX_AGE = 60;
+/** NG-9 (FIX-12): the lord-mode bot's one offer waits for this much in the treasury (and an estate year paid in). */
+export const BOT_OFFER_TREASURY = 600;
 
 /** NG-8: the middle events after the contract (ticks from it) and their chances (permille, from the seed). */
 export const MARRIAGE_TIMES = {

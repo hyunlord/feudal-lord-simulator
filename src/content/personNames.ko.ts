@@ -42,6 +42,9 @@ export const EPITHETS_KO: Readonly<Record<string, string>> = {
   "the ninth": "아홉째", "the tenth": "열째",
 };
 
+/** FIX-12 (item 4): the pair epithets the ledger's sentences wrote before QA010 (v40 saves), read as epithets in v41. */
+export const OLD_EPITHETS_KO: readonly string[] = ["젊은", "늙은"];
+
 /** FX-5 England's kings by their Korean regnal names. */
 export const KING_NAMES_KO: Readonly<Record<string, string>> = {
   "Edward I": "에드워드 1세", "Edward II": "에드워드 2세", "Edward III": "에드워드 3세", "Richard II": "리처드 2세",

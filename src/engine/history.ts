@@ -20,6 +20,9 @@ import { estatesOf } from "./estates";
 import { PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
 import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
 import { HISTORY_TEMPLATES } from "../content/historyCopy.ko";
+import { historyParams, namesPerson, type PersonReader } from "./historyNames";
+
+export { historyParams } from "./historyNames";
 import { MONEY_BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
 import { calendar, scenarioOf } from "./scenarioState";
 import type { GameState } from "./engine.types";
@@ -45,7 +48,7 @@ import { plagueDecisionForecast } from "./plague";
 import { reorganisationDecisionForecast } from "./reorganisation";
 import { heirRelationWord, legacyDecisionForecast, legacyEnding, legacyOf, legacyWord } from "./legacy";
 import { LEGACY_BALANCE, LEGACY_PETITION_IDS, LEGACY_STEP_ART, BOROUGH_AUTONOMY_PETITION_ID, HEIR_CHOICE_PETITION_ID, HEIR_BY_RESPONSE } from "../content/legacyConfig";
-import { currentYear, manorLord, personDisplayName } from "./persons";
+import { currentYear, manorLord } from "./persons";
 import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
 import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
@@ -260,6 +263,41 @@ function factionDrafts(before: GameState, after: GameState): Draft[] {
     return { tick: after.tick, kind: "faction" as const, template: "faction.relation", subject: { type: "faction" as const, id: change.factionId },
       params: { faction: change.factionId, name: faction?.name ?? change.factionId, delta: change.delta, reason: change.reason,
         relation: Math.max(-100, Math.min(100, relation + change.delta)) }, severity: 1 as const };
+  });
+}
+
+/**
+ * FIX-12 (item 3, QA-036): a town faction's leader who died is followed — one line naming both by id (the predecessor
+ * among the dead, the next living head of the group).
+ */
+function leaderDrafts(before: GameState, after: GameState): Draft[] {
+  if (before.factions === undefined || after.factions === undefined || before.factions === after.factions) return [];
+  const past = new Set((after.persons?.past ?? []).filter(person => !person.alive).map(person => person.id));
+  return after.factions.factions.flatMap(faction => {
+    const was = before.factions!.factions.find(entry => entry.id === faction.id)?.leaderId ?? null;
+    if (was === null || faction.leaderId === null || was === faction.leaderId || !past.has(was)) return [];
+    return [{ tick: after.tick, kind: "faction" as const, template: "faction.leader_succeeded", subject: { type: "faction" as const, id: faction.id },
+      params: { faction: faction.id, name: faction.name, predecessorId: was, leaderId: faction.leaderId }, severity: 1 as const }];
+  });
+}
+
+/**
+ * FIX-12 (item 3, QA-036): an open petition's representative who died is replaced by the next living head (persons) —
+ * one line naming both by id.
+ */
+function petitionerDrafts(before: GameState, after: GameState): Draft[] {
+  const was = before.politics?.petitions, now = after.politics?.petitions;
+  if (was === undefined || now === undefined || was === now) return [];
+  return now.flatMap(petition => {
+    const old = was.find(entry => entry.id === petition.id)?.petitionerIds;
+    if (old === undefined || petition.petitionerIds === undefined) return [];
+    return old.flatMap((id, index) => {
+      const next = petition.petitionerIds![index];
+      if (next === undefined || next === id) return [];
+      const died = (after.persons?.past ?? []).some(person => person.id === id && !person.alive);
+      return [{ tick: after.tick, kind: "person" as const, template: "petition.representative_replaced",
+        subject: { type: "person" as const, id: next }, params: { defId: petition.defId, predecessorId: id, leaderId: next, gone: died ? "died" : "left" }, severity: 0 as const }];
+    });
   });
 }
 
@@ -540,12 +578,12 @@ function lordshipDrafts(before: GameState, after: GameState): Draft[] {
     const guardianId = now.wardship.guardianId;
     const guardian = guardianId === null ? undefined : after.persons?.people.find(person => person.id === guardianId);
     drafts.push({ tick: after.tick, kind: "milestone", template: "lord.wardship_begun",
-      params: { lord: lord !== undefined ? personDisplayName(lord) : "", guardian: guardian !== undefined ? personDisplayName(guardian) : "" },
+      params: { lordId: lord?.id ?? "", guardianId: guardian?.id ?? "" },
       subject: TOWN, severity: 2 });
   } else if (was.wardship !== undefined && now.wardship === undefined) {
     const lord = lordOf(after) ?? lordOf(before);
     drafts.push({ tick: after.tick, kind: "milestone", template: "lord.wardship_ended",
-      params: { lord: lord !== undefined ? personDisplayName(lord) : "" },
+      params: { lordId: lord?.id ?? "" },
       subject: TOWN, severity: 2 });
   }
   return drafts;
@@ -680,28 +718,27 @@ function legacyDrafts(before: GameState, after: GameState): (Draft & { thumbnail
   const by = (id: string) => ({ actors: [{ type: "faction" as const, id }] });
   const at = { tick: after.tick, subject: TOWN, ...by("town") };
   const cause = { type: "event" as const, id: `legacy@${now.startTick}`, detail: "legacy" };
-  const name = (id: string | null | undefined) => { const person = id == null ? undefined : [...(after.persons?.people ?? []), ...(after.persons?.past ?? [])].find(entry => entry.id === id); return person === undefined ? "" : personDisplayName(person); };
   const came = (step: keyof typeof LEGACY_STEP_ART) => now.steps[step] !== undefined && was?.steps[step] === undefined;
   const art = (step: keyof typeof LEGACY_STEP_ART) => ({ illustration: LEGACY_STEP_ART[step] });
   const house = lordshipOf(after).house.name;
-  if (came("mayor_demand")) drafts.push({ ...at, ...by("merchant_house_1"), ...art("mayor_demand"), kind: "event", template: "legacy.mayor_demand", severity: 2, params: { candidate: name(now.mayorCandidateId) }, cause });
+  if (came("mayor_demand")) drafts.push({ ...at, ...by("merchant_house_1"), ...art("mayor_demand"), kind: "event", template: "legacy.mayor_demand", severity: 2, params: { candidateId: now.mayorCandidateId ?? "" }, cause });
   if (came("royal_tax_envoy")) drafts.push({ ...at, ...by("crown"), ...art("royal_tax_envoy"), kind: "event", template: "legacy.royal_tax_envoy", severity: 2, cause });
   if (came("succession")) {
     const lord = manorLord(after.persons?.people ?? [], lordshipOf(after).house.order, calendar(after.tick, scenarioOf(after).startYear).year);
     drafts.push({ ...at, ...by("overlord"), ...art("succession"), kind: "event", template: "legacy.succession", severity: 3, cause,
-      params: { lord: name(lord?.id), age: lord === undefined ? 0 : calendar(after.tick, scenarioOf(after).startYear).year - lord.birthYear, candidates: now.candidates.length } });
+      params: { lordId: lord?.id ?? "", age: lord === undefined ? 0 : calendar(after.tick, scenarioOf(after).startYear).year - lord.birthYear, candidates: now.candidates.length } });
   }
   if (now.royalSubsidy > (was?.royalSubsidy ?? 0)) drafts.push({ ...at, ...by("crown"), kind: "event", template: "legacy.royal_subsidy", severity: 1, params: { amount: now.royalSubsidy - (was?.royalSubsidy ?? 0) }, cause });
   if (now.heir !== undefined && was?.heir === undefined) {
     const candidate = now.candidates.find(entry => entry.personId === now.heir!.personId);
     drafts.push({ tick: after.tick, subject: { type: "person", id: now.heir.personId }, actors: [{ type: "faction", id: "overlord" }], kind: "event", template: "legacy.heir_seated", severity: 3,
-      params: { heir: name(now.heir.personId), relation: candidate === undefined ? "" : heirRelationWord(candidate) }, illustration: "ch5_chronicle_heir", cause });
+      params: { heirId: now.heir.personId, relation: candidate === undefined ? "" : heirRelationWord(candidate) }, illustration: "ch5_chronicle_heir", cause });
   }
   if (came("city_seal")) drafts.push({ ...at, ...art("city_seal"), kind: "event", template: "legacy.city_seal", severity: 2, cause, thumbnail: { state: after, size: 128 } });
   const charter = now.answers[BOROUGH_AUTONOMY_PETITION_ID];
   if (charter !== undefined && was?.answers[BOROUGH_AUTONOMY_PETITION_ID] === undefined) {
     drafts.push(charter === "accept"
-      ? { ...at, ...art("charter_sealing"), kind: "event", template: "legacy.charter_sealed", severity: 3, params: { mayor: name(now.mayorId) }, cause, thumbnail: { state: after, size: 256 } }
+      ? { ...at, ...art("charter_sealing"), kind: "event", template: "legacy.charter_sealed", severity: 3, params: { mayorId: now.mayorId ?? "" }, cause, thumbnail: { state: after, size: 256 } }
       : { ...at, kind: "event", template: "legacy.charter_refused", severity: 3, params: { backlash: now.backlash }, cause, thumbnail: { state: after, size: 256 } });
   }
   if (came("family_departure")) {
@@ -750,6 +787,7 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   drafts.push(...reorganisationDrafts(before, after));
   drafts.push(...legacyDrafts(before, after));
   drafts.push(...factionDrafts(before, after));
+  drafts.push(...leaderDrafts(before, after), ...petitionerDrafts(before, after));
   drafts.push(...personDrafts(before, after));
   // LM-E1 (TA-5): each project the town started this tick, with its receipt.
   drafts.push(...agencyDrafts(before, after));
@@ -809,15 +847,17 @@ function fillActuals(history: HistoryState, state: GameState): HistoryState {
 }
 
 /** HL-7 `history.query`: records matching the filter, oldest first. */
-export function historyQuery(state: Pick<GameState, "history">, query: HistoryQuery = {}): readonly HistoryRecord[] {
+export function historyQuery(state: Pick<GameState, "history"> & PersonReader, query: HistoryQuery = {}): readonly HistoryRecord[] {
   const kinds = query.kinds === undefined ? null : new Set<HistoryKind>(query.kinds);
   const actors = query.actors === undefined ? null : new Set(query.actors.map(actor => `${actor.type}:${actor.id}`));
   const from = query.range?.from ?? -Infinity;
   const to = query.range?.to ?? Infinity;
   const least = query.severity ?? 0;
-  return historyOf(state).records.filter(record => record.severity >= least && record.tick >= from && record.tick <= to
+  const found = historyOf(state).records.filter(record => record.severity >= least && record.tick >= from && record.tick <= to
     && (kinds === null || kinds.has(record.kind))
     && (actors === null || actors.has(`${record.subject.type}:${record.subject.id}`) || (record.actors ?? []).some(actor => actors.has(`${actor.type}:${actor.id}`))));
+  // FIX-12 (item 4, HL-1a): a record that names a person by id comes back with the person's name now (the summary reads it).
+  return state.persons === undefined ? found : found.map(record => namesPerson(record) ? { ...record, params: historyParams(record, state) } : record);
 }
 
 /** HL-7 `history.snapshot`: a thumbnail's palette indices, or null. */
@@ -826,10 +866,10 @@ export function historySnapshot(state: Pick<GameState, "history">, id: string): 
   return snapshot === undefined ? null : { size: snapshot.size, tick: snapshot.tick, pixels: decodeSnapshot(snapshot) };
 }
 
-/** HL-1: the record's sentence, rebuilt from its template and parameters. */
-export function historySummary(record: Pick<HistoryRecord, "template" | "params">): string {
+/** HL-1: the record's sentence, rebuilt from its template and parameters (FIX-12: its persons named from `state` when given). */
+export function historySummary(record: Pick<HistoryRecord, "template" | "params">, state?: PersonReader): string {
   const template = HISTORY_TEMPLATES[record.template];
-  return template === undefined ? record.template : template(record.params ?? {});
+  return template === undefined ? record.template : template(historyParams(record, state));
 }
 
 /** HL-1: the record's calendar date (year, season, day). */
@@ -890,7 +930,10 @@ function diplomacyDrafts(before: GameState, after: GameState): Draft[] {
   }
   const plan = now.marriage;
   if (plan !== undefined) {
-    if (was?.marriage === undefined) line("marriage.contracted", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId }, 3);
+    // FIX-12 (item 2): who the groom is to the lord (a son, the widowed lord, a brother, a nephew, a cousin).
+    const groom = after.persons?.people.find(person => person.id === plan.groomId);
+    const relation = groom?.tags.find(tag => tag.startsWith("lord-kin:"))?.slice("lord-kin:".length) ?? (groom?.role === "head" ? "widowed_lord" : "son");
+    if (was?.marriage === undefined) line("marriage.contracted", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId, relation }, 3);
     for (const [event, tick] of Object.entries(plan.events)) {
       if (tick === undefined || tick < 0 || (was?.marriage?.events as Record<string, number | undefined> | undefined)?.[event] !== undefined) continue;
       line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? "" }, event === "father_died" ? 3 : 2);

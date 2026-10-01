@@ -1,0 +1,147 @@
+{
+  "status": "pass",
+  "asset_count": 7,
+  "checks": [
+    {
+      "id": "select_closed",
+      "rgba": true,
+      "actual": [
+        160,
+        40
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "flat_text_height": 20
+    },
+    {
+      "id": "select_open_list",
+      "rgba": true,
+      "actual": [
+        160,
+        120
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "flat_text_height": 100
+    },
+    {
+      "id": "select_row_hover",
+      "rgba": true,
+      "actual": [
+        144,
+        32
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "flat_text_height": 20
+    },
+    {
+      "id": "input_normal",
+      "rgba": true,
+      "actual": [
+        160,
+        40
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "flat_text_height": 20
+    },
+    {
+      "id": "input_focus",
+      "rgba": true,
+      "actual": [
+        160,
+        40
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "flat_text_height": 20
+    },
+    {
+      "id": "chip_normal",
+      "rgba": true,
+      "actual": [
+        88,
+        28
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "flat_text_height": 16
+    },
+    {
+      "id": "chip_selected",
+      "rgba": true,
+      "actual": [
+        88,
+        28
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "text_safe_unique_colors": 1,
+      "flat_text_height": 16
+    }
+  ],
+  "state_differences": [
+    {
+      "pair": [
+        "input_normal",
+        "input_focus"
+      ],
+      "changed_pixels": 6004
+    },
+    {
+      "pair": [
+        "chip_normal",
+        "chip_selected"
+      ],
+      "changed_pixels": 2229
+    }
+  ],
+  "visual_review": "Native and2x contact inspected. Narrow painted frames retained; focus brass rim and selected chip warm edge distinguish states. Minimal and expanded9slice proof inspected separately.",
+  "known_limits": [
+    "Offline PNG candidate only, no runtime UI test.",
+    "Independent generation preserves common canvas/insets but ornamental detail varies between states.",
+    "Chip height fixed28px and closed selector height fixed40px; horizontal9slice only to protect glyphs and compact geometry."
+  ],
+  "chip_selected_revision": {
+    "flat_fill": "#b29658",
+    "ink": "#35291c",
+    "contrast_ratio": 4.979701038431701,
+    "unchanged_other_assets": 6,
+    "visual_review": "Native2x and9slice proof inspected after revision; selected brass fill clearly distinct from normal light parchment."
+  }
+}

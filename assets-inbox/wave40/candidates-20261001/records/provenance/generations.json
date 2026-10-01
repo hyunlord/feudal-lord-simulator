@@ -1,0 +1,523 @@
+[
+  {
+    "id": "01_marriage_negotiation",
+    "title": "혼인 협상",
+    "distinction": "manor solar / negotiation",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: In a modest manor solar at late afternoon, elders of two families sit opposite across an oak table. Blank folded marriage contract with hanging wax seals and two dowry coin purses visible in foreground. One elder gestures bargaining, other considers. Side-seated clerk writes with quill on page angled away. Six people maximum. Medium-wide lateral view, quiet tense negotiation.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-1ece9f25-a17e-4ecf-8f6f-9fbe2c7b5f53.png",
+    "source_sha256": "b625d674e41d0bdcb4e9afb2776f54dce5436c88aa056f917efacf6893aff7eb",
+    "file": "assets/01_marriage_negotiation.jpg",
+    "sha256": "195bda6bd31687bf8ecce38ba0cbcd1c8238ac0815e047a6cd31d3f2642e288f",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "02_marriage_sealing",
+    "title": "혼인 계약 봉인",
+    "distinction": "church doorway / wax sealing",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Outside open south doorway of small parish church, adult newlyweds stand with both families and priest. At narrow wooden stand on threshold, elder presses seal into red wax on a blank contract while couple join hands. Exterior daylight, stone doorway and churchyard clearly visible, ceremony at church door not indoor altar. Standing group in a wide oblique view, clearly show sealing gesture.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-2f814a59-fb04-41f9-88a3-cb797c6cd3a3.png",
+    "source_sha256": "8407b4a31bbfca23ba470130910fb025ce1890208a403ada339157af740ee830",
+    "file": "assets/02_marriage_sealing.jpg",
+    "sha256": "70efa0308cbdd43c2357b5390c734c197dd4cfe90b426469fe7c49715cc2dfdc",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "03_bride_arrival",
+    "title": "신부의 이주",
+    "distinction": "manor courtyard / arrival",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Bride in muted blue wool gown steps down beside wooden luggage cart arriving in manor courtyard. Maid helps her, servant lifts a travel chest; rolled bedding and baskets show household move. Diagonal wide shot, morning light, open gateway behind cart. Emphasis on movement and luggage, no wedding ceremony.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-10e4237f-8d82-4eb7-9e8c-e5efae60c539.png",
+    "source_sha256": "6d639b4a1f55fc48ce55480496eec59493a115b908d32a70054e426e31a10145",
+    "file": "assets/03_bride_arrival.jpg",
+    "sha256": "746cf6ac22a07e38d9d335dfbbb7b80be6d5d436a0a799f7c0a9e93dd8926d3b",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "04_first_child",
+    "title": "첫아이",
+    "distinction": "birthing chamber / baby presentation",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Quiet manor birthing chamber. Midwife supports a fully swaddled newborn at chest height and presents baby to delighted close family. Tired mother safely resting fully covered in bed and smiling. Linen curtains, basin, folded cloths, warm window light. Intimate view with midwife and infant dominant. No blood or delivery in progress.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-768af54e-08d9-4b2b-bc82-24e4f1b3fd6b.png",
+    "source_sha256": "ed39bd7fc3ec83137fc1a32560437d704e8409878c81ba61b4715ad9ea2dd3eb",
+    "file": "assets/04_first_child.jpg",
+    "sha256": "5e191e8be7276ea47495e25d670c659852ea6c558a3ecb3b2e68cdb1cc9d8716",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "05_brother_in_law_born",
+    "title": "처남 출생",
+    "distinction": "neighbouring solar / messenger observes",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Different neighbouring manor bright small solar. Visibly elderly lord joyfully cradles his newborn son near small shuttered window, nurse beside him. In dark left foreground travelling messenger stands at door watching with restrained concern and closed dispatch pouch. Layered depth messenger near, celebrating elderly father and baby far. No bed or midwife presentation. Unexpected male heir threatens messenger household's inheritance expectations, conveyed only by contrasting facial expressions.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-622dd6a8-3b30-4b83-867a-9ad6cf83c264.png",
+    "source_sha256": "2be125ab96bb571e2ce850b5b537f9171919cf4c146f2ed888eab606ca6b4ae7",
+    "file": "assets/05_brother_in_law_born.jpg",
+    "sha256": "00cb47f01bcaed3193d65125dbd07ec6a08034f29c7a624553815b035e47105c",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "06_old_lord_sickbed",
+    "title": "늙은 영주의 병상",
+    "distinction": "night bedchamber / vigil",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Frail elderly lord lies under wool coverlet in dark bedchamber at NIGHT. Priest sits by bedside holding plain small cross while family keeps quiet vigil at foot of bed. Sparse candlelight, deep brown shadows, solemn faces. Still horizontal composition. No scribes, documents, quills or eavesdroppers. Faces clearly readable despite dark room.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-76fca428-b532-4492-862d-75ffd6324961.png",
+    "source_sha256": "bddf0a45d7f8ece2c5950d4b76cee841344aff8187327dc963afc8f5c2487afb",
+    "file": "assets/06_old_lord_sickbed.jpg",
+    "sha256": "c40cc3de30b4c8f1281dfaaded42c61edb9f80a7380944b7cd8e4043ab83565d",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "07_attempted_will_change",
+    "title": "유언 변경 시도",
+    "distinction": "bedchamber threshold / secret revision",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: View obliquely through partly open bedchamber door. Inside clerk revises legal parchment using quill, a second man the notary supervises holding wax seal beside old lord in sickbed. Outside the door young adult nephew presses against corridor wall listening unseen. Strong doorframe division separates listening nephew foreground from writing action inside. Cool corridor light against warm candlelight. Blank-facing parchment no writing. Not a family vigil.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-d69aab4a-975a-4ec4-ad4d-5d10de8f0b53.png",
+    "source_sha256": "90166abfd51d883e79f771334a0b513764dcc94f0328b292dceb3b82caaf379c",
+    "file": "assets/07_attempted_will_change.jpg",
+    "sha256": "6ff6d0b6636d3a07462e8ef08e112974c707e71d3bb6e67b8f6f924d65f7abfb",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "08_inheritance_fealty",
+    "title": "상속",
+    "distinction": "great hall / tenant oath",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Wide frontal view of newly inherited manor great hall. Young adult lord stands on low dais while tenant before him raises one hand in solemn oath of fealty. Other tenants form loose attentive line. Broad roof beams, simple benches, rush-covered floor, open central space. Communal acknowledgement, raised hand readable. No coronation, crown or royal throne.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-205b9fc0-5e3f-42d7-adf2-4bda60fc8720.png",
+    "source_sha256": "541a541b282a346514c93ba3f6e9a9fb15e27a0711bce3c7649fd48543d63c6d",
+    "file": "assets/08_inheritance_fealty.jpg",
+    "sha256": "7eca4f94dd5dc1dfdf55801175cc21333e4e76d9a4a55f1cf35cea5153db82df",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "09_lawsuit_filed",
+    "title": "소송 제기",
+    "distinction": "royal law hall / advocate pleads",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Large Westminster-like royal law hall. Long wooden benches and roof timbers recede dramatically. Foreground serjeant-at-law in simple WHITE LINEN COIF presents client's case with outstretched hand before seated legal officers. Client waits tensely with rolled blank petition. Low side view along benches, formal courtroom argument. No modern courtroom or powdered wigs. Grand communal court distinct from domestic hall.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-bb4f9553-3260-40d5-8e6a-59a85756b4cd.png",
+    "source_sha256": "2dbdabbf913a1d10d96820c433f9c8c23fc371ac2883aec44891876c2dae12aa",
+    "file": "assets/09_lawsuit_filed.jpg",
+    "sha256": "0fdb1456fda22df4fe3098521be56ab5f140cd1ef40d2facd08918e8cbb7afd4",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "10_documentary_evidence",
+    "title": "증거",
+    "distinction": "archive / compare deeds",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Cramped manor archive with shelves of rolled records and tiny shuttered window. Two clerks lean over oblique reading desk comparing seals and edges of old deeds against open manor record book. One points to hanging wax seal, other follows matching place. Elevated three-quarter view prioritises hands and parchment, no letters on pages. No nobles, sickbed or court audience.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-6f3eb17a-2ae7-449d-bbeb-6d21b5273c21.png",
+    "source_sha256": "dd198979ae04f283634aa9823e2cf460d413f9c8da00b8cef2efb5cdf56f17e8",
+    "file": "assets/10_documentary_evidence.jpg",
+    "sha256": "8bc8ce03711ddd155f8f82952752bc69204c9fc25555de2a3d6d8dcc6352be96",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "11_possession_refused",
+    "title": "점유 집행 실패",
+    "distinction": "closed manor gate / entry refusal",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Grey overcast day, outside firmly CLOSED heavy timber manor gate. Unarmed bailiff and two attendants hold sealed folded writ and gesture toward barred gate. Opposing family servants refuse entry through small shuttered wicket and above low wall. Closed barrier dominates center, muddy foreground, tense nonviolent standoff. No open passage, fighting, weapons raised or blood.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-1a14e2f6-0381-4c7e-81b1-c1f7663742cf.png",
+    "source_sha256": "69c6ff045f230ff880b8e176b61d56af2e4013fee8afb386c05f57526ec2947b",
+    "file": "assets/11_possession_refused.jpg",
+    "sha256": "014993519ac9672558d4564ddeb3909b39edd35b10988b8f4c2c90c00430cbe0",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "12_possession_taken",
+    "title": "점유",
+    "distinction": "open manor gate / key delivery",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Heavy manor double gate stands fully OPEN in clear morning light. Near foreground steward places large iron key into new lord representative's open hand. Behind them household people carry baggage INTO manor courtyard through open gate. View diagonally from just inside looking out across key exchange. Open passage and inward movement clearly readable. No confrontation or ledger.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-cdf3d129-f86d-4425-8449-af1efbd46016.png",
+    "source_sha256": "75268779bb455fbba336f709ba5e045fae1d1a04d74f07c70d421fd7f1609d11",
+    "file": "assets/12_possession_taken.jpg",
+    "sha256": "c2cdda6469f5cb3fb980051e413e9823d143e4d9ba4501d73029393e7120e2c0",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "13_child_lord_guardian",
+    "title": "어린 영주와 후견인",
+    "distinction": "audience room / guardian authority",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Modest manor audience room. Child lord about NINE years old sits in oversized plain high-backed oak chair, feet not reaching floor. Mother guardian stands beside him with hand on chair calmly addressing steward at edge. Close medium frontal composition, child and mother central. Quiet authority and vulnerability. No crown, royal throne or adult sitting in child's place.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-6d8f73c1-e00e-4dff-92fb-ad229135a043.png",
+    "revision": {
+      "reason": "Remove unnecessary document to eliminate text-like marks",
+      "edit_prompt": "Use case: precise-object-edit. There is an unwanted sheet of parchment in the hands of the man on the RIGHT. REMOVE THIS PARCHMENT SHEET COMPLETELY, leaving NO paper, scroll or document anywhere in his hands. Show his two natural empty hands loosely clasped at his waist while he listens attentively. This is a child lord and his mother guardian receiving a steward, and no document is needed. Preserve the child in his large chair, the standing mother, their faces and gestures, the background attendant, all furnishings, lighting, palette, painterly style, camera angle and 16:9 framing. Only change the right man's hands and remove the sheet, restoring the underlying dark wool clothing where the sheet was. Absolutely no lettering or writing anywhere. Single image.",
+      "edit_reference_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-f5d9daee-8d12-4aa7-88cc-a6de16749250.png",
+      "initial_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-f5d9daee-8d12-4aa7-88cc-a6de16749250.png",
+      "initial_prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Modest manor audience room. Child lord about NINE years old sits in oversized plain high-backed oak chair, feet not reaching floor. Mother guardian stands beside him with hand on chair calmly addressing steward at edge. Close medium frontal composition, child and mother central. Quiet authority and vulnerability. No crown, royal throne or adult sitting in child's place.",
+      "rejected_attempt": {
+        "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-ee8d825b-e9a1-43df-b774-5206184a27fe.png",
+        "prompt": "Use case: precise-object-edit. Edit this exact image with a tiny localized correction ONLY: remove ALL faint handwriting-like horizontal marks and scribbles from the parchment sheet held by the man at the RIGHT. The entire visible sheet should be clean blank aged ivory parchment with organic paper texture and folds but NO text-like rows, symbols, letters, numbers or marks. Preserve absolutely everything else: child lord seated, standing mother guardian, faces, anatomy, poses, furniture, framing, colors, light, 16:9 landscape composition and detailed historical painterly style. Do not add or remove people or objects. Output same scene full-bleed, no text anywhere.",
+        "status": "rejected",
+        "reason": "Text-like horizontal markings remain",
+        "sha256": "3259fa0b598cde9fc5022a0ded83b31d011ce5d7aa87725c134ce1642fbd9932"
+      },
+      "initial_source_sha256": "b847120b174ece3360c37bd5143c39bb6d01d97bb4f4947d4b3a8d9cfad28137",
+      "preview_file": "revision-reference/13_child_lord_guardian-v1.jpg",
+      "preview_sha256": "aba83fda0411145cbcc10b5a593f0bd78eafca77e24c87cb966f7a3030233486"
+    },
+    "source_sha256": "a978a87b3f76ea2c12f6b199dd01a9dc1e0097c3df25682452b810fd7291a831",
+    "file": "assets/13_child_lord_guardian.jpg",
+    "sha256": "5941a6b50d9a6d09ca8b2fa7dba80d374170e52f4e13e7133c50060ac360b45b",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  },
+  {
+    "id": "14_end_of_wardship",
+    "title": "후견 끝",
+    "distinction": "counting chamber / ledger handover",
+    "prompt": "Use case: historical-scene. ONE full-bleed landscape 16:9 illustration, intended final 960x540 event card. Input images are project-owned STYLE references only, not edit targets: image1 Wave33 contact sheet, image2 Wave21 event painting. Match their richly detailed painterly historical realism, tactile aged oak, wool, linen and parchment, natural expressive people, restrained warm light and muted ochre, moss green, burgundy and brown. Fourteenth-century southern England landed gentry. Human-eye-level narrative perspective unless scene specifies otherwise. One coherent scene, no montage, panels, border or decorative frame. Absolutely NO text, letters, numbers, captions, legible writing, watermark or text-like scribbles. Documents blank or turned away. No crowns, royal regalia, fantasy armour, modern clothes, powdered wigs, Victorian furnishings, large glazed windows, chimney pots or curved Mediterranean roof tiles. Weathered oak and warm limewash, grey-brown rubble masonry, small flat peg tiles. Keep important faces/hands/actions within safe frame. Compose a genuinely distinct location, camera angle and physical action. Scene: Sunlit estate counting chamber with view of courtyard. Visibly young adult lord aged TWENTY-ONE stands at equal height with older former guardian. Guardian hands him closed leather-bound estate ledger while ring of iron keys passes between their free hands. Simple desk to side. Medium standing two-person view, respect and transfer of responsibility. No child, oversized chair, kneeling tenants or gate ceremony.",
+    "refs": [
+      "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+      "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png"
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-219f4b14-c595-4565-820d-175c5ca946e6.png",
+    "source_sha256": "3c9659a331298628986195b8ec91130d8cecb4d730780d040c9061ccbf29bf89",
+    "file": "assets/14_end_of_wardship.jpg",
+    "sha256": "5feb03fbf8352b61bbaad2ee6f3ebfb97f280ee6ffd9cbf50ecf054b94efb819",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "processing": {
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "resize": "960x540 cover-centre Lanczos3",
+      "encoding": "JPEG quality88 mozjpeg 4:4:4"
+    },
+    "reference_records": [
+      {
+        "file": "reference/Wave33_style.jpg",
+        "original_path": "/tmp/astra-wave40-work/reference/astra-wave40-reference-files/Wave33_사건삽화_화풍.jpg",
+        "sha256": "b5414793d428e68be3e9bf102b6d0908825fe9ee4cb99c3458a1520be86cf83f"
+      },
+      {
+        "file": "reference/Wave21_lord_warning.png",
+        "original_path": "/Users/rexxa/github/feudal-lord-simulator/output/astra-wave21-candidates-v1/raw/ch4_events/ch4_event_lord_warning.png",
+        "sha256": "cb13c4db16efd1ac1a5fd702a4d3bd052c4c687d0dfa17693cdfb53ffa795973"
+      }
+    ]
+  }
+]

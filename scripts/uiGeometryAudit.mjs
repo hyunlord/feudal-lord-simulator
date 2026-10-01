@@ -1,8 +1,9 @@
 // UI-AUDIT-1 geometry audit (work order §2): every surface of src/ui/surfaces.registry.ts, opened the way a player
-// opens it, in three viewports (1280×800, 1920×1080, tablet 1180×820 touch) × two copy lengths (normal, the dev
+// opens it, in five viewports (1280×800, 1920×1080, tablet 1180×820 touch, 1024×768, 1280×720) × two copy lengths (normal, the dev
 // server's 1.4× pseudo-long copy) × two number ranges (normal; extreme: the injected state's treasury 9,999,999d,
 // population 1,234, every stock 99,999 and every person with a long name no name list has), measured in the page
-// (scripts/uiGeometryMeasure.ts: outside, overflow, border, portrait, overlap, empty, controls).
+// (scripts/uiGeometryMeasure.ts: outside, overflow, border, portrait, overlap, empty, controls; QA round 15: content, hud,
+// ornament — from a second capture of the root with its text transparent and its controls hidden, scripts/uiGeometryPaint.ts).
 // One scene load serves a row and its first `extends` child; another child loads the scene again and replays the
 // chain. A step that timed out before anything was measured is tried again (up to three times); a tree with a condition
 // still not opened after the pass runs again (two more rounds, half the pages).
@@ -22,9 +23,11 @@ import { mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { loadChromium, openScene } from './renderCommitProbe.mjs';
 import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY, UI_INPUT_ROOTS } from './checks/uiGeometry.mjs';
-import { FRAME_GAP_PX, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
+import { FRAME_GAP_PX, HUD_ALWAYS, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
-import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures } from './uiGeometryMeasure.ts';
+import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface, surfaceArtLoaded } from './uiGeometryMeasure.ts';
+import { HIDE_CSS, paintFacts, STILL_CSS } from './uiGeometryPaint.ts';
+import { decodePng } from './keyartDerivatives.ts';
 import { extremeNumbers, mapTile, sceneTile } from './uiGeometryScene.ts';
 
 const [out] = process.argv.slice(2);
@@ -155,6 +158,9 @@ async function runStep(page, state, step) {
       if (await page.locator(shown(step.until)).count() > 0) return;
     }
     throw new Error(`no hovered building showed ${step.until}`);
+  } else if ('holdTimers' in step) {
+    // The page's timers stop (its CSS animations are held when the measure starts): a surface shown for a moment stays.
+    await page.clock.install(); await page.clock.pauseAt(Date.now() + 1_000);
   } else throw new Error(`unknown step ${JSON.stringify(step)}`);
 }
 
@@ -174,17 +180,56 @@ for (const row of SURFACES) if (selected(row)) results[row.id] = { frame: row.fr
 const shots = { count: 0, bytes: 0, rows: new Set() };
 const specOf = row => ({ root: row.root, frame: row.frame, gap: FRAME_GAP_PX, frameLayer: row.frameLayer, contentSlot: row.contentSlot, frameSlots: row.frameSlots,
   scroll: row.scroll, scrollParts: row.scrollParts, painting: row.painting, portraitRing: row.portraitRing, siblingsNoOverlap: row.siblingsNoOverlap, expect: row.expect,
-  registryRoots: REGISTRY_ROOTS });
+  registryRoots: REGISTRY_ROOTS, requires: row.requires, hud: HUD_ALWAYS });
 const REGISTRY_ROOTS = [...new Set(SURFACES.map(row => row.root))];
 /** Framed roots on screen that no registry root matches: kind + class → the rows whose screens showed them. */
 const unregisteredFramed = new Map();
 /** The frame type a data-frame kind stands for (FRAME_TOKENS; "flat" has no art). */
 const kindType = kind => kind === 'flat' ? 'flat' : FRAME_TOKENS[kind]?.type ?? 'unknown';
 
+/** Two frames rendered (a page whose timers a holdTimers step stopped has no requestAnimationFrame: 250 ms then). */
+const twoFrames = page => Promise.race([page.evaluate(() => new Promise(done => requestAnimationFrame(() => requestAnimationFrame(done)))), pause(250)]);
+
+/** The two captures of the measured root (marked data-geometry-root by collectSurface): as it is, then its text transparent
+ * and its controls hidden; the root's attribute and both styles are gone afterwards. The captures cover the part of the
+ * root on screen (what its scrolling ancestors show, within the viewport); none of it on screen: no paint pass (undefined). */
+async function paintPass(page, collected) {
+  const box = collected.root.visible === undefined ? collected.root.rect : collected.root.visible; const view = collected.viewport;
+  const x = box === null ? 0 : Math.max(0, Math.floor(box.l)); const y = box === null ? 0 : Math.max(0, Math.floor(box.t));
+  const r = box === null ? 0 : Math.min(view.w, Math.ceil(box.r)); const b = box === null ? 0 : Math.min(view.h, Math.ceil(box.b));
+  if (r - x < 1 || b - y < 1) {
+    await page.evaluate(() => { for (const element of document.querySelectorAll('[data-geometry-root]')) element.removeAttribute('data-geometry-root'); }).catch(() => undefined);
+    return undefined;
+  }
+  const clip = { x, y, width: r - x, height: b - y };
+  const style = css => page.evaluate(text => { const element = document.createElement('style'); element.dataset.geometryPaint = ''; element.textContent = text; document.head.append(element); }, css);
+  const frames = () => twoFrames(page);
+  try {
+    await style(STILL_CSS); await frames();
+    const first = decodePng(await page.screenshot({ clip, type: 'png' }));
+    await style(HIDE_CSS); await frames();
+    const second = decodePng(await page.screenshot({ clip, type: 'png' }));
+    return paintFacts(collected, first, second, { x: clip.x, y: clip.y });
+  } finally {
+    await page.evaluate(() => { for (const element of document.querySelectorAll('style[data-geometry-paint]')) element.remove();
+      for (const element of document.querySelectorAll('[data-geometry-root]')) element.removeAttribute('data-geometry-root'); }).catch(() => undefined);
+  }
+}
+
 const roundBox = box => box === null ? null : Object.fromEntries(Object.entries(box).map(([key, value]) => [key, Math.round(value * 10) / 10]));
 async function measure(row, condition, page) {
   const spec = specOf(row);
-  const collected = await page.evaluate(collectSurface, spec);
+  // The surface holds still from the moment it is measured (its CSS animations paused where they are; the paint pass's
+  // STILL_CSS keeps them so): a fading screen is measured as it showed when the steps reached it, not half gone.
+  await page.evaluate(selector => { for (const animation of document.getAnimations()) { const target = animation.effect?.target;
+    if (target instanceof Element && [...document.querySelectorAll(selector)].some(root => root === target || root.contains(target))) animation.pause(); } }, row.root);
+  // A root its scrolling ancestors show nothing of is scrolled to first (as a player does: the family tree's banner).
+  if (await page.evaluate(revealSurface, row.root)) await twoFrames(page);
+  // Its art has loaded (a busy DGX served a drawer's frame and its tabs' button art after the captures); a page whose
+  // timers are stopped has no setTimeout, so the wait is bounded here too.
+  if (await Promise.race([page.evaluate(surfaceArtLoaded, { selector: row.root, ms: 8_000 }), pause(9_000).then(() => 0)]) > 0) await twoFrames(page);
+  let collected = await page.evaluate(collectSurface, spec);
+  if (collected.found) { const paint = await paintPass(page, collected); if (paint !== undefined) collected = { ...collected, paint }; }
   const evaluation = evaluateSurface(collected, spec);
   for (const { kind, path } of collected.unregistered ?? []) {
     const key = `${kind} ${path}`; if (!unregisteredFramed.has(key)) unregisteredFramed.set(key, new Set()); unregisteredFramed.get(key).add(row.id);

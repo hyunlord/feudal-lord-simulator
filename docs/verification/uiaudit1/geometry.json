@@ -1,17 +1,19 @@
 {
  "schema": 1,
- "run": "engine-LME3-uigeom2-100e193",
- "commit": "100e1933a428f571338afb63e6885d529b644d23",
+ "run": "render-UIAUDITR15-final3-543a9f4",
+ "commit": "543a9f4748a148b270f21267a289d34be2afa231",
  "dirty": false,
  "inputs": 1660,
- "inputHash": "260fcaec08e41449ea3a4d7bf86a9c2fc4908b413d44064fe610ac91b86fe876",
- "measuredAt": "2026-10-01T08:56:16.665Z",
- "report": "docs/verification/uiaudit1/geometry/engine-LME3-uigeom2-100e193/geometry.json",
+ "inputHash": "872bce27d591b2e0a87d59b9f0d938cdad3d6ec4fff7735dd497e0d75f69bbec",
+ "measuredAt": "2026-10-01T12:04:32.037Z",
+ "report": "docs/verification/uiaudit1/geometry/render-UIAUDITR15-final3-543a9f4/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
    "1920x1080",
-   "tablet-1180x820"
+   "tablet-1180x820",
+   "1024x768",
+   "1280x720"
   ],
   "copies": [
    "normal",
@@ -22,10 +24,10 @@
    "extreme"
   ]
  },
- "rows": 93,
- "conditions": 996,
- "measured": 996,
- "failures": 12,
+ "rows": 101,
+ "conditions": 1812,
+ "measured": 1812,
+ "failures": 20,
  "unopened": 0,
  "unreachable": [
   "hud.goal-help",
@@ -33,21 +35,24 @@
   "hud.era-ceremony",
   "hud.build-details"
  ],
- "warnings": 347,
+ "warnings": 623,
  "byCheck": {
   "outside": 0,
-  "overflow": 12,
+  "overflow": 20,
   "border": 0,
   "portrait": 0,
   "overlap": 0,
   "empty": 0,
-  "controls": 0
+  "controls": 0,
+  "content": 0,
+  "hud": 0,
+  "ornament": 0
  },
  "unregisteredFramed": 0,
  "baseline": {
   "entries": 0,
   "counted": 0,
-  "excepted": 12,
+  "excepted": 20,
   "exceptions": 1,
   "added": 0,
   "fixed": 0
@@ -333,6 +338,36 @@
    "unopened": 0,
    "byCheck": {}
   },
+  "modal.petition.ch3-plague": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch4-guild": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch5-royal-tax": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.ch5-legacy-choice": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.interlude-guild": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.petition.interlude-church": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
   "modal.chapter-page.ch1": {
    "failures": 0,
    "unopened": 0,
@@ -413,6 +448,16 @@
    "unopened": 0,
    "byCheck": {}
   },
+  "modal.person-card.king": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.history.biography.king": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
   "modal.history.family-tree": {
    "failures": 0,
    "unopened": 0,
@@ -434,10 +479,10 @@
    "byCheck": {}
   },
   "modal.history.factions": {
-   "failures": 12,
+   "failures": 20,
    "unopened": 0,
    "byCheck": {
-    "overflow": 12
+    "overflow": 20
    }
   },
   "modal.history.faction-page": {
@@ -502,6 +547,14 @@
   }
  },
  "failureKeys": [
+  "modal.history.factions|1024x768/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1024x768/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1024x768/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1024x768/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1280x720/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1280x720/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1280x720/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
+  "modal.history.factions|1280x720/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|1280x800/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|1280x800/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
   "modal.history.factions|1280x800/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",

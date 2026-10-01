@@ -1,0 +1,394 @@
+[
+  {
+    "id": "button_primary_normal",
+    "file": "assets/button_primary_normal.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_primary",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Create ONE blank rectangular medieval strategy game UI primary button NORMAL state. The two reference images define restrained warm parchment and oak craft, not their layouts. Orthographic flat frontal game sprite, 3.2:1 aspect ratio. Center object on transparent canvas, tightly framed. Target 128x40 pixels after reduction. Dark oak narrow beveled rim, tiny restrained brass corner pins in all four corners, parchment #e8d8b1 center. Entire text center is absolutely FLAT SINGLE COLOR, no grain, no mottling, no symbols. Border details restricted to outer 10px at final scale, blank center x14..113 y12..27 must accommodate 16px label later. Real slightly raised handmade timber edge, sharp clean corners softly clipped, subtle warm upper edge light. No text, no letters, no icons, no watermark, no multiple buttons, no cast shadow outside object. Keep width-height ratio exactly 3.2:1 and perimeter simple for 9slice. Transparent exterior including corner pixels. Render high resolution for downsampling.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-fcd20d28-8f4e-4dcb-9905-006ffdadf4a3.png",
+    "source_sha256": "71c320e7e2252baac671eee78807cb19c6eb8d8086821942a7b73a49ed8b53ef",
+    "processing": {
+      "crop": {
+        "left": 74,
+        "top": 210,
+        "width": 1835,
+        "height": 340
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        227,
+        206,
+        163
+      ]
+    }
+  },
+  {
+    "id": "button_secondary_normal",
+    "file": "assets/button_secondary_normal.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_secondary",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Create ONE blank rectangular medieval strategy game UI secondary button NORMAL state. The two reference images define restrained warm parchment and oak craft, not their layouts. Orthographic flat frontal game sprite, 3.2:1 aspect ratio. Center object on transparent canvas, tightly framed. Target 128x40 pixels after reduction. Thin warm oak narrow beveled rim, lighter parchment #f1e4c6 center, no metal ornaments. Entire text center is absolutely FLAT SINGLE COLOR, no grain, no mottling, no symbols. Border details restricted to outer 10px at final scale, blank center x14..113 y12..27 must accommodate 16px label later. Real slightly raised handmade timber edge, sharp clean corners softly clipped, subtle warm upper edge light. No text, no letters, no icons, no watermark, no multiple buttons, no cast shadow outside object. Keep width-height ratio exactly 3.2:1 and perimeter simple for 9slice. Transparent exterior including corner pixels. Render high resolution for downsampling.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-65383056-af4d-4c51-bd60-db27d5689710.png",
+    "source_sha256": "baf21fb5f9b7e6c45917dac19e1a0502177bf0e08d077a47e9f28de8825d5177",
+    "processing": {
+      "crop": {
+        "left": 49,
+        "top": 206,
+        "width": 1885,
+        "height": 379
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        236,
+        218,
+        179
+      ]
+    }
+  },
+  {
+    "id": "button_primary_hover",
+    "file": "assets/button_primary_hover.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_primary",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval primary button into its HOVER UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Brighten upper rim highlight, add subtle warm brass glint and slightly lighter parchment flat fill; clearly highlighted but tasteful. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-1faecde9-8e42-422b-a837-f79b4b97fd73.png",
+    "source_sha256": "de71c104772c78b4520d27e79a5780b849f0aeee99ec6d514ac959b49e1b4b33",
+    "processing": {
+      "crop": {
+        "left": 71,
+        "top": 207,
+        "width": 1841,
+        "height": 345
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        245,
+        227,
+        189
+      ]
+    }
+  },
+  {
+    "id": "button_primary_pressed",
+    "file": "assets/button_primary_pressed.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_primary",
+    "state": "pressed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval primary button into its PRESSED UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Make the face visibly inset/depressed 1 to 2 target pixels: darker inner top edge, inverted bevel lighting, subdued lower edge highlight; flat center slightly darker, border remains same silhouette. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-3e569435-5519-456b-b3c4-d877434d2c16.png",
+    "source_sha256": "0e21f5f75c363f4da62b9dec261ec3bddd6795f1898bb3753801a2a64856c659",
+    "processing": {
+      "crop": {
+        "left": 72,
+        "top": 208,
+        "width": 1840,
+        "height": 344
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        186,
+        164,
+        125
+      ]
+    }
+  },
+  {
+    "id": "button_primary_disabled",
+    "file": "assets/button_primary_disabled.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_primary",
+    "state": "disabled",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval primary button into its DISABLED UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Use muted desaturated gray-brown timber and low contrast dull corners, opaque warm gray parchment face. Clearly unavailable and subdued, not merely opacity lowered. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-44ad4e5f-f15f-491f-bc64-e8a774b25d23.png",
+    "source_sha256": "74d00780622af9749fc366d8c1c76c0203eb14e0e09c4224af19a96d228f56ec",
+    "processing": {
+      "crop": {
+        "left": 73,
+        "top": 208,
+        "width": 1838,
+        "height": 344
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        181,
+        172,
+        161
+      ]
+    }
+  },
+  {
+    "id": "button_secondary_hover",
+    "file": "assets/button_secondary_hover.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_secondary",
+    "state": "hover",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval secondary button into its HOVER UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Brighten upper rim highlight, add subtle warm brass glint and slightly lighter parchment flat fill; clearly highlighted but tasteful. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-8fc64743-a733-49e0-ba33-c200a2da9ec0.png",
+    "source_sha256": "d6e03fa261223f749dec30f5888d379787e1421f2df3e4973c9e3d6c35f27563",
+    "processing": {
+      "crop": {
+        "left": 47,
+        "top": 197,
+        "width": 1892,
+        "height": 390
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        247,
+        231,
+        197
+      ]
+    }
+  },
+  {
+    "id": "button_secondary_pressed",
+    "file": "assets/button_secondary_pressed.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_secondary",
+    "state": "pressed",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval secondary button into its PRESSED UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Make the face visibly inset/depressed 1 to 2 target pixels: darker inner top edge, inverted bevel lighting, subdued lower edge highlight; flat center slightly darker, border remains same silhouette. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-77040f2b-0db6-4027-a19f-ca7258a868ee.png",
+    "source_sha256": "f3456c512c02b406e9c52fe7d202c99ef28bdd00c77a603e3993bb75d0b55346",
+    "processing": {
+      "crop": {
+        "left": 47,
+        "top": 205,
+        "width": 1889,
+        "height": 383
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        208,
+        187,
+        151
+      ]
+    }
+  },
+  {
+    "id": "button_secondary_disabled",
+    "file": "assets/button_secondary_disabled.png",
+    "width": 128,
+    "height": 40,
+    "component": "button_secondary",
+    "state": "disabled",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 64,
+    "min_height": 32,
+    "text_safe": [
+      14,
+      12,
+      100,
+      16
+    ],
+    "notes": "Generated raster perimeter; flat opaque text region; candidate only.",
+    "prompt": "Edit the provided single blank medieval secondary button into its DISABLED UI interaction state. Preserve the identical four corners, exact silhouette, material structure, proportions, frontal camera, location and transparent exterior. Use muted desaturated gray-brown timber and low contrast dull corners, opaque warm gray parchment face. Clearly unavailable and subdued, not merely opacity lowered. Keep entire interior text region completely blank, untextured, flat single color, no gradient/no grain; keep realistic material detail only in narrow rim. No text, no letters, no added glyphs, no extra objects. This is one state sprite targeting128x40 with9slice margins10eachside. Preserve real alpha transparency.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fc-b90c-7161-99ea-90484342a6b6/exec-fd8f5bda-d5b9-42a6-acfb-e4e7ed52495d.png",
+    "source_sha256": "0007cef5f75e20b846e8d52da8755541b63954bcbe48c66fe3c2f386d690ed5e",
+    "processing": {
+      "crop": {
+        "left": 47,
+        "top": 202,
+        "width": 1889,
+        "height": 386
+      },
+      "resize": [
+        126,
+        38
+      ],
+      "transparent_padding": 1,
+      "flat_center": [
+        12,
+        9,
+        104,
+        22
+      ],
+      "center_rgb": [
+        186,
+        180,
+        170
+      ]
+    }
+  }
+]

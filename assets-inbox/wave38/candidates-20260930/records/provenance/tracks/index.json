@@ -1,0 +1,142 @@
+[
+  {
+    "id": "slider_track",
+    "file": "assets/slider_track.png",
+    "width": 128,
+    "height": 12,
+    "component": "slider_track",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 4,
+    "slice_right": 5,
+    "slice_bottom": 4,
+    "slice_left": 5,
+    "min_width": 32,
+    "min_height": 12,
+    "text_safe": null,
+    "notes": "Generated raster; slider thumb fixed size. Direction-specific source; no glyphs or text.",
+    "prompt": "Use case: stylized-concept. Single raster game UI component for restrained historical feudal management game. Front-facing orthographic cutout on genuinely transparent background, no perspective, no cast shadow outside the component, no text, no symbols, no extra objects. Low saturation warm oak #674124 dark oak #3c291c and old brass #b29658. Fine painted bevel, simple utilitarian historical craft, no fantasy ornament, no glossy modern plastic. Clean anti-aliased silhouette, transparent rounded corner pixels. Render large enough for clean reduction. One very thin HORIZONTAL slider track, actual component aspect ratio exactly 128:12, wide bar running left to right. Oak inset groove with thin upper and lower oak rails, darker recessed uninterrupted horizontal center. End caps simple rounded wood, no brass slider thumb. Uniform middle permits horizontal stretching. Ends within left/right 5 of final128 and top/bottom 4 of final12. Place full uncut bar centrally, occupying 90% image width.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-ff4c-7fb0-b991-eb9a042d17c1/exec-2c5f05ec-8cd6-45ee-9d15-54b2fa20b26d.png",
+    "source_sha256": "ea016a3f28d3290d77c7ead58fd895bade584a2ad2cf3df0ed7a2817e2f91aab",
+    "sha256": "659cf09986ce7d58bb5505c7c0ddea46047448dac74d1869b4aaf453e021e7c4",
+    "processing": {
+      "alpha_bbox": {
+        "left": 35,
+        "top": 564,
+        "width": 1229,
+        "height": 83
+      },
+      "resize": [
+        128,
+        12
+      ],
+      "method": "Generated RGBA alpha crop threshold8; Lanczos resize; thumbs centered with 1px transparent border. No painted artwork added.",
+      "transparent_padding": 0
+    }
+  },
+  {
+    "id": "slider_thumb",
+    "file": "assets/slider_thumb.png",
+    "width": 24,
+    "height": 24,
+    "component": "slider_thumb",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 10,
+    "slice_right": 10,
+    "slice_bottom": 10,
+    "slice_left": 10,
+    "min_width": 24,
+    "min_height": 24,
+    "text_safe": null,
+    "notes": "Generated raster; slider thumb fixed size. Direction-specific source; no glyphs or text.",
+    "prompt": "Use case: stylized-concept. Single raster game UI component for restrained historical feudal management game. Front-facing orthographic cutout on genuinely transparent background, no perspective, no cast shadow outside the component, no text, no symbols, no extra objects. Low saturation warm oak #674124 dark oak #3c291c and old brass #b29658. Fine painted bevel, simple utilitarian historical craft, no fantasy ornament, no glossy modern plastic. Clean anti-aliased silhouette, transparent rounded corner pixels. Render large enough for clean reduction. One compact SQUARE brass slider thumb handle, aspect ratio1:1. Subtle bevel rounded corners, antique brass flat broad face with only a discreet narrow central vertical grip indentation. Symmetric consistent small edge frame. Designed to sit atop an oak groove at final24x24. No track behind, no screws or elaborate ornament. Full uncut object occupying 85% canvas.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-ff4c-7fb0-b991-eb9a042d17c1/exec-a1e52c89-aad3-4285-a155-ce0ba985750e.png",
+    "source_sha256": "13f4eec450f5f09e88a665681e0963dbedb1df6ecf345faf3d0f84031189755c",
+    "sha256": "bbab90033ca758853fd1dbf4f03ffc5f332908ad7b9598398e5fb53bed53f57b",
+    "processing": {
+      "alpha_bbox": {
+        "left": 119,
+        "top": 144,
+        "width": 1018,
+        "height": 970
+      },
+      "resize": [
+        24,
+        24
+      ],
+      "method": "Generated RGBA alpha crop threshold8; Lanczos resize; thumbs centered with 1px transparent border. No painted artwork added.",
+      "transparent_padding": 1
+    }
+  },
+  {
+    "id": "scrollbar_track",
+    "file": "assets/scrollbar_track.png",
+    "width": 12,
+    "height": 128,
+    "component": "scrollbar_track",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 5,
+    "slice_right": 4,
+    "slice_bottom": 5,
+    "slice_left": 4,
+    "min_width": 12,
+    "min_height": 32,
+    "text_safe": null,
+    "notes": "Generated raster; slider thumb fixed size. Direction-specific source; no glyphs or text.",
+    "prompt": "Use case: stylized-concept. Single raster game UI component for restrained historical feudal management game. Front-facing orthographic cutout on genuinely transparent background, no perspective, no cast shadow outside the component, no text, no symbols, no extra objects. Low saturation warm oak #674124 dark oak #3c291c and old brass #b29658. Fine painted bevel, simple utilitarian historical craft, no fantasy ornament, no glossy modern plastic. Clean anti-aliased silhouette, transparent rounded corner pixels. Render large enough for clean reduction. One very thin VERTICAL scrollbar track, actual component aspect ratio exactly12:128, tall bar running top to bottom. Oak inset groove with narrow left and right oak rails, darker recessed uninterrupted vertical center. End caps simple rounded wood, no handle or arrows. Uniform middle permits vertical stretching. Ends within top/bottom5 of final128 and left/right4 of final12. Place full uncut bar centrally occupying90%image height.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-ff4c-7fb0-b991-eb9a042d17c1/exec-a2855705-5166-419e-a3cd-e7c4815d9509.png",
+    "source_sha256": "a6306d0cdb40db185dcf58453f3828fc35203236827212589f05a5335b46d5a8",
+    "sha256": "08ba2aa30e468574fa52605bf4bc2aa86d7b95b07912f50c1f723b02205f01f3",
+    "processing": {
+      "alpha_bbox": {
+        "left": 560,
+        "top": 44,
+        "width": 92,
+        "height": 1207
+      },
+      "resize": [
+        12,
+        128
+      ],
+      "method": "Generated RGBA alpha crop threshold8; Lanczos resize; thumbs centered with 1px transparent border. No painted artwork added.",
+      "transparent_padding": 0
+    }
+  },
+  {
+    "id": "scrollbar_thumb",
+    "file": "assets/scrollbar_thumb.png",
+    "width": 12,
+    "height": 40,
+    "component": "scrollbar_thumb",
+    "state": "normal",
+    "status": "candidate",
+    "slice_top": 5,
+    "slice_right": 4,
+    "slice_bottom": 5,
+    "slice_left": 4,
+    "min_width": 12,
+    "min_height": 20,
+    "text_safe": null,
+    "notes": "Generated raster; slider thumb fixed size. Direction-specific source; no glyphs or text.",
+    "prompt": "Use case: stylized-concept. Single raster game UI component for restrained historical feudal management game. Front-facing orthographic cutout on genuinely transparent background, no perspective, no cast shadow outside the component, no text, no symbols, no extra objects. Low saturation warm oak #674124 dark oak #3c291c and old brass #b29658. Fine painted bevel, simple utilitarian historical craft, no fantasy ornament, no glossy modern plastic. Clean anti-aliased silhouette, transparent rounded corner pixels. Render large enough for clean reduction. One elongated VERTICAL scrollbar handle, actual component aspect ratio12:40. Straight tall narrow handle with warm dark oak central face and a slim old brass beveled perimeter. Simple slightly rounded end caps. No decorative repeated symbols, no track, no arrows, no screws. Uniform plain middle so stretch vertically while endcaps fixed. Final left/right4 and top/bottom5 pixels edges. Full uncut object centered occupying85%image height. CRITICAL: handle is a SHORT CHUNKY RECTANGLE, width 30% of height, about 300px wide and 1000px high, NOT A LONG RAIL. No glow, no haze, no aura, no background color, no bloom, no drop shadow; everything outside the clean silhouette must have alpha ZERO. Matte understated brass corners only.",
+    "generation_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f1fd-ff4c-7fb0-b991-eb9a042d17c1/exec-d9f0dedd-92b3-4c30-9618-fd23b0376127.png",
+    "source_sha256": "e3455a5a53101a0413f5ac151bf572b481d7d4b3c3540c1a27cc8f84b81cb16f",
+    "sha256": "b111ee59d9cc5a3695fb8e324e8ef836da7287dc2d717d8ad76870085fb953d5",
+    "processing": {
+      "alpha_bbox": {
+        "left": 388,
+        "top": 90,
+        "width": 305,
+        "height": 1268
+      },
+      "resize": [
+        12,
+        40
+      ],
+      "method": "Generated RGBA alpha crop threshold8; Lanczos resize; thumbs centered with 1px transparent border. No painted artwork added.",
+      "transparent_padding": 1
+    }
+  }
+]

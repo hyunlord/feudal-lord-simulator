@@ -1,0 +1,115 @@
+{
+  "count": 4,
+  "checks": [
+    {
+      "id": "slider_track",
+      "dimensions": true,
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "transparent_corners": true,
+      "sha256": "659cf09986ce7d58bb5505c7c0ddea46047448dac74d1869b4aaf453e021e7c4"
+    },
+    {
+      "id": "slider_thumb",
+      "dimensions": true,
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "transparent_corners": true,
+      "sha256": "bbab90033ca758853fd1dbf4f03ffc5f332908ad7b9598398e5fb53bed53f57b"
+    },
+    {
+      "id": "scrollbar_track",
+      "dimensions": true,
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "transparent_corners": true,
+      "sha256": "08ba2aa30e468574fa52605bf4bc2aa86d7b95b07912f50c1f723b02205f01f3"
+    },
+    {
+      "id": "scrollbar_thumb",
+      "dimensions": true,
+      "rgba": true,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "transparent_corners": true,
+      "sha256": "b111ee59d9cc5a3695fb8e324e8ef836da7287dc2d717d8ad76870085fb953d5"
+    }
+  ],
+  "visual": "PASS: native and 2x contact inspection; horizontal and vertical grooves correctly oriented, matte brass thumb distinct, final scrollbar thumb has no external halo. Minimum and 2x 9-slice proof inspected.",
+  "runtime_verified": false,
+  "nine_slice": [
+    {
+      "id": "slider_track",
+      "width": 32,
+      "height": 12,
+      "nine_slice": "rendered"
+    },
+    {
+      "id": "slider_track",
+      "width": 256,
+      "height": 24,
+      "nine_slice": "rendered"
+    },
+    {
+      "id": "slider_thumb",
+      "width": 24,
+      "height": 24,
+      "nine_slice": "rendered"
+    },
+    {
+      "id": "slider_thumb",
+      "width": 24,
+      "height": 24,
+      "nine_slice": "rendered"
+    },
+    {
+      "id": "scrollbar_track",
+      "width": 12,
+      "height": 32,
+      "nine_slice": "rendered"
+    },
+    {
+      "id": "scrollbar_track",
+      "width": 24,
+      "height": 256,
+      "nine_slice": "rendered"
+    },
+    {
+      "id": "scrollbar_thumb",
+      "width": 12,
+      "height": 20,
+      "nine_slice": "rendered"
+    },
+    {
+      "id": "scrollbar_thumb",
+      "width": 24,
+      "height": 80,
+      "nine_slice": "rendered"
+    }
+  ],
+  "known_issues": [
+    "Texture stretches with 9-slice scaling; intended primarily along track axis.",
+    "Fixed 24x24 slider thumb must not be stretched.",
+    "No runtime/UI interaction verification."
+  ],
+  "regeneration": "First scrollbar thumb rejected for exterior glow and incorrect aspect ratio; final generated revision used."
+}

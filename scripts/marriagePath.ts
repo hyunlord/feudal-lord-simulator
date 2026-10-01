@@ -1,6 +1,6 @@
 // LM-E3 human path (spec docs/design/negotiation.md NG-10): a lord-mode town from 1300 on one land and seed, played by
-// commands only — the chapters' answers as the bot gives them, then the marriage: offered as soon as the lord's son is of
-// age (a small portion, the counterpart's word on the inheritance, the bride's residence), its counter taken, every
+// commands only — the chapters' answers as the bot gives them, then the marriage: offered as soon as a groom of the house
+// is of age (FIX-12: again a year after a refusal) (a small portion, the counterpart's word on the inheritance, the bride's residence), its counter taken, every
 // promise kept before its deadline, the will-change answered (`favour` by default, or `let_it_be` to sue), a contested
 // estate sued for (the marriage deed, witnesses, the charter, the bishop as patron) and its possession enforced — to the
 // inheritance or its loss. Reads only what the screens show (the APIs), never edits the state.
@@ -34,6 +34,8 @@ export interface MarriagePathOptions {
   readonly willAnswer?: "favour" | "support_promise" | "let_it_be";
   readonly archetypeId?: string;
   readonly lastYear?: number;
+  /** LM-E4: hand back the state at the end too (the stewardship's path and comparison start from the inheritance). */
+  readonly keepState?: boolean;
 }
 
 export function marriagePath(options: MarriagePathOptions) {
@@ -46,6 +48,8 @@ export function marriagePath(options: MarriagePathOptions) {
   };
   const lastYear = options.lastYear ?? 1325;
   let offers = 0;
+  // FIX-12: a refused offer is made again a year later (the lord's estates' year may carry a counter's yearly dues then).
+  let lastOffer = -Infinity;
   while (stateCalendar(state).year <= lastYear) {
     const stage = diplomacyOf(state).marriage?.stage;
     if (stage === "inherited" || stage === "lost") break;
@@ -57,8 +61,9 @@ export function marriagePath(options: MarriagePathOptions) {
       const diplomacy = diplomacyOf(state);
       const countered = diplomacy.negotiations.find(entry => entry.status === "countered");
       if (countered !== undefined) send({ type: "answer_counter", negotiationId: countered.id, accept: true }, "answer_counter");
-      else if (diplomacy.marriage === undefined && offers < 4 && marriageCandidates(state).groom !== null && marriageCandidates(state).bride !== null) {
+      else if (diplomacy.marriage === undefined && offers < 8 && state.tick - lastOffer >= 4000 && marriageCandidates(state).groom !== null && marriageCandidates(state).bride !== null) {
         offers += 1;
+        lastOffer = state.tick;
         const cash = Math.min(200 * offers, Math.max(0, treasuryBalance(state) - 100));
         send({ type: "propose_marriage", terms: FIRST_OFFER.map(term => term.kind === "cash" ? { ...term, amount: cash } : term) }, `propose_marriage(${cash})`);
       }
@@ -95,6 +100,7 @@ export function marriagePath(options: MarriagePathOptions) {
     ledger: (state.history?.records ?? []).filter(record => /^(negotiation|promise|marriage|estate)\./.test(record.template))
       .map(record => `${year(record.tick)} ${historySummary(record)}`),
     finalYear: stateCalendar(state).year,
+    ...(options.keepState === true ? { state } : {}),
   };
 }
 
