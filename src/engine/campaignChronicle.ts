@@ -8,6 +8,7 @@ import { CHAPTER_TITLES, CHRONICLE_TEXT, chapterSummaryLine } from "../content/l
 import type { LegacyAxis, LegacyEndingId } from "../content/legacyConfig";
 import type { GameState } from "./engine.types";
 import { historySummary } from "./history";
+import type { PersonReader } from "./historyNames";
 import type { HistoryRecord } from "./history.types";
 import { legacyEnding, legacyOf, legacyScores } from "./legacy";
 import { lordshipOf } from "./lordshipState";
@@ -74,8 +75,9 @@ export interface CampaignChronicle {
   } | null;
 }
 
-function line(record: HistoryRecord, year: (tick: number) => number): ChronicleBookLine {
-  return { recordId: record.id, year: year(record.tick), text: historySummary(record),
+function line(record: HistoryRecord, year: (tick: number) => number, state?: PersonReader): ChronicleBookLine {
+  // FIX-12 (item 4): the persons a line names are named now (their id is what the record keeps).
+  return { recordId: record.id, year: year(record.tick), text: historySummary(record, state),
     ...(record.illustration === undefined ? {} : { illustration: record.illustration }), ...(record.snapshotId === undefined ? {} : { snapshotId: record.snapshotId }) };
 }
 
@@ -86,10 +88,10 @@ function line(record: HistoryRecord, year: (tick: number) => number): ChronicleB
  */
 function bookChapter(state: GameState, page: ChronicleEntry, closed: boolean, year: (tick: number) => number, fromTick?: number): ChronicleBookChapter {
   const records = new Map((state.history?.records ?? []).map(record => [record.id, record]));
-  const events = page.events.flatMap(event => { const record = records.get(event.recordId); return record === undefined ? [] : [line(record, year)]; });
+  const events = page.events.flatMap(event => { const record = records.get(event.recordId); return record === undefined ? [] : [line(record, year, state)]; });
   const decisions = page.decisions.flatMap(quote => {
     const record = records.get(quote.recordId);
-    return record === undefined ? [] : [{ ...line(record, year), chosen: quote.chosen, alternatives: quote.alternatives }];
+    return record === undefined ? [] : [{ ...line(record, year, state), chosen: quote.chosen, alternatives: quote.alternatives }];
   });
   const fromYear = fromTick !== undefined ? year(fromTick) : page.fromYear;
   return { chapter: page.chapter, title: CHAPTER_TITLES[page.chapter] ?? "", fromYear, toYear: page.toYear, closed,
@@ -137,7 +139,7 @@ export function campaignChronicle(state: GameState): CampaignChronicle {
   const factions = (state.factions?.factions ?? []).map(faction => ({
     id: faction.id, name: factionDisplayName(faction.id, faction.name), relation: faction.relation,
     entries: records.filter(record => (record.kind === "faction" || (record.kind === "event" && record.severity >= 2))
-      && (record.actors ?? []).some(actor => actor.type === "faction" && actor.id === faction.id)).map(record => line(record, year)),
+      && (record.actors ?? []).some(actor => actor.type === "faction" && actor.id === faction.id)).map(record => line(record, year, state)),
   }));
 
   const scores = legacy === undefined ? null : legacy.scores ?? legacyScores(state);

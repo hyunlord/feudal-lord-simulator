@@ -840,9 +840,30 @@ function advanceConditions(town: Town, state: GameState, yearStart: boolean): vo
 /** PS-4: each petition names 2–3 heads, the most substantial (merchant, artisan) first. */
 function namePetitioners(town: Town, state: GameState): GameState {
   const petitions = state.politics?.petitions ?? [];
-  if (!petitions.some(petition => petition.petitionerIds === undefined)) return state;
+  const living = new Set(town.people.map(person => person.id));
+  // FIX-12 (item 3, QA-036): an open petition of the town's heads whose representative died takes the next living head.
+  const orphaned = (petition: (typeof petitions)[number]) => petition.response === undefined && petition.petitionerIds !== undefined
+    && petitionFactionLeaders(state, petition.petitioner) === null && petition.petitionerIds.some(id => !living.has(id));
+  if (!petitions.some(petition => petition.petitionerIds === undefined || orphaned(petition))) return state;
   const rank: Readonly<Record<string, number>> = { merchant: 0, artisan: 1, labour: 2, poor_servant: 3, gentry: 4, clerical: 5 };
   const next = petitions.map(petition => {
+    if (petition.petitionerIds !== undefined && orphaned(petition)) {
+      const gone = new Map([...town.past].map(person => [person.id, person]));
+      const taken = new Set(petition.petitionerIds);
+      const heads = town.people.filter(person => person.role === "head" && person.householdId !== MANOR_HOUSEHOLD && ageOf(person, town.year) >= 18 && !taken.has(person.id))
+        .sort((a, b) => (rank[a.classBand] ?? 9) - (rank[b.classBand] ?? 9) || (hashSeed(town.seed, petition.id, Number(a.id.slice(2))) - hashSeed(town.seed, petition.id, Number(b.id.slice(2)))));
+      const ids = petition.petitionerIds.map(id => {
+        if (living.has(id)) return id;
+        // The same group first (the dead one's class), else the next head by the petition's order.
+        const band = gone.get(id)?.classBand;
+        const heir = heads.find(person => person.classBand === band) ?? heads[0];
+        if (heir === undefined) return id;
+        heads.splice(heads.indexOf(heir), 1);
+        town.replace(heir.id, { tags: [...heir.tags, `petitioner:${petition.id}`] });
+        return heir.id;
+      });
+      return { ...petition, petitionerIds: ids };
+    }
     if (petition.petitionerIds !== undefined) return petition;
     // FACTION-0 (FX-3): an outside faction's petition is brought in its leader's name (the king's writ, the earl, the bishop's letter).
     const leaders = petitionFactionLeaders(state, petition.petitioner);

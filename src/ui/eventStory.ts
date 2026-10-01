@@ -1,6 +1,7 @@
 import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
 import { buildingFootprint } from "../geometry/buildingFootprint";
 import type { GameState } from "../engine/engine.types";
+import { historyParams } from "../engine/history";
 import { eventForecast } from "../engine/eventSchedule";
 import { curacyVacant, plagueStage } from "../engine/plague";
 import { famineStatus, openPetitions } from "../engine/politics";
@@ -378,9 +379,9 @@ function legacyBeats(state: GameState): readonly StoryBeat[] {
   const beats: StoryBeat[] = [];
   const open = new Set(openPetitions(state).map(petition => petition.defId));
   const recent = (tick: number | undefined): tick is number => tick !== undefined && state.tick - tick < 2 * SEASON;
-  // The newest ledger record of a template (its params: the names the engine wrote).
+  // The newest ledger record of a template (its params; FIX-12: the persons named now from their ids).
   const params = (template: string) => { const records = state.history?.records ?? [];
-    for (let index = records.length - 1; index >= 0; index -= 1) if (records[index]!.template === template) return records[index]!.params ?? {};
+    for (let index = records.length - 1; index >= 0; index -= 1) if (records[index]!.template === template) return historyParams(records[index]!, state);
     return {}; };
   const text = (value: unknown) => typeof value === "string" ? value : "";
   const push = (step: LegacyStepId, kind: StoryKind, illustration: StoryIllustration, tile: StoryBeat["tile"], body: Pick<StoryBeat, "title" | "line" | "advice" | "facts">) => {

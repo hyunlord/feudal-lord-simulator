@@ -1,5 +1,7 @@
 /** FIX-12 (docs/design/negotiation.md NG-5a·NG-7a, decisions FX12-*): the scenarios of the short fixes before LM-E4. */
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { gunzipSync } from "node:zlib";
 import test from "node:test";
 
 import { createGrowthOpening } from "../scripts/phase21OpeningTranslation";
@@ -16,6 +18,13 @@ import { advanceTick } from "../src/engine/tick";
 import { initialAgency } from "../src/engine/townAgency";
 import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { gameReducer } from "../src/state/gameStore";
+import { EPITHETS_KO } from "../src/content/personNames.ko";
+import { PERSON_NAME_FALLBACK } from "../src/content/historyCopy.ko";
+import { petitionFactionLeaders } from "../src/engine/factions";
+import { advanceHistory, historyQuery, historySummary } from "../src/engine/history";
+import { advancePersons, personById, personDisplayName } from "../src/engine/persons";
+import { migrateV40ToV41 } from "../src/save/migrations/v40ToV41";
+import { decodeSave } from "../src/save/saveCodec";
 
 const COUNTERPART = `estate:${MARRIAGE_ESTATE_ID}`;
 const OFFER: readonly Term[] = [{ kind: "cash", giver: "proposer", amount: 200 }, { kind: "inheritance_non_infringement", giver: "counterpart" },
@@ -136,4 +145,79 @@ test("FX12-5 the placement's proposal: the same placement gives the same result 
   // A building moved is another placement.
   const moved = { ...state, buildings: state.buildings.map((building, index) => index === 0 ? { ...building, tx: building.tx + 1 } : building) };
   assert.notEqual(palisadeProposalForPlacement(moved), first);
+});
+
+/** QA036's save (round 16): chapter 3 at 1348, played on to the spring 1349 death day. */
+function qa036(): { readonly before: GameState; readonly after: GameState } {
+  let state = decodeSave(gunzipSync(readFileSync("docs/qa/round16/repro/saves/chapter3-plague1348.json.gz"))).envelope.state;
+  while (state.tick < 196000) state = advanceTick(state);
+  return { before: state, after: advanceTick(state) };
+}
+
+test("FX12-3 QA036: the commons' leader dies on the death day and the next living head leads at once, one ledger line naming both", () => {
+  const { before, after } = qa036();
+  const was = before.factions!.factions.find(faction => faction.id === "commons")!.leaderId!;
+  const now = after.factions!.factions.find(faction => faction.id === "commons")!.leaderId!;
+  assert.ok(after.persons!.past.some(person => person.id === was && !person.alive), "the old leader died this tick");
+  assert.notEqual(now, was);
+  assert.ok(after.persons!.people.some(person => person.id === now), "the new leader lives");
+  const line = after.history!.records.find(record => record.tick === after.tick && record.template === "faction.leader_succeeded")!;
+  assert.deepEqual({ predecessorId: line.params!.predecessorId, leaderId: line.params!.leaderId }, { predecessorId: was, leaderId: now });
+  assert.ok(!("leader" in line.params!) && !("predecessor" in line.params!), "the record keeps ids, not names");
+  const sentence = historySummary(line, after);
+  for (const id of [was, now]) assert.ok(sentence.includes(personDisplayName(personById(after, id)!)), sentence);
+});
+
+test("FX12-3 an open petition's representative who died is replaced by the next living head of the same group, with its line", () => {
+  const { after } = qa036();
+  const petition = after.politics!.petitions.find(entry => entry.response === undefined && entry.petitionerIds !== undefined
+    && petitionFactionLeaders(after, entry.petitioner) === null)!;
+  const dead = after.persons!.people.find(person => person.id === petition.petitionerIds![0])!;
+  // The representative dies (moved to the past) before the next death day's persons step.
+  const killed: GameState = { ...after, tick: after.tick + 999, persons: { ...after.persons!, people: after.persons!.people.filter(person => person.id !== dead.id),
+    past: [...after.persons!.past, { ...dead, alive: false, deathYear: 1349, deathCause: "age" }] } };
+  const next = advancePersons({ ...killed, tick: killed.tick + 1 });
+  const ids = next.politics!.petitions.find(entry => entry.id === petition.id)!.petitionerIds!;
+  assert.ok(!ids.includes(dead.id));
+  assert.ok(ids.every(id => next.persons!.people.some(person => person.id === id)), "every representative lives");
+  const heir = next.persons!.people.find(person => person.id === ids[0])!;
+  if (next.persons!.people.some(person => person.role === "head" && person.classBand === dead.classBand && !petition.petitionerIds!.includes(person.id))) {
+    assert.equal(heir.classBand, dead.classBand, "the same group first");
+  }
+  const recorded = advanceHistory({ ...killed, tick: killed.tick + 1 }, next);
+  const line = recorded.history!.records.find(record => record.template === "petition.representative_replaced")!;
+  assert.deepEqual([line.params!.predecessorId, line.params!.leaderId, line.params!.gone], [dead.id, heir.id, "died"]);
+});
+
+test("FX12-4 a ledger line keeps the person's id and draws the name as it is now (a changed epithet shows); without the people, a plain word", () => {
+  const state = at(1);
+  const lord = state.persons!.people.find(person => person.role === "head" && person.householdId === "manor")!;
+  const record = { template: "legacy.heir_seated", params: { heirId: lord.id, relation: "아들" } };
+  assert.ok(historySummary(record, state).includes(personDisplayName(lord)));
+  const renamed = { ...state, persons: { ...state.persons!, people: state.persons!.people.map(person => person.id === lord.id ? { ...person, epithet: "junior" } : person) } };
+  assert.ok(historySummary(record, renamed).includes(`${EPITHETS_KO.junior} `), historySummary(record, renamed));
+  assert.ok(historySummary(record).startsWith(PERSON_NAME_FALLBACK.heir!), historySummary(record));
+  // The query hands the screens the names (they read `history.summary(record)`).
+  const withLine = { ...state, history: { ...state.history!, records: [...state.history!.records, { id: "h-test", tick: state.tick, kind: "event" as const,
+    subject: { type: "person" as const, id: lord.id }, severity: 3 as const, ...record }] } };
+  const found = historyQuery(withLine, { kinds: ["event"] }).find(entry => entry.id === "h-test")!;
+  assert.equal(historySummary(found), historySummary(record, state));
+});
+
+test("FX12-4 v41: a v40 save's names become ids where a person answers to them (an old 젊은 too); the rest stay as written", () => {
+  const raw = JSON.parse(readFileSync("fixtures/saves/v40/chapter-two-town.save.json", "utf8")) as { state: GameState };
+  const lord = raw.state.persons!.people.find(person => person.role === "head" && person.householdId === "manor")!;
+  const { epithet: _epithet, ...plain } = lord;
+  const name = personDisplayName(plain);
+  const lines = [
+    { id: "h-x1", tick: 1, kind: "milestone" as const, template: "lord.wardship_begun", params: { lord: `젊은 ${name}`, guardian: "아무도 아닌 이" }, subject: { type: "town" as const, id: "town" }, severity: 2 as const },
+    { id: "h-x2", tick: 1, kind: "event" as const, template: "legacy.heir_seated", params: { heir: name, relation: "아들" }, subject: { type: "person" as const, id: lord.id }, severity: 3 as const },
+  ];
+  const v40 = { ...raw, schemaVersion: 40, state: { ...raw.state, history: { ...raw.state.history!, records: [...raw.state.history!.records, ...lines] } } };
+  const migrated = (migrateV40ToV41(v40) as { schemaVersion: number; state: GameState });
+  assert.equal(migrated.schemaVersion, 41);
+  const [wardship, heir] = ["h-x1", "h-x2"].map(id => migrated.state.history!.records.find(record => record.id === id)!);
+  assert.deepEqual(wardship!.params, { lordId: lord.id, guardian: "아무도 아닌 이" });
+  assert.deepEqual(heir!.params, { heirId: lord.id, relation: "아들" });
+  assert.ok(historySummary(wardship!, migrated.state).includes(personDisplayName(lord)));
 });

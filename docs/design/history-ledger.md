@@ -8,6 +8,11 @@
 
 - `id`(`h-000001` 순번) · `tick` · `kind`(`decision` `event` `person` `faction` `era` `milestone` `ledger`) · `template` · `params` · `subject`(`ActorRef`: town · household · person · faction · lineage) · `actors?` · `place?`(타일·건물) · `cause?`(`SourceRef`, B1 원인 등록표 재사용) · `decision?` · `severity` · `illustration?` · `snapshotId?`.
 - 문장은 저장하지 않는다. 템플릿 id + 파라미터만 저장하고 `historySummary(record)`가 `src/content/historyCopy.ko.ts`에서 다시 짓는다(문자열 조립 금지 규칙 5 — 문구는 한 파일). 날짜는 `historyDate(record, state)`가 틱에서 계산한다.
+- **HL-1a 사람은 id로**(FIX-12, 결정 FX12-4)
+  - 기록이 사람을 가리킬 때는 id 파라미터(`lordId`·`guardianId`·`candidateId`·`heirId`·`mayorId`·`leaderId`·`predecessorId`)만 지닌다.
+  - 이름은 읽을 때 그때의 호칭으로 그린다(`historyParams`·`historySummary(record, state)`, `src/engine/historyNames.ts`). `historyQuery`가 상태를 받으면 이름을 붙여 돌려준다.
+  - 상태 없이 읽으면 대체 낱말이다(`PERSON_NAME_FALLBACK`).
+  - v41 이행이 옛 기록의 이름 글자를 찾을 수 있는 만큼 id로 바꾼다.
 - append-only: 기록은 더하기만 한다. 뒤에 쓰는 것은 결정의 `actual`(HL-3)과 오래된 일상 기록 접기(HL-10)뿐이다.
 
 ## HL-2 원천
