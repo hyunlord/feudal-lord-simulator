@@ -11,6 +11,9 @@
 // - moneyFull (the ledger's columns and the treasury a press opens): every part down to the penny, "£160 3s 11d".
 // - moneyPence (beside moneyFull where the engine's own number helps): the penny count, "38,447d".
 // - moneyDelta: moneyShort with its sign, "+£1 3s", "−7d", "±0d".
+// - moneyBoxDelta (a printed box with room for about four characters: the season close's scene boxes, UIAUDIT-R15-D1):
+//   the largest part alone with its sign, cut toward zero — "+£12", "−£3", "+5s", "+7d", "±0d"; over £9,999 the pounds
+//   in 만, "+£4만". The exact sum is printed beside it elsewhere (the season's money line).
 // Negative sums take the minus sign (−, U+2212) in front of every form: "−£3 4s".
 // Fractions of a penny (a rate times a count) are cut toward zero first.
 
@@ -69,6 +72,22 @@ export function moneyDelta(value: number): string {
   if (!Number.isFinite(value)) return MARK.unknown;
   const whole = Math.trunc(value);
   return whole === 0 ? `${MARK.zero}0${MARK.penny}` : `${whole > 0 ? MARK.plus : ""}${moneyShort(whole)}`;
+}
+
+/** Over 9,999 a count reads in 만 (ten thousands), cut toward zero, no decimals: 200,179 → "20만". */
+export function manCount(count: number): string {
+  const size = Math.trunc(Math.abs(count));
+  return size > 9_999 ? `${Math.floor(size / 10_000)}만` : String(size);
+}
+
+/** A change of money in a box's room: its largest part alone, with its sign ("+£12", "−5s", "+7d", "±0d", "+£4만"). */
+export function moneyBoxDelta(value: number): string {
+  if (!Number.isFinite(value)) return MARK.unknown;
+  const parts = moneyParts(value);
+  if (parts.pounds === 0 && parts.shillings === 0 && parts.pence === 0) return `${MARK.zero}0${MARK.penny}`;
+  const sign = parts.negative ? MARK.minus : MARK.plus;
+  if (parts.pounds > 0) return `${sign}${MARK.pound}${manCount(parts.pounds)}`;
+  return parts.shillings > 0 ? `${sign}${parts.shillings}${MARK.shilling}` : `${sign}${parts.pence}${MARK.penny}`;
 }
 
 /**

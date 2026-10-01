@@ -22,6 +22,19 @@
 // face beyond the printed ring, ornament pixels outside it), overlap (buttons with buttons, text with buttons, text with
 // text, the registry's no-overlap siblings), empty (content under 40 % of the inner box: a warning), controls (every
 // clickable a kit Button wearing button art).
+// QA round 15 (2026-10-01, the three findings the audit missed): content (every text, control and required element —
+// the row's `requires`: title, body, choices, buttons — is shown, has a size, and is painted: the audit takes the root
+// twice, the second time with its text transparent and its controls hidden, and an element whose pixels do not change
+// is covered by something else — QA-034's frame layer over the petition's body), hud (an always-on HUD control that
+// paints over the surface, or that the surface covers while it is live — QA-035's dock over the settings' last row), and
+// ornament (a drawn line — the art's rule, a CSS border — running through a text's line box, found on the second
+// capture where the text is gone — QA-015's biography rule through the empty-records line).
+// Reachable by scrolling (QA round 15, R15 triage): a root inside a scrolling ancestor (a part of the panel slot, the
+// family tree's pan) is judged by what that ancestor shows — its region starts from the ancestor's padding box, not from
+// everywhere, so a part scrolled out of the drawer is not "covered by the map" and the root's hidden part does not meet
+// the HUD; a root the ancestors show nothing of is scrolled into view first (`revealSurface`, as a player scrolls to
+// it). The paint pass does not judge a line or a control a scroller cuts (a row half scrolled out: its visible sliver
+// can be only the line's leading); everything wholly inside the scroller's view is judged as before.
 
 export type Box = { readonly l: number; readonly t: number; readonly r: number; readonly b: number };
 export type Sides = { readonly t: number; readonly r: number; readonly b: number; readonly l: number };
@@ -35,6 +48,12 @@ export type Item = {
   readonly slot: boolean;
   /** Text: its line boxes. */
   readonly lines?: readonly Box[];
+  /** Text: the line boxes no scrolling clipper cuts (the paint pass judges these; absent: all of `lines`). */
+  readonly wholeLines?: readonly Box[];
+  /** A scrolling clipper cuts it (part of it is scrolled out: reachable, and the paint pass does not judge it). */
+  readonly scrollCut?: boolean;
+  /** Text: the content box of the block its lines are laid out in (`snapLine`). */
+  readonly block?: Box;
   /** Indices (into items) of the controls this item is inside. */
   readonly inControls: readonly number[];
   /** Indices (into items) of every item this one is inside. */
@@ -55,6 +74,8 @@ export type Collected = {
     readonly border?: Sides;
     /** It paints something of its own: a fill, a background image, a visible border or a border image. */
     readonly paints?: boolean;
+    /** The part of it its scrolling ancestors show (null: none; absent: all of it). */
+    readonly visible?: Box | null;
   };
   readonly layer?: { readonly rect: Box; readonly frame: Sides } | null;
   readonly slot?: { readonly rect: Box; readonly padding: Sides } | null;
@@ -68,6 +89,19 @@ export type Collected = {
   readonly siblings?: readonly { readonly selector: string; readonly rects: readonly { readonly path: string; readonly rect: Box }[]; readonly nested: readonly (readonly [number, number])[] }[];
   /** Visible framed roots (data-frame) on the page that no registry root selector matches. */
   readonly unregistered?: readonly { readonly kind: string; readonly path: string }[];
+  /** The row's required elements: each selector's shown matches (rects) and how many matches are not shown. */
+  readonly requires?: readonly { readonly selector: string; readonly rects: readonly Box[]; readonly hidden: number; readonly scrolled?: number }[];
+  /** Always-on HUD controls (not inside the root, not holding it) whose box meets the root's: the shared part, whether
+   * the HUD is the topmost element there (it paints over the surface), and whether it is live elsewhere (topmost at its
+   * own points, or under a layer that paints nothing). */
+  readonly hud?: readonly { readonly path: string; readonly rect: Box; readonly shared: Box; readonly over: boolean; readonly live: boolean }[];
+  /** Set by the audit from the two captures (scripts/uiGeometryPaint.ts): pixels that changed per item (null: not
+   * sampled — a surface button, a control's own text), per required rect, and the drawn lines through text. */
+  readonly paint?: {
+    readonly items: readonly (number | null)[];
+    readonly requires: readonly (readonly number[])[];
+    readonly crossings: readonly { readonly item: number; readonly line: Box; readonly axis: "x" | "y" }[];
+  };
 };
 export type MeasureSpec = {
   readonly root: string; readonly frame: "css" | "layer" | "painting" | "flat"; readonly gap: number;
@@ -79,9 +113,13 @@ export type MeasureSpec = {
   readonly expect?: string | undefined;
   /** Every registry root selector (to list framed roots on the page that none of them matches). */
   readonly registryRoots?: readonly string[] | undefined;
+  /** Elements the surface must show, painted (the content check). */
+  readonly requires?: readonly string[] | undefined;
+  /** The always-on HUD controls (the hud check); absent: not checked. */
+  readonly hud?: readonly string[] | undefined;
 };
-export type CheckName = "outside" | "overflow" | "border" | "portrait" | "overlap" | "empty" | "controls";
-export const CHECKS: readonly CheckName[] = ["outside", "overflow", "border", "portrait", "overlap", "empty", "controls"];
+export type CheckName = "outside" | "overflow" | "border" | "portrait" | "overlap" | "empty" | "controls" | "content" | "hud" | "ornament";
+export const CHECKS: readonly CheckName[] = ["outside", "overflow", "border", "portrait", "overlap", "empty", "controls", "content", "hud", "ornament"];
 export type Failure = { readonly check: CheckName; readonly what: string; readonly path: string; readonly px: number; readonly rect: Box | null; readonly text?: string };
 /** A failure's key across runs (the baseline): its check and element path, not its px. */
 export const failureKey = (failure: Pick<Failure, "check" | "path">): string => `${failure.check}|${failure.path}`;
@@ -145,24 +183,40 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
   const excluded = (element: Element) => layerElement !== null && (element === layerElement || layerElement.contains(element));
   const inSlot = (element: Element) => (spec.frameSlots ?? []).some(selector => element.closest(selector) !== null && root.contains(element.closest(selector)));
 
-  // The region the children of `container` can show in (null: they do not show), with the innermost clipper.
-  type Region = { readonly box: Box; readonly clipper: Clipper | null } | null;
+  // The region the children of `container` can show in (null: they do not show), with the innermost clipper, and the
+  // part of it the scrolling clippers alone leave (what is cut there is scrolled out, and reachable).
+  type Region = { readonly box: Box; readonly clipper: Clipper | null; readonly scrollBox: Box } | null;
   const regions = new Map<Element, Region>();
   const everywhere = { l: -1e9, t: -1e9, r: 1e9, b: 1e9 };
   const cut = (a: Box, b: Box, x: boolean, y: boolean) => ({ l: x ? Math.max(a.l, b.l) : a.l, r: x ? Math.min(a.r, b.r) : a.r, t: y ? Math.max(a.t, b.t) : a.t, b: y ? Math.min(a.b, b.b) : a.b });
+  const paddingBox = (element: Element, style: CSSStyleDeclaration) => {
+    const rect = element.getBoundingClientRect(); const border = sides(style, "border");
+    return { l: rect.left + border.l, t: rect.top + border.t, r: rect.right - border.r, b: rect.bottom - border.b };
+  };
+  // The root's scrolling ancestors (the slot a part sits in, the tree's pan): the root's region starts from what they show.
+  const ancestors = ((): NonNullable<Region> => {
+    let box: Box = everywhere; let clipper: Clipper | null = null;
+    for (let node = root.parentElement; node !== null; node = node.parentElement) {
+      const style = getComputedStyle(node); const x = scrolls(style.overflowX); const y = scrolls(style.overflowY);
+      if (!x && !y) continue;
+      box = cut(box, paddingBox(node, style), x, y);
+      clipper ??= { path: pathOf(node), scroll: true, ellipsis: false };
+    }
+    return { box, clipper, scrollBox: box };
+  })();
   const regionFor = (container: Element): Region => {
     const cached = regions.get(container); if (cached !== undefined) return cached;
-    const outer: Region = container === root ? { box: everywhere, clipper: null } : container.parentElement === null ? null : regionFor(container.parentElement);
+    const outer: Region = container === root ? ancestors : container.parentElement === null ? null : regionFor(container.parentElement);
     let region: Region = outer;
     if (outer !== null) {
       const style = getComputedStyle(container);
       if (style.clip !== "auto" && style.clip !== "" || style.clipPath !== "none" || container.classList.contains("visually-hidden")) region = null;
       else if (style.overflowX !== "visible" || style.overflowY !== "visible") {
-        const rect = container.getBoundingClientRect(); const border = sides(style, "border");
-        const padding = { l: rect.left + border.l, t: rect.top + border.t, r: rect.right - border.r, b: rect.bottom - border.b };
+        const padding = paddingBox(container, style);
         const ellipsis = style.textOverflow === "ellipsis" || (style.getPropertyValue("-webkit-line-clamp") || "none") !== "none";
         region = { box: cut(outer.box, padding, style.overflowX !== "visible", style.overflowY !== "visible"),
-          clipper: { path: path(container), scroll: scrolls(style.overflowX) || scrolls(style.overflowY), ellipsis } };
+          clipper: { path: path(container), scroll: scrolls(style.overflowX) || scrolls(style.overflowY), ellipsis },
+          scrollBox: cut(outer.scrollBox, padding, scrolls(style.overflowX), scrolls(style.overflowY)) };
       }
     }
     regions.set(container, region); return region;
@@ -172,6 +226,9 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
     const part = cut(box, region.box, true, true);
     return part.r - part.l > 0.5 && part.b - part.t > 0.5 ? part : null;
   };
+  /** A scrolling clipper cuts `box` (beyond its view by more than half a pixel). */
+  const scrollCut = (box: Box, region: Region) => region !== null
+    && (box.l < region.scrollBox.l - 0.5 || box.t < region.scrollBox.t - 0.5 || box.r > region.scrollBox.r + 0.5 || box.b > region.scrollBox.b + 0.5);
 
   const CONTROL = 'button, summary, [role="button"], [role="tab"], [role="option"], [role="switch"], [role="checkbox"], [role="slider"], [role="treeitem"], a[href], input:not([type="hidden"]), select, textarea';
   const ART = /url\(/;
@@ -199,7 +256,7 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
     if (scrolls(style.overflowX) && element.scrollWidth > element.clientWidth + 1) scrollers.push({ path: path(element), axis: "x", over: element.scrollWidth - element.clientWidth, allowed });
     if (scrolls(style.overflowY) && element.scrollHeight > element.clientHeight + 1) scrollers.push({ path: path(element), axis: "y", over: element.scrollHeight - element.clientHeight, allowed });
     const base = { path: path(element), rect: visiblePart(full, region), full, clipper: region?.clipper ?? null, slot: inSlot(element),
-      inControls: controlsAround(element.parentElement), within: around(element.parentElement, itemIndex) };
+      inControls: controlsAround(element.parentElement), within: around(element.parentElement, itemIndex), scrollCut: scrollCut(full, region) };
     const at = items.length;
     if (element.matches(CONTROL)) {
       const kit = element.classList.contains("ui-btn") || element.classList.contains("ui-select-option") || element.closest(".ui-select, .ui-slider") !== null;
@@ -227,15 +284,69 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
     const lineBox = (rect: DOMRect) => { const box = boxOf(rect); if (lineHeight <= 0 || rect.height <= lineHeight) return box;
       const middle = (box.t + box.b) / 2; return { l: box.l, r: box.r, t: middle - lineHeight / 2, b: middle + lineHeight / 2 }; };
     const lines = [...range.getClientRects()].filter(rect => rect.width > 0.5 && rect.height > 0.5).slice(0, 60).map(lineBox);
+    // The block the lines are laid out in (an inline parent's lines are its block's).
+    let blockElement: Element = parent;
+    while (blockElement !== root && blockElement.parentElement !== null && ["inline", "contents"].includes(getComputedStyle(blockElement).display)) blockElement = blockElement.parentElement;
+    const blockStyle = getComputedStyle(blockElement); const blockRect = boxOf(blockElement.getBoundingClientRect());
+    const blockBorder = sides(blockStyle, "border"); const blockPadding = sides(blockStyle, "padding");
+    const block = { l: blockRect.l + blockBorder.l + blockPadding.l, t: blockRect.t + blockBorder.t + blockPadding.t, r: blockRect.r - blockBorder.r - blockPadding.r, b: blockRect.b - blockBorder.b - blockPadding.b };
     if (lines.length === 0) continue;
     const full = { l: Math.min(...lines.map(line => line.l)), t: Math.min(...lines.map(line => line.t)), r: Math.max(...lines.map(line => line.r)), b: Math.max(...lines.map(line => line.b)) };
     const region = regionFor(parent);
     if (region === null) continue;
     const visibleLines = lines.map(line => visiblePart(line, region)).filter((line): line is Box => line !== null);
+    const wholeLines = lines.filter(line => !scrollCut(line, region)).map(line => visiblePart(line, region)).filter((line): line is Box => line !== null);
     items.push({ kind: "text", path: path(parent), text: text.slice(0, 40), rect: visiblePart(full, region), full, clipper: region.clipper, slot: inSlot(parent),
-      lines: visibleLines, inControls: controlsAround(parent), within: around(parent, itemIndex) });
+      lines: visibleLines, wholeLines, scrollCut: scrollCut(full, region), block, inControls: controlsAround(parent), within: around(parent, itemIndex) });
   }
 
+  // The measured root, for the audit's second capture (scripts/uiGeometryAudit.mjs takes the attribute off again).
+  for (const other of document.querySelectorAll("[data-geometry-root]")) other.removeAttribute("data-geometry-root");
+  root.setAttribute("data-geometry-root", "");
+  const requires = (spec.requires ?? []).map(selector => {
+    const matches = [...root.querySelectorAll(selector)].filter(element => !excluded(element));
+    const visible = matches.filter(shown);
+    // The visible part (an inner scroller clips it; scrolled out, wholly or in part, it is reachable and not judged).
+    const parts = visible.map(element => { const region = element.parentElement === null ? null : regionFor(element.parentElement); const box = boxOf(element.getBoundingClientRect());
+      return scrollCut(box, region) ? null : visiblePart(box, region); });
+    return { selector, rects: parts.filter((part): part is Box => part !== null).slice(0, 12), hidden: matches.length - visible.length, scrolled: parts.filter(part => part === null).length };
+  });
+  // The HUD: hit tests with every element taking the pointer (a container that lets clicks through still paints).
+  const hud: NonNullable<Collected["hud"]>[number][] = [];
+  if (spec.hud !== undefined && spec.hud.length > 0) {
+    const force = document.createElement("style"); force.textContent = "* { pointer-events: auto !important; }"; document.head.append(force);
+    const clear = (element: Element) => { const style = getComputedStyle(element);
+      return /^(transparent|rgba\([^)]*,\s*0\))$/.test(style.backgroundColor) && style.backgroundImage === "none" && (style.borderImageSource === "none" || style.borderImageSource === "") && !visibleBorder(style); };
+    const grid = (box: Box) => { const points: [number, number][] = [];
+      for (const fx of [0.2, 0.5, 0.8]) for (const fy of [0.25, 0.5, 0.75]) points.push([box.l + (box.r - box.l) * fx, box.t + (box.b - box.t) * fy]); return points; };
+    const inView = ([x, y]: [number, number]) => x >= 0 && y >= 0 && x < viewport.w && y < viewport.h;
+    const rootStyleNow = getComputedStyle(root);
+    const rootPaints = !clear(root) || (rootStyleNow.borderImageSource !== "none" && rootStyleNow.borderImageSource !== "");
+    // What of the surface shows: the part its scrolling ancestors (and, for its children, itself) leave in view.
+    const surfaceBoxes = (rootPaints ? [visiblePart(rootRect, ancestors)] : [...root.children].filter(shown).map(child => visiblePart(boxOf(child.getBoundingClientRect()), regionFor(root))))
+      .filter((box): box is Box => box !== null);
+    try {
+      for (const selector of spec.hud) for (const element of document.querySelectorAll(selector)) {
+        if (!shown(element) || root.contains(element) || element.contains(root)) continue;
+        const rect = boxOf(element.getBoundingClientRect());
+        // A root that paints nothing (a click-through container: the event chips' rail) is judged by its shown children.
+        const meets = surfaceBoxes.map(box => ({ l: Math.max(rect.l, box.l), t: Math.max(rect.t, box.t), r: Math.min(rect.r, box.r), b: Math.min(rect.b, box.b) }))
+          .filter(box => box.r - box.l > 1 && box.b - box.t > 1);
+        if (meets.length === 0) continue;
+        const shared = meets.reduce((a, b) => ((b.r - b.l) * (b.b - b.t) > (a.r - a.l) * (a.b - a.t) ? b : a));
+        const over = grid(shared).filter(inView).some(([x, y]) => { const top = document.elementFromPoint(x, y); return top !== null && element.contains(top); });
+        const outside = grid(rect).filter(inView).filter(([x, y]) => x < shared.l || x > shared.r || y < shared.t || y > shared.b);
+        const live = (outside.length > 0 ? outside : grid(rect).filter(inView)).some(([x, y]) => {
+          const top = document.elementFromPoint(x, y); if (top === null) return false;
+          if (element.contains(top)) return true;
+          // A full-screen layer that paints nothing (a click-through backdrop) leaves the HUD in sight.
+          for (let node: Element | null = top; node !== null && !node.contains(element); node = node.parentElement) if (!clear(node)) return false;
+          return true;
+        });
+        hud.push({ path: pathOf(element), rect, shared, over, live });
+      }
+    } finally { force.remove(); }
+  }
   let portrait: Collected["portrait"] = null;
   if (spec.portraitRing !== undefined && spec.painting !== undefined) {
     // One scale, the width's (a painting 9-slice only grows downward): the ring from the top-left.
@@ -281,17 +392,66 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
   return {
     found: true, viewport, expectFound,
     root: { path: path(root), rect: rootRect, frame: frameInset(root), padding: sides(rootStyle, "padding"), kind: root.getAttribute("data-frame"),
-      overflow: { x: root.scrollWidth - root.clientWidth, y: root.scrollHeight - root.clientHeight }, border: sides(rootStyle, "border"),
+      overflow: { x: root.scrollWidth - root.clientWidth, y: root.scrollHeight - root.clientHeight }, border: sides(rootStyle, "border"), visible: visiblePart(rootRect, ancestors),
       paints: !/^(transparent|rgba\([^)]*,\s*0\))$/.test(rootStyle.backgroundColor) || rootStyle.backgroundImage !== "none" || visibleBorder(rootStyle)
         || (rootStyle.borderImageSource !== "none" && rootStyle.borderImageSource !== ""),
       scrollable: { x: scrolls(rootStyle.overflowX), y: scrolls(rootStyle.overflowY) } },
-    layer: layerRect, slot: slotRect, items, scrollers, portrait, siblings, unregistered,
+    layer: layerRect, slot: slotRect, items, scrollers, portrait, siblings, unregistered, requires, hud,
   };
 }
 
+/** In the page: when its scrolling ancestors show nothing of the root (the family tree pans to the lord, its banner far
+ * to the side; a gallery's row below the fold), scroll them — as a player does — until its start is in their view, on
+ * each axis it is out on. A root partly in view is left as it opened. Returns whether anything scrolled. */
+export function revealSurface(selector: string): boolean {
+  const root = [...document.querySelectorAll(selector)].find(element => { const box = element.getBoundingClientRect(); return box.width > 0 && box.height > 0; });
+  if (root === undefined) return false;
+  const scrolls = (value: string) => value === "auto" || value === "scroll" || value === "overlay";
+  let moved = false;
+  for (let node = root.parentElement; node !== null; node = node.parentElement) {
+    const style = getComputedStyle(node);
+    const box = root.getBoundingClientRect(); const view = node.getBoundingClientRect();
+    if (scrolls(style.overflowX) && (box.right <= view.left || box.left >= view.right)) { node.scrollLeft += box.left - view.left; moved = true; }
+    if (scrolls(style.overflowY) && (box.bottom <= view.top || box.top >= view.bottom)) { node.scrollTop += box.top - view.top; moved = true; }
+  }
+  return moved;
+}
+
+/** Chrome's text rects use whole-pixel ascent and descent, so a line box centred on the glyph box can sit up to 1 px from
+ * where layout put it (R15: the welcome's 18.4 px title — a 26 px content area, ascent 21 / descent 5 — came out 0.7 px
+ * above its own block, which starts on the inner box). A line past its block's content box by less than 1 px, top or
+ * bottom, is moved back by that much; a line further out (a block overflowing its height) is left as measured, and so
+ * is a text a clipper cuts (evaluateSurface: its cut edge is the clipper's). */
+export function snapLine(line: Box, block: Box | undefined): Box {
+  if (block === undefined) return line;
+  const above = block.t - line.t; const below = line.b - block.b;
+  if (above > 0 && above < 1 && below + above <= 0.01) return { ...line, t: line.t + above, b: line.b + above };
+  if (below > 0 && below < 1 && above + below <= 0.01) return { ...line, t: line.t - below, b: line.b - below };
+  return line;
+}
+
+/** In the page: wait (at most `ms`) until every image the root and its descendants paint with — background and border
+ * images — has loaded and decoded. On a busy machine a drawer's frame and its tabs' button art arrived after the paint
+ * pass had taken its captures (R15: slot.ledger.* tabs "not painted" in 5 of 1,812 cells): the audit measures the
+ * surface as it settles, not its first frames. Returns how many images it waited for. */
+export async function surfaceArtLoaded({ selector, ms }: { readonly selector: string; readonly ms: number }): Promise<number> {
+  const roots = [...document.querySelectorAll(selector)];
+  const urls = new Set<string>();
+  for (const root of roots) for (const element of [root, ...root.querySelectorAll("*")]) {
+    const style = getComputedStyle(element);
+    for (const value of [style.backgroundImage, style.borderImageSource]) for (const match of value.matchAll(/url\("?([^")]+)"?\)/g)) urls.add(match[1]!);
+  }
+  const decode = (url: string) => { const image = new Image(); image.src = url; return image.decode().catch(() => undefined); };
+  await Promise.race([Promise.all([...urls].map(decode)), new Promise(done => setTimeout(done, ms))]);
+  return urls.size;
+}
+
+/** Changed pixels below which an element counts as not painted (the second capture hides it; the same render otherwise). */
+export const PAINTED_MIN = 3;
+
 /** Pure: the checks for one collected surface. */
 export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evaluation {
-  const zero = { outside: 0, overflow: 0, border: 0, portrait: 0, overlap: 0, empty: 0, controls: 0 };
+  const zero = { outside: 0, overflow: 0, border: 0, portrait: 0, overlap: 0, empty: 0, controls: 0, content: 0, hud: 0, ornament: 0 };
   if (!collected.found || collected.root === undefined) return { found: false, inner: null, safe: null, failures: [], counts: zero, empty: null, expectMissed: collected.expectFound === false };
   const TOLERANCE = 0.5;
   const round = (value: number) => Math.round(value * 10) / 10;
@@ -326,7 +486,16 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
   const failures: Failure[] = [];
   const fail = (check: CheckName, what: string, path: string, px: number, rect: Box | null, text?: string) =>
     failures.push(text === undefined ? { check, what, path, px: round(px), rect } : { check, what, path, px: round(px), rect, text });
-  const items = collected.items ?? [];
+  // Text line boxes back on their block where the whole-pixel glyph box put them a fraction off it (snapLine).
+  // Only a text no clipper cuts: a cut line's edge is the clipper's, not the glyph box's estimate.
+  const uncut = (item: Item) => item.rect !== null && Math.max(Math.abs(item.rect.l - item.full.l), Math.abs(item.rect.t - item.full.t), Math.abs(item.rect.r - item.full.r), Math.abs(item.rect.b - item.full.b)) < 0.01;
+  const items = (collected.items ?? []).map(item => {
+    if (item.kind !== "text" || item.block === undefined || !uncut(item)) return item;
+    const snap = (line: Box) => snapLine(line, item.block);
+    const lines = (item.lines ?? []).map(snap);
+    const span = (boxes: readonly Box[]) => boxes.length === 0 ? null : { l: Math.min(...boxes.map(line => line.l)), t: Math.min(...boxes.map(line => line.t)), r: Math.max(...boxes.map(line => line.r)), b: Math.max(...boxes.map(line => line.b)) };
+    return { ...item, lines, ...(item.wholeLines === undefined ? {} : { wholeLines: item.wholeLines.map(snap) }), full: snap(item.full), rect: item.rect === null ? null : span(lines) ?? item.rect };
+  });
 
   // Items already failing a check: what is inside them is not counted for it again.
   const failed: Record<"outside" | "border", Set<number>> = { outside: new Set(), border: new Set() };
@@ -411,7 +580,8 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
   }
   // f. empty space: content (text lines, controls, images) over the inner box's area (the frame band holds no content
   // by rule, so it is not counted as empty), on a 4 px grid.
-  const CELL = 4; const area = inner;
+  // Only the part of it the root's scrolling ancestors show holds content to count.
+  const CELL = 4; const area = root.visible === undefined || root.visible === null ? inner : meet(inner, root.visible);
   const width = Math.max(1, Math.ceil((area.r - area.l) / CELL)); const height = Math.max(1, Math.ceil((area.b - area.t) / CELL));
   const grid = new Uint8Array(width * height);
   const paint = (box: Box) => {
@@ -427,6 +597,33 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
     const control = item.control!;
     if (!control.kit) fail("controls", "a clickable that is not a kit Button", item.path, 0, item.rect, item.text);
     else if (!control.art && control.variant !== "surface" && control.variant !== "quiet") fail("controls", "a kit Button without button art", item.path, 0, item.rect, item.text);
+  }
+  // h. content: the required elements are there, shown and painted; no text or control is painted over; and some of the
+  // surface's text and controls is in view at all (a drawer whose view collapsed to its frame shows none of it, and a
+  // scroller with no view leaves nothing to scroll to — R15: the population drawer opened 0 px tall).
+  const content = items.filter(item => (item.kind === "text" || item.kind === "control") && !item.slot);
+  if (content.length > 0 && content.every(item => item.rect === null)) fail("content", "none of the surface's text and controls is in view (its view is collapsed or scrolled away)", root.path, 0, root.rect);
+  for (const required of collected.requires ?? []) {
+    if (required.rects.length === 0 && (required.scrolled ?? 0) > 0) continue;
+    if (required.rects.length === 0) { fail("content", required.hidden > 0 ? `required ${required.selector} not shown (no size, hidden or transparent)` : `required ${required.selector} missing`, required.selector, 0, null); continue; }
+    const changed = collected.paint?.requires[(collected.requires ?? []).indexOf(required)];
+    if (changed !== undefined && changed.length > 0 && changed.every(count => count < PAINTED_MIN)) fail("content", `required ${required.selector} not painted (covered by another layer)`, required.selector, 0, required.rects[0]!);
+  }
+  if (collected.paint !== undefined) items.forEach((item, index) => {
+    const changed = collected.paint!.items[index];
+    if (changed === null || changed === undefined || item.rect === null || changed >= PAINTED_MIN) return;
+    fail("content", `${item.kind} not painted (covered by another layer)`, item.path, 0, item.rect, item.text);
+  });
+  // i. hud: an always-on HUD control over the surface, or under it while it is live.
+  for (const hit of collected.hud ?? []) {
+    const size = overlapOf(hit.shared, hit.shared);
+    if (hit.over) fail("hud", "the HUD paints over the surface", hit.path, Math.min(size.w, size.h), hit.shared);
+    else if (hit.live) fail("hud", "the surface covers a live HUD control", hit.path, Math.min(size.w, size.h), hit.shared);
+  }
+  // j. ornament: a drawn line through a text's line box.
+  for (const crossing of collected.paint?.crossings ?? []) {
+    const item = items[crossing.item]; if (item === undefined) continue;
+    fail("ornament", `text crossed by a drawn ${crossing.axis === "x" ? "vertical" : "horizontal"} line`, item.path, 0, crossing.line, item.text);
   }
   const counts = { ...zero };
   for (const failure of failures) counts[failure.check] += 1;

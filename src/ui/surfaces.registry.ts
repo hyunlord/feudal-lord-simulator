@@ -1,6 +1,6 @@
 // UI-AUDIT-1: the register of every framed surface in the game — panels, cards, modals, popovers, tooltips, chips,
 // drawers, pages, books — with how a player reaches it, the data state it is measured in and what its frame is. Data
-// only: scripts/uiGeometryAudit.mjs opens each row in three viewports × two copy lengths × two number ranges and
+// only: scripts/uiGeometryAudit.mjs opens each row in five viewports × two copy lengths × two number ranges and
 // measures it (scripts/uiGeometryMeasure.ts); scripts/checks/surfaceRegistry.mjs (a check:merge step and
 // tests/surfacesRegistry.test.ts) fails when a dialog root, a framed root (data-frame), a framed class name in src/ui/** or
 // src/render/*.tsx, or a CSS selector that sets a border-image is in none of the selectors below and not in NOT_SURFACES;
@@ -16,7 +16,7 @@
 export type FrameKind = "css" | "layer" | "painting" | "flat";
 /** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts). */
 export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra";
-export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820";
+export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
   /** A cached state, the camera on its first house (or keep, or `focus`), paused unless `run`. */
@@ -49,7 +49,10 @@ export type OpenStep =
   /** Click `repeat` (the first visible match) until `until` shows, at most `max` times (a book's next page). */
   | { readonly repeat: string; readonly until: string; readonly max?: number }
   /** Hover buildings of these kinds one by one until `until` shows. */
-  | { readonly hoverEach: readonly string[]; readonly until: string; readonly max?: number };
+  | { readonly hoverEach: readonly string[]; readonly until: string; readonly max?: number }
+  /** Stop the page's timers (Playwright's clock) before a step that opens a surface shown for a moment (the 900 ms
+   * loading screen): it stays until measured, as the player sees it while it shows. */
+  | { readonly holdTimers: true };
 
 /** Art pixels. */
 export type ArtRect = { readonly x: number; readonly y: number; readonly w: number; readonly h: number };
@@ -82,7 +85,9 @@ export interface SurfaceRow {
   readonly portraitRing?: { readonly cx: number; readonly cy: number; readonly r: number; readonly inner: number; readonly face: string; readonly ornament: string };
   /** Selectors whose visible matches must not overlap one another (beyond the default buttons / text / buttons check). */
   readonly siblingsNoOverlap?: readonly string[];
-  /** Only these viewports (default: all three). */
+  /** Elements the surface must show, painted (the content check: title, body, choices, buttons). */
+  readonly requires?: readonly string[];
+  /** Only these viewports (default: all five). */
   readonly viewports?: readonly ViewportId[];
   /** false: the extreme-number condition does not apply (no state is injected). */
   readonly numbers?: false;
@@ -99,7 +104,18 @@ export const VIEWPORTS: Readonly<Record<ViewportId, { readonly width: number; re
   "1280x800": { width: 1280, height: 800, touch: false },
   "1920x1080": { width: 1920, height: 1080, touch: false },
   "tablet-1180x820": { width: 1180, height: 820, touch: true },
+  // QA round 15 (QA-035, QA-018): the smallest supported width (user decision 2026-10-01: 1024 px; below it is out of
+  // scope) and the short laptop screen, where the settings' last row met the action dock.
+  "1024x768": { width: 1024, height: 768, touch: false },
+  "1280x720": { width: 1280, height: 720, touch: false },
 };
+
+/** The always-on HUD controls (the hud check): a surface must not sit under them, nor cover them while they are live.
+ * The containers (.action-dock, .crisis-icons, .event-cards, .layer-switch) let clicks through; their pieces are listed. */
+export const HUD_ALWAYS: readonly string[] = [
+  ".status-pill", ".hud-time-cluster .speed-seal", ".hud-time-cluster .settings-disclosure > summary", ".action-dock .action-dock-button",
+  ".layer-switch .control-layer", ".crisis-icons > *", ".event-cards .event-chip", ".goal-chip-rail .goal-card", ".steward-line",
+];
 
 const TOWN = { kind: "state", set: "ui5", name: "merchant-town", tile: "house", zoom: 1.4 } as const;
 const TOWN_CLOSE = { ...TOWN, zoom: 1.6 } as const;
@@ -112,6 +128,8 @@ const petitionScene = (set: StateSet, name: string, delay: number) => ({ kind: "
 const PETITION = {
   root: ".story-modal.petition-card", frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", frameSlots: [".petition-roundel"],
   siblingsNoOverlap: [".petition-option", ".story-modal-later"],
+  // QA-034: the title, the request, every answer and the later button are shown and painted (not under the frame layer).
+  requires: ["h2", ".petition-body > p:not(.petition-who)", ".petition-option", ".story-modal-later"],
 } as const;
 const BOOK = { root: ".chronicle-page.legacy-book", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-book-body", scrollParts: [".legacy-book-page"],
   scene: { kind: "state", set: "ui10", name: "chapter5-end", tile: "house", zoom: 1.1, query: "&story-delay=20000" } } as const;
@@ -136,8 +154,9 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "hud.season-strip-panel", root: ".season-strip-panel", frame: "css", scene: TOWN, open: [{ click: "[data-testid='hud-calendar']" }, { pause: 500 }],
     data: "the town's year strip with its marks and the food line" },
   { id: "hud.time-cluster", root: ".hud-time-cluster", frame: "css", scene: TOWN, open: [], data: "the speed seals and the settings button" },
-  { id: "hud.settings-popover", root: ".command-popover", frame: "css", scene: TOWN, open: [{ click: ".settings-disclosure > summary" }, { pause: 500 }],
-    data: "autoplay, tutorial, audio, save and render switches" },
+  // QA-035: on a short screen the popover scrolls inside (it stops above the dock); the HUD it would meet hides while open.
+  { id: "hud.settings-popover", root: ".command-popover", frame: "css", scene: TOWN, open: [{ click: ".settings-disclosure > summary" }, { pause: 500 }], scroll: "y",
+    requires: [".save-controls .ui-btn"], data: "autoplay, tutorial, audio, save and render switches" },
   { id: "hud.layer-switch", root: ".layer-switch", frame: "flat", scene: { kind: "new-game" }, open: [], numbers: false, data: "the three layers, two locked (tutorial on)" },
   { id: "hud.layer-switch-note", root: ".layer-switch-note", frame: "css", scene: { kind: "new-game" }, numbers: false,
     open: [{ click: ".control-layer[aria-disabled='true']", force: true }, { pause: 400 }], data: "a locked layer's reason (tutorial on)" },
@@ -152,7 +171,7 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "hud.event-chips", root: ".event-cards", frame: "flat", scene: { kind: "state", set: "ui9", name: "reorg.alehouse_boom", tile: "keep", zoom: 1.1, query: "&story-delay=0" },
     open: [{ wait: ".event-chip", timeout: 90_000 }, { pause: 500 }], data: "chapter 4's alehouse boom beat" },
   { id: "hud.event-card", extends: "hud.event-chips", root: ".event-card", frame: "css", scene: { kind: "state", set: "ui9", name: "reorg.alehouse_boom", tile: "keep", zoom: 1.1, query: "&story-delay=0" },
-    open: [{ click: ".event-chip" }, { pause: 600 }], scroll: "y", data: "the alehouse boom's story card" },
+    open: [{ click: ".event-chip" }, { pause: 600 }], scroll: "y", requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"], data: "the alehouse boom's story card" },
   { id: "hud.goal-chips", root: ".goal-chip-rail .goal-card", frame: "css", scene: { kind: "new-game" }, numbers: false, open: [{ pause: 600 }],
     data: "the tutorial's first goal card" },
   { id: "hud.goal-help", extends: "hud.goal-chips", root: ".goal-card-help > p", frame: "css", scene: { kind: "new-game" }, numbers: false,
@@ -241,15 +260,24 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.pause", root: ".pause-menu", frame: "css", scene: TOWN, open: [{ key: "Escape" }, { pause: 600 }], scroll: "y", data: "the pause menu and its settings" },
   { id: "modal.season-ledger", root: ".season-ledger-card", frame: "layer", frameLayer: ".season-ledger-frame", contentSlot: ".season-ledger-body",
     frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "ui5", name: "carrying", tile: "house", zoom: 1.4, query: QUIET, run: true },
-    open: [{ key: "Digit3" }, { wait: ".season-ledger-card", timeout: 90_000 }, { pause: 900 }], data: "the carter town's season close" },
+    open: [{ key: "Digit3" }, { wait: ".season-ledger-card", timeout: 90_000 }, { pause: 900 }], requires: ["h2", ".season-ledger-line", ".season-ledger-resume"],
+    data: "the carter town's season close" },
   { id: "modal.famine", root: ".story-modal.famine-decision", frame: "flat", scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
-    open: [{ story: ".famine-decision" }, { pause: 800 }], scroll: "y", siblingsNoOverlap: [".famine-option", ".story-modal-later"], data: "chapter 1's famine decision" },
+    open: [{ story: ".famine-decision" }, { pause: 800 }], scroll: "y", siblingsNoOverlap: [".famine-option", ".story-modal-later"], requires: ["h2", ".famine-option", ".story-modal-later"],
+    data: "chapter 1's famine decision" },
   { id: "modal.petition.ch1", ...PETITION, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },
   { id: "modal.petition.ch2-war", ...PETITION, scene: petitionScene("ui6", "wool_payment", 5000), open: [{ story: ".petition-card" }, { pause: 700 }], data: "the Crown's writ (war)" },
   { id: "modal.petition.ch4-reorg", ...PETITION, scene: petitionScene("ui9", "borough_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough charter" },
   { id: "modal.petition.ch5-legacy", ...PETITION, scene: petitionScene("ui10", "borough_autonomy", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough's autonomy (legacy)" },
   { id: "modal.petition.heir", ...PETITION, scene: petitionScene("ui10-extra", "heir_choice", 0), open: [{ story: ".petition-card[data-def='heir_choice']" }, { pause: 600 }],
     expect: ".petition-heir", data: "the heir's card with three candidates" },
+  // QA-034: every chapter's decision cards (the frame layer covered all of them on 3acc04ff).
+  { id: "modal.petition.ch3-plague", ...PETITION, scene: petitionScene("ui8", "cash_rent", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 3's cash rent" },
+  { id: "modal.petition.ch4-guild", ...PETITION, scene: petitionScene("ui9", "guild_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 4's guild charter" },
+  { id: "modal.petition.ch5-royal-tax", ...PETITION, scene: petitionScene("ui10", "royal_tax", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the Crown's tax, 1384 (QA-034)" },
+  { id: "modal.petition.ch5-legacy-choice", ...PETITION, scene: petitionScene("ui10", "legacy_choice", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the legacy choice" },
+  { id: "modal.petition.interlude-guild", ...PETITION, scene: petitionScene("ui10", "guild_dispute", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's guild dispute" },
+  { id: "modal.petition.interlude-church", ...PETITION, scene: petitionScene("ui10", "church_rebuilding", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's church rebuilding" },
   { id: "modal.chapter-page.ch1", ...CHAPTER_PAGE, scene: chapterScene("ui5", "chapter-end"), data: "chapter 1's end page" },
   { id: "modal.chapter-page.ch2", ...CHAPTER_PAGE, scene: chapterScene("ui6", "chapter2-end"), data: "chapter 2's end page" },
   { id: "modal.chapter-page.ch3", ...CHAPTER_PAGE, scene: chapterScene("ui8", "chapter3-end"), data: "chapter 3's end page" },
@@ -260,7 +288,7 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.chapter-preview.goals", extends: "modal.chapter-preview", root: ".chapter-preview-goals", frame: "flat", scene: chapterScene("ui5", "chapter-end"), open: [],
     data: "chapter 2's goals on the preview" },
   { id: "modal.chapter-loading", root: ".chapter-loading", frame: "flat", scene: { kind: "title" }, numbers: false,
-    open: [{ click: ".welcome-parchment [data-scenario]" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
+    open: [{ holdTimers: true }, { click: ".welcome-parchment [data-scenario]" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
   { id: "modal.person-card", extends: "map.selection.house", root: ".person-card", frame: "painting", painting: PERSON_CARD_ART, scene: TOWN_CLOSE,
     frameSlots: [".person-card-emblem-cover"],
     portraitRing: { cx: 59.5, cy: 83.5, r: 43, inner: 33.5, face: ".person-card-portrait .person-portrait-layer", ornament: ".person-card-portrait .person-state-ornament" },
@@ -286,6 +314,17 @@ export const SURFACES: readonly SurfaceRow[] = [
     frameSlots: [".chronicle-biography-cover"], scrollParts: [".chronicle-biography-band > ul", ".chronicle-biography-header", ".chronicle-biography-life"],
     portraitRing: { cx: 162, cy: 216, r: 112, inner: 100, face: ".chronicle-biography-portrait", ornament: ".chronicle-biography-ornament" },
     open: [{ click: ".person-card .person-card-action" }, { wait: ".chronicle-biography" }, { pause: 1200 }], data: "that person's biography page" },
+  // QA-015 (Astra round 15): the king in 1384 has no records — the biography's empty-records line met the art's middle
+  // rule. Reached as Astra did: the Crown's tax card → the sender's chip → his card → his biography.
+  { id: "modal.person-card.king", extends: "modal.petition.ch5-royal-tax", root: ".person-card", frame: "painting", painting: PERSON_CARD_ART,
+    scene: petitionScene("ui10", "royal_tax", 0), frameSlots: [".person-card-emblem-cover"],
+    portraitRing: { cx: 59.5, cy: 83.5, r: 43, inner: 33.5, face: ".person-card-portrait .person-portrait-layer", ornament: ".person-card-portrait .person-state-ornament" },
+    open: [{ click: ".petition-people .person-chip" }, { wait: ".person-card" }, { pause: 700 }], data: "the king's card (no records)" },
+  { id: "modal.history.biography.king", extends: "modal.person-card.king", root: ".chronicle-biography", frame: "painting", painting: BIOGRAPHY_ART,
+    scene: petitionScene("ui10", "royal_tax", 0), frameSlots: [".chronicle-biography-cover"],
+    scrollParts: [".chronicle-biography-band > ul", ".chronicle-biography-header", ".chronicle-biography-life"],
+    portraitRing: { cx: 162, cy: 216, r: 112, inner: 100, face: ".chronicle-biography-portrait", ornament: ".chronicle-biography-ornament" },
+    open: [{ click: ".person-card .person-card-action" }, { wait: ".chronicle-biography" }, { pause: 1200 }], data: "the king's biography: the empty-records line" },
   { id: "modal.history.family-tree", extends: "modal.history.biography", root: ".family-tree", frame: "flat", scene: TOWN_CLOSE, scroll: "xy",
     open: [{ click: ".chronicle-person-tabs .chronicle-tab:nth-child(2)" }, { pause: 900 }], siblingsNoOverlap: [".family-tree-node", ".family-tree-toggle"],
     data: "that person's family tree" },
