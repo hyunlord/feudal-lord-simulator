@@ -12,6 +12,16 @@ type P = Readonly<Record<string, number | string>>;
 const n = (params: P, key: string): number => Number(params[key] ?? 0);
 const s = (params: P, key: string): string => String(params[key] ?? "");
 
+/** FIX-12 (item 2): who the groom of a marriage contract is to the lord. */
+export const GROOM_RELATION_KO: Readonly<Record<string, string>> = {
+  son: "아들", widowed_lord: "홀아비 영주", brother: "영주의 동생", nephew: "영주의 조카", cousin: "영주의 사촌",
+};
+
+/** FIX-12 (item 4): the word a sentence uses for a person no reader can name (the record keeps only the id). */
+export const PERSON_NAME_FALLBACK: Readonly<Record<string, string>> = {
+  lord: "영주", guardian: "후견인", candidate: "", heir: "후계자", mayor: "", leader: "새 수장", predecessor: "수장",
+};
+
 // BLD-REG: a building's name in the ledger's sentences is its catalog line (`buildingCatalog.ko.ts` `history`).
 const building = buildingHistoryName;
 
@@ -197,6 +207,11 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "war.licence": () => "왕실 조달 면허를 받았다",
   "war.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
   // FACTION-0 (FX-4): a faction's relation moved.
+  // FIX-12 (item 3, QA-036): the names are drawn from the ids when the record is read (item 4).
+  "faction.leader_succeeded": params => { const before = s(params, "predecessor"), next = s(params, "leader");
+    return `${factionDisplayName(s(params, "faction"), s(params, "name"))}의 ${before}${josa(before, "이", "가")} 세상을 떠나 ${next}${josa(next, "이", "가")} 무리를 이끈다`; },
+  "petition.representative_replaced": params => { const before = s(params, "predecessor"), next = s(params, "leader");
+    return `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}의 대표 ${before}${josa(before, "이", "가")} ${s(params, "gone") === "left" ? "마을을" : "세상을"} 떠나 ${next}${josa(next, "이", "가")} 대신 나섰다`; },
   "faction.relation": params => `${factionDisplayName(s(params, "faction"), s(params, "name"))}의 마음이 ${n(params, "delta") > 0 ? "누그러졌다" : "돌아섰다"}(${n(params, "delta") > 0 ? "+" : ""}${n(params, "delta")}, 이제 ${n(params, "relation")}) — ${factionReasonLine(s(params, "reason"))}`,
   // FAIL-3 (FL-5…FL-8): the lordship's fall and the chapter's turn.
   "decline.entered": params => `영지가 쇠퇴했다 — ${DECLINE_CAUSES[s(params, "cause")] ?? s(params, "cause")}, ${s(params, "right") === "none" ? "잃은 권리 없이" : `${LORD_RIGHT_NAMES[s(params, "right")] ?? s(params, "right")}${josa(LORD_RIGHT_NAMES[s(params, "right")] ?? "", "을", "를")} ${s(params, "by") === "overlord" ? "상위 영주가 맡았고" : "상인들이 가져갔고"}`} 칭호가 강등되었다`,
@@ -226,7 +241,8 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "promise.made": params => `약속을 했다: ${TERM_KO[s(params, "term")] ?? s(params, "term")}${n(params, "amount") > 0 ? ` ${moneyWords(n(params, "amount"))}` : ""}`,
   "promise.kept": params => `${s(params, "promisor") === "lord" ? "영주가" : "이웃 영주가"} 약속을 지켰다: ${TERM_KO[s(params, "term")] ?? s(params, "term")}`,
   "promise.broken": params => `${s(params, "promisor") === "lord" ? "영주가" : "이웃 영주가"} 약속을 어겼다: ${TERM_KO[s(params, "term")] ?? s(params, "term")}`,
-  "marriage.contracted": () => "혼인 계약 — 아들과 이웃 영주의 맏딸",
+  "marriage.contracted": params => { const groom = GROOM_RELATION_KO[s(params, "relation")] ?? GROOM_RELATION_KO.son!;
+    return `혼인 계약 — ${groom}${josa(groom, "과", "와")} 이웃 영주의 맏딸`; },
   "marriage.bride_arrived": () => "신부가 영주관에 들어왔다",
   "marriage.child_born": () => "부부의 첫아이가 태어났다",
   "marriage.brother_in_law_born": () => "이웃 영주가 다시 장가들어 아들을 얻었다 — 상속 기대가 줄었다",

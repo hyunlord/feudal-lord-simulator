@@ -79,11 +79,12 @@ export function heirRelationWord(state: Partial<Pick<GameState, "legacy">>): str
 }
 
 /** A record's sentence (the ledger's), with the heir answer in the heir's real relation. */
-export function recordSentence(state: Partial<Pick<GameState, "legacy">>, record: Pick<HistoryRecord, "template" | "params">): string {
+export function recordSentence(state: Partial<Pick<GameState, "legacy" | "persons" | "factions" | "estates">>, record: Pick<HistoryRecord, "template" | "params">): string {
   const defId = String(record.params?.defId ?? "");
   const chosen = String(record.params?.chosen ?? "");
   if (record.template === "decision.petition_response" && defId === HEIR_CHOICE_PETITION_ID && chosen === "refuse" && kinsmanForNephew(state)) {
     return LEGACY_SCREEN_COPY.answered(PETITION_SUBJECTS[defId] ?? defId, PETITION_COPY.heir_choice.kinsmanLabel);
   }
-  return history.summary(record);
+  // FIX-12 (HL-1a): the persons a record names by id are named now.
+  return history.summary(record, state);
 }

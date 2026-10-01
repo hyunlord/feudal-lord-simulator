@@ -171,3 +171,46 @@ export function computeReachablePalisadeProposalForState(
   }
   return result;
 }
+
+const placementProposalCache = new Map<string, PalisadeProposalResult>();
+
+/** FIX-12 (item 5): the placement's signature — the map, the roads, the buildings and the sites where they stand. */
+function placementSignature(state: GameState): string {
+  let tiles = tileLayoutKeys.get(state.tiles);
+  if (tiles === undefined) {
+    tiles = JSON.stringify(state.tiles.map(tile => [tile.terrain, tile.hasRoad, tile.buildingId]));
+    tileLayoutKeys.set(state.tiles, tiles);
+  }
+  return JSON.stringify([
+    state.width, state.height, state.era, state.palisade?.id, state.roadRevision, tiles,
+    state.buildings.map(building => [building.id, building.kind, building.tx, building.ty, building.houseLot]),
+    state.constructionSites.map(site => 'tx' in site
+      ? [site.id, site.kind, site.tx, site.ty]
+      : [site.id, site.kind, site.path]),
+  ]);
+}
+
+/**
+ * FIX-12 (item 5, decision FX12-5): the default proposal for a screen (the era console's hamlet wall) — the same
+ * placement gives the same proposal. The computation is `computeReachablePalisadeProposalForState(state)` unchanged;
+ * only its result is kept per placement.
+ * (a) Key: `placementSignature` (map size, era, the wall's id, the road revision, every tile's terrain/road/building,
+ *     every building's id/kind/position/lot, every construction site).
+ * (b) Left out: where timber lies (the treasury's and each building's stock > 0) and the next construction ordinal.
+ *     The ordinal only names the projected sites, never moves the path. Timber can turn a candidate's segments from
+ *     "no source" to "reachable", so the shown proposal is the one of this placement's first state until a building, a
+ *     road or a site moves (the screen's segment colours still come from `previewPalisadeRouteAccess`, exact per state).
+ *     The bot never reads this: its calls keep the exact key, so its wall decisions are byte for byte the same.
+ * (c) Measured on the fen (core:fen_drainage seed 1, lord mode, a call every 20 ticks over 6,000 ticks, Mac tsx):
+ *     before 2,610 ms in all (12 recomputes of 160–240 ms, 6 of them on a timber flag alone); after in the FIX-12
+ *     report (docs/verification/fix12/REPORT.md).
+ */
+export function palisadeProposalForPlacement(state: GameState): PalisadeProposalResult {
+  const key = placementSignature(state);
+  const cached = placementProposalCache.get(key);
+  if (cached !== undefined) return cached;
+  const result = computeReachablePalisadeProposalForState(state);
+  if (placementProposalCache.size >= 8) placementProposalCache.delete(placementProposalCache.keys().next().value ?? '');
+  placementProposalCache.set(key, result);
+  return result;
+}

@@ -148,7 +148,7 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
     case "seek_suit_patron": return lordSuit(state, action.suitId) ? seekSuitPatron(state, action.suitId, action.factionId) : state;
     case "enforce_possession": return lordSuit(state, action.suitId) ? enforcePossession(state, action.suitId) : state;
     case "mark_chapter_page_seen": return markChapterPageSeen(state, action.chapter);
-    case "propose_marriage": return proposeMarriage(state, action.terms);
+    case "propose_marriage": return proposeMarriage(state, action.terms, action.groomId);
     case "answer_counter": return answerCounter(state, action.negotiationId, action.accept);
     case "keep_promise": return keepPromise(state, action.promiseId);
     case "answer_will_change": return answerWillChange(state, action.choice);

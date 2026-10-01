@@ -1,6 +1,6 @@
 # 현재 상태
 
-갱신: 2026-10-01(LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-10-01(FIX-12 · LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -17,7 +17,7 @@
 - **추이 문서 뒤처짐 경고·NAT-2 힙 확인 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 RR4)
   - `check:merge`가 추이 문서가 본선 머리보다 10개 넘게 뒤처지면 경고 한 줄을 찍는다(실패 아님, `<git common dir>/fls-trend-lag.log`에 쌓임). 합치는 세션이 `npm run perf:trend`로 갱신하고, 경고가 쌓이면 인프라 세션이 모아 커밋한다.
   - NAT-2 뒤 JS 힙 증가는 없었다: Mac A-B-A-B([기록](verification/perf-ab/2026-09-30-2310-00df3324-8ebdcf5c.md))에서 힙 끝 85.3 → 81.1 MB(소음 안), 할당 −13 %·GC −39 %(좋아짐). 추이의 표시는 GC 톱니 위 한 점을 잰 탓이었다. 밉맵 캐시는 JS 힙 밖(픽셀 0~2.1 MB)이다.
-  - 추이 지표 보정: GC 뒤 남은 힙을 판정, 다른 일 CPU를 함께 적음. 사용자 판정 RR6: 판정 지표는 할당률·GC/분·캔버스 생성/초·GC 뒤 남은 힙 넷, 스크립트 시간은 참고 칸(판정은 `perf:ab` 짝 비교에서만). 사용자 판정 RR7: 넓힌 범위 밖은 의심일 뿐이고, DGX가 앞 커밋과 A-B-A-B를 자동으로 돌려 짝 차이의 95 % 폭(쌍 수에 맞춘 t 분포, 4쌍이면 ±3.18 표준오차)이 0 위일 때만 나빠짐으로 확정한다(±2 SE는 4쌍에서 약 80 % 폭이라 같은 코드도 확정했음). 렌더가 볼 관찰 둘(카메라 뒤 목책 래스터 캐시, NAT-2 쪽 긴 프레임)은 [요청서](requests/render-telemetry-hooks.md) 덧붙임에 있다.
+  - 추이 지표 보정: GC 뒤 남은 힙을 판정, 다른 일 CPU를 함께 적음. 사용자 판정 RR6: 판정 지표는 할당률·GC/분·캔버스 생성/초·GC 뒤 남은 힙 넷, 스크립트 시간은 참고 칸(판정은 `perf:ab` 짝 비교에서만). 사용자 판정 RR7: 넓힌 범위 밖은 의심일 뿐이고, DGX가 앞 커밋과 A-B-A-B를 자동으로 돌려 짝 차이의 95 % 폭(쌍 수에 맞춘 t 분포, 4쌍이면 ±3.18 표준오차)이 0 위일 때만 나빠짐으로 확정한다(±2 SE는 4쌍에서 약 80 % 폭이라 같은 코드도 확정했음). 첫 A-B가 나빠짐이면 한 번 더 돌려 두 번 모두일 때만 확정한다. 결정 ID 중복은 병합 전 검사가 막는다(RR8). 렌더가 볼 관찰 둘(카메라 뒤 목책 래스터 캐시, NAT-2 쪽 긴 프레임)은 [요청서](requests/render-telemetry-hooks.md) 덧붙임에 있다.
 - **성능 측정 재편: 기다리지 않고 추이로 판정 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄, 결정 RR3)
   - perf:gate의 잠금·대기열·조용한 Mac 기다리기를 없앴다. 환경은 수치 옆 기록이다.
   - ① 개발 서버 텔레메트리 `~/.fls-telemetry/`(`npm run telemetry:report`).
@@ -76,6 +76,9 @@
   - 떠오르는 상자는 너비 토큰 280·360·480(태블릿 ×1.15)에 고정·줄 간격 1.5·제목 한 줄·본문 4줄 뒤 [더 보기]·UI-KIT 틀; 스킨 감사에 틀 없는 상자 규칙; 개발 서버 `?pseudo-long=1` 1.4배 글에서 너비 불변·넘침 0.
   - 감사 목록: 성벽이 호숫가를 따라 호수를 성 안에 넣음(엔진 규칙이 물가 가장자리 허용 + 렌더가 벽 두께를 가장자리 가운데로, 판정 대상), 물가 워커, 가을 풀빛, 낙엽 반복, 이름표 겹침, L4 돌기둥 집, 경고 표시 붐빔.
   - 관문: DGX 캡처·측정 오류 0, 스킨 감사 0 / 1263·틀 없는 상자 0, 면적 5.4 % / 6 %·태블릿 5.9 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 로컬 전체 시험 3,796 / 3,796, 깨끗한 클론 `55ad6ee` 3,796/3,796·build(ARCH-1b를 합친 뒤 `1f25c42` 3,811/3,811).
+- **FIX-12 짧은 정리 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/fix12/REPORT.md), 결정 FX12-1~6.
+  - 채무는 분할로만(영지가 낸 1년의 25%, 5년까지, 연금과 나눔), 신랑은 아들 → 홀아비 영주 → 동생·조카·사촌, QA036 죽은 수장·대표는 그 틱에 다음 사람으로(원장 한 줄), 원장 문장의 사람은 id(저장 v41), 습지 성벽 제안은 배치 서명 캐시(봇은 정확한 키).
+  - 렌더 넘김: 시대 콘솔이 `palisadeProposalForPlacement`를 쓴다(렌더 세션 합의). **다음**: LM-E4.
 - **LM-E3 협상·약속 장부·혼인 계약 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/lme3/REPORT.md), [협상·혼인 명세](design/negotiation.md) NG-1~NG-10, 결정 LM3-1~7.
   - 이유 합·5단계 수락, 돈으로 못 넘는 하한, 최소 역제안, 약속 장부(기한 어김), 셋째 이웃과의 혼인 → 중간 사건 → 상속 → 영지 획득을 명령만으로(배치 1·2·4). 저장 v40.
   - 렌더 넘김(LM-R2): 협상 상태·약속 장부·혼인 단계·포트폴리오 변화. **다음**: LM-E4(청지기 위임·주의력·연례 감사).
