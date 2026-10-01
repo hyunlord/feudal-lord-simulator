@@ -10,7 +10,7 @@ import {
   ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, builderOfKind, CENTRE_KINDS, CHARTER_HOLD_WEEKS, CHARTER_POPULATION, DUES_POINTS_PER_100_PERMILLE,
   FIRE_NEIGHBOUR_POINTS, LAND_REACH, LAND_STEP, MATERIAL_PENNIES, NEED_STEP, NEED_TOP, OPEN_SITES_MAX, OPPORTUNITY_KINDS, PLAN_SITE_POINTS, policyWeight,
   LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, SITE_CANDIDATES_MAX, SITE_FULL_CHECKS_MAX, SITE_SEARCH_RADIUS,
-  START_SCORE, STARTS_PER_WEEK, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D, SUBSIDY_TREASURY_PERMILLE,
+  START_SCORE, STARTS_PER_WEEK, TEMPERAMENT_SPREAD, CHOICE_SPAN, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D, SUBSIDY_TREASURY_PERMILLE,
 } from "../content/townAgencyConfig";
 import { constructionSiteId, isBuildingConstructionSite } from "../economy/construction";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
@@ -27,6 +27,7 @@ import type { AdvisorAction } from "./autoplayBotRecovery";
 import { granaryCoverageTargetIds } from "./autoplayFoodCoverage";
 import { recordMaterialPlacement } from "./autoplayMaterialLifecycle";
 import type { GameState } from "./engine.types";
+import { hashSeed } from "../content/seedHash";
 import { rebuildBurntHouse } from "./fire";
 import { placeBuilding, placeRoadLine } from "./gameActions";
 import { demolishHouse } from "./houseDemolition";
@@ -36,7 +37,7 @@ import { housingLotCount } from "../population/housing";
 import { stuckStock } from "./stuckStock";
 import { agencyDuesPermille } from "./townAgencyDues";
 import type {
-  ActorKind, AgencyActor, AgencyState, EstatePolicy, LordRequest, ProjectReceipt, ProjectSubsidy, Reason, ReceiptSites, SubsidyRefusal,
+  ActorKind, AgencyActor, AgencyState, ChoiceChance, EstatePolicy, LordRequest, ProjectReceipt, ProjectSubsidy, Reason, ReceiptSites, SubsidyRefusal, Temperament,
 } from "./townAgency.types";
 
 /** TA-1: the lord mode's town at its start. */
@@ -133,6 +134,29 @@ export interface Proposal {
   readonly subsidy: number;
   /** TA-10: a building's candidate sites compared (absent for roads, zones, house works). */
   readonly sites?: ReceiptSites;
+  /** LM-E5 (LG-2): its site drawn by chance among its sites. */
+  readonly siteChance?: ChoiceChance;
+}
+
+/** LM-E5 (LG-2) API: an actor's temperament, from the game seed (the same seed, the same temperaments). */
+export function actorTemperament(state: Pick<GameState, "seed">, kind: ActorKind): Temperament {
+  return hashSeed(state.seed, `actor-temperament:${kind}`) % 2 === 0 ? "cautious" : "bold";
+}
+
+/**
+ * LM-E5 (LG-2): a draw among scored options (best first) by the game seed's number for `salt` — each option's weight
+ * exp((score − best) / its spread), only those within CHOICE_SPAN of the best. The chosen index and its chance.
+ */
+function drawByScore(seed: number, salt: string, values: readonly number[], spreads: readonly number[], temperament: Temperament):
+  { readonly index: number; readonly chance: ChoiceChance } {
+  const best = values[0] ?? 0;
+  const count = Math.max(1, values.filter(value => best - value <= CHOICE_SPAN).length);
+  const weights = values.slice(0, count).map((value, index) => Math.exp((value - best) / spreads[index]!));
+  const total = weights.reduce((sum, weight) => sum + weight, 0);
+  let draw = (hashSeed(seed, salt) % 1_000_000) / 1_000_000 * total;
+  let index = 0;
+  while (index < count - 1 && draw >= weights[index]!) { draw -= weights[index]!; index += 1; }
+  return { index, chance: { permille: Math.round(weights[index]! / total * 1000), of: count, temperament, place: index + 1 } };
 }
 
 function isTownAction(action: AdvisorAction): action is TownAction {
@@ -320,16 +344,21 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
         score: base, cost: scored.cost, subsidy: scored.subsidy });
       return;
     }
-    // TA-10: the site with the best whole score (the plan's own on a tie); the next best stays on the receipt.
+    // TA-10: the sites by their whole score (the plan's own on a tie). LM-E5 (LG-2): the actor draws one by chance —
+    // mostly the best — and the best other stays on the receipt.
     const ranked = candidateSites(state, action.building, site, planner, centre, policy)
       .map((candidate, index) => ({ ...candidate, index, score: base + scoreOf(candidate.reasons) }))
       .sort((left, right) => right.score - left.score || left.index - right.index);
-    const chosen = ranked[0]!;
-    const next = ranked[1];
+    const temperament = actorTemperament(state, actor);
+    const drawn = drawByScore(state.seed, `agency-site:${key}:${state.tick}`, ranked.map(entry => entry.score),
+      ranked.map(() => TEMPERAMENT_SPREAD[temperament]), temperament);
+    const chosen = ranked[drawn.index]!;
+    const next = ranked.find(entry => entry !== chosen);
     const sites: ReceiptSites = { count: ranked.length, planTx: site.tx, planTy: site.ty, reasons: chosen.reasons,
       runnerUp: next === undefined ? null : { tx: next.tx, ty: next.ty, reasons: next.reasons, score: next.score } };
     proposals.push({ actor, what: whatOf(action), planner, rank, action: { ...action, tx: chosen.tx, ty: chosen.ty }, tx: chosen.tx, ty: chosen.ty,
-      reasons: [...scored.reasons, ...chosen.reasons], score: chosen.score, cost: scored.cost, subsidy: scored.subsidy, sites });
+      reasons: [...scored.reasons, ...chosen.reasons], score: chosen.score, cost: scored.cost, subsidy: scored.subsidy, sites,
+      ...(ranked.length > 1 ? { siteChance: drawn.chance } : {}) });
   };
   for (const need of needs) propose(need.action, need.planner, need.rank);
   // TA-3: the opportunities — a subsidised or policy-backed kind no need asks for, at its first legal site, while the
@@ -436,6 +465,23 @@ function charterSearchRuns(state: GameState): boolean {
 }
 
 /** TA-2…TA-5: one week of the town agency, at the week's first tick (nothing outside lord mode). */
+/**
+ * LM-E5 (LG-2): the week's startable proposals (score at least START_SCORE) in the order chance draws them — each draw
+ * among those left, each proposal weighted by its own actor's temperament — with each one's chance when drawn.
+ */
+function chanceOrder(state: GameState, proposals: readonly Proposal[]): readonly { readonly proposal: Proposal; readonly chance: ChoiceChance }[] {
+  const left = proposals.filter(proposal => proposal.score >= START_SCORE);
+  const order: { proposal: Proposal; chance: ChoiceChance }[] = [];
+  while (left.length > 0) {
+    const temperaments = left.map(proposal => actorTemperament(state, proposal.actor));
+    const drawn = drawByScore(state.seed, `agency-pick:${state.tick}:${order.length}`, left.map(proposal => proposal.score),
+      temperaments.map(temperament => TEMPERAMENT_SPREAD[temperament]), temperaments[0]!);
+    order.push({ proposal: left[drawn.index]!, chance: { ...drawn.chance, temperament: temperaments[drawn.index]! } });
+    left.splice(drawn.index, 1);
+  }
+  return order;
+}
+
 export function advanceTownAgency(state: GameState): GameState {
   const agency = state.agency;
   if (agency === undefined || state.tick <= 0 || state.tick % AGENCY_WEEK_TICKS !== 0) return state;
@@ -466,9 +512,8 @@ export function advanceTownAgency(state: GameState): GameState {
   const receipts: ProjectReceipt[] = [];
   let started = 0;
   let ordinal = agency.nextReceipt;
-  for (const proposal of townProposals(next, LORD_MODE_POLICY, needs)) {
+  for (const { proposal, chance } of chanceOrder(next, townProposals(next, LORD_MODE_POLICY, needs))) {
     if (started >= STARTS_PER_WEEK || open(next) >= OPEN_SITES_MAX) break;
-    if (proposal.score < START_SCORE) break;
     if (holding && proposal.action.kind === "place_building") continue;
     // TA-5: the week's second project is checked again on the town the first one left — the bot places one at a time,
     // each against the last (two sites each keeping the service space alone took it together: no charter wall fitted).
@@ -495,7 +540,8 @@ export function advanceTownAgency(state: GameState): GameState {
     const reasons = topReasons(proposal.reasons);
     receipts.push({ id: `receipt-${ordinal}`, tick: next.tick, actor: proposal.actor, what: proposal.what, tx: proposal.tx, ty: proposal.ty, siteId,
       planner: proposal.planner, rank: proposal.rank, reasons, score: proposal.score, cost: proposal.cost, subsidy: paid, loan,
-      decisionIds: lordDecisionIds(next, proposal.what, proposal.reasons), ...(proposal.sites === undefined ? {} : { sites: proposal.sites }) });
+      decisionIds: lordDecisionIds(next, proposal.what, proposal.reasons), ...(proposal.sites === undefined ? {} : { sites: proposal.sites }),
+      chance: { project: chance, ...(proposal.siteChance === undefined ? {} : { site: proposal.siteChance }) } });
     ordinal += 1;
     started += 1;
   }
@@ -581,7 +627,10 @@ export function auditReceipt(state: GameState, receipt: ProjectReceipt): readonl
     if (next !== null) {
       if (!same(next.reasons, siteReasons(state, kind, next, planSite, centre))) mismatches.push("sites: the next site's reasons");
       if (receipt.score - next.score !== scoreOf(sites.reasons) - scoreOf(next.reasons)) mismatches.push("sites: the gap to the next site");
-      if (next.score > receipt.score) mismatches.push("sites: the next site scored higher");
+      // LM-E5 (LG-2): a site drawn by chance below the best keeps the best as its next; only a best draw must lead it.
+      const drawnBelow = (receipt.chance?.site?.place ?? 1) > 1;
+      if (next.score > receipt.score && !drawnBelow) mismatches.push("sites: the next site scored higher");
+      if (drawnBelow && next.score < receipt.score) mismatches.push("sites: a site drawn below the best keeps the best as its next");
     }
   }
   return mismatches;

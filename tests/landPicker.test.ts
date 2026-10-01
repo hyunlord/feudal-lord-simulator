@@ -90,7 +90,9 @@ test("each land's preview is deterministic, 2 px a tile and drawn in canonical c
       assert.ok(canonical.has(pixelAt(first, tx, ty)), `${archetypeId} (${tx},${ty}) ${pixelAt(first, tx, ty)}`);
     }
   }
-  assert.equal(landPreviewPixels(RIVERSIDE_ARCHETYPE_ID, 2), null, "the riverside has map 1 only");
+  // LM-E5: the engine builds the riverside on any seed now (seed 1 is today's map); the picker still fixes it at 1 (LU-D7)
+  // until its seed control follows LM-E5, so a seed-2 preview exists but is never asked for.
+  assert.notEqual(landPreviewPixels(RIVERSIDE_ARCHETYPE_ID, 2), null, "the engine builds the riverside on seed 2 (LM-E5)");
   assert.equal(landPreviewPixels("core:nowhere", 1), null);
   assert.equal(cachedLandPreview(FEN_ARCHETYPE_ID, 2), cachedLandPreview(FEN_ARCHETYPE_ID, 2));
 });

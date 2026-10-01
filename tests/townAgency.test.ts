@@ -136,7 +136,7 @@ test("TA-6 ② subsidies together past a quarter of the treasury are refused wit
   assert.deepEqual(state.agency!.subsidies, []);
 });
 
-test("TA-10 a building project compares its candidate sites: each passes the plan's checks, the best whole score wins", () => {
+test("TA-10 a building project compares its candidate sites: each passes the plan's checks; LM-E5 (LG-2): one is drawn by chance, the best other kept", () => {
   const state = toWeek(gameReducer(lordTown(), { type: "set_estate_policy", policy: "stability" }), 4);
   const buildings = townProposals(state).filter(proposal => proposal.action.kind === "place_building");
   assert.ok(buildings.length > 0);
@@ -148,7 +148,10 @@ test("TA-10 a building project compares its candidate sites: each passes the pla
     const plan = { tx: sites.planTx, ty: sites.planTy };
     if (proposal.tx !== plan.tx || proposal.ty !== plan.ty) assert.equal(townSiteRefusal(state, kind, proposal, plan, { maxHousingLots: 24 }), null);
     if (sites.runnerUp !== null) {
-      assert.ok(proposal.score >= sites.runnerUp.score);
+      // The best drawn: the runner-up is no better; another drawn: the runner-up is the best, and the chance says so.
+      const place = proposal.siteChance?.place ?? 1;
+      if (place === 1) assert.ok(proposal.score >= sites.runnerUp.score);
+      else assert.ok(proposal.score <= sites.runnerUp.score && proposal.siteChance!.permille < 1000);
       const sum = (reasons: readonly { value: number }[]) => reasons.reduce((total, reason) => total + reason.value, 0);
       assert.equal(proposal.score - sites.runnerUp.score, sum(sites.reasons) - sum(sites.runnerUp.reasons));
     }
@@ -167,7 +170,10 @@ test("TA-10 a project leaves the plan's site for a better candidate, and the rec
   assert.ok(moved !== undefined, "some project chose another site than the plan's");
   assert.ok(moved.sites!.count >= 2);
   assert.ok(!moved.sites!.reasons.some(reason => reason.name === "plan"), "the plan's bonus stays with the plan's site");
-  assert.ok(moved.sites!.runnerUp !== null && moved.score >= moved.sites!.runnerUp.score);
+  assert.ok(moved.sites!.runnerUp !== null);
+  // LM-E5 (LG-2): the receipt says the project and its site were chosen by chance (and how likely).
+  assert.ok(moved.chance !== undefined && moved.chance.project.permille > 0 && moved.chance.site !== undefined);
+  if (moved.chance.site!.place === 1) assert.ok(moved.score >= moved.sites!.runnerUp!.score);
   assert.deepEqual(auditReceipt(before, moved), []);
 });
 

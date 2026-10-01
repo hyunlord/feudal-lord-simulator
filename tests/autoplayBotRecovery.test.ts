@@ -170,7 +170,9 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // 57b48964ac5b3c9e, which the same state still gives without the three goods; the full-state hash below is unchanged).
   // C5 adds the cloth chain's seven goods to the stock totals (0 here), re-recorded at C5 (was 4811a678f2a882b5; the
   // full-state hash below is unchanged: chapter 1 is the same).
-  assert.equal(hashEconomyState(state), "eee07b584282a9b6");
+  // LM-E5 (LG-3, LM5-5): a grown tree's cell is felled again, so the felled cells differ (was eee07b584282a9b6; with
+  // `forestHarvests` emptied the economy hash is the same on trunk 6d039cd and here, d1e630ae8d5242af).
+  assert.equal(hashEconomyState(state), "292f95a7cbc4a6af");
   // FIX-6: the factions' leaders wear pool 3's faces (was 6ec1cf75…; with every portraitIdentity removed the state is the same).
   // PERSON-1a: the persons carry their traits, lineage and parents, the lord's family lives in the manor (was e7a38e20…;
   // without persons, factions and petitioners the state is trunk's, decision LN7).
@@ -179,7 +181,9 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // BOT-4 (GP-1): the state keeps the town's harvest record (was 12e7d9b8…; without `harvestRecord` the state is the same).
   // FIX-11: the saved state migrates to v35 and gets its manor house (MH-2); one death table (FX11-2), the namesakes'
   // bynames (FX11-3), wardship (FX11-1) and the stuck-stock since-ticks (SK-3) follow (was 20e33b11…).
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "fc96b34495eaa28e56131bd544b6605f0e3aa20da2cbe49bac392168bc3c3698");
+  // LM-E5 (LG-3, LM5-5): the state carries the land (footfall, footpaths, fallow) and grown trees are felled again (was
+  // fc96b344…; without `forestHarvests` and `land` the state is trunk 6d039cd's, 6708920a9b75091b both).
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "812d66ad594d768098151dce393c94f3f32192d4bff6d4cc78b4061cfe69a05f");
 });
 
 test("B8 seed 4 (F0-A run 1): backed-up edge barns get a mill beside them while homes lose levels, and the town reaches L4 24/24", () => {
