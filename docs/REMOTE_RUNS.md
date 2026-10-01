@@ -63,6 +63,9 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
    - 실행 폴더의 `.remote/`(로그·요약·가드레일/성능 원자료)는 Mac의 `.remote-runs/<run>/`으로 온다(git 무시).
    - 명령이 `docs/`·`seeds/`·`perf/`·`output/`·`fixtures/` 아래에 만들거나 바꾼 파일은 작업 트리로 온다. `rsync --update`라서 실행 중에 Mac에서 고친 파일은 덮지 않는다. 목록은 `.remote-runs/<run>/changed-files.txt`에 있다.
 5. **정리**: DGX는 최근 실행 폴더 10개만 남긴다(도는 중인 폴더와 `--keep` 실행은 지우지 않고 세지도 않는다). node_modules 캐시는 최근 4개를 남긴다.
+   - 정리는 어느 세션의 실행이 끝날 때든 돈다. `_`로 시작하는 폴더(`_kept`·`_trend`·`_clones` 등), `.remote/keep`이 있는 폴더, 아직 도는 폴더(잠금)는 건드리지 않는다(2026-10-01 DGX 임시 폴더에서 `prune_runs`를 그대로 돌려 확인: 14개 중 보존·도는 폴더를 빼고 가장 오래된 둘만 지움).
+   - 그래서 `--keep` 없이 돈 실행의 폴더는 다른 세션의 실행이 지울 수 있다. 남겨야 할 실행은 `--keep`으로 돌린다.
+   - 추이 실행(`--task trend`)은 결과를 `_trend/`(측정 `<sha>.json`, A-B 확인 `ab/`)에 두고, 로그도 `_trend/logs/<run>.log`로 복사한다.
 
 ## Node
 - **시스템 Node는 20, 게임은 `_tools`의 24다.**
