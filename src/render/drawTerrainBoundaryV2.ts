@@ -198,18 +198,18 @@ function drawGroundChunk(
     // Forest and water tiles are laid as grass; the smoothed forest outline and shoreline below paint over them.
     parts.drawGroundDiamond(context, tile.terrain === "forest" || tile.terrain === "water" ? { ...tile, terrain: "grass" } : tile, input.state.seed, input.terrainPatterns);
   }
-  if (land !== null) drawLandFills(context, land, tiles, season);
-  // The land fills carry their own seasons: the Wave 15 season grass and the code-drawn tufts stay on the meadow.
-  if (season !== 1) drawSeasonGrass(context, land === null ? tiles : tiles.filter(tile => !hasLandFill(land, tile)), season);
+  if (season !== 1) drawSeasonGrass(context, tiles, season);
+  const bounds = chunkTileBounds(plan.cx, plan.cy);
+  const diamond = chunkDiamond(plan);
+  const box = { left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4 };
+  // The land fills carry their own seasons: over the season grass, which (and the code-drawn tufts) shows on the meadow.
+  if (land !== null) drawLandFills(context, land, plan, tiles, box, season);
   for (const tile of tiles) {
     if (tile.terrain === "water") continue;
     if (zoom > 0.7 && (land === null || !hasLandFill(land, tile))) drawGroundDecalDetail(context, tile, input.state.seed);
     drawTerrainTransitions(context, input.state, tile, zoom, input.terrainPatterns, false, false);
   }
-  if (land !== null) drawLandEdges(context, land, tiles);
-  const bounds = chunkTileBounds(plan.cx, plan.cy);
-  const diamond = chunkDiamond(plan);
-  const box = { left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4 };
+  if (land !== null) drawLandEdges(context, land, plan);
   drawForestFill(context, scene.forest, plan.forestLoops, plan.forestParity, box, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
   drawForestFringeDecals(context, scene.forest, plan.forestLoops, season);
   drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, box, bounds, input.state.seed, liveReeds(zoom), land === null ? undefined : landShoreStrips(context, land, scene.shore, plan.waterLoops, bounds));

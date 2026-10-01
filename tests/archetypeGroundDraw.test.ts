@@ -16,6 +16,8 @@ import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { chunkHash, fillArtKey, fillVariant, landArtKeys, landGroundOf, loopStrips, stripFamily, wave22Season } from "../src/render/archetypeGroundModel";
 import { drawLandDecals, drawLandEdges, drawLandFills, drawLandShoreStrips, landArtReadiness } from "../src/render/archetypeGroundDraw";
 import { countrysideOf } from "../src/render/countrysideLayout";
+import { chunkRegions, fillRegions } from "../src/render/archetypeGroundRegions";
+import { pointInPolygon } from "../src/render/groundSceneParts";
 import { groundBoundaryScene } from "../src/render/groundBoundaryScene";
 import { WAVE22_GROUND_IMAGES, type Wave22GroundKey } from "../src/render/wave22GroundManifest.generated";
 import { GROUND_CHUNK_TILES } from "../src/render/groundSceneParts";
@@ -126,6 +128,43 @@ test("the chunk hash names the land's tiles in the chunk and its ring, and diffe
   assert.ok(strips.some(families => families !== null && families.every(family => family.startsWith("shore/"))));
 });
 
+test("the fill regions cover their own tiles and leave the meadow: smoothed outlines, inside by the count of loops", () => {
+  for (const id of NEW_LANDS) {
+    const state = land(id, 1); const ground = landGroundOf(state)!;
+    for (const region of fillRegions(ground)) {
+      const own = (index: number) => ground.fillBase[ground.fill[index]!] === region.base;
+      const meadowOrOther = (index: number) => ground.fill[index] !== 0 && !own(index);
+      let checked = 0;
+      for (let ty = 1; ty < state.height - 1; ty += 1) for (let tx = 1; tx < state.width - 1; tx += 1) {
+        const block = [-1, 0, 1].flatMap(dy => [-1, 0, 1].map(dx => (ty + dy) * state.width + tx + dx));
+        const inside = block.every(own); const outside = block.every(meadowOrOther);
+        if (!inside && !outside) continue;
+        const enclosing = region.loops.filter(loop => pointInPolygon({ x: tx, y: ty }, loop.smoothed)).length;
+        assert.equal((enclosing % 2 === 0) === region.outside, inside, `${id} ${region.base} at ${tx},${ty}`);
+        checked += 1;
+      }
+      assert.ok(checked > 50, `${id} ${region.base}: ${checked}`);
+    }
+    // The strips' sides: the named ground (the strip's bottom) on the left of travel, the meadow on the right.
+    for (const region of fillRegions(ground)) for (const loop of region.loops) {
+      let left = 0, right = 0, total = 0;
+      loop.strips.forEach((strip, index) => {
+        if (strip === null) return;
+        const a = loop.smoothed[index]!; const b = loop.smoothed[(index + 1) % loop.smoothed.length]!;
+        const length = Math.hypot(b.x - a.x, b.y - a.y) || 1; const t = { x: (b.x - a.x) / length, y: (b.y - a.y) / length };
+        const at = (sign: number) => Math.round((a.y + b.y) / 2 - sign * t.x * 0.4) * state.width + Math.round((a.x + b.x) / 2 + sign * t.y * 0.4);
+        total += 1;
+        if (ground.fillBase[ground.fill[at(1)]!] === region.base) left += 1;
+        if (ground.fillBase[ground.fill[at(-1)]!] !== region.base) right += 1;
+      });
+      if (total > 20) assert.ok(left / total > 0.8 && right / total > 0.8, `${id} ${region.base}: ${left}/${right}/${total}`);
+    }
+    // Every chunk inside a region without an outline through it fills the chunk box.
+    const scene = groundBoundaryScene(state);
+    for (const plan of scene.chunks) for (const part of chunkRegions(ground, plan)) assert.ok(part.loops.length > 0 || part.parity);
+  }
+});
+
 test("the chalk downs' field edges are dry-stone walls; the riverside keeps its hedges (the cache keys on the land)", () => {
   const town = decodeSave(readFileSync(new URL("../fixtures/saves/v26/four-farms.save.json", import.meta.url))).envelope.state;
   const hedged = countrysideOf(town).strips.filter(piece => piece.family !== "baulk");
@@ -140,7 +179,7 @@ function countingContext() {
   const counts = { fill: 0, drawImage: 0, setTransform: 0 };
   const context = {
     fillStyle: "" as unknown, globalAlpha: 1, imageSmoothingEnabled: true,
-    beginPath() {}, moveTo() {}, lineTo() {}, closePath() {}, save() {}, restore() {}, transform() {},
+    beginPath() {}, moveTo() {}, lineTo() {}, closePath() {}, save() {}, restore() {}, transform() {}, clip() {},
     fill() { counts.fill += 1; },
     drawImage() { counts.drawImage += 1; },
     getTransform: () => ({ a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 }),
@@ -149,7 +188,7 @@ function countingContext() {
   return { context: context as unknown as CanvasRenderingContext2D, counts };
 }
 
-test("draw calls one land chunk adds: two fills per fill kind, one per strip quad, one blit per decal", () => {
+test("draw calls one land chunk adds: two fills per fill region, one per strip quad, one blit per decal", () => {
   // Node has no Image: a stand-in that is loaded at once, so the land's art is ready.
   (globalThis as unknown as { Image: unknown }).Image = class { naturalWidth = 512; naturalHeight = 64; onload: (() => void) | null = null; onerror: unknown = null;
     set src(_url: string) { queueMicrotask(() => this.onload?.()); } };
@@ -164,9 +203,9 @@ test("draw calls one land chunk adds: two fills per fill kind, one per strip qua
         for (const plan of scene.chunks) {
           const { context, counts } = countingContext();
           const tiles = state.tiles.filter(tile => Math.floor(tile.tx / GROUND_CHUNK_TILES) === plan.cx && Math.floor(tile.ty / GROUND_CHUNK_TILES) === plan.cy);
-          drawLandFills(context, ground, tiles, 1);
+          drawLandFills(context, ground, plan, tiles, { left: -1e4, top: -1e4, right: 1e4, bottom: 1e4 }, 1);
           const fills = counts.fill;
-          const edgeQuads = drawLandEdges(context, ground, tiles);
+          const edgeQuads = drawLandEdges(context, ground, plan);
           const shoreQuads = drawLandShoreStrips(context, ground, scene.shore, plan.waterLoops, { left: plan.cx * 8 - 0.5, top: plan.cy * 8 - 0.5, right: plan.cx * 8 + 7.5, bottom: plan.cy * 8 + 7.5 });
           const decals = drawLandDecals(context, ground, state.tiles, plan);
           assert.equal(counts.fill, fills + edgeQuads + shoreQuads);

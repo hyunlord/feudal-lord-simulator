@@ -8,8 +8,9 @@ import { joinStripImages } from "./stripJoin";
 import { wallStripsEnabled } from "./renderWallStripsFlag";
 import type { SeasonIndex } from "./seasonArt";
 import { WAVE22_GROUND_IMAGES, type Wave22GroundKey } from "./wave22GroundManifest.generated";
-import { GROUND_CHUNK_TILES, TILE_RING, type GroundChunkPlan } from "./groundSceneParts";
-import { chunkHash, fillArtKey, fillVariant, isWaterStrip, landArtKeys, landStripLoops, loopStrips, stripFamily, type LandGround, type StripFamily } from "./archetypeGroundModel";
+import { GROUND_CHUNK_TILES, TILE_RING, chunkTileBounds, type GroundChunkPlan } from "./groundSceneParts";
+import { chunkHash, fillArtKey, fillVariant, landArtKeys, landStripLoops, loopStrips, type LandGround, type StripFamily } from "./archetypeGroundModel";
+import { chunkRegions, type ChunkRegion } from "./archetypeGroundRegions";
 import type { ShoreStripOverride } from "./drawShoreline";
 
 // LAND-UI: a land's Wave 22 ground in the V2 ground chunks (drawTerrainBoundaryV2 drawGroundChunk; the layer and its
@@ -41,7 +42,7 @@ const WATERLINE_ROW = 50;
 const WATER_STRIP_HEIGHT = 96;
 const DECAL_SCALE = 0.5;
 const NEIGHBOURS = [[0, -1], [1, 0], [0, 1], [-1, 0]] as const;
-const EDGE_OF: Readonly<Record<string, StripFamily>> = { chalk_down: "boundary/chalk_edge", heath: "boundary/heath_edge", fen: "boundary/fen_edge", coastal_grass: "boundary/coastal_edge" };
+type ScreenBox = { readonly left: number; readonly top: number; readonly right: number; readonly bottom: number };
 
 /** The land's Wave 22 readiness in `season` (one bit per file it draws): part of the chunk content key. */
 export function landArtReadiness(land: LandGround, season: SeasonIndex): string {
@@ -83,26 +84,65 @@ function traceDiamond(context: CanvasRenderingContext2D, tile: Tile): void {
   context.closePath();
 }
 
-/** 1. The land fills over the chunk's grass diamonds. */
-export function drawLandFills(context: CanvasRenderingContext2D, land: LandGround, tiles: readonly Tile[], season: SeasonIndex): void {
-  const byBase = new Map<string, Tile[]>();
-  for (const tile of tiles) {
-    const base = land.fillBase[land.fill[tile.ty * land.width + tile.tx]!] ?? null;
-    if (base !== null) { const list = byBase.get(base); if (list === undefined) byBase.set(base, [tile]); else list.push(tile); }
+/** Traces a chunk's part of a fill region (its loops, plus the chunk's box when the chunk lies inside): fill "evenodd". */
+function traceRegion(context: CanvasRenderingContext2D, part: ChunkRegion, box: ScreenBox): void {
+  context.beginPath();
+  for (const index of part.loops) {
+    const line = part.region.loops[index]?.smoothed ?? [];
+    line.forEach((point, at) => { const s = tileToScreen(point.x, point.y); if (at === 0) context.moveTo(s.sx, s.sy); else context.lineTo(s.sx, s.sy); });
+    context.closePath();
   }
-  for (const [base, group] of byBase) {
+  if (part.parity) { context.moveTo(box.left, box.top); context.lineTo(box.right, box.top); context.lineTo(box.right, box.bottom); context.lineTo(box.left, box.bottom); context.closePath(); }
+}
+
+/** 1. The land fills over the chunk's grass diamonds and season grass, clipped off its rock tiles. Returns the fill passes. */
+export function drawLandFills(context: CanvasRenderingContext2D, land: LandGround, plan: GroundChunkPlan, tiles: readonly Tile[], box: ScreenBox, season: SeasonIndex): number {
+  const parts = chunkRegions(land, plan);
+  if (parts.length === 0) return 0;
+  const rock = tiles.filter(tile => tile.terrain === "rock");
+  const bounds = chunkTileBounds(plan.cx, plan.cy);
+  let passes = 0;
+  for (const part of parts) {
     for (const variant of ["a", "b"] as const) {
-      const image = art.art(fillArtKey(base, season, variant));
+      const image = art.art(fillArtKey(part.region.base, season, variant));
       const pattern = image === null ? null : patternOf(context, image);
       if (pattern === null) continue;
-      // Pattern px (u, v) -> tile (u / 128 - 0.5, v / 64 - 0.5) -> iso screen.
+      // Pattern px (u, v) -> tile (u / 128 - 0.5, v / 64 - 0.5) -> iso screen: 2 x 2 tiles per repeat, origin on a block corner.
       pattern.setTransform({ a: 0.25, b: 0.125, c: -0.5, d: 0.25, e: 0, f: -TILE_H / 2 });
-      context.beginPath();
-      for (const tile of group) if (variant === "a" || fillVariant(land.seed, tile.tx, tile.ty) === "b") traceDiamond(context, tile);
-      context.fillStyle = pattern;
-      context.fill();
+      context.save();
+      if (rock.length > 0) {
+        context.beginPath();
+        context.moveTo(box.left, box.top); context.lineTo(box.right, box.top); context.lineTo(box.right, box.bottom); context.lineTo(box.left, box.bottom); context.closePath();
+        for (const tile of rock) traceDiamond(context, tile);
+        context.clip("evenodd");
+      }
+      traceRegion(context, part, box);
+      if (variant === "b") {
+        // The b blocks inside the region: the region as the clip, then the blocks' 2 x 2 diamonds.
+        context.clip("evenodd");
+        context.beginPath();
+        for (let by = Math.floor((bounds.top - 1) / 2); by <= Math.ceil((bounds.bottom + 1) / 2); by += 1) {
+          for (let bx = Math.floor((bounds.left - 1) / 2); bx <= Math.ceil((bounds.right + 1) / 2); bx += 1) {
+            if (fillVariant(land.seed, bx * 2, by * 2) === "b") traceBlock(context, bx, by);
+          }
+        }
+        context.fillStyle = pattern;
+        context.fill();
+      } else {
+        context.fillStyle = pattern;
+        context.fill("evenodd");
+      }
+      context.restore();
+      passes += 1;
     }
   }
+  return passes;
+}
+
+function traceBlock(context: CanvasRenderingContext2D, bx: number, by: number): void {
+  const corners = [[bx * 2 - 0.5, by * 2 - 0.5], [bx * 2 + 1.5, by * 2 - 0.5], [bx * 2 + 1.5, by * 2 + 1.5], [bx * 2 - 0.5, by * 2 + 1.5]] as const;
+  corners.forEach(([x, y], at) => { const s = tileToScreen(x, y); if (at === 0) context.moveTo(s.sx, s.sy); else context.lineTo(s.sx, s.sy); });
+  context.closePath();
 }
 
 const joined = new Map<StripFamily, CanvasImageSource>();
@@ -131,38 +171,65 @@ function fillStripQuad(context: CanvasRenderingContext2D, pattern: CanvasPattern
   context.fill();
 }
 
-/** 2. Transition strips on the tile edges where a land fill meets the meadow or the heath. */
-export function drawLandEdges(context: CanvasRenderingContext2D, land: LandGround, tiles: readonly Tile[]): number {
+/** 2. Transition strips along the fill regions' smoothed outlines, where a fill meets the meadow or the heath. */
+export function drawLandEdges(context: CanvasRenderingContext2D, land: LandGround, plan: GroundChunkPlan): number {
+  const bounds = chunkTileBounds(plan.cx, plan.cy);
   let quads = 0;
-  for (const tile of tiles) {
-    const index = tile.ty * land.width + tile.tx;
-    const band = stripFamily(land.keys[land.band[index]!]);
-    if (band === null || isWaterStrip(band)) continue;
-    const own = land.fill[index]!;
-    for (const [dx, dy] of NEIGHBOURS) {
-      const x = tile.tx + dx, y = tile.ty + dy;
-      if (x < 0 || y < 0 || x >= land.width || y >= land.height) continue;
-      const other = land.fill[y * land.width + x]!;
-      if (other === 0 || other === own) continue;
-      // The named side (the strip's bottom): the land fill against the meadow, the heath against the chalk.
-      const ownBase = land.fillBase[own] ?? null; const otherBase = land.fillBase[other] ?? null;
-      const named = otherBase === "heath" || ownBase === null ? otherBase : ownBase;
-      if (named !== ownBase || named === null) continue;
-      const family = EDGE_OF[named];
-      const image = family === undefined ? null : stripImage(family);
-      const pattern = image === null ? null : patternOf(context, image);
-      if (pattern === null) continue;
-      const t = { x: dy === 0 ? 0 : 1, y: dy === 0 ? 1 : 0 };
-      const inward = { x: -dx, y: -dy };
-      const mid = { x: tile.tx + dx / 2, y: tile.ty + dy / 2 };
-      const half = EDGE_HEIGHT / 2 / PX_PER_TILE;
-      const corner = (along: number, across: number): Vec => ({ x: mid.x + t.x * along + inward.x * across, y: mid.y + t.y * along + inward.y * across });
-      // u from the map coordinate along the edge; v = 0 on the meadow side, 32 on the edge line.
-      const origin = { x: t.x === 0 ? mid.x - inward.x * half : 0, y: t.y === 0 ? mid.y - inward.y * half : 0 };
-      fillStripQuad(context, pattern, [corner(-0.5, -half), corner(0.5, -half), corner(0.5, half), corner(-0.5, half)], origin,
-        { x: t.x / PX_PER_TILE, y: t.y / PX_PER_TILE }, { x: inward.x / PX_PER_TILE, y: inward.y / PX_PER_TILE });
-      quads += 1;
+  for (const part of chunkRegions(land, plan)) {
+    for (const index of part.loops) {
+      const loop = part.region.loops[index];
+      if (loop === undefined) continue;
+      // The inside (the named ground, the strip's bottom) lies left of travel (y down), so the top (the meadow) along
+      // the right normal (-t.y, t.x).
+      quads += drawLineStrip(context, loop.smoothed, loop.strips, bounds, EDGE_HEIGHT / 2, EDGE_HEIGHT / 2, 1);
     }
+  }
+  return quads;
+}
+
+/**
+ * Lays X-repeating strips along a closed smoothed line, one quad per segment whose family is set: texture u = arc length
+ * (128 px per tile), v across with row `line` on the line, `above` rows to the top side and `below` to the bottom side;
+ * `side` +1 when the top lies along the normal (-t.y, t.x), -1 along (t.y, -t.x).
+ */
+function drawLineStrip(context: CanvasRenderingContext2D, line: readonly Vec[], families: readonly (StripFamily | null)[], bounds: BoundaryBounds,
+  above: number, below: number, side: 1 | -1, skip?: (index: number) => boolean): number {
+  const count = line.length;
+  const topNormal = (index: number): Vec => {
+    const a = line[index % count] as Vec; const b = line[(index + 1) % count] as Vec;
+    const length = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+    return { x: -(b.y - a.y) / length * side, y: (b.x - a.x) / length * side };
+  };
+  const vertexNormal = (index: number): Vec => {
+    const p = topNormal((index - 1 + count) % count); const q = topNormal(index);
+    const length = Math.hypot(p.x + q.x, p.y + q.y) || 1;
+    return { x: (p.x + q.x) / length, y: (p.y + q.y) / length };
+  };
+  const up = (above - 1) / PX_PER_TILE; const down = (below - 1) / PX_PER_TILE;
+  let quads = 0; let arc = 0;
+  for (let index = 0; index < count; index += 1) {
+    const a = line[index] as Vec; const b = line[(index + 1) % count] as Vec;
+    const length = Math.hypot(b.x - a.x, b.y - a.y);
+    const start = arc; arc += length;
+    const family = families[index] ?? null;
+    if (length === 0 || family === null || skip?.(index) === true) continue;
+    if (Math.max(a.x, b.x) < bounds.left - 1.5 || Math.min(a.x, b.x) > bounds.right + 1.5
+      || Math.max(a.y, b.y) < bounds.top - 1.5 || Math.min(a.y, b.y) > bounds.bottom + 1.5) continue;
+    const image = stripImage(family);
+    const pattern = image === null ? null : patternOf(context, image);
+    if (pattern === null) continue;
+    const t = { x: (b.x - a.x) / length, y: (b.y - a.y) / length };
+    const na = vertexNormal(index); const nb = vertexNormal(index + 1); const n = topNormal(index);
+    const a0 = { x: a.x - t.x * 0.01, y: a.y - t.y * 0.01 }; const b0 = { x: b.x + t.x * 0.01, y: b.y + t.y * 0.01 };
+    // Texture (u, v) -> tile: a + t (u - u0) / 128 - n (v - above) / 128 (the top side up).
+    const u0 = (start * PX_PER_TILE) % (STRIP_WIDTH * 2);
+    const uAxis = { x: t.x / PX_PER_TILE, y: t.y / PX_PER_TILE }; const vAxis = { x: -n.x / PX_PER_TILE, y: -n.y / PX_PER_TILE };
+    const origin = { x: a.x - uAxis.x * u0 - vAxis.x * above, y: a.y - uAxis.y * u0 - vAxis.y * above };
+    fillStripQuad(context, pattern, [
+      { x: a0.x + na.x * up, y: a0.y + na.y * up }, { x: b0.x + nb.x * up, y: b0.y + nb.y * up },
+      { x: b0.x - nb.x * down, y: b0.y - nb.y * down }, { x: a0.x - na.x * down, y: a0.y - na.y * down },
+    ], origin, uAxis, vAxis);
+    quads += 1;
   }
   return quads;
 }
@@ -175,43 +242,9 @@ export function drawLandShoreStrips(context: CanvasRenderingContext2D, land: Lan
     const strips = loopStrips(land, shore, loopIndex);
     const loop = shore.loops[loopIndex];
     if (strips === null || loop === undefined) continue;
-    const line = loop.smoothed; const count = line.length;
-    const landHalf = (WATERLINE_ROW - 1) / PX_PER_TILE; const waterHalf = (WATER_STRIP_HEIGHT - 2 - WATERLINE_ROW) / PX_PER_TILE;
-    const segmentNormal = (index: number): Vec => {
-      const a = line[index % count] as Vec; const b = line[(index + 1) % count] as Vec;
-      const length = Math.hypot(b.x - a.x, b.y - a.y) || 1;
-      return { x: -(b.y - a.y) / length * loop.landSide, y: (b.x - a.x) / length * loop.landSide };
-    };
-    const vertexNormal = (index: number): Vec => {
-      const p = segmentNormal((index - 1 + count) % count); const q = segmentNormal(index);
-      const length = Math.hypot(p.x + q.x, p.y + q.y) || 1;
-      return { x: (p.x + q.x) / length, y: (p.y + q.y) / length };
-    };
-    let arc = 0;
-    for (let index = 0; index < count; index += 1) {
-      const a = line[index] as Vec; const b = line[(index + 1) % count] as Vec;
-      const length = Math.hypot(b.x - a.x, b.y - a.y);
-      const start = arc; arc += length;
-      if (length === 0) continue;
-      if (wallStrips && loop.walled[index] === true && loop.walled[(index + 1) % count] === true) continue;
-      if (Math.max(a.x, b.x) < tileBounds.left - 1.5 || Math.min(a.x, b.x) > tileBounds.right + 1.5
-        || Math.max(a.y, b.y) < tileBounds.top - 1.5 || Math.min(a.y, b.y) > tileBounds.bottom + 1.5) continue;
-      const image = stripImage(strips[index]!);
-      const pattern = image === null ? null : patternOf(context, image);
-      if (pattern === null) continue;
-      const t = { x: (b.x - a.x) / length, y: (b.y - a.y) / length };
-      const na = vertexNormal(index); const nb = vertexNormal(index + 1); const n = segmentNormal(index);
-      const a0 = { x: a.x - t.x * 0.01, y: a.y - t.y * 0.01 }; const b0 = { x: b.x + t.x * 0.01, y: b.y + t.y * 0.01 };
-      // Texture (u, v) -> tile: a + t (u - u0) / 128 - n (v - WATERLINE_ROW) / 128 (land up, as the old strip).
-      const u0 = (start * PX_PER_TILE) % (STRIP_WIDTH * 2);
-      const uAxis = { x: t.x / PX_PER_TILE, y: t.y / PX_PER_TILE }; const vAxis = { x: -n.x / PX_PER_TILE, y: -n.y / PX_PER_TILE };
-      const origin = { x: a.x - uAxis.x * u0 - vAxis.x * WATERLINE_ROW, y: a.y - uAxis.y * u0 - vAxis.y * WATERLINE_ROW };
-      fillStripQuad(context, pattern, [
-        { x: a0.x + na.x * landHalf, y: a0.y + na.y * landHalf }, { x: b0.x + nb.x * landHalf, y: b0.y + nb.y * landHalf },
-        { x: b0.x - nb.x * waterHalf, y: b0.y - nb.y * waterHalf }, { x: a0.x - na.x * waterHalf, y: a0.y - na.y * waterHalf },
-      ], origin, uAxis, vAxis);
-      quads += 1;
-    }
+    // Along a wall standing on the water the wall face is the edge (as the old strip, D3b).
+    const walled = (index: number) => wallStrips && loop.walled[index] === true && loop.walled[(index + 1) % loop.walled.length] === true;
+    quads += drawLineStrip(context, loop.smoothed, strips, tileBounds, WATERLINE_ROW, WATER_STRIP_HEIGHT - WATERLINE_ROW - 1, loop.landSide, walled);
   }
   return quads;
 }

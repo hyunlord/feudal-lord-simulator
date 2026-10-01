@@ -9,6 +9,7 @@ import type { Tile } from "../world/world.types";
 import { GROUND_CHUNK_TILES, TILE_RING, type GroundChunkPlan } from "./groundSceneParts";
 import type { SeasonIndex } from "./seasonArt";
 import { WAVE22_GROUND_IMAGES, type Wave22GroundKey } from "./wave22GroundManifest.generated";
+import { chunkRegions, type ChunkRegion, type FillRegion } from "./archetypeGroundRegions";
 
 // LAND-UI: the land's ground layer (world/archetypeGround.ts, MA-5) as the ground chunks draw it (archetypeGroundDraw.ts).
 // The riverside town (`core:open_field`) has none: its layer is all meadow with no decals, so it never enters this code
@@ -39,6 +40,10 @@ export type LandGround = {
   /** Per scene shoreline, per chunk: `chunkHash`. */
   readonly chunkHashes: WeakMap<Shoreline, Map<number, number>>;
   readonly loopStrips: WeakMap<Shoreline, Map<number, readonly StripFamily[] | null>>;
+  /** Per tile: 1 where `state.drainage.drained` has it. */
+  readonly drained: Uint8Array;
+  /** The fill regions and their per-chunk view (archetypeGroundRegions.ts), made on first use. */
+  readonly cache: { regions?: readonly FillRegion[]; readonly chunks: Map<number, readonly ChunkRegion[]> };
 };
 
 /** The X-repeating strip families, each drawn as its a | b pair joined into one repeat. */
@@ -66,14 +71,16 @@ export function landGroundOf(state: GameState): LandGround | null {
   const layer = archetypeGroundLayer(archetype, state.tiles.map(tile => tile.terrain), state.width, state.height, state.seed);
   const fill = Uint8Array.from(layer.fill); const band = Uint8Array.from(layer.band); const decal = Uint8Array.from(layer.decal);
   const meadow = layer.keys.indexOf("terrain/grass");
+  const drainedCells = new Uint8Array(fill.length);
   for (const cell of drained ?? []) {
     if (cell < 0 || cell >= fill.length) continue;
+    drainedCells[cell] = 1;
     if (fill[cell] !== 0) fill[cell] = meadow;
     band[cell] = 0; decal[cell] = 0;
   }
   const fillBase = layer.keys.map(name => (name.startsWith("terrain/") && name !== "terrain/grass" ? name.slice("terrain/".length) : null));
   const land: LandGround = { id: archetype.id, seed: state.seed, width: state.width, height: state.height, keys: layer.keys, fill, band, decal, fillBase,
-    chunkHashes: new WeakMap(), loopStrips: new WeakMap() };
+    chunkHashes: new WeakMap(), loopStrips: new WeakMap(), drained: drainedCells, cache: { chunks: new Map() } };
   last = { key, land };
   return land;
 }
@@ -124,7 +131,10 @@ export function landArtKeys(land: LandGround, season: SeasonIndex): readonly Wav
   return [...keys].sort();
 }
 
-/** The land's tiles a chunk draws: the chunk and a TILE_RING ring (props rise ~1.5 tiles over their anchor). */
+/**
+ * What a chunk draws of the layer: its tiles and a TILE_RING ring (props rise ~1.5 tiles over their anchor), the fill
+ * regions' loops that reach it (and its parity), and its shore loops' strips.
+ */
 export function chunkHash(land: LandGround, plan: GroundChunkPlan, shore: Shoreline): number {
   const id = plan.cy * 4096 + plan.cx;
   let byChunk = land.chunkHashes.get(shore);
@@ -139,6 +149,7 @@ export function chunkHash(land: LandGround, plan: GroundChunkPlan, shore: Shorel
       values.push(land.fill[index]! | (land.band[index]! << 8) | (land.decal[index]! << 16));
     }
   }
+  for (const { region, loops, parity } of chunkRegions(land, plan)) values.push(-3, region.base.length, parity ? 1 : 0, ...loops.map(index => region.loops[index]?.hash ?? 0));
   for (const loop of plan.waterLoops) {
     const strips = loopStrips(land, shore, loop);
     values.push(-2, loop, ...(strips ?? []).map(family => STRIP_FAMILIES.indexOf(family)));
