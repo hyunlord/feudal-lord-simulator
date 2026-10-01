@@ -6,6 +6,8 @@ import { EMPTY_HISTORY } from "../src/engine/history";
 import type { HistoryRecord } from "../src/engine/history.types";
 import type { SeasonLedger } from "../src/engine/season.types";
 import { seasonJustClosed, seasonLedgerCardModel } from "../src/ui/seasonLedgerCard";
+import { moneyBoxDelta } from "../src/ui/money.ko";
+import { sceneBoxCount } from "../src/ui/seasonLedgerCopy.ko";
 import { recordScene, seasonLedgerScenes } from "../src/ui/seasonLedgerScenes";
 import { WAVE19_IMAGES } from "../src/ui/wave19ArtManifest.generated";
 
@@ -95,4 +97,15 @@ test("INSTALL-3b ③: the population line gives the head count, then the season'
   assert.equal(card([ledger(0, { popDelta: 0 }), ledger(1_000, { popDelta: 0 })]).lines[1], "인구 466명 (이번 계절 ±0 · 지난 계절 ±0)");
   assert.equal(card([ledger(0, { popDelta: -4 }), ledger(1_000, { popDelta: 12 })]).lines[1], "인구 466명 (이번 계절 +12 · 지난 계절 −4)");
   assert.equal(card([ledger(0, { popDelta: 3 })]).lines[1], "인구 466명 (이번 계절 +3)");
+});
+
+test("Given scene numbers too long for the printed box When formatted for it Then counts over 9,999 read in 만 and money in pounds alone, the exact figure kept (UIAUDIT-R15-D1)", () => {
+  // R15: the box holds ~34 px beside its icon; "+200179" (49.6 px) and "+£12 3s" (44 px) ran into the next box.
+  assert.deepEqual([200_179, 9_999, 10_000, -54_321, 0, 253].map(sceneBoxCount), ["+20만", "+9999", "+1만", "−5만", "±0", "+253"]);
+  assert.deepEqual([12 * 240 + 3 * 12 + 5, -(3 * 240), 5 * 12 + 4, 7, 0, 41_666 * 240, -(12_345 * 240)].map(moneyBoxDelta),
+    ["+£12", "−£3", "+5s", "+7d", "±0d", "+£4만", "−£1만"]);
+  const closed = ledger(1_000, { popDelta: 3, stockDelta: { bread: 200_179, wheat: 0, timber: 0, stone: 0 } });
+  const scenes = seasonLedgerScenes(stateWith([], [closed]), closed, undefined);
+  assert.deepEqual(scenes.find(scene => scene.id === "bread_reserve"), { id: "bread_reserve", value: "+200179", box: "+20만" });
+  assert.deepEqual(scenes.find(scene => scene.id === "population_up"), { id: "population_up", value: "+3" });
 });

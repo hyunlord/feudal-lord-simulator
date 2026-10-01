@@ -22,7 +22,7 @@ export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }
         <ol className="season-ledger-scenes" aria-label={SEASON_LEDGER_COPY.label}>
           {model.scenes.map(scene => <li key={scene.id} className="season-ledger-scene" data-scene={scene.id}>
             <span className="season-ledger-scene-icon" role="img" aria-label={scene.name} style={seasonSceneStyle(scene.id, SCENE_ICON_PX)} />
-            {scene.value === null ? null : <strong>{scene.value}</strong>}</li>)}
+            {scene.box === null ? null : <strong>{scene.box}</strong>}</li>)}
         </ol>
         <div className="season-ledger-body">
           {/* INSTALL-3: the card's own controls (계속, the auto toggle) stay pinned below the season's lines. */}

@@ -4,7 +4,8 @@ import type { GameState } from "../engine/engine.types";
 import { history } from "../engine/history";
 import type { HistoryRecord } from "../engine/history.types";
 import type { SeasonLedger } from "../engine/season.types";
-import { SEASON_LEDGER_COPY } from "./seasonLedgerCopy.ko";
+import { moneyBoxDelta } from "./money.ko";
+import { SEASON_LEDGER_COPY, sceneBoxCount } from "./seasonLedgerCopy.ko";
 import type { WAVE19_IMAGES } from "./wave19ArtManifest.generated";
 
 // UI-4b: the season ledger card's three scenes are the season's three biggest changes, read from the F0-C2 history
@@ -15,7 +16,10 @@ import type { WAVE19_IMAGES } from "./wave19ArtManifest.generated";
 // from the season's numbers (population, bread, wheat, timber, stone, money), weighted as UI-3 weighed them.
 type Scene<K> = K extends `scene_${infer Id}` ? Id : never;
 export type SeasonSceneId = Scene<keyof typeof WAVE19_IMAGES>;
-export type SeasonScene = { readonly id: SeasonSceneId; readonly value: string | null };
+/** `value`: the scene's exact figure (the scenes line); `box`: its short form where the exact one would not fit the printed
+ * scene box (about four characters beside the icon; UIAUDIT-R15-D1) — absent when the two are the same. */
+export type SeasonScene = { readonly id: SeasonSceneId; readonly value: string | null; readonly box?: string };
+const withBox = (id: SeasonSceneId, value: string | null, box: string | null): SeasonScene => box === null || box === value ? { id, value } : { id, value, box };
 
 const EVENT_SCENE = (defId: string): SeasonSceneId =>
   defId === GREAT_FAMINE_EVENT_ID ? "great_famine" : defId === DEARTH_REHEARSAL_EVENT_ID ? "poor_harvest" : "fire";
@@ -69,6 +73,11 @@ function recordValue(record: HistoryRecord, templates: ReadonlyMap<string, numbe
   }
 }
 
+/** The short form for a scene box where it differs (a money turn: the pounds alone). */
+function recordBox(record: HistoryRecord): string | null {
+  return record.template === "ledger.treasury_turn" ? moneyBoxDelta(Math.round(Number(record.params?.["net"] ?? 0))) : null;
+}
+
 /** How much a change of one unit weighs among the numbers (people count more than a sack; UI-3). */
 const NUMBER_WEIGHT = { population: 10, bread: 1, wheat: 1, timber: 1, stone: 1, coin: 1 } as const;
 /**
@@ -81,7 +90,10 @@ function numberScenes(ledger: SeasonLedger, buildings: readonly Pick<Building, "
   const copy = SEASON_LEDGER_COPY; const scenes: (SeasonScene & { weight: number })[] = [];
   const add = (delta: number, key: keyof typeof NUMBER_WEIGHT, up: SeasonSceneId | null, down: SeasonSceneId | null) => {
     const id = delta > 0 ? up : delta < 0 ? down : null;
-    if (id !== null) scenes.push({ id, value: key === "coin" ? copy.moneyDelta(Math.round(delta)) : copy.signed(Math.round(delta)), weight: Math.abs(delta) * NUMBER_WEIGHT[key] });
+    if (id === null) return;
+    const value = key === "coin" ? copy.moneyDelta(Math.round(delta)) : copy.signed(Math.round(delta));
+    const box = key === "coin" ? moneyBoxDelta(Math.round(delta)) : sceneBoxCount(Math.round(delta));
+    scenes.push({ ...withBox(id, value, box), weight: Math.abs(delta) * NUMBER_WEIGHT[key] });
   };
   const grinds = buildings.some(building => building.kind === "mill" && !operationSuspended(building));
   const market = buildings.some(building => building.kind === "market");
@@ -109,8 +121,8 @@ export function seasonLedgerScenes(state: Pick<GameState, "history"> & Partial<P
   const seen = new Set<SeasonSceneId>();
   for (const { record, id } of records) {
     if (seen.has(id)) continue;
-    seen.add(id); scenes.push({ id, value: recordValue(record, templates) });
+    seen.add(id); scenes.push(withBox(id, recordValue(record, templates), recordBox(record)));
   }
-  for (const scene of numberScenes(ledger, state.buildings ?? [])) if (!seen.has(scene.id)) { seen.add(scene.id); scenes.push({ id: scene.id, value: scene.value }); }
+  for (const scene of numberScenes(ledger, state.buildings ?? [])) if (!seen.has(scene.id)) { seen.add(scene.id); scenes.push(withBox(scene.id, scene.value, scene.box ?? null)); }
   return scenes.slice(0, SEASON_SCENES);
 }
