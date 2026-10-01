@@ -184,6 +184,8 @@ export interface GameState {
   readonly diplomacy?: import("./diplomacy.types").DiplomacyState;
   /** LM-E4 (SW-1…SW-9, save v42): the oversight of the estates the lord holds off the map — absent until he holds one. */
   readonly stewardship?: import("./stewardship.types").StewardshipState;
+  /** LM-E5 (LG-3, save v43): the land's own changes — footfall, footpaths, fallow cells (absent until the first season). */
+  readonly land?: import("./land").LandState;
   /** C4 AL-10 (FIX-7, save v25): the town's ale counted this season and the last. Absent until the first brew or drink. */
   readonly ale?: import("./ale.types").AleState;
   /** F3-A the Black Death of 1348 (save v26, spec PL-1…PL-11). Absent until the collapse era. */

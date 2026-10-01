@@ -15,6 +15,18 @@ export type ReasonName = "need" | "access" | "cost" | "policy" | "subsidy" | "du
 
 export interface Reason { readonly name: ReasonName; readonly value: number }
 
+/** LM-E5 (LG-2): how an actor chooses — mostly the best (cautious) or often the next (bold); from the game seed. */
+export type Temperament = "cautious" | "bold";
+
+/** LM-E5 (LG-2): a choice made by chance — the chosen option's probability (permille) among how many, by which temperament. */
+export interface ChoiceChance {
+  readonly permille: number;
+  readonly of: number;
+  readonly temperament: Temperament;
+  /** The chosen option's place among them by score (1 = the best). */
+  readonly place: number;
+}
+
 export interface AgencyActor {
   readonly kind: ActorKind;
   /** Pennies the actor holds for building. */
@@ -55,6 +67,8 @@ export interface ProjectReceipt {
   readonly decisionIds: readonly string[];
   /** TA-10: the sites compared (absent on receipts before v37, and on roads, zones and house works: one site). */
   readonly sites?: ReceiptSites;
+  /** LM-E5 (LG-2): chosen by chance — the project among the week's, and its site among its sites (absent before v43). */
+  readonly chance?: { readonly project: ChoiceChance; readonly site?: ChoiceChance };
 }
 
 /** TA-10: the candidate sites of a building project — how many, the plan's own, the chosen one's and the next best's. */

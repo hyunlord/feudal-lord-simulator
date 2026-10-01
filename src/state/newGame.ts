@@ -1,7 +1,9 @@
 /**
  * ARCH-1 (spec docs/design/map-archetypes.md MA-6): a new game on a chosen land — the engine's half of the start
- * screen's choice (the picker itself is render's). The riverside town is today's map (seed 1, `DEFAULT_GAME_STATE`);
- * a new land draws its map from (land, seed) and stamps the same opening village on its town site (MA-2 ②).
+ * screen's choice (the picker itself is render's). A new land draws its map from (land, seed) and stamps the same
+ * opening village on its town site (MA-2 ②). LM-E5 (LG-1): the riverside town too — seed 1 is today's map
+ * (`DEFAULT_GAME_STATE`), any other seed its own river, woods and fields with the village on its nearest legal site; a
+ * new game draws its seed at random (`randomNewGameSeed`), shows it and can be started again from it.
  */
 import { SCENARIOS, archetypeById } from "../content/scenario/registry";
 import type { ArchetypeDef } from "../content/scenario/types";
@@ -10,12 +12,29 @@ import { buildArchetypeWorld } from "../world/archetypeTerrain";
 import { DEFAULT_GAME_STATE } from "./gameStore";
 import { applyOpeningVillageToTile, placeManorSite } from "./openingVillage";
 import { initialAgency } from "../engine/townAgency";
+import { InvalidGrowthOpeningError, seededOpening } from "./growthOpening";
+
+/** LG-1: the seeds a new game draws from (six digits at most, so a player can read and type one). */
+export const NEW_GAME_SEED_MAX = 999_999;
+
+/**
+ * LG-1 API: a new game's seed, drawn at random (the only randomness outside a game's own seed; `random` is injectable
+ * for tests) — one whose map has a game (`newGameState` not null), else the next seed.
+ */
+export function randomNewGameSeed(options: Omit<NewGameOptions, "seed">, random: () => number = Math.random): number {
+  const first = 1 + Math.floor(random() * NEW_GAME_SEED_MAX);
+  for (let step = 0; step < NEW_GAME_SEED_MAX; step += 1) {
+    const seed = 1 + (first - 1 + step) % NEW_GAME_SEED_MAX;
+    if (newGameState({ ...options, seed }) !== null) return seed;
+  }
+  return DEFAULT_GAME_STATE.seed;
+}
 
 export interface NewGameOptions {
   readonly scenarioId: string;
   /** The land (`namespace:id`); absent = the scenario's own (the riverside town). */
   readonly archetypeId?: string;
-  /** The map's seed, a whole number from 1; the riverside town's map is seed 1 only. */
+  /** The map's seed, a whole number from 1 (the same seed, the same game). */
   readonly seed?: number;
   /**
    * LM-E1 (TA-1): "lord" — the town builds itself (the town agency) and the player sets its conditions; "sandbox"
@@ -43,7 +62,14 @@ function openingState(options: NewGameOptions): GameState | null {
   const seed = options.seed ?? DEFAULT_GAME_STATE.seed;
   if (archetype === undefined || !Number.isInteger(seed) || seed < 1) return null;
   if (archetype.terrain.kind === "river") {
-    return seed === DEFAULT_GAME_STATE.seed ? placeManorSite({ ...structuredClone(DEFAULT_GAME_STATE), scenarioId: options.scenarioId }) : null;
+    if (seed === DEFAULT_GAME_STATE.seed) return placeManorSite({ ...structuredClone(DEFAULT_GAME_STATE), scenarioId: options.scenarioId });
+    // LM-E5 (LG-1): another seed's own riverside map (a map with no legal site for the village has no game).
+    try {
+      return { ...seededOpening(seed).state, scenarioId: options.scenarioId };
+    } catch (error) {
+      if (error instanceof InvalidGrowthOpeningError) return null;
+      throw error;
+    }
   }
   const { width, height } = DEFAULT_GAME_STATE;
   const world = buildArchetypeWorld(archetype, { width, height, seed });

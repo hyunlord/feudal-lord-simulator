@@ -52,6 +52,13 @@ export const ROAD_TILE_PENNIES = 1;
 export const LOAN_NEED = 70;
 /** TA-5: a proposal is started when its score reaches this and its actor can pay. */
 export const START_SCORE = 40;
+/**
+ * LM-E5 (LG-2): an actor chooses by chance, not always the best: a choice's weight is exp((score − best) / spread),
+ * the spread its temperament's (a cautious actor mostly takes the best, a bold one often the next). The draw is the
+ * game seed's, so the same seed makes the same choices. Only the alternatives within `CHOICE_SPAN` of the best count.
+ */
+export const TEMPERAMENT_SPREAD = { cautious: 3, bold: 8 } as const;
+export const CHOICE_SPAN = 20;
 /** TA-5: projects started each week, at most, and construction sites the town keeps open, at most. */
 export const STARTS_PER_WEEK = 2;
 export const OPEN_SITES_MAX = 4;
