@@ -125,16 +125,13 @@ test("Given a town When the object queue is built Then village life joins it by 
   assert.deepEqual(life.map(item => item.id).sort(), items.map(item => item.id).sort());
   for (let index = 1; index < queue.length; index += 1) assert.ok(queue[index - 1]!.depth <= queue[index]!.depth, "sorted by depth");
   assert.ok(life.filter(item => item.life.motion === "flight").every(item => item.depth >= FLYING_DEPTH));
-  // AGENTS rule 10: the town scan once, then cached per state arrays and season.
+  // AGENTS rule 10: the town scan once, then cached per state arrays and season. Checked by identity, not by timing
+  // the two calls (a wall-clock comparison fails on a loaded machine: docs/verification/wall-clock-tests.md).
   const fresh = structuredClone(inSeason(load("palisade-construction"), 1)) as GameState;
-  const started = performance.now();
-  villageLife(fresh, { range: full(fresh) });
-  const scanMs = performance.now() - started;
-  const cachedStart = performance.now();
-  villageLife(fresh, { range: full(fresh) });
-  const cachedMs = performance.now() - cachedStart;
-  console.log(`village life: town scan ${scanMs.toFixed(2)} ms, cached ${cachedMs.toFixed(4)} ms (24-house fixture, ${fresh.persons?.people.length ?? 0} people)`);
-  assert.ok(cachedMs <= scanMs);
+  const scanned = villageLife(fresh, { range: full(fresh) });
+  assert.equal(villageLife(fresh, { range: full(fresh) }), scanned, "the same state and view: the cached items");
+  assert.equal(villageLife({ ...fresh }, { range: full(fresh) }), scanned, "a new state object over the same arrays: still cached");
+  assert.notEqual(villageLife({ ...fresh, houses: [...fresh.houses] }, { range: full(fresh) }), scanned, "a new houses array: scanned again");
 });
 
 test("Given the zoom When village life is drawn Then above block detail it draws all but the toys (from 1.35), blocks none (NAT-2: 0.6 by the same rules)", () => {

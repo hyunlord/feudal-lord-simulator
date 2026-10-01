@@ -18,7 +18,8 @@ const INFO = [["otherCpu", "다른 일 CPU(DGX 전체 코어 중)"], ["scriptMsP
   ["heapAllocKBPerTick", "JS 할당 KB/틱(참고)"], ["canvasPer1kTicks", "캔버스 생성/1천 틱(참고)"], ["bitmapPerSec", "비트맵/초(참고)"], ["getImageDataPerSec", "getImageData/초(참고)"],
   ["heapEndMB", "JS 힙 끝 MB(참고, GC 톱니 위 한 점)"], ["p95", "p95 ms(DGX, 참고)"], ["over33PerMin", "33 ms 초과/분(DGX, 참고)"]] as const;
 
-interface Row { commit: string; subject: string; committed: string; measured: string; scenes: Record<string, { runs: number; medians: Record<string, number | null>; values?: Record<string, number[]> }> }
+interface CodeBudgets { budgets: Record<string, { label: string; budgetMs: number; values: number[]; median: number | null }>; otherCpu: number[] }
+interface Row { commit: string; subject: string; committed: string; measured: string; scenes: Record<string, { runs: number; medians: Record<string, number | null>; values?: Record<string, number[]> }>; codeBudgets?: CodeBudgets }
 
 
 function main() {
@@ -77,9 +78,31 @@ function main() {
     }
     lines.push(...out, "");
   }
+  // The code budgets moved out of the regression tests (docs/verification/wall-clock-tests.md): reference only, beside the load.
+  const budgeted = ordered.filter(row => row.codeBudgets !== undefined);
+  const budgetIds = [...new Set(budgeted.flatMap(row => Object.keys(row.codeBudgets!.budgets)))];
+  const overBudget: string[] = [];
+  if (budgetIds.length > 0) {
+    const first = budgeted[0]!.codeBudgets!.budgets;
+    lines.push("## 코드 시간 예산(회귀 시험에서 옮김, 참고)", "",
+      "벽시계 예산이라 DGX가 바쁘면 회귀 시험을 떨어뜨렸다(`docs/verification/wall-clock-tests.md`). 그 시험들은 이제 결과만 보고, 시간은 커밋마다 여기에 적는다(세 번의 중앙값 ms, 괄호는 예산). 예산을 넘은 칸은 \"예산 넘음\"이다. 다른 일 CPU가 높으면 기계 탓일 수 있다.", "",
+      `| 커밋 | ${budgetIds.map(id => `${first[id]?.label ?? id}(${first[id]?.budgetMs ?? "?"})`).join(" | ")} | 다른 일 CPU |`, `|---|${budgetIds.map(() => "---:").join("|")}|---:|`);
+    for (const row of [...budgeted].reverse()) {
+      const budgets = row.codeBudgets!.budgets;
+      const cells = budgetIds.map(id => {
+        const entry = budgets[id]; if (entry === undefined || entry.median === null) return "-";
+        if (entry.median > entry.budgetMs) { overBudget.push(`${row.commit.slice(0, 8)} ${id} ${entry.median} ms > ${entry.budgetMs}`); return `${entry.median} **예산 넘음**`; }
+        return String(entry.median);
+      });
+      const cpu = row.codeBudgets!.otherCpu;
+      lines.push(`| \`${row.commit.slice(0, 8)}\` | ${cells.join(" | ")} | ${cpu.length === 0 ? "-" : Math.max(...cpu)} |`);
+    }
+    lines.push("");
+  }
   if (offTrunk.length > 0) lines.push("## 본선 밖에서 잰 커밋", "", ...offTrunk.map(row => `- \`${row.commit.slice(0, 8)}\` ${row.subject.slice(0, 80)} (${row.measured.slice(0, 16)})`), "");
   lines.splice(10, 0, flagged.length === 0 ? "**지금 나빠진 지표(A-B 확정): 없음.**" : `**나빠진 지표 ${flagged.length}개(A-B 확정):** ${flagged.map(entry => `\`${entry}\``).join(" · ")}`, "",
     pending.length === 0 ? "A-B를 기다리는 의심: 없음." : `A-B를 기다리는 의심 ${pending.length}개: ${pending.map(entry => `\`${entry}\``).join(" · ")}`, "",
+    overBudget.length === 0 ? "코드 시간 예산을 넘은 칸(참고): 없음." : `코드 시간 예산을 넘은 칸(참고) ${overBudget.length}개: ${overBudget.map(entry => `\`${entry}\``).join(" · ")}`, "",
     cleared.length === 0 ? "A-B가 같음으로 끝낸 의심: 없음." : `A-B가 같음으로 끝낸 의심 ${cleared.length}개: ${cleared.map(entry => `\`${entry}\``).join(" · ")}`, "");
   writeFileSync(join(DIR, "README.md"), lines.join("\n"));
   writeFileSync(join(DIR, "trend.json"), `${JSON.stringify(ordered.map(row => ({ commit: row.commit, subject: row.subject, committed: row.committed, scenes: row.scenes })), null, 1)}\n`);

@@ -6,6 +6,7 @@ import { join } from 'node:path';
 import { createGrowthOpening } from '../scripts/phase21OpeningTranslation';
 import { growthDensityMetrics } from '../scripts/growthStateRecordMetrics';
 import { superviseGrowthRecording } from '../scripts/growthStateRecordSupervisor';
+import { CHILD_KILL_GUARD_MS } from './helpers/childGuard';
 
 test('density denominators distinguish absent enclosure from zero occupied area', () => {
   // Given a natural opening without a proclaimed enclosure.
@@ -64,8 +65,11 @@ test('recording the natural opening preserves existing driver results', async ()
   for (let tick = 0; tick < 240; tick += 1) expected = advanceTick(driver.apply(expected));
   const directory = mkdtempSync(join(tmpdir(), 'growth-recorder-parity-'));
   try {
-    // When the independent recording worker runs the same seed without acceptance gates.
-    const result = await superviseGrowthRecording({ worker: fileURLToPath(new URL('../scripts/growthStateRecordWorker.ts', import.meta.url)), output: join(directory, 'record'), seed: 1, targetLots: 24, maxTicks: 240, wallTimeMs: 20_000 });
+    // When the independent recording worker runs the same seed without acceptance gates. It stops on the tick budget
+    // (240 ticks); the wall-time budget is only a hang fence. At 20 s it ran out on a loaded DGX three times (BOT-4,
+    // FIX-11 and the 2026-10-01 tidy-up clone: the worker's cold tsx start plus 240 ticks took 23–27 s), so it is now
+    // five child kill guards (5 min). The watchdog test above still checks that the wall budget stops a hung worker.
+    const result = await superviseGrowthRecording({ worker: fileURLToPath(new URL('../scripts/growthStateRecordWorker.ts', import.meta.url)), output: join(directory, 'record'), seed: 1, targetLots: 24, maxTicks: 240, wallTimeMs: 5 * CHILD_KILL_GUARD_MS });
     // Then both full states, including cache data, match exactly.
     assert.equal(result.stopReason, 'tick-budget');
     assert.deepEqual(JSON.parse(readFileSync(join(directory, 'record/final-state.json'), 'utf8')), JSON.parse(JSON.stringify(expected)));
