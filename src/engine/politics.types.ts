@@ -121,6 +121,8 @@ export interface ChapterEnd {
   readonly chapter: number;
   readonly tick: number;
   readonly chronicle: ChronicleEntry;
+  /** QA032 (save v39): the tick the player saw the chapter's page (the screens open it once, across saves). */
+  readonly seenTick?: number;
 }
 
 export interface PoliticsState {

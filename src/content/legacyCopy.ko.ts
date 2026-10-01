@@ -2,6 +2,7 @@
  * F5-A chapter 5's words (spec docs/design/chapter-five-legacy.md LG-3, LG-7, LG-9): the heirs' relations, the three
  * legacies, the six endings' sentences, the chapters' titles and the chronicle book's export lines.
  */
+import { moneyWords } from "../ledger/moneyWords.ko";
 import { GENTRY_NAMES_KO } from "./gentryNames";
 
 type P = Readonly<Record<string, number | string>>;
@@ -68,7 +69,7 @@ export const CHAPTER_TITLES: Readonly<Record<number, string>> = {
 
 /** LG-9: a chapter's one-line summary from its page's numbers. */
 export function chapterSummaryLine(params: P): string {
-  return `${n(params, "fromYear")}–${n(params, "toYear")}년 · 인구 ${n(params, "populationStart")}에서 ${n(params, "populationEnd")}로 · 금고 ${n(params, "treasury")}d`;
+  return `${n(params, "fromYear")}–${n(params, "toYear")}년 · 인구 ${n(params, "populationStart")}에서 ${n(params, "populationEnd")}로 · 금고 ${moneyWords(n(params, "treasury"))}`;
 }
 
 /** LG-9: the chronicle book's export text (Korean), line by line. */

@@ -2,6 +2,7 @@
  * F2-A chapter 2's war (spec docs/design/chapter-two-war.md WR-1…WR-10): scenarios E11–E20 (the flow events' E1–E10
  * continue here); E21 the wool in kind (FIX-7, from the stores since C5).
  */
+import { moneyWords } from "../src/ledger/moneyWords.ko";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
@@ -184,7 +185,7 @@ test("E15 (WR-5) the beacon a season ahead, then the raid: a stone ring loses le
   assert.equal(burnt.length, t.burntHouses);
   assert.equal(treasuryBalance(struck), treasuryBalance(town) - t.coin);
   const record = advanceHistory(town, struck).history!.records.find(entry => entry.template === "war.raid")!;
-  assert.equal(historySummary(record), `해안 습격이 닥쳤다 — 불탄 집 ${t.burntHouses}, 빼앗긴 물자 ${t.looted}, 빼앗긴 돈 ${t.coin}d`);
+  assert.equal(historySummary(record), `해안 습격이 닥쳤다 — 불탄 집 ${t.burntHouses}, 빼앗긴 물자 ${t.looted}, 빼앗긴 돈 ${moneyWords(t.coin)}`);
 });
 
 test("E16 (WR-6) the refugees: all settle in the empty homes and the room, half pay their fee, or they are turned away", () => {
