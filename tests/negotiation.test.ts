@@ -23,7 +23,10 @@ function town(coin = 2_000, seed = 1): GameState {
   const year = 1300;
   const persons = { ...state.persons, people: state.persons.people.map(person => person.householdId === "manor" && person.role === "child" && person.sex === "male"
     ? { ...person, birthYear: year - 15 } : person) };
-  const posted = postLedgerEntries(state, [{ account: "cash", category: "opening_balance", amount: coin - treasuryBalance(state), sourceRefs: [{ type: "scenario", id: "test" }] }]);
+  // FIX-12 (NG-5a): the home estate's year paid in (rent 800d): the debt's instalments have a cap (200d a year).
+  const rent = 800;
+  const posted = postLedgerEntries(state, [{ account: "cash", category: "opening_balance", amount: coin - rent - treasuryBalance(state), sourceRefs: [{ type: "scenario", id: "test" }] },
+    { account: "cash", category: "rent", amount: rent, sourceRefs: [{ type: "scenario", id: "test" }] }]);
   return { ...state, persons, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
 }
 const OFFER: readonly Term[] = [{ kind: "cash", giver: "proposer", amount: 200 }, { kind: "inheritance_non_infringement", giver: "counterpart" },

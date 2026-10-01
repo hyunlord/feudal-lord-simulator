@@ -15,7 +15,9 @@ import {
 import { treasuryBalance } from "../ledger/ledger";
 import type { Acceptance, AcceptanceReason, DiplomacyState, Term, TermChange, TermKind } from "./diplomacy.types";
 import type { GameState } from "./engine.types";
-import { estateById, estatePortfolio, estatesOf, LORD } from "./estates";
+import { PRESSURE_BALANCE } from "../content/balanceConfig";
+import { PIECE_INCOME_CATEGORIES } from "../content/estateConfig";
+import { estateById, estatesOf, LORD } from "./estates";
 import type { Estate } from "./estates.types";
 import { lordshipOf } from "./lordshipState";
 import { currentYear } from "./persons";
@@ -119,32 +121,46 @@ export function materialCeiling(state: GameState, proposer: string, counterpart:
   return now.score - material + MATERIAL_CAP;
 }
 
+/** FIX-12 (item 1): the ledger categories an estate's year is paid in (its pieces' incomes: rent, stall fees, tolls, the mill). */
+const ESTATE_INCOME = new Set(Object.values(PIECE_INCOME_CATEGORIES).flat());
+const YEAR = 4 * PRESSURE_BALANCE.seasonTicks;
+
 /**
- * FIX-12 (item 1, NG-5a) API: the most a year's debt instalment may be — a quarter of the year of the estates the lord
- * holds (`estatePortfolio`'s annual value: the home estate's ledger year, an off-map estate's card).
+ * FIX-12 (item 1, NG-5a) API: the most a year's debt instalment may be — a quarter of the year the lord's estates paid
+ * into the treasury (the last year's ledger: rent, stall fees, tolls, the mill), so what is asked is what can be paid.
+ * Nothing when the lord holds no estate in possession, or no year has been paid yet.
  */
 export function debtInstalmentCap(state: GameState): number {
-  const year = estatePortfolio(state).filter(estate => estate.possessor === LORD).reduce((sum, estate) => sum + estate.annualValue, 0);
+  if (!estatesOf(state).estates.some(estate => estate.possessor === LORD)) return 0;
+  const from = state.tick - YEAR;
+  const year = (state.ledger?.entries ?? []).filter(entry => entry.tick > from && entry.amount > 0 && ESTATE_INCOME.has(entry.category))
+    .reduce((sum, entry) => sum + entry.amount, 0);
   return Math.floor(year * DEBT_INSTALMENT_SHARE);
 }
 
 /** FIX-12 (item 1): the instalments a debt takes at the lord's cap (1…5 years), or null when five years cannot carry it. */
-export function debtInstalmentYears(state: GameState, amount: number): number | null {
-  const cap = debtInstalmentCap(state);
+export function debtInstalmentYears(state: GameState, amount: number, cap = debtInstalmentCap(state)): number | null {
   if (amount <= 0) return 1;
   if (cap <= 0) return null;
   const years = Math.ceil(amount / cap);
   return years <= DEBT_INSTALMENT_MAX_YEARS ? years : null;
 }
 
-/** NG-5: what the lord can give of each desire at most (the treasury's cash, the debt by instalments, a pension, one support). */
-function desireRoom(state: GameState, counterpart: string, kind: TermKind): number {
+/**
+ * NG-5: what the lord can give of each desire at most (the treasury's cash, the debt by instalments, a pension, one
+ * support). FIX-12 (item 1): what falls due each year — a debt's instalment and a pension — shares the year's cap.
+ */
+function desireRoom(state: GameState, counterpart: string, kind: TermKind, draft: readonly Term[]): number {
   const estate = counterpartEstate(state, counterpart);
+  const cap = debtInstalmentCap(state);
+  const pension = amountOf(draft, "pension");
+  const debt = draft.find(term => term.kind === "debt_assumption" && term.giver === "proposer");
+  const instalment = debt === undefined ? 0 : Math.ceil((debt.amount ?? 0) / Math.max(1, debt.years ?? 1));
   switch (kind) {
     case "cash": return Math.max(0, treasuryBalance(state));
-    // FIX-12 (item 1): only what five years of instalments carry; nothing when the lord's year carries none.
-    case "debt_assumption": return Math.min(estate?.burdens.debt ?? 0, debtInstalmentCap(state) * DEBT_INSTALMENT_MAX_YEARS);
-    case "pension": return 240;
+    // Only what five years of instalments carry beside the pension; nothing when the lord's year carries none.
+    case "debt_assumption": return Math.min(estate?.burdens.debt ?? 0, Math.max(0, cap - pension) * DEBT_INSTALMENT_MAX_YEARS);
+    case "pension": return Math.min(240, Math.max(0, cap - instalment));
     default: return 1;
   }
 }
@@ -191,9 +207,9 @@ export function counterOffer(state: GameState, proposer: string, counterpart: st
       const room = Math.min(target - acceptance.score, MATERIAL_CAP - material);
       if (room <= 0 || per <= 0) continue;
       const have = amountOf(draft, kind);
-      const more = Math.min(Math.ceil(room / per), desireRoom(state, counterpart, kind) - have);
+      const more = Math.min(Math.ceil(room / per), desireRoom(state, counterpart, kind, draft) - have);
       if (more <= 0) continue;
-      const years = kind === "pension" ? 5 : kind === "debt_assumption" ? debtInstalmentYears(state, have + more) : undefined;
+      const years = kind === "pension" ? 5 : kind === "debt_assumption" ? debtInstalmentYears(state, have + more, debtInstalmentCap(state) - amountOf(draft, "pension")) : undefined;
       if (years === null) continue;
       draft = [...draft.filter(term => !(term.kind === kind && term.giver === "proposer")),
         { kind, giver: "proposer", amount: have + more, ...(years === undefined ? {} : { years }) }];

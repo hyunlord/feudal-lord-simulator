@@ -930,7 +930,10 @@ function diplomacyDrafts(before: GameState, after: GameState): Draft[] {
   }
   const plan = now.marriage;
   if (plan !== undefined) {
-    if (was?.marriage === undefined) line("marriage.contracted", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId }, 3);
+    // FIX-12 (item 2): who the groom is to the lord (a son, the widowed lord, a brother, a nephew, a cousin).
+    const groom = after.persons?.people.find(person => person.id === plan.groomId);
+    const relation = groom?.tags.find(tag => tag.startsWith("lord-kin:"))?.slice("lord-kin:".length) ?? (groom?.role === "head" ? "widowed_lord" : "son");
+    if (was?.marriage === undefined) line("marriage.contracted", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId, relation }, 3);
     for (const [event, tick] of Object.entries(plan.events)) {
       if (tick === undefined || tick < 0 || (was?.marriage?.events as Record<string, number | undefined> | undefined)?.[event] !== undefined) continue;
       line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? "" }, event === "father_died" ? 3 : 2);

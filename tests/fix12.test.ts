@@ -58,6 +58,18 @@ test("FX12-1 the counter asks the debt by instalments: a year's share at most a 
   assert.ok(debt.years! >= 1 && debt.years! <= DEBT_INSTALMENT_MAX_YEARS, `${debt.years}`);
   assert.ok(Math.ceil(debt.amount! / debt.years!) <= cap, `${debt.amount}/${debt.years} over ${cap}`);
   assert.ok(debt.amount! <= cap * DEBT_INSTALMENT_MAX_YEARS);
+  // What falls due each year (the instalment and any pension) stays within the year's cap.
+  const pension = counter.terms.find(term => term.kind === "pension" && term.giver === "proposer")?.amount ?? 0;
+  assert.ok(Math.ceil(debt.amount! / debt.years!) + pension <= cap, `${debt.amount}/${debt.years} + ${pension} over ${cap}`);
+});
+
+test("FX12-1 in the first year (no estate year paid in yet) the counter asks nothing yearly: no debt, no pension", () => {
+  let state: GameState = { ...(createGrowthOpening(1).state as GameState), agency: initialAgency() };
+  while (state.persons === undefined) state = advanceTick(state);
+  assert.equal(debtInstalmentCap(state), 0);
+  const counter = counterOffer(state, LORD, COUNTERPART, OFFER, "k");
+  assert.ok(counter === null || !counter.terms.some(term => term.giver === "proposer" && (term.kind === "debt_assumption" || term.kind === "pension")),
+    JSON.stringify(counter?.terms));
 });
 
 test("FX12-1 a debt the lord's year cannot carry is not asked: the counter turns to the next desire (cash)", () => {

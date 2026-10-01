@@ -12,6 +12,11 @@ type P = Readonly<Record<string, number | string>>;
 const n = (params: P, key: string): number => Number(params[key] ?? 0);
 const s = (params: P, key: string): string => String(params[key] ?? "");
 
+/** FIX-12 (item 2): who the groom of a marriage contract is to the lord. */
+export const GROOM_RELATION_KO: Readonly<Record<string, string>> = {
+  son: "아들", widowed_lord: "홀아비 영주", brother: "영주의 동생", nephew: "영주의 조카", cousin: "영주의 사촌",
+};
+
 /** FIX-12 (item 4): the word a sentence uses for a person no reader can name (the record keeps only the id). */
 export const PERSON_NAME_FALLBACK: Readonly<Record<string, string>> = {
   lord: "영주", guardian: "후견인", candidate: "", heir: "후계자", mayor: "", leader: "새 수장", predecessor: "수장",
@@ -236,7 +241,8 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "promise.made": params => `약속을 했다: ${TERM_KO[s(params, "term")] ?? s(params, "term")}${n(params, "amount") > 0 ? ` ${moneyWords(n(params, "amount"))}` : ""}`,
   "promise.kept": params => `${s(params, "promisor") === "lord" ? "영주가" : "이웃 영주가"} 약속을 지켰다: ${TERM_KO[s(params, "term")] ?? s(params, "term")}`,
   "promise.broken": params => `${s(params, "promisor") === "lord" ? "영주가" : "이웃 영주가"} 약속을 어겼다: ${TERM_KO[s(params, "term")] ?? s(params, "term")}`,
-  "marriage.contracted": () => "혼인 계약 — 아들과 이웃 영주의 맏딸",
+  "marriage.contracted": params => { const groom = GROOM_RELATION_KO[s(params, "relation")] ?? GROOM_RELATION_KO.son!;
+    return `혼인 계약 — ${groom}${josa(groom, "과", "와")} 이웃 영주의 맏딸`; },
   "marriage.bride_arrived": () => "신부가 영주관에 들어왔다",
   "marriage.child_born": () => "부부의 첫아이가 태어났다",
   "marriage.brother_in_law_born": () => "이웃 영주가 다시 장가들어 아들을 얻었다 — 상속 기대가 줄었다",
