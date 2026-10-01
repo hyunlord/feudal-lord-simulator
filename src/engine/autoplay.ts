@@ -174,7 +174,7 @@ export type TownSiteRefusal = SiteRefusal | "road_first" | "wall_side" | "house_
  * LM-E1b (TA-10): every check the bot's plan puts on a site, for one candidate of a town project — the wall and plot
  * rules the bot applies inside its own steps, as one test:
  * - `wall_side`: behind a wall, production and storage stand outside it when the plan's site is outside (LB-11);
- * - `house_lot`: a house takes a grass lot beside a road that does not split a pair of houses (the housing step);
+ * - `house_lot`: a house takes a grass lot beside a road (the housing step's test);
  * - `market_reach`: with the markets at their cap, a new house stands where a market reaches it (AR-5);
  * - `route`: a building that needs a road has its materials' route (FIX-1);
  * - the bot's site checks above (setback, placement, the wall's room, service space, the road's room);
@@ -187,7 +187,8 @@ export function townSiteRefusal(state: GameState, kind: BuildingKind, coordinate
   if (kind === "house") {
     const roads = [{ tx: 0, ty: -1 }, { tx: 1, ty: 0 }, { tx: 0, ty: 1 }, { tx: -1, ty: 0 }]
       .some(({ tx, ty }) => getTile(state, { tx: coordinate.tx + tx, ty: coordinate.ty + ty })?.hasRoad === true);
-    if (!zoneRuleActive(state, "burgage") && (!isGrassOrigin(state, coordinate) || !roads || splitsExistingHousePair(state, coordinate))) return "house_lot";
+    // The housing step's second pass takes a lot between two houses too; the first pass's preference is left to the scores.
+    if (!zoneRuleActive(state, "burgage") && (!isGrassOrigin(state, coordinate) || !roads)) return "house_lot";
     if (!keepsHouseInMarketReach(state, policy.maxHousingLots)(coordinate)) return "market_reach";
   }
   const routed = (site: TileCoordinate) => !BUILDING_CONFIG_BY_KIND[kind].requiresRoad || hasConnectedConstructionRoute(state, virtualBuilding(kind, site));
@@ -542,7 +543,7 @@ export interface PlanningNeed { readonly planner: string; readonly rank: number;
  * within its own budget. The bot itself (`decideNextAction`) is unchanged; the town's actors read these as the "need"
  * reason of their proposals (the answers to the chapters' petitions stay the lord's).
  */
-export function planningNeeds(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY): readonly PlanningNeed[] {
+export function planningNeeds(state: GameState, policy: AutoplayPolicy = DEFAULT_AUTOPLAY_POLICY, skip: readonly string[] = []): readonly PlanningNeed[] {
   const needs: PlanningNeed[] = [];
   const add = (planner: string, rank: number, action: AdvisorAction | null | undefined) => {
     if (action !== null && action !== undefined && action.kind !== "none") needs.push({ planner, rank, action });
@@ -558,6 +559,8 @@ export function planningNeeds(state: GameState, policy: AutoplayPolicy = DEFAULT
     const plan = plannerPlan(state, policy);
     if (plan.early !== null) add("wall_priority", 0, plan.early);
     plan.steps.forEach((step, rank) => {
+      // LM-E1b (TA-11): a step the caller knows would find nothing again (the charter's wall search on the same layout).
+      if (skip.includes(step.name)) return;
       resetAutoplayServiceSearch();
       const action = runAutoplaySearch(() => runAutoplaySearchPhase(step.decide, step.wide ? ERA_PHASE_SEARCH_WORK : undefined));
       if (action.kind !== "none" && plan.accepts(action) && !zoneRefusesAction(state, action)) add(step.name, rank, action);

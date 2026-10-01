@@ -29,6 +29,8 @@ export interface LordModeOptions {
   readonly policy: EstatePolicy;
   readonly subsidy?: { readonly kind: BuildingKind; readonly amount: number };
   readonly duesPermille?: number;
+  /** Called with the state at the run's end (probes). */
+  readonly onEnd?: (state: GameState) => void;
 }
 
 /** TA-7: the lord's turn before a tick — answers, (weekly) the subsidy not yet in force, and the town's requests he grants. */
@@ -88,6 +90,7 @@ export function lordModeRun(options: LordModeOptions) {
         funds: Object.fromEntries((state.agency?.actors ?? []).map(actor => [actor.kind, actor.funds])) });
     }
   }
+  options.onEnd?.(state);
   const kinds: Record<string, number> = {};
   for (const building of state.buildings) kinds[building.kind] = (kinds[building.kind] ?? 0) + 1;
   const receipts = state.agency?.receipts ?? [];
@@ -98,8 +101,9 @@ export function lordModeRun(options: LordModeOptions) {
   const moved = compared.filter(receipt => receipt.sites!.planTx !== receipt.tx || receipt.sites!.planTy !== receipt.ty);
   const counts: Record<string, number> = {};
   for (const receipt of compared) counts[receipt.sites!.count] = (counts[receipt.sites!.count] ?? 0) + 1;
+  const { onEnd: _onEnd, ...shown } = options;
   return {
-    ...options, firstYear, abandoned: state.settlement?.outcome === "abandoned",
+    ...shown, firstYear, abandoned: state.settlement?.outcome === "abandoned",
     final: { year: stateCalendar(state).year, population: state.population, l2: levelAtLeast(state, 2), l4: levelAtLeast(state, 4),
       houses: state.houses.length, treasury: treasuryBalance(state), kinds,
       housePlots: state.buildings.filter(building => building.kind === "house").map(building => [building.tx, building.ty]).sort((a, b) => a[0]! - b[0]! || a[1]! - b[1]!) },

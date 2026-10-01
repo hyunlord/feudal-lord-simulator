@@ -199,6 +199,8 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "decision.project_subsidy": params => n(params, "amount") === 0 ? `${buildingWord(s(params, "kind"))} 장려금을 거두었다`
     : `${buildingWord(s(params, "kind"))}에 장려금 ${n(params, "amount")}d를 걸었다`,
   "decision.market_dues": params => `시장 부담을 평소의 ${Math.round(Number(s(params, "chosen")) / 10)}%로 정했다`,
+  // LM-E1b (TA-6 ②): a subsidy refused — the subsidies together would pass a quarter of the treasury.
+  "agency.subsidy_refused": params => `${buildingWord(s(params, "kind"))} 장려금 ${n(params, "amount")}d는 걸지 못했다: 장려금 합계 ${n(params, "total")}d가 금고의 4분의 1(${n(params, "limit")}d)을 넘는다`,
   "agency.project_started": params => `${ACTOR_KO[s(params, "actor")] ?? s(params, "actor")}${josa(ACTOR_KO[s(params, "actor")] ?? "", "이", "가")} ${projectWord(s(params, "what"))} 공사를 시작했다`,
   "drainage.done": params => `배수 공사가 끝나 웅덩이 ${n(params, "cells")}칸이 풀밭이 되었다`,
   "event.rumour": params => `${eventName(s(params, "defId"))}의 소문이 돌았다`,

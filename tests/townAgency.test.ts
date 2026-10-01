@@ -125,6 +125,8 @@ test("TA-6 ② subsidies together past a quarter of the treasury are refused wit
   assert.deepEqual(refused.agency!.subsidies, []);
   assert.deepEqual(refused.agency!.lastRefusal, refusal);
   assert.equal(refused.history!.records.filter(record => record.params?.decisionKind === "project_subsidy").length, 0, "a refused subsidy is no decision");
+  const line = refused.history!.records.find(record => record.template === "agency.subsidy_refused");
+  assert.deepEqual(line?.params, { reason: "over_treasury_share", kind: "mill", amount: 120, total: 120, limit: 100 });
   let state = gameReducer(town, { type: "set_project_subsidy", kind: "mill", amount: 60 });
   assert.deepEqual(state.agency!.subsidies.map(subsidy => subsidy.amount), [60]);
   assert.equal(subsidyRefusal(state, "granary", 40), null, "60 + 40 is a quarter of 400");
@@ -154,7 +156,7 @@ test("TA-10 a building project compares its candidate sites: each passes the pla
   }
 });
 
-test("TA-10 the plan's wall and plot rules refuse a candidate: a house off the road, a lot that splits a pair", () => {
+test("TA-10 the plan's wall and plot rules refuse a candidate: a house off the road, a site under a house", () => {
   const state = toWeek(lordTown(), 2);
   const house = state.buildings.find(building => building.kind === "house")!;
   const policy = { maxHousingLots: 24 };

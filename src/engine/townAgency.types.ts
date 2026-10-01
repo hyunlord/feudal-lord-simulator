@@ -96,6 +96,10 @@ export interface AgencyState {
   readonly nextSubsidy: number;
   /** TA-7, TA-11: what the town asks of its lord this week (absent before the first week, and on v36 saves). */
   readonly requests?: readonly LordRequest[];
+  /** TA-11: the layout (`needsLayoutKey`) on which the charter's wall search last found no wall (absent otherwise). */
+  readonly charterWallTried?: string;
+  /** TA-12: the tick the town first stood ready for its market charter (absent when it is not waiting). */
+  readonly charterSince?: number;
   /** TA-6 ②: the last subsidy refused, with its reason (absent when none was). */
   readonly lastRefusal?: SubsidyRefusal;
 }

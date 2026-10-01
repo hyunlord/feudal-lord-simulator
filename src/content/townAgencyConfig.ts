@@ -106,6 +106,11 @@ export const LAND_STEP = 3;
 /** TA-10 land: the kinds that gain by the centre (every other kind pays for it). */
 export const CENTRE_KINDS: readonly BuildingKind[] = ["house", "market", "well", "chapel", "church", "granary"];
 
+/** TA-12: a town ready for its market charter holds new buildings at most this many weeks while it waits. */
+export const CHARTER_HOLD_WEEKS = 8;
+/** TA-12: the population the bot's era step asks before it proclaims (`autoplayEraAction`). */
+export const CHARTER_POPULATION = 60;
+
 /** TA-6 ②: the subsidies offered, together, at most this share of the treasury (‰) when one is set. */
 export const SUBSIDY_TREASURY_PERMILLE = 250;
 /** TA-6: lord-mode opportunity projects: kinds an actor may propose without a need when a subsidy or the policy backs them. */

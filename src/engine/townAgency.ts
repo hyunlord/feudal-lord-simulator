@@ -7,7 +7,7 @@
  */
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../content/buildingConfig";
 import {
-  ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, builderOfKind, CENTRE_KINDS, DUES_POINTS_PER_100_PERMILLE,
+  ACTOR_OPENING_FUNDS, ACTOR_WEEKLY, AGENCY_ACTORS, AGENCY_WEEK_TICKS, builderOfKind, CENTRE_KINDS, CHARTER_HOLD_WEEKS, CHARTER_POPULATION, DUES_POINTS_PER_100_PERMILLE,
   FIRE_NEIGHBOUR_POINTS, LAND_REACH, LAND_STEP, MATERIAL_PENNIES, NEED_STEP, NEED_TOP, OPEN_SITES_MAX, OPPORTUNITY_KINDS, PLAN_SITE_POINTS, policyWeight,
   LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, SITE_CANDIDATES_MAX, SITE_FULL_CHECKS_MAX, SITE_SEARCH_RADIUS,
   START_SCORE, STARTS_PER_WEEK, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D, SUBSIDY_TREASURY_PERMILLE,
@@ -19,7 +19,8 @@ import { planZoneFill } from "../zones/zoneFillAgent";
 import { setFarmsteadCrop } from "./ale";
 import { autoplayBuildAction, planningEarlyNeeds, planningNeeds, townSiteRefusal, type AutoplayPolicy, type PlanningNeed } from "./autoplay";
 import { runAutoplaySearch } from "./autoplaySearchBudget";
-import { resetAutoplayServiceSearch } from "./autoplayServiceSpace";
+import { preservesAutoplayServiceSpace, resetAutoplayServiceSearch } from "./autoplayServiceSpace";
+import { keepsInteriorHouseSites } from "./autoplayInteriorPlots";
 import { hasAutoplayBuildingClearance } from "./autoplaySetback";
 import { autoplayCanPlace } from "./autoplayZones";
 import type { AdvisorAction } from "./autoplayBotRecovery";
@@ -30,6 +31,8 @@ import { rebuildBurntHouse } from "./fire";
 import { placeBuilding, placeRoadLine } from "./gameActions";
 import { demolishHouse } from "./houseDemolition";
 import { marketStalls } from "./moneyRules";
+import { canProclaimPalisadeEra } from "./era";
+import { housingLotCount } from "../population/housing";
 import { stuckStock } from "./stuckStock";
 import { agencyDuesPermille } from "./townAgencyDues";
 import type {
@@ -348,6 +351,16 @@ const LORD_REQUEST_KINDS: ReadonlySet<string> = new Set(["proclaim_era", "set_wa
 
 // --- TA-5 starting a project ---------------------------------------------------------------------------------------
 
+/** TA-5: a project still passes the plan's checks on the town as it now stands (another project was started this week). */
+function stillFits(state: GameState, proposal: Proposal): boolean {
+  const action = proposal.action;
+  if (action.kind !== "place_building" && action.kind !== "place_road") return true;
+  resetAutoplayServiceSearch();
+  return runAutoplaySearch(() => action.kind === "place_building"
+    ? townSiteRefusal(state, action.building, action, { tx: proposal.sites?.planTx ?? action.tx, ty: proposal.sites?.planTy ?? action.ty }, LORD_MODE_POLICY) === null
+    : preservesAutoplayServiceSpace(state, action) && keepsInteriorHouseSites(state, action, LORD_MODE_POLICY.maxHousingLots));
+}
+
 /** TA-5: applies a town project through the same engine steps the player's command takes (the bot's bookkeeping too). */
 export function applyTownAction(state: GameState, action: TownAction): GameState {
   let next: GameState;
@@ -401,12 +414,39 @@ function topReasons(reasons: readonly Reason[]): readonly Reason[] {
 // The campaign's town of 24 lots (the bot's default is 8, the guardrail's and campaign's target 24).
 export const LORD_MODE_POLICY: AutoplayPolicy = { maxHousingLots: 24 };
 
+/**
+ * TA-11: the town's layout as the charter's wall search reads it — the era and chapter, what stands and what is being
+ * built, the roads, the zones' cells, the wall, the burnt houses, and the houses' lots.
+ */
+export function needsLayoutKey(state: GameState): string {
+  let roads = 0;
+  for (const tile of state.tiles) if (tile.hasRoad) roads += 1;
+  return JSON.stringify([state.era, state.politics?.chapter.number ?? 1, state.buildings.map(building => building.id),
+    state.constructionSites.map(site => site.id), roads, (state.zones ?? []).map(zone => [zone.id, zone.membership.length]),
+    state.palisade?.polygon.length ?? 0, state.houses.filter(house => house.burntTick !== undefined).map(house => house.buildingId),
+    housingLotCount(state)]);
+}
+
+/**
+ * TA-11: the charter's wall search, when it runs — a hamlet that meets the market town's requirements with no building
+ * site open (the bot's era step then projects walls and their service space, the costliest step of the walk).
+ */
+function charterSearchRuns(state: GameState): boolean {
+  return canProclaimPalisadeEra(state) && state.population >= CHARTER_POPULATION && !state.constructionSites.some(isBuildingConstructionSite);
+}
+
 /** TA-2…TA-5: one week of the town agency, at the week's first tick (nothing outside lord mode). */
 export function advanceTownAgency(state: GameState): GameState {
   const agency = state.agency;
   if (agency === undefined || state.tick <= 0 || state.tick % AGENCY_WEEK_TICKS !== 0) return state;
   const actors: AgencyActor[] = agency.actors.map(actor => ({ ...actor, funds: actor.funds + weeklySavings(state, actor.kind) }));
-  const week: GameState = { ...state, agency: { ...agency, actors } };
+  // TA-12: a hamlet ready for its market charter holds new buildings until its sites are done, so the bot's era step
+  // (which proclaims only with no building site open) can ask the lord; at most `CHARTER_HOLD_WEEKS`, then it builds on.
+  const ready = canProclaimPalisadeEra(state) && state.population >= CHARTER_POPULATION;
+  const charterSince = ready ? agency.charterSince ?? state.tick : undefined;
+  const holding = charterSince !== undefined && state.tick - charterSince < CHARTER_HOLD_WEEKS * AGENCY_WEEK_TICKS;
+  const { charterSince: _since, ...rest } = agency;
+  const week: GameState = { ...state, agency: { ...rest, actors, ...(charterSince === undefined ? {} : { charterSince }) } };
   const open = (current: GameState) => current.constructionSites.filter(site => isBuildingConstructionSite(site)).length;
   // LM-E1b (TA-11): a town with every site busy starts nothing — no walk; its request is only the wall's priority when
   // the reserve locks the work (`planningEarlyNeeds`). Otherwise the week's one walk gives the needs and the requests.
@@ -414,7 +454,13 @@ export function advanceTownAgency(state: GameState): GameState {
     const requests = planningEarlyNeeds(week, LORD_MODE_POLICY).map(need => need.action as LordRequest);
     return { ...week, agency: { ...week.agency!, requests } };
   }
-  const needs = planningNeeds(week, LORD_MODE_POLICY);
+  // TA-11: a charter wall search that found no wall is not run again on the same layout (the walls and their service
+  // space are read from it); any change to the layout searches again.
+  const searching = charterSearchRuns(week);
+  const layout = searching ? needsLayoutKey(week) : undefined;
+  const skipEra = layout !== undefined && agency.charterWallTried === layout;
+  const needs = planningNeeds(week, LORD_MODE_POLICY, skipEra ? ["era"] : []);
+  const tried = searching && (skipEra || !needs.some(need => need.action.kind === "proclaim_era")) ? layout : undefined;
   const requests = needs.filter(need => LORD_REQUEST_KINDS.has(need.action.kind)).map(need => need.action as LordRequest);
   let next: GameState = { ...week, agency: { ...week.agency!, requests } };
   const receipts: ProjectReceipt[] = [];
@@ -423,6 +469,10 @@ export function advanceTownAgency(state: GameState): GameState {
   for (const proposal of townProposals(next, LORD_MODE_POLICY, needs)) {
     if (started >= STARTS_PER_WEEK || open(next) >= OPEN_SITES_MAX) break;
     if (proposal.score < START_SCORE) break;
+    if (holding && proposal.action.kind === "place_building") continue;
+    // TA-5: the week's second project is checked again on the town the first one left — the bot places one at a time,
+    // each against the last (two sites each keeping the service space alone took it together: no charter wall fitted).
+    if (started > 0 && !stillFits(next, proposal)) continue;
     const actor = actors.find(entry => entry.kind === proposal.actor)!;
     const paid = Math.min(proposal.subsidy, Math.max(0, treasuryBalance(next)));
     // TA-5: a needed project the actor cannot pay borrows the rest from the community's purse (when that is another's).
@@ -452,7 +502,8 @@ export function advanceTownAgency(state: GameState): GameState {
   const kept = [...agency.receipts, ...receipts];
   const trimmed = kept.length <= RECEIPTS_KEPT ? kept
     : kept.filter((receipt, index) => receipt.what !== "road" || index >= kept.length - RECEIPTS_KEPT).slice(-RECEIPTS_KEPT);
-  return { ...next, agency: { ...next.agency!, actors, receipts: trimmed, nextReceipt: ordinal } };
+  const { charterWallTried: _tried, ...kept2 } = next.agency!;
+  return { ...next, agency: { ...kept2, actors, receipts: trimmed, nextReceipt: ordinal, ...(tried === undefined ? {} : { charterWallTried: tried }) } };
 }
 
 /** TA-7 API: what the town asks of its lord this week — the era's proclamation, the wall's priority, the traders'
