@@ -43,7 +43,9 @@ export type LandGround = {
   /** Per tile: 1 where `state.drainage.drained` has it. */
   readonly drained: Uint8Array;
   /** The fill regions and their per-chunk view (archetypeGroundRegions.ts), made on first use. */
-  readonly cache: { regions?: readonly FillRegion[]; readonly chunks: Map<number, readonly ChunkRegion[]> };
+  readonly cache: { regions?: readonly FillRegion[]; readonly chunks: Map<number, readonly ChunkRegion[]>;
+    /** Per season: the art keys (landArtKeys), and the readiness once every file has loaded (it cannot change after). */
+    readonly artKeys: Map<SeasonIndex, readonly Wave22GroundKey[]>; readonly allReady: Map<SeasonIndex, string> };
 };
 
 /** The X-repeating strip families, each drawn as its a | b pair joined into one repeat. */
@@ -80,7 +82,7 @@ export function landGroundOf(state: GameState): LandGround | null {
   }
   const fillBase = layer.keys.map(name => (name.startsWith("terrain/") && name !== "terrain/grass" ? name.slice("terrain/".length) : null));
   const land: LandGround = { id: archetype.id, seed: state.seed, width: state.width, height: state.height, keys: layer.keys, fill, band, decal, fillBase,
-    chunkHashes: new WeakMap(), loopStrips: new WeakMap(), drained: drainedCells, cache: { chunks: new Map() } };
+    chunkHashes: new WeakMap(), loopStrips: new WeakMap(), drained: drainedCells, cache: { chunks: new Map(), artKeys: new Map(), allReady: new Map() } };
   last = { key, land };
   return land;
 }
@@ -120,6 +122,8 @@ export function isWaterStrip(family: StripFamily | null): boolean {
 
 /** Every Wave 22 file the land draws in `season` (fills a and b, both halves of each strip, the decals and props). */
 export function landArtKeys(land: LandGround, season: SeasonIndex): readonly Wave22GroundKey[] {
+  const cached = land.cache.artKeys.get(season);
+  if (cached !== undefined) return cached;
   const keys = new Set<Wave22GroundKey>();
   land.keys.forEach((name, index) => {
     const base = land.fillBase[index] ?? null;
@@ -128,7 +132,9 @@ export function landArtKeys(land: LandGround, season: SeasonIndex): readonly Wav
     if (family !== null) { keys.add(`${family}_a` as Wave22GroundKey); keys.add(`${family}_b` as Wave22GroundKey); return; }
     if (name in WAVE22_GROUND_IMAGES) keys.add(name as Wave22GroundKey);
   });
-  return [...keys].sort();
+  const sorted = [...keys].sort();
+  land.cache.artKeys.set(season, sorted);
+  return sorted;
 }
 
 /**

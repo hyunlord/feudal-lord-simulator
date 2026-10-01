@@ -46,7 +46,12 @@ type ScreenBox = { readonly left: number; readonly top: number; readonly right: 
 
 /** The land's Wave 22 readiness in `season` (one bit per file it draws): part of the chunk content key. */
 export function landArtReadiness(land: LandGround, season: SeasonIndex): string {
-  return landArtKeys(land, season).map(key => (art.art(key) === null ? 0 : 1)).join("");
+  // Asked for every chunk request of every frame: once all the season's files are ready the bits cannot change.
+  const ready = land.cache.allReady.get(season);
+  if (ready !== undefined) return ready;
+  const bits = landArtKeys(land, season).map(key => (art.art(key) === null ? 0 : 1)).join("");
+  if (!bits.includes("0")) land.cache.allReady.set(season, bits);
+  return bits;
 }
 
 /**
