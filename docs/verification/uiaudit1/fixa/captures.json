@@ -1,0 +1,859 @@
+{
+ "errors": [],
+ "shots": [
+  {
+   "file": "person-card-desk-after.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "25px 17px 26px",
+   "padding": "8px",
+   "width": 360,
+   "height": 225
+  },
+  {
+   "file": "person-card-steward-desk-after.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "25px 17px 26px",
+   "padding": "8px",
+   "width": 360,
+   "height": 238.96875,
+   "emblem": {
+    "rect": [
+     290,
+     33,
+     45,
+     54
+    ],
+    "html": "<img class=\"emblem-image\" width=\"45\" height=\"45\" alt=\"영주 가문의 문장\" data-emblem=\"knightly.vert...chief.or.eagle.argent\" data-digest=\"c769fd21\" src=\"data:image/png;"
+   }
+  },
+  {
+   "file": "person-card-lord-desk-after.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "25px 17px 26px",
+   "padding": "8px",
+   "width": 360,
+   "height": 225,
+   "emblem": {
+    "rect": [
+     290,
+     33,
+     45,
+     54
+    ],
+    "html": "<img class=\"emblem-image\" width=\"45\" height=\"45\" alt=\"영주 가문의 문장\" data-emblem=\"knightly.gules.per_pale_indented.vert...fleur_de_lis.or\" data-digest=\"3205893b\" sr"
+   }
+  },
+  {
+   "file": "hud-desk-after-left.jpg / -right.jpg"
+  },
+  {
+   "file": "person-card-tablet-after.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "29px 20px 30px",
+   "padding": "8px",
+   "width": 414,
+   "height": 258.75
+  },
+  {
+   "file": "person-card-steward-tablet-after.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "29px 20px 30px",
+   "padding": "8px",
+   "width": 414,
+   "height": 260.109375,
+   "emblem": {
+    "rect": [
+     334.25,
+     37,
+     51.75,
+     62.09375
+    ],
+    "html": "<img class=\"emblem-image\" width=\"52\" height=\"52\" alt=\"영주 가문의 문장\" data-emblem=\"knightly.vert...chief.or.eagle.argent\" data-digest=\"c769fd21\" src=\"data:image/png;"
+   }
+  },
+  {
+   "file": "person-card-lord-tablet-after.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "29px 20px 30px",
+   "padding": "8px",
+   "width": 414,
+   "height": 258.75,
+   "emblem": {
+    "rect": [
+     334.25,
+     37,
+     51.75,
+     62.09375
+    ],
+    "html": "<img class=\"emblem-image\" width=\"52\" height=\"52\" alt=\"영주 가문의 문장\" data-emblem=\"knightly.gules.per_pale_indented.vert...fleur_de_lis.or\" data-digest=\"3205893b\" sr"
+   }
+  },
+  {
+   "file": "hud-tablet-after-left.jpg / -right.jpg"
+  },
+  {
+   "file": "person-card-desk-before.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "33px 23px 35px",
+   "padding": "8px",
+   "width": 480,
+   "height": 300
+  },
+  {
+   "file": "person-card-steward-desk-before.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "33px 23px 35px",
+   "padding": "8px",
+   "width": 480,
+   "height": 300,
+   "emblem": {
+    "rect": [
+     388.5,
+     31.5,
+     60,
+     72
+    ],
+    "html": "<img class=\"emblem-image\" width=\"60\" height=\"60\" alt=\"영주 가문의 문장\" data-emblem=\"knightly.vert...chief.or.eagle.argent\" data-digest=\"c769fd21\" src=\"data:image/png;"
+   }
+  },
+  {
+   "file": "person-card-lord-desk-before.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "33px 23px 35px",
+   "padding": "8px",
+   "width": 480,
+   "height": 300,
+   "emblem": {
+    "rect": [
+     388.5,
+     31.5,
+     60,
+     72
+    ],
+    "html": "<img class=\"emblem-image\" width=\"60\" height=\"60\" alt=\"영주 가문의 문장\" data-emblem=\"knightly.gules.per_pale_indented.vert...fleur_de_lis.or\" data-digest=\"3205893b\" sr"
+   }
+  },
+  {
+   "file": "hud-desk-before-left.jpg / -right.jpg"
+  },
+  {
+   "file": "person-card-tablet-before.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "33px 23px 35px",
+   "padding": "8px",
+   "width": 480,
+   "height": 300
+  },
+  {
+   "file": "person-card-steward-tablet-before.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "33px 23px 35px",
+   "padding": "8px",
+   "width": 480,
+   "height": 300,
+   "emblem": {
+    "rect": [
+     388.5,
+     31.5,
+     60,
+     72
+    ],
+    "html": "<img class=\"emblem-image\" width=\"60\" height=\"60\" alt=\"영주 가문의 문장\" data-emblem=\"knightly.vert...chief.or.eagle.argent\" data-digest=\"c769fd21\" src=\"data:image/png;"
+   }
+  },
+  {
+   "file": "person-card-lord-tablet-before.jpg",
+   "selector": ".person-card",
+   "frame": "person-card",
+   "border": "33px 23px 35px",
+   "padding": "8px",
+   "width": 480,
+   "height": 300,
+   "emblem": {
+    "rect": [
+     388.5,
+     31.5,
+     60,
+     72
+    ],
+    "html": "<img class=\"emblem-image\" width=\"60\" height=\"60\" alt=\"영주 가문의 문장\" data-emblem=\"knightly.gules.per_pale_indented.vert...fleur_de_lis.or\" data-digest=\"3205893b\" sr"
+   }
+  },
+  {
+   "file": "hud-tablet-before-left.jpg / -right.jpg"
+  }
+ ],
+ "boxes": [
+  {
+   "label": "after desk merchant-town tutorial on",
+   "found": [
+    {
+     "selector": ".status-pill",
+     "rect": [
+      8,
+      8,
+      387.4,
+      71
+     ],
+     "border": "2px 0px 1px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".status-pill-cell",
+     "rect": [
+      16,
+      18,
+      108.9,
+      62
+     ],
+     "border": "0px",
+     "padding": "0px 4px"
+    },
+    {
+     "selector": ".speed-seal",
+     "rect": [
+      1034,
+      18,
+      1078,
+      62
+     ],
+     "border": "1px",
+     "padding": "2px"
+    },
+    {
+     "selector": ".goal-chip-rail",
+     "rect": [
+      8,
+      75,
+      348,
+      119
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".goal-chip-rail .goal-card",
+     "rect": null
+    },
+    {
+     "selector": ".hud-time-cluster",
+     "rect": [
+      1024,
+      8,
+      1272,
+      72
+     ],
+     "border": "2px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".crisis-icons",
+     "rect": [
+      1220,
+      68,
+      1280,
+      128
+     ],
+     "border": "0px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".slot-panel",
+     "rect": null
+    }
+   ]
+  },
+  {
+   "label": "after desk famine-arrival",
+   "found": [
+    {
+     "selector": ".status-pill",
+     "rect": [
+      8,
+      8,
+      391,
+      71
+     ],
+     "border": "2px 0px 1px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".status-pill-cell",
+     "rect": [
+      16,
+      18,
+      120.2,
+      62
+     ],
+     "border": "0px",
+     "padding": "0px 4px"
+    },
+    {
+     "selector": ".speed-seal",
+     "rect": [
+      1034,
+      18,
+      1078,
+      62
+     ],
+     "border": "1px",
+     "padding": "2px"
+    },
+    {
+     "selector": ".goal-chip-rail",
+     "rect": [
+      8,
+      75,
+      348,
+      162.3
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".goal-chip-rail .goal-card",
+     "rect": [
+      8,
+      75,
+      112.3,
+      162.3
+     ],
+     "border": "5px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".hud-time-cluster",
+     "rect": [
+      1024,
+      8,
+      1272,
+      72
+     ],
+     "border": "2px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".crisis-icons",
+     "rect": [
+      839.8,
+      68,
+      1280,
+      128
+     ],
+     "border": "0px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".slot-panel",
+     "rect": null
+    }
+   ]
+  },
+  {
+   "label": "after tablet merchant-town tutorial on",
+   "found": [
+    {
+     "selector": ".status-pill",
+     "rect": [
+      8,
+      8,
+      387.4,
+      71
+     ],
+     "border": "2px 0px 1px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".status-pill-cell",
+     "rect": [
+      16,
+      18,
+      108.9,
+      62
+     ],
+     "border": "0px",
+     "padding": "0px 4px"
+    },
+    {
+     "selector": ".speed-seal",
+     "rect": [
+      934,
+      18,
+      978,
+      62
+     ],
+     "border": "1px",
+     "padding": "2px"
+    },
+    {
+     "selector": ".goal-chip-rail",
+     "rect": [
+      8,
+      79,
+      348,
+      123
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".goal-chip-rail .goal-card",
+     "rect": null
+    },
+    {
+     "selector": ".hud-time-cluster",
+     "rect": [
+      924,
+      8,
+      1172,
+      72
+     ],
+     "border": "2px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".crisis-icons",
+     "rect": [
+      1116,
+      72,
+      1180,
+      136
+     ],
+     "border": "0px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".slot-panel",
+     "rect": null
+    }
+   ]
+  },
+  {
+   "label": "after tablet famine-arrival",
+   "found": [
+    {
+     "selector": ".status-pill",
+     "rect": [
+      8,
+      8,
+      391,
+      71
+     ],
+     "border": "2px 0px 1px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".status-pill-cell",
+     "rect": [
+      16,
+      18,
+      120.2,
+      62
+     ],
+     "border": "0px",
+     "padding": "0px 4px"
+    },
+    {
+     "selector": ".speed-seal",
+     "rect": [
+      934,
+      18,
+      978,
+      62
+     ],
+     "border": "1px",
+     "padding": "2px"
+    },
+    {
+     "selector": ".goal-chip-rail",
+     "rect": [
+      8,
+      79,
+      348,
+      166.3
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".goal-chip-rail .goal-card",
+     "rect": [
+      8,
+      79,
+      112.3,
+      166.3
+     ],
+     "border": "5px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".hud-time-cluster",
+     "rect": [
+      924,
+      8,
+      1172,
+      72
+     ],
+     "border": "2px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".crisis-icons",
+     "rect": [
+      735.8,
+      72,
+      1180,
+      136
+     ],
+     "border": "0px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".slot-panel",
+     "rect": null
+    }
+   ]
+  },
+  {
+   "label": "before desk merchant-town tutorial on",
+   "found": [
+    {
+     "selector": ".status-pill",
+     "rect": [
+      8,
+      8,
+      422,
+      71
+     ],
+     "border": "2px 0px 1px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".status-pill-cell",
+     "rect": [
+      16,
+      18,
+      113.3,
+      62
+     ],
+     "border": "0px",
+     "padding": "0px 6px"
+    },
+    {
+     "selector": ".speed-seal",
+     "rect": [
+      1072,
+      19,
+      1116,
+      63
+     ],
+     "border": "1px",
+     "padding": "2px"
+    },
+    {
+     "selector": ".goal-chip-rail",
+     "rect": [
+      8,
+      60,
+      348,
+      104
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".goal-chip-rail .goal-card",
+     "rect": null
+    },
+    {
+     "selector": ".hud-time-cluster",
+     "rect": [
+      1064,
+      8,
+      1272,
+      72
+     ],
+     "border": "2px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".crisis-icons",
+     "rect": [
+      1228,
+      66,
+      1272,
+      110
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".slot-panel",
+     "rect": null
+    }
+   ]
+  },
+  {
+   "label": "before desk famine-arrival",
+   "found": [
+    {
+     "selector": ".status-pill",
+     "rect": [
+      8,
+      8,
+      426.6,
+      71
+     ],
+     "border": "2px 0px 1px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".status-pill-cell",
+     "rect": [
+      16,
+      18,
+      126.1,
+      62
+     ],
+     "border": "0px",
+     "padding": "0px 6px"
+    },
+    {
+     "selector": ".speed-seal",
+     "rect": [
+      1072,
+      19,
+      1116,
+      63
+     ],
+     "border": "1px",
+     "padding": "2px"
+    },
+    {
+     "selector": ".goal-chip-rail",
+     "rect": [
+      8,
+      60,
+      348,
+      148.3
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".goal-chip-rail .goal-card",
+     "rect": [
+      8,
+      60,
+      109.9,
+      148.3
+     ],
+     "border": "5px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".hud-time-cluster",
+     "rect": [
+      1064,
+      8,
+      1272,
+      72
+     ],
+     "border": "2px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".crisis-icons",
+     "rect": [
+      845.1,
+      66,
+      1272,
+      110
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".slot-panel",
+     "rect": null
+    }
+   ]
+  },
+  {
+   "label": "before tablet merchant-town tutorial on",
+   "found": [
+    {
+     "selector": ".status-pill",
+     "rect": [
+      8,
+      8,
+      422,
+      71
+     ],
+     "border": "2px 0px 1px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".status-pill-cell",
+     "rect": [
+      16,
+      18,
+      113.3,
+      62
+     ],
+     "border": "0px",
+     "padding": "0px 6px"
+    },
+    {
+     "selector": ".speed-seal",
+     "rect": [
+      972,
+      19,
+      1016,
+      63
+     ],
+     "border": "1px",
+     "padding": "2px"
+    },
+    {
+     "selector": ".goal-chip-rail",
+     "rect": [
+      8,
+      60,
+      348,
+      104
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".goal-chip-rail .goal-card",
+     "rect": null
+    },
+    {
+     "selector": ".hud-time-cluster",
+     "rect": [
+      964,
+      8,
+      1172,
+      72
+     ],
+     "border": "2px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".crisis-icons",
+     "rect": [
+      1124,
+      66,
+      1172,
+      114
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".slot-panel",
+     "rect": null
+    }
+   ]
+  },
+  {
+   "label": "before tablet famine-arrival",
+   "found": [
+    {
+     "selector": ".status-pill",
+     "rect": [
+      8,
+      8,
+      426.6,
+      71
+     ],
+     "border": "2px 0px 1px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".status-pill-cell",
+     "rect": [
+      16,
+      18,
+      126.1,
+      62
+     ],
+     "border": "0px",
+     "padding": "0px 6px"
+    },
+    {
+     "selector": ".speed-seal",
+     "rect": [
+      972,
+      19,
+      1016,
+      63
+     ],
+     "border": "1px",
+     "padding": "2px"
+    },
+    {
+     "selector": ".goal-chip-rail",
+     "rect": [
+      8,
+      60,
+      348,
+      148.3
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".goal-chip-rail .goal-card",
+     "rect": [
+      8,
+      60,
+      109.9,
+      148.3
+     ],
+     "border": "5px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".hud-time-cluster",
+     "rect": [
+      964,
+      8,
+      1172,
+      72
+     ],
+     "border": "2px",
+     "padding": "8px"
+    },
+    {
+     "selector": ".crisis-icons",
+     "rect": [
+      741.1,
+      66,
+      1172,
+      114
+     ],
+     "border": "0px",
+     "padding": "0px"
+    },
+    {
+     "selector": ".slot-panel",
+     "rect": null
+    }
+   ]
+  }
+ ]
+}

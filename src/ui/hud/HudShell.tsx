@@ -16,6 +16,7 @@ import { SeasonStripMini, SeasonStripPanel } from "./SeasonStrip";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
 import { wave8ImageStyle } from "../wave8Art";
 import { ledgerMatrix, statusPillModel } from "./statusPillModel";
+import { economyStockTotals } from "../ledgerModel";
 import type { StoreStockHistory } from "../storeStockHistory";
 import { LedgerStockTable } from "./LedgerStockTable";
 import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
@@ -51,7 +52,7 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation }: {
 }) {
   const [stripOpen, setStripOpen] = useState(false);
   return (
-    <nav className="status-pill" aria-label={HUD_COPY.pill}>
+    <nav className="status-pill" aria-label={HUD_COPY.pill} data-frame="tooltip">
       <Button type="button" className="status-pill-cell status-pill-date" data-testid="hud-calendar" aria-label={SEASON_STRIP_COPY.label}
         aria-expanded={stripOpen} onPress={() => setStripOpen(open => !open)} variant="surface">
         <span className="status-pill-date-text"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
@@ -94,7 +95,7 @@ export function LayerSwitch({ layer, access, onChange, pulse, hidden = false }: 
           </Button>
         );
       })}
-      {note === null ? null : <p className="layer-switch-note" role="status"><UiIcon sheet="lock" cell="locked" />{note}</p>}
+      {note === null ? null : <p className="layer-switch-note" data-frame="tooltip" role="status"><UiIcon sheet="lock" cell="locked" />{note}</p>}
     </div>
   );
 }
@@ -121,7 +122,10 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
     const timer = window.setTimeout(() => setFresh(false), STEWARD_LINE_MS);
     return () => window.clearTimeout(timer);
   }, [advisorKey]);
+  // UI-AUDIT-1: the steward's bubble is the dock's sibling (placed over the steward button), not a part inside the dock's
+  // own button row: the dock is a row of buttons with the gap around them, the bubble a surface of its own.
   return (
+    <>
     <nav className="action-dock" aria-label={HUD_COPY.dock} hidden={hidden}>
       {undo.enabled ? <Button type="button" className="hud-undo action-dock-small" aria-label={undo.label} data-attention={undo.attention ? "true" : undefined}
         onPress={() => undo.onUndo()} variant="secondary"><UiIcon sheet="action" cell="up" />{HUD_COPY.undo}</Button> : null}
@@ -136,22 +140,28 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
         onPress={() => { if (speaking) setExpanded(open => !open); else setStewardOpen(open => !open); }} variant="secondary">
         <span className="action-dock-portrait" aria-hidden="true" style={stewardPortraitStyle(advisor?.tone ?? "neutral")} />{HUD_COPY.steward}
       </Button>
-      {speaking && (fresh || expanded) ? <aside className={`steward-advisor steward-bubble steward-advisor--${advisor.tone}${expanded ? "" : " steward-bubble--line"}`}
+    </nav>
+      {hidden ? null : speaking && (fresh || expanded) ? <aside data-frame="advisor" className={`steward-advisor steward-bubble steward-advisor--${advisor.tone}${expanded ? "" : " steward-bubble--line"}`}
         aria-label={stewardName === null ? TUTORIAL_COPY.stewardName : PERSONS_COPY.steward(stewardName)} data-advisor={advisor.key} data-tone={advisor.tone}>
         {expanded && stewardName !== null ? <p className="steward-name">{PERSONS_COPY.steward(stewardName)}</p> : null}
         <p className="steward-line">{advisor.text}</p>
         {expanded ? <Button type="button" className="steward-button" onPress={() => onDismissAdvisor()} variant="primary">{TUTORIAL_COPY.advisorButton}</Button> : null}
-      </aside> : speaking ? null : stewardOpen ? <aside className="steward-bubble" role="status"><p className="steward-line">{HUD_COPY.stewardQuiet}</p></aside> : null}
-    </nav>
+      </aside> : speaking ? null : stewardOpen ? <aside className="steward-bubble" data-frame="advisor" role="status"><p className="steward-line">{HUD_COPY.stewardQuiet}</p></aside> : null}
+    </>
   );
 }
 
-/** Crisis icons (S-33): outside the slot, at most three, only while something is wrong; a tap looks at and inspects it. */
-export function CrisisIcons({ rows: all, onInspect }: { readonly rows: ReturnType<typeof alertStackRows>; readonly onInspect: (id: string) => void }) {
+/**
+ * Crisis icons (S-33): outside the slot, at most three, only while something is wrong; a tap looks at and inspects it.
+ * UI-AUDIT-1: `lead` (the stuck-goods chip) sits left of the bells in the same row.
+ */
+export function CrisisIcons({ rows: all, onInspect, lead = null }: { readonly rows: ReturnType<typeof alertStackRows>; readonly onInspect: (id: string) => void;
+  readonly lead?: ReactNode }) {
   const rows = all.slice(0, 3);
-  if (rows.length === 0) return null;
+  if (rows.length === 0 && lead === null) return null;
   return (
     <section className="crisis-icons" aria-label={HUD_COPY.crisis}>
+      {lead}
       {rows.map(row => (
         <Button key={row.id} type="button" className={`crisis-icon alert-stack-inspect crisis-icon--${row.severity}`} aria-label={HUD_COPY.crisisLabel(ALERT_STACK_COPY.inspectLabel(row.title), row.cause)}
           onPress={() => { const first = row.targetIds[0]; if (first === undefined) return; platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); }} variant="icon">
@@ -175,7 +185,7 @@ type LedgerTab = "stock" | "alerts" | "rights" | "view" | "map";
  */
 export function RightsRegister({ view, onPerson }: { readonly view: LordshipView; readonly onPerson: ((personId: string) => void) | undefined }) {
   return (
-    <section className="ledger-rights" aria-label={LORDSHIP_COPY.heading} style={wave14FrameStyle("frame_rights_register")}>
+    <section className="ledger-rights" data-frame="rights" aria-label={LORDSHIP_COPY.heading} style={wave14FrameStyle("frame_rights_register")}>
       {/* The register is a book open on two pages: the house (its arms, title, a decline) on the left, its rights, what it
           granted and the war on the right. */}
       <div className="ledger-rights-page">
@@ -242,7 +252,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   // UI-10: LG-2…LG-5 chapter 5 ledger — null before chapter 5 starts.
   const legacyLedger = legacyLedgerView(state);
   return (
-    <section className="ledger-drawer slot-panel" aria-label={HUD_COPY.ledgerTitle}>
+    <section className="ledger-drawer slot-panel" data-frame="ledger" aria-label={HUD_COPY.ledgerTitle}>
       <header className="slot-panel-heading"><h2>{HUD_COPY.ledgerTitle}</h2>
         <Button type="button" className="slot-panel-close" aria-label={HUD_COPY.close} onPress={() => onClose()} variant="icon">{HUD_COPY.closeMark}</Button></header>
       <div className="ledger-tabs">
@@ -255,6 +265,9 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
         {onOpenChronicle === undefined ? null : <Button type="button" className="ledger-tab ledger-tab--chronicle" aria-haspopup="dialog"
           aria-label={CHRONICLE_SCREEN_COPY.ledgerTabLabel} data-ledger-chronicle="open" onPress={() => onOpenChronicle()} variant="tab">{CHRONICLE_SCREEN_COPY.ledgerTab}</Button>}
       </div>
+      {/* UI-AUDIT-1: the status pill's coin cell opens this drawer; here the treasury reads to the penny. */}
+      {tab === "stock" ? <p className="ledger-treasury" data-ledger-treasury="true"><UiIcon sheet="resource" cell="coin" />
+        {HUD_COPY.ledgerTreasuryLine(Math.floor(economyStockTotals(state).coin))}</p> : null}
       {tab === "stock" ? (matrix.rows.length === 0 ? <p>{HUD_COPY.ledgerEmpty}</p> : (
         // UX-0b: the total, the week and the lasts first; NAT-2 (QA-006): the stores folded into one column (LedgerStockTable).
         <LedgerStockTable state={state} matrix={matrix} history={history} food={food} highlighted={highlighted} onHighlight={onHighlight} onInspect={onInspect} />)) : null}
@@ -308,7 +321,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
 export function PauseMenu({ onResume, settings }: { readonly onResume: () => void; readonly settings: ReactNode }) {
   return (
     <div className="pause-menu-backdrop" role="presentation">
-      <section className="pause-menu" role="dialog" aria-modal="true" aria-label={HUD_COPY.pauseTitle}>
+      <section className="pause-menu" data-frame="modal" role="dialog" aria-modal="true" aria-label={HUD_COPY.pauseTitle}>
         <h2>{HUD_COPY.pauseTitle}</h2>
         <Button type="button" className="pause-menu-resume" onPress={() => onResume()} variant="primary"><UiIcon sheet="time" cell="play" />{HUD_COPY.pauseResume}</Button>
         <div className="pause-menu-settings">{settings}</div>

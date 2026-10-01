@@ -1,28 +1,30 @@
-.settlement-progress { background: var(--palette-vellum); color: var(--palette-ink); border: 2px solid var(--palette-earth); font: var(--font-body)/1.5 var(--ui-body-font); word-break: keep-all; }
+/* UI-AUDIT-1: a flat frame (its own 2 px rule) with the 8 px gap inside; the summary and the body sit in that inner box. */
+.settlement-progress { min-width: 0; padding: var(--frame-gap); background: var(--palette-vellum); color: var(--palette-ink); border: 2px solid var(--palette-earth); font: var(--font-body)/1.5 var(--ui-body-font); word-break: keep-all; overflow-wrap: anywhere; }
 .settlement-progress summary { cursor: pointer; padding: 8px 12px; font-size: var(--font-body); font-weight: bold; }
 .settlement-progress summary span { display: block; font-size: var(--font-body); font-weight: normal; }
-.settlement-progress-body, .settlement-restart { padding: 4px 12px 12px; }
+.settlement-progress-body, .settlement-restart { padding: 4px 4px 0; }
 .settlement-progress p { margin: 4px 0 8px; }
 .settlement-progress ul { margin: 8px 0; padding: 0; list-style: none; }
 .settlement-progress li { display: flex; justify-content: space-between; gap: 8px; padding: 4px 0; }
 .settlement-progress li strong { flex-shrink: 0; font-variant-numeric: tabular-nums; }
 .settlement-hold { display: grid; gap: 4px; }
 .settlement-hold progress { width: 100%; height: 8px; accent-color: var(--palette-earth); }
-.settlement-progress .settlement-crisis { border-top: 1px solid var(--palette-earth); padding: 8px 12px; color: var(--palette-vermilion); }
+.settlement-progress .settlement-crisis { border-top: 1px solid var(--palette-earth); padding: 8px 4px; color: var(--palette-vermilion); }
 .settlement-restart button { font: inherit; padding: 8px; margin-right: 4px; color: var(--palette-ink); background: var(--palette-parchment); border: 1px solid var(--palette-earth); cursor: pointer; }
 .settlement-progress :focus-visible { outline: 2px solid var(--palette-ink); outline-offset: 2px; }
 
-.settlement-progress summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 4px 8px; list-style: none; }
+.settlement-progress summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 4px; list-style: none; }
 .settlement-progress summary::-webkit-details-marker { display: none; }
 .settlement-progress summary strong { flex: 1; min-width: 0; font-size: var(--font-meta); }
 .settlement-progress summary span { display: inline; font-size: var(--font-meta); }
 .settlement-disclosure { flex-shrink: 0; text-decoration: underline; }
 .settlement-progress--changed { outline: 2px solid var(--palette-gold); outline-offset: 1px; }
-.settlement-progress-body { max-height: min(40vh, 320px); overflow-y: auto; }
+/* The body does not scroll by itself: the panel slot around the goal log scrolls (one scroller, S-30). */
+.settlement-progress-body { overflow: visible; }
 /* NAT-1: medium width token for the crisis card slot. */
 .settlement-crisis-slot { position: fixed; right: 12px; bottom: calc(var(--command-height) + 66px); z-index: 4; width: min(var(--box-w-medium), calc(100vw - 32px)); pointer-events: none; }
 .settlement-crisis-slot:empty { display: none; }
-.settlement-crisis-slot .settlement-crisis { margin: 0; padding: 8px 12px; color: var(--palette-ink); background: var(--palette-vellum); border: 2px solid var(--palette-vermilion); }
+.settlement-crisis-slot .settlement-crisis { margin: 0; color: var(--palette-ink); background: var(--palette-vellum); }
 @media (max-width: 850px) {
   .settlement-progress summary { flex-wrap: wrap; }
   .settlement-progress summary strong { flex-basis: 60%; }

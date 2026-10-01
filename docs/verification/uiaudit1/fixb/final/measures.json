@@ -1,0 +1,2692 @@
+{
+ "after/1280x800-normal-normal": [
+  {
+   "name": "modal.history.records",
+   "found": true,
+   "root": {
+    "l": 0,
+    "t": 0,
+    "r": 1280,
+    "b": 800
+   },
+   "audit": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.record-card",
+   "found": true,
+   "root": {
+    "l": 16,
+    "t": 234.6875,
+    "r": 730.484375,
+    "b": 371.6875
+   },
+   "audit": {
+    "total": 10,
+    "counts": {
+     "outside": 6,
+     "overflow": 2,
+     "border": 2
+    },
+    "first": [
+     "outside: image beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-art.chronicle-card-art--portrait 63.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 7.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 7.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 8.6px",
+     "outside: text beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-text > span.chronicle-card-date 24.7px",
+     "outside: text beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-text > span.chronicle-card-line 6.7px",
+     "overflow: content wider than the surface — article.chronicle-card.chronicle-card--person 11px",
+     "overflow: content taller than the surface — article.chronicle-card.chronicle-card--person 17px",
+     "border: image on the frame — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-art.chronicle-card-art--portrait 55.2px",
+     "border: control on the frame — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 0.6px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-card.chronicle-card--person 11px",
+     "overflow: content taller than the surface — article.chronicle-card.chronicle-card--person 17px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.snapshot-map",
+   "found": true,
+   "root": {
+    "l": 758.484375,
+    "t": 286.28125,
+    "r": 1078.484375,
+    "b": 625.28125
+   },
+   "audit": {
+    "total": 2,
+    "counts": {
+     "outside": 2
+    },
+    "first": [
+     "outside: image beyond the inner box — figure.chronicle-map > div.chronicle-map-box > div.chronicle-map-inner > canvas.chronicle-map-canvas 8px",
+     "outside: text beyond the inner box — figure.chronicle-map > figcaption 80px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — div.chronicle-map-box 45px",
+     "overflow: content taller than the surface — div.chronicle-map-box 45px"
+    ]
+   }
+  },
+  {
+   "name": "modal.select-list",
+   "found": true,
+   "root": {
+    "l": 453.3125,
+    "t": 224.6875,
+    "r": 638,
+    "b": 400.6875
+   },
+   "audit": {
+    "total": 3,
+    "counts": {
+     "outside": 3
+    },
+    "first": [
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option.ui-select-option--active 12px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px"
+    ]
+   },
+   "box": {
+    "total": 3,
+    "counts": {
+     "outside": 3
+    },
+    "first": [
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option.ui-select-option--active 12px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.decision",
+   "found": true,
+   "root": {
+    "l": 758.484375,
+    "t": 309.28125,
+    "r": 1250,
+    "b": 539.671875
+   },
+   "audit": {
+    "total": 6,
+    "counts": {
+     "outside": 4,
+     "overflow": 2
+    },
+    "first": [
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > p.chronicle-decision-pending 11.8px",
+     "overflow: content wider than the surface — section.chronicle-decision 9px",
+     "overflow: content taller than the surface — section.chronicle-decision 13px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-decision 9px",
+     "overflow: content taller than the surface — section.chronicle-decision 13px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.biography",
+   "found": true,
+   "root": {
+    "l": 372.796875,
+    "t": 112,
+    "r": 907.1875,
+    "b": 780
+   },
+   "audit": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-biography 22px",
+     "overflow: content taller than the surface — article.chronicle-biography 24px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-biography 22px",
+     "overflow: content taller than the surface — article.chronicle-biography 24px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.family-tree",
+   "found": true,
+   "root": {
+    "l": 16,
+    "t": 112,
+    "r": 1264,
+    "b": 788
+   },
+   "audit": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.factions",
+   "found": true,
+   "root": {
+    "l": 50,
+    "t": 62,
+    "r": 1230,
+    "b": 878.921875
+   },
+   "audit": {
+    "total": 1,
+    "counts": {
+     "overflow": 1
+    },
+    "first": [
+     "overflow: a part scrolls (x) — div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip 1034px"
+    ]
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.faction-page",
+   "found": true,
+   "root": {
+    "l": 352.796875,
+    "t": 62,
+    "r": 927.1875,
+    "b": 780
+   },
+   "audit": {
+    "total": 4,
+    "counts": {
+     "overflow": 4
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-faction 26px",
+     "overflow: content taller than the surface — article.chronicle-faction 27px",
+     "overflow: a part scrolls (y) — article.chronicle-faction > div.chronicle-page-art > section.chronicle-faction-box.chronicle-faction-box--memory > ul 106px",
+     "overflow: a part scrolls (y) — article.chronicle-faction > div.chronicle-page-art > section.chronicle-faction-box > ul 332px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-faction 26px",
+     "overflow: content taller than the surface — article.chronicle-faction 27px"
+    ]
+   }
+  },
+  {
+   "name": "modal.legacy-ending",
+   "found": true,
+   "root": {
+    "l": 621.609375,
+    "t": 24,
+    "r": 1241.609375,
+    "b": 776
+   },
+   "audit": {
+    "total": 15,
+    "counts": {
+     "outside": 12,
+     "overflow": 3
+    },
+    "first": [
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > div.legacy-ending-plate 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > ul.legacy-axes > li.legacy-axis 8px",
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > ul.legacy-axes > li.legacy-axis 8px",
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > ul.legacy-axes > li.legacy-axis 8px",
+     "outside: rule beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-footer 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > p.legacy-verdict-title 8px",
+     "outside: text beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > p.legacy-ending-sentence 8px",
+     "outside: text beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > h3.legacy-quotes-heading 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > h3 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-ending 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-ending 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.title",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 8,
+    "counts": {
+     "outside": 5,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px",
+     "overflow: a part scrolls (y) — section.chronicle-page.legacy-book > div.legacy-book-body > article.legacy-book-page 79px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter1",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 17,
+    "counts": {
+     "outside": 14,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter2",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 17,
+    "counts": {
+     "outside": 14,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter3",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 17,
+    "counts": {
+     "outside": 14,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter4",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 17,
+    "counts": {
+     "outside": 14,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter5",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 17,
+    "counts": {
+     "outside": 14,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave33 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.family",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 27,
+    "counts": {
+     "outside": 24,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.factions",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 12,
+    "counts": {
+     "outside": 9,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > h2 2px",
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px",
+     "overflow: a part scrolls (y) — section.chronicle-page.legacy-book > div.legacy-book-body > article.legacy-book-page 1386px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.legacy",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 19,
+    "counts": {
+     "outside": 16,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > div.legacy-ending-block > div.legacy-ending-plate 2px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 2px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-legacy > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  }
+ ],
+ "after/1280x800-long-extreme": [
+  {
+   "name": "modal.history.records",
+   "found": true,
+   "root": {
+    "l": 0,
+    "t": 0,
+    "r": 1280,
+    "b": 800
+   },
+   "audit": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.record-card",
+   "found": true,
+   "root": {
+    "l": 16,
+    "t": 258.203125,
+    "r": 730.484375,
+    "b": 395.203125
+   },
+   "audit": {
+    "total": 10,
+    "counts": {
+     "outside": 6,
+     "overflow": 2,
+     "border": 2
+    },
+    "first": [
+     "outside: image beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-art.chronicle-card-art--portrait 63.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 7.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 7.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 8.6px",
+     "outside: text beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-text > span.chronicle-card-date 34.1px",
+     "outside: text beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-text > span.chronicle-card-line 16.1px",
+     "overflow: content wider than the surface — article.chronicle-card.chronicle-card--person 11px",
+     "overflow: content taller than the surface — article.chronicle-card.chronicle-card--person 17px",
+     "border: image on the frame — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-art.chronicle-card-art--portrait 55.2px",
+     "border: control on the frame — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 0.6px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-card.chronicle-card--person 11px",
+     "overflow: content taller than the surface — article.chronicle-card.chronicle-card--person 17px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.snapshot-map",
+   "found": true,
+   "root": {
+    "l": 758.484375,
+    "t": 329.390625,
+    "r": 1078.484375,
+    "b": 668.390625
+   },
+   "audit": {
+    "total": 2,
+    "counts": {
+     "outside": 2
+    },
+    "first": [
+     "outside: image beyond the inner box — figure.chronicle-map > div.chronicle-map-box > div.chronicle-map-inner > canvas.chronicle-map-canvas 8px",
+     "outside: text beyond the inner box — figure.chronicle-map > figcaption 80px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — div.chronicle-map-box 45px",
+     "overflow: content taller than the surface — div.chronicle-map-box 45px"
+    ]
+   }
+  },
+  {
+   "name": "modal.select-list",
+   "found": true,
+   "root": {
+    "l": 549.03125,
+    "t": 223.203125,
+    "r": 785.25,
+    "b": 399.203125
+   },
+   "audit": {
+    "total": 3,
+    "counts": {
+     "outside": 3
+    },
+    "first": [
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option.ui-select-option--active 12px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px"
+    ]
+   },
+   "box": {
+    "total": 3,
+    "counts": {
+     "outside": 3
+    },
+    "first": [
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option.ui-select-option--active 12px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.decision",
+   "found": true,
+   "root": {
+    "l": 758.484375,
+    "t": 332.796875,
+    "r": 1250,
+    "b": 563.1875
+   },
+   "audit": {
+    "total": 7,
+    "counts": {
+     "outside": 5,
+     "overflow": 2
+    },
+    "first": [
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — div.chronicle-decision-column > dl.chronicle-decision-rows > div.chronicle-decision-row > dt 13.9px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > p.chronicle-decision-pending 12.4px",
+     "overflow: content wider than the surface — section.chronicle-decision 9px",
+     "overflow: content taller than the surface — section.chronicle-decision 13px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-decision 9px",
+     "overflow: content taller than the surface — section.chronicle-decision 13px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.biography",
+   "found": true,
+   "root": {
+    "l": 372.796875,
+    "t": 112,
+    "r": 907.1875,
+    "b": 780
+   },
+   "audit": {
+    "total": 3,
+    "counts": {
+     "overflow": 3
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-biography 22px",
+     "overflow: content taller than the surface — article.chronicle-biography 24px",
+     "overflow: a part scrolls (y) — article.chronicle-biography > div.chronicle-page-art > header.chronicle-biography-header 16px"
+    ]
+   },
+   "box": {
+    "total": 3,
+    "counts": {
+     "overflow": 3
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-biography 22px",
+     "overflow: content taller than the surface — article.chronicle-biography 24px",
+     "overflow: a part scrolls (y) — article.chronicle-biography > div.chronicle-page-art > header.chronicle-biography-header 16px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.family-tree",
+   "found": true,
+   "root": {
+    "l": 16,
+    "t": 112,
+    "r": 1264,
+    "b": 788
+   },
+   "audit": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.factions",
+   "found": true,
+   "root": {
+    "l": 50,
+    "t": 62,
+    "r": 1230,
+    "b": 878.921875
+   },
+   "audit": {
+    "total": 1,
+    "counts": {
+     "overflow": 1
+    },
+    "first": [
+     "overflow: a part scrolls (x) — div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip 1034px"
+    ]
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.faction-page",
+   "found": true,
+   "root": {
+    "l": 352.796875,
+    "t": 62,
+    "r": 927.1875,
+    "b": 780
+   },
+   "audit": {
+    "total": 4,
+    "counts": {
+     "overflow": 4
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-faction 26px",
+     "overflow: content taller than the surface — article.chronicle-faction 27px",
+     "overflow: a part scrolls (y) — article.chronicle-faction > div.chronicle-page-art > section.chronicle-faction-box.chronicle-faction-box--memory > ul 106px",
+     "overflow: a part scrolls (y) — article.chronicle-faction > div.chronicle-page-art > section.chronicle-faction-box > ul 429px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-faction 26px",
+     "overflow: content taller than the surface — article.chronicle-faction 27px"
+    ]
+   }
+  },
+  {
+   "name": "modal.legacy-ending",
+   "found": true,
+   "root": {
+    "l": 621.609375,
+    "t": 24,
+    "r": 1241.609375,
+    "b": 776
+   },
+   "audit": {
+    "total": 14,
+    "counts": {
+     "outside": 11,
+     "overflow": 3
+    },
+    "first": [
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > div.legacy-ending-plate 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > ul.legacy-axes > li.legacy-axis 8px",
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > ul.legacy-axes > li.legacy-axis 8px",
+     "outside: rule beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-footer 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > p.legacy-verdict-title 8px",
+     "outside: text beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > p.legacy-ending-sentence 8px",
+     "outside: text beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > h3.legacy-quotes-heading 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > h3 8px",
+     "overflow: content wider than the surface — section.chronicle-page.legacy-ending 16px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-ending 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-ending 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.title",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 8,
+    "counts": {
+     "outside": 5,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px",
+     "overflow: a part scrolls (y) — section.chronicle-page.legacy-book > div.legacy-book-body > article.legacy-book-page 79px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter1",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 17,
+    "counts": {
+     "outside": 14,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter2",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 17,
+    "counts": {
+     "outside": 14,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter3",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 17,
+    "counts": {
+     "outside": 14,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter4",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 17,
+    "counts": {
+     "outside": 14,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter5",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 17,
+    "counts": {
+     "outside": 14,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave33 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.family",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 20,
+    "counts": {
+     "outside": 17,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.factions",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 12,
+    "counts": {
+     "outside": 9,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > h2 2px",
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px",
+     "overflow: a part scrolls (y) — section.chronicle-page.legacy-book > div.legacy-book-body > article.legacy-book-page 1386px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.legacy",
+   "found": true,
+   "root": {
+    "l": 150,
+    "t": 24,
+    "r": 1130,
+    "b": 776
+   },
+   "audit": {
+    "total": 18,
+    "counts": {
+     "outside": 15,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > div.legacy-ending-block > div.legacy-ending-plate 2px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-legacy > h2 2px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-legacy > p.legacy-book-summary 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  }
+ ],
+ "after/tablet-1180x820-long-extreme": [
+  {
+   "name": "modal.history.records",
+   "found": true,
+   "root": {
+    "l": 0,
+    "t": 0,
+    "r": 1180,
+    "b": 820
+   },
+   "audit": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.record-card",
+   "found": true,
+   "root": {
+    "l": 16,
+    "t": 284.953125,
+    "r": 630.484375,
+    "b": 421.953125
+   },
+   "audit": {
+    "total": 12,
+    "counts": {
+     "outside": 6,
+     "overflow": 2,
+     "border": 4
+    },
+    "first": [
+     "outside: image beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-art.chronicle-card-art--portrait 63.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 11.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 11.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 11.2px",
+     "outside: text beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-text > span.chronicle-card-date 34.1px",
+     "outside: text beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-text > span.chronicle-card-line 16.1px",
+     "overflow: content wider than the surface — article.chronicle-card.chronicle-card--person 11px",
+     "overflow: content taller than the surface — article.chronicle-card.chronicle-card--person 17px",
+     "border: image on the frame — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-art.chronicle-card-art--portrait 55.2px",
+     "border: control on the frame — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 3.2px",
+     "border: control on the frame — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 3.2px",
+     "border: control on the frame — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 3.2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-card.chronicle-card--person 11px",
+     "overflow: content taller than the surface — article.chronicle-card.chronicle-card--person 17px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.snapshot-map",
+   "found": true,
+   "root": {
+    "l": 658.484375,
+    "t": 356.140625,
+    "r": 978.484375,
+    "b": 695.140625
+   },
+   "audit": {
+    "total": 2,
+    "counts": {
+     "outside": 2
+    },
+    "first": [
+     "outside: image beyond the inner box — figure.chronicle-map > div.chronicle-map-box > div.chronicle-map-inner > canvas.chronicle-map-canvas 8px",
+     "outside: text beyond the inner box — figure.chronicle-map > figcaption 80px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — div.chronicle-map-box 45px",
+     "overflow: content taller than the surface — div.chronicle-map-box 45px"
+    ]
+   }
+  },
+  {
+   "name": "modal.select-list",
+   "found": true,
+   "root": {
+    "l": 549.03125,
+    "t": 222.953125,
+    "r": 785.25,
+    "b": 398.953125
+   },
+   "audit": {
+    "total": 3,
+    "counts": {
+     "outside": 3
+    },
+    "first": [
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option.ui-select-option--active 12px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px"
+    ]
+   },
+   "box": {
+    "total": 3,
+    "counts": {
+     "outside": 3
+    },
+    "first": [
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option.ui-select-option--active 12px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.decision",
+   "found": true,
+   "root": {
+    "l": 658.484375,
+    "t": 359.546875,
+    "r": 1150,
+    "b": 589.9375
+   },
+   "audit": {
+    "total": 7,
+    "counts": {
+     "outside": 5,
+     "overflow": 2
+    },
+    "first": [
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — div.chronicle-decision-column > dl.chronicle-decision-rows > div.chronicle-decision-row > dt 13.9px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > p.chronicle-decision-pending 12.4px",
+     "overflow: content wider than the surface — section.chronicle-decision 9px",
+     "overflow: content taller than the surface — section.chronicle-decision 13px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-decision 9px",
+     "overflow: content taller than the surface — section.chronicle-decision 13px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.biography",
+   "found": true,
+   "root": {
+    "l": 318,
+    "t": 120,
+    "r": 862,
+    "b": 800
+   },
+   "audit": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-biography 23px",
+     "overflow: content taller than the surface — article.chronicle-biography 24px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-biography 23px",
+     "overflow: content taller than the surface — article.chronicle-biography 24px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.family-tree",
+   "found": true,
+   "root": {
+    "l": 16,
+    "t": 120,
+    "r": 1164,
+    "b": 808
+   },
+   "audit": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.factions",
+   "found": true,
+   "root": {
+    "l": 16,
+    "t": 66,
+    "r": 1164,
+    "b": 882.921875
+   },
+   "audit": {
+    "total": 1,
+    "counts": {
+     "overflow": 1
+    },
+    "first": [
+     "overflow: a part scrolls (x) — div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip 1066px"
+    ]
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.faction-page",
+   "found": true,
+   "root": {
+    "l": 296.40625,
+    "t": 66,
+    "r": 883.59375,
+    "b": 800
+   },
+   "audit": {
+    "total": 4,
+    "counts": {
+     "overflow": 4
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-faction 26px",
+     "overflow: content taller than the surface — article.chronicle-faction 27px",
+     "overflow: a part scrolls (y) — article.chronicle-faction > div.chronicle-page-art > section.chronicle-faction-box.chronicle-faction-box--memory > ul 142px",
+     "overflow: a part scrolls (y) — article.chronicle-faction > div.chronicle-page-art > section.chronicle-faction-box > ul 360px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-faction 26px",
+     "overflow: content taller than the surface — article.chronicle-faction 27px"
+    ]
+   }
+  },
+  {
+   "name": "modal.legacy-ending",
+   "found": true,
+   "root": {
+    "l": 524.609375,
+    "t": 24.59375,
+    "r": 1144.609375,
+    "b": 795.390625
+   },
+   "audit": {
+    "total": 14,
+    "counts": {
+     "outside": 11,
+     "overflow": 3
+    },
+    "first": [
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > div.legacy-ending-plate 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > ul.legacy-axes > li.legacy-axis 8px",
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > ul.legacy-axes > li.legacy-axis 8px",
+     "outside: rule beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-footer 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > p.legacy-verdict-title 8px",
+     "outside: text beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > p.legacy-ending-sentence 8px",
+     "outside: text beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > h3.legacy-quotes-heading 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > h3 8px",
+     "overflow: content wider than the surface — section.chronicle-page.legacy-ending 16px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-ending 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-ending 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.title",
+   "found": true,
+   "root": {
+    "l": 100,
+    "t": 24.59375,
+    "r": 1080,
+    "b": 795.390625
+   },
+   "audit": {
+    "total": 8,
+    "counts": {
+     "outside": 5,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px",
+     "overflow: a part scrolls (y) — section.chronicle-page.legacy-book > div.legacy-book-body > article.legacy-book-page 60px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter1",
+   "found": true,
+   "root": {
+    "l": 100,
+    "t": 24.59375,
+    "r": 1080,
+    "b": 795.390625
+   },
+   "audit": {
+    "total": 18,
+    "counts": {
+     "outside": 15,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter2",
+   "found": true,
+   "root": {
+    "l": 100,
+    "t": 24.59375,
+    "r": 1080,
+    "b": 795.390625
+   },
+   "audit": {
+    "total": 16,
+    "counts": {
+     "outside": 14,
+     "overflow": 2
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter3",
+   "found": true,
+   "root": {
+    "l": 100,
+    "t": 24.59375,
+    "r": 1080,
+    "b": 795.390625
+   },
+   "audit": {
+    "total": 18,
+    "counts": {
+     "outside": 15,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter4",
+   "found": true,
+   "root": {
+    "l": 100,
+    "t": 24.59375,
+    "r": 1080,
+    "b": 795.390625
+   },
+   "audit": {
+    "total": 18,
+    "counts": {
+     "outside": 15,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter5",
+   "found": true,
+   "root": {
+    "l": 100,
+    "t": 24.59375,
+    "r": 1080,
+    "b": 795.390625
+   },
+   "audit": {
+    "total": 18,
+    "counts": {
+     "outside": 15,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave33 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.family",
+   "found": true,
+   "root": {
+    "l": 100,
+    "t": 24.59375,
+    "r": 1080,
+    "b": 795.390625
+   },
+   "audit": {
+    "total": 20,
+    "counts": {
+     "outside": 17,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.factions",
+   "found": true,
+   "root": {
+    "l": 100,
+    "t": 24.59375,
+    "r": 1080,
+    "b": 795.390625
+   },
+   "audit": {
+    "total": 12,
+    "counts": {
+     "outside": 9,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > h2 2px",
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px",
+     "overflow: a part scrolls (y) — section.chronicle-page.legacy-book > div.legacy-book-body > article.legacy-book-page 1367px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.legacy",
+   "found": true,
+   "root": {
+    "l": 100,
+    "t": 24.59375,
+    "r": 1080,
+    "b": 795.390625
+   },
+   "audit": {
+    "total": 18,
+    "counts": {
+     "outside": 15,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > div.legacy-ending-block > div.legacy-ending-plate 2px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-legacy > h2 2px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-legacy > p.legacy-book-summary 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  }
+ ],
+ "after/1920x1080-normal-normal": [
+  {
+   "name": "modal.history.records",
+   "found": true,
+   "root": {
+    "l": 0,
+    "t": 0,
+    "r": 1920,
+    "b": 1080
+   },
+   "audit": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.record-card",
+   "found": true,
+   "root": {
+    "l": 16,
+    "t": 274.6875,
+    "r": 1370.484375,
+    "b": 411.6875
+   },
+   "audit": {
+    "total": 10,
+    "counts": {
+     "outside": 6,
+     "overflow": 2,
+     "border": 2
+    },
+    "first": [
+     "outside: image beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-art.chronicle-card-art--portrait 63.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 7.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 7.2px",
+     "outside: control beyond the inner box — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 8.6px",
+     "outside: text beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-text > span.chronicle-card-date 24.7px",
+     "outside: text beyond the inner box — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-text > span.chronicle-card-line 6.7px",
+     "overflow: content wider than the surface — article.chronicle-card.chronicle-card--person 11px",
+     "overflow: content taller than the surface — article.chronicle-card.chronicle-card--person 17px",
+     "border: image on the frame — article.chronicle-card.chronicle-card--person > button.chronicle-card-body > span.chronicle-card-art.chronicle-card-art--portrait 55.2px",
+     "border: control on the frame — article.chronicle-card.chronicle-card--person > div.chronicle-card-actions > button.chronicle-card-action 0.6px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-card.chronicle-card--person 11px",
+     "overflow: content taller than the surface — article.chronicle-card.chronicle-card--person 17px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.snapshot-map",
+   "found": true,
+   "root": {
+    "l": 1398.484375,
+    "t": 326.28125,
+    "r": 1718.484375,
+    "b": 665.28125
+   },
+   "audit": {
+    "total": 2,
+    "counts": {
+     "outside": 2
+    },
+    "first": [
+     "outside: image beyond the inner box — figure.chronicle-map > div.chronicle-map-box > div.chronicle-map-inner > canvas.chronicle-map-canvas 8px",
+     "outside: text beyond the inner box — figure.chronicle-map > figcaption 80px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — div.chronicle-map-box 45px",
+     "overflow: content taller than the surface — div.chronicle-map-box 45px"
+    ]
+   }
+  },
+  {
+   "name": "modal.select-list",
+   "found": true,
+   "root": {
+    "l": 453.3125,
+    "t": 264.6875,
+    "r": 638,
+    "b": 440.6875
+   },
+   "audit": {
+    "total": 3,
+    "counts": {
+     "outside": 3
+    },
+    "first": [
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option.ui-select-option--active 12px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px"
+    ]
+   },
+   "box": {
+    "total": 3,
+    "counts": {
+     "outside": 3
+    },
+    "first": [
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option.ui-select-option--active 12px",
+     "outside: text beyond the inner box — ul.ui-frame.ui-frame--light > li.ui-select-option 4px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.decision",
+   "found": true,
+   "root": {
+    "l": 1398.484375,
+    "t": 349.28125,
+    "r": 1890,
+    "b": 579.671875
+   },
+   "audit": {
+    "total": 6,
+    "counts": {
+     "outside": 4,
+     "overflow": 2
+    },
+    "first": [
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > h4 10.3px",
+     "outside: text beyond the inner box — section.chronicle-decision > div.chronicle-decision-space > div.chronicle-decision-column > p.chronicle-decision-pending 11.8px",
+     "overflow: content wider than the surface — section.chronicle-decision 9px",
+     "overflow: content taller than the surface — section.chronicle-decision 13px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-decision 9px",
+     "overflow: content taller than the surface — section.chronicle-decision 13px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.biography",
+   "found": true,
+   "root": {
+    "l": 640,
+    "t": 112,
+    "r": 1280,
+    "b": 912
+   },
+   "audit": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-biography 26px",
+     "overflow: content taller than the surface — article.chronicle-biography 28px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-biography 26px",
+     "overflow: content taller than the surface — article.chronicle-biography 28px"
+    ]
+   }
+  },
+  {
+   "name": "modal.history.family-tree",
+   "found": true,
+   "root": {
+    "l": 16,
+    "t": 112,
+    "r": 1904,
+    "b": 1068
+   },
+   "audit": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.factions",
+   "found": true,
+   "root": {
+    "l": 370,
+    "t": 62,
+    "r": 1550,
+    "b": 878.921875
+   },
+   "audit": {
+    "total": 1,
+    "counts": {
+     "overflow": 1
+    },
+    "first": [
+     "overflow: a part scrolls (x) — div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip 1034px"
+    ]
+   },
+   "box": {
+    "total": 0,
+    "counts": {},
+    "first": []
+   }
+  },
+  {
+   "name": "modal.history.faction-page",
+   "found": true,
+   "root": {
+    "l": 640,
+    "t": 62,
+    "r": 1280,
+    "b": 862
+   },
+   "audit": {
+    "total": 4,
+    "counts": {
+     "overflow": 4
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-faction 28px",
+     "overflow: content taller than the surface — article.chronicle-faction 29px",
+     "overflow: a part scrolls (y) — article.chronicle-faction > div.chronicle-page-art > section.chronicle-faction-box.chronicle-faction-box--memory > ul 84px",
+     "overflow: a part scrolls (y) — article.chronicle-faction > div.chronicle-page-art > section.chronicle-faction-box > ul 294px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — article.chronicle-faction 28px",
+     "overflow: content taller than the surface — article.chronicle-faction 29px"
+    ]
+   }
+  },
+  {
+   "name": "modal.legacy-ending",
+   "found": true,
+   "root": {
+    "l": 1242.40625,
+    "t": 150,
+    "r": 1862.40625,
+    "b": 930
+   },
+   "audit": {
+    "total": 15,
+    "counts": {
+     "outside": 12,
+     "overflow": 3
+    },
+    "first": [
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > div.legacy-ending-plate 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 8px",
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > ul.legacy-axes > li.legacy-axis 8px",
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > ul.legacy-axes > li.legacy-axis 8px",
+     "outside: rule beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > ul.legacy-axes > li.legacy-axis 8px",
+     "outside: rule beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-footer 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > p.legacy-verdict-title 8px",
+     "outside: text beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > p.legacy-ending-sentence 8px",
+     "outside: text beyond the inner box — div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > div.legacy-ending-block > h3.legacy-quotes-heading 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-ending > div.chapter-page-body.legacy-ending-body > div.legacy-ending-scroll > h3 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-ending 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-ending 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.title",
+   "found": true,
+   "root": {
+    "l": 470,
+    "t": 150,
+    "r": 1450,
+    "b": 930
+   },
+   "audit": {
+    "total": 8,
+    "counts": {
+     "outside": 5,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px",
+     "overflow: a part scrolls (y) — section.chronicle-page.legacy-book > div.legacy-book-body > article.legacy-book-page 51px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter1",
+   "found": true,
+   "root": {
+    "l": 470,
+    "t": 150,
+    "r": 1450,
+    "b": 930
+   },
+   "audit": {
+    "total": 18,
+    "counts": {
+     "outside": 15,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter2",
+   "found": true,
+   "root": {
+    "l": 470,
+    "t": 150,
+    "r": 1450,
+    "b": 930
+   },
+   "audit": {
+    "total": 16,
+    "counts": {
+     "outside": 14,
+     "overflow": 2
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave17 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-chapter > h2 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter3",
+   "found": true,
+   "root": {
+    "l": 470,
+    "t": 150,
+    "r": 1450,
+    "b": 930
+   },
+   "audit": {
+    "total": 18,
+    "counts": {
+     "outside": 15,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter4",
+   "found": true,
+   "root": {
+    "l": 470,
+    "t": 150,
+    "r": 1450,
+    "b": 930
+   },
+   "audit": {
+    "total": 18,
+    "counts": {
+     "outside": 15,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave16 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.chapter5",
+   "found": true,
+   "root": {
+    "l": 470,
+    "t": 150,
+    "r": 1450,
+    "b": 930
+   },
+   "audit": {
+    "total": 18,
+    "counts": {
+     "outside": 15,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave33 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: image beyond the inner box — section > ol.legacy-book-lines > li.legacy-book-line > span.legacy-book-art.legacy-book-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.family",
+   "found": true,
+   "root": {
+    "l": 470,
+    "t": 150,
+    "r": 1450,
+    "b": 930
+   },
+   "audit": {
+    "total": 28,
+    "counts": {
+     "outside": 25,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px",
+     "outside: rule beyond the inner box — div.legacy-book-family > section.legacy-book-house > ol.legacy-book-people > li.legacy-book-person 2px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.factions",
+   "found": true,
+   "root": {
+    "l": 470,
+    "t": 150,
+    "r": 1450,
+    "b": 930
+   },
+   "audit": {
+    "total": 12,
+    "counts": {
+     "outside": 9,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: rule beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > section.legacy-book-faction 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px",
+     "outside: text beyond the inner box — div.legacy-book-body > article.legacy-book-page > div.legacy-book-factions > h2 2px",
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px",
+     "overflow: a part scrolls (y) — section.chronicle-page.legacy-book > div.legacy-book-body > article.legacy-book-page 1358px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  },
+  {
+   "name": "book.legacy",
+   "found": true,
+   "root": {
+    "l": 470,
+    "t": 150,
+    "r": 1450,
+    "b": 930
+   },
+   "audit": {
+    "total": 20,
+    "counts": {
+     "outside": 17,
+     "overflow": 3
+    },
+    "first": [
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-export 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > button.legacy-book-close 8px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > ul.legacy-axes > li.legacy-axis 2px",
+     "outside: rule beyond the inner box — article.legacy-book-page > div.legacy-book-legacy > div.legacy-ending-block > div.legacy-ending-plate 2px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 2px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 2px",
+     "outside: image beyond the inner box — div.legacy-ending-block > ol.legacy-quotes > li.legacy-quote > span.legacy-quote-art.legacy-quote-art--wave21 2px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-prev 8px",
+     "outside: control beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > nav.legacy-book-turns > button.legacy-book-next 8px",
+     "outside: text beyond the inner box — section.chronicle-page.legacy-book > div.legacy-book-body > header.legacy-book-header > strong.legacy-book-name 8px"
+    ]
+   },
+   "box": {
+    "total": 2,
+    "counts": {
+     "overflow": 2
+    },
+    "first": [
+     "overflow: content wider than the surface — section.chronicle-page.legacy-book 16px",
+     "overflow: content taller than the surface — section.chronicle-page.legacy-book 54px"
+    ]
+   }
+  }
+ ]
+}

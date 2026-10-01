@@ -220,8 +220,8 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
       <div className="build-menu-body" hidden={!catalogOpen}>
         <div className="build-menu-quick-road" role="group" aria-label={KO_UI.roadTool}>{toolButton(ROAD_TOOL_OPTION)}</div>
         <div className="build-menu-catalog">
-          {lockNote !== null ? <p className="build-menu-pinned build-menu-lock-note" role="status"><UiIcon sheet="lock" cell="locked" /> {lockNote}</p>
-            : pinned === null ? null : <p className="build-menu-pinned" role="status">{buildToolTooltipLines(pinned, menuState).join(" · ")}</p>}
+          {lockNote !== null ? <p className="build-menu-pinned build-menu-lock-note" data-frame="tooltip" role="status"><UiIcon sheet="lock" cell="locked" /> {lockNote}</p>
+            : pinned === null ? null : <p className="build-menu-pinned" data-frame="tooltip" role="status">{buildToolTooltipLines(pinned, menuState).join(" · ")}</p>}
           {layer === "zone" && onZoneToolChange !== undefined ? <section id={`${id}-zone`} aria-label={BUILD_MENU_COPY.toolsLabel(TUTORIAL_COPY.layers.zone)} className="build-menu-tools">
             {/* UX-3R2: in the UX-3 shell the eraser, the polygon and the size are on the left zone toolbar. */}
             {ZONE_CARDS.filter(card => open === undefined || card.target !== "erase").map(card => zoneCard(card, access.zoneTargets(card.target)))}
@@ -248,7 +248,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
       </div>
       {open !== undefined && zoneTool === null && !palisadeDrawing ? null : <div className="build-menu-summary">
         {zoneTool !== null && onZoneToolChange !== undefined && open !== undefined ? zoneTool.target === "erase"
-          ? <span className="zone-land-legend">{ZONE_BRUSH_COPY.eraserHint}</span> : <ZoneLandLegend kind={zoneTool.target} />
+          ? <span className="zone-land-legend" data-frame="flat">{ZONE_BRUSH_COPY.eraserHint}</span> : <ZoneLandLegend kind={zoneTool.target} />
         : zoneTool !== null && onZoneToolChange !== undefined ? <>
           <strong>{zoneTool.target === "erase" ? ZONE_BRUSH_COPY.eraser : ZONE_KIND_LABELS[zoneTool.target]}</strong>
           <span className="zone-radius" role="group" aria-label={ZONE_BRUSH_COPY.radiusHint}>
@@ -268,7 +268,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         </>}
         {open !== undefined ? null : <Button type="button" className="build-info-toggle" aria-label={BUILD_MENU_COPY.toolDetailToggle} aria-expanded={detailsOpen} aria-controls={`${id}-details`} onPress={() => { setCatalogOpen(false); setDetailsOpen(!detailsOpen); }} variant="icon"><UiIcon sheet="action" cell="log" size={32} /></Button>}
       </div>}
-      <div id={`${id}-details`} className="build-menu-details" aria-label={BUILD_MENU_COPY.detailsLabel} hidden={!detailsOpen}>
+      <div id={`${id}-details`} className="build-menu-details" aria-label={BUILD_MENU_COPY.detailsLabel} hidden={!detailsOpen} data-frame="light">
         {palisadeDrawing ? <p>{WALL_COPY.drawHint}</p> : selectedOption === null ? <p>{BUILD_MENU_COPY.noToolSelected}</p> : <>
           <div className="build-menu-detail-heading"><strong>{selectedOption.label}</strong><span>{buildCostLabel(selectedOption)}</span></div>
           <p>{selectedOption.purpose}</p><p>{selectedOption.requirements.join(" · ")}</p>

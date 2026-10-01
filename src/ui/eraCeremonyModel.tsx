@@ -70,7 +70,7 @@ export function EraCeremonyBanner(input: {
   };
   return createElement(
     "div",
-    { className: "era-ceremony", style: { "--ceremony-progress": progress }, onClick: dismiss },
+    { className: "era-ceremony", "data-frame": "flat", style: { "--ceremony-progress": progress }, onClick: dismiss },
     createElement(
       "section",
       { className: "era-ceremony__banner", "aria-label": copy.ariaLabel },

@@ -1,36 +1,34 @@
 import type { CSSProperties } from "react";
 
+import { frameContentStyle, frameLayerStyle } from "./frameBox";
+import type { FrameKind } from "./frameTokens.generated";
 import { uiArtUrl } from "./uiArt";
 import { WAVE8_FRAMES, WAVE8_IMAGES } from "./wave8ArtManifest.generated";
 
-// UI-3: Wave 8 art as CSS. A frame is drawn as its own layer (9-slice border-image filling the element) because the
-// frames' content rects and fixed slots sit inside the insets (the season ledger's three scene slots are in its
+// UI-3: Wave 8 art as CSS. A frame is drawn as its own layer (9-slice border-image over the surface's border box) because
+// the frames' content rects and fixed slots sit inside the insets (the season ledger's three scene slots are in its
 // 460 px left inset); the content is placed over it by `wave8ContentStyle`. Source pixels / sourceScale = CSS px.
+// UI-AUDIT-1: the frame tokens (src/ui/frameTokens.generated.ts) carry the insets: the surface's border is the content
+// rect's offsets (its `data-frame` kind), so the body fills the content box.
 export type Wave8ImageId = keyof typeof WAVE8_IMAGES;
 export type Wave8FrameId = keyof typeof WAVE8_FRAMES;
 
 export const wave8Url = (id: Wave8ImageId): string => uiArtUrl(WAVE8_IMAGES[id].url);
 
-/** A layer that paints the frame over its whole box (position it absolutely, inset 0). */
-export function wave8FrameLayerStyle(id: Wave8FrameId): CSSProperties {
-  const frame = WAVE8_FRAMES[id]; const scale = frame.sourceScale; const { top, right, bottom, left } = frame.slice;
-  return {
-    borderStyle: "solid", borderColor: "transparent",
-    borderWidth: `${top / scale}px ${right / scale}px ${bottom / scale}px ${left / scale}px`,
-    borderImage: `url("${uiArtUrl(frame.url)}") ${top} ${right} ${bottom} ${left} fill / ${top / scale}px ${right / scale}px ${bottom / scale}px ${left / scale}px / 0 stretch`,
-  };
-}
+/** The frame kind (data-frame) of each Wave 8 frame a surface wears. */
+export const WAVE8_FRAME_KIND = { frame_chronicle_page: "chapter-page", frame_petition: "petition", frame_season_ledger: "season-ledger" } as const satisfies Partial<Record<Wave8FrameId, FrameKind>>;
+type Wave8LayerId = keyof typeof WAVE8_FRAME_KIND;
+
+/** A layer that paints the frame over the surface's border box (an absolutely placed sibling of the body). */
+export const wave8FrameLayerStyle = (id: Wave8LayerId): CSSProperties => frameLayerStyle(WAVE8_FRAME_KIND[id]);
 
 /** The frame's minimum CSS size. */
 export const wave8FrameMinSize = (id: Wave8FrameId) => ({ width: WAVE8_FRAMES[id].minSize.width / WAVE8_FRAMES[id].sourceScale,
   height: WAVE8_FRAMES[id].minSize.height / WAVE8_FRAMES[id].sourceScale });
 
-/** The content rect as offsets from the frame's edges (the rect grows with the frame's stretch). */
-export function wave8ContentStyle(id: Wave8FrameId, index = 0): CSSProperties {
-  const frame = WAVE8_FRAMES[id]; const scale = frame.sourceScale; const rect = frame.content[index]!;
-  return { position: "absolute", left: rect.x / scale, top: rect.y / scale,
-    right: (frame.width - rect.x - rect.width) / scale, bottom: (frame.height - rect.y - rect.height) / scale };
-}
+/** The body over the content rect: the surface's border is the rect's offsets from the frame's edges (the rect grows with
+ * the frame's stretch), so the body fills the content box, the gap inside the rect. */
+export const wave8ContentStyle = (_id: Wave8LayerId): CSSProperties => frameContentStyle();
 
 /** A whole image as a CSS background at `width` CSS px (height from the image's aspect). */
 export function wave8ImageStyle(id: Wave8ImageId, width: number): CSSProperties {

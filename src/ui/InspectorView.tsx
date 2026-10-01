@@ -7,6 +7,7 @@ import { UiIcon } from "./UiIcon";
 import { StoreInspectorBody } from "./StoreInspector";
 import { storeInspectorModel } from "./storeInspectorModel";
 import type { StoreStockHistory } from "./storeStockHistory";
+import type { StuckGoods } from "./stuckGoodsModel";
 import { householdRows } from "./persons/personModels";
 import { PersonList } from "./persons/PersonViews";
 import { PERSONS_COPY } from "./persons/personsCopy.ko";
@@ -21,17 +22,19 @@ export type InspectorProps = Readonly<{
   onClose: () => void;
   /** UX-3R2: a store opens as the storage inspector (the ledger's column heads, a crisis icon). */
   storeHistory?: StoreStockHistory | null;
+  /** UI-AUDIT-1: the HUD's stuck piles; a piled building's "왜?" and "조치" say what the stuck-goods chip says. */
+  stuck?: readonly StuckGoods[];
 }>;
 
 /** Markup of the left inspector; `Inspector.tsx` adds its stylesheet (kept apart so node tests can render this). */
-export function Inspector({ state, buildingId, onClose, storeHistory = null, onPerson }: InspectorProps): ReactElement | null {
-  const model = inspectorModel(state, buildingId);
+export function Inspector({ state, buildingId, onClose, storeHistory = null, onPerson, stuck = [] }: InspectorProps): ReactElement | null {
+  const model = inspectorModel(state, buildingId, stuck);
   if (model === null) return null;
   const store = buildingId === null ? null : storeInspectorModel(state, buildingId, storeHistory);
   const house = buildingId === null || state.persons === undefined ? null : state.houses.find(entry => entry.buildingId === buildingId) ?? null;
   const members = house === null ? [] : householdRows(state, house.buildingId);
   return (
-    <section className="left-inspector" aria-label={INSPECTOR_COPY.regionLabel} data-target={model.target}>
+    <section className="left-inspector" data-frame="light" aria-label={INSPECTOR_COPY.regionLabel} data-target={model.target}>
       <header className="left-inspector-heading">
         <div className="left-inspector-title">
           <h2>{model.name}</h2>

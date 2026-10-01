@@ -1,9 +1,9 @@
-import { pence } from "./hud/hudCopy.ko";
+import { moneyObject, moneyShort } from "./money.ko";
 
 // UI-4 decision modals: the famine's four answers (FC-2) and the petition's three (FC-3), with the engine's
 // predicted numbers (two seasons on) beside the current ones.
 const METRIC_NAMES: Readonly<Record<string, string>> = { population: "인구", treasury: "금고", merchantGauge: "상인 게이지" };
-const value = (key: string, amount: number) => key === "treasury" ? pence(amount) : String(amount);
+const value = (key: string, amount: number) => key === "treasury" ? moneyShort(amount) : String(amount);
 
 export const DECISION_COPY = {
   famineTitle: "대기근 — 영주의 대응",
@@ -27,7 +27,7 @@ export const DECISION_COPY = {
   },
   petition: {
     accept: { label: "수락", line: (feePermille: number) => `시장권을 줍니다. 좌판세 × ${(feePermille / 1000).toFixed(2)}` },
-    accept_with_price: { label: "가격을 붙여 수락", line: (_feePermille: number, fee: number) => `시장권을 주되 인가료 ${pence(fee)}을 받습니다` },
+    accept_with_price: { label: "가격을 붙여 수락", line: (_feePermille: number, fee: number) => `시장권을 주되 인가료 ${moneyObject(fee)} 받습니다` },
     refuse: { label: "거절", line: () => "시장권을 주지 않습니다. 상인들이 등을 돌립니다" },
   },
   rightsHeading: "권리 목록",

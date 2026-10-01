@@ -1,4 +1,4 @@
-import { pence } from "./hud/hudCopy.ko";
+import { moneyObject, moneyShort } from "./money.ko";
 
 // UI-6: what each petition asks and what each answer does, by the petition's defId (F2-A WR-2…WR-8, FAIL-3 FL-6). The
 // answers' labels are the ledger's own (historyCopy `WAR_CHOICES`); the numbers come from the rules (war.ts).
@@ -9,35 +9,35 @@ export const PETITION_COPY = {
   restore_right: {
     title: "권리 복원 청원",
     demand: "쇠퇴 때 잃은 권리를 넘겨받은 쪽이 되사기를 제안합니다.",
-    accept: (paid: number) => `${pence(paid)}에 권리를 되삽니다 · 칭호도 곧바로 돌아옵니다`,
-    accept_with_price: (paid: number) => `값을 깎아 ${pence(paid)}에 되삽니다 · 칭호는 한 해 뒤에 돌아옵니다`,
+    accept: (paid: number) => `${moneyShort(paid)}에 권리를 되삽니다 · 칭호도 곧바로 돌아옵니다`,
+    accept_with_price: (paid: number) => `값을 깎아 ${moneyShort(paid)}에 되삽니다 · 칭호는 한 해 뒤에 돌아옵니다`,
     refuse: () => "거절합니다 · 한 해 뒤에 다시 청해 옵니다",
   },
   wool_payment: {
     title: "양모 공납 칙령",
-    demand: (houses: number, levy: number) => `국왕이 전쟁에 쓸 양모를 명합니다: 사는 집 ${houses}채 × 20d = ${pence(levy)}.`,
-    accept: (total: number, perSeason: number, seasons: number) => `현물로 ${pence(total)}어치를 ${seasons}계절에 나눠 냅니다(계절마다 ${pence(perSeason)})`,
+    demand: (houses: number, levy: number) => `국왕이 전쟁에 쓸 양모를 명합니다: 사는 집 ${houses}채 × 1s 8d = ${moneyShort(levy)}.`,
+    accept: (total: number, perSeason: number, seasons: number) => `현물로 ${moneyShort(total)}어치를 ${seasons}계절에 나눠 냅니다(계절마다 ${moneyShort(perSeason)})`,
     /** ECON-UI (FIX-7, C5 CL-9): what a season's share takes now — the fleece in the town's stores first, the rest in coin. */
     inKindSplit: (fleeces: number, inKind: number, cash: number) => fleeces === 0
-      ? `창고에 양털이 없어 계절마다 ${pence(cash)} 모두 현금`
-      : cash === 0 ? `계절마다 창고 양털 ${fleeces}뭉치(${pence(inKind)})로 다 냅니다` : `계절마다 창고 양털 ${fleeces}뭉치(${pence(inKind)}) + 현금 ${pence(cash)}`,
+      ? `창고에 양털이 없어 계절마다 ${moneyShort(cash)} 모두 현금`
+      : cash === 0 ? `계절마다 창고 양털 ${fleeces}뭉치(${moneyShort(inKind)})로 다 냅니다` : `계절마다 창고 양털 ${fleeces}뭉치(${moneyShort(inKind)}) + 현금 ${moneyShort(cash)}`,
     acceptInKind: (share: string, split: string) => `${share} · ${split}`,
-    accept_with_price: (levy: number) => `현금 ${pence(levy)}을 지금 냅니다`,
-    refuse: (seized: number) => `거절합니다 · 조달관이 ${pence(seized)}을 가져가고, 왕실의 신임을 잃습니다`,
+    accept_with_price: (levy: number) => `현금 ${moneyObject(levy)} 지금 냅니다`,
+    refuse: (seized: number) => `거절합니다 · 조달관이 ${moneyObject(seized)} 가져가고, 왕실의 신임을 잃습니다`,
   },
   levy_response: {
     title: "징집 명령",
     demand: (men: number) => `국왕이 군역을 명합니다: 어른 스무 명에 한 명, 모두 ${men}명.`,
     accept: (men: number, seasons: number) => `${men}명이 ${seasons}계절 떠납니다 · 다섯에 하나는 돌아오지 못합니다`,
-    accept_with_price: (fee: number) => `면제금 ${pence(fee)}을 내고 아무도 보내지 않습니다`,
+    accept_with_price: (fee: number) => `면제금 ${moneyObject(fee)} 내고 아무도 보내지 않습니다`,
     refuse: () => "사람도 돈도 보내지 않습니다 · 왕실의 신임을 잃습니다",
   },
   war_funding: {
     title: "전쟁 보조세 요구",
-    demand: (subsidy: number) => `국왕이 전쟁 보조세를 요구합니다: 동산의 10분의 1, ${pence(subsidy)}.`,
-    accept: (repay: number, seasons: number) => `상인에게 빌려 곧바로 냅니다 · ${seasons}계절에 걸쳐 ${pence(repay)}을 갚습니다 · 상인 게이지 +10`,
+    demand: (subsidy: number) => `국왕이 전쟁 보조세를 요구합니다: 동산의 10분의 1, ${moneyShort(subsidy)}.`,
+    accept: (repay: number, seasons: number) => `상인에게 빌려 곧바로 냅니다 · ${seasons}계절에 걸쳐 ${moneyObject(repay)} 갚습니다 · 상인 게이지 +10`,
     accept_with_price: (subsidy: number, surcharge: number, seasons: number) =>
-      `금고에서 ${pence(subsidy)}을 냅니다 · ${seasons}계절 동안 지대를 ${percent(surcharge)} 더 걷습니다 · 가난한 가구가 떠날 수 있습니다`,
+      `금고에서 ${moneyObject(subsidy)} 냅니다 · ${seasons}계절 동안 지대를 ${percent(surcharge)} 더 걷습니다 · 가난한 가구가 떠날 수 있습니다`,
     refuse: () => "내지 않습니다 · 왕실의 신임을 잃습니다",
   },
   refugee_admission: {
@@ -45,7 +45,7 @@ export const PETITION_COPY = {
     demand: (households: number, people: number, room: number) =>
       `습격을 피해 온 ${households}가구(${people}명)가 받아 달라고 청합니다 · 지금 들일 자리는 ${room}가구분입니다.`,
     accept: () => "모두 받아들입니다 · 빈 집부터, 자리가 모자라면 들어간 만큼만",
-    accept_with_price: (households: number, fee: number) => `절반(${households}가구)만 받고 가구당 ${pence(fee)}을 받습니다`,
+    accept_with_price: (households: number, fee: number) => `절반(${households}가구)만 받고 가구당 ${moneyObject(fee)} 받습니다`,
     refuse: () => "돌려보냅니다",
   },
   wall_or_market: {
@@ -61,7 +61,7 @@ export const PETITION_COPY = {
     title: "빈 사제 자리",
     demand: "첫 사망과 함께 사제가 역병으로 죽었습니다. 교회가 비어 있습니다.",
     /** PL-6: accept — monastery priest; refuse — lay clerk. */
-    accept: (stipend: number) => `봉급 ${pence(stipend)}를 내고 수도원의 사제를 청합니다 · 두 계절 뒤에 옵니다 · 주교 세력 +10`,
+    accept: (stipend: number) => `봉급 ${moneyObject(stipend)} 내고 수도원의 사제를 청합니다 · 두 계절 뒤에 옵니다 · 주교 세력 +10`,
     refuse: () => "평신도 서기를 세웁니다 · 돈이 들지 않고 곧 기도를 맡습니다 · 주교 세력 −15",
   },
   wages: {
@@ -76,7 +76,7 @@ export const PETITION_COPY = {
     demand: (vacant: number) => `역병이 빈 필지 ${vacant}곳을 남겼습니다. 주민들이 어떻게 쓸지 청합니다.`,
     /** PL-7: accept — neighbours expand; accept_with_price — new settlers with entry fine. */
     accept: "이웃 가구가 빈 필지를 넓혀 씁니다 · 계절마다 한 가구씩 듭니다",
-    accept_with_price: (households: number, fine: number) => `새 이주민을 받습니다 · 계절마다 ${households}가구씩, 가구당 ${pence(fine)}`,
+    accept_with_price: (households: number, fine: number) => `새 이주민을 받습니다 · 계절마다 ${households}가구씩, 가구당 ${moneyShort(fine)}`,
   },
   cash_rent: {
     title: "부역을 돈으로 바꾸자는 청원",
@@ -96,39 +96,39 @@ export const PETITION_COPY = {
   tax_collection: {
     title: "인두세 징수 방식",
     demand: "국왕의 인두세(14세 이상 한 사람 4d)를 도시 공동체가 스스로 걷겠다고 청합니다. 국왕의 몫은 금고를 지나지 않고 영주의 몫만 듭니다.",
-    accept: (perAdult: number, relations: string) => `도시 공동체에 맡깁니다 · 걷을 때마다 어른 한 사람당 ${pence(perAdult)} · ${relations}`,
-    refuse: (perAdult: number, relations: string) => `영주의 징수원이 걷습니다 · 어른 한 사람당 ${pence(perAdult)} · 반란 압력 +40 · ${relations}`,
+    accept: (perAdult: number, relations: string) => `도시 공동체에 맡깁니다 · 걷을 때마다 어른 한 사람당 ${moneyShort(perAdult)} · ${relations}`,
+    refuse: (perAdult: number, relations: string) => `영주의 징수원이 걷습니다 · 어른 한 사람당 ${moneyShort(perAdult)} · 반란 압력 +40 · ${relations}`,
   },
   cloth_or_grain: {
     title: "직물 대 곡물",
     demand: "상인들이 영지의 쟁기밭을 양으로 돌려 직물에 걸자고 청합니다.",
     accept: (price: number, harvestPercent: number, relations: string) =>
-      `직물에 겁니다 · 직물 값 ${pence(price)} · 흉년 수확 ${harvestPercent} %로 줄어듦(식량이 약해짐) · 반란 압력 +10 · ${relations}`,
+      `직물에 겁니다 · 직물 값 ${moneyShort(price)} · 흉년 수확 ${harvestPercent} %로 줄어듦(식량이 약해짐) · 반란 압력 +10 · ${relations}`,
     refuse: (relations: string) => `곡물을 지킵니다 · 바뀌는 것 없음 · ${relations}`,
   },
   borough_charter: {
     title: "자치 특허 협상",
     demand: "도시 공동체가 자치 특허를 청합니다. 시장 좌판세와 통행세 절반을 도시가 걷고, 그 대가로 해마다 영주에게 fee farm을 내겠다고 합니다.",
-    accept: (feeFarm: number, relations: string) => `일부 허용합니다 · 시장 좌판세 도시로 · 통행세 절반 도시로 · 도시가 해마다 봄에 ${pence(feeFarm)} · ${relations}`,
+    accept: (feeFarm: number, relations: string) => `일부 허용합니다 · 시장 좌판세 도시로 · 통행세 절반 도시로 · 도시가 해마다 봄에 ${moneyShort(feeFarm)} · ${relations}`,
     refuse: (relations: string) => `거부합니다 · 권리는 그대로 · 5장에 도시의 반발 · ${relations}`,
   },
   // UI-10 (F5-A LG-2…LG-6): chapter 5's four cards; each answer's sums and relations are the engine's (`LEGACY_BALANCE`, `LEGACY_RELATIONS`).
   royal_tax: {
     title: "국왕의 과세 요구",
     demand: (share: number, due: number, min: number, max: number) =>
-      `국왕의 과세 사절이 15분의 1·10분의 1세를 요구합니다: 금고의 ${percent(share)}, 지금이면 ${pence(due)}(적어도 ${pence(min)}, 많아야 ${pence(max)}).`,
-    accept: (due: number, relations: string) => `과세를 냅니다 · 금고에서 ${pence(due)} · ${relations}`,
-    refuse: (confirmation: number, relations: string) => `감면을 청원합니다 · 지금은 내지 않음 · 나중에 자치 특허를 내주면 국왕 확인금 ${pence(confirmation)} · ${relations}`,
+      `국왕의 과세 사절이 15분의 1·10분의 1세를 요구합니다: 금고의 ${percent(share)}, 지금이면 ${moneyShort(due)}(적어도 ${moneyShort(min)}, 많아야 ${moneyShort(max)}).`,
+    accept: (due: number, relations: string) => `과세를 냅니다 · 금고에서 ${moneyShort(due)} · ${relations}`,
+    refuse: (confirmation: number, relations: string) => `감면을 청원합니다 · 지금은 내지 않음 · 나중에 자치 특허를 내주면 국왕 확인금 ${moneyShort(confirmation)} · ${relations}`,
   },
   heir_choice: {
     title: "늙은 영주의 후계자",
     demand: (lord: string, age: number) => lord === ""
       ? "늙은 영주의 뒤를 이을 사람을 정해야 합니다. 상위 영주가 상속세를 받고 후계자를 인정합니다. 늙은 영주와 그 배우자는 가족으로 남습니다."
       : `늙은 영주 ${lord}(${age}살)의 뒤를 이을 사람을 정해야 합니다. 상위 영주가 상속세를 받고 후계자를 인정합니다. 늙은 영주와 그 배우자는 가족으로 남습니다.`,
-    accept: (relief: number, relations: string) => `맏아들이 영주관의 가장이 됩니다 · 상위 영주에게 상속세 ${pence(relief)} · ${relations}`,
-    accept_with_price: (relief: number, relations: string) => `딸의 남편이 가장이 되고 딸이 영주관으로 돌아옵니다 · 상속세 ${pence(relief)} · 고르지 않은 새 후보는 떠남 · ${relations}`,
+    accept: (relief: number, relations: string) => `맏아들이 영주관의 가장이 됩니다 · 상위 영주에게 상속세 ${moneyShort(relief)} · ${relations}`,
+    accept_with_price: (relief: number, relations: string) => `딸의 남편이 가장이 되고 딸이 영주관으로 돌아옵니다 · 상속세 ${moneyShort(relief)} · 고르지 않은 새 후보는 떠남 · ${relations}`,
     refuse: (kinsman: boolean, relief: number, relations: string) =>
-      `${kinsman ? "가문의 먼 친척이" : "조카가"} 가장이 됩니다 · 상속세 ${pence(relief)} · 고르지 않은 새 후보는 떠남 · ${relations}`,
+      `${kinsman ? "가문의 먼 친척이" : "조카가"} 가장이 됩니다 · 상속세 ${moneyShort(relief)} · 고르지 않은 새 후보는 떠남 · ${relations}`,
     /** The answer's label when the nephew's place is a distant kinsman's (LG-3: the lord has no brother or sister). */
     kinsmanLabel: "먼 친척에게 잇게 한다",
   },
@@ -138,16 +138,16 @@ export const PETITION_COPY = {
       ? "도시가 제 인장을 새기고 자치 특허에 찍어 달라고 청합니다. 시장을 뽑는 권리와 도시 인장을 도시에 넘기는 특허입니다."
       : `도시가 제 인장을 새기고 자치 특허에 찍어 달라고 청합니다. 시장을 뽑는 권리와 도시 인장을 도시에 넘기는 특허입니다. 시장 후보는 ${mayor}입니다.`,
     accept: (sums: { readonly fine: number; readonly feeFarm: number; readonly confirmation: number; readonly tolls: boolean }, relations: string) =>
-      `특허에 인장을 찍습니다 · 시장 선출권·도시 인장이 도시로${sums.tolls ? " · 좌판세와 통행세 절반도 도시로" : ""} · 도시가 특허값 ${pence(sums.fine)}을 냄`
-      + ` · 도시의 연납금 해마다 ${pence(sums.feeFarm)}${sums.confirmation > 0 ? ` · 영주가 국왕 확인금 ${pence(sums.confirmation)}을 냄` : ""} · 가문은 영주관을 떠남 · 도시의 반발 0 · ${relations}`,
+      `특허에 인장을 찍습니다 · 시장 선출권·도시 인장이 도시로${sums.tolls ? " · 좌판세와 통행세 절반도 도시로" : ""} · 도시가 특허값 ${moneyObject(sums.fine)} 냄`
+      + ` · 도시의 연납금 해마다 ${moneyShort(sums.feeFarm)}${sums.confirmation > 0 ? ` · 영주가 국왕 확인금 ${moneyObject(sums.confirmation)} 냄` : ""} · 가문은 영주관을 떠남 · 도시의 반발 0 · ${relations}`,
     refuse: (backlash: number, relations: string) => `가문이 계속 다스립니다 · 도시의 반발 ${backlash} · 연납금은 그대로 · 가문은 영주관에 남음 · ${relations}`,
   },
   legacy_choice: {
     title: "남길 유산 하나",
-    demand: (endowment: number) => `영주가 도시에 무엇을 남길지 정할 때입니다. 금고에서 ${pence(endowment)}(모자라면 있는 만큼)을 하나에 씁니다.`,
+    demand: (endowment: number) => `영주가 도시에 무엇을 남길지 정할 때입니다. 금고에서 ${moneyShort(endowment)}(모자라면 있는 만큼)을 하나에 씁니다.`,
     /** LG-5: the legacy (`LEGACY_AXIS_COPY`), what it costs now, the axis it adds to. */
     line: (legacy: string, spent: number, axis: string, points: number, relations: string) =>
-      `${legacy}${josa(legacy, "을", "를")} 남깁니다 · 금고에서 ${pence(spent)} · ${axis} 유산 점수 +${points} · ${relations}`,
+      `${legacy}${josa(legacy, "을", "를")} 남깁니다 · 금고에서 ${moneyShort(spent)} · ${axis} 유산 점수 +${points} · ${relations}`,
   },
   // UI-10 (FIX-9 LG-13): the interlude's two petitions, the Wave 33 illustrations.
   guild_dispute: {
@@ -158,8 +158,8 @@ export const PETITION_COPY = {
   },
   church_rebuilding: {
     title: "교회 증축 청원",
-    demand: (cost: number) => `교구가 낡은 교회에 새 회중석을 지어 달라고 청합니다. 증축에 드는 돈은 ${pence(cost)}입니다.`,
-    accept: (cost: number, points: number, relations: string) => `교회를 넓혀 짓습니다 · 금고에서 ${pence(cost)} · 교회 유산 점수 +${points} · ${relations}`,
+    demand: (cost: number) => `교구가 낡은 교회에 새 회중석을 지어 달라고 청합니다. 증축에 드는 돈은 ${moneyShort(cost)}입니다.`,
+    accept: (cost: number, points: number, relations: string) => `교회를 넓혀 짓습니다 · 금고에서 ${moneyShort(cost)} · 교회 유산 점수 +${points} · ${relations}`,
     refuse: (relations: string) => `증축을 미룹니다 · 돈은 들지 않음 · ${relations}`,
   },
   /** UI-10 (LG-3): an heir candidate on the heir's card — who, through whom, what of the old lord they have, their records. */

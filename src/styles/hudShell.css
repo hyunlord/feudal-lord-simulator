@@ -3,15 +3,34 @@
    goal chip. One panel slot on the right (goal log / population / inspector / ledger); the build drawer bottom centre
    only while open. Budgets per state: scripts/measureHudCoverage.ts. Touch targets stay >= 44 px (48 on tablets). */
 
+/* UI-AUDIT-1: the HUD's rows follow its framed boxes. The pill and the speed cluster are a target tall plus their frame's
+   safe inset and the gap on both sides (the frame box contract), so what sits under them starts below that. */
+.app-shell {
+  --hud-edge: 8px; --hud-target: 44px; --hud-row-gap: 4px;
+  --hud-pill-height: calc(var(--hud-target) + var(--frame-tooltip-safe-top) + var(--frame-tooltip-safe-bottom) + 2 * var(--frame-gap));
+  --hud-cluster-height: calc(var(--hud-target) + var(--frame-strip-top-safe-top) + var(--frame-strip-top-safe-bottom) + 2 * var(--frame-gap));
+  /* The goal rail under the pill; the crisis bells, the panel slot and the selection card under the speed. */
+  --hud-left-top: calc(var(--hud-edge) + var(--hud-pill-height) + var(--hud-row-gap));
+  --hud-right-top: calc(var(--hud-edge) + var(--hud-cluster-height) + var(--hud-row-gap));
+}
+@media (pointer: coarse) { .app-shell { --hud-target: 48px; } }
+
+/* UI-AUDIT-1: the HUD's button groups have no fill of their own; each keeps the one gap around its buttons as a
+   transparent padding, the group placed that much further out, so the buttons stand where they did. The padding lets
+   the map's clicks through. */
+.app-shell :is(.layer-switch, .action-dock, .crisis-icons, .event-cards, .zone-toolbar) { padding: var(--frame-gap); pointer-events: none; }
+.app-shell :is(.layer-switch, .action-dock, .crisis-icons, .event-cards, .zone-toolbar) > * { pointer-events: auto; }
+
 /* contrast-audit selector=".status-pill" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
 .app-shell .status-pill {
   position: absolute; top: 8px; left: 8px; z-index: 4;
-  display: flex; align-items: center; gap: 2px; padding: 0 6px; height: 44px;
-  color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink);
-  font-size: 14px; font-weight: 700; white-space: nowrap;
+  display: flex; align-items: center; gap: 0; min-height: 44px;
+  color: var(--palette-ink); background-color: var(--palette-vellum);
+  font-size: 13px; font-weight: 700; white-space: nowrap;
 }
+/* UI-AUDIT-1: the framed pill is 63 px tall (the gap on both sides); its cells keep the area budget with 4 px sides. */
 .app-shell .status-pill-cell {
-  display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 6px;
+  display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 4px;
   color: inherit; font: inherit; background: none; border: 0; border-radius: 0; cursor: pointer;
 }
 .app-shell .status-pill-date { cursor: default; font-family: var(--ui-font-serif); }
@@ -19,33 +38,36 @@
 .app-shell .status-pill-cell[data-short="true"] { color: var(--palette-vermilion); }
 
 /* Speed alone in the top right (the date moved into the pill). */
-.app-shell .hud-time-cluster { top: 8px; right: 8px; flex-direction: row; flex-wrap: nowrap; gap: 2px; padding: 0 2px; height: auto; }
-.app-shell .hud-time-cluster .speed-control-stack { flex-wrap: nowrap; gap: 2px; }
+.app-shell .hud-time-cluster { top: 8px; right: 8px; flex-direction: row; flex-wrap: nowrap; gap: 2px; height: auto; }
+/* UI-AUDIT-1: the stack is as wide as its seals and the settings seal (the console's 188 px left the settings seal 54 px
+   outside the cluster's frame); 2 px between the seals, as between the pill's cells, for the area budget. */
+.app-shell .hud-time-cluster .speed-control-stack { flex-wrap: nowrap; gap: 2px; width: auto; }
+.app-shell .hud-time-cluster .speed-seals { gap: 2px; }
 .app-shell .hud-time-cluster .settings-disclosure > summary { display: grid; place-items: center; min-width: 44px; min-height: 44px; padding: 0 6px; font-size: 12px; }
 .app-shell .hud-time-cluster[hidden] { display: none; }
 
 /* Crisis icons: under the speed, at most three, square. */
-.app-shell .crisis-icons { position: absolute; top: 66px; right: 8px; z-index: 4; display: flex; gap: 4px; }
+.app-shell .crisis-icons { position: absolute; top: calc(var(--hud-right-top) - var(--frame-gap)); right: 0; z-index: 4; display: flex; gap: 4px; }
 .app-shell .crisis-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0; min-width: 44px; }
 .app-shell .crisis-icon--immediate { outline: 2px solid var(--palette-vermilion); outline-offset: -3px; }
 
 /* The goal chip: the active card, one line (title, count, the one button); the reason and help stay in the log. */
-.app-shell .goal-chip-rail { position: absolute; top: 60px; left: 8px; z-index: 3; width: min(340px, calc(100% - 16px)); pointer-events: none; }
+.app-shell .goal-chip-rail { position: absolute; top: var(--hud-left-top); left: 8px; z-index: 3; width: min(340px, calc(100% - 16px)); pointer-events: none; }
 .app-shell .goal-chip-rail > * { pointer-events: auto; }
 .app-shell .goal-chip-rail .goal-cards { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
-.app-shell .goal-chip-rail .goal-card { display: flex; flex: 0 1 240px; max-width: 240px; gap: 6px; align-items: center; padding: 0 0 0 8px; min-height: 44px; }
+.app-shell .goal-chip-rail .goal-card { display: flex; flex: 0 1 240px; max-width: 240px; gap: 6px; align-items: center; min-height: 44px; }
 .app-shell .goal-chip-rail .goal-card--done, .app-shell .goal-chip-rail .goal-card--already { display: none; }
 .app-shell .goal-chip-rail :is(.goal-card-why, .goal-card-bar, .goal-card-help, .goal-card-secondary) { display: none; }
 .app-shell .goal-chip-rail .goal-card-heading { flex: 1 1 auto; min-width: 0; }
 .app-shell .goal-chip-rail .goal-card-title { overflow: hidden; font-size: 14px; text-overflow: ellipsis; white-space: nowrap; }
 /* UX-0b: the goal's title on its own line above the button (the audit read four to six characters of it, "새 길…",
    "식량 기반: 경…", behind a long button); 220 px wide keeps the idle state inside its area budget. */
-.app-shell .goal-chip-rail .goal-card { flex-wrap: wrap; flex-basis: 220px; max-width: 220px; row-gap: 0; padding-top: 3px; }
+.app-shell .goal-chip-rail .goal-card { flex-wrap: wrap; flex-basis: 220px; max-width: 220px; row-gap: 0; }
 /* UI-7b: the card is as wide as its title or its button, whichever is wider (up to 220 px; a grid, as a wrapping flex
    row sizes to title + button side by side): the idle chapter 1 screen had its empty right part counted as HUD (the
    idle state stood at 6.0 % / 6 %). */
 .app-shell .goal-chip-rail .goal-card:not(.goal-card--folded) { display: grid; grid-template-columns: minmax(0, max-content); justify-items: start;
-  flex: 0 1 auto; width: max-content; padding-right: 12px; }
+  flex: 0 1 auto; width: max-content; }
 .app-shell .goal-chip-rail .goal-card-heading { flex: 1 0 100%; display: flex; gap: 6px; align-items: baseline; }
 .app-shell .goal-chip-rail .goal-card-heading .goal-card-title { flex: 1 1 auto; min-width: 0; font-size: 13px; }
 .app-shell .goal-chip-rail .goal-card-count { font-size: 12px; }
@@ -53,10 +75,18 @@
 .app-shell .goal-chip-rail .goal-card-cta { min-height: 44px; padding: 4px 10px; font-size: 13px; }
 /* UI-6c: the chapter's goal card folds to a one-line chip (title and count, 44 px, 48 on tablet); opened, its reason
    shows under the chip and its button beside. */
-.app-shell .goal-chip-rail .goal-card--folded { flex: 0 1 auto; padding: 0; min-height: 44px; }
+.app-shell .goal-chip-rail .goal-card--folded { flex: 0 1 auto; min-height: 44px; }
 .app-shell .goal-chip-rail .goal-card-fold { display: flex; flex: 1 1 auto; gap: 8px; align-items: baseline; justify-content: space-between; min-width: 0; min-height: 44px; padding: 4px 8px; }
 .app-shell .goal-chip-rail .goal-card-fold .goal-card-title { flex: 1 1 auto; min-width: 0; font-size: 13px; text-align: left; }
 .app-shell .goal-chip-rail .goal-card--unfolded .goal-card-fold { flex: 1 0 100%; }
+/* UI-AUDIT-1 (user order, HUD area at 1280): at 1280 px and below with a mouse the folded chapter chip is its short
+   form — the goal icon, "2장", the count; pressed, it opens to the whole card as before. Wider views and the tablet keep
+   the title. */
+.app-shell .goal-chip-rail .goal-card-short { display: none; }
+@media (max-width: 1280px) and (pointer: fine) {
+  .app-shell .goal-chip-rail .goal-card--folded .goal-card-short { display: inline-flex; gap: 4px; align-items: center; font-size: 13px; font-weight: 700; }
+  .app-shell .goal-chip-rail .goal-card--folded .goal-card-title--full { display: none; }
+}
 .app-shell .goal-chip-rail .goal-card--unfolded .goal-card-why { display: block; flex: 1 0 100%; margin: 0 8px 2px 0; font-size: 12px; }
 /* Placement keeps only the tutorial's card (US-D5), not the log opener. */
 .app-shell .goal-chip-rail[data-placing="true"] .goal-drawer-toggle { display: none; }
@@ -66,9 +96,9 @@
 
 /* One panel slot (S-30) on the right. */
 .app-shell .slot-panel {
-  position: absolute; top: 66px; right: 8px; z-index: 5;
+  position: absolute; top: var(--hud-right-top); right: 8px; z-index: 5;
   width: min(340px, calc(100% - 16px)); max-height: min(460px, calc(100% - 150px)); overflow-y: auto;
-  padding: 10px 12px; color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink);
+  color: var(--palette-ink); background-color: var(--palette-vellum);
 }
 /* NAT-2 (QA-006): the wide box token (480 px, 552 on touch); the five columns fit it, no horizontal scroll. */
 .app-shell .ledger-drawer { width: min(var(--box-w-wide), calc(100% - 16px)); max-height: min(560px, calc(100% - 150px)); }
@@ -92,18 +122,18 @@
 .app-shell .ledger-total { font-weight: 700; }
 .app-shell .ledger-alerts { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 13px; }
 .app-shell .ledger-alert-look { min-height: 44px; margin-top: 4px; }
-.app-shell .ledger-population-drawer { top: 66px; left: auto; right: 8px; }
+.app-shell .ledger-population-drawer { top: var(--hud-right-top); left: auto; right: 8px; }
 
 /* Layer switch bottom left (always on, locks visible). */
-.app-shell .layer-switch { position: absolute; left: 8px; bottom: 8px; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
-.app-shell .layer-switch .control-layer { min-height: 44px; padding: 0 8px; font-size: 13px; }
+.app-shell .layer-switch { position: absolute; left: 0; bottom: 0; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
+.app-shell .layer-switch .control-layer { min-height: 44px; padding: 0 6px; font-size: 12px; }
 /* NAT-1: small token, fixed width so the note never resizes with content. */
-.app-shell .layer-switch-note { position: absolute; left: 0; bottom: 56px; margin: 0; padding: 6px 8px; width: min(var(--box-w-small), calc(100vw - 32px)); max-width: none;
-  font-size: 13px; color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.app-shell .layer-switch-note { position: absolute; left: var(--frame-gap); bottom: calc(56px + var(--frame-gap)); margin: 0; width: min(var(--box-w-small), calc(100vw - 32px)); max-width: none;
+  font-size: 13px; color: var(--palette-ink); background-color: var(--palette-vellum); }
 
 /* Action dock bottom right: build, ledger, steward (+ undo while a site can be taken back). */
 .app-shell :is(.layer-switch, .action-dock)[hidden] { display: none; }
-.app-shell .action-dock { position: absolute; right: 8px; bottom: 8px; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
+.app-shell .action-dock { position: absolute; right: 0; bottom: 0; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
 .app-shell .action-dock-button {
   display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
   min-width: 56px; min-height: 56px; padding: 2px 6px; font-size: 12px; font-weight: 700;
@@ -114,13 +144,14 @@
 .app-shell .action-dock-portrait { display: block; width: 32px; height: 32px; background-size: cover; border-radius: 50%; }
 .app-shell .action-dock-small { min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 12px; }
 .app-shell .steward-bubble {
-  position: absolute; right: 0; bottom: 64px; display: grid; gap: 4px; width: min(var(--box-w-medium), calc(100vw - 32px)); padding: 8px 10px;
-  color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink);
+  position: absolute; right: 0; bottom: 64px; display: grid; gap: 4px; width: min(var(--box-w-medium), calc(100vw - 32px));
+  color: var(--palette-ink); background-color: var(--palette-vellum);
 }
-/* The old advisor card placed itself under the resource bar (top / left): above the steward button instead. */
-.app-shell .action-dock .steward-bubble { top: auto; left: auto; right: 0; bottom: 64px; width: min(var(--box-w-medium), calc(100vw - 32px)); }
+/* The old advisor card placed itself under the resource bar (top / left): above the steward button instead (the dock's
+   sibling, UI-AUDIT-1: 8 px from the view's edge and 64 px over the dock's buttons, as when it sat inside the dock). */
+.app-shell .action-dock + .steward-bubble { top: auto; left: auto; right: var(--hud-edge); bottom: calc(64px + var(--hud-edge)); width: min(var(--box-w-medium), calc(100vw - 32px)); }
 /* NAT-1: quiet one-line bubble uses the small token. */
-.app-shell .action-dock .steward-bubble--line { width: min(var(--box-w-small), calc(100vw - 32px)); padding: 6px 12px; }
+.app-shell .action-dock + .steward-bubble--line { width: min(var(--box-w-small), calc(100vw - 32px)); }
 .app-shell .steward-bubble--line .steward-line { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .app-shell .steward-bubble .steward-line { margin: 0; font-size: 13px; }
 .app-shell .steward-bubble .steward-button { min-height: 44px; }
@@ -128,7 +159,7 @@
 /* The build drawer (S-21): bottom centre, only while open; categories as tabs, compact cards. */
 .app-shell .build-drawer.court-console {
   left: 50%; right: auto; bottom: 8px; display: none; grid-template-columns: none;
-  width: auto; max-width: min(760px, calc(100% - 16px)); height: auto; padding: 6px; transform: translateX(-50%);
+  width: auto; max-width: min(760px, calc(100% - 16px)); height: auto; transform: translateX(-50%);
 }
 .app-shell .build-drawer.court-console[data-open="true"] { display: block; }
 .app-shell .build-drawer .build-menu { height: auto; }
@@ -152,7 +183,7 @@
 /* The pause menu (S-29), a modal: time stops while it is up. */
 .pause-menu-backdrop { position: absolute; inset: 0; z-index: 8; display: grid; place-items: center; background: rgb(20 14 8 / 0.35); }
 /* contrast-audit selector=".pause-menu" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
-.pause-menu { display: grid; gap: 10px; min-width: 280px; padding: 16px 20px; color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.pause-menu { display: grid; gap: 10px; min-width: 280px; color: var(--palette-ink); background-color: var(--palette-vellum); }
 .pause-menu h2 { margin: 0; font-size: 18px; }
 /* UI-KIT-1b: the settings are items of a wrapping row (they were inline and a switch's line ran under the next button);
    a switch and its line stay together. */
@@ -160,17 +191,18 @@
 .setting-pair { display: inline-flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; max-width: 100%; }
 .pause-menu-resume { display: inline-flex; gap: 6px; align-items: center; justify-content: center; min-height: 48px; font-size: 15px; font-weight: 700; }
 
-/* Tablets: 48 px targets (research 15 section 8). */
+/* Tablets: 48 px targets (research 15 section 8). UI-AUDIT-1: over the 44 px floor, which is !important at 0-3-0
+   (uiBoundaries.css, loaded earlier) — these stayed 44 px on the tablet (the fix A captures). */
 @media (pointer: coarse) {
-  .app-shell :is(.status-pill-cell, .control-layer, .ledger-tab, .crisis-icon, .goal-card-cta, .goal-card-fold, .slot-panel-close, .build-drawer .build-menu-category) { min-height: 48px; }
-  .app-shell .status-pill { height: 48px; }
+  :root .app-shell :is(.status-pill-cell, .control-layer, .ledger-tab, .crisis-icon, .goal-card-cta, .goal-card-fold, .slot-panel-close, .build-drawer .build-menu-category) { min-height: 48px !important; }
+  .app-shell .status-pill { min-height: 48px; }
   .app-shell .crisis-icon { width: 48px; height: 48px; }
   .app-shell .action-dock-button { min-width: 64px; min-height: 64px; }
 }
 .app-shell .slot-panel-close { font-size: 22px; line-height: 1; }
 
 /* The placement chip beside the cursor (S-53): three short lines, 240 px wide. */
-.app-shell .prediction-panel.placement-chip { width: 232px; padding: 4px 8px; font-size: 13px; line-height: 17px; }
+.app-shell .prediction-panel.placement-chip { width: 232px; font-size: 13px; line-height: 17px; }
 .app-shell .placement-chip p { display: flex; gap: 4px; align-items: center; margin: 0; }
 .app-shell .placement-chip-title { font-weight: 700; }
 .app-shell .placement-chip-ledger[data-short="true"], .app-shell .placement-chip-reason { color: var(--palette-vermilion); font-weight: 600; }
@@ -182,12 +214,13 @@
 @media (pointer: coarse) { .app-shell .era-console :is(.era-action, .era-wall-priority button) { min-height: 48px !important; } }
 
 /* The map's selection card in the panel slot (S-25): right side, 312 x 400 at most (the 18 % budget with the HUD, with room for Linux font metrics). */
-.app-shell .diagnostic-card-position { inset: 66px 8px auto auto !important; width: min(312px, calc(100% - 16px)); }
+.app-shell .diagnostic-card-position { inset: var(--hud-right-top) 8px auto auto !important; width: min(312px, calc(100% - 16px)); }
 .app-shell .diagnostic-card-position .diagnostic-card { max-height: min(400px, calc(100vh - 150px)); overflow-y: auto; }
 
-/* UI-3 pause (Wave 8): the vignette darkens the edges only; the badge's hourglass sits left of the label. */
+/* UI-3 pause (Wave 8): the vignette darkens the edges only; the badge's hourglass sits left of the label (the badge is a
+   painting, kind `pause-badge`: its safe inset clears the hourglass). */
 .app-shell .pause-veil { background-color: transparent; background-size: 100% 100%; background-repeat: no-repeat; }
-.app-shell .pause-veil-label { min-height: 44px; padding: 0 18px 0 44px; background-color: transparent; border: 0;
+.app-shell .pause-veil-label { min-height: 44px; background-color: transparent;
   border-image: none; color: var(--palette-ink); background-size: 100% 100%; background-repeat: no-repeat; }
 
 /* UI-3 season strip, small by default: a 5 px strip under the date (the pin at today); the date opens the full strip. */
@@ -196,9 +229,10 @@
 .app-shell .season-strip-mini { position: relative; display: block; height: 5px; background-size: 100% 100%; background-repeat: no-repeat; }
 .app-shell .season-strip-mini-pin { position: absolute; top: -2px; width: 2px; height: 9px; background-color: var(--palette-ink); transform: translateX(-1px); }
 /* contrast-audit selector=".season-strip-panel" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
-.app-shell .season-strip-panel { position: absolute; top: 52px; left: 0; z-index: 6; width: min(var(--box-w-medium), calc(100vw - 32px)); padding: 8px 12px 10px;
-  color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); font-size: 13px; font-weight: 400; white-space: normal; line-height: 1.5; }
-.app-shell .season-strip-full { position: relative; margin: 14px 0 10px; }
+.app-shell .season-strip-panel { position: absolute; top: calc(100% + var(--frame-tooltip-safe-bottom) + var(--hud-row-gap)); left: 0; z-index: 6; width: min(var(--box-w-medium), calc(100vw - 32px));
+  color: var(--palette-ink); background-color: var(--palette-vellum); font-size: 13px; font-weight: 400; white-space: normal; line-height: 1.5; }
+/* UI-AUDIT-1: the marks and the pin centre on the strip's ends; the strip keeps half a mark in from the gap. */
+.app-shell .season-strip-full { position: relative; margin: 14px 7px 10px; }
 .app-shell .season-strip-mark { position: absolute; top: -1px; transform: translateX(-50%); }
 .app-shell .season-strip-pin { position: absolute; top: -12px; transform: translateX(-50%); }
 .app-shell .season-strip-food { margin: 6px 0 4px; font-size: 14px; font-weight: 600; }
@@ -208,19 +242,22 @@
 .app-shell .season-strip-close { min-width: 44px; min-height: 44px; }
 
 /* UI-3 season ledger card (a modal: time stops while it is up). The Wave 8 scroll is a layer; the three scenes sit in
-   its header slots (source x44..450, y48..118), the body in its content rect. */
+   its header slots (source x44..450, y48..118), the body in its content rect (UI-AUDIT-1: the card's border is the
+   rect's offsets, kind `season-ledger`; the scenes are placed from the card's outer edge, over that border). */
 .season-ledger-backdrop { position: absolute; inset: 0; z-index: 8; display: grid; place-items: center; background: rgb(20 14 8 / 0.25); }
 /* contrast-audit selector=".season-ledger-card" fg="--palette-ink" bg="--palette-parchment" size="13" role="body" */
-.season-ledger-card { position: relative; width: 380px; height: 324px; color: var(--palette-ink); font-size: 13px; }
+/* UI-AUDIT-1: as tall as its lines (at least the scroll's 324 px, at most the view); the body is the content box. */
+.season-ledger-card { position: relative; display: grid; grid-template-rows: minmax(0, 1fr); width: 380px; min-height: 324px; max-height: 94vh; color: var(--palette-ink); font-size: 13px; }
 .season-ledger-frame { position: absolute; inset: 0; box-sizing: border-box; pointer-events: none; }
-.season-ledger-scenes { position: absolute; left: 24px; top: 24px; width: 202px; height: 35px; display: grid; grid-template-columns: repeat(3, 1fr);
+.season-ledger-scenes { position: absolute; left: calc(24px - var(--frame-season-ledger-safe-left)); top: calc(24px - var(--frame-season-ledger-safe-top)); width: 202px; height: 35px; display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 3px; margin: 0; padding: 0; list-style: none; }
 .season-ledger-scene { display: flex; gap: 3px; align-items: center; justify-content: center; font-size: 13px; }
 .season-ledger-scene strong { white-space: nowrap; font-size: 12px; }
 .season-ledger-scene-icon { flex: none; }
 .season-ledger-scenes-line { margin: 0 0 3px; font-size: 12px; font-weight: 600; }
-/* INSTALL-3: the lines scroll inside the content rect; the actions row is pinned at its foot (계속 never below the fold). */
-.season-ledger-body { display: flex; flex-direction: column; gap: 4px; padding: 2px 4px; }
+/* INSTALL-3: the actions row is pinned at the body's foot (계속 never below the fold); the lines scroll only when the card
+   meets the view's height. */
+.season-ledger-body { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
 .season-ledger-content { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
 .season-ledger-body h2 { margin: 0 0 4px; font-size: 16px; }
 .season-ledger-line { margin: 0 0 2px; }
@@ -248,10 +285,12 @@
 @keyframes chapter-loading-out { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
 
 /* UX-3R2 zone toolbar (UX3R 5절): left of the map in the zone layer — brush, polygon, eraser, undo, redo, size. */
-.app-shell .zone-toolbar { position: absolute; left: 8px; top: 50%; z-index: 4; display: grid; gap: 4px; width: 148px; transform: translateY(-50%); }
+.app-shell .zone-toolbar { position: absolute; left: 0; top: 50%; z-index: 4; display: grid; gap: 4px; width: calc(148px + 2 * var(--frame-gap)); transform: translateY(-50%); }
 .app-shell .zone-toolbar[hidden] { display: none; }
 .app-shell :is(.zone-toolbar-kinds, .zone-toolbar-tools) { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
-.app-shell .zone-toolbar-button { display: inline-flex; gap: 2px; align-items: center; justify-content: flex-start; min-width: 0; white-space: nowrap; min-height: 44px; padding: 0 4px; font-size: 12px; }
+/* UI-AUDIT-1: a long label wraps to a second line inside its 44 px button (it ran 20 px out of the 72 px column). */
+.app-shell .zone-toolbar-button { display: inline-flex; gap: 2px; align-items: center; justify-content: flex-start; min-width: 0; min-height: 44px; padding: 0 4px; font-size: 12px;
+  line-height: 1.15; text-align: left; overflow-wrap: anywhere; }
 .app-shell .zone-toolbar-button .ui-icon { flex: 0 0 auto; transform: scale(0.75); margin: 0 -3px; }
 /* Kind chips: a small swatch of the zone's map tint (the zone layer's colours, drawZones ZONE_STYLES). */
 .app-shell .zone-toolbar-kind { display: inline-block; flex: 0 0 12px; width: 12px; height: 12px; margin: 0 3px 0 2px; border: 1px solid var(--palette-ink); }
@@ -259,7 +298,7 @@
 .app-shell .zone-toolbar-kind--arable { background-color: var(--palette-gold); }
 .app-shell .zone-toolbar-kind--pasture { background-color: var(--palette-sage); }
 .app-shell .zone-toolbar-kind--orchard { background-color: var(--palette-forest); }
-.app-shell .zone-toolbar .zone-land-legend { display: grid; gap: 2px; padding: 4px 6px; line-height: 15px; background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.app-shell .zone-toolbar .zone-land-legend { display: grid; gap: 2px; padding: var(--frame-gap); line-height: 15px; background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
 .app-shell .zone-toolbar-button[aria-pressed="true"] { outline: 2px solid var(--palette-ink); outline-offset: -2px; font-weight: 700; }
 .app-shell .zone-toolbar-button[aria-disabled="true"] { opacity: 0.5; }
 .app-shell .zone-toolbar-redo-icon { transform: scaleX(-1); }
@@ -307,13 +346,13 @@
 
 /* UX-3R2 tablet confirm bar (UX3R 8절): bottom centre while a tap has left a ghost waiting; 64 px targets. */
 .app-shell .placement-confirm-bar { position: absolute; left: 50%; bottom: 12px; z-index: 6; display: grid; grid-template-columns: auto auto; gap: 4px 8px;
-  justify-items: center; padding: 6px 10px; transform: translateX(-50%); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+  justify-items: center; padding: var(--frame-gap); transform: translateX(-50%); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
 .app-shell .placement-confirm-button { display: inline-flex; gap: 6px; align-items: center; justify-content: center; min-width: 120px; min-height: 64px; font-size: 16px; font-weight: 700; }
 .app-shell .placement-confirm-hint { grid-column: 1 / -1; margin: 0; font-size: 12px; }
 .app-shell .inspector-blocker { margin: 0 0 4px; font-weight: 700; }
 
 /* UI-4 event chips and card (not modal): under the crisis bells, top right. */
-.app-shell .event-cards { position: absolute; top: 116px; right: 8px; z-index: 5; display: grid; justify-items: end; gap: 6px; }
+.app-shell .event-cards { position: absolute; top: calc(var(--hud-right-top) + var(--hud-target) + 6px - var(--frame-gap)); right: 0; z-index: 5; display: grid; justify-items: end; gap: 6px; }
 .app-shell .event-chips { display: grid; justify-items: end; gap: 4px; }
 .app-shell .event-chip { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; padding: 0 10px 0 4px; font-size: 13px; font-weight: 600; }
 /* NAT-2 (QA-013): an open panel slot (goal log, population, inspector: 340 px; the ledger: the wide token) holds the top
@@ -322,11 +361,11 @@
 @media (min-width: 720px) {
   .app-shell [data-slot] { --slot-clear: calc(min(340px, 100% - 16px) + 8px); }
   .app-shell [data-slot="ledger"] { --slot-clear: calc(min(var(--box-w-wide), 100% - 16px) + 8px); }
-  .app-shell [data-slot] :is(.crisis-icons, .event-cards) { right: calc(8px + var(--slot-clear)); }
+  .app-shell [data-slot] :is(.crisis-icons, .event-cards) { right: var(--slot-clear); }
 }
 .app-shell .event-chip-art { display: inline-block; flex: 0 0 auto; width: 64px; height: 36px; border: 1px solid var(--palette-ink); }
-.app-shell .event-card { display: grid; gap: 6px; width: min(var(--box-w-medium), calc(100vw - 32px)); max-height: calc(100vh - 200px); overflow-y: auto; padding: 10px 12px; color: var(--palette-ink);
-  background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.app-shell .event-card { display: grid; gap: 6px; width: min(var(--box-w-medium), calc(100vw - 32px)); max-height: calc(100vh - 200px); overflow-y: auto; color: var(--palette-ink);
+  background-color: var(--palette-vellum); }
 .app-shell .event-card h2 { margin: 0; font-size: 17px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .app-shell .event-card h2.event-card-title--whole { white-space: normal; }
 /* NAT-1: fixed 1.5 line-height; body clamped to 4 lines via .event-card-line--clamped class. */
@@ -352,27 +391,31 @@
 .famine-option strong { font-size: 16px; }
 .famine-option-predicted, .petition-predicted { font-size: 12px; font-weight: 600; }
 .story-modal-later { justify-self: end; min-height: 44px; }
-.petition-card { position: relative; width: min(720px, 96vw); min-height: 620px; padding: 0; background: none; border: 0; }
+/* UI-AUDIT-1: the card is as tall as its body (at least the frame's 620 px, at most the view): the body scrolls only past
+   that, and [나중에 정하기] is its last row, never over an answer. */
+.petition-card { position: relative; grid-template-rows: minmax(0, 1fr); width: min(720px, 96vw); min-height: 620px; overflow: visible; background: none; }
 /* UI-8: a card with two answers (chapter 3's, PetitionDef.responses) is one answer shorter. */
 .petition-card[data-answers="2"] { min-height: 540px; }
 .petition-frame { position: absolute; inset: 0; box-sizing: border-box; }
-.petition-body { display: grid; align-content: start; gap: 6px; overflow-y: auto; padding: 4px 8px; }
+.petition-body { display: grid; align-content: start; gap: 4px; min-height: 0; overflow-y: auto; }
 .petition-who { display: flex; gap: 6px; align-items: center; font-weight: 600; }
 .petition-options { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .petition-option { display: grid; grid-template-columns: 48px 1fr; gap: 2px 10px; width: 100%; min-height: 64px; padding: 6px; text-align: left; font-size: 13px; }
 .petition-seal { grid-row: 1 / 4; }
 /* UI-10: chapter 5's two-answer cards carry long answers (the charter's sums): the full card's height, so
-   [나중에 정하기] shows below them; if a card still overflows, it stays in view at the body's bottom. */
+   [나중에 정하기] shows below them. */
 .petition-card[data-answers="2"]:is([data-def="borough_autonomy"], [data-def="royal_tax"], [data-def="guild_dispute"], [data-def="church_rebuilding"]) { min-height: 620px; }
-.petition-body > .story-modal-later { position: sticky; bottom: 0; z-index: 1; }
+.petition-body > .story-modal-later { margin-top: 2px; }
 /* UI-10: an answer with more than three lines (the heir's card) keeps them all beside the seal. */
 .petition-option > :not(.petition-seal) { grid-column: 2; min-width: 0; }
 /* UI-10 (LG-3): the heir's card — its answers side by side (a column each, the seal beside the label, the rest under
    them), each with the heir it names: the portrait beside the name and relation, then lineage, likeness and records. */
-.petition-card[data-def="heir_choice"] { min-height: min(740px, 92vh); }
+/* UI-AUDIT-1: the heir's three columns take a wider card (1080 px): in the 720 px card long names and lines ran past
+   their answer (42 px sideways) and the body scrolled; a word breaks where it must (keep-all alone kept long words whole). */
+.petition-card[data-def="heir_choice"] { width: min(1080px, 96vw); min-height: min(740px, 92vh); }
 .petition-card[data-def="heir_choice"] .petition-options { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); align-items: stretch; }
 .petition-card[data-def="heir_choice"] .petition-option { height: 100%; grid-template-columns: 44px minmax(0, 1fr); align-content: start; align-items: center;
-  word-break: keep-all; }
+  word-break: keep-all; overflow-wrap: anywhere; }
 .petition-card[data-def="heir_choice"] .petition-seal { grid-row: 1; }
 .petition-card[data-def="heir_choice"] .petition-option > :not(.petition-seal, strong) { grid-column: 1 / -1; }
 .petition-heir { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 1px 8px; align-items: center; margin: 2px 0; font-size: 12px; line-height: 1.35; }
@@ -383,7 +426,11 @@
 @media (max-width: 700px) { .petition-card[data-def="heir_choice"] .petition-options { grid-auto-flow: row; } }
 .chronicle-page { position: relative; width: min(920px, 96vw); height: min(780px, 94vh); }
 .chronicle-frame { position: absolute; inset: 0; box-sizing: border-box; }
-.chapter-page-body { display: grid; align-content: start; gap: 6px; overflow-y: auto; padding: 4px 10px; color: var(--palette-ink); }
+.chapter-page-body { display: grid; align-content: start; gap: 6px; overflow-y: auto; color: var(--palette-ink); }
+/* UI-AUDIT-1: the chapter's own page (not the legacy ending or book, which share .chapter-page-body): its lines scroll in
+   their own region, the footer the row under it. */
+.chapter-page-main { grid-template-rows: minmax(0, 1fr) auto; align-content: stretch; overflow-y: visible; }
+.chapter-page-scroll { display: grid; align-content: start; gap: 6px; min-height: 0; overflow-y: auto; }
 .chapter-page-body h2 { margin: 0; font-size: 22px; }
 .chapter-page-body h3 { margin: 6px 0 0; font-size: 15px; }
 .chronicle-timeline, .chronicle-decisions { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
@@ -397,17 +444,16 @@
 .chronicle-stats { margin: 0; padding-left: 18px; font-size: 13px; }
 .chronicle-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 /* UI-10: the chapter page's footer — the panel's full width, opaque in the panel's paper (the skin's --parchment), a top
-   rule, held at the scrolling body's bottom (a long page — chapter 5's six decisions — scrolls under it; the last line
-   scrolls clear above it, the footer being the body's last row). Its buttons stand where the right column's did.
-   Sticky insets count from the body's padding: -4px (the body's bottom padding) lays it on the scroll edge. */
-.chapter-page-body > .chronicle-page-footer { position: sticky; bottom: -4px; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: 16px; margin: 0 -10px -4px; padding: 6px 10px 8px; background: var(--parchment); border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
+   rule. UI-AUDIT-1: the body's last row, under the scrolling lines (it held at the scroll's bottom over them before). Its
+   buttons stand where the right column's did. */
+.chapter-page-main > .chronicle-page-footer { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 16px; margin: 0; padding: 6px 0 0; background: var(--parchment); border-top: 1px solid color-mix(in srgb, var(--palette-ink) 25%, transparent); }
 .chronicle-page-footer > .chronicle-actions { grid-column: 2; margin-top: 0; }
 .chronicle-actions button, .chapter-preview-continue { display: inline-flex; gap: 6px; align-items: center; min-height: 48px; font-size: 15px; font-weight: 700; }
 .chapter-preview { position: absolute; inset: 0; z-index: 45; display: grid; place-content: center; justify-items: center; gap: 8px;
   background-color: var(--palette-ink); background-position: center; background-size: cover; }
 /* PLAGUE-b: the goals on the opening painting take the title's vellum (bare text was lost on chapter 3's harbour). */
-.chapter-preview-goals { padding: 6px 18px; color: var(--palette-ink); background-color: var(--palette-vellum); }
+.chapter-preview-goals { padding: var(--frame-gap) 18px; color: var(--palette-ink); background-color: var(--palette-vellum); }
 .chapter-preview-goals h3 { margin: 0; font-size: 13px; }
 .chapter-preview-goals ul { margin: 2px 0 0; padding-left: 18px; font-size: 14px; }
 /* UI-4 forecast marks on the season strip (cause icons, 24 px scaled to the strip). */
@@ -416,7 +462,7 @@
 .app-shell .ledger-rights h3 { margin: 8px 0 2px; font-size: 13px; }
 .app-shell .ledger-rights ul { margin: 0; padding-left: 18px; font-size: 13px; }
 /* UI-6: the rights register (Wave 14 frame as a border image; the arms beside the house; a lost right in red ochre). */
-.app-shell .ledger-rights { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 40px; margin-top: 8px; padding: 4px 8px; }
+.app-shell .ledger-rights { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 40px; margin-top: 8px; }
 .ledger-rights-page { display: grid; align-content: start; gap: 4px; min-width: 0; }
 .ledger-rights-house { display: flex; gap: 10px; align-items: flex-start; }
 .ledger-rights-house p { margin: 0; font-size: 13px; }
@@ -467,16 +513,23 @@
 .inspector-members .person-list { margin: 0; }
 .person-list .person-chip { width: 100%; }
 .person-card-backdrop { position: absolute; inset: 0; z-index: 40; display: grid; place-items: center; background: color-mix(in srgb, var(--palette-ink) 45%, transparent); }
-.person-card { position: relative; background-size: 100% 100%; background-repeat: no-repeat; color: var(--palette-ink); }
-.person-card > * { position: absolute; box-sizing: border-box; }
-.person-card-portrait { display: grid; place-items: center; }
-.person-card-emblem { display: grid; place-items: center; }
-.person-card-text { display: grid; align-content: start; gap: 2px; overflow: hidden; }
-.person-card-text h2 { margin: 0; font-family: var(--ui-font-serif); font-size: 18px; line-height: 1.2; }
-.person-card-text p { margin: 0; font-size: 13px; line-height: 1.35; }
+/* UI-AUDIT-1: the card's border is the painting's safe inset at its scale (kind `person-card`, set from TS); the text and
+   the buttons are rows of its content box, so the card is as tall as they are, and the portrait sits on the printed
+   ring. The painting is the card's sibling in one grid cell (so as large as the card), the art as a 9-slice that grows
+   down (set from TS), with the shield's cover. */
+.person-card-stage { display: grid; }
+.person-card-stage > * { grid-area: 1 / 1; }
+.person-card-painting { position: relative; pointer-events: none; }
+.person-card { position: relative; display: grid; grid-template-rows: 1fr auto; row-gap: 8px; color: var(--palette-ink); }
+/* The face's square: the ornament's canvas reaches past it up and left, where it is transparent. */
+.person-card-portrait { position: absolute; overflow: hidden; }
+.person-card-emblem { float: right; display: grid; place-items: center; margin: 0 0 4px 8px; }
+.person-card-text { grid-column: 2; grid-row: 1; display: flow-root; min-width: 0; overflow-wrap: anywhere; }
+.person-card-text h2 { margin: 0; padding-top: 2px; font-family: var(--ui-font-serif); font-size: 18px; line-height: 1.2; }
+.person-card-text p { margin: 2px 0 0; font-size: 13px; line-height: 1.35; }
 .person-card-text p.person-card-match { font-size: 12px; }
 .person-card-match[data-exact="false"] { font-style: italic; color: var(--palette-ink-muted); }
-.person-card-actions { display: flex; gap: 6px; align-items: center; justify-content: flex-end; }
+.person-card-actions { grid-column: 2; grid-row: 2; display: flex; flex-wrap: wrap; gap: 6px; align-items: end; justify-content: flex-end; }
 .person-card-action { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-height: 44px; padding: 0 14px; font-size: 13px; font-weight: 700; }
 .person-list-toggle { min-height: 44px; padding: 0 10px; font-size: 13px; font-weight: 700; justify-self: start; }
 .emblem-image { display: block; }
@@ -486,8 +539,9 @@
 .petition-people h3 { margin: 0; font-size: 13px; }
 .petition-people .person-list { margin: 0; }
 /* UI-6: the Crown's writ — the hanging wax seal with the Crown's arms on its disc. */
-/* UI-6b: the Wave 8 petition frame's roundel — its centre at (68, 110) of the corner slice, drawn at half size (34, 55). */
-.petition-roundel { position: absolute; left: 15px; top: 36px; width: 38px; height: 38px; pointer-events: none; }
+/* UI-6b: the Wave 8 petition frame's roundel — its centre at (68, 110) of the corner slice, drawn at half size (34, 55),
+   placed from the card's outer edge over its border (kind `petition`). */
+.petition-roundel { position: absolute; left: calc(15px - var(--frame-petition-safe-left)); top: calc(36px - var(--frame-petition-safe-top)); width: 38px; height: 38px; pointer-events: none; }
 .petition-writ { position: relative; flex: none; }
 .petition-writ-arms { position: absolute; left: 7px; bottom: 7px; }
 .decision-steward { display: flex; align-items: center; gap: 10px; }
@@ -497,6 +551,8 @@
 /* A chip is at least its 48 px portrait and padding tall; the card's text buttons take the tablet's 48 px (the shell's
    44 px minimum is !important, so a height, not a min-height). */
 @media (pointer: coarse) { .person-card-action, .person-list-toggle { height: 48px; } }
+/* The touch card is the touch box width (414): its lines a size up with it. */
+@media (pointer: coarse) { .person-card-text h2 { font-size: 20px; } .person-card-text p { font-size: 14px; } .person-card-text p.person-card-state { font-size: 13px; } }
 /* ECON-UI (FIX-7): the town's ale under the ledger's stock table, the stores' ale note, the barn's barley lock. */
 .ledger-town-ale { margin-top: 8px; font-size: 13px; }
 .ledger-town-ale h3 { display: flex; gap: 6px; align-items: center; margin: 0 0 2px; font-size: 14px; }
@@ -511,9 +567,9 @@
    through it, only its two buttons take presses). Text 12 px at least, the buttons 44 px (48 on touch). */
 /* contrast-audit selector=".qa-overlay" fg="--palette-ink" bg="--palette-parchment" size="12" role="body" */
 .app-shell .qa-overlay { position: absolute; bottom: 72px; left: 8px; z-index: 4; display: grid; gap: 4px; width: min(var(--box-w-small), calc(100vw - 32px));
-  padding: 8px 10px; color: var(--palette-ink); font-size: 12px; line-height: 1.4; pointer-events: none;
-  background: var(--parchment) var(--art-texture-light) repeat; border: 1px solid transparent; border-image: var(--art-frame-tooltip); }
-.app-shell .qa-overlay-lines { display: grid; gap: 1px; margin: 0; }
+  color: var(--palette-ink); font-size: 12px; line-height: 1.4; pointer-events: none;
+  background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--frame-tooltip-art); }
+.app-shell .qa-overlay-lines { display: grid; gap: 1px; margin: 1px 0 0; }
 .app-shell .qa-overlay-line { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 6px; }
 .app-shell .qa-overlay-line dt { color: var(--palette-ink-muted); }
 .app-shell .qa-overlay-line dd { margin: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }

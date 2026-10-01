@@ -1,7 +1,9 @@
 /* UI-KIT-1 parts (src/ui/kit; spec docs/design/ui-kit.md). Loaded after uiSkin.css. Only the :root tokens of uiSkin.css:
    colours, spacing, type and the `--art-*` 9-slices. Selectors carry the class twice under :root (`:root .ui-btn.ui-btn`, 0-3-0) so a
    screen's older rule for the same element (at most 0-2-1, `.app-shell .era-console button`) cannot drop the skin; a screen's own sheet keeps only layout (place, size, gaps).
-   - The frame paints into the padding (`border-image-width`), the border widths stay the screens' own.
+   - UI-AUDIT-1: a frame's border is its kind's content-safe inset and its padding the one gap (frameTokens.generated.css,
+     keyed on `data-frame`), so nothing inside a framed part sits on its frame. Buttons wear `--button-*` (their own
+     border and size paddings; the Wave 38 art replaces them).
    - States are code: hover a little lighter (never the only cue), pressed sinks 1 px, the focus ring in seal red,
      pressed / on a seal-red inner rule, disabled grey. Touch targets stay >= 44 px (uiBoundaries.css floor). */
 
@@ -32,12 +34,12 @@
   background: none;
   border-color: transparent;
   border-radius: 0;
-  border-image: var(--art-button-secondary);
+  border-image: var(--button-secondary-art);
 }
-:root .ui-btn.ui-btn.ui-btn--primary { border-image: var(--art-button-primary); }
+:root .ui-btn.ui-btn.ui-btn--primary { border-image: var(--button-primary-art); }
 :root .ui-btn.ui-btn.ui-btn--danger { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--seal-red) 55%, transparent); }
-:root .ui-btn.ui-btn.ui-btn--icon { border-image: var(--art-button-icon); }
-:root .ui-btn.ui-btn.ui-btn--tab { border-image: var(--art-tab); }
+:root .ui-btn.ui-btn.ui-btn--icon { border-image: var(--button-icon-art); }
+:root .ui-btn.ui-btn.ui-btn--tab { border-image: var(--button-tab-art); }
 :root .ui-btn.ui-btn.ui-btn--quiet { border-image: none; background: var(--art-rule-light) center bottom / 100% 6px no-repeat; }
 :root .ui-btn.ui-btn.ui-btn--quiet.ui-btn--dark { background: var(--art-rule-dark) center bottom / 100% 6px no-repeat; }
 /* A cell, row or card of a framed strip or panel: the frame around it is its skin (the audit checks that frame).
@@ -46,9 +48,9 @@
 :root .ui-btn.ui-btn--surface:not(:disabled):hover { background-color: color-mix(in srgb, var(--gold-rule) 16%, transparent); filter: none; }
 :root .ui-btn.ui-btn--surface.ui-btn--dark:not(:disabled):hover { background-color: color-mix(in srgb, var(--parchment-light) 12%, transparent); }
 
-:where(.ui-btn--sm) { min-height: 32px; padding: 2px 10px; font-size: var(--text-13); }
-:where(.ui-btn--md) { min-height: 40px; padding: 6px 14px; font-size: var(--text-14); }
-:where(.ui-btn--lg) { min-height: 48px; padding: 10px 22px; font-size: var(--text-16); }
+:where(.ui-btn--sm) { min-height: 32px; padding: var(--button-pad-sm); font-size: var(--text-13); }
+:where(.ui-btn--md) { min-height: 40px; padding: var(--button-pad-md); font-size: var(--text-14); }
+:where(.ui-btn--lg) { min-height: 48px; padding: var(--button-pad-lg); font-size: var(--text-16); }
 
 :root .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):hover { filter: brightness(1.06); }
 :root .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):active { transform: translateY(1px); filter: brightness(0.96); }
@@ -63,20 +65,19 @@
 :where(.ui-btn:is([aria-pressed="true"], [aria-checked="true"])) { font-weight: 700; }
 
 /* ---- Screen containers the kit's surfaces sit in (their frame is the surfaces' skin) ---- */
-:root .app-shell .status-pill { background: var(--parchment) var(--art-texture-light) repeat; border-color: transparent; border-image: var(--art-frame-tooltip); }
-/* The HUD's panel slot (goal log, ledger drawer, inspector): the light panel frame, drawn 10 px wide so it fits the
-   slot's own 10 px padding (was a flat vellum box with an ink rule). */
-:root .app-shell .slot-panel { background: var(--parchment) var(--art-texture-light) repeat; border-color: transparent; border-image: url("/assets/ui-p0/frame_panel_light.png") 32 fill / 10px / 0 stretch; }
+:root .app-shell .status-pill { background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--frame-tooltip-art); }
+/* The HUD's panel slot (goal log, ledger drawer, inspector): the light panel frame drawn 10 px wide (kind `slot`; was a
+   flat vellum box with an ink rule). */
+:root .app-shell .slot-panel { background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--frame-slot-art); }
 /* NAT-2 (QA-006): the ledger drawer is a record book: the chronicle's ledger card (Wave 19 frame_record_ledger: the
-   double rule, gilt corners, the ruled margin, the turned corner) at the cards' 0.7, its edges repeated; the padding
-   keeps the tables inside the frame. */
-:root .app-shell .slot-panel.ledger-drawer { padding: 20px 30px 28px 28px;
-  border-image: url("/assets/wave19/cards/frame_record_ledger.png") 30 40 40 32 fill / 21px 28px 28px 22px / 0 round; }
+   double rule, gilt corners, the ruled margin, the turned corner) at the cards' 0.7, its edges repeated (kind `ledger`:
+   its safe inset keeps the tables inside the frame). */
+:root .app-shell .slot-panel.ledger-drawer { border-image: var(--frame-ledger-art); }
 
 /* The pause menu's settings are on the light plate: the console's light hint colour read as blank there. */
 :root .app-shell .pause-menu-settings .autoplay-hint { color: var(--ink-soft); }
 /* The pause menu is a dialog: the modal frame (was a flat vellum box with an ink rule). */
-:root .app-shell .pause-menu { background: var(--parchment) var(--art-texture-light) repeat; border-color: transparent; border-image: var(--art-frame-modal); }
+:root .app-shell .pause-menu { background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--frame-modal-art); }
 
 /* ---- Select: a secondary button and a light-framed list ---- */
 .ui-select { position: relative; display: inline-block; min-width: 0; vertical-align: middle; }
@@ -93,7 +94,6 @@
   min-width: 100%;
   max-height: 320px;
   margin: 0;
-  padding: 8px 6px;
   overflow-y: auto;
   list-style: none;
   box-shadow: 0 6px 18px color-mix(in srgb, var(--ink) 35%, transparent);
@@ -205,7 +205,7 @@
   font-size: var(--text-12);
   background: none;
   border: 1px solid transparent;
-  border-image: var(--art-chip);
+  border-image: var(--button-chip-art);
 }
 .ui-chip--ok { color: var(--status-ok); }
 .ui-chip--warn { color: var(--oak); font-weight: 700; }
@@ -213,17 +213,18 @@
 .ui-chip--info { color: var(--status-info); }
 
 /* ---- Frames ---- */
-:root .ui-frame.ui-frame { border-color: transparent; border-radius: 0; }
-:root .ui-frame.ui-frame--light { color: var(--ink); background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--art-frame-light); }
-:root .ui-frame.ui-frame--dark { color: var(--parchment-light); background: var(--oak) var(--art-texture-dark) repeat; border-image: var(--art-frame-dark); }
-:root .ui-frame.ui-frame--objective { color: var(--ink); background: none; border-image: var(--art-frame-objective); }
-:root .ui-frame.ui-frame--objective-complete { border-image: var(--art-frame-objective-complete); }
-:root .ui-frame.ui-frame--objective-warn { border-image: var(--art-frame-objective-warn); }
-:root .ui-frame.ui-frame--advisor { color: var(--ink); background: none; border-image: var(--art-frame-advisor); }
-:root .ui-frame.ui-frame--advisor-warn { border-image: var(--art-frame-advisor-warn); }
-:root .ui-frame.ui-frame--modal { color: var(--ink); background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--art-frame-modal); }
-:root .ui-frame.ui-frame--tooltip { color: var(--ink); background: none; border-image: var(--art-frame-tooltip); }
-:root .ui-frame.ui-frame--record { color: var(--ink); background: none; border-image: var(--art-frame-record); }
+/* The box (border = the kind's safe inset, padding = the gap) is the `[data-frame]` rule; Frame.tsx sets data-frame. */
+:root .ui-frame.ui-frame { border-radius: 0; }
+:root .ui-frame.ui-frame--light { color: var(--ink); background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--frame-light-art); }
+:root .ui-frame.ui-frame--dark { color: var(--parchment-light); background: var(--oak) var(--art-texture-dark) repeat; border-image: var(--frame-dark-art); }
+:root .ui-frame.ui-frame--objective { color: var(--ink); background: none; border-image: var(--frame-objective-art); }
+:root .ui-frame.ui-frame--objective-complete { border-image: var(--frame-objective-complete-art); }
+:root .ui-frame.ui-frame--objective-warn { border-image: var(--frame-objective-warn-art); }
+:root .ui-frame.ui-frame--advisor { color: var(--ink); background: none; border-image: var(--frame-advisor-art); }
+:root .ui-frame.ui-frame--advisor-warn { border-image: var(--frame-advisor-warn-art); }
+:root .ui-frame.ui-frame--modal { color: var(--ink); background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--frame-modal-art); }
+:root .ui-frame.ui-frame--tooltip { color: var(--ink); background: none; border-image: var(--frame-tooltip-art); }
+:root .ui-frame.ui-frame--record { color: var(--ink); background: none; border-image: var(--frame-record-art); }
 
 /* ---- Tooltip and divider ---- */
 /* NAT-1: tooltip uses the small width token (fixed, no content-driven resize). */
@@ -231,12 +232,10 @@
   display: inline-block;
   width: min(var(--box-w-small), calc(100vw - 32px));
   max-width: none;
-  padding: 6px 10px;
   color: var(--ink);
   font-size: var(--text-13);
   background: none;
-  border: 2px solid transparent;
-  border-image: var(--art-frame-tooltip);
+  border-image: var(--frame-tooltip-art);
 }
 :root .ui-divider.ui-divider { height: 8px; margin: var(--space-1) 0; background: var(--art-rule-light) center / 100% 8px no-repeat; border: 0; }
 :root .ui-divider.ui-divider--dark { background-image: var(--art-rule-dark); }
@@ -245,15 +244,16 @@
 .app-shell.ui-kit-gallery { box-sizing: border-box; height: 100dvh; padding: var(--space-2) var(--space-3) var(--space-3); overflow-y: auto; overflow-x: hidden; background: var(--parchment) var(--art-texture-light) repeat; }
 .ui-kit-gallery-head h1 { margin: 0 0 var(--space-half); font-family: var(--ui-font-serif); font-size: 24px; }
 .ui-kit-gallery-head p { max-width: 70ch; margin: 0 0 var(--space-2); font-size: var(--text-14); }
-.ui-kit-gallery-section { margin: 0 0 var(--space-2); padding: 20px 24px; border: 3px solid transparent; }
+.ui-kit-gallery-section { margin: 0 0 var(--space-2); }
+.ui-kit-gallery-section:not([data-frame]) { padding: 20px 24px; } /* the frames' sheet itself is a plain section */
 .ui-kit-gallery-section h2 { margin: var(--space-1) 0; font-family: var(--ui-font-serif); font-size: var(--text-18); }
 .ui-kit-gallery-section h3 { margin: var(--space-1) 0 var(--space-half); font-size: var(--text-14); color: var(--ink-soft); }
 .ui-kit-gallery-row { display: flex; flex-wrap: wrap; gap: var(--space-1); align-items: center; margin-bottom: var(--space-1); }
 .ui-kit-gallery-row--select { min-height: 60px; }
 .ui-kit-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-2); }
-.ui-kit-gallery-frame { min-height: 96px; padding: 16px 18px; border: 3px solid transparent; font-size: var(--text-13); }
+.ui-kit-gallery-frame { min-height: 96px; font-size: var(--text-13); }
 .ui-kit-gallery-frame p { margin: var(--space-half) 0 0; }
-.ui-kit-gallery-dark { display: flex; flex-wrap: wrap; gap: var(--space-1); align-items: center; margin-top: var(--space-2); padding: 16px 18px; border: 2px solid transparent; }
+.ui-kit-gallery-dark { display: flex; flex-wrap: wrap; gap: var(--space-1); align-items: center; margin-top: var(--space-2); }
 /* INSTALL-23 ④ ⑤ gallery: the twelve person-state ornaments (96 and 48 px) and the pad glyphs (48 and 32 px). */
 .ui-kit-gallery-states, .ui-kit-gallery-pads { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: var(--space-1); margin: 0 0 var(--space-1); padding: 0; list-style: none; }
 .ui-kit-gallery-pads { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }

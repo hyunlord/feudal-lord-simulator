@@ -37,7 +37,7 @@ export function PredictionPanel({ lines, position, chip }: PredictionPresentatio
     observer.observe(element);
     return () => observer.disconnect();
   }, [lines]);
-  if (chip !== undefined) return <aside ref={panelRef} className="prediction-panel placement-chip" data-testid="placement-prediction-panel" aria-label={PLACEMENT_CHIP_COPY.label}
+  if (chip !== undefined) return <aside ref={panelRef} className="prediction-panel placement-chip" data-frame="light" data-testid="placement-prediction-panel" aria-label={PLACEMENT_CHIP_COPY.label}
     style={{ left: `clamp(8px, ${position.x}px, calc(100% - 256px))`, top: `clamp(60px, ${position.y}px, calc(100% - ${height + 12}px))` }}>
     <p className="placement-chip-title">{chip.title}</p>
     {chip.ledger.map(line => <p key={line.text} className="placement-chip-ledger" data-short={line.short ? 'true' : undefined}>{line.text}</p>)}
@@ -53,7 +53,7 @@ export function PredictionPanel({ lines, position, chip }: PredictionPresentatio
     {chip.period === null ? null : <p className="placement-chip-period">{chip.period}</p>}
   </aside>;
   if (lines.length === 0) return null;
-  return <aside ref={panelRef} className="prediction-panel" data-testid="placement-prediction-panel" aria-label="행동 결과 예측"
+  return <aside ref={panelRef} className="prediction-panel" data-frame="light" data-testid="placement-prediction-panel" aria-label="행동 결과 예측"
     style={{ left: `clamp(12px, ${position.x}px, calc(100% - 372px))`, top: `clamp(var(--resource-height), ${position.y}px, calc(100% - var(--command-height) - ${height + 12}px))` }}>
     <ul>{lines.map(toPredictionLine).map(line => <li key={line.id} className={`prediction-line prediction-line--${PREDICTION_SEVERITY_TONE[line.severity]}`}>
       <UiIcon sheet="prediction" cell={LINE_SYMBOLS[line.severity].icon} className="prediction-line-symbol" label={LINE_SYMBOLS[line.severity].label} /><span>{line.text}</span>

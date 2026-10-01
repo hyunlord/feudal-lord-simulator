@@ -3,10 +3,11 @@ import type { CSSProperties, ReactNode, Ref } from "react";
 import { kitClass } from "./kitProps";
 
 /**
- * UI-KIT-1 frames: the P0 9-slices every panel, card and modal wears (uiSkin.css `--art-frame-*`).
+ * UI-KIT-1 frames: the P0 9-slices every panel, card and modal wears (frameTokens.generated.css `--frame-*-art`).
  *   light · dark (panels) · objective (goal cards; `state` complete / warn) · advisor (the steward; `state` warn) ·
  *   modal · tooltip · record (chronicle and ledger records: the light frame's manuscript edge on a toast-weight body).
  * `Panel` is a region, `Card` an item in a list, `Modal` a dialog (`role="dialog"`, `aria-modal`, its title as the name).
+ * UI-AUDIT-1: each carries `data-frame="<kind>"`, so its border is the kind's safe inset and its padding the gap.
  */
 export type FrameKind = "light" | "dark" | "objective" | "advisor" | "modal" | "tooltip" | "record";
 
@@ -29,7 +30,7 @@ type FrameProps = {
 function frameProps(props: FrameProps, fallback: FrameKind) {
   const { kind = fallback, state, className, children: _children, ref: _ref, ...rest } = props;
   const classes = kitClass("ui-frame", [kind, state === undefined ? undefined : `${kind}-${state}`]);
-  return { ...rest, className: className === undefined ? classes : `${className} ${classes}` };
+  return { "data-frame": kind, ...rest, className: className === undefined ? classes : `${className} ${classes}` };
 }
 
 export function Panel(props: FrameProps & { readonly as?: "section" | "div" | "aside" | "nav" }) {

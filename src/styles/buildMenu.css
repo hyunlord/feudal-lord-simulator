@@ -26,7 +26,7 @@
 .build-menu-summary > span { font-size: var(--font-meta); }
 .build-info-toggle { flex: 0 0 44px; height: 44px; color: var(--palette-ink); background: var(--palette-parchment); border: 1px solid var(--palette-earth); cursor: pointer; }
 /* NAT-1: wide token for the build detail panel. */
-.build-menu-details { position: absolute; bottom: calc(100% + 12px); right: 0; width: min(var(--box-w-wide), 100%); max-height: calc(100vh - var(--resource-height) - var(--command-height) - 24px); overflow-y: auto; overscroll-behavior: contain; padding: 12px; color: var(--palette-ink); background: var(--palette-vellum); border: 2px solid var(--palette-earth); font-size: var(--font-body); line-height: 1.5; }
+.build-menu-details { position: absolute; bottom: calc(100% + 12px); right: 0; width: min(var(--box-w-wide), 100%); max-height: calc(100vh - var(--resource-height) - var(--command-height) - 24px); overflow-y: auto; overscroll-behavior: contain; color: var(--palette-ink); background: var(--palette-vellum); font-size: var(--font-body); line-height: 1.5; }
 .build-menu-detail-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--palette-parchment-dark); }
 .build-menu-details p { margin: 4px 0; word-break: keep-all; }
 .build-menu-shortfall { color: var(--palette-vermilion); font-weight: bold; }
@@ -41,5 +41,14 @@
 .zone-radius-button[aria-pressed="true"], .zone-polygon-toggle[aria-pressed="true"] { outline: 2px solid var(--palette-gold, currentColor); outline-offset: -2px; font-weight: 700; }
 /* Tap paths for what used to be hover-only tooltips (B9): the lines of a tapped card that cannot be built yet, and the
    polygon hint while the polygon toggle is pressed. */
-.build-menu-pinned { margin: 0 0 8px; padding: 6px 8px; font-size: var(--font-meta); line-height: 1.5; color: var(--palette-ink); background: var(--palette-vellum); border: 1px solid var(--palette-earth); }
+.build-menu-pinned { margin: 0 0 8px; font-size: var(--font-meta); line-height: 1.5; color: var(--palette-ink); background: var(--palette-vellum); }
 .zone-polygon-hint { font-size: var(--font-meta); line-height: 1.4; }
+/* UI-AUDIT-1 (user decision, UIAUDIT-D1): at 1280 × 800 the build state sat 0.1 pt over its 15.5 % budget. At 1280 with a
+   fine pointer only, the tool cards are tighter: smaller gaps, a shorter art box and minimum height. The cards stay
+   ≥ 44 px targets, the text sizes stay, and the category buttons keep their height. Revisit when lord mode makes the
+   drawer command pins. */
+@media (max-width: 1280px) and (pointer: fine) {
+  .build-menu-tools { gap: 6px; }
+  .app-shell .build-menu .build-tool { min-height: 112px; gap: 2px; }
+  .app-shell .build-tool-art, .app-shell .build-tool-art img { height: 42px; }
+}

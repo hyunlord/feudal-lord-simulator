@@ -298,7 +298,7 @@ export function DiagnosticCard({
       event.stopPropagation();
       if (event.key === "Escape") onClose?.();
     }}>
-      <aside className="diagnostic-card" aria-label={identity.label}>
+      <aside className="diagnostic-card" data-frame="light" aria-label={identity.label}>
         <header className="inspector-heading">
           <div className="inspector-thumbnail" aria-hidden="true">{identity.art}</div>
           <div><p>{identity.type}</p><h2>{identity.name}</h2></div>

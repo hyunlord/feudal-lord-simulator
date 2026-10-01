@@ -59,7 +59,7 @@ function recordValue(record: HistoryRecord, templates: ReadonlyMap<string, numbe
   const copy = SEASON_LEDGER_COPY;
   switch (record.template) {
     case "ledger.population": return copy.percent(copy.signed(number("percent")));
-    case "ledger.treasury_turn": return copy.pence(copy.signed(Math.round(number("net"))));
+    case "ledger.treasury_turn": return copy.moneyDelta(Math.round(number("net")));
     case "ledger.departures": return copy.households(number("count"));
     case "person.left": return copy.households(templates.get("person.left") ?? 1);
     case "person.emptied": return copy.households(templates.get("person.emptied") ?? 1);
@@ -81,7 +81,7 @@ function numberScenes(ledger: SeasonLedger, buildings: readonly Pick<Building, "
   const copy = SEASON_LEDGER_COPY; const scenes: (SeasonScene & { weight: number })[] = [];
   const add = (delta: number, key: keyof typeof NUMBER_WEIGHT, up: SeasonSceneId | null, down: SeasonSceneId | null) => {
     const id = delta > 0 ? up : delta < 0 ? down : null;
-    if (id !== null) scenes.push({ id, value: key === "coin" ? copy.pence(copy.signed(Math.round(delta))) : copy.signed(Math.round(delta)), weight: Math.abs(delta) * NUMBER_WEIGHT[key] });
+    if (id !== null) scenes.push({ id, value: key === "coin" ? copy.moneyDelta(Math.round(delta)) : copy.signed(Math.round(delta)), weight: Math.abs(delta) * NUMBER_WEIGHT[key] });
   };
   const grinds = buildings.some(building => building.kind === "mill" && !operationSuspended(building));
   const market = buildings.some(building => building.kind === "market");

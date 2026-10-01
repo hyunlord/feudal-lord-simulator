@@ -2,6 +2,8 @@ import { PALETTE, SEMANTIC_PALETTE } from "../content/palette";
 import { isWallConstructionSite, type WallConstructionSite } from "../economy/construction";
 import { palisadeConstructionSchedule } from "../economy/palisadeConstruction";
 import type { GameState } from "../engine/engine.types";
+import { resourceName } from "../content/resourceCatalog.ko";
+import type { ResourceType } from "../content/resourceConfig";
 import { currentConstructionSiteLabel } from "../ui/constructionAccessModel";
 import { WALL_SITE_LABEL_COPY } from "../ui/wallCarryCopy.ko";
 import type { CameraState } from "./camera";
@@ -13,7 +15,7 @@ import { constructionLabelsVisible, noteConstructionTag } from "./constructionTa
 // ("벽을 따라 운반 · 도로 연결 구간에서 N칸", "성벽 N번째 대기"), dozens over a chapter 2 town. Now each works (the
 // segments of one wall and material) shows one tag at its segment nearest the gate among those on screen; the
 // segments' own tags come back with the works selected or from zoom 1.35. Drawn after the object pass (a tag is HUD,
-// not a thing in the depth order).
+// not a thing in the depth order). UI-AUDIT-1: the works tag names the gate segment's material, not its cause sentence.
 
 /** From this zoom every segment on screen shows its own tag. */
 export const WALL_SEGMENT_LABEL_MIN_ZOOM = 1.35;
@@ -28,6 +30,14 @@ export function wallSiteLabelAnchor(site: Pick<WallConstructionSite, "path">): P
   if (first === undefined || last === undefined) return { x: 0, y: 0 };
   const screen = tileToScreen((first.x + last.x) / 2, (first.y + last.y) / 2);
   return { x: screen.sx, y: screen.sy };
+}
+
+/** UI-AUDIT-1: the works tag's detail — a segment's first material, delivered of required ("목재 0/60"); null: none. */
+export function wallWorksMaterial(site: Pick<WallConstructionSite, "required" | "delivered">): string | null {
+  const entry = (Object.entries(site.required) as [ResourceType, number | undefined][]).find(([, amount]) => (amount ?? 0) > 0);
+  if (entry === undefined) return null;
+  const [resource, required] = entry;
+  return WALL_SITE_LABEL_COPY.material(resourceName(resource), Math.floor(site.delivered[resource] ?? 0), required ?? 0);
 }
 
 /**
@@ -61,7 +71,8 @@ export function wallSiteLabelPlan(input: {
     const cause = tagged.filter(entry => entry.text !== "").sort(byGate)[0];
     const leader = [...onScreen].sort(byGate)[0];
     if (cause === undefined || leader === undefined) continue;
-    labels.push({ siteId: leader.site.id, text: WALL_SITE_LABEL_COPY.works(segments.length, cause.text), anchor: leader.anchor });
+    // The folded tag is one short line: the count and the gate segment's material (its cause when it needs none).
+    labels.push({ siteId: leader.site.id, text: WALL_SITE_LABEL_COPY.works(segments.length, wallWorksMaterial(cause.site) ?? cause.text), anchor: leader.anchor });
   }
   return labels;
 }

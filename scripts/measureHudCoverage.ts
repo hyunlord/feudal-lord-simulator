@@ -37,9 +37,23 @@ const url = flags.url ?? "http://127.0.0.1:4281/";
 const THRESHOLD = 24;
 /** A chapter 2 town has long left the tutorial (as scripts/install3ChainCaptures.ts opens its scenes). */
 const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
+/** The season card / story modal a loaded town opens with is a modal (exempt, its veil dims the canvas): closed. */
+async function dismissModals(page: Page): Promise<void> {
+  for (const selector of [".story-modal-later", ".chronicle-page .chronicle-keep", ".season-ledger-resume"]) {
+    if (await page.locator(selector).count() > 0) { await page.locator(selector).first().click(); await page.waitForTimeout(300); }
+  }
+}
 const TOOL = ".build-tool:visible:not([aria-disabled='true']):not([disabled])";
 /** Per-state budgets in percent of the view: [PC, tablet] (UX3R section 9). */
 export const BUDGETS = { normal: [6, 8], build: [15, 20], placement: [6, 9], zone: [8, 12], selection: [18, 24], ledger: [25, 30] } as const;
+/**
+ * UI-AUDIT-1 (user decision UIAUDIT-D1): at 1280 × 800 only, normal, placement, build and zone get +0.5 pt — the area the
+ * frame tokens added is the frames' own clearance (safe inset + 8 px gap), not content. 1920 and tablet keep BUDGETS.
+ * Revisit build and placement when lord mode shrinks the build drawer to command pins.
+ */
+export const BUDGETS_1280: Partial<Record<keyof typeof BUDGETS, number>> = { normal: 6.5, placement: 6.5, build: 15.5, zone: 8.5 };
+export const budgetFor = (state: keyof typeof BUDGETS, resolution: { readonly name: string; readonly touch?: boolean }): number =>
+  resolution.touch ? BUDGETS[state][1] : resolution.name === "1280x800" ? BUDGETS_1280[state] ?? BUDGETS[state][0] : BUDGETS[state][0];
 type StateName = keyof typeof BUDGETS;
 const RESOLUTIONS = [
   { name: "1280x800", width: 1280, height: 800, touch: false },
@@ -163,10 +177,12 @@ for (const resolution of RESOLUTIONS) {
   const rest = await point(38, 46);
   const push = async (name: StateName, cursor?: { x: number; y: number }, view?: string) => {
     const measured = await measure(page, name, flags.shots, view === undefined ? resolution.name : `${resolution.name}-${view}`, cursor ?? rest);
-    const budget = BUDGETS[name][resolution.touch ? 1 : 0];
+    const budget = budgetFor(name, resolution);
     rows.push({ resolution: resolution.name, ...measured, ...(view === undefined ? {} : { view }), budget, pass: measured.percent <= budget });
   };
+  await dismissModals(page);
   await push("normal");
+  await dismissModals(page);
   await page.locator("[data-dock='build']").first().click(); await page.waitForTimeout(400); await push("build");
   await page.locator(TOOL).nth(1).click(); await page.waitForTimeout(300); await push("placement", await point(40, 44));
   await page.keyboard.press("Escape"); await page.keyboard.press("Escape"); await page.waitForTimeout(300);
@@ -193,8 +209,10 @@ for (const resolution of RESOLUTIONS) {
   const walls = await openScene(browser, { state: wallTown, tile: wallMiddle, baseUrl: url, width: resolution.width, height: resolution.height, dpr: 1, zoom: 1, run: true, hasTouch: resolution.touch,
     query: "&story-delay=600000&weather=none", initScript: TUTORIAL_OFF }) as { context: { close: () => Promise<void> }; page: Page };
   // The season card the loaded town opens with is a modal (exempt, and its veil dims the whole canvas): closed first.
-  for (const selector of [".story-modal-later", ".chronicle-page .chronicle-keep", ".season-ledger-resume"]) if (await walls.page.locator(selector).count() > 0) { await walls.page.locator(selector).first().click(); await walls.page.waitForTimeout(300); }
+  await dismissModals(walls.page);
   await walls.page.waitForTimeout(2_500);
+  // UI-AUDIT-1: the season card can open about 1 s after load, after the first check — close it again after the wait.
+  await dismissModals(walls.page);
   await walls.page.waitForFunction(() => document.querySelector(".steward-bubble") === null, null, { timeout: 12_000 }).catch(() => undefined);
   const wallView = "chapter2-wall-works";
   // Before INSTALL-3b every segment raised its own tag: those whose anchor is on this screen, and their boxes' summed
@@ -207,12 +225,12 @@ for (const resolution of RESOLUTIONS) {
   const widths = await walls.page.evaluate((texts: readonly string[]) => { const context = document.createElement("canvas").getContext("2d")!; context.font = "12px Georgia, serif"; return texts.map(text => Math.ceil(context.measureText(text).width)); }, segmentTags.map(entry => entry.text));
   const beforeTags = { tags: segmentTags.length, percent: Math.round(widths.reduce((sum: number, width: number) => sum + (width + 8) * 18, 0) * 1000 / (resolution.width * resolution.height)) / 10 };
   const measured = await measure(walls.page, "normal", flags.shots, `${resolution.name}-${wallView}`, { x: 200, y: 40 }, true);
-  rows.push({ resolution: resolution.name, ...measured, view: wallView, beforeTags, budget: BUDGETS.normal[resolution.touch ? 1 : 0], pass: measured.percent <= BUDGETS.normal[resolution.touch ? 1 : 0] });
+  rows.push({ resolution: resolution.name, ...measured, view: wallView, beforeTags, budget: budgetFor("normal", resolution), pass: measured.percent <= budgetFor("normal", resolution) });
   await walls.context.close();
 }
 await browser.close();
 const pass = rows.every(row => row.pass);
-writeFileSync(out!, JSON.stringify({ url, threshold: THRESHOLD, budgets: BUDGETS, pass, rows }, null, 1) + "\n");
+writeFileSync(out!, JSON.stringify({ url, threshold: THRESHOLD, budgets: BUDGETS, budgets1280: BUDGETS_1280, pass, rows }, null, 1) + "\n");
 for (const row of rows) console.log(`${row.resolution.padEnd(16)} ${`${row.state}${row.view === undefined ? "" : `:${row.view}`}`.padEnd(16)} ${String(row.percent).padStart(5)} % / ${row.budget} % ${row.pass ? "ok" : "OVER"}`
   + (row.tagPercent === undefined ? "" : ` (canvas tags ${row.canvasTags}: ${row.tagPercent} %; before INSTALL-3b ${row.beforeTags?.tags} segment tags ≈ ${row.beforeTags?.percent} %)`));
 if (!pass) process.exitCode = 1;

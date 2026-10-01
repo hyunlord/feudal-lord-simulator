@@ -148,6 +148,9 @@ async function step(name, run) {
   }
 }
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+// UI-AUDIT-1: a chapter page opens this long after the scene loads. With the old 5 s it could open while the page was
+// still loading, and the scene's opening Escape closed it for good (UI-9b's flake): 20 s, as the geometry audit does.
+const CHAPTER_PAGE_DELAY = '&story-delay=20000';
 // INSTALL-30: when a paused save's petition does not open by itself (the chapter page's flake), open it as the player
 // does: the chip opens its event card, the card's decide button opens the petition (the chip alone never did).
 const openPetitionFromChip = async page => {
@@ -261,7 +264,7 @@ await step('season', async () => {
 // The chapter's end (the chronicle card with its buttons).
 await step('chapter-end', async () => {
   const state = load('chapter-end');
-  const { context, page } = await scene('chapter-end', houseTile(state));
+  const { context, page } = await scene('chapter-end', houseTile(state), { query: CHAPTER_PAGE_DELAY });
   // ECON-UI: the page opens after the story's world-first delay; on a busy DGX that took over 30 s twice (the audit shot
   // the plain map and then waited for .chronicle-full), so the page is awaited before its audit.
   await page.locator('.chronicle-full').waitFor({ timeout: 90_000 }); await pause(1500);
@@ -313,7 +316,7 @@ if (states6 !== undefined) {
     });
   }
   await step('chapter2-page', async () => {
-    const { context, page } = await scene6('chapter2-end', { query: '&story-delay=5000' });
+    const { context, page } = await scene6('chapter2-end', { query: CHAPTER_PAGE_DELAY });
     await page.locator('.chronicle-page').waitFor({ timeout: 30_000 }); await pause(800);
     await audit('chapter2-page', page, 's22-chapter2-page.jpg');
     await context.close();
@@ -339,7 +342,7 @@ if (states8 !== undefined) {
     await context.close();
   });
   await step('chapter3-page', async () => {
-    const { context, page } = await scene8('chapter3-end', { query: '&story-delay=5000' });
+    const { context, page } = await scene8('chapter3-end', { query: CHAPTER_PAGE_DELAY });
     await page.locator('.chronicle-page').waitFor({ timeout: 30_000 }); await pause(800);
     await audit('chapter3-page', page, 's24-chapter3-page.jpg');
     await context.close();
@@ -386,7 +389,7 @@ if (states9 !== undefined) {
     });
   }
   await step('chapter4-page', async () => {
-    const { context, page } = await scene9('chapter4-end', '&story-delay=5000');
+    const { context, page } = await scene9('chapter4-end', CHAPTER_PAGE_DELAY);
     await page.locator('.chronicle-page').waitFor({ timeout: 90_000 }); await pause(800);
     await audit('chapter4-page', page, 's29-chapter4-page.jpg');
     await context.close();
@@ -415,7 +418,7 @@ if (states10 !== undefined) {
   }
   // The campaign's end: chapter 5's page, then (as the player goes on) the legacy verdict, the ending, the book.
   await step('chapter5-page', async () => {
-    const { context, page } = await scene10('chapter5-end', '&story-delay=5000');
+    const { context, page } = await scene10('chapter5-end', CHAPTER_PAGE_DELAY);
     await page.locator('.chronicle-page').waitFor({ timeout: 90_000 }); await pause(800);
     await audit('chapter5-page', page, 's32-chapter5-page.jpg');
     await page.locator('.chronicle-page .chronicle-next').first().click();

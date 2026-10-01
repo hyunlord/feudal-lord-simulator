@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { GoalCards } from "../src/ui/tutorial/TutorialShell";
@@ -27,4 +28,13 @@ test("a card without a fold key keeps its reason and button", () => {
   const html = markup([(({ foldKey: _fold, ...rest }) => rest)(chapter)]);
   assert.equal(html.includes('data-folded="true"'), false);
   assert.ok(html.includes(CHAPTER_COPY.cta) && html.includes(CHAPTER_COPY.goals.wall_or_market!));
+});
+
+test("UI-AUDIT-1: the folded chapter chip carries its short form (the goal icon, the chapter's number, the count) and keeps the whole title as its name", () => {
+  const html = markup([{ ...chapter, shortTitle: CHAPTER_COPY.short(2) }]);
+  assert.match(html, new RegExp(`class="goal-card-short"><span[^>]*data-icon="action.open"[^>]*></span>${CHAPTER_COPY.short(2)}</span>`));
+  assert.match(html, /class="goal-card-title goal-card-title--full"/, "the title stays for wider views and when opened");
+  assert.ok(html.includes(`aria-label="${CHAPTER_COPY.card(2)} 0/2"`));
+  const css = readFileSync("src/styles/hudShell.css", "utf8");
+  assert.match(css, /@media \(max-width: 1280px\) and \(pointer: fine\) \{[^}]*\.goal-card--folded \.goal-card-short \{ display: inline-flex;[^}]*\}\s*[^}]*\.goal-card--folded \.goal-card-title--full \{ display: none; \}/);
 });

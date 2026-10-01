@@ -14,6 +14,7 @@ import "./styles/tutorial.css";
 import "./styles/alertStack.css";
 import "./styles/uiInspector.css";
 import "./styles/hudShell.css";
+import "./styles/stuckGoods.css";
 import "./styles/chronicle.css";
 import "./styles/legacy.css";
 // UX-2: bundled OFL fonts (body sans 400/700, titles and the steward serif 600) and the UI art skin, loaded last.

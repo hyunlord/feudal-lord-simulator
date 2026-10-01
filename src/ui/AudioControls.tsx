@@ -14,6 +14,15 @@ export function AudioControls() {
   const percent = Math.round(settings.volume * 100);
   return (
     <div className="audio-controls" role="group" aria-label={AUDIO_COPY.group}>
+      {/* UI-AUDIT-1: sound on / off and the whole volume first, then the three buses (two columns in the settings). */}
+      <Toggle className="autoplay-toggle" checked={!settings.muted} label={`${AUDIO_COPY.mute} ${settings.muted ? AUDIO_COPY.off : AUDIO_COPY.on}`}
+        onChange={on => apply({ ...settings, muted: !on })} />
+      {/* UI-KIT-1: the whole volume is a slider too (was − and + buttons: symbols standing in for icons). */}
+      <div className="audio-bus" data-bus="master">
+        <span className="autoplay-hint" aria-hidden="true">{AUDIO_COPY.volume(percent)}</span>
+        <Slider min={0} max={100} step={10} value={percent} label={AUDIO_COPY.volumeLabel} valueText={AUDIO_COPY.volume(percent)}
+          onChange={value => apply({ ...settings, volume: value / 100 })} />
+      </div>
       {(["ui", "alert", "world"] as const satisfies readonly SoundBus[]).map(bus => {
         const level = Math.round(settings.buses[bus] * 100);
         return (
@@ -24,14 +33,6 @@ export function AudioControls() {
           </div>
         );
       })}
-      <Toggle className="autoplay-toggle" checked={!settings.muted} label={`${AUDIO_COPY.mute} ${settings.muted ? AUDIO_COPY.off : AUDIO_COPY.on}`}
-        onChange={on => apply({ ...settings, muted: !on })} />
-      {/* UI-KIT-1: the whole volume is a slider too (was − and + buttons: symbols standing in for icons). */}
-      <div className="audio-bus" data-bus="master">
-        <span className="autoplay-hint" aria-hidden="true">{AUDIO_COPY.volume(percent)}</span>
-        <Slider min={0} max={100} step={10} value={percent} label={AUDIO_COPY.volumeLabel} valueText={AUDIO_COPY.volume(percent)}
-          onChange={value => apply({ ...settings, volume: value / 100 })} />
-      </div>
     </div>
   );
 }

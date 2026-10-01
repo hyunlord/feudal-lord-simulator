@@ -35,7 +35,7 @@ export function ZoneToolbar({ tool, lastKind, canUndo, eraserOpen, kindOpen, pul
   const radius = tool?.radius ?? ZONE_BRUSH_RADII[1];
   const nextRadius = ZONE_BRUSH_RADII[(ZONE_BRUSH_RADII.indexOf(radius as 1 | 2 | 3) + 1) % ZONE_BRUSH_RADII.length]!;
   return (
-    <nav className="zone-toolbar" aria-label={ZONE_TOOLBAR_COPY.label} hidden={hidden}>
+    <nav className="zone-toolbar" data-frame="flat" aria-label={ZONE_TOOLBAR_COPY.label} hidden={hidden}>
       <div className="zone-toolbar-kinds" role="group" aria-label={ZONE_TOOLBAR_COPY.kindsLabel}>
         {KIND_CHIPS.map(kind => {
           const open = kindOpen(kind);
@@ -66,8 +66,8 @@ export function ZoneToolbar({ tool, lastKind, canUndo, eraserOpen, kindOpen, pul
         aria-disabled={tool === null || tool.polygon} onPress={() => { if (tool !== null && !tool.polygon) onRadius(nextRadius); }} variant="toggle">
         <span className="zone-toolbar-size" aria-hidden="true" data-size={radius} />{ZONE_TOOLBAR_COPY.size(radius)}</Button>
       </div>
-      {tool === null ? <p className="zone-land-legend">{ZONE_TOOLBAR_COPY.pickKind}</p>
-        : tool.target === "erase" ? <p className="zone-land-legend">{ZONE_TOOLBAR_COPY.eraserHint}</p> : <ZoneLandLegend kind={tool.target} />}
+      {tool === null ? <p className="zone-land-legend" data-frame="flat">{ZONE_TOOLBAR_COPY.pickKind}</p>
+        : tool.target === "erase" ? <p className="zone-land-legend" data-frame="flat">{ZONE_TOOLBAR_COPY.eraserHint}</p> : <ZoneLandLegend kind={tool.target} />}
     </nav>
   );
 }
@@ -76,7 +76,7 @@ export function ZoneToolbar({ tool, lastKind, canUndo, eraserOpen, kindOpen, pul
 export function ZoneLandLegend({ kind }: { readonly kind: ZoneKind }) {
   const legend = zoneLegend(kind);
   return (
-    <p className="zone-land-legend" aria-label={ZONE_TOOLBAR_COPY.legendLabel}>
+    <p className="zone-land-legend" data-frame="flat" aria-label={ZONE_TOOLBAR_COPY.legendLabel}>
       <span className="zone-land-item"><span className="zone-land-swatch zone-land-swatch--good" aria-hidden="true" />{legend.good}</span>
       {legend.fair === "" ? null : <span className="zone-land-item"><span className="zone-land-swatch zone-land-swatch--fair" aria-hidden="true" />{legend.fair}</span>}
       <span className="zone-land-item"><span className="zone-land-swatch zone-land-swatch--barred" aria-hidden="true" />{legend.barred}</span>

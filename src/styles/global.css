@@ -59,7 +59,6 @@ button {
   display: grid;
   gap: 6px;
   width: min(420px, calc(100% - 32px));
-  padding: 14px 18px 15px;
   color: var(--palette-ink);
   text-align: center;
   pointer-events: none;
@@ -67,7 +66,6 @@ button {
   background-image: none;
   background-repeat: no-repeat;
   background-size: auto;
-  border: 1px solid var(--palette-ink);
   transform: translateX(-50%);
   isolation: isolate;
 }
@@ -460,13 +458,11 @@ button {
   gap: 8px;
   align-items: center;
   max-width: min(440px, calc(100% - 24px));
-  padding: 7px 11px;
   color: var(--palette-ink);
   background-color: var(--palette-vellum);
   background-image: none;
   background-repeat: no-repeat;
   background-size: auto;
-  border: 1px solid var(--palette-ink);
 }
 
 .settlement-target,
@@ -635,11 +631,9 @@ button {
   align-items: center;
   width: 100%;
   height: 206px;
-  padding: 10px clamp(16px, 3vw, 42px);
   overflow: visible;
   background-color: var(--palette-parchment);
   background-image: none;
-  border: 1px solid var(--palette-ink);
   isolation: isolate;
 }
 
@@ -674,11 +668,9 @@ button {
   width: min(140px, calc(100% - 4px));
   max-width: 140px;
   aspect-ratio: 1;
-  padding: 0;
   color: var(--palette-ink);
   cursor: pointer;
   background-color: var(--palette-vellum);
-  border: 1px solid var(--palette-ink);
 }
 
 .map-overview svg {
@@ -830,11 +822,13 @@ button {
   opacity: 0.58;
 }
 
+/* UI-AUDIT-1: the pressed speed seal no longer sinks 1 px (it went past the time cluster's inner box); its lighter field
+   and the seal-red inner rule (uiSkin.css) mark it. */
 .build-seal[aria-pressed="true"],
 .speed-seal[aria-pressed="true"] {
   color: var(--palette-gold-dark);
-  transform: translateY(1px);
 }
+.build-seal[aria-pressed="true"] { transform: translateY(1px); }
 
 .build-seal:focus-visible,
 .speed-seal:focus-visible {
@@ -1323,7 +1317,6 @@ button {
   .welcome-parchment {
     bottom: clamp(186px, 24vh, 224px);
     width: min(372px, calc(100% - 24px));
-    padding: 12px 14px 13px;
   }
 
   .welcome-parchment h2 {
@@ -1338,8 +1331,6 @@ button {
     grid-template-columns: 84px minmax(0, 1fr) 260px;
     gap: 6px;
     height: 276px;
-    padding-right: 10px;
-    padding-left: 10px;
   }
 
   .court-recess {
@@ -1446,8 +1437,6 @@ button {
     grid-template-columns: 84px minmax(0, 1fr) 260px;
     gap: 6px;
     height: 278px;
-    padding-right: 10px;
-    padding-left: 10px;
   }
 
   .court-recess {
@@ -1524,7 +1513,6 @@ button {
     bottom: 266px;
     width: min(320px, calc(100% - 18px));
     gap: 5px;
-    padding: 10px 12px 11px;
   }
 
   .welcome-parchment h2 {
@@ -1539,7 +1527,6 @@ button {
     grid-template-columns: 40px minmax(0, 1fr) 96px;
     gap: 1px;
     height: 224px;
-    padding: 7px 2px;
   }
 
   .court-recess {
@@ -1767,7 +1754,6 @@ button {
     bottom: 232px;
     left: 6px;
     justify-content: center;
-    padding: 5px 8px;
   }
 
   .settlement-target,
@@ -1803,8 +1789,6 @@ button {
 @media (max-width: 420px) {
   .court-console {
     grid-template-columns: 24px minmax(0, 1fr) 96px;
-    padding-right: 4px;
-    padding-left: 4px;
   }
 
   .court-recess {
@@ -1890,7 +1874,6 @@ button {
     right: calc(33.333% + 4px);
     bottom: 232px;
     left: 4px;
-    padding: 4px 6px;
   }
 }
 

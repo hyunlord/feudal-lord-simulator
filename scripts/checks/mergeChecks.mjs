@@ -13,10 +13,15 @@
 //                                                    (parsed with tools/eslint's TypeScript 6)
 //  7. budget      scripts/checks/distBudget.mjs      `vite build` of <head> into a temporary folder: the total and each
 //                                                    budgeted category (distBudget.config.json) within budget
-//  8. trend       scripts/checks/trendLag.mjs        warning only: the perf-trend page lags <head> by more than 10
+//  8. surfaces    scripts/checks/surfaceRegistry.mjs every dialog root, framed class name and border-image rule is in
+//                                                    src/ui/surfaces.registry.ts (UI-AUDIT-1)
+//  9. ui-geometry scripts/checks/uiGeometry.mjs      the committed DGX geometry result is of <head>'s inputs, opened
+//                                                    every surface, and has no failure outside its baseline and
+//                                                    exceptions, which only shrink (UI-AUDIT-1)
+// 10. trend       scripts/checks/trendLag.mjs        warning only: the perf-trend page lags <head> by more than 10
 //                                                    commits (logged to <git common dir>/fls-trend-lag.log)
 // The layer rule (simulation folders do not import src/ui or src/render) is an ESLint rule: tools/eslint/layers.mjs.
-// 1, 2, 5 and 6 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
+// 1, 2, 5, 6, 8 and 9 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
 // changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules; step 7
 // checks out there only the received PNGs the build turns into web derivatives (git lfs checkout, from the local store).
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -30,6 +35,8 @@ import { checkPinChanges, formatPinResult } from './pinChanges.mjs';
 import { checkLintExceptions, formatLintResult } from './lintExceptions.mjs';
 import { checkInboxLedger, formatLedgerResult, ledgerOk } from './inboxLedger.mjs';
 import { checkKoreanStrings, formatKoreanResult } from './koreanStrings.mjs';
+import { checkSurfaceRegistry, formatSurfaceRegistryResult } from './surfaceRegistry.mjs';
+import { checkUiGeometry, formatOverrideCount, formatUiGeometryResult, logWarnOverride } from './uiGeometry.mjs';
 import { checkTrendLag, formatTrendLag, logTrendLag } from './trendLag.mjs';
 
 const CODE = /\.(ts|tsx|js|jsx|mjs|cjs)$/;
@@ -54,6 +61,12 @@ report('ledger', ledgerOk(ledger), formatLedgerResult(ledger));
 ensureEslint();   // koreanStrings parses with tools/eslint's TypeScript
 const korean = checkKoreanStrings({ head });
 report('korean', korean.added.length === 0, formatKoreanResult(korean));
+const surfaces = checkSurfaceRegistry({ head });
+report('surfaces', surfaces.missing.length === 0, formatSurfaceRegistryResult(surfaces));
+const geometry = checkUiGeometry({ base, head });
+report('ui-geometry', geometry.pass, formatUiGeometryResult(geometry));
+const geometryOverride = logWarnOverride(geometry, { top, head }); if (geometryOverride !== null) console.error(geometryOverride);
+console.log(formatOverrideCount(base, head));
 
 // Files for ESLint and tsc: this checkout if it is exactly <head>, else a temporary worktree.
 const clean = git(['status', '--porcelain', '--untracked-files=no']).trim() === '';

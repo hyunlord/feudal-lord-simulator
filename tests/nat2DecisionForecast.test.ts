@@ -21,7 +21,7 @@ const noop = () => undefined;
 test("NAT-2 QA-009: the forecast line is none for empty numbers, the numbers after the heading otherwise", () => {
   assert.equal(DECISION_COPY.predictedLine(""), null);
   assert.equal(DECISION_COPY.predictedLine("  "), null);
-  assert.equal(DECISION_COPY.predictedLine("금고 210d(지금 60d)"), "두 계절 뒤 예측 · 금고 210d(지금 60d)");
+  assert.equal(DECISION_COPY.predictedLine("금고 17s 6d(지금 5s)"), "두 계절 뒤 예측 · 금고 17s 6d(지금 5s)");
 });
 
 test("NAT-2 QA-009: the guild's quarrel (no forecast yet) shows its answers without the empty prediction line", () => {
@@ -59,7 +59,7 @@ test("NAT-2 QA-009: an answer the engine predicts keeps its line (the market cha
 
   // Then
   assert.equal((petition.match(/class="petition-predicted">두 계절 뒤 예측 · /g) ?? []).length, view.options.length);
-  assert.match(petition, /두 계절 뒤 예측 · 금고 210d\(지금 60d\)/);
+  assert.match(petition, /두 계절 뒤 예측 · 금고 17s 6d\(지금 5s\)/);
   assert.equal((decision.match(/famine-option-predicted/g) ?? []).length, 1, "the predicted answer only");
   assert.match(decision, /두 계절 뒤 예측 · 인구 10\(지금 12\)/);
 });

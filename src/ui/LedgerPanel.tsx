@@ -31,7 +31,7 @@ type LedgerPanelViewProps = {
 /** Stateless body of the panel (spec L-8), so tests can press its buttons without a DOM. */
 export function LedgerPanelView({ id, model, onSelectAccount, onSelectWindow, onHighlightBuildings }: LedgerPanelViewProps): ReactElement {
   return (
-    <aside id={id} className="resource-bar__coin-detail ledger-panel" aria-label={LEDGER_COPY.panelAria}>
+    <aside id={id} className="resource-bar__coin-detail ledger-panel" data-frame="dark" aria-label={LEDGER_COPY.panelAria}>
       <strong>{LEDGER_COPY.heading}</strong>
       <div className="ledger-panel__tabs" role="tablist" aria-label={LEDGER_COPY.panelAria}>
         {model.accounts.map(tab => (

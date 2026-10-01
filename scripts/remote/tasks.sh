@@ -11,6 +11,10 @@
 #   browser      [--repeat 10] [test files ...]              browser tests N times in a row (default: Part7 proof)
 #   perf         [--cells lots24:1:still,...] [--rounds 3] [--baseline perf/baseline-dgx-<sha>.json]
 #                without --baseline: records perf/baseline-dgx-<sha>.json; with it: compares p95 (DGX vs DGX only)
+#   ui-geometry  [audit args: --only id,prefix. --viewports … --copy … --numbers … --jobs 4]
+#                UI-AUDIT-1 geometry audit (scripts/uiGeometryAudit.mjs) against the dev server (?pseudo-long=1 is a
+#                dev-server transform) and the cached UI state folders: docs/verification/uiaudit1/geometry/<run>/ and
+#                the committed summary docs/verification/uiaudit1/geometry.json come back into the tree
 #   clone-check                                              fresh clone of the commit (+LFS), npm ci, typecheck, test, build
 #   trend        [--commits sha,...] [--rounds 3] [--seconds 45]
 #                                                            per-commit noise-resistant metrics (scripts/perf/trendRun.ts)
@@ -144,6 +148,40 @@ perf)
     node scripts/remote/perf-baseline.mjs --raw "$raw" --out "perf/baseline-dgx-$SHORT_SHA.json" --report "$OUT/perf/summary.md" || rc=1
     cat "$OUT/perf/summary.md"
   fi
+  exit $rc
+  ;;
+
+ui-geometry)
+  mkdir -p "$OUT/ui-geometry"
+  states5=${UI5_STATES:-$HOME/fls-ui5-states-v22}; states6=${UI6_STATES:-$HOME/fls-ui6-states}; states8=${UI8_STATES:-$HOME/fls-ui8-states}
+  states9=${UI9_STATES:-$HOME/fls-ui9-states}; states10=${UI10_STATES:-$HOME/fls-ui10-states}; extra=$states10/extra
+  # The registry's scenes (src/ui/surfaces.registry.ts) read these; each folder is built by its scripts/ui*States.ts.
+  missing=""
+  for f in "$states5/merchant-town.json" "$states5/carrying.json" "$states5/famine-arrival.json" "$states5/petition-open.json" "$states5/chapter-end.json" \
+    "$states6/wool_payment.json" "$states6/decline.json" "$states6/chapter2-end.json" "$states8/chapter3-end.json" \
+    "$states9/reorg.alehouse_boom.json" "$states9/chapter4-end.json" "$states9/borough_charter.json" "$states9/rumour-chased.json" "$states9/reorg.wage_competition.json" \
+    "$states10/chapter5-end.json" "$states10/borough_autonomy.json" "$extra/heir_choice.json"; do
+    [ -f "$f" ] || missing="$missing $f"
+  done
+  if [ -n "$missing" ]; then
+    echo "ui-geometry: state files missing:$missing (build them with scripts/ui5States.ts, ui6States.ts, ui8States.ts, ui9States.ts, ui10States.ts, ui10ExtraStates.ts)" | tee "$OUT/summary.txt"
+    exit 2
+  fi
+  # No file watching (scripts/remote/viteNoWatch.config.ts): the audit needs the dev transforms, not hot reload, and a
+  # watched run folder takes thousands of the DGX's shared inotify watches. The server goes with the task on any exit.
+  node_modules/.bin/vite --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$FLS_REMOTE_PORT" --strictPort > "$OUT/ui-geometry/vite.log" 2>&1 &
+  vite=$!
+  trap 'kill $vite 2>/dev/null; wait $vite 2>/dev/null' EXIT
+  trap 'exit 130' INT TERM HUP
+  url="http://127.0.0.1:$FLS_REMOTE_PORT/"
+  for _ in $(seq 1 60); do curl -sf "$url" > /dev/null && break; sleep 1; done
+  curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; cat "$OUT/ui-geometry/vite.log"; exit 1; }
+  out=docs/verification/uiaudit1/geometry/$FLS_REMOTE_RUN
+  node_modules/.bin/tsx scripts/uiGeometryAudit.mjs "$out" --url "$url" --states5 "$states5" --states6 "$states6" --states8 "$states8" \
+    --states9 "$states9" --states10 "$states10" --extra "$extra" "$@" > "$OUT/ui-geometry/audit.log" 2>&1
+  rc=$?
+  tail -n 3 "$OUT/ui-geometry/audit.log" | tee "$OUT/summary.txt"
+  [ -f "$out/geometry.md" ] && sed -n '1,4p' "$out/geometry.md" | tee -a "$OUT/summary.txt"
   exit $rc
   ;;
 

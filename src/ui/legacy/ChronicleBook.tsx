@@ -141,7 +141,7 @@ export function ChronicleBook({ state, onClose }: { readonly state: GameState; r
   };
   return (
     <div className="story-modal-backdrop legacy-book-backdrop" role="presentation">
-      <section ref={dialog} className="chronicle-page legacy-book" role="dialog" aria-modal="true" aria-label={COPY.book.title} tabIndex={-1}
+      <section ref={dialog} className="chronicle-page legacy-book" data-frame="chapter-page" role="dialog" aria-modal="true" aria-label={COPY.book.title} tabIndex={-1}
         data-page={page.key} data-pages={total} data-finished={book.finished}
         onKeyDown={event => {
           if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;

@@ -2,14 +2,14 @@ import { CHAPTER_FIVE, CHAPTER_FOUR, CHAPTER_THREE } from "../content/chapterCon
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { HEIR_KIND_COPY, LEGACY_AXIS_COPY, LEGACY_ENDING_COPY } from "../content/legacyCopy.ko";
 import type { ChronicleEntry } from "../engine/politics.types";
-import { pence } from "./hud/hudCopy.ko";
+import { moneyShort } from "./money.ko";
 
 // UI-4 chronicle page and chapter screens (the ledger's sentences come from src/content/historyCopy.ko.ts).
 const DECISION_KINDS: Readonly<Record<string, string>> = {
   famine_response: "대기근 대응", petition_response: "상인 청원", market_town: "시장도시 선포", stone_town: "석벽 선포", rebuild: "재건",
 };
 const METRICS: Readonly<Record<string, (value: number) => string>> = {
-  population: value => `인구 ${value}`, treasury: value => `금고 ${pence(value)}`, merchantGauge: value => `상인 게이지 ${value}`, lots: value => `필지 ${value}`,
+  population: value => `인구 ${value}`, treasury: value => `금고 ${moneyShort(value)}`, merchantGauge: value => `상인 게이지 ${value}`, lots: value => `필지 ${value}`,
 };
 /** UI-10: a chapter opening's years — " · 1342–1364", " · 1364" when it began at or past its planned end, "" unknown. */
 const chapterSpan = (from: number | null, to: number) => from === null ? "" : from >= to ? ` · ${from}` : ` · ${from}–${to}`;
@@ -40,11 +40,11 @@ export const CHRONICLE_COPY = {
   stats: (stats: ChronicleEntry["stats"], chapter = 1, heirWord: string | null = null) => [
     `인구 처음 ${stats.populationStart} · 끝 ${stats.populationEnd} · 가장 많을 때 ${stats.peakPopulation}`,
     `집 ${stats.houses}채 · 불탄 집 ${stats.burntHouses} · 떠난 가구 ${stats.departures}`,
-    `잃은 수확 밀 ${stats.harvestLost} · 금고 ${pence(stats.treasury)}`,
+    `잃은 수확 밀 ${stats.harvestLost} · 금고 ${moneyShort(stats.treasury)}`,
     ...(stats.famine === null || chapter !== 1 ? [] : [`대기근(${stats.famine.year}) 인구 닥칠 때 ${stats.famine.populationAtArrival} · 끝날 때 ${stats.famine.populationAtEnd}`]),
     // UI-6 (F2-A WR-9): chapter 2's war.
     ...(stats.war === undefined ? [] : [
-      stats.war.raidYear === null || stats.war.raidLosses === null ? "해안 습격 없음" : `해안 습격(${stats.war.raidYear}) 불탄 집 ${stats.war.raidLosses.burntHouses} · 빼앗긴 돈 ${pence(stats.war.raidLosses.coin)} · 성벽 방어 ${Math.round((stats.war.defencePermille ?? 0) / 10)} %`,
+      stats.war.raidYear === null || stats.war.raidLosses === null ? "해안 습격 없음" : `해안 습격(${stats.war.raidYear}) 불탄 집 ${stats.war.raidLosses.burntHouses} · 빼앗긴 돈 ${moneyShort(stats.war.raidLosses.coin)} · 성벽 방어 ${Math.round((stats.war.defencePermille ?? 0) / 10)} %`,
       `징집 ${stats.war.men}명 · 돌아오지 못한 사람 ${stats.war.lostMen}명 · ${WALL_OUTCOME[stats.war.wall]}`]),
     // UI-8 (F3-A PL-10): chapter 3's plague.
     ...(stats.plague === undefined ? [] : [
@@ -55,8 +55,8 @@ export const CHRONICLE_COPY = {
     // UI-9 (F4-A RG-10): chapter 4's reorganisation.
     ...(stats.reorganisation === undefined ? [] : [
       `재편 시작 ${stats.reorganisation.startYear}년 · 임금 이탈 가구 ${stats.reorganisation.wageLeavers}가구 · 직조공 이탈 ${stats.reorganisation.weaverLeavers}가구`,
-      `팔린 직물 ${stats.reorganisation.clothSold}필 · 직물 수입 ${pence(stats.reorganisation.clothIncome)} · 길드 ${stats.reorganisation.guild ? "있음" : "없음"}`,
-      `인두세 ${pence(stats.reorganisation.pollTax)} · 반란 소문 ${stats.reorganisation.rebellion === "chased" ? "징수원 쫓음" : stats.reorganisation.rebellion === "quiet" ? "조용히 지남" : "없음"} · 특허 ${CHARTER_OUTCOME[stats.reorganisation.charter] ?? stats.reorganisation.charter}`,
+      `팔린 직물 ${stats.reorganisation.clothSold}필 · 직물 수입 ${moneyShort(stats.reorganisation.clothIncome)} · 길드 ${stats.reorganisation.guild ? "있음" : "없음"}`,
+      `인두세 ${moneyShort(stats.reorganisation.pollTax)} · 반란 소문 ${stats.reorganisation.rebellion === "chased" ? "징수원 쫓음" : stats.reorganisation.rebellion === "quiet" ? "조용히 지남" : "없음"} · 특허 ${CHARTER_OUTCOME[stats.reorganisation.charter] ?? stats.reorganisation.charter}`,
       `도시 세력 ${stats.reorganisation.townInfluence} · 상인 세력 ${stats.reorganisation.merchantInfluence}`,
     ]),
     // UI-10 (F5-A LG-8): chapter 5's autonomy and legacy.

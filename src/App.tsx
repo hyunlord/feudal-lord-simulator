@@ -82,6 +82,7 @@ import { QaOverlay } from "./ui/qa/QaOverlay";
 import { hudVisibility, reduceUi, topModal } from "./ui/stateMachine/uiStateMachine";
 import { useUiStateMachine } from "./ui/stateMachine/useUiStateMachine";
 import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, StatusPill } from "./ui/hud/HudShell";
+import { StuckGoodsChip, stuckGoodsChipView, useStuckGoods } from "./ui/hud/StuckGoodsChip";
 import { statusPillModel } from "./ui/hud/statusPillModel";
 import { ZoneToolbar } from "./ui/hud/ZoneToolbar";
 import { zoneEditHistory } from "./render/zoneEditHistory";
@@ -285,6 +286,9 @@ export function App() {
   // the warning stack, recomputed only when that sample changes).
   const guidanceState = guidanceSnapshotRef.current.state;
   const alertRows = useMemo(() => alertStackRows(guidanceState), [guidanceState]);
+  // UI-AUDIT-1: stock piled in one building that cannot leave (the HUD's totals hide it), beside the crisis bells.
+  const stuckRows = useStuckGoods(guidanceState);
+  const stuckChip = useMemo(() => stuckGoodsChipView(guidanceState, stuckRows), [guidanceState, stuckRows]);
   const immediateWarning = alertRows.some(row => row.severity === "immediate");
   // UX-3 cache (AGENTS rule 10): the status pill's numbers (food days walk every store, money the ledger totals) —
   // key: the sampled guidance state, reason: App renders every tick and the pill's numbers change slowly; measured on
@@ -445,18 +449,19 @@ export function App() {
         {/* NAT-2: the QA info overlay (settings → developer, key `): nothing mounted while it is off. */}
         <QaOverlay store={store} />
         <PauseVeil paused={speed === 0 && !welcomeVisible && topModal(ui) === null} />
-        <div className="hud-time-cluster" role="group" aria-label={SCENARIO_COPY.calendarAria} hidden={!visibility.speed}>
+        <div className="hud-time-cluster" data-frame="strip-top" role="group" aria-label={SCENARIO_COPY.calendarAria} hidden={!visibility.speed}>
           <SpeedSeals speed={speed} onChange={value => { platformServices().input.emit({ kind: "speed", value: speedStepOf(value) }); }}
             extraSettings={<><TutorialToggle enabled={tutorial.enabled} onChange={tutorial.setEnabled} /><AudioControls /></>} />
         </div>
-        {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector} /> : null}
+        {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector}
+          lead={stuckChip === null ? null : <StuckGoodsChip view={stuckChip} onInspect={openInspector} />} /> : null}
         {visibility.crisis ? <EventCards beats={story.visible} onDismiss={story.dismiss}
           onDecide={beat => sendUi({ type: "push_modal", modal: beat.decision === "famine" ? "decision" : "petition" })} /> : null}
         {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
           <GoalCards tutorial={tutorial} maxActive={1} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
         </aside> : null}
         {/* S-30: one panel slot — the goal log, the population log, the inspector or the ledger (the build drawer is below). */}
-        {ui.mode === "goals" ? <aside className="slot-panel goal-slot" aria-label={KO_UI.informationRail}>
+        {ui.mode === "goals" ? <aside className="slot-panel goal-slot" data-frame="slot" aria-label={KO_UI.informationRail}>
           <GoalDrawer open log={tutorial.log}>
             <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
             <SettlementPanel state={state} onRestart={() => dispatch({ type: "restart_settlement" })} developmentContent={
@@ -478,18 +483,18 @@ export function App() {
           </GoalDrawer>
         </aside> : null}
         {ui.mode === "population" ? (
-          <div id="population-ledger-drawer" className="ledger-population-drawer slot-panel">
+          <div id="population-ledger-drawer" className="ledger-population-drawer slot-panel" data-frame="slot">
             <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} note={menAwayLine(state)} />
           </div>
         ) : null}
-        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} onClose={() => sendUi({ type: "deselect" })}
+        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot" data-frame="slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} stuck={stuckRows} onClose={() => sendUi({ type: "deselect" })}
           onPerson={openPerson} /></div> : null}
         {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })}
           history={storeHistoryRef.current} food={{ days: pillModel.foodDays }} highlighted={ledgerHighlight} onHighlight={setLedgerHighlight}
           viewTab={<EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />}
           mapTab={<MapShield grid={state} />} onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} onPerson={openPerson} /> : null}
         <UnlockBanner text={tutorial.banner} />
-        {toastVisible && completionToast !== null ? <div className="completion-toast" role="status" aria-label={COMPLETION_TOAST_COPY.region}>
+        {toastVisible && completionToast !== null ? <div className="completion-toast" data-frame="toast" role="status" aria-label={COMPLETION_TOAST_COPY.region}>
           <UiIcon sheet="prediction" cell="ok" />{completionToast.names.length === 1 ? COMPLETION_TOAST_COPY.one(completionToast.names[0]!)
             : COMPLETION_TOAST_COPY.many(completionToast.names[0]!, completionToast.names.length - 1)}
         </div> : null}
@@ -512,7 +517,7 @@ export function App() {
           stewardName={steward === null ? null : steward.name} />
         {/* S-21 build drawer (and the zone bar in S-24): the catalogue stays mounted so a goal card can open it. */}
         {/* UX-3R2: in the zone state the left zone panel holds the kinds and tools; the drawer stays closed. */}
-        <aside className="court-console build-drawer" aria-label={KO_UI.courtConsole} data-open={ui.mode === "build" ? "true" : undefined}>
+        <aside className="court-console build-drawer" aria-label={KO_UI.courtConsole} data-open={ui.mode === "build" ? "true" : undefined} data-frame="strip-bottom">
           <BuildSeals
             selectedTool={selectedTool}
             state={state}

@@ -8,6 +8,7 @@ import { petitionDecisionView } from "../src/ui/decisionModels";
 import { storyBeats } from "../src/ui/eventStory";
 import { plagueMarks } from "../src/ui/seasonStrip";
 import { SEASON_STRIP_COPY } from "../src/ui/seasonStripCopy.ko";
+import { moneyObject } from "../src/ui/money.ko";
 
 // UI-8 (F3-A): the four plague petition cards, nine story beats, and the plague's season-strip marks.
 const YEAR = 4_000;
@@ -54,7 +55,7 @@ test("UI-8 PL-5: vacant_priest card — Wave 21 art, accept/refuse only, parish 
   assert.deepEqual(view.presentation.art, { sheet: "wave21", id: "ch3_decision_vacant_priest" });
   assert.deepEqual(view.options.map(o => o.choice), ["accept", "refuse"], "exactly two answers: no accept_with_price");
   assert.match(view.presentation.demand, /사제/, "demand mentions priest");
-  assert.match(view.options[0]!.line, new RegExp(`${PLAGUE_BALANCE.monasteryStipend}`), "accept line shows stipend");
+  assert.match(view.options[0]!.line, new RegExp(`봉급 ${moneyObject(PLAGUE_BALANCE.monasteryStipend)} 내고`), "accept line shows stipend");
   assert.match(view.options[0]!.predicted, /금고/, "forecast shows treasury");
 });
 

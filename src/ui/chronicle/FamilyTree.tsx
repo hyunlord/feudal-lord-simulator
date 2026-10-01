@@ -5,6 +5,8 @@ import { EmblemImage } from "../heraldry/EmblemImage";
 import { Button } from "../kit";
 import { personEmblem } from "../persons/personModels";
 import { portraitStyle } from "../portraitArt";
+import { frameSafe } from "../frameBox";
+import { FRAME_GAP } from "../frameTokens.generated";
 import { wave25FrameStyle, wave25ImageStyle, wave25LineStyle } from "../wave25Art";
 import { FAMILY_TREE_COPY } from "./familyTreeCopy.ko";
 import { familyTreeView, TREE, type TreeJointKind } from "./familyTreeModel";
@@ -21,6 +23,12 @@ const JOINT_ART: Readonly<Record<TreeJointKind, Parameters<typeof wave25ImageSty
   junction_t: "tree_line_junction_t", junction_t_up: "tree_line_junction_t",
 };
 const at = (x: number, y: number): CSSProperties => ({ position: "absolute", left: x, top: y });
+/** UI-AUDIT-1: a generation label is as tall as its frame box around one 16 px line (`.family-tree-generation`), in the
+ * label column left of the tree. */
+const GENERATION_LABEL = (() => {
+  const safe = frameSafe("tree-generation", 1);
+  return { width: TREE.labelColumn - 8, height: safe.top + safe.bottom + 2 * FRAME_GAP + 16 };
+})();
 
 export function FamilyTree({ state, personId, onPerson }: { readonly state: GameState; readonly personId: string; readonly onPerson: (personId: string) => void }) {
   const box = useRef<HTMLDivElement | null>(null);
@@ -55,12 +63,12 @@ export function FamilyTree({ state, personId, onPerson }: { readonly state: Game
             data-nodes={tree.nodes.length} data-folded={tree.toggles.filter(entry => !entry.open).length}
             style={{ width: tree.width, height: tree.height }}>
             <div className="family-tree-plane" style={{ width: tree.width, height: tree.height }}>
-              <div className="family-tree-banner" style={{ ...at(tree.width / 2 - 170, 8), width: 340, height: 64, ...wave25FrameStyle("tree_lineage_banner", 1) }}>
+              <div className="family-tree-banner" data-frame="tree-banner" style={{ ...at(tree.width / 2 - 170, 8), width: 340, height: 64, ...wave25FrameStyle("tree_lineage_banner", 1) }}>
                 {emblem === null ? null : <EmblemImage emblem={emblem} size={40} label={tree.banner} />}
-                <span>{tree.banner}</span>
+                <span className="family-tree-banner-text">{tree.banner}</span>
               </div>
               {tree.generations.map(row => (
-                <span key={row.label} className="family-tree-generation" style={{ ...at(4, row.y - 16), width: 88, height: 32, ...wave25FrameStyle("tree_generation_label", 1) }}>{row.label}</span>
+                <span key={row.label} className="family-tree-generation" data-frame="tree-generation" style={{ ...at(4, row.y - GENERATION_LABEL.height / 2), ...GENERATION_LABEL, ...wave25FrameStyle("tree_generation_label", 1) }}>{row.label}</span>
               ))}
               {tree.lines.map((line, index) => (
                 <span key={`l${index}`} className="family-tree-line" aria-hidden="true"
@@ -78,7 +86,7 @@ export function FamilyTree({ state, personId, onPerson }: { readonly state: Game
                 const face = portraitStyle(node.portraitId, PORTRAIT);
                 const frame = node.dead ? wave25FrameStyle("tree_node_frame_deceased", 0.6) : wave25FrameStyle(node.selected ? "tree_node_frame_selected" : "tree_node_frame", 0.6);
                 return (
-                  <Button key={node.personId} type="button" className="family-tree-node" role="treeitem" aria-label={node.label} aria-selected={node.selected}
+                  <Button key={node.personId} type="button" className="family-tree-node" data-frame="tree-node" role="treeitem" aria-label={node.label} aria-selected={node.selected}
                     data-person={node.personId} data-outside={node.outside ? "true" : undefined} data-dead={node.dead ? "true" : undefined}
                     style={{ ...at(node.x, node.y), width: TREE.nodeWidth, height: TREE.nodeHeight, ...frame }} onPress={() => onPerson(node.personId)} variant="quiet">
                     <span className={`family-tree-face${node.dead ? " portrait-greyscale" : ""}`} aria-hidden="true" style={face ?? { width: PORTRAIT, height: PORTRAIT }} />

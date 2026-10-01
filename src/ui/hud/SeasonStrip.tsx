@@ -70,7 +70,7 @@ export function SeasonStripPanel({ state, food, onClose }: {
   const legacy = legacyMarks(legacyForecast(state), legacyInterludes(state), state.tick);
   const until = food.untilTick === null ? null : arrivalOf(state.tick, food.untilTick);
   return (
-    <section className="season-strip-panel" aria-label={SEASON_STRIP_COPY.listTitle}>
+    <section className="season-strip-panel" data-frame="light" aria-label={SEASON_STRIP_COPY.listTitle}>
       <p className="season-strip-food" data-food-until={food.untilTick ?? ""}>{food.days === null || until === null ? SEASON_STRIP_COPY.foodNone
         : SEASON_STRIP_COPY.foodUntil(food.days, until.season, until.third, until.nextYear)}</p>
       {idleWheat(state) > 0 ? <p className="season-strip-food season-strip-idle-wheat">{SEASON_STRIP_COPY.idleWheat(idleWheat(state))}</p> : null}

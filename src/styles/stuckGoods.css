@@ -1,0 +1,14 @@
+/* UI-AUDIT-1 stuck goods: one line left of the crisis bells, in their row (under the speed, top right) — the worst
+   pile, its reason in the warning tone, and how many more. Kit secondary button art; 44 px (48 on tablets).
+   UI-AUDIT-1: the gap inside the button's art — 12 px sides, a 16 px bell (the 44 px row leaves 16 px inside it). */
+.app-shell .stuck-goods-chip {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; max-width: min(420px, calc(100vw - 200px));
+  padding: 0 12px; font-size: 13px; font-weight: 600; line-height: 1.2; white-space: nowrap;
+}
+.app-shell .stuck-goods-bell { display: inline-block; flex: 0 0 auto; width: 16px; height: 16px; }
+.app-shell .stuck-goods-line { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.app-shell .stuck-goods-reason { flex: 0 0 auto; color: var(--palette-vermilion); font-size: 12px; }
+.app-shell .stuck-goods-more { flex: 0 0 auto; font-size: 12px; font-weight: 400; }
+@media (pointer: coarse) {
+  .app-shell .stuck-goods-chip { min-height: 48px; }
+}

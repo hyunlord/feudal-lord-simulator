@@ -32,7 +32,9 @@ test("UI-4 gate 2: the Great Famine is a decision with the four answers and the 
   assert.equal(beat.decision, "famine");
   const view = famineDecisionView(state)!;
   assert.deepEqual(view.options.map(option => option.choice), ["relief", "price_control", "laissez_faire", "speculation"]);
-  for (const option of view.options) assert.match(option.predicted, /^인구 \d+\(지금 \d+\) · 금고 -?\d+d\(지금 -?\d+d\)$/, option.choice);
+  // UI-AUDIT-1: the treasury in English money's short form ("£3 4s", "3s 4d", "7d", "−2s 6d").
+  const money = "−?(?:£[\\d,]+(?: \\d+s)?|\\d+s(?: \\d+d)?|\\d+d)";
+  for (const option of view.options) assert.match(option.predicted, new RegExp(`^인구 \\d+\\(지금 \\d+\\) · 금고 ${money}\\(지금 ${money}\\)$`), option.choice);
   assert.equal(famineDecisionView(withEvents({ records: [{ id: "great_famine@67", defId: "great_famine", kind: "dearth", season: 67, arrivalTick: 9_000, losses,
     response: { choice: "relief", tick: 9_100 } }] })), null, "answered: no modal");
 });
@@ -52,8 +54,8 @@ test("UI-4: an open petition is a decision beat; its answers carry the engine's 
   assert.equal(storyBeats(state).find(beat => beat.kind === "petition")?.decision, "petition");
   const view = petitionDecisionView(state)!;
   assert.deepEqual(view.options.map(option => option.choice), ["accept", "accept_with_price", "refuse"]);
-  // FIX-4 E1: the game opens with 60d (was 0d); the charter fee is 150d on top.
-  assert.match(view.options[1]!.predicted, /금고 210d\(지금 60d\)/, "the charter fee");
+  // FIX-4 E1: the game opens with 60d (was 0d); the charter fee is 150d on top (UI-AUDIT-1: 210d = 17s 6d, 60d = 5s).
+  assert.match(view.options[1]!.predicted, /금고 17s 6d\(지금 5s\)/, "the charter fee");
   assert.match(view.options[2]!.predicted, /상인 게이지 30\(지금 50\)/, "refusing costs the gauge 20");
 });
 

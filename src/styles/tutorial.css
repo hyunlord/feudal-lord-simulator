@@ -96,7 +96,11 @@
 }
 .goal-drawer-toggle { min-height: 44px; font-size: 13px; color: var(--palette-ink); cursor: pointer; background-color: var(--palette-parchment); border: 1px solid var(--palette-ink); }
 /* contrast-audit selector=".goal-drawer" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
-.goal-drawer { max-height: 50vh; padding: 8px 10px; overflow: auto; font-size: 13px; color: var(--palette-ink); background-color: var(--palette-vellum); border: 1px solid var(--palette-ink); }
+.goal-drawer { max-height: 50vh; overflow: auto; font-size: 13px; color: var(--palette-ink); background-color: var(--palette-vellum); }
+/* UI-AUDIT-1: in the panel slot the slot is the one scroller; the log's rows take the drawer's width and wrap (a long
+   word does not widen the column past the inner box). */
+.app-shell .slot-panel .goal-drawer { max-height: none; overflow: visible; grid-template-columns: minmax(0, 1fr); overflow-wrap: anywhere; }
+.app-shell .slot-panel .goal-drawer > * { min-width: 0; }
 .goal-drawer-log { margin: 0 0 8px; padding-left: 18px; }
 .goal-drawer-empty { margin: 0 0 8px; }
 

@@ -16,7 +16,7 @@ import { lordshipOf } from "../engine/lordshipState";
 import { interludeImageId } from "./wave33Art";
 import { SEASON_STRIP_COPY } from "./seasonStripCopy.ko";
 import { beaconLit, conscriptsAway, warForecast, warOf } from "../engine/war";
-import { pence } from "./hud/hudCopy.ko";
+import { moneyShort } from "./money.ko";
 import { petitionPresentation } from "./petitionPresentation";
 import type { StoryIllustration } from "./storyArt";
 
@@ -205,7 +205,7 @@ function warBeats(state: GameState): readonly StoryBeat[] {
   }
   const raid = war.raid;
   if (raid !== undefined && state.tick - raid.tick < 2 * SEASON) {
-    const facts = [copy.losses(raid.losses.burntHouses, raid.losses.looted, pence(raid.losses.coin), Math.round(raid.defencePermille / 10))];
+    const facts = [copy.losses(raid.losses.burntHouses, raid.losses.looted, moneyShort(raid.losses.coin), Math.round(raid.defencePermille / 10))];
     beats.push(state.tick - raid.tick < SEASON
       ? { id: `raid:${raid.tick}`, kind: "raid", illustration: "event_coastal_raid", tile: spotTile(raidQuaySpot(state)), decision: null, title: copy.raid.title, line: copy.raid.line, advice: copy.raid.advice, facts }
       : { id: `raid_after:${raid.tick}`, kind: "raid_aftermath", illustration: "event_raid_aftermath", tile: spotTile(raidQuaySpot(state)), decision: null,
@@ -349,7 +349,7 @@ function reorgBeats(state: GameState): readonly StoryBeat[] {
     beats.push({ id: `reorg_poll:${reorg.startTick}`, kind: "reorg_poll_tax",
       illustration: "ch4_event_petitions", tile: keepTile(state), decision: null, title: copy.pollTax.title,
       line: copy.pollTax.line, advice: copy.pollTax.advice,
-      facts: reorg.pollTax > 0 ? [copy.pollTax.collected(pence(reorg.pollTax))] : [] });
+      facts: reorg.pollTax > 0 ? [copy.pollTax.collected(moneyShort(reorg.pollTax))] : [] });
   }
 
   // 7. 1381년 소요 (rebellion): within 2 seasons of the rebellion's tick.
@@ -395,7 +395,7 @@ function legacyBeats(state: GameState): readonly StoryBeat[] {
   if (recent(came.royal_tax_envoy) && !open.has("royal_tax")) {
     const answer = answered("royal_tax");
     push("royal_tax_envoy", "legacy_royal_tax", "ch5_event_royal_tax_envoy", keepTile(state), { ...copy.royalTax,
-      facts: answer === undefined ? [] : legacy.royalSubsidy > 0 ? [copy.royalTax.paid(pence(legacy.royalSubsidy))] : [copy.royalTax.petitioned] });
+      facts: answer === undefined ? [] : legacy.royalSubsidy > 0 ? [copy.royalTax.paid(moneyShort(legacy.royalSubsidy))] : [copy.royalTax.petitioned] });
   }
   if (recent(came.succession) && !open.has("heir_choice")) {
     const called = params("legacy.succession"), seated = params("legacy.heir_seated");
@@ -446,7 +446,7 @@ function interludeBeats(state: GameState, open: ReadonlySet<string>, recent: (ti
     if ((entry.id === "guild_dispute" && open.has(GUILD_DISPUTE_PETITION_ID)) || (entry.id === "church_rebuilding" && open.has(CHURCH_REBUILDING_PETITION_ID))) continue;
     const body = entry.id === "staple" ? { ...copy.staple, facts: [copy.staple.fact] }
       : entry.id === "guild_dispute" ? { ...copy.guildDispute, facts: [] }
-      : entry.id === "market_fire" ? { ...copy.marketFire, facts: [copy.marketFire.repair(pence(LEGACY_BALANCE.marketFireRepair))] }
+      : entry.id === "market_fire" ? { ...copy.marketFire, facts: [copy.marketFire.repair(moneyShort(LEGACY_BALANCE.marketFireRepair))] }
       : entry.id === "church_rebuilding" ? { ...copy.churchRebuilding, facts: legacy.answers[CHURCH_REBUILDING_PETITION_ID] === undefined ? []
         : [legacy.naveRebuilt === true ? copy.churchRebuilding.rebuilt : copy.churchRebuilding.deferred] }
       : { ...copy.deposition, facts: [] };
