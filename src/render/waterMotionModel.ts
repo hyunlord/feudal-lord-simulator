@@ -1,4 +1,7 @@
 import type { WeatherKind } from "../content/eventConfig";
+import { RIVERSIDE_ARCHETYPE_ID } from "../content/scenario/archetypes";
+import { stateArchetype } from "../engine/archetype";
+import type { GameState } from "../engine/engine.types";
 import { renderDetailLevel } from "./buildingVisualState";
 import type { SeasonIndex } from "./seasonArt";
 import { mix } from "./weatherPlacement";
@@ -18,8 +21,14 @@ import { WAVE29_WATER, type Wave29WaterKey } from "./wave29WaterManifest.generat
 //  - reeds (`reeds_sway_{a,b,c}_sheet`): the existing reeds a / b / c, same canvas and registration;
 //  - sun glints (`sparkle`): only on a clear day (the engine's "normal" weather, or a scenario without weather), sparse;
 //  - fish rings (`fish_ring`): an occasional single cycle at a spot, 8-20 s apart, deterministic by the spot and the clock;
-//  - mill race (`mill_race_sheet`): registered, not drawn — the game has no watermill (its mill is a post windmill, and
-//    the mill race is the leat of a water wheel, not a windmill's: records/README.md).
+//  - mill race (`mill_race_sheet`): on the flowing water around a fulling mill, the game's only water wheel (the grain
+//    mill is a post windmill; the race is a wheel's leat, never a windmill's: records/README.md), in place of the
+//    river flow there, at the flow's detail (waterRiverFlow.ts). The sheet runs screen north-east (records/assets.csv:
+//    "iso flow is screen-space 1,-1", directions by raster mirroring), so the other three mirror it (RACE_MIRROR).
+//
+// LAND-UI (MA-5, LU-D2): the four new lands draw only the effects their `ground.water` lists (landWaterEffects), e.g.
+// the coast's shore foam, the fen's reeds and shallow ripples, no fish rings on the downs; the riverside (the open
+// field) keeps every effect above, as before.
 //
 // Clock: the frame's wall clock `nowMs` (the renderer's), like the smoke and the weather, so the water keeps moving
 // while the game is paused. Not the life clock (lifeClock.ts), which holds while paused, and not the game tick.
@@ -33,6 +42,8 @@ export const REED_SHEETS = ["reeds_sway_a_sheet", "reeds_sway_b_sheet", "reeds_s
 export const FLOW_SHEETS = { ne: "current_arrows_ne_sheet", nw: "current_arrows_nw_sheet", se: "current_arrows_se_sheet", sw: "current_arrows_sw_sheet" } as const satisfies Record<string, Wave29WaterKey>;
 export type FlowDirection = keyof typeof FLOW_SHEETS;
 export const FLOW_DIRECTIONS = Object.keys(FLOW_SHEETS) as FlowDirection[];
+/** The mill race sheet's pattern scale signs per direction: it runs north-east; x mirrors to nw, y to se, both to sw. */
+export const RACE_MIRROR = { ne: { x: 1, y: 1 }, nw: { x: -1, y: 1 }, se: { x: 1, y: -1 }, sw: { x: -1, y: -1 } } as const satisfies Record<FlowDirection, { readonly x: 1 | -1; readonly y: 1 | -1 }>;
 
 export interface WaterMotionPlan {
   readonly deepRipples: boolean;
@@ -60,6 +71,35 @@ export function waterMotionPlan(zoom: number, weather: WeatherKind | null, seaso
     shallowRipples: full, reeds: full, fish: full,
     foam: full && !iceSeason(season),
     glints: full && clearWeather(weather),
+  };
+}
+
+// Cache (AGENTS rule 10): each land's effect set; key: its `ground.water` list (static content: a list is one land's);
+// nothing else enters. Reason: the plan asks it every frame and the list is the same.
+const landEffects = new WeakMap<readonly string[], ReadonlySet<Wave29WaterKey>>();
+/** The Wave 29 effects a state's land lists (its `water/` keys, prefix stripped), or null: the riverside, every effect. */
+export function landWaterEffects(state: Pick<GameState, "scenarioId" | "archetypeId">): ReadonlySet<Wave29WaterKey> | null {
+  const land = stateArchetype(state);
+  if (land === undefined || land.id === RIVERSIDE_ARCHETYPE_ID) return null;
+  let effects = landEffects.get(land.ground.water);
+  if (effects === undefined) {
+    effects = new Set(land.ground.water.map(key => key.replace(/^water\//, "")).filter((key): key is Wave29WaterKey => key in WAVE29_WATER));
+    landEffects.set(land.ground.water, effects);
+  }
+  return effects;
+}
+
+/** Whether a land draws an effect (null: the riverside, every one). */
+export const landDraws = (effects: ReadonlySet<Wave29WaterKey> | null, ...keys: readonly Wave29WaterKey[]): boolean =>
+  effects === null || keys.some(key => effects.has(key));
+
+/** The plan on a land: each effect also needs its sheet in the land's list (null: the riverside, the plan unchanged). */
+export function landWaterPlan(plan: WaterMotionPlan, effects: ReadonlySet<Wave29WaterKey> | null): WaterMotionPlan {
+  if (effects === null) return plan;
+  return {
+    deepRipples: plan.deepRipples && effects.has("ripple_sheet"), shallowRipples: plan.shallowRipples && effects.has("ripple_shallow_sheet"),
+    flow: plan.flow && landDraws(effects, ...Object.values(FLOW_SHEETS)), foam: plan.foam && effects.has("shore_foam_sheet"),
+    reeds: plan.reeds && landDraws(effects, ...REED_SHEETS), glints: plan.glints && effects.has("sparkle"), fish: plan.fish && effects.has("fish_ring"),
   };
 }
 

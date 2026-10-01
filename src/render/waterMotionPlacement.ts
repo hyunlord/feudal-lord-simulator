@@ -11,14 +11,18 @@ import { mix } from "./weatherPlacement";
 //    them (the smoothed shoreline cuts into both sides' corner diamonds: the shallow fill is clipped to the water, so
 //    only its water part shows). The shallow mask thus runs from the shore line to ~1.5 tiles out; the lake inside it
 //    is deep. Every water tile is exactly one class, so no two ripple sheets meet on a pixel.
-//  - River: the game has no river model (a water tile is a water tile), so a river is read from the shape: a water
-//    tile whose contiguous water run along its row or its column is at most RIVER_MAX_WIDTH (a run reaching the map
+//  - River, in a state without the engine's river (saves v31 and older: a water tile is a water tile), from the
+//    shape: a water tile whose contiguous water run along its row or its column is at most RIVER_MAX_WIDTH (a run reaching the map
 //    edge counts as open: the water goes on), in an 8-connected set of such tiles of at least RIVER_MIN_TILES that
 //    runs at least RIVER_MIN_LENGTH steps from its upstream end (a lake's tapering tip or a narrow bay is a few tiles
 //    and a step or two long: still water, no flow; the palisade-construction save's south bay is one). Its flow
 //    direction per tile: the channel's local axis (the principal axis of the set's tiles within 2 of it), pointed
 //    away from the upstream end — where the channel meets open water (it drains the lake), or, touching none, its end
 //    nearest the top of the screen — and snapped to the four sheets' screen diagonals. Land beside a river takes the neighbouring river tile's class and flow.
+//    LAND-UI: with the engine's river (`state.river`) the channel and its flow are the river's instead
+//    (waterRiverFlow.ts, passed as `options.river`): its cells are river, every other water is deep or shallow as above.
+//    Ford roads (`options.fordRoads`) and the land beside them keep their class (so no neighbour's changes) but lose
+//    their flow: the ford art covers them. The mill race cells (`chunkWater`'s `race`) leave the flow lists for the race's.
 //  - Glints and fish rings: sparse seeded picks of deep tiles (GLINT_PICK, FISH_PICK), jittered inside the tile.
 //  - The foam and ice bands along the shore: waterShoreBand.ts.
 export const KIND = { none: 0, deep: 1, shallow: 2, river: 3 } as const;
@@ -44,6 +48,8 @@ export interface ChunkWater {
   readonly deep: readonly Tile[];
   readonly shallow: readonly Tile[];
   readonly flow: Readonly<Record<FlowDirection, readonly Tile[]>>;
+  /** The mill race's tiles by their flow (none without a `race`). */
+  readonly race: Readonly<Record<FlowDirection, readonly Tile[]>>;
   readonly glints: readonly WaterSpot[];
   readonly fish: readonly WaterSpot[];
 }
@@ -152,9 +158,16 @@ function riverFlow(water: readonly boolean[], width: number, height: number): Ma
   return flow;
 }
 
-export function analyseWater(tiles: readonly Tile[], width: number, height: number): WaterMap {
+export interface WaterOptions {
+  /** The engine's river: its water cells' flow (waterRiverFlow.ts riverFlowCells); absent: read from the shape. */
+  readonly river?: ReadonlyMap<number, FlowDirection> | null;
+  /** The ford cells with a road: river with no flow, and the land beside them too. */
+  readonly fordRoads?: ReadonlySet<number>;
+}
+
+export function analyseWater(tiles: readonly Tile[], width: number, height: number, options: WaterOptions = {}): WaterMap {
   const water = Array.from({ length: width * height }, (_, index) => tiles[index]?.terrain === "water");
-  const rivers = riverFlow(water, width, height);
+  const rivers = options.river ?? riverFlow(water, width, height);
   const kind = new Uint8Array(width * height);
   const flow: (FlowDirection | null)[] = new Array(width * height).fill(null);
   for (let index = 0; index < water.length; index += 1) {
@@ -170,19 +183,28 @@ export function analyseWater(tiles: readonly Tile[], width: number, height: numb
     const beside = wet.find(next => rivers.has(next));
     if (wet.every(next => rivers.has(next)) && beside !== undefined) { kind[index] = KIND.river; flow[index] = rivers.get(beside) ?? null; } else kind[index] = KIND.shallow;
   }
+  for (const index of options.fordRoads ?? []) {
+    flow[index] = null;
+    for (const [dx, dy] of NEIGHBOURS) {
+      const x = (index % width) + dx; const y = Math.floor(index / width) + dy; const next = y * width + x;
+      if (x >= 0 && y >= 0 && x < width && y < height && !water[next]) flow[next] = null;
+    }
+  }
   return { width, height, kind, flow };
 }
 
 /** The tiles of chunk (cx, cy) by class, and its glint / fish spots (world px). */
-export function chunkWater(map: WaterMap, tiles: readonly Tile[], seed: number, cx: number, cy: number): ChunkWater {
+export function chunkWater(map: WaterMap, tiles: readonly Tile[], seed: number, cx: number, cy: number, race?: ReadonlyMap<number, FlowDirection>): ChunkWater {
   const deep: Tile[] = []; const shallow: Tile[] = []; const flow: Record<FlowDirection, Tile[]> = { ne: [], nw: [], se: [], sw: [] };
+  const races: Record<FlowDirection, Tile[]> = { ne: [], nw: [], se: [], sw: [] };
   const glints: WaterSpot[] = []; const fish: WaterSpot[] = [];
   for (let ty = cy * GROUND_CHUNK_TILES; ty < Math.min(map.height, (cy + 1) * GROUND_CHUNK_TILES); ty += 1) {
     for (let tx = cx * GROUND_CHUNK_TILES; tx < Math.min(map.width, (cx + 1) * GROUND_CHUNK_TILES); tx += 1) {
       const index = ty * map.width + tx; const tile = tiles[index];
       if (tile === undefined) continue;
-      const kind = map.kind[index];
-      if (kind === KIND.shallow) shallow.push(tile);
+      const kind = map.kind[index]; const raced = race?.get(index);
+      if (raced !== undefined) races[raced].push(tile);
+      else if (kind === KIND.shallow) shallow.push(tile);
       else if (kind === KIND.river) { const direction = map.flow[index]; if (direction !== null && direction !== undefined) flow[direction].push(tile); }
       else if (kind === KIND.deep) {
         deep.push(tile);
@@ -197,5 +219,5 @@ export function chunkWater(map: WaterMap, tiles: readonly Tile[], seed: number, 
       }
     }
   }
-  return { deep, shallow, flow, glints, fish };
+  return { deep, shallow, flow, race: races, glints, fish };
 }
