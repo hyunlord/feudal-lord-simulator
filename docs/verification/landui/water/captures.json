@@ -1,0 +1,86 @@
+{
+ "url": "http://127.0.0.1:4322/",
+ "errors": [],
+ "scenes": {
+  "riverside-river": {
+   "tile": [
+    41,
+    21
+   ],
+   "zoom": 1.3,
+   "state": "riverside-summer",
+   "server": "http://127.0.0.1:4322/",
+   "tick": 1200
+  },
+  "riverside-river-before": {
+   "tile": [
+    41,
+    21
+   ],
+   "zoom": 1.3,
+   "state": "riverside-summer",
+   "server": "http://127.0.0.1:4372/",
+   "tick": 1200
+  },
+  "riverside-river-close": {
+   "tile": [
+    41,
+    21
+   ],
+   "zoom": 2.2,
+   "state": "riverside-summer",
+   "server": "http://127.0.0.1:4322/",
+   "tick": 1200
+  },
+  "riverside-river-close-before": {
+   "tile": [
+    41,
+    21
+   ],
+   "zoom": 2.2,
+   "state": "riverside-summer",
+   "server": "http://127.0.0.1:4372/",
+   "tick": 1200
+  },
+  "riverside-mill": {
+   "tile": [
+    43,
+    23
+   ],
+   "zoom": 1.8,
+   "state": "riverside-mill-summer",
+   "server": "http://127.0.0.1:4322/",
+   "tick": 1200
+  },
+  "fen-river": {
+   "tile": [
+    44,
+    25
+   ],
+   "zoom": 1.3,
+   "state": "fen-summer",
+   "server": "http://127.0.0.1:4322/",
+   "tick": 1200
+  },
+  "fen-mere": {
+   "tile": [
+    53,
+    46
+   ],
+   "zoom": 1.3,
+   "state": "fen-summer",
+   "server": "http://127.0.0.1:4322/",
+   "tick": 1200
+  },
+  "fen-mill": {
+   "tile": [
+    45,
+    27
+   ],
+   "zoom": 1.8,
+   "state": "fen-mill-summer",
+   "server": "http://127.0.0.1:4322/",
+   "tick": 1200
+  }
+ }
+}

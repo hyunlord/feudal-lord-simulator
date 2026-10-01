@@ -55,8 +55,8 @@ function browserCanvas(width: number, height: number): FrameCanvas | null {
 }
 
 // Cache (AGENTS rule 10): each frame of a sheet copied to its own canvas; key: the sheet image and the frame index (77
-// frames over the 14 sheets, 1,008,384 px = 4.0 MB if all were cut; the mill race's 6 never are). Reason: see the head
-// comment (a pattern repeats its whole source; a smoothed sub-rect draw may sample across the frame's edge); the image
+// frames over the 14 sheets, 1,008,384 px = 4.0 MB if all were cut; the mill race's 6 only once a fulling mill's race
+// is in view). Reason: see the head comment (a pattern repeats its whole source; a smoothed sub-rect draw may sample across the frame's edge); the image
 // is the key, so a reload (a new image) cuts afresh, and the frame index is the only other input. Measured (headless
 // Chrome --disable-gpu on the Mac, 5 runs): cutting all 77 frames 1.2-1.5 ms, once; all 77 cached lookups under the
 // 0.1 ms timer step.

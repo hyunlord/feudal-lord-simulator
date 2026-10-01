@@ -1,5 +1,7 @@
 import type { WeatherKind } from "../content/eventConfig";
+import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
+import type { RiverData } from "../world/river";
 import type { Shoreline, ShoreLoop } from "../world/boundary/shoreline";
 import type { Tile } from "../world/world.types";
 import { drawMirrorableSprite } from "./drawShoreline";
@@ -9,8 +11,10 @@ import { wallStripsEnabled } from "./renderWallStripsFlag";
 import type { TileRange } from "./renderVisibility";
 import type { SeasonIndex } from "./seasonArt";
 import { waterArtReady, waterFrameCanvas, waterFramePattern } from "./waterMotionArt";
-import { FLOW_DIRECTIONS, FLOW_SHEETS, REED_SHEETS, fishRingFrame, iceSeason, liveReedsAt, waterFrame, waterMotionPlan, type FlowDirection } from "./waterMotionModel";
+import { FLOW_DIRECTIONS, FLOW_SHEETS, RACE_MIRROR, REED_SHEETS, fishRingFrame, iceSeason, landDraws, landWaterEffects, landWaterPlan, liveReedsAt, waterFrame, waterMotionPlan,
+  type FlowDirection } from "./waterMotionModel";
 import { analyseWater, chunkWater, type WaterMap, type WaterSpot } from "./waterMotionPlacement";
+import { fordRoadCells, millRaceCells, raceKey, riverFlowCells } from "./waterRiverFlow";
 import { shoreBandQuads, type BandQuad } from "./waterShoreBand";
 import { engineWeather } from "./weatherLayers";
 import { mix } from "./weatherPlacement";
@@ -22,8 +26,8 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // waterShoreBand.ts).
 // drawWaterMotion runs live in the RENDER_BOUNDARY_V2 ground pass right after the ground chunks (whose rasters hold the
 // still water, the strips and, in winter, the ice rim) and before the town landscape, the bridge decks and the objects,
-// which stand over the water. Order: deep ripples; clipped to the water, the shallow ripples and the river flow; the
-// shore foam; fish rings; glints; the swaying reeds. The ripple and flow sheets are laid world-aligned at half scale
+// which stand over the water. Order: deep ripples; clipped to the water, the shallow ripples, the river flow and the
+// mill race (mirrored per direction, RACE_MIRROR); the shore foam; fish rings; glints; the swaying reeds. The ripple and flow sheets are laid world-aligned at half scale
 // (WATER_ART_SCALE: 2 source px a world px, as the deep water fills), so a 256 x 128 ripple frame repeats every 2 x 2
 // tiles and a 128 x 64 flow frame is one tile; the strips follow the shore strip's mapping; the reeds keep the static
 // reeds' rect. Each sheet draws at its recommended alpha only (the ripples' alpha is baked in the PNG).
@@ -53,15 +57,20 @@ export function presentedWaterWeather(state: GameState): WeatherKind | null {
   return proof !== null && "weather" in proof && proof.weather !== undefined ? proof.weather : engineWeather(state).weather;
 }
 
-type ChunkPaths = { readonly deep: Path2D | null; readonly shallow: Path2D | null; readonly flow: Readonly<Record<FlowDirection, Path2D | null>>;
+type DirectionPaths = Readonly<Record<FlowDirection, Path2D | null>>;
+type ChunkPaths = { readonly deep: Path2D | null; readonly shallow: Path2D | null; readonly flow: DirectionPaths; readonly race: DirectionPaths;
   readonly glints: readonly WaterSpot[]; readonly fish: readonly WaterSpot[] };
-type MapEntry = { readonly tiles: readonly Tile[]; readonly seed: number; readonly terrain: string; readonly map: WaterMap;
-  readonly chunks: Map<string, ChunkPaths>; view: { readonly key: string; readonly paths: ChunkPaths } | null };
+type MapEntry = { readonly tiles: readonly Tile[]; readonly seed: number; readonly river: RiverData | undefined; readonly terrain: string;
+  readonly map: WaterMap; readonly fords: ReadonlySet<number>; readonly chunks: Map<string, ChunkPaths>; view: { readonly key: string; readonly paths: ChunkPaths } | null;
+  buildings: readonly Building[] | null; race: ReadonlyMap<number, FlowDirection>; raceKey: string };
 
 // Cache (AGENTS rule 10): the map's water analysis and, per 8 x 8-tile chunk, its tile classes as Path2D diamonds and its
 // glint / fish spots, plus the visible chunks' paths joined; key: the terrain (every tile's terrain in order, checked when
-// the tiles array changes: a building, road or bridge makes a new array but leaves the water as it was), the map size
-// and the seed; the joined paths also by the visible chunk span. Reason: the analysis walks every tile and the river
+// the tiles array changes: a building, road or bridge makes a new array but leaves the water as it was) with the ford
+// cells that carry a road (LAND-UI: the flow skips them), the map size, the seed and the river (the state's RiverData
+// object: the engine never rebuilds it, a load brings a new one); the chunks' paths also by the mill race cells (their
+// key, raceKey, rechecked when the buildings array changes: a new fulling mill moves the race, other buildings do
+// not); the joined paths also by the visible chunk span. Reason: the analysis walks every tile and the river
 // sets (with all 64 chunks' lists 0.50 ms, median of 30 after 10 warm-up runs, Node, the palisade-construction save;
 // 0.70 ms on a seed-93 map with a channel; the terrain check 0.05 ms), and a chunk's diamonds are the same every
 // frame; nothing else reads into them (the weather, the season and the clock pick what is drawn and which frame, not
@@ -70,12 +79,25 @@ type MapEntry = { readonly tiles: readonly Tile[]; readonly seed: number; readon
 // view paths rebuilt every frame; 0.04 ms with no water motion. Again with the river length rule (the palisade-
 // construction lake at zoom 1.1, paused, 240 frames, two runs): 0.14 ms cached, 0.005 ms with no water motion.
 let mapEntry: MapEntry | null = null;
-export function waterMapFor(state: Pick<GameState, "tiles" | "seed" | "width" | "height">): MapEntry {
-  if (mapEntry !== null && mapEntry.tiles === state.tiles && mapEntry.seed === state.seed) return mapEntry;
-  const terrain = `${state.width}x${state.height}:${state.tiles.map(tile => tile.terrain === "water" ? "w" : "l").join("")}`;
-  if (mapEntry !== null && mapEntry.terrain === terrain && mapEntry.seed === state.seed) { mapEntry = { ...mapEntry, tiles: state.tiles }; return mapEntry; }
-  mapEntry = { tiles: state.tiles, seed: state.seed, terrain, map: analyseWater(state.tiles, state.width, state.height), chunks: new Map(), view: null };
-  return mapEntry;
+export function waterMapFor(state: Pick<GameState, "tiles" | "seed" | "width" | "height" | "river" | "buildings">): MapEntry {
+  let entry = mapEntry;
+  if (entry === null || entry.tiles !== state.tiles || entry.seed !== state.seed || entry.river !== state.river) {
+    const fords = fordRoadCells(state);
+    const terrain = `${state.width}x${state.height}:${state.tiles.map(tile => tile.terrain === "water" ? "w" : "l").join("")}|f${fords.join(",")}`;
+    if (entry !== null && entry.terrain === terrain && entry.seed === state.seed && entry.river === state.river) entry = { ...entry, tiles: state.tiles };
+    else {
+      const fordRoads = new Set(fords);
+      entry = { tiles: state.tiles, seed: state.seed, river: state.river, terrain, fords: fordRoads, chunks: new Map(), view: null, buildings: null, race: new Map(), raceKey: "",
+        map: analyseWater(state.tiles, state.width, state.height, { river: riverFlowCells(state), fordRoads }) };
+    }
+    mapEntry = entry;
+  }
+  if (entry.buildings !== state.buildings) {
+    const race = millRaceCells(state, entry.map, entry.fords); const key = raceKey(race);
+    entry.buildings = state.buildings;
+    if (key !== entry.raceKey) { entry.race = race; entry.raceKey = key; entry.chunks.clear(); entry.view = null; }
+  }
+  return entry;
 }
 
 function diamonds(tiles: readonly Tile[]): Path2D | null {
@@ -92,9 +114,10 @@ function chunkPaths(entry: MapEntry, state: Pick<GameState, "tiles" | "seed">, p
   const key = `${plan.cx},${plan.cy}`;
   let paths = entry.chunks.get(key);
   if (paths === undefined) {
-    const water = chunkWater(entry.map, state.tiles, state.seed, plan.cx, plan.cy);
+    const water = chunkWater(entry.map, state.tiles, state.seed, plan.cx, plan.cy, entry.race);
     paths = { deep: diamonds(water.deep), shallow: diamonds(water.shallow), glints: water.glints, fish: water.fish,
-      flow: { ne: diamonds(water.flow.ne), nw: diamonds(water.flow.nw), se: diamonds(water.flow.se), sw: diamonds(water.flow.sw) } };
+      flow: { ne: diamonds(water.flow.ne), nw: diamonds(water.flow.nw), se: diamonds(water.flow.se), sw: diamonds(water.flow.sw) },
+      race: { ne: diamonds(water.race.ne), nw: diamonds(water.race.nw), se: diamonds(water.race.se), sw: diamonds(water.race.sw) } };
     entry.chunks.set(key, paths);
   }
   return paths;
@@ -112,8 +135,8 @@ function viewPaths(entry: MapEntry, state: Pick<GameState, "tiles" | "seed">, ch
   const key = chunks.map(plan => `${plan.cx},${plan.cy}`).join(";");
   if (entry.view?.key === key) return entry.view.paths;
   const each = chunks.map(plan => chunkPaths(entry, state, plan));
-  const flow = Object.fromEntries(FLOW_DIRECTIONS.map(direction => [direction, joined(each.map(paths => paths.flow[direction]))])) as Record<FlowDirection, Path2D | null>;
-  const paths = { deep: joined(each.map(paths => paths.deep)), shallow: joined(each.map(paths => paths.shallow)), flow,
+  const byDirection = (part: "flow" | "race") => Object.fromEntries(FLOW_DIRECTIONS.map(direction => [direction, joined(each.map(paths => paths[part][direction]))])) as DirectionPaths;
+  const paths = { deep: joined(each.map(paths => paths.deep)), shallow: joined(each.map(paths => paths.shallow)), flow: byDirection("flow"), race: byDirection("race"),
     glints: each.flatMap(paths => paths.glints), fish: each.flatMap(paths => paths.fish) };
   entry.view = { key, paths };
   return paths;
@@ -183,20 +206,22 @@ export function drawIceRim(context: CanvasRenderingContext2D, shore: Shoreline, 
   drawBand(context, present, "ice_edge", 0, { x: chunk.left, y: chunk.top, width: chunk.right - chunk.left, height: chunk.bottom - chunk.top });
 }
 
-export const liveReeds = (chunkZoom: number): boolean => liveReedsAt(chunkZoom) && waterArtReady(REED_SHEETS);
+/** LAND-UI: with the state, only on a land that lists the sway sheets (elsewhere the chunks keep the static reeds). */
+export const liveReeds = (chunkZoom: number, state?: Pick<GameState, "scenarioId" | "archetypeId">): boolean =>
+  liveReedsAt(chunkZoom) && (state === undefined || landDraws(landWaterEffects(state), ...REED_SHEETS)) && waterArtReady(REED_SHEETS);
 export const iceRimDrawn = (season: SeasonIndex): boolean => iceSeason(season) && waterArtReady(["ice_edge"]);
 /** INSTALL-29: the ground chunks' water token — the ice rim's art (winter chunks paint it) and whether they leave the
  * static reeds out for the live ones. In the key of every chunk that draws water. Not the season itself (the key has
  * it): the INSTALL-15 staging makes winter's rasters in autumn with autumn's readiness and must meet winter's keys. */
-export function waterChunkToken(chunkZoom: number): string {
-  return `:i${waterArtReady(["ice_edge"]) ? 1 : 0}:r${liveReeds(chunkZoom) ? 1 : 0}`;
+export function waterChunkToken(chunkZoom: number, state?: Pick<GameState, "scenarioId" | "archetypeId">): string {
+  return `:i${waterArtReady(["ice_edge"]) ? 1 : 0}:r${liveReeds(chunkZoom, state) ? 1 : 0}`;
 }
 
-function fillWorldAligned(context: CanvasRenderingContext2D, path: Path2D | null, key: Wave29WaterKey, nowMs: number): void {
+function fillWorldAligned(context: CanvasRenderingContext2D, path: Path2D | null, key: Wave29WaterKey, nowMs: number, mirror: { readonly x: number; readonly y: number } = RACE_MIRROR.ne): void {
   if (path === null) return;
   const pattern = waterFramePattern(context, key, waterFrame(key, nowMs));
   if (pattern === null) return;
-  pattern.setTransform({ a: WATER_ART_SCALE, b: 0, c: 0, d: WATER_ART_SCALE, e: 0, f: 0 });
+  pattern.setTransform({ a: WATER_ART_SCALE * mirror.x, b: 0, c: 0, d: WATER_ART_SCALE * mirror.y, e: 0, f: 0 });
   context.globalAlpha = WAVE29_WATER[key].alpha;
   context.fillStyle = pattern;
   context.fill(path);
@@ -249,28 +274,32 @@ function viewRect(context: CanvasRenderingContext2D, range: TileRange): Rect {
 }
 
 export function drawWaterMotion(context: CanvasRenderingContext2D, input: WaterMotionInput): void {
-  const plan = waterMotionPlan(input.zoom, input.weather !== undefined ? input.weather : presentedWaterWeather(input.state), input.season);
-  if (!plan.deepRipples || input.chunks.every(chunk => chunk.waterLoops.length === 0 && !chunk.waterParity)) return;
+  const detail = waterMotionPlan(input.zoom, input.weather !== undefined ? input.weather : presentedWaterWeather(input.state), input.season);
+  const effects = landWaterEffects(input.state); const plan = landWaterPlan(detail, effects);
+  if (!detail.deepRipples || input.chunks.every(chunk => chunk.waterLoops.length === 0 && !chunk.waterParity)) return;
   if (typeof Path2D === "undefined" || typeof context.createPattern !== "function") return;
   const entry = waterMapFor(input.state);
   const wet = input.chunks.filter(chunk => chunk.waterLoops.length > 0 || chunk.waterParity);
   const paths = viewPaths(entry, input.state, wet);
   const view = viewRect(context, input.range);
   const loops = [...new Set(wet.flatMap(chunk => chunk.waterLoops))].map(index => input.shore.loops[index]).filter((loop): loop is ShoreLoop => loop !== undefined);
+  // The race at the flow's detail on a land that lists it; none in view (no fulling mill here): no fill, no image load.
+  const race = detail.flow && landDraws(effects, "mill_race_sheet") && FLOW_DIRECTIONS.some(direction => paths.race[direction] !== null);
   context.save();
-  fillWorldAligned(context, paths.deep, "ripple_sheet", input.nowMs);
-  if (input.shore.loops.length > 0 && (plan.shallowRipples || plan.flow)) {
+  if (plan.deepRipples) fillWorldAligned(context, paths.deep, "ripple_sheet", input.nowMs);
+  if (input.shore.loops.length > 0 && (plan.shallowRipples || plan.flow || race)) {
     context.save();
     context.clip(waterPath(input.shore), "evenodd");
     if (plan.shallowRipples) fillWorldAligned(context, paths.shallow, "ripple_shallow_sheet", input.nowMs);
     if (plan.flow) for (const direction of FLOW_DIRECTIONS) fillWorldAligned(context, paths.flow[direction], FLOW_SHEETS[direction], input.nowMs);
+    if (race) for (const direction of FLOW_DIRECTIONS) fillWorldAligned(context, paths.race[direction], "mill_race_sheet", input.nowMs, RACE_MIRROR[direction]);
     context.restore();
   }
   if (plan.foam) drawBand(context, loops, "shore_foam_sheet", waterFrame("shore_foam_sheet", input.nowMs), view);
   if (plan.fish) drawSpots(context, "fish_ring", paths.fish, spot => { const frame = fishRingFrame(spot.hash, input.nowMs); return frame === 0 ? null : frame; }, view);
   if (plan.glints) drawSpots(context, "sparkle", paths.glints, spot => waterFrame("sparkle", input.nowMs, spot.hash % 1000), view);
   // The chunks' zoom bucket decides (they leave their static reeds out exactly then), so a clump is never drawn twice or not at all.
-  if (liveReeds(input.chunkZoom)) drawReeds(context, loops, input.nowMs, view);
+  if (liveReeds(input.chunkZoom, input.state)) drawReeds(context, loops, input.nowMs, view);
   context.restore();
 }
 
