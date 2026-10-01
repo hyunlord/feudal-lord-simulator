@@ -66,6 +66,9 @@
 .app-shell .welcome-save { display: grid; gap: 8px; margin-top: 4px; pointer-events: auto; }
 .app-shell .welcome-save .save-control-button { text-align: center; }
 /* New-game mode choice (B2): two scenario buttons, keyboard/touch reachable, 44px targets. */
+/* LAND-UI: the parchment lets clicks through to the dismiss layer; its tutorial switch takes its own (a press on it fell
+   through and started the game). */
+.app-shell .welcome-parchment .tutorial-toggle { pointer-events: auto; }
 .app-shell .welcome-modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 4px; pointer-events: auto; }
 .app-shell .welcome-modes .save-control-button { min-height: 44px; text-align: center; }
 /* LAND-UI (LU-D7): the land choice above the mode buttons. With it the parchment is wider (five lands in a row) and
