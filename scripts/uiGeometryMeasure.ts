@@ -22,6 +22,13 @@
 // face beyond the printed ring, ornament pixels outside it), overlap (buttons with buttons, text with buttons, text with
 // text, the registry's no-overlap siblings), empty (content under 40 % of the inner box: a warning), controls (every
 // clickable a kit Button wearing button art).
+// QA round 15 (2026-10-01, the three findings the audit missed): content (every text, control and required element —
+// the row's `requires`: title, body, choices, buttons — is shown, has a size, and is painted: the audit takes the root
+// twice, the second time with its text transparent and its controls hidden, and an element whose pixels do not change
+// is covered by something else — QA-034's frame layer over the petition's body), hud (an always-on HUD control that
+// paints over the surface, or that the surface covers while it is live — QA-035's dock over the settings' last row), and
+// ornament (a drawn line — the art's rule, a CSS border — running through a text's line box, found on the second
+// capture where the text is gone — QA-015's biography rule through the empty-records line).
 
 export type Box = { readonly l: number; readonly t: number; readonly r: number; readonly b: number };
 export type Sides = { readonly t: number; readonly r: number; readonly b: number; readonly l: number };
@@ -68,6 +75,19 @@ export type Collected = {
   readonly siblings?: readonly { readonly selector: string; readonly rects: readonly { readonly path: string; readonly rect: Box }[]; readonly nested: readonly (readonly [number, number])[] }[];
   /** Visible framed roots (data-frame) on the page that no registry root selector matches. */
   readonly unregistered?: readonly { readonly kind: string; readonly path: string }[];
+  /** The row's required elements: each selector's shown matches (rects) and how many matches are not shown. */
+  readonly requires?: readonly { readonly selector: string; readonly rects: readonly Box[]; readonly hidden: number }[];
+  /** Always-on HUD controls (not inside the root, not holding it) whose box meets the root's: the shared part, whether
+   * the HUD is the topmost element there (it paints over the surface), and whether it is live elsewhere (topmost at its
+   * own points, or under a layer that paints nothing). */
+  readonly hud?: readonly { readonly path: string; readonly rect: Box; readonly shared: Box; readonly over: boolean; readonly live: boolean }[];
+  /** Set by the audit from the two captures (scripts/uiGeometryPaint.ts): pixels that changed per item (null: not
+   * sampled — a surface button, a control's own text), per required rect, and the drawn lines through text. */
+  readonly paint?: {
+    readonly items: readonly (number | null)[];
+    readonly requires: readonly (readonly number[])[];
+    readonly crossings: readonly { readonly item: number; readonly line: Box; readonly axis: "x" | "y" }[];
+  };
 };
 export type MeasureSpec = {
   readonly root: string; readonly frame: "css" | "layer" | "painting" | "flat"; readonly gap: number;
@@ -79,9 +99,13 @@ export type MeasureSpec = {
   readonly expect?: string | undefined;
   /** Every registry root selector (to list framed roots on the page that none of them matches). */
   readonly registryRoots?: readonly string[] | undefined;
+  /** Elements the surface must show, painted (the content check). */
+  readonly requires?: readonly string[] | undefined;
+  /** The always-on HUD controls (the hud check); absent: not checked. */
+  readonly hud?: readonly string[] | undefined;
 };
-export type CheckName = "outside" | "overflow" | "border" | "portrait" | "overlap" | "empty" | "controls";
-export const CHECKS: readonly CheckName[] = ["outside", "overflow", "border", "portrait", "overlap", "empty", "controls"];
+export type CheckName = "outside" | "overflow" | "border" | "portrait" | "overlap" | "empty" | "controls" | "content" | "hud" | "ornament";
+export const CHECKS: readonly CheckName[] = ["outside", "overflow", "border", "portrait", "overlap", "empty", "controls", "content", "hud", "ornament"];
 export type Failure = { readonly check: CheckName; readonly what: string; readonly path: string; readonly px: number; readonly rect: Box | null; readonly text?: string };
 /** A failure's key across runs (the baseline): its check and element path, not its px. */
 export const failureKey = (failure: Pick<Failure, "check" | "path">): string => `${failure.check}|${failure.path}`;
@@ -236,6 +260,42 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
       lines: visibleLines, inControls: controlsAround(parent), within: around(parent, itemIndex) });
   }
 
+  // The measured root, for the audit's second capture (scripts/uiGeometryAudit.mjs takes the attribute off again).
+  for (const other of document.querySelectorAll("[data-geometry-root]")) other.removeAttribute("data-geometry-root");
+  root.setAttribute("data-geometry-root", "");
+  const requires = (spec.requires ?? []).map(selector => {
+    const matches = [...root.querySelectorAll(selector)].filter(element => !excluded(element));
+    const visible = matches.filter(shown);
+    return { selector, rects: visible.slice(0, 12).map(element => boxOf(element.getBoundingClientRect())), hidden: matches.length - visible.length };
+  });
+  // The HUD: hit tests with every element taking the pointer (a container that lets clicks through still paints).
+  const hud: NonNullable<Collected["hud"]>[number][] = [];
+  if (spec.hud !== undefined && spec.hud.length > 0) {
+    const force = document.createElement("style"); force.textContent = "* { pointer-events: auto !important; }"; document.head.append(force);
+    const clear = (element: Element) => { const style = getComputedStyle(element);
+      return /^(transparent|rgba\([^)]*,\s*0\))$/.test(style.backgroundColor) && style.backgroundImage === "none" && (style.borderImageSource === "none" || style.borderImageSource === "") && !visibleBorder(style); };
+    const grid = (box: Box) => { const points: [number, number][] = [];
+      for (const fx of [0.2, 0.5, 0.8]) for (const fy of [0.25, 0.5, 0.75]) points.push([box.l + (box.r - box.l) * fx, box.t + (box.b - box.t) * fy]); return points; };
+    const inView = ([x, y]: [number, number]) => x >= 0 && y >= 0 && x < viewport.w && y < viewport.h;
+    try {
+      for (const selector of spec.hud) for (const element of document.querySelectorAll(selector)) {
+        if (!shown(element) || root.contains(element) || element.contains(root)) continue;
+        const rect = boxOf(element.getBoundingClientRect());
+        const shared = { l: Math.max(rect.l, rootRect.l), t: Math.max(rect.t, rootRect.t), r: Math.min(rect.r, rootRect.r), b: Math.min(rect.b, rootRect.b) };
+        if (shared.r - shared.l <= 1 || shared.b - shared.t <= 1) continue;
+        const over = grid(shared).filter(inView).some(([x, y]) => { const top = document.elementFromPoint(x, y); return top !== null && element.contains(top); });
+        const outside = grid(rect).filter(inView).filter(([x, y]) => x < shared.l || x > shared.r || y < shared.t || y > shared.b);
+        const live = (outside.length > 0 ? outside : grid(rect).filter(inView)).some(([x, y]) => {
+          const top = document.elementFromPoint(x, y); if (top === null) return false;
+          if (element.contains(top)) return true;
+          // A full-screen layer that paints nothing (a click-through backdrop) leaves the HUD in sight.
+          for (let node: Element | null = top; node !== null && !node.contains(element); node = node.parentElement) if (!clear(node)) return false;
+          return true;
+        });
+        hud.push({ path: pathOf(element), rect, shared, over, live });
+      }
+    } finally { force.remove(); }
+  }
   let portrait: Collected["portrait"] = null;
   if (spec.portraitRing !== undefined && spec.painting !== undefined) {
     // One scale, the width's (a painting 9-slice only grows downward): the ring from the top-left.
@@ -285,13 +345,16 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
       paints: !/^(transparent|rgba\([^)]*,\s*0\))$/.test(rootStyle.backgroundColor) || rootStyle.backgroundImage !== "none" || visibleBorder(rootStyle)
         || (rootStyle.borderImageSource !== "none" && rootStyle.borderImageSource !== ""),
       scrollable: { x: scrolls(rootStyle.overflowX), y: scrolls(rootStyle.overflowY) } },
-    layer: layerRect, slot: slotRect, items, scrollers, portrait, siblings, unregistered,
+    layer: layerRect, slot: slotRect, items, scrollers, portrait, siblings, unregistered, requires, hud,
   };
 }
 
+/** Changed pixels below which an element counts as not painted (the second capture hides it; the same render otherwise). */
+export const PAINTED_MIN = 3;
+
 /** Pure: the checks for one collected surface. */
 export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evaluation {
-  const zero = { outside: 0, overflow: 0, border: 0, portrait: 0, overlap: 0, empty: 0, controls: 0 };
+  const zero = { outside: 0, overflow: 0, border: 0, portrait: 0, overlap: 0, empty: 0, controls: 0, content: 0, hud: 0, ornament: 0 };
   if (!collected.found || collected.root === undefined) return { found: false, inner: null, safe: null, failures: [], counts: zero, empty: null, expectMissed: collected.expectFound === false };
   const TOLERANCE = 0.5;
   const round = (value: number) => Math.round(value * 10) / 10;
@@ -427,6 +490,28 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
     const control = item.control!;
     if (!control.kit) fail("controls", "a clickable that is not a kit Button", item.path, 0, item.rect, item.text);
     else if (!control.art && control.variant !== "surface" && control.variant !== "quiet") fail("controls", "a kit Button without button art", item.path, 0, item.rect, item.text);
+  }
+  // h. content: the required elements are there, shown and painted; no text or control is painted over.
+  for (const required of collected.requires ?? []) {
+    if (required.rects.length === 0) { fail("content", required.hidden > 0 ? `required ${required.selector} not shown (no size, hidden or transparent)` : `required ${required.selector} missing`, required.selector, 0, null); continue; }
+    const changed = collected.paint?.requires[(collected.requires ?? []).indexOf(required)];
+    if (changed !== undefined && changed.length > 0 && changed.every(count => count < PAINTED_MIN)) fail("content", `required ${required.selector} not painted (covered by another layer)`, required.selector, 0, required.rects[0]!);
+  }
+  if (collected.paint !== undefined) items.forEach((item, index) => {
+    const changed = collected.paint!.items[index];
+    if (changed === null || changed === undefined || item.rect === null || changed >= PAINTED_MIN) return;
+    fail("content", `${item.kind} not painted (covered by another layer)`, item.path, 0, item.rect, item.text);
+  });
+  // i. hud: an always-on HUD control over the surface, or under it while it is live.
+  for (const hit of collected.hud ?? []) {
+    const size = overlapOf(hit.shared, hit.shared);
+    if (hit.over) fail("hud", "the HUD paints over the surface", hit.path, Math.min(size.w, size.h), hit.shared);
+    else if (hit.live) fail("hud", "the surface covers a live HUD control", hit.path, Math.min(size.w, size.h), hit.shared);
+  }
+  // j. ornament: a drawn line through a text's line box.
+  for (const crossing of collected.paint?.crossings ?? []) {
+    const item = items[crossing.item]; if (item === undefined) continue;
+    fail("ornament", `text crossed by a drawn ${crossing.axis === "x" ? "vertical" : "horizontal"} line`, item.path, 0, crossing.line, item.text);
   }
   const counts = { ...zero };
   for (const failure of failures) counts[failure.check] += 1;
