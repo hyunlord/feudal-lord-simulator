@@ -279,12 +279,18 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
     const grid = (box: Box) => { const points: [number, number][] = [];
       for (const fx of [0.2, 0.5, 0.8]) for (const fy of [0.25, 0.5, 0.75]) points.push([box.l + (box.r - box.l) * fx, box.t + (box.b - box.t) * fy]); return points; };
     const inView = ([x, y]: [number, number]) => x >= 0 && y >= 0 && x < viewport.w && y < viewport.h;
+    const rootStyleNow = getComputedStyle(root);
+    const rootPaints = !clear(root) || (rootStyleNow.borderImageSource !== "none" && rootStyleNow.borderImageSource !== "");
+    const surfaceBoxes = rootPaints ? [rootRect] : [...root.children].filter(shown).map(child => boxOf(child.getBoundingClientRect()));
     try {
       for (const selector of spec.hud) for (const element of document.querySelectorAll(selector)) {
         if (!shown(element) || root.contains(element) || element.contains(root)) continue;
         const rect = boxOf(element.getBoundingClientRect());
-        const shared = { l: Math.max(rect.l, rootRect.l), t: Math.max(rect.t, rootRect.t), r: Math.min(rect.r, rootRect.r), b: Math.min(rect.b, rootRect.b) };
-        if (shared.r - shared.l <= 1 || shared.b - shared.t <= 1) continue;
+        // A root that paints nothing (a click-through container: the event chips' rail) is judged by its shown children.
+        const meets = surfaceBoxes.map(box => ({ l: Math.max(rect.l, box.l), t: Math.max(rect.t, box.t), r: Math.min(rect.r, box.r), b: Math.min(rect.b, box.b) }))
+          .filter(box => box.r - box.l > 1 && box.b - box.t > 1);
+        if (meets.length === 0) continue;
+        const shared = meets.reduce((a, b) => ((b.r - b.l) * (b.b - b.t) > (a.r - a.l) * (a.b - a.t) ? b : a));
         const over = grid(shared).filter(inView).some(([x, y]) => { const top = document.elementFromPoint(x, y); return top !== null && element.contains(top); });
         const outside = grid(rect).filter(inView).filter(([x, y]) => x < shared.l || x > shared.r || y < shared.t || y > shared.b);
         const live = (outside.length > 0 ? outside : grid(rect).filter(inView)).some(([x, y]) => {
