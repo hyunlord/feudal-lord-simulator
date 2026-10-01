@@ -201,6 +201,12 @@ const BIG_KEYS: Readonly<Record<string, readonly string[]>> = {
 export function recordDecision(before: GameState, after: GameState, command: { readonly type: string } & Readonly<Record<string, unknown>>): GameState {
   const kind = DECISION_KIND_BY_COMMAND[command.type];
   if (kind === undefined || after === before) return after;
+  // LM-E1b (TA-6 ②): a subsidy refused is no decision; the ledger keeps its reason as an event.
+  const refusal = after.agency?.lastRefusal;
+  if (command.type === "set_project_subsidy" && refusal !== undefined && refusal !== before.agency?.lastRefusal) {
+    return { ...after, history: append(historyOf(after), [{ tick: after.tick, kind: "event", template: "agency.subsidy_refused", subject: TOWN,
+      severity: 1, params: { reason: refusal.reason, kind: refusal.kind, amount: refusal.amount, total: refusal.total, limit: refusal.limit } }]) };
+  }
   const history = historyOf(after);
   if (!BIG_DECISION_KINDS.includes(kind)) {
     return { ...after, history: { ...history, seasonDecisions: { ...history.seasonDecisions, [kind]: (history.seasonDecisions[kind] ?? 0) + 1 } } };

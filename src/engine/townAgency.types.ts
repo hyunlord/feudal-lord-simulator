@@ -11,7 +11,7 @@ export type ActorKind = "households" | "merchants" | "guild" | "community" | "ch
 export type EstatePolicy = "growth" | "revenue" | "stability" | "defence";
 
 /** TA-4: the named reasons of a proposal's score. */
-export type ReasonName = "need" | "access" | "cost" | "policy" | "subsidy" | "dues" | "risk" | "relation" | "stuck";
+export type ReasonName = "need" | "access" | "cost" | "policy" | "subsidy" | "dues" | "risk" | "relation" | "stuck" | "land" | "plan";
 
 export interface Reason { readonly name: ReasonName; readonly value: number }
 
@@ -53,6 +53,36 @@ export interface ProjectReceipt {
   readonly loan: number;
   /** The lord's decisions in force that moved its score (policy, subsidy, dues): their ledger record ids (TA-6). */
   readonly decisionIds: readonly string[];
+  /** TA-10: the sites compared (absent on receipts before v37, and on roads, zones and house works: one site). */
+  readonly sites?: ReceiptSites;
+}
+
+/** TA-10: the candidate sites of a building project — how many, the plan's own, the chosen one's and the next best's. */
+export interface ReceiptSites {
+  /** Candidates compared (the plan's site and the others that passed its checks). */
+  readonly count: number;
+  /** The site the bot's planning step chose. */
+  readonly planTx: number;
+  readonly planTy: number;
+  /** The chosen site's site reasons (access, land, risk, plan). */
+  readonly reasons: readonly Reason[];
+  /** The next best candidate: its site, its site reasons and its whole score; null with one candidate. */
+  readonly runnerUp: { readonly tx: number; readonly ty: number; readonly reasons: readonly Reason[]; readonly score: number } | null;
+}
+
+/** TA-7: a request the town makes of its lord — the era's proclamation, the wall's priority, timber from the traders. */
+export type LordRequest = Extract<import("./autoplay.types").AutoplayAction,
+  { readonly kind: "proclaim_era" | "set_wall_construction_priority" | "order_timber" }>;
+
+/** TA-6 ②: why a subsidy was refused — the subsidies offered would pass a quarter of the treasury. */
+export interface SubsidyRefusal {
+  readonly reason: "over_treasury_share";
+  readonly tick: number;
+  readonly kind: BuildingKind;
+  readonly amount: number;
+  /** The subsidies offered with this one, and the most the treasury allows (pennies). */
+  readonly total: number;
+  readonly limit: number;
 }
 
 export interface AgencyState {
@@ -64,4 +94,12 @@ export interface AgencyState {
   readonly receipts: readonly ProjectReceipt[];
   readonly nextReceipt: number;
   readonly nextSubsidy: number;
+  /** TA-7, TA-11: what the town asks of its lord this week (absent before the first week, and on v36 saves). */
+  readonly requests?: readonly LordRequest[];
+  /** TA-11: the layout (`needsLayoutKey`) on which the charter's wall search last found no wall (absent otherwise). */
+  readonly charterWallTried?: string;
+  /** TA-12: the tick the town first stood ready for its market charter (absent when it is not waiting). */
+  readonly charterSince?: number;
+  /** TA-6 ②: the last subsidy refused, with its reason (absent when none was). */
+  readonly lastRefusal?: SubsidyRefusal;
 }
