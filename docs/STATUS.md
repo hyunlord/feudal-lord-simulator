@@ -1,12 +1,13 @@
 # 현재 상태
 
-갱신: 2026-10-01(LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-10-01(QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
+- **QA-034 결정 카드 내용 사라짐(렌더, 급한 수정) — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시 2026-10-01): [보고서](verification/qa034/REPORT.md). 청원 카드의 본문이 틀 층(채운 9-slice) 밑에 그려져 1·2·3·4·5장·막간 결정 카드가 모두 틀만 보였다(UI-AUDIT-1 fix A `272952a8`부터). 본문을 위치 지정해 틀 위로.
 - **UI-AUDIT-1 모든 화면의 삐져나옴·넘침(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 사용자 지시, INSTALL-30~33 다음·LAND-UI 앞): [보고서](verification/uiaudit1/REPORT.md), 결정 UIAUDIT-D1~D7.
   - 틀 두께·안쪽 여백을 한 토큰으로(틀 33종, 안전 여백 + 8 px), 표면 등록부 93줄 + 누락 검사, DGX 기하 감사(세 해상도 × 1.4배 글 × 극단 숫자 996칸), 병합 전 검사가 기준 목록(1,104 → 24 → 0, 줄기만)·예외 1·새 실패를 막음.
   - 실패 4,887(본선) → 0(예외 1). 인물 카드(사용자 사진의 다섯 가지)·결정 카드·HUD·장부·연대기·지도 선택 카드·설정·목표 서랍·원인 범례 고침.
@@ -74,6 +75,8 @@
   - 떠오르는 상자는 너비 토큰 280·360·480(태블릿 ×1.15)에 고정·줄 간격 1.5·제목 한 줄·본문 4줄 뒤 [더 보기]·UI-KIT 틀; 스킨 감사에 틀 없는 상자 규칙; 개발 서버 `?pseudo-long=1` 1.4배 글에서 너비 불변·넘침 0.
   - 감사 목록: 성벽이 호숫가를 따라 호수를 성 안에 넣음(엔진 규칙이 물가 가장자리 허용 + 렌더가 벽 두께를 가장자리 가운데로, 판정 대상), 물가 워커, 가을 풀빛, 낙엽 반복, 이름표 겹침, L4 돌기둥 집, 경고 표시 붐빔.
   - 관문: DGX 캡처·측정 오류 0, 스킨 감사 0 / 1263·틀 없는 상자 0, 면적 5.4 % / 6 %·태블릿 5.9 % / 8 %, 튜토리얼 22 = 22, B9·TOUCH 14/14, 로컬 전체 시험 3,796 / 3,796, 깨끗한 클론 `55ad6ee` 3,796/3,796·build(ARCH-1b를 합친 뒤 `1f25c42` 3,811/3,811).
+- **QA-0314-E QA 3~14회차 엔진 몫 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/qa0314/REPORT.md), 결정 QA14-1~6.
+  - 030 저장 왕복은 정확(상태 변화 아님, 1~5장 시험). 032 장 페이지 `seenTick`·`mark_chapter_page_seen`(렌더 NAT-4가 씀). 010 짝 호칭 큰/작은, v39 이행. 033 `serviceMeasure`. 엔진 문구의 돈 £·s(`moneyWords`). 저장 v39.
 - **LM-E2 영지·권리 모델 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/lme2/REPORT.md), [영지·권리 명세](design/estates.md) ES-1~ES-10, 결정 LM2-1~8.
   - 권리 조각마다 명의자와 점유자가 따로다. FAIL-3의 정지·압류는 "권원은 남고 점유만 잃음"으로 옮겼다(저장 v38).
   - 청구(상속·오래된 점유·하사)와 소송 트랙(제기 → 증거 → 후원 → 심리 → 판결 → 점유 집행), 지도 밖 이웃 영지 셋(셋째는 늙은 영주·딸만·재정 곤란).

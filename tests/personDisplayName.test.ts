@@ -32,8 +32,9 @@ test("the reading tables cover every given name, surname, byname and king the ga
 
 test("personDisplayName: the byname as an epithet before the name, the gentry's houses, the kings, the last numbered byname", () => {
   const person = { givenName: "Thomas", surname: "Adamson", occupation: "labourer" };
-  assert.equal(personDisplayName({ ...person, epithet: "the elder" }), "나이 든 토머스 애덤슨");
-  assert.equal(personDisplayName({ ...person, epithet: "the younger" }), "젊은 토머스 애덤슨");
+  // QA010: the elder and the younger of a namesake pair are 큰/작은 (the pair's order, not an age).
+  assert.equal(personDisplayName({ ...person, epithet: "the elder" }), "큰 토머스 애덤슨");
+  assert.equal(personDisplayName({ ...person, epithet: "the younger" }), "작은 토머스 애덤슨");
   assert.equal(personDisplayName({ givenName: "Joan", surname: "atte Well", occupation: "brewer", epithet: "le Rous" }), "붉은 머리 조앤 아트웰");
   assert.equal(personDisplayName({ givenName: "Agnes", occupation: "child" }), "애그니스");
   assert.equal(personDisplayName({ givenName: "John", surname: "Smith", occupation: "smith", epithet: "no. 000123" }), "123번 존 스미스");

@@ -1,3 +1,4 @@
+import { moneyWords, moneyWordsJosa } from "../ledger/moneyWords.ko";
 import { BUILDING_COPY } from "./buildingCatalog.ko";
 /**
  * F0-C2 history ledger sentences (spec docs/design/history-ledger.md HL-1): one template per record kind. A record
@@ -139,7 +140,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "plague.new_graves": params => `교회 묘지에 새 무덤이 늘었다 — ${n(params, "dead")}명`,
   "plague.empty_streets": params => `거리가 비었다 — 빈집 ${n(params, "houses")}채`,
   "plague.abandoned_fields": params => `역병이 물러갔다 — ${n(params, "population")}명 가운데 ${n(params, "dead")}명이 죽고, 빈 필지 ${n(params, "houses")}곳, 밭이 버려졌다`,
-  "plague.ordinance": params => n(params, "fine") > 0 ? `노동자 조례가 낭독되었다 — 임금을 올린 영주에게 벌금 ${n(params, "fine")}d` : "노동자 조례가 낭독되었다",
+  "plague.ordinance": params => n(params, "fine") > 0 ? `노동자 조례가 낭독되었다 — 임금을 올린 영주에게 벌금 ${moneyWords(n(params, "fine"))}` : "노동자 조례가 낭독되었다",
   "plague.resettlement": () => "빈집에 새 가족이 들기 시작했다",
   "plague.second": () => "두 번째 역병이 왔다",
   "plague.second_ended": params => `두 번째 역병이 물러갔다 — ${n(params, "dead")}명이 죽었다`,
@@ -152,7 +153,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "reorg.guild_founded": () => "직인 길드가 섰다",
   "reorg.weavers_left": params => `직조공 가구 ${n(params, "households")}곳이 길드가 있는 도시로 떠났다`,
   "reorg.overlord_warning": params => `상위 영주가 커지는 도시를 경고했다 — 도시의 힘 ${n(params, "influence")}`,
-  "reorg.poll_tax": params => `인두세를 걷었다 — 영주의 몫 ${n(params, "amount")}d`,
+  "reorg.poll_tax": params => `인두세를 걷었다 — 영주의 몫 ${moneyWords(n(params, "amount"))}`,
   "reorg.rebellion_rumour": params => s(params, "outcome") === "chased" ? "농민 반란의 소문 — 사람들이 세금 징수원을 쫓아내고 장원 법정 기록을 태웠다" : "농민 반란의 소문이 돌았지만 도시는 조용했다",
   "reorg.autonomy_request": () => "도시가 자치 특허를 요구하는 문서를 올렸다",
   "reorg.charter": params => s(params, "charter") === "partial" ? "자치 특허를 맺었다 — 시장과 통행세 일부가 도시로 넘어갔다" : "자치 특허를 내주지 않았다",
@@ -166,7 +167,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "lord.wardship_begun": params => { const lord = s(params, "lord"); const guardian = s(params, "guardian"); return guardian === "" ? `${lord}${josa(lord, "이", "가")} 미성년 영주다 — 상위 영주가 후견한다` : `${lord}${josa(lord, "이", "가")} 미성년 영주다 — 후견인 ${guardian}`; },
   "lord.wardship_ended": params => { const lord = s(params, "lord"); return `${lord}${josa(lord, "이", "가")} 성년이 되어 후견이 끝났다`; },
   "legacy.heir_seated": params => { const heir = s(params, "heir"); return `${heir}${josa(heir, "이", "가")} 가문을 이었다 — ${s(params, "relation")}`; },
-  "legacy.royal_subsidy": params => `국왕에게 과세를 냈다 — ${n(params, "amount")}d`,
+  "legacy.royal_subsidy": params => `국왕에게 과세를 냈다 — ${moneyWords(n(params, "amount"))}`,
   "legacy.city_seal": () => "도시가 제 인장을 새겼다",
   "legacy.charter_sealed": params => s(params, "mayor") === "" ? "자치 특허에 도시 인장이 찍혔다" : `자치 특허에 도시 인장이 찍혔다 — 첫 시장 ${s(params, "mayor")}`,
   "legacy.charter_refused": params => `영주가 자치 특허를 거절했다 — 도시의 반발 ${n(params, "backlash")}`,
@@ -177,13 +178,13 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   // FIX-9 (LG-13): the interlude 1384–1400.
   "legacy.staple": () => "양모 집산지(Staple)가 옮겨지고 양모 수출이 묶였다 — 직물 값이 오른다",
   "legacy.guild_dispute": () => "길드와 상인이 직물을 파는 권리를 두고 다툰다",
-  "legacy.market_fire": params => `장터에 불이 났다 — 수리에 ${n(params, "cost")}d`,
+  "legacy.market_fire": params => `장터에 불이 났다 — 수리에 ${moneyWords(n(params, "cost"))}`,
   "legacy.church_rebuilding": () => "교구가 낡은 교회의 증축을 청했다",
   "legacy.nave_rebuilt": () => "교회의 새 회중석이 섰다",
   "legacy.deposition": () => "리처드 2세가 폐위되고 헨리 4세가 즉위했다",
   "legacy.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
   "war.beacon": () => "해안의 봉화가 올랐다",
-  "war.raid": params => `해안 습격이 닥쳤다 — 불탄 집 ${n(params, "burntHouses")}, 빼앗긴 물자 ${n(params, "looted")}, 빼앗긴 돈 ${n(params, "coin")}d`,
+  "war.raid": params => `해안 습격이 닥쳤다 — 불탄 집 ${n(params, "burntHouses")}, 빼앗긴 물자 ${n(params, "looted")}, 빼앗긴 돈 ${moneyWords(n(params, "coin"))}`,
   "war.conscripts_left": params => `징집된 남자 ${n(params, "men")}명이 떠났다`,
   "war.conscripts_returned": params => n(params, "lost") === 0 ? `징집된 남자 ${n(params, "men")}명이 모두 돌아왔다` : `징집된 남자들이 돌아왔다 — ${n(params, "lost")}명은 돌아오지 못했다`,
   "war.favour_lost": () => "왕실의 신임을 잃었다",
@@ -208,7 +209,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   // LM-E1 (TA-6): the lord's conditions; (TA-5) a project the town started.
   "decision.estate_policy": params => `영지 방침을 정했다: ${ESTATE_POLICY_KO[s(params, "chosen")] ?? s(params, "chosen")}`,
   "decision.project_subsidy": params => n(params, "amount") === 0 ? `${buildingWord(s(params, "kind"))} 장려금을 거두었다`
-    : `${buildingWord(s(params, "kind"))}에 장려금 ${n(params, "amount")}d를 걸었다`,
+    : `${buildingWord(s(params, "kind"))}에 장려금 ${moneyWords(n(params, "amount"))}${moneyWordsJosa(moneyWords(n(params, "amount")), "을", "를")} 걸었다`,
   "decision.market_dues": params => `시장 부담을 평소의 ${Math.round(Number(s(params, "chosen")) / 10)}%로 정했다`,
   // LM-E2 (ES-5…ES-7): claims, suits, titles and possessions.
   "estate.claim_raised": params => `${holderWord(s(params, "claimant"))}${josa(holderWord(s(params, "claimant")), "이", "가")} ${pieceWord(s(params, "piece"), s(params, "estate"))}에 ${basisWord(s(params, "basis"))}${josa(basisWord(s(params, "basis")), "을", "를")} 근거로 청구를 냈다`,
@@ -220,7 +221,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "estate.title_changed": params => `${pieceWord(s(params, "piece"), s(params, "estate"))}의 권원이 ${holderWord(s(params, "from"))}에게서 ${holderWord(s(params, "to"))}에게 넘어갔다`,
   "estate.possession_changed": params => `${pieceWord(s(params, "piece"), s(params, "estate"))}의 점유가 ${holderWord(s(params, "from"))}에게서 ${holderWord(s(params, "to"))}에게 넘어갔다`,
   // LM-E1b (TA-6 ②): a subsidy refused — the subsidies together would pass a quarter of the treasury.
-  "agency.subsidy_refused": params => `${buildingWord(s(params, "kind"))} 장려금 ${n(params, "amount")}d는 걸지 못했다: 장려금 합계 ${n(params, "total")}d가 금고의 4분의 1(${n(params, "limit")}d)을 넘는다`,
+  "agency.subsidy_refused": params => `${buildingWord(s(params, "kind"))} 장려금 ${moneyWords(n(params, "amount"))}${moneyWordsJosa(moneyWords(n(params, "amount")), "은", "는")} 걸지 못했다: 장려금 합계 ${moneyWords(n(params, "total"))}${moneyWordsJosa(moneyWords(n(params, "total")), "이", "가")} 금고의 4분의 1(${moneyWords(n(params, "limit"))})을 넘는다`,
   "agency.project_started": params => `${ACTOR_KO[s(params, "actor")] ?? s(params, "actor")}${josa(ACTOR_KO[s(params, "actor")] ?? "", "이", "가")} ${projectWord(s(params, "what"))} 공사를 시작했다`,
   "drainage.done": params => `배수 공사가 끝나 웅덩이 ${n(params, "cells")}칸이 풀밭이 되었다`,
   "event.rumour": params => `${eventName(s(params, "defId"))}의 소문이 돌았다`,

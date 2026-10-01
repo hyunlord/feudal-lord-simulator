@@ -87,7 +87,7 @@ export function displayName(person: Pick<Person, "givenName" | "surname" | "epit
 
 /**
  * FIX-6 ③ (decision FX6-4): the name every screen writes — read in Korean (`personNames.ko.ts`): a king by his regnal
- * name, anyone else as byname-epithet, given name, surname ("나이 든 토머스 애덤슨", "윌리엄 드 리종드"). A name missing
+ * name, anyone else as byname-epithet, given name, surname ("큰 토머스 애덤슨", "윌리엄 드 리종드"). A name missing
  * from the tables is written as it is (the tables are checked to cover every name the game gives).
  */
 export function personDisplayName(person: Pick<Person, "givenName" | "surname" | "epithet" | "occupation">): string {
@@ -140,6 +140,38 @@ export function newbornCustomName(input: { readonly seed: number; readonly key: 
 /** Working copy of the person state within one step (ordinal, the living, the gone). */
 /** FIX-11 (item 3): the bynames that only mark a pair of living namesakes; the one left alone drops it. */
 const PAIR_EPITHETS = new Set(["the elder", "the younger", "senior", "junior", "the father", "the son"]);
+/** QA010: each pair's two bynames, the older's first. */
+const EPITHET_PAIRS: readonly (readonly [string, string])[] = [["the elder", "the younger"], ["senior", "junior"], ["the father", "the son"]];
+
+/**
+ * QA010 (and save v39): the namesakes' pair bynames set right — a pair byname with no living namesake left goes (the
+ * other of the pair died or left before FIX-11 dropped it at once), and a pair whose older one holds the younger's byname
+ * is turned round (the order of a pair is its ages). Other bynames are left as they are.
+ */
+export function settlePairEpithets(people: readonly Person[]): readonly Person[] {
+  const groups = new Map<string, Person[]>();
+  for (const person of people) {
+    const key = `${person.givenName}|${person.surname ?? ""}`;
+    groups.set(key, [...(groups.get(key) ?? []), person]);
+  }
+  const changed = new Map<string, Person>();
+  for (const group of groups.values()) {
+    const paired = group.filter(person => person.epithet !== undefined && PAIR_EPITHETS.has(person.epithet));
+    if (group.length === 1 && paired.length === 1) {
+      const { epithet: _dropped, ...rest } = paired[0]!;
+      changed.set(rest.id, rest);
+      continue;
+    }
+    if (group.length !== 2 || paired.length !== 2) continue;
+    const pair = EPITHET_PAIRS.find(([older, younger]) => paired.some(person => person.epithet === older) && paired.some(person => person.epithet === younger));
+    if (pair === undefined) continue;
+    const [first, second] = [...paired].sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id));
+    if (first!.epithet === pair[0]) continue;
+    changed.set(first!.id, { ...first!, epithet: pair[0] });
+    changed.set(second!.id, { ...second!, epithet: pair[1] });
+  }
+  return changed.size === 0 ? people : people.map(person => changed.get(person.id) ?? person);
+}
 
 class Town {
   people: Person[];
