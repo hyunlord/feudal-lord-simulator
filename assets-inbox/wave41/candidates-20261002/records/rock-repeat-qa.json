@@ -1,0 +1,33 @@
+{
+  "status": "PASS_AFTER_BOUNDARY_REPAIR",
+  "initial_failed_measurement": {
+    "metrics": [
+      {
+        "kind": "original",
+        "edge_mae_left_right": 0,
+        "edge_mae_top_bottom": 0
+      },
+      {
+        "kind": "candidate",
+        "edge_mae_left_right": 10.727213541666666,
+        "edge_mae_top_bottom": 10.900390625
+      }
+    ],
+    "note": "Offline repeated tile comparison, no claim of mathematically seamless tiling."
+  },
+  "final_verification": {
+    "original": {
+      "edge_mae_left_right": 0,
+      "edge_mae_top_bottom": 0
+    },
+    "candidate": {
+      "edge_mae_left_right": 0,
+      "edge_mae_top_bottom": 0
+    },
+    "original_outer_border_rgb_difference_pixels": 0,
+    "alpha_difference_pixels": 0,
+    "fade_pixels": 64,
+    "formula": "smoothstep t*t*(3-2*t), t=min(distance-to-nearest-edge/64,1)"
+  },
+  "final_proof": "proofs/rock-repeat.jpg"
+}

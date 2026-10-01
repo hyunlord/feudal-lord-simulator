@@ -1,0 +1,14 @@
+{
+  "original": {
+    "edge_mae_left_right": 0,
+    "edge_mae_top_bottom": 0
+  },
+  "candidate": {
+    "edge_mae_left_right": 0,
+    "edge_mae_top_bottom": 0
+  },
+  "original_outer_border_rgb_difference_pixels": 0,
+  "alpha_difference_pixels": 0,
+  "fade_pixels": 64,
+  "formula": "smoothstep t*t*(3-2*t), t=min(distance-to-nearest-edge/64,1)"
+}

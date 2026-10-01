@@ -1,0 +1,129 @@
+{
+  "ordinal": 20,
+  "attempt": 1,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "prompt": "Precise surface-only edit of this farmstead_working sprite. Keep original composition, all object locations and proportions exactly. Preserve open door, produce, basket, cart, wheels, plough, posts and roof geometry. Change only noisy stippled materials into broad quiet hand-painted thatch, oak, limewash and stone. No blurring, no lost openings, no invented details. Original160:136 aspect ratio, exact padding and occupied bounds, pivot and contact. Transparent background; no extra shadows. Upper-left soft light. Muted southern English1300–1450 materials. Do not redesign, enlarge, move, crop or rotate any element.",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-e061e9e1-01ed-4b32-a86c-4c3e68be56e7.png",
+  "raw_copy": "raw/20-attempt1.png",
+  "inspection": {
+    "status": "PASS_WITH_LIMITATIONS",
+    "alpha_difference_pixels": 0,
+    "raw_geometry_pass": false,
+    "proof": "proofs/lane-material/20-final-comparison.jpg",
+    "limitation": "Selective roof and wood/limewash interior material improvement. Thin tools, framing and remaining boundary noise preserved.",
+    "visual_review": "Final 3x comparison viewed: roof texture less stippled; selected wood and limewash internal color fields quieter. Cart/plough, structural outlines and openings retained. Rock major slab/crack arrangement retained with reduced contrast.",
+    "outside_edit_mask_difference_pixels": 0
+  },
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/20-farmstead_working-v1.png",
+      "sha256": "05f62c38400629af88b6e29243fe78e8d90b36cd990869172294245cbf7fac1f",
+      "role": "immutable_geometry"
+    }
+  ],
+  "raw_sha256": "b613145f9519328dcd0389fb114f57d2bf8bfcbb4f43ef44a574327451eea3c2",
+  "raw_alpha_iou": 0.7893017558187015,
+  "raw_alpha_different_pixels": 8573,
+  "final_path": "assets/20-farmstead_working-v1-wave41-v1.png",
+  "final_sha256": "e3a2439cda39c5049f78c5026c259719334ec1ad9af1a953eded0faa03dafa00",
+  "postprocessing": {
+    "resize": "one full-canvas resize, no trim",
+    "method": "Selective roof-interior generated-RGB composite (max0.92,2px feather) and selected wood/limewash interiors (0.5, same-material color gates excluding dark structural pixels). Original alpha bit-exact. No geometry transform.",
+    "polygons": [
+      [
+        [
+          15,
+          51
+        ],
+        [
+          44,
+          16
+        ],
+        [
+          129,
+          58
+        ],
+        [
+          78,
+          78
+        ],
+        [
+          55,
+          66
+        ],
+        [
+          42,
+          44
+        ],
+        [
+          37,
+          43
+        ],
+        [
+          21,
+          51
+        ]
+      ]
+    ],
+    "modified_region_pixels": 3001,
+    "wall_polygons": [
+      [
+        [
+          20,
+          58
+        ],
+        [
+          28,
+          62
+        ],
+        [
+          28,
+          78
+        ],
+        [
+          20,
+          82
+        ]
+      ],
+      [
+        [
+          54,
+          76
+        ],
+        [
+          62,
+          80
+        ],
+        [
+          62,
+          94
+        ],
+        [
+          54,
+          90
+        ]
+      ],
+      [
+        [
+          18,
+          58
+        ],
+        [
+          23,
+          60
+        ],
+        [
+          23,
+          72
+        ],
+        [
+          18,
+          69
+        ]
+      ]
+    ],
+    "source_retained": "all alpha; pixels outside selected roof/wood/limewash interiors; cart, plough, wheels, openings, bags, logs and roof boundaries"
+  }
+}
