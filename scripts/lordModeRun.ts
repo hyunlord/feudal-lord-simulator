@@ -72,10 +72,13 @@ export function lordModeRun(options: LordModeOptions) {
   // TA-9: every receipt audited against the state that entered its week's tick; thirty kept for the report (by hash).
   const audits: { receipt: string; tick: number; actor: string; what: string; planner: string; reasons: string; mismatches: readonly string[] }[] = [];
   let audited = 0, mismatched = 0;
+  // TA-12: when the town's era changed (the market charter, the stone town).
+  const eras: { era: string; year: number }[] = [];
   while (stateCalendar(state).year <= options.lastYear && state.settlement?.outcome !== "abandoned") {
     const before = lordTurn(state, options.subsidy);
     if (subsidyYear === null && (before.agency?.subsidies.length ?? 0) > 0) subsidyYear = stateCalendar(before).year;
     state = advanceTick(before);
+    if (state.era !== before.era) eras.push({ era: state.era, year: stateCalendar(state).year });
     const known = before.agency?.nextReceipt ?? 1;
     for (const receipt of (state.agency?.receipts ?? []).filter(entry => Number(entry.id.slice(8)) >= known)) {
       const mismatches = auditReceipt(before, receipt);
@@ -113,6 +116,7 @@ export function lordModeRun(options: LordModeOptions) {
         planner: receipt.planner, plan: [receipt.sites!.planTx, receipt.sites!.planTy], chosen: [receipt.tx, receipt.ty], score: receipt.score,
         siteReasons: receipt.sites!.reasons, runnerUp: receipt.sites!.runnerUp })) },
     subsidy: options.subsidy === undefined ? null : { firstRefusal, inForceFrom: subsidyYear },
+    eras,
     audit: { audited, mismatched, sample: sampleOf(audits, options.seed, 30) },
     years, elapsedSeconds: Math.round((performance.now() - started) / 100) / 10,
   };

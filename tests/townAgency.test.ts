@@ -175,6 +175,20 @@ test("TA-11 the week walks the bot's list once: the town's requests to its lord 
   for (const request of lordRequests(state)) assert.ok(["proclaim_era", "set_wall_construction_priority", "order_timber"].includes(request.kind));
 });
 
+test("TA-11 the charter's wall search is skipped only on the layout it failed on: any new road or site changes the key", async () => {
+  const { needsLayoutKey } = await import("../src/engine/townAgency");
+  const { planningNeeds } = await import("../src/engine/autoplay");
+  const state = toWeek(lordTown(), 2);
+  assert.equal(needsLayoutKey(state), needsLayoutKey({ ...state, tick: state.tick + 500 }), "time alone keeps the layout");
+  const free = state.tiles.findIndex(tile => !tile.hasRoad && tile.buildingId === null && tile.terrain === "grass");
+  const tiles = state.tiles.map((tile, index) => index === free ? { ...tile, hasRoad: true } : tile);
+  assert.notEqual(needsLayoutKey({ ...state, tiles }), needsLayoutKey(state), "a new road is a new layout");
+  const site = { ...state, constructionSites: [...state.constructionSites, { ...state.constructionSites[0]!, id: "site-new" }] };
+  if (state.constructionSites.length > 0) assert.notEqual(needsLayoutKey(site as GameState), needsLayoutKey(state), "a new site is a new layout");
+  const skipped = planningNeeds(state, { maxHousingLots: 24 }, ["era"]);
+  assert.ok(skipped.every(need => need.planner !== "era"));
+});
+
 test("TA-8 a lord-mode town saves and loads with its agency (save v37); a v35 save loads as a sandbox town", async () => {
   const { decodeSave, encodeSave } = await import("../src/save/saveCodec");
   const { readFileSync } = await import("node:fs");
