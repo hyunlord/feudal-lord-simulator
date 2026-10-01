@@ -25,6 +25,11 @@ type GameCommand =
   | { readonly type: "add_suit_evidence"; readonly suitId: string; readonly evidence: import("../engine/estates.types").Evidence["kind"] }
   | { readonly type: "seek_suit_patron"; readonly suitId: string; readonly factionId: string }
   | { readonly type: "enforce_possession"; readonly suitId: string }
+  // LM-E3 (NG-7, NG-5, NG-6, NG-8): a marriage offer, the answer to its counter, a promise kept, the will-change answer.
+  | { readonly type: "propose_marriage"; readonly terms: readonly import("../engine/diplomacy.types").Term[] }
+  | { readonly type: "answer_counter"; readonly negotiationId: string; readonly accept: boolean }
+  | { readonly type: "keep_promise"; readonly promiseId: string }
+  | { readonly type: "answer_will_change"; readonly choice: "favour" | "support_promise" | "let_it_be" }
   /** QA032: the player saw the chapter's page (the screens open it once; kept in the save). */
   | { readonly type: "mark_chapter_page_seen"; readonly chapter: number }
   /** ARCH-1b (MA-11): drain the fen's still water around a tile (`drainagePlan` says what it takes). */

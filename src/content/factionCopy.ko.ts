@@ -71,6 +71,8 @@ export function factionReasonLine(reason: string): string {
   if (kind === "decline") return a === "arrears" ? "유지비 미납으로 쇠퇴" : a === "depopulated" ? "사람이 떠나 쇠퇴" : a === "empty" ? "도시가 비어 쇠퇴" : "빈 필지가 늘어 쇠퇴";
   if (kind === "restored") return "권리를 되삼";
   if (kind === "house_change") return "영주 가문이 바뀜";
+  // LM-E3 (NG-6): a witness of a promise the lord broke remembers it.
+  if (kind === "promise_broken") return "영주가 지켜보는 앞에서 한 약속을 어김";
   if (kind === "raid") return a === "held" ? "습격에 성벽이 버팀" : "습격에 성벽이 뚫림";
   if (kind === "legacy") return a === "deposition" ? "리처드 2세가 폐위되고 헨리 4세의 치세가 시작됨" : reason;
   if (kind === "reorg") return a === "wage_competition" ? "더 높은 임금으로 가구를 데려감" : a === "overlord_warning" ? "도시가 커지는 것을 경계함"

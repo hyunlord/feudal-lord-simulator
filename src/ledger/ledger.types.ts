@@ -38,6 +38,8 @@ export const LEDGER_CATEGORIES = [
   "project_subsidy",
   // LM-E2 (ES-7): a suit's costs — filing, evidence, the hearing, enforcing the judgment.
   "lawsuit",
+  // LM-E3 (NG-6, NG-7): the cash a marriage contract pays, and the promised payments kept (pension, debt, a favour).
+  "marriage_portion", "promise_payment",
 ] as const;
 export type LedgerCategory = (typeof LEDGER_CATEGORIES)[number];
 
