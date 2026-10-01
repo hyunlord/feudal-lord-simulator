@@ -430,6 +430,22 @@ export function snapLine(line: Box, block: Box | undefined): Box {
   return line;
 }
 
+/** In the page: wait (at most `ms`) until every image the root and its descendants paint with — background and border
+ * images — has loaded and decoded. On a busy machine a drawer's frame and its tabs' button art arrived after the paint
+ * pass had taken its captures (R15: slot.ledger.* tabs "not painted" in 5 of 1,812 cells): the audit measures the
+ * surface as it settles, not its first frames. Returns how many images it waited for. */
+export async function surfaceArtLoaded({ selector, ms }: { readonly selector: string; readonly ms: number }): Promise<number> {
+  const roots = [...document.querySelectorAll(selector)];
+  const urls = new Set<string>();
+  for (const root of roots) for (const element of [root, ...root.querySelectorAll("*")]) {
+    const style = getComputedStyle(element);
+    for (const value of [style.backgroundImage, style.borderImageSource]) for (const match of value.matchAll(/url\("?([^")]+)"?\)/g)) urls.add(match[1]!);
+  }
+  const decode = (url: string) => { const image = new Image(); image.src = url; return image.decode().catch(() => undefined); };
+  await Promise.race([Promise.all([...urls].map(decode)), new Promise(done => setTimeout(done, ms))]);
+  return urls.size;
+}
+
 /** Changed pixels below which an element counts as not painted (the second capture hides it; the same render otherwise). */
 export const PAINTED_MIN = 3;
 

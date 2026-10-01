@@ -25,7 +25,7 @@ import { loadChromium, openScene } from './renderCommitProbe.mjs';
 import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY, UI_INPUT_ROOTS } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, HUD_ALWAYS, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
-import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface } from './uiGeometryMeasure.ts';
+import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface, surfaceArtLoaded } from './uiGeometryMeasure.ts';
 import { HIDE_CSS, paintFacts, STILL_CSS } from './uiGeometryPaint.ts';
 import { decodePng } from './keyartDerivatives.ts';
 import { extremeNumbers, mapTile, sceneTile } from './uiGeometryScene.ts';
@@ -223,6 +223,9 @@ async function measure(row, condition, page) {
     if (target instanceof Element && [...document.querySelectorAll(selector)].some(root => root === target || root.contains(target))) animation.pause(); } }, row.root);
   // A root its scrolling ancestors show nothing of is scrolled to first (as a player does: the family tree's banner).
   if (await page.evaluate(revealSurface, row.root)) await twoFrames(page);
+  // Its art has loaded (a busy DGX served a drawer's frame and its tabs' button art after the captures); a page whose
+  // timers are stopped has no setTimeout, so the wait is bounded here too.
+  if (await Promise.race([page.evaluate(surfaceArtLoaded, { selector: row.root, ms: 8_000 }), pause(9_000).then(() => 0)]) > 0) await twoFrames(page);
   let collected = await page.evaluate(collectSurface, spec);
   if (collected.found) { const paint = await paintPass(page, collected); if (paint !== undefined) collected = { ...collected, paint }; }
   const evaluation = evaluateSurface(collected, spec);
