@@ -25,6 +25,15 @@ export const PIECE_INCOME_CATEGORIES: Readonly<Partial<Record<RightPieceKind, re
   land_rent: ["rent"], market: ["stall_fee"], tolls: ["toll"], mill: ["mill_toll"],
 };
 
+/**
+ * ES-10: the franchises granted from the home estate (chapters 1–5's `politics.rights`) and the piece each stands on —
+ * the market charter and the market's tolls on the market, the bridge tolls on the tolls, commuted rent on the rent,
+ * the mayoralty and the borough seal on the manor court (the town governs itself).
+ */
+export const GRANT_PIECE: Readonly<Record<string, RightPieceKind>> = {
+  market_charter: "market", market_tolls: "market", bridge_tolls: "tolls", commuted_rent: "land_rent", mayoralty: "manor_court", borough_seal: "manor_court",
+};
+
 /** A mark in pennies (13s 4d). */
 export const MARK_PENNIES = 160;
 

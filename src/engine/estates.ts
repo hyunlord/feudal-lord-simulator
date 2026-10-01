@@ -8,7 +8,7 @@
  */
 import {
   CLAIM_BASIS_STRENGTH, HOME_ESTATE_ID, HOME_PIECES, MARK_PENNIES, NEIGHBOUR_ESTATES, OLD_LORD_AGE, OLD_LORD_DAUGHTER_AGES,
-  OLD_POSSESSION_YEARS, OPENING_CLAIMS, PIECE_INCOME_CATEGORIES, SOUND_STRENGTH,
+  GRANT_PIECE, OLD_POSSESSION_YEARS, OPENING_CLAIMS, PIECE_INCOME_CATEGORIES, SOUND_STRENGTH,
 } from "../content/estateConfig";
 import { NEIGHBOUR_HOUSES } from "../content/factionConfig";
 import type { LordRightId } from "../content/lordshipConfig";
@@ -260,9 +260,22 @@ export interface PieceView extends RightPiece {
   readonly claims: readonly Claim[];
 }
 
+/** ES-10: a franchise granted from a piece (4장 특허 이양, 5장 자치): its holder has its title and possession. */
+export interface GrantView {
+  readonly id: string;
+  readonly kind: RightPieceKind | null;
+  readonly titleHolder: HolderId;
+  readonly possessor: HolderId;
+  readonly since: number;
+  /** The stall fee under it, permille of the usual. */
+  readonly stallFeePermille: number;
+}
+
 export interface EstateView extends Omit<Estate, "pieces"> {
   readonly pieces: readonly PieceView[];
   readonly claims: readonly Claim[];
+  /** ES-10: the franchises granted from the home estate — read from the grants' record (`politics.rights`). */
+  readonly grants: readonly GrantView[];
 }
 
 /** ES-10 API: the portfolio — every estate, its pieces' title holders and possessors, their worth, the claims on them. */
@@ -281,7 +294,9 @@ export function estatePortfolio(state: GameState): readonly EstateView[] {
     // A faction's estate is led by the faction's leader now (the stored id is the one it had when stored).
     const leader = estate.house === undefined ? undefined : state.factions?.factions.find(faction => faction.id === estate.titleHolder)?.leaderId;
     const house = estate.house === undefined || leader == null ? estate.house : { ...estate.house, lordId: leader, familyIds: [leader] };
-    return { ...estate, ...(house === undefined ? {} : { house }), pieces, annualValue: estate.offMap ? estate.annualValue : pieces.reduce((sum, piece) => sum + piece.yearValue, 0),
+    const grants = estate.id !== HOME_ESTATE_ID ? [] : (state.politics?.rights ?? []).map(right => ({ id: `grant:${right.id}`,
+      kind: GRANT_PIECE[right.id] ?? null, titleHolder: right.holder, possessor: right.holder, since: right.grantedTick, stallFeePermille: right.stallFeePermille }));
+    return { ...estate, ...(house === undefined ? {} : { house }), pieces, grants, annualValue: estate.offMap ? estate.annualValue : pieces.reduce((sum, piece) => sum + piece.yearValue, 0),
       claims: estates.claims.filter(claim => claim.estateId === estate.id && claim.pieceId === undefined && (claim.status === "open" || claim.status === "suing")) };
   });
 }

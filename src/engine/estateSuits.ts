@@ -18,7 +18,7 @@ import type { Claim, Estate, EstatesState, Evidence, RightPiece, Suit, SuitStage
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 
 /** ES-7: why a suit command was refused (the screens say it; the state is unchanged). */
-export type SuitRefusal = "no_claim" | "not_open" | "own_title" | "no_suit" | "wrong_stage" | "treasury" | "patron_relation" | "nothing_to_enforce";
+export type SuitRefusal = "no_claim" | "not_open" | "own_title" | "treasury";
 
 function target(estates: EstatesState, estateId: string, pieceId: string | undefined): { readonly estate: Estate; readonly piece?: RightPiece } | null {
   const estate = estates.estates.find(entry => entry.id === estateId);

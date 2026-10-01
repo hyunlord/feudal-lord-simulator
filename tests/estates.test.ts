@@ -199,6 +199,17 @@ test("ES-6 a new house takes the town: the rights the old one lost come back, an
   assert.deepEqual(claimsOn(changed, HOME_ESTATE_ID).map(claim => [claim.claimant, claim.basis]), [[`person:${kin.id}`, "inheritance"]]);
 });
 
+test("ES-10 chapters 4–5: the franchises granted from the town are the grantees' pieces in the portfolio, as the grants record them", () => {
+  const five = load("chapter-five-town");
+  const home = estatePortfolio(five).find(estate => estate.id === HOME_ESTATE_ID)!;
+  const rights = five.politics!.rights;
+  assert.ok(rights.length > 0, "chapters 1–4 granted franchises");
+  assert.deepEqual(home.grants.map(grant => [grant.id, grant.titleHolder, grant.possessor, grant.since]),
+    rights.map(right => [`grant:${right.id}`, right.holder, right.holder, right.grantedTick]));
+  assert.ok(home.grants.every(grant => grant.kind !== null), "each stands on a piece");
+  assert.ok(home.pieces.every(entry => entry.titleHolder === LORD), "the lord keeps the pieces' titles");
+});
+
 test("ES-9 save v38: a v37 town that lost a right moves it to the home estate's possession (title kept); the others keep no estates", () => {
   for (const name of ["new-game", "chapter-two-town", "chapter-three-town", "chapter-four-town", "chapter-five-town"]) {
     const old = JSON.parse(readFileSync(`fixtures/saves/v37/${name}.save.json`, "utf8")) as { state: GameState & { lordship?: { lostRights?: unknown[] } } };
