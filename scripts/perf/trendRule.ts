@@ -8,7 +8,8 @@
 //  2. Confirmation: a suspicion runs perf:ab (A-B-A-B, the comparison commit against this one, the same scene) on the
 //     DGX. Both sides take the same noise, so only the paired difference is left: "나빠짐" only when the difference's
 //     95 % band for that many pairs (Student's t, ±3.18 SE at 4 pairs) is above zero (and "좋아짐" only when below).
-//     Otherwise the suspicion ends as "같음". The first version used ±2 SE, the many-pairs approximation: at 4 pairs
+//     Otherwise the suspicion ends as "같음". A worse verdict runs a second A-B and stands only when both find it
+//     worse (at a 95 % band identical code is still judged worse about once in twenty). The first version used ±2 SE, the many-pairs approximation: at 4 pairs
 //     a band of about 80 %, which confirmed 3 of 20 same-code A-B verdicts; with t, none.
 // Every judged metric is worse when higher.
 import { t95 } from "./pairedStats";
@@ -46,6 +47,18 @@ export function abVerdict(record: { table?: readonly AbRow[] } | null | undefine
   if (row.diff === undefined || row.band === undefined || row.n === undefined) return row.verdict;
   const se = row.se ?? (row.bandRule === "t95" ? row.band / t95(row.n - 1) : row.band / 2); const band = t95(row.n - 1) * se;
   return row.diff - band > 0 ? "나빠짐" : row.diff + band < 0 ? "좋아짐" : "소음 안";
+}
+
+/**
+ * The settled verdict of a suspected metric (user instruction 2026-10-01): "나빠짐" only when the first A-B and a second
+ * one (the record's `second`) both find it worse; "재확인 대기" while the second has not run; a second that does not
+ * find it worse ends it as "소음 안". Other verdicts stand on the first A-B. Null when the record has no such row.
+ */
+export function settledVerdict(record: { table?: readonly AbRow[]; second?: { table?: readonly AbRow[] } } | null | undefined, key: string): string | null {
+  const first = abVerdict(record, key);
+  if (first !== "나빠짐") return first;
+  if (record?.second === undefined) return "재확인 대기";
+  return abVerdict(record.second, key) === "나빠짐" ? "나빠짐" : "소음 안";
 }
 
 /** The file name of a confirmation: comparison commit, commit, scene. */

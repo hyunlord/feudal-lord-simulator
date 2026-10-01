@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { abVerdict, median, MIN_RUNS, suspect } from "../scripts/perf/trendRule";
+import { abVerdict, median, MIN_RUNS, settledVerdict, suspect } from "../scripts/perf/trendRule";
 import { t95 } from "../scripts/perf/pairedStats";
 import { paired } from "../scripts/perf/perfAB";
 
@@ -41,4 +41,14 @@ test("the A-B band is the 95 % band for that many pairs (Student's t), not ±2 S
   assert.equal(abVerdict({ table: [{ key: "canvasPerSec", verdict: "나빠짐", diff: 0.407, band: 0.322, n: 4 }] }, "canvasPerSec"), "소음 안");
   // A real change stays confirmed (SMOOTH-2R, big town canvases per second −88 %).
   assert.equal(abVerdict({ table: [{ key: "canvasPerSec", verdict: "좋아짐", diff: -101.438, band: 6, n: 4 }] }, "canvasPerSec"), "좋아짐");
+});
+
+test("worse stands only when a second A-B also finds it worse", () => {
+  const worse = { table: [{ key: "gcPerMin", verdict: "나빠짐" }] }; const same = { table: [{ key: "gcPerMin", verdict: "소음 안" }] };
+  assert.equal(settledVerdict(worse, "gcPerMin"), "재확인 대기");
+  assert.equal(settledVerdict({ ...worse, second: worse }, "gcPerMin"), "나빠짐");
+  assert.equal(settledVerdict({ ...worse, second: same }, "gcPerMin"), "소음 안");
+  assert.equal(settledVerdict(same, "gcPerMin"), "소음 안");
+  assert.equal(settledVerdict({ table: [{ key: "gcPerMin", verdict: "좋아짐" }] }, "gcPerMin"), "좋아짐");
+  assert.equal(settledVerdict(null, "gcPerMin"), null);
 });

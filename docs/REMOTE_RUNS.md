@@ -157,4 +157,5 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
   _locks/ _slots/ _ports/  실행·가드레일 슬롯·포트 잠금(flock)
   _clones/                 clone-check 임시 클론(끝나면 지운다)
   _kept/<run>/             --keep 실행의 결과 사본(.remote/·결과 파일, --release로 지운다)
+  _trend/                  추이: <sha>.json(측정)·ab/(A-B 확인)·logs/(실행 로그)
 ```
