@@ -52,6 +52,8 @@ export type Item = {
   readonly wholeLines?: readonly Box[];
   /** A scrolling clipper cuts it (part of it is scrolled out: reachable, and the paint pass does not judge it). */
   readonly scrollCut?: boolean;
+  /** Text: the content box of the block its lines are laid out in (`snapLine`). */
+  readonly block?: Box;
   /** Indices (into items) of the controls this item is inside. */
   readonly inControls: readonly number[];
   /** Indices (into items) of every item this one is inside. */
@@ -282,6 +284,12 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
     const lineBox = (rect: DOMRect) => { const box = boxOf(rect); if (lineHeight <= 0 || rect.height <= lineHeight) return box;
       const middle = (box.t + box.b) / 2; return { l: box.l, r: box.r, t: middle - lineHeight / 2, b: middle + lineHeight / 2 }; };
     const lines = [...range.getClientRects()].filter(rect => rect.width > 0.5 && rect.height > 0.5).slice(0, 60).map(lineBox);
+    // The block the lines are laid out in (an inline parent's lines are its block's).
+    let blockElement: Element = parent;
+    while (blockElement !== root && blockElement.parentElement !== null && ["inline", "contents"].includes(getComputedStyle(blockElement).display)) blockElement = blockElement.parentElement;
+    const blockStyle = getComputedStyle(blockElement); const blockRect = boxOf(blockElement.getBoundingClientRect());
+    const blockBorder = sides(blockStyle, "border"); const blockPadding = sides(blockStyle, "padding");
+    const block = { l: blockRect.l + blockBorder.l + blockPadding.l, t: blockRect.t + blockBorder.t + blockPadding.t, r: blockRect.r - blockBorder.r - blockPadding.r, b: blockRect.b - blockBorder.b - blockPadding.b };
     if (lines.length === 0) continue;
     const full = { l: Math.min(...lines.map(line => line.l)), t: Math.min(...lines.map(line => line.t)), r: Math.max(...lines.map(line => line.r)), b: Math.max(...lines.map(line => line.b)) };
     const region = regionFor(parent);
@@ -289,7 +297,7 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
     const visibleLines = lines.map(line => visiblePart(line, region)).filter((line): line is Box => line !== null);
     const wholeLines = lines.filter(line => !scrollCut(line, region)).map(line => visiblePart(line, region)).filter((line): line is Box => line !== null);
     items.push({ kind: "text", path: path(parent), text: text.slice(0, 40), rect: visiblePart(full, region), full, clipper: region.clipper, slot: inSlot(parent),
-      lines: visibleLines, wholeLines, scrollCut: scrollCut(full, region), inControls: controlsAround(parent), within: around(parent, itemIndex) });
+      lines: visibleLines, wholeLines, scrollCut: scrollCut(full, region), block, inControls: controlsAround(parent), within: around(parent, itemIndex) });
   }
 
   // The measured root, for the audit's second capture (scripts/uiGeometryAudit.mjs takes the attribute off again).
@@ -409,6 +417,18 @@ export function revealSurface(selector: string): boolean {
   return moved;
 }
 
+/** Chrome's text rects use whole-pixel ascent and descent, so a line box centred on the glyph box can sit up to 1 px from
+ * where layout put it (R15: the welcome's 18.4 px title — a 26 px content area, ascent 21 / descent 5 — came out 0.7 px
+ * above its own block, which starts on the inner box). A line past its block's content box by less than 1 px, top or
+ * bottom, is moved back by that much; a line further out (a block overflowing its height) is left as measured. */
+export function snapLine(line: Box, block: Box | undefined): Box {
+  if (block === undefined) return line;
+  const above = block.t - line.t; const below = line.b - block.b;
+  if (above > 0 && above < 1 && below + above <= 0.01) return { ...line, t: line.t + above, b: line.b + above };
+  if (below > 0 && below < 1 && above + below <= 0.01) return { ...line, t: line.t - below, b: line.b - below };
+  return line;
+}
+
 /** Changed pixels below which an element counts as not painted (the second capture hides it; the same render otherwise). */
 export const PAINTED_MIN = 3;
 
@@ -449,7 +469,14 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
   const failures: Failure[] = [];
   const fail = (check: CheckName, what: string, path: string, px: number, rect: Box | null, text?: string) =>
     failures.push(text === undefined ? { check, what, path, px: round(px), rect } : { check, what, path, px: round(px), rect, text });
-  const items = collected.items ?? [];
+  // Text line boxes back on their block where the whole-pixel glyph box put them a fraction off it (snapLine).
+  const items = (collected.items ?? []).map(item => {
+    if (item.kind !== "text" || item.block === undefined) return item;
+    const snap = (line: Box) => snapLine(line, item.block);
+    const lines = (item.lines ?? []).map(snap);
+    const span = (boxes: readonly Box[]) => boxes.length === 0 ? null : { l: Math.min(...boxes.map(line => line.l)), t: Math.min(...boxes.map(line => line.t)), r: Math.max(...boxes.map(line => line.r)), b: Math.max(...boxes.map(line => line.b)) };
+    return { ...item, lines, ...(item.wholeLines === undefined ? {} : { wholeLines: item.wholeLines.map(snap) }), full: snap(item.full), rect: item.rect === null ? null : span(lines) ?? item.rect };
+  });
 
   // Items already failing a check: what is inside them is not counted for it again.
   const failed: Record<"outside" | "border", Set<number>> = { outside: new Set(), border: new Set() };
@@ -552,7 +579,11 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
     if (!control.kit) fail("controls", "a clickable that is not a kit Button", item.path, 0, item.rect, item.text);
     else if (!control.art && control.variant !== "surface" && control.variant !== "quiet") fail("controls", "a kit Button without button art", item.path, 0, item.rect, item.text);
   }
-  // h. content: the required elements are there, shown and painted; no text or control is painted over.
+  // h. content: the required elements are there, shown and painted; no text or control is painted over; and some of the
+  // surface's text and controls is in view at all (a drawer whose view collapsed to its frame shows none of it, and a
+  // scroller with no view leaves nothing to scroll to — R15: the population drawer opened 0 px tall).
+  const content = items.filter(item => (item.kind === "text" || item.kind === "control") && !item.slot);
+  if (content.length > 0 && content.every(item => item.rect === null)) fail("content", "none of the surface's text and controls is in view (its view is collapsed or scrolled away)", root.path, 0, root.rect);
   for (const required of collected.requires ?? []) {
     if (required.rects.length === 0 && (required.scrolled ?? 0) > 0) continue;
     if (required.rects.length === 0) { fail("content", required.hidden > 0 ? `required ${required.selector} not shown (no size, hidden or transparent)` : `required ${required.selector} missing`, required.selector, 0, null); continue; }

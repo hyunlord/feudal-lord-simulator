@@ -12,6 +12,9 @@
   /* The goal rail under the pill; the crisis bells, the panel slot and the selection card under the speed. */
   --hud-left-top: calc(var(--hud-edge) + var(--hud-pill-height) + var(--hud-row-gap));
   --hud-right-top: calc(var(--hud-edge) + var(--hud-cluster-height) + var(--hud-row-gap));
+  /* R15 (QA round 15, 1280×720): what the right column keeps clear at its foot — the dock (its buttons 64 px over the
+     edge) and the steward's quiet line above it (its frame, the gap both sides, one 13 px line at 1.45), and a gap. */
+  --hud-right-bottom: calc(64px + var(--hud-edge) + var(--frame-advisor-safe-top) + var(--frame-advisor-safe-bottom) + 2 * var(--frame-gap) + 13px * 1.45 + var(--frame-gap));
 }
 @media (pointer: coarse) { .app-shell { --hud-target: 48px; } }
 
@@ -97,12 +100,17 @@
 /* One panel slot (S-30) on the right. */
 .app-shell .slot-panel {
   position: absolute; top: var(--hud-right-top); right: 8px; z-index: 5;
-  width: min(340px, calc(100% - 16px)); max-height: min(460px, calc(100% - 150px)); overflow-y: auto;
+  width: min(340px, calc(100% - 16px)); max-height: min(460px, calc(100% - var(--hud-right-top) - var(--hud-right-bottom))); overflow-y: auto;
   color: var(--palette-ink); background-color: var(--palette-vellum);
 }
-/* NAT-2 (QA-006): the wide box token (480 px, 552 on touch); the five columns fit it, no horizontal scroll. */
-.app-shell .ledger-drawer { width: min(var(--box-w-wide), calc(100% - 16px)); max-height: min(560px, calc(100% - 150px)); }
+/* NAT-2 (QA-006): the wide box token (480 px, 552 on touch); the five columns fit it, no horizontal scroll. R15: the
+   slot stops above the dock and the steward's line (at 720 px high the ledger's foot covered the line) and scrolls. */
+.app-shell .ledger-drawer { width: min(var(--box-w-wide), calc(100% - 16px)); max-height: min(560px, calc(100% - var(--hud-right-top) - var(--hud-right-bottom))); }
 .app-shell .ledger-matrix-scroll { overflow-x: auto; }
+/* R15: the view tab's overlay switches came from the dark court console (parchment text, uiConsole.css); on the
+   drawer's vellum their heading was parchment on parchment — unreadable. */
+/* contrast-audit selector=".ledger-drawer .overlay-heading" fg="--palette-ink" bg="--palette-vellum" size="13" role="heading" */
+.app-shell .ledger-drawer :is(.economy-overlays, .overlay-heading) { color: var(--palette-ink); }
 .app-shell .slot-panel .goal-drawer { position: static; display: grid; gap: 8px; }
 .app-shell .goal-slot .settlement-status { position: static; max-width: none; }
 .app-shell .slot-panel .left-inspector, .app-shell .slot-panel .inspector { position: static; width: auto; max-height: none; }
@@ -122,7 +130,9 @@
 .app-shell .ledger-total { font-weight: 700; }
 .app-shell .ledger-alerts { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 13px; }
 .app-shell .ledger-alert-look { min-height: 44px; margin-top: 4px; }
-.app-shell .ledger-population-drawer { top: var(--hud-right-top); left: auto; right: 8px; }
+/* R15: the court ledger's drawer rule sets bottom: calc(100% + 8px) (global.css); with the slot's top that left the
+   drawer 0 px of view (it opened as an empty bar). The slot's height is its content up to the slot's max-height. */
+.app-shell .ledger-population-drawer { top: var(--hud-right-top); left: auto; right: 8px; bottom: auto; }
 
 /* Layer switch bottom left (always on, locks visible). */
 .app-shell .layer-switch { position: absolute; left: 0; bottom: 0; z-index: 4; display: flex; gap: 4px; align-items: flex-end; }
@@ -159,7 +169,9 @@
 /* The build drawer (S-21): bottom centre, only while open; categories as tabs, compact cards. */
 .app-shell .build-drawer.court-console {
   left: 50%; right: auto; bottom: 8px; display: none; grid-template-columns: none;
-  width: auto; max-width: min(760px, calc(100% - 16px)); height: auto; transform: translateX(-50%);
+  /* R15 (tablet, long copy): centred, it ends left of the steward's line (its small box at the edge) and the dock — at
+     1180 px the long category names widened it under the line. */
+  width: auto; max-width: min(760px, calc(100% - 2 * (var(--box-w-small) + var(--hud-edge) + var(--frame-gap)))); height: auto; transform: translateX(-50%);
 }
 .app-shell .build-drawer.court-console[data-open="true"] { display: block; }
 .app-shell .build-drawer .build-menu { height: auto; }
@@ -537,6 +549,14 @@
 .emblem-image { display: block; }
 .petition-scene { display: flex; gap: 16px; align-items: center; justify-content: center; }
 .petition-scene .story-modal-art { flex: none; }
+/* R15 (QA round 15, 1280×720 and 1024×768): on a short view the card is as tall as the view, and with long answers its
+   body scrolled (the later button below the fold, up to 46 px): there the scene's picture is drawn smaller. */
+@media (max-height: 780px) {
+  .petition-scene .story-modal-art { zoom: 0.65; }
+  /* and the card takes the view's height less the gap (94vh and a 16 px backdrop margin left 40 px unused at 720). */
+  .story-modal-backdrop:has(> .petition-card) { padding: var(--frame-gap); }
+  .story-modal.petition-card { max-height: calc(100vh - 2 * var(--frame-gap)); }
+}
 .petition-people { display: grid; gap: 4px; min-width: 0; }
 .petition-people h3 { margin: 0; font-size: 13px; }
 .petition-people .person-list { margin: 0; }
