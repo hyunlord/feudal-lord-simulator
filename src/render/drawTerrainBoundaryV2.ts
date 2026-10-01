@@ -127,7 +127,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   // Croft bed art only in chunks with beds; crop states only in chunks with arable strips (read this frame).
   const bedReadiness = scene.yardProps.beds.length > 0 ? `:b${zoneAssetReadiness(ZONE_VARIANTS.croftBed)}` : "";
   // Shore art only in chunks that draw water; with wall strips on, the shore strip stops under walls on the water.
-  const shoreReadiness = scene.shore.loops.length > 0 ? `:w${shoreAssetReadiness()}${wallStripsEnabled() ? ":ws" : ""}${waterChunkToken(zoom)}` : "";
+  const shoreReadiness = scene.shore.loops.length > 0 ? `:w${shoreAssetReadiness()}${wallStripsEnabled() ? ":ws" : ""}${waterChunkToken(zoom, input.state)}` : "";
   const cropStates = scene.zones.arableBands.length > 0 ? arableStripStateLookup(input.state) : null;
   const groundReadiness = (plan: GroundChunkPlan): string => (plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness)
     + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "") + landWorksChunkToken(input.state, plan);
@@ -213,7 +213,7 @@ function drawGroundChunk(
   if (land !== null) drawLandEdges(context, land, plan);
   drawForestFill(context, scene.forest, plan.forestLoops, plan.forestParity, box, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
   drawForestFringeDecals(context, scene.forest, plan.forestLoops, season);
-  drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, box, bounds, input.state.seed, liveReeds(zoom), land === null ? undefined : landShoreStrips(context, land, scene.shore, plan.waterLoops, bounds));
+  drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, box, bounds, input.state.seed, liveReeds(zoom, input.state), land === null ? undefined : landShoreStrips(context, land, scene.shore, plan.waterLoops, bounds));
   if (iceRimDrawn(season)) drawIceRim(context, scene.shore, plan.waterLoops, box); // INSTALL-29: winter, static: baked with the strips
   drawLandWorksInChunk(context, input.state, plan, season); // LAND-UI Wave 34: fords, drainage works, drained edge
   if (land !== null) drawLandDecals(context, land, input.state.tiles, plan);
