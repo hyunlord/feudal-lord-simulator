@@ -10,6 +10,8 @@ Astra가 별도 클론에서 게임을 실행하며 관찰한 회차별 QA 기�
 |---|---|---|---|---|---|---|
 | [01](round01/FINDINGS.md) | 2026-09-30 | `4ad2d2a4` | QA-001~011 (11건: 요청 7 + 새 종류 4) | 재현 9 · 미재현 2(QA-004 반복 도로 건설, QA-007 석벽의 물 내부 횡단). 여섯 장면 매트릭스는 미완료([REGRESSION](round01/REGRESSION.md)) | 문서 4 · `repro/` · `tools/` · 증거 JPEG 11(발견마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round01/` — 경량 ZIP(`b94c2666…`)·해시 확인 파일·풀어 둔 전체(JPEG 51·GIF 28) |
 | [02](round02/FINDINGS.md) | 2026-09-30 | `d5b3f88a` | 새 발견 QA-012~013 (2건) + 기존 11항목 재검토 | 새 발견 2건 재현(QA-012 계절 외형 급교체·달력 한 샘플 지연, QA-013 목표 패널이 사건 칩을 가림). 기존 11: 재현된 실패 7 · 미재현 3(QA-001 독립 나무 1개 표본, QA-004, QA-007) · 판정 보류 1(QA-011, 삽화 설치 전). 해안·습지 새 지형은 접근 경로가 없어 미검증 | 문서 6 · `repro/` · `tools/` · 증거 JPEG 11(발견마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round02/` — 경량 ZIP(`d7d8242d…`)·해시 파일·풀어 둔 전체(JPEG 54·GIF 15)·`raw-sequences/`(1600×1100 원본 연속 촬영 634MB, Astra의 `/tmp/fls-qa-raw-round02`) |
+| [03~14 통합](round03-14/FINDINGS.md) · [판정](round03-14/TRIAGE.md) | 2026-10-01 | `267b43b8`(마지막 관찰. 통합 중 원격 `3acc04ff` UI-AUDIT-1 이후는 미검증) | QA001~033 (33개 번호: 열림 24 · 닫힘 4 · 미재현 3 · 미검증 1 · 후보 1) + 번호 없는 후보 12묶음([CANDIDATES](round03-14/CANDIDATES.md)) | 사용자 판정([TRIAGE](round03-14/TRIAGE.md)): 최소 지원 폭 1024px — 375px에서만 나온 013·017·023·024·029는 범위 밖으로 닫음. 높음: 030 저장 왕복 식량 일수 · 032 장 결산 재노출 · 025 목표 보기가 정지를 풂. 015·016·018~021·031은 UI-AUDIT-1 이후 본선에서 재확인. 닫힘 006·008·009·011 인정, 미재현 001·004·007 · 미검증 002 유지 | 문서 8(`TRIAGE.md` 포함) · `ISSUES.csv`·`PROVENANCE.json`·`VALIDATION.json`·`SHA256SUMS.txt` · `history/`(3~14회차 원 보고 52) · `repro/` · `tools/` · 재현 저장 2(12회차 묶음에서, 아래) · 증거 JPEG 35(발견 번호마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round03-14/` — 통합 ZIP(`afe8c6e6…`)·검증 전 ZIP·검증 JSON·풀어 둔 전체(JPEG 91·GIF 6) · `rounds/`(회차별 `QA_ROUND_03~14`·전달 폴더·회차 ZIP 03~13과 검증 JSON) · `raw-sequences/round03~14`(원시 연속 프레임) · 합계 약 14GB |
+| [15](round15/README.md) | 2026-10-01 | `3acc04ff`(UI-AUDIT-1 이후) | UI-AUDIT-1 지정 7건 재검증 + 새 발견 QA034~035 (2건). 누적 35개 번호: 열림 16 · 닫힘 9 · 지원 범위 밖 5 · 미재현 3 · 미검증 1 · 후보 1 | 수정 확인 5(018·019·020·021·031, 같은 조건 범위만) · 재현 1(015 전기 장식선) · 미검증 1(016, QA034 때문에 판독 불가). 새 결함: **QA034 결정창 제목·본문·선택지가 안 보임(높음, 긴급 ZIP 먼저 전달)** · QA035 설정 최하단 불러오기 행을 건설·장부·청지기 버튼이 덮음(1024·1280). 1024px 미만은 이번부터 시험 안 함 | 문서 7 · `ISSUES.csv`·`POLICY.json`·`PROVENANCE.json`·`SHA256SUMS.txt` · `repro/` · `tools/` · `urgent/`(QA034 긴급 묶음 그대로: JPEG 4 · JSON 5 · README) · 재현 저장 2(03·04회차 묶음에서, 아래) · 증거 JPEG 9(발견 번호마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round15/` — 경량 ZIP(`241ef2d1…`)·긴급 ZIP(`5851e2fa…`, `urgent/`와 같은 내용)·풀어 둔 전체(JPEG 39) |
 
 ## 한 회차에 넣는 것
 
@@ -58,3 +60,64 @@ QA-001은 문서가 가리키는 증거가 GIF뿐이라(`1380-forest-5x.gif`·`1
 | `51-guild1394-choice.jpg` | QA-010 109·115살 · QA-011 같은 청원 삽화 |
 
 QA-012의 연속 변화는 GIF(`clips/season-autumn-winter.gif`·`season-winter-spring.gif`)와 원본 연속 촬영이 astra-raw에 있다.
+
+## 03~14회차 통합 증거
+
+발견 번호마다 `FINDINGS.md` 그 줄이 처음 가리키는 JPEG를 넣었다. 전후 비교가 발견의 내용인 011·022·025·030과 사례가 둘인 032는 두 장씩 넣었다. GIF뿐인 움직임(012·032)은 묶음의 전체 펼침 JPEG를 넣었다. GIF 6개와 나머지 JPEG 56장은 astra-raw에 있다.
+
+| 발견 | 파일 |
+|---|---|
+| QA001 수목 움직임(미재현) | `14-wall14-tree-paused20-detail.jpg` |
+| QA002 주민 움직임(미검증) | `14-wall14-idle1-valid120-detail.jpg` |
+| QA003 목책 접합 틈 · QA007 물가 성벽(미재현) | `14-wall14-exact003.jpg` |
+| QA004 반복 길(미재현) | `14-root14-020-auto-paused-end.jpg` |
+| QA005 운반꾼이 성벽 위에 겹침 | `14-wall14-roger80-detail.jpg` |
+| QA006 장부 틀(닫힘) | `03-26-ledger.jpg` |
+| QA008 먼 줌 화풍(닫힘) | `03-04-zoom056.jpg` |
+| QA009 빈 예측(닫힘) | `14-ui14-025-tax-paused.jpg` |
+| QA010 호칭·나이 · QA011 사건 삽화(닫힘) · QA016 결정 버튼 | `14-ui14-064-guild1600.jpg` |
+| QA011 사건 삽화(교회) | `14-ui14-067-church1396.jpg` |
+| QA012 계절 경계 | `13-root13-firstwinter-build100-unfolded.jpg`(GIF 펼침) |
+| QA013 목표·칩 가림(375) | `09-ui9-74-fullgoalchip375.jpg` |
+| QA014 국왕 역할 영문 | `14-ui14-026-king-card.jpg` |
+| QA015 전기 장식선 | `14-ui14-009-thomas-biography.jpg` |
+| QA017 건설 분류(375) | `14-ui14-043-build375.jpg` |
+| QA018 설정 겹침 | `14-ui14-004-settings1280.jpg` |
+| QA019 설정 잘림 | `14-ui14-003-settings1600.jpg` |
+| QA020 가계도 이름 | `13-ui13-019-successor-tree.jpg` |
+| QA021 닫기 기호 | `14-ui14-037-house1600.jpg` |
+| QA022 더보기 | `14-ui14-087-winter-before.jpg` · `14-ui14-088-winter-after.jpg` |
+| QA023 사건칩·상세 가림(375) | `14-ui14-038-market375.jpg` |
+| QA024 인물창 닫기(375) | `14-ui14-046-person375.jpg` |
+| QA025 목표 보기가 정지를 풂 | `14-ui14-053-goal-before.jpg` · `14-ui14-054-goal-after.jpg` |
+| QA026 수레꾼 걸음 | `14-wall14-john-click.jpg` |
+| QA027 영주관 화풍 | `14-wall14-manor-selected2.jpg` |
+| QA028 인구 기록 빈 띠 | `13-ui13-037-population-reopen.jpg` |
+| QA029 연대기 접근(375) | `14-ui14-015-record375.jpg` |
+| QA030 재개 후 식량 일수 | `14-control14-004-saved.jpg` · `14-control14-005-manual-immediate.jpg` |
+| QA031 문제 범례 | `14-ui14-041-problem1600.jpg` |
+| QA032 장 결산 재노출 | `14-control14-006-manual4s.jpg` · `14-control14-1322-immediate100-unfolded.jpg`(GIF 펼침) |
+| QA033 서비스 거리 설명(후보) | `14-root14-008-service-market-church.jpg` |
+
+**재현 저장.** 통합 ZIP에는 저장이 없지만, `CHECKLIST.md`(장전환-02, QA032)가 `repro/saves/natural1340-ch3-reload-repro.json.gz`를 가리킨다. 그래서 12회차 묶음(`/tmp/QA_ROUND_12/repro/saves/`, astra-raw `rounds/QA_ROUND_12`)의 저장 2개를 출처 파일과 함께 `round03-14/repro/saves/`에 넣었다. 1340 3장 재로드 저장(`7b6814f1…`, `14-control14-observation.md`의 SHA와 같음)과 1362 4장 시작 저장(`ec321e87…`)이다. 이 4개 파일은 통합판 `SHA256SUMS.txt`에 없다. 다른 회차의 저장(약 21MB)은 astra-raw `rounds/QA_ROUND_NN/`에만 있다.
+
+## 15회차 증거
+
+| 발견 | 파일 |
+|---|---|
+| QA015 전기 장식선(재현, 열림) | `ui15-13-emptybio1600.jpg` |
+| QA034 결정 내용 안 보임(새, 높음) · QA016 결정 버튼(미검증) | `ui15-12-tax-settled1600.jpg`. 1024·1280·처음 화면은 `urgent/`의 JPEG 4장 |
+| QA018 설정 겹침(닫힘) | `root15-019-settings-bottom1280.jpg` |
+| QA019 설정 잘림(닫힘) | `root15-003-settings1600.jpg` |
+| QA020 가계도 이름(닫힘) | `before08-QA020-tree1600.jpg`(이전) · `ui15-03-tree-expanded1600.jpg`(현재) |
+| QA021 닫기 기호(닫힘) | `root15-012-market-close.jpg` |
+| QA031 문제 범례(닫힘) | `root15-014-problems1384-qa-off.jpg` |
+| QA035 설정 하단 가림(새) | `root15-020-settings-bottom1280-after-scroll.jpg` |
+
+`urgent/`는 먼저 받은 긴급 ZIP(`fls-qa-round15-urgent-decision.zip`)과 같은 내용이다. 이 폴더의 JPEG·JSON은 그대로 저장소에 둔다(사용자 지시).
+
+**재현 저장.** 경량 ZIP에는 저장이 없다. 그러나 `PROVENANCE.json`과 `urgent/README.md`가 QA034 재현 출발점으로 원본 저장 2개를 가리킨다. 그래서 그 둘을 `round15/repro/saves/`에 넣었다. 둘 다 `PROVENANCE.json`의 sha256과 같다.
+- `normal-ui-1384-before-tax.json.gz`(`faa99495…`): 04회차 묶음에서 가져왔다. QA034의 1384 과세 결정 재현 출발점이다.
+- `normal-ui-1407.json.gz`(`86678ba1…`): 03회차 묶음에서 가져왔다. QA020 가계도 재현 출발점이다.
+
+두 파일은 astra-raw `round03-14/rounds/`에도 있다. 15회차 `SHA256SUMS.txt`에는 없다.
