@@ -156,6 +156,21 @@ test("TA-10 a building project compares its candidate sites: each passes the pla
   }
 });
 
+test("TA-10 a project leaves the plan's site for a better candidate, and the receipt keeps the gap to the next (stability town)", async () => {
+  const { auditReceipt } = await import("../src/engine/townAgency");
+  let state = gameReducer(lordTown(), { type: "set_estate_policy", policy: "stability" });
+  const left = (current: GameState) => (current.agency?.receipts ?? []).find(receipt => receipt.sites !== undefined
+    && (receipt.sites.planTx !== receipt.tx || receipt.sites.planTy !== receipt.ty));
+  let before = state;
+  while (left(state) === undefined && state.tick < 3 * 4000) { before = state; state = advanceTick(state); }
+  const moved = left(state);
+  assert.ok(moved !== undefined, "some project chose another site than the plan's");
+  assert.ok(moved.sites!.count >= 2);
+  assert.ok(!moved.sites!.reasons.some(reason => reason.name === "plan"), "the plan's bonus stays with the plan's site");
+  assert.ok(moved.sites!.runnerUp !== null && moved.score >= moved.sites!.runnerUp.score);
+  assert.deepEqual(auditReceipt(before, moved), []);
+});
+
 test("TA-10 the plan's wall and plot rules refuse a candidate: a house off the road, a site under a house", () => {
   const state = toWeek(lordTown(), 2);
   const house = state.buildings.find(building => building.kind === "house")!;
