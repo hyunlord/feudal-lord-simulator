@@ -1,3 +1,4 @@
+import { moneyWordsDelta } from "./moneyWords.ko";
 import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import type { LedgerAccount, LedgerCategory } from "./ledger.types";
 
@@ -101,7 +102,7 @@ export const LEDGER_COPY = {
   sourceLine: (label: string, count: number, amount: number) => `${label} · ${count}건 ${amount > 0 ? "+" : ""}${amount}`,
   entryLine: (tick: number, category: string, amount: number) => `${tick}틱 · ${category} ${amount > 0 ? "+" : ""}${amount}`,
   eraIncome: (lines: string) => `수입원(장부, 최근 2,400틱) ${lines}`,
-  eraIncomeLine: (category: string, amount: number) => `${category} +${amount}`,
+  eraIncomeLine: (category: string, amount: number) => `${category} ${moneyWordsDelta(amount)}`,
   eraIncomeSeparator: " · ",
   eraNoIncome: "수입원(장부, 최근 2,400틱) 없음 · 기간 마감 때 지대·좌판세·제분료·통행세가 들어옵니다",
 } as const;

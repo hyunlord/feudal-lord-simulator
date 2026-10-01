@@ -25,6 +25,8 @@ type GameCommand =
   | { readonly type: "add_suit_evidence"; readonly suitId: string; readonly evidence: import("../engine/estates.types").Evidence["kind"] }
   | { readonly type: "seek_suit_patron"; readonly suitId: string; readonly factionId: string }
   | { readonly type: "enforce_possession"; readonly suitId: string }
+  /** QA032: the player saw the chapter's page (the screens open it once; kept in the save). */
+  | { readonly type: "mark_chapter_page_seen"; readonly chapter: number }
   /** ARCH-1b (MA-11): drain the fen's still water around a tile (`drainagePlan` says what it takes). */
   | { readonly type: "drain_fen"; readonly tx: number; readonly ty: number }
   | { readonly type: "order_timber"; readonly amount: number }
