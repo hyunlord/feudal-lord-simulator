@@ -1,0 +1,155 @@
+{
+  "kind": "dgx-perf-baseline",
+  "commit": "45346f005c06b9de4943a8735d5145975b29e96b",
+  "dirtySource": false,
+  "measuredAt": "2026-10-01T09:23:31.672Z",
+  "host": {
+    "platform": "linux",
+    "release": "6.14.0-1015-nvidia",
+    "arch": "arm64",
+    "cpu": "unknown"
+  },
+  "browser": "151.0.7922.34",
+  "harness": "scripts/renderStageBenchmark.mjs",
+  "harnessSha256": "b7aab7dfcfb06d37b0a844b71d571df4579d9b6c5327b60b21d3b9df578e2481",
+  "protocol": "5 rounds × 240 draws, round 0 discarded, 1× game speed",
+  "server": "vite dev server on the DGX (127.0.0.1, port 4300-4399)",
+  "limits": "systemd user scope MemoryMax=48G CPUQuota=1200%, nice 10 (scripts/remote/run.sh)",
+  "cells": [
+    {
+      "name": "chalk_downs-1280x800-dpr1-cpu1-still",
+      "city": "chalk_downs",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 960,
+        "median": 4.099999964237213,
+        "p95": 12.300000011920929,
+        "mean": 5.336458332960804
+      },
+      "tickWorkMs": {
+        "count": 410,
+        "median": 0.5999999642372131,
+        "p95": 1.100000023841858,
+        "mean": 0.65365853585848
+      },
+      "rafMs": {
+        "count": 960,
+        "median": 16.699999999999818,
+        "p95": 49.899999999999636,
+        "mean": 21.422812499999942
+      },
+      "effectiveSpeed": 0.9967956666131802,
+      "errors": 0
+    },
+    {
+      "name": "coastal_port-1280x800-dpr1-cpu1-still",
+      "city": "coastal_port",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 960,
+        "median": 4,
+        "p95": 11.399999976158142,
+        "mean": 5.238333334090809
+      },
+      "tickWorkMs": {
+        "count": 406,
+        "median": 0.5999999642372131,
+        "p95": 1.300000011920929,
+        "mean": 0.8884236442631689
+      },
+      "rafMs": {
+        "count": 960,
+        "median": 16.69999999999891,
+        "p95": 33.400000000001455,
+        "mean": 22.464270833333323
+      },
+      "effectiveSpeed": 0.9413095795638445,
+      "errors": 0
+    },
+    {
+      "name": "fen_drainage-1280x800-dpr1-cpu1-still",
+      "city": "fen_drainage",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 960,
+        "median": 4.400000035762787,
+        "p95": 30.900000035762787,
+        "mean": 6.567083333681027
+      },
+      "tickWorkMs": {
+        "count": 501,
+        "median": 0.6000000238418579,
+        "p95": 1.300000011920929,
+        "mean": 0.8932135734491482
+      },
+      "rafMs": {
+        "count": 960,
+        "median": 16.700000000000728,
+        "p95": 50.100000000000364,
+        "mean": 28.158645833333313
+      },
+      "effectiveSpeed": 0.926669206837746,
+      "errors": 0
+    },
+    {
+      "name": "fen_works-1280x800-dpr1-cpu1-still",
+      "city": "fen_works",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 960,
+        "median": 4.200000047683716,
+        "p95": 14,
+        "mean": 5.945104166306555
+      },
+      "tickWorkMs": {
+        "count": 479,
+        "median": 0.6000000238418579,
+        "p95": 1.300000011920929,
+        "mean": 1.098538621855678
+      },
+      "rafMs": {
+        "count": 960,
+        "median": 16.700000000000728,
+        "p95": 50,
+        "mean": 26.735104166666606
+      },
+      "effectiveSpeed": 0.9331520278036446,
+      "errors": 0
+    },
+    {
+      "name": "forest_edge-1280x800-dpr1-cpu1-still",
+      "city": "forest_edge",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 960,
+        "median": 7.699999988079071,
+        "p95": 34.69999998807907,
+        "mean": 9.990104166107873
+      },
+      "tickWorkMs": {
+        "count": 554,
+        "median": 1,
+        "p95": 2.599999964237213,
+        "mean": 1.6797833936524305
+      },
+      "rafMs": {
+        "count": 960,
+        "median": 16.700000000000728,
+        "p95": 66.60000000000036,
+        "mean": 28.853124999999977
+      },
+      "effectiveSpeed": 1.0000361023863678,
+      "errors": 0
+    }
+  ]
+}

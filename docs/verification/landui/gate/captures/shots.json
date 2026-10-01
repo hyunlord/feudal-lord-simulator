@@ -1,0 +1,938 @@
+[
+ {
+  "row": "open_field",
+  "label": "summer 1.0",
+  "state": "open_field-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/open_field-summer-1.0-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "summer 1.0",
+  "state": "open_field-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/open_field-summer-1.0-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "summer 0.6",
+  "state": "open_field-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "after",
+  "file": "shots/open_field-summer-0.6-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "summer 0.6",
+  "state": "open_field-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "before",
+  "file": "shots/open_field-summer-0.6-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "summer river",
+  "state": "open_field-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 21
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/open_field-summer-river-41x21-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "summer river",
+  "state": "open_field-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 21
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/open_field-summer-river-41x21-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "winter 1.0",
+  "state": "open_field-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/open_field-winter-1.0-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "winter 1.0",
+  "state": "open_field-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/open_field-winter-1.0-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "winter 0.6",
+  "state": "open_field-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "after",
+  "file": "shots/open_field-winter-0.6-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "winter 0.6",
+  "state": "open_field-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "before",
+  "file": "shots/open_field-winter-0.6-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "winter river",
+  "state": "open_field-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 21
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/open_field-winter-river-41x21-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "open_field",
+  "label": "winter river",
+  "state": "open_field-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 21
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/open_field-winter-river-41x21-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "summer 1.0",
+  "state": "coastal_port-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/coastal_port-summer-1.0-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "summer 1.0",
+  "state": "coastal_port-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/coastal_port-summer-1.0-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "summer 0.6",
+  "state": "coastal_port-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "after",
+  "file": "shots/coastal_port-summer-0.6-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "summer 0.6",
+  "state": "coastal_port-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "before",
+  "file": "shots/coastal_port-summer-0.6-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "summer shore",
+  "state": "coastal_port-summer",
+  "tile": {
+   "tx": 42,
+   "ty": 12
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/coastal_port-summer-shore-42x12-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "summer shore",
+  "state": "coastal_port-summer",
+  "tile": {
+   "tx": 42,
+   "ty": 12
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/coastal_port-summer-shore-42x12-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "winter 1.0",
+  "state": "coastal_port-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/coastal_port-winter-1.0-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "winter 1.0",
+  "state": "coastal_port-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/coastal_port-winter-1.0-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "winter 0.6",
+  "state": "coastal_port-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "after",
+  "file": "shots/coastal_port-winter-0.6-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "winter 0.6",
+  "state": "coastal_port-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "before",
+  "file": "shots/coastal_port-winter-0.6-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "winter shore",
+  "state": "coastal_port-winter",
+  "tile": {
+   "tx": 42,
+   "ty": 12
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/coastal_port-winter-shore-42x12-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "coastal_port",
+  "label": "winter shore",
+  "state": "coastal_port-winter",
+  "tile": {
+   "tx": 42,
+   "ty": 12
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/coastal_port-winter-shore-42x12-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "summer 1.0",
+  "state": "chalk_downs-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/chalk_downs-summer-1.0-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "summer 1.0",
+  "state": "chalk_downs-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/chalk_downs-summer-1.0-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "summer 0.6",
+  "state": "chalk_downs-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "after",
+  "file": "shots/chalk_downs-summer-0.6-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "summer 0.6",
+  "state": "chalk_downs-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "before",
+  "file": "shots/chalk_downs-summer-0.6-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "summer walled fields",
+  "state": "chalk_downs-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 37
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/chalk_downs-summer-walled-fields-41x37-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "summer walled fields",
+  "state": "chalk_downs-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 37
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/chalk_downs-summer-walled-fields-41x37-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "winter 1.0",
+  "state": "chalk_downs-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/chalk_downs-winter-1.0-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "winter 1.0",
+  "state": "chalk_downs-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/chalk_downs-winter-1.0-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "winter 0.6",
+  "state": "chalk_downs-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "after",
+  "file": "shots/chalk_downs-winter-0.6-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "winter 0.6",
+  "state": "chalk_downs-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "before",
+  "file": "shots/chalk_downs-winter-0.6-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "winter walled fields",
+  "state": "chalk_downs-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 37
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/chalk_downs-winter-walled-fields-41x37-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "chalk_downs",
+  "label": "winter walled fields",
+  "state": "chalk_downs-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 37
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/chalk_downs-winter-walled-fields-41x37-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "summer 1.0",
+  "state": "forest_edge-summer",
+  "tile": {
+   "tx": 44,
+   "ty": 43
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/forest_edge-summer-1.0-44x43-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "summer 1.0",
+  "state": "forest_edge-summer",
+  "tile": {
+   "tx": 44,
+   "ty": 43
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/forest_edge-summer-1.0-44x43-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "summer 0.6",
+  "state": "forest_edge-summer",
+  "tile": {
+   "tx": 44,
+   "ty": 43
+  },
+  "zoom": 0.6,
+  "when": "after",
+  "file": "shots/forest_edge-summer-0.6-44x43-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "summer 0.6",
+  "state": "forest_edge-summer",
+  "tile": {
+   "tx": 44,
+   "ty": 43
+  },
+  "zoom": 0.6,
+  "when": "before",
+  "file": "shots/forest_edge-summer-0.6-44x43-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "summer forest edge",
+  "state": "forest_edge-summer",
+  "tile": {
+   "tx": 50,
+   "ty": 41
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/forest_edge-summer-forest-edge-50x41-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "summer forest edge",
+  "state": "forest_edge-summer",
+  "tile": {
+   "tx": 50,
+   "ty": 41
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/forest_edge-summer-forest-edge-50x41-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "winter 1.0",
+  "state": "forest_edge-winter",
+  "tile": {
+   "tx": 44,
+   "ty": 43
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/forest_edge-winter-1.0-44x43-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "winter 1.0",
+  "state": "forest_edge-winter",
+  "tile": {
+   "tx": 44,
+   "ty": 43
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/forest_edge-winter-1.0-44x43-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "winter 0.6",
+  "state": "forest_edge-winter",
+  "tile": {
+   "tx": 44,
+   "ty": 43
+  },
+  "zoom": 0.6,
+  "when": "after",
+  "file": "shots/forest_edge-winter-0.6-44x43-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "winter 0.6",
+  "state": "forest_edge-winter",
+  "tile": {
+   "tx": 44,
+   "ty": 43
+  },
+  "zoom": 0.6,
+  "when": "before",
+  "file": "shots/forest_edge-winter-0.6-44x43-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "winter forest edge",
+  "state": "forest_edge-winter",
+  "tile": {
+   "tx": 50,
+   "ty": 41
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/forest_edge-winter-forest-edge-50x41-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "forest_edge",
+  "label": "winter forest edge",
+  "state": "forest_edge-winter",
+  "tile": {
+   "tx": 50,
+   "ty": 41
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/forest_edge-winter-forest-edge-50x41-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "summer 1.0",
+  "state": "fen_drainage-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/fen_drainage-summer-1.0-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "summer 1.0",
+  "state": "fen_drainage-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/fen_drainage-summer-1.0-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "summer 0.6",
+  "state": "fen_drainage-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "after",
+  "file": "shots/fen_drainage-summer-0.6-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "summer 0.6",
+  "state": "fen_drainage-summer",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "before",
+  "file": "shots/fen_drainage-summer-0.6-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "summer meres",
+  "state": "fen_drainage-summer",
+  "tile": {
+   "tx": 38,
+   "ty": 29
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/fen_drainage-summer-meres-38x29-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "summer meres",
+  "state": "fen_drainage-summer",
+  "tile": {
+   "tx": 38,
+   "ty": 29
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/fen_drainage-summer-meres-38x29-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "winter 1.0",
+  "state": "fen_drainage-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/fen_drainage-winter-1.0-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "winter 1.0",
+  "state": "fen_drainage-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/fen_drainage-winter-1.0-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "winter 0.6",
+  "state": "fen_drainage-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "after",
+  "file": "shots/fen_drainage-winter-0.6-41x40-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "winter 0.6",
+  "state": "fen_drainage-winter",
+  "tile": {
+   "tx": 41,
+   "ty": 40
+  },
+  "zoom": 0.6,
+  "when": "before",
+  "file": "shots/fen_drainage-winter-0.6-41x40-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "winter meres",
+  "state": "fen_drainage-winter",
+  "tile": {
+   "tx": 38,
+   "ty": 29
+  },
+  "zoom": 1,
+  "when": "after",
+  "file": "shots/fen_drainage-winter-meres-38x29-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "fen_drainage",
+  "label": "winter meres",
+  "state": "fen_drainage-winter",
+  "tile": {
+   "tx": 38,
+   "ty": 29
+  },
+  "zoom": 1,
+  "when": "before",
+  "file": "shots/fen_drainage-winter-meres-38x29-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "fen works summer 1.3",
+  "state": "fen_drainage-works-summer",
+  "tile": {
+   "tx": 35,
+   "ty": 26
+  },
+  "zoom": 1.3,
+  "when": "after",
+  "file": "shots/fen_drainage-works-summer-works-summer-1.3-35x26-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "fen works summer 1.3",
+  "state": "fen_drainage-works-summer",
+  "tile": {
+   "tx": 35,
+   "ty": 26
+  },
+  "zoom": 1.3,
+  "when": "before",
+  "file": "shots/fen_drainage-works-summer-works-summer-1.3-35x26-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "ford w1 summer 1.3",
+  "state": "chalk_downs-ford-summer",
+  "tile": {
+   "tx": 62,
+   "ty": 12
+  },
+  "zoom": 1.3,
+  "when": "after",
+  "file": "shots/chalk_downs-ford-summer-w1-summer-1.3-62x12-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "ford w1 summer 1.3",
+  "state": "chalk_downs-ford-summer",
+  "tile": {
+   "tx": 62,
+   "ty": 12
+  },
+  "zoom": 1.3,
+  "when": "before",
+  "file": "shots/chalk_downs-ford-summer-w1-summer-1.3-62x12-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "ford w2 summer 1.3",
+  "state": "chalk_downs-ford-summer",
+  "tile": {
+   "tx": 42,
+   "ty": 21
+  },
+  "zoom": 1.3,
+  "when": "after",
+  "file": "shots/chalk_downs-ford-summer-w2-summer-1.3-42x21-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "ford w2 summer 1.3",
+  "state": "chalk_downs-ford-summer",
+  "tile": {
+   "tx": 42,
+   "ty": 21
+  },
+  "zoom": 1.3,
+  "when": "before",
+  "file": "shots/chalk_downs-ford-summer-w2-summer-1.3-42x21-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "fen works winter 1.3",
+  "state": "fen_drainage-works-winter",
+  "tile": {
+   "tx": 35,
+   "ty": 26
+  },
+  "zoom": 1.3,
+  "when": "after",
+  "file": "shots/fen_drainage-works-winter-works-winter-1.3-35x26-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "fen works winter 1.3",
+  "state": "fen_drainage-works-winter",
+  "tile": {
+   "tx": 35,
+   "ty": 26
+  },
+  "zoom": 1.3,
+  "when": "before",
+  "file": "shots/fen_drainage-works-winter-works-winter-1.3-35x26-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "ford w1 winter 1.3",
+  "state": "chalk_downs-ford-winter",
+  "tile": {
+   "tx": 62,
+   "ty": 12
+  },
+  "zoom": 1.3,
+  "when": "after",
+  "file": "shots/chalk_downs-ford-winter-w1-winter-1.3-62x12-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "ford w1 winter 1.3",
+  "state": "chalk_downs-ford-winter",
+  "tile": {
+   "tx": 62,
+   "ty": 12
+  },
+  "zoom": 1.3,
+  "when": "before",
+  "file": "shots/chalk_downs-ford-winter-w1-winter-1.3-62x12-before.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "ford w2 winter 1.3",
+  "state": "chalk_downs-ford-winter",
+  "tile": {
+   "tx": 42,
+   "ty": 21
+  },
+  "zoom": 1.3,
+  "when": "after",
+  "file": "shots/chalk_downs-ford-winter-w2-winter-1.3-42x21-after.jpg",
+  "errors": []
+ },
+ {
+  "row": "works",
+  "label": "ford w2 winter 1.3",
+  "state": "chalk_downs-ford-winter",
+  "tile": {
+   "tx": 42,
+   "ty": 21
+  },
+  "zoom": 1.3,
+  "when": "before",
+  "file": "shots/chalk_downs-ford-winter-w2-winter-1.3-42x21-before.jpg",
+  "errors": []
+ }
+]

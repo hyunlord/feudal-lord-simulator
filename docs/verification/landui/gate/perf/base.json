@@ -1,0 +1,156 @@
+{
+  "kind": "dgx-perf-baseline",
+  "commit": "0f7a45fa0a994e0ff8e269189a1d693a3e8bc8a3",
+  "dirtySource": false,
+  "measuredAt": "2026-10-01T09:23:31.585Z",
+  "host": {
+    "platform": "linux",
+    "release": "6.14.0-1015-nvidia",
+    "arch": "arm64",
+    "cpu": "unknown"
+  },
+  "browser": "151.0.7922.34",
+  "harness": "scripts/renderStageBenchmark.mjs",
+  "harnessSha256": "b7aab7dfcfb06d37b0a844b71d571df4579d9b6c5327b60b21d3b9df578e2481",
+  "protocol": "5 rounds × 240 draws, round 0 discarded, 1× game speed",
+  "server": "vite dev server on the DGX (127.0.0.1, port 4300-4399)",
+  "limits": "systemd user scope MemoryMax=48G CPUQuota=1200%, nice 10 (scripts/remote/run.sh)",
+  "cells": [
+    {
+      "name": "chalk_downs-1280x800-dpr1-cpu1-still",
+      "city": "chalk_downs",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 960,
+        "median": 4,
+        "p95": 11.5,
+        "mean": 5.601562500124176
+      },
+      "tickWorkMs": {
+        "count": 444,
+        "median": 0.6000000238418579,
+        "p95": 1.199999988079071,
+        "mean": 0.753828827862267
+      },
+      "rafMs": {
+        "count": 960,
+        "median": 16.700000000000728,
+        "p95": 50,
+        "mean": 23.210937499999993
+      },
+      "effectiveSpeed": 0.9962975429148435,
+      "errors": 0
+    },
+    {
+      "name": "coastal_port-1280x800-dpr1-cpu1-still",
+      "city": "coastal_port",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 960,
+        "median": 3.799999952316284,
+        "p95": 9.199999988079071,
+        "mean": 4.7096874997640645
+      },
+      "tickWorkMs": {
+        "count": 408,
+        "median": 0.6000000238418579,
+        "p95": 1.100000023841858,
+        "mean": 0.7916666675432056
+      },
+      "rafMs": {
+        "count": 960,
+        "median": 16.699999999999818,
+        "p95": 33.399999999999636,
+        "mean": 22.62052083333331
+      },
+      "effectiveSpeed": 0.939412498791197,
+      "errors": 0
+    },
+    {
+      "name": "fen_drainage-1280x800-dpr1-cpu1-still",
+      "city": "fen_drainage",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 960,
+        "median": 4.400000035762787,
+        "p95": 28.400000035762787,
+        "mean": 6.5054166660954555
+      },
+      "tickWorkMs": {
+        "count": 509,
+        "median": 0.6000000238418579,
+        "p95": 1.399999976158142,
+        "mean": 0.8799607074565176
+      },
+      "rafMs": {
+        "count": 960,
+        "median": 16.700000000000728,
+        "p95": 50.100000000000364,
+        "mean": 28.679583333333316
+      },
+      "effectiveSpeed": 0.9243654748587119,
+      "errors": 0
+    },
+    {
+      "name": "fen_works-1280x800-dpr1-cpu1-still",
+      "city": "fen_works",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 960,
+        "median": 4,
+        "p95": 11.899999976158142,
+        "mean": 5.7559375007326405
+      },
+      "tickWorkMs": {
+        "count": 494,
+        "median": 0.6000000238418579,
+        "p95": 1.199999988079071,
+        "mean": 0.9105263155722908
+      },
+      "rafMs": {
+        "count": 960,
+        "median": 16.700000000000728,
+        "p95": 50.099999999998545,
+        "mean": 27.620416666666635
+      },
+      "effectiveSpeed": 0.9315271010273197,
+      "errors": 0
+    },
+    {
+      "name": "forest_edge-1280x800-dpr1-cpu1-still",
+      "city": "forest_edge",
+      "dpr": 1,
+      "camera": "still",
+      "cpu": 1,
+      "frameWorkMs": {
+        "count": 960,
+        "median": 7.600000023841858,
+        "p95": 42.80000001192093,
+        "mean": 11.083229166766008
+      },
+      "tickWorkMs": {
+        "count": 590,
+        "median": 1,
+        "p95": 2.699999988079071,
+        "mean": 1.5705084744146314
+      },
+      "rafMs": {
+        "count": 960,
+        "median": 16.700000000000728,
+        "p95": 66.69999999999982,
+        "mean": 30.745312499999933
+      },
+      "effectiveSpeed": 0.9994748521963037,
+      "errors": 0
+    }
+  ],
+  "measuredPage": "base build (with-base-build.sh), this tree's harness"
+}

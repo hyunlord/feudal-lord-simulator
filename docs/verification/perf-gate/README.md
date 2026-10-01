@@ -112,3 +112,5 @@ PLAYWRIGHT_MODULE=/abs/path/playwright-core/index.mjs npm run perf:gate
 | 2026-09-30 12:07 | `5f63c87f` | 판정 아님 | big-town-x5 실패 · new-game-x3 통과 · season-x1 판정 아님 · placement-x3 판정 아님 | [2026-09-30-1207-5f63c87f](2026-09-30-1207-5f63c87f.md) |
 | 2026-09-30 14:46 | `cf04b4a7` | 실패 | big-town-x5 실패 · new-game-x3 통과 · season-x1 실패 · placement-x3 실패 · far-zoom-50-x5 실패 · far-zoom-40-x5 건너뜀 | [2026-09-30-1446-cf04b4a7](2026-09-30-1446-cf04b4a7.md) |
 | 2026-09-30 17:10 | `00df3324` | 실패 | big-town-x5 통과 · new-game-x3 실패 · season-x1 실패 · placement-x3 통과 · far-zoom-50-x5 실패 · far-zoom-40-x5 건너뜀 | [2026-09-30-1710-00df3324](2026-09-30-1710-00df3324.md) |
+| 2026-10-01 18:00 | `534643c0` | 실패 | big-town-x5 통과 · land-fen-works-x3 실패 | [2026-10-01-1800-534643c0](2026-10-01-1800-534643c0.md) |
+| 2026-10-01 18:32 | `59e4d02c`* | 실패 | big-town-x5 실패 · land-fen-works-x3 실패 | [2026-10-01-1832-59e4d02c](2026-10-01-1832-59e4d02c.md) |
