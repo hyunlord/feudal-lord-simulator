@@ -12,3 +12,6 @@ docs/design/tutorial-*/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 docs/design/brand/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 docs/design/brand/**/*.png filter=lfs diff=lfs merge=lfs -text
 docs/design/neighbor-world-*/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+# The perf-trend page is generated whole (npm run perf:trend); two refreshes merge by keeping the newer page (RR4).
+docs/verification/perf-trend/README.md merge=fls-trend
+docs/verification/perf-trend/trend.json merge=fls-trend

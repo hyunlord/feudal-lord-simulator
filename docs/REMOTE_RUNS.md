@@ -129,6 +129,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
      - 세는 단위는 본선 머리(추이가 재는 단위)다: 이 저장소의 `origin/codex/phase15-organic-ground` reflog(워크트리끼리 공유)에 있던 커밋과 `<head>` 가운데, 문서의 측정 커밋 어느 것에서도 닿지 않는 것. reflog가 없는 새 클론에서는 그 범위의 커밋 전부를 센다(병합된 브랜치의 커밋까지 세어 많게 나온다).
      - 경고는 `<git common dir>/fls-trend-lag.log`에도 한 줄씩 쌓인다. 어느 워크트리에서든 `cat "$(git rev-parse --git-common-dir)/fls-trend-lag.log"`로 본다.
      - 갱신: `npm run perf:trend`로 DGX 결과를 모아 `docs/verification/perf-trend`를 커밋한다. 합치는 세션이 하고, 경고가 쌓이면 인프라 세션이 모아 커밋한다.
+     - 자동 갱신(2026-10-03): `npm run hooks:install`(npm ci·install이 함께 돌림)이 `post-merge` 훅과 병합 드라이버 `fls-trend`를 설치한다. 작업 브랜치에 본선을 합쳤을 때 문서가 10개 넘게 뒤처졌으면 훅이 `perf:trend`를 돌려 `docs/verification/perf-trend`만 따로 커밋한다("post-merge: trend …" 한 줄). 본선·main·분리된 HEAD·squash 병합·그 폴더에 커밋 안 한 변경이 있을 때는 하지 않는다. 충돌로 멈춘 병합은 훅이 돌지 않으므로 다음 병합이 맡는다. 실패하면 폴더를 되돌린다. 끄기: `FLS_TREND_AUTO=0`. 두 세션의 갱신이 만나면 드라이버가 측정 커밋이 많은 쪽을 남긴다.
 - **ESLint 설치가 따로인 이유**
   - typescript-eslint는 TypeScript 6.1 미만만 지원한다. 루트의 TypeScript 7(네이티브 포트)에는 JS 컴파일러 API가 없다.
   - 그래서 `tools/eslint/`에 ESLint 10.11 · @typescript-eslint/parser 8.70 · TypeScript 6.0.3(파싱 전용) · react-hooks 7.1.1을 자체 lock으로 둔다. 루트 package.json의 의존성과 lock에는 넣지 않는다.
