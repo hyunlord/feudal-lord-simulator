@@ -6,7 +6,7 @@ import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { checkInboxLedger, formatLedgerResult, ledgerOk } from "../scripts/checks/inboxLedger.mjs";
 
-// One ledger row per PNG/JPG under assets-inbox/, judged whenever a range touches assets-inbox/ (11ca755e moved 8
+// One ledger row per image (png, jpg, jpeg, webp, gif, svg) under assets-inbox/, judged whenever a range touches assets-inbox/ (11ca755e moved 8
 // retired sprites in without rows and passed).
 test("an inbox change needs the images and the ledger's file column to be the same set", () => {
   const dir = mkdtempSync(join(tmpdir(), "fls-inbox-rows-"));
@@ -22,14 +22,14 @@ test("an inbox change needs the images and the ledger's file column to be the sa
     const elsewhere = checkInboxLedger({ base, head: commit(), cwd: dir });
     assert.equal(elsewhere.images, null); assert.ok(ledgerOk(elsewhere));
 
-    put("assets-inbox/retired/old.png", "o"); put("assets-inbox/w1/b.jpg", "b");
+    put("assets-inbox/retired/old.png", "o"); put("assets-inbox/w1/b.jpg", "b"); put("assets-inbox/w1/loop.gif", "g"); put("assets-inbox/w1/mask.svg", "<svg/>");
     const noRow = checkInboxLedger({ base, head: commit(), cwd: dir });
-    assert.deepEqual([noRow.rows, noRow.images, noRow.unledgered.sort()], [1, 3, ["retired/old.png", "w1/b.jpg"]]);
+    assert.deepEqual([noRow.rows, noRow.images, noRow.unledgered.sort()], [1, 5, ["retired/old.png", "w1/b.jpg", "w1/loop.gif", "w1/mask.svg"]]);
     assert.equal(ledgerOk(noRow), false); assert.match(formatLedgerResult(noRow), /NOROW retired\/old\.png/);
 
-    put("assets-inbox/INBOX_LEDGER.csv", `${header}w1,w1/a.png,00,confirmed,,,\r\nw1,w1/b.jpg,11,confirmed,,,\r\nretired,retired/old.png,22,retired,,,\r\n`);
+    put("assets-inbox/INBOX_LEDGER.csv", `${header}w1,w1/a.png,00,confirmed,,,\r\nw1,w1/b.jpg,11,confirmed,,,\r\nretired,retired/old.png,22,retired,,,\r\nw1,w1/loop.gif,33,confirmed,,,\r\nw1,w1/mask.svg,44,confirmed,,,\r\n`);
     const rowed = checkInboxLedger({ base, head: commit(), cwd: dir });
-    assert.ok(ledgerOk(rowed)); assert.match(formatLedgerResult(rowed), /3 image\(s\) under assets-inbox\/, one row each/);
+    assert.ok(ledgerOk(rowed)); assert.match(formatLedgerResult(rowed), /5 image\(s\) under assets-inbox\/, one row each/);
 
     git("rm", "-q", "assets-inbox/w1/a.png");
     const gone = checkInboxLedger({ base, head: commit(), cwd: dir });
