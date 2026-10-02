@@ -38,4 +38,5 @@
 ## 화면에 넘길 것(렌더)
 - 물 구간은 성벽 공사장이 없다. 그리는 쪽은 `palisade.segments`만 그리면 된다(물 구간은 물이 경계).
 - 플레이어 초안이 물 구간을 받으려면 화면의 검증(`App.tsx`의 `beginPalisadeProposal`, `wallExpansionModel`, 초안 끌기)에서 `{ waterReach: true }`를 넘긴다. 지금은 봇의 제안이 물 구간이면 화면의 초안 검증이 거절한다.
+- 초안의 구간 진단(`diagnosePalisadeDraft`)과 변 끌기(`dragPalisadeRun`)도 같은 `{ waterReach: true }`를 받는다(렌더 NAT-5 요청). 끌기는 그때 물을 지나는 길도 받는다. 기본은 꺼짐이라 봇의 성벽 넓히기(`autoplayWallExpansionAction`)는 그대로다.
 - 촌락의 목재 주문: 값·양·상한이 다르다(`TIMBER_TRADE_BALANCE.hamlet*`).
