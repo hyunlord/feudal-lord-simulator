@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "render-LANDUI-geom2-10678bb",
- "commit": "10678bb94b85be2bbec9e705e9d1eb0a007f34af",
+ "run": "engine-FIX13-geo-c04ae34",
+ "commit": "c04ae34c0eaac6cf59d1d5802cbc6bbcc8d6af62",
  "dirty": false,
  "inputs": 1773,
- "inputHash": "ff1dd76c732b0ffb86641c84c7d9e3dc0f41584fd2254c97cda57556a335505e",
- "measuredAt": "2026-10-01T15:09:32.430Z",
- "report": "docs/verification/uiaudit1/geometry/render-LANDUI-geom2-10678bb/geometry.json",
+ "inputHash": "2fd292fac8378d51ca06067d4bb73f2e1e13221e584f82ff7cbe7e14bbfb05a2",
+ "measuredAt": "2026-10-02T01:04:24.003Z",
+ "report": "docs/verification/uiaudit1/geometry/engine-FIX13-geo-c04ae34/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -26,9 +26,9 @@
  },
  "rows": 103,
  "conditions": 1852,
- "measured": 1851,
+ "measured": 1852,
  "failures": 20,
- "unopened": 1,
+ "unopened": 0,
  "unreachable": [
   "hud.goal-help",
   "hud.unlock-banner",
@@ -130,7 +130,7 @@
   },
   "hud.completion-toast": {
    "failures": 0,
-   "unopened": 1,
+   "unopened": 0,
    "byCheck": {}
   },
   "hud.cause-legend": {
