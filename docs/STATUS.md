@@ -9,7 +9,8 @@
 
 ## 현재 단계
 
-- **시각 검사기 확장판 교체(VISION-CHECK-2) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): [`tools/vision-check/`](../tools/vision-check/README.md)를 확장 회차 판으로 교체(부위 크기·정상 재고 반복 제외). 검출기 상태 `config/detectors.json`은 **여섯 모두 사용**이다. 수치는 교정 성능(같은 시험지로 조정) — 홀드아웃 검증 전, 병합 관문 아님. 동결 정답 시험지는 `testdata/frozen-truth-expansion-20261002/`(양성 38, 재채점 = 저장된 채점). 파이썬 시험 132 통과·1 xfail(Mac, 원본 캡처를 이음). 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다. 앞 판(VISION-CHECK, 양성 19 시험지)은 `55269a11`.
+- **성능 추이 자동 갱신(TREND-AUTO) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 작업 브랜치에 본선을 합칠 때 [추이 문서](verification/perf-trend/README.md)가 10개 넘게 뒤처졌으면 병합 뒤 훅이 `perf:trend`를 돌려 그 폴더만 따로 커밋한다(결정 RR4, `FLS_TREND_AUTO=0`으로 끔). 설치는 `npm run hooks:install`(npm ci·install이 함께). 결정 HOUSE-1: 플레이어 가문 기본 이름 드 해버럴(새 게임에서 이름·문장 변경 가능).
+- **시각 검사기 홀드아웃(VISION-HOLDOUT) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 홀드아웃에서 교정 성능 재현 실패 — QA 후보 생성 보조용, 병합 관문 아님. [`tools/vision-check/`](../tools/vision-check/README.md)의 검출기 상태는 **이음새만 사용, 나머지 다섯은 실험**이고, 각 검출기에 홀드아웃·교정·무작위 50 수치를 적었다. 보조 도구로 고정했고 다듬기는 멈췄다. 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다.
 - **COPY-1e Astra 문구 감사의 엔진 몫 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/copy-1e/REPORT.md), 결정 COPY1E-1~3.
   - 23건: 청원 답을 세력 기억이 고른 뜻으로 남김(교회 유산·조카 후계가 "거절"이 아님), 1351 노동자법·1391 칼레 제도 중단, 용어 통일(상위 영주·성직자 추천권·모직·벌목소·석공소 등).
   - 렌더가 받을 것: 사건 이야기 1351·1391, 화면의 같은 용어.
