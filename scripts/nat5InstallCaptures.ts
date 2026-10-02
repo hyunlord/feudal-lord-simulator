@@ -133,6 +133,8 @@ const SCENES: readonly (readonly [string, () => string])[] = [["summer", () => t
   ["farms", () => advancedTo("four-farms", 1)], ["ch2", () => advancedTo("chapter-two-town", 1)]];
 
 const PARK = { x: 80, y: 105 };
+// A cold dev server on a busy DGX scans its dependencies on the first page (one load took over 30 s).
+const LOAD_MS = 180_000;
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 
@@ -148,7 +150,7 @@ async function openPaused(save: string | null, camera: Camera, viewport: { width
     const start = `return { zoom: ${camera.zoom}, panX: canvas.clientWidth / 2 - ${camera.x * camera.zoom}, panY: canvas.clientHeight / 2 - ${camera.y * camera.zoom} };`;
     await route.fulfill({ response, body: text.replace(anchor, start + anchor) });
   });
-  await page.goto(`${url}?phase10-proof=1`, { waitUntil: "load" });
+  await page.goto(`${url}?phase10-proof=1`, { waitUntil: "load", timeout: LOAD_MS });
   if (save === null) return { page, context, proof: async () => null };
   const bytes = readSave(save); const meta = saveMetaFor("auto-1", bytes);
   if (meta === null) throw new Error(`${save}: not a save file`);
@@ -162,10 +164,10 @@ async function openPaused(save: string | null, camera: Camera, viewport: { width
       tx.oncomplete = () => resolve(); tx.onerror = () => reject(tx.error); });
     db.close();
   }, { base64: Buffer.from(bytes).toString("base64"), meta });
-  await page.reload({ waitUntil: "load" });
+  await page.reload({ waitUntil: "load", timeout: LOAD_MS });
   // A busy DGX can miss the first page's welcome (run 3 timed out once on it): one reload more, a longer wait.
   try { await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 60_000 }); } catch {
-    await page.reload({ waitUntil: "load" });
+    await page.reload({ waitUntil: "load", timeout: LOAD_MS });
     await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 120_000 });
   }
   await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 120_000 });
