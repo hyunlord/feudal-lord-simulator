@@ -232,6 +232,12 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "slot.population", root: ".ledger-population-drawer.slot-panel", frame: "css", scene: TOWN,
     open: [{ click: ".status-pill > .status-pill-cell:nth-of-type(2)" }, { pause: 600 }], scroll: "y", data: "the town's population events" },
   { id: "slot.population.panel", extends: "slot.population", root: ".population-event-panel", frame: "flat", scene: TOWN, open: [], data: "the population log inside the slot" },
+  // NAT-4 (QA-028): the drawer with records in it — a loaded town has none until a house's residents change, so the town
+  // runs at speed 3 until the first record, then stops (the first speed seal).
+  { id: "slot.population.records", root: ".ledger-population-drawer.slot-panel", frame: "css", scene: { ...TOWN, query: QUIET, run: true },
+    open: [{ key: "Digit3" }, { click: ".status-pill > .status-pill-cell:nth-of-type(2)" }, { wait: ".population-event-panel ol li", timeout: 120_000 },
+      { click: ".hud-time-cluster .speed-seal" }, { pause: 600 }], scroll: "y", requires: ["h2", ".population-event-panel ol .ui-btn"],
+    data: "the town's population records after it ran (QA-028: the records, not a 22 px band)" },
   { id: "slot.inspector", root: ".slot-panel.inspector-slot", frame: "css", scene: TOWN,
     open: [LEDGER, { click: ".ledger-held-toggle" }, { click: ".ledger-store" }, { pause: 700 }], scroll: "y", data: "the first store's inspector" },
   { id: "slot.inspector.body", extends: "slot.inspector", root: ".left-inspector", frame: "css", scene: TOWN, open: [], scroll: "y", data: "the inspector inside the slot" },
