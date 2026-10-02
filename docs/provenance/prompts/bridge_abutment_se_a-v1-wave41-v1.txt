@@ -1,0 +1,8 @@
+Use case: precise-object-edit / style-transfer.
+Asset: one existing installed Feudal Lord Simulator game image; non-destructive Wave41 revision.
+Input1 is the immutable geometry reference. Edit this image, do not design a different asset.
+Unify wooden planks with the project bridge SW/NW-B reference: warm weathered oak grain, subtle worn corners, painterly surface. Do not add/remove/move any plank, support, shore earth or fastener.
+ART_BIBLE_v2: soft hand-painted prerender, muted southern English1300-1450 material palette, upper-left world lighting, no black cartoon outline, no added text/watermark.
+Maintain EXACT original canvas aspect 256:192, original transparent padding, anchor/pivot, ground contact, silhouette, perspective and occupied bounds. Do not crop, recenter or rotate. Output exactly one image; no comparison sheet.
+Genuine transparent background. All originally empty regions remain transparent.
+Input2 and Input3 are material/brushwork references ONLY. Keep Input1's exact perspective, outline, transparent margins, every plank seam and support positions. Render at the same 4:3 canvas aspect. Do not copy the geometry of Input2/3. Preserve the existing visible plank count.

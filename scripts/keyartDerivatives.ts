@@ -28,6 +28,9 @@ const ROOT = path.resolve(new URL("..", import.meta.url).pathname);
 const ENCODER_VERSION = 1;
 const CANDIDATES = "assets-inbox/wave8/candidates-20260925/assets/keyart";
 const PLAGUE = "assets-inbox/wave8/plague-fix-20260926/assets";
+/** NAT-5: the title background's Wave 41 rework (ILL-02 / ILL-03: the ordinary cottages' chimneys removed, the brushwork
+ * brought to the later paintings; same 1920 x 1080 composition). */
+const WAVE41 = "assets-inbox/wave41/candidates-20261002/assets";
 
 export type KeyartDerivative = Readonly<{
   id: string;
@@ -46,7 +49,7 @@ export const PORTRAIT_QUALITY = 82;
 export const PORTRAIT_SMALL = 96;
 
 export const KEYART_DERIVATIVES: readonly KeyartDerivative[] = [
-  { id: "keyart_title_bg", source: `${CANDIDATES}/keyart_title_bg.png`, url: "assets/wave8/keyart/keyart_title_bg.jpg", format: "jpeg" },
+  { id: "keyart_title_bg", source: `${WAVE41}/17-keyart_title_bg-wave41-v1.png`, url: "assets/wave8/keyart/keyart_title_bg.jpg", format: "jpeg" },
   { id: "keyart_mode_select", source: `${CANDIDATES}/keyart_mode_select.png`, url: "assets/wave8/keyart/keyart_mode_select.jpg", format: "jpeg" },
   { id: "keyart_title_emblem", source: `${CANDIDATES}/keyart_title_emblem.png`, url: "assets/wave8/keyart/keyart_title_emblem.png", format: "png-half" },
   { id: "loading_1315_famine", source: `${CANDIDATES}/loading_1315_famine.png`, url: "assets/wave8/keyart/loading_1315_famine.jpg", format: "jpeg" },
