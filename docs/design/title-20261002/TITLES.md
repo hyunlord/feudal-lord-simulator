@@ -1,6 +1,8 @@
 # 정식 제목 후보와 로고 시안
 
 > 결정 2026-10-02: Charter & Kin / 인장과 가문(한국어는 '헌장' 대신 '인장')
+>
+> 정식 로고: [`docs/design/brand/`](../brand/README.md)
 
 2026-10-02 · Feudal Lord Simulator · 이 세션 한정 · **candidate / 검토용**
 

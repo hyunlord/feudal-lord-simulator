@@ -1,0 +1,70 @@
+{
+  "method": "Node v25.8.2 built-in TypeScript stripping; imports replaced with specified pure-copy dependencies; no game startup / no UI rendering",
+  "money": [
+    {
+      "d": 240,
+      "short": "£1",
+      "full": "£1"
+    },
+    {
+      "d": 399,
+      "short": "£1 13s",
+      "full": "£1 13s 3d"
+    },
+    {
+      "d": 479,
+      "short": "£1 19s",
+      "full": "£1 19s 11d"
+    }
+  ],
+  "faction": [
+    {
+      "reason": "petition:legacy_choice:refuse",
+      "actual": "유산 선택에 거절"
+    },
+    {
+      "reason": "petition:heir_choice:refuse",
+      "actual": "후계자 선택에 거절"
+    },
+    {
+      "reason": "petition:wall_or_market:refuse",
+      "actual": "석벽과 시장 사이의 선택에 거절"
+    }
+  ],
+  "ledger": {
+    "source240d": "지대 · 1건 +240",
+    "entry240d": "2400틱 · 지대 +240"
+  },
+  "petition399d": "과세를 냅니다 · 금고에서 £1 13s · 관계 변화 없음",
+  "guild": {
+    "accept": "길드를 인가합니다 · 직물 네 건물 작업 ×¾ · 도시의 힘 +20 · 자치 요구가 1382년으로 · 관계 변화 없음",
+    "refuse": "거부합니다 · 다음 계절 직조공 2가구가 떠남 · 직조 작업 ×1¼ · 반란 압력 +10 · 관계 변화 없음"
+  },
+  "sowing": {
+    "greeting": "먼저 먹을 것부터: 올해 밀은 봄에 칠한 밭에서만 거둡니다.",
+    "arable": "밀은 경작지 띠에서 자랍니다. 여름 중순 전에 칠하고 헛간을 두어야 올해 거둡니다.",
+    "firstYearUntil": 2000,
+    "samples": [
+      {
+        "tick": 500,
+        "inWindow": true
+      },
+      {
+        "tick": 1600,
+        "inWindow": true
+      },
+      {
+        "tick": 1999,
+        "inWindow": true
+      },
+      {
+        "tick": 2000,
+        "inWindow": false
+      },
+      {
+        "tick": 5500,
+        "inWindow": false
+      }
+    ]
+  }
+}

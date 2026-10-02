@@ -1,0 +1,1604 @@
+[
+  {
+    "file": "src/App.tsx",
+    "lines": 583,
+    "korean_lines": 3,
+    "sha256": "818e1223705d621ce46359a1c76088bda15940ff49a1b0e4b8952ef3f4d27c6d"
+  },
+  {
+    "file": "src/audio/audioCopy.ko.ts",
+    "lines": 16,
+    "korean_lines": 11,
+    "sha256": "04b8facbffec9690dd66aa702e48467a604a2c7c2b303820be02dd830b3b4bfb"
+  },
+  {
+    "file": "src/audio/audioEngine.ts",
+    "lines": 221,
+    "korean_lines": 1,
+    "sha256": "6cc164339a634e8f0312cbf3afc525c79ee542c6788f7ed79c8e83bb44efe0cd"
+  },
+  {
+    "file": "src/audio/soundDirector.ts",
+    "lines": 224,
+    "korean_lines": 1,
+    "sha256": "47e1e6dca51f4ac9bea2f86d441a28fc7e2c7ac1c790f90a9c1cc8faed676e0d"
+  },
+  {
+    "file": "src/content/aleConfig.ts",
+    "lines": 42,
+    "korean_lines": 0,
+    "sha256": "edbb0c889508acc87e4852402c8d2511127ac87d23bab9234f6cc28ec562b45c"
+  },
+  {
+    "file": "src/content/aleCopy.ko.ts",
+    "lines": 4,
+    "korean_lines": 1,
+    "sha256": "142beb2a91e66ffa084fc8425aa17a1ae1b8c7109b966dab1d5287155a48da86"
+  },
+  {
+    "file": "src/content/arableConfig.ts",
+    "lines": 43,
+    "korean_lines": 0,
+    "sha256": "59b947c65cf1272083b787c82a5417640e957d51bff958f7e237d132e7a3c187"
+  },
+  {
+    "file": "src/content/backyardConfig.ts",
+    "lines": 76,
+    "korean_lines": 0,
+    "sha256": "2b32164d21a67a05e8614bcdbdc30d19b1b7d0b2672a7876df2d3e27a90b9f05"
+  },
+  {
+    "file": "src/content/balanceConfig.ts",
+    "lines": 138,
+    "korean_lines": 1,
+    "sha256": "2e39f6a1b7ef0cfce6dc9baf822de332e723bf7fd3f468729dfeddae36f52bb3"
+  },
+  {
+    "file": "src/content/buildingCatalog.ko.ts",
+    "lines": 80,
+    "korean_lines": 49,
+    "sha256": "d7651d53a432e73766b0930e21c74be8a3e1bd38dbd7af61df3c819d5383c3f4"
+  },
+  {
+    "file": "src/content/buildingCatalog.ts",
+    "lines": 163,
+    "korean_lines": 1,
+    "sha256": "a1ca152f29ba05a01e7bc3277c281717159f62ae28cb792db27eaceb7a7d49f6"
+  },
+  {
+    "file": "src/content/buildingConfig.ts",
+    "lines": 440,
+    "korean_lines": 15,
+    "sha256": "c6d280572aa4ea9ea28824f4f3c00c368f281bf049fbb4025e7ba62255bd728c"
+  },
+  {
+    "file": "src/content/chapterConfig.ts",
+    "lines": 158,
+    "korean_lines": 0,
+    "sha256": "49b40117753be0df386cc20ff42eae2831fe921b7875eac3abfb4827045094e1"
+  },
+  {
+    "file": "src/content/clothConfig.ts",
+    "lines": 48,
+    "korean_lines": 0,
+    "sha256": "edead2fbdf0bc9bad6d47f5739f011712e0f605de0da509eeafc16a842a61cfc"
+  },
+  {
+    "file": "src/content/crafts/brew_ale.json",
+    "lines": 9,
+    "korean_lines": 1,
+    "sha256": "0893ed3b68a737f51027da5352089c8585f039335940437141f25721453fbd4d"
+  },
+  {
+    "file": "src/content/crafts/craftDefinitions.ts",
+    "lines": 58,
+    "korean_lines": 0,
+    "sha256": "7cdef2f6d2c9fa5b72abf196112122af407609fb94eeb1f0273b04d4fb7bc872"
+  },
+  {
+    "file": "src/content/crafts/spin_yarn.json",
+    "lines": 9,
+    "korean_lines": 1,
+    "sha256": "39d3c84d62ba8ecd0a8fbe596eada3ff8c5c5a21bd506b2148c2a644d66a6421"
+  },
+  {
+    "file": "src/content/diplomacyConfig.ts",
+    "lines": 98,
+    "korean_lines": 0,
+    "sha256": "c37266ce00dd391f0db7e42ceddfc8aa420d03c8fc081d263e5cee3e87036967"
+  },
+  {
+    "file": "src/content/drainageConfig.ts",
+    "lines": 17,
+    "korean_lines": 0,
+    "sha256": "be2e4462d161bb9bb1d0ab2d39f1241c6ae1929c8bc6d2605d4e09b2670211f4"
+  },
+  {
+    "file": "src/content/eraConfig.ts",
+    "lines": 10,
+    "korean_lines": 0,
+    "sha256": "b5b8a7e7ff15ef78c5af0f4a43de7560053c160e01a9e9ae49ed02c74582eac7"
+  },
+  {
+    "file": "src/content/estateConfig.ts",
+    "lines": 103,
+    "korean_lines": 0,
+    "sha256": "5b925d82b0ffcc3ccc2b738c064ac5b834f147ef5232f56e5866fc1217038416"
+  },
+  {
+    "file": "src/content/eventConfig.ts",
+    "lines": 156,
+    "korean_lines": 0,
+    "sha256": "0a263dd5139c0c4b7de646ed82d27cd95dbffdb5c5738e2fc53afc522394f5d2"
+  },
+  {
+    "file": "src/content/factionConfig.ts",
+    "lines": 131,
+    "korean_lines": 0,
+    "sha256": "7ec6f4e25bcc49db3e57dc43691794496a5bd39ae7b9537aecf270dce54a167d"
+  },
+  {
+    "file": "src/content/factionCopy.ko.ts",
+    "lines": 83,
+    "korean_lines": 39,
+    "sha256": "2d0a56e49c714d153b74a4df5a341eaf4eb9eafab6e9cc9c895d2ebedd45e461"
+  },
+  {
+    "file": "src/content/gentryNames.ts",
+    "lines": 58,
+    "korean_lines": 13,
+    "sha256": "f963652fc060af7ede2c01a4ac366d60e127ed791c8c351a4722b8a11777b283"
+  },
+  {
+    "file": "src/content/historyCopy.ko.ts",
+    "lines": 358,
+    "korean_lines": 249,
+    "sha256": "c614ceed5458e5d6c7bbc6cc040b453d9cdcc8043b64961b6a88696ab372f8c9"
+  },
+  {
+    "file": "src/content/houseFoodConfig.ts",
+    "lines": 27,
+    "korean_lines": 0,
+    "sha256": "1d3626f286ce7874ec6ea9c1f5688468b54c5a276373362c20ed93535184f40d"
+  },
+  {
+    "file": "src/content/houseVariantConfig.ts",
+    "lines": 34,
+    "korean_lines": 0,
+    "sha256": "f7c0cbc15c244bb9198e5f45c26ba6b7154539de125ef799edbc9c93e824ed06"
+  },
+  {
+    "file": "src/content/housingConfig.ts",
+    "lines": 39,
+    "korean_lines": 5,
+    "sha256": "e40651aee32cc9670a650959a666dbad1974fa52e8a0451677a51e44ca1ed939"
+  },
+  {
+    "file": "src/content/landConfig.ts",
+    "lines": 20,
+    "korean_lines": 0,
+    "sha256": "b519fa50a75190403cc51bc86ed06b6ad034401a117793a5e1e25ff7ab7fbfc9"
+  },
+  {
+    "file": "src/content/legacyConfig.ts",
+    "lines": 181,
+    "korean_lines": 0,
+    "sha256": "3ca61d68328e3b15bd062a6bdd06061eaa56e0ccf8f02ab8510f1805993de1f8"
+  },
+  {
+    "file": "src/content/legacyCopy.ko.ts",
+    "lines": 89,
+    "korean_lines": 34,
+    "sha256": "455833a37c60ccca416e4ed09bc5dce53d945b6ee625481f48fc7efbf92642a3"
+  },
+  {
+    "file": "src/content/locale.ko.ts",
+    "lines": 36,
+    "korean_lines": 25,
+    "sha256": "cac311504f798516d42a6af578edbdce70043b22b84fc28f914d88e2bbd6f8b7"
+  },
+  {
+    "file": "src/content/lordSliceConfig.ts",
+    "lines": 47,
+    "korean_lines": 0,
+    "sha256": "d25bc3719be2bf1076c706466d14ddf01626eaa2fac56ba1c6f4e782f5d03523"
+  },
+  {
+    "file": "src/content/lordshipConfig.ts",
+    "lines": 51,
+    "korean_lines": 0,
+    "sha256": "55a82d0b8c9217cf38eb435e21a79c727b86493c4d3c37767bd60bab4548db84"
+  },
+  {
+    "file": "src/content/moneyCopy.ko.ts",
+    "lines": 19,
+    "korean_lines": 13,
+    "sha256": "4d86f8a06a42f046330d8a725d7d237b0d9e4a55dd5e4740c37fdf8cb24fcffa"
+  },
+  {
+    "file": "src/content/palette.ts",
+    "lines": 60,
+    "korean_lines": 0,
+    "sha256": "a43897c72238b5fdd66adf11b0e206bf4a258ac3d2c7bcf4c2929e35950780da"
+  },
+  {
+    "file": "src/content/personNames.ko.ts",
+    "lines": 59,
+    "korean_lines": 30,
+    "sha256": "1ac345bc96b16b185fde0d7197c0942cbcb150a7eef73fb53742ade62f813d57"
+  },
+  {
+    "file": "src/content/personNames.ts",
+    "lines": 56,
+    "korean_lines": 0,
+    "sha256": "7b9830d442fafa05307478a7b3748f5c0de9590f94a727bf2c4e4f64df332c4e"
+  },
+  {
+    "file": "src/content/personTraits.ts",
+    "lines": 137,
+    "korean_lines": 0,
+    "sha256": "31215494b4c90acb244dc31ebfa5eaf9309b2f4692b2f55a42ebf473ee4df700"
+  },
+  {
+    "file": "src/content/plagueConfig.ts",
+    "lines": 117,
+    "korean_lines": 0,
+    "sha256": "4608c2a33e0d96231c75fcefc8b764a2ee02ccaa1dcc47b3a5ad493c292b29ed"
+  },
+  {
+    "file": "src/content/portraitPool.ts",
+    "lines": 666,
+    "korean_lines": 164,
+    "sha256": "6ce89888fb2e3e872319691187c63f260576bf5c269dc52e7079e99bfb5290c7"
+  },
+  {
+    "file": "src/content/pressureCopy.ko.ts",
+    "lines": 11,
+    "korean_lines": 5,
+    "sha256": "c9f2d94d960d9b9569f5fd9003a45543648458bbae706037cb0de6ac5f9aacaf"
+  },
+  {
+    "file": "src/content/random.ts",
+    "lines": 6,
+    "korean_lines": 0,
+    "sha256": "303be8aa00391a015edfbf0a085272aac56d1ebdee4fb6e65c2a457f6b0fedbb"
+  },
+  {
+    "file": "src/content/reorganisationConfig.ts",
+    "lines": 148,
+    "korean_lines": 0,
+    "sha256": "9fe86251a2516416f26f3aa106ca9acf230bdf599ead86b99d5ef165432d9355"
+  },
+  {
+    "file": "src/content/resourceCatalog.ko.ts",
+    "lines": 35,
+    "korean_lines": 17,
+    "sha256": "2d1e1bd816208e762b1342ac1bd42931bb919f376a5b70ccc94ca1a65c5f9399"
+  },
+  {
+    "file": "src/content/resourceCatalog.ts",
+    "lines": 110,
+    "korean_lines": 1,
+    "sha256": "c5e3a7b3430bf0cba649a1420d7a92241209c94d68f9fb81637b8f9ad482bca9"
+  },
+  {
+    "file": "src/content/resourceConfig.ts",
+    "lines": 2,
+    "korean_lines": 0,
+    "sha256": "f85a4c02e9ace03580baf61fd61cad6b662b98fd437a940a7d5070aae0789e40"
+  },
+  {
+    "file": "src/content/saveCopy.ko.ts",
+    "lines": 63,
+    "korean_lines": 29,
+    "sha256": "5e29c21f83cea41856a5c6a83fe7147302f1b604bd441a2b72a57cdc8195b311"
+  },
+  {
+    "file": "src/content/scenario/archetypes.ts",
+    "lines": 84,
+    "korean_lines": 0,
+    "sha256": "aea5149dba94d8ac3fff405f8558f671c905bf73584d030a1254f56ff5007079"
+  },
+  {
+    "file": "src/content/scenario/coreScenarios.ts",
+    "lines": 156,
+    "korean_lines": 0,
+    "sha256": "215a98690720381cfd05494af912a266849588c85dfdd4107c4a4549cf87404f"
+  },
+  {
+    "file": "src/content/scenario/registry.ts",
+    "lines": 194,
+    "korean_lines": 0,
+    "sha256": "abb6b4f7264f84502a5a0f83198ff2bf25055452a33633d81eb27be7e3efe2f6"
+  },
+  {
+    "file": "src/content/scenario/scenarioCopy.ko.ts",
+    "lines": 55,
+    "korean_lines": 36,
+    "sha256": "7559d78765977d279ca07b3cf61057e567c1ef69e9848d3dd3d73ad0bfc90c17"
+  },
+  {
+    "file": "src/content/scenario/types.ts",
+    "lines": 171,
+    "korean_lines": 0,
+    "sha256": "8711061338e57c1955bb9033dcc5842388775bf9b5ac71bcc6bfa41ccf24b2e6"
+  },
+  {
+    "file": "src/content/seedHash.ts",
+    "lines": 48,
+    "korean_lines": 0,
+    "sha256": "e1bf3a265ac9353b1f92b24103d3be673adca59866ec0aca9cb08d5af4074daa"
+  },
+  {
+    "file": "src/content/settlementConfig.ts",
+    "lines": 12,
+    "korean_lines": 0,
+    "sha256": "c0723b916eab93913fe02d91a3ab4c4d5c420c8fbbbcf1e96018ddc6bb3c1fc4"
+  },
+  {
+    "file": "src/content/stewardshipConfig.ts",
+    "lines": 71,
+    "korean_lines": 0,
+    "sha256": "5ea5661099d8536e04dadd0e8186cb74993c8ce5892ad992d82329b82c6abbb2"
+  },
+  {
+    "file": "src/content/terrainConfig.ts",
+    "lines": 3,
+    "korean_lines": 0,
+    "sha256": "60ab981aaf81452ebfa1268875b99f1f8eb4691eee0208e46efe7a51b0f0c64e"
+  },
+  {
+    "file": "src/content/timberTradeConfig.ts",
+    "lines": 14,
+    "korean_lines": 0,
+    "sha256": "de0e18d483334fdf1a616e13eb7cf6fb4764f68b3da6d3407c749ec051a9aaa1"
+  },
+  {
+    "file": "src/content/townAgencyConfig.ts",
+    "lines": 126,
+    "korean_lines": 0,
+    "sha256": "256e6c1a36178622b9e609c3f71b3371a1fd1ebf0fc8c854106613b2bd1b4713"
+  },
+  {
+    "file": "src/content/wallConstructionConfig.ts",
+    "lines": 1,
+    "korean_lines": 0,
+    "sha256": "49b2cb619bfb45b468c666aee83e629816aa035c85f4fefb5d081ecfb3a518b9"
+  },
+  {
+    "file": "src/content/warConfig.ts",
+    "lines": 123,
+    "korean_lines": 0,
+    "sha256": "73a1e56d260dce188fe44850706bccfa0e1b018bb6e90139d19238ed5858b287"
+  },
+  {
+    "file": "src/content/zoneConfig.ts",
+    "lines": 58,
+    "korean_lines": 0,
+    "sha256": "e88a74c5ed4365baaa0856b372d86590b8c001af5406edab26496bf1323272cf"
+  },
+  {
+    "file": "src/economy/construction.ts",
+    "lines": 201,
+    "korean_lines": 5,
+    "sha256": "8d55e884aa1216e238fb925581c769b4f331ce9898242ee8df6869be6513b678"
+  },
+  {
+    "file": "src/economy/constructionSiteAccessors.ts",
+    "lines": 71,
+    "korean_lines": 2,
+    "sha256": "f6a720d53bc72beb65d9d6da2d6a76900831ad8ed776cfef0ba3e43e013e5ac9"
+  },
+  {
+    "file": "src/economy/palisadeConstruction.ts",
+    "lines": 12,
+    "korean_lines": 1,
+    "sha256": "5d12c4e879dec1564dd5270599574ea5bbe65c35d060e48f55c21d17a8ea408e"
+  },
+  {
+    "file": "src/engine/era.ts",
+    "lines": 140,
+    "korean_lines": 7,
+    "sha256": "8610200bceff958c537ac717bd458a959ea169153342ce9ba6df1af9404c8fbf"
+  },
+  {
+    "file": "src/engine/estates.ts",
+    "lines": 329,
+    "korean_lines": 1,
+    "sha256": "20917ed3a22e1112b128a02f67aa7b6d03c222a23377f8e2cba959c39b7b30fc"
+  },
+  {
+    "file": "src/engine/historyNames.ts",
+    "lines": 54,
+    "korean_lines": 2,
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768"
+  },
+  {
+    "file": "src/engine/houseMerge.ts",
+    "lines": 107,
+    "korean_lines": 17,
+    "sha256": "bddae1517fd5eca8cd7c1c07d0691bead0f9876712ee757506d46b7104535835"
+  },
+  {
+    "file": "src/engine/persons.ts",
+    "lines": 1041,
+    "korean_lines": 1,
+    "sha256": "f6abe8882e0fb61914c670909061e9e6d9aab156941b0ec732b0fc2acaed4625"
+  },
+  {
+    "file": "src/engine/personsApi.ts",
+    "lines": 84,
+    "korean_lines": 1,
+    "sha256": "fc9ac366b9dad35278ec44bc0bed8e2f66378d0bd8bbce8a66b4191ddd139cbc"
+  },
+  {
+    "file": "src/engine/roadAccess.ts",
+    "lines": 13,
+    "korean_lines": 1,
+    "sha256": "b01f897b341fd226d78f8604a87655de594776abb2b2efb513a173543ee1fe19"
+  },
+  {
+    "file": "src/engine/seasonPressure.ts",
+    "lines": 379,
+    "korean_lines": 3,
+    "sha256": "5d805dc64b372e1aded8f17753193a6179a91aa578026e9d5573697ed9be9380"
+  },
+  {
+    "file": "src/engine/serviceMeasure.ts",
+    "lines": 37,
+    "korean_lines": 2,
+    "sha256": "47602a0090643ca03d7a7250ea135525a80a581222cf6344b9b27dc6bf25c7b3"
+  },
+  {
+    "file": "src/engine/settlementView.ts",
+    "lines": 61,
+    "korean_lines": 6,
+    "sha256": "52d34b9caeacf3bd10bb2de2c8dbddabe5d58643a8a8cd0a9c691c396a482db1"
+  },
+  {
+    "file": "src/input/touchTranslator.ts",
+    "lines": 172,
+    "korean_lines": 1,
+    "sha256": "f1c8213e3bb5f9732bb52942a4a3c170b85aab0436e4a5b135b5dfbe4ac00924"
+  },
+  {
+    "file": "src/ledger/ledgerCopy.ko.ts",
+    "lines": 112,
+    "korean_lines": 79,
+    "sha256": "04166e95b3e724280b731b35ed4b9b093372c940b8d29861d950cc309fbb9792"
+  },
+  {
+    "file": "src/ledger/ledgerView.ts",
+    "lines": 93,
+    "korean_lines": 1,
+    "sha256": "0ac036a326a0158245c7158d1de33b6b2400e0f88da0af929abe424dadd91d7b"
+  },
+  {
+    "file": "src/ledger/moneyWords.ko.ts",
+    "lines": 33,
+    "korean_lines": 1,
+    "sha256": "72d1fdec6e273c9194539b2b14f763a267f76b29885b6bfc77868a852b1eb92f"
+  },
+  {
+    "file": "src/population/houseCondition.ts",
+    "lines": 24,
+    "korean_lines": 4,
+    "sha256": "cfedb40efa0d619e944969d18427109bdcbd800d9a905596bf4bc7fb77ae52f8"
+  },
+  {
+    "file": "src/population/housePressure.ts",
+    "lines": 38,
+    "korean_lines": 2,
+    "sha256": "08c3f1da0b6295db5849cd075dfcb847144e7c9087dcac2623407d745941f76c"
+  },
+  {
+    "file": "src/population/householdSlots.ts",
+    "lines": 70,
+    "korean_lines": 1,
+    "sha256": "8c3a4a6b705f4f8668918331d9f5c87b15cfc3b2eee4c19468f3ee2d1bab38a0"
+  },
+  {
+    "file": "src/population/population.types.ts",
+    "lines": 51,
+    "korean_lines": 1,
+    "sha256": "a9f7e05e3a7ddc1877f8d8a4ed1310bee5bbec9da7e3bc36be47447a98eb5b20"
+  },
+  {
+    "file": "src/render/BuildingInspector.tsx",
+    "lines": 51,
+    "korean_lines": 3,
+    "sha256": "4e600239053376a142e01ee3584c45424777ea1e709cafbebec5615355f913a5"
+  },
+  {
+    "file": "src/render/DiagnosticCard.tsx",
+    "lines": 334,
+    "korean_lines": 1,
+    "sha256": "970df02dcfcfdb95db166145f357cc2ec65e7a011a4812684aafa088621ab267"
+  },
+  {
+    "file": "src/render/boundaryRenderCopy.ko.ts",
+    "lines": 5,
+    "korean_lines": 3,
+    "sha256": "658662053afae58537f8b2af763e6cd5ef1931f701368d9e18bd1a57859bd1d7"
+  },
+  {
+    "file": "src/render/buildingContactShadow.ts",
+    "lines": 30,
+    "korean_lines": 1,
+    "sha256": "883fd6be3c377961643940e8311da2605412b9e9f90cb6a4692a8520e7629c6a"
+  },
+  {
+    "file": "src/render/buildingInspectorCopy.ko.ts",
+    "lines": 22,
+    "korean_lines": 15,
+    "sha256": "bf7fbd12a86d731b072add71254faf1ff33825f6805c5c85709599e9f1ba156d"
+  },
+  {
+    "file": "src/render/canvasClickRuntime.ts",
+    "lines": 94,
+    "korean_lines": 2,
+    "sha256": "b983d6f8a414acc6b88aae0d7d92504418e884f7891e7436fb39f7820feed22b"
+  },
+  {
+    "file": "src/render/canvasRuntimeRefs.ts",
+    "lines": 37,
+    "korean_lines": 1,
+    "sha256": "ea379ab399c3cad211d96f43c1a2f4aec198b49e3a3dea9e3863071f3fbf52b8"
+  },
+  {
+    "file": "src/render/canvasZoneBrushRuntime.ts",
+    "lines": 198,
+    "korean_lines": 1,
+    "sha256": "b8e6ede17e600de869fe75336e600952a25b2040e283d4cc8c35f8f095464394"
+  },
+  {
+    "file": "src/render/constructionCompletionEffects.ts",
+    "lines": 188,
+    "korean_lines": 1,
+    "sha256": "245e9577fda5569b4e7152c34ec42e6b3a5f93d65a6bd10a8b360b13cc7d648e"
+  },
+  {
+    "file": "src/render/constructionCrewLinks.ts",
+    "lines": 37,
+    "korean_lines": 1,
+    "sha256": "f0a19ddd408c903acf252f0544d8ca4eb3656452957e840702c6309c9e94efe0"
+  },
+  {
+    "file": "src/render/constructionMoments.ts",
+    "lines": 80,
+    "korean_lines": 1,
+    "sha256": "674081271523f5839d6a470bcc1ba0000b6d6f2dcc9d8ba69781e977d01f3874"
+  },
+  {
+    "file": "src/render/constructionPlaque.ts",
+    "lines": 225,
+    "korean_lines": 1,
+    "sha256": "6ccb9f383ea1489f812e9b943451ab77043ff16bc753dbef2e233c2cbf595ca7"
+  },
+  {
+    "file": "src/render/constructionPlaqueCopy.ko.ts",
+    "lines": 12,
+    "korean_lines": 3,
+    "sha256": "22b9ed8715658b043ca64859dc4892a559e04ebee699e8bfbaa19148c825a627"
+  },
+  {
+    "file": "src/render/constructionVisibility.ts",
+    "lines": 106,
+    "korean_lines": 2,
+    "sha256": "1733ea2b0edb7db66ab86cd2335c9d8bb72e3c4d0faee2baff8d7a9cdd6a97df"
+  },
+  {
+    "file": "src/render/countrysideArt.ts",
+    "lines": 86,
+    "korean_lines": 1,
+    "sha256": "77ea838987a52c0b333d466f076726c5cd62f5257b2491db1119994d7da9cc42"
+  },
+  {
+    "file": "src/render/diagnosticCardCopy.ko.ts",
+    "lines": 56,
+    "korean_lines": 50,
+    "sha256": "606372c3928c6c9fafc1a6afb2963cadaacdbb861ede3d49e917702073905387"
+  },
+  {
+    "file": "src/render/drawConstructionSites.ts",
+    "lines": 268,
+    "korean_lines": 1,
+    "sha256": "4efa8e8c252a5b655ffc87aa43786b17c380d01ea1605254119eaea40aa9bf8c"
+  },
+  {
+    "file": "src/render/interactions.ts",
+    "lines": 240,
+    "korean_lines": 1,
+    "sha256": "87869b877a2e81c2beba9d11186b66c95c09c6227c7dd4a7143280515d1deca7"
+  },
+  {
+    "file": "src/render/placementFeedbackCopy.ko.ts",
+    "lines": 23,
+    "korean_lines": 16,
+    "sha256": "ef79035d035830aea02c0fcd4c29abab130d2d0f8b4c74dbdf14a54dd43e2653"
+  },
+  {
+    "file": "src/render/placementPaletteCopy.ko.ts",
+    "lines": 5,
+    "korean_lines": 3,
+    "sha256": "b6237b7be84abe90050e3b017266638db558a7d88864632cbecb57da9ef6e3b4"
+  },
+  {
+    "file": "src/render/presentationPreferenceCopy.ko.ts",
+    "lines": 12,
+    "korean_lines": 6,
+    "sha256": "b6d2b59962834a24b54d74f733072f1d6d681b58f8f330209d62cd68b445793c"
+  },
+  {
+    "file": "src/render/presentationSpeed.ts",
+    "lines": 6,
+    "korean_lines": 1,
+    "sha256": "44e354e911750ff896f928bce6e4bf8597c830b643eef3e17f713ffc133fb984"
+  },
+  {
+    "file": "src/render/renderScaleCopy.ko.ts",
+    "lines": 5,
+    "korean_lines": 2,
+    "sha256": "c044b82a7a5beb0e5b958889242629d83188de5396c3eac08a386a8ef30f5a94"
+  },
+  {
+    "file": "src/render/renderStageProbe.ts",
+    "lines": 154,
+    "korean_lines": 10,
+    "sha256": "2b337ce7679e86b4333b99fe0af921a51be3bdcd8165648f3bad52b70ba512d6"
+  },
+  {
+    "file": "src/render/roadInteractionAttempts.ts",
+    "lines": 101,
+    "korean_lines": 4,
+    "sha256": "e530f989230cdf5f6ad6e02a073ad5f188d277b10f592415f0bd18d6f2c4876a"
+  },
+  {
+    "file": "src/render/roofSmoke.ts",
+    "lines": 114,
+    "korean_lines": 2,
+    "sha256": "4268252c7bbe46fd8e713d1f2ced465ead3d6471335822280ae0fcfb0c334b5e"
+  },
+  {
+    "file": "src/render/seasonArt.ts",
+    "lines": 156,
+    "korean_lines": 1,
+    "sha256": "945c870618f7c6b3128bc718cfbf279b6b1b93389c5d36d1aa950d76e08ca7ce"
+  },
+  {
+    "file": "src/render/townLandscape.ts",
+    "lines": 32,
+    "korean_lines": 1,
+    "sha256": "432b4111e5365579e39016f408d5acd3f0cfee1ee439d4375da4ebc4229f2102"
+  },
+  {
+    "file": "src/render/walkerOcclusion.ts",
+    "lines": 218,
+    "korean_lines": 1,
+    "sha256": "27257b5f4e0b9898c10d01406f41d3b492852f96c3371c1904f9bf12bc2dc544"
+  },
+  {
+    "file": "src/render/wallInspectorCopy.ko.ts",
+    "lines": 17,
+    "korean_lines": 13,
+    "sha256": "ab665f81e6c1f748521e786af674f87cdc8109d7711e05a051d68ebb9581f595"
+  },
+  {
+    "file": "src/render/wallSiteLabels.ts",
+    "lines": 124,
+    "korean_lines": 2,
+    "sha256": "e351f7487c72f2d547cf359b040ca5da82101356929ef535a18fe374a9aaa504"
+  },
+  {
+    "file": "src/render/waterRiverFlow.ts",
+    "lines": 75,
+    "korean_lines": 1,
+    "sha256": "f1df26459b63d51c66ab5b5e0162a81817db65b61138b5e3c0264b672cc6850b"
+  },
+  {
+    "file": "src/render/wave23ArtManifest.generated.ts",
+    "lines": 88,
+    "korean_lines": 8,
+    "sha256": "50909cc46f4cced82eaf2c07ac9e83f870a5cdd9a2ea858ec8131ffd40f48d8f"
+  },
+  {
+    "file": "src/render/wave34Art.ts",
+    "lines": 45,
+    "korean_lines": 1,
+    "sha256": "c050b2df3a822cd64451f52b835d19a5daca6250ec82b3106c124be8aad10ca2"
+  },
+  {
+    "file": "src/render/worldSigns.ts",
+    "lines": 206,
+    "korean_lines": 1,
+    "sha256": "081ff46984a706c09f1f2a00bf7edba922a8eaf1b77747353062674a0f63a89f"
+  },
+  {
+    "file": "src/render/zoneBrushCopy.ko.ts",
+    "lines": 39,
+    "korean_lines": 28,
+    "sha256": "e78de61180d1a00cc305c29702160594760b02bf34a69e7abdfe97194b8b56c7"
+  },
+  {
+    "file": "src/render/zoneBrushOverlay.ts",
+    "lines": 187,
+    "korean_lines": 2,
+    "sha256": "2d74f4d45451113ea24236c6553620356f940d9256cafcf163089ced983c8d59"
+  },
+  {
+    "file": "src/render/zoneEditHistory.ts",
+    "lines": 38,
+    "korean_lines": 1,
+    "sha256": "54d7e7e3775e99faa5eff06c26b3b9897e3b2a515f04313aba30b07568de95d9"
+  },
+  {
+    "file": "src/render/zonePaintableLand.ts",
+    "lines": 137,
+    "korean_lines": 2,
+    "sha256": "02201991344d54db90284b4edb3c21cdca7b3a26854090b63a33b8f2e6a93df9"
+  },
+  {
+    "file": "src/save/migrations/v21ToV22.ts",
+    "lines": 53,
+    "korean_lines": 1,
+    "sha256": "db95584c3ea381e4ae8c91413d6005add7561e96e84fabbfae87cefa3e4cd4f3"
+  },
+  {
+    "file": "src/save/migrations/v40ToV41.ts",
+    "lines": 65,
+    "korean_lines": 1,
+    "sha256": "59a7d1e13857d7f1dd245dfc074a171843c4ec2790cbb2a2e30aad0c7c54cc24"
+  },
+  {
+    "file": "src/state/openingVillage.ts",
+    "lines": 234,
+    "korean_lines": 1,
+    "sha256": "193b931e8f8dbf040182d28f5d4ccb9d17bf0102bdbbad8b84014f4de78e9f94"
+  },
+  {
+    "file": "src/ui/AlertStackView.tsx",
+    "lines": 51,
+    "korean_lines": 1,
+    "sha256": "fb4c4ff0f998b335b3d74eb9d6feedba48707075e2805a3761363a34071510db"
+  },
+  {
+    "file": "src/ui/BuildMenu.tsx",
+    "lines": 306,
+    "korean_lines": 5,
+    "sha256": "aec584902ac8aa68992e9d87f0369de072ba554ae2f0d47be5847e0ccc145089"
+  },
+  {
+    "file": "src/ui/CauseLegend.tsx",
+    "lines": 19,
+    "korean_lines": 3,
+    "sha256": "e90dde8e4acc87148e0ec6ce00e991f4eb65b03d3756ecc0903705aa6eb7f9c6"
+  },
+  {
+    "file": "src/ui/EconomyOverlayControls.tsx",
+    "lines": 126,
+    "korean_lines": 4,
+    "sha256": "33eaa029d50ebae453ae7740e2bfb6916e274e20a2aaf77bd988afa898f70312"
+  },
+  {
+    "file": "src/ui/InfoPanel.tsx",
+    "lines": 268,
+    "korean_lines": 5,
+    "sha256": "5b1cac14adeb24a7ef651699b8588cf2edbe28848c178abb08191fc6c315a015"
+  },
+  {
+    "file": "src/ui/InspectorView.tsx",
+    "lines": 71,
+    "korean_lines": 1,
+    "sha256": "0e15817b0d7848982a22bdb74b98eeb3d7c5bbe4fbb8b825321219ae3776d4fc"
+  },
+  {
+    "file": "src/ui/PopulationEventPanel.tsx",
+    "lines": 43,
+    "korean_lines": 3,
+    "sha256": "1dbf5e92ea00ced72c4375d09ea53eb4c51022e042eb97eb33a6037ec2d1853b"
+  },
+  {
+    "file": "src/ui/PredictionPanel.tsx",
+    "lines": 62,
+    "korean_lines": 3,
+    "sha256": "8c3b4a2104c3620624e61150084861e52ecfa4df21d5b35f41a61a950fc82a5a"
+  },
+  {
+    "file": "src/ui/SpeedControls.tsx",
+    "lines": 139,
+    "korean_lines": 4,
+    "sha256": "8f592cd77610640548171b9e9b16665db9c0da65c6cea92059d413d06ab18650"
+  },
+  {
+    "file": "src/ui/StoreInspector.tsx",
+    "lines": 34,
+    "korean_lines": 2,
+    "sha256": "4e7e28b4b47d2cfbd3a21a93f8821aebbddd7b71bd0c53c88b7f18bde6cb2e3e"
+  },
+  {
+    "file": "src/ui/aTriplePrimeRoadCopy.ts",
+    "lines": 7,
+    "korean_lines": 5,
+    "sha256": "01643b9a184f4a5984075a5a242d40fe59b861afef48e52e21e90e7c98ef3ad3"
+  },
+  {
+    "file": "src/ui/aTriplePrimeWallCopy.ts",
+    "lines": 7,
+    "korean_lines": 4,
+    "sha256": "b9216ee9748e8fd2ce39fb569ad86da261e224c56e9b2dc9de76cee0641774b9"
+  },
+  {
+    "file": "src/ui/alertStackCopy.ko.ts",
+    "lines": 54,
+    "korean_lines": 27,
+    "sha256": "4e08d7665170a137af712edd1f285b0b5e43dac825da18bdf193ce48568e3068"
+  },
+  {
+    "file": "src/ui/alertStackModel.ts",
+    "lines": 207,
+    "korean_lines": 10,
+    "sha256": "aa24715282bf0b2f4fa20b0d08d392f13f4dfca6b7f6822bf2c0bf238b17fdcc"
+  },
+  {
+    "file": "src/ui/autoplayCopy.ko.ts",
+    "lines": 10,
+    "korean_lines": 8,
+    "sha256": "a013e9f594a0884c96fc0a7bec45007a5db783033e1be0a2ac263f6374c52c5d"
+  },
+  {
+    "file": "src/ui/autoplayPresentation.ts",
+    "lines": 143,
+    "korean_lines": 4,
+    "sha256": "60a1ffe3fdff4aefc60922ff486aa66fd98d33528510040780629e305944ea21"
+  },
+  {
+    "file": "src/ui/buildMenuCopy.ko.ts",
+    "lines": 61,
+    "korean_lines": 37,
+    "sha256": "8e72387cc6016c29ee9e07eeff4bd5f41811963ed7d9df6c61b0bed1777f1f7e"
+  },
+  {
+    "file": "src/ui/buildMenuModel.ts",
+    "lines": 174,
+    "korean_lines": 2,
+    "sha256": "0113905436dd587bda91c1ea27dd05d392a6cb8c67c46b5e18354f49e785e6e6"
+  },
+  {
+    "file": "src/ui/buildMenuPresentation.ts",
+    "lines": 51,
+    "korean_lines": 3,
+    "sha256": "c622b8f84a7642a4324cc48407e983a0dcbdd54a6eb8e97cc124c12a8298bfca"
+  },
+  {
+    "file": "src/ui/buildingOperationCopy.ko.ts",
+    "lines": 5,
+    "korean_lines": 3,
+    "sha256": "a1b42990abe1cd9474ada70cb474a6261888ef44fe16c3e7f2d860e454d9c7f3"
+  },
+  {
+    "file": "src/ui/calendarArrival.ts",
+    "lines": 20,
+    "korean_lines": 2,
+    "sha256": "b37c0e086b8d52b728737256fc86d40ec6924461f7c7412ab6a82baa2216e210"
+  },
+  {
+    "file": "src/ui/calendarArrivalCopy.ko.ts",
+    "lines": 16,
+    "korean_lines": 9,
+    "sha256": "cc86ebca2f96f6c68b8ba0b481999faf392095823ea6f6e10a8f3ec3e22f04ef"
+  },
+  {
+    "file": "src/ui/causeMarkerCopy.ko.ts",
+    "lines": 7,
+    "korean_lines": 3,
+    "sha256": "76ae53568fca295b09eb3d7f4e1ba29dbe0960dec58bee768de45671cef2f1e1"
+  },
+  {
+    "file": "src/ui/causeRegistryCopy.ko.ts",
+    "lines": 12,
+    "korean_lines": 9,
+    "sha256": "077841ca96c4e61c235433c5b0451451e6ec219e93d96f3f1e41f8008932226d"
+  },
+  {
+    "file": "src/ui/chapterCopy.ko.ts",
+    "lines": 28,
+    "korean_lines": 14,
+    "sha256": "3082ddf9774c5fcb4ca9f004b037facda9ba2b253e87c38196bda1bc5fd9b487"
+  },
+  {
+    "file": "src/ui/chronicle/BiographyPage.tsx",
+    "lines": 102,
+    "korean_lines": 1,
+    "sha256": "68d5d7b60193720d54b22fae5a210ee14ec2faed1baf64240fd900df8481b2b2"
+  },
+  {
+    "file": "src/ui/chronicle/ChronicleScreen.tsx",
+    "lines": 327,
+    "korean_lines": 5,
+    "sha256": "ca6a1ddb1ab6bfdc0d6e7b7b91a565e11f31187e1602252dde1a486b2b6b5f26"
+  },
+  {
+    "file": "src/ui/chronicle/ChronicleTimeline.tsx",
+    "lines": 88,
+    "korean_lines": 1,
+    "sha256": "32fd7362527edfacceb991b1c36205aa7d51204965e5ff2674b5a2fc91f5dee6"
+  },
+  {
+    "file": "src/ui/chronicle/FamilyTree.tsx",
+    "lines": 114,
+    "korean_lines": 1,
+    "sha256": "7d0c2a945e1e5dc7de4fd903ff68e7265166d2006faf3e7cb4584e9cc332fbcf"
+  },
+  {
+    "file": "src/ui/chronicle/RecordCardView.tsx",
+    "lines": 57,
+    "korean_lines": 3,
+    "sha256": "ef4c645ba70b9f829e1c45ef85a879bdae2258189cc6e90d941d5bb67c86e951"
+  },
+  {
+    "file": "src/ui/chronicle/SnapshotMapView.tsx",
+    "lines": 113,
+    "korean_lines": 2,
+    "sha256": "44db65e2c3e4433811011b83a3f2e082ade6a731aa8f9486a9c2646797149eac"
+  },
+  {
+    "file": "src/ui/chronicle/chronicleScreenCopy.ko.ts",
+    "lines": 202,
+    "korean_lines": 137,
+    "sha256": "35a09c814e563a65035b3e684af68c471603c9d1ef86eab603f1e5b2eed268d4"
+  },
+  {
+    "file": "src/ui/chronicle/chronicleScreenModel.ts",
+    "lines": 588,
+    "korean_lines": 8,
+    "sha256": "75d8520098a413e98a128aff5a594d9aea9c671c48bdd41637e9f9e9f218cbb9"
+  },
+  {
+    "file": "src/ui/chronicle/factionInfluenceCopy.ko.ts",
+    "lines": 28,
+    "korean_lines": 18,
+    "sha256": "de93edd6b96dd649e2fbe1061147c817f403ae727968cd842e0aac6056e221fd"
+  },
+  {
+    "file": "src/ui/chronicle/factionTabModel.ts",
+    "lines": 132,
+    "korean_lines": 1,
+    "sha256": "8a4e5e20fdd900bb689dcc845f1120553ae231800cfa27252964d1ddca7ecf01"
+  },
+  {
+    "file": "src/ui/chronicle/familyTreeCopy.ko.ts",
+    "lines": 30,
+    "korean_lines": 17,
+    "sha256": "1653cd731b8af17c96b071f5b18fd8f398c720e4f1922ef05c8b6075cf59a9cd"
+  },
+  {
+    "file": "src/ui/chronicle/familyTreeModel.ts",
+    "lines": 228,
+    "korean_lines": 1,
+    "sha256": "39f9627633a7673e318cc735f438411cf12669a1624174590cc0ffaeb3561cea"
+  },
+  {
+    "file": "src/ui/chronicleCopy.ko.ts",
+    "lines": 96,
+    "korean_lines": 51,
+    "sha256": "32a1a7a15d6879c7f1b9835dbbee9b5203e535f8a28d9838e12d78955babc211"
+  },
+  {
+    "file": "src/ui/completionToastCopy.ko.ts",
+    "lines": 6,
+    "korean_lines": 4,
+    "sha256": "55067dc875f07e35e17aa544e69df0b85184a143e6989d9967388f2104bff47e"
+  },
+  {
+    "file": "src/ui/constructionAccessModel.ts",
+    "lines": 255,
+    "korean_lines": 8,
+    "sha256": "14b07ceada410004cbae51ee220bb1433a94a37a7558a041b06a44bf9b7b8d89"
+  },
+  {
+    "file": "src/ui/constructionBlockerCopy.ko.ts",
+    "lines": 11,
+    "korean_lines": 5,
+    "sha256": "128721ce12411bd60ef149e000170f89f4a5f60285c47f598169938ff1ec41c0"
+  },
+  {
+    "file": "src/ui/constructionBlockerLine.ts",
+    "lines": 32,
+    "korean_lines": 2,
+    "sha256": "365e2e8c5e0e05689b1c664e992189e6fd9799ffa8a4a2c1f5105eb87100974c"
+  },
+  {
+    "file": "src/ui/constructionDeadlockCopy.ko.ts",
+    "lines": 11,
+    "korean_lines": 5,
+    "sha256": "2bdcb88a03f287917c7558c531873cb4dfe6c78b2d4b2333dca474c5b85b867e"
+  },
+  {
+    "file": "src/ui/constructionMaterialDiagnosisCopy.ko.ts",
+    "lines": 19,
+    "korean_lines": 15,
+    "sha256": "c2ac2fd3582b03ee840f59192b8d3d72f8a6dae8f24c3fd28172b4cac9a3ac00"
+  },
+  {
+    "file": "src/ui/constructionSiteCardCopy.ko.ts",
+    "lines": 18,
+    "korean_lines": 15,
+    "sha256": "4bf0fe54c4c9017b919f18294d76462e391ddaeaaeeedde459b88b7429933691"
+  },
+  {
+    "file": "src/ui/decisionCopy.ko.ts",
+    "lines": 40,
+    "korean_lines": 23,
+    "sha256": "6e3ff4c664c134c84f8fc4e5e3c8e486ca2df06d1cbcf3ffb67e375f72a3ef7f"
+  },
+  {
+    "file": "src/ui/distributorMissedRouteReason.ts",
+    "lines": 87,
+    "korean_lines": 3,
+    "sha256": "123b331347e9ffcacf3e98fef2b40f0cc7dd70ddb0c0c1f71f8e3b2b62d77b91"
+  },
+  {
+    "file": "src/ui/distributorRouteCopy.ko.ts",
+    "lines": 12,
+    "korean_lines": 9,
+    "sha256": "1cad1d95b5e1f07068918400c616d05c97f5d5b1b00b66fe0b3f931c65b43d60"
+  },
+  {
+    "file": "src/ui/drainageCopy.ko.ts",
+    "lines": 21,
+    "korean_lines": 14,
+    "sha256": "0d4962c3535157614d7342b5264859b4b59d80ee5a1ef1d8fb578a79306c9f8b"
+  },
+  {
+    "file": "src/ui/eraCeremonyModel.tsx",
+    "lines": 113,
+    "korean_lines": 6,
+    "sha256": "0307cde43ca89f8f1e0194effc0517eafb6ac47aa68ec2fe21c8ce0cb642e371"
+  },
+  {
+    "file": "src/ui/eraConsoleCopy.ko.ts",
+    "lines": 19,
+    "korean_lines": 11,
+    "sha256": "6a5897b46b61a4dd3c65d215475b93b375e556cb181ab62f4ee20918f2a127f1"
+  },
+  {
+    "file": "src/ui/eraConsoleModel.ts",
+    "lines": 51,
+    "korean_lines": 1,
+    "sha256": "50875ae276cc05aef4ceb7e2175a70e648ac4fd78932fcfb6bf409b37f8fdf54"
+  },
+  {
+    "file": "src/ui/eventStory.ts",
+    "lines": 532,
+    "korean_lines": 18,
+    "sha256": "5168d0c70b7a4f23567335408b875086e28fab6fc8c5788290104238ad9705ee"
+  },
+  {
+    "file": "src/ui/eventStoryCopy.ko.ts",
+    "lines": 248,
+    "korean_lines": 156,
+    "sha256": "5bd3981ab49b7a6497cb08c72c8bd195d9421a9e19447f504da9512204aae598"
+  },
+  {
+    "file": "src/ui/farmsteadCropCopy.ko.ts",
+    "lines": 18,
+    "korean_lines": 10,
+    "sha256": "cf681a9d67b50ad445a5f58b2529db2fdd80ae8220540ce4fb3f8fc0318e5061"
+  },
+  {
+    "file": "src/ui/gameTimeCopy.ko.ts",
+    "lines": 51,
+    "korean_lines": 16,
+    "sha256": "fd07d05fc66841c480f1235695d9a241fe0c76720d73f18c42a2b5f13d751dfc"
+  },
+  {
+    "file": "src/ui/houseAleCopy.ko.ts",
+    "lines": 13,
+    "korean_lines": 7,
+    "sha256": "f3fb09f0d28aa338c3216935b43702d47f990d063daf501b5a0001ff30032532"
+  },
+  {
+    "file": "src/ui/houseDiagnosisCopy.ko.ts",
+    "lines": 23,
+    "korean_lines": 20,
+    "sha256": "9f432551da09a45be50c44f95c870c86db2bba332c38943a8c68ebcd577912e9"
+  },
+  {
+    "file": "src/ui/housePressureCopy.ko.ts",
+    "lines": 5,
+    "korean_lines": 2,
+    "sha256": "47bdcba4e74a4adc6042813bdbb302d197fa0d10cb8ee4a237844b8e3170bda7"
+  },
+  {
+    "file": "src/ui/houseProgressCopy.ko.ts",
+    "lines": 23,
+    "korean_lines": 19,
+    "sha256": "77939a090e4dc5c27801497d9f04d016641bfcf999c7732d3bf18d35b5ca833e"
+  },
+  {
+    "file": "src/ui/householdLabourCopy.ko.ts",
+    "lines": 25,
+    "korean_lines": 15,
+    "sha256": "c3a56f54684d4aa21a49b17e4e2767fee1a711520f08e9f39b995654a04e8b4e"
+  },
+  {
+    "file": "src/ui/householdLabourModel.ts",
+    "lines": 60,
+    "korean_lines": 1,
+    "sha256": "0445b7747544ae41335f59f4b02c79c33c8373b7dfbfda7e85c7ba554e8aea5e"
+  },
+  {
+    "file": "src/ui/hud/EventCards.tsx",
+    "lines": 70,
+    "korean_lines": 3,
+    "sha256": "3db5f076eec32ab9a3c67751953185ee5fcfe66ba77e8a848472148836a57978"
+  },
+  {
+    "file": "src/ui/hud/HudShell.tsx",
+    "lines": 331,
+    "korean_lines": 1,
+    "sha256": "7fbd7dfbb99547794a584f44f4c8f2045fa26a7aedac6a55f7b3d76e9c53a494"
+  },
+  {
+    "file": "src/ui/hud/LedgerStockTable.tsx",
+    "lines": 73,
+    "korean_lines": 3,
+    "sha256": "620cadb458ca2aac1bd09ac49eaecd672bd6f496f7c769255c57e59ae4df739e"
+  },
+  {
+    "file": "src/ui/hud/PlacementConfirmBar.tsx",
+    "lines": 18,
+    "korean_lines": 1,
+    "sha256": "884b66e8f16bd7d94043fdd7e3c613cda6286860bd0961ce75f7a52a1a98a57a"
+  },
+  {
+    "file": "src/ui/hud/SeasonLedgerCard.tsx",
+    "lines": 58,
+    "korean_lines": 1,
+    "sha256": "b37363080bff1a216808a89e1df86d1f9f0654cc78c6cc32b0ff4be9b8f28966"
+  },
+  {
+    "file": "src/ui/hud/StoryModals.tsx",
+    "lines": 230,
+    "korean_lines": 2,
+    "sha256": "1d5e2e1b77c2f1ae6ecd62034ce3048c409f6ab39e96cb4d65d491b5d69b5f29"
+  },
+  {
+    "file": "src/ui/hud/ZoneToolbar.tsx",
+    "lines": 85,
+    "korean_lines": 1,
+    "sha256": "735d2f826e8e09a1b595210b01a09de7a75b55e54974897dcc08c8cb437e325a"
+  },
+  {
+    "file": "src/ui/hud/hudCopy.ko.ts",
+    "lines": 51,
+    "korean_lines": 32,
+    "sha256": "2e5e0445b90f7cc937524d17bc967afd372dd8d4dee09939e57848dcb820415b"
+  },
+  {
+    "file": "src/ui/hud/legacyLedgerCopy.ko.ts",
+    "lines": 14,
+    "korean_lines": 5,
+    "sha256": "0d9204cb75346995a18f7c18bbc5557fdf4d8b846411c9e4a2ef4e6b01749afd"
+  },
+  {
+    "file": "src/ui/hud/legacyLedgerModel.ts",
+    "lines": 45,
+    "korean_lines": 1,
+    "sha256": "0db76e2411132cde1feab696449b3b9d0116dbbfb1be62d994bf3fac16b0a898"
+  },
+  {
+    "file": "src/ui/hud/placementConfirmCopy.ko.ts",
+    "lines": 7,
+    "korean_lines": 5,
+    "sha256": "a5f52752bc0018adfbd3c28b63a0447350602645b72a69df3fc186a1175acb3d"
+  },
+  {
+    "file": "src/ui/hud/reorgLedgerCopy.ko.ts",
+    "lines": 13,
+    "korean_lines": 5,
+    "sha256": "b5422ddb3b97dee19ea7b64a5917b543aedd70126f4c1fa70ae14f77f7e672d9"
+  },
+  {
+    "file": "src/ui/hud/statusPillModel.ts",
+    "lines": 72,
+    "korean_lines": 1,
+    "sha256": "7f4e807882c9cdac8d7d7097d2bdec4583d5aee693e19705024fba41e978e661"
+  },
+  {
+    "file": "src/ui/hud/wageLedgerCopy.ko.ts",
+    "lines": 14,
+    "korean_lines": 5,
+    "sha256": "bd6fdb6bc7313f9cf7bdc65c5e7262bd2c23ffd299c1ca5ddcba5618124ace2d"
+  },
+  {
+    "file": "src/ui/hud/zoneToolbarCopy.ko.ts",
+    "lines": 31,
+    "korean_lines": 19,
+    "sha256": "64969c3f371b00dcaaf0af7062bd2f8d494a0b7a021ebb847ddb1526e8047d0c"
+  },
+  {
+    "file": "src/ui/inputHintCopy.ko.ts",
+    "lines": 48,
+    "korean_lines": 16,
+    "sha256": "c8e05a748479f38101ee992e0e16ca6a4f74248bfeb9ca9db5f7d51e10edaeb7"
+  },
+  {
+    "file": "src/ui/inspectorCopy.ko.ts",
+    "lines": 88,
+    "korean_lines": 60,
+    "sha256": "cbc699132dcb3e507c11edd1dd32a675f1040ee935c1876a33fc0300c71041de"
+  },
+  {
+    "file": "src/ui/inspectorModel.ts",
+    "lines": 209,
+    "korean_lines": 3,
+    "sha256": "4f98928372be8386e737edf47edc4c26860a26cbbe7c06c3236125b998e9678d"
+  },
+  {
+    "file": "src/ui/kit/uiKitGalleryCopy.ko.ts",
+    "lines": 29,
+    "korean_lines": 23,
+    "sha256": "d273869b1faad0fa5eaf6e44f04b89569590cd57a973bd1d58b6e1e2ce25606e"
+  },
+  {
+    "file": "src/ui/labourCopy.ko.ts",
+    "lines": 5,
+    "korean_lines": 3,
+    "sha256": "dacea09349d9da45e254914f55ebd4fa5c8d91bb835b2033870555c5c93c5f66"
+  },
+  {
+    "file": "src/ui/landPickerCopy.ko.ts",
+    "lines": 10,
+    "korean_lines": 4,
+    "sha256": "99c7427e4571bcc644aec3ed20f5b8ef98d9f28d25854a110be719fe801e8388"
+  },
+  {
+    "file": "src/ui/legacy/legacyScreenCopy.ko.ts",
+    "lines": 79,
+    "korean_lines": 57,
+    "sha256": "dbb4a617c11898b8a17070177ac0438a7b1bdd006a7fea9a75350ad6a441d87f"
+  },
+  {
+    "file": "src/ui/legacy/legacyScreenModel.ts",
+    "lines": 201,
+    "korean_lines": 1,
+    "sha256": "fb14ec75d63f7dd28ef12385e9a0bc3267829b74ca800e2d5d33a56213ee8f32"
+  },
+  {
+    "file": "src/ui/lordshipCopy.ko.ts",
+    "lines": 46,
+    "korean_lines": 29,
+    "sha256": "820d010485e78f7a3a78c1099f9a0627f1f995ab27d4f27f1994873e2e02567d"
+  },
+  {
+    "file": "src/ui/marketReachCopy.ko.ts",
+    "lines": 5,
+    "korean_lines": 2,
+    "sha256": "be1d943f85e19bdb379ef17cabc05d92f183385b94c14029d1d05a28e858d5a0"
+  },
+  {
+    "file": "src/ui/money.ko.ts",
+    "lines": 105,
+    "korean_lines": 9,
+    "sha256": "7f005cef6cf7da0492b9bc2d5a8ce55f6d76c4cb72d8153835bf4fa496214459"
+  },
+  {
+    "file": "src/ui/nat1TextBoxCopy.ko.ts",
+    "lines": 6,
+    "korean_lines": 3,
+    "sha256": "5790a142efe952a5f1749b07f74cb236226b44f3960edcda8fd84c2d3cb9cda2"
+  },
+  {
+    "file": "src/ui/onboardingHouseGuidance.ts",
+    "lines": 84,
+    "korean_lines": 1,
+    "sha256": "5d2bb448f16937ff8b461fc19abafe55c0dbab74b27067eb7cfee203d6fc440d"
+  },
+  {
+    "file": "src/ui/onboardingTaskCopy.ko.ts",
+    "lines": 39,
+    "korean_lines": 18,
+    "sha256": "6dd97e6ef3a731dcac383a197fcfc4b68f40f47addd14cdc5b5193fbc2ecda7d"
+  },
+  {
+    "file": "src/ui/onboardingWorldGuidanceCopy.ko.ts",
+    "lines": 7,
+    "korean_lines": 4,
+    "sha256": "0b9135dfab597c11d5b818ea733a95bb0f68476182ccf1588692711157170b1d"
+  },
+  {
+    "file": "src/ui/persons/PersonViews.tsx",
+    "lines": 183,
+    "korean_lines": 1,
+    "sha256": "d1537e23703f2a479ba88707b8dda89ee2d1e965cf2ea5e7b931ed31f0d7c690"
+  },
+  {
+    "file": "src/ui/persons/personModels.ts",
+    "lines": 209,
+    "korean_lines": 2,
+    "sha256": "8ba17020c5f14eb54932294f980212a6412c68704e29076060f42eace5a6f938"
+  },
+  {
+    "file": "src/ui/persons/personStateCopy.ko.ts",
+    "lines": 34,
+    "korean_lines": 20,
+    "sha256": "4f324d4f2e3a659a8a433417fad8a9cc182cc19acd48748506747a18cb28c612"
+  },
+  {
+    "file": "src/ui/persons/personTraitCopy.ko.ts",
+    "lines": 25,
+    "korean_lines": 11,
+    "sha256": "82b1ce140d42305b70ef17b4b16b52957585389850999f0fe74b7ac928c3b603"
+  },
+  {
+    "file": "src/ui/persons/personsCopy.ko.ts",
+    "lines": 74,
+    "korean_lines": 43,
+    "sha256": "9a67e4f79043c41603ed64ad3a63ac7d0edb9bab476bfc7aabc001adb1efebfe"
+  },
+  {
+    "file": "src/ui/persons/resemblance.ts",
+    "lines": 41,
+    "korean_lines": 3,
+    "sha256": "09e518891c227d4dcd9ecf9f06e0589078d53cd4b6e253acad19b841ab970778"
+  },
+  {
+    "file": "src/ui/petitionCopy.ko.ts",
+    "lines": 192,
+    "korean_lines": 112,
+    "sha256": "e81a9efff12904a89d6a7025490d50b194fc90fdc3105b49e84cd0cc623239fd"
+  },
+  {
+    "file": "src/ui/placementChip.ts",
+    "lines": 88,
+    "korean_lines": 2,
+    "sha256": "5e8adf43935b01e4a3727db6e2ddebcc3477189a583c751341df0496d9c62074"
+  },
+  {
+    "file": "src/ui/placementChipCopy.ko.ts",
+    "lines": 47,
+    "korean_lines": 31,
+    "sha256": "07bc8a7c7e39cf4cd71b79677dd7407ff6bc25e8a0ac8b89b4ba9cb5bc146b56"
+  },
+  {
+    "file": "src/ui/placementPrediction.ts",
+    "lines": 121,
+    "korean_lines": 8,
+    "sha256": "ad028ea76f9caca3c0bab12f02a8eff271c7a5d4763e3fc3bd169dd13e9de056"
+  },
+  {
+    "file": "src/ui/plagueUiCopy.ko.ts",
+    "lines": 6,
+    "korean_lines": 1,
+    "sha256": "0a8f94b30ddc7a0e684a4bae901835c4ac715e59648f353bba18297bbdd440c0"
+  },
+  {
+    "file": "src/ui/populationEventModel.ts",
+    "lines": 116,
+    "korean_lines": 4,
+    "sha256": "790e7d3a3e8cda7edb55d7f2f5f8507f069bdfc9334539287b5b7b9c50d6cdf4"
+  },
+  {
+    "file": "src/ui/predictionRegistry.ts",
+    "lines": 17,
+    "korean_lines": 8,
+    "sha256": "efd59153d22421f0d192061efed92e4d44e3698c2e805bf0ba9b6bfdae931184"
+  },
+  {
+    "file": "src/ui/problemCauseModel.ts",
+    "lines": 124,
+    "korean_lines": 9,
+    "sha256": "0d6207c086a477a3f0dc7fa93942ddcdc4b3a8bc30e76963d4f60f045303b4b5"
+  },
+  {
+    "file": "src/ui/qa/qaOverlayCopy.ko.ts",
+    "lines": 32,
+    "korean_lines": 25,
+    "sha256": "cfbe1b8636195a4f4b81708751907c962f63aa0fee189b9ee53587ba5dc60170"
+  },
+  {
+    "file": "src/ui/qa/qaOverlayModel.ts",
+    "lines": 93,
+    "korean_lines": 1,
+    "sha256": "a13a47c7d7b0a44f5f7d555eb4856e380eb7eaf22cc7e1756b99b14d94bf96e4"
+  },
+  {
+    "file": "src/ui/resourceBarCopy.ko.ts",
+    "lines": 33,
+    "korean_lines": 26,
+    "sha256": "2bc104e7212156148b0916a7c8efead4fb71c432d0e825d6e18d14ff608da54f"
+  },
+  {
+    "file": "src/ui/roadPlacementCopy.ko.ts",
+    "lines": 10,
+    "korean_lines": 4,
+    "sha256": "dbaf245e08d77057d9eab92af742cfb546ba2eb5bb388f307168fdc4d75ddf99"
+  },
+  {
+    "file": "src/ui/seasonLedgerCard.ts",
+    "lines": 164,
+    "korean_lines": 1,
+    "sha256": "48c4663e1edc4da84b5e679bb31640f3f929d803f372ab6259f44c56f7077614"
+  },
+  {
+    "file": "src/ui/seasonLedgerCopy.ko.ts",
+    "lines": 80,
+    "korean_lines": 45,
+    "sha256": "d72117641540168fb70992bc182d088eec76d6b246308b62f1edbd1311c302af"
+  },
+  {
+    "file": "src/ui/seasonLedgerScenes.ts",
+    "lines": 128,
+    "korean_lines": 3,
+    "sha256": "3ba81a12f1fb41c16f6394cffc7bd6280606d1ec3b91c24eab434fc6a410ac72"
+  },
+  {
+    "file": "src/ui/seasonStripCopy.ko.ts",
+    "lines": 45,
+    "korean_lines": 28,
+    "sha256": "9650226fabe4271ce27b240d3489a153958c70c2d30644fa700c54bd4553cf55"
+  },
+  {
+    "file": "src/ui/serviceDiagnosisCopy.ko.ts",
+    "lines": 21,
+    "korean_lines": 18,
+    "sha256": "435c09a5c92548c86a0f45cb48a607a48173a40120b8caa3cbc3852c15ce5714"
+  },
+  {
+    "file": "src/ui/settlementGuidanceCopy.ko.ts",
+    "lines": 19,
+    "korean_lines": 12,
+    "sha256": "fcb86e714c4a14ff864691514b36474d013f9cde04d573df5e4d25260cb727be"
+  },
+  {
+    "file": "src/ui/settlementGuidanceModel.ts",
+    "lines": 118,
+    "korean_lines": 1,
+    "sha256": "38e853d37b6a5b1c806eacffd92453dbcb3d3878a4b73097cacbb9bee4389d2d"
+  },
+  {
+    "file": "src/ui/settlementPanelCopy.ko.ts",
+    "lines": 23,
+    "korean_lines": 18,
+    "sha256": "b987728663b26cc8bdc35187f8db3ef52dc06544d434d9be18039f79daae9a88"
+  },
+  {
+    "file": "src/ui/stateMachine/uiStateMachine.ts",
+    "lines": 111,
+    "korean_lines": 1,
+    "sha256": "b7552f3759ad67d9797ca07fe18d21040a7e5602c607d380b080a350648e0ac7"
+  },
+  {
+    "file": "src/ui/storageOverflowCopy.ko.ts",
+    "lines": 5,
+    "korean_lines": 3,
+    "sha256": "d805cb559cbbae1d768611d2140804285e4f278cdcada4c198bba7113f879564"
+  },
+  {
+    "file": "src/ui/storeInspectorCopy.ko.ts",
+    "lines": 24,
+    "korean_lines": 17,
+    "sha256": "9a12308964cb5dd5693b0129f5ca9bf3c477a2d748773b8f9000d5fef43deb76"
+  },
+  {
+    "file": "src/ui/storeInspectorModel.ts",
+    "lines": 57,
+    "korean_lines": 1,
+    "sha256": "f24116d14ff20c809d243e71b935fd06ba1afe19d363a3218567111f4047b32d"
+  },
+  {
+    "file": "src/ui/storeStockHistory.ts",
+    "lines": 81,
+    "korean_lines": 1,
+    "sha256": "9a0e8f92be81f6faf4c4446ea1f0309f3388485626a82387bfaf6a253a9dc289"
+  },
+  {
+    "file": "src/ui/stuckGoodsCopy.ko.ts",
+    "lines": 26,
+    "korean_lines": 16,
+    "sha256": "38b94546e82e506540d5d50f67a8eed942cae1b755b7b41dd299aad9ae6fae14"
+  },
+  {
+    "file": "src/ui/titleCopy.ko.ts",
+    "lines": 9,
+    "korean_lines": 6,
+    "sha256": "ef7a971f3245756d8ff76864fcdd9d568a2fefb50fa9623f8e225f9fe0ed952a"
+  },
+  {
+    "file": "src/ui/townAleCopy.ko.ts",
+    "lines": 14,
+    "korean_lines": 9,
+    "sha256": "e6bd0a6174186254b87b562d87239f04318dd7e85ddd9b0d8e4427953fc5941c"
+  },
+  {
+    "file": "src/ui/townClothCopy.ko.ts",
+    "lines": 13,
+    "korean_lines": 5,
+    "sha256": "2518be286a5dd0d42d29b0d5f71a00fb822605e57a886821b0e722599b840da9"
+  },
+  {
+    "file": "src/ui/tutorial/TutorialShell.tsx",
+    "lines": 155,
+    "korean_lines": 1,
+    "sha256": "24b57b9d124945f4370dc9a96717bc1d3513c82576979801ac4f6c5995366b6b"
+  },
+  {
+    "file": "src/ui/tutorial/tutorialCopy.ko.ts",
+    "lines": 80,
+    "korean_lines": 62,
+    "sha256": "f5cfea95fc25e55b12d725548d6a60cdeaca07b733775974da623b59b828c2ae"
+  },
+  {
+    "file": "src/ui/tutorial/tutorialModel.ts",
+    "lines": 369,
+    "korean_lines": 4,
+    "sha256": "d48c19c4ccbb96310fa5ca024391d1f4f47129df6d78edef4cd4702600fdca50"
+  },
+  {
+    "file": "src/ui/tutorial/useTutorialController.ts",
+    "lines": 349,
+    "korean_lines": 6,
+    "sha256": "292ac05ac2626e9ead511f3db242eb456f8166a71c56c37d10835fb94b44da3c"
+  },
+  {
+    "file": "src/ui/walkerDiagnosisCopy.ko.ts",
+    "lines": 28,
+    "korean_lines": 24,
+    "sha256": "a89d28da34a70c46ebd2564092283b5536a2b2d23a84d9f2ae7713cc33ae40a1"
+  },
+  {
+    "file": "src/ui/walkerDiagnosisModel.ts",
+    "lines": 235,
+    "korean_lines": 1,
+    "sha256": "4a94b29a6dbbd512f83f3ad793143d3b420f871e8bec53eb992e41357a2cffee"
+  },
+  {
+    "file": "src/ui/wallCarryCopy.ko.ts",
+    "lines": 16,
+    "korean_lines": 8,
+    "sha256": "7b16b2b872de550bd180989e8e0f763acc997b4d5e7bf7053703f4effe792765"
+  },
+  {
+    "file": "src/ui/wallDraftCopy.ko.ts",
+    "lines": 51,
+    "korean_lines": 35,
+    "sha256": "7f172fde08a912d92369733454fe4ad0cb342b45cbd843cdfd945120c6f3f31d"
+  },
+  {
+    "file": "src/ui/wallExpansionCopy.ko.ts",
+    "lines": 27,
+    "korean_lines": 17,
+    "sha256": "7f412ac35e1c19b5b900ecf5e02dbf1e77cd18f8429e41ba5a5df1baebb73c65"
+  },
+  {
+    "file": "src/ui/wallPrediction.ts",
+    "lines": 103,
+    "korean_lines": 5,
+    "sha256": "17b942a8f47387cb62ea816739bf5f80b50b0e52a404c063fd379d7809b3d451"
+  },
+  {
+    "file": "src/ui/zonePrediction.ts",
+    "lines": 76,
+    "korean_lines": 2,
+    "sha256": "d1b9642a6181a2a9c98095ed6811fb57a1a8f11a7a72959b1098c8de01e4cfc5"
+  },
+  {
+    "file": "src/world/placement.ts",
+    "lines": 283,
+    "korean_lines": 1,
+    "sha256": "6b0d406fdc270ae1231668234e94ff006bd260ec14b466fe9fc8f9458425ffd8"
+  },
+  {
+    "file": "src/zones/arableCopy.ko.ts",
+    "lines": 37,
+    "korean_lines": 18,
+    "sha256": "a16c9888d80fa288bf8debe94ce298cf17ebe84dedb32e2d059cff413d49191c"
+  },
+  {
+    "file": "src/zones/zoneCopy.ko.ts",
+    "lines": 37,
+    "korean_lines": 21,
+    "sha256": "dc3d116dcea4a2f43a19ca64994ccb54744c44a09f916e7375e0ee761a1c4248"
+  }
+]

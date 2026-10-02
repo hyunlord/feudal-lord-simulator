@@ -1,0 +1,16 @@
+=== trace ===
+[probe   ] curl_cffi          xform=original         imp=safari         ref=self_root      status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=safari         ref=google_search  status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=safari         ref=none           status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=chrome         ref=self_root      status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=chrome         ref=google_search  status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=chrome         ref=none           status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=firefox        ref=self_root      status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=firefox        ref=google_search  status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=firefox        ref=none           status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=safari_ios     ref=self_root      status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=safari_ios     ref=google_search  status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[grid    ] curl_cffi          xform=original         imp=safari_ios     ref=none           status=   0 size=       0 verdict=unknown err=curl_cffi not installed
+[fallback] playwright_mcp     xform=original         imp=-              ref=-              status=   0 size=       0 verdict=unknown err=Playwright MCP must be invoked from the Claude session — cal
+[fallback] playwright_real_chrome xform=original         imp=-              ref=-              status=   0 size=       0 verdict=unknown err=best-effort optional module playwright-extra failed: Error: 
+=== summary: failed after 14 attempts; profile=unknown_challenge; verdicts=unknown,unknown,unknown,unknown,unknown... ===

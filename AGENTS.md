@@ -44,6 +44,7 @@
 - 로드맵·상태: `docs/ROADMAP.html`(작업 상태는 TASKS 배열), `docs/STATUS.md`(세션별 현재·다음).
 - 설계서: `docs/design/DESIGN_MASTER.md`, `CONTENT_DESIGN.md`, `PLAYER_FLOW_DESIGN.md`, `VISIBILITY_DESIGN.md`, `CHRONICLE_DESIGN.md`, `lord-mode.md`, (예정) `UI_STATE_DESIGN.md`, `PERSON_DESIGN.md`.
 - 결정 목록: 규칙·기준을 바꿀 때마다 ID와 이유. 조사 결과는 `docs/research/`.
+- 용어: 게임 문구는 docs/design/glossary.md의 용어 정본을 따른다. 새 용어가 필요하면 정본에 먼저 추가한다.
 
 ### 로드맵 작업 상태 (헌장 6절의 운용 규칙)
 - **작업 전**: `docs/ROADMAP.html` 5절(로드맵)에서 자기 작업 ID를 확인한다. `deps`가 끝났는지, 같은 ID를 맡은 세션이 없는지 본다. 목록에 없는 작업이면 같은 형식으로 추가한다(8절 편집 규칙).
@@ -186,6 +187,7 @@
   - 예: `전체 회귀 3,901/3,901 — DGX(깨끗한 클론 a597617)`, `perf:gate — Mac 실제 창`.
   - Mac에서 무거운 검증을 `FLS_ALLOW_LOCAL=1`로 돌렸으면 그 사실과 이유를 여기에 적는다.
   - 위치가 없는 수치는 판정에 쓰지 않는다.
+- **작업 지시 장부(필수)**: 작업을 본선에 병합할 때 [`docs/ops/DISPATCH_LEDGER.md`](docs/ops/DISPATCH_LEDGER.md)의 자기 세션 줄에서 그 작업의 체크박스(`- [ ]` → `- [x]`)를 채우고 본선 커밋 해시를 적어, 병합 커밋에 함께 넣는다. 채우지 못한 항목은 비워 두고 보고서에 까닭을 적는다.
 
 <!-- ===== 추가 블록 끝 ===== -->
 
