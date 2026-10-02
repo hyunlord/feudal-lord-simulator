@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "scope": "static script and storyboard only",
+  "executionLocation": "Mac",
+  "steps": 12,
+  "expectedMinutes": 20,
+  "actualPlaytimeMeasured": false,
+  "images": 12,
+  "dimensions": [
+    1280,
+    800
+  ],
+  "imageMode": "RGB",
+  "textRuns": 301,
+  "textBoundingBoxFailures": 0,
+  "sourceHashMatches": 15,
+  "newImageGenerationCalls": 0,
+  "trackedChanges": 0,
+  "commit": "5a15e62d4f36f37f36cf7ef854b3677337482d61",
+  "gameCodeTestsRun": false,
+  "visualReview": "all 12 viewed individually; two read-only reviews; missing glyph corrected and re-viewed"
+}
