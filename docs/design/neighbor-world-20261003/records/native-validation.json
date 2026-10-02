@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checks": 11920,
+  "counts": {
+    "persons": 138,
+    "estates": 18,
+    "pieces": 55,
+    "claims": 3,
+    "stewards": 18
+  },
+  "errors": [],
+  "warnings": [
+    "기관 lineageId 빈 문자열은 string 타입상 허용하며 기관의 생물학적 혈통을 만들지 않기 위한 저작 선택이다. 기존 엔진의 일반 초기화 관행으로 확인되지 않았으므로 NF02/NF07 importer 정책 필요.",
+    "검증은 타입 하위집합과 참조·초기연대·재정 stock/flow이다. 게임 저장 로드나150년 실제엔진 실행 검증이 아니다."
+  ]
+}

@@ -1,0 +1,1582 @@
+{
+  "status": "design_proposal_not_engine_loaded",
+  "coordinateSystem": {
+    "origin": "top-left",
+    "width": 1600,
+    "height": 1000,
+    "anchor": "sprite-bottom-center"
+  },
+  "source": {
+    "path": "assets-inbox/lord-components/candidates-20261002/assets/map_region_1600x1000.png",
+    "sha256": "54d6ad354a71de8ace6a1029dc163b3758ff9a6330e7b030318661e961db71c8",
+    "sprites": [
+      {
+        "kind": "manor",
+        "path": "assets-inbox/lord-components/candidates-20261002/assets/map_manor_96x96.png",
+        "sha256": "35865158992c50355ac8b48917e0c70161d5abaee709b938cd6404a88c012191"
+      },
+      {
+        "kind": "market",
+        "path": "assets-inbox/lord-components/candidates-20261002/assets/map_market_96x96.png",
+        "sha256": "eb3d02cfc97067d724e4bb970d7e48bfb03e65c86d058ba279b7ebab9c299852"
+      },
+      {
+        "kind": "abbey",
+        "path": "assets-inbox/lord-components/candidates-20261002/assets/map_abbey_96x96.png",
+        "sha256": "19c8364a5306b86d912065c068d7ea2957342cf9bbd56185752bed9c5aa07217"
+      },
+      {
+        "kind": "mill",
+        "path": "assets-inbox/lord-components/candidates-20261002/assets/map_mill_96x96.png",
+        "sha256": "409dd604f4e90ec06833b681c3994a30ec8e8b4505e806029bc915f68a3fbc59"
+      }
+    ]
+  },
+  "scale": {
+    "kilometresPerPixel": 0.02,
+    "status": "게임 추정"
+  },
+  "network": {
+    "nodes": {
+      "p": [
+        665,
+        473
+      ],
+      "w": [
+        650,
+        415
+      ],
+      "w2": [
+        450,
+        473
+      ],
+      "w3": [
+        300,
+        470
+      ],
+      "fw": [
+        760,
+        423
+      ],
+      "ford": [
+        810,
+        400
+      ],
+      "fe": [
+        855,
+        375
+      ],
+      "j": [
+        925,
+        350
+      ],
+      "n": [
+        1000,
+        210
+      ],
+      "ne": [
+        1160,
+        150
+      ],
+      "e1": [
+        1040,
+        389
+      ],
+      "e2": [
+        1115,
+        455
+      ],
+      "e3": [
+        1235,
+        450
+      ],
+      "e4": [
+        1450,
+        518
+      ],
+      "bsw": [
+        770,
+        455
+      ],
+      "bse": [
+        810,
+        465
+      ],
+      "s0": [
+        975,
+        560
+      ],
+      "s1": [
+        1040,
+        568
+      ],
+      "s2": [
+        1130,
+        620
+      ],
+      "fn": [
+        1130,
+        485
+      ],
+      "fs": [
+        1130,
+        540
+      ],
+      "h01": [
+        665,
+        473
+      ],
+      "h02": [
+        310,
+        397
+      ],
+      "h03": [
+        465,
+        510
+      ],
+      "h04": [
+        890,
+        290
+      ],
+      "h05": [
+        1020,
+        335
+      ],
+      "h06": [
+        1260,
+        387
+      ],
+      "h07": [
+        1470,
+        530
+      ],
+      "h08": [
+        1135,
+        665
+      ],
+      "h09": [
+        1320,
+        755
+      ],
+      "h10": [
+        875,
+        455
+      ],
+      "h11": [
+        960,
+        230
+      ],
+      "h12": [
+        750,
+        430
+      ],
+      "h13": [
+        848,
+        367
+      ],
+      "h14": [
+        430,
+        700
+      ],
+      "h15": [
+        310,
+        210
+      ],
+      "h16": [
+        700,
+        195
+      ],
+      "h17": [
+        590,
+        555
+      ],
+      "h18": [
+        1160,
+        165
+      ]
+    },
+    "edges": [
+      {
+        "id": "route-p-w",
+        "from": "p",
+        "to": "w",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            665,
+            473
+          ],
+          [
+            650,
+            415
+          ]
+        ],
+        "lengthKm": 1.1982,
+        "crossing": false
+      },
+      {
+        "id": "route-w-w2",
+        "from": "w",
+        "to": "w2",
+        "kind": "painted_road",
+        "points": [
+          [
+            650,
+            415
+          ],
+          [
+            450,
+            473
+          ]
+        ],
+        "lengthKm": 4.1648,
+        "crossing": false
+      },
+      {
+        "id": "route-w2-w3",
+        "from": "w2",
+        "to": "w3",
+        "kind": "painted_road",
+        "points": [
+          [
+            450,
+            473
+          ],
+          [
+            300,
+            470
+          ]
+        ],
+        "lengthKm": 3.0006,
+        "crossing": false
+      },
+      {
+        "id": "route-w-fw",
+        "from": "w",
+        "to": "fw",
+        "kind": "painted_road",
+        "points": [
+          [
+            650,
+            415
+          ],
+          [
+            760,
+            423
+          ]
+        ],
+        "lengthKm": 2.2058,
+        "crossing": false
+      },
+      {
+        "id": "route-fw-ford",
+        "from": "fw",
+        "to": "ford",
+        "kind": "painted_ford_crossing",
+        "points": [
+          [
+            760,
+            423
+          ],
+          [
+            810,
+            400
+          ]
+        ],
+        "lengthKm": 1.1007,
+        "crossing": true
+      },
+      {
+        "id": "route-ford-fe",
+        "from": "ford",
+        "to": "fe",
+        "kind": "painted_ford_crossing",
+        "points": [
+          [
+            810,
+            400
+          ],
+          [
+            855,
+            375
+          ]
+        ],
+        "lengthKm": 1.0296,
+        "crossing": true
+      },
+      {
+        "id": "route-fe-j",
+        "from": "fe",
+        "to": "j",
+        "kind": "painted_road",
+        "points": [
+          [
+            855,
+            375
+          ],
+          [
+            925,
+            350
+          ]
+        ],
+        "lengthKm": 1.4866,
+        "crossing": false
+      },
+      {
+        "id": "route-j-n",
+        "from": "j",
+        "to": "n",
+        "kind": "painted_road",
+        "points": [
+          [
+            925,
+            350
+          ],
+          [
+            980,
+            260
+          ],
+          [
+            1000,
+            210
+          ]
+        ],
+        "lengthKm": 3.1865,
+        "crossing": false
+      },
+      {
+        "id": "route-n-ne",
+        "from": "n",
+        "to": "ne",
+        "kind": "painted_road",
+        "points": [
+          [
+            1000,
+            210
+          ],
+          [
+            1160,
+            150
+          ]
+        ],
+        "lengthKm": 3.4176,
+        "crossing": false
+      },
+      {
+        "id": "route-j-e1",
+        "from": "j",
+        "to": "e1",
+        "kind": "painted_road",
+        "points": [
+          [
+            925,
+            350
+          ],
+          [
+            1040,
+            389
+          ]
+        ],
+        "lengthKm": 2.4287,
+        "crossing": false
+      },
+      {
+        "id": "route-e1-e2",
+        "from": "e1",
+        "to": "e2",
+        "kind": "painted_road",
+        "points": [
+          [
+            1040,
+            389
+          ],
+          [
+            1115,
+            455
+          ]
+        ],
+        "lengthKm": 1.9981,
+        "crossing": false
+      },
+      {
+        "id": "route-e2-e3",
+        "from": "e2",
+        "to": "e3",
+        "kind": "painted_road",
+        "points": [
+          [
+            1115,
+            455
+          ],
+          [
+            1235,
+            450
+          ]
+        ],
+        "lengthKm": 2.4021,
+        "crossing": false
+      },
+      {
+        "id": "route-e3-e4",
+        "from": "e3",
+        "to": "e4",
+        "kind": "painted_road",
+        "points": [
+          [
+            1235,
+            450
+          ],
+          [
+            1340,
+            488
+          ],
+          [
+            1450,
+            518
+          ]
+        ],
+        "lengthKm": 4.5136,
+        "crossing": false
+      },
+      {
+        "id": "route-p-bsw",
+        "from": "p",
+        "to": "bsw",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            665,
+            473
+          ],
+          [
+            770,
+            455
+          ]
+        ],
+        "lengthKm": 2.1306,
+        "crossing": false
+      },
+      {
+        "id": "route-bsw-bse",
+        "from": "bsw",
+        "to": "bse",
+        "kind": "proposed_tributary_bridge_crossing",
+        "points": [
+          [
+            770,
+            455
+          ],
+          [
+            810,
+            465
+          ]
+        ],
+        "lengthKm": 0.8246,
+        "crossing": true
+      },
+      {
+        "id": "route-bse-s0",
+        "from": "bse",
+        "to": "s0",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            810,
+            465
+          ],
+          [
+            865,
+            490
+          ],
+          [
+            915,
+            535
+          ],
+          [
+            975,
+            560
+          ]
+        ],
+        "lengthKm": 3.8537,
+        "crossing": false
+      },
+      {
+        "id": "route-s0-s1",
+        "from": "s0",
+        "to": "s1",
+        "kind": "painted_road",
+        "points": [
+          [
+            975,
+            560
+          ],
+          [
+            1040,
+            568
+          ]
+        ],
+        "lengthKm": 1.3098,
+        "crossing": false
+      },
+      {
+        "id": "route-s1-s2",
+        "from": "s1",
+        "to": "s2",
+        "kind": "painted_road",
+        "points": [
+          [
+            1040,
+            568
+          ],
+          [
+            1130,
+            620
+          ]
+        ],
+        "lengthKm": 2.0788,
+        "crossing": false
+      },
+      {
+        "id": "route-e2-fn",
+        "from": "e2",
+        "to": "fn",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            1115,
+            455
+          ],
+          [
+            1130,
+            485
+          ]
+        ],
+        "lengthKm": 0.6708,
+        "crossing": false
+      },
+      {
+        "id": "route-fn-fs",
+        "from": "fn",
+        "to": "fs",
+        "kind": "proposed_ferry_crossing",
+        "points": [
+          [
+            1130,
+            485
+          ],
+          [
+            1130,
+            540
+          ]
+        ],
+        "lengthKm": 1.1,
+        "crossing": true
+      },
+      {
+        "id": "route-fs-s1",
+        "from": "fs",
+        "to": "s1",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            1130,
+            540
+          ],
+          [
+            1040,
+            568
+          ]
+        ],
+        "lengthKm": 1.8851,
+        "crossing": false
+      },
+      {
+        "id": "route-h01-p",
+        "from": "h01",
+        "to": "p",
+        "kind": "anchor",
+        "points": [
+          [
+            665,
+            473
+          ],
+          [
+            665,
+            473
+          ]
+        ],
+        "lengthKm": 0,
+        "crossing": false
+      },
+      {
+        "id": "route-h02-w3",
+        "from": "h02",
+        "to": "w3",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            310,
+            397
+          ],
+          [
+            300,
+            470
+          ]
+        ],
+        "lengthKm": 1.4736,
+        "crossing": false
+      },
+      {
+        "id": "route-h03-w2",
+        "from": "h03",
+        "to": "w2",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            465,
+            510
+          ],
+          [
+            450,
+            473
+          ]
+        ],
+        "lengthKm": 0.7985,
+        "crossing": false
+      },
+      {
+        "id": "route-h04-j",
+        "from": "h04",
+        "to": "j",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            890,
+            290
+          ],
+          [
+            925,
+            350
+          ]
+        ],
+        "lengthKm": 1.3892,
+        "crossing": false
+      },
+      {
+        "id": "route-h05-e1",
+        "from": "h05",
+        "to": "e1",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            1020,
+            335
+          ],
+          [
+            1040,
+            389
+          ]
+        ],
+        "lengthKm": 1.1517,
+        "crossing": false
+      },
+      {
+        "id": "route-h06-e3",
+        "from": "h06",
+        "to": "e3",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            1260,
+            387
+          ],
+          [
+            1235,
+            450
+          ]
+        ],
+        "lengthKm": 1.3556,
+        "crossing": false
+      },
+      {
+        "id": "route-h07-e4",
+        "from": "h07",
+        "to": "e4",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            1470,
+            530
+          ],
+          [
+            1450,
+            518
+          ]
+        ],
+        "lengthKm": 0.4665,
+        "crossing": false
+      },
+      {
+        "id": "route-h08-s2",
+        "from": "h08",
+        "to": "s2",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            1135,
+            665
+          ],
+          [
+            1130,
+            620
+          ]
+        ],
+        "lengthKm": 0.9055,
+        "crossing": false
+      },
+      {
+        "id": "route-h09-s2",
+        "from": "h09",
+        "to": "s2",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            1320,
+            755
+          ],
+          [
+            1245,
+            720
+          ],
+          [
+            1180,
+            680
+          ],
+          [
+            1130,
+            620
+          ]
+        ],
+        "lengthKm": 4.7438,
+        "crossing": false
+      },
+      {
+        "id": "route-h10-bse",
+        "from": "h10",
+        "to": "bse",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            875,
+            455
+          ],
+          [
+            810,
+            465
+          ]
+        ],
+        "lengthKm": 1.3153,
+        "crossing": false
+      },
+      {
+        "id": "route-h11-n",
+        "from": "h11",
+        "to": "n",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            960,
+            230
+          ],
+          [
+            1000,
+            210
+          ]
+        ],
+        "lengthKm": 0.8944,
+        "crossing": false
+      },
+      {
+        "id": "route-h12-fw",
+        "from": "h12",
+        "to": "fw",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            750,
+            430
+          ],
+          [
+            760,
+            423
+          ]
+        ],
+        "lengthKm": 0.2441,
+        "crossing": false
+      },
+      {
+        "id": "route-h13-fe",
+        "from": "h13",
+        "to": "fe",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            848,
+            367
+          ],
+          [
+            855,
+            375
+          ]
+        ],
+        "lengthKm": 0.2126,
+        "crossing": false
+      },
+      {
+        "id": "route-h14-p",
+        "from": "h14",
+        "to": "p",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            430,
+            700
+          ],
+          [
+            665,
+            473
+          ]
+        ],
+        "lengthKm": 6.5346,
+        "crossing": false
+      },
+      {
+        "id": "route-h15-w3",
+        "from": "h15",
+        "to": "w3",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            310,
+            210
+          ],
+          [
+            320,
+            325
+          ],
+          [
+            300,
+            470
+          ]
+        ],
+        "lengthKm": 5.2361,
+        "crossing": false
+      },
+      {
+        "id": "route-h16-n",
+        "from": "h16",
+        "to": "n",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            700,
+            195
+          ],
+          [
+            810,
+            235
+          ],
+          [
+            905,
+            245
+          ],
+          [
+            1000,
+            210
+          ]
+        ],
+        "lengthKm": 6.2763,
+        "crossing": false
+      },
+      {
+        "id": "route-h17-p",
+        "from": "h17",
+        "to": "p",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            590,
+            555
+          ],
+          [
+            665,
+            473
+          ]
+        ],
+        "lengthKm": 2.2225,
+        "crossing": false
+      },
+      {
+        "id": "route-h18-ne",
+        "from": "h18",
+        "to": "ne",
+        "kind": "proposed_spur",
+        "points": [
+          [
+            1160,
+            165
+          ],
+          [
+            1160,
+            150
+          ]
+        ],
+        "lengthKm": 0.3,
+        "crossing": false
+      }
+    ]
+  },
+  "placements": [
+    {
+      "houseId": "h01",
+      "houseNameEn": "de Haverel",
+      "houseNameKo": "드 해버럴",
+      "estateId": "estate-home",
+      "x": 665,
+      "y": 473,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 0,
+        "edgeIds": []
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0,
+          0
+        ],
+        "mounted": [
+          0,
+          0
+        ],
+        "crossings": [],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h02",
+      "houseNameEn": "de Coldmere",
+      "houseNameKo": "드 콜드미어",
+      "estateId": "estate-h02",
+      "x": 310,
+      "y": 397,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 9.84,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-w2",
+          "route-w2-w3",
+          "route-h02-w3"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.328,
+          0.492
+        ],
+        "mounted": [
+          0.219,
+          0.328
+        ],
+        "crossings": [],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h03",
+      "houseNameEn": "de Brancel",
+      "houseNameKo": "드 브랑셀",
+      "estateId": "estate-h03",
+      "x": 465,
+      "y": 510,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 6.16,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-w2",
+          "route-h03-w2"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.205,
+          0.308
+        ],
+        "mounted": [
+          0.137,
+          0.205
+        ],
+        "crossings": [],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h04",
+      "houseNameEn": "de Vauterre",
+      "houseNameKo": "드 보테르",
+      "estateId": "estate-h04",
+      "x": 890,
+      "y": 290,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 8.41,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-fw",
+          "route-fw-ford",
+          "route-ford-fe",
+          "route-fe-j",
+          "route-h04-j"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.28,
+          0.42
+        ],
+        "mounted": [
+          0.187,
+          0.28
+        ],
+        "crossings": [
+          "painted_ford_crossing"
+        ],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h05",
+      "houseNameEn": "de Grimesand",
+      "houseNameKo": "드 그라임샌드",
+      "estateId": "estate-h05",
+      "x": 1020,
+      "y": 335,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 10.6,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-fw",
+          "route-fw-ford",
+          "route-ford-fe",
+          "route-fe-j",
+          "route-j-e1",
+          "route-h05-e1"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.353,
+          0.53
+        ],
+        "mounted": [
+          0.236,
+          0.353
+        ],
+        "crossings": [
+          "painted_ford_crossing"
+        ],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h06",
+      "houseNameEn": "de Wystanley",
+      "houseNameKo": "드 위스턴리",
+      "estateId": "estate-h06",
+      "x": 1260,
+      "y": 387,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 15.21,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-fw",
+          "route-fw-ford",
+          "route-ford-fe",
+          "route-fe-j",
+          "route-j-e1",
+          "route-e1-e2",
+          "route-e2-e3",
+          "route-h06-e3"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.507,
+          0.761
+        ],
+        "mounted": [
+          0.338,
+          0.507
+        ],
+        "crossings": [
+          "painted_ford_crossing"
+        ],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h07",
+      "houseNameEn": "de Hollenby",
+      "houseNameKo": "드 홀렌비",
+      "estateId": "estate-h07",
+      "x": 1470,
+      "y": 530,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 18.83,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-fw",
+          "route-fw-ford",
+          "route-ford-fe",
+          "route-fe-j",
+          "route-j-e1",
+          "route-e1-e2",
+          "route-e2-e3",
+          "route-e3-e4",
+          "route-h07-e4"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.628,
+          0.941
+        ],
+        "mounted": [
+          0.418,
+          0.628
+        ],
+        "crossings": [
+          "painted_ford_crossing"
+        ],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h08",
+      "houseNameEn": "de Querney",
+      "houseNameKo": "드 쿼니",
+      "estateId": "estate-h08",
+      "x": 1135,
+      "y": 665,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 11.1,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-bsw",
+          "route-bsw-bse",
+          "route-bse-s0",
+          "route-s0-s1",
+          "route-s1-s2",
+          "route-h08-s2"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.37,
+          0.555
+        ],
+        "mounted": [
+          0.247,
+          0.37
+        ],
+        "crossings": [
+          "proposed_tributary_bridge_crossing"
+        ],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h09",
+      "houseNameEn": "de Tamerel",
+      "houseNameKo": "드 태머럴",
+      "estateId": "estate-h09",
+      "x": 1320,
+      "y": 755,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 14.94,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-bsw",
+          "route-bsw-bse",
+          "route-bse-s0",
+          "route-s0-s1",
+          "route-s1-s2",
+          "route-h09-s2"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.498,
+          0.747
+        ],
+        "mounted": [
+          0.332,
+          0.498
+        ],
+        "crossings": [
+          "proposed_tributary_bridge_crossing"
+        ],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h10",
+      "houseNameEn": "Abbey of Saint Mary at Avenel",
+      "houseNameKo": "아브넬 성모 수도원",
+      "estateId": "estate-h10",
+      "x": 875,
+      "y": 455,
+      "sprite": "abbey",
+      "routeFromPlayer": {
+        "distanceKm": 4.27,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-bsw",
+          "route-bsw-bse",
+          "route-h10-bse"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.142,
+          0.213
+        ],
+        "mounted": [
+          0.095,
+          0.142
+        ],
+        "crossings": [
+          "proposed_tributary_bridge_crossing"
+        ],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h11",
+      "houseNameEn": "See of Merrowen",
+      "houseNameKo": "메로언 주교좌",
+      "estateId": "estate-h11",
+      "x": 960,
+      "y": 230,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 11.1,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-fw",
+          "route-fw-ford",
+          "route-ford-fe",
+          "route-fe-j",
+          "route-j-n",
+          "route-h11-n"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.37,
+          0.555
+        ],
+        "mounted": [
+          0.247,
+          0.37
+        ],
+        "crossings": [
+          "painted_ford_crossing"
+        ],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h12",
+      "houseNameEn": "Chapman",
+      "houseNameKo": "채프먼",
+      "estateId": "estate-h12",
+      "x": 750,
+      "y": 430,
+      "sprite": "market",
+      "routeFromPlayer": {
+        "distanceKm": 3.65,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-fw",
+          "route-h12-fw"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.122,
+          0.182
+        ],
+        "mounted": [
+          0.081,
+          0.122
+        ],
+        "crossings": [],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h13",
+      "houseNameEn": "Miller",
+      "houseNameKo": "밀러",
+      "estateId": "estate-h13",
+      "x": 848,
+      "y": 367,
+      "sprite": "market",
+      "routeFromPlayer": {
+        "distanceKm": 5.75,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-fw",
+          "route-fw-ford",
+          "route-ford-fe",
+          "route-h13-fe"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.192,
+          0.287
+        ],
+        "mounted": [
+          0.128,
+          0.192
+        ],
+        "crossings": [
+          "painted_ford_crossing"
+        ],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h14",
+      "houseNameEn": "de Sauvenay",
+      "houseNameKo": "드 소브네",
+      "estateId": "estate-h14",
+      "x": 430,
+      "y": 700,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 6.53,
+        "edgeIds": [
+          "route-h01-p",
+          "route-h14-p"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.218,
+          0.327
+        ],
+        "mounted": [
+          0.145,
+          0.218
+        ],
+        "crossings": [],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h15",
+      "houseNameEn": "de Ravenholt",
+      "houseNameKo": "드 레이븐홀트",
+      "estateId": "estate-h15",
+      "x": 310,
+      "y": 210,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 13.6,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-w2",
+          "route-w2-w3",
+          "route-h15-w3"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.453,
+          0.68
+        ],
+        "mounted": [
+          0.302,
+          0.453
+        ],
+        "crossings": [],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h16",
+      "houseNameEn": "de Blaucourt",
+      "houseNameKo": "드 블로쿠르",
+      "estateId": "estate-h16",
+      "x": 700,
+      "y": 195,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 16.48,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-fw",
+          "route-fw-ford",
+          "route-ford-fe",
+          "route-fe-j",
+          "route-j-n",
+          "route-h16-n"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.549,
+          0.824
+        ],
+        "mounted": [
+          0.366,
+          0.549
+        ],
+        "crossings": [
+          "painted_ford_crossing"
+        ],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h17",
+      "houseNameEn": "Fitzaldric",
+      "houseNameKo": "피츠올드릭",
+      "estateId": "estate-h17",
+      "x": 590,
+      "y": 555,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 2.22,
+        "edgeIds": [
+          "route-h01-p",
+          "route-h17-p"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.074,
+          0.111
+        ],
+        "mounted": [
+          0.049,
+          0.074
+        ],
+        "crossings": [],
+        "delayExcluded": true
+      }
+    },
+    {
+      "houseId": "h18",
+      "houseNameEn": "de Montgarnier",
+      "houseNameKo": "드 몽가르니에",
+      "estateId": "estate-h18",
+      "x": 1160,
+      "y": 165,
+      "sprite": "manor",
+      "routeFromPlayer": {
+        "distanceKm": 13.93,
+        "edgeIds": [
+          "route-h01-p",
+          "route-p-w",
+          "route-w-fw",
+          "route-fw-ford",
+          "route-ford-fe",
+          "route-fe-j",
+          "route-j-n",
+          "route-n-ne",
+          "route-h18-ne"
+        ]
+      },
+      "travelDays": {
+        "status": "게임 추정",
+        "foot": [
+          0.464,
+          0.697
+        ],
+        "mounted": [
+          0.31,
+          0.464
+        ],
+        "crossings": [
+          "painted_ford_crossing"
+        ],
+        "delayExcluded": true
+      }
+    }
+  ],
+  "crossingDelays": {
+    "status": "게임 추정, days; separate from route-speed estimate",
+    "normalFord": [
+      0,
+      0.05
+    ],
+    "normalBridge": [
+      0,
+      0.02
+    ],
+    "normalFerry": [
+      0.02,
+      0.15
+    ],
+    "flood": [
+      0.25,
+      1
+    ],
+    "severeFlood": "crossing unavailable; reroute or defer"
+  },
+  "limitations": [
+    "지도 삽화에 측량 척도 없음",
+    "파선은 신규 설계 지선이며 원본에 그려진 길이 아님",
+    "남쪽 지류 다리와 동부 나루는 신규 제안",
+    "수로 이동 및 해안 없음",
+    "다리 제안의 권리·비용·건설 동의는 별도 콘텐츠 필요"
+  ]
+}

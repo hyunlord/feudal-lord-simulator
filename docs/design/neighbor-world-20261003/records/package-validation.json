@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "checks": 879,
+  "counts": {
+    "groups": 18,
+    "neighbours": 16,
+    "initialPersons": 138,
+    "futurePersons": 186,
+    "rules": 14,
+    "majorEvents": 32,
+    "engineGapCategories": 14,
+    "portraitShortages": 53
+  },
+  "sourceCommit": "618c5ec28b2c191e85e0b448da7e0739660ad88a",
+  "cloneClean": true,
+  "visualReview": {
+    "map": "1600x1000 JPEG viewed;18 markers and proposed crossings legible",
+    "portraits": "18 heads at96px viewed; shared-source-lineage resemblance disclosed"
+  },
+  "errors": []
+}

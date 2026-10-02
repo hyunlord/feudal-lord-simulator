@@ -11,3 +11,4 @@ docs/design/title-*/**/*.png filter=lfs diff=lfs merge=lfs -text
 docs/design/tutorial-*/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 docs/design/brand/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 docs/design/brand/**/*.png filter=lfs diff=lfs merge=lfs -text
+docs/design/neighbor-world-*/**/*.jpg filter=lfs diff=lfs merge=lfs -text
