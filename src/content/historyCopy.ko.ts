@@ -6,6 +6,7 @@ import { BUILDING_COPY } from "./buildingCatalog.ko";
  */
 import { buildingHistoryName } from "./buildingCatalog.ko";
 import { factionDisplayName, factionReasonLine } from "./factionCopy.ko";
+import { PETITION_CHOICES } from "./petitionChoices.ko";
 import { GENTRY_NAMES_KO } from "./gentryNames";
 import { SURNAMES_KO } from "./personNames.ko";
 
@@ -62,25 +63,25 @@ export const HISTORY_EVENT_NAMES: Readonly<Record<string, string>> = {
 const eventName = (id: string) => HISTORY_EVENT_NAMES[id] ?? id;
 
 export const HISTORY_ERA_NAMES: Readonly<Record<string, string>> = {
-  saturation: "포화", famine: "기근과 취약", war: "전쟁 동원", collapse: "인구 붕괴와 노동 반전", specialisation: "재편과 전문화",
+  saturation: "포화", famine: "기근과 취약", war: "전쟁 동원", collapse: "역병 뒤의 일손 부족", specialisation: "재편과 전문화",
 };
 
 /** Everyday decisions of a season, written as one line per kind (HL-2 ①). */
 const BUNDLE: Readonly<Record<string, (params: P) => string>> = {
-  build: params => `이번 계절 건물 ${n(params, "count")}곳의 공사를 놓았다`,
+  build: params => `이번 계절 건물 ${n(params, "count")}곳의 공사를 시작했다`,
   road: params => `이번 계절 길을 ${n(params, "count")}번 고쳤다`,
   zone: params => `이번 계절 구역을 ${n(params, "count")}번 칠하거나 지웠다`,
   house: params => `이번 계절 집을 ${n(params, "count")}번 합치거나 헐었다`,
   cancel: params => `이번 계절 공사 ${n(params, "count")}곳을 거뒀다`,
   operation: params => `이번 계절 시설 가동을 ${n(params, "count")}번 바꿨다`,
-  wall_priority: params => `이번 계절 성벽 공사 우선을 ${n(params, "count")}번 정했다`,
+  wall_priority: params => `이번 계절 성벽 공사 우선순위를 ${n(params, "count")}번 정했다`,
   lawsuit: params => `이번 계절 소송에 ${n(params, "count")}번 손을 썼다`,
   marriage: params => `이번 계절 혼인 협상·약속에 ${n(params, "count")}번 손을 썼다`,
 };
 
 /** PERSON-0: trades a household head takes (PS-4). */
 export const HISTORY_OCCUPATIONS: Readonly<Record<string, string>> = {
-  miller: "방앗간", sawyer: "제재소", mason: "석공장", chapman: "시장", husbandman: "헛간", woodward: "벌목장", quarrier: "채석장",
+  miller: "방앗간", sawyer: "제재소", mason: "석공소", chapman: "시장", husbandman: "헛간", woodward: "벌목소", quarrier: "채석장",
   granger: "곡창", storekeeper: "창고",
 };
 /** FAIL-3 (FL-3, FL-1, FL-7): the decline's causes, the lord's rights and the houses' names in Korean. */
@@ -94,31 +95,12 @@ export const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
   market_charter: "상인의 시장권 청원", restore_right: "권리 복원 청원",
   wool_payment: "양모 공납 칙령", levy_response: "징집 명령", war_funding: "전쟁 보조세 요구", refugee_admission: "피란민의 청원", wall_or_market: "석벽과 시장 사이의 선택",
   vacant_priest: "빈 사제 자리", wages: "일꾼들의 임금 요구", land_redistribution: "빈 필지의 주인", cash_rent: "부역을 돈으로 바꾸자는 청원",
-  guild_charter: "직인들의 길드 결성 요구", tax_collection: "인두세를 걷는 방식", cloth_or_grain: "직물과 곡물 사이의 선택", borough_charter: "도시의 자치 특허 요구서",
-  royal_tax: "국왕의 과세 사절", heir_choice: "늙은 영주의 후계자", borough_autonomy: "자치 특허의 인장", legacy_choice: "남길 유산 하나",
+  guild_charter: "길드 인가 청원", tax_collection: "인두세 징수 방식", cloth_or_grain: "직물 대 곡물", borough_charter: "자치 특허 협상",
+  royal_tax: "왕실 보조세 요구", heir_choice: "늙은 영주의 후계자", borough_autonomy: "자치 특허의 인장", legacy_choice: "남길 유산 하나",
   guild_dispute: "길드와 상인 사이의 다툼", church_rebuilding: "교구 교회 증축 청원",
 };
-export const WAR_CHOICES: Readonly<Record<string, Readonly<Record<string, string>>>> = {
-  wool_payment: { accept: "현물로 낸다", accept_with_price: "현금으로 낸다", refuse: "거절", expired: "답하지 않음" },
-  levy_response: { accept: "사람을 보낸다", accept_with_price: "면제금을 낸다", refuse: "거절", expired: "답하지 않음" },
-  war_funding: { accept: "상인에게 빌린다", accept_with_price: "세금을 올린다", refuse: "거절", expired: "답하지 않음" },
-  refugee_admission: { accept: "모두 받아들인다", accept_with_price: "절반만 받는다", refuse: "돌려보낸다", expired: "답하지 않음" },
-  wall_or_market: { accept: "석벽을 쌓는다", accept_with_price: "성벽세로 석벽을 쌓는다", refuse: "시장을 넓힌다", expired: "답하지 않음" },
-  vacant_priest: { accept: "수도원에 사제를 청한다", refuse: "평신도 서기를 세운다", expired: "답하지 않음" },
-  wages: { accept: "임금을 올린다", refuse: "조례대로 묶는다", expired: "답하지 않음" },
-  land_redistribution: { accept: "이웃 가구가 넓혀 쓴다", accept_with_price: "새 이주민을 받는다", expired: "답하지 않음" },
-  cash_rent: { accept: "돈으로 바꾼다", refuse: "부역을 지킨다", expired: "답하지 않음" },
-  guild_charter: { accept: "길드를 인가한다", refuse: "길드를 거부한다", expired: "답하지 않음" },
-  tax_collection: { accept: "도시 공동체에 맡긴다", refuse: "영주의 징수원이 걷는다", expired: "답하지 않음" },
-  cloth_or_grain: { accept: "직물에 걸고 쟁기밭을 양에게 준다", refuse: "곡물을 지킨다", expired: "답하지 않음" },
-  borough_charter: { accept: "시장과 통행세 일부를 넘긴다", refuse: "특허를 거절한다", expired: "답하지 않음" },
-  royal_tax: { accept: "과세를 낸다", refuse: "감면을 청원한다", expired: "답하지 않음" },
-  heir_choice: { accept: "맏아들에게 잇게 한다", accept_with_price: "딸의 남편에게 잇게 한다", refuse: "조카에게 잇게 한다", expired: "답하지 않음" },
-  borough_autonomy: { accept: "자치 특허에 인장을 찍는다", refuse: "가문이 계속 다스린다", expired: "답하지 않음" },
-  legacy_choice: { accept: "도시에 길드홀과 시청을 남긴다", accept_with_price: "가문의 영주관과 문장, 혈통 기록을 남긴다", refuse: "교회를 넓히고 기도처를 세운다", expired: "답하지 않음" },
-  guild_dispute: { accept: "길드 편을 든다", refuse: "상인 편을 든다", expired: "답하지 않음" },
-  church_rebuilding: { accept: "교회를 넓혀 짓는다", refuse: "증축을 미룬다", expired: "답하지 않음" },
-};
+/** The chapters' petitions, each answer's meaning (`petitionChoices.ko.ts`; the name kept for the screens that read it). */
+export const WAR_CHOICES = PETITION_CHOICES;
 /** PERSON-1a (LN-4): a birth's line by where the child's name came from. */
 const NAME_FROM: Readonly<Record<string, string>> = {
   father: "아이가 태어나 아버지 이름을 받았다", grandfather: "아이가 태어나 할아버지 이름을 받았다",
@@ -138,11 +120,11 @@ const TERM_KO: Readonly<Record<string, string>> = { cash: "계약금", pension: 
   debt_assumption: "채무 인수", consent: "혼인 동의", inheritance_non_infringement: "상속 기대권 불침해", residence: "배우자 거주", land_use: "토지 사용수익",
   wardship: "후견 합의", jointure: "과부산", debt_after_inheritance: "상속 뒤 빚 갚기" };
 // LM-E2: the estates' words — holders, pieces, a claim's basis, a suit's stages.
-const HOLDER_KO: Readonly<Record<string, string>> = { lord: "영주", overlord: "대영주", crown: "국왕", merchants: "상인들", townsfolk: "주민들",
+const HOLDER_KO: Readonly<Record<string, string>> = { lord: "영주", overlord: "상위 영주", crown: "국왕", merchants: "상인들", townsfolk: "주민들",
   neighbour_1: "첫째 이웃 영주", neighbour_2: "둘째 이웃 영주", bishop: "주교" };
 const holderWord = (holder: string) => HOLDER_KO[holder] ?? (holder.startsWith("person:") ? "옛 가문의 친족" : holder.startsWith("estate:") ? "이웃 영주" : holder);
 const PIECE_KO: Readonly<Record<string, string>> = { land_rent: "토지 지대", manor_court: "장원 법정", mill: "방앗간 사용료", market: "시장 좌판세",
-  tolls: "통행세", fishery: "어업권", advowson: "교회 추천권", hunting: "사냥권" };
+  tolls: "통행세", fishery: "어업권", advowson: "성직자 추천권", hunting: "사냥권" };
 const pieceWord = (piece: string, estate: string) => piece === "" ? (estate === "" ? "영지" : "영지 전체") : PIECE_KO[piece.slice(piece.lastIndexOf(":") + 1)] ?? piece;
 const CLAIM_BASIS_KO: Readonly<Record<string, string>> = { inheritance: "상속", marriage: "혼인", purchase_deed: "매입 문서", grant: "하사", old_possession: "오래된 점유" };
 const basisWord = (basis: string) => CLAIM_BASIS_KO[basis] ?? basis;
@@ -152,6 +134,9 @@ const ACTOR_KO: Readonly<Record<string, string>> = { households: "가구들", me
 const buildingWord = (kind: string) => BUILDING_COPY[kind as keyof typeof BUILDING_COPY]?.name ?? kind;
 const projectWord = (what: string) => what === "road" ? "길" : what.startsWith("zone:") ? "구역" : what === "rebuild_house" ? "집 재건"
   : what === "demolish_house" ? "집 헐기" : what === "farmstead_crop" ? "작물 바꾸기" : buildingWord(what);
+
+/** COPY-1e (CA-050): a petition left unanswered, one sentence for every era's. */
+const unansweredLine = (params: P) => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`;
 
 export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> = {
   "decision.bundle": params => (BUNDLE[s(params, "decisionKind")] ?? (() => s(params, "decisionKind")))(params),
@@ -175,24 +160,25 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "plague.new_graves": params => `교회 묘지에 새 무덤이 늘었다 — ${n(params, "dead")}명`,
   "plague.empty_streets": params => `거리가 비었다 — 빈집 ${n(params, "houses")}채`,
   "plague.abandoned_fields": params => `역병이 물러갔다 — ${n(params, "population")}명 가운데 ${n(params, "dead")}명이 죽고, 빈 필지 ${n(params, "houses")}곳, 밭이 버려졌다`,
-  "plague.ordinance": params => n(params, "fine") > 0 ? `노동자 조례가 낭독되었다 — 임금을 올린 영주에게 벌금 ${moneyWords(n(params, "fine"))}` : "노동자 조례가 낭독되었다",
+  // COPY-1e (CA-007): the 1351 Statute of Labourers (the 1349 Ordinance is 노동자 조례); proclaimed, not read by the king.
+  "plague.ordinance": params => n(params, "fine") > 0 ? `노동자법이 공포되었다 — 임금을 올린 영주에게 벌금 ${moneyWords(n(params, "fine"))}` : "노동자법이 공포되었다",
   "plague.resettlement": () => "빈집에 새 가족이 들기 시작했다",
   "plague.second": () => "두 번째 역병이 왔다",
   "plague.second_ended": params => `두 번째 역병이 물러갔다 — ${n(params, "dead")}명이 죽었다`,
-  "plague.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
+  "plague.unanswered": params => unansweredLine(params),
   // F4-A (RG-1…RG-10): the reorganisation.
   "reorg.wage_competition": () => "이웃 장원이 더 높은 임금으로 일꾼을 부른다",
   "reorg.textile_street": () => "직조공 집이 늘어 직물 거리가 생겼다",
-  "reorg.alehouse_boom": () => "에일하우스마다 사람이 붐빈다",
+  "reorg.alehouse_boom": () => "에일집마다 사람이 붐빈다",
   "reorg.petitions_surge": () => "상인과 직인 무리의 청원이 쏟아진다",
   "reorg.guild_founded": () => "직인 길드가 섰다",
-  "reorg.weavers_left": params => `직조공 가구 ${n(params, "households")}곳이 길드가 있는 도시로 떠났다`,
-  "reorg.overlord_warning": params => `상위 영주가 커지는 도시를 경고했다 — 도시의 힘 ${n(params, "influence")}`,
+  "reorg.weavers_left": params => `직조공 ${n(params, "households")}가구가 길드가 있는 도시로 떠났다`,
+  "reorg.overlord_warning": params => `상위 영주가 도시의 성장을 경계했다 — 도시의 힘 ${n(params, "influence")}`,
   "reorg.poll_tax": params => `인두세를 걷었다 — 영주의 몫 ${moneyWords(n(params, "amount"))}`,
   "reorg.rebellion_rumour": params => s(params, "outcome") === "chased" ? "농민 반란의 소문 — 사람들이 세금 징수원을 쫓아내고 장원 법정 기록을 태웠다" : "농민 반란의 소문이 돌았지만 도시는 조용했다",
   "reorg.autonomy_request": () => "도시가 자치 특허를 요구하는 문서를 올렸다",
   "reorg.charter": params => s(params, "charter") === "partial" ? "자치 특허를 맺었다 — 시장과 통행세 일부가 도시로 넘어갔다" : "자치 특허를 내주지 않았다",
-  "reorg.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
+  "reorg.unanswered": params => unansweredLine(params),
   // F5-A (LG-1…LG-8): chapter 5, autonomy and legacy.
   "legacy.mayor_demand": params => s(params, "candidate") === "" ? "상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구했다"
     : `상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구했다 — 후보 ${s(params, "candidate")}`,
@@ -202,7 +188,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "lord.wardship_begun": params => { const lord = s(params, "lord"); const guardian = s(params, "guardian"); return guardian === "" ? `${lord}${josa(lord, "이", "가")} 미성년 영주다 — 상위 영주가 후견한다` : `${lord}${josa(lord, "이", "가")} 미성년 영주다 — 후견인 ${guardian}`; },
   "lord.wardship_ended": params => { const lord = s(params, "lord"); return `${lord}${josa(lord, "이", "가")} 성년이 되어 후견이 끝났다`; },
   "legacy.heir_seated": params => { const heir = s(params, "heir"); return `${heir}${josa(heir, "이", "가")} 가문을 이었다 — ${s(params, "relation")}`; },
-  "legacy.royal_subsidy": params => `국왕에게 과세를 냈다 — ${moneyWords(n(params, "amount"))}`,
+  "legacy.royal_subsidy": params => `국왕에게 보조세를 냈다 — ${moneyWords(n(params, "amount"))}`,
   "legacy.city_seal": () => "도시가 제 인장을 새겼다",
   "legacy.charter_sealed": params => s(params, "mayor") === "" ? "자치 특허에 도시 인장이 찍혔다" : `자치 특허에 도시 인장이 찍혔다 — 첫 시장 ${s(params, "mayor")}`,
   "legacy.charter_refused": params => `영주가 자치 특허를 거절했다 — 도시의 반발 ${n(params, "backlash")}`,
@@ -211,20 +197,20 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "legacy.legacy_record": params => s(params, "legacy") === "" ? "유산 기록을 봉인했다 — 남긴 것 없이" : `유산 기록을 봉인했다 — ${s(params, "legacy")}`,
   "legacy.last_market": params => `마지막 장날 — ${s(params, "ending")}`,
   // FIX-9 (LG-13): the interlude 1384–1400.
-  "legacy.staple": () => "양모 집산지(Staple)가 옮겨지고 양모 수출이 묶였다 — 직물 값이 오른다",
+  "legacy.staple": () => "칼레의 양모 지정 무역 제도가 잠시 중단되었다 — 직물 값이 오른다(게임 효과)",
   "legacy.guild_dispute": () => "길드와 상인이 직물을 파는 권리를 두고 다툰다",
   "legacy.market_fire": params => `장터에 불이 났다 — 수리에 ${moneyWords(n(params, "cost"))}`,
   "legacy.church_rebuilding": () => "교구가 낡은 교회의 증축을 청했다",
   "legacy.nave_rebuilt": () => "교회의 새 회중석이 섰다",
   "legacy.deposition": () => "리처드 2세가 폐위되고 헨리 4세가 즉위했다",
-  "legacy.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
+  "legacy.unanswered": params => unansweredLine(params),
   "war.beacon": () => "해안의 봉화가 올랐다",
   "war.raid": params => `해안 습격이 닥쳤다 — 불탄 집 ${n(params, "burntHouses")}, 빼앗긴 물자 ${n(params, "looted")}, 빼앗긴 돈 ${moneyWords(n(params, "coin"))}`,
   "war.conscripts_left": params => `징집된 남자 ${n(params, "men")}명이 떠났다`,
   "war.conscripts_returned": params => n(params, "lost") === 0 ? `징집된 남자 ${n(params, "men")}명이 모두 돌아왔다` : `징집된 남자들이 돌아왔다 — ${n(params, "lost")}명은 돌아오지 못했다`,
   "war.favour_lost": () => "왕실의 신임을 잃었다",
   "war.licence": () => "왕실 조달 면허를 받았다",
-  "war.unanswered": params => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`,
+  "war.unanswered": params => unansweredLine(params),
   // FACTION-0 (FX-4): a faction's relation moved.
   // FIX-12 (item 3, QA-036): the names are drawn from the ids when the record is read (item 4).
   "faction.leader_succeeded": params => { const before = s(params, "predecessor"), next = s(params, "leader");
@@ -305,7 +291,8 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "marriage.inherited": () => "아내를 통해 이웃 영지를 물려받았다 — 이제 우리 영지다",
   "marriage.lost": () => "이웃 영지는 그의 아들에게 갔다",
   // FIX-13 (NG-5b): what was not cash.
-  "marriage.deferred_void": params => `영지가 오지 않아 상속 뒤 갚기로 한 이웃의 빚 ${moneyWords(n(params, "amount"))}도 함께 사라졌다`,
+  // COPY-1e (CA-013): the lord's promise is void, not the neighbour's debt.
+  "marriage.deferred_void": params => `상속이 무산되어 이웃의 빚 ${moneyWords(n(params, "amount"))}을 떠맡기로 한 약속이 해제되었다`,
   "marriage.jointure_settled": params => `남편을 먼저 보낸 아내가 과부산으로 ${pieceWord(s(params, "piece"), "")}${josa(pieceWord(s(params, "piece"), ""), "을", "를")} 평생 갖는다`,
   "marriage.contested": () => "새 유언대로 조카가 영지를 차지했다 — 소송으로 다툴 수 있다",
   // LM-E2 (ES-5…ES-7): claims, suits, titles and possessions.
@@ -334,7 +321,8 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "milestone.first_l4": () => "처음으로 도시 대가옥(L4)이 생겼다",
   "milestone.lots": params => `필지가 ${n(params, "lots")}개가 되었다`,
   "milestone.chapter_end": params => `${n(params, "chapter")}장이 끝났다`,
-  "ledger.season": params => `계절 결산 — 인구 ${n(params, "population")}(${n(params, "popDelta") >= 0 ? "+" : ""}${n(params, "popDelta")}), 금고 ${n(params, "net") >= 0 ? "+" : ""}${n(params, "net")}`,
+  // COPY-1e (CA-006): the treasury's change in money words (£ s d), the people counted.
+  "ledger.season": params => `계절 결산 — 인구 ${n(params, "population")}명(${n(params, "popDelta") >= 0 ? "+" : ""}${n(params, "popDelta")}명), 금고 ${n(params, "net") >= 0 ? "+" : "−"}${moneyWords(Math.abs(n(params, "net")))}`,
   "ledger.population": params => `인구가 한 계절에 ${n(params, "percent") >= 0 ? "+" : ""}${n(params, "percent")}% 바뀌었다`,
   "ledger.treasury_turn": params => n(params, "net") >= 0 ? "금고가 다시 늘기 시작했다" : "금고가 줄기 시작했다",
   "ledger.l4": params => `도시 대가옥이 ${n(params, "from")}채에서 ${n(params, "to")}채가 되었다`,
@@ -352,14 +340,14 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "person.stayed": () => "가구가 떠날 준비를 거두고 남았다",
   "person.hungry": () => "가구가 먹을 것이 모자라기 시작했다",
   "person.fed": () => "가구가 다시 배불리 먹게 되었다",
-  "person.water": () => "가구에 우물 물이 닿았다",
-  "person.water_lost": () => "가구가 우물 물을 잃었다",
+  "person.water": () => "가구에 우물물이 공급되었다",
+  "person.water_lost": () => "가구의 우물물 공급이 끊겼다",
   "person.born": params => NAME_FROM[s(params, "nameFrom")] ?? "아이가 태어났다",
   "person.married": () => "혼인해 가구를 이루었다",
   "person.arrived": () => "친척이 와서 함께 살게 되었다",
   "person.came_of_age": () => "어른이 되어 일을 거들기 시작했다",
   "person.occupation": params => `${HISTORY_OCCUPATIONS[s(params, "occupation")] ?? s(params, "occupation")} 일을 맡았다`,
-  "person.reeve": () => "마을 사람들 가운데서 reeve로 뽑혔다",
+  "person.reeve": () => "마을 사람들 가운데서 마을 대표로 뽑혔다",
   "person.steward": () => "영주의 청지기가 되었다",
   "person.died": params => `${n(params, "age")}살에 ${DEATH_CAUSES[s(params, "cause")] ?? "세상을 떠났다"}`,
   "person.left_town": () => "마을을 떠났다",

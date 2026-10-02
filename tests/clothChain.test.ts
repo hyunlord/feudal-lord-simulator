@@ -41,7 +41,7 @@ test("T1 (CL-1, CL-4…CL-7) seven goods on the list, five buildings with the ma
   const goods = ["fleece", "yarn", "raw_cloth", "fulled_cloth", "dyes", "dyed_cloth", "finished_cloth"] as const;
   assert.deepEqual(RESOURCE_CATALOG.map(entry => entry.id).filter(id => (goods as readonly string[]).includes(id)), [...goods]);
   assert.ok(goods.every(good => STORAGE_KIND_BY_RESOURCE[good] === "storehouse"));
-  assert.deepEqual(goods.map(good => RESOURCE_COPY[good].name), ["양털", "실", "생베", "축융한 베", "염료", "물들인 베", "완성 직물"]);
+  assert.deepEqual(goods.map(good => RESOURCE_COPY[good].name), ["양털", "털실", "생모직", "축융 모직", "염료", "염색 모직", "완성 모직"]);
   const kinds = ["pastoral_farm", "weaver_house", "fulling_mill", "dyehouse", "tenter_yard"] as const;
   assert.deepEqual(kinds.map(kind => buildingUnlockStage(kind)), kinds.map(() => "market_town"));
   assert.deepEqual(kinds.map(kind => BUILDING_CONFIG_BY_KIND[kind].requiresAdjacentTerrain), [null, null, "water", "water", null]);

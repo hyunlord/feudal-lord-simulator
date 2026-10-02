@@ -20,9 +20,9 @@ test("the engine's short money form is the screens': every sum from −3 pounds 
 
 test("the engine's lines write £·s: the ledger history, the chronicle's chapter line, the money rules, the era income", () => {
   const line = (template: string, params: Record<string, string | number>) => historySummary({ template, params });
-  assert.equal(line("legacy.royal_subsidy", { amount: 38_447 }), "국왕에게 과세를 냈다 — £160 3s");
+  assert.equal(line("legacy.royal_subsidy", { amount: 38_447 }), "국왕에게 보조세를 냈다 — £160 3s");
   assert.equal(line("legacy.market_fire", { cost: 480 }), "장터에 불이 났다 — 수리에 £2");
-  assert.equal(line("plague.ordinance", { fine: 40 }), "노동자 조례가 낭독되었다 — 임금을 올린 영주에게 벌금 3s 4d");
+  assert.equal(line("plague.ordinance", { fine: 40 }), "노동자법이 공포되었다 — 임금을 올린 영주에게 벌금 3s 4d");
   assert.equal(line("reorg.poll_tax", { amount: 7 }), "인두세를 걷었다 — 영주의 몫 7d");
   assert.match(line("war.raid", { burntHouses: 2, looted: 30, coin: 300 }), /빼앗긴 돈 £1 5s$/);
   assert.equal(line("decision.project_subsidy", { kind: "mill", amount: 60 }), "방앗간에 장려금 5s을 걸었다");

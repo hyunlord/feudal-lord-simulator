@@ -4,6 +4,7 @@
  */
 import { GENTRY_NAMES_KO } from "./gentryNames";
 import { SURNAMES_KO } from "./personNames.ko";
+import { PETITION_CHOICES } from "./petitionChoices.ko";
 
 export const FACTION_KIND_NAMES: Readonly<Record<string, string>> = {
   overlord: "상위 영주", crown: "국왕과 왕실", neighbour: "이웃 영주", church: "주교", merchant_house: "상인 가문", town: "도시 공동체", commons: "농민 공동체",
@@ -55,9 +56,9 @@ const PETITION_NAMES: Readonly<Record<string, string>> = {
   vacant_priest: "빈 사제 자리", wages: "일꾼들의 임금 요구", land_redistribution: "빈 필지의 주인",
   cash_rent: "부역을 돈으로 바꾸자는 청원",
   // F4-A: the four reorganisation petitions (RG-5…RG-9).
-  guild_charter: "길드 결성 요구", tax_collection: "인두세를 걷는 방식", cloth_or_grain: "직물과 곡물 사이의 선택", borough_charter: "자치 특허 요구서",
+  guild_charter: "길드 인가 청원", tax_collection: "인두세 징수 방식", cloth_or_grain: "직물 대 곡물", borough_charter: "자치 특허 협상",
   // F5-A: the four chapter-5 petitions (LG-2…LG-5).
-  royal_tax: "국왕의 과세", heir_choice: "후계자 선택", borough_autonomy: "자치 특허의 인장", legacy_choice: "유산 선택",
+  royal_tax: "왕실 보조세 요구", heir_choice: "후계자 선택", borough_autonomy: "자치 특허의 인장", legacy_choice: "유산 선택",
   // FIX-9: the interlude's two (LG-13).
   guild_dispute: "길드와 상인의 다툼", church_rebuilding: "교회 증축 청원",
 };
@@ -66,13 +67,18 @@ const ANSWERS: Readonly<Record<string, string>> = { accept: "수락", accept_wit
 /** FX-4: what moved a faction's relation, by reason (`petition:<defId>:<answer>` reads its answer). */
 export function factionReasonLine(reason: string): string {
   const [kind, a, b] = reason.split(":");
-  if (kind === "petition") return `${PETITION_NAMES[a ?? ""] ?? a}에 ${ANSWERS[b ?? ""] ?? b}`;
+  // COPY-1e (CA-001): the answer in the words of the choice (a legacy to the church is no refusal), else the plain answer.
+  if (kind === "petition") {
+    const meaning = PETITION_CHOICES[a ?? ""]?.[b ?? ""];
+    return meaning === undefined ? `${PETITION_NAMES[a ?? ""] ?? a}에 ${ANSWERS[b ?? ""] ?? b}` : `${PETITION_NAMES[a ?? ""] ?? a}: ${meaning}`;
+  }
   if (kind === "famine") return `대기근에 ${a === "relief" ? "구휼" : a === "price_control" ? "가격 통제" : a === "laissez_faire" ? "방관" : "투기"}`;
   if (kind === "decline") return a === "arrears" ? "유지비 미납으로 쇠퇴" : a === "depopulated" ? "사람이 떠나 쇠퇴" : a === "empty" ? "도시가 비어 쇠퇴" : "빈 필지가 늘어 쇠퇴";
   if (kind === "restored") return "권리를 되삼";
   if (kind === "house_change") return "영주 가문이 바뀜";
   // LM-E3 (NG-6): a witness of a promise the lord broke remembers it.
-  if (kind === "promise_broken") return "영주가 지켜보는 앞에서 한 약속을 어김";
+  // COPY-1e (CA-014): the faction was the witness.
+  if (kind === "promise_broken") return "영주가 우리 세력 앞에서 한 약속을 어김";
   // LM-E4 (SW-6): the faction a punished steward was tied to.
   if (kind === "steward_punished") return "제 사람인 청지기가 감사 끝에 벌을 받음";
   if (kind === "raid") return a === "held" ? "습격에 성벽이 버팀" : "습격에 성벽이 뚫림";
