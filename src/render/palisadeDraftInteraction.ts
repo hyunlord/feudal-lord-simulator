@@ -161,10 +161,13 @@ export function applyPalisadeIntent(input: {
   }
 }
 
+/** FIX-15 (FX15-5): the player's draft may take the water as its bound, as the engine's proposal and proclamation do. */
+export const DRAFT_WATER_REACH = { waterReach: true } as const;
+
 function validatePath(state: GameState, draft: PalisadeDraftState): PalisadeDraftState {
   const expansion = draft.purpose === 'expand' ? expansionDraftFootprints(state) : null;
   const diagnosis = diagnosePalisadeDraft(state, draft.path, expansion?.footprints ?? palisadeFootprintsForState(state),
-    expansion?.enclosure ?? palisadeCoreFootprintsForState(state), 1);
+    expansion?.enclosure ?? palisadeCoreFootprintsForState(state), 1, DRAFT_WATER_REACH);
   return diagnosis.validation.ok
     ? { ...draft, candidate: diagnosis.validation.candidate,
       path: draft.activeGesture === null ? diagnosis.validation.candidate.path : draft.path,
@@ -255,6 +258,7 @@ export function dragDraftRunByTiles(input: {
     input.footprints,
     input.enclosureFootprints,
     input.minimumEnclosureRatio,
+    DRAFT_WATER_REACH,
   );
   // A refused step keeps the start: the pointer's offset keeps counting from the last valid ring, so a side can be
   // dragged past a position that is refused (one step out too near a building, four clear) — UX-0b2, found widening a wall.

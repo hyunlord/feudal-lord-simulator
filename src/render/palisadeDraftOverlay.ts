@@ -23,7 +23,8 @@ export function palisadeDraftDiagnosis(state: GameState, path: PalisadePath): Pa
   if (diagnosisCache?.path === path && diagnosisCache.tiles === state.tiles
     && diagnosisCache.footprintKey === footprintKey) return diagnosisCache.diagnosis;
   const diagnosis = diagnosePalisadeDraft(state, path, footprints,
-    palisadeCoreFootprintsForState(state), 1);
+    // FIX-15 (FX15-5): the draft's water steps are the water's bound, as the engine's proposal takes them.
+    palisadeCoreFootprintsForState(state), 1, { waterReach: true });
   diagnosisCache = { path, tiles: state.tiles, footprintKey, diagnosis };
   return diagnosis;
 }
