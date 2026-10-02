@@ -61,45 +61,59 @@ const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const rows: unknown[] = [];
 
-for (const camera of cameras) {
+/** One camera's capture (a fresh browser context). */
+async function captureCamera(camera: Camera): Promise<unknown> {
   const save = saveAt(camera.land, camera.tick, camera.seed ?? 1);
   const viewport = { width: 1600, height: camera.height ?? 1100 };
   const context = await browser.newContext({ viewport, deviceScaleFactor: 1 });
-  await context.addInitScript(TUTORIAL_OFF);
-  const page = await context.newPage();
-  await page.route("**/src/render/canvasRuntime.ts*", async (route: any) => {
-    const response = await route.fetch(); const text = await response.text(); const anchor = "const house = startingHouse(state.buildings);";
-    if (!text.includes(anchor)) throw new Error("camera anchor changed");
-    const start = `return { zoom: ${camera.zoom}, panX: canvas.clientWidth / 2 - ${camera.x * camera.zoom}, panY: canvas.clientHeight / 2 - ${camera.y * camera.zoom} };`;
-    await route.fulfill({ response, body: text.replace(anchor, start + anchor) });
-  });
-  await page.goto(`${url}?phase10-proof=1`, { waitUntil: "load" });
-  const bytes = readSave(save); const meta = saveMetaFor("auto-1", bytes);
-  if (meta === null) throw new Error(`${save}: not a save file`);
-  await page.evaluate(async ({ base64, meta }: { base64: string; meta: unknown }) => {
-    const data = Uint8Array.from(atob(base64), char => char.charCodeAt(0));
-    const db: IDBDatabase = await new Promise((resolve, reject) => { const request = indexedDB.open("feudal-lord-simulator-saves", 1);
-      request.onupgradeneeded = () => { for (const store of ["slots", "meta"]) if (!request.result.objectStoreNames.contains(store)) request.result.createObjectStore(store); };
-      request.onsuccess = () => resolve(request.result); request.onerror = () => reject(request.error); });
-    await new Promise<void>((resolve, reject) => { const tx = db.transaction(["slots", "meta"], "readwrite");
-      tx.objectStore("slots").put(data.buffer, "auto-1"); tx.objectStore("meta").put(meta, "auto-1");
-      tx.oncomplete = () => resolve(); tx.onerror = () => reject(tx.error); });
-    db.close();
-  }, { base64: Buffer.from(bytes).toString("base64"), meta });
-  await page.reload({ waitUntil: "load" });
-  await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 60_000 });
-  await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90_000 });
-  await page.waitForTimeout(2_000);
-  if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
-  if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");
-  await closeModals(page);
-  await page.mouse.move(PARK.x, PARK.y);
-  // Time for the sprites, the land art and every visible ground chunk (the DGX rasters in software).
-  await page.waitForTimeout(6_000);
-  const proof = (expression: string) => page.evaluate(`window.__FEUDAL_PHASE10_PROOF__.${expression}`);
-  await page.screenshot({ path: join(out, `${camera.id}-${label}.jpg`), type: "jpeg", quality: 82 });
-  rows.push({ id: camera.id, tick: await proof("state().tick"), seed: await proof("state().seed"), zoom: (await proof("diagnosis()") as { camera: { zoom: number } }).camera.zoom });
-  await context.close();
+  try {
+    await context.addInitScript(TUTORIAL_OFF);
+    const page = await context.newPage();
+    // why: Playwright is loaded at run time (loadChromium), so its Route type is not imported here (any, as nat4WorldCaptures.ts).
+    await page.route("**/src/render/canvasRuntime.ts*", async (route: any) => {
+      const response = await route.fetch(); const text = await response.text(); const anchor = "const house = startingHouse(state.buildings);";
+      if (!text.includes(anchor)) throw new Error("camera anchor changed");
+      const start = `return { zoom: ${camera.zoom}, panX: canvas.clientWidth / 2 - ${camera.x * camera.zoom}, panY: canvas.clientHeight / 2 - ${camera.y * camera.zoom} };`;
+      await route.fulfill({ response, body: text.replace(anchor, start + anchor) });
+    });
+    await page.goto(`${url}?phase10-proof=1`, { waitUntil: "load" });
+    const bytes = readSave(save); const meta = saveMetaFor("auto-1", bytes);
+    if (meta === null) throw new Error(`${save}: not a save file`);
+    await page.evaluate(async ({ base64, meta }: { base64: string; meta: unknown }) => {
+      const data = Uint8Array.from(atob(base64), char => char.charCodeAt(0));
+      const db: IDBDatabase = await new Promise((resolve, reject) => { const request = indexedDB.open("feudal-lord-simulator-saves", 1);
+        request.onupgradeneeded = () => { for (const store of ["slots", "meta"]) if (!request.result.objectStoreNames.contains(store)) request.result.createObjectStore(store); };
+        request.onsuccess = () => resolve(request.result); request.onerror = () => reject(request.error); });
+      await new Promise<void>((resolve, reject) => { const tx = db.transaction(["slots", "meta"], "readwrite");
+        tx.objectStore("slots").put(data.buffer, "auto-1"); tx.objectStore("meta").put(meta, "auto-1");
+        tx.oncomplete = () => resolve(); tx.onerror = () => reject(tx.error); });
+      db.close();
+    }, { base64: Buffer.from(bytes).toString("base64"), meta });
+    await page.reload({ waitUntil: "load" });
+    await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 120_000 });
+    await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90_000 });
+    await page.waitForTimeout(2_000);
+    if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
+    if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");
+    await closeModals(page);
+    await page.mouse.move(PARK.x, PARK.y);
+    // Time for the sprites, the land art and every visible ground chunk (the DGX rasters in software).
+    await page.waitForTimeout(6_000);
+    const proof = (expression: string) => page.evaluate(`window.__FEUDAL_PHASE10_PROOF__.${expression}`);
+    await page.screenshot({ path: join(out, `${camera.id}-${label}.jpg`), type: "jpeg", quality: 82 });
+    const row = { id: camera.id, tick: await proof("state().tick"), seed: await proof("state().seed"), zoom: (await proof("diagnosis()") as { camera: { zoom: number } }).camera.zoom };
+    return row;
+  } finally { await context.close(); }
+}
+
+// A busy DGX (load 50-70) can miss the 이어하기 button's timeout: each camera gets three tries.
+for (const camera of cameras) {
+  for (let attempt = 1; ; attempt += 1) {
+    try { rows.push(await captureCamera(camera)); break; } catch (error) {
+      if (attempt >= 3) throw error;
+      console.error(`${camera.id}: attempt ${attempt} failed (${String(error).split("\n")[0]}), again`);
+    }
+  }
 }
 
 console.log(JSON.stringify({ url, label, rows }));
