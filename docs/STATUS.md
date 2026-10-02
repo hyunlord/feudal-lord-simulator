@@ -1,4 +1,6 @@
-# 현재 상태
+# 현재 상태 — Charter & Kin · 인장과 가문
+
+게임 이름: 영어 **Charter & Kin**, 한국어 **인장과 가문**(2026-10-02 결정 TITLE-1, 가제 "봉건 영주 시뮬레이터" 대체). 출시 전 상표 확인 필요(로드맵 TRADEMARK). 게임 안의 타이틀 화면·창 제목은 렌더가 정식 로고가 오면 바꾼다.
 
 갱신: 2026-10-02(LM-E8 · FIX-13 · LM-E5 · LM-E4 · FIX-12 · LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
@@ -7,6 +9,7 @@
 
 ## 현재 단계
 
+- **게임 제목 결정 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 사용자 판정 2026-10-02, 게임 코드 0줄): 영어 Charter & Kin, 한국어 인장과 가문(결정 TITLE-1). 헌장·로드맵 머리·STATUS의 이름을 바꾸고, 로드맵 TITLE을 완료로, TRADEMARK(출시 전 상표 확인)를 남겼다.
 - **LM-E8 수직 조각 준비 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/lme8/REPORT.md), [명세](design/lord-slice.md) LS-1~LS-5, 결정 LM8-1~5.
   - 시나리오 `core:lord_slice`, 자동 일시정지 사유 여덟(`pauseReasons`), 영주 봇 전 기능, 3 seed가 20년을 돎.
   - 결정 밀도: 한 해 최대 21(과부하 없음), 결정 0인 해 4~6(1300~1320년 장 청원이 하나뿐). 대책 셋 판정 대기.

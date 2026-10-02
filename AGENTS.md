@@ -1,5 +1,7 @@
 ## 0. 개발 헌장
 
+게임 이름: 영어 **Charter & Kin**, 한국어 **인장과 가문**(결정 TITLE-1, 가제 "봉건 영주 시뮬레이터" 대체).
+
 이 절은 [`docs/CHARTER.md`](docs/CHARTER.md)의 1~6절을 그대로 옮겼다. 모든 세션(엔진·렌더·INBOX·REMOTE·Astra)이 작업 전에 읽는다.
 - 근거: [`docs/ROADMAP.html`](docs/ROADMAP.html)(비전·화면·로드맵·작업 방식)과 설계서.
 - 충돌 시 우선순위: `docs/ROADMAP.html` > 이 절 > 개별 지시서.
