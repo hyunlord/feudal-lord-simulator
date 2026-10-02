@@ -229,7 +229,7 @@ function policyPoints(policy: EstatePolicy, key: string, rank: number | null): n
 }
 
 /** TA-10: the town's centre — its first market, else the middle of its houses; null with neither. */
-function townCentre(state: GameState): { readonly tx: number; readonly ty: number } | null {
+export function townCentre(state: GameState): { readonly tx: number; readonly ty: number } | null {
   const market = state.buildings.find(building => building.kind === "market");
   if (market !== undefined) return { tx: market.tx, ty: market.ty };
   const houses = state.buildings.filter(building => building.kind === "house");

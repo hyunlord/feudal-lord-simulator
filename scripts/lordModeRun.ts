@@ -33,6 +33,8 @@ export interface LordModeOptions {
   readonly duesPermille?: number;
   /** Called with the state at the run's end (probes). */
   readonly onEnd?: (state: GameState) => void;
+  /** LM-E6a: called with the state at each year's turn (probes). */
+  readonly onYear?: (state: GameState) => void;
 }
 
 /** TA-7: the lord's turn before a tick — answers, (weekly) the subsidy not yet in force, and the town's requests he grants. */
@@ -94,6 +96,7 @@ export function lordModeRun(options: LordModeOptions) {
         reasons: receipt.reasons.map(reason => `${reason.name}${reason.value >= 0 ? "+" : ""}${reason.value}`).join(" "), mismatches });
     }
     if (state.tick % YEAR === 0) {
+      options.onYear?.(state);
       years.push({ year: stateCalendar(state).year - 1, population: state.population, l2: levelAtLeast(state, 2), l4: levelAtLeast(state, 4),
         houses: state.houses.length, treasury: treasuryBalance(state),
         funds: Object.fromEntries((state.agency?.actors ?? []).map(actor => [actor.kind, actor.funds])) });
@@ -110,7 +113,7 @@ export function lordModeRun(options: LordModeOptions) {
   const moved = compared.filter(receipt => receipt.sites!.planTx !== receipt.tx || receipt.sites!.planTy !== receipt.ty);
   const counts: Record<string, number> = {};
   for (const receipt of compared) counts[receipt.sites!.count] = (counts[receipt.sites!.count] ?? 0) + 1;
-  const { onEnd: _onEnd, ...shown } = options;
+  const { onEnd: _onEnd, onYear: _onYear, ...shown } = options;
   return {
     ...shown, firstYear, abandoned: state.settlement?.outcome === "abandoned",
     final: { year: stateCalendar(state).year, population: state.population, l2: levelAtLeast(state, 2), l4: levelAtLeast(state, 4),

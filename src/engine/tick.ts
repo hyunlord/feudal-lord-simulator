@@ -1,5 +1,6 @@
 import { advanceStuckStock } from "./stuckStock";
 import { advanceTownAgency } from "./townAgency";
+import { advanceTrades } from "./trades";
 import { advanceTimberTrade } from "./timberTrade";
 import { BALANCE } from '../content/balanceConfig';
 import { feasibleDistributorDistance } from './distributorAccess';
@@ -288,7 +289,8 @@ export function advanceTick(state: GameState): GameState {
   // LM-E1 (TA-3): lord mode's town agency, each week, after the tick's moves (nothing without `state.agency`).
   // LM-E4 (SW-7): the off-map estates' seasons and Michaelmas, after the diplomacy (nothing until the lord holds one).
   // LM-E5 (LG-3): then the land's own changes (footfall, footpaths, fallow, regrowth).
-  return advanceHistory(state, advanceTownAgency(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
+  // LM-E6a (TR-4…TR-8): lord mode's trades after the town agency — the season's trades and the carters' haulage.
+  return advanceHistory(state, advanceTrades(advanceTownAgency(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
     advanceWarTick(advanceLand(advanceStewardship(advanceDiplomacy(advanceSuits(advanceEstates(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))))))))))))))))),
-  )))))));
+  ))))))));
 }
