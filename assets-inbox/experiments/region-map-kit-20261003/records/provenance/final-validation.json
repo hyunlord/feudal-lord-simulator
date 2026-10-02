@@ -1,0 +1,234 @@
+{
+  "status": "PASS_STRUCTURAL_ONLY",
+  "artAcceptance": "FAIL_BLIND_TARGET",
+  "kitPNGs": 79,
+  "transparentPNGs": 73,
+  "opaqueCoveragePNGs": 6,
+  "samples": 16,
+  "dimensions": "1600x1000",
+  "allKitAndSampleHashesMatch": true,
+  "blindCorrect": 16,
+  "blindTrials": 16,
+  "blindInputHashesMatch": true,
+  "tests": {
+    "status": "PASS",
+    "cases": 17,
+    "geometrySeeds": 15,
+    "renderVerified": true
+  },
+  "repoHEAD": "a8834c7f31d83fed593b726d47f0fbd9108b91c3",
+  "repoStatus": "clean",
+  "node": "v25.8.2",
+  "sharp": "0.34.5",
+  "vips": "8.17.3",
+  "images": [
+    {
+      "file": "chalk_downs-seed17.jpg",
+      "sha256": "af8a00ddda6bd9081aac23447409eca5f51de89ed7b96720efdf7d0c103fa242",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "chalk_downs-seed241.jpg",
+      "sha256": "d6ec0c35492bb48527c033439f0a67f852ec1f68a79a36d849c3b1d8eabc33c8",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "chalk_downs-seed83.jpg",
+      "sha256": "740260f124d64920b4b7e667afe6018117502f5fe325cdb8bd5842c3eb3a0f5a",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "coastal_port-seed17.jpg",
+      "sha256": "cdaaa73ae92e13892dcf46591ae68bbf93e287db6835e8623a6bc045d48bf180",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "coastal_port-seed241.jpg",
+      "sha256": "b0f2083e08486cd2cfe4091277a09748240d069233170a75b9720183334e80bc",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "coastal_port-seed83.jpg",
+      "sha256": "9b7a7e400f79f604b3e805e41506e9bbe339fe1eb84a0cdbd887533b474792f3",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "fen_drainage-seed17.jpg",
+      "sha256": "69d12206c4710609960c3e1129858edb3509090645b5fab3d55665d7b7ca7ddc",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "fen_drainage-seed241.jpg",
+      "sha256": "830fcbeea1b1d64cb20fcf52d9cb14d70ef656bf5b0aeea161686362a7b388b2",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "fen_drainage-seed83.jpg",
+      "sha256": "6ff7f3e8ce68ebaa4fa65ab0348abf72445bb11968f0b555983914ed8bd65817",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "forest_edge-seed17.jpg",
+      "sha256": "2e567db9e496edc069b01cb8ccfdb96cb65bc54f2d3aa5ea2ec338b1fc6e758a",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "forest_edge-seed241.jpg",
+      "sha256": "410ac718c3b398c68893496c98e83b4d46b243f60aeec9494d97ea8377c86348",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "forest_edge-seed83.jpg",
+      "sha256": "123ef57eaf174ea341673432ee6d47b6b6530755e3e454f5903636ba1bd7931d",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "neighbor-18.jpg",
+      "sha256": "6d41546330019c205e4648d4dc682517192610df69216c55b2a9c12bcd1ad65e",
+      "estates": 18,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "open_field-seed17.jpg",
+      "sha256": "0be279471c8a21a3b866bd9695e6c71eaa7b2310d807c5be915a6e69c148ddb8",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "open_field-seed241.jpg",
+      "sha256": "58d3b846e7cb2576622b6989881d3d024813c79e568961e9923c4d7d6288b87c",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    },
+    {
+      "file": "open_field-seed83.jpg",
+      "sha256": "83c95da20228c6248d48143dcc378cb5f6f96c0a2820ee1410a0f6c908af9814",
+      "estates": 12,
+      "checks": {
+        "allEstatesConnected": true,
+        "noSettlementOnWater": true,
+        "bounds": true,
+        "crossingsExplicit": true,
+        "noSettlementOnLake": true,
+        "noRoadThroughLake": true
+      }
+    }
+  ]
+}

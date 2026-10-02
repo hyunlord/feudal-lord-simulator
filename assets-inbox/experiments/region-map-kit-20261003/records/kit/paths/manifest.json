@@ -1,0 +1,465 @@
+{
+  "status": "candidate",
+  "generator": "assembler/brush.cjs",
+  "textures": {
+    "road": "open_field.png",
+    "water": "river-master.png"
+  },
+  "notes": "Exact renderer stroke colors and profile. Geometry segments are continuous paths; these PNGs are reusable renderer-native path examples, not AI terrain paintings.",
+  "assets": [
+    {
+      "id": "road-major-straight",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "road-major-bend",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          135,
+          192
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "road-major-fork",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          38
+        ],
+        [
+          128,
+          96
+        ],
+        [
+          256,
+          160
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "road-major-crossing",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          96
+        ],
+        [
+          128,
+          0
+        ],
+        [
+          128,
+          192
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "road-minor-straight",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "road-minor-bend",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          135,
+          192
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "road-minor-fork",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          38
+        ],
+        [
+          128,
+          96
+        ],
+        [
+          256,
+          160
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "road-minor-crossing",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          96
+        ],
+        [
+          128,
+          0
+        ],
+        [
+          128,
+          192
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "river-straight",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "river-bend",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          135,
+          192
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "river-fork",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          38
+        ],
+        [
+          128,
+          96
+        ],
+        [
+          256,
+          160
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "river-confluence",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          40
+        ],
+        [
+          256,
+          96
+        ],
+        [
+          0,
+          152
+        ],
+        [
+          128,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "river-estuary",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "stream-straight",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "stream-bend",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          135,
+          192
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "stream-fork",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          38
+        ],
+        [
+          128,
+          96
+        ],
+        [
+          256,
+          160
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "stream-confluence",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          40
+        ],
+        [
+          256,
+          96
+        ],
+        [
+          0,
+          152
+        ],
+        [
+          128,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "stream-estuary",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native procedural brush",
+      "ports": [
+        [
+          0,
+          96
+        ],
+        [
+          256,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "crossing-bridge",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native crossing brush",
+      "pivot": [
+        128,
+        96
+      ],
+      "ports": [
+        [
+          95,
+          96
+        ],
+        [
+          161,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "crossing-ford",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native crossing brush",
+      "pivot": [
+        128,
+        96
+      ],
+      "ports": [
+        [
+          95,
+          96
+        ],
+        [
+          161,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    },
+    {
+      "id": "crossing-ferry",
+      "width": 256,
+      "height": 192,
+      "kind": "renderer-native crossing brush",
+      "pivot": [
+        128,
+        96
+      ],
+      "ports": [
+        [
+          95,
+          96
+        ],
+        [
+          161,
+          96
+        ]
+      ],
+      "flipXAllowed": true,
+      "rotationAllowed": true
+    }
+  ]
+}
