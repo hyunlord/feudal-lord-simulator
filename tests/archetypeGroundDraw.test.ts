@@ -302,18 +302,22 @@ test("LU-D11: edge bands are laid 2.5 times as wide across the edge (128 px per 
   }
 });
 
-test("LU-D11 / NAT-4: the forest edge is Wave 41's strip, one per season (spring and autumn summer), laid on the woodland floor's meadow edges", async () => {
-  const { FOREST_EDGE_FAMILY, FOREST_EDGE_FILL, forestEdgeArtKey, forestEdgeReadiness, stripFamilyInstalled, wave22StripInstalled } = await import("../src/render/landEdgeBand");
+test("LU-D11 / NAT-4: the forest edge is Wave 41's: summer woodland_edge_a | b (spring and autumn too), winter its frosted strip, on the woodland floor's meadow edges", async () => {
+  const { DEEP_WOODLAND_EDGE, FOREST_EDGE_FAMILY, FOREST_EDGE_FILL, forestEdgeArtKeys, forestEdgeReadiness, stripFamilyInstalled, wave22StripInstalled } = await import("../src/render/landEdgeBand");
   const { EDGE_OF } = await import("../src/render/archetypeGroundRegions");
   const { WAVE41_GROUND } = await import("../src/render/wave41LandManifest.generated");
   assert.equal(stripFamily(`${FOREST_EDGE_FAMILY}_a`), FOREST_EDGE_FAMILY, "the band map can name it");
   assert.equal(stripFamilyInstalled(FOREST_EDGE_FAMILY), true);
   assert.equal(wave22StripInstalled(FOREST_EDGE_FAMILY), false, "never asked for as Wave 22 halves");
   assert.equal(EDGE_OF[FOREST_EDGE_FILL], FOREST_EDGE_FAMILY);
-  assert.deepEqual(SEASONS.map(forestEdgeArtKey), ["boundary/woodland_grass_edge_summer", "boundary/woodland_grass_edge_summer", "boundary/woodland_grass_edge_summer", "boundary/woodland_grass_edge_winter"]);
+  const summer = ["boundary/woodland_edge_a", "boundary/woodland_edge_b"];
+  assert.deepEqual(SEASONS.map(forestEdgeArtKeys), [summer, summer, summer, ["boundary/woodland_grass_edge_winter"]]);
+  assert.equal(DEEP_WOODLAND_EDGE, "boundary/woodland_grass_edge_summer");
+  assert.ok(SEASONS.every(season => !forestEdgeArtKeys(season).includes(DEEP_WOODLAND_EDGE)), "the deep-woodland variant is installed, not drawn");
+  assert.deepEqual(Object.keys(WAVE41_GROUND).sort(), [...summer, DEEP_WOODLAND_EDGE, "boundary/woodland_grass_edge_winter"].sort());
   for (const key of Object.keys(WAVE41_GROUND) as (keyof typeof WAVE41_GROUND)[]) {
     const meta = WAVE41_GROUND[key];
-    assert.deepEqual([meta.width, meta.height, meta.pivot.x, meta.pivot.y, meta.repeat], [512, 64, 256, 32, "x"], key);
+    assert.deepEqual([meta.width, meta.height, meta.repeat], [512, 64, "x"], key);
     assert.ok(existsSync(new URL(`../public/${meta.url}`, import.meta.url)), key);
   }
   for (const family of ["boundary/chalk_edge", "boundary/heath_edge", "boundary/fen_edge", "boundary/coastal_edge"]) assert.equal(stripFamilyInstalled(family), true, family);
@@ -332,4 +336,35 @@ test("LU-D11 / NAT-4: the forest edge is Wave 41's strip, one per season (spring
   const scene = groundBoundaryScene(land("core:forest_edge", 1));
   const quads = scene.chunks.reduce((sum, plan) => sum + drawLandEdges(countingContext().context, forest, plan, 1), 0);
   assert.ok(quads > 0, `${quads} forest edge quads`);
+});
+
+test("NAT-4: each run of the forest edge starts on a or b of the summer repeat by a stable hash of its first point; the feather follows each strip's paint", async () => {
+  const { EDGE_BAND_PEAK, FOREST_EDGE_FAMILY, WOODLAND_EDGE_PAINT, edgeFeatherAlpha, forestRunPhases } = await import("../src/render/landEdgeBand");
+  const square = Array.from({ length: 12 }, (_, at) => ({ x: at, y: at % 2 }));
+  const F = FOREST_EDGE_FAMILY;
+  const families = [F, F, F, null, F, F, null, null, F, F, F, F] as const;
+  const phases = forestRunPhases(square, families)!;
+  assert.equal(phases.length, 12);
+  // One phase per run: segments 0-2 and 8-11 are one run across the loop's start, 4-5 another.
+  assert.ok([1, 2, 8, 9, 10, 11].every(index => phases[index] === phases[0]), JSON.stringify(phases));
+  assert.equal(phases[5], phases[4]);
+  assert.deepEqual(forestRunPhases(square, families), phases, "stable");
+  assert.equal(forestRunPhases(square, families.map(() => "boundary/chalk_edge" as const)), null, "no forest edge, no phases");
+  // Over the forest land's loops both phases occur (the band does not start every run on one image).
+  const seen = new Set<number>(); let runs = 0;
+  for (const seed of [1, 2, 3]) {
+    const forest = landGroundOf(land("core:forest_edge", seed))!;
+    for (const region of fillRegions(forest)) for (const loop of region.loops) {
+      const loopPhases = forestRunPhases(loop.smoothed, loop.strips) ?? [];
+      loop.strips.forEach((strip, index) => { if (strip === F) { seen.add(loopPhases[index]!); if (loop.strips.at(index - 1) !== F) runs += 1; } });
+    }
+  }
+  assert.ok(runs > 1, `${runs} runs`);
+  assert.deepEqual([...seen].sort(), [0, 1], `${runs} runs`);
+  // woodland_edge_a / _b paint rows 2-61: their hump spans those rows (0 outside, the peak in the middle).
+  assert.equal(edgeFeatherAlpha(1, WOODLAND_EDGE_PAINT), 0);
+  assert.equal(edgeFeatherAlpha(62, WOODLAND_EDGE_PAINT), 0);
+  assert.ok(edgeFeatherAlpha(5, WOODLAND_EDGE_PAINT) > 0, "the A/B paint near its edge is kept (the Wave 22 hump would drop it)");
+  assert.equal(edgeFeatherAlpha(5), 0);
+  assert.ok(Math.abs(edgeFeatherAlpha(31, WOODLAND_EDGE_PAINT) - EDGE_BAND_PEAK) < 0.01);
 });

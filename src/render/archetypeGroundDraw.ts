@@ -4,7 +4,7 @@ import type { Tile } from "../world/world.types";
 import { hashSeed } from "../content/seedHash";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { manifestArt } from "./manifestArt";
-import { EDGE_BAND_WIDEN, forestEdgeReadiness, stripImage } from "./landEdgeBand";
+import { EDGE_BAND_WIDEN, forestEdgeReadiness, forestRunPhases, stripImage } from "./landEdgeBand";
 import { wallStripsEnabled } from "./renderWallStripsFlag";
 import type { SeasonIndex } from "./seasonArt";
 import { WAVE22_GROUND_IMAGES, type Wave22GroundKey } from "./wave22GroundManifest.generated";
@@ -213,6 +213,8 @@ function drawLineStrip(context: CanvasRenderingContext2D, line: readonly Vec[], 
     return { x: (p.x + q.x) / length, y: (p.y + q.y) / length };
   };
   const up = (above - 1) * widen / PX_PER_TILE; const down = (below - 1) * widen / PX_PER_TILE;
+  // NAT-4: the forest edge's runs each start on a or b of its summer repeat (landEdgeBand.ts forestRunPhases).
+  const phases = forestRunPhases(line, families);
   let quads = 0; let arc = 0;
   for (let index = 0; index < count; index += 1) {
     const a = line[index] as Vec; const b = line[(index + 1) % count] as Vec;
@@ -229,7 +231,7 @@ function drawLineStrip(context: CanvasRenderingContext2D, line: readonly Vec[], 
     const na = vertexNormal(index); const nb = vertexNormal(index + 1); const n = topNormal(index);
     const a0 = { x: a.x - t.x * 0.01, y: a.y - t.y * 0.01 }; const b0 = { x: b.x + t.x * 0.01, y: b.y + t.y * 0.01 };
     // Texture (u, v) -> tile: a + t (u - u0) / 128 - n widen (v - above) / 128 (the top side up).
-    const u0 = (start * PX_PER_TILE) % (STRIP_WIDTH * 2);
+    const u0 = (start * PX_PER_TILE + (phases?.[index] ?? 0) * STRIP_WIDTH) % (STRIP_WIDTH * 2);
     const uAxis = { x: t.x / PX_PER_TILE, y: t.y / PX_PER_TILE }; const vAxis = { x: -n.x * widen / PX_PER_TILE, y: -n.y * widen / PX_PER_TILE };
     const origin = { x: a.x - uAxis.x * u0 - vAxis.x * above, y: a.y - uAxis.y * u0 - vAxis.y * above };
     fillStripQuad(context, pattern, [

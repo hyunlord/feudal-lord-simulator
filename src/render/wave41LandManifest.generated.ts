@@ -2,7 +2,9 @@
 // along x; top the meadow, bottom the woodland floor) and the width-1 fords (WAVE41_FORDS, one picture each): url, folder,
 // season, repeat, size and pivot of each picture.
 export const WAVE41_GROUND = {
-  "boundary/woodland_grass_edge_summer": {"url": "assets/wave41/boundary/woodland_grass_edge_summer.png", "folder": "boundary", "season": "summer", "repeat": "x", "width": 512, "height": 64, "pivot": {"x": 256, "y": 32}},
+  "boundary/woodland_edge_a": {"url": "assets/wave41/boundary/woodland_edge_a.png", "folder": "boundary", "season": "summer", "repeat": "x", "width": 512, "height": 64, "pivot": {"x": 0, "y": 0}},
+  "boundary/woodland_edge_b": {"url": "assets/wave41/boundary/woodland_edge_b.png", "folder": "boundary", "season": "summer", "repeat": "x", "width": 512, "height": 64, "pivot": {"x": 0, "y": 0}},
+  "boundary/woodland_grass_edge_summer": {"url": "assets/wave41/boundary/woodland_grass_edge_summer.png", "folder": "boundary", "season": "summer", "repeat": "x", "width": 512, "height": 64, "pivot": {"x": 256, "y": 32}, "role": "deep-woodland"},
   "boundary/woodland_grass_edge_winter": {"url": "assets/wave41/boundary/woodland_grass_edge_winter.png", "folder": "boundary", "season": "winter", "repeat": "x", "width": 512, "height": 64, "pivot": {"x": 256, "y": 32}},
 } as const;
 

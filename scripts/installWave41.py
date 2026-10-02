@@ -5,8 +5,12 @@ assets-inbox/INBOX_LEDGER.csv) into public/assets/wave41/<folder>:
   records/README.md, strip-metrics.json): the forest edge the LU-D11 hook draws (src/render/landEdgeBand.ts);
 - ford/ford_w1_{ne,nw}_{summer,winter}: the width-1 fords (512 x 256 RGBA, pivot (256, 128), water span one cell;
   records/ford-QA.md, ford-metrics.json): drawn for single-cell ford groups (LU-D4: until now the w2 sheet).
-Only the six confirmed asset rows; the proofs, records and the batch's base29 files are not installed (base29 is the
-art-audit rework, another installer's). The `-vN` suffix is dropped. No C2PA chunk (asserted): received bytes =
+- boundary/woodland_edge_{a,b} (INBOX-2z, the LAND-UI session's take filed under additions-20261002/landui; 512 x 64,
+  pivot (0, 0), X repeat, top meadow / bottom woodland, a 13 px feather of their own; records/forest/README.md): the
+  summer forest edge's irregular variants, alternated per strip run. The earlier woodland_grass_edge_summer stays
+  installed as the deep-woodland variant (not drawn for now).
+Only the eight confirmed asset rows; the proofs, records, the landui session's rejected fords and the batch's base29
+files are not installed (base29 is the art-audit rework, another installer's). The `-vN` suffix is dropped. No C2PA chunk (asserted): received bytes =
 runtime bytes. One docs/provenance/assets.csv row each (replacing earlier rows for these runtime paths) built from the
 batch's records (strip-generations.json / ford-generations.json: tool, prompt, references, postprocess), one prompt file
 each, `installed_by` = NAT-4 in the inbox ledger (these rows only), and src/render/wave41LandManifest.generated.ts:
@@ -25,6 +29,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BATCH = ROOT / "assets-inbox/wave41/additions-20261002"
+LANDUI = BATCH / "landui"
 RUNTIME = ROOT / "public/assets/wave41"
 LEDGER = ROOT / "docs/provenance/assets.csv"
 INBOX_LEDGER = ROOT / "assets-inbox/INBOX_LEDGER.csv"
@@ -32,7 +37,7 @@ MANIFEST = ROOT / "src/render/wave41LandManifest.generated.ts"
 C2PA_CHUNKS = {b"caBX", b"jumb", b"c2pa"}
 INSTALLED_BY = "NAT-4"
 USED_IN = {
-    "boundary": "src/render/wave41LandManifest.generated.ts (NAT-4 LU-D11: the forest edge band between the woodland floor and the meadow, landEdgeBand.ts)",
+    "boundary": "src/render/wave41LandManifest.generated.ts (NAT-4 LU-D11: the forest edge band between the woodland floor and the meadow, landEdgeBand.ts; summer alternates woodland_edge_a / _b, winter the winter strip, woodland_grass_edge_summer kept as the deep-woodland variant)",
     "ford": "src/render/wave41LandManifest.generated.ts (NAT-4 LU-D4: width-1 fords on ford roads, landWorksDraw.ts via wave34Art.ts fordKey)",
 }
 EXPECTED = {
@@ -42,7 +47,13 @@ EXPECTED = {
     "ford/ford_w1_ne_winter-v1.png": (512, 256, 256, 128, "winter", "none"),
     "ford/ford_w1_nw_summer-v1.png": (512, 256, 256, 128, "summer", "none"),
     "ford/ford_w1_nw_winter-v1.png": (512, 256, 256, 128, "winter", "none"),
+    # INBOX-2z (landui/assets/forest): no -vN suffix; the runtime folder is boundary/ beside the other strips.
+    "landui:forest/woodland_edge_a.png": (512, 64, 0, 0, "summer", "x"),
+    "landui:forest/woodland_edge_b.png": (512, 64, 0, 0, "summer", "x"),
 }
+LANDUI_EDITS = ("Valid material area extracted, one resize to 512 x 64, vertical colour blend toward the real grass / woodland "
+                "fill means, top and bottom 13 px alpha feather, 24 px shared-endpoint blend for the X repeat, hidden RGB under "
+                "alpha 0 zeroed (records/forest/README.md, finalize.cjs).")
 csv.field_size_limit(sys.maxsize)
 
 
@@ -72,6 +83,9 @@ def generation_records() -> dict:
                                 "edits": metrics[entry["id"]]["postprocess"]}
     for entry in json.loads((BATCH / "records/ford-generations.json").read_text()):
         records[entry["id"]] = {"tool": entry["tool"], "prompt": entry["prompt"], "references": Path(entry["input"]).name, "edits": entry["postprocess"]}
+    for entry in json.loads((LANDUI / "records/forest/generations.json").read_text()):
+        records[entry["id"]] = {"tool": entry["tool"], "prompt": entry["prompt"],
+                                "references": "; ".join(Path(ref["path"]).name for ref in entry["references"]), "edits": LANDUI_EDITS}
     return records
 
 
@@ -81,7 +95,9 @@ def main() -> None:
     generations = generation_records()
     rows, installed, ground, fords = [], set(), {}, {}
     for relative, (width, height, pivot_x, pivot_y, season, repeat) in EXPECTED.items():
-        source = BATCH / "assets" / relative
+        landui = relative.startswith("landui:")
+        relative = relative.removeprefix("landui:")
+        source = (LANDUI if landui else BATCH) / "assets" / relative
         inbox_key = source.relative_to(ROOT / "assets-inbox").as_posix()
         entry = by_file[inbox_key]
         assert entry["status"] == "confirmed", inbox_key
@@ -91,6 +107,7 @@ def main() -> None:
         assert not C2PA_CHUNKS & chunks, f"{inbox_key} carries a C2PA chunk"
         assert (real_width, real_height) == (width, height), inbox_key
         folder, file = relative.split("/")
+        folder = "boundary" if folder == "forest" else folder
         asset_id = file.removesuffix(".png")
         name = re.sub(r"-v\d+$", "", asset_id)
         runtime = RUNTIME / folder / f"{name}.png"
@@ -99,6 +116,8 @@ def main() -> None:
         assert sha(runtime) == digest, inbox_key
         meta = {"url": f"assets/wave41/{folder}/{name}.png", "folder": folder, "season": season, "repeat": repeat,
                 "width": width, "height": height, "pivot": {"x": pivot_x, "y": pivot_y}}
+        if name == "woodland_grass_edge_summer":
+            meta["role"] = "deep-woodland"  # INBOX-2z: kept installed, not drawn (the summer edge alternates woodland_edge_a / _b)
         (ground if folder == "boundary" else fords)[f"boundary/{name}" if folder == "boundary" else name] = meta
         record = generations[asset_id]
         prompt = ROOT / "docs/provenance/prompts" / f"{name}-wave41.txt"
@@ -109,10 +128,10 @@ def main() -> None:
                      "seed": "not exposed", "candidates": "1", "manualEdits": record["edits"], "artBible": "ART_BIBLE_v2",
                      "historicalProfile": "S_England_1300_1450_v1", "owner": "Astra", "usedIn": USED_IN[folder], "status": "runtime",
                      "notes": f"Astra wave41 additions {folder}/{name} (confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-10-02) installed by "
-                              f"{INSTALLED_BY} on 2026-10-02 from {BATCH.relative_to(ROOT)}; no C2PA chunk, received bytes = runtime bytes. Season {season}, "
+                              f"{INSTALLED_BY} on 2026-10-02 from {(LANDUI if landui else BATCH).relative_to(ROOT)}; no C2PA chunk, received bytes = runtime bytes. Season {season}, "
                               f"repeat {repeat}, pivot ({pivot_x}, {pivot_y}). The batch records give the delivery date, not a generation time."})
         installed.add(inbox_key)
-    assert len(rows) == 6, len(rows)
+    assert len(rows) == 8, len(rows)
     header = next(csv.reader(open(LEDGER, encoding="utf-8")))
     ours = {row["runtimePath"] for row in rows}
     kept = [row for row in csv.DictReader(open(LEDGER, encoding="utf-8")) if row["runtimePath"] not in ours]
