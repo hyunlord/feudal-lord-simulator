@@ -12,5 +12,5 @@ url="http://127.0.0.1:$port/"
 for _ in $(seq 1 90); do curl -sf "$url" > /dev/null && break; sleep 1; done
 curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; exit 1; }
 node_modules/.bin/tsx scripts/nat4PauseHolds.mjs "$out" --url "$url" \
-  --states5 "${UI5_STATES:-$HOME/fls-ui5-states-v22}" --states6 "${UI6_STATES:-$HOME/fls-ui6-states}" 2>&1 | tee .remote/nat4-pause-holds.log
+  --states5 "${UI5_STATES:-$HOME/fls-ui5-states-v22}" --states6 "${UI6_STATES:-$HOME/fls-ui6-states}" --states10 "${UI10_STATES:-$HOME/fls-ui10-states}" 2>&1 | tee .remote/nat4-pause-holds.log
 exit "${PIPESTATUS[0]}"

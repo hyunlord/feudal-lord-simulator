@@ -1,14 +1,16 @@
 // NAT-4 story (QA-025, QA-032, QA-030) in the browser, on the DGX:
-//  - pause: a chapter-2 town (ui6 `decline`), paused; every surface the HUD opens while paused (the goal cards'
+//  - pause: a chapter-2 town (ui6 `raid`) and a chapter-5 town (ui10 `royal_tax`, the QA's chapter), paused, the story's
+//    modals held back (story-delay); every surface the HUD opens while paused (the goal cards'
 //    buttons, the goal drawer, the pause menu and its book, the chronicle, the dock's drawers and the steward, the pill's
 //    population / ledger / season strip, the settings) is opened and closed; the proof port's tick and the pressed speed
 //    seal are read before, while open (1.2 s) and after (1.2 s). A surface keeps the pause when the tick never moves.
-//  - chapter page: the ui5 `chapter-end` town opens its page on its own; the end is marked seen; the town is saved
+//  - chapter page: the ui5 `chapter-end` town opens its page on its own (5 s on, after the scene's own Esc); the end is
+//    marked seen; the town is saved
 //    (설정 → 지금 저장) and that slot loaded: no page again in 8 s.
 //  - food days: the ui5 `merchant-town` runs at 1× for 2.5 s, Space pauses it; the pill's `data-food-days` must be the
 //    paused state's own `foodDays`.
 //   scripts/remote/run.sh render-NAT4-story-<sha7> -- bash scripts/nat4PauseHolds.sh
-//   (PLAYWRIGHT_MODULE=… node_modules/.bin/tsx scripts/nat4PauseHolds.mjs <out> --url <url> --states5 <dir> --states6 <dir>)
+//   (PLAYWRIGHT_MODULE=… node_modules/.bin/tsx scripts/nat4PauseHolds.mjs <out> --url <url> --states5 <dir> --states6 <dir> --states10 <dir>)
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 확인(scripts/nat4PauseHolds.mjs)", { remote: "scripts/remote/run.sh render-NAT4-story-<sha7> -- bash scripts/nat4PauseHolds.sh", entry: import.meta.url });
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -43,9 +45,11 @@ const unfoldChapter = async page => {
 const SURFACES = [
   { id: 'goal-card.chapter (목표 보기)', open: steps(unfoldChapter, press('[data-tutorial-cta="chapter"]')), shown: '.chapter-preview', close: press('.chapter-preview-continue'), shot: true },
   { id: 'goal-card.settlement', open: press('[data-tutorial-cta="settlement"]'), shown: '.goal-slot', close: key('Escape') },
-  { id: 'goal drawer toggle', open: press('.goal-drawer-toggle'), shown: '.goal-slot', close: press('.goal-drawer-toggle') },
-  { id: 'pause menu (Esc)', open: key('Escape'), shown: '.pause-menu', close: key('Escape') },
-  { id: 'pause menu → chronicle book', open: steps(key('Escape'), press('.pause-menu-book')), shown: '.legacy-book', close: steps(key('Escape'), key('Escape')) },
+  // The rail (and its toggle) leaves the screen while the drawer is open: Esc closes it.
+  { id: 'goal drawer toggle', open: press('.goal-drawer-toggle'), shown: '.goal-slot', close: key('Escape') },
+  { id: 'pause menu (Esc, then Esc)', open: key('Escape'), shown: '.pause-menu', close: key('Escape') },
+  { id: 'pause menu (Esc, then 계속)', open: key('Escape'), shown: '.pause-menu', close: press('.pause-menu-resume') },
+  { id: 'pause menu → chronicle book', open: steps(key('Escape'), press('.pause-menu .pause-menu-book')), shown: '.legacy-book', close: steps(key('Escape'), key('Escape')) },
   { id: 'chronicle (C)', open: key('c'), shown: '.chronicle-screen', close: key('c') },
   { id: 'dock.ledger', open: press('[data-dock="ledger"]'), shown: '[data-slot="ledger"]', close: press('[data-dock="ledger"]') },
   { id: 'dock.build', open: press('[data-dock="build"]'), shown: '.build-menu-category', close: press('[data-dock="build"]') },
@@ -56,24 +60,27 @@ const SURFACES = [
   { id: 'settings', open: press('.settings-disclosure > summary'), shown: '.settings-disclosure[open]', close: press('.settings-disclosure > summary') },
 ];
 const pauseRows = [];
-{
-  const state = scene('states6', 'decline');
-  const { context, page } = await openScene(browser, { state, tile: tileOf(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800, loadTimeout: 90_000 });
+for (const [dir, name] of [['states6', 'raid'], ['states10', 'royal_tax']]) {
+  const state = scene(dir, name);
+  const { context, page } = await openScene(browser, { state, tile: tileOf(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800,
+    query: '&story-delay=600000', loadTimeout: 90_000 });
   for (const surface of SURFACES) {
     const before = await read(page);
     let opened = false; let error = null;
     try {
       await surface.open(page); await page.waitForTimeout(1_200);
       opened = await visible(page, surface.shown);
-      if (surface.shot) await page.screenshot({ path: join(out, 'goal-view-paused.jpg'), type: 'jpeg', quality: 60 });
+      if (surface.shot) await page.screenshot({ path: join(out, `goal-view-paused-${name}.jpg`), type: 'jpeg', quality: 55 });
     } catch (caught) { error = String(caught).split('\n')[0]; }
     const during = await read(page);
     try { await surface.close(page); } catch (caught) { error ??= String(caught).split('\n')[0]; }
     await page.waitForTimeout(1_200);
     const after = await read(page);
     const held = before.tick === during.tick && during.tick === after.tick && after.seal === before.seal;
-    pauseRows.push({ surface: surface.id, opened, held, before, during, after, error });
-    console.log(`${held ? 'held' : 'RAN '} ${opened ? 'opened' : 'NOT OPENED'} ${surface.id} ${before.tick} → ${during.tick} → ${after.tick} (${after.seal})${error ? ` ${error}` : ''}`);
+    pauseRows.push({ scene: name, surface: surface.id, opened, held, before, during, after, error });
+    // A surface left open would block the next one: Esc until no modal or drawer stays.
+    for (let guard = 0; guard < 3 && (await visible(page, '[role="dialog"], .slot-panel')); guard += 1) { await page.keyboard.press('Escape'); await page.waitForTimeout(300); }
+    console.log(`${held ? 'held' : 'RAN '} ${opened ? 'opened' : 'NOT OPENED'} ${name}: ${surface.id} ${before.tick} → ${during.tick} → ${after.tick} (${after.seal})${error ? ` ${error}` : ''}`);
   }
   await context.close();
 }
@@ -82,10 +89,12 @@ const pauseRows = [];
 const chapter = {};
 {
   const state = scene('states5', 'chapter-end');
-  const { context, page } = await openScene(browser, { state, tile: tileOf(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800, query: '&story-delay=400', loadTimeout: 90_000 });
+  const { context, page } = await openScene(browser, { state, tile: tileOf(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800, query: '&story-delay=5000', loadTimeout: 90_000 });
   const PAGE = 'section.chronicle-page:not(.legacy-book):not(.legacy-ending)';
-  await page.waitForTimeout(2_500);
-  chapter.pageOpened = await visible(page, PAGE);
+  chapter.before = await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.state().politics?.chapterEnds.map(end => [end.chapter, end.tick, end.seenTick ?? null]) ?? []);
+  chapter.pageOpened = await page.locator(PAGE).first().waitFor({ state: 'visible', timeout: 30_000 }).then(() => true, () => false);
+  await page.waitForTimeout(500);
+  await page.screenshot({ path: join(out, 'chapter-page-first.jpg'), type: 'jpeg', quality: 55 });
   chapter.seenTicks = await page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.state().politics?.chapterEnds.map(end => [end.chapter, end.tick, end.seenTick ?? null]) ?? []);
   if (chapter.pageOpened) { await page.keyboard.press('Escape'); await page.waitForTimeout(600); }
   await page.locator('.settings-disclosure > summary').click();
@@ -96,8 +105,8 @@ const chapter = {};
   chapter.reopenedAfterLoad = await visible(page, PAGE);
   chapter.afterLoad = await page.evaluate(() => ({ tick: window.__FEUDAL_PHASE10_PROOF__.state().tick,
     ends: window.__FEUDAL_PHASE10_PROOF__.state().politics?.chapterEnds.map(end => [end.chapter, end.tick, end.seenTick ?? null]) ?? [] }));
-  await page.screenshot({ path: join(out, 'chapter-after-load.jpg'), type: 'jpeg', quality: 60 });
-  console.log(`chapter page: opened ${chapter.pageOpened}, seen ${JSON.stringify(chapter.seenTicks)}, after load reopened ${chapter.reopenedAfterLoad}`);
+  await page.screenshot({ path: join(out, 'chapter-after-load.jpg'), type: 'jpeg', quality: 55 });
+  console.log(`chapter page: before ${JSON.stringify(chapter.before)}, opened ${chapter.pageOpened}, seen ${JSON.stringify(chapter.seenTicks)}, after load reopened ${chapter.reopenedAfterLoad}`);
   await context.close();
 }
 
@@ -122,4 +131,4 @@ await browser.close();
 const result = { url, pause: pauseRows, allHeld: pauseRows.every(row => row.held), allOpened: pauseRows.every(row => row.opened), chapter, food };
 writeFileSync(join(out, 'pause-holds.json'), JSON.stringify(result, null, 1) + '\n');
 console.log(JSON.stringify({ allHeld: result.allHeld, allOpened: result.allOpened, chapterReopened: chapter.reopenedAfterLoad, foodMatch: food.match }));
-if (!result.allHeld || chapter.reopenedAfterLoad || !food.match) process.exitCode = 1;
+if (!result.allHeld || !result.allOpened || !chapter.pageOpened || chapter.reopenedAfterLoad || !food.match) process.exitCode = 1;
