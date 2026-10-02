@@ -217,7 +217,7 @@ test("draw calls one land chunk adds: two fills per fill region, one per strip q
           const tiles = state.tiles.filter(tile => Math.floor(tile.tx / GROUND_CHUNK_TILES) === plan.cx && Math.floor(tile.ty / GROUND_CHUNK_TILES) === plan.cy);
           drawLandFills(context, ground, plan, tiles, { left: -1e4, top: -1e4, right: 1e4, bottom: 1e4 }, 1);
           const fills = counts.fill;
-          const edgeQuads = drawLandEdges(context, ground, plan);
+          const edgeQuads = drawLandEdges(context, ground, plan, 1);
           const shoreQuads = drawLandShoreStrips(context, ground, scene.shore, plan.waterLoops, { left: plan.cx * 8 - 0.5, top: plan.cy * 8 - 0.5, right: plan.cx * 8 + 7.5, bottom: plan.cy * 8 + 7.5 });
           const decals = drawLandDecals(context, ground, state.tiles, plan);
           assert.equal(counts.fill, fills + edgeQuads + shoreQuads);
@@ -289,7 +289,7 @@ test("LU-D11: edge bands are laid 2.5 times as wide across the edge (128 px per 
     const state = land(id, 1); const ground = landGroundOf(state)!; const scene = groundBoundaryScene(state);
     const edges = record(); const shores = record();
     for (const plan of scene.chunks) {
-      drawLandEdges(edges.context, ground, plan);
+      drawLandEdges(edges.context, ground, plan, 1);
       drawLandShoreStrips(shores.context, ground, scene.shore, plan.waterLoops, { left: plan.cx * 8 - 0.5, top: plan.cy * 8 - 0.5, right: plan.cx * 8 + 7.5, bottom: plan.cy * 8 + 7.5 });
     }
     assert.ok(edges.transforms.length > 0, `${id} edge quads`);
@@ -302,15 +302,34 @@ test("LU-D11: edge bands are laid 2.5 times as wide across the edge (128 px per 
   }
 });
 
-test("LU-D11: the forest edge is named for Astra's art but draws nothing until both its files are installed", async () => {
-  const { FOREST_EDGE_FAMILY, FOREST_EDGE_FILL, stripFamilyInstalled } = await import("../src/render/landEdgeBand");
+test("LU-D11 / NAT-4: the forest edge is Wave 41's strip, one per season (spring and autumn summer), laid on the woodland floor's meadow edges", async () => {
+  const { FOREST_EDGE_FAMILY, FOREST_EDGE_FILL, forestEdgeArtKey, forestEdgeReadiness, stripFamilyInstalled, wave22StripInstalled } = await import("../src/render/landEdgeBand");
   const { EDGE_OF } = await import("../src/render/archetypeGroundRegions");
+  const { WAVE41_GROUND } = await import("../src/render/wave41LandManifest.generated");
   assert.equal(stripFamily(`${FOREST_EDGE_FAMILY}_a`), FOREST_EDGE_FAMILY, "the band map can name it");
-  assert.equal(stripFamilyInstalled(FOREST_EDGE_FAMILY), false, "Wave 22 has no forest edge yet");
-  assert.equal(EDGE_OF[FOREST_EDGE_FILL], undefined);
+  assert.equal(stripFamilyInstalled(FOREST_EDGE_FAMILY), true);
+  assert.equal(wave22StripInstalled(FOREST_EDGE_FAMILY), false, "never asked for as Wave 22 halves");
+  assert.equal(EDGE_OF[FOREST_EDGE_FILL], FOREST_EDGE_FAMILY);
+  assert.deepEqual(SEASONS.map(forestEdgeArtKey), ["boundary/woodland_grass_edge_summer", "boundary/woodland_grass_edge_summer", "boundary/woodland_grass_edge_summer", "boundary/woodland_grass_edge_winter"]);
+  for (const key of Object.keys(WAVE41_GROUND) as (keyof typeof WAVE41_GROUND)[]) {
+    const meta = WAVE41_GROUND[key];
+    assert.deepEqual([meta.width, meta.height, meta.pivot.x, meta.pivot.y, meta.repeat], [512, 64, 256, 32, "x"], key);
+    assert.ok(existsSync(new URL(`../public/${meta.url}`, import.meta.url)), key);
+  }
   for (const family of ["boundary/chalk_edge", "boundary/heath_edge", "boundary/fen_edge", "boundary/coastal_edge"]) assert.equal(stripFamilyInstalled(family), true, family);
-  const ground = landGroundOf(land("core:forest_edge", 1))!;
-  assert.ok(fillRegions(ground).some(region => region.base === FOREST_EDGE_FILL));
-  for (const region of fillRegions(ground)) if (region.base === FOREST_EDGE_FILL) assert.ok(region.loops.every(loop => loop.strips.every(strip => strip === null)));
-  for (const season of SEASONS) assert.ok(landArtKeys(ground, season).every(key => !key.startsWith(FOREST_EDGE_FAMILY)));
+  const forest = landGroundOf(land("core:forest_edge", 1))!;
+  const woodland = fillRegions(forest).filter(region => region.base === FOREST_EDGE_FILL);
+  assert.ok(woodland.length > 0);
+  assert.ok(woodland.some(region => region.loops.some(loop => loop.strips.includes(FOREST_EDGE_FAMILY))), "the woodland floor's edges carry the strip");
+  assert.ok(woodland.every(region => region.loops.every(loop => loop.strips.every(strip => strip === null || strip === FOREST_EDGE_FAMILY))));
+  // Its file is part of the land's readiness (and never a Wave 22 key); a land without the woodland floor adds nothing.
+  for (const season of SEASONS) assert.ok(landArtKeys(forest, season).every(key => !key.startsWith(FOREST_EDGE_FAMILY) && !key.includes("woodland_grass_edge")));
+  assert.match(forestEdgeReadiness(forest.fillBase, 1), /^:f[01]$/);
+  const downs = landGroundOf(land("core:chalk_downs", 1))!;
+  assert.equal(downs.fillBase.includes(FOREST_EDGE_FILL), false);
+  assert.equal(forestEdgeReadiness(downs.fillBase, 1), "");
+  // The forest land now lays edge quads (before Wave 41: none).
+  const scene = groundBoundaryScene(land("core:forest_edge", 1));
+  const quads = scene.chunks.reduce((sum, plan) => sum + drawLandEdges(countingContext().context, forest, plan, 1), 0);
+  assert.ok(quads > 0, `${quads} forest edge quads`);
 });

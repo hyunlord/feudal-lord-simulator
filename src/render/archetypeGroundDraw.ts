@@ -4,7 +4,7 @@ import type { Tile } from "../world/world.types";
 import { hashSeed } from "../content/seedHash";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { manifestArt } from "./manifestArt";
-import { EDGE_BAND_WIDEN, stripImage } from "./landEdgeBand";
+import { EDGE_BAND_WIDEN, forestEdgeReadiness, stripImage } from "./landEdgeBand";
 import { wallStripsEnabled } from "./renderWallStripsFlag";
 import type { SeasonIndex } from "./seasonArt";
 import { WAVE22_GROUND_IMAGES, type Wave22GroundKey } from "./wave22GroundManifest.generated";
@@ -51,7 +51,7 @@ export function landArtReadiness(land: LandGround, season: SeasonIndex): string 
   // Asked for every chunk request of every frame: once all the season's files are ready the bits cannot change.
   const ready = land.cache.allReady.get(season);
   if (ready !== undefined) return ready;
-  const bits = landArtKeys(land, season).map(key => (art.art(key) === null ? 0 : 1)).join("");
+  const bits = landArtKeys(land, season).map(key => (art.art(key) === null ? 0 : 1)).join("") + forestEdgeReadiness(land.fillBase, season);
   if (!bits.includes("0")) land.cache.allReady.set(season, bits);
   return bits;
 }
@@ -178,7 +178,7 @@ function fillStripQuad(context: CanvasRenderingContext2D, pattern: CanvasPattern
 }
 
 /** 2. Transition strips along the fill regions' smoothed outlines, where a fill meets the meadow or the heath. */
-export function drawLandEdges(context: CanvasRenderingContext2D, land: LandGround, plan: GroundChunkPlan): number {
+export function drawLandEdges(context: CanvasRenderingContext2D, land: LandGround, plan: GroundChunkPlan, season: SeasonIndex): number {
   const bounds = chunkTileBounds(plan.cx, plan.cy);
   let quads = 0;
   for (const part of chunkRegions(land, plan)) {
@@ -187,7 +187,7 @@ export function drawLandEdges(context: CanvasRenderingContext2D, land: LandGroun
       if (loop === undefined) continue;
       // The inside (the named ground, the strip's bottom) lies left of travel (y down), so the top (the meadow) along
       // the right normal (-t.y, t.x).
-      quads += drawLineStrip(context, loop.smoothed, loop.strips, bounds, { above: EDGE_HEIGHT / 2, below: EDGE_HEIGHT / 2, side: 1, widen: EDGE_BAND_WIDEN });
+      quads += drawLineStrip(context, loop.smoothed, loop.strips, bounds, { above: EDGE_HEIGHT / 2, below: EDGE_HEIGHT / 2, side: 1, widen: EDGE_BAND_WIDEN, season });
     }
   }
   return quads;
@@ -199,8 +199,8 @@ export function drawLandEdges(context: CanvasRenderingContext2D, land: LandGroun
  * `widen` times 1 / 128 tile per row; `side` +1 when the top lies along the normal (-t.y, t.x), -1 along (t.y, -t.x).
  */
 function drawLineStrip(context: CanvasRenderingContext2D, line: readonly Vec[], families: readonly (StripFamily | null)[], bounds: BoundaryBounds,
-  rows: { readonly above: number; readonly below: number; readonly side: 1 | -1; readonly widen: number }, skip?: (index: number) => boolean): number {
-  const { above, below, side, widen } = rows;
+  rows: { readonly above: number; readonly below: number; readonly side: 1 | -1; readonly widen: number; readonly season?: SeasonIndex }, skip?: (index: number) => boolean): number {
+  const { above, below, side, widen, season = 1 } = rows;
   const count = line.length;
   const topNormal = (index: number): Vec => {
     const a = line[index % count] as Vec; const b = line[(index + 1) % count] as Vec;
@@ -222,7 +222,7 @@ function drawLineStrip(context: CanvasRenderingContext2D, line: readonly Vec[], 
     if (length === 0 || family === null || skip?.(index) === true) continue;
     if (Math.max(a.x, b.x) < bounds.left - 1.5 || Math.min(a.x, b.x) > bounds.right + 1.5
       || Math.max(a.y, b.y) < bounds.top - 1.5 || Math.min(a.y, b.y) > bounds.bottom + 1.5) continue;
-    const image = stripImage(family, half => art.art(`${family}_${half}` as Wave22GroundKey), STRIP_JOIN_FADE, !isWaterStrip(family));
+    const image = stripImage(family, season, half => art.art(`${family}_${half}` as Wave22GroundKey), STRIP_JOIN_FADE, !isWaterStrip(family));
     const pattern = image === null ? null : patternOf(context, image);
     if (pattern === null) continue;
     const t = { x: (b.x - a.x) / length, y: (b.y - a.y) / length };

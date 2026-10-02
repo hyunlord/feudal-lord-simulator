@@ -14,7 +14,7 @@ import { FOREST_EDGE_FAMILY, FOREST_EDGE_FILL, stripFamilyInstalled } from "./la
 // holds none of the fill's own tiles). Each smoothed segment carries the transition strip that
 // runs along it: the named side (the strip's bottom) is the fill against the meadow, the heath against the chalk; none
 // against a drained cell (the drainage art draws that edge, LU-D5), none for the woodland floor (Wave 22 has no edge;
-// LU-D11: Astra's forest edge, once installed, takes it — landEdgeBand.ts).
+// NAT-4 / LU-D11: Wave 41's forest edge strip takes it while installed — landEdgeBand.ts).
 // Cached on the land layer (its cache key is the layer's: archetypeGroundModel.ts) and per chunk.
 
 export type RegionLoop = { readonly smoothed: readonly BoundaryPoint[]; readonly bounds: BoundaryBounds; readonly hash: number;
