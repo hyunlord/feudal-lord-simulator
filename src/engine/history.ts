@@ -924,6 +924,11 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
     if (was?.oversight.some(entry => entry.estateId === oversight.estateId) !== true) {
       line("stewardship.began", { estate: oversight.estateId, house: house(oversight.estateId), stewardId: oversight.stewardId }, 2);
     }
+    // FIX-13 (ES-11): the steward died; the next one serves.
+    const prior = was?.oversight.find(entry => entry.estateId === oversight.estateId);
+    if (prior !== undefined && prior.stewardId !== oversight.stewardId && now.stewards.find(entry => entry.personId === prior.stewardId)?.status === "dead") {
+      line("stewardship.steward_died", { house: house(oversight.estateId), deceasedId: prior.stewardId, stewardId: oversight.stewardId }, 2);
+    }
   }
   const rules = now.rules, oldRules = was?.rules;
   if (oldRules !== undefined && (oldRules.amountAtLeast !== rules.amountAtLeast || oldRules.rights !== rules.rights || oldRules.marriage !== rules.marriage)) {
@@ -1007,6 +1012,8 @@ function diplomacyDrafts(before: GameState, after: GameState): Draft[] {
     // FIX-12 (item 2): who the groom is to the lord (a son, the widowed lord, a brother, a nephew, a cousin).
     const groom = after.persons?.people.find(person => person.id === plan.groomId);
     const relation = groom?.tags.find(tag => tag.startsWith("lord-kin:"))?.slice("lord-kin:".length) ?? (groom?.role === "head" ? "widowed_lord" : "son");
+    // FIX-13 (NG-5b): the groom died before the bride: her jointure (the piece for her life).
+    if (plan.jointureSettled === true && was?.marriage?.jointureSettled !== true) line("marriage.jointure_settled", { bride: plan.brideId, piece: plan.jointurePieceId ?? "" }, 2);
     if (was?.marriage === undefined) line("marriage.contracted", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId, relation }, 3);
     for (const [event, tick] of Object.entries(plan.events)) {
       if (tick === undefined || tick < 0 || (was?.marriage?.events as Record<string, number | undefined> | undefined)?.[event] !== undefined) continue;
@@ -1014,6 +1021,8 @@ function diplomacyDrafts(before: GameState, after: GameState): Draft[] {
     }
     if (was?.marriage?.stage !== plan.stage && (plan.stage === "inherited" || plan.stage === "lost" || plan.stage === "contested")) {
       line(`marriage.${plan.stage}`, { estate: plan.estateId, rival: plan.rival ?? "" }, 3);
+      // FIX-13 (NG-5b): a debt promised after the inheritance falls away with an estate that did not come.
+      if (plan.stage === "lost" && (plan.deferredDebt ?? 0) > 0) line("marriage.deferred_void", { amount: plan.deferredDebt ?? 0 }, 2);
     }
   }
   return drafts;
@@ -1039,6 +1048,14 @@ function estateDrafts(before: GameState, after: GameState): Draft[] {
     else if (old.stage !== suit.stage && suit.stage !== "closed") line("estate.suit_stage", { suit: suit.id, stage: suit.stage });
     if (suit.enforcements > old.enforcements) line("estate.possession_enforced", { suit: suit.id, attempt: suit.enforcements, succeeded: suit.enforced === true ? 1 : 0, piece: suit.pieceId ?? "" });
     if (suit.patron !== undefined && old.patron === undefined) line("estate.suit_patron", { suit: suit.id, patron: suit.patron, support: suit.patronSupport });
+  }
+  // FIX-13 (ES-11): a person off the map who died this year (a neighbour house's, a steward or candidate).
+  for (const person of now.people) {
+    if (person.alive || was.people.find(entry => entry.id === person.id)?.alive !== true) continue;
+    const role = person.occupation === "steward" ? "steward" : person.role === "head" ? "head" : "kin";
+    // Severity 1: in the ledger and the biographies, not on a chapter's page (the inheritance it opens is its own line).
+    drafts.push({ tick: after.tick, kind: "event", template: "estate.person_died", subject: TOWN, severity: 1,
+      params: { deceasedId: person.id, role, age: (person.deathYear ?? 0) - person.birthYear } });
   }
   for (const estate of now.estates) {
     const old = was.estates.find(entry => entry.id === estate.id);

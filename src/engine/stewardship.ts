@@ -83,7 +83,10 @@ function makeCandidates(state: GameState, estateId: string): { readonly people: 
   const made: Person[] = [];
   const stewards: StewardRecord[] = [];
   const number = estateNumber(estateId);
-  DISPOSITIONS.forEach((disposition, index) => {
+  // FIX-13 (ES-11): a later round of candidates (the first all dead) is drawn afresh; the first round's draws are kept.
+  const round = Math.floor(stewardshipOf(state).stewards.filter(entry => entry.estateId === estateId).length / DISPOSITIONS.length);
+  DISPOSITIONS.forEach((disposition, at) => {
+    const index = at + round * DISPOSITIONS.length;
     const salt = (what: string) => hashSeed(state.seed, `steward:${what}`, number, index);
     const traits = populationTraits(state.seed, `steward:${estateId}`, index);
     const id = `est-${String(ordinal).padStart(6, "0")}`;
@@ -104,7 +107,7 @@ function makeCandidates(state: GameState, estateId: string): { readonly people: 
 /** SW-3 API: an estate's stewards — the serving one and the candidates (dismissed ones are not offered again). */
 export function stewardCandidates(state: GameState, estateId: string): readonly { readonly record: StewardRecord; readonly person: Person | undefined }[] {
   const people = estatesOf(state).people;
-  return stewardshipOf(state).stewards.filter(entry => entry.estateId === estateId && entry.status !== "dismissed")
+  return stewardshipOf(state).stewards.filter(entry => entry.estateId === estateId && entry.status !== "dismissed" && entry.status !== "dead")
     .map(record => ({ record, person: people.find(person => person.id === record.personId) }));
 }
 
@@ -125,6 +128,31 @@ function ensureOversight(state: GameState): GameState {
       undetected: 0, since: state.tick }] };
   }
   return withStewardship(next, stewardship);
+}
+
+/**
+ * FIX-13 (ES-11): a steward (or a direct estate's receiver) who died by the table is replaced at the season's turn — the
+ * most loyal living candidate serves; with none left a fresh round of three is drawn. The mode stays.
+ */
+function replaceDeadStewards(state: GameState): GameState {
+  let next = state;
+  for (const oversight of stewardshipOf(state).oversight) {
+    const people = estatesOf(next).people;
+    if (people.find(person => person.id === oversight.stewardId)?.alive !== false) continue;
+    let stewardship = stewardshipOf(next);
+    stewardship = withSteward(stewardship, { ...steward(stewardship, oversight.stewardId)!, status: "dead" });
+    const living = (records: readonly StewardRecord[]) => records.filter(entry => entry.estateId === oversight.estateId && entry.status === "candidate"
+      && estatesOf(next).people.find(person => person.id === entry.personId)?.alive !== false);
+    if (living(stewardship.stewards).length === 0) {
+      const made = makeCandidates(withStewardship(next, stewardship), oversight.estateId);
+      next = { ...next, estates: { ...estatesOf(next), people: [...estatesOf(next).people, ...made.people] } };
+      stewardship = { ...stewardship, stewards: [...stewardship.stewards, ...made.stewards] };
+    }
+    const successor = [...living(stewardship.stewards)].sort((a, b) => b.loyalty - a.loyalty || a.personId.localeCompare(b.personId))[0]!;
+    stewardship = withOversight(withSteward(stewardship, { ...successor, status: "serving", since: state.tick }), { ...oversight, stewardId: successor.personId, since: state.tick });
+    next = withStewardship(next, stewardship);
+  }
+  return next;
 }
 
 // --- SW-4 petitions -----------------------------------------------------------------------------------------------------
@@ -292,6 +320,7 @@ export function advanceStewardship(state: GameState): GameState {
   let next = state;
   if (seasonStart) {
     next = ensureOversight(next);
+    if (next.stewardship !== undefined) next = replaceDeadStewards(next);
     for (const estate of heldOffMapEstates(next)) next = estateSeason(next, estate);
   }
   if (michaelmasDay && next.stewardship !== undefined) next = michaelmas(next);
@@ -308,7 +337,7 @@ export function setEstateOversight(state: GameState, estateId: string, mode: Ove
   if (oversight === undefined) return state;
   const chosen = stewardId ?? oversight.stewardId;
   const record = steward(stewardship, chosen);
-  if (record === undefined || record.estateId !== estateId || record.status === "dismissed") return state;
+  if (record === undefined || record.estateId !== estateId || record.status === "dismissed" || record.status === "dead") return state;
   if (mode === oversight.mode && chosen === oversight.stewardId) return state;
   const swapped = chosen === oversight.stewardId ? stewardship
     : withSteward(withSteward(stewardship, { ...steward(stewardship, oversight.stewardId)!, status: "candidate" }), { ...record, status: "serving", since: state.tick });
@@ -370,7 +399,7 @@ export function answerAudit(state: GameState, auditId: string, choice: "punish" 
   const settled = { ...stewardship, audits: stewardship.audits.map(entry => entry.id === auditId
     ? { ...entry, status: choice === "punish" ? "punished" as const : choice === "replace" ? "replaced" as const : "tolerated" as const } : entry) };
   if (choice === "tolerate") return withStewardship(state, withSteward(settled, { ...record, loyalty: Math.min(100, record.loyalty + TOLERATE_LOYALTY) }));
-  const others = settled.stewards.filter(entry => entry.estateId === audit.estateId && entry.status !== "dismissed" && entry.personId !== record.personId);
+  const others = settled.stewards.filter(entry => entry.estateId === audit.estateId && entry.status !== "dismissed" && entry.status !== "dead" && entry.personId !== record.personId);
   const successor = others.find(entry => entry.personId === replacementId) ?? [...others].sort((a, b) => b.ability - a.ability || a.personId.localeCompare(b.personId))[0];
   if (successor === undefined) return state;
   let next = state;

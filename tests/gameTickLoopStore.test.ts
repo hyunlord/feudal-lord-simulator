@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { createEconomyHarnessScenario } from "../scripts/economyHarnessScenario";
+import { BALANCE } from "../src/content/balanceConfig";
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import type { GameSpeed } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
@@ -11,6 +12,9 @@ import {
   type AnimationFrameScheduler,
 } from "../src/state/fixedTickLoop";
 import { gameReducer } from "../src/state/gameStore";
+
+/** One tick's real time at 1x (FIX-13: 100 ms at ten ticks a second, was 50 ms). */
+const TICK_MS = 1_000 / BALANCE.TICKS_PER_SECOND;
 
 class ManualAnimationFrameScheduler implements AnimationFrameScheduler {
   private nextId = 1;
@@ -113,7 +117,7 @@ test("Given a paused fresh store When animation frames run Then no simulation st
   scheduler.runNext(0);
   scheduler.runNext(1_000);
   speed = 1;
-  scheduler.runNext(1_050);
+  scheduler.runNext(1_000 + TICK_MS);
 
   assert.equal(commits, 1);
   assert.equal(state.tick, 1);
@@ -174,7 +178,7 @@ test("Given a fresh active store When the real frame loop runs 600 ticks Then ti
 
   loop.start();
   scheduler.runNext(0);
-  for (let frame = 1; frame <= 600; frame += 1) scheduler.runNext(frame * 50);
+  for (let frame = 1; frame <= 600; frame += 1) scheduler.runNext(frame * TICK_MS);
 
   assert.equal(state.tick, 600);
   assert.equal(state.wallTick, 600);

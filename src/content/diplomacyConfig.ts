@@ -17,7 +17,15 @@ export const TIER_BOUNDS: readonly (readonly [AcceptanceTier, number])[] = [
 /** NG-3 base: a like-rank marriage is welcome in itself. */
 export const BASE_LIKE_RANK = 10;
 /** NG-3 material: points per penny (or penny-year) of what the counterpart receives; all of it at most `MATERIAL_CAP`. */
-export const MATERIAL_PER_PENNY: Readonly<Partial<Record<TermKind, number>>> = { cash: 1 / 40, pension: 1 / 60, debt_assumption: 1 / 30, right_piece: 1 / 40 };
+export const MATERIAL_PER_PENNY: Readonly<Partial<Record<TermKind, number>>> = { cash: 1 / 40, pension: 1 / 60, debt_assumption: 1 / 30, right_piece: 1 / 40,
+  // FIX-13 (NG-5b): a jointure is worth its piece's year for JOINTURE_YEARS; a debt repaid after the inheritance counts
+  // less than one paid now (it is paid only if the estate comes).
+  jointure: 1 / 40, debt_after_inheritance: 1 / 45 };
+/** FIX-13 (NG-5b): the years of a piece's income a jointure is worth to the bride's house, and the pieces that can carry one (not the market's, the tolls' or the mill's, which hold the lord's rights). */
+export const JOINTURE_YEARS = 8;
+export const JOINTURE_PIECES: readonly string[] = ["home:fishery", "home:manor_court"];
+/** FIX-13 (NG-5b): a deferred debt is repaid over at most this many years after the inheritance. */
+export const DEFERRED_DEBT_YEARS = 5;
 export const POLITICAL_SUPPORT_POINTS = 8;
 /** NG-4: money and goods count this much at most — what money cannot buy stays (rank, inheritance risk, broken word). */
 export const MATERIAL_CAP = 35;
@@ -50,7 +58,7 @@ export const RELATION_SHARE = 0.5;
 export const COUNTER_MARGIN = 4;
 export const GREED_MAX = 6;
 /** NG-5: the order the counterpart asks for things (its most wanted first). */
-export const COUNTER_DESIRES: readonly TermKind[] = ["debt_assumption", "cash", "pension", "political_support"];
+export const COUNTER_DESIRES: readonly TermKind[] = ["debt_assumption", "debt_after_inheritance", "cash", "jointure", "pension", "political_support"];
 /**
  * FIX-12 (item 1, NG-5a): a debt is taken on by instalments (deeds paid year by year): a year's instalment is at most
  * this share of the lord's estates' year, over five years at most. A debt the lord cannot carry so is not asked.
@@ -75,7 +83,7 @@ export const CONTRACT_RELATION_GAIN = 10;
 export const GROOM_MIN_AGE = 14;
 export const GROOM_MAX_AGE = 60;
 /** NG-9 (FIX-12): the lord-mode bot's one offer waits for this much in the treasury (and an estate year paid in). */
-export const BOT_OFFER_TREASURY = 600;
+export const BOT_OFFER_TREASURY = 300;
 
 /** NG-8: the middle events after the contract (ticks from it) and their chances (permille, from the seed). */
 export const MARRIAGE_TIMES = {

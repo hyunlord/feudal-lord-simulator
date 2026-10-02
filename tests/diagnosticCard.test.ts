@@ -166,7 +166,8 @@ test("Given a ready house When inspector renders Then remaining promotion hold i
     causeSummary: { buildingId: STARTING_HOUSE_ID, name: value.name, currentLevel: 2, nextLevel: 3,
       status: "ready", blocker: null, summary: "승급 대기", progressTicks: 5800, requiredTicks: 8400, remainingTicks: 2600 },
   }));
-  assert.match(markup, /L3까지 조건 유지 2:10 남음/);
+  // FIX-13 (1x = ten ticks a second): the same hold is twice the seconds it was.
+  assert.match(markup, /L3까지 조건 유지 4:20 남음/);
 });
 
 

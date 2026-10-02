@@ -16,6 +16,8 @@ const PERSON_PARAMS: Readonly<Record<string, string>> = {
   lordId: "lord", guardianId: "guardian", candidateId: "candidate", heirId: "heir", mayorId: "mayor", leaderId: "leader", predecessorId: "predecessor",
   // LM-E4: the steward of an estate (an estate person).
   stewardId: "steward",
+  // FIX-13 (ES-11): a person off the map who died (a neighbour house's, a steward).
+  deceasedId: "deceased",
 };
 export type PersonReader = Partial<Pick<GameState, "persons" | "factions" | "estates">>;
 export const namesPerson = (record: Pick<HistoryRecord, "params">) => record.params !== undefined && Object.keys(record.params).some(key => key in PERSON_PARAMS);

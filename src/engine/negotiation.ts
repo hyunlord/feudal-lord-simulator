@@ -7,7 +7,7 @@
  */
 import {
   ACCEPT_SPREAD, ACCEPT_THETA, BASE_LIKE_RANK, BROKEN_PROMISE_CAP, BROKEN_PROMISE_POINTS, CONCESSION_COST, COUNTER_DESIRES, COUNTER_MARGIN,
-  DEBT_INSTALMENT_MAX_YEARS, DEBT_INSTALMENT_SHARE,
+  DEBT_INSTALMENT_MAX_YEARS, DEBT_INSTALMENT_SHARE, JOINTURE_PIECES, JOINTURE_YEARS,
   GREED_MAX, INHERITANCE_RISK_POINTS, KEPT_PROMISE_CAP, KEPT_PROMISE_POINTS, LAND_USE_COST_CAP, LAND_USE_COST_PER_PENNY, MATERIAL_CAP,
   MATERIAL_PER_PENNY, POLITICAL_BY_ERA, POLITICAL_PEOPLE_CAP, POLITICAL_SUPPORT_POINTS, RANK_GAP_POINTS, RED_LINE_POINTS, RELATION_SHARE,
   TIER_BOUNDS, URGENCY_DEBT_CAP, URGENCY_DEBT_PER_YEAR, URGENCY_NO_SON, URGENCY_OLD_LORD,
@@ -16,7 +16,7 @@ import { treasuryBalance } from "../ledger/ledger";
 import type { Acceptance, AcceptanceReason, DiplomacyState, Term, TermChange, TermKind } from "./diplomacy.types";
 import type { GameState } from "./engine.types";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
-import { PIECE_INCOME_CATEGORIES } from "../content/estateConfig";
+import { HOME_ESTATE_ID, PIECE_INCOME_CATEGORIES } from "../content/estateConfig";
 import { estateById, estatesOf, LORD } from "./estates";
 import type { Estate } from "./estates.types";
 import { lordshipOf } from "./lordshipState";
@@ -67,6 +67,8 @@ function materialOf(state: GameState, term: Term): number {
     case "cash": case "debt_assumption": return (term.amount ?? 0) * per;
     case "pension": return (term.amount ?? 0) * (term.years ?? 1) * per;
     case "right_piece": return pieceWorth(state, term.pieceId) * per;
+    case "jointure": return pieceWorth(state, term.pieceId) * JOINTURE_YEARS * per;
+    case "debt_after_inheritance": return (term.amount ?? 0) * per;
     default: return 0;
   }
 }
@@ -146,6 +148,12 @@ export function debtInstalmentYears(state: GameState, amount: number, cap = debt
   return years <= DEBT_INSTALMENT_MAX_YEARS ? years : null;
 }
 
+/** FIX-13 (NG-5b) API: the piece a jointure would be settled on (the first the lord possesses), or null. */
+export function jointurePiece(state: GameState): string | null {
+  const home = estatesOf(state).estates.find(estate => estate.id === HOME_ESTATE_ID);
+  return JOINTURE_PIECES.find(id => home?.pieces.find(piece => piece.id === id)?.possessor === LORD) ?? null;
+}
+
 /**
  * NG-5: what the lord can give of each desire at most (the treasury's cash, the debt by instalments, a pension, one
  * support). FIX-12 (item 1): what falls due each year — a debt's instalment and a pension — shares the year's cap.
@@ -161,6 +169,8 @@ function desireRoom(state: GameState, counterpart: string, kind: TermKind, draft
     // Only what five years of instalments carry beside the pension; nothing when the lord's year carries none.
     case "debt_assumption": return Math.min(estate?.burdens.debt ?? 0, Math.max(0, cap - pension) * DEBT_INSTALMENT_MAX_YEARS);
     case "pension": return Math.min(240, Math.max(0, cap - instalment));
+    // FIX-13 (NG-5b): the rest of the debt, repaid from the inherited estate (no year of the lord's own carries it).
+    case "debt_after_inheritance": return Math.max(0, (estate?.burdens.debt ?? 0) - amountOf(draft, "debt_assumption"));
     default: return 1;
   }
 }
@@ -201,6 +211,11 @@ export function counterOffer(state: GameState, proposer: string, counterpart: st
     if (kind === "political_support") {
       if (draft.some(term => term.kind === kind)) continue;
       draft = [...draft, { kind, giver: "proposer", years: 2 }];
+    } else if (kind === "jointure") {
+      // FIX-13 (NG-5b): one jointure, on the first piece the lord holds that can carry it.
+      const piece = jointurePiece(state);
+      if (draft.some(term => term.kind === kind) || piece === null) continue;
+      draft = [...draft, { kind, giver: "proposer", pieceId: piece }];
     } else {
       const per = (MATERIAL_PER_PENNY[kind] ?? 0) * (kind === "pension" ? 5 : 1);
       const material = acceptance.reasons.find(reason => reason.name === "material")?.value ?? 0;

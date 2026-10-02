@@ -52,7 +52,9 @@ export function marriagePath(options: MarriagePathOptions) {
   let lastOffer = -Infinity;
   while (stateCalendar(state).year <= lastYear) {
     const stage = diplomacyOf(state).marriage?.stage;
-    if (stage === "inherited" || stage === "lost") break;
+    // FIX-13: the path ends with the estate's fate and the lord's promises settled (a debt repaid after the inheritance).
+    const owing = diplomacyOf(state).promises.some(entry => entry.status === "open" && entry.promisor === LORD);
+    if ((stage === "inherited" || stage === "lost") && !owing) break;
     // The chapters' answers, as the bot gives them (commands).
     const answer = chapterDecisionAction(state, "relief", "accept", "pay");
     const answered = answer === null ? null : autoplayActionToGameAction(answer, state);

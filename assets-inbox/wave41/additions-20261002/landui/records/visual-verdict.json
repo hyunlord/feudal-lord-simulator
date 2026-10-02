@@ -1,0 +1,34 @@
+{
+  "score": 93,
+  "threshold": 90,
+  "threshold_pass": true,
+  "verdict": "pass",
+  "category_match": true,
+  "differences": [
+    "B의 단독 장거리 반복은 요철 리듬이 약간 읽힘",
+    "NE돌은 w2보다 다소 작음"
+  ],
+  "suggestions": [],
+  "reasoning": "최종6장 직접확인 및 독립검수 완료. 숲 흐림·겨울 색잡음 수정, 반복 이음과 계절 alpha 정합 및 세줌 오프라인 검수 통과.",
+  "next_actions": [
+    "경량 ZIP 해시/CRC 검사"
+  ],
+  "scope": "offline-art-candidate-only",
+  "history": [
+    {
+      "score": 82,
+      "verdict": "revise",
+      "reasoning": "초기 숲 A만 저주파 흐림이 강해 독립 띠처럼 보여 재생성"
+    },
+    {
+      "score": 92,
+      "verdict": "pass",
+      "reasoning": "숲 A 재생성 후 실제 fill 연결 자연스러움, B와 질감 연속 확인"
+    },
+    {
+      "score": 88,
+      "verdict": "revise",
+      "reasoning": "숲 재생성 A의 흐린 띠는 해결됐고 여울 한칸 배치는 적합하다. 겨울 가장자리의 소수 색잡음을 정리하고 최종 PNG에서 proof를 다시 만든다."
+    }
+  ]
+}

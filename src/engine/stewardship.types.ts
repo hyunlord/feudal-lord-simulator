@@ -25,8 +25,8 @@ export interface StewardRecord {
   /** Pennies kept back since the last audit (hidden), and lost by errors (unrecorded). */
   readonly kept: number;
   readonly errors: number;
-  /** A candidate waits; one steward serves each estate; a dismissed one is not offered again. */
-  readonly status: "candidate" | "serving" | "dismissed";
+  /** A candidate waits; one steward serves each estate; a dismissed one is not offered again; a dead one (FIX-13) neither. */
+  readonly status: "candidate" | "serving" | "dismissed" | "dead";
 }
 
 /** SW-2: who decides an estate's affairs. */
