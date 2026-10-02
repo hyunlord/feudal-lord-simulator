@@ -1,0 +1,52 @@
+{
+  "id": "house_l4_1420",
+  "source": "/Users/rexxa/fls-astra-era/public/assets/buildings/historical-houses/house_l4-v2.png",
+  "raw": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-3f7ebe69-c5c1-42b4-9882-8d515c79b6d7.png",
+  "prompt": "Precise correction of complete house picture: reference1 is the original house defining exact silhouette, reference2 is its1420 edited version defining glazing/materials. Produce ONE complete finished1420 house. Preserve reference1 roof silhouette EXACTLY: the chimney must NOT protrude above any sloping outer roof boundary. Move the one small stone chimney DOWN and LEFT onto the broad visible FRONT roof slope, so its entire shaft and top sit visually INSIDE the orange tiled roof area, surrounded by tiles in the image, never breaking the roof skyline. No chimney pot. Keep same house same windows door posts floorheights foundationcorners squarecanvas upperleftlight. Keep modest dull leaded glazing of reference2. No building geometry change or new projection. Warm oak cream limewash terracotta flat tiles painterly isometric miniature. Transparent background. Entire finished house redraw, no parts.",
+  "tool": "image_gen.imagegen",
+  "model": "not disclosed",
+  "seed": "not disclosed",
+  "status": "candidate",
+  "normalization": {
+    "method": "single full-object affine registration from raw alpha>=8 bbox to original bbox; no part compositing or copied alpha",
+    "arguments": [
+      161,
+      161,
+      174,
+      67,
+      845,
+      1098,
+      25,
+      11,
+      114,
+      147
+    ],
+    "final_bbox": [
+      25,
+      11,
+      139,
+      158
+    ],
+    "source_bbox": [
+      25,
+      11,
+      139,
+      158
+    ],
+    "silhouette_iou": 0.984119982355536,
+    "canvas": [
+      161,
+      161
+    ]
+  },
+  "previous_input": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-b7390257-11c8-46d3-908a-e8c98ba57a7f.png",
+  "revision": "chimney moved entirely inside roof silhouette",
+  "reference_inputs": [
+    "/Users/rexxa/fls-astra-era/public/assets/buildings/historical-houses/house_l4-v2.png",
+    "pilot/houses/house_l4_1420.png at round1"
+  ],
+  "archived_second_input": "records/references/house_l4_1420_round1.png",
+  "archived_second_input_sha256": "c7cd6be05258635800c332dda6a2cc78198f8f1611192573c20eaedba14a86e0",
+  "source_sha256": "b3f7e40cda9de09b2e0af0a596bb8b414b40fb037f46897ab0d4d3cb264d72b8",
+  "raw_sha256": "f6230495b4b92613bccec23cf90de132b2f7ba663a36cd8ce1566e34a4b61690"
+}

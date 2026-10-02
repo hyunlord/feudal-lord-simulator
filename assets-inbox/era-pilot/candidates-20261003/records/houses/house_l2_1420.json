@@ -1,0 +1,44 @@
+{
+  "id": "house_l2_1420",
+  "source": "/Users/rexxa/fls-astra-era/public/assets/buildings/historical-houses/house_l2-v2.png",
+  "raw": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-d152fde8-cc37-461b-a7cc-b74b01c7dbae.png",
+  "prompt": "Precisely edit this one completed southern England house sprite, preserving its entire silhouette, canvas composition, contact point, all eaves and roof ridges, architectural structure, door and window locations, lighting, painterly smallgame style. Create the same L2 artisan household in1420 through modest maintained oak joinery, neatly repaired warm cream limewash, more articulated timber support brackets beneath the EXISTING upper-storey jetty, and slightly better fitted wooden shutters at existing openings. Keep ALL windows unglazed, no chimney at all for this modest open-hall household, no added storey or expanded outline. Terracotta flat tiles retain same roof; natural muted brown oak not black Tudor. Exact same object scale and margins in square transparent canvas. No backdrop text characters newobjects. This is a subtle evolving same building, not a new architecture.",
+  "tool": "image_gen.imagegen",
+  "model": "not disclosed",
+  "seed": "not disclosed",
+  "status": "candidate",
+  "normalization": {
+    "method": "single full-object affine registration from raw alpha>=8 bbox to original bbox; no part compositing or copied alpha",
+    "arguments": [
+      137,
+      137,
+      115,
+      49,
+      1023,
+      1130,
+      14,
+      6,
+      114,
+      126
+    ],
+    "final_bbox": [
+      14,
+      6,
+      128,
+      132
+    ],
+    "source_bbox": [
+      14,
+      6,
+      128,
+      132
+    ],
+    "silhouette_iou": 0.9791025777023443,
+    "canvas": [
+      137,
+      137
+    ]
+  },
+  "source_sha256": "57c717005bf698a915d2a19c42682a80b48f873c2a9226fc7f6b144a16a0c85e",
+  "raw_sha256": "88d9c9c91486b64da46e8a5909b539608ff030c745e24f8428bafbf0ec38ec1b"
+}

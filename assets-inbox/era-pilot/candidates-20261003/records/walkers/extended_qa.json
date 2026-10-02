@@ -1,0 +1,23 @@
+{
+  "worst_frame": {
+    "file": "wk_labor_m_1380.png",
+    "era": "1380",
+    "role": "labor_m",
+    "direction": "SE",
+    "gait": "0",
+    "canvas": "296x148",
+    "cell": "74x74",
+    "alpha_iou": "0.8583",
+    "bbox_original": "(21, 3, 51, 69)",
+    "bbox_candidate": "(21, 3, 51, 69)",
+    "bottom_foot_dx": "-1.5",
+    "bottom_foot_dy": "0",
+    "manifest_pivot_x": "39.63",
+    "manifest_pivot_y": "68.24",
+    "gait_phase_not_byte_duplicate": "True",
+    "lower15pct_alpha_centroid_dx": -1.774,
+    "lower15pct_alpha_centroid_dy": 0.165
+  },
+  "lower15_max_abs_dx": 1.786,
+  "lower15_max_abs_dy": 0.47
+}

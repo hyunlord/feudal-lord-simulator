@@ -1,0 +1,173 @@
+[
+  {
+    "id": "gate_corner_palisade_summer-v1",
+    "file": "assets/gate_corner_palisade_summer-v1.png",
+    "status": "candidate",
+    "canvas": [
+      256,
+      320
+    ],
+    "alphaBBox": [
+      46,
+      78,
+      209,
+      271
+    ],
+    "sha256": "aad22446a76384b53d542d0b480629de56803d221993f3cc8a403ff3caf60c76",
+    "transparentRgbNonzero": 0,
+    "pivotPx": [
+      127,
+      270
+    ],
+    "worldScale": 0.14583333333333334,
+    "worldHeightApprox": 28,
+    "generationId": "timberS"
+  },
+  {
+    "id": "gate_corner_palisade_winter-v1",
+    "file": "assets/gate_corner_palisade_winter-v1.png",
+    "status": "candidate",
+    "canvas": [
+      256,
+      320
+    ],
+    "alphaBBox": [
+      46,
+      77,
+      209,
+      271
+    ],
+    "sha256": "4527aa9957c3b681faf1e3fa9f705270476f643ad242ca402d3c196e440dc6fd",
+    "transparentRgbNonzero": 0,
+    "pivotPx": [
+      127,
+      270
+    ],
+    "worldScale": 0.14583333333333334,
+    "worldHeightApprox": 28,
+    "generationId": "timberW"
+  },
+  {
+    "id": "gate_corner_stone_summer-v1",
+    "file": "assets/gate_corner_stone_summer-v1.png",
+    "status": "candidate",
+    "canvas": [
+      256,
+      320
+    ],
+    "alphaBBox": [
+      40,
+      80,
+      216,
+      269
+    ],
+    "sha256": "ca5f8bfa21f69fc61730bfce8b7e9e1e1fe99d10fbab0aac12cd49aaa3a1eddd",
+    "transparentRgbNonzero": 0,
+    "pivotPx": [
+      127,
+      268
+    ],
+    "worldScale": 0.14736842105263157,
+    "worldHeightApprox": 28,
+    "generationId": "stoneS"
+  },
+  {
+    "id": "gate_corner_stone_winter-v1",
+    "file": "assets/gate_corner_stone_winter-v1.png",
+    "status": "candidate",
+    "canvas": [
+      256,
+      320
+    ],
+    "alphaBBox": [
+      40,
+      80,
+      216,
+      269
+    ],
+    "sha256": "cda96f72c00960bc592f8552b4e82888afeb6cd95a58b224ce91288388c43cae",
+    "transparentRgbNonzero": 0,
+    "pivotPx": [
+      127,
+      268
+    ],
+    "worldScale": 0.14736842105263157,
+    "worldHeightApprox": 28,
+    "generationId": "stoneW"
+  },
+  {
+    "id": "storehouse_a_snow-v1",
+    "file": "assets/storehouse_a_snow-v1.png",
+    "status": "candidate",
+    "canvas": [
+      160,
+      136
+    ],
+    "alphaBBox": [
+      16,
+      9,
+      143,
+      90
+    ],
+    "sha256": "777451dfc512877d54cb813d5cf94e3502ed691d1b397fc6cbfd9fb574db4264",
+    "transparentRgbNonzero": 0,
+    "base": "public/assets/buildings/storehouse.png",
+    "anchor": "inherit exact base sprite renderer anchor",
+    "offsetPx": [
+      0,
+      0
+    ],
+    "generationId": "snowA",
+    "coverageAlphaWeighted": 0.71967281728711
+  },
+  {
+    "id": "storehouse_b_snow-v1",
+    "file": "assets/storehouse_b_snow-v1.png",
+    "status": "candidate",
+    "canvas": [
+      160,
+      136
+    ],
+    "alphaBBox": [
+      18,
+      9,
+      140,
+      82
+    ],
+    "sha256": "7494f33392af760fe54076ada75ea43a89eb76975e97e98b9b03f8edd03887bc",
+    "transparentRgbNonzero": 0,
+    "base": "public/assets/buildings/variants-wave2/storehouse_b-v1.png",
+    "anchor": "inherit exact base sprite renderer anchor",
+    "offsetPx": [
+      0,
+      0
+    ],
+    "generationId": "snowB2",
+    "coverageAlphaWeighted": 0.7010103895856546
+  },
+  {
+    "id": "storehouse_c_snow-v1",
+    "file": "assets/storehouse_c_snow-v1.png",
+    "status": "candidate",
+    "canvas": [
+      160,
+      136
+    ],
+    "alphaBBox": [
+      12,
+      10,
+      132,
+      89
+    ],
+    "sha256": "39b586baeda43a40da7d7277f7df99581bd8cf5da53315a59688bf92db97d00b",
+    "transparentRgbNonzero": 0,
+    "base": "public/assets/buildings/variants-wave2/storehouse_c-v1.png",
+    "anchor": "inherit exact base sprite renderer anchor",
+    "offsetPx": [
+      0,
+      0
+    ],
+    "generationId": "snowC",
+    "coverageAlphaWeighted": 0.626281153849196
+  }
+]
