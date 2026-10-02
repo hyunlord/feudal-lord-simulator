@@ -13,6 +13,7 @@ Astra가 별도 클론에서 게임을 실행하며 관찰한 회차별 QA 기�
 | [03~14 통합](round03-14/FINDINGS.md) · [판정](round03-14/TRIAGE.md) | 2026-10-01 | `267b43b8`(마지막 관찰. 통합 중 원격 `3acc04ff` UI-AUDIT-1 이후는 미검증) | QA001~033 (33개 번호: 열림 24 · 닫힘 4 · 미재현 3 · 미검증 1 · 후보 1) + 번호 없는 후보 12묶음([CANDIDATES](round03-14/CANDIDATES.md)) | 사용자 판정([TRIAGE](round03-14/TRIAGE.md)): 최소 지원 폭 1024px — 375px에서만 나온 013·017·023·024·029는 범위 밖으로 닫음. 높음: 030 저장 왕복 식량 일수 · 032 장 결산 재노출 · 025 목표 보기가 정지를 풂. 015·016·018~021·031은 UI-AUDIT-1 이후 본선에서 재확인. 닫힘 006·008·009·011 인정, 미재현 001·004·007 · 미검증 002 유지 | 문서 8(`TRIAGE.md` 포함) · `ISSUES.csv`·`PROVENANCE.json`·`VALIDATION.json`·`SHA256SUMS.txt` · `history/`(3~14회차 원 보고 52) · `repro/` · `tools/` · 재현 저장 2(12회차 묶음에서, 아래) · 증거 JPEG 35(발견 번호마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round03-14/` — 통합 ZIP(`afe8c6e6…`)·검증 전 ZIP·검증 JSON·풀어 둔 전체(JPEG 91·GIF 6) · `rounds/`(회차별 `QA_ROUND_03~14`·전달 폴더·회차 ZIP 03~13과 검증 JSON) · `raw-sequences/round03~14`(원시 연속 프레임) · 합계 약 14GB |
 | [15](round15/README.md) | 2026-10-01 | `3acc04ff`(UI-AUDIT-1 이후) | UI-AUDIT-1 지정 7건 재검증 + 새 발견 QA034~035 (2건). 누적 35개 번호: 열림 16 · 닫힘 9 · 지원 범위 밖 5 · 미재현 3 · 미검증 1 · 후보 1 | 수정 확인 5(018·019·020·021·031, 같은 조건 범위만) · 재현 1(015 전기 장식선) · 미검증 1(016, QA034 때문에 판독 불가). 새 결함: **QA034 결정창 제목·본문·선택지가 안 보임(높음, 긴급 ZIP 먼저 전달)** · QA035 설정 최하단 불러오기 행을 건설·장부·청지기 버튼이 덮음(1024·1280). 1024px 미만은 이번부터 시험 안 함 | 문서 7 · `ISSUES.csv`·`POLICY.json`·`PROVENANCE.json`·`SHA256SUMS.txt` · `repro/` · `tools/` · `urgent/`(QA034 긴급 묶음 그대로: JPEG 4 · JSON 5 · README) · 재현 저장 2(03·04회차 묶음에서, 아래) · 증거 JPEG 9(발견 번호마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round15/` — 경량 ZIP(`241ef2d1…`)·긴급 ZIP(`5851e2fa…`, `urgent/`와 같은 내용)·풀어 둔 전체(JPEG 39) |
 | [16](round16/README.md) | 2026-10-01 | `c52e6634`(QA034 수정 `e531560e` 포함) | 재검증 5건(QA034·016·010·035·015) + 돈 표기 회귀 관찰 + 새 후보 QA036 (1건). 누적 36개 번호: 열림 13 · 닫힘 12 · 지원 범위 밖 5 · 미재현 3 · 후보 2 · 미검증 1 | 닫힘 3(QA034 과세 본문, QA016 길드 보류 버튼, QA010 82살 ‘젊은’→‘작은’; 같은 원본·사건 범위만). 열림 유지 2(QA015 전기 장식선, QA035 설정 저장행 가림). 돈 표기 £·s 통과 표본(원시 d 보조합계는 남음). 새 후보 **QA036: 1349 임금 청원 첫 대표가 ‘세상을 떠남’**(원인 미확정, 선택은 됨; 소형 ZIP 먼저 전달). 청원 7종 × 3폭 = 21화면 확인 | 문서 7 · `early/QA036.md` · `ISSUES.csv`·`DELIVERY_MANIFEST.json`·`POLICY.json`·`PROVENANCE.json`·`VALIDATION.json`·`SHA256SUMS.txt` · `repro/` · `tools/` · 재현 저장 4(`PROVENANCE.json`이 가리키는 것만, 아래) · 증거 JPEG 7(발견마다 1장 이상) | `~/feudal-lord-analysis/astra-raw/qa/round16/` — 경량 ZIP(`767d5500…`)·QA036 먼저 받은 ZIP·ZIP 검증 JSON·풀어 둔 전체(JPEG 38) · `work/QA_ROUND_16`(작업 폴더 전체, JPEG 116) |
+| [17](round17/README.md) | 2026-10-02 | `5a15e62d` | 새 땅 5종 × 여름·겨울 10장면 관측 + 지정 재검증 4건(QA015·035·034·016) + 새 발견 QA037~040 (4건) + 여울 추가 탐색([FORD](round17/FORD.md)). 누적 40개 번호: 열림 15 · 닫힘 14 · 지원 범위 밖 5 · 미재현 3 · 확정 열림 1(QA036 엔진) · 후보 1 · 미검증 1 | 닫힘 2(QA015 전기 장식선, QA035 설정 저장행 — 같은 원본·3폭 범위만). 닫힘 유지 1(QA034), 과세 표본 통과 1(QA016, 길드 미검증). 열림 유지 2(QA014 직함 `king` 영문, QA027 영주관이 흰 상자·단색 지붕). 새 결함 4: QA037 10배속 진입을 찾지 못함 · QA038 해안 지도2→강가 선택 시 1로 고정·± 비활성, 무작위 선택 없음 · QA039 백악 바위 면의 마름모 절단·검은 사각 윤곽 · QA040 숲 바닥이 직각 판처럼 빈 땅을 자름. 여울은 실제 길 드래그로 목교만 확인, 여울·개선 단계는 미검증 | 문서 7(`FORD.md`·작업 폴더의 `PLAN.md` 포함) · `early/`(먼저 받은 소형 ZIP 3개의 문서 3) · `ISSUES.csv`·`PROVENANCE.json`·`VERIFICATION.json`·`SHA256SUMS` · `repro/` · `tools/` · 재현 저장 1(`repro/ui-provenance.json`이 가리키는 것만, 아래) · 증거 JPEG 17(발견마다 1장 이상 + FORD 4) | `~/feudal-lord-analysis/astra-raw/qa/round17/` — 경량 ZIP(`e7f9748b…`)·해시 파일·먼저 받은 소형 ZIP 3(`early-controls`·`early-rock`·`early-forest`)·풀어 둔 전체(JPEG 38·GIF 1) · `work/QA_ROUND_17`(작업 폴더 전체, JPEG 87) |
 
 ## 한 회차에 넣는 것
 
@@ -144,3 +145,26 @@ QA-012의 연속 변화는 GIF(`clips/season-autumn-winter.gif`·`season-winter-
 - `natural1362-ch4-start.json.gz`(`ec321e87…`, 09회차)
 
 앞의 회차 폴더에 같은 바이트가 이미 있어서 Git 저장 공간은 늘지 않는다. 탐색 중 열었지만 판정에서 뺀 `fixtures/perf-gate/ch4-1380.save.json.gz`는 넣지 않았다.
+
+## 17회차 증거
+
+| 발견 | 파일 |
+|---|---|
+| QA015 전기 장식선(닫힘) · QA014 직함 `king` 영문(열림) | `ui17-09-kingbio1600.jpg` |
+| QA035 설정 저장행 가림(닫힘) | `ui17-02-settings1600-top.jpg` · `ui17-03-settings-bottom1024.jpg` |
+| QA034 결정 본문(닫힘 유지) | `ui17-06-tax1600.jpg` |
+| QA016 결정 버튼(과세 표본 통과) | `ui17-11-taxside1024.jpg` · `ui17-12-taxreopened1024.jpg` |
+| QA027 영주관 화풍(열림) · QA040 숲 바닥 직각 경계(새) | `17-031-forest-edge.jpg` · `17-032-forest-winter-edge.jpg` |
+| QA037 10배속 진입 없음(새) | `17-003-river-settings.jpg` |
+| QA038 지도 선택 고정·무작위 없음(새) | `17-014-coast-map2.jpg` · `17-015-river-map-locked.jpg` |
+| QA039 백악 바위 절단·사각 윤곽(새) | `17-025-chalk-rock-gaps.jpg` · `17-026-chalk-winter-rock.jpg` |
+| 여울 추가 탐색([FORD](round17/FORD.md), 목교만 확인) | `fordf-05-drag.jpg` · `fordf-06-result.jpg` · `fordf-07-bridgezoom.jpg` · `fordf-08-bridgeclick.jpg` |
+
+`FINDINGS.md`가 함께 가리키는 `ui17-10`(1024·1280)·`ui17-07`·`17-044`와 나머지 땅 장면, 강 물결 GIF와 프레임판, 5종 계절 비교판은 astra-raw에서 연다.
+
+`early/`에는 경량 ZIP보다 먼저 받은 소형 ZIP 3개(`fls-qa-round17-early-controls`·`-rock`·`-forest`)의 문서를 넣었다. 작업 폴더 `/tmp/QA_ROUND_17/early/`의 `FINDINGS.md`·`QA039.md`·`QA040.md`와 바이트가 같다. 소형 ZIP의 JPEG 가운데 4장은 경량 ZIP 증거와 바이트가 같고, `17-007-river-summer.jpg`·`17-023-chalk-start.jpg` 2장은 경량 ZIP에 없어 astra-raw에만 있다. 경량 ZIP에 `PLAN.md`가 없어 작업 폴더의 것(완료 표시)을 넣었다(패키지 `SHA256SUMS`에는 없음).
+
+**재현 저장.** 이번 `PROVENANCE.json`에는 저장 출처가 없고, UI 회귀에 쓴 저장은 `repro/ui-provenance.json` `source`가 가리킨다. 그 하나만 `round17/repro/saves/`에 넣었고, sha256이 `sourceGzipSHA256`과 같다.
+- `normal-ui-1384-before-tax.json.gz`(`faa99495…`, 04회차, 16회차 폴더와 같은 바이트)
+
+새 땅 장면은 화면에서 새 게임을 만들어 관측했으므로 저장이 없다.

@@ -1,0 +1,1 @@
+const http=require('http'),fs=require('fs');const data=JSON.stringify({code:fs.readFileSync(0,'utf8')});const req=http.request('http://127.0.0.1:'+(process.env.QA_CONTROL_PORT||4843)+'/',{method:'POST',headers:{'Content-Type':'application/json'}},res=>res.pipe(process.stdout));req.on('error',e=>{console.error(e);process.exitCode=1});req.end(data);
