@@ -7,6 +7,10 @@
 // run writes the chosen crops to <out>/hits.json, the "before" run takes the same rects (same save, same camera).
 // The UI pictures: the welcome screen (title keyart), the ledger's rights tab (toll right icon), a chronicle decision
 // record (the actual-result icon), each found by the CSS background that carries it.
+// Options (environment): NAT5_TARGETS other pictures, NAT5_SCENES (comma-separated scene names) only those scenes,
+// NAT5_PER_SCENE=1 a crop of each picture in every scene that shows it (world-<picture>-<scene>), NAT5_UI=0 no UI shots.
+// The storehouse snow (RUN-02): NAT5_TARGETS=buildings/storehouse.png,storehouse_b-v1,storehouse_c-v1 NAT5_SCENES=winter,summer
+// NAT5_PER_SCENE=1 NAT5_UI=0.
 //   PLAYWRIGHT_MODULE=... tsx scripts/nat5InstallCaptures.ts <url> <out dir> <label>
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/nat5InstallCaptures.ts)", { remote: "scripts/remote/run.sh render-NAT5-installs-<sha7> -- bash scripts/nat5InstallCaptures.sh …", entry: import.meta.url });
@@ -23,8 +27,8 @@ const TOWN = "fixtures/perf-gate/ch4-1380.save.json.gz";
 mkdirSync(out, { recursive: true });
 const saves = join(".remote", "nat5-saves"); mkdirSync(saves, { recursive: true });
 
-/** The world pictures (URL fragments) the reworks replace. */
-const TARGETS = ["bridge_abutment_ne_a", "bridge_abutment_nw_a", "bridge_abutment_se_a", "guildhall-active", "haycock_a", "haycock_b",
+/** The world pictures (URL fragments) the reworks replace; NAT5_TARGETS (comma-separated fragments) picks others. */
+const TARGETS = process.env.NAT5_TARGETS !== undefined ? process.env.NAT5_TARGETS.split(",") : ["bridge_abutment_ne_a", "bridge_abutment_nw_a", "bridge_abutment_se_a", "guildhall-active", "haycock_a", "haycock_b",
   "haycock_c", "haycock_d", "haycock_e", "haycock_f", "orchard_apple_c-", "orchard_apple_d-", "orchard_pear_e-", "orchard_plum_f-",
   "hurdle_straight", "hurdle_end_corner", "farmstead_a", "farmstead_b", "farmstead_working", "farmstead_winter", "chicken_flock_a",
   "hungry_queue", "footprints_dotted_ne", "footprints_dotted_nw"];
@@ -129,6 +133,8 @@ const SCENES: readonly (readonly [string, () => string])[] = [["summer", () => t
   ["farms", () => advancedTo("four-farms", 1)], ["ch2", () => advancedTo("chapter-two-town", 1)]];
 
 const PARK = { x: 80, y: 105 };
+// A cold dev server on a busy DGX scans its dependencies on the first page (one load took over 30 s).
+const LOAD_MS = 180_000;
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 
@@ -144,7 +150,7 @@ async function openPaused(save: string | null, camera: Camera, viewport: { width
     const start = `return { zoom: ${camera.zoom}, panX: canvas.clientWidth / 2 - ${camera.x * camera.zoom}, panY: canvas.clientHeight / 2 - ${camera.y * camera.zoom} };`;
     await route.fulfill({ response, body: text.replace(anchor, start + anchor) });
   });
-  await page.goto(`${url}?phase10-proof=1`, { waitUntil: "load" });
+  await page.goto(`${url}?phase10-proof=1`, { waitUntil: "load", timeout: LOAD_MS });
   if (save === null) return { page, context, proof: async () => null };
   const bytes = readSave(save); const meta = saveMetaFor("auto-1", bytes);
   if (meta === null) throw new Error(`${save}: not a save file`);
@@ -158,10 +164,10 @@ async function openPaused(save: string | null, camera: Camera, viewport: { width
       tx.oncomplete = () => resolve(); tx.onerror = () => reject(tx.error); });
     db.close();
   }, { base64: Buffer.from(bytes).toString("base64"), meta });
-  await page.reload({ waitUntil: "load" });
+  await page.reload({ waitUntil: "load", timeout: LOAD_MS });
   // A busy DGX can miss the first page's welcome (run 3 timed out once on it): one reload more, a longer wait.
   try { await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 60_000 }); } catch {
-    await page.reload({ waitUntil: "load" });
+    await page.reload({ waitUntil: "load", timeout: LOAD_MS });
     await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 120_000 });
   }
   await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 120_000 });
@@ -183,7 +189,11 @@ const report: Record<string, unknown> = { url, label };
 
 // The whole map at zoom 1: x from -2048 to 2048, y from 0 to 2048 (plus building height), centred on (0, 1000).
 const MAP_VIEW = { width: 4200, height: 2300 };
+const ONLY = process.env.NAT5_SCENES?.split(",") ?? null;
+const PER_SCENE = process.env.NAT5_PER_SCENE === "1";
+const pick = (target: string, scene: string) => PER_SCENE ? `${target}@${scene}` : target;
 for (const [scene, save] of SCENES) {
+  if (ONLY !== null && !ONLY.includes(scene)) continue;
   if (label === "before" && !Object.values(chosen).some(clip => clip.scene === scene)) continue;
   const { page, context, proof } = await openPaused(save(), { zoom: 1, x: 0, y: 1000 }, MAP_VIEW);
   const hits = await page.evaluate("globalThis.__nat5Hits(4000)") as Hit[];
@@ -192,23 +202,28 @@ for (const [scene, save] of SCENES) {
   report[scene] = { tick: await proof("state().tick"), zoom: (await proof("diagnosis()") as { camera: { zoom: number } }).camera.zoom, counts };
   if (label !== "before") {
     for (const target of TARGETS) {
-      if (chosen[target] !== undefined) continue;
+      if (chosen[pick(target, scene)] !== undefined) continue;
       // Clear of the HUD (top bar, side panels, dock) and of the window edge; nearest the map centre.
       const fit = hits.filter(hit => hit.t === target && hit.x > 120 && hit.y > 160 && hit.x + hit.width < MAP_VIEW.width - 480 && hit.y + hit.height < MAP_VIEW.height - 220)
         .sort((a, b) => Math.hypot(a.x - 2100, a.y - 1150) - Math.hypot(b.x - 2100, b.y - 1150));
       const hit = fit[0];
       if (hit === undefined) continue;
       const width = Math.max(200, Math.round(hit.width * 3)); const height = Math.max(150, Math.round(hit.height * 2.6));
-      chosen[target] = { scene, hits: counts[target] ?? 0, x: Math.round(hit.x + hit.width / 2 - width / 2), y: Math.round(hit.y + hit.height * 0.55 - height / 2), width, height };
+      chosen[pick(target, scene)] = { scene, hits: counts[target] ?? 0, x: Math.round(hit.x + hit.width / 2 - width / 2), y: Math.round(hit.y + hit.height * 0.55 - height / 2), width, height };
     }
   }
-  for (const [target, clip] of Object.entries(chosen)) if (clip.scene === scene) await shot(page, `world-${target.replace(/[-_]$/, "")}`, { x: clip.x, y: clip.y, width: clip.width, height: clip.height });
+  for (const [target, clip] of Object.entries(chosen)) {
+    if (clip.scene !== scene) continue;
+    const name = target.replace(/@.*/, "").replace(/^.*\//, "").replace(/\.png$/, "").replace(/[-_]$/, "") + (PER_SCENE ? `-${scene}` : "");
+    await shot(page, `world-${name}`, { x: clip.x, y: clip.y, width: clip.width, height: clip.height });
+  }
   if (process.env.NAT5_FULL === "1") await shot(page, `map-${scene}`, undefined, 40);
   await context.close();
 }
 if (label !== "before") writeFileSync(hitsFile, JSON.stringify(chosen, null, 1));
 report.chosen = Object.fromEntries(Object.entries(chosen).map(([target, clip]) => [target, clip.scene]));
-report.missing = TARGETS.filter(target => chosen[target] === undefined);
+report.missing = TARGETS.filter(target => !Object.keys(chosen).some(key => key.replace(/@.*/, "") === target));
+if (process.env.NAT5_UI === "0") { console.log(JSON.stringify(report)); await browser.close(); process.exit(0); }
 
 /** The client rect of the first element whose computed background carries `fragment` (null: none on screen). */
 const backgroundRect = (page: any, fragment: string) => page.evaluate((needle: string) => {
