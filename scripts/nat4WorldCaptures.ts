@@ -7,7 +7,6 @@
 //  - qa003: the same town at t320000, the QA-003 camera, the gate (47, 42) and its arms at zoom 2.
 //  - zoom: the art audit's population-176 frame (1440 × 960, centre (128, 1413.5)) at zoom 0.5, 1.0 and 1.4.
 //  - trees: the 1380 town's densest forest (NAT-2's forest camera) at zoom 2.
-//  - gait: John (carter:construction-site-000081) in Astra's wall14 scene at 1x, 8 frames 100 ms apart side by side.
 //   PLAYWRIGHT_MODULE=... tsx scripts/nat4WorldCaptures.ts <url> <out dir> <label> [section ...]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/nat4WorldCaptures.ts)", { remote: "scripts/remote/run.sh render-NAT4-world-<sha7> -- node_modules/.bin/tsx scripts/nat4WorldCaptures.ts …", entry: import.meta.url });
@@ -19,11 +18,10 @@ import { advanceTick } from "../src/engine/tick";
 import type { GameState } from "../src/engine/engine.types";
 
 const [url, out, label] = [process.argv[2]!, process.argv[3]!, process.argv[4]!];
-const sections = new Set(process.argv.slice(5).length > 0 ? process.argv.slice(5) : ["qa005", "qa003", "zoom", "trees", "gait"]);
+const sections = new Set(process.argv.slice(5).length > 0 ? process.argv.slice(5) : ["qa005", "qa003", "zoom", "trees"]);
 const TOWN = "fixtures/perf-gate/ch4-1380.save.json.gz";
 const POP176 = "fixtures/saves/v41/population-176.save.json";
 const ROGER = "carter:construction-site-000048:319813";
-const JOHN = "carter:construction-site-000081";
 mkdirSync(out, { recursive: true });
 const saves = join(".remote", "nat4-saves"); mkdirSync(saves, { recursive: true });
 
@@ -148,33 +146,6 @@ if (sections.has("zoom")) {
 if (sections.has("trees")) {
   const { page, context } = await openPaused(townAt(null), cameraOn(47, 11, 2), VIEW);
   await shot(page, "trees-forest-z2", { x: 500, y: 300, width: 600, height: 460 });
-  await context.close();
-}
-
-if (sections.has("gait")) {
-  // Astra's John scene: zoom 2, camera (1294, −1227) = world centre (−247, 889), her first frame t320742; the fixture
-  // advanced to 320742 and played at 1x.
-  const { page, context, proof } = await openPaused(townAt(320742), { zoom: 2, x: -247, y: 889 }, VIEW);
-  await page.getByRole("button", { name: "1배속", exact: true }).click();
-  await page.mouse.move(PARK.x, PARK.y);
-  const frames: string[] = []; const feet: unknown[] = [];
-  for (let index = 0; index < 8; index += 1) {
-    const john = await proof(`state().walkers.find(w => w.id.startsWith(${JSON.stringify(JOHN)}))`) as { position: { tx: number; ty: number } } | undefined;
-    if (john === undefined) break;
-    const at = await proof(`tileClientPoint(${JSON.stringify({ tx: john.position.tx, ty: john.position.ty })})`) as { clientX: number; clientY: number };
-    frames.push((await page.screenshot({ type: "png", clip: clip(at, { width: 120, height: 120 }, VIEW) }) as Buffer).toString("base64"));
-    feet.push(john.position);
-    await page.waitForTimeout(100);
-  }
-  // One sheet, made in the page (no image library in the repository; a string so tsx adds no `__name`).
-  const sheet = await page.evaluate(`(async (frames) => {
-    const images = await Promise.all(frames.map(data => new Promise(resolve => { const image = new Image(); image.onload = () => resolve(image); image.src = "data:image/png;base64," + data; })));
-    const canvas = document.createElement("canvas"); canvas.width = 120 * images.length; canvas.height = 120;
-    const paint = canvas.getContext("2d"); images.forEach((image, index) => paint.drawImage(image, index * 120, 0));
-    return canvas.toDataURL("image/jpeg", 0.85).split(",")[1];
-  })(${JSON.stringify(frames)})`) as string;
-  if (frames.length > 0) writeFileSync(join(out, `gait-john-${label}.jpg`), Buffer.from(sheet, "base64"));
-  report.gait = { frames: frames.length, feet };
   await context.close();
 }
 
