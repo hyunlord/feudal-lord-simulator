@@ -16,6 +16,7 @@ import { closeModals, loadChromium, readSave, TUTORIAL_OFF, type PageWindow } fr
 import { decodeSave, encodeSave, saveMetaFor } from "../src/save/saveCodec";
 import { advanceTick } from "../src/engine/tick";
 import type { GameState } from "../src/engine/engine.types";
+import { c25SeasonState } from "./c25Board";
 
 const [url, out, label] = [process.argv[2]!, process.argv[3]!, process.argv[4]!];
 const TOWN = "fixtures/perf-gate/ch4-1380.save.json.gz";
@@ -97,16 +98,35 @@ type Camera = { readonly zoom: number; readonly x: number; readonly y: number };
 type Hit = { t: string; x: number; y: number; width: number; height: number };
 type Clip = { x: number; y: number; width: number; height: number };
 
-/** The 1380 town advanced in Node to `tick` (the vision checker's city scenes: summer 321050, winter 323035). */
-const townAt = (tick: number): string => {
-  const path = join(saves, `town-${tick}.save.json`);
+/** `state` as a save file under `name`. */
+const saveOf = (name: string, state: () => GameState): string => {
+  const path = join(saves, `${name}.save.json`);
   if (existsSync(path)) return path;
-  let state = decodeSave(readSave(TOWN)).envelope.state as GameState;
-  while (state.tick < tick) state = advanceTick(state);
   const at = "2026-10-03T00:00:00.000Z";
-  writeFileSync(path, encodeSave({ state, createdAt: at, savedAt: at }).bytes);
+  writeFileSync(path, encodeSave({ state: state(), createdAt: at, savedAt: at }).bytes);
   return path;
 };
+/** The 1380 town advanced in Node to `tick` (the vision checker's city scenes: summer 321050, winter 323035). */
+const townAt = (tick: number): string => saveOf(`town-${tick}`, () => {
+  let state = decodeSave(readSave(TOWN)).envelope.state as GameState;
+  while (state.tick < tick) state = advanceTick(state);
+  return state;
+});
+/** A save fixture advanced in Node to the middle (600 ticks in) of its next `season` (0 spring … 3 winter): a save
+ * cannot go back in time (its ledger's ticks would lie ahead of it and the load refuses it). */
+const advancedTo = (name: string, season: number): string => saveOf(`${name}-s${season}`, () => {
+  let state = decodeSave(readSave(`fixtures/saves/v41/${name}.save.json`)).envelope.state as GameState;
+  const year = Math.floor(state.tick / 4_000) * 4_000;
+  const target = year + season * 1_000 + 600 > state.tick ? year + season * 1_000 + 600 : year + 4_000 + season * 1_000 + 600;
+  while (state.tick < target) state = advanceTick(state);
+  return state;
+});
+// Where the pictures stand: the 1380 town (guildhall, farmsteads, haycocks), then towns with what it lacks — the zoned
+// C25 board (an orchard), the population-176 town, the four farms and the chapter 2 town (house yards with hurdles,
+// hens, the river's bridges), each in summer. A picture is cropped from the first scene that shows it.
+const SCENES: readonly (readonly [string, () => string])[] = [["summer", () => townAt(321050)], ["winter", () => townAt(323035)],
+  ["c25", () => saveOf("c25-summer", () => c25SeasonState(1))], ["pop176", () => advancedTo("population-176", 1)],
+  ["farms", () => advancedTo("four-farms", 1)], ["ch2", () => advancedTo("chapter-two-town", 1)]];
 
 const PARK = { x: 80, y: 105 };
 const chromium = await loadChromium();
@@ -139,7 +159,11 @@ async function openPaused(save: string | null, camera: Camera, viewport: { width
     db.close();
   }, { base64: Buffer.from(bytes).toString("base64"), meta });
   await page.reload({ waitUntil: "load" });
-  await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 60_000 });
+  // A busy DGX can miss the first page's welcome (run 3 timed out once on it): one reload more, a longer wait.
+  try { await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 60_000 }); } catch {
+    await page.reload({ waitUntil: "load" });
+    await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 120_000 });
+  }
   await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 120_000 });
   await page.waitForTimeout(2_000);
   if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
@@ -159,8 +183,9 @@ const report: Record<string, unknown> = { url, label };
 
 // The whole map at zoom 1: x from -2048 to 2048, y from 0 to 2048 (plus building height), centred on (0, 1000).
 const MAP_VIEW = { width: 4200, height: 2300 };
-for (const [scene, tick] of [["summer", 321050], ["winter", 323035]] as const) {
-  const { page, context, proof } = await openPaused(townAt(tick), { zoom: 1, x: 0, y: 1000 }, MAP_VIEW);
+for (const [scene, save] of SCENES) {
+  if (label === "before" && !Object.values(chosen).some(clip => clip.scene === scene)) continue;
+  const { page, context, proof } = await openPaused(save(), { zoom: 1, x: 0, y: 1000 }, MAP_VIEW);
   const hits = await page.evaluate("globalThis.__nat5Hits(4000)") as Hit[];
   const counts: Record<string, number> = {};
   for (const hit of hits) counts[hit.t] = (counts[hit.t] ?? 0) + 1;
@@ -205,6 +230,11 @@ const VIEW = { width: 1600, height: 1100 };
   await page.waitForTimeout(4_000);
   await shot(page, "ui-title", undefined, 70);
   report.title = await backgroundRect(page, "keyart_title_bg");
+  // The painting alone: whatever stands on the keyart's element hidden.
+  await page.evaluate(() => { for (const node of document.querySelectorAll<HTMLElement>("*")) {
+    if (getComputedStyle(node).backgroundImage.includes("keyart_title_bg")) for (const child of node.children) (child as HTMLElement).style.visibility = "hidden"; } });
+  await page.waitForTimeout(500);
+  await shot(page, "ui-title-art", undefined, 70);
   await context.close();
 }
 
@@ -220,6 +250,10 @@ const VIEW = { width: 1600, height: 1100 };
   await page.keyboard.press("Escape"); await page.waitForTimeout(400);
   await page.locator("[data-dock='ledger']").first().click(); await page.waitForTimeout(600);
   await page.locator(".ledger-tab--chronicle").first().click(); await page.waitForTimeout(1_500);
+  // Only the decision records (the kind toggles: every other kind off).
+  for (const kind of await page.locator(".chronicle-kind[aria-pressed='true']").evaluateAll((nodes: Element[]) => nodes.map(node => node.getAttribute("data-kind"))) as string[]) {
+    if (kind !== "decision") { await page.locator(`.chronicle-kind[data-kind='${kind}']`).first().click(); await page.waitForTimeout(300); }
+  }
   let actual: Clip | null = null; let tried = 0;
   for (; tried < 24 && actual === null; tried += 1) {
     const cards = page.locator(".chronicle-card[data-kind='decision'] .chronicle-card-body");
@@ -227,7 +261,7 @@ const VIEW = { width: 1600, height: 1100 };
     await cards.nth(tried).click(); await page.waitForTimeout(700);
     actual = await backgroundRect(page, "icon_actual");
   }
-  report.actual = { icon: actual, tried };
+  report.actual = { icon: actual, tried, cards: await page.locator(".chronicle-card").count() };
   if (actual !== null) await shot(page, "ui-chronicle-actual", around(actual, 520, 220, VIEW));
   await context.close();
 }
