@@ -1,6 +1,6 @@
 # 설치 대기 그림 실행 준비서
 
-> 저장소 메모(INBOX, 2026-10-03): `SPECS/strip-corners.md`의 성벽 띠 모서리 16장은 렌더 NAT-5 그리기 이음으로 대체되어 retired — 이 계획에서 빠진다. 0단계(legacy-reconcile 59장)는 INBOX 세션이 처리했다.
+> 저장소 메모(INBOX, 2026-10-03): `SPECS/strip-corners.md`의 성벽 띠 모서리 16장은 렌더 NAT-5 그리기 이음으로 대체되어 retired — 이 계획에서 빠진다. 0단계(legacy-reconcile 59장)는 INBOX 세션이 처리했다. `INSTALL_LISTS/*.fragments.ts` 3개는 저장소 ESLint가 TS로 읽지 않도록 `.fragments.ts.txt`로 이름만 바꿨다(바이트 동일, SHA256SUMS·문서 속 이름은 원본 그대로).
 
 기준 브랜치 `codex/phase15-organic-ground`, HEAD `ce67158a7f2d24bf8d02cab45deb9b7209ed68e1`, 조사일 2026-10-03.
 
