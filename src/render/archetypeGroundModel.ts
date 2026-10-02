@@ -10,6 +10,7 @@ import { GROUND_CHUNK_TILES, TILE_RING, type GroundChunkPlan } from "./groundSce
 import type { SeasonIndex } from "./seasonArt";
 import { WAVE22_GROUND_IMAGES, type Wave22GroundKey } from "./wave22GroundManifest.generated";
 import { chunkRegions, type ChunkRegion, type FillRegion } from "./archetypeGroundRegions";
+import { stripFamilyInstalled } from "./landEdgeBand";
 
 // LAND-UI: the land's ground layer (world/archetypeGround.ts, MA-5) as the ground chunks draw it (archetypeGroundDraw.ts).
 // The riverside town (`core:open_field`) has none: its layer is all meadow with no decals, so it never enters this code
@@ -50,9 +51,12 @@ export type LandGround = {
     preloaded?: boolean };
 };
 
-/** The X-repeating strip families, each drawn as its a | b pair joined into one repeat. */
+/**
+ * The X-repeating strip families, each drawn as its a | b pair joined into one repeat. LU-D11: the forest edge is named
+ * for Astra's art (landEdgeBand.ts) and drawn only once both its files are installed.
+ */
 export const STRIP_FAMILIES = ["boundary/chalk_edge", "boundary/heath_edge", "boundary/fen_edge", "boundary/coastal_edge",
-  "boundary/reed_bed", "shore/sand_beach", "shore/shingle", "shore/salt_marsh"] as const;
+  "boundary/reed_bed", "shore/sand_beach", "shore/shingle", "shore/salt_marsh", "boundary/forest_edge"] as const;
 export type StripFamily = (typeof STRIP_FAMILIES)[number];
 
 type Key = { readonly tiles: readonly Tile[]; readonly id: string; readonly seed: number; readonly width: number; readonly height: number;
@@ -131,7 +135,7 @@ export function landArtKeys(land: LandGround, season: SeasonIndex): readonly Wav
     const base = land.fillBase[index] ?? null;
     if (base !== null) { keys.add(fillArtKey(base, season, "a")); keys.add(fillArtKey(base, season, "b")); return; }
     const family = stripFamily(name);
-    if (family !== null) { keys.add(`${family}_a` as Wave22GroundKey); keys.add(`${family}_b` as Wave22GroundKey); return; }
+    if (family !== null) { if (stripFamilyInstalled(family)) { keys.add(`${family}_a` as Wave22GroundKey); keys.add(`${family}_b` as Wave22GroundKey); } return; }
     if (name in WAVE22_GROUND_IMAGES) keys.add(name as Wave22GroundKey);
   });
   const sorted = [...keys].sort();

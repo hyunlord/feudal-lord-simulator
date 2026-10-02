@@ -258,3 +258,57 @@ test("a fen work drying a mere moves the deferKey (groundLocalKey) only of the c
   assert.ok(a.filter((plan, index) => plan.groundBaseKey !== b[index]!.groundBaseKey).length > changed.length, "the whole-loop key still moves further out");
 });
 
+
+test("LU-D11: the edge bands' feather is 0 outside the paint, 1 in its middle, a smooth ramp over 18 rows each side", async () => {
+  const { EDGE_FEATHER_ROWS, EDGE_PAINT_BOTTOM, EDGE_PAINT_TOP, edgeFeatherAlpha } = await import("../src/render/landEdgeBand");
+  const rows = Array.from({ length: 64 }, (_, row) => edgeFeatherAlpha(row));
+  for (let row = 0; row < EDGE_PAINT_TOP; row += 1) assert.equal(rows[row], 0, `row ${row}`);
+  for (let row = EDGE_PAINT_BOTTOM + 1; row < 64; row += 1) assert.equal(rows[row], 0, `row ${row}`);
+  for (let row = EDGE_PAINT_TOP + EDGE_FEATHER_ROWS; row <= EDGE_PAINT_BOTTOM - EDGE_FEATHER_ROWS; row += 1) assert.equal(rows[row], 1, `row ${row}`);
+  for (let row = EDGE_PAINT_TOP; row < EDGE_PAINT_TOP + EDGE_FEATHER_ROWS; row += 1) assert.ok(rows[row]! > 0 && rows[row]! < 1 && rows[row]! > rows[row - 1]!, `rise ${row}`);
+  for (let row = EDGE_PAINT_BOTTOM - EDGE_FEATHER_ROWS + 1; row <= EDGE_PAINT_BOTTOM; row += 1) assert.ok(rows[row]! > 0 && rows[row]! < 1 && rows[row]! < rows[row - 1]!, `fall ${row}`);
+  // Symmetric about the paint's middle.
+  for (let k = 0; k < EDGE_FEATHER_ROWS; k += 1) assert.ok(Math.abs(rows[EDGE_PAINT_TOP + k]! - rows[EDGE_PAINT_BOTTOM - k]!) < 1e-9, `k ${k}`);
+});
+
+test("LU-D11: edge bands are laid twice as wide across the edge (128 px per tile along it); shore and reed strips keep their width", async () => {
+  const { EDGE_BAND_WIDEN } = await import("../src/render/landEdgeBand");
+  assert.equal(EDGE_BAND_WIDEN, 2);
+  // The pattern's v axis in tile units from its screen transform (c, d) = iso(vAxis).
+  const across = (c: number, d: number) => { const x = (c / 32 + d / 16) / 2; const y = (d / 16 - c / 32) / 2; return Math.hypot(x, y); };
+  const along = (a: number, b: number) => across(a, b);
+  const record = () => {
+    const transforms: { a: number; b: number; c: number; d: number }[] = [];
+    const context = { fillStyle: "" as unknown, beginPath() {}, moveTo() {}, lineTo() {}, closePath() {}, fill() {}, save() {}, restore() {}, clip() {},
+      createPattern: () => ({ setTransform(matrix: { a: number; b: number; c: number; d: number }) { transforms.push(matrix); } }) };
+    return { context: context as unknown as CanvasRenderingContext2D, transforms };
+  };
+  for (const id of ["core:chalk_downs", "core:fen_drainage"]) {
+    const state = land(id, 1); const ground = landGroundOf(state)!; const scene = groundBoundaryScene(state);
+    const edges = record(); const shores = record();
+    for (const plan of scene.chunks) {
+      drawLandEdges(edges.context, ground, plan);
+      drawLandShoreStrips(shores.context, ground, scene.shore, plan.waterLoops, { left: plan.cx * 8 - 0.5, top: plan.cy * 8 - 0.5, right: plan.cx * 8 + 7.5, bottom: plan.cy * 8 + 7.5 });
+    }
+    assert.ok(edges.transforms.length > 0, `${id} edge quads`);
+    for (const m of edges.transforms) {
+      assert.ok(Math.abs(across(m.c, m.d) - EDGE_BAND_WIDEN / 128) < 1e-9, `${id} edge across ${across(m.c, m.d)}`);
+      assert.ok(Math.abs(along(m.a, m.b) - 1 / 128) < 1e-9, `${id} edge along ${along(m.a, m.b)}`);
+    }
+    for (const m of shores.transforms) assert.ok(Math.abs(across(m.c, m.d) - 1 / 128) < 1e-9, `${id} shore across ${across(m.c, m.d)}`);
+    if (id === "core:fen_drainage") assert.ok(shores.transforms.length > 0, "the fen's reed strips are drawn");
+  }
+});
+
+test("LU-D11: the forest edge is named for Astra's art but draws nothing until both its files are installed", async () => {
+  const { FOREST_EDGE_FAMILY, FOREST_EDGE_FILL, stripFamilyInstalled } = await import("../src/render/landEdgeBand");
+  const { EDGE_OF } = await import("../src/render/archetypeGroundRegions");
+  assert.equal(stripFamily(`${FOREST_EDGE_FAMILY}_a`), FOREST_EDGE_FAMILY, "the band map can name it");
+  assert.equal(stripFamilyInstalled(FOREST_EDGE_FAMILY), false, "Wave 22 has no forest edge yet");
+  assert.equal(EDGE_OF[FOREST_EDGE_FILL], undefined);
+  for (const family of ["boundary/chalk_edge", "boundary/heath_edge", "boundary/fen_edge", "boundary/coastal_edge"]) assert.equal(stripFamilyInstalled(family), true, family);
+  const ground = landGroundOf(land("core:forest_edge", 1))!;
+  assert.ok(fillRegions(ground).some(region => region.base === FOREST_EDGE_FILL));
+  for (const region of fillRegions(ground)) if (region.base === FOREST_EDGE_FILL) assert.ok(region.loops.every(loop => loop.strips.every(strip => strip === null)));
+  for (const season of SEASONS) assert.ok(landArtKeys(ground, season).every(key => !key.startsWith(FOREST_EDGE_FAMILY)));
+});

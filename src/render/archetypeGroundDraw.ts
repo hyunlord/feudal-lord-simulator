@@ -4,12 +4,12 @@ import type { Tile } from "../world/world.types";
 import { hashSeed } from "../content/seedHash";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { manifestArt } from "./manifestArt";
-import { joinStripImages } from "./stripJoin";
+import { EDGE_BAND_WIDEN, stripImage } from "./landEdgeBand";
 import { wallStripsEnabled } from "./renderWallStripsFlag";
 import type { SeasonIndex } from "./seasonArt";
 import { WAVE22_GROUND_IMAGES, type Wave22GroundKey } from "./wave22GroundManifest.generated";
 import { GROUND_CHUNK_TILES, TILE_RING, chunkTileBounds, type GroundChunkPlan } from "./groundSceneParts";
-import { chunkHash, fillArtKey, fillVariant, landArtKeys, landStripLoops, loopStrips, type LandGround, type StripFamily } from "./archetypeGroundModel";
+import { chunkHash, fillArtKey, fillVariant, isWaterStrip, landArtKeys, landStripLoops, loopStrips, type LandGround, type StripFamily } from "./archetypeGroundModel";
 import { chunkRegions, type ChunkRegion } from "./archetypeGroundRegions";
 import type { ShoreStripOverride } from "./drawShoreline";
 
@@ -22,7 +22,8 @@ import type { ShoreStripOverride } from "./drawShoreline";
 //  2. Transition strips (boundary/*_edge, 512 x 64, X-repeating; top = the meadow, bottom = the named ground,
 //     records/strips-sources.json) on each tile edge where a land fill meets the meadow or the heath: flat in the tile
 //     plane like the old shore strip (u = 128 source px per tile along the edge, from the edge's map coordinate so
-//     collinear edges run on; v across, half a tile wide, centred on the edge), a and b joined into one 1024 px repeat.
+//     collinear edges run on; v across, centred on the edge), a and b joined into one 1024 px repeat. LU-D11: laid
+//     EDGE_BAND_WIDEN times wider across (a tile, not half) with their alpha feathered (landEdgeBand.ts).
 //     Water-side bands are not laid on tile edges (3).
 //  3. Shore and reed-bed strips (512 x 96, land on top, painted waterline at row 50 measured on all eight) carry their
 //     own water, so on a loop whose land side has them (the coast's sea, the fen's water) they replace the old shore
@@ -162,18 +163,6 @@ function traceBlock(context: CanvasRenderingContext2D, bx: number, by: number): 
   context.closePath();
 }
 
-const joined = new Map<StripFamily, CanvasImageSource>();
-/** A strip family's a | b joined into one seamless repeat (the a image alone where there is no canvas). */
-function stripImage(family: StripFamily): CanvasImageSource | null {
-  const done = joined.get(family);
-  if (done !== undefined) return done;
-  const a = art.art(`${family}_a` as Wave22GroundKey); const b = art.art(`${family}_b` as Wave22GroundKey);
-  if (a === null || b === null) return null;
-  const image = typeof document === "undefined" ? a : joinStripImages([a, b], STRIP_WIDTH, a.naturalHeight, STRIP_JOIN_FADE);
-  if (image !== null) joined.set(family, image);
-  return image;
-}
-
 type Vec = BoundaryPoint;
 const iso = (v: Vec): Vec => ({ x: (v.x - v.y) * TILE_W / 2, y: (v.x + v.y) * TILE_H / 2 });
 
@@ -198,7 +187,7 @@ export function drawLandEdges(context: CanvasRenderingContext2D, land: LandGroun
       if (loop === undefined) continue;
       // The inside (the named ground, the strip's bottom) lies left of travel (y down), so the top (the meadow) along
       // the right normal (-t.y, t.x).
-      quads += drawLineStrip(context, loop.smoothed, loop.strips, bounds, EDGE_HEIGHT / 2, EDGE_HEIGHT / 2, 1);
+      quads += drawLineStrip(context, loop.smoothed, loop.strips, bounds, { above: EDGE_HEIGHT / 2, below: EDGE_HEIGHT / 2, side: 1, widen: EDGE_BAND_WIDEN });
     }
   }
   return quads;
@@ -206,11 +195,12 @@ export function drawLandEdges(context: CanvasRenderingContext2D, land: LandGroun
 
 /**
  * Lays X-repeating strips along a closed smoothed line, one quad per segment whose family is set: texture u = arc length
- * (128 px per tile), v across with row `line` on the line, `above` rows to the top side and `below` to the bottom side;
- * `side` +1 when the top lies along the normal (-t.y, t.x), -1 along (t.y, -t.x).
+ * (128 px per tile), v across with row `above` on the line, `above` rows to the top side and `below` to the bottom side,
+ * `widen` times 1 / 128 tile per row; `side` +1 when the top lies along the normal (-t.y, t.x), -1 along (t.y, -t.x).
  */
 function drawLineStrip(context: CanvasRenderingContext2D, line: readonly Vec[], families: readonly (StripFamily | null)[], bounds: BoundaryBounds,
-  above: number, below: number, side: 1 | -1, skip?: (index: number) => boolean): number {
+  rows: { readonly above: number; readonly below: number; readonly side: 1 | -1; readonly widen: number }, skip?: (index: number) => boolean): number {
+  const { above, below, side, widen } = rows;
   const count = line.length;
   const topNormal = (index: number): Vec => {
     const a = line[index % count] as Vec; const b = line[(index + 1) % count] as Vec;
@@ -222,7 +212,7 @@ function drawLineStrip(context: CanvasRenderingContext2D, line: readonly Vec[], 
     const length = Math.hypot(p.x + q.x, p.y + q.y) || 1;
     return { x: (p.x + q.x) / length, y: (p.y + q.y) / length };
   };
-  const up = (above - 1) / PX_PER_TILE; const down = (below - 1) / PX_PER_TILE;
+  const up = (above - 1) * widen / PX_PER_TILE; const down = (below - 1) * widen / PX_PER_TILE;
   let quads = 0; let arc = 0;
   for (let index = 0; index < count; index += 1) {
     const a = line[index] as Vec; const b = line[(index + 1) % count] as Vec;
@@ -232,15 +222,15 @@ function drawLineStrip(context: CanvasRenderingContext2D, line: readonly Vec[], 
     if (length === 0 || family === null || skip?.(index) === true) continue;
     if (Math.max(a.x, b.x) < bounds.left - 1.5 || Math.min(a.x, b.x) > bounds.right + 1.5
       || Math.max(a.y, b.y) < bounds.top - 1.5 || Math.min(a.y, b.y) > bounds.bottom + 1.5) continue;
-    const image = stripImage(family);
+    const image = stripImage(family, half => art.art(`${family}_${half}` as Wave22GroundKey), STRIP_JOIN_FADE, !isWaterStrip(family));
     const pattern = image === null ? null : patternOf(context, image);
     if (pattern === null) continue;
     const t = { x: (b.x - a.x) / length, y: (b.y - a.y) / length };
     const na = vertexNormal(index); const nb = vertexNormal(index + 1); const n = topNormal(index);
     const a0 = { x: a.x - t.x * 0.01, y: a.y - t.y * 0.01 }; const b0 = { x: b.x + t.x * 0.01, y: b.y + t.y * 0.01 };
-    // Texture (u, v) -> tile: a + t (u - u0) / 128 - n (v - above) / 128 (the top side up).
+    // Texture (u, v) -> tile: a + t (u - u0) / 128 - n widen (v - above) / 128 (the top side up).
     const u0 = (start * PX_PER_TILE) % (STRIP_WIDTH * 2);
-    const uAxis = { x: t.x / PX_PER_TILE, y: t.y / PX_PER_TILE }; const vAxis = { x: -n.x / PX_PER_TILE, y: -n.y / PX_PER_TILE };
+    const uAxis = { x: t.x / PX_PER_TILE, y: t.y / PX_PER_TILE }; const vAxis = { x: -n.x * widen / PX_PER_TILE, y: -n.y * widen / PX_PER_TILE };
     const origin = { x: a.x - uAxis.x * u0 - vAxis.x * above, y: a.y - uAxis.y * u0 - vAxis.y * above };
     fillStripQuad(context, pattern, [
       { x: a0.x + na.x * up, y: a0.y + na.y * up }, { x: b0.x + nb.x * up, y: b0.y + nb.y * up },
@@ -261,7 +251,7 @@ export function drawLandShoreStrips(context: CanvasRenderingContext2D, land: Lan
     if (strips === null || loop === undefined) continue;
     // Along a wall standing on the water the wall face is the edge (as the old strip, D3b).
     const walled = (index: number) => wallStrips && loop.walled[index] === true && loop.walled[(index + 1) % loop.walled.length] === true;
-    quads += drawLineStrip(context, loop.smoothed, strips, tileBounds, WATERLINE_ROW, WATER_STRIP_HEIGHT - WATERLINE_ROW - 1, loop.landSide, walled);
+    quads += drawLineStrip(context, loop.smoothed, strips, tileBounds, { above: WATERLINE_ROW, below: WATER_STRIP_HEIGHT - WATERLINE_ROW - 1, side: loop.landSide, widen: 1 }, walled);
   }
   return quads;
 }
