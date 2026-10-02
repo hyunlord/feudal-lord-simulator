@@ -98,7 +98,8 @@ async function run(op) {
       session.page.on('console', message => { if (message.type() === 'error') session.errors.push(`[console] ${message.text().slice(0, 300)}`); });
       const source = readFileSync(join(statesDir, `${op.state}.json`), 'utf8');
       await routeSceneState(session.page, source);
-      await session.page.goto(url, { waitUntil: 'load' });
+      // NAT-4: the welcome opens on a random map number; pinned to map 1 its dismissal keeps the injected scene.
+      await session.page.goto(`${url}${url.includes('?') ? '&' : '?'}new-game-seed=1`, { waitUntil: 'load' });
       await session.page.waitForSelector('canvas', { timeout: 90_000 });
       await session.page.waitForTimeout(4000);
       if (await session.page.locator('.welcome-dismiss-layer').count()) await session.page.locator('.welcome-dismiss-layer').click();

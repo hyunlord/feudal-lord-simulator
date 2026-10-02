@@ -2,7 +2,8 @@ import { boundsOf, chaikinClosed, hashNumbers, type BoundaryBounds, type Boundar
 import { cellContourLoops } from "../world/boundary/cellContours";
 import { BOUNDARY_CHAIKIN_ROUNDS } from "../world/boundary/terrainBoundaries";
 import { chunkTileBounds, overlaps, pointInPolygon, type GroundChunkPlan } from "./groundSceneParts";
-import type { LandGround, StripFamily } from "./archetypeGroundModel";
+import { STRIP_FAMILIES, type LandGround, type StripFamily } from "./archetypeGroundModel";
+import { FOREST_EDGE_FAMILY, FOREST_EDGE_FILL, stripFamilyInstalled } from "./landEdgeBand";
 
 // LAND-UI: each land fill as smoothed regions, the way the forest and the water are outlined (marching squares over the
 // tile centres, then Chaikin, terrainBoundaries.ts), so a fill meets the meadow on a curve and not on the tile
@@ -12,7 +13,8 @@ import type { LandGround, StripFamily } from "./archetypeGroundModel";
 // clipped out at draw time (they keep today's tile edge) — and a lake out in the meadow is no part of it (its piece
 // holds none of the fill's own tiles). Each smoothed segment carries the transition strip that
 // runs along it: the named side (the strip's bottom) is the fill against the meadow, the heath against the chalk; none
-// against a drained cell (the drainage art draws that edge, LU-D5), none for the woodland floor (Wave 22 has no edge).
+// against a drained cell (the drainage art draws that edge, LU-D5), none for the woodland floor (Wave 22 has no edge;
+// LU-D11: Astra's forest edge, once installed, takes it — landEdgeBand.ts).
 // Cached on the land layer (its cache key is the layer's: archetypeGroundModel.ts) and per chunk.
 
 export type RegionLoop = { readonly smoothed: readonly BoundaryPoint[]; readonly bounds: BoundaryBounds; readonly hash: number;
@@ -23,9 +25,8 @@ export type FillRegion = { readonly base: string; readonly outside: boolean; rea
 /** A region as one chunk draws it: the loops that reach it, and whether it otherwise lies inside. */
 export type ChunkRegion = { readonly region: FillRegion; readonly loops: readonly number[]; readonly parity: boolean };
 
-export const EDGE_OF: Readonly<Record<string, StripFamily>> = { chalk_down: "boundary/chalk_edge", heath: "boundary/heath_edge", fen: "boundary/fen_edge", coastal_grass: "boundary/coastal_edge" };
-
-const FAMILIES = Object.values(EDGE_OF);
+export const EDGE_OF: Readonly<Record<string, StripFamily>> = { chalk_down: "boundary/chalk_edge", heath: "boundary/heath_edge", fen: "boundary/fen_edge", coastal_grass: "boundary/coastal_edge",
+  ...(stripFamilyInstalled(FOREST_EDGE_FAMILY) ? { [FOREST_EDGE_FILL]: FOREST_EDGE_FAMILY } : {}) };
 
 export function fillRegions(land: LandGround): readonly FillRegion[] {
   if (land.cache.regions !== undefined) return land.cache.regions;
@@ -54,7 +55,7 @@ function regionOf(land: LandGround, base: string): FillRegion {
         return land.fillBase[land.fill[outside]!] === "heath" ? null : EDGE_OF[base] ?? null;
       });
       const strips = smoothed.map((_, segment) => byVertex[Math.floor((segment + 3) / 4) % count] ?? null);
-      return { smoothed, bounds: boundsOf(smoothed, 0.5), hash: hashNumbers([loop.hash, ...strips.map(strip => (strip === null ? 0 : FAMILIES.indexOf(strip) + 1))]), strips };
+      return { smoothed, bounds: boundsOf(smoothed, 0.5), hash: hashNumbers([loop.hash, ...strips.map(strip => (strip === null ? 0 : STRIP_FAMILIES.indexOf(strip) + 1))]), strips };
     });
   return { base, outside, loops };
 }

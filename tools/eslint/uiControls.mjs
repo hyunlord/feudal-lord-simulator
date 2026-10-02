@@ -18,7 +18,7 @@ export const uiControlsConfig = {
     'no-restricted-syntax': ['error',
       nativeControl('button', 'Button / IconButton / Toggle / Tabs'),
       nativeControl('select', 'Select'),
-      nativeControl('input', 'Slider / Toggle / Checkbox'),
+      nativeControl('input', 'Slider / Toggle / Checkbox / NumberField'),
       nativeControl('textarea', 'parts'),
       nativeControl('details', 'Disclosure'),
       nativeControl('summary', 'Disclosure'),
