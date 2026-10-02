@@ -1,0 +1,229 @@
+{
+ "state": "chapter2-end.json",
+ "tick": 160000,
+ "winter": 163500,
+ "clip": {
+  "x": 440,
+  "y": 160,
+  "width": 400,
+  "height": 320
+ },
+ "subjects": [
+  {
+   "name": "pair",
+   "id": "construction-site-000012",
+   "tx": 45,
+   "ty": 31,
+   "lot": "horizontal",
+   "painting": "house_pair_l4_horizontal_d",
+   "registered": [
+    "fresh",
+    "weathered"
+   ]
+  },
+  {
+   "name": "single",
+   "id": "house-44-40-0",
+   "tx": 44,
+   "ty": 37,
+   "painting": "house_l3_c",
+   "registered": [
+    "fresh"
+   ]
+  },
+  {
+   "name": "granary",
+   "id": "granary-42-37-0",
+   "tx": 42,
+   "ty": 34,
+   "painting": "granary_a",
+   "registered": []
+  }
+ ],
+ "views": {
+  "pair-fresh-before": {
+   "game": "base",
+   "tile": [
+    45.5,
+    31
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "pair-fresh-after": {
+   "game": "this",
+   "tile": [
+    45.5,
+    31
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "pair-winter-before": {
+   "game": "base",
+   "tile": [
+    45.5,
+    31
+   ],
+   "zoom": 2,
+   "tick": 163500
+  },
+  "pair-winter-after": {
+   "game": "this",
+   "tile": [
+    45.5,
+    31
+   ],
+   "zoom": 2,
+   "tick": 163500
+  },
+  "pair-worn-before": {
+   "game": "base",
+   "tile": [
+    45.5,
+    31
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "pair-worn-after": {
+   "game": "this",
+   "tile": [
+    45.5,
+    31
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "single-fresh-before": {
+   "game": "base",
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "single-fresh-after": {
+   "game": "this",
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "single-winter-before": {
+   "game": "base",
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 2,
+   "tick": 163500
+  },
+  "single-winter-after": {
+   "game": "this",
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 2,
+   "tick": 163500
+  },
+  "single-worn-before": {
+   "game": "base",
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "single-worn-after": {
+   "game": "this",
+   "tile": [
+    44,
+    37
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "granary-fresh-before": {
+   "game": "base",
+   "tile": [
+    42.5,
+    34.5
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "granary-fresh-after": {
+   "game": "this",
+   "tile": [
+    42.5,
+    34.5
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "granary-winter-before": {
+   "game": "base",
+   "tile": [
+    42.5,
+    34.5
+   ],
+   "zoom": 2,
+   "tick": 163500
+  },
+  "granary-winter-after": {
+   "game": "this",
+   "tile": [
+    42.5,
+    34.5
+   ],
+   "zoom": 2,
+   "tick": 163500
+  },
+  "granary-worn-before": {
+   "game": "base",
+   "tile": [
+    42.5,
+    34.5
+   ],
+   "zoom": 2,
+   "tick": 160000
+  },
+  "granary-worn-after": {
+   "game": "this",
+   "tile": [
+    42.5,
+    34.5
+   ],
+   "zoom": 2,
+   "tick": 160000
+  }
+ },
+ "files": [
+  "pair-fresh-before.jpg",
+  "pair-fresh-after.jpg",
+  "pair-winter-before.jpg",
+  "pair-winter-after.jpg",
+  "pair-worn-before.jpg",
+  "pair-worn-after.jpg",
+  "single-fresh-before.jpg",
+  "single-fresh-after.jpg",
+  "single-winter-before.jpg",
+  "single-winter-after.jpg",
+  "single-worn-before.jpg",
+  "single-worn-after.jpg",
+  "granary-fresh-before.jpg",
+  "granary-fresh-after.jpg",
+  "granary-winter-before.jpg",
+  "granary-winter-after.jpg",
+  "granary-worn-before.jpg",
+  "granary-worn-after.jpg"
+ ],
+ "jpegBytes": 495098,
+ "errors": []
+}
