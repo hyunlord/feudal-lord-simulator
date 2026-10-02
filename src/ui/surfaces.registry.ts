@@ -397,6 +397,9 @@ export const SURFACES: readonly SurfaceRow[] = [
     data: "the gallery's dark panel" },
   { id: "dev.ui-kit.tooltip", extends: "dev.ui-kit.dark", root: ".ui-tooltip", frame: "css", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
     data: "the kit Tooltip in the gallery" },
+  // NAT-4 (LU-D7): the kit NumberField's row in the gallery (the land agent's NumberField; screen.welcome holds the map number one).
+  { id: "dev.ui-kit.number", extends: "dev.ui-kit", root: "[data-states='number']", frame: "flat", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
+    data: "the kit NumberField's states in the gallery" },
 ];
 
 /**
@@ -430,6 +433,7 @@ export const NOT_SURFACES: Readonly<Record<string, string>> = {
   "ledger-drawer": "with .slot-panel (slot.ledger.*)", "build-drawer": "with .court-console (hud.build-drawer)",
   // Kit parts (the gallery, dev.ui-kit) and unmounted components.
   "ui-frame": "the kit Panel / Card / Modal (used only in the gallery and the kit Select)", "ui-chip": "the kit Chip (gallery only)",
+  "ui-number": "the kit NumberField (a control; measured inside screen.welcome and the gallery)",
   "resource-bar": "ResourceBar is not mounted (survey §2)", "ledger-panel": "LedgerPanel is not mounted (survey §2)",
   "resource-bar__coin-detail": "part of the unmounted ResourceBar", "alert-stack-row": "AlertStack is not mounted (survey §2)",
 };
