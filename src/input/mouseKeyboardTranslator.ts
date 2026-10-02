@@ -76,6 +76,8 @@ const PANEL_KEYS: Readonly<Record<string, "build" | "ledger" | "hud" | "chronicl
 const OVERLAY_SLOTS: Readonly<Record<string, 1 | 2 | 3 | 4>> = { Digit1: 1, Digit2: 2, Digit3: 3, Digit4: 4 };
 const ZOOM_KEYS: Readonly<Record<string, number>> = { Equal: ZOOM_IN, NumpadAdd: ZOOM_IN, Minus: ZOOM_OUT, NumpadSubtract: ZOOM_OUT };
 const TOOL_STEP_KEYS: Readonly<Record<string, -1 | 1>> = { KeyQ: -1, KeyE: 1 };
+/** NAT-4 (FIX-13): the two fast speeds by key — Digit5 5x, Digit0 10x (`SPEED_STEPS` 3 and 4; Digit1–4 are the overlays). */
+const SPEED_KEYS: Readonly<Record<string, 3 | 4>> = { Digit5: 3, Digit0: 4 };
 
 export type MouseKeyboardTranslator = ReturnType<typeof createMouseKeyboardTranslator>;
 
@@ -306,6 +308,11 @@ export function createMouseKeyboardTranslator(context: TranslatorContext) {
       }
       const slot = OVERLAY_SLOTS[key.code];
       if (slot !== undefined) return { preventDefault: context.emit({ kind: "overlayToggle", slot }, at) };
+      const speedStep = SPEED_KEYS[key.code];
+      if (speedStep !== undefined) {
+        if (key.repeat === true || target === "text") return NONE;
+        return { preventDefault: context.emit({ kind: "speed", value: speedStep }, at) };
+      }
       if (target !== "world") return NONE;
       if (key.code === "Enter") return { preventDefault: context.emit({ kind: "confirm" }, at) };
       const step = TOOL_STEP_KEYS[key.code];

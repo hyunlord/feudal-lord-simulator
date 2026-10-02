@@ -48,7 +48,7 @@
 .app-shell .hud-time-cluster .speed-seals { gap: 2px; }
 .app-shell .hud-time-cluster .settings-disclosure > summary { display: grid; place-items: center; min-width: 44px; min-height: 44px; padding: 0 6px; font-size: 12px; }
 .app-shell .hud-time-cluster[hidden] { display: none; }
-/* NAT-4 (FIX-13): the 10x seal's mark — the 5x seal's chevrons, "×10" in its lower right corner. */
+/* NAT-4 (FIX-13): the fast seal's mark — the fast speed it stands for (×5 / ×10) in its lower right corner, 12 px. */
 /* contrast-audit selector=".speed-seal-mark" fg="--palette-ink" bg="--palette-vellum" size="12" role="body" */
 .app-shell .speed-seal-mark { position: absolute; right: 1px; bottom: 1px; padding: 0 2px; font-size: 12px; font-weight: 700; line-height: 1.1;
   color: var(--palette-ink); background-color: var(--palette-vellum); pointer-events: none; }

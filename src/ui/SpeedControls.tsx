@@ -19,26 +19,11 @@ import {
   publishAutoplayPulse,
 } from "./autoplayPresentation";
 import { Button, Disclosure } from "./kit";
+import { SPEED_SEALS, sealPress, sealView } from "./speedSeals";
 
 /** The advisor with nothing to do (one object, so the scheduling effect below does not rerun each render). */
 const NO_ACTION = { kind: "none" } as const;
 
-/**
- * UX-2: the painted time icons (pause · play · two and three chevrons). NAT-4 (FIX-13): 10x wears the 5x seal's three
- * chevrons (the time sheet's `fastest` cell; the sheet has four cells) with its "×10" mark in the corner.
- */
-const SPEED_SEALS: readonly {
-  readonly speed: GameSpeed;
-  readonly label: string;
-  readonly icon: "pause" | "play" | "fast" | "fastest";
-  readonly mark?: string;
-}[] = [
-  { speed: 0, label: KO_UI.speeds.paused, icon: "pause" },
-  { speed: 1, label: KO_UI.speeds.normal, icon: "play" },
-  { speed: 3, label: KO_UI.speeds.threefold, icon: "fast" },
-  { speed: 5, label: KO_UI.speeds.fivefold, icon: "fastest" },
-  { speed: 10, label: KO_UI.speeds.tenfold, icon: "fastest", mark: KO_UI.speeds.tenfoldMark },
-];
 
 export function speedToIntervalMs(speed: GameSpeed): number | null {
   return speed === 0 ? null : 1_000 / BALANCE.TICKS_PER_SECOND;
@@ -111,19 +96,24 @@ export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) 
   return (
     <div className="speed-control-stack">
       <div className="speed-seals" role="group" aria-label={KO_UI.speeds.ariaLabel}>
-        {SPEED_SEALS.map((option) => (
-          <Button
-            key={option.speed}
-            className="speed-seal"
-            type="button"
-            aria-label={option.label}
-            aria-pressed={speed === option.speed}
-            onPress={() => onChange(option.speed)}
-           variant="icon">
-            <UiIcon sheet="time" cell={option.icon} size={32} />
-            {option.mark === undefined ? null : <span className="speed-seal-mark" aria-hidden="true">{option.mark}</span>}
-          </Button>
-        ))}
+        {/* UX-2: the painted time icons (pause · play · two and three chevrons); NAT-4: one fast seal for 5x and 10x (speedSeals.ts). */}
+        {SPEED_SEALS.map((seal) => {
+          const view = sealView(seal, speed);
+          return (
+            <Button
+              key={seal.id}
+              className="speed-seal"
+              type="button"
+              data-seal={seal.id}
+              aria-label={view.label}
+              aria-pressed={view.pressed}
+              onPress={() => onChange(sealPress(seal, speed))}
+             variant="icon">
+              <UiIcon sheet="time" cell={seal.icon} size={32} />
+              {view.mark === null ? null : <span className="speed-seal-mark" aria-hidden="true">{view.mark}</span>}
+            </Button>
+          );
+        })}
       </div>
       <Disclosure className="command-disclosure settings-disclosure" summary="설정">
       <div className="command-popover autoplay-control" data-frame="dark" aria-label="자동 발전 제어">
