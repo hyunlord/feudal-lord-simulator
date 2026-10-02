@@ -28,8 +28,11 @@ export const KO_UI = {
   speeds: {
     ariaLabel: "시간 속도", paused: "일시 정지", normal: "1배속",
     threefold: "3배속", fivefold: "5배속",
-    // NAT-4 (FIX-13): 10x (100 ticks a second); the mark on its seal tells it from the 5x seal it shares the art with.
-    tenfold: "10배속", tenfoldMark: "×10",
+    // NAT-4 (FIX-13, user decision 2026-10-02): one fast seal for 5x and 10x (100 ticks a second). Its name is the
+    // current fast speed and what a press does; from a slower speed it is the 5x seal ("5배속", as before).
+    tenfold: "10배속",
+    fastLabel: (current: 5 | 10 | null) => current === null ? "5배속" : current === 5 ? "5배속 · 누르면 10배속" : "10배속 · 누르면 5배속",
+    fastMark: (speed: 5 | 10) => `×${speed}`,
   },
   ceremony: {
     palisade: "목책마을 시대 선포식", dismissPalisade: "목책마을 선포식 닫기",

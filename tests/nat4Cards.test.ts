@@ -20,7 +20,9 @@ import { PERSONS_COPY } from "../src/ui/persons/personsCopy.ko";
 import type { StoryBeat } from "../src/ui/eventStory";
 import { BALANCE } from "../src/content/balanceConfig";
 import type { GameSpeed } from "../src/engine/engine.types";
-import { SPEED_STEPS, speedStepOf } from "../src/input/inputIntent";
+import { SPEED_STEPS, speedStepOf, type InputIntent } from "../src/input/inputIntent";
+import { createMouseKeyboardTranslator } from "../src/input/mouseKeyboardTranslator";
+import { SPEED_SEALS, sealPress, sealView } from "../src/ui/speedSeals";
 
 // NAT-4 cards: "더 보기" only when something is cut (QA-022), the population drawer's height (QA-028), the outside
 // leaders' Korean titles (QA-014), a petition never showing a dead representative (QA-036).
@@ -126,4 +128,39 @@ test("NAT-4 (FIX-13) every game speed has its step, 10x the last: its seal sets 
   assert.deepEqual([...SPEED_STEPS], speeds);
   for (const speed of speeds) assert.equal(SPEED_STEPS[speedStepOf(speed)], speed);
   assert.equal(BALANCE.TICKS_PER_SECOND * SPEED_STEPS.at(-1)!, 100, "10x is 100 ticks a second");
+});
+
+const fastSeal = SPEED_SEALS.find(seal => seal.id === "fast")!;
+
+test("NAT-4 the seals: pause, 1x, 3x and one fast seal (the 5x art) — no fifth seal on the HUD", () => {
+  assert.deepEqual(SPEED_SEALS.map(seal => `${seal.id}:${seal.icon}`), ["pause:pause", "normal:play", "threefold:fast", "fast:fastest"]);
+  const presses = (speed: GameSpeed) => SPEED_SEALS.map(seal => sealPress(seal, speed));
+  assert.deepEqual(presses(1), [0, 1, 3, 5]);
+});
+
+test("NAT-4 the fast seal's cycle: from pause, 1x or 3x to 5x; then 5x ↔ 10x; its mark and name follow", () => {
+  for (const speed of [0, 1, 3] as const) assert.equal(sealPress(fastSeal, speed), 5, `from ${speed}`);
+  assert.equal(sealPress(fastSeal, 5), 10);
+  assert.equal(sealPress(fastSeal, 10), 5);
+  assert.deepEqual(sealView(fastSeal, 1), { label: "5배속", pressed: false, mark: "×5" });
+  assert.deepEqual(sealView(fastSeal, 5), { label: "5배속 · 누르면 10배속", pressed: true, mark: "×5" });
+  assert.deepEqual(sealView(fastSeal, 10), { label: "10배속 · 누르면 5배속", pressed: true, mark: "×10" });
+  for (const speed of [0, 1, 3, 5, 10] as const) {
+    assert.equal(SPEED_SEALS.filter(seal => sealView(seal, speed).pressed).length, 1, `one seal pressed at ${speed}`);
+    assert.doesNotMatch(sealView(fastSeal, speed).label, LATIN);
+  }
+});
+
+test("NAT-4 the shortcuts: Digit5 picks 5x and Digit0 10x (Digit1–4 stay the overlays); not on a held key", () => {
+  const intents: InputIntent[] = [];
+  const translator = createMouseKeyboardTranslator({ bounds: () => ({ left: 0, top: 0, width: 800, height: 600 }), camera: () => ({ zoom: 1, panX: 0, panY: 0 }),
+    world: () => ({ minX: -10_000, minY: -10_000, maxX: 10_000, maxY: 10_000 }), armed: () => ({ zone: false, zonePolygon: false, palisade: false, road: false }),
+    emit: intent => { intents.push(intent); return true; } });
+  translator.keyDown({ code: "Digit5", key: "5", target: null });
+  translator.keyDown({ code: "Digit0", key: "0", target: null });
+  translator.keyDown({ code: "Digit0", key: "0", target: null, repeat: true });
+  translator.keyDown({ code: "Digit3", key: "3", target: null });
+  const speeds = intents.flatMap(intent => intent.kind === "speed" ? [SPEED_STEPS[intent.value]] : []);
+  assert.deepEqual(speeds, [5, 10]);
+  assert.ok(intents.some(intent => intent.kind === "overlayToggle" && intent.slot === 3), "Digit3 is still overlay 3");
 });
