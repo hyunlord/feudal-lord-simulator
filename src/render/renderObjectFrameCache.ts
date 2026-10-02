@@ -22,6 +22,7 @@ import { withPlagueProps } from "./plagueWorldProps";
 import { withCountryside } from "./countrysideDraw";
 import { withReorgProps } from "./reorgWorldProps";
 import { withAlehouseCrowd } from "./alehouseCrowd";
+import { withLandFallow } from "./landStageItems";
 
 type ObjectRenderFrameInput = {
   readonly state: GameState;
@@ -46,7 +47,7 @@ const staticObjectRenderCache = new WeakMap<readonly Tile[], StaticObjectRenderC
 export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
-  const staticItems = withAlehouseCrowd(withCountryside(withVillageLife(withWarProps(withReorgProps(withPlagueProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input.state, input.range), input.state, input.range), input), input), input.state, input.range), input.state, input.range); // + INSTALL-28, UI-8, UI-9, NAT-2 alehouse crowd
+  const staticItems = withLandFallow(withAlehouseCrowd(withCountryside(withVillageLife(withWarProps(withReorgProps(withPlagueProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input.state, input.range), input.state, input.range), input), input), input.state, input.range), input.state, input.range), input.state, input.range); // + INSTALL-28, UI-8, UI-9, NAT-2 alehouse crowd, NAT-5 fallow
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };

@@ -4,7 +4,6 @@ import test from "node:test";
 import type { BuildingKind } from "../src/content/buildingConfig";
 import type { Building } from "../src/economy/economy.types";
 import type { ConstructionSite } from "../src/economy/construction";
-import { STUMP_OLD_AFTER_TICKS } from "../src/engine/forestHarvests";
 import { buildObjectRenderItems } from "../src/render/objectRenderOrder";
 import type { TileRange } from "../src/render/renderer";
 import type { Tile } from "../src/world/world.types";
@@ -88,7 +87,7 @@ test("roads suppress forest tree render items", () => {
   assert.deepEqual(items, []);
 });
 
-test("recorded harvested forest tiles render as tick-aged stumps instead of trees", () => {
+test("recorded harvested forest tiles render their Wave 42 stage instead of trees (NAT-5: the engine's treeStage)", () => {
   // Given
   const harvests = [
     { tx: 1, ty: 1, harvestedAtTick: 100 },
@@ -102,7 +101,7 @@ test("recorded harvested forest tiles render as tick-aged stumps instead of tree
     buildings: [],
     range,
     seed: 7,
-    tick: 100 + STUMP_OLD_AFTER_TICKS - 1,
+    tick: 100 + 4_000 - 1,
     forestHarvests: harvests,
   });
   const oldItems = buildObjectRenderItems({
@@ -110,22 +109,23 @@ test("recorded harvested forest tiles render as tick-aged stumps instead of tree
     buildings: [],
     range,
     seed: 7,
-    tick: 100 + STUMP_OLD_AFTER_TICKS,
+    tick: 100 + 4_000,
     forestHarvests: harvests,
   });
 
   // Then
   assert.deepEqual(freshItems.map((item) => `${item.kind}:${item.id}`), [
-    "stump:stump:1:1:100",
-    "stump:stump:2:1:100",
+    "land_stage:felled:1:1:100",
+    "land_stage:felled:2:1:100",
   ]);
+  // A fresh stump its first year, mossy its second; oak or ash by the cell.
   assert.deepEqual(
-    freshItems.map((item) => item.kind === "stump" ? item.descriptor.spriteKey : null),
+    freshItems.map((item) => item.kind === "land_stage" ? item.piece.picture.replace(/_(oak_large|ash_small)_/, "_") : null),
     ["stump_fresh", "stump_fresh"],
   );
   assert.deepEqual(
-    oldItems.map((item) => item.kind === "stump" ? item.descriptor.spriteKey : null),
-    ["stump_old", "stump_old"],
+    oldItems.map((item) => item.kind === "land_stage" ? item.piece.picture.replace(/_(oak_large|ash_small)_/, "_") : null),
+    ["stump_mossy", "stump_mossy"],
   );
 });
 

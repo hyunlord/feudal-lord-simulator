@@ -1,9 +1,11 @@
 import type { ForestHarvest } from "../engine/engine.types";
-import { forestVisualStage } from "./forestRecovery";
 import type { Tile } from "../world/world.types";
-import { depthKey } from "./iso";
+import { felledTreeSignature, treeStageItem } from "./landStageItems";
 import type { ObjectRenderItem } from "./objectRenderTypes";
-import { buildStumpDescriptor } from "./treeLayout";
+
+// A felled forest cell (a `forestHarvests` record) draws its Wave 42 stage picture — stump, saplings or young wood, by
+// the engine's treeStage (landStageItems.ts, landStageModel.ts) — in place of its trees until the engine drops the record
+// (LG-3 ①: grown and open at a year's turn). NAT-5 replaced the screen's own recovery clock (forestRecovery.ts).
 
 export function stumpRenderItemForTile(
   tile: Tile,
@@ -13,15 +15,7 @@ export function stumpRenderItemForTile(
 ): ObjectRenderItem | null {
   const harvest = harvestsByTile.get(tileKey(tile.tx, tile.ty));
   if (harvest === undefined || !isStumpCandidate(tile, clearedTiles)) return null;
-  if (forestVisualStage(harvest, tick) === "recovered") return null;
-  const stump = buildStumpDescriptor({ harvest, tick });
-  return {
-    kind: "stump",
-    id: stump.id,
-    descriptor: stump,
-    depth: depthKey(stump.anchorTx, stump.anchorTy),
-    anchorTx: stump.anchorTx,
-  };
+  return treeStageItem(harvest, tick);
 }
 
 export function forestHarvestLookup(
@@ -32,13 +26,12 @@ export function forestHarvestLookup(
   return lookup;
 }
 
+/** The felled trees' part of the object queue's cache key: changes exactly when one of their pictures does. */
 export function forestHarvestAgeSignature(
-  harvests: readonly ForestHarvest[],
+  harvests: readonly ForestHarvest[] | undefined,
   tick: number,
 ): string {
-  return harvests
-    .map((harvest) => `${harvest.tx},${harvest.ty},${forestVisualStage(harvest, tick)}`)
-    .join("|");
+  return felledTreeSignature(harvests, tick);
 }
 
 function isStumpCandidate(tile: Tile, clearedTiles: ReadonlySet<string>): boolean {

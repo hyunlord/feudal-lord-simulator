@@ -109,8 +109,8 @@ test("the old ford placeholder is gone: the river crossing east of the village d
     includeGroundCover: false,
   });
 
-  // Then: nothing but trees and stumps, and no gameplay registry ever knew a ford.
-  assert.deepEqual([...new Set(renderItems.map((item) => item.kind))].filter((kind) => kind !== "tree" && kind !== "stump"), []);
+  // Then: nothing but trees and felled trees' stages, and no gameplay registry ever knew a ford.
+  assert.deepEqual([...new Set(renderItems.map((item) => item.kind))].filter((kind) => kind !== "tree" && kind !== "land_stage"), []);
   assert.equal("ford" in BUILDING_CONFIG_BY_KIND, false);
   assert.equal(new Set<string>(BUILD_TOOL_OPTIONS.map((option) => option.tool)).has("ford"), false);
 });
