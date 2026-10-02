@@ -41,7 +41,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-10-03 02시 52분 갱신)
+## 3. 현재 장부 요약 (2026-10-03 02시 53분 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -63,6 +63,7 @@ assets-inbox/
 | `retired` | 37 |  |  |  |  |  | 37 | 16 |
 | `storehouse-corner` | 15 |  | 5 |  | 3 | 7 |  | 0 |
 | `strip-corners` | 113 |  | 113 |  |  |  |  | 0 |
+| `trade-world` | 196 |  | 196 |  |  |  |  | 0 |
 | `ui-p0` | 85 |  | 56 |  | 29 |  |  | 43 |
 | `walker-pilot2` | 96 |  | 96 |  |  |  |  | 0 |
 | `wave10` | 735 |  |  |  |  | 735 |  | 0 |
@@ -114,7 +115,7 @@ assets-inbox/
 | `wave8` | 41 |  | 39 |  | 2 |  |  | 37 |
 | `wave9` | 52 |  | 44 |  | 5 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **5393** | **0** | **4002** | **3** | **322** | **1022** | **44** | **2065** |
+| **합계** | **5589** | **0** | **4198** | **3** | **322** | **1022** | **44** | **2065** |
 
 ## 4. 찾는 법
 
@@ -256,6 +257,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-event-illustrations-20261003.zip` (10-03 02:21) | `event-art/candidates-20261003` | 9,282 KB | `b9396d1ab8d778d1…` | 106 | 0 | 없음(생성 원본은 ZIP에 없음) | `assets/`(사건 삽화 JPG 35)·`proofs/`의 그림(모아보기·눈가림 보드·수정 전후 14)은 그대로, `proofs/`의 검수 문서·JSON은 `records/qa/`, `PLAN.md`·`manifest.csv`·`README.md`·`SHA256SUMS`는 `records/`. 새 JPG라 LFS
 | `/tmp/astra-strip-corners-20261003.zip` (10-03 02:26) | `strip-corners/candidates-20261003` | 19,517 KB | `bf1242bc090911cd…` | 179 | 41 | `references/`(원본 띠 PNG 8, 게임 그림 사본) 제외 | `assets/` 16은 그대로, 확인판(`proofs/`, JPEG 26)·눈가림 기록(`blind/`)·`manifest.*`·`README.md`·`BLIND_REVIEW.md`·`SHA256SUMS`는 `records/` 아래로(사용자 지시). 건너뜀 41: 눈가림 2~4차 자극 WEBP 가운데 앞 회차와 같은 바이트인 것(회차마다 다시 쓴 자극, 하나만 둠). `records/browser-diagnosis.json`(256KB 초과)은 안내 파일. WEBP는 일반 파일, JPG는 LFS
 | `/tmp/astra-event-illustrations-20261003-v2.zip` (10-03 02:46) | `event-art/rework-20261003` | 9,922 KB | `057dc5ac180709f0…` | 75 | 24 | 없음 | 새로 그린 12장은 `assets/`, 새 확인판 6(새 12장·35장 모아보기, 1차 판 3과 그 모아보기)은 `proofs/`, 검수 문서·JSON은 `records/qa/`, `PLAN.md`·`manifest.csv`·`README.md`·`SHA256SUMS`·`records/`는 `records/`. 건너뜀 24: 바이트가 그대로인 22장, `held/ck_evt_059.jpg`(앞 묶음 059와 같음), `proofs/contact-before35.jpg`(앞 묶음 `contact-sheet.jpg`와 같음)
+| `/tmp/astra-trade-world-20261003.zip` (10-03 02:48) | `trade-world/candidates-20261003` | 25,249 KB | `31fc4bd052fb70c2…` | 384 | 0 | `references/`(화풍 참조 9·도시 캡처와 그 메타데이터) 제외 | `assets/{yard,front,cargo,street}` 128은 그대로, 확인판 JPEG 56은 `proofs/`(문서·JSON·CSV는 `records/proofs/`), 판독 기록 `review/`·`provenance/`·`tools/`·`assets.csv`·`README.md`·`QA_REPORT.md`·`SHA256SUMS`는 `records/`. 새 JPG는 LFS
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -339,6 +341,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **지역 지도 20장**(`region-atlas/candidates-20261003`, 2026-10-03 판정): 조각 조립 대신 지도 한 장 전체를 손그림 화풍으로 생성한 1600×1000 JPEG 20장(강가·해안·백악·숲·습지 각 4) `confirmed`, 비고 "땅 종류별 손그림 바탕 지도 — 거점은 겹쳐 그림". 지도마다 거점 후보 슬롯 20~23곳(총 415)을 같은 이름의 JSON으로 지도 옆에 둔다. 이웃 18영지 배치판과 20장 모아보기 `confirmed`. 땅별 비교판 5·지도별 슬롯 표시판 20·표지 재사용 견본 1은 확인하는 대상(지도·표지)을 따라 `confirmed`. 겹침 표지 6종은 이미 장부에 있는 표지를 바이트 그대로 재사용한 것이라 행을 만들지 않았다.
 - **사건 삽화 35장**(`event-art/candidates-20261003`, 2026-10-03 판정): 콘텐츠 초안 2차의 새 사건 35개 삽화(960×540 JPG). 22장 `confirmed`. 12장(011·013·018·020·025·031·032·034·037·051·052·058) `rework_pending`, 비고 "실내 탁자 문서 구도 반복 — 문서가 걸린 대상을 그리기". 059 `rework_pending`, 비고 "031과 같은 사건으로 보임 — 콘텐츠 정리 대기". 확인판 14 가운데 모아보기·눈가림 보드 8·002·057 수정 전 판은 `confirmed`, 031·059 수정 전 2장과 비교판은 그 둘을 따라 `rework_pending`. 눈가림 두 차례 각 33/35(목표 80% 통과, 031·059 제목 교차 오답).
 - **사건 삽화 재작업**(`event-art/rework-20261003`, 2026-10-03 판정): 탁자 문서 구도 12장(011·013·018·020·025·031·032·034·037·051·052·058)을 문서 대신 대상·행동 중심으로 다시 그린 판 `confirmed`, 비고 "재작업판(바이트 다름)". 옛 12장(`rework_pending`)은 `superseded`, `replaced_by`에 새 경로. 앞 묶음 확인판 `revisions/031-before.jpg`도 대상 031을 따라 `superseded`. 059는 `rework_pending` 그대로(콘텐츠 정리 대기), 059를 다루는 앞 묶음 확인판 2장(`revisions/059-before.jpg`, 031·059 비교판)도 그대로. 새 확인판 6은 `confirmed`.
+- **직업 세계 그림**(`trade-world/candidates-20261003`, 2026-10-03 판정): LM-E6a용 128장 — 작업장 마당 48(원형 12 × 배치 A·B × 여름·겨울, 256×128), 집 앞 표지 20(Wave 37에 없는 직업 10 × A·B), 워커 짐 40(10종 × 4방향, 32×32), 거리 그림 표지 20 — 과 확인판 56 `confirmed`, 비고 "LM-E6a 직업·작업장 원형 — 땅에 서는 구조물". 익명 판독 기록 그림 12(판독 시험 10, 지붕 수정 전 1차 판 2)도 `confirmed`. 판독 57/61(93.4%). 벽에 붙이지 않고 별도 지면에 놓으며 좌우 반전 금지 — 규격·기준점·배율은 `records/assets.csv`.
 - **성벽 띠 모서리**(`strip-corners/candidates-20261003`, 2026-10-03 판정): 기존 잡석 벽면·흉벽·목책 띠 PNG를 잘라 등각 투영한 90도 모서리 16장(4방향 × 석벽·목책 × 여름·겨울, 1024×768, 피벗 (512,544), 월드 배율 0.125) `confirmed`, 비고 "원본 띠 접합 — 눈가림 78%(2배 확대 기준), 흉벽 간격·목책 말뚝 밀집 잔여, 설치 후 줌 1.0 재확인". 확인판 26·눈가림 자극 71은 `records/`의 기록 그림으로 `confirmed`. 앞 판 목책 모서리 기둥 2장(`storehouse-corner/candidates-20261003/assets/gate_corner_palisade_{summer,winter}-v1`)과 그 확인판(`02-corner-palisade.jpg`)은 `rework_pending` → `superseded`, `replaced_by`에 새 목책 4방향(계절별)과 새 목책 확인판.
 - **시대 파일럿**(`era-pilot/candidates-20261003`, 2026-10-03 판정): 1300·1340·1380·1420 시대 변화 시험. 초상 18(6명 × 1300·1380·1420, 256×256) `confirmed`, 비고 "같은 얼굴 시대판 — 초상 시대판 정식 방향". 집 1420판 3(L2·L3·L4) `confirmed`, 비고 "1400 뒤 부유한 집 변형". 간판 8 `confirmed`. 워커 16시트 가운데 새 14 `rejected`, 비고 "약 18px 세계 크기에서 시대 판독 불가 — 워커 시대판 중단"(1300 노동자 남녀 2시트는 Wave 5a 원본과 같은 바이트라 행 없음). 확인판·눈가림 원본은 `records/`에 기록 그림으로 — 워커 걸음 펼침·최악 실루엣 5는 `rejected`, 나머지 19는 `confirmed`. 독립 눈가림 두 차례 4/6(66.7%, 목표 75%)로 관문 미달 — `records/PLAN.md`의 전면 제작은 "양산 보류" 그대로.
 - **Wave 43 봄**(`wave43/candidates-20261002`, 2026-10-02 판정): 24장 — 지면 채움 5(256×128, XY 반복)·밭 3(512×64, X 반복)·활엽수 3·기타 나무 3(여름 원본의 캔버스·알파·피벗 그대로)·과수 4(벚나무는 `plum_j` 기하 템플릿)·봄 소품 6 — 과 확인 그림 40(그룹별 34·묶음 전체 6) `confirmed`. 봄 전용 소품은 여름·겨울판이 없다.

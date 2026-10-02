@@ -1,0 +1,135 @@
+{
+  "status": "PASS",
+  "counts": {
+    "yard": 48,
+    "street": 20,
+    "front": 20,
+    "cargo": 40
+  },
+  "unique_pixel_images": 128,
+  "exact_mirrored_pairs": 0,
+  "transparent_rgb_zero": true,
+  "generation_raw_hash_matches": 128,
+  "season_pairs": [
+    {
+      "pair": "yard_dirty_yard_a",
+      "alpha_iou": 0.9714,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_dirty_yard_b",
+      "alpha_iou": 0.9676,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_forge_a",
+      "alpha_iou": 0.9838,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_forge_b",
+      "alpha_iou": 0.9745,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_institution_a",
+      "alpha_iou": 0.9708,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_institution_b",
+      "alpha_iou": 0.9619,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_itinerant_a",
+      "alpha_iou": 0.9669,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_itinerant_b",
+      "alpha_iou": 0.9741,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_large_yard_a",
+      "alpha_iou": 0.9553,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_large_yard_b",
+      "alpha_iou": 0.9336,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_no_shop_labor_a",
+      "alpha_iou": 0.9541,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_no_shop_labor_b",
+      "alpha_iou": 0.9732,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_nuisance_yard_a",
+      "alpha_iou": 0.9633,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_nuisance_yard_b",
+      "alpha_iou": 0.9711,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_rear_workshop_a",
+      "alpha_iou": 0.9606,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_rear_workshop_b",
+      "alpha_iou": 0.962,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_street_front_shop_a",
+      "alpha_iou": 0.9748,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_street_front_shop_b",
+      "alpha_iou": 0.9773,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_warehouse_shop_a",
+      "alpha_iou": 0.9623,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_warehouse_shop_b",
+      "alpha_iou": 0.975,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_water_power_a",
+      "alpha_iou": 0.9728,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_water_power_b",
+      "alpha_iou": 0.9757,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_waterside_workshop_a",
+      "alpha_iou": 0.972,
+      "same_canvas_and_group_anchor": true
+    },
+    {
+      "pair": "yard_waterside_workshop_b",
+      "alpha_iou": 0.9751,
+      "same_canvas_and_group_anchor": true
+    }
+  ]
+}

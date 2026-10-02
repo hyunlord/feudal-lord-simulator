@@ -1,0 +1,17 @@
+{
+  "id": "yard_forge_b_winter",
+  "prompt": "Use case: precise-object-edit. Erase the tiny white clipped smoke/blob touching the TOP BORDER of this image. It is ABOVE the roof chimney cap, not part of the cap, in the topmost 0\u201312 pixel rows near x1150. The entire TOP BORDER AND TOPMOST 8 PIXEL ROWS must be completely transparent alpha0. Nothing whatsoever may touch the top canvas edge. Keep the complete stone vent cap just below with its real thin snow. Remove all floating snow/smoke above it. THIS IS THE ONLY CHANGE. Do not regenerate the artwork: keep the exact roof, posts, bellows, barrels, fire, anvil, snow, ground feet, composition, dimensions, camera and lighting. Transparent background. No added smoke. Before finishing verify there is transparent space above the cap and no clipped white artifact at top edge.",
+  "tool": "image_gen__imagegen",
+  "model": "unknown_not_exposed",
+  "seed": "unknown_not_exposed",
+  "original_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd94-e8c7-7202-b6a8-9aaeeccafbc4/exec-6ed77038-0def-4294-81f8-ed96780d7d77.png",
+  "raw_copy_path": "/Users/rexxa/fls-astra-trades-delivery/working/raw/yard_forge_b_winter.png",
+  "raw_sha256": "29c45210421f351d26827864480f8b157817f361bf7b10d654211c3078b2464e",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd94-e8c7-7202-b6a8-9aaeeccafbc4 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd94-e8c7-7202-b6a8-9aaeeccafbc4/exec-6ed77038-0def-4294-81f8-ed96780d7d77.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "references": [
+    {
+      "path": "/Users/rexxa/fls-astra-trades-delivery/working/rejected/yard_forge_b_winter-fragment-removal-failed.png",
+      "sha256": "ae5d4bc8be75f17edc73a0d7783d3cf8eec4f77ad12ff8fbc52a029f53e5bcac"
+    }
+  ]
+}

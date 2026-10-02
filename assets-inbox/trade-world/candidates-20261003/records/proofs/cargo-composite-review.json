@@ -1,0 +1,317 @@
+{
+  "reviewer": "independent_visual_reviewer",
+  "review_date": "2026-10-03",
+  "scope": "Static composites only; generated cargo over existing body; not installed engine capture or actual walking animation or runtime LOD.",
+  "verdict": "STATIC_ACCEPT_WITH_RUNTIME_UNVERIFIED",
+  "proofs_directly_viewed": 10,
+  "composites_reviewed": 80,
+  "items": [
+    {
+      "id": "cargo_bread_basket",
+      "proof": "proofs/walkers/cargo_bread_basket.jpg",
+      "sha256": "3253afdea2fd537ec4f3cf7d218ae0b619212842d456e32b4916b7c6feb93e4b",
+      "directly_viewed": true,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "composites_reviewed": 8,
+      "height_H_range": [
+        0.251,
+        0.28
+      ],
+      "face_feet_occlusion": "no_obvious_failure_in_static_proof",
+      "direction_depth": "consistent_with_NE_SE_front_SW_NW_behind",
+      "hand_contact": "no_obvious_detachment_in_static_proof",
+      "verdict": "STATIC_ACCEPT"
+    },
+    {
+      "id": "cargo_cloth_roll",
+      "proof": "proofs/walkers/cargo_cloth_roll.jpg",
+      "sha256": "1b39961a941d99b470301ceb57bdb5eec79306dedb357d9408b2e901a08964ea",
+      "directly_viewed": true,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "composites_reviewed": 8,
+      "height_H_range": [
+        0.21,
+        0.242
+      ],
+      "face_feet_occlusion": "no_obvious_failure_in_static_proof",
+      "direction_depth": "consistent_with_NE_SE_front_SW_NW_behind",
+      "hand_contact": "no_obvious_detachment_in_static_proof",
+      "verdict": "STATIC_ACCEPT"
+    },
+    {
+      "id": "cargo_iron_bar_bundle",
+      "proof": "proofs/walkers/cargo_iron_bar_bundle.jpg",
+      "sha256": "0cc1ad216152de15b712df53c21797dde6cd9cd50842dd42ce0d8d6115ed75b8",
+      "directly_viewed": true,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "composites_reviewed": 8,
+      "height_H_range": [
+        0.237,
+        0.252
+      ],
+      "face_feet_occlusion": "no_obvious_failure_in_static_proof",
+      "direction_depth": "consistent_with_NE_SE_front_SW_NW_behind",
+      "hand_contact": "no_obvious_detachment_in_static_proof",
+      "verdict": "STATIC_ACCEPT"
+    },
+    {
+      "id": "cargo_leather_bundle",
+      "proof": "proofs/walkers/cargo_leather_bundle.jpg",
+      "sha256": "7efb915d3b7926f59ca77c8aab2863e6499a20b9f2a0a9dd81c48fcb1e9c2851",
+      "directly_viewed": true,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "composites_reviewed": 8,
+      "height_H_range": [
+        0.191,
+        0.232
+      ],
+      "face_feet_occlusion": "no_obvious_failure_in_static_proof",
+      "direction_depth": "consistent_with_NE_SE_front_SW_NW_behind",
+      "hand_contact": "no_obvious_detachment_in_static_proof",
+      "verdict": "STATIC_ACCEPT"
+    },
+    {
+      "id": "cargo_malt_sack",
+      "proof": "proofs/walkers/cargo_malt_sack.jpg",
+      "sha256": "2f9243c9010dfa652bf36d6a4462932856047c1b980c2f8666a395acd906e373",
+      "directly_viewed": true,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "composites_reviewed": 8,
+      "height_H_range": [
+        0.277,
+        0.282
+      ],
+      "face_feet_occlusion": "no_obvious_failure_in_static_proof",
+      "direction_depth": "consistent_with_NE_SE_front_SW_NW_behind",
+      "hand_contact": "no_obvious_detachment_in_static_proof",
+      "verdict": "STATIC_ACCEPT"
+    },
+    {
+      "id": "cargo_small_cask",
+      "proof": "proofs/walkers/cargo_small_cask.jpg",
+      "sha256": "e9bd2fca33f77ea06529794d22c2cc3de944c93d9bf6f426afe001f2cccdfbde",
+      "directly_viewed": true,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "composites_reviewed": 8,
+      "height_H_range": [
+        0.231,
+        0.262
+      ],
+      "face_feet_occlusion": "no_obvious_failure_in_static_proof",
+      "direction_depth": "consistent_with_NE_SE_front_SW_NW_behind",
+      "hand_contact": "underside_support_revision_directly_rechecked_all_8_composites",
+      "verdict": "STATIC_ACCEPT",
+      "revision_directly_viewed": true
+    },
+    {
+      "id": "cargo_spice_pouch_bundle",
+      "proof": "proofs/walkers/cargo_spice_pouch_bundle.jpg",
+      "sha256": "990293ee9cacb202122651a51cecf59081ef74922247465acc357aa7df66c97a",
+      "directly_viewed": true,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "composites_reviewed": 8,
+      "height_H_range": [
+        0.277,
+        0.282
+      ],
+      "face_feet_occlusion": "no_obvious_failure_in_static_proof",
+      "direction_depth": "consistent_with_NE_SE_front_SW_NW_behind",
+      "hand_contact": "no_obvious_detachment_in_static_proof",
+      "verdict": "STATIC_ACCEPT"
+    },
+    {
+      "id": "cargo_timber_short_bundle",
+      "proof": "proofs/walkers/cargo_timber_short_bundle.jpg",
+      "sha256": "e299d3524a9889698c315ed2aee46a87fc436dcf3b389699b90b5a314d93ef0d",
+      "directly_viewed": true,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "composites_reviewed": 8,
+      "height_H_range": [
+        0.24,
+        0.252
+      ],
+      "face_feet_occlusion": "no_obvious_failure_in_static_proof",
+      "direction_depth": "consistent_with_NE_SE_front_SW_NW_behind",
+      "hand_contact": "no_obvious_detachment_in_static_proof",
+      "verdict": "STATIC_ACCEPT"
+    },
+    {
+      "id": "cargo_wheel",
+      "proof": "proofs/walkers/cargo_wheel.jpg",
+      "sha256": "5de828d643727b44728e061fc6170eb2d11604c4047ed4d69cc08a9b1779b7b5",
+      "directly_viewed": true,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "composites_reviewed": 8,
+      "height_H_range": [
+        0.426,
+        0.434
+      ],
+      "face_feet_occlusion": "no_obvious_failure_in_static_proof",
+      "direction_depth": "consistent_with_NE_SE_front_SW_NW_behind",
+      "hand_contact": "no_obvious_detachment_in_static_proof",
+      "verdict": "STATIC_ACCEPT"
+    },
+    {
+      "id": "cargo_wool_bundle",
+      "proof": "proofs/walkers/cargo_wool_bundle.jpg",
+      "sha256": "d6d21edc547e0f9999b1d5e362ccdc0b1dc7501e57a5d22aebc11a66c02abea1",
+      "directly_viewed": true,
+      "directions": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "composites_reviewed": 8,
+      "height_H_range": [
+        0.227,
+        0.252
+      ],
+      "face_feet_occlusion": "no_obvious_failure_in_static_proof",
+      "direction_depth": "consistent_with_NE_SE_front_SW_NW_behind",
+      "hand_contact": "no_obvious_detachment_in_static_proof",
+      "verdict": "STATIC_ACCEPT"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "CARGO-GRIP-001",
+      "severity": "medium",
+      "ids": [
+        "cargo_small_cask_NE",
+        "cargo_small_cask_SE",
+        "cargo_small_cask_SW",
+        "cargo_small_cask_NW"
+      ],
+      "gaits": [
+        0,
+        1
+      ],
+      "observation": "No visible handle; current top-edge anchor makes cask appear suspended by a grip on its upper surface.",
+      "recommendation": "Use underside support and regenerate static composites; verify face clearance and hand visibility after placement.",
+      "coordinate_system": "32x32 canvas, top-left origin, zero-based pixels; proposed contacts sit just inside opaque lower silhouette",
+      "proposed_anchor_role": "underside_support",
+      "proposed_grips": {
+        "NE": [
+          16,
+          26
+        ],
+        "SE": [
+          16,
+          25
+        ],
+        "SW": [
+          16,
+          26
+        ],
+        "NW": [
+          16,
+          26
+        ]
+      },
+      "prop_scale": 0.65,
+      "fix_verified": true,
+      "status": "RESOLVED_STATIC_PROOF",
+      "verification": "Reopened revised cask board; all eight poses show more natural support below barrel, with no face/feet intrusion and consistent directional depth. Current hand pose remains a static approximation of underhand support."
+    }
+  ],
+  "small_previews": {
+    "H16": "Cargo presence, wheel silhouette and some color mass persist; individual goods cannot be reliably identified across all directions.",
+    "0.6_proxy": "Too small for meaningful grip, goods identity, or depth judgment. This is a proxy only, not runtime LOD evidence."
+  },
+  "unverified": [
+    "continuous_walk_animation",
+    "frame_transition_attachment",
+    "engine_installation",
+    "runtime_depth_sorting",
+    "actual_LOD_thresholds",
+    "actual_camera_and_DPR"
+  ],
+  "revision_evidence": "provenance/CARGO_ANCHOR_REVISIONS.json",
+  "hash_scope": "Current final proof files; initial hashes were collected after concurrent cask rerender, so no pre-revision cask proof hash was preserved by this reviewer."
+}
