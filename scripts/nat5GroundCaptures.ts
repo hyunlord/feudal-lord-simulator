@@ -24,6 +24,9 @@ type Camera = { readonly id: string; readonly land: string; readonly tick: numbe
 const CAMERAS: readonly Camera[] = [
   { id: "river-summer", land: "core:open_field", tick: 1003, zoom: 1.063, x: 128, y: 1448 },
   { id: "river-winter", land: "core:open_field", tick: 3002, zoom: 1.063, x: 128, y: 1448 },
+  // N5-D1: the riverside's rock (tiles 24–31, 24–39 on map 1), which the QA-17 river camera does not show.
+  { id: "river-rock-summer", land: "core:open_field", tick: 1003, zoom: 1.0, x: -64, y: 928 },
+  { id: "river-rock-winter", land: "core:open_field", tick: 3002, zoom: 1.0, x: -64, y: 928 },
   { id: "coast-summer", land: "core:coastal_port", tick: 1004, zoom: 0.565, x: 128, y: 1195 },
   { id: "coast-winter", land: "core:coastal_port", tick: 3002, zoom: 0.565, x: 128, y: 1195 },
   { id: "chalk-summer", land: "core:chalk_downs", tick: 1004, zoom: 1.332, x: 673, y: 1302 },
