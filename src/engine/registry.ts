@@ -10,9 +10,11 @@ import {
   type RegistryCondition, type RegistryEffect, type RegistryEntry,
 } from "../content/registry/registryTypes";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
+import type { LedgerPosting } from "../ledger/ledger.types";
 import type { GameState } from "./engine.types";
 import { estatesOf } from "./estates";
 import { addSuitEvidence, enforcePossession, fileSuit } from "./estateSuits";
+import { EMPTY_MONEY, type UpkeepArrear } from "./money.types";
 import { hashSeed } from "./prng";
 import type { LordHouse, RegistryOccurrence, RegistryState, RegistryTerm } from "./registry.types";
 import { stateCalendar } from "./scenarioState";
@@ -260,6 +262,24 @@ function startTerm(state: GameState, effect: Extract<RegistryEffect, { command: 
   return { ...next, registry: { ...registryOf(next), terms: [...registryOf(next).terms, term], nextTerm: registry.nextTerm + 1 } };
 }
 
+/**
+ * ER-7: a year's instalment, paid from the cash; what the cash cannot cover goes to the arrears account and queue, as the
+ * war's charges do (paid off at the period close like unpaid upkeep, counted by the failure ladder's arrears).
+ */
+function payInstalment(state: GameState, term: RegistryTerm): GameState {
+  const sources = [{ type: "actor", id: term.source }, { type: "actor", id: term.id }] as const;
+  const paid = Math.min(term.amountPerYear, Math.max(0, treasuryBalance(state)));
+  const owed = term.amountPerYear - paid;
+  const postings: LedgerPosting[] = [];
+  if (paid > 0) postings.push({ account: "cash", category: "instalment", amount: -paid, sourceRefs: [...sources] });
+  if (owed > 0) postings.push({ account: "arrears", category: "instalment", amount: owed, sourceRefs: [...sources, { type: "claim", id: `instalment:${state.tick}`, detail: "unpaid" }] });
+  if (postings.length === 0) return state;
+  const posted = postLedgerEntries(state, postings);
+  const money = state.money ?? EMPTY_MONEY;
+  const arrear: UpkeepArrear = { tick: state.tick, amount: owed, facility: sources[0], category: "instalment" };
+  return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger, ...(owed > 0 ? { money: { ...money, arrears: [...money.arrears, arrear] } } : {}) };
+}
+
 /** ER-7: at each year's turn the running terms settle a year (an instalment paid, a remission taken); at their end they stop. */
 function settleTerms(state: GameState): GameState {
   const registry = registryOf(state);
@@ -269,10 +289,7 @@ function settleTerms(state: GameState): GameState {
     if (term.status !== "running") return term;
     const due = Math.floor((state.tick - term.startTick) / YEAR);
     let settled = term;
-    if (due > term.settledYears && term.kind === "installments") {
-      const posted = postLedgerEntries(next, [{ account: "cash", category: "instalment", amount: -term.amountPerYear, sourceRefs: [{ type: "actor", id: term.source }, { type: "actor", id: term.id }] }]);
-      next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
-    }
+    if (due > term.settledYears && term.kind === "installments") next = payInstalment(next, term);
     if (due > term.settledYears) settled = { ...settled, settledYears: due };
     if (state.tick >= term.endTick) {
       if (term.kind === "remission" && term.what === "market_dues" && term.restore !== undefined) next = setMarketDues(next, term.restore);

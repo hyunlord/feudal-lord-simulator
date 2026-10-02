@@ -103,7 +103,7 @@ test("ER-6 a home petition of a kind the lord answered before is answered by pre
   assert.equal(stewardshipOf(recurring).petitions.filter(petition => petition.precedent === true && petition.estateId === "estate-home").length, 0);
 });
 
-test("ER-7 an instalment plan pays each year and ends at its term, with a line; a dues remission waives and restores the dues", () => {
+test("ER-7 an instalment plan pays each year (arrears for what the cash cannot cover) and ends at its term; a dues remission waives and restores the dues", () => {
   let state: GameState = funded({ ...load("population-176"), agency: { ...initialAgency(), duesPermille: 1000 }, tick: 10 * YEAR }, 1000);
   const plan = entry({ choices: [{ id: "a", effects: [{ command: "none" }] }, { id: "plan", effects: [{ command: "term", term: "installments", what: "debt", amountPerYear: 50, years: 3 }] }] });
   state = applyChoice(state, plan, "plan", "", "occ-plan")!;
@@ -112,6 +112,11 @@ test("ER-7 an instalment plan pays each year and ends at its term, with a line; 
   for (let year = 11; year <= 14; year += 1) state = advanceRegistry({ ...state, tick: year * YEAR });
   assert.equal(registryOf(state).terms[0]!.status, "ended");
   assert.equal(1000 - treasuryBalance(state), 150, "three years of 50");
+  // What the cash cannot cover goes to the arrears, as the war's charges do; the treasury does not go below nothing.
+  let short = applyChoice(funded({ ...state, registry: initialRegistry() }, 30), plan, "plan", "", "occ-short")!;
+  short = advanceRegistry({ ...short, tick: 15 * YEAR });
+  assert.equal(treasuryBalance(short), 0);
+  assert.deepEqual(short.money!.arrears.filter(arrear => arrear.category === "instalment").map(arrear => arrear.amount), [20]);
   const remission = entry({ choices: [{ id: "a", effects: [{ command: "none" }] }, { id: "free", effects: [{ command: "term", term: "remission", what: "market_dues", amountPerYear: 250, years: 2 }] }] });
   let dues = applyChoice({ ...state, registry: initialRegistry() }, remission, "free", "", "occ-free")!;
   assert.equal(dues.agency!.duesPermille, 250, "lowered to the lowest dues");
