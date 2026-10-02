@@ -15,7 +15,7 @@ type GameCommand =
   | { readonly type: "record_autoplay_food_confirmation" }
   | { readonly type: "restart_settlement" }
   /** ARCH-1 (MA-6): and the land and its seed (absent = the riverside town, seed 1). */
-  | { readonly type: "start_new_game"; readonly scenarioId: string; readonly archetypeId?: string; readonly seed?: number; readonly mode?: "lord" | "sandbox" }
+  | { readonly type: "start_new_game"; readonly scenarioId: string; readonly archetypeId?: string; readonly seed?: number; readonly mode?: "lord" | "sandbox"; readonly house?: { readonly name: string; readonly arms: string } }
   // LM-E1 (TA-6): the lord's conditions in lord mode — the estate's policy, a subsidy on a kind (0 withdraws), the market dues.
   | { readonly type: "set_estate_policy"; readonly policy: import("../engine/townAgency.types").EstatePolicy }
   | { readonly type: "set_project_subsidy"; readonly kind: import("../content/buildingConfig").BuildingKind; readonly amount: number }
@@ -34,6 +34,7 @@ type GameCommand =
   | { readonly type: "set_estate_oversight"; readonly estateId: string; readonly mode: import("../engine/stewardship.types").OversightMode; readonly stewardId?: string }
   | { readonly type: "set_exception_rules"; readonly rules: import("../engine/stewardship.types").ExceptionRules }
   | { readonly type: "answer_estate_petition"; readonly petitionId: string; readonly grant: boolean }
+  | { readonly type: "answer_registry_offer"; readonly occurrenceId: string; readonly choiceId: string }
   | { readonly type: "set_audit_mode"; readonly estateId: string; readonly mode: "accounts" | "visit" }
   | { readonly type: "answer_audit"; readonly auditId: string; readonly choice: "punish" | "replace" | "tolerate"; readonly replacementId?: string }
   /** QA032: the player saw the chapter's page (the screens open it once; kept in the save). */

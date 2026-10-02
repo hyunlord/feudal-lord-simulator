@@ -23,14 +23,16 @@ import type { EstatePolicy } from "./townAgency.types";
 import { AGENCY_WEEK_TICKS } from "../content/townAgencyConfig";
 import { HOME_ESTATE_ID } from "../content/estateConfig";
 import { HOME_PETITION_KINDS } from "../content/stewardshipConfig";
+import { enabledChoices, openRegistryOffers, registryEntry } from "./registry";
+import { hashSeed } from "./prng";
 import type { HomePetitionKind } from "./stewardship.types";
 
 export type LordDecisionKind =
   | "petition" | "famine" | "marriage_offer" | "counter" | "promise" | "will" | "suit"
-  | "oversight" | "estate_petition" | "audit" | "policy" | "subsidy" | "dues" | "town_request";
+  | "oversight" | "estate_petition" | "audit" | "policy" | "subsidy" | "dues" | "town_request" | "registry";
 
 /** LS-4: the kinds that come to the lord to be answered (the rest he takes of himself). */
-export const ASKED_KINDS: ReadonlySet<LordDecisionKind> = new Set(["petition", "famine", "counter", "will", "estate_petition", "audit", "town_request"]);
+export const ASKED_KINDS: ReadonlySet<LordDecisionKind> = new Set(["petition", "famine", "counter", "will", "estate_petition", "audit", "town_request", "registry"]);
 
 export interface LordBotCommand {
   readonly kind: LordDecisionKind;
@@ -63,8 +65,20 @@ export function lordBotCommands(state: GameState): readonly LordBotCommand[] {
   const answered = answer === null ? null : autoplayActionToGameAction(answer, state);
   if (answered !== null) commands.push({ kind: answered.type === "famine_response" ? "famine" : "petition", command: answered });
   if (state.tick % AGENCY_WEEK_TICKS !== 1) return commands;
-  commands.push(...marriageMoves(state), ...suitMoves(state), ...stewardshipMoves(state), ...townMoves(state));
+  commands.push(...marriageMoves(state), ...suitMoves(state), ...stewardshipMoves(state), ...registryMoves(state), ...townMoves(state));
   return commands;
+}
+
+/** LM-E9 (ER-4): an open registry offer answered with one of the choices that can be carried out (by the seed). */
+function registryMoves(state: GameState): LordBotCommand[] {
+  return openRegistryOffers(state).flatMap(offer => {
+    const entry = registryEntry(offer.entryId);
+    if (entry === undefined) return [];
+    const enabled = enabledChoices(state, entry, offer.boundId, offer.id);
+    if (enabled.length === 0) return [];
+    const choiceId = enabled[hashSeed(state.seed, `lord-bot-registry:${offer.id}`) % enabled.length]!;
+    return [{ kind: "registry" as const, command: { type: "answer_registry_offer" as const, occurrenceId: offer.id, choiceId } }];
+  });
 }
 
 function marriageMoves(state: GameState): LordBotCommand[] {
@@ -110,7 +124,8 @@ function stewardshipMoves(state: GameState): LordBotCommand[] {
   const rules = stewardship.rules;
   // The exceptions matter once an estate is held off the map (FIX-14: the home petitions bring the stewardship earlier).
   if (stewardship.oversight.length > 0 && (rules.amountAtLeast !== 240 || !rules.rights || !rules.marriage)) {
-    moves.push({ kind: "oversight", command: { type: "set_exception_rules", rules: { amountAtLeast: 240, rights: true, marriage: true } } });
+    // LM-E9: the lord's "bring recurring kinds up" stays as he set it (ER-6).
+    moves.push({ kind: "oversight", command: { type: "set_exception_rules", rules: { amountAtLeast: 240, rights: true, marriage: true, ...(rules.recurring === true ? { recurring: true } : {}) } } });
   }
   for (const oversight of stewardship.oversight) {
     if (oversight.mode === "direct") {

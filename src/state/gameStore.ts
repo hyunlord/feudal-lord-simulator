@@ -26,6 +26,7 @@ import { recordDecision } from "../engine/history";
 import { markChapterPageSeen } from "../engine/politics";
 import { answerCounter, answerWillChange, keepPromise, proposeMarriage } from "../engine/marriage";
 import { answerAudit, answerEstatePetition, setAuditMode, setEstateOversight, setExceptionRules } from "../engine/stewardship";
+import { answerRegistryOffer } from "../engine/registry";
 import { estatesOf, LORD } from "../engine/estates";
 import { addSuitEvidence, enforcePossession, fileSuit, seekSuitPatron } from "../engine/estateSuits";
 
@@ -127,7 +128,7 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
   // ids are ignored.
   if (action.type === "start_new_game") return newGameState({ scenarioId: action.scenarioId,
     ...(action.archetypeId === undefined ? {} : { archetypeId: action.archetypeId }), ...(action.seed === undefined ? {} : { seed: action.seed }),
-    ...(action.mode === undefined ? {} : { mode: action.mode }) }) ?? state;
+    ...(action.mode === undefined ? {} : { mode: action.mode }), ...(action.house === undefined ? {} : { house: action.house }) }) ?? state;
   if (state.settlement?.outcome === "abandoned") {
     return action.type === "restart_settlement" ? structuredClone(DEFAULT_GAME_STATE) : state;
   }
@@ -156,6 +157,7 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
     case "set_estate_oversight": return setEstateOversight(state, action.estateId, action.mode, action.stewardId);
     case "set_exception_rules": return setExceptionRules(state, action.rules);
     case "answer_estate_petition": return answerEstatePetition(state, action.petitionId, action.grant);
+    case "answer_registry_offer": return answerRegistryOffer(state, action.occurrenceId, action.choiceId);
     case "set_audit_mode": return setAuditMode(state, action.estateId, action.mode);
     case "answer_audit": return answerAudit(state, action.auditId, action.choice, false, action.replacementId);
     case "place_building": {
