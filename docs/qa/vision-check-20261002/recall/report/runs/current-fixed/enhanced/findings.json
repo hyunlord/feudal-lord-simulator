@@ -1,0 +1,267 @@
+[
+  {
+    "id": "current-city:scale_ratio:0",
+    "scene": "current-city",
+    "detector": "scale_ratio",
+    "box": {
+      "x": 1069,
+      "y": 454,
+      "width": 38,
+      "height": 29
+    },
+    "score": 0.75,
+    "reason": "Alpha height outside bible range plus 20% tolerance: /assets/wave27/yards/yard_rain_barrel.png#crop=0,0,128,64",
+    "metrics": [
+      {
+        "name": "object_person_height",
+        "value": 1.5991058122205661,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_height",
+        "value": 18.135135135135137,
+        "unit": "px"
+      },
+      {
+        "name": "reference_min",
+        "value": 0.45,
+        "unit": "ratio"
+      },
+      {
+        "name": "reference_max",
+        "value": 0.65,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "current-city:repeat_density:0",
+    "scene": "current-city",
+    "detector": "repeat_density",
+    "box": {
+      "x": 963,
+      "y": 238,
+      "width": 345,
+      "height": 182
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/ale_barrels_3.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 6.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 256.0,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "current-city:repeat_density:1",
+    "scene": "current-city",
+    "detector": "repeat_density",
+    "box": {
+      "x": 767,
+      "y": 448,
+      "width": 285,
+      "height": 84
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/ale_barrels_3.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 6.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 256.0,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "bfe50aeebcf8",
+    "scene": "current-city-confirm",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 347,
+      "y": 738,
+      "width": 98,
+      "height": 17
+    },
+    "score": 0.7987553310394286,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "contrast_rgb",
+        "value": 30.029949188232422,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "length_tiles",
+        "value": 1.34375,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "current-city-confirm:scale_ratio:0",
+    "scene": "current-city-confirm",
+    "detector": "scale_ratio",
+    "box": {
+      "x": 1069,
+      "y": 454,
+      "width": 38,
+      "height": 29
+    },
+    "score": 0.75,
+    "reason": "Alpha height outside bible range plus 20% tolerance: /assets/wave27/yards/yard_rain_barrel.png#crop=0,0,128,64",
+    "metrics": [
+      {
+        "name": "object_person_height",
+        "value": 1.5967261904761905,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_height",
+        "value": 18.16216216216216,
+        "unit": "px"
+      },
+      {
+        "name": "reference_min",
+        "value": 0.45,
+        "unit": "ratio"
+      },
+      {
+        "name": "reference_max",
+        "value": 0.65,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "current-city-confirm:repeat_density:0",
+    "scene": "current-city-confirm",
+    "detector": "repeat_density",
+    "box": {
+      "x": 963,
+      "y": 238,
+      "width": 345,
+      "height": 182
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/ale_barrels_3.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 6.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 256.0,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "current-city-confirm:repeat_density:1",
+    "scene": "current-city-confirm",
+    "detector": "repeat_density",
+    "box": {
+      "x": 767,
+      "y": 448,
+      "width": 285,
+      "height": 84
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/ale_barrels_3.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 6.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 256.0,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "current-lod:repeat_density:0",
+    "scene": "current-lod",
+    "detector": "repeat_density",
+    "box": {
+      "x": 744,
+      "y": 478,
+      "width": 210,
+      "height": 109
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/ale_barrels_3.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 7.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 153.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "current-lod:repeat_density:1",
+    "scene": "current-lod",
+    "detector": "repeat_density",
+    "box": {
+      "x": 627,
+      "y": 604,
+      "width": 171,
+      "height": 50
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/ale_barrels_3.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 6.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 153.6,
+        "unit": "px"
+      }
+    ]
+  }
+]

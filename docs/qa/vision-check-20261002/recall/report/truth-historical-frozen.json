@@ -1,0 +1,181 @@
+[
+  {
+    "scene": "prenat2-city-confirm",
+    "detector": "stationary_person",
+    "defects": [
+      {
+        "id": "QA002-visible-1",
+        "box": {
+          "x": 928,
+          "y": 472,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-4",
+        "box": {
+          "x": 864,
+          "y": 440,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-6",
+        "box": {
+          "x": 870,
+          "y": 452,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-8",
+        "box": {
+          "x": 800,
+          "y": 472,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-19",
+        "box": {
+          "x": 1024,
+          "y": 456,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 928,
+        "y": 472,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 864,
+        "y": 440,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 870,
+        "y": 452,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 800,
+        "y": 472,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 1024,
+        "y": 456,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 445,
+        "y": 25,
+        "width": 60,
+        "height": 65
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "prenat1-city-confirm",
+    "detector": "roof_overlap",
+    "defects": [
+      {
+        "id": "PRENAT1-static-roof-4",
+        "box": {
+          "x": 881,
+          "y": 414,
+          "width": 28,
+          "height": 28
+        },
+        "note": "파란 옷 장식 손님의 발이 붉은 지붕 앞에 보임. PNG 00–19 모두 확인. QA005 원래 NW벽 이동인물과 다른 원인.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "PRENAT1-static-roof-19",
+        "box": {
+          "x": 1089,
+          "y": 435,
+          "width": 28,
+          "height": 28
+        },
+        "note": "파란 옷 장식 손님의 발이 붉은 지붕 앞에 보임. PNG 00–19 모두 확인. QA005 원래 NW벽 이동인물과 다른 원인.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 881,
+        "y": 414,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 1089,
+        "y": 435,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 964,
+        "y": 456,
+        "width": 28,
+        "height": 28
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "QA005-original-not-reproduced",
+    "detector": "roof_overlap",
+    "defects": [
+      {
+        "id": "QA005-original-NW-wall",
+        "box": {
+          "x": 430,
+          "y": 195,
+          "width": 25,
+          "height": 40
+        },
+        "note": "round03-14/history/03-FINDINGS.md:5의 역사 스크린샷 위치이며 현재캡처 좌표가 아님.",
+        "reproduced": false,
+        "exclusion_reason": "원래 카메라에서 원래 이동인물 확인이 필요."
+      }
+    ],
+    "regions": [],
+    "eligible": false,
+    "exclusion_reason": "원기록은 줌2 카메라(544,-2277)의 NW벽 이동인물. 이 두 캡처의 카메라 및 장식손님 원인과 달라 원사례 재현으로 인정하지 않음."
+  }
+]

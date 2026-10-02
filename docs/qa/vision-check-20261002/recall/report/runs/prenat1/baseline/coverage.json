@@ -1,0 +1,86 @@
+[
+  {
+    "scene": "prenat1-city",
+    "cohort": "calibration",
+    "tick_span": 37,
+    "frames": 20,
+    "zoom": 1.3,
+    "camera": [
+      633.5999755859375,
+      -1280.4000244140625
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 37,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 45,
+    "alpha_masks": 219,
+    "roof_masks": 27,
+    "missing_assets": [],
+    "ground_fraction": 0.46049147727272727,
+    "findings": 0,
+    "semantic_parts": 0,
+    "rain": {
+      "first_frame_candidates": 1,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 0,
+      "human_alpha_heights_px": [],
+      "eligible_ground_fraction": 0.46049147727272727,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "prenat1-city-confirm",
+    "cohort": "calibration",
+    "tick_span": 227,
+    "frames": 20,
+    "zoom": 1.3,
+    "camera": [
+      633.5999755859375,
+      -1280.4000244140625
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 227,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 22,
+    "alpha_masks": 217,
+    "roof_masks": 27,
+    "missing_assets": [],
+    "ground_fraction": 0.4604630681818182,
+    "findings": 0,
+    "semantic_parts": 0,
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 0,
+      "human_alpha_heights_px": [],
+      "eligible_ground_fraction": 0.4604630681818182,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  }
+]

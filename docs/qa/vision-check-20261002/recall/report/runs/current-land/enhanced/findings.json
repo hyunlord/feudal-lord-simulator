@@ -1,0 +1,437 @@
+[
+  {
+    "id": "4c404b8e2e77",
+    "scene": "current-chalk",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 802,
+      "y": 444,
+      "width": 764,
+      "height": 372
+    },
+    "score": 0.98,
+    "reason": "회색 바위 영역의 외곽이 서로 반대인 등각 칸 방향으로 네 번 이상 잘림",
+    "metrics": [
+      {
+        "name": "aligned_perimeter",
+        "value": 0.4069416444981462,
+        "unit": "ratio"
+      },
+      {
+        "name": "rock_cut_edges",
+        "value": 14.0,
+        "unit": "count"
+      },
+      {
+        "name": "rock_texture_std",
+        "value": 18.462443134797294,
+        "unit": "gray"
+      },
+      {
+        "name": "rock_area",
+        "value": 141990.5,
+        "unit": "px2"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 0.9966665274820103,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "b604a0881d0d",
+    "scene": "current-chalk",
+    "detector": "tile_seam",
+    "box": {
+      "x": 802,
+      "y": 444,
+      "width": 764,
+      "height": 372
+    },
+    "score": 0.7506944444444444,
+    "reason": "잘린 바위 외곽의 작은 검은 도형이 등각 칸 간격으로 반복됨",
+    "metrics": [
+      {
+        "name": "stamp_pairs",
+        "value": 18.0,
+        "unit": "count"
+      },
+      {
+        "name": "stamp_support",
+        "value": 0.4305555555555556,
+        "unit": "ratio"
+      },
+      {
+        "name": "stamp_period_x",
+        "value": 42.624,
+        "unit": "px"
+      },
+      {
+        "name": "stamp_period_y",
+        "value": 21.312,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "6209fd488ef9",
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 572,
+      "y": 343,
+      "width": 240,
+      "height": 13
+    },
+    "score": 1.0,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 3.543331668331669,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 43.640567779541016,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "bd1dde16c633",
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 1354,
+      "y": 637,
+      "width": 13,
+      "height": 163
+    },
+    "score": 0.9373126873126874,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 2.341408591408592,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 43.283912658691406,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": -90.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "8cf981d4c8d5",
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 363,
+      "y": 935,
+      "width": 133,
+      "height": 14
+    },
+    "score": 0.8998501498501499,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "contrast_rgb",
+        "value": 41.01146697998047,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "length_tiles",
+        "value": 1.888736263736264,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "854e9734f48c",
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 912,
+      "y": 455,
+      "width": 119,
+      "height": 13
+    },
+    "score": 0.8823676323676324,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 1.6545954045954048,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 45.55206298828125,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "c61943b7e300",
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 746,
+      "y": 689,
+      "width": 13,
+      "height": 114
+    },
+    "score": 0.8761238761238761,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 1.5765484515484518,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 43.8292121887207,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": -90.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "79509950024e",
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 127,
+      "y": 391,
+      "width": 108,
+      "height": 13
+    },
+    "score": 0.8620204982700406,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 1.482892107892108,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 38.9422607421875,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "2526fd42422a",
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 256,
+      "y": 392,
+      "width": 86,
+      "height": 13
+    },
+    "score": 0.8411588411588412,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 1.1394855144855147,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 40.96946716308594,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "f15bc60c349a",
+    "scene": "current-river",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 534,
+      "y": 232,
+      "width": 200,
+      "height": 13
+    },
+    "score": 0.87,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "contrast_rgb",
+        "value": 46.29254150390625,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "length_tiles",
+        "value": 2.9375,
+        "unit": "ratio"
+      }
+    ]
+  }
+]

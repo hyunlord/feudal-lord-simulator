@@ -1,0 +1,24 @@
+{
+  "repo": "/Users/rexxa/fls-astra-vision/wt-prenat1",
+  "commit": "ce941ebeb3e567f498f2709e5989d08f39f6d370",
+  "save": "/Users/rexxa/fls-astra-vision/fixtures/perf-gate/ch4-1380.save.json.gz",
+  "save_sha256": "5aa3ef83bd5b0166ca1a3b5a4b11c1d29df6fdf503cb5fbe5a6cb6a60cede25a",
+  "requested_camera": {
+    "zoom": 1.3,
+    "center": [
+      46,
+      42
+    ]
+  },
+  "observed_camera": {
+    "zoom": 1.3,
+    "panX": 633.5999755859375,
+    "panY": -1280.4000244140625
+  },
+  "observed_viewport": {
+    "width": 1600,
+    "height": 1100
+  },
+  "wall_seconds": 15.995904666022398,
+  "source_commit_verification": "caller must ensure port 4470 serves this repo"
+}
