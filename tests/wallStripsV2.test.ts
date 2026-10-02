@@ -27,7 +27,7 @@ test("Given the seed 3 stone town When every wall slice is drawn Then faces, top
   assert.ok(fills > slices.size * 2, `each slice lays several layers (${fills} fills for ${slices.size} slices)`);
 });
 
-test("Given a stone tower node When the modules are drawn Then the Wave 4d corner tower stands there; a timber tower keeps its post", () => {
+test("Given a stone tower node When the modules are drawn Then the Wave 4d corner tower stands there; a timber corner draws no module (its band turns by itself, NAT-5)", () => {
   const state = seedGroundState(3);
   const { walls } = wallBaselinesFor(state);
   const tower = walls.nodes.find(node => node.kind === "tower");
@@ -38,4 +38,5 @@ test("Given a stone tower node When the modules are drawn Then the Wave 4d corne
   const timber = recordingCanvas(4096, 4096);
   drawWallModules(timber.context, [{ ...tower, materials: ["timber"] }], [], "timber", 1);
   assert.doesNotMatch(timber.canvas.ops.join("\n"), /stone_tower_corner/);
+  assert.doesNotMatch(timber.canvas.ops.join("\n"), /drawImage|fill\(/, "no post over the timber corner");
 });
