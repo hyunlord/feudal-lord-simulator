@@ -41,7 +41,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-10-03 04시 07분 갱신)
+## 3. 현재 장부 요약 (2026-10-03 04시 09분 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -115,8 +115,9 @@ assets-inbox/
 | `wave7` | 206 |  | 168 |  | 38 |  |  | 135 |
 | `wave8` | 41 |  | 39 |  | 2 |  |  | 37 |
 | `wave9` | 52 |  | 44 |  | 5 |  | 3 | 41 |
+| `world-events` | 177 |  | 177 |  |  |  |  | 0 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **5659** | **0** | **4139** | **19** | **322** | **1022** | **157** | **2124** |
+| **합계** | **5836** | **0** | **4316** | **19** | **322** | **1022** | **157** | **2124** |
 
 ## 4. 찾는 법
 
@@ -260,6 +261,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-event-illustrations-20261003-v2.zip` (10-03 02:46) | `event-art/rework-20261003` | 9,922 KB | `057dc5ac180709f0…` | 75 | 24 | 없음 | 새로 그린 12장은 `assets/`, 새 확인판 6(새 12장·35장 모아보기, 1차 판 3과 그 모아보기)은 `proofs/`, 검수 문서·JSON은 `records/qa/`, `PLAN.md`·`manifest.csv`·`README.md`·`SHA256SUMS`·`records/`는 `records/`. 건너뜀 24: 바이트가 그대로인 22장, `held/ck_evt_059.jpg`(앞 묶음 059와 같음), `proofs/contact-before35.jpg`(앞 묶음 `contact-sheet.jpg`와 같음)
 | `/tmp/astra-trade-world-20261003.zip` (10-03 02:48) | `trade-world/candidates-20261003` | 25,249 KB | `31fc4bd052fb70c2…` | 384 | 0 | `references/`(화풍 참조 9·도시 캡처와 그 메타데이터) 제외 | `assets/{yard,front,cargo,street}` 128은 그대로, 확인판 JPEG 56은 `proofs/`(문서·JSON·CSV는 `records/proofs/`), 판독 기록 `review/`·`provenance/`·`tools/`·`assets.csv`·`README.md`·`QA_REPORT.md`·`SHA256SUMS`는 `records/`. 새 JPG는 LFS
 | `/tmp/astra-landmark-growth-20261003.zip` (10-03 03:46) | `landmarks/candidates-20261003` | 52,769 KB | `a4039ac341ddb357…` | 160 | 12 | `references/`(도시 바탕·집·워커 등 10, 그중 4장은 기존 장부 그림과 같은 바이트) 제외 | `assets/` 완성 PNG 44는 그대로, 도시 비교판 12·같은 건물 확인판 14는 `proofs/`, `proofs/`의 문서·JSON·CSV·`reviews/`는 `records/proofs/`, `PLAN.md`·`LANDMARKS.md`·`SOURCES.md`·`README.md`·`SHA256SUMS`·`manifest.csv`와 `records/`(기하 감사·프롬프트·등록 도구)는 `records/`. 건너뜀 12: 눈가림 자극 `proofs/blind/R01–R12`(도시 비교판과 같은 바이트, 대응은 `records/proofs/answer-key.csv`). 256KB 넘는 기록 없음. PNG라 LFS
+| `/tmp/astra-world-events-20261003.zip` (10-03 03:26) | `world-events/candidates-20261003` | 38,974 KB | `97ed3819df11e5eb…` | 235 | 31 | `references/`(교회 HUD 캡처 4·기존 세계 그림 모아보기·침수 층 4) 제외 | 새 PNG 25는 `assets/new/`, 연출 목록(`EVENTS_IN_WORLD.md`)·`BLIND.md`·`REVIEW.md`·`README.md`·`SHA256SUMS`, `proofs/`(기록 그림 152 — 합성 전후·확대 116·확인판 20·눈가림 원자료 `proofs/blind/` 16)·`provenance/`·`tools/`는 `records/`, `manifest.*`는 `records/assets/`(사용자 지시). 건너뜀 31: `assets/reused/`(게임 `public/` 그림 사본 — 24는 장부 행과 같은 바이트, 7은 public 설치본이라 행 없음). 256KB 넘는 기록 없음. 새 그림은 LFS
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -346,6 +348,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **직업 세계 그림**(`trade-world/candidates-20261003`, 2026-10-03 판정): LM-E6a용 128장 — 작업장 마당 48(원형 12 × 배치 A·B × 여름·겨울, 256×128), 집 앞 표지 20(Wave 37에 없는 직업 10 × A·B), 워커 짐 40(10종 × 4방향, 32×32), 거리 그림 표지 20 — 과 확인판 56 `confirmed`, 비고 "LM-E6a 직업·작업장 원형 — 땅에 서는 구조물". 익명 판독 기록 그림 12(판독 시험 10, 지붕 수정 전 1차 판 2)도 `confirmed`. 판독 57/61(93.4%). 벽에 붙이지 않고 별도 지면에 놓으며 좌우 반전 금지 — 규격·기준점·배율은 `records/assets.csv`.
 - **성벽 띠 모서리**(`strip-corners/candidates-20261003`, 2026-10-03 판정): 기존 잡석 벽면·흉벽·목책 띠 PNG를 잘라 등각 투영한 90도 모서리 16장(4방향 × 석벽·목책 × 여름·겨울, 1024×768, 피벗 (512,544), 월드 배율 0.125) `confirmed`, 비고 "원본 띠 접합 — 눈가림 78%(2배 확대 기준), 흉벽 간격·목책 말뚝 밀집 잔여, 설치 후 줌 1.0 재확인". 확인판 26·눈가림 자극 71은 `records/`의 기록 그림으로 `confirmed`. 앞 판 목책 모서리 기둥 2장(`storehouse-corner/candidates-20261003/assets/gate_corner_palisade_{summer,winter}-v1`)과 그 확인판(`02-corner-palisade.jpg`)은 `rework_pending` → `superseded`, `replaced_by`에 새 목책 4방향(계절별)과 새 목책 확인판. **이후 2026-10-03 판정으로 16장과 기록 그림 97 모두 `retired`**, 비고 "렌더 NAT-5 그리기 이음으로 대체 — 설치 안 함"(렌더가 띠를 모서리에서 직접 이어 그려 필요 없어짐). 파일은 묶음 폴더에 그대로 두었다(설치된 적이 없어 `retired/`로 옮길 대상이 아님). 옛 목책 모서리 3행의 `replaced_by`는 그대로 이 묶음을 가리킨다.
 - **랜드마크 성장 후보**(`landmarks/candidates-20261003`, 2026-10-03 판정): 7계열 22단계(교회 4·시장·성문·다리·영주 저택·길드홀·여관 각 3) × 여름·겨울 완성 PNG 44(2048×2048, 피벗 (768,1536), 월드 배율 0.25). 다리 B1·B2·B3(옛 이름 B2C, 접근부 예배당) 6장과 길드홀 U1~U3 6장은 `rework_pending`, 비고 "엄격한 2:1 투영 미통과 — 다리 장축 32~33°"(길드홀은 `records/GEOMETRY_AUDIT.md`의 길방향 축 16~19° 덧붙임 — 감사가 길드홀 축을 단계별로 나누지 않고 계열 전체로 적어 세 단계 모두 해당). 나머지 32장 `confirmed`, 비고 "시대 맞힘 24/24, 같은 건물 7/7 — 설치는 엔진 성장 조건 뒤". 같은 건물 확인판 14는 대상을 따라 다리·길드홀 4 `rework_pending`, 10 `confirmed`. 도시 비교판 12(1300·1380·1450 × 여름·겨울 × 줌 1.0·0.6)는 일곱 계열이 한 장에 함께 있어 시대 판정의 근거로 `confirmed`(비고에 다리·길드홀은 rework_pending이라 적음). 게임 미설치, 런타임 통행·가림·충돌 미검증.
+- **세계 사건 연출 후보**(`world-events/candidates-20261003`, 2026-10-03 판정): 14종 사건(세례·장터·기근·화재·홍수·장례·판결·징집·시장·순례·역병·반란·왕의 사자·혼인)을 실제 도시 배경에 보이는 연출. 새 PNG 25(독립 무리·소품 12종 × 여름·겨울, 불길 4프레임 시트 256×96) `confirmed`, 비고 "줌 1.0 판독 78.6% — 알림 카드와 함께 쓰는 연출, 먼 줌은 사건 핀"(78.6%는 `BLIND.md` 최종 C 회차 11/14). 재사용 31(기존 장부·`public/` 그림)은 행을 만들지 않았다. `records/`의 기록 그림 152(합성 전후·확대 116, 확인판 20, 눈가림 자극 16)도 `confirmed`. 합성은 오프라인이며 게임 미설치 — 사건 발생·보행·프레임 재생·깊이 정렬·성능은 미검증. 새 무리는 바이블 성인 17.6 world px 기준이라 현재 엔진 16px보다 10% 크다(`records/README.md`).
 - **설치 계획 0단계 — 장부정리 59장**(2026-10-03, 사용자 지시, 계획 `docs/ops/install-plan-20261003/INSTALL_LISTS/legacy-reconcile.md`): 이미 설치됐는데 `installed_by`가 비어 있던 confirmed 59행(Wave 7 재작업 묶음의 `original-assets/` 58, Wave 17 피난민 아이 시트 1)에 `installed_by`를 채웠다(INSTALL-7 58, UI-4 1). 행마다 public 파일 바이트가 원본(C2PA 없음)과 같고, 설치 대장 `runtimeSha256`도 같은 것을 확인했다. 비고에 "설치 확인: <public 경로>"를 덧붙였다. 새 파일 복사는 없다.
 - **시대 파일럿**(`era-pilot/candidates-20261003`, 2026-10-03 판정): 1300·1340·1380·1420 시대 변화 시험. 초상 18(6명 × 1300·1380·1420, 256×256) `confirmed`, 비고 "같은 얼굴 시대판 — 초상 시대판 정식 방향". 집 1420판 3(L2·L3·L4) `confirmed`, 비고 "1400 뒤 부유한 집 변형". 간판 8 `confirmed`. 워커 16시트 가운데 새 14 `rejected`, 비고 "약 18px 세계 크기에서 시대 판독 불가 — 워커 시대판 중단"(1300 노동자 남녀 2시트는 Wave 5a 원본과 같은 바이트라 행 없음). 확인판·눈가림 원본은 `records/`에 기록 그림으로 — 워커 걸음 펼침·최악 실루엣 5는 `rejected`, 나머지 19는 `confirmed`. 독립 눈가림 두 차례 4/6(66.7%, 목표 75%)로 관문 미달 — `records/PLAN.md`의 전면 제작은 "양산 보류" 그대로.
 - **Wave 43 봄**(`wave43/candidates-20261002`, 2026-10-02 판정): 24장 — 지면 채움 5(256×128, XY 반복)·밭 3(512×64, X 반복)·활엽수 3·기타 나무 3(여름 원본의 캔버스·알파·피벗 그대로)·과수 4(벚나무는 `plum_j` 기하 템플릿)·봄 소품 6 — 과 확인 그림 40(그룹별 34·묶음 전체 6) `confirmed`. 봄 전용 소품은 여름·겨울판이 없다.

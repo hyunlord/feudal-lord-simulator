@@ -1,0 +1,901 @@
+{
+  "note": "After unblinding only: identical copies point to canonical evidence; original anonymous manifests retained in provenance. SHA proves exact viewed image.",
+  "images": [
+    {
+      "id": "A01",
+      "kind": "scene",
+      "originalAnonymousFile": "A01-scene.jpg",
+      "archiveFile": "proofs/blind/A/A01-scene.jpg",
+      "sha256": "6b567de6f370190f5c290e183b37be54c28e664d5f7529ccffd162e0bc9e196b",
+      "deduplicated": true
+    },
+    {
+      "id": "A01",
+      "kind": "detail",
+      "originalAnonymousFile": "A01-detail.png",
+      "archiveFile": "proofs/blind/A/A01-detail.png",
+      "sha256": "043ca374b1cd6b2fe6427d6912ec06b37a54ab331ef6216b81e914203fd433e2",
+      "deduplicated": true
+    },
+    {
+      "id": "A02",
+      "kind": "scene",
+      "originalAnonymousFile": "A02-scene.jpg",
+      "archiveFile": "proofs/revolt-summer-z1.0-after.jpg",
+      "sha256": "573a418e67197f8d5a6e931654dd7759099a4d850dfa95f7aa8100fcd123ce53",
+      "deduplicated": true
+    },
+    {
+      "id": "A02",
+      "kind": "detail",
+      "originalAnonymousFile": "A02-detail.png",
+      "archiveFile": "proofs/revolt-summer-z1.0-detail.png",
+      "sha256": "74723269ffde4ac6fe76ddc8e10a90b16a90ee97b7431f48a324a1009c448aef",
+      "deduplicated": true
+    },
+    {
+      "id": "A03",
+      "kind": "scene",
+      "originalAnonymousFile": "A03-scene.jpg",
+      "archiveFile": "proofs/wedding-summer-z1.0-after.jpg",
+      "sha256": "ca455657095341e6d123640cfd5d8b5997b4ca9e1887dddcd0f0b1d4faaa3204",
+      "deduplicated": true
+    },
+    {
+      "id": "A03",
+      "kind": "detail",
+      "originalAnonymousFile": "A03-detail.png",
+      "archiveFile": "proofs/wedding-summer-z1.0-detail.png",
+      "sha256": "7a607e184fa9e5dcccd75309a38ff44584efd1f3d04bbf7f4b2299a44e764acf",
+      "deduplicated": true
+    },
+    {
+      "id": "A04",
+      "kind": "scene",
+      "originalAnonymousFile": "A04-scene.jpg",
+      "archiveFile": "proofs/blind/A/A04-scene.jpg",
+      "sha256": "bc85f5779899558f66bd1001704c215c35d6b8c15c99f77db05ee1313123d9ed",
+      "deduplicated": true
+    },
+    {
+      "id": "A04",
+      "kind": "detail",
+      "originalAnonymousFile": "A04-detail.png",
+      "archiveFile": "proofs/blind/A/A04-detail.png",
+      "sha256": "b230ca6bba88f3e88384d5b7d6079e0fa2b95ef117284f08c7bb5a7d4843c309",
+      "deduplicated": true
+    },
+    {
+      "id": "A05",
+      "kind": "scene",
+      "originalAnonymousFile": "A05-scene.jpg",
+      "archiveFile": "proofs/flood-summer-z1.0-after.jpg",
+      "sha256": "49991cc4dde3812b9c61f8f657628baf911de0bfe184d4fbe6e6be4a7ee7aa56",
+      "deduplicated": true
+    },
+    {
+      "id": "A05",
+      "kind": "detail",
+      "originalAnonymousFile": "A05-detail.png",
+      "archiveFile": "proofs/flood-summer-z1.0-detail.png",
+      "sha256": "187037c81f112b8ca6c0aab0b46114b192109893227d8e03576aad83eeb6cfee",
+      "deduplicated": true
+    },
+    {
+      "id": "A06",
+      "kind": "scene",
+      "originalAnonymousFile": "A06-scene.jpg",
+      "archiveFile": "proofs/blind/A/A06-scene.jpg",
+      "sha256": "a785f71ed9e9a9ba799bd19eb35f1251a1181e82a43f8fe10233b19f1ee72ece",
+      "deduplicated": true
+    },
+    {
+      "id": "A06",
+      "kind": "detail",
+      "originalAnonymousFile": "A06-detail.png",
+      "archiveFile": "proofs/blind/A/A06-detail.png",
+      "sha256": "7da9163dc4bc88e89caf8b33a77c07314f77113f326b06adb4c996c0db9b66e6",
+      "deduplicated": true
+    },
+    {
+      "id": "A07",
+      "kind": "scene",
+      "originalAnonymousFile": "A07-scene.jpg",
+      "archiveFile": "proofs/market-winter-z1.0-after.jpg",
+      "sha256": "76f8e6c4b2e234f2f51caf4eabbbca6ca222c92e2c4314c1413c33de8b7f41a1",
+      "deduplicated": true
+    },
+    {
+      "id": "A07",
+      "kind": "detail",
+      "originalAnonymousFile": "A07-detail.png",
+      "archiveFile": "proofs/market-winter-z1.0-detail.png",
+      "sha256": "ae7329a648554a0b5c02335c7b54d74c3c604fd1c98124b8942800c2eb3fda56",
+      "deduplicated": true
+    },
+    {
+      "id": "A08",
+      "kind": "scene",
+      "originalAnonymousFile": "A08-scene.jpg",
+      "archiveFile": "proofs/fire-winter-z1.0-after.jpg",
+      "sha256": "883b23abc6ee05470fd94b1f4da501924cc9acefd83abf55e751ee434363c363",
+      "deduplicated": true
+    },
+    {
+      "id": "A08",
+      "kind": "detail",
+      "originalAnonymousFile": "A08-detail.png",
+      "archiveFile": "proofs/fire-winter-z1.0-detail.png",
+      "sha256": "ee991ad7a89a6ff22f5b48bf04aa9af64aff8ddfadc6f6cd5572cd9fc3ad0cae",
+      "deduplicated": true
+    },
+    {
+      "id": "A09",
+      "kind": "scene",
+      "originalAnonymousFile": "A09-scene.jpg",
+      "archiveFile": "proofs/royal_envoy-summer-z1.0-after.jpg",
+      "sha256": "f2f790d02cc6335eeeb9d2b2e1c8d117eb923ca837d32cf0131387300dab09c9",
+      "deduplicated": true
+    },
+    {
+      "id": "A09",
+      "kind": "detail",
+      "originalAnonymousFile": "A09-detail.png",
+      "archiveFile": "proofs/royal_envoy-summer-z1.0-detail.png",
+      "sha256": "542b84d4d584e88cf966d0fd98d93bc2cb490f89dfb0c39f38dc267bca13d04d",
+      "deduplicated": true
+    },
+    {
+      "id": "A10",
+      "kind": "scene",
+      "originalAnonymousFile": "A10-scene.jpg",
+      "archiveFile": "proofs/blind/A/A10-scene.jpg",
+      "sha256": "e8527df9fcfbb4eed794b2288acb9e1b6e7534fec91a79e45c151be97fd0cfc7",
+      "deduplicated": true
+    },
+    {
+      "id": "A10",
+      "kind": "detail",
+      "originalAnonymousFile": "A10-detail.png",
+      "archiveFile": "proofs/blind/A/A10-detail.png",
+      "sha256": "433e7a228db1cca671e1a9d004d26946b2cf95f82d0404af068971409838d3c9",
+      "deduplicated": true
+    },
+    {
+      "id": "A11",
+      "kind": "scene",
+      "originalAnonymousFile": "A11-scene.jpg",
+      "archiveFile": "proofs/fair-summer-z1.0-after.jpg",
+      "sha256": "ab6a1eb665a4fd5ff290fec354e8739c27fab17b0addbd01fe9d5c118dcb3239",
+      "deduplicated": true
+    },
+    {
+      "id": "A11",
+      "kind": "detail",
+      "originalAnonymousFile": "A11-detail.png",
+      "archiveFile": "proofs/fair-summer-z1.0-detail.png",
+      "sha256": "1407056c91abd39bb240298eb9dc556120fbe1a10e435b713cbb644625c9432d",
+      "deduplicated": true
+    },
+    {
+      "id": "A12",
+      "kind": "scene",
+      "originalAnonymousFile": "A12-scene.jpg",
+      "archiveFile": "proofs/baptism-summer-z1.0-after.jpg",
+      "sha256": "26dc3f1b2431ad44afced59bcf701ca020afa626c710965bd9f86821476d8795",
+      "deduplicated": true
+    },
+    {
+      "id": "A12",
+      "kind": "detail",
+      "originalAnonymousFile": "A12-detail.png",
+      "archiveFile": "proofs/baptism-summer-z1.0-detail.png",
+      "sha256": "f97ae6ad2e6a5921bc73a9effb0ac201d31043bfba86e702b817c77626a1951d",
+      "deduplicated": true
+    },
+    {
+      "id": "A13",
+      "kind": "scene",
+      "originalAnonymousFile": "A13-scene.jpg",
+      "archiveFile": "proofs/judgment-winter-z1.0-after.jpg",
+      "sha256": "4c1ee3dff1e92689eb00076465b472ff36c4eef867affdd9dd81139cb8970341",
+      "deduplicated": true
+    },
+    {
+      "id": "A13",
+      "kind": "detail",
+      "originalAnonymousFile": "A13-detail.png",
+      "archiveFile": "proofs/judgment-winter-z1.0-detail.png",
+      "sha256": "d8d5515e7e211e299bf5eab304d8c97dd79f6f61c5429513fd2d7c0b2107aaf0",
+      "deduplicated": true
+    },
+    {
+      "id": "A14",
+      "kind": "scene",
+      "originalAnonymousFile": "A14-scene.jpg",
+      "archiveFile": "proofs/plague-summer-z1.0-after.jpg",
+      "sha256": "3b80be0accfcb39189a22ab683e3cc97577e9fab86bf7770cbfb1cebb3941fc5",
+      "deduplicated": true
+    },
+    {
+      "id": "A14",
+      "kind": "detail",
+      "originalAnonymousFile": "A14-detail.png",
+      "archiveFile": "proofs/plague-summer-z1.0-detail.png",
+      "sha256": "9d7313443b896939dc0d9f2228583270d90b436f911703ebc1e0a279c2a81296",
+      "deduplicated": true
+    },
+    {
+      "id": "B01",
+      "kind": "scene",
+      "originalAnonymousFile": "B01-scene.jpg",
+      "archiveFile": "proofs/baptism-winter-z0.6-after.jpg",
+      "sha256": "fcc508dc872b7b1fedc8d68a9b5a334d733bd3a3d96e5f7a52925b3ff843617d",
+      "deduplicated": true
+    },
+    {
+      "id": "B01",
+      "kind": "detail",
+      "originalAnonymousFile": "B01-detail.png",
+      "archiveFile": "proofs/baptism-winter-z0.6-detail.png",
+      "sha256": "b53651376c6cff772c1b2dc68bb69a255fb83e1d8f411ab9040b45152e220198",
+      "deduplicated": true
+    },
+    {
+      "id": "B02",
+      "kind": "scene",
+      "originalAnonymousFile": "B02-scene.jpg",
+      "archiveFile": "proofs/blind/B/B02-scene.jpg",
+      "sha256": "4f219265b97e2531f37497f9ee5f9102342f64de45e5535813cad17e1c2f1f80",
+      "deduplicated": true
+    },
+    {
+      "id": "B02",
+      "kind": "detail",
+      "originalAnonymousFile": "B02-detail.png",
+      "archiveFile": "proofs/blind/B/B02-detail.png",
+      "sha256": "871501735918631e813773fc139b9550bd647252229636578d60a8854705a3d4",
+      "deduplicated": true
+    },
+    {
+      "id": "B03",
+      "kind": "scene",
+      "originalAnonymousFile": "B03-scene.jpg",
+      "archiveFile": "proofs/revolt-winter-z0.6-after.jpg",
+      "sha256": "c5bd728cfd5e7d1eded52a6d38e4c86c598ef6c686ad907b4c06dfeff341bdba",
+      "deduplicated": true
+    },
+    {
+      "id": "B03",
+      "kind": "detail",
+      "originalAnonymousFile": "B03-detail.png",
+      "archiveFile": "proofs/revolt-winter-z0.6-detail.png",
+      "sha256": "ae4809a910c52175662cd034c5238cf327ba7866d8eb30123d9fb64fd646b14b",
+      "deduplicated": true
+    },
+    {
+      "id": "B04",
+      "kind": "scene",
+      "originalAnonymousFile": "B04-scene.jpg",
+      "archiveFile": "proofs/blind/B/B04-scene.jpg",
+      "sha256": "07e416e9e6bbc054bbfad6d3613265217da467e5254ebc3d21cfd67cb740227b",
+      "deduplicated": true
+    },
+    {
+      "id": "B04",
+      "kind": "detail",
+      "originalAnonymousFile": "B04-detail.png",
+      "archiveFile": "proofs/blind/B/B04-detail.png",
+      "sha256": "d80ef52b12572a7fecbeedaf3e85127a762c6b0f704a66176e800ac49189d36b",
+      "deduplicated": true
+    },
+    {
+      "id": "B05",
+      "kind": "scene",
+      "originalAnonymousFile": "B05-scene.jpg",
+      "archiveFile": "proofs/fair-winter-z0.6-after.jpg",
+      "sha256": "9af7d854cad1c6a39012d576213ac114d973aa8302647516c0cc2a38472283ab",
+      "deduplicated": true
+    },
+    {
+      "id": "B05",
+      "kind": "detail",
+      "originalAnonymousFile": "B05-detail.png",
+      "archiveFile": "proofs/fair-winter-z0.6-detail.png",
+      "sha256": "1b38d91ec25986850ac3ab09da83f163b30c5f5c9674662b4ea14e9d04ee9598",
+      "deduplicated": true
+    },
+    {
+      "id": "B06",
+      "kind": "scene",
+      "originalAnonymousFile": "B06-scene.jpg",
+      "archiveFile": "proofs/blind/B/B06-scene.jpg",
+      "sha256": "fdc8e446c85a9d30c247302234cca72c5666f007ba3b55e5b679ac00ebd46ea4",
+      "deduplicated": true
+    },
+    {
+      "id": "B06",
+      "kind": "detail",
+      "originalAnonymousFile": "B06-detail.png",
+      "archiveFile": "proofs/blind/B/B06-detail.png",
+      "sha256": "7a08061fe1c403a7b8bff73f5b01ef62a7a35018109d6f128b2ff0ac8d2260bc",
+      "deduplicated": true
+    },
+    {
+      "id": "B07",
+      "kind": "scene",
+      "originalAnonymousFile": "B07-scene.jpg",
+      "archiveFile": "proofs/plague-winter-z0.6-after.jpg",
+      "sha256": "b709a83f9e7b407694ea782529256cc26be0aaadd4bbde55e37c51d92d56326b",
+      "deduplicated": true
+    },
+    {
+      "id": "B07",
+      "kind": "detail",
+      "originalAnonymousFile": "B07-detail.png",
+      "archiveFile": "proofs/plague-winter-z0.6-detail.png",
+      "sha256": "fabfd66676bcbd8d770bde17690fd023c12afbeaab3971186be44dc63a1db5e4",
+      "deduplicated": true
+    },
+    {
+      "id": "B08",
+      "kind": "scene",
+      "originalAnonymousFile": "B08-scene.jpg",
+      "archiveFile": "proofs/blind/B/B08-scene.jpg",
+      "sha256": "4f8d5518fc88cbcd39d902959537388ce82f960216551b23da3bda0ade4b93ac",
+      "deduplicated": true
+    },
+    {
+      "id": "B08",
+      "kind": "detail",
+      "originalAnonymousFile": "B08-detail.png",
+      "archiveFile": "proofs/blind/B/B08-detail.png",
+      "sha256": "c5939288dcf9053c85e839ec298cb4fec1cbc46417cf94b605056b7b0171b5d3",
+      "deduplicated": true
+    },
+    {
+      "id": "B09",
+      "kind": "scene",
+      "originalAnonymousFile": "B09-scene.jpg",
+      "archiveFile": "proofs/wedding-winter-z0.6-after.jpg",
+      "sha256": "631c2135f5457b768c07ae66049e8dad21b60a05cf9feb4295445ca442795bc0",
+      "deduplicated": true
+    },
+    {
+      "id": "B09",
+      "kind": "detail",
+      "originalAnonymousFile": "B09-detail.png",
+      "archiveFile": "proofs/wedding-winter-z0.6-detail.png",
+      "sha256": "2706d7641494ba9aa6a1a36419ac5c03ccd77d39ecc1888baf0fada52687bcc1",
+      "deduplicated": true
+    },
+    {
+      "id": "B10",
+      "kind": "scene",
+      "originalAnonymousFile": "B10-scene.jpg",
+      "archiveFile": "proofs/judgment-summer-z0.6-after.jpg",
+      "sha256": "9629b75b366b2654efbeb95dfca07ac5c29fe1a2c091901899f1c6f811a440cd",
+      "deduplicated": true
+    },
+    {
+      "id": "B10",
+      "kind": "detail",
+      "originalAnonymousFile": "B10-detail.png",
+      "archiveFile": "proofs/judgment-summer-z0.6-detail.png",
+      "sha256": "6b4a4814a27f1132a97b1cd1ee49c0ae65eee68d17985acc53f1d2440ae6fd73",
+      "deduplicated": true
+    },
+    {
+      "id": "B11",
+      "kind": "scene",
+      "originalAnonymousFile": "B11-scene.jpg",
+      "archiveFile": "proofs/royal_envoy-winter-z0.6-after.jpg",
+      "sha256": "9c2e79467b9587365fa9a7605c6e8c03584f2808ba09ae8d997da130afe79053",
+      "deduplicated": true
+    },
+    {
+      "id": "B11",
+      "kind": "detail",
+      "originalAnonymousFile": "B11-detail.png",
+      "archiveFile": "proofs/royal_envoy-winter-z0.6-detail.png",
+      "sha256": "b6d321620c4823315f3902454f7a01c8d40756625cb9db36563f3a27edc2e11a",
+      "deduplicated": true
+    },
+    {
+      "id": "B12",
+      "kind": "scene",
+      "originalAnonymousFile": "B12-scene.jpg",
+      "archiveFile": "proofs/market-summer-z0.6-after.jpg",
+      "sha256": "24f8f0276c0b6fac7479d8f9574d5f8ca012e4f2d2eaf96f2ace5ca0af0b1dbd",
+      "deduplicated": true
+    },
+    {
+      "id": "B12",
+      "kind": "detail",
+      "originalAnonymousFile": "B12-detail.png",
+      "archiveFile": "proofs/market-summer-z0.6-detail.png",
+      "sha256": "93629744368e2e137067c786cad20c5c0a93791c35c9ed71b89b298547bf7eca",
+      "deduplicated": true
+    },
+    {
+      "id": "B13",
+      "kind": "scene",
+      "originalAnonymousFile": "B13-scene.jpg",
+      "archiveFile": "proofs/fire-summer-z0.6-after.jpg",
+      "sha256": "5e2fb2e084063a0daa2fca662c18d03394c7cdbf57fe9ea14666335dc4c28d41",
+      "deduplicated": true
+    },
+    {
+      "id": "B13",
+      "kind": "detail",
+      "originalAnonymousFile": "B13-detail.png",
+      "archiveFile": "proofs/fire-summer-z0.6-detail.png",
+      "sha256": "0ff49e27e0345f523d8aa79381a33d3135d92df47a02f766a8d4112c79805e9d",
+      "deduplicated": true
+    },
+    {
+      "id": "B14",
+      "kind": "scene",
+      "originalAnonymousFile": "B14-scene.jpg",
+      "archiveFile": "proofs/flood-winter-z0.6-after.jpg",
+      "sha256": "a8e1b368b5112e112677e225f180d9394a28a44dc502cd5a8ad913ac8988753b",
+      "deduplicated": true
+    },
+    {
+      "id": "B14",
+      "kind": "detail",
+      "originalAnonymousFile": "B14-detail.png",
+      "archiveFile": "proofs/flood-winter-z0.6-detail.png",
+      "sha256": "d4712b220c7ce287e0b53121169374da533591ab04a32fcc8623e87771892eec",
+      "deduplicated": true
+    },
+    {
+      "id": "C01",
+      "kind": "scene",
+      "originalAnonymousFile": "C01-scene.jpg",
+      "archiveFile": "proofs/funeral-winter-z1.0-after.jpg",
+      "sha256": "4c4fe6a8359f793a3b4c55a05e51455ac1c640264257ee24fbcb8b2659bf4fca",
+      "deduplicated": true
+    },
+    {
+      "id": "C01",
+      "kind": "detail",
+      "originalAnonymousFile": "C01-detail.png",
+      "archiveFile": "proofs/funeral-winter-z1.0-detail.png",
+      "sha256": "45d698306127bea1a4bbf48e32f611388889807d8644b38748f673d003a5252d",
+      "deduplicated": true
+    },
+    {
+      "id": "C02",
+      "kind": "scene",
+      "originalAnonymousFile": "C02-scene.jpg",
+      "archiveFile": "proofs/wedding-summer-z1.0-after.jpg",
+      "sha256": "ca455657095341e6d123640cfd5d8b5997b4ca9e1887dddcd0f0b1d4faaa3204",
+      "deduplicated": true
+    },
+    {
+      "id": "C02",
+      "kind": "detail",
+      "originalAnonymousFile": "C02-detail.png",
+      "archiveFile": "proofs/wedding-summer-z1.0-detail.png",
+      "sha256": "7a607e184fa9e5dcccd75309a38ff44584efd1f3d04bbf7f4b2299a44e764acf",
+      "deduplicated": true
+    },
+    {
+      "id": "C03",
+      "kind": "scene",
+      "originalAnonymousFile": "C03-scene.jpg",
+      "archiveFile": "proofs/baptism-summer-z1.0-after.jpg",
+      "sha256": "26dc3f1b2431ad44afced59bcf701ca020afa626c710965bd9f86821476d8795",
+      "deduplicated": true
+    },
+    {
+      "id": "C03",
+      "kind": "detail",
+      "originalAnonymousFile": "C03-detail.png",
+      "archiveFile": "proofs/baptism-summer-z1.0-detail.png",
+      "sha256": "f97ae6ad2e6a5921bc73a9effb0ac201d31043bfba86e702b817c77626a1951d",
+      "deduplicated": true
+    },
+    {
+      "id": "C04",
+      "kind": "scene",
+      "originalAnonymousFile": "C04-scene.jpg",
+      "archiveFile": "proofs/levy-winter-z1.0-after.jpg",
+      "sha256": "9a098f2acbe8eeda8b3817362046214127afcb3478954b70310cbaaca96b7f5a",
+      "deduplicated": true
+    },
+    {
+      "id": "C04",
+      "kind": "detail",
+      "originalAnonymousFile": "C04-detail.png",
+      "archiveFile": "proofs/levy-winter-z1.0-detail.png",
+      "sha256": "74e01856b24244e5eb2d41f0bca13e7a49518695dc4ba2c5f35b9cd54c09d6a4",
+      "deduplicated": true
+    },
+    {
+      "id": "C05",
+      "kind": "scene",
+      "originalAnonymousFile": "C05-scene.jpg",
+      "archiveFile": "proofs/judgment-winter-z1.0-after.jpg",
+      "sha256": "4c1ee3dff1e92689eb00076465b472ff36c4eef867affdd9dd81139cb8970341",
+      "deduplicated": true
+    },
+    {
+      "id": "C05",
+      "kind": "detail",
+      "originalAnonymousFile": "C05-detail.png",
+      "archiveFile": "proofs/judgment-winter-z1.0-detail.png",
+      "sha256": "d8d5515e7e211e299bf5eab304d8c97dd79f6f61c5429513fd2d7c0b2107aaf0",
+      "deduplicated": true
+    },
+    {
+      "id": "C06",
+      "kind": "scene",
+      "originalAnonymousFile": "C06-scene.jpg",
+      "archiveFile": "proofs/famine-winter-z1.0-after.jpg",
+      "sha256": "813206ca168e2dac5a8ff68867f039df5755e4378e4258df0b0d24cd734ff03a",
+      "deduplicated": true
+    },
+    {
+      "id": "C06",
+      "kind": "detail",
+      "originalAnonymousFile": "C06-detail.png",
+      "archiveFile": "proofs/famine-winter-z1.0-detail.png",
+      "sha256": "b521d0c9dc19e10a646a3149b34e159751e3087d93fe4cd31bc5f75a87cf7316",
+      "deduplicated": true
+    },
+    {
+      "id": "C07",
+      "kind": "scene",
+      "originalAnonymousFile": "C07-scene.jpg",
+      "archiveFile": "proofs/fire-winter-z1.0-after.jpg",
+      "sha256": "883b23abc6ee05470fd94b1f4da501924cc9acefd83abf55e751ee434363c363",
+      "deduplicated": true
+    },
+    {
+      "id": "C07",
+      "kind": "detail",
+      "originalAnonymousFile": "C07-detail.png",
+      "archiveFile": "proofs/fire-winter-z1.0-detail.png",
+      "sha256": "ee991ad7a89a6ff22f5b48bf04aa9af64aff8ddfadc6f6cd5572cd9fc3ad0cae",
+      "deduplicated": true
+    },
+    {
+      "id": "C08",
+      "kind": "scene",
+      "originalAnonymousFile": "C08-scene.jpg",
+      "archiveFile": "proofs/market-winter-z1.0-after.jpg",
+      "sha256": "76f8e6c4b2e234f2f51caf4eabbbca6ca222c92e2c4314c1413c33de8b7f41a1",
+      "deduplicated": true
+    },
+    {
+      "id": "C08",
+      "kind": "detail",
+      "originalAnonymousFile": "C08-detail.png",
+      "archiveFile": "proofs/market-winter-z1.0-detail.png",
+      "sha256": "ae7329a648554a0b5c02335c7b54d74c3c604fd1c98124b8942800c2eb3fda56",
+      "deduplicated": true
+    },
+    {
+      "id": "C09",
+      "kind": "scene",
+      "originalAnonymousFile": "C09-scene.jpg",
+      "archiveFile": "proofs/pilgrimage-winter-z1.0-after.jpg",
+      "sha256": "0238dd1d8ca3800d3abf270b82ae9f3575ea4d7ddfbefbe1e1521890053d4ae2",
+      "deduplicated": true
+    },
+    {
+      "id": "C09",
+      "kind": "detail",
+      "originalAnonymousFile": "C09-detail.png",
+      "archiveFile": "proofs/pilgrimage-winter-z1.0-detail.png",
+      "sha256": "dde2cff4335e8159c3d3b9c9ab25650405cc892bfb05ab7875c14e3ac7757be5",
+      "deduplicated": true
+    },
+    {
+      "id": "C10",
+      "kind": "scene",
+      "originalAnonymousFile": "C10-scene.jpg",
+      "archiveFile": "proofs/royal_envoy-summer-z1.0-after.jpg",
+      "sha256": "f2f790d02cc6335eeeb9d2b2e1c8d117eb923ca837d32cf0131387300dab09c9",
+      "deduplicated": true
+    },
+    {
+      "id": "C10",
+      "kind": "detail",
+      "originalAnonymousFile": "C10-detail.png",
+      "archiveFile": "proofs/royal_envoy-summer-z1.0-detail.png",
+      "sha256": "542b84d4d584e88cf966d0fd98d93bc2cb490f89dfb0c39f38dc267bca13d04d",
+      "deduplicated": true
+    },
+    {
+      "id": "C11",
+      "kind": "scene",
+      "originalAnonymousFile": "C11-scene.jpg",
+      "archiveFile": "proofs/fair-summer-z1.0-after.jpg",
+      "sha256": "ab6a1eb665a4fd5ff290fec354e8739c27fab17b0addbd01fe9d5c118dcb3239",
+      "deduplicated": true
+    },
+    {
+      "id": "C11",
+      "kind": "detail",
+      "originalAnonymousFile": "C11-detail.png",
+      "archiveFile": "proofs/fair-summer-z1.0-detail.png",
+      "sha256": "1407056c91abd39bb240298eb9dc556120fbe1a10e435b713cbb644625c9432d",
+      "deduplicated": true
+    },
+    {
+      "id": "C12",
+      "kind": "scene",
+      "originalAnonymousFile": "C12-scene.jpg",
+      "archiveFile": "proofs/revolt-summer-z1.0-after.jpg",
+      "sha256": "573a418e67197f8d5a6e931654dd7759099a4d850dfa95f7aa8100fcd123ce53",
+      "deduplicated": true
+    },
+    {
+      "id": "C12",
+      "kind": "detail",
+      "originalAnonymousFile": "C12-detail.png",
+      "archiveFile": "proofs/revolt-summer-z1.0-detail.png",
+      "sha256": "74723269ffde4ac6fe76ddc8e10a90b16a90ee97b7431f48a324a1009c448aef",
+      "deduplicated": true
+    },
+    {
+      "id": "C13",
+      "kind": "scene",
+      "originalAnonymousFile": "C13-scene.jpg",
+      "archiveFile": "proofs/flood-summer-z1.0-after.jpg",
+      "sha256": "49991cc4dde3812b9c61f8f657628baf911de0bfe184d4fbe6e6be4a7ee7aa56",
+      "deduplicated": true
+    },
+    {
+      "id": "C13",
+      "kind": "detail",
+      "originalAnonymousFile": "C13-detail.png",
+      "archiveFile": "proofs/flood-summer-z1.0-detail.png",
+      "sha256": "187037c81f112b8ca6c0aab0b46114b192109893227d8e03576aad83eeb6cfee",
+      "deduplicated": true
+    },
+    {
+      "id": "C14",
+      "kind": "scene",
+      "originalAnonymousFile": "C14-scene.jpg",
+      "archiveFile": "proofs/plague-summer-z1.0-after.jpg",
+      "sha256": "3b80be0accfcb39189a22ab683e3cc97577e9fab86bf7770cbfb1cebb3941fc5",
+      "deduplicated": true
+    },
+    {
+      "id": "C14",
+      "kind": "detail",
+      "originalAnonymousFile": "C14-detail.png",
+      "archiveFile": "proofs/plague-summer-z1.0-detail.png",
+      "sha256": "9d7313443b896939dc0d9f2228583270d90b436f911703ebc1e0a279c2a81296",
+      "deduplicated": true
+    },
+    {
+      "id": "D01",
+      "kind": "scene",
+      "originalAnonymousFile": "D01-scene.jpg",
+      "archiveFile": "proofs/funeral-summer-z0.6-after.jpg",
+      "sha256": "5473bf81035a4638cb17a9a5347c504b5fc309da447b8b1e30acd19d24049645",
+      "deduplicated": true
+    },
+    {
+      "id": "D01",
+      "kind": "detail",
+      "originalAnonymousFile": "D01-detail.png",
+      "archiveFile": "proofs/funeral-summer-z0.6-detail.png",
+      "sha256": "11332bbc816cc752a87ad3c9c9e62659538968fa311ad715384f1be524939f3b",
+      "deduplicated": true
+    },
+    {
+      "id": "D02",
+      "kind": "scene",
+      "originalAnonymousFile": "D02-scene.jpg",
+      "archiveFile": "proofs/plague-winter-z0.6-after.jpg",
+      "sha256": "b709a83f9e7b407694ea782529256cc26be0aaadd4bbde55e37c51d92d56326b",
+      "deduplicated": true
+    },
+    {
+      "id": "D02",
+      "kind": "detail",
+      "originalAnonymousFile": "D02-detail.png",
+      "archiveFile": "proofs/plague-winter-z0.6-detail.png",
+      "sha256": "fabfd66676bcbd8d770bde17690fd023c12afbeaab3971186be44dc63a1db5e4",
+      "deduplicated": true
+    },
+    {
+      "id": "D03",
+      "kind": "scene",
+      "originalAnonymousFile": "D03-scene.jpg",
+      "archiveFile": "proofs/levy-summer-z0.6-after.jpg",
+      "sha256": "318399c3b2166f16a2a13020501537a3c96566f522c27a89c062f8a28181b649",
+      "deduplicated": true
+    },
+    {
+      "id": "D03",
+      "kind": "detail",
+      "originalAnonymousFile": "D03-detail.png",
+      "archiveFile": "proofs/levy-summer-z0.6-detail.png",
+      "sha256": "6c3d7af3ed556a54726f39341cb7b892477ded0dd4b5180a9bcd393d35f3a322",
+      "deduplicated": true
+    },
+    {
+      "id": "D04",
+      "kind": "scene",
+      "originalAnonymousFile": "D04-scene.jpg",
+      "archiveFile": "proofs/wedding-winter-z0.6-after.jpg",
+      "sha256": "631c2135f5457b768c07ae66049e8dad21b60a05cf9feb4295445ca442795bc0",
+      "deduplicated": true
+    },
+    {
+      "id": "D04",
+      "kind": "detail",
+      "originalAnonymousFile": "D04-detail.png",
+      "archiveFile": "proofs/wedding-winter-z0.6-detail.png",
+      "sha256": "2706d7641494ba9aa6a1a36419ac5c03ccd77d39ecc1888baf0fada52687bcc1",
+      "deduplicated": true
+    },
+    {
+      "id": "D05",
+      "kind": "scene",
+      "originalAnonymousFile": "D05-scene.jpg",
+      "archiveFile": "proofs/market-summer-z0.6-after.jpg",
+      "sha256": "24f8f0276c0b6fac7479d8f9574d5f8ca012e4f2d2eaf96f2ace5ca0af0b1dbd",
+      "deduplicated": true
+    },
+    {
+      "id": "D05",
+      "kind": "detail",
+      "originalAnonymousFile": "D05-detail.png",
+      "archiveFile": "proofs/market-summer-z0.6-detail.png",
+      "sha256": "93629744368e2e137067c786cad20c5c0a93791c35c9ed71b89b298547bf7eca",
+      "deduplicated": true
+    },
+    {
+      "id": "D06",
+      "kind": "scene",
+      "originalAnonymousFile": "D06-scene.jpg",
+      "archiveFile": "proofs/famine-summer-z0.6-after.jpg",
+      "sha256": "6f56a388f1cd18a34ea82c5d2b49ec942fb6370ef58dafa3b077bdfb224dd9ac",
+      "deduplicated": true
+    },
+    {
+      "id": "D06",
+      "kind": "detail",
+      "originalAnonymousFile": "D06-detail.png",
+      "archiveFile": "proofs/famine-summer-z0.6-detail.png",
+      "sha256": "a6108248d45ab45c7936b70393456b9ec7c86635a6d1434c410a61dd2550d99f",
+      "deduplicated": true
+    },
+    {
+      "id": "D07",
+      "kind": "scene",
+      "originalAnonymousFile": "D07-scene.jpg",
+      "archiveFile": "proofs/judgment-summer-z0.6-after.jpg",
+      "sha256": "9629b75b366b2654efbeb95dfca07ac5c29fe1a2c091901899f1c6f811a440cd",
+      "deduplicated": true
+    },
+    {
+      "id": "D07",
+      "kind": "detail",
+      "originalAnonymousFile": "D07-detail.png",
+      "archiveFile": "proofs/judgment-summer-z0.6-detail.png",
+      "sha256": "6b4a4814a27f1132a97b1cd1ee49c0ae65eee68d17985acc53f1d2440ae6fd73",
+      "deduplicated": true
+    },
+    {
+      "id": "D08",
+      "kind": "scene",
+      "originalAnonymousFile": "D08-scene.jpg",
+      "archiveFile": "proofs/fair-winter-z0.6-after.jpg",
+      "sha256": "9af7d854cad1c6a39012d576213ac114d973aa8302647516c0cc2a38472283ab",
+      "deduplicated": true
+    },
+    {
+      "id": "D08",
+      "kind": "detail",
+      "originalAnonymousFile": "D08-detail.png",
+      "archiveFile": "proofs/fair-winter-z0.6-detail.png",
+      "sha256": "1b38d91ec25986850ac3ab09da83f163b30c5f5c9674662b4ea14e9d04ee9598",
+      "deduplicated": true
+    },
+    {
+      "id": "D09",
+      "kind": "scene",
+      "originalAnonymousFile": "D09-scene.jpg",
+      "archiveFile": "proofs/baptism-winter-z0.6-after.jpg",
+      "sha256": "fcc508dc872b7b1fedc8d68a9b5a334d733bd3a3d96e5f7a52925b3ff843617d",
+      "deduplicated": true
+    },
+    {
+      "id": "D09",
+      "kind": "detail",
+      "originalAnonymousFile": "D09-detail.png",
+      "archiveFile": "proofs/baptism-winter-z0.6-detail.png",
+      "sha256": "b53651376c6cff772c1b2dc68bb69a255fb83e1d8f411ab9040b45152e220198",
+      "deduplicated": true
+    },
+    {
+      "id": "D10",
+      "kind": "scene",
+      "originalAnonymousFile": "D10-scene.jpg",
+      "archiveFile": "proofs/royal_envoy-winter-z0.6-after.jpg",
+      "sha256": "9c2e79467b9587365fa9a7605c6e8c03584f2808ba09ae8d997da130afe79053",
+      "deduplicated": true
+    },
+    {
+      "id": "D10",
+      "kind": "detail",
+      "originalAnonymousFile": "D10-detail.png",
+      "archiveFile": "proofs/royal_envoy-winter-z0.6-detail.png",
+      "sha256": "b6d321620c4823315f3902454f7a01c8d40756625cb9db36563f3a27edc2e11a",
+      "deduplicated": true
+    },
+    {
+      "id": "D11",
+      "kind": "scene",
+      "originalAnonymousFile": "D11-scene.jpg",
+      "archiveFile": "proofs/pilgrimage-summer-z0.6-after.jpg",
+      "sha256": "9484132c084e0b069674e8e90d887fec9980b3efa2d9c7d2def14b308388af97",
+      "deduplicated": true
+    },
+    {
+      "id": "D11",
+      "kind": "detail",
+      "originalAnonymousFile": "D11-detail.png",
+      "archiveFile": "proofs/pilgrimage-summer-z0.6-detail.png",
+      "sha256": "8f8c4ab78e1a8596b3d841c6ac546bfeadfabaddebff1d9fa7f50161614a4793",
+      "deduplicated": true
+    },
+    {
+      "id": "D12",
+      "kind": "scene",
+      "originalAnonymousFile": "D12-scene.jpg",
+      "archiveFile": "proofs/flood-winter-z0.6-after.jpg",
+      "sha256": "a8e1b368b5112e112677e225f180d9394a28a44dc502cd5a8ad913ac8988753b",
+      "deduplicated": true
+    },
+    {
+      "id": "D12",
+      "kind": "detail",
+      "originalAnonymousFile": "D12-detail.png",
+      "archiveFile": "proofs/flood-winter-z0.6-detail.png",
+      "sha256": "d4712b220c7ce287e0b53121169374da533591ab04a32fcc8623e87771892eec",
+      "deduplicated": true
+    },
+    {
+      "id": "D13",
+      "kind": "scene",
+      "originalAnonymousFile": "D13-scene.jpg",
+      "archiveFile": "proofs/revolt-winter-z0.6-after.jpg",
+      "sha256": "c5bd728cfd5e7d1eded52a6d38e4c86c598ef6c686ad907b4c06dfeff341bdba",
+      "deduplicated": true
+    },
+    {
+      "id": "D13",
+      "kind": "detail",
+      "originalAnonymousFile": "D13-detail.png",
+      "archiveFile": "proofs/revolt-winter-z0.6-detail.png",
+      "sha256": "ae4809a910c52175662cd034c5238cf327ba7866d8eb30123d9fb64fd646b14b",
+      "deduplicated": true
+    },
+    {
+      "id": "D14",
+      "kind": "scene",
+      "originalAnonymousFile": "D14-scene.jpg",
+      "archiveFile": "proofs/fire-summer-z0.6-after.jpg",
+      "sha256": "5e2fb2e084063a0daa2fca662c18d03394c7cdbf57fe9ea14666335dc4c28d41",
+      "deduplicated": true
+    },
+    {
+      "id": "D14",
+      "kind": "detail",
+      "originalAnonymousFile": "D14-detail.png",
+      "archiveFile": "proofs/fire-summer-z0.6-detail.png",
+      "sha256": "0ff49e27e0345f523d8aa79381a33d3135d92df47a02f766a8d4112c79805e9d",
+      "deduplicated": true
+    }
+  ]
+}

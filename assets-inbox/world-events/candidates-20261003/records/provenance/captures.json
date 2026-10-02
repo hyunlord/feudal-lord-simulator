@@ -1,0 +1,3613 @@
+{
+  "records": [
+    {
+      "name": "church-summer-z1.0",
+      "season": "summer",
+      "area": "church",
+      "center": [
+        49,
+        31
+      ],
+      "tick": 321010,
+      "camera": {
+        "zoom": 1,
+        "panX": 224,
+        "panY": -780
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "church-summer-z0.6",
+      "season": "summer",
+      "area": "church",
+      "center": [
+        49,
+        31
+      ],
+      "tick": 321010,
+      "camera": {
+        "zoom": 0.6,
+        "panX": 454.40000000000003,
+        "panY": -268
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "market-summer-z1.0",
+      "season": "summer",
+      "area": "market",
+      "center": [
+        55,
+        36
+      ],
+      "tick": 321010,
+      "camera": {
+        "zoom": 1,
+        "panX": 192,
+        "panY": -956
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "market-summer-z0.6",
+      "season": "summer",
+      "area": "market",
+      "center": [
+        55,
+        36
+      ],
+      "tick": 321010,
+      "camera": {
+        "zoom": 0.6,
+        "panX": 435.2,
+        "panY": -299.20000000000005
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "manor-summer-z1.0",
+      "season": "summer",
+      "area": "manor",
+      "center": [
+        30,
+        19
+      ],
+      "tick": 321010,
+      "camera": {
+        "zoom": 1,
+        "panX": 448,
+        "panY": -284
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "manor-summer-z0.6",
+      "season": "summer",
+      "area": "manor",
+      "center": [
+        30,
+        19
+      ],
+      "tick": 321010,
+      "camera": {
+        "zoom": 0.6,
+        "panX": 588.8,
+        "panY": 29.600000000000023
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "church-winter-z1.0",
+      "season": "winter",
+      "area": "church",
+      "center": [
+        49,
+        31
+      ],
+      "tick": 323010,
+      "camera": {
+        "zoom": 1,
+        "panX": 224,
+        "panY": -780
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "church-winter-z0.6",
+      "season": "winter",
+      "area": "church",
+      "center": [
+        49,
+        31
+      ],
+      "tick": 323010,
+      "camera": {
+        "zoom": 0.6,
+        "panX": 454.40000000000003,
+        "panY": -268
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "market-winter-z1.0",
+      "season": "winter",
+      "area": "market",
+      "center": [
+        55,
+        36
+      ],
+      "tick": 323010,
+      "camera": {
+        "zoom": 1,
+        "panX": 192,
+        "panY": -956
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "market-winter-z0.6",
+      "season": "winter",
+      "area": "market",
+      "center": [
+        55,
+        36
+      ],
+      "tick": 323010,
+      "camera": {
+        "zoom": 0.6,
+        "panX": 435.2,
+        "panY": -299.20000000000005
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "manor-winter-z1.0",
+      "season": "winter",
+      "area": "manor",
+      "center": [
+        30,
+        19
+      ],
+      "tick": 323010,
+      "camera": {
+        "zoom": 1,
+        "panX": 448,
+        "panY": -284
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    },
+    {
+      "name": "manor-winter-z0.6",
+      "season": "winter",
+      "area": "manor",
+      "center": [
+        30,
+        19
+      ],
+      "tick": 323010,
+      "camera": {
+        "zoom": 0.6,
+        "panX": 588.8,
+        "panY": 29.600000000000023
+      },
+      "viewport": {
+        "width": 1600,
+        "height": 1000
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": "house-44-40-0",
+      "kind": "house",
+      "tx": 44,
+      "ty": 37
+    },
+    {
+      "id": "house-46-40-0",
+      "kind": "house",
+      "tx": 46,
+      "ty": 37
+    },
+    {
+      "id": "house-44-42-0",
+      "kind": "house",
+      "tx": 44,
+      "ty": 39
+    },
+    {
+      "id": "house-46-42-0",
+      "kind": "house",
+      "tx": 46,
+      "ty": 39
+    },
+    {
+      "id": "well-45-41-0",
+      "kind": "well",
+      "tx": 45,
+      "ty": 38
+    },
+    {
+      "id": "granary-42-37-0",
+      "kind": "granary",
+      "tx": 42,
+      "ty": 34
+    },
+    {
+      "id": "logging-camp-50-40-0",
+      "kind": "logging_camp",
+      "tx": 50,
+      "ty": 37
+    },
+    {
+      "id": "storehouse-41-40-0",
+      "kind": "storehouse",
+      "tx": 41,
+      "ty": 37
+    },
+    {
+      "id": "construction-site-000001",
+      "kind": "farmstead",
+      "tx": 44,
+      "ty": 35
+    },
+    {
+      "id": "construction-site-000002",
+      "kind": "mill",
+      "tx": 42,
+      "ty": 36
+    },
+    {
+      "id": "construction-site-000003",
+      "kind": "sawmill",
+      "tx": 46,
+      "ty": 35
+    },
+    {
+      "id": "construction-site-000004",
+      "kind": "house",
+      "tx": 43,
+      "ty": 39
+    },
+    {
+      "id": "construction-site-000005",
+      "kind": "mill",
+      "tx": 45,
+      "ty": 37
+    },
+    {
+      "id": "construction-site-000006",
+      "kind": "house",
+      "tx": 47,
+      "ty": 35
+    },
+    {
+      "id": "construction-site-000007",
+      "kind": "house",
+      "tx": 48,
+      "ty": 36
+    },
+    {
+      "id": "construction-site-000008",
+      "kind": "house",
+      "tx": 48,
+      "ty": 37
+    },
+    {
+      "id": "construction-site-000009",
+      "kind": "house",
+      "tx": 49,
+      "ty": 37
+    },
+    {
+      "id": "construction-site-000010",
+      "kind": "house",
+      "tx": 51,
+      "ty": 38
+    },
+    {
+      "id": "construction-site-000011",
+      "kind": "house",
+      "tx": 46,
+      "ty": 34
+    },
+    {
+      "id": "construction-site-000012",
+      "kind": "house",
+      "tx": 45,
+      "ty": 31
+    },
+    {
+      "id": "construction-site-000013",
+      "kind": "well",
+      "tx": 44,
+      "ty": 32
+    },
+    {
+      "id": "construction-site-000014",
+      "kind": "house",
+      "tx": 46,
+      "ty": 31
+    },
+    {
+      "id": "construction-site-000015",
+      "kind": "house",
+      "tx": 47,
+      "ty": 32
+    },
+    {
+      "id": "construction-site-000016",
+      "kind": "house",
+      "tx": 42,
+      "ty": 33
+    },
+    {
+      "id": "construction-site-000017",
+      "kind": "chapel",
+      "tx": 43,
+      "ty": 29
+    },
+    {
+      "id": "construction-site-000019",
+      "kind": "mill",
+      "tx": 42,
+      "ty": 30
+    },
+    {
+      "id": "construction-site-000020",
+      "kind": "house",
+      "tx": 44,
+      "ty": 29
+    },
+    {
+      "id": "construction-site-000022",
+      "kind": "farmstead",
+      "tx": 42,
+      "ty": 32
+    },
+    {
+      "id": "construction-site-000023",
+      "kind": "granary",
+      "tx": 52,
+      "ty": 37
+    },
+    {
+      "id": "construction-site-000024",
+      "kind": "mill",
+      "tx": 46,
+      "ty": 28
+    },
+    {
+      "id": "construction-site-000025",
+      "kind": "granary",
+      "tx": 54,
+      "ty": 37
+    },
+    {
+      "id": "construction-site-000026",
+      "kind": "house",
+      "tx": 47,
+      "ty": 28
+    },
+    {
+      "id": "construction-site-000027",
+      "kind": "well",
+      "tx": 46,
+      "ty": 33
+    },
+    {
+      "id": "construction-site-000028",
+      "kind": "house",
+      "tx": 48,
+      "ty": 29
+    },
+    {
+      "id": "construction-site-000029",
+      "kind": "storehouse",
+      "tx": 47,
+      "ty": 30
+    },
+    {
+      "id": "construction-site-000030",
+      "kind": "house",
+      "tx": 45,
+      "ty": 25
+    },
+    {
+      "id": "construction-site-000031",
+      "kind": "well",
+      "tx": 46,
+      "ty": 30
+    },
+    {
+      "id": "construction-site-000032",
+      "kind": "house",
+      "tx": 44,
+      "ty": 26
+    },
+    {
+      "id": "construction-site-000033",
+      "kind": "mill",
+      "tx": 56,
+      "ty": 37
+    },
+    {
+      "id": "construction-site-000034",
+      "kind": "house",
+      "tx": 46,
+      "ty": 25
+    },
+    {
+      "id": "construction-site-000035",
+      "kind": "house",
+      "tx": 47,
+      "ty": 26
+    },
+    {
+      "id": "construction-site-000036",
+      "kind": "house",
+      "tx": 43,
+      "ty": 26
+    },
+    {
+      "id": "construction-site-000037",
+      "kind": "well",
+      "tx": 44,
+      "ty": 28
+    },
+    {
+      "id": "construction-site-000038",
+      "kind": "house",
+      "tx": 42,
+      "ty": 27
+    },
+    {
+      "id": "construction-site-000039",
+      "kind": "granary",
+      "tx": 48,
+      "ty": 26
+    },
+    {
+      "id": "construction-site-000040",
+      "kind": "farmstead",
+      "tx": 57,
+      "ty": 38
+    },
+    {
+      "id": "construction-site-000042",
+      "kind": "logging_camp",
+      "tx": 60,
+      "ty": 41
+    },
+    {
+      "id": "construction-site-000043",
+      "kind": "mill",
+      "tx": 60,
+      "ty": 44
+    },
+    {
+      "id": "construction-site-000044",
+      "kind": "market",
+      "tx": 56,
+      "ty": 35
+    },
+    {
+      "id": "construction-site-000045",
+      "kind": "logging_camp",
+      "tx": 42,
+      "ty": 25
+    },
+    {
+      "id": "construction-site-000046",
+      "kind": "sawmill",
+      "tx": 57,
+      "ty": 47
+    },
+    {
+      "id": "construction-site-000047",
+      "kind": "farmstead",
+      "tx": 55,
+      "ty": 48
+    },
+    {
+      "id": "construction-site-000048",
+      "kind": "logging_camp",
+      "tx": 42,
+      "ty": 26
+    },
+    {
+      "id": "construction-site-000049",
+      "kind": "logging_camp",
+      "tx": 43,
+      "ty": 24
+    },
+    {
+      "id": "construction-site-000050",
+      "kind": "logging_camp",
+      "tx": 42,
+      "ty": 21
+    },
+    {
+      "id": "construction-site-000051",
+      "kind": "sawmill",
+      "tx": 57,
+      "ty": 32
+    },
+    {
+      "id": "construction-site-000052",
+      "kind": "sawmill",
+      "tx": 39,
+      "ty": 21
+    },
+    {
+      "id": "construction-site-000053",
+      "kind": "sawmill",
+      "tx": 38,
+      "ty": 21
+    },
+    {
+      "id": "construction-site-000054",
+      "kind": "granary",
+      "tx": 50,
+      "ty": 26
+    },
+    {
+      "id": "construction-site-000055",
+      "kind": "storehouse",
+      "tx": 40,
+      "ty": 20
+    },
+    {
+      "id": "construction-site-000056",
+      "kind": "granary",
+      "tx": 55,
+      "ty": 32
+    },
+    {
+      "id": "construction-site-000057",
+      "kind": "masonry",
+      "tx": 43,
+      "ty": 21
+    },
+    {
+      "id": "construction-site-000058",
+      "kind": "quarry",
+      "tx": 34,
+      "ty": 35
+    },
+    {
+      "id": "construction-site-000059",
+      "kind": "mill",
+      "tx": 49,
+      "ty": 25
+    },
+    {
+      "id": "construction-site-000060",
+      "kind": "storehouse",
+      "tx": 44,
+      "ty": 20
+    },
+    {
+      "id": "construction-site-000062",
+      "kind": "storehouse",
+      "tx": 46,
+      "ty": 20
+    },
+    {
+      "id": "construction-site-000061",
+      "kind": "church",
+      "tx": 49,
+      "ty": 29
+    },
+    {
+      "id": "construction-site-000064",
+      "kind": "farmstead",
+      "tx": 41,
+      "ty": 43
+    },
+    {
+      "id": "construction-site-000068",
+      "kind": "mill",
+      "tx": 52,
+      "ty": 36
+    },
+    {
+      "id": "construction-site-000069",
+      "kind": "malt_kiln",
+      "tx": 40,
+      "ty": 45
+    },
+    {
+      "id": "construction-site-000063",
+      "kind": "church",
+      "tx": 51,
+      "ty": 34
+    },
+    {
+      "id": "construction-site-000070",
+      "kind": "mill",
+      "tx": 47,
+      "ty": 25
+    },
+    {
+      "id": "construction-site-000071",
+      "kind": "mill",
+      "tx": 55,
+      "ty": 31
+    },
+    {
+      "id": "construction-site-000072",
+      "kind": "mill",
+      "tx": 47,
+      "ty": 24
+    },
+    {
+      "id": "construction-site-000073",
+      "kind": "granary",
+      "tx": 61,
+      "ty": 44
+    },
+    {
+      "id": "construction-site-000074",
+      "kind": "mill",
+      "tx": 55,
+      "ty": 52
+    },
+    {
+      "id": "construction-site-000075",
+      "kind": "storehouse",
+      "tx": 48,
+      "ty": 20
+    },
+    {
+      "id": "construction-site-000076",
+      "kind": "pastoral_farm",
+      "tx": 36,
+      "ty": 28
+    },
+    {
+      "id": "construction-site-000077",
+      "kind": "weaver_house",
+      "tx": 50,
+      "ty": 21
+    },
+    {
+      "id": "construction-site-000078",
+      "kind": "fulling_mill",
+      "tx": 3,
+      "ty": 30
+    },
+    {
+      "id": "construction-site-000080",
+      "kind": "tenter_yard",
+      "tx": 51,
+      "ty": 20
+    },
+    {
+      "id": "construction-site-000079",
+      "kind": "dyehouse",
+      "tx": 2,
+      "ty": 33
+    },
+    {
+      "id": "construction-site-000082",
+      "kind": "pastoral_farm",
+      "tx": 24,
+      "ty": 31
+    },
+    {
+      "id": "construction-site-000081",
+      "kind": "weaver_house",
+      "tx": 54,
+      "ty": 21
+    },
+    {
+      "id": "construction-site-000083",
+      "kind": "tenter_yard",
+      "tx": 55,
+      "ty": 20
+    },
+    {
+      "id": "construction-site-000084",
+      "kind": "masonry",
+      "tx": 37,
+      "ty": 22
+    },
+    {
+      "id": "manor-house-29-17-0",
+      "kind": "manor_house",
+      "tx": 29,
+      "ty": 17
+    }
+  ],
+  "tiles": [
+    {
+      "tx": 29,
+      "ty": 17,
+      "hasRoad": false,
+      "buildingId": "manor-house-29-17-0"
+    },
+    {
+      "tx": 30,
+      "ty": 17,
+      "hasRoad": false,
+      "buildingId": "manor-house-29-17-0"
+    },
+    {
+      "tx": 29,
+      "ty": 18,
+      "hasRoad": false,
+      "buildingId": "manor-house-29-17-0"
+    },
+    {
+      "tx": 30,
+      "ty": 18,
+      "hasRoad": false,
+      "buildingId": "manor-house-29-17-0"
+    },
+    {
+      "tx": 40,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000055"
+    },
+    {
+      "tx": 41,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000055"
+    },
+    {
+      "tx": 44,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000060"
+    },
+    {
+      "tx": 45,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000060"
+    },
+    {
+      "tx": 46,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000062"
+    },
+    {
+      "tx": 47,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000062"
+    },
+    {
+      "tx": 48,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000075"
+    },
+    {
+      "tx": 49,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000075"
+    },
+    {
+      "tx": 51,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000080"
+    },
+    {
+      "tx": 52,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000080"
+    },
+    {
+      "tx": 53,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000080"
+    },
+    {
+      "tx": 55,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000083"
+    },
+    {
+      "tx": 56,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000083"
+    },
+    {
+      "tx": 57,
+      "ty": 20,
+      "hasRoad": false,
+      "buildingId": "construction-site-000083"
+    },
+    {
+      "tx": 38,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000053"
+    },
+    {
+      "tx": 39,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000052"
+    },
+    {
+      "tx": 40,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000055"
+    },
+    {
+      "tx": 41,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000055"
+    },
+    {
+      "tx": 42,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000050"
+    },
+    {
+      "tx": 43,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000057"
+    },
+    {
+      "tx": 44,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000060"
+    },
+    {
+      "tx": 45,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000060"
+    },
+    {
+      "tx": 46,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000062"
+    },
+    {
+      "tx": 47,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000062"
+    },
+    {
+      "tx": 48,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000075"
+    },
+    {
+      "tx": 49,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000075"
+    },
+    {
+      "tx": 50,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000077"
+    },
+    {
+      "tx": 51,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000080"
+    },
+    {
+      "tx": 52,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000080"
+    },
+    {
+      "tx": 53,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000080"
+    },
+    {
+      "tx": 54,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000081"
+    },
+    {
+      "tx": 55,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000083"
+    },
+    {
+      "tx": 56,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000083"
+    },
+    {
+      "tx": 57,
+      "ty": 21,
+      "hasRoad": false,
+      "buildingId": "construction-site-000083"
+    },
+    {
+      "tx": 37,
+      "ty": 22,
+      "hasRoad": false,
+      "buildingId": "construction-site-000084"
+    },
+    {
+      "tx": 38,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 47,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 48,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 49,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 50,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 51,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 52,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 53,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 54,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 22,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 47,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 48,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 49,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 50,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 51,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 52,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 53,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 54,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 23,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 24,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 24,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 24,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 24,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 24,
+      "hasRoad": false,
+      "buildingId": "construction-site-000049"
+    },
+    {
+      "tx": 47,
+      "ty": 24,
+      "hasRoad": false,
+      "buildingId": "construction-site-000072"
+    },
+    {
+      "tx": 48,
+      "ty": 24,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 49,
+      "ty": 24,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 50,
+      "ty": 24,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 24,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 25,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 25,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 25,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 25,
+      "hasRoad": false,
+      "buildingId": "construction-site-000045"
+    },
+    {
+      "tx": 45,
+      "ty": 25,
+      "hasRoad": false,
+      "buildingId": "construction-site-000030"
+    },
+    {
+      "tx": 46,
+      "ty": 25,
+      "hasRoad": false,
+      "buildingId": "construction-site-000034"
+    },
+    {
+      "tx": 47,
+      "ty": 25,
+      "hasRoad": false,
+      "buildingId": "construction-site-000070"
+    },
+    {
+      "tx": 48,
+      "ty": 25,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 49,
+      "ty": 25,
+      "hasRoad": false,
+      "buildingId": "construction-site-000059"
+    },
+    {
+      "tx": 50,
+      "ty": 25,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 25,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 26,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 26,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 26,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 26,
+      "hasRoad": false,
+      "buildingId": "construction-site-000048"
+    },
+    {
+      "tx": 43,
+      "ty": 26,
+      "hasRoad": false,
+      "buildingId": "construction-site-000036"
+    },
+    {
+      "tx": 44,
+      "ty": 26,
+      "hasRoad": false,
+      "buildingId": "construction-site-000032"
+    },
+    {
+      "tx": 45,
+      "ty": 26,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 26,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 47,
+      "ty": 26,
+      "hasRoad": false,
+      "buildingId": "construction-site-000035"
+    },
+    {
+      "tx": 48,
+      "ty": 26,
+      "hasRoad": false,
+      "buildingId": "construction-site-000039"
+    },
+    {
+      "tx": 49,
+      "ty": 26,
+      "hasRoad": false,
+      "buildingId": "construction-site-000039"
+    },
+    {
+      "tx": 50,
+      "ty": 26,
+      "hasRoad": false,
+      "buildingId": "construction-site-000054"
+    },
+    {
+      "tx": 51,
+      "ty": 26,
+      "hasRoad": false,
+      "buildingId": "construction-site-000054"
+    },
+    {
+      "tx": 59,
+      "ty": 26,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 27,
+      "hasRoad": false,
+      "buildingId": "construction-site-000038"
+    },
+    {
+      "tx": 43,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 47,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 48,
+      "ty": 27,
+      "hasRoad": false,
+      "buildingId": "construction-site-000039"
+    },
+    {
+      "tx": 49,
+      "ty": 27,
+      "hasRoad": false,
+      "buildingId": "construction-site-000039"
+    },
+    {
+      "tx": 50,
+      "ty": 27,
+      "hasRoad": false,
+      "buildingId": "construction-site-000054"
+    },
+    {
+      "tx": 51,
+      "ty": 27,
+      "hasRoad": false,
+      "buildingId": "construction-site-000054"
+    },
+    {
+      "tx": 55,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 27,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 36,
+      "ty": 28,
+      "hasRoad": false,
+      "buildingId": "construction-site-000076"
+    },
+    {
+      "tx": 37,
+      "ty": 28,
+      "hasRoad": false,
+      "buildingId": "construction-site-000076"
+    },
+    {
+      "tx": 38,
+      "ty": 28,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 28,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 28,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 28,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 28,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 28,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 28,
+      "hasRoad": false,
+      "buildingId": "construction-site-000037"
+    },
+    {
+      "tx": 45,
+      "ty": 28,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 28,
+      "hasRoad": false,
+      "buildingId": "construction-site-000024"
+    },
+    {
+      "tx": 47,
+      "ty": 28,
+      "hasRoad": false,
+      "buildingId": "construction-site-000026"
+    },
+    {
+      "tx": 55,
+      "ty": 28,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 28,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 37,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 29,
+      "hasRoad": false,
+      "buildingId": "construction-site-000017"
+    },
+    {
+      "tx": 44,
+      "ty": 29,
+      "hasRoad": false,
+      "buildingId": "construction-site-000020"
+    },
+    {
+      "tx": 45,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 47,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 48,
+      "ty": 29,
+      "hasRoad": false,
+      "buildingId": "construction-site-000028"
+    },
+    {
+      "tx": 49,
+      "ty": 29,
+      "hasRoad": false,
+      "buildingId": "construction-site-000061"
+    },
+    {
+      "tx": 50,
+      "ty": 29,
+      "hasRoad": false,
+      "buildingId": "construction-site-000061"
+    },
+    {
+      "tx": 51,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 52,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 53,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 54,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 29,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 3,
+      "ty": 30,
+      "hasRoad": false,
+      "buildingId": "construction-site-000078"
+    },
+    {
+      "tx": 4,
+      "ty": 30,
+      "hasRoad": false,
+      "buildingId": "construction-site-000078"
+    },
+    {
+      "tx": 38,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 30,
+      "hasRoad": false,
+      "buildingId": "construction-site-000019"
+    },
+    {
+      "tx": 43,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 30,
+      "hasRoad": false,
+      "buildingId": "construction-site-000031"
+    },
+    {
+      "tx": 47,
+      "ty": 30,
+      "hasRoad": false,
+      "buildingId": "construction-site-000029"
+    },
+    {
+      "tx": 48,
+      "ty": 30,
+      "hasRoad": false,
+      "buildingId": "construction-site-000029"
+    },
+    {
+      "tx": 49,
+      "ty": 30,
+      "hasRoad": false,
+      "buildingId": "construction-site-000061"
+    },
+    {
+      "tx": 50,
+      "ty": 30,
+      "hasRoad": false,
+      "buildingId": "construction-site-000061"
+    },
+    {
+      "tx": 51,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 52,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 30,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 3,
+      "ty": 31,
+      "hasRoad": false,
+      "buildingId": "construction-site-000078"
+    },
+    {
+      "tx": 4,
+      "ty": 31,
+      "hasRoad": false,
+      "buildingId": "construction-site-000078"
+    },
+    {
+      "tx": 24,
+      "ty": 31,
+      "hasRoad": false,
+      "buildingId": "construction-site-000082"
+    },
+    {
+      "tx": 25,
+      "ty": 31,
+      "hasRoad": false,
+      "buildingId": "construction-site-000082"
+    },
+    {
+      "tx": 37,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 31,
+      "hasRoad": false,
+      "buildingId": "construction-site-000012"
+    },
+    {
+      "tx": 46,
+      "ty": 31,
+      "hasRoad": false,
+      "buildingId": "construction-site-000014"
+    },
+    {
+      "tx": 47,
+      "ty": 31,
+      "hasRoad": false,
+      "buildingId": "construction-site-000029"
+    },
+    {
+      "tx": 48,
+      "ty": 31,
+      "hasRoad": false,
+      "buildingId": "construction-site-000029"
+    },
+    {
+      "tx": 55,
+      "ty": 31,
+      "hasRoad": false,
+      "buildingId": "construction-site-000071"
+    },
+    {
+      "tx": 56,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 31,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 2,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 3,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 4,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 5,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 6,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 7,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 8,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 9,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 10,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 11,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 12,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 13,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 14,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 15,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 16,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 17,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 18,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 19,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 20,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 21,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 22,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 23,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 24,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 25,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 26,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 27,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 28,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 29,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 30,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 31,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 32,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 33,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 34,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 35,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 36,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 37,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 32,
+      "hasRoad": false,
+      "buildingId": "construction-site-000022"
+    },
+    {
+      "tx": 43,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 32,
+      "hasRoad": false,
+      "buildingId": "construction-site-000013"
+    },
+    {
+      "tx": 45,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 47,
+      "ty": 32,
+      "hasRoad": false,
+      "buildingId": "construction-site-000015"
+    },
+    {
+      "tx": 55,
+      "ty": 32,
+      "hasRoad": false,
+      "buildingId": "construction-site-000056"
+    },
+    {
+      "tx": 56,
+      "ty": 32,
+      "hasRoad": false,
+      "buildingId": "construction-site-000056"
+    },
+    {
+      "tx": 57,
+      "ty": 32,
+      "hasRoad": false,
+      "buildingId": "construction-site-000051"
+    },
+    {
+      "tx": 58,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 32,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 2,
+      "ty": 33,
+      "hasRoad": false,
+      "buildingId": "construction-site-000079"
+    },
+    {
+      "tx": 3,
+      "ty": 33,
+      "hasRoad": false,
+      "buildingId": "construction-site-000079"
+    },
+    {
+      "tx": 35,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 33,
+      "hasRoad": false,
+      "buildingId": "construction-site-000016"
+    },
+    {
+      "tx": 43,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 33,
+      "hasRoad": false,
+      "buildingId": "construction-site-000027"
+    },
+    {
+      "tx": 53,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 33,
+      "hasRoad": false,
+      "buildingId": "construction-site-000056"
+    },
+    {
+      "tx": 56,
+      "ty": 33,
+      "hasRoad": false,
+      "buildingId": "construction-site-000056"
+    },
+    {
+      "tx": 58,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 60,
+      "ty": 33,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 35,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 34,
+      "hasRoad": false,
+      "buildingId": "granary-42-37-0"
+    },
+    {
+      "tx": 43,
+      "ty": 34,
+      "hasRoad": false,
+      "buildingId": "granary-42-37-0"
+    },
+    {
+      "tx": 45,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 34,
+      "hasRoad": false,
+      "buildingId": "construction-site-000011"
+    },
+    {
+      "tx": 51,
+      "ty": 34,
+      "hasRoad": false,
+      "buildingId": "construction-site-000063"
+    },
+    {
+      "tx": 52,
+      "ty": 34,
+      "hasRoad": false,
+      "buildingId": "construction-site-000063"
+    },
+    {
+      "tx": 53,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 54,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 34,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 34,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "construction-site-000058"
+    },
+    {
+      "tx": 35,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "construction-site-000058"
+    },
+    {
+      "tx": 38,
+      "ty": 35,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 35,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 35,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 35,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "granary-42-37-0"
+    },
+    {
+      "tx": 43,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "granary-42-37-0"
+    },
+    {
+      "tx": 44,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "construction-site-000001"
+    },
+    {
+      "tx": 45,
+      "ty": 35,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "construction-site-000003"
+    },
+    {
+      "tx": 47,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "construction-site-000006"
+    },
+    {
+      "tx": 51,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "construction-site-000063"
+    },
+    {
+      "tx": 52,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "construction-site-000063"
+    },
+    {
+      "tx": 53,
+      "ty": 35,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "construction-site-000044"
+    },
+    {
+      "tx": 57,
+      "ty": 35,
+      "hasRoad": false,
+      "buildingId": "construction-site-000044"
+    },
+    {
+      "tx": 58,
+      "ty": 35,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 35,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 60,
+      "ty": 35,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 34,
+      "ty": 36,
+      "hasRoad": false,
+      "buildingId": "construction-site-000058"
+    },
+    {
+      "tx": 35,
+      "ty": 36,
+      "hasRoad": false,
+      "buildingId": "construction-site-000058"
+    },
+    {
+      "tx": 38,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 36,
+      "hasRoad": false,
+      "buildingId": "construction-site-000002"
+    },
+    {
+      "tx": 43,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 47,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 48,
+      "ty": 36,
+      "hasRoad": false,
+      "buildingId": "construction-site-000007"
+    },
+    {
+      "tx": 52,
+      "ty": 36,
+      "hasRoad": false,
+      "buildingId": "construction-site-000068"
+    },
+    {
+      "tx": 53,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 36,
+      "hasRoad": false,
+      "buildingId": "construction-site-000044"
+    },
+    {
+      "tx": 57,
+      "ty": 36,
+      "hasRoad": false,
+      "buildingId": "construction-site-000044"
+    },
+    {
+      "tx": 58,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 36,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 37,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 37,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 37,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "storehouse-41-40-0"
+    },
+    {
+      "tx": 42,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "storehouse-41-40-0"
+    },
+    {
+      "tx": 43,
+      "ty": 37,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "house-44-40-0"
+    },
+    {
+      "tx": 45,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "construction-site-000005"
+    },
+    {
+      "tx": 46,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "house-46-40-0"
+    },
+    {
+      "tx": 47,
+      "ty": 37,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 48,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "construction-site-000008"
+    },
+    {
+      "tx": 49,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "construction-site-000009"
+    },
+    {
+      "tx": 50,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "logging-camp-50-40-0"
+    },
+    {
+      "tx": 52,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "construction-site-000023"
+    },
+    {
+      "tx": 53,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "construction-site-000023"
+    },
+    {
+      "tx": 54,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "construction-site-000025"
+    },
+    {
+      "tx": 55,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "construction-site-000025"
+    },
+    {
+      "tx": 56,
+      "ty": 37,
+      "hasRoad": false,
+      "buildingId": "construction-site-000033"
+    },
+    {
+      "tx": 58,
+      "ty": 37,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 37,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 38,
+      "hasRoad": false,
+      "buildingId": "storehouse-41-40-0"
+    },
+    {
+      "tx": 42,
+      "ty": 38,
+      "hasRoad": false,
+      "buildingId": "storehouse-41-40-0"
+    },
+    {
+      "tx": 43,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 38,
+      "hasRoad": false,
+      "buildingId": "well-45-41-0"
+    },
+    {
+      "tx": 46,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 47,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 48,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 49,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 50,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 51,
+      "ty": 38,
+      "hasRoad": false,
+      "buildingId": "construction-site-000010"
+    },
+    {
+      "tx": 52,
+      "ty": 38,
+      "hasRoad": false,
+      "buildingId": "construction-site-000023"
+    },
+    {
+      "tx": 53,
+      "ty": 38,
+      "hasRoad": false,
+      "buildingId": "construction-site-000023"
+    },
+    {
+      "tx": 54,
+      "ty": 38,
+      "hasRoad": false,
+      "buildingId": "construction-site-000025"
+    },
+    {
+      "tx": 55,
+      "ty": 38,
+      "hasRoad": false,
+      "buildingId": "construction-site-000025"
+    },
+    {
+      "tx": 56,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 38,
+      "hasRoad": false,
+      "buildingId": "construction-site-000040"
+    },
+    {
+      "tx": 58,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 38,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 39,
+      "hasRoad": false,
+      "buildingId": "construction-site-000004"
+    },
+    {
+      "tx": 44,
+      "ty": 39,
+      "hasRoad": false,
+      "buildingId": "house-44-42-0"
+    },
+    {
+      "tx": 46,
+      "ty": 39,
+      "hasRoad": false,
+      "buildingId": "house-46-42-0"
+    },
+    {
+      "tx": 50,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 51,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 52,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 53,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 54,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 39,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 40,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 40,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 40,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 40,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 40,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 40,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 40,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 40,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 40,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 60,
+      "ty": 40,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 38,
+      "ty": 41,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 39,
+      "ty": 41,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 41,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 41,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 41,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 41,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 60,
+      "ty": 41,
+      "hasRoad": false,
+      "buildingId": "construction-site-000042"
+    },
+    {
+      "tx": 39,
+      "ty": 42,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 40,
+      "ty": 42,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 42,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 42,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 42,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 42,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 42,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 42,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 42,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 41,
+      "ty": 43,
+      "hasRoad": false,
+      "buildingId": "construction-site-000064"
+    },
+    {
+      "tx": 42,
+      "ty": 43,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 43,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 43,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 43,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 44,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 44,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 44,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 44,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 60,
+      "ty": 44,
+      "hasRoad": false,
+      "buildingId": "construction-site-000043"
+    },
+    {
+      "tx": 61,
+      "ty": 44,
+      "hasRoad": false,
+      "buildingId": "construction-site-000073"
+    },
+    {
+      "tx": 62,
+      "ty": 44,
+      "hasRoad": false,
+      "buildingId": "construction-site-000073"
+    },
+    {
+      "tx": 40,
+      "ty": 45,
+      "hasRoad": false,
+      "buildingId": "construction-site-000069"
+    },
+    {
+      "tx": 41,
+      "ty": 45,
+      "hasRoad": false,
+      "buildingId": "construction-site-000069"
+    },
+    {
+      "tx": 42,
+      "ty": 45,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 45,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 45,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 45,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 45,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 59,
+      "ty": 45,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 60,
+      "ty": 45,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 61,
+      "ty": 45,
+      "hasRoad": false,
+      "buildingId": "construction-site-000073"
+    },
+    {
+      "tx": 62,
+      "ty": 45,
+      "hasRoad": false,
+      "buildingId": "construction-site-000073"
+    },
+    {
+      "tx": 40,
+      "ty": 46,
+      "hasRoad": false,
+      "buildingId": "construction-site-000069"
+    },
+    {
+      "tx": 41,
+      "ty": 46,
+      "hasRoad": false,
+      "buildingId": "construction-site-000069"
+    },
+    {
+      "tx": 42,
+      "ty": 46,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 46,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 46,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 46,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 46,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 58,
+      "ty": 46,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 42,
+      "ty": 47,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 43,
+      "ty": 47,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 47,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 51,
+      "ty": 47,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 52,
+      "ty": 47,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 53,
+      "ty": 47,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 54,
+      "ty": 47,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 47,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 47,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 57,
+      "ty": 47,
+      "hasRoad": false,
+      "buildingId": "construction-site-000046"
+    },
+    {
+      "tx": 43,
+      "ty": 48,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 44,
+      "ty": 48,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 45,
+      "ty": 48,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 46,
+      "ty": 48,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 47,
+      "ty": 48,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 48,
+      "ty": 48,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 49,
+      "ty": 48,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 50,
+      "ty": 48,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 51,
+      "ty": 48,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 48,
+      "hasRoad": false,
+      "buildingId": "construction-site-000047"
+    },
+    {
+      "tx": 56,
+      "ty": 48,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 49,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 56,
+      "ty": 49,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 50,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 51,
+      "hasRoad": true,
+      "buildingId": null
+    },
+    {
+      "tx": 55,
+      "ty": 52,
+      "hasRoad": false,
+      "buildingId": "construction-site-000074"
+    }
+  ],
+  "notes": [
+    "Actual renderer, no source or art replacement",
+    "In-memory tick staged from same fixture for seasonal comparison; no organic event claim",
+    "Camera via native input; canvas excludes DOM HUD; HUD saved separately"
+  ]
+}
