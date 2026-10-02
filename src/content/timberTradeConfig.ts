@@ -11,4 +11,12 @@ export const TIMBER_TRADE_BALANCE = {
   maxOrder: 400,
   /** The bot orders only what it can pay while keeping this much in the treasury. */
   botCoinReserve: 300,
+  /**
+   * FIX-15 (TT-5, the user's verdict): a hamlet before its market charter is served at its storehouse — dearer (the
+   * carriage from a neighbouring market: half again), less a market day, and one order at most this much — so the
+   * charter's market is still worth having.
+   */
+  hamletPrice: 27,
+  hamletPerMarketDay: 1,
+  hamletMaxOrder: 60,
 } as const;

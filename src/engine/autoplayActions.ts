@@ -25,7 +25,8 @@ function eraGameAction(state: GameState, candidatePath?: PalisadePath): GameActi
   const footprints = palisadeFootprintsForState(state);
   const proposal = candidatePath === undefined ? computeReachablePalisadeProposalForState(state) : { ok: true, path: candidatePath };
   if (!proposal.ok) return null;
-  const validation = validatePalisadeCandidate(state, proposal.path, footprints, palisadeCoreFootprintsForState(state), 1);
+  // FIX-15 (WP-1): the proposal may take the water as its bound.
+  const validation = validatePalisadeCandidate(state, proposal.path, footprints, palisadeCoreFootprintsForState(state), 1, { waterReach: true });
   if (candidatePath !== undefined && validation.ok) {
     const projected = confirmPalisadeProclamation(state, validation.candidate.path);
     if (projected === state || !preservesAutoplayServiceSpace(state, { kind: 'proclaim_era' }, projected)) return null;

@@ -38,6 +38,8 @@ type ProposalCandidates = {
   readonly candidates: readonly Extract<PalisadeProposalResult, { readonly ok: true }>[];
   readonly failure: PalisadeProposalResult;
   compactCandidates?: readonly Extract<PalisadeProposalResult, { readonly ok: true }>[];
+  /** FIX-15 (WP-2): rings that take the water as their bound, tried only once no ring stands on land. */
+  waterCandidates?: readonly Extract<PalisadeProposalResult, { readonly ok: true }>[];
 };
 /** Immutable tiles plus layout and candidate limit fully determine geometric candidates.
  * Stocks/workers are omitted because supply validation runs after this geometry cache.
@@ -221,6 +223,25 @@ export function computePalisadeProposalForState(
   if (cached.limited) onBudgetHit?.();
   const compact = cached.compactCandidates.find(candidate => acceptPath === undefined || acceptPath(candidate.path));
   if (compact !== undefined) return compact;
+  // FIX-15 (WP-2): no ring on land at all — rings that take the water as their bound where they must, shortest first.
+  if (cached.waterCandidates === undefined) {
+    const waterCandidates = new Map<string, Extract<PalisadeProposalResult, { readonly ok: true }>>();
+    let attempts = 0;
+    waterSearch: for (const anchors of [buildings, anchored]) {
+      for (const subset of [anchors, ...anchors.map(omitted => anchors.filter(item => item !== omitted))]) {
+        for (const margin of [1, 2]) {
+          if (attempts++ >= candidateLimit) { cached.limited = true; break waterSearch; }
+          const candidate = computePalisadeProposal(state, subset, acceptsGeometry, [margin], true);
+          if (candidate.ok) waterCandidates.set(JSON.stringify(candidate.path), candidate);
+        }
+      }
+    }
+    cached.waterCandidates = [...waterCandidates.values()].sort((left, right) =>
+      left.perimeterSteps - right.perimeterSteps || JSON.stringify(left.path).localeCompare(JSON.stringify(right.path)));
+  }
+  if (cached.limited) onBudgetHit?.();
+  const watered = cached.waterCandidates.find(candidate => acceptPath === undefined || acceptPath(candidate.path));
+  if (watered !== undefined) return watered;
   return proposal.ok && acceptPath !== undefined
     ? { ok: false, reason: 'rejected_candidate' }
     : cached.failure;
