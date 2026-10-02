@@ -30,7 +30,8 @@ test("LS-1 the slice: the demesne and its town in lord mode from 1300, three nei
   assert.deepEqual(start.end, { years: LORD_SLICE_YEARS, afterSecondEstateYears: LORD_SLICE_AFTER_SECOND_ESTATE_YEARS });
   assert.equal(start.neighbours.length, 3);
   const test = start.neighbours.find(entry => entry.estateId === MARRIAGE_ESTATE_ID)!;
-  assert.ok(test.daughtersOnly && test.debt > 0 && test.lordAge === 63, JSON.stringify(test));
+  assert.ok(test.daughtersOnly && test.debt > 0 && test.lordAge === 63 && test.factionId === null, JSON.stringify(test));
+  assert.deepEqual(start.neighbours.map(entry => entry.factionId), ["neighbour_1", "neighbour_2", null]);
   assert.deepEqual(start.factions.map(entry => entry.id), [...LORD_SLICE_FACTIONS]);
   assert.ok(start.home.pieces.every(piece => piece.possessor === LORD));
   // The other scenarios are untouched: the campaign starts in the sandbox's way unless lord mode is asked.

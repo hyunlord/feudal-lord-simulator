@@ -17,6 +17,8 @@ import { ageOf, currentYear } from "./persons";
 import { scenarioOf } from "./scenarioState";
 
 const YEAR = BALANCE.TICKS_PER_YEAR;
+/** ES-8: the first two neighbour estates are the neighbour factions' (their leaders are the lords). */
+const NEIGHBOUR_FACTION_OF_ESTATE: Readonly<Record<string, string>> = { "estate-neighbour-1": "neighbour_1", "estate-neighbour-2": "neighbour_2" };
 
 /** LS-1: a game of the lord's slice. */
 export function lordSlice(state: Pick<GameState, "scenarioId">): boolean {
@@ -33,6 +35,8 @@ export interface LordSliceStart {
   readonly neighbours: readonly {
     readonly estateId: string; readonly name: string; readonly manors: number; readonly annualValue: number; readonly debt: number;
     readonly house: string | null; readonly rank: string | null; readonly lordId: string | null; readonly lordAge: number | null;
+    /** The faction whose leader is this house's lord (the first two neighbours; their lords are set at the first season). */
+    readonly factionId: string | null;
     /** The house has daughters and no son living (the test neighbour: the old lord, daughters only, in debt). */
     readonly daughtersOnly: boolean;
   }[];
@@ -58,6 +62,7 @@ export function lordSliceStart(state: GameState): LordSliceStart {
       return {
         estateId: estate.id, name: estate.name, manors: estate.manors, annualValue: estate.annualValue, debt: estate.burdens.debt,
         house: estate.house?.name ?? null, rank: estate.house?.rank ?? null, lordId: lord?.id ?? null, lordAge: lord === undefined ? null : ageOf(lord, year),
+        factionId: NEIGHBOUR_FACTION_OF_ESTATE[estate.id] ?? null,
         daughtersOnly: family.some(entry => entry!.sex === "female") && !family.some(entry => entry!.sex === "male" && entry!.id !== lord?.id),
       };
     }),
