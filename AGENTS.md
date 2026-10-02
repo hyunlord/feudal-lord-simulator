@@ -127,7 +127,7 @@
 - 원격 실행은 48GB·12코어·nice 10 안에서만 돈다(`fls-runs.slice`). 이 상한을 올리거나 우회하지 않는다. 플레이 서버(4173)는 건드리지 않는다. 원격 실행의 포트는 4300~4399다.
 
 ### 상시 규칙
-1. 커밋은 작업 단위. 증빙은 단계당 3MB 이하(재플레이 캡처 별도), 이미지 JPEG. 준비 상태·자연 플레이·자동 성장 재생을 캡처마다 구분 표기.
+1. 커밋은 작업 단위. 증빙은 단계당 3MB 이하(재플레이 캡처 별도, 병합 전 검사가 막는다 — 규칙 19), 이미지 JPEG. 준비 상태·자연 플레이·자동 성장 재생을 캡처마다 구분 표기.
 2. 배포·main 병합은 명시 지시 없이 금지.
 3. 원인 표시는 원인 등록표, 예측은 `PredictionLine[]` 재사용. 새 표시 체계를 따로 만들지 않는다.
 4. 모바일·Steam Deck: 호버 전용 정보 금지(선택·탭으로도 보여야 함), 입력은 의도(선택·확정·취소·이동·확대·긋기)로 추상화, 터치 영역 44×44px, 글자 최소 11px·권장 12px.
@@ -152,6 +152,7 @@
 18. **렌더 수정 금지의 예외**: 새 건물 종류를 추가할 때 렌더의 종류별 분기 세 곳(`buildingInspectorModel` 용도 문구, `buildingVisualState` 몸체, `historicalFacilityAssets` 그림 id)에 최소 줄을 넣는 것은 렌더 수정 금지의 예외다. 그 밖의 렌더는 건드리지 않고, 보고서에 "렌더 세션이 넘겨받을 것"으로 적는다.
 19. **병합 전 자동 검사**: 본선·main 푸시마다 pre-push 훅이 `npm run check:merge`를 푸시하는 범위(원격 머리..로컬 머리)에 돌린다(`FLS_PUSH_OK=1`일 때도). 하나라도 실패하면 푸시를 거부한다. 기존 위반은 목록으로 두고 새 것만 본다. [사용법](docs/REMOTE_RUNS.md#병합-전-자동-검사)
     - **회귀 시험은 벽시계로 판정하지 않는다**(결정 RR9): 시간은 가짜 시계·틱 수로 정하고, 성능 예산은 `recordCodeBudget`(`tests/helpers/codeBudget.ts`)으로 넘겨 DGX 추이가 커밋마다 잰다. 목록은 [wall-clock-tests](docs/verification/wall-clock-tests.md).
+    - **증거 폴더는 3 MB 이하다**(`scripts/checks/evidenceSize.mjs`, 결정 RR10): 범위에서 바뀐 `docs/verification/<작업>/` 폴더가 3 MB(2^20 단위)를 넘으면 푸시를 거부한다. 재플레이 캡처와 `uiaudit1/geometry/`는 세지 않고, 이미 넘은 두 폴더는 기준선 크기까지다.
     - **결정 ID는 하나뿐이다**(`scripts/checks/decisionIds.mjs`, 결정 RR8): `docs/decisions/README.md`에서 같은 ID가 두 행에 있으면 푸시를 거부한다. 다른 세션이 먼저 쓴 번호면 내 것에 새 번호를 준다.
     - **고정값 재기록은 결정 목록에 이유와 함께 한다.**
       - 대상: 가드레일 기준선 `seeds/baseline-*`, DGX 성능 기준선 `perf/baseline-dgx-*`, 저장 지문 `src/save/schemaFingerprint*.json`, C25 판 `c25-board*.json`, 장부 세계 기준 `fixtures/ledger/world-baseline-*`, `fixtures/determinism/`, `fixtures/saves/`, 테스트 파일 안의 16자 이상 해시 값.

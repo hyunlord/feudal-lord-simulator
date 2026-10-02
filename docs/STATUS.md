@@ -9,6 +9,7 @@
 
 ## 현재 단계
 
+- **증거 폴더 3 MB 검사(EVIDENCE-SIZE) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 본선 푸시의 `check:merge`가 바뀐 `docs/verification/<작업>/` 폴더가 3 MB(2^20 단위)를 넘으면 거부한다(결정 RR10). 재플레이 캡처와 `uiaudit1/geometry/`는 세지 않고, 이미 넘은 asset-audit·ui9b는 기준선 크기까지다.
 - **성능 추이 자동 갱신(TREND-AUTO) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 작업 브랜치에 본선을 합칠 때 [추이 문서](verification/perf-trend/README.md)가 10개 넘게 뒤처졌으면 병합 뒤 훅이 `perf:trend`를 돌려 그 폴더만 따로 커밋한다(결정 RR4, `FLS_TREND_AUTO=0`으로 끔). 설치는 `npm run hooks:install`(npm ci·install이 함께). 결정 HOUSE-1: 플레이어 가문 기본 이름 드 해버럴(새 게임에서 이름·문장 변경 가능).
 - **시각 검사기 홀드아웃(VISION-HOLDOUT) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 홀드아웃에서 교정 성능 재현 실패 — QA 후보 생성 보조용, 병합 관문 아님. [`tools/vision-check/`](../tools/vision-check/README.md)의 검출기 상태는 **이음새만 사용, 나머지 다섯은 실험**이고, 각 검출기에 홀드아웃·교정·무작위 50 수치를 적었다. 보조 도구로 고정했고 다듬기는 멈췄다. 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다.
 

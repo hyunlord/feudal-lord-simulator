@@ -20,8 +20,11 @@
 //                                                    exceptions, which only shrink (UI-AUDIT-1)
 // 10. trend       scripts/checks/trendLag.mjs        warning only: the perf-trend page lags <head> by more than 10
 //                                                    commits (logged to <git common dir>/fls-trend-lag.log)
+// 11. evidence    scripts/checks/evidenceSize.mjs    every docs/verification/<task>/ folder the range touches holds
+//                                                    at most 3 MB (2^20) at <head>, replay captures and the committed
+//                                                    ui-geometry results not counted (AGENTS.md rule 1, decision RR10)
 // The layer rule (simulation folders do not import src/ui or src/render) is an ESLint rule: tools/eslint/layers.mjs.
-// 1, 2, 5, 6, 8 and 9 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
+// 1, 2, 5, 6, 8, 9 and 11 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
 // changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules; step 7
 // checks out there only the received PNGs the build turns into web derivatives (git lfs checkout, from the local store).
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -39,6 +42,7 @@ import { checkSurfaceRegistry, formatSurfaceRegistryResult } from './surfaceRegi
 import { checkUiGeometry, formatOverrideCount, formatUiGeometryResult, logWarnOverride } from './uiGeometry.mjs';
 import { checkTrendLag, formatTrendLag, logTrendLag } from './trendLag.mjs';
 import { checkDecisionIds, formatDecisionIdResult } from './decisionIds.mjs';
+import { checkEvidenceSize, formatEvidenceResult } from './evidenceSize.mjs';
 
 const CODE = /\.(ts|tsx|js|jsx|mjs|cjs)$/;
 const ESLINT_DIR = 'tools/eslint';
@@ -64,6 +68,8 @@ const korean = checkKoreanStrings({ head });
 report('korean', korean.added.length === 0, formatKoreanResult(korean));
 const decisionIds = checkDecisionIds({ head });
 report('decisions', decisionIds.duplicates.size === 0, formatDecisionIdResult(decisionIds));
+const evidence = checkEvidenceSize({ base, head });
+report('evidence', evidence.over.length === 0, formatEvidenceResult(evidence));
 const surfaces = checkSurfaceRegistry({ head });
 report('surfaces', surfaces.missing.length === 0, formatSurfaceRegistryResult(surfaces));
 const geometry = checkUiGeometry({ base, head });
