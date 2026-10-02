@@ -1,0 +1,33 @@
+{
+  "id": "ck_evt_052",
+  "status": "candidate",
+  "tool": "image_gen__imagegen",
+  "prompt": "Use case: historical-scene. Create one finished full-bleed landscape 16:9 event illustration for a medieval English market-town game. References are STYLE ONLY: warm painterly narrative realism, natural anatomy, soft brush-textured wood/wool/stone, ochre earthy browns and muted greens, lifelike characters as shown. No captions, NO letters, words, numerals, scribbles, watermark, borders or graphic panels. All parchment faces entirely blank; seals can be simple nonletter shapes. South England, period specified. No Tudor black-and-white framing, no modern clothes/objects, no ordinary cottage chimneys. Light coherent and soft, details visible at960x540. Distinct clear action and environment. Year1418 autumn afternoon. Exactly FOUR men in an English manor account room. Wide low oblique view across large open blank ledger and CLOSED oak money chest with red wax seal in foreground. The seated lord LEFT in muted blue houppelande firmly indicates missing coins next to the empty open ledger; center a worried steward in brown looks down and clutches his cap. DIRECTLY BEHIND STEWARD, a richer influential patron's representative in deep green long gown extends one calming protective open hand toward the lord and puts the other lightly on steward's shoulder, visibly pleading for him. A sober younger successor waits separately at far right holding a closed accountroll. Visible spatial drama is patron shielding accountable steward, not four men merely reading. Soft autumn light from left small manor window. Natural expressive faces and hands, period soft caps and fitted underclothes beneath long gowns. No text on papers or coins.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-2c833c20-05c0-4182-acd5-96f3ffae1624.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-2c833c20-05c0-4182-acd5-96f3ffae1624.png",
+  "visual_review": "Inspected generated image. People count, scene action and blank documents pass.",
+  "revisions": [],
+  "raw_size": [
+    1672,
+    940
+  ],
+  "final_file": "assets/ck_evt_052.jpg",
+  "raw_sha256": "342859cf340eae1e6fd9658abf89053aae738255ebeeddb4147570eaad41976b",
+  "final_sha256": "04123d7fa9a3f3d8475f3630c8af0e02704823356bbd81443d5666d9d278a907",
+  "finalization": "Pillow RGB conversion and ImageOps.fit Lanczos960x540, JPEGquality85 optimize; no painting",
+  "initial_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-2c833c20-05c0-4182-acd5-96f3ffae1624.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "initial_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-2c833c20-05c0-4182-acd5-96f3ffae1624.png",
+  "reference_sha256": {
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg": "8bc8ce03711ddd155f8f82952752bc69204c9fc25555de2a3d6d8dcc6352be96",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg": "fee7ffe398177110f4a4df5788d886519dbe6b5e29f0214a500648b6493a4f42"
+  },
+  "initial_raw_sha256": "342859cf340eae1e6fd9658abf89053aae738255ebeeddb4147570eaad41976b",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}

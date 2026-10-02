@@ -1,0 +1,360 @@
+{
+  "round": 1,
+  "correct": 33,
+  "total": 35,
+  "accuracy_percent": 94.29,
+  "threshold_percent": 80,
+  "passed": true,
+  "matches": [
+    {
+      "picture": "P01",
+      "title_code": "T33",
+      "confidence": "medium",
+      "reason": "젊은 남녀 앞에서 연장자가 봉인 문서 두 장을 놓고 혼담을 논하는 구도.",
+      "expected_id": "ck_evt_011",
+      "expected_title": "T33",
+      "chosen_id": "ck_evt_011",
+      "correct": true
+    },
+    {
+      "picture": "P02",
+      "title_code": "T27",
+      "confidence": "medium",
+      "reason": "나이 든 여성이 문서를 내밀고 청구하는 손짓을 하며 상대는 큰 궤짝에 손을 얹는다. 기한은 보이지 않는다.",
+      "expected_id": "ck_evt_020",
+      "expected_title": "T27",
+      "chosen_id": "ck_evt_020",
+      "correct": true
+    },
+    {
+      "picture": "P03",
+      "title_code": "T12",
+      "confidence": "high",
+      "reason": "노년 남성이 빈 돈주머니를 뒤집고 다른 사람이 열린 장부를 가리킨다.",
+      "expected_id": "ck_evt_025",
+      "expected_title": "T12",
+      "chosen_id": "ck_evt_025",
+      "correct": true
+    },
+    {
+      "picture": "P04",
+      "title_code": "T09",
+      "confidence": "high",
+      "reason": "영지 문 앞에서 중앙 인물이 큰 열쇠를 들어 두 사람 사이에 제시한다.",
+      "expected_id": "ck_evt_019",
+      "expected_title": "T09",
+      "chosen_id": "ck_evt_019",
+      "correct": true
+    },
+    {
+      "picture": "P05",
+      "title_code": "T02",
+      "confidence": "medium",
+      "reason": "중앙의 잘 차려입은 남성이 돈주머니를 내려놓고 양쪽 당사자 사이를 중개하는 모습.",
+      "expected_id": "ck_evt_058",
+      "expected_title": "T02",
+      "chosen_id": "ck_evt_058",
+      "correct": true
+    },
+    {
+      "picture": "P06",
+      "title_code": "T35",
+      "confidence": "high",
+      "reason": "성직자가 교회 내부의 열린 작은 궤짝에서 문서를 들고 문밖의 두 사람과 마주한다.",
+      "expected_id": "ck_evt_033",
+      "expected_title": "T35",
+      "chosen_id": "ck_evt_033",
+      "correct": true
+    },
+    {
+      "picture": "P07",
+      "title_code": "T06",
+      "confidence": "medium",
+      "reason": "청원하는 남성과 담당자가 비슷한 봉인 문서 두 장을 서로 대조한다. 반복 시점 자체는 보이지 않는다.",
+      "expected_id": "ck_evt_034",
+      "expected_title": "T06",
+      "chosen_id": "ck_evt_034",
+      "correct": true
+    },
+    {
+      "picture": "P08",
+      "title_code": "T08",
+      "confidence": "high",
+      "reason": "책상 위에 평평한 문서 묶음과 말린 문서 묶음이 분리되어 있고 세 사람이 비교한다.",
+      "expected_id": "ck_evt_032",
+      "expected_title": "T08",
+      "chosen_id": "ck_evt_032",
+      "correct": true
+    },
+    {
+      "picture": "P09",
+      "title_code": "T29",
+      "confidence": "high",
+      "reason": "봉인 문서를 든 인물이 굳게 닫힌 문 앞에 서 있고 안쪽 남성은 작은 창으로 응대한다.",
+      "expected_id": "ck_evt_038",
+      "expected_title": "T29",
+      "chosen_id": "ck_evt_038",
+      "correct": true
+    },
+    {
+      "picture": "P10",
+      "title_code": "T14",
+      "confidence": "medium",
+      "reason": "서 있는 남성이 빈 장부를 펼쳐 보이고 주인은 고민하며 제삼자가 문간에서 지켜본다. 연줄은 직접 확인되지 않는다.",
+      "expected_id": "ck_evt_013",
+      "expected_title": "T14",
+      "chosen_id": "ck_evt_013",
+      "correct": true
+    },
+    {
+      "picture": "P11",
+      "title_code": "T31",
+      "confidence": "high",
+      "reason": "수도복 인물이 열린 문서함을 살피고 다른 인물은 탁자에 꺼낸 여러 문서를 검토한다.",
+      "expected_id": "ck_evt_009",
+      "expected_title": "T31",
+      "chosen_id": "ck_evt_009",
+      "correct": true
+    },
+    {
+      "picture": "P12",
+      "title_code": "T24",
+      "confidence": "medium",
+      "reason": "여성이 봉인된 낱장 증서를 들고 남성이 긴 두루마리 기록을 펼쳐 함께 대조한다. 조모의 소유라는 정보는 보이지 않는다.",
+      "expected_id": "ck_evt_053",
+      "expected_title": "T24",
+      "chosen_id": "ck_evt_053",
+      "correct": true
+    },
+    {
+      "picture": "P13",
+      "title_code": "T07",
+      "confidence": "low",
+      "reason": "영주 앞 열린 장부와 열쇠, 서 있는 두 후보가 보여 관리 담당자 선택으로 읽힌다. T25와 구별할 시각적 근거는 없다.",
+      "expected_id": "ck_evt_059",
+      "expected_title": "T25",
+      "chosen_id": "ck_evt_031",
+      "correct": false
+    },
+    {
+      "picture": "P14",
+      "title_code": "T01",
+      "confidence": "high",
+      "reason": "젖고 낙엽이 쌓인 목재장에서 남성이 긴 봉인 주문서를 들고 빈 작업 구역을 가리킨다.",
+      "expected_id": "ck_evt_046",
+      "expected_title": "T01",
+      "chosen_id": "ck_evt_046",
+      "correct": true
+    },
+    {
+      "picture": "P15",
+      "title_code": "T05",
+      "confidence": "high",
+      "reason": "가정의 긴 식탁에 장부와 문서가 쌓여 있으며 가족으로 보이는 사람들이 업무를 논한다.",
+      "expected_id": "ck_evt_037",
+      "expected_title": "T05",
+      "chosen_id": "ck_evt_037",
+      "correct": true
+    },
+    {
+      "picture": "P16",
+      "title_code": "T23",
+      "confidence": "high",
+      "reason": "우물과 곡창 사이에서 중앙 남성이 돈주머니 두 개를 들고 양쪽 요청을 듣는다.",
+      "expected_id": "ck_evt_004",
+      "expected_title": "T23",
+      "chosen_id": "ck_evt_004",
+      "correct": true
+    },
+    {
+      "picture": "P17",
+      "title_code": "T13",
+      "confidence": "high",
+      "reason": "물방울 맺힌 덮개를 걷어 밝고 마른 들보를 보여 주며 바닥과 수레는 젖어 있다.",
+      "expected_id": "ck_evt_015",
+      "expected_title": "T13",
+      "chosen_id": "ck_evt_015",
+      "correct": true
+    },
+    {
+      "picture": "P18",
+      "title_code": "T18",
+      "confidence": "high",
+      "reason": "빈 좌판 바로 곁에서 담당자가 큰 장부와 돈주머니를 들고 상인과 논한다.",
+      "expected_id": "ck_evt_005",
+      "expected_title": "T18",
+      "chosen_id": "ck_evt_005",
+      "correct": true
+    },
+    {
+      "picture": "P19",
+      "title_code": "T21",
+      "confidence": "high",
+      "reason": "교회 앞 활기 있는 시장에서 성직자와 상인이 봉인 문서를 함께 검토한다.",
+      "expected_id": "ck_evt_057",
+      "expected_title": "T21",
+      "chosen_id": "ck_evt_057",
+      "correct": true
+    },
+    {
+      "picture": "P20",
+      "title_code": "T04",
+      "confidence": "low",
+      "reason": "짐을 실은 말의 고삐를 잡은 남성과 문서 묶음을 든 남성이 출발 전 대화한다. 갈 곳은 연상되지만 미카엘마스 단서는 없다.",
+      "expected_id": "ck_evt_029",
+      "expected_title": "T04",
+      "chosen_id": "ck_evt_029",
+      "correct": true
+    },
+    {
+      "picture": "P21",
+      "title_code": "T25",
+      "confidence": "low",
+      "reason": "한 인물이 색이 다른 끈으로 묶인 두 문서 사이에서 고민한다. 장부 담당자 선택이라는 해석은 약하며 T07과 구분 불가.",
+      "expected_id": "ck_evt_031",
+      "expected_title": "T07",
+      "chosen_id": "ck_evt_059",
+      "correct": false
+    },
+    {
+      "picture": "P22",
+      "title_code": "T16",
+      "confidence": "high",
+      "reason": "곡물 짐을 실은 수레가 마을 밖 길로 나가고 남성이 그 방향을 가리킨다.",
+      "expected_id": "ck_evt_042",
+      "expected_title": "T16",
+      "chosen_id": "ck_evt_042",
+      "correct": true
+    },
+    {
+      "picture": "P23",
+      "title_code": "T30",
+      "confidence": "high",
+      "reason": "무너진 울타리 곁에서 두 사람이 굵은 목재의 길이를 재고 있다.",
+      "expected_id": "ck_evt_035",
+      "expected_title": "T30",
+      "chosen_id": "ck_evt_035",
+      "correct": true
+    },
+    {
+      "picture": "P24",
+      "title_code": "T28",
+      "confidence": "high",
+      "reason": "실내 직기와 천, 밖의 수차가 같은 화면에 함께 제시된다.",
+      "expected_id": "ck_evt_049",
+      "expected_title": "T28",
+      "chosen_id": "ck_evt_049",
+      "correct": true
+    },
+    {
+      "picture": "P25",
+      "title_code": "T19",
+      "confidence": "high",
+      "reason": "오래된 문서 보관장 앞에서 증서를 검토하며 곁에는 어망, 창밖에는 강과 배가 있다.",
+      "expected_id": "ck_evt_051",
+      "expected_title": "T19",
+      "chosen_id": "ck_evt_051",
+      "correct": true
+    },
+    {
+      "picture": "P26",
+      "title_code": "T15",
+      "confidence": "medium",
+      "reason": "교회 회랑과 묘지 곁에서 주민들이 곡물과 물통을 놓고 살림 문제를 호소한다.",
+      "expected_id": "ck_evt_050",
+      "expected_title": "T15",
+      "chosen_id": "ck_evt_050",
+      "correct": true
+    },
+    {
+      "picture": "P27",
+      "title_code": "T20",
+      "confidence": "medium",
+      "reason": "공적인 차림의 남성이 길목에서 문서를 읽고 사람들과 짐수레가 대기한다. 왕의 징발이라는 명시는 없다.",
+      "expected_id": "ck_evt_027",
+      "expected_title": "T20",
+      "chosen_id": "ck_evt_027",
+      "correct": true
+    },
+    {
+      "picture": "P28",
+      "title_code": "T34",
+      "confidence": "high",
+      "reason": "강 양쪽에 어업 종사자들이 나뉘어 있고 가까운 쪽의 인물은 문서를 들고 건너편 거래를 바라본다.",
+      "expected_id": "ck_evt_010",
+      "expected_title": "T34",
+      "chosen_id": "ck_evt_010",
+      "correct": true
+    },
+    {
+      "picture": "P29",
+      "title_code": "T03",
+      "confidence": "high",
+      "reason": "장부와 동전 앞에서 위축된 남성을 뒤의 화려한 차림 남성이 어깨에 손을 얹어 지지한다.",
+      "expected_id": "ck_evt_052",
+      "expected_title": "T03",
+      "chosen_id": "ck_evt_052",
+      "correct": true
+    },
+    {
+      "picture": "P30",
+      "title_code": "T22",
+      "confidence": "high",
+      "reason": "멀리 언덕 위 예배당을 가리키며 가족이 굽고 진흙진 길을 걸어간다.",
+      "expected_id": "ck_evt_008",
+      "expected_title": "T22",
+      "chosen_id": "ck_evt_008",
+      "correct": true
+    },
+    {
+      "picture": "P31",
+      "title_code": "T26",
+      "confidence": "high",
+      "reason": "젊은 남녀와 연장자들이 한 돈주머니와 여러 개의 봉인 문서를 선택지처럼 놓고 논한다.",
+      "expected_id": "ck_evt_018",
+      "expected_title": "T26",
+      "chosen_id": "ck_evt_018",
+      "correct": true
+    },
+    {
+      "picture": "P32",
+      "title_code": "T11",
+      "confidence": "medium",
+      "reason": "여성이 비어 있는 노점을 가리키며 작은 장부를 든 담당자에게 호소한다. 세금 장부 장면과도 유사하다.",
+      "expected_id": "ck_evt_024",
+      "expected_title": "T11",
+      "chosen_id": "ck_evt_024",
+      "correct": true
+    },
+    {
+      "picture": "P33",
+      "title_code": "T17",
+      "confidence": "medium",
+      "reason": "눈 쌓인 고요한 작업장에 한 사람만 있고 닫힌 문 손잡이를 잡는다. 병 소식 자체는 묘사되지 않는다.",
+      "expected_id": "ck_evt_028",
+      "expected_title": "T17",
+      "chosen_id": "ck_evt_028",
+      "correct": true
+    },
+    {
+      "picture": "P34",
+      "title_code": "T32",
+      "confidence": "high",
+      "reason": "물통에서 젖은 천 견본을 들어 보이는 작업자와 그 천을 살피는 남성이 있다.",
+      "expected_id": "ck_evt_030",
+      "expected_title": "T32",
+      "chosen_id": "ck_evt_030",
+      "correct": true
+    },
+    {
+      "picture": "P35",
+      "title_code": "T10",
+      "confidence": "high",
+      "reason": "곡물 자루가 가득한 창고에서 한 남성이 열린 장부를 가리키며 수량을 따지는 모습.",
+      "expected_id": "ck_evt_002",
+      "expected_title": "T10",
+      "chosen_id": "ck_evt_002",
+      "correct": true
+    }
+  ]
+}

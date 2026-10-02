@@ -1,0 +1,32 @@
+{
+  "id": "ck_evt_018",
+  "prompt": "Use case: historical-scene. Generate one complete finished narrative game event illustration, wide 16:9 fullbleed, 960x540 target. References are STYLE ONLY, not copied scenes: warm muted ochre, oak brown, earthy green and subdued burgundy, finely textured painterly realism, believable faces/hands/materials, soft natural directional light, like references. Southern England medieval market-town manor. Absolutely NO text, letters, numerals, pseudo-writing, captions, border, watermark; all documents completely blank parchment with plain wax seals. Period-correct wool tunics, gowns, linen coifs, leather belts, no modern objects, no Tudor black-white, no ordinary house chimney. England c1310, summer afternoon private marriage negotiation chamber. Exactly FOUR people: bride with modest linen veil, groom in long tunic, two older kin. OVERHEAD OBLIQUE view showing their natural faces and hands, no straight overhead. Dowry negotiation focuses on ONE open full money purse with a few silver coins on left versus exactly THREE separately tied blank parchment payment rolls laid in clear spaced row on right. One elder points toward purse, other gestures across three rolls, bride and groom thoughtfully compare. No numerals or inscription. Quiet oak and plaster room, unglazed window. Avoid crowded documents, only three rolls and one purse.",
+  "reference_image_paths": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c/exec-79a2867a-5f0e-461d-a2aa-4638fa3475ea.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c/exec-79a2867a-5f0e-461d-a2aa-4638fa3475ea.png",
+  "revision": null,
+  "tool": "builtin image_gen",
+  "status": "candidate",
+  "visual_review": "Reviewed generated image: intended people/action visible, no text; historical architectural fixes recorded where applicable.",
+  "raw_dimensions": [
+    1672,
+    941
+  ],
+  "file": "assets/ck_evt_018.jpg",
+  "dimensions": [
+    960,
+    540
+  ],
+  "raw_sha256": "d6235848ae5201fbf305a7372d4c87c6e30417147a5db69322ca406b05059331",
+  "sha256": "82c7ced23cbc0ed1853752c9359cb60d399048a499d3074285769d5c15a000fe",
+  "postprocess": "Pillow ImageOps.fit LANCZOS 960x540, JPEG quality85 optimize; no painting",
+  "final_file": "assets/ck_evt_018.jpg",
+  "final_sha256": "82c7ced23cbc0ed1853752c9359cb60d399048a499d3074285769d5c15a000fe",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}

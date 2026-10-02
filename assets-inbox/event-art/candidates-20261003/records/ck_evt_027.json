@@ -1,0 +1,27 @@
+{
+  "id": "ck_evt_027",
+  "prompt": "Use case historical-scene. Create ONE finished full-bleed horizontal 16:9 960x540 event illustration for Charter & Kin. References are STYLE ONLY: match their warm earthy painterly narrative realism, tactile wool, pale linen, weathered oak, restrained natural colors, soft brush texture and lifelike faces. Invent the specified distinct scene, never reproduce reference composition. Southern England medieval market town. Absolutely NO writing, letters, numbers, symbols resembling writing, captions, borders, logos, watermarks: all paper surfaces blank; wax seals may plain round. No Tudor black-and-white timber, ordinary house chimneys, glass storefronts, modern objects, theatrical fantasy, gore. Natural hands/anatomy. One coherent light direction. Year 1357, summer noon. Exactly seven people at a market entrance road, loaded two-wheeled carts halted in a loose queue while a royal messenger in modest fitted red wool cotehardie reads a large BLANK parchment scroll facing residents. A townsman points clearly across road toward empty staked building plots; a woman with linen headcloth and three carters/residents listen, one further official counts the waiting supplies. Include two carts bearing sacks and beams and one patient draft horse; no confiscation or violence. Broad low eye-level establishing view, diagonal muddy road leading into distance, officer and pointing resident central, vacant building plots clearly visible on right. Ordinary cream plaster/thatch houses without chimneys in far distance. Convey conflicting preparations for royal requisition versus new building sites; not a tax collection or busy market stall scene. Warm bright diffuse summer daylight.",
+  "reference_paths": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-25bcc11d-6ecc-4821-9b62-3ce0f39a8411.png",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-25bcc11d-6ecc-4821-9b62-3ce0f39a8411.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "tool": "builtin image_gen",
+  "revision_prompt": null,
+  "initial_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-25bcc11d-6ecc-4821-9b62-3ce0f39a8411.png",
+  "status": "candidate",
+  "raw_sha256": "7fbd010022d2cf3c0f524bece5f664dff6d54341d5389a906d7837b59833b05b",
+  "final_sha256": "0d625ab0a6d3d3d4ece21a714d1bfca5b0b6912039d3e998b30216bdc3f62ebb",
+  "final_file": "assets/ck_evt_027.jpg",
+  "final_size": [
+    960,
+    540
+  ],
+  "processing": "Pillow ImageOps.fit Lanczos to960x540; RGB JPEG quality85 optimize; no painting",
+  "visual_qa": "viewed full generated image; blank documents and primary scene action checked",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}

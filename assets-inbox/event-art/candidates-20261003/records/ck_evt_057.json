@@ -1,0 +1,46 @@
+{
+  "id": "ck_evt_057",
+  "status": "candidate",
+  "tool": "image_gen__imagegen",
+  "prompt": "Use case: historical-scene. Create one finished full-bleed landscape 16:9 event illustration for a medieval English market-town game. References are STYLE ONLY: warm painterly narrative realism, natural anatomy, soft brush-textured wood/wool/stone, ochre earthy browns and muted greens, lifelike characters as shown. No captions, NO letters, words, numerals, scribbles, watermark, borders or graphic panels. All parchment faces entirely blank; seals can be simple nonletter shapes. South England, period specified. No Tudor black-and-white framing, no modern clothes/objects, no ordinary cottage chimneys. Light coherent and soft, details visible at960x540. Distinct clear action and environment. Year1433 bright summer morning. Exactly FIVE people total in an operating market along massive pale stone church wall with tall Perpendicular Gothic window. TWO foreground figures merchant and parish representative stand by an occupied fruit-and-cloth stall jointly inspecting an important BLANK CHARTER parchment with prominent large hanging red wax seal; a second long blank stall-dues roll lies on stall counter next to a small collection bowl of coins. Merchant wears prosperous russet belted long gown with chaperon; parish representative a sober dark gown. THREE background people keep trading at stocked bread/vegetable stalls extending diagonally down church wall. Busy functioning church-front market, no abandoned or empty stalls. Wide eyelevel diagonal street composition with charter large enough foreground to read as central focus, church wall fills right, stalls left under plain canvas awnings. No writing anywhere, no modern signs, no modern roofs.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-91cc559f-8538-44c7-95bd-f0040e4ab78b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-91cc559f-8538-44c7-95bd-f0040e4ab78b.png",
+  "visual_review": "Final second cleanup inspected: exactly five people now; readable market-charter action, blank documents.",
+  "revisions": [
+    {
+      "reason": "Replace Tudor-like far buildings and reduce extraneous distant crowd",
+      "prompt": "Edit this illustration carefully. Preserve the two foreground charter readers, the THREE clearly visible middle-distance market people (green man left, woman in apron, bread seller), church wall, stalls, charter, all major positions and lighting. Remove all additional tiny distant human figures so there are exactly five people total; replace those distant figures with baskets and open ground. Replace black-and-white timber facade buildings at far left with warm ochre plain plaster buildings and weathered brown timber very subtle, no decorative black-white framing. Remove all house chimney stacks. Keep the church tower. Do not change any foreground. No lettering.",
+      "input": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-f7466a41-243e-4162-8e2c-a39c2eba409a.png"
+    },
+    {
+      "reason": "Remove last tiny extra head behind bread stall",
+      "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-91cc559f-8538-44c7-95bd-f0040e4ab78b.png",
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-91cc559f-8538-44c7-95bd-f0040e4ab78b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "prompt": "Make a single tiny cleanup: behind the bread baskets, between the woman in white headscarf and the male bread seller at left-middle, there is one tiny extra human head/face. Remove that tiny background head entirely, replacing it with plain stall timber/basket texture. Preserve the FIVE main people exactly: two charter readers and three full-size market people. Change absolutely nothing else, no other repainting. No text.",
+      "input": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-8cb6d91a-729e-4264-a1c5-36523d2ab227.png"
+    }
+  ],
+  "raw_size": [
+    1672,
+    941
+  ],
+  "final_file": "assets/ck_evt_057.jpg",
+  "raw_sha256": "d7428abd1c4f4ce0da095c4abfda4b61418c436fd4b9f1ad5c6ec3d4c72eac16",
+  "final_sha256": "6d56c1218203afb2d118e7de1e1e572a70df34f6922081e1b316c6793629b555",
+  "finalization": "Pillow RGB conversion and ImageOps.fit Lanczos960x540, JPEGquality85 optimize; no painting",
+  "initial_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-f7466a41-243e-4162-8e2c-a39c2eba409a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "initial_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-f7466a41-243e-4162-8e2c-a39c2eba409a.png",
+  "reference_sha256": {
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg": "8bc8ce03711ddd155f8f82952752bc69204c9fc25555de2a3d6d8dcc6352be96",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg": "fee7ffe398177110f4a4df5788d886519dbe6b5e29f0214a500648b6493a4f42"
+  },
+  "initial_raw_sha256": "aa1dba54013cda3eeb79b2d326e4e1aebee15bd6d93528e4f778a267d4fe8c26",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}
