@@ -1,0 +1,1030 @@
+[
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-chalk-s3-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 963,
+        "y": 846,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-chalk-s4-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s4-summer-west-hut-door",
+        "box": {
+          "x": 848,
+          "y": 893,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s4-summer-south-hut-door",
+        "box": {
+          "x": 910,
+          "y": 927,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 848,
+        "y": 893,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 910,
+        "y": 927,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 979,
+        "y": 854,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-chalk-s5-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 979,
+        "y": 854,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [
+      {
+        "x": 170,
+        "y": 210,
+        "width": 920,
+        "height": 700
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [
+      {
+        "x": 170,
+        "y": 210,
+        "width": 920,
+        "height": 700
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-city-year1362-confirm-long-rain-field",
+        "box": {
+          "x": 45,
+          "y": 430,
+          "width": 125,
+          "height": 300
+        },
+        "note": "Frame 0 and sequence: rain streaks visibly read longer than adult screen height. Blue streak lengths approximately 42–58 px versus adult H about 20–22 px. One weather field defect in this reviewed open-ground/water ROI, not one positive per raindrop. Semantic match MUST concern rain length; a barrel/door finding cannot satisfy this target. Art bible section 2 screen-space rain rule.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 45,
+        "y": 430,
+        "width": 125,
+        "height": 300
+      },
+      {
+        "x": 708,
+        "y": 525,
+        "width": 65,
+        "height": 42
+      },
+      {
+        "x": 548,
+        "y": 272,
+        "width": 42,
+        "height": 42
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [
+      {
+        "x": 170,
+        "y": 210,
+        "width": 920,
+        "height": 700
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [
+      {
+        "x": 170,
+        "y": 210,
+        "width": 920,
+        "height": 700
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-city-year1407-confirm-long-rain-field",
+        "box": {
+          "x": 1260,
+          "y": 380,
+          "width": 300,
+          "height": 300
+        },
+        "note": "Frame 0 and sequence: rain streaks visibly read longer than adult screen height. White streak lengths approximately 45–70 px versus adult H about 20–22 px. One weather field defect in this reviewed open-ground/water ROI, not one positive per raindrop. Semantic match MUST concern rain length; a barrel/door finding cannot satisfy this target. Art bible section 2 screen-space rain rule.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 1260,
+        "y": 380,
+        "width": 300,
+        "height": 300
+      },
+      {
+        "x": 826,
+        "y": 736,
+        "width": 60,
+        "height": 45
+      },
+      {
+        "x": 908,
+        "y": 293,
+        "width": 40,
+        "height": 37
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-coast-s3-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 962,
+        "y": 846,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-coast-s4-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-coast-s4-summer-west-hut-door",
+        "box": {
+          "x": 848,
+          "y": 893,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-coast-s4-summer-south-hut-door",
+        "box": {
+          "x": 910,
+          "y": 927,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 848,
+        "y": 893,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 910,
+        "y": 927,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 979,
+        "y": 854,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-coast-s5-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 963,
+        "y": 846,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-fen-s3-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 947,
+        "y": 842,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-fen-s4-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-fen-s4-summer-west-hut-door",
+        "box": {
+          "x": 848,
+          "y": 893,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-fen-s4-summer-south-hut-door",
+        "box": {
+          "x": 910,
+          "y": 927,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 848,
+        "y": 893,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 910,
+        "y": 927,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 928,
+        "y": 854,
+        "width": 22,
+        "height": 21
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-fen-s5-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 927,
+        "y": 854,
+        "width": 22,
+        "height": 21
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-forest-s3-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 1003,
+        "y": 888,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-forest-s4-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-forest-s4-summer-west-hut-door",
+        "box": {
+          "x": 848,
+          "y": 893,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-forest-s4-summer-south-hut-door",
+        "box": {
+          "x": 910,
+          "y": 927,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 848,
+        "y": 893,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 910,
+        "y": 927,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 1004,
+        "y": 895,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-forest-s5-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 1003,
+        "y": 888,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "scale_ratio",
+    "defects": [],
+    "regions": [],
+    "eligible": false,
+    "exclusion_reason": "No visible human height reference in any of the 20 frames; starvation/empty settlement. Do not infer scale from a previous scene."
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  }
+]

@@ -1,0 +1,250 @@
+{
+  "frozen_at_utc": "2026-10-02T14:58:01.515860+00:00",
+  "truth_sha256": "7f42c5a4b60aa4bcebeb7557efbab29979dcd256c447eb96b9f648b282b3092a",
+  "annotation_counts": {
+    "straight_boundary": 29,
+    "tile_seam": 18
+  },
+  "scenes": [
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "frame": 0,
+      "image_sha256": "524078f86b099ebe62f545aaea025d2797dfb1716a450fe73a44a5f33aea3269",
+      "capture_sha256": "e7bc59ec3dca67f60e95bfcf7e6b2a8104b55fefd7442363a2d7e5b57998d207",
+      "seed": 3,
+      "terrain": "chalk",
+      "season": "summer",
+      "tick": 1012,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1126\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "frame": 0,
+      "image_sha256": "43710b5785067d97b92e478ea949856fcd867356b55d3ddeb5effd6e08ac67d9",
+      "capture_sha256": "b69675fcff38d01fa6abd958a74927777157cd6e1c57fe013d4ce1438003640b",
+      "seed": 4,
+      "terrain": "chalk",
+      "season": "summer",
+      "tick": 1015,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1130\n연도·계절\n1300년 여름\n속도\n멈춤\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "frame": 0,
+      "image_sha256": "130ab741fa2bc7d210dccd2d1443ffa702c9dc906486a405c8f66674244f65be",
+      "capture_sha256": "80b767915a236245b62588350e9060d41a34a29194e7362f45722ec9c843eec6",
+      "seed": 5,
+      "terrain": "chalk",
+      "season": "summer",
+      "tick": 1015,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1130\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "frame": 0,
+      "image_sha256": "75e9132cfdd6afda4ff889a676627c222acb5f4240b585a8257311a1965ccf53",
+      "capture_sha256": "646b470389312480dfd830a392b8d13a4cf8163eb2d7ad7f27197e242c9bd3c5",
+      "seed": 1,
+      "terrain": "historical",
+      "season": "saved",
+      "tick": 248582,
+      "camera": {
+        "zoom": 1.3,
+        "panX": 425.6000061035156,
+        "panY": -1176.4000244140625
+      },
+      "qa_text": "틱\n248695\n연도·계절\n1362년 봄\n속도\n1배속\n줌\n1.300\n카메라 이동\n(426, -1176)\n화면 중심 월드\n(288, 1328)\n화면 중심 칸\n(46, 37)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "frame": 0,
+      "image_sha256": "bef27ab2095cc4d79b8dcff1df49af43257cf397c493b251ff94a16922c6ddd8",
+      "capture_sha256": "977db612c5c81fba2faef49a3696f2e8a37d7fed90631c2cdf883b9322472b62",
+      "seed": 1,
+      "terrain": "historical",
+      "season": "saved",
+      "tick": 430113,
+      "camera": {
+        "zoom": 1.3,
+        "panX": 425.6000061035156,
+        "panY": -1176.4000244140625
+      },
+      "qa_text": "틱\n430226\n연도·계절\n1407년 가을\n속도\n1배속\n줌\n1.300\n카메라 이동\n(426, -1176)\n화면 중심 월드\n(288, 1328)\n화면 중심 칸\n(46, 37)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "frame": 0,
+      "image_sha256": "dc45b3733919b48cb93b46bfe1718bcf48a1be7dd9292f3a7e37daa0fa3f43d8",
+      "capture_sha256": "50be9f86594b4797480c331a593f7186d8ceda8db1465fb6eb957f1b8d9e4887",
+      "seed": 3,
+      "terrain": "coast",
+      "season": "summer",
+      "tick": 1011,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1126\n연도·계절\n1300년 여름\n속도\n멈춤\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "frame": 0,
+      "image_sha256": "72680c1e7468afbdf1c36f93a5e29f508af3ce8365f29b68da23ce90d3324f0e",
+      "capture_sha256": "3709c820a05a5c4f9461fb401d330da078f15d3eb9176a46bd72c9eb7bfeb9ba",
+      "seed": 4,
+      "terrain": "coast",
+      "season": "summer",
+      "tick": 1015,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1130\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "frame": 0,
+      "image_sha256": "91ae511541eaa2252db0119705cdc358cdf0a7b3add128d7b738b532f45595f6",
+      "capture_sha256": "354bcbdd24bb8ae1bd4c7349f6153fa7ef32df71081ab18df8bfe2d584f4fe2b",
+      "seed": 5,
+      "terrain": "coast",
+      "season": "summer",
+      "tick": 1012,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1126\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "frame": 0,
+      "image_sha256": "6f906d5400857c8deffe22adcdafe3d0384472f53a7d65af0ef51e499cbcdbbe",
+      "capture_sha256": "7b2d8a19217de5834a464f2d898f0f0ea94d22c4cbfb2975d46de2d9ef0c4f9c",
+      "seed": 3,
+      "terrain": "fen",
+      "season": "summer",
+      "tick": 1015,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1130\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "frame": 0,
+      "image_sha256": "eb483ea9565be8c545bc299a1feeb3b9fb85b01e90c42f30fd112af2ee5b3f0d",
+      "capture_sha256": "9ccf3cba3bc1455e70504f80d16b016f23410cce0b8f7a9eda96b23dc6bb8d53",
+      "seed": 4,
+      "terrain": "fen",
+      "season": "summer",
+      "tick": 1012,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1126\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "frame": 0,
+      "image_sha256": "dd0a565b49bbac28ccdf17141ce402c127a135553b59cf8ec1641e73a0f89abe",
+      "capture_sha256": "c432ee3609e2c431cf111a9d56246cc7000996a73b5691c189450aa12f9abeba",
+      "seed": 5,
+      "terrain": "fen",
+      "season": "summer",
+      "tick": 1011,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1126\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "frame": 0,
+      "image_sha256": "d2739adeea3a83f118bd415792f0b7b94ae0ce976c601e73bb0419029b93f8f4",
+      "capture_sha256": "74276a09fd3db2b2e7a33e9fc69df02cffbf6728ebc778c0c18180786a52e492",
+      "seed": 3,
+      "terrain": "forest",
+      "season": "summer",
+      "tick": 1011,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1126\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "frame": 0,
+      "image_sha256": "2059b6bc2562222524fbad02685e79d82961239baa4a516c0c980b7358a382bd",
+      "capture_sha256": "dbc6b3351f815a380dd4e54c907f7666287dd7522e79b8d6d0099fd1b1c1672a",
+      "seed": 4,
+      "terrain": "forest",
+      "season": "summer",
+      "tick": 1016,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1131\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "frame": 0,
+      "image_sha256": "0fa9a5ad2cd1738a7f200fba197e13ff9cb9e83a0d0e75e10f6beb79c7eca968",
+      "capture_sha256": "099a90aea1ae643fbbeb6bcbaeb96c14cff87d3aa68ed3a5cc3ca1f9979cc14d",
+      "seed": 5,
+      "terrain": "forest",
+      "season": "summer",
+      "tick": 1011,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n1126\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    },
+    {
+      "scene": "holdout-river-s1-year1301",
+      "frame": 0,
+      "image_sha256": "86ab17e3fc29d3b9892c80cfadf365d7b805fa619e008542089c28d5a05598b2",
+      "capture_sha256": "8ddacb663dd168e70e9d82bd28042060f1cbfb0462e4a3443139f19bd5e508d9",
+      "seed": 1,
+      "terrain": "river",
+      "season": "summer",
+      "tick": 5015,
+      "camera": {
+        "zoom": 1.0,
+        "panX": 800.0,
+        "panY": -474.0
+      },
+      "qa_text": "틱\n5130\n연도·계절\n1301년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -474)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+    }
+  ]
+}

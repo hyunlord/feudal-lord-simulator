@@ -1,0 +1,25 @@
+{
+  "verified_utc": "2026-10-02T15:10:56.119201+00:00",
+  "frozen_files_checked": 74,
+  "frozen_mismatch": [],
+  "truth_mismatch": [],
+  "game_tracked_diff": "",
+  "game_head": "d6ae15498a45c2202a10f3ce8f20a543dd305c3f",
+  "port4470_connect_ex": 61,
+  "frozen_tests": {
+    "command": "python -m pytest -q",
+    "exit_code": 0,
+    "passed": 130,
+    "skipped": 3,
+    "seconds": 1.12,
+    "reason": "Source-only frozen package has no historical raw image fixtures; these 3 tests skip, not pass."
+  },
+  "analysis_command": "PYTHONPATH=report/holdout/frozen-tool tools/vision-check/.venv/bin/python -m vision_check.cli analyze wt-current report/holdout/evaluation --config report/holdout/frozen-tool/config/expansion.json --name frozen-results",
+  "analysis_exit_code": 0,
+  "analysis_seconds": 39.02879412495531,
+  "truth_frozen_utc": "2026-10-02T15:04:58.429545+00:00",
+  "analysis_run_json_mtime_utc": "2026-10-02T15:05:53.379029+00:00",
+  "detector_or_threshold_changed": false,
+  "graft_calls": 3,
+  "graft_saved_tokens": "not reported by tool"
+}

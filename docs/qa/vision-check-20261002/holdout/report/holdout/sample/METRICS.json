@@ -1,0 +1,45 @@
+{
+  "population": 369,
+  "sample": 50,
+  "counts": {
+    "TP": 36,
+    "uncertain": 9,
+    "FP": 5
+  },
+  "confirmed_precision_lower": 0.72,
+  "optimistic_precision_upper": 0.9,
+  "resolved_only_precision": 0.8780487804878049,
+  "wilson95_lower_assignment": [
+    0.5833487630404344,
+    0.8252582933408878
+  ],
+  "wilson95_upper_assignment": [
+    0.7863976856252035,
+    0.9565242350681096
+  ],
+  "wilson95_resolved_only": [
+    0.7445578847902312,
+    0.9467666353142228
+  ],
+  "by_detector": {
+    "straight_boundary": {
+      "TP": 5,
+      "FP": 5
+    },
+    "tile_seam": {},
+    "stationary_person": {
+      "TP": 18,
+      "uncertain": 9
+    },
+    "roof_overlap": {
+      "TP": 10
+    },
+    "scale_ratio": {
+      "TP": 1
+    },
+    "repeat_density": {
+      "TP": 2
+    }
+  },
+  "ci_note": "Wilson binomial interval without finite-population correction; classification uncertainty shown separately; correlated scenes/art mean candidate-level population inference only."
+}

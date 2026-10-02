@@ -1,0 +1,98 @@
+[
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "roof_overlap",
+    "outcome": "FP",
+    "candidate_id": "60ffa08b8194",
+    "defect_id": null,
+    "note": "Human semantic rejection; spatial match forbidden"
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "scale_ratio",
+    "outcome": "excluded",
+    "candidate_id": "holdout-city-year1362-confirm:scale_ratio:0",
+    "defect_id": null,
+    "note": "Outside eligible coverage or inside explicitly excluded target region"
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "straight_boundary",
+    "outcome": "FP",
+    "candidate_id": "ff2ba489e186",
+    "defect_id": null,
+    "note": "No unmatched annotated target"
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "straight_boundary",
+    "outcome": "FP",
+    "candidate_id": "7a35e8491e20",
+    "defect_id": null,
+    "note": "No unmatched annotated target"
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "tile_seam",
+    "outcome": "FN",
+    "candidate_id": null,
+    "defect_id": "holdout-city-year1362-confirm-tile_seam-1",
+    "note": "\uc6d0\ubcf8\uc5d0\uc11c \ubc14\uc704 \ub369\uc5b4\ub9ac \ub0b4\ubd80\uc758 \ubc18\ubcf5\uc801\uc778 \ub300\uac01 \uc808\ub2e8\u00b7\uba85\uc554 \ub2e8\uc808\uc774 \uce78 \uac04\uaca9\uc73c\ub85c \uc774\uc5b4\uc9d0. \uc5f0\uacb0\ub41c \ubc14\uc704 \ud328\uce58 \uc804\uccb4\ub97c 1\uac74\uc73c\ub85c \ud310\uc815. \uc77c\ubc18 \uc790\uc5f0 \uade0\uc5f4 \ubc0f \uc218\ud480 \uac00\ub9bc\uacfc \uad6c\ubcc4."
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "straight_boundary",
+    "outcome": "FP",
+    "candidate_id": "3fdc9ae4d48d",
+    "defect_id": null,
+    "note": "No unmatched annotated target"
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "straight_boundary",
+    "outcome": "FP",
+    "candidate_id": "0489c16d8394",
+    "defect_id": null,
+    "note": "No unmatched annotated target"
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "tile_seam",
+    "outcome": "FN",
+    "candidate_id": null,
+    "defect_id": "holdout-city-year1407-confirm-tile_seam-1",
+    "note": "\uc6d0\ubcf8\uc5d0\uc11c \ubc14\uc704 \ub369\uc5b4\ub9ac \ub0b4\ubd80\uc758 \ubc18\ubcf5\uc801\uc778 \ub300\uac01 \uc808\ub2e8\u00b7\uba85\uc554 \ub2e8\uc808\uc774 \uce78 \uac04\uaca9\uc73c\ub85c \uc774\uc5b4\uc9d0. \uc5f0\uacb0\ub41c \ubc14\uc704 \ud328\uce58 \uc804\uccb4\ub97c 1\uac74\uc73c\ub85c \ud310\uc815. \uc77c\ubc18 \uc790\uc5f0 \uade0\uc5f4 \ubc0f \uc218\ud480 \uac00\ub9bc\uacfc \uad6c\ubcc4."
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "straight_boundary",
+    "outcome": "FP",
+    "candidate_id": "5b23c1f923f2",
+    "defect_id": null,
+    "note": "No unmatched annotated target"
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "tile_seam",
+    "outcome": "FN",
+    "candidate_id": null,
+    "defect_id": "holdout-river-s1-year1301-tile_seam-1",
+    "note": "\uc6d0\ubcf8\uc5d0\uc11c \ubc14\uc704 \ub369\uc5b4\ub9ac \ub0b4\ubd80\uc758 \ubc18\ubcf5\uc801\uc778 \ub300\uac01 \uc808\ub2e8\u00b7\uba85\uc554 \ub2e8\uc808\uc774 \uce78 \uac04\uaca9\uc73c\ub85c \uc774\uc5b4\uc9d0. \uc5f0\uacb0\ub41c \ubc14\uc704 \ud328\uce58 \uc804\uccb4\ub97c 1\uac74\uc73c\ub85c \ud310\uc815. \uc77c\ubc18 \uc790\uc5f0 \uade0\uc5f4 \ubc0f \uc218\ud480 \uac00\ub9bc\uacfc \uad6c\ubcc4."
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "scale_ratio",
+    "outcome": "FN",
+    "candidate_id": null,
+    "defect_id": "holdout-city-year1362-confirm-long-rain-field",
+    "note": "Frame 0 and sequence: rain streaks visibly read longer than adult screen height. Blue streak lengths approximately 42\u201358 px versus adult H about 20\u201322 px. One weather field defect in this reviewed open-ground/water ROI, not one positive per raindrop. Semantic match MUST concern rain length; a barrel/door finding cannot satisfy this target. Art bible section 2 screen-space rain rule."
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "scale_ratio",
+    "outcome": "FN",
+    "candidate_id": null,
+    "defect_id": "holdout-city-year1407-confirm-long-rain-field",
+    "note": "Frame 0 and sequence: rain streaks visibly read longer than adult screen height. White streak lengths approximately 45\u201370 px versus adult H about 20\u201322 px. One weather field defect in this reviewed open-ground/water ROI, not one positive per raindrop. Semantic match MUST concern rain length; a barrel/door finding cannot satisfy this target. Art bible section 2 screen-space rain rule."
+  }
+]

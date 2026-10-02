@@ -1,0 +1,784 @@
+[
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "cohort": "holdout",
+    "tick_span": 114,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 114,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 79,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.8217011363636364,
+    "findings": 9,
+    "semantic_parts": 1,
+    "catalog_components": 1,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 2,
+      "human_alpha_heights_px": [
+        18.135135135135137,
+        18.135135135135137
+      ],
+      "eligible_ground_fraction": 0.8217011363636364,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "cohort": "holdout",
+    "tick_span": 115,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 115,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 76,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.7433522727272728,
+    "findings": 8,
+    "semantic_parts": 0,
+    "catalog_components": 0,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 3,
+      "human_alpha_heights_px": [
+        18.445945945945947,
+        18.16216216216216,
+        17.83783783783784
+      ],
+      "eligible_ground_fraction": 0.7433522727272728,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "cohort": "holdout",
+    "tick_span": 115,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 1,
+      "stationary": 0,
+      "ratio": 0.0,
+      "tick_span": 115,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 75,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.8326397727272727,
+    "findings": 16,
+    "semantic_parts": 0,
+    "catalog_components": 0,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 3,
+      "human_alpha_heights_px": [
+        18.135135135135137,
+        17.83783783783784,
+        18.445945945945947
+      ],
+      "eligible_ground_fraction": 0.8326397727272727,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "cohort": "calibration",
+    "tick_span": 113,
+    "frames": 20,
+    "zoom": 1.3,
+    "camera": [
+      425.6000061035156,
+      -1176.4000244140625
+    ],
+    "stationary": {
+      "eligible": 3,
+      "stationary": 0,
+      "ratio": 0.0,
+      "tick_span": 113,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 16,
+    "alpha_masks": 211,
+    "roof_masks": 25,
+    "missing_assets": [],
+    "ground_fraction": 0.20550113636363637,
+    "findings": 4,
+    "semantic_parts": 17,
+    "catalog_components": 17,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 11
+    },
+    "rain": {
+      "first_frame_candidates": 2,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 22,
+      "human_alpha_heights_px": [
+        22.702702702702705,
+        23.351351351351354,
+        22.702702702702705,
+        22.83783783783784,
+        23.08108108108108,
+        23.716216216216218,
+        23.08108108108108,
+        23.08108108108108,
+        22.702702702702705,
+        22.83783783783784,
+        22.702702702702705,
+        23.716216216216218,
+        23.351351351351354,
+        23.08108108108108,
+        23.08108108108108,
+        23.08108108108108,
+        23.08108108108108,
+        23.54054054054054,
+        23.716216216216218,
+        23.45945945945946,
+        23.08108108108108,
+        23.08108108108108
+      ],
+      "eligible_ground_fraction": 0.20550113636363637,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "cohort": "calibration",
+    "tick_span": 113,
+    "frames": 20,
+    "zoom": 1.3,
+    "camera": [
+      425.6000061035156,
+      -1176.4000244140625
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 113,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 22,
+    "alpha_masks": 285,
+    "roof_masks": 36,
+    "missing_assets": [],
+    "ground_fraction": 0.26524943181818184,
+    "findings": 2,
+    "semantic_parts": 13,
+    "catalog_components": 13,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 13,
+      "ale_stock": 6
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 27,
+      "human_alpha_heights_px": [
+        23.716216216216218,
+        23.08108108108108,
+        23.08108108108108,
+        22.702702702702705,
+        23.716216216216218,
+        23.716216216216218,
+        23.716216216216218,
+        23.716216216216218,
+        23.08108108108108,
+        23.351351351351354,
+        22.702702702702705,
+        23.08108108108108,
+        23.08108108108108,
+        23.716216216216218,
+        23.716216216216218,
+        23.08108108108108,
+        23.08108108108108,
+        22.972972972972975,
+        23.08108108108108,
+        23.716216216216218,
+        23.08108108108108,
+        23.08108108108108,
+        23.716216216216218,
+        23.08108108108108,
+        22.702702702702705,
+        23.08108108108108,
+        22.702702702702705
+      ],
+      "eligible_ground_fraction": 0.26524943181818184,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "cohort": "holdout",
+    "tick_span": 115,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 115,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 74,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.7521227272727272,
+    "findings": 8,
+    "semantic_parts": 1,
+    "catalog_components": 1,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 2,
+      "human_alpha_heights_px": [
+        18.135135135135137,
+        18.135135135135137
+      ],
+      "eligible_ground_fraction": 0.7521227272727272,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "cohort": "holdout",
+    "tick_span": 115,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 115,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 71,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.7391244318181818,
+    "findings": 6,
+    "semantic_parts": 0,
+    "catalog_components": 0,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 3,
+      "human_alpha_heights_px": [
+        18.445945945945947,
+        18.16216216216216,
+        17.83783783783784
+      ],
+      "eligible_ground_fraction": 0.7391244318181818,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "cohort": "holdout",
+    "tick_span": 114,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 1,
+      "stationary": 0,
+      "ratio": 0.0,
+      "tick_span": 114,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 71,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.5922454545454545,
+    "findings": 4,
+    "semantic_parts": 1,
+    "catalog_components": 1,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 3,
+      "human_alpha_heights_px": [
+        18.135135135135137,
+        18.135135135135137,
+        18.445945945945947
+      ],
+      "eligible_ground_fraction": 0.5922454545454545,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "cohort": "holdout",
+    "tick_span": 115,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 115,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 85,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.6556653409090909,
+    "findings": 14,
+    "semantic_parts": 1,
+    "catalog_components": 1,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 2,
+      "human_alpha_heights_px": [
+        18.135135135135137,
+        17.83783783783784
+      ],
+      "eligible_ground_fraction": 0.6556653409090909,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "cohort": "holdout",
+    "tick_span": 114,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 114,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 82,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.59828125,
+    "findings": 8,
+    "semantic_parts": 0,
+    "catalog_components": 0,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 2,
+      "human_alpha_heights_px": [
+        18.445945945945947,
+        17.83783783783784
+      ],
+      "eligible_ground_fraction": 0.59828125,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "cohort": "holdout",
+    "tick_span": 115,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 1,
+      "stationary": 0,
+      "ratio": 0.0,
+      "tick_span": 115,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 81,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.5826147727272727,
+    "findings": 2,
+    "semantic_parts": 0,
+    "catalog_components": 0,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 2,
+      "human_alpha_heights_px": [
+        18.135135135135137,
+        18.445945945945947
+      ],
+      "eligible_ground_fraction": 0.5826147727272727,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "cohort": "holdout",
+    "tick_span": 115,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 115,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 75,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.6529931818181818,
+    "findings": 8,
+    "semantic_parts": 1,
+    "catalog_components": 1,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 1,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 1,
+      "human_alpha_heights_px": [
+        18.135135135135137
+      ],
+      "eligible_ground_fraction": 0.6529931818181818,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "cohort": "holdout",
+    "tick_span": 115,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 115,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 73,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.40641761363636364,
+    "findings": 5,
+    "semantic_parts": 1,
+    "catalog_components": 1,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 1,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 3,
+      "human_alpha_heights_px": [
+        18.16216216216216,
+        18.445945945945947,
+        18.135135135135137
+      ],
+      "eligible_ground_fraction": 0.40641761363636364,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "cohort": "holdout",
+    "tick_span": 115,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 1,
+      "stationary": 0,
+      "ratio": 0.0,
+      "tick_span": 115,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 1,
+    "alpha_masks": 74,
+    "roof_masks": 7,
+    "missing_assets": [],
+    "ground_fraction": 0.5688704545454546,
+    "findings": 9,
+    "semantic_parts": 1,
+    "catalog_components": 1,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 1,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 2,
+      "human_alpha_heights_px": [
+        18.135135135135137,
+        18.445945945945947
+      ],
+      "eligible_ground_fraction": 0.5688704545454546,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "cohort": "calibration",
+    "tick_span": 115,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      800.0,
+      -474.0
+    ],
+    "stationary": {
+      "eligible": 0,
+      "stationary": 0,
+      "ratio": null,
+      "tick_span": 115,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 0,
+    "alpha_masks": 69,
+    "roof_masks": 9,
+    "missing_assets": [],
+    "ground_fraction": 0.3789636363636364,
+    "findings": 1,
+    "semantic_parts": 0,
+    "catalog_components": 0,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 1
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 0,
+      "human_alpha_heights_px": [],
+      "eligible_ground_fraction": 0.3789636363636364,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  }
+]

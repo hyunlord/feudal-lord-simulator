@@ -1,0 +1,32 @@
+[
+  {
+    "pattern": "00.png",
+    "document": "report/holdout/GROUND_TRUTH.md",
+    "reason": "Generic first-frame source filename for fifteen scenes. Full source PNGs remain local at report/holdout/raw/<scene>/00.png; ground-freeze.json records scene paths and SHA256, and ground-proof JPEGs are bundled. This is a raw input reference, not a promised report image."
+  },
+  {
+    "pattern": "src/ui/landChoice.ts",
+    "document": "report/holdout/scripts/capture-VALIDATION.md",
+    "reason": "Read-only game-source evidence at pinned wt-current commit d6ae15498a45c2202a10f3ce8f20a543dd305c3f; src/ui/landChoice.ts lines26-43 encode native river seed1. Game repository source is intentionally not bundled in the detector results ZIP."
+  },
+  {
+    "pattern": "capture.json",
+    "document": "report/holdout/USAGE.md",
+    "reason": "Generic generated raw capture input basename in the replay recipe; scene-specific lossless capture metadata and PNG hashes are included under new/metadata."
+  },
+  {
+    "pattern": "/path/to/tools/vision-check/config/expansion.json",
+    "document": "report/holdout/USAGE.md",
+    "reason": "Command template for caller-selected absolute path; actual fixed configuration is included at tools/vision-check/config/expansion.json."
+  },
+  {
+    "pattern": "/path/to/delivery.zip",
+    "document": "report/holdout/USAGE.md",
+    "reason": "Command placeholder for outer delivery archive, not an in-archive evidence reference."
+  },
+  {
+    "pattern": "/tmp/link-audit.json",
+    "document": "report/holdout/USAGE.md",
+    "reason": "Output destination of the documented validation command; final actual audit is included as report/holdout/LINK_AUDIT.json."
+  }
+]

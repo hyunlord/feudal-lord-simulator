@@ -1,0 +1,32 @@
+{
+  "frozen_utc": "2026-10-02T14:43:04Z",
+  "game_commit": "d6ae15498a45c2202a10f3ce8f20a543dd305c3f",
+  "seeds": [
+    3,
+    4,
+    5
+  ],
+  "lands": [
+    "river",
+    "coast",
+    "chalk",
+    "forest",
+    "fen"
+  ],
+  "season": "summer",
+  "tick_target": 1010,
+  "zoom": 1.0,
+  "center": [
+    32,
+    32
+  ],
+  "viewport": [
+    1600,
+    1100
+  ],
+  "frames": 20,
+  "interval_ms": 600,
+  "detector_execution": "forbidden before truth freeze",
+  "river_status": "blocked_native_UI_seed_locked_1",
+  "river_source": "src/ui/landChoice.ts:26-43"
+}
