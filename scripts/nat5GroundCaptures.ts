@@ -84,10 +84,9 @@ for (const camera of cameras) {
       tx.oncomplete = () => resolve(); tx.onerror = () => reject(tx.error); });
     db.close();
   }, { base64: Buffer.from(bytes).toString("base64"), meta });
-  // A busy shared DGX (load 40-60) can take minutes to serve and start the page (render-NAT5-rock-05e1636 timed out at 60 s).
-  await page.reload({ waitUntil: "load", timeout: 180_000 });
-  await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 180_000 });
-  await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 180_000 });
+  await page.reload({ waitUntil: "load" });
+  await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 60_000 });
+  await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90_000 });
   await page.waitForTimeout(2_000);
   if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
   if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");
