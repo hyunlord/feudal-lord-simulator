@@ -1,9 +1,9 @@
 # COPY-1e 보고서 — Astra 문구·고증 감사의 엔진 몫(src/content·src/engine 23건)
 
-관문: @@GATE@@
+관문: 통과 — 엔진 몫 23건 처리(CA-051은 바꿀 것 없음 확인) · CA-001 청원·답 조합마다 뜻을 기록하는 시험 2/2 · 깨끗한 클론 `7167b1c` 4,368/4,368 · ui-geometry 1,852칸 새 실패 0(모두 DGX)
 
 - **지시**: 사용자 지시 2026-10-02 — Astra 문구 감사(`astra-copy-audit-20261002`, 고정 커밋 `5a15e62`)의 `src/content`·`src/engine` 몫 23건. 먼저 CA-001(기록 논리, 시험으로 박기), 다음 고증(CA-007·CA-008), 나머지.
-- **용어 기준**: 지시는 `docs/design/glossary.md`를 가리켰지만 저장소에 아직 없다. 감사 패키지의 `GLOSSARY.md`를 기준으로 썼다(패키지 반입은 INBOX·문서 세션 몫).
+- **용어 기준**: 작업을 시작할 때는 `docs/design/glossary.md`가 저장소에 없어 감사 패키지의 `GLOSSARY.md`로 썼다. 본선에 들어온 `docs/design/glossary.md`(`0cba5b35`)는 머리말 한 줄을 빼면 같은 내용이다(Mac, diff로 확인).
 - **결정**: COPY1E-1~3.
 - **브랜치**: `claude/copy-1e`.
 
@@ -51,7 +51,9 @@
 | CA-051 | 바꾸지 않음: `housePressure.ts`는 이미 정본 상수(`PRESSURE_COPY`)를 쓰고, 같은 문구는 주석에만 있다 |
 
 ## 필수 조건
-@@REQ@@
+- 깨끗한 클론 `7167b1c`: 4,368/4,368 · typecheck · build — DGX(`engine-COPY1e-clone-7167b1c`).
+- ui-geometry `7167b1c`: 1,852칸, 기준선 대비 새 실패 0(넘침 20칸은 기존 예외 하나 아래, FIX-14 측정과 같음) — DGX(`engine-COPY1e-geo-7167b1c`). 본선(문서만 바뀜)을 합친 머리 `dd97db5`의 입력 해시가 측정 커밋과 같다(`b037047b…`) — Mac(해시 대조).
+- typecheck, 시험 `tests/engineCopy.test.ts` 2/2와 문구를 박은 시험 6개 — Mac.
 
 ## 렌더에 넘길 것
 - `src/ui/eventStoryCopy.ko.ts`: 1351년 이야기(노동자법 공포), 1391년 이야기(칼레 지정 무역 제도의 일시 중단, 게임 효과 분리)(CA-007·008).
@@ -60,7 +62,7 @@
 
 ## 다음 후보
 - 세력 기억의 후계자 관계 표시(CA-001 제안의 둘째 부분).
-- 감사 패키지(용어집 포함)를 `docs/design/`에 넣는 일(INBOX·문서 세션).
 
 ## 소요 시간
-@@TIME@@
+- 시작 18:56, 코드 커밋 `7167b1c` 19:19, DGX 클론·ui-geometry 19:20 시작(클론 28분, ui-geometry 2시간 22분 — DGX가 바빴다), 병합 21:50쯤.
+- 코드는 약 25분이고 나머지는 DGX 대기다(그동안 FIX-16을 했다).
