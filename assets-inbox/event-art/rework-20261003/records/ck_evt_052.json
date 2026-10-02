@@ -1,0 +1,74 @@
+{
+  "id": "ck_evt_052",
+  "prompt": "Use case: historical-scene. Finished event-card illustration for Charter & Kin, Southern England. WIDE LANDSCAPE 16:9 image, full bleed, no borders. Use attached project illustrations ONLY for naturalistic painterly rendering, warm muted ochre oak and cream, believable humans and materials, soft hand-painted edges, coherent light. Create an entirely NEW composition, never copy reference poses or setting. No writing, lettering, watermark, signature, number, paper, document, scroll, desk, or table. No modern clothing, rubber, metal modern tools, fantasy props, black-white Tudor decoration, chimney on ordinary houses. Historic wool/linen, natural skin variations, leather turnshoes. Final composition should read at 960x540. Year 1418 Southern England, autumn afternoon. MISSING MONEY AND STEWARD'S PATRON. Completely new composition: REAR TRACKING VIEW from behind two men WALKING AWAY down the outside passage beside an oak granary into an open yard. The patron representative in rich but restrained burgundy wool houppelande drapes his protective RIGHT ARM around the anxious steward's shoulders, guiding him onward away from the viewer. Their BACKS and forward walking movement occupy middle right, NO faces frontally presented. Worried steward turns his head only slightly toward protector, clutching a small depleted purse beside his thigh. LOWER LEFT FOREGROUND: open EMPTY oak collection barrel, a few silver coins spilled onto undyed cloth on earth beside barrel, strong physical evidence of missing money. FAR LEFT BACKGROUND two SMALL distant figures, lord and tenant, watch the pair leave; these observers are not another negotiating row. Dominant spatial diagonal from foreground empty barrel to the protective pair receding into the sunlit yard. Show two distinct bodies, anatomically correct protective arm and naturally walking legs. Natural oak plank granary with open yard beyond, bare earth and autumn leaves, no interiors, no documents, no desk, no table. No frontal conversation or group portrait. Late-medieval wool garments and soft hats, leather turnshoes; natural brown oak and warm lime, no chimney. Golden oblique side light, muted ochre burgundy and earth.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/01_boundary_dispute.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg"
+  ],
+  "revision": "v2 subject/action replacement",
+  "tool": "builtin image_gen",
+  "status": "candidate",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda7-26fb-7f63-9b3a-d1c1c30b2d93/exec-5dcc30ff-3b55-42f2-b467-6306992df0f7.png",
+  "raw_size": [
+    1672,
+    941
+  ],
+  "raw_sha256": "304e3a281fea62276cca7ca104a4725f4ab7d323b66953fefaff7f9944ac4041",
+  "file": "assets/ck_evt_052.jpg",
+  "sha256": "139ee5e862b066efaecc5cdef32d8e6bc0c606a9aadd4037b6ac7c0635f7b191",
+  "visual_qa": {
+    "subject": "patron protectively escorts steward away; empty collection barrel and scattered coins foreground",
+    "composition": "rear tracking walking pair diagonal, distant observers left; no frontal negotiating row",
+    "no_documents": true,
+    "no_text_watermark": true,
+    "anatomy": "four figures including two small distant watchers, protective shoulder arm coherent and walking legs natural",
+    "period": "1418 broad sleeves and cloak, natural oak granary no chimneys",
+    "conversion": "single Lanczos resize RGB JPEG quality85"
+  },
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda7-26fb-7f63-9b3a-d1c1c30b2d93 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda7-26fb-7f63-9b3a-d1c1c30b2d93/exec-5dcc30ff-3b55-42f2-b467-6306992df0f7.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "reference_hashes": {
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/01_boundary_dispute.jpg": "7162f14d848c4f47264edcbb918718ac4b9e4f8ab808561090e449176639d411",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg": "746cf6ac22a07e38d9d335dfbbb7b80be6d5d436a0a799f7c0a9e93dd8926d3b"
+  },
+  "final_file": "assets/ck_evt_052.jpg",
+  "final_sha256": "139ee5e862b066efaecc5cdef32d8e6bc0c606a9aadd4037b6ac7c0635f7b191",
+  "revision_action": "regenerate",
+  "previous_version_record": {
+    "id": "ck_evt_052",
+    "prompt": "Use case: historical-scene. Finished event-card illustration for Charter & Kin, Southern England. WIDE LANDSCAPE 16:9 image, full bleed, no borders. Use attached project illustrations ONLY for naturalistic painterly rendering, warm muted ochre oak and cream, believable humans and materials, soft hand-painted edges, coherent light. Create an entirely NEW composition, never copy reference poses or setting. No writing, lettering, watermark, signature, number, paper, document, scroll, desk, or table. No modern clothing, rubber, metal modern tools, fantasy props, black-white Tudor decoration, chimney on ordinary houses. Historic wool/linen, natural skin variations, leather turnshoes. Final composition should read at 960x540. Year 1418, autumn afternoon. MISSING MONEY AND STEWARD'S PATRON: standing figures OUTSIDE a weathered granary doorway, financial wrongdoing and social patronage visualized physically. FOUR adults, tight triangular composition: richly but modestly dressed patron representative in muted wine-red long wool gown extends ONE calm protective arm across the anxious steward's chest, politely shielding him from a questioning lord at left. Worried steward holds a small open coin purse low. Tenant at right waits for explanation with folded arms. Open EMPTY oak collection barrel in lower foreground and a shallow undyed cloth on rim containing a few scattered silver coins, not paper. Protective arm is main clear diagonal, anxious steward partly behind it, lord's hand open questioning, no weapons, aggression or seizure. Natural brown oak plank granary wall; door adult height, no chimney, no indoor furniture. Late-medieval clothing broad sleeves for prosperous people, short practical tunic tenant, no fur spots. Warm low autumn light on ochre wood, autumn leaves on earth.",
+    "references": [
+      "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/01_boundary_dispute.jpg",
+      "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg"
+    ],
+    "revision": "v2 subject/action replacement",
+    "tool": "builtin image_gen",
+    "status": "candidate",
+    "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda7-26fb-7f63-9b3a-d1c1c30b2d93/exec-f4e19543-b968-4f5d-a57d-97bd1bdc7013.png",
+    "raw_size": [
+      1672,
+      941
+    ],
+    "raw_sha256": "7bf783faf999becd0bff5fb4236ddd575e4ddea58b604b6c69ca2c3e1ba42950",
+    "file": "assets/ck_evt_052.jpg",
+    "sha256": "0e9d13701df7b4eefc7eb86627e3f2cce40386806e1a337c3014c5142a7f8d29",
+    "visual_qa": {
+      "subject": "patron arm shields worried steward holding depleted purse, empty collection barrel and coins",
+      "composition": "standing protective arm diagonal and dominant round barrel foreground",
+      "no_documents": true,
+      "no_text_watermark": true,
+      "anatomy": "four adults, coherent shielding arm, expressive questioning and folded hands",
+      "period": "1418 gowns/cloth hats, oak granary no chimney",
+      "conversion": "single Lanczos resize RGB JPEG quality85"
+    },
+    "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda7-26fb-7f63-9b3a-d1c1c30b2d93 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda7-26fb-7f63-9b3a-d1c1c30b2d93/exec-f4e19543-b968-4f5d-a57d-97bd1bdc7013.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "reference_hashes": {
+      "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/01_boundary_dispute.jpg": "7162f14d848c4f47264edcbb918718ac4b9e4f8ab808561090e449176639d411",
+      "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg": "746cf6ac22a07e38d9d335dfbbb7b80be6d5d436a0a799f7c0a9e93dd8926d3b"
+    },
+    "final_file": "assets/ck_evt_052.jpg",
+    "final_sha256": "0e9d13701df7b4eefc7eb86627e3f2cce40386806e1a337c3014c5142a7f8d29",
+    "revision_action": "regenerate"
+  },
+  "composition_revision": 2,
+  "previous_v2_final_sha256": "0e9d13701df7b4eefc7eb86627e3f2cce40386806e1a337c3014c5142a7f8d29"
+}

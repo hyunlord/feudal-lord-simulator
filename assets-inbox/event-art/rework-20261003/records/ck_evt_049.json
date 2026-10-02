@@ -1,0 +1,30 @@
+{
+  "id": "ck_evt_049",
+  "prompt": "Use case: historical-scene. Generate one finished narrative event illustration for Charter & Kin, southern England market town. Input images are STYLE references only, not scene templates. Match warm earthy painterly narrative realism, nuanced natural faces, rough wool and linen, worn natural oak, softly worked brush texture in both references. Wide 16:9 landscape full bleed, intended 960x540. Natural anatomy and believable hands. No text whatsoever, no letters, numbers, pseudo-writing, captions, UI, watermarks. Every document entirely blank parchment except a simple wax seal. No modern objects, no Tudor black-white architecture, no ordinary cottage chimneys or glazed windows. ONE complete original scene, not collage. Year1409. Spring daylight inside weaver's modest timber and plaster workshop, exactly TWO artisans demonstrating different cloth processes. Left artisan at small wooden working handloom model with clearly taut pale warp threads and horizontal shuttle, shows an unfinished woven sample. Right fuller spreads a broad softly dense finished fulled wool cloth on workbench, presenting its smooth heavy surface; hands separate and natural. Through large open workshop doorway at right, clear shallow watercourse and simple timber fulling waterwheel visible without extra people. Weaving model and finished cloth side by side dominate foreground; two artisans explain distinction rather than buy/sell. Modest belted wool tunics, hoods or linen coifs, early1400s; no machines or factory, no chimneys. Soft green spring outdoors, warm oak indoors.",
+  "reference_paths": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-8c4fd4cd-7f1b-474f-a316-7c24cfb00ea1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-8c4fd4cd-7f1b-474f-a316-7c24cfb00ea1.png",
+  "tool": "builtin image_gen",
+  "qa": "Visually reviewed full generated image: story clear, no writing, natural anatomy; source season autumn used046.",
+  "raw_size": [
+    1672,
+    941
+  ],
+  "raw_sha256": "7f635ed9e3721bf843187b94b745fe3f15553a95504853b3ed0fced2a80c49e8",
+  "final_sha256": "8bd6b7d6f65419537e146861628d9fc7ca30ed8319551231b763f990001fc2ee",
+  "final_file": "assets/ck_evt_049.jpg",
+  "final_size": [
+    960,
+    540
+  ],
+  "processing": "Pillow ImageOps.fit Lanczos centered crop/resize; RGB JPEG quality85 optimize",
+  "status": "candidate",
+  "final_dimensions": [
+    960,
+    540
+  ],
+  "revision_action": "preserve"
+}

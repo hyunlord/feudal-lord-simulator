@@ -1,0 +1,32 @@
+{
+  "id": "ck_evt_004",
+  "tool": "builtin image_gen__imagegen",
+  "prompt": "Use case: historical-scene. Create ONE finished full-bleed 16:9 landscape 960x540 event-card illustration for Charter & Kin. References are STYLE ONLY, do not copy their composition. Match warm painterly narrative realism, convincing natural anatomy, soft painted edges, muted earthy oak browns and limestone cream, textured linen and wool, warm atmospheric light, readable story silhouettes. Southern England early 14th century, 1300-1340: loose belted tunics, hoods/coifs, long modest gowns and linen veils; no later Tudor fashion, modern collars or equipment. Brown oak timber, warm plaster, thatch or flat terracotta tiles, NO house chimneys, no modern glass, no black-white Tudor facade. Absolutely NO text, letters, numerals, writing, watermark or border anywhere. Paper is blank uninscribed parchment with wax seals; no pseudo-writing. Natural consistent scene lighting. Scene ck_evt_004, year1306, spring noon. WIDE OUTDOOR village WELL SQUARE, exactly FOUR adults. Clear triangular composition: big working stone well and wooden water bucket left, rustic timber granary right background, decision-maker centrally holding TWO SMALL COIN PURSES APART. A woman household representative holding an earthenware water jug gestures toward well; a grain merchant points at a conspicuous full grain sack in front of the granary. Fourth adult is a clerk beside TWO separate blank parchment incentive notices fastened to an oak board, each bearing only a wax seal no writing. They wait for a choice between funding water supply and grain storage. Clear distinct well versus granary visual story. Fresh green leaves and soft spring sun, modest thatched roofs without chimneys.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed/exec-1d9f985e-e5c7-4bad-937e-e0502bb53c8b.png",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed/exec-1d9f985e-e5c7-4bad-937e-e0502bb53c8b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "style_references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "qa": "Visual inspection: four coherent adults, well/water jug versus granary/grain sack, two separated purses. No visible writing. Extra blank notice in foreground is harmless; composition and historical materials pass.",
+  "status": "candidate",
+  "raw_dimensions": [
+    1672,
+    941
+  ],
+  "file": "assets/ck_evt_004.jpg",
+  "dimensions": [
+    960,
+    540
+  ],
+  "raw_sha256": "5570d2d3c8d87cf4f001e0062612bc2046c4d97dff6b37004f8b0b36ebf92e05",
+  "sha256": "913f7ed4fd38c33b9449f6a6e2d5a4f9bab4214bcb4479c50148544c05ecdd03",
+  "conversion": "one ImageOps.fit Lanczos resize/crop; RGB JPEG quality85 optimized progressive",
+  "final_file": "assets/ck_evt_004.jpg",
+  "final_sha256": "913f7ed4fd38c33b9449f6a6e2d5a4f9bab4214bcb4479c50148544c05ecdd03",
+  "final_dimensions": [
+    960,
+    540
+  ],
+  "revision_action": "preserve"
+}
