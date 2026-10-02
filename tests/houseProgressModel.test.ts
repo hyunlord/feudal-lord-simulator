@@ -36,7 +36,8 @@ test('ready exposes the actual hold fraction and remaining ticks', () => {
   assert.equal(model(state)?.progressTicks, 1800);
   assert.equal(model(state)?.requiredTicks, 2400);
   assert.equal(model(state)?.remainingTicks, 600);
-  assert.match(model(state)?.summary ?? '', /0:30 남음/);
+  // FIX-13 (1x = ten ticks a second): 600 ticks are a minute at 1x.
+  assert.match(model(state)?.summary ?? '', /1:00 남음/);
   assert.equal(causeMarkersForState(state, 0.9).find(marker => marker.buildingIds.includes('home'))?.progressFraction, 0.75);
 });
 test('maintained L4 has no upgrade blocker or icon', () => {

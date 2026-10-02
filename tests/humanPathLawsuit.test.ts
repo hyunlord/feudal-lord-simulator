@@ -42,7 +42,8 @@ test("humanPath lawsuit: a claim filed, evidence and a patron brought, judged fo
   assert.deepEqual([suit().enforced, suit().enforcements], [true, 2]);
   assert.deepEqual([fishery().titleHolder, fishery().possessor], [LORD, LORD]);
 
-  const lines = state.history!.records.filter(record => record.template.startsWith("estate.")).map(record => record.template);
+  // FIX-13 (ES-11): the neighbours' deaths by the table are their own lines, not the suit's.
+  const lines = state.history!.records.filter(record => record.template.startsWith("estate.") && record.template !== "estate.person_died").map(record => record.template);
   assert.deepEqual(lines, ["estate.suit_filed", "estate.suit_stage", "estate.suit_stage", "estate.suit_patron", "estate.suit_stage",
     "estate.suit_judged", "estate.title_changed", "estate.possession_enforced", "estate.possession_enforced", "estate.possession_changed"]);
   const costs = (state.ledger?.entries ?? []).filter(entry => entry.category === "lawsuit");
