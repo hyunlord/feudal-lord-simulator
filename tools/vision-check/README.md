@@ -55,7 +55,7 @@ Astra가 만든 화면 자연스러움 검사기(Python·uv)다.
       - 넓은 땅 조각을 정답 하나로 묶었는데 검출은 가는 선분을 내어 위치 매칭에서 빠진 것이 있다.
       - 놓침 16개 가운데 10개가 이런 위치 불일치이고, 6개는 출력이 없었다.
     - 크기는 사전 양성 22개(자루 12 · 작은 문 8 · 비 2)를 하나도 잡지 못했다.
-    - 원본 보고서: `~/feudal-lord-analysis/astra-raw/qa/vision-holdout-20261003/`.
+    - 보고서 전체는 `docs/qa/vision-check-20261002/holdout/`에 있다. 원본 묶음은 `~/feudal-lord-analysis/astra-raw/qa/vision-holdout-20261003/`.
   - 교정 회차의 남은 놓침·오탐은 `testdata/frozen-truth-expansion-20261002/PRECISION.md`에 있다.
 - **동결 정답 시험지**: `testdata/frozen-truth-expansion-20261002/`.
   - 검출기별 양성 단위 38개(경계 9 · 이음새 6 · 멈춤 7 · 겹침 6 · 크기 5 · 반복 5)이고, 14장면 × 20프레임이다. 검출 전에 사람이 고정했다.
