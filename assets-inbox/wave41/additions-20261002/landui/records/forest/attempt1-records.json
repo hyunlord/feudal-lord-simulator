@@ -1,0 +1,120 @@
+[
+  {
+    "id": "woodland_edge_a",
+    "prompt": "Game ground boundary texture woodland_edge_a. ONE extremely wide horizontal512x64 strip (8:1). Top-down flat ground, seamless horizontal X repeating. Input1 grass defines muted meadow green at TOP; input2/3 woodland floor defines warm olive brown fine leaf litter and subtle moss at BOTTOM. Input4 is only the existing boundary-strip shape/alpha convention. Make a much softer, broader irregular gradual transition than input4, no hard contour or outlining. Upper half meadow grass gently mingles with lower half sparse ochre leaf litter and olive moss. Small organic textures only, no identifiable big leaves, no branches, no trunks, trees, rocks, flowers, props or shadows. Existing project soft painterly muted ground. Preserve similar fine texture scale and subdued contrast. The whole center width is textured, left and right ends seamless continuing texture; upper and lower outer 8% softly feather to genuine transparency. No white/bright rim, no black outline, no horizon, no perspective landscape. One strip only, no text, no labels, no checkerboard. Wide 8:1 canvas, width at least1536 if possible.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6ff-3d6f-7292-b53d-50b7c1097e2d/exec-67f65841-8f56-4e6d-98ee-7ee484b99f61.png",
+    "references": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-landui-20261002/forest/references/grass.png",
+        "sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-landui-20261002/forest/references/woodland_floor_summer_a.png",
+        "sha256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-landui-20261002/forest/references/woodland_floor_summer_b.png",
+        "sha256": "d6f727456bff3f059e33b36d528613b0623b4fafd2af43fdecb031cf58d9fa61"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-landui-20261002/forest/references/heath_edge_a.png",
+        "sha256": "6266f03521f4d2a18d1a2fcac146e52cf957d41fbfde735dd970b814b1b9c09f"
+      }
+    ],
+    "raw_copy": "raw/woodland_edge_a.png",
+    "postprocessing": {
+      "crop": {
+        "left": 0,
+        "top": 250,
+        "width": 2172,
+        "height": 231
+      },
+      "resize": [
+        512,
+        64
+      ],
+      "color": "linear vertical RGB offset to actual grass and woodland reference mean; texture retained",
+      "alpha": "13px smoothstep feather top/bottom; center opaque",
+      "seam": "24px symmetric opposing-edge blend; exact opposing edgeRGBA equality"
+    },
+    "final": {
+      "path": "assets/woodland_edge_a.png",
+      "sha256": "a642428894aae96eab921749c759f6d2bf28ab5a605edfc138f2abc850f29a45",
+      "width": 512,
+      "height": 64,
+      "channels": 4,
+      "pivot": [
+        0,
+        0
+      ],
+      "repeat": "X",
+      "orientation": "top meadow / bottom woodland",
+      "edge_rgba_max_delta": 0,
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "status": "candidate_pending_visual_review"
+    }
+  },
+  {
+    "id": "woodland_edge_b",
+    "prompt": "Generate woodland_edge_b, one horizontal ground transition texture for medieval game. References1 green meadow,2/3 brown woodland ground,4 existing strip. Flat top-down seamless-X ground strip. Wide band8:1 intended512x64. Different subtle irregular edge rhythm than variantA: grass interlocks with small broad shallow moss/leaf-litter bays, gently and unevenly, not a hard line. TOP meadow green matching reference1, BOTTOM subdued olive brown matching woodland2/3. Broad soft blended central transition, extremely subdued contrast. Fine painterly texture matching these existing game assets, NOT big individual leaves or twigs. Transparent top/bottom outer margins, center opaque, no vertical transparent gaps. No trees/rocks/props/flowers, no bright rim, no dark outline, no independent decorative ribbon, no labels/text/checkerboard. Keep left/right ends seamless continuation. One single strip only.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6ff-3d6f-7292-b53d-50b7c1097e2d/exec-e7556213-881a-4e87-984c-aa97d77c3390.png",
+    "references": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-landui-20261002/forest/references/grass.png",
+        "sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-landui-20261002/forest/references/woodland_floor_summer_a.png",
+        "sha256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-landui-20261002/forest/references/woodland_floor_summer_b.png",
+        "sha256": "d6f727456bff3f059e33b36d528613b0623b4fafd2af43fdecb031cf58d9fa61"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-landui-20261002/forest/references/heath_edge_a.png",
+        "sha256": "6266f03521f4d2a18d1a2fcac146e52cf957d41fbfde735dd970b814b1b9c09f"
+      }
+    ],
+    "raw_copy": "raw/woodland_edge_b.png",
+    "postprocessing": {
+      "crop": {
+        "left": 0,
+        "top": 258,
+        "width": 2172,
+        "height": 233
+      },
+      "resize": [
+        512,
+        64
+      ],
+      "color": "linear vertical RGB offset to actual grass and woodland reference mean; texture retained",
+      "alpha": "13px smoothstep feather top/bottom; center opaque",
+      "seam": "24px symmetric opposing-edge blend; exact opposing edgeRGBA equality"
+    },
+    "final": {
+      "path": "assets/woodland_edge_b.png",
+      "sha256": "39e66167e4f7e5138b89d6ba12e544e5f4ce78cdc986b42bbc9f39cb86ad7035",
+      "width": 512,
+      "height": 64,
+      "channels": 4,
+      "pivot": [
+        0,
+        0
+      ],
+      "repeat": "X",
+      "orientation": "top meadow / bottom woodland",
+      "edge_rgba_max_delta": 0,
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "status": "candidate_pending_visual_review"
+    }
+  }
+]

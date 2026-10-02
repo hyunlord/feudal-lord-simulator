@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ford_w1_ne_summer-v1",
+    "direction": "ne",
+    "prompt": "Use case: historical-scene. Create ONE new transparent isolated game terrain sprite, a ONE-TILE-WATER-SPAN shallow ford in summer southern England 1300–1450. Reference image is existing Wave34 TWO-span ford, use its painterly natural materials and isometric camera only. Redraw a much shorter water crossing with only THREE irregular stepping stones rather than squeeze the old many-stone drawing. Actual water span equals crossing lane width: one tile across and one tile wide; bank approaches each half tile long. Ground 2:1 isometric. Travel runs SW lower-left to NE upper-right slope -0.5, no other direction. Final framing512x256, anchor256,128. Water bank join centers 224,144 and288,112. One production tile128x64. Compact natural ford patch centered in generous transparent margin. Small olive grass and mud banks with subtle twin cart wheel ruts enter water at each end. Gravel visible beneath shallow muted grey-blue translucent water. Three low irregular warm grey stepping stones, never paved road or raised causeway. Hand-painted soft forms, top-left light, soft contact AO only; no black outline, no photoreal noise, no foam, bridges, wood planks, structures, figures or text. Outside patch true transparent alpha; water partial alpha; banks and stones solid. Art bible v2. A single newly composed short ford only, not full scene or sheet.",
+    "input": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave34/candidates-20260929/assets/ford/ford_w2_ne_summer-v1.png",
+    "generated": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f9cb-bb85-78a1-81ef-0c35a9ff7d1b/exec-3c9ce734-83f6-4345-8ed6-a5d8bf7b095c.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "status": "candidate",
+    "inputSha256": "36d42e70dbf4824b00f3f6a62bcd7c0b6aff2dafe60bf05d811fd65431d80593",
+    "rawSha256": "54cc88a5135a2e616b49374e6747591c335c7216c08757d9c44ebc5fa3ebf076",
+    "rawPath": "raw/ford_w1_ne_summer-v1.png",
+    "seed": null,
+    "postprocess": "Fresh generated w1 art, not w2 compression. Premultiplied bilinear isometric-axis normalization using summer geometry for both seasons; water-colour ROI alpha multiplied by 0.58. Sharp PNG compression9. See ford-metrics.json and ford-export.mjs."
+  },
+  {
+    "id": "ford_w1_nw_summer-v1",
+    "direction": "nw",
+    "prompt": "Use case: historical-scene. Create ONE new transparent isolated game terrain sprite, a ONE-TILE-WATER-SPAN shallow ford in summer southern England 1300–1450. Reference image is existing Wave34 TWO-span ford, use its painterly natural materials and isometric camera only. Redraw a much shorter water crossing with only THREE irregular stepping stones rather than squeeze the old many-stone drawing. Actual water span equals crossing lane width: one tile across and one tile wide; bank approaches each half tile long. Ground 2:1 isometric. Travel runs NW upper-left to SE lower-right slope +0.5, no other direction. Final framing512x256, anchor256,128. Water bank join centers 224,112 and288,144. One production tile128x64. Compact natural ford patch centered in generous transparent margin. Small olive grass and mud banks with subtle twin cart wheel ruts enter water at each end. Gravel visible beneath shallow muted grey-blue translucent water. Three low irregular warm grey stepping stones, never paved road or raised causeway. Hand-painted soft forms, top-left light, soft contact AO only; no black outline, no photoreal noise, no foam, bridges, wood planks, structures, figures or text. Outside patch true transparent alpha; water partial alpha; banks and stones solid. Art bible v2. A single newly composed short ford only, not full scene or sheet.",
+    "input": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave34/candidates-20260929/assets/ford/ford_w2_nw_summer-v1.png",
+    "generated": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f9cb-bb85-78a1-81ef-0c35a9ff7d1b/exec-4f6d0924-c61a-4dc7-a3a0-2e5d95830e2c.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "status": "candidate",
+    "inputSha256": "7b2a3b983a4b03ea90c9375f4f005a6bbef2bcedfe6ec4d6e9440fab8f4b1259",
+    "rawSha256": "952cf9455787bdcd20bdbdccdadb4bc8ea1c18a66268dc45b0b637f97b83677a",
+    "rawPath": "raw/ford_w1_nw_summer-v1.png",
+    "seed": null,
+    "postprocess": "Fresh generated w1 art, not w2 compression. Premultiplied bilinear isometric-axis normalization using summer geometry for both seasons; water-colour ROI alpha multiplied by 0.58. Sharp PNG compression9. See ford-metrics.json and ford-export.mjs."
+  },
+  {
+    "id": "ford_w1_ne_winter-v1",
+    "direction": "ne",
+    "input": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f9cb-bb85-78a1-81ef-0c35a9ff7d1b/exec-3c9ce734-83f6-4345-8ed6-a5d8bf7b095c.png",
+    "prompt": "Use case: lighting-weather. Edit this exact summer ONE-span ford into mild southern English winter 1300–1450. Keep exact canvas, camera, center, terrain footprint, water bank junctions, every stone position and size, both rutted ramp outlines and transparency. Change season ONLY: grass dormant grey olive, very sparse frost on outer bank soil, thin broken ice rims near bank water edges. Open water stays visible and translucent muted grey-blue, no complete freeze, no deep snow or thick white border. Same Art Bible v2 hand-painted broad material forms and top-left light. Preserve the three stepping stones, do not move or add stones. Outside patch genuine transparent background. Single sprite, no text.",
+    "generated": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f9cb-bb85-78a1-81ef-0c35a9ff7d1b/exec-845c01eb-0b13-43e0-b17a-fd9e4c83cca7.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "status": "candidate",
+    "inputSha256": "54cc88a5135a2e616b49374e6747591c335c7216c08757d9c44ebc5fa3ebf076",
+    "rawSha256": "0c9dab606d1adc536bb53ec4e5fa2816d78ab40a605e8d74fa970ec1f7ac1edd",
+    "rawPath": "raw/ford_w1_ne_winter-v1.png",
+    "seed": null,
+    "postprocess": "Fresh generated w1 art, not w2 compression. Premultiplied bilinear isometric-axis normalization using summer geometry for both seasons; water-colour ROI alpha multiplied by 0.58. Sharp PNG compression9. See ford-metrics.json and ford-export.mjs."
+  },
+  {
+    "id": "ford_w1_nw_winter-v1",
+    "direction": "nw",
+    "input": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f9cb-bb85-78a1-81ef-0c35a9ff7d1b/exec-4f6d0924-c61a-4dc7-a3a0-2e5d95830e2c.png",
+    "prompt": "Use case: lighting-weather. Edit this exact summer ONE-span ford into mild southern English winter 1300–1450. Keep exact canvas, camera, center, terrain footprint, water bank junctions, every stone position and size, both rutted ramp outlines and transparency. Change season ONLY: grass dormant grey olive, very sparse frost on outer bank soil, thin broken ice rims near bank water edges. Open water stays visible and translucent muted grey-blue, no complete freeze, no deep snow or thick white border. Same Art Bible v2 hand-painted broad material forms and top-left light. Preserve the three stepping stones, do not move or add stones. Outside patch genuine transparent background. Single sprite, no text.",
+    "generated": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f9cb-bb85-78a1-81ef-0c35a9ff7d1b/exec-08a6288f-34c1-45f2-9f4b-9e6408110372.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "status": "candidate",
+    "inputSha256": "952cf9455787bdcd20bdbdccdadb4bc8ea1c18a66268dc45b0b637f97b83677a",
+    "rawSha256": "05d3eb8779dbb4cd24a805a1da6976da73715527153baeeef54fb09131371e7f",
+    "rawPath": "raw/ford_w1_nw_winter-v1.png",
+    "seed": null,
+    "postprocess": "Fresh generated w1 art, not w2 compression. Premultiplied bilinear isometric-axis normalization using summer geometry for both seasons; water-colour ROI alpha multiplied by 0.58. Sharp PNG compression9. See ford-metrics.json and ford-export.mjs."
+  }
+]
