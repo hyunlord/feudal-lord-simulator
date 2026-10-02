@@ -1,0 +1,10 @@
+// Merge into SEASON_IMAGES in src/render/seasonArtManifest.generated.ts. Replace matching keys; do not duplicate.
+  orchard_apple_c_spring: {"url": "assets/wave43/orchard/orchard_apple_spring.png", "width": 256, "height": 256, "bases": ["orchard_apple_c"], "season": "spring"},
+  orchard_pear_e_spring: {"url": "assets/wave43/orchard/orchard_pear_spring.png", "width": 256, "height": 256, "bases": ["orchard_pear_e"], "season": "spring"},
+  orchard_plum_f_spring: {"url": "assets/wave43/orchard/orchard_plum_spring.png", "width": 256, "height": 256, "bases": ["orchard_plum_f"], "season": "spring"},
+  tree_birch_spring: {"url": "assets/wave43/trees_broadleaf/tree_birch_spring.png", "width": 60, "height": 96, "bases": ["tree_birch"], "season": "spring"},
+  tree_oak_large_spring: {"url": "assets/wave43/trees_broadleaf/tree_oak_large_spring.png", "width": 88, "height": 112, "bases": ["tree_oak_large"], "season": "spring"},
+  tree_oak_small_spring: {"url": "assets/wave43/trees_broadleaf/tree_oak_small_spring.png", "width": 64, "height": 80, "bases": ["tree_oak_small"], "season": "spring"},
+  tree_dead_spring: {"url": "assets/wave43/trees_other/tree_dead_spring.png", "width": 56, "height": 80, "bases": ["tree_dead"], "season": "spring"},
+  tree_pine_short_spring: {"url": "assets/wave43/trees_other/tree_pine_short_spring.png", "width": 56, "height": 88, "bases": ["tree_pine_short"], "season": "spring"},
+  tree_pine_tall_spring: {"url": "assets/wave43/trees_other/tree_pine_tall_spring.png", "width": 64, "height": 120, "bases": ["tree_pine_tall"], "season": "spring"},
