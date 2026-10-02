@@ -38,6 +38,8 @@ test("install: 20 paintings and their 80 own layers, received bytes, ledgers and
   const column = (name: string) => inboxHeader!.indexOf(name);
   const inboxByFile = new Map(inboxRows.map(row => [row[column("file")], row]));
   const provenance = new Map(parseCsvRows(readFileSync("docs/provenance/assets.csv", "utf8")).map(row => [row.runtimePath, row]));
+  const [registrationHeader, ...registrationRows] = parseCsv(readFileSync("docs/provenance/state-layer-registration.csv", "utf8"));
+  const registration = new Map(registrationRows.map(row => [row[0]!, Object.fromEntries(registrationHeader!.map((name, index) => [name, row[index]]))]));
   const [recordHeader, ...recordRows] = parseCsv(readFileSync("assets-inbox/wave26/candidates-20260928/records/generation-records.csv", "utf8").replace(/^﻿/, ""));
   const records = new Map(recordRows.map(row => [row[recordHeader!.indexOf("id")]!.replace(/-v1$/, ""), Object.fromEntries(recordHeader!.map((key, index) => [key, row[index]]))]));
   assert.equal(Object.keys(WAVE26_HOUSE_IMAGES).length, 100);
@@ -48,9 +50,12 @@ test("install: 20 paintings and their 80 own layers, received bytes, ledgers and
     const source = records.get(key);
     assert.ok(source !== undefined, key);
     const digest = sha(runtime);
-    assert.equal(digest, source.sha256, `${key} = the batch's bytes`);
+    // BLD-06: a registered layer is the batch's picture moved onto its painting (scripts/registerStateLayers.py).
+    const moved = registration.get(runtime)?.decision === "registered" ? registration.get(runtime) : undefined;
+    assert.equal(moved?.sourceSha256 ?? digest, source.sha256, `${key} = the batch's bytes`);
+    assert.equal(digest, moved?.runtimeSha256 ?? digest, `${key} registered`);
     const row = inboxByFile.get(`wave26/candidates-20260928/${source.file}`);
-    assert.equal(row?.[column("sha256")], digest);
+    assert.equal(row?.[column("sha256")], source.sha256);
     assert.equal(row?.[column("status")], "confirmed");
     assert.equal(row?.[column("installed_by")], "INSTALL-26");
     const ledger = provenance.get(runtime);

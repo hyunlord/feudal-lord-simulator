@@ -24,6 +24,7 @@ import sys
 from pathlib import Path
 
 from PIL import Image
+from registerStateLayers import main as register_state_layers
 
 ROOT = Path(__file__).resolve().parent.parent
 CANDIDATES = ROOT / "assets-inbox/wave32/candidates-20260929"
@@ -152,6 +153,7 @@ def main() -> None:
         "/** Registered only: Astra gave the props no place on the building (records/props-review.md). */\n"
         f"export const WAVE32_GRANARY_PROPS = {json.dumps(sorted(props), separators=(', ', ': '))} as const;\n")
     print(len(rows), "rows;", len(images), "installed;", len(variants), "paintings;", len(props), "props")
+    register_state_layers()  # BLD-06: the repainted layers registered onto their painting (scripts/registerStateLayers.py)
 
 
 if __name__ == "__main__":

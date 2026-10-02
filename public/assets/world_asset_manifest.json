@@ -1471,29 +1471,6 @@
       "alphaPolicy": "transparent-native-alpha"
     },
     {
-      "key": "mill",
-      "category": "building",
-      "path": "public/assets/buildings/mill.png",
-      "sha256": "ceef83b4a39974478c67442d8526225ef3f13897ba47da0dc24c94e2dcb84969",
-      "width": 96,
-      "height": 160,
-      "renderScale": 0.44000000000000006,
-      "anchor": {
-        "x": 48,
-        "y": 144
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      },
-      "source": {
-        "seed": 71300005,
-        "candidate": 1
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
       "key": "barn",
       "category": "building",
       "path": "public/assets/buildings/barn.png",
@@ -1614,121 +1591,6 @@
       "alphaPolicy": "transparent-native-alpha"
     },
     {
-      "key": "quarry",
-      "category": "building",
-      "path": "public/assets/buildings/quarry.png",
-      "sha256": "22c777573df6791fa76fe70e5eaf34e95ea65cad291e4cfb859f7e057a13279b",
-      "width": 160,
-      "height": 120,
-      "renderScale": 0.5866666666666667,
-      "anchor": {
-        "x": 80,
-        "y": 104
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      },
-      "source": {
-        "seed": 64054102,
-        "candidate": 2
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
-      "key": "masonry",
-      "category": "building",
-      "path": "public/assets/buildings/masonry.png",
-      "sha256": "e3b76c2f8ee9232beaeb0f297dbb825423372daacd7b319245e9cc6ba082fe95",
-      "width": 112,
-      "height": 120,
-      "renderScale": 0.5866666666666667,
-      "anchor": {
-        "x": 56,
-        "y": 104
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      },
-      "source": {
-        "seed": 64054203,
-        "candidate": 3
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
-      "key": "market",
-      "category": "building",
-      "path": "public/assets/buildings/market.png",
-      "sha256": "49f742f1c794bbc68aeb2bfb41126d5b944f5639ebe4c72b4a7df91262f25066",
-      "width": 176,
-      "height": 136,
-      "renderScale": 0.5176470588235295,
-      "anchor": {
-        "x": 88,
-        "y": 120
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      },
-      "source": {
-        "seed": 64054304,
-        "candidate": 4
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
-      "key": "church",
-      "category": "building",
-      "path": "public/assets/buildings/church.png",
-      "sha256": "d327800532a7ef826537530b89f4087d2a4d58b4015fbb9e44183f67facc1075",
-      "width": 176,
-      "height": 208,
-      "renderScale": 0.49230769230769234,
-      "anchor": {
-        "x": 88,
-        "y": 192
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      },
-      "source": {
-        "seed": 71300015,
-        "candidate": 1
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
-      "key": "keep",
-      "category": "building",
-      "path": "public/assets/buildings/keep.png",
-      "sha256": "102774e2c7520bafc308c9cffc6a2cf0db1e20f1d03a04ab56fb4d9f3cd4358e",
-      "width": 176,
-      "height": 232,
-      "renderScale": 0.44137931034482764,
-      "anchor": {
-        "x": 88,
-        "y": 216
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      },
-      "source": {
-        "seed": 64054503,
-        "candidate": 3
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
-    },
-    {
       "key": "house_l4",
       "category": "building",
       "path": "public/assets/buildings/house_l4.png",
@@ -1751,29 +1613,6 @@
       },
       "palettePolicy": "full-colour-generated",
       "alphaPolicy": "transparent-native-alpha"
-    },
-    {
-      "key": "stone_wall_segment",
-      "category": "building",
-      "path": "public/assets/buildings/stone_wall_segment.png",
-      "sha256": "cb0b36132bb3182bebbee21d05029aa37c8e31756b7035f259ca79ef062cb920",
-      "width": 96,
-      "height": 80,
-      "renderScale": 1,
-      "anchor": {
-        "x": 48,
-        "y": 78
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      },
-      "source": {
-        "seed": 64054703,
-        "candidate": 3
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "transparent-outline-179"
     },
     {
       "key": "tree_oak_large",
@@ -2231,37 +2070,6 @@
         "verticalJoinDelta": 7.238525390624988,
         "horizontalInternalDelta": 11.276611328124964,
         "verticalInternalDelta": 12.279785156249996,
-        "threshold": 24,
-        "passed": true
-      }
-    },
-    {
-      "key": "water",
-      "category": "terrain",
-      "path": "public/assets/terrain/water.png",
-      "sha256": "ff47499c738d90db40052b61fbf75424c8370d9d4ae2d0aa5b8fcc42eaf8b2d7",
-      "width": 256,
-      "height": 256,
-      "renderScale": 1,
-      "anchor": {
-        "x": 0,
-        "y": 0
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      },
-      "source": {
-        "seed": 71010302,
-        "candidate": 2
-      },
-      "palettePolicy": "full-colour-generated",
-      "alphaPolicy": "opaque",
-      "seamMetrics": {
-        "horizontalJoinDelta": 3.059407552083336,
-        "verticalJoinDelta": 10.057291666666664,
-        "horizontalInternalDelta": 3.3706054687500036,
-        "verticalInternalDelta": 14.544596354166748,
         "threshold": 24,
         "passed": true
       }
