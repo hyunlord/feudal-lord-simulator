@@ -84,7 +84,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 ### 보냄 — 대기
 - [x] TRADEMARK 항목에 사전 조사 경로·남은 것(영국·전문가) 기록 — 본선 `eb701f8b`
 - [x] `AGENTS.md`·CHARTER·CLAUDE.md에 **"문구는 glossary.md 따름"** 규칙(INBOX가 glossary 넣은 뒤) — 본선 `eb701f8b`
-- [ ] (렌더가 넘기면) "증거 폴더 3MB 넘으면 병합 실패" 검사
+- [x] "증거 폴더 3MB 넘으면 병합 실패" 검사(렌더 NAT-4가 넘김, 결정 RR10) — 본선 `73c80c8b`
 ### 운영 규칙(확인용)
 추이 판정 지표 넷(할당·GC/분·캔버스/초·GC 뒤 힙), 의심 → A-B 자동(95% t 폭) → 나빠짐은 두 번 확정, 실행 폴더 잠금, 푸시 훅 분리, 결정 ID 중복 실패, settings.local.json 규칙, 무거운 검증 Mac 금지.
 
