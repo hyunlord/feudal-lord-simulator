@@ -9,7 +9,9 @@
 //    screen), the gates (44, 28) and (51, 38).
 //  - timber: chapter-three-town (palisade) in summer and winter: the towers, the concave corner (42, 32), the gate
 //    beside the tower (43, 25) and the gate (52, 38).
-//   NAT5_FULL=1 also writes each scene whole (survey, not evidence).
+//   NAT5_FULL=1 also writes each scene whole (survey, not evidence). NAT5_WALL_ZOOM=<z> (default 2) sets the camera zoom,
+//   with each crop covering about the same world area as at zoom 2 (never under half its size), the zoom in the file name
+//   as -z<z>; NAT5_WALL_SPOTS=<name,...> keeps only those spots (the user's gate set: zoom 1.0 and 0.6).
 //   PLAYWRIGHT_MODULE=... tsx scripts/nat5WallCaptures.ts <url> <out dir> <label> [scene ...]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/nat5WallCaptures.ts)", { remote: "scripts/remote/run.sh render-NAT5-wall-<sha7> -- bash scripts/nat5WallCaptures.sh …", entry: import.meta.url });
@@ -56,7 +58,10 @@ const SCENES: readonly Scene[] = [
   { name: "timber-winter", save: CH3, ticks: 3500, centre: [47, 37], view: { width: 2900, height: 1600 }, spots: ch3Spots },
 ];
 const only = new Set(process.argv.slice(5));
-const ZOOM = 2;
+const ZOOM = Number(process.env.NAT5_WALL_ZOOM ?? 2);
+const SPOTS = new Set((process.env.NAT5_WALL_SPOTS ?? "").split(",").filter(name => name !== ""));
+const TAG = process.env.NAT5_WALL_ZOOM === undefined ? "" : `-z${ZOOM}`;
+const CROP = Math.max(0.5, ZOOM / 2);
 
 /** The save with its tick moved by `ticks` (the season the ground, trees and snow draw), as a save file. */
 function sceneSave(scene: Scene): string {
@@ -126,11 +131,12 @@ for (const scene of SCENES) {
   if (process.env.NAT5_FULL === "1") await page.screenshot({ path: join(out, `${scene.name}-full-${label}.jpg`), type: "jpeg", quality: 60 });
   const rows: unknown[] = [];
   for (const spot of scene.spots) {
+    if (SPOTS.size > 0 && !SPOTS.has(spot.name)) continue;
     const at = await proof(`tileClientPoint({ tx: ${spot.at[0] - 0.5}, ty: ${spot.at[1] - 0.5} })`) as { clientX: number; clientY: number };
-    const [width, height] = spot.size ?? [360, 260];
+    const [width, height] = (spot.size ?? [360, 260]).map(side => Math.round(side * CROP)) as [number, number];
     const region = { x: Math.max(0, Math.min(scene.view.width - width, Math.round(at.clientX - width / 2))),
       y: Math.max(0, Math.min(scene.view.height - height, Math.round(at.clientY - height * 0.6))), width, height };
-    await page.screenshot({ path: join(out, `${scene.name}-${spot.name}-${label}.jpg`), type: "jpeg", quality: 82, clip: region });
+    await page.screenshot({ path: join(out, `${scene.name}-${spot.name}${TAG}-${label}.jpg`), type: "jpeg", quality: 82, clip: region });
     rows.push({ spot: spot.name, region });
   }
   const camera = (await proof("diagnosis()") as { camera: { zoom: number } }).camera;
