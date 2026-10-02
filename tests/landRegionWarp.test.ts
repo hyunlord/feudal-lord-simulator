@@ -13,7 +13,8 @@ import { MAP_ARCHETYPE_IDS, RIVERSIDE_ARCHETYPE_ID } from "../src/content/scenar
 import { newGameState } from "../src/state/newGame";
 import { landGroundOf, type LandGround } from "../src/render/archetypeGroundModel";
 import { fillRegions } from "../src/render/archetypeGroundRegions";
-import { groundTileAs, rockRegion } from "../src/render/landRockRegions";
+import { groundTileAs, rockChunkToken, rockGroundOf, rockRegion } from "../src/render/landRockRegions";
+import { groundBoundaryScene } from "../src/render/groundBoundaryScene";
 import { ROCK_WARP_SCALE, warpPoint } from "../src/render/landRegionWarp";
 import { pointInPolygon } from "../src/render/groundSceneParts";
 import type { BoundaryPoint } from "../src/world/boundary/boundaryGeometry";
@@ -193,12 +194,31 @@ test("NAT-5: the rock region covers the rock tiles and leaves the rest (tile cen
   }
 });
 
-test("NAT-5 / LU-D2: the riverside keeps its rock tiles and pebble marks; a land lays rock as ground and draws no pebbles", () => {
+test("NAT-5 / N5-D1: the riverside's rock is the same smoothed region (it has no land layer); every land lays rock as ground and draws no pebbles", () => {
   const rock = { tx: 3, ty: 4, terrain: "rock" } as Parameters<typeof groundTileAs>[0];
-  assert.equal(groundTileAs(rock, null).terrain, "rock");
-  assert.equal(groundTileAs(rock, groundOf("core:chalk_downs", 1)).terrain, "grass");
-  assert.equal(groundTileAs({ ...rock, terrain: "forest" }, null).terrain, "grass");
+  assert.equal(groundTileAs(rock).terrain, "grass");
+  assert.equal(groundTileAs({ ...rock, terrain: "forest" }).terrain, "grass");
+  const riverside = newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: RIVERSIDE_ARCHETYPE_ID, seed: 1 })!;
+  assert.equal(landGroundOf(riverside), null, "LU-D2: still no land layer");
+  const ground = rockGroundOf(riverside);
+  assert.equal(ground.rock.filter(value => value === 1).length, riverside.tiles.filter(tile => tile.terrain === "rock").length);
+  const region = rockRegion(ground);
+  assert.ok(region.loops.length > 0);
+  const { share, longest } = alignment(region.loops.map(loop => loop.smoothed));
+  assert.ok(share < 0.25 && longest < 2.5, `riverside rock: ${share.toFixed(3)} ${longest.toFixed(2)}`);
+  assert.equal(crossings(region.loops.map(loop => loop.smoothed)), 0);
+  // Cached on the tiles, and reused for a new tiles array with the same rock (a road, a building).
+  assert.equal(rockGroundOf(riverside), ground);
+  assert.equal(rockGroundOf({ ...riverside, tiles: riverside.tiles.map(tile => ({ ...tile })) }), ground);
+  // A chunk the rock does not reach gains nothing in its content key; one it reaches gains its loops.
+  const scene = groundBoundaryScene(riverside);
+  const tokens = scene.chunks.map(plan => rockChunkToken(ground, plan));
+  assert.ok(tokens.some(token => token === "") && tokens.some(token => token.startsWith("|R")));
+  // A new land's rock lives on its land layer.
+  const downs = newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: "core:chalk_downs", seed: 1 })!;
+  assert.equal(rockGroundOf(downs), landGroundOf(downs));
   const source = readFileSync(new URL("../src/render/drawTerrainBoundaryV2.ts", import.meta.url), "utf8");
-  assert.match(source, /if \(land === null\) drawTerrainTransitions\(/);
-  assert.match(source, /drawGroundDiamond\(context, groundTileAs\(tile, land\)/);
+  assert.ok(!source.includes("drawTerrainTransitions"), "no pebble seam marks on the V2 ground");
+  assert.match(source, /\n  drawLandRock\(context, rockGroundOf\(input\.state\), plan, box, input\.terrainPatterns\);/);
+  assert.match(source, /\+ rockChunkToken\(rockGroundOf\(input\.state\), plan\)/);
 });

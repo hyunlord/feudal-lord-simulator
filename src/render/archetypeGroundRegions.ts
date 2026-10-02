@@ -65,7 +65,7 @@ function regionOf(land: LandGround, base: string): FillRegion {
 }
 
 /** The land's warp at `scale` (1 for the fills), pinned at its drained cells (landRegionWarp.ts). */
-export function landWarp(land: LandGround, scale: number): WarpField {
+export function landWarp(land: Pick<LandGround, "seed" | "width" | "height" | "drained">, scale: number): WarpField {
   const pinned = distanceToCells(land.width, land.height, land.drained);
   return { seed: land.seed, width: land.width, height: land.height, scale, ...(pinned === undefined ? {} : { pinned }) };
 }
