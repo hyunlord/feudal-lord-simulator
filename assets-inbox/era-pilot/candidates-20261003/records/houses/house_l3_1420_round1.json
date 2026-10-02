@@ -1,0 +1,44 @@
+{
+  "id": "house_l3_1420",
+  "source": "/Users/rexxa/fls-astra-era/public/assets/buildings/historical-houses/house_l3-v2.png",
+  "raw": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-bafbe4bd-dc3d-467e-914e-fc9b6f83ab96.png",
+  "prompt": "Edit the provided complete isometric southern English townhouse sprite to year1420, same house and same small-game painterly style. Precisely preserve the reference square canvas, silhouette, roof geometry, two facade directions, foundation contact, door and all timber post positions, upper-left illumination. This is L3: add a single very restrained plain stone chimney no pot positioned IN FRONT OF the rear roof slope, contained within original outer silhouette; one modest upper window now small dull leaded panes, never blue modern glass. Maintain warm cream limewash and natural brown oak, terracotta small irregular flat tiles, subdued wood texture. Existing small jetty emphasized by timber joinery, do not enlarge building. No Tudor black-white, no bricks, no new background, no text. Complete finished unified sprite, not parts. Transparent background. Keep object scale/margins exactly like reference rather than filling canvas differently.",
+  "tool": "image_gen.imagegen",
+  "model": "not disclosed",
+  "seed": "not disclosed",
+  "status": "candidate",
+  "normalization": {
+    "method": "single full-object affine registration from raw alpha>=8 bbox to original bbox; no part compositing or copied alpha",
+    "arguments": [
+      142,
+      142,
+      148,
+      51,
+      996,
+      1154,
+      18,
+      7,
+      113,
+      132
+    ],
+    "final_bbox": [
+      18,
+      7,
+      131,
+      139
+    ],
+    "source_bbox": [
+      18,
+      7,
+      131,
+      139
+    ],
+    "silhouette_iou": 0.9704189803129732,
+    "canvas": [
+      142,
+      142
+    ]
+  },
+  "source_sha256": "2c557c5345a568e1bf80e9ba7fdc9c3bfc5463b6706ffdb9c71e789f320d28dc",
+  "raw_sha256": "04be97c2a5fe6cc22e03e1d4a6adfe5713a1c7e2e96c4acf9f9577e555fceb0a"
+}

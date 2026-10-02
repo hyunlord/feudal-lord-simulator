@@ -14,7 +14,7 @@ import { projectPalisadeProclamation } from "../src/engine/palisade";
 import { computePalisadeProposalForState, palisadeFootprintsForState } from "../src/engine/palisadeFootprints";
 import { palisadeRingPoints, palisadeStepPoints } from "../src/engine/palisadeSegments";
 import { advanceTimberTrade, orderTimber, timberTradePoint } from "../src/engine/timberTrade";
-import { computePalisadeProposal, isWaterReachStep, pathHasWaterReach, validatePalisadeCandidate } from "../src/world/palisadeGeometry";
+import { computePalisadeProposal, diagnosePalisadeDraft, dragPalisadeRun, isWaterReachStep, pathHasWaterReach, validatePalisadeCandidate } from "../src/world/palisadeGeometry";
 import { treasuryBalance } from "../src/ledger/ledger";
 
 /** The seed's opening on an island: every cell beyond its buildings' box is water (no ring can keep to land). */
@@ -77,4 +77,30 @@ test("TT-5 the hamlet's carted timber: dearer than the market's, one a market da
   assert.equal(delivered.treasuryTimber - day.treasuryTimber, TIMBER_TRADE_BALANCE.hamletPerMarketDay);
   assert.equal(treasuryBalance(day) - treasuryBalance(delivered), TIMBER_TRADE_BALANCE.hamletPerMarketDay * TIMBER_TRADE_BALANCE.hamletPrice);
   assert.equal(delivered.timberOrder, TIMBER_TRADE_BALANCE.hamletMaxOrder - TIMBER_TRADE_BALANCE.hamletPerMarketDay);
+});
+
+test("WP-1 (render NAT-5) a player's water-reach draft: its diagnosis and a dragged run take the option; without it they refuse the water", () => {
+  const state = hemmed();
+  const footprints = palisadeFootprintsForState(state);
+  const proposal = computePalisadeProposalForState(state);
+  assert.ok(proposal.ok);
+  const option = { waterReach: true } as const;
+  // Diagnosis: no water fault on any segment with the option; the default still marks the water steps.
+  const reached = diagnosePalisadeDraft(state, proposal.path, footprints, footprints, 0.6, option);
+  assert.equal(reached.validation.ok, true);
+  assert.ok(reached.segments.every(segment => segment.reason !== "water_crossing"));
+  const plain = diagnosePalisadeDraft(state, proposal.path, footprints);
+  assert.equal(plain.validation.ok, false);
+  assert.ok(plain.segments.some(segment => segment.reason === "water_crossing"));
+  // Dragging a run: some run moves with the option (routed through the water where it must); none without it.
+  const validation = validatePalisadeCandidate(state, proposal.path, footprints, footprints, 0.6, option);
+  assert.ok(validation.ok);
+  const candidate = validation.candidate;
+  const drags = candidate.runs.flatMap((_run, index) => [-1, 1].map(steps => ({ index, steps })));
+  const moved = drags.map(drag => dragPalisadeRun(state, candidate, drag.index, drag.steps, footprints, footprints, 0.6, option));
+  assert.ok(moved.some(result => result.ok && result.candidate !== candidate), "a run moves with the water reach");
+  for (const drag of drags) {
+    const result = dragPalisadeRun(state, candidate, drag.index, drag.steps, footprints);
+    assert.equal(result.ok, false, `run ${drag.index} by ${drag.steps} refuses the water without the option`);
+  }
 });

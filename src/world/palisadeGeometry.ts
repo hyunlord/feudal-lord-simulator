@@ -503,8 +503,10 @@ export function diagnosePalisadeDraft(
   footprints: readonly PalisadeFootprint[],
   enclosureFootprints = footprints,
   minimumEnclosureRatio = 0.6,
+  options: { readonly waterReach?: boolean } = {},
 ): PalisadeDraftDiagnosis {
-  const validation = validatePalisadeCandidate(grid, path, footprints, enclosureFootprints, minimumEnclosureRatio);
+  // FIX-15 follow-up (WP-1): with `waterReach` the draft's water steps are the water's bound, not a fault.
+  const validation = validatePalisadeCandidate(grid, path, footprints, enclosureFootprints, minimumEnclosureRatio, options);
   const segments: PalisadeDraftSegment[] = [];
   for (let index = 1; index < path.length; index += 1) {
     const from = path[index - 1];
@@ -533,7 +535,7 @@ export function diagnosePalisadeDraft(
         const previous = raster[step - 1];
         const current = raster[step];
         if (previous === undefined || current === undefined) continue;
-        if (stepCrossesWater(grid, previous, current)) {
+        if (options.waterReach !== true && stepCrossesWater(grid, previous, current)) {
           reason = "water_crossing";
           point = diagonalInteriorCell(previous, current) ?? current;
         }
@@ -666,6 +668,7 @@ export function dragPalisadeRun(
   footprints: readonly PalisadeFootprint[],
   enclosureFootprints = footprints,
   minimumEnclosureRatio = 0.6,
+  options: { readonly waterReach?: boolean } = {},
 ): PalisadeDragResult {
   const run = candidate.runs[runIndex];
   if (run === undefined || wholeSteps === 0) return { ok: true, candidate };
@@ -674,10 +677,11 @@ export function dragPalisadeRun(
     return { x: point.x + run.normal.x * wholeSteps, y: point.y + run.normal.y * wholeSteps };
   });
   if (moved.some(point => !edgeInBounds(grid, point))) return { ok: false, reason: "out_of_bounds", lastValid: candidate };
-  const routed = routeClosedPath(grid, moved.slice(0, -1));
+  // FIX-15 follow-up (WP-1): with `waterReach` the dragged run may route through water (its bound there).
+  const routed = routeClosedPath(grid, moved.slice(0, -1), null, options.waterReach === true);
   const validation: PalisadeValidationResult =
     routed === null ? { ok: false, reason: "water_crossing" }
-      : validatePalisadeCandidate(grid, routed, footprints, enclosureFootprints, minimumEnclosureRatio);
+      : validatePalisadeCandidate(grid, routed, footprints, enclosureFootprints, minimumEnclosureRatio, options);
   if (!validation.ok) return { ok: false, reason: validation.reason, lastValid: candidate };
   return { ok: true, candidate: validation.candidate };
 }
