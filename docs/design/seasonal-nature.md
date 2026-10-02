@@ -67,8 +67,8 @@
   - 원인 2: 유휴 시간이 6 ms를 넘는 때가 드물어 미리 그리기가 되지 않았다(46청크 중 0~10).
   - 고친 뒤: 물체는 한 번씩 그리며 물결로 바뀐다. 땅은 8단계로 섞고, 청크마다 단계를 어긋나게 한다. 미리 그리기는 50 ms 안에 적어도 한 청크를 그린다.
   - 판정 선택지: 물체도 알파 크로스페이드를 원하면 GPU가 있는 기기에서만 켜는 선택이 남는다.
-- **N4-D3 지붕 눈은 집과 곡창만, 시설은 아직 없음(NAT-4 RUN-02, 미술 감사 2026-10-02; 사용자 판정 대기):** 겨울 같은 장면에서 집·곡창 지붕은 희고 창고 지붕은 붉게 드러난다. 오류가 아니라 그림이 없어서다.
-  - 눈이 얹히는 것: 단독 집(Wave 7 `roof_snow_l0..4`, Wave 26 그림마다 제 `_snow`), 합필 집(Wave 30 `_snow`), 곡창(Wave 32 `granary_*_snow`). 모두 `buildingOverlays.ts`가 같은 순간(`seasonForObject`, 위 I15-3)에 얹는다.
+- **N4-D3 지붕 눈은 집·곡창·창고, 나머지 시설은 아직 없음(NAT-4 RUN-02, 미술 감사 2026-10-02; 창고 눈 그림 확정 2026-10-03, NAT-5 설치):** 겨울 장면에서 집·곡창·창고 지붕이 희어진다. 방앗간·시장·교회 같은 나머지 시설 지붕은 그림이 없어서 붉게 남는다.
+  - 눈이 얹히는 것: 단독 집(Wave 7 `roof_snow_l0..4`, Wave 26 그림마다 제 `_snow`), 합필 집(Wave 30 `_snow`), 곡창(Wave 32 `granary_*_snow`), 창고(`storehouse_a/b/c_snow`, `scripts/installStorehouseSnow.py`). 모두 `buildingOverlays.ts`가 같은 순간(`seasonForObject`, 위 I15-3, 같은 소금 `tx·31 + ty·17`)에 얹는다.
+  - 창고 눈은 그 창고가 지금 그리는 몸체를 따른다(`storehouseSnowArt.ts`). 기본 `storehouse.png`는 a, Wave 2 변형 b·c는 그 그림이 다 불러와졌을 때 b·c이고, 불러오는 동안 몸체가 `storehouse.png`이면 a다. 세 층 모두 몸체와 같은 160×136 캔버스, 오프셋 (0,0)이라 몸체의 맞춤 사각형(`buildingSpriteFit.ts`의 `storehouse`)에 통째로 그린다. 설치 때 눈 화소가 몸체 투명 부분에 하나도 없음을 확인했다(테스트 `tests/storehouseSnow.test.ts`). 눈 그림은 시작 때가 아니라 처음 필요한 겨울 그리기에서 불러온다.
   - 겨울 그림이 따로 있는 것: 농가(`farmstead_winter`, 눈 없는 겨울 헛간)와 목초 농장(`farm_pastoral_winter`).
-  - 아직 눈이 없는 것: 창고(`storehouse`, 변형 b·c 포함)와 나머지 시설(방앗간, 시장, 교회, 성채 등). 그림이 오기 전에는 사계절 같은 지붕이다. 그림 없이 지붕을 칠하거나 틴트하지 않는다(I15-D2와 같은 이유).
-  - 그림이 오면: 창고 a·b·c마다 그 그림과 같은 캔버스(160×136, `storehouse.png`·`storehouse_b/c-v1.png`와 같은 크기·위치) 위의 지붕 눈 레이어를 곡창처럼 `buildingOverlays.ts`에서 같은 `seasonForObject` 소금으로 얹는다. Astra 의뢰는 NAT-4 미술 보고서에 있다.
+  - 아직 눈이 없는 것: 나머지 시설(방앗간, 시장, 교회, 성채 등). 그림이 오기 전에는 사계절 같은 지붕이다. 그림 없이 지붕을 칠하거나 틴트하지 않는다(I15-D2와 같은 이유).
