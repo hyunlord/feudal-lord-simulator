@@ -42,7 +42,7 @@ export function drainSelect(context: DrainToolContext, world: WorldPoint): boole
   const nowMs = performance.now();
   const action: GameAction | null = preview.ok ? { type: "drain_fen", tx: tile.tx, ty: tile.ty } : null;
   const feedback = createPlacementFeedback({ kind: preview.ok ? "success" : "failure", anchor: { kind: "tile", tile }, nowMs,
-    message: preview.ok ? DRAINAGE_COPY.started(preview.cells.length) : drainRefusalText(preview.reason ?? "not_still_water") });
+    message: preview.ok ? DRAINAGE_COPY.started(preview.cells.length) : preview.refusalText ?? drainRefusalText(preview.reason ?? "not_still_water") });
   context.refs.feedbackRef.current = feedback;
   playPlacementSound({ action, feedback });
   if (action !== null) context.dispatch(action);

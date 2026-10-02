@@ -15,6 +15,8 @@ const ROLES: Readonly<Record<string, string>> = { head: "가구주", spouse: "�
 export const OCCUPATION_TITLES: Readonly<Record<string, string>> = {
   miller: "방앗간지기", sawyer: "톱장이", mason: "석공", chapman: "행상", husbandman: "농부", woodward: "산지기", quarrier: "채석공",
   granger: "곡창지기", storekeeper: "창고지기", steward: "청지기", lord: "영주", lady: "귀부인",
+  // NAT-4 (QA-014): the outside factions' leaders (the biography read "가구주 · king").
+  king: "국왕", earl: "백작", bishop: "주교",
 };
 /** What a household member is to the person the biography is about (their role → the member's role). */
 const RELATIVES: Readonly<Record<string, Readonly<Record<string, string>>>> = {

@@ -125,7 +125,8 @@ async function dispatchPointClick(client, point) {
 
 async function assertPhase14ControlState(client) {
   return client.evaluate(`(() => {
-    const fivefold = [...document.querySelectorAll("button")].find((button) => button.getAttribute("aria-label") === "5배속" || button.textContent?.trim() === "5배속");
+    // NAT-4: the one fast seal names its speed and what a press does ("5배속 · 누르면 10배속" once at 5x).
+    const fivefold = [...document.querySelectorAll("button")].find((button) => (button.getAttribute("aria-label") ?? "").startsWith("5배속") || button.textContent?.trim() === "5배속");
     const autoplay = [...document.querySelectorAll("button")].find((button) => button.getAttribute("aria-label") === "자동 발전" || button.textContent?.trim() === "자동 발전");
     if (fivefold === undefined || autoplay === undefined) throw new Error("phase14 controls missing");
     autoplay.focus({ preventScroll: true });

@@ -24,7 +24,7 @@ const EVENT_TYPE = /\b\w*(Mouse|Pointer|Wheel|Keyboard|Touch)Event\b/;
 const DOM_ONLY_METHODS = new Set(["preventDefault", "stopPropagation", "stopImmediatePropagation"]);
 const SINKS = new Set(["setSpeed", "setSelectedTool", "setZoneTool", "dispatch"]);
 /** UI-KIT-1: kit parts (src/ui/kit) whose `on*` props are host handlers in effect (R4). */
-const KIT_PARTS = new Set(["Button", "IconButton", "Toggle", "Checkbox", "Slider", "Tabs", "Select", "Disclosure"]);
+const KIT_PARTS = new Set(["Button", "IconButton", "Toggle", "Checkbox", "Slider", "Tabs", "Select", "Disclosure", "NumberField"]);
 
 type Node = { readonly type: string; readonly start: number; readonly end: number; readonly [key: string]: unknown };
 

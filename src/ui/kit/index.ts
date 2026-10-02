@@ -4,3 +4,4 @@ export { Checkbox, Chip, Divider, Slider, Tabs, Toggle, Tooltip, type TabItem } 
 export { Card, Modal, Panel, type FrameKind } from "./Frame";
 export { Select, type SelectOption } from "./Select";
 export { Disclosure } from "./Disclosure";
+export { NumberField, numberFieldDigits } from "./NumberField";

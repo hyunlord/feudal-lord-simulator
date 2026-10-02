@@ -24,6 +24,7 @@ import sys
 from pathlib import Path
 
 from PIL import Image
+from registerStateLayers import main as register_state_layers
 
 ROOT = Path(__file__).resolve().parent.parent
 BATCH = ROOT / "assets-inbox/wave30/candidates-20260929"
@@ -164,6 +165,7 @@ def main() -> None:
         "export const WAVE30_PAIR_HOUSE_IMAGES = {\n" + body + "\n} as const;\n\nexport type Wave30PairHouseKey = keyof typeof WAVE30_PAIR_HOUSE_IMAGES;\n\n"
         "export const WAVE30_PAIR_HOUSE_VARIANTS = [\n" + listed + "\n] as const;\n")
     print(len(rows), "rows;", len(images), "installed;", len(variants), "paintings")
+    register_state_layers()  # BLD-06: the repainted layers registered onto their painting (scripts/registerStateLayers.py)
 
 
 if __name__ == "__main__":

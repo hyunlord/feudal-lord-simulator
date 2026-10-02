@@ -69,8 +69,8 @@ test("LU-D3/D4 ford groups on the coast, downs and forest edge (seeds 1-3): join
       }
       assert.deepEqual(group.centre, { tx: xs.reduce((a, b) => a + b, 0) / xs.length, ty: ys.reduce((a, b) => a + b, 0) / ys.length });
       assert.equal(group.road, false, "a new game has no road on its fords");
-      // LU-D4: width 1 draws the w2 sheet; the sheet's axis is the group's.
-      assert.equal(fordKey(group.width, group.axis, "summer"), `ford_w2_${group.axis}_summer`);
+      // NAT-4 (LU-D4 follow-up): width 1 draws the Wave 41 w1 sheet, width 2 the w2 sheet; the sheet's axis is the group's.
+      assert.equal(fordKey(group.width, group.axis, "summer"), `ford_w${group.width}_${group.axis}_summer`);
     }
   }
   assert.deepEqual(fordGroups(DEFAULT_GAME_STATE), []);
@@ -146,7 +146,16 @@ test("LU-D5 drainage stages by progress, the region sheet by the cells' box, sta
   assert.equal(stageKey(1, "3x3", worksSeason(0)), "drain_stage1_staked_summer", "LU-D1: spring uses summer");
   assert.equal(worksSeason(2), "summer", "LU-D1: autumn uses summer");
   for (const key of ["drain_stage3_drying_summer_5x5", "drain_stage3_drying_summer_3x3"] as const) assert.equal(WAVE34_WORKS[key].repeat, "region");
-  // The region sheet's pivot lands on the box centre: the 5 x 5 sheet at 0.5 spans the box's five tiles.
+  // FIX-13: the region sheet's pivot is the works' origin (the tile the player chose); every cell lies within two
+  // tiles of it, so 3x3 only when all lie within one. A pre-v44 work (no origin) keeps the box centre.
+  assert.deepEqual([plan.region, plan.centre], ["5x5", { tx: 12, ty: 12 }], "no origin: the box centre");
+  const withOrigin = (cells: readonly number[], tx: number, ty: number) => workPlan(state, { ...work(cells, 300 * 6), origin: { tx, ty } });
+  assert.deepEqual([withOrigin(full, 12, 12).region, withOrigin(full, 12, 12).centre], ["5x5", { tx: 12, ty: 12 }]);
+  const three = square(width, 10, 10, 3);
+  assert.deepEqual([withOrigin(three, 11, 11).region, withOrigin(three, 11, 11).centre], ["3x3", { tx: 11, ty: 11 }]);
+  assert.deepEqual([withOrigin(three, 10, 10).region, withOrigin(three, 10, 10).centre], ["5x5", { tx: 10, ty: 10 }], "a corner origin needs the 5 x 5 sheet to cover the 3 x 3 patch");
+  assert.deepEqual(withOrigin(ell, 20, 21).centre, { tx: 20, ty: 21 });
+  // The region sheet's pivot lands on its centre tile: the 5 x 5 sheet at 0.5 spans five tiles around it.
   const centre = tileToScreen(12, 12), corner = tileToScreen(9.5, 9.5);
   assert.equal(centre.sy - corner.sy, WAVE34_WORKS.drain_stage3_drying_summer_5x5.pivot.y * 0.5);
 });
@@ -187,10 +196,11 @@ test("LU-D6 the drain chip: cells, timber and seasons over a mere; each refusal 
   assert.deepEqual(preview.cells, plan.cells);
   assert.deepEqual(preview.lines.map(line => line.text), [`${DRAINAGE_COPY.chipTitle} · ${DRAINAGE_COPY.cells(plan.cells.length)}`,
     DRAINAGE_COPY.timber(plan.timber), DRAINAGE_COPY.seasons(plan.seasons, 4), DRAINAGE_COPY.confirm]);
-  const refused = (state: GameState, tile: { tx: number; ty: number }, reason: DrainageRefusal) => {
+  const refused = (state: GameState, tile: { tx: number; ty: number }, reason: DrainageRefusal, extra: readonly string[] = []) => {
     const result = drainPreview(state, tile);
     assert.equal(result.reason, reason);
-    assert.deepEqual(result.lines.map(line => [line.severity, line.text]), [["block", DRAINAGE_COPY.refusal[reason]]]);
+    assert.deepEqual(result.lines.map(line => [line.severity, line.text]), [["block", DRAINAGE_COPY.refusal[reason]], ...extra.map(text => ["block", text])]);
+    assert.equal(result.refusalText, [DRAINAGE_COPY.refusal[reason], ...extra].join(" · "));
     assert.deepEqual(result.cells, []);
   };
   const { archetypeId: _fen, ...riverside } = fen;
@@ -203,8 +213,16 @@ test("LU-D6 the drain chip: cells, timber and seasons over a mere; each refusal 
   refused(ringed, at, "no_bank");
   const started = gameReducer(fen, { type: "drain_fen", tx: at.tx, ty: at.ty });
   refused(started, at, "busy");
+  const opened = started.drainage!.works[0]!;
+  assert.deepEqual(opened.origin, { tx: at.tx, ty: at.ty }, "FIX-13: the works keep the tile they were started from");
+  assert.deepEqual(workPlan(started, opened).centre, { tx: at.tx, ty: at.ty });
   refused({ ...fen, drainage: { works: [work([1], 0), work([2], 0)], drained: [] } }, at, "too_many_works");
-  refused({ ...fen, treasuryTimber: 0, buildings: fen.buildings.map(building => ({ ...building, inventory: { ...building.inventory, timber: 0 } })) }, at, "insufficient_timber");
+  // FIX-13: the timber refusal says how much the works need and how much the town has ("목재 X 필요 · 지금 Y").
+  const poor = { ...fen, treasuryTimber: 3, buildings: fen.buildings.map(building => ({ ...building, inventory: { ...building.inventory, timber: 0 } })) };
+  const short = drainagePlan(poor, at.tx, at.ty) as Extract<ReturnType<typeof drainagePlan>, { ok: false }>;
+  assert.equal(short.timberNeeded, plan.cells.length * 5);
+  assert.equal(DRAINAGE_COPY.timberShort(short.timberNeeded!, short.timberHave!), `목재 ${plan.cells.length * 5} 필요 · 지금 ${short.timberHave}`);
+  refused(poor, at, "insufficient_timber", [DRAINAGE_COPY.timberShort(short.timberNeeded!, short.timberHave!)]);
   for (const reason of Object.keys(DRAINAGE_COPY.refusal)) assert.match(DRAINAGE_COPY.refusal[reason as DrainageRefusal], /[가-힣]/);
 });
 

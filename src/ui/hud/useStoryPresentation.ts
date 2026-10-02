@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import type { GameState } from "../../engine/engine.types";
+import type { ChapterEnd } from "../../engine/politics.types";
 import { famineStatus, openPetitions } from "../../engine/politics";
 import { presentationPreference } from "../../render/presentationPreferences";
 import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
@@ -20,11 +21,23 @@ type Seen = { beat: StoryBeat; firstSeenMs: number; lastSeenMs: number; dismisse
 /** A chapter's page opens only this long after its end (one season). */
 const CHAPTER_PAGE_TICKS = 1_000;
 
+/**
+ * UI-6 / QA-032: the chapter end whose page is due — the latest, within its season, and not seen yet. The seen mark is
+ * the engine's (`seenTick`, kept in the save; v38 saves have their earlier ends marked by the v39 migration), so a load
+ * does not open the page again; the hook's refs are only the in-session guard until the mark comes back.
+ */
+export function chapterPageDue(state: GameState): ChapterEnd | null {
+  const latest = latestChapterEnd(state);
+  return latest !== null && latest.seenTick === undefined && state.tick - latest.tick < CHAPTER_PAGE_TICKS ? latest : null;
+}
+
 export function useStoryPresentation(input: {
   readonly state: GameState; readonly nowMs: number; readonly blocked: boolean; readonly topModal: UiModal | null;
   readonly pushModal: (modal: UiModal) => void; readonly pause: () => void;
+  /** QA-032: the chapter's page opened — the engine marks it seen (`mark_chapter_page_seen`). */
+  readonly markChapterSeen: (chapter: number) => void;
 }) {
-  const { state, nowMs, blocked, topModal, pushModal, pause } = input;
+  const { state, nowMs, blocked, topModal, pushModal, pause, markChapterSeen } = input;
   const seenRef = useRef(new Map<string, Seen>());
   const openedRef = useRef(new Set<string>());
   const announcedRef = useRef(new Set<string>());
@@ -33,8 +46,7 @@ export function useStoryPresentation(input: {
   const [delayMs] = useState(eventWorldFirstMs);
   const beats = storyBeats(state);
   // UI-6: a chapter's page opens when the chapter ends (within its season), not again on every later load of the town.
-  const latest = latestChapterEnd(state);
-  const end = latest !== null && state.tick - latest.tick < CHAPTER_PAGE_TICKS ? latest : null;
+  const end = chapterPageDue(state);
   // why: every render on purpose: it records what the model shows now and re-renders only when a beat is new
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -78,7 +90,9 @@ export function useStoryPresentation(input: {
     }
     const chapterKey = end === null ? null : `chapter:${end.chapter}`;
     const since = chapterKey === null || openedRef.current.has(chapterKey) ? undefined : chapterSeenRef.current.get(chapterKey);
-    if (chapterKey !== null && since !== undefined && nowMs - since >= delayMs) { openedRef.current.add(chapterKey); pushModal("chronicle"); }
+    // QA-032: marked seen as it opens (as the refs did), so the "pause" autosave the page's modal pause writes already
+    // holds the mark, and a save with the page still open does not show it again.
+    if (end !== null && chapterKey !== null && since !== undefined && nowMs - since >= delayMs) { openedRef.current.add(chapterKey); pushModal("chronicle"); markChapterSeen(end.chapter); }
   });
   // CODE-1c: no presentation clock for the story — one timer wakes this hook when the next chip is due (its delay out),
   // a lingering chip goes, or a chapter end's chronicle may open. App's 100 ms clock stops when nothing else needs it.

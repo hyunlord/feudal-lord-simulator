@@ -115,6 +115,8 @@ export const VIEWPORTS: Readonly<Record<ViewportId, { readonly width: number; re
 export const HUD_ALWAYS: readonly string[] = [
   ".status-pill", ".hud-time-cluster .speed-seal", ".hud-time-cluster .settings-disclosure > summary", ".action-dock .action-dock-button",
   ".layer-switch .control-layer", ".crisis-icons > *", ".event-cards .event-chip", ".goal-chip-rail .goal-card", ".steward-line",
+  // NAT-4 (R15 leftover): the open bubble's first row — the ledger's foot covered the steward's name above his line.
+  ".action-dock + .steward-bubble .steward-name",
 ];
 
 const TOWN = { kind: "state", set: "ui5", name: "merchant-town", tile: "house", zoom: 1.4 } as const;
@@ -163,7 +165,7 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "hud.action-dock", root: ".action-dock", frame: "flat", scene: TOWN, open: [], data: "build, ledger, steward (undo when a site is new)",
     siblingsNoOverlap: [".action-dock-button", ".hud-undo"] },
   { id: "hud.steward-bubble", root: ".steward-bubble", frame: "css", scene: TOWN, open: [{ click: "[data-dock='steward']" }, { pause: 500 }],
-    data: "the steward's line (quiet, or the advisor's line when he speaks)" },
+    scrollParts: [".steward-line"], data: "the steward's line (quiet, or the advisor's line when he speaks)" },
   { id: "hud.crisis-icons", root: ".crisis-icons", frame: "flat", scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: QUIET },
     open: [DISMISS], data: "the famine's alerts (at most three bells)" },
   { id: "hud.stuck-goods", root: ".crisis-icons .stuck-goods-chip", frame: "css", scene: { kind: "state", set: "ui10", name: "empty-manor", tile: "house", zoom: 1.1, query: QUIET },
@@ -230,11 +232,30 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "slot.population", root: ".ledger-population-drawer.slot-panel", frame: "css", scene: TOWN,
     open: [{ click: ".status-pill > .status-pill-cell:nth-of-type(2)" }, { pause: 600 }], scroll: "y", data: "the town's population events" },
   { id: "slot.population.panel", extends: "slot.population", root: ".population-event-panel", frame: "flat", scene: TOWN, open: [], data: "the population log inside the slot" },
+  // NAT-4 (QA-028): the drawer with records in it — a loaded town has none until a house's residents change, so the
+  // famine's town runs until its first loss (starvation, within ten ticks; the merchant town has none for 6,000), then
+  // stops (the first speed seal).
+  { id: "slot.population.records", root: ".ledger-population-drawer.slot-panel", frame: "css",
+    scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: QUIET, run: true },
+    open: [DISMISS, { click: ".status-pill > .status-pill-cell:nth-of-type(2)" }, { wait: ".population-event-panel ol li", timeout: 60_000 },
+      { click: ".hud-time-cluster .speed-seal" }, { pause: 600 }], scroll: "y", requires: ["h2", ".population-event-panel ol .ui-btn"],
+    data: "the famine town's population records after it ran (QA-028: the records, not a 22 px band)" },
   { id: "slot.inspector", root: ".slot-panel.inspector-slot", frame: "css", scene: TOWN,
     open: [LEDGER, { click: ".ledger-held-toggle" }, { click: ".ledger-store" }, { pause: 700 }], scroll: "y", data: "the first store's inspector" },
   { id: "slot.inspector.body", extends: "slot.inspector", root: ".left-inspector", frame: "css", scene: TOWN, open: [], scroll: "y", data: "the inspector inside the slot" },
   { id: "slot.ledger.stock", root: ".slot-panel.ledger-drawer", frame: "css", scene: TOWN, open: [LEDGER, { pause: 600 }], scroll: "y",
     scrollParts: [".ledger-matrix-scroll"], data: "the stone town's stocks" },
+  // NAT-4 (R15 leftover): the ledger with the steward's bubble open over the dock (the town's steward speaks of a crisis
+  // row; the click opens his line in full) — the slot stops above it. The bubble's own row catches it painted over.
+  { id: "slot.ledger.steward", root: ".slot-panel.ledger-drawer", frame: "css", scene: TOWN,
+    open: [LEDGER, { pause: 600 }, { click: "[data-dock='steward']" }, { pause: 500 }], scroll: "y", scrollParts: [".ledger-matrix-scroll"],
+    expect: ".action-dock + .steward-bubble .steward-button", data: "the stone town's stocks with the steward's advice open" },
+  { id: "hud.steward-bubble.ledger", extends: "slot.ledger.steward", root: ".action-dock + .steward-bubble", frame: "css", scene: TOWN, open: [],
+    scrollParts: [".steward-line"], data: "the steward's open advice beside the ledger" },
+  { id: "slot.ledger.steward-concern", root: ".slot-panel.ledger-drawer", frame: "css",
+    scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: QUIET },
+    open: [DISMISS, LEDGER, { click: "[data-ledger-tab='alerts']" }, { pause: 500 }, { click: "[data-dock='steward']" }, { pause: 500 }], scroll: "y",
+    expect: ".action-dock + .steward-bubble .steward-button", data: "the famine's alerts with the steward's warning open" },
   { id: "slot.ledger.alerts", root: ".slot-panel.ledger-drawer", frame: "css", scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: QUIET },
     open: [DISMISS, LEDGER, { click: "[data-ledger-tab='alerts']" }, { pause: 500 }], scroll: "y", data: "the famine's alerts" },
   { id: "slot.ledger.view", root: ".slot-panel.ledger-drawer", frame: "css", scene: TOWN, open: [LEDGER, { click: "[data-ledger-tab='view']" }, { pause: 500 }], scroll: "y",
@@ -376,6 +397,9 @@ export const SURFACES: readonly SurfaceRow[] = [
     data: "the gallery's dark panel" },
   { id: "dev.ui-kit.tooltip", extends: "dev.ui-kit.dark", root: ".ui-tooltip", frame: "css", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
     data: "the kit Tooltip in the gallery" },
+  // NAT-4 (LU-D7): the kit NumberField's row in the gallery (the land agent's NumberField; screen.welcome holds the map number one).
+  { id: "dev.ui-kit.number", extends: "dev.ui-kit", root: "[data-states='number']", frame: "flat", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
+    data: "the kit NumberField's states in the gallery" },
 ];
 
 /**
@@ -409,6 +433,7 @@ export const NOT_SURFACES: Readonly<Record<string, string>> = {
   "ledger-drawer": "with .slot-panel (slot.ledger.*)", "build-drawer": "with .court-console (hud.build-drawer)",
   // Kit parts (the gallery, dev.ui-kit) and unmounted components.
   "ui-frame": "the kit Panel / Card / Modal (used only in the gallery and the kit Select)", "ui-chip": "the kit Chip (gallery only)",
+  "ui-number": "the kit NumberField (a control; measured inside screen.welcome and the gallery)",
   "resource-bar": "ResourceBar is not mounted (survey §2)", "ledger-panel": "LedgerPanel is not mounted (survey §2)",
   "resource-bar__coin-detail": "part of the unmounted ResourceBar", "alert-stack-row": "AlertStack is not mounted (survey §2)",
 };

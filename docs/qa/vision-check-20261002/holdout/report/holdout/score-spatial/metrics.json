@@ -1,0 +1,1299 @@
+{
+  "policy": {
+    "min_iou": 0.1,
+    "min_prediction_coverage": 0.5,
+    "recall_target": 0.7,
+    "precision_target": 0.8
+  },
+  "detectors": [
+    {
+      "detector": "straight_boundary",
+      "tp": 13,
+      "fp": 78,
+      "fn": 16,
+      "precision": 0.14285714285714285,
+      "recall": 0.4482758620689655,
+      "eligible_annotations": 15,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "tile_seam",
+      "tp": 9,
+      "fp": 0,
+      "fn": 9,
+      "precision": 1.0,
+      "recall": 0.5,
+      "eligible_annotations": 15,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "stationary_person",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": null,
+      "recall": null,
+      "eligible_annotations": 15,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "not_demonstrated"
+    },
+    {
+      "detector": "roof_overlap",
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": null,
+      "eligible_annotations": 15,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "scale_ratio",
+      "tp": 0,
+      "fp": 0,
+      "fn": 22,
+      "precision": null,
+      "recall": 0.0,
+      "eligible_annotations": 14,
+      "excluded_annotations": 1,
+      "excluded_defects": 0,
+      "excluded_candidates": 1,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "repeat_density",
+      "tp": 0,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": null,
+      "eligible_annotations": 15,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    }
+  ],
+  "observations": [
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "scale_ratio",
+      "outcome": "excluded",
+      "candidate_id": "holdout-city-year1362-confirm:scale_ratio:0",
+      "defect_id": null,
+      "note": "Outside eligible coverage or inside explicitly excluded target region"
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "9cc2f9e5f2f9",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "702f31750ccd",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "c17ac8dbf880",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "5651bdf32b92",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "a32b0221f49c",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "827e3c1f503f",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "272e54df9944",
+      "defect_id": "holdout-chalk-s3-summer-straight_boundary-2",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "8c21d9038ba3",
+      "defect_id": "holdout-chalk-s3-summer-straight_boundary-1",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "d50436d275e2",
+      "defect_id": "holdout-chalk-s3-summer-tile_seam-2",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s3-summer-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3731b2794757",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "f5c78a316ca9",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "7c4efb8a2b40",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "b6e58026700d",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "3120de3753c9",
+      "defect_id": "holdout-chalk-s4-summer-straight_boundary-1",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "def4a138cef3",
+      "defect_id": "holdout-chalk-s4-summer-straight_boundary-2",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "aced13a535e3",
+      "defect_id": "holdout-chalk-s4-summer-tile_seam-1",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s4-summer-tile_seam-2",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ab174fe0ecd7",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "d79a6b25d35b",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "39d361e0123c",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ef22bda71837",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "b492c07b55ac",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "41973d50c8f5",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-4",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "854b8dc49b5e",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-2",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "8087198c69ce",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-1",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "a5dea3476c91",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-6",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "bbb14eabdf2b",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-3",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "ad16ccecf5a1",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-5",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "798bae587cd3",
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-4",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "5fb7270f7256",
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-2",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "d4b7e7500e68",
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-1",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "2e1c2bc869fe",
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-3",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-5",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-6",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ff2ba489e186",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "7a35e8491e20",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-city-year1362-confirm-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3fdc9ae4d48d",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0489c16d8394",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-city-year1407-confirm-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "91170c8893b9",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ed33c13a7f9d",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "32035ad8f6b6",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "4a8986ddbf16",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "07a4aef3c437",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0148958c16c1",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "ef47074c3214",
+      "defect_id": "holdout-coast-s3-summer-straight_boundary-2",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s3-summer-straight_boundary-1",
+      "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "02ce8ed2753c",
+      "defect_id": "holdout-coast-s3-summer-tile_seam-2",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s3-summer-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0274d9c5ec3e",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "8a9620f4b22b",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "b9e60bb14ed4",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "f73dffa01671",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "3487601fd686",
+      "defect_id": "holdout-coast-s4-summer-straight_boundary-1",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "9bb51e1c02e0",
+      "defect_id": "holdout-coast-s4-summer-tile_seam-1",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "5701387eb946",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "6690d611bba5",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3318e9f616c7",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "9ca466f58160",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s5-summer-straight_boundary-1",
+      "note": "모래·잔디 경계가 화면 가로축을 따라 수백 픽셀 직선 판으로 잘리고 급격히 단차를 이룸."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3f2109766a34",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "e0b782ee7f80",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "4ace099c8f9d",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ba2a5559d7ec",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "108a7b27ff54",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "af811c3bc5b3",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0547ac6bbc81",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "1d2fa01ee3bf",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "614161217649",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "65e17ba052b9",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "4ea77257a8eb",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3d65e05dd224",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "69b5a66983e1",
+      "defect_id": "holdout-fen-s3-summer-straight_boundary-1",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s3-summer-straight_boundary-2",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s3-summer-straight_boundary-3",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "2188c3598c77",
+      "defect_id": "holdout-fen-s3-summer-tile_seam-1",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "c79d472464d2",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "d8ff0ec6f68a",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "99ebec8b07cc",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "545f2ab956f9",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "6ec8dded78ba",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "db07b719f6da",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "29cc69af6758",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "1388239de56a",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-straight_boundary-1",
+      "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-straight_boundary-2",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-straight_boundary-3",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "e8421d87e30b",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "cf323f5c2d73",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s5-summer-straight_boundary-1",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단."
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s5-summer-straight_boundary-2",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단."
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s5-summer-straight_boundary-3",
+      "note": "수풀 오른쪽에 드러난 바위 표면의 날카로운 등각 직선 절단. 내부는 가려져 이음새 양성으로 세지 않음."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "a35f1055f4fd",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "d7d5212a5a64",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ccd2d47239ef",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "40d7bd04a8f9",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "310c7c834838",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "14ee53f8074d",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "c6ace6138528",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "b64a5178c005",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s3-summer-straight_boundary-1",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s3-summer-straight_boundary-2",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정."
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "d9ec00c869bd",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "586bdcb435e6",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "fcd69b7640b0",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "30646803fa79",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0ad00bf6b8d0",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s4-summer-straight_boundary-1",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "4b93541fb40a",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0aceea929b91",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "12ba4b6a2cda",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "8ded03b53770",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0f04d1de12b3",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "d5c52fa85bad",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "c945f8547736",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "2807c35de268",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "e6b34ad71f66",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s5-summer-straight_boundary-1",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s5-summer-straight_boundary-2",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s5-summer-straight_boundary-3",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정."
+    },
+    {
+      "scene": "holdout-river-s1-year1301",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "5b23c1f923f2",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-river-s1-year1301",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-river-s1-year1301-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s3-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s4-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s4-summer-west-hut-door",
+      "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s4-summer-south-hut-door",
+      "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "repeat_density",
+      "outcome": "FP",
+      "candidate_id": "holdout-chalk-s4-summer:repeat_density:0",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s5-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "repeat_density",
+      "outcome": "FP",
+      "candidate_id": "holdout-chalk-s5-summer:repeat_density:0",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "roof_overlap",
+      "outcome": "FP",
+      "candidate_id": "60ffa08b8194",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-city-year1362-confirm-long-rain-field",
+      "note": "Frame 0 and sequence: rain streaks visibly read longer than adult screen height. Blue streak lengths approximately 42–58 px versus adult H about 20–22 px. One weather field defect in this reviewed open-ground/water ROI, not one positive per raindrop. Semantic match MUST concern rain length; a barrel/door finding cannot satisfy this target. Art bible section 2 screen-space rain rule."
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-city-year1407-confirm-long-rain-field",
+      "note": "Frame 0 and sequence: rain streaks visibly read longer than adult screen height. White streak lengths approximately 45–70 px versus adult H about 20–22 px. One weather field defect in this reviewed open-ground/water ROI, not one positive per raindrop. Semantic match MUST concern rain length; a barrel/door finding cannot satisfy this target. Art bible section 2 screen-space rain rule."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s3-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s4-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s4-summer-west-hut-door",
+      "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI."
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s4-summer-south-hut-door",
+      "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI."
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s5-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s3-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-west-hut-door",
+      "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-south-hut-door",
+      "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI."
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s5-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s3-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s4-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s4-summer-west-hut-door",
+      "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI."
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s4-summer-south-hut-door",
+      "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s5-summer-inventory-sack",
+      "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes."
+    }
+  ],
+  "rejected_candidate_ids": []
+}

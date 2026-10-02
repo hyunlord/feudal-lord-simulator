@@ -5,6 +5,7 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // Joins X-seamless strip images a | b | c ... into one canvas that repeats without a seam (C1e ridge strips, D3a
 // shore strips): each image wraps on its own, so at every join both images are continued across it and crossfaded
 // over `fade` source px either side (summed in premultiplied space, "lighter"). Browser only (needs a canvas).
+// featherStripRows (LU-D11, the land edge bands): a strip's alpha multiplied row by row, once per strip family.
 
 export function joinStripImages(images: readonly CanvasImageSource[], stripWidth: number, stripHeight: number, fade: number): CanvasImageSource | null {
   const width = stripWidth * images.length;
@@ -33,6 +34,22 @@ export function joinStripImages(images: readonly CanvasImageSource[], stripWidth
     }
   });
   return joined.canvas;
+}
+
+/** A copy of `image` (width x height) with each row's alpha multiplied by `alphaAt(row)` (0-1); the image itself without a canvas. */
+export function featherStripRows(image: CanvasImageSource, width: number, height: number, alphaAt: (row: number) => number): CanvasImageSource {
+  const target = canvas2d(width, height); const ramp = canvas2d(width, height);
+  if (target === null || ramp === null) return image;
+  blit(target.context, image, 0, 0, width, height, 0, 0);
+  for (let row = 0; row < height; row += 1) {
+    ramp.context.fillStyle = withAlpha(PALETTE.ink, alphaAt(row));
+    ramp.context.beginPath(); ramp.context.rect(0, row, width, 1); ramp.context.fill();
+  }
+  // One destination-in blit of the whole ramp (row by row it would clear all but the last row, as maskX notes).
+  target.context.globalCompositeOperation = "destination-in";
+  blit(target.context, ramp.canvas, 0, 0, width, height, 0, 0);
+  target.context.globalCompositeOperation = "source-over";
+  return target.canvas;
 }
 
 function canvas2d(width: number, height: number): { canvas: HTMLCanvasElement; context: CanvasRenderingContext2D } | null {

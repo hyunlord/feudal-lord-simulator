@@ -114,12 +114,16 @@ test("road arms distinguish a straight run from a junction and reject diagonals"
 });
 
 test("villagers use cottage proportions while retaining a readable zoomed-out height", () => {
-  assert.equal(walkerScaleForZoom(1), 0.55);
-  assert.equal(walkerScaleForZoom(0.8), 0.55);
-  assert.ok(Math.abs(walkerScaleForZoom(0.5) - 0.88) < 0.000_001);
-  assert.ok(32 * walkerScaleForZoom(1) < 18);
-  for (const zoom of [0.5, 0.6, 0.7, 0.8]) {
+  // NAT-4 BLD-07 (art audit 2026-10-02): the world scale 0.55 → 0.5 (16 px, door / adult about 0.78 on the L0 house)
+  // and the far-zoom floor 0.8 → 0.65 (people at zoom 0.5 are 1.3 × their world size, not 1.6 ×), two separate knobs.
+  assert.equal(walkerScaleForZoom(1), 0.5);
+  assert.equal(walkerScaleForZoom(0.8), 0.5);
+  assert.equal(walkerScaleForZoom(0.65), 0.5);
+  assert.ok(Math.abs(walkerScaleForZoom(0.5) - 0.65) < 0.000_001);
+  assert.ok(32 * walkerScaleForZoom(1) <= 16);
+  for (const zoom of [0.5, 0.55, 0.6, 0.65]) {
     const screenHeight = 32 * walkerScaleForZoom(zoom) * zoom;
-    assert.ok(screenHeight >= 14 && screenHeight < 15);
+    assert.ok(Math.abs(screenHeight - 10.4) < 0.000_001, `zoom ${zoom}: ${screenHeight} px`);
   }
+  for (const zoom of [0.7, 0.8, 1]) assert.ok(Math.abs(32 * walkerScaleForZoom(zoom) * zoom - 16 * zoom) < 0.000_001);
 });

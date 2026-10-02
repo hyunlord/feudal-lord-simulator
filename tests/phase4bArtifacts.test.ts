@@ -37,7 +37,9 @@ describe("Phase 4B release artifacts", () => {
 
     assert.deepEqual(candidateRuntimeReferences, []);
     assert.equal(existsSync(path.join(root, "public/assets/buildings/house_l0.png")), true);
-    assert.equal(existsSync(path.join(root, "public/assets/buildings/mill.png")), true);
+    // BLD-01 (NAT-4): the flat legacy mill sprite left the runtime for assets-inbox/retired.
+    assert.equal(existsSync(path.join(root, "public/assets/buildings/mill.png")), false);
+    assert.equal(existsSync(path.join(root, "assets-inbox/retired/buildings/mill.png")), true);
     assert.equal(existsSync(path.join(root, "public/assets/buildings/barn.png")), true);
   });
 });

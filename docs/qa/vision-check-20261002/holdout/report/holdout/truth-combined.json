@@ -1,0 +1,1856 @@
+[
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-chalk-s3-summer-straight_boundary-1",
+        "box": {
+          "x": 1436,
+          "y": 129,
+          "width": 164,
+          "height": 270
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s3-summer-straight_boundary-2",
+        "box": {
+          "x": 1088,
+          "y": 403,
+          "width": 512,
+          "height": 479
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "holdout-chalk-s3-summer-tile_seam-1",
+        "box": {
+          "x": 1436,
+          "y": 129,
+          "width": 164,
+          "height": 270
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s3-summer-tile_seam-2",
+        "box": {
+          "x": 1088,
+          "y": 403,
+          "width": 512,
+          "height": 479
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-chalk-s4-summer-straight_boundary-1",
+        "box": {
+          "x": 997,
+          "y": 22,
+          "width": 472,
+          "height": 243
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s4-summer-straight_boundary-2",
+        "box": {
+          "x": 1398,
+          "y": 851,
+          "width": 139,
+          "height": 149
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "holdout-chalk-s4-summer-tile_seam-1",
+        "box": {
+          "x": 997,
+          "y": 22,
+          "width": 472,
+          "height": 243
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s4-summer-tile_seam-2",
+        "box": {
+          "x": 1398,
+          "y": 851,
+          "width": 139,
+          "height": 149
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-chalk-s5-summer-straight_boundary-1",
+        "box": {
+          "x": 1058,
+          "y": 0,
+          "width": 480,
+          "height": 197
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s5-summer-straight_boundary-2",
+        "box": {
+          "x": 0,
+          "y": 182,
+          "width": 259,
+          "height": 112
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s5-summer-straight_boundary-3",
+        "box": {
+          "x": 128,
+          "y": 339,
+          "width": 160,
+          "height": 100
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s5-summer-straight_boundary-4",
+        "box": {
+          "x": 225,
+          "y": 436,
+          "width": 251,
+          "height": 201
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s5-summer-straight_boundary-5",
+        "box": {
+          "x": 1444,
+          "y": 464,
+          "width": 156,
+          "height": 161
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s5-summer-straight_boundary-6",
+        "box": {
+          "x": 1181,
+          "y": 597,
+          "width": 233,
+          "height": 134
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "holdout-chalk-s5-summer-tile_seam-1",
+        "box": {
+          "x": 1058,
+          "y": 0,
+          "width": 480,
+          "height": 197
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s5-summer-tile_seam-2",
+        "box": {
+          "x": 0,
+          "y": 182,
+          "width": 259,
+          "height": 112
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s5-summer-tile_seam-3",
+        "box": {
+          "x": 128,
+          "y": 339,
+          "width": 160,
+          "height": 100
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s5-summer-tile_seam-4",
+        "box": {
+          "x": 225,
+          "y": 436,
+          "width": 251,
+          "height": 201
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s5-summer-tile_seam-5",
+        "box": {
+          "x": 1444,
+          "y": 464,
+          "width": 156,
+          "height": 161
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s5-summer-tile_seam-6",
+        "box": {
+          "x": 1181,
+          "y": 597,
+          "width": 233,
+          "height": 134
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "straight_boundary",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "holdout-city-year1362-confirm-tile_seam-1",
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 543,
+          "height": 105
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "straight_boundary",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "holdout-city-year1407-confirm-tile_seam-1",
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 543,
+          "height": 105
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-coast-s3-summer-straight_boundary-1",
+        "box": {
+          "x": 576,
+          "y": 70,
+          "width": 158,
+          "height": 80
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-coast-s3-summer-straight_boundary-2",
+        "box": {
+          "x": 1086,
+          "y": 673,
+          "width": 166,
+          "height": 89
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "holdout-coast-s3-summer-tile_seam-1",
+        "box": {
+          "x": 576,
+          "y": 70,
+          "width": 158,
+          "height": 80
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-coast-s3-summer-tile_seam-2",
+        "box": {
+          "x": 1086,
+          "y": 673,
+          "width": 166,
+          "height": 89
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-coast-s4-summer-straight_boundary-1",
+        "box": {
+          "x": 221,
+          "y": 400,
+          "width": 386,
+          "height": 187
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "holdout-coast-s4-summer-tile_seam-1",
+        "box": {
+          "x": 221,
+          "y": 400,
+          "width": 386,
+          "height": 187
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-coast-s5-summer-straight_boundary-1",
+        "box": {
+          "x": 197,
+          "y": 575,
+          "width": 815,
+          "height": 58
+        },
+        "note": "모래·잔디 경계가 화면 가로축을 따라 수백 픽셀 직선 판으로 잘리고 급격히 단차를 이룸.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "detector": "tile_seam",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-fen-s3-summer-straight_boundary-1",
+        "box": {
+          "x": 862,
+          "y": 435,
+          "width": 325,
+          "height": 167
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-fen-s3-summer-straight_boundary-2",
+        "box": {
+          "x": 0,
+          "y": 0,
+          "width": 666,
+          "height": 294
+        },
+        "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-fen-s3-summer-straight_boundary-3",
+        "box": {
+          "x": 1184,
+          "y": 774,
+          "width": 349,
+          "height": 167
+        },
+        "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "holdout-fen-s3-summer-tile_seam-1",
+        "box": {
+          "x": 862,
+          "y": 435,
+          "width": 325,
+          "height": 167
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-fen-s4-summer-straight_boundary-1",
+        "box": {
+          "x": 420,
+          "y": 564,
+          "width": 161,
+          "height": 85
+        },
+        "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-fen-s4-summer-straight_boundary-2",
+        "box": {
+          "x": 483,
+          "y": 150,
+          "width": 888,
+          "height": 307
+        },
+        "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-fen-s4-summer-straight_boundary-3",
+        "box": {
+          "x": 1190,
+          "y": 787,
+          "width": 27,
+          "height": 151
+        },
+        "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "holdout-fen-s4-summer-tile_seam-1",
+        "box": {
+          "x": 420,
+          "y": 564,
+          "width": 161,
+          "height": 85
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-fen-s5-summer-straight_boundary-1",
+        "box": {
+          "x": 1281,
+          "y": 346,
+          "width": 31,
+          "height": 318
+        },
+        "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-fen-s5-summer-straight_boundary-2",
+        "box": {
+          "x": 0,
+          "y": 584,
+          "width": 411,
+          "height": 390
+        },
+        "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-fen-s5-summer-straight_boundary-3",
+        "box": {
+          "x": 1434,
+          "y": 957,
+          "width": 73,
+          "height": 76
+        },
+        "note": "수풀 오른쪽에 드러난 바위 표면의 날카로운 등각 직선 절단. 내부는 가려져 이음새 양성으로 세지 않음.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "detector": "tile_seam",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-forest-s3-summer-straight_boundary-1",
+        "box": {
+          "x": 0,
+          "y": 353,
+          "width": 563,
+          "height": 617
+        },
+        "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-forest-s3-summer-straight_boundary-2",
+        "box": {
+          "x": 914,
+          "y": 571,
+          "width": 686,
+          "height": 529
+        },
+        "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "detector": "tile_seam",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-forest-s4-summer-straight_boundary-1",
+        "box": {
+          "x": 403,
+          "y": 564,
+          "width": 874,
+          "height": 536
+        },
+        "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "detector": "tile_seam",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "holdout-forest-s5-summer-straight_boundary-1",
+        "box": {
+          "x": 0,
+          "y": 296,
+          "width": 440,
+          "height": 318
+        },
+        "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-forest-s5-summer-straight_boundary-2",
+        "box": {
+          "x": 429,
+          "y": 338,
+          "width": 810,
+          "height": 762
+        },
+        "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-forest-s5-summer-straight_boundary-3",
+        "box": {
+          "x": 0,
+          "y": 747,
+          "width": 87,
+          "height": 216
+        },
+        "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "detector": "tile_seam",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "straight_boundary",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "holdout-river-s1-year1301-tile_seam-1",
+        "box": {
+          "x": 337,
+          "y": 231,
+          "width": 633,
+          "height": 289
+        },
+        "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-chalk-s3-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 963,
+        "y": 846,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s3-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-chalk-s4-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s4-summer-west-hut-door",
+        "box": {
+          "x": 848,
+          "y": 893,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-chalk-s4-summer-south-hut-door",
+        "box": {
+          "x": 910,
+          "y": 927,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 848,
+        "y": 893,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 910,
+        "y": 927,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 979,
+        "y": 854,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s4-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-chalk-s5-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 979,
+        "y": 854,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-chalk-s5-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [
+      {
+        "x": 170,
+        "y": 210,
+        "width": 920,
+        "height": 700
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [
+      {
+        "x": 170,
+        "y": 210,
+        "width": 920,
+        "height": 700
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-city-year1362-confirm-long-rain-field",
+        "box": {
+          "x": 45,
+          "y": 430,
+          "width": 125,
+          "height": 300
+        },
+        "note": "Frame 0 and sequence: rain streaks visibly read longer than adult screen height. Blue streak lengths approximately 42–58 px versus adult H about 20–22 px. One weather field defect in this reviewed open-ground/water ROI, not one positive per raindrop. Semantic match MUST concern rain length; a barrel/door finding cannot satisfy this target. Art bible section 2 screen-space rain rule.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 45,
+        "y": 430,
+        "width": 125,
+        "height": 300
+      },
+      {
+        "x": 708,
+        "y": 525,
+        "width": 65,
+        "height": 42
+      },
+      {
+        "x": 548,
+        "y": 272,
+        "width": 42,
+        "height": 42
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1362-confirm",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [
+      {
+        "x": 170,
+        "y": 210,
+        "width": 920,
+        "height": 700
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [
+      {
+        "x": 170,
+        "y": 210,
+        "width": 920,
+        "height": 700
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-city-year1407-confirm-long-rain-field",
+        "box": {
+          "x": 1260,
+          "y": 380,
+          "width": 300,
+          "height": 300
+        },
+        "note": "Frame 0 and sequence: rain streaks visibly read longer than adult screen height. White streak lengths approximately 45–70 px versus adult H about 20–22 px. One weather field defect in this reviewed open-ground/water ROI, not one positive per raindrop. Semantic match MUST concern rain length; a barrel/door finding cannot satisfy this target. Art bible section 2 screen-space rain rule.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 1260,
+        "y": 380,
+        "width": 300,
+        "height": 300
+      },
+      {
+        "x": 826,
+        "y": 736,
+        "width": 60,
+        "height": 45
+      },
+      {
+        "x": 908,
+        "y": 293,
+        "width": 40,
+        "height": 37
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-city-year1407-confirm",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-coast-s3-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 962,
+        "y": 846,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s3-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-coast-s4-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-coast-s4-summer-west-hut-door",
+        "box": {
+          "x": 848,
+          "y": 893,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-coast-s4-summer-south-hut-door",
+        "box": {
+          "x": 910,
+          "y": 927,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 848,
+        "y": 893,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 910,
+        "y": 927,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 979,
+        "y": 854,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s4-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-coast-s5-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 963,
+        "y": 846,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-coast-s5-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-fen-s3-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 947,
+        "y": 842,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s3-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-fen-s4-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-fen-s4-summer-west-hut-door",
+        "box": {
+          "x": 848,
+          "y": 893,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-fen-s4-summer-south-hut-door",
+        "box": {
+          "x": 910,
+          "y": 927,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 848,
+        "y": 893,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 910,
+        "y": 927,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 928,
+        "y": 854,
+        "width": 22,
+        "height": 21
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s4-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-fen-s5-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 927,
+        "y": 854,
+        "width": 22,
+        "height": 21
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-fen-s5-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-forest-s3-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 1003,
+        "y": 888,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s3-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-forest-s4-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-forest-s4-summer-west-hut-door",
+        "box": {
+          "x": 848,
+          "y": 893,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "holdout-forest-s4-summer-south-hut-door",
+        "box": {
+          "x": 910,
+          "y": 927,
+          "width": 13,
+          "height": 17
+        },
+        "note": "Frame 0: clear ordinary entrance opening about 8–10 px tall versus adult H about 15–17 px. Opening is visibly too short for an adult, versus 1.15–1.40 H guideline. Two small hut variants, not a window. Other marginal/obscured house openings outside predeclared scale ROI.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 848,
+        "y": 893,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 910,
+        "y": 927,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 1004,
+        "y": 895,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s4-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "holdout-forest-s5-summer-inventory-sack",
+        "box": {
+          "x": 846,
+          "y": 931,
+          "width": 15,
+          "height": 16
+        },
+        "note": "Frame 0: single upright tied sack beside cargo crates, distinct from the whole inventory pile. Visible sack height about 13 px versus directly viewed walker H about 16–17 px (roughly 0.76–0.81 H); ordinary sack guideline 0.30–0.50 H. Same startup prop asset across scenes: correlated instance observations, not independent causes.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 841,
+        "y": 927,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 1003,
+        "y": 888,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-forest-s5-summer",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "stationary_person",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "roof_overlap",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "scale_ratio",
+    "defects": [],
+    "regions": [],
+    "eligible": false,
+    "exclusion_reason": "No visible human height reference in any of the 20 frames; starvation/empty settlement. Do not infer scale from a previous scene."
+  },
+  {
+    "scene": "holdout-river-s1-year1301",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [],
+    "eligible": true,
+    "exclusion_reason": ""
+  }
+]

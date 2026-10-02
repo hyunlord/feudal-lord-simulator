@@ -398,10 +398,14 @@ export const parseWorldAssetManifest = (value: unknown): WorldAssetManifest => {
 
 /**
  * World asset keys a published manifest may leave out because the game retired what they drew (C1f: the 2x2 wheat
- * farm, retired by C1c-2; its sprite is in assets-inbox/retired). The generation contracts keep them, so older release
- * pipelines still produce and verify them; a manifest either has every key or every key but these.
+ * farm, retired by C1c-2; NAT-4 BLD-01: the seven flat facility sprites, which only showed while a facility painting
+ * loaded; ENV-03: the old high-contrast water texture, the V1 ground's fallback under the water surface). Their files are
+ * in assets-inbox/retired. The generation contracts keep them, so older release pipelines still produce and verify them;
+ * a manifest either has every key or every key but these.
  */
-export const RETIRED_WORLD_ASSET_KEYS: readonly string[] = ["wheat_farm"];
+export const RETIRED_WORLD_ASSET_KEYS: readonly string[] = [
+  "wheat_farm", "mill", "quarry", "masonry", "market", "church", "keep", "stone_wall_segment", "water",
+];
 
 export const assertExactWorldAssetKeys = (assets: readonly WorldAsset[]): void => {
   const keys = assets.map((asset) => asset.key);

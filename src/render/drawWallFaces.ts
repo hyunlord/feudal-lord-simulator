@@ -59,7 +59,7 @@ const DIAG_SOURCE_HEIGHT = 64;
 /** Face runs: screen direction at least this far from vertical (|dx| / length); steeper runs draw the diag top. */
 const FACE_MIN_SPREAD = 0.5;
 /** Wall thickness (tiles): the face stands half of it in front of the baseline, the top reaches half of it behind. */
-const WALL_THICKNESS: Readonly<Record<WallMaterial, number>> = { stone: 0.3, timber: 0.16 };
+export const WALL_THICKNESS: Readonly<Record<WallMaterial, number>> = { stone: 0.3, timber: 0.16 };
 /** The wall body seen end-on (the side of a run's end). */
 const SIDE_COLOUR: Readonly<Record<WallMaterial, string>> = { stone: SEMANTIC_PALETTE.stoneDark, timber: SEMANTIC_PALETTE.earthDark };
 /** Quads overlap by this much along the line so antialiased joins leave no hairline (tile units). */

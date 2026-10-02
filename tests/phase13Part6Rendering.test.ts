@@ -286,7 +286,7 @@ test("drawObjectRenderItems defers walkers until after buildings so they are nev
   const firstBuildingFill = context.calls.findIndex((call) => call === "fill");
   const proceduralWalker = context.calls.findIndex((call, index, calls) =>
     call === "fillStyle:#C9A227"
-    && calls[index + 1] === "fillRect:-2,26,4,8"
+    && calls[index + 1] === "fillRect:-2,28,4,7"
     && calls[index + 2] === "strokeStyle:#2A2118",
   );
   assert.ok(firstBuildingFill >= 0);

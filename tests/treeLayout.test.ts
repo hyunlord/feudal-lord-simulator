@@ -143,7 +143,7 @@ test("tree stature distinguishes young and mature species within bounded determi
   assert.ok(maximum("tree_oak_large") > 1);
 });
 
-test("tree sprite distribution favors conifers and flips half deterministically", () => {
+test("tree sprite distribution favors conifers and is deterministic; no tree is mirrored (NAT-4 RUN-03)", () => {
   // Given
   const sample = Array.from({ length: 16_384 }, (_, index) =>
     buildTreeCluster({
@@ -173,8 +173,8 @@ test("tree sprite distribution favors conifers and flips half deterministically"
   assert.ok(sample.length > 10_000);
   assert.ok(coniferCount / sample.length >= 0.57);
   assert.ok(coniferCount / sample.length <= 0.63);
-  assert.ok(flippedCount / sample.length >= 0.48);
-  assert.ok(flippedCount / sample.length <= 0.52);
+  // RUN-03: every painted tree is lit from the left (treeLayout.ts TREE_MIRROR_OK); a mirrored one is lit from the right.
+  assert.equal(flippedCount, 0);
   assert.equal(repeatHash, hash);
 });
 

@@ -7,7 +7,7 @@ import type { Walker } from "../agents/walker.types";
 import { applyInkOutline, snapPointToDevicePixel, snapToPixel, withAlpha, type CanvasTransform } from "./style";
 import { walkerVisualAnchor } from "./walkerAnchor";
 import { drawProceduralWalkerSprite } from "./walkerProceduralSprite";
-import { walkerPresentationFor } from "./walkerPresentation";
+import { walkerPresentationFor, walkerStepLift } from "./walkerPresentation";
 import { drawRuntimeActor, drawRuntimeHandcart } from "./runtimeActorAssets";
 import { composedWalkerReady, drawComposedWalker, VILLAGER_WORLD_SCALE, walkerAppearance } from "./walkerComposer";
 import { OBJECT_OUTLINE_ALPHA, type ObjectRenderViewMode } from "./occlusionModel";
@@ -35,8 +35,14 @@ export function cargoColor(resource: ResourceType): PaletteColor {
   return SEMANTIC_PALETTE[resourceEntry(resource).color];
 }
 
+/**
+ * The far-zoom floor: below WALKER_FLOOR_ZOOM a figure keeps the screen height it has there (readable as a person on
+ * the far view). NAT-4 BLD-07: the floor was 0.8, which made people at zoom 0.5 1.6 × their world size beside houses
+ * drawn at theirs; at 0.65 they are 1.3 × (10.4 screen px at 0.5).
+ */
+export const WALKER_FLOOR_ZOOM = 0.65;
 export function walkerScaleForZoom(zoom: number): number {
-  return VILLAGER_WORLD_SCALE * (zoom < 0.8 ? 0.8 / Math.max(zoom, 0.01) : 1);
+  return VILLAGER_WORLD_SCALE * (zoom < WALKER_FLOOR_ZOOM ? WALKER_FLOOR_ZOOM / Math.max(zoom, 0.01) : 1);
 }
 
 function compareWalkersForRender(left: Walker, right: Walker): number {
@@ -76,7 +82,9 @@ export function drawWalker(
   const presentation = walkerPresentationFor(walker);
   // V2: the composed look (sheet, held prop, winter cloak) above the block zoom (NAT-2: down to the status view 0.35,
   // like the buildings and trees); the legacy actor while its images load, the procedural sprite below.
-  const composed = state !== null && zoom > BLOCKS_MAX_ZOOM && drawComposedWalkerWithCart(context, state, walker, presentation, footX, footY, scale, zoom);
+  // NAT-4 QA-026: the body's step rise on the passing beat, in whole device pixels.
+  const lift = walkerStepLift(presentation.gaitFrame, 32 * scale, transform === undefined ? 1 : Math.hypot(transform.a, transform.b));
+  const composed = state !== null && zoom > BLOCKS_MAX_ZOOM && drawComposedWalkerWithCart(context, state, walker, presentation, footX, footY, scale, zoom, lift);
   if (!composed && !drawRuntimeActor(context, presentation, footX, footY, scale, zoom, walker.kind === "carter")) {
     drawWalkerHalo(context, footX, footY, scale, transform);
     drawProceduralWalkerSprite(context, {
@@ -140,11 +148,11 @@ function drawCartPayload(context: CanvasRenderingContext2D, cart: { readonly x: 
 function drawCargoIcon(context: CanvasRenderingContext2D, footX: number, footY: number, resource: ResourceType, scale: number): void {
   const cell = resourceEntry(resource).cargoIconCell;
   if (cell === undefined) return;
-  drawUiIcon(context, "resource", cell, footX, footY - 44 * scale, 11 * scale / 0.55);
+  drawUiIcon(context, "resource", cell, footX, footY - 44 * scale, 11 * scale / VILLAGER_WORLD_SCALE);
 }
 
 function drawComposedWalkerWithCart(context: CanvasRenderingContext2D, state: GameState, walker: Walker,
-  presentation: ReturnType<typeof walkerPresentationFor>, footX: number, footY: number, scale: number, zoom: number): boolean {
+  presentation: ReturnType<typeof walkerPresentationFor>, footX: number, footY: number, scale: number, zoom: number, lift: number): boolean {
   // The cart is drawn only once the body is known to draw, so a loading look never leaves a cart without a carter.
   if (!composedWalkerReady(state, walker)) return false;
   const handcart = walker.kind === "carter";
@@ -155,7 +163,7 @@ function drawComposedWalkerWithCart(context: CanvasRenderingContext2D, state: Ga
     if (rect !== null && walker.cargo !== null && zoom >= CART_LOAD_MIN_ZOOM) drawCartPayload(context, rect, walker.cargo.resource, presentation.direction);
   };
   if (handcart && cartBehind) cart();
-  drawComposedWalker(context, state, walker, presentation, footX, footY, scale);
+  drawComposedWalker(context, state, walker, presentation, footX, footY - lift, scale);
   if (handcart && !cartBehind) cart();
   return true;
 }

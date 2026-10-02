@@ -90,9 +90,11 @@ import type { ZoneKind } from "./zones/zone.types";
 import { EventCards } from "./ui/hud/EventCards";
 import { personRow, stewardPerson } from "./ui/persons/personModels";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
+import { guidanceSampleKey } from "./ui/hud/guidanceSample";
 import { AppModals } from "./ui/screens/AppModals";
 import { readWelcomeDismissed, WelcomeParchment, writeWelcomeDismissed } from "./ui/screens/WelcomeScreen";
 import { isDefaultLand, landStartCommand, type LandChoice } from "./ui/landChoice";
+import { showChapterLoading, useChapterLoading } from "./ui/chapterLoadingStore";
 import { menAwayLine } from "./ui/lordshipModel";
 
 /** UX-0b: how long the season card waits after the last press before it opens (a press in flight is not swallowed). */
@@ -140,6 +142,9 @@ export function App() {
   const [chroniclePersonId, setChroniclePersonId] = useState<string | null>(null);
   // UX-3: which UI is on screen is one state (ui/stateMachine: one panel slot, Esc one step, modals push / pop).
   const { ui, uiRef, setUi, sendUi } = useUiStateMachine(store);
+  // QA-025: the chapter preview opened from the card's "목표 보기" (not after a chapter page) until it closes.
+  const [chapterGoalsView, setChapterGoalsView] = useState(false);
+  useEffect(() => { if (topModal(ui) !== "chapter_preview") setChapterGoalsView(false); }, [ui]);
   const openInspector = useCallback((id: string) => { setInspectedId(id); sendUi({ type: "select" }); }, [sendUi]);
   // The map's own selection card (GameCanvas) takes the same slot; closing it there leaves the selection state.
   const onCanvasSelection = useCallback((open: boolean) => { if (open) sendUi({ type: "select" }); else if (uiRef.current.mode === "selection") sendUi({ type: "deselect" }); }, [sendUi, uiRef]);
@@ -174,7 +179,8 @@ export function App() {
     createOnboardingPresentationState,
   );
   const onboardingPresentationRef = useRef(onboardingPresentation);
-  const guidanceSample = Math.floor(state.tick / 60);
+  // QA-030: the 60-tick bucket while time runs, the state itself while paused (guidanceSample.ts).
+  const guidanceSample = guidanceSampleKey(state, speed);
   const guidanceSnapshotRef = useRef({
     sample: guidanceSample,
     state,
@@ -201,7 +207,7 @@ export function App() {
   }, [presentationNowMs, state.era]);
 
   const tutorial = useTutorialController({ state, paused: speed === 0, selectedTool, zoneTool, layer, setLayer, nowMs: presentationNowMs,
-    onOpenDrawer: () => sendUi({ type: "open_goals" }) });
+    onOpenDrawer: () => sendUi({ type: "open_goals" }), onOpenChapterGoals: () => { setChapterGoalsView(true); sendUi({ type: "push_modal", modal: "chapter_preview" }); } });
   // Tool intents obey the tutorial's unlocks (menu, Q / E, controller X alike).
   const accessRef = useRef(tutorial.access);
   accessRef.current = tutorial.access;
@@ -273,7 +279,8 @@ export function App() {
   // UI-4: the town's story beats (fire, wet summer, famine, petition, chapter end): chips after the world, decisions
   // and the chronicle as modals (useStoryPresentation).
   const story = useStoryPresentation({ state, nowMs: presentationNowMs, blocked: welcomeVisible, topModal: topModal(ui),
-    pushModal: modal => sendUi({ type: "push_modal", modal }), pause: () => setSpeed(0) });
+    pushModal: modal => sendUi({ type: "push_modal", modal }), pause: () => setSpeed(0),
+    markChapterSeen: chapter => dispatch({ type: "mark_chapter_page_seen", chapter }) });
   const stewardOfTown = stewardPerson(state);
   const steward = stewardOfTown === null ? null : personRow(state, stewardOfTown);
   const openPerson = (id: string) => { setPersonCardId(id); sendUi({ type: "push_modal", modal: "person_card" }); };
@@ -389,18 +396,14 @@ export function App() {
   // The toggle starts from the stored choice (a player who switched the tutorial off keeps it off), else on.
   const [welcomeTutorial, setWelcomeTutorial] = useState(() => readTutorialRecord()?.enabled ?? true);
   // UI-3: a new game opens on the chapter's loading screen for a moment (chapter 1 reuses the title keyart; the
-  // 1315 / 1337 / 1348 screens are registered for the later chapters). It never takes a click.
-  const [chapterLoading, setChapterLoading] = useState(false);
-  useEffect(() => {
-    if (!chapterLoading) return undefined;
-    const timer = window.setTimeout(() => setChapterLoading(false), CHAPTER_LOADING_MS);
-    return () => window.clearTimeout(timer);
-  }, [chapterLoading]);
+  // 1315 / 1337 / 1348 screens are registered for the later chapters). It never takes a click. NAT-4: its flag lives
+  // outside this component (chapterLoadingStore.ts): a start that sends start_new_game remounts the app.
+  const chapterLoading = useChapterLoading();
   // LAND-UI (LU-D7): every start takes the land picked on the welcome; the riverside on map 1 (the default) is today's
   // start exactly, any other land sends its land and seed and gives the tutorial no state (as a start over a save does).
   // A click anywhere starts the picked land too.
   const dismissWelcome = (land: LandChoice) => {
-    if (!saveSystem.offerContinue && !isDefaultLand(land)) { startScenarioWithoutSave(DEFAULT_SCENARIO_ID, land); return; }
+    if (!saveSystem.offerContinue && !isDefaultLand(land)) { showChapterLoading(CHAPTER_LOADING_MS); startScenarioWithoutSave(DEFAULT_SCENARIO_ID, land); return; }
     writeWelcomeDismissed();
     setWelcomeVisible(false);
     if (saveSystem.offerContinue) saveSystem.declineContinue();
@@ -565,7 +568,7 @@ export function App() {
       {/* CODE-1c: the modal screens (ui/screens/AppModals), reading the game themselves while one is up. */}
       <AppModals ui={ui} sendUi={sendUi} personCardId={personCardId} chroniclePersonId={chroniclePersonId} onChroniclePerson={setChroniclePersonId}
         steward={steward} onPerson={openPerson} ledgerAuto={ledgerAuto} onLedgerAuto={next => { setLedgerAuto(next); setSeasonLedgerAuto(next); }}
-        onMenuRequest={setMenuRequest} tutorial={tutorial} />
+        onMenuRequest={setMenuRequest} tutorial={tutorial} chapterGoalsView={chapterGoalsView} />
       {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>
         <p className="chapter-loading-title">{TITLE_COPY.chapter(stateCalendar(state).year)}</p><p className="chapter-loading-line">{TITLE_COPY.chapterLine}</p></div> : null}
       {welcomeVisible ? <WelcomeParchment
@@ -573,8 +576,8 @@ export function App() {
         continueLine={saveSystem.offerContinue ? saveSystem.latest?.summary?.line ?? "" : null}
         archiveNotice={saveSystem.latest?.summary ? formatNewGameArchiveNotice(saveSystem.latest.summary) : null}
         onContinue={continueSavedGame}
-        onNewGame={(scenarioId, land) => { setChapterLoading(true); startNewGameOverSave(scenarioId, land); }}
-        onChooseMode={(scenarioId, land) => { setChapterLoading(true); startScenarioWithoutSave(scenarioId, land); }}
+        onNewGame={(scenarioId, land) => { showChapterLoading(CHAPTER_LOADING_MS); startNewGameOverSave(scenarioId, land); }}
+        onChooseMode={(scenarioId, land) => { showChapterLoading(CHAPTER_LOADING_MS); startScenarioWithoutSave(scenarioId, land); }}
         tutorialEnabled={welcomeTutorial}
         onTutorialChange={setWelcomeTutorial}
       /> : null}

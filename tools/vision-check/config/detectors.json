@@ -1,0 +1,14 @@
+{
+  "about": "Detector status for the repository (user decision 2026-10-02, expansion round). use: findings are defect candidates a person checks and fixes. All six are use.",
+  "performance": "교정 성능(같은 시험지로 조정) — 홀드아웃 검증 전, 병합 관문 아님",
+  "performance_detail": "Recall and precision below were measured on the frozen expansion answer key testdata/frozen-truth-expansion-20261002 (38 positives, 14 scenes x 20 frames) with config/expansion.json, after the thresholds and code were tuned on that same key; precision counts only candidates inside annotated regions (35 of 404). Not an independent holdout result, and no detector is a merge gate.",
+  "thresholds": "config/expansion.json",
+  "detectors": {
+    "straight_boundary": { "status": "use", "label": "경계(직각·직선 땅 경계)", "positives": 9, "tp": 7, "fp": 1, "fn": 2, "recall": 0.778, "precision": 0.875 },
+    "tile_seam": { "status": "use", "label": "이음새(타일 이음새)", "positives": 6, "tp": 5, "fp": 0, "fn": 1, "recall": 0.833, "precision": 1.0 },
+    "stationary_person": { "status": "use", "label": "멈춘 사람", "positives": 7, "tp": 7, "fp": 0, "fn": 0, "recall": 1.0, "precision": 1.0 },
+    "roof_overlap": { "status": "use", "label": "겹침(지붕·벽 위 사람)", "positives": 6, "tp": 6, "fp": 0, "fn": 0, "recall": 1.0, "precision": 1.0 },
+    "scale_ratio": { "status": "use", "label": "크기(크기 비율)", "positives": 5, "tp": 4, "fp": 0, "fn": 1, "recall": 0.8, "precision": 1.0 },
+    "repeat_density": { "status": "use", "label": "반복(반복 밀도)", "positives": 5, "tp": 4, "fp": 1, "fn": 1, "recall": 0.8, "precision": 0.8 }
+  }
+}

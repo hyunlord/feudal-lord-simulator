@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "engine-COPY1e-geo-7167b1c",
- "commit": "7167b1c2281df80c7fd2064919d114a3f23e57dd",
+ "run": "render-NAT4-geom8-21a4354-21a4354",
+ "commit": "21a435479812c338f132dc6fd401cb86dd0c1904",
  "dirty": false,
- "inputs": 1774,
- "inputHash": "b037047b1c2bac7ec9d6f55372bba31bbf1bb681f138e9162026569bbcd9a221",
- "measuredAt": "2026-10-02T10:20:27.090Z",
- "report": "docs/verification/uiaudit1/geometry/engine-COPY1e-geo-7167b1c/geometry.json",
+ "inputs": 1779,
+ "inputHash": "f5878c2beee604dd02f6c8e6f9334e6bc17a8a0d2bbac51201cfe647c48783cf",
+ "measuredAt": "2026-10-02T13:36:34.886Z",
+ "report": "docs/verification/uiaudit1/geometry/render-NAT4-geom8-21a4354-21a4354/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,9 +24,9 @@
    "extreme"
   ]
  },
- "rows": 103,
- "conditions": 1852,
- "measured": 1852,
+ "rows": 108,
+ "conditions": 1942,
+ "measured": 1942,
  "failures": 20,
  "unopened": 0,
  "unreachable": [
@@ -35,7 +35,7 @@
   "hud.era-ceremony",
   "hud.build-details"
  ],
- "warnings": 633,
+ "warnings": 685,
  "byCheck": {
   "outside": 0,
   "overflow": 20,
@@ -223,6 +223,11 @@
    "unopened": 0,
    "byCheck": {}
   },
+  "slot.population.records": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
   "slot.inspector": {
    "failures": 0,
    "unopened": 0,
@@ -234,6 +239,21 @@
    "byCheck": {}
   },
   "slot.ledger.stock": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.steward": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.steward-bubble.ledger": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.steward-concern": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
@@ -551,6 +571,11 @@
    "byCheck": {}
   },
   "dev.ui-kit.tooltip": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "dev.ui-kit.number": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}

@@ -119,6 +119,8 @@ export function useTutorialController(input: {
   readonly setLayer: (layer: ControlLayer) => void;
   readonly nowMs: number;
   readonly onOpenDrawer: () => void;
+  /** QA-025: the chapter card's "목표 보기" — the chapter's goal screen (a modal: a paused game stays paused). */
+  readonly onOpenChapterGoals: () => void;
 }): TutorialController {
   const { state, nowMs } = input;
   const [record, setRecordState] = useState<TutorialRecord | null>(() => readTutorialRecord());
@@ -236,11 +238,11 @@ export function useTutorialController(input: {
   // General mode (tutorial off or finished): the settlement goal and, after the tutorial, the market and chapel card.
   const general = generalCards(state, enabled, input.selectedTool);
   const press = (cardKey: string) => {
-    resume();
-    if (stepId !== null && cardKey === stepId && action !== null) { run(action); return; }
-    if (cardKey === "settlement") { input.onOpenDrawer(); return; }
-    const next = general.actions.get(cardKey);
-    if (next !== undefined) run(next);
+    const decided = goalCardPress(cardKey, { stepId, action, generalActions: general.actions });
+    if (decided.resume) resume();
+    if (decided.run !== null) run(decided.run);
+    if (decided.open === "goals") input.onOpenDrawer();
+    if (decided.open === "chapter") input.onOpenChapterGoals();
   };
 
   const cards: GoalCard[] = liveTransitions.slice(-1).map(item => ({
@@ -290,6 +292,22 @@ export function useTutorialController(input: {
 function crisisStewardLine(state: GameState): { readonly text: string; readonly key: string } | null {
   const row = alertStackRows(state)[0];
   return row === undefined ? null : { text: TUTORIAL_COPY.crisisSteward(row.title, row.cause), key: `crisis:${row.id}` };
+}
+
+/**
+ * QA-025: what a goal card's button does. Only the tutorial's "시작하기" (the greet step's `resume` acknowledgement)
+ * starts time; every other press keeps the speed it found — a paused game stays paused while a card opens the
+ * chapter's goals (a modal), the goal drawer, or arms a tool (the QA: "목표 보기" ran 51 ticks at 1× and showed nothing).
+ */
+export function goalCardPress(cardKey: string, current: {
+  readonly stepId: TutorialStepId | null; readonly action: TutorialAction | null; readonly generalActions: ReadonlyMap<string, TutorialAction>;
+}): { readonly resume: boolean; readonly run: TutorialAction | null; readonly open: "goals" | "chapter" | null } {
+  if (current.stepId !== null && cardKey === current.stepId && current.action !== null) {
+    return { resume: current.action.kind === "ack" && current.action.resume === true, run: current.action, open: null };
+  }
+  if (cardKey === "chapter") return { resume: false, run: null, open: "chapter" };
+  if (cardKey === "settlement") return { resume: false, run: null, open: "goals" };
+  return { resume: false, run: current.generalActions.get(cardKey) ?? null, open: null };
 }
 
 /** Goal cards when no tutorial step is current: the settlement goal, and the chapel / market suggestion. */

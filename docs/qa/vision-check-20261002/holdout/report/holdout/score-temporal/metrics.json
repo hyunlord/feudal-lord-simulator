@@ -1,0 +1,189 @@
+{
+  "policy": {
+    "min_iou": 0.1,
+    "min_prediction_coverage": 0.5,
+    "recall_target": 0.7,
+    "precision_target": 0.8
+  },
+  "detectors": [
+    {
+      "detector": "straight_boundary",
+      "tp": 0,
+      "fp": 5,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": null,
+      "eligible_annotations": 3,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "tile_seam",
+      "tp": 0,
+      "fp": 0,
+      "fn": 3,
+      "precision": null,
+      "recall": 0.0,
+      "eligible_annotations": 3,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "stationary_person",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": null,
+      "recall": null,
+      "eligible_annotations": 3,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "not_demonstrated"
+    },
+    {
+      "detector": "roof_overlap",
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": null,
+      "eligible_annotations": 3,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "scale_ratio",
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": null,
+      "recall": 0.0,
+      "eligible_annotations": 2,
+      "excluded_annotations": 1,
+      "excluded_defects": 0,
+      "excluded_candidates": 1,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "repeat_density",
+      "tp": 0,
+      "fp": 0,
+      "fn": 0,
+      "precision": null,
+      "recall": null,
+      "eligible_annotations": 3,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "not_demonstrated"
+    }
+  ],
+  "observations": [
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "roof_overlap",
+      "outcome": "FP",
+      "candidate_id": "60ffa08b8194",
+      "defect_id": null,
+      "note": "Human semantic rejection; spatial match forbidden"
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "scale_ratio",
+      "outcome": "excluded",
+      "candidate_id": "holdout-city-year1362-confirm:scale_ratio:0",
+      "defect_id": null,
+      "note": "Outside eligible coverage or inside explicitly excluded target region"
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ff2ba489e186",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "7a35e8491e20",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-city-year1362-confirm-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3fdc9ae4d48d",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0489c16d8394",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-city-year1407-confirm-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-river-s1-year1301",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "5b23c1f923f2",
+      "defect_id": null,
+      "note": "No unmatched annotated target"
+    },
+    {
+      "scene": "holdout-river-s1-year1301",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-river-s1-year1301-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별."
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-city-year1362-confirm-long-rain-field",
+      "note": "Frame 0 and sequence: rain streaks visibly read longer than adult screen height. Blue streak lengths approximately 42–58 px versus adult H about 20–22 px. One weather field defect in this reviewed open-ground/water ROI, not one positive per raindrop. Semantic match MUST concern rain length; a barrel/door finding cannot satisfy this target. Art bible section 2 screen-space rain rule."
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-city-year1407-confirm-long-rain-field",
+      "note": "Frame 0 and sequence: rain streaks visibly read longer than adult screen height. White streak lengths approximately 45–70 px versus adult H about 20–22 px. One weather field defect in this reviewed open-ground/water ROI, not one positive per raindrop. Semantic match MUST concern rain length; a barrel/door finding cannot satisfy this target. Art bible section 2 screen-space rain rule."
+    }
+  ],
+  "rejected_candidate_ids": [
+    "60ffa08b8194"
+  ]
+}

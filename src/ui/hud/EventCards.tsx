@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 import { platformServices } from "../../platform/platform";
 import { EVENT_STORY_COPY } from "../eventStoryCopy.ko";
@@ -7,6 +7,7 @@ import { UiIcon } from "../UiIcon";
 import { Button } from "../kit";
 import { storyArtStyle } from "../storyArt";
 import { NAT1_BOX_COPY } from "../nat1TextBoxCopy.ko";
+import { textCut } from "./textCut";
 
 // UI-4 event cards (not modal: time runs on unless the setting stops it): a folded chip under the crisis icons for
 // each beat the world has already shown; a tap opens its card — the Wave 16 illustration, one line, the facts,
@@ -38,21 +39,34 @@ export function EventCards({ beats, onDismiss, onDecide }: {
 }
 
 /** NAT-1: extracted card body so useState resets on key change (different event card opened). */
-function EventCardDetail({ open, onDismiss, onDecide }: {
+export function EventCardDetail({ open, onDismiss, onDecide }: {
   readonly open: StoryBeat;
   readonly onDismiss: (id: string) => void;
   readonly onDecide: (beat: StoryBeat) => void;
 }) {
   const [lineExpanded, setLineExpanded] = useState(false);
   const [adviceId, setAdviceId] = useState<string | null>(null);
+  // NAT-4 (QA-022): "더 보기" only when the clamp or the title's ellipsis cuts something — the first winter's one
+  // sentence showed it, and pressing it took away only the button. Measured before paint and again when the card resizes.
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const lineRef = useRef<HTMLParagraphElement>(null);
+  const [cut, setCut] = useState(false);
+  useLayoutEffect(() => {
+    if (lineExpanded) return undefined;
+    const measure = () => setCut(textCut(titleRef.current) || textCut(lineRef.current));
+    measure();
+    const observer = new ResizeObserver(measure);
+    for (const element of [titleRef.current, lineRef.current]) if (element !== null) observer.observe(element);
+    return () => observer.disconnect();
+  }, [lineExpanded, open.title, open.line]);
   return (
     <article className="event-card" data-frame="light" data-story={open.kind}>
       <div className="event-card-art" aria-hidden="true" style={storyArtStyle(open.illustration, 296)} />
       {/* NAT-1: one line (ellipsis); "더 보기" shows it whole with the body (no hover-only title tooltip). */}
-      <h2 className={lineExpanded ? "event-card-title--whole" : undefined}>{open.title}</h2>
-      {/* NAT-1: clamp to 4 lines; the "더 보기" button reveals the rest. */}
-      <p className={`event-card-line${lineExpanded ? "" : " event-card-line--clamped"}`}>{open.line}</p>
-      {lineExpanded ? null : (
+      <h2 ref={titleRef} className={lineExpanded ? "event-card-title--whole" : undefined}>{open.title}</h2>
+      {/* NAT-1: clamp to 4 lines; the "더 보기" button reveals the rest (NAT-4: shown only when there is a rest). */}
+      <p ref={lineRef} className={`event-card-line${lineExpanded ? "" : " event-card-line--clamped"}`}>{open.line}</p>
+      {lineExpanded || !cut ? null : (
         <Button type="button" className="event-card-more" variant="quiet" onPress={() => setLineExpanded(true)}>
           {NAT1_BOX_COPY.more}
         </Button>

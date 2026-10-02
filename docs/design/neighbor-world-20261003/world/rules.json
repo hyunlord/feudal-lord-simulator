@@ -1,0 +1,890 @@
+{
+  "schemaVersion": "neighbor-rules-draft-1",
+  "status": "design_data_not_engine_executable",
+  "calendar": {
+    "startYear": 1300,
+    "endYear": 1450,
+    "baselineAt1300": true,
+    "annualTransitions": "1301..1450 inclusive: 150 transitions"
+  },
+  "probabilityConvention": "정수 permille. u=0..999, u<p면 통과. [1000,1000]은 조건부 결정 규칙이다. 역사적 발생률을 주장하지 않는다.",
+  "execution": {
+    "order": [
+      "annual_accounting",
+      "NW12",
+      "NW01",
+      "NW08",
+      "NW14",
+      "NW06",
+      "NW11",
+      "NW03",
+      "NW04",
+      "NW02",
+      "NW05",
+      "NW07",
+      "NW09",
+      "NW10",
+      "NW13"
+    ],
+    "annualAccounting": "각 조각의 실제 수취인에게 점유/수익 약정에 따른 연수입을 1회 적립; 부담·연금·지급기한을 차감. 평가액과 현금수입 분리. 지급·수취 양쪽 동일 transactionId. 미지급은 체납. 현금 생성 금지.",
+    "sorting": "코드 포인트 순서 ruleId,stableUnitId,contextId",
+    "rng": "제안: SHA256(seed|version|year|ruleId|stableUnitId|contextId)의 첫32비트 unsigned %1000. 수동 예시는 기록된 draw를 사용하고 무작위 전체모의실험으로 주장하지 않는다.",
+    "budgets": {
+      "backgroundActionsPerHousePerYear": 2,
+      "criticalSuccessionDeathPaymentExempt": true,
+      "playerFacingNewCardsPerYear": 2,
+      "cardBudgetDoesNotStopWorld": true
+    },
+    "dedup": "가문쌍 정렬키+권리ID+실질 사정 ID. UI 재열기/저장/불러오기 난수 재소모 금지.",
+    "transaction": "사전조건 재검증 후 재정·권리·관계·원장을 한 번에 반영하는 새 어댑터 필요. 현 엔진 명령 문자열처럼 실행하지 않는다."
+  },
+  "predicateContract": "eligibility의 이름은 허용 목록 읽기 모델 제안이다. 누락 필드는 false; 임의 eval/JavaScript 경로 실행 금지. 아래 조건과 RULES.md의 의미를 구현 어댑터가 매핑해야 한다.",
+  "rules": [
+    {
+      "id": "NW01",
+      "name": "나이와 자연사",
+      "scope": "person",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "alive_at_year_open"
+          },
+          {
+            "predicate": "not_plague_death_same_year"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          2,
+          180
+        ],
+        "selectedPermille": 10,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "ageBands": [
+          {
+            "min": 0,
+            "max": 0,
+            "p": 140
+          },
+          {
+            "min": 1,
+            "max": 4,
+            "p": 35
+          },
+          {
+            "min": 5,
+            "max": 15,
+            "p": 5
+          },
+          {
+            "min": 16,
+            "max": 39,
+            "p": 10
+          },
+          {
+            "min": 40,
+            "max": 59,
+            "p": 25
+          },
+          {
+            "min": 60,
+            "max": 74,
+            "p": 70
+          },
+          {
+            "min": 75,
+            "max": null,
+            "p": 180
+          }
+        ],
+        "overrideSelectedWithAgeBand": true,
+        "mortalityCalibration": "현대·중세 실측 생명표 아님; 후속 균형 시험 필요"
+      },
+      "outcomes": [
+        "태어난 연도에서 나이를 계산한다. 저장된 나이에 +1을 중복 적용하지 않는다.",
+        "연령대 위험으로 사망 여부를 정한다. 사망하면 deceased, 사망년과 원인을 기록하고 생존 배우자·후견·직책·권리 승계를 NW08/NW14에 한 번 전달한다."
+      ],
+      "sourceIds": [
+        "HS01",
+        "HS06"
+      ],
+      "cooldownYears": 0,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW02",
+      "name": "부부의 출생과 새 세대",
+      "scope": "married_pair",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "both_alive"
+          },
+          {
+            "predicate": "both_age_at_least_18"
+          },
+          {
+            "predicate": "mother_age_18_to_42"
+          },
+          {
+            "predicate": "no_religious_vows"
+          },
+          {
+            "predicate": "two_years_since_last_birth"
+          },
+          {
+            "predicate": "same_household_or_regular_co_residence"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          80,
+          350
+        ],
+        "selectedPermille": 220,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "age18to29Permille": 280,
+        "age30to36Permille": 180,
+        "age37to42Permille": 80,
+        "infantSexPermilleFemale": 500,
+        "note": "최소18세는 이 설계의 생성 정책이며 시대의 법정 최저 혼인연령 주장 아님."
+      },
+      "outcomes": [
+        "부모 ID가 있는 아이 하나를 추가한다. 이름 재사용은 가능하지만 ID는 고유하다.",
+        "아이의 권리·가문 계승은 출생만으로 확정하지 않는다. 새 초상은 연령 적합 풀이 없으면 요청 상태로 둔다."
+      ],
+      "sourceIds": [
+        "HS01"
+      ],
+      "cooldownYears": 2,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW03",
+      "name": "혼인 상대 탐색",
+      "scope": "unmarried_adult",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "alive"
+          },
+          {
+            "predicate": "age_at_least_18"
+          },
+          {
+            "predicate": "not_married_or_betrothed"
+          },
+          {
+            "predicate": "no_religious_vows"
+          },
+          {
+            "predicate": "consenting_pair_exists"
+          },
+          {
+            "predicate": "kinship_clear_or_documented_dispensation"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          80,
+          250
+        ],
+        "selectedPermille": 150,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "candidateCount": 3,
+        "oneActiveCourtshipPerPerson": true,
+        "kinshipPolicy": "공통 조상4세대 안은 기본 제외. 계보 누락은 적합 판정 금지; 외부 친족 조사 제안으로 보낸다.",
+        "ranking": "배우자 자신의 선호 > 생계 지속 가능성 > 관계 연결 > 거리; 동률 ID 오름차순"
+      },
+      "outcomes": [
+        "개별 인물 욕망·동의, 기존 친족·거래 연결, 이동거리, 재산부담·신분 등을 근거로 최대3후보를 낸다.",
+        "플레이어를 특별 우선하지 않는다. 실제 양쪽 동의와 NW04 계약 검사를 통과할 때만 혼인한다. 실패하면 관계의 작은 기억만 남기고 권리를 주지 않는다."
+      ],
+      "sourceIds": [
+        "HS01",
+        "HS03"
+      ],
+      "cooldownYears": 2,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW04",
+      "name": "혼인 재산·과부산의 설정",
+      "scope": "courtship",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "mutual_consent"
+          },
+          {
+            "predicate": "both_alive"
+          },
+          {
+            "predicate": "no_concurrent_marriage"
+          },
+          {
+            "predicate": "funds_and_rights_available"
+          },
+          {
+            "predicate": "settlement_does_not_override_existing_life_interest"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          400,
+          750
+        ],
+        "selectedPermille": 600,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "cashCeilingShareOfTreasury": 0.5,
+        "annualPromiseCeilingShareOfNetReceipts": 0.25,
+        "termYears": [
+          1,
+          5
+        ],
+        "durationYears": [
+          1,
+          3
+        ],
+        "note": "수치 모두 게임 추정. 현행 플레이어↔시험 이웃 전용 혼인 핸들러의 범용 NPC간 적용은 새 어댑터 필요."
+      },
+      "outcomes": [
+        "지참금·연금·과부산·후견·상속 기대를 별도 약정으로 작성한다. 금고 지급은 양쪽 원장을 동시에 갱신한다.",
+        "혼인은 상속 기대 청구권을 낳을 수 있으나 배우자 부친의 영지 전체를 즉시 이전하지 않는다. 과부 몫은 기존 문서·관습과 중복되지 않게 조정한다."
+      ],
+      "sourceIds": [
+        "HS01",
+        "HS02",
+        "HS03"
+      ],
+      "cooldownYears": 0,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW05",
+      "name": "채무와 담보 약정",
+      "scope": "debtor_creditor_pair",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "debtor_has_documented_shortfall"
+          },
+          {
+            "predicate": "creditor_has_surplus"
+          },
+          {
+            "predicate": "both_authorised"
+          },
+          {
+            "predicate": "collateral_not_already_pledged_or_entailed_without_consent"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          150,
+          450
+        ],
+        "selectedPermille": 300,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "principalRangeAnnualNetMultiple": [
+          0.2,
+          1
+        ],
+        "termYears": [
+          2,
+          5
+        ],
+        "interestDefault": 0,
+        "interestNote": "보편 이율을 창작하지 않는다. 위약·연금·수익 약정은 문서별 별도 값."
+      },
+      "outcomes": [
+        "현금 대부 또는 외상 대금을 채권·채무 한 쌍으로 기록하고 현금 이동은 한 번만 한다.",
+        "담보는 수입 조각·동산·조건부 이전 중 문서가 정한 것. 채권자가 자동 영주가 되지 않는다."
+      ],
+      "sourceIds": [
+        "HS04",
+        "HS01"
+      ],
+      "cooldownYears": 2,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW06",
+      "name": "상환·체납·담보 집행",
+      "scope": "debt_contract",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "contract_open"
+          },
+          {
+            "predicate": "payment_due"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          1000,
+          1000
+        ],
+        "selectedPermille": 1000,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "arrearsYearsToEnforcement": 2,
+        "renegotiationPermille": 450,
+        "enforcementPermille": 250,
+        "continueArrearsPermille": 300,
+        "note": "조건부 세 갈래 합1000. 담보 환가액은 원금에서 차감; 잔액·초과금의 귀속 문서화."
+      },
+      "outcomes": [
+        "지급 능력이 있으면 약정액만 양쪽 장부에 이전한다. 부족하면 현금 전액을 음수로 만들지 않고 미지급분을 체납으로 남긴다.",
+        "체납2년이면 채권자가 유예 재협상·소송·담보 점유 청구 중 택한다. 담보 자동 압류·채무와 원영지 이중상실 금지."
+      ],
+      "sourceIds": [
+        "HS04",
+        "HS03"
+      ],
+      "cooldownYears": 0,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW07",
+      "name": "권원·경계·채무 소송",
+      "scope": "claim",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "claim_open"
+          },
+          {
+            "predicate": "evidence_exists"
+          },
+          {
+            "predicate": "claimant_alive_or_represented"
+          },
+          {
+            "predicate": "no_identical_case_open"
+          },
+          {
+            "predicate": "filing_cost_affordable"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          50,
+          180
+        ],
+        "selectedPermille": 100,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "durationYears": [
+          1,
+          6
+        ],
+        "annualResolutionPermille": 250,
+        "meritoriousClaimSuccessRangePermille": [
+          350,
+          650
+        ],
+        "filingCostAnnualValueFraction": [
+          0.02,
+          0.08
+        ],
+        "implementation": "기존 claims/suits 모양 활용; NPC대NPC 비용·상태 전환은 새 어댑터"
+      },
+      "outcomes": [
+        "증거·법정 관할·대리인·후원을 기록하여 소송을 연다. 같은 권리·같은 당사자·같은 근거를 반복 개시하지 않는다.",
+        "판결은 claim 판단, 실제 점유 집행은 별도 단계다. 기각·화해·지연도 서사 결과다. 무력 사용은 비용·법적 후과가 있으며 권원 생성과 동일하지 않다."
+      ],
+      "sourceIds": [
+        "HS01",
+        "HS03"
+      ],
+      "cooldownYears": 3,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW08",
+      "name": "권리별 상속과 대의 단절",
+      "scope": "succession_context",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "holder_died_or_life_interest_ended"
+          },
+          {
+            "predicate": "right_not_processed_for_this_death"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          1000,
+          1000
+        ],
+        "selectedPermille": 1000,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "disputeConditionalRangePermille": [
+          150,
+          400
+        ],
+        "disputeSelectedPermille": 250,
+        "minorThreshold": 21,
+        "minorThresholdNote": "이 게임의 재산 관리 간소화 기준. 여성의 시기별·보유 형태별 성년 규칙을 완전 재현하지 않음.",
+        "noHeirsResult": "미확인 방계 조사 뒤 복귀권/상위 영주 청구 검토; 플레이어 자동 획득 금지"
+      },
+      "outcomes": [
+        "생애권·한정상속·차순위 문서를 먼저 적용하고 남은 일반법 재산에 대표상속·아들 우선·딸 공동상속·방계 탐색을 적용한다.",
+        "남자 후손이 없다는 이유만으로 가문 완전 소멸이라 하지 않는다. 남계 단절·명의 가문 흡수·모든 추적 계통 단절을 구별한다.",
+        "둘 이상 타당한 청구가 있으면 contested; 죽은 사람의 명의를 활성 holder로 유지하지 않는다. 미성년 상속은 후견·수익관리와 별도."
+      ],
+      "sourceIds": [
+        "HS01",
+        "HS02"
+      ],
+      "cooldownYears": 0,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW09",
+      "name": "권리 조각 매매",
+      "scope": "seller_buyer_piece",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "seller_willing"
+          },
+          {
+            "predicate": "buyer_can_pay"
+          },
+          {
+            "predicate": "seller_has_transferable_title"
+          },
+          {
+            "predicate": "not_disposed_this_year"
+          },
+          {
+            "predicate": "existing_burdens_disclosed"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          40,
+          120
+        ],
+        "selectedPermille": 80,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "priceAnnualValueMultiple": [
+          8,
+          14
+        ],
+        "settlementSuccessRangePermille": [
+          600,
+          850
+        ],
+        "settlementSelectedPermille": 750,
+        "transfersPerPiecePerYear": 1,
+        "note": "배수는 고증 가격표 아님; 팔린 조각의 수입을 매도자와 매수자에게 이중 지급하지 않음."
+      },
+      "outcomes": [
+        "계약금·권원 이전·점유 인도를 구별한다. 연간 가치와 거래가는 다른 금액이다.",
+        "토지와 모든 관습·공유권이 함께 없어지지 않는다. 과부 몫·한정상속·기존 담보가 걸렸으면 해당 동의/해제를 선행한다."
+      ],
+      "sourceIds": [
+        "HS01",
+        "HS03",
+        "HS05"
+      ],
+      "cooldownYears": 3,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW10",
+      "name": "후원 관계 재협상",
+      "scope": "house_patron_pair",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "patron_dead_or_unpaid_or_unhelpful_or_obligation_ended"
+          },
+          {
+            "predicate": "alternative_patron_willing"
+          },
+          {
+            "predicate": "service_compatible"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          40,
+          160
+        ],
+        "selectedPermille": 90,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "loyaltyPenaltyIfOathBroken": -15,
+        "oldPatronMemoryYears": 8,
+        "retainerPresence": "연금 가신은 상비 주둔 병사 아님",
+        "note": "신뢰와 관계 값은 게임 추정. 후원 결과는 국왕 정치에 자동 편승하는 국가 진영 태그가 아님."
+      },
+      "outcomes": [
+        "갱신·중립·새 후원자를 비교한다. 보호·법률 지원·연금·봉사 대가를 기록한다.",
+        "후원자는 법적 상위 영주와 같지 않다. 후원 변경이 봉건적 토지 보유 관계나 모든 우정을 즉시 바꾸지 않는다."
+      ],
+      "sourceIds": [
+        "HS03",
+        "HS09"
+      ],
+      "cooldownYears": 5,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW11",
+      "name": "재정 몰락과 지위 하락",
+      "scope": "secular_house",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "three_years_nonpositive_net"
+          },
+          {
+            "predicate": "arrears_exist"
+          },
+          {
+            "predicate": "no_affordable_rescue"
+          },
+          {
+            "predicate": "not_already_collapsed"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          100,
+          350
+        ],
+        "selectedPermille": 200,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "yearsShortfall": 3,
+        "recoveryPossible": true,
+        "permanentIdentityDelete": false
+      },
+      "outcomes": [
+        "외곽 수입 매각→가신 연금 축소→영주관 임대/이주 중 가능한 순서를 택한다.",
+        "재정 몰락은 생물학적 멸족이 아니다. 살아 있는 인물은 서기·청지기·혼인 친족·상인의 동업자로 계속 남는다."
+      ],
+      "sourceIds": [
+        "HS04",
+        "HS01"
+      ],
+      "cooldownYears": 8,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW12",
+      "name": "1348–1349 역병과 후속 파동",
+      "scope": "person_exposure",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "alive"
+          },
+          {
+            "predicate": "local_outbreak_active"
+          },
+          {
+            "predicate": "not_processed_for_same_wave"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          250,
+          550
+        ],
+        "selectedPermille": 350,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "firstWaveYears": [
+          1348,
+          1349
+        ],
+        "firstWaveId": "plague1348_49",
+        "laterWaveYears": [
+          1361,
+          1369
+        ],
+        "laterWaveRangePermille": [
+          50,
+          160
+        ],
+        "laterWaveSelectedPermille": 100,
+        "replaceNaturalDeathCheckForExposedYear": true,
+        "familyExtinctionNotForced": true
+      },
+      "outcomes": [
+        "1348–1349를 한 번의 지역 노출 파동으로 다룬다. 2년 모두35%를 중복 적용하지 않는다. 거점별 유행 도착년을 정해 인물별1회 판정한다.",
+        "사망은 NW08/NW14로 전달한다. 사망률·가문별 피해는 예시 게임 추정이며 전국 수치 재현 아님. 빈 땅이 즉시 목초지가 되거나 플레이어 소유가 되지 않는다."
+      ],
+      "sourceIds": [
+        "HS06"
+      ],
+      "cooldownYears": 0,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW13",
+      "name": "1381의 집단 청원·저항과 문서 분쟁",
+      "scope": "estate_community",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "year_is_1381"
+          },
+          {
+            "predicate": "grievance_or_tax_pressure_exists"
+          },
+          {
+            "predicate": "not_processed_1381"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          150,
+          450
+        ],
+        "selectedPermille": 250,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "documentLossConditionalPermille": 200,
+        "violenceConditionalPermille": 80,
+        "grievanceThreshold": 50,
+        "playerMustNotBeSoleDecisionMaker": true
+      },
+      "outcomes": [
+        "부역·부담금·징수 절차의 집단 청원 또는 장부 제출 요구가 생긴다. 청원·중재를 기본 결과로 두고 문서 탈취·소각은 조건부 일부 사례만 허용한다.",
+        "문서 소실은 증거 신뢰도에 영향을 주며 실제 모든 권리·모든 채무의 삭제가 아니다. 1382 이후 복구·사면·소송의 기억을 남긴다."
+      ],
+      "sourceIds": [
+        "HS07",
+        "HS08"
+      ],
+      "cooldownYears": 150,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    },
+    {
+      "id": "NW14",
+      "name": "수도원·주교좌의 직위 계승",
+      "scope": "institution_office",
+      "status": "proposal_not_engine_registered",
+      "eligibility": {
+        "all": [
+          {
+            "predicate": "vacancy"
+          },
+          {
+            "predicate": "eligible_cleric_candidates_exist"
+          },
+          {
+            "predicate": "not_filled_this_vacancy"
+          }
+        ]
+      },
+      "probability": {
+        "unit": "per_eligible_unit_per_year",
+        "rangePermille": [
+          1000,
+          1000
+        ],
+        "selectedPermille": 1000,
+        "basis": "게임 추정; 사료 빈도 아님"
+      },
+      "parameters": {
+        "approvalDelayYears": [
+          0,
+          2
+        ],
+        "institutionPropertyContinues": true,
+        "nepotismPossibleButNotHereditary": true
+      },
+      "outcomes": [
+        "수도원은 공동체의 선출/승인 절차, 주교좌 장원은 새 주교 또는 위임 관리인의 권한 확인으로 대표자를 바꾼다.",
+        "기관 재산은 전임자의 아들·조카에게 자동 상속하지 않는다. 전임·현직·후임 후보의 직위 연속성은 혈통3세대와 다르다."
+      ],
+      "sourceIds": [
+        "HS01",
+        "HS02"
+      ],
+      "cooldownYears": 0,
+      "maxPerUnitPerYear": 1,
+      "idempotencyKeyFields": [
+        "worldVersion",
+        "year",
+        "ruleId",
+        "stableUnitId",
+        "contextId"
+      ],
+      "requiresAdapter": true
+    }
+  ]
+}

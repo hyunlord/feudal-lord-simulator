@@ -141,12 +141,12 @@ describe("browser world asset registry", () => {
     };
     const targetEntries = [
       ...["house_l0", "house_l1", "well"].map((key) => ({ key, assetKey: key, targetRatio: 1.8 })),
-      // wheat_farm left the published manifest with the retired building (C1f; RETIRED_WORLD_ASSET_KEYS).
-      ...["mill", "sawmill", "logging_camp", "masonry", "quarry"].map((key) => ({ key, assetKey: key, targetRatio: 2.2 })),
+      // wheat_farm left the published manifest with the retired building (C1f), the flat mill, masonry, quarry, market,
+      // church and keep sprites with BLD-01 (NAT-4; RETIRED_WORLD_ASSET_KEYS): those kinds draw their facility paintings.
+      ...["sawmill", "logging_camp"].map((key) => ({ key, assetKey: key, targetRatio: 2.2 })),
       ...["house_l2", "house_l3", "house_l4"].map((key) => ({ key, assetKey: key, targetRatio: 2.6 })),
-      ...["barn", "storehouse", "market"].map((key) => ({ key, assetKey: key, targetRatio: 2.2 })),
+      ...["barn", "storehouse"].map((key) => ({ key, assetKey: key, targetRatio: 2.2 })),
       { key: "granary", assetKey: "barn", targetRatio: 2.2 },
-      ...["church", "keep"].map((key) => ({ key, assetKey: key, targetRatio: 3.2 })),
       ...["tree_oak_large", "tree_oak_small", "tree_pine_tall", "tree_pine_short", "tree_birch", "tree_dead"].map((key) => ({ key, assetKey: key, targetRatio: 2.0 })),
     ];
     const failures = targetEntries.flatMap(({ key, assetKey, targetRatio }) => {
@@ -229,7 +229,7 @@ describe("browser world asset registry", () => {
     assert.equal(Array.isArray(result["canvasEvents"]), true);
     const canvasEvents = result["canvasEvents"];
     if (!Array.isArray(canvasEvents)) throw new Error("canvasEvents must be an array");
-    assert.equal(canvasEvents.length, 22); // 23 before C1f: the retired wheat farm sprite is no longer rasterized
+    assert.equal(canvasEvents.length, 16); // 23 before C1f (the wheat farm), 22 before BLD-01 (six facility sprites)
     assert.deepEqual(
       canvasEvents.filter((event) =>
         isRecord(event) && event["width"] === 46 && event["height"] === 58
@@ -305,7 +305,7 @@ function isRecord(value: unknown): value is Readonly<Record<string, unknown>> {
 it("runtime metadata distinguishes accepted architecture from legacy and nonbuilding assets", () => {
   assert.equal(spriteMeta("house_l0")?.bakedArchitecture, true);
   assert.equal(spriteMeta("house_l3")?.bakedArchitecture, true);
-  assert.equal(spriteMeta("mill")?.bakedArchitecture, false);
+  assert.equal(spriteMeta("mill"), null, "BLD-01: the flat legacy facility sprites are retired");
   assert.equal(spriteMeta("grass")?.bakedArchitecture, false);
   assert.equal(spriteMeta("tree_oak_large")?.bakedArchitecture, false);
 });
