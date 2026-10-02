@@ -39,7 +39,11 @@ export function registryDecisionRun(seed: number, years = 20) {
   const hash = (value: unknown) => createHash("sha256").update(JSON.stringify(value)).digest("hex").slice(0, 16);
   return { seed, years, decisions: decisions.length, decisionsHash: hash(decisions), homes: homes.length, homesHash: hash(homes), byYear,
     homeDecisions: decisions.filter(decision => decision.kind === "estate_petition").length, decisionList: decisions, homeList: homes,
-    registryOffers: (state.registry?.occurrences ?? []).length };
+    registryOffers: (state.registry?.occurrences ?? []).length,
+    occurrences: (state.registry?.occurrences ?? []).map(occurrence => ({ entry: occurrence.entryId, year: stateCalendar({ ...state, tick: occurrence.offeredTick }).year,
+      status: occurrence.status, choice: occurrence.choiceId ?? "", bound: occurrence.boundId })),
+    decisionsByYear: Object.fromEntries([...new Set(decisions.map(decision => stateCalendar({ ...state, tick: decision.tick }).year))]
+      .map(year => [year, decisions.filter(decision => stateCalendar({ ...state, tick: decision.tick }).year === year).length])) };
 }
 
 if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
