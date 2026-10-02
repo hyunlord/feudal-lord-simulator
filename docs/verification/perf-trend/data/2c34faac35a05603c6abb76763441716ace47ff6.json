@@ -1,0 +1,311 @@
+{
+ "commit": "2c34faac35a05603c6abb76763441716ace47ff6",
+ "subject": "Game title: Charter & Kin (Korean 인장과 가문), replacing the working title Feudal Lord Simulator — decision TITLE-1; charter",
+ "committed": "2026-10-02T15:42:26+09:00",
+ "measured": "2026-10-02T06:52:25.355Z",
+ "host": "aitopatom-d6bb",
+ "machine": "dgx-headless",
+ "rounds": 3,
+ "seconds": 45,
+ "scenes": {
+  "big-town-x5": {
+   "runs": 3,
+   "medians": {
+    "scriptMsPerTick": 23.434,
+    "heapAllocKBPerTick": 837.9,
+    "canvasPer1kTicks": 334.8,
+    "scriptMsPerFrame": 58.901,
+    "taskMsPerFrame": 83.328,
+    "heapAllocMBps": 22.5,
+    "gcPerMin": 99.4,
+    "canvasPerSec": 1.64,
+    "bitmapPerSec": 0,
+    "getImageDataPerSec": 0,
+    "heapEndMB": 71.9,
+    "heapAfterGcMB": 35.6,
+    "p50": 83.3,
+    "p95": 216.6,
+    "p99": 383.3,
+    "max": 600,
+    "over33PerMin": 614.2,
+    "otherCpu": 0.32
+   },
+   "values": {
+    "scriptMsPerTick": [
+     25.295,
+     21.95,
+     23.434
+    ],
+    "heapAllocKBPerTick": [
+     914.7,
+     723,
+     837.9
+    ],
+    "canvasPer1kTicks": [
+     340.1,
+     334.8,
+     333.6
+    ],
+    "scriptMsPerFrame": [
+     64.636,
+     58.606,
+     58.901
+    ],
+    "taskMsPerFrame": [
+     89.816,
+     82.059,
+     83.328
+    ],
+    "heapAllocMBps": [
+     22.9,
+     21.8,
+     22.5
+    ],
+    "gcPerMin": [
+     99.4,
+     106.3,
+     91.7
+    ],
+    "canvasPerSec": [
+     1.66,
+     1.55,
+     1.64
+    ],
+    "bitmapPerSec": [
+     0,
+     0,
+     0
+    ],
+    "getImageDataPerSec": [
+     0,
+     0,
+     0
+    ],
+    "heapEndMB": [
+     69.3,
+     71.9,
+     78.7
+    ],
+    "heapAfterGcMB": [
+     35.3,
+     35.6,
+     36.2
+    ],
+    "p50": [
+     83.4,
+     83.3,
+     83.3
+    ],
+    "p95": [
+     233.4,
+     183.3,
+     216.6
+    ],
+    "p99": [
+     383.3,
+     300,
+     400
+    ],
+    "max": [
+     516.7,
+     600,
+     633.2
+    ],
+    "over33PerMin": [
+     572.6,
+     648.3,
+     614.2
+    ],
+    "otherCpu": [
+     0.32,
+     0.34,
+     0.28
+    ]
+   }
+  },
+  "new-game-x3": {
+   "runs": 3,
+   "medians": {
+    "scriptMsPerTick": 10.594,
+    "heapAllocKBPerTick": 587,
+    "canvasPer1kTicks": 79.4,
+    "scriptMsPerFrame": 11.576,
+    "taskMsPerFrame": 40.021,
+    "heapAllocMBps": 14.4,
+    "gcPerMin": 67.8,
+    "canvasPerSec": 0.64,
+    "bitmapPerSec": 0,
+    "getImageDataPerSec": 0,
+    "heapEndMB": 36.1,
+    "heapAfterGcMB": 19.9,
+    "p50": 33.4,
+    "p95": 83.4,
+    "p99": 150.1,
+    "max": 416.6,
+    "over33PerMin": 855.3,
+    "otherCpu": 0.31
+   },
+   "values": {
+    "scriptMsPerTick": [
+     11.128,
+     10.594,
+     10.425
+    ],
+    "heapAllocKBPerTick": [
+     588.7,
+     587,
+     536.1
+    ],
+    "canvasPer1kTicks": [
+     80.4,
+     79.4,
+     73.9
+    ],
+    "scriptMsPerFrame": [
+     11.272,
+     11.576,
+     12.757
+    ],
+    "taskMsPerFrame": [
+     38.701,
+     40.021,
+     40.984
+    ],
+    "heapAllocMBps": [
+     14.3,
+     14.4,
+     14.7
+    ],
+    "gcPerMin": [
+     67.8,
+     65,
+     70.7
+    ],
+    "canvasPerSec": [
+     0.64,
+     0.64,
+     0.64
+    ],
+    "bitmapPerSec": [
+     0,
+     0,
+     0
+    ],
+    "getImageDataPerSec": [
+     0,
+     0,
+     0
+    ],
+    "heapEndMB": [
+     21.4,
+     36.1,
+     43.6
+    ],
+    "heapAfterGcMB": [
+     19.9,
+     19.6,
+     20.3
+    ],
+    "p50": [
+     33.3,
+     33.4,
+     33.4
+    ],
+    "p95": [
+     83.4,
+     83.4,
+     83.4
+    ],
+    "p99": [
+     150.1,
+     166.7,
+     150
+    ],
+    "max": [
+     433.3,
+     416.6,
+     350
+    ],
+    "over33PerMin": [
+     863.1,
+     855.3,
+     841.4
+    ],
+    "otherCpu": [
+     0.31,
+     0.3,
+     0.37
+    ]
+   }
+  }
+ },
+ "codeBudgets": {
+  "budgets": {
+   "install26-entries": {
+    "label": "INSTALL-26 집 400채 항목 ms",
+    "budgetMs": 50,
+    "values": [
+     2.013,
+     3.689,
+     1.227
+    ],
+    "median": 2.013
+   },
+   "install26-assign": {
+    "label": "INSTALL-26 집 그림 배정 ms",
+    "budgetMs": 100,
+    "values": [
+     1.992,
+     2.856,
+     1.882
+    ],
+    "median": 1.992
+   },
+   "install26-held": {
+    "label": "INSTALL-26 같은 입력 프레임 ms",
+    "budgetMs": 0.5,
+    "values": [
+     0.044,
+     0.028,
+     0.05
+    ],
+    "median": 0.044
+   },
+   "install26-new-houses": {
+    "label": "INSTALL-26 새 집 배열 프레임 ms",
+    "budgetMs": 50,
+    "values": [
+     0.997,
+     1.481,
+     2.254
+    ],
+    "median": 1.481
+   },
+   "chron1-open-30k": {
+    "label": "CHRON-1 연대기 30,000건 열기 ms",
+    "budgetMs": 120,
+    "values": [
+     11.585,
+     20.576,
+     14.154
+    ],
+    "median": 14.154
+   },
+   "h8-query-10k": {
+    "label": "H8 기록 10,000건 질의 ms",
+    "budgetMs": 5,
+    "values": [
+     0.33,
+     0.283,
+     0.36
+    ],
+    "median": 0.33
+   }
+  },
+  "otherCpu": [
+   0.51,
+   0.56,
+   0.39
+  ]
+ }
+}

@@ -1,0 +1,910 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Audited engine record definitions; not complete GameState schema",
+  "description": "Derived manually from checkout 618c5ec. Root accepts one definition via $ref replacement. Record shapes only; cross references require independent validation. Numeric ranges enforce documented contracts.",
+  "$ref": "#/$defs/EstatesState",
+  "$defs": {
+    "PersonTraits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hair": {
+          "enum": [
+            "black",
+            "dark_brown",
+            "brown",
+            "chestnut",
+            "auburn",
+            "red",
+            "blond",
+            "flaxen"
+          ]
+        },
+        "skin": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7
+        },
+        "eye": {
+          "enum": [
+            "blue",
+            "grey",
+            "green",
+            "hazel",
+            "brown",
+            "dark_brown"
+          ]
+        },
+        "faceShape": {
+          "enum": [
+            "long",
+            "round",
+            "square",
+            "pointed"
+          ]
+        },
+        "nose": {
+          "enum": [
+            "straight",
+            "hooked",
+            "snub",
+            "bulbous"
+          ]
+        },
+        "buildBias": {
+          "enum": [
+            "thin",
+            "average",
+            "heavy"
+          ]
+        }
+      },
+      "required": [
+        "hair",
+        "skin",
+        "eye",
+        "faceShape",
+        "nose",
+        "buildBias"
+      ]
+    },
+    "Person": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "epithet": {
+          "type": "string"
+        },
+        "sex": {
+          "enum": [
+            "female",
+            "male"
+          ]
+        },
+        "birthYear": {
+          "type": "integer"
+        },
+        "householdId": {
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "head",
+            "spouse",
+            "child",
+            "kin",
+            "steward"
+          ]
+        },
+        "classBand": {
+          "enum": [
+            "labour",
+            "poor_servant",
+            "artisan",
+            "merchant",
+            "gentry",
+            "clerical"
+          ]
+        },
+        "occupation": {
+          "type": "string"
+        },
+        "build": {
+          "enum": [
+            "thin",
+            "average",
+            "heavy"
+          ]
+        },
+        "hair": {
+          "type": "string"
+        },
+        "alive": {
+          "type": "boolean"
+        },
+        "deathYear": {
+          "type": "integer"
+        },
+        "deathCause": {
+          "enum": [
+            "age",
+            "captivity",
+            "famine",
+            "fire",
+            "plague"
+          ]
+        },
+        "leftYear": {
+          "type": "integer"
+        },
+        "portraitIdentity": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "motherId": {
+          "type": "string"
+        },
+        "fatherId": {
+          "type": "string"
+        },
+        "lineageId": {
+          "type": "string"
+        },
+        "traits": {
+          "$ref": "#/$defs/PersonTraits"
+        },
+        "condition": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "enum": [
+                "sick",
+                "injury",
+                "pregnant",
+                "pilgrim"
+              ]
+            },
+            "since": {
+              "type": "number"
+            },
+            "until": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "kind",
+            "since",
+            "until"
+          ]
+        },
+        "nameFrom": {
+          "enum": [
+            "father",
+            "grandfather",
+            "mother",
+            "grandmother",
+            "godparent"
+          ]
+        },
+        "godparentId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "givenName",
+        "sex",
+        "birthYear",
+        "householdId",
+        "role",
+        "classBand",
+        "occupation",
+        "build",
+        "hair",
+        "alive",
+        "portraitIdentity",
+        "tags",
+        "lineageId",
+        "traits"
+      ]
+    },
+    "NamedLineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "lord",
+            "overlord",
+            "neighbour",
+            "merchant",
+            "reeve",
+            "miller"
+          ]
+        },
+        "set": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "since": {
+          "type": "number"
+        },
+        "slots": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "set",
+        "since",
+        "slots"
+      ]
+    },
+    "PersonState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "people": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Person"
+          }
+        },
+        "past": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Person"
+          }
+        },
+        "nextOrdinal": {
+          "type": "integer"
+        },
+        "reeveYear": {
+          "type": "integer"
+        },
+        "lineages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NamedLineage"
+          }
+        },
+        "reeveTerms": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "lordOrdinal": {
+          "type": "integer"
+        },
+        "bailiffYear": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "people",
+        "past",
+        "nextOrdinal"
+      ]
+    },
+    "RightPiece": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "land_rent",
+            "manor_court",
+            "mill",
+            "market",
+            "tolls",
+            "fishery",
+            "advowson",
+            "hunting"
+          ]
+        },
+        "annualValue": {
+          "type": "number"
+        },
+        "titleHolder": {
+          "type": "string"
+        },
+        "possessor": {
+          "type": "string"
+        },
+        "possessedSince": {
+          "type": "number"
+        },
+        "loss": {
+          "enum": [
+            "suspended",
+            "seized",
+            "forced",
+            "held_against_judgment"
+          ]
+        },
+        "lifeTenant": {
+          "type": "string"
+        },
+        "remainder": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "annualValue",
+        "titleHolder",
+        "possessor",
+        "possessedSince"
+      ]
+    },
+    "Estate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "manor",
+            "market_town",
+            "mill_estate",
+            "fishery"
+          ]
+        },
+        "manors": {
+          "type": "number"
+        },
+        "annualValue": {
+          "type": "number"
+        },
+        "burdens": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "debt": {
+              "type": "number"
+            },
+            "rentCharges": {
+              "type": "number"
+            },
+            "repairs": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "debt",
+            "rentCharges",
+            "repairs"
+          ]
+        },
+        "pieces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RightPiece"
+          }
+        },
+        "titleHolder": {
+          "type": "string"
+        },
+        "possessor": {
+          "type": "string"
+        },
+        "lifeTenant": {
+          "type": "string"
+        },
+        "remainder": {
+          "type": "string"
+        },
+        "patron": {
+          "type": "string"
+        },
+        "steward": {
+          "type": "string"
+        },
+        "titleStrength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "possessionStrength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "offMap": {
+          "type": "boolean"
+        },
+        "house": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "lordId": {
+              "type": "string"
+            },
+            "familyIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "rank": {
+              "enum": [
+                "gentry",
+                "knight",
+                "baron"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "lordId",
+            "familyIds",
+            "rank"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "manors",
+        "annualValue",
+        "burdens",
+        "pieces",
+        "titleHolder",
+        "possessor",
+        "titleStrength",
+        "possessionStrength",
+        "offMap"
+      ]
+    },
+    "Evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "charter",
+            "deed",
+            "court_roll",
+            "witnesses",
+            "possession_years"
+          ]
+        },
+        "weight": {
+          "type": "number"
+        },
+        "tick": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "kind",
+        "weight",
+        "tick"
+      ]
+    },
+    "Claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "claimant": {
+          "type": "string"
+        },
+        "estateId": {
+          "type": "string"
+        },
+        "pieceId": {
+          "type": "string"
+        },
+        "basis": {
+          "enum": [
+            "inheritance",
+            "marriage",
+            "purchase_deed",
+            "grant",
+            "old_possession"
+          ]
+        },
+        "strength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          }
+        },
+        "since": {
+          "type": "number"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "suing",
+            "won",
+            "lost",
+            "lapsed"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "claimant",
+        "estateId",
+        "basis",
+        "strength",
+        "evidence",
+        "since",
+        "status"
+      ]
+    },
+    "Suit": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "claimId": {
+          "type": "string"
+        },
+        "plaintiff": {
+          "type": "string"
+        },
+        "defendant": {
+          "type": "string"
+        },
+        "estateId": {
+          "type": "string"
+        },
+        "pieceId": {
+          "type": "string"
+        },
+        "stage": {
+          "enum": [
+            "filed",
+            "evidence",
+            "patronage",
+            "hearing",
+            "judged",
+            "enforcing",
+            "closed"
+          ]
+        },
+        "stageSince": {
+          "type": "number"
+        },
+        "patron": {
+          "type": "string"
+        },
+        "patronSupport": {
+          "type": "number"
+        },
+        "verdict": {
+          "enum": [
+            "plaintiff",
+            "defendant"
+          ]
+        },
+        "enforcements": {
+          "type": "number"
+        },
+        "hold": {
+          "type": "number"
+        },
+        "enforced": {
+          "type": "boolean"
+        },
+        "costs": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "claimId",
+        "plaintiff",
+        "defendant",
+        "estateId",
+        "stage",
+        "stageSince",
+        "patronSupport",
+        "enforcements",
+        "costs"
+      ]
+    },
+    "EstatesState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "estates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Estate"
+          }
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Claim"
+          }
+        },
+        "suits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Suit"
+          }
+        },
+        "nextClaim": {
+          "type": "integer"
+        },
+        "nextSuit": {
+          "type": "integer"
+        },
+        "people": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Person"
+          }
+        }
+      },
+      "required": [
+        "estates",
+        "claims",
+        "suits",
+        "nextClaim",
+        "nextSuit",
+        "people"
+      ]
+    },
+    "StewardRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "personId": {
+          "type": "string"
+        },
+        "estateId": {
+          "type": "string"
+        },
+        "ability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "loyalty": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "disposition": {
+          "enum": [
+            "merchant",
+            "peasant",
+            "greedy"
+          ]
+        },
+        "connection": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "since": {
+          "type": "number"
+        },
+        "kept": {
+          "type": "number"
+        },
+        "errors": {
+          "type": "number"
+        },
+        "status": {
+          "enum": [
+            "candidate",
+            "serving",
+            "dismissed",
+            "dead"
+          ]
+        }
+      },
+      "required": [
+        "personId",
+        "estateId",
+        "ability",
+        "loyalty",
+        "disposition",
+        "connection",
+        "since",
+        "kept",
+        "errors",
+        "status"
+      ]
+    },
+    "FactionRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "enum": [
+            "overlord",
+            "crown",
+            "neighbour_1",
+            "neighbour_2",
+            "bishop",
+            "merchant_house_1",
+            "merchant_house_2",
+            "town",
+            "commons"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "overlord",
+            "crown",
+            "neighbour",
+            "church",
+            "merchant_house",
+            "town",
+            "commons"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "leaderId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "heraldrySeed": {
+          "type": "number"
+        },
+        "relation": {
+          "type": "number",
+          "minimum": -100,
+          "maximum": 100
+        },
+        "memory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "recordId": {
+                "type": "string"
+              },
+              "tick": {
+                "type": "number"
+              },
+              "delta": {
+                "type": "number"
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "recordId",
+              "tick",
+              "delta",
+              "reason"
+            ]
+          }
+        },
+        "timeline": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "tick": {
+                "type": "number"
+              },
+              "year": {
+                "type": "integer"
+              },
+              "kind": {
+                "enum": [
+                  "leader",
+                  "world",
+                  "affair"
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "personId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "tick",
+              "year",
+              "kind",
+              "id"
+            ]
+          }
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "name",
+        "leaderId",
+        "heraldrySeed",
+        "relation",
+        "memory",
+        "timeline"
+      ]
+    },
+    "FactionState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "factions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FactionRecord"
+          }
+        },
+        "people": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Person"
+          }
+        },
+        "nextOrdinal": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "factions",
+        "people",
+        "nextOrdinal"
+      ]
+    }
+  }
+}

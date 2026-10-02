@@ -1,0 +1,68 @@
+{
+  "current": {
+    "seconds": 20.51233391702408,
+    "thresholds": {
+      "exclude_water": true,
+      "axis_boundary_length_tiles": 0.65,
+      "boundary_length_tiles": 2.5,
+      "boundary_contrast": 14.0,
+      "boundary_angle_degrees": 0.12,
+      "seam_correlation": 0.5,
+      "seam_min_periods": 3.0,
+      "still_distance_px": 1.3,
+      "still_min_tick_span": 18,
+      "overlap_fraction": 0.2,
+      "repeat_min_count": 4,
+      "repeat_building_min_count": 6,
+      "repeat_radius_tiles": 2.4,
+      "repeat_similarity": 0.85,
+      "max_per_detector": 12
+    },
+    "scenes": 8,
+    "candidates": 75
+  },
+  "prenat1": {
+    "seconds": 17.27143670798978,
+    "thresholds": {
+      "exclude_water": true,
+      "axis_boundary_length_tiles": 0.65,
+      "boundary_length_tiles": 2.5,
+      "boundary_contrast": 14.0,
+      "boundary_angle_degrees": 0.12,
+      "seam_correlation": 0.5,
+      "seam_min_periods": 3.0,
+      "still_distance_px": 1.3,
+      "still_min_tick_span": 18,
+      "overlap_fraction": 0.2,
+      "repeat_min_count": 4,
+      "repeat_building_min_count": 6,
+      "repeat_radius_tiles": 2.4,
+      "repeat_similarity": 0.85,
+      "max_per_detector": 12
+    },
+    "scenes": 5,
+    "candidates": 229
+  },
+  "prenat2": {
+    "seconds": 4.264899875037372,
+    "thresholds": {
+      "exclude_water": true,
+      "axis_boundary_length_tiles": 0.65,
+      "boundary_length_tiles": 2.5,
+      "boundary_contrast": 14.0,
+      "boundary_angle_degrees": 0.12,
+      "seam_correlation": 0.5,
+      "seam_min_periods": 3.0,
+      "still_distance_px": 1.3,
+      "still_min_tick_span": 18,
+      "overlap_fraction": 0.2,
+      "repeat_min_count": 4,
+      "repeat_building_min_count": 6,
+      "repeat_radius_tiles": 2.4,
+      "repeat_similarity": 0.85,
+      "max_per_detector": 12
+    },
+    "scenes": 1,
+    "candidates": 100
+  }
+}

@@ -22,6 +22,7 @@
     "remote:clone-check": "scripts/remote/run.sh --task clone-check",
     "remote:trend": "scripts/remote/run.sh --task trend",
     "perf:trend": "tsx scripts/perf/perfTrend.ts",
+    "vision:check": "node tools/vision-check/run.mjs",
     "remote:perf": "scripts/remote/run.sh --task perf",
     "remote:ui-geometry": "scripts/remote/run.sh --task ui-geometry",
     "ui-geometry:baseline": "node scripts/uiGeometryBaseline.mjs",

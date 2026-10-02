@@ -1,0 +1,354 @@
+[
+  {
+    "scene": "exp-main-coast",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-straight_boundary-coast-north",
+        "box": {
+          "x": 285,
+          "y": 343,
+          "width": 166,
+          "height": 114
+        },
+        "note": "해안 북쪽의 분리된 작은 바위. 양 사선과 아래 꼭짓점이 칸 모양으로 잘리고 검은 사각 테두리가 줄지어 반복."
+      },
+      {
+        "id": "EXP-straight_boundary-coast-south",
+        "box": {
+          "x": 102,
+          "y": 455,
+          "width": 477,
+          "height": 200
+        },
+        "note": "해안 남쪽의 별도 큰 바위. 북쪽 조각과 잔디 틈으로 분리. 위쪽 오목한 칸 윤곽과 우하 사선의 검은 반복 도형."
+      }
+    ],
+    "regions": [
+      {
+        "x": 270,
+        "y": 328,
+        "width": 196,
+        "height": 144
+      },
+      {
+        "x": 87,
+        "y": 440,
+        "width": 507,
+        "height": 230
+      },
+      {
+        "x": 620,
+        "y": 280,
+        "width": 420,
+        "height": 210
+      }
+    ]
+  },
+  {
+    "scene": "exp-main-coast",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "EXP-tile_seam-coast-north",
+        "box": {
+          "x": 285,
+          "y": 343,
+          "width": 166,
+          "height": 114
+        },
+        "note": "해안 북쪽의 분리된 작은 바위. 양 사선과 아래 꼭짓점이 칸 모양으로 잘리고 검은 사각 테두리가 줄지어 반복."
+      },
+      {
+        "id": "EXP-tile_seam-coast-south",
+        "box": {
+          "x": 102,
+          "y": 455,
+          "width": 477,
+          "height": 200
+        },
+        "note": "해안 남쪽의 별도 큰 바위. 북쪽 조각과 잔디 틈으로 분리. 위쪽 오목한 칸 윤곽과 우하 사선의 검은 반복 도형."
+      }
+    ],
+    "regions": [
+      {
+        "x": 270,
+        "y": 328,
+        "width": 196,
+        "height": 144
+      },
+      {
+        "x": 87,
+        "y": 440,
+        "width": 507,
+        "height": 230
+      },
+      {
+        "x": 620,
+        "y": 280,
+        "width": 420,
+        "height": 210
+      }
+    ]
+  },
+  {
+    "scene": "exp-main-fen",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-straight_boundary-fen-east",
+        "box": {
+          "x": 1238,
+          "y": 648,
+          "width": 156,
+          "height": 81
+        },
+        "note": "습지 동쪽 작은 바위. 나무에 오른편이 가려졌으나 왼쪽 두 사선 절단과 검은 사각 반복이 보임."
+      }
+    ],
+    "regions": [
+      {
+        "x": 1223,
+        "y": 633,
+        "width": 186,
+        "height": 111
+      },
+      {
+        "x": 400,
+        "y": 330,
+        "width": 330,
+        "height": 190
+      }
+    ]
+  },
+  {
+    "scene": "exp-main-fen",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "EXP-tile_seam-fen-east",
+        "box": {
+          "x": 1238,
+          "y": 648,
+          "width": 156,
+          "height": 81
+        },
+        "note": "습지 동쪽 작은 바위. 나무에 오른편이 가려졌으나 왼쪽 두 사선 절단과 검은 사각 반복이 보임."
+      }
+    ],
+    "regions": [
+      {
+        "x": 1223,
+        "y": 633,
+        "width": 186,
+        "height": 111
+      },
+      {
+        "x": 400,
+        "y": 330,
+        "width": 330,
+        "height": 190
+      }
+    ]
+  },
+  {
+    "scene": "exp-main-forest",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-straight_boundary-forest-north",
+        "box": {
+          "x": 943,
+          "y": 425,
+          "width": 319,
+          "height": 190
+        },
+        "note": "숲 지도1 북쪽 바위. 아랫면의 긴 곧은 사선 절단을 따라 검은 사각 테두리가 반복. 윗면은 수목 가림."
+      }
+    ],
+    "regions": [
+      {
+        "x": 928,
+        "y": 410,
+        "width": 349,
+        "height": 220
+      }
+    ]
+  },
+  {
+    "scene": "exp-main-forest",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "EXP-tile_seam-forest-north",
+        "box": {
+          "x": 943,
+          "y": 425,
+          "width": 319,
+          "height": 190
+        },
+        "note": "숲 지도1 북쪽 바위. 아랫면의 긴 곧은 사선 절단을 따라 검은 사각 테두리가 반복. 윗면은 수목 가림."
+      }
+    ],
+    "regions": [
+      {
+        "x": 928,
+        "y": 410,
+        "width": 349,
+        "height": 220
+      }
+    ]
+  },
+  {
+    "scene": "exp-holdout-forest-s2",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-axis-forest-s2-west-middle",
+        "box": {
+          "x": 389,
+          "y": 364,
+          "width": 23,
+          "height": 80
+        },
+        "note": "숲 지도2 서쪽 강굽이 옆 흙 판이 세로 직선으로 끝나는 절단"
+      },
+      {
+        "id": "EXP-axis-forest-s2-west-bottom",
+        "box": {
+          "x": 484,
+          "y": 547,
+          "width": 24,
+          "height": 116
+        },
+        "note": "숲 지도2 서남쪽 쓰러진 나무 옆 흙 판의 세로 직각 절단"
+      },
+      {
+        "id": "EXP-axis-forest-s2-east",
+        "box": {
+          "x": 1126,
+          "y": 211,
+          "width": 23,
+          "height": 89
+        },
+        "note": "숲 지도2 동쪽 호수 옆 흙 판의 세로 직각 절단"
+      }
+    ],
+    "regions": [
+      {
+        "x": 374,
+        "y": 349,
+        "width": 53,
+        "height": 110
+      },
+      {
+        "x": 469,
+        "y": 532,
+        "width": 54,
+        "height": 146
+      },
+      {
+        "x": 1111,
+        "y": 196,
+        "width": 53,
+        "height": 119
+      }
+    ]
+  },
+  {
+    "scene": "exp-recall-chalk",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-straight_boundary-chalk-east-reused",
+        "box": {
+          "x": 790,
+          "y": 435,
+          "width": 810,
+          "height": 400
+        },
+        "note": "이전 QA039 정답의 동쪽 연결 바위 덩어리 하나를 재사용. 별도줌·계절 영상의 같은 덩어리를 추가 양성으로 세지 않음."
+      }
+    ],
+    "regions": [
+      {
+        "x": 775,
+        "y": 420,
+        "width": 840,
+        "height": 430
+      }
+    ]
+  },
+  {
+    "scene": "exp-recall-chalk",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "EXP-tile_seam-chalk-east-reused",
+        "box": {
+          "x": 790,
+          "y": 435,
+          "width": 810,
+          "height": 400
+        },
+        "note": "이전 QA039 정답의 동쪽 연결 바위 덩어리 하나를 재사용. 별도줌·계절 영상의 같은 덩어리를 추가 양성으로 세지 않음."
+      }
+    ],
+    "regions": [
+      {
+        "x": 775,
+        "y": 420,
+        "width": 840,
+        "height": 430
+      }
+    ]
+  },
+  {
+    "scene": "exp-main-chalk-wide",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-straight_boundary-chalk-west-new",
+        "box": {
+          "x": 0,
+          "y": 514,
+          "width": 366,
+          "height": 197
+        },
+        "note": "백악 지도1 서쪽의 다른 바위 덩어리. 화면 왼쪽으로 일부 잘렸으나 노출된 오른쪽 사선 및 검은 반복 도형이 명확. 화면 오른쪽 QA039 기존 덩어리는 여기서 세지 않음."
+      }
+    ],
+    "regions": [
+      {
+        "x": 0,
+        "y": 499,
+        "width": 396,
+        "height": 227
+      }
+    ]
+  },
+  {
+    "scene": "exp-main-chalk-wide",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "EXP-tile_seam-chalk-west-new",
+        "box": {
+          "x": 0,
+          "y": 514,
+          "width": 366,
+          "height": 197
+        },
+        "note": "백악 지도1 서쪽의 다른 바위 덩어리. 화면 왼쪽으로 일부 잘렸으나 노출된 오른쪽 사선 및 검은 반복 도형이 명확. 화면 오른쪽 QA039 기존 덩어리는 여기서 세지 않음."
+      }
+    ],
+    "regions": [
+      {
+        "x": 0,
+        "y": 499,
+        "width": 396,
+        "height": 227
+      }
+    ]
+  }
+]
