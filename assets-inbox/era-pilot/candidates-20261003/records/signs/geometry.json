@@ -1,0 +1,142 @@
+[
+  {
+    "id": "sign_bread_1300",
+    "width": 137,
+    "height": 137,
+    "alpha_bounds": [
+      23,
+      17,
+      116,
+      137
+    ],
+    "alpha_zero": 13508,
+    "anchor_x": 27,
+    "anchor_y": 27,
+    "anchor_status": "proposed pair registration; not Wave36 original pivot"
+  },
+  {
+    "id": "sign_bread_1420",
+    "width": 137,
+    "height": 137,
+    "alpha_bounds": [
+      22,
+      17,
+      116,
+      137
+    ],
+    "alpha_zero": 13342,
+    "anchor_x": 27,
+    "anchor_y": 27,
+    "anchor_status": "proposed pair registration; not Wave36 original pivot"
+  },
+  {
+    "pair": "bread",
+    "silhouette_iou": 0.9803685897435898,
+    "pixel_identical_binary_alpha": false
+  },
+  {
+    "id": "sign_ale_1300",
+    "width": 137,
+    "height": 137,
+    "alpha_bounds": [
+      36,
+      23,
+      105,
+      137
+    ],
+    "alpha_zero": 16523,
+    "anchor_x": 27,
+    "anchor_y": 27,
+    "anchor_status": "proposed pair registration; not Wave36 original pivot"
+  },
+  {
+    "id": "sign_ale_1420",
+    "width": 137,
+    "height": 137,
+    "alpha_bounds": [
+      36,
+      23,
+      106,
+      137
+    ],
+    "alpha_zero": 16450,
+    "anchor_x": 27,
+    "anchor_y": 27,
+    "anchor_status": "proposed pair registration; not Wave36 original pivot"
+  },
+  {
+    "pair": "ale",
+    "silhouette_iou": 0.9539078156312625,
+    "pixel_identical_binary_alpha": false
+  },
+  {
+    "id": "sign_smith_1300",
+    "width": 137,
+    "height": 137,
+    "alpha_bounds": [
+      15,
+      4,
+      131,
+      137
+    ],
+    "alpha_zero": 10642,
+    "anchor_x": 27,
+    "anchor_y": 27,
+    "anchor_status": "proposed pair registration; not Wave36 original pivot"
+  },
+  {
+    "id": "sign_smith_1420",
+    "width": 137,
+    "height": 137,
+    "alpha_bounds": [
+      15,
+      4,
+      132,
+      137
+    ],
+    "alpha_zero": 10607,
+    "anchor_x": 27,
+    "anchor_y": 27,
+    "anchor_status": "proposed pair registration; not Wave36 original pivot"
+  },
+  {
+    "pair": "smith",
+    "silhouette_iou": 0.9944213803840166,
+    "pixel_identical_binary_alpha": false
+  },
+  {
+    "id": "sign_textile_1300",
+    "width": 137,
+    "height": 137,
+    "alpha_bounds": [
+      0,
+      5,
+      130,
+      130
+    ],
+    "alpha_zero": 11164,
+    "anchor_x": 27,
+    "anchor_y": 27,
+    "anchor_status": "proposed pair registration; not Wave36 original pivot"
+  },
+  {
+    "id": "sign_textile_1420",
+    "width": 137,
+    "height": 137,
+    "alpha_bounds": [
+      16,
+      8,
+      130,
+      137
+    ],
+    "alpha_zero": 11115,
+    "anchor_x": 27,
+    "anchor_y": 27,
+    "anchor_status": "proposed pair registration; not Wave36 original pivot"
+  },
+  {
+    "pair": "textile",
+    "silhouette_iou": 0.9886441373648927,
+    "pixel_identical_binary_alpha": false
+  }
+]

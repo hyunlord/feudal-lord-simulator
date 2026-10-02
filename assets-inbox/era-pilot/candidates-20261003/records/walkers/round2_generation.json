@@ -1,0 +1,28 @@
+[
+  {
+    "role": "merchant_m",
+    "era": 1300,
+    "source": "wk_merchant_m_01-v1.png",
+    "prompt": "Use case: identity-preserve. Edit target is the supplied complete medieval walker sheet, a male merchant. Produce one complete transparent sprite sheet with exactly four columns by two rows, same layout aspect2:1, NE SE SW NW directions and alternate walk phases. Keep same face, brown hat and hood, blue pigment, hands and foot positions, head height, overall bounding box, silhouette limits and full figure identity. Change only the costume tailoring to historically credible southern England around1300: a LOOSE STRAIGHT long blue tunic or sleeveless surcoat over visible blue long-sleeved undertunic. Outer garment makes a broad simple unwaisted surface from shoulders to just BELOW KNEES, with plain neck opening and clearly separate inner sleeves visible at armholes. Belt mostly hidden, NO tight waist, NO front button row, NO fitted short coat, NO fifteenth-century pleating. Both lower legs and both shoes remain visible, and every original walking pose remains readable. Lengthen the tunic only into the available leg region without changing total height or planted foot. Same restrained painterly miniature brushwork and upper-left lighting as source. Output296x148 ifpossible, eachcell74x74. No text, labels, props, scene or borders. Fullytransparent background. This is eight complete rendered figures, never separate clothing/bodypart layers.",
+    "generated": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd3e-3b01-7e70-8333-92422cadedda/exec-2697b490-823a-46d8-8209-b3f31b207ad5.png",
+    "generated_sha256": "1a52195fe12d65157b534e9f5f13f983ca7f23650b0014af3b0d7478ce61b73f",
+    "source_sha256": "20a01d076bcbdaa0b9ec731568a1f8f16698412c57c37c8765664c416f3f6841",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "round": 2,
+    "postprocess": "whole completed frame crop and original bbox geometry registration, no part assembly"
+  },
+  {
+    "role": "gentry_f",
+    "era": 1300,
+    "source": "wk_gentry_f_01-v1.png",
+    "prompt": "Use case: identity-preserve. Edit target is supplied complete walker sprite sheet of a gentry woman. Exactly8 complete figures in4columns\u00d72rows, same NE SE SW NW directions and alternate walking phases. Preserve same face and age, pale simple veil, burgundy pigment, fullfigure height, foot locations, hand poses, original outline and flowing hem shape. Change ONLY costume construction to southern England around1300: a PLAIN LOOSE SLEEVELESS BURGUNDY SURCOAT worn OVER a LONG-SLEEVED UNDERTUNIC. Clearly show the sleeveless outer garment's simple vertical armhole edges and a large unwaisted outer fabric plane from shoulders to hem. The undertunic sleeves are muted dark burgundy with subtle pale linen inner cuffs. Loose side seams, no cinched hourglass waist, no belt emphasising waist, no front buttons, no high belt, no fashionable voluminous1420pleats. Same simple white linen veil, no crowns, no hennin. Keep hands and shoes exposed exactly asoriginal and preserve walking difference in eachrow. Match original painterly miniature texture, subdued natural materials and upperleft light. Fully transparent background, same2:1sheet aspect296x148, cell74x74. No words, labels, scenery or border. Draw finished whole people, never separate clothing or body layers.",
+    "generated": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd3e-3b01-7e70-8333-92422cadedda/exec-ae7e329a-ca2f-4512-97fc-521cee277314.png",
+    "generated_sha256": "837e9f970ab2dec42306dd864593e37d36516bf98cc5f62dd9efe9d4d13aad43",
+    "source_sha256": "53d6876864409effe8d30e00e5f7c7d17ccac6cb2076372ae36be173276ce38c",
+    "status": "candidate",
+    "tool": "built-in image_gen",
+    "round": 2,
+    "postprocess": "whole completed frame crop and original bbox geometry registration, no part assembly"
+  }
+]

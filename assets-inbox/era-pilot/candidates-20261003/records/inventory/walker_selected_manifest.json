@@ -1,0 +1,721 @@
+[
+  {
+    "id": "wk_labor_m_01",
+    "url": "assets/walkers-v2/wk_labor_m_01-v1.png",
+    "width": 296,
+    "height": 148,
+    "sha256": "fd3ac60196ff7c6dd671babcb38e0b891dadb50161342fd4e43c4766e2440e2c",
+    "classBand": "labor",
+    "sex": "male",
+    "occupationTags": [
+      "farmer",
+      "logger",
+      "quarryman",
+      "carter",
+      "builder"
+    ],
+    "legacy": false,
+    "holdsTool": false,
+    "template": "civilian_man",
+    "season": "all",
+    "directionOrder": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "cloak": "male",
+    "cloakPoke": 20,
+    "frames": [
+      {
+        "direction": "NE",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 43.72,
+          "y": 67.24
+        },
+        "figureHeight": 64.57,
+        "hands": {
+          "left": {
+            "x": 33,
+            "y": 34
+          },
+          "right": {
+            "x": 58,
+            "y": 34
+          }
+        }
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 39.63,
+          "y": 68.24
+        },
+        "figureHeight": 65.07,
+        "hands": {
+          "left": {
+            "x": 24,
+            "y": 34
+          },
+          "right": {
+            "x": 47,
+            "y": 35
+          }
+        }
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 34.71,
+          "y": 67.74
+        },
+        "figureHeight": 64.74,
+        "hands": {
+          "left": {
+            "x": 25,
+            "y": 35
+          },
+          "right": {
+            "x": 48,
+            "y": 33
+          }
+        }
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 30.2,
+          "y": 67.74
+        },
+        "figureHeight": 65.07,
+        "hands": {
+          "left": {
+            "x": 15,
+            "y": 37
+          },
+          "right": {
+            "x": 40,
+            "y": 33
+          }
+        }
+      },
+      {
+        "direction": "NE",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 42.88,
+          "y": 67.16
+        },
+        "figureHeight": 65.07,
+        "hands": {
+          "left": {
+            "x": 33,
+            "y": 32
+          },
+          "right": {
+            "x": 59,
+            "y": 33
+          }
+        }
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 40.71,
+          "y": 67.66
+        },
+        "figureHeight": 65.74,
+        "hands": {
+          "left": {
+            "x": 25,
+            "y": 32
+          },
+          "right": {
+            "x": 50,
+            "y": 34
+          }
+        }
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 30.87,
+          "y": 67.33
+        },
+        "figureHeight": 64.74,
+        "hands": {
+          "left": {
+            "x": 23,
+            "y": 35
+          },
+          "right": {
+            "x": 49,
+            "y": 33
+          }
+        }
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 29.87,
+          "y": 66.99
+        },
+        "figureHeight": 64.57,
+        "hands": {
+          "left": {
+            "x": 14,
+            "y": 34
+          },
+          "right": {
+            "x": 40,
+            "y": 32
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "wk_labor_f_01",
+    "url": "assets/walkers-v2/wk_labor_f_01-v1.png",
+    "width": 296,
+    "height": 148,
+    "sha256": "091b07a907a51653ce35cfaa14a6a20f049c0be9dabcb93b9cdaf6338f202c4a",
+    "classBand": "labor",
+    "sex": "female",
+    "occupationTags": [
+      "farmer",
+      "logger",
+      "quarryman",
+      "carter",
+      "builder"
+    ],
+    "legacy": false,
+    "holdsTool": false,
+    "template": "civilian_woman",
+    "season": "all",
+    "directionOrder": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "cloak": "female",
+    "cloakPoke": 34,
+    "frames": [
+      {
+        "direction": "NE",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 38.54,
+          "y": 66.91
+        },
+        "figureHeight": 61.4,
+        "hands": {
+          "left": {
+            "x": 31,
+            "y": 34
+          },
+          "right": {
+            "x": 50,
+            "y": 38
+          }
+        }
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 36.71,
+          "y": 67.41
+        },
+        "figureHeight": 61.74,
+        "hands": {
+          "left": {
+            "x": 26,
+            "y": 39
+          },
+          "right": {
+            "x": 47,
+            "y": 35
+          }
+        }
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 38.79,
+          "y": 67.41
+        },
+        "figureHeight": 60.74,
+        "hands": {
+          "left": {
+            "x": 27,
+            "y": 35
+          },
+          "right": {
+            "x": 48,
+            "y": 38
+          }
+        }
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 35.29,
+          "y": 66.74
+        },
+        "figureHeight": 61.07,
+        "hands": {
+          "left": {
+            "x": 23,
+            "y": 39
+          },
+          "right": {
+            "x": 41,
+            "y": 34
+          }
+        }
+      },
+      {
+        "direction": "NE",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 39.21,
+          "y": 65.49
+        },
+        "figureHeight": 60.74,
+        "hands": {
+          "left": {
+            "x": 31,
+            "y": 34
+          },
+          "right": {
+            "x": 51,
+            "y": 38
+          }
+        }
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 39.79,
+          "y": 64.32
+        },
+        "figureHeight": 61.24,
+        "hands": {
+          "left": {
+            "x": 27,
+            "y": 36
+          },
+          "right": {
+            "x": 48,
+            "y": 33
+          }
+        }
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 34.29,
+          "y": 63.99
+        },
+        "figureHeight": 60.74,
+        "hands": {
+          "left": {
+            "x": 24,
+            "y": 32
+          },
+          "right": {
+            "x": 46,
+            "y": 42
+          }
+        }
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 34.71,
+          "y": 65.49
+        },
+        "figureHeight": 60.74,
+        "hands": {
+          "left": {
+            "x": 23,
+            "y": 39
+          },
+          "right": {
+            "x": 41,
+            "y": 32
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "wk_merchant_m_01",
+    "url": "assets/walkers-v2/wk_merchant_m_01-v1.png",
+    "width": 296,
+    "height": 148,
+    "sha256": "20a01d076bcbdaa0b9ec731568a1f8f16698412c57c37c8765664c416f3f6841",
+    "classBand": "merchant",
+    "sex": "male",
+    "occupationTags": [
+      "distributor",
+      "carter"
+    ],
+    "legacy": false,
+    "holdsTool": false,
+    "template": "merchant",
+    "season": "all",
+    "directionOrder": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "cloak": "merchant",
+    "cloakPoke": 268,
+    "frames": [
+      {
+        "direction": "NE",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 37.46,
+          "y": 68.91
+        },
+        "figureHeight": 67.24,
+        "hands": {
+          "left": {
+            "x": 27,
+            "y": 33
+          },
+          "right": {
+            "x": 51,
+            "y": 32
+          }
+        }
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 39.21,
+          "y": 69.91
+        },
+        "figureHeight": 67.58,
+        "hands": {
+          "left": {
+            "x": 22,
+            "y": 35
+          },
+          "right": {
+            "x": 50,
+            "y": 36
+          }
+        }
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 34.21,
+          "y": 70.08
+        },
+        "figureHeight": 67.74,
+        "hands": {
+          "left": {
+            "x": 23,
+            "y": 35
+          },
+          "right": {
+            "x": 50,
+            "y": 36
+          }
+        }
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 36.04,
+          "y": 68.91
+        },
+        "figureHeight": 67.24,
+        "hands": {
+          "left": {
+            "x": 21,
+            "y": 33
+          },
+          "right": {
+            "x": 47,
+            "y": 36
+          }
+        }
+      },
+      {
+        "direction": "NE",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 36.37,
+          "y": 68.33
+        },
+        "figureHeight": 66.57,
+        "hands": {
+          "left": {
+            "x": 26,
+            "y": 34
+          },
+          "right": {
+            "x": 52,
+            "y": 33
+          }
+        }
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 39.63,
+          "y": 68.99
+        },
+        "figureHeight": 66.57,
+        "hands": {
+          "left": {
+            "x": 25,
+            "y": 34
+          },
+          "right": {
+            "x": 48,
+            "y": 34
+          }
+        }
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 34.62,
+          "y": 68.99
+        },
+        "figureHeight": 66.57,
+        "hands": {
+          "left": {
+            "x": 23,
+            "y": 36
+          },
+          "right": {
+            "x": 50,
+            "y": 35
+          }
+        }
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 37.88,
+          "y": 68.16
+        },
+        "figureHeight": 66.57,
+        "hands": {
+          "left": {
+            "x": 22,
+            "y": 34
+          },
+          "right": {
+            "x": 49,
+            "y": 35
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "wk_gentry_f_01",
+    "url": "assets/walkers-v2/wk_gentry_f_01-v1.png",
+    "width": 296,
+    "height": 148,
+    "sha256": "53d6876864409effe8d30e00e5f7c7d17ccac6cb2076372ae36be173276ce38c",
+    "classBand": "gentry",
+    "sex": "female",
+    "occupationTags": [],
+    "legacy": false,
+    "holdsTool": false,
+    "template": "civilian_woman",
+    "season": "all",
+    "directionOrder": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "cloak": "female",
+    "cloakPoke": 33,
+    "frames": [
+      {
+        "direction": "NE",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 38.54,
+          "y": 66.91
+        },
+        "figureHeight": 61.4,
+        "hands": {
+          "left": {
+            "x": 31,
+            "y": 34
+          },
+          "right": {
+            "x": 50,
+            "y": 38
+          }
+        }
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 36.71,
+          "y": 67.41
+        },
+        "figureHeight": 61.74,
+        "hands": {
+          "left": {
+            "x": 26,
+            "y": 39
+          },
+          "right": {
+            "x": 47,
+            "y": 35
+          }
+        }
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 38.79,
+          "y": 67.41
+        },
+        "figureHeight": 60.74,
+        "hands": {
+          "left": {
+            "x": 27,
+            "y": 35
+          },
+          "right": {
+            "x": 48,
+            "y": 38
+          }
+        }
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 0,
+        "foot": {
+          "x": 35.29,
+          "y": 66.74
+        },
+        "figureHeight": 61.07,
+        "hands": {
+          "left": {
+            "x": 23,
+            "y": 39
+          },
+          "right": {
+            "x": 41,
+            "y": 34
+          }
+        }
+      },
+      {
+        "direction": "NE",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 39.21,
+          "y": 65.49
+        },
+        "figureHeight": 60.74,
+        "hands": {
+          "left": {
+            "x": 31,
+            "y": 34
+          },
+          "right": {
+            "x": 51,
+            "y": 38
+          }
+        }
+      },
+      {
+        "direction": "SE",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 39.79,
+          "y": 64.32
+        },
+        "figureHeight": 61.24,
+        "hands": {
+          "left": {
+            "x": 27,
+            "y": 36
+          },
+          "right": {
+            "x": 48,
+            "y": 33
+          }
+        }
+      },
+      {
+        "direction": "SW",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 34.29,
+          "y": 63.99
+        },
+        "figureHeight": 60.74,
+        "hands": {
+          "left": {
+            "x": 24,
+            "y": 32
+          },
+          "right": {
+            "x": 46,
+            "y": 42
+          }
+        }
+      },
+      {
+        "direction": "NW",
+        "gaitFrame": 1,
+        "foot": {
+          "x": 34.71,
+          "y": 65.49
+        },
+        "figureHeight": 60.74,
+        "hands": {
+          "left": {
+            "x": 23,
+            "y": 39
+          },
+          "right": {
+            "x": 41,
+            "y": 32
+          }
+        }
+      }
+    ]
+  }
+]

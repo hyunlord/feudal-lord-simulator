@@ -1,0 +1,54 @@
+{
+  "method": "지정된 scene-A.png부터 scene-F.png까지 view_image로만 확인. 다른 파일, 제작 정보, 메타데이터 및 연도별 개수를 확인하지 않음. 제시 크기에서 판독했으며 확대하지 않음.",
+  "results": [
+    {
+      "file": "scene-A.png",
+      "year": 1420,
+      "confidence": "low",
+      "visible_evidence": "붉은 기와 지붕, 밝은 벽과 짙은 목골조, 2~3층 주택들이 반복된다. 일부 지붕 위에 작은 굴뚝처럼 보이는 돌출부가 있다. 이 돌출부를 상대적으로 늦은 시기라는 약한 단서로 삼았다.",
+      "readability_at_presented_size": "어려움",
+      "uncertainty": "굴뚝 추정 부위가 매우 작다. 1420을 특정할 만큼 독립적인 시대 단서는 보이지 않아 추측이다."
+    },
+    {
+      "file": "scene-B.png",
+      "year": 1380,
+      "confidence": "low",
+      "visible_evidence": "붉은 지붕의 목골조 주택, 흙길, 작은 인물들이 보인다. 주택 높이와 박공 형태가 반복되며 지붕 위 돌출부는 뚜렷하지 않다.",
+      "readability_at_presented_size": "어려움",
+      "uncertainty": "1300과 1380을 구분할 단서를 발견하지 못했다. 1380은 선택지 하나를 요구받아 한 추측이며, 1420도 배제할 수 없다."
+    },
+    {
+      "file": "scene-C.png",
+      "year": 1380,
+      "confidence": "low",
+      "visible_evidence": "목골조의 수직·수평 부재, 밝은 벽, 붉은 기와, 2~3층 주택과 흙길이 보인다. 작은 장면들보다 건축 부재는 읽히지만 연도를 특정하는 뚜렷한 특징은 보이지 않는다.",
+      "readability_at_presented_size": "어려움",
+      "uncertainty": "1300과 1380을 구분할 수 없다. 1380은 강제 선택에 따른 추측이다. scene-E와 시대가 다르다고 판정할 근거도 찾지 못했다."
+    },
+    {
+      "file": "scene-D.png",
+      "year": 1420,
+      "confidence": "low",
+      "visible_evidence": "붉은 지붕과 목골조 주택이 반복된다. 여러 박공 주택과 높은 주택의 지붕 위에 밝은 색 굴뚝 같은 돌출부가 비교적 분명히 보인다. 이를 상대적으로 늦은 시기라는 약한 단서로 삼았다.",
+      "readability_at_presented_size": "어려움",
+      "uncertainty": "다른 장면과의 시각적 차이는 보이지만, 굴뚝만으로 1380과 1420을 구분할 수는 없다. 연도 판단은 추측이다."
+    },
+    {
+      "file": "scene-E.png",
+      "year": 1380,
+      "confidence": "low",
+      "visible_evidence": "붉은 기와 지붕, 밝은 벽과 어두운 목골조, 2~3층 주택들이 흙길 양쪽에 있다. 창과 골조는 보이지만 특정 연도를 가리키는 뚜렷한 차이를 읽지 못했다.",
+      "readability_at_presented_size": "어려움",
+      "uncertainty": "scene-C와 시대를 구별할 수 없다. 1300 대신 1380을 선택할 충분한 근거가 없으며 강제 선택에 따른 추측이다."
+    },
+    {
+      "file": "scene-F.png",
+      "year": 1380,
+      "confidence": "low",
+      "visible_evidence": "붉은 지붕, 밝은 벽, 짙은 골조와 흙길이 보인다. 인물과 창 등 세부가 작아 시대 단서로 읽기 어렵고, 지붕 위 돌출부도 뚜렷하지 않다.",
+      "readability_at_presented_size": "어려움",
+      "uncertainty": "scene-B와 시대를 구별할 수 없다. 1300과 1380의 구별 근거가 없어 1380을 추측으로 선택했다."
+    }
+  ],
+  "overall": "여섯 장면 모두 제시 크기에서 1300·1380·1420을 안정적으로 판독하기 어렵다. A와 D의 굴뚝 추정 돌출부는 상대 차이로 보이지만 정확한 연대 표지는 아니다. 선택지별 개수를 맞추지 않았다."
+}
