@@ -25,4 +25,6 @@ export const CHAPTER_COPY = {
   short: (chapter: number) => `${chapter}장`,
   reached: (goal: string) => `${goal} — 이룸`,
   cta: "목표 보기",
+  /** QA-025: the chapter's goal screen opened from the card closes with this (the chapter has begun: no "제N장 시작"). */
+  goalsClose: "돌아가기",
 } as const;

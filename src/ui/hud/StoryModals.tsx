@@ -204,10 +204,12 @@ export function ChroniclePage({ view, onNextChapter, onKeepPlaying, onOpenChroni
  * The next chapter's screen after a chapter's page. UI-6: chapter 2 is played in the same town (FAIL-3 FL-8) — its
  * opening (Wave 16 chapter2_intro) names the chapter and lists its goals; a chapter not built yet (3 on) says so.
  */
-export function ChapterTwoPreview({ onContinue, chapter = 2, goals = [], startYear = null }: {
+export function ChapterTwoPreview({ onContinue, chapter = 2, goals = [], startYear = null, closeLabel = null }: {
   readonly onContinue: () => void; readonly chapter?: number; readonly goals?: readonly string[];
   /** UI-10: the year the chapter began (chronicleModel `chapterStartYear`), its title's first year. */
   readonly startYear?: number | null;
+  /** QA-025: opened again from the chapter's card ("목표 보기"): the button only closes (no play, no "제N장 시작"). */
+  readonly closeLabel?: string | null;
 }) {
   // PLAGUE-b: chapter 3 on opens the same way over its Wave 31 painting when the game has built it (its copy line).
   const later = CHRONICLE_COPY.chapterOpening[chapter];
@@ -223,8 +225,8 @@ export function ChapterTwoPreview({ onContinue, chapter = 2, goals = [], startYe
       <p className="chapter-loading-line">{opening?.line ?? CHRONICLE_COPY.laterLine}</p>
       {open && goals.length > 0 ? <section className="chapter-preview-goals" data-frame="flat" aria-label={CHRONICLE_COPY.chapterTwoGoalsHeading}>
         <h3>{CHRONICLE_COPY.chapterTwoGoalsHeading}</h3><ul>{goals.map(goal => <li key={goal}>{goal}</li>)}</ul></section> : null}
-      <Button type="button" className="chapter-preview-continue" onPress={() => onContinue()} variant="primary"><UiIcon sheet="time" cell="play" />
-        {opening?.start ?? CHRONICLE_COPY.chapterTwoContinue}</Button>
+      <Button type="button" className="chapter-preview-continue" onPress={() => onContinue()} variant="primary">
+        {closeLabel ?? <><UiIcon sheet="time" cell="play" />{opening?.start ?? CHRONICLE_COPY.chapterTwoContinue}</>}</Button>
     </div>
   );
 }

@@ -141,6 +141,9 @@ export function App() {
   const [chroniclePersonId, setChroniclePersonId] = useState<string | null>(null);
   // UX-3: which UI is on screen is one state (ui/stateMachine: one panel slot, Esc one step, modals push / pop).
   const { ui, uiRef, setUi, sendUi } = useUiStateMachine(store);
+  // QA-025: the chapter preview opened from the card's "목표 보기" (not after a chapter page) until it closes.
+  const [chapterGoalsView, setChapterGoalsView] = useState(false);
+  useEffect(() => { if (topModal(ui) !== "chapter_preview") setChapterGoalsView(false); }, [ui]);
   const openInspector = useCallback((id: string) => { setInspectedId(id); sendUi({ type: "select" }); }, [sendUi]);
   // The map's own selection card (GameCanvas) takes the same slot; closing it there leaves the selection state.
   const onCanvasSelection = useCallback((open: boolean) => { if (open) sendUi({ type: "select" }); else if (uiRef.current.mode === "selection") sendUi({ type: "deselect" }); }, [sendUi, uiRef]);
@@ -203,7 +206,7 @@ export function App() {
   }, [presentationNowMs, state.era]);
 
   const tutorial = useTutorialController({ state, paused: speed === 0, selectedTool, zoneTool, layer, setLayer, nowMs: presentationNowMs,
-    onOpenDrawer: () => sendUi({ type: "open_goals" }), onOpenChapterGoals: () => sendUi({ type: "push_modal", modal: "chapter_preview" }) });
+    onOpenDrawer: () => sendUi({ type: "open_goals" }), onOpenChapterGoals: () => { setChapterGoalsView(true); sendUi({ type: "push_modal", modal: "chapter_preview" }); } });
   // Tool intents obey the tutorial's unlocks (menu, Q / E, controller X alike).
   const accessRef = useRef(tutorial.access);
   accessRef.current = tutorial.access;
@@ -568,7 +571,7 @@ export function App() {
       {/* CODE-1c: the modal screens (ui/screens/AppModals), reading the game themselves while one is up. */}
       <AppModals ui={ui} sendUi={sendUi} personCardId={personCardId} chroniclePersonId={chroniclePersonId} onChroniclePerson={setChroniclePersonId}
         steward={steward} onPerson={openPerson} ledgerAuto={ledgerAuto} onLedgerAuto={next => { setLedgerAuto(next); setSeasonLedgerAuto(next); }}
-        onMenuRequest={setMenuRequest} tutorial={tutorial} />
+        onMenuRequest={setMenuRequest} tutorial={tutorial} chapterGoalsView={chapterGoalsView} />
       {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>
         <p className="chapter-loading-title">{TITLE_COPY.chapter(stateCalendar(state).year)}</p><p className="chapter-loading-line">{TITLE_COPY.chapterLine}</p></div> : null}
       {welcomeVisible ? <WelcomeParchment

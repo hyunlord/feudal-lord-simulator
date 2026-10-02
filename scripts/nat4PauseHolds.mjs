@@ -43,8 +43,9 @@ const unfoldChapter = async page => {
 
 // 1. Every surface while paused.
 const SURFACES = [
-  { id: 'goal-card.chapter (목표 보기)', open: steps(unfoldChapter, press('[data-tutorial-cta="chapter"]')), shown: '.chapter-preview', close: press('.chapter-preview-continue'), shot: true },
-  { id: 'goal-card.settlement', open: press('[data-tutorial-cta="settlement"]'), shown: '.goal-slot', close: key('Escape') },
+  // A goal card shows only where its town has it (chapter 2 on: the chapter's card first; chapter 1: the settlement's).
+  { id: 'goal-card.chapter (목표 보기)', needs: '[data-goal-card="chapter"]', open: steps(unfoldChapter, press('[data-tutorial-cta="chapter"]')), shown: '.chapter-preview', close: press('.chapter-preview-continue'), shot: true },
+  { id: 'goal-card.settlement', needs: '[data-tutorial-cta="settlement"]', open: press('[data-tutorial-cta="settlement"]'), shown: '.goal-slot', close: key('Escape') },
   // The rail (and its toggle) leaves the screen while the drawer is open: Esc closes it.
   { id: 'goal drawer toggle', open: press('.goal-drawer-toggle'), shown: '.goal-slot', close: key('Escape') },
   { id: 'pause menu (Esc, then Esc)', open: key('Escape'), shown: '.pause-menu', close: key('Escape') },
@@ -60,11 +61,12 @@ const SURFACES = [
   { id: 'settings', open: press('.settings-disclosure > summary'), shown: '.settings-disclosure[open]', close: press('.settings-disclosure > summary') },
 ];
 const pauseRows = [];
-for (const [dir, name] of [['states6', 'raid'], ['states10', 'royal_tax']]) {
+for (const [dir, name] of [['states6', 'decline'], ['states6', 'raid'], ['states10', 'royal_tax']]) {
   const state = scene(dir, name);
   const { context, page } = await openScene(browser, { state, tile: tileOf(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800,
     query: '&story-delay=600000', loadTimeout: 90_000 });
   for (const surface of SURFACES) {
+    if (surface.needs !== undefined && !(await visible(page, surface.needs))) { pauseRows.push({ scene: name, surface: surface.id, absent: true }); console.log(`absent ${name}: ${surface.id}`); continue; }
     const before = await read(page);
     let opened = false; let error = null;
     try {
@@ -128,7 +130,10 @@ const food = {};
 }
 
 await browser.close();
-const result = { url, pause: pauseRows, allHeld: pauseRows.every(row => row.held), allOpened: pauseRows.every(row => row.opened), chapter, food };
+const shown = pauseRows.filter(row => row.absent !== true);
+// Every surface opened in at least one town, and wherever it opened the tick stood.
+const result = { url, pause: pauseRows, allHeld: shown.every(row => row.held),
+  allOpened: SURFACES.every(surface => shown.some(row => row.surface === surface.id && row.opened)) && shown.every(row => row.opened), chapter, food };
 writeFileSync(join(out, 'pause-holds.json'), JSON.stringify(result, null, 1) + '\n');
 console.log(JSON.stringify({ allHeld: result.allHeld, allOpened: result.allOpened, chapterReopened: chapter.reopenedAfterLoad, foodMatch: food.match }));
 if (!result.allHeld || !result.allOpened || !chapter.pageOpened || chapter.reopenedAfterLoad || !food.match) process.exitCode = 1;

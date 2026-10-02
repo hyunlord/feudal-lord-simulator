@@ -10,8 +10,12 @@ import assert from "node:assert/strict";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
 import type { GameSpeed } from "../src/engine/engine.types";
+import { CHAPTER_COPY } from "../src/ui/chapterCopy.ko";
+import { ChapterTwoPreview } from "../src/ui/hud/StoryModals";
 import { INITIAL_UI_STATE, reduceUi, timeStopped, type UiEvent, type UiModal, type UiState } from "../src/ui/stateMachine/uiStateMachine";
 import { modalPauseStep } from "../src/ui/stateMachine/useUiStateMachine";
 import type { TutorialAction } from "../src/ui/tutorial/tutorialModel";
@@ -43,6 +47,16 @@ test("QA-025 the goal cards: 목표 보기 opens the chapter's goals and the set
   assert.deepEqual(goalCardPress("wrap", { stepId: null, action: null, generalActions: general }), { resume: false, run: arm, open: null });
   assert.deepEqual(goalCardPress("lean_season", { stepId: null, action: null, generalActions: general }), { resume: false, run: zone, open: null });
   assert.deepEqual(goalCardPress("gone", { stepId: null, action: null, generalActions: general }), { resume: false, run: null, open: null });
+});
+
+test("QA-025 목표 보기's screen: the chapter's goals with a close button (no play icon, no \"제N장 시작\"); after a chapter page it still starts the chapter", () => {
+  const goals = ["1450년 마지막 장날까지 도시와 가문의 유산을 남긴다"];
+  const fromCard = renderToStaticMarkup(createElement(ChapterTwoPreview, { onContinue: () => undefined, chapter: 5, goals, closeLabel: CHAPTER_COPY.goalsClose }));
+  assert.match(fromCard, /chapter-preview-goals/);
+  assert.match(fromCard, new RegExp(`chapter-preview-continue[^>]*>${CHAPTER_COPY.goalsClose}</button>`));
+  assert.doesNotMatch(fromCard, /제5장 시작/);
+  const afterPage = renderToStaticMarkup(createElement(ChapterTwoPreview, { onContinue: () => undefined, chapter: 5, goals }));
+  assert.match(afterPage, /제5장 시작/);
 });
 
 test("QA-025 the tutorial's cards: only 시작하기 (greet, a `resume` acknowledgement) starts time; a step that arms or places keeps the pause", () => {
