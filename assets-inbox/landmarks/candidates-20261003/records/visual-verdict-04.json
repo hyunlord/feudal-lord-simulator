@@ -1,0 +1,22 @@
+{
+  "iteration": 4,
+  "scope": "final candidate package; independent blind review complete",
+  "score": 88,
+  "verdict": "candidate_delivery_with_geometry_fail",
+  "category_match": true,
+  "differences": [
+    "Strict2:1 projection remains off on bridge and guildhall axes",
+    "Bridge2to3 endpoint residual about3worldpx under manualmeasurement",
+    "Same semantic core is retained but not pixel-identical acrossgrowth",
+    "Snow60to80percent coverage is visual target not measured maskarea"
+  ],
+  "suggestions": [
+    "Keep candidate status until game art acceptance",
+    "Test fixedpivots road connections and occlusion in engine beforeinstallation",
+    "Do not treat upcoming era recognizability as geometric conformance"
+  ],
+  "reasoning": "All44assets,12cityscenes,14identityboards delivered. Independent era24/24 and identity14/14yes. Registration22/22pass. Strict2:1 camera residual remains explicitlyFAIL; no runtimeinstallation.",
+  "next_actions": [],
+  "era_accuracy": 1.0,
+  "identity_both_yes_families": 7
+}

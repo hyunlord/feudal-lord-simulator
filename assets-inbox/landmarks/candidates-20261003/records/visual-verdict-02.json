@@ -1,0 +1,23 @@
+{
+  "iteration": 2,
+  "scope": "44 registered assets and first city composites",
+  "score": 82,
+  "verdict": "revise",
+  "category_match": true,
+  "differences": [
+    "Three early winter sprites add opaque ground snow, silhouette IoU below0.95 and automatic scale can shift geometry",
+    "Bridge3 span enlarged against bridge2; same-abutment promise not yet met",
+    "Inn3 overlaps river in static scene"
+  ],
+  "suggestions": [
+    "Regenerate three winter sprites without ground expansion",
+    "Regenerate bridge3 from bridge2 geometry with approach chapel",
+    "Move fixed inn site and nearby ordinary house for all eras before blind review"
+  ],
+  "reasoning": "Whole-building growth clearly reads, but registration and scene placement need correction before controlled evaluation.",
+  "next_actions": [
+    "winter and bridge retries",
+    "register again",
+    "rerender and freeze blinded scene"
+  ]
+}

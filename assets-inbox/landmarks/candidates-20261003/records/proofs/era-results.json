@@ -1,0 +1,406 @@
+{
+  "status": "PASS",
+  "frozen_at": "2026-10-02T18:39:07.943230+00:00",
+  "overall": {
+    "correct": 24,
+    "total": 24,
+    "accuracy": 1.0
+  },
+  "by_zoom": {
+    "1.0": {
+      "correct": 12,
+      "total": 12,
+      "accuracy": 1.0
+    },
+    "0.6": {
+      "correct": 12,
+      "total": 12,
+      "accuracy": 1.0
+    }
+  },
+  "by_season": {
+    "summer": {
+      "correct": 12,
+      "total": 12,
+      "accuracy": 1.0
+    },
+    "winter": {
+      "correct": 12,
+      "total": 12,
+      "accuracy": 1.0
+    }
+  },
+  "by_reviewer": {
+    "a": {
+      "overall": {
+        "correct": 12,
+        "total": 12,
+        "accuracy": 1.0
+      },
+      "by_zoom": {
+        "1.0": {
+          "correct": 6,
+          "total": 6,
+          "accuracy": 1.0
+        },
+        "0.6": {
+          "correct": 6,
+          "total": 6,
+          "accuracy": 1.0
+        }
+      }
+    },
+    "b": {
+      "overall": {
+        "correct": 12,
+        "total": 12,
+        "accuracy": 1.0
+      },
+      "by_zoom": {
+        "1.0": {
+          "correct": 6,
+          "total": 6,
+          "accuracy": 1.0
+        },
+        "0.6": {
+          "correct": 6,
+          "total": 6,
+          "accuracy": 1.0
+        }
+      }
+    }
+  },
+  "confusion": {
+    "1300": {
+      "1300": 8,
+      "1380": 0,
+      "1450": 0,
+      "unknown": 0
+    },
+    "1380": {
+      "1300": 0,
+      "1380": 8,
+      "1450": 0,
+      "unknown": 0
+    },
+    "1450": {
+      "1300": 0,
+      "1380": 0,
+      "1450": 8,
+      "unknown": 0
+    }
+  },
+  "confusion_by_zoom": {
+    "1.0": {
+      "1300": {
+        "1300": 4,
+        "1380": 0,
+        "1450": 0,
+        "unknown": 0
+      },
+      "1380": {
+        "1300": 0,
+        "1380": 4,
+        "1450": 0,
+        "unknown": 0
+      },
+      "1450": {
+        "1300": 0,
+        "1380": 0,
+        "1450": 4,
+        "unknown": 0
+      }
+    },
+    "0.6": {
+      "1300": {
+        "1300": 4,
+        "1380": 0,
+        "1450": 0,
+        "unknown": 0
+      },
+      "1380": {
+        "1300": 0,
+        "1380": 4,
+        "1450": 0,
+        "unknown": 0
+      },
+      "1450": {
+        "1300": 0,
+        "1380": 0,
+        "1450": 4,
+        "unknown": 0
+      }
+    }
+  },
+  "response_sha256": {
+    "proofs/reviews/era-a.json": "4616e8a87c4927c8de60c18e2f935edb23b6e5c7bd640a10284910663d784097",
+    "proofs/reviews/era-b.json": "1d47050a3230784d78d48c84168ebfa5a47f71aa58225ab11ea9f0cf4968aa59"
+  },
+  "rows": [
+    {
+      "reviewer": "a",
+      "id": "R01",
+      "year": 1380,
+      "confidence": "medium",
+      "reason": "각진 석조 교회탑과 석조 아치교·성문이 보이고, 목골 공공건물은 복층과 작은 별동으로 확장되어 있으나 대규모 중정이나 시장회관은 없어 중간 단계로 판단했다.",
+      "actual": 1380,
+      "season": "winter",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R02",
+      "year": 1300,
+      "confidence": "medium",
+      "reason": "작은 종루 예배당, 단순한 목교와 목책문, 길게 뻗은 목골 회관이 중심이며 광장 시설도 간소해 초기 단계에 가깝다.",
+      "actual": 1300,
+      "season": "winter",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R03",
+      "year": 1380,
+      "confidence": "medium",
+      "reason": "석조 종탑과 소규모 교회 본체, 석조 아치교와 성문, 복층 목골 건물이 함께 있으나 해자 저택이나 큰 시장 건물이 없어 중간 단계에 가깝다.",
+      "actual": 1380,
+      "season": "winter",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R04",
+      "year": 1300,
+      "confidence": "medium",
+      "reason": "목책 성문과 나무다리, 작은 예배당, 단층 목골 회관 및 단순한 광장 구성이 지배적이므로 세 선택지 중 초기 시나리오로 보았다.",
+      "actual": 1300,
+      "season": "summer",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R05",
+      "year": 1450,
+      "confidence": "high",
+      "reason": "해자와 석벽을 두른 저택, 측랑이 확장된 석조 교회, 아케이드 시장회관, 큰 중정형 목골 건물과 복층 성문이 보여 가장 성숙한 도시 단계에 가깝다.",
+      "actual": 1450,
+      "season": "summer",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R06",
+      "year": 1300,
+      "confidence": "medium",
+      "reason": "작은 목조 예배당과 목교·목책문, 단순한 직사각형 회관 및 거의 비어 있는 광장이 보여 초기 시나리오로 판단했다.",
+      "actual": 1300,
+      "season": "summer",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R07",
+      "year": 1380,
+      "confidence": "medium",
+      "reason": "교회에 석조 탑이 있고 다리와 성문도 석조이며, 회관이 복층으로 성장하고 별동이 붙어 있다. 다만 중심 광장과 저택은 아직 간소해 중간 시나리오에 가깝다.",
+      "actual": 1380,
+      "season": "summer",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R08",
+      "year": 1300,
+      "confidence": "medium",
+      "reason": "목책문과 목교, 작은 종루 예배당, 단층 회관 및 소규모 목골 건물이 주축이다. 석조 공공시설의 발달이 적어 초기 단계로 보인다.",
+      "actual": 1300,
+      "season": "winter",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R09",
+      "year": 1450,
+      "confidence": "high",
+      "reason": "석조 교회의 큰 창과 측랑, 해자 저택, 지붕 있는 시장회관, 중정과 회랑을 갖춘 대형 목골 건물, 발달한 성문이 뚜렷해 후기 시나리오에 가깝다.",
+      "actual": 1450,
+      "season": "winter",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R10",
+      "year": 1450,
+      "confidence": "high",
+      "reason": "해자 저택과 넓은 교회, 광장 위층 시장회관, 여러 동이 중정을 둘러싼 건물 및 복층 성문이 함께 보여 가장 발달한 단계로 판단했다.",
+      "actual": 1450,
+      "season": "winter",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R11",
+      "year": 1450,
+      "confidence": "high",
+      "reason": "담장과 해자가 있는 저택, 측랑 교회, 시장회관과 기념물, 중정형 복합건물 및 증축된 성문이 보여 성숙한 후기 도시 구성에 가깝다.",
+      "actual": 1450,
+      "season": "summer",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "a",
+      "id": "R12",
+      "year": 1380,
+      "confidence": "medium",
+      "reason": "석조 교회탑·아치교·성문과 복층 목골 건물은 갖추었으나 저택에 해자나 외곽 담장이 없고 시장회관도 없어 중간 성장 단계로 판단했다.",
+      "actual": 1380,
+      "season": "summer",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R01",
+      "year": 1380,
+      "confidence": "medium",
+      "reason": "석조 사각 종탑과 석조 성문, 아치교가 보이지만 주요 건물은 단순한 본채와 작은 증축동 수준이고 중앙 광장에는 작은 기념물만 있어 중간 성장 단계로 보인다.",
+      "actual": 1380,
+      "season": "winter",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R02",
+      "year": 1300,
+      "confidence": "medium",
+      "reason": "작은 목조 예배당과 목책 성문, 목조 다리가 중심이며 큰 건물도 단순한 장방형 목골조 본채여서 초기 정착지에 가깝다.",
+      "actual": 1300,
+      "season": "winter",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R03",
+      "year": 1380,
+      "confidence": "medium",
+      "reason": "석조 종탑과 아치형 석교, 석조 성문이 갖추어지고 이층 목골조 건물과 날개동이 보이지만 넓은 중정이나 큰 시장 건물은 없어 중간 단계로 판단한다.",
+      "actual": 1380,
+      "season": "winter",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R04",
+      "year": 1300,
+      "confidence": "medium",
+      "reason": "낮고 작은 예배당, 목조 교량과 목책 문, 단층의 길쭉한 공공건물이 보이며 광장 시설도 단순해서 가장 이른 시나리오에 가깝다.",
+      "actual": 1300,
+      "season": "summer",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R05",
+      "year": 1450,
+      "confidence": "medium",
+      "reason": "해자와 담장으로 둘러싸인 석조 저택, 측랑이 붙은 큰 교회, 이층 시장 건물과 넓은 중정형 목골조 복합건물 등 증축과 분화가 뚜렷하다.",
+      "actual": 1450,
+      "season": "summer",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R06",
+      "year": 1300,
+      "confidence": "medium",
+      "reason": "목책 성문과 목조 다리, 소규모 예배당 및 단순한 일자형 목골조 건물 위주이고 중심 광장이 비어 있어 초기 성장 단계로 보인다.",
+      "actual": 1300,
+      "season": "summer",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R07",
+      "year": 1380,
+      "confidence": "medium",
+      "reason": "높은 석조 종탑과 아치교, 석조 성문이 있으며 주거성 건물은 이층과 작은 부속동으로 확장되었으나 대규모 중정형 구획은 없다.",
+      "actual": 1380,
+      "season": "summer",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R08",
+      "year": 1300,
+      "confidence": "medium",
+      "reason": "종탑 대신 작은 지붕 종루가 달린 목조 예배당, 목재 다리와 목책 출입문, 단순한 본채들이 초기 단계의 건축 구성을 이룬다.",
+      "actual": 1300,
+      "season": "winter",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R09",
+      "year": 1450,
+      "confidence": "medium",
+      "reason": "해자와 문루가 있는 저택 구획, 측랑과 큰 창을 갖춘 교회, 아케이드형 시장 건물과 중정형 복합건물이 보여 가장 발달한 단계로 판단한다.",
+      "actual": 1450,
+      "season": "winter",
+      "zoom": "1.0",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R10",
+      "year": 1450,
+      "confidence": "medium",
+      "reason": "담장과 해자로 둘러싸인 상단 저택, 광장 이층 건물, 여러 동이 중정을 감싸는 하단 건물군과 확장된 교회가 후기 성장 시나리오에 가깝다.",
+      "actual": 1450,
+      "season": "winter",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R11",
+      "year": 1450,
+      "confidence": "medium",
+      "reason": "해자와 별도 문루를 갖춘 저택, 큰 교회와 교량 옆 작은 예배 시설, 시장 건물 및 넓은 중정 건물군이 조성되어 건축 기능의 분화가 가장 크다.",
+      "actual": 1450,
+      "season": "summer",
+      "zoom": "0.6",
+      "correct": true
+    },
+    {
+      "reviewer": "b",
+      "id": "R12",
+      "year": 1380,
+      "confidence": "medium",
+      "reason": "석조 종탑과 성문, 아치교가 갖추어졌고 이층 목골조 건물과 부속동이 있으나 중앙에는 작은 기념물뿐이며 저택을 둘러싼 방어 구획이나 큰 중정은 없다.",
+      "actual": 1380,
+      "season": "summer",
+      "zoom": "0.6",
+      "correct": true
+    }
+  ],
+  "limitation": "Two independent AI reviewers; one fixed town, repeated season/zoom images. Not a human study or historical dating accuracy."
+}
