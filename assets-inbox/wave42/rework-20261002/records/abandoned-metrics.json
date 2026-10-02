@@ -1,0 +1,186 @@
+[
+  {
+    "id": "abandoned_grass_summer",
+    "file": "assets/abandoned/abandoned_grass_summer.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 80,
+      "width": 120,
+      "height": 72,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "7347638527587c2e7371cb63945ba6db7a0b815be86e7711c6e38dbcb1549f59",
+    "transform": {
+      "crop": {
+        "left": 33,
+        "top": 583,
+        "width": 1008,
+        "height": 607
+      },
+      "resize": [
+        120,
+        72
+      ],
+      "placement": [
+        4,
+        80
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_grass_winter",
+    "file": "assets/abandoned/abandoned_grass_winter.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 80,
+      "width": 120,
+      "height": 72,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "d0902241fd3b0dcfb558a4b4a3feb9f8d1845d7a4f776f6c4c9bf980a34b0472",
+    "transform": {
+      "crop": {
+        "left": 33,
+        "top": 583,
+        "width": 1008,
+        "height": 607
+      },
+      "resize": [
+        120,
+        72
+      ],
+      "placement": [
+        4,
+        80
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_bramble_summer",
+    "file": "assets/abandoned/abandoned_bramble_summer.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 45,
+      "width": 120,
+      "height": 107,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "a9d0b9e9ae0a6d5de52ee3ff65d9134281ac8422e4b915de7dc6d205df0b9130",
+    "transform": {
+      "crop": {
+        "left": 33,
+        "top": 33,
+        "width": 1260,
+        "height": 1122
+      },
+      "resize": [
+        120,
+        107
+      ],
+      "placement": [
+        4,
+        45
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_bramble_winter",
+    "file": "assets/abandoned/abandoned_bramble_winter.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 45,
+      "width": 120,
+      "height": 107,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "77628671ef5c27fb3696518b7281689de14744c2a6615a5340fff4630d99fb97",
+    "transform": {
+      "crop": {
+        "left": 33,
+        "top": 33,
+        "width": 1260,
+        "height": 1122
+      },
+      "resize": [
+        120,
+        107
+      ],
+      "placement": [
+        4,
+        45
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  }
+]
