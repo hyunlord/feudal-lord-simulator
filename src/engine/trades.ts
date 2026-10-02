@@ -358,7 +358,10 @@ function produceSeason(state: GameState, trades: TradeState, facts: TownFacts, s
     const bought = (TOWN_DEMAND_PER_HUNDRED[good] ?? 0) * people / 100 + (EXPORT_PER_MERCHANT[good] ?? 0) * merchants;
     const taken = TRADES.some(trade => (counts[trade.id] ?? 0) > 0 && trade.inputs.some(input => input.kind === "good" && input.good === good));
     const left = Math.max(0, (stock[good] ?? 0) - bought);
-    stock[good] = bought <= 0 && !taken ? left / 2 : left;
+    // A good the trades take is kept to four seasons of what they take; the rest is sold off cheap.
+    const use = TRADES.reduce((sum, trade) => sum + trade.inputs.reduce((need, input) => need
+      + (input.kind === "good" && input.good === good ? (counts[trade.id] ?? 0) * trade.capacity * input.per : 0), 0), 0);
+    stock[good] = bought <= 0 && !taken ? left / 2 : taken ? Math.min(left, use * TRADE_BALANCE.inputStockSeasons) : left;
   }
   // Households: productivity and idle seasons (TR-4: four idle seasons and the trade is given up).
   const quits = [...trades.quits];

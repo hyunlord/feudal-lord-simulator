@@ -1,8 +1,8 @@
 // LM-E6a gate (spec docs/design/trades.md TR-7): more carters, less stuck stock. A lord-mode town (lordModeRun) to the
-// start of `fromYear`, then the same town played on for `years` years with the carter households held at 0, 2, 4 and
-// 6 (the other trades as they choose); every stuck-stock check (100 ticks) samples the stuck stock and the haulage.
-// Holding the number: before each check the carters are set back to the variant's households (the first houses
-// without another trade, in house order).
+// start of `fromYear`, then the same town played on for `years` years with the carter households held at 0, 2, 4, 8
+// and 12; every stuck-stock check (100 ticks) samples the stuck stock by reason, the haulage and the spoiled field
+// wheat. Holding the number: before each check the variant's carters are set again (the first trade households in
+// house order become carters; others that took up carting become millers, a trade that takes no game goods).
 //   tsx scripts/tradesHaulageCompare.ts <archetypeId> <seed> <fromYear> <years> > compare.json
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,13 +14,13 @@ import type { TradeHousehold } from "../src/engine/trades.types";
 import { lordModeRun } from "./lordModeRun";
 
 function withCarters(state: GameState, count: number): GameState {
+  // The first `count` trade households in house order become carters (the others keep their trades). The trade layer
+  // takes no game goods, so turning a shoemaker into a carter changes nothing but the haulage.
   const trades = tradesOf(state);
-  const others = trades.households.filter(household => household.tradeId !== "carter");
-  const busy = new Set(others.map(household => household.houseId));
-  const free = state.houses.filter(house => house.residents > 0 && !busy.has(house.buildingId)).map(house => house.buildingId).sort();
-  const carters: TradeHousehold[] = free.slice(0, count).map(houseId => ({ houseId, tradeId: "carter", sinceTick: state.tick, workshop: "big_yard",
-    receipt: { tick: state.tick, reasons: [], score: 0, chancePermille: 1000, of: 1 }, productivityPermille: 0, idleSeasons: 0 }));
-  return { ...state, trades: { ...trades, households: [...others, ...carters].sort((left, right) => left.houseId.localeCompare(right.houseId)) } };
+  const ordered = [...trades.households].sort((left, right) => left.houseId.localeCompare(right.houseId));
+  const households: TradeHousehold[] = ordered.map((household, index) => index < count ? { ...household, tradeId: "carter", workshop: "big_yard" }
+    : household.tradeId === "carter" ? { ...household, tradeId: "miller", workshop: "water_mill" } : household);
+  return { ...state, trades: { ...trades, households } };
 }
 
 export function haulageCompare(archetypeId: string, seed: number, fromYear: number, years: number) {
@@ -28,9 +28,10 @@ export function haulageCompare(archetypeId: string, seed: number, fromYear: numb
   lordModeRun({ archetypeId, seed, lastYear: fromYear - 1, policy: "growth", onEnd: state => { start = state; } });
   const base = start as GameState | null;
   if (base === null) throw new Error("no state");
-  const variants = [0, 2, 4, 6].map(carters => {
+  const variants = [0, 2, 4, 8, 12].map(carters => {
     let state = withCarters(base, carters);
-    let samples = 0, stuckTotal = 0, noCarrier = 0, receiverFull = 0, moved = 0, held = 0;
+    let samples = 0, stuckTotal = 0, noCarrier = 0, receiverFull = 0, moved = 0, held = 0, lost = 0;
+    let lastLost = state.harvestRecord?.lost ?? 0;
     for (let tick = 0; tick < years * 4_000; tick += 1) {
       if ((state.tick + 1) % 100 === 0) state = withCarters(state, carters);
       const before = tradesOf(state).haulage;
@@ -38,6 +39,10 @@ export function haulageCompare(archetypeId: string, seed: number, fromYear: numb
       const after = tradesOf(state).haulage;
       // A season start moves the season's haulage to `last` (the start's own haul included).
       moved += after.season >= before.season ? after.season - before.season : after.last - before.season;
+      // The field wheat a full barn could not take and winter spoiled (BOT-4 harvest record), counted as it grows.
+      const lostNow = state.harvestRecord?.lost ?? 0;
+      if (lostNow > lastLost) lost += lostNow - lastLost;
+      lastLost = lostNow;
       if (state.tick % 100 === 0) {
         const stuck = stuckStock(state).filter(entry => entry.source === "stock");
         samples += 1;
@@ -48,7 +53,7 @@ export function haulageCompare(archetypeId: string, seed: number, fromYear: numb
       }
     }
     return { carters, heldAtLastCheck: held, samples, meanStuck: Math.round(stuckTotal / samples), meanNoCarrier: Math.round(noCarrier / samples),
-      meanReceiverFull: Math.round(receiverFull / samples), hauled: moved, population: state.population };
+      meanReceiverFull: Math.round(receiverFull / samples), hauled: moved, fieldWheatLost: lost, population: state.population };
   });
   return { archetypeId, seed, fromYear, years, population: base.population, houses: base.houses.length, variants };
 }

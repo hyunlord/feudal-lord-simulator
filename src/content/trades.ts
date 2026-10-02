@@ -205,6 +205,8 @@ export const TRADE_BALANCE = {
   woodlandRadius: 14,
   /** TR-5: a final good's stock above this many seasons of demand holds production back. */
   demandStockSeasons: 2,
+  /** TR-5: a good the trades take is kept to this many seasons of what they take (the rest is sold off cheap). */
+  inputStockSeasons: 4,
   /** TR-7: loads a carter household moves per stuck-stock check, and a load (the game's carter load). With a market,
    *  the load the carters have left carries surplus no building can take out of town to sell. */
   carterLoadsPerCheck: 1,
