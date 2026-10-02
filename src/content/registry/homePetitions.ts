@@ -13,7 +13,7 @@ export const HOME_PETITION_ENTRIES: readonly RegistryEntry[] = HOME_PETITION_ORD
   id: `${HOME_PETITION_ENTRY_PREFIX}${kind}`,
   kind: "petition",
   source: "FIX-14 SW-11",
-  window: { fromYear: 1300, toYear: 1450 },
+  years: { fromYear: 1300, toYear: 1450 },
   frequency: { chancePermille: HOME_PETITION_PERMILLE, weight: 1, minGapSeasons: 0, maxPerYear: 4 },
   recurrence: { mode: "cooldown", cooldownSeasons: 0, maxOccurrences: 1_000 },
   sender: HOME_PETITION_KINDS[kind].group,

@@ -65,7 +65,7 @@ export interface RegistryEntry {
   readonly kind: RegistryKind;
   /** Where it came from (a content draft's id, FIX-14's home petitions). */
   readonly source: string;
-  readonly window: { readonly fromYear: number; readonly toYear: number };
+  readonly years: { readonly fromYear: number; readonly toYear: number };
   /** Seasons it may come in (0 spring … 3 winter); absent = any. */
   readonly seasons?: readonly number[];
   readonly conditions?: RegistryCondition;

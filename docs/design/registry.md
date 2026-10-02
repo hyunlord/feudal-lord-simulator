@@ -4,7 +4,7 @@
 범위: **영주 모드에서만**(`state.agency`가 있을 때). 샌드박스·캠페인은 바뀌지 않는다. 화면은 렌더 몫(카드 데이터만 낸다).
 
 ## ER-1 항목(데이터)
-- 항목: `{ id, kind(petition·event·annual_rule), window(연도 범위), seasons, conditions, frequency, recurrence, exclusiveGroup, sender, bind, choices[], precedent, artId }`.
+- 항목: `{ id, kind(petition·event·annual_rule), years(연도 범위), seasons, conditions, frequency, recurrence, exclusiveGroup, sender, bind, choices[], precedent, artId }`.
 - `conditions`는 `all`·`any`·`not`과 잎 `{ field, op, value }`의 나무다. `field`는 허용 목록의 읽기 모델(달력·인구·금고·세력 관계·영지·청지기·감사·소송·혼인 상태 등)이고, 임의 코드 실행은 없다.
 - `choices[].effects`는 **엔진에 이미 있는 명령**(`GameCommand`)과 원장 줄뿐이다. 명령의 대상은 `bind`가 정한 실제 인스턴스(영지·감사·소송·청지기·혼인 상대)에서 채운다. 등록기는 권리·사람·자원을 지어내지 않는다.
 - `frequency`: `chancePermille`(0~1000 확률 거르기), `weight`(남은 후보 사이 정수 가중), `minGapSeasons`, `maxPerYear`(1 이상). `recurrence`: `once`(판 전체 한 번), `cooldown`(`cooldownSeasons`·`maxOccurrences`).

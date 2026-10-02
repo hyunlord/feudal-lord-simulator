@@ -16,6 +16,7 @@ import { initialAgency } from "../src/engine/townAgency";
 import { advanceTrades, haulStuckStock, initialTrades, tradesOf } from "../src/engine/trades";
 import type { TradeHousehold } from "../src/engine/trades.types";
 import { migrateSaveToLatest } from "../src/save/migrations";
+import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
 import { decodeSave } from "../src/save/saveCodec";
 
 const SEASON_START = 61 * 1000;
@@ -47,12 +48,12 @@ test("TR-1·TR-2 twenty trades (twelve core, eight by condition) on twelve works
   assert.equal(TRADE_GOOD_NAMES.hides, "생가죽");
 });
 
-test("TR-9 outside lord mode nothing happens; a v45 save migrates to v46 with nothing to add", () => {
+test("TR-9 outside lord mode nothing happens; a v45 save migrates to the latest version with nothing to add", () => {
   const sandbox = { ...town(), tick: SEASON_START };
   assert.equal(advanceTrades(sandbox), sandbox);
   const v45 = JSON.parse(readFileSync("fixtures/saves/v45/population-176.save.json", "utf8"));
   const migrated = migrateSaveToLatest(v45).value as { schemaVersion: number; state: GameState };
-  assert.equal(migrated.schemaVersion, 46);
+  assert.equal(migrated.schemaVersion, SAVE_SCHEMA_VERSION);
   assert.equal(migrated.state.trades, undefined);
 });
 

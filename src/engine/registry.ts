@@ -57,7 +57,7 @@ export function entryProblem(entry: RegistryEntry): string | null {
   if (typeof entry.id !== "string" || entry.id.length === 0) return "no id";
   if (!(REGISTRY_KINDS as readonly string[]).includes(entry.kind)) return `unknown kind ${entry.kind}`;
   if (!(REGISTRY_BINDS as readonly string[]).includes(entry.bind)) return `unknown bind ${entry.bind}`;
-  if (entry.window.fromYear > entry.window.toYear) return "empty window";
+  if (entry.years.fromYear > entry.years.toYear) return "empty window";
   const frequency = entry.frequency;
   if (frequency.chancePermille < 0 || frequency.chancePermille > 1000) return "chance outside 0–1000";
   if (frequency.weight < 1 || !Number.isInteger(frequency.weight)) return "weight must be a whole number of 1 or more";
@@ -329,7 +329,7 @@ export function seasonDraw(state: GameState): readonly { readonly entry: Registr
   const candidates: { entry: RegistryEntry; boundId: string; draw: number; conditions: readonly string[] }[] = [];
   for (const entry of registryEntries()) {
     if (entry.generator !== undefined || entry.kind === "annual_rule") continue;
-    if (year < entry.window.fromYear || year > entry.window.toYear) continue;
+    if (year < entry.years.fromYear || year > entry.years.toYear) continue;
     if (entry.seasons !== undefined && !entry.seasons.includes(season)) continue;
     const past = registry.occurrences.filter(occurrence => occurrence.entryId === entry.id);
     if (past.length >= entry.recurrence.maxOccurrences) continue;

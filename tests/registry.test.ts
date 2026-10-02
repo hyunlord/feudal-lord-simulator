@@ -32,7 +32,7 @@ function funded(state: GameState, amount: number): GameState {
 }
 
 const entry = (overrides: Partial<RegistryEntry> = {}): RegistryEntry => ({
-  id: "test:entry", kind: "event", source: "test", window: { fromYear: 1300, toYear: 1450 },
+  id: "test:entry", kind: "event", source: "test", years: { fromYear: 1300, toYear: 1450 },
   frequency: { chancePermille: 1000, weight: 1, minGapSeasons: 0, maxPerYear: 1 }, recurrence: { mode: "once", cooldownSeasons: 0, maxOccurrences: 1 },
   sender: "town", bind: "none", choices: [{ id: "a", effects: [{ command: "none" }] }, { id: "b", effects: [{ command: "treasury", amount: -10 }] }],
   precedent: false, artId: null, ...overrides,
