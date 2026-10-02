@@ -47,6 +47,18 @@ const MODES = {
 };
 const WIDTH = 1280, HEIGHT = 800;
 
+/** A route's own fetch from the dev server, tried three times: on a busy shared DGX the server now and then resets a
+ *  connection (ECONNRESET), and a throw in a route handler is unhandled and ended the whole geometry audit. After the
+ *  third failure the request is aborted, so only that page fails to open (the audit records it) and the run goes on. */
+async function fetchRetried(route) {
+  for (let attempt = 1; ; attempt++) {
+    try { return await route.fetch(); } catch (error) {
+      if (attempt >= 3) { await route.abort('failed').catch(() => {}); return null; }
+      await new Promise(done => setTimeout(done, 500 * attempt));
+    }
+  }
+}
+
 /** Opens the game with an injected state (null = DEFAULT_GAME_STATE) centred on a tile, 1× speed running. */
 export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, height = HEIGHT, dpr = 1, rewrite = [], query = '', run = true, zoom = 1, hasTouch = false, isMobile = false, initScript = null, loadTimeout = 30_000 }) {
   const context = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: dpr, hasTouch, isMobile });
@@ -56,13 +68,15 @@ export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, 
   if (state !== null) await routeSceneState(page, state);
   const camera = { zoom, panX: width / 2 - (tile[0] - tile[1]) * 32 * zoom, panY: height / 2 - (tile[0] + tile[1]) * 16 * zoom };
   await page.route('**/src/render/canvasRuntime.ts*', async route => {
-    const response = await route.fetch(); const text = await response.text(); const anchor = 'const house = startingHouse(state.buildings);';
+    const response = await fetchRetried(route); if (response === null) return;
+    const text = await response.text(); const anchor = 'const house = startingHouse(state.buildings);';
     if (!text.includes(anchor)) throw new Error('Camera injection anchor changed');
     await route.fulfill({ response, body: text.replace(anchor, `return ${JSON.stringify(camera)};` + anchor) });
   });
   for (const { pattern, from, to } of rewrite) {
     await page.route(pattern, async route => {
-      const response = await route.fetch(); const text = await response.text();
+      const response = await fetchRetried(route); if (response === null) return;
+      const text = await response.text();
       if (!text.includes(from)) throw new Error(`Rewrite anchor missing in ${pattern}: ${from}`);
       await route.fulfill({ response, body: text.replace(from, to) });
     });
