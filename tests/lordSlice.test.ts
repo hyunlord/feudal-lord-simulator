@@ -4,7 +4,7 @@ import test from "node:test";
 
 import { BALANCE } from "../src/content/balanceConfig";
 import { LORD_SLICE_AFTER_SECOND_ESTATE_YEARS, LORD_SLICE_FACTIONS, LORD_SLICE_SCENARIO_ID, LORD_SLICE_YEARS, PAUSE_REASONS } from "../src/content/lordSliceConfig";
-import { DEFAULT_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
+import { CORE_SCENARIOS, DEFAULT_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
 import { scenarioById } from "../src/content/scenario/registry";
 import { pauseReasons } from "../src/engine/autoPause";
 import type { GameState } from "../src/engine/engine.types";
@@ -23,6 +23,7 @@ test("LS-1 the slice: the demesne and its town in lord mode from 1300, three nei
   assert.ok(lordSlice(state));
   assert.ok(state.agency !== undefined, "always lord mode");
   assert.equal(scenarioById(LORD_SLICE_SCENARIO_ID).mode, "sandbox", "no chapters' victory");
+  assert.ok(!CORE_SCENARIOS.some(entry => entry.id === LORD_SLICE_SCENARIO_ID), "not on the start screen's list (render LM-R3 adds its start)");
   const start = lordSliceStart(state);
   assert.equal(start.startYear, 1300);
   assert.deepEqual(start.goalYears, { min: 12, max: 20 });

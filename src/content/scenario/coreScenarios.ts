@@ -128,25 +128,29 @@ export const CORE_SCENARIOS: readonly ScenarioDef[] = [
     activeEvents: CORE_EVENTS,
     economyRules: ECONOMY_RULES,
   },
-  {
-    // LM-E8 (spec docs/design/lord-slice.md LS-1): the lord's vertical slice — the demesne and its market town, the three
-    // neighbour estates off the map, from 1300; always lord mode (the town builds itself). No chapters' victory: it ends
-    // after twenty years or five after a second estate (`lordSliceOutcome`).
-    id: LORD_SLICE_SCENARIO_ID,
-    name: SCENARIO_COPY.scenarios.lord_slice,
-    mode: "sandbox",
-    startYear: 1300,
-    archetype: "core:open_field",
-    stages: STAGES,
-    eras: ERAS,
-    objectives: [],
-    victory: null,
-    failure: null,
-    walls: WALLS,
-    activeEvents: CORE_EVENTS,
-    economyRules: ECONOMY_RULES,
-  },
 ];
+
+/**
+ * LM-E8 (spec docs/design/lord-slice.md LS-1): the lord's vertical slice — the demesne and its market town, the three
+ * neighbour estates off the map, from 1300; always lord mode (the town builds itself). No chapters' victory: it ends
+ * after twenty years or five after a second estate (`lordSliceOutcome`). Registered beside the core two but not among
+ * them: the start screen lists `CORE_SCENARIOS`, and the slice's own start is render's (LM-R3).
+ */
+export const LORD_SLICE_SCENARIO: ScenarioDef = {
+  id: LORD_SLICE_SCENARIO_ID,
+  name: SCENARIO_COPY.scenarios.lord_slice,
+  mode: "sandbox",
+  startYear: 1300,
+  archetype: "core:open_field",
+  stages: STAGES,
+  eras: ERAS,
+  objectives: [],
+  victory: null,
+  failure: null,
+  walls: WALLS,
+  activeEvents: CORE_EVENTS,
+  economyRules: ECONOMY_RULES,
+};
 
 export const DEFAULT_SCENARIO_ID = "core:campaign_market_town";
 export const SANDBOX_SCENARIO_ID = "core:sandbox";
