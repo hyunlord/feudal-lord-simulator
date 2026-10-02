@@ -58,6 +58,19 @@ function directionForWalker(walker: Walker): WalkerPresentationDirection {
   return vector.ty >= 0 ? "SW" : "NE";
 }
 
+/**
+ * NAT-4 QA-026: the step's rise. The walker sheets' two gait rows (walkers-v2, Wave 3) draw the same leg forward, so a
+ * walk alternating them reads as one stride sliding along. Until the sheets have the opposite stride, the body rises
+ * on gait frame 1 (the passing beat) by WALKER_STEP_LIFT of the figure's height — about 1 px at zoom 1 — rounded to
+ * whole device pixels (`deviceScale`: device px per world px) so the figure stays crisp; twice a tile at the
+ * walk's pace (gaitFrameForWalker). The feet's cart, shadow and cargo stay on the ground. World px.
+ */
+export const WALKER_STEP_LIFT = 0.06;
+export function walkerStepLift(gaitFrame: WalkerGaitFrame, figurePx: number, deviceScale: number): number {
+  if (gaitFrame === 0 || !(deviceScale > 0)) return 0;
+  return Math.max(1, Math.round(WALKER_STEP_LIFT * figurePx * deviceScale)) / deviceScale;
+}
+
 function gaitFrameForWalker(walker: Walker): WalkerGaitFrame {
   const segmentStart = walker.path[walker.pathIndex] ?? walker.previousTile;
   const progress = segmentStart === undefined || segmentStart === null

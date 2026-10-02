@@ -30,7 +30,7 @@ import { drawPlagueProp } from "./plagueWorldProps";
 import { drawReorgPropAt } from "./reorgWorldProps";
 import { drawAleDrinker } from "./alehouseCrowd";
 import { drawCountrysideItem } from "./countrysideDraw";
-import { placeWalkers, walkerHiddenBehind } from "./walkerOcclusion";
+import { inGatePassage, placeWalkers, walkerHiddenBehind } from "./walkerOcclusion";
 import { beginSpriteMipFrame, endSpriteMipFrame } from "./spriteMipCache";
 
 type DrawObjectRenderItemsInput = {
@@ -79,10 +79,10 @@ export function drawObjectRenderItems(
     id: `bridge:${piece.tx}:${piece.ty}:${piece.side}`,
   }));
   probe?.enter("objects.sort");
-  // NAT-1: walkers in the same order as the objects (walkerOcclusion.ts); those passing a stone gate or on a bridge keep
-  // the queue's own place, where the gate's arch and the bridge's rails are drawn around them by depth.
+  // NAT-1: walkers in the same order as the objects (walkerOcclusion.ts); those in a stone gate's passage or on a bridge
+  // keep the queue's own place, where the gate's arch and the bridge's rails are drawn around them by depth.
   const queue = placeWalkers(sortRenderItems([...input.objectRenderItems, ...rails]), input.state, item =>
-    stoneGates.some(gate => Math.hypot(item.walker.position.tx - gate.x, item.walker.position.ty - gate.y) < 1.5)
+    inGatePassage(item.walker.position, stoneGates)
     || bridgeDeckAt(input.state, { tx: Math.round(item.walker.position.tx), ty: Math.round(item.walker.position.ty) }) !== null);
   // SMOOTH-2R: the camera transform, read once for the queue; walls and walkers read it per item before (a new
   // DOMMatrix each, 113 a frame in the 1380 town). Every item restores what it changes, so it holds at each item.

@@ -60,8 +60,8 @@ function figureHeight(path: string): number {
   return heights.sort((a, b) => a - b)[Math.floor(heights.length / 2)]!;
 }
 
-test("ASSET-2 the Wave 9 story walkers are drawn as tall as an ordinary walker (the composer's 17.6 px), ± 10 %", () => {
-  assert.ok(Math.abs(WALKER_FIGURE_PX - 17.6) < 1e-9);
+test("ASSET-2 the Wave 9 story walkers are drawn as tall as an ordinary walker (the composer's 16 px, NAT-4 BLD-07), ± 10 %", () => {
+  assert.ok(Math.abs(WALKER_FIGURE_PX - 16) < 1e-9);
   for (const key of Object.keys(STORY_WALKER_FIGURE_HEIGHT) as StoryWalkerKey[]) {
     const measured = figureHeight(`public/${WAVE9_IMAGES[key].url}`);
     assert.ok(Math.abs(measured - STORY_WALKER_FIGURE_HEIGHT[key]) <= 1, `${key}: measured ${measured}, recorded ${STORY_WALKER_FIGURE_HEIGHT[key]}`);

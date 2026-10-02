@@ -4,6 +4,7 @@ import { constructionSiteFootprint } from "../economy/constructionSiteAccessors"
 import { GUILDHALL_FOOTPRINT } from "./reorgWorldProps";
 import type { RenderQueueItem } from "./objectRenderOrder";
 import { walkerVisualAnchor } from "./walkerAnchor";
+import { WALKER_HALF_WIDTH, wallItemEdges, type Box, type Foot, type WallEdge } from "./wallOcclusionEdges";
 
 // NAT-1: walkers in the same depth order as the buildings, walls and sites around them (they were drawn after every
 // object, so a walker on the lane behind a house stood on its roof). The queue's scalar depth (tx + ty; a building's
@@ -13,26 +14,32 @@ import { walkerVisualAnchor } from "./walkerAnchor";
 //    foot is past the far edge on either axis (x ≥ x1 or y ≥ y1), else behind. Where the two do not overlap on screen the
 //    order does not show, and where they do the rule is exact;
 //  - a construction site is ground being built on: a foot inside it is in front too (the hands at work);
-//  - a wall's unit edge: in front when the foot is past the edge's line (the edge's corner coordinate − 0.5), or within
-//    WALL_LINE of it (a hand at the wall's works).
+//  - a wall item (NAT-4 QA-005, wallOcclusionEdges.ts): the stretch of wall it draws, its face line (the smoothed
+//    baseline + half the wall's thickness toward the camera); the walker is in front when its foot is deeper than the
+//    face at the foot's screen column, else behind — a foot within the wall's thickness stands against its foot, which
+//    the face covers (the old test, "within 0.2 of the unit edge's line is in front", drew such walkers over the wall).
 // A walker goes after every object it is in front of and before every object it is behind. When they cannot all hold
 // (objects whose own order disagrees), the footprints win over the walls, and among footprints it goes after the last it
-// is in front of. Walkers passing a stone gate
+// is in front of. Walkers in a stone gate's passage
 // or on a bridge keep the queue's own order (the gate's arch and the bridge's rails are drawn around them by depth).
 type WalkerItem = Extract<RenderQueueItem, { readonly kind: "walker" }>;
 /** NAT-2: an alehouse drinker's place (alehouseCrowd.ts), placed like a walker at its foot. */
 type FigureItem = Extract<RenderQueueItem, { readonly kind: "ale_drinker" }>;
 /** The draw queue: the object items and the bridges' rails (drawObjectRenderItems). */
 type Queued = RenderQueueItem | Readonly<{ kind: "bridge_rail"; depth: number; anchorTx: number; id: string }>;
-type Box = { readonly x0: number; readonly x1: number; readonly y0: number; readonly y1: number };
-type Blocker = { readonly index: number; readonly box: Box | null; readonly site?: boolean; readonly edge: { readonly axis: "x" | "y"; readonly at: number; readonly from: number; readonly to: number } | null };
+type Blocker = { readonly index: number; readonly box: Box | null; readonly site?: boolean; readonly edge: WallEdge | null };
+/** What the rule reads of the state: the sites, and the wall's baseline (wallItemEdges) when the state has one. */
+type OcclusionState = Pick<GameState, "constructionSites"> & Partial<Pick<GameState, "palisade" | "tiles" | "width" | "height">>;
 
 /** How far around a walker (tiles) an object can meet it on screen: the widest footprint and a tall roof's reach. */
 const REACH = 6;
-/** Half a walker's width on screen, in tile-diagonal units (18 px of the 64 px tile width → ~0.3 of sx per tile). */
-const WALKER_HALF_WIDTH = 0.3;
-/** How close to a wall's line a foot still counts as at its face (tiles). */
-const WALL_LINE = 0.2;
+/** NAT-4 QA-005: a stone gate's passage, around its point (tile-centre coordinates, tiles): the four tiles at the gate. */
+export const GATE_PASSAGE = 0.75;
+
+/** Whether a walker at `position` is in the passage of one of the stone gates (`gates`: edge points, tile corners). */
+export function inGatePassage(position: Foot, gates: readonly { readonly x: number; readonly y: number }[]): boolean {
+  return gates.some(gate => Math.hypot(position.tx - (gate.x - 0.5), position.ty - (gate.y - 0.5)) < GATE_PASSAGE);
+}
 
 const screenX = (x: number, y: number) => x - y;
 const overlapsOnScreen = (box: Box, foot: { tx: number; ty: number }) => {
@@ -43,7 +50,7 @@ const overlapsOnScreen = (box: Box, foot: { tx: number; ty: number }) => {
 /** Whether the walker's foot is in front of the footprint (box rule). */
 export const inFrontOfBox = (foot: { tx: number; ty: number }, box: Box) => foot.tx >= box.x1 || foot.ty >= box.y1;
 
-function blockersOf(queue: readonly Queued[], state: Pick<GameState, "constructionSites">): Blocker[] {
+function blockersOf(queue: readonly Queued[], state: OcclusionState): Blocker[] {
   const blockers: Blocker[] = [];
   const sites = new Map(state.constructionSites.map(site => [site.id, site]));
   for (const [index, item] of queue.entries()) {
@@ -58,12 +65,7 @@ function blockersOf(queue: readonly Queued[], state: Pick<GameState, "constructi
       const prop = item.prop;
       blockers.push({ index, box: { x0: prop.tx - 0.5, x1: prop.tx + GUILDHALL_FOOTPRINT.width - 0.5, y0: prop.ty - 0.5, y1: prop.ty + GUILDHALL_FOOTPRINT.height - 0.5 }, edge: null });
     } else if (item.kind === "palisade_segment") {
-      const path = item.segment.edgePath;
-      for (let step = 1; step < path.length; step += 1) {
-        const a = path[step - 1]!; const b = path[step]!;
-        if (a.y === b.y) blockers.push({ index, box: null, edge: { axis: "y", at: a.y - 0.5, from: Math.min(a.x, b.x) - 0.5, to: Math.max(a.x, b.x) - 0.5 } });
-        else if (a.x === b.x) blockers.push({ index, box: null, edge: { axis: "x", at: a.x - 0.5, from: Math.min(a.y, b.y) - 0.5, to: Math.max(a.y, b.y) - 0.5 } });
-      }
+      for (const edge of wallItemEdges(item, state)) blockers.push({ index, box: null, edge });
     }
   }
   return blockers;
@@ -77,9 +79,7 @@ function bucketed(blockers: readonly Blocker[]): Map<string, Blocker[]> {
     const list = buckets.get(key); if (list === undefined) buckets.set(key, [blocker]); else list.push(blocker);
   };
   for (const blocker of blockers) {
-    const box = blocker.box ?? (blocker.edge!.axis === "y"
-      ? { x0: blocker.edge!.from, x1: blocker.edge!.to, y0: blocker.edge!.at, y1: blocker.edge!.at }
-      : { x0: blocker.edge!.at, x1: blocker.edge!.at, y0: blocker.edge!.from, y1: blocker.edge!.to });
+    const box = blocker.box ?? blocker.edge!.span;
     const seen = new Set<string>();
     for (let tx = Math.floor(box.x0); tx <= Math.ceil(box.x1); tx += 4) for (let ty = Math.floor(box.y0); ty <= Math.ceil(box.y1); ty += 4) {
       const key = `${tx >> 2}:${ty >> 2}`; if (!seen.has(key)) { seen.add(key); add(tx, ty, blocker); }
@@ -114,29 +114,18 @@ function bounds(foot: { tx: number; ty: number }, near: readonly Blocker[]): { l
 
 /** In front of the blocker (true), behind it (false), or not meeting it on screen (null). */
 function frontOf(foot: { tx: number; ty: number }, blocker: Blocker): boolean | null {
-  {
-    let front: boolean;
-    if (blocker.box !== null) {
-      if (!overlapsOnScreen(blocker.box, foot)) return null;
-      // A site is ground being built on: whoever works inside it stands on it, in front.
-      front = inFrontOfBox(foot, blocker.box) || (blocker.site === true && foot.tx >= blocker.box.x0 && foot.ty >= blocker.box.y0);
-    } else {
-      const edge = blocker.edge!;
-      const along = edge.axis === "y" ? foot.tx : foot.ty;
-      if (along < edge.from - 0.6 || along > edge.to + 0.6) return null;
-      // At the wall's own line (a hand at the wall's works) counts as in front of it.
-      front = (edge.axis === "y" ? foot.ty : foot.tx) >= edge.at - WALL_LINE;
-    }
-    return front;
-  }
+  if (blocker.box === null) return blocker.edge!.front(foot);
+  if (!overlapsOnScreen(blocker.box, foot)) return null;
+  // A site is ground being built on: whoever works inside it stands on it, in front.
+  return inFrontOfBox(foot, blocker.box) || (blocker.site === true && foot.tx >= blocker.box.x0 && foot.ty >= blocker.box.y0);
 }
 
 /**
  * The queue with every walker placed by the box rule (see the head of this file). `keepOrder(item)`: walkers that keep
- * the queue's own place (a stone gate's passage, a bridge). The rest of the queue keeps its order. NAT-2: the alehouse
+ * the queue's own place (a stone gate's passage, inGatePassage; a bridge). The rest of the queue keeps its order. NAT-2: the alehouse
  * drinkers' places are placed the same way, at their foot.
  */
-export function placeWalkers<T extends Queued>(queue: readonly T[], state: Pick<GameState, "constructionSites">,
+export function placeWalkers<T extends Queued>(queue: readonly T[], state: OcclusionState,
   keepOrder: (item: WalkerItem) => boolean): T[] {
   const base: T[] = [];
   const moving: { item: T & (WalkerItem | FigureItem); at: number; order: number }[] = [];
@@ -175,7 +164,7 @@ export function placeWalkers<T extends Queued>(queue: readonly T[], state: Pick<
 
 /** The pairs where the drawing order breaks the box rule: `onRoof` a walker drawn over an object it is behind (the
  * user's "사람이 지붕 위"), `hidden` one drawn under an object it stands in front of. The "0 walkers on roofs" check. */
-export function occlusionFaults(queue: readonly Queued[], state: Pick<GameState, "constructionSites">,
+export function occlusionFaults(queue: readonly Queued[], state: OcclusionState,
   keepOrder: (item: WalkerItem) => boolean = () => false): { onRoof: string[]; hidden: string[] } {
   const buckets = bucketed(blockersOf(queue, state));
   const onRoof: string[] = []; const hidden: string[] = [];
@@ -193,7 +182,7 @@ export function occlusionFaults(queue: readonly Queued[], state: Pick<GameState,
 }
 
 /** Whether an object drawn after the walker at `index` stands in front of it (the walker is hidden, wholly or in part). */
-export function walkerHiddenBehind(queue: readonly Queued[], index: number, state: Pick<GameState, "constructionSites">): boolean {
+export function walkerHiddenBehind(queue: readonly Queued[], index: number, state: OcclusionState): boolean {
   const item = queue[index];
   if (item === undefined || item.kind !== "walker") return false;
   const foot = walkerVisualAnchor(item.walker.position);
@@ -205,7 +194,7 @@ export function walkerHiddenBehind(queue: readonly Queued[], index: number, stat
  * door props right after the queue's item `after` — standing at `foot` (tile units): `onRoof`, an object drawn before
  * it that it stands behind (the figure shows on that object); `hidden`, one drawn after it that it stands in front of.
  */
-export function figureOrderFaults(queue: readonly Queued[], state: Pick<GameState, "constructionSites">, foot: { tx: number; ty: number },
+export function figureOrderFaults(queue: readonly Queued[], state: OcclusionState, foot: { tx: number; ty: number },
   after: number): { onRoof: string[]; hidden: string[] } {
   const onRoof: string[] = []; const hidden: string[] = [];
   for (const blocker of nearBlockers(bucketed(blockersOf(queue, state)), foot)) {

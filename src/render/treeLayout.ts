@@ -80,6 +80,15 @@ const TREE_STATURE: Readonly<Record<TreeSpriteKey, number>> = {
   tree_birch: 0.8,
   tree_dead: 0.65,
 };
+/**
+ * NAT-4 RUN-03: the trees that may be drawn mirrored (a hash picks about half of them) — those whose light is the same
+ * on both sides. A mirrored tree lit from the left is lit from the right, against the town's light. The mirror applies
+ * to the key's seasonal variants too (drawSeasonalSprite), so a key is in only when all of them are even. Measured
+ * 2026-10-02 (mean luminance of the opaque pixels left of the centroid over right of it): every painted tree is lit
+ * from the left, base and seasons alike — oak large +26 %, oak small +38 %, pine tall +40 %, pine short +33 %, birch
+ * +24 %, dead +15 % (their spring and autumn variants +15 to +34 %, winter +1 to +32 %) — so none mirrors.
+ */
+const TREE_MIRROR_OK: ReadonlySet<TreeSpriteKey> = new Set<TreeSpriteKey>();
 const MAX_OFFSET_X = TILE_W * 0.35;
 const MAX_OFFSET_Y = TILE_H * 0.35;
 const SAFE_DIAMOND_RADIUS = 0.7;
@@ -132,7 +141,7 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
       anchorTx: anchor.tx,
       anchorTy: anchor.ty,
       spriteKey,
-      flipX: treeFlipX(input.tile.tx, input.tile.ty, input.seed, index),
+      flipX: TREE_MIRROR_OK.has(spriteKey) && treeFlipX(input.tile.tx, input.tile.ty, input.seed, index),
     });
   }
 
