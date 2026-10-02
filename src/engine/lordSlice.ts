@@ -74,6 +74,15 @@ export function lordSliceStart(state: GameState): LordSliceStart {
   };
 }
 
+/**
+ * FIX-14 (LS-1, decision LM8-1): the factions the slice has shown — the five its start introduces, and any other the
+ * lord has since dealt with (its memory holds a ledger line: a boundary dispute's neighbour, the commons' petition).
+ */
+export function lordSliceFactionsMet(state: GameState): readonly string[] {
+  const met = (state.factions?.factions ?? []).filter(faction => faction.memory.length > 0).map(faction => faction.id as string);
+  return [...LORD_SLICE_FACTIONS, ...met.filter(id => !(LORD_SLICE_FACTIONS as readonly string[]).includes(id))];
+}
+
 /** LS-5: the tick the lord came to hold a second estate (an estate off the map, title and possession), or null. */
 export function secondEstateSince(state: GameState): number | null {
   let since: number | null = null;

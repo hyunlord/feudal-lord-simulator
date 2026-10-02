@@ -16,6 +16,7 @@ import { LABOUR_BALANCE } from '../content/balanceConfig';
 import { housingLotCount } from '../population/housing';
 import { cellInsideWall } from '../zones/zoneEdits';
 import { previewPalisadeRouteAccess } from './palisadeRouteAccess';
+import { botTimberOrderFor } from './timberTrade';
 import { stretchedWallCandidates, wallRoom } from './autoplayWallRoom';
 
 const NONE = { kind: 'none' } as const;
@@ -193,7 +194,14 @@ export function autoplayEraAction(state: GameState, buildAction: (state: GameSta
       case "stone":
         kind = !hasBuiltOrPlannedBuilding(state, "quarry") ? "quarry" : "masonry";
         break;
-      case "population": case "timber": case "coin":
+      case "timber": {
+        // FIX-13 (FX13-5) / FIX-14: the charter waits on timber the town's stores cannot reach (its sawmills stood idle
+        // a whole window, the receivers full) — the shortfall bought from the market's traders (FIX-10 TT-4b's rule).
+        const order = botTimberOrderFor(state, requirement.target);
+        if (order !== null) return { kind: "order_timber", amount: order };
+        break;
+      }
+      case "population": case "coin":
         break;
     }
     if (kind !== null && !hasBuiltOrPlannedBuilding(state, kind)) {

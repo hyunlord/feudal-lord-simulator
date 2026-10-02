@@ -36,6 +36,7 @@ import { canProclaimPalisadeEra } from "./era";
 import { housingLotCount } from "../population/housing";
 import { stuckStock } from "./stuckStock";
 import { agencyDuesPermille } from "./townAgencyDues";
+import { orderTimber } from "./timberTrade";
 import type {
   ActorKind, AgencyActor, AgencyState, ChoiceChance, EstatePolicy, LordRequest, ProjectReceipt, ProjectSubsidy, Reason, ReceiptSites, SubsidyRefusal, Temperament,
 } from "./townAgency.types";
@@ -507,8 +508,12 @@ export function advanceTownAgency(state: GameState): GameState {
   const skipEra = layout !== undefined && agency.charterWallTried === layout;
   const needs = planningNeeds(week, LORD_MODE_POLICY, skipEra ? ["era"] : []);
   const tried = searching && (skipEra || !needs.some(need => need.action.kind === "proclaim_era")) ? layout : undefined;
-  const requests = needs.filter(need => LORD_REQUEST_KINDS.has(need.action.kind)).map(need => need.action as LordRequest);
+  // FIX-14 (decision FX13-5, the user's (가)): the charter's timber the town's own stores cannot reach — the town orders
+  // it from the market's traders itself (FIX-10's standing order); it is not the lord's to grant.
+  const charterTimber = needs.find(need => need.planner === "era" && need.action.kind === "order_timber");
+  const requests = needs.filter(need => LORD_REQUEST_KINDS.has(need.action.kind) && need !== charterTimber).map(need => need.action as LordRequest);
   let next: GameState = { ...week, agency: { ...week.agency!, requests } };
+  if (charterTimber !== undefined && charterTimber.action.kind === "order_timber" && (next.timberOrder ?? 0) === 0) next = orderTimber(next, charterTimber.action.amount);
   const receipts: ProjectReceipt[] = [];
   let started = 0;
   let ordinal = agency.nextReceipt;

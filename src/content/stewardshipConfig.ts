@@ -2,7 +2,7 @@
  * LM-E4 (spec docs/design/stewardship.md): the numbers of delegation, attention and the audit. Pennies are the game's;
  * an off-map estate's season is a quarter of its card's year (the third neighbour's estate: 4,000d a year).
  */
-import type { EstatePetitionKind, StewardDisposition } from "../engine/stewardship.types";
+import type { EstatePetitionKind, HomePetitionKind, StewardDisposition } from "../engine/stewardship.types";
 
 /** SW-1: the estates a lord oversees himself (the home estate is one) — two, more with a grown heir at home, fewer when old or a ward, or for a year after an audit visit. */
 export const ATTENTION_BASE = 2;
@@ -43,6 +43,44 @@ export const PETITION_KINDS: Readonly<Record<EstatePetitionKind, { readonly grou
   repair: { group: "tenants", size: [200, 400] }, common_dispute: { group: "tenants", size: [0, 0] },
   charter_request: { group: "merchants", size: [50, 100], rights: true }, marriage_licence: { group: "tenants", size: [20, 60], marriage: true },
 };
+/**
+ * FIX-14 (SW-11): the home estate's petitions of 1300–1320 — each kind's group, its pennies, and what an answer does: the
+ * treasury (+1 the pennies come in, −1 they go out, 0 nothing) and the factions' goodwill (`party`: the neighbour house
+ * the petition sets the lord's men against). Sources: docs/research (mill monopoly, common pasture, newcomers, stalls,
+ * bridges, wardship, the manor court); heriot, merchet and the ale fines are the manor's custom (not in the research).
+ */
+export interface HomePetitionDef {
+  readonly group: "tenants" | "merchants";
+  readonly amount: readonly [number, number];
+  readonly grant: { readonly income: -1 | 0 | 1; readonly factions: Readonly<Record<string, number>> };
+  readonly refuse: { readonly income: -1 | 0 | 1; readonly factions: Readonly<Record<string, number>> };
+  readonly rights?: true;
+  readonly marriage?: true;
+  readonly party?: true;
+}
+export const HOME_PETITION_KINDS: Readonly<Record<HomePetitionKind, HomePetitionDef>> = {
+  boundary_dispute: { group: "tenants", amount: [0, 0], rights: true, party: true,
+    grant: { income: 0, factions: { commons: 5, party: -5 } }, refuse: { income: 0, factions: { commons: -4, party: 4 } } },
+  mill_suit: { group: "tenants", amount: [20, 60], rights: true,
+    grant: { income: -1, factions: { commons: 5 } }, refuse: { income: 0, factions: { commons: -5 } } },
+  heriot: { group: "tenants", amount: [15, 50], grant: { income: 0, factions: { commons: 5 } }, refuse: { income: 1, factions: { commons: -4 } } },
+  merchet: { group: "tenants", amount: [5, 20], marriage: true, grant: { income: 1, factions: { commons: 2 } }, refuse: { income: 0, factions: { commons: -4 } } },
+  ale_fines: { group: "tenants", amount: [8, 30], grant: { income: 0, factions: { town: 4 } }, refuse: { income: 1, factions: { town: -4 } } },
+  road_bridge: { group: "tenants", amount: [30, 80], grant: { income: -1, factions: { town: 5 } }, refuse: { income: 0, factions: { town: -5 } } },
+  stall_dispute: { group: "merchants", amount: [0, 0],
+    grant: { income: 0, factions: { merchant_house_1: 5, merchant_house_2: -5 } }, refuse: { income: 0, factions: { merchant_house_1: -5, merchant_house_2: 5 } } },
+  wardship: { group: "tenants", amount: [20, 60], grant: { income: 0, factions: { commons: 5 } }, refuse: { income: 1, factions: { commons: -5 } } },
+  common_pasture: { group: "tenants", amount: [0, 0],
+    grant: { income: 0, factions: { commons: 5, merchant_house_2: -4 } }, refuse: { income: 0, factions: { commons: -5, merchant_house_2: 3 } } },
+  newcomer: { group: "tenants", amount: [10, 40], grant: { income: 1, factions: { town: 3, commons: -2 } }, refuse: { income: 0, factions: { town: -3 } } },
+  pannage: { group: "tenants", amount: [10, 30], grant: { income: 0, factions: { commons: 4 } }, refuse: { income: 1, factions: { commons: -3 } } },
+  chancel_repair: { group: "tenants", amount: [30, 80], grant: { income: -1, factions: { bishop: 5 } }, refuse: { income: 0, factions: { bishop: -5 } } },
+};
+/** FIX-14 (SW-11): the kinds in a cycle (each cycle drawn afresh from the seed); a season's chance, and a year never without one. */
+export const HOME_PETITION_ORDER: readonly HomePetitionKind[] = ["boundary_dispute", "mill_suit", "heriot", "merchet", "ale_fines", "road_bridge",
+  "stall_dispute", "wardship", "common_pasture", "newcomer", "pannage", "chancel_repair"];
+export const HOME_PETITION_PERMILLE = 600;
+
 /** SW-4: a petition granted or refused moves its group (a dispute: the side favoured and the other). */
 export const GRANT_RELATION = 8;
 export const REFUSE_RELATION = -6;

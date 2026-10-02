@@ -16,7 +16,17 @@ const s = (params: P, key: string): string => String(params[key] ?? "");
 /** LM-E4: an off-map estate by its house's name, an estate petition's subject, an exception's rule. */
 const estateWord = (house: string) => `${SURNAMES_KO[house] ?? house} 영지`;
 const ESTATE_PETITION_KO: Readonly<Record<string, string>> = { rent_relief: "소작인의 지대 감면 청원", market_dues: "상인의 장세 인하 청원", repair: "제방·헛간 수리 청원",
-  common_dispute: "공유지 다툼", charter_request: "상인의 특허 청원", marriage_licence: "소작인 딸의 혼인 허가" };
+  common_dispute: "공유지 다툼", charter_request: "상인의 특허 청원", marriage_licence: "소작인 딸의 혼인 허가",
+  // FIX-14 (SW-11): the home estate's petitions.
+  boundary_dispute: "이웃 영지와의 경계 다툼", mill_suit: "방앗간 강제를 풀어 달라는 청원", heriot: "과부의 사망세(가장 좋은 짐승) 감면 청원",
+  merchet: "딸을 장원 밖으로 시집보내는 혼인세 청원", ale_fines: "에일 검정 벌금을 덜어 달라는 청원", road_bridge: "길과 다리 수리를 나눠 맡아 달라는 청원",
+  stall_dispute: "두 상인 가문의 좌판 다툼", wardship: "미성년 상속자의 후견을 친족에게 달라는 청원", common_pasture: "공유지 방목 한도를 정해 달라는 청원",
+  newcomer: "이주민의 정착 청원", pannage: "영주의 숲에 돼지를 놓게 해 달라는 청원", chancel_repair: "교회 성단 수리를 맡아 달라는 주교의 청원" };
+const MANOR_ANSWER_KO: Readonly<Record<string, readonly [string, string]>> = {
+  boundary_dispute: ["우리 소작인 편을 들었다", "이웃 영지 편을 들었다"], stall_dispute: ["첫째 상인 가문 편을 들었다", "둘째 상인 가문 편을 들었다"],
+  common_pasture: ["방목 한도를 정했다", "한도를 두지 않았다"], wardship: ["후견을 친족에게 주었다", "후견을 영주가 쥐었다"],
+};
+const manorAnswerWord = (kind: string, granted: boolean) => MANOR_ANSWER_KO[kind]?.[granted ? 0 : 1] ?? (granted ? "들어주었다" : "물리쳤다");
 const estatePetitionWord = (kind: string) => ESTATE_PETITION_KO[kind] ?? kind;
 const EXCEPTION_RULE_KO: Readonly<Record<string, string>> = { amount: "정한 금액 이상", rights: "권리 변경", marriage: "혼인" };
 
@@ -230,8 +240,15 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
     : `${estateWord(s(params, "house"))}${josa(estateWord(s(params, "house")), "을", "를")} 영주가 직접 본다 — 장부는 ${s(params, "steward")}`,
   "stewardship.audit_mode": params => `${estateWord(s(params, "house"))}의 미카엘마스 감사: ${s(params, "mode") === "visit" ? "영주가 직접 찾아간다" : "장부로 받는다"}`,
   "stewardship.rules": params => { const parts = [...(n(params, "amount") >= 0 ? [`${moneyWords(n(params, "amount"))} 이상`] : []), ...(n(params, "rights") === 1 ? ["권리 변경"] : []), ...(n(params, "marriage") === 1 ? ["혼인"] : [])];
-    return parts.length === 0 ? "예외를 거뒀다: 청지기가 모두 정한다" : `예외를 정했다: ${parts.join("·")}${josa(parts.at(-1)!, "은", "는")} 영주에게`; },
+    // FIX-14 (SW-12): with recurring kinds brought up again (no precedent).
+    const again = n(params, "recurring") === 1 ? " — 선례가 있어도 다시 올린다" : "";
+    return parts.length === 0 ? `예외를 거뒀다: 청지기가 모두 정한다${again}` : `예외를 정했다: ${parts.join("·")}${josa(parts.at(-1)!, "은", "는")} 영주에게${again}`; },
   "stewardship.season": params => `${estateWord(s(params, "house"))}의 한 철 — 장부상 수입 ${moneyWords(n(params, "reported"))}${n(params, "overloaded") === 1 ? " (영주의 눈이 닿지 못함)" : ""}`,
+  // FIX-14 (SW-11, SW-12): the home estate's petitions to the lord himself, and the steward's precedent.
+  "manor.petition": params => `장원에서 ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "이", "가")} 영주에게 왔다${n(params, "amount") > 0 ? ` — ${moneyWords(n(params, "amount"))}` : ""}`,
+  "manor.petition_answered": params => `영주가 ${estatePetitionWord(s(params, "kind"))}에 답했다: ${manorAnswerWord(s(params, "kind"), n(params, "granted") === 1)}`,
+  "manor.petition_lapsed": params => `${estatePetitionWord(s(params, "kind"))}에 답하지 않았다 — 기다리다 거둬졌다`,
+  "stewardship.precedent": params => `청지기 ${s(params, "steward")}${josa(s(params, "steward"), "이", "가")} 선례대로 ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "을", "를")} ${n(params, "granted") === 1 ? "허락했다" : "기각했다"}`,
   "stewardship.steward_decided": params => s(params, "kind") === "common_dispute"
     ? `청지기 ${s(params, "steward")}${josa(s(params, "steward"), "이", "가")} 공유지 다툼에서 ${n(params, "granted") === 1 ? "소작인" : "상인"} 편을 들었다`
     : `청지기 ${s(params, "steward")}${josa(s(params, "steward"), "이", "가")} ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "을", "를")} ${n(params, "granted") === 1 ? "허락했다" : "기각했다"}`,
@@ -302,6 +319,8 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "estate.possession_changed": params => `${pieceWord(s(params, "piece"), s(params, "estate"))}의 점유가 ${holderWord(s(params, "from"))}에게서 ${holderWord(s(params, "to"))}에게 넘어갔다`,
   // LM-E1b (TA-6 ②): a subsidy refused — the subsidies together would pass a quarter of the treasury.
   "agency.subsidy_refused": params => `${buildingWord(s(params, "kind"))} 장려금 ${moneyWords(n(params, "amount"))}${moneyWordsJosa(moneyWords(n(params, "amount")), "은", "는")} 걸지 못했다: 장려금 합계 ${moneyWords(n(params, "total"))}${moneyWordsJosa(moneyWords(n(params, "total")), "이", "가")} 금고의 4분의 1(${moneyWords(n(params, "limit"))})을 넘는다`,
+  // FIX-14 (FX13-5): the town buys the timber its market charter waits on.
+  "agency.timber_ordered": params => `도시가 시장 칙허에 모자란 목재 ${n(params, "amount")}을 상인에게 주문했다`,
   "agency.project_started": params => `${ACTOR_KO[s(params, "actor")] ?? s(params, "actor")}${josa(ACTOR_KO[s(params, "actor")] ?? "", "이", "가")} ${projectWord(s(params, "what"))} 공사를 시작했다`,
   "drainage.done": params => `배수 공사가 끝나 웅덩이 ${n(params, "cells")}칸이 풀밭이 되었다`,
   "event.rumour": params => `${eventName(s(params, "defId"))}의 소문이 돌았다`,

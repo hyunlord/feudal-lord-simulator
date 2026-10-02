@@ -21,6 +21,9 @@ import { lordEstatePetitions, pendingAudits, stewardCandidates, stewardshipOf } 
 import { lordRequests, subsidyRefusal } from "./townAgency";
 import type { EstatePolicy } from "./townAgency.types";
 import { AGENCY_WEEK_TICKS } from "../content/townAgencyConfig";
+import { HOME_ESTATE_ID } from "../content/estateConfig";
+import { HOME_PETITION_KINDS } from "../content/stewardshipConfig";
+import type { HomePetitionKind } from "./stewardship.types";
 
 export type LordDecisionKind =
   | "petition" | "famine" | "marriage_offer" | "counter" | "promise" | "will" | "suit"
@@ -105,7 +108,8 @@ function stewardshipMoves(state: GameState): LordBotCommand[] {
   if (stewardship === undefined) return [];
   const moves: LordBotCommand[] = [];
   const rules = stewardship.rules;
-  if (rules.amountAtLeast !== 240 || !rules.rights || !rules.marriage) {
+  // The exceptions matter once an estate is held off the map (FIX-14: the home petitions bring the stewardship earlier).
+  if (stewardship.oversight.length > 0 && (rules.amountAtLeast !== 240 || !rules.rights || !rules.marriage)) {
     moves.push({ kind: "oversight", command: { type: "set_exception_rules", rules: { amountAtLeast: 240, rights: true, marriage: true } } });
   }
   for (const oversight of stewardship.oversight) {
@@ -119,7 +123,9 @@ function stewardshipMoves(state: GameState): LordBotCommand[] {
     if (oversight.auditMode !== mode) moves.push({ kind: "oversight", command: { type: "set_audit_mode", estateId: oversight.estateId, mode } });
   }
   for (const petition of lordEstatePetitions(state)) {
-    moves.push({ kind: "estate_petition", command: { type: "answer_estate_petition", petitionId: petition.id, grant: petition.group === "tenants" } });
+    // FIX-14: a home petition that costs the treasury more than it holds is refused.
+    const costly = petition.estateId === HOME_ESTATE_ID && HOME_PETITION_KINDS[petition.kind as HomePetitionKind].grant.income < 0 && petition.amount > treasuryBalance(state);
+    moves.push({ kind: "estate_petition", command: { type: "answer_estate_petition", petitionId: petition.id, grant: petition.group === "tenants" && !costly } });
   }
   for (const audit of pendingAudits(state)) {
     moves.push({ kind: "audit", command: { type: "answer_audit", auditId: audit.id, choice: audit.revealedKept > 0 ? "punish" : "tolerate" } });
