@@ -1,0 +1,1087 @@
+{
+  "wave22-heath": {
+    "group": "wave22-heath",
+    "classification": "가",
+    "count": 2,
+    "effort": "0.5–1.0h",
+    "spec": "INSTALL_LISTS/wave22-heath.md",
+    "lane": "nature",
+    "hours": [
+      1,
+      2
+    ],
+    "metadata_stripped_bytes": 23019,
+    "rgba_nominal_bytes": 73728
+  },
+  "wave41-replacements": {
+    "group": "wave41-replacements",
+    "classification": "가",
+    "count": 26,
+    "effort": "3–5h",
+    "spec": "INSTALL_LISTS/wave41-replacements.md",
+    "lane": "nature",
+    "hours": [
+      3,
+      5
+    ],
+    "metadata_stripped_bytes": 6922914,
+    "rgba_nominal_bytes": 12357376
+  },
+  "wave43-season-variants": {
+    "group": "wave43-season-variants",
+    "classification": "가",
+    "count": 9,
+    "effort": "1.5–3h",
+    "spec": "INSTALL_LISTS/wave43-season-variants.md",
+    "lane": "nature",
+    "hours": [
+      1.5,
+      3
+    ],
+    "metadata_stripped_bytes": 295419,
+    "rgba_nominal_bytes": 937728
+  },
+  "wave39-weather-ground": {
+    "group": "wave39-weather-ground",
+    "classification": "나",
+    "count": 19,
+    "effort": "6–10h",
+    "spec": "SPECS/wave39-weather-ground.md",
+    "lane": "nature",
+    "hours": [
+      6,
+      10
+    ],
+    "metadata_stripped_bytes": 70092,
+    "rgba_nominal_bytes": 1267712
+  },
+  "wave39-particles-contact": {
+    "group": "wave39-particles-contact",
+    "classification": "다",
+    "count": 39,
+    "effort": "16–24h",
+    "spec": "SPECS/wave39-particles-contact.md",
+    "lane": "nature",
+    "hours": [
+      16,
+      24
+    ],
+    "metadata_stripped_bytes": 46921,
+    "rgba_nominal_bytes": 340800
+  },
+  "wave42-land-stages": {
+    "group": "wave42-land-stages",
+    "classification": "나",
+    "count": 50,
+    "effort": "10–16h",
+    "spec": "SPECS/wave42-land-stages.md",
+    "lane": "nature",
+    "hours": [
+      10,
+      16
+    ],
+    "metadata_stripped_bytes": 1203598,
+    "rgba_nominal_bytes": 4489216
+  },
+  "wave43-ground-props": {
+    "group": "wave43-ground-props",
+    "classification": "나",
+    "count": 15,
+    "effort": "5–9h",
+    "spec": "SPECS/wave43-ground-props.md",
+    "lane": "nature",
+    "hours": [
+      5,
+      9
+    ],
+    "metadata_stripped_bytes": 935477,
+    "rgba_nominal_bytes": 1916928
+  },
+  "strip-corners": {
+    "group": "strip-corners",
+    "classification": "나",
+    "count": 16,
+    "effort": "6–10h",
+    "spec": "SPECS/strip-corners.md",
+    "lane": "nature",
+    "hours": [
+      6,
+      10
+    ],
+    "metadata_stripped_bytes": 4401621,
+    "rgba_nominal_bytes": 50331648
+  },
+  "storehouse-snow": {
+    "group": "storehouse-snow",
+    "classification": "나",
+    "count": 3,
+    "effort": "2–4h",
+    "spec": "SPECS/storehouse-snow.md",
+    "lane": "nature",
+    "hours": [
+      2,
+      4
+    ],
+    "metadata_stripped_bytes": 36018,
+    "rgba_nominal_bytes": 261120
+  },
+  "wave41-hurdles": {
+    "group": "wave41-hurdles",
+    "classification": "나",
+    "count": 2,
+    "effort": "1–2h",
+    "spec": "SPECS/wave41-hurdles.md",
+    "lane": "nature",
+    "hours": [
+      1,
+      2
+    ],
+    "metadata_stripped_bytes": 13496,
+    "rgba_nominal_bytes": 81920
+  },
+  "wave41-queue": {
+    "group": "wave41-queue",
+    "classification": "나",
+    "count": 1,
+    "effort": "2–4h",
+    "spec": "SPECS/wave41-queue.md",
+    "lane": "nature",
+    "hours": [
+      2,
+      4
+    ],
+    "metadata_stripped_bytes": 5283,
+    "rgba_nominal_bytes": 32768
+  },
+  "endings-manors": {
+    "group": "endings-manors",
+    "classification": "다",
+    "render_task": "LM-R1",
+    "effort_person_hours": "6–10",
+    "count": 2,
+    "evidence": "src/engine/lordship.ts:96 declineCause; src/ui/lordshipModel.ts:56 lordshipView; src/render/storyWorldProps.ts:66 event_crowd_manor_gate; docs/ops/DISPATCH_LEDGER.md:74",
+    "contract": "빈영주관A/B 두장. 현재render에manor_house sprite catalog/occupied↔empty선택경로없음. 소유영주·출가/퇴거·빈상태를 lordship의실제상태로연결할영주관세계object와명시자리규칙이필요. 일반keep를무조건교체하지않는다. 원본occupied A/B와동일canvas/pivot로전환, B는v2만. 원본영주관설치가선행조건. 확정metadata는 A canvas416×328/pivot(249,319), B-v2 canvas416×328/pivot(251,319); 원본JSON은 METADATA/lord.json에수록. 줌0.6/1/1.4 여름겨울모두빈상태장식이문을가리지않는지검증.",
+    "spec": "SPECS/endings-manors.md",
+    "files": [
+      "endings-manors/candidates-20260930/assets/manors/manor_house_a_empty-v1.png",
+      "endings-manors/manor-b-rework-20260930/assets/manors/manor_house_b_empty-v2.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      6.0,
+      10.0
+    ],
+    "metadata_stripped_bytes": 358895,
+    "rgba_nominal_bytes": 1091584
+  },
+  "era-houses": {
+    "group": "era-houses",
+    "classification": "나",
+    "render_task": "ERA",
+    "effort_person_hours": "4–6",
+    "count": 3,
+    "evidence": "src/engine/scenarioState.ts:78 stateCalendar; src/render/historicalHouseAssets.ts:69 historicalHouseAssetMeta; src/render/historicalHouseAssets.ts:90 drawHistoricalHouse; src/render/buildingVariants.ts:73 eligibleVariants",
+    "contract": "1420 변형3개 L2/3/4: year>=1400에만 후보. 현재 historicalHouseAssetMeta는 level만 읽고 year를 안 받으므로 데이터 추가만으로는 조기1300에도 보이거나 전혀 선택 안 됨. 렌더 frame 입력에 calendar year를 전달하고 year gate를 캐시 키에 포함. 캔버스137/142/161px 원본 alphaBounds/pivot 기반 재등록, 비율 그대로. 1399→1400 변경을 같은camera에서 검증. 기존 겨울 눈/condition overlay와 alpha맞춤 확인 전 눈을 새로 조작하지 않는다.",
+    "spec": "SPECS/era-houses.md",
+    "files": [
+      "era-pilot/candidates-20261003/assets/houses/house_l2_1420.png",
+      "era-pilot/candidates-20261003/assets/houses/house_l3_1420.png",
+      "era-pilot/candidates-20261003/assets/houses/house_l4_1420.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      4.0,
+      6.0
+    ],
+    "metadata_stripped_bytes": 96478,
+    "rgba_nominal_bytes": 259416
+  },
+  "era-portraits": {
+    "group": "era-portraits",
+    "classification": "나",
+    "render_task": "ERA",
+    "effort_person_hours": "4–6",
+    "count": 18,
+    "evidence": "src/engine/portraits.ts:162 portraitFor; src/engine/persons.ts:1054 personPortrait; src/ui/portraitArt.ts:37 portraitUrl; src/ui/portraitArtManifest.generated.ts:3 PORTRAIT_IMAGES",
+    "contract": "6identity×3시대 초상18. identity/나이 단계는 유지하고 의상 시대만 year별1300/1380/1420 선택. 현재 portraitFor와 portraitUrl은 시대 URL 선택이 없으므로 year전달이 필요. 1340은1300판 fallback을 명시. 나이단계가 일치하지 않는 얼굴을 노년기 그림처럼 쓰지 않는다. 96/256 파생을 기존keyartDerivatives 경로로 만들되128요구 없음. 아동·성인·노년 일관성은 별도검증, 파일럿 정식양산이 승인됐다고 간주하지 않는다.",
+    "spec": "SPECS/era-portraits.md",
+    "files": [
+      "era-pilot/candidates-20261003/assets/portraits/I037_1300.png",
+      "era-pilot/candidates-20261003/assets/portraits/I037_1380.png",
+      "era-pilot/candidates-20261003/assets/portraits/I037_1420.png",
+      "era-pilot/candidates-20261003/assets/portraits/I040_1300.png",
+      "era-pilot/candidates-20261003/assets/portraits/I040_1380.png",
+      "era-pilot/candidates-20261003/assets/portraits/I040_1420.png",
+      "era-pilot/candidates-20261003/assets/portraits/I043_1300.png",
+      "era-pilot/candidates-20261003/assets/portraits/I043_1380.png",
+      "era-pilot/candidates-20261003/assets/portraits/I043_1420.png",
+      "era-pilot/candidates-20261003/assets/portraits/I046_1300.png",
+      "era-pilot/candidates-20261003/assets/portraits/I046_1380.png",
+      "era-pilot/candidates-20261003/assets/portraits/I046_1420.png",
+      "era-pilot/candidates-20261003/assets/portraits/I049_1300.png",
+      "era-pilot/candidates-20261003/assets/portraits/I049_1380.png",
+      "era-pilot/candidates-20261003/assets/portraits/I049_1420.png",
+      "era-pilot/candidates-20261003/assets/portraits/I060_1300.png",
+      "era-pilot/candidates-20261003/assets/portraits/I060_1380.png",
+      "era-pilot/candidates-20261003/assets/portraits/I060_1420.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      4.0,
+      6.0
+    ],
+    "metadata_stripped_bytes": 1677378,
+    "rgba_nominal_bytes": 4718592
+  },
+  "era-signs": {
+    "group": "era-signs",
+    "classification": "나",
+    "render_task": "ERA/LM-R1",
+    "effort_person_hours": "3–5",
+    "count": 8,
+    "evidence": "src/engine/scenarioState.ts:78 stateCalendar; src/render/backyardDecals.ts:69 yardOccupation; assets-inbox/era-pilot/candidates-20261003/records/pilot/signs/manifest.csv",
+    "contract": "4직업×1300/1420 표지8. Wave37 front placement 후 year gate추가. 1400이전1300판,이후1420판 제안값이며 기록의시대키와 맞춘다. 빵/에일/대장/직조만 확실한 직업에. A/B와시대는별축이며 임의반전금지. source manifest 원본geometry/foot 값 보존. 0.6에서 그림표지가 점이면숨김,1.0/1.4에서비율확인.",
+    "spec": "SPECS/era-signs.md",
+    "files": [
+      "era-pilot/candidates-20261003/assets/signs/sign_ale_1300.png",
+      "era-pilot/candidates-20261003/assets/signs/sign_ale_1420.png",
+      "era-pilot/candidates-20261003/assets/signs/sign_bread_1300.png",
+      "era-pilot/candidates-20261003/assets/signs/sign_bread_1420.png",
+      "era-pilot/candidates-20261003/assets/signs/sign_smith_1300.png",
+      "era-pilot/candidates-20261003/assets/signs/sign_smith_1420.png",
+      "era-pilot/candidates-20261003/assets/signs/sign_textile_1300.png",
+      "era-pilot/candidates-20261003/assets/signs/sign_textile_1420.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      3.0,
+      5.0
+    ],
+    "metadata_stripped_bytes": 152677,
+    "rgba_nominal_bytes": 600608
+  },
+  "event-art": {
+    "group": "event-art",
+    "classification": "다",
+    "render_task": "CONTENT/LM-R2",
+    "effort_person_hours": "12–24",
+    "count": 34,
+    "evidence": "docs/design/content-drafts-20261002/v2/events.json; src/ui/eventStory.ts:30 StoryKind; src/ui/storyArt.ts:15 StoryIllustration; src/engine/eventSchedule.ts",
+    "contract": "ck_evt_*는 콘텐츠 초안에만 있고 src/content 런타임 ID에 없음. 승인34개 그림의 ID로 초안 events.json을 조인하되 초안 조건·효과를 런타임으로 간주하지 않는다. 먼저 사건 정의/스케줄/결과/이력 기능을 구현·검증한 뒤 art key 추가. 12개 재작업 사용,059 제외. 원본960×540 contain. 실제 발생→선택→연대기 재열람 캡처가 필요, dev강제 이미지만 성공으로 세지 않는다.",
+    "spec": "SPECS/event-art.md",
+    "files": [
+      "event-art/candidates-20261003/assets/ck_evt_002.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_004.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_005.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_008.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_009.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_010.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_015.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_019.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_024.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_027.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_028.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_029.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_030.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_033.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_035.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_038.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_042.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_046.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_049.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_050.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_053.jpg",
+      "event-art/candidates-20261003/assets/ck_evt_057.jpg",
+      "event-art/rework-20261003/assets/ck_evt_011.jpg",
+      "event-art/rework-20261003/assets/ck_evt_013.jpg",
+      "event-art/rework-20261003/assets/ck_evt_018.jpg",
+      "event-art/rework-20261003/assets/ck_evt_020.jpg",
+      "event-art/rework-20261003/assets/ck_evt_025.jpg",
+      "event-art/rework-20261003/assets/ck_evt_031.jpg",
+      "event-art/rework-20261003/assets/ck_evt_032.jpg",
+      "event-art/rework-20261003/assets/ck_evt_034.jpg",
+      "event-art/rework-20261003/assets/ck_evt_037.jpg",
+      "event-art/rework-20261003/assets/ck_evt_051.jpg",
+      "event-art/rework-20261003/assets/ck_evt_052.jpg",
+      "event-art/rework-20261003/assets/ck_evt_058.jpg"
+    ],
+    "lane": "lord",
+    "hours": [
+      12.0,
+      24.0
+    ],
+    "metadata_stripped_bytes": 5969810,
+    "rgba_nominal_bytes": 70502400
+  },
+  "experiments-region": {
+    "group": "experiments-region",
+    "classification": "다",
+    "render_task": "LM-R2/LM-R3",
+    "effort_person_hours": "5–8",
+    "count": 23,
+    "evidence": "src/engine/estates.ts:96 estatesOf; assets-inbox/experiments/region-map-kit-20261003/records/kit/manifest.json; docs/ASSET_INBOX.md 지역 지도 키트 실패 실험 기록",
+    "contract": "승인23개만: 표지3/거점9/길8/도하3. 실패한 조립 지형을 재도입하지 않는다. region-atlas 슬롯 위 거점/깃발을 추가. road strips는 손그림 바탕에 이미 있는 길을 덮는 일반 roads가 아니라 새로 생긴 길 오버레이. 엔진의 지역 도로 생성 데이터가 현재 없으므로 해당11개는 기능 부재로 분류: 도시 tiles roads를 지도 pixel로 억지 투영 금지. 실제 연결 edge 데이터 정의 후 베지어/방향별 piece를 배치하고 bridge/ferry/ford는 해당 crossing 상태가 있을 때만.",
+    "spec": "SPECS/experiments-region.md",
+    "files": [
+      "experiments/region-map-kit-20261003/assets/markers/boundary-brush.png",
+      "experiments/region-map-kit-20261003/assets/markers/flag-hostile.png",
+      "experiments/region-map-kit-20261003/assets/markers/name-ribbon.png",
+      "experiments/region-map-kit-20261003/assets/paths/crossing-bridge.png",
+      "experiments/region-map-kit-20261003/assets/paths/crossing-ferry.png",
+      "experiments/region-map-kit-20261003/assets/paths/crossing-ford.png",
+      "experiments/region-map-kit-20261003/assets/paths/road-major-bend.png",
+      "experiments/region-map-kit-20261003/assets/paths/road-major-crossing.png",
+      "experiments/region-map-kit-20261003/assets/paths/road-major-fork.png",
+      "experiments/region-map-kit-20261003/assets/paths/road-major-straight.png",
+      "experiments/region-map-kit-20261003/assets/paths/road-minor-bend.png",
+      "experiments/region-map-kit-20261003/assets/paths/road-minor-crossing.png",
+      "experiments/region-map-kit-20261003/assets/paths/road-minor-fork.png",
+      "experiments/region-map-kit-20261003/assets/paths/road-minor-straight.png",
+      "experiments/region-map-kit-20261003/assets/sites/castle.png",
+      "experiments/region-map-kit-20261003/assets/sites/church.png",
+      "experiments/region-map-kit-20261003/assets/sites/episcopal-manor.png",
+      "experiments/region-map-kit-20261003/assets/sites/manor-large.png",
+      "experiments/region-map-kit-20261003/assets/sites/manor-small.png",
+      "experiments/region-map-kit-20261003/assets/sites/market-large.png",
+      "experiments/region-map-kit-20261003/assets/sites/moated-manor.png",
+      "experiments/region-map-kit-20261003/assets/sites/post-mill.png",
+      "experiments/region-map-kit-20261003/assets/sites/village.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      5.0,
+      8.0
+    ],
+    "metadata_stripped_bytes": 313630,
+    "rgba_nominal_bytes": 3355648
+  },
+  "lord-components-ui": {
+    "group": "lord-components-ui",
+    "classification": "나",
+    "render_task": "LM-R1/LM-R2",
+    "effort_person_hours": "4–7",
+    "count": 24,
+    "evidence": "src/ui/persons/personStates.ts:71 personStatesReader; src/ui/persons/personStates.ts:103 derivedPersonStates; src/ui/lordshipModel.ts:56 lordshipView; src/engine/persons.types.ts:57 Person.occupation",
+    "contract": "trait 24/48과 office40/health32/alert32를 인물·알림 view adapter에서 매핑. trait 성격 분류와 외모 PersonTraits를 혼동하지 않는다. 현재 엔진에 없는 trait enum은 추론 표시 금지, 매핑 보류. 건강 상태는 실제 personStatesReader 결과; deceased를 good으로 fallback하지 않는다. 아이콘은 24~48 CSS px, 44px hit target 별도. 작은 아이콘의 accessible text 유지.",
+    "spec": "SPECS/lord-components-ui.md",
+    "files": [
+      "lord-components/candidates-20261002/assets/alert_deadline_32x32.png",
+      "lord-components/candidates-20261002/assets/alert_news_32x32.png",
+      "lord-components/candidates-20261002/assets/alert_rights_32x32.png",
+      "lord-components/candidates-20261002/assets/alert_urgent_32x32.png",
+      "lord-components/candidates-20261002/assets/health_good_32x32.png",
+      "lord-components/candidates-20261002/assets/health_ill_32x32.png",
+      "lord-components/candidates-20261002/assets/health_injured_32x32.png",
+      "lord-components/candidates-20261002/assets/office_butler_40x40.png",
+      "lord-components/candidates-20261002/assets/office_captain_40x40.png",
+      "lord-components/candidates-20261002/assets/office_reeve_40x40.png",
+      "lord-components/candidates-20261002/assets/office_scribe_40x40.png",
+      "lord-components/candidates-20261002/assets/office_steward_40x40.png",
+      "lord-components/candidates-20261002/assets/trait_ambitious_24x24.png",
+      "lord-components/candidates-20261002/assets/trait_ambitious_48x48.png",
+      "lord-components/candidates-20261002/assets/trait_frugal_24x24.png",
+      "lord-components/candidates-20261002/assets/trait_frugal_48x48.png",
+      "lord-components/candidates-20261002/assets/trait_honorable_24x24.png",
+      "lord-components/candidates-20261002/assets/trait_honorable_48x48.png",
+      "lord-components/candidates-20261002/assets/trait_merchant_friendly_24x24.png",
+      "lord-components/candidates-20261002/assets/trait_merchant_friendly_48x48.png",
+      "lord-components/candidates-20261002/assets/trait_peasant_friendly_24x24.png",
+      "lord-components/candidates-20261002/assets/trait_peasant_friendly_48x48.png",
+      "lord-components/candidates-20261002/assets/trait_prudent_24x24.png",
+      "lord-components/candidates-20261002/assets/trait_prudent_48x48.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      4.0,
+      7.0
+    ],
+    "metadata_stripped_bytes": 51418,
+    "rgba_nominal_bytes": 129792
+  },
+  "lord-components-region": {
+    "group": "lord-components-region",
+    "classification": "다",
+    "render_task": "LM-R2/LM-R3",
+    "effort_person_hours": "8–14",
+    "count": 16,
+    "evidence": "src/engine/estates.ts:96 estatesOf; src/engine/stewardship.ts:473 oversightViews; docs/ops/DISPATCH_LEDGER.md:77; src/ui/lordshipModel.ts:56",
+    "contract": "지역 지도와 좌측 영주 메뉴 새 화면. 지도 그림1600×1000 하나 위에 map_* 거점 하단y88, 깃발 pivot(14,90)로 배치. flag 직접/위임/이웃은 oversight/possessor로 선택하고 문장은 별도 레이어. nav 버튼은 실제 열리는 화면이 있을 때만 활성화. atlas20가 후속 다섯땅 배경이며 이 단일 지도는 기존 승인 대안; 두 바탕을 동시에 겹치지 않는다. 화면 fit scale에서 라벨12px, map zoom과 도시 zoom을 분리. 세계가 보이는 패널 방향 유지.",
+    "spec": "SPECS/lord-components-region.md",
+    "files": [
+      "lord-components/candidates-20261002/assets/flag_delegated_64x96.png",
+      "lord-components/candidates-20261002/assets/flag_direct_64x96.png",
+      "lord-components/candidates-20261002/assets/flag_neighbor_64x96.png",
+      "lord-components/candidates-20261002/assets/map_abbey_96x96.png",
+      "lord-components/candidates-20261002/assets/map_manor_96x96.png",
+      "lord-components/candidates-20261002/assets/map_market_96x96.png",
+      "lord-components/candidates-20261002/assets/map_mill_96x96.png",
+      "lord-components/candidates-20261002/assets/map_region_1600x1000.png",
+      "lord-components/candidates-20261002/assets/nav_character_40x40.png",
+      "lord-components/candidates-20261002/assets/nav_council_40x40.png",
+      "lord-components/candidates-20261002/assets/nav_dynasty_40x40.png",
+      "lord-components/candidates-20261002/assets/nav_estates_40x40.png",
+      "lord-components/candidates-20261002/assets/nav_marriage_40x40.png",
+      "lord-components/candidates-20261002/assets/nav_military_40x40.png",
+      "lord-components/candidates-20261002/assets/nav_petitions_40x40.png",
+      "lord-components/candidates-20261002/assets/nav_region_40x40.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      8.0,
+      14.0
+    ],
+    "metadata_stripped_bytes": 3493377,
+    "rgba_nominal_bytes": 6672384
+  },
+  "people-pilot1": {
+    "group": "people-pilot1",
+    "classification": "나",
+    "render_task": "PORTRAIT",
+    "effort_person_hours": "3–5",
+    "count": 18,
+    "evidence": "assets-inbox/people-pilot1/candidates-v1/records/WORK_ORDER.md:16; src/content/portraitPool.ts:6 PortraitEntry; src/engine/portraits.ts:105 choosePortraitIdentity; src/ui/portraitArt.ts:37 portraitUrl",
+    "contract": "6인물18PNG는 게임용원본6+96/128파생12. 지금 PORTRAIT_POOL/PORTRAIT_IMAGES에 pt_pilot 키없음. 같은P01 기존풀과 충돌 피하려 pilot1_P1…P6 identity키를 사용. 성별·classBand·band·occupation은 WORK_ORDER 표를 근거로 content import행추가. renderer 256/96만 소비하므로128파생은대체해상도보관으로명시하고unused파일을active라쓰지않는다. 원본을256으로buildderivative한뒤96주어진파일과시각확인. 같은사람노화자료없으므로현재portraitFor fallback정책유지,아이에게성인배정금지.",
+    "spec": "SPECS/people-pilot1.md",
+    "files": [
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P1-v1.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P1-v1_128.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P1-v1_96.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P2-v1.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P2-v1_128.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P2-v1_96.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P3-v1.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P3-v1_128.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P3-v1_96.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P4-v1.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P4-v1_128.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P4-v1_96.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P5-v1.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P5-v1_128.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P5-v1_96.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P6-v1.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P6-v1_128.png",
+      "people-pilot1/candidates-v1/assets/portraits/pt_pilot_P6-v1_96.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      3.0,
+      5.0
+    ],
+    "metadata_stripped_bytes": 665932,
+    "rgba_nominal_bytes": 2187264
+  },
+  "region-atlas": {
+    "group": "region-atlas",
+    "classification": "다",
+    "render_task": "LM-R2/LM-R3",
+    "effort_person_hours": "10–16",
+    "count": 20,
+    "evidence": "src/engine/estates.ts:69 neighbourEstates; src/engine/estates.ts:96 estatesOf; src/engine/scenarioState.ts:17 scenarioOf; assets-inbox/region-atlas/candidates-20261003/assets/maps/open_field-01.json:1",
+    "contract": "다섯 archetype×4 배경. scenario archetype를 open_field/coastal_port/chalk_downs/forest_edge/fen_drainage에 명시 매핑하고 seed 해시로01~04를 최초 고정. 각 JPG와 동명 JSON을 함께 복사한다. 슬롯 좌표는 등각 tile이 아닌1600×1000 좌상단 pixel, bottom-center anchor. estateId 정렬+seed로 allowedKinds와 clearance 조건에 맞게 고정 매칭, 부족하면 보고하고 수면/지도 여백에 억지 배치 금지. 18이웃 모두 중복 없이 보이고 선택·저장재개 뒤 같은 위치. JPG는 계절 중립 지도: 여름겨울에서 위치 고정. source20 JPG 외20 JSON 필수 부속.",
+    "spec": "SPECS/region-atlas.md",
+    "files": [
+      "region-atlas/candidates-20261003/assets/maps/chalk_downs-01.jpg",
+      "region-atlas/candidates-20261003/assets/maps/chalk_downs-02.jpg",
+      "region-atlas/candidates-20261003/assets/maps/chalk_downs-03.jpg",
+      "region-atlas/candidates-20261003/assets/maps/chalk_downs-04.jpg",
+      "region-atlas/candidates-20261003/assets/maps/coastal_port-01.jpg",
+      "region-atlas/candidates-20261003/assets/maps/coastal_port-02.jpg",
+      "region-atlas/candidates-20261003/assets/maps/coastal_port-03.jpg",
+      "region-atlas/candidates-20261003/assets/maps/coastal_port-04.jpg",
+      "region-atlas/candidates-20261003/assets/maps/fen_drainage-01.jpg",
+      "region-atlas/candidates-20261003/assets/maps/fen_drainage-02.jpg",
+      "region-atlas/candidates-20261003/assets/maps/fen_drainage-03.jpg",
+      "region-atlas/candidates-20261003/assets/maps/fen_drainage-04.jpg",
+      "region-atlas/candidates-20261003/assets/maps/forest_edge-01.jpg",
+      "region-atlas/candidates-20261003/assets/maps/forest_edge-02.jpg",
+      "region-atlas/candidates-20261003/assets/maps/forest_edge-03.jpg",
+      "region-atlas/candidates-20261003/assets/maps/forest_edge-04.jpg",
+      "region-atlas/candidates-20261003/assets/maps/open_field-01.jpg",
+      "region-atlas/candidates-20261003/assets/maps/open_field-02.jpg",
+      "region-atlas/candidates-20261003/assets/maps/open_field-03.jpg",
+      "region-atlas/candidates-20261003/assets/maps/open_field-04.jpg"
+    ],
+    "lane": "lord",
+    "hours": [
+      10.0,
+      16.0
+    ],
+    "metadata_stripped_bytes": 18792348,
+    "rgba_nominal_bytes": 128000000
+  },
+  "wave35-estates": {
+    "group": "wave35-estates",
+    "classification": "다",
+    "render_task": "LM-R2",
+    "effort_person_hours": "6–10",
+    "count": 9,
+    "evidence": "src/engine/estates.ts:96 estatesOf; src/engine/estates.ts:305 estate portfolio builder; src/ui/lordshipModel.ts:56 lordshipView only home rights/household; docs/ops/DISPATCH_LEDGER.md:77",
+    "contract": "영지 포트폴리오 카드 480×270. estate 유형은 Estate와 권리 조각으로 명시적으로 매핑하고 wealth/declining을 초상 계급에서 추측하지 않는다. integrated_overlay는 base와 같은 원점/같은 크기로 겹친다. 지도 썸네일과 실제 도시 타일 그림을 혼동하지 않는다. 영지 선택→권리·점유자·수입이 같은 estateId를 가리키게 한다.",
+    "spec": "SPECS/wave35-estates.md",
+    "files": [
+      "wave35/candidates-20260930/assets/A_estates/estate_declining.png",
+      "wave35/candidates-20260930/assets/A_estates/estate_ecclesiastical.png",
+      "wave35/candidates-20260930/assets/A_estates/estate_hunting.png",
+      "wave35/candidates-20260930/assets/A_estates/estate_integrated_overlay.png",
+      "wave35/candidates-20260930/assets/A_estates/estate_moated.png",
+      "wave35/candidates-20260930/assets/A_estates/estate_ordinary.png",
+      "wave35/candidates-20260930/assets/A_estates/estate_poor.png",
+      "wave35/candidates-20260930/assets/A_estates/estate_riverside_mill.png",
+      "wave35/candidates-20260930/assets/A_estates/estate_wealthy.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      6.0,
+      10.0
+    ],
+    "metadata_stripped_bytes": 3257606,
+    "rgba_nominal_bytes": 4665600
+  },
+  "wave35-negotiation": {
+    "group": "wave35-negotiation",
+    "classification": "다",
+    "render_task": "LM-R2",
+    "effort_person_hours": "8–14",
+    "count": 11,
+    "evidence": "src/engine/negotiation.ts:88 evaluateOffer; src/engine/negotiation.ts:183 termChanges; src/engine/negotiation.ts:203 counterOffer; src/engine/marriage.ts:137 proposeMarriage; src/engine/marriage.ts:154 answerCounter",
+    "contract": "협상 화면 신규. acceptance_scale은 evaluateOffer 결과를 나타내고 장식 픽셀로 확률을 계산하지 않는다. clause_row/changed/rejected는 termChanges/반대 제안 상태로 고른다. treaty_frame은 records/nine-slice.json에 따라 가장자리만 확장, treaty_divider 16px 중앙선 별도. seal_empty/stamped/broken은 서명/계약 상태, hover와 혼동 금지.",
+    "spec": "SPECS/wave35-negotiation.md",
+    "files": [
+      "wave35/candidates-20260930/assets/B_negotiation/acceptance_scale.png",
+      "wave35/candidates-20260930/assets/B_negotiation/clause_row.png",
+      "wave35/candidates-20260930/assets/B_negotiation/clause_row_changed.png",
+      "wave35/candidates-20260930/assets/B_negotiation/clause_row_rejected.png",
+      "wave35/candidates-20260930/assets/B_negotiation/reason_chip_minus.png",
+      "wave35/candidates-20260930/assets/B_negotiation/reason_chip_plus.png",
+      "wave35/candidates-20260930/assets/B_negotiation/seal_broken.png",
+      "wave35/candidates-20260930/assets/B_negotiation/seal_empty.png",
+      "wave35/candidates-20260930/assets/B_negotiation/seal_stamped.png",
+      "wave35/candidates-20260930/assets/B_negotiation/treaty_divider.png",
+      "wave35/candidates-20260930/assets/B_negotiation/treaty_frame.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      8.0,
+      14.0
+    ],
+    "metadata_stripped_bytes": 1051506,
+    "rgba_nominal_bytes": 2650112
+  },
+  "wave35-promises": {
+    "group": "wave35-promises",
+    "classification": "다",
+    "render_task": "LM-R2",
+    "effort_person_hours": "6–10",
+    "count": 9,
+    "evidence": "src/engine/negotiation.ts:29 diplomacyOf; src/engine/marriage.ts:211 keepPromise; src/engine/diplomacy.types.ts:118 DiplomacyState",
+    "contract": "약속 장부 신규. promises의 id/status/deadline을 카드와 날짜에 그대로 연결한다. ledger_book 배경과 ledger_spine 24px를 분리해 접힘을 늘리지 않는다. promise_active/due/kept/broken은 상호 배타 상태. deadline_marker는 마감이 실제 있는 약속에만 표시. 미이행을 클릭 가능한 완료처럼 보이지 않게 한다.",
+    "spec": "SPECS/wave35-promises.md",
+    "files": [
+      "wave35/candidates-20260930/assets/C_promises/deadline_marker.png",
+      "wave35/candidates-20260930/assets/C_promises/debt_note.png",
+      "wave35/candidates-20260930/assets/C_promises/ledger_book.png",
+      "wave35/candidates-20260930/assets/C_promises/ledger_spine.png",
+      "wave35/candidates-20260930/assets/C_promises/promise_active.png",
+      "wave35/candidates-20260930/assets/C_promises/promise_broken.png",
+      "wave35/candidates-20260930/assets/C_promises/promise_due.png",
+      "wave35/candidates-20260930/assets/C_promises/promise_kept.png",
+      "wave35/candidates-20260930/assets/C_promises/witness_seal.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      6.0,
+      10.0
+    ],
+    "metadata_stripped_bytes": 807298,
+    "rgba_nominal_bytes": 1757184
+  },
+  "wave35-operations": {
+    "group": "wave35-operations",
+    "classification": "다",
+    "render_task": "LM-R2",
+    "effort_person_hours": "8–14",
+    "count": 17,
+    "evidence": "src/engine/stewardship.ts:60 attention; src/engine/stewardship.ts:473 oversightViews; src/engine/stewardship.ts:468 pendingAudits; src/engine/estateSuits.ts:108 suitHearing; src/engine/townAgency.ts:64 setEstatePolicy",
+    "contract": "운영·소송 트랙 화면 신규. office 32/64는 동일 직책 아이콘 DPR/크기에 따라 선택, 동시에 중복 생성하지 않는다. attention.capacity/load, oversight mode, audit record와 litigation stage를 보여준다. 정책 4개는 EstatePolicy growth/revenue/stability/defence 키와 직접 대응. subsidy_notice는 실제 ProjectSubsidy 존재 시. 소송 결과를 진행도 장식만으로 예측하지 않는다.",
+    "spec": "SPECS/wave35-operations.md",
+    "files": [
+      "wave35/candidates-20260930/assets/D_operations/annual_audit.png",
+      "wave35/candidates-20260930/assets/D_operations/litigation_track.png",
+      "wave35/candidates-20260930/assets/D_operations/office_bailiff_32.png",
+      "wave35/candidates-20260930/assets/D_operations/office_bailiff_64.png",
+      "wave35/candidates-20260930/assets/D_operations/office_clerk_32.png",
+      "wave35/candidates-20260930/assets/D_operations/office_clerk_64.png",
+      "wave35/candidates-20260930/assets/D_operations/office_receiver_32.png",
+      "wave35/candidates-20260930/assets/D_operations/office_receiver_64.png",
+      "wave35/candidates-20260930/assets/D_operations/office_reeve_32.png",
+      "wave35/candidates-20260930/assets/D_operations/office_reeve_64.png",
+      "wave35/candidates-20260930/assets/D_operations/office_steward_32.png",
+      "wave35/candidates-20260930/assets/D_operations/office_steward_64.png",
+      "wave35/candidates-20260930/assets/D_operations/policy_defence.png",
+      "wave35/candidates-20260930/assets/D_operations/policy_growth.png",
+      "wave35/candidates-20260930/assets/D_operations/policy_revenue.png",
+      "wave35/candidates-20260930/assets/D_operations/policy_stability.png",
+      "wave35/candidates-20260930/assets/D_operations/subsidy_notice.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      8.0,
+      14.0
+    ],
+    "metadata_stripped_bytes": 1703940,
+    "rgba_nominal_bytes": 2683904
+  },
+  "wave35-receipts": {
+    "group": "wave35-receipts",
+    "classification": "나",
+    "render_task": "LM-R1",
+    "effort_person_hours": "3–5",
+    "count": 4,
+    "evidence": "src/engine/townAgency.ts:570 whyHere; src/engine/townAgency.types.ts:44 ProjectReceipt; src/engine/townAgency.types.ts:74 ReceiptSites",
+    "contract": "선택한 건물 id→whyHere(state,id)로 영수증. receipt_frame 안에 reasons, sites.runnerUp, chance, decisionIds를 연결. reason_bar_cap_plus/minus는 부호별 cap, 수치를 배경 길이로만 전달하지 않고 12px 글자로 병기. related_decision_ribbon 클릭은 같은 decisionIds의 장부 기록. 영수증 null인 구 저장은 빈 프레임 대신 설명.",
+    "spec": "SPECS/wave35-receipts.md",
+    "files": [
+      "wave35/candidates-20260930/assets/E_receipts/reason_bar_cap_minus.png",
+      "wave35/candidates-20260930/assets/E_receipts/reason_bar_cap_plus.png",
+      "wave35/candidates-20260930/assets/E_receipts/receipt_frame.png",
+      "wave35/candidates-20260930/assets/E_receipts/related_decision_ribbon.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      3.0,
+      5.0
+    ],
+    "metadata_stripped_bytes": 373360,
+    "rgba_nominal_bytes": 870400
+  },
+  "wave37": {
+    "group": "wave37",
+    "classification": "나",
+    "render_task": "LM-R1",
+    "effort_person_hours": "6–10",
+    "count": 32,
+    "evidence": "src/render/backyardDecals.ts:69 yardOccupation; src/render/backyardDecals.ts:94 yardPictureKind; src/render/backyardDecals.ts:106 yardVariant; src/render/backyardDecals.ts:225 backyardDecals; src/render/houseFrontage.ts:18 houseFrontage; src/content/backyardConfig.ts",
+    "contract": "새 front-prop 연결. backyard의 뒤칸 배치·mirror를 그대로 재사용하지 않는다. houseFrontage의 도로 접한 면에서 문 진입로·통행 폭을 비운 지면에 1개, 건물·수면 충돌 시 생략. trade→craft/Person.occupation 명시 대응; 형편은 hungry/strained/prosperous/newcomer 근거를 yardPictureKind와 같은 입력으로 읽는다. 20직업 LM-E6a 정의는 이 HEAD에 검색되지 않아 존재를 가정하지 않는다. 없는 직업은 억지 치환 대신 미표시. householdId+kind hash A/B 고정. foot CSV 좌표로 바닥을 맞추고 좌우 반전 금지. 0.6에서는 작은 형편 물건 생략, 직업 1개만 선택적으로 유지; 1.0/1.4에서 실제 발 위치 검증. 겨울 전용 그림 없음: 여름그림에 임의 눈 덧칠 금지.",
+    "spec": "SPECS/wave37.md",
+    "files": [
+      "wave37/candidates-20260930/assets/condition_newcomer_cart_a.png",
+      "wave37/candidates-20260930/assets/condition_newcomer_cart_b.png",
+      "wave37/candidates-20260930/assets/condition_ordinary_bench.png",
+      "wave37/candidates-20260930/assets/condition_ordinary_water.png",
+      "wave37/candidates-20260930/assets/condition_prosperous_pots.png",
+      "wave37/candidates-20260930/assets/condition_strained_barrel.png",
+      "wave37/candidates-20260930/assets/condition_strained_firewood.png",
+      "wave37/candidates-20260930/assets/trade_ale_a.png",
+      "wave37/candidates-20260930/assets/trade_ale_b.png",
+      "wave37/candidates-20260930/assets/trade_baker_a.png",
+      "wave37/candidates-20260930/assets/trade_baker_b.png",
+      "wave37/candidates-20260930/assets/trade_carpenter_b.png",
+      "wave37/candidates-20260930/assets/trade_dyer_a.png",
+      "wave37/candidates-20260930/assets/trade_dyer_b.png",
+      "wave37/candidates-20260930/assets/trade_fisher_a.png",
+      "wave37/candidates-20260930/assets/trade_fisher_b.png",
+      "wave37/candidates-20260930/assets/trade_inn_a.png",
+      "wave37/candidates-20260930/assets/trade_inn_b.png",
+      "wave37/candidates-20260930/assets/trade_merchant_a.png",
+      "wave37/candidates-20260930/assets/trade_merchant_b.png",
+      "wave37/candidates-20260930/assets/trade_shepherd_a.png",
+      "wave37/candidates-20260930/assets/trade_shepherd_b.png",
+      "wave37/candidates-20260930/assets/trade_smith_a.png",
+      "wave37/candidates-20260930/assets/trade_smith_b.png",
+      "wave37/candidates-20260930/assets/trade_tanner_a.png",
+      "wave37/candidates-20260930/assets/trade_tanner_b.png",
+      "wave37/candidates-20260930/assets/trade_weaver_a.png",
+      "wave37/candidates-20260930/assets/trade_weaver_b.png",
+      "wave37/rework-v2/assets/condition_prosperous_bench.png",
+      "wave37/rework-v2/assets/trade_carpenter_a.png",
+      "wave37/rework-v2/assets/trade_miller_a.png",
+      "wave37/rework-v2/assets/trade_miller_b.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      6.0,
+      10.0
+    ],
+    "metadata_stripped_bytes": 456038,
+    "rgba_nominal_bytes": 1327104
+  },
+  "wave38": {
+    "group": "wave38",
+    "classification": "나",
+    "render_task": "LM-R1",
+    "effort_person_hours": "5–8",
+    "count": 40,
+    "evidence": "src/ui/uiArtManifest.generated.ts; src/styles/uiConsole.css:48; src/ui/hud/StoryModals.tsx:115; docs/ops/DISPATCH_LEDGER.md:74",
+    "contract": "기존 HTML 버튼/입력 상태에 9-slice 스킨 연결. records/assets.csv의 slice LTRB/text_safe를 사용, 128×40 버튼은 touch hit target 44px 확보. disabled 우선, pointer hover/active 및 keyboard focus를 별도 유지. 재작업 primary 4개/tab_hover 채택. primary 글자 #f1e4c6 권장. 카메라 줌과 무관한 CSS pixel; 1280×800/태블릿/DPR2에서 text_safe 벗어남과 포커스 확인. scrollbar/select는 native 플랫폼 기능을 가리는 배경만 붙이지 말고 현재 DOM 동작 유지.",
+    "spec": "SPECS/wave38.md",
+    "files": [
+      "wave38/candidates-20260930/assets/button_danger_disabled.png",
+      "wave38/candidates-20260930/assets/button_danger_hover.png",
+      "wave38/candidates-20260930/assets/button_danger_normal.png",
+      "wave38/candidates-20260930/assets/button_danger_pressed.png",
+      "wave38/candidates-20260930/assets/button_icon_disabled.png",
+      "wave38/candidates-20260930/assets/button_icon_hover.png",
+      "wave38/candidates-20260930/assets/button_icon_normal.png",
+      "wave38/candidates-20260930/assets/button_icon_pressed.png",
+      "wave38/candidates-20260930/assets/button_secondary_disabled.png",
+      "wave38/candidates-20260930/assets/button_secondary_hover.png",
+      "wave38/candidates-20260930/assets/button_secondary_normal.png",
+      "wave38/candidates-20260930/assets/button_secondary_pressed.png",
+      "wave38/candidates-20260930/assets/checkbox_checked.png",
+      "wave38/candidates-20260930/assets/checkbox_disabled.png",
+      "wave38/candidates-20260930/assets/checkbox_empty.png",
+      "wave38/candidates-20260930/assets/chip_normal.png",
+      "wave38/candidates-20260930/assets/chip_selected.png",
+      "wave38/candidates-20260930/assets/close_hover.png",
+      "wave38/candidates-20260930/assets/close_normal.png",
+      "wave38/candidates-20260930/assets/close_pressed.png",
+      "wave38/candidates-20260930/assets/input_focus.png",
+      "wave38/candidates-20260930/assets/input_normal.png",
+      "wave38/candidates-20260930/assets/radio_empty.png",
+      "wave38/candidates-20260930/assets/radio_selected.png",
+      "wave38/candidates-20260930/assets/scrollbar_thumb.png",
+      "wave38/candidates-20260930/assets/scrollbar_track.png",
+      "wave38/candidates-20260930/assets/select_closed.png",
+      "wave38/candidates-20260930/assets/select_open_list.png",
+      "wave38/candidates-20260930/assets/select_row_hover.png",
+      "wave38/candidates-20260930/assets/slider_thumb.png",
+      "wave38/candidates-20260930/assets/slider_track.png",
+      "wave38/candidates-20260930/assets/tab_selected.png",
+      "wave38/candidates-20260930/assets/tab_unselected.png",
+      "wave38/candidates-20260930/assets/toggle_off.png",
+      "wave38/candidates-20260930/assets/toggle_on.png",
+      "wave38/rework-20261001/assets/button_primary_disabled.png",
+      "wave38/rework-20261001/assets/button_primary_hover.png",
+      "wave38/rework-20261001/assets/button_primary_normal.png",
+      "wave38/rework-20261001/assets/button_primary_pressed.png",
+      "wave38/rework-20261001/assets/tab_hover.png"
+    ],
+    "lane": "lord",
+    "hours": [
+      5.0,
+      8.0
+    ],
+    "metadata_stripped_bytes": 192459,
+    "rgba_nominal_bytes": 588672
+  },
+  "wave40": {
+    "group": "wave40",
+    "classification": "다",
+    "render_task": "LM-R2",
+    "effort_person_hours": "6–10",
+    "count": 14,
+    "evidence": "src/engine/marriage.ts:137 proposeMarriage; src/engine/marriage.ts:374 answerWillChange; src/engine/marriage.ts:401 marriageDecisionDue; src/engine/estateSuits.ts:72 fileSuit; src/engine/estateSuits.ts:142 enforcePossession; src/ui/storyArt.ts:15 StoryIllustration; src/ui/eventStory.ts:30 StoryKind",
+    "contract": "960×540 사건 카드의 새 영주 사건 라우팅. 혼인 01~08은 제안/봉인/도착/출생/병상/유언/상속의 실제 상태 전이와 history type로 연결. 09~12는 소송 제기·증거·점유거부·점유인도의 다른 상태. 13/14는 lordship의 후견 시작/종료. 단순 tick마다 반복해서 카드를 띄우지 않고 history record id로 dedupe. StoryIllustration union 및 storyArtStyle에 공급자 추가, preload도 소비자와 같은 집합으로. 사건이 없는 화면에 장식 랜덤 사용 금지.",
+    "spec": "SPECS/wave40.md",
+    "files": [
+      "wave40/candidates-20261001/assets/01_marriage_negotiation.jpg",
+      "wave40/candidates-20261001/assets/02_marriage_sealing.jpg",
+      "wave40/candidates-20261001/assets/03_bride_arrival.jpg",
+      "wave40/candidates-20261001/assets/04_first_child.jpg",
+      "wave40/candidates-20261001/assets/05_brother_in_law_born.jpg",
+      "wave40/candidates-20261001/assets/06_old_lord_sickbed.jpg",
+      "wave40/candidates-20261001/assets/07_attempted_will_change.jpg",
+      "wave40/candidates-20261001/assets/08_inheritance_fealty.jpg",
+      "wave40/candidates-20261001/assets/09_lawsuit_filed.jpg",
+      "wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+      "wave40/candidates-20261001/assets/11_possession_refused.jpg",
+      "wave40/candidates-20261001/assets/12_possession_taken.jpg",
+      "wave40/candidates-20261001/assets/13_child_lord_guardian.jpg",
+      "wave40/candidates-20261001/assets/14_end_of_wardship.jpg"
+    ],
+    "lane": "lord",
+    "hours": [
+      6.0,
+      10.0
+    ],
+    "metadata_stripped_bytes": 2947648,
+    "rgba_nominal_bytes": 29030400
+  },
+  "wave44": {
+    "group": "wave44",
+    "classification": "다",
+    "render_task": "LM-R1",
+    "effort_person_hours": "5–9",
+    "count": 13,
+    "evidence": "src/engine/stewardship.types.ts:42 HomePetitionKind; src/engine/stewardship.ts:394 lordEstatePetitions; src/engine/stewardship.ts:399 answerEstatePetition; src/ui/petitionPresentation.ts:39 PetitionArt; src/ui/petitionPresentation.ts:336 petitionPresentation; src/ui/hud/StoryModals.tsx:72 PetitionArt",
+    "contract": "중요: 기존 정치 청원 PetitionRecord.defId와 EstatePetition.kind는 다른 API. 홈 청원 전용 view adapter를 만들고 lordEstatePetitions/state→answerEstatePetition 명령을 연결한다. 01 boundary_dispute,02 mill_suit,03 heriot,04 merchet,05 ale_fines,06 road_bridge,07 stall_dispute,08 wardship,09 common_pasture,10 newcomer 정확 대응. 11 court_baron은 현재 kind 없음. 12 forest_trespass와 현재 pannage(돼지 방목권)는 동일 사건이 아니므로 자동 치환 금지. chancel_repair에는 대응 그림 없음. 13 by_precedent는 decidedBy=steward && precedent=true 기록에만. 이 세 불일치를 렌더/콘텐츠 확인 항목으로 남기고 10개 정확 대응부터 설치. 원본 비율16:9, object-fit contain, 글자 없는 그림 위에 청원 제목·선택지는 DOM. 겨울에도 사건 삽화 계절로 현재 게임 계절을 변경하지 않는다.",
+    "spec": "SPECS/wave44.md",
+    "files": [
+      "wave44/candidates-20261002/assets/01_boundary_dispute.jpg",
+      "wave44/candidates-20261002/assets/02_suit_of_mill.jpg",
+      "wave44/candidates-20261002/assets/03_heriot.jpg",
+      "wave44/candidates-20261002/assets/04_merchet.jpg",
+      "wave44/candidates-20261002/assets/05_ale_assize.jpg",
+      "wave44/candidates-20261002/assets/06_bridge_repair.jpg",
+      "wave44/candidates-20261002/assets/07_market_stall_dispute.jpg",
+      "wave44/candidates-20261002/assets/08_minor_wardship.jpg",
+      "wave44/candidates-20261002/assets/09_common_pasture.jpg",
+      "wave44/candidates-20261002/assets/10_migrant_settlement.jpg",
+      "wave44/candidates-20261002/assets/11_court_baron.jpg",
+      "wave44/candidates-20261002/assets/12_forest_trespass.jpg",
+      "wave44/candidates-20261002/assets/13_by_precedent.jpg"
+    ],
+    "lane": "lord",
+    "hours": [
+      5.0,
+      9.0
+    ],
+    "metadata_stripped_bytes": 2818740,
+    "rgba_nominal_bytes": 26956800
+  },
+  "legacy-reconcile": {
+    "group": "legacy-reconcile",
+    "classification": "장부정리",
+    "count": 59,
+    "render_task": "INSTALL-7 / UI-4",
+    "hours": [
+      0.5,
+      1
+    ],
+    "source": "docs/provenance/assets.csv sourceSha256/sourcePath → runtimePath; src/render/wave7ArtManifest.generated.ts; src/render/wave9ArtManifest.generated.ts",
+    "spec": "INSTALL_LISTS/legacy-reconcile.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 480721,
+    "rgba_nominal_bytes": 1782912
+  },
+  "wave3-pasture": {
+    "group": "wave3-pasture",
+    "classification": "나",
+    "count": 3,
+    "render_task": "CLOTH-UI / LM-R3",
+    "hours": [
+      4,
+      8
+    ],
+    "source": "src/render/wave3ClothArt.ts:18 PIVOTS; src/render/zoneLayer.ts:95 buildZoneLayer; src/content/buildingConfig.ts:25 pastoral_farm",
+    "spec": "SPECS/wave3-pasture.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 179227,
+    "rgba_nominal_bytes": 491520
+  },
+  "wave3-tools": {
+    "group": "wave3-tools",
+    "classification": "나",
+    "count": 16,
+    "render_task": "CLOTH-UI / LM-R3",
+    "hours": [
+      3,
+      6
+    ],
+    "source": "src/render/walkerComposer.ts:188 walkerAppearance; src/render/walkerLook.ts:156 walkerHeldProp; src/render/wave3ClothArt.ts:18 PIVOTS",
+    "spec": "SPECS/wave3-tools.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 8828,
+    "rgba_nominal_bytes": 65536
+  },
+  "wave3-cloth-hall": {
+    "group": "wave3-cloth-hall",
+    "classification": "다",
+    "count": 1,
+    "render_task": "향후 직물 시설",
+    "hours": [
+      12,
+      24
+    ],
+    "source": "src/content/buildingConfig.ts:6 BuildingKind; src/content/buildingCatalog.ts:74 facilityArt; src/render/historicalFacilityAssets.ts:101 historicalFacilityAssetId",
+    "spec": "SPECS/wave3-cloth-hall.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 48993,
+    "rgba_nominal_bytes": 128000
+  },
+  "wave12-manor": {
+    "group": "wave12-manor",
+    "classification": "나",
+    "count": 4,
+    "render_task": "LM-R3 / FIX-11",
+    "hours": [
+      5,
+      9
+    ],
+    "source": "src/content/buildingConfig.ts:30 manor_house; src/content/buildingCatalog.ts:141 manor_house; src/render/historicalFacilityAssets.ts:130 historicalFacilitySpriteRect; src/render/manifestArt.ts:11 manifestArt",
+    "spec": "SPECS/wave12-manor.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 431872,
+    "rgba_nominal_bytes": 2183168
+  },
+  "wave12-facilities": {
+    "group": "wave12-facilities",
+    "classification": "다",
+    "count": 49,
+    "render_task": "향후 시설 확장",
+    "hours": [
+      24,
+      56
+    ],
+    "source": "src/content/buildingConfig.ts:6 BuildingKind; src/content/buildingCatalog.ts:74 facilityArt; src/render/historicalFacilityAssets.ts:101 historicalFacilityAssetId; src/render/manifestArt.ts:11 manifestArt",
+    "spec": "SPECS/wave12-facilities.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 2130858,
+    "rgba_nominal_bytes": 10531360
+  },
+  "wave12-quay": {
+    "group": "wave12-quay",
+    "classification": "나",
+    "count": 1,
+    "render_task": "LM-R3 / 기존 UI-6",
+    "hours": [
+      2,
+      4
+    ],
+    "source": "src/render/warWorldProps.ts:24 WarPropKind; src/render/warWorldProps.ts:169 warProps; src/render/manifestArt.ts:11 manifestArt",
+    "spec": "SPECS/wave12-quay.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 18546,
+    "rgba_nominal_bytes": 131072
+  },
+  "wave12-icons": {
+    "group": "wave12-icons",
+    "classification": "다",
+    "count": 3,
+    "render_task": "향후 시설 UI",
+    "hours": [
+      2,
+      4
+    ],
+    "source": "src/ui/uiArt.ts:13 UI_ICON_SHEETS; src/ui/uiArt.ts:46 uiIconStyle; src/content/buildingConfig.ts:6 BuildingKind",
+    "spec": "SPECS/wave12-icons.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 372148,
+    "rgba_nominal_bytes": 1069056
+  },
+  "wave13-animals": {
+    "group": "wave13-animals",
+    "classification": "다",
+    "count": 14,
+    "render_task": "향후 가축/운송 시각화",
+    "hours": [
+      20,
+      40
+    ],
+    "source": "src/agents/walker.types.ts; src/render/walkerComposer.ts:223 drawComposedWalker; src/render/animalScale.ts; src/render/zoneLayer.ts:95 buildZoneLayer",
+    "spec": "SPECS/wave13-animals.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 445742,
+    "rgba_nominal_bytes": 2400256
+  },
+  "wave13-transport": {
+    "group": "wave13-transport",
+    "classification": "다",
+    "count": 8,
+    "render_task": "향후 운송 시각화",
+    "hours": [
+      16,
+      32
+    ],
+    "source": "src/agents/walker.types.ts; src/render/walkerComposer.ts:223 drawComposedWalker; src/render/manifestArt.ts:11 manifestArt",
+    "spec": "SPECS/wave13-transport.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 419744,
+    "rgba_nominal_bytes": 2095104
+  },
+  "wave13-workers": {
+    "group": "wave13-workers",
+    "classification": "나",
+    "count": 12,
+    "render_task": "LM-R3 / CLOTH-UI",
+    "hours": [
+      5,
+      10
+    ],
+    "source": "src/render/walkerLook.ts:24 WalkerOccupation; src/render/walkerLook.ts:102 walkerCandidates; src/render/walkerComposer.ts:188 walkerAppearance; src/content/buildingConfig.ts:25 pastoral_farm",
+    "spec": "SPECS/wave13-workers.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 150104,
+    "rgba_nominal_bytes": 774656
+  },
+  "wave14-bordure": {
+    "group": "wave14-bordure",
+    "classification": "나",
+    "count": 1,
+    "render_task": "기존 heraldry data",
+    "hours": [
+      4,
+      8
+    ],
+    "source": "scripts/installWave14.py:3; src/ui/heraldry/EmblemImage.tsx:102 composeArms; src/ui/heraldry/heraldry.ts:16 ORDINARIES",
+    "spec": "SPECS/wave14-bordure.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 1430,
+    "rgba_nominal_bytes": 262144
+  },
+  "wave14-ui": {
+    "group": "wave14-ui",
+    "classification": "나",
+    "count": 15,
+    "render_task": "LM-R1 / LM-R2",
+    "hours": [
+      6,
+      12
+    ],
+    "source": "src/ui/hud/HudShell.tsx:186 RightsRegister; src/ui/heraldry/EmblemImage.tsx:115 composeMark; src/ui/chronicle/FactionPage.tsx:43; src/ui/wave14ArtManifest.generated.ts:3",
+    "spec": "SPECS/wave14-ui.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 1130615,
+    "rgba_nominal_bytes": 3526656
+  },
+  "wave17-war": {
+    "group": "wave17-war",
+    "classification": "나",
+    "count": 27,
+    "render_task": "LM-R3 / UI-6",
+    "hours": [
+      10,
+      20
+    ],
+    "source": "src/engine/war.ts:106 conscriptsAway; src/engine/war.ts:242 refugeeRoom; src/engine/war.ts:367 warForecast; src/render/warWorldProps.ts:169 warProps; src/render/walkerComposer.ts:188 walkerAppearance",
+    "spec": "SPECS/wave17-war.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 606238,
+    "rgba_nominal_bytes": 2263808
+  },
+  "wave18-hud": {
+    "group": "wave18-hud",
+    "classification": "나",
+    "count": 41,
+    "render_task": "LM-R1 / LM-R2",
+    "hours": [
+      7,
+      14
+    ],
+    "source": "src/ui/hud/HudShell.tsx:49 StatusPill; :103 ActionDock; :158 CrisisIcons; src/ui/alertStackModel.ts:195 alertStackRows; src/ui/hud/ZoneToolbar.tsx:19 ZoneToolbar; src/ui/hud/PlacementConfirmBar.tsx:8; src/render/zoneBrushOverlay.ts:108 drawZoneBrushOverlay",
+    "spec": "SPECS/wave18-hud.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 429992,
+    "rgba_nominal_bytes": 1470464
+  },
+  "wave20-era": {
+    "group": "wave20-era",
+    "classification": "나",
+    "count": 32,
+    "render_task": "NAT-5 / 시대 표현",
+    "hours": [
+      8,
+      16
+    ],
+    "source": "src/engine/scenarioState.ts stateCalendar; src/render/houseVariantChoice.ts:62 rawHouseBody; src/render/houseVariantChoice.ts:87 houseBodyEligible; src/render/houseConditionOverlay.ts:39 drawHouseCondition",
+    "spec": "SPECS/wave20-era.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 676061,
+    "rgba_nominal_bytes": 2759008
+  },
+  "walker-pilot2-final": {
+    "group": "walker-pilot2-final",
+    "classification": "나",
+    "count": 20,
+    "render_task": "기존 V2 walker",
+    "hours": [
+      4,
+      8
+    ],
+    "source": "src/render/walkerSheetManifest.generated.ts:1; src/render/walkerLook.ts:102 walkerCandidates; src/render/walkerLook.ts:156 walkerHeldProp; src/render/walkerComposer.ts:167 rightHand; :223 drawComposedWalker",
+    "spec": "SPECS/walker-pilot2-final.md",
+    "lane": "legacy",
+    "metadata_stripped_bytes": 148961,
+    "rgba_nominal_bytes": 766464
+  }
+}

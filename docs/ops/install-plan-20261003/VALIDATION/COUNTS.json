@@ -1,0 +1,32 @@
+{
+  "head": "ce67158a7f2d24bf8d02cab45deb9b7209ed68e1",
+  "branch": "codex/phase15-organic-ground",
+  "ledger_pending_rows": 1984,
+  "inventory_rows": 803,
+  "excluded_rows": 1181,
+  "real_install_rows": 744,
+  "classification_counts": {
+    "다": 282,
+    "나": 425,
+    "장부정리": 59,
+    "가": 37
+  },
+  "wave_batch_count": 38,
+  "install_groups": 47,
+  "source_hash_matches": 803,
+  "source_dimensions_measured": 803,
+  "public_exact_or_c2pa_matches": 59,
+  "missing_specs": 0,
+  "duplicate_source_rows": 0,
+  "target_path_collisions": 0,
+  "worktree_status": "clean",
+  "input_sha256": {
+    "assets-inbox/INBOX_LEDGER.csv": "3ae34f7a0c7dda020bdf06061494f6c13f65a5b0a874b9cf203ec207ccca1c8e",
+    "docs/provenance/assets.csv": "b226b0fe2c28795698cd8d1537d6545caf23edeb53df50068a81dbc3b0177294",
+    "docs/ops/DISPATCH_LEDGER.md": "cc55c5234fa89f6c2792790ea9b7a73519d0dfcff5f7d26632330ca7eca6620e",
+    "docs/ASSET_INBOX.md": "ada2b7e7f11b0053deddf4b9c77fa493592accba314f52ed6c48357299839c05",
+    "docs/design/art-bible.md": "1dfcb594b561ae098139ddeff997ac31cb9ec70122589ec9c464eec7538ee1b3",
+    "AGENTS.md": "3ab33f2207e2ed29453286b40d9b0d4e4e4b7cf2932fc181bb029c056a8f03ae"
+  },
+  "executed_scope": "local read-only census, source inspection and artifact checks; no game installation/build/browser/performance run"
+}
