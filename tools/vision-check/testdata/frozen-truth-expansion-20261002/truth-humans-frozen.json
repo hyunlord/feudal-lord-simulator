@@ -1,0 +1,278 @@
+[
+  {
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "defects": [
+      {
+        "id": "QA002-visible-1",
+        "box": {
+          "x": 928,
+          "y": 472,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-4",
+        "box": {
+          "x": 864,
+          "y": 440,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-6",
+        "box": {
+          "x": 870,
+          "y": 452,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-8",
+        "box": {
+          "x": 800,
+          "y": 472,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-19",
+        "box": {
+          "x": 1024,
+          "y": 456,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-QA002-visible-54",
+        "box": {
+          "x": 1120,
+          "y": 312,
+          "width": 22,
+          "height": 22
+        },
+        "note": "New distinct blue-clothed figure at different alehouse spatial location. Raw PNG00–19 directly reviewed,11.4s stationary with slight sway. Frame0 boundingbox; docs/qa/round01/FINDINGS.md:19 and repro/independent-visual-review.md:77-80 describe this visible phenomenon, not proof of broken simulation route.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-QA002-visible-82",
+        "box": {
+          "x": 1120,
+          "y": 248,
+          "width": 22,
+          "height": 22
+        },
+        "note": "New distinct blue-clothed figure at different alehouse spatial location. Raw PNG00–19 directly reviewed,11.4s stationary with slight sway. Frame0 boundingbox; docs/qa/round01/FINDINGS.md:19 and repro/independent-visual-review.md:77-80 describe this visible phenomenon, not proof of broken simulation route.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 928,
+        "y": 472,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 864,
+        "y": 440,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 870,
+        "y": 452,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 800,
+        "y": 472,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 1024,
+        "y": 456,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 445,
+        "y": 25,
+        "width": 60,
+        "height": 65
+      },
+      {
+        "x": 1120,
+        "y": 312,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 1120,
+        "y": 248,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "roof_overlap",
+    "defects": [
+      {
+        "id": "PRENAT1-static-roof-4",
+        "box": {
+          "x": 881,
+          "y": 414,
+          "width": 28,
+          "height": 28
+        },
+        "note": "파란 옷 장식 손님의 발이 붉은 지붕 앞에 보임. PNG 00–19 모두 확인. QA005 원래 NW벽 이동인물과 다른 원인.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "PRENAT1-static-roof-19",
+        "box": {
+          "x": 1089,
+          "y": 435,
+          "width": 28,
+          "height": 28
+        },
+        "note": "파란 옷 장식 손님의 발이 붉은 지붕 앞에 보임. PNG 00–19 모두 확인. QA005 원래 NW벽 이동인물과 다른 원인.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-QA005-static-roof-36",
+        "box": {
+          "x": 1089,
+          "y": 393,
+          "width": 28,
+          "height": 28
+        },
+        "note": "New distinct blue-clothed decorative figure visibly composited on red roof at another world location. PNG00–19 directly reviewed,proof frame0. docs/qa/round01/FINDINGS.md:22 supports static building-overlap subtype; not a duplicate zoom/time view of existing target.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-QA005-static-roof-54",
+        "box": {
+          "x": 1214,
+          "y": 248,
+          "width": 28,
+          "height": 28
+        },
+        "note": "New distinct blue-clothed decorative figure visibly composited on red roof at another world location. PNG00–19 directly reviewed,proof frame0. docs/qa/round01/FINDINGS.md:22 supports static building-overlap subtype; not a duplicate zoom/time view of existing target.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-QA005-static-roof-82",
+        "box": {
+          "x": 1214,
+          "y": 164,
+          "width": 28,
+          "height": 28
+        },
+        "note": "New distinct blue-clothed decorative figure visibly composited on red roof at another world location. PNG00–19 directly reviewed,proof frame0. docs/qa/round01/FINDINGS.md:22 supports static building-overlap subtype; not a duplicate zoom/time view of existing target.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 881,
+        "y": 414,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 1089,
+        "y": 435,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 964,
+        "y": 456,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 1089,
+        "y": 393,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 1214,
+        "y": 248,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 1214,
+        "y": 164,
+        "width": 28,
+        "height": 28
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "defects": [
+      {
+        "id": "QA005-NW-wall-moving-figure",
+        "box": {
+          "x": 416,
+          "y": 199,
+          "width": 31,
+          "height": 49
+        },
+        "note": "원기록과 같은 줌2·pan(544,-2277)의 NW벽 면. 확인 프레임16/tick320238에서 빨간 옷 이동 인물과 수레가 수직 벽 그림 앞에 겹침. 프레임3에도 같은 위치에서 노란 옷 인물·수레가 통과. 동일 공간 결함 1곳으로 계산하며 정지 지붕 손님과 다름. 시간 기준은20프레임 중발생,대표증거16.png.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 410,
+        "y": 190,
+        "width": 55,
+        "height": 80
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  }
+]

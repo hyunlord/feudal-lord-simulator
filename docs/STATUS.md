@@ -9,7 +9,7 @@
 
 ## 현재 단계
 
-- **시각 검사기 도구 반입(VISION-CHECK) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): Astra 시각 검사기(재현율 2차 개선판)를 [`tools/vision-check/`](../tools/vision-check/README.md)로. `npm run vision:check`, 검출기 상태 `config/detectors.json`(사용: 경계·이음새·멈춘 사람·겹침 / 실험: 크기·반복), 동결 정답 시험지 `testdata/frozen-truth-20261002/`(양성 19, 재채점 17 TP·2 FP·2 FN = 저장된 결과). 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다.
+- **시각 검사기 확장판 교체(VISION-CHECK-2) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): [`tools/vision-check/`](../tools/vision-check/README.md)를 확장 회차 판으로 교체(부위 크기·정상 재고 반복 제외). 검출기 상태 `config/detectors.json`은 **여섯 모두 사용**이다. 수치는 교정 성능(같은 시험지로 조정) — 홀드아웃 검증 전, 병합 관문 아님. 동결 정답 시험지는 `testdata/frozen-truth-expansion-20261002/`(양성 38, 재채점 = 저장된 채점). 파이썬 시험 132 통과·1 xfail(Mac, 원본 캡처를 이음). 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다. 앞 판(VISION-CHECK, 양성 19 시험지)은 `55269a11`.
 - **COPY-1e Astra 문구 감사의 엔진 몫 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/copy-1e/REPORT.md), 결정 COPY1E-1~3.
   - 23건: 청원 답을 세력 기억이 고른 뜻으로 남김(교회 유산·조카 후계가 "거절"이 아님), 1351 노동자법·1391 칼레 제도 중단, 용어 통일(상위 영주·성직자 추천권·모직·벌목소·석공소 등).
   - 렌더가 받을 것: 사건 이야기 1351·1391, 화면의 같은 용어.

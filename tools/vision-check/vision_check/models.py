@@ -103,6 +103,7 @@ class Thresholds(BaseModel):
     still_min_tick_span: int = 25
     overlap_fraction: float = 0.2
     repeat_min_count: int = 6
+    repeat_building_min_count: int = 6
     repeat_radius_tiles: float = 4.0
     repeat_similarity: float = 0.85
     max_per_detector: int = 12

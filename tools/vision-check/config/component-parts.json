@@ -1,0 +1,697 @@
+{
+  "version": 1,
+  "annotation_basis": "Manual inspection of original transparent PNGs, 2026-10-02. Polygons use source pixels and SHA-bound semantic identities; no benchmark screen coordinates or scene labels.",
+  "exclusions": [
+    "Mash tubs, vats and vats with stirring paddles have no ordinary cask height reference.",
+    "Lying barrels cannot be compared with an upright cask height range.",
+    "Occluded source components or components cut by atlas crop abstain.",
+    "Unknown or revised SHA assets abstain until reannotated.",
+    "Brewer-b front grain sack is partly covered by a basket and is deliberately not measured."
+  ],
+  "assets": [
+    {
+      "path": "/assets/wave27/yards/yard_brewer_a.png",
+      "sha256": "f941617bd513ec9cef3cb502464e2fc2376ffb059b0c6d9fac859ac8a7318a3f",
+      "width": 256,
+      "height": 128,
+      "parts": [
+        {
+          "id": "upright-cask",
+          "kind": "barrel",
+          "polygon": [
+            [
+              97,
+              40
+            ],
+            [
+              102,
+              31
+            ],
+            [
+              116,
+              27
+            ],
+            [
+              132,
+              30
+            ],
+            [
+              141,
+              38
+            ],
+            [
+              144,
+              59
+            ],
+            [
+              140,
+              77
+            ],
+            [
+              130,
+              88
+            ],
+            [
+              111,
+              90
+            ],
+            [
+              98,
+              83
+            ],
+            [
+              94,
+              60
+            ]
+          ],
+          "note": "Upright closed storage cask. Rear overlapping casks and right mash tub are excluded."
+        },
+        {
+          "id": "open-grain-sack",
+          "kind": "sack",
+          "polygon": [
+            [
+              72,
+              75
+            ],
+            [
+              77,
+              65
+            ],
+            [
+              91,
+              63
+            ],
+            [
+              105,
+              70
+            ],
+            [
+              111,
+              92
+            ],
+            [
+              104,
+              103
+            ],
+            [
+              79,
+              106
+            ],
+            [
+              72,
+              97
+            ]
+          ],
+          "note": "Complete front open grain sack, not rear tied sacks."
+        }
+      ]
+    },
+    {
+      "path": "/assets/wave27/yards/yard_miller_a.png",
+      "sha256": "c26a78aa8a9b18a3a8b219012ddb7466f4f7bea3edc77469cc6b592519b61386",
+      "width": 256,
+      "height": 128,
+      "parts": [
+        {
+          "id": "left-open-sack",
+          "kind": "sack",
+          "polygon": [
+            [
+              40,
+              62
+            ],
+            [
+              49,
+              53
+            ],
+            [
+              65,
+              50
+            ],
+            [
+              77,
+              55
+            ],
+            [
+              84,
+              66
+            ],
+            [
+              79,
+              88
+            ],
+            [
+              80,
+              100
+            ],
+            [
+              70,
+              104
+            ],
+            [
+              47,
+              102
+            ],
+            [
+              38,
+              98
+            ]
+          ],
+          "note": "Front-left complete upright grain sack."
+        },
+        {
+          "id": "right-open-sack",
+          "kind": "sack",
+          "polygon": [
+            [
+              133,
+              65
+            ],
+            [
+              143,
+              55
+            ],
+            [
+              158,
+              54
+            ],
+            [
+              173,
+              61
+            ],
+            [
+              178,
+              74
+            ],
+            [
+              175,
+              96
+            ],
+            [
+              166,
+              102
+            ],
+            [
+              141,
+              103
+            ],
+            [
+              128,
+              99
+            ]
+          ],
+          "note": "Front-right complete upright grain sack."
+        }
+      ]
+    },
+    {
+      "path": "/assets/wave27/yards/yard_miller_b.png",
+      "sha256": "73cde80cfa36a17f2c826bd967d5d983f44cce5f4ce8968257364e49231cb248",
+      "width": 256,
+      "height": 128,
+      "parts": [
+        {
+          "id": "rear-open-sack",
+          "kind": "sack",
+          "polygon": [
+            [
+              117,
+              34
+            ],
+            [
+              126,
+              24
+            ],
+            [
+              141,
+              19
+            ],
+            [
+              151,
+              25
+            ],
+            [
+              159,
+              36
+            ],
+            [
+              157,
+              60
+            ],
+            [
+              150,
+              73
+            ],
+            [
+              126,
+              75
+            ],
+            [
+              116,
+              60
+            ]
+          ],
+          "note": "Upright rear open sack; full top and ground-side base visible."
+        },
+        {
+          "id": "front-open-sack",
+          "kind": "sack",
+          "polygon": [
+            [
+              164,
+              70
+            ],
+            [
+              173,
+              61
+            ],
+            [
+              185,
+              58
+            ],
+            [
+              198,
+              66
+            ],
+            [
+              203,
+              86
+            ],
+            [
+              198,
+              101
+            ],
+            [
+              185,
+              107
+            ],
+            [
+              166,
+              101
+            ],
+            [
+              159,
+              88
+            ]
+          ],
+          "note": "Front upright open sack."
+        }
+      ]
+    },
+    {
+      "path": "/assets/wave27/yards/yard_merchant_b.png",
+      "sha256": "695e80cdc7b175c2d1c33bb0dab34629100938a3dd282e89275d8060ea75d007",
+      "width": 256,
+      "height": 128,
+      "parts": [
+        {
+          "id": "left-tied-sack",
+          "kind": "sack",
+          "polygon": [
+            [
+              27,
+              66
+            ],
+            [
+              37,
+              68
+            ],
+            [
+              40,
+              75
+            ],
+            [
+              46,
+              96
+            ],
+            [
+              40,
+              106
+            ],
+            [
+              27,
+              106
+            ],
+            [
+              19,
+              101
+            ],
+            [
+              21,
+              81
+            ]
+          ],
+          "note": "Left upright sack adjacent to the market table, excluding the table."
+        }
+      ]
+    },
+    {
+      "path": "/assets/runtime-actors-v1/cart_hand-v4.png",
+      "sha256": "e32522862491eb85317c089c61c291189837fd92042b8329b840d20e0e62f2e2",
+      "width": 314,
+      "height": 157,
+      "parts": [
+        {
+          "id": "wheel-0",
+          "kind": "cart-wheel",
+          "polygon": [
+            [
+              55,
+              89
+            ],
+            [
+              54,
+              95
+            ],
+            [
+              53,
+              100
+            ],
+            [
+              50,
+              103
+            ],
+            [
+              47,
+              104
+            ],
+            [
+              44,
+              103
+            ],
+            [
+              41,
+              100
+            ],
+            [
+              40,
+              95
+            ],
+            [
+              39,
+              89
+            ],
+            [
+              40,
+              83
+            ],
+            [
+              41,
+              78
+            ],
+            [
+              44,
+              75
+            ],
+            [
+              47,
+              74
+            ],
+            [
+              50,
+              75
+            ],
+            [
+              53,
+              78
+            ],
+            [
+              54,
+              83
+            ]
+          ],
+          "note": "Outer visible wheel rim. Measures wheel diameter only, never cart body."
+        },
+        {
+          "id": "wheel-1",
+          "kind": "cart-wheel",
+          "polygon": [
+            [
+              104,
+              80
+            ],
+            [
+              103,
+              87
+            ],
+            [
+              101,
+              92
+            ],
+            [
+              98,
+              96
+            ],
+            [
+              95,
+              97
+            ],
+            [
+              92,
+              96
+            ],
+            [
+              89,
+              92
+            ],
+            [
+              87,
+              87
+            ],
+            [
+              86,
+              80
+            ],
+            [
+              87,
+              73
+            ],
+            [
+              89,
+              68
+            ],
+            [
+              92,
+              64
+            ],
+            [
+              95,
+              63
+            ],
+            [
+              98,
+              64
+            ],
+            [
+              101,
+              68
+            ],
+            [
+              103,
+              73
+            ]
+          ],
+          "note": "Outer visible wheel rim. Measures wheel diameter only, never cart body."
+        },
+        {
+          "id": "wheel-2",
+          "kind": "cart-wheel",
+          "polygon": [
+            [
+              228,
+              79
+            ],
+            [
+              227,
+              86
+            ],
+            [
+              225,
+              91
+            ],
+            [
+              222,
+              95
+            ],
+            [
+              219,
+              96
+            ],
+            [
+              216,
+              95
+            ],
+            [
+              213,
+              91
+            ],
+            [
+              211,
+              86
+            ],
+            [
+              210,
+              79
+            ],
+            [
+              211,
+              72
+            ],
+            [
+              213,
+              67
+            ],
+            [
+              216,
+              63
+            ],
+            [
+              219,
+              62
+            ],
+            [
+              222,
+              63
+            ],
+            [
+              225,
+              67
+            ],
+            [
+              227,
+              72
+            ]
+          ],
+          "note": "Outer visible wheel rim. Measures wheel diameter only, never cart body."
+        },
+        {
+          "id": "wheel-3",
+          "kind": "cart-wheel",
+          "polygon": [
+            [
+              278,
+              90
+            ],
+            [
+              277,
+              96
+            ],
+            [
+              276,
+              101
+            ],
+            [
+              273,
+              104
+            ],
+            [
+              270,
+              105
+            ],
+            [
+              267,
+              104
+            ],
+            [
+              264,
+              101
+            ],
+            [
+              263,
+              96
+            ],
+            [
+              262,
+              90
+            ],
+            [
+              263,
+              84
+            ],
+            [
+              264,
+              79
+            ],
+            [
+              267,
+              76
+            ],
+            [
+              270,
+              75
+            ],
+            [
+              273,
+              76
+            ],
+            [
+              276,
+              79
+            ],
+            [
+              277,
+              84
+            ]
+          ],
+          "note": "Outer visible wheel rim. Measures wheel diameter only, never cart body."
+        }
+      ]
+    },
+    {
+      "path": "/assets/wave27/yards/yard_rain_barrel.png",
+      "sha256": "fa4af6e584c9399beeaadde7e89e0e245f515e701ad74c964dca2fb96d0efca1",
+      "width": 128,
+      "height": 64,
+      "parts": [
+        {
+          "id": "water-cask-body",
+          "kind": "barrel",
+          "polygon": [
+            [
+              58,
+              9
+            ],
+            [
+              65,
+              4
+            ],
+            [
+              78,
+              3
+            ],
+            [
+              89,
+              8
+            ],
+            [
+              94,
+              19
+            ],
+            [
+              93,
+              45
+            ],
+            [
+              86,
+              51
+            ],
+            [
+              65,
+              53
+            ],
+            [
+              56,
+              47
+            ],
+            [
+              54,
+              28
+            ]
+          ],
+          "note": "Upright water barrel body only. Excludes inlet gutter, support post, ground and shadow."
+        }
+      ]
+    }
+  ]
+}

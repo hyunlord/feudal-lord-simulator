@@ -1,0 +1,8 @@
+{
+  "scope": "Only scale_ratio and repeat_density in frozen expansion ROIs; visual review of enhanced-final outputs",
+  "rejected_ids": [],
+  "duplicate_fp_ids": [
+    "exp-seed1-ch5-detail:repeat_density:2"
+  ],
+  "note": "Duplicate FP already enforced by one-to-one frozen benchmark. It is not a normal-stock semantic false positive; no manual rejection override required."
+}

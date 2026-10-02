@@ -1,0 +1,959 @@
+[
+  {
+    "scene": "exp-main-coast",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-straight_boundary-coast-north",
+        "box": {
+          "x": 285,
+          "y": 343,
+          "width": 166,
+          "height": 114
+        },
+        "note": "해안 북쪽의 분리된 작은 바위. 양 사선과 아래 꼭짓점이 칸 모양으로 잘리고 검은 사각 테두리가 줄지어 반복.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-straight_boundary-coast-south",
+        "box": {
+          "x": 102,
+          "y": 455,
+          "width": 477,
+          "height": 200
+        },
+        "note": "해안 남쪽의 별도 큰 바위. 북쪽 조각과 잔디 틈으로 분리. 위쪽 오목한 칸 윤곽과 우하 사선의 검은 반복 도형.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 270,
+        "y": 328,
+        "width": 196,
+        "height": 144
+      },
+      {
+        "x": 87,
+        "y": 440,
+        "width": 507,
+        "height": 230
+      },
+      {
+        "x": 620,
+        "y": 280,
+        "width": 420,
+        "height": 210
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-main-coast",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "EXP-tile_seam-coast-north",
+        "box": {
+          "x": 285,
+          "y": 343,
+          "width": 166,
+          "height": 114
+        },
+        "note": "해안 북쪽의 분리된 작은 바위. 양 사선과 아래 꼭짓점이 칸 모양으로 잘리고 검은 사각 테두리가 줄지어 반복.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-tile_seam-coast-south",
+        "box": {
+          "x": 102,
+          "y": 455,
+          "width": 477,
+          "height": 200
+        },
+        "note": "해안 남쪽의 별도 큰 바위. 북쪽 조각과 잔디 틈으로 분리. 위쪽 오목한 칸 윤곽과 우하 사선의 검은 반복 도형.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 270,
+        "y": 328,
+        "width": 196,
+        "height": 144
+      },
+      {
+        "x": 87,
+        "y": 440,
+        "width": 507,
+        "height": 230
+      },
+      {
+        "x": 620,
+        "y": 280,
+        "width": 420,
+        "height": 210
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-main-fen",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-straight_boundary-fen-east",
+        "box": {
+          "x": 1238,
+          "y": 648,
+          "width": 156,
+          "height": 81
+        },
+        "note": "습지 동쪽 작은 바위. 나무에 오른편이 가려졌으나 왼쪽 두 사선 절단과 검은 사각 반복이 보임.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 1223,
+        "y": 633,
+        "width": 186,
+        "height": 111
+      },
+      {
+        "x": 400,
+        "y": 330,
+        "width": 330,
+        "height": 190
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-main-fen",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "EXP-tile_seam-fen-east",
+        "box": {
+          "x": 1238,
+          "y": 648,
+          "width": 156,
+          "height": 81
+        },
+        "note": "습지 동쪽 작은 바위. 나무에 오른편이 가려졌으나 왼쪽 두 사선 절단과 검은 사각 반복이 보임.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 1223,
+        "y": 633,
+        "width": 186,
+        "height": 111
+      },
+      {
+        "x": 400,
+        "y": 330,
+        "width": 330,
+        "height": 190
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-main-forest",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-straight_boundary-forest-north",
+        "box": {
+          "x": 943,
+          "y": 425,
+          "width": 319,
+          "height": 190
+        },
+        "note": "숲 지도1 북쪽 바위. 아랫면의 긴 곧은 사선 절단을 따라 검은 사각 테두리가 반복. 윗면은 수목 가림.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 928,
+        "y": 410,
+        "width": 349,
+        "height": 220
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-main-forest",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "EXP-tile_seam-forest-north",
+        "box": {
+          "x": 943,
+          "y": 425,
+          "width": 319,
+          "height": 190
+        },
+        "note": "숲 지도1 북쪽 바위. 아랫면의 긴 곧은 사선 절단을 따라 검은 사각 테두리가 반복. 윗면은 수목 가림.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 928,
+        "y": 410,
+        "width": 349,
+        "height": 220
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-holdout-forest-s2",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-axis-forest-s2-west-middle",
+        "box": {
+          "x": 389,
+          "y": 364,
+          "width": 23,
+          "height": 80
+        },
+        "note": "숲 지도2 서쪽 강굽이 옆 흙 판이 세로 직선으로 끝나는 절단",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-axis-forest-s2-west-bottom",
+        "box": {
+          "x": 484,
+          "y": 547,
+          "width": 24,
+          "height": 116
+        },
+        "note": "숲 지도2 서남쪽 쓰러진 나무 옆 흙 판의 세로 직각 절단",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-axis-forest-s2-east",
+        "box": {
+          "x": 1126,
+          "y": 211,
+          "width": 23,
+          "height": 89
+        },
+        "note": "숲 지도2 동쪽 호수 옆 흙 판의 세로 직각 절단",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 374,
+        "y": 349,
+        "width": 53,
+        "height": 110
+      },
+      {
+        "x": 469,
+        "y": 532,
+        "width": 54,
+        "height": 146
+      },
+      {
+        "x": 1111,
+        "y": 196,
+        "width": 53,
+        "height": 119
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-recall-chalk",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-straight_boundary-chalk-east-reused",
+        "box": {
+          "x": 790,
+          "y": 435,
+          "width": 810,
+          "height": 400
+        },
+        "note": "이전 QA039 정답의 동쪽 연결 바위 덩어리 하나를 재사용. 별도줌·계절 영상의 같은 덩어리를 추가 양성으로 세지 않음.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 775,
+        "y": 420,
+        "width": 840,
+        "height": 430
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-recall-chalk",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "EXP-tile_seam-chalk-east-reused",
+        "box": {
+          "x": 790,
+          "y": 435,
+          "width": 810,
+          "height": 400
+        },
+        "note": "이전 QA039 정답의 동쪽 연결 바위 덩어리 하나를 재사용. 별도줌·계절 영상의 같은 덩어리를 추가 양성으로 세지 않음.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 775,
+        "y": 420,
+        "width": 840,
+        "height": 430
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-main-chalk-wide",
+    "detector": "straight_boundary",
+    "defects": [
+      {
+        "id": "EXP-straight_boundary-chalk-west-new",
+        "box": {
+          "x": 0,
+          "y": 514,
+          "width": 366,
+          "height": 197
+        },
+        "note": "백악 지도1 서쪽의 다른 바위 덩어리. 화면 왼쪽으로 일부 잘렸으나 노출된 오른쪽 사선 및 검은 반복 도형이 명확. 화면 오른쪽 QA039 기존 덩어리는 여기서 세지 않음.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 0,
+        "y": 499,
+        "width": 396,
+        "height": 227
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-main-chalk-wide",
+    "detector": "tile_seam",
+    "defects": [
+      {
+        "id": "EXP-tile_seam-chalk-west-new",
+        "box": {
+          "x": 0,
+          "y": 514,
+          "width": 366,
+          "height": 197
+        },
+        "note": "백악 지도1 서쪽의 다른 바위 덩어리. 화면 왼쪽으로 일부 잘렸으나 노출된 오른쪽 사선 및 검은 반복 도형이 명확. 화면 오른쪽 QA039 기존 덩어리는 여기서 세지 않음.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 0,
+        "y": 499,
+        "width": 396,
+        "height": 227
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "defects": [
+      {
+        "id": "QA002-visible-1",
+        "box": {
+          "x": 928,
+          "y": 472,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-4",
+        "box": {
+          "x": 864,
+          "y": 440,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-6",
+        "box": {
+          "x": 870,
+          "y": 452,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-8",
+        "box": {
+          "x": 800,
+          "y": 472,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "QA002-visible-19",
+        "box": {
+          "x": 1024,
+          "y": 456,
+          "width": 22,
+          "height": 22
+        },
+        "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-QA002-visible-54",
+        "box": {
+          "x": 1120,
+          "y": 312,
+          "width": 22,
+          "height": 22
+        },
+        "note": "New distinct blue-clothed figure at different alehouse spatial location. Raw PNG00–19 directly reviewed,11.4s stationary with slight sway. Frame0 boundingbox; docs/qa/round01/FINDINGS.md:19 and repro/independent-visual-review.md:77-80 describe this visible phenomenon, not proof of broken simulation route.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-QA002-visible-82",
+        "box": {
+          "x": 1120,
+          "y": 248,
+          "width": 22,
+          "height": 22
+        },
+        "note": "New distinct blue-clothed figure at different alehouse spatial location. Raw PNG00–19 directly reviewed,11.4s stationary with slight sway. Frame0 boundingbox; docs/qa/round01/FINDINGS.md:19 and repro/independent-visual-review.md:77-80 describe this visible phenomenon, not proof of broken simulation route.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 928,
+        "y": 472,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 864,
+        "y": 440,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 870,
+        "y": 452,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 800,
+        "y": 472,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 1024,
+        "y": 456,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 445,
+        "y": 25,
+        "width": 60,
+        "height": 65
+      },
+      {
+        "x": 1120,
+        "y": 312,
+        "width": 22,
+        "height": 22
+      },
+      {
+        "x": 1120,
+        "y": 248,
+        "width": 22,
+        "height": 22
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "roof_overlap",
+    "defects": [
+      {
+        "id": "PRENAT1-static-roof-4",
+        "box": {
+          "x": 881,
+          "y": 414,
+          "width": 28,
+          "height": 28
+        },
+        "note": "파란 옷 장식 손님의 발이 붉은 지붕 앞에 보임. PNG 00–19 모두 확인. QA005 원래 NW벽 이동인물과 다른 원인.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "PRENAT1-static-roof-19",
+        "box": {
+          "x": 1089,
+          "y": 435,
+          "width": 28,
+          "height": 28
+        },
+        "note": "파란 옷 장식 손님의 발이 붉은 지붕 앞에 보임. PNG 00–19 모두 확인. QA005 원래 NW벽 이동인물과 다른 원인.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-QA005-static-roof-36",
+        "box": {
+          "x": 1089,
+          "y": 393,
+          "width": 28,
+          "height": 28
+        },
+        "note": "New distinct blue-clothed decorative figure visibly composited on red roof at another world location. PNG00–19 directly reviewed,proof frame0. docs/qa/round01/FINDINGS.md:22 supports static building-overlap subtype; not a duplicate zoom/time view of existing target.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-QA005-static-roof-54",
+        "box": {
+          "x": 1214,
+          "y": 248,
+          "width": 28,
+          "height": 28
+        },
+        "note": "New distinct blue-clothed decorative figure visibly composited on red roof at another world location. PNG00–19 directly reviewed,proof frame0. docs/qa/round01/FINDINGS.md:22 supports static building-overlap subtype; not a duplicate zoom/time view of existing target.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "EXP-QA005-static-roof-82",
+        "box": {
+          "x": 1214,
+          "y": 164,
+          "width": 28,
+          "height": 28
+        },
+        "note": "New distinct blue-clothed decorative figure visibly composited on red roof at another world location. PNG00–19 directly reviewed,proof frame0. docs/qa/round01/FINDINGS.md:22 supports static building-overlap subtype; not a duplicate zoom/time view of existing target.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 881,
+        "y": 414,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 1089,
+        "y": 435,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 964,
+        "y": 456,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 1089,
+        "y": 393,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 1214,
+        "y": 248,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 1214,
+        "y": 164,
+        "width": 28,
+        "height": 28
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "defects": [
+      {
+        "id": "QA005-NW-wall-moving-figure",
+        "box": {
+          "x": 416,
+          "y": 199,
+          "width": 31,
+          "height": 49
+        },
+        "note": "원기록과 같은 줌2·pan(544,-2277)의 NW벽 면. 확인 프레임16/tick320238에서 빨간 옷 이동 인물과 수레가 수직 벽 그림 앞에 겹침. 프레임3에도 같은 위치에서 노란 옷 인물·수레가 통과. 동일 공간 결함 1곳으로 계산하며 정지 지붕 손님과 다름. 시간 기준은20프레임 중발생,대표증거16.png.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 410,
+        "y": 190,
+        "width": 55,
+        "height": 80
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-prenat1-city",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "scale-seed2-upright-barrel",
+        "box": {
+          "x": 850,
+          "y": 452,
+          "width": 31,
+          "height": 39
+        },
+        "note": "Reused calibration. Upright storage barrel within mirrored brewery composite; not adjacent mash tub. Approx 30px body vs adult20-24px.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "scale-seed2-rain-barrel",
+        "box": {
+          "x": 1165,
+          "y": 423,
+          "width": 34,
+          "height": 37
+        },
+        "note": "Reused calibration. Standalone upright rain barrel body about28px vs adult20-24px; ordinary barrel max0.65H.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "scale-seed2-grain-sack",
+        "box": {
+          "x": 875,
+          "y": 473,
+          "width": 30,
+          "height": 31
+        },
+        "note": "Reused scene/new blind label. Grain sack beside brewery barrel, bodyabout25px vs adult20-24px, max0.50H.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 850,
+        "y": 452,
+        "width": 31,
+        "height": 39
+      },
+      {
+        "x": 1165,
+        "y": 423,
+        "width": 34,
+        "height": 37
+      },
+      {
+        "x": 875,
+        "y": 473,
+        "width": 30,
+        "height": 31
+      },
+      {
+        "x": 460,
+        "y": 516,
+        "width": 24,
+        "height": 23
+      },
+      {
+        "x": 792,
+        "y": 340,
+        "width": 103,
+        "height": 52
+      },
+      {
+        "x": 690,
+        "y": 729,
+        "width": 52,
+        "height": 43
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-seed4-middle",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "scale-seed4-rain-barrel",
+        "box": {
+          "x": 546,
+          "y": 570,
+          "width": 25,
+          "height": 31
+        },
+        "note": "Fresh blind. Rain barrel bodyabout23px vs adult20-24px, above ordinary barrel0.45-0.65H.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "scale-seed4-cottage-door",
+        "box": {
+          "x": 578,
+          "y": 568,
+          "width": 12,
+          "height": 16
+        },
+        "note": "Fresh blind. Cottage usable doorway opening about14-16px vs adult20-24px, below1.15-1.40H with10percent tolerance. One independent door, not all repeated cottages counted.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 546,
+        "y": 570,
+        "width": 25,
+        "height": 31
+      },
+      {
+        "x": 578,
+        "y": 568,
+        "width": 12,
+        "height": 16
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-prenat1-city",
+    "detector": "repeat_density",
+    "defects": [
+      {
+        "id": "yarn-seed2-south",
+        "box": {
+          "x": 778,
+          "y": 395,
+          "width": 416,
+          "height": 212
+        },
+        "note": "Reused calibration: repeated conspicuous white coils outside southwest neighborhood doors.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "yarn-seed2-north",
+        "box": {
+          "x": 1190,
+          "y": 125,
+          "width": 320,
+          "height": 267
+        },
+        "note": "Reused calibration: separate northeast street cluster of white coils.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 778,
+        "y": 395,
+        "width": 416,
+        "height": 212
+      },
+      {
+        "x": 1190,
+        "y": 125,
+        "width": 320,
+        "height": 267
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-seed1-ch5-detail",
+    "detector": "repeat_density",
+    "defects": [
+      {
+        "id": "yarn-seed1-east",
+        "box": {
+          "x": 865,
+          "y": 438,
+          "width": 251,
+          "height": 112
+        },
+        "note": "Fresh blind: four conspicuous identical coils on distinct waterfront doorsteps.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "yarn-seed1-middle",
+        "box": {
+          "x": 429,
+          "y": 545,
+          "width": 280,
+          "height": 88
+        },
+        "note": "Fresh blind: five conspicuous identical coils in central residential street; excludes southern row.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      },
+      {
+        "id": "yarn-seed1-south",
+        "box": {
+          "x": 563,
+          "y": 635,
+          "width": 397,
+          "height": 120
+        },
+        "note": "Fresh blind: repeated conspicuous white coils in southern residential street; independent doors from central row.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 865,
+        "y": 438,
+        "width": 251,
+        "height": 112
+      },
+      {
+        "x": 429,
+        "y": 545,
+        "width": 280,
+        "height": 88
+      },
+      {
+        "x": 563,
+        "y": 635,
+        "width": 397,
+        "height": 120
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  },
+  {
+    "scene": "exp-current-city",
+    "detector": "repeat_density",
+    "defects": [],
+    "regions": [
+      {
+        "x": 1090,
+        "y": 198,
+        "width": 290,
+        "height": 150
+      },
+      {
+        "x": 750,
+        "y": 419,
+        "width": 340,
+        "height": 123
+      },
+      {
+        "x": 935,
+        "y": 361,
+        "width": 172,
+        "height": 90
+      },
+      {
+        "x": 1370,
+        "y": 167,
+        "width": 175,
+        "height": 85
+      },
+      {
+        "x": 1259,
+        "y": 576,
+        "width": 180,
+        "height": 135
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  }
+]

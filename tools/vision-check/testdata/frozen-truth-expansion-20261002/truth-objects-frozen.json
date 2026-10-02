@@ -1,0 +1,123 @@
+[
+  {
+    "scene": "exp-prenat1-city",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "scale-seed2-upright-barrel",
+        "box": {
+          "x": 850,
+          "y": 452,
+          "width": 31,
+          "height": 39
+        },
+        "note": "Reused calibration. Upright storage barrel within mirrored brewery composite; not adjacent mash tub. Approx 30px body vs adult20-24px."
+      },
+      {
+        "id": "scale-seed2-rain-barrel",
+        "box": {
+          "x": 1165,
+          "y": 423,
+          "width": 34,
+          "height": 37
+        },
+        "note": "Reused calibration. Standalone upright rain barrel body about28px vs adult20-24px; ordinary barrel max0.65H."
+      },
+      {
+        "id": "scale-seed2-grain-sack",
+        "box": {
+          "x": 875,
+          "y": 473,
+          "width": 30,
+          "height": 31
+        },
+        "note": "Reused scene/new blind label. Grain sack beside brewery barrel, bodyabout25px vs adult20-24px, max0.50H."
+      }
+    ],
+    "regions": [
+      {
+        "x": 850,
+        "y": 452,
+        "width": 31,
+        "height": 39
+      },
+      {
+        "x": 1165,
+        "y": 423,
+        "width": 34,
+        "height": 37
+      },
+      {
+        "x": 875,
+        "y": 473,
+        "width": 30,
+        "height": 31
+      }
+    ]
+  },
+  {
+    "scene": "exp-seed4-middle",
+    "detector": "scale_ratio",
+    "defects": [
+      {
+        "id": "scale-seed4-rain-barrel",
+        "box": {
+          "x": 546,
+          "y": 570,
+          "width": 25,
+          "height": 31
+        },
+        "note": "Fresh blind. Rain barrel bodyabout23px vs adult20-24px, above ordinary barrel0.45-0.65H."
+      },
+      {
+        "id": "scale-seed4-cottage-door",
+        "box": {
+          "x": 578,
+          "y": 568,
+          "width": 12,
+          "height": 16
+        },
+        "note": "Fresh blind. Cottage usable doorway opening about14-16px vs adult20-24px, below1.15-1.40H with10percent tolerance. One independent door, not all repeated cottages counted."
+      }
+    ],
+    "regions": [
+      {
+        "x": 546,
+        "y": 570,
+        "width": 25,
+        "height": 31
+      },
+      {
+        "x": 578,
+        "y": 568,
+        "width": 12,
+        "height": 16
+      }
+    ]
+  },
+  {
+    "scene": "exp-prenat1-city",
+    "detector": "scale_ratio",
+    "defects": [],
+    "regions": [
+      {
+        "x": 460,
+        "y": 516,
+        "width": 24,
+        "height": 23
+      },
+      {
+        "x": 792,
+        "y": 340,
+        "width": 103,
+        "height": 52
+      },
+      {
+        "x": 690,
+        "y": 729,
+        "width": 52,
+        "height": 43
+      }
+    ]
+  }
+]

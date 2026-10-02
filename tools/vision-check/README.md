@@ -1,37 +1,73 @@
 # 시각 검사기 (tools/vision-check) — 저장소에서 쓰는 법
 
-Astra가 만든 화면 자연스러움 검사기(Python·uv)를 2026-10-02에 저장소 도구로 들였다. 원본은 재현율 2차 회차 묶음 `astra-vision-recall-20261002.zip`의 `tools/vision-check/`(개선판)다. 같은 묶음의 `baseline-tool/`(개선 전 기준선, 첫 회차 `astra-raw/qa/vision-check-20261002/`와 거의 같음)은 들이지 않았다.
+Astra가 만든 화면 자연스러움 검사기(Python·uv)다.
+- 2026-10-02 재현율 회차 개선판으로 처음 들였다(`astra-vision-recall-20261002.zip`).
+- 같은 날 확장 회차 판으로 바꿨다(`astra-vision-expansion-20261002.zip`의 `tools/vision-check/`). 바뀐 것: 부위 크기 측정, 정상 재고 반복 제외, 양성 38개 시험지.
+- 원본 묶음은 `~/feudal-lord-analysis/astra-raw/qa/vision-expansion-20261002/`에 있다.
 
-- **보조 도구다.** `npm test`와 병합 전 검사(`check:merge`)에 들어가지 않는다. 파이썬 시험(`tests/`)은 `tests/*.test.ts`에 걸리지 않고, ESLint는 `tools/**`를 보지 않으며, typecheck 범위 밖이다.
-- **진입점**: `npm run vision:check -- <명령> …` → 검출기 상태를 찍고 `uv run python -m vision_check.cli <명령> …`를 이 폴더에서 돌린다. 인자가 없으면 CLI 도움말.
+- **보조 도구다.** `npm test`와 병합 전 검사(`check:merge`)에 들어가지 않는다.
+  - 파이썬 시험(`tests/`)은 `tests/*.test.ts`에 걸리지 않는다.
+  - ESLint는 `tools/**`를 보지 않고, typecheck 범위 밖이다.
+- **진입점**: `npm run vision:check -- <명령> …`.
+  - 검출기 상태와 교정 수치를 찍은 뒤 `uv run python -m vision_check.cli <명령> …`를 이 폴더에서 돌린다.
+  - 인자가 없으면 CLI 도움말을 보인다.
   - 처음 한 번: `cd tools/vision-check && uv sync --group dev && uv run playwright install chromium`.
-  - 파이썬 시험: `cd tools/vision-check && uv run pytest -q`(2026-10-02 Mac 98/98).
-  - 게임 화면 수집(`replay`·`replay-land`)은 **포트 4470**에서 도는 개발 서버를 쓴다(코드에 고정). 수집할 커밋의 체크아웃에서 `FLS_TELEMETRY=0 npm run dev -- --host 127.0.0.1 --port 4470 --strictPort`를 먼저 띄운다. 다른 세션의 서버·포트는 쓰지 않는다. 수집은 계측을 포함해 성능 측정이 아니다.
-- **검출기 상태**: `config/detectors.json`. 문턱은 `config/recall.json`이다.
+- **파이썬 시험**: `cd tools/vision-check && uv run pytest -q`.
+  - 원본 캡처가 없으면 130 통과 · 3 건너뜀이다(2026-10-02 Mac).
+    - 건너뛰는 셋은 `tests/test_rock_expansion.py`다.
+    - 이 시험은 저장소 맨 위 `report/expansion/raw/<장면>/capture.json`의 실제 캡처를 읽는다(1.1 GB, 저장소에 넣지 않음).
+  - 캡처를 이으면 132 통과 · 1 xfail이다(2026-10-02 Mac).
+    - Astra의 로컬 사본 `~/fls-astra-vision/report`를 저장소 맨 위 `report`로 잠시 링크해 돌리고, 끝나면 링크를 지웠다.
+    - xfail은 알려진 놓침 하나(습지에서 나무에 가린 바위)다.
+- **화면 수집**(`replay`·`replay-land`)은 **포트 4470**의 개발 서버를 쓴다(코드에 고정).
+  - 수집할 커밋의 체크아웃에서 `FLS_TELEMETRY=0 npm run dev -- --host 127.0.0.1 --port 4470 --strictPort`를 먼저 띄운다.
+  - 다른 세션의 서버·포트는 쓰지 않는다.
+  - 수집은 계측을 포함하므로 성능 측정이 아니다.
+- **검출기 상태**: `config/detectors.json`. 문턱은 `config/expansion.json`, 부위 카탈로그는 `config/component-parts.json`이다.
+  - 2026-10-02 사용자 판정으로 **여섯 모두 "사용"**이다. 검출은 사람이 확인해 고칠 결함 후보로 다룬다.
+  - **교정 성능(같은 시험지로 조정) — 홀드아웃 검증 전, 병합 관문 아님.**
+    - 아래 수치는 동결 시험지를 보고 문턱과 코드를 맞춘 뒤 그 시험지에서 잰 것이다. 독립 시험이 아니다.
+    - 정밀도는 주석 영역 안 후보만 센다(후보 404개 중 35개). 영역 밖 369개는 평가하지 않았다.
+    - 어느 검출기도 병합을 막지 않는다.
 
-  | 상태 | 검출기 | 정답지 재현율 / 정밀도 |
-  |---|---|---|
-  | 사용 | `straight_boundary` 경계 | 85.7 % / 85.7 % |
-  | 사용 | `tile_seam` 이음새 | 100 % / 100 % |
-  | 사용 | `stationary_person` 멈춘 사람 | 100 % / 100 % |
-  | 사용 | `roof_overlap` 겹침(지붕 위 사람) | 100 % / 100 % |
-  | 실험 | `scale_ratio` 크기 | 50 % / 100 % |
-  | 실험 | `repeat_density` 반복 | 100 % / 50 % |
+  | 상태 | 검출기 | 양성 | TP · FP · FN | 재현율 / 정밀도 |
+  |---|---|---:|---|---|
+  | 사용 | `straight_boundary` 경계 | 9 | 7 · 1 · 2 | 77.8 % / 87.5 % |
+  | 사용 | `tile_seam` 이음새 | 6 | 5 · 0 · 1 | 83.3 % / 100 % |
+  | 사용 | `stationary_person` 멈춘 사람 | 7 | 7 · 0 · 0 | 100 % / 100 % |
+  | 사용 | `roof_overlap` 겹침(지붕·벽 위 사람) | 6 | 6 · 0 · 0 | 100 % / 100 % |
+  | 사용 | `scale_ratio` 크기 | 5 | 4 · 0 · 1 | 80 % / 100 % |
+  | 사용 | `repeat_density` 반복 | 5 | 4 · 1 · 1 | 80 % / 80 % |
 
-  - **사용**: 그 검출은 사람이 확인해 고칠 결함 후보로 다룬다.
-  - **실험**: 사람이 볼 단서일 뿐 관문이 아니다.
-  - 수치는 보정용 정답지에서 잰 것이다(같은 장면으로 문턱을 맞췄음). 독립 시험이 아니다.
-- **동결 정답 시험지**: `testdata/frozen-truth-20261002/`.
-  - 알려진 양성 19개, 정상 대조 주석 12개, 13개 시퀀스. Astra가 후보를 보기 전에 사람이 고정했다.
-  - 함께 든 것: `truth-*.json`·`truth-combined.json`, 기록된 해시(`truth-*.sha256`), 사람이 의미 오탐으로 뺀 목록(`human-rejections.json`), 두 판의 검출 결과(`enhanced-findings.json`·`baseline-findings.json`)와 채점(`score-*`), 장면 목록·출처(`scene-manifest.json`·`PROVENANCE.json`), `PRECISION.md`.
+  - 남은 놓침은 다섯이다.
+    - 습지에서 나무에 가린 바위: 경계·이음새 각 1.
+    - 숲 seed2 서남쪽 바닥 직각: 경계 1.
+    - seed4 닫힌 갈색 문: 크기 1.
+    - seed1 가운데 실타래: 반복 1.
+  - 오탐은 둘이다: 습지 나무 갓 명암선(경계 1), seed1 남쪽 실타래 중복 경보(반복 1).
+  - 손수레 바퀴 이상과 실제 빗줄기는 양성이 없어 그 하위 유형의 재현율은 재지 않았다.
+- **동결 정답 시험지**: `testdata/frozen-truth-expansion-20261002/`.
+  - 검출기별 양성 단위 38개(경계 9 · 이음새 6 · 멈춤 7 · 겹침 6 · 크기 5 · 반복 5)이고, 14장면 × 20프레임이다. 검출 전에 사람이 고정했다.
+  - 정답 파일:
+    - `truth-{ground,humans,objects,repeat}-frozen.json`과 합본 `truth-all-frozen.json`.
+    - 기록된 해시 `truth-*.sha256`. 넷 모두 일치했다. `truth-humans-frozen.json`에는 해시 파일이 오지 않았다.
+  - 함께 든 것:
+    - 두 판의 검출 결과(`enhanced-findings.json`·`baseline-findings.json`)와 채점(`score-enhanced/`·`score-baseline/`).
+    - 사람 판독 목록(`baseline-human-rejections.json`·`final-object-rejections.json`).
+    - 범위·출처·입력 해시(`*-coverage.json`·`*-provenance.json`·`SCENE_PROVENANCE.md`·`INPUT_SHA256.json`).
+    - 정답 설명(`GROUND_TRUTH.md`·`HUMAN_TRUTH.md`·`OBJECT_TRUTH.md`)과 `PRECISION.md`.
   - 폴더 전체 해시는 `SHA256SUMS`다. 고치지 말 것.
-  - 다시 채점: `npm run vision:check -- benchmark testdata/frozen-truth-20261002/enhanced-findings.json testdata/frozen-truth-20261002/truth-combined.json <출력 폴더> --human-rejections testdata/frozen-truth-20261002/human-rejections.json`.
-    - 2026-10-02 Mac에서 저장된 채점(`score-enhanced/metrics.json`)과 같게 나왔다: 17 TP · 2 FP · 2 FN.
-- 아래는 Astra의 원래 설명이다(경로는 Astra의 독립 클론 기준).
+  - 다시 채점: `npm run vision:check -- benchmark testdata/frozen-truth-expansion-20261002/enhanced-findings.json testdata/frozen-truth-expansion-20261002/truth-all-frozen.json <출력 폴더>`.
+    - 2026-10-02 Mac에서 저장된 `score-enhanced/metrics.json`·`MATCHES.json`과 바이트까지 같았다.
+    - 기준선(`baseline-findings.json`, `--human-rejections testdata/frozen-truth-expansion-20261002/baseline-human-rejections.json`)도 저장된 채점과 같았다.
+  - 앞 회차의 작은 시험지(양성 19)는 `docs/qa/vision-check-20261002/recall/`에 남아 있다.
+- 아래는 Astra의 원래 설명이다(경로는 Astra의 독립 클론 기준). 확장 회차의 실행법은 `EXPANSION_README.md`에 있다.
 
 ---
 
 # Charter & Kin 시각 자연스러움 검사기
+
+**최신 확장 회차:** [EXPANSION_README.md](EXPANSION_README.md)의 부위 분리·정상 재고·확장 시험지를 먼저 적용한다.
 
 **재현율 후속 회차:** [RECALL_README.md](RECALL_README.md)의 커밋·카메라·채점법을 우선 적용한다. 아래 기존 실행 수치는 첫 정밀도 회차 설명이다.
 

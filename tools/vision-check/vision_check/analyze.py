@@ -4,13 +4,13 @@ from __future__ import annotations
 
 import json
 import time
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 import typer
 
 if TYPE_CHECKING:
     from collections.abc import Sequence
-    from pathlib import Path
 
     from .masks import SceneMasks
 
@@ -18,9 +18,12 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw
 
+from .component_catalog import load_catalog
+from .component_parts import ComponentEvidence, component_draws
 from .contracts import Capture
 from .figures import FigureEvidence, detect_figures
 from .ground import detect_ground
+from .inventory import inventory_skip_counts
 from .masks import sprite_rgba
 from .models import Draw, Finding, Scene, Thresholds
 from .normalize import normalized
@@ -191,6 +194,7 @@ def analyze(repo: Path, report: Path, config: Path | None = None, name: str = "b
     started = time.perf_counter()
     all_findings: list[Finding] = []
     summaries: list[dict[str, object]] = []
+    catalog = load_catalog(Path(__file__).resolve().parents[1] / "config/component-parts.json")
     for source in sorted((report / "raw").glob("*/capture.json")):
         capture = Capture.model_validate_json(source.read_text())
         scene, masks, expected = normalized(capture, repo / "public")
@@ -199,10 +203,15 @@ def analyze(repo: Path, report: Path, config: Path | None = None, name: str = "b
             for frame in scene.frames
         ]
         parts: list[tuple[Draw, np.ndarray[tuple[int, ...], np.dtype[np.uint8]]]] = []
+        component_evidence = ComponentEvidence(
+            image=images[0], catalog=catalog, public_root=repo / "public"
+        )
         hidden_scale_assets: set[tuple[str, int]] = set()
         for raw_draw in capture.frames[0].draws:
             rgba = sprite_rgba(raw_draw, repo / "public")
             if rgba is not None:
+                components = component_draws(raw_draw, rgba, component_evidence)
+                parts.extend(components)
                 if any(word in raw_draw.asset for word in ("barrel", "sack")) and not visible_part(
                     images[0], raw_draw, rgba, raw_draw
                 ):
@@ -288,6 +297,10 @@ def analyze(repo: Path, report: Path, config: Path | None = None, name: str = "b
                 "ground_fraction": float(np.count_nonzero(masks.ground) / masks.ground.size),
                 "findings": len(found),
                 "semantic_parts": len(parts),
+                "catalog_components": sum("#component=" in draw.asset for draw, _ in parts),
+                "normal_inventory_skipped_draw_calls": inventory_skip_counts(
+                    scene.frames[0].draws
+                ),
                 "rain": rain_coverage,
                 "notes": masks.notes,
             }

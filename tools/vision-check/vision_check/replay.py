@@ -15,12 +15,15 @@ from playwright.sync_api import sync_playwright
 
 from .capture import PREFERENCES, ROOT, STATE, STRING, dismiss
 from .contracts import Capture, Reading
+from .save_seed import read_save_seed
 
 if TYPE_CHECKING:
     from playwright.sync_api import Page
 
 
-def _frames(page: Page, output: Path, name: str, zoom: float, gap: int = 100) -> Capture:
+def _frames(  # noqa: PLR0913 -- capture coordinates and provenance are explicit.
+    page: Page, output: Path, name: str, zoom: float, *, seed: int, gap: int = 100
+) -> Capture:
     folder = output / "raw" / name
     folder.mkdir(parents=True, exist_ok=True)
     frames: list[Reading] = []
@@ -61,7 +64,7 @@ def _frames(page: Page, output: Path, name: str, zoom: float, gap: int = 100) ->
         id=name,
         terrain="historical",
         season="saved",
-        seed=1,
+        seed=seed,
         zoom=zoom,
         cohort="benchmark",
         qa_text=qa,
@@ -100,6 +103,7 @@ def replay(  # noqa: PLR0913, PLR0917 -- explicit archived scene coordinates.
     payload = save.read_bytes()
     if payload.startswith(b"\x1f\x8b"):
         payload = gzip.decompress(payload)
+    save_metadata = read_save_seed(payload)
     commit = subprocess.run(
         ["git", "rev-parse", "HEAD"],  # noqa: S607 -- git resolved by the caller environment.
         cwd=repo,
@@ -155,12 +159,17 @@ def replay(  # noqa: PLR0913, PLR0917 -- explicit archived scene coordinates.
                     pan,
                 )
                 page.clock.run_for(100)
-            capture = _frames(page, output, name, zoom, gap=interval_ms)
+            capture = _frames(
+                page, output, name, zoom, seed=save_metadata.state.seed, gap=interval_ms
+            )
             provenance = {
                 "repo": str(repo.resolve()),
                 "commit": commit,
                 "save": str(save.resolve()),
                 "save_sha256": hashlib.sha256(payload).hexdigest(),
+                "seed": save_metadata.state.seed,
+                "seed_source": "save.state.seed",
+                "save_schema_version": save_metadata.schema_version,
                 "requested_camera": {"zoom": zoom, "center": center, "pan": pan},
                 "observed_camera": capture.frames[0].camera.model_dump(),
                 "observed_viewport": capture.frames[0].viewport.model_dump(),
@@ -169,6 +178,8 @@ def replay(  # noqa: PLR0913, PLR0917 -- explicit archived scene coordinates.
             }
             (output / "raw" / name / "replay.json").write_text(json.dumps(provenance, indent=2))
             if confirm:
-                _frames(page, output, name + "-confirm", zoom, gap=600)
+                _frames(
+                    page, output, name + "-confirm", zoom, seed=save_metadata.state.seed, gap=600
+                )
         finally:
             browser.close()

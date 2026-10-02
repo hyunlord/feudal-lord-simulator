@@ -18,14 +18,15 @@ from .models import Box, Finding, Metric, Scene, Thresholds
 Image = np.ndarray[tuple[int, ...], np.dtype[np.uint8]]
 Contour = np.ndarray[tuple[int, ...], np.dtype[np.int32]]
 MAX_SATURATION = 65
-MAX_WARM_HUE = 45
+MAX_WARM_HUE = 30
 MIN_VALUE = 60
 MAX_VALUE = 215
 MIN_TEXTURE = 8
 MIN_MASK_COVERAGE = 0.9
-MIN_EDGE_COUNT = 4
-MIN_ALIGNED_PERIMETER = 0.35
-MAX_ANGLE_ERROR = 3
+MIN_EDGE_COUNT = 3
+MIN_ALIGNED_PERIMETER = 0.10
+MAX_ANGLE_ERROR = 6
+MAX_ROUNDNESS = 0.75
 ISO_ANGLE = math.degrees(math.atan(0.5))
 
 
@@ -39,7 +40,7 @@ def _segments(contour: Contour, pitch: float) -> list[tuple[float, float]]:
         dy = int(polygon.flat[end * 2 + 1]) - int(polygon.flat[index * 2 + 1])
         length = math.hypot(dx, dy)
         angle = (math.degrees(math.atan2(dy, dx)) + 90) % 180 - 90
-        if length >= max(24, pitch * 0.55) and abs(abs(angle) - ISO_ANGLE) <= MAX_ANGLE_ERROR:
+        if length >= max(12, pitch * 0.3) and abs(abs(angle) - ISO_ANGLE) <= MAX_ANGLE_ERROR:
             result.append((length, angle))
     return result
 
@@ -47,7 +48,7 @@ def _segments(contour: Contour, pitch: float) -> list[tuple[float, float]]:
 def detect_rock_cuts(
     image: Image, scene: Scene, thresholds: Thresholds, ground_mask: Image | None = None
 ) -> list[Finding]:
-    """Return stone-region candidates with at least four opposing isometric cuts.
+    """Return stone-region candidates with at least three opposing isometric cuts.
 
     Ground masks exclude roofs, UI and world exterior. No asset identity, terrain
     name, scene ID, pixel coordinate or reference image is used by this detector.
@@ -69,7 +70,9 @@ def detect_rock_cuts(
     for raw in contours:
         contour = np.asarray(raw, dtype=np.int32)
         area = cv2.contourArea(contour)
-        if area < pitch * pitch * 0.8:
+        perimeter = cv2.arcLength(contour, closed=True)
+        roundness = 4 * math.pi * area / max(1, perimeter * perimeter)
+        if area < pitch * pitch * 0.25 or roundness > MAX_ROUNDNESS:
             continue
         region = np.zeros(image.shape[:2], dtype=np.uint8)
         cv2.drawContours(region, [contour], -1, 255, cv2.FILLED)
@@ -97,7 +100,7 @@ def detect_rock_cuts(
                 detector="straight_boundary",
                 box=Box(x=x, y=y, width=width, height=height),
                 score=min(0.98, 0.65 + len(segments) * 0.025),
-                reason="회색 바위 영역의 외곽이 서로 반대인 등각 칸 방향으로 네 번 이상 잘림",
+                reason="회색 바위 영역의 외곽이 서로 반대인 등각 칸 방향으로 세 번 이상 잘림",
                 metrics=(
                     Metric(name="aligned_perimeter", value=aligned),
                     Metric(name="rock_cut_edges", value=len(segments), unit="count"),
@@ -110,9 +113,9 @@ def detect_rock_cuts(
     return sorted(findings, key=lambda item: (-item.score, item.id))[: thresholds.max_per_detector]
 
 
-DARK_STAMP_VALUE = 60
-MIN_STAMP_PAIRS = 8
-MIN_STAMP_SUPPORT = 0.4
+DARK_STAMP_VALUE = 70
+MIN_STAMP_PAIRS = 3
+MIN_STAMP_SUPPORT = 0.3
 
 
 def detect_rock_seams(
@@ -121,7 +124,7 @@ def detect_rock_seams(
     """Detect dark small stamps repeating at tile vectors beside cut stone.
 
     This is a tile-border stamp subdetector, not a relabelled contour alert: at
-    least eight independent pixel component pairs must repeat at (W/2, W/4).
+    least three independent pixel component pairs must repeat at (W/2, W/4).
     A cut with no such repeated dark pixel components yields no seam candidate.
     """
     gray: Image = np.asarray(cv2.cvtColor(image, cv2.COLOR_RGB2GRAY), dtype=np.uint8)
@@ -150,9 +153,9 @@ def detect_rock_seams(
         x, y, width, height = cv2.boundingRect(contour)
         area = cv2.contourArea(contour)
         if (
-            max(2, scene.zoom * 2) <= width <= scene.zoom * 10
-            and max(2, scene.zoom * 2) <= height <= scene.zoom * 8
-            and scene.zoom**2 < area < scene.zoom**2 * 50
+            max(1, scene.zoom) <= width <= scene.zoom * 10
+            and max(1, scene.zoom) <= height <= scene.zoom * 8
+            and scene.zoom**2 * 0.2 < area < scene.zoom**2 * 50
             and band[int(y + height / 2), int(x + width / 2)] > 0
         ):
             points.append((x + width / 2, y + height / 2))
