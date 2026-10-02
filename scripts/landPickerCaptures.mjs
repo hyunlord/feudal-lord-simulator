@@ -112,7 +112,8 @@ const flows = {};
   flows.pickThenDismiss = await land();
   await fresh();
   await page.locator(".welcome-seed-field").fill("118");
-  await page.locator(".welcome-parchment [data-scenario]").first().click(); await centre(); await page.waitForTimeout(500);
+  // aria-disabled: Playwright waits for an enabled element, so the refused press is forced (it still reaches the button).
+  await page.locator(".welcome-parchment [data-scenario]").first().click({ force: true }); await centre(); await page.waitForTimeout(500);
   flows.unbuildableRefused = { welcome: await page.locator(".welcome-parchment").count() === 1, problem: await page.locator(".welcome-seed-problem").textContent() };
   await page.locator(".welcome-seed-field").fill("");
   await centre(); await page.waitForTimeout(300);
