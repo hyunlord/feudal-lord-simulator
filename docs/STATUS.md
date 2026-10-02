@@ -2,16 +2,21 @@
 
 게임 이름: 영어 **Charter & Kin**, 한국어 **인장과 가문**(2026-10-02 결정 TITLE-1, 가제 "봉건 영주 시뮬레이터" 대체). 출시 전 상표 확인 필요(로드맵 TRADEMARK). 게임 안의 타이틀 화면·창 제목은 렌더가 정식 로고가 오면 바꾼다.
 
-갱신: 2026-10-02(FIX-14 · LM-E8 · FIX-13 · LM-E5 · LM-E4 · FIX-12 · LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-10-02(FIX-15 · FIX-14 · LM-E8 · FIX-13 · LM-E5 · LM-E4 · FIX-12 · LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
 
 ## 현재 단계
 
+- **FIX-15 물 둘레 성벽 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 판정): [보고서](verification/fix15/REPORT.md), [명세](design/water-perimeter.md) WP-1~WP-4, 결정 FX15-1~4.
+  - 성벽 고리가 물을 지나는 칸은 쌓지 않고 물을 둘레로 친다(공사장·성문은 땅에만). 봇은 땅 고리가 모두 실패할 때만 쓴다.
+  - seed 77777이 1310년에 칙허를 내고 1320년까지 공사·벌목이 이어진다. 칙허 전 상인 목재는 27d·장날 하나·한 번 60.
+  - 렌더가 받을 것: 플레이어 성벽 초안 검증에 `{ waterReach: true }`(지금은 화면이 물 고리를 거절).
+
 - **FIX-14 초반 지루함 대책 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 판정): [보고서](verification/fix14/REPORT.md), [명세](design/stewardship.md) SW-11~SW-13, 결정 FX14-1~6.
   - 홈 영지 청원 열둘(영주에게 바로, 해마다 하나 이상)과 청지기 선례(예외 규칙 `recurring`으로 다시 올림). 3 seed 20년 판에서 결정 0인 해 없음, 한 해 최대 23.
-  - seed 77777: 도시가 칙허 목재를 상인에게 사서 1310년에 조건을 채움(촌락은 상인이 창고로 실어 옴, TT-5 승인). 남은 막힘은 칙허 성벽 자리.
+  - seed 77777: 도시가 칙허 목재를 상인에게 사서 1310년에 조건을 채움(촌락은 상인이 창고로 실어 옴, TT-5 승인). 남은 막힘이던 칙허 성벽 자리는 FIX-15에서 풀림.
   - 명령이 만든 세력 줄(영지 청원 답·감사 처벌)이 이제 세력 관계에 반영된다.
 - **게임 제목 결정 — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 사용자 판정 2026-10-02, 게임 코드 0줄): 영어 Charter & Kin, 한국어 인장과 가문(결정 TITLE-1). 헌장·로드맵 머리·STATUS의 이름을 바꾸고, 로드맵 TITLE을 완료로, TRADEMARK(출시 전 상표 확인)를 남겼다.
 - **LM-E8 수직 조각 준비 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/lme8/REPORT.md), [명세](design/lord-slice.md) LS-1~LS-5, 결정 LM8-1~5.
