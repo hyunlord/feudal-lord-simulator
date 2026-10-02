@@ -166,7 +166,7 @@ function walker(input: {
   }
 }
 
-test("Given an eligible hamlet and a 40-step candidate When confirming Then proclamation creates ten ordered wall sites costing 600 timber", () => {
+test("Given an eligible hamlet and a 40-step candidate When confirming Then proclamation creates ten ordered wall sites costing 320 timber", () => {
   // Given
   const state = eligibleState();
 
@@ -180,13 +180,13 @@ test("Given an eligible hamlet and a 40-step candidate When confirming Then proc
   assert.ok(next.palisade !== null);
   assert.equal(next.palisade.segments.length, 10);
   assert.equal(next.constructionSites.length, 10);
-  assert.equal(next.constructionSites.reduce((total, site) => total + (site.required.timber ?? 0), 0), 600);
+  assert.equal(next.constructionSites.reduce((total, site) => total + (site.required.timber ?? 0), 0), 320); // FIX-16: 40 steps × 8
   assert.deepEqual(next.constructionSites.map((site) => site.requiredBuilderTicks), Array(10).fill(120));
   assert.equal(new Set(siteIds(next.palisade)).size, 10);
   assert.equal(next.nextConstructionOrdinal, state.nextConstructionOrdinal + 1);
 });
 
-test("Given exactly 250 spendable timber When proclaiming a 600-timber wall Then every site starts and later delivery owns the shortfall", () => {
+test("Given exactly 250 spendable timber When proclaiming a 320-timber wall Then every site starts and later delivery owns the shortfall", () => {
   // Given: the published era threshold is met, but the full enclosure is not prepaid.
   const state = eligibleState({ treasuryTimber: 250 });
 
@@ -198,7 +198,7 @@ test("Given exactly 250 spendable timber When proclaiming a 600-timber wall Then
   assert.equal(next.era, "palisade");
   assert.equal(next.treasuryTimber, 250);
   assert.equal(next.constructionSites.length, 10);
-  assert.equal(next.constructionSites.reduce((total, site) => total + (site.required.timber ?? 0), 0), 600);
+  assert.equal(next.constructionSites.reduce((total, site) => total + (site.required.timber ?? 0), 0), 320); // FIX-16: 40 steps × 8
   assert.equal(next.constructionSites.every((site) => (site.delivered.timber ?? 0) === 0), true);
 });
 
@@ -208,15 +208,15 @@ test("Given perimeter lengths When segmenting Then each site covers at most four
 
   // When / Then
   for (const [steps, expectedSites, expectedTimber] of [
-    [1, 1, 15],
-    [4, 1, 60],
-    [5, 2, 75],
-    [40, 10, 600],
-    [41, 11, 615],
+    [1, 1, 8],
+    [4, 1, 32],
+    [5, 2, 40],
+    [40, 10, 320],
+    [41, 11, 328],
   ] as const) {
     const segments = segmentPalisadePathForConstruction(pathWithSteps(steps));
     assert.equal(segments.length, expectedSites, `steps ${steps}`);
-    assert.equal(segments.reduce((total, segment) => total + segment.tileCount * 15, 0), expectedTimber, `steps ${steps}`);
+    assert.equal(segments.reduce((total, segment) => total + segment.tileCount * 8, 0), expectedTimber, `steps ${steps}`);
     assert.equal(segments.every((segment) => segment.tileCount <= 4), true, `steps ${steps}`);
   }
 });

@@ -128,6 +128,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/wave29WaterManifest.generated.ts", // INSTALL-29 water motion
     "src/render/wave22GroundManifest.generated.ts", // LAND-UI the lands' ground (Wave 22)
     "src/render/wave34WorksManifest.generated.ts", // LAND-UI fords and fen drainage works
+    "src/render/wave41LandManifest.generated.ts", // NAT-4 the forest edge strip and the width-1 fords (Wave 41 additions)
     "src/render/wave12GuildhallManifest.generated.ts", // UI-9 chapter 4 guildhall world prop
     "src/render/wave17WalkerManifest.generated.ts", // UI-9b the lord's tax collector
   ];

@@ -80,7 +80,7 @@ test("Given a reserve deadlock When construction priority is selected Then diagn
   for (let tick = 0; tick < 1200; tick += 1) state = advanceTick(state);
   const site = state.constructionSites.find((candidate) => candidate.id === "wall-a-segment-000");
   assert.ok(site);
-  assert.equal(site.delivered.timber, 15);
+  assert.equal(site.delivered.timber, 8); // FIX-16: one step × 8
   assert.ok(site.builderTicks > 0);
 });
 

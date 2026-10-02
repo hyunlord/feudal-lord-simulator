@@ -1,0 +1,94 @@
+{
+  "calls:chalk_downs-summer-after": {
+    "tile": [
+      42,
+      30
+    ],
+    "rasters": 68,
+    "fill": 22651,
+    "drawImage": 9574,
+    "fillRect": 0,
+    "stroke": 446,
+    "perRaster": 480
+  },
+  "calls:chalk_downs-summer-before": {
+    "tile": [
+      42,
+      30
+    ],
+    "rasters": 64,
+    "fill": 21414,
+    "drawImage": 9032,
+    "fillRect": 0,
+    "stroke": 374,
+    "perRaster": 482
+  },
+  "calls:coastal_port-summer-after": {
+    "tile": [
+      14,
+      20
+    ],
+    "rasters": 38,
+    "fill": 13056,
+    "drawImage": 6831,
+    "fillRect": 0,
+    "stroke": 295,
+    "perRaster": 531
+  },
+  "calls:coastal_port-summer-before": {
+    "tile": [
+      14,
+      20
+    ],
+    "rasters": 38,
+    "fill": 13056,
+    "drawImage": 6831,
+    "fillRect": 0,
+    "stroke": 295,
+    "perRaster": 531
+  },
+  "calls:fen_drainage-summer-after": {
+    "tile": [
+      20,
+      52
+    ],
+    "rasters": 46,
+    "fill": 17601,
+    "drawImage": 2537,
+    "fillRect": 0,
+    "stroke": 327,
+    "perRaster": 445
+  },
+  "calls:fen_drainage-summer-before": {
+    "tile": [
+      20,
+      52
+    ],
+    "rasters": 46,
+    "fill": 17601,
+    "drawImage": 2537,
+    "fillRect": 0,
+    "stroke": 327,
+    "perRaster": 445
+  },
+  "riverside": {
+    "chunks": 42,
+    "afterChunks": 42,
+    "differing": [],
+    "sample": {
+      "1,2": [
+        "162926234|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #27eab6d 516x260",
+        "162926234|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #27eab6d 516x260"
+      ],
+      "2,2": [
+        "2310667802|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #fbaa7390 516x260",
+        "2310667802|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #fbaa7390 516x260"
+      ],
+      "3,2": [
+        "3834776865|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #425d074e 516x260",
+        "3834776865|2047:11111:1:w11111111111111111:ws:i1:r1|1.00 #425d074e 516x260"
+      ]
+    }
+  },
+  "errors": []
+}

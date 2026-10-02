@@ -1,0 +1,255 @@
+{
+ "url": "http://127.0.0.1:4302/",
+ "threshold": 24,
+ "budgets": {
+  "normal": [
+   6,
+   8
+  ],
+  "build": [
+   15,
+   20
+  ],
+  "placement": [
+   6,
+   9
+  ],
+  "zone": [
+   8,
+   12
+  ],
+  "selection": [
+   18,
+   24
+  ],
+  "ledger": [
+   25,
+   30
+  ]
+ },
+ "budgets1280": {
+  "normal": 6.5,
+  "placement": 6.5,
+  "build": 15.5,
+  "zone": 8.5
+ },
+ "pass": true,
+ "rows": [
+  {
+   "resolution": "1280x800",
+   "state": "normal",
+   "percent": 6.5,
+   "budget": 6.5,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "build",
+   "percent": 15.3,
+   "budget": 15.5,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "placement",
+   "percent": 6.5,
+   "budget": 6.5,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "ledger",
+   "percent": 23.1,
+   "budget": 25,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "selection",
+   "percent": 17.2,
+   "budget": 18,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "selection",
+   "percent": 17.2,
+   "view": "store",
+   "budget": 18,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "zone",
+   "percent": 7.9,
+   "budget": 8.5,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "zone",
+   "percent": 8.4,
+   "view": "armed",
+   "budget": 8.5,
+   "pass": true
+  },
+  {
+   "resolution": "1280x800",
+   "state": "normal",
+   "percent": 6.5,
+   "canvasTags": 1,
+   "tagPercent": 0.2,
+   "view": "chapter2-wall-works",
+   "beforeTags": {
+    "tags": 32,
+    "percent": 5.8
+   },
+   "budget": 6.5,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "normal",
+   "percent": 3.3,
+   "budget": 6,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "build",
+   "percent": 7.7,
+   "budget": 15,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "placement",
+   "percent": 3.3,
+   "budget": 6,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "ledger",
+   "percent": 11.6,
+   "budget": 25,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "selection",
+   "percent": 8.7,
+   "budget": 18,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "selection",
+   "percent": 8.7,
+   "view": "store",
+   "budget": 18,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "zone",
+   "percent": 4,
+   "budget": 8,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "zone",
+   "percent": 4.2,
+   "view": "armed",
+   "budget": 8,
+   "pass": true
+  },
+  {
+   "resolution": "1920x1080",
+   "state": "normal",
+   "percent": 3.5,
+   "canvasTags": 1,
+   "tagPercent": 0.1,
+   "view": "chapter2-wall-works",
+   "beforeTags": {
+    "tags": 32,
+    "percent": 2.9
+   },
+   "budget": 6,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "normal",
+   "percent": 7.4,
+   "budget": 8,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "build",
+   "percent": 17.9,
+   "budget": 20,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "placement",
+   "percent": 7.3,
+   "budget": 9,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "ledger",
+   "percent": 28.1,
+   "budget": 30,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "selection",
+   "percent": 18.4,
+   "budget": 24,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "selection",
+   "percent": 18.5,
+   "view": "store",
+   "budget": 24,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "zone",
+   "percent": 8.7,
+   "budget": 12,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "zone",
+   "percent": 9.3,
+   "view": "armed",
+   "budget": 12,
+   "pass": true
+  },
+  {
+   "resolution": "tablet-1180x820",
+   "state": "normal",
+   "percent": 7.8,
+   "canvasTags": 1,
+   "tagPercent": 0.2,
+   "view": "chapter2-wall-works",
+   "beforeTags": {
+    "tags": 32,
+    "percent": 6.1
+   },
+   "budget": 8,
+   "pass": true
+  }
+ ]
+}

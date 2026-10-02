@@ -12,7 +12,8 @@ export type PersonClassBand = "labour" | "poor_servant" | "artisan" | "merchant"
 export type PersonBuild = "thin" | "average" | "heavy";
 /** PS-1: the person's place in the household (offices are tags: `reeve`, `manager:<buildingId>`, `petitioner:<petitionId>`). */
 export type PersonRole = "head" | "spouse" | "child" | "kin" | "steward";
-export type DeathCause = "age" | "captivity" | "famine" | "fire" | "plague";
+/** FIX-16: "famine" is hunger (a house without bread); "famine_year" a fed house's death in a year of dear bread. */
+export type DeathCause = "age" | "captivity" | "famine" | "famine_year" | "fire" | "plague";
 
 import type { PersonTraits } from "../content/personTraits";
 

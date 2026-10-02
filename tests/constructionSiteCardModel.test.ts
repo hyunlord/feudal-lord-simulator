@@ -128,7 +128,7 @@ test("supplied palisade segments show their own delivery status regardless of ga
 
   // Then
   assert.equal(queued.stall, "awaiting_materials");
-  assert.equal(model.currentStallLabel, "🪵 목재 오는 중 (0/30)");
+  assert.equal(model.currentStallLabel, "🪵 목재 오는 중 (0/16)"); // FIX-16: 2 steps × 8
   assert.deepEqual(model.cancellation, {
     enabled: false,
     reason: "목책 시대 선포 후에는 성벽 구간 공사를 취소할 수 없습니다",

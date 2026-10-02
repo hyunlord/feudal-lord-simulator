@@ -5,6 +5,7 @@ import type { Walker } from "../src/agents/walker.types";
 import { PALETTE, SEMANTIC_PALETTE } from "../src/content/palette";
 import type { GameState } from "../src/engine/engine.types";
 import { cargoColor, drawWalkers } from "../src/render/drawWalkers";
+import { VILLAGER_WORLD_SCALE } from "../src/render/walkerComposer";
 
 interface MockContext {
   fillStyle: string;
@@ -134,14 +135,16 @@ test("drawWalkers renders procedural figures with cargo above the head", () => {
     walkers: [carter(), distributor()],
   });
 
-  assert.ok(context.calls.includes("ellipse:48,62,2.75,1.1"));
-  assert.ok(context.calls.includes("fillRect:46,50,4,8"));
-  assert.ok(context.calls.includes(`arc:${48 + 2 * 0.55},${62 - 28 * 0.55 + 0.55},${4 * 0.55}`));
-  assert.ok(context.calls.includes("fillRect:47,41,3,3"));
-  assert.ok(context.calls.includes("fillRect:-1,17,3,3"));
-  assert.ok(context.calls.includes(`ellipse:0,${38 - 14 * 0.55},${5 * 0.55},${3 * 0.55}`));
-  assert.ok(context.calls.includes("fillRect:44,52,8,2"));
-  assert.ok(context.calls.includes("fillRect:45,55,6,1"));
+  // At the villager world scale (NAT-4 BLD-07: 0.5; the snapped rectangles follow it).
+  const scale = VILLAGER_WORLD_SCALE;
+  assert.ok(context.calls.includes(`ellipse:48,62,${5 * scale},${2 * scale}`));
+  assert.ok(context.calls.includes("fillRect:46,52,4,7"));
+  assert.ok(context.calls.includes(`arc:${48 + 2 * scale},${62 - 28 * scale + scale},${4 * scale}`));
+  assert.ok(context.calls.includes("fillRect:47,43,3,3"));
+  assert.ok(context.calls.includes("fillRect:-1,19,3,3"));
+  assert.ok(context.calls.includes(`ellipse:0,${38 - 14 * scale},${5 * scale},${3 * scale}`));
+  assert.ok(context.calls.includes("fillRect:45,53,7,2"));
+  assert.ok(context.calls.includes("fillRect:46,56,5,1"));
 });
 
 test("walker outlines stay one screen pixel across camera zoom", () => {
@@ -165,7 +168,7 @@ test("walker drawing snaps the visual anchor in transformed device pixels", () =
     2,
   );
 
-  const shadow = context.calls.find((call) => call.startsWith("ellipse:") && call.endsWith(",2.75,1.1"));
+  const shadow = context.calls.find((call) => call.startsWith("ellipse:") && call.endsWith(`,${5 * VILLAGER_WORLD_SCALE},${2 * VILLAGER_WORLD_SCALE}`));
   if (shadow === undefined) throw new Error("Expected walker shadow ellipse");
   const [x, y] = shadow.slice("ellipse:".length).split(",").map(Number);
   assert.ok(Math.abs((x ?? 0) - 47.85) < 0.000_001);

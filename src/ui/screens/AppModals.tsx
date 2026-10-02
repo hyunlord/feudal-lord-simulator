@@ -40,7 +40,7 @@ import { chapterStartYear, latestChapterEnd } from "../chronicleModel";
  * any time, and the ending again from the chronicle screen once it is written.
  */
 export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChroniclePerson, steward, onPerson, ledgerAuto, onLedgerAuto,
-  onMenuRequest, tutorial }: {
+  onMenuRequest, tutorial, chapterGoalsView = false }: {
   readonly ui: UiState;
   readonly sendUi: (event: UiEvent) => void;
   readonly personCardId: string | null;
@@ -52,6 +52,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   readonly onLedgerAuto: (next: boolean) => void;
   readonly onMenuRequest: (request: { readonly category: BuildCategory; readonly nonce: number }) => void;
   readonly tutorial: Pick<TutorialController, "enabled" | "setEnabled">;
+  /** QA-025: the preview was opened from the chapter's card ("목표 보기"): the current chapter's goals, a close button. */
+  readonly chapterGoalsView?: boolean;
 }) {
   const { dispatch } = useGameApi();
   const top = topModal(ui);
@@ -99,9 +101,11 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       // UI-8: the preview's chapter is always the one after the latest chapter end.
       // Goals shown are those of the next chapter. A built chapter (2, and 3–4 over their Wave 31 paintings) opens
       // with its title, line and goals; one not built yet shows "coming later" with its number.
-      const nextChapter = (latestChapterEnd(state)?.chapter ?? 1) + 1;
+      // QA-025: from the chapter's card, the chapter the town is in (after chapter 5's end that is still 5, not "6").
+      const nextChapter = chapterGoalsView ? state.politics?.chapter.number ?? 1 : (latestChapterEnd(state)?.chapter ?? 1) + 1;
       return <ChapterTwoPreview onContinue={() => sendUi({ type: "pop_modal" })} chapter={nextChapter} startYear={chapterStartYear(state, nextChapter)}
-        goals={chapterGoals(state).filter(goal => goal.chapter === nextChapter).map(goal => CHAPTER_COPY.goals[goal.id] ?? goal.id)} />;
+        goals={chapterGoals(state).filter(goal => goal.chapter === nextChapter).map(goal => CHAPTER_COPY.goals[goal.id] ?? goal.id)}
+        closeLabel={chapterGoalsView ? CHAPTER_COPY.goalsClose : null} />;
     })() : null}
     {top === "pause_menu" ? <PauseMenu onResume={() => sendUi({ type: "pop_modal" })}
       settings={<><Button type="button" className="pause-menu-book" onPress={() => sendUi({ type: "push_modal", modal: "chronicle_book" })}

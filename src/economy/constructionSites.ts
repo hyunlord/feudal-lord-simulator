@@ -86,7 +86,9 @@ export const CONSTRUCTION = {
   readonly REQUIRED_BUILDER_TICKS: Record<BuildingKind, number>;
 };
 
-const PALISADE_SEGMENT_TIMBER_PER_STEP = 15;
+// FIX-16: 15 → 8. A chapter-1 palisade of 54 steps cost 810 timber, about seven years of one fed sawmill (114 a year),
+// and held the market's timber for years in Astra's first playthrough; at 8 it is 432.
+const PALISADE_SEGMENT_TIMBER_PER_STEP = 8;
 const PALISADE_SEGMENT_MAX_STEPS = 4;
 const PALISADE_SEGMENT_REQUIRED_BUILDER_TICKS = 120;
 const STONE_WALL_SEGMENT_STONE = 25;

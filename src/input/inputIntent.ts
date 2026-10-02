@@ -6,9 +6,9 @@
 export type ScreenPoint = { readonly x: number; readonly y: number };
 export type WorldPoint = { readonly x: number; readonly y: number };
 
-/** Speed steps 0..3 map to the game speeds paused, 1x, 3x, 5x (`SPEED_STEPS`). */
-export type SpeedStep = 0 | 1 | 2 | 3;
-export const SPEED_STEPS = [0, 1, 3, 5] as const;
+/** Speed steps 0..4 map to the game speeds paused, 1x, 3x, 5x, 10x (`SPEED_STEPS`; NAT-4: 10x from FIX-13). */
+export type SpeedStep = 0 | 1 | 2 | 3 | 4;
+export const SPEED_STEPS = [0, 1, 3, 5, 10] as const;
 
 /** The step of a game speed (an unknown speed counts as 1x). */
 export function speedStepOf(speed: number): SpeedStep {

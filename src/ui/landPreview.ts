@@ -73,12 +73,21 @@ export function landPreviewPixels(archetypeId: string, seed: number): LandPrevie
 
 // Cache (AGENTS rule 10): (a) key `${archetypeId}|${seed}`; (b) nothing else enters — the scenario is fixed (the
 // default campaign; a land's opening map does not depend on it) and a land's opening is a pure function of
-// (land, seed); (c) each picture builds a whole opening state (~8 ms) and the picker redraws on every pick. At most
-// 4 lands × 5 seeds + the riverside = 21 pictures of 64 KB.
+// (land, seed); (c) each picture builds a whole opening state (~8 ms) and the picker redraws on every pick. NAT-4: any
+// of 999,999 numbers per land, so FIFO with at most PREVIEW_LIMIT pictures of 64 KB (eight numbers × five lands).
+export const PREVIEW_LIMIT = 40;
 const previews = new Map<string, LandPreviewPixels | null>();
 
 export function cachedLandPreview(archetypeId: string, seed: number): LandPreviewPixels | null {
   const key = `${archetypeId}|${seed}`;
-  if (!previews.has(key)) previews.set(key, landPreviewPixels(archetypeId, seed));
+  if (!previews.has(key)) {
+    if (previews.size >= PREVIEW_LIMIT) previews.delete(previews.keys().next().value!);
+    previews.set(key, landPreviewPixels(archetypeId, seed));
+  }
   return previews.get(key) ?? null;
+}
+
+/** How many pictures the cache holds (tests). */
+export function landPreviewCacheSize(): number {
+  return previews.size;
 }

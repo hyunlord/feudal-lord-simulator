@@ -5,7 +5,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import type { Building } from "../src/content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, type Building } from "../src/content/buildingConfig";
 import { DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { advanceStuckStock, STUCK_STOCK_CHECK_TICKS, stuckStock } from "../src/engine/stuckStock";
 
@@ -140,4 +140,13 @@ test("SK-3 advanceStuckStock keeps the first stuck tick and clears it once the g
   assert.equal(moved.buildings[0]?.stuckSinceTick, undefined);
   const between = at(STUCK_STOCK_CHECK_TICKS + 1, 3);
   assert.equal(advanceStuckStock(between), between);
+});
+
+test("FIX-16 a full store is no receiver: the mill's bread is receiver_full (받을 곳 가득) until the store has room", () => {
+  const mill = millBuilding({ workers: 2, inventory: { bread: 5 } });
+  const full = granary({ bread: BUILDING_CONFIG_BY_KIND.granary.storageCapacity });
+  const entries = stuckStock({ ...stateWithRoadAccess(), buildings: [mill, full] });
+  assert.deepEqual(entries.map(entry => [entry.buildingId, entry.resource, entry.amount, entry.reason]), [["test-mill", "bread", 5, "receiver_full"]]);
+  // With room in the store, the bread is not stuck.
+  assert.deepEqual(stuckStock({ ...stateWithRoadAccess(), buildings: [mill, granary({ bread: 10 })] }), []);
 });

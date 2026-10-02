@@ -211,7 +211,7 @@ function drawGroundChunk(
     if (zoom > 0.7 && (land === null || !hasLandFill(land, tile))) drawGroundDecalDetail(context, tile, input.state.seed);
     drawTerrainTransitions(context, input.state, tile, zoom, input.terrainPatterns, false, false);
   }
-  if (land !== null) drawLandEdges(context, land, plan);
+  if (land !== null) drawLandEdges(context, land, plan, season);
   drawForestFill(context, scene.forest, plan.forestLoops, plan.forestParity, box, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
   drawForestFringeDecals(context, scene.forest, plan.forestLoops, season);
   drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, box, bounds, input.state.seed, liveReeds(zoom, input.state), land === null ? undefined : landShoreStrips(context, land, scene.shore, plan.waterLoops, bounds));

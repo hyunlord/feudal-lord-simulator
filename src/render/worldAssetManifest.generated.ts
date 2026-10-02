@@ -69,23 +69,6 @@ export const runtimeWorldAssetManifest = {
       }
     },
     {
-      "key": "mill",
-      "category": "building",
-      "path": "public/assets/buildings/mill.png",
-      "width": 96,
-      "height": 160,
-      "renderScale": 0.44000000000000006,
-      "bakedArchitecture": false,
-      "anchor": {
-        "x": 48,
-        "y": 144
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      }
-    },
-    {
       "key": "barn",
       "category": "building",
       "path": "public/assets/buildings/barn.png",
@@ -171,91 +154,6 @@ export const runtimeWorldAssetManifest = {
       }
     },
     {
-      "key": "quarry",
-      "category": "building",
-      "path": "public/assets/buildings/quarry.png",
-      "width": 160,
-      "height": 120,
-      "renderScale": 0.5866666666666667,
-      "bakedArchitecture": false,
-      "anchor": {
-        "x": 80,
-        "y": 104
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      }
-    },
-    {
-      "key": "masonry",
-      "category": "building",
-      "path": "public/assets/buildings/masonry.png",
-      "width": 112,
-      "height": 120,
-      "renderScale": 0.5866666666666667,
-      "bakedArchitecture": false,
-      "anchor": {
-        "x": 56,
-        "y": 104
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      }
-    },
-    {
-      "key": "market",
-      "category": "building",
-      "path": "public/assets/buildings/market.png",
-      "width": 176,
-      "height": 136,
-      "renderScale": 0.5176470588235295,
-      "bakedArchitecture": false,
-      "anchor": {
-        "x": 88,
-        "y": 120
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      }
-    },
-    {
-      "key": "church",
-      "category": "building",
-      "path": "public/assets/buildings/church.png",
-      "width": 176,
-      "height": 208,
-      "renderScale": 0.49230769230769234,
-      "bakedArchitecture": false,
-      "anchor": {
-        "x": 88,
-        "y": 192
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      }
-    },
-    {
-      "key": "keep",
-      "category": "building",
-      "path": "public/assets/buildings/keep.png",
-      "width": 176,
-      "height": 232,
-      "renderScale": 0.44137931034482764,
-      "bakedArchitecture": false,
-      "anchor": {
-        "x": 88,
-        "y": 216
-      },
-      "footprint": {
-        "width": 2,
-        "height": 2
-      }
-    },
-    {
       "key": "house_l4",
       "category": "building",
       "path": "public/assets/buildings/house_l4.png",
@@ -266,23 +164,6 @@ export const runtimeWorldAssetManifest = {
       "anchor": {
         "x": 56,
         "y": 144
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      }
-    },
-    {
-      "key": "stone_wall_segment",
-      "category": "building",
-      "path": "public/assets/buildings/stone_wall_segment.png",
-      "width": 96,
-      "height": 80,
-      "renderScale": 1,
-      "bakedArchitecture": false,
-      "anchor": {
-        "x": 48,
-        "y": 78
       },
       "footprint": {
         "width": 1,
@@ -516,23 +397,6 @@ export const runtimeWorldAssetManifest = {
       "path": "public/assets/terrain/forest_floor.png",
       "width": 512,
       "height": 512,
-      "renderScale": 1,
-      "bakedArchitecture": false,
-      "anchor": {
-        "x": 0,
-        "y": 0
-      },
-      "footprint": {
-        "width": 1,
-        "height": 1
-      }
-    },
-    {
-      "key": "water",
-      "category": "terrain",
-      "path": "public/assets/terrain/water.png",
-      "width": 256,
-      "height": 256,
       "renderScale": 1,
       "bakedArchitecture": false,
       "anchor": {

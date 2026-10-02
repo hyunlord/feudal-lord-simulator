@@ -13,6 +13,8 @@
 //    construction, the camera on the wall works at zoom 1 — the default screen's budget. The construction tags are drawn
 //    on the canvas, so this state's hidden shot also hides them (the proof port's constructionLabels) and their boxes (the
 //    port's constructionTagBoxes, the frame of the first shot) join the DOM boxes.
+// The gate is not one run: HUD-MEDIAN (docs/decisions/README.md) judges each row by the median of three runs
+// (scripts/uiaudit1HudThrice.sh, then scripts/hudMedian.ts); this run's own `pass` and exit code are one sample.
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/measureHudCoverage.ts <out.json> --url <url> [--shots <dir>] [--only walls]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/measureHudCoverage.ts)", { remote: "scripts/remote/run.sh <세션>-<작업ID> -- node_modules/.bin/tsx scripts/measureHudCoverage.ts …", entry: import.meta.url });

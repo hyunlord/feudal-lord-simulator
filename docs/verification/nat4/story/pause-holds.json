@@ -1,0 +1,799 @@
+{
+ "url": "http://127.0.0.1:4306/",
+ "pause": [
+  {
+   "scene": "decline",
+   "surface": "goal-card.chapter (목표 보기)",
+   "absent": true
+  },
+  {
+   "scene": "decline",
+   "surface": "goal-card.settlement",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "goal drawer toggle",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "pause menu (Esc, then Esc)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "pause menu (Esc, then 계속)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "pause menu → chronicle book",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "chronicle (C)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "dock.ledger",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "dock.build",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "dock.steward",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "pill.population",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "pill.food → ledger",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "pill.season strip",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "decline",
+   "surface": "settings",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 22000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "goal-card.chapter (목표 보기)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "goal-card.settlement",
+   "absent": true
+  },
+  {
+   "scene": "raid",
+   "surface": "goal drawer toggle",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "pause menu (Esc, then Esc)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "pause menu (Esc, then 계속)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "pause menu → chronicle book",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "chronicle (C)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "dock.ledger",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "dock.build",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "dock.steward",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "pill.population",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "pill.food → ledger",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "pill.season strip",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "raid",
+   "surface": "settings",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 157000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "goal-card.chapter (목표 보기)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "goal-card.settlement",
+   "absent": true
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "goal drawer toggle",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "pause menu (Esc, then Esc)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "pause menu (Esc, then 계속)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "pause menu → chronicle book",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "chronicle (C)",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "dock.ledger",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "dock.build",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "dock.steward",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "pill.population",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "pill.food → ledger",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "pill.season strip",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  },
+  {
+   "scene": "royal_tax",
+   "surface": "settings",
+   "opened": true,
+   "held": true,
+   "before": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "during": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "after": {
+    "tick": 337000,
+    "seal": "일시 정지"
+   },
+   "error": null
+  }
+ ],
+ "allHeld": true,
+ "allOpened": true,
+ "chapter": {
+  "before": [
+   [
+    1,
+    77500,
+    null
+   ]
+  ],
+  "pageOpened": true,
+  "seenTicks": [
+   [
+    1,
+    77500,
+    77500
+   ]
+  ],
+  "slot": "수동 저장 시장도시 목표 · 64분째 · 인구 528 · 목책 시대",
+  "reopenedAfterLoad": false,
+  "afterLoad": {
+   "tick": 77500,
+   "ends": [
+    [
+     1,
+     77500,
+     77500
+    ]
+   ]
+  }
+ },
+ "food": {
+  "tick": 680084,
+  "bucketStart": 680040,
+  "state": 136,
+  "pill": 136,
+  "match": true
+ }
+}

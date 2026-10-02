@@ -18,7 +18,7 @@ import { chronicleIllustration, legacyRecordArt, reorgRecordArt } from "../chron
 import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { armsRecipe, heraldryArms, heraldryMark, royalArms } from "../heraldry/heraldry";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
-import { personEmblem } from "../persons/personModels";
+import { isOutsider, personEmblem } from "../persons/personModels";
 import { PERSON_TRAIT_COPY } from "../persons/personTraitCopy.ko";
 import { resemblanceParts } from "../persons/resemblance";
 import { drawnPortraitId } from "../portraitArt";
@@ -573,8 +573,9 @@ export function biographyView(state: GameState, personId: string): BiographyView
     // UI-8 (F3-A PL-2): show plague cause in the header; other death causes are visible in the events list already.
     deathCause: person.deathCause === "plague" && person.deathYear !== undefined
       ? CHRONICLE_SCREEN_COPY.plagueDeath(person.deathYear) : null,
-    // The steward's trade is the office itself (not "청지기 · 청지기").
-    role: CHRONICLE_SCREEN_COPY.role(person.role, person.occupation === person.role ? "" : occupationName(person.occupation)),
+    // The steward's trade is the office itself (not "청지기 · 청지기"); NAT-4 (QA-014): an outsider by his title alone.
+    role: isOutsider(person) ? occupationName(person.occupation)
+      : CHRONICLE_SCREEN_COPY.role(person.role, person.occupation === person.role ? "" : occupationName(person.occupation)),
     household: person.role === "head" ? null : person.householdId === MANOR_HOUSEHOLD ? CHRONICLE_SCREEN_COPY.household(null)
       : CHRONICLE_SCREEN_COPY.household(householdName(state, person.householdId)),
     resemblance: (parts => parts.length === 0 ? null : PERSON_TRAIT_COPY.resemblance(parts))(resemblanceParts(state, person)),

@@ -11,6 +11,7 @@ export interface FoodReserveWorld {
     readonly inventory: Partial<Record<string, number>>;
     readonly operationPaused?: boolean;
     readonly upkeepUnpaid?: boolean;
+    readonly stuckSinceTick?: Partial<Record<string, number>>;
   }[];
   readonly walkers: readonly { readonly cargo: { readonly resource: string; readonly amount: number } | null }[];
 }
@@ -25,6 +26,11 @@ export function millGrindRate(state: Pick<FoodReserveWorld, "buildings">): numbe
   return running * production.inputPerOutput / production.ticksPerOutput;
 }
 
+/** FIX-16: wheat in buildings whose wheat the stuck-stock check marks stuck (SK-3 `stuckSinceTick`) — bound wheat. */
+export function boundWheatOf(buildings: FoodReserveWorld["buildings"]): number {
+  return buildings.reduce((sum, building) => sum + (building.stuckSinceTick?.wheat === undefined ? 0 : Math.max(0, building.inventory.wheat ?? 0)), 0);
+}
+
 /**
  * FIX-1 food reserve: how long the town's stored food lasts at its current consumption, in ticks. Stored food is the
  * bread and wheat in buildings and on carts (the resource bar's stock; household larders excluded).
@@ -33,6 +39,7 @@ export function millGrindRate(state: Pick<FoodReserveWorld, "buildings">): numbe
  * consumption c bread a tick and mills grinding r wheat a tick (2 wheat → 1 bread), the food lasts the T where
  * B + min(W, r·T)/2 = c·T. Was B + W/2 whatever the mills: the UX-0b audit town read 900 days with its only mill
  * stopped, so the ladder, the first-winter warning and the season hint stayed quiet while it starved.
+ * FIX-16: wheat the stuck-stock check marks bound is left out.
  * Null when no house eats.
  */
 export function foodReserveTicks(state: FoodReserveWorld): number | null {
@@ -42,7 +49,8 @@ export function foodReserveTicks(state: FoodReserveWorld): number | null {
     + state.walkers.reduce((sum, walker) => sum + (walker.cargo?.resource === resource ? Math.max(0, walker.cargo.amount) : 0), 0);
   const wheatPerBread = BUILDING_CONFIG_BY_KIND.mill.production?.inputPerOutput ?? 2;
   const bread = amount("bread");
-  const wheat = amount("wheat");
+  // FIX-16: bound wheat (a barn that cannot hand it on) is no food until it moves; engine/foodShortage reports it apart.
+  const wheat = Math.max(0, amount("wheat") - boundWheatOf(state.buildings));
   const eat = ration / HOUSE_FOOD_INTERVAL;
   const grind = millGrindRate(state) / wheatPerBread;
   // The mills keep up (or the wheat runs out first): every grain becomes bread in time.

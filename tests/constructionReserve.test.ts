@@ -22,6 +22,9 @@ const wall = createPalisadeConstructionSite({
   startedTick: 0,
 });
 
+// FIX-16: a town whose charter buildings stand, so only the proclamation floor holds the wall's timber.
+const CHARTER_STANDING = [building("market-1", "market", {}), building("church-1", "church", {})];
+
 const reserve = {
   resource: "timber" as const,
   proclaimedTick: 0,
@@ -73,7 +76,7 @@ test("Given balanced policy and a proclaimed 25-timber floor When dispatching to
   const routes = routePort({ "store->wall-1": line([0, 0], [1, 0]) });
   // When
   const result = spawnCarters({
-    tick: 1, buildings: [source], constructionSites: [wall], walkers: [], treasuryTimber: 0,
+    tick: 1, buildings: [source, ...CHARTER_STANDING], constructionSites: [wall], walkers: [], treasuryTimber: 0,
     inventory: DELIVERY_INVENTORY, routes,
     wallConstructionReserve: reserve, wallConstructionPriority: "balanced",
   });

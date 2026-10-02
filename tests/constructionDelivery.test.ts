@@ -16,6 +16,9 @@ import {
   routePort,
 } from "./deliveryFixtures";
 
+// FIX-16: a town whose charter buildings stand, so no waiting market or church holds the wall's timber back.
+const CHARTER_STANDING = [building("market-1", "market", {}), building("church-1", "church", {})];
+
 const arrived = (carter: CarterWalker): CarterWalker => ({
   ...carter,
   position: carter.path.at(-1) ?? carter.position,
@@ -282,7 +285,7 @@ test("wall construction sites use the existing construction delivery destination
   // When
   const result = spawnCarters({
     tick: 139,
-    buildings: [source],
+    buildings: [source, ...CHARTER_STANDING],
     constructionSites: [target],
     walkers: [],
     treasuryTimber: 0,
@@ -331,7 +334,7 @@ test("wall material dispatch can reserve a queued later segment before the activ
   // When
   const result = spawnCarters({
     tick: 140,
-    buildings: [source],
+    buildings: [source, ...CHARTER_STANDING],
     constructionSites: [active, queued],
     walkers: [],
     treasuryTimber: 0,

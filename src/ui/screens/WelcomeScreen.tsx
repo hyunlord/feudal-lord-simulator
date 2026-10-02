@@ -8,15 +8,17 @@ import { Button } from "../kit";
 import { TITLE_COPY } from "../titleCopy.ko";
 import { TutorialToggle } from "../tutorial/TutorialShell";
 import { TUTORIAL_COPY } from "../tutorial/tutorialCopy.ko";
-import { defaultLandChoice, type LandChoice } from "../landChoice";
+import { initialLandChoice, landPlayable, type LandChoice } from "../landChoice";
 import { LandPicker } from "./LandPicker";
 import { wave8ImageStyle, wave8Url } from "../wave8Art";
 
 // CODE-1c (from App): the title screen — the welcome parchment, the saved city on offer, the mode choice.
 // LAND-UI (LU-D7): the land choice above the mode buttons; every start (a mode button, or a click anywhere) takes it.
+// NAT-4: it opens on a random map number (landChoice initialLandChoice); while the number cannot start a game neither
+// the mode buttons nor a click anywhere start one (the picker says why).
 const WELCOME_DISMISSED_KEY = "feudal-lord-simulator:welcome-dismissed:v1";
 
-export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, onNewGame, onChooseMode, tutorialEnabled, onTutorialChange }: {
+export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onContinue, onNewGame, onChooseMode, tutorialEnabled, onTutorialChange, initialLand }: {
   readonly tutorialEnabled: boolean;
   readonly onTutorialChange: (enabled: boolean) => void;
   readonly onDismiss: (land: LandChoice) => void;
@@ -25,9 +27,12 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
   readonly onContinue: () => void;
   readonly onNewGame: (scenarioId: string, land: LandChoice) => void;
   readonly onChooseMode: (scenarioId: string, land: LandChoice) => void;
+  /** The first land choice (tests); else the page's (initialLandChoice). */
+  readonly initialLand?: LandChoice | undefined;
 }) {
   const [confirmingNewGame, setConfirmingNewGame] = useState(false);
-  const [land, setLand] = useState(defaultLandChoice);
+  const [land, setLand] = useState(() => initialLand ?? initialLandChoice(typeof window === "undefined" ? "" : window.location.search));
+  const playable = landPlayable(land);
   const dialogRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
     dialogRef.current?.focus();
@@ -37,7 +42,7 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
     event.preventDefault();
     event.stopPropagation();
     // With a saved city on offer the player must choose explicitly; a stray click must not start over.
-    if (continueLine === null) onDismiss(land);
+    if (continueLine === null && playable) onDismiss(land);
   };
   const containKeyboard = (event: ReactKeyboardEvent) => {
     event.stopPropagation();
@@ -69,7 +74,7 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
         <TutorialToggle enabled={tutorialEnabled} onChange={onTutorialChange} />
         {continueLine === null ? <>
           <LandPicker choice={land} onChange={setLand} />
-          <ScenarioModeButtons onChoose={scenarioId => onChooseMode(scenarioId, land)} />
+          <ScenarioModeButtons playable={playable} onChoose={scenarioId => onChooseMode(scenarioId, land)} />
           <p className="welcome-dismiss">{TITLE_COPY.dismiss}</p>
         </> : (
           <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
@@ -80,7 +85,7 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
             {confirmingNewGame ? <>
               <p role="status">{archiveNotice}</p>
               <LandPicker choice={land} onChange={setLand} />
-              <ScenarioModeButtons onChoose={scenarioId => onNewGame(scenarioId, land)} />
+              <ScenarioModeButtons playable={playable} onChoose={scenarioId => onNewGame(scenarioId, land)} />
               <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => setConfirmingNewGame(false)} variant="secondary">
                 {SAVE_COPY.cancel}
               </Button>
@@ -96,14 +101,15 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
   );
 }
 
-/** New-game mode choice (B2): one button per registered scenario, in registration order. */
-function ScenarioModeButtons({ onChoose }: {
+/** New-game mode choice (B2): one button per registered scenario, in registration order; off while the land cannot start. */
+function ScenarioModeButtons({ onChoose, playable }: {
   readonly onChoose: (scenarioId: string) => void;
+  readonly playable: boolean;
 }) {
   return <div className="welcome-modes" role="group" aria-label={SCENARIO_COPY.modePrompt}>
     {CORE_SCENARIOS.map(scenario => <div key={scenario.id}>
       <Button className="autoplay-toggle save-control-button" type="button"
-        data-scenario={scenario.id} isolate onPress={() => onChoose(scenario.id)} variant="primary">
+        data-scenario={scenario.id} aria-disabled={playable ? undefined : true} isolate onPress={() => { if (playable) onChoose(scenario.id); }} variant="primary">
         {SCENARIO_COPY.modeButtons[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}
       </Button>
       <p className="welcome-mode-line">{TUTORIAL_COPY.modeLines[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}</p>

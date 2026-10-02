@@ -48,6 +48,10 @@
 .app-shell .hud-time-cluster .speed-seals { gap: 2px; }
 .app-shell .hud-time-cluster .settings-disclosure > summary { display: grid; place-items: center; min-width: 44px; min-height: 44px; padding: 0 6px; font-size: 12px; }
 .app-shell .hud-time-cluster[hidden] { display: none; }
+/* NAT-4 (FIX-13): the fast seal's mark — the fast speed it stands for (×5 / ×10) in its lower right corner, 12 px. */
+/* contrast-audit selector=".speed-seal-mark" fg="--palette-ink" bg="--palette-vellum" size="12" role="body" */
+.app-shell .speed-seal-mark { position: absolute; right: 1px; bottom: 1px; padding: 0 2px; font-size: 12px; font-weight: 700; line-height: 1.1;
+  color: var(--palette-ink); background-color: var(--palette-vellum); pointer-events: none; }
 
 /* Crisis icons: under the speed, at most three, square. */
 .app-shell .crisis-icons { position: absolute; top: calc(var(--hud-right-top) - var(--frame-gap)); right: 0; z-index: 4; display: flex; gap: 4px; }
@@ -165,6 +169,17 @@
 .app-shell .steward-bubble--line .steward-line { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .app-shell .steward-bubble .steward-line { margin: 0; font-size: 13px; }
 .app-shell .steward-bubble .steward-button { min-height: 44px; }
+/* NAT-4 (R15 leftover): the steward's open bubble (his name, the advice, the dismiss) is taller than the one line the
+   right column keeps clear, and the ledger drawer's foot covered its top (1280×800 too). While it is open the slot stops
+   above it, so both stay readable: the advice is often about what the ledger shows, and he speaks on his own, so
+   closing the ledger for him (or him for the ledger) would take away what the player is reading. The bubble is capped
+   (its advice scrolls, the dismiss stays) so the room kept is a fixed one. */
+.app-shell { --hud-steward-open: 176px; }
+.app-shell .action-dock + .steward-bubble:has(.steward-button) { display: flex; flex-direction: column; max-height: var(--hud-steward-open); box-sizing: border-box; }
+.app-shell .action-dock + .steward-bubble:has(.steward-button) > * { flex: none; }
+.app-shell .action-dock + .steward-bubble:has(.steward-button) > .steward-button { align-self: flex-start; }
+.app-shell .action-dock + .steward-bubble:has(.steward-button) > .steward-line { flex: 0 1 auto; min-height: 0; overflow-y: auto; }
+.app-shell:has(.action-dock + .steward-bubble .steward-button) { --hud-right-bottom: calc(64px + var(--hud-edge) + var(--hud-steward-open) + var(--frame-gap)); }
 
 /* The build drawer (S-21): bottom centre, only while open; categories as tabs, compact cards. */
 .app-shell .build-drawer.court-console {

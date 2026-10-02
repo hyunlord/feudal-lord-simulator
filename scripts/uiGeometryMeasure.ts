@@ -259,7 +259,7 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
       inControls: controlsAround(element.parentElement), within: around(element.parentElement, itemIndex), scrollCut: scrollCut(full, region) };
     const at = items.length;
     if (element.matches(CONTROL)) {
-      const kit = element.classList.contains("ui-btn") || element.classList.contains("ui-select-option") || element.closest(".ui-select, .ui-slider") !== null;
+      const kit = element.classList.contains("ui-btn") || element.classList.contains("ui-select-option") || element.closest(".ui-select, .ui-slider, .ui-number") !== null; // NAT-4: the kit NumberField is a kit control
       // A list option is a row of its framed list (a surface, as the skin audit counts it).
       const variant = element.classList.contains("ui-select-option") ? "surface"
         : [...element.classList].find(name => name.startsWith("ui-btn--") && ["surface", "quiet", "primary", "secondary", "danger", "icon", "toggle", "tab"].includes(name.slice(8)))?.slice(8) ?? null;

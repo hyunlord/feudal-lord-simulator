@@ -2,7 +2,7 @@
 // interactive element's computed style: it passes when its own `border-image-source` or `background-image` is UI art
 // (the P0 pieces under /assets/ui-p0/, the Astra UI waves under /assets/wave*/), or — a kit `surface` (a cell, row or
 // card of a framed strip or panel, `.ui-btn--surface`) or a kit list option — when a framed ancestor within six levels
-// carries that art. Native <select>, <input> (other than the kit slider) and <textarea> are failures too.
+// carries that art. Native <select>, <input> (other than the kit slider and number field) and <textarea> are failures too.
 // NAT-2 (QA-006): a surface fails when it paints the browser's own button (the fill or the outset border of a bare
 // <button>): the framed ancestor was its whole test, so the ledger's rows passed as white default buttons inside the
 // drawer's frame. A floating box fails when its only frame is the plain light panel (frame_panel_light: a flat fill with
@@ -87,12 +87,12 @@ function auditPage() {
   for (const element of document.querySelectorAll(SELECTOR)) {
     if (!visible(element)) continue;
     const tag = element.tagName.toLowerCase();
-    const native = (tag === 'select' || tag === 'textarea' || (tag === 'input' && !element.classList.contains('ui-slider')));
+    const native = (tag === 'select' || tag === 'textarea' || (tag === 'input' && !element.classList.contains('ui-slider') && !element.classList.contains('ui-number')));
     const surface = element.classList.contains('ui-btn--surface') || element.classList.contains('ui-select-option');
     const own = art(element);
     const plain = surface && tag === 'button' && paintsUa(element);
     const skinned = !native && (own || (surface && !plain && framedAncestor(element)));
-    rows.push({ skinned, native, surface, own, plain, path: path(element), kit: element.classList.contains('ui-btn') || element.closest('.ui-select, .ui-slider') !== null,
+    rows.push({ skinned, native, surface, own, plain, path: path(element), kit: element.classList.contains('ui-btn') || element.closest('.ui-select, .ui-slider, .ui-number') !== null,
       text: (element.getAttribute('aria-label') ?? element.textContent ?? '').replace(/\s+/g, ' ').trim().slice(0, 40) });
     if (!skinned) element.setAttribute('data-skin-audit', 'skinless');
   }

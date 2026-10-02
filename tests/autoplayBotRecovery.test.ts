@@ -115,8 +115,12 @@ test("B6 seed 2 right after the palisade: timber is added for the waiting wall w
   assert.equal(timberDemandExpansionKind(state), "logging_camp", "logs are the short side: 1 camp cuts 0.02/tick, 1 sawmill saws 0.057");
   const camps = (current: typeof state) => current.buildings.filter(building => building.kind === "logging_camp").length
     + current.constructionSites.filter(site => site.kind === "logging_camp").length;
-  const later = runWithAdvisor(state, 3_600);
-  assert.ok(camps(later) >= camps(state) + 2, "two logging camps within 3,600 ticks");
+  // FIX-16: the palisade leaves the market's 60 timber in stock, so the market is placed during the wall (tick 3,361)
+  // and the second camp follows it (3,601; trunk placed it before the market, within 3,600).
+  const later = runWithAdvisor(state, 3_800);
+  assert.ok(camps(later) >= camps(state) + 2, "two logging camps within 3,800 ticks");
+  assert.equal(later.buildings.filter(building => building.kind === "market").length
+    + later.constructionSites.filter(site => site.kind === "market").length, 1, "the market is placed while the wall is built");
 });
 
 test("B7 seed 3 run 2: the walled town keeps house sites for its last lots, builds them, and reaches L4 24/24", () => {

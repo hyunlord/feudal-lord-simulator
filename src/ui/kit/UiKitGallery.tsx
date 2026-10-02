@@ -4,6 +4,7 @@ import { UiIcon } from "../UiIcon";
 import { Button, IconButton, type ButtonSize, type ButtonVariant } from "./Button";
 import { Checkbox, Chip, Divider, Slider, Tabs, Toggle, Tooltip } from "./Controls";
 import { Card, Panel, type FrameKind } from "./Frame";
+import { NumberField } from "./NumberField";
 import { Select } from "./Select";
 import { UI_KIT_GALLERY_COPY as COPY } from "./uiKitGalleryCopy.ko";
 import { PersonChip, PersonPortrait } from "../persons/PersonViews";
@@ -73,6 +74,7 @@ export function UiKitGallery() {
   const [sound, setSound] = useState(true);
   const [seasonCard, setSeasonCard] = useState(false);
   const [volume, setVolume] = useState(70);
+  const [digits, setDigits] = useState("482913");
   const [tab, setTab] = useState<"resources" | "view" | "map">("resources");
   const [pressed, setPressed] = useState(true);
   return (
@@ -128,6 +130,13 @@ export function UiKitGallery() {
           <span>{COPY.slider(volume)}</span>
           <Slider min={0} max={100} step={10} value={volume} label={COPY.sliderLabel} valueText={COPY.slider(volume)} onChange={setVolume} />
           <Slider min={0} max={100} step={10} value={30} label={COPY.sliderLabel} onChange={() => undefined} disabled />
+        </div>
+        <h2>{COPY.sections.number}</h2>
+        <p>{COPY.numberNote}</p>
+        <div className="ui-kit-gallery-row" data-states="number">
+          <NumberField label={COPY.numberLabel} value={digits} maxDigits={6} onChange={setDigits} />
+          <NumberField label={COPY.numberInvalid} value="0" maxDigits={6} invalid onChange={() => undefined} />
+          <NumberField label={COPY.numberLabel} value="1" maxDigits={6} disabled onChange={() => undefined} />
         </div>
         <h2>{COPY.sections.tabs}</h2>
         <Tabs label={COPY.sections.tabs} selected={tab} onSelect={setTab}

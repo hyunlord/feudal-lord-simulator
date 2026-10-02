@@ -4,7 +4,7 @@ export const UI_KIT_GALLERY_COPY = {
   note: "모든 부품 · 변형 · 상태 (UI-KIT-1). 상태는 코드로 그립니다: 밝게(호버), 1px 눌림, 봉랍색 초점 고리, 회색(사용 불가).",
   sections: {
     buttons: "단추", sizes: "크기", states: "상태", icon: "아이콘 단추", select: "선택 목록", toggles: "켜기·끄기", slider: "밀대",
-    tabs: "탭", chips: "칩", frames: "틀", tooltip: "도움말 · 구분선",
+    tabs: "탭", chips: "칩", frames: "틀", tooltip: "도움말 · 구분선", number: "숫자 칸",
   },
   variants: { primary: "주 동작", secondary: "보조", quiet: "조용히", danger: "위험", toggle: "켜고 끄기", tab: "탭", surface: "표면(틀 안의 칸)" },
   sizes: { sm: "작게", md: "보통", lg: "크게" },
@@ -15,6 +15,10 @@ export const UI_KIT_GALLERY_COPY = {
   toggle: "소리", checkbox: "계절마다 결산 띄우기", on: "켬", off: "끔",
   slider: (percent: number) => `음량 ${percent}%`,
   sliderLabel: "전체 소리 크기",
+  // NAT-4: the number field (digits only; the new game's map number).
+  numberLabel: "지도 번호",
+  numberInvalid: "틀린 값",
+  numberNote: "숫자만 받습니다(붙여 넣은 글자도 숫자만 남김). 틀린 값은 봉랍색 테두리.",
   tabs: { resources: "자원", view: "보기", map: "지도" },
   chips: { ok: "충분", warn: "주의", block: "모자람", info: "정보" },
   frames: { light: "밝은 판", dark: "어두운 판", objective: "목표 카드", advisor: "청지기", modal: "대화 상자", tooltip: "도움말", record: "기록 카드" },

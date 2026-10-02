@@ -14,10 +14,12 @@ import type { Wave34WorksKey } from "./wave34WorksManifest.generated";
 // the works props. The chunk key carries landWorksChunkToken (landWorksIndex.ts), so a stage change, a dig starting or
 // stopping, a finished patch or the art loading re-rasters the chunks they reach.
 //  - Ford sheet: pivot (256, 128) on the crossing's centre; its water section spans exactly `width` cells along the
-//    axis (fords-QA anchor points), the ramps lie on the banks beyond.
+//    axis (fords-QA anchor points), the ramps lie on the banks beyond. A single-cell ford takes the Wave 41 w1 sheet
+//    (NAT-4; LU-D4 drew the w2 sheet centred until it came).
 //  - Stages 1 and 2 are 128 x 64 tiles on the (64, 32) / (-64, 32) lattice. They are composited at source size on one
 //    canvas per work, then drawn once scaled (records/QA: tiles scaled one by one show alpha seams).
-//  - Stage 3: one region sheet on the box centre, clipped to the union of the work's cell diamonds (LU-D5).
+//  - Stage 3: one region sheet on the works' origin (FIX-13; a pre-v44 work: the box centre), clipped to the union of
+//    the work's cell diamonds (LU-D5).
 //  - The finished drain strip (512 x 64, centre line y = 32) is laid on each edge by the shear that tilts only the
 //    ground axis (as the Wave 28 strips, countrysideArt.ts); one edge takes 64 source px, eight edges one repeat.
 
@@ -72,7 +74,7 @@ function traceCells(context: CanvasRenderingContext2D, cells: readonly number[],
 }
 
 function drawRegion(context: CanvasRenderingContext2D, work: WorkPlan, width: number, file: WorksSeason): void {
-  const centre = tileToScreen((work.box.minTx + work.box.maxTx) / 2, (work.box.minTy + work.box.maxTy) / 2);
+  const centre = tileToScreen(work.centre.tx, work.centre.ty);
   context.save();
   traceCells(context, work.cells, width);
   context.clip();

@@ -109,7 +109,7 @@ const NAME_FROM: Readonly<Record<string, string>> = {
 };
 
 const DEATH_CAUSES: Readonly<Record<string, string>> = {
-  age: "세상을 떠났다", captivity: "유폐 중에 죽었다", famine: "굶주림 끝에 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
+  age: "세상을 떠났다", captivity: "유폐 중에 죽었다", famine: "굶주림 끝에 죽었다", famine_year: "기근 해에 병들어 죽었다", fire: "불에 목숨을 잃었다", plague: "역병으로 죽었다",
 };
 
 /** LM-E1: the estate's policies, the town's actors, a project's name. */
