@@ -23,16 +23,21 @@ import { Button, Disclosure } from "./kit";
 /** The advisor with nothing to do (one object, so the scheduling effect below does not rerun each render). */
 const NO_ACTION = { kind: "none" } as const;
 
-/** UX-2: the painted time icons (pause · play · two and three chevrons). */
+/**
+ * UX-2: the painted time icons (pause · play · two and three chevrons). NAT-4 (FIX-13): 10x wears the 5x seal's three
+ * chevrons (the time sheet's `fastest` cell; the sheet has four cells) with its "×10" mark in the corner.
+ */
 const SPEED_SEALS: readonly {
   readonly speed: GameSpeed;
   readonly label: string;
   readonly icon: "pause" | "play" | "fast" | "fastest";
+  readonly mark?: string;
 }[] = [
   { speed: 0, label: KO_UI.speeds.paused, icon: "pause" },
   { speed: 1, label: KO_UI.speeds.normal, icon: "play" },
   { speed: 3, label: KO_UI.speeds.threefold, icon: "fast" },
   { speed: 5, label: KO_UI.speeds.fivefold, icon: "fastest" },
+  { speed: 10, label: KO_UI.speeds.tenfold, icon: "fastest", mark: KO_UI.speeds.tenfoldMark },
 ];
 
 export function speedToIntervalMs(speed: GameSpeed): number | null {
@@ -116,6 +121,7 @@ export function SpeedSeals({ speed, onChange, extraSettings }: SpeedSealsProps) 
             onPress={() => onChange(option.speed)}
            variant="icon">
             <UiIcon sheet="time" cell={option.icon} size={32} />
+            {option.mark === undefined ? null : <span className="speed-seal-mark" aria-hidden="true">{option.mark}</span>}
           </Button>
         ))}
       </div>

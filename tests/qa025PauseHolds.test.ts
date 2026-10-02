@@ -23,7 +23,7 @@ import { goalCardPress } from "../src/ui/tutorial/useTutorialController";
 
 const MODALS: readonly UiModal[] = ["pause_menu", "event", "season_ledger", "decision", "petition", "chronicle", "chapter_preview",
   "history", "person_card", "legacy_ending", "chronicle_book"];
-const SPEEDS: readonly GameSpeed[] = [0, 1, 3, 5];
+const SPEEDS: readonly GameSpeed[] = [0, 1, 3, 5, 10];
 
 /** The app's store and its modal pause effect, replayed over the UI states React commits (batched events = one step). */
 function session(speed: GameSpeed) {

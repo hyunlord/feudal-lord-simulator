@@ -121,6 +121,7 @@ test("UX-3: the actual app keeps one build drawer (closed at start) and only the
   assert.match(markup, /<nav class="status-pill" aria-label="마을 상태" data-frame="tooltip">/);
   assert.match(markup, /aria-label="일시 정지"/);
   assert.match(markup, /aria-label="5배속"/);
+  assert.match(markup, /aria-label="10배속"[^>]*>[\s\S]*?<span class="speed-seal-mark" aria-hidden="true">×10<\/span>/, "NAT-4: the 10x seal, marked");
   assert.match(markup, /class="layer-switch"/);
   assert.match(markup, /<nav class="action-dock" aria-label="행동">/);
   // Gone from the default screen: the resource bar, the console recesses and the minimap (the ledger's map tab).

@@ -18,6 +18,9 @@ import { petitionPresentation } from "../src/ui/petitionPresentation";
 import { personCardView, personRow, petitionerRows } from "../src/ui/persons/personModels";
 import { PERSONS_COPY } from "../src/ui/persons/personsCopy.ko";
 import type { StoryBeat } from "../src/ui/eventStory";
+import { BALANCE } from "../src/content/balanceConfig";
+import type { GameSpeed } from "../src/engine/engine.types";
+import { SPEED_STEPS, speedStepOf } from "../src/input/inputIntent";
 
 // NAT-4 cards: "더 보기" only when something is cut (QA-022), the population drawer's height (QA-028), the outside
 // leaders' Korean titles (QA-014), a petition never showing a dead representative (QA-036).
@@ -116,4 +119,11 @@ test("QA-036 a leader dead before the engine names a successor shows no chip; a 
   const rows = petitionerRows(gone, petition);
   assert.ok(!rows.some(row => row.id === first), "a representative dead before the engine names the next is not shown");
   assert.ok(rows.every(row => living(gone, row.id)));
+});
+
+test("NAT-4 (FIX-13) every game speed has its step, 10x the last: its seal sets 10x, not 1x (an unknown speed's step)", () => {
+  const speeds: readonly GameSpeed[] = [0, 1, 3, 5, 10];
+  assert.deepEqual([...SPEED_STEPS], speeds);
+  for (const speed of speeds) assert.equal(SPEED_STEPS[speedStepOf(speed)], speed);
+  assert.equal(BALANCE.TICKS_PER_SECOND * SPEED_STEPS.at(-1)!, 100, "10x is 100 ticks a second");
 });

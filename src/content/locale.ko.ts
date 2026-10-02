@@ -28,6 +28,8 @@ export const KO_UI = {
   speeds: {
     ariaLabel: "시간 속도", paused: "일시 정지", normal: "1배속",
     threefold: "3배속", fivefold: "5배속",
+    // NAT-4 (FIX-13): 10x (100 ticks a second); the mark on its seal tells it from the 5x seal it shares the art with.
+    tenfold: "10배속", tenfoldMark: "×10",
   },
   ceremony: {
     palisade: "목책마을 시대 선포식", dismissPalisade: "목책마을 선포식 닫기",
