@@ -169,6 +169,15 @@
     - typecheck도 함께 돈다. 새 억제·예외 목록 항목을 손으로 추가해 검사를 통과시키지 않는다.
     - **Astra 장부의 `replaced_by`는 장부에 있는 파일 경로만 쓴다**(`scripts/checks/inboxLedger.mjs`). 여러 장이면 `;`로 잇고, 패턴·설명은 `verdict_note`에 쓴다. 기존 행과 바이트가 같은 행을 새로 넣으면 비고에 `○○와 동일 바이트(정본: 경로)`를 단다(정본 = runtime manifest나 설치 대장이 가리키는 행, 없으면 같은 바이트 중 confirmed이면서 가장 먼저 받은 행).
 
+20. **개인 Claude Code 설정은 `.claude/settings.local.json`에 둔다**(git에 올리지 않음, `.gitignore`).
+    - 저장소의 `.claude/settings.json`은 모든 세션이 같이 쓰는 것만 담는다: graft 훅·graft 권한, 그리고 `GRAFT_NO_STATUSLINE=1`(`env`).
+    - 상태줄(`statusLine`·`subagentStatusLine`), 개인 권한, 개인 환경 변수는 `settings.local.json`에 넣는다.
+    - 까닭: 커밋하지 않은 추적 파일 변경이 작업 트리에 남으면, DGX 실행은 "dirty" 트리로 돌고 병합 전 검사는 그 결과(예: ui-geometry)를 거부한다. 2026-10-02 엔진 세션이 이 때문에 1시간을 잃었다.
+      - 원인은 graft였다. graft는 버전이 바뀔 때 저장소 연결을 다시 쓰면서 상태줄을 `.claude/settings.json`에 넣는다.
+      - `GRAFT_NO_STATUSLINE=1`이면 넣지 않고, 이미 넣은 graft 상태줄도 지운다(`graft init`의 `--no-statusline`과 같음).
+    - graft 상태줄을 쓰고 싶으면 `settings.local.json`에 `"statusLine": {"type": "command", "command": "node \"${CLAUDE_PROJECT_DIR:-.}/.claude/helpers/graft-statusline.cjs\""}`를 넣는다.
+    - 작업 트리에 커밋할 생각이 없는 추적 파일 변경을 남기지 않는다. 남았으면 `git status`로 보고, 개인 것이면 `.local` 파일로 옮긴다.
+
 ### 보고 양식
 맨 위 한 줄 판정: `관문: 통과/실패 — <관문 지표>`. 이어서 커밋 / **실행 위치** / 관문 결과 / 가드레일(해당 시) / 필수 조건(마지막 커밋 기준 전체 회귀 N/N · typecheck · build) / 다음 후보 / 소요 시간. A4 2장 이내.
 - **실행 위치(필수)**: 관문·필수 조건에 쓴 검증마다 어디서 돌았는지 적는다: `DGX`, `Mac`, `둘 다`.

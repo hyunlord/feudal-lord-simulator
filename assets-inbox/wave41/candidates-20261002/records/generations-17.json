@@ -1,0 +1,173 @@
+{
+  "asset_id": "keyart_title_bg",
+  "ordinal": 17,
+  "attempts": [
+    {
+      "attempt": 1,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "prompt": "Use case: precise-object-edit / restrained style-transfer.\nEdit INPUT 1, the existing title background, preserving its exact 1920x1080 composition. Inputs 2 and 3 are PROJECT-OWNED texture/brushwork references ONLY; never copy their layouts, houses, characters, suns, or objects.\nRemove ONLY the seven small pale exterior chimney stacks on these ordinary small cottage roofs, using original input1 pixel coordinates (x0,y0,x1,y1): [168,408,187,440], [513,379,533,403], [456,446,477,474], [654,408,675,434], [804,441,825,468], [1257,401,1278,424], [1427,439,1448,462]. These are locating boxes: reconstruct the tiny chimney silhouettes with adjacent roof and foliage texture, not rectangular patches. Preserve every roof's existing shape.\nKEEP the large central wealthy merchant-house chimney at approximately (1024,394); KEEP larger foreground timber-house chimneys at (639,489) and (1242,512); KEEP distant ambiguous chimneys near (862,398) and (1089,384). Do not erase the church, cross, church tower, watchtowers or roof finials. Large wealthy-house chimneys are an approved late-medieval exception.\nGently refine the existing material brushwork toward references2/3: tactile straw, small flat warm terracotta peg tiles, warm limewash, weathered brown oak, nuanced foliage and earth. Soft hand-painted historical illustration, muted southern English1300-1450 palette, no black cartoon outline, no photographic noise. Preserve the existing sunset light and overall color/brightness. DO NOT introduce the dramatic sun or lighting of reference2.\nAbsolute locks: ALL composition, horizon, camera, landscape, tree silhouettes, buildings, riverbanks, roads, palisades, gates, fields, boats, livestock and every person stay in their original positions and sizes. No new or removed narrative objects. No enlarged town or shifted river. Keep the entire 16:9 canvas fully opaque, no transparent pixels, no margin, no crop, no recenter, no rotation. No text or watermark. One finished image only, not comparison sheet.",
+      "references": [
+        {
+          "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/17-keyart_title_bg.png",
+          "sha256": "201d5ab61296a4a81d258695a72d6b449a0eecef17439d8a14a01f457ddb9236"
+        },
+        {
+          "path": "/Users/rexxa/github/fls-landui/assets-inbox/wave21/candidates-v1/assets/ch5_events/ch5_ending.png",
+          "sha256": "416e458bd616d08383494f0629eed4ef0da8c7928b9e57c68a361410fedd7596"
+        },
+        {
+          "path": "/Users/rexxa/github/fls-landui/assets-inbox/wave33/candidates-20260929/assets/1391-wool-staple.png",
+          "sha256": "e7dbb927ce065c7ba838c254c9df84a0c18b003d3544fb1a3f8f24ad0b8f9ca4"
+        }
+      ],
+      "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6ff-3d6f-7292-b53d-50b7c1097e2d/exec-4f38f090-e22c-401a-a5a5-323b356216ce.png",
+      "raw_copy": "raw/17-attempt1.png",
+      "inspection": {
+        "verdict": "REVISE",
+        "reason": "Requested seven removals succeeded, but protected large-house chimney silhouettes removed. Raw 1672x941 below original canvas."
+      }
+    },
+    {
+      "attempt": 2,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "prompt": "Edit INPUT1 only. OUTPUT REQUIRED: 2048x1152 or larger exact16:9 landscape, full opaque illustration. Do not output a smaller image. Input1 is the original locked title illustration. Inputs2/3 are only subtle material texture examples, not composition references.\nHighest priority: preserve the exact original scene, ALL geometry, buildings, roof shapes, distant skyline, river and people positions. Keep original sunset lighting. Do not brighten sunset or add objects.\nSurgical edit: remove ONLY seven tiny pale chimney stacks belonging to ordinary cottages, at input1's 1920x1080 coordinates: (176,420), (522,390), (465,459), (664,420), (815,453), (1266,415), (1436,451). Replace each stack with the immediately adjacent roof/foliage surface naturally. Keep the cottage itself identical.\nVERY IMPORTANT: KEEP OTHER CHIMNEYS. The large central three-storey merchant building has a prominent white chimney at (1024,394), at the back/right of its big red roof. KEEP THAT WHITE CHIMNEY EXACTLY. The large foreground left timber house at (639,489) and foreground right timber house at (1242,512) each have an obvious white chimney on their red tile roofs: KEEP BOTH EXACTLY. Preserve the two distant chimneys (862,398) and (1089,384), since those buildings are uncertain. Removing all chimneys is a failed result. Only the seven identified cottage stacks should be removed.\nOptional restrained refinement within existing surfaces: warm limewash, weathered brown oak, tactile thatch and small flat terracotta tiles, painterly foliage/earth like references2/3. Do not change silhouettes, branches, roads, palisades, boat, fields, people or animals. Do not make materials noisier. Preserve all original contents and framing. No text, no watermark, no transparency, no margin. Output ONE image at2048x1152 or larger exact16:9.",
+      "references": [
+        {
+          "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/17-keyart_title_bg.png",
+          "sha256": "201d5ab61296a4a81d258695a72d6b449a0eecef17439d8a14a01f457ddb9236"
+        },
+        {
+          "path": "/Users/rexxa/github/fls-landui/assets-inbox/wave21/candidates-v1/assets/ch5_events/ch5_ending.png",
+          "sha256": "416e458bd616d08383494f0629eed4ef0da8c7928b9e57c68a361410fedd7596"
+        },
+        {
+          "path": "/Users/rexxa/github/fls-landui/assets-inbox/wave33/candidates-20260929/assets/1391-wool-staple.png",
+          "sha256": "e7dbb927ce065c7ba838c254c9df84a0c18b003d3544fb1a3f8f24ad0b8f9ca4"
+        }
+      ],
+      "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6ff-3d6f-7292-b53d-50b7c1097e2d/exec-106cb71f-9698-4f86-bc65-7a7163bac561.png",
+      "raw_copy": "raw/17-attempt2.png",
+      "inspection": {
+        "verdict": "REVISE",
+        "reason": "Large-house chimneys preserved, but multiple target cottage chimneys remain; output remains1672x941."
+      }
+    },
+    {
+      "attempt": 3,
+      "tool": "image_gen.imagegen",
+      "model": null,
+      "seed": null,
+      "prompt": "Precise object edit of image1, a medieval village title background. Image2 is the IDENTICAL original with SEVEN RED CIRCLES indicating the ONLY chimney stacks to remove. Remove the little pale chimney INSIDE EACH RED CIRCLE, carefully reconstructing adjacent roof/foliage behind it. Do not remove any unmarked chimney. The prominent white stacks on the central largest merchant house, left foreground large red-roof house and right foreground large red-roof house MUST REMAIN. The church/towers/cross and all house roof shapes MUST REMAIN.\nOutput image1 with those seven local removals and a restrained tactile painterly materials refinement using images3/4 only for brushwork. No composition or narrative changes, no different light: keep original soft sunset, muted colors, people, cows, river, trees, fences, buildings and every object's exact location and size.\nNEVER include red circles or other annotations in the output. Do not copy scenes3/4. Preserve the full1920x1080 composition. Return2048x1152px resolution16:9 if possible, fully opaque. No crop, no added margin, no text. Preserve exact roof and architectural shapes outside the seven targeted chimneys. One image only.",
+      "references": [
+        {
+          "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/17-keyart_title_bg.png",
+          "sha256": "201d5ab61296a4a81d258695a72d6b449a0eecef17439d8a14a01f457ddb9236"
+        },
+        {
+          "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/proofs/lane-title/targets-annotation.png",
+          "sha256": "0e77262af122ec4fc5b8436cc97162744117279a011ba73f55a15306131584bb"
+        },
+        {
+          "path": "/Users/rexxa/github/fls-landui/assets-inbox/wave21/candidates-v1/assets/ch5_events/ch5_ending.png",
+          "sha256": "416e458bd616d08383494f0629eed4ef0da8c7928b9e57c68a361410fedd7596"
+        },
+        {
+          "path": "/Users/rexxa/github/fls-landui/assets-inbox/wave33/candidates-20260929/assets/1391-wool-staple.png",
+          "sha256": "e7dbb927ce065c7ba838c254c9df84a0c18b003d3544fb1a3f8f24ad0b8f9ca4"
+        }
+      ],
+      "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6ff-3d6f-7292-b53d-50b7c1097e2d/exec-a90f8c51-f0d0-4244-a618-5a78dfdca307.png",
+      "raw_copy": "raw/17-attempt3.png",
+      "inspection": {
+        "verdict": "REVISE",
+        "reason": "Seven targets removed and central/right large-house chimneys remain. Left foreground large-house chimney and two uncertain distant stacks also removed; need restoration. Raw1672x941."
+      }
+    }
+  ],
+  "final": {
+    "status": "candidate",
+    "selected_attempt": 3,
+    "path": "output/astra-wave41-candidates-20261002-v1/assets/17-keyart_title_bg-wave41-v1.png",
+    "sha256": "9839ed90210b54c04e8aecffdff9dbc7e920f65261b0c26e1b061f5676d9598b",
+    "width": 1920,
+    "height": 1080,
+    "alpha_min": 255,
+    "alpha_max": 255,
+    "postprocessing": [
+      {
+        "operation": "single Lanczos3 canvas resample",
+        "from": [
+          1672,
+          941
+        ],
+        "to": [
+          1920,
+          1080
+        ],
+        "reason": "Built-in generator ignored explicit2048x1152 requests. Not native1920 detail; 14.83% horizontal enlargement, no crop/trim."
+      },
+      {
+        "operation": "restore 3 protected original chimney regions and inadvertently removed small original monument at original pixel coordinates",
+        "regions": [
+          {
+            "left": 363,
+            "top": 384,
+            "width": 45,
+            "height": 90
+          },
+          {
+            "left": 627,
+            "top": 471,
+            "width": 29,
+            "height": 39
+          },
+          {
+            "left": 850,
+            "top": 382,
+            "width": 26,
+            "height": 31
+          },
+          {
+            "left": 1078,
+            "top": 369,
+            "width": 25,
+            "height": 32
+          }
+        ],
+        "edge_feather_pixels": 3,
+        "reason": "Generation removed non-target protected stacks; parent explicitly authorized original restoration."
+      }
+    ],
+    "risks": [
+      "Not pixel-identical outside local edits: painterly material refinement rerendered scene.",
+      "Generated sunset somewhat warmer/brighter than source; time of day preserved.",
+      "Raw resolution below original; final size achieved with a single recorded resample."
+    ],
+    "runtime_installed": false,
+    "inspection": {
+      "verdict": "PASS_WITH_LIMITATIONS",
+      "view_modes": [
+        "native final1920x1080",
+        "original/candidate960px side-by-side",
+        "native roof strip original-top/candidate-bottom"
+      ],
+      "target_chimneys_removed": 7,
+      "large_house_chimneys_preserved": true,
+      "ambiguous_distant_chimneys_preserved": true,
+      "small_monument_restored": true,
+      "composition": "Main building, church, horizon, riverbank, road, palisade, boat and foreground person placement visually maintained; no exact pixel geometry identity claimed for painterly rerender.",
+      "patch_edges": "No visible rectangular seams at native view; original restoration regions use3px feather.",
+      "text_free": true,
+      "opaque": true,
+      "limitations": [
+        "Raw1672x941 resampled once to1920x1080.",
+        "Original sunset direction/time preserved, color somewhat warmer and brighter.",
+        "Offline candidate only; no runtime installation or approval."
+      ]
+    }
+  }
+}

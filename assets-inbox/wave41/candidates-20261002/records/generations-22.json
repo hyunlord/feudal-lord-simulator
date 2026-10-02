@@ -1,0 +1,53 @@
+{
+  "ordinal": 22,
+  "attempt": 1,
+  "prompt": "Make a very restrained edge-color retouch to INPUT 1 only, an existing 136x104 transparent medieval game sprite. There are EXACTLY TWO chickens: brown pecking hen lower left, pale upright hen upper right. Keep their exact anatomy, every toe, feather, beak, comb, pose, size, locations, silhouette, transparent gaps and padding. Do not redraw their bodies. Only soften the heavy dark perimeter into local brown feather-color shading with hand-painted edges; retain crisp anatomy and original light direction. INPUT 2 is feather edge/color reference only, NEVER copy its three-chicken arrangement. No extra chicken, no ground, no shadow enlargement. ART_BIBLE_v2 muted warm natural palette, softly painterly medieval world asset. Preserve Input1 full 136:104 canvas aspect and pixel-space placement. Transparent background. One image, no text, no watermark.",
+  "references": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/22-chicken_flock_a.png",
+    "/Users/rexxa/github/fls-landui/public/assets/wave23/life_ground/chicken_flock_b.png"
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-38e49be2-6b25-438a-acd8-34b3102777fa.png",
+  "raw_copy": "raw/22-attempt1.png",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "inspection": {
+    "status": "candidate_offline_reviewed",
+    "root_review": "original/candidate at native-size and 4x, light/dark backgrounds",
+    "independent_review": "records/overlay-independent-review.md",
+    "runtime_verified": false,
+    "notes": "Exact original alpha; no visible cut limbs, double contours or empty color seams. Internal paint detail is revised."
+  },
+  "postprocess": {
+    "source_bounds_alpha64": {
+      "left": 67,
+      "top": 44,
+      "width": 1334,
+      "height": 1019
+    },
+    "target_bounds_alpha64": {
+      "left": 4,
+      "top": 4,
+      "width": 128,
+      "height": 95
+    },
+    "resampling": "single crop registration + Lanczos3 downsample from generated raw; exact original alpha restored",
+    "edge_rgb_extension_pixels": 1239,
+    "alpha_preserved_exactly": true,
+    "canvas": [
+      136,
+      104
+    ]
+  },
+  "reference_sha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/22-chicken_flock_a.png",
+      "sha256": "2a2c065cca551e71d165e40b3abf4415c760736cb41910df46f7e1d79b9cbc1c"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/wave23/life_ground/chicken_flock_b.png",
+      "sha256": "2ae5a72a01278eccbd901fbe423b9b7d1ebbdbd36f53913a64c4c7cd11ce0c18"
+    }
+  ],
+  "raw_sha256": "cb4e3fdeb23dd6ec601b915c0d9c654126d27425e09408a1aa471378064bcc54"
+}

@@ -6397,5 +6397,2849 @@
     }
    }
   }
+ },
+ {
+  "commit": "ff2a5c519d0da847f0cff6a17f08b545efbb5a98",
+  "subject": "perf-trend: 27 trunk commits up to 820af8e1, every suspicion settled (none worse, 43 ended 같음); the code budgets table f",
+  "committed": "2026-10-02T00:14:43+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 17.489,
+     "heapAllocKBPerTick": 610.1,
+     "canvasPer1kTicks": 208.2,
+     "scriptMsPerFrame": 45.613,
+     "taskMsPerFrame": 62.781,
+     "heapAllocMBps": 23.7,
+     "gcPerMin": 105.4,
+     "canvasPerSec": 1.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 61.3,
+     "heapAfterGcMB": 36.5,
+     "p50": 66.6,
+     "p95": 116.7,
+     "p99": 183.3,
+     "max": 216.6,
+     "over33PerMin": 816.8,
+     "otherCpu": 0.33
+    },
+    "values": {
+     "scriptMsPerTick": [
+      17.489,
+      16.132,
+      17.813
+     ],
+     "heapAllocKBPerTick": [
+      610.1,
+      514.7,
+      613.9
+     ],
+     "canvasPer1kTicks": [
+      241.7,
+      208.2,
+      182.7
+     ],
+     "scriptMsPerFrame": [
+      45.613,
+      43.033,
+      46.087
+     ],
+     "taskMsPerFrame": [
+      62.781,
+      59.61,
+      63.739
+     ],
+     "heapAllocMBps": [
+      24.2,
+      22.1,
+      23.7
+     ],
+     "gcPerMin": [
+      105.4,
+      104.4,
+      114.5
+     ],
+     "canvasPerSec": [
+      1.64,
+      1.81,
+      1.61
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      61.6,
+      61.3,
+      61
+     ],
+     "heapAfterGcMB": [
+      36.5,
+      36.9,
+      35.2
+     ],
+     "p50": [
+      66.6,
+      66.6,
+      66.6
+     ],
+     "p95": [
+      116.7,
+      116.7,
+      133.3
+     ],
+     "p99": [
+      183.3,
+      150.1,
+      183.4
+     ],
+     "max": [
+      200,
+      216.6,
+      283.4
+     ],
+     "over33PerMin": [
+      816.8,
+      844.5,
+      795.7
+     ],
+     "otherCpu": [
+      0.32,
+      0.33,
+      0.35
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 6.329,
+     "heapAllocKBPerTick": 392.7,
+     "canvasPer1kTicks": 52.1,
+     "scriptMsPerFrame": 10.208,
+     "taskMsPerFrame": 34.165,
+     "heapAllocMBps": 16.9,
+     "gcPerMin": 82.6,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 31,
+     "heapAfterGcMB": 20.4,
+     "p50": 33.3,
+     "p95": 83.3,
+     "p99": 100,
+     "max": 183.2,
+     "over33PerMin": 851.4,
+     "otherCpu": 0.31
+    },
+    "values": {
+     "scriptMsPerTick": [
+      6.329,
+      6.291,
+      6.336
+     ],
+     "heapAllocKBPerTick": [
+      392.7,
+      405.9,
+      382.4
+     ],
+     "canvasPer1kTicks": [
+      52.1,
+      51.3,
+      52.5
+     ],
+     "scriptMsPerFrame": [
+      10.351,
+      10.208,
+      10.175
+     ],
+     "taskMsPerFrame": [
+      35.546,
+      34.165,
+      34.15
+     ],
+     "heapAllocMBps": [
+      16.9,
+      17.7,
+      16.3
+     ],
+     "gcPerMin": [
+      82.6,
+      79.8,
+      83.9
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.64,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      25.4,
+      31,
+      37.8
+     ],
+     "heapAfterGcMB": [
+      20.2,
+      20.4,
+      20.5
+     ],
+     "p50": [
+      33.3,
+      33.3,
+      33.3
+     ],
+     "p95": [
+      83.3,
+      83.3,
+      83.3
+     ],
+     "p99": [
+      100.1,
+      100,
+      100
+     ],
+     "max": [
+      166.6,
+      183.2,
+      283.4
+     ],
+     "over33PerMin": [
+      867.1,
+      840.8,
+      851.4
+     ],
+     "otherCpu": [
+      0.33,
+      0.31,
+      0.23
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "44689fadb7b715405b0fbd37dfc232c3489c3199",
+  "subject": "Branch archive: hyunlord/organic-curved-land-design (local only, end commit 251f397e on the trunk) before deleting it",
+  "committed": "2026-10-02T00:32:56+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 13.319,
+     "heapAllocKBPerTick": 492.4,
+     "canvasPer1kTicks": 190.6,
+     "scriptMsPerFrame": 31.255,
+     "taskMsPerFrame": 43.985,
+     "heapAllocMBps": 25.5,
+     "gcPerMin": 115.8,
+     "canvasPerSec": 1.73,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 72.8,
+     "heapAfterGcMB": 36.8,
+     "p50": 49.9,
+     "p95": 83.3,
+     "p99": 100,
+     "max": 166.7,
+     "over33PerMin": 1048.8,
+     "otherCpu": 0.31
+    },
+    "values": {
+     "scriptMsPerTick": [
+      13.057,
+      13.395,
+      13.319
+     ],
+     "heapAllocKBPerTick": [
+      492.4,
+      516.5,
+      469.9
+     ],
+     "canvasPer1kTicks": [
+      182.8,
+      190.6,
+      196.8
+     ],
+     "scriptMsPerFrame": [
+      29.105,
+      31.255,
+      31.733
+     ],
+     "taskMsPerFrame": [
+      41.991,
+      43.985,
+      44.748
+     ],
+     "heapAllocMBps": [
+      25.5,
+      26.6,
+      24.4
+     ],
+     "gcPerMin": [
+      110.4,
+      118.5,
+      115.8
+     ],
+     "canvasPerSec": [
+      1.69,
+      1.73,
+      1.75
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      72.8,
+      62.7,
+      82.1
+     ],
+     "heapAfterGcMB": [
+      36.8,
+      37.1,
+      36.7
+     ],
+     "p50": [
+      33.4,
+      49.9,
+      49.9
+     ],
+     "p95": [
+      83.3,
+      83.3,
+      83.3
+     ],
+     "p99": [
+      100,
+      100,
+      100
+     ],
+     "max": [
+      166.7,
+      150.1,
+      166.7
+     ],
+     "over33PerMin": [
+      1077.6,
+      1048.8,
+      1048.8
+     ],
+     "otherCpu": [
+      0.29,
+      0.31,
+      0.34
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 6.642,
+     "heapAllocKBPerTick": 426.2,
+     "canvasPer1kTicks": 49.9,
+     "scriptMsPerFrame": 8.647,
+     "taskMsPerFrame": 28.713,
+     "heapAllocMBps": 18.6,
+     "gcPerMin": 94.6,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 28.2,
+     "heapAfterGcMB": 20.5,
+     "p50": 16.7,
+     "p95": 66.6,
+     "p99": 83.3,
+     "max": 100,
+     "over33PerMin": 888.4,
+     "otherCpu": 0.34
+    },
+    "values": {
+     "scriptMsPerTick": [
+      6.551,
+      6.642,
+      6.862
+     ],
+     "heapAllocKBPerTick": [
+      459.1,
+      426.2,
+      419.1
+     ],
+     "canvasPer1kTicks": [
+      49.6,
+      49.9,
+      50.1
+     ],
+     "scriptMsPerFrame": [
+      7.925,
+      8.647,
+      9.198
+     ],
+     "taskMsPerFrame": [
+      26.586,
+      28.713,
+      29.735
+     ],
+     "heapAllocMBps": [
+      19.9,
+      18.6,
+      18.2
+     ],
+     "gcPerMin": [
+      94.6,
+      94.6,
+      97.2
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.64,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      25.7,
+      28.2,
+      48.5
+     ],
+     "heapAfterGcMB": [
+      20.8,
+      20.5,
+      20.5
+     ],
+     "p50": [
+      16.7,
+      16.7,
+      16.8
+     ],
+     "p95": [
+      50.1,
+      66.6,
+      66.6
+     ],
+     "p99": [
+      66.7,
+      83.3,
+      83.3
+     ],
+     "max": [
+      83.4,
+      100,
+      100
+     ],
+     "over33PerMin": [
+      857.7,
+      888.4,
+      929.3
+     ],
+     "otherCpu": [
+      0.34,
+      0.34,
+      0.35
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "7f697d74aec42c71a89d5695c3af1d6de9ad4d7f",
+  "subject": "DOC: Astra lord-mode screen mockups filed as design records — 8 screens × 1920 and 1280 (16 JPEG) with README, DESIGN, M",
+  "committed": "2026-10-02T00:34:32+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 13.65,
+     "heapAllocKBPerTick": 506.1,
+     "canvasPer1kTicks": 175.6,
+     "scriptMsPerFrame": 31.899,
+     "taskMsPerFrame": 44.534,
+     "heapAllocMBps": 25.8,
+     "gcPerMin": 111.8,
+     "canvasPerSec": 1.69,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 78.7,
+     "heapAfterGcMB": 37.5,
+     "p50": 49.9,
+     "p95": 83.4,
+     "p99": 116.6,
+     "max": 150.1,
+     "over33PerMin": 1011.5,
+     "otherCpu": 0.26
+    },
+    "values": {
+     "scriptMsPerTick": [
+      13.489,
+      13.74,
+      13.65
+     ],
+     "heapAllocKBPerTick": [
+      491.1,
+      540.9,
+      506.1
+     ],
+     "canvasPer1kTicks": [
+      172.7,
+      175.6,
+      186.8
+     ],
+     "scriptMsPerFrame": [
+      31.341,
+      31.899,
+      35.573
+     ],
+     "taskMsPerFrame": [
+      43.272,
+      44.534,
+      49.828
+     ],
+     "heapAllocMBps": [
+      25.7,
+      27.2,
+      25.8
+     ],
+     "gcPerMin": [
+      126.4,
+      111.8,
+      109.1
+     ],
+     "canvasPerSec": [
+      1.69,
+      1.69,
+      1.77
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      78.7,
+      67.4,
+      86.1
+     ],
+     "heapAfterGcMB": [
+      37.5,
+      37.9,
+      37.3
+     ],
+     "p50": [
+      33.4,
+      49.9,
+      50
+     ],
+     "p95": [
+      83.4,
+      83.4,
+      99.9
+     ],
+     "p99": [
+      100,
+      116.6,
+      116.7
+     ],
+     "max": [
+      150.1,
+      150,
+      166.6
+     ],
+     "over33PerMin": [
+      1046.1,
+      1011.5,
+      988.9
+     ],
+     "otherCpu": [
+      0.26,
+      0.25,
+      0.3
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 6.772,
+     "heapAllocKBPerTick": 444.1,
+     "canvasPer1kTicks": 49.4,
+     "scriptMsPerFrame": 8.99,
+     "taskMsPerFrame": 29.396,
+     "heapAllocMBps": 19.2,
+     "gcPerMin": 91.9,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 37.1,
+     "heapAfterGcMB": 20.7,
+     "p50": 16.7,
+     "p95": 66.7,
+     "p99": 83.3,
+     "max": 99.9,
+     "over33PerMin": 873.4,
+     "otherCpu": 0.3
+    },
+    "values": {
+     "scriptMsPerTick": [
+      6.721,
+      6.772,
+      6.832
+     ],
+     "heapAllocKBPerTick": [
+      440.6,
+      444.1,
+      452.5
+     ],
+     "canvasPer1kTicks": [
+      49.2,
+      49.7,
+      49.4
+     ],
+     "scriptMsPerFrame": [
+      9.443,
+      8.99,
+      8.84
+     ],
+     "taskMsPerFrame": [
+      31.005,
+      29.396,
+      28.41
+     ],
+     "heapAllocMBps": [
+      19.1,
+      19.2,
+      19.7
+     ],
+     "gcPerMin": [
+      85.2,
+      91.9,
+      93.2
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.64,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      48.3,
+      37.1,
+      25.1
+     ],
+     "heapAfterGcMB": [
+      21.2,
+      20.7,
+      20.5
+     ],
+     "p50": [
+      16.8,
+      16.7,
+      16.7
+     ],
+     "p95": [
+      66.7,
+      66.7,
+      66.6
+     ],
+     "p99": [
+      83.4,
+      83.3,
+      66.8
+     ],
+     "max": [
+      116.6,
+      83.4,
+      99.9
+     ],
+     "over33PerMin": [
+      910.7,
+      867.1,
+      873.4
+     ],
+     "otherCpu": [
+      0.3,
+      0.33,
+      0.3
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "4511b7ec689a1f7002b9fa2ac391179d2932cabd",
+  "subject": "DOC: two deep-research reports filed as received (market-town trades, lordly force) and their synthesis docs/design/trad",
+  "committed": "2026-10-02T00:39:13+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 13.582,
+     "heapAllocKBPerTick": 451.7,
+     "canvasPer1kTicks": 191.6,
+     "scriptMsPerFrame": 34.588,
+     "taskMsPerFrame": 47.859,
+     "heapAllocMBps": 23.5,
+     "gcPerMin": 107.8,
+     "canvasPerSec": 1.69,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 78,
+     "heapAfterGcMB": 36.4,
+     "p50": 50,
+     "p95": 83.4,
+     "p99": 100.1,
+     "max": 183.2,
+     "over33PerMin": 988.9,
+     "otherCpu": 0.32
+    },
+    "values": {
+     "scriptMsPerTick": [
+      13.582,
+      14.004,
+      13.412
+     ],
+     "heapAllocKBPerTick": [
+      447.5,
+      478.2,
+      451.7
+     ],
+     "canvasPer1kTicks": [
+      195.4,
+      191.6,
+      186.8
+     ],
+     "scriptMsPerFrame": [
+      37.473,
+      34.588,
+      34.448
+     ],
+     "taskMsPerFrame": [
+      51.212,
+      47.818,
+      47.859
+     ],
+     "heapAllocMBps": [
+      23.4,
+      23.9,
+      23.5
+     ],
+     "gcPerMin": [
+      106.4,
+      113.1,
+      107.8
+     ],
+     "canvasPerSec": [
+      1.8,
+      1.69,
+      1.66
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      78,
+      83.3,
+      52.7
+     ],
+     "heapAfterGcMB": [
+      36.4,
+      37.5,
+      36.4
+     ],
+     "p50": [
+      50,
+      50,
+      50
+     ],
+     "p95": [
+      100,
+      83.4,
+      83.4
+     ],
+     "p99": [
+      133.3,
+      100.1,
+      100.1
+     ],
+     "max": [
+      166.7,
+      183.2,
+      200.1
+     ],
+     "over33PerMin": [
+      974.8,
+      988.9,
+      992.5
+     ],
+     "otherCpu": [
+      0.25,
+      0.32,
+      0.32
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 6.665,
+     "heapAllocKBPerTick": 420,
+     "canvasPer1kTicks": 49.4,
+     "scriptMsPerFrame": 9.892,
+     "taskMsPerFrame": 32.587,
+     "heapAllocMBps": 18.2,
+     "gcPerMin": 85.1,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 40.4,
+     "heapAfterGcMB": 20.5,
+     "p50": 33.3,
+     "p95": 66.7,
+     "p99": 83.5,
+     "max": 133.4,
+     "over33PerMin": 932.6,
+     "otherCpu": 0.36
+    },
+    "values": {
+     "scriptMsPerTick": [
+      6.665,
+      6.613,
+      6.949
+     ],
+     "heapAllocKBPerTick": [
+      448.6,
+      420,
+      403.7
+     ],
+     "canvasPer1kTicks": [
+      48.9,
+      49.6,
+      49.4
+     ],
+     "scriptMsPerFrame": [
+      8.535,
+      9.892,
+      11.317
+     ],
+     "taskMsPerFrame": [
+      28.278,
+      32.587,
+      35.409
+     ],
+     "heapAllocMBps": [
+      19.5,
+      18.2,
+      17.6
+     ],
+     "gcPerMin": [
+      91.9,
+      85.1,
+      82.5
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.64,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      46.6,
+      40.4,
+      37.9
+     ],
+     "heapAfterGcMB": [
+      20.7,
+      20.5,
+      20.5
+     ],
+     "p50": [
+      16.7,
+      33.3,
+      33.3
+     ],
+     "p95": [
+      66.6,
+      66.7,
+      83.3
+     ],
+     "p99": [
+      83.3,
+      100,
+      83.5
+     ],
+     "max": [
+      116.7,
+      150,
+      133.4
+     ],
+     "over33PerMin": [
+      892,
+      932.6,
+      945
+     ],
+     "otherCpu": [
+      0.31,
+      0.36,
+      0.37
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "a754affeaae06318091dc6d17368c718bf587022",
+  "subject": "Roadmap: LM-E5 living growth (random seeds shown and reusable, probabilistic choices in the receipts, land that changes ",
+  "committed": "2026-10-02T00:42:24+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 17.125,
+     "heapAllocKBPerTick": 532.1,
+     "canvasPer1kTicks": 197,
+     "scriptMsPerFrame": 42.16,
+     "taskMsPerFrame": 58.997,
+     "heapAllocMBps": 23.3,
+     "gcPerMin": 111.6,
+     "canvasPerSec": 1.68,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 66.6,
+     "heapAfterGcMB": 37.6,
+     "p50": 50.1,
+     "p95": 116.7,
+     "p99": 166.7,
+     "max": 250.1,
+     "over33PerMin": 858.3,
+     "otherCpu": 0.32
+    },
+    "values": {
+     "scriptMsPerTick": [
+      13.527,
+      18.323,
+      17.125
+     ],
+     "heapAllocKBPerTick": [
+      486.2,
+      620.5,
+      532.1
+     ],
+     "canvasPer1kTicks": [
+      176.3,
+      197,
+      231.3
+     ],
+     "scriptMsPerFrame": [
+      36.205,
+      42.16,
+      46.161
+     ],
+     "taskMsPerFrame": [
+      49.933,
+      58.997,
+      64.167
+     ],
+     "heapAllocMBps": [
+      25.3,
+      23.3,
+      21.5
+     ],
+     "gcPerMin": [
+      113.1,
+      111.6,
+      108
+     ],
+     "canvasPerSec": [
+      1.71,
+      1.68,
+      1.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      72.6,
+      57.1,
+      66.6
+     ],
+     "heapAfterGcMB": [
+      38,
+      37,
+      37.6
+     ],
+     "p50": [
+      50,
+      50.1,
+      66.6
+     ],
+     "p95": [
+      100,
+      116.7,
+      116.8
+     ],
+     "p99": [
+      116.7,
+      166.7,
+      166.7
+     ],
+     "max": [
+      166.7,
+      250.1,
+      299.9
+     ],
+     "over33PerMin": [
+      1008.8,
+      858.3,
+      800.4
+     ],
+     "otherCpu": [
+      0.25,
+      0.32,
+      0.39
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 6.927,
+     "heapAllocKBPerTick": 412.8,
+     "canvasPer1kTicks": 49.5,
+     "scriptMsPerFrame": 10.892,
+     "taskMsPerFrame": 34.507,
+     "heapAllocMBps": 17.8,
+     "gcPerMin": 81.2,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 39.8,
+     "heapAfterGcMB": 20.6,
+     "p50": 33.3,
+     "p95": 83.2,
+     "p99": 100,
+     "max": 150,
+     "over33PerMin": 874.1,
+     "otherCpu": 0.35
+    },
+    "values": {
+     "scriptMsPerTick": [
+      6.58,
+      6.927,
+      7.145
+     ],
+     "heapAllocKBPerTick": [
+      400.9,
+      412.8,
+      453.1
+     ],
+     "canvasPer1kTicks": [
+      49.5,
+      51,
+      49.1
+     ],
+     "scriptMsPerFrame": [
+      11.005,
+      10.892,
+      9.187
+     ],
+     "taskMsPerFrame": [
+      36.512,
+      34.507,
+      28.338
+     ],
+     "heapAllocMBps": [
+      17.2,
+      17.8,
+      19.7
+     ],
+     "gcPerMin": [
+      77.1,
+      81.2,
+      89.1
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.67,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      39.8,
+      45.7,
+      24.3
+     ],
+     "heapAfterGcMB": [
+      20.4,
+      20.7,
+      20.6
+     ],
+     "p50": [
+      33.3,
+      33.3,
+      16.7
+     ],
+     "p95": [
+      83.4,
+      83.2,
+      66.7
+     ],
+     "p99": [
+      116.7,
+      100,
+      66.8
+     ],
+     "max": [
+      183.3,
+      150,
+      99.9
+     ],
+     "over33PerMin": [
+      862.8,
+      918.7,
+      874.1
+     ],
+     "otherCpu": [
+      0.39,
+      0.33,
+      0.35
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "7c9feef8fadcdac88244f229be4d046d48963faa",
+  "subject": "DOC: lord-mode screen mockups gain their assembly and render sources — source/ (build.mjs, render.mjs, screens.json, ass",
+  "committed": "2026-10-02T00:44:29+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 16.158,
+     "heapAllocKBPerTick": 505.8,
+     "canvasPer1kTicks": 219.6,
+     "scriptMsPerFrame": 47.201,
+     "taskMsPerFrame": 65.501,
+     "heapAllocMBps": 21.8,
+     "gcPerMin": 105.1,
+     "canvasPerSec": 1.75,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 59.8,
+     "heapAfterGcMB": 37.2,
+     "p50": 66.7,
+     "p95": 116.7,
+     "p99": 166.7,
+     "max": 216.6,
+     "over33PerMin": 810.1,
+     "otherCpu": 0.33
+    },
+    "values": {
+     "scriptMsPerTick": [
+      18.051,
+      16.158,
+      13.41
+     ],
+     "heapAllocKBPerTick": [
+      528.2,
+      505.8,
+      428.8
+     ],
+     "canvasPer1kTicks": [
+      219.6,
+      225.8,
+      196.9
+     ],
+     "scriptMsPerFrame": [
+      49.275,
+      47.201,
+      40.606
+     ],
+     "taskMsPerFrame": [
+      66.096,
+      65.501,
+      55.548
+     ],
+     "heapAllocMBps": [
+      21,
+      21.8,
+      22.6
+     ],
+     "gcPerMin": [
+      104.4,
+      114.2,
+      105.1
+     ],
+     "canvasPerSec": [
+      1.64,
+      1.75,
+      1.77
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      59.9,
+      56,
+      59.8
+     ],
+     "heapAfterGcMB": [
+      37.5,
+      37.1,
+      37.2
+     ],
+     "p50": [
+      66.7,
+      66.7,
+      50.1
+     ],
+     "p95": [
+      116.7,
+      133.3,
+      100
+     ],
+     "p99": [
+      183.3,
+      166.7,
+      150
+     ],
+     "max": [
+      216.6,
+      266.7,
+      166.7
+     ],
+     "over33PerMin": [
+      794.7,
+      810.1,
+      935.6
+     ],
+     "otherCpu": [
+      0.34,
+      0.33,
+      0.26
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 6.881,
+     "heapAllocKBPerTick": 453.6,
+     "canvasPer1kTicks": 49,
+     "scriptMsPerFrame": 8.537,
+     "taskMsPerFrame": 27.964,
+     "heapAllocMBps": 19.8,
+     "gcPerMin": 93.2,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 26.6,
+     "heapAfterGcMB": 20.6,
+     "p50": 16.7,
+     "p95": 66.6,
+     "p99": 66.7,
+     "max": 100.1,
+     "over33PerMin": 883.7,
+     "otherCpu": 0.3
+    },
+    "values": {
+     "scriptMsPerTick": [
+      6.881,
+      6.753,
+      6.946
+     ],
+     "heapAllocKBPerTick": [
+      433.5,
+      466.3,
+      453.6
+     ],
+     "canvasPer1kTicks": [
+      49.4,
+      49,
+      49
+     ],
+     "scriptMsPerFrame": [
+      9.829,
+      8.537,
+      8.507
+     ],
+     "taskMsPerFrame": [
+      31.219,
+      27.964,
+      27.098
+     ],
+     "heapAllocMBps": [
+      18.9,
+      20.3,
+      19.8
+     ],
+     "gcPerMin": [
+      85.2,
+      93.2,
+      95.9
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.64,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      25,
+      43.9,
+      26.6
+     ],
+     "heapAfterGcMB": [
+      21.1,
+      20.6,
+      20.4
+     ],
+     "p50": [
+      16.8,
+      16.7,
+      16.7
+     ],
+     "p95": [
+      66.7,
+      66.6,
+      50.1
+     ],
+     "p99": [
+      83.4,
+      66.7,
+      66.7
+     ],
+     "max": [
+      116.6,
+      100,
+      100.1
+     ],
+     "over33PerMin": [
+      883.7,
+      892,
+      862.1
+     ],
+     "otherCpu": [
+      0.29,
+      0.3,
+      0.3
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "697341220cf2ce9d47b1ebe10d0d089c49258ef7",
+  "subject": "DOC: Astra art audit filed as design records — ART_BIBLE_v2 as docs/design/art-bible.md (the standard from now on, as re",
+  "committed": "2026-10-02T00:46:16+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 13.939,
+     "heapAllocKBPerTick": 477.6,
+     "canvasPer1kTicks": 205.5,
+     "scriptMsPerFrame": 36.569,
+     "taskMsPerFrame": 50.062,
+     "heapAllocMBps": 24,
+     "gcPerMin": 107.8,
+     "canvasPerSec": 1.71,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 70.6,
+     "heapAfterGcMB": 37.8,
+     "p50": 50,
+     "p95": 99.9,
+     "p99": 116.7,
+     "max": 166.7,
+     "over33PerMin": 977.9,
+     "otherCpu": 0.31
+    },
+    "values": {
+     "scriptMsPerTick": [
+      17.02,
+      13.939,
+      13.737
+     ],
+     "heapAllocKBPerTick": [
+      582.2,
+      477.6,
+      466.5
+     ],
+     "canvasPer1kTicks": [
+      253.9,
+      205.5,
+      172.2
+     ],
+     "scriptMsPerFrame": [
+      44.123,
+      36.569,
+      36.145
+     ],
+     "taskMsPerFrame": [
+      60.945,
+      50.062,
+      49.486
+     ],
+     "heapAllocMBps": [
+      24,
+      24.1,
+      23.9
+     ],
+     "gcPerMin": [
+      113.6,
+      107.8,
+      107.8
+     ],
+     "canvasPerSec": [
+      1.65,
+      1.75,
+      1.71
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      70.6,
+      73.4,
+      59.6
+     ],
+     "heapAfterGcMB": [
+      35.9,
+      37.8,
+      37.9
+     ],
+     "p50": [
+      66.6,
+      50,
+      50
+     ],
+     "p95": [
+      116.7,
+      99.9,
+      83.4
+     ],
+     "p99": [
+      150,
+      116.7,
+      116.7
+     ],
+     "max": [
+      233.3,
+      166.7,
+      166.6
+     ],
+     "over33PerMin": [
+      830.5,
+      977.9,
+      978.6
+     ],
+     "otherCpu": [
+      0.28,
+      0.31,
+      0.34
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 6.5,
+     "heapAllocKBPerTick": 455.2,
+     "canvasPer1kTicks": 48.9,
+     "scriptMsPerFrame": 7.937,
+     "taskMsPerFrame": 26.915,
+     "heapAllocMBps": 19.8,
+     "gcPerMin": 97.2,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 41.6,
+     "heapAfterGcMB": 20.5,
+     "p50": 16.7,
+     "p95": 50.1,
+     "p99": 66.7,
+     "max": 100.1,
+     "over33PerMin": 870.1,
+     "otherCpu": 0.3
+    },
+    "values": {
+     "scriptMsPerTick": [
+      6.559,
+      6.5,
+      6.466
+     ],
+     "heapAllocKBPerTick": [
+      455.2,
+      452.1,
+      463.3
+     ],
+     "canvasPer1kTicks": [
+      50.1,
+      48.2,
+      48.9
+     ],
+     "scriptMsPerFrame": [
+      8.124,
+      7.937,
+      7.375
+     ],
+     "taskMsPerFrame": [
+      27.122,
+      26.915,
+      25.133
+     ],
+     "heapAllocMBps": [
+      19.8,
+      19.6,
+      20.2
+     ],
+     "gcPerMin": [
+      97.3,
+      93.3,
+      97.2
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.64,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      42.9,
+      25.5,
+      41.6
+     ],
+     "heapAfterGcMB": [
+      20.5,
+      20.5,
+      20.5
+     ],
+     "p50": [
+      16.7,
+      16.7,
+      16.7
+     ],
+     "p95": [
+      66.6,
+      50.1,
+      50.1
+     ],
+     "p99": [
+      66.7,
+      66.7,
+      66.7
+     ],
+     "max": [
+      133.3,
+      100,
+      100.1
+     ],
+     "over33PerMin": [
+      870.1,
+      871.4,
+      841.8
+     ],
+     "otherCpu": [
+      0.3,
+      0.31,
+      0.29
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "6d039cd999eeaff116b0bd43b6e48ee3aaf9746c",
+  "subject": "Merge remote-tracking branch 'origin/codex/phase15-organic-ground' into claude/lme4-stewards",
+  "committed": "2026-10-02T00:58:20+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 14.349,
+     "heapAllocKBPerTick": 492.6,
+     "canvasPer1kTicks": 191.4,
+     "scriptMsPerFrame": 39.79,
+     "taskMsPerFrame": 52.852,
+     "heapAllocMBps": 23.1,
+     "gcPerMin": 103.8,
+     "canvasPerSec": 1.86,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 66.1,
+     "heapAfterGcMB": 37.7,
+     "p50": 50,
+     "p95": 100,
+     "p99": 133.3,
+     "max": 183.4,
+     "over33PerMin": 920.7,
+     "otherCpu": 0.33
+    },
+    "values": {
+     "scriptMsPerTick": [
+      9.933,
+      17.142,
+      14.349
+     ],
+     "heapAllocKBPerTick": [
+      339.9,
+      568.1,
+      492.6
+     ],
+     "canvasPer1kTicks": [
+      191.4,
+      208.6,
+      185.6
+     ],
+     "scriptMsPerFrame": [
+      19.128,
+      44.898,
+      39.79
+     ],
+     "taskMsPerFrame": [
+      28.31,
+      61.572,
+      52.852
+     ],
+     "heapAllocMBps": [
+      22.7,
+      23.1,
+      25
+     ],
+     "gcPerMin": [
+      110.5,
+      103.7,
+      103.8
+     ],
+     "canvasPerSec": [
+      1.93,
+      1.86,
+      1.71
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      56.6,
+      66.1,
+      75.5
+     ],
+     "heapAfterGcMB": [
+      38.5,
+      35.8,
+      37.7
+     ],
+     "p50": [
+      33.3,
+      66.6,
+      50
+     ],
+     "p95": [
+      50,
+      133.3,
+      100
+     ],
+     "p99": [
+      66.6,
+      166.7,
+      133.3
+     ],
+     "max": [
+      99.9,
+      233.4,
+      183.4
+     ],
+     "over33PerMin": [
+      1335.4,
+      845.8,
+      920.7
+     ],
+     "otherCpu": [
+      0.14,
+      0.33,
+      0.37
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 6.764,
+     "heapAllocKBPerTick": 444.7,
+     "canvasPer1kTicks": 49.5,
+     "scriptMsPerFrame": 8.258,
+     "taskMsPerFrame": 27.408,
+     "heapAllocMBps": 19.5,
+     "gcPerMin": 93.3,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 35.2,
+     "heapAfterGcMB": 20.5,
+     "p50": 16.7,
+     "p95": 66.6,
+     "p99": 83.3,
+     "max": 100,
+     "over33PerMin": 841.1,
+     "otherCpu": 0.41
+    },
+    "values": {
+     "scriptMsPerTick": [
+      6.459,
+      6.957,
+      6.764
+     ],
+     "heapAllocKBPerTick": [
+      444.7,
+      442.9,
+      456.8
+     ],
+     "canvasPer1kTicks": [
+      49.5,
+      48.7,
+      49.7
+     ],
+     "scriptMsPerFrame": [
+      8.258,
+      9.043,
+      8.114
+     ],
+     "taskMsPerFrame": [
+      27.408,
+      28.825,
+      26.511
+     ],
+     "heapAllocMBps": [
+      19.5,
+      19.2,
+      20
+     ],
+     "gcPerMin": [
+      93.3,
+      93.2,
+      95.8
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.64,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      35.2,
+      33.7,
+      40.8
+     ],
+     "heapAfterGcMB": [
+      20.5,
+      20.8,
+      20.5
+     ],
+     "p50": [
+      16.7,
+      16.7,
+      16.7
+     ],
+     "p95": [
+      66.6,
+      66.7,
+      50.1
+     ],
+     "p99": [
+      83.3,
+      83.3,
+      66.7
+     ],
+     "max": [
+      100,
+      100,
+      83.3
+     ],
+     "over33PerMin": [
+      800.8,
+      841.1,
+      862.4
+     ],
+     "otherCpu": [
+      0.41,
+      0.37,
+      0.42
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "65d5e57704d6f086880497476bb351b5ce73bda4",
+  "subject": "DOC: art audit links resolve in the repo — evidence notes (runtime observations, render contracts, history notes) added ",
+  "committed": "2026-10-02T01:00:57+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 13.862,
+     "heapAllocKBPerTick": 524,
+     "canvasPer1kTicks": 188.4,
+     "scriptMsPerFrame": 34.225,
+     "taskMsPerFrame": 48.302,
+     "heapAllocMBps": 26.3,
+     "gcPerMin": 109.1,
+     "canvasPerSec": 1.71,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 72.5,
+     "heapAfterGcMB": 37.3,
+     "p50": 50,
+     "p95": 83.4,
+     "p99": 116.6,
+     "max": 216.7,
+     "over33PerMin": 994.6,
+     "otherCpu": 0.36
+    },
+    "values": {
+     "scriptMsPerTick": [
+      13.862,
+      13.26,
+      14.617
+     ],
+     "heapAllocKBPerTick": [
+      524,
+      485.9,
+      562.5
+     ],
+     "canvasPer1kTicks": [
+      188.4,
+      186.3,
+      199.5
+     ],
+     "scriptMsPerFrame": [
+      35.199,
+      33.24,
+      34.225
+     ],
+     "taskMsPerFrame": [
+      48.438,
+      46.111,
+      48.302
+     ],
+     "heapAllocMBps": [
+      26.7,
+      25.8,
+      26.3
+     ],
+     "gcPerMin": [
+      102.5,
+      109.1,
+      117.1
+     ],
+     "canvasPerSec": [
+      1.71,
+      1.71,
+      1.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      70.7,
+      82.1,
+      72.5
+     ],
+     "heapAfterGcMB": [
+      38.1,
+      36.7,
+      37.3
+     ],
+     "p50": [
+      50,
+      49.9,
+      50
+     ],
+     "p95": [
+      83.4,
+      83.4,
+      100
+     ],
+     "p99": [
+      116.6,
+      100,
+      150
+     ],
+     "max": [
+      150,
+      216.7,
+      299.9
+     ],
+     "over33PerMin": [
+      994.6,
+      1023.5,
+      941
+     ],
+     "otherCpu": [
+      0.41,
+      0.36,
+      0.34
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 6.442,
+     "heapAllocKBPerTick": 395.5,
+     "canvasPer1kTicks": 50.1,
+     "scriptMsPerFrame": 10.844,
+     "taskMsPerFrame": 36.299,
+     "heapAllocMBps": 16.8,
+     "gcPerMin": 79.9,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 37,
+     "heapAfterGcMB": 20.4,
+     "p50": 33.3,
+     "p95": 83.3,
+     "p99": 133.3,
+     "max": 299.9,
+     "over33PerMin": 839.8,
+     "otherCpu": 0.38
+    },
+    "values": {
+     "scriptMsPerTick": [
+      6.442,
+      7.183,
+      6.369
+     ],
+     "heapAllocKBPerTick": [
+      392,
+      403.8,
+      395.5
+     ],
+     "canvasPer1kTicks": [
+      50.7,
+      48.9,
+      50.1
+     ],
+     "scriptMsPerFrame": [
+      10.844,
+      11.99,
+      10.614
+     ],
+     "taskMsPerFrame": [
+      35.857,
+      39.267,
+      36.299
+     ],
+     "heapAllocMBps": [
+      17.2,
+      15.5,
+      16.8
+     ],
+     "gcPerMin": [
+      80,
+      69,
+      79.9
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.59,
+      0.67
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      37,
+      24.2,
+      40.5
+     ],
+     "heapAfterGcMB": [
+      20.4,
+      20.7,
+      20.3
+     ],
+     "p50": [
+      33.3,
+      33.3,
+      33.3
+     ],
+     "p95": [
+      83.3,
+      83.4,
+      83.3
+     ],
+     "p99": [
+      100.1,
+      166.7,
+      133.3
+     ],
+     "max": [
+      250,
+      416.6,
+      299.9
+     ],
+     "over33PerMin": [
+      850.4,
+      814,
+      839.8
+     ],
+     "otherCpu": [
+      0.35,
+      0.38,
+      0.38
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "19aae9c9108f561e73b6b350c0a9850912ebe083",
+  "subject": "INBOX-2w: lord-mode screen components received and confirmed — 40 PNGs (traits 6 at 48 and 24 px, region map base, map s",
+  "committed": "2026-10-02T01:04:36+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 17.581,
+     "heapAllocKBPerTick": 606.9,
+     "canvasPer1kTicks": 244.7,
+     "scriptMsPerFrame": 54.724,
+     "taskMsPerFrame": 74.542,
+     "heapAllocMBps": 24.5,
+     "gcPerMin": 105.1,
+     "canvasPerSec": 1.75,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 70,
+     "heapAfterGcMB": 36.9,
+     "p50": 66.7,
+     "p95": 166.7,
+     "p99": 250,
+     "max": 350,
+     "over33PerMin": 693.4,
+     "otherCpu": 0.38
+    },
+    "values": {
+     "scriptMsPerTick": [
+      17.581,
+      17.469,
+      21.516
+     ],
+     "heapAllocKBPerTick": [
+      606.9,
+      604.8,
+      754.9
+     ],
+     "canvasPer1kTicks": [
+      243.4,
+      244.7,
+      263.3
+     ],
+     "scriptMsPerFrame": [
+      54.724,
+      58.972,
+      53.586
+     ],
+     "taskMsPerFrame": [
+      72.472,
+      79.612,
+      74.542
+     ],
+     "heapAllocMBps": [
+      24.5,
+      24.5,
+      24.2
+     ],
+     "gcPerMin": [
+      105.1,
+      105.1,
+      119.7
+     ],
+     "canvasPerSec": [
+      1.75,
+      1.82,
+      1.73
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      66.1,
+      72,
+      70
+     ],
+     "heapAfterGcMB": [
+      36.2,
+      37.3,
+      36.9
+     ],
+     "p50": [
+      66.7,
+      83.2,
+      66.7
+     ],
+     "p95": [
+      150,
+      183.3,
+      166.7
+     ],
+     "p99": [
+      250,
+      250,
+      233.3
+     ],
+     "max": [
+      766.6,
+      350,
+      350
+     ],
+     "over33PerMin": [
+      708.9,
+      693.4,
+      669
+     ],
+     "otherCpu": [
+      0.38,
+      0.38,
+      0.34
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 6.408,
+     "heapAllocKBPerTick": 379.1,
+     "canvasPer1kTicks": 50.2,
+     "scriptMsPerFrame": 11.634,
+     "taskMsPerFrame": 39.325,
+     "heapAllocMBps": 16.5,
+     "gcPerMin": 76.4,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 37.6,
+     "heapAfterGcMB": 20.7,
+     "p50": 33.3,
+     "p95": 83.4,
+     "p99": 149.9,
+     "max": 300,
+     "over33PerMin": 816.4,
+     "otherCpu": 0.37
+    },
+    "values": {
+     "scriptMsPerTick": [
+      6.468,
+      6.381,
+      6.408
+     ],
+     "heapAllocKBPerTick": [
+      389.7,
+      372.1,
+      379.1
+     ],
+     "canvasPer1kTicks": [
+      50.8,
+      50.2,
+      48
+     ],
+     "scriptMsPerFrame": [
+      11.386,
+      11.634,
+      12.134
+     ],
+     "taskMsPerFrame": [
+      38.051,
+      39.325,
+      39.397
+     ],
+     "heapAllocMBps": [
+      16.6,
+      15.9,
+      16.5
+     ],
+     "gcPerMin": [
+      77,
+      76.4,
+      73.1
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.64,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      40.5,
+      37.6,
+      35.9
+     ],
+     "heapAfterGcMB": [
+      21.1,
+      20.6,
+      20.7
+     ],
+     "p50": [
+      33.3,
+      33.3,
+      33.4
+     ],
+     "p95": [
+      83.4,
+      99.9,
+      83.4
+     ],
+     "p99": [
+      133.2,
+      149.9,
+      150
+     ],
+     "max": [
+      300,
+      299.9,
+      300
+     ],
+     "over33PerMin": [
+      816.4,
+      815.1,
+      848.5
+     ],
+     "otherCpu": [
+      0.39,
+      0.33,
+      0.37
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "f5aec50a4d5a2d1b8f292e6338cf30c5877b5121",
+  "subject": "LM-E5: report (three seeds three towns, the same seed byte-equal, guardrail 5/5 with the new baseline baseline-0028311, ",
+  "committed": "2026-10-02T01:52:22+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 9.506,
+     "heapAllocKBPerTick": 321.2,
+     "canvasPer1kTicks": 203.5,
+     "scriptMsPerFrame": 14.97,
+     "taskMsPerFrame": 22.962,
+     "heapAllocMBps": 21.6,
+     "gcPerMin": 90.6,
+     "canvasPerSec": 2.06,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 73.5,
+     "heapAfterGcMB": 38.3,
+     "p50": 16.7,
+     "p95": 33.4,
+     "p99": 50,
+     "max": 66.7,
+     "over33PerMin": 1008.3,
+     "otherCpu": 0
+    },
+    "values": {
+     "scriptMsPerTick": [
+      9.47,
+      9.506,
+      9.54
+     ],
+     "heapAllocKBPerTick": [
+      316.1,
+      321.2,
+      327.2
+     ],
+     "canvasPer1kTicks": [
+      203.1,
+      203.5,
+      208.6
+     ],
+     "scriptMsPerFrame": [
+      14.966,
+      14.97,
+      15.358
+     ],
+     "taskMsPerFrame": [
+      22.951,
+      22.962,
+      23.517
+     ],
+     "heapAllocMBps": [
+      21.2,
+      21.6,
+      21.9
+     ],
+     "gcPerMin": [
+      90.6,
+      97.3,
+      89.2
+     ],
+     "canvasPerSec": [
+      2.06,
+      2.04,
+      2.06
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      73.5,
+      74.3,
+      71.9
+     ],
+     "heapAfterGcMB": [
+      38.3,
+      39.3,
+      38.1
+     ],
+     "p50": [
+      16.7,
+      16.7,
+      16.7
+     ],
+     "p95": [
+      33.4,
+      33.4,
+      33.4
+     ],
+     "p99": [
+      50,
+      50,
+      50
+     ],
+     "max": [
+      50.1,
+      66.7,
+      66.7
+     ],
+     "over33PerMin": [
+      1008.3,
+      998,
+      1050.9
+     ],
+     "otherCpu": [
+      0,
+      0,
+      0.01
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 5.24,
+     "heapAllocKBPerTick": 485.9,
+     "canvasPer1kTicks": 48.5,
+     "scriptMsPerFrame": 3.929,
+     "taskMsPerFrame": 15.508,
+     "heapAllocMBps": 21.3,
+     "gcPerMin": 94.6,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 32.4,
+     "heapAfterGcMB": 20.9,
+     "p50": 16.7,
+     "p95": 16.8,
+     "p99": 33.3,
+     "max": 33.5,
+     "over33PerMin": 86.6,
+     "otherCpu": 0.01
+    },
+    "values": {
+     "scriptMsPerTick": [
+      5.224,
+      5.24,
+      5.244
+     ],
+     "heapAllocKBPerTick": [
+      473.4,
+      485.9,
+      494.2
+     ],
+     "canvasPer1kTicks": [
+      48.5,
+      48.5,
+      49
+     ],
+     "scriptMsPerFrame": [
+      3.92,
+      3.929,
+      3.938
+     ],
+     "taskMsPerFrame": [
+      15.508,
+      15.501,
+      15.514
+     ],
+     "heapAllocMBps": [
+      20.8,
+      21.3,
+      21.7
+     ],
+     "gcPerMin": [
+      93.3,
+      94.6,
+      99.9
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.64,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      26.1,
+      41.8,
+      32.4
+     ],
+     "heapAfterGcMB": [
+      20.9,
+      20.9,
+      20.8
+     ],
+     "p50": [
+      16.7,
+      16.7,
+      16.7
+     ],
+     "p95": [
+      16.8,
+      16.8,
+      16.8
+     ],
+     "p99": [
+      33.3,
+      33.3,
+      33.4
+     ],
+     "max": [
+      33.4,
+      33.5,
+      33.5
+     ],
+     "over33PerMin": [
+      87.9,
+      85.2,
+      86.6
+     ],
+     "otherCpu": [
+      0.01,
+      0.01,
+      0.01
+     ]
+    }
+   }
+  }
+ },
+ {
+  "commit": "b90c0ecafa2709bb6e76e482d0b2b314f184f0da",
+  "subject": "LAND-UI: the clean clone on the merged head 21d55861 (4,323/4,323) in the report",
+  "committed": "2026-10-02T02:12:13+09:00",
+  "scenes": {
+   "big-town-x5": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 9.643,
+     "heapAllocKBPerTick": 324.9,
+     "canvasPer1kTicks": 201.3,
+     "scriptMsPerFrame": 15.953,
+     "taskMsPerFrame": 24.129,
+     "heapAllocMBps": 21.8,
+     "gcPerMin": 86.6,
+     "canvasPerSec": 2.04,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 81.3,
+     "heapAfterGcMB": 38.3,
+     "p50": 16.7,
+     "p95": 33.4,
+     "p99": 50,
+     "max": 66.6,
+     "over33PerMin": 1112.6,
+     "otherCpu": 0
+    },
+    "values": {
+     "scriptMsPerTick": [
+      9.667,
+      9.643,
+      9.502
+     ],
+     "heapAllocKBPerTick": [
+      324.9,
+      307,
+      341
+     ],
+     "canvasPer1kTicks": [
+      194,
+      205.7,
+      201.3
+     ],
+     "scriptMsPerFrame": [
+      16.147,
+      15.953,
+      15.073
+     ],
+     "taskMsPerFrame": [
+      24.373,
+      24.129,
+      23.093
+     ],
+     "heapAllocMBps": [
+      21.8,
+      20.6,
+      22.9
+     ],
+     "gcPerMin": [
+      86.6,
+      86.6,
+      93.2
+     ],
+     "canvasPerSec": [
+      2.04,
+      2.04,
+      2.06
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      81.3,
+      83.1,
+      80.3
+     ],
+     "heapAfterGcMB": [
+      37.8,
+      38.3,
+      38.3
+     ],
+     "p50": [
+      16.7,
+      16.7,
+      16.7
+     ],
+     "p95": [
+      33.4,
+      33.4,
+      33.4
+     ],
+     "p99": [
+      50,
+      50,
+      50
+     ],
+     "max": [
+      66.6,
+      66.7,
+      66.6
+     ],
+     "over33PerMin": [
+      1133.5,
+      1112.6,
+      1014.9
+     ],
+     "otherCpu": [
+      0.01,
+      0,
+      0
+     ]
+    }
+   },
+   "new-game-x3": {
+    "runs": 3,
+    "medians": {
+     "scriptMsPerTick": 5.241,
+     "heapAllocKBPerTick": 480.6,
+     "canvasPer1kTicks": 48.6,
+     "scriptMsPerFrame": 3.918,
+     "taskMsPerFrame": 15.405,
+     "heapAllocMBps": 21.1,
+     "gcPerMin": 93.2,
+     "canvasPerSec": 0.64,
+     "bitmapPerSec": 0,
+     "getImageDataPerSec": 0,
+     "heapEndMB": 31.7,
+     "heapAfterGcMB": 20.3,
+     "p50": 16.7,
+     "p95": 16.8,
+     "p99": 33.3,
+     "max": 33.4,
+     "over33PerMin": 78.6,
+     "otherCpu": 0
+    },
+    "values": {
+     "scriptMsPerTick": [
+      5.27,
+      5.24,
+      5.241
+     ],
+     "heapAllocKBPerTick": [
+      480.6,
+      475.5,
+      494.6
+     ],
+     "canvasPer1kTicks": [
+      49.1,
+      48.6,
+      48.6
+     ],
+     "scriptMsPerFrame": [
+      3.952,
+      3.907,
+      3.918
+     ],
+     "taskMsPerFrame": [
+      15.443,
+      15.352,
+      15.405
+     ],
+     "heapAllocMBps": [
+      21.1,
+      20.9,
+      21.7
+     ],
+     "gcPerMin": [
+      93.2,
+      93.3,
+      91.9
+     ],
+     "canvasPerSec": [
+      0.64,
+      0.64,
+      0.64
+     ],
+     "bitmapPerSec": [
+      0,
+      0,
+      0
+     ],
+     "getImageDataPerSec": [
+      0,
+      0,
+      0
+     ],
+     "heapEndMB": [
+      39.3,
+      25.2,
+      31.7
+     ],
+     "heapAfterGcMB": [
+      20.1,
+      20.3,
+      20.4
+     ],
+     "p50": [
+      16.7,
+      16.7,
+      16.7
+     ],
+     "p95": [
+      16.8,
+      16.8,
+      16.8
+     ],
+     "p99": [
+      33.3,
+      33.3,
+      33.3
+     ],
+     "max": [
+      33.4,
+      33.4,
+      33.4
+     ],
+     "over33PerMin": [
+      90.6,
+      70.6,
+      78.6
+     ],
+     "otherCpu": [
+      0,
+      0,
+      0
+     ]
+    }
+   }
+  }
  }
 ]
