@@ -1,0 +1,170 @@
+[
+  {
+    "scene": "prenat1-city",
+    "detector": "repeat_density",
+    "outcome": "FP",
+    "candidate_id": "prenat1-city:repeat_density:1",
+    "defect_id": null,
+    "note": "Human semantic rejection; spatial match forbidden"
+  },
+  {
+    "scene": "current-chalk",
+    "detector": "straight_boundary",
+    "outcome": "TP",
+    "candidate_id": "4c404b8e2e77",
+    "defect_id": "QA039-rock-mass",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "current-chalk",
+    "detector": "tile_seam",
+    "outcome": "TP",
+    "candidate_id": "b604a0881d0d",
+    "defect_id": "QA039-black-stamps",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "outcome": "TP",
+    "candidate_id": "6209fd488ef9",
+    "defect_id": "QA040-north-middle",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "outcome": "TP",
+    "candidate_id": "8cf981d4c8d5",
+    "defect_id": "QA040-bottom",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "outcome": "TP",
+    "candidate_id": "854e9734f48c",
+    "defect_id": "QA040-north-right",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "outcome": "TP",
+    "candidate_id": "c61943b7e300",
+    "defect_id": "QA040-south-left",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "outcome": "TP",
+    "candidate_id": "79509950024e",
+    "defect_id": "QA040-north-left",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "outcome": "FP",
+    "candidate_id": "2526fd42422a",
+    "defect_id": null,
+    "note": "No unmatched annotated target"
+  },
+  {
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "outcome": "FN",
+    "candidate_id": null,
+    "defect_id": "QA040-north-step",
+    "note": "\uc911\uc559 \uc218\uc9c1 \uacc4\ub2e8"
+  },
+  {
+    "scene": "prenat2-city-confirm",
+    "detector": "stationary_person",
+    "outcome": "TP",
+    "candidate_id": "prenat2-city-confirm:stationary_person:figure:0",
+    "defect_id": "QA002-visible-1",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "prenat2-city-confirm",
+    "detector": "stationary_person",
+    "outcome": "TP",
+    "candidate_id": "prenat2-city-confirm:stationary_person:figure:1",
+    "defect_id": "QA002-visible-4",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "prenat2-city-confirm",
+    "detector": "stationary_person",
+    "outcome": "TP",
+    "candidate_id": "prenat2-city-confirm:stationary_person:figure:2",
+    "defect_id": "QA002-visible-8",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "prenat2-city-confirm",
+    "detector": "stationary_person",
+    "outcome": "TP",
+    "candidate_id": "prenat2-city-confirm:stationary_person:figure:5",
+    "defect_id": "QA002-visible-19",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "prenat2-city-confirm",
+    "detector": "stationary_person",
+    "outcome": "TP",
+    "candidate_id": "prenat2-city-confirm:stationary_person:figure:72",
+    "defect_id": "QA002-visible-6",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "prenat1-city-confirm",
+    "detector": "roof_overlap",
+    "outcome": "TP",
+    "candidate_id": "prenat1-city-confirm:roof_overlap:figure:81",
+    "defect_id": "PRENAT1-static-roof-4",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "prenat1-city-confirm",
+    "detector": "roof_overlap",
+    "outcome": "TP",
+    "candidate_id": "prenat1-city-confirm:roof_overlap:figure:82",
+    "defect_id": "PRENAT1-static-roof-19",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "prenat1-city",
+    "detector": "repeat_density",
+    "outcome": "TP",
+    "candidate_id": "prenat1-city:repeat_density:3",
+    "defect_id": "OBJ-YARN-01",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "prenat1-city",
+    "detector": "scale_ratio",
+    "outcome": "TP",
+    "candidate_id": "prenat1-city:scale_ratio:0",
+    "defect_id": "OBJ-BARREL-02",
+    "note": "Spatial one-to-one match"
+  },
+  {
+    "scene": "prenat1-city",
+    "detector": "scale_ratio",
+    "outcome": "FN",
+    "candidate_id": null,
+    "defect_id": "OBJ-BARREL-01",
+    "note": "\uc911\uc559 \uc8fc\ud0dd \uc55e \uc138\ub85c \ub098\ubb34\ud1b5. \uc131\uc778 \uc57d17.6px\uc5d0 \ube44\ud574 \ud1b5 \ubab8\ud1b5 \uc57d30px, \ud1b5 \uae30\uc9000.45\u20130.65H \ucd08\uacfc. \uc67c\ucabd \ub113\uc740 \uace1\ubb3c\ud1b5\uc740 \uc6a9\ub3c4 \ubd88\uba85\uc73c\ub85c \ubcc4\ub3c4 \uc81c\uc678."
+  },
+  {
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "outcome": "TP",
+    "candidate_id": "c705c5c8a729",
+    "defect_id": "QA005-NW-wall-moving-figure",
+    "note": "Spatial one-to-one match"
+  }
+]

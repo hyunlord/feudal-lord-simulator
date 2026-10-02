@@ -1,0 +1,540 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:charter-and-kin:proposal:event-registry:2",
+  "title": "NE01 event registry proposal v2 (not implemented)",
+  "description": "정의와 제안 저장 상태의 교환 형식. 엔진 명령 및 효과 구현을 포함하지 않음.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "proposalVersion": {
+      "const": 2
+    },
+    "implementationStatus": {
+      "const": "proposal_only"
+    },
+    "sourceHead": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "evaluation": {
+          "const": "season_boundary_after_existing_engine"
+        },
+        "newContentMaxPerYear": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "newContentMaxPerSeason": {
+          "const": 1
+        },
+        "selection": {
+          "const": "seeded_integer_weighted_sorted_id"
+        },
+        "seedNamespace": {
+          "type": "string",
+          "minLength": 1
+        },
+        "failurePolicy": {
+          "const": "skip_without_engine_mutation"
+        }
+      },
+      "required": [
+        "evaluation",
+        "newContentMaxPerYear",
+        "newContentMaxPerSeason",
+        "selection",
+        "seedNamespace",
+        "failurePolicy"
+      ]
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      },
+      "minItems": 1
+    },
+    "runtimeState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/occurrenceRecord"
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "records"
+      ]
+    }
+  },
+  "required": [
+    "proposalVersion",
+    "implementationStatus",
+    "sourceHead",
+    "policy",
+    "entries"
+  ],
+  "$defs": {
+    "predicate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "enum": [
+            "calendar.year",
+            "calendar.season",
+            "population.occupiedHouseholds",
+            "treasury.coinD",
+            "estate.landKinds",
+            "estate.ownedByLord",
+            "faction.relation",
+            "rights.pieceIds",
+            "bound.status",
+            "bound.kind",
+            "bound.deadlineTick",
+            "bound.reachedLord",
+            "bound.allowedResponses",
+            "steward.mode",
+            "steward.rules.recurring",
+            "audit.status",
+            "person.alive"
+          ]
+        },
+        "subject": {
+          "enum": [
+            "world",
+            "bound",
+            "bound.estate",
+            "bound.party",
+            "bound.person"
+          ]
+        },
+        "op": {
+          "enum": [
+            "eq",
+            "gte",
+            "lte",
+            "in",
+            "contains",
+            "exists"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "array"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          }
+        }
+      },
+      "required": [
+        "field",
+        "subject",
+        "op",
+        "value"
+      ]
+    },
+    "condition": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/predicate"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "all": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/condition"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "all"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "any": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/condition"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "any"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "not": {
+              "$ref": "#/$defs/condition"
+            }
+          },
+          "required": [
+            "not"
+          ]
+        }
+      ]
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "estate_petition",
+            "chapter_petition",
+            "existing_command_target"
+          ]
+        },
+        "definitionKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "instanceSelector": {
+          "enum": [
+            "open_matching_instance",
+            "eligible_existing_target"
+          ]
+        },
+        "effectOwner": {
+          "const": "existing_engine_handler"
+        },
+        "creation": {
+          "const": "never"
+        },
+        "onMissing": {
+          "const": "skip"
+        }
+      },
+      "required": [
+        "kind",
+        "definitionKey",
+        "instanceSelector",
+        "effectOwner",
+        "creation",
+        "onMissing"
+      ]
+    },
+    "frequency": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "seasonal_candidate",
+            "existing_arrival_only"
+          ]
+        },
+        "chancePermille": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000
+        },
+        "weight": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minGapSeasons": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxPerYear": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "countsAgainstNewContentBudget": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "mode",
+        "chancePermille",
+        "weight",
+        "minGapSeasons",
+        "maxPerYear",
+        "countsAgainstNewContentBudget"
+      ]
+    },
+    "recurrence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "once_per_campaign",
+            "once_per_bound_instance",
+            "new_context_only"
+          ]
+        },
+        "cooldownSeasons": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maxOccurrences": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "contextKeyFields": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "bound.instanceId",
+              "bound.estateId",
+              "bound.partyId",
+              "bound.stewardId",
+              "bound.auditPeriod",
+              "bound.kind"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "requireContextChange": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "mode",
+        "cooldownSeasons",
+        "maxOccurrences",
+        "contextKeyFields",
+        "requireContextChange"
+      ]
+    },
+    "dedup": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exclusiveGroups": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "semanticKeyFields": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "bound.instanceId",
+              "bound.estateId",
+              "bound.partyId",
+              "bound.stewardId",
+              "bound.auditPeriod",
+              "bound.kind"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "groupCooldownSeasons": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "suppressWhileBoundOpen": {
+          "const": true
+        },
+        "winnerPriority": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "exclusiveGroups",
+        "semanticKeyFields",
+        "groupCooldownSeasons",
+        "suppressWhileBoundOpen",
+        "winnerPriority"
+      ]
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^ck_evt_[0-9]{3}$"
+        },
+        "contentRevision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "contentClass": {
+          "enum": [
+            "new_event_draft",
+            "existing_petition_variant",
+            "existing_event_copy_revision"
+          ]
+        },
+        "contentRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binding": {
+          "$ref": "#/$defs/binding"
+        },
+        "conditions": {
+          "$ref": "#/$defs/condition"
+        },
+        "frequency": {
+          "$ref": "#/$defs/frequency"
+        },
+        "recurrence": {
+          "$ref": "#/$defs/recurrence"
+        },
+        "dedup": {
+          "$ref": "#/$defs/dedup"
+        },
+        "deadlinePolicy": {
+          "const": "inherit_engine_never_extend"
+        },
+        "deferPolicy": {
+          "const": "leave_open_no_effect_no_deadline_reset"
+        },
+        "minimumEnabledConsequentialChoices": {
+          "const": 2
+        },
+        "choiceSource": {
+          "const": "content_draft_existing_handler_adapters"
+        },
+        "precedentPolicy": {
+          "const": "defer_to_engine_only"
+        },
+        "executionPolicy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "singleCommand",
+            "compoundCommands",
+            "requireContentPreconditions"
+          ],
+          "properties": {
+            "singleCommand": {
+              "const": "existing_handler_with_revalidation"
+            },
+            "compoundCommands": {
+              "const": "blocked_until_atomic_adapter"
+            },
+            "requireContentPreconditions": {
+              "const": true
+            }
+          }
+        }
+      },
+      "required": [
+        "id",
+        "contentRevision",
+        "contentClass",
+        "contentRef",
+        "binding",
+        "conditions",
+        "frequency",
+        "recurrence",
+        "dedup",
+        "deadlinePolicy",
+        "deferPolicy",
+        "minimumEnabledConsequentialChoices",
+        "choiceSource",
+        "precedentPolicy",
+        "executionPolicy"
+      ]
+    },
+    "occurrenceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "occurrenceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "draftId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "boundInstanceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contextKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semanticKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "offeredSeason": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "terminalSeason": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "status": {
+          "enum": [
+            "offered",
+            "deferred",
+            "resolved",
+            "expired",
+            "invalidated"
+          ]
+        },
+        "choiceId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "idempotencyKey": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "occurrenceId",
+        "draftId",
+        "boundInstanceId",
+        "contextKey",
+        "semanticKey",
+        "offeredSeason",
+        "terminalSeason",
+        "status",
+        "choiceId",
+        "idempotencyKey"
+      ]
+    }
+  }
+}
