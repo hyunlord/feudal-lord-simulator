@@ -14,7 +14,8 @@ import type { Wave34WorksKey } from "./wave34WorksManifest.generated";
 // the works props. The chunk key carries landWorksChunkToken (landWorksIndex.ts), so a stage change, a dig starting or
 // stopping, a finished patch or the art loading re-rasters the chunks they reach.
 //  - Ford sheet: pivot (256, 128) on the crossing's centre; its water section spans exactly `width` cells along the
-//    axis (fords-QA anchor points), the ramps lie on the banks beyond.
+//    axis (fords-QA anchor points), the ramps lie on the banks beyond. A single-cell ford takes the Wave 41 w1 sheet
+//    (NAT-4; LU-D4 drew the w2 sheet centred until it came).
 //  - Stages 1 and 2 are 128 x 64 tiles on the (64, 32) / (-64, 32) lattice. They are composited at source size on one
 //    canvas per work, then drawn once scaled (records/QA: tiles scaled one by one show alpha seams).
 //  - Stage 3: one region sheet on the box centre, clipped to the union of the work's cell diamonds (LU-D5).

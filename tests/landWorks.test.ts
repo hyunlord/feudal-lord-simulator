@@ -69,8 +69,8 @@ test("LU-D3/D4 ford groups on the coast, downs and forest edge (seeds 1-3): join
       }
       assert.deepEqual(group.centre, { tx: xs.reduce((a, b) => a + b, 0) / xs.length, ty: ys.reduce((a, b) => a + b, 0) / ys.length });
       assert.equal(group.road, false, "a new game has no road on its fords");
-      // LU-D4: width 1 draws the w2 sheet; the sheet's axis is the group's.
-      assert.equal(fordKey(group.width, group.axis, "summer"), `ford_w2_${group.axis}_summer`);
+      // NAT-4 (LU-D4 follow-up): width 1 draws the Wave 41 w1 sheet, width 2 the w2 sheet; the sheet's axis is the group's.
+      assert.equal(fordKey(group.width, group.axis, "summer"), `ford_w${group.width}_${group.axis}_summer`);
     }
   }
   assert.deepEqual(fordGroups(DEFAULT_GAME_STATE), []);

@@ -1,8 +1,7 @@
 import type { GameState } from "../engine/engine.types";
 import { GROUND_CHUNK_TILES } from "./groundSceneParts";
 import { drainEdges, fordGroups, plankBridges, workPlan, type DrainEdge, type FordGroup, type WorkPlan } from "./landWorksModel";
-import { doneEdgeKey, fordKey, stageKey, WORKS_SEASONS, worksArtReady } from "./wave34Art";
-import type { Wave34WorksKey } from "./wave34WorksManifest.generated";
+import { doneEdgeKey, fordKey, stageKey, WORKS_SEASONS, worksArtReady, type WorksKey } from "./wave34Art";
 
 // LAND-UI: the land works of a state, indexed by ground chunk (8 x 8 tiles), for landWorksDraw.ts and the chunk key.
 // Cache (AGENTS rule 10):
@@ -20,7 +19,7 @@ export type ChunkWorks = {
   readonly edges: readonly DrainEdge[];
   readonly bridges: readonly { readonly tx: number; readonly ty: number }[];
   /** Every Wave 34 picture the chunk draws, in both seasons (so a staged raster of the next season is keyed too). */
-  readonly keys: readonly Wave34WorksKey[];
+  readonly keys: readonly WorksKey[];
   /** The chunk's works signature: ford groups, works with stage and diggers, the drained count. */
   readonly signature: string;
 };
@@ -71,7 +70,7 @@ export function chunkWorks(state: GameState, cx: number, cy: number): ChunkWorks
   const works = index.works.filter(work => work.box.maxTx >= left && work.box.minTx <= right && work.box.maxTy >= top && work.box.minTy <= bottom);
   const edges = index.edges.filter(edge => near(edge.tx, edge.ty));
   const bridges = index.bridges.filter(bridge => near(bridge.tx, bridge.ty));
-  const keys = new Set<Wave34WorksKey>();
+  const keys = new Set<WorksKey>();
   for (const season of WORKS_SEASONS) {
     for (const group of fords) keys.add(fordKey(group.width, group.axis, season));
     for (const work of works) keys.add(stageKey(work.stage, work.region, season));
