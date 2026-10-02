@@ -4,8 +4,7 @@
  * commands the engine already has. Nothing runs without `state.agency`.
  */
 import type { BuildingKind } from "../content/buildingConfig";
-import { HOME_PETITION_ENTRIES } from "../content/registry/homePetitions";
-import { DRAFT_EVENT_ENTRIES } from "../content/registry/draftEvents";
+import { ALL_REGISTRY_ENTRIES } from "../content/registry/registryEntries";
 import {
   REGISTRY_BINDS, REGISTRY_FIELDS, REGISTRY_KINDS, REGISTRY_OPS,
   type RegistryCondition, type RegistryEffect, type RegistryEntry,
@@ -13,11 +12,11 @@ import {
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
 import type { GameState } from "./engine.types";
 import { estatesOf } from "./estates";
-import { addSuitEvidence, fileSuit } from "./estateSuits";
+import { addSuitEvidence, enforcePossession, fileSuit } from "./estateSuits";
 import { hashSeed } from "./prng";
 import type { LordHouse, RegistryOccurrence, RegistryState, RegistryTerm } from "./registry.types";
 import { stateCalendar } from "./scenarioState";
-import { answerAudit, attention, heldOffMapEstates, pendingAudits, setAuditMode, setEstateOversight, stewardshipOf } from "./stewardship";
+import { answerAudit, attention, heldOffMapEstates, pendingAudits, setAuditMode, setEstateOversight, setExceptionRules, stewardshipOf } from "./stewardship";
 import { orderTimber } from "./timberTrade";
 import { setEstatePolicy, setMarketDues, setProjectSubsidy } from "./townAgency";
 
@@ -37,7 +36,8 @@ export const DEFAULT_LORD_HOUSE: LordHouse = { name: "de Haverel", arms: "havere
 export interface RegistryRejection { readonly id: string; readonly reason: string }
 
 const COMMANDS: ReadonlySet<string> = new Set(["set_project_subsidy", "set_market_dues", "set_estate_policy", "set_audit_mode", "answer_audit",
-  "set_estate_oversight", "add_suit_evidence", "file_suit", "order_timber", "faction_relation", "treasury", "term", "rights_scope", "none"]);
+  "set_estate_oversight", "add_suit_evidence", "file_suit", "order_timber", "faction_relation", "treasury", "term", "rights_scope",
+  "set_exception_rules", "enforce_possession", "none"]);
 
 function conditionProblem(condition: RegistryCondition): string | null {
   if ("all" in condition) return condition.all.length === 0 ? "empty all" : condition.all.map(conditionProblem).find(problem => problem !== null) ?? null;
@@ -46,6 +46,7 @@ function conditionProblem(condition: RegistryCondition): string | null {
   if (!(REGISTRY_FIELDS as readonly string[]).includes(condition.field)) return `unknown field ${condition.field}`;
   if (!(REGISTRY_OPS as readonly string[]).includes(condition.op)) return `unknown op ${condition.op}`;
   if (condition.op === "in" && !Array.isArray(condition.value)) return "in needs a list";
+  if ((condition.op === "has" || condition.op === "lacks") && (condition.field !== "bound.evidence" || typeof condition.value !== "string")) return `${condition.op} needs bound.evidence and a kind`;
   if ((condition.op === "gte" || condition.op === "lte") && typeof condition.value !== "number") return `${condition.op} needs a number`;
   if (condition.field === "faction.relation" && condition.faction === undefined) return "faction.relation needs a faction";
   return null;
@@ -64,14 +65,17 @@ export function entryProblem(entry: RegistryEntry): string | null {
   if (entry.recurrence.mode === "once" && entry.recurrence.maxOccurrences !== 1) return "once must have maxOccurrences 1";
   if (entry.choices.length < 2) return "fewer than two choices";
   if (new Set(entry.choices.map(choice => choice.id)).size !== entry.choices.length) return "choice ids repeat";
-  for (const choice of entry.choices) for (const effect of choice.effects) if (!COMMANDS.has(effect.command)) return `unknown command ${effect.command}`;
+  for (const choice of entry.choices) {
+    for (const effect of choice.effects) if (!COMMANDS.has(effect.command)) return `unknown command ${effect.command}`;
+    if (choice.requires !== undefined) { const problem = conditionProblem(choice.requires); if (problem !== null) return `${choice.id}: ${problem}`; }
+  }
   if (entry.lapseChoice !== undefined && !entry.choices.some(choice => choice.id === entry.lapseChoice)) return "lapse choice not among the choices";
   if (entry.conditions !== undefined) { const problem = conditionProblem(entry.conditions); if (problem !== null) return problem; }
   return null;
 }
 
 /** ER-2: the registry as loaded — the entries that pass, and those left out with their reason. */
-export function registryLoad(entries: readonly RegistryEntry[] = [...HOME_PETITION_ENTRIES, ...DRAFT_EVENT_ENTRIES]): { readonly entries: readonly RegistryEntry[]; readonly rejected: readonly RegistryRejection[] } {
+export function registryLoad(entries: readonly RegistryEntry[] = ALL_REGISTRY_ENTRIES): { readonly entries: readonly RegistryEntry[]; readonly rejected: readonly RegistryRejection[] } {
   const seen = new Set<string>();
   const accepted: RegistryEntry[] = [];
   const rejected: RegistryRejection[] = [];
@@ -109,11 +113,24 @@ export function lordHouse(state: Pick<GameState, "registry">): LordHouse {
 
 // --- ER-1 the read model ----------------------------------------------------------------------------------------------
 
-function fieldValue(state: GameState, condition: Extract<RegistryCondition, { field: unknown }>, boundId: string): number | string | boolean {
+function fieldValue(state: GameState, condition: Extract<RegistryCondition, { field: unknown }>, boundId: string): number | string | boolean | readonly string[] {
   const calendar = stateCalendar(state);
   const stewardship = stewardshipOf(state);
   const estates = estatesOf(state);
+  const audit = stewardship.audits.find(entry => entry.id === boundId);
+  const steward = audit === undefined ? undefined : stewardship.stewards.find(entry => entry.personId === audit.stewardId);
+  const suit = estates.suits.find(entry => entry.id === boundId);
   switch (condition.field) {
+    case "market.duesPermille": return state.agency?.duesPermille ?? 1000;
+    case "agency.policy": return state.agency?.policy ?? "";
+    case "timber.order": return state.timberOrder ?? 0;
+    case "steward.rules.amountAtLeast": return stewardship.rules.amountAtLeast ?? -1;
+    case "steward.lordDecided": return stewardship.petitions.filter(petition => petition.estateId !== "estate-home" && petition.decidedBy === "lord").length;
+    case "bound.revealedKept": return audit?.revealedKept ?? -1;
+    case "bound.stewardLoyalty": return steward?.loyalty ?? -1;
+    case "bound.stewardConnected": return steward?.connection != null && state.factions?.factions.some(faction => faction.id === steward.connection) === true;
+    case "bound.suitStage": return suit?.stage ?? "";
+    case "bound.evidence": return suit === undefined ? [] : (estates.claims.find(claim => claim.id === suit.claimId)?.evidence ?? []).map(evidence => evidence.kind);
     case "calendar.year": return calendar.year;
     case "calendar.season": return Math.floor((state.tick % YEAR) / SEASON);
     case "population": return state.population;
@@ -147,6 +164,8 @@ export function conditionHolds(state: GameState, condition: RegistryCondition | 
     case "gte": return typeof value === "number" && value >= (condition.value as number);
     case "lte": return typeof value === "number" && value <= (condition.value as number);
     case "in": return (condition.value as readonly (string | number)[]).includes(value as string | number);
+    case "has": return Array.isArray(value) && value.includes(condition.value as string);
+    case "lacks": return Array.isArray(value) && !value.includes(condition.value as string);
   }
 }
 
@@ -194,13 +213,20 @@ function applyEffect(state: GameState, effect: RegistryEffect, boundId: string, 
     }
     case "term": return startTerm(state, effect, occurrenceId);
     case "rights_scope": return ruleRightsScope(state, boundId, effect.sharePermille);
+    case "set_exception_rules": {
+      if (state.stewardship === undefined) return null;
+      const rules = stewardshipOf(state).rules;
+      return changed(setExceptionRules(state, { ...rules, ...(effect.recurring === undefined ? {} : { recurring: effect.recurring }),
+        ...(effect.amountAtLeast === undefined ? {} : { amountAtLeast: effect.amountAtLeast }) }));
+    }
+    case "enforce_possession": return changed(enforcePossession(state, boundId));
   }
 }
 
 /** ER-4: a choice's effects in order on a copy — all applied, or none (the state as it was). */
 export function applyChoice(state: GameState, entry: RegistryEntry, choiceId: string, boundId: string, occurrenceId: string): GameState | null {
   const choice = entry.choices.find(candidate => candidate.id === choiceId);
-  if (choice === undefined) return null;
+  if (choice === undefined || !conditionHolds(state, choice.requires, boundId)) return null;
   let next = state;
   for (const effect of choice.effects) {
     const applied = applyEffect(next, effect, boundId, occurrenceId);
@@ -311,8 +337,9 @@ export function seasonDraw(state: GameState): readonly { readonly entry: Registr
     const last = past.at(-1);
     const gap = Math.max(entry.frequency.minGapSeasons, entry.recurrence.mode === "cooldown" ? entry.recurrence.cooldownSeasons : 0);
     if (last !== undefined && index - seasonIndexOf(last.offeredTick) < gap) continue;
-    if (!conditionHolds(state, entry.conditions)) continue;
     for (const boundId of boundTargets(state, entry)) {
+      if (entry.recurrence.mode === "once_per_target" && past.some(occurrence => occurrence.boundId === boundId)) continue;
+      if (!conditionHolds(state, entry.conditions, boundId)) continue;
       // An open offer on the same target is not dressed again as another card.
       if (registry.occurrences.some(occurrence => occurrence.status === "offered" && occurrence.boundId !== "" && occurrence.boundId === boundId)) continue;
       const draw = hashSeed(state.seed, `registry:${entry.id}:${boundId}`, index) % 1000;
@@ -378,7 +405,7 @@ export function answerRegistryOffer(state: GameState, occurrenceId: string, choi
   const occurrence = openRegistryOffers(state).find(entry => entry.id === occurrenceId);
   const entry = occurrence === undefined ? undefined : registryEntry(occurrence.entryId);
   if (occurrence === undefined || entry === undefined) return state;
-  if (!boundTargets(state, entry).includes(occurrence.boundId)) {
+  if (!boundTargets(state, entry).includes(occurrence.boundId) || !conditionHolds(state, entry.conditions, occurrence.boundId)) {
     const registry = registryOf(state);
     return { ...state, registry: { ...registry, occurrences: registry.occurrences.map(item => item.id === occurrenceId ? { ...item, status: "invalid" as const, settledTick: state.tick } : item) } };
   }

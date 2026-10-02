@@ -14,10 +14,14 @@ export const REGISTRY_FIELDS = [
   "audit.pending", "suit.open", "claim.open",
   "steward.rules.recurring", "attention.overloaded",
   "faction.relation", "market.exists", "lord.heirAdult", "marriage.open",
+  "market.duesPermille", "agency.policy", "timber.order", "steward.lordDecided", "steward.rules.amountAtLeast",
+  // The bound target's own facts (an audit, a suit).
+  "bound.revealedKept", "bound.stewardLoyalty", "bound.stewardConnected", "bound.suitStage", "bound.evidence",
 ] as const;
 export type RegistryField = (typeof REGISTRY_FIELDS)[number];
 
-export const REGISTRY_OPS = ["eq", "ne", "gte", "lte", "in"] as const;
+/** `has`/`lacks`: a list field (the bound suit's evidence) holds / does not hold the value. */
+export const REGISTRY_OPS = ["eq", "ne", "gte", "lte", "in", "has", "lacks"] as const;
 export type RegistryOp = (typeof REGISTRY_OPS)[number];
 
 export type RegistryCondition =
@@ -45,11 +49,15 @@ export type RegistryEffect =
   | { readonly command: "treasury"; readonly amount: number }
   | { readonly command: "term"; readonly term: "remission" | "installments"; readonly what: string; readonly amountPerYear: number; readonly years: number }
   | { readonly command: "rights_scope"; readonly sharePermille: number }
+  | { readonly command: "set_exception_rules"; readonly recurring?: boolean; readonly amountAtLeast?: number | null }
+  | { readonly command: "enforce_possession" }
   | { readonly command: "none" };
 
 export interface RegistryChoice {
   readonly id: string;
   readonly effects: readonly RegistryEffect[];
+  /** A choice's own precondition (the drafts' "this choice only when …"). */
+  readonly requires?: RegistryCondition;
 }
 
 export interface RegistryEntry {
@@ -62,7 +70,8 @@ export interface RegistryEntry {
   readonly seasons?: readonly number[];
   readonly conditions?: RegistryCondition;
   readonly frequency: { readonly chancePermille: number; readonly weight: number; readonly minGapSeasons: number; readonly maxPerYear: number };
-  readonly recurrence: { readonly mode: "once" | "cooldown"; readonly cooldownSeasons: number; readonly maxOccurrences: number };
+  /** `once`: one in the whole game; `once_per_target`: one per bound instance; `cooldown`: again after its seasons. */
+  readonly recurrence: { readonly mode: "once" | "once_per_target" | "cooldown"; readonly cooldownSeasons: number; readonly maxOccurrences: number };
   readonly exclusiveGroup?: string;
   /** The faction that sends it (the card's sender). */
   readonly sender: string;

@@ -55,7 +55,7 @@ import { currentYear, manorLord } from "./persons";
 import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
 import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
-import { registryEntry } from "./registry";
+import { registryEntryData } from "../content/registry/registryEntries";
 import { finishedDrainage } from "./drainage";
 import { WAR_PETITION_IDS } from "../content/warConfig";
 
@@ -1140,7 +1140,7 @@ function registryDrafts(before: GameState, after: GameState): Draft[] {
     if (old.status !== "offered" || occurrence.status === "offered") continue;
     drafts.push({ tick: after.tick, kind: "event", template: occurrence.status === "answered" ? "registry.answered" : occurrence.status === "lapsed" ? "registry.lapsed" : "registry.invalid",
       subject: TOWN, severity: 1, params: { entry: occurrence.entryId, choice: occurrence.choiceId ?? "" } });
-    const choice = registryEntry(occurrence.entryId)?.choices.find(candidate => candidate.id === occurrence.choiceId);
+    const choice = registryEntryData(occurrence.entryId)?.choices.find(candidate => candidate.id === occurrence.choiceId);
     for (const effect of choice?.effects ?? []) {
       if (effect.command !== "faction_relation") continue;
       const faction = after.factions?.factions.find(entry => entry.id === effect.faction);
