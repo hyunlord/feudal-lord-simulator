@@ -1,0 +1,16 @@
+{
+  "scope": "wave42-stumps",
+  "status": "PASS_OFFLINE_CANDIDATE",
+  "count": 8,
+  "proof": "proofs/stumps-actual-size.png",
+  "observations": [
+    "Four shapes remain distinguishable at actual final size on light and dark backgrounds.",
+    "Oak widths 70px and ash widths 50px; pale fresh cut surfaces contrast with dark aged hollows and olive moss.",
+    "Winter pairs preserve root direction and lighting with broken upward-facing snow.",
+    "All alpha ranges 0..255 and canvas edges alpha 0.",
+    "Pair alpha bounding boxes match exactly for three pairs; ash mossy winter is 1px taller due to snow cap, same bottom and pivot."
+  ],
+  "flip_or_rotation": false,
+  "runtime_verified": false,
+  "runtime_note": "Candidate-only, no game installation; zoom/occlusion/collision require engine integration."
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "tree_oak_large_spring",
+    "file": "assets/tree_oak_large_spring.png",
+    "width": 88,
+    "height": 112,
+    "pivot": [
+      44,
+      112
+    ],
+    "renderScale": 0.5714285714285714,
+    "summer_reference": "references/tree_oak_large.png",
+    "winter_reference": "references/tree_oak_large_winter-v1.png",
+    "anchor_evidence": "krill/src/render/worldAssetManifest.generated.ts tree_oak_large",
+    "sha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+    "summer_reference_sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f",
+    "winter_reference_sha256": "c5fa00e8fdc8cb5e2f8862f8a7e406e13983e62c9213734f589b88ef84273ba5",
+    "source_root": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill"
+  },
+  {
+    "id": "tree_oak_small_spring",
+    "file": "assets/tree_oak_small_spring.png",
+    "width": 64,
+    "height": 80,
+    "pivot": [
+      32,
+      80
+    ],
+    "renderScale": 0.8,
+    "summer_reference": "references/tree_oak_small.png",
+    "winter_reference": "references/tree_oak_small_winter-v1.png",
+    "anchor_evidence": "krill/src/render/worldAssetManifest.generated.ts tree_oak_small",
+    "sha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738",
+    "summer_reference_sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4",
+    "winter_reference_sha256": "cac1f5fd486df83f721d6fb0e2621f7f9e653e9810bf2d5dd38d429324ae6f3b",
+    "source_root": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill"
+  },
+  {
+    "id": "tree_birch_spring",
+    "file": "assets/tree_birch_spring.png",
+    "width": 60,
+    "height": 96,
+    "pivot": [
+      30,
+      96
+    ],
+    "renderScale": 0.6666666666666666,
+    "summer_reference": "references/tree_birch.png",
+    "winter_reference": "references/tree_birch_winter-v1.png",
+    "anchor_evidence": "krill/src/render/worldAssetManifest.generated.ts tree_birch",
+    "sha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+    "summer_reference_sha256": "d97dc399fbe522e4a3f499f7610f826cdea258dad9c7ee169dd2e0b6b14f6db8",
+    "winter_reference_sha256": "1a25b3117593314473da1366246f95daaca1b9301590c30f1385d6b2823fb062",
+    "source_root": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill"
+  }
+]

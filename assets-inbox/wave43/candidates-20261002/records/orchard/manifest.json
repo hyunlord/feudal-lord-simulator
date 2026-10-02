@@ -1,0 +1,58 @@
+[
+  {
+    "id": "orchard_apple_spring",
+    "file": "assets/orchard_apple_spring.png",
+    "width": 256,
+    "height": 256,
+    "pivot": [
+      128,
+      246
+    ],
+    "worlddisplayWidth": 43,
+    "summer_reference": "references/apple-summer.png",
+    "winter_reference": "references/apple-winter.png",
+    "note": "Summer geometry is Wave41 approved asset; winter is installed matching-ID reference, not regenerated."
+  },
+  {
+    "id": "orchard_pear_spring",
+    "file": "assets/orchard_pear_spring.png",
+    "width": 256,
+    "height": 256,
+    "pivot": [
+      123,
+      246
+    ],
+    "worlddisplayWidth": 43,
+    "summer_reference": "references/pear-summer.png",
+    "winter_reference": "references/pear-winter.png",
+    "note": "Summer geometry is Wave41 approved asset; winter is installed matching-ID reference, not regenerated."
+  },
+  {
+    "id": "orchard_plum_spring",
+    "file": "assets/orchard_plum_spring.png",
+    "width": 256,
+    "height": 256,
+    "pivot": [
+      141,
+      246
+    ],
+    "worlddisplayWidth": 43,
+    "summer_reference": "references/plum-summer.png",
+    "winter_reference": "references/plum-winter.png",
+    "note": "Summer geometry is Wave41 approved asset; winter is installed matching-ID reference, not regenerated."
+  },
+  {
+    "id": "orchard_cherry_spring",
+    "file": "assets/orchard_cherry_spring.png",
+    "width": 256,
+    "height": 256,
+    "pivot": [
+      128,
+      242
+    ],
+    "worlddisplayWidth": 43,
+    "summer_reference": "references/cherry-summer.png",
+    "winter_reference": "references/cherry-winter.png",
+    "note": "plum_j summer/winter are species-neutral geometry/proof proxies, not cherry botanical source"
+  }
+]

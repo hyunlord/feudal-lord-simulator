@@ -1,0 +1,1263 @@
+[
+  {
+    "id": "chalk_down_spring_a",
+    "file": "ground/assets/chalk_down_spring_a-v1.png",
+    "width": 256,
+    "height": 128,
+    "pivot": [
+      0,
+      0
+    ],
+    "repeat": "XY",
+    "summer_reference": "references/chalk_down_spring_a-summer.png",
+    "winter_reference": "references/chalk_down_spring_a-winter.png",
+    "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/chalk_down_summer_a.png",
+    "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/chalk_down_winter_a.png",
+    "note": "Matching Wave22 summer/winter fill A.",
+    "prompt": "One seamless XY-repeat spring terrain material, input1 project's summer reference. Spring chalk downland turf, fresh short lime-olive new grass and sparse tiny white/yellow flowers over pale chalky earthy flecks, breezy thin soil. No heath or purple heather. Flat top-down FULLY OPAQUE rectangular2:1 fill, intended256x128, art reaches all four edges. Soft hand-painted restrained medieval southern England game art, broad gentle color masses, no photographic micro-noise. No horizon, perspective diamond, path, objects, border, vignette or text. Season should visibly differ from summer by fresh growth and damp earth. Even illumination; exact opposite edges join.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "status": "candidate",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-04c0bfc6-ba65-4092-9ea7-4a9a1af3f4e0.png",
+    "raw_copy": "raw/chalk_down_spring_a-attempt1.png",
+    "summer_sha256": "43a00762d9289baec34a66113af18bf7e7570738ed11009ea8168ca493fc63c1",
+    "winter_sha256": "868fe4645be8dd9ef1eb90183c78a2db37b8fa71f4f0b8bf51af04240980dfca",
+    "raw_sha256": "8dd5c384fcbec29ee80dbc1c044f20ede2bce461c56295c4227f5d2b7a348178",
+    "final_sha256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+    "postprocess": {
+      "raw_crop": null,
+      "resize": "one resize to target",
+      "alpha": "fully opaque",
+      "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "zero_alpha_rgb_nonzero": 0
+    },
+    "inspection": {
+      "id": "chalk_down_spring_a",
+      "width": 256,
+      "height": 128,
+      "zero_alpha_nonzero_rgb": 0,
+      "nonopaque_pixels": 0,
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+      "runtime_installed": false
+    },
+    "group": "ground",
+    "sha256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+    "alphaBounds": [
+      0,
+      0,
+      255,
+      127
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 32768,
+    "partial": 0,
+    "seam": {
+      "x": 0,
+      "y": 0
+    },
+    "references": {
+      "summer_reference": {
+        "file": "ground/references/chalk_down_spring_a-summer.png",
+        "sha256": "43a00762d9289baec34a66113af18bf7e7570738ed11009ea8168ca493fc63c1"
+      },
+      "winter_reference": {
+        "file": "ground/references/chalk_down_spring_a-winter.png",
+        "sha256": "868fe4645be8dd9ef1eb90183c78a2db37b8fa71f4f0b8bf51af04240980dfca"
+      }
+    },
+    "generation_record": "ground/records/chalk_down_spring_a.json"
+  },
+  {
+    "id": "coastal_grass_spring_a",
+    "file": "ground/assets/coastal_grass_spring_a-v1.png",
+    "width": 256,
+    "height": 128,
+    "pivot": [
+      0,
+      0
+    ],
+    "repeat": "XY",
+    "summer_reference": "references/coastal_grass_spring_a-summer.png",
+    "winter_reference": "references/coastal_grass_spring_a-winter.png",
+    "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/coastal_grass_summer_a.png",
+    "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/coastal_grass_winter_a.png",
+    "note": "Matching Wave22 summer/winter fill A.",
+    "prompt": "One seamless XY-repeat spring terrain material, input1 project's summer reference. Spring coastal short grass, a muted fresh sage yellow-green, occasional sandy beige damp earth flecks, a few tiny white sea-side flowers. Retain coastal grassy identity; no beach, waves or shoreline. Flat top-down FULLY OPAQUE rectangular2:1 fill, intended256x128, art reaches all four edges. Soft hand-painted restrained medieval southern England game art, broad gentle color masses, no photographic micro-noise. No horizon, perspective diamond, path, objects, border, vignette or text. Season should visibly differ from summer by fresh growth and damp earth. Even illumination; exact opposite edges join.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "status": "candidate",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-b7d03c7b-627c-4117-a29b-fcec2ad5e1d4.png",
+    "raw_copy": "raw/coastal_grass_spring_a-attempt1.png",
+    "summer_sha256": "ce5b7302f4c05d74a17e0131f232ccc6270eb442df42abf8c3e7e945233cb4c7",
+    "winter_sha256": "a10ca3299e081f9bc6ffb054702a10e8181dcdd7b4a0627d766f42d20ee5a0f7",
+    "raw_sha256": "a1355aa38ce654c7e224516345c972c864c7495882f9da6d37534d02a42ed809",
+    "final_sha256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+    "postprocess": {
+      "raw_crop": null,
+      "resize": "one resize to target",
+      "alpha": "fully opaque",
+      "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "zero_alpha_rgb_nonzero": 0
+    },
+    "inspection": {
+      "id": "coastal_grass_spring_a",
+      "width": 256,
+      "height": 128,
+      "zero_alpha_nonzero_rgb": 0,
+      "nonopaque_pixels": 0,
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+      "runtime_installed": false
+    },
+    "group": "ground",
+    "sha256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+    "alphaBounds": [
+      0,
+      0,
+      255,
+      127
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 32768,
+    "partial": 0,
+    "seam": {
+      "x": 0,
+      "y": 0
+    },
+    "references": {
+      "summer_reference": {
+        "file": "ground/references/coastal_grass_spring_a-summer.png",
+        "sha256": "ce5b7302f4c05d74a17e0131f232ccc6270eb442df42abf8c3e7e945233cb4c7"
+      },
+      "winter_reference": {
+        "file": "ground/references/coastal_grass_spring_a-winter.png",
+        "sha256": "a10ca3299e081f9bc6ffb054702a10e8181dcdd7b4a0627d766f42d20ee5a0f7"
+      }
+    },
+    "generation_record": "ground/records/coastal_grass_spring_a.json"
+  },
+  {
+    "id": "fen_spring_a",
+    "file": "ground/assets/fen_spring_a-v1.png",
+    "width": 256,
+    "height": 128,
+    "pivot": [
+      0,
+      0
+    ],
+    "repeat": "XY",
+    "summer_reference": "references/fen_spring_a-summer.png",
+    "winter_reference": "references/fen_spring_a-winter.png",
+    "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/fen_summer_a.png",
+    "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/fen_winter_a.png",
+    "note": "Matching Wave22 summer/winter fill A.",
+    "prompt": "One spring fen ground seamless XY-repeat texture. Maintain reference wetland identity. Soft damp sage-green new sedge shoots dispersed across grey-brown wet soil, tiny shallow dull grey water traces, extremely sparse little marsh flowers. No pond shape, reed wall or horizon. Fully opaque flat2:1 rectangle256x128; paint to all edges. Muted broad painterly game material, no photographic noise, border, text or vignette. Seamless opposing edges. More fresh spring growth than reference summer, but marsh wetness clearly distinguishable from meadow.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "status": "candidate",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-4af5997c-6db2-429e-bebe-bd9f630d0f46.png",
+    "raw_copy": "raw/fen_spring_a-attempt1.png",
+    "summer_sha256": "68e3b98c6b3bd76c04b12d568613d8e156f44a24d81b61b592a96571171bd3d8",
+    "winter_sha256": "cec139c429ce8b6961435f50a6bf12d5be657f48fd24e23a8384ef0bc6c0d5fc",
+    "raw_sha256": "6634a3d1dd1509335d3769fe52b05208b07fb8d1b72ad9d749d1b302c4589cc6",
+    "final_sha256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+    "postprocess": {
+      "raw_crop": null,
+      "resize": "one resize to target",
+      "alpha": "fully opaque",
+      "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "zero_alpha_rgb_nonzero": 0
+    },
+    "inspection": {
+      "id": "fen_spring_a",
+      "width": 256,
+      "height": 128,
+      "zero_alpha_nonzero_rgb": 0,
+      "nonopaque_pixels": 0,
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+      "runtime_installed": false
+    },
+    "group": "ground",
+    "sha256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+    "alphaBounds": [
+      0,
+      0,
+      255,
+      127
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 32768,
+    "partial": 0,
+    "seam": {
+      "x": 0,
+      "y": 0
+    },
+    "references": {
+      "summer_reference": {
+        "file": "ground/references/fen_spring_a-summer.png",
+        "sha256": "68e3b98c6b3bd76c04b12d568613d8e156f44a24d81b61b592a96571171bd3d8"
+      },
+      "winter_reference": {
+        "file": "ground/references/fen_spring_a-winter.png",
+        "sha256": "cec139c429ce8b6961435f50a6bf12d5be657f48fd24e23a8384ef0bc6c0d5fc"
+      }
+    },
+    "generation_record": "ground/records/fen_spring_a.json"
+  },
+  {
+    "id": "ridge_ploughed_spring_a",
+    "file": "ground/assets/ridge_ploughed_spring_a-v1.png",
+    "width": 512,
+    "height": 64,
+    "pivot": [
+      0,
+      0
+    ],
+    "repeat": "X",
+    "summer_reference": "references/ridge_ploughed_spring_a-summer.png",
+    "winter_reference": "references/ridge_ploughed_spring_a-winter.png",
+    "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_ploughed_a-v1.png",
+    "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/fields/ridge_fallow_winter-v1.png",
+    "note": "Winter reference is fallow proxy, not same crop's winter variant.",
+    "prompt": "Edit the provided field ridge strip into freshly ploughed spring earth. Preserve exact THREE horizontal soil ridge rows and furrow spacing,512x64 long8:1 canvas, X-axis seamless repetition, no perspective or new row. Warm moist dark brown soil, soft larger hand-painted clods with subtle damp highlights, no grass/crops/flowers. Existing upper-left soft light, muted southern English1300 game palette. Preserve the original narrow transparent irregular margins and full horizontal extent. No border, lettering or extra objects.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "status": "candidate",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-b7d41ba8-74e0-475f-a3b7-994a13b65c7e.png",
+    "raw_copy": "raw/ridge_ploughed_spring_a-attempt1.png",
+    "summer_sha256": "3b015936bb7877df7ec5aedc9c22e73e01b30d874f3b9de55851e2157377f829",
+    "winter_sha256": "9c9536c152d5dc5039ffeec75b90cf9d07e3bbcfdc88aea42cf00cfce602f686",
+    "raw_sha256": "d6c528cbbc90643a5a32fa34f70acd65948668e48b646317aaca5b8a0af9cec5",
+    "final_sha256": "47dc7b26825cf49b61655449190e2798ab3674de9b22bc50ef763e979dc2bbe9",
+    "postprocess": {
+      "raw_crop": {
+        "left": 0,
+        "top": 230,
+        "width": 2170,
+        "height": 261
+      },
+      "resize": "one resize to target",
+      "alpha": "original strip alpha restored before repeat-edge blend; zero-alpha RGB zeroed",
+      "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "zero_alpha_rgb_nonzero": 0
+    },
+    "inspection": {
+      "id": "ridge_ploughed_spring_a",
+      "width": 512,
+      "height": 64,
+      "zero_alpha_nonzero_rgb": 0,
+      "nonopaque_pixels": 32768,
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+      "runtime_installed": false
+    },
+    "group": "ground",
+    "sha256": "47dc7b26825cf49b61655449190e2798ab3674de9b22bc50ef763e979dc2bbe9",
+    "alphaBounds": [
+      0,
+      1,
+      511,
+      62
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 31725,
+    "partial": 31725,
+    "seam": {
+      "x": 0
+    },
+    "references": {
+      "summer_reference": {
+        "file": "ground/references/ridge_ploughed_spring_a-summer.png",
+        "sha256": "3b015936bb7877df7ec5aedc9c22e73e01b30d874f3b9de55851e2157377f829"
+      },
+      "winter_reference": {
+        "file": "ground/references/ridge_ploughed_spring_a-winter.png",
+        "sha256": "9c9536c152d5dc5039ffeec75b90cf9d07e3bbcfdc88aea42cf00cfce602f686"
+      }
+    },
+    "generation_record": "ground/records/ridge_ploughed_spring_a.json"
+  },
+  {
+    "id": "ridge_seedling_spring_a",
+    "file": "ground/assets/ridge_seedling_spring_a-v1.png",
+    "width": 512,
+    "height": 64,
+    "pivot": [
+      0,
+      0
+    ],
+    "repeat": "X",
+    "summer_reference": "references/ridge_seedling_spring_a-summer.png",
+    "winter_reference": "references/ridge_seedling_spring_a-winter.png",
+    "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_seedling_a-v1.png",
+    "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/fields/ridge_fallow_winter-v1.png",
+    "note": "Winter reference is fallow proxy, not same crop's winter variant.",
+    "prompt": "Edit reference field strip into early spring seedlings A. Preserve THREE horizontal soil ridge rows, their positions and X-repeat direction, original512x64 aspect8:1 and irregular narrow transparent margins. Tiny fresh light-green paired sprout leaves on damp dark warm-brown earth, noticeably young and low; individual sprout clusters at same reference locations, not mature bushes. Soft hand-painted larger forms, restrained medieval English game style. No added rows, perspective, object, border or text. Left and right edges join exactly.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "status": "candidate",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-78d3ed7c-a15c-4c0a-bd76-49e8a4cdb630.png",
+    "raw_copy": "raw/ridge_seedling_spring_a-attempt1.png",
+    "summer_sha256": "37a43cb4b850df354e217aab065cd0dfb20147891c65afd4c0e165ee1170e44e",
+    "winter_sha256": "9c9536c152d5dc5039ffeec75b90cf9d07e3bbcfdc88aea42cf00cfce602f686",
+    "raw_sha256": "6c5742d6b87b1a106af830f30a2fe649b75ff4265c6090ca598091bfa75664a8",
+    "final_sha256": "7b77d1578990d0031f8828c6bbf1b2d8a47032f78493311346c3272ab5693045",
+    "postprocess": {
+      "raw_crop": {
+        "left": 0,
+        "top": 233,
+        "width": 2170,
+        "height": 252
+      },
+      "resize": "one resize to target",
+      "alpha": "original strip alpha restored before repeat-edge blend; zero-alpha RGB zeroed",
+      "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "zero_alpha_rgb_nonzero": 0
+    },
+    "inspection": {
+      "id": "ridge_seedling_spring_a",
+      "width": 512,
+      "height": 64,
+      "zero_alpha_nonzero_rgb": 0,
+      "nonopaque_pixels": 32768,
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+      "runtime_installed": false
+    },
+    "group": "ground",
+    "sha256": "7b77d1578990d0031f8828c6bbf1b2d8a47032f78493311346c3272ab5693045",
+    "alphaBounds": [
+      0,
+      1,
+      511,
+      62
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 31744,
+    "partial": 31744,
+    "seam": {
+      "x": 0
+    },
+    "references": {
+      "summer_reference": {
+        "file": "ground/references/ridge_seedling_spring_a-summer.png",
+        "sha256": "37a43cb4b850df354e217aab065cd0dfb20147891c65afd4c0e165ee1170e44e"
+      },
+      "winter_reference": {
+        "file": "ground/references/ridge_seedling_spring_a-winter.png",
+        "sha256": "9c9536c152d5dc5039ffeec75b90cf9d07e3bbcfdc88aea42cf00cfce602f686"
+      }
+    },
+    "generation_record": "ground/records/ridge_seedling_spring_a.json"
+  },
+  {
+    "id": "ridge_seedling_spring_b",
+    "file": "ground/assets/ridge_seedling_spring_b-v1.png",
+    "width": 512,
+    "height": 64,
+    "pivot": [
+      0,
+      0
+    ],
+    "repeat": "X",
+    "summer_reference": "references/ridge_seedling_spring_b-summer.png",
+    "winter_reference": "references/ridge_seedling_spring_b-winter.png",
+    "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_seedling_b-v1.png",
+    "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/fields/ridge_fallow_winter-v1.png",
+    "note": "Winter reference is fallow proxy, not same crop's winter variant.",
+    "prompt": "Edit reference field strip into spring seedlings B: slightly uneven newly sprouted rows with two small narrow cotyledon leaves per cluster. Preserve original THREE horizontal soil ridge rows and original B cluster layout,512x64 aspect8:1, X-seamless repeat, same thin transparent margins. Fresh muted pale green and wet warm brown soil, broad quiet hand-painted strokes, no pixel noise. Do not add mature crops, flowers, new rows, framing, lettering or perspective.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "status": "candidate",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-d266e677-4692-453e-9ea1-ad84f27dfe6c.png",
+    "raw_copy": "raw/ridge_seedling_spring_b-attempt1.png",
+    "summer_sha256": "c573ebc854983abd7eb3ecc875a68d7662b9a1e551ab1d8c9cf533641da10faf",
+    "winter_sha256": "9c9536c152d5dc5039ffeec75b90cf9d07e3bbcfdc88aea42cf00cfce602f686",
+    "raw_sha256": "41e9b5b72bbca0767dd57c84befab68151f2f3261ae79413f85a5626d91bfc07",
+    "final_sha256": "89d3c9898840b91c7e3147c90ec714ae6a3044e15ce41ae2e9b71988ddd7fac2",
+    "postprocess": {
+      "raw_crop": {
+        "left": 0,
+        "top": 241,
+        "width": 2172,
+        "height": 245
+      },
+      "resize": "one resize to target",
+      "alpha": "original strip alpha restored before repeat-edge blend; zero-alpha RGB zeroed",
+      "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "zero_alpha_rgb_nonzero": 0
+    },
+    "inspection": {
+      "id": "ridge_seedling_spring_b",
+      "width": 512,
+      "height": 64,
+      "zero_alpha_nonzero_rgb": 0,
+      "nonopaque_pixels": 32768,
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+      "runtime_installed": false
+    },
+    "group": "ground",
+    "sha256": "89d3c9898840b91c7e3147c90ec714ae6a3044e15ce41ae2e9b71988ddd7fac2",
+    "alphaBounds": [
+      0,
+      1,
+      511,
+      62
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 31744,
+    "partial": 31744,
+    "seam": {
+      "x": 0
+    },
+    "references": {
+      "summer_reference": {
+        "file": "ground/references/ridge_seedling_spring_b-summer.png",
+        "sha256": "c573ebc854983abd7eb3ecc875a68d7662b9a1e551ab1d8c9cf533641da10faf"
+      },
+      "winter_reference": {
+        "file": "ground/references/ridge_seedling_spring_b-winter.png",
+        "sha256": "9c9536c152d5dc5039ffeec75b90cf9d07e3bbcfdc88aea42cf00cfce602f686"
+      }
+    },
+    "generation_record": "ground/records/ridge_seedling_spring_b.json"
+  },
+  {
+    "id": "riverside_grass_spring_a",
+    "file": "ground/assets/riverside_grass_spring_a-v1.png",
+    "width": 256,
+    "height": 128,
+    "pivot": [
+      0,
+      0
+    ],
+    "repeat": "XY",
+    "summer_reference": "references/riverside_grass_spring_a-summer.png",
+    "winter_reference": "references/riverside_grass_spring_a-winter.png",
+    "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+    "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/terrain/grass_winter_fill-v1.png",
+    "note": "Summer reference256x256 is material-only; seasonal fill canvas256x128.",
+    "prompt": "Create one spring ground fill texture using input1 as the project's summer grass material reference. Flat top-down repeatable material swatch, aspect2:1, final256x128, FULLY OPAQUE to every edge. Southern English riverside meadow1300-1450: fresh soft lighter yellow-green grass, scattered tiny white meadow flowers very sparse, subtly damp brown earth showing irregularly. Clearly spring, restrained painterly broad color patches and brushwork, not photographic pixel noise. No river shape, no shoreline, no objects, paths, horizon, perspective diamond, border or lettering. No vignette or directional gradient. Seamless XY repeating terrain; left/right and top/bottom should join. Same subdued hand-painted game palette as reference, fresher than summer without neon.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "status": "candidate",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-21e39452-e840-43f6-b743-aac1db6626e4.png",
+    "raw_copy": "raw/riverside_grass_spring_a-attempt1.png",
+    "summer_sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288",
+    "winter_sha256": "fb3944c40dde9679ff08f5b6c019e57af53e5814e743e31176f00627de41c052",
+    "raw_sha256": "f9d25b68e11f8bb6c7603323c13ed5f4c4c2ac7fa86836905fddab45d7970a84",
+    "final_sha256": "db2882b50af8e5249946d07e310c188112c11a1e533008d12f35c124c9add8ef",
+    "postprocess": {
+      "raw_crop": null,
+      "resize": "one resize to target",
+      "alpha": "fully opaque",
+      "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "zero_alpha_rgb_nonzero": 0
+    },
+    "inspection": {
+      "id": "riverside_grass_spring_a",
+      "width": 256,
+      "height": 128,
+      "zero_alpha_nonzero_rgb": 0,
+      "nonopaque_pixels": 0,
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+      "runtime_installed": false
+    },
+    "group": "ground",
+    "sha256": "db2882b50af8e5249946d07e310c188112c11a1e533008d12f35c124c9add8ef",
+    "alphaBounds": [
+      0,
+      0,
+      255,
+      127
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 32768,
+    "partial": 0,
+    "seam": {
+      "x": 0,
+      "y": 0
+    },
+    "references": {
+      "summer_reference": {
+        "file": "ground/references/riverside_grass_spring_a-summer.png",
+        "sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288"
+      },
+      "winter_reference": {
+        "file": "ground/references/riverside_grass_spring_a-winter.png",
+        "sha256": "fb3944c40dde9679ff08f5b6c019e57af53e5814e743e31176f00627de41c052"
+      }
+    },
+    "generation_record": "ground/records/riverside_grass_spring_a.json"
+  },
+  {
+    "id": "woodland_floor_spring_a",
+    "file": "ground/assets/woodland_floor_spring_a-v1.png",
+    "width": 256,
+    "height": 128,
+    "pivot": [
+      0,
+      0
+    ],
+    "repeat": "XY",
+    "summer_reference": "references/woodland_floor_spring_a-summer.png",
+    "winter_reference": "references/woodland_floor_spring_a-winter.png",
+    "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/woodland_floor_summer_a.png",
+    "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/woodland_floor_winter_a.png",
+    "note": "Matching Wave22 summer/winter fill A.",
+    "prompt": "Edit this exact understated brown woodland floor texture into subtle SPRING. Keep the extremely fine-scale quiet brown/taupe material and low contrast of the provided image. No recognizable leaf shapes at all. No large lobed leaves, no autumn carpet, no red color, no big moss clumps. ONLY add small low-contrast olive fresh moss wisps and a few pinprick pale flowers amid moist brown soil. These marks stay tiny and sparse, at most one-pixel flecks at final256x128. Brown ground stays dominant. A restrained hand-painted strategy-game fill that will sit under tiny tree sprites; never a macro close-up photograph of leaves. Fully opaque seamless XY repeating rectangular2:1 swatch; no edges, vignette, horizon, border, objects or text. Keep reference texture scale and subdued middle-brown value almost unchanged.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "status": "candidate",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-948a54b1-e2d9-424b-82dd-6fa548480215.png",
+    "raw_copy": "raw/woodland_floor_spring_a-attempt3.png",
+    "summer_sha256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36",
+    "winter_sha256": "db73565fdb3c0ea1900a394ead017898201e88054cdde37f20d5d7506d79b673",
+    "raw_sha256": "b3e0da76942ac3edea2eec5059e46bcdbb4ffe4bd100f38f91f228981e379522",
+    "final_sha256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+    "postprocess": {
+      "raw_crop": null,
+      "resize": "one resize to target",
+      "alpha": "fully opaque",
+      "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "zero_alpha_rgb_nonzero": 0
+    },
+    "inspection": {
+      "width": 256,
+      "height": 128,
+      "edge_rgba_mae_x": 0,
+      "edge_rgba_mae_y": 0,
+      "nonopaque_pixels": 0,
+      "zero_alpha_nonzero_rgb": 0,
+      "visual_verdict": "PASS local repeat comparison: large red autumn leaves removed; muted fine brown grain and tiny moss/flower specks. Root same-scene refresh pending.",
+      "runtime_installed": false
+    },
+    "selected_attempt": 3,
+    "attempt_records": [
+      "records/woodland-attempt1-record.json",
+      "records/woodland-attempt2.json",
+      "records/woodland-attempt3.json"
+    ],
+    "group": "ground",
+    "sha256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+    "alphaBounds": [
+      0,
+      0,
+      255,
+      127
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 32768,
+    "partial": 0,
+    "seam": {
+      "x": 0,
+      "y": 0
+    },
+    "references": {
+      "summer_reference": {
+        "file": "ground/references/woodland_floor_spring_a-summer.png",
+        "sha256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36"
+      },
+      "winter_reference": {
+        "file": "ground/references/woodland_floor_spring_a-winter.png",
+        "sha256": "db73565fdb3c0ea1900a394ead017898201e88054cdde37f20d5d7506d79b673"
+      }
+    },
+    "generation_record": "ground/records/woodland_floor_spring_a.json"
+  },
+  {
+    "id": "tree_oak_large_spring",
+    "file": "trees_broadleaf/assets/tree_oak_large_spring.png",
+    "width": 88,
+    "height": 112,
+    "pivot": [
+      44,
+      112
+    ],
+    "renderScale": 0.5714285714285714,
+    "summer_reference": "references/tree_oak_large.png",
+    "winter_reference": "references/tree_oak_large_winter-v1.png",
+    "anchor_evidence": "krill/src/render/worldAssetManifest.generated.ts tree_oak_large",
+    "sha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+    "summer_reference_sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f",
+    "winter_reference_sha256": "c5fa00e8fdc8cb5e2f8862f8a7e406e13983e62c9213734f589b88ef84273ba5",
+    "source_root": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill",
+    "repeat": "",
+    "group": "trees_broadleaf",
+    "status": "candidate",
+    "alphaBounds": [
+      2,
+      52,
+      85,
+      110
+    ],
+    "alphaMismatch": 0,
+    "hiddenRGB": 0,
+    "nonzero": 3273,
+    "partial": 3097,
+    "seam": {},
+    "references": {
+      "summer_reference": {
+        "file": "trees_broadleaf/references/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      "winter_reference": {
+        "file": "trees_broadleaf/references/tree_oak_large_winter-v1.png",
+        "sha256": "c5fa00e8fdc8cb5e2f8862f8a7e406e13983e62c9213734f589b88ef84273ba5"
+      }
+    },
+    "generation_record": "trees_broadleaf/records/generation-oak_large.json",
+    "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned summer tree into spring. ONE tree only, transparent background, same canvas proportions88:112. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(44,112). Do not recenter, enlarge or extend crown. KEEP ALL brown trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite."
+  },
+  {
+    "id": "tree_oak_small_spring",
+    "file": "trees_broadleaf/assets/tree_oak_small_spring.png",
+    "width": 64,
+    "height": 80,
+    "pivot": [
+      32,
+      80
+    ],
+    "renderScale": 0.8,
+    "summer_reference": "references/tree_oak_small.png",
+    "winter_reference": "references/tree_oak_small_winter-v1.png",
+    "anchor_evidence": "krill/src/render/worldAssetManifest.generated.ts tree_oak_small",
+    "sha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738",
+    "summer_reference_sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4",
+    "winter_reference_sha256": "cac1f5fd486df83f721d6fb0e2621f7f9e653e9810bf2d5dd38d429324ae6f3b",
+    "source_root": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill",
+    "repeat": "",
+    "group": "trees_broadleaf",
+    "status": "candidate",
+    "alphaBounds": [
+      2,
+      27,
+      61,
+      78
+    ],
+    "alphaMismatch": 0,
+    "hiddenRGB": 0,
+    "nonzero": 2117,
+    "partial": 1975,
+    "seam": {},
+    "references": {
+      "summer_reference": {
+        "file": "trees_broadleaf/references/tree_oak_small.png",
+        "sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4"
+      },
+      "winter_reference": {
+        "file": "trees_broadleaf/references/tree_oak_small_winter-v1.png",
+        "sha256": "cac1f5fd486df83f721d6fb0e2621f7f9e653e9810bf2d5dd38d429324ae6f3b"
+      }
+    },
+    "generation_record": "trees_broadleaf/records/generation-oak_small.json",
+    "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned small summer oak tree into spring. ONE tree only, transparent background, same canvas proportions64:80. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(32,80). Do not recenter, enlarge or extend crown. KEEP ALL brown trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite."
+  },
+  {
+    "id": "tree_birch_spring",
+    "file": "trees_broadleaf/assets/tree_birch_spring.png",
+    "width": 60,
+    "height": 96,
+    "pivot": [
+      30,
+      96
+    ],
+    "renderScale": 0.6666666666666666,
+    "summer_reference": "references/tree_birch.png",
+    "winter_reference": "references/tree_birch_winter-v1.png",
+    "anchor_evidence": "krill/src/render/worldAssetManifest.generated.ts tree_birch",
+    "sha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+    "summer_reference_sha256": "d97dc399fbe522e4a3f499f7610f826cdea258dad9c7ee169dd2e0b6b14f6db8",
+    "winter_reference_sha256": "1a25b3117593314473da1366246f95daaca1b9301590c30f1385d6b2823fb062",
+    "source_root": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill",
+    "repeat": "",
+    "group": "trees_broadleaf",
+    "status": "candidate",
+    "alphaBounds": [
+      2,
+      9,
+      57,
+      94
+    ],
+    "alphaMismatch": 0,
+    "hiddenRGB": 0,
+    "nonzero": 2744,
+    "partial": 2519,
+    "seam": {},
+    "references": {
+      "summer_reference": {
+        "file": "trees_broadleaf/references/tree_birch.png",
+        "sha256": "d97dc399fbe522e4a3f499f7610f826cdea258dad9c7ee169dd2e0b6b14f6db8"
+      },
+      "winter_reference": {
+        "file": "trees_broadleaf/references/tree_birch_winter-v1.png",
+        "sha256": "1a25b3117593314473da1366246f95daaca1b9301590c30f1385d6b2823fb062"
+      }
+    },
+    "generation_record": "trees_broadleaf/records/generation-birch.json",
+    "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned summer slender birch tree into spring. ONE tree only, transparent background, same canvas proportions60:96. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(30,96). Do not recenter, enlarge or extend crown. KEEP ALL pale birch trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite."
+  },
+  {
+    "id": "tree_pine_tall_spring",
+    "file": "trees_other/assets/tree_pine_tall_spring.png",
+    "width": 64,
+    "height": 120,
+    "pivot": [
+      32,
+      120
+    ],
+    "worldRenderScale": 0.5333333333333333,
+    "summer_reference": "references/tree_pine_tall.png",
+    "winter_reference": "references/tree_pine_tall_winter_snow-v1.png",
+    "status": "candidate",
+    "repeat": "",
+    "group": "trees_other",
+    "sha256": "8c294336ccea8076b2be5f12be37f79f5f691319c0f53253200b8b24c530ed1a",
+    "alphaBounds": [
+      2,
+      36,
+      61,
+      118
+    ],
+    "alphaMismatch": 0,
+    "hiddenRGB": 0,
+    "nonzero": 2401,
+    "partial": 2175,
+    "seam": {},
+    "references": {
+      "summer_reference": {
+        "file": "trees_other/references/tree_pine_tall.png",
+        "sha256": "d2855edd78af1fbdaad15f2dd3ed6a16515f8f799c2cc0e2a0fca06416f7a6a7"
+      },
+      "winter_reference": {
+        "file": "trees_other/references/tree_pine_tall_winter_snow-v1.png",
+        "sha256": "7b35b71faec923571e56d50b730e805c427603c0fb4afd04fb5d7a6ad3a4bd67"
+      }
+    },
+    "generation_record": "trees_other/records/tree_pine_tall_spring.json",
+    "prompt": "Edit the exact source pine sprite into CLEARLY IDENTIFIABLE EARLY SPRING. Keep every silhouette pixel boundary, crown shape, branch and trunk alignment unchanged. Add noticeably fresh light yellow-green needle candle clusters across the outer tips of the EXISTING crown, especially upper-left and upper crown tiers, all fully INSIDE original foliage contour. Make roughly one third of existing crown needle tips distinctly lighter fresh spring green than mature olive needles, visibly readable even at 38px tree width. Muted natural apple/sage yellow-green, not neon, not flowers, no broad leaves. Keep older inner needles dark green. Preserve source trunk and roots exactly. No added silhouettes, no snow, no ground, no black or white outline, no text. Transparent background. This remains the same tall pine with the original rounded umbrella crown, not a new conical tree. Stronger spring-tip differentiation than a mere overall tint."
+  },
+  {
+    "id": "tree_pine_short_spring",
+    "file": "trees_other/assets/tree_pine_short_spring.png",
+    "width": 56,
+    "height": 88,
+    "pivot": [
+      28,
+      88
+    ],
+    "worldRenderScale": 0.7272727272727273,
+    "summer_reference": "references/tree_pine_short.png",
+    "winter_reference": "references/tree_pine_short_winter_snow-v1.png",
+    "status": "candidate",
+    "repeat": "",
+    "group": "trees_other",
+    "sha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5",
+    "alphaBounds": [
+      3,
+      3,
+      52,
+      86
+    ],
+    "alphaMismatch": 0,
+    "hiddenRGB": 0,
+    "nonzero": 2589,
+    "partial": 2423,
+    "seam": {},
+    "references": {
+      "summer_reference": {
+        "file": "trees_other/references/tree_pine_short.png",
+        "sha256": "1d76034ea71d74970ffd9460f6387280710e12a83d00e2bb479a7549501ce917"
+      },
+      "winter_reference": {
+        "file": "trees_other/references/tree_pine_short_winter_snow-v1.png",
+        "sha256": "7671687bf3ebccbba08d85d213f5eae4e34546e1736bfdc56feef31980c31ec8"
+      }
+    },
+    "generation_record": "trees_other/records/tree_pine_short_spring.json",
+    "prompt": "Edit this exact short conical pine sprite into CLEARLY IDENTIFIABLE EARLY SPRING. Preserve exact original silhouette, crown tiers, trunk, branches, roots, framing and bottom pivot. Add distinctly fresh light yellow-green needle candle clusters at the tips of the EXISTING foliage tiers, especially top and upper-left surfaces, completely INSIDE existing crown contour. About one third of needle tips should look fresh spring green and lighter than mature olive needles, enough to distinguish spring at only 34px sprite width. Natural muted apple/sage yellow-green, not neon, no broad leaves or flowers. Dark mature needles remain in inner crown. Preserve trunk and roots exactly. No added shape or outline, no ground, no snow, no text. Transparent background. Strong spring tip differentiation, not merely an overall tint. Same tree, exact overlay."
+  },
+  {
+    "id": "tree_dead_spring",
+    "file": "trees_other/assets/tree_dead_spring.png",
+    "width": 56,
+    "height": 80,
+    "pivot": [
+      28,
+      80
+    ],
+    "worldRenderScale": 0.8,
+    "summer_reference": "references/tree_dead.png",
+    "winter_reference": "references/tree_dead_winter_snow-v1.png",
+    "status": "candidate",
+    "repeat": "",
+    "group": "trees_other",
+    "sha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78",
+    "alphaBounds": [
+      2,
+      9,
+      53,
+      78
+    ],
+    "alphaMismatch": 0,
+    "hiddenRGB": 0,
+    "nonzero": 1811,
+    "partial": 1612,
+    "seam": {},
+    "references": {
+      "summer_reference": {
+        "file": "trees_other/references/tree_dead.png",
+        "sha256": "288aed1fe360bbdb39b2dd27935e7b4a7ae990f59b32908a76423dba1a008a35"
+      },
+      "winter_reference": {
+        "file": "trees_other/references/tree_dead_winter_snow-v1.png",
+        "sha256": "b1a05c875d08439ec40c95e24f5fc3bb0ca1aef303ead50f830a4599049d581d"
+      }
+    },
+    "generation_record": "trees_other/records/tree_dead_spring.json",
+    "prompt": "Edit this exact tree_dead game sprite into a spring seasonal bark-material variant. It is a DEAD leafless tree and MUST REMAIN DEAD: absolutely no leaves, buds, green shoots or new living branches. Preserve every fork, broken tip, branch gap, root shape, silhouette, framing, canvas and bottom pivot precisely. Only give existing bark a subtly damp spring tone and a few restrained muted gray-green moss flecks WITHIN the lower existing bark surface, never a new silhouette. Keep dark brown-gray wood, restrained upper-left diffuse light, original hand-painted medieval strategy game texture. No snow, no flowers, no ground or cast shadow, no added objects, text, white edge lines or black outline strokes. Transparent background. Exact structural overlay with source, no crop or reposition."
+  },
+  {
+    "id": "orchard_apple_spring",
+    "file": "orchard/assets/orchard_apple_spring.png",
+    "width": 256,
+    "height": 256,
+    "pivot": [
+      128,
+      246
+    ],
+    "worlddisplayWidth": 43,
+    "summer_reference": "references/apple-summer.png",
+    "winter_reference": "references/apple-winter.png",
+    "note": "Summer geometry is Wave41 approved asset; winter is installed matching-ID reference, not regenerated.",
+    "repeat": "",
+    "group": "orchard",
+    "status": "candidate",
+    "sha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449",
+    "alphaBounds": [
+      8,
+      61,
+      247,
+      247
+    ],
+    "alphaMismatch": 0,
+    "hiddenRGB": 0,
+    "nonzero": 24807,
+    "partial": 24807,
+    "seam": {},
+    "references": {
+      "summer_reference": {
+        "file": "orchard/references/apple-summer.png",
+        "sha256": "9b4e11045540c46e1c477554ae0363b6ee1d9b202ab49905637c8521e09e8753"
+      },
+      "winter_reference": {
+        "file": "orchard/references/apple-winter.png",
+        "sha256": "9f8364ec8898da73ae1c2112aa0682ff9bae848260de5d2097374cc1cc2fd041"
+      }
+    },
+    "generation_record": "orchard/records/generations.json",
+    "prompt": "Edit this EXACT existing game tree sprite into spring flowering APPLE. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: abundant but small IVORY WHITE apple blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers white, not pink. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image."
+  },
+  {
+    "id": "orchard_pear_spring",
+    "file": "orchard/assets/orchard_pear_spring.png",
+    "width": 256,
+    "height": 256,
+    "pivot": [
+      123,
+      246
+    ],
+    "worlddisplayWidth": 43,
+    "summer_reference": "references/pear-summer.png",
+    "winter_reference": "references/pear-winter.png",
+    "note": "Summer geometry is Wave41 approved asset; winter is installed matching-ID reference, not regenerated.",
+    "repeat": "",
+    "group": "orchard",
+    "status": "candidate",
+    "sha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156",
+    "alphaBounds": [
+      50,
+      8,
+      205,
+      247
+    ],
+    "alphaMismatch": 0,
+    "hiddenRGB": 0,
+    "nonzero": 21728,
+    "partial": 21728,
+    "seam": {},
+    "references": {
+      "summer_reference": {
+        "file": "orchard/references/pear-summer.png",
+        "sha256": "ded1852c37d7a24c33216b7b7b63b2a4ca2ca8428d19462bd4bbcf3954708bf5"
+      },
+      "winter_reference": {
+        "file": "orchard/references/pear-winter.png",
+        "sha256": "7ee905876ef9788d504ecf9439b3b4b131cfc8e22d4cc916bd7a19f20df3e98a"
+      }
+    },
+    "generation_record": "orchard/records/generations.json",
+    "prompt": "Edit this EXACT existing game tree sprite into spring flowering PEAR. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: delicate scattered small IVORY WHITE pear blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers white, not pink. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image."
+  },
+  {
+    "id": "orchard_plum_spring",
+    "file": "orchard/assets/orchard_plum_spring.png",
+    "width": 256,
+    "height": 256,
+    "pivot": [
+      141,
+      246
+    ],
+    "worlddisplayWidth": 43,
+    "summer_reference": "references/plum-summer.png",
+    "winter_reference": "references/plum-winter.png",
+    "note": "Summer geometry is Wave41 approved asset; winter is installed matching-ID reference, not regenerated.",
+    "repeat": "",
+    "group": "orchard",
+    "status": "candidate",
+    "sha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee",
+    "alphaBounds": [
+      8,
+      77,
+      247,
+      247
+    ],
+    "alphaMismatch": 0,
+    "hiddenRGB": 0,
+    "nonzero": 22079,
+    "partial": 22079,
+    "seam": {},
+    "references": {
+      "summer_reference": {
+        "file": "orchard/references/plum-summer.png",
+        "sha256": "fa158f5ac19631e608c00e0e38f7be23db5a40c08c1738c5104a4c8a281c6665"
+      },
+      "winter_reference": {
+        "file": "orchard/references/plum-winter.png",
+        "sha256": "a6e7f742931607b36ef2e85eaf40cb654b76644bdb85d403a9899f88a4555c8f"
+      }
+    },
+    "generation_record": "orchard/records/generations.json",
+    "prompt": "Edit this EXACT existing game tree sprite into spring flowering PLUM. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: scattered small SOFT PALE PINK plum blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers visibly pale blush pink, restrained natural pink, never saturated magenta. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image."
+  },
+  {
+    "id": "orchard_cherry_spring",
+    "file": "orchard/assets/orchard_cherry_spring.png",
+    "width": 256,
+    "height": 256,
+    "pivot": [
+      128,
+      242
+    ],
+    "worlddisplayWidth": 43,
+    "summer_reference": "references/cherry-summer.png",
+    "winter_reference": "references/cherry-winter.png",
+    "note": "plum_j summer/winter are species-neutral geometry/proof proxies, not cherry botanical source",
+    "repeat": "",
+    "group": "orchard",
+    "status": "candidate",
+    "sha256": "049dc09ac5d25137a2dacf905ab995e2f54d55634c7a00207dc760239ccbbdce",
+    "alphaBounds": [
+      12,
+      51,
+      243,
+      243
+    ],
+    "alphaMismatch": 0,
+    "hiddenRGB": 0,
+    "nonzero": 25341,
+    "partial": 25337,
+    "seam": {},
+    "references": {
+      "summer_reference": {
+        "file": "orchard/references/cherry-summer.png",
+        "sha256": "7a1b5e5de20682af913489b9239769886dae8021d0f28d141e64e7163513958a"
+      },
+      "winter_reference": {
+        "file": "orchard/references/cherry-winter.png",
+        "sha256": "e2e77285fe5fbc3e944e6be93a919fcc07728433327faceb7ce32a9de1278ec0"
+      }
+    },
+    "generation_record": "orchard/records/generations.json",
+    "prompt": "Edit this exact tree sprite into spring flowering CHERRY using its geometry as a species-neutral template. Replace ALL purple fruit with SMALL soft dusty blush PINK cherry blossoms mixed with fresh young green leaves. No purple fruit left. Restrained pale pink, not hot pink or magenta. Preserve EXACT square canvas and EVERY tree silhouette/holes, same irregular two crowns, bent twisted trunk and roots, branches, original position and size. Change canopy SURFACE ONLY; never broaden flowers outside crown. Keep all visible brown wood identical. Project soft painterly prerender, no black outlining, soft upper-left light. Genuine transparency, no ground, no text, one image. Same geometry256x256 final."
+  },
+  {
+    "id": "ewe_lamb_a_spring",
+    "file": "props/assets/ewe_lamb_a_spring.png",
+    "width": 128,
+    "height": 96,
+    "pivot": [
+      67,
+      69
+    ],
+    "summer_reference": null,
+    "winter_reference": null,
+    "status": "candidate",
+    "tile": "none",
+    "suggested_world_width": 28,
+    "note": "신규 봄 전용 소품. 다른 계절 대응 원본 없음. 여름·겨울 기준 장면에서는 부재. 캔버스 픽셀과 월드 크기는 별개.",
+    "alpha_bbox": {
+      "x": 36,
+      "y": 25,
+      "width": 62,
+      "height": 45
+    },
+    "repeat": "",
+    "group": "props",
+    "sha256": "65606634d4864d9bdff6e9f92a5b524310a8b5c0b153928998962e70e673aa13",
+    "alphaBounds": [
+      33,
+      23,
+      99,
+      71
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 1942,
+    "partial": 1798,
+    "seam": {},
+    "references": {},
+    "generation_record": "props/records/provenance.json",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. Exactly ONE adult ewe and ONE tiny spring lamb, natural medieval coarse ivory fleece, ewe grazing head lowered facing lower-left; lamb standing close on her right, lamb body half adult body length. Four anatomically clear legs each where visible, no extra sheep. Isolated pair on transparent ground, a few sparse fresh grass blades only. Whole pair fits a centered 4:3 canvas with margins; target128x96."
+  },
+  {
+    "id": "ewe_lamb_b_spring",
+    "file": "props/assets/ewe_lamb_b_spring.png",
+    "width": 128,
+    "height": 96,
+    "pivot": [
+      65,
+      77
+    ],
+    "summer_reference": null,
+    "winter_reference": null,
+    "status": "candidate",
+    "tile": "none",
+    "suggested_world_width": 28,
+    "note": "신규 봄 전용 소품. 다른 계절 대응 원본 없음. 여름·겨울 기준 장면에서는 부재. 캔버스 픽셀과 월드 크기는 별개.",
+    "alpha_bbox": {
+      "x": 31,
+      "y": 15,
+      "width": 68,
+      "height": 63
+    },
+    "repeat": "",
+    "group": "props",
+    "sha256": "1bc3735ad19a482b247ae6094f2fe780d235886bbd27a89987e8fc8e331dd8f7",
+    "alphaBounds": [
+      29,
+      13,
+      100,
+      79
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 2885,
+    "partial": 2650,
+    "seam": {},
+    "references": {},
+    "generation_record": "props/records/provenance.json",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. Exactly ONE adult ewe and ONE tiny spring lamb. Ewe standing head raised facing upper-right, lamb nuzzling beside her front legs facing her. Different pose from grazing pair. Natural coarse ivory fleece. Lamb body half adult body length. No extra animals. Isolated transparent ground; whole pair centered4:3 with margins; target128x96."
+  },
+  {
+    "id": "swollen_stream_bank_spring",
+    "file": "props/assets/swollen_stream_bank_spring.png",
+    "width": 256,
+    "height": 128,
+    "pivot": [
+      130,
+      117
+    ],
+    "summer_reference": null,
+    "winter_reference": null,
+    "status": "candidate",
+    "tile": "none",
+    "suggested_world_width": 128,
+    "note": "신규 봄 전용 소품. 다른 계절 대응 원본 없음. 여름·겨울 기준 장면에서는 부재. 캔버스 픽셀과 월드 크기는 별개.",
+    "alpha_bbox": {
+      "x": 7,
+      "y": 11,
+      "width": 247,
+      "height": 107
+    },
+    "repeat": "",
+    "group": "props",
+    "sha256": "b4da5624a4f48bf97fed0107c3602a77077d31d8c73f65cd2143764d2b95b01d",
+    "alphaBounds": [
+      6,
+      9,
+      255,
+      119
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 16571,
+    "partial": 16478,
+    "seam": {},
+    "references": {},
+    "generation_record": "props/records/provenance.json",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. ONE low flat spring swollen stream bank decal: narrow curved grey-blue stream lapping over wet brown earth, pale fresh grass tufts along one shore, small stones partly submerged. Wide2:1 ground plane viewed 2:1isometric; organically feathered transparent outer edge, no rectangular background, no miniature diorama plinth, no buildings/animals. Target256x128. Water calm with restrained ripples, wet mud visibly spring."
+  },
+  {
+    "id": "hawthorn_blossom_strip_spring",
+    "file": "props/assets/hawthorn_blossom_strip_spring.png",
+    "width": 512,
+    "height": 64,
+    "pivot": [
+      256,
+      53
+    ],
+    "summer_reference": null,
+    "winter_reference": null,
+    "status": "candidate",
+    "tile": "X",
+    "suggested_world_width": 256,
+    "note": "신규 봄 전용 소품. 다른 계절 대응 원본 없음. 여름·겨울 기준 장면에서는 부재. 캔버스 픽셀과 월드 크기는 별개.",
+    "alpha_bbox": {
+      "x": 0,
+      "y": 10,
+      "width": 512,
+      "height": 44
+    },
+    "repeat": "X",
+    "group": "props",
+    "sha256": "67c78cca392ebdbb0857064ead6e6bc12b089b4442d5655b3606b95d37210ebf",
+    "alphaBounds": [
+      0,
+      8,
+      511,
+      54
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 18221,
+    "partial": 18100,
+    "seam": {
+      "x": 0
+    },
+    "references": {},
+    "generation_record": "props/records/provenance.json",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. ONE continuous horizontal hawthorn hedge strip with small white five-petal blossom clusters, fresh small pale-green leaves, tangled thin brown twigs. Match reference hedge low natural silhouette, side/isometric world terrain strip, wide8:1 composition512x64. Seamlessly repeating horizontally: left and right edges same density/height/color; foliage continues to both edges without endcaps. Transparent above and below foliage. No pink flowers, no tree trunks, no grass tile, no text."
+  },
+  {
+    "id": "nest_bird_spring",
+    "file": "props/assets/nest_bird_spring.png",
+    "width": 128,
+    "height": 96,
+    "pivot": [
+      65,
+      79
+    ],
+    "summer_reference": null,
+    "winter_reference": null,
+    "status": "candidate",
+    "tile": "none",
+    "suggested_world_width": 9,
+    "note": "신규 봄 전용 소품. 다른 계절 대응 원본 없음. 여름·겨울 기준 장면에서는 부재. 캔버스 픽셀과 월드 크기는 별개.",
+    "alpha_bbox": {
+      "x": 27,
+      "y": 19,
+      "width": 77,
+      "height": 61
+    },
+    "repeat": "",
+    "group": "props",
+    "sha256": "cf5dae83ba4ab6cc30b69cc2325ef23e1de9f1ca37f8481aa99b11b152f9477e",
+    "alphaBounds": [
+      25,
+      17,
+      105,
+      81
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 3219,
+    "partial": 3111,
+    "seam": {},
+    "references": {},
+    "generation_record": "props/records/provenance.json",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. ONE small natural twig nest with exactly ONE small brown English sparrow perched on rim, two tiny cream eggs visible. Isometric ground prop, no giant tree/branch/background, isolated transparent with subtle contact shade, full nest and bird in frame. Realistic proportion sparrow short beak/brown plumage, no cartoon eyes. Target128x96, keep fine features readable at small game scale."
+  },
+  {
+    "id": "laundry_yard_spring",
+    "file": "props/assets/laundry_yard_spring.png",
+    "width": 256,
+    "height": 192,
+    "pivot": [
+      132,
+      176
+    ],
+    "summer_reference": null,
+    "winter_reference": null,
+    "status": "candidate",
+    "tile": "none",
+    "suggested_world_width": 40,
+    "note": "신규 봄 전용 소품. 다른 계절 대응 원본 없음. 여름·겨울 기준 장면에서는 부재. 캔버스 픽셀과 월드 크기는 별개.",
+    "alpha_bbox": {
+      "x": 21,
+      "y": 13,
+      "width": 223,
+      "height": 164
+    },
+    "repeat": "",
+    "group": "props",
+    "sha256": "27f1e510dc808aaac40c69675b7f6c82cacacbd57915d0fbd4cf9349cc8266de",
+    "alphaBounds": [
+      10,
+      9,
+      244,
+      184
+    ],
+    "alphaMismatch": null,
+    "hiddenRGB": 0,
+    "nonzero": 21309,
+    "partial": 20612,
+    "seam": {},
+    "references": {},
+    "generation_record": "props/records/provenance.json",
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. ONE modest medieval laundry yard arrangement: two rough oak uprights with hemp line between, three plain unbleached linen cloths draped over line with NO modern spring clothespins; a small wooden washing tub and wicker basket below. Damp sparse spring grass and wet earth footprint only, transparent outside; no building, no people, no bright modern fabrics. 2:1isometric ground, full props centered4:3 target256x192, poles about adult human height, linen softly hanging, upper-leftlight."
+  }
+]

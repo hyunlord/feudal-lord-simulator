@@ -1,0 +1,164 @@
+[
+  {
+    "id": "ewe_lamb_a_spring",
+    "status": "candidate",
+    "tool": "builtin image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. Exactly ONE adult ewe and ONE tiny spring lamb, natural medieval coarse ivory fleece, ewe grazing head lowered facing lower-left; lamb standing close on her right, lamb body half adult body length. Four anatomically clear legs each where visible, no extra sheep. Isolated pair on transparent ground, a few sparse fresh grass blades only. Whole pair fits a centered 4:3 canvas with margins; target128x96.",
+    "raw_file": "raw/ewe_lamb_a_spring.png",
+    "raw_sha256": "a84049c11c9dda0ad7801d540861022e0413f3d7c90bf2ec3cc5db62ba098cae",
+    "source_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f80e-6c7c-7df0-882d-e12ddb7663b5/exec-3b490838-9b78-4fd1-9352-70afca994696.png",
+    "raw_width": 1448,
+    "raw_height": 1086,
+    "references": [
+      {
+        "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/zones/animals/sheep_flock-v1.png",
+        "file": "references/sheep_flock-v1.png",
+        "sha256": "77bb4712641f8d56517f74f7e80157c6deb40a1bc2f29c5197347badfc561945"
+      }
+    ],
+    "file": "assets/ewe_lamb_a_spring.png",
+    "sha256": "65606634d4864d9bdff6e9f92a5b524310a8b5c0b153928998962e70e673aa13",
+    "postprocessing": "Lanczos contain resize preserving aspect and alpha; zero RGB at alpha=0",
+    "width": 128,
+    "height": 96,
+    "alpha_zero_rgb_nonzero": 0,
+    "x_seam_max_diff": null
+  },
+  {
+    "id": "ewe_lamb_b_spring",
+    "status": "candidate",
+    "tool": "builtin image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. Exactly ONE adult ewe and ONE tiny spring lamb. Ewe standing head raised facing upper-right, lamb nuzzling beside her front legs facing her. Different pose from grazing pair. Natural coarse ivory fleece. Lamb body half adult body length. No extra animals. Isolated transparent ground; whole pair centered4:3 with margins; target128x96.",
+    "raw_file": "raw/ewe_lamb_b_spring.png",
+    "raw_sha256": "346e288d1eca2509ed65aaeeed433277fc758d6bac3fe2cb3cda6a1dd38e3a1a",
+    "source_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f80e-6c7c-7df0-882d-e12ddb7663b5/exec-25858097-e2c5-4359-9ecf-2ba7f199ec83.png",
+    "raw_width": 1448,
+    "raw_height": 1086,
+    "references": [
+      {
+        "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/zones/animals/sheep_flock-v1.png",
+        "file": "references/sheep_flock-v1.png",
+        "sha256": "77bb4712641f8d56517f74f7e80157c6deb40a1bc2f29c5197347badfc561945"
+      }
+    ],
+    "file": "assets/ewe_lamb_b_spring.png",
+    "sha256": "1bc3735ad19a482b247ae6094f2fe780d235886bbd27a89987e8fc8e331dd8f7",
+    "postprocessing": "Lanczos contain resize preserving aspect and alpha; zero RGB at alpha=0",
+    "width": 128,
+    "height": 96,
+    "alpha_zero_rgb_nonzero": 0,
+    "x_seam_max_diff": null
+  },
+  {
+    "id": "swollen_stream_bank_spring",
+    "status": "candidate",
+    "tool": "builtin image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. ONE low flat spring swollen stream bank decal: narrow curved grey-blue stream lapping over wet brown earth, pale fresh grass tufts along one shore, small stones partly submerged. Wide2:1 ground plane viewed 2:1isometric; organically feathered transparent outer edge, no rectangular background, no miniature diorama plinth, no buildings/animals. Target256x128. Water calm with restrained ripples, wet mud visibly spring.",
+    "raw_file": "raw/swollen_stream_bank_spring.png",
+    "raw_sha256": "dc5b1fa85c15048770ee3756d1ba13d0e9ad2fefc1dfdcfc9c2e7eeb46881961",
+    "source_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f80e-6c7c-7df0-882d-e12ddb7663b5/exec-fb72baf9-67cc-4c64-bf68-6072da436da3.png",
+    "raw_width": 1774,
+    "raw_height": 887,
+    "references": [
+      {
+        "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/shore/shoreline_a-v1.png",
+        "file": "references/shoreline_a-v1.png",
+        "sha256": "037a4bd5162c997f1566f28abd47be973a7c72de17fbcbafd849c73f913dfc95"
+      }
+    ],
+    "file": "assets/swollen_stream_bank_spring.png",
+    "sha256": "b4da5624a4f48bf97fed0107c3602a77077d31d8c73f65cd2143764d2b95b01d",
+    "postprocessing": "Lanczos contain resize preserving aspect and alpha; zero RGB at alpha=0",
+    "width": 256,
+    "height": 128,
+    "alpha_zero_rgb_nonzero": 0,
+    "x_seam_max_diff": null
+  },
+  {
+    "id": "hawthorn_blossom_strip_spring",
+    "status": "candidate",
+    "tool": "builtin image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. ONE continuous horizontal hawthorn hedge strip with small white five-petal blossom clusters, fresh small pale-green leaves, tangled thin brown twigs. Match reference hedge low natural silhouette, side/isometric world terrain strip, wide8:1 composition512x64. Seamlessly repeating horizontally: left and right edges same density/height/color; foliage continues to both edges without endcaps. Transparent above and below foliage. No pink flowers, no tree trunks, no grass tile, no text.",
+    "raw_file": "raw/hawthorn_blossom_strip_spring.png",
+    "raw_sha256": "26eb393048554c84f47102ee4cde4456e6b8663d8ad2c994a438e1e425f542ed",
+    "source_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f80e-6c7c-7df0-882d-e12ddb7663b5/exec-f369019e-31e8-4a94-8e83-8f930e3039a6.png",
+    "raw_width": 2172,
+    "raw_height": 724,
+    "references": [
+      {
+        "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave28/strip/hedgerow_a_summer.png",
+        "file": "references/hedgerow_a_summer.png",
+        "sha256": "c50680eb312b582e31986e3564710039390f1b0a52c87647eb8f3d795ca75b5c"
+      }
+    ],
+    "file": "assets/hawthorn_blossom_strip_spring.png",
+    "sha256": "67c78cca392ebdbb0857064ead6e6bc12b089b4442d5655b3606b95d37210ebf",
+    "postprocessing": "Alpha-bbox vertical crop; Lanczos contain resize; symmetric premultiplication-free 16px border equalization; zero RGB at alpha=0",
+    "width": 512,
+    "height": 64,
+    "alpha_zero_rgb_nonzero": 0,
+    "x_seam_max_diff": 0
+  },
+  {
+    "id": "nest_bird_spring",
+    "status": "candidate",
+    "tool": "builtin image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. ONE small natural twig nest with exactly ONE small brown English sparrow perched on rim, two tiny cream eggs visible. Isometric ground prop, no giant tree/branch/background, isolated transparent with subtle contact shade, full nest and bird in frame. Realistic proportion sparrow short beak/brown plumage, no cartoon eyes. Target128x96, keep fine features readable at small game scale.",
+    "raw_file": "raw/nest_bird_spring.png",
+    "raw_sha256": "c713da2626a700f5c4e34db1c415f80ce7aca65fc63844d6b1cdee511ad6b02a",
+    "source_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f80e-6c7c-7df0-882d-e12ddb7663b5/exec-cf8dbe71-8034-43f7-a13f-cf8587817de7.png",
+    "raw_width": 1448,
+    "raw_height": 1086,
+    "references": [
+      {
+        "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave23/life_birds/pigeon_perched_a.png",
+        "file": "references/pigeon_perched_a.png",
+        "sha256": "209aba5b4ea256ef51f10c1934d635c515b7c3f0fd6d5b1684fad90e94afd7ef"
+      }
+    ],
+    "file": "assets/nest_bird_spring.png",
+    "sha256": "cf5dae83ba4ab6cc30b69cc2325ef23e1de9f1ca37f8481aa99b11b152f9477e",
+    "postprocessing": "Lanczos contain resize preserving aspect and alpha; zero RGB at alpha=0",
+    "width": 128,
+    "height": 96,
+    "alpha_zero_rgb_nonzero": 0,
+    "x_seam_max_diff": null
+  },
+  {
+    "id": "laundry_yard_spring",
+    "status": "candidate",
+    "tool": "builtin image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "prompt": "Use case: historical-scene. Create ONE transparent-background game world sprite, southern England 1300–1450, hand-painted soft prerendered 2:1 isometric view, screen upper-left daylight, restrained earthy palette, natural wool/wood/linen, no black outline, no text, no frame, no baked checkerboard, no modern objects, no large cast shadow. Reference images are project-owned STYLE references only. ONE modest medieval laundry yard arrangement: two rough oak uprights with hemp line between, three plain unbleached linen cloths draped over line with NO modern spring clothespins; a small wooden washing tub and wicker basket below. Damp sparse spring grass and wet earth footprint only, transparent outside; no building, no people, no bright modern fabrics. 2:1isometric ground, full props centered4:3 target256x192, poles about adult human height, linen softly hanging, upper-leftlight.",
+    "raw_file": "raw/laundry_yard_spring.png",
+    "raw_sha256": "c4920c1384b17f363aed1e35c1c8eeaef5bd131546858ee8a26d6016add637a6",
+    "source_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f80e-6c7c-7df0-882d-e12ddb7663b5/exec-cf992dcf-ae83-445b-b528-0d68acf3d5c3.png",
+    "raw_width": 1448,
+    "raw_height": 1086,
+    "references": [
+      {
+        "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave27/yards/yard_weaver_a.png",
+        "file": "references/yard_weaver_a.png",
+        "sha256": "ffe71bcb4a0754b2588def3bf15cdd9328ca0ce4716ea1a3c47941751550e046"
+      }
+    ],
+    "file": "assets/laundry_yard_spring.png",
+    "sha256": "27f1e510dc808aaac40c69675b7f6c82cacacbd57915d0fbd4cf9349cc8266de",
+    "postprocessing": "Lanczos contain resize preserving aspect and alpha; zero RGB at alpha=0",
+    "width": 256,
+    "height": 192,
+    "alpha_zero_rgb_nonzero": 0,
+    "x_seam_max_diff": null
+  }
+]

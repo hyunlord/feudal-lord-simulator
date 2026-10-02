@@ -1,0 +1,260 @@
+[
+  {
+    "id": "log_stack_a_summer",
+    "prompt": "Use case: game asset sprite. Create ONE isolated hand-painted prerender-style world sprite matching the supplied project oak tree references. Southern England 1300-1450. Orthographic 2:1 isometric camera, ground axes 26.565 degrees, vertical trunks. Soft upper-left sunlight with brighter upper-left surfaces and shaded lower-right surfaces. Desaturated mossy olive foliage, warm oak bark, grouped brushwork, no black outline, no photoreal micro-noise. Actual fully transparent background; only tiny faint contact AO under roots or logs, NO broad cast shadow, no terrain slab, no visible diamond tile, no text, no border, no collage, no multiple views. Object whole and uncropped with transparent padding. Reference images are STYLE REFERENCES only, create a new subject. Summer. Low neat pile of FIVE freshly felled oak logs, THREE at bottom TWO above, horizontal long axes along NE isometric ground direction, pale irregular cut ends toward lower left. No metal, no machines.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-f84ad98a-e04d-4d8b-bad0-3e4f8667d520.png",
+    "inputs": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png",
+        "sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4"
+      }
+    ],
+    "generatedSha256": "3b5bddb6a0afd16ddc8777ae0f1410c6e4a54ef05aba708c2d10587e2cd9a425"
+  },
+  {
+    "id": "log_stack_b_summer",
+    "prompt": "Use case: game asset sprite. Create ONE isolated hand-painted prerender-style world sprite matching the supplied project oak tree references. Southern England 1300-1450. Orthographic 2:1 isometric camera, ground axes 26.565 degrees, vertical trunks. Soft upper-left sunlight with brighter upper-left surfaces and shaded lower-right surfaces. Desaturated mossy olive foliage, warm oak bark, grouped brushwork, no black outline, no photoreal micro-noise. Actual fully transparent background; only tiny faint contact AO under roots or logs, NO broad cast shadow, no terrain slab, no visible diamond tile, no text, no border, no collage, no multiple views. Object whole and uncropped with transparent padding. Reference images are STYLE REFERENCES only, create a new subject. Summer. Low loose pile of FOUR freshly felled ash logs, THREE nearly parallel NW direction and ONE lying diagonally beside them, pale irregular cut ends toward lower right. Clearly different arrangement from triangular log stack. No metal or machines.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-cd6e601a-c024-4c28-913f-219603c5f9c1.png",
+    "inputs": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png",
+        "sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4"
+      }
+    ],
+    "generatedSha256": "6381df1e0878c912e9ea475720fa32602f4ddc33c8ef25af6b29abc4354686bb"
+  },
+  {
+    "id": "sapling_1to3_summer",
+    "prompt": "Use case: game asset sprite. Create ONE isolated hand-painted prerender-style world sprite matching the supplied project oak tree references. Southern England 1300-1450. Orthographic 2:1 isometric camera, ground axes 26.565 degrees, vertical trunks. Soft upper-left sunlight with brighter upper-left surfaces and shaded lower-right surfaces. Desaturated mossy olive foliage, warm oak bark, grouped brushwork, no black outline, no photoreal micro-noise. Actual fully transparent background; only tiny faint contact AO under roots or logs, NO broad cast shadow, no terrain slab, no visible diamond tile, no text, no border, no collage, no multiple views. Object whole and uncropped with transparent padding. Reference images are STYLE REFERENCES only, create a new subject. Summer. One extremely young 1 to 3 year old thin oak sapling, slender twig stem and 5 small separate groups of leaves, almost no crown, tiny tuft at root. Entire plant is shorter than an adult person's waist. No person shown.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-f1cd1e5e-2715-4a57-94f1-63d48b65e19c.png",
+    "inputs": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png",
+        "sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4"
+      }
+    ],
+    "generatedSha256": "ec777084318726fa64887be4ed7b8a4dcabe66e85d61257557922bb8eb6fe6a5"
+  },
+  {
+    "id": "sapling_4to8_summer",
+    "prompt": "Use case: game asset sprite. Create ONE isolated hand-painted prerender-style world sprite matching the supplied project oak tree references. Southern England 1300-1450. Orthographic 2:1 isometric camera, ground axes 26.565 degrees, vertical trunks. Soft upper-left sunlight with brighter upper-left surfaces and shaded lower-right surfaces. Desaturated mossy olive foliage, warm oak bark, grouped brushwork, no black outline, no photoreal micro-noise. Actual fully transparent background; only tiny faint contact AO under roots or logs, NO broad cast shadow, no terrain slab, no visible diamond tile, no text, no border, no collage, no multiple views. Object whole and uncropped with transparent padding. Reference images are STYLE REFERENCES only, create a new subject. Summer. One 4 to 8 year old oak sapling, slender trunk with 3 branching arms, a sparse airy leafy crown, approximately an adult person's height. Clear taller development stage but not mature tree. Tiny tuft at root. No person shown.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-a6984eac-8bf3-4d8b-9cf6-86ab340326f4.png",
+    "inputs": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png",
+        "sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4"
+      }
+    ],
+    "generatedSha256": "5577415fe922446e1e0b1d3b8b13b2861a178c62ffc666c39e516c1a50327b19"
+  },
+  {
+    "id": "young_wood_a_summer",
+    "prompt": "Use case: game asset sprite. Create ONE isolated hand-painted prerender-style world sprite matching the supplied project oak tree references. Southern England 1300-1450. Orthographic 2:1 isometric camera, ground axes 26.565 degrees, vertical trunks. Soft upper-left sunlight with brighter upper-left surfaces and shaded lower-right surfaces. Desaturated mossy olive foliage, warm oak bark, grouped brushwork, no black outline, no photoreal micro-noise. Actual fully transparent background; only tiny faint contact AO under roots or logs, NO broad cast shadow, no terrain slab, no visible diamond tile, no text, no border, no collage, no multiple views. Object whole and uncropped with transparent padding. Reference images are STYLE REFERENCES only, create a new subject. Summer. A small open group of THREE young oak trees, thin trunks visible under leafy mid-sized crowns at uneven heights; tallest tree left rear, lower tree front right, natural loose woodland regeneration. NOT mature broad oak, no giant trunk. Low grass roots footprint.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-0bf806a9-604c-421c-a504-0fd8d53e51ba.png",
+    "inputs": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png",
+        "sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4"
+      }
+    ],
+    "generatedSha256": "670cc82b2248af5549684d74340fdaf9ba4482bcbe302cf7432d6ed41d31c5b8"
+  },
+  {
+    "id": "young_wood_b_summer",
+    "prompt": "Use case: game asset sprite. Create ONE isolated hand-painted prerender-style world sprite matching the supplied project oak tree references. Southern England 1300-1450. Orthographic 2:1 isometric camera, ground axes 26.565 degrees, vertical trunks. Soft upper-left sunlight with brighter upper-left surfaces and shaded lower-right surfaces. Desaturated mossy olive foliage, warm oak bark, grouped brushwork, no black outline, no photoreal micro-noise. Actual fully transparent background; only tiny faint contact AO under roots or logs, NO broad cast shadow, no terrain slab, no visible diamond tile, no text, no border, no collage, no multiple views. Object whole and uncropped with transparent padding. Reference images are STYLE REFERENCES only, create a new subject. Summer. A small open group of FOUR young ash and oak trees, slender trunks visible under uneven modest crowns; tallest tree rear right, short tree front left, one fine sapling at edge, natural woodland regeneration. Distinct asymmetrical independent composition, NOT mirrored. Low grass roots footprint.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-921f2e93-758b-47ec-b96b-01adf4d00004.png",
+    "inputs": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png",
+        "sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4"
+      }
+    ],
+    "generatedSha256": "a4c4711330ca6f7ee023a744c5d96521398b6e74397d24048f1c5b58a876eb8c"
+  },
+  {
+    "id": "log_stack_a_winter",
+    "prompt": "Edit this single summer game sprite into its WINTER counterpart. Keep the exact camera, trunk and branch positions, root contact points, log count and arrangement if logs, scale and framing. No flip, no rotation. Same upper-left sunlight, same hand-painted soft grouped brushwork. For trees: remove green foliage to reveal the same branching skeleton, retain a few withered brown oak leaves, add very thin restrained snow resting on upward branches and a few tiny snow patches at roots; do NOT turn into conifers. For logs: dust upward log surfaces lightly with uneven snow, preserve cut end shapes and warm bark. Actual transparent background, no painted backdrop or halo, no terrain slab, only tiny contact AO, no broad cast shadow, no lettering. One object composition only, no sheet or collage. This is log_stack_a_winter.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-4fac95c4-6d56-491d-93ed-f98caf518533.png",
+    "inputs": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-f84ad98a-e04d-4d8b-bad0-3e4f8667d520.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-f84ad98a-e04d-4d8b-bad0-3e4f8667d520.png",
+        "sha256": "3b5bddb6a0afd16ddc8777ae0f1410c6e4a54ef05aba708c2d10587e2cd9a425"
+      }
+    ],
+    "generatedSha256": "63cf0f32baa74d59c262f287f56cee6f31fe80e0209c0ea6a33e4763b8aa8783"
+  },
+  {
+    "id": "log_stack_b_winter",
+    "prompt": "Edit this single summer game sprite into its WINTER counterpart. Keep the exact camera, trunk and branch positions, root contact points, log count and arrangement if logs, scale and framing. No flip, no rotation. Same upper-left sunlight, same hand-painted soft grouped brushwork. For trees: remove green foliage to reveal the same branching skeleton, retain a few withered brown oak leaves, add very thin restrained snow resting on upward branches and a few tiny snow patches at roots; do NOT turn into conifers. For logs: dust upward log surfaces lightly with uneven snow, preserve cut end shapes and warm bark. Actual transparent background, no painted backdrop or halo, no terrain slab, only tiny contact AO, no broad cast shadow, no lettering. One object composition only, no sheet or collage. This is log_stack_b_winter.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-8cb64f75-1272-410e-9c35-446f0757e01d.png",
+    "inputs": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-cd6e601a-c024-4c28-913f-219603c5f9c1.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-cd6e601a-c024-4c28-913f-219603c5f9c1.png",
+        "sha256": "6381df1e0878c912e9ea475720fa32602f4ddc33c8ef25af6b29abc4354686bb"
+      }
+    ],
+    "generatedSha256": "ec4287bb60300c00b2927ddf0ff5f6c86c320b641bf05faa5b4d3aa7530b2977"
+  },
+  {
+    "id": "sapling_1to3_winter",
+    "prompt": "Edit this single summer game sprite into its WINTER counterpart. Keep the exact camera, trunk and branch positions, root contact points, log count and arrangement if logs, scale and framing. No flip, no rotation. Same upper-left sunlight, same hand-painted soft grouped brushwork. For trees: remove green foliage to reveal the same branching skeleton, retain a few withered brown oak leaves, add very thin restrained snow resting on upward branches and a few tiny snow patches at roots; do NOT turn into conifers. For logs: dust upward log surfaces lightly with uneven snow, preserve cut end shapes and warm bark. Actual transparent background, no painted backdrop or halo, no terrain slab, only tiny contact AO, no broad cast shadow, no lettering. One object composition only, no sheet or collage. This is sapling_1to3_winter.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-54630f4a-93ec-485e-ad0e-cd75c7ea5ff9.png",
+    "inputs": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-f1cd1e5e-2715-4a57-94f1-63d48b65e19c.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-f1cd1e5e-2715-4a57-94f1-63d48b65e19c.png",
+        "sha256": "ec777084318726fa64887be4ed7b8a4dcabe66e85d61257557922bb8eb6fe6a5"
+      }
+    ],
+    "generatedSha256": "44c58e8078bf1fdfd831d3eb198d14211a16afc379c76d9f2a97a3e6645f4863"
+  },
+  {
+    "id": "sapling_4to8_winter",
+    "prompt": "Edit this single summer game sprite into its WINTER counterpart. Keep the exact camera, trunk and branch positions, root contact points, log count and arrangement if logs, scale and framing. No flip, no rotation. Same upper-left sunlight, same hand-painted soft grouped brushwork. For trees: remove green foliage to reveal the same branching skeleton, retain a few withered brown oak leaves, add very thin restrained snow resting on upward branches and a few tiny snow patches at roots; do NOT turn into conifers. For logs: dust upward log surfaces lightly with uneven snow, preserve cut end shapes and warm bark. Actual transparent background, no painted backdrop or halo, no terrain slab, only tiny contact AO, no broad cast shadow, no lettering. One object composition only, no sheet or collage. This is sapling_4to8_winter.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-a8c29e2e-7ceb-4c0f-bfc3-d79efadaabf2.png",
+    "inputs": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-a6984eac-8bf3-4d8b-9cf6-86ab340326f4.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-a6984eac-8bf3-4d8b-9cf6-86ab340326f4.png",
+        "sha256": "5577415fe922446e1e0b1d3b8b13b2861a178c62ffc666c39e516c1a50327b19"
+      }
+    ],
+    "generatedSha256": "09bd75577571fe4625dd431c514662b0ca365a6989401b9578cb930c2f71e36d"
+  },
+  {
+    "id": "young_wood_a_winter",
+    "prompt": "Edit this single summer game sprite into its WINTER counterpart. Keep the exact camera, trunk and branch positions, root contact points, log count and arrangement if logs, scale and framing. No flip, no rotation. Same upper-left sunlight, same hand-painted soft grouped brushwork. For trees: remove green foliage to reveal the same branching skeleton, retain a few withered brown oak leaves, add very thin restrained snow resting on upward branches and a few tiny snow patches at roots; do NOT turn into conifers. For logs: dust upward log surfaces lightly with uneven snow, preserve cut end shapes and warm bark. Actual transparent background, no painted backdrop or halo, no terrain slab, only tiny contact AO, no broad cast shadow, no lettering. One object composition only, no sheet or collage. This is young_wood_a_winter.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-52a5754f-f8db-4edb-8fc2-fad77c0f2e5c.png",
+    "inputs": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-0bf806a9-604c-421c-a504-0fd8d53e51ba.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-0bf806a9-604c-421c-a504-0fd8d53e51ba.png",
+        "sha256": "670cc82b2248af5549684d74340fdaf9ba4482bcbe302cf7432d6ed41d31c5b8"
+      }
+    ],
+    "generatedSha256": "2fbf161c78e5fd80a4e92ccda3df52f9a5fa8e5c071716cc88ba01fb53042b0e"
+  },
+  {
+    "id": "young_wood_b_winter",
+    "prompt": "Edit this single summer game sprite into its WINTER counterpart. Keep the exact camera, trunk and branch positions, root contact points, log count and arrangement if logs, scale and framing. No flip, no rotation. Same upper-left sunlight, same hand-painted soft grouped brushwork. For trees: remove green foliage to reveal the same branching skeleton, retain a few withered brown oak leaves, add very thin restrained snow resting on upward branches and a few tiny snow patches at roots; do NOT turn into conifers. For logs: dust upward log surfaces lightly with uneven snow, preserve cut end shapes and warm bark. Actual transparent background, no painted backdrop or halo, no terrain slab, only tiny contact AO, no broad cast shadow, no lettering. One object composition only, no sheet or collage. This is young_wood_b_winter.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-9ed8b55d-e538-45bb-ab61-dbab58932bb7.png",
+    "inputs": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-921f2e93-758b-47ec-b96b-01adf4d00004.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-921f2e93-758b-47ec-b96b-01adf4d00004.png",
+        "sha256": "a4c4711330ca6f7ee023a744c5d96521398b6e74397d24048f1c5b58a876eb8c"
+      }
+    ],
+    "generatedSha256": "18f0ccbb7e59726db0dea32d903004d9f8707081e8cc6c3a30a19ba44abdbb4f"
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "id": "ridge_ploughed_spring_a",
+  "file": "assets/ridge_ploughed_spring_a-v1.png",
+  "width": 512,
+  "height": 64,
+  "pivot": {
+    "x": 0,
+    "y": 0
+  },
+  "repeat": "X",
+  "summer_reference": "references/ridge_ploughed_spring_a-summer.png",
+  "winter_reference": "references/ridge_ploughed_spring_a-winter.png",
+  "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_ploughed_a-v1.png",
+  "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/fields/ridge_fallow_winter-v1.png",
+  "note": "Winter reference is fallow proxy, not same crop's winter variant.",
+  "prompt": "Edit the provided field ridge strip into freshly ploughed spring earth. Preserve exact THREE horizontal soil ridge rows and furrow spacing,512x64 long8:1 canvas, X-axis seamless repetition, no perspective or new row. Warm moist dark brown soil, soft larger hand-painted clods with subtle damp highlights, no grass/crops/flowers. Existing upper-left soft light, muted southern English1300 game palette. Preserve the original narrow transparent irregular margins and full horizontal extent. No border, lettering or extra objects.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "status": "candidate",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-b7d41ba8-74e0-475f-a3b7-994a13b65c7e.png",
+  "raw_copy": "raw/ridge_ploughed_spring_a-attempt1.png",
+  "summer_sha256": "3b015936bb7877df7ec5aedc9c22e73e01b30d874f3b9de55851e2157377f829",
+  "winter_sha256": "9c9536c152d5dc5039ffeec75b90cf9d07e3bbcfdc88aea42cf00cfce602f686",
+  "raw_sha256": "d6c528cbbc90643a5a32fa34f70acd65948668e48b646317aaca5b8a0af9cec5",
+  "final_sha256": "47dc7b26825cf49b61655449190e2798ab3674de9b22bc50ef763e979dc2bbe9",
+  "postprocess": {
+    "raw_crop": {
+      "left": 0,
+      "top": 230,
+      "width": 2170,
+      "height": 261
+    },
+    "resize": "one resize to target",
+    "alpha": "original strip alpha restored before repeat-edge blend; zero-alpha RGB zeroed",
+    "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+    "edge_rgba_mae_x": 0,
+    "edge_rgba_mae_y": 0,
+    "zero_alpha_rgb_nonzero": 0
+  },
+  "inspection": {
+    "id": "ridge_ploughed_spring_a",
+    "width": 512,
+    "height": 64,
+    "zero_alpha_nonzero_rgb": 0,
+    "nonopaque_pixels": 32768,
+    "edge_rgba_mae_x": 0,
+    "edge_rgba_mae_y": 0,
+    "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+    "runtime_installed": false
+  }
+}

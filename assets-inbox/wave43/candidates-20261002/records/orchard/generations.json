@@ -1,0 +1,118 @@
+[
+  {
+    "species": "apple",
+    "prompt": "Edit this EXACT existing game tree sprite into spring flowering APPLE. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: abundant but small IVORY WHITE apple blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers white, not pink. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image.",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6ff-3d6f-7292-b53d-50b7c1097e2d/exec-57d05905-6a9e-4b25-ac4c-fe5962230456.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "cdcacc9c3d9aa5e446fe8499d54e4326663709be8517ede5041ce11149253462",
+    "reference_sha256": "9b4e11045540c46e1c477554ae0363b6ee1d9b202ab49905637c8521e09e8753",
+    "winter_reference_sha256": "9f8364ec8898da73ae1c2112aa0682ff9bae848260de5d2097374cc1cc2fd041",
+    "postprocessing": "single whole-canvas resize256x256; generatedRGB applied only to original green canopy pixels (and cherry proxy fruit), wood RGB retained; summer alpha copied exactly; alpha0 RGB0",
+    "final": {
+      "file": "assets/orchard_apple_spring.png",
+      "sha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449",
+      "alphaMismatch": 0,
+      "painted_pixels": 19952,
+      "status": "candidate",
+      "verdict": "PASS_OFFLINE"
+    },
+    "references": [
+      {
+        "role": "immutable summer geometry and wood",
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/orchard/references/apple-summer.png",
+        "sha256": "9b4e11045540c46e1c477554ae0363b6ee1d9b202ab49905637c8521e09e8753"
+      }
+    ],
+    "raw_copy": "raw/apple.png",
+    "candidate_status": "candidate"
+  },
+  {
+    "species": "pear",
+    "prompt": "Edit this EXACT existing game tree sprite into spring flowering PEAR. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: delicate scattered small IVORY WHITE pear blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers white, not pink. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image.",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6ff-3d6f-7292-b53d-50b7c1097e2d/exec-3e1bcf97-42ac-43d7-90ed-8f699a199bc6.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "582fed2e2f6cc4c0e45103860315ef29ce078a825d8372ccdb40f53679cb74d8",
+    "reference_sha256": "ded1852c37d7a24c33216b7b7b63b2a4ca2ca8428d19462bd4bbcf3954708bf5",
+    "winter_reference_sha256": "7ee905876ef9788d504ecf9439b3b4b131cfc8e22d4cc916bd7a19f20df3e98a",
+    "postprocessing": "single whole-canvas resize256x256; generatedRGB applied only to original green canopy pixels (and cherry proxy fruit), wood RGB retained; summer alpha copied exactly; alpha0 RGB0",
+    "final": {
+      "file": "assets/orchard_pear_spring.png",
+      "sha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156",
+      "alphaMismatch": 0,
+      "painted_pixels": 16825,
+      "status": "candidate",
+      "verdict": "PASS_OFFLINE"
+    },
+    "references": [
+      {
+        "role": "immutable summer geometry and wood",
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/orchard/references/pear-summer.png",
+        "sha256": "ded1852c37d7a24c33216b7b7b63b2a4ca2ca8428d19462bd4bbcf3954708bf5"
+      }
+    ],
+    "raw_copy": "raw/pear.png",
+    "candidate_status": "candidate"
+  },
+  {
+    "species": "plum",
+    "prompt": "Edit this EXACT existing game tree sprite into spring flowering PLUM. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: scattered small SOFT PALE PINK plum blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers visibly pale blush pink, restrained natural pink, never saturated magenta. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image.",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6ff-3d6f-7292-b53d-50b7c1097e2d/exec-9eb119fd-1798-4300-9f0c-328c4dd98882.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "292b13171b5175a8443849390c1695f574d81b062ca1c2b5e4606e357e1d2bba",
+    "reference_sha256": "fa158f5ac19631e608c00e0e38f7be23db5a40c08c1738c5104a4c8a281c6665",
+    "winter_reference_sha256": "a6e7f742931607b36ef2e85eaf40cb654b76644bdb85d403a9899f88a4555c8f",
+    "postprocessing": "single whole-canvas resize256x256; generatedRGB applied only to original green canopy pixels (and cherry proxy fruit), wood RGB retained; summer alpha copied exactly; alpha0 RGB0",
+    "final": {
+      "file": "assets/orchard_plum_spring.png",
+      "sha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee",
+      "alphaMismatch": 0,
+      "painted_pixels": 17842,
+      "status": "candidate",
+      "verdict": "PASS_OFFLINE"
+    },
+    "references": [
+      {
+        "role": "immutable summer geometry and wood",
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/orchard/references/plum-summer.png",
+        "sha256": "fa158f5ac19631e608c00e0e38f7be23db5a40c08c1738c5104a4c8a281c6665"
+      }
+    ],
+    "raw_copy": "raw/plum.png",
+    "candidate_status": "candidate"
+  },
+  {
+    "species": "cherry",
+    "prompt": "Edit this exact tree sprite into spring flowering CHERRY using its geometry as a species-neutral template. Replace ALL purple fruit with SMALL soft dusty blush PINK cherry blossoms mixed with fresh young green leaves. No purple fruit left. Restrained pale pink, not hot pink or magenta. Preserve EXACT square canvas and EVERY tree silhouette/holes, same irregular two crowns, bent twisted trunk and roots, branches, original position and size. Change canopy SURFACE ONLY; never broaden flowers outside crown. Keep all visible brown wood identical. Project soft painterly prerender, no black outlining, soft upper-left light. Genuine transparency, no ground, no text, one image. Same geometry256x256 final.",
+    "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6ff-3d6f-7292-b53d-50b7c1097e2d/exec-02e0fd9b-020a-45cf-ac82-6ce57eca3fec.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "e3bde5679a47bcc4e3acf88db4e54e3f1c6d1c6097d080d77c8dfa7b1a8661e5",
+    "reference_sha256": "7a1b5e5de20682af913489b9239769886dae8021d0f28d141e64e7163513958a",
+    "winter_reference_sha256": "e2e77285fe5fbc3e944e6be93a919fcc07728433327faceb7ce32a9de1278ec0",
+    "postprocessing": "single whole-canvas resize256x256; generatedRGB applied only to original green canopy pixels (and cherry proxy fruit), wood RGB retained; summer alpha copied exactly; alpha0 RGB0",
+    "final": {
+      "file": "assets/orchard_cherry_spring.png",
+      "sha256": "049dc09ac5d25137a2dacf905ab995e2f54d55634c7a00207dc760239ccbbdce",
+      "alphaMismatch": 0,
+      "painted_pixels": 18637,
+      "status": "candidate",
+      "verdict": "PASS_OFFLINE"
+    },
+    "references": [
+      {
+        "role": "immutable summer geometry and wood",
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/orchard/references/cherry-summer.png",
+        "sha256": "7a1b5e5de20682af913489b9239769886dae8021d0f28d141e64e7163513958a"
+      }
+    ],
+    "raw_copy": "raw/cherry.png",
+    "candidate_status": "candidate"
+  }
+]

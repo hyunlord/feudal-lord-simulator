@@ -1,0 +1,33 @@
+{
+  "assets": [
+    {
+      "id": "tree_oak_large_spring",
+      "final_hash_matches_generation": true,
+      "final_hash_matches_qa": true,
+      "reference_hash_matches_generation": true
+    },
+    {
+      "id": "tree_oak_small_spring",
+      "final_hash_matches_generation": true,
+      "final_hash_matches_qa": true,
+      "reference_hash_matches_generation": true
+    },
+    {
+      "id": "tree_birch_spring",
+      "final_hash_matches_generation": true,
+      "final_hash_matches_qa": true,
+      "reference_hash_matches_generation": true
+    }
+  ],
+  "proofs": [
+    {
+      "file": "proofs/seasons.jpg",
+      "sha256": "33c2df850a5cb9638999c44c1567aa90e7f6b495527e86eb6857089bb0944268"
+    },
+    {
+      "file": "proofs/light-dark.jpg",
+      "sha256": "d2cc881d03548e0d99fbe43f1c952a6522ea2da6f5d97dd5bd80affe7ac2b9e7"
+    }
+  ],
+  "status": "PASS"
+}

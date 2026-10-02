@@ -1,0 +1,47 @@
+{
+  "id": "woodland_floor_spring_a",
+  "file": "assets/woodland_floor_spring_a-v1.png",
+  "width": 256,
+  "height": 128,
+  "pivot": {
+    "x": 0,
+    "y": 0
+  },
+  "repeat": "XY",
+  "summer_reference": "references/woodland_floor_spring_a-summer.png",
+  "winter_reference": "references/woodland_floor_spring_a-winter.png",
+  "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/woodland_floor_summer_a.png",
+  "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/woodland_floor_winter_a.png",
+  "note": "Matching Wave22 summer/winter fill A.",
+  "prompt": "One seamless XY-repeat spring terrain material, input1 project's summer reference. Spring woodland floor, brown old fallen oak leaves remain dominant with moist dark earth, new soft green moss patches and very sparse tiny pale wood anemones. Woodland floor, never turn into a green grassy meadow; no trees, trunks or branches. Flat top-down FULLY OPAQUE rectangular2:1 fill, intended256x128, art reaches all four edges. Soft hand-painted restrained medieval southern England game art, broad gentle color masses, no photographic micro-noise. No horizon, perspective diamond, path, objects, border, vignette or text. Season should visibly differ from summer by fresh growth and damp earth. Even illumination; exact opposite edges join.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "status": "candidate",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-d1a4ec3d-3000-418d-8864-5675bea48d40.png",
+  "raw_copy": "raw/woodland_floor_spring_a-attempt1.png",
+  "summer_sha256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36",
+  "winter_sha256": "db73565fdb3c0ea1900a394ead017898201e88054cdde37f20d5d7506d79b673",
+  "raw_sha256": "c92f3250636e30b8891034b860459ec23cb3f4f154e1768f9716491a4aed23da",
+  "final_sha256": "d0efabcfe9201acd8c01f16f34974f7514be3a080dc8a79774cd8ba8b199a043",
+  "postprocess": {
+    "raw_crop": null,
+    "resize": "one resize to target",
+    "alpha": "fully opaque",
+    "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+    "edge_rgba_mae_x": 0,
+    "edge_rgba_mae_y": 0,
+    "zero_alpha_rgb_nonzero": 0
+  },
+  "inspection": {
+    "id": "woodland_floor_spring_a",
+    "width": 256,
+    "height": 128,
+    "zero_alpha_nonzero_rgb": 0,
+    "nonopaque_pixels": 0,
+    "edge_rgba_mae_x": 0,
+    "edge_rgba_mae_y": 0,
+    "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+    "runtime_installed": false
+  }
+}

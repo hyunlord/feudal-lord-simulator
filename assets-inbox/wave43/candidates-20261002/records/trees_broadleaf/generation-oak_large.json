@@ -1,0 +1,40 @@
+{
+  "id": "tree_oak_large_spring",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "attempt": 1,
+  "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned summer tree into spring. ONE tree only, transparent background, same canvas proportions88:112. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(44,112). Do not recenter, enlarge or extend crown. KEEP ALL brown trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite.",
+  "status": "candidate",
+  "references": [
+    {
+      "path": "references/tree_oak_large.png",
+      "role": "immutable summer geometry edit target",
+      "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+    }
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f702-f327-7ae1-8b3a-d8d5e824be22/exec-098b178b-987a-4212-a431-f9b696e169c9.png",
+  "raw_copy": "raw/tree_oak_large_spring-attempt1.png",
+  "raw_sha256": "6471ce6aeb20dd769ad94e4db2673bd8c0c477612e56e587276063866ce41a55",
+  "postprocessing": {
+    "operation": "Single resize of generated image to source canvas; generated RGB bbox registered to source bbox, leaf RGB80%+original20%; source nonleaf wood RGB preserved; exact source alpha reapplied; alpha0RGBzero",
+    "source_bbox": {
+      "x0": 2,
+      "y0": 52,
+      "x1": 85,
+      "y1": 110
+    },
+    "generated_bbox": {
+      "x0": 1,
+      "y0": 46,
+      "x1": 84,
+      "y1": 106
+    },
+    "leaf_rgb_pixels": 2562,
+    "wood_rgb_preserved_pixels": 711,
+    "leaf_selector": "original G>0.93R and G>1.18B, alpha>16; generated green sample nearest within6px when mapped sample is wood/empty"
+  },
+  "output": "assets/tree_oak_large_spring.png",
+  "sha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+  "runtime_installed": false
+}

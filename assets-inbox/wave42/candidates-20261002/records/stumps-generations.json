@@ -1,0 +1,434 @@
+[
+  {
+    "id": "stump_oak_large_fresh_summer",
+    "prompt": "Use case: stylized-concept. Asset type: Wave42 southern English medieval strategy game isolated stump sprite, summer. Reference images 1 and 2: existing approved small stump painterly rendering and organic shape; image3: approved oak foliage style. Create one new A broad freshly felled mature oak stump, golden pale exposed oval cut surface with a few clear growth rings, thick irregular brown bark and broad spreading root buttresses, asymmetrical right short root. No moss. Soft hand-painted prerendered 2:1 isometric orthographic camera, ground axes ±26.565 degrees. Warm natural muted oak #825C3D. Large readable painted material masses, not photographic texture, not vector, no black outline. Soft upper-left light with dark lower-right faces; weak tiny contact AO only. Single stump centered on genuine transparent canvas, full roots visible with generous empty margin, no ground tile or soil mound, grass only 2-3 tiny tufts at roots. No long cast shadow, no text, no border, no checkerboard. Square canvas. This will be downsampled to a 128x128 sprite; preserve simple clear silhouette. Never mirror or flip the reference.",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_fresh.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_old.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-6eb8ea83-c5cf-4c42-aed5-aefc522e3953.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "transparent_background": true,
+    "raw_path": "raw/stump_oak_large_fresh_summer.png",
+    "raw_sha256": "462a19e0c796199ca4754e6d704d08d2eadf753442ef5907173cebd57e0be8ff",
+    "inputs": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_fresh.png",
+        "sha256": "9714ec4fc488575df27451216ceee8b33da8bb4704bf5d9ac0087887581356d4"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_old.png",
+        "sha256": "12439e70858a21e6a3095a964349b54f1e617df79cb7ffa3019a919ded1c9b2f"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      }
+    ],
+    "final_path": "assets/stumps/stump_oak_large_fresh_summer.png",
+    "final_sha256": "9236fc3ddd41f0c2c929ea4f0c85dbb449355e23b9423ca21f05f39641fd382c",
+    "export": {
+      "canvas": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        108
+      ],
+      "crop": {
+        "left": 142,
+        "top": 312,
+        "width": 973,
+        "height": 661
+      },
+      "resize": [
+        70,
+        48
+      ],
+      "placement": [
+        29,
+        61
+      ],
+      "flip": false,
+      "rotation": 0,
+      "resize_count": 1
+    }
+  },
+  {
+    "id": "stump_oak_large_mossy_summer",
+    "prompt": "Use case: stylized-concept. Asset type: Wave42 southern English medieval strategy game isolated stump sprite, summer. Reference images 1 and 2: existing approved small stump painterly rendering and organic shape; image3: approved oak foliage style. Create one new A broad mature oak stump several years after felling, dark weathered slightly hollow cracked cut surface, irregular old brown bark, soft muted green moss patches around rim and roots. Wide low solid roots, no mushrooms. Soft hand-painted prerendered 2:1 isometric orthographic camera, ground axes ±26.565 degrees. Warm natural muted oak #825C3D. Large readable painted material masses, not photographic texture, not vector, no black outline. Soft upper-left light with dark lower-right faces; weak tiny contact AO only. Single stump centered on genuine transparent canvas, full roots visible with generous empty margin, no ground tile or soil mound, grass only 2-3 tiny tufts at roots. No long cast shadow, no text, no border, no checkerboard. Square canvas. This will be downsampled to a 128x128 sprite; preserve simple clear silhouette. Never mirror or flip the reference.",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_fresh.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_old.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-9348e873-e3fe-4cc6-b880-3dc0d248254e.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "transparent_background": true,
+    "raw_path": "raw/stump_oak_large_mossy_summer.png",
+    "raw_sha256": "cf8a72bc430eacbd10288e37ba25365b1ae08e90ba2e170fdd9bb685245f78bc",
+    "inputs": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_fresh.png",
+        "sha256": "9714ec4fc488575df27451216ceee8b33da8bb4704bf5d9ac0087887581356d4"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_old.png",
+        "sha256": "12439e70858a21e6a3095a964349b54f1e617df79cb7ffa3019a919ded1c9b2f"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      }
+    ],
+    "final_path": "assets/stumps/stump_oak_large_mossy_summer.png",
+    "final_sha256": "117e542bcf59b88eab4fc11fc7d911ce28f69183cbecd32a3c6a81e3c7f1ce0c",
+    "export": {
+      "canvas": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        108
+      ],
+      "crop": {
+        "left": 130,
+        "top": 372,
+        "width": 1009,
+        "height": 634
+      },
+      "resize": [
+        70,
+        44
+      ],
+      "placement": [
+        29,
+        65
+      ],
+      "flip": false,
+      "rotation": 0,
+      "resize_count": 1
+    }
+  },
+  {
+    "id": "stump_ash_small_fresh_summer",
+    "prompt": "Use case: stylized-concept. Asset type: Wave42 southern English medieval strategy game isolated stump sprite, summer. Reference images 1 and 2: existing approved small stump painterly rendering and organic shape; image3: approved oak foliage style. Create one new A small slender freshly felled ash stump, pale cream oval cut surface and light gray-brown bark with restrained vertical grain, three modest narrow roots. Clearly narrower and less massive than oak, no moss. Soft hand-painted prerendered 2:1 isometric orthographic camera, ground axes ±26.565 degrees. Warm natural muted oak #825C3D. Large readable painted material masses, not photographic texture, not vector, no black outline. Soft upper-left light with dark lower-right faces; weak tiny contact AO only. Single stump centered on genuine transparent canvas, full roots visible with generous empty margin, no ground tile or soil mound, grass only 2-3 tiny tufts at roots. No long cast shadow, no text, no border, no checkerboard. Square canvas. This will be downsampled to a 128x128 sprite; preserve simple clear silhouette. Never mirror or flip the reference.",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_fresh.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_old.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-56438d22-ec62-4161-a020-40770b4eb5ad.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "transparent_background": true,
+    "raw_path": "raw/stump_ash_small_fresh_summer.png",
+    "raw_sha256": "275c38e6e3cc617108f205177a689a7509d320e8802e62ff4fd013b887d04ac6",
+    "inputs": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_fresh.png",
+        "sha256": "9714ec4fc488575df27451216ceee8b33da8bb4704bf5d9ac0087887581356d4"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_old.png",
+        "sha256": "12439e70858a21e6a3095a964349b54f1e617df79cb7ffa3019a919ded1c9b2f"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      }
+    ],
+    "final_path": "assets/stumps/stump_ash_small_fresh_summer.png",
+    "final_sha256": "c3992b93fd9b545a9c38f9c5617e3979f2f688995b45c59efa115f33a8ce4243",
+    "export": {
+      "canvas": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        108
+      ],
+      "crop": {
+        "left": 434,
+        "top": 490,
+        "width": 395,
+        "height": 357
+      },
+      "resize": [
+        50,
+        45
+      ],
+      "placement": [
+        39,
+        64
+      ],
+      "flip": false,
+      "rotation": 0,
+      "resize_count": 1
+    }
+  },
+  {
+    "id": "stump_ash_small_mossy_summer",
+    "prompt": "Use case: stylized-concept. Asset type: Wave42 southern English medieval strategy game isolated stump sprite, summer. Reference images 1 and 2: existing approved small stump painterly rendering and organic shape; image3: approved oak foliage style. Create one new A small slender weathered ash stump several years old, dark gray-brown broken uneven top, modest narrow roots, sparse muted olive moss climbing one side. Clearly thin trunk rather than large oak, no mushrooms. Soft hand-painted prerendered 2:1 isometric orthographic camera, ground axes ±26.565 degrees. Warm natural muted oak #825C3D. Large readable painted material masses, not photographic texture, not vector, no black outline. Soft upper-left light with dark lower-right faces; weak tiny contact AO only. Single stump centered on genuine transparent canvas, full roots visible with generous empty margin, no ground tile or soil mound, grass only 2-3 tiny tufts at roots. No long cast shadow, no text, no border, no checkerboard. Square canvas. This will be downsampled to a 128x128 sprite; preserve simple clear silhouette. Never mirror or flip the reference.",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_fresh.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_old.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-5d1df09e-7d43-47f9-a169-1cb1c85ffd66.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "transparent_background": true,
+    "raw_path": "raw/stump_ash_small_mossy_summer.png",
+    "raw_sha256": "afdbe63f3ef4f84ca1cfabd53922e29e939ca9ea3ef7499406d5d1fb0a7b3058",
+    "inputs": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_fresh.png",
+        "sha256": "9714ec4fc488575df27451216ceee8b33da8bb4704bf5d9ac0087887581356d4"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/stump_old.png",
+        "sha256": "12439e70858a21e6a3095a964349b54f1e617df79cb7ffa3019a919ded1c9b2f"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      }
+    ],
+    "final_path": "assets/stumps/stump_ash_small_mossy_summer.png",
+    "final_sha256": "7a20afe25ef87bc5325330f2665ffecb9337b3b11bb48c88304bd6690fb3fe8b",
+    "export": {
+      "canvas": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        108
+      ],
+      "crop": {
+        "left": 402,
+        "top": 387,
+        "width": 431,
+        "height": 465
+      },
+      "resize": [
+        50,
+        54
+      ],
+      "placement": [
+        39,
+        55
+      ],
+      "flip": false,
+      "rotation": 0,
+      "resize_count": 1
+    }
+  },
+  {
+    "id": "stump_oak_large_fresh_winter",
+    "prompt": "Use case: lighting-weather. Edit target: this summer stump_oak_large_fresh isolated transparent game sprite. Create its winter version. Preserve EXACT same stump shape, asymmetry, roots, camera, size, placement and painted upper-left lighting. Change only season: a thin broken layer of off-white snow resting on upward-facing top and root ridges, exposing enough pale fresh cut rings to identify its condition. Sparse dormant straw tufts instead of green. Do not add snowy ground tile, surrounding snow blanket, icicles, new roots or broad shadow. Keep actual transparent background. Soft handpainted 2:1 isometric game sprite, no black outlines, no text, no mirroring or rotation.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-6eb8ea83-c5cf-4c42-aed5-aefc522e3953.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-85f59b35-088f-4b41-8bf4-d68c3bca1b05.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "transparent_background": true,
+    "raw_path": "raw/stump_oak_large_fresh_winter.png",
+    "raw_sha256": "eaaf99a59a51d201263894e485ab4b998ff8d9456267e677bc41ccfac8c5fb06",
+    "inputs": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-6eb8ea83-c5cf-4c42-aed5-aefc522e3953.png",
+        "sha256": "462a19e0c796199ca4754e6d704d08d2eadf753442ef5907173cebd57e0be8ff"
+      }
+    ],
+    "final_path": "assets/stumps/stump_oak_large_fresh_winter.png",
+    "final_sha256": "4565cc354a1f2031cbccbecfa6995742a8fce4ed2c6c99670f75504b1e94043c",
+    "export": {
+      "canvas": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        108
+      ],
+      "crop": {
+        "left": 141,
+        "top": 305,
+        "width": 975,
+        "height": 670
+      },
+      "resize": [
+        70,
+        48
+      ],
+      "placement": [
+        29,
+        61
+      ],
+      "flip": false,
+      "rotation": 0,
+      "resize_count": 1
+    }
+  },
+  {
+    "id": "stump_oak_large_mossy_winter",
+    "prompt": "Use case: lighting-weather. Edit target: this summer stump_oak_large_mossy isolated transparent game sprite. Create its winter version. Preserve EXACT same stump shape, asymmetry, roots, camera, size, placement and painted upper-left lighting. Change only season: a thin broken layer of off-white snow resting on upward-facing top and root ridges, exposing enough dark hollow aged wood and olive moss to identify its condition. Sparse dormant straw tufts instead of green. Do not add snowy ground tile, surrounding snow blanket, icicles, new roots or broad shadow. Keep actual transparent background. Soft handpainted 2:1 isometric game sprite, no black outlines, no text, no mirroring or rotation.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-9348e873-e3fe-4cc6-b880-3dc0d248254e.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-9b4647fd-a6bd-4721-8edd-a9226eec2766.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "transparent_background": true,
+    "raw_path": "raw/stump_oak_large_mossy_winter.png",
+    "raw_sha256": "9bccaa6d6fe0e9f9979e75f313a664bcdc80fa34cf334b9a2f0a911247ae7fac",
+    "inputs": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-9348e873-e3fe-4cc6-b880-3dc0d248254e.png",
+        "sha256": "cf8a72bc430eacbd10288e37ba25365b1ae08e90ba2e170fdd9bb685245f78bc"
+      }
+    ],
+    "final_path": "assets/stumps/stump_oak_large_mossy_winter.png",
+    "final_sha256": "05aded1c7d0a412d13db315b44e778b3c2c8f91b1736ebd0ea3f3eae74dcd36d",
+    "export": {
+      "canvas": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        108
+      ],
+      "crop": {
+        "left": 130,
+        "top": 370,
+        "width": 1011,
+        "height": 637
+      },
+      "resize": [
+        70,
+        44
+      ],
+      "placement": [
+        29,
+        65
+      ],
+      "flip": false,
+      "rotation": 0,
+      "resize_count": 1
+    }
+  },
+  {
+    "id": "stump_ash_small_fresh_winter",
+    "prompt": "Use case: lighting-weather. Edit target: this summer stump_ash_small_fresh isolated transparent game sprite. Create its winter version. Preserve EXACT same stump shape, asymmetry, roots, camera, size, placement and painted upper-left lighting. Change only season: a thin broken layer of off-white snow resting on upward-facing top and root ridges, exposing enough pale fresh cut rings to identify its condition. Sparse dormant straw tufts instead of green. Do not add snowy ground tile, surrounding snow blanket, icicles, new roots or broad shadow. Keep actual transparent background. Soft handpainted 2:1 isometric game sprite, no black outlines, no text, no mirroring or rotation.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-56438d22-ec62-4161-a020-40770b4eb5ad.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-4a2cfc6b-49f8-401d-b913-346f38dd390d.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "transparent_background": true,
+    "raw_path": "raw/stump_ash_small_fresh_winter.png",
+    "raw_sha256": "eb91aa0ce1d85b7aef39ba5b75892e998f1e4e01d8e1fb6251193e871b57b7bd",
+    "inputs": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-56438d22-ec62-4161-a020-40770b4eb5ad.png",
+        "sha256": "275c38e6e3cc617108f205177a689a7509d320e8802e62ff4fd013b887d04ac6"
+      }
+    ],
+    "final_path": "assets/stumps/stump_ash_small_fresh_winter.png",
+    "final_sha256": "4459146d2ed36dcf3c41256b6cc7d1a2c041ec6a4d35bd7b9bf88e25d5f52358",
+    "export": {
+      "canvas": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        108
+      ],
+      "crop": {
+        "left": 434,
+        "top": 490,
+        "width": 397,
+        "height": 358
+      },
+      "resize": [
+        50,
+        45
+      ],
+      "placement": [
+        39,
+        64
+      ],
+      "flip": false,
+      "rotation": 0,
+      "resize_count": 1
+    }
+  },
+  {
+    "id": "stump_ash_small_mossy_winter",
+    "prompt": "Use case: lighting-weather. Edit target: this summer stump_ash_small_mossy isolated transparent game sprite. Create its winter version. Preserve EXACT same stump shape, asymmetry, roots, camera, size, placement and painted upper-left lighting. Change only season: a thin broken layer of off-white snow resting on upward-facing top and root ridges, exposing enough dark hollow aged wood and olive moss to identify its condition. Sparse dormant straw tufts instead of green. Do not add snowy ground tile, surrounding snow blanket, icicles, new roots or broad shadow. Keep actual transparent background. Soft handpainted 2:1 isometric game sprite, no black outlines, no text, no mirroring or rotation.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-5d1df09e-7d43-47f9-a169-1cb1c85ffd66.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-9be3e006-d0cb-445a-a08e-f603e5577751.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "transparent_background": true,
+    "raw_path": "raw/stump_ash_small_mossy_winter.png",
+    "raw_sha256": "06b2c20606d7ae74106f7b688df54fe97f2a57e25a4b00ca5d310c789bc860a2",
+    "inputs": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb06-df8d-7673-964d-65ee591b6eb9/exec-5d1df09e-7d43-47f9-a169-1cb1c85ffd66.png",
+        "sha256": "afdbe63f3ef4f84ca1cfabd53922e29e939ca9ea3ef7499406d5d1fb0a7b3058"
+      }
+    ],
+    "final_path": "assets/stumps/stump_ash_small_mossy_winter.png",
+    "final_sha256": "4f3272df1212c99843f7eef622f4f849fa44e5bbf04d93724812be3321ba3a60",
+    "export": {
+      "canvas": [
+        128,
+        128
+      ],
+      "pivot": [
+        64,
+        108
+      ],
+      "crop": {
+        "left": 402,
+        "top": 383,
+        "width": 431,
+        "height": 471
+      },
+      "resize": [
+        50,
+        55
+      ],
+      "placement": [
+        39,
+        54
+      ],
+      "flip": false,
+      "rotation": 0,
+      "resize_count": 1
+    }
+  }
+]
