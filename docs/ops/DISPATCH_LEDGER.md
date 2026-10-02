@@ -87,13 +87,13 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 
 ---
 ## D. INBOX 세션 — 보냄·대기
-- [ ] Wave 42 가시나무 v3(`/tmp/astra-wave42-bramble-v3-lite.zip`) → 옛 bramble 4행 superseded
-- [ ] Astra 첫 플레이(`/tmp/astra-playtest-20261002.zip`) → `docs/qa/playtest-20261002/`
-- [ ] QA 17회차(`/tmp/fls-qa-round17-lite.zip`) → `docs/qa/round17/`
-- [ ] 제목 묶음(`/tmp/astra-title-logo-20261002.zip`) → `docs/design/title-20261002/`(1번만, 결정 줄)
-- [ ] 브랜드(`/tmp/charter-kin-brand-20261002.zip`) → `docs/design/brand/`
-- [ ] 튜토리얼(`/tmp/astra-lord-tutorial-20261002.zip`) → `docs/design/tutorial-lord-mode-20261002/` + lord-mode.md 한 줄
-- [ ] 문구 감사(`/tmp/astra-copy-audit-20261002.zip`) → `docs/design/glossary.md`(원본 SHA 줄) + `docs/design/copy-audit-20261002/`
+- [x] Wave 42 가시나무 v3(`/tmp/astra-wave42-bramble-v3-lite.zip`) → 옛 bramble 4행 superseded — 본선 `6c954293`
+- [x] Astra 첫 플레이(`/tmp/astra-playtest-20261002.zip`) → `docs/qa/playtest-20261002/` — 본선 `ad156117`
+- [x] QA 17회차(`/tmp/fls-qa-round17-lite.zip`) → `docs/qa/round17/` — 본선 `2ed0fa8b`
+- [x] 제목 묶음(`/tmp/astra-title-logo-20261002.zip`) → `docs/design/title-20261002/`(1번만, 결정 줄) — 본선 `c23747f1`
+- [x] 브랜드(`/tmp/charter-kin-brand-20261002.zip`) → `docs/design/brand/` — 본선 `f99eaf99`
+- [x] 튜토리얼(`/tmp/astra-lord-tutorial-20261002.zip`) → `docs/design/tutorial-lord-mode-20261002/` + lord-mode.md 한 줄 — 본선 `9ccb98e4`
+- [x] 문구 감사(`/tmp/astra-copy-audit-20261002.zip`) → `docs/design/glossary.md`(원본 SHA 줄) + `docs/design/copy-audit-20261002/` — 본선 `0cba5b35`
 대조: 장부 행 수 = inbox 그림 수, 판정 없는 그림 0(가시나무 v3 뒤), 끊긴 replaced_by 0.
 
 ---
