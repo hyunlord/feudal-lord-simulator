@@ -33,6 +33,7 @@ import { seasonFadeMs } from "./seasonTransition";
 import { drawLandWorksInChunk, landWorksChunkToken } from "./landWorksDraw";
 import { landGroundOf } from "./archetypeGroundModel";
 import { drawLandDecals, drawLandEdges, drawLandFills, hasLandFill, landChunkToken, landShoreStrips } from "./archetypeGroundDraw";
+import { groundTileAs } from "./landRockRegions";
 
 // RENDER_BOUNDARY_V2 ground pass. Order: water (live) -> ground chunks (diamonds, seams, forest outline + fringe,
 // zone fills, building yards, field clusters, zone lines, building aprons) -> town landscape (live) -> road-ribbon
@@ -197,19 +198,19 @@ function drawGroundChunk(
   const tiles = chunkTiles(input.state, plan, 1);
   const land = landGroundOf(input.state);
   for (const tile of tiles) {
-    // Forest and water tiles are laid as grass; the smoothed forest outline and shoreline below paint over them.
-    parts.drawGroundDiamond(context, tile.terrain === "forest" || tile.terrain === "water" ? { ...tile, terrain: "grass" } : tile, input.state.seed, input.terrainPatterns);
+    // Forest and water tiles (on a land, rock too: NAT-5) are laid as grass; their smoothed outlines paint over them.
+    parts.drawGroundDiamond(context, groundTileAs(tile, land), input.state.seed, input.terrainPatterns);
   }
   if (season !== 1) drawSeasonGrass(context, tiles, season);
   const bounds = chunkTileBounds(plan.cx, plan.cy);
   const diamond = chunkDiamond(plan);
   const box = { left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4 };
   // The land fills carry their own seasons: over the season grass, which (and the code-drawn tufts) shows on the meadow.
-  if (land !== null) drawLandFills(context, land, plan, tiles, box, season);
+  if (land !== null) drawLandFills(context, land, plan, box, season, input.terrainPatterns);
   for (const tile of tiles) {
     if (tile.terrain === "water") continue;
     if (zoom > 0.7 && (land === null || !hasLandFill(land, tile))) drawGroundDecalDetail(context, tile, input.state.seed);
-    drawTerrainTransitions(context, input.state, tile, zoom, input.terrainPatterns, false, false);
+    if (land === null) drawTerrainTransitions(context, input.state, tile, zoom, input.terrainPatterns, false, false); // NAT-5: no rock pebbles on a land
   }
   if (land !== null) drawLandEdges(context, land, plan, season);
   drawForestFill(context, scene.forest, plan.forestLoops, plan.forestParity, box, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);

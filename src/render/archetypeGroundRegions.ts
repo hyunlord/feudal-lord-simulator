@@ -1,9 +1,10 @@
 import { boundsOf, chaikinClosed, hashNumbers, type BoundaryBounds, type BoundaryPoint } from "../world/boundary/boundaryGeometry";
-import { cellContourLoops } from "../world/boundary/cellContours";
+import { cellContourLoops, type CellContourLoop } from "../world/boundary/cellContours";
 import { BOUNDARY_CHAIKIN_ROUNDS } from "../world/boundary/terrainBoundaries";
 import { chunkTileBounds, overlaps, pointInPolygon, type GroundChunkPlan } from "./groundSceneParts";
 import { STRIP_FAMILIES, type LandGround, type StripFamily } from "./archetypeGroundModel";
 import { FOREST_EDGE_FAMILY, FOREST_EDGE_FILL, stripFamilyInstalled } from "./landEdgeBand";
+import { WARP_VERSION, distanceToCells, warpLine, type WarpField } from "./landRegionWarp";
 
 // LAND-UI: each land fill as smoothed regions, the way the forest and the water are outlined (marching squares over the
 // tile centres, then Chaikin, terrainBoundaries.ts), so a fill meets the meadow on a curve and not on the tile
@@ -15,6 +16,8 @@ import { FOREST_EDGE_FAMILY, FOREST_EDGE_FILL, stripFamilyInstalled } from "./la
 // runs along it: the named side (the strip's bottom) is the fill against the meadow, the heath against the chalk; none
 // against a drained cell (the drainage art draws that edge, LU-D5), none for the woodland floor (Wave 22 has no edge;
 // NAT-4 / LU-D11: Wave 41's forest edge strip takes it while installed — landEdgeBand.ts).
+// NAT-5 (QA-040, vision TOP10 #5 / #10): the smoothed outline is then warped (landRegionWarp.ts), so it no longer runs
+// along the tile grid; the strips follow the warped line. The rock (landRockRegions.ts) is outlined the same way.
 // Cached on the land layer (its cache key is the layer's: archetypeGroundModel.ts) and per chunk.
 
 export type RegionLoop = { readonly smoothed: readonly BoundaryPoint[]; readonly bounds: BoundaryBounds; readonly hash: number;
@@ -39,9 +42,10 @@ export function fillRegions(land: LandGround): readonly FillRegion[] {
 function regionOf(land: LandGround, base: string): FillRegion {
   const own = (index: number) => land.fillBase[land.fill[index]!] === base;
   const { mask, outside } = regionMask(land, own);
+  const field = landWarp(land, 1);
   const loops = cellContourLoops({ width: land.width, height: land.height, inside: (tx, ty) => mask[ty * land.width + tx] === 1, outside })
     .map(loop => {
-      const smoothed = chaikinClosed(loop.points, BOUNDARY_CHAIKIN_ROUNDS);
+      const smoothed = smoothRegionLoop(field, loop);
       const count = loop.points.length;
       // Chaikin's two rounds give 4 points per contour edge; segments 4v - 3 … 4v lie around contour vertex v (the
       // midpoint of one tile edge: its inside cell and, across it, its outside cell).
@@ -55,9 +59,28 @@ function regionOf(land: LandGround, base: string): FillRegion {
         return land.fillBase[land.fill[outside]!] === "heath" ? null : EDGE_OF[base] ?? null;
       });
       const strips = smoothed.map((_, segment) => byVertex[Math.floor((segment + 3) / 4) % count] ?? null);
-      return { smoothed, bounds: boundsOf(smoothed, 0.5), hash: hashNumbers([loop.hash, ...strips.map(strip => (strip === null ? 0 : STRIP_FAMILIES.indexOf(strip) + 1))]), strips };
+      return { smoothed, bounds: boundsOf(smoothed, 0.5), hash: regionLoopHash(loop, smoothed, strips.map(strip => (strip === null ? 0 : STRIP_FAMILIES.indexOf(strip) + 1))), strips };
     });
   return { base, outside, loops };
+}
+
+/** The land's warp at `scale` (1 for the fills), pinned at its drained cells (landRegionWarp.ts). */
+export function landWarp(land: LandGround, scale: number): WarpField {
+  const pinned = distanceToCells(land.width, land.height, land.drained);
+  return { seed: land.seed, width: land.width, height: land.height, scale, ...(pinned === undefined ? {} : { pinned }) };
+}
+
+/** A contour loop as a region draws it: Chaikin, then the warp. */
+export function smoothRegionLoop(field: WarpField, loop: CellContourLoop): BoundaryPoint[] {
+  return warpLine(field, chaikinClosed(loop.points, BOUNDARY_CHAIKIN_ROUNDS));
+}
+
+/**
+ * A region loop's hash: its contour, the warp's version, its per-segment strips and the warped points themselves
+ * (1/64 tile), which carry the seed and every drained cell near the loop (a drain elsewhere moves it without a contour change).
+ */
+export function regionLoopHash(loop: CellContourLoop, smoothed: readonly BoundaryPoint[], strips: readonly number[]): number {
+  return hashNumbers([loop.hash, WARP_VERSION, ...strips, ...smoothed.flatMap(point => [Math.round(point.x * 64), Math.round(point.y * 64)])]);
 }
 
 /** The fill's own tiles and the 4-connected pieces of own-or-closed tiles that hold one (beyond the map: piece 0). */
@@ -99,16 +122,18 @@ export function chunkRegions(land: LandGround, plan: GroundChunkPlan): readonly 
   const id = plan.cy * 4096 + plan.cx;
   const cached = land.cache.chunks.get(id);
   if (cached !== undefined) return cached;
+  const found = fillRegions(land).map(region => regionPart(region, plan)).filter((part): part is ChunkRegion => part !== null);
+  land.cache.chunks.set(id, found);
+  return found;
+}
+
+/** The part of a region a chunk draws: the loops that reach it and its parity, or null when it draws none. */
+export function regionPart(region: FillRegion, plan: GroundChunkPlan): ChunkRegion | null {
   const tiles = chunkTileBounds(plan.cx, plan.cy);
   const box = { left: tiles.left - 1.5, top: tiles.top - 1.5, right: tiles.right + 1.5, bottom: tiles.bottom + 1.5 };
   const centre = { x: (tiles.left + tiles.right) / 2, y: (tiles.top + tiles.bottom) / 2 };
-  const found: ChunkRegion[] = [];
-  for (const region of fillRegions(land)) {
-    const loops = region.loops.flatMap((loop, index) => (overlaps(loop.bounds, box) ? [index] : []));
-    // With beyond the map inside (`outside`), a point no loop encloses lies in the region: inside = an even count then.
-    const parity = (region.loops.filter((loop, index) => !loops.includes(index) && pointInPolygon(centre, loop.smoothed)).length % 2 === 0) === region.outside;
-    if (loops.length > 0 || parity) found.push({ region, loops, parity });
-  }
-  land.cache.chunks.set(id, found);
-  return found;
+  const loops = region.loops.flatMap((loop, index) => (overlaps(loop.bounds, box) ? [index] : []));
+  // With beyond the map inside (`outside`), a point no loop encloses lies in the region: inside = an even count then.
+  const parity = (region.loops.filter((loop, index) => !loops.includes(index) && pointInPolygon(centre, loop.smoothed)).length % 2 === 0) === region.outside;
+  return loops.length > 0 || parity ? { region, loops, parity } : null;
 }
