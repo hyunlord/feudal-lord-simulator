@@ -12,7 +12,8 @@ import type { GameState } from "../engine/engine.types";
 import { faction, factionOfPetitioner } from "../engine/factions";
 import { heirCandidates } from "../engine/legacy";
 import { lordHouse } from "../engine/lordshipState";
-import { ageOf, currentYear, manorLord, personById, personDisplayName } from "../engine/persons";
+import { ageOf, currentYear, inTown, manorLord, personById, personDisplayName } from "../engine/persons";
+import type { Person } from "../engine/persons.types";
 import type { PetitionRecord } from "../engine/politics.types";
 import { treasuryBalance } from "../ledger/ledger";
 import { levyMen, refugeeRoom, subsidyAmount, warOf, woolInKindPerSeason, woolLevyAmount } from "../engine/war";
@@ -292,12 +293,36 @@ export type PetitionFrom = Readonly<{ factionId: string; name: string; arms: Emb
 export type PetitionPresentation = Readonly<{ defId: string; art: PetitionArt | null; title: string; demand: string; from: PetitionFrom | null;
   label: (response: PetitionResponse) => string; line: (response: PetitionResponse) => string }>;
 
+/**
+ * NAT-4 (QA-036): the faction's leader as a petition shows him — never a dead (or departed) one. A leader no longer
+ * living is followed through FIX-12's `faction.leader_succeeded` lines to his living successor; until the engine names
+ * one (on the next death day) there is no leader chip, and the town's living representatives (FIX-12's
+ * `petition.representative_replaced`, `petitionerRows`) stand first.
+ */
+function livingLeader(state: GameState, factionId: string, leaderId: string | null): Person | undefined {
+  const records = state.history?.records ?? [];
+  const seen = new Set<string>();
+  for (let id = leaderId; id !== null && !seen.has(id);) {
+    seen.add(id);
+    const person = personById(state, id);
+    if (person !== undefined && inTown(person)) return person;
+    let next: string | null = null;
+    for (let index = records.length - 1; index >= 0 && next === null; index -= 1) {
+      const params = records[index]!.params;
+      if (records[index]!.template === "faction.leader_succeeded" && params?.faction === factionId && params.predecessorId === id
+        && typeof params.leaderId === "string") next = params.leaderId;
+    }
+    id = next;
+  }
+  return undefined;
+}
+
 /** Who brings it: the petitioner's faction (FX-3), its name (`factionDisplayName` only, FIX-5), its arms and leader. */
 function petitionFrom(state: GameState, petition: PetitionRecord): PetitionFrom | null {
   const id = factionOfPetitioner(petition.petitioner);
   const view = faction(state, id);
   if (view === undefined) return null;
-  const leader = view.leaderId === null ? undefined : personById(state, view.leaderId);
+  const leader = livingLeader(state, id, view.leaderId);
   const name = factionDisplayName(view.id, view.name);
   return { factionId: id, name, arms: factionEmblem(view, currentYear(state)),
     leader: leader === undefined ? null : factionLeaderRow(state, leader, name), writ: petition.petitioner === "crown" };

@@ -8,6 +8,8 @@ const TITLES: Readonly<Record<string, string>> = {
   granger: "곡창지기", storekeeper: "창고지기", steward: "청지기", labourer: "일꾼", child: "아이",
   // UI-7: the lord's family's own (PERSON-1a LN-9).
   lord: "영주", lady: "귀부인",
+  // NAT-4 (QA-014): the outside factions' leaders (FACTION-0 FX-2; a neighbour lord is "lord" above) — the card showed "king".
+  king: "국왕", earl: "백작", bishop: "주교",
 };
 /** UI-7: what each of the lord's family is to the lord (their manor role and sex). */
 const LORD_FAMILY: Readonly<Record<string, Readonly<Record<"female" | "male", string>>>> = {
