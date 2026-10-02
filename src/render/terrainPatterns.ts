@@ -1,4 +1,5 @@
 import type { TerrainType } from "../content/terrainConfig";
+import { waterSurface } from "./drawWater";
 import {
   getSprite,
   spriteMeta,
@@ -49,13 +50,16 @@ const patternCache = new WeakMap<
   Map<TerrainTextureKey, PatternCacheEntry>
 >();
 
+// ENV-03 (art audit 2026-10-02): water's texture is the water surface (drawWater.ts, the deep water V1 and V2 draw);
+// the old high-contrast water.png left the world manifest (RETIRED_WORLD_ASSET_KEYS).
 const worldAssetTerrainPatterns: TerrainPatternAssets = {
   meta: (key) => {
+    if (key === "water") return { key, category: "terrain", status: waterSurface() === null ? "loading" : "ready" };
     const meta = spriteMeta(key);
     if (meta === null || meta.category !== "terrain" || !isLoadStatus(meta.status)) return null;
     return { key, category: "terrain", status: meta.status };
   },
-  sprite: (key) => getSprite(key),
+  sprite: (key) => key === "water" ? waterSurface() : getSprite(key),
 };
 
 export function terrainTextureKeyFor(terrain: TerrainType): TerrainTextureKey {
