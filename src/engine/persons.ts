@@ -24,6 +24,7 @@ import { houseHasFood } from "../population/houseFood";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { foodPricePermille } from "./eventSchedule";
+import { foodShortHouseIds } from "./foodShortage";
 import { hashSeed, rollPermille } from "./prng";
 import { LEGACY_BALANCE } from "../content/legacyConfig";
 import { NEIGHBOUR_SURNAMES } from "../content/gentryNames";
@@ -53,6 +54,10 @@ const REMARRY_MAX_AGE = 60;
 const DEATH_PERMILLE_BY_AGE: readonly (readonly [number, number])[] = [[5, 40], [14, 10], [30, 8], [55, 12], [65, 40], [75, 90], [85, 200], [95, 350], [Infinity, 700]];
 /** PS-3: weights on the rate, permille: bread at 1.4× or dearer (dearth), 2× or dearer (famine); a plague when there is one. */
 export const MORTALITY_WEIGHTS = { dearth: 1_500, famine: 3_000, plague: 4_000 } as const;
+/** FIX-16: the share, permille, of dear bread's extra deaths a house not short of food still bears (the rest fall on
+ *  the houses short of it, engine/foodShortage). A fed house's dead of such a year died of the year's sickness, not of hunger — relief that feeds a house
+ *  lowers its death rate. */
+export const FED_HOUSE_DEARTH_SHARE_PERMILLE = 200;
 /** PS-3: chance, permille, that a person in a house dies when it burns. */
 const FIRE_DEATH_PERMILLE = 60;
 
@@ -419,6 +424,12 @@ export function seasonDeathPermille(age: number, weight = 1_000): number {
 function mortalityWeight(state: GameState): number {
   const price = foodPricePermille(state, state.tick);
   return price >= 2_000 ? MORTALITY_WEIGHTS.famine : price >= 1_400 ? MORTALITY_WEIGHTS.dearth : 1_000;
+}
+
+/** FIX-16: the season's weight for one household: a house short of food bears the whole of dear bread's extra, a
+ *  fed house (and the manor) a small share. */
+export function householdMortalityWeight(weight: number, fed: boolean): number {
+  return fed ? 1_000 + Math.floor(Math.max(0, weight - 1_000) * FED_HOUSE_DEARTH_SHARE_PERMILLE / 1_000) : weight;
 }
 
 /** PS-3: a house whose empty place the growth rule would fill (water, bread, not burnt, abandoned or leaving). */
@@ -913,6 +924,9 @@ export function advancePersons(state: GameState): GameState {
   let plagueTown = 0, plagueManor = 0;
   if (deathDay || burning) {
     const weight = deathDay ? mortalityWeight(state) : 0;
+    // FIX-16: the houses short of food — starving, or among the famine's poor who cannot buy bread (none when the lord
+    // gave relief).
+    const short: ReadonlySet<string> = deathDay && weight > 1_000 ? foodShortHouseIds(state) : new Set();
     const burnt = new Set(state.houses.filter(house => house.burntTick === state.tick).map(house => house.buildingId));
     // F3-A (PL-2): the pestilence's dead of the death day (drawn by weight; residents lost, never refilled).
     const plague = deathDay ? plagueVictims(state, town.people, year) : new Set<string>();
@@ -929,12 +943,14 @@ export function advancePersons(state: GameState): GameState {
       if (burnt.has(person.householdId) && rollPermille(state.seed, "fire-death", Number(person.id.slice(2)), state.tick) < FIRE_DEATH_PERMILLE) cause = "fire";
       // FIX-11: all houses' people are eligible for age-death regardless of refill state.
       else if (deathDay) {
-        // A season is a quarter of the year's rate; the deaths dear bread adds on top are famine deaths.
+        // A season is a quarter of the year's rate. FIX-16: the deaths dear bread adds on top fall mostly on houses
+        // without bread (hunger); a fed house's few died of the famine year's sickness.
+        const fed = home === undefined || !short.has(home.buildingId);
         const usual = seasonDeathPermille(ageOf(person, year));
-        const weighted = seasonDeathPermille(ageOf(person, year), weight);
+        const weighted = seasonDeathPermille(ageOf(person, year), householdMortalityWeight(weight, fed));
         const roll = rollPermille(state.seed, "death", Number(person.id.slice(2)), state.tick);
         if (roll < usual) cause = "age";
-        else if (roll < weighted) cause = "famine";
+        else if (roll < weighted) cause = fed ? "famine_year" : "famine";
       }
       if (cause === null) continue;
       town.remove(person.id, { died: cause });

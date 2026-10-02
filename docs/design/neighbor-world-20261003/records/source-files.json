@@ -1,0 +1,275 @@
+{
+  "repository": "https://github.com/hyunlord/feudal-lord-simulator",
+  "branch": "codex/phase15-organic-ground",
+  "sha": "618c5ec28b2c191e85e0b448da7e0739660ad88a",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "3ab33f2207e2ed29453286b40d9b0d4e4e4b7cf2932fc181bb029c056a8f03ae"
+    },
+    {
+      "path": "docs/design/lord-mode.md",
+      "sha256": "9e41de7e30876a3148199cfdb6ca73e5fb07a45ab460a6903ddcc4f07026c496"
+    },
+    {
+      "path": "docs/design/negotiation.md",
+      "sha256": "5d645c4761e0de736de83b75b03db666f5b0ed7897bcdf1002e5ad08fa0b553a"
+    },
+    {
+      "path": "docs/design/trades-and-force.md",
+      "sha256": "d76f148f0791122f64175a56642c19c8f2ac09d88abe2ca950b439fb5c1b4b04"
+    },
+    {
+      "path": "docs/design/glossary.md",
+      "sha256": "30827ee61c89b83741cb955e7c57b83c21164759412405ffd3e14f3ec19a0cb5"
+    },
+    {
+      "path": "docs/research/2026-09-24-content-catalog.md",
+      "sha256": "537726b262d0d1306d4e9ad69388e5ffe248864dd8bf361da4296b0787631029"
+    },
+    {
+      "path": "docs/research/2026-09-26-research15-ui-state-design-claude.md",
+      "sha256": "c691a18cbf148b097f614863df39324f3c3ce615f3d8fb51f7051580312b1e65"
+    },
+    {
+      "path": "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md",
+      "sha256": "6e579206bb8e28e4d077ed8caf19dc7bf43d2baf8646398d1c877df2a9ae3729"
+    },
+    {
+      "path": "docs/research/2026-09-30-indirect-rule-expansion-loop-gpt.md",
+      "sha256": "6148e338ada48dae93a4994ccd8b3e424b46b48602913ff3b11d7d29aac3ac56"
+    },
+    {
+      "path": "docs/research/2026-10-02-lordly-force-gpt.md",
+      "sha256": "43060f800427e4a8ce919d76af7939517eadf9f037a20e2ddf408d1698594def"
+    },
+    {
+      "path": "docs/research/2026-10-02-market-town-trades-gpt.md",
+      "sha256": "af19ab4a98bbe8dd26f1961be2eb778ffa749861af0296e5f8840f3ee7e5a3ef"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/DISTRIBUTION.md",
+      "sha256": "864d606a1a166b8222d37e61c7662e775a3ef424239b42317a03478294c8dafe"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/EVENTS.md",
+      "sha256": "a9a950c8b00e0c16e60b6e4d9299c0df5b2148f79c9b133f63bd3ab7aecdca8c"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/EXISTING_EVENT_COPY.md",
+      "sha256": "8a05f6a405b2a09e49e98f8d8756f81fc6783a8be299bd176eaf2da2d0bf36e6"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/NEW_EFFECTS.md",
+      "sha256": "9e523e70a020b874fc8ce99524dbea6231aa64ea46626d3514ce49173dd105f3"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/README.md",
+      "sha256": "2435739205f2561bf5894cfd07080052c01ca9a1df99f661a4e1526b8ff500ad"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/REGISTRY_PROPOSAL.md",
+      "sha256": "505df2e49fdddb567f6a2446fc332a3ed62971519763bbbff3c1ce07d8f77b95"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/REVISION_NOTES.md",
+      "sha256": "18d74693eafce520dc76d047f8262689fcfe36a361d3546af7a7b174060653e0"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/SOURCES.md",
+      "sha256": "f44c0d445eaad6bc43abacf8c1d6a1df657aad8e98bdf01921b20a99d9bcae96"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/events.json",
+      "sha256": "bdaf93859f6964e4948b0bdc81396ab53f480fa7e7aead12fe53fee99083edbd"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/AUTHORING_CONTRACT.md",
+      "sha256": "bfb5e39f35f3f61d8fb0532046925cc40389c50b0b4121688e7591731c1f72d1"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/ENGINE_EFFECTS.md",
+      "sha256": "21d74f0f4a8128e39e1f378814fd7570a919a278bd4a440ed5de11e953536843"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/PLAN.md",
+      "sha256": "46d139d71afe1e8a35730a3def5a8225f94c95b23340e519c793e8f179684b0f"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/QA.md",
+      "sha256": "894937e79776611d0f5ecbed163cffc227b091c51363dd4ac085720c094175b4"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/REGISTRY_VALIDATION.json",
+      "sha256": "bcc2e1caffcb82ed1a147df1f12a98a5406877f45eef3fd1890c5acf2277624d"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/REVIEW_V2_EFFECTS.md",
+      "sha256": "0faa280e44892a478b2d64da98eb0b9f0f796e48da56dff7dcc0b5c65e8d59e1"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/REVISION_METRICS.json",
+      "sha256": "80b7bb93d928a74410a46f7cd28f13e0fae51b964b786bcf3185e91f64cfdaa9"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/VALIDATION.json",
+      "sha256": "44545ec1b6a386451378ed0dd546d1c468cc77c23ae929737b0589450274f4f7"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/baseline-counts.json",
+      "sha256": "01758938103ae42432a4748b9fb6e6e826a050be106217d48149625bfb550509"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/batch-a.json",
+      "sha256": "397b582e468a1a300f990cc9f01bdf1d13abea58e7a654194257102181aa9eb5"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/batch-b.json",
+      "sha256": "34cf3670deb1b827afec6378584b8656801c8bf56998f13c86e771d7e3497c64"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/batch-c.json",
+      "sha256": "00ee5fc6203bd94a4e4e3ff5e641b0a624289a4e88bae37c531896cebffe7eb1"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/engine-effects.json",
+      "sha256": "bb073b0b84c90e2db77d0c3d8538e6a228aa30cc9647ac93b1d7fe60d8e6a3b7"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/provenance.json",
+      "sha256": "9c6371b7ba8982c6737a0b942784bf723acd08f978a34b9143a2ecd066f1bf7c"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/research-land-kin.md",
+      "sha256": "2032eef6d4fa8e8b5c0db1731f920cc7d321069283ad15a0fd7e187a561122ff"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/research-trade-force.md",
+      "sha256": "385964e98791e508a77202ca5b9cb15a8ac02002128ed162007098e56d6130bf"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/sources-land-kin.json",
+      "sha256": "3989062c10a5407adbfa15aabe672b8fa98e0c46f866258c10e78065643aa212"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/sources-trade-force.json",
+      "sha256": "53773bbbe62286e88d4ed67210a3d9924f5204c1d0a03531b7b55a090e4c7e9c"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/v1-review/QA.md",
+      "sha256": "6898dc40e2281a118b327cf2c4eb1c77aa3db663d26f8080b3da66caaa4dd5b6"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/v1-review/README.md",
+      "sha256": "099b135e43c9d1fc24d67f8fe8d3b14ee3083c8689b945466276dd72d59bd09b"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/v1-review/REVIEW_EDITORIAL.md",
+      "sha256": "bd0c38be0751d4714013116d1924f868540b1fac3baf7a79264fbba323c7afcc"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/v1-review/REVIEW_RULES.md",
+      "sha256": "5af47ed0580bf67b19feef640e4dfb14a9f97b467f8f52794ece9cd1de368869"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/records/v1-review/VALIDATION.json",
+      "sha256": "e02753e3b6458a327add2fc2089ff3591ebde241915fe92acbb84c7114b4100c"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/registry.example.json",
+      "sha256": "cc3d23a198515dcbb2812524a50fc025658dd984db652d0e4730f6a337d62042"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v2/registry.schema.json",
+      "sha256": "b8590444d02ff5e1fdc0b7c9b682a93e4e832c1ee2620a6a6c12e94b4eace8ce"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/DESIGN.md",
+      "sha256": "0675f6b71dc79f95fc915a226e59a255bc633c794f2f4c5fa3b8548a43ab24bb"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/MISSING_COMPONENTS.md",
+      "sha256": "b928ead3ad1b7332de7dd7b56d87ed100747910b0ae7b128350eae18b496f24e"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/QA.md",
+      "sha256": "453428877a420453912b042faad24fd38a046866b96d8bdec8a4b46cb39dcc09"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/README.md",
+      "sha256": "b2ff5ae47214a919d0840fefcba40555c168b6769dbdd0f5a996b9f16b57c152"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/qa/iteration-1.json",
+      "sha256": "b1c111c136501e639431f26322609d349a2b725fe7203a15732365cc87216093"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/qa/iteration-2.json",
+      "sha256": "3399c87528e5536e52e36aeec9216e198147d66756f18c167a01e450e9c6f3f1"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/qa/iteration-3.json",
+      "sha256": "53834715c43ed8dee42078e98059db2403b020496fe854338c539d48ee99eec9"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/qa/layout-metrics.json",
+      "sha256": "0a92c58570727e186ee1d56775f0313414cd0716a3a27fbbd25fb33a66dd10a1"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/qa/visual-verdict.json",
+      "sha256": "7c8b0f7f19ada8aa3f70a17c265a1c12d146d379939400f54701f42a28ad39ee"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/source/ASTRA_CK_SCREENS_brief.md",
+      "sha256": "327e2ed242a1965eb93d52ebc49887233808887cb587bfbdd67e200d7f09c0ad"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/source/PLAN.md",
+      "sha256": "11e4af19fc9740b1e54945531ad0b0579d95bf69c8bcd6c2682bbbdafca7635c"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/source/asset-provenance.json",
+      "sha256": "69a256c9235bac555ab8c7bef2181179191744b91961a571a3fd337dad0010c4"
+    },
+    {
+      "path": "docs/design/mockups/lord-screens-20261002/source/screens.json",
+      "sha256": "aa7bcb8bc6769482c70ab5b641c5da176ce6812034763895615259501c4f44c9"
+    },
+    {
+      "path": "assets-inbox/lord-components/candidates-20261002/records/NEXT_SCREEN_DIRECTION.md",
+      "sha256": "c14dde30386db3c836ca027ddfc6b12ed919bf4dc8fe8a718b2d3d208cb5744f"
+    },
+    {
+      "path": "assets-inbox/lord-components/candidates-20261002/records/PLAN.md",
+      "sha256": "7150ab95f5c45d96b54747684aedc1bfe549346db69475358ebba5c2c18edf83"
+    },
+    {
+      "path": "assets-inbox/lord-components/candidates-20261002/records/QA.md",
+      "sha256": "c64d114227432b9f6e63da2c3b5a817d22f82467f94cccf806a329750eb11e10"
+    },
+    {
+      "path": "assets-inbox/lord-components/candidates-20261002/records/README.md",
+      "sha256": "3acc7832bba9a39e5474efc931f51ae020c6f10c833f34f238f3a895443cdf34"
+    },
+    {
+      "path": "assets-inbox/lord-components/candidates-20261002/records/asset-metrics.json",
+      "sha256": "8d2096fdad08a50af76b642e622737ae06cc4ffeeadb10b710f3753837b0cae6"
+    },
+    {
+      "path": "assets-inbox/lord-components/candidates-20261002/records/assets.csv",
+      "sha256": "0f7376f2a344d64e27e4a0a23073e382a2aa12e9787e50ec18e8fb5c8f5a3dab"
+    },
+    {
+      "path": "assets-inbox/lord-components/candidates-20261002/records/direction-references.json",
+      "sha256": "aef47101644ef80fb4f885f475b2fe15e2870ba155845b4e027dddaf8d609270"
+    },
+    {
+      "path": "assets-inbox/lord-components/candidates-20261002/records/generations.json",
+      "sha256": "7a82ff834d36312a9761d9364bcf1020a858f05f1484656525131240d29b9efa"
+    },
+    {
+      "path": "assets-inbox/lord-components/candidates-20261002/records/visual-verdict.json",
+      "sha256": "f63f87dc233dd05e2eec70c9d3ea22eb46394f7e46b25f5bd083dcee613cb67f"
+    }
+  ]
+}

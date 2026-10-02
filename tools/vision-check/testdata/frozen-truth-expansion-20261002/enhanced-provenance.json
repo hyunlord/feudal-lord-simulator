@@ -1,0 +1,180 @@
+{
+  "truth_sha256": {
+    "truth-ground-frozen.json": "56d8f9e3aed7856ad41e9618a16d4eff52484448fcfe8d33ce5e6dce8d6eeb65",
+    "truth-humans-frozen.json": "fee9c131f24f1a7514af3bd8435bc2f366c2ff665c8de1ca99e6411dcc0694b8",
+    "truth-objects-frozen.json": "6225d23b7c3847fe89a1cd9ac41b2a29fcdef1c548d501ab0e65b4233eadd7ae",
+    "truth-repeat-frozen.json": "0c57e0d3dcb9b3f2cbb6b448ab4f03e69d59c173def980428ea41ec26fcb69e0",
+    "truth-all-frozen.json": "c75fcede95096a1c78b0faa1317d1822272a1293ed57443f61003723968f25b3"
+  },
+  "source_sha256": {
+    "vision_check/__init__.py": "427d20da0d89e56265515bdcac442d698b3cd570e55e82ef9924e50ffc2719d1",
+    "vision_check/adapter.js": "8be5e5613e411d1137a6103facc0ad50f9e182b82dcb5e834d75c6a0403c2881",
+    "vision_check/analyze.py": "9c1e472429052a32be16ea7096390cd93a0e79df1337707f6b7fc0689592322d",
+    "vision_check/benchmark.py": "2346e87631d8201d4a3f0db9997b3f0b68e4bcd18f55dfed5cec02f0b80930b1",
+    "vision_check/benchmark_io.py": "fe9fb8ac24948ce1d7a59f77b7dc1856fb087a72821985cd6e3d5de636f48ec6",
+    "vision_check/benchmark_models.py": "58bdebe458861ae8df6d30da45526ce16a42f07ca6656a069218924a9fbb9dd1",
+    "vision_check/browser.js": "aa83d49ef73d848af8023dad5a54e4b1b2fa7b0ee0624aad988a07fa008701b8",
+    "vision_check/capture.py": "b6ad884242aace5a16e4218c2a25c49ed27374d70bb01c248003fe7db523bc13",
+    "vision_check/cli.py": "743b9a1ad35bd3dc90077344d634cbdb595a37c05ac26353d6c830363b22b1c1",
+    "vision_check/component_catalog.py": "008afcdc1a26968e7fd974208f962212e91726cd27113fe62ebd5e12984872bf",
+    "vision_check/component_parts.py": "2281b4e8a1296243fb0e97044fa1c23d39b5db2badf2d3c3af8b0ac05a922a15",
+    "vision_check/contracts.py": "a550ec0f7e59eb35d9637243d95b4dc359e39d1d84537c31144624010cc8908e",
+    "vision_check/figures.py": "ac459bff16831f44cd0ff65a7551a16bd52d18ce9d5c8f3ac3b31d6e490a05e7",
+    "vision_check/geometry.py": "eb938643c21b31c52dd30128215b62ed574f429a8d890fbb653e58d5ddb22ec5",
+    "vision_check/ground.py": "fa23eadb2bee9b92f68416f419c4c9643905d91c8d178cd4879d1ab50e5eb8d7",
+    "vision_check/inventory.py": "5e09d9c07045dde9f060a16685de24eba7ad16cacba7546c78c96c2711fdf2ed",
+    "vision_check/land_replay.py": "0ae42f168d91e1af8083500cc0a8f74262e416321e59c5959cbc14cebea8a5d6",
+    "vision_check/legacy_adapter.js": "7801303b925bfdfc87216572689300fe319db0227e873e061f12c30f35c86b1b",
+    "vision_check/lod.py": "6118caab40858ce584d388e0ebd48a7c4279dddd1c4be89a03d2373d76889a5f",
+    "vision_check/masks.py": "0b959126b70e22cabe2a02892f96331f20e1534f3f45e72b7e28ff6099776d9b",
+    "vision_check/models.py": "990ceef13cd02bd7e99e6febc91fa95db947f8b02723bc5d076778db7e872ff2",
+    "vision_check/normalize.py": "6b668d1f32ed832fdf0f16dd1bfe0e31d177ba97e9b7de3405376cd538ce5ced",
+    "vision_check/objects.py": "558d52e123f1c17f501b6e41f04e81cd63b8e5a737182484f181fa75aa7fa076",
+    "vision_check/parts.py": "33517ebeb1e69ededae02fec3f0292260d30b621edabc9a3ae3ff56600e24b96",
+    "vision_check/rain.py": "8576abfdcdf95f4fd884952013938874d2deaee01d56e12eda73dc400aacd540",
+    "vision_check/repetition.py": "2a011203fc3c88f5f2fdc91a6f41ae04e6cb3985a361fa8f768bd21448843cf5",
+    "vision_check/replay.py": "4eff4316a6451d2fc3c6b2df737d8b4bb8843f7814ea2153cffd402329a91215",
+    "vision_check/review.py": "88a465072957d84f338c882d32118569d3bb72e5f0b07c4b00e0b46d96f5c09f",
+    "vision_check/rock.py": "f238c095328795bf4e47b8b0be31fb5b71f7c2281a87361b5f9d0735eaa60619",
+    "vision_check/save_seed.py": "c7322aeba6a4da497b06f82221889cf3f3a4210e5702a45cd5670bf508be540e",
+    "vision_check/scale.py": "e79a0dd4decac20537d5d2d886f0de6cf8dc919cd3d451bdf54007d079029aa6",
+    "vision_check/seams.py": "685081cfb3f84e42b4fba8b97c5673c81ae677adb14e8871bc55b6d86a282322",
+    "vision_check/state.js": "159aab4c992dca17c26f81f030a7a17561ffa12187a4124f28e2d1f8964c555e",
+    "vision_check/visibility.py": "26328b93b9dcd712b8e9180ddb7da1caa26c856f63376628f876734c9773f991",
+    "vision_check/wall_overlap.py": "50a3fa2d14dfa9e76f5978580cf7cb70cc90b1e5510279221f55f77943e31008",
+    "config/baseline.json": "557604f0dcd24d59df8821a4e0f6667612470bf987f4757aa235018b1fbb6b3d",
+    "config/calibrated.json": "db8085ab564649d82ca8ddf4550cdb7846f3bbd0a78b4dc8974999de07cc9d63",
+    "config/component-parts.json": "6ff50a160178839b6fb57acb4acfc6450f2d69cf8d9f0effe1a6957a7c1ed3ca",
+    "config/expansion.json": "b29e2c047779487158bd61bd6fb645a231be745930dc80eebc14b562b25f49ab",
+    "config/recall.json": "89248b709c57ca2bc43236d7ecec07c02c486fbd012ae61c4b2b5b2d533b0643"
+  },
+  "source_snapshot_timing": "After review-fix rerun of all 14 scenes. Parent froze source before these runs.",
+  "run_inputs": {
+    "current": {
+      "repo": {
+        "head": "d6ae15498a45c2202a10f3ce8f20a543dd305c3f",
+        "tracked_diff": ""
+      },
+      "run": {
+        "seconds": 20.51233391702408,
+        "thresholds": {
+          "exclude_water": true,
+          "axis_boundary_length_tiles": 0.65,
+          "boundary_length_tiles": 2.5,
+          "boundary_contrast": 14.0,
+          "boundary_angle_degrees": 0.12,
+          "seam_correlation": 0.5,
+          "seam_min_periods": 3.0,
+          "still_distance_px": 1.3,
+          "still_min_tick_span": 18,
+          "overlap_fraction": 0.2,
+          "repeat_min_count": 4,
+          "repeat_building_min_count": 6,
+          "repeat_radius_tiles": 2.4,
+          "repeat_similarity": 0.85,
+          "max_per_detector": 12
+        },
+        "scenes": 8,
+        "candidates": 75
+      }
+    },
+    "prenat1": {
+      "repo": {
+        "head": "ce941ebeb3e567f498f2709e5989d08f39f6d370",
+        "tracked_diff": ""
+      },
+      "run": {
+        "seconds": 17.27143670798978,
+        "thresholds": {
+          "exclude_water": true,
+          "axis_boundary_length_tiles": 0.65,
+          "boundary_length_tiles": 2.5,
+          "boundary_contrast": 14.0,
+          "boundary_angle_degrees": 0.12,
+          "seam_correlation": 0.5,
+          "seam_min_periods": 3.0,
+          "still_distance_px": 1.3,
+          "still_min_tick_span": 18,
+          "overlap_fraction": 0.2,
+          "repeat_min_count": 4,
+          "repeat_building_min_count": 6,
+          "repeat_radius_tiles": 2.4,
+          "repeat_similarity": 0.85,
+          "max_per_detector": 12
+        },
+        "scenes": 5,
+        "candidates": 229
+      }
+    },
+    "prenat2": {
+      "repo": {
+        "head": "653af2e29bd7ebd51b061fb70c97c81c300a8b12",
+        "tracked_diff": ""
+      },
+      "run": {
+        "seconds": 4.264899875037372,
+        "thresholds": {
+          "exclude_water": true,
+          "axis_boundary_length_tiles": 0.65,
+          "boundary_length_tiles": 2.5,
+          "boundary_contrast": 14.0,
+          "boundary_angle_degrees": 0.12,
+          "seam_correlation": 0.5,
+          "seam_min_periods": 3.0,
+          "still_distance_px": 1.3,
+          "still_min_tick_span": 18,
+          "overlap_fraction": 0.2,
+          "repeat_min_count": 4,
+          "repeat_building_min_count": 6,
+          "repeat_radius_tiles": 2.4,
+          "repeat_similarity": 0.85,
+          "max_per_detector": 12
+        },
+        "scenes": 1,
+        "candidates": 100
+      }
+    }
+  },
+  "findings_sha256": "c7acdc4845895181f7e18fed282ff867e7777e89a34e68e62aeeb67f0090da00",
+  "missing_assets": [
+    {
+      "scene": "exp-seed1-ch5",
+      "assets": [
+        "/assets/wave28/strip/hedgerow_b_summer.png#crop=0,0,0.2,64"
+      ]
+    }
+  ],
+  "semantic_rejections_applied": false,
+  "evaluation": "Spatial one-to-one score; final size/repeat semantic review confirmed assignments; no baseline rejection IDs reused.",
+  "source_hashes_reverified_after_evaluation": true,
+  "semantic_review": {
+    "reviewer": "historical_capture",
+    "verdict": "Final object/size/repeat visual review confirms automatic TP/FP/FN assignments. No semantic candidate rejection required.",
+    "duplicate_repeat_candidate": "exp-seed1-ch5-detail:repeat_density:2 remains FP for duplicate south-cluster fragmentation; candidate1 matches south, not middle."
+  },
+  "review_fix_changed_source_files": [
+    "vision_check/scale.py"
+  ],
+  "review_fix_findings_comparison": {
+    "reference": "pre-review-fix-findings.json",
+    "exact_json_equal": true,
+    "exact_bytes_equal": true,
+    "reference_sha256": "c7acdc4845895181f7e18fed282ff867e7777e89a34e68e62aeeb67f0090da00",
+    "current_sha256": "c7acdc4845895181f7e18fed282ff867e7777e89a34e68e62aeeb67f0090da00"
+  },
+  "final_execution_exit_evidence": {
+    "confirmed_by": "root",
+    "current": {
+      "session": 35706,
+      "exit_code": 0
+    },
+    "prenat1": {
+      "session": 43253,
+      "exit_code": 0
+    },
+    "prenat2": {
+      "session": 95061,
+      "exit_code": 0
+    }
+  }
+}

@@ -1,0 +1,90 @@
+[
+  {
+    "scene": "exp-prenat2-city-confirm",
+    "cohort": "calibration",
+    "tick_span": 228,
+    "frames": 20,
+    "zoom": 1.0,
+    "camera": [
+      672.0,
+      -863.5
+    ],
+    "stationary": {
+      "eligible": 2,
+      "stationary": 0,
+      "ratio": 0.0,
+      "tick_span": 228,
+      "reason": "observed stillness; idle is not a defect"
+    },
+    "matched_person_ids": 22,
+    "alpha_masks": 390,
+    "roof_masks": 28,
+    "missing_assets": [],
+    "ground_fraction": 0.4249801136363636,
+    "findings": 100,
+    "semantic_parts": 26,
+    "catalog_components": 26,
+    "normal_inventory_skipped_draw_calls": {
+      "crate_stock": 6,
+      "ale_stock": 13
+    },
+    "rain": {
+      "first_frame_candidates": 0,
+      "falling_tracks": 0,
+      "accepted_mask_pixels": 0,
+      "reason": "insufficient independent falling streaks; abstained",
+      "human_height_references": 40,
+      "human_alpha_heights_px": [
+        18.028169014084508,
+        18.135135135135137,
+        18.16216216216216,
+        17.83783783783784,
+        18.135135135135137,
+        17.83783783783784,
+        18.445945945945947,
+        17.83783783783784,
+        18.028169014084508,
+        17.83783783783784,
+        18.135135135135137,
+        18.16216216216216,
+        18.445945945945947,
+        17.83783783783784,
+        18.445945945945947,
+        17.83783783783784,
+        17.83783783783784,
+        18.135135135135137,
+        18.445945945945947,
+        18.16216216216216,
+        18.445945945945947,
+        18.16216216216216,
+        18.135135135135137,
+        18.16216216216216,
+        17.83783783783784,
+        18.445945945945947,
+        18.135135135135137,
+        18.135135135135137,
+        17.56756756756757,
+        18.135135135135137,
+        18.135135135135137,
+        18.445945945945947,
+        18.445945945945947,
+        18.445945945945947,
+        18.135135135135137,
+        18.135135135135137,
+        18.135135135135137,
+        18.135135135135137,
+        18.16216216216216,
+        17.83783783783784
+      ],
+      "eligible_ground_fraction": 0.4249801136363636,
+      "measurement_frame": 0,
+      "scale_candidates": 0,
+      "limits": "Ground-only rain sample; opaque hats included; no real rainy scene validated."
+    },
+    "notes": [
+      "Roof masks use warm upper-sprite hypotheses; grey/snow/ambiguous roofs abstain.",
+      "Unknown asset semantics remain eligible; callers must mask UI and field rows.",
+      "Axis-aligned cropped sprites supported; rotated/sheared draws require abstention."
+    ]
+  }
+]

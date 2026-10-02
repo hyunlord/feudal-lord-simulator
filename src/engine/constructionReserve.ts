@@ -2,6 +2,7 @@ import type { DeliveryRoutePort } from "../agents/deliveryTypes";
 import type { Building } from "../content/buildingConfig";
 import type { ResourceType } from "../content/resourceConfig";
 import { wallDeliveryAvailable, type WallConstructionPriority, type WallConstructionReserve, type WallReserveSource } from "../domain/wallReserve";
+import { charterTimberContext } from "../agents/deliveryConstruction";
 import { constructionDeliveryNeed, type ConstructionSite } from "../economy/construction";
 import type { GameState } from "./engine.types";
 import { createDeliveryInventoryPort, createSimulationRoutePorts } from "./simulationPorts";
@@ -73,7 +74,7 @@ export function constructionReservedMaterial(
 }
 
 export function wallReserveHeld(
-  state: Pick<GameState, "wallConstructionReserve" | "wallConstructionPriority" | "buildings" | "treasuryTimber">,
+  state: Pick<GameState, "wallConstructionReserve" | "wallConstructionPriority" | "buildings" | "treasuryTimber"> & Partial<Pick<GameState, "constructionSites">>,
   site: ConstructionSite,
   routes: DeliveryRoutePort,
 ): boolean {
@@ -94,6 +95,8 @@ export function wallReserveHeld(
     building.kind === "house" && routes.fromBuildingToDestination(building.id, destination) !== null)) {
     sourceStocks.push({ id: TREASURY_SOURCE_ID, available: state.treasuryTimber });
   }
+  // FIX-16: a waiting charter building holds the palisade's timber too.
+  const charter = charterTimberContext({ buildings: state.buildings, constructionSites: state.constructionSites ?? [], inventory, treasuryTimber: state.treasuryTimber });
   return sourceStocks.length > 0 && sourceStocks.every(({ id, available }) =>
-    wallDeliveryAvailable(state.wallConstructionReserve, "balanced", id, resource, available) === 0);
+    wallDeliveryAvailable(state.wallConstructionReserve, "balanced", id, resource, available, charter) === 0);
 }

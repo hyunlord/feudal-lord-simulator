@@ -1,0 +1,354 @@
+{
+  "mapPath": "assets-inbox/lord-components/candidates-20261002/assets/map_region_1600x1000.png",
+  "sha256": "54d6ad354a71de8ace6a1029dc163b3758ff9a6330e7b030318661e961db71c8",
+  "dimensions": [
+    1600,
+    1000
+  ],
+  "coordinateConvention": "top-left origin, pixels; estate point ground-anchor (sprite bottom-center); keep source unchanged",
+  "geographicStatus": "illustrated fictional geography, no real named settlement; scale not supplied by artwork",
+  "scaleProposal": {
+    "status": "게임 추정",
+    "kilometresPerPixel": 0.02,
+    "mapWidthKm": 32,
+    "footKmPerDay": [
+      20,
+      30
+    ],
+    "mountedKmPerDay": [
+      30,
+      45
+    ],
+    "note": "travel route distance along roads, not Euclidean; add flood/ford delays, no historic calibration claim"
+  },
+  "mainRiverPolyline": [
+    [
+      280,
+      0
+    ],
+    [
+      282,
+      55
+    ],
+    [
+      330,
+      90
+    ],
+    [
+      490,
+      65
+    ],
+    [
+      565,
+      140
+    ],
+    [
+      565,
+      210
+    ],
+    [
+      630,
+      245
+    ],
+    [
+      685,
+      280
+    ],
+    [
+      695,
+      350
+    ],
+    [
+      740,
+      385
+    ],
+    [
+      810,
+      400
+    ],
+    [
+      940,
+      430
+    ],
+    [
+      990,
+      495
+    ],
+    [
+      1060,
+      525
+    ],
+    [
+      1180,
+      500
+    ],
+    [
+      1260,
+      488
+    ],
+    [
+      1330,
+      535
+    ],
+    [
+      1310,
+      585
+    ],
+    [
+      1350,
+      625
+    ],
+    [
+      1490,
+      640
+    ],
+    [
+      1599,
+      700
+    ]
+  ],
+  "centralFord": [
+    810,
+    400
+  ],
+  "roads": {
+    "westEast": [
+      [
+        0,
+        350
+      ],
+      [
+        120,
+        425
+      ],
+      [
+        300,
+        470
+      ],
+      [
+        450,
+        473
+      ],
+      [
+        650,
+        415
+      ],
+      [
+        760,
+        423
+      ],
+      [
+        810,
+        400
+      ],
+      [
+        925,
+        350
+      ],
+      [
+        1040,
+        389
+      ],
+      [
+        1115,
+        455
+      ],
+      [
+        1235,
+        450
+      ],
+      [
+        1340,
+        488
+      ],
+      [
+        1450,
+        518
+      ],
+      [
+        1599,
+        585
+      ]
+    ],
+    "northBranch": [
+      [
+        925,
+        350
+      ],
+      [
+        980,
+        260
+      ],
+      [
+        1000,
+        210
+      ],
+      [
+        1160,
+        150
+      ],
+      [
+        1220,
+        0
+      ]
+    ],
+    "southBranch": [
+      [
+        975,
+        560
+      ],
+      [
+        1040,
+        568
+      ],
+      [
+        1130,
+        620
+      ],
+      [
+        1135,
+        685
+      ],
+      [
+        1100,
+        735
+      ],
+      [
+        1155,
+        817
+      ],
+      [
+        1270,
+        905
+      ],
+      [
+        1260,
+        999
+      ]
+    ]
+  },
+  "candidateSlots": [
+    {
+      "slot": "P",
+      "x": 665,
+      "y": 473,
+      "relationship": "player manor, south/west bank beside central road"
+    },
+    {
+      "slot": "N01",
+      "x": 310,
+      "y": 397,
+      "relationship": "west road, farmland"
+    },
+    {
+      "slot": "N02",
+      "x": 465,
+      "y": 510,
+      "relationship": "south of west road"
+    },
+    {
+      "slot": "N03",
+      "x": 890,
+      "y": 290,
+      "relationship": "north side, uphill branch"
+    },
+    {
+      "slot": "N04",
+      "x": 1020,
+      "y": 335,
+      "relationship": "north road fork"
+    },
+    {
+      "slot": "N05",
+      "x": 1260,
+      "y": 387,
+      "relationship": "east road, north bank"
+    },
+    {
+      "slot": "N06",
+      "x": 1470,
+      "y": 530,
+      "relationship": "eastern road"
+    },
+    {
+      "slot": "N07",
+      "x": 1135,
+      "y": 665,
+      "relationship": "south valley lane"
+    },
+    {
+      "slot": "N08",
+      "x": 1320,
+      "y": 755,
+      "relationship": "southeast open land, spur needed"
+    },
+    {
+      "slot": "N09",
+      "x": 430,
+      "y": 700,
+      "relationship": "southwest meadow, spur needed"
+    },
+    {
+      "slot": "N10",
+      "x": 310,
+      "y": 210,
+      "relationship": "northwest meadow, spur needed"
+    },
+    {
+      "slot": "N11",
+      "x": 700,
+      "y": 195,
+      "relationship": "north tributary hillfoot, spur needed"
+    },
+    {
+      "slot": "N12",
+      "x": 875,
+      "y": 455,
+      "relationship": "south bank near ford, abbey option"
+    },
+    {
+      "slot": "N13",
+      "x": 960,
+      "y": 230,
+      "relationship": "bishop manor on north lane"
+    },
+    {
+      "slot": "N14",
+      "x": 750,
+      "y": 430,
+      "relationship": "market west ford approach"
+    },
+    {
+      "slot": "N15",
+      "x": 848,
+      "y": 367,
+      "relationship": "market east ford approach"
+    },
+    {
+      "slot": "N16",
+      "x": 590,
+      "y": 555,
+      "relationship": "south fields, spur needed"
+    },
+    {
+      "slot": "E",
+      "x": 1160,
+      "y": 165,
+      "relationship": "earl northern approach"
+    }
+  ],
+  "traitIds": [
+    "prudent",
+    "frugal",
+    "ambitious",
+    "honorable",
+    "peasant_friendly",
+    "merchant_friendly"
+  ],
+  "mapSpritePaths": {
+    "manor": "assets-inbox/lord-components/candidates-20261002/assets/map_manor_96x96.png",
+    "market": "assets-inbox/lord-components/candidates-20261002/assets/map_market_96x96.png",
+    "abbey": "assets-inbox/lord-components/candidates-20261002/assets/map_abbey_96x96.png",
+    "mill": "assets-inbox/lord-components/candidates-20261002/assets/map_mill_96x96.png"
+  }
+}

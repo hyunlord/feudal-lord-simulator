@@ -1,0 +1,35 @@
+[project]
+name = "charter-kin-vision-check"
+version = "0.1.0"
+description = "Read-only screenshot naturalness diagnostics for Charter & Kin"
+requires-python = ">=3.12"
+dependencies = ["numpy>=2.2", "opencv-python-headless>=4.11", "pillow>=11", "pydantic>=2.10,<3", "playwright>=1.51", "typer>=0.15"]
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.11", "basedpyright>=1.28"]
+
+[project.scripts]
+vision-check = "vision_check.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["COM812", "ISC001", "D203", "D213", "CPY001", "FBT001", "FBT002"]
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "D", "PLR2004"]
+[tool.basedpyright]
+typeCheckingMode = "all"
+pythonVersion = "3.12"
+include = ["vision_check", "tests"]
+reportUnusedCallResult = "none"
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["vision_check"]

@@ -4,6 +4,7 @@
 딥리서치: [향신·영주의 영지 1300–1450](../research/2026-09-30-gentry-estates-1300-1450-gpt.md) · [간접 통치 + 확장의 루프](../research/2026-09-30-indirect-rule-expansion-loop-gpt.md).
 화면 시안: [`mockups/lord-screens-20261002/`](mockups/lord-screens-20261002/README.md)(Astra 2026-10-02, 8화면 — 인물, 가문, 지역 지도, 영지, 회의, 협상·혼인, 청원, 무력 — × 1920·1280, 디자인 검토용 candidate, 게임 미설치).
 튜토리얼 대본: [`tutorial-lord-mode-20261002/`](tutorial-lord-mode-20261002/TUTORIAL_SCRIPT.md)(Astra 2026-10-02, 첫 20분 12단계 대본·분기 대사와 1280×800 스토리보드 12장, 정적 연출 검토용 candidate, 게임 미설치).
+이웃 세계 설계안: [`neighbor-world-20261003/`](neighbor-world-20261003/README.md)(Astra 2026-10-03, 위르델미어 고을 — 주체 18·초기 인물 138·연례 규칙 14·1450년까지 사건 예시 32, 설계·데이터 후보, 게임 미설치).
 
 ## 0. 한 문장
 플레이어는 건물을 놓지 않는다. **권리·약속·사람·돈의 조건**을 만들고, 도시의 가구·가문·공동체가 그 조건에 **이유 있게** 반응해 도시를 짓는다. 모든 결과는 **누가 왜**로 되짚을 수 있다.

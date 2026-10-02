@@ -2,7 +2,7 @@
 
 게임 이름: 영어 **Charter & Kin**, 한국어 **인장과 가문**(2026-10-02 결정 TITLE-1, 가제 "봉건 영주 시뮬레이터" 대체). 출시 전 상표 확인 필요(로드맵 TRADEMARK). 게임 안의 타이틀 화면·창 제목은 렌더가 정식 로고가 오면 바꾼다.
 
-갱신: 2026-10-02(COPY-1e · FIX-15 · FIX-14 · LM-E8 · FIX-13 · LM-E5 · LM-E4 · FIX-12 · LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-10-02(FIX-16 · COPY-1e · FIX-15 · FIX-14 · LM-E8 · FIX-13 · LM-E5 · LM-E4 · FIX-12 · LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -17,6 +17,13 @@
 
 - **LAND-UI 땅 고르기·지면·여울·배수(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 연쇄 F 4번·연쇄 G 1번): [보고서](verification/landui/REPORT.md), 결정 LU-D1~D10(사용자 승인 2026-10-02 — D1은 임시, D7은 NAT-4에서 숫자 칸 + 무작위로 바꿈). 새 게임에서 땅 다섯(미리보기·지도 번호), Wave 22 지면·Wave 28 돌담·Wave 29 강 흐름·물레 도랑·Wave 34 여울·배수 단계, 배수 도구, "흐르는 물가" 문구. 강가 그림 그대로. 지면 띠는 렌더가 넓고 부드럽게(NAT-4), 숲 가장자리 띠는 Astra(LU-D11).
 
+- **FIX-16 Astra 첫 플레이 엔진 몫 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 판정): [보고서](verification/fix16/REPORT.md), 명세 [PS-3](design/persons.md)·[SK-5](design/stuck-stock.md)·[WX-7](design/wall-expansion.md), 결정 FX16-1~5, 새 가드레일 기준선 `baseline-eb18454`.
+  - 기근 사망은 식량이 모자란 가구가 지고, 식량 있는 가구의 몇은 "기근 해에 병들어 죽었다". 봇 대기근 굶주림 사망: 구휼 0·0·4 / 방관 11·8·13(seed 1~3).
+  - 묶인 밀은 엔진 식량 비축에서 빠지고 `foodShortage`(굶는 가구 수·묶인 밀·풀리면 +날수)로 따로 나온다.
+  - 목책 칸당 8. 칙허 건물(시장, 그다음 교회)이 목재를 기다리면 목책은 놓기 전엔 그 값을 남기고 나머지의 절반, 놓은 뒤엔 비축의 절반까지만.
+  - 렌더가 받을 것: `foodShortage(state)` 화면(LM-R1 식량 분해), 원인 `famine_year` 문구는 엔진 `historyCopy`에 있음.
+
+- **시각 검사기 확장판 교체(VISION-CHECK-2) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): [`tools/vision-check/`](../tools/vision-check/README.md)를 확장 회차 판으로 교체(부위 크기·정상 재고 반복 제외). 검출기 상태 `config/detectors.json`은 **여섯 모두 사용**이다. 수치는 교정 성능(같은 시험지로 조정) — 홀드아웃 검증 전, 병합 관문 아님. 동결 정답 시험지는 `testdata/frozen-truth-expansion-20261002/`(양성 38, 재채점 = 저장된 채점). 파이썬 시험 132 통과·1 xfail(Mac, 원본 캡처를 이음). 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다. 앞 판(VISION-CHECK, 양성 19 시험지)은 `55269a11`.
 - **COPY-1e Astra 문구 감사의 엔진 몫 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/copy-1e/REPORT.md), 결정 COPY1E-1~3.
   - 23건: 청원 답을 세력 기억이 고른 뜻으로 남김(교회 유산·조카 후계가 "거절"이 아님), 1351 노동자법·1391 칼레 제도 중단, 용어 통일(상위 영주·성직자 추천권·모직·벌목소·석공소 등).
   - 렌더가 받을 것: 사건 이야기 1351·1391, 화면의 같은 용어.

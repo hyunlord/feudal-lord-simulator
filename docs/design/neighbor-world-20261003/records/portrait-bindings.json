@@ -1,0 +1,4984 @@
+[
+  {
+    "personId": "p0003",
+    "authorId": "h01-head",
+    "portraitId": "L3_101_mature",
+    "identity": "L3_101",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_101_mature.png",
+    "sha256": "e4977c2efdb45727b02434d612a1e2a52c69d8887483d15ac67670f6e5e41266",
+    "sourceAge": 45,
+    "depictedAge": 45,
+    "sourceSex": "male",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_101_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_101_young.png"
+      },
+      {
+        "id": "L3_101_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_101_mature.png"
+      },
+      {
+        "id": "L3_101_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_101_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0011",
+    "authorId": "h02-head",
+    "portraitId": "L7_202_mature",
+    "identity": "L7_202",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png",
+    "sha256": "7c8b8d5bcbbc4af0d214d61038c2a1bcf0acc484bb752df5c984f8d121041781",
+    "sourceAge": 41,
+    "depictedAge": 41,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted russet fine wool, modest squirrel fur collar, sword belt glimpse",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L7_202_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_baby.png"
+      },
+      {
+        "id": "L7_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_child.png"
+      },
+      {
+        "id": "L7_202_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_young.png"
+      },
+      {
+        "id": "L7_202_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0019",
+    "authorId": "h03-head",
+    "portraitId": "L3_202_mature",
+    "identity": "L3_202",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_202_mature.png",
+    "sha256": "0587ea7ec9f7d98a43be70675c15af8359197ad9a17ee9a753f6b22cd9d40f2a",
+    "sourceAge": 42,
+    "depictedAge": 42,
+    "sourceSex": "male",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_101",
+      "L3_102"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_202_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_202_young.png"
+      },
+      {
+        "id": "L3_202_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_202_mature.png"
+      },
+      {
+        "id": "L3_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_202_child.png"
+      },
+      {
+        "id": "L3_202_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_202_baby.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0027",
+    "authorId": "h04-head",
+    "portraitId": "L3_201_mature",
+    "identity": "L3_201",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_201_mature.png",
+    "sha256": "8a90e8b157635e00443ee214504661a9c59a02f890714f58d5899073aa9b8e33",
+    "sourceAge": 44,
+    "depictedAge": 43,
+    "sourceSex": "male",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_101",
+      "L3_102"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_201_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_201_young.png"
+      },
+      {
+        "id": "L3_201_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_201_mature.png"
+      },
+      {
+        "id": "L3_201_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_201_child.png"
+      },
+      {
+        "id": "L3_201_baby",
+        "age": 0.9,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_201_baby.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0035",
+    "authorId": "h05-head",
+    "portraitId": "L7_201_mature",
+    "identity": "L7_201",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_201_mature.png",
+    "sha256": "86f1478d1452f6ec9205d355d00d4080459e9403c44f8a0d3d8870e3555cb4f9",
+    "sourceAge": 44,
+    "depictedAge": 44,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "olive fine wool, tawny fox fur collar, sword belt glimpse",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L7_201_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_201_baby.png"
+      },
+      {
+        "id": "L7_201_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_201_child.png"
+      },
+      {
+        "id": "L7_201_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_201_young.png"
+      },
+      {
+        "id": "L7_201_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_201_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0043",
+    "authorId": "h06-head",
+    "portraitId": "L7_206_mature",
+    "identity": "L7_206",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_206_mature.png",
+    "sha256": "8cf91cceaaabc91ba5e79cb2bdb2dd6f76ee4abc1f06235e87ebade98667ec05",
+    "sourceAge": 45,
+    "depictedAge": 45,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [],
+    "clothing": "muted brown fine wool cote, squirrel fur collar, modest leather sword belt glimpse",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L7_206_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_206_young.png"
+      },
+      {
+        "id": "L7_206_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_206_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0051",
+    "authorId": "h07-head",
+    "portraitId": "L2_202_mature",
+    "identity": "L2_202",
+    "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/brothers/L2_202_mature.png",
+    "sha256": "5c580463224d67b2addb7c46f40cba833c5249407cdf0b061d4b94a6d1f11a2c",
+    "sourceAge": 40,
+    "depictedAge": 40,
+    "sourceSex": "male",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "muted russet fine wool tunic over plain linen",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L2_202_baby-v2",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/pilot2-baby/L2_202_baby-v2.png"
+      },
+      {
+        "id": "L2_202_young",
+        "age": 20,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/brothers/L2_202_young.png"
+      },
+      {
+        "id": "L2_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/brothers/L2_202_child.png"
+      },
+      {
+        "id": "L2_202_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/brothers/L2_202_baby.png"
+      },
+      {
+        "id": "L2_202_mature",
+        "age": 40,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/brothers/L2_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0059",
+    "authorId": "h08-head",
+    "portraitId": "I038_mature",
+    "identity": "I038",
+    "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I038_mature.png",
+    "sha256": "e1c8124ff3f7ef3beffea9dee514b1089c5a5d36ef3a060d0e8e1f47104f4139",
+    "sourceAge": 45,
+    "depictedAge": 41,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "clearly high-status rich deep scarlet fine dense broadcloth cote, prominently visible warm fox fur-lined collar and mantle, restrained silver or bronze quatrefoil brooch, decorated belt edge and signet ring barely visible at lower bust; costly tailoring, small sealed document, NOT plain peasant linen",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I038_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I038_young.png"
+      },
+      {
+        "id": "I038_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I038_mature.png"
+      },
+      {
+        "id": "I038_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I038_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0067",
+    "authorId": "h09-head",
+    "portraitId": "I105_mature",
+    "identity": "I105",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I105_mature.png",
+    "sha256": "9ab1a5da459bcc2a6727e8e3bed83a70ae1958dbecd2b80d8d4d54a6ca332023",
+    "sourceAge": 45,
+    "depictedAge": 42,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine tawny wool cote and dark blue mantle, narrow grey-white squirrel miniver lining, discreet metal belt fittings",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I105_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I105_young.png"
+      },
+      {
+        "id": "I105_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I105_mature.png"
+      },
+      {
+        "id": "I105_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I105_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0075",
+    "authorId": "h10-head",
+    "portraitId": "I113_old",
+    "identity": "I113",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_old.png",
+    "sha256": "9719fa149b6485a079d8f1227bd18c3d82ebb303b6389aa8fe18e52f2a0d3711",
+    "sourceAge": 70,
+    "depictedAge": 58,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "black wool Benedictine habit with broad folded cowl, plain modest abbey ring, no ornate vestments",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": null,
+    "needsNewPortrait": true,
+    "reason": "적합 연령대가 없어 같은 성별·복식의 임시 대역. 해당 나이 신규 얼굴 필요.",
+    "ageChain": [
+      {
+        "id": "I113_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_young.png"
+      },
+      {
+        "id": "I113_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_mature.png"
+      },
+      {
+        "id": "I113_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0080",
+    "authorId": "h11-head",
+    "portraitId": "I111_mature",
+    "identity": "I111",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_mature.png",
+    "sha256": "320a048db1237cd4dbe0dd9739b88177e0cb69cc789ee76929122f212c47f2a2",
+    "sourceAge": 45,
+    "depictedAge": 54,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "plain high-quality dark claret wool daily clerical robe, small pectoral cross and episcopal ring, no mitre, no crown, no modern Roman collar",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I111_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_young.png"
+      },
+      {
+        "id": "I111_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_mature.png"
+      },
+      {
+        "id": "I111_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0085",
+    "authorId": "h12-head",
+    "portraitId": "L4_101_mature",
+    "identity": "L4_101",
+    "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_101_mature.png",
+    "sha256": "ae5cd87504c0aebf2a1f965d72a154febd6dad3b244a54518cdea0fe3de8c887",
+    "sourceAge": 45,
+    "depictedAge": 45,
+    "sourceSex": "male",
+    "sourceLineage": "L4",
+    "sourceParentIdentities": [],
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L4_101_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_101_mature.png"
+      },
+      {
+        "id": "L4_101_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_101_old.png"
+      },
+      {
+        "id": "L4_101_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_101_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0093",
+    "authorId": "h13-head",
+    "portraitId": "L4_202_mature",
+    "identity": "L4_202",
+    "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_202_mature.png",
+    "sha256": "b458211764606d6c4ce35f93f82026ffabc441894314a92e15eb55f7e031631e",
+    "sourceAge": 42,
+    "depictedAge": 40,
+    "sourceSex": "male",
+    "sourceLineage": "L4",
+    "sourceParentIdentities": [],
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L4_202_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_202_baby.png"
+      },
+      {
+        "id": "L4_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_202_child.png"
+      },
+      {
+        "id": "L4_202_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_202_mature.png"
+      },
+      {
+        "id": "L4_202_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_202_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0101",
+    "authorId": "h14-head",
+    "portraitId": "L3_204_mature",
+    "identity": "L3_204",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_mature.png",
+    "sha256": "ed042f4946ccf45f6abc4f36fd80eaa2a64b7955139c10ca549aa164360a1b53",
+    "sourceAge": 42,
+    "depictedAge": 41,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_101",
+      "L3_102"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_204_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_young.png"
+      },
+      {
+        "id": "L3_204_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_mature.png"
+      },
+      {
+        "id": "L3_204_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_child.png"
+      },
+      {
+        "id": "L3_204_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_baby.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0109",
+    "authorId": "h15-head",
+    "portraitId": "I107_mature",
+    "identity": "I107",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I107_mature.png",
+    "sha256": "c5d8c5a845a829961052968f9125597d5604a8e31cff3544a23308c12efd81c2",
+    "sourceAge": 45,
+    "depictedAge": 42,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine dark russet wool civilian cote, ochre mantle with warm fox-fur collar, visible sword belt and only a small pommel at waist, no armor",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I107_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I107_young.png"
+      },
+      {
+        "id": "I107_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I107_mature.png"
+      },
+      {
+        "id": "I107_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I107_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0117",
+    "authorId": "h16-head",
+    "portraitId": "I109_mature",
+    "identity": "I109",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I109_mature.png",
+    "sha256": "be0ec71d563f10bcab3115c051b14d6d476f28441af41539d5544fc0e4a5cae7",
+    "sourceAge": 45,
+    "depictedAge": 43,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "deep green finely woven wool civilian cote, tawny mantle with neat grey-white miniver, restrained silver clasp and clearly visible sword belt, no armor",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I109_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I109_young.png"
+      },
+      {
+        "id": "I109_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I109_mature.png"
+      },
+      {
+        "id": "I109_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I109_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0125",
+    "authorId": "h17-head",
+    "portraitId": "L3_206_mature",
+    "identity": "L3_206",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_206_mature.png",
+    "sha256": "818332744c890aa12ca68fff970571a1a6329c18dfb9f258ebd57c50b68dd44c",
+    "sourceAge": 46,
+    "depictedAge": 44,
+    "sourceSex": "male",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_206_young",
+        "age": 26,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_206_young.png"
+      },
+      {
+        "id": "L3_206_mature",
+        "age": 46,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_206_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0133",
+    "authorId": "h18-head",
+    "portraitId": "L6_206_mature",
+    "identity": "L6_206",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_206_mature.png",
+    "sha256": "8c752a1f0fe13b8d625b7e0555e002e1a120af73817660be9d724cc56749c651",
+    "sourceAge": 45,
+    "depictedAge": 45,
+    "sourceSex": "male",
+    "sourceLineage": "L6",
+    "sourceParentIdentities": [],
+    "clothing": "Earl fine crimson/deep blue wool, ermine mantle, gold clasp; married adult women veil and wimple",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L6_206_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_206_young.png"
+      },
+      {
+        "id": "L6_206_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_206_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0005",
+    "authorId": "h01-c1",
+    "portraitId": "L3_301_young",
+    "identity": "L3_301",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_301_young.png",
+    "sha256": "afebeb0283da96ae8662f5e49258209838269705f1bdc859fe5668972cba01d4",
+    "sourceAge": 22,
+    "depictedAge": 22,
+    "sourceSex": "male",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_201",
+      "L3_205"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_301_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_301_young.png"
+      },
+      {
+        "id": "L3_301_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_301_child.png"
+      },
+      {
+        "id": "L3_301_baby",
+        "age": 0.9,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_301_baby.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0006",
+    "authorId": "h01-c2",
+    "portraitId": "L3_302_young",
+    "identity": "L3_302",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_young.png",
+    "sha256": "1c85423a9ef2c9a3ca219493dc83c74acd3bf79e00b11032a6128362641b97fd",
+    "sourceAge": 20,
+    "depictedAge": 18,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_201",
+      "L3_205"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_302_young",
+        "age": 20,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_young.png"
+      },
+      {
+        "id": "L3_302_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_baby.png"
+      },
+      {
+        "id": "L3_302_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0002",
+    "authorId": "h01-g1f",
+    "portraitId": "L3_102_old",
+    "identity": "L3_102",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_old.png",
+    "sha256": "f00d96c59783cf3d62e1f74d10aad586e0658f508365c325a56a798778e417d4",
+    "sourceAge": 70,
+    "depictedAge": 66,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_102_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_young.png"
+      },
+      {
+        "id": "L3_102_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_mature.png"
+      },
+      {
+        "id": "L3_102_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0001",
+    "authorId": "h01-g1m",
+    "portraitId": "L1_101_old",
+    "identity": "L1_101",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_101_old.png",
+    "sha256": "0c886298ef14d688465e8b53c6c431069ea60a0cfd0f800be4ea16b436103a36",
+    "sourceAge": 70,
+    "depictedAge": 68,
+    "sourceSex": "male",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "navy cap, russet mantle, gray fur collar",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L1_101_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_101_mature.png"
+      },
+      {
+        "id": "L1_101_old",
+        "age": 70,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_101_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0008",
+    "authorId": "h01-retainer",
+    "portraitId": "L5_101_young",
+    "identity": "L5_101",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_young.png",
+    "sha256": "78d2fe5430c7881bba6ed8ea70eb7cea8f21e738863371a4493cc74c365824dd",
+    "sourceAge": 25,
+    "depictedAge": 28,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [],
+    "clothing": "good moss-brown wool tunic and linen collar",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L5_101_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_young.png"
+      },
+      {
+        "id": "L5_101_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_mature.png"
+      },
+      {
+        "id": "L5_101_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0004",
+    "authorId": "h01-spouse",
+    "portraitId": "L3_205_mature",
+    "identity": "L3_205",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_205_mature.png",
+    "sha256": "bea49faef4aca0da970746d5d92b24766641550fa188bd5c4c8538fa34d7b410",
+    "sourceAge": 43,
+    "depictedAge": 43,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_205_young",
+        "age": 23,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_205_young.png"
+      },
+      {
+        "id": "L3_205_mature",
+        "age": 43,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_205_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0007",
+    "authorId": "h01-steward",
+    "portraitId": "L5_206_young",
+    "identity": "L5_206",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_206_young.png",
+    "sha256": "b35bb6c873dec57ed9a5c572676b77ac5fefc626fcb3ce1fc4f2b3ca0c6162eb",
+    "sourceAge": 25,
+    "depictedAge": 32,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [],
+    "clothing": "good muted brown-red wool tunic and linen",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L5_206_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_206_young.png"
+      },
+      {
+        "id": "L5_206_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_206_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0013",
+    "authorId": "h02-c1",
+    "portraitId": "L3_303_young",
+    "identity": "L3_303",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_303_young.png",
+    "sha256": "d8e24cb74f9a7dc014cce6002015086c99e9c6b545934c2c117bff164d09df4f",
+    "sourceAge": 22,
+    "depictedAge": 18,
+    "sourceSex": "male",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_206",
+      "L3_203"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_303_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_303_young.png"
+      },
+      {
+        "id": "L3_303_baby",
+        "age": 0.9,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_303_baby.png"
+      },
+      {
+        "id": "L3_303_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_303_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0014",
+    "authorId": "h02-c2",
+    "portraitId": "L3_203_child",
+    "identity": "L3_203",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_203_child.png",
+    "sha256": "b5af232976ad846de58c11d66560f34bdff55a0663f033649e30ad43a06f535a",
+    "sourceAge": 8,
+    "depictedAge": 14,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_101",
+      "L3_102"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": null,
+    "needsNewPortrait": true,
+    "reason": "적합 연령대가 없어 같은 성별·복식의 임시 대역. 해당 나이 신규 얼굴 필요.",
+    "ageChain": [
+      {
+        "id": "L3_203_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_203_young.png"
+      },
+      {
+        "id": "L3_203_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_203_mature.png"
+      },
+      {
+        "id": "L3_203_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_203_child.png"
+      },
+      {
+        "id": "L3_203_baby",
+        "age": 0.9,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_203_baby.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0010",
+    "authorId": "h02-g1f",
+    "portraitId": "I041_old",
+    "identity": "I041",
+    "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I041_old.png",
+    "sha256": "186b4d765c0e612156c008a721572692491266a174df9e92136101b933679178",
+    "sourceAge": 70,
+    "depictedAge": 62,
+    "sourceSex": "f",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "clearly high-status rich deep scarlet fine dense broadcloth kirtle and surcoat, prominently visible warm fox fur-lined collar and mantle, restrained silver or bronze quatrefoil brooch, decorated belt edge and signet ring barely visible at lower bust; costly tailoring, small sealed document, NOT plain peasant linen",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I041_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I041_young.png"
+      },
+      {
+        "id": "I041_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I041_mature.png"
+      },
+      {
+        "id": "I041_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I041_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0016",
+    "authorId": "h02-retainer",
+    "portraitId": "L5_201_young",
+    "identity": "L5_201",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_young.png",
+    "sha256": "c0e2056ad4023081c8de9c3c5970d018122d712042f172f4259e0b2b1c28ac7b",
+    "sourceAge": 24,
+    "depictedAge": 29,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_101",
+      "L5_102"
+    ],
+    "clothing": "quality muted ochre wool tunic and linen",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L5_201_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_young.png"
+      },
+      {
+        "id": "L5_201_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png"
+      },
+      {
+        "id": "L5_201_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_baby.png"
+      },
+      {
+        "id": "L5_201_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0012",
+    "authorId": "h02-spouse",
+    "portraitId": "L7_204_mature",
+    "identity": "L7_204",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_mature.png",
+    "sha256": "5420571337349ab741e25adaf84e30b528427e4d9cfafd582080830263d15ce7",
+    "sourceAge": 40,
+    "depictedAge": 39,
+    "sourceSex": "female",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted burgundy fine wool kirtle, modest squirrel fur edging, unmarried uncovered hair NO veil",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L7_204_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_baby.png"
+      },
+      {
+        "id": "L7_204_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_child.png"
+      },
+      {
+        "id": "L7_204_young",
+        "age": 20,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_young.png"
+      },
+      {
+        "id": "L7_204_mature",
+        "age": 40,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0015",
+    "authorId": "h02-steward",
+    "portraitId": "P13",
+    "identity": "P13",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P13.png",
+    "sha256": "ea06565c12a7d8110a8f3815b9d8c23e3cffac63cc7b0130fbc0e016746ae801",
+    "sourceAge": 29,
+    "depictedAge": 33,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "good muted plum-brown wool cote, restrained fur lining at opening, low soft dark blue wool cap, small leather purse clasp at lower bust",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "P13",
+        "age": 29,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P13.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0021",
+    "authorId": "h03-c1",
+    "portraitId": "L7_301_young",
+    "identity": "L7_301",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_301_young.png",
+    "sha256": "deebb2d7e7064ff0c3fc4d0b49795f91dfdcfe07dbc9c6bdf1528ae679cc1adc",
+    "sourceAge": 22,
+    "depictedAge": 19,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_201",
+      "L7_205"
+    ],
+    "clothing": "muted green fine wool, short tawny fox fur collar, sword belt glimpse",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L7_301_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_301_baby.png"
+      },
+      {
+        "id": "L7_301_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_301_child.png"
+      },
+      {
+        "id": "L7_301_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_301_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0022",
+    "authorId": "h03-c2",
+    "portraitId": "L7_203_child",
+    "identity": "L7_203",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_203_child.png",
+    "sha256": "8994907f24661cf90335ea25bbcbdb6bd54afcedc42f75f4dbf34f3be43b716c",
+    "sourceAge": 8,
+    "depictedAge": 15,
+    "sourceSex": "female",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted sage fine wool kirtle, modest fox fur collar, ivory linen veil and wimple covering married woman's hair",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": null,
+    "needsNewPortrait": true,
+    "reason": "적합 연령대가 없어 같은 성별·복식의 임시 대역. 해당 나이 신규 얼굴 필요.",
+    "ageChain": [
+      {
+        "id": "L7_203_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_203_baby.png"
+      },
+      {
+        "id": "L7_203_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_203_child.png"
+      },
+      {
+        "id": "L7_203_young",
+        "age": 23,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_203_young.png"
+      },
+      {
+        "id": "L7_203_mature",
+        "age": 43,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_203_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0018",
+    "authorId": "h03-g1f",
+    "portraitId": "I095_old",
+    "identity": "I095",
+    "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I095_old.png",
+    "sha256": "a3436f5398240dec57f0c47bb03c4767db4d418543162a910c005c9fa47760b9",
+    "sourceAge": 70,
+    "depictedAge": 63,
+    "sourceSex": "f",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "rich deep royal blue fine broadcloth gown, warm tawny fox-fur-lined mantle visibly broad at collar, elaborate restrained silver clasp and elegant composed posture; wealth entirely in costume",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I095_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I095_young.png"
+      },
+      {
+        "id": "I095_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I095_mature.png"
+      },
+      {
+        "id": "I095_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I095_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0024",
+    "authorId": "h03-retainer",
+    "portraitId": "L7_303_young",
+    "identity": "L7_303",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_303_young.png",
+    "sha256": "9c764cb17be68c26c4a6a393ab7295fa7d190832335c4b5bf247162e5410c172",
+    "sourceAge": 23,
+    "depictedAge": 30,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_206",
+      "L7_203"
+    ],
+    "clothing": "muted sage fine wool, modest fox fur shoulder edging, sword belt glimpse",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L7_303_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_303_baby.png"
+      },
+      {
+        "id": "L7_303_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_303_child.png"
+      },
+      {
+        "id": "L7_303_young",
+        "age": 23,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_303_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0020",
+    "authorId": "h03-spouse",
+    "portraitId": "L7_205_mature",
+    "identity": "L7_205",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_205_mature.png",
+    "sha256": "1b5f136ce3663452fb68b99982ec58ed6b7bcfe773b43009939ea3241df6b650",
+    "sourceAge": 42,
+    "depictedAge": 40,
+    "sourceSex": "female",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [],
+    "clothing": "dull ochre fine wool kirtle, modest fox fur neckline, ivory linen veil and wimple, married covered hair",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L7_205_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_205_young.png"
+      },
+      {
+        "id": "L7_205_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_205_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0023",
+    "authorId": "h03-steward",
+    "portraitId": "L5_202_mature",
+    "identity": "L5_202",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_mature.png",
+    "sha256": "a1a4c7da26cd3cb71a4c96cac374164d4d97d52301c9be2e4f739f881060de12",
+    "sourceAge": 42,
+    "depictedAge": 34,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_101",
+      "L5_102"
+    ],
+    "clothing": "quality muted blue-gray wool tunic and linen",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L5_202_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_young.png"
+      },
+      {
+        "id": "L5_202_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_mature.png"
+      },
+      {
+        "id": "L5_202_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_baby.png"
+      },
+      {
+        "id": "L5_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0029",
+    "authorId": "h04-c1",
+    "portraitId": "L1_201_young",
+    "identity": "L1_201",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_201_young.png",
+    "sha256": "b3999905387d14be2ec60bf52be413386f19a7ae66a7dc9216d3412087ec45b8",
+    "sourceAge": 22,
+    "depictedAge": 20,
+    "sourceSex": "male",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "muted slate blue fine wool tunic, no cap",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L1_201_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_201_young.png"
+      },
+      {
+        "id": "L1_201_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_201_baby.png"
+      },
+      {
+        "id": "L1_201_child",
+        "age": 8,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_201_child.png"
+      },
+      {
+        "id": "L1_201_mature",
+        "age": 48,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_201_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0030",
+    "authorId": "h04-c2",
+    "portraitId": "L3_304_young",
+    "identity": "L3_304",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_304_young.png",
+    "sha256": "37bc840cd47f785f0d9b12ba171ae64c0b9089fab41e81631ad11fdd958b90f8",
+    "sourceAge": 20,
+    "depictedAge": 16,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_206",
+      "L3_203"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L3_304_young",
+        "age": 20,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_304_young.png"
+      },
+      {
+        "id": "L3_304_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_304_baby.png"
+      },
+      {
+        "id": "L3_304_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_304_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0026",
+    "authorId": "h04-g1f",
+    "portraitId": "I108_old",
+    "identity": "I108",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I108_old.png",
+    "sha256": "63c7284af2bb09fde73b763c7f4b9fbb1f7d6709e37a2e1ceb510a5d6bc76628",
+    "sourceAge": 70,
+    "depictedAge": 64,
+    "sourceSex": "f",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "deep blue fine wool gown and fitted sleeveless surcoat, narrow unspotted grey-white miniver edging, silver ring brooch",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I108_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I108_young.png"
+      },
+      {
+        "id": "I108_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I108_mature.png"
+      },
+      {
+        "id": "I108_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I108_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0025",
+    "authorId": "h04-g1m",
+    "portraitId": "P23",
+    "identity": "P23",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png",
+    "sha256": "100b1298800b91b6e99c60c80939f257550e7401f261e90bff43f723b7e66a79",
+    "sourceAge": 63,
+    "depictedAge": 66,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine slate-green wool cote, narrow restrained fur at mantle opening, small plain signet at lower edge, bare bald head",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "P23",
+        "age": 63,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0032",
+    "authorId": "h04-retainer",
+    "portraitId": "L5_301_young",
+    "identity": "L5_301",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_301_young.png",
+    "sha256": "de56b7562edcb577b2e4994d85f121bb79593dbca548dfd125bf2402607e0cd8",
+    "sourceAge": 22,
+    "depictedAge": 31,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_201",
+      "L5_205"
+    ],
+    "clothing": "good muted olive wool tunic and linen",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L5_301_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_301_young.png"
+      },
+      {
+        "id": "L5_301_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_301_baby.png"
+      },
+      {
+        "id": "L5_301_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_301_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0028",
+    "authorId": "h04-spouse",
+    "portraitId": "L2_204_mature",
+    "identity": "L2_204",
+    "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/sisters/L2_204_mature.png",
+    "sha256": "013c272ecf1b604b2aa8b7bcf279d6ccff4f704ad77a04bbf44bdef17688aa4c",
+    "sourceAge": 41,
+    "depictedAge": 41,
+    "sourceSex": "female",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "dusty russet fine wool merchant dress, linen neckline",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L2_204_baby-v2",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/pilot2-baby/L2_204_baby-v2.png"
+      },
+      {
+        "id": "L2_204_young",
+        "age": 21,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/sisters/L2_204_young.png"
+      },
+      {
+        "id": "L2_204_child",
+        "age": 6,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/sisters/L2_204_child.png"
+      },
+      {
+        "id": "L2_204_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/sisters/L2_204_baby.png"
+      },
+      {
+        "id": "L2_204_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/sisters/L2_204_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0031",
+    "authorId": "h04-steward",
+    "portraitId": "I043_mature",
+    "identity": "I043",
+    "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_mature.png",
+    "sha256": "2bc7849dac80cf564da01c6d516300c4db788208943f1b98b5ce0c2d6730de2b",
+    "sourceAge": 45,
+    "depictedAge": 35,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "good muted blue fine wool cote, visible soft modest fur collar less lavish than gentry, leather purse and decorated belt edge, folded wool sample or account parchment, prosperous practical tailoring",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I043_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_young.png"
+      },
+      {
+        "id": "I043_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_mature.png"
+      },
+      {
+        "id": "I043_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I043_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0037",
+    "authorId": "h05-c1",
+    "portraitId": "L1_202_young",
+    "identity": "L1_202",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_202_young.png",
+    "sha256": "5248fd88643d56a1d18a3542a2f474a20287f88218e429ea1a0636855a09247b",
+    "sourceAge": 22,
+    "depictedAge": 21,
+    "sourceSex": "male",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "ocher wool tunic with dark burgundy collar, no cap",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L1_202_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_202_young.png"
+      },
+      {
+        "id": "L1_202_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_202_baby.png"
+      },
+      {
+        "id": "L1_202_child",
+        "age": 8,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_202_child.png"
+      },
+      {
+        "id": "L1_202_mature",
+        "age": 48,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0038",
+    "authorId": "h05-c2",
+    "portraitId": "L7_302_young",
+    "identity": "L7_302",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_302_young.png",
+    "sha256": "390f6f515fd56a1f64282778ffc464b589632d49b0e7a094c342a2995a9ecacf",
+    "sourceAge": 20,
+    "depictedAge": 17,
+    "sourceSex": "female",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_201",
+      "L7_205"
+    ],
+    "clothing": "muted russet fine wool kirtle with squirrel fur edging, uncovered unmarried hair",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L7_302_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_302_baby.png"
+      },
+      {
+        "id": "L7_302_child",
+        "age": 7,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_302_child.png"
+      },
+      {
+        "id": "L7_302_young",
+        "age": 20,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_302_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0034",
+    "authorId": "h05-g1f",
+    "portraitId": "I110_old",
+    "identity": "I110",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I110_old.png",
+    "sha256": "5a3c7599b3cd9c3130994c4fc0bbfcecb140ceac8ba930ab2b2b0492aa42ad76",
+    "sourceAge": 70,
+    "depictedAge": 65,
+    "sourceSex": "f",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "scarlet fine wool gown with dark green surcoat, narrow fox-fur cuffs and collar, restrained silver oval clasp",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I110_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I110_young.png"
+      },
+      {
+        "id": "I110_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I110_mature.png"
+      },
+      {
+        "id": "I110_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I110_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0040",
+    "authorId": "h05-retainer",
+    "portraitId": "P21",
+    "identity": "P21",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P21.png",
+    "sha256": "11ce6af48f477bb8a1011eb5a64c4036567df4e723a85f6eacf2870b33f039d7",
+    "sourceAge": 37,
+    "depictedAge": 32,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "well-cut muted navy-grey wool cote and rust-brown mantle, small wax-sealed document held at lower edge, no military armor",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "P21",
+        "age": 37,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P21.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0036",
+    "authorId": "h05-spouse",
+    "portraitId": "L1_203_mature",
+    "identity": "L1_203",
+    "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_203_mature.png",
+    "sha256": "51687115b3139710ac7cbc5cbf7eb55d86297b8953d40cdd8dc0cb05764d9603",
+    "sourceAge": 42,
+    "depictedAge": 42,
+    "sourceSex": "female",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L1_203_baby-v2",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/pilot2-baby/L1_203_baby-v2.png"
+      },
+      {
+        "id": "L1_203_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_203_young.png"
+      },
+      {
+        "id": "L1_203_child",
+        "age": 9,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_203_child.png"
+      },
+      {
+        "id": "L1_203_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_203_mature.png"
+      },
+      {
+        "id": "L1_203_baby",
+        "age": 2,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_203_baby.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0039",
+    "authorId": "h05-steward",
+    "portraitId": "I044_mature",
+    "identity": "I044",
+    "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I044_mature.png",
+    "sha256": "26b6e372e666712c34d303cac83fceab7a48fb47fa9a38eb4991a690a121ff14",
+    "sourceAge": 45,
+    "depictedAge": 36,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "good subdued plum fine wool cote, visible soft modest fur collar less lavish than gentry, leather purse and decorated belt edge, folded wool sample or account parchment, prosperous practical tailoring",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I044_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I044_young.png"
+      },
+      {
+        "id": "I044_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I044_mature.png"
+      },
+      {
+        "id": "I044_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I044_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0045",
+    "authorId": "h06-c1",
+    "portraitId": "L1_2S2_young",
+    "identity": "L1_2S2",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_2S2_young.png",
+    "sha256": "49b572b9d827c6b2091771cc1b8a7343ffd771da2f0c1af1c9e121a1adb9334a",
+    "sourceAge": 22,
+    "depictedAge": 22,
+    "sourceSex": "male",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "muted sage fine wool tunic, dark plum short mantle",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L1_2S2_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_2S2_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0046",
+    "authorId": "h06-c2",
+    "portraitId": "L7_304_young",
+    "identity": "L7_304",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_304_young.png",
+    "sha256": "e5c1446713ff78167fec4ba6741e508c2e227f0860e853fcfea903103d084d1d",
+    "sourceAge": 20,
+    "depictedAge": 18,
+    "sourceSex": "female",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_206",
+      "L7_203"
+    ],
+    "clothing": "muted ochre fine wool kirtle, squirrel fur neckline, uncovered unmarried hair",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L7_304_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_304_baby.png"
+      },
+      {
+        "id": "L7_304_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_304_child.png"
+      },
+      {
+        "id": "L7_304_young",
+        "age": 20,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_304_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0042",
+    "authorId": "h06-g1f",
+    "portraitId": "L1_102_old",
+    "identity": "L1_102",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_102_old.png",
+    "sha256": "6deb5b7c4a57326ef203b2a9db3c31dc70cf566d8183399991ff53abe189ea97",
+    "sourceAge": 70,
+    "depictedAge": 66,
+    "sourceSex": "female",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "burgundy gown linen veil gray fur",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L1_102_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_102_mature.png"
+      },
+      {
+        "id": "L1_102_old",
+        "age": 70,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_102_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0048",
+    "authorId": "h06-retainer",
+    "portraitId": "L2_201_mature",
+    "identity": "L2_201",
+    "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/brothers/L2_201_mature.png",
+    "sha256": "55a6051331c729020a3bc9b8941b8073349ad802cbc3b8e23918effc14b96b3b",
+    "sourceAge": 43,
+    "depictedAge": 33,
+    "sourceSex": "male",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "muted teal fine wool tunic over plain linen",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L2_201_baby-v2",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/pilot2-baby/L2_201_baby-v2.png"
+      },
+      {
+        "id": "L2_201_young",
+        "age": 23,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/brothers/L2_201_young.png"
+      },
+      {
+        "id": "L2_201_child",
+        "age": 9,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/brothers/L2_201_child.png"
+      },
+      {
+        "id": "L2_201_baby",
+        "age": 2,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/brothers/L2_201_baby.png"
+      },
+      {
+        "id": "L2_201_mature",
+        "age": 43,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/brothers/L2_201_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0044",
+    "authorId": "h06-spouse",
+    "portraitId": "L2_203_mature",
+    "identity": "L2_203",
+    "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/sisters/L2_203_mature.png",
+    "sha256": "841f991821173b1e0db5d738662ac92cec3cfb02d176335d6cd539d0005589d2",
+    "sourceAge": 44,
+    "depictedAge": 43,
+    "sourceSex": "female",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "muted sage fine wool merchant dress, linen neckline",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L2_203_baby-v2",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/pilot2-baby/L2_203_baby-v2.png"
+      },
+      {
+        "id": "L2_203_young",
+        "age": 24,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/sisters/L2_203_young.png"
+      },
+      {
+        "id": "L2_203_child",
+        "age": 9,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/sisters/L2_203_child.png"
+      },
+      {
+        "id": "L2_203_baby",
+        "age": 2,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/sisters/L2_203_baby.png"
+      },
+      {
+        "id": "L2_203_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/sisters/L2_203_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0047",
+    "authorId": "h06-steward",
+    "portraitId": "I045_mature",
+    "identity": "I045",
+    "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I045_mature.png",
+    "sha256": "49c20042115f22e698b42c80274041ed551424dccb4796ca3dfe07237c4ee5d5",
+    "sourceAge": 45,
+    "depictedAge": 37,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "good dusky violet-blue fine wool cote, visible soft modest fur collar less lavish than gentry, leather purse and decorated belt edge, folded wool sample or account parchment, prosperous practical tailoring",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I045_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I045_young.png"
+      },
+      {
+        "id": "I045_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I045_mature.png"
+      },
+      {
+        "id": "I045_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I045_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0053",
+    "authorId": "h07-c1",
+    "portraitId": "P19",
+    "identity": "P19",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P19.png",
+    "sha256": "c063505226cb291b77c55f89a9963daac10dd28a81c5e7a6367c706dbfe6738e",
+    "sourceAge": 13,
+    "depictedAge": 17,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "good muted brick-red wool cote, simple deep grey-blue mantle with tiny bronze clasp, natural short uneven hair, no crown or armor",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "P19",
+        "age": 13,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P19.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0054",
+    "authorId": "h07-c2",
+    "portraitId": "L1_203_child",
+    "identity": "L1_203",
+    "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_203_child.png",
+    "sha256": "05e4bb9b9bb02dfa3ab14dde08727cbe934ccb296b8c20442d7310e67cc09b3a",
+    "sourceAge": 9,
+    "depictedAge": 13,
+    "sourceSex": "female",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0036",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L1_203_baby-v2",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/pilot2-baby/L1_203_baby-v2.png"
+      },
+      {
+        "id": "L1_203_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_203_young.png"
+      },
+      {
+        "id": "L1_203_child",
+        "age": 9,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_203_child.png"
+      },
+      {
+        "id": "L1_203_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_203_mature.png"
+      },
+      {
+        "id": "L1_203_baby",
+        "age": 2,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_203_baby.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0050",
+    "authorId": "h07-g1f",
+    "portraitId": "L2_102_old",
+    "identity": "L2_102",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_102_old.png",
+    "sha256": "4b7379b9e1b46086bfe83c694f2698fdca114d1b658445b9d46e5c29fdf0fe42",
+    "sourceAge": 70,
+    "depictedAge": 61,
+    "sourceSex": "female",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "muted wine wool gown and linen veil",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L2_102_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_102_mature.png"
+      },
+      {
+        "id": "L2_102_old",
+        "age": 70,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_102_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0049",
+    "authorId": "h07-g1m",
+    "portraitId": "L2_101_old",
+    "identity": "L2_101",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_101_old.png",
+    "sha256": "6e0bfc25380913cd7630349c06c24e38b18dec188febccf893e994a4ef0608b6",
+    "sourceAge": 70,
+    "depictedAge": 63,
+    "sourceSex": "male",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "muted indigo wool gown, modest fur collar and soft cap",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L2_101_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_101_mature.png"
+      },
+      {
+        "id": "L2_101_old",
+        "age": 70,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_101_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0056",
+    "authorId": "h07-retainer",
+    "portraitId": "L7_202_mature",
+    "identity": "L7_202",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png",
+    "sha256": "7c8b8d5bcbbc4af0d214d61038c2a1bcf0acc484bb752df5c984f8d121041781",
+    "sourceAge": 41,
+    "depictedAge": 34,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted russet fine wool, modest squirrel fur collar, sword belt glimpse",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0011",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L7_202_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_baby.png"
+      },
+      {
+        "id": "L7_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_child.png"
+      },
+      {
+        "id": "L7_202_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_young.png"
+      },
+      {
+        "id": "L7_202_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0052",
+    "authorId": "h07-spouse",
+    "portraitId": "L1_204_mature",
+    "identity": "L1_204",
+    "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_204_mature.png",
+    "sha256": "056c13125c132e3497bbe6a6a22b42271aca40b406b4c06194fb68e8037e396e",
+    "sourceAge": 39,
+    "depictedAge": 38,
+    "sourceSex": "female",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool with fur collar; uncovered head",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L1_204_baby-v2",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/pilot2-baby/L1_204_baby-v2.png"
+      },
+      {
+        "id": "L1_204_young",
+        "age": 19,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_204_young.png"
+      },
+      {
+        "id": "L1_204_child",
+        "age": 6,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_204_child.png"
+      },
+      {
+        "id": "L1_204_mature",
+        "age": 39,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_204_mature.png"
+      },
+      {
+        "id": "L1_204_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage-pilot/pilot2-20260928/assets/gentry/L1_204_baby.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0055",
+    "authorId": "h07-steward",
+    "portraitId": "I076_mature",
+    "identity": "I076",
+    "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I076_mature.png",
+    "sha256": "edd37041461b2a0ea5854220df58393b82e980165e3ab9891f3bf2bb8d47cf54",
+    "sourceAge": 45,
+    "depictedAge": 38,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine muted plum broadcloth cote, restrained narrow brown rabbit-fur collar, good dark blue mantle and neat bronze clasp, dignified commercial posture; visibly finer fabric than workers",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I076_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I076_young.png"
+      },
+      {
+        "id": "I076_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I076_mature.png"
+      },
+      {
+        "id": "I076_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I076_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0061",
+    "authorId": "h08-c1",
+    "portraitId": "L1_301_young",
+    "identity": "L1_301",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_301_young.png",
+    "sha256": "c30a56dc546dd0af32847ee7a780c40d04c24b861f0b0274bf38cdfec936b112",
+    "sourceAge": 22,
+    "depictedAge": 18,
+    "sourceSex": "male",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "muted plum wool tunic",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L1_301_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_301_young.png"
+      },
+      {
+        "id": "L1_301_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_301_baby.png"
+      },
+      {
+        "id": "L1_301_child",
+        "age": 8,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_301_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0062",
+    "authorId": "h08-c2",
+    "portraitId": "L1_302_child",
+    "identity": "L1_302",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_302_child.png",
+    "sha256": "8436ec5c28dc151e2a13ad3b772aa2e02cc59f67ca5767c6fb973af8b70e2617",
+    "sourceAge": 8,
+    "depictedAge": 14,
+    "sourceSex": "female",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "ocher high-neck child gown",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": null,
+    "needsNewPortrait": true,
+    "reason": "적합 연령대가 없어 같은 성별·복식의 임시 대역. 해당 나이 신규 얼굴 필요.",
+    "ageChain": [
+      {
+        "id": "L1_302_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_302_young.png"
+      },
+      {
+        "id": "L1_302_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_302_baby.png"
+      },
+      {
+        "id": "L1_302_child",
+        "age": 8,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_302_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0058",
+    "authorId": "h08-g1f",
+    "portraitId": "P20_old",
+    "identity": "P20",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/aging/P20_old.png",
+    "sha256": "25eb86f49d5bd60c0554d2c8ef3cdadd102a9e89644e35607eca4fb0ad752b84",
+    "sourceAge": 70,
+    "depictedAge": 62,
+    "sourceSex": "f",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine subdued grey-green wool kirtle and plain surcoat, cream linen veil draped over hair and shoulders, narrow simple bronze brooch",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "P20",
+        "age": 28,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P20.png"
+      },
+      {
+        "id": "P20_young",
+        "age": 28,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/aging/P20_young.png"
+      },
+      {
+        "id": "P20_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/aging/P20_mature.png"
+      },
+      {
+        "id": "P20_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/aging/P20_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0064",
+    "authorId": "h08-retainer",
+    "portraitId": "L7_202_mature",
+    "identity": "L7_202",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png",
+    "sha256": "7c8b8d5bcbbc4af0d214d61038c2a1bcf0acc484bb752df5c984f8d121041781",
+    "sourceAge": 41,
+    "depictedAge": 35,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted russet fine wool, modest squirrel fur collar, sword belt glimpse",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0011",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L7_202_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_baby.png"
+      },
+      {
+        "id": "L7_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_child.png"
+      },
+      {
+        "id": "L7_202_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_young.png"
+      },
+      {
+        "id": "L7_202_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0060",
+    "authorId": "h08-spouse",
+    "portraitId": "P22",
+    "identity": "P22",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P22.png",
+    "sha256": "3b7c29fc2dbd1ed31c7b29532b9dec1f4a5402fe556addbc1537146bc0b40d1f",
+    "sourceAge": 49,
+    "depictedAge": 39,
+    "sourceSex": "f",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine subdued dusty-ochre wool kirtle with quiet brown surcoat, cream linen veil and wimple, modest clasp without jewel display",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "P22",
+        "age": 49,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P22.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0063",
+    "authorId": "h08-steward",
+    "portraitId": "I078_mature",
+    "identity": "I078",
+    "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I078_mature.png",
+    "sha256": "11f34bb6d531bcaf00ea2c4594d9442f87277441531b5e4b0770d5f65a09cfb3",
+    "sourceAge": 45,
+    "depictedAge": 39,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine subdued moss-green wool cote with a narrow tawny fur edge, deep wine traveller mantle and elegant modest silver clasp; merchant quality, no national caricature or modern costume",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I078_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I078_young.png"
+      },
+      {
+        "id": "I078_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I078_mature.png"
+      },
+      {
+        "id": "I078_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool2-20260926/assets/portraits/I078_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0069",
+    "authorId": "h09-c1",
+    "portraitId": "L1_303_young",
+    "identity": "L1_303",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_303_young.png",
+    "sha256": "cf1544b8a07da209c3cd9e2aeff8cd062266802402057b18fd8326fec8e455b4",
+    "sourceAge": 22,
+    "depictedAge": 19,
+    "sourceSex": "male",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "slate blue tunic and dark green cloak",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L1_303_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_303_young.png"
+      },
+      {
+        "id": "L1_303_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_303_baby.png"
+      },
+      {
+        "id": "L1_303_child",
+        "age": 8,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_303_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0070",
+    "authorId": "h09-c2",
+    "portraitId": "L1_304_child",
+    "identity": "L1_304",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_304_child.png",
+    "sha256": "12ef0ff76b6f31541e7e52b297de4711456a9001f9e84f89dee671c87651b439",
+    "sourceAge": 8,
+    "depictedAge": 15,
+    "sourceSex": "female",
+    "sourceLineage": "L1",
+    "sourceParentIdentities": [],
+    "clothing": "rust high-neck child gown",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": null,
+    "needsNewPortrait": true,
+    "reason": "적합 연령대가 없어 같은 성별·복식의 임시 대역. 해당 나이 신규 얼굴 필요.",
+    "ageChain": [
+      {
+        "id": "L1_304_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_304_young.png"
+      },
+      {
+        "id": "L1_304_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_304_baby.png"
+      },
+      {
+        "id": "L1_304_child",
+        "age": 8,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage1/L1_304_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0066",
+    "authorId": "h09-g1f",
+    "portraitId": "P24",
+    "identity": "P24",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P24.png",
+    "sha256": "e874958918220a002325e86a0c8dcd3a35a39a27b39d7c4efe787db53df93cef",
+    "sourceAge": 70,
+    "depictedAge": 63,
+    "sourceSex": "f",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "good faded madder wool kirtle, warm ivory conservative veil and wimple, brown mantle, no elaborate later medieval headdress",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "P24",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P24.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0072",
+    "authorId": "h09-retainer",
+    "portraitId": "L7_202_mature",
+    "identity": "L7_202",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png",
+    "sha256": "7c8b8d5bcbbc4af0d214d61038c2a1bcf0acc484bb752df5c984f8d121041781",
+    "sourceAge": 41,
+    "depictedAge": 36,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted russet fine wool, modest squirrel fur collar, sword belt glimpse",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0011",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L7_202_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_baby.png"
+      },
+      {
+        "id": "L7_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_child.png"
+      },
+      {
+        "id": "L7_202_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_young.png"
+      },
+      {
+        "id": "L7_202_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0068",
+    "authorId": "h09-spouse",
+    "portraitId": "L7_204_mature",
+    "identity": "L7_204",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_mature.png",
+    "sha256": "5420571337349ab741e25adaf84e30b528427e4d9cfafd582080830263d15ce7",
+    "sourceAge": 40,
+    "depictedAge": 40,
+    "sourceSex": "female",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted burgundy fine wool kirtle, modest squirrel fur edging, unmarried uncovered hair NO veil",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0012",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L7_204_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_baby.png"
+      },
+      {
+        "id": "L7_204_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_child.png"
+      },
+      {
+        "id": "L7_204_young",
+        "age": 20,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_young.png"
+      },
+      {
+        "id": "L7_204_mature",
+        "age": 40,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0071",
+    "authorId": "h09-steward",
+    "portraitId": "I115_mature",
+    "identity": "I115",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I115_mature.png",
+    "sha256": "13d6e643c49180d1318fe04d85c985d48055bdc04993754c062c1920e3dba99f",
+    "sourceAge": 45,
+    "depictedAge": 40,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "finest deep blue wool gown with conspicuous unspotted grey-white squirrel-miniver collar, merchant mark seal on a modest cord, sturdy relaxed upright posture",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I115_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I115_young.png"
+      },
+      {
+        "id": "I115_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I115_mature.png"
+      },
+      {
+        "id": "I115_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I115_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0077",
+    "authorId": "h10-retainer",
+    "portraitId": "L5_201_mature",
+    "identity": "L5_201",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png",
+    "sha256": "c7bcf559c23fa86300335da82933902b3df9d0152f2ab8b2384e91fff18cba8c",
+    "sourceAge": 44,
+    "depictedAge": 43,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_101",
+      "L5_102"
+    ],
+    "clothing": "quality muted ochre wool tunic and linen",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0016",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_201_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_young.png"
+      },
+      {
+        "id": "L5_201_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png"
+      },
+      {
+        "id": "L5_201_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_baby.png"
+      },
+      {
+        "id": "L5_201_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0076",
+    "authorId": "h10-steward",
+    "portraitId": "I116_mature",
+    "identity": "I116",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I116_mature.png",
+    "sha256": "97a10bc7f7fd42e44e754055049e17a138bb2ad35022efc56570720fd07fe0ad",
+    "sourceAge": 45,
+    "depictedAge": 37,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "finest tawny wool gown with rich dark green sleeves, grey-white miniver collar without black tips, merchant seal at belt",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I116_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I116_young.png"
+      },
+      {
+        "id": "I116_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I116_mature.png"
+      },
+      {
+        "id": "I116_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I116_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0082",
+    "authorId": "h11-retainer",
+    "portraitId": "L5_201_mature",
+    "identity": "L5_201",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png",
+    "sha256": "c7bcf559c23fa86300335da82933902b3df9d0152f2ab8b2384e91fff18cba8c",
+    "sourceAge": 44,
+    "depictedAge": 43,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_101",
+      "L5_102"
+    ],
+    "clothing": "quality muted ochre wool tunic and linen",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0016",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_201_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_young.png"
+      },
+      {
+        "id": "L5_201_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png"
+      },
+      {
+        "id": "L5_201_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_baby.png"
+      },
+      {
+        "id": "L5_201_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0081",
+    "authorId": "h11-steward",
+    "portraitId": "I124_mature",
+    "identity": "I124",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I124_mature.png",
+    "sha256": "b4dde41c79f69ef707f52bbc427809934b795aa66e5014f093045628971dbe24",
+    "sourceAge": 45,
+    "depictedAge": 37,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "good muted blue wool civic robe with tawny shoulder cape and modest metal fastening, no fur or flamboyant wealth",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I124_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I124_young.png"
+      },
+      {
+        "id": "I124_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I124_mature.png"
+      },
+      {
+        "id": "I124_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I124_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0087",
+    "authorId": "h12-c1",
+    "portraitId": "L4_301_young",
+    "identity": "L4_301",
+    "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_301_young.png",
+    "sha256": "7386276961896e79de6dd5c1dfdd1af23cfb62affa08f3b3e9b67f95fe4e4d37",
+    "sourceAge": 22,
+    "depictedAge": 22,
+    "sourceSex": "male",
+    "sourceLineage": "L4",
+    "sourceParentIdentities": [],
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L4_301_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_301_baby.png"
+      },
+      {
+        "id": "L4_301_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_301_child.png"
+      },
+      {
+        "id": "L4_301_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_301_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0088",
+    "authorId": "h12-c2",
+    "portraitId": "L4_302_young",
+    "identity": "L4_302",
+    "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_302_young.png",
+    "sha256": "5a5e6f10565791401e230481abf5c4e0c44d22eada880f3d1cf323924e1554a9",
+    "sourceAge": 20,
+    "depictedAge": 18,
+    "sourceSex": "female",
+    "sourceLineage": "L4",
+    "sourceParentIdentities": [],
+    "clothing": "muted rich blue fine wool gown with brown fur collar; original uncovered hairstyle retained",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L4_302_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_302_baby.png"
+      },
+      {
+        "id": "L4_302_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_302_child.png"
+      },
+      {
+        "id": "L4_302_young",
+        "age": 20,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_302_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0084",
+    "authorId": "h12-g1f",
+    "portraitId": "L4_102_old",
+    "identity": "L4_102",
+    "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_102_old.png",
+    "sha256": "09235eb2b5ec08b13aede89a35b02c0b746df615ac11f77a5a5f4e8b1ca2ae4e",
+    "sourceAge": 70,
+    "depictedAge": 66,
+    "sourceSex": "female",
+    "sourceLineage": "L4",
+    "sourceParentIdentities": [],
+    "clothing": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L4_102_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_102_mature.png"
+      },
+      {
+        "id": "L4_102_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_102_old.png"
+      },
+      {
+        "id": "L4_102_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_102_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0090",
+    "authorId": "h12-retainer",
+    "portraitId": "L7_202_mature",
+    "identity": "L7_202",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png",
+    "sha256": "7c8b8d5bcbbc4af0d214d61038c2a1bcf0acc484bb752df5c984f8d121041781",
+    "sourceAge": 41,
+    "depictedAge": 39,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted russet fine wool, modest squirrel fur collar, sword belt glimpse",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0011",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L7_202_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_baby.png"
+      },
+      {
+        "id": "L7_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_child.png"
+      },
+      {
+        "id": "L7_202_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_young.png"
+      },
+      {
+        "id": "L7_202_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0086",
+    "authorId": "h12-spouse",
+    "portraitId": "L4_203_mature",
+    "identity": "L4_203",
+    "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_203_mature.png",
+    "sha256": "93b9a5659e8d72e7dc4e981542c9e5db6b4498a7008d4c3bc68e4d47a27e4696",
+    "sourceAge": 44,
+    "depictedAge": 43,
+    "sourceSex": "female",
+    "sourceLineage": "L4",
+    "sourceParentIdentities": [],
+    "clothing": "muted rich blue fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L4_203_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_203_baby.png"
+      },
+      {
+        "id": "L4_203_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_203_child.png"
+      },
+      {
+        "id": "L4_203_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_203_mature.png"
+      },
+      {
+        "id": "L4_203_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_203_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0089",
+    "authorId": "h12-steward",
+    "portraitId": "P15",
+    "identity": "P15",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P15.png",
+    "sha256": "ef404dc44688fc40d2cb69a68988df72a8aec6dc6242dda1f9606911cb3d5429",
+    "sourceAge": 46,
+    "depictedAge": 43,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine slate-blue wool cote and sober grey-brown mantle, small document roll at chest, bare head with rough thinning hair",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "P15",
+        "age": 46,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P15.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0095",
+    "authorId": "h13-c1",
+    "portraitId": "L4_303_young",
+    "identity": "L4_303",
+    "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_303_young.png",
+    "sha256": "6faaaa9c558f4e3ce340d3065f2a616b2a6914ff16df8da0073c6ea06a6913fc",
+    "sourceAge": 22,
+    "depictedAge": 17,
+    "sourceSex": "male",
+    "sourceLineage": "L4",
+    "sourceParentIdentities": [],
+    "clothing": "Wealthy merchant fine wool in subdued blue or purple, visible brown fur collar and lowered hood; waist accessories constrained by original bust crop",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": null,
+    "needsNewPortrait": true,
+    "reason": "적합 연령대가 없어 같은 성별·복식의 임시 대역. 해당 나이 신규 얼굴 필요.",
+    "ageChain": [
+      {
+        "id": "L4_303_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_303_baby.png"
+      },
+      {
+        "id": "L4_303_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_303_child.png"
+      },
+      {
+        "id": "L4_303_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_303_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0096",
+    "authorId": "h13-c2",
+    "portraitId": "L4_204_child",
+    "identity": "L4_204",
+    "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_204_child.png",
+    "sha256": "5d9c868e9477a784c394e39dc995a49cbaa4e73b664b4fd14dcef3fa6695d1ea",
+    "sourceAge": 6,
+    "depictedAge": 13,
+    "sourceSex": "female",
+    "sourceLineage": "L4",
+    "sourceParentIdentities": [],
+    "clothing": "Fine muted purple wool child garment with subtle fur collar; uncovered original hair and linen neckline",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": null,
+    "needsNewPortrait": true,
+    "reason": "적합 연령대가 없어 같은 성별·복식의 임시 대역. 해당 나이 신규 얼굴 필요.",
+    "ageChain": [
+      {
+        "id": "L4_204_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_204_baby.png"
+      },
+      {
+        "id": "L4_204_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_204_child.png"
+      },
+      {
+        "id": "L4_204_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_204_mature.png"
+      },
+      {
+        "id": "L4_204_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_204_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0092",
+    "authorId": "h13-g1f",
+    "portraitId": "I046_old",
+    "identity": "I046",
+    "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I046_old.png",
+    "sha256": "06aeb9f99327315e7fead9ea5a5725d24741b8c6a799d24b0c5473915f837786",
+    "sourceAge": 70,
+    "depictedAge": 61,
+    "sourceSex": "f",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "good muted blue fine wool kirtle, visible soft modest fur collar less lavish than gentry, leather purse and decorated belt edge, folded wool sample or account parchment, prosperous practical tailoring",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I046_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I046_young.png"
+      },
+      {
+        "id": "I046_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I046_mature.png"
+      },
+      {
+        "id": "I046_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool1-20260926/assets/portraits/I046_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0091",
+    "authorId": "h13-g1m",
+    "portraitId": "I119_old",
+    "identity": "I119",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I119_old.png",
+    "sha256": "02305031b62090a06ea6671b57cf5b7bda0b2a00bafa0173921101c51ce67923",
+    "sourceAge": 70,
+    "depictedAge": 63,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine sober blue wool civic gown, broad grey-white miniver collar without black tips, simple municipal chain and merchant seal",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I119_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I119_young.png"
+      },
+      {
+        "id": "I119_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I119_mature.png"
+      },
+      {
+        "id": "I119_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I119_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0098",
+    "authorId": "h13-retainer",
+    "portraitId": "L7_202_mature",
+    "identity": "L7_202",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png",
+    "sha256": "7c8b8d5bcbbc4af0d214d61038c2a1bcf0acc484bb752df5c984f8d121041781",
+    "sourceAge": 41,
+    "depictedAge": 40,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted russet fine wool, modest squirrel fur collar, sword belt glimpse",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0011",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L7_202_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_baby.png"
+      },
+      {
+        "id": "L7_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_child.png"
+      },
+      {
+        "id": "L7_202_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_young.png"
+      },
+      {
+        "id": "L7_202_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0094",
+    "authorId": "h13-spouse",
+    "portraitId": "L4_205_mature",
+    "identity": "L4_205",
+    "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_205_mature.png",
+    "sha256": "935804b6248cd30163bb251da274463c972dcabb6f24aa75b4d8a5ddd706b73b",
+    "sourceAge": 42,
+    "depictedAge": 38,
+    "sourceSex": "female",
+    "sourceLineage": "L4",
+    "sourceParentIdentities": [],
+    "clothing": "muted rich purple fine wool gown with brown fur collar; ivory linen veil and wimple",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L4_205_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_205_mature.png"
+      },
+      {
+        "id": "L4_205_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-costume-v2-20260928/assets/L4/L4_205_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0097",
+    "authorId": "h13-steward",
+    "portraitId": "L5_201_mature",
+    "identity": "L5_201",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png",
+    "sha256": "c7bcf559c23fa86300335da82933902b3df9d0152f2ab8b2384e91fff18cba8c",
+    "sourceAge": 44,
+    "depictedAge": 44,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_101",
+      "L5_102"
+    ],
+    "clothing": "quality muted ochre wool tunic and linen",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0016",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_201_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_young.png"
+      },
+      {
+        "id": "L5_201_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png"
+      },
+      {
+        "id": "L5_201_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_baby.png"
+      },
+      {
+        "id": "L5_201_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0103",
+    "authorId": "h14-c1",
+    "portraitId": "L2_2S2_young",
+    "identity": "L2_2S2",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_2S2_young.png",
+    "sha256": "82501b935679937371b98724431af7f6f6d9cde6e0b2a1bf1d4bd76e6995db62",
+    "sourceAge": 22,
+    "depictedAge": 18,
+    "sourceSex": "male",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "muted moss green wool tunic and simple brown shoulder mantle",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L2_2S2_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_2S2_young.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0104",
+    "authorId": "h14-c2",
+    "portraitId": "L2_302_child",
+    "identity": "L2_302",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_302_child.png",
+    "sha256": "b9e750a02a6e604658852d06acc53f67a0e52e9729205113fa757992e068a155",
+    "sourceAge": 8,
+    "depictedAge": 14,
+    "sourceSex": "female",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "ochre gray wool dress",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": null,
+    "needsNewPortrait": true,
+    "reason": "적합 연령대가 없어 같은 성별·복식의 임시 대역. 해당 나이 신규 얼굴 필요.",
+    "ageChain": [
+      {
+        "id": "L2_302_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_302_young.png"
+      },
+      {
+        "id": "L2_302_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_302_baby.png"
+      },
+      {
+        "id": "L2_302_child",
+        "age": 8,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_302_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0100",
+    "authorId": "h14-g1f",
+    "portraitId": "L3_102_old",
+    "identity": "L3_102",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_old.png",
+    "sha256": "f00d96c59783cf3d62e1f74d10aad586e0658f508365c325a56a798778e417d4",
+    "sourceAge": 70,
+    "depictedAge": 62,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0002",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L3_102_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_young.png"
+      },
+      {
+        "id": "L3_102_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_mature.png"
+      },
+      {
+        "id": "L3_102_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0106",
+    "authorId": "h14-retainer",
+    "portraitId": "L7_202_mature",
+    "identity": "L7_202",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png",
+    "sha256": "7c8b8d5bcbbc4af0d214d61038c2a1bcf0acc484bb752df5c984f8d121041781",
+    "sourceAge": 41,
+    "depictedAge": 41,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted russet fine wool, modest squirrel fur collar, sword belt glimpse",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0011",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L7_202_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_baby.png"
+      },
+      {
+        "id": "L7_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_child.png"
+      },
+      {
+        "id": "L7_202_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_young.png"
+      },
+      {
+        "id": "L7_202_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0105",
+    "authorId": "h14-steward",
+    "portraitId": "L5_101_mature",
+    "identity": "L5_101",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_mature.png",
+    "sha256": "dfa5afd4ac7c9fbcb60ff882516eba25fe590ece4de7ba9a0f4ed69067f6e79c",
+    "sourceAge": 45,
+    "depictedAge": 45,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [],
+    "clothing": "good moss-brown wool tunic and linen collar",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0008",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_101_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_young.png"
+      },
+      {
+        "id": "L5_101_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_mature.png"
+      },
+      {
+        "id": "L5_101_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0111",
+    "authorId": "h15-c1",
+    "portraitId": "L2_301_young",
+    "identity": "L2_301",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_301_young.png",
+    "sha256": "52fba880a60a3430eed1ad01259f5058767f1e7b1ebc456c71ac37426d0018e7",
+    "sourceAge": 22,
+    "depictedAge": 19,
+    "sourceSex": "male",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "dusty plum wool tunic",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L2_301_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_301_young.png"
+      },
+      {
+        "id": "L2_301_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_301_baby.png"
+      },
+      {
+        "id": "L2_301_child",
+        "age": 8,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_301_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0112",
+    "authorId": "h15-c2",
+    "portraitId": "L2_304_child",
+    "identity": "L2_304",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_304_child.png",
+    "sha256": "f37231ad8404dc871f559d95bcc5862e5688f3cd2b42408a748432c3bc4797f1",
+    "sourceAge": 8,
+    "depictedAge": 15,
+    "sourceSex": "female",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "muted terracotta wool dress",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": null,
+    "needsNewPortrait": true,
+    "reason": "적합 연령대가 없어 같은 성별·복식의 임시 대역. 해당 나이 신규 얼굴 필요.",
+    "ageChain": [
+      {
+        "id": "L2_304_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_304_young.png"
+      },
+      {
+        "id": "L2_304_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_304_baby.png"
+      },
+      {
+        "id": "L2_304_child",
+        "age": 8,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_304_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0108",
+    "authorId": "h15-g1f",
+    "portraitId": "L3_102_old",
+    "identity": "L3_102",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_old.png",
+    "sha256": "f00d96c59783cf3d62e1f74d10aad586e0658f508365c325a56a798778e417d4",
+    "sourceAge": 70,
+    "depictedAge": 63,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0002",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L3_102_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_young.png"
+      },
+      {
+        "id": "L3_102_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_mature.png"
+      },
+      {
+        "id": "L3_102_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0114",
+    "authorId": "h15-retainer",
+    "portraitId": "L5_202_mature",
+    "identity": "L5_202",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_mature.png",
+    "sha256": "a1a4c7da26cd3cb71a4c96cac374164d4d97d52301c9be2e4f739f881060de12",
+    "sourceAge": 42,
+    "depictedAge": 42,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_101",
+      "L5_102"
+    ],
+    "clothing": "quality muted blue-gray wool tunic and linen",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0023",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_202_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_young.png"
+      },
+      {
+        "id": "L5_202_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_mature.png"
+      },
+      {
+        "id": "L5_202_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_baby.png"
+      },
+      {
+        "id": "L5_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0110",
+    "authorId": "h15-spouse",
+    "portraitId": "L7_204_mature",
+    "identity": "L7_204",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_mature.png",
+    "sha256": "5420571337349ab741e25adaf84e30b528427e4d9cfafd582080830263d15ce7",
+    "sourceAge": 40,
+    "depictedAge": 40,
+    "sourceSex": "female",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted burgundy fine wool kirtle, modest squirrel fur edging, unmarried uncovered hair NO veil",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0012",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L7_204_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_baby.png"
+      },
+      {
+        "id": "L7_204_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_child.png"
+      },
+      {
+        "id": "L7_204_young",
+        "age": 20,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_young.png"
+      },
+      {
+        "id": "L7_204_mature",
+        "age": 40,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_204_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0113",
+    "authorId": "h15-steward",
+    "portraitId": "L5_101_mature",
+    "identity": "L5_101",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_mature.png",
+    "sha256": "dfa5afd4ac7c9fbcb60ff882516eba25fe590ece4de7ba9a0f4ed69067f6e79c",
+    "sourceAge": 45,
+    "depictedAge": 46,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [],
+    "clothing": "good moss-brown wool tunic and linen collar",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0008",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_101_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_young.png"
+      },
+      {
+        "id": "L5_101_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_mature.png"
+      },
+      {
+        "id": "L5_101_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0119",
+    "authorId": "h16-c1",
+    "portraitId": "L2_303_young",
+    "identity": "L2_303",
+    "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_303_young.png",
+    "sha256": "8270ffaa7b3ef0c071e8c85034a47ee2f3a42c07187ef627d05497294eb0e170",
+    "sourceAge": 22,
+    "depictedAge": 20,
+    "sourceSex": "male",
+    "sourceLineage": "L2",
+    "sourceParentIdentities": [],
+    "clothing": "slate blue wool tunic",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L2_303_young",
+        "age": 22,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_303_young.png"
+      },
+      {
+        "id": "L2_303_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_303_baby.png"
+      },
+      {
+        "id": "L2_303_child",
+        "age": 8,
+        "path": "assets-inbox/lineage-pilot/pilot1-20260928/assets/lineage2/L2_303_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0120",
+    "authorId": "h16-c2",
+    "portraitId": "L3_302_young",
+    "identity": "L3_302",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_young.png",
+    "sha256": "1c85423a9ef2c9a3ca219493dc83c74acd3bf79e00b11032a6128362641b97fd",
+    "sourceAge": 20,
+    "depictedAge": 16,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_201",
+      "L3_205"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0006",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L3_302_young",
+        "age": 20,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_young.png"
+      },
+      {
+        "id": "L3_302_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_baby.png"
+      },
+      {
+        "id": "L3_302_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0116",
+    "authorId": "h16-g1f",
+    "portraitId": "L3_102_old",
+    "identity": "L3_102",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_old.png",
+    "sha256": "f00d96c59783cf3d62e1f74d10aad586e0658f508365c325a56a798778e417d4",
+    "sourceAge": 70,
+    "depictedAge": 64,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0002",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L3_102_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_young.png"
+      },
+      {
+        "id": "L3_102_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_mature.png"
+      },
+      {
+        "id": "L3_102_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0115",
+    "authorId": "h16-g1m",
+    "portraitId": "L3_101_old",
+    "identity": "L3_101",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_101_old.png",
+    "sha256": "ba857dc241a3ba6b8a5297ee5a309c00cd30641d1e06c91861ba14037dc29ab0",
+    "sourceAge": 70,
+    "depictedAge": 66,
+    "sourceSex": "male",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0003",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L3_101_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_101_young.png"
+      },
+      {
+        "id": "L3_101_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_101_mature.png"
+      },
+      {
+        "id": "L3_101_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_101_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0122",
+    "authorId": "h16-retainer",
+    "portraitId": "L5_201_mature",
+    "identity": "L5_201",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png",
+    "sha256": "c7bcf559c23fa86300335da82933902b3df9d0152f2ab8b2384e91fff18cba8c",
+    "sourceAge": 44,
+    "depictedAge": 43,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_101",
+      "L5_102"
+    ],
+    "clothing": "quality muted ochre wool tunic and linen",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0016",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_201_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_young.png"
+      },
+      {
+        "id": "L5_201_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png"
+      },
+      {
+        "id": "L5_201_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_baby.png"
+      },
+      {
+        "id": "L5_201_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0118",
+    "authorId": "h16-spouse",
+    "portraitId": "L3_204_mature",
+    "identity": "L3_204",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_mature.png",
+    "sha256": "ed042f4946ccf45f6abc4f36fd80eaa2a64b7955139c10ca549aa164360a1b53",
+    "sourceAge": 42,
+    "depictedAge": 41,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_101",
+      "L3_102"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0101",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L3_204_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_young.png"
+      },
+      {
+        "id": "L3_204_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_mature.png"
+      },
+      {
+        "id": "L3_204_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_child.png"
+      },
+      {
+        "id": "L3_204_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_baby.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0121",
+    "authorId": "h16-steward",
+    "portraitId": "L5_303_young",
+    "identity": "L5_303",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_303_young.png",
+    "sha256": "2a465cbcd2231b95e23fa1aebda2a8e4e7145f21386f71a446755af5ca0c3b03",
+    "sourceAge": 22,
+    "depictedAge": 32,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_206",
+      "L5_203"
+    ],
+    "clothing": "good muted blue-gray wool tunic and linen",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L5_303_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_303_young.png"
+      },
+      {
+        "id": "L5_303_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_303_baby.png"
+      },
+      {
+        "id": "L5_303_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_303_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0127",
+    "authorId": "h17-c1",
+    "portraitId": "L7_202_young",
+    "identity": "L7_202",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_young.png",
+    "sha256": "28b1bb8120213d48279590c05cbd9fd973322e8ede1bb9763e4c304571db11f4",
+    "sourceAge": 21,
+    "depictedAge": 21,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted russet fine wool, modest squirrel fur collar, sword belt glimpse",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0011",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L7_202_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_baby.png"
+      },
+      {
+        "id": "L7_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_child.png"
+      },
+      {
+        "id": "L7_202_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_young.png"
+      },
+      {
+        "id": "L7_202_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0128",
+    "authorId": "h17-c2",
+    "portraitId": "L3_302_young",
+    "identity": "L3_302",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_young.png",
+    "sha256": "1c85423a9ef2c9a3ca219493dc83c74acd3bf79e00b11032a6128362641b97fd",
+    "sourceAge": 20,
+    "depictedAge": 17,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_201",
+      "L3_205"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0006",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L3_302_young",
+        "age": 20,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_young.png"
+      },
+      {
+        "id": "L3_302_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_baby.png"
+      },
+      {
+        "id": "L3_302_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_302_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0124",
+    "authorId": "h17-g1f",
+    "portraitId": "L3_102_old",
+    "identity": "L3_102",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_old.png",
+    "sha256": "f00d96c59783cf3d62e1f74d10aad586e0658f508365c325a56a798778e417d4",
+    "sourceAge": 70,
+    "depictedAge": 65,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0002",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L3_102_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_young.png"
+      },
+      {
+        "id": "L3_102_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_mature.png"
+      },
+      {
+        "id": "L3_102_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_102_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0130",
+    "authorId": "h17-retainer",
+    "portraitId": "L5_201_mature",
+    "identity": "L5_201",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png",
+    "sha256": "c7bcf559c23fa86300335da82933902b3df9d0152f2ab8b2384e91fff18cba8c",
+    "sourceAge": 44,
+    "depictedAge": 44,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_101",
+      "L5_102"
+    ],
+    "clothing": "quality muted ochre wool tunic and linen",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0016",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_201_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_young.png"
+      },
+      {
+        "id": "L5_201_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_mature.png"
+      },
+      {
+        "id": "L5_201_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_baby.png"
+      },
+      {
+        "id": "L5_201_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_201_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0126",
+    "authorId": "h17-spouse",
+    "portraitId": "L3_204_mature",
+    "identity": "L3_204",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_mature.png",
+    "sha256": "ed042f4946ccf45f6abc4f36fd80eaa2a64b7955139c10ca549aa164360a1b53",
+    "sourceAge": 42,
+    "depictedAge": 42,
+    "sourceSex": "female",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [
+      "L3_101",
+      "L3_102"
+    ],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0101",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L3_204_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_young.png"
+      },
+      {
+        "id": "L3_204_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_mature.png"
+      },
+      {
+        "id": "L3_204_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_child.png"
+      },
+      {
+        "id": "L3_204_baby",
+        "age": 0.5,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_204_baby.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0129",
+    "authorId": "h17-steward",
+    "portraitId": "L5_101_young",
+    "identity": "L5_101",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_young.png",
+    "sha256": "78d2fe5430c7881bba6ed8ea70eb7cea8f21e738863371a4493cc74c365824dd",
+    "sourceAge": 25,
+    "depictedAge": 33,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [],
+    "clothing": "good moss-brown wool tunic and linen collar",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0008",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_101_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_young.png"
+      },
+      {
+        "id": "L5_101_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_mature.png"
+      },
+      {
+        "id": "L5_101_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0135",
+    "authorId": "h18-c1",
+    "portraitId": "L6_202_young",
+    "identity": "L6_202",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_202_young.png",
+    "sha256": "f78b0a6cabf878df673cbc83d4de2b93e1a2dd3e2e28c81500c0409b209f019f",
+    "sourceAge": 21,
+    "depictedAge": 22,
+    "sourceSex": "male",
+    "sourceLineage": "L6",
+    "sourceParentIdentities": [
+      "L6_101",
+      "L6_102"
+    ],
+    "clothing": "Earl fine crimson/deep blue wool, ermine mantle, gold clasp; married adult women veil and wimple",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L6_202_baby",
+        "age": 0,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_202_baby.png"
+      },
+      {
+        "id": "L6_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_202_child.png"
+      },
+      {
+        "id": "L6_202_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_202_young.png"
+      },
+      {
+        "id": "L6_202_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0136",
+    "authorId": "h18-c2",
+    "portraitId": "L6_204_young",
+    "identity": "L6_204",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_204_young.png",
+    "sha256": "3ad51b4d7b22d72a803912316aac360ac27203def5a139dc1f976f4d2c7369c9",
+    "sourceAge": 21,
+    "depictedAge": 18,
+    "sourceSex": "female",
+    "sourceLineage": "L6",
+    "sourceParentIdentities": [
+      "L6_101",
+      "L6_102"
+    ],
+    "clothing": "Earl fine crimson/deep blue wool, ermine mantle, gold clasp; married adult women veil and wimple",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L6_204_baby",
+        "age": 0,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_204_baby.png"
+      },
+      {
+        "id": "L6_204_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_204_child.png"
+      },
+      {
+        "id": "L6_204_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_204_young.png"
+      },
+      {
+        "id": "L6_204_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_204_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0132",
+    "authorId": "h18-g1f",
+    "portraitId": "I102_old",
+    "identity": "I102",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I102_old.png",
+    "sha256": "22a4bb34d7cc3702e22ea5a13df17668c5184c85f1eb6aa9e473aeb8fc29ec82",
+    "sourceAge": 70,
+    "depictedAge": 66,
+    "sourceSex": "f",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "deep green finest wool gown, broad white ermine collar with sparse black tail tips, gold girdle and simple sapphire brooch",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I102_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I102_young.png"
+      },
+      {
+        "id": "I102_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I102_mature.png"
+      },
+      {
+        "id": "I102_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I102_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0138",
+    "authorId": "h18-retainer",
+    "portraitId": "L5_101_young",
+    "identity": "L5_101",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_young.png",
+    "sha256": "78d2fe5430c7881bba6ed8ea70eb7cea8f21e738863371a4493cc74c365824dd",
+    "sourceAge": 25,
+    "depictedAge": 28,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [],
+    "clothing": "good moss-brown wool tunic and linen collar",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0008",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_101_young",
+        "age": 25,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_young.png"
+      },
+      {
+        "id": "L5_101_mature",
+        "age": 45,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_mature.png"
+      },
+      {
+        "id": "L5_101_old",
+        "age": 70,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_101_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0134",
+    "authorId": "h18-spouse",
+    "portraitId": "L6_203_mature",
+    "identity": "L6_203",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_203_mature.png",
+    "sha256": "7a82dab728e631cb5a5236676a95898123f4039a05f2864897db4755b7609c43",
+    "sourceAge": 44,
+    "depictedAge": 43,
+    "sourceSex": "female",
+    "sourceLineage": "L6",
+    "sourceParentIdentities": [
+      "L6_101",
+      "L6_102"
+    ],
+    "clothing": "Earl fine crimson/deep blue wool, ermine mantle, gold clasp; married adult women veil and wimple",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "L6_203_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_203_baby.png"
+      },
+      {
+        "id": "L6_203_child",
+        "age": 8,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_203_child.png"
+      },
+      {
+        "id": "L6_203_young",
+        "age": 24,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_203_young.png"
+      },
+      {
+        "id": "L6_203_mature",
+        "age": 44,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L6/L6_203_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0137",
+    "authorId": "h18-steward",
+    "portraitId": "L5_202_mature",
+    "identity": "L5_202",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_mature.png",
+    "sha256": "a1a4c7da26cd3cb71a4c96cac374164d4d97d52301c9be2e4f739f881060de12",
+    "sourceAge": 42,
+    "depictedAge": 34,
+    "sourceSex": "male",
+    "sourceLineage": "L5",
+    "sourceParentIdentities": [
+      "L5_101",
+      "L5_102"
+    ],
+    "clothing": "quality muted blue-gray wool tunic and linen",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0023",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L5_202_young",
+        "age": 22,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_young.png"
+      },
+      {
+        "id": "L5_202_mature",
+        "age": 42,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_mature.png"
+      },
+      {
+        "id": "L5_202_baby",
+        "age": 0.7,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_baby.png"
+      },
+      {
+        "id": "L5_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L5/L5_202_child.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0009",
+    "authorId": "h02-g1m",
+    "portraitId": "L3_206_mature",
+    "identity": "L3_206",
+    "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_206_mature.png",
+    "sha256": "818332744c890aa12ca68fff970571a1a6329c18dfb9f258ebd57c50b68dd44c",
+    "sourceAge": 46,
+    "depictedAge": 56,
+    "sourceSex": "male",
+    "sourceLineage": "L3",
+    "sourceParentIdentities": [],
+    "clothing": "gentry fine wool and modest fur collar; married adult women head covered",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0125",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L3_206_young",
+        "age": 26,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_206_young.png"
+      },
+      {
+        "id": "L3_206_mature",
+        "age": 46,
+        "path": "assets-inbox/lineage/prod1-20260928/assets/L3/L3_206_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0017",
+    "authorId": "h03-g1m",
+    "portraitId": "P23",
+    "identity": "P23",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png",
+    "sha256": "100b1298800b91b6e99c60c80939f257550e7401f261e90bff43f723b7e66a79",
+    "sourceAge": 63,
+    "depictedAge": 58,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine slate-green wool cote, narrow restrained fur at mantle opening, small plain signet at lower edge, bare bald head",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0025",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "P23",
+        "age": 63,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0033",
+    "authorId": "h05-g1m",
+    "portraitId": "P23",
+    "identity": "P23",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png",
+    "sha256": "100b1298800b91b6e99c60c80939f257550e7401f261e90bff43f723b7e66a79",
+    "sourceAge": 63,
+    "depictedAge": 62,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine slate-green wool cote, narrow restrained fur at mantle opening, small plain signet at lower edge, bare bald head",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0025",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "P23",
+        "age": 63,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0041",
+    "authorId": "h06-g1m",
+    "portraitId": "P23",
+    "identity": "P23",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png",
+    "sha256": "100b1298800b91b6e99c60c80939f257550e7401f261e90bff43f723b7e66a79",
+    "sourceAge": 63,
+    "depictedAge": 59,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine slate-green wool cote, narrow restrained fur at mantle opening, small plain signet at lower edge, bare bald head",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0025",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "P23",
+        "age": 63,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0057",
+    "authorId": "h08-g1m",
+    "portraitId": "P23",
+    "identity": "P23",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png",
+    "sha256": "100b1298800b91b6e99c60c80939f257550e7401f261e90bff43f723b7e66a79",
+    "sourceAge": 63,
+    "depictedAge": 57,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine slate-green wool cote, narrow restrained fur at mantle opening, small plain signet at lower edge, bare bald head",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0025",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "P23",
+        "age": 63,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0065",
+    "authorId": "h09-g1m",
+    "portraitId": "P23",
+    "identity": "P23",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png",
+    "sha256": "100b1298800b91b6e99c60c80939f257550e7401f261e90bff43f723b7e66a79",
+    "sourceAge": 63,
+    "depictedAge": 59,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine slate-green wool cote, narrow restrained fur at mantle opening, small plain signet at lower edge, bare bald head",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0025",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "P23",
+        "age": 63,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0074",
+    "authorId": "h10-g1f",
+    "portraitId": "I113_old",
+    "identity": "I113",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_old.png",
+    "sha256": "9719fa149b6485a079d8f1227bd18c3d82ebb303b6389aa8fe18e52f2a0d3711",
+    "sourceAge": 70,
+    "depictedAge": 66,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "black wool Benedictine habit with broad folded cowl, plain modest abbey ring, no ornate vestments",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0075",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "I113_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_young.png"
+      },
+      {
+        "id": "I113_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_mature.png"
+      },
+      {
+        "id": "I113_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0073",
+    "authorId": "h10-g1m",
+    "portraitId": "I113_old",
+    "identity": "I113",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_old.png",
+    "sha256": "9719fa149b6485a079d8f1227bd18c3d82ebb303b6389aa8fe18e52f2a0d3711",
+    "sourceAge": 70,
+    "depictedAge": 70,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "black wool Benedictine habit with broad folded cowl, plain modest abbey ring, no ornate vestments",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0075",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "I113_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_young.png"
+      },
+      {
+        "id": "I113_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_mature.png"
+      },
+      {
+        "id": "I113_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I113_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0079",
+    "authorId": "h11-g1f",
+    "portraitId": "I111_old",
+    "identity": "I111",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_old.png",
+    "sha256": "f9df5bea5c37ba8d713dd6158b0dcfee03795ad4c92acf992aa9331deccf4ff1",
+    "sourceAge": 70,
+    "depictedAge": 66,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "plain high-quality dark claret wool daily clerical robe, small pectoral cross and episcopal ring, no mitre, no crown, no modern Roman collar",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0080",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "I111_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_young.png"
+      },
+      {
+        "id": "I111_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_mature.png"
+      },
+      {
+        "id": "I111_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0078",
+    "authorId": "h11-g1m",
+    "portraitId": "I111_old",
+    "identity": "I111",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_old.png",
+    "sha256": "f9df5bea5c37ba8d713dd6158b0dcfee03795ad4c92acf992aa9331deccf4ff1",
+    "sourceAge": 70,
+    "depictedAge": 70,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "plain high-quality dark claret wool daily clerical robe, small pectoral cross and episcopal ring, no mitre, no crown, no modern Roman collar",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0080",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "I111_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_young.png"
+      },
+      {
+        "id": "I111_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_mature.png"
+      },
+      {
+        "id": "I111_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I111_old.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0083",
+    "authorId": "h12-g1m",
+    "portraitId": "P17",
+    "identity": "P17",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P17.png",
+    "sha256": "f675f9bbd573fac2972458f9fe591ff3767f7ae12bb91364845c6f4afa022e04",
+    "sourceAge": 67,
+    "depictedAge": 60,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "deep subdued madder-brown good wool cote, plain soft grey-blue cap, neat parchment ledger edge at lower bust",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "P17",
+        "age": 67,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P17.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0099",
+    "authorId": "h14-g1m",
+    "portraitId": "P23",
+    "identity": "P23",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png",
+    "sha256": "100b1298800b91b6e99c60c80939f257550e7401f261e90bff43f723b7e66a79",
+    "sourceAge": 63,
+    "depictedAge": 58,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine slate-green wool cote, narrow restrained fur at mantle opening, small plain signet at lower edge, bare bald head",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0025",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "P23",
+        "age": 63,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0102",
+    "authorId": "h14-spouse",
+    "portraitId": "L7_202_mature",
+    "identity": "L7_202",
+    "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png",
+    "sha256": "7c8b8d5bcbbc4af0d214d61038c2a1bcf0acc484bb752df5c984f8d121041781",
+    "sourceAge": 41,
+    "depictedAge": 37,
+    "sourceSex": "male",
+    "sourceLineage": "L7",
+    "sourceParentIdentities": [
+      "L7_101",
+      "L7_102"
+    ],
+    "clothing": "muted russet fine wool, modest squirrel fur collar, sword belt glimpse",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0011",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "L7_202_baby",
+        "age": 1,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_baby.png"
+      },
+      {
+        "id": "L7_202_child",
+        "age": 6,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_child.png"
+      },
+      {
+        "id": "L7_202_young",
+        "age": 21,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_young.png"
+      },
+      {
+        "id": "L7_202_mature",
+        "age": 41,
+        "path": "assets-inbox/lineage/prod2-20260928/assets/L7/L7_202_mature.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0107",
+    "authorId": "h15-g1m",
+    "portraitId": "P23",
+    "identity": "P23",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png",
+    "sha256": "100b1298800b91b6e99c60c80939f257550e7401f261e90bff43f723b7e66a79",
+    "sourceAge": 63,
+    "depictedAge": 60,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine slate-green wool cote, narrow restrained fur at mantle opening, small plain signet at lower edge, bare bald head",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0025",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "P23",
+        "age": 63,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0123",
+    "authorId": "h17-g1m",
+    "portraitId": "P23",
+    "identity": "P23",
+    "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png",
+    "sha256": "100b1298800b91b6e99c60c80939f257550e7401f261e90bff43f723b7e66a79",
+    "sourceAge": 63,
+    "depictedAge": 59,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "fine slate-green wool cote, narrow restrained fur at mantle opening, small plain signet at lower edge, bare bald head",
+    "status": "temporary_duplicate_needs_new_face",
+    "duplicateOf": "p0025",
+    "needsNewPortrait": true,
+    "reason": "독립 인물의 동일 얼굴 중복을 피하려면 신규 초상 필요. 현 연결은 검수용 임시 대역.",
+    "ageChain": [
+      {
+        "id": "P23",
+        "age": 63,
+        "path": "assets-inbox/portrait-pool/pivot-pilot-20260926/assets/portraits/P23.png"
+      }
+    ]
+  },
+  {
+    "personId": "p0131",
+    "authorId": "h18-g1m",
+    "portraitId": "I101_old",
+    "identity": "I101",
+    "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I101_old.png",
+    "sha256": "df8b97a7add610a386530879c659e1436573f7a2784b67808206d719c3835d48",
+    "sourceAge": 70,
+    "depictedAge": 61,
+    "sourceSex": "m",
+    "sourceLineage": null,
+    "sourceParentIdentities": [],
+    "clothing": "scarlet fine wool surcoat over deep blue cote, broad genuine white ermine mantle with sparse black tail tips, restrained gold clasp and unadorned signet ring",
+    "status": "candidate_existing",
+    "duplicateOf": null,
+    "needsNewPortrait": false,
+    "reason": "성별·연령·복식 조건에 맞는 기존 초상 후보. 새 가계와 원화 혈통의 유전 정합은 미검증.",
+    "ageChain": [
+      {
+        "id": "I101_young",
+        "age": 24,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I101_young.png"
+      },
+      {
+        "id": "I101_mature",
+        "age": 45,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I101_mature.png"
+      },
+      {
+        "id": "I101_old",
+        "age": 70,
+        "path": "assets-inbox/portrait-pool/pool3-20260927/assets/portraits/I101_old.png"
+      }
+    ]
+  }
+]

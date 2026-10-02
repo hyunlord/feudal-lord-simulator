@@ -356,7 +356,7 @@ test("createPalisadeConstructionSite costs each path step without becoming a bui
     order: 0,
     path: oneStepPath,
     anchor: { tx: 2, ty: 2 },
-    required: { timber: 15 },
+    required: { timber: 8 },
     delivered: {},
     reserved: {},
     builderTicks: 0,
@@ -365,7 +365,7 @@ test("createPalisadeConstructionSite costs each path step without becoming a bui
     stall: "awaiting_materials",
     startedTick: 90,
   });
-  assert.deepEqual(fourStep.required, { timber: 60 });
+  assert.deepEqual(fourStep.required, { timber: 32 }); // FIX-16: 8 a step
 });
 
 test("createPalisadeConstructionSite rejects empty open and oversized paths", () => {
@@ -429,8 +429,8 @@ test("common construction material stall work and refund helpers accept wall sit
   };
 
   // When / Then
-  assert.deepEqual(constructionMaterialStatus(wallSite).outstanding, { timber: 43 });
-  assert.deepEqual(constructionDeliveryNeed(wallSite), { timber: 38 });
+  assert.deepEqual(constructionMaterialStatus(wallSite).outstanding, { timber: 15 }); // FIX-16: 4 steps × 8 = 32
+  assert.deepEqual(constructionDeliveryNeed(wallSite), { timber: 10 });
   assert.equal(
     constructionStall(wallSite, [{ id: "store-1", stock: { timber: 12 }, hasRoute: false }]),
     "no_route",
