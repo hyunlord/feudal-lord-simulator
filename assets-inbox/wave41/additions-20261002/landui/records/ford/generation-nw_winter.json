@@ -1,0 +1,69 @@
+{
+  "id": "ford_w1_nw_winter",
+  "tool": "image_gen.imagegen",
+  "attempt": 1,
+  "model": null,
+  "seed": null,
+  "prompt": "Use case: lighting-weather. Edit image1, our NEW w1 NW ford summer sprite. Image2 is approved winter MATERIAL reference only, not geometry. Make WINTER variant exactly same composition, transparent512x256canvas, pivot256,128, same three stones in exactly same positions, same road wheel grooves, same banks and all silhouette edges. Add restrained thin frost/snow on EXISTING grass/earth and stone top surfaces, tiny pale ice rim along existing water edges. Water stays OPEN clear greyblue with submerged gravel visible. Do not add snow piles outside the original alpha, do not lengthen the crossing or add stones. Upper-left soft light, muted handpainted prerender1300-1450England. No bridge,wood,rails,text,background,checkerboard. Preserve giant transparent padding and tiny centered original sprite. One image only.",
+  "status": "candidate",
+  "pivot": [
+    256,
+    128
+  ],
+  "tile": [
+    128,
+    64
+  ],
+  "renderScale": 0.5,
+  "references": [
+    {
+      "path": "assets/ford_w1_nw_summer.png",
+      "role": "geometry reference before translucency cleanup",
+      "sha256_at_generation": "af4e92334d40c00fa986bc1d81f32e30b085fd142e975f6a03bfe9a77472dc19"
+    },
+    {
+      "path": "references/ford_w2_nw_winter.png",
+      "sha256": "5fd8d08904b28ecf140033c4280b2ba0b28294571cc034019d5346fd43917c51"
+    }
+  ],
+  "raw_copy": "raw/nw_winter.png",
+  "raw_sha256": "38adfc58593278f4227ed2fc598ea9ca67d554e082114997e44444ce0e87cea3",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f702-f327-7ae1-8b3a-d8d5e824be22/exec-5d3ad3c5-010c-43ca-bcad-01d1b9f021fa.png",
+  "postprocessing": {
+    "operation": "Winter RGB bbox registration to own new summer geometry; original summer alpha applied exactly",
+    "winter_bbox": {
+      "x0": 171,
+      "y0": 81,
+      "x1": 340,
+      "y1": 174
+    },
+    "summer_bbox": {
+      "x0": 173,
+      "y0": 80,
+      "x1": 338,
+      "y1": 171
+    },
+    "water_alpha": "Bluegrey summer water pixels capped at220 alpha; same alpha reused winter",
+    "final_cleanup": "Alpha>245 snapped to255 for opaque materials; paired alpha identical; winter black RGB fringe extended from nearest valid interior color (463 pixels per pair).",
+    "saturated_artifact_pixels_desaturated": 40,
+    "final_nw_boundary_cleanup": {
+      "pixels": 332,
+      "operation": "At alpha boundary within3px, desaturate RGB chroma>30 to frost grey; alpha untouched"
+    }
+  },
+  "output": "assets/ford_w1_nw_winter.png",
+  "sha256": "9e142631eac9846f719e4a95ae515ad5bcd74412a308d7f25237727c4fb469aa",
+  "qa": {
+    "width": 512,
+    "height": 256,
+    "alpha_bbox": {
+      "x0": 173,
+      "y0": 80,
+      "x1": 338,
+      "y1": 171
+    },
+    "season_pair_alpha_diff": 0,
+    "geometry": "new w1, not w2 alpha preservation",
+    "runtime_installed": false
+  }
+}

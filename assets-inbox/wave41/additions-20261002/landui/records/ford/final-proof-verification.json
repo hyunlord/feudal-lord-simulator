@@ -1,0 +1,51 @@
+{
+  "assets": [
+    {
+      "id": "ne_summer",
+      "sha256": "85053f4ff7e1ec60adabd07b610db6278dd51b20ea98aaaee0eaf5a16b03e495",
+      "generation_hash_match": true,
+      "qa_hash_match": true,
+      "alpha0_nonzero_rgb": 0,
+      "season_alpha_diff": 0
+    },
+    {
+      "id": "nw_summer",
+      "sha256": "d419db75830740295d51ed9874bccfdb994e226551a19212852d85bf037b2e3d",
+      "generation_hash_match": true,
+      "qa_hash_match": true,
+      "alpha0_nonzero_rgb": 0,
+      "season_alpha_diff": 0
+    },
+    {
+      "id": "ne_winter",
+      "sha256": "1f8d077b989b4abca85ca30e52c7d7d2053aa0523b32853e212bee23b26a5951",
+      "generation_hash_match": true,
+      "qa_hash_match": true,
+      "alpha0_nonzero_rgb": 0,
+      "season_alpha_diff": 0
+    },
+    {
+      "id": "nw_winter",
+      "sha256": "9e142631eac9846f719e4a95ae515ad5bcd74412a308d7f25237727c4fb469aa",
+      "generation_hash_match": true,
+      "qa_hash_match": true,
+      "alpha0_nonzero_rgb": 0,
+      "season_alpha_diff": 0
+    }
+  ],
+  "proofs": [
+    {
+      "file": "proofs/comparison.jpg",
+      "sha256": "649e80c76dd64402c4a434e8dd285895d682fc8a1a9856d9c947e5682cabead1"
+    },
+    {
+      "file": "proofs/geometry.png",
+      "sha256": "ae118df80df76ea44b49334ca6f4f0fe4388504d45817c55109a39e426a24e3e"
+    },
+    {
+      "file": "proofs/light-dark.jpg",
+      "sha256": "18fc633c859f0aa71867ab1615153fa39eacddc7d90bcbe1881d4d62eb522de1"
+    }
+  ],
+  "status": "PASS"
+}

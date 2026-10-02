@@ -1,0 +1,46 @@
+{
+  "verdict": "PASS_OFFLINE",
+  "asset_count": 2,
+  "canvas": [
+    512,
+    64
+  ],
+  "format": "RGBA PNG",
+  "pivot": [
+    0,
+    0
+  ],
+  "repeat": "X",
+  "edge_max_rgba_delta": 0,
+  "alpha_range": [
+    0,
+    255
+  ],
+  "hidden_rgb_zero": true,
+  "assets": [
+    {
+      "id": "woodland_edge_a",
+      "width": 512,
+      "height": 64,
+      "channels": 4,
+      "transparent_pixels": 1024,
+      "hidden_rgb_nonzero_pixels": 0,
+      "sha256": "e1279f9b84a25a13b9711c8255173147697ecae84537d4c0eddb5590d0f66abf"
+    },
+    {
+      "id": "woodland_edge_b",
+      "width": 512,
+      "height": 64,
+      "channels": 4,
+      "transparent_pixels": 1024,
+      "hidden_rgb_nonzero_pixels": 0,
+      "sha256": "9c79ca871d54d65ed7c766e69dde44563715b321fed44eda4b22bf9b84a7c6e6"
+    }
+  ],
+  "reviewed": [
+    "proofs/AB-actual-fills.png",
+    "proofs/alpha-dark-light.png",
+    "proofs/scales-0.5-1-1.4.png"
+  ],
+  "runtime_tested": false
+}

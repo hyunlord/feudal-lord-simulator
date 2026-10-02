@@ -1,0 +1,214 @@
+{
+  "assets": [
+    {
+      "id": "ford_w1_ne_summer-v1",
+      "path": "assets/ford/ford_w1_ne_summer-v1.png",
+      "width": 512,
+      "height": 256,
+      "channels": 4,
+      "pivot": [
+        256,
+        128
+      ],
+      "tile": [
+        128,
+        64
+      ],
+      "waterSpanTiles": 1,
+      "travelLaneTiles": 1,
+      "waterJoins": [
+        [
+          224,
+          144
+        ],
+        [
+          288,
+          112
+        ]
+      ],
+      "alphaBounds": [
+        167,
+        79,
+        346,
+        177
+      ],
+      "edgePixels": 0,
+      "partialAlphaPixels": 7867,
+      "waterPixels": 2070,
+      "sha256": "bc4b2ce4c5f8f8bd6d42392f7f196f3a6099a318a5d9c41427823130cf377e09",
+      "transform": {
+        "uMin": -253.5,
+        "uMax": 284.5,
+        "vMin": 780,
+        "vMax": 1038,
+        "waterMin": -98.5,
+        "waterMax": 129.5,
+        "sourceSize": [
+          1774,
+          887
+        ]
+      },
+      "seasonGeometry": "Same directional source transform for summer and winter; model detail changes possible."
+    },
+    {
+      "id": "ford_w1_nw_summer-v1",
+      "path": "assets/ford/ford_w1_nw_summer-v1.png",
+      "width": 512,
+      "height": 256,
+      "channels": 4,
+      "pivot": [
+        256,
+        128
+      ],
+      "tile": [
+        128,
+        64
+      ],
+      "waterSpanTiles": 1,
+      "travelLaneTiles": 1,
+      "waterJoins": [
+        [
+          224,
+          112
+        ],
+        [
+          288,
+          144
+        ]
+      ],
+      "alphaBounds": [
+        167,
+        78,
+        343,
+        180
+      ],
+      "edgePixels": 0,
+      "partialAlphaPixels": 7593,
+      "waterPixels": 1347,
+      "sha256": "aa7365c038db9c5dfb38463a46690eecce4a29fe2d4b2902a49789a0c850c5ed",
+      "transform": {
+        "uMin": 592,
+        "uMax": 1174,
+        "vMin": -119,
+        "vMax": 108.5,
+        "waterMin": 756,
+        "waterMax": 968,
+        "sourceSize": [
+          1774,
+          887
+        ]
+      },
+      "seasonGeometry": "Same directional source transform for summer and winter; model detail changes possible."
+    },
+    {
+      "id": "ford_w1_ne_winter-v1",
+      "path": "assets/ford/ford_w1_ne_winter-v1.png",
+      "width": 512,
+      "height": 256,
+      "channels": 4,
+      "pivot": [
+        256,
+        128
+      ],
+      "tile": [
+        128,
+        64
+      ],
+      "waterSpanTiles": 1,
+      "travelLaneTiles": 1,
+      "waterJoins": [
+        [
+          224,
+          144
+        ],
+        [
+          288,
+          112
+        ]
+      ],
+      "alphaBounds": [
+        166,
+        79,
+        347,
+        177
+      ],
+      "edgePixels": 0,
+      "partialAlphaPixels": 8027,
+      "waterPixels": 2652,
+      "sha256": "c882fc8ee9a91d0b5de1c1a4525cb0dc9b1f9a7c52adb6cbb9c5b605d8548846",
+      "transform": {
+        "uMin": -253.5,
+        "uMax": 284.5,
+        "vMin": 780,
+        "vMax": 1038,
+        "waterMin": -98.5,
+        "waterMax": 129.5,
+        "sourceSize": [
+          1774,
+          887
+        ]
+      },
+      "seasonGeometry": "Same directional source transform for summer and winter; model detail changes possible."
+    },
+    {
+      "id": "ford_w1_nw_winter-v1",
+      "path": "assets/ford/ford_w1_nw_winter-v1.png",
+      "width": 512,
+      "height": 256,
+      "channels": 4,
+      "pivot": [
+        256,
+        128
+      ],
+      "tile": [
+        128,
+        64
+      ],
+      "waterSpanTiles": 1,
+      "travelLaneTiles": 1,
+      "waterJoins": [
+        [
+          224,
+          112
+        ],
+        [
+          288,
+          144
+        ]
+      ],
+      "alphaBounds": [
+        167,
+        78,
+        344,
+        180
+      ],
+      "edgePixels": 0,
+      "partialAlphaPixels": 7693,
+      "waterPixels": 1620,
+      "sha256": "af521946baf48e02846007d6a39aad64f1084f724fe528b79addc152d4482216",
+      "transform": {
+        "uMin": 592,
+        "uMax": 1174,
+        "vMin": -119,
+        "vMax": 108.5,
+        "waterMin": 756,
+        "waterMax": 968,
+        "sourceSize": [
+          1774,
+          887
+        ]
+      },
+      "seasonGeometry": "Same directional source transform for summer and winter; model detail changes possible."
+    }
+  ],
+  "geometry": [
+    {
+      "direction": "ne",
+      "alphaSilhouetteIoU": 0.9619994899260392
+    },
+    {
+      "direction": "nw",
+      "alphaSilhouetteIoU": 0.977116704805492
+    }
+  ]
+}

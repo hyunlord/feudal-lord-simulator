@@ -1,0 +1,63 @@
+{
+  "id": "ford_w1_ne_summer",
+  "tool": "image_gen.imagegen",
+  "attempt": 1,
+  "model": null,
+  "seed": null,
+  "prompt": "Use case: precise-object-edit. Make a NEW one-tile-wide ford sprite from this project-owned TWO-tile ford reference, not a scaled-down copy.\nTransparent canvas 512x256, isometric 2:1, upper-left soft light, hand-painted prerender southern England1300-1450.\nNE crossing goes southwest lower-left to northeast upper-right, slope -0.5. Exact pixel layout on512x256: pivot(256,128); ONE-tile water diamond vertices(256,96),(320,128),(256,160),(192,128). Crossing water meets dry bank at(224,144) and(288,112). Short dry earth ramps continue outward half tile to(192,160) and(320,96). Total artwork approximately x172..340,y86..170; leave generous transparent canvas padding. The ford crossing is a narrow strip through this water tile, not an entire huge river.\nREDESIGN the reference with water crossing HALF the reference water length, 3 modest stepping stones instead of7, same individual stone size and road width as reference. DO NOT SHRINK THE WHOLE TWO-TILE ART. Clear shallow muted grey-blue water with visible warm gravel, three irregular natural stones, paired dirt cart-wheel grooves on both short ramps, sparse summer olive grass at ramp edges. No bridge deck,no wood,no rails,no people,no text,no checkerboard. Transparent outside the small ford strip, translucent shallow water. Make one asset only.",
+  "status": "candidate",
+  "pivot": [
+    256,
+    128
+  ],
+  "tile": [
+    128,
+    64
+  ],
+  "renderScale": 0.5,
+  "references": [
+    {
+      "path": "references/ford_w2_ne_summer.png",
+      "sha256": "36d42e70dbf4824b00f3f6a62bcd7c0b6aff2dafe60bf05d811fd65431d80593"
+    }
+  ],
+  "raw_copy": "raw/ne_summer.png",
+  "raw_sha256": "aad40106302c9ac368a174b8a5fd47f0c88fe4ed5d5bd703148121304d50fab7",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f702-f327-7ae1-8b3a-d8d5e824be22/exec-d322c93a-86d3-4faf-acfb-5875fe1f2174.png",
+  "postprocessing": {
+    "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f702-f327-7ae1-8b3a-d8d5e824be22/exec-d322c93a-86d3-4faf-acfb-5875fe1f2174.png",
+    "operation": "Uniform resample and translate of NEWLY generated w1, NOT original w2",
+    "estimated_raw512_water_endpoints": [
+      [
+        213,
+        170
+      ],
+      [
+        312,
+        121
+      ]
+    ],
+    "scale": 0.6464646464646465,
+    "width": 331,
+    "height": 165,
+    "left": 86,
+    "top": 34,
+    "water_alpha": "Bluegrey summer water pixels capped at220 alpha; same alpha reused winter",
+    "final_cleanup": "Alpha>245 snapped to255 for opaque materials; paired alpha identical; winter black RGB fringe extended from nearest valid interior color (366 pixels per pair)."
+  },
+  "output": "assets/ford_w1_ne_summer.png",
+  "sha256": "85053f4ff7e1ec60adabd07b610db6278dd51b20ea98aaaee0eaf5a16b03e495",
+  "qa": {
+    "width": 512,
+    "height": 256,
+    "alpha_bbox": {
+      "x0": 183,
+      "y0": 85,
+      "x1": 335,
+      "y1": 161
+    },
+    "season_pair_alpha_diff": 0,
+    "geometry": "new w1, not w2 alpha preservation",
+    "runtime_installed": false
+  }
+}
