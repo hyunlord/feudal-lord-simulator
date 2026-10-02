@@ -12,13 +12,15 @@ import { GROUND_CHUNK_TILES, TILE_RING, chunkTileBounds, type GroundChunkPlan } 
 import { chunkHash, fillArtKey, fillVariant, isWaterStrip, landArtKeys, landStripLoops, loopStrips, type LandGround, type StripFamily } from "./archetypeGroundModel";
 import { chunkRegions, type ChunkRegion } from "./archetypeGroundRegions";
 import type { ShoreStripOverride } from "./drawShoreline";
+import { drawLandRock } from "./landRockRegions";
+import type { TerrainPatternAssets } from "./terrainPatterns";
 
 // LAND-UI: a land's Wave 22 ground in the V2 ground chunks (drawTerrainBoundaryV2 drawGroundChunk; the layer and its
 // keys: archetypeGroundModel.ts). Art loads on its first draw (manifestArt), never in the startup preload.
 //  1. Fills, after the grass diamonds (kept under them, so a fill's antialiased edge never shows the empty raster): per
 //     fill one path of its tiles with pattern a, then one path of its b blocks with pattern b — two fills per fill
 //     kind and chunk, not one per tile. The 256 x 128 source covers a 2 x 2 tile block in the tile plane (the proof's
-//     UV: the 256-unit world square, then the iso projection), origin on a block corner, so a / b switch on repeats.
+//     UV: the 256-unit world square, then the iso projection), origin on a block corner, so a / b switch on repeats. NAT-5: then the rock (landRockRegions.ts).
 //  2. Transition strips (boundary/*_edge, 512 x 64, X-repeating; top = the meadow, bottom = the named ground,
 //     records/strips-sources.json) on each tile edge where a land fill meets the meadow or the heath: flat in the tile
 //     plane like the old shore strip (u = 128 source px per tile along the edge, from the edge's map coordinate so
@@ -95,13 +97,6 @@ function patternOf(context: CanvasRenderingContext2D, image: CanvasImageSource):
   return map.get(image) ?? null;
 }
 
-function traceDiamond(context: CanvasRenderingContext2D, tile: Tile): void {
-  const centre = tileToScreen(tile.tx, tile.ty);
-  context.moveTo(centre.sx, centre.sy - TILE_H / 2); context.lineTo(centre.sx + TILE_W / 2, centre.sy);
-  context.lineTo(centre.sx, centre.sy + TILE_H / 2); context.lineTo(centre.sx - TILE_W / 2, centre.sy);
-  context.closePath();
-}
-
 /** Traces a chunk's part of a fill region (its loops, plus the chunk's box when the chunk lies inside): fill "evenodd". */
 function traceRegion(context: CanvasRenderingContext2D, part: ChunkRegion, box: ScreenBox): void {
   context.beginPath();
@@ -113,11 +108,9 @@ function traceRegion(context: CanvasRenderingContext2D, part: ChunkRegion, box: 
   if (part.parity) { context.moveTo(box.left, box.top); context.lineTo(box.right, box.top); context.lineTo(box.right, box.bottom); context.lineTo(box.left, box.bottom); context.closePath(); }
 }
 
-/** 1. The land fills over the chunk's grass diamonds and season grass, clipped off its rock tiles. Returns the fill passes. */
-export function drawLandFills(context: CanvasRenderingContext2D, land: LandGround, plan: GroundChunkPlan, tiles: readonly Tile[], box: ScreenBox, season: SeasonIndex): number {
+/** 1. The land fills over the chunk's grass diamonds and season grass, then its rock (NAT-5). Returns the fill passes. */
+export function drawLandFills(context: CanvasRenderingContext2D, land: LandGround, plan: GroundChunkPlan, box: ScreenBox, season: SeasonIndex, patterns?: TerrainPatternAssets): number {
   const parts = chunkRegions(land, plan);
-  if (parts.length === 0) return 0;
-  const rock = tiles.filter(tile => tile.terrain === "rock");
   const bounds = chunkTileBounds(plan.cx, plan.cy);
   let passes = 0;
   for (const part of parts) {
@@ -128,12 +121,6 @@ export function drawLandFills(context: CanvasRenderingContext2D, land: LandGroun
       // Pattern px (u, v) -> tile (u / 128 - 0.5, v / 64 - 0.5) -> iso screen: 2 x 2 tiles per repeat, origin on a block corner.
       pattern.setTransform({ a: 0.25, b: 0.125, c: -0.5, d: 0.25, e: 0, f: -TILE_H / 2 });
       context.save();
-      if (rock.length > 0) {
-        context.beginPath();
-        context.moveTo(box.left, box.top); context.lineTo(box.right, box.top); context.lineTo(box.right, box.bottom); context.lineTo(box.left, box.bottom); context.closePath();
-        for (const tile of rock) traceDiamond(context, tile);
-        context.clip("evenodd");
-      }
       traceRegion(context, part, box);
       if (variant === "b") {
         // The b blocks inside the region: the region as the clip, then the blocks' 2 x 2 diamonds.
@@ -154,7 +141,7 @@ export function drawLandFills(context: CanvasRenderingContext2D, land: LandGroun
       passes += 1;
     }
   }
-  return passes;
+  return passes + drawLandRock(context, land, plan, box, patterns);
 }
 
 function traceBlock(context: CanvasRenderingContext2D, bx: number, by: number): void {
