@@ -1,0 +1,2341 @@
+[
+  {
+    "id": "7f71a1d69c84",
+    "scene": "prenat1-roof",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 615,
+      "y": 564,
+      "width": 181,
+      "height": 13
+    },
+    "score": 0.8010567593574524,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 1.3125,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 31.369081497192383,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof:roof_overlap:figure:0",
+    "scene": "prenat1-roof",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 926,
+      "y": 330,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof:roof_overlap:figure:1",
+    "scene": "prenat1-roof",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1246,
+      "y": 362,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof:roof_overlap:figure:2",
+    "scene": "prenat1-roof",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1246,
+      "y": 298,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof:roof_overlap:figure:3",
+    "scene": "prenat1-roof",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1217,
+      "y": 320,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof:roof_overlap:figure:4",
+    "scene": "prenat1-roof",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1316,
+      "y": 168,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof:roof_overlap:figure:5",
+    "scene": "prenat1-roof",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1380,
+      "y": 72,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof:roof_overlap:figure:6",
+    "scene": "prenat1-roof",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1438,
+      "y": 74,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "63d1eab40c19",
+    "scene": "prenat1-roof",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 811,
+      "y": 473,
+      "width": 12,
+      "height": 21
+    },
+    "score": 0.8611764705882352,
+    "reason": "이동 인물 위치 근처의 실제 변화하는 유색 실루엣이 돌담 그림 위에 겹침",
+    "metrics": [
+      {
+        "name": "measurement_frame",
+        "value": 4.0,
+        "unit": "frame"
+      },
+      {
+        "name": "wall_changed_pixels",
+        "value": 74.0,
+        "unit": "px"
+      },
+      {
+        "name": "wall_overlap_fraction",
+        "value": 0.8705882352941177,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_foot_distance",
+        "value": 11.538457435906956,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "d21292c6cd43",
+    "scene": "prenat1-roof",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 758,
+      "y": 506,
+      "width": 5,
+      "height": 13
+    },
+    "score": 0.87,
+    "reason": "이동 인물 위치 근처의 실제 변화하는 유색 실루엣이 돌담 그림 위에 겹침",
+    "metrics": [
+      {
+        "name": "measurement_frame",
+        "value": 10.0,
+        "unit": "frame"
+      },
+      {
+        "name": "wall_changed_pixels",
+        "value": 36.0,
+        "unit": "px"
+      },
+      {
+        "name": "wall_overlap_fraction",
+        "value": 0.9,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_foot_distance",
+        "value": 14.083877307049878,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "ef037d2555ee",
+    "scene": "prenat1-roof",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 421,
+      "y": 204,
+      "width": 19,
+      "height": 33
+    },
+    "score": 0.850375939849624,
+    "reason": "이동 인물 위치 근처의 실제 변화하는 유색 실루엣이 돌담 그림 위에 겹침",
+    "metrics": [
+      {
+        "name": "measurement_frame",
+        "value": 11.0,
+        "unit": "frame"
+      },
+      {
+        "name": "wall_changed_pixels",
+        "value": 222.0,
+        "unit": "px"
+      },
+      {
+        "name": "wall_overlap_fraction",
+        "value": 0.8345864661654135,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_foot_distance",
+        "value": 17.83489837369232,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof:scale_ratio:0",
+    "scene": "prenat1-roof",
+    "detector": "scale_ratio",
+    "box": {
+      "x": 1338,
+      "y": 346,
+      "width": 76,
+      "height": 58
+    },
+    "score": 0.75,
+    "reason": "Alpha height outside bible range plus 20% tolerance: /assets/wave27/yards/yard_rain_barrel.png#crop=0,0,128,64",
+    "metrics": [
+      {
+        "name": "object_person_height",
+        "value": 1.6105065666041274,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_height",
+        "value": 36.013513513513516,
+        "unit": "px"
+      },
+      {
+        "name": "reference_min",
+        "value": 0.45,
+        "unit": "ratio"
+      },
+      {
+        "name": "reference_max",
+        "value": 0.65,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof:repeat_density:0",
+    "scene": "prenat1-roof",
+    "detector": "repeat_density",
+    "box": {
+      "x": 1126,
+      "y": 43,
+      "width": 442,
+      "height": 459
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/ale_barrels_3.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 6.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 512.0,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof:repeat_density:1",
+    "scene": "prenat1-roof",
+    "detector": "repeat_density",
+    "box": {
+      "x": 966,
+      "y": 136,
+      "width": 570,
+      "height": 455
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/yarn_skeins_1.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 7.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 512.0,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "f5668705a296",
+    "scene": "prenat1-roof-confirm",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 1288,
+      "y": 934,
+      "width": 254,
+      "height": 13
+    },
+    "score": 0.84449285030365,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 1.8828125,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 31.018856048583984,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:0",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1020,
+      "y": 416,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:1",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 892,
+      "y": 352,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:2",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 764,
+      "y": 416,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:3",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 892,
+      "y": 480,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:4",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 700,
+      "y": 384,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:5",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1212,
+      "y": 384,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:6",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1212,
+      "y": 448,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:7",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1148,
+      "y": 480,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:8",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1212,
+      "y": 512,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:9",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1276,
+      "y": 608,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:10",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1212,
+      "y": 320,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:11",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1340,
+      "y": 192,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:12",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1404,
+      "y": 224,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:13",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1404,
+      "y": 288,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:14",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1020,
+      "y": 160,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:15",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1404,
+      "y": 96,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:16",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 942,
+      "y": 354,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 6.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:17",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 942,
+      "y": 482,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 6.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:18",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 750,
+      "y": 386,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 6.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:19",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1262,
+      "y": 450,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 6.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:20",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1198,
+      "y": 482,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 6.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:21",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1390,
+      "y": 194,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 6.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:22",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1454,
+      "y": 290,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 6.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:23",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1070,
+      "y": 162,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 6.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:24",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1060,
+      "y": 394,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:25",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 932,
+      "y": 330,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:26",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 804,
+      "y": 394,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:27",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 932,
+      "y": 458,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:28",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 740,
+      "y": 362,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:29",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1252,
+      "y": 362,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:30",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1252,
+      "y": 426,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:31",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1188,
+      "y": 458,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:32",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1252,
+      "y": 490,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:33",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1316,
+      "y": 586,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:34",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1252,
+      "y": 298,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:35",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1380,
+      "y": 170,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:36",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1444,
+      "y": 202,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:37",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1444,
+      "y": 266,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:38",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1060,
+      "y": 138,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:39",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1444,
+      "y": 74,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:40",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 993,
+      "y": 392,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:41",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 865,
+      "y": 328,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:42",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 737,
+      "y": 392,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:43",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 865,
+      "y": 456,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:44",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 673,
+      "y": 360,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:45",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1185,
+      "y": 360,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:46",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1185,
+      "y": 424,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:47",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1121,
+      "y": 456,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:48",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1185,
+      "y": 488,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:49",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1249,
+      "y": 584,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:50",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1185,
+      "y": 296,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:51",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1313,
+      "y": 168,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:52",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1377,
+      "y": 200,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:53",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1377,
+      "y": 264,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:54",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 993,
+      "y": 136,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:stationary_person:figure:55",
+    "scene": "prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1377,
+      "y": 72,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:roof_overlap:figure:56",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 932,
+      "y": 330,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof-confirm:roof_overlap:figure:57",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 942,
+      "y": 354,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof-confirm:roof_overlap:figure:58",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1185,
+      "y": 360,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof-confirm:roof_overlap:figure:59",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1252,
+      "y": 362,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof-confirm:roof_overlap:figure:60",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1252,
+      "y": 298,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof-confirm:roof_overlap:figure:61",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1212,
+      "y": 320,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof-confirm:roof_overlap:figure:62",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1313,
+      "y": 168,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof-confirm:roof_overlap:figure:63",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1377,
+      "y": 72,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "prenat1-roof-confirm:roof_overlap:figure:64",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1444,
+      "y": 74,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "id": "54db08857bc0",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 355,
+      "y": 480,
+      "width": 18,
+      "height": 29
+    },
+    "score": 0.7513636363636363,
+    "reason": "이동 인물 위치 근처의 실제 변화하는 유색 실루엣이 돌담 그림 위에 겹침",
+    "metrics": [
+      {
+        "name": "measurement_frame",
+        "value": 5.0,
+        "unit": "frame"
+      },
+      {
+        "name": "wall_changed_pixels",
+        "value": 111.0,
+        "unit": "px"
+      },
+      {
+        "name": "wall_overlap_fraction",
+        "value": 0.5045454545454545,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_foot_distance",
+        "value": 4.738945030273969,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "c705c5c8a729",
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 421,
+      "y": 209,
+      "width": 14,
+      "height": 33
+    },
+    "score": 0.8548262548262548,
+    "reason": "이동 인물 위치 근처의 실제 변화하는 유색 실루엣이 돌담 그림 위에 겹침",
+    "metrics": [
+      {
+        "name": "measurement_frame",
+        "value": 16.0,
+        "unit": "frame"
+      },
+      {
+        "name": "wall_changed_pixels",
+        "value": 220.0,
+        "unit": "px"
+      },
+      {
+        "name": "wall_overlap_fraction",
+        "value": 0.8494208494208494,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_foot_distance",
+        "value": 17.142461900201308,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:scale_ratio:0",
+    "scene": "prenat1-roof-confirm",
+    "detector": "scale_ratio",
+    "box": {
+      "x": 1338,
+      "y": 346,
+      "width": 76,
+      "height": 58
+    },
+    "score": 0.75,
+    "reason": "Alpha height outside bible range plus 20% tolerance: /assets/wave27/yards/yard_rain_barrel.png#crop=0,0,128,64",
+    "metrics": [
+      {
+        "name": "object_person_height",
+        "value": 1.6105065666041274,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_height",
+        "value": 36.013513513513516,
+        "unit": "px"
+      },
+      {
+        "name": "reference_min",
+        "value": 0.45,
+        "unit": "ratio"
+      },
+      {
+        "name": "reference_max",
+        "value": 0.65,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:repeat_density:0",
+    "scene": "prenat1-roof-confirm",
+    "detector": "repeat_density",
+    "box": {
+      "x": 1126,
+      "y": 43,
+      "width": 442,
+      "height": 459
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/ale_barrels_3.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 6.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 512.0,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "id": "prenat1-roof-confirm:repeat_density:1",
+    "scene": "prenat1-roof-confirm",
+    "detector": "repeat_density",
+    "box": {
+      "x": 1094,
+      "y": 40,
+      "width": 442,
+      "height": 455
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/yarn_skeins_1.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 6.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 512.0,
+        "unit": "px"
+      }
+    ]
+  }
+]

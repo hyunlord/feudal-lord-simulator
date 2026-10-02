@@ -1,0 +1,30 @@
+[
+  {
+    "scene": "prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "defects": [
+      {
+        "id": "QA005-NW-wall-moving-figure",
+        "box": {
+          "x": 416,
+          "y": 199,
+          "width": 31,
+          "height": 49
+        },
+        "note": "원기록과 같은 줌2·pan(544,-2277)의 NW벽 면. 확인 프레임16/tick320238에서 빨간 옷 이동 인물과 수레가 수직 벽 그림 앞에 겹침. 프레임3에도 같은 위치에서 노란 옷 인물·수레가 통과. 동일 공간 결함 1곳으로 계산하며 정지 지붕 손님과 다름. 시간 기준은20프레임 중발생,대표증거16.png.",
+        "reproduced": true,
+        "exclusion_reason": ""
+      }
+    ],
+    "regions": [
+      {
+        "x": 410,
+        "y": 190,
+        "width": 55,
+        "height": 80
+      }
+    ],
+    "eligible": true,
+    "exclusion_reason": ""
+  }
+]

@@ -1,0 +1,2342 @@
+[
+  {
+    "number": 21,
+    "id": "ck_evt_021",
+    "category": "자연",
+    "period": "1348–1381",
+    "years": [
+      1348,
+      1349
+    ],
+    "conditions": {
+      "land": "본거지 장원(HOME_ESTATE_ID). 지도 밖 영지 경로 아님.",
+      "population": "사망한 소작인과 남은 가족이라는 배경이 실제 청원에 맞아야 함. 인구 수치 문턱 없음.",
+      "rights": "이 장원에 해당 관습 부담이 적용된다는 청원 전제. 권리조각 변경 없음.",
+      "relations": "commons와 town 등 해당 효과의 세력 레코드가 실제 존재해야 함.",
+      "season": "계절 제한 없음. 해당 home 청원의 실제 기한 안.",
+      "state": "실제 home heriot 미결 청원. 사망은 이미 일어난 배경으로만 사용하며 이 선택으로 사람을 죽이거나 병을 발생시키지 않음. 병 소식은 편집 서사이고 사망 원인을 임의 확정하지 않음."
+    },
+    "sender": {
+      "faction": "소작인 공동체",
+      "role": "숨진 소작인의 유족"
+    },
+    "title": "장례 뒤에 남은 부담금",
+    "body": "병 소식이 도는 가운데 소작인이 숨지고, 남은 가족이 장원에 사망 부과금 감면을 청했습니다. 집행관은 이 가구에 적용되는 관습 부담액을 적어 왔습니다.",
+    "choices": [
+      {
+        "id": "relieve",
+        "label": "사망 부과금을 면제한다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openHome.heriot.id",
+              "grant": true
+            },
+            "rangeNote": "현재 청원액 [15,50]d는 기존 게임 생성 범위. 승인 시 현금 [0,0]d, commons +[5,5].",
+            "preconditions": "agency가 있는 영주 모드. HOME_ESTATE_ID의 실제 heriot 청원이 open이며 영주에게 도착했고 deadline 이내. 본문 상황과 맞는 현재 청원만 연결.",
+            "limits": "감면 승인에 실제 지출 없음. 이미 낸 돈의 환급·유산 이전·가축 반환 아님. 금고 변경과 history.ts의 HOME_PETITION_KINDS 세력 관계 후처리를 온전히 적용한다. 새 청원 종류를 만들지 않는다."
+          }
+        ],
+        "tradeoff": "유족의 부담을 덜어 소작인 관계를 얻지만 거절하면 걷을 수 있는 청원액을 포기한다.",
+        "ledger": "사망 부과금 감면 승인; 징수0d, 농민 공동체 관계+5.",
+        "chronicle": "영주는 장례 뒤 남은 가족의 사망 부과금을 면제했다.",
+        "costAxes": [
+          "money",
+          "relationship"
+        ]
+      },
+      {
+        "id": "collect",
+        "label": "관습에 따른 부담금을 걷는다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openHome.heriot.id",
+              "grant": false
+            },
+            "rangeNote": "현재 청원액 [15,50]d 징수; commons −[4,4]. 모두 기존 게임 값.",
+            "preconditions": "agency가 있는 영주 모드. HOME_ESTATE_ID의 실제 heriot 청원이 open이며 영주에게 도착했고 deadline 이내. 본문 상황과 맞는 현재 청원만 연결.",
+            "limits": "현금 수입만 발생. 가축·토지·후계권을 압수하는 효과 없음. 금고 변경과 history.ts의 HOME_PETITION_KINDS 세력 관계 후처리를 온전히 적용한다. 새 청원 종류를 만들지 않는다."
+          }
+        ],
+        "tradeoff": "금고에 부담금이 들어오지만 농민 공동체와의 관계가 나빠진다.",
+        "ledger": "기존 청원액 징수; 농민 공동체 관계−4.",
+        "chronicle": "사망 부과금은 관습대로 걷혔고 유족의 감면 청은 받아들여지지 않았다.",
+        "costAxes": [
+          "money",
+          "relationship"
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": 8,
+      "steward": "FIX-14의 동일 estateId/kind 선례는 위임한 지도 밖 영지에 구현되어 있다. 확인한 최신 homePetitionSeason은 direct로 생성하므로 이 홈 청원은 영주 판단을 유지한다. 선례 기능 전체를 새 효과로 제안하지 않는다.",
+      "exclusions": "동일 청원 재응답 금지. 다른 가구·다른 실제 청원에서만 재사용. 8년 간격은 미구현 편집 권고."
+    },
+    "illustration": "작은 장례용 천과 닳은 모자를 품은 유족 앞에 집행관이 사망 부과금 장부를 펼친다. 가축 사체나 역병 의학 도구는 그리지 않는다.",
+    "history": {
+      "sourceIds": [
+        "HK01"
+      ],
+      "basis": "장원 용어의 heriot는 소작인 사망에 따른 관습 부담이다. docs/design/glossary.md의 사망 부과금(헤리엇)을 따른다.",
+      "inference": "유족·병 소식·청원은 가공·조합. 이 가구에 부담이 적용된다는 것은 개별 관습의 시나리오 전제이고 액수는 게임 추정.",
+      "limits": "가축역병과 혼동하지 않으며 전국의 모든 사망에 보편적으로 걷힌 세금이라 하지 않는다. 질병·사망·유산 처리는 현재 효과에 없음."
+    },
+    "integration": {
+      "mode": "기존 home 청원의 보충 서사 — 미설치",
+      "requirements": "실제 도착한 heriot 청원 ID에 본문을 연결한다. 새 사건의 임의 승인 효과로 분리하지 않음. 기존 home 청원은 현재 코드상 연도 상한 없이 순환하므로 해당 연도 창에서 대상을 확인한다. 본문 발동 필터·재등장 제한·추가 원장 문구는 편집 어댑터 필요. 실제 명령 성공 뒤 문구 기록. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "existing_petition_variant"
+  },
+  {
+    "number": 22,
+    "id": "ck_evt_022",
+    "category": "교회",
+    "period": "1348–1381",
+    "years": [
+      1348,
+      1350
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "plague.curacy 공석과 실제 vacant_priest가 있을 때만 기존 정본 제목 빈 사제 자리 아래 보충 본문으로 제시. 새 전염병·공석 생성 금지."
+    },
+    "sender": {
+      "faction": "본당",
+      "role": "본당 서기"
+    },
+    "title": "빈 사제 자리",
+    "body": "본당 사제의 자리가 비었습니다. 수도원은 사람을 보내려면 여비와 시간이 필요하다 하고, 평신도 서기는 당장 기도문을 읽겠다고 나섭니다.",
+    "choices": [
+      {
+        "id": "monastery",
+        "label": "수도원에 사제를 청한다",
+        "effects": [
+          {
+            "catalogKey": "chapter.plague",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$pending.vacant_priest.id",
+              "response": "accept"
+            },
+            "rangeNote": "고정 지급 [60,60]d; 다음 다음 계절 첫날 사제 도착. factions 후처리 주교 관계 +[10,10].",
+            "preconditions": "기존 plague 상태, vacant_priest 미응답, curacy 미충원 및 bishop 세력 존재. 승인 시 금고60d 이상. 실제 기한 안.",
+            "limits": "원래 청원 응답과 factions/history 전체 후처리를 함께 연결. 성직자 임의 생성·치료·추천권 양도 없음. 기존 정본 제목 빈 사제 자리 유지."
+          }
+        ],
+        "tradeoff": "돈을 내고 공석을 더 기다리는 대신 주교와의 관계를 높인다. 사제의 도착 전에는 공석 처리가 계속된다.",
+        "ledger": "수도원 사제 청원60d 지급·도착일 기록; 주교 관계+10.",
+        "chronicle": "본당은 수도원에서 올 사제를 기다리기로 했다.",
+        "costAxes": [
+          "money",
+          "time",
+          "relationship"
+        ]
+      },
+      {
+        "id": "clerk",
+        "label": "평신도 서기를 세운다",
+        "effects": [
+          {
+            "catalogKey": "chapter.plague",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$pending.vacant_priest.id",
+              "response": "refuse"
+            },
+            "rangeNote": "즉시 지출 [0,0]d; curacy.by=clerk, filledTick=현재tick. factions 후처리 주교 관계 −[15,15].",
+            "preconditions": "기존 plague 상태, vacant_priest 미응답, curacy 미충원 및 bishop 세력 존재. 승인 시 금고60d 이상. 실제 기한 안.",
+            "limits": "원래 청원 응답과 factions/history 전체 후처리를 함께 연결. 성직자 임의 생성·치료·추천권 양도 없음. 기존 정본 제목 빈 사제 자리 유지."
+          }
+        ],
+        "tradeoff": "당장 지출 없이 공석 표시를 해소하지만 주교와의 관계15를 잃는다.",
+        "ledger": "평신도 서기 담당 기록; 지급없음, 주교 관계−15.",
+        "chronicle": "평신도 서기가 본당을 맡자 주교와의 사이가 나빠졌다.",
+        "costAxes": [
+          "money",
+          "time",
+          "relationship"
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "빈 사제석 앞의 평신도 서기와 수도원에서 온 봉인 편지.",
+    "history": {
+      "sourceIds": [
+        "HK11"
+      ],
+      "basis": "Otham의1349년 성직 기록에서 후원자 추천과 교회 임직 절차의 구별을 확인하여 공석의 권한 문제를 구성.",
+      "inference": "청원 인물·수도원 제안·서기 대안은 가공. 비용·도착 지연·주교 관계는 기존 게임 수치.",
+      "limits": "평신도 서기를 성직 공석 해소로 처리하는 것은 게임 간소화이며 실제 성품 수여 아님. Otham 한 교구를 남부 전체 관행으로 일반화하지 않음."
+    },
+    "integration": {
+      "mode": "기존 장별 청원 보충 장면 — 원본 제목/선택 유지",
+      "requirements": "vacant_priest 원래 카드의 제목·선택·응답 경로를 유지. 새 카드 중복 생성 금지. answerPlaguePetition 이후 factions.ts의 parish→bishop 일반 청원 관계표 후처리를 누락하지 않음. 실제 완료 뒤 새 문구 기록. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다.",
+      "classificationNote": "기존 사건 문구 개선. 새 사건 수로 계산하거나 독립 등록하지 않는다. 기존 응답 수와 효과를 유지한다."
+    },
+    "newEffectLinks": [],
+    "subtitle": "빈 사제 자리 앞의 장부",
+    "contentClass": "existing_event_copy_revision",
+    "existingEvent": {
+      "id": "vacant_priest",
+      "ref": "src/content/plagueConfig.ts:16"
+    }
+  },
+  {
+    "number": 23,
+    "id": "ck_evt_023",
+    "category": "장원",
+    "period": "1348–1381",
+    "years": [
+      1350,
+      1352
+    ],
+    "conditions": {
+      "land": "실제 보유한 지도 밖 농업 장원.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "실제 pending repair만 사용. 본문의 헛간은 묘사이며 새 시설 피해 생성 아님."
+    },
+    "sender": {
+      "faction": "해당 영지 소작인",
+      "role": "마을 대표"
+    },
+    "title": "먼 장원의 기울어진 헛간",
+    "body": "지도 밖 장원의 마을 대표가 헛간 수선 청원을 보내 왔습니다. 청지기는 이번 지출을 미루면 장원의 값어치부터 줄어들 것이라 적었습니다.",
+    "choices": [
+      {
+        "id": "grant",
+        "label": "수선 청원을 받아들인다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openRepair.id",
+              "grant": true
+            },
+            "rangeNote": "지출=기존 청원 amount. 생성 범위는 연가치/4 × [200,400]‰; 소작인 호의 고정 +[4,4].",
+            "preconditions": "보유 지도 밖 영지의 repair 청원이 open, 영주에게 도착, deadline 이내. 지출 가능한 금고.",
+            "limits": "실제 지도 건물의 내구도·외관은 바뀌지 않는다. 기존 repair 승인 처리만 사용."
+          }
+        ],
+        "tradeoff": "금고에서 청원액을 낸다. 대신 거절 때의 연가치 하락은 피한다.",
+        "ledger": "해당 장원 수선 청원액 지급; 소작인 호의 +4.",
+        "chronicle": "영주는 먼 장원의 수선 청원을 허락했다.",
+        "costAxes": [
+          "money",
+          "relationship"
+        ]
+      },
+      {
+        "id": "refuse",
+        "label": "이번 수선 지출을 거절한다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openRepair.id",
+              "grant": false
+            },
+            "rangeNote": "지출 [0,0]d; 소작인 호의 −[6,6]; annualValue −[20,20]‰(반올림).",
+            "preconditions": "동일한 유효 repair 청원.",
+            "limits": "연가치 하락은 이 거절 경로에 포함; offmap_petition.neglect를 다시 호출해 중복 적용하지 않는다."
+          }
+        ],
+        "tradeoff": "당장 현금을 지키지만 영지 연가치와 소작인 호의를 잃는다.",
+        "ledger": "수선 거절; 해당 영지 연가치 20‰ 감소와 소작인 호의 −6 기록.",
+        "chronicle": "수선은 허락되지 않았고, 장원 장부의 연가치가 낮아졌다.",
+        "costAxes": [
+          "money",
+          "relationship"
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": 4,
+      "steward": "같은 estateId/kind에서 영주의 선례가 있고 위임 상태·예외 규칙이 허용하면 기존 처리 가능.",
+      "exclusions": "동일 청원 재등장 금지. 4년 간격은 초안 편집 권고로 미구현. 같은 장기 변주 묶음 003,023은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "estate_repair"
+    },
+    "illustration": "양피지 문서와 생활 도구를 사이에 두고 영주의 답을 기다리는 청원인. 잉글랜드 남부 14세기 자료 기준.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "장원 관리 규범의 헛간·건물 수선 책임에 기댄 가공 청원.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "수선액·연가치 감소는 게임 추정. 문헌이 일정한 2% 손실을 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [
+      "NE02"
+    ],
+    "contentClass": "existing_petition_variant"
+  },
+  {
+    "number": 24,
+    "id": "ck_evt_024",
+    "category": "도시",
+    "period": "1348–1381",
+    "years": [
+      1352,
+      1354
+    ],
+    "conditions": {
+      "land": "시장권을 행사하는 도시 영지.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "실제 운영 시장과 현재 시장 좌판세 수입 경로가 있을 것.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "봄·여름 시장일 무렵. 편집 필터.",
+      "state": "빈 노점 묘사는 편집 조건. 현 시장 좌판세 1000‰일 때만 제시. 셋째 선택은 market 적법 사업 제안과 금고 여유가 있을 때만 표시; 세 선택을 위해 사업을 새로 만들지 않음."
+    },
+    "sender": {
+      "faction": "장터 상인",
+      "role": "에일 판매자와 징수인"
+    },
+    "title": "비어 있는 노점의 몫",
+    "body": "에일을 팔던 여성이 빈 노점을 가리킵니다. 장터에 다시 사람이 모이도록 시장 좌판세를 낮춰 달라 하지만, 징수인은 지금 걷히는 돈도 놓치기 어렵다 합니다. 다른 상인은 세율을 두고 새 시장 사업에만 돈을 보태는 길도 있다고 합니다.",
+    "choices": [
+      {
+        "id": "lower",
+        "label": "시장 좌판세를 기본의 750‰로 설정한다",
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues",
+            "parameters": {
+              "permille": 750
+            },
+            "rangeNote": "후보 [750,750]‰는 게임 추정. 즉시 현금 변동 [0,0].",
+            "preconditions": "agency 존재, 현 duesPermille=1000, 작동하는 시장이 있음.",
+            "limits": "시장 좌판세 전체 설정. 한 철 후 자동 복원 없음. 에일 전용 세금·양조권 변화 아님."
+          }
+        ],
+        "tradeoff": "상인의 자금 축적과 사업 제안에 유리해지지만 영주의 시장 좌판세 몫은 줄어든다.",
+        "ledger": "시장 좌판세를 기본의 750‰로 설정; 실제 수입은 이후 징수에 반영.",
+        "chronicle": "장터를 되살리려 시장 좌판세를 낮췄다.",
+        "costAxes": [
+          "money",
+          "opportunity"
+        ]
+      },
+      {
+        "id": "keep",
+        "label": "기본 시장 좌판세를 유지한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "none",
+            "parameters": {},
+            "rangeNote": "고정 [0,0]; 현재 결정으로 발생하는 수치 변화 없음.",
+            "preconditions": "agency.duesPermille=1000인 시장.",
+            "limits": "실제 상태·금고·관계 변화 0. 시간은 평소대로 흐르며 기한을 연장하지 않는다."
+          }
+        ],
+        "tradeoff": "현 시장 좌판세 몫을 지키지만 상인에게 추가 여유를 주지 않는다. 방문객 증가를 약속하지 않는다.",
+        "ledger": "시장 좌판세 1000‰ 유지; 새 지출 없음.",
+        "chronicle": "영주는 장터의 기존 시장 좌판세를 그대로 두었다.",
+        "costAxes": [
+          "time",
+          "opportunity"
+        ]
+      },
+      {
+        "id": "market_promise",
+        "label": "좌판세는 두고 시장 사업에 24d를 약속한다",
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy",
+            "parameters": {
+              "kind": "market",
+              "amount": 24
+            },
+            "rangeNote": "장려금 약속 [24,24]d. 즉시 지출0d; 채택 때 min(약속액,max(0,당시 금고)) 지급.",
+            "preconditions": "agency 존재. 해당 사업 종류의 기존 장려금0; 실제 적법 사업 제안 후보 존재. 다른 약속 포함 설정 뒤 총 장려금이 현재 금고의25% 이하. 수치는 게임 추정.",
+            "limits": "위치·완공·채택을 보장하지 않는다. 종류별 설정은 지급 뒤에도 유지되며 철회/변경 전 그 종류의 채택마다 다시 지급할 수 있다. 전액 예치·특정 작업자에게 즉시 현금 지급 아님."
+          }
+        ],
+        "costAxes": [
+          "money",
+          "promise",
+          "opportunity"
+        ],
+        "tradeoff": "세율을 낮춰 모든 상인의 축적을 돕는 대신 새 시장 사업에만 한정해 금고를 약속한다. 채택되지 않으면 빈 노점은 그대로일 수 있다. 약속액은 누적 지출 상한이 아니다. 철회 전 반복 채택 때마다 지급될 수 있다.",
+        "ledger": "좌판세1000‰ 유지; 시장 사업 장려금24d 설정. 지출은 실제 채택 때만.",
+        "chronicle": "영주는 세율을 고치는 대신 시장을 맡을 이에게 장려금을 약속했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "에일 항아리를 둔 여성 노점상 옆에 빈 판매대와 작은 징수 장부.",
+    "history": {
+      "sourceIds": [
+        "HT02",
+        "HK04"
+      ],
+      "basis": "여성의 에일 생산·판매와 주간 시장 운영에 기댄 장터 청원.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "Bennett 연구의 장기 변화가 이 도시 여성의 즉각적 퇴출을 뜻하지 않는다. 시장 쇠퇴·시장 좌판세율은 가공."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [
+      "NE03"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 25,
+    "id": "ck_evt_025",
+    "category": "가문 내부",
+    "period": "1348–1381",
+    "years": [
+      1353,
+      1355
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "실제 미결 감사·유효 후임 필수. 능력/충성도가 다른 후보가 있어야 실제 인물 교체의 선택 의미가 생김."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "감사 서기와 가문의 연장자"
+    },
+    "title": "오래된 청지기의 빠진 돈",
+    "body": "집안 살림을 오래 아는 청지기의 감사에서 숨긴 돈이 드러났습니다. 감사 서기는 사람을 바꾸자 하고, 가문의 한 어른은 익숙한 손을 잃지 말자 합니다.",
+    "choices": [
+      {
+        "id": "punish",
+        "label": "돈을 회수하고 후임을 세운다",
+        "effects": [
+          {
+            "catalogKey": "audit.answer",
+            "operation": "answer_audit",
+            "parameters": {
+              "auditId": "$pendingAudit.id",
+              "choice": "punish",
+              "replacementId": "$successor.personId"
+            },
+            "rangeNote": "회수=round(revealedKept×[500,500]‰); 소작인 +[5,5], 연결 세력 −[5,5].",
+            "preconditions": "pending 감사, deadline 이내, revealedKept>0, 현 청지기의 실제 connection 세력과 살아 있는 다른 유효 후임 존재.",
+            "limits": "기존 감사 처벌 경로. 현 청지기 dismissed, 후임 serving. 구금·가문 내부 감정 변화 없음."
+          }
+        ],
+        "tradeoff": "절반을 회수하고 소작인의 호의를 얻지만 청지기와 연결된 세력의 관계를 잃는다.",
+        "ledger": "감사 적발액 절반 회수; 청지기 해임·후임 임명; 연결 세력 −5.",
+        "chronicle": "오래 일한 청지기는 적발된 돈을 일부 돌려주고 자리를 떠났다.",
+        "costAxes": [
+          "personnel",
+          "money",
+          "relationship"
+        ]
+      },
+      {
+        "id": "replace",
+        "label": "회수 없이 사람만 바꾼다",
+        "effects": [
+          {
+            "catalogKey": "audit.answer",
+            "operation": "answer_audit",
+            "parameters": {
+              "auditId": "$pendingAudit.id",
+              "choice": "replace",
+              "replacementId": "$successor.personId"
+            },
+            "rangeNote": "회수 [0,0]d; 소작인 변화 [0,0]; 인물 상태 dismissed/serving 교체.",
+            "preconditions": "동일 감사와 유효 후임.",
+            "limits": "기존 replace. 연결 세력의 punish 관계 차감 없음; 이미 숨긴 돈 회수 없음."
+          }
+        ],
+        "tradeoff": "관계 벌점을 피하며 사람을 바꾸지만 돈은 되찾지 못한다.",
+        "ledger": "감사 후임 교체; 회수 없음.",
+        "chronicle": "영주는 돈을 쫓기보다 청지기를 갈아 세웠다.",
+        "costAxes": [
+          "personnel",
+          "money",
+          "relationship"
+        ]
+      },
+      {
+        "id": "tolerate",
+        "label": "이번에는 자리를 지키게 한다",
+        "effects": [
+          {
+            "catalogKey": "audit.answer",
+            "operation": "answer_audit",
+            "parameters": {
+              "auditId": "$pendingAudit.id",
+              "choice": "tolerate"
+            },
+            "rangeNote": "회수 [0,0]d; 현 청지기 충성도 +[10,10], 상한100.",
+            "preconditions": "동일 pending 감사. 현 청지기가 생존하며 기록이 있음.",
+            "limits": "해임 없음. 향후 횡령 근절이나 친족 화해를 보장하지 않는다."
+          }
+        ],
+        "tradeoff": "익숙한 인물과 오른 충성도를 얻지만 적발액을 회수하지 않고 맡긴 사람도 그대로다.",
+        "ledger": "감사 묵인; 회수 없음, 청지기 충성도 최대10 상승.",
+        "chronicle": "영주는 적발된 돈을 남겨 두고 청지기에게 다시 일을 맡겼다.",
+        "costAxes": [
+          "personnel",
+          "money",
+          "relationship"
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음. 같은 장기 변주 묶음 013,025,052은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "audit_findings"
+    },
+    "illustration": "촛불 아래 세 사람 사이에 놓인 감사 장부, 빈 동전 주머니와 두 개의 봉인.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "관리자의 장부를 검사하고 책임을 묻는 장원 관리 규범을 가문 대화로 재구성.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "청지기의 친족 신분이나 사면 관습은 이 자료로 증명하지 않는다. 집안 반응은 가공 서사이며 관계 효과 아님."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [
+      "NE09"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 26,
+    "id": "ck_evt_026",
+    "category": "이웃 가문",
+    "period": "1348–1381",
+    "years": [
+      1355,
+      1357
+    ],
+    "conditions": {
+      "land": "본거지 장원(HOME_ESTATE_ID). 지도 밖 영지 경로 아님.",
+      "population": "청원 서사상 입주를 청하는 가구가 있음. 실제 현재 인구·가구를 늘리지 않음.",
+      "rights": "home.newcomer의 입주금 청원 경로만. 이웃 영주의 권리 포기·사람에 대한 권리 해방은 자동 승인되지 않음.",
+      "relations": "commons와 town 등 해당 효과의 세력 레코드가 실제 존재해야 함.",
+      "season": "계절 제한 없음. 해당 home 청원의 실제 기한 안.",
+      "state": "실제 home newcomer 미결 청원. 이웃 영지에서 왔다는 배경은 미구현 편집 필터. 새로운 이주 가구·빈집·인물 생성 없음."
+    },
+    "sender": {
+      "faction": "이웃 영지 출신 가구",
+      "role": "정착을 청하는 가구 대표"
+    },
+    "title": "이웃 영지에서 가져온 살림",
+    "body": "이웃 가문의 영지에서 온 가구가 꾸러미를 내려놓고 정착 청원을 냈습니다. 도시 사람들은 새 일손을 반기지만, 소작인들은 나눌 자리가 충분한지 묻습니다.",
+    "choices": [
+      {
+        "id": "accept",
+        "label": "입주금을 받고 청원을 승인한다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openHome.newcomer.id",
+              "grant": true
+            },
+            "rangeNote": "현재 청원액 [10,40]d 수입; town +[3,3], commons −[2,2]. 기존 고정 효과.",
+            "preconditions": "agency가 있는 영주 모드. HOME_ESTATE_ID의 실제 newcomer 청원이 open이며 영주에게 도착했고 deadline 이내. 본문 상황과 맞는 현재 청원만 연결.",
+            "limits": "승인은 청원 상태·금고·관계만 변경. 실제 가구 이주·인구 증가·집 배정·고용 생성 없음. 금고 변경과 history.ts의 HOME_PETITION_KINDS 세력 관계 후처리를 온전히 적용한다. 새 청원 종류를 만들지 않는다."
+          }
+        ],
+        "tradeoff": "입주금과 도시의 호의를 얻지만 농민 공동체의 관계를 잃는다. 승인만으로 실제 일손이 늘지는 않는다.",
+        "ledger": "정착 청원 승인·기존 입주금 징수; 도시+3, 농민 공동체−2. 실제 인구 변화 없음.",
+        "chronicle": "이웃 영지 출신 가구의 정착 청원이 승인되었다.",
+        "costAxes": [
+          "money",
+          "relationship"
+        ]
+      },
+      {
+        "id": "refuse",
+        "label": "정착 청원을 거절한다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openHome.newcomer.id",
+              "grant": false
+            },
+            "rangeNote": "현금 [0,0]d; town −[3,3], commons 변화 [0,0].",
+            "preconditions": "agency가 있는 영주 모드. HOME_ESTATE_ID의 실제 newcomer 청원이 open이며 영주에게 도착했고 deadline 이내. 본문 상황과 맞는 현재 청원만 연결.",
+            "limits": "기존 가구를 추방하거나 이웃 가문 관계를 변화시키지 않음. 금고 변경과 history.ts의 HOME_PETITION_KINDS 세력 관계 후처리를 온전히 적용한다. 새 청원 종류를 만들지 않는다."
+          }
+        ],
+        "tradeoff": "입주금과 도시의 호의를 놓치지만 승인 때의 소작인 관계 손실은 피한다.",
+        "ledger": "정착 청원 거절; 수입0d, 도시 관계−3.",
+        "chronicle": "영주는 이웃 영지에서 온 가구의 정착 청원을 받아들이지 않았다.",
+        "costAxes": [
+          "money",
+          "relationship"
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": 8,
+      "steward": "FIX-14의 동일 estateId/kind 선례는 위임한 지도 밖 영지에 구현되어 있다. 확인한 최신 homePetitionSeason은 direct로 생성하므로 이 홈 청원은 영주 판단을 유지한다. 선례 기능 전체를 새 효과로 제안하지 않는다.",
+      "exclusions": "동일 청원 재응답 금지. 다른 가구·다른 실제 청원에서만 재사용. 8년 간격은 미구현 편집 권고."
+    },
+    "illustration": "이웃 영지 길에서 들어온 가구가 묶은 침구와 냄비를 내려놓고 입주금 청원서를 내민다. 배정받은 새 집이나 집 열쇠는 보이지 않는다.",
+    "history": {
+      "sourceIds": [
+        "HK01",
+        "HT05"
+      ],
+      "basis": "장원 입주금과 취락의 가구·필지 구성을 바탕으로 새 정착민 청원을 작성.",
+      "inference": "이웃 가문 출신·가구·일손 기대·갈등은 가공. 입주금과 관계 수치는 게임 추정.",
+      "limits": "이웃 영주의 허락 없이 모든 종속 소작인이 자유롭게 이주할 수 있었다고 가정하지 않는다. 이 청원 승인은 신분·주거·영지 간 이동을 실제로 처리하지 않음."
+    },
+    "integration": {
+      "mode": "기존 home 청원의 보충 서사 — 미설치",
+      "requirements": "실제 도착한 newcomer 청원 ID에 본문을 연결한다. 새 사건의 임의 승인 효과로 분리하지 않음. 기존 home 청원은 현재 코드상 연도 상한 없이 순환하므로 해당 연도 창에서 대상을 확인한다. 본문 발동 필터·재등장 제한·추가 원장 문구는 편집 어댑터 필요. 실제 명령 성공 뒤 문구 기록. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [
+      "NE05"
+    ],
+    "contentClass": "existing_petition_variant"
+  },
+  {
+    "number": 27,
+    "id": "ck_evt_027",
+    "category": "세력",
+    "period": "1348–1381",
+    "years": [
+      1356,
+      1358
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "agency 존재. 징발 문서는 실제 청구가 아닌 가공 소식; 본문이 물자 강제 차감을 뜻하지 않음. 현재 방침은 stability 또는 revenue로, 두 선택 모두 실제 전환일 때만 제시. 셋째 선택은 실제 거래 시장과 주문0일 때만. 가공 징발 의무·특정 물량 납품 효과 없음."
+    },
+    "sender": {
+      "faction": "왕실과 도시 공동체",
+      "role": "조달 소식을 전하는 관리인"
+    },
+    "title": "왕의 징발을 기다리는 길목",
+    "body": "왕실 조달에 관한 소식이 돌자 관리인은 창고와 길을 먼저 살피자 합니다. 장터 대표는 새 집터와 시장 쪽 일을 뒤로 미루지 말아 달라 합니다. 관리인은 방침은 두고 목재부터 사 둘 수도 있다고 덧붙입니다.",
+    "choices": [
+      {
+        "id": "defence",
+        "label": "방어 방침으로 돌린다",
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "defence"
+            },
+            "rangeNote": "비수치 enum. 기존 POLICY_WEIGHTS 고정값 사용; 즉시 금고 변화 [0,0].",
+            "preconditions": "agency가 있는 영주 모드. 현 방침을 표시하고 교체 전 확인한다.",
+            "limits": "도시 전체 방침 교체. 해당 건물을 놓거나 특정 위치·완공·재해 예방을 보장하지 않는다."
+          }
+        ],
+        "tradeoff": "길·창고·석재·방어 사업 점수에 무게를 두지만 주택 점수는 낮아진다. 실제 병력 징집은 일어나지 않는다.",
+        "ledger": "영지 방침 defence; 즉시 현금·병력 변화 없음.",
+        "chronicle": "영주는 길과 비축을 우선하도록 방침을 돌렸다.",
+        "costAxes": [
+          "opportunity"
+        ]
+      },
+      {
+        "id": "growth",
+        "label": "성장 방침을 택한다",
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "growth"
+            },
+            "rangeNote": "비수치 enum. 기존 POLICY_WEIGHTS 고정값 사용; 즉시 금고 변화 [0,0].",
+            "preconditions": "agency가 있는 영주 모드. 현 방침을 표시하고 교체 전 확인한다.",
+            "limits": "도시 전체 방침 교체. 해당 건물을 놓거나 특정 위치·완공·재해 예방을 보장하지 않는다."
+          }
+        ],
+        "tradeoff": "주택과 시장 등의 자율 제안을 돕지만 방어 방침의 비축·방어 가중치는 받지 못한다.",
+        "ledger": "영지 방침 growth; 즉시 현금·병력 변화 없음.",
+        "chronicle": "영주는 조달 소문 속에서도 도시의 성장을 우선했다.",
+        "costAxes": [
+          "opportunity"
+        ]
+      },
+      {
+        "id": "supply",
+        "label": "방침은 두고 창고용 목재 8단을 주문한다",
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 8
+            },
+            "rangeNote": "주문[8,8]단; 시장일당 최대[2,2]단, 단가[18,18]d. 전량 매입144d.",
+            "preconditions": "실제 거래 시장 가동, 목재 주문0. 사용 가능한 금고가 있어야 실제 구매된다.",
+            "limits": "기존 도시 방침 유지. 창고 전용 예약·왕실 인도·건물 수리는 없음. 보통 목재 재고이며 구입한 만큼만 지출."
+          }
+        ],
+        "costAxes": [
+          "money",
+          "materials",
+          "time"
+        ],
+        "tradeoff": "도시 전체 우선순위를 돌리지 않지만 시장일마다 금고를 써 재고를 확보한다. 왕실이 가져갈 물량을 예약한 것은 아니다.",
+        "ledger": "목재8단 주문; 방침 유지, 시장일 실제 구매분만 지급.",
+        "chronicle": "영주는 방침을 그대로 두고 조달에 대비할 목재를 들이게 했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "수레가 선 시장 길목에서 왕실 소식을 읽는 관리인과 집터를 가리키는 주민.",
+    "history": {
+      "sourceIds": [
+        "HT09"
+      ],
+      "basis": "1297–1362년 전시 왕실 조달과 지방 공동체의 부담을 다룬 연구를 배경으로 사용.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "특정 왕명·징발 물량·군사 소집은 가공하지 않는다. 선택은 현 엔진 도시 방침일 뿐 조달 이행 여부가 아님."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [
+      "NE07"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 28,
+    "id": "ck_evt_028",
+    "category": "자연",
+    "period": "1348–1381",
+    "years": [
+      1361,
+      1363
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "편집 필터: 기존 엔진의 병 발생/소문 상태가 확인될 때만 연결. 새 전염병 이벤트는 만들지 않으며 사망률을 바꾸지 않음. 현재 방침은 growth 또는 defence로, 두 선택 모두 실제 전환일 때만 제시. 셋째 선택은 granary 적법 제안·해당 장려금0·설정 후총약속≤금고25%일 때만."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "청지기"
+    },
+    "title": "병 소식 뒤의 빈 작업장",
+    "body": "다시 병이 돈다는 소식에 작업장 문을 여는 이들이 뜸해졌습니다. 청지기는 곡물과 물을 먼저 챙길지, 장인들의 일을 다시 북돋울지 묻습니다. 방침은 두고 곡창 사업에만 돈을 약속하는 안도 함께 올라왔습니다.",
+    "choices": [
+      {
+        "id": "stability",
+        "label": "안정 방침을 택한다",
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "비수치 enum. 기존 POLICY_WEIGHTS 고정값 사용; 즉시 금고 변화 [0,0].",
+            "preconditions": "agency가 있는 영주 모드. 현 방침을 표시하고 교체 전 확인한다.",
+            "limits": "도시 전체 방침 교체. 해당 건물을 놓거나 특정 위치·완공·재해 예방을 보장하지 않는다."
+          }
+        ],
+        "tradeoff": "곡창·우물·농장·교회 사업을 우선하되 시장 점수는 낮아진다. 병자의 회복률은 바꾸지 않는다.",
+        "ledger": "영지 방침 stability; 질병·사망 수치 변화 없음.",
+        "chronicle": "영주는 병 소식 뒤 도시의 생계 기반을 먼저 살피게 했다.",
+        "costAxes": [
+          "opportunity"
+        ]
+      },
+      {
+        "id": "revenue",
+        "label": "세입 방침을 택한다",
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "revenue"
+            },
+            "rangeNote": "비수치 enum. 기존 POLICY_WEIGHTS 고정값 사용; 즉시 금고 변화 [0,0].",
+            "preconditions": "agency가 있는 영주 모드. 현 방침을 표시하고 교체 전 확인한다.",
+            "limits": "도시 전체 방침 교체. 해당 건물을 놓거나 특정 위치·완공·재해 예방을 보장하지 않는다."
+          }
+        ],
+        "tradeoff": "시장과 가공 작업장 제안에 무게를 두지만 생계 기반에 안정 방침의 가중치를 주지 않는다.",
+        "ledger": "영지 방침 revenue; 즉시 현금 수입 없음.",
+        "chronicle": "영주는 멎은 거래와 작업을 되살리는 데 방침을 두었다.",
+        "costAxes": [
+          "opportunity"
+        ]
+      },
+      {
+        "id": "granary_promise",
+        "label": "현재 방침을 두고 곡창 사업에 32d를 약속한다",
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy",
+            "parameters": {
+              "kind": "granary",
+              "amount": 32
+            },
+            "rangeNote": "장려금 약속 [32,32]d. 즉시 지출0d; 채택 때 min(약속액,max(0,당시 금고)) 지급.",
+            "preconditions": "agency 존재. 해당 사업 종류의 기존 장려금0; 실제 적법 사업 제안 후보 존재. 다른 약속 포함 설정 뒤 총 장려금이 현재 금고의25% 이하. 수치는 게임 추정.",
+            "limits": "위치·완공·채택을 보장하지 않는다. 종류별 설정은 지급 뒤에도 유지되며 철회/변경 전 그 종류의 채택마다 다시 지급할 수 있다. 전액 예치·특정 작업자에게 즉시 현금 지급 아님."
+          }
+        ],
+        "costAxes": [
+          "money",
+          "promise",
+          "opportunity"
+        ],
+        "tradeoff": "전체 사업의 우선순위는 유지하며 곡창 하나의 채택 가능성에 돈을 건다. 다른 생계 시설에 안정 방침의 가중치를 주지 못하고 즉시 식량을 나누지도 않는다. 약속액은 누적 지출 상한이 아니다. 철회 전 반복 채택 때마다 지급될 수 있다.",
+        "ledger": "곡창 사업 장려금32d 설정; 실제 채택 때만 지급.",
+        "chronicle": "영주는 기존 방침을 두고 곡창을 맡을 이에게 장려금을 약속했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "잠긴 직물 작업장 문 곁에서 곡물 자루와 우물 쪽을 돌아보는 청지기.",
+    "history": {
+      "sourceIds": [
+        "HT03",
+        "HT05"
+      ],
+      "basis": "14세기 중엽 직물 작업과 취락 기반시설의 공존을 바탕으로 방침 대립을 구성.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "두 출처가 1361년 특정 남부 도시의 발병을 입증하는 것은 아니다. 병 소식·일시적 결근은 가공이며 실제 전염병 수치의 원인이 되지 않음."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [
+      "NE04"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 29,
+    "id": "ck_evt_029",
+    "category": "장원",
+    "period": "1348–1381",
+    "years": [
+      1358,
+      1360
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "여름, 미카엘마스 전.",
+      "state": "실제 지도 밖 oversight. 보고서가 매끈하다는 묘사는 횡령을 확정하지 않음. 셋째 선택: 위임 상태, 능력높고 충성도낮으며 현직보다 기존 계산식의 숨김 비율이 높은 실제 후보, 현직 kept=errors=0, 관련 pending 감사없음. 후보없으면 두 안만."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "감사 일을 맡은 청지기"
+    },
+    "title": "미카엘마스에 갈 곳",
+    "body": "멀리 맡긴 장원의 장부는 지난해보다 매끈합니다. 청지기는 장부를 받아 볼지, 영주가 직접 가서 확인할지 여정을 정해 달라 합니다. 셈은 밝아도 덜 충실한 후보라면, 교체가 나은지도 따져야 합니다.",
+    "choices": [
+      {
+        "id": "accounts",
+        "label": "장부로 감사한다",
+        "effects": [
+          {
+            "catalogKey": "audit.mode",
+            "operation": "set_audit_mode",
+            "parameters": {
+              "estateId": "$estate.id",
+              "mode": "accounts"
+            },
+            "rangeNote": "발견 판정 기준 [300,300]‰+(100−청지기 능력)×[3,3]‰; 즉시 지출0.",
+            "preconditions": "실제 보유 지도 밖 영지 oversight 존재. 다음 미카엘마스 이전.",
+            "limits": "다음 정기 감사 방식 설정. 적발 보장 없음. 기준1000‰ 초과 시 해시 판정상 항상 발견."
+          }
+        ],
+        "tradeoff": "영주의 방문 부담을 피하지만 방문 감사보다 숨긴 돈을 찾기 어렵다.",
+        "ledger": "해당 장원 장부 감사 예약; 현금 변동 없음.",
+        "chronicle": "이번 미카엘마스에는 먼 장원의 장부가 영주에게 오기로 했다.",
+        "costAxes": [
+          "time",
+          "attention",
+          "money"
+        ]
+      },
+      {
+        "id": "visit",
+        "label": "직접 방문해 감사한다",
+        "effects": [
+          {
+            "catalogKey": "audit.mode",
+            "operation": "set_audit_mode",
+            "parameters": {
+              "estateId": "$estate.id",
+              "mode": "visit"
+            },
+            "rangeNote": "발견 기준 [850,850]‰+(100−능력)×[3,3]‰; 실제 방문 이후1년간 attention 용량 −[1,1].",
+            "preconditions": "동일 oversight. 실제 다음 미카엘마스 감사가 도래해야 방문 부담 발생.",
+            "limits": "설정 즉시 비용·적발 없음. 길 사고·수송비를 임의 추가하지 않는다. 일회성 예약이 아닌 지속 설정. 이후 매년 감사에도 visit가 유지되므로 accounts로 재설정하지 않으면 업무 용량 차감의1년 기한이 매년 갱신된다. 방문 사유 가중치는 −1이지만 관리 용량은 최소1로 고정되므로 실제 추가 용량 감소는0~1이다. 이미 방문 차감이 있으면 새로 중첩하지 않고 기간을 갱신한다."
+          }
+        ],
+        "tradeoff": "더 잘 들여다볼 수 있으나 방문 뒤 한 해 동안 직접 처리할 여력이 줄어든다. 방문 감사 설정은 계속 유지된다. 장부 감사로 돌리지 않으면 다음 미카엘마스마다 방문 시점이 갱신되어 업무 여력 감소가 이어진다. 방문의 실제 추가 관리 용량 감소는 최소 용량1과 기존 방문 이력에 따라0~1이다.",
+        "ledger": "해당 장원 방문 감사 예약; 방문 실시 때 영주 업무 여력 감소.",
+        "chronicle": "영주는 장부만 받지 않고 장원으로 가 보기로 했다.",
+        "costAxes": [
+          "time",
+          "attention",
+          "money"
+        ]
+      },
+      {
+        "id": "replace_accounts",
+        "label": "셈 밝은 후보로 바꾸고 장부로 감사한다",
+        "effects": [
+          {
+            "catalogKey": "steward.appoint",
+            "operation": "set_estate_oversight",
+            "parameters": {
+              "estateId": "$estate.id",
+              "mode": "steward",
+              "stewardId": "$ableCandidate.personId"
+            },
+            "rangeNote": "후보 임명; 즉시 지출[0,0]d. 능력·충성도 자체는 변경하지 않는다.",
+            "preconditions": "현재 위임 영지, 생존 유효 후보가 현직보다 실제 능력은 높고 충성도는 낮음. 현직과 다른 인물이며 성향을 포함한 기존 숨김 비율 계산값이 현직보다 큼. 현직 kept=errors=0 및 관련 pending 감사없음. 현직 kept=errors=0 및 관련 pending 감사없음.",
+            "limits": "현직은 candidate, 새 담당은 serving. 현직의 누적 숨긴 돈·오류는 새 담당에게 이전되지 않으므로 교체로 전임자 감사를 대신하지 못한다. 성향별 지대/시장 요율도 후보 실제값으로 변하며 선택 화면에서 현직과 비교 표시한다."
+          },
+          {
+            "catalogKey": "audit.mode",
+            "operation": "set_audit_mode",
+            "parameters": {
+              "estateId": "$estate.id",
+              "mode": "accounts"
+            },
+            "rangeNote": "발견 판정 기준 [300,300]‰+(100−청지기 능력)×[3,3]‰; 즉시 지출0.",
+            "preconditions": "실제 보유 지도 밖 영지 oversight 존재. 다음 미카엘마스 이전.",
+            "limits": "다음 정기 감사 방식 설정. 적발 보장 없음. 기준1000‰ 초과 시 해시 판정상 항상 발견."
+          }
+        ],
+        "costAxes": [
+          "personnel",
+          "money",
+          "time"
+        ],
+        "tradeoff": "방문으로 한 해 업무 여력을 잃는 대신 더 능숙하나 덜 충실한 사람에게 맡긴다. 전임자가 숨긴 돈은 새 담당의 감사로 추적되지 않으므로 미결 감사가 있거나 전임자 누적액이 있으면 이 안을 제시하지 않는다.",
+        "ledger": "담당 교체 확인 뒤 장부 감사 설정. 전임자 누적 kept/errors가0인 때만; 즉시 회수액0d.",
+        "chronicle": "영주는 담당자를 바꾸되 먼 장원에는 장부 감사를 택했다.",
+        "executionContract": {
+          "mode": "sequential_non_atomic",
+          "preflight": "모든 명령의 현재 대상·비용·단계 조건을 먼저 검사한다. 한 명령마다 적용 결과를 확인하고 다음 명령 전 다시 검사한다.",
+          "onPartialFailure": "성공한 앞 명령을 되돌리지 않는다. 이후 명령을 중단하고 성공한 효과만 원장·연대기에 기록한다. 실패한 나머지를 자동 재실행하지 않는다.",
+          "timeAdvance": "명령 사이 자동 시간 전진 없음. 같은 선택을 트랜잭션 또는 새 엔진 명령으로 취급하지 않는다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": 5,
+      "steward": "감사 방식은 영주가 정한다. 청지기의 자동 선례로 자기 감사를 바꾸지 못한다.",
+      "exclusions": "같은 해 같은 영지에 중복 제시 금지;5년 간격 편집 권고. 같은 장기 변주 묶음 002,029은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "audit_mode"
+    },
+    "illustration": "여행 망토와 말고삐 옆에 놓인 묶은 회계 두루마리.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "관리 규범의 정기 회계 검사를 영주의 감독 방식으로 구성.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "발견 확률과 연간 업무 부담은 게임 수치이며 중세 감사 통계가 아님."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 30,
+    "id": "ck_evt_030",
+    "category": "도시",
+    "period": "1348–1381",
+    "years": [
+      1370,
+      1372
+    ],
+    "conditions": {
+      "land": "두 사업이 모두 적법한 후보지를 찾을 수 있는 도시. 수력 입지 조건은 기존 사업 판정 준수.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "agency와 실제 길드 제안 주체 존재. 해당 두 종류 장려금0, 두 사업 후보가 가능해야 함. 길드 없는 저장에서는 생략. 분할 안은 두 종류 기존 장려금0, 총32d 설정 후 다른 약속 포함금고25% 이하일 때만. 두 명령은 순차·비원자적이다."
+    },
+    "sender": {
+      "faction": "장인과 상인",
+      "role": "축융공과 곡물 상인"
+    },
+    "title": "축융공이 내민 견본",
+    "body": "축융공이 두툼해진 모직물 견본을 내밉니다. 작업에 힘을 보태 달라는 청 옆에는 곡물 방앗간 일을 먼저 돕자는 곡물 상인의 이름도 있습니다. 두 사람은 작은 몫이라도 나눠 약속해 달라는 안을 보탭니다.",
+    "choices": [
+      {
+        "id": "cloth",
+        "label": "축융 방앗간에 장려금 32d를 설정한다",
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy",
+            "parameters": {
+              "kind": "fulling_mill",
+              "amount": 32
+            },
+            "rangeNote": "장려금 후보 [32,32]d는 게임 추정. 설정 때 지출 [0,0], 해당 종류 사업이 채택되면 min(설정액, max(0, 채택 시 금고)) 지급.",
+            "preconditions": "agency 존재, 유효 사업 종류. 다른 장려금을 합친 총액이 현재 금고의 250‰ 이하인 경우만 선택 가능.",
+            "limits": "종류 전체 설정을 덮어쓴다. 개별 공사 지정·자동 만료·완공 보장 없음. 채택마다 기존 지급 경로를 따름. 금고 부족 시 실제 지급액은 설정액보다 작을 수 있다. 지급 뒤에도 설정 유지; 철회/변경 전 같은 종류의 채택마다 반복 지급할 수 있다."
+          }
+        ],
+        "tradeoff": "직물 가공 제안에 금고를 보탠다. 곡물 방앗간 사업에는 이 장려금이 붙지 않는다. 약속액은 누적 지출 상한이 아니다. 철회 전 반복 채택 때마다 지급될 수 있다.",
+        "ledger": "축융 방앗간 장려금 32d 설정; 채택 때 지급.",
+        "chronicle": "영주는 모직물을 다듬는 일을 장려하기로 했다.",
+        "costAxes": [
+          "money",
+          "promise",
+          "opportunity"
+        ]
+      },
+      {
+        "id": "grain",
+        "label": "곡물 방앗간에 장려금 32d를 설정한다",
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy",
+            "parameters": {
+              "kind": "mill",
+              "amount": 32
+            },
+            "rangeNote": "장려금 후보 [32,32]d는 게임 추정. 설정 때 지출 [0,0], 해당 종류 사업이 채택되면 min(설정액, max(0, 채택 시 금고)) 지급.",
+            "preconditions": "agency 존재, 유효 사업 종류. 다른 장려금을 합친 총액이 현재 금고의 250‰ 이하인 경우만 선택 가능.",
+            "limits": "종류 전체 설정을 덮어쓴다. 개별 공사 지정·자동 만료·완공 보장 없음. 채택마다 기존 지급 경로를 따름. 금고 부족 시 실제 지급액은 설정액보다 작을 수 있다. 지급 뒤에도 설정 유지; 철회/변경 전 같은 종류의 채택마다 반복 지급할 수 있다."
+          }
+        ],
+        "tradeoff": "곡물 가공 제안을 돕는다. 축융공에게는 이번 종류 장려금을 주지 않는다. 약속액은 누적 지출 상한이 아니다. 철회 전 반복 채택 때마다 지급될 수 있다.",
+        "ledger": "곡물 방앗간 장려금 32d 설정; 채택 때 지급.",
+        "chronicle": "영주는 직물 견본을 돌려주고 곡물 가공 쪽을 장려했다.",
+        "costAxes": [
+          "money",
+          "promise",
+          "opportunity"
+        ]
+      },
+      {
+        "id": "divide",
+        "label": "두 사업에 16d씩 나누어 약속한다",
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy",
+            "parameters": {
+              "kind": "fulling_mill",
+              "amount": 16
+            },
+            "rangeNote": "장려금 약속 [16,16]d. 즉시 지출0d; 채택 때 min(약속액,max(0,당시 금고)) 지급.",
+            "preconditions": "agency 존재. 해당 사업 종류의 기존 장려금0; 실제 적법 사업 제안 후보 존재. 다른 약속 포함 설정 뒤 총 장려금이 현재 금고의25% 이하. 수치는 게임 추정.",
+            "limits": "위치·완공·채택을 보장하지 않는다. 종류별 설정은 지급 뒤에도 유지되며 철회/변경 전 그 종류의 채택마다 다시 지급할 수 있다. 전액 예치·특정 작업자에게 즉시 현금 지급 아님."
+          },
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy",
+            "parameters": {
+              "kind": "mill",
+              "amount": 16
+            },
+            "rangeNote": "장려금 약속 [16,16]d. 즉시 지출0d; 채택 때 min(약속액,max(0,당시 금고)) 지급.",
+            "preconditions": "agency 존재. 해당 사업 종류의 기존 장려금0; 실제 적법 사업 제안 후보 존재. 다른 약속 포함 설정 뒤 총 장려금이 현재 금고의25% 이하. 수치는 게임 추정.",
+            "limits": "위치·완공·채택을 보장하지 않는다. 종류별 설정은 지급 뒤에도 유지되며 철회/변경 전 그 종류의 채택마다 다시 지급할 수 있다. 전액 예치·특정 작업자에게 즉시 현금 지급 아님."
+          }
+        ],
+        "costAxes": [
+          "money",
+          "promise",
+          "opportunity"
+        ],
+        "tradeoff": "총약속32d는 같지만 각 사업이 받는 점수는 32d 한 곳 집중보다 작다. 두 곳 모두 채택 문턱에 못 미칠 수 있으며 같은 시각 완공을 약속하지 않는다. 약속액은 누적 지출 상한이 아니다. 철회 전 반복 채택 때마다 지급될 수 있다.",
+        "ledger": "축융 방앗간16d·곡물 방앗간16d 장려금 설정; 각 성공한 약속과 실제 채택 지급을 따로 기록.",
+        "chronicle": "영주는 어느 한쪽에 몰아주지 않고 두 사업에 작은 약속을 나눴다.",
+        "executionContract": {
+          "mode": "sequential_non_atomic",
+          "preflight": "모든 명령의 현재 대상·비용·단계 조건을 먼저 검사한다. 한 명령마다 적용 결과를 확인하고 다음 명령 전 다시 검사한다.",
+          "onPartialFailure": "성공한 앞 명령을 되돌리지 않는다. 이후 명령을 중단하고 성공한 효과만 원장·연대기에 기록한다. 실패한 나머지를 자동 재실행하지 않는다.",
+          "timeAdvance": "명령 사이 자동 시간 전진 없음. 같은 선택을 트랜잭션 또는 새 엔진 명령으로 취급하지 않는다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "젖은 모직물 견본과 곡물 주머니를 양쪽에 놓고 말하는 축융공과 상인.",
+    "history": {
+      "sourceIds": [
+        "HT03",
+        "HT04"
+      ],
+      "basis": "14세기 중엽 축융업과 잉글랜드 직물 수출의 성장을 바탕으로 작성.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "도시별 길드·수력 도입 순서와 규모는 다르다. 물가의 모든 축융 작업을 대형 수력 시설로 통일하지 않음."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 31,
+    "id": "ck_evt_031",
+    "category": "가문 내부",
+    "period": "1348–1381",
+    "years": [
+      1366,
+      1368
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "실제 동일 영지 후보 둘이 능력/충성도에서 교차 비교될 때만. 그런 인물이 없으면 카드 생략; 인물 생성 금지. 셋째 선택은 현재 위임·생존 현직·attention.load=capacity일 때만."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "청지기"
+    },
+    "title": "누구의 손에 장부를 맡길까",
+    "body": "가문 회의에 청지기 후보 둘의 장부가 올라왔습니다. 한 사람은 셈이 밝고, 다른 사람은 영주에게 더 충실하다는 평입니다.",
+    "choices": [
+      {
+        "id": "able",
+        "label": "능력이 높은 후보에게 맡긴다",
+        "effects": [
+          {
+            "catalogKey": "steward.appoint",
+            "operation": "set_estate_oversight",
+            "parameters": {
+              "estateId": "$estate.id",
+              "mode": "steward",
+              "stewardId": "$ableCandidate.personId"
+            },
+            "rangeNote": "비수치 임명. 기존 인물 능력·충성도 그대로; 즉시 지출 [0,0].",
+            "preconditions": "같은 영지의 살아 있는 비해임 후보. 다른 후보보다 실제 ability 높고 loyalty 낮을 때만 표시.",
+            "limits": "기존 담당은 candidate, 선택 후보 serving. 능력치를 새로 부여하지 않음."
+          }
+        ],
+        "tradeoff": "실제 관리 능력을 택하지만 비교 후보보다 충성도가 낮다. 장래 결과는 기존 관리 계산을 따른다.",
+        "ledger": "해당 영지 청지기 교체; 능력 높은 기존 후보 임명.",
+        "chronicle": "영주는 셈이 밝은 후보에게 먼 장원의 장부를 맡겼다.",
+        "costAxes": [
+          "personnel",
+          "money",
+          "attention"
+        ]
+      },
+      {
+        "id": "loyal",
+        "label": "충성도가 높은 후보에게 맡긴다",
+        "effects": [
+          {
+            "catalogKey": "steward.appoint",
+            "operation": "set_estate_oversight",
+            "parameters": {
+              "estateId": "$estate.id",
+              "mode": "steward",
+              "stewardId": "$loyalCandidate.personId"
+            },
+            "rangeNote": "비수치 임명. 능력·충성도 변경 [0,0].",
+            "preconditions": "같은 영지 유효 후보. 다른 후보보다 실제 loyalty 높고 ability 낮을 때만 표시.",
+            "limits": "친족·후계자 상태를 만들거나 변경하지 않음. 집안의 찬반은 서사만."
+          }
+        ],
+        "tradeoff": "충성도를 택하는 대신 상대 후보의 높은 관리 능력을 포기한다. 무조건 정직하거나 실수 없는 인물이 되지는 않는다.",
+        "ledger": "해당 영지 청지기 교체; 충성도 높은 기존 후보 임명.",
+        "chronicle": "영주는 충실한 후보에게 장부를 맡겼다.",
+        "costAxes": [
+          "personnel",
+          "money",
+          "attention"
+        ]
+      },
+      {
+        "id": "direct",
+        "label": "수납 담당은 두고 영주가 직접 감독한다",
+        "effects": [
+          {
+            "catalogKey": "steward.appoint",
+            "operation": "set_estate_oversight",
+            "parameters": {
+              "estateId": "$estate.id",
+              "mode": "direct",
+              "stewardId": "$currentSteward.personId"
+            },
+            "rangeNote": "직접 감독 부하+[1,1]. 담당자의 숨김 비율에[333,333]‰계수; 한도초과 시청원+[1000,1000]tick·오류판정+[200,200]‰.",
+            "preconditions": "현재 위임한 지도 밖 영지. 생존 현직; attention.load=capacity여서 직접 전환하면 실제 과부하 발생.",
+            "limits": "담당자는 유지한다. 직접 지대/세율1000‰로 바뀐다. 총 수입 증가·정직·오류제거 보장 없음."
+          }
+        ],
+        "costAxes": [
+          "attention",
+          "time",
+          "money",
+          "personnel"
+        ],
+        "tradeoff": "후보 둘 중 하나를 택하는 대신 현직을 직접 살핀다. 숨김 몫은 줄어도 업무 한도를 넘어 청원 대기와 장부 오류 위험을 받는다.",
+        "ledger": "직접 감독 전환; 다음 계절 직접 요율·과부하 처리 적용.",
+        "chronicle": "영주는 후보 임명을 보류하고 장부를 직접 살피기로 했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "이름이 다른 두 회계 두루마리를 앞에 두고 손을 멈춘 청지기.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "관리자의 능력과 행실을 감독하는 관리 규범을 후보 비교 장면으로 구성.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "두 후보의 수치·평판·가문 회의는 가공. 능력과 충성도가 언제나 반비례했다는 역사 명제 아님."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [
+      "NE09"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 32,
+    "id": "ck_evt_032",
+    "category": "이웃 가문",
+    "period": "1348–1381",
+    "years": [
+      1367,
+      1369
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "타 가문 상대의 실제 진행 중 청구·소송.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "동일 소송에서 charter와 court_roll이 모두 미추가일 때만. 두 자료가 실재한다는 것은 가공 시나리오 전제이지 문서 생성 효과 아님."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "소송 서기"
+    },
+    "title": "두 묶음의 증거",
+    "body": "이웃 가문과의 소송에 보탤 문서가 두 묶음 들어왔습니다. 서기는 특허장 쪽이 힘이 세지만 법정 기록을 내는 편이 덜 든다 합니다.",
+    "choices": [
+      {
+        "id": "charter",
+        "label": "특허장을 증거로 낸다",
+        "effects": [
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence",
+            "parameters": {
+              "suitId": "$suit.id",
+              "kind": "charter"
+            },
+            "rangeNote": "고정 비용 [40,40]d; 증거 가중치 +[20,20].",
+            "preconditions": "기존 filed/evidence 단계 소송. charter 미추가, 해당 증거 서사가 맞는 실제 청구, 금고40d 이상.",
+            "limits": "기존 kind 추가만. 특허장의 실제 권한 범위를 늘리지 않으며 승소 보장 없음."
+          }
+        ],
+        "tradeoff": "돈이 더 들지만 증거 가중치가 더 크다.",
+        "ledger": "소송 특허장 증거 비용40d; 가중치20 추가.",
+        "chronicle": "영주는 특허장을 소송 증거에 보탰다.",
+        "costAxes": [
+          "money",
+          "rights"
+        ]
+      },
+      {
+        "id": "roll",
+        "label": "법정 기록을 증거로 낸다",
+        "effects": [
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence",
+            "parameters": {
+              "suitId": "$suit.id",
+              "kind": "court_roll"
+            },
+            "rangeNote": "고정 비용 [20,20]d; 증거 가중치 +[10,10].",
+            "preconditions": "동일 소송, court_roll 미추가, 금고20d 이상.",
+            "limits": "charter를 동시에 자동 추가하지 않음. 이후 단계가 지나면 다른 증거 추가 불가할 수 있음."
+          }
+        ],
+        "tradeoff": "금고를 덜 쓰지만 이번에 보태는 증거의 힘도 작다.",
+        "ledger": "소송 법정 기록 비용20d; 가중치10 추가.",
+        "chronicle": "영주는 법정 기록을 먼저 소송에 냈다.",
+        "costAxes": [
+          "money",
+          "rights"
+        ]
+      },
+      {
+        "id": "both",
+        "label": "두 묶음을 함께 낸다",
+        "effects": [
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence",
+            "parameters": {
+              "suitId": "$suit.id",
+              "kind": "charter"
+            },
+            "rangeNote": "고정 비용 [40,40]d; 증거 가중치 +[20,20].",
+            "preconditions": "기존 동일 filed/evidence 소송. 이번 charter 미추가, 실행 직전 금고40d 이상. 묶음 시작 때만 두 종류 미추가·총60d를 검사; 앞 명령 성공 후 이미 낸 증거를 미추가 조건으로 재검사하지 않는다.",
+            "limits": "기존 kind 추가만. 특허장의 실제 권한 범위를 늘리지 않으며 승소 보장 없음."
+          },
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence",
+            "parameters": {
+              "suitId": "$suit.id",
+              "kind": "court_roll"
+            },
+            "rangeNote": "고정 비용 [20,20]d; 증거 가중치 +[10,10].",
+            "preconditions": "기존 동일 filed/evidence 소송. 이번 court_roll 미추가, 실행 직전 금고20d 이상. 묶음 시작 때만 두 종류 미추가·총60d를 검사; 앞 명령 성공 후 이미 낸 증거를 미추가 조건으로 재검사하지 않는다.",
+            "limits": "charter를 동시에 자동 추가하지 않음. 이후 단계가 지나면 다른 증거 추가 불가할 수 있음."
+          }
+        ],
+        "costAxes": [
+          "money",
+          "rights"
+        ],
+        "tradeoff": "증거 가중치30을 보태지만60d를 써 후속 심리비에 남길 돈이 줄어든다. 각각 한 번뿐이며 승소나 점유 이전을 보장하지 않는다.",
+        "ledger": "특허장40d와 법정 기록20d를 순차 제출; 모두 성공 시총60d·가중치30.",
+        "chronicle": "영주는 두 문서의 힘을 모두 빌리기로 했다.",
+        "executionContract": {
+          "mode": "sequential_non_atomic",
+          "preflight": "같은 filed/evidence 소송, 두 종류 모두 미추가, 가용금고60d 이상을 묶음 시작 전에 검사한다. 각 명령 직전에는 해당 종류 미추가·단계 유지·해당 비용 잔액만 재검사한다.",
+          "onPartialFailure": "성공한 앞 명령을 되돌리지 않는다. 이후 명령을 중단하고 성공한 효과만 원장·연대기에 기록한다. 실패한 나머지를 자동 재실행하지 않는다.",
+          "timeAdvance": "명령 사이 자동 시간 전진 없음. 같은 선택을 트랜잭션 또는 새 엔진 명령으로 취급하지 않는다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "밀랍 인장이 달린 특허장과 법정 기록 두루마리가 저울 양쪽처럼 펼쳐진 책상.",
+    "history": {
+      "sourceIds": [
+        "HK03",
+        "HK10"
+      ],
+      "basis": "법정 기록과 권원 문서의 구분을 소송 증거 선택에 반영.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "가중치·표준 제출비는 게임 추정. HK10은 1450년 Norfolk 후대 사례로 개별 1360년대 소송의 근거 아님."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 33,
+    "id": "ck_evt_033",
+    "category": "교회",
+    "period": "1348–1381",
+    "years": [
+      1371,
+      1373
+    ],
+    "conditions": {
+      "land": "실제 소송 대상 영지·권리조각. 교회가 소유한다는 조건은 없음.",
+      "population": "기존 도시·영지의 주민이 있음. 새 증인 인물 생성 없음.",
+      "rights": "실제 filed/evidence 단계 소송과 기존 청구권. deed와 witnesses가 아직 추가되지 않은 경우.",
+      "relations": "세력 관계 수치 문턱 없음. 주교의 호의를 직접 바꾸지 않음.",
+      "season": "계절 제한 없음. 현재 소송이 증거를 받는 단계일 것.",
+      "state": "교회에 맡긴 문서라는 보관 경위는 가공 편집 조건. 실제 열린 소송만 연결하며 새 교회 소유권이나 청구권 생성 없음."
+    },
+    "sender": {
+      "faction": "본당",
+      "role": "문서 보관을 맡은 교회 서기"
+    },
+    "title": "교회 궤짝에 맡긴 증서",
+    "body": "진행 중인 소송의 옛 증서가 교회 궤짝에 보관되어 있다는 말이 왔습니다. 교회 서기는 증서를 옮겨 적어 내거나, 내용을 기억하는 증인들을 부르자고 합니다.",
+    "choices": [
+      {
+        "id": "deed",
+        "label": "보관한 증서를 증거로 낸다",
+        "effects": [
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence",
+            "parameters": {
+              "suitId": "$existingSuit.id",
+              "kind": "deed"
+            },
+            "rangeNote": "고정 게임 비용 [30,30]d; 증거 가중치 +[15,15].",
+            "preconditions": "기존 filed/evidence 단계 소송. deed와 witnesses 모두 미추가. 금고30d 이상. 해당 서사가 맞는 실제 청구 대상.",
+            "limits": "소송 증거 종류를 추가하는 기존 경로. 증서 보관처는 가공이며 증인의 실제 인물 생성·교회 소유권 획득·승소 보장 없음."
+          }
+        ],
+        "tradeoff": "30d를 쓰지만 증인 경로보다 더 큰 증거 가중치를 얻는다. 이 선택은 증서 한 종류만 추가한다.",
+        "ledger": "증서 증거 비용30d 지출; 소송 증거 가중치15 추가.",
+        "chronicle": "교회에 맡겼던 증서가 소송의 증거에 보태졌다.",
+        "costAxes": [
+          "money",
+          "rights"
+        ]
+      },
+      {
+        "id": "witnesses",
+        "label": "기억하는 증인들을 불러 증언을 낸다",
+        "effects": [
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence",
+            "parameters": {
+              "suitId": "$existingSuit.id",
+              "kind": "witnesses"
+            },
+            "rangeNote": "고정 게임 비용 [24,24]d; 증거 가중치 +[8,8].",
+            "preconditions": "기존 filed/evidence 단계 소송. deed와 witnesses 모두 미추가. 금고24d 이상. 해당 서사가 맞는 실제 청구 대상.",
+            "limits": "소송 증거 종류를 추가하는 기존 경로. 증서 보관처는 가공이며 증인의 실제 인물 생성·교회 소유권 획득·승소 보장 없음."
+          }
+        ],
+        "tradeoff": "24d로 비용을 덜 쓰지만 증거 가중치는 작다. 사람을 부른다고 주교의 후원까지 얻지는 않는다.",
+        "ledger": "증인 증거 비용24d 지출; 소송 증거 가중치8 추가.",
+        "chronicle": "교회 서기가 말한 증인들의 증언이 소송에 보태졌다.",
+        "costAxes": [
+          "money",
+          "rights"
+        ]
+      },
+      {
+        "id": "both",
+        "label": "증서와 증인을 함께 제출한다",
+        "effects": [
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence",
+            "parameters": {
+              "suitId": "$existingSuit.id",
+              "kind": "deed"
+            },
+            "rangeNote": "고정 게임 비용 [30,30]d; 증거 가중치 +[15,15].",
+            "preconditions": "기존 동일 filed/evidence 소송. 이번 deed 미추가, 실행 직전 금고30d 이상. 묶음 시작 때만 두 종류 미추가·총54d를 검사; 앞 명령 성공 후 이미 낸 증거를 미추가 조건으로 재검사하지 않는다.",
+            "limits": "소송 증거 종류를 추가하는 기존 경로. 증서 보관처는 가공이며 증인의 실제 인물 생성·교회 소유권 획득·승소 보장 없음."
+          },
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence",
+            "parameters": {
+              "suitId": "$existingSuit.id",
+              "kind": "witnesses"
+            },
+            "rangeNote": "고정 게임 비용 [24,24]d; 증거 가중치 +[8,8].",
+            "preconditions": "기존 동일 filed/evidence 소송. 이번 witnesses 미추가, 실행 직전 금고24d 이상. 묶음 시작 때만 두 종류 미추가·총54d를 검사; 앞 명령 성공 후 이미 낸 증거를 미추가 조건으로 재검사하지 않는다.",
+            "limits": "소송 증거 종류를 추가하는 기존 경로. 증서 보관처는 가공이며 증인의 실제 인물 생성·교회 소유권 획득·승소 보장 없음."
+          }
+        ],
+        "costAxes": [
+          "money",
+          "rights"
+        ],
+        "tradeoff": "가중치23을 얻으려54d를 쓴다. 문서를 혼자 내는 것보다24d가 더 들고, 실제 판정은 상대 증거·점유력까지 따른다.",
+        "ledger": "증서30d·증인24d 순차 제출; 모두 성공 시54d·가중치23.",
+        "chronicle": "영주는 교회에 맡긴 문서와 사람들의 증언을 함께 소송에 보탰다.",
+        "executionContract": {
+          "mode": "sequential_non_atomic",
+          "preflight": "같은 filed/evidence 소송, 두 종류 모두 미추가, 가용금고54d 이상을 묶음 시작 전에 검사한다. 각 명령 직전에는 해당 종류 미추가·단계 유지·해당 비용 잔액만 재검사한다.",
+          "onPartialFailure": "성공한 앞 명령을 되돌리지 않는다. 이후 명령을 중단하고 성공한 효과만 원장·연대기에 기록한다. 실패한 나머지를 자동 재실행하지 않는다.",
+          "timeAdvance": "명령 사이 자동 시간 전진 없음. 같은 선택을 트랜잭션 또는 새 엔진 명령으로 취급하지 않는다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "소송 증거 선택은 영주가 판단하며 청지기 선례 자동 처리 없음.",
+      "exclusions": "같은 소송에 해당 종류를 이미 냈거나 증거 단계가 지났으면 제시하지 않음."
+    },
+    "illustration": "작은 목제 궤짝에서 밀랍 인장 달린 증서를 꺼내는 교회 서기와, 문 밖에서 기다리는 서로 다른 두 증인. 제단이나 성유물은 그리지 않는다.",
+    "history": {
+      "sourceIds": [
+        "HK03",
+        "HK11"
+      ],
+      "basis": "장원 권리 증서·법정 기록의 증거 기능과 지역 교회의 문서 기록이라는 두 자료 영역을 결합한 가공 소송 장면.",
+      "inference": "교회 궤짝에 증서를 맡겼다는 구체적 경위와 증인은 가공. 비용·가중치는 게임 추정.",
+      "limits": "HK11은 성직 기록의 사례이며 남부 모든 교회가 민사 증서 보관소였음을 입증하지 않는다. 교회 보관을 곧 교회 소유로 읽지 않는다."
+    },
+    "integration": {
+      "mode": "기존 소송 명령 안내 초안 — 미설치",
+      "requirements": "실제 기존 소송 ID에 바인딩하는 편집 카드와 조건 검사 필요. 두 증거 모두 미추가일 때만 제시. 제목은 별개 교회 청원처럼 보이되 교회 권리 생성 효과를 붙이지 않음. 실제 명령 성공 후 원장/연대기 기록. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 34,
+    "id": "ck_evt_034",
+    "category": "세력",
+    "period": "1348–1381",
+    "years": [
+      1372,
+      1374
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "직접 감독 아님. 실제 반복 offmap 청원 및 과거 lord 판정. 본 선택은 이미 온 청원을 즉시 판결하지 않고 다음 처리 규칙만 변경. 셋째 선택은 현 amountAtLeast가null이 아닐 때. 이미 열린 청원은 이 설정으로 판결되지 않는다."
+    },
+    "sender": {
+      "faction": "해당 영지 소작인과 청지기",
+      "role": "청지기"
+    },
+    "title": "같은 청원이 또 올라오다",
+    "body": "지난번과 같은 장원 청원이 다시 책상에 쌓였습니다. 청지기는 앞선 판결대로 처리하겠다 하지만, 소작인 대표는 영주가 다시 들어 주길 바랍니다. 영주는 금액의 크기와 권리·혼인 안건을 갈라 들을 수도 있습니다.",
+    "choices": [
+      {
+        "id": "precedent",
+        "label": "같은 종류는 선례를 따르게 한다",
+        "effects": [
+          {
+            "catalogKey": "steward.precedent",
+            "operation": "set_exception_rules",
+            "parameters": {
+              "rules": {
+                "amountAtLeast": "$currentRules.amountAtLeast",
+                "rights": "$currentRules.rights",
+                "marriage": "$currentRules.marriage",
+                "recurring": false
+              }
+            },
+            "rangeNote": "반복 상신 플래그 false; 즉시 금고·관계 변화 [0,0].",
+            "preconditions": "stewardship 존재. 위임한 지도 밖 영지에 같은 estateId/kind의 영주 과거 결정이 있고 기존 예외 항목에 해당하는 사례.",
+            "limits": "전체 청지기의 전역 규칙. 다른 세 필드는 실제 현재 값을 복사. home 및 새로운 초안 ID 선례를 생성하지 않음."
+          }
+        ],
+        "tradeoff": "앞선 승인·거절이 반복 적용되어 일손을 덜 요구하지만 영주가 새 사정을 고를 기회를 줄인다.",
+        "ledger": "반복 예외 상신 해제; 기존 선례 처리 허용.",
+        "chronicle": "영주는 청지기들이 같은 종류의 청원을 앞선 판결에 맞추게 했다.",
+        "costAxes": [
+          "rights",
+          "promise",
+          "attention"
+        ]
+      },
+      {
+        "id": "hear",
+        "label": "반복 청원도 다시 올리게 한다",
+        "effects": [
+          {
+            "catalogKey": "steward.precedent",
+            "operation": "set_exception_rules",
+            "parameters": {
+              "rules": {
+                "amountAtLeast": "$currentRules.amountAtLeast",
+                "rights": "$currentRules.rights",
+                "marriage": "$currentRules.marriage",
+                "recurring": true
+              }
+            },
+            "rangeNote": "반복 상신 플래그 true; 즉시 금고·관계 변화 [0,0].",
+            "preconditions": "동일 stewardship와 사례.",
+            "limits": "전역 recurring 예외 규칙. 무조건 모든 보통 청원을 새로 상신시키는 명령이 아니라 기존 예외 분류에서 선례 재사용을 막는다."
+          }
+        ],
+        "tradeoff": "다시 판단할 기회를 확보하지만 이전 선례로 자동 처리할 수 있던 예외 청원도 영주의 답을 기다린다.",
+        "ledger": "반복 청원 예외 상신 유지; 현금 변동 없음.",
+        "chronicle": "영주는 같은 청원이라도 자신에게 다시 가져오라 했다.",
+        "costAxes": [
+          "rights",
+          "promise",
+          "attention"
+        ]
+      },
+      {
+        "id": "rights_only",
+        "label": "금액 대신 권리·혼인 안건만 다시 올리게 한다",
+        "effects": [
+          {
+            "catalogKey": "steward.exception_rules",
+            "operation": "set_exception_rules",
+            "parameters": {
+              "rules": {
+                "amountAtLeast": null,
+                "rights": true,
+                "marriage": true,
+                "recurring": true
+              }
+            },
+            "rangeNote": "금액 예외해제·권리/혼인 예외true·recurring true. 즉시 금고변동[0,0].",
+            "preconditions": "현재 금액 예외가 켜져 있고 위임 영지에 영주판정 선례가 있음. 권리·혼인과 일반 금액 청원이 모두 실제 가능한 영지.",
+            "limits": "모든 청지기에 적용되는 전역 규칙. 보통 금액 청원은 기존 성향판정; 금액 예외를 없앴으므로 그 종류를 반드시 영주 선례대로 처리하는 것은 아니다. home 경로에는 적용 안 됨."
+          }
+        ],
+        "costAxes": [
+          "rights",
+          "promise",
+          "attention",
+          "money"
+        ],
+        "tradeoff": "권리·혼인의 반복 청원은 직접 심리하되 큰 감면·수선액도 금액만으로 상신되지 않는다. 중요 서류를 지키는 대신 큰 지출 판단을 청지기에게 맡긴다.",
+        "ledger": "전역예외: 금액없음, 권리·혼인true, 반복true; 기존 열린 청원은 미결유지.",
+        "chronicle": "영주는 되풀이되는 권리와 혼인만 다시 듣고 일상 금액 판단은 맡겼다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "같은 표식이 붙은 두 청원 두루마리를 청지기 앞에 겹쳐 놓는 청지기.",
+    "history": {
+      "sourceIds": [
+        "HK02",
+        "HK03"
+      ],
+      "basis": "관리 위임과 법정 기록에 남는 관습을 선례 처리의 서사 배경으로 사용.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "현 엔진의 estateId/kind 매칭을 실제 중세 판례법 체계와 동일시하지 않는다. 자동 처리 범위는 제한적."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 35,
+    "id": "ck_evt_035",
+    "category": "자연",
+    "period": "1348–1381",
+    "years": [
+      1374,
+      1376
+    ],
+    "conditions": {
+      "land": "실제 거래 시장이 작동하는 영지. 촌락 창고 경로는 이 카드에서 제외.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "가을·겨울. 편집 필터.",
+      "state": "현 목재 주문 잔량0. 바람 피해는 가공 배경이고 실제 시설 손상은 만들지 않음. 실재 진행 사업이 목재 부족 상태이거나 실재 목재 필요 제안이 있을 때만. 주문없음의 기회비용을 표시."
+    },
+    "sender": {
+      "faction": "장인과 상인",
+      "role": "목수"
+    },
+    "title": "바람 뒤에 찾는 목재",
+    "body": "바람이 지난 뒤 목수가 쓸 만한 목재를 더 구해 달라 합니다. 상인은 시장이 설 때 조금씩 들일 수 있다며, 금고를 얼마나 남길지 먼저 정하라 합니다.",
+    "choices": [
+      {
+        "id": "larger",
+        "label": "목재 12단을 주문한다",
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 12
+            },
+            "rangeNote": "후보 주문 [12,12]단. 시장일당 최대[2,2]단, 단가[18,18]d; 전량 구입 시216d.",
+            "preconditions": "실제 거래 시장 존재, 영주 목재 주문 현재0, 구매 때 가용 금고.",
+            "limits": "주문은 기존 잔량을 대체. 매 시장일 실제 산 만큼만 목재/금고 변동. 건물 수선·폭풍 피해 생성 없음."
+          }
+        ],
+        "tradeoff": "재고를 더 모으지만 끝까지 구입하면 더 많은 현금이 든다. 돈이 모자라면 모두 들어오지 않는다.",
+        "ledger": "목재12단 주문; 현금은 시장일 실제 매입량×18d만 지출.",
+        "chronicle": "영주는 바람 뒤 쓸 목재를 넉넉히 주문했다.",
+        "costAxes": [
+          "money",
+          "materials",
+          "time"
+        ]
+      },
+      {
+        "id": "smaller",
+        "label": "목재 4단만 주문한다",
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 4
+            },
+            "rangeNote": "후보 주문 [4,4]단; 단가[18,18]d; 전량 구입72d.",
+            "preconditions": "동일 시장·잔량0·금고 구매력 조건.",
+            "limits": "주문 즉시72d를 빼거나 목재4를 주지 않음. 다른 용도와 자동 구분·예약 안 함."
+          }
+        ],
+        "tradeoff": "현금 부담은 작지만 큰 주문보다 확보할 재고가 적다. 임의의 수선 성공률 차이는 없다.",
+        "ledger": "목재4단 주문; 지급은 시장일마다 실제 매입분만.",
+        "chronicle": "영주는 목재를 조금만 들이고 금고의 여유를 남겼다.",
+        "costAxes": [
+          "money",
+          "materials",
+          "time"
+        ]
+      },
+      {
+        "id": "wait",
+        "label": "지금은 새 주문을 내지 않는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "none",
+            "parameters": {},
+            "rangeNote": "즉시 금고·목재·주문 변화[0,0].",
+            "preconditions": "현재 목재 주문0. 두 구매안과 동일 상황.",
+            "limits": "기존 재고·자연 공급만 남는다. 다음 시장일 자동 주문·재상신·피해복구를 예약하지 않는다."
+          }
+        ],
+        "costAxes": [
+          "materials",
+          "time",
+          "opportunity"
+        ],
+        "tradeoff": "현금을 묶지 않지만 다음 시장일까지의 매입 기회를 놓친다. 목재가 필요한 진행 사업은 실제 기존 자재 부족 상태에 따라 기다린다.",
+        "ledger": "주문0 유지; 신규 구매 약속 없음.",
+        "chronicle": "영주는 목재 주문을 내지 않고 기존 재고로 버티게 했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "굽은 울타리 곁에서 목재 길이를 재는 목수와 작은 수레.",
+    "history": {
+      "sourceIds": [
+        "HK02",
+        "HT05"
+      ],
+      "basis": "시설 수선 책임과 취락의 목재 사용을 바탕으로 조달 청원 구성.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "1374–1376년 특정 폭풍의 기록 아님. 목재 단·가격·운송량은 게임 수치."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [
+      "NE02"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 36,
+    "id": "ck_evt_036",
+    "category": "장원",
+    "period": "1348–1381",
+    "years": [
+      1375,
+      1377
+    ],
+    "conditions": {
+      "land": "본거지 장원(HOME_ESTATE_ID). 지도 밖 영지 경로 아님.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "기존 home.mill_suit의 rights 분류와 장원의 제분 의무라는 서사 전제. 실제 제분권 조각은 변경하지 않음.",
+      "relations": "commons와 town 등 해당 효과의 세력 레코드가 실제 존재해야 함.",
+      "season": "계절 제한 없음. 해당 home 청원의 실제 기한 안.",
+      "state": "실제 home mill_suit 미결 청원. 승인 가능 금고가 있어야 승인 선택 노출. 새 방앗간을 놓거나 제분 독점권을 폐지하지 않음."
+    },
+    "sender": {
+      "faction": "소작인 공동체",
+      "role": "곡물을 나르는 소작인 대표"
+    },
+    "title": "먼 방앗간까지 들고 간 곡물",
+    "body": "소작인들이 지정된 곡물 방앗간까지 곡물을 나르기 어렵다며 제분 의무를 덜어 달라 합니다. 집행관은 청을 받아주려면 이번 청원액만큼 금고에서 부담해야 한다고 아룁니다.",
+    "choices": [
+      {
+        "id": "grant",
+        "label": "부담을 덜어 달라는 청을 받아들인다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openHome.mill_suit.id",
+              "grant": true
+            },
+            "rangeNote": "현재 청원액 [20,60]d 지출; commons +[5,5]. 기존 생성 범위와 고정 관계 값.",
+            "preconditions": "agency가 있는 영주 모드. HOME_ESTATE_ID의 실제 mill_suit 청원이 open이며 영주에게 도착했고 deadline 이내. 본문 상황과 맞는 현재 청원만 연결.",
+            "limits": "실제 제분권 철폐·제분료율 변경·방앗간 폐쇄 없음. 지정 청원액 지출의 기존 승인 경로만. 금고 변경과 history.ts의 HOME_PETITION_KINDS 세력 관계 후처리를 온전히 적용한다. 새 청원 종류를 만들지 않는다."
+          }
+        ],
+        "tradeoff": "금고에서 비용을 내는 대신 농민 공동체의 관계를 얻는다. 제분 의무의 세부 권리 기록은 바뀌지 않는다.",
+        "ledger": "제분 의무 청원 승인; 기존 청원액 지출, 농민 공동체+5.",
+        "chronicle": "영주는 곡물을 나르는 소작인들의 부담을 덜어 달라는 청을 받아들였다.",
+        "costAxes": [
+          "money",
+          "relationship"
+        ]
+      },
+      {
+        "id": "refuse",
+        "label": "제분 의무에 관한 청원을 거절한다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openHome.mill_suit.id",
+              "grant": false
+            },
+            "rangeNote": "지출 [0,0]d; commons −[5,5].",
+            "preconditions": "agency가 있는 영주 모드. HOME_ESTATE_ID의 실제 mill_suit 청원이 open이며 영주에게 도착했고 deadline 이내. 본문 상황과 맞는 현재 청원만 연결.",
+            "limits": "제분료의 새 수입을 추가하지 않음. 기존 제분 체계 그대로. 금고 변경과 history.ts의 HOME_PETITION_KINDS 세력 관계 후처리를 온전히 적용한다. 새 청원 종류를 만들지 않는다."
+          }
+        ],
+        "tradeoff": "금고를 지키지만 농민 공동체와의 관계를 잃는다.",
+        "ledger": "제분 의무 청원 거절; 지출0d, 농민 공동체−5.",
+        "chronicle": "소작인들의 제분 의무 청원은 받아들여지지 않았다.",
+        "costAxes": [
+          "money",
+          "relationship"
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": 8,
+      "steward": "FIX-14의 동일 estateId/kind 선례는 위임한 지도 밖 영지에 구현되어 있다. 확인한 최신 homePetitionSeason은 direct로 생성하므로 이 홈 청원은 영주 판단을 유지한다. 선례 기능 전체를 새 효과로 제안하지 않는다.",
+      "exclusions": "동일 청원 재응답 금지. 다른 가구·다른 실제 청원에서만 재사용. 8년 간격은 미구현 편집 권고."
+    },
+    "illustration": "바퀴 자국이 깊은 길에서 작은 곡물 포대를 멘 소작인들이 멀리 보이는 곡물 방앗간을 가리킨다. 집행관은 비용 장부를 들고 있다.",
+    "history": {
+      "sourceIds": [
+        "HK01",
+        "HK03"
+      ],
+      "basis": "Lancaster 장원 용어 해설의 Multure 항목은 영주의 방앗간 이용료와 소작인의 제분 의무를 함께 설명한다. 이를 해당 장원 관습 분쟁의 근거로 사용하며 다른 지역의 동일 관습은 가정하지 않는다.",
+      "inference": "운반 거리·소작인·청원은 가공.20–60d 보전 비용은 현 게임 설정이며 역사적 표준 배상액 아님.",
+      "limits": "모든 남부 장원에 동일한 제분 강제권이 있었다는 근거로 사용하지 않는다. 현 엔진은 청원 분류·금고·세력 관계를 처리하며 관습 의무 조항을 고치지 않는다."
+    },
+    "integration": {
+      "mode": "기존 home 청원의 보충 서사 — 미설치",
+      "requirements": "실제 도착한 mill_suit 청원 ID에 본문을 연결한다. 새 사건의 임의 승인 효과로 분리하지 않음. 기존 home 청원은 현재 코드상 연도 상한 없이 순환하므로 해당 연도 창에서 대상을 확인한다. 본문 발동 필터·재등장 제한·추가 원장 문구는 편집 어댑터 필요. 실제 명령 성공 뒤 문구 기록. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [
+      "NE08"
+    ],
+    "contentClass": "existing_petition_variant"
+  },
+  {
+    "number": 37,
+    "id": "ck_evt_037",
+    "category": "가문 내부",
+    "period": "1348–1381",
+    "years": [
+      1376,
+      1378
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "실제 위임 영지·생존 담당 및 attention.load=capacity. 현재 위임에서 직접으로 바꾸면 실제 과부하가 발생하는 저장에만 제시. 셋째 선택은auditMode=accounts·다음 미카엘마스 전·최근 방문감사 여력차감 미발생 때만."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문의 서기와 연장자"
+    },
+    "title": "가문의 책상에 남은 장부",
+    "body": "가문의 한 어른은 먼 영지도 가주가 직접 살펴야 한다고 말합니다. 가문의 서기는 이미 펼쳐 둔 장부를 가리키며 청지기에게 맡길 몫도 정해야 한다고 아룁니다. 가주는 일을 맡긴 채 감사 때만 가서 확인하는 길도 저울질합니다.",
+    "choices": [
+      {
+        "id": "direct",
+        "label": "가주가 직접 감독한다",
+        "effects": [
+          {
+            "catalogKey": "steward.appoint",
+            "operation": "set_estate_oversight",
+            "parameters": {
+              "estateId": "$estate.id",
+              "mode": "direct",
+              "stewardId": "$currentSteward.personId"
+            },
+            "rangeNote": "해당 지도 밖 영지의 업무 부하 +[1,1]. 수납 담당의 숨김 비율은 위임 대비 [333,333]‰. 과부하 시 청원1계절 지연·오류 판정+[200,200]‰ 등 기존 경로.",
+            "preconditions": "실제 보유 지도 밖 영지의 현재 oversight.mode=steward. 유효 현 담당 생존. 현재 attention.load=capacity여서 직접 감독하면 실제 과부하가 생길 때만.",
+            "limits": "같은 담당 인물을 유지하며 감독 방식만 변경. 직접 지대/세율1000‰와 위임 성향별 기존 세율이 적용되므로 단순 순이익을 보장하지 않음. 가문 감정·후계 지위 변경 없음."
+          }
+        ],
+        "tradeoff": "청원을 직접 판단하고 담당자가 숨기는 비율을 줄이지만 업무 한도를 넘어 직접 영지의 지연·오류 위험을 받는다.",
+        "ledger": "해당 영지 직접 감독 전환; 다음 계절부터 기존 과부하·수납 경로 적용.",
+        "chronicle": "가주는 먼 영지까지 직접 살피기로 하여 더 많은 장부를 맡았다.",
+        "costAxes": [
+          "personnel",
+          "money",
+          "attention"
+        ]
+      },
+      {
+        "id": "delegate",
+        "label": "청지기에게 계속 맡긴다",
+        "effects": [
+          {
+            "catalogKey": "steward.appoint",
+            "operation": "set_estate_oversight",
+            "parameters": {
+              "estateId": "$estate.id",
+              "mode": "steward",
+              "stewardId": "$currentSteward.personId"
+            },
+            "rangeNote": "위임 유지: 직접 감독 부하 추가 [0,0]. 수납 담당의 숨김 비율은 직접 감독 감산 없이 기존 성향·충성도 식 적용.",
+            "preconditions": "실제 보유 지도 밖 영지의 현재 oversight.mode=steward. 유효 현 담당 생존. 현재 attention.load=capacity여서 직접 감독하면 실제 과부하가 생길 때만.",
+            "limits": "같은 담당 인물을 유지하며 감독 방식만 변경. 직접 지대/세율1000‰와 위임 성향별 기존 세율이 적용되므로 단순 순이익을 보장하지 않음. 가문 감정·후계 지위 변경 없음."
+          }
+        ],
+        "tradeoff": "현재 업무 한도를 지키지만 해당 영지 청원은 예외 규칙 밖에서 청지기 판단을 따르고 직접 감독의 숨김 감산을 얻지 못한다.",
+        "ledger": "해당 영지 청지기 위임 유지; 현재 인물·금고 변동 없음.",
+        "chronicle": "가주는 청지기에게 먼 영지를 계속 맡기고 가문의 책상을 비워 두었다.",
+        "costAxes": [
+          "personnel",
+          "money",
+          "attention"
+        ]
+      },
+      {
+        "id": "delegate_visit",
+        "label": "위임을 유지하되 방문 감사로 바꾼다",
+        "effects": [
+          {
+            "catalogKey": "audit.mode",
+            "operation": "set_audit_mode",
+            "parameters": {
+              "estateId": "$estate.id",
+              "mode": "visit"
+            },
+            "rangeNote": "방문 발견 기준[850,850]‰+(100−능력)×[3,3]‰. 실제 미카엘마스 방문 뒤1년방문 사유−1, 실효 관리 용량 감소[0,1] (최저1·중복 방문 제한).",
+            "preconditions": "현재 위임 유지·auditMode=accounts. 다음 미카엘마스 전이고 최근 방문감사로 이미 용량이 줄어있지 않음.",
+            "limits": "즉시 방문·적발·징계 없음. 감사 뒤 별도 pending결정을 기다림. 전체 업무는 계속 위임한다. 일회성 예약이 아닌 지속 설정. 이후 매년 감사에도 visit가 유지되므로 accounts로 재설정하지 않으면 업무 용량 차감의1년 기한이 매년 갱신된다. 방문 사유 가중치는 −1이지만 관리 용량은 최소1로 고정되므로 실제 추가 용량 감소는0~1이다. 이미 방문 차감이 있으면 새로 중첩하지 않고 기간을 갱신한다."
+          }
+        ],
+        "costAxes": [
+          "attention",
+          "time",
+          "money"
+        ],
+        "tradeoff": "위임을 유지하며 수납을 더 자세히 확인하지만 방문 뒤 한 해 동안 영주의 다른 영지 처리 여력이 줄어든다. 단순 위임과 직접 감독 사이의 비용 있는 확인 안이다. 방문 감사 설정은 계속 유지된다. 장부 감사로 돌리지 않으면 다음 미카엘마스마다 방문 시점이 갱신되어 업무 여력 감소가 이어진다. 방문의 실제 추가 관리 용량 감소는 최소 용량1과 기존 방문 이력에 따라0~1이다.",
+        "ledger": "위임 유지; 방문 감사 예약. 실제 방문 시점에만 업무 용량 감소.",
+        "chronicle": "가주는 먼 영지의 일상을 맡기되 감사 때는 직접 가기로 했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음. 같은 장기 변주 묶음 019,037,059은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "estate_oversight"
+    },
+    "illustration": "가문의 큰 식탁 한쪽에 쌓인 장부와, 먼 영지로 보낼 봉인 꾸러미.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "장원 관리 규범의 영주·관리자·감사 역할 구분을 가문의 업무 배분 대화로 구성.",
+      "inference": "집안 인물의 반대·대화는 가공. 업무 용량·횡령·오류 수치는 현 엔진의 게임 추정.",
+      "limits": "직접 감독이 언제나 역사적으로 효율적이었다고 주장하지 않는다. 가문 갈등은 서사만이며 실제 감정 수치는 바꾸지 않음."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [
+      "NE09"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 38,
+    "id": "ck_evt_038",
+    "category": "이웃 가문",
+    "period": "1348–1381",
+    "years": [
+      1378,
+      1381
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "실제 승소 뒤 enforcing 소송 및 남의 점유.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "실제 enforcing 소송만 사용. 판결·권리·소송을 새로 생성하지 않음."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "소송 관리인"
+    },
+    "title": "판결 뒤에도 닫힌 문",
+    "body": "소송의 판결은 나왔지만 다투던 권리의 점유는 아직 이웃에게 있습니다. 관리인은 집행비를 내고 절차를 밟을지, 당분간 금고를 지킬지 묻습니다.",
+    "choices": [
+      {
+        "id": "enforce",
+        "label": "점유 집행을 시도한다",
+        "effects": [
+          {
+            "catalogKey": "suit.enforce",
+            "operation": "enforce_possession",
+            "parameters": {
+              "suitId": "$enforcingSuit.id"
+            },
+            "rangeNote": "시도당 고정 [80,80]d. 40+patronSupport>hold이면 점유 변경; 아니면 hold −[20,20].",
+            "preconditions": "실제 enforcing 단계의 이웃 가문 상대 소송과 금고80d 이상.",
+            "limits": "성공 때만 해당 권리조각/영지 possessor 변경. 군대 생성·새 폭력·즉시 세입 확정 없음."
+          }
+        ],
+        "tradeoff": "돈을 써서 점유를 얻으려 하나 한 번에 성공하지 않을 수 있다.",
+        "ledger": "점유 집행비80d; 성공 여부와 남은 저항값을 실제 결과로 기록.",
+        "chronicle": "영주는 판결을 실제 점유로 잇기 위한 집행을 시도했다.",
+        "costAxes": [
+          "money",
+          "rights"
+        ]
+      },
+      {
+        "id": "defer",
+        "label": "집행을 미룬다",
+        "effects": [
+          {
+            "catalogKey": "time.existing_progress",
+            "operation": "none",
+            "parameters": {},
+            "rangeNote": "고정 [0,0]; 현재 결정으로 발생하는 수치 변화 없음.",
+            "preconditions": "동일 enforcing 소송.",
+            "limits": "실제 상태·금고·관계 변화 0. 시간은 평소대로 흐르며 기한을 연장하지 않는다."
+          }
+        ],
+        "tradeoff": "집행비를 지키지만 타인의 점유가 그대로 남는다. 판결을 얻었다고 사용·수입이 자동으로 넘어오지 않는다.",
+        "ledger": "집행 미실시; 금고·점유 변화 없음.",
+        "chronicle": "판결 문서는 보관되었으나 이웃의 점유는 그대로 남았다.",
+        "costAxes": [
+          "time",
+          "opportunity"
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "봉인된 판결문을 든 관리인 앞에 닫힌 영지 창고 문, 무장 충돌은 보이지 않는다.",
+    "history": {
+      "sourceIds": [
+        "HK10",
+        "HK03"
+      ],
+      "basis": "권원과 실제 점유가 다르고 명령 뒤에도 다툼이 이어지는 문서 사례를 제한적으로 유추.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "HK10은1450년 Norfolk.1378년 남부의 특정 집행 방식·폭력 규모를 주장하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 안내 초안 — 미설치",
+      "requirements": "새 카드 등록·조건 검사·명령 연결·선택 뒤 원장/연대기 문구 어댑터 필요. $로 시작하는 참조는 실제 저장 상태의 ID/값에 바인딩하며 문구를 그대로 명령에 넣지 않는다. 실제 명령이 성공한 뒤 결과 문구를 기록한다. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 39,
+    "id": "ck_evt_039",
+    "category": "도시",
+    "period": "1348–1381",
+    "years": [
+      1369,
+      1373
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "surge 이후 실제 guild_charter 도착 시에만. 1369–1373은 현 설정의 도착 가능 창이며 미도착 저장에서는 건너뜀."
+    },
+    "sender": {
+      "faction": "장인",
+      "role": "길드 설립을 청하는 장인 대표"
+    },
+    "title": "길드 인가 청원",
+    "body": "장인 대표가 각자의 이름 대신 함께 쓸 인장을 말합니다. 상인은 일이 빨라지길 바라지만, 상위 영주의 관리인은 도시의 목소리가 커지는 것을 달가워하지 않습니다.",
+    "choices": [
+      {
+        "id": "accept",
+        "label": "기존 길드 청원을 받아들인다",
+        "effects": [
+          {
+            "catalogKey": "chapter.reorganisation",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$pending.guild_charter.id",
+              "response": "accept"
+            },
+            "rangeNote": "기존 guild 생성; 직물 작업시간 [750,750]‰. town +[10,10], merchant_house_1 +[5,5], overlord −[5,5].",
+            "preconditions": "실제 reorganisation 상태, 미응답 guild_charter가 현재 표시됨.",
+            "limits": "원래 청원 정본 제목·선택 유지. 자유로운 모든 업종 길드 생성 아님."
+          }
+        ],
+        "tradeoff": "장인 조직과 작업의 이점을 얻지만 상위 영주와의 관계가 나빠진다.",
+        "ledger": "기존 길드 청원 승인; 관계 변화와 길드 설립 기록.",
+        "chronicle": "영주는 장인들의 공동 조직을 받아들였다.",
+        "costAxes": [
+          "money",
+          "time",
+          "relationship"
+        ]
+      },
+      {
+        "id": "refuse",
+        "label": "기존 길드 청원을 거절한다",
+        "effects": [
+          {
+            "catalogKey": "chapter.reorganisation",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$pending.guild_charter.id",
+              "response": "refuse"
+            },
+            "rangeNote": "직조 작업시간 [1250,1250]‰; 기존 후속 경로 최대[2,2]가구 이탈. town −[10,10], merchant_house_1 −[15,15].",
+            "preconditions": "동일한 실제 미응답 guild_charter.",
+            "limits": "가구 이탈은 해당 장의 기존 후속 처리 조건을 따름. 없는 가구를 음수로 만들지 않음."
+          }
+        ],
+        "tradeoff": "승인 때의 상위 영주 관계 손실을 피하지만 도시·상인 관계와 직물 일손에서 대가를 치른다.",
+        "ledger": "길드 청원 거절; 관계 변화 및 후속 직물 작업·가구 경로 기록.",
+        "chronicle": "장인들의 공동 인장은 허락되지 않았다.",
+        "costAxes": [
+          "money",
+          "time",
+          "relationship"
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "모직물 견본 옆에 여러 장인의 손과 아직 찍지 않은 공동 인장.",
+    "history": {
+      "sourceIds": [
+        "HT03",
+        "HT04"
+      ],
+      "basis": "14세기 중엽 직물 생산·수출과 도시 장인의 결집을 배경으로 만든 보충 대화.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "길드가 있으면 언제나 작업이25% 빨라졌다는 역사적 주장 아님. 해당 시기·수치는 기존 장별 게임 설정."
+    },
+    "integration": {
+      "mode": "기존 장별 청원 보충 장면 — 원본 제목/선택 유지",
+      "requirements": "guild_charter 기존 청원에만 보충 본문과 원장 문구 연결. 독립 새 길드 청원으로 등록하거나 중복 응답하지 않음. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다.",
+      "classificationNote": "기존 사건 문구 개선. 새 사건 수로 계산하거나 독립 등록하지 않는다. 기존 응답 수와 효과를 유지한다."
+    },
+    "newEffectLinks": [],
+    "subtitle": "직물 견본 뒤의 공동 인장",
+    "contentClass": "existing_event_copy_revision",
+    "existingEvent": {
+      "id": "guild_charter",
+      "ref": "src/content/reorganisationConfig.ts:13"
+    }
+  },
+  {
+    "number": 40,
+    "id": "ck_evt_040",
+    "category": "세력",
+    "period": "1348–1381",
+    "years": [
+      1377,
+      1377
+    ],
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "1377년 봄에 실제 기존 청원이 열린 기간만.",
+      "state": "실제 tax_collection 미응답.1379·1381년에 새 결정을 반복 생성하지 않음."
+    },
+    "sender": {
+      "faction": "도시 공동체와 왕실",
+      "role": "도시 대표와 영주 징수인"
+    },
+    "title": "인두세 징수 방식",
+    "body": "도시 대표는 새 징수 명부를 주민 쪽에서 맡게 해 달라 합니다. 영주의 징수인은 직접 걷으면 금고에 남는 몫이 더 크다고 답합니다.",
+    "choices": [
+      {
+        "id": "delegate",
+        "label": "기존 청원대로 도시가 맡게 한다",
+        "effects": [
+          {
+            "catalogKey": "chapter.reorganisation",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$pending.tax_collection.id",
+              "response": "accept"
+            },
+            "rangeNote": "town +[10,10], commons +[10,10]. 기존 징수 일정마다 엔진상14세 이상1인당 영주 몫[1,1]d.",
+            "preconditions": "실제1377봄 도착 미응답 tax_collection과 reorganisation 상태.",
+            "limits": "1377여름·1379봄·1381여름 기존 일정만. 역사적 실제 세율·과세 연령 재현이 아닌 게임 수치."
+          }
+        ],
+        "tradeoff": "도시·주민 관계를 얻지만 영주의 징수 몫은 직접 징수보다 작다.",
+        "ledger": "징수 위임 결정; 관계 변화 기록, 세입은 원래 징수일에 발생.",
+        "chronicle": "영주는 징수 명부를 도시 쪽에 맡겼다.",
+        "costAxes": [
+          "money",
+          "time",
+          "relationship"
+        ]
+      },
+      {
+        "id": "direct",
+        "label": "영주의 징수인이 맡는다",
+        "effects": [
+          {
+            "catalogKey": "chapter.reorganisation",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$pending.tax_collection.id",
+              "response": "refuse"
+            },
+            "rangeNote": "commons −[10,10], crown +[5,5]. 기존 징수마다14세 이상1인당[3,3]d;1381년 압력에+[40,40].",
+            "preconditions": "동일한 실제1377봄 미응답 tax_collection.",
+            "limits": "압력40만으로 반란 확정 아님. 원래 임계값·다른 요인·기존 징수 일정 준수."
+          }
+        ],
+        "tradeoff": "더 큰 영주 몫과 왕실 관계를 얻지만 주민 관계를 잃고1381년의 기존 반발 압력을 높인다.",
+        "ledger": "직접 징수 결정; 주민·왕실 관계 기록, 세입은 기존 일정에 발생.",
+        "chronicle": "영주는 자신의 징수인에게 명부를 들게 했다.",
+        "costAxes": [
+          "money",
+          "time",
+          "relationship"
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "이 초안 ID의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 대상의 처리 완료·기한 경과·중복 카드에서는 표시하지 않음."
+    },
+    "illustration": "이름들이 적힌 징수 명부 양끝을 도시 대표와 영주의 징수인이 잡고 있다.",
+    "history": {
+      "sourceIds": [
+        "HT14",
+        "HT13"
+      ],
+      "basis": "TNA E179의1377년 부과 안내는 지역 대표의 산정·징수와14세 초과 대상4d 부과를 설명한다(HT14). 후속 징수·1381년 봉기 연결은HT13으로 보강한다.",
+      "inference": "인물·청원·해당 연도의 상황은 가공·조합이다. 연결 행동과 모든 수치는 게임 추정이며 사료의 액수·확률을 옮긴 것이 아니다.",
+      "limits": "기관 검색 색인 확인, 원문 전체는403으로 미열람. 역사적1377년4d·14세 초과와 엔진의14세 이상·영주 몫1/3d는 다르다.1379봄 등 계절 일정도 장별 게임 설정이며 실제 왕실 부과 기준과 혼동 금지."
+    },
+    "integration": {
+      "mode": "기존 장별 청원 보충 장면 — 원본 제목/선택 유지",
+      "requirements": "기존 tax_collection 카드의 보충 장면.1377봄의 원래 응답 경로에만 연결하고 새로운 인두세 일정을 만들지 않음. 2차: costAxes는 결과/기회비용의 분류이며 독립 mutation이 아니다. 조건부 셋째 안은 전제 불충족 시 숨기고 기존 두 안을 유지한다. 복수 명령은 순차·비원자 실행으로 매 단계 성공 여부를 확인한다.",
+      "classificationNote": "기존 사건 문구 개선. 새 사건 수로 계산하거나 독립 등록하지 않는다. 기존 응답 수와 효과를 유지한다."
+    },
+    "newEffectLinks": [],
+    "subtitle": "징수 명부를 누가 들 것인가",
+    "contentClass": "existing_event_copy_revision",
+    "existingEvent": {
+      "id": "tax_collection",
+      "ref": "src/content/reorganisationConfig.ts:14"
+    }
+  }
+]

@@ -1,0 +1,231 @@
+{
+  "scope": "post-detection semantic review; frozen ground truth unchanged",
+  "rejected_ids": [
+    "prenat1-city:repeat_density:0",
+    "prenat1-city:repeat_density:1",
+    "prenat1-city-confirm:repeat_density:0",
+    "prenat1-city-confirm:repeat_density:1",
+    "prenat2-city:repeat_density:0",
+    "prenat2-city:repeat_density:1",
+    "prenat2-city-confirm:repeat_density:0",
+    "prenat2-city-confirm:repeat_density:1",
+    "current-city:repeat_density:0",
+    "current-city:repeat_density:1",
+    "current-city-confirm:repeat_density:0",
+    "current-city-confirm:repeat_density:1",
+    "current-lod:repeat_density:0",
+    "current-lod:repeat_density:1"
+  ],
+  "reviews": [
+    {
+      "candidate_id": "prenat1-city:repeat_density:0",
+      "scene": "prenat1-city",
+      "detector": "repeat_density",
+      "box": {
+        "x": 1012,
+        "y": 144,
+        "width": 449,
+        "height": 236
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "prenat1/raw/prenat1-city/00.png",
+      "findings_sha256": "5e075ab2ffac76e606363d6fb36c985b8653954913e486b901f7b8a9475fbe5e"
+    },
+    {
+      "candidate_id": "prenat1-city:repeat_density:1",
+      "scene": "prenat1-city",
+      "detector": "repeat_density",
+      "box": {
+        "x": 757,
+        "y": 417,
+        "width": 371,
+        "height": 109
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "prenat1/raw/prenat1-city/00.png",
+      "findings_sha256": "5e075ab2ffac76e606363d6fb36c985b8653954913e486b901f7b8a9475fbe5e"
+    },
+    {
+      "candidate_id": "prenat1-city-confirm:repeat_density:0",
+      "scene": "prenat1-city-confirm",
+      "detector": "repeat_density",
+      "box": {
+        "x": 1012,
+        "y": 144,
+        "width": 449,
+        "height": 236
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "prenat1/raw/prenat1-city-confirm/00.png",
+      "findings_sha256": "5e075ab2ffac76e606363d6fb36c985b8653954913e486b901f7b8a9475fbe5e"
+    },
+    {
+      "candidate_id": "prenat1-city-confirm:repeat_density:1",
+      "scene": "prenat1-city-confirm",
+      "detector": "repeat_density",
+      "box": {
+        "x": 757,
+        "y": 417,
+        "width": 371,
+        "height": 109
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "prenat1/raw/prenat1-city-confirm/00.png",
+      "findings_sha256": "5e075ab2ffac76e606363d6fb36c985b8653954913e486b901f7b8a9475fbe5e"
+    },
+    {
+      "candidate_id": "prenat2-city:repeat_density:0",
+      "scene": "prenat2-city",
+      "detector": "repeat_density",
+      "box": {
+        "x": 963,
+        "y": 232,
+        "width": 345,
+        "height": 182
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "prenat2-fixed/raw/prenat2-city/00.png",
+      "findings_sha256": "4b650bfab8661eedf608ec0309b0433eb10bdebc853195c011beb8645b7f9508"
+    },
+    {
+      "candidate_id": "prenat2-city:repeat_density:1",
+      "scene": "prenat2-city",
+      "detector": "repeat_density",
+      "box": {
+        "x": 767,
+        "y": 442,
+        "width": 285,
+        "height": 84
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "prenat2-fixed/raw/prenat2-city/00.png",
+      "findings_sha256": "4b650bfab8661eedf608ec0309b0433eb10bdebc853195c011beb8645b7f9508"
+    },
+    {
+      "candidate_id": "prenat2-city-confirm:repeat_density:0",
+      "scene": "prenat2-city-confirm",
+      "detector": "repeat_density",
+      "box": {
+        "x": 963,
+        "y": 232,
+        "width": 345,
+        "height": 182
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "prenat2-fixed/raw/prenat2-city-confirm/00.png",
+      "findings_sha256": "4b650bfab8661eedf608ec0309b0433eb10bdebc853195c011beb8645b7f9508"
+    },
+    {
+      "candidate_id": "prenat2-city-confirm:repeat_density:1",
+      "scene": "prenat2-city-confirm",
+      "detector": "repeat_density",
+      "box": {
+        "x": 767,
+        "y": 442,
+        "width": 285,
+        "height": 84
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "prenat2-fixed/raw/prenat2-city-confirm/00.png",
+      "findings_sha256": "4b650bfab8661eedf608ec0309b0433eb10bdebc853195c011beb8645b7f9508"
+    },
+    {
+      "candidate_id": "current-city:repeat_density:0",
+      "scene": "current-city",
+      "detector": "repeat_density",
+      "box": {
+        "x": 963,
+        "y": 238,
+        "width": 345,
+        "height": 182
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "current-fixed/raw/current-city/00.png",
+      "findings_sha256": "2b292d2299a31fa8c64b1f41d6414f581e788634aeb6d069c011e79c7ae760c6"
+    },
+    {
+      "candidate_id": "current-city:repeat_density:1",
+      "scene": "current-city",
+      "detector": "repeat_density",
+      "box": {
+        "x": 767,
+        "y": 448,
+        "width": 285,
+        "height": 84
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "current-fixed/raw/current-city/00.png",
+      "findings_sha256": "2b292d2299a31fa8c64b1f41d6414f581e788634aeb6d069c011e79c7ae760c6"
+    },
+    {
+      "candidate_id": "current-city-confirm:repeat_density:0",
+      "scene": "current-city-confirm",
+      "detector": "repeat_density",
+      "box": {
+        "x": 963,
+        "y": 238,
+        "width": 345,
+        "height": 182
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "current-fixed/raw/current-city-confirm/00.png",
+      "findings_sha256": "2b292d2299a31fa8c64b1f41d6414f581e788634aeb6d069c011e79c7ae760c6"
+    },
+    {
+      "candidate_id": "current-city-confirm:repeat_density:1",
+      "scene": "current-city-confirm",
+      "detector": "repeat_density",
+      "box": {
+        "x": 767,
+        "y": 448,
+        "width": 285,
+        "height": 84
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "current-fixed/raw/current-city-confirm/00.png",
+      "findings_sha256": "2b292d2299a31fa8c64b1f41d6414f581e788634aeb6d069c011e79c7ae760c6"
+    },
+    {
+      "candidate_id": "current-lod:repeat_density:0",
+      "scene": "current-lod",
+      "detector": "repeat_density",
+      "box": {
+        "x": 744,
+        "y": 478,
+        "width": 210,
+        "height": 109
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "current-fixed/raw/current-lod/00.png",
+      "findings_sha256": "2b292d2299a31fa8c64b1f41d6414f581e788634aeb6d069c011e79c7ae760c6"
+    },
+    {
+      "candidate_id": "current-lod:repeat_density:1",
+      "scene": "current-lod",
+      "detector": "repeat_density",
+      "box": {
+        "x": 627,
+        "y": 604,
+        "width": 171,
+        "height": 50
+      },
+      "semantic_verdict": "false_positive",
+      "reason": "서로 다른 주택 출입구 옆의 작고 낮은 갈색 재고 더미. 복제 존재는 확인되지만 과도한 시각적 밀집으로 읽히지 않아 정상 재고 표현으로 판정.",
+      "image": "current-fixed/raw/current-lod/00.png",
+      "findings_sha256": "2b292d2299a31fa8c64b1f41d6414f581e788634aeb6d069c011e79c7ae760c6"
+    }
+  ]
+}
