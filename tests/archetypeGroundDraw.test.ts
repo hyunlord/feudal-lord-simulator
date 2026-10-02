@@ -259,21 +259,23 @@ test("a fen work drying a mere moves the deferKey (groundLocalKey) only of the c
 });
 
 
-test("LU-D11: the edge bands' feather is 0 outside the paint, 1 in its middle, a smooth ramp over 18 rows each side", async () => {
-  const { EDGE_FEATHER_ROWS, EDGE_PAINT_BOTTOM, EDGE_PAINT_TOP, edgeFeatherAlpha } = await import("../src/render/landEdgeBand");
+test("LU-D11: the edge bands' feather is 0 outside the paint, a smooth hump inside it that peaks below opaque", async () => {
+  const { EDGE_BAND_PEAK, EDGE_FEATHER_ROWS, EDGE_PAINT_BOTTOM, EDGE_PAINT_TOP, edgeFeatherAlpha } = await import("../src/render/landEdgeBand");
   const rows = Array.from({ length: 64 }, (_, row) => edgeFeatherAlpha(row));
   for (let row = 0; row < EDGE_PAINT_TOP; row += 1) assert.equal(rows[row], 0, `row ${row}`);
   for (let row = EDGE_PAINT_BOTTOM + 1; row < 64; row += 1) assert.equal(rows[row], 0, `row ${row}`);
-  for (let row = EDGE_PAINT_TOP + EDGE_FEATHER_ROWS; row <= EDGE_PAINT_BOTTOM - EDGE_FEATHER_ROWS; row += 1) assert.equal(rows[row], 1, `row ${row}`);
-  for (let row = EDGE_PAINT_TOP; row < EDGE_PAINT_TOP + EDGE_FEATHER_ROWS; row += 1) assert.ok(rows[row]! > 0 && rows[row]! < 1 && rows[row]! > rows[row - 1]!, `rise ${row}`);
-  for (let row = EDGE_PAINT_BOTTOM - EDGE_FEATHER_ROWS + 1; row <= EDGE_PAINT_BOTTOM; row += 1) assert.ok(rows[row]! > 0 && rows[row]! < 1 && rows[row]! < rows[row - 1]!, `fall ${row}`);
+  assert.ok(EDGE_BAND_PEAK > 0.5 && EDGE_BAND_PEAK < 1);
+  assert.ok(Math.max(...rows) <= EDGE_BAND_PEAK + 1e-9 && Math.max(...rows) > EDGE_BAND_PEAK * 0.98, "no row is opaque; the middle is near the peak");
+  const middle = (EDGE_PAINT_TOP + EDGE_PAINT_BOTTOM) / 2;
+  for (let row = EDGE_PAINT_TOP; row < Math.floor(middle); row += 1) assert.ok(rows[row]! > 0 && rows[row + 1]! > rows[row]!, `rise ${row}`);
+  for (let row = Math.ceil(middle) + 1; row <= EDGE_PAINT_BOTTOM; row += 1) assert.ok(rows[row]! > 0 && rows[row]! < rows[row - 1]!, `fall ${row}`);
   // Symmetric about the paint's middle.
   for (let k = 0; k < EDGE_FEATHER_ROWS; k += 1) assert.ok(Math.abs(rows[EDGE_PAINT_TOP + k]! - rows[EDGE_PAINT_BOTTOM - k]!) < 1e-9, `k ${k}`);
 });
 
-test("LU-D11: edge bands are laid twice as wide across the edge (128 px per tile along it); shore and reed strips keep their width", async () => {
+test("LU-D11: edge bands are laid 2.5 times as wide across the edge (128 px per tile along it); shore and reed strips keep their width", async () => {
   const { EDGE_BAND_WIDEN } = await import("../src/render/landEdgeBand");
-  assert.equal(EDGE_BAND_WIDEN, 2);
+  assert.equal(EDGE_BAND_WIDEN, 2.5);
   // The pattern's v axis in tile units from its screen transform (c, d) = iso(vAxis).
   const across = (c: number, d: number) => { const x = (c / 32 + d / 16) / 2; const y = (d / 16 - c / 32) / 2; return Math.hypot(x, y); };
   const along = (a: number, b: number) => across(a, b);

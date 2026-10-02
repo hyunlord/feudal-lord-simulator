@@ -23,7 +23,7 @@ import type { ShoreStripOverride } from "./drawShoreline";
 //     records/strips-sources.json) on each tile edge where a land fill meets the meadow or the heath: flat in the tile
 //     plane like the old shore strip (u = 128 source px per tile along the edge, from the edge's map coordinate so
 //     collinear edges run on; v across, centred on the edge), a and b joined into one 1024 px repeat. LU-D11: laid
-//     EDGE_BAND_WIDEN times wider across (a tile, not half) with their alpha feathered (landEdgeBand.ts).
+//     EDGE_BAND_WIDEN times wider across (over a tile, not half) with their alpha feathered (landEdgeBand.ts).
 //     Water-side bands are not laid on tile edges (3).
 //  3. Shore and reed-bed strips (512 x 96, land on top, painted waterline at row 50 measured on all eight) carry their
 //     own water, so on a loop whose land side has them (the coast's sea, the fen's water) they replace the old shore
