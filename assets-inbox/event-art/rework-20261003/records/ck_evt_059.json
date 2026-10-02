@@ -1,0 +1,44 @@
+{
+  "id": "ck_evt_059",
+  "status": "held",
+  "tool": "image_gen__imagegen",
+  "prompt": "Use case: historical-scene. Create one finished full-bleed landscape 16:9 event illustration for a medieval English market-town game. References are STYLE ONLY: warm painterly narrative realism, natural anatomy, soft brush-textured wood/wool/stone, ochre earthy browns and muted greens, lifelike characters as shown. No captions, NO letters, words, numerals, scribbles, watermark, borders or graphic panels. All parchment faces entirely blank; seals can be simple nonletter shapes. South England, period specified. No Tudor black-and-white framing, no modern clothes/objects, no ordinary cottage chimneys. Light coherent and soft, details visible at960x540. Distinct clear action and environment. Year1442, spring morning. Exactly FOUR people TOTAL, no bystanders or distant people. Outdoors just BEFORE an estate's weathered oak gate under stone gateposts. Wide full-body view. Left seated lord in dignified muted blue long gown, centered elderly village reeve introduces TWO standing adult steward candidates to right with an open hand. Candidates visibly separate: one holds a CLOSED rolled parchment confidently, the other clasps his hands respectfully; equally dignified, no moral coding by looks. A conspicuous large iron KEY rests across a large open BLANK estate ledger on a small narrow trestle before lord, two candidates look toward this responsibility. Key and ledger prominent foreground but full-body candidate introduction is main action, not hands closeup. Modest manor court visible through gate, fields and blossoming hawthorn beyond; no other figures. Natural period wool gowns, hose, leather shoes, simple soft caps, no ornate Tudor shapes or modern locks. Clear spatial gap between reeve and two candidates.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-6e5ee782-55c2-418e-9f1b-eaa4bef377e3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-6e5ee782-55c2-418e-9f1b-eaa4bef377e3.png",
+  "visual_review": "Blind1 revision inspected: two candidates extend hands; lord touches estatekey on bound open ledger; four figures, no text, same estate entrance.",
+  "revisions": [
+    {
+      "prompt": "Targeted revision of this finished medieval English event illustration, preserving the entire estate entrance, the same four people, their faces, costumes appropriate1442, positions, spring setting, warm painterly style, wide16:9 canvas and light. Make the appointment decision visible through gestures only: BOTH standing steward candidates on the right each hold out one natural open hand toward the lord, awaiting responsibility; the nearer candidate may retain his closed roll in his other hand. The village reeve in center introduces the pair with one open arm. The seated lord rests one hand ON the conspicuous large iron estate KEY lying on the clearly bound OPEN ACCOUNT LEDGER before him; his other hand naturally rests by the ledger, not at his face. Ledger pages must remain entirely blank, without letters, text, numbers or writing marks. Exactly four figures, no new people. Both candidates visibly wait to receive the key and account responsibility. Preserve all other details, no title or caption.",
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-6e5ee782-55c2-418e-9f1b-eaa4bef377e3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-6e5ee782-55c2-418e-9f1b-eaa4bef377e3.png",
+      "input": "/tmp/astra-event-illustrations-20261003/proofs/revisions/059-before.jpg",
+      "reason": "Blind round1 confusion with031: strengthen two candidate appointment gestures and lord's hand on estatekey; no claim that synonymous titles become uniquely distinguishable.",
+      "input_sha256": "a2f911fa6ec634660922b23c5822d060561099088fc60bc554f8dd4c9b692ddf",
+      "raw_sha256": "61206635cea2c6f76df7c6203f6c5821611df092e9c25b22a2b107a7368e13a7"
+    }
+  ],
+  "raw_size": [
+    1672,
+    941
+  ],
+  "final_file": "held/ck_evt_059.jpg",
+  "raw_sha256": "61206635cea2c6f76df7c6203f6c5821611df092e9c25b22a2b107a7368e13a7",
+  "final_sha256": "9dd99ae6d687a9fdb97bfc0dfd3fca95808c6316922ccccd702667c276cc478a",
+  "finalization": "Pillow RGB conversion and ImageOps.fit Lanczos960x540, JPEGquality85 optimize; no painting",
+  "initial_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-6782c027-a508-4e3e-a1a1-026869d3730a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "initial_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-6782c027-a508-4e3e-a1a1-026869d3730a.png",
+  "reference_sha256": {
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg": "8bc8ce03711ddd155f8f82952752bc69204c9fc25555de2a3d6d8dcc6352be96",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg": "fee7ffe398177110f4a4df5788d886519dbe6b5e29f0214a500648b6493a4f42"
+  },
+  "initial_raw_sha256": "66273ce5121ef1d44adff0c27c2c89c7ef0dc3f51d86a5ac1967fbe246be2d03",
+  "final_dimensions": [
+    960,
+    540
+  ],
+  "revision_action": "held"
+}

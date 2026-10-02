@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "candidate_not_installed",
+  "repo": "https://github.com/hyunlord/feudal-lord-simulator",
+  "branch": "codex/phase15-organic-ground",
+  "head": "c2460918ecb13cdd6475f25f3e4809b3a352b01d",
+  "canvas": [
+    2048,
+    2048
+  ],
+  "pivot": [
+    768,
+    1536
+  ],
+  "world_scale": 0.25,
+  "adult_world_height": 17.6,
+  "asset_count": 44,
+  "families": {
+    "church": 4,
+    "market": 3,
+    "gate": 3,
+    "bridge": 3,
+    "manor": 3,
+    "guildhall": 3,
+    "inn": 3
+  },
+  "expected_ids": [
+    "church_s01_summer",
+    "church_s01_winter",
+    "church_s02_summer",
+    "church_s02_winter",
+    "church_s03_summer",
+    "church_s03_winter",
+    "church_s04_summer",
+    "church_s04_winter",
+    "market_s01_summer",
+    "market_s01_winter",
+    "market_s02_summer",
+    "market_s02_winter",
+    "market_s03_summer",
+    "market_s03_winter",
+    "gate_s01_summer",
+    "gate_s01_winter",
+    "gate_s02_summer",
+    "gate_s02_winter",
+    "gate_s03_summer",
+    "gate_s03_winter",
+    "bridge_s01_summer",
+    "bridge_s01_winter",
+    "bridge_s02_summer",
+    "bridge_s02_winter",
+    "bridge_s03_summer",
+    "bridge_s03_winter",
+    "manor_s01_summer",
+    "manor_s01_winter",
+    "manor_s02_summer",
+    "manor_s02_winter",
+    "manor_s03_summer",
+    "manor_s03_winter",
+    "guildhall_s01_summer",
+    "guildhall_s01_winter",
+    "guildhall_s02_summer",
+    "guildhall_s02_winter",
+    "guildhall_s03_summer",
+    "guildhall_s03_winter",
+    "inn_s01_summer",
+    "inn_s01_winter",
+    "inn_s02_summer",
+    "inn_s02_winter",
+    "inn_s03_summer",
+    "inn_s03_winter"
+  ],
+  "generator": "built-in image_gen.imagegen; model and seed not exposed",
+  "provenance": "Each stage is independently generated as one complete image using project art and prior whole stage as references. Registration permits whole-image uniform scaling/translation only, no component assembly.",
+  "blind": {
+    "frames": 12,
+    "reviewers": 2,
+    "eras": [
+      1300,
+      1380,
+      1450
+    ],
+    "zooms": [
+      1,
+      0.6
+    ],
+    "seasons": [
+      "summer",
+      "winter"
+    ],
+    "target_accuracy": 0.75,
+    "registration_winter_iou_target": 0.95
+  }
+}

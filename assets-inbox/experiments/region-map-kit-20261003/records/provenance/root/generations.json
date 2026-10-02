@@ -1,0 +1,225 @@
+[
+  {
+    "id": "open_field",
+    "file": "kit/ground/open_field.png",
+    "category": "ground",
+    "width": 512,
+    "height": 512,
+    "pivot": [
+      256,
+      256
+    ],
+    "alphaMin": 255,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-9ad1b1e1-4ebe-4036-9c39-5b8017b1a11a.png",
+    "sourceSha256": "f3962ddae07251ce00bb8706b4000748890af52e7ccf842b77983cdc16486f60",
+    "sha256": "a628397c12da09ab5537a0f1babd7cff9edcedb350e7db3509d05a81ef3d9fa3",
+    "prompt": "Use case historical-scene. Generate ONE large seamless repeating cartographic ground plate for a medieval southern England regional map. Reference image is STYLE ONLY: match its warm ochre parchment, understated irregular paper grain, small gouache brush strokes, muted sage and ochre meadow washes. This asset is ONLY quiet open meadow ground, no river, no roads, no trees, no hills, no settlements, no labels. Orthographic aerial planar texture, 1300 summer dry grass and faded olive ochre earth. Continuous non-directional texture across all four edges, no vignette, no border, no central feature, no strong lighting, no grid. It must be able to repeat over a 1600x1000 map behind terrain clusters. Output 1024 square opaque surface, very subtle handpainted variation, avoid photographic noise and vector geometry.",
+    "tool": "built-in imagegen",
+    "processing": "One resize to512; opposing40px margins cross-blended for periodic endpoints; full coverage alpha255",
+    "joinRule": "Repeat at512px; pixelperiodic opposing edges"
+  },
+  {
+    "id": "coastal_port",
+    "file": "kit/ground/coastal_port.png",
+    "category": "ground",
+    "width": 512,
+    "height": 512,
+    "pivot": [
+      256,
+      256
+    ],
+    "alphaMin": 255,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-cb3b1e04-129b-4b97-92dd-db5636b29fdf.png",
+    "sourceSha256": "4cb9e9b48d0dbf69d3f4844ca12fcabb3088b6136b2bb76e6d79472aa6256918",
+    "sha256": "4ea327e2c6478a1266c4e44097ef3046495e453924c4764a77c3bca4f7a9ef92",
+    "prompt": "Use case historical-scene. ONE seamless repeating 1024 square flat ground texture, faded dry coastal pasture with subtle sandy flecks and salt grass, quiet pale parchment ochre/sage, no water coastline or objects. Reference image is STYLE ONLY. Match exactly its handpainted gouache and fine brown ink cartography, aged warm parchment, restrained paper grain, ochre summer and olive muted sage, bluegrey water. Southern England circa1300. Orthographic aerial terrain with gently oblique details, no horizon. Diffuse top-left illumination, no large cast shadow, no black cartoon outlines, no photoreal noise, no modern features, no labels. Seamless periodic edges, no vignette or frame, calm non-directional ground with no conspicuous central feature.",
+    "tool": "built-in imagegen",
+    "processing": "One resize to512; opposing40px margins cross-blended for periodic endpoints; full coverage alpha255",
+    "joinRule": "Repeat at512px; pixelperiodic opposing edges"
+  },
+  {
+    "id": "chalk_downs",
+    "file": "kit/ground/chalk_downs.png",
+    "category": "ground",
+    "width": 512,
+    "height": 512,
+    "pivot": [
+      256,
+      256
+    ],
+    "alphaMin": 255,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-0a1061bb-cb17-407f-b5fe-a0fd23ebc17d.png",
+    "sourceSha256": "c049d86855ee4fdcbb6c7cbae92e8a4f710010be75048404b860a4d1decfbc06",
+    "sha256": "7df79632a41c4efb146429b69755d4576aa305699042dd7a2a187e83b3811a73",
+    "prompt": "Use case historical-scene. ONE seamless repeating 1024 square flat ground texture, short dry sage meadow and chalk powder patches barely visible in creamy ochre earth, no hills cliffs stones objects. Reference image is STYLE ONLY. Match exactly its handpainted gouache and fine brown ink cartography, aged warm parchment, restrained paper grain, ochre summer and olive muted sage, bluegrey water. Southern England circa1300. Orthographic aerial terrain with gently oblique details, no horizon. Diffuse top-left illumination, no large cast shadow, no black cartoon outlines, no photoreal noise, no modern features, no labels. Seamless periodic edges, no vignette or frame, calm non-directional ground with no conspicuous central feature.",
+    "tool": "built-in imagegen",
+    "processing": "One resize to512; opposing40px margins cross-blended for periodic endpoints; full coverage alpha255",
+    "joinRule": "Repeat at512px; pixelperiodic opposing edges"
+  },
+  {
+    "id": "forest_edge",
+    "file": "kit/ground/forest_edge.png",
+    "category": "ground",
+    "width": 512,
+    "height": 512,
+    "pivot": [
+      256,
+      256
+    ],
+    "alphaMin": 255,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-9125c325-c331-4345-8e08-f2f849e3f3b9.png",
+    "sourceSha256": "8d3088dfb28d00f1bfaaa99d645b69ff0747a889dc399295a48c82b4b90aebfc",
+    "sha256": "05f8324fabbd3a393e0787cbf84614e99e702fb7c2221182bd5bdc02a5ef8e9a",
+    "prompt": "Use case historical-scene. ONE seamless repeating 1024 square flat ground texture, woodland clearing floor, muted olive and ochre with sparse tiny indistinct fallen leaf brush marks, no trees trunks objects. Reference image is STYLE ONLY. Match exactly its handpainted gouache and fine brown ink cartography, aged warm parchment, restrained paper grain, ochre summer and olive muted sage, bluegrey water. Southern England circa1300. Orthographic aerial terrain with gently oblique details, no horizon. Diffuse top-left illumination, no large cast shadow, no black cartoon outlines, no photoreal noise, no modern features, no labels. Seamless periodic edges, no vignette or frame, calm non-directional ground with no conspicuous central feature.",
+    "tool": "built-in imagegen",
+    "processing": "One resize to512; opposing40px margins cross-blended for periodic endpoints; full coverage alpha255",
+    "joinRule": "Repeat at512px; pixelperiodic opposing edges"
+  },
+  {
+    "id": "fen_drainage",
+    "file": "kit/ground/fen_drainage.png",
+    "category": "ground",
+    "width": 512,
+    "height": 512,
+    "pivot": [
+      256,
+      256
+    ],
+    "alphaMin": 255,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-bd030cef-38cb-4890-9e85-787843a34b44.png",
+    "sourceSha256": "4f8d8e56b4455c24ddedbfb0706bdd49368c9d26dc863b4c0b53ecf5b4a4c209",
+    "sha256": "a8f5fd56bf7761a15a506d800e5940dd663a642d58cbb63b6310bf4efa8a69b8",
+    "prompt": "Use case historical-scene. ONE seamless repeating 1024 square flat ground texture, damp fen meadow soil, muted warm grey ochre sage with tiny irregular darker green washes, no pools reeds objects. Reference image is STYLE ONLY. Match exactly its handpainted gouache and fine brown ink cartography, aged warm parchment, restrained paper grain, ochre summer and olive muted sage, bluegrey water. Southern England circa1300. Orthographic aerial terrain with gently oblique details, no horizon. Diffuse top-left illumination, no large cast shadow, no black cartoon outlines, no photoreal noise, no modern features, no labels. Seamless periodic edges, no vignette or frame, calm non-directional ground with no conspicuous central feature.",
+    "tool": "built-in imagegen",
+    "processing": "One resize to512; opposing40px margins cross-blended for periodic endpoints; full coverage alpha255",
+    "joinRule": "Repeat at512px; pixelperiodic opposing edges"
+  },
+  {
+    "id": "arable",
+    "file": "kit/fields/arable.png",
+    "category": "fields",
+    "width": 392,
+    "height": 248,
+    "pivot": [
+      196,
+      124
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-f42bcbaf-f530-4f63-ada9-bbfcedb577da.png",
+    "sourceSha256": "10566cee05886f44e7bb6cf8cc703e9dca58db6a5db22a4b281ae5f7cee625e5",
+    "sha256": "6f601f502d38f14da5daf3b1affd09f533ed3c42cf91037e1cc510d76d258bad",
+    "prompt": "Use case historical-scene. ONE whole large irregular patchwork of 6 medieval open strip fields of ochre stubble alternating dull sage fallow bounded by low hedgerows, oblique illustrative regional map aerial view. Gently fade the irregular outer ground wash to true transparent alpha, no rectangular border; complete entire landscape cluster not a building module. No houses/no roads/no text.. Reference image is STYLE ONLY. Match exactly its handpainted gouache and fine brown ink cartography, aged warm parchment, restrained paper grain, ochre summer and olive muted sage, bluegrey water. Southern England circa1300. Orthographic aerial terrain with gently oblique details, no horizon. Diffuse top-left illumination, no large cast shadow, no black cartoon outlines, no photoreal noise, no modern features, no labels. One isolated complete large terrain stamp centered with 12% transparent margin.",
+    "tool": "built-in imagegen",
+    "processing": "Trim transparent margin; one resize to360x260max;16px transparent safety margin",
+    "joinRule": "Overlap soft painted ground edges; never flip; avoid water/road corridors",
+    "initialExportSha256": "1eb18cb4e4c36ffe1ba016f5e9f1cc247bdc68eff9fbfa7440d77c20961ba1d9",
+    "revision": "imagegen edit removed unplanned river; see arable-correction.json",
+    "finalMaster": "masters/root/arable-corrected.png"
+  },
+  {
+    "id": "pasture",
+    "file": "kit/fields/pasture.png",
+    "category": "fields",
+    "width": 392,
+    "height": 256,
+    "pivot": [
+      196,
+      128
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-e44a2a53-ba8b-4018-96da-21659959425c.png",
+    "sourceSha256": "f71e6759df6e3e443f493dd5c5b6235ca17089a9ee14d18f38631748791b8555",
+    "sha256": "7ac28011e3f3eb3e97fb4addd548dd8f69e9ca4bf9dec9b67325163742d8f2bc",
+    "prompt": "Use case historical-scene. ONE whole large irregular cluster of 4 medieval low hedged pasture paddocks with faint footworn tracks and a few tiny stone-wall sections, dull pale green on ochre ground. Gently fade irregular outer ground wash to true transparent alpha, no rectangular border. Aerial cartographic view, no livestock/houses/roads/text.. Reference image is STYLE ONLY. Match exactly its handpainted gouache and fine brown ink cartography, aged warm parchment, restrained paper grain, ochre summer and olive muted sage, bluegrey water. Southern England circa1300. Orthographic aerial terrain with gently oblique details, no horizon. Diffuse top-left illumination, no large cast shadow, no black cartoon outlines, no photoreal noise, no modern features, no labels. One isolated complete large terrain stamp centered with 12% transparent margin.",
+    "tool": "built-in imagegen",
+    "processing": "Trim transparent margin; one resize to360x260max;16px transparent safety margin",
+    "joinRule": "Overlap soft painted ground edges; never flip; avoid water/road corridors"
+  },
+  {
+    "id": "common",
+    "file": "kit/fields/common.png",
+    "category": "fields",
+    "width": 392,
+    "height": 254,
+    "pivot": [
+      196,
+      127
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-54bfee85-c4e2-48f2-a4c3-8e242b85c2ad.png",
+    "sourceSha256": "d9fad2d9b2c1feff75e34ffc60e491aed8a330e47927709e3d934b8dbbe43c7c",
+    "sha256": "ae59b9d7caf35ee13c359d2fae0b51ef70f9801d57320b4c3d03669ea7fc3f96",
+    "prompt": "Use case historical-scene. ONE whole large irregular expanse of medieval unfenced common grazing meadow with soft tiny scrub clusters around irregular perimeter, faint grazed trails and low heath, dull ochre sage. Gently fade irregular outer ground wash to true transparent alpha. No buildings/roads/text.. Reference image is STYLE ONLY. Match exactly its handpainted gouache and fine brown ink cartography, aged warm parchment, restrained paper grain, ochre summer and olive muted sage, bluegrey water. Southern England circa1300. Orthographic aerial terrain with gently oblique details, no horizon. Diffuse top-left illumination, no large cast shadow, no black cartoon outlines, no photoreal noise, no modern features, no labels. One isolated complete large terrain stamp centered with 12% transparent margin.",
+    "tool": "built-in imagegen",
+    "processing": "Trim transparent margin; one resize to360x260max;16px transparent safety margin",
+    "joinRule": "Overlap soft painted ground edges; never flip; avoid water/road corridors"
+  },
+  {
+    "id": "lake-1",
+    "file": "kit/water/lake-1.png",
+    "category": "water",
+    "width": 370,
+    "height": 292,
+    "pivot": [
+      185,
+      146
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-8d572b5e-6130-4043-bc7d-d3108b275f6c.png",
+    "sourceSha256": "6ea7032d6a1f89468b3fc456f6f28223453df3588b4135ee766dc36f7e04f79d",
+    "sha256": "46b07922b63c7b2ada5fff7799848065d317f3811e96b7e0e5e6316920e1edc6",
+    "prompt": "Use case historical-scene. ONE whole small kidney-shaped pond with irregular banks and sparse marginal sedges, blue-grey water with subtle broken cream water strokes. Aerial cartographic map fragment with gently oblique tiny bankvegetation. Soft ground wash disappears to true transparent alpha around the whole lake, generous clear margins. No trees buildings text.. Reference image is STYLE ONLY. Match exactly its handpainted gouache and fine brown ink cartography, aged warm parchment, restrained paper grain, ochre summer and olive muted sage, bluegrey water. Southern England circa1300. Orthographic aerial terrain with gently oblique details, no horizon. Diffuse top-left illumination, no large cast shadow, no black cartoon outlines, no photoreal noise, no modern features, no labels. One isolated complete large terrain stamp centered with 12% transparent margin.",
+    "tool": "built-in imagegen",
+    "processing": "Trim transparent margin; one resize to360x260max;16px transparent safety margin",
+    "joinRule": "Overlap soft painted ground edges; never flip; avoid water/road corridors"
+  },
+  {
+    "id": "lake-2",
+    "file": "kit/water/lake-2.png",
+    "category": "water",
+    "width": 392,
+    "height": 251,
+    "pivot": [
+      196,
+      125.5
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-14d5219e-47a9-4665-9017-986e063eb2af.png",
+    "sourceSha256": "ada6979c52aba715a78a4ce4b90cc259a22d152c74a6caa5c02e2e59f39a92a8",
+    "sha256": "e2dcde679342009eb209ce95cbcf5ac0b4467c87cd530a58631bc91520207ecc",
+    "prompt": "Use case historical-scene. ONE whole larger elongated irregular lake with two small inlets and tufted low sedge bank, blue-grey water subtle broken cream brush strokes. Aerial map fragment. Soft ochre ground wash fades to true transparent alpha around whole lake. No trees buildings text.. Reference image is STYLE ONLY. Match exactly its handpainted gouache and fine brown ink cartography, aged warm parchment, restrained paper grain, ochre summer and olive muted sage, bluegrey water. Southern England circa1300. Orthographic aerial terrain with gently oblique details, no horizon. Diffuse top-left illumination, no large cast shadow, no black cartoon outlines, no photoreal noise, no modern features, no labels. One isolated complete large terrain stamp centered with 12% transparent margin.",
+    "tool": "built-in imagegen",
+    "processing": "Trim transparent margin; one resize to360x260max;16px transparent safety margin",
+    "joinRule": "Overlap soft painted ground edges; never flip; avoid water/road corridors"
+  },
+  {
+    "id": "lake-3",
+    "file": "kit/water/lake-3.png",
+    "category": "water",
+    "width": 392,
+    "height": 259,
+    "pivot": [
+      196,
+      129.5
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-ab20274a-bca2-4a55-805f-3a8f36b53539.png",
+    "sourceSha256": "69f04d2a83ee20dfe444ce6343c166ee6eef8940baa27f7754d25bd7bda74707",
+    "sha256": "11c048d0a0718cdeb2a48f97f5be938fa0f52f86ef7f2e8151e48de731db56e5",
+    "prompt": "Use case historical-scene. ONE whole asymmetrical broad shallow mere, scalloped banks with small reedbeds only at one shore, blue-grey water subtle broken cream strokes. Aerial regional map fragment. Soft ochre ground wash fades to transparent alpha. No trees buildings text.. Reference image is STYLE ONLY. Match exactly its handpainted gouache and fine brown ink cartography, aged warm parchment, restrained paper grain, ochre summer and olive muted sage, bluegrey water. Southern England circa1300. Orthographic aerial terrain with gently oblique details, no horizon. Diffuse top-left illumination, no large cast shadow, no black cartoon outlines, no photoreal noise, no modern features, no labels. One isolated complete large terrain stamp centered with 12% transparent margin.",
+    "tool": "built-in imagegen",
+    "processing": "Trim transparent margin; one resize to360x260max;16px transparent safety margin",
+    "joinRule": "Overlap soft painted ground edges; never flip; avoid water/road corridors"
+  }
+]

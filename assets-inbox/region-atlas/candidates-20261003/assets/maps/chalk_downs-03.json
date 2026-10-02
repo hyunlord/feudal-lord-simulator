@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "mapId": "chalk_downs-03",
+  "archetype": "chalk_downs",
+  "image": "maps/chalk_downs-03.jpg",
+  "width": 1600,
+  "height": 1000,
+  "coordinateSystem": "pixels; origin top-left; x right y down; slot anchor bottom-center of overlay",
+  "slots": [
+    {
+      "id": "s01",
+      "x": 463,
+      "y": 119,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s02",
+      "x": 678,
+      "y": 438,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "넓고 마른 방목지의 빈 자리; 가까운 길에 연결 가능",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s03",
+      "x": 1294,
+      "y": 118,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s04",
+      "x": 1485,
+      "y": 176,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s06",
+      "x": 1250,
+      "y": 309,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s08",
+      "x": 865,
+      "y": 359,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s09",
+      "x": 744,
+      "y": 364,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s10",
+      "x": 736,
+      "y": 519,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "넓고 마른 방목지의 빈 자리; 가까운 길에 연결 가능",
+      "landmarkRefs": [
+        "j03"
+      ]
+    },
+    {
+      "id": "s11",
+      "x": 904,
+      "y": 524,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "넓고 마른 방목지의 빈 자리; 가까운 길에 연결 가능",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s12",
+      "x": 1053,
+      "y": 484,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s13",
+      "x": 459,
+      "y": 467,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s14",
+      "x": 573,
+      "y": 518,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s15",
+      "x": 628,
+      "y": 713,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s16",
+      "x": 891,
+      "y": 747,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "j03"
+      ]
+    },
+    {
+      "id": "s17",
+      "x": 1081,
+      "y": 644,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "넓고 마른 방목지의 빈 자리; 가까운 길에 연결 가능",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s18",
+      "x": 1161,
+      "y": 592,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s19",
+      "x": 1413,
+      "y": 470,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s21",
+      "x": 817,
+      "y": 460,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s22",
+      "x": 70,
+      "y": 434,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s23",
+      "x": 403,
+      "y": 651,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "길 주변 마른 초지의 빈 자리",
+      "landmarkRefs": [
+        "c02"
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "j01",
+      "kind": "junction",
+      "x": 988,
+      "y": 304,
+      "note": "그림에서 확인한 길 갈림"
+    },
+    {
+      "id": "j02",
+      "kind": "junction",
+      "x": 521,
+      "y": 178,
+      "note": "그림에서 확인한 길 갈림"
+    },
+    {
+      "id": "j03",
+      "kind": "junction",
+      "x": 760,
+      "y": 789,
+      "note": "그림에서 확인한 길 갈림"
+    },
+    {
+      "id": "c01",
+      "kind": "crossing",
+      "x": 1178,
+      "y": 465,
+      "crossingType": "ford",
+      "note": "그림에서 길과 얕은 물이 만나는 도하 후보; 구조물 없음"
+    },
+    {
+      "id": "c02",
+      "kind": "crossing",
+      "x": 502,
+      "y": 686,
+      "crossingType": "ford",
+      "note": "그림에서 길과 얕은 물이 만나는 도하 후보; 구조물 없음"
+    }
+  ],
+  "review": {
+    "method": "manual visual annotation on final image",
+    "status": "candidate",
+    "notes": [
+      "동쪽으로 열린 말굽 구릉과 중앙 목초 분지",
+      "지형·수목·길과 겹치지 않는 직사각형 접지 영역을 육안 선택. 관목 경계는 최종 거점 실루엣으로 추가 확인 필요.",
+      "landmarkRefs는 최근접 시각 표지 참조이며 자동 길찾기 그래프가 아님."
+    ]
+  }
+}

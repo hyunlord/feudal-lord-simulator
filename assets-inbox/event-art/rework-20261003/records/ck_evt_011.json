@@ -1,0 +1,57 @@
+{
+  "id": "ck_evt_011",
+  "tool": "image_gen__imagegen",
+  "prompt": "Use case: historical-scene. New complete LANDSCAPE16:9 historical event illustration, 960x540 target. References STYLE ONLY: rich textured painterly realism, natural oak/linen/wool, warm restrained earth pigments. Southern England circa1310, spring evening orchard entrance. A marriage counteroffer means the DOWRY CHEST HAS BEEN LEFT WAITING at a closed orchard gate as the envoy turns away. PRIMARY SUBJECT IS THE CLOSED IRON-BANDED OAK MARRIAGE CHEST, huge close foreground at left-centre, seen from VERY LOW camera at chest latch height, weathered chest grain, dark forged hinges and locked lid highly tactile. Rough orchard gate diagonal timber rails cut across near foreground from lowerleft toward upperright, physically stopping the chest's progress. At far RIGHT edge, the cropped hindquarter and hooves of a departing brown riding horse move out of frame, envoy seen only as boot/lowercloak in saddle, NO visible face. Far deep background BEYOND gate: a tiny bride in linen veil stands far left beneath blossom, a tiny groom stands far right along stone wall, visibly separated, NOT talking or gesturing. Human figures should occupy less than10percent image area total. Orchard, grass, flowering boughs, soft upperleft evening light. Strong asymmetric object still-life plus departing horse crop, NOT a group portrait, NOT a frontal conversation. No central man, no outstretched hand, no table or desk or paper or scroll or book or writing or captions or numbers or watermark or logo. Early14thcentury simple long loose wool garments. No chimneys/glass/modernarchitecture. One finished image, no collage.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/09_common_pasture.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2/exec-4873f2c8-630f-4481-9291-b774e4c397a1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2/exec-4873f2c8-630f-4481-9291-b774e4c397a1.png",
+  "visual_qa": "Pass: chest dominates close low foreground, gate bars diagonally block movement, envoy/horse cropped at right moving away; bride/groom tiny and separated beyond gate. No standing-conversation focus, text, watermark or document. Anatomically plausible visible horse hindlegs.",
+  "revision_history": [
+    {
+      "id": "ck_evt_011",
+      "tool": "image_gen__imagegen",
+      "prompt": "Use case: historical-scene. Complete landscape 16:9 event-card illustration for Charter & Kin, intended 960x540. References are STYLE ONLY: match richly textured painterly historical realism, warm muted oak, natural woven wool and linen, restrained earth pigments and believable anatomy. Do not reproduce their compositions. Scene Southern England about 1310: spring evening outside a flowering orchard gate. A marriage negotiation has returned with changed terms. Exactly three adult people, spatially separated: prospective bride stands within orchard at left, prospective groom outside right; a neighboring family's travel-cloaked envoy between them turns back toward bride holding his riding horse's bridle and lifts free open hand to renegotiate. A closed iron-banded oak dowry travelling chest rests prominently on the ground between the two households, acting as an unresolved obstacle. Wide view with foreground chest low centre, gate dividing the people, horse and returning envoy in side view, blossom branches overhead, orchard receding beyond. Not a wedding ceremony or completed agreement, no handshake. Early14th-century loose wool tunics, long gown and linen veil, simple coif/hood, no late fashions. Evening light from upper left. NO documents, scrolls, ledgers, papers, table, desk, writing, watermark, logos, captions, border. No chimney, no glass, no modern items, no Tudor architecture. Generate one finished wide image, no collage.",
+      "references": [
+        "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/09_common_pasture.jpg",
+        "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg"
+      ],
+      "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2/exec-05730c28-37dc-4da3-9d5a-ebb45b8ca67c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2/exec-05730c28-37dc-4da3-9d5a-ebb45b8ca67c.png",
+      "visual_qa": "Pass: separated bride/groom, renegotiating envoy and horse, chest/gate focus; no paper/table/text/watermark/chimney, limbs plausible.",
+      "raw_dimensions": [
+        1672,
+        941
+      ],
+      "output_file": "assets/ck_evt_011.jpg",
+      "raw_sha256": "f71d4a3df2c6182b1c9d836e6401d431e9db12a74c8ed62c93a41e32a56bc999",
+      "sha256": "71dd876ec8164213334e0083e5d0dc92ea65ee297affb9de00f681bdffb4fc28",
+      "dimensions": [
+        960,
+        540
+      ],
+      "final_file": "assets/ck_evt_011.jpg",
+      "final_sha256": "71dd876ec8164213334e0083e5d0dc92ea65ee297affb9de00f681bdffb4fc28",
+      "status": "candidate",
+      "revision_action": "regenerate"
+    }
+  ],
+  "composition_revision_reason": "Whole-set audit rejected standing negotiation repetition; changed to chest/gate-dominated close low still-life with departure.",
+  "raw_dimensions": [
+    1672,
+    941
+  ],
+  "output_file": "assets/ck_evt_011.jpg",
+  "raw_sha256": "020723502522b31a111ad4ba4d6ed7b9b853e0c30e7230160040bf274a8b6d43",
+  "sha256": "f90fbc1d4f1b17d48b489494e4279a06a46f6648c85153f4624edc29f6e48e7c",
+  "dimensions": [
+    960,
+    540
+  ],
+  "final_file": "assets/ck_evt_011.jpg",
+  "final_sha256": "f90fbc1d4f1b17d48b489494e4279a06a46f6648c85153f4624edc29f6e48e7c",
+  "status": "candidate",
+  "revision_action": "regenerate"
+}

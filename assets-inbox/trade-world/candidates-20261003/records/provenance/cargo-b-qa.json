@@ -1,0 +1,294 @@
+{
+  "count": 20,
+  "unique_raw_sha_count": 20,
+  "generation_calls": 23,
+  "revisions": {
+    "cargo_iron_bar_bundle_NW": "diagonal corrected",
+    "cargo_spice_pouch_bundle_SW": "back view corrected",
+    "cargo_spice_pouch_bundle_NW": "back view corrected"
+  },
+  "visual_review": "All twenty reviewed via raw outputs and cargo-b-grip-review.jpg. Screen upper-left light, no humans, no wall/ground/modern item. Native-view requests; no horizontal flip processing. Existing 32x32 final normalization remains root responsibility.",
+  "remaining_limit": "Full runtime hand occlusion and movement not verified by raw cargo inspection.",
+  "items": [
+    {
+      "id": "cargo_malt_sack_NE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 252,
+      "sha256": "95b5cfc3b01f01dd742246b8fcfee54c4ec57d8b2a96300bc8f2520bc7389f96"
+    },
+    {
+      "id": "cargo_malt_sack_SE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "e6ea11b89ef4ca504d92d8f998f8c707649ac8979daeb9df03426d8528775c26"
+    },
+    {
+      "id": "cargo_malt_sack_SW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "ae6b64a04b7a4cb7cb2d854ec6287396ff7e1d29187c1d6acdc887378803b1ca"
+    },
+    {
+      "id": "cargo_malt_sack_NW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "8481b6fe46042b11d5bc041ef0e46c5da896d8a58155be9c8234e9019016f426"
+    },
+    {
+      "id": "cargo_timber_short_bundle_NE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 252,
+      "sha256": "2126c3c5fb682aee172e21979adecefda2d7653c1ce33f63aee78547d869e985"
+    },
+    {
+      "id": "cargo_timber_short_bundle_SE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "f6f54b27e03924abdcdd7d20f6f6d6944fa56686a2f35c85ddb4daab04de2d65"
+    },
+    {
+      "id": "cargo_timber_short_bundle_SW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 252,
+      "sha256": "de21eb311d9ac2dc22d107383051a851de7c23db47be279ab2e6006f245c506c"
+    },
+    {
+      "id": "cargo_timber_short_bundle_NW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "1851bdc539603681d95531f7c8c483980959593727c0d8df45be36ae109de115"
+    },
+    {
+      "id": "cargo_iron_bar_bundle_NE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 252,
+      "sha256": "3102e9b14e5d648adddf678c8eaba8f096e05d202c1c9c9bfd00e593bd9b1386"
+    },
+    {
+      "id": "cargo_iron_bar_bundle_SE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 252,
+      "sha256": "387b7d41f9921b623572a11def4d438c0e90329a01d2db7afdb990ad4cfd6631"
+    },
+    {
+      "id": "cargo_iron_bar_bundle_SW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "7fa30c3449bf26c89f8f0a615f70e87e1c4d35283351f9c7d7e6cc727e5a8749"
+    },
+    {
+      "id": "cargo_iron_bar_bundle_NW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "28d076c8d6a6ecbdfad68511818a4dbfc112a03937a430ef211b733162643b09"
+    },
+    {
+      "id": "cargo_wool_bundle_NE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "199db67b2b64783ea88c16ebd5da769c13fb90beefd503be4de706345a847c28"
+    },
+    {
+      "id": "cargo_wool_bundle_SE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "5e154085a24e473c639af9ccc7717a8b5276461cc61b88cad4847102fe75e901"
+    },
+    {
+      "id": "cargo_wool_bundle_SW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "3b0724891b4dc5a484c57845e38067fd9f954500c3bea2d7ac481321d9387974"
+    },
+    {
+      "id": "cargo_wool_bundle_NW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 252,
+      "sha256": "7d76d5cc61eeee36abe8a1862b327f76e9d9d803a040f85ee7abde6e42368c64"
+    },
+    {
+      "id": "cargo_spice_pouch_bundle_NE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "5887999ac6da21010be8c7f74972790c4243cce79f5e096d000ed79ed3f25f37"
+    },
+    {
+      "id": "cargo_spice_pouch_bundle_SE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 252,
+      "sha256": "01d0412b060f404517e6b73db26efea8de418c4107e9beae1667a9f65bae9d44"
+    },
+    {
+      "id": "cargo_spice_pouch_bundle_SW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "34b450b6a74c7780f3cf78a882758f7dd7ef7091b09efd7327e0e296f13232d5"
+    },
+    {
+      "id": "cargo_spice_pouch_bundle_NW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "grip_alpha": 253,
+      "sha256": "814c1a0d09b445e97fd0ec9250f959788b949d1a268c06cf38b721f394727fd4"
+    }
+  ]
+}

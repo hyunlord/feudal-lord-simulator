@@ -1,0 +1,2490 @@
+{
+  "status": "candidate-not-installed",
+  "counts": {
+    "total": 56,
+    "new": 25,
+    "reused": 31
+  },
+  "rule": "all-season files are single originals, not duplicate summer/winter claims; null pivot means use named binding/per-frame geometry, not guessed center",
+  "assets": [
+    {
+      "id": "held_longbow_ne-v1",
+      "file": "assets/reused/held_longbow_ne-v1.png",
+      "event": "levy",
+      "type": "held-prop",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": null,
+      "anchorKind": "hand-prop-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "해당방향의 손좌표에 합성; 땅에 세우는 독립 그림 아님",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/prop/held_longbow_ne-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 32,
+      "height": 32,
+      "sha256": "27e4d91dc88909d4a685a2ee4c0e771e5bfa9f83ada3f16f232b6c851f7248ac"
+    },
+    {
+      "id": "held_longbow_nw-v1",
+      "file": "assets/reused/held_longbow_nw-v1.png",
+      "event": "levy",
+      "type": "held-prop",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": null,
+      "anchorKind": "hand-prop-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "해당방향의 손좌표에 합성; 땅에 세우는 독립 그림 아님",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/prop/held_longbow_nw-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 32,
+      "height": 32,
+      "sha256": "43f0d03b8e47322775b47b069b0a2e7a0fc956e3827c8861b83556b172305d80"
+    },
+    {
+      "id": "held_longbow_se-v1",
+      "file": "assets/reused/held_longbow_se-v1.png",
+      "event": "levy",
+      "type": "held-prop",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": null,
+      "anchorKind": "hand-prop-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "해당방향의 손좌표에 합성; 땅에 세우는 독립 그림 아님",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/prop/held_longbow_se-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 32,
+      "height": 32,
+      "sha256": "7cbd97bca4231fd144b80ddfe1680a317765c67cf43f78bab6db506a745e03b0"
+    },
+    {
+      "id": "held_longbow_sw-v1",
+      "file": "assets/reused/held_longbow_sw-v1.png",
+      "event": "levy",
+      "type": "held-prop",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": null,
+      "anchorKind": "hand-prop-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "해당방향의 손좌표에 합성; 땅에 세우는 독립 그림 아님",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/prop/held_longbow_sw-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 32,
+      "height": 32,
+      "sha256": "940796a124a1716d773ae4de32acb4b163973e9f1a295479028a2621a0d33ed0"
+    },
+    {
+      "id": "wk_levy_archer-v1",
+      "file": "assets/reused/wk_levy_archer-v1.png",
+      "event": "levy",
+      "type": "walker-sheet",
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0,
+          1
+        ],
+        "width": 74,
+        "height": 74,
+        "count": 8
+      },
+      "footPivot": null,
+      "anchorKind": "per-frame-foot",
+      "perFrameAnchors": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.72,
+            "y": 67.24
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 34
+            },
+            "right": {
+              "x": 58,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.63,
+            "y": 68.24
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 34
+            },
+            "right": {
+              "x": 47,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.71,
+            "y": 67.74
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.2,
+            "y": 67.74
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 37
+            },
+            "right": {
+              "x": 40,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 42.88,
+            "y": 67.16
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 32
+            },
+            "right": {
+              "x": 59,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.71,
+            "y": 67.66
+          },
+          "figureHeight": 65.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 32
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 30.87,
+            "y": 67.33
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 29.87,
+            "y": 66.99
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 14,
+              "y": 34
+            },
+            "right": {
+              "x": 40,
+              "y": 32
+            }
+          }
+        }
+      ],
+      "measuredGroundAnchors": [
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "NE",
+          "frame": "0",
+          "alpha_ground_x": "40.32",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "SE",
+          "frame": "0",
+          "alpha_ground_x": "45.08",
+          "alpha_ground_y": "68",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "SW",
+          "frame": "0",
+          "alpha_ground_x": "28.7",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "NW",
+          "frame": "0",
+          "alpha_ground_x": "33",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "NE",
+          "frame": "1",
+          "alpha_ground_x": "39.81",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "SE",
+          "frame": "1",
+          "alpha_ground_x": "45.79",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "SW",
+          "frame": "1",
+          "alpha_ground_x": "28.74",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "NW",
+          "frame": "1",
+          "alpha_ground_x": "33.4",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        }
+      ],
+      "compatibleTemplates": null,
+      "placementRule": "74px cell의 방향/걸음별 foot 및 figureHeight 사용; sheet전체를 한 인물로 축소하지 않음",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/wk/wk_levy_archer-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 296,
+      "height": 148,
+      "sha256": "9c04c53dcb7dd8b5bc38fca98770c7cfe63016f581d23f2ee4a61fbbe40137d3"
+    },
+    {
+      "id": "wk_levy_billman-v1",
+      "file": "assets/reused/wk_levy_billman-v1.png",
+      "event": "levy",
+      "type": "walker-sheet",
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0,
+          1
+        ],
+        "width": 74,
+        "height": 74,
+        "count": 8
+      },
+      "footPivot": null,
+      "anchorKind": "per-frame-foot",
+      "perFrameAnchors": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.72,
+            "y": 67.24
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 34
+            },
+            "right": {
+              "x": 58,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.63,
+            "y": 68.24
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 34
+            },
+            "right": {
+              "x": 47,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.71,
+            "y": 67.74
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.2,
+            "y": 67.74
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 37
+            },
+            "right": {
+              "x": 40,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 42.88,
+            "y": 67.16
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 32
+            },
+            "right": {
+              "x": 59,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.71,
+            "y": 67.66
+          },
+          "figureHeight": 65.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 32
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 30.87,
+            "y": 67.33
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 29.87,
+            "y": 66.99
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 14,
+              "y": 34
+            },
+            "right": {
+              "x": 40,
+              "y": 32
+            }
+          }
+        }
+      ],
+      "measuredGroundAnchors": [
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "NE",
+          "frame": "0",
+          "alpha_ground_x": "40.32",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "SE",
+          "frame": "0",
+          "alpha_ground_x": "45.08",
+          "alpha_ground_y": "68",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "SW",
+          "frame": "0",
+          "alpha_ground_x": "28.7",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "NW",
+          "frame": "0",
+          "alpha_ground_x": "33",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "NE",
+          "frame": "1",
+          "alpha_ground_x": "39.81",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "SE",
+          "frame": "1",
+          "alpha_ground_x": "45.79",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "SW",
+          "frame": "1",
+          "alpha_ground_x": "28.74",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "NW",
+          "frame": "1",
+          "alpha_ground_x": "33.4",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        }
+      ],
+      "compatibleTemplates": null,
+      "placementRule": "74px cell의 방향/걸음별 foot 및 figureHeight 사용; sheet전체를 한 인물로 축소하지 않음",
+      "source": "assets-inbox/wave17/candidates-20260926/assets/wk/wk_levy_billman-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 296,
+      "height": 148,
+      "sha256": "145f36d3a772cece6cc8775739e2a2d04b23603ea9c97b7228b174362bb81ca6"
+    },
+    {
+      "id": "market_active-v2",
+      "file": "assets/reused/market_active-v2.png",
+      "event": "marketday",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": null,
+      "anchorKind": "facility-source-crop",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본source rect(35,50,1213,1146) 전체시설로 배치; displayWidth108; 발중앙을 임의추정하지 않음",
+      "source": "public/assets/buildings/historical-facilities-v1/market_active-v2.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 224,
+      "height": 224,
+      "sha256": "c1dda89871ac0270737e607a2bd487a6532088695259444ff32395141a6bc0ef"
+    },
+    {
+      "id": "market_quiet-v2",
+      "file": "assets/reused/market_quiet-v2.png",
+      "event": "famine|marketday",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": null,
+      "anchorKind": "facility-source-crop",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본source rect(35,50,1213,1146) 전체시설로 배치; displayWidth108; 발중앙을 임의추정하지 않음",
+      "source": "public/assets/buildings/historical-facilities-v1/market_quiet-v2.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 224,
+      "height": 224,
+      "sha256": "6db439b052b90d99e12e1de2418f94000942840d64e38e2dc51342154e76e47b"
+    },
+    {
+      "id": "wk_priest_m_01-v1",
+      "file": "assets/reused/wk_priest_m_01-v1.png",
+      "event": "funeral|baptism",
+      "type": "walker-sheet",
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0,
+          1
+        ],
+        "width": 74,
+        "height": 74,
+        "count": 8
+      },
+      "footPivot": null,
+      "anchorKind": "per-frame-foot",
+      "perFrameAnchors": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 44.05,
+            "y": 66.91
+          },
+          "figureHeight": 56.9,
+          "hands": {
+            "left": {
+              "x": 35,
+              "y": 35
+            },
+            "right": {
+              "x": 57,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 38.79,
+            "y": 67.08
+          },
+          "figureHeight": 57.23,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 37
+            },
+            "right": {
+              "x": 48,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.29,
+            "y": 67.08
+          },
+          "figureHeight": 56.56,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 37
+            },
+            "right": {
+              "x": 46,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 33.29,
+            "y": 67.58
+          },
+          "figureHeight": 57.73,
+          "hands": {
+            "left": {
+              "x": 20,
+              "y": 38
+            },
+            "right": {
+              "x": 42,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.63,
+            "y": 63.15
+          },
+          "figureHeight": 56.23,
+          "hands": {
+            "left": {
+              "x": 32,
+              "y": 32
+            },
+            "right": {
+              "x": 55,
+              "y": 29
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 38.71,
+            "y": 63.49
+          },
+          "figureHeight": 55.73,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 34
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.87,
+            "y": 63.99
+          },
+          "figureHeight": 55.9,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 33.2,
+            "y": 64.16
+          },
+          "figureHeight": 57.23,
+          "hands": {
+            "left": {
+              "x": 18,
+              "y": 30
+            },
+            "right": {
+              "x": 41,
+              "y": 32
+            }
+          }
+        }
+      ],
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "74px cell의 방향/걸음별 foot 및 figureHeight 사용; sheet전체를 한 인물로 축소하지 않음",
+      "source": "public/assets/walkers-v2/wk_priest_m_01-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 296,
+      "height": 148,
+      "sha256": "87cc0643daed82c6581fd311559076f3375e041d57104618c5c04278d4c5a0cd"
+    },
+    {
+      "id": "empty_stall-v1",
+      "file": "assets/reused/empty_stall-v1.png",
+      "event": "famine|marketday",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 48,
+        "y": 94
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/wave7/signifier/empty_stall-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 96,
+      "height": 96,
+      "sha256": "9d324d415a60378d5b5dd97f66c2ba1967d36467d8432ef69432666cae0baec6"
+    },
+    {
+      "id": "burnt_l1-v1",
+      "file": "assets/reused/burnt_l1-v1.png",
+      "event": "fire",
+      "type": "house-canvas-overlay",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 0,
+        "y": 0,
+        "overlay": true
+      },
+      "anchorKind": "original-house-canvas-origin",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/wave9/event/burnt_l1-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 139,
+      "height": 139,
+      "sha256": "147e0add6a2a14f09f0461686878ef592db6c298f89b5afc2d963f42c4e22ea5"
+    },
+    {
+      "id": "crowd_manor_gate-v1",
+      "file": "assets/reused/crowd_manor_gate-v1.png",
+      "event": "judgment|revolt",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 96,
+        "y": 64
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/wave9/event/crowd_manor_gate-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 192,
+      "height": 128,
+      "sha256": "4702bfbc032f2c8d0b7ad94503fe4381704890122a64a699011997cf104939d1"
+    },
+    {
+      "id": "plague_shut_l1-v1",
+      "file": "assets/reused/plague_shut_l1-v1.png",
+      "event": "plague",
+      "type": "house-canvas-overlay",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 0,
+        "y": 0,
+        "overlay": true
+      },
+      "anchorKind": "original-house-canvas-origin",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/wave9/event/plague_shut_l1-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 139,
+      "height": 139,
+      "sha256": "9b142f8864ce724c14aedfac3cb359e4fd289ed4880de57bd7cb900dbe71f9ef"
+    },
+    {
+      "id": "ridge_flooded-v1",
+      "file": "assets/reused/ridge_flooded-v1.png",
+      "event": "flood",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 256,
+        "y": 32
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/wave9/field/ridge_flooded-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 512,
+      "height": 64,
+      "sha256": "d51c59506546e0919dc13bc0539f07839aef731ad665d167a3270aa6a42f32ba"
+    },
+    {
+      "id": "black_smoke_column_sheet-v1",
+      "file": "assets/reused/black_smoke_column_sheet-v1.png",
+      "event": "fire",
+      "type": "animated-fx",
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "width": 96,
+        "height": 192,
+        "count": 4,
+        "rows": 1
+      },
+      "footPivot": {
+        "x": 48,
+        "y": 186
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/wave9/fx/black_smoke_column_sheet-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 384,
+      "height": 192,
+      "sha256": "28d40e5b07d47baf3a859c8c791c155227b7ad1f8dae219c9af0f7ac99eaed30"
+    },
+    {
+      "id": "bier_shroud_ne-v1",
+      "file": "assets/reused/bier_shroud_ne-v1.png",
+      "event": "funeral|plague",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 32,
+        "y": 16
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/wave9/prop/bier_shroud_ne-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 64,
+      "height": 32,
+      "sha256": "5726d1eb760a2fe604616766f221b10a63270c7f94a9a7a92c9d2b4974884fa7"
+    },
+    {
+      "id": "bier_shroud_nw-v1",
+      "file": "assets/reused/bier_shroud_nw-v1.png",
+      "event": "funeral|plague",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 32,
+        "y": 16
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/wave9/prop/bier_shroud_nw-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 64,
+      "height": 32,
+      "sha256": "0431d99caf69ce82867f313c214f5751f7090d698b6b36b06b32d15a39393533"
+    },
+    {
+      "id": "scroll_royal_ne-v1",
+      "file": "assets/reused/scroll_royal_ne-v1.png",
+      "event": "royalenvoy",
+      "type": "held-prop",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 16,
+        "y": 16
+      },
+      "anchorKind": "hand-prop-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "해당방향의 손좌표에 합성; 땅에 세우는 독립 그림 아님",
+      "source": "public/assets/wave9/prop/scroll_royal_ne-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 32,
+      "height": 32,
+      "sha256": "2ab40c0fd3b4374e7fb792050722ad5e7c47e02275744df1c50e9d8a86cbf241"
+    },
+    {
+      "id": "scroll_royal_nw-v1",
+      "file": "assets/reused/scroll_royal_nw-v1.png",
+      "event": "royalenvoy",
+      "type": "held-prop",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 16,
+        "y": 16
+      },
+      "anchorKind": "hand-prop-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "해당방향의 손좌표에 합성; 땅에 세우는 독립 그림 아님",
+      "source": "public/assets/wave9/prop/scroll_royal_nw-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 32,
+      "height": 32,
+      "sha256": "f507f0cb9455eeb9f941b373e2402aa54ec0d965f7a1bf900c319e36739d3199"
+    },
+    {
+      "id": "hungry_queue-v1",
+      "file": "assets/reused/hungry_queue-v1.png",
+      "event": "famine",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 64,
+        "y": 32
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/wave9/signifier/hungry_queue-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 128,
+      "height": 64,
+      "sha256": "305f67eb549e18a8355fea199de4c42ead1efdc85e615bb59625f3318cc35a7b"
+    },
+    {
+      "id": "wk_funeral_bearers-v1",
+      "file": "assets/reused/wk_funeral_bearers-v1.png",
+      "event": "funeral|plague",
+      "type": "walker-sheet",
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0,
+          1
+        ],
+        "width": 74,
+        "height": 74,
+        "count": 8
+      },
+      "footPivot": null,
+      "anchorKind": "per-frame-foot",
+      "perFrameAnchors": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.72,
+            "y": 67.24
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 34
+            },
+            "right": {
+              "x": 58,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.63,
+            "y": 68.24
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 34
+            },
+            "right": {
+              "x": 47,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.71,
+            "y": 67.74
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.2,
+            "y": 67.74
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 37
+            },
+            "right": {
+              "x": 40,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 42.88,
+            "y": 67.16
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 32
+            },
+            "right": {
+              "x": 59,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.71,
+            "y": 67.66
+          },
+          "figureHeight": 65.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 32
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 30.87,
+            "y": 67.33
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 29.87,
+            "y": 66.99
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 14,
+              "y": 34
+            },
+            "right": {
+              "x": 40,
+              "y": 32
+            }
+          }
+        }
+      ],
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "74px cell의 방향/걸음별 foot 및 figureHeight 사용; sheet전체를 한 인물로 축소하지 않음",
+      "source": "public/assets/wave9/walker/wk_funeral_bearers-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 296,
+      "height": 148,
+      "sha256": "8e51b570cd335df31af90ddaff625102d4db57beb31ee04784a17f10c0dcee68"
+    },
+    {
+      "id": "wk_royal_messenger-v1",
+      "file": "assets/reused/wk_royal_messenger-v1.png",
+      "event": "royalenvoy",
+      "type": "walker-sheet",
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0,
+          1
+        ],
+        "width": 74,
+        "height": 74,
+        "count": 8
+      },
+      "footPivot": null,
+      "anchorKind": "per-frame-foot",
+      "perFrameAnchors": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 37.46,
+            "y": 68.91
+          },
+          "figureHeight": 67.24,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 33
+            },
+            "right": {
+              "x": 51,
+              "y": 32
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.21,
+            "y": 69.91
+          },
+          "figureHeight": 67.58,
+          "hands": {
+            "left": {
+              "x": 22,
+              "y": 35
+            },
+            "right": {
+              "x": 50,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.21,
+            "y": 70.08
+          },
+          "figureHeight": 67.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 50,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 36.04,
+            "y": 68.91
+          },
+          "figureHeight": 67.24,
+          "hands": {
+            "left": {
+              "x": 21,
+              "y": 33
+            },
+            "right": {
+              "x": 47,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 36.37,
+            "y": 68.33
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 34
+            },
+            "right": {
+              "x": 52,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 39.63,
+            "y": 68.99
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 34
+            },
+            "right": {
+              "x": 48,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.62,
+            "y": 68.99
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 36
+            },
+            "right": {
+              "x": 50,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 37.88,
+            "y": 68.16
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 22,
+              "y": 34
+            },
+            "right": {
+              "x": 49,
+              "y": 35
+            }
+          }
+        }
+      ],
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "74px cell의 방향/걸음별 foot 및 figureHeight 사용; sheet전체를 한 인물로 축소하지 않음",
+      "source": "public/assets/wave9/walker/wk_royal_messenger-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 296,
+      "height": 148,
+      "sha256": "8eb9884ec8478c78276762d400fba0537e27bb265df923830b8f29a3e69467ca"
+    },
+    {
+      "id": "cattle_pair-v1",
+      "file": "assets/reused/cattle_pair-v1.png",
+      "event": "marketday",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 64,
+        "y": 84
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/zones/animals/cattle_pair-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 128,
+      "height": 96,
+      "sha256": "2a87515ebf312141f99270e079e3c5b3ac36bcd86a7dac61548bab8043446760"
+    },
+    {
+      "id": "sheep_flock-v1",
+      "file": "assets/reused/sheep_flock-v1.png",
+      "event": "marketday",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 64,
+        "y": 84
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/zones/animals/sheep_flock-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 128,
+      "height": 96,
+      "sha256": "77bb4712641f8d56517f74f7e80157c6deb40a1bc2f29c5197347badfc561945"
+    },
+    {
+      "id": "fire_small",
+      "file": "assets/reused/fire_small.png",
+      "event": "fire",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 24,
+        "y": 64
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/visibility-v1/fx/fire_small.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 48,
+      "height": 64,
+      "sha256": "babdeb0fed0ecf95afdab7c1f1babf1b7c39eab16583c08a778730f842fc98d1"
+    },
+    {
+      "id": "fire_large",
+      "file": "assets/reused/fire_large.png",
+      "event": "fire",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 48,
+        "y": 96
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/visibility-v1/fx/fire_large.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 96,
+      "height": 96,
+      "sha256": "6adee08c013e2787a26d22e74d99524538b7a9677b301cabbd7a5af4ccfaed82"
+    },
+    {
+      "id": "overlay_cloak_m-v1",
+      "file": "assets/reused/overlay_cloak_m-v1.png",
+      "event": "compatible-winter-walkers",
+      "type": "template-cloak",
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "columns": 4,
+        "rows": 2,
+        "count": 8,
+        "cellWidth": 74,
+        "cellHeight": 74
+      },
+      "footPivot": null,
+      "anchorKind": "template-registered-layer",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": [
+        "legacy_civilian_man"
+      ],
+      "placementRule": "동일한 원본 인물 템플릿의 같은74px 셀에 합성; 독립 땅 배치 금지; priest/new group 부적합",
+      "source": "public/assets/walker-props-v1/overlay_cloak_m-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 296,
+      "height": 148,
+      "sha256": "75ec7c0c4f806c3593d5ce685d4e4991b7a8c193a884d5cde6b5e4ae89e5a02e"
+    },
+    {
+      "id": "overlay_cloak_f-v1",
+      "file": "assets/reused/overlay_cloak_f-v1.png",
+      "event": "compatible-winter-walkers",
+      "type": "template-cloak",
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "columns": 4,
+        "rows": 2,
+        "count": 8,
+        "cellWidth": 74,
+        "cellHeight": 74
+      },
+      "footPivot": null,
+      "anchorKind": "template-registered-layer",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": [
+        "legacy_civilian_woman"
+      ],
+      "placementRule": "동일한 원본 인물 템플릿의 같은74px 셀에 합성; 독립 땅 배치 금지; priest/new group 부적합",
+      "source": "public/assets/walker-props-v1/overlay_cloak_f-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 296,
+      "height": 148,
+      "sha256": "6747d58058ce03fca8e5923d9408cfaf763c42ad1bdc49f06a54aa2035600ab1"
+    },
+    {
+      "id": "overlay_cloak_merchant_m-v1",
+      "file": "assets/reused/overlay_cloak_merchant_m-v1.png",
+      "event": "compatible-winter-walkers",
+      "type": "template-cloak",
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "columns": 4,
+        "rows": 2,
+        "count": 8,
+        "cellWidth": 74,
+        "cellHeight": 74
+      },
+      "footPivot": null,
+      "anchorKind": "template-registered-layer",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": [
+        "legacy_merchant"
+      ],
+      "placementRule": "동일한 원본 인물 템플릿의 같은74px 셀에 합성; 독립 땅 배치 금지; priest/new group 부적합",
+      "source": "public/assets/walker-props-v1/overlay_cloak_merchant_m-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 296,
+      "height": 148,
+      "sha256": "83701f008910169dd6e4bb4cce9d2143df419a6c821dd616f7b528e52f308045"
+    },
+    {
+      "id": "cart_hand-v4",
+      "file": "assets/reused/cart_hand-v4.png",
+      "event": "wedding|levy",
+      "type": "cart-direction-sheet",
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0
+        ],
+        "count": 4
+      },
+      "footPivot": null,
+      "anchorKind": "per-direction-cart-source",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "runtimeActorManifest의 방향별 source crop/foot 사용. 인물74px셀계약과 다름",
+      "source": "public/assets/runtime-actors-v1/cart_hand-v4.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": {
+        "id": "handcart",
+        "url": "assets/runtime-actors-v1/cart_hand-v4.png",
+        "width": 1774,
+        "height": 887,
+        "sha256": "8b9101a008254bce9878a9791ffc9be06e90adb819393b71926f61acc3bd359e",
+        "active": true,
+        "frames": [
+          {
+            "direction": "NE",
+            "gaitFrame": 0,
+            "source": {
+              "x": 39,
+              "y": 226,
+              "width": 397,
+              "height": 374
+            },
+            "foot": {
+              "x": 207.5,
+              "y": 600
+            },
+            "handles": {
+              "x": 384,
+              "y": 251
+            }
+          },
+          {
+            "direction": "SE",
+            "gaitFrame": 0,
+            "source": {
+              "x": 481,
+              "y": 243,
+              "width": 380,
+              "height": 368
+            },
+            "foot": {
+              "x": 702.5,
+              "y": 611
+            },
+            "handles": {
+              "x": 801,
+              "y": 585
+            }
+          },
+          {
+            "direction": "SW",
+            "gaitFrame": 0,
+            "source": {
+              "x": 908,
+              "y": 249,
+              "width": 385,
+              "height": 362
+            },
+            "foot": {
+              "x": 1068,
+              "y": 611
+            },
+            "handles": {
+              "x": 967,
+              "y": 585
+            }
+          },
+          {
+            "direction": "NW",
+            "gaitFrame": 0,
+            "source": {
+              "x": 1338,
+              "y": 227,
+              "width": 399,
+              "height": 373
+            },
+            "foot": {
+              "x": 1555.5,
+              "y": 600
+            },
+            "handles": {
+              "x": 1384,
+              "y": 251
+            }
+          }
+        ]
+      },
+      "width": 314,
+      "height": 157,
+      "sha256": "e32522862491eb85317c089c61c291189837fd92042b8329b840d20e0e62f2e2"
+    },
+    {
+      "id": "fresh_graves_a-v1",
+      "file": "assets/reused/fresh_graves_a-v1.png",
+      "event": "funeral|plague",
+      "type": "world-sprite",
+      "season": "all",
+      "newArt": false,
+      "frames": 1,
+      "footPivot": {
+        "x": 64,
+        "y": 32
+      },
+      "anchorKind": "source-render-anchor",
+      "perFrameAnchors": null,
+      "measuredGroundAnchors": null,
+      "compatibleTemplates": null,
+      "placementRule": "원본 등록 기준점과 배율 유지; 새 계절 그림으로 세지 않음",
+      "source": "public/assets/wave9/decal/fresh_graves_a-v1.png",
+      "sourceMetadataReference": "provenance/reused-manifest.json",
+      "cartGeometry": null,
+      "width": 128,
+      "height": 64,
+      "sha256": "38117bdf171e4c33ffe190b7b98887cddae9320c439b09d33d615b00c1f973c4"
+    },
+    {
+      "id": "wedding-summer",
+      "file": "assets/new/wedding-summer.png",
+      "event": "wedding",
+      "type": "static whole group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        203
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 109.79,
+      "adultHeightMeasurement": {
+        "adultHeightSourcePx": 527,
+        "head": [
+          413,
+          382
+        ],
+        "foot": [
+          373,
+          909
+        ],
+        "people": 6,
+        "pivotSource": [
+          768,
+          910
+        ],
+        "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+        "sourceDimensions": [
+          1536,
+          1024
+        ]
+      },
+      "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror.",
+      "sourceMetadataReference": "provenance/ceremony.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "6da3a83bd55b11adfd9a9f1a6f6177dc8f95e3fcf463c406b1d19d2196356660"
+    },
+    {
+      "id": "baptism-summer",
+      "file": "assets/new/baptism-summer.png",
+      "event": "baptism",
+      "type": "static whole group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        203
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 137.92,
+      "adultHeightMeasurement": {
+        "adultHeightSourcePx": 662,
+        "head": [
+          410,
+          143
+        ],
+        "foot": [
+          385,
+          805
+        ],
+        "people": 5,
+        "pivotSource": [
+          768,
+          910
+        ],
+        "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+        "sourceDimensions": [
+          1536,
+          1024
+        ]
+      },
+      "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror.",
+      "sourceMetadataReference": "provenance/ceremony.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "8f97a5f2cded3a20658e32c19a68683ef55e99e79468deceb91c0187215996be"
+    },
+    {
+      "id": "pilgrimage-summer",
+      "file": "assets/new/pilgrimage-summer.png",
+      "event": "pilgrimage",
+      "type": "static whole group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        212
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 131.88,
+      "adultHeightMeasurement": {
+        "adultHeightSourcePx": 633,
+        "head": [
+          388,
+          290
+        ],
+        "foot": [
+          438,
+          923
+        ],
+        "people": 6,
+        "pivotSource": [
+          768,
+          955
+        ],
+        "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+        "sourceDimensions": [
+          1536,
+          1024
+        ]
+      },
+      "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror.",
+      "sourceMetadataReference": "provenance/ceremony.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "faa0aed776cfd7f41ec3ea2954b5607ae88b5ec0ed977594d7825d73194f7e2c"
+    },
+    {
+      "id": "fair-summer",
+      "file": "assets/new/fair-summer.png",
+      "event": "fair",
+      "type": "static whole group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        213
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 72.5,
+      "adultHeightMeasurement": {
+        "adultHeightSourcePx": 348,
+        "head": [
+          1295,
+          488
+        ],
+        "foot": [
+          1260,
+          836
+        ],
+        "people": 6,
+        "pivotSource": [
+          768,
+          960
+        ],
+        "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+        "sourceDimensions": [
+          1536,
+          1024
+        ]
+      },
+      "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror.",
+      "sourceMetadataReference": "provenance/ceremony.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "76139555738fea1b170e8d558adc14f2ae6c111add4eb7ea4e24dcd07e15d055"
+    },
+    {
+      "id": "wedding-winter",
+      "file": "assets/new/wedding-winter.png",
+      "event": "wedding",
+      "type": "static whole group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        203
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 109.79,
+      "adultHeightMeasurement": {
+        "adultHeightSourcePx": 527,
+        "head": [
+          413,
+          382
+        ],
+        "foot": [
+          373,
+          909
+        ],
+        "people": 6,
+        "pivotSource": [
+          768,
+          910
+        ],
+        "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+        "sourceDimensions": [
+          1536,
+          1024
+        ]
+      },
+      "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror.",
+      "sourceMetadataReference": "provenance/ceremony.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "782aa7f7da45c09bfdb9265e3554ae5b5bd8daf871e4c40f7791a84ded3c278e"
+    },
+    {
+      "id": "baptism-winter",
+      "file": "assets/new/baptism-winter.png",
+      "event": "baptism",
+      "type": "static whole group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        203
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 137.92,
+      "adultHeightMeasurement": {
+        "adultHeightSourcePx": 662,
+        "head": [
+          410,
+          143
+        ],
+        "foot": [
+          385,
+          805
+        ],
+        "people": 5,
+        "pivotSource": [
+          768,
+          910
+        ],
+        "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+        "sourceDimensions": [
+          1536,
+          1024
+        ]
+      },
+      "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror.",
+      "sourceMetadataReference": "provenance/ceremony.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "9513cb9fce826b0ddbe8b2df93849545e1009b7993b3188235379b67913e43a3"
+    },
+    {
+      "id": "pilgrimage-winter",
+      "file": "assets/new/pilgrimage-winter.png",
+      "event": "pilgrimage",
+      "type": "static whole group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        212
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 131.88,
+      "adultHeightMeasurement": {
+        "adultHeightSourcePx": 633,
+        "head": [
+          388,
+          290
+        ],
+        "foot": [
+          438,
+          923
+        ],
+        "people": 6,
+        "pivotSource": [
+          768,
+          955
+        ],
+        "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+        "sourceDimensions": [
+          1536,
+          1024
+        ]
+      },
+      "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror.",
+      "sourceMetadataReference": "provenance/ceremony.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "0d19526148e3a07979ac4b4f58f5be5d236128ee557e53e3431fa2825bb39731"
+    },
+    {
+      "id": "fair-winter",
+      "file": "assets/new/fair-winter.png",
+      "event": "fair",
+      "type": "static whole group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        213
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 72.5,
+      "adultHeightMeasurement": {
+        "adultHeightSourcePx": 348,
+        "head": [
+          1295,
+          488
+        ],
+        "foot": [
+          1260,
+          836
+        ],
+        "people": 6,
+        "pivotSource": [
+          768,
+          960
+        ],
+        "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+        "sourceDimensions": [
+          1536,
+          1024
+        ]
+      },
+      "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror.",
+      "sourceMetadataReference": "provenance/ceremony.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "8fe18c429ec1afcda6cecdce1a8562568d1c8828c402b7e73084bd324aafc226"
+    },
+    {
+      "id": "plague-cart-summer",
+      "file": "assets/new/plague-cart-summer.png",
+      "event": "plague",
+      "type": "static-whole-ground-group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        169,
+        156
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 60,
+      "adultHeightMeasurement": "Manual visual vertical head-to-foot estimate; source 535 px; tolerance ±8%.",
+      "placementRule": "Open road beside closed households; no building overlap; path points lower-left to upper-right.",
+      "sourceMetadataReference": "provenance/crisis.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "2a7a671bc513e208ed66ac54105364c1f43ed9adede80b6ba33874d4bd832d2e"
+    },
+    {
+      "id": "plague-cart-winter",
+      "file": "assets/new/plague-cart-winter.png",
+      "event": "plague",
+      "type": "static-whole-ground-group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        169,
+        156
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 60,
+      "adultHeightMeasurement": "Manual visual vertical head-to-foot estimate; source 535 px; tolerance ±8%.",
+      "placementRule": "Open road beside closed households; no building overlap; path points lower-left to upper-right.",
+      "sourceMetadataReference": "provenance/crisis.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "a82e833d1bf421121414fb03985e767eaa5de34bb289c2adf01693601d84f74e"
+    },
+    {
+      "id": "plague-marker-brazier-summer",
+      "file": "assets/new/plague-marker-brazier-summer.png",
+      "event": "plague",
+      "type": "static-whole-ground-group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        165,
+        140
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 60,
+      "adultHeightMeasurement": "Virtual H calibrated from freestanding sign≈0.7H; no actor present.",
+      "placementRule": "Beside doorway on bare ground, never pasted onto wall; keep exit passable.",
+      "sourceMetadataReference": "provenance/crisis.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "996338868db48c673d4bbb91b472f57501d229511e56c4fad182b5023c4e5fc2"
+    },
+    {
+      "id": "plague-marker-brazier-winter",
+      "file": "assets/new/plague-marker-brazier-winter.png",
+      "event": "plague",
+      "type": "static-whole-ground-group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        165,
+        140
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 60,
+      "adultHeightMeasurement": "Virtual H calibrated from freestanding sign≈0.7H; no actor present.",
+      "placementRule": "Beside doorway on bare ground, never pasted onto wall; keep exit passable.",
+      "sourceMetadataReference": "provenance/crisis.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "4ae40dc5a47714f1417547fb401efdae5f30edc755e18c36446f0b1b51911ef1"
+    },
+    {
+      "id": "sandbags-summer",
+      "file": "assets/new/sandbags-summer.png",
+      "event": "flood",
+      "type": "static-whole-ground-group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        159,
+        153
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 60,
+      "adultHeightMeasurement": "Manual visual vertical head-to-foot estimate; source 420 px; tolerance ±8%.",
+      "placementRule": "Dry side of flooded field or riverside; bank spans flood edge; no repeated sack tiling.",
+      "sourceMetadataReference": "provenance/crisis.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "55e058c9fa8728e197de11f4cc1828d3b0ff33b508a6dd2a440b3a9b51045cec"
+    },
+    {
+      "id": "sandbags-winter",
+      "file": "assets/new/sandbags-winter.png",
+      "event": "flood",
+      "type": "static-whole-ground-group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        159,
+        153
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 60,
+      "adultHeightMeasurement": "Manual visual vertical head-to-foot estimate; source 420 px; tolerance ±8%.",
+      "placementRule": "Dry side of flooded field or riverside; bank spans flood edge; no repeated sack tiling.",
+      "sourceMetadataReference": "provenance/crisis.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "e342ed60a801db2f3731091b8af224a770b7cd73d95fab7e5849df39499551cc"
+    },
+    {
+      "id": "revolt-summer",
+      "file": "assets/new/revolt-summer.png",
+      "event": "revolt",
+      "type": "static-whole-ground-group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        159,
+        157
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 60,
+      "adultHeightMeasurement": "Manual visual vertical head-to-foot estimate; source 420 px; tolerance ±8%.",
+      "placementRule": "Open manor forecourt or market approach; keep whole group intact and outside buildings.",
+      "sourceMetadataReference": "provenance/crisis.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "9cf64777790f74f95c42ee7d83afd82b4e1f4d66fe8e95daa133d93cd197a295"
+    },
+    {
+      "id": "revolt-winter",
+      "file": "assets/new/revolt-winter.png",
+      "event": "revolt",
+      "type": "static-whole-ground-group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        159,
+        157
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 60,
+      "adultHeightMeasurement": "Manual visual vertical head-to-foot estimate; source 420 px; tolerance ±8%.",
+      "placementRule": "Open manor forecourt or market approach; keep whole group intact and outside buildings.",
+      "sourceMetadataReference": "provenance/crisis.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "92387934098b6f077e38fd24e756172fb07cc29dcd7bdc1934a99798b70102af"
+    },
+    {
+      "id": "bucket-brigade-summer",
+      "file": "assets/new/bucket-brigade-summer.png",
+      "event": "fire",
+      "type": "static-whole-group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        200
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 50,
+      "adultHeightMeasurement": "manual native adult head-to-foot estimate, exported proportional scale; ±5px source estimate",
+      "placementRule": "Place on unobstructed road or court/church apron; pivot front-center ground; do not attach to facade; pair summer and winter at identical pivot/canvas.",
+      "sourceMetadataReference": "provenance/response.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "74a24b3a3e70d6fada2ee712e32a662b58671723106282f0b015aab88e8d8dfe"
+    },
+    {
+      "id": "bucket-brigade-winter",
+      "file": "assets/new/bucket-brigade-winter.png",
+      "event": "fire",
+      "type": "static-whole-group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        200
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 50,
+      "adultHeightMeasurement": "manual native adult head-to-foot estimate, exported proportional scale; ±5px source estimate",
+      "placementRule": "Place on unobstructed road or court/church apron; pivot front-center ground; do not attach to facade; pair summer and winter at identical pivot/canvas.",
+      "sourceMetadataReference": "provenance/response.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "ed615016f984db7e6b7b96e39ba0e399fe2b813986f7af1771fcaf751b08e98f"
+    },
+    {
+      "id": "relief-table-summer",
+      "file": "assets/new/relief-table-summer.png",
+      "event": "famine",
+      "type": "static-whole-group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        200
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 50,
+      "adultHeightMeasurement": "manual native adult head-to-foot estimate, exported proportional scale; ±5px source estimate",
+      "placementRule": "Place on unobstructed road or court/church apron; pivot front-center ground; do not attach to facade; pair summer and winter at identical pivot/canvas.",
+      "sourceMetadataReference": "provenance/response.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "3602795adb8ae625a4a26d0b1304a120a7c9da8eb8da572ff8f4098beb5628c4"
+    },
+    {
+      "id": "relief-table-winter",
+      "file": "assets/new/relief-table-winter.png",
+      "event": "famine",
+      "type": "static-whole-group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        200
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 50,
+      "adultHeightMeasurement": "manual native adult head-to-foot estimate, exported proportional scale; ±5px source estimate",
+      "placementRule": "Place on unobstructed road or court/church apron; pivot front-center ground; do not attach to facade; pair summer and winter at identical pivot/canvas.",
+      "sourceMetadataReference": "provenance/response.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "e56e1bafa6b18d5cd4737b27863dfa2498def5e7932e733b1f0a3cdda561c4f1"
+    },
+    {
+      "id": "expedition-wagon-summer",
+      "file": "assets/new/expedition-wagon-summer.png",
+      "event": "levy",
+      "type": "static-whole-group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        200
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 50,
+      "adultHeightMeasurement": "manual native adult head-to-foot estimate, exported proportional scale; ±5px source estimate",
+      "placementRule": "Place on unobstructed road or court/church apron; pivot front-center ground; do not attach to facade; pair summer and winter at identical pivot/canvas.",
+      "sourceMetadataReference": "provenance/response.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "7ac5272727fc1176cf971d496730eb8bf51cf0a8547d06457318d2965f6baebf"
+    },
+    {
+      "id": "expedition-wagon-winter",
+      "file": "assets/new/expedition-wagon-winter.png",
+      "event": "levy",
+      "type": "static-whole-group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        200
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 50,
+      "adultHeightMeasurement": "manual native adult head-to-foot estimate, exported proportional scale; ±5px source estimate",
+      "placementRule": "Place on unobstructed road or court/church apron; pivot front-center ground; do not attach to facade; pair summer and winter at identical pivot/canvas.",
+      "sourceMetadataReference": "provenance/response.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "00bc2db2a34bb39c9ddd0a5cb109d4da5b5c0fe3c89f37e2f4c906dfbba63f6a"
+    },
+    {
+      "id": "judgment-bailiff-summer",
+      "file": "assets/new/judgment-bailiff-summer.png",
+      "event": "judgment",
+      "type": "static-whole-group",
+      "season": "summer",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        200
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 50,
+      "adultHeightMeasurement": "manual native adult head-to-foot estimate, exported proportional scale; ±5px source estimate",
+      "placementRule": "Place on unobstructed road or court/church apron; pivot front-center ground; do not attach to facade; pair summer and winter at identical pivot/canvas.",
+      "sourceMetadataReference": "provenance/response.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "4e0de46a95e4e06051f379b7d33fd649d88a0ce1a73a6908e08e94d287f759c8"
+    },
+    {
+      "id": "judgment-bailiff-winter",
+      "file": "assets/new/judgment-bailiff-winter.png",
+      "event": "judgment",
+      "type": "static-whole-group",
+      "season": "winter",
+      "newArt": true,
+      "frames": 1,
+      "footPivot": [
+        160,
+        200
+      ],
+      "anchorKind": "group-ground-anchor",
+      "adultHeightPx": 50,
+      "adultHeightMeasurement": "manual native adult head-to-foot estimate, exported proportional scale; ±5px source estimate",
+      "placementRule": "Place on unobstructed road or court/church apron; pivot front-center ground; do not attach to facade; pair summer and winter at identical pivot/canvas.",
+      "sourceMetadataReference": "provenance/response.json",
+      "width": 320,
+      "height": 240,
+      "sha256": "1f50be0ead6819ae59cfc12c3aabf64203fef03adddd0f013be7c81028f37607"
+    },
+    {
+      "id": "fire-flicker-all",
+      "file": "assets/new/fire-flicker-all.png",
+      "event": "fire",
+      "type": "animated-flame-sheet",
+      "season": "all",
+      "newArt": true,
+      "frames": {
+        "count": 4,
+        "columns": 4,
+        "rows": 1,
+        "width": 64,
+        "height": 96,
+        "timingMs": 100,
+        "timingStatus": "proposed"
+      },
+      "footPivot": [
+        32,
+        88
+      ],
+      "anchorKind": "per-frame-ground-anchor",
+      "adultHeightPx": null,
+      "placementRule": "동일한64×96셀의(32,88)을 땅에 고정. 4프레임만 잘라 반복; 집 전체에 늘여붙이지 않음",
+      "sourceMetadataReference": "provenance/flame-generation.json",
+      "width": 256,
+      "height": 96,
+      "sha256": "087c2aec05584a42bbd4cd9546d3797a28c7bcb937f1d4adfcc3270385d96343"
+    }
+  ]
+}

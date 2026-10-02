@@ -1,0 +1,39 @@
+{
+  "id": "ck_evt_038",
+  "prompt": "Use case: precise-object-edit. Edit this complete historical illustration minimally. In the distant building at far left, remove the TWO thin chimney stacks sticking above its sloping roof; restore clean uninterrupted sloping roof and sky. Keep its crenellated square tower. Keep everything else unchanged: two men, blank sealed judgment, refusing raised hand, closed oak doors, autumn light, composition, full bleed16:9. No text. This scene is1379, no chimneys should appear.",
+  "reference_paths": [
+    "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-09b14db9-5fff-4815-84cf-2f8f168820ed.png"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-030c522d-7334-40bd-8822-e422bc93fccf.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-030c522d-7334-40bd-8822-e422bc93fccf.png",
+  "tool": "builtin image_gen",
+  "qa": "Visually reviewed full generated image: story clear, no writing, natural anatomy; source season autumn used046.",
+  "initial_generation": {
+    "prompt": "Use case: historical-scene. Generate one finished narrative event illustration for Charter & Kin, southern England market town. Input images are STYLE references only, not scene templates. Match warm earthy painterly narrative realism, nuanced natural faces, rough wool and linen, worn natural oak, softly worked brush texture in both references. Wide 16:9 landscape full bleed, intended 960x540. Natural anatomy and believable hands. No text whatsoever, no letters, numbers, pseudo-writing, captions, UI, watermarks. Every document entirely blank parchment except a simple wax seal. No modern objects, no Tudor black-white architecture, no ordinary cottage chimneys or glazed windows. ONE complete original scene, not collage. Year1379. Autumn twilight outside a rural manor grain storehouse. Exactly TWO people: estate official in foreground holding up large blank parchment judgment with hanging red wax seal, resistant storekeeper visible ONLY head and raised stopping hand through a small open square hatch in otherwise tightly CLOSED massive oak double doors. Doors dominate almost whole image, heavy iron latch still shut. Frustrated official stands in three-quarter back profile looking at keeper; sealed judgment very clear. No weapons, no violence, no soldiers. Natural dark oak timber door grain and rough stone jambs, a few fallen leaves, restrained late evening golden side light. Wool gown hood and leather shoes.",
+    "reference_paths": [
+      "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+      "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+    ],
+    "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-09b14db9-5fff-4815-84cf-2f8f168820ed.png",
+    "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-09b14db9-5fff-4815-84cf-2f8f168820ed.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "raw_sha256": "9e4b8c1212ae92ffeccb93b02875bba4292338a4f0ab948e4f1c95595ac778b4"
+  },
+  "correction": "Removed two thin background chimneys for pre1400scene; kept closed doors and denied judgment.",
+  "raw_size": [
+    1672,
+    941
+  ],
+  "raw_sha256": "75ddd553aee3863ad17b066e5e640eb9dbe4ee823a3347babf036bf572e51fdc",
+  "final_sha256": "b081af7c6a59639b2bf42201fe3d06e06c75ab9903070ced1309eef7d8b07524",
+  "final_file": "assets/ck_evt_038.jpg",
+  "final_size": [
+    960,
+    540
+  ],
+  "processing": "Pillow ImageOps.fit Lanczos centered crop/resize; RGB JPEG quality85 optimize",
+  "status": "candidate",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}

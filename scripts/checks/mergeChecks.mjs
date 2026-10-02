@@ -8,7 +8,8 @@
 //                                                    in tools/eslint/eslint-suppressions.json fail
 //  4. typecheck   tsc --noEmit (root node_modules)
 //  5. ledger      scripts/checks/inboxLedger.mjs     assets-inbox/INBOX_LEDGER.csv: every replaced_by path is a ledger
-//                                                    row, canonical marks match, new same-sha256 rows are marked
+//                                                    row, canonical marks match, new same-sha256 rows are marked,
+//                                                    and when the range touches assets-inbox/, one row per image
 //  6. korean      scripts/checks/koreanStrings.mjs   no new Korean string in src outside *.ko.ts and *.generated.*
 //                                                    (parsed with tools/eslint's TypeScript 6)
 //  7. budget      scripts/checks/distBudget.mjs      `vite build` of <head> into a temporary folder: the total and each
@@ -20,8 +21,11 @@
 //                                                    exceptions, which only shrink (UI-AUDIT-1)
 // 10. trend       scripts/checks/trendLag.mjs        warning only: the perf-trend page lags <head> by more than 10
 //                                                    commits (logged to <git common dir>/fls-trend-lag.log)
+// 11. evidence    scripts/checks/evidenceSize.mjs    every docs/verification/<task>/ folder the range touches holds
+//                                                    at most 3 MB (2^20) at <head>, replay captures and the committed
+//                                                    ui-geometry results and perf-trend page not counted (rule 1, RR10)
 // The layer rule (simulation folders do not import src/ui or src/render) is an ESLint rule: tools/eslint/layers.mjs.
-// 1, 2, 5, 6, 8 and 9 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
+// 1, 2, 5, 6, 8, 9 and 11 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
 // changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules; step 7
 // checks out there only the received PNGs the build turns into web derivatives (git lfs checkout, from the local store).
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -39,6 +43,7 @@ import { checkSurfaceRegistry, formatSurfaceRegistryResult } from './surfaceRegi
 import { checkUiGeometry, formatOverrideCount, formatUiGeometryResult, logWarnOverride } from './uiGeometry.mjs';
 import { checkTrendLag, formatTrendLag, logTrendLag } from './trendLag.mjs';
 import { checkDecisionIds, formatDecisionIdResult } from './decisionIds.mjs';
+import { checkEvidenceSize, formatEvidenceResult } from './evidenceSize.mjs';
 
 const CODE = /\.(ts|tsx|js|jsx|mjs|cjs)$/;
 const ESLINT_DIR = 'tools/eslint';
@@ -64,6 +69,8 @@ const korean = checkKoreanStrings({ head });
 report('korean', korean.added.length === 0, formatKoreanResult(korean));
 const decisionIds = checkDecisionIds({ head });
 report('decisions', decisionIds.duplicates.size === 0, formatDecisionIdResult(decisionIds));
+const evidence = checkEvidenceSize({ base, head });
+report('evidence', evidence.over.length === 0, formatEvidenceResult(evidence));
 const surfaces = checkSurfaceRegistry({ head });
 report('surfaces', surfaces.missing.length === 0, formatSurfaceRegistryResult(surfaces));
 const geometry = checkUiGeometry({ base, head });

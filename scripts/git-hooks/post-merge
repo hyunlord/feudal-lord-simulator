@@ -1,0 +1,18 @@
+#!/bin/sh
+# fls-post-merge-trend (installed by scripts/git-hooks/install.sh; do not edit the installed copy)
+# After every merge: first the hook that was here before (git-lfs's, kept as post-merge.chained) so LFS files are in
+# place, then scripts/perf/trendAutoCommit.mjs, which — on a work branch that has just taken the trunk in — refreshes
+# the perf-trend page when it lags more than 10 trunk heads and commits only that folder (decision RR4). It prints one
+# "post-merge: trend …" line when the page lags; it never fails the merge. FLS_TREND_AUTO=0 skips it.
+status=0
+chained="$(dirname "$0")/post-merge.chained"
+if [ -x "$chained" ]; then
+  "$chained" "$@" || status=$?
+elif command -v git-lfs >/dev/null 2>&1; then
+  git lfs post-merge "$@" || status=$?
+fi
+top=$(git rev-parse --show-toplevel 2>/dev/null) || exit $status
+if [ "${FLS_TREND_AUTO:-}" != 0 ] && [ -f "$top/scripts/perf/trendAutoCommit.mjs" ]; then
+  (cd "$top" && node scripts/perf/trendAutoCommit.mjs "${1:-0}" </dev/null) || true
+fi
+exit $status

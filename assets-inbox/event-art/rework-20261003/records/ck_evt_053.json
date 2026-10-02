@@ -1,0 +1,34 @@
+{
+  "id": "ck_evt_053",
+  "status": "candidate",
+  "tool": "image_gen__imagegen",
+  "prompt": "Use case: historical-scene. Create one finished full-bleed landscape 16:9 event illustration for a medieval English market-town game. References are STYLE ONLY: warm painterly narrative realism, natural anatomy, soft brush-textured wood/wool/stone, ochre earthy browns and muted greens, lifelike characters as shown. No captions, NO letters, words, numerals, scribbles, watermark, borders or graphic panels. All parchment faces entirely blank; seals can be simple nonletter shapes. South England, period specified. No Tudor black-and-white framing, no modern clothes/objects, no ordinary cottage chimneys. Light coherent and soft, details visible at960x540. Distinct clear action and environment. Year1420, spring morning. Exactly TWO people: a young adult noblewoman family descendant in modest muted plum long gown and white linen veil, and an older male legal clerk in moss-brown wool gown and cap. Intimate slightly overhead three-quarter close composition in the manor's ancestral archive. At left the descendant carefully UNWRAPS a very aged small sealed family deed from a faded linen heirloom cloth wrap; at right the clerk unrolls a much LONGER narrower manor court parchment roll alongside it to compare the two different kinds of evidence. Her hands gently preserve inherited creased deed, his hand traces the edge of court roll. Documents absolutely blank with age stains only, no letterlike marks. Small old oak deed casket at left, shelves of manuscript rolls softly behind. NO grandmother present, no portrait frame, no additional people. Visual contrast precious old family deed versus long formal courtroll. Sunlight from upperleft highlights cloth, warm faces and parchment.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-089b55fe-6d54-438a-9a40-828a1dcc3b84.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-089b55fe-6d54-438a-9a40-828a1dcc3b84.png",
+  "visual_review": "Inspected generated image. People count, scene action and blank documents pass.",
+  "revisions": [],
+  "raw_size": [
+    1672,
+    941
+  ],
+  "final_file": "assets/ck_evt_053.jpg",
+  "raw_sha256": "7b4450635b35ae6306be89260f66a6657f7affbaed069cfbd4ee6aad5d9862de",
+  "final_sha256": "65a15f2a00db4ef16d343d23bd26c4ea61bd851dcdc2bedd1d206ab6bba62cc8",
+  "finalization": "Pillow RGB conversion and ImageOps.fit Lanczos960x540, JPEGquality85 optimize; no painting",
+  "initial_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-089b55fe-6d54-438a-9a40-828a1dcc3b84.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "initial_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-089b55fe-6d54-438a-9a40-828a1dcc3b84.png",
+  "reference_sha256": {
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg": "8bc8ce03711ddd155f8f82952752bc69204c9fc25555de2a3d6d8dcc6352be96",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg": "fee7ffe398177110f4a4df5788d886519dbe6b5e29f0214a500648b6493a4f42"
+  },
+  "initial_raw_sha256": "7b4450635b35ae6306be89260f66a6657f7affbaed069cfbd4ee6aad5d9862de",
+  "final_dimensions": [
+    960,
+    540
+  ],
+  "revision_action": "preserve"
+}

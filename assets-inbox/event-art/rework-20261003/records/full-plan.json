@@ -1,0 +1,876 @@
+[
+  {
+    "id": "ck_evt_002",
+    "title": "가을 장부에 없는 곡물 자루",
+    "place": "곡창",
+    "time_season": "초가을 아침",
+    "people": 2,
+    "period": "1300–1347",
+    "years": [
+      1303,
+      1320
+    ],
+    "composition": "low diagonal view along grain sacks; receiver opens an empty ledger beside a conspicuous unaccounted sack and a traveling cloak on opposite ends of a short tally table",
+    "source_scene": "곡물 자루 옆 장부를 펼친 수입관리인과, 멀리 떠날 준비의 망토가 같은 탁자 양편에 놓인다.",
+    "body": "멀리 맡긴 영지에서 곡물 장부와 보고가 맞지 않는다는 말이 왔습니다. 청지기는 미카엘마스에 장부를 보내겠다고 합니다. 영주가 방문할 수도, 그 전에 일상 결재부터 직접 맡을 수도 있습니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "여름~초가을, 미카엘마스 전이라는 편집 발동 필터.",
+      "state": "보유 지도 밖 영지 oversight가 있고 그해 미카엘마스 전이다. 실제 횡령은 아직 판정되지 않았다. 현재는 steward 위임이며 accounts 감사다. 직접 감독으로 바꾸면 주의력 한도 초과가 되는 상태에서만 세 선택을 비교한다."
+    },
+    "file": "assets/ck_evt_002.jpg"
+  },
+  {
+    "id": "ck_evt_004",
+    "title": "우물과 곡창의 두 장려금",
+    "place": "우물 광장",
+    "time_season": "봄 정오",
+    "people": 4,
+    "period": "1300–1347",
+    "years": [
+      1301,
+      1312
+    ],
+    "composition": "wide triangle between stone well and distant granary; water jug household representative and grain sack merchant each present a blank sealed incentive sheet, official holds two small purses apart",
+    "source_scene": "물동이를 든 가구 대표와 곡물 자루를 가리키는 상인이 두 장려금 공고 앞에서 기다린다.",
+    "body": "공동체는 물을 길어 올릴 곳이 모자란다고 합니다. 곡물을 다루는 사람들은 먼저 창고를 늘릴 조건을 달라고 합니다. 한쪽에 힘을 실을지, 작은 몫으로 나눌지 정해야 합니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "살아 있는 가구와 물·저장 공간 부족이 함께 확인될 때라는 편집 필터.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "agency 존재. well과 granary에 미설정 장려금. 다른 장려금을 뺀 한도 안에서 동일 A=[30,60]d를 어느 한 종류에만 새로 설정할 수 있다. 두 종류의 실현 가능한 자율 제안이 있다는 편집 필터. 다른 장려금을 제외한 남은 허용액 L은 A≤L<2A여야 한다."
+    },
+    "file": "assets/ck_evt_004.jpg"
+  },
+  {
+    "id": "ck_evt_005",
+    "title": "빈 좌판 곁의 세금 장부",
+    "place": "장터",
+    "time_season": "여름 흐린 낮",
+    "people": 2,
+    "period": "1300–1347",
+    "years": [
+      1304,
+      1318
+    ],
+    "composition": "eye level through completely EMPTY trestle stall; merchant spreads empty hands while receiver holds open stall-dues book, deserted stall dominates",
+    "source_scene": "장터의 빈 좌판과 시장 좌판세 장부를 한 화면에 두고 상인과 수입관리인이 마주 선다.",
+    "body": "상인들은 새 좌판이 늘기 전에 시장 좌판세부터 낮춰 달라고 합니다. 수입관리인은 그 돈으로 다른 지출을 치러야 한다고 답합니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "agency와 운영 중인 시장, duesPermille=1000인 때만. 시장 수입권 상실·이미 다른 세율이면 이 카드 보류."
+    },
+    "file": "assets/ck_evt_005.jpg"
+  },
+  {
+    "id": "ck_evt_008",
+    "title": "멀어진 예배당까지의 길",
+    "place": "예배당 들길",
+    "time_season": "겨울 아침",
+    "people": 6,
+    "period": "1300–1347",
+    "years": [
+      1323,
+      1347
+    ],
+    "composition": "long receding muddy footpath with tired family and child walking toward tiny distant chapel; parish representatives gesture at bare unbuilt plot in foreground",
+    "source_scene": "먼 예배당까지 걷는 가구들과 가까운 빈터에 모인 교구 대표를 보여 주되 새 건물은 완성시키지 않는다.",
+    "body": "새로 사는 사람들이 늘어 예배당까지 가는 길이 멀다는 청원이 왔습니다. 교구는 새 사업에 장려금이 있다면 뜻을 모아 보겠다고 합니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "주거가 분산되고 예배 서비스 부족이 실제 진단될 때라는 편집 필터.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "agency. chapel 장려금 미설정. 유효 chapel 자율 제안이 있으며 현재 장려금 A=[40,60]d가 금고25% 한도 이내라는 편집 조건."
+    },
+    "file": "assets/ck_evt_008.jpg"
+  },
+  {
+    "id": "ck_evt_009",
+    "title": "수도원 문서함에서 고를 증거",
+    "place": "수도원 문서실",
+    "time_season": "겨울 오후",
+    "people": 2,
+    "period": "1300–1347",
+    "years": [
+      1324,
+      1347
+    ],
+    "composition": "high three-quarter view of monk and clerk crouching at open archive chest, three different objects spread on chest lid: sealed charter, folded deed, thin court roll",
+    "source_scene": "수도원 문서함 앞에서 인장 달린 특허장, 접은 재산 증서, 얇은 법정 장부를 서기가 비교한다.",
+    "body": "수도원 문서함에 특허장과 재산 증서, 법정의 장부가 남아 있다는 답이 왔습니다. 모두 옮겨 적기에는 비용이 큽니다. 먼저 소송에 낼 기록을 골라야 합니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "현재 소송에 이미 연결된 권리만 대상으로 한다. 성직자 추천권 청구권을 새로 만들지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "기존 소송이 filed/evidence 단계. 연결 청구권에 charter와 deed 증거가 둘 다 없으며 두 자료를 갖출 서사 조건을 만족. 금고≥40d. court_roll 증거도 미등록이며 이 권원에 관련된 법정 장부가 실제로 남았다는 창작 조건을 둔다."
+    },
+    "file": "assets/ck_evt_009.jpg"
+  },
+  {
+    "id": "ck_evt_010",
+    "title": "저쪽 강둑에서 거둔 고기값",
+    "place": "강둑",
+    "time_season": "여름 아침",
+    "people": 5,
+    "period": "1300–1347",
+    "years": [
+      1300,
+      1321
+    ],
+    "composition": "wide river divides opposing fishing nets; distant collector takes coins for fish on opposite bank; foreground steward offers fishing-right parchment to lord",
+    "source_scene": "강 양편의 그물과 이웃의 징수인을 배경으로 청지기가 어업권 문서를 영주에게 내민다.",
+    "body": "이웃 영지의 어업권을 두고 우리 가문이 가진 청구권이 다시 올라왔습니다. 문서는 있지만, 그곳에서 이익을 거두는 이는 아직 이웃입니다.",
+    "conditions": {
+      "land": "강 또는 하천 어업권이 실제 존재하는 대상 영지.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "기존 fishery claim이 있을 때만. 이 초안이 새 청구권을 생성하지 않음.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "estate-neighbour-1 fishery의 기존 open 청구권 또는 동일 조건의 실재 청구권. 현재 명의가 청구인과 다르고 금고≥60d. 세 선택을 함께 표시하려면 금고≥100d이고 charter 증거 미등록인 청구권이어야 한다. 관련 특허장 사본이 있다는 것은 창작 조건으로 표시한다."
+    },
+    "file": "assets/ck_evt_010.jpg"
+  },
+  {
+    "id": "ck_evt_011",
+    "title": "혼담에 되돌아온 조건",
+    "place": "과수원 문턱",
+    "time_season": "봄 저녁",
+    "people": 3,
+    "period": "1300–1347",
+    "years": [
+      1302,
+      1325
+    ],
+    "composition": "very low close view of dowry chest and diagonal closed orchard gate, cropped departing horse, tiny separated marriage pair beyond",
+    "source_scene": "서로 다른 혼인 조건 두 장을 같은 탁자에 펴 놓고 이웃 가문의 사자가 답을 기다린다.",
+    "body": "이웃 가문은 혼담을 거절하지 않았으나 조건을 고쳐 돌려보냈습니다. 청지기가 처음 보낸 것과 달라진 몫을 나란히 펼쳤습니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "실제 countered negotiation이 있고 deadline 전. 역제안의 cash 지불 가능. 원안보다 물질적 의무가 증가한 역제안만 편집 발동. 답변까지80tick 이상 남은 실제 역제안에 한한다."
+    },
+    "file": "assets/ck_evt_011.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다.",
+    "initial_v2_composition": "wide orchard gate, neighboring marriage envoy turns back holding a riding horse by bridle, bride and groom stand separated on opposite sides of gate, envoy lifts an empty hand renegotiating terms, closed traveling dowry chest sits between; NO documents, NO table",
+    "final_composition_ko": "매우 낮은 근접 시점의 닫힌 혼수 궤짝과 비스듬한 문. 떠나는 말은 가장자리에 잘리고 혼인 당사자는 먼 배경 양쪽에 작게 남는다."
+  },
+  {
+    "id": "ck_evt_013",
+    "title": "연줄 있는 청지기의 빈 장부",
+    "place": "영지 마구간 뜰",
+    "time_season": "가을 낮",
+    "people": 3,
+    "period": "1300–1347",
+    "years": [
+      1321,
+      1347
+    ],
+    "composition": "steward reluctantly hands heavy estate key to lord in stable yard while replacement waits beside saddled horse; small recovered purse spills coins on low mounting stone, no table or documents; close side view of key handover, implication decision not completed punitive violence",
+    "source_scene": "미카엘마스 장부의 빈 항목과 회수할 돈 옆에 청지기와 후임 후보가 떨어져 서 있다.",
+    "body": "미카엘마스 감사에서 청지기가 감춘 돈이 드러났습니다. 그의 연줄을 생각할지, 드러난 돈을 거둬들이고 사람을 바꿀지 정해야 합니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "지도 밖 영지 pending audit, revealedKept>0, 기한 전, 살아 있는 대체 후보 존재. 기존 감사의 실제 수치를 사용. 청지기의 connection이 null이 아니며 그 세력이 실제 factions에 존재해야 한다. 현 청지기 loyalty≤90으로 유임 충성 증가가 실제 발생하는 경우에만."
+    },
+    "file": "assets/ck_evt_013.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다."
+  },
+  {
+    "id": "ck_evt_015",
+    "title": "젖은 목재와 마른 들보",
+    "place": "목재 운반장",
+    "time_season": "봄 비 갠 아침",
+    "people": 3,
+    "period": "1300–1347",
+    "years": [
+      1326,
+      1347
+    ],
+    "composition": "close low view carter lifts soaked wagon tarpaulin to reveal contrasting DRY pale oak beam inside, receiver checks blank wooden order tablet",
+    "source_scene": "젖은 수레 덮개 아래 마른 들보를 점검하는 수레꾼과 주문판을 든 수입관리인.",
+    "body": "긴 비 뒤에 마른 들보를 구한다는 말이 시장에 돌았습니다. 수입관리인은 상인이 들여오는 목재를 주문할 수 있으나, 도착할 때마다 값을 치러야 한다고 말합니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "습한 봄·여름이라는 편집 필터.",
+      "state": "완성된 거래 시장이 있는 agency 영지, timberOrder 없음. treasuryCoin≥180d. 습한 계절과 목재 부족의 동시 확인은 편집 필터."
+    },
+    "file": "assets/ck_evt_015.jpg"
+  },
+  {
+    "id": "ck_evt_018",
+    "title": "지참금은 지금인가 해마다인가",
+    "place": "신부 행렬의 길",
+    "time_season": "여름 오후",
+    "people": 4,
+    "period": "1300–1347",
+    "years": [
+      1301,
+      1324
+    ],
+    "composition": "bride family leads a healthy cow pulling modest cart carrying a large marriage chest, bride walks alongside, groom kin await near gate; broad lateral moving procession; cattle and dowry chest dominate, no documents no table",
+    "source_scene": "혼담을 맡은 친족들이 당장 낼 돈주머니와 세 해의 지급 기록을 나란히 비교한다.",
+    "body": "가문 사람들은 같은 혼담의 조건을 두고 금고와 뒤의 수입을 비교합니다. 지금 낼 돈과 해마다 지킬 약속을 나누거나, 아내가 홀로 남을 때를 위해 영지의 권리 조각을 약정할 수 있습니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "네 번째 안은 jointurePiece(state)가 돌려주는 홈 영지의 실제 권리 조각이 있고, possessor와titleHolder가 모두 영주이며 기존lifeTenant·remainder부담·분쟁청구권이 없는 경우에만 제공한다. 이 추가 무부담 검사는 편집 등록기 조건이며 현재 marriageRefusal의 검사가 아니다. 없으면 앞의 세 안만 제시한다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "marriageRefusal을 통과하는 현재 groom/bride. 진행 협상 없음, treasury≥120d. 동일 상대·후보·나머지 조건으로 네 제안 비교."
+    },
+    "file": "assets/ck_evt_018.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다."
+  },
+  {
+    "id": "ck_evt_019",
+    "title": "새 영지의 열쇠를 누구에게",
+    "place": "영지 문루",
+    "time_season": "가을 오후",
+    "people": 4,
+    "period": "1300–1347",
+    "years": [
+      1322,
+      1347
+    ],
+    "composition": "lord and TWO prospective stewards plus ONE reeve introducing them at estate gatehouse, keys and report ledger prominent; candidates themselves carry tenant or merchant records, no additional representatives",
+    "source_scene": "지도 밖 영지의 열쇠와 보고 장부를 사이에 두고 영주가 소작인 친화 후보와 상인 친화 후보의 기록을 비교한다.",
+    "body": "새로 맡게 된 지도 밖 영지의 보고가 가문 회의에 쌓였습니다. 영주가 직접 답할지, 후보 중 청지기 한 사람에게 일상 판단을 맡길지 정해야 합니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "플레이어 보유 지도 밖 영지 oversight와 살아 있는 청지기 후보. 직접 관리 부하가 현 주의력 한도를 넘는 상황일 때만 편집 발동. 같은 영지에 살아 있는 peasant 후보와 merchant 후보가 모두 있으며 후보별 능력·충성·연줄을 함께 표시할 수 있을 때만 제시한다."
+    },
+    "file": "assets/ck_evt_019.jpg"
+  },
+  {
+    "id": "ck_evt_020",
+    "title": "기한보다 먼저 온 연금 청구",
+    "place": "금고실 문턱",
+    "time_season": "겨울 저녁",
+    "people": 2,
+    "period": "1300–1347",
+    "years": [
+      1326,
+      1347
+    ],
+    "composition": "closed timber treasury door and locked money chest, older relative at threshold holds out empty open purse requesting early annuity, receiver pauses with key before unlocking chest; low floor level deep doorway framing, no table or documents",
+    "source_scene": "날짜가 남은 연금 약속 장부와 닫힌 금고 앞에서 수입관리인이 친족의 말을 듣는다.",
+    "body": "혼인 때 약속한 연금의 청구가 들어왔습니다. 수입관리인은 지금 낼 수 있다고 하지만, 다음 시장일까지 금고에 두자는 친족도 있습니다.",
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "현재 open lord pension 약속 1건, amount A=[20,60]d, deadline 전이고 treasury≥A. 납기까지 적어도 다음 시장일은 남았을 때만 편집 발동."
+    },
+    "file": "assets/ck_evt_020.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다."
+  },
+  {
+    "id": "ck_evt_024",
+    "title": "비어 있는 노점의 몫",
+    "place": "장터",
+    "time_season": "봄 흐린 낮",
+    "people": 2,
+    "period": "1348–1381",
+    "years": [
+      1352,
+      1354
+    ],
+    "composition": "female ale vendor alone at vacant neighboring stall holding earthenware ale jug, small dues book near empty counter, observer listens; eye level intimate figure profile",
+    "source_scene": "에일 항아리를 둔 여성 노점상 옆에 빈 판매대와 작은 징수 장부.",
+    "body": "에일을 팔던 여성이 빈 노점을 가리킵니다. 장터에 다시 사람이 모이도록 시장 좌판세를 낮춰 달라 하지만, 징수인은 지금 걷히는 돈도 놓치기 어렵다 합니다. 다른 상인은 세율을 두고 새 시장 사업에만 돈을 보태는 길도 있다고 합니다.",
+    "conditions": {
+      "land": "시장권을 행사하는 도시 영지.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "실제 운영 시장과 현재 시장 좌판세 수입 경로가 있을 것.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "봄·여름 시장일 무렵. 편집 필터.",
+      "state": "빈 노점 묘사는 편집 조건. 현 시장 좌판세 1000‰일 때만 제시. 셋째 선택은 market 적법 사업 제안과 금고 여유가 있을 때만 표시; 세 선택을 위해 사업을 새로 만들지 않음."
+    },
+    "file": "assets/ck_evt_024.jpg"
+  },
+  {
+    "id": "ck_evt_025",
+    "title": "오래된 청지기의 빠진 돈",
+    "place": "금고실 안",
+    "time_season": "가을 밤",
+    "people": 3,
+    "period": "1348–1381",
+    "years": [
+      1353,
+      1355
+    ],
+    "composition": "steep overhead close view EMPTY open iron-banded oak treasury chest on floor, scattered split wooden tally sticks and a few coins around it, elderly steward crouches anxiously and auditor holds matching tally halves that disagree; chest interior dominates, no table no documents",
+    "source_scene": "촛불 아래 세 사람 사이에 놓인 감사 장부, 빈 동전 주머니와 두 개의 봉인.",
+    "body": "집안 살림을 오래 아는 청지기의 감사에서 숨긴 돈이 드러났습니다. 감사 서기는 사람을 바꾸자 하고, 가문의 한 어른은 익숙한 손을 잃지 말자 합니다.",
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "실제 미결 감사·유효 후임 필수. 능력/충성도가 다른 후보가 있어야 실제 인물 교체의 선택 의미가 생김."
+    },
+    "file": "assets/ck_evt_025.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다."
+  },
+  {
+    "id": "ck_evt_027",
+    "title": "왕의 징발을 기다리는 길목",
+    "place": "장터 진입로",
+    "time_season": "여름 정오",
+    "people": 7,
+    "period": "1348–1381",
+    "years": [
+      1356,
+      1358
+    ],
+    "composition": "wide road checkpoint congested with waiting loaded carts, Crown messenger reads blank royal scroll while residents point toward vacant building plots beyond",
+    "source_scene": "수레가 선 시장 길목에서 왕실 소식을 읽는 관리인과 집터를 가리키는 주민.",
+    "body": "왕실 조달에 관한 소식이 돌자 관리인은 창고와 길을 먼저 살피자 합니다. 장터 대표는 새 집터와 시장 쪽 일을 뒤로 미루지 말아 달라 합니다. 관리인은 방침은 두고 목재부터 사 둘 수도 있다고 덧붙입니다.",
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "agency 존재. 징발 문서는 실제 청구가 아닌 가공 소식; 본문이 물자 강제 차감을 뜻하지 않음. 현재 방침은 stability 또는 revenue로, 두 선택 모두 실제 전환일 때만 제시. 셋째 선택은 실제 거래 시장과 주문0일 때만. 가공 징발 의무·특정 물량 납품 효과 없음."
+    },
+    "file": "assets/ck_evt_027.jpg"
+  },
+  {
+    "id": "ck_evt_028",
+    "title": "병 소식 뒤의 빈 작업장",
+    "place": "직물 작업장",
+    "time_season": "겨울 흐린 낮",
+    "people": 1,
+    "period": "1348–1381",
+    "years": [
+      1361,
+      1363
+    ],
+    "composition": "solitary steward checks prominently LOCKED workshop door, abandoned loom visible through unglazed shutter; grain sack and well outside; no corpse, no plague sign",
+    "source_scene": "잠긴 직물 작업장 문 곁에서 곡물 자루와 우물 쪽을 돌아보는 청지기.",
+    "body": "다시 병이 돈다는 소식에 작업장 문을 여는 이들이 뜸해졌습니다. 청지기는 곡물과 물을 먼저 챙길지, 장인들의 일을 다시 북돋울지 묻습니다. 방침은 두고 곡창 사업에만 돈을 약속하는 안도 함께 올라왔습니다.",
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "편집 필터: 기존 엔진의 병 발생/소문 상태가 확인될 때만 연결. 새 전염병 이벤트는 만들지 않으며 사망률을 바꾸지 않음. 현재 방침은 growth 또는 defence로, 두 선택 모두 실제 전환일 때만 제시. 셋째 선택은 granary 적법 제안·해당 장려금0·설정 후총약속≤금고25%일 때만."
+    },
+    "file": "assets/ck_evt_028.jpg"
+  },
+  {
+    "id": "ck_evt_029",
+    "title": "미카엘마스에 갈 곳",
+    "place": "마구간",
+    "time_season": "여름 아침",
+    "people": 2,
+    "period": "1348–1381",
+    "years": [
+      1358,
+      1360
+    ],
+    "composition": "lord beside saddled horse weighing departure versus accounts; traveling cloak across rail, horse bridle in hand and large bundle of account rolls in steward's arms",
+    "source_scene": "여행 망토와 말고삐 옆에 놓인 묶은 회계 두루마리.",
+    "body": "멀리 맡긴 장원의 장부는 지난해보다 매끈합니다. 청지기는 장부를 받아 볼지, 영주가 직접 가서 확인할지 여정을 정해 달라 합니다. 셈은 밝아도 덜 충실한 후보라면, 교체가 나은지도 따져야 합니다.",
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "여름, 미카엘마스 전.",
+      "state": "실제 지도 밖 oversight. 보고서가 매끈하다는 묘사는 횡령을 확정하지 않음. 셋째 선택: 위임 상태, 능력높고 충성도낮으며 현직보다 기존 계산식의 숨김 비율이 높은 실제 후보, 현직 kept=errors=0, 관련 pending 감사없음. 후보없으면 두 안만."
+    },
+    "file": "assets/ck_evt_029.jpg"
+  },
+  {
+    "id": "ck_evt_030",
+    "title": "축융공이 내민 견본",
+    "place": "축융 물가",
+    "time_season": "봄 오후",
+    "people": 2,
+    "period": "1348–1381",
+    "years": [
+      1370,
+      1372
+    ],
+    "composition": "fuller wrings a wet wool sample beside flowing fulling channel and wooden tub, merchant weighs its promise against small grain pouch on bank, strong water-and-cloth action",
+    "source_scene": "젖은 모직물 견본과 곡물 주머니를 양쪽에 놓고 말하는 축융공과 상인.",
+    "body": "축융공이 두툼해진 모직물 견본을 내밉니다. 작업에 힘을 보태 달라는 청 옆에는 곡물 방앗간 일을 먼저 돕자는 곡물 상인의 이름도 있습니다. 두 사람은 작은 몫이라도 나눠 약속해 달라는 안을 보탭니다.",
+    "conditions": {
+      "land": "두 사업이 모두 적법한 후보지를 찾을 수 있는 도시. 수력 입지 조건은 기존 사업 판정 준수.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "agency와 실제 길드 제안 주체 존재. 해당 두 종류 장려금0, 두 사업 후보가 가능해야 함. 길드 없는 저장에서는 생략. 분할 안은 두 종류 기존 장려금0, 총32d 설정 후 다른 약속 포함금고25% 이하일 때만. 두 명령은 순차·비원자적이다."
+    },
+    "file": "assets/ck_evt_030.jpg"
+  },
+  {
+    "id": "ck_evt_031",
+    "title": "누구의 손에 장부를 맡길까",
+    "place": "두 일터가 보이는 둔덕",
+    "time_season": "겨울 아침",
+    "people": 4,
+    "period": "1348–1381",
+    "years": [
+      1366,
+      1368
+    ],
+    "composition": "lord seen from behind on low grassy rise considers TWO steward candidates below: one deftly sorts split tally sticks beside tenant grain measure, other waits attentively holding estate key; broad rear-view V composition with two contrasting work groups outdoors, no desk no documents, no game symbols",
+    "source_scene": "이름이 다른 두 회계 두루마리를 앞에 두고 손을 멈춘 청지기.",
+    "body": "가문 회의에 청지기 후보 둘의 장부가 올라왔습니다. 한 사람은 셈이 밝고, 다른 사람은 영주에게 더 충실하다는 평입니다.",
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "실제 동일 영지 후보 둘이 능력/충성도에서 교차 비교될 때만. 그런 인물이 없으면 카드 생략; 인물 생성 금지. 셋째 선택은 현재 위임·생존 현직·attention.load=capacity일 때만."
+    },
+    "file": "assets/ck_evt_031.jpg",
+    "final_revision": "Two substantial bound blank account ledgers dominate the slanted lectern; two tied account rolls remain behind; one hesitant hand.",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다."
+  },
+  {
+    "id": "ck_evt_032",
+    "title": "두 묶음의 증거",
+    "place": "경계석 밭",
+    "time_season": "가을 오후",
+    "people": 4,
+    "period": "1348–1381",
+    "years": [
+      1367,
+      1369
+    ],
+    "composition": "wide low view old boundary stone in open field, two groups have brought witnesses who point out remembered boundary landmarks, survey cord connects stone to hedge; cooperative testimony gathering not violent confrontation, distinct witness groups flank stone, no papers or desk",
+    "source_scene": "밀랍 인장이 달린 특허장과 법정 기록 두루마리가 저울 양쪽처럼 펼쳐진 책상.",
+    "body": "이웃 가문과의 소송에 보탤 문서가 두 묶음 들어왔습니다. 서기는 특허장 쪽이 힘이 세지만 법정 기록을 내는 편이 덜 든다 합니다.",
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "타 가문 상대의 실제 진행 중 청구·소송.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "동일 소송에서 charter와 court_roll이 모두 미추가일 때만. 두 자료가 실재한다는 것은 가공 시나리오 전제이지 문서 생성 효과 아님."
+    },
+    "file": "assets/ck_evt_032.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다."
+  },
+  {
+    "id": "ck_evt_033",
+    "title": "교회 궤짝에 맡긴 증서",
+    "place": "교회 성구실",
+    "time_season": "여름 아침",
+    "people": 3,
+    "period": "1348–1381",
+    "years": [
+      1371,
+      1373
+    ],
+    "composition": "clerk lifts long sealed deed out of small church oak chest, TWO waiting witnesses framed clearly beyond open pointed door, stone walls, no altar or relic",
+    "source_scene": "작은 목제 궤짝에서 밀랍 인장 달린 증서를 꺼내는 교회 서기와, 문 밖에서 기다리는 서로 다른 두 증인. 제단이나 성유물은 그리지 않는다.",
+    "body": "진행 중인 소송의 옛 증서가 교회 궤짝에 보관되어 있다는 말이 왔습니다. 교회 서기는 증서를 옮겨 적어 내거나, 내용을 기억하는 증인들을 부르자고 합니다.",
+    "conditions": {
+      "land": "실제 소송 대상 영지·권리조각. 교회가 소유한다는 조건은 없음.",
+      "population": "기존 도시·영지의 주민이 있음. 새 증인 인물 생성 없음.",
+      "rights": "실제 filed/evidence 단계 소송과 기존 청구권. deed와 witnesses가 아직 추가되지 않은 경우.",
+      "relations": "세력 관계 수치 문턱 없음. 주교의 호의를 직접 바꾸지 않음.",
+      "season": "계절 제한 없음. 현재 소송이 증거를 받는 단계일 것.",
+      "state": "교회에 맡긴 문서라는 보관 경위는 가공 편집 조건. 실제 열린 소송만 연결하며 새 교회 소유권이나 청구권 생성 없음."
+    },
+    "file": "assets/ck_evt_033.jpg"
+  },
+  {
+    "id": "ck_evt_034",
+    "title": "같은 청원이 또 올라오다",
+    "place": "장원 청원 대기문",
+    "time_season": "봄 낮",
+    "people": 3,
+    "period": "1348–1381",
+    "years": [
+      1372,
+      1374
+    ],
+    "composition": "returning tenant at outdoor manor wicket raises hand again while steward recognizes him; worn threshold and a coiled rope marking waiting queue, same tenant with patched distinctive red cap gestures back at disputed pasture outside; close profile through wicket, no papers or table",
+    "source_scene": "같은 표식이 붙은 두 청원 두루마리를 청지기 앞에 겹쳐 놓는 청지기.",
+    "body": "지난번과 같은 장원 청원이 다시 책상에 쌓였습니다. 청지기는 앞선 판결대로 처리하겠다 하지만, 소작인 대표는 영주가 다시 들어 주길 바랍니다. 영주는 금액의 크기와 권리·혼인 안건을 갈라 들을 수도 있습니다.",
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "직접 감독 아님. 실제 반복 offmap 청원 및 과거 lord 판정. 본 선택은 이미 온 청원을 즉시 판결하지 않고 다음 처리 규칙만 변경. 셋째 선택은 현 amountAtLeast가null이 아닐 때. 이미 열린 청원은 이 설정으로 판결되지 않는다."
+    },
+    "file": "assets/ck_evt_034.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다."
+  },
+  {
+    "id": "ck_evt_035",
+    "title": "바람 뒤에 찾는 목재",
+    "place": "밭 울타리",
+    "time_season": "겨울 바람 잦은 낮",
+    "people": 2,
+    "period": "1348–1381",
+    "years": [
+      1374,
+      1376
+    ],
+    "composition": "carpenter stretches cord along replacement timber beside sharply bent broken wattle fence and small handcart, open field dominating, practical repair action",
+    "source_scene": "굽은 울타리 곁에서 목재 길이를 재는 목수와 작은 수레.",
+    "body": "바람이 지난 뒤 목수가 쓸 만한 목재를 더 구해 달라 합니다. 상인은 시장이 설 때 조금씩 들일 수 있다며, 금고를 얼마나 남길지 먼저 정하라 합니다.",
+    "conditions": {
+      "land": "실제 거래 시장이 작동하는 영지. 촌락 창고 경로는 이 카드에서 제외.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "가을·겨울. 편집 필터.",
+      "state": "현 목재 주문 잔량0. 바람 피해는 가공 배경이고 실제 시설 손상은 만들지 않음. 실재 진행 사업이 목재 부족 상태이거나 실재 목재 필요 제안이 있을 때만. 주문없음의 기회비용을 표시."
+    },
+    "file": "assets/ck_evt_035.jpg"
+  },
+  {
+    "id": "ck_evt_037",
+    "title": "가문의 책상에 남은 장부",
+    "place": "영주관 계단과 여행 짐",
+    "time_season": "겨울 아침",
+    "people": 3,
+    "period": "1348–1381",
+    "years": [
+      1376,
+      1378
+    ],
+    "composition": "family elder at exterior manor steps faces lord preparing to mount horse, steward waits below with estate keys while sealed travel bags pile beside steps; steep diagonal from family at upper stair to waiting journey below, distant estate responsibility pulls lord away, no table or documents",
+    "source_scene": "가문의 큰 식탁 한쪽에 쌓인 장부와, 먼 영지로 보낼 봉인 꾸러미.",
+    "body": "가문의 한 어른은 먼 영지도 가주가 직접 살펴야 한다고 말합니다. 가문의 서기는 이미 펼쳐 둔 장부를 가리키며 청지기에게 맡길 몫도 정해야 한다고 아룁니다. 가주는 일을 맡긴 채 감사 때만 가서 확인하는 길도 저울질합니다.",
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "별도 권리 문턱 없음. 현재 권리 관계를 바꾸지 않는다.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "실제 위임 영지·생존 담당 및 attention.load=capacity. 현재 위임에서 직접으로 바꾸면 실제 과부하가 발생하는 저장에만 제시. 셋째 선택은auditMode=accounts·다음 미카엘마스 전·최근 방문감사 여력차감 미발생 때만."
+    },
+    "file": "assets/ck_evt_037.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다.",
+    "final_pose_note": "영주는 출발 직전 말에 올라 뒤돌아 가족을 바라본다."
+  },
+  {
+    "id": "ck_evt_038",
+    "title": "판결 뒤에도 닫힌 문",
+    "place": "곡창",
+    "time_season": "가을 황혼",
+    "people": 2,
+    "period": "1348–1381",
+    "years": [
+      1378,
+      1381
+    ],
+    "composition": "large CLOSED oak storehouse double doors dominate, official holds sealed judgment up toward refusal through narrow hatch, quiet frustration no armed conflict",
+    "source_scene": "봉인된 판결문을 든 관리인 앞에 닫힌 영지 창고 문, 무장 충돌은 보이지 않는다.",
+    "body": "소송의 판결은 나왔지만 다투던 권리의 점유는 아직 이웃에게 있습니다. 관리인은 집행비를 내고 절차를 밟을지, 당분간 금고를 지킬지 묻습니다.",
+    "conditions": {
+      "land": "별도 땅 종류 제한 없음.",
+      "population": "살아 있는 주민이 있는 영지. 인구 수치 문턱 없음.",
+      "rights": "실제 승소 뒤 enforcing 소송 및 남의 점유.",
+      "relations": "세력 관계 수치 문턱 없음.",
+      "season": "계절 제한 없음.",
+      "state": "실제 enforcing 소송만 사용. 판결·권리·소송을 새로 생성하지 않음."
+    },
+    "file": "assets/ck_evt_038.jpg"
+  },
+  {
+    "id": "ck_evt_042",
+    "title": "옆 시장으로 향하는 수레",
+    "place": "갈림길",
+    "time_season": "가을 아침",
+    "people": 3,
+    "period": "1382–1450",
+    "years": [
+      1385,
+      1389
+    ],
+    "composition": "high wide shot loaded cart visibly takes branch away from empty local market; clerk in foreground with open stall-tax ledger watches departing cart, competing town in distance",
+    "source_scene": "시장 길목의 갈림길에서 짐수레를 바라보며 좌판세 장부를 펼친 시장 서기.",
+    "body": "상인들이 이웃 시장을 들렀다 오는 수레가 늘었다고 전합니다. 좌판세를 낮춰 거래를 붙잡자는 말과, 장날 수입을 지키자는 말이 갈립니다. 서기는 세율을 그대로 두고 시장 사업에 장려금을 내거는 길도 있다고 덧붙였습니다.",
+    "conditions": {
+      "land": "편집 발동 필터: 시장이 있는 본거지 도시",
+      "population": "편집 발동 필터: 최소 인구 제한 없음",
+      "rights": "편집 발동 필터: 기존 시장 좌판세 징수 경로",
+      "relations": "편집 발동 필터: 관계 수치 하한 없음",
+      "season": "편집 발동 필터: 계절 제한 없음",
+      "state": "townAgency 존재; 기존 duesPermille 확인. 수레 이동 증가는 가공 보고이며 실제 교역량 조건은 아님. 현재 duesPermille=1000일 때만 표시하여 두 선택의 낮춤/높임을 보장한다."
+    },
+    "file": "assets/ck_evt_042.jpg"
+  },
+  {
+    "id": "ck_evt_046",
+    "title": "바람이 잦아든 뒤의 주문서",
+    "place": "목재 운반장",
+    "time_season": "가을 맑은 낮",
+    "people": 2,
+    "period": "1382–1450",
+    "years": [
+      1397,
+      1402
+    ],
+    "composition": "bailiff physically separates short delivered stack of beams from EMPTY marked storage bay for still-outstanding timber, blank order scroll unrolled, storm clouds recede",
+    "source_scene": "창고에 쌓인 들보 옆에서 이미 받은 분량과 남은 목재 주문을 가르는 집행관.",
+    "body": "거센 바람 뒤에 급히 낸 목재 주문이 아직 남아 있습니다. 집행관은 먼저 들여온 목재가 쌓여 있다며, 남은 주문을 줄여 현금을 아낄지 더 받아 둘지 살펴 달라고 합니다.",
+    "conditions": {
+      "land": "편집 발동 필터: 기존 목재 거래 거점과 금고 목재 비축이 있는 본거지",
+      "population": "편집 발동 필터: 최소 인구 제한 없음",
+      "rights": "편집 발동 필터: 추가 권리 제한 없음",
+      "relations": "편집 발동 필터: 관계 수치 하한 없음",
+      "season": "편집 발동 필터: 여름 또는 가을",
+      "state": "현재 timberOrder≥8, 기존 목재 보유량>0, 거래 거점 존재. 바람·수선 사정은 가공 보고이며 실제 폭풍이나 손상 효과를 새로 만들지 않음. 세 번째 선택은 실제 재고 부족 또는 후속 목재 수요가 있고 잔량8~60단일 때만 표시한다."
+    },
+    "file": "assets/ck_evt_046.jpg"
+  },
+  {
+    "id": "ck_evt_049",
+    "title": "천을 짜는 집, 천을 다듬는 물길",
+    "place": "직조공 집",
+    "time_season": "봄 낮",
+    "people": 2,
+    "period": "1382–1450",
+    "years": [
+      1406,
+      1411
+    ],
+    "composition": "two artisans demonstrate small timber handloom model and broad finished fulled cloth, fulling watercourse visible through large open workshop door, loom-versus-smooth-cloth foreground",
+    "source_scene": "직조틀 견본과 축융한 천을 나란히 놓고 공정의 차이를 설명하는 두 직인.",
+    "body": "직조공은 일을 늘릴 집을, 축융공은 천을 다듬을 시설을 두고 이야기합니다. 어느 쪽에 장려금을 내걸든 나머지 자금과 자리는 장인들이 마련해야 합니다.",
+    "conditions": {
+      "land": "편집 발동 필터: 직물 거래가 있는 시장도시",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 아래 대상 경로에 필요한 기존 권리·청구권만 요구",
+      "relations": "편집 발동 필터: 아래 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 청원·감사 기한 안; 별도 계절 제한 없음",
+      "state": "townAgency 존재; weaver_house와 fulling_mill 장려금 모두0. 실효 차이를 위해 해당 사업을 제안할 건축 주체가 있는 도시. 세 선택을 비교할 때 weaver_house·fulling_mill 기존 장려금이 모두 0이고 양쪽 자율 사업 후보가 존재해야 한다."
+    },
+    "file": "assets/ck_evt_049.jpg"
+  },
+  {
+    "id": "ck_evt_050",
+    "title": "교구의 살림을 먼저 봐 주십시오",
+    "place": "교구 회합 뜰",
+    "time_season": "여름 오후",
+    "people": 5,
+    "period": "1382–1450",
+    "years": [
+      1409,
+      1414
+    ],
+    "composition": "circle of parish households discussing everyday provision outdoors under church porch, grain basket, wooden water bucket and blank new-house petition on low table, one points toward homes",
+    "source_scene": "교구 회합의 탁자 위에 곡물 자루·물통·새집 청원서를 놓고 방침을 논하는 주민들.",
+    "body": "교구 대표가 곡물 보관과 물 긷는 일이 불편하다는 말을 모아 왔습니다. 집안 서기는 새집과 장터를 기다리는 사람들의 사정도 함께 전합니다.",
+    "conditions": {
+      "land": "편집 발동 필터: 교구와 주거가 있는 본거지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 아래 대상 경로에 필요한 기존 권리·청구권만 요구",
+      "relations": "편집 발동 필터: 아래 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 청원·감사 기한 안; 별도 계절 제한 없음",
+      "state": "townAgency 존재; 당장의 특정 건물 완공 청원이 아닌 영지 방침 자문. 실제 불편 수치를 발동 조건으로 가장하지 않는다."
+    },
+    "file": "assets/ck_evt_050.jpg"
+  },
+  {
+    "id": "ck_evt_051",
+    "title": "오래된 어업 청구권",
+    "place": "강의 어살",
+    "time_season": "겨울 오후",
+    "people": 3,
+    "period": "1382–1450",
+    "years": [
+      1412,
+      1417
+    ],
+    "composition": "fishermen and estate surveyors knee-deep at timber fish weir measuring stake positions with knotted rope, one points to opposite bank claimed by neighboring estate; low water-level view across wicker fish traps and pointed wooden stakes, no papers no table",
+    "source_scene": "영주관 문서함에서 어업 청구권 문서와 법정 접수비 돈주머니를 꺼낸 법률 서기.",
+    "body": "가문의 서기가 아직 해결되지 않은 이웃 영지의 어업 청구권을 꺼냈습니다. 문서가 남아 있어도 상대가 거두는 수입을 우리 몫으로 삼으려면 소송 절차를 밟아야 합니다.",
+    "conditions": {
+      "land": "편집 발동 필터: 이웃 영지의 기존 어업권",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 아래 대상 경로에 필요한 기존 권리·청구권만 요구",
+      "relations": "편집 발동 필터: 아래 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 청원·감사 기한 안; 별도 계절 제한 없음",
+      "state": "현재 estates.claims에 player 측 open fishery claim 존재, 타인 title. 시작 시 기본 청구권을 이미 처리했으면 표시하지 않으며 새 청구권을 만들지 않음. 접수·증서 결합 선택은 실제 lord 청구권이며 아직 deed가 없고 보존 증서를 낼 수 있다는 편집 전제에서만 제시."
+    },
+    "file": "assets/ck_evt_051.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다."
+  },
+  {
+    "id": "ck_evt_052",
+    "title": "빠진 돈과 청지기의 후원자",
+    "place": "곡창 수납 창구 밖",
+    "time_season": "가을 오후",
+    "people": 4,
+    "period": "1382–1450",
+    "years": [
+      1415,
+      1420
+    ],
+    "composition": "rear low tracking composition of patron guiding steward away, empty barrel and coins dominate foreground left, distant observers",
+    "source_scene": "가을 감사 탁자에서 맞지 않는 장부와 봉인된 돈궤를 바라보는 청지기·후임·후원자 대리인.",
+    "body": "감사에서 장부와 맞지 않는 돈이 드러났습니다. 청지기를 밀어 준 세력의 대리인은 처벌을 거두어 달라고 하고, 소작인들은 설명을 기다립니다.",
+    "conditions": {
+      "land": "편집 발동 필터: 청지기가 관리하는 보유 영지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "실제 pending audit, revealedKept>0, deadline 이내. 현직 청지기 connection이 유효 세력이며 후임은 같은 영지의 살아 있고 dismissed/dead가 아닌 실제 후보. loyalty<100."
+    },
+    "file": "assets/ck_evt_052.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다.",
+    "initial_v2_composition": "patron representative physically shields anxious steward with outstretched protective arm while lord and tenant wait beside empty collection barrel, spilled coins caught in cloth; tight standing triangle outside granary doorway, no table no documents, no violence",
+    "final_composition_ko": "후원자가 청지기를 감싸며 걸어가는 뒷모습. 전경 한쪽의 빈 수납 통과 흩어진 동전, 멀리 남은 영주 측 관찰자."
+  },
+  {
+    "id": "ck_evt_053",
+    "title": "할머니의 증서와 장원 법정 기록",
+    "place": "영주관 문서실",
+    "time_season": "봄 아침",
+    "people": 2,
+    "period": "1382–1450",
+    "years": [
+      1418,
+      1423
+    ],
+    "composition": "clerk and family descendant compare an aged family deed from grandmother’s time, kept in a worn heirloom cloth wrap, with long manor court roll; ancestral archive shelves, intimate hands",
+    "source_scene": "영주관 서고에서 친족의 봉인 증서와 두루마리 법정 기록을 펼쳐 비교하는 서기.",
+    "body": "가문의 서기가 할머니 때 작성한 증서와 장원 법정 기록을 나란히 펼쳤습니다. 진행 중인 권리 소송에 어느 쪽을 먼저 갖추어 낼지, 돈과 증거의 무게를 살펴 달라고 합니다.",
+    "conditions": {
+      "land": "편집 발동 필터: 본거지와 지도 밖 보유 영지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "실제 suit.stage=filed/evidence; deed·court_roll 모두 미제출. 해당 가공 증서와 법정 기록의 실재 확인을 편집 전제로 두며, 실제 생성되지 않은 친족·새 청구권은 만들지 않음."
+    },
+    "file": "assets/ck_evt_053.jpg"
+  },
+  {
+    "id": "ck_evt_057",
+    "title": "교회 앞 장날의 새 조건",
+    "place": "장터",
+    "time_season": "여름 아침",
+    "people": 5,
+    "period": "1382–1450",
+    "years": [
+      1430,
+      1436
+    ],
+    "composition": "church stone wall forms strong backdrop to functioning market, merchant and parish representative jointly inspect large charter seal beside stall-dues scroll; stalls active beyond, no empty market",
+    "source_scene": "교회 담장 곁 기존 장터에서 특허 봉인과 시장 전체의 좌판세 조건을 읽는 상인·교구 대표.",
+    "body": "교회 앞에서 거래하는 상인들이 자기 관리인 아래 장사를 계속할 특허를 청합니다. 교구 대표는 특허의 일회 납부금보다, 앞으로 누가 얼마의 좌판세를 거둘지가 오래 남을 일이라고 말합니다.",
+    "conditions": {
+      "land": "편집 발동 필터: 교회 가까운 기존 장터; 새 시장 타일 생성하지 않음",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: market_charter 부재·현재 좌판세 권리배율1000‰",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "신규 generic PetitionDef등록 필요. petitioner=merchants; 기존 politics.rights에 market_charter 없음, stallFeePermille=1000, 해당 특허 수요가 살아 있음. 이미 특허를 준 진행에는 표시하지 않음. townAgency.duesPermille=1000일 때만 표시. 정치 권리의 현재 최저 배율도1000‰."
+    },
+    "file": "assets/ck_evt_057.jpg"
+  },
+  {
+    "id": "ck_evt_058",
+    "title": "이웃 가문이 중개한 일회 납부",
+    "place": "시장 아케이드 길",
+    "time_season": "가을 저녁",
+    "people": 2,
+    "period": "1382–1450",
+    "years": [
+      1434,
+      1440
+    ],
+    "composition": "extreme high oblique closeup hands-only single settlement purse and refusing palm among cloth bales and cart wheel, no faces",
+    "source_scene": "이웃 가문 중개인의 외투 옆, 한 번의 합의금 돈주머니와 상인들의 응답서를 놓은 협의 탁자.",
+    "body": "이웃 가문의 대리인이 우리 상인들과 장날 마찰을 정리할 일회 납부안을 가져왔습니다. 상인들은 지금 돈을 내라는 요구를 거두어 주면 더 기꺼이 협조하겠다고 합니다.",
+    "conditions": {
+      "land": "편집 발동 필터: 이웃 영지와 거래하는 본거지 시장",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "신규 generic PetitionDef등록 필요. petitioner=merchants. 이웃 가문은 가공 중개자이며 실제 응답 상대·공통관계는merchant_house_1. 지속 세금·새 권리·이웃 외교 변화 없음."
+    },
+    "file": "assets/ck_evt_058.jpg",
+    "revision": "v2 대상과 행동 중심 재제작",
+    "source_scene_usage": "원문 보존 참고. 현재 그림은 사용자 v2 대상 중심 재작업 지시를 우선한다.",
+    "initial_v2_composition": "neighbor-family mediator stands BETWEEN lord receiver and merchants beside stopped loaded handcart, lifts ONE settlement purse which merchant gently declines with open palm; eye-level street depth with awnings, no table no documents",
+    "final_composition_ko": "수레의 천 꾸러미 사이 돈주머니 하나와 거절하는 손만 극근접. 얼굴이나 대화 군상을 넣지 않는다.",
+    "people_note": "얼굴·전신 없이 두 사람의 손만 보임"
+  },
+  {
+    "id": "ck_evt_059",
+    "title": "누구의 손에 장부를 맡길 것인가",
+    "place": "영지 정문 앞",
+    "time_season": "봄 아침",
+    "people": 4,
+    "period": "1382–1450",
+    "years": [
+      1439,
+      1445
+    ],
+    "composition": "village reeve introduces TWO actual steward candidates to seated lord outside estate entrance, conspicuous large KEY and offmap ledger between them, full standing people unlike solitary-hand decision 031",
+    "source_scene": "지도 밖 영지의 장부와 열쇠를 앞에 두고 실제 청지기 후보를 소개하는 마을 대표.",
+    "body": "청지기 후보 둘이 영지의 장부를 맡겠다고 나섰습니다. 일을 잘 알지만 영주에게 덜 충실한 후보와, 능숙하지는 않으나 충성도가 높은 후보입니다. 직접 장부를 살피는 길도 남아 있습니다.",
+    "conditions": {
+      "land": "편집 발동 필터: 지도 밖 보유 영지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "지도 밖 보유 영지 oversight 및 살아 있는 유효 후보. 현재 직접 감독이며 직접 감독 영지 수가 관리 여력 근처이거나 초과. 후보의 실제 능력·충성·성향 표시. 세 번째 선택은 다른 living 후보가 실제 존재하고 첫 후보보다 ability 낮음·loyalty 높음이라는 교차 장단점이 있을 때만. 성향·연결 세력도 실측 표시하며 후보 능력을 새로 생성하지 않음."
+    },
+    "file": "assets/ck_evt_059.jpg",
+    "final_revision": "Both candidates extend open hands to receive responsibility; lord touches estate key on ledger; reeve introduces pair."
+  }
+]

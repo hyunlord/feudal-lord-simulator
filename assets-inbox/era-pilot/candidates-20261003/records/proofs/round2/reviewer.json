@@ -1,0 +1,38 @@
+{
+  "reviewer": "era_blind_review2",
+  "method": "지정된 scene-A.png부터 scene-F.png까지만 view_image로 각 1회 확인. 문서, 코드, 메타데이터, 파일시간, 다른 디렉토리 열람 없음. 확대하지 않고 제시 크기로 판단.",
+  "forced_choice": true,
+  "overall": "세 연도 사이의 시대 차이를 신뢰성 있게 판독하지 못했다. 모두 비슷한 목골조·회벽·붉은 지붕 주택 반복이며, 사람과 거리에서도 독립적으로 연도를 고정할 단서가 부족하다. 답은 선택지 강제 선택에 따른 저확신 추측이다.",
+  "results": [
+    {
+      "file": "scene-A.png", "year": 1420, "confidence": "low", "era_readability_at_presented_size": "어려움",
+      "visible_evidence": "붉은 지붕, 밝은 벽과 짙은 목골조, 여러 층짜리 주택이 반복된다. 일부 지붕에 작은 회색 돌출물이 보여 굴뚝으로 추측했다.",
+      "reasoning": "굴뚝처럼 보이는 추가 요소 때문에 상대적으로 늦은 시기를 추측했으나, 그 요소만으로 1420을 특정할 수 없다. 작은 제시 크기에서 세부 판독이 특히 어렵다."
+    },
+    {
+      "file": "scene-B.png", "year": 1380, "confidence": "low", "era_readability_at_presented_size": "어려움",
+      "visible_evidence": "목골조와 밝은 벽, 붉은 지붕, 2층 및 더 높은 주택이 보인다. A에서 보였던 지붕 위 회색 돌출물은 뚜렷하지 않다.",
+      "reasoning": "1380은 강제 선택에 따른 추측이다. 1300과 구별할 화면 근거가 충분하지 않으며, F와도 시기 차이를 확실히 읽지 못했다."
+    },
+    {
+      "file": "scene-C.png", "year": 1380, "confidence": "low", "era_readability_at_presented_size": "어려움",
+      "visible_evidence": "밝은 회벽과 짙은 기둥·가새, 붉은 기와 같은 지붕 결, 다층 주택의 어두운 창과 문이 보인다. 큰 제시 크기로 구조는 보이지만 명확한 시대 표지는 없다.",
+      "reasoning": "1380은 강제 선택에 따른 추측이다. E와의 차이가 연대 차이라는 확신이 없고, 1300 또는 1420도 화면만으로 배제할 수 없다."
+    },
+    {
+      "file": "scene-D.png", "year": 1420, "confidence": "low", "era_readability_at_presented_size": "어려움",
+      "visible_evidence": "다층 목골조 주택과 붉은 지붕 위의 작은 회색 굴뚝 같은 돌출물이 보인다. C와 E보다 지붕의 추가 요소가 눈에 띈다.",
+      "reasoning": "지붕 돌출물을 상대적으로 늦은 시기의 단서로 추측했다. 다만 이는 1420을 확정하거나 1380을 배제할 증거가 아니며, 건물 몸체의 시기 차이는 판독하지 못했다."
+    },
+    {
+      "file": "scene-E.png", "year": 1300, "confidence": "low", "era_readability_at_presented_size": "어려움",
+      "visible_evidence": "반복되는 목골조·밝은 벽·붉은 지붕 주택, 흙빛 거리, 작은 보행자가 보인다. D의 지붕 돌출물처럼 눈에 띄는 추가 단서가 없다.",
+      "reasoning": "1300은 강제 선택에 따른 추측이다. 추가 요소가 덜 보인다는 사실은 이른 연도의 증거가 아니며, C와의 1300/1380 구분을 독립적으로 정당화할 수 없다."
+    },
+    {
+      "file": "scene-F.png", "year": 1300, "confidence": "low", "era_readability_at_presented_size": "어려움",
+      "visible_evidence": "붉은 지붕과 목골조 주택이 줄지어 있고 작은 사람이 보인다. A의 일부 지붕 돌출물은 뚜렷하게 보이지 않는다.",
+      "reasoning": "1300은 강제 선택에 따른 추측이다. B와의 시대 차이를 읽지 못했으며, 작은 제시 크기에서 창호나 가새의 차이를 연대 판정에 사용할 수 없었다."
+    }
+  ]
+}

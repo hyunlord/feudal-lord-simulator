@@ -1,0 +1,46 @@
+{
+  "reviewer": "events_visual_qa",
+  "review_type": "independent_labeled_visual_review_not_blind",
+  "score": 82,
+  "verdict": "partial",
+  "category_match": "partial",
+  "differences": [
+    "All 56 event-season-zoom detail crops inspected; seven full scene images also inspected at native canvas size.",
+    "Transparent edges and palette integrate well; no rectangular opaque matte or checkerboard was observed.",
+    "Zoom 0.6 reduces adults to target 11.44 pixels; wedding, pilgrimage, baptism and royal envoy semantics remain weak in full city view.",
+    "Levy wagon fence collision was corrected and all four revised views passed ground-placement review.",
+    "Final famine revision uses a shortened existing queue next to the original church-side relief table; all four final views inspected, foreground roof overlap resolved.",
+    "Reused archer and judgment crowd repetition remains noticeable; seasonal reused actors are not independently winter-reskinned.",
+    "Final funeral and pilgrimage revisions re-inspected in all eight variants: funeral bier and dark attendants now occupy clear west inner road; pilgrimage adds trailing clergy outside west gate. Ground placement passes; low-zoom semantic ambiguity remains."
+  ],
+  "suggestions": [
+    "Preserve corrected levy and famine ground placement and check depth sorting again on real integration.",
+    "At runtime disperse actor animation phases and add destination reaction and movement duration to distinguish ceremonies.",
+    "Do not claim zoom 0.6 clarity or runtime occlusion/animation integration from this static compositing review."
+  ],
+  "reasoning": "Final placement corrections resolved the visible fence and roof overlap. Palette and transparency are compatible, but low-zoom event semantics remain weak for small ceremonies. This qualitative score is not recognition accuracy.",
+  "inspected_manifest": "proofs/placements.json",
+  "reviewed_variants": 56,
+  "blind_material_read": false,
+  "runtime_integration_verified": false,
+  "placement_verdict": "pass",
+  "readability_verdict": "partial",
+  "reinspected_final_variants": [
+    "levy-summer-z1.0",
+    "levy-summer-z0.6",
+    "levy-winter-z1.0",
+    "levy-winter-z0.6",
+    "famine-summer-z1.0",
+    "famine-summer-z0.6",
+    "famine-winter-z1.0",
+    "famine-winter-z0.6",
+    "funeral-summer-z1.0",
+    "funeral-summer-z0.6",
+    "funeral-winter-z1.0",
+    "funeral-winter-z0.6",
+    "pilgrimage-summer-z1.0",
+    "pilgrimage-summer-z0.6",
+    "pilgrimage-winter-z1.0",
+    "pilgrimage-winter-z0.6"
+  ]
+}

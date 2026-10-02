@@ -1,0 +1,21 @@
+{
+  "id": "front_butcher_a",
+  "trade": "butcher",
+  "variant": "a",
+  "refs": [
+    "/Users/rexxa/fls-astra-trades/assets-inbox/wave37/rework-v2/assets/trade_carpenter_a.png"
+  ],
+  "prompt": "Use case: historical-scene. Create ONE transparent candidate house-front occupation marker sprite, not a sheet. Supplied image is STYLE and CAMERA reference only, depicting an existing freestanding carpenter marker; replace its subject completely with: A short self-standing oak A-frame meat rail carrying one recognizable butcher's joint of meat, with a broad iron cleaver resting in a low chopping block. Muted cured red meat, no blood or gore. Southern England 1300–1450, hand-painted prerender game art with warm subdued oak, earthy colors and soft painterly edges, no thick cartoon outlines. Ground-standing independent objects only, never a house or wall attachment. Orthographic 2:1 isometric ground axes ±26.565 degrees, upright verticals, camera looking down enough to see top surfaces. Light consistently from screen upper-left; upper/left-facing surfaces light, right-facing surfaces gently darker; weak contact AO only, no long cast shadow. The marker is adult waist-height to at most adult chest-height, realistic tool and prop proportions, not giant signage. Single clear silhouette with two or three large occupation cues; avoid tiny clutter. Isolated on genuinely transparent background, no opaque backdrop, terrain slab, rectangular patch, paving, border, text, letters, numerals, human, animal, building or modern object. Wide 4:3 canvas; complete full object inside central 78% width and 78% height, all legs intact and fully visible with generous clear padding. This is variant a, independently composed, never horizontally mirrored. Final downstream sprite128×96, so favor bold readable shapes over details.",
+  "originalpath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd95-7ebe-7a11-9ad0-4ea6a31b17f1/exec-d1226176-5d2b-4fb3-afb5-fea8a0776da3.png",
+  "output_hint": "Path recovered from actual imagegen output after local copy path parsing error.",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed",
+  "seed": "not exposed",
+  "status": "candidate",
+  "transparent_background": true,
+  "raw_path": "/Users/rexxa/fls-astra-trades-delivery/working/raw/front_butcher_a.png",
+  "raw_sha256": "b2c57f2249cb809465c891e5894027b8e8e1617d8dec24b7aa504d8813b478ea",
+  "reference_sha256": {
+    "/Users/rexxa/fls-astra-trades/assets-inbox/wave37/rework-v2/assets/trade_carpenter_a.png": "577c323fb03b2deefc99256fe9b669a8ee6e09f962058aa45e226e1d6f5fd053"
+  }
+}

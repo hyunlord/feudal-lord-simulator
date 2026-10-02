@@ -1,0 +1,20 @@
+{
+  "blind_one": {
+    "correct": 16,
+    "total": 16
+  },
+  "blind_two": {
+    "correct": 16,
+    "total": 16
+  },
+  "quality": {
+    "score": 78,
+    "verdict": "fail"
+  },
+  "issues": [
+    "double downsample blur",
+    "foreground roof occlusion",
+    "native palisade double top",
+    "corner-only winter snow"
+  ]
+}

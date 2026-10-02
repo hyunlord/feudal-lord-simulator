@@ -1,0 +1,249 @@
+{
+  "trials": 16,
+  "correct": 16,
+  "accuracy": 1.0,
+  "target": 0.7,
+  "passed": false,
+  "results": [
+    {
+      "trial": "01",
+      "sample": "chalk_downs-seed17.jpg",
+      "assembled": "A",
+      "sha256A": "5fdf9ff7c8c143f62a8b1605658a1bf863cff1e0ee1ec3c0500f7d7679753e67",
+      "sha256B": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "metadataSha256": "8ce8cb83b1bc79cae6316cfaa61e317a1f888942ae768c24eeecee791823ca50",
+      "answer": {
+        "trial": "01",
+        "assembled": "A",
+        "confidence": 0.99,
+        "reason": "A has repeated identical field clusters and ridge shapes, uniformly scattered shrub stamps, and rigid angular roads; B has continuously integrated terrain and drainage."
+      },
+      "correct": true
+    },
+    {
+      "trial": "02",
+      "sample": "chalk_downs-seed241.jpg",
+      "assembled": "B",
+      "sha256A": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "sha256B": "8178d36eaecb68ae4547dc2b142b0b68a50763df53beaad09eb97febb5215054",
+      "metadataSha256": "feb1404f15012ac2fd2e4d3b232cfe1d014b8d64ce443d79e2ed2d3c36001213",
+      "answer": {
+        "trial": "02",
+        "assembled": "B",
+        "confidence": 0.99,
+        "reason": "Repeated identical field clusters and mountain ridge silhouettes, isolated terrain patches with pale outlines, and angular roads over a uniform repeating ground texture indicate kit assembly."
+      },
+      "correct": true
+    },
+    {
+      "trial": "03",
+      "sample": "chalk_downs-seed83.jpg",
+      "assembled": "B",
+      "sha256A": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "sha256B": "4d9850534e96070914d08108785245fbb75c726b2daba2beb6ca32426c38fc52",
+      "metadataSha256": "efe4f55b9359f94d7ae1e105e94c3bb32e7d3307c0da15a6923978aceb0ee792",
+      "answer": {
+        "trial": "03",
+        "assembled": "B",
+        "confidence": 0.99,
+        "reason": "Repeated isolated hill and field clusters have pale cutout-like borders; angular road segments and uniformly scattered vegetation contrast with A's continuous terrain and river integration."
+      },
+      "correct": true
+    },
+    {
+      "trial": "04",
+      "sample": "coastal_port-seed17.jpg",
+      "assembled": "A",
+      "sha256A": "45ffabdbca803058570d3ebb9a6d96df9838af2787c4c80324d5070ec54ddf39",
+      "sha256B": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "metadataSha256": "9645b583b86a3c0250d2167872d695399c9d1bd746d40cd531d473e082fe6553",
+      "answer": {
+        "trial": "04",
+        "assembled": "A",
+        "confidence": 0.99,
+        "reason": "A repeats identical isolated field clusters and shrub patterns, with abruptly clipped terrain and an implausibly uniform river crossing the coastal water; B integrates fields, hills, roads, and branching waterways continuously."
+      },
+      "correct": true
+    },
+    {
+      "trial": "05",
+      "sample": "coastal_port-seed241.jpg",
+      "assembled": "B",
+      "sha256A": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "sha256B": "d33790e15f1e99679a46c564ce117153ea0efe2a42a0aa3d98028d4eb9553484",
+      "metadataSha256": "b51835791935032ee916cd0d6aa1ddb67cd7828a97e621fe053629c74fb36a9e",
+      "answer": {
+        "trial": "05",
+        "assembled": "B",
+        "confidence": 0.99,
+        "reason": "Repeated isolated field and forest motifs with visible pale cutout rims, angular road joins, and a uniform river crossing the coastline indicate assembled kit elements."
+      },
+      "correct": true
+    },
+    {
+      "trial": "06",
+      "sample": "coastal_port-seed83.jpg",
+      "assembled": "A",
+      "sha256A": "ae215a5dc442d3b3e3f7debea6e8df2fcd15480ff618a6863ecedac3ba912a4a",
+      "sha256B": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "metadataSha256": "81792366c0dd40fcecb62f2bf1a828722969f3216cdb43c025fa37cd298bd4ec",
+      "answer": {
+        "trial": "06",
+        "assembled": "A",
+        "confidence": 0.99,
+        "reason": "A shows repeated isolated woodland and field motifs, hard cutout-like terrain edges, angular road segments, and an abrupt flat water strip; B has integrated flowing rivers, fields, and hill contours."
+      },
+      "correct": true
+    },
+    {
+      "trial": "07",
+      "sample": "fen_drainage-seed17.jpg",
+      "assembled": "B",
+      "sha256A": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "sha256B": "d91377badc6b9e34bc952ee51259db96086af4941c3a94fc4415ab11fc8aba0b",
+      "metadataSha256": "4a21e65053058cb6256e71f01d99736365b1bc594ea719fd94746d7e56842eea",
+      "answer": {
+        "trial": "07",
+        "assembled": "B",
+        "confidence": 0.99,
+        "reason": "Repeated isolated field and pond motifs, outlined terrain patches, and sparse angular road connections visibly resemble placed kit pieces."
+      },
+      "correct": true
+    },
+    {
+      "trial": "08",
+      "sample": "fen_drainage-seed241.jpg",
+      "assembled": "A",
+      "sha256A": "7892928a11363f329986f317c59bef24f6e83c9233a2847580e1f99e4d9be170",
+      "sha256B": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "metadataSha256": "2e8f370bfed68e0d8e2c74bbefbbfe1ef73e80923f1263549651067afd355989",
+      "answer": {
+        "trial": "08",
+        "assembled": "A",
+        "confidence": 0.99,
+        "reason": "A repeats identical isolated field and pond shapes with visible pale cutout edges; B has continuous terrain, varied fields, and integrated river valleys."
+      },
+      "correct": true
+    },
+    {
+      "trial": "09",
+      "sample": "fen_drainage-seed83.jpg",
+      "assembled": "A",
+      "sha256A": "b8249c6e7d8c9a59346e985806698133f927d3ae2d617eab508c8120104b94f8",
+      "sha256B": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "metadataSha256": "2812f85e6a04f08038c7123371e1db66951d1cfa56d4db23eb73451ba1c8c4ca",
+      "answer": {
+        "trial": "09",
+        "assembled": "A",
+        "confidence": 0.99,
+        "reason": "A repeats identical isolated pond and field shapes with pale cutout borders, sparse disconnected terrain clusters, and angular road segments; B has continuous integrated terrain and waterways."
+      },
+      "correct": true
+    },
+    {
+      "trial": "10",
+      "sample": "forest_edge-seed17.jpg",
+      "assembled": "B",
+      "sha256A": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "sha256B": "19c7430bd7bc4f1616e8feba3e40b62f4b3a5c63553b0d4f84086726cdd0cfa7",
+      "metadataSha256": "7d232f78ea4cfdc58c02328618648a32fe8edaeda731cf75f8595252c004dc93",
+      "answer": {
+        "trial": "10",
+        "assembled": "B",
+        "confidence": 0.99,
+        "reason": "Repeated identical enclosed field motifs and forest clusters have bright cutout-like perimeters; straight roads and uniform river contrast with A's integrated organic terrain."
+      },
+      "correct": true
+    },
+    {
+      "trial": "11",
+      "sample": "forest_edge-seed241.jpg",
+      "assembled": "B",
+      "sha256A": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "sha256B": "aff509e1cd3b4f57814ac6d0fd624049172b7413e2b8eb99cd138627deb79c05",
+      "metadataSha256": "0409387bca614a2e8eaa397fa2c734a92b52fbf7fde607eed67c6c381cee8b93",
+      "answer": {
+        "trial": "11",
+        "assembled": "B",
+        "confidence": 0.99,
+        "reason": "B repeats identical small field clusters and visibly bounded forest and hill patches; its roads use angular joins and its river stays nearly uniform in width."
+      },
+      "correct": true
+    },
+    {
+      "trial": "12",
+      "sample": "forest_edge-seed83.jpg",
+      "assembled": "B",
+      "sha256A": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "sha256B": "a65ab12b305caf09a42141c303ef799166dd0b1c5ca3e0c264bae8f99fc7368d",
+      "metadataSha256": "7b90fd0dfcd2197e56a3f06abf9917ca986f5a7c0b7a4e08943a66f20f56c7d5",
+      "answer": {
+        "trial": "12",
+        "assembled": "B",
+        "confidence": 0.99,
+        "reason": "B repeats identical striped field patches and forest clearings, with abrupt patch outlines and angular road segments; A has continuous varied terrain and waterways."
+      },
+      "correct": true
+    },
+    {
+      "trial": "13",
+      "sample": "neighbor-18.jpg",
+      "assembled": "A",
+      "sha256A": "43fed7fda1e653d534add675c50201c25d906d769ec6b9b4f4a0a4625d2c0de1",
+      "sha256B": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "metadataSha256": "6281d6695ecb505ff3cffa2607c24f459b84d634af64b261f4b049adca2ab8e9",
+      "answer": {
+        "trial": "13",
+        "assembled": "A",
+        "confidence": 0.99,
+        "reason": "Isolated terrain patches have sharp pale cutout boundaries, repeated field motifs, and several awkward overlapping bridge pieces at the river junction; B has continuous integrated terrain."
+      },
+      "correct": true
+    },
+    {
+      "trial": "14",
+      "sample": "open_field-seed17.jpg",
+      "assembled": "A",
+      "sha256A": "88e17213c704e3d5d062a0e9130f2fe47d56ed00eeb8bd0813f6f064c21f2c28",
+      "sha256B": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "metadataSha256": "68add642b10c5fd649c16b78c3a15f684cb7378d84ad3fc71356e7ac0e291b9d",
+      "answer": {
+        "trial": "14",
+        "assembled": "A",
+        "confidence": 0.99,
+        "reason": "A repeats identical isolated field and hill shapes with visible pale patch edges, sparse disconnected placement, and angular roads; B has continuous integrated terrain and organic field boundaries."
+      },
+      "correct": true
+    },
+    {
+      "trial": "15",
+      "sample": "open_field-seed241.jpg",
+      "assembled": "B",
+      "sha256A": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "sha256B": "9017dd3b6b79df2ae7bc7c23ae383c8c67d96d4d041726324382ea11e87ff062",
+      "metadataSha256": "8a500644b0400041949e964c884a1bb234dbf9630d4a0b4dc8ed0041b0626aa8",
+      "answer": {
+        "trial": "15",
+        "assembled": "B",
+        "confidence": 0.99,
+        "reason": "B repeats identical isolated field and forest shapes with pale cutout edges, while A has continuous terrain and integrated waterways."
+      },
+      "correct": true
+    },
+    {
+      "trial": "16",
+      "sample": "open_field-seed83.jpg",
+      "assembled": "A",
+      "sha256A": "809af5b3a4648dea18a4a4a90bf3465e22595b665002e2c86c834ea69692a17e",
+      "sha256B": "efb6d032628b81759049768314af6a92cd4f0ef5803b1303efebbe5d8a27efcd",
+      "metadataSha256": "62f7a616a68db73ef19485f17141b5d37bc0e133a1e0a43b3ce6c285abac1968",
+      "answer": {
+        "trial": "16",
+        "assembled": "A",
+        "confidence": 0.99,
+        "reason": "Repeated identical isolated field patches, sharply bounded forest cutouts, and angular roads over uniform ground indicate kit assembly."
+      },
+      "correct": true
+    }
+  ]
+}

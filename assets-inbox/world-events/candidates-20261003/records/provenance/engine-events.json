@@ -1,0 +1,436 @@
+{
+  "schemaVersion": 1,
+  "repoHead": "c2460918ecb13cdd6475f25f3e4809b3a352b01d",
+  "scope": "read-only code/design inspection; no runtime trigger validation",
+  "scheduler": {
+    "source": "src/content/eventConfig.ts:66",
+    "definitions": [
+      {
+        "id": "first_fire",
+        "kind": "fire",
+        "source": "src/content/eventConfig.ts:86",
+        "schedule": "summer1302±1",
+        "visibleCategory": "fire"
+      },
+      {
+        "id": "fire",
+        "kind": "fire",
+        "source": "src/content/eventConfig.ts:95",
+        "schedule": "later dry summers chance150permille",
+        "visibleCategory": "fire"
+      },
+      {
+        "id": "dearth_rehearsal",
+        "kind": "dearth",
+        "source": "src/content/eventConfig.ts:104",
+        "schedule": "summer1303±1 after first fire",
+        "visibleCategory": "famine"
+      },
+      {
+        "id": "great_famine",
+        "kind": "dearth",
+        "source": "src/content/eventConfig.ts:121",
+        "schedule": "famine era1315..1320,2or3harvests",
+        "visibleCategory": "famine"
+      }
+    ],
+    "weather": "weather is activeEvents flag, not EVENT_DEFS record; normal/wet/dry/cold"
+  },
+  "chapterSequences": {
+    "war": {
+      "id": "war_1337",
+      "steps": [
+        "messenger",
+        "wool_levy",
+        "commission",
+        "subsidy",
+        "beacon",
+        "raid",
+        "refugees",
+        "recovery"
+      ],
+      "source": "src/engine/war.types.ts:53"
+    },
+    "plague": {
+      "id": "black_death_1348",
+      "steps": [
+        "rumour",
+        "arrival",
+        "wage_demand",
+        "abandoned_fields",
+        "ordinance",
+        "resettlement",
+        "second",
+        "end"
+      ],
+      "source": "src/engine/plague.types.ts:52"
+    },
+    "reorganisation": {
+      "id": "reorganisation_1362",
+      "steps": [
+        "wage_competition",
+        "textile_street",
+        "alehouse_boom",
+        "petitions_surge",
+        "guild_demand",
+        "cloth_or_grain",
+        "overlord_warning",
+        "poll_tax",
+        "rebellion_rumour",
+        "autonomy_request",
+        "end"
+      ],
+      "source": "src/engine/reorganisation.types.ts:69"
+    },
+    "legacy": {
+      "id": "legacy_1400",
+      "steps": [
+        "mayor_demand",
+        "royal_tax_envoy",
+        "succession",
+        "city_seal",
+        "charter_sealing",
+        "family_departure",
+        "legacy_record",
+        "last_market"
+      ],
+      "interludes": [
+        "staple",
+        "guild_dispute",
+        "market_fire",
+        "church_rebuilding",
+        "deposition"
+      ],
+      "source": "src/content/legacyConfig.ts:30"
+    }
+  },
+  "events": [
+    {
+      "id": "marriage",
+      "label": "혼인 행렬",
+      "engineIdentifiers": [
+        "marriage.bride_arrived",
+        "marriage.contracted",
+        "person.married"
+      ],
+      "status": "implemented_state_new_scene",
+      "sources": [
+        "src/engine/marriage.ts:467",
+        "src/engine/history.ts:1039",
+        "src/engine/history.ts:399"
+      ],
+      "condition": "신부 거주 이전이 확정된 bride_arrived에 한 번. 계약 체결만으로 도착을 그리지 않음.",
+      "presentationProposal": {
+        "where": "성문/다리 → 장원 앞 도로",
+        "who": "신부·친족 4, 악사 2, 수레꾼 1, 짐수레 1",
+        "headcount": 7,
+        "duration": "20–30초 1회; 도착 뒤 짐수레 최대 1게임일",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "funeral",
+      "label": "장례 행렬",
+      "engineIdentifiers": [
+        "person.died",
+        "estate.person_died",
+        "marriage.father_died"
+      ],
+      "status": "implemented_death_existing_plague_procession_new_named_rite",
+      "sources": [
+        "src/engine/history.ts:417",
+        "src/engine/history.ts:1084",
+        "src/render/plagueWorldProps.ts:209"
+      ],
+      "condition": "사망은 구현. 역병 장례 행렬은 이미 구현. 개별 인물 장례·조종 연출은 새 제안. 원격 영지 사망을 본도시에 자동 표시하지 않음.",
+      "presentationProposal": {
+        "where": "사망 가구 → 교회 묘지; 영주는 장원 출발",
+        "who": "운구인 4, 사제 1, 유족 3; 덮은 관 1",
+        "headcount": 8,
+        "duration": "20–30초 1회; 무덤은 영속 소품",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "baptism",
+      "label": "세례",
+      "engineIdentifiers": [
+        "person.born",
+        "marriage.child_born"
+      ],
+      "status": "birth_implemented_baptism_trigger_proposed",
+      "sources": [
+        "src/engine/history.ts:395",
+        "src/engine/marriage.ts:470"
+      ],
+      "condition": "출생으로 파생할 제안. 세례 완료라는 엔진 사건은 없음.",
+      "presentationProposal": {
+        "where": "교회/예배당 문 앞 빈 마당",
+        "who": "아기 안은 부모 1, 부모 1, 대부모 2, 사제 1",
+        "headcount": 5,
+        "duration": "15–20초 1회; 출생 뒤 교회 접근 가능 시",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "market",
+      "label": "장날",
+      "engineIdentifiers": [
+        "isMarketDay",
+        "legacy.last_market"
+      ],
+      "status": "implemented_presentation_calendar",
+      "sources": [
+        "src/render/presentation/residentTrips.ts:46",
+        "src/render/presentation/residentTrips.ts:85",
+        "src/render/worldSigns.ts:93",
+        "src/engine/history.ts:766"
+      ],
+      "condition": "현재 매30일 셋째 날 장날, 시장 방문자·빈 좌판 표식 구현. eventSchedule ID는 아님.",
+      "presentationProposal": {
+        "where": "시장 길가 여유 공간; 도로 중앙 비움",
+        "who": "상인 3, 구매자 6, 가축몰이 1, 가축 2",
+        "headcount": 10,
+        "duration": "장날의 시각 루프; 기존 market/visit quota와 전체40 상한 공유",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "fair",
+      "label": "정기시",
+      "engineIdentifiers": [
+        "wall_or_market"
+      ],
+      "status": "economic_choice_implemented_festival_calendar_proposed",
+      "sources": [
+        "src/content/warConfig.ts:88",
+        "src/content/warConfig.ts:19"
+      ],
+      "condition": "시장 선택의 수입 효과가 fair로 설명됨. 천막·곡예·별도 연례 정기시 일정은 신규 제안.",
+      "presentationProposal": {
+        "where": "시장 확장 공터, 성문 진입로 옆",
+        "who": "천막 2, 곡예사 2, 악사 1, 관객 8",
+        "headcount": 11,
+        "duration": "제안: 연1회 2게임일; 승인·시장 접근 조건",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "famine",
+      "label": "대기근·구휼",
+      "engineIdentifiers": [
+        "dearth_rehearsal",
+        "great_famine",
+        "relief",
+        "price_control",
+        "laissez_faire",
+        "speculation"
+      ],
+      "status": "implemented",
+      "sources": [
+        "src/content/eventConfig.ts:104",
+        "src/content/eventConfig.ts:121",
+        "src/engine/eventSchedule.ts:338",
+        "src/engine/politics.ts:87"
+      ],
+      "condition": "구휼 선택 때만 식량 배급 줄. 방관·투기는 빈 시장/굶주림 무리로 분리.",
+      "presentationProposal": {
+        "where": "교회 앞 배급대와 창고→교회 경로; 빈 시장",
+        "who": "대기 주민 8, 배급자 2, 곡물 수레꾼 1",
+        "headcount": 11,
+        "duration": "도착~dearthEndTick; 줄은 8–12초 순환, 회복 시 감소",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "plague",
+      "label": "흑사병",
+      "engineIdentifiers": [
+        "black_death_1348",
+        "arrival",
+        "second"
+      ],
+      "status": "implemented_existing_partial_world",
+      "sources": [
+        "src/content/plagueConfig.ts:11",
+        "src/engine/plague.ts:513",
+        "src/engine/plague.ts:553",
+        "src/render/plagueWorldProps.ts:13"
+      ],
+      "condition": "기존 닫힌집·무덤·운구 재사용. 문 표식은 이번 사용자 명시 지시 우선; 실제 벽 패치 대신 문 앞 땅 위 표식 팻말 제안. 시신은 완전히 덮음.",
+      "presentationProposal": {
+        "where": "피해 가구 문 앞 / 외곽 매장로 / 닫힌 시장",
+        "who": "수레꾼 2, 사제 1; 덮은 시신 수레1, 화로1, 표식1",
+        "headcount": 3,
+        "duration": "plagueStage arrival 기간; 도로 화로는 길 가장자리",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "fire",
+      "label": "화재",
+      "engineIdentifiers": [
+        "first_fire",
+        "fire",
+        "burningHouses"
+      ],
+      "status": "implemented_existing_partial_world",
+      "sources": [
+        "src/content/eventConfig.ts:86",
+        "src/content/eventConfig.ts:95",
+        "src/content/eventConfig.ts:152",
+        "src/engine/events.ts:228"
+      ],
+      "condition": "기존 화염·연기·탄집 재사용. 새 독립 물동이 줄. 엔진 burnTicks150/급수60을 연출 기준으로 사용.",
+      "presentationProposal": {
+        "where": "우물 → 불난집의 안전한 도로 측면",
+        "who": "물동이 운반자 6, 지휘자 1",
+        "headcount": 7,
+        "duration": "불타는 상태 동안; 진화 후 5초 퇴장",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "flood",
+      "label": "홍수",
+      "engineIdentifiers": [
+        "weatherAt",
+        "wetSummerHarvestPermille"
+      ],
+      "status": "wet_weather_loss_implemented_flood_extent_proposed",
+      "sources": [
+        "src/engine/eventSchedule.ts:130",
+        "src/engine/eventSchedule.ts:269"
+      ],
+      "condition": "습한 여름 수확손실과 지형 floodPermille는 구현. 범람 polygon/수위·별도 flood 사건은 찾지 못함. 침수 범위는 새 연출 입력 필요.",
+      "presentationProposal": {
+        "where": "하천 저지 밭 경계; 도로측 모래주머니",
+        "who": "제방 작업자 4, 빈 수레 1, 자루 묶음",
+        "headcount": 4,
+        "duration": "wet 상태+향후 범람영역 유효 때; 마른 뒤 잔재 1게임일",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "levy",
+      "label": "징집·원정 출발",
+      "engineIdentifiers": [
+        "war_1337",
+        "commission",
+        "levy_response"
+      ],
+      "status": "implemented",
+      "sources": [
+        "src/content/warConfig.ts:12",
+        "src/engine/war.types.ts:53",
+        "src/engine/war.ts:300",
+        "src/engine/war.ts:524"
+      ],
+      "condition": "levy_response accept일 때 conscripts 생성. 면제료 선택은 출정 인원으로 그리지 않음.",
+      "presentationProposal": {
+        "where": "장원/성문 앞 공터 → 외부 도로",
+        "who": "궁수 6, 관리1, 짐마차꾼1, 짐마차1",
+        "headcount": 8,
+        "duration": "청원 응답 뒤20–30초 집결·출발 1회; 인원은 conscripts 값 이하",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "revolt",
+      "label": "1381 반란 군중",
+      "engineIdentifiers": [
+        "reorganisation_1362",
+        "rebellion_rumour",
+        "reorg.rebellion_rumour"
+      ],
+      "status": "implemented_conditional_existing_chase",
+      "sources": [
+        "src/content/reorganisationConfig.ts:10",
+        "src/engine/reorganisation.ts:451",
+        "src/engine/history.ts:702",
+        "src/render/reorgWorldProps.ts:201"
+      ],
+      "condition": "pressure>=threshold의 outcome chased에 군중. quiet면 소수 토론만, 횃불 군중 금지. 기존 세금징수인 추격 재사용.",
+      "presentationProposal": {
+        "where": "시장 → 장원 접근로, 출구 남김",
+        "who": "주민 10; 횃불2·곤봉3, 비폭력 몸짓",
+        "headcount": 10,
+        "duration": "해당 계절 첫30초; 해결 후 해산; 잔혹 묘사 없음",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "pilgrimage",
+      "label": "순례",
+      "engineIdentifiers": [
+        "person.pilgrimage",
+        "person.returned"
+      ],
+      "status": "implemented_condition_new_group_scene",
+      "sources": [
+        "src/engine/persons.ts:824",
+        "src/engine/persons.ts:847",
+        "src/engine/history.ts:423"
+      ],
+      "condition": "18–60세 성인의 연초1% pilgrim 조건,2계절. 실제 출발 인물과 연결; 군중은 동행 표현.",
+      "presentationProposal": {
+        "where": "교회 → 성문 도로",
+        "who": "순례자 5, 지팡이·순례 가방",
+        "headcount": 5,
+        "duration": "조건 진입/종료 각15–20초; 부재2계절 동안 도시 재등장 금지",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "envoy",
+      "label": "국왕 사신",
+      "engineIdentifiers": [
+        "war_1337:messenger",
+        "legacy.royal_tax_envoy",
+        "royal_tax"
+      ],
+      "status": "implemented",
+      "sources": [
+        "src/engine/war.types.ts:53",
+        "src/engine/legacy.ts:470",
+        "src/engine/history.ts:733"
+      ],
+      "condition": "전쟁 전령과 후반 국왕 세금사신은 구분된 실제 상태. 기존 wk_royal_messenger 재사용.",
+      "presentationProposal": {
+        "where": "성문 → 장원 앞; 청원 대기 장소",
+        "who": "사신1, 호위2, 서기1",
+        "headcount": 4,
+        "duration": "도착20초; royal_tax 미응답 동안 대기",
+        "notEngineContract": true
+      }
+    },
+    {
+      "id": "judgment",
+      "label": "판결 집행",
+      "engineIdentifiers": [
+        "estate.suit_judged",
+        "estate.possession_enforced"
+      ],
+      "status": "implemented_title_and_possession_separate",
+      "sources": [
+        "src/engine/estateSuits.ts:120",
+        "src/engine/estateSuits.ts:142",
+        "src/engine/history.ts:1070"
+      ],
+      "condition": "판결은 권원만, enforcePossession은 점유. 집행 성공을 재판 승소와 혼동하지 않음. 사형/체벌 사건 아님.",
+      "presentationProposal": {
+        "where": "장원 법정 앞 공터, 해당 영지에서만",
+        "who": "집행관1, 서기1, 당사자2, 증인·구경꾼4",
+        "headcount": 8,
+        "duration": "판결20초; 집행 성공 별도10초. 원격 영지는 카드/지역 화면에 연결",
+        "notEngineContract": true
+      }
+    }
+  ],
+  "graft": {
+    "initialAsk": "no index/no hits",
+    "build": "local ignored cache generated; no source edit",
+    "callsWithSavings": 4,
+    "tokensSaved": 19233
+  }
+}

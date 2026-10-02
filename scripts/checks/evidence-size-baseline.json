@@ -1,0 +1,7 @@
+{
+  "about": "Evidence folders already over 3 MB (3 × 2^20 bytes) when the check came in (decision RR10, trunk 1d99cec4): they may not grow past this size. Only shrink this list.",
+  "folders": {
+    "docs/verification/asset-audit": 6648148,
+    "docs/verification/ui9b": 3435450
+  }
+}

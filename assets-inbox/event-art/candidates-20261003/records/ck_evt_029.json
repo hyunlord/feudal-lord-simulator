@@ -1,0 +1,27 @@
+{
+  "id": "ck_evt_029",
+  "prompt": "Use case historical-scene. Create ONE finished full-bleed horizontal 16:9 960x540 event illustration for Charter & Kin. References are STYLE ONLY: match their warm earthy painterly narrative realism, tactile wool, pale linen, weathered oak, restrained natural colors, soft brush texture and lifelike faces. Invent the specified distinct scene, never reproduce reference composition. Southern England medieval market town. Absolutely NO writing, letters, numbers, symbols resembling writing, captions, borders, logos, watermarks: all paper surfaces blank; wax seals may plain round. No Tudor black-and-white timber, ordinary house chimneys, glass storefronts, modern objects, theatrical fantasy, gore. Natural hands/anatomy. One coherent light direction. Year1359 SUMMER MORNING before Michaelmas, green leaves visible outside. Exactly TWO people within open-sided oak stable: gentry lord in fitted muted burgundy wool cotehardie stands at head of saddled brown horse, holding leather bridle, pausing before departure. Beside him steward holds a large tied bundle of blank parchment account rolls in both arms, offering it toward lord, clearly proposing reading accounts instead of travel. A heavy traveling cloak drapes over foreground stall rail. No desk, no keys, no treasure. Medium-wide side view: horse center left and tack/luggage show journey, lord and steward right in quiet discussion. Warm raking morning light across straw floor and weathered oak; natural hands. Complete compelling scene about where to go for the estate audit, visually horse/bridle versus bulky account rolls.",
+  "reference_paths": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-55da3de7-5f6e-4ec5-893c-3d6d704c1595.png",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-55da3de7-5f6e-4ec5-893c-3d6d704c1595.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "tool": "builtin image_gen",
+  "revision_prompt": null,
+  "initial_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-55da3de7-5f6e-4ec5-893c-3d6d704c1595.png",
+  "status": "candidate",
+  "raw_sha256": "430513469100c25f9233475a9234abf1fc9f9461431340b24eb5e642318da2f5",
+  "final_sha256": "51cfc104a987cf51e2ade9897a62552cdcf05a5ebadea366ad5433d029fe7564",
+  "final_file": "assets/ck_evt_029.jpg",
+  "final_size": [
+    960,
+    540
+  ],
+  "processing": "Pillow ImageOps.fit Lanczos to960x540; RGB JPEG quality85 optimize; no painting",
+  "visual_qa": "viewed full generated image; blank documents and primary scene action checked",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}
