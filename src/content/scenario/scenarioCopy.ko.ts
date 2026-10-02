@@ -5,6 +5,8 @@ export const SCENARIO_COPY = {
   scenarios: {
     campaign_market_town: "시장도시 목표",
     sandbox: "샌드박스",
+    // LM-E8 (LS-1): the lord's vertical slice.
+    lord_slice: "영주의 스무 해",
   },
   modeButtons: {
     campaign_market_town: "목표형으로 시작",

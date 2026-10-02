@@ -1,0 +1,601 @@
+{
+ "seed": 2,
+ "start": {
+  "seed": 2,
+  "startYear": 1300,
+  "goalYears": {
+   "min": 12,
+   "max": 20
+  },
+  "end": {
+   "years": 20,
+   "afterSecondEstateYears": 5
+  },
+  "home": {
+   "estateId": "estate-home",
+   "name": "home",
+   "annualValue": 0,
+   "pieces": [
+    {
+     "id": "home:land_rent",
+     "kind": "land_rent",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:manor_court",
+     "kind": "manor_court",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:market",
+     "kind": "market",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:tolls",
+     "kind": "tolls",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:mill",
+     "kind": "mill",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:fishery",
+     "kind": "fishery",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:advowson",
+     "kind": "advowson",
+     "possessor": "lord"
+    }
+   ]
+  },
+  "town": {
+   "population": 12,
+   "houses": 4,
+   "treasury": 60
+  },
+  "neighbours": [
+   {
+    "estateId": "estate-neighbour-1",
+    "name": "de Corbelle",
+    "manors": 3,
+    "annualValue": 6400,
+    "debt": 0,
+    "house": "de Corbelle",
+    "rank": "gentry",
+    "lordId": null,
+    "lordAge": null,
+    "daughtersOnly": false
+   },
+   {
+    "estateId": "estate-neighbour-2",
+    "name": "de Lisonde",
+    "manors": 2,
+    "annualValue": 4000,
+    "debt": 800,
+    "house": "de Lisonde",
+    "rank": "gentry",
+    "lordId": null,
+    "lordAge": null,
+    "daughtersOnly": false
+   },
+   {
+    "estateId": "estate-neighbour-3",
+    "name": "de Corbelle",
+    "manors": 2,
+    "annualValue": 4000,
+    "debt": 6400,
+    "house": "de Corbelle",
+    "rank": "gentry",
+    "lordId": "est-000001",
+    "lordAge": 63,
+    "daughtersOnly": true
+   }
+  ],
+  "factions": [
+   {
+    "id": "overlord",
+    "kind": "overlord",
+    "relation": 20
+   },
+   {
+    "id": "bishop",
+    "kind": "church",
+    "relation": 10
+   },
+   {
+    "id": "merchant_house_1",
+    "kind": "merchant_house",
+    "relation": 0
+   },
+   {
+    "id": "merchant_house_2",
+    "kind": "merchant_house",
+    "relation": 0
+   },
+   {
+    "id": "town",
+    "kind": "town",
+    "relation": 10
+   }
+  ]
+ },
+ "outcome": {
+  "ended": true,
+  "reason": "second_estate",
+  "endTick": 45104,
+  "summary": {
+   "year": 1320,
+   "population": 528,
+   "houses": 24,
+   "treasury": 46961,
+   "estatesHeld": [
+    "estate-home",
+    "estate-neighbour-3"
+   ],
+   "secondEstateYear": 1306,
+   "projects": 113,
+   "projectsByLord": 15,
+   "decisions": {
+    "decision.market_dues": 2,
+    "decision.project_subsidy": 5,
+    "decision.petition_response": 1,
+    "decision.estate_policy": 3,
+    "decision.bundle": 7
+   },
+   "promises": {
+    "kept": 10,
+    "broken": 0,
+    "open": 0
+   },
+   "marriage": "inherited"
+  }
+ },
+ "endedAt": {
+  "tick": 45104,
+  "year": 1311,
+  "reason": "second_estate"
+ },
+ "table": [
+  {
+   "year": 1300,
+   "decisions": 3,
+   "asked": 0,
+   "own": 3,
+   "byKind": {
+    "suit": 2,
+    "dues": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1301,
+   "decisions": 0,
+   "asked": 0,
+   "own": 0,
+   "byKind": {},
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1302,
+   "decisions": 0,
+   "asked": 0,
+   "own": 0,
+   "byKind": {},
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1303,
+   "decisions": 0,
+   "asked": 0,
+   "own": 0,
+   "byKind": {},
+   "pauses": 1,
+   "stops": 1,
+   "pausesByReason": {
+    "major_death": 1
+   }
+  },
+  {
+   "year": 1304,
+   "decisions": 0,
+   "asked": 0,
+   "own": 0,
+   "byKind": {},
+   "pauses": 1,
+   "stops": 1,
+   "pausesByReason": {
+    "judgment": 1
+   }
+  },
+  {
+   "year": 1305,
+   "decisions": 1,
+   "asked": 0,
+   "own": 1,
+   "byKind": {
+    "subsidy": 1
+   },
+   "pauses": 1,
+   "stops": 1,
+   "pausesByReason": {
+    "major_death": 1
+   }
+  },
+  {
+   "year": 1306,
+   "decisions": 21,
+   "asked": 3,
+   "own": 18,
+   "byKind": {
+    "marriage_offer": 1,
+    "subsidy": 3,
+    "counter": 1,
+    "promise": 10,
+    "oversight": 4,
+    "estate_petition": 1,
+    "audit": 1
+   },
+   "pauses": 5,
+   "stops": 3,
+   "pausesByReason": {
+    "counter_offer": 1,
+    "estate_gained": 1,
+    "major_death": 2,
+    "inheritance": 1
+   }
+  },
+  {
+   "year": 1307,
+   "decisions": 3,
+   "asked": 3,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 1,
+    "petition": 1,
+    "audit": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1308,
+   "decisions": 2,
+   "asked": 1,
+   "own": 1,
+   "byKind": {
+    "policy": 1,
+    "estate_petition": 1
+   },
+   "pauses": 1,
+   "stops": 1,
+   "pausesByReason": {
+    "rights_petition": 1
+   }
+  },
+  {
+   "year": 1309,
+   "decisions": 2,
+   "asked": 2,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 2
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1310,
+   "decisions": 2,
+   "asked": 1,
+   "own": 1,
+   "byKind": {
+    "estate_petition": 1,
+    "dues": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1311,
+   "decisions": 2,
+   "asked": 2,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 2
+   },
+   "pauses": 1,
+   "stops": 1,
+   "pausesByReason": {
+    "rights_petition": 1
+   }
+  },
+  {
+   "year": 1312,
+   "decisions": 3,
+   "asked": 1,
+   "own": 2,
+   "byKind": {
+    "subsidy": 2,
+    "estate_petition": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1313,
+   "decisions": 3,
+   "asked": 3,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 3
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1314,
+   "decisions": 1,
+   "asked": 1,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1315,
+   "decisions": 2,
+   "asked": 1,
+   "own": 1,
+   "byKind": {
+    "policy": 1,
+    "estate_petition": 1
+   },
+   "pauses": 1,
+   "stops": 1,
+   "pausesByReason": {
+    "rights_petition": 1
+   }
+  },
+  {
+   "year": 1316,
+   "decisions": 3,
+   "asked": 3,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 3
+   },
+   "pauses": 1,
+   "stops": 1,
+   "pausesByReason": {
+    "rights_petition": 1
+   }
+  },
+  {
+   "year": 1317,
+   "decisions": 3,
+   "asked": 3,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 3
+   },
+   "pauses": 1,
+   "stops": 1,
+   "pausesByReason": {
+    "rights_petition": 1
+   }
+  },
+  {
+   "year": 1318,
+   "decisions": 5,
+   "asked": 4,
+   "own": 1,
+   "byKind": {
+    "estate_petition": 4,
+    "policy": 1
+   },
+   "pauses": 2,
+   "stops": 2,
+   "pausesByReason": {
+    "rights_petition": 2
+   }
+  },
+  {
+   "year": 1319,
+   "decisions": 4,
+   "asked": 4,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 3,
+    "audit": 1
+   },
+   "pauses": 2,
+   "stops": 2,
+   "pausesByReason": {
+    "major_death": 1,
+    "rights_petition": 1
+   }
+  }
+ ],
+ "pauses": [
+  {
+   "reason": "major_death",
+   "tick": 12000,
+   "recordId": "h-000571",
+   "template": "estate.person_died",
+   "year": 1303,
+   "line": "토머스 드 헤로넬(이웃 영주)이 66세로 세상을 떠났다"
+  },
+  {
+   "reason": "judgment",
+   "tick": 16000,
+   "recordId": "h-000976",
+   "template": "estate.suit_judged",
+   "year": 1304,
+   "line": "판결이 났다: 원고가 졌다"
+  },
+  {
+   "reason": "major_death",
+   "tick": 21001,
+   "recordId": "h-001362",
+   "template": "faction.leader_succeeded",
+   "year": 1305,
+   "line": "도시 공동체의 큰 윌리엄 아트밀이 세상을 떠나 조앤 제퍼슨이 무리를 이끈다"
+  },
+  {
+   "reason": "counter_offer",
+   "tick": 24025,
+   "recordId": "h-001907",
+   "template": "negotiation.countered",
+   "year": 1306,
+   "line": "이웃 영주가 조건을 고쳐 되물었다 — 채무 인수·상속 뒤 빚 갚기"
+  },
+  {
+   "reason": "estate_gained",
+   "tick": 25104,
+   "recordId": "h-002095",
+   "template": "estate.title_changed",
+   "year": 1306,
+   "line": "영지 전체의 권원이 이웃 영주에게서 영주에게 넘어갔다"
+  },
+  {
+   "reason": "major_death",
+   "tick": 25104,
+   "recordId": "h-002102",
+   "template": "marriage.father_died",
+   "year": 1306,
+   "line": "이웃 영주가 죽었다"
+  },
+  {
+   "reason": "inheritance",
+   "tick": 25104,
+   "recordId": "h-002103",
+   "template": "marriage.inherited",
+   "year": 1306,
+   "line": "아내를 통해 이웃 영지를 물려받았다 — 이제 우리 영지다"
+  },
+  {
+   "reason": "major_death",
+   "tick": 27001,
+   "recordId": "h-002407",
+   "template": "faction.leader_succeeded",
+   "year": 1306,
+   "line": "베이커 상인 가문의 로버트 아트필드가 세상을 떠나 윌리엄 베이커가 무리를 이끈다"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 35000,
+   "recordId": "h-003469",
+   "template": "stewardship.escalated",
+   "year": 1308,
+   "line": "청지기 윌리엄 타운센드가 상인의 특허 청원을 영주에게 올렸다 — 권리 변경"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 44000,
+   "recordId": "h-004063",
+   "template": "stewardship.escalated",
+   "year": 1311,
+   "line": "청지기 윌리엄 타운센드가 상인의 특허 청원을 영주에게 올렸다 — 권리 변경"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 63000,
+   "recordId": "h-005190",
+   "template": "stewardship.escalated",
+   "year": 1315,
+   "line": "청지기 윌리엄 타운센드가 상인의 특허 청원을 영주에게 올렸다 — 권리 변경"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 66000,
+   "recordId": "h-005368",
+   "template": "stewardship.escalated",
+   "year": 1316,
+   "line": "청지기 윌리엄 타운센드가 상인의 특허 청원을 영주에게 올렸다 — 권리 변경"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 68000,
+   "recordId": "h-005480",
+   "template": "stewardship.escalated",
+   "year": 1317,
+   "line": "청지기 윌리엄 타운센드가 상인의 특허 청원을 영주에게 올렸다 — 권리 변경"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 73000,
+   "recordId": "h-005758",
+   "template": "stewardship.escalated",
+   "year": 1318,
+   "line": "청지기 윌리엄 타운센드가 상인의 특허 청원을 영주에게 올렸다 — 권리 변경"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 74000,
+   "recordId": "h-005800",
+   "template": "stewardship.escalated",
+   "year": 1318,
+   "line": "청지기 윌리엄 타운센드가 상인의 특허 청원을 영주에게 올렸다 — 권리 변경"
+  },
+  {
+   "reason": "major_death",
+   "tick": 76001,
+   "recordId": "h-005947",
+   "template": "faction.leader_succeeded",
+   "year": 1319,
+   "line": "농민 공동체의 작은 헨리 아트밀이 세상을 떠나 아버지 윌리엄 리처드슨이 무리를 이끈다"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 78000,
+   "recordId": "h-006028",
+   "template": "stewardship.escalated",
+   "year": 1319,
+   "line": "청지기 윌리엄 타운센드가 상인의 특허 청원을 영주에게 올렸다 — 권리 변경"
+  },
+  {
+   "reason": "estate_crisis",
+   "tick": 80000,
+   "recordId": "h-006080",
+   "template": "event.arrived",
+   "year": 1320,
+   "line": "대기근이 닥쳤다"
+  }
+ ],
+ "features": [
+  "audit",
+  "counter",
+  "dues",
+  "estate_petition",
+  "marriage_offer",
+  "oversight",
+  "petition",
+  "policy",
+  "promise",
+  "subsidy",
+  "suit"
+ ],
+ "finalYear": 1320,
+ "tick": 80000,
+ "seconds": 214,
+ "stateSha256": "f3566aed0f9b1503bc5957a410cabe7f38a34738fe1d5c5b0739259e5206379c"
+}

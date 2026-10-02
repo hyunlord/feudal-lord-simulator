@@ -49,12 +49,19 @@ if [ -n "$ranges" ]; then
       exit 1
     fi
     # The per-commit trend (docs/verification/perf-trend): the pushed trunk commit is measured on the DGX by a detached
-    # remote run in the background — the push never waits for it. FLS_TREND_OFF=1 skips it.
-    if [ "${FLS_TREND_OFF:-}" != 1 ] && [ -z "${FLS_REMOTE:-}" ] && [ -f "$top/scripts/perf/trendRun.ts" ]; then
-      mkdir -p "$top/.remote-runs"
-      ( cd "$top" && FLS_REMOTE_LABEL=infra-TREND FLS_REMOTE_DETACH=1 nohup scripts/remote/run.sh --task trend --commits "$local_sha" \
-          >> "$top/.remote-runs/trend-push.log" 2>&1 & ) || true
-      echo "pre-push: the trend of ${local_sha%"${local_sha#????????}"} is measured on the DGX in the background (.remote-runs/trend-push.log)" >&2
+    # remote run — the push never waits for it. scripts/remote/trendLaunch.mjs starts it in a new session with stdin
+    # closed and its output in .remote-runs/trend-push.log, so nothing of the push's is held (before 2026-10-02 the
+    # background run kept the push's descriptors and the push did not end); the push only checks that it started.
+    # The log ends each launch with "시작됨 (<run>)" or "시작 실패 — <reason>". FLS_TREND_OFF=1 skips it.
+    short=${local_sha%"${local_sha#????????}"}
+    if [ "${FLS_TREND_OFF:-}" != 1 ] && [ -z "${FLS_REMOTE:-}" ] && [ -f "$top/scripts/perf/trendRun.ts" ] && [ ! -f "$top/scripts/remote/trendLaunch.mjs" ]; then
+      echo "pre-push: the trend of $short is not started — this checkout has no scripts/remote/trendLaunch.mjs (merge the trunk)" >&2
+    elif [ "${FLS_TREND_OFF:-}" != 1 ] && [ -z "${FLS_REMOTE:-}" ] && [ -f "$top/scripts/perf/trendRun.ts" ]; then
+      if pid=$(node "$top/scripts/remote/trendLaunch.mjs" "$local_sha" "$top/.remote-runs/trend-push.log" </dev/null 2>/dev/null) && [ -n "$pid" ]; then
+        echo "pre-push: the trend of $short is being started on the DGX in the background (pid $pid; .remote-runs/trend-push.log says 시작됨 or 시작 실패)" >&2
+      else
+        echo "pre-push: 시작 실패 — the trend of $short could not be started (.remote-runs/trend-push.log); the push goes on" >&2
+      fi
     fi
   done
 fi

@@ -4,7 +4,7 @@ import { WAR_SEQUENCE_ID } from "../warConfig";
 import { PLAGUE_SEQUENCE_ID } from "../plagueConfig";
 import { REORGANISATION_SEQUENCE_ID } from "../reorganisationConfig";
 import { LEGACY_SEQUENCE_ID } from "../legacyConfig";
-import { CORE_ARCHETYPES, CORE_SCENARIOS, DEFAULT_SCENARIO_ID } from "./coreScenarios";
+import { CORE_ARCHETYPES, CORE_SCENARIOS, DEFAULT_SCENARIO_ID, LORD_SLICE_SCENARIO } from "./coreScenarios";
 import { CONDITION_KINDS, STAGE_ORDER, type ArchetypeDef, type Condition, type ConditionSet, type ScenarioDef, type StageDef, type StageId } from "./types";
 
 const ID_PATTERN = /^[a-z][a-z0-9_]*:[a-z][a-z0-9_]*$/;
@@ -163,6 +163,8 @@ function coreRegistry(): ScenarioRegistry {
   const registry = new ScenarioRegistry();
   for (const archetype of CORE_ARCHETYPES) registry.registerArchetype(archetype);
   for (const scenario of CORE_SCENARIOS) registry.register(scenario);
+  // LM-E8 (LS-1): the lord's slice, registered after the core two (not on the start screen's list).
+  registry.register(LORD_SLICE_SCENARIO);
   return registry;
 }
 

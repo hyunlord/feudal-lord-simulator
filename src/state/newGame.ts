@@ -5,6 +5,7 @@
  * (`DEFAULT_GAME_STATE`), any other seed its own river, woods and fields with the village on its nearest legal site; a
  * new game draws its seed at random (`randomNewGameSeed`), shows it and can be started again from it.
  */
+import { LORD_SLICE_SCENARIO_ID } from "../content/scenario/coreScenarios";
 import { SCENARIOS, archetypeById } from "../content/scenario/registry";
 import type { ArchetypeDef } from "../content/scenario/types";
 import type { GameState } from "../engine/engine.types";
@@ -51,8 +52,10 @@ export function mapArchetypes(): readonly ArchetypeDef[] {
 /** MA-6: the opening state of a new game, or null for an unknown scenario, land or seed. */
 export function newGameState(options: NewGameOptions): GameState | null {
   const state = openingState(options);
-  // LM-E1 (TA-1): lord mode's town starts with its actors (the campaign's default stays sandbox).
-  return state === null || options.mode !== "lord" ? state : { ...state, agency: initialAgency() };
+  // LM-E1 (TA-1): lord mode's town starts with its actors (the campaign's default stays sandbox). LM-E8 (LS-1): the lord's
+  // slice is always lord mode.
+  const lord = options.mode === "lord" || options.scenarioId === LORD_SLICE_SCENARIO_ID;
+  return state === null || !lord ? state : { ...state, agency: initialAgency() };
 }
 
 function openingState(options: NewGameOptions): GameState | null {
