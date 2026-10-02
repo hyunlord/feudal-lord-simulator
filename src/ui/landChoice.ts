@@ -1,58 +1,112 @@
 // LAND-UI (LU-D7, spec docs/design/map-archetypes.md MA-6): the new-game screen's land choice — which land and which
-// of its maps (seed 1–5) a new game starts on. The riverside town is today's map and has seed 1 only (newGame.ts), so
-// its seed is fixed; it is the default, and choosing it with seed 1 keeps today's start exactly (no command for the
-// campaign, the tutorial gets the current state).
+// of its maps a new game starts on. NAT-4 (LU-D7 verdict, LM-E5 / LG-1): the map number is any whole number 1–999,999
+// (NEW_GAME_SEED_MAX) on every land, the riverside town too; the welcome opens on the riverside with a random number
+// (randomNewGameSeed), shown, which the player can type over or draw again. A number with no game (newGameState → null:
+// on the riverside, a map with no legal site for the village) cannot be started. The riverside on map 1 is today's map
+// exactly: it sends no command for the campaign (the tutorial gets the current state), as before.
 import { DEFAULT_SCENARIO_ID } from "../content/scenario/coreScenarios";
-import { SCENARIOS, archetypeById } from "../content/scenario/registry";
-import { mapArchetypes } from "../state/newGame";
+import { SCENARIOS } from "../content/scenario/registry";
+import { NEW_GAME_SEED_MAX, mapArchetypes, newGameState, randomNewGameSeed } from "../state/newGame";
 
 export interface LandChoice {
   readonly archetypeId: string;
-  readonly seed: number;
+  /** The map number, or null while the typed text is not a number from 1 to 999,999. */
+  readonly seed: number | null;
 }
 
-/** The seeds the picker offers (MA-7 ran the bot on 1–3; createGrowthOpening caps at 5). */
 export const LAND_SEED_MIN = 1;
-export const LAND_SEED_MAX = 5;
+export const LAND_SEED_MAX = NEW_GAME_SEED_MAX;
+/** The field's width in digits (999,999). */
+export const LAND_SEED_DIGITS = String(NEW_GAME_SEED_MAX).length;
+/**
+ * The page query that pins the welcome's first map number (`?new-game-seed=<n>`). Under the proof query
+ * (`phase10-proof=1`, every scripted scene and replay) the first number is 1: a script that dismisses the welcome keeps
+ * the state it injected, and a replay starts today's map.
+ */
+export const PIN_SEED_QUERY = "new-game-seed";
 
 export type LandStartCommand = { readonly type: "start_new_game"; readonly scenarioId: string; readonly archetypeId?: string; readonly seed?: number };
+export type LandSeedProblem = "range" | "unbuildable";
 
-/** The default campaign's own land (the riverside town), seed 1: the picker's first and default choice. */
+/** The default campaign's own land (the riverside town). */
+export function defaultLandId(): string {
+  return SCENARIOS.get(DEFAULT_SCENARIO_ID)?.archetype ?? mapArchetypes()[0]!.id;
+}
+
+/** The riverside town on map 1: today's game. */
 export function defaultLandChoice(): LandChoice {
-  return { archetypeId: SCENARIOS.get(DEFAULT_SCENARIO_ID)?.archetype ?? mapArchetypes()[0]!.id, seed: LAND_SEED_MIN };
+  return { archetypeId: defaultLandId(), seed: LAND_SEED_MIN };
 }
 
-/** The riverside town's map exists for seed 1 only (newGame.ts: a `river` land takes the default state). */
-export function landSeedLocked(archetypeId: string): boolean {
-  return archetypeById(archetypeId)?.terrain.kind === "river";
+/** The welcome's first choice: the riverside on a random map number, or the number `search` pins (see PIN_SEED_QUERY). */
+export function initialLandChoice(search: string, random: () => number = Math.random): LandChoice {
+  const query = new URLSearchParams(search);
+  const pinned = parseLandSeed(query.get(PIN_SEED_QUERY) ?? "");
+  if (pinned !== null) return { archetypeId: defaultLandId(), seed: pinned };
+  if (query.get("phase10-proof") === "1") return defaultLandChoice();
+  return randomLandSeed({ archetypeId: defaultLandId(), seed: null }, random);
 }
 
-/** Picking a land keeps the seed, except on the riverside (seed 1). */
+/** The typed map number: digits only, 1–999,999 (a leading zero is allowed); null otherwise. */
+export function parseLandSeed(text: string): number | null {
+  if (!/^[0-9]{1,6}$/.test(text)) return null;
+  const seed = Number(text);
+  return seed >= LAND_SEED_MIN && seed <= LAND_SEED_MAX ? seed : null;
+}
+
+/** The field's text for a map number (empty for none). */
+export function landSeedText(seed: number | null): string {
+  return seed === null ? "" : String(seed);
+}
+
+/** Picking a land keeps the map number (every land takes every number). */
 export function chooseLand(choice: LandChoice, archetypeId: string): LandChoice {
-  return { archetypeId, seed: landSeedLocked(archetypeId) ? LAND_SEED_MIN : choice.seed };
+  return { archetypeId, seed: choice.seed };
 }
 
-/** The seed control's −/+ (delta −1 or +1): clamped to 1–5, and no change on the riverside. */
-export function stepLandSeed(choice: LandChoice, delta: number): LandChoice {
-  if (landSeedLocked(choice.archetypeId)) return { ...choice, seed: LAND_SEED_MIN };
-  return { ...choice, seed: Math.min(LAND_SEED_MAX, Math.max(LAND_SEED_MIN, choice.seed + delta)) };
+/** "무작위": a random map number of the chosen land that has a game (LM-E5 randomNewGameSeed). */
+export function randomLandSeed(choice: LandChoice, random: () => number = Math.random): LandChoice {
+  const seed = randomNewGameSeed({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: choice.archetypeId }, random);
+  remember(`${choice.archetypeId}|${seed}`, true);
+  return { archetypeId: choice.archetypeId, seed };
 }
 
-/** Whether −/+ (delta −1 / +1) moves the seed: never on the riverside, and not past 1 or 5. */
-export function canStepLandSeed(choice: LandChoice, delta: number): boolean {
-  return stepLandSeed(choice, delta).seed !== choice.seed;
+// Cache (AGENTS rule 10): (a) key `${archetypeId}|${seed}`; (b) nothing else enters — the scenario is the default
+// campaign (whether a map has a game depends on the land and seed only: newGame.ts) and the welcome never passes a mode;
+// (c) the answer builds a whole opening state (~6–10 ms) and the picker asks on every render while the player types.
+// FIFO, at most PLAYABLE_LIMIT answers (booleans).
+const PLAYABLE_LIMIT = 256;
+const playable = new Map<string, boolean>();
+function remember(key: string, value: boolean): boolean {
+  if (playable.size >= PLAYABLE_LIMIT) playable.delete(playable.keys().next().value!);
+  playable.set(key, value);
+  return value;
 }
 
-/** True when the choice is today's game: the riverside town on seed 1. */
+/** Why the choice cannot start: "range" (no number from 1 to 999,999) or "unbuildable" (the engine makes no game); null when it can. */
+export function landSeedProblem(choice: LandChoice): LandSeedProblem | null {
+  if (choice.seed === null) return "range";
+  const key = `${choice.archetypeId}|${choice.seed}`;
+  const known = playable.get(key);
+  const ok = known ?? remember(key, newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: choice.archetypeId, seed: choice.seed }) !== null);
+  return ok ? null : "unbuildable";
+}
+
+export function landPlayable(choice: LandChoice): boolean {
+  return landSeedProblem(choice) === null;
+}
+
+/** True when the choice is today's game: the riverside town on map 1. */
 export function isDefaultLand(choice: LandChoice): boolean {
-  return landSeedLocked(choice.archetypeId) && choice.seed === LAND_SEED_MIN;
+  return choice.archetypeId === defaultLandId() && choice.seed === LAND_SEED_MIN;
 }
 
 /**
  * The command a start sends: none for the default campaign on today's land (the current state is that game), the
- * scenario alone for the sandbox on today's land, and the land and seed for any other land.
+ * scenario alone for the sandbox on today's land, and the land and map number for any other choice. Only a playable
+ * choice is started (the welcome refuses the others: landPlayable).
  */
 export function landStartCommand(scenarioId: string, choice: LandChoice, overSave: boolean): LandStartCommand | null {
   if (isDefaultLand(choice)) return overSave || scenarioId !== DEFAULT_SCENARIO_ID ? { type: "start_new_game", scenarioId } : null;
-  return { type: "start_new_game", scenarioId, archetypeId: choice.archetypeId, seed: choice.seed };
+  return { type: "start_new_game", scenarioId, archetypeId: choice.archetypeId, ...(choice.seed === null ? {} : { seed: choice.seed }) };
 }
