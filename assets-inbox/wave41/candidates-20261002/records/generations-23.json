@@ -1,0 +1,53 @@
+{
+  "ordinal": 23,
+  "attempt": 1,
+  "prompt": "Perform a restrained paint retouch of INPUT1, the existing tiny 128x64 transparent sprite of SIX medieval people waiting in one narrow diagonal queue from lower left to upper right. Keep all six people exactly the same identity, clothing colors, poses, head centers, arms, feet, sizes, spacing and silhouette. Preserve the very wide empty transparent margins: occupied width is only about56 pixels in the center of the128-pixel canvas. Do not enlarge or rearrange the queue. Replace thick black outlining with soft local brown material-shading edges, and unify the coarse face/clothing color blocks into restrained warm painterly figures. INPUT2 is material shading reference only, never copy its layout, number of people or poses. Same light direction, no new objects, no floor, no extra shadows, no text. 1300–1450 southern England hand-painted prerender, ART_BIBLE_v2. Full original128:64 canvas aspect ratio and transparent padding maintained. Exactly one image.",
+  "references": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/23-hungry_queue-v1.png",
+    "/Users/rexxa/github/fls-landui/public/assets/wave9/event/crowd_manor_gate-v1.png"
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-b8ab7bf5-9344-41e7-ab90-a9939baf816e.png",
+  "raw_copy": "raw/23-attempt1.png",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "inspection": {
+    "status": "candidate_offline_reviewed",
+    "root_review": "original/candidate at native-size and 4x, light/dark backgrounds",
+    "independent_review": "records/overlay-independent-review.md",
+    "runtime_verified": false,
+    "notes": "Exact original alpha; no visible cut limbs, double contours or empty color seams. Internal paint detail is revised."
+  },
+  "postprocess": {
+    "source_bounds_alpha64": {
+      "left": 673,
+      "top": 96,
+      "width": 618,
+      "height": 677
+    },
+    "target_bounds_alpha64": {
+      "left": 36,
+      "top": 2,
+      "width": 56,
+      "height": 60
+    },
+    "resampling": "single crop registration + Lanczos3 downsample from generated raw; exact original alpha restored",
+    "edge_rgb_extension_pixels": 360,
+    "alpha_preserved_exactly": true,
+    "canvas": [
+      128,
+      64
+    ]
+  },
+  "reference_sha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/23-hungry_queue-v1.png",
+      "sha256": "305f67eb549e18a8355fea199de4c42ead1efdc85e615bb59625f3318cc35a7b"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/wave9/event/crowd_manor_gate-v1.png",
+      "sha256": "4702bfbc032f2c8d0b7ad94503fe4381704890122a64a699011997cf104939d1"
+    }
+  ],
+  "raw_sha256": "b5c34161e23b5ba2110f2d2286afba9ccb0547eef344b6a38e6dff3f3310daba"
+}

@@ -1,4 +1,7 @@
 {
+  "env": {
+    "GRAFT_NO_STATUSLINE": "1"
+  },
   "hooks": {
     "PostToolUse": [
       {

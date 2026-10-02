@@ -1,0 +1,153 @@
+{
+  "ordinal": 19,
+  "attempt": 1,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "prompt": "Use case: precise-object-edit / style-transfer. Edit ONLY the surface rendering of the provided tiny farmstead_b sprite, keeping every pixel-scale structure in place. Preserve building, roof ridge, door, lean-to, cart, wheel and tools exactly, with no new details. Reduce high-frequency stippling to larger quiet hand-painted straw, warm oak and limewash color masses. Keep exact camera, contour, object positions, occupied bounds, padding and canvas aspect160:136. Do not enlarge any objects within canvas. Original upper-left soft lighting; southern England1300–1450. Transparent background. No text. Texture change only, not redraw or redesign.",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-f1fd4478-f4dd-40ff-820b-ac7ec7d76ea4.png",
+  "raw_copy": "raw/19-attempt1.png",
+  "inspection": {
+    "status": "PASS_WITH_LIMITATIONS",
+    "alpha_difference_pixels": 0,
+    "raw_geometry_pass": false,
+    "proof": "proofs/lane-material/19-final-comparison.jpg",
+    "limitation": "Selective roof and wood/limewash interior material improvement. Thin tools, framing and remaining boundary noise preserved.",
+    "visual_review": "Final 3x comparison viewed: roof texture less stippled; selected wood and limewash internal color fields quieter. Cart/plough, structural outlines and openings retained. Rock major slab/crack arrangement retained with reduced contrast.",
+    "outside_edit_mask_difference_pixels": 0
+  },
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/19-farmstead_b-v1.png",
+      "sha256": "2d56aed77a53f12f9dfb094dab401cc48a696a0910e53ac0a25d23cd68f1a95f",
+      "role": "immutable_geometry"
+    }
+  ],
+  "raw_sha256": "a00f61246cfe7b671797a6bd653f699c217c4f5cecf6aa4f0e2fd6a23d90ac42",
+  "raw_alpha_iou": 0.8936818769628672,
+  "raw_alpha_different_pixels": 7582,
+  "final_path": "assets/19-farmstead_b-v1-wave41-v1.png",
+  "final_sha256": "50e5ff97012106a879ab3f36959abd53884682db26d01fb872429bc560fcd80b",
+  "postprocessing": {
+    "resize": "one full-canvas resize, no trim",
+    "method": "Selective roof-interior generated-RGB composite (max0.92,2px feather) and selected wood/limewash interiors (0.5, same-material color gates excluding dark structural pixels). Original alpha bit-exact. No geometry transform.",
+    "polygons": [
+      [
+        [
+          57,
+          38
+        ],
+        [
+          73,
+          12
+        ],
+        [
+          125,
+          39
+        ],
+        [
+          104,
+          76
+        ],
+        [
+          65,
+          52
+        ]
+      ],
+      [
+        [
+          55,
+          40
+        ],
+        [
+          65,
+          50
+        ],
+        [
+          40,
+          61
+        ],
+        [
+          20,
+          57
+        ]
+      ]
+    ],
+    "modified_region_pixels": 3300,
+    "wall_polygons": [
+      [
+        [
+          110,
+          78
+        ],
+        [
+          143,
+          63
+        ],
+        [
+          143,
+          96
+        ],
+        [
+          110,
+          111
+        ]
+      ],
+      [
+        [
+          114,
+          62
+        ],
+        [
+          120,
+          59
+        ],
+        [
+          120,
+          68
+        ],
+        [
+          114,
+          72
+        ]
+      ],
+      [
+        [
+          141,
+          51
+        ],
+        [
+          147,
+          58
+        ],
+        [
+          147,
+          68
+        ],
+        [
+          142,
+          65
+        ]
+      ],
+      [
+        [
+          99,
+          72
+        ],
+        [
+          106,
+          76
+        ],
+        [
+          106,
+          88
+        ],
+        [
+          99,
+          83
+        ]
+      ]
+    ],
+    "source_retained": "all alpha; pixels outside selected roof/wood/limewash interiors; cart, plough, wheels, openings, bags, logs and roof boundaries"
+  }
+}

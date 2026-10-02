@@ -1,0 +1,48 @@
+{
+  "ordinal": 27,
+  "attempt": 1,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "prompt": "Use case: precise-object-edit / style-transfer.\nAsset: one existing installed Feudal Lord Simulator game image; non-destructive Wave41 revision.\nInput1 is the immutable geometry reference. Edit this image, do not design a different asset.\nRetexture this old seal-slot icon into muted parchment, fine warm brown ink and restrained wax-like ornament matching later project seal UI. Remove vivid red/blue ring and noisy pixel-like decoration. Preserve circular slot geometry, outer border, corners and canvas.\nART_BIBLE_v2: soft hand-painted prerender, muted southern English1300-1450 material palette, upper-left world lighting, no black cartoon outline, no added text/watermark.\nMaintain EXACT original canvas aspect 64:64, original transparent padding, anchor/pivot, ground contact, silhouette, perspective and occupied bounds. Do not crop, recenter or rotate. Output exactly one image; no comparison sheet.\nGenuine transparent background. All originally empty regions remain transparent.\nReference1 is the EDIT TARGET. Reference2 is ONLY understated wax material style, never its silhouette. CRITICAL: retain the entire SQUARE cream parchment panel, square border, all four ornamental corners and central circular slot; DO NOT remove the parchment background to make a floating round seal. The parchment fills almost the whole 64x64 original. Keep existing tiny transparent corner cutouts, no new transparent area. Replace blue and red thin rings with dark warm brown ink and muted reddish-brown wax tones. Preserve all concentric ring radii and center. Fine decorations simplified internally, no letterforms. Do not add strings, checks, seals, heraldry or any objects. Original exact composition.",
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/27-seal_slot.png",
+      "sha256": "2ba82a986c35afe0c4e6d1aa5ffa7da24909a5f55e09f380679f6307f1688c91"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/wave14/seals/wax_seal_hanging.png",
+      "sha256": "2a606cd24f69f469d0792f592faf9b9c0eb62d23303459fed568ddfbfd1d7000"
+    }
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f702-f327-7ae1-8b3a-d8d5e824be22/exec-ceef4cf7-8472-48f3-826a-988dcc4bc87c.png",
+  "raw_copy": "raw/27-attempt1.png",
+  "inspection": {
+    "status": "PASS candidate offline",
+    "native_size": "Viewed final native-size and4x nearest side-by-side proof",
+    "geometry": "Final alpha channel byte-identical to immutable runtime reference; exact canvas and alpha silhouette preserved by explicit postprocess; raw generation alone did not meet exact pixel geometry",
+    "content": "Square parchment panel and original267 transparent pixels preserved. Blue removed, warm brown/red-brown ring. Original alpha cutouts still create small edge notches; retained because alpha lock is stricter than smoothing.",
+    "limitations": "Offline candidate only; not installed, CSS/world rendering not run by this lane."
+  },
+  "postprocessing": {
+    "canvas_resize": "single Lanczos3 full-canvas resize, no crop/trim/recenter",
+    "geometry": "original alpha bytes reapplied exactly",
+    "color_extension": "Generated RGB nearest valid opaque sample extended only into original-alpha edge pixels where generated alpha<180; no original geometry moved",
+    "edge_pixels_extended": 497,
+    "original_dotted_trail_preserved": false,
+    "raw_alpha_diff_pixels": 3754,
+    "raw_support_iou_alpha16": 0.8986862051541182,
+    "final_alpha_diff_pixels": 0,
+    "additional_surface_registration": "Generated concentric ring texture registered to original slot center(31.5,32.5), radius24.5; generated center(32,31),radius22.5. Local material-coordinate remap only; alpha exactly original."
+  },
+  "output": "assets/27-seal_slot-wave41-v1.png",
+  "sha256": "8c1730d6f289647d3678bbf68d314eb0faa460ed5fbcdbccd9841a14182247be",
+  "final_qa": {
+    "n": 27,
+    "width": 64,
+    "height": 64,
+    "alpha_diff_pixels": 0,
+    "source_sha256": "2ba82a986c35afe0c4e6d1aa5ffa7da24909a5f55e09f380679f6307f1688c91",
+    "final_sha256": "8c1730d6f289647d3678bbf68d314eb0faa460ed5fbcdbccd9841a14182247be"
+  }
+}

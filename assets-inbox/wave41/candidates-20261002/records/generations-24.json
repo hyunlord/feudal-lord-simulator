@@ -1,0 +1,60 @@
+{
+  "ordinal": 24,
+  "attempt": 1,
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "prompt": "Edit input1 rock terrain texture only. Preserve EXACT full square composition, EVERY slab outline, crack path, rock position and boundary on all four edges. No new rocks, rearrangement, objects or margin. Tone down very black fissures and photographic moss speckles to warm muted grey chalk/rubble planes and broad hand-painted brushwork. Input2 is ONLY a reference for stone color and painterly surface handling; absolutely do not copy its wall shape/layout. Keep original top-down terrain perspective. Square512:512 fully opaque tile, continuous occupied pixels to all edges. No transparency. Soft upper-left lighting. No lettering or borders. Geometry stays unchanged, only materials become painterly.",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-33671c78-9db8-4885-9e39-27674acb9d2e.png",
+  "raw_copy": "raw/24-attempt1.png",
+  "inspection": {
+    "status": "PASS_WITH_LIMITATIONS",
+    "alpha_difference_pixels": 0,
+    "raw_geometry_pass": true,
+    "proof": "proofs/lane-material/24-final-comparison.jpg",
+    "limitation": "Offline repeat review only; no installed runtime validation.",
+    "visual_review": "Repaired512px tile and3x3 repeat viewed directly: no abrupt straight border seam visible; major slab/crack layout retained. Edge blend transitions gradually over64px. Natural periodic texture repetition remains.",
+    "outside_edit_mask_difference_pixels": 0,
+    "repeat_proof": "proofs/lane-material/24-repeat-3x3.jpg",
+    "repeat_metrics": "proofs/lane-material/24-repeat-verification.json"
+  },
+  "references": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave41-candidates-20261002-v1/references/24-rock.png",
+      "sha256": "7b7055de1f931e2a00b3cbbf0963268d44c8781c753fb9a530ed4ff991c68bd1",
+      "role": "immutable_geometry"
+    },
+    {
+      "path": "/Users/rexxa/github/fls-landui/public/assets/wave22/props/sheep_stone_wall_a.png",
+      "sha256": "667fe4bb213275cc65951f98a9a0a9055d4fc0251e8b80f8d0b9e36fb8a9f78a",
+      "role": "stone_material_only"
+    }
+  ],
+  "raw_sha256": "dc373a114cc826855526fb3946be518828d8a3d8e998340c9ce716d479311b6f",
+  "raw_alpha_iou": 1,
+  "raw_alpha_different_pixels": 0,
+  "final_path": "assets/24-rock-wave41-v1.png",
+  "final_sha256": "ed0764412eb37b2553085b5e40e0f78561dc702d169b9370da29a75ff5e842d2",
+  "postprocessing": {
+    "resize": "one full-canvas resize, no trim",
+    "method": "Generated RGB interior; exact original outer border and alpha. 64px smoothstep fade from original border to generated material. No geometry transform.",
+    "polygons": null,
+    "modified_region_pixels": 250364,
+    "wall_polygons": null,
+    "source_retained": "All alpha; exact original outermost RGB border. Original/generated smooth blend in64px border band.",
+    "edge_repair": {
+      "original": {
+        "edge_mae_left_right": 0,
+        "edge_mae_top_bottom": 0
+      },
+      "candidate": {
+        "edge_mae_left_right": 0,
+        "edge_mae_top_bottom": 0
+      },
+      "original_outer_border_rgb_difference_pixels": 0,
+      "alpha_difference_pixels": 0,
+      "fade_pixels": 64,
+      "formula": "smoothstep t*t*(3-2*t), t=min(distance-to-nearest-edge/64,1)"
+    }
+  }
+}
