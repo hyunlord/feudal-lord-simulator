@@ -94,6 +94,7 @@ import { guidanceSampleKey } from "./ui/hud/guidanceSample";
 import { AppModals } from "./ui/screens/AppModals";
 import { readWelcomeDismissed, WelcomeParchment, writeWelcomeDismissed } from "./ui/screens/WelcomeScreen";
 import { isDefaultLand, landStartCommand, type LandChoice } from "./ui/landChoice";
+import { showChapterLoading, useChapterLoading } from "./ui/chapterLoadingStore";
 import { menAwayLine } from "./ui/lordshipModel";
 
 /** UX-0b: how long the season card waits after the last press before it opens (a press in flight is not swallowed). */
@@ -395,18 +396,14 @@ export function App() {
   // The toggle starts from the stored choice (a player who switched the tutorial off keeps it off), else on.
   const [welcomeTutorial, setWelcomeTutorial] = useState(() => readTutorialRecord()?.enabled ?? true);
   // UI-3: a new game opens on the chapter's loading screen for a moment (chapter 1 reuses the title keyart; the
-  // 1315 / 1337 / 1348 screens are registered for the later chapters). It never takes a click.
-  const [chapterLoading, setChapterLoading] = useState(false);
-  useEffect(() => {
-    if (!chapterLoading) return undefined;
-    const timer = window.setTimeout(() => setChapterLoading(false), CHAPTER_LOADING_MS);
-    return () => window.clearTimeout(timer);
-  }, [chapterLoading]);
+  // 1315 / 1337 / 1348 screens are registered for the later chapters). It never takes a click. NAT-4: its flag lives
+  // outside this component (chapterLoadingStore.ts): a start that sends start_new_game remounts the app.
+  const chapterLoading = useChapterLoading();
   // LAND-UI (LU-D7): every start takes the land picked on the welcome; the riverside on map 1 (the default) is today's
   // start exactly, any other land sends its land and seed and gives the tutorial no state (as a start over a save does).
   // A click anywhere starts the picked land too.
   const dismissWelcome = (land: LandChoice) => {
-    if (!saveSystem.offerContinue && !isDefaultLand(land)) { startScenarioWithoutSave(DEFAULT_SCENARIO_ID, land); return; }
+    if (!saveSystem.offerContinue && !isDefaultLand(land)) { showChapterLoading(CHAPTER_LOADING_MS); startScenarioWithoutSave(DEFAULT_SCENARIO_ID, land); return; }
     writeWelcomeDismissed();
     setWelcomeVisible(false);
     if (saveSystem.offerContinue) saveSystem.declineContinue();
@@ -579,8 +576,8 @@ export function App() {
         continueLine={saveSystem.offerContinue ? saveSystem.latest?.summary?.line ?? "" : null}
         archiveNotice={saveSystem.latest?.summary ? formatNewGameArchiveNotice(saveSystem.latest.summary) : null}
         onContinue={continueSavedGame}
-        onNewGame={(scenarioId, land) => { setChapterLoading(true); startNewGameOverSave(scenarioId, land); }}
-        onChooseMode={(scenarioId, land) => { setChapterLoading(true); startScenarioWithoutSave(scenarioId, land); }}
+        onNewGame={(scenarioId, land) => { showChapterLoading(CHAPTER_LOADING_MS); startNewGameOverSave(scenarioId, land); }}
+        onChooseMode={(scenarioId, land) => { showChapterLoading(CHAPTER_LOADING_MS); startScenarioWithoutSave(scenarioId, land); }}
         tutorialEnabled={welcomeTutorial}
         onTutorialChange={setWelcomeTutorial}
       /> : null}
