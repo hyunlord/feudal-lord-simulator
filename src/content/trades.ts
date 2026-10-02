@@ -211,6 +211,12 @@ export const TRADE_BALANCE = {
    *  the load the carters have left carries surplus no building can take out of town to sell. */
   carterLoadsPerCheck: 1,
   carterLoad: 8,
+  /** TR-7 (LM6A-3): carried out only above the town's reserve — food (wheat, bread) while the town holds more than
+   *  this many days of it, never while food sells at a dearth's price or dearer; other goods above these amounts. */
+  carryOutFoodDays: 180,
+  carryOutDearthPricePermille: 1400,
+  carryOutReserve: { wheat: 0, bread: 0, timber: 100, stone: 60, logs: 40 },
+  carryOutReserveOther: 40,
   /** TR-8: households of one trade, each within this many cells of another, that make a street. */
   streetHouseholds: 3,
   streetLink: 3,

@@ -15,6 +15,9 @@ import {
 } from "../content/trades";
 import { acceptsResource, availableSpace, storageIntakeSpace } from "../economy/storage";
 import { isFlowingWater } from "../world/river";
+import { BALANCE } from "../content/balanceConfig";
+import { foodReserveTicks } from "../population/foodReserve";
+import { foodPricePermille } from "./eventSchedule";
 import type { GameState } from "./engine.types";
 import { createDeliveryInventoryPort } from "./simulationPorts";
 import { stateCalendar } from "./scenarioState";
@@ -25,6 +28,8 @@ import type { ChainState, TradeCause, TradeHousehold, TradeReason, TradeState } 
 const SEASON = 1_000;
 const DAYS_PER_SEASON = 90;
 const MAX_QUITS = 40;
+/** TR-7: the food the carters may carry out only above the reserve days (wheat and bread). */
+const FOOD_RESOURCES: ReadonlySet<string> = new Set(["wheat", "bread"]);
 
 export function initialTrades(): TradeState {
   return { households: [], stock: {}, chains: {}, streets: [], haulage: { season: 0, last: 0 }, quits: [] };
@@ -450,17 +455,30 @@ export function haulStuckStock(state: GameState, trades: TradeState): { readonly
     }
     if (capacity <= 0) break;
   }
-  // TR-7 (b): with a market, what is left of the loads carries surplus no building can take out of town to sell.
+  // TR-7 (b): with a market, what is left of the loads carries surplus no building can take out of town to sell —
+  // only what lies above the town's reserve (LM6A-3, the user's judgement 2026-10-03): food only while the town holds
+  // more than `carryOutFoodDays` of it and never in a dearth or famine; other goods above `carryOutReserve`.
   let carriedOut = 0;
   if (capacity > 0 && state.buildings.some(building => building.kind === "market")) {
     const full = stuck.filter(entry => entry.reason === "receiver_full")
       .sort((left, right) => right.amount - left.amount || left.buildingId.localeCompare(right.buildingId));
+    const reserveTicks = foodReserveTicks(state);
+    const foodDays = reserveTicks === null ? Infinity : reserveTicks * 360 / BALANCE.TICKS_PER_YEAR;
+    const foodMayLeave = foodDays > TRADE_BALANCE.carryOutFoodDays && foodPricePermille(state, state.tick) < TRADE_BALANCE.carryOutDearthPricePermille;
+    const above = new Map<string, number>();
+    for (const entry of full) {
+      if (above.has(entry.resource)) continue;
+      const total = state.buildings.reduce((sum, building) => sum + Math.max(0, building.inventory[entry.resource as StorableResourceType] ?? 0), 0);
+      above.set(entry.resource, Math.max(0, total - (TRADE_BALANCE.carryOutReserve[entry.resource as keyof typeof TRADE_BALANCE.carryOutReserve] ?? TRADE_BALANCE.carryOutReserveOther)));
+    }
     for (const entry of full) {
       if (capacity <= 0) break;
+      if (FOOD_RESOURCES.has(entry.resource) && !foodMayLeave) continue;
       const source = buildings.find(building => building.id === entry.buildingId)!;
       const resource = entry.resource as StorableResourceType;
-      const amount = Math.min(capacity, inventory.availableStock(source, resource));
+      const amount = Math.min(capacity, above.get(resource) ?? 0, inventory.availableStock(source, resource));
       if (amount <= 0) continue;
+      above.set(resource, (above.get(resource) ?? 0) - amount);
       buildings = buildings.map(building => building.id === source.id ? { ...building, inventory: { ...building.inventory, [resource]: (building.inventory[resource] ?? 0) - amount } } : building);
       capacity -= amount;
       carriedOut += amount;

@@ -144,3 +144,26 @@ test("TR-7 carters move stock stuck for want of carters to a store with room; wi
   const withMarket = haulStuckStock({ ...full, buildings: [...full.buildings, market] }, carters);
   assert.equal(withMarket.carriedOut, 8, "one carter carries one load out to sell");
 });
+
+test("TR-7 LM6A-3 the carters carry out only above the town's reserve: no food in a famine or below the reserve days, timber above its 100", async () => {
+  const { advanceEvents } = await import("../src/engine/events");
+  const { advanceSeasons } = await import("../src/engine/seasonPressure");
+  const { foodPricePermille } = await import("../src/engine/eventSchedule");
+  const base = lordTown();
+  const barn = base.buildings.find(building => building.kind === "farmstead")!;
+  const [a] = houseIds(base);
+  const capacity = BUILDING_CONFIG_BY_KIND.granary.storageCapacity;
+  const market = { id: "market-test", kind: "market" as const, tx: 2, ty: 2, workers: 3, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
+  const full: GameState = { ...base, buildings: [...base.buildings.filter(building => building.kind !== "mill" && building.kind !== "market")
+    .map(building => building.kind === "granary" ? { ...building, inventory: { bread: capacity } } : building.id === barn.id ? { ...building, workers: 2, inventory: { ...building.inventory, wheat: 40 } } : building), market] };
+  const carters = { ...initialTrades(), households: [household(a!, "carter")] };
+  assert.equal(haulStuckStock(full, carters).carriedOut, 8, "a fed town in an ordinary year sells its surplus wheat");
+  // The Great Famine's prices: no food leaves.
+  const famine = advanceEvents(advanceSeasons({ ...full, tick: 15 * 4000 }));
+  assert.ok(foodPricePermille(famine, famine.tick) >= 1400, "the famine's prices");
+  assert.equal(haulStuckStock({ ...full, events: famine.events!, tick: famine.tick }, carters).carriedOut, 0, "no food out in a famine");
+  // A town with little food in store keeps its wheat.
+  const hungry: GameState = { ...full, buildings: full.buildings.map(building => building.kind === "granary" ? { ...building, inventory: { bread: 1 } } : building),
+    houses: full.houses.map(house => ({ ...house, residents: house.residents * 4 })) };
+  assert.equal(haulStuckStock(hungry, carters).carriedOut, 0, "below the reserve days the wheat stays");
+});
