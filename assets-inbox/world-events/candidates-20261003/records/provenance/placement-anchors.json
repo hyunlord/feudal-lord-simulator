@@ -1,0 +1,285 @@
+[
+  {
+    "id": "church_upper_approach",
+    "tile": [
+      51,
+      30
+    ],
+    "events": [
+      "wedding",
+      "funeral",
+      "baptism",
+      "pilgrimage",
+      "famine"
+    ],
+    "note": "Road east of upper church; group must fit path without overlapping roofs.",
+    "screen": [
+      {
+        "capture": "church-summer-z1.0",
+        "x": 896,
+        "y": 521.76
+      },
+      {
+        "capture": "church-summer-z0.6",
+        "x": 857.6,
+        "y": 513.0559999999999
+      },
+      {
+        "capture": "market-summer-z1.0",
+        "x": 864,
+        "y": 345.76
+      },
+      {
+        "capture": "market-summer-z0.6",
+        "x": 838.4,
+        "y": 481.8559999999999
+      },
+      {
+        "capture": "church-winter-z1.0",
+        "x": 896,
+        "y": 521.76
+      },
+      {
+        "capture": "church-winter-z0.6",
+        "x": 857.6,
+        "y": 513.0559999999999
+      },
+      {
+        "capture": "market-winter-z1.0",
+        "x": 864,
+        "y": 345.76
+      },
+      {
+        "capture": "market-winter-z0.6",
+        "x": 838.4,
+        "y": 481.8559999999999
+      }
+    ]
+  },
+  {
+    "id": "church_lower_approach",
+    "tile": [
+      53,
+      36
+    ],
+    "events": [
+      "wedding",
+      "funeral",
+      "baptism",
+      "pilgrimage"
+    ],
+    "note": "Road southeast of lower church; verify full crowd ground footprint.",
+    "screen": [
+      {
+        "capture": "church-summer-z1.0",
+        "x": 768,
+        "y": 649.76
+      },
+      {
+        "capture": "church-summer-z0.6",
+        "x": 780.8,
+        "y": 589.856
+      },
+      {
+        "capture": "market-summer-z1.0",
+        "x": 736,
+        "y": 473.76
+      },
+      {
+        "capture": "market-summer-z0.6",
+        "x": 761.5999999999999,
+        "y": 558.656
+      },
+      {
+        "capture": "church-winter-z1.0",
+        "x": 768,
+        "y": 649.76
+      },
+      {
+        "capture": "church-winter-z0.6",
+        "x": 780.8,
+        "y": 589.856
+      },
+      {
+        "capture": "market-winter-z1.0",
+        "x": 736,
+        "y": 473.76
+      },
+      {
+        "capture": "market-winter-z0.6",
+        "x": 761.5999999999999,
+        "y": 558.656
+      }
+    ]
+  },
+  {
+    "id": "market_north_lane",
+    "tile": [
+      56,
+      34
+    ],
+    "events": [
+      "market",
+      "fair",
+      "famine",
+      "plague",
+      "judgment"
+    ],
+    "note": "Market approach, not a courthouse; judgment context proposed.",
+    "screen": [
+      {
+        "capture": "church-summer-z1.0",
+        "x": 928,
+        "y": 665.76
+      },
+      {
+        "capture": "church-summer-z0.6",
+        "x": 876.8,
+        "y": 599.456
+      },
+      {
+        "capture": "market-summer-z1.0",
+        "x": 896,
+        "y": 489.76
+      },
+      {
+        "capture": "market-summer-z0.6",
+        "x": 857.5999999999999,
+        "y": 568.256
+      },
+      {
+        "capture": "church-winter-z1.0",
+        "x": 928,
+        "y": 665.76
+      },
+      {
+        "capture": "church-winter-z0.6",
+        "x": 876.8,
+        "y": 599.456
+      },
+      {
+        "capture": "market-winter-z1.0",
+        "x": 896,
+        "y": 489.76
+      },
+      {
+        "capture": "market-winter-z0.6",
+        "x": 857.5999999999999,
+        "y": 568.256
+      }
+    ]
+  },
+  {
+    "id": "market_east_lane",
+    "tile": [
+      58,
+      36
+    ],
+    "events": [
+      "market",
+      "fair",
+      "levy",
+      "revolt",
+      "royal_envoy"
+    ],
+    "note": "Near perimeter wall; keep props in lane, avoid wall occlusion.",
+    "screen": [
+      {
+        "capture": "church-summer-z1.0",
+        "x": 928,
+        "y": 729.76
+      },
+      {
+        "capture": "church-summer-z0.6",
+        "x": 876.8,
+        "y": 637.856
+      },
+      {
+        "capture": "market-summer-z1.0",
+        "x": 896,
+        "y": 553.76
+      },
+      {
+        "capture": "market-summer-z0.6",
+        "x": 857.5999999999999,
+        "y": 606.656
+      },
+      {
+        "capture": "church-winter-z1.0",
+        "x": 928,
+        "y": 729.76
+      },
+      {
+        "capture": "church-winter-z0.6",
+        "x": 876.8,
+        "y": 637.856
+      },
+      {
+        "capture": "market-winter-z1.0",
+        "x": 896,
+        "y": 553.76
+      },
+      {
+        "capture": "market-winter-z0.6",
+        "x": 857.5999999999999,
+        "y": 606.656
+      }
+    ]
+  },
+  {
+    "id": "water_gate_road",
+    "tile": [
+      42,
+      42
+    ],
+    "events": [
+      "fire",
+      "flood",
+      "levy",
+      "wedding"
+    ],
+    "note": "Road by waterside, can stage route/crossing; do not claim bridge if none visible.",
+    "screen": [
+      {
+        "capture": "church-summer-z1.0",
+        "x": 224,
+        "y": 569.76
+      },
+      {
+        "capture": "church-summer-z0.6",
+        "x": 454.40000000000003,
+        "y": 541.856
+      },
+      {
+        "capture": "market-summer-z1.0",
+        "x": 192,
+        "y": 393.76
+      },
+      {
+        "capture": "market-summer-z0.6",
+        "x": 435.2,
+        "y": 510.65599999999995
+      },
+      {
+        "capture": "church-winter-z1.0",
+        "x": 224,
+        "y": 569.76
+      },
+      {
+        "capture": "church-winter-z0.6",
+        "x": 454.40000000000003,
+        "y": 541.856
+      },
+      {
+        "capture": "market-winter-z1.0",
+        "x": 192,
+        "y": 393.76
+      },
+      {
+        "capture": "market-winter-z0.6",
+        "x": 435.2,
+        "y": 510.65599999999995
+      }
+    ]
+  }
+]

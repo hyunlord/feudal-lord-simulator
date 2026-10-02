@@ -1,0 +1,1999 @@
+{
+  "status": "PASS_READY_FOR_BLIND_REVIEW",
+  "frozen_at_utc": "2026-10-02T18:35:24.027926+00:00",
+  "kind": "static_composite_not_engine_capture",
+  "alpha_threshold_exclusive": 32,
+  "anchors": {
+    "church": [
+      315,
+      320
+    ],
+    "market": [
+      605,
+      465
+    ],
+    "gate": [
+      1075,
+      580
+    ],
+    "bridge": [
+      1010,
+      300
+    ],
+    "manor": [
+      670,
+      220
+    ],
+    "guildhall": [
+      325,
+      650
+    ],
+    "inn": [
+      575,
+      680
+    ]
+  },
+  "houses": [
+    [
+      140,
+      230
+    ],
+    [
+      110,
+      110
+    ],
+    [
+      430,
+      95
+    ],
+    [
+      480,
+      155
+    ],
+    [
+      825,
+      95
+    ],
+    [
+      1170,
+      160
+    ],
+    [
+      150,
+      425
+    ],
+    [
+      240,
+      410
+    ],
+    [
+      390,
+      430
+    ],
+    [
+      455,
+      395
+    ],
+    [
+      800,
+      405
+    ],
+    [
+      885,
+      450
+    ],
+    [
+      135,
+      620
+    ],
+    [
+      195,
+      580
+    ],
+    [
+      500,
+      630
+    ],
+    [
+      100,
+      720
+    ],
+    [
+      1180,
+      450
+    ],
+    [
+      1110,
+      735
+    ],
+    [
+      1200,
+      700
+    ]
+  ],
+  "people": [
+    [
+      450,
+      340
+    ],
+    [
+      480,
+      360
+    ],
+    [
+      450,
+      475
+    ],
+    [
+      780,
+      460
+    ],
+    [
+      780,
+      490
+    ],
+    [
+      450,
+      735
+    ],
+    [
+      885,
+      515
+    ],
+    [
+      490,
+      660
+    ],
+    [
+      350,
+      680
+    ],
+    [
+      1000,
+      610
+    ],
+    [
+      180,
+      280
+    ],
+    [
+      700,
+      320
+    ],
+    [
+      825,
+      295
+    ],
+    [
+      1185,
+      575
+    ]
+  ],
+  "asset_count": 44,
+  "city_count": 12,
+  "blind_count": 12,
+  "identity_count": 14,
+  "landmark_pair_checks": 126,
+  "max_house_overlap_px": 0,
+  "max_person_overlap_px": 0,
+  "max_nonbridge_river_overlap_px": 0,
+  "max_landmark_pair_overlap_px": 0,
+  "all_44_opaque_bounds_inside_canvas": true,
+  "zoom06_exact_centered_linear_resize": true,
+  "blind_copies_byte_identical": true,
+  "visual_inspection": [
+    "city-1450-summer-zoom-1.0.png",
+    "city-1450-summer-zoom-0.6.png",
+    "city-1450-winter-zoom-1.0.png"
+  ],
+  "visual_verdict": "Expanded market and manor are separated from houses, people, each other and river. Inn remains west of river. Roads enter the central market plaza. No visible building clipping. Static geometry is schematic, not an engine scene.",
+  "per_asset": [
+    {
+      "asset": "church_s01_summer.png",
+      "bbox": [
+        297,
+        251,
+        383,
+        329
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "church_s01_winter.png",
+      "bbox": [
+        296,
+        251,
+        383,
+        329
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "church_s02_summer.png",
+      "bbox": [
+        297,
+        253,
+        383,
+        329
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "church_s02_winter.png",
+      "bbox": [
+        297,
+        253,
+        383,
+        329
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "church_s03_summer.png",
+      "bbox": [
+        300,
+        222,
+        410,
+        331
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "church_s03_winter.png",
+      "bbox": [
+        300,
+        222,
+        410,
+        331
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "church_s04_summer.png",
+      "bbox": [
+        299,
+        220,
+        451,
+        345
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "church_s04_winter.png",
+      "bbox": [
+        299,
+        219,
+        451,
+        345
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "market_s01_summer.png",
+      "bbox": [
+        557,
+        439,
+        653,
+        489
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "market_s01_winter.png",
+      "bbox": [
+        558,
+        439,
+        653,
+        489
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "market_s02_summer.png",
+      "bbox": [
+        559,
+        436,
+        654,
+        489
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "market_s02_winter.png",
+      "bbox": [
+        559,
+        436,
+        654,
+        489
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "market_s03_summer.png",
+      "bbox": [
+        514,
+        329,
+        754,
+        513
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "market_s03_winter.png",
+      "bbox": [
+        514,
+        329,
+        754,
+        513
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "gate_s01_summer.png",
+      "bbox": [
+        1004,
+        483,
+        1177,
+        628
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "gate_s01_winter.png",
+      "bbox": [
+        1003,
+        483,
+        1168,
+        627
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "gate_s02_summer.png",
+      "bbox": [
+        998,
+        473,
+        1170,
+        627
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "gate_s02_winter.png",
+      "bbox": [
+        997,
+        473,
+        1170,
+        627
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "gate_s03_summer.png",
+      "bbox": [
+        998,
+        471,
+        1176,
+        627
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "gate_s03_winter.png",
+      "bbox": [
+        997,
+        471,
+        1176,
+        628
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "bridge_s01_summer.png",
+      "bbox": [
+        947,
+        257,
+        1072,
+        345
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 1538,
+      "river_crossing_expected": true
+    },
+    {
+      "asset": "bridge_s01_winter.png",
+      "bbox": [
+        947,
+        257,
+        1072,
+        345
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 1567,
+      "river_crossing_expected": true
+    },
+    {
+      "asset": "bridge_s02_summer.png",
+      "bbox": [
+        946,
+        257,
+        1075,
+        347
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 1769,
+      "river_crossing_expected": true
+    },
+    {
+      "asset": "bridge_s02_winter.png",
+      "bbox": [
+        946,
+        257,
+        1075,
+        347
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 1788,
+      "river_crossing_expected": true
+    },
+    {
+      "asset": "bridge_s03_summer.png",
+      "bbox": [
+        915,
+        200,
+        1070,
+        344
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 1726,
+      "river_crossing_expected": true
+    },
+    {
+      "asset": "bridge_s03_winter.png",
+      "bbox": [
+        915,
+        200,
+        1070,
+        344
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 1741,
+      "river_crossing_expected": true
+    },
+    {
+      "asset": "manor_s01_summer.png",
+      "bbox": [
+        636,
+        99,
+        816,
+        230
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "manor_s01_winter.png",
+      "bbox": [
+        636,
+        98,
+        807,
+        230
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "manor_s02_summer.png",
+      "bbox": [
+        638,
+        96,
+        850,
+        231
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "manor_s02_winter.png",
+      "bbox": [
+        638,
+        94,
+        853,
+        231
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "manor_s03_summer.png",
+      "bbox": [
+        530,
+        102,
+        937,
+        301
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "manor_s03_winter.png",
+      "bbox": [
+        530,
+        102,
+        936,
+        301
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "guildhall_s01_summer.png",
+      "bbox": [
+        240,
+        559,
+        405,
+        665
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "guildhall_s01_winter.png",
+      "bbox": [
+        241,
+        559,
+        393,
+        665
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "guildhall_s02_summer.png",
+      "bbox": [
+        247,
+        533,
+        391,
+        663
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "guildhall_s02_winter.png",
+      "bbox": [
+        249,
+        533,
+        387,
+        663
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "guildhall_s03_summer.png",
+      "bbox": [
+        240,
+        540,
+        451,
+        664
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "guildhall_s03_winter.png",
+      "bbox": [
+        241,
+        539,
+        450,
+        664
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "inn_s01_summer.png",
+      "bbox": [
+        528,
+        569,
+        712,
+        712
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "inn_s01_winter.png",
+      "bbox": [
+        528,
+        569,
+        711,
+        711
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "inn_s02_summer.png",
+      "bbox": [
+        528,
+        563,
+        738,
+        706
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "inn_s02_winter.png",
+      "bbox": [
+        528,
+        563,
+        734,
+        706
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "inn_s03_summer.png",
+      "bbox": [
+        530,
+        518,
+        870,
+        706
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    },
+    {
+      "asset": "inn_s03_winter.png",
+      "bbox": [
+        531,
+        518,
+        869,
+        706
+      ],
+      "house_overlap_px": 0,
+      "person_overlap_px": 0,
+      "river_overlap_px": 0,
+      "river_crossing_expected": false
+    }
+  ],
+  "landmark_pairs": [
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "church",
+        "market"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "church",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "church",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "church",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "church",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "church",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "market",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "market",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "market",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "market",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "market",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "gate",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "gate",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "gate",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "gate",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "bridge",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "bridge",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "bridge",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "manor",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "manor",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "summer",
+      "families": [
+        "guildhall",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "church",
+        "market"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "church",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "church",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "church",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "church",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "church",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "market",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "market",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "market",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "market",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "market",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "gate",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "gate",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "gate",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "gate",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "bridge",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "bridge",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "bridge",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "manor",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "manor",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "summer",
+      "families": [
+        "guildhall",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "church",
+        "market"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "church",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "church",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "church",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "church",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "church",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "market",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "market",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "market",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "market",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "market",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "gate",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "gate",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "gate",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "gate",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "bridge",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "bridge",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "bridge",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "manor",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "manor",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "summer",
+      "families": [
+        "guildhall",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "church",
+        "market"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "church",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "church",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "church",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "church",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "church",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "market",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "market",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "market",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "market",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "market",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "gate",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "gate",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "gate",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "gate",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "bridge",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "bridge",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "bridge",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "manor",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "manor",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1300,
+      "season": "winter",
+      "families": [
+        "guildhall",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "church",
+        "market"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "church",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "church",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "church",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "church",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "church",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "market",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "market",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "market",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "market",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "market",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "gate",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "gate",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "gate",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "gate",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "bridge",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "bridge",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "bridge",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "manor",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "manor",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1380,
+      "season": "winter",
+      "families": [
+        "guildhall",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "church",
+        "market"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "church",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "church",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "church",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "church",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "church",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "market",
+        "gate"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "market",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "market",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "market",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "market",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "gate",
+        "bridge"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "gate",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "gate",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "gate",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "bridge",
+        "manor"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "bridge",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "bridge",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "manor",
+        "guildhall"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "manor",
+        "inn"
+      ],
+      "overlap_px": 0
+    },
+    {
+      "year": 1450,
+      "season": "winter",
+      "families": [
+        "guildhall",
+        "inn"
+      ],
+      "overlap_px": 0
+    }
+  ],
+  "sha256": {
+    "proofs/city-1450-winter-zoom-0.6.png": "806308d5cbc4ca9ea4753ad62693bb3c7f774263837fed637ea94022be9f1a40",
+    "proofs/city-1300-summer-zoom-0.6.png": "ba8e86f45970ecea9ddf882b1d4e046adf537e4055410b051f47dd34892cc089",
+    "proofs/city-1380-winter-zoom-1.0.png": "176fd4bf68b7bf24ac650909fd3d0c18123d1043f81f63ced9ce16970f4d3627",
+    "proofs/city-1300-summer-zoom-1.0.png": "4f900704e37654b24747c78c18be8cea7fff2225872e33cb0a910ade4154518b",
+    "proofs/city-1380-winter-zoom-0.6.png": "313e2c3253423633cda22cafd39811f6123b425f490c3a4aa1631f187a4c0887",
+    "proofs/city-1450-winter-zoom-1.0.png": "71c4a4bec5f7eb79df231791eb59cf47f2544a4fd846e8532b4fc095d1ebb60f",
+    "proofs/city-1300-winter-zoom-1.0.png": "2b8724335fc870d93c0cf3cf4429a111a3d397fda1e89ed702285132c22953a7",
+    "proofs/city-1380-summer-zoom-0.6.png": "cd8fd38877d2ac77f408f574a3425f301d82dd6041537046724605d2eb2ce37d",
+    "proofs/city-1450-summer-zoom-1.0.png": "ca0a96cac367adf060a1a83506a88b31d53f23d9905a3e7d330d12ee7e277968",
+    "proofs/city-1450-summer-zoom-0.6.png": "afa30ef7ac84df2f0c637f8503552b198520788a3f0631057bf30c3f33da1f08",
+    "proofs/city-1300-winter-zoom-0.6.png": "4d4cd8edf71eb7c230da6dbcd89b029c3cdbcc5e2536d735ed853c65c1b01aa9",
+    "proofs/city-1380-summer-zoom-1.0.png": "57306bc871710e15f226744ed7c92e1bb13058710f1dd4dc699d8af6db14764c",
+    "proofs/blind/R10.png": "806308d5cbc4ca9ea4753ad62693bb3c7f774263837fed637ea94022be9f1a40",
+    "proofs/blind/R04.png": "4f900704e37654b24747c78c18be8cea7fff2225872e33cb0a910ade4154518b",
+    "proofs/blind/R05.png": "ca0a96cac367adf060a1a83506a88b31d53f23d9905a3e7d330d12ee7e277968",
+    "proofs/blind/R11.png": "afa30ef7ac84df2f0c637f8503552b198520788a3f0631057bf30c3f33da1f08",
+    "proofs/blind/R07.png": "57306bc871710e15f226744ed7c92e1bb13058710f1dd4dc699d8af6db14764c",
+    "proofs/blind/R12.png": "cd8fd38877d2ac77f408f574a3425f301d82dd6041537046724605d2eb2ce37d",
+    "proofs/blind/R06.png": "ba8e86f45970ecea9ddf882b1d4e046adf537e4055410b051f47dd34892cc089",
+    "proofs/blind/R02.png": "4d4cd8edf71eb7c230da6dbcd89b029c3cdbcc5e2536d735ed853c65c1b01aa9",
+    "proofs/blind/R03.png": "176fd4bf68b7bf24ac650909fd3d0c18123d1043f81f63ced9ce16970f4d3627",
+    "proofs/blind/R01.png": "313e2c3253423633cda22cafd39811f6123b425f490c3a4aa1631f187a4c0887",
+    "proofs/blind/R08.png": "2b8724335fc870d93c0cf3cf4429a111a3d397fda1e89ed702285132c22953a7",
+    "proofs/blind/R09.png": "71c4a4bec5f7eb79df231791eb59cf47f2544a4fd846e8532b4fc095d1ebb60f",
+    "proofs/identity/bridge_summer.png": "05d2766e12890348a83e5cee230429792e6cbe3efb6fe40a63b7633f884c1736",
+    "proofs/identity/inn_winter.png": "12d5ae7ddc01fc71c7a0b716408eb5c08838e3b4a210679ed5f55c590837d7a4",
+    "proofs/identity/inn_summer.png": "cbd6596f9a094c76b7c139ca1535321d949624aa8bd27150621829d3390644c9",
+    "proofs/identity/bridge_winter.png": "9a0ff9499574df48190a467e349d83575d73d5343c3b147797c8aaf2a6b0b2cc",
+    "proofs/identity/manor_winter.png": "4ed0e60c5883ede545a5b03ecbc0d3a3fc45f2a2cb509eff88baca2454ef6c69",
+    "proofs/identity/gate_summer.png": "5c32a8d27f28cc95da22f0ab12b017a8a4ae8783327ff34702c159b4e3df5696",
+    "proofs/identity/market_summer.png": "29a32116e5be5a1d5aa45a0ed789b56ad47634d8fa71266431f73fbef736ce93",
+    "proofs/identity/church_winter.png": "7124ea8bea43ddf0ec51ba8b0185a0b369b9e00f29a16c809862ab3e1ef5ed97",
+    "proofs/identity/guildhall_summer.png": "b00680db0b10d89713e4f2c8da65e2ae32ad9e4edd71423d8ae15f1c80d91a8c",
+    "proofs/identity/church_summer.png": "fbeeb9c2524d9f2da6d8e66a9a52bceeb4981818315c95f99abaea6248989fa6",
+    "proofs/identity/guildhall_winter.png": "ca458b6533a86e8727d6728891b07f6e14a70055efab9b5b40f6780fbf25f56b",
+    "proofs/identity/manor_summer.png": "b1137b3881f1f9968f47bd68526ff447bb4411069e6fa7ce4deba73d2a2c1795",
+    "proofs/identity/gate_winter.png": "0d9d90c874d71bbdfa9bba93ebba47608830aca1780c6b3d490de93e35154f6a",
+    "proofs/identity/market_winter.png": "60d7ce4ce450c85d83ae8836dbfc9972375cf3b2cb57d334a85471923179824a",
+    "proofs/answer-key.csv": "d56cafe83eae471eb09ff8fac4a5a8563c42a49eabb350a8b0f1e10436150e5c",
+    "assets/manifest.csv": "9c86304129dd9f7716c94fe9de19df75120c3b236f6e120f8c80a3bd6bb05ff7",
+    "records/tools/compose_city.py": "35d45194ed7753f5ade10a6aff66b3189db9323fbd13ee9bc3b3b49c73afe070",
+    "proofs/PROTOCOL.md": "a35e01660ed3e092615c51579b0a1d5f93bdcd7a3f3668349939b7a2a069f6ac",
+    "assets/church_s01_summer.png": "9286fc5eb4f84694e3a9d5749dcf5403164d43072c7d41e43ae69d102772006b",
+    "assets/church_s01_winter.png": "ea28748f1b77ba1b96229d1480c8437c632c987fb8175aaaa91a18e38be54c2b",
+    "assets/church_s02_summer.png": "474fda6f2504049c8b9da07831a62f0bb03018e9072628640111de50cbcfb0b9",
+    "assets/church_s02_winter.png": "f9560b627a7b23ac60bf3b78abe4c498c02e4ba622427a1dab0d0cff0ff473b0",
+    "assets/church_s03_summer.png": "709d45f7f85e888959a66e19cb217519f52401bcc29aca0ab1cab1d39a43b007",
+    "assets/church_s03_winter.png": "2a616583c1f8668f0198b8f1322baa8b5efeaae31f7edd2245072be865b86e5d",
+    "assets/church_s04_summer.png": "82572145d7e1ea165dd2ff4de59ddd5d067b4913e5f58812c81f55fdee079368",
+    "assets/church_s04_winter.png": "2af6beb1bfe80bba433a820a7f0bd4a07ff83eb17a0682003eb5182ea63f754a",
+    "assets/market_s01_summer.png": "b66388432d186cb580fb834817fd18d85190fc8dd6867c1995fec43a883fcc1c",
+    "assets/market_s01_winter.png": "99e7e28a7857d5192c9e022635414b0b7496ad33d5262fc90c392b43c33fda4d",
+    "assets/market_s02_summer.png": "6457e0237fbbb00b33851cf47f16629392fdc932da72e9c3e0a020b47ea57da0",
+    "assets/market_s02_winter.png": "590a87c7b56b69a6973537a9cbd828878a78dab0bb9cf11d6e7de3917c32986c",
+    "assets/market_s03_summer.png": "04922934e977cf27cabe990aaf31962018f80f60ac1e39788b55a81403638cf9",
+    "assets/market_s03_winter.png": "9eee56f9c615f09942d6d19520b78f3f618dea2296f90618e6adff56dbb0c000",
+    "assets/gate_s01_summer.png": "82ca4e2eee5eb253a1489181a8941e32b1e0a89ff08c44ec72b50a3c9d63c945",
+    "assets/gate_s01_winter.png": "d9050bfc5f0b64a00c8a49dcce440ff7856ed9c88e407945e643e1e26c7e6b44",
+    "assets/gate_s02_summer.png": "b1fc8133b706b65558148847ce85db9e20e7a77368e51253852d59562f836060",
+    "assets/gate_s02_winter.png": "ee882c9268c29af9805e3ee99a7b3ff5bedc22831246d6fe9d3626338d01d040",
+    "assets/gate_s03_summer.png": "3dfe2c359898a40b8838ce7b002b0bedd7b584140a22e84dce2f62ee508d60a6",
+    "assets/gate_s03_winter.png": "9e2d0e27d622e7a88884def27c8634c5a94ee051b1f772bbfb0f47ddae4948ba",
+    "assets/bridge_s01_summer.png": "c377d5d51a224a2437383af5e5162e1290d0f8fde930701291f814f40703ff26",
+    "assets/bridge_s01_winter.png": "c4313c1128bbb15646d5b743ea4945dfaad846cbd09c5a1be3e4ba9fbb7dd75d",
+    "assets/bridge_s02_summer.png": "75e224871b502fc4c000eb37e3e29c824fd4ee240489e78bbc84aebfe4fc0c83",
+    "assets/bridge_s02_winter.png": "11c81b2095800c820067a9b4758813e862bd57fb34a53827bc0cc971011f2f3a",
+    "assets/bridge_s03_summer.png": "50de41a7275300d21ef77c4f71dc9ccd03b9b228dcd237d22da262b5dc2c255d",
+    "assets/bridge_s03_winter.png": "63de7610ee22d038e04abe728b58e9841d6de93072fcb4460ba5ff7a9a640d42",
+    "assets/manor_s01_summer.png": "1d9e3d07eb177f021a5ef87eabad8b4badfac494a5cf830e38d20e5eb767c447",
+    "assets/manor_s01_winter.png": "613059eb17828db2d3ddc60cfbb5065d310f50bb5025260bc9fb8c3474fcf4cf",
+    "assets/manor_s02_summer.png": "cb80bab5270b010c16726d13e7edf72d69b04a2869a70c8d559b3b73f7251ba0",
+    "assets/manor_s02_winter.png": "5915337dfadfa37742199bad6aa668859a96c7ec7a615b39dd9d84f7b404767a",
+    "assets/manor_s03_summer.png": "acc77614507c6bb735f3716146adf95aa86fd59305816771fe51a946a7ad94f3",
+    "assets/manor_s03_winter.png": "f28cebb89bc16d9f07054f97ad100a301959605804d4b7f0083e446b2917fc00",
+    "assets/guildhall_s01_summer.png": "da738339e65fc696a1785690fffda8a4da7c9a6f6fd31ff8e88e1bb2c53a29db",
+    "assets/guildhall_s01_winter.png": "346f4cd43808deede23ca55d5312ee1ee8cd796f95d6dec4dfab2f11cc258e18",
+    "assets/guildhall_s02_summer.png": "5b772161decc3d53608698650dce6935de326d29e2419a959b0eb2f0d4a418e3",
+    "assets/guildhall_s02_winter.png": "68bbb0cafb4b2789ead454f56b71c1f3c0037e13c8d09a9c0ae5763aeec5731b",
+    "assets/guildhall_s03_summer.png": "847d4537cf1dfe4d5890d4ea364edb5fe71872fd82474e45e28a8ee4c838038f",
+    "assets/guildhall_s03_winter.png": "0dc2372e2485207760b411a52fcecce4855041d117a96539420b2302b888af79",
+    "assets/inn_s01_summer.png": "67c0f1c8454baafccecb8cb3bd5cff685aff6e0081672ce5907f1d74d88fca03",
+    "assets/inn_s01_winter.png": "cf29fda9665133d6665e0b5c7dc4354725257c0e09191ae0dfa19ea0f8994a21",
+    "assets/inn_s02_summer.png": "9734d59f0e9f25cb988243fa974c257e9c0dfff7e755e322e2bcb7e5a9ea8f6a",
+    "assets/inn_s02_winter.png": "83f1e63b9dc7d1ebda895f2933dd3ab693aaa4c3e9209c86014efc8d0a395814",
+    "assets/inn_s03_summer.png": "7e2808fa1d3f970b77e5ecd9953ab905d66253053806e22123d7c76eae20acf0",
+    "assets/inn_s03_winter.png": "9a3efc167ade70eb40f2cc3516dcc69de5efe816b610283c75d1d90b223d9584",
+    "references/city-house.png": "7aa5228f420c4591861e604bf5d98be5e92099964daaf83f2c13cd6d1f9dd594",
+    "references/city-walker.png": "fd3ac60196ff7c6dd671babcb38e0b891dadb50161342fd4e43c4766e2440e2c",
+    "references/city-background-winter.png": "99879b3e7602ad21633285408add409f131eba25c7aa31a4f87794427c4d362f",
+    "references/city-winter.png": "fb3944c40dde9679ff08f5b6c019e57af53e5814e743e31176f00627de41c052",
+    "references/city-road.png": "d9c7d7c69424615971e6343e945c5767b9ffca69dda51de8e500913596aca2a9",
+    "references/city-background-summer.png": "e097b84d3fb14f9dfe832979c449b98d90395adba5cac1cab9edcab29cd0338e",
+    "references/city-snow.png": "c8a5a69d4555487a19be141d98aaede4b0c6dd17c637d41061a9c90458ec2e73",
+    "references/city-layout.json": "966b38b8c46c338226b4d8e045098b03247770039d3a6f5a9f82e9fb762beda9",
+    "references/city-water.png": "5cc35c189d16c6f19d27b91188b3783182c1d199bf286df30ffb9a3c76d0f76c",
+    "references/city-grass.png": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288"
+  },
+  "freeze_rule": "Do not rerun compose_city or modify these inputs/outputs after blind review begins. Any change creates a new review round."
+}

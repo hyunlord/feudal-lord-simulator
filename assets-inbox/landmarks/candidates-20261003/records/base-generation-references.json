@@ -1,0 +1,35 @@
+{
+  "note": "Six first-stage input reference paths retained from actual call configuration. Church prompt names project chapel/church; precise initial attachment list is not retained in this compact call record, so not inferred here.",
+  "jobs": [
+    {
+      "id": "market_s01_summer",
+      "desc": "An EMPTY open market place before any permanent market building: modest flat isometric worn-earth patch with a few irregular embedded cobbles, low rimless surface and two small bare trestle tables folded/idle near far edge, no stalls, no cross, no roof. Its flat center at(512,690) is reserved for a future market cross. Diamond ground patch roughly400px wide200px deep, not a raised diorama block.",
+      "ref": "public/assets/buildings/historical-facilities-v1/market_quiet-v2.png"
+    },
+    {
+      "id": "gate_s01_summer",
+      "desc": "Small complete timber palisade gateway with an open clear central passage, thick oak uprights and modest pitched tiled guard roof, short pointed timber palisade returns integrated on either side. Main wall runs upper-left to lower-right, passage leads lower-left to upper-right. Gate opening150px wide,150px high. Narrow simple gate before stone rebuilding. Preserve visible central passage ground anchor(512,740). No drawbridge or massive towers.",
+      "ref": "public/assets/wall/palisade_gate_v2-v1.png"
+    },
+    {
+      "id": "bridge_s01_summer",
+      "desc": "One complete modest timber bridge, NOT a sprite sheet. Entire straight continuous wooden deck, three timber trestles below, simple oak handrails both sides, spans northwest upper-left to southeast lower-right. Single continuous bridge400px long, deck95px wide, ends at approximately(330,610) and(690,790). No river or land, water area transparent. Leave width for later side chapel. Same level abutments for future stone reconstruction. Do not copy separate components from reference as a sheet.",
+      "ref": "public/assets/complete-art-v1/water-bridges/bridge_wood_nw_se-v2.png"
+    },
+    {
+      "id": "manor_s01_summer",
+      "desc": "A complete modest gentry manor OAK GREAT HALL, not a castle keep: long single-storey warm oak timber frame and honey limewash, steep red peg-tile gable roof, small attached lower service bay at upper-right end, near lower-left main gable with plain door and small shuttered window, narrow oak porch on near side. Hall ridge lower-left to upper-right. Low rubble plinth. No tower, crenellations, chimney pots or moat. Reserved transparent land on both sides for future detached kitchen and enclosing moat. One main door at(450,740).",
+      "ref": "public/assets/buildings/variants-wave2/house_l4_inn-v1.png"
+    },
+    {
+      "id": "guildhall_s01_summer",
+      "desc": "Small one-storey community guild meeting hall, single complete warm oak frame limewashed rectangle on low rubble footing, steep red peg-tile roof, long wall has three modest shuttered openings and central arched double-door under a little timber porch; left gable has simple oak brace motif. Ridge lower-left to upper-right. No open market arcades underneath, no stalls. Keep core doorway ground at(480,750), room around for later upstairs meeting chamber and rear archive wing.",
+      "ref": "public/assets/wave12/bld/guildhall-v1.png"
+    },
+    {
+      "id": "inn_s01_summer",
+      "desc": "Modest early roadside inn, complete one-storey long oak hall with limewashed panels, red peg-tile roof, small low stable lean-to at far upper-right side. Wide open dark horse passage next to human entrance on visible near side; simple unlettered wood ale-stake projecting beside door. Ridge lower-left to upper-right. No grand galleries yet, no chimney pots. Core door at(450,740), lots of reserved transparent land to right for future lodging wing and courtyard. Distinct stable opening helps retain identity.",
+      "ref": "public/assets/buildings/variants-wave2/house_l4_inn-v1.png"
+    }
+  ]
+}

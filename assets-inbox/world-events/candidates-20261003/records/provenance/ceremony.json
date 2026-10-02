@@ -1,0 +1,416 @@
+[
+  {
+    "id": "wedding",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Create ONE whole static ground-standing game event sprite, transparent RGBA cutout, centered with generous empty transparent margin, no ground plane, no base or terrain slab, no text. Southern England c1300, 2:1 orthographic isometric camera, ground axes ±26.565 degrees, soft hand-painted prerender style matching the supplied project world-art visual reference (muted parchment, oak brown #825C3D, moss, russet, warm linen #F7E8CD); NOT a reference contact sheet. Soft upper-left light, weak contact AO only, no long baked shadows, no black cartoon outlines. Readable broad color masses, simple faces, historically modest linen/wool clothes, normal human proportions. All figures complete head to feet. Summer. Six adults arranged as a paused wedding procession, diagonal lower-left toward upper-right: bride in muted madder red dress and long warm-white linen veil next to groom in oak-brown tunic, one musician visibly holding a small medieval fiddle, one musician with a little hand drum, two attendants alongside a small two-wheel baggage handcart with an oak marriage chest and linen bundle. Distinct bridal veil, couple and music must read immediately. Cart wheel diameter 0.55 adult height; bed height0.55. No flowers arch, no modern white wedding dress, no priest/font, no buildings.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fdba-c20f-7020-b107-b8aac6abc211/exec-11c2565a-dbab-4f9e-a252-25a9bdaa600d.png",
+    "assetId": "wedding-summer",
+    "file": "assets/new/wedding-summer.png",
+    "master": "masters/ceremony/wedding-summer.png",
+    "sha256": "6da3a83bd55b11adfd9a9f1a6f6177dc8f95e3fcf463c406b1d19d2196356660",
+    "sourceSha256": "6be8b37feb987dccc7db49cf49f72cec761adea0a00ff8fdf7fc5b23d78a7155",
+    "width": 320,
+    "height": 240,
+    "pivot": [
+      160,
+      203
+    ],
+    "adultHeightPx": 109.79,
+    "measurement": {
+      "adultHeightSourcePx": 527,
+      "head": [
+        413,
+        382
+      ],
+      "foot": [
+        373,
+        909
+      ],
+      "people": 6,
+      "pivotSource": [
+        768,
+        910
+      ],
+      "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+      "sourceDimensions": [
+        1536,
+        1024
+      ]
+    },
+    "seasonalRegistration": null,
+    "seasonalGeometryNote": "Matching canvas and group anchor; winter garments differ in silhouette. Wedding and baptism global scale drift mechanically registered to same measured adult H and reference foot; no pixel-identical silhouette claim.",
+    "frames": 1,
+    "kind": "static whole group",
+    "status": "candidate",
+    "alpha": {
+      "transparent": 55227,
+      "semi": 4908,
+      "solid": 16665
+    },
+    "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror."
+  },
+  {
+    "id": "baptism",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Create ONE whole static ground-standing game event sprite, transparent RGBA cutout, centered with generous empty transparent margin, no ground plane, no base or terrain slab, no text. Southern England c1300, 2:1 orthographic isometric camera, ground axes ±26.565 degrees, soft hand-painted prerender style matching the supplied project world-art visual reference (muted parchment, oak brown #825C3D, moss, russet, warm linen #F7E8CD); NOT a reference contact sheet. Soft upper-left light, weak contact AO only, no long baked shadows, no black cartoon outlines. Readable broad color masses, simple faces, historically modest linen/wool clothes, normal human proportions. All figures complete head to feet. Summer. Intimate infant baptism gathering, five adults: mother holding clearly visible swaddled infant horizontally, father, black-robed priest with simple pale stole extending hand toward infant, two godparents. Small freestanding rough limestone baptismal basin/font about waist-high centered in their semicircle; no architecture. Plain clothing. Visually focus on mother, infant and priest at font, not a wedding.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fdba-c20f-7020-b107-b8aac6abc211/exec-5651f378-7b8b-4b4f-b710-b96d5c4665a7.png",
+    "assetId": "baptism-summer",
+    "file": "assets/new/baptism-summer.png",
+    "master": "masters/ceremony/baptism-summer.png",
+    "sha256": "8f97a5f2cded3a20658e32c19a68683ef55e99e79468deceb91c0187215996be",
+    "sourceSha256": "0dcf448518b5cf59302e7a62c8080a61c2906084766683822f59228cc0638293",
+    "width": 320,
+    "height": 240,
+    "pivot": [
+      160,
+      203
+    ],
+    "adultHeightPx": 137.92,
+    "measurement": {
+      "adultHeightSourcePx": 662,
+      "head": [
+        410,
+        143
+      ],
+      "foot": [
+        385,
+        805
+      ],
+      "people": 5,
+      "pivotSource": [
+        768,
+        910
+      ],
+      "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+      "sourceDimensions": [
+        1536,
+        1024
+      ]
+    },
+    "seasonalRegistration": null,
+    "seasonalGeometryNote": "Matching canvas and group anchor; winter garments differ in silhouette. Wedding and baptism global scale drift mechanically registered to same measured adult H and reference foot; no pixel-identical silhouette claim.",
+    "frames": 1,
+    "kind": "static whole group",
+    "status": "candidate",
+    "alpha": {
+      "transparent": 49430,
+      "semi": 3860,
+      "solid": 23510
+    },
+    "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror."
+  },
+  {
+    "id": "pilgrimage",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Create ONE whole static ground-standing game event sprite, transparent RGBA cutout, centered with generous empty transparent margin, no ground plane, no base or terrain slab, no text. Southern England c1300, 2:1 orthographic isometric camera, ground axes ±26.565 degrees, soft hand-painted prerender style matching the supplied project world-art visual reference (muted parchment, oak brown #825C3D, moss, russet, warm linen #F7E8CD); NOT a reference contact sheet. Soft upper-left light, weak contact AO only, no long baked shadows, no black cartoon outlines. Readable broad color masses, simple faces, historically modest linen/wool clothes, normal human proportions. All figures complete head to feet. Summer. Six pilgrims assembled along a diagonal path line, two leading adults with tall walking staffs, simple upright wooden cross carried by the leader, broad soft felt travelling hats, hooded wool cloaks, linen shoulder satchels, one small shell badge. Varied but muted moss/russet/ochre. Gathering before departure, all standing, no gait sheet, no tent, no clergy ceremony or weapons.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fdba-c20f-7020-b107-b8aac6abc211/exec-d2720fdd-c10f-4377-871f-f587540081e2.png",
+    "assetId": "pilgrimage-summer",
+    "file": "assets/new/pilgrimage-summer.png",
+    "master": "masters/ceremony/pilgrimage-summer.png",
+    "sha256": "faa0aed776cfd7f41ec3ea2954b5607ae88b5ec0ed977594d7825d73194f7e2c",
+    "sourceSha256": "f371593f0d5790282c93cdc602ac26b89b47975aed549643303e404b9ddf214d",
+    "width": 320,
+    "height": 240,
+    "pivot": [
+      160,
+      212
+    ],
+    "adultHeightPx": 131.88,
+    "measurement": {
+      "adultHeightSourcePx": 633,
+      "head": [
+        388,
+        290
+      ],
+      "foot": [
+        438,
+        923
+      ],
+      "people": 6,
+      "pivotSource": [
+        768,
+        955
+      ],
+      "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+      "sourceDimensions": [
+        1536,
+        1024
+      ]
+    },
+    "seasonalRegistration": null,
+    "seasonalGeometryNote": "Matching canvas and group anchor; winter garments differ in silhouette. Wedding and baptism global scale drift mechanically registered to same measured adult H and reference foot; no pixel-identical silhouette claim.",
+    "frames": 1,
+    "kind": "static whole group",
+    "status": "candidate",
+    "alpha": {
+      "transparent": 47397,
+      "semi": 4690,
+      "solid": 24713
+    },
+    "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror."
+  },
+  {
+    "id": "fair",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Create ONE whole static ground-standing game event sprite, transparent RGBA cutout, centered with generous empty transparent margin, no ground plane, no base or terrain slab, no text. Southern England c1300, 2:1 orthographic isometric camera, ground axes ±26.565 degrees, soft hand-painted prerender style matching the supplied project world-art visual reference (muted parchment, oak brown #825C3D, moss, russet, warm linen #F7E8CD); NOT a reference contact sheet. Soft upper-left light, weak contact AO only, no long baked shadows, no black cartoon outlines. Readable broad color masses, simple faces, historically modest linen/wool clothes, normal human proportions. All figures complete head to feet. Summer. A small medieval fair performance vignette: one complete simple cream-linen ridge tent on oak poles, open front; in front one brightly but muted-russet dressed juggler with three visible ochre balls, one acrobat balancing on hands on bare transparent ground, four standing spectators watching in a loose arc. Tent about2.1adult heights high, broad enough for troupe. Six adults total. No modern circus stripes, no flag text, no terrain base, no market stalls.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fdba-c20f-7020-b107-b8aac6abc211/exec-80b2adb6-a482-4350-b1f9-fc0ce64edae9.png",
+    "assetId": "fair-summer",
+    "file": "assets/new/fair-summer.png",
+    "master": "masters/ceremony/fair-summer.png",
+    "sha256": "76139555738fea1b170e8d558adc14f2ae6c111add4eb7ea4e24dcd07e15d055",
+    "sourceSha256": "e3b5cc233b6d60fd717d8808578289f7b37e39c7ccce39dbc2d1ffac48790b7a",
+    "width": 320,
+    "height": 240,
+    "pivot": [
+      160,
+      213
+    ],
+    "adultHeightPx": 72.5,
+    "measurement": {
+      "adultHeightSourcePx": 348,
+      "head": [
+        1295,
+        488
+      ],
+      "foot": [
+        1260,
+        836
+      ],
+      "people": 6,
+      "pivotSource": [
+        768,
+        960
+      ],
+      "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+      "sourceDimensions": [
+        1536,
+        1024
+      ]
+    },
+    "seasonalRegistration": null,
+    "seasonalGeometryNote": "Matching canvas and group anchor; winter garments differ in silhouette. Wedding and baptism global scale drift mechanically registered to same measured adult H and reference foot; no pixel-identical silhouette claim.",
+    "frames": 1,
+    "kind": "static whole group",
+    "status": "candidate",
+    "alpha": {
+      "transparent": 52602,
+      "semi": 5450,
+      "solid": 18748
+    },
+    "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror."
+  },
+  {
+    "id": "wedding",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather / identity-preserve. Edit THIS ONE existing transparent game event sprite into its WINTER seasonal variant. Keep canvas dimensions, exact camera, positions of every head/hand/foot/object, poses, number of people, entire silhouette/footprint, scale and top-left lighting identical. Change only clothes to visibly heavier wool with closed necks and small hoods/scarves within existing outline; muted cold-season oak-brown/slate/moss palette with original role-identifying colors retained. Add very small snow dusting only on exposed horizontal cart chest or tent roof if present; absolutely no snow ground plane, no new terrain, no added backdrop. Keep baptism infant clearly swaddled and font basin, wedding bride linen veil, pilgrimage cross/staffs, fair juggler/acrobat readily recognizable. True transparent RGBA. No text, no sheet, no extra people, no winter mist or glow. Preserve source geometry for seasonal swapping.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fdba-c20f-7020-b107-b8aac6abc211/exec-13ae553c-eb51-4f05-823b-4e97f6cee2c4.png",
+    "assetId": "wedding-winter",
+    "file": "assets/new/wedding-winter.png",
+    "master": "masters/ceremony/wedding-winter.png",
+    "sha256": "782aa7f7da45c09bfdb9265e3554ae5b5bd8daf871e4c40f7791a84ded3c278e",
+    "sourceSha256": "7a10fef074ce03fb3e0f766e1b6265376fa6bdce045c9d65e5ca47eaeb39bb9a",
+    "width": 320,
+    "height": 240,
+    "pivot": [
+      160,
+      203
+    ],
+    "adultHeightPx": 109.79,
+    "measurement": {
+      "adultHeightSourcePx": 527,
+      "head": [
+        413,
+        382
+      ],
+      "foot": [
+        373,
+        909
+      ],
+      "people": 6,
+      "pivotSource": [
+        768,
+        910
+      ],
+      "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+      "sourceDimensions": [
+        1536,
+        1024
+      ]
+    },
+    "seasonalRegistration": {
+      "scale": 0.8827470686767169,
+      "offset": [
+        79,
+        73
+      ],
+      "sourceAdultH": 597
+    },
+    "seasonalGeometryNote": "Matching canvas and group anchor; winter garments differ in silhouette. Wedding and baptism global scale drift mechanically registered to same measured adult H and reference foot; no pixel-identical silhouette claim.",
+    "frames": 1,
+    "kind": "static whole group",
+    "status": "candidate",
+    "alpha": {
+      "transparent": 54089,
+      "semi": 4341,
+      "solid": 18370
+    },
+    "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror."
+  },
+  {
+    "id": "baptism",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather / identity-preserve. Edit THIS ONE existing transparent game event sprite into its WINTER seasonal variant. Keep canvas dimensions, exact camera, positions of every head/hand/foot/object, poses, number of people, entire silhouette/footprint, scale and top-left lighting identical. Change only clothes to visibly heavier wool with closed necks and small hoods/scarves within existing outline; muted cold-season oak-brown/slate/moss palette with original role-identifying colors retained. Add very small snow dusting only on exposed horizontal cart chest or tent roof if present; absolutely no snow ground plane, no new terrain, no added backdrop. Keep baptism infant clearly swaddled and font basin, wedding bride linen veil, pilgrimage cross/staffs, fair juggler/acrobat readily recognizable. True transparent RGBA. No text, no sheet, no extra people, no winter mist or glow. Preserve source geometry for seasonal swapping.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fdba-c20f-7020-b107-b8aac6abc211/exec-846d8b34-d28a-4b14-b768-eb9655e14c0e.png",
+    "assetId": "baptism-winter",
+    "file": "assets/new/baptism-winter.png",
+    "master": "masters/ceremony/baptism-winter.png",
+    "sha256": "9513cb9fce826b0ddbe8b2df93849545e1009b7993b3188235379b67913e43a3",
+    "sourceSha256": "8de9cf7d6012163ce2c7724e5315954756043ca05823b83708ec595e21ed4c46",
+    "width": 320,
+    "height": 240,
+    "pivot": [
+      160,
+      203
+    ],
+    "adultHeightPx": 137.92,
+    "measurement": {
+      "adultHeightSourcePx": 662,
+      "head": [
+        410,
+        143
+      ],
+      "foot": [
+        385,
+        805
+      ],
+      "people": 5,
+      "pivotSource": [
+        768,
+        910
+      ],
+      "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+      "sourceDimensions": [
+        1536,
+        1024
+      ]
+    },
+    "seasonalRegistration": {
+      "scale": 0.8564036222509702,
+      "offset": [
+        90,
+        55
+      ],
+      "sourceAdultH": 773
+    },
+    "seasonalGeometryNote": "Matching canvas and group anchor; winter garments differ in silhouette. Wedding and baptism global scale drift mechanically registered to same measured adult H and reference foot; no pixel-identical silhouette claim.",
+    "frames": 1,
+    "kind": "static whole group",
+    "status": "candidate",
+    "alpha": {
+      "transparent": 48314,
+      "semi": 3526,
+      "solid": 24960
+    },
+    "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror."
+  },
+  {
+    "id": "pilgrimage",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather / identity-preserve. Edit THIS ONE existing transparent game event sprite into its WINTER seasonal variant. Keep canvas dimensions, exact camera, positions of every head/hand/foot/object, poses, number of people, entire silhouette/footprint, scale and top-left lighting identical. Change only clothes to visibly heavier wool with closed necks and small hoods/scarves within existing outline; muted cold-season oak-brown/slate/moss palette with original role-identifying colors retained. Add very small snow dusting only on exposed horizontal cart chest or tent roof if present; absolutely no snow ground plane, no new terrain, no added backdrop. Keep baptism infant clearly swaddled and font basin, wedding bride linen veil, pilgrimage cross/staffs, fair juggler/acrobat readily recognizable. True transparent RGBA. No text, no sheet, no extra people, no winter mist or glow. Preserve source geometry for seasonal swapping.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fdba-c20f-7020-b107-b8aac6abc211/exec-774ca475-bfaa-4e0b-b412-b9935a020196.png",
+    "assetId": "pilgrimage-winter",
+    "file": "assets/new/pilgrimage-winter.png",
+    "master": "masters/ceremony/pilgrimage-winter.png",
+    "sha256": "0d19526148e3a07979ac4b4f58f5be5d236128ee557e53e3431fa2825bb39731",
+    "sourceSha256": "3a9085dbef3d1c433794af989d39500e83de4caf48982ed8c078657abc34f6e1",
+    "width": 320,
+    "height": 240,
+    "pivot": [
+      160,
+      212
+    ],
+    "adultHeightPx": 131.88,
+    "measurement": {
+      "adultHeightSourcePx": 633,
+      "head": [
+        388,
+        290
+      ],
+      "foot": [
+        438,
+        923
+      ],
+      "people": 6,
+      "pivotSource": [
+        768,
+        955
+      ],
+      "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+      "sourceDimensions": [
+        1536,
+        1024
+      ]
+    },
+    "seasonalRegistration": null,
+    "seasonalGeometryNote": "Matching canvas and group anchor; winter garments differ in silhouette. Wedding and baptism global scale drift mechanically registered to same measured adult H and reference foot; no pixel-identical silhouette claim.",
+    "frames": 1,
+    "kind": "static whole group",
+    "status": "candidate",
+    "alpha": {
+      "transparent": 46204,
+      "semi": 4490,
+      "solid": 26106
+    },
+    "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror."
+  },
+  {
+    "id": "fair",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather / identity-preserve. Edit THIS ONE existing transparent game event sprite into its WINTER seasonal variant. Keep canvas dimensions, exact camera, positions of every head/hand/foot/object, poses, number of people, entire silhouette/footprint, scale and top-left lighting identical. Change only clothes to visibly heavier wool with closed necks and small hoods/scarves within existing outline; muted cold-season oak-brown/slate/moss palette with original role-identifying colors retained. Add very small snow dusting only on exposed horizontal cart chest or tent roof if present; absolutely no snow ground plane, no new terrain, no added backdrop. Keep baptism infant clearly swaddled and font basin, wedding bride linen veil, pilgrimage cross/staffs, fair juggler/acrobat readily recognizable. True transparent RGBA. No text, no sheet, no extra people, no winter mist or glow. Preserve source geometry for seasonal swapping.",
+    "sourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fdba-c20f-7020-b107-b8aac6abc211/exec-103a2a6e-e13f-4337-882f-64f9cf239897.png",
+    "assetId": "fair-winter",
+    "file": "assets/new/fair-winter.png",
+    "master": "masters/ceremony/fair-winter.png",
+    "sha256": "8fe18c429ec1afcda6cecdce1a8562568d1c8828c402b7e73084bd324aafc226",
+    "sourceSha256": "e84fcf1d5a4ad48cd8a3df0897eeb0193263b751b1363bbab2a87823ada6d71b",
+    "width": 320,
+    "height": 240,
+    "pivot": [
+      160,
+      213
+    ],
+    "adultHeightPx": 72.5,
+    "measurement": {
+      "adultHeightSourcePx": 348,
+      "head": [
+        1295,
+        488
+      ],
+      "foot": [
+        1260,
+        836
+      ],
+      "people": 6,
+      "pivotSource": [
+        768,
+        960
+      ],
+      "method": "manual head-to-sole source pixel measurement; exclude hat and equipment",
+      "sourceDimensions": [
+        1536,
+        1024
+      ]
+    },
+    "seasonalRegistration": null,
+    "seasonalGeometryNote": "Matching canvas and group anchor; winter garments differ in silhouette. Wedding and baptism global scale drift mechanically registered to same measured adult H and reference foot; no pixel-identical silhouette claim.",
+    "frames": 1,
+    "kind": "static whole group",
+    "status": "candidate",
+    "alpha": {
+      "transparent": 51317,
+      "semi": 5262,
+      "solid": 20221
+    },
+    "placementRule": "Ground-standing entire vignette; scale by adultHeightPx to17.6worldpx. Clear path or courtyard, no wall attachment. Sort using ground pivot. Do not mirror."
+  }
+]
