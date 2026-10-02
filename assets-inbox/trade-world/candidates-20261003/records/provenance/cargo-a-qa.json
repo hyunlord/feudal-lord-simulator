@@ -1,0 +1,328 @@
+{
+  "count": 20,
+  "builtin_generation_calls": 20,
+  "horizontal_flip_operations": 0,
+  "view_distinctness": "four independently generated views each kind; object construction detail is not pixel-identical between views",
+  "checks": [
+    {
+      "id": "cargo_leather_bundle_NE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_leather_bundle_SE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_leather_bundle_SW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_leather_bundle_NW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_small_cask_NE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_small_cask_SE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_small_cask_SW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_small_cask_NW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_wheel_NE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_wheel_SE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_wheel_SW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_wheel_NW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_cloth_roll_NE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_cloth_roll_SE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_cloth_roll_SW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_cloth_roll_NW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_bread_basket_NE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_bread_basket_SE",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_bread_basket_SW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    },
+    {
+      "id": "cargo_bread_basket_NW",
+      "mode": "RGBA",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "raw_sha_matches": true,
+      "references_sha_match": true,
+      "visual": "pass: one isolated cargo, warm handpaint, no human/text/ground; all directional lighting upper-left; no generated base or modern tire",
+      "review_surface": "working/cargo-a-grip-review.jpg"
+    }
+  ]
+}

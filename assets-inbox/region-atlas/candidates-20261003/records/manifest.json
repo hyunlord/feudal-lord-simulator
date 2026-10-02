@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate-whole-painted-map-atlas",
+  "mapCount": 20,
+  "slotCount": 415,
+  "maps": [
+    {
+      "id": "open_field-01",
+      "image": "maps/open_field-01.jpg",
+      "sha256": "3f6f2ac2432fab7bcf40a4233caa385d5e8103a74a436fc8a434d669a1626669",
+      "slots": 22,
+      "slotJsonSha256": "bd71dcbc3ea8cfaa030203e0124368cc6ac13a7299e529939b350ea210428940",
+      "landmarks": 6,
+      "minAnchorDistancePx": 91.18113840043894,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "open_field-02",
+      "image": "maps/open_field-02.jpg",
+      "sha256": "8e99f869b5a2f5773a6b4f2d1cf5f7888fbdf7284520fed7399d97405a8c56be",
+      "slots": 20,
+      "slotJsonSha256": "a5bf3a09262f2cd9737bfb3132451a0ccac20ce5f11b43d430965fab15aaf8b4",
+      "landmarks": 5,
+      "minAnchorDistancePx": 94.64142856064674,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "open_field-03",
+      "image": "maps/open_field-03.jpg",
+      "sha256": "9de2e514ad5ea8161b58a97b4bf1c8ab1ddbfe926544eba301f0c646b1622fb8",
+      "slots": 20,
+      "slotJsonSha256": "4dd3ea2a85b2bf13d8c4ee42e33207edf724ad0f1208fb5d49f547205a65fef3",
+      "landmarks": 5,
+      "minAnchorDistancePx": 98.15294188153506,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "open_field-04",
+      "image": "maps/open_field-04.jpg",
+      "sha256": "e6c8e35c4a21f0131b6d9126754511d1dab0a4ecb064b9e2ed6d7a07fac31cbb",
+      "slots": 20,
+      "slotJsonSha256": "5e521204a1c090b980cd021b4aa434e6332bfb0aface49fe091800a6cc71e47c",
+      "landmarks": 6,
+      "minAnchorDistancePx": 98.79271228182775,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "coastal_port-01",
+      "image": "maps/coastal_port-01.jpg",
+      "sha256": "77d3abf51f7052083cf3a41a964871afe32f4af09c8c520fe2dc82dc8f70a0d1",
+      "slots": 20,
+      "slotJsonSha256": "5e8cb184a7f13c09a2f0f39b36a58b0297520e9db81967439322a978455e7920",
+      "landmarks": 4,
+      "minAnchorDistancePx": 93.15041599477696,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "coastal_port-02",
+      "image": "maps/coastal_port-02.jpg",
+      "sha256": "95f1dca46cc29e46c41f4a7f2f913ad5093d83e922def7be3124cd64c994c2dd",
+      "slots": 21,
+      "slotJsonSha256": "bda74c4f002e7270fa7d7f34d877c13d8ec8308abbf83a4231e34db04af2868e",
+      "landmarks": 4,
+      "minAnchorDistancePx": 96.82974749528165,
+      "minimumClearance": [
+        70,
+        55
+      ]
+    },
+    {
+      "id": "coastal_port-03",
+      "image": "maps/coastal_port-03.jpg",
+      "sha256": "ae7ac5b676029337bcdc073c33dc9842f41c66f6d69f49b72cbd7db3c4a354bc",
+      "slots": 23,
+      "slotJsonSha256": "e60e691924a0ba1419eed187a3c876c6536fc7bbc3aebe2ba6e3214ebfedfb3e",
+      "landmarks": 3,
+      "minAnchorDistancePx": 96.60745312862771,
+      "minimumClearance": [
+        70,
+        55
+      ]
+    },
+    {
+      "id": "coastal_port-04",
+      "image": "maps/coastal_port-04.jpg",
+      "sha256": "e90e55edf474c6f0e6e64e5ff458a0f9bc5e0ffd43d1f4976659049257b2cb45",
+      "slots": 22,
+      "slotJsonSha256": "04192f9e0b8a36fe9926563eba11c2d3ab2e77ccd1576d42b9a8acf70d810853",
+      "landmarks": 4,
+      "minAnchorDistancePx": 93.1933474020544,
+      "minimumClearance": [
+        70,
+        55
+      ]
+    },
+    {
+      "id": "chalk_downs-01",
+      "image": "maps/chalk_downs-01.jpg",
+      "sha256": "122f34bc4b813680ebc8bb77bc1158d764061cea959054662b95c30438599fff",
+      "slots": 20,
+      "slotJsonSha256": "46f2ca0ccce01cd21d8375312e9086a4ba14248eea1f01b9c24819b774c16e1e",
+      "landmarks": 4,
+      "minAnchorDistancePx": 122.26201372462342,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "chalk_downs-02",
+      "image": "maps/chalk_downs-02.jpg",
+      "sha256": "d280a422dcdb1dffc7eb7c94f6851e44d5e5f5922c3ede8c0caa179732d3f636",
+      "slots": 20,
+      "slotJsonSha256": "b12ba4a1bd49147302c61dac78afc27e60e8dfec70ba6a1db9da9c83d4ddea0b",
+      "landmarks": 5,
+      "minAnchorDistancePx": 96.17692030835673,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "chalk_downs-03",
+      "image": "maps/chalk_downs-03.jpg",
+      "sha256": "c38995f2d84aa856f40735207dabc73b70f674779a2429220b283ee58512d992",
+      "slots": 20,
+      "slotJsonSha256": "02910380e55f0893e8affe1d0ae20d6f55a0721cfe8d847cb149a55e29e20019",
+      "landmarks": 5,
+      "minAnchorDistancePx": 95.4148835350125,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "chalk_downs-04",
+      "image": "maps/chalk_downs-04.jpg",
+      "sha256": "9cc071f13f9e99b26033c87483f27ad1e58191987f753d2f46fc3ed0f6a60e7f",
+      "slots": 20,
+      "slotJsonSha256": "485530e56d457c4b301a207cd0c1e5de34a790a9454c2ba918c28699f26a49dc",
+      "landmarks": 6,
+      "minAnchorDistancePx": 105.6030302595527,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "forest_edge-01",
+      "image": "maps/forest_edge-01.jpg",
+      "sha256": "7980aa38e0fd92d5b824ca314a700cbb32e5a50080efa10f91ea64da0b849247",
+      "slots": 20,
+      "slotJsonSha256": "3264f12bc4930c6a66c210e8683bb7ab90ad7ba46570040591962de1ee815a7f",
+      "landmarks": 5,
+      "minAnchorDistancePx": 90.13878188659974,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "forest_edge-02",
+      "image": "maps/forest_edge-02.jpg",
+      "sha256": "2b2a29b7f35ddbb7a33a67fc567b118a4938428c2374e1b4087cb110ffb2131d",
+      "slots": 20,
+      "slotJsonSha256": "8cb314d8454857558ff8b296072a17f16ed9039e5b5e7e56de10607d36c396b0",
+      "landmarks": 4,
+      "minAnchorDistancePx": 94.33981132056603,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "forest_edge-03",
+      "image": "maps/forest_edge-03.jpg",
+      "sha256": "15494cdbb51096036145691072b2741e131daffc2da23a249d4eb0f4512f86fd",
+      "slots": 20,
+      "slotJsonSha256": "bafb2f841abb35a5a1c02c1fff85630c5bd880222f43fad667a53dcb76c3c545",
+      "landmarks": 6,
+      "minAnchorDistancePx": 95,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "forest_edge-04",
+      "image": "maps/forest_edge-04.jpg",
+      "sha256": "a54ff678df409c204d74b3be0ca550eb62515d6f42b2743b4d7b924ee5abd5ce",
+      "slots": 20,
+      "slotJsonSha256": "830bc7941169f874e8ac75f16a992150dcc69e6a19fd3325007b2a8d291ff20d",
+      "landmarks": 6,
+      "minAnchorDistancePx": 94.86832980505139,
+      "minimumClearance": [
+        60,
+        45
+      ]
+    },
+    {
+      "id": "fen_drainage-01",
+      "image": "maps/fen_drainage-01.jpg",
+      "sha256": "b71fa67162037f5c8244831c762e0d74255795c452bf41d1359d78e12160bf02",
+      "slots": 21,
+      "slotJsonSha256": "fe439f01a72a6cd36d54159469d62d3f55a700a434dac558adb7cdf2581f17f3",
+      "landmarks": 5,
+      "minAnchorDistancePx": 101.41498903022176,
+      "minimumClearance": [
+        70,
+        55
+      ]
+    },
+    {
+      "id": "fen_drainage-02",
+      "image": "maps/fen_drainage-02.jpg",
+      "sha256": "f2e6760583084f7e20824f27d0f073e9c0909f66776cbe6de8eb0ddb9ce5e831",
+      "slots": 23,
+      "slotJsonSha256": "df9e16f0331085e8cfcfe260344752cc374fed4eb0769b137567e00762de5975",
+      "landmarks": 4,
+      "minAnchorDistancePx": 92.19544457292888,
+      "minimumClearance": [
+        70,
+        55
+      ]
+    },
+    {
+      "id": "fen_drainage-03",
+      "image": "maps/fen_drainage-03.jpg",
+      "sha256": "e7b2bba8ec76a893e549515629010511b9438a1a258296ffaa81bb3d3c71894e",
+      "slots": 22,
+      "slotJsonSha256": "fde790ea970027a3560806111c52f471bfbe9a50e932a895594c07fd111d3547",
+      "landmarks": 4,
+      "minAnchorDistancePx": 92.77930803794561,
+      "minimumClearance": [
+        70,
+        55
+      ]
+    },
+    {
+      "id": "fen_drainage-04",
+      "image": "maps/fen_drainage-04.jpg",
+      "sha256": "ec75cfe5c06c455493525b1320e66107480a34d67f2f4c4501d16c4079c981ed",
+      "slots": 21,
+      "slotJsonSha256": "828e90783b9679131de2fa93c5612c0500c2ccb2f4c9106c3e2eafaab0b94e59",
+      "landmarks": 4,
+      "minAnchorDistancePx": 92.47702417357513,
+      "minimumClearance": [
+        70,
+        55
+      ]
+    }
+  ],
+  "overlays": "overlays/manifest.json",
+  "neighborExample": "proofs/neighbor-18.json"
+}

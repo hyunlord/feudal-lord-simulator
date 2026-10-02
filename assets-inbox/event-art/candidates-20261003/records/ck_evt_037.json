@@ -1,0 +1,29 @@
+{
+  "id": "ck_evt_037",
+  "prompt": "Use case: historical-scene. Generate one finished narrative event illustration for Charter & Kin, southern England market town. Input images are STYLE references only, not scene templates. Match warm earthy painterly narrative realism, nuanced natural faces, rough wool and linen, worn natural oak, softly worked brush texture in both references. Wide 16:9 landscape full bleed, intended 960x540. Natural anatomy and believable hands. No text whatsoever, no letters, numbers, pseudo-writing, captions, UI, watermarks. Every document entirely blank parchment except a simple wax seal. No modern objects, no Tudor black-white architecture, no ordinary cottage chimneys or glazed windows. ONE complete original scene, not collage. Year1377. Winter evening in gentry family's dining room, exactly THREE people: older family elder waiting seated by an untouched wooden bowl at the far end, lord at middle, estate clerk close foreground tying a sealed parcel destined for a distant estate. Long oak family dining table recedes strongly from lower foreground toward back, two distinct ends: unused eating setting farther away versus end burdened by thick bound blank-page ledgers, tied account rolls and sealed dispatch parcels. Elder gestures toward loaded work end while lord torn between family and accounts. Candle and warm side firelight, no visible chimney necessary. Modest fitted wool gowns and hoods appropriate late1370s, elder linen headcover. Lived-in plaster and oak, not grand palace.",
+  "reference_paths": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-0164f1d4-0df9-4e70-9eb3-9a43a0bda8bc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-0164f1d4-0df9-4e70-9eb3-9a43a0bda8bc.png",
+  "tool": "builtin image_gen",
+  "qa": "Visually reviewed full generated image: story clear, no writing, natural anatomy; three foreground principals in034 plus minor distant silhouettes.",
+  "raw_size": [
+    1672,
+    941
+  ],
+  "raw_sha256": "d30652b9065ee48d062ebce25e156fe1747ea645e32b24c9cb3e45db320ccd7b",
+  "final_sha256": "293999cae68bc9d5df4b316026612fec56218da2456f60a9ac0c025904645413",
+  "final_file": "assets/ck_evt_037.jpg",
+  "final_size": [
+    960,
+    540
+  ],
+  "processing": "Pillow ImageOps.fit Lanczos centered crop/resize; RGB JPEG quality85 optimize",
+  "status": "candidate",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}

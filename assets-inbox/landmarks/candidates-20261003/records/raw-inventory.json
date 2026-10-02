@@ -1,0 +1,377 @@
+{
+  "retained_local_root": "/tmp/astra-landmark-growth-20261003-work",
+  "raw_files": [
+    {
+      "path": "raw/bridge_s01_summer.png",
+      "sha256": "9d187defecf05b76c9e752627e3603408d0b52e9955610330beef04714fab73f",
+      "bytes": 473761,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/bridge_s01_winter.png",
+      "sha256": "2aed55a7436ce9dccc20c45e17e808820419674378776d8765fb43bf58eefe6a",
+      "bytes": 473204,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/bridge_s02_summer.png",
+      "sha256": "b318b4deafb7902e758b74a37e9f54036f5d90afe2e4b9b6668e06ccbe76d9a3",
+      "bytes": 549572,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/bridge_s02_winter.png",
+      "sha256": "3a67925f1761da2259294d3688169e629eefaa553ab7a3945098658ba77179db",
+      "bytes": 547835,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/bridge_s03_summer.png",
+      "sha256": "06dc4cf304196ffe716acab4152de7199ad4cfa90032cd95249332fc331b0936",
+      "bytes": 1080783,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/bridge_s03_summer_door_retry.png",
+      "sha256": "06dc4cf304196ffe716acab4152de7199ad4cfa90032cd95249332fc331b0936",
+      "bytes": 1080783,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/bridge_s03_summer_geometry_retry.png",
+      "sha256": "caf61329fbe196c7a9bb6f992e84cfeeeb951c2fd585999504bb5a8c0c895df8",
+      "bytes": 842443,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/bridge_s03_summer_retry.png",
+      "sha256": "8c6b3dcd9d9a58a4df69214c29b07bad38b90355b179f8a30cc241a956fb5518",
+      "bytes": 1030679,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/bridge_s03_winter.png",
+      "sha256": "defd8367ef9ab0cdb5c027e0dab59604a6d7a665a0155dff22e946efe5695c4f",
+      "bytes": 1081051,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/church_s01_summer.png",
+      "sha256": "a3f270eb3d99abe484e382a6ef63bab1df03ce2dc4fcc83a79627a2b25bf3069",
+      "bytes": 670583,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/church_s01_winter.png",
+      "sha256": "f4005d38fad6dd960a16438641c84fed964a4993a05ea6598dcd354e98aa6192",
+      "bytes": 926437,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/church_s02_summer.png",
+      "sha256": "3119ae3a9ba7399ed446c7198f8142117dee0f015b8f59b1ecbd873bb62d5ca5",
+      "bytes": 664417,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/church_s02_winter.png",
+      "sha256": "376f3ef5341e28c53404bf72b72690c18918d2a7940ee37837ca9df7c5121882",
+      "bytes": 647311,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/church_s03_summer.png",
+      "sha256": "9bc8bad293bc7c493da887fd434c8d9f68e867d52eefc1ed0ac223c88e144a92",
+      "bytes": 1332079,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/church_s03_winter.png",
+      "sha256": "6f0138221eb6050e3a755f9ed1674260a7bf61cde5d79129cbe0155ce3b570c0",
+      "bytes": 1286523,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/church_s04_summer.png",
+      "sha256": "baf8b5835d791a26cbbdbfc0ddf71b264f39acabf9e7b12ef9d4d465843d5425",
+      "bytes": 1843646,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/church_s04_winter.png",
+      "sha256": "b59a810e59ea2c7104520c20ef1fb0b13f34b7f8d357364aab08482eb1f590fa",
+      "bytes": 1829864,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/gate_s01_summer.png",
+      "sha256": "823abab0712c9db7add5e97539b3d3053558e9685c481945385e4e49c31db744",
+      "bytes": 1096124,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/gate_s01_winter.png",
+      "sha256": "a3aeaaf3fb00e32f1f391ffda2cfe3e46ece311c037fb6c5cec5660706010870",
+      "bytes": 1071968,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/gate_s01_winter_retry.png",
+      "sha256": "a3aeaaf3fb00e32f1f391ffda2cfe3e46ece311c037fb6c5cec5660706010870",
+      "bytes": 1071968,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/gate_s02_summer.png",
+      "sha256": "a70340488cba4da06c46506bf58055a4ea8807d741f796bef094c50da886dfb1",
+      "bytes": 1396196,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/gate_s02_winter.png",
+      "sha256": "6673a15e1f4b5474d991527d58bf662cbe4325ed94ef85a435f6f1431f863ef3",
+      "bytes": 1366021,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/gate_s03_summer.png",
+      "sha256": "8d22afd6d19f5de9159fb4c1fd460fc572e2a2a57cb3922e2801c1c4c19143f7",
+      "bytes": 1295340,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/gate_s03_winter.png",
+      "sha256": "9419c9eaddd07cbf0537e4cb3f1070c32b1da174107ccb54f030c277d2a356a0",
+      "bytes": 1251642,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/guildhall_s01_summer.png",
+      "sha256": "27ea1c66a2a4227f0c1fe6be5b3710e24e08bea75094757d198ae000425330aa",
+      "bytes": 1029610,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/guildhall_s01_winter.png",
+      "sha256": "437504b71a073bd0b3dd16a6e185dc3e9391efc31849df4fab51baf2e6fc9f6c",
+      "bytes": 943777,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/guildhall_s01_winter_retry.png",
+      "sha256": "437504b71a073bd0b3dd16a6e185dc3e9391efc31849df4fab51baf2e6fc9f6c",
+      "bytes": 943777,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/guildhall_s02_summer.png",
+      "sha256": "fe2aaa297ab080d304366a907be350cafef6dad1567f340f0452336fe5aae69d",
+      "bytes": 1338678,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/guildhall_s02_winter.png",
+      "sha256": "443a2127d118f930d5589aedc08e9a0c304ba737b347bf84c96cd00e71ea661d",
+      "bytes": 1358345,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/guildhall_s03_summer.png",
+      "sha256": "7cd29afa76bb73198a2f78368ddf7daaa24c2de338edf29140e0b2e3cb68ea67",
+      "bytes": 1757724,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/guildhall_s03_winter.png",
+      "sha256": "cc4cb53932112ea82dca2cb128645f519d85fbb2347d9471ab0cec380523d0d7",
+      "bytes": 1684470,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/inn_s01_summer.png",
+      "sha256": "af03bb7384ff785141469efe0ef55244144b788bc869721c1316871c17db24d1",
+      "bytes": 834245,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/inn_s01_summer_season_match_retry.png",
+      "sha256": "af03bb7384ff785141469efe0ef55244144b788bc869721c1316871c17db24d1",
+      "bytes": 834245,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/inn_s01_winter.png",
+      "sha256": "5e44046a7678e7456bb6620411b24651890b562485959df57985f2f22ed5c6b5",
+      "bytes": 783928,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/inn_s01_winter_retry.png",
+      "sha256": "5e44046a7678e7456bb6620411b24651890b562485959df57985f2f22ed5c6b5",
+      "bytes": 783928,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/inn_s02_summer.png",
+      "sha256": "e4c126c753a32f9943b24b5afcdc5ceb2d9d84874a9633c58e5d386cdeec15fc",
+      "bytes": 1158523,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/inn_s02_winter.png",
+      "sha256": "b4ae9528b01abf166550b2298e739e8b7fb1fcbdd95769e76ae1579061d0e3f8",
+      "bytes": 1149225,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/inn_s03_summer.png",
+      "sha256": "ca61a64cb111b7e3aa10d41e658c22717c82bd3589941a5faae44ebd00b39754",
+      "bytes": 1804513,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/inn_s03_winter.png",
+      "sha256": "009dfa64108de2426981aa54fef0e6dfc4c2e99ef662fa9d814592fd59ed0568",
+      "bytes": 1764046,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/manor_s01_summer.png",
+      "sha256": "a3c1f49f155fb2cfe6d69a8ce2e0e939272435902206b6883e9d4d871f27d1b5",
+      "bytes": 841084,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/manor_s01_winter.png",
+      "sha256": "51ea245c5a0f54352b655db0073180e84d07a7f7e7885e0f538aac5e73fda589",
+      "bytes": 754045,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/manor_s01_winter_retry.png",
+      "sha256": "51ea245c5a0f54352b655db0073180e84d07a7f7e7885e0f538aac5e73fda589",
+      "bytes": 754045,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/manor_s02_summer.png",
+      "sha256": "7a71dd3b8e0dffe8c1d658866ed7196f2963af3bbfca8d537727cf6ca1102a1b",
+      "bytes": 1047120,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/manor_s02_winter.png",
+      "sha256": "56a340d5dbd5981d62925a23a18dabf09a29bf6482297f261d9c8cdb75e66487",
+      "bytes": 1043341,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/manor_s03_summer.png",
+      "sha256": "bd5ad26f444f7735cc5bddd2452ae5689c1ef7313be844f3e40dc1951279575f",
+      "bytes": 1960898,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/manor_s03_winter.png",
+      "sha256": "fd73793024452993023000b5145830a8bec472d9602eecbeca3394db92086118",
+      "bytes": 1934164,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/market_s01_summer.png",
+      "sha256": "973daac1f5b2ea489a9c02c304bfee4896b9e03af06a3d4c55ea1941604cd466",
+      "bytes": 570997,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/market_s01_winter.png",
+      "sha256": "64e6fddede18f2c396bc828074fc048b86f3ac2c07496efd8162859b95bcf78e",
+      "bytes": 601517,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/market_s02_summer.png",
+      "sha256": "f3d328377d2033e9f297c53dc492007a107e24a49a9d17a3aeb768ca75c549f0",
+      "bytes": 810481,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/market_s02_winter.png",
+      "sha256": "96c94ad4b7a778567bd3bf4826ef167af22006cf582e2a978b11547769e80116",
+      "bytes": 840360,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/market_s03_summer.png",
+      "sha256": "367dfd5a7af4766aec17374efc9fa43feae0c2d41e70867fc1c712ad716b5227",
+      "bytes": 1375202,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/market_s03_winter.png",
+      "sha256": "b5b8bd0501eb4c393093f68726e967ab69a789c4d8ad434b1faa0c082c38202e",
+      "bytes": 1307497,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/rejected/bridge_s03_summer.png",
+      "sha256": "e32503ac80d3b96c81a64de84ec44bddbbb6e0fb7f24080e8d9a901c4ad0b80f",
+      "bytes": 695954,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/rejected/bridge_s03_summer_enlarged.png",
+      "sha256": "8c6b3dcd9d9a58a4df69214c29b07bad38b90355b179f8a30cc241a956fb5518",
+      "bytes": 1030679,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/rejected/bridge_s03_summer_small_door.png",
+      "sha256": "caf61329fbe196c7a9bb6f992e84cfeeeb951c2fd585999504bb5a8c0c895df8",
+      "bytes": 842443,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/rejected/bridge_s03_winter_enlarged.png",
+      "sha256": "315277f4f934877b55f3597ab22497860b6104fd2332c6e1ef762f88e2770c44",
+      "bytes": 1001147,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/rejected/bridge_s03_winter_small_door.png",
+      "sha256": "a91306aa545b58561e6c9c3e408d13ce78856bcfda62dfe86a0399013cf76de2",
+      "bytes": 822739,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/rejected/gate_s01_winter.png",
+      "sha256": "b6e4f8f750c25ae8af3fcf73e7e7b9f3442936221b068f7b3bace48d3f766551",
+      "bytes": 1076241,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/rejected/guildhall_s01_winter.png",
+      "sha256": "3152be1d6c251c66580f69c6644ba833f66b7e630357e59f9c0b89c9dc4d67a2",
+      "bytes": 985173,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/rejected/inn_s01_summer.png",
+      "sha256": "e3e0b8b3a7dbf706173037144fea414f91bab06d4ff3ecad69e3ea530edddbb0",
+      "bytes": 812098,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/rejected/inn_s01_winter.png",
+      "sha256": "9f14c7640bec3bf2d476e79e674ee749023b1a5c803b09d82bcbd013aa56335b",
+      "bytes": 840446,
+      "included_in_zip": false
+    },
+    {
+      "path": "raw/rejected/manor_s01_winter.png",
+      "sha256": "004e538f44bf02534626efdf7a50a1e4caf3325e3c094f14b8b9779730269e50",
+      "bytes": 1204824,
+      "included_in_zip": false
+    }
+  ]
+}

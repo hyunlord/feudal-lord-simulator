@@ -1,0 +1,1712 @@
+{
+  "schemaVersion": 1,
+  "seed": "17",
+  "archetype": "open_field",
+  "width": 1600,
+  "height": 1000,
+  "coast": null,
+  "estates": [
+    {
+      "id": "estate-01",
+      "kind": "village",
+      "x": 1341,
+      "y": 423
+    },
+    {
+      "id": "estate-02",
+      "kind": "manor",
+      "x": 290,
+      "y": 546
+    },
+    {
+      "id": "estate-03",
+      "kind": "market",
+      "x": 1058,
+      "y": 612
+    },
+    {
+      "id": "estate-04",
+      "kind": "abbey",
+      "x": 398,
+      "y": 234
+    },
+    {
+      "id": "estate-05",
+      "kind": "castle",
+      "x": 449,
+      "y": 549
+    },
+    {
+      "id": "estate-06",
+      "kind": "village",
+      "x": 423,
+      "y": 404
+    },
+    {
+      "id": "estate-07",
+      "kind": "manor",
+      "x": 1439,
+      "y": 577
+    },
+    {
+      "id": "estate-08",
+      "kind": "market",
+      "x": 1314,
+      "y": 275
+    },
+    {
+      "id": "estate-09",
+      "kind": "abbey",
+      "x": 1430,
+      "y": 797
+    },
+    {
+      "id": "estate-10",
+      "kind": "castle",
+      "x": 1261,
+      "y": 742
+    },
+    {
+      "id": "estate-11",
+      "kind": "village",
+      "x": 1054,
+      "y": 317
+    },
+    {
+      "id": "estate-12",
+      "kind": "manor",
+      "x": 770,
+      "y": 720
+    }
+  ],
+  "rivers": [
+    {
+      "id": "main",
+      "width": 22,
+      "points": [
+        [
+          801.4716018562257,
+          1000
+        ],
+        [
+          808.081292828621,
+          980
+        ],
+        [
+          814.7427951027464,
+          960
+        ],
+        [
+          821.3378573145442,
+          940
+        ],
+        [
+          827.7494075077952,
+          920
+        ],
+        [
+          833.8636313317907,
+          900
+        ],
+        [
+          839.5719924117624,
+          880
+        ],
+        [
+          844.7731590275575,
+          860
+        ],
+        [
+          849.3748028992027,
+          840
+        ],
+        [
+          853.2952381482972,
+          820
+        ],
+        [
+          856.464871341284,
+          800
+        ],
+        [
+          858.8274368742184,
+          780
+        ],
+        [
+          860.3409957691565,
+          760
+        ],
+        [
+          860.9786801520753,
+          740
+        ],
+        [
+          860.7291701967529,
+          720
+        ],
+        [
+          859.5968950681656,
+          700
+        ],
+        [
+          857.6019542983613,
+          680
+        ],
+        [
+          854.7797609905012,
+          660
+        ],
+        [
+          851.1804131847206,
+          640
+        ],
+        [
+          846.8678045449761,
+          620
+        ],
+        [
+          841.9184901534868,
+          600
+        ],
+        [
+          836.4203275465651,
+          580
+        ],
+        [
+          830.4709171154325,
+          560
+        ],
+        [
+          824.1758695571767,
+          540
+        ],
+        [
+          817.6469311311157,
+          520
+        ],
+        [
+          811,
+          500
+        ],
+        [
+          804.3530688688843,
+          480
+        ],
+        [
+          797.8241304428233,
+          460
+        ],
+        [
+          791.5290828845675,
+          440
+        ],
+        [
+          785.5796724534349,
+          420
+        ],
+        [
+          780.0815098465132,
+          400
+        ],
+        [
+          775.1321954550239,
+          380
+        ],
+        [
+          770.8195868152794,
+          360
+        ],
+        [
+          767.2202390094988,
+          340
+        ],
+        [
+          764.3980457016387,
+          320
+        ],
+        [
+          762.4031049318344,
+          300
+        ],
+        [
+          761.2708298032471,
+          280
+        ],
+        [
+          761.0213198479247,
+          260
+        ],
+        [
+          761.6590042308435,
+          240
+        ],
+        [
+          763.1725631257816,
+          220
+        ],
+        [
+          765.535128658716,
+          200
+        ],
+        [
+          768.7047618517028,
+          180
+        ],
+        [
+          772.6251971007973,
+          160
+        ],
+        [
+          777.2268409724425,
+          140
+        ],
+        [
+          782.4280075882376,
+          120
+        ],
+        [
+          788.1363686682093,
+          100
+        ],
+        [
+          794.2505924922048,
+          80
+        ],
+        [
+          800.6621426854558,
+          60
+        ],
+        [
+          807.2572048972536,
+          40
+        ],
+        [
+          813.918707171379,
+          20
+        ],
+        [
+          820.5283981437743,
+          0
+        ]
+      ]
+    }
+  ],
+  "network": {
+    "nodes": {
+      "estate-01": [
+        1341,
+        423
+      ],
+      "estate-02": [
+        290,
+        546
+      ],
+      "estate-03": [
+        1058,
+        612
+      ],
+      "estate-04": [
+        398,
+        234
+      ],
+      "estate-05": [
+        449,
+        549
+      ],
+      "estate-06": [
+        423,
+        404
+      ],
+      "estate-07": [
+        1439,
+        577
+      ],
+      "estate-08": [
+        1314,
+        275
+      ],
+      "estate-09": [
+        1430,
+        797
+      ],
+      "estate-10": [
+        1261,
+        742
+      ],
+      "estate-11": [
+        1054,
+        317
+      ],
+      "estate-12": [
+        770,
+        720
+      ]
+    },
+    "edges": [
+      {
+        "id": "road-1",
+        "from": "estate-01",
+        "to": "estate-08",
+        "kind": "road",
+        "points": [
+          [
+            1341,
+            423
+          ],
+          [
+            1327.0671719447198,
+            364.8034226797335
+          ],
+          [
+            1326.3222038292606,
+            361.59267239682436
+          ],
+          [
+            1325.6165123182182,
+            358.347850766175
+          ],
+          [
+            1324.9500974115927,
+            355.06895778778534
+          ],
+          [
+            1324.322959109384,
+            351.75599346165546
+          ],
+          [
+            1323.7350974115925,
+            348.4089577877853
+          ],
+          [
+            1323.1865123182179,
+            345.02785076617494
+          ],
+          [
+            1322.6772038292604,
+            341.61267239682434
+          ],
+          [
+            1322.2071719447197,
+            338.16342267973346
+          ],
+          [
+            1314,
+            275
+          ]
+        ]
+      },
+      {
+        "id": "road-2",
+        "from": "estate-01",
+        "to": "estate-07",
+        "kind": "road",
+        "points": [
+          [
+            1341,
+            423
+          ],
+          [
+            1372.7946099670557,
+            478.5394863139
+          ],
+          [
+            1374.5969578541933,
+            481.63952262318026
+          ],
+          [
+            1376.5143492021487,
+            484.8438342726662
+          ],
+          [
+            1378.546784010922,
+            488.1524212623577
+          ],
+          [
+            1380.694262280513,
+            491.56528359225484
+          ],
+          [
+            1382.956784010922,
+            495.0824212623577
+          ],
+          [
+            1385.3343492021486,
+            498.70383427266614
+          ],
+          [
+            1387.826957854193,
+            502.4295226231802
+          ],
+          [
+            1390.4346099670556,
+            506.25948631389997
+          ],
+          [
+            1439,
+            577
+          ]
+        ]
+      },
+      {
+        "id": "road-3",
+        "from": "estate-07",
+        "to": "estate-09",
+        "kind": "road",
+        "points": [
+          [
+            1439,
+            577
+          ],
+          [
+            1447.1407472457643,
+            662.1585606523789
+          ],
+          [
+            1447.5063395296693,
+            666.8664793422416
+          ],
+          [
+            1447.7096197324583,
+            671.6435641207149
+          ],
+          [
+            1447.750587854132,
+            676.489814987799
+          ],
+          [
+            1447.6292438946896,
+            681.4052319434937
+          ],
+          [
+            1447.3455878541317,
+            686.389814987799
+          ],
+          [
+            1446.8996197324584,
+            691.443564120715
+          ],
+          [
+            1446.2913395296691,
+            696.5664793422417
+          ],
+          [
+            1445.5207472457644,
+            701.758560652379
+          ],
+          [
+            1430,
+            797
+          ]
+        ]
+      },
+      {
+        "id": "road-4",
+        "from": "estate-09",
+        "to": "estate-10",
+        "kind": "road",
+        "points": [
+          [
+            1430,
+            797
+          ],
+          [
+            1368.5263633025017,
+            780.0153684667312
+          ],
+          [
+            1365.0991917232775,
+            779.045107958655
+          ],
+          [
+            1361.5647834524027,
+            777.9984933100292
+          ],
+          [
+            1357.9231384898783,
+            776.8755245208537
+          ],
+          [
+            1354.174256835703,
+            775.6762015911285
+          ],
+          [
+            1350.318138489878,
+            774.4005245208537
+          ],
+          [
+            1346.354783452403,
+            773.0484933100292
+          ],
+          [
+            1342.2841917232774,
+            771.620107958655
+          ],
+          [
+            1338.106363302502,
+            770.1153684667312
+          ],
+          [
+            1261,
+            742
+          ]
+        ]
+      },
+      {
+        "id": "road-5",
+        "from": "estate-10",
+        "to": "estate-03",
+        "kind": "road",
+        "points": [
+          [
+            1261,
+            742
+          ],
+          [
+            1177.492944114264,
+            682.9563542220742
+          ],
+          [
+            1172.9121403636534,
+            679.7555541580427
+          ],
+          [
+            1168.3351376846454,
+            676.6335541123058
+          ],
+          [
+            1163.761936077241,
+            673.5903540848637
+          ],
+          [
+            1159.1925355414394,
+            670.6259540757164
+          ],
+          [
+            1154.626936077241,
+            667.7403540848638
+          ],
+          [
+            1150.0651376846456,
+            664.9335541123058
+          ],
+          [
+            1145.5071403636532,
+            662.2055541580426
+          ],
+          [
+            1140.952944114264,
+            659.5563542220741
+          ],
+          [
+            1058,
+            612
+          ]
+        ]
+      },
+      {
+        "id": "road-6",
+        "from": "estate-08",
+        "to": "estate-11",
+        "kind": "road",
+        "points": [
+          [
+            1314,
+            275
+          ],
+          [
+            1217.9414270211478,
+            298.5342476267647
+          ],
+          [
+            1212.597608349145,
+            299.7824470173792
+          ],
+          [
+            1207.1091664405712,
+            300.9440180106752
+          ],
+          [
+            1201.4761012954273,
+            302.01896060665285
+          ],
+          [
+            1195.6984129137127,
+            303.007274805312
+          ],
+          [
+            1189.7761012954272,
+            303.90896060665284
+          ],
+          [
+            1183.7091664405714,
+            304.7240180106752
+          ],
+          [
+            1177.4976083491447,
+            305.4524470173792
+          ],
+          [
+            1171.1414270211476,
+            306.0942476267647
+          ],
+          [
+            1054,
+            317
+          ]
+        ]
+      },
+      {
+        "id": "road-7",
+        "from": "estate-03",
+        "to": "estate-12",
+        "kind": "road",
+        "points": [
+          [
+            1058,
+            612
+          ],
+          [
+            965.0094539558958,
+            684.16
+          ],
+          [
+            959.9861979665841,
+            687.8725
+          ],
+          [
+            955.1227094425138,
+            691.0899999999999
+          ],
+          [
+            950.4189883836851,
+            693.8125
+          ],
+          [
+            945.8750347900982,
+            696.04
+          ],
+          [
+            941.4908486617527,
+            697.7725
+          ],
+          [
+            937.2664299986488,
+            699.01
+          ],
+          [
+            933.2017788007865,
+            699.7525
+          ],
+          [
+            929.2968950681657,
+            700
+          ],
+          [
+            874.8968950681656,
+            700
+          ],
+          [
+            871.0718950681656,
+            700
+          ],
+          [
+            867.2468950681656,
+            700
+          ],
+          [
+            863.4218950681656,
+            700
+          ],
+          [
+            859.5968950681656,
+            700
+          ],
+          [
+            855.7718950681656,
+            700
+          ],
+          [
+            851.9468950681658,
+            700
+          ],
+          [
+            848.1218950681657,
+            700
+          ],
+          [
+            844.2968950681657,
+            700
+          ],
+          [
+            789.8968950681656,
+            700
+          ],
+          [
+            786.2980288007864,
+            700.05625
+          ],
+          [
+            783.1514299986487,
+            700.225
+          ],
+          [
+            780.4570986617526,
+            700.50625
+          ],
+          [
+            778.2150347900981,
+            700.9
+          ],
+          [
+            776.4252383836852,
+            701.40625
+          ],
+          [
+            775.0877094425139,
+            702.0250000000001
+          ],
+          [
+            774.202447966584,
+            702.75625
+          ],
+          [
+            773.7694539558958,
+            703.6
+          ],
+          [
+            770,
+            720
+          ]
+        ]
+      },
+      {
+        "id": "road-8",
+        "from": "estate-12",
+        "to": "estate-05",
+        "kind": "road",
+        "points": [
+          [
+            770,
+            720
+          ],
+          [
+            628.3860602807114,
+            638.1710490701348
+          ],
+          [
+            620.6831881752883,
+            633.7608250544477
+          ],
+          [
+            613.1175652428432,
+            629.5113793289569
+          ],
+          [
+            605.689191483376,
+            625.4227118936624
+          ],
+          [
+            598.398066896887,
+            621.4948227485642
+          ],
+          [
+            591.2441914833761,
+            617.7277118936623
+          ],
+          [
+            584.2275652428432,
+            614.1213793289569
+          ],
+          [
+            577.3481881752882,
+            610.6758250544476
+          ],
+          [
+            570.6060602807114,
+            607.3910490701347
+          ],
+          [
+            449,
+            549
+          ]
+        ]
+      },
+      {
+        "id": "road-9",
+        "from": "estate-05",
+        "to": "estate-06",
+        "kind": "road",
+        "points": [
+          [
+            449,
+            549
+          ],
+          [
+            433.78872644778806,
+            481.64607991222294
+          ],
+          [
+            432.9851820622779,
+            478.0040471641056
+          ],
+          [
+            432.24407892977064,
+            474.4704523440218
+          ],
+          [
+            431.56541705026626,
+            471.04529545197147
+          ],
+          [
+            430.9491964237648,
+            467.7285764879547
+          ],
+          [
+            430.39541705026625,
+            464.5202954519715
+          ],
+          [
+            429.90407892977066,
+            461.4204523440218
+          ],
+          [
+            429.47518206227784,
+            458.42904716410555
+          ],
+          [
+            429.10872644778806,
+            455.5460799122229
+          ],
+          [
+            423,
+            404
+          ]
+        ]
+      },
+      {
+        "id": "road-10",
+        "from": "estate-05",
+        "to": "estate-02",
+        "kind": "road",
+        "points": [
+          [
+            449,
+            549
+          ],
+          [
+            385.2223341190163,
+            556.7130160714779
+          ],
+          [
+            381.7126519921093,
+            557.0749444346663
+          ],
+          [
+            378.1835933300329,
+            557.3141789798008
+          ],
+          [
+            374.635158132787,
+            557.4307197068815
+          ],
+          [
+            371.0673464003718,
+            557.4245666159084
+          ],
+          [
+            367.48015813278704,
+            557.2957197068815
+          ],
+          [
+            363.8735933300329,
+            557.0441789798008
+          ],
+          [
+            360.24765199210935,
+            556.6699444346663
+          ],
+          [
+            356.6023341190163,
+            556.173016071478
+          ],
+          [
+            290,
+            546
+          ]
+        ]
+      },
+      {
+        "id": "road-11",
+        "from": "estate-06",
+        "to": "estate-04",
+        "kind": "road",
+        "points": [
+          [
+            423,
+            404
+          ],
+          [
+            417.96455051065425,
+            345.295392172737
+          ],
+          [
+            417.6524443232847,
+            341.99837213225106
+          ],
+          [
+            417.2687970465922,
+            338.55050067476117
+          ],
+          [
+            416.81360868057675,
+            334.95177780026717
+          ],
+          [
+            416.2868792252382,
+            331.2022035087692
+          ],
+          [
+            415.68860868057675,
+            327.30177780026713
+          ],
+          [
+            415.0187970465922,
+            323.25050067476116
+          ],
+          [
+            414.2774443232847,
+            319.0483721322511
+          ],
+          [
+            413.46455051065425,
+            314.69539217273706
+          ],
+          [
+            398,
+            234
+          ]
+        ]
+      }
+    ]
+  },
+  "crossings": [
+    {
+      "id": "crossing-1",
+      "kind": "bridge",
+      "x": 859.597,
+      "y": 700,
+      "source": "generated_valid_crossing",
+      "angle": 180,
+      "span": 46
+    }
+  ],
+  "checks": {
+    "allEstatesConnected": true,
+    "noSettlementOnWater": true,
+    "bounds": true,
+    "crossingsExplicit": true,
+    "noSettlementOnLake": true,
+    "noRoadThroughLake": true
+  },
+  "provenance": {
+    "mode": "seeded-prototype"
+  },
+  "lakes": [
+    {
+      "x": 1003.5888565378264,
+      "y": 814.1263651102781,
+      "radius": 100
+    },
+    {
+      "x": 428.3223830861971,
+      "y": 799.9879913311452,
+      "radius": 100
+    }
+  ],
+  "terrainOnly": false,
+  "assetPlacements": [
+    {
+      "asset": "water/lake-1.png",
+      "x": 1004,
+      "y": 814,
+      "width": 180,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "water/lake-2.png",
+      "x": 428,
+      "y": 800,
+      "width": 180,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_split_glade_L.png",
+      "x": 206,
+      "y": 145,
+      "width": 323,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_belt_L.png",
+      "x": 670,
+      "y": 873,
+      "width": 258,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_crescent_L.png",
+      "x": 595,
+      "y": 335,
+      "width": 283,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_belt_L.png",
+      "x": 135,
+      "y": 793,
+      "width": 289,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_belt_L.png",
+      "x": 79,
+      "y": 573,
+      "width": 215,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_round_L.png",
+      "x": 169,
+      "y": 79,
+      "width": 277,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_round_L.png",
+      "x": 641,
+      "y": 876,
+      "width": 252,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_round_L.png",
+      "x": 197,
+      "y": 664,
+      "width": 207,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_split_L.png",
+      "x": 101,
+      "y": 690,
+      "width": 334,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_crescent_L.png",
+      "x": 893,
+      "y": 363,
+      "width": 181,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_split_glade_L.png",
+      "x": 79,
+      "y": 360,
+      "width": 318,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_belt_L.png",
+      "x": 223,
+      "y": 735,
+      "width": 319,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_split_glade_L.png",
+      "x": 565,
+      "y": 61,
+      "width": 327,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_belt_L.png",
+      "x": 589,
+      "y": 882,
+      "width": 280,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_split_L.png",
+      "x": 69,
+      "y": 293,
+      "width": 257,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_crescent_L.png",
+      "x": 61,
+      "y": 940,
+      "width": 312,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_crescent_L.png",
+      "x": 106,
+      "y": 432,
+      "width": 254,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_split_L.png",
+      "x": 549,
+      "y": 196,
+      "width": 212,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_round_L.png",
+      "x": 607,
+      "y": 849,
+      "width": 212,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_split_glade_L.png",
+      "x": 102,
+      "y": 191,
+      "width": 300,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_split_L.png",
+      "x": 619,
+      "y": 389,
+      "width": 291,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_split_glade_L.png",
+      "x": 244,
+      "y": 266,
+      "width": 198,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_belt_L.png",
+      "x": 1194,
+      "y": 139,
+      "width": 205,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_crescent_L.png",
+      "x": 1526,
+      "y": 331,
+      "width": 308,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_split_glade_L.png",
+      "x": 604,
+      "y": 853,
+      "width": 205,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_crescent_L.png",
+      "x": 95,
+      "y": 409,
+      "width": 301,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_split_L.png",
+      "x": 248,
+      "y": 77,
+      "width": 311,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_split_glade_L.png",
+      "x": 95,
+      "y": 517,
+      "width": 239,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_belt_L.png",
+      "x": 220,
+      "y": 111,
+      "width": 288,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_split_L.png",
+      "x": 216,
+      "y": 896,
+      "width": 193,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_split_glade_L.png",
+      "x": 1241,
+      "y": 536,
+      "width": 187,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_round_L.png",
+      "x": 1370,
+      "y": 919,
+      "width": 250,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_crescent_L.png",
+      "x": 589,
+      "y": 271,
+      "width": 180,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_belt_L.png",
+      "x": 562,
+      "y": 123,
+      "width": 192,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_crescent_L.png",
+      "x": 66,
+      "y": 773,
+      "width": 333,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_crescent_L.png",
+      "x": 972,
+      "y": 72,
+      "width": 306,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_round_L.png",
+      "x": 70,
+      "y": 386,
+      "width": 204,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_split_glade_L.png",
+      "x": 94,
+      "y": 435,
+      "width": 225,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/hill_ridge_belt_L.png",
+      "x": 182,
+      "y": 180,
+      "width": 250,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "terrain/forest_crescent_L.png",
+      "x": 108,
+      "y": 329,
+      "width": 207,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/arable.png",
+      "x": 1299,
+      "y": 498,
+      "width": 144,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/common.png",
+      "x": 385,
+      "y": 585,
+      "width": 149,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/arable.png",
+      "x": 1151,
+      "y": 610,
+      "width": 146,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/arable.png",
+      "x": 492,
+      "y": 233,
+      "width": 178,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/common.png",
+      "x": 376,
+      "y": 610,
+      "width": 160,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/arable.png",
+      "x": 405,
+      "y": 365,
+      "width": 141,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/arable.png",
+      "x": 1428,
+      "y": 657,
+      "width": 155,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/pasture.png",
+      "x": 1214,
+      "y": 294,
+      "width": 154,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/pasture.png",
+      "x": 1358,
+      "y": 858,
+      "width": 172,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/pasture.png",
+      "x": 1290,
+      "y": 819,
+      "width": 156,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/arable.png",
+      "x": 984,
+      "y": 380,
+      "width": 179,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "fields/arable.png",
+      "x": 672,
+      "y": 729,
+      "width": 142,
+      "anchor": "center",
+      "flipX": false
+    },
+    {
+      "asset": "paths/crossing-bridge.png",
+      "x": 859.597,
+      "y": 700,
+      "width": 46,
+      "rotation": 180,
+      "flipX": false,
+      "anchor": "center"
+    },
+    {
+      "asset": "sites/abbey.png",
+      "x": 398,
+      "y": 234,
+      "width": 88,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 426,
+      "y": 186,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/market-small.png",
+      "x": 1314,
+      "y": 275,
+      "width": 78,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 1339,
+      "y": 232,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/village.png",
+      "x": 1054,
+      "y": 317,
+      "width": 78,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 1079,
+      "y": 274,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/village.png",
+      "x": 423,
+      "y": 404,
+      "width": 78,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 448,
+      "y": 361,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/village.png",
+      "x": 1341,
+      "y": 423,
+      "width": 78,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-direct.png",
+      "x": 1366,
+      "y": 380,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/manor-large.png",
+      "x": 290,
+      "y": 546,
+      "width": 78,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 315,
+      "y": 503,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/castle.png",
+      "x": 449,
+      "y": 549,
+      "width": 100,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 481,
+      "y": 494,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/manor-medium.png",
+      "x": 1439,
+      "y": 577,
+      "width": 78,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 1464,
+      "y": 534,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/market-small.png",
+      "x": 1058,
+      "y": 612,
+      "width": 78,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 1083,
+      "y": 569,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/manor-small.png",
+      "x": 770,
+      "y": 720,
+      "width": 78,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 795,
+      "y": 677,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/castle.png",
+      "x": 1261,
+      "y": 742,
+      "width": 100,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 1293,
+      "y": 687,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "sites/abbey.png",
+      "x": 1430,
+      "y": 797,
+      "width": 88,
+      "anchor": "bottom",
+      "flipX": false
+    },
+    {
+      "asset": "markers/flag-neighbor.png",
+      "x": 1458,
+      "y": 749,
+      "width": 24,
+      "anchor": "bottom",
+      "flipX": false
+    }
+  ],
+  "assetHashes": {
+    "fields/arable.png": "6f601f502d38f14da5daf3b1affd09f533ed3c42cf91037e1cc510d76d258bad",
+    "fields/common.png": "ae59b9d7caf35ee13c359d2fae0b51ef70f9801d57320b4c3d03669ea7fc3f96",
+    "fields/pasture.png": "7ac28011e3f3eb3e97fb4addd548dd8f69e9ca4bf9dec9b67325163742d8f2bc",
+    "ground/open_field.png": "a628397c12da09ab5537a0f1babd7cff9edcedb350e7db3509d05a81ef3d9fa3",
+    "ground/paper.png": "969f17b483eb63d254308942bcc0ef967b6936c1bbc6d0ae363c0b1711540157",
+    "markers/flag-direct.png": "58dd104a0b86b6de0cdb99fd7927de3d51d04655522555dd14275a815cd85dc3",
+    "markers/flag-neighbor.png": "194b0c66af75a0a182805aabc6deec2ca34b4b89fb466ea2f982a231d223e686",
+    "paths/crossing-bridge.png": "6ef15b15fbd9785c4df726cd5f6a434e132b1ef79b857183ee66d0b05130925e",
+    "sites/abbey.png": "19c8364a5306b86d912065c068d7ea2957342cf9bbd56185752bed9c5aa07217",
+    "sites/castle.png": "f7e1980fd8ec83c45b00620be4113fa642ecd085602e438b67d7ca0cfbca89f7",
+    "sites/manor-large.png": "1112dd33be73b2402b32bf25b72adbadd4fad65ac5f2dd3522b648f5f42d3771",
+    "sites/manor-medium.png": "35865158992c50355ac8b48917e0c70161d5abaee709b938cd6404a88c012191",
+    "sites/manor-small.png": "d804262f67be43bb6a84856aace7c9e23a361aea8bd99cd982db13cc7ad438f1",
+    "sites/market-small.png": "eb3d02cfc97067d724e4bb970d7e48bfb03e65c86d058ba279b7ebab9c299852",
+    "sites/village.png": "3796006f7ad70cf889d6d6d28b3b6fc10175d02cbad19d52c47bd2263b2c691a",
+    "terrain/forest_belt_L.png": "9aa2f8de81d7ca81f772a66587fe3adab9a179cb5a73c1bd9965126fb7ab3b62",
+    "terrain/forest_crescent_L.png": "4b08d6aa535572738961174b05cd00833f52e74c5378d3eb26fe28ecffd4a011",
+    "terrain/forest_round_L.png": "e59c9398ad4e4f9d120eb12f73ec7961d37b75eeeb449ef41df89c818971680f",
+    "terrain/forest_split_glade_L.png": "f8ee80e5dc6f0241f2a6be58a0fe10a28da8e262362a8ac86aae58bdc57196f2",
+    "terrain/hill_ridge_belt_L.png": "e0ebc17efb4e33fecac4683e43dc57e02e09659cca93110a19cd3a3a61de0c39",
+    "terrain/hill_ridge_crescent_L.png": "023d72079c3daace70c72764a660a1f66c021d7248668dbb7ac236fd9d839df8",
+    "terrain/hill_ridge_round_L.png": "6ecbac4090185b6a724548041d01aa60535bf5a69755c021b6b80d33e228df06",
+    "terrain/hill_ridge_split_L.png": "ac19125eccc6b5ebd140dee36ed7da0121d484f911b9b0ff002f2a6b78681950",
+    "water/lake-1.png": "46b07922b63c7b2ada5fff7799848065d317f3811e96b7e0e5e6316920e1edc6",
+    "water/lake-2.png": "e2dcde679342009eb209ce95cbcf5ac0b4467c87cd530a58631bc91520207ecc",
+    "water/river-master.png": "cb1bd548ba9bb020d4e31e7504f0a4d34f5b3957fbbda1c537e2a36da95b52e6"
+  },
+  "render": {
+    "engine": "sharp",
+    "sharpVersion": "0.34.5",
+    "vipsVersion": "8.17.3",
+    "format": "jpeg",
+    "quality": 92,
+    "sha256": "0be279471c8a21a3b866bd9695e6c71eaa7b2310d807c5be915a6e69c148ddb8",
+    "layers": [
+      "paper",
+      "archetype-ground",
+      "continuous-water",
+      "terrain-PNG-clusters",
+      "connected-roads",
+      "fields-PNG",
+      "bank-protection",
+      "crossings",
+      "whole-settlements-PNG",
+      "flags"
+    ],
+    "light": "painted terrain not flipped",
+    "determinism": "same JSON inputs + same kit bytes + same sharp/libvips version => same image/metadata bytes"
+  }
+}

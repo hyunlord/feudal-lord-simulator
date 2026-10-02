@@ -1,0 +1,1220 @@
+{
+  "repo": "/Users/rexxa/fls-astra-trades",
+  "head": "872cc612da43c4355539e9a7c3da51d0a94121e7",
+  "status": "read_only_spec_discovery",
+  "wave37_existing": [
+    "baker",
+    "blacksmith",
+    "weaver",
+    "dyer",
+    "tanner",
+    "brewer",
+    "miller",
+    "carpenter",
+    "merchant",
+    "shepherd",
+    "fisher",
+    "innkeeper"
+  ],
+  "new_front_markers": {
+    "missing": [
+      "butcher",
+      "tailor",
+      "shoemaker",
+      "carter",
+      "fuller",
+      "cooper",
+      "wheelwright",
+      "mercer",
+      "spicer",
+      "vintner"
+    ],
+    "variants": 2,
+    "count": 20,
+    "name_note": "carter and innkeeper canonical engine IDs must be crosschecked with LM-E6a source; no tanner or inn duplication required"
+  },
+  "wave37_csv": [
+    {
+      "asset_id": "trade_baker_a",
+      "category": "trade",
+      "trade_or_condition": "빵집",
+      "variant": "a",
+      "width": "128",
+      "height": "96",
+      "foot_x": "57",
+      "foot_y": "89",
+      "foot_method": "Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "40266fd8f5bb0f1cc17f92538254d281f3a2eed62c5ce6a889d36fcb54de70b8",
+      "record": "references/prior-records/trades-a.json",
+      "postprocess": "{\"alpha_threshold\":8,\"crop\":{\"left\":549,\"top\":196,\"width\":676,\"height\":549},\"scale\":0.15846994535519127,\"resized\":{\"width\":107,\"height\":87},\"placement\":{\"left\":11,\"top\":4},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_baker_b",
+      "category": "trade",
+      "trade_or_condition": "빵집",
+      "variant": "b",
+      "width": "128",
+      "height": "96",
+      "foot_x": "75",
+      "foot_y": "89",
+      "foot_method": "Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "486f4dcbf479a17ec2582be82e6f3d36b289d6326f3cbf54f1d5df41fd6c3e0a",
+      "record": "references/prior-records/trades-a.json",
+      "postprocess": "{\"alpha_threshold\":8,\"crop\":{\"left\":385,\"top\":177,\"width\":803,\"height\":695},\"scale\":0.1251798561151079,\"resized\":{\"width\":100,\"height\":86},\"placement\":{\"left\":14,\"top\":5},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_smith_a",
+      "category": "trade",
+      "trade_or_condition": "대장간",
+      "variant": "a",
+      "width": "96",
+      "height": "96",
+      "foot_x": "86",
+      "foot_y": "89",
+      "foot_method": "Visual reading of nearest visible wooden ground-contact foot, rechecked at 4x and corroborated by alpha; excludes shadow",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "b8e02373d0f695d041839a98bf7c39a0cc96255112d6ed5570e0f2862a371c6d",
+      "record": "references/prior-records/trades-a.json",
+      "postprocess": "{\"alpha_threshold\":8,\"crop\":{\"left\":581,\"top\":169,\"width\":654,\"height\":600},\"scale\":0.1345565749235474,\"resized\":{\"width\":87,\"height\":80},\"placement\":{\"left\":5,\"top\":11},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_smith_b",
+      "category": "trade",
+      "trade_or_condition": "대장간",
+      "variant": "b",
+      "width": "96",
+      "height": "96",
+      "foot_x": "33",
+      "foot_y": "89",
+      "foot_method": "Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "d94ad9e45a7346e84fae8acb25939f7343ad920bb3e2c21c70e6606383bb27cd",
+      "record": "references/prior-records/trades-a.json",
+      "postprocess": "{\"alpha_threshold\":8,\"crop\":{\"left\":613,\"top\":69,\"width\":587,\"height\":752},\"scale\":0.11569148936170212,\"resized\":{\"width\":67,\"height\":87},\"placement\":{\"left\":15,\"top\":4},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_weaver_a",
+      "category": "trade",
+      "trade_or_condition": "직조",
+      "variant": "a",
+      "width": "128",
+      "height": "96",
+      "foot_x": "88",
+      "foot_y": "89",
+      "foot_method": "Visual reading of nearest visible wooden ground-contact foot, rechecked at 4x and corroborated by alpha; excludes shadow",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "f90010dc7def67b3287bae84a6e998b5b5ee5542643b03aa7f0b1f27675a390f",
+      "record": "references/prior-records/trades-a.json",
+      "postprocess": "{\"alpha_threshold\":8,\"crop\":{\"left\":515,\"top\":116,\"width\":779,\"height\":663},\"scale\":0.13122171945701358,\"resized\":{\"width\":102,\"height\":87},\"placement\":{\"left\":13,\"top\":4},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_weaver_b",
+      "category": "trade",
+      "trade_or_condition": "직조",
+      "variant": "b",
+      "width": "128",
+      "height": "96",
+      "foot_x": "76",
+      "foot_y": "89",
+      "foot_method": "Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "dee42edfe7d6b8abcdb3633ac9b4da5da5518f285b54df8a903c47572a14e12a",
+      "record": "references/prior-records/trades-a.json",
+      "postprocess": "{\"alpha_threshold\":8,\"crop\":{\"left\":425,\"top\":78,\"width\":729,\"height\":845},\"scale\":0.10295857988165681,\"resized\":{\"width\":75,\"height\":87},\"placement\":{\"left\":27,\"top\":4},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_dyer_a",
+      "category": "trade",
+      "trade_or_condition": "염색",
+      "variant": "a",
+      "width": "96",
+      "height": "96",
+      "foot_x": "22",
+      "foot_y": "90",
+      "foot_method": "Visual reading of nearest visible wooden ground-contact foot, rechecked at 4x and corroborated by alpha; excludes shadow",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "ba19e54b6b442fa0bde294e55094883f1f01ffb3193914a4e08ab2978cb9a0a1",
+      "record": "references/prior-records/trades-a.json",
+      "postprocess": "{\"alpha_threshold\":8,\"crop\":{\"left\":445,\"top\":123,\"width\":954,\"height\":647},\"scale\":0.09224318658280922,\"resized\":{\"width\":88,\"height\":59},\"placement\":{\"left\":4,\"top\":32},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_dyer_b",
+      "category": "trade",
+      "trade_or_condition": "염색",
+      "variant": "b",
+      "width": "96",
+      "height": "96",
+      "foot_x": "69",
+      "foot_y": "89",
+      "foot_method": "Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "3076470d32b37b44affdd9255948707a62017088359a11edc9107635a3fb18fd",
+      "record": "references/prior-records/trades-a.json",
+      "postprocess": "{\"alpha_threshold\":8,\"crop\":{\"left\":403,\"top\":81,\"width\":894,\"height\":700},\"scale\":0.09843400447427293,\"resized\":{\"width\":88,\"height\":68},\"placement\":{\"left\":4,\"top\":23},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_tanner_a",
+      "category": "trade",
+      "trade_or_condition": "무두장이",
+      "variant": "a",
+      "width": "96",
+      "height": "96",
+      "foot_x": "58",
+      "foot_y": "90",
+      "foot_method": "Visual inspection of raw and 3x normalized contact sheet: front transverse timber foot lower-left tip. Excludes shadow; corroborated by opaque pixels on row 89.",
+      "foot_uncertainty_px": "1",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "37306717160ef44eea7bae13e82acad952b512a3fe46c2bedbec23790e872464",
+      "record": "references/prior-records/trades-b.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"x\":368,\"y\":40,\"width\":786,\"height\":937},\"resize\":{\"width\":73,\"height\":87,\"fit\":\"aspect-preserved\"},\"placement\":{\"left\":11,\"top\":4},\"rotation\":0,\"mirror\":false,\"alpha_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_tanner_b",
+      "category": "trade",
+      "trade_or_condition": "무두장이",
+      "variant": "b",
+      "width": "128",
+      "height": "96",
+      "foot_x": "73",
+      "foot_y": "90",
+      "foot_method": "Visual inspection of raw and 3x normalized contact sheet: front upright foot. Excludes shadow; corroborated by opaque pixels on row 89.",
+      "foot_uncertainty_px": "1",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "ba1d2f1661c6d08a5a8e000d8d521fbb954a9ce08a4a091de86c77642f74a472",
+      "record": "references/prior-records/trades-b.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"x\":294,\"y\":16,\"width\":960,\"height\":950},\"resize\":{\"width\":88,\"height\":87,\"fit\":\"aspect-preserved\"},\"placement\":{\"left\":20,\"top\":4},\"rotation\":0,\"mirror\":false,\"alpha_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_ale_a",
+      "category": "trade",
+      "trade_or_condition": "에일",
+      "variant": "a",
+      "width": "96",
+      "height": "96",
+      "foot_x": "50",
+      "foot_y": "90",
+      "foot_method": "Visual review of v2 normalized 4x contact sheet: front-right cross-foot timber end. Excludes shadow; opaque row89 pixel check corroborates.",
+      "foot_uncertainty_px": "1",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "76d37a02795c76f7e8c668fa5acc86d4d6cdb53de7b06bcc002ebe2998809b18",
+      "record": "references/prior-records/trades-b.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"x\":311,\"y\":81,\"width\":735,\"height\":1045},\"resize\":{\"width\":61,\"height\":87,\"fit\":\"aspect-preserved\"},\"placement\":{\"left\":17,\"top\":4},\"rotation\":0,\"mirror\":false,\"alpha_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_ale_b",
+      "category": "trade",
+      "trade_or_condition": "에일",
+      "variant": "b",
+      "width": "96",
+      "height": "96",
+      "foot_x": "52",
+      "foot_y": "90",
+      "foot_method": "Visual inspection of raw and 3x normalized contact sheet: foremost splayed timber foot. Excludes shadow; corroborated by opaque pixels on row 89.",
+      "foot_uncertainty_px": "1",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "ff54e96da66987c248b896d2f392b4436723155b568d07675e9f50019dff9aa0",
+      "record": "references/prior-records/trades-b.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"x\":519,\"y\":27,\"width\":546,\"height\":963},\"resize\":{\"width\":49,\"height\":87,\"fit\":\"aspect-preserved\"},\"placement\":{\"left\":23,\"top\":4},\"rotation\":0,\"mirror\":false,\"alpha_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_miller_a",
+      "category": "trade",
+      "trade_or_condition": "방앗간 일꾼",
+      "variant": "a",
+      "width": "128",
+      "height": "96",
+      "foot_x": "100",
+      "foot_y": "78",
+      "foot_method": "Visual actual contact at lowest visible right wheel rim; handle ends excluded as elevated handles. Estimated from native sprite and 6x nearest-neighbor inspection.",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "8d9212df0398364965986b7612ca1b39d070c8951caea9c4005010773ca85c73",
+      "record": "records/miller.json",
+      "postprocess": "\"see record\"",
+      "revision": "reworked-v2"
+    },
+    {
+      "asset_id": "trade_miller_b",
+      "category": "trade",
+      "trade_or_condition": "방앗간 일꾼",
+      "variant": "b",
+      "width": "128",
+      "height": "96",
+      "foot_x": "65",
+      "foot_y": "79",
+      "foot_method": "Visual midpoint of grounded group front: sieve lower edge (55,82) and front sack base (75,76); estimated from native sprite and 6x nearest-neighbor inspection.",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "788f8d03d7cf6e6dfcbad03b6793ee4d524a64d2f4b655a15bbbf1608e632ff9",
+      "record": "records/miller.json",
+      "postprocess": "\"see record\"",
+      "revision": "reworked-v2"
+    },
+    {
+      "asset_id": "trade_carpenter_a",
+      "category": "trade",
+      "trade_or_condition": "목수",
+      "variant": "a",
+      "width": "128",
+      "height": "96",
+      "foot_x": "97",
+      "foot_y": "89",
+      "foot_method": "Visual reading of foremost physical wooden support ground contact on final native and 6x nearest-neighbor inspection; not image midpoint",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "577c323fb03b2deefc99256fe9b669a8ee6e09f962058aa45e226e1d6f5fd053",
+      "record": "records/furniture.json",
+      "postprocess": "{\"crop\": {\"left\": 25, \"top\": 21, \"width\": 1389, \"height\": 1041}, \"scale\": 0.0845341018251681, \"resized_width\": 117, \"resized_height\": 88, \"paste_left\": 5, \"paste_top\": 4, \"canvas_margin_px\": 4, \"flip\": false, \"alpha_preserved\": true}",
+      "revision": "reworked-v2"
+    },
+    {
+      "asset_id": "trade_carpenter_b",
+      "category": "trade",
+      "trade_or_condition": "목수",
+      "variant": "b",
+      "width": "128",
+      "height": "96",
+      "foot_x": "50",
+      "foot_y": "90",
+      "foot_method": "Visual inspection of raw and 3x normalized contact sheet: nearest bench leg foot. Excludes shadow; corroborated by opaque pixels on row 89.",
+      "foot_uncertainty_px": "1",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "8e4ed06bec2e239e155c5a3316ef24a52fe411ca88e0dfdb55a4265c5c731c7f",
+      "record": "references/prior-records/trades-b.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"x\":364,\"y\":94,\"width\":899,\"height\":830},\"resize\":{\"width\":94,\"height\":87,\"fit\":\"aspect-preserved\"},\"placement\":{\"left\":17,\"top\":4},\"rotation\":0,\"mirror\":false,\"alpha_preserved\":true}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_merchant_a",
+      "category": "trade",
+      "trade_or_condition": "상인",
+      "variant": "a",
+      "width": "128",
+      "height": "96",
+      "foot_x": "94",
+      "foot_y": "90",
+      "foot_method": "Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front bottom corner of right shipping crate",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "a3c01ce81b745563d0961c28c29a8d7cbefbb95284c79795cac7763b8d34fdc9",
+      "record": "references/prior-records/trades-c.json",
+      "postprocess": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_merchant_b",
+      "category": "trade",
+      "trade_or_condition": "상인",
+      "variant": "b",
+      "width": "128",
+      "height": "96",
+      "foot_x": "80",
+      "foot_y": "90",
+      "foot_method": "Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front bottom corner of long shipping chest",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "8609231aa971102edd8d57d7040cbee0a5d4d0353ef73b25adc3a330f7798ae0",
+      "record": "references/prior-records/trades-c.json",
+      "postprocess": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_shepherd_a",
+      "category": "trade",
+      "trade_or_condition": "목동",
+      "variant": "a",
+      "width": "128",
+      "height": "96",
+      "foot_x": "98",
+      "foot_y": "90",
+      "foot_method": "Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front base of small fleece basket",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "caf5dcf6f8ac727c660a0f17ac25b534dd9fbf9b74aad12ab7227562688a3879",
+      "record": "references/prior-records/trades-c.json",
+      "postprocess": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_shepherd_b",
+      "category": "trade",
+      "trade_or_condition": "목동",
+      "variant": "b",
+      "width": "128",
+      "height": "96",
+      "foot_x": "49",
+      "foot_y": "90",
+      "foot_method": "Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front base of shallow fleece hamper",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "d6e8717f3be385301f5ea5c805b5f381acf1713c4bcb3fa5b225242c300055fa",
+      "record": "references/prior-records/trades-c.json",
+      "postprocess": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_fisher_a",
+      "category": "trade",
+      "trade_or_condition": "어부",
+      "variant": "a",
+      "width": "128",
+      "height": "96",
+      "foot_x": "86",
+      "foot_y": "90",
+      "foot_method": "Visually selected front bottom of fish hamper, excluding rear rack and shadow; 4x nearest-neighbor inspection",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "a79a77aa9594f206980a41821f0574154e775c277f8dac868f9e093c8e69e2c6",
+      "record": "references/prior-records/trades-c.json",
+      "postprocess": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_fisher_b",
+      "category": "trade",
+      "trade_or_condition": "어부",
+      "variant": "b",
+      "width": "128",
+      "height": "96",
+      "foot_x": "34",
+      "foot_y": "90",
+      "foot_method": "Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front ground-contact foot of left A-frame support",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "4fb554b9138afd596c78210592f137c1aec72b731462f06e29f5eef83d5ee79b",
+      "record": "references/prior-records/trades-c.json",
+      "postprocess": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_inn_a",
+      "category": "trade",
+      "trade_or_condition": "여관",
+      "variant": "a",
+      "width": "96",
+      "height": "96",
+      "foot_x": "8",
+      "foot_y": "88",
+      "foot_method": "Visually selected front-left cruciform wooden foot tip, excluding hanging panel and shadow; 4x nearest-neighbor inspection",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "2469a6d9db08f4a05b556c9ffd7158890c87b9ace1842465496ee6addda9091a",
+      "record": "references/prior-records/trades-c.json",
+      "postprocess": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "trade_inn_b",
+      "category": "trade",
+      "trade_or_condition": "여관",
+      "variant": "b",
+      "width": "96",
+      "height": "96",
+      "foot_x": "61",
+      "foot_y": "90",
+      "foot_method": "Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front foot of right upright",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "e076ef8e2af3b5c94db1dcf3721d59952a657647d11203ecb6fcbc376c96844a",
+      "record": "references/prior-records/trades-c.json",
+      "postprocess": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "condition_prosperous_pots",
+      "category": "condition",
+      "trade_or_condition": "넉넉함",
+      "variant": "single",
+      "width": "96",
+      "height": "96",
+      "foot_x": "74.75",
+      "foot_y": "89.28",
+      "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "7fbb7a481735ec7258e2d09e38c262f70bba99cf0b29855d1eb5bd8da1685a07",
+      "record": "references/prior-records/conditions.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":478,\"top\":192,\"width\":811,\"height\":533},\"resize\":[88,58],\"offset\":[4,34],\"aspect_preserved\":true,\"mirror\":false}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "condition_prosperous_bench",
+      "category": "condition",
+      "trade_or_condition": "넉넉함",
+      "variant": "single",
+      "width": "96",
+      "height": "96",
+      "foot_x": "30",
+      "foot_y": "87",
+      "foot_method": "Visual reading of foremost physical wooden support ground contact on final native and 6x nearest-neighbor inspection; not image midpoint",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "feb62ef262ef093d2e67339bd80f19a412dd08c1f135e307ed8a6af12e3409bb",
+      "record": "records/furniture.json",
+      "postprocess": "{\"crop\": {\"left\": 0, \"top\": 53, \"width\": 1208, \"height\": 1170}, \"scale\": 0.0728476821192053, \"resized_width\": 88, \"resized_height\": 85, \"paste_left\": 4, \"paste_top\": 7, \"canvas_margin_px\": 4, \"flip\": false, \"alpha_preserved\": true}",
+      "revision": "reworked-v2"
+    },
+    {
+      "asset_id": "condition_ordinary_bench",
+      "category": "condition",
+      "trade_or_condition": "보통",
+      "variant": "single",
+      "width": "96",
+      "height": "96",
+      "foot_x": "71.85",
+      "foot_y": "90.27",
+      "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "dba243e20097ba22551f3025bfa5fdb822a20194da9ff56b00b1db26798822b2",
+      "record": "references/prior-records/conditions.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":463,\"top\":183,\"width\":843,\"height\":584},\"resize\":[88,61],\"offset\":[4,30],\"aspect_preserved\":true,\"mirror\":false}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "condition_ordinary_water",
+      "category": "condition",
+      "trade_or_condition": "보통",
+      "variant": "single",
+      "width": "64",
+      "height": "64",
+      "foot_x": "31.06",
+      "foot_y": "57.03",
+      "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "18905e936a41297cbe9f8abbd72c9e0bb1542fc53d8c4afbb8c6537159ca0cb9",
+      "record": "references/prior-records/conditions.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":743,\"top\":205,\"width\":343,\"height\":545},\"resize\":[34,54],\"offset\":[15,6],\"aspect_preserved\":true,\"mirror\":false}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "condition_strained_barrel",
+      "category": "condition",
+      "trade_or_condition": "빠듯함",
+      "variant": "single",
+      "width": "64",
+      "height": "64",
+      "foot_x": "24.69",
+      "foot_y": "57.72",
+      "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "37c728fff7a3831d1e812143c6aa1607a468f7e07d341449fa6f8470cf386fe6",
+      "record": "references/prior-records/conditions.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":593,\"top\":83,\"width\":590,\"height\":719},\"resize\":[44,54],\"offset\":[10,5],\"aspect_preserved\":true,\"mirror\":false}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "condition_strained_firewood",
+      "category": "condition",
+      "trade_or_condition": "빠듯함",
+      "variant": "single",
+      "width": "64",
+      "height": "64",
+      "foot_x": "27.07",
+      "foot_y": "58.1",
+      "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "a927d9708ec990d13093c142ec36a36bd4780d0c9b6f8ed29c428f4b13405e2c",
+      "record": "references/prior-records/conditions.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":526,\"top\":227,\"width\":738,\"height\":451},\"resize\":[56,34],\"offset\":[4,25],\"aspect_preserved\":true,\"mirror\":false}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "condition_newcomer_cart_a",
+      "category": "condition",
+      "trade_or_condition": "새 입주",
+      "variant": "a",
+      "width": "128",
+      "height": "96",
+      "foot_x": "22.49",
+      "foot_y": "89.93",
+      "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "c19982c9161b8cf7eccb3f81184c78be0bb70f194bfe2e0697da64ea297237a7",
+      "record": "references/prior-records/conditions.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":328,\"top\":72,\"width\":1116,\"height\":735},\"resize\":[120,79],\"offset\":[4,12],\"aspect_preserved\":true,\"mirror\":false}",
+      "revision": "unchanged"
+    },
+    {
+      "asset_id": "condition_newcomer_cart_b",
+      "category": "condition",
+      "trade_or_condition": "새 입주",
+      "variant": "b",
+      "width": "128",
+      "height": "96",
+      "foot_x": "104.78",
+      "foot_y": "88.89",
+      "foot_method": "Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.",
+      "foot_uncertainty_px": "2",
+      "lighting": "upper-left requested; visual review",
+      "flipped": "false",
+      "status": "candidate",
+      "sha256": "223610882f5ac4e6a8d560fcbfb05f1acad22f1c95a6c93581cf63eeef274d69",
+      "record": "references/prior-records/conditions.json",
+      "postprocess": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":370,\"top\":88,\"width\":956,\"height\":719},\"resize\":[114,86],\"offset\":[7,6],\"aspect_preserved\":true,\"mirror\":false}",
+      "revision": "unchanged"
+    }
+  ],
+  "yards": {
+    "canvas": [
+      256,
+      128
+    ],
+    "anchor": [
+      128,
+      104
+    ],
+    "footprint_cells": [
+      2,
+      1
+    ],
+    "csv_scale": 0.5,
+    "runtime_scale": 0.4,
+    "runtime_ground_center": [
+      128,
+      68
+    ],
+    "runtime_min_zoom": 0.8,
+    "new_structures_note": "oldground-pass decals cannotbeassumed safe fornewtallfreestanding structures; candidatesonly; depthinstallationrequiresseparatework"
+  },
+  "walker": {
+    "prop_canvas": [
+      32,
+      32
+    ],
+    "directions": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "frames_per_direction": 1,
+    "body_sheet": [
+      296,
+      148
+    ],
+    "body_cell": [
+      74,
+      74
+    ],
+    "body_gait_rows": 2,
+    "composer_pad": 17,
+    "composer_canvas": [
+      108,
+      108
+    ],
+    "standard_prop_scale": 0.65,
+    "current_adult_world_px": 16,
+    "art_bible_older_adult_world_px": 17.6,
+    "anchor_semantics": "prop grip, not foot; rightHand picks hands.left forSE/SW andhands.right forNE/NW",
+    "depth": "prop underbodySW/NW; overbodyNE/SE",
+    "body_template": {
+      "id": "wk_artisan_m_01",
+      "url": "assets/walkers-v2/wk_artisan_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "sha256": "7f659fc914232263330e9cc8304ce062a634026f3c549fa67aad56c7c6f17ce3",
+      "classBand": "artisan",
+      "sex": "male",
+      "occupationTags": [
+        "builder",
+        "logger"
+      ],
+      "legacy": false,
+      "holdsTool": false,
+      "template": "civilian_man",
+      "season": "all",
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "cloak": "male",
+      "cloakPoke": 33,
+      "frames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.72,
+            "y": 67.24
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 34
+            },
+            "right": {
+              "x": 58,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.63,
+            "y": 68.24
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 34
+            },
+            "right": {
+              "x": 47,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.71,
+            "y": 67.74
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.2,
+            "y": 67.74
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 37
+            },
+            "right": {
+              "x": 40,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 42.88,
+            "y": 67.16
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 32
+            },
+            "right": {
+              "x": 59,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.71,
+            "y": 67.66
+          },
+          "figureHeight": 65.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 32
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 30.87,
+            "y": 67.33
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 29.87,
+            "y": 66.99
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 14,
+              "y": 34
+            },
+            "right": {
+              "x": 40,
+              "y": 32
+            }
+          }
+        }
+      ]
+    },
+    "existing_prop_templates": {
+      "bundle_cloth": {
+        "NE": {
+          "url": "assets/walker-props-v1/held_bundle_cloth_NE-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 7
+          },
+          "role": "top cord-loop grip"
+        },
+        "SE": {
+          "url": "assets/walker-props-v1/held_bundle_cloth_SE-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 7
+          },
+          "role": "top cord-loop grip"
+        },
+        "SW": {
+          "url": "assets/walker-props-v1/held_bundle_cloth_SW-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 7
+          },
+          "role": "top cord-loop grip"
+        },
+        "NW": {
+          "url": "assets/walker-props-v1/held_bundle_cloth_NW-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 7
+          },
+          "role": "top cord-loop grip"
+        }
+      },
+      "bundle_wool": {
+        "NE": {
+          "url": "assets/walker-props-v1/held_bundle_wool_NE-v1.png",
+          "anchor": {
+            "x": 17,
+            "y": 7
+          },
+          "role": "top cord-loop grip"
+        },
+        "SE": {
+          "url": "assets/walker-props-v1/held_bundle_wool_SE-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 7
+          },
+          "role": "top cord-loop grip"
+        },
+        "SW": {
+          "url": "assets/walker-props-v1/held_bundle_wool_SW-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 7
+          },
+          "role": "top cord-loop grip"
+        },
+        "NW": {
+          "url": "assets/walker-props-v1/held_bundle_wool_NW-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 7
+          },
+          "role": "top cord-loop grip"
+        }
+      },
+      "jug": {
+        "NE": {
+          "url": "assets/walker-props-v1/held_jug_NE-v1.png",
+          "anchor": {
+            "x": 22,
+            "y": 15
+          },
+          "role": "handle grip"
+        },
+        "SE": {
+          "url": "assets/walker-props-v1/held_jug_SE-v1.png",
+          "anchor": {
+            "x": 22,
+            "y": 14
+          },
+          "role": "handle grip"
+        },
+        "SW": {
+          "url": "assets/walker-props-v1/held_jug_SW-v1.png",
+          "anchor": {
+            "x": 23,
+            "y": 15
+          },
+          "role": "handle grip"
+        },
+        "NW": {
+          "url": "assets/walker-props-v1/held_jug_NW-v1.png",
+          "anchor": {
+            "x": 10,
+            "y": 15
+          },
+          "role": "handle grip"
+        }
+      },
+      "loaf": {
+        "NE": {
+          "url": "assets/walker-props-v1/held_loaf_NE-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 21
+          },
+          "role": "underside support"
+        },
+        "SE": {
+          "url": "assets/walker-props-v1/held_loaf_SE-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 21
+          },
+          "role": "underside support"
+        },
+        "SW": {
+          "url": "assets/walker-props-v1/held_loaf_SW-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 21
+          },
+          "role": "underside support"
+        },
+        "NW": {
+          "url": "assets/walker-props-v1/held_loaf_NW-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 21
+          },
+          "role": "underside support"
+        }
+      },
+      "yarn_bundle": {
+        "NE": {
+          "url": "assets/walker-props-v1/held_yarn_bundle_NE-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 6
+          },
+          "role": "top cord-loop grip"
+        },
+        "SE": {
+          "url": "assets/walker-props-v1/held_yarn_bundle_SE-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 6
+          },
+          "role": "top cord-loop grip"
+        },
+        "SW": {
+          "url": "assets/walker-props-v1/held_yarn_bundle_SW-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 6
+          },
+          "role": "top cord-loop grip"
+        },
+        "NW": {
+          "url": "assets/walker-props-v1/held_yarn_bundle_NW-v1.png",
+          "anchor": {
+            "x": 16,
+            "y": 6
+          },
+          "role": "top cord-loop grip"
+        }
+      },
+      "ale_jug": {
+        "NE": {
+          "url": "assets/walker-props-v1/held_ale_jug_NE-v1.png",
+          "anchor": {
+            "x": 24,
+            "y": 13
+          },
+          "role": "handle grip"
+        },
+        "SE": {
+          "url": "assets/walker-props-v1/held_ale_jug_SE-v1.png",
+          "anchor": {
+            "x": 24,
+            "y": 13
+          },
+          "role": "handle grip"
+        },
+        "SW": {
+          "url": "assets/walker-props-v1/held_ale_jug_SW-v1.png",
+          "anchor": {
+            "x": 8,
+            "y": 13
+          },
+          "role": "handle grip"
+        },
+        "NW": {
+          "url": "assets/walker-props-v1/held_ale_jug_NW-v1.png",
+          "anchor": {
+            "x": 8,
+            "y": 13
+          },
+          "role": "handle grip"
+        }
+      },
+      "work_breadbasket": {
+        "NE": {
+          "url": "assets/wave7/work/work_breadbasket_ne-v1.png",
+          "anchor": {
+            "x": 15,
+            "y": 4
+          },
+          "role": "hand-or-forearm",
+          "walkerPoint": {
+            "x": 33,
+            "y": 35
+          }
+        },
+        "SE": {
+          "url": "assets/wave7/work/work_breadbasket_se-v1.png",
+          "anchor": {
+            "x": 15,
+            "y": 4
+          },
+          "role": "hand-or-forearm",
+          "walkerPoint": {
+            "x": 29,
+            "y": 34
+          }
+        },
+        "SW": {
+          "url": "assets/wave7/work/work_breadbasket_sw-v1.png",
+          "anchor": {
+            "x": 13,
+            "y": 5
+          },
+          "role": "hand-or-forearm",
+          "walkerPoint": {
+            "x": 29,
+            "y": 35
+          }
+        },
+        "NW": {
+          "url": "assets/wave7/work/work_breadbasket_nw-v1.png",
+          "anchor": {
+            "x": 13,
+            "y": 4
+          },
+          "role": "hand-or-forearm",
+          "walkerPoint": {
+            "x": 41,
+            "y": 36
+          }
+        }
+      }
+    },
+    "four_directions_independent": true,
+    "mirror_allowed": false
+  },
+  "references": [
+    {
+      "path": "public/assets/wave27/yards/yard_tanner_a.png",
+      "sha256": "255bd0d424e0817338bda7b0a255c93e8563194a4cd7f27c12a37ec43f739f13",
+      "size": [
+        256,
+        128
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/wave27/yards/yard_blacksmith_a.png",
+      "sha256": "6838f169b05d5c5359336680d894b564821d974286c18f0638e2cc49ed03ffe8",
+      "size": [
+        256,
+        128
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/wave27/yards/yard_dyer_a.png",
+      "sha256": "8eb0ea31bfb3076bfeb8665fa9e2486133fe720505d0b2a0fd8c2bfdda7b505d",
+      "size": [
+        256,
+        128
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets-inbox/wave37/candidates-20260930/assets/trade_inn_a.png",
+      "sha256": "2469a6d9db08f4a05b556c9ffd7158890c87b9ace1842465496ee6addda9091a",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets-inbox/wave37/candidates-20260930/assets/trade_tanner_a.png",
+      "sha256": "37306717160ef44eea7bae13e82acad952b512a3fe46c2bedbec23790e872464",
+      "size": [
+        96,
+        96
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "assets-inbox/wave37/rework-v2/assets/trade_carpenter_a.png",
+      "sha256": "577c323fb03b2deefc99256fe9b669a8ee6e09f962058aa45e226e1d6f5fd053",
+      "size": [
+        128,
+        96
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/walker-props-v1/held_bundle_cloth_NE-v1.png",
+      "sha256": "f5c03a73b48efeb4db8dfbcf7dff67c23085bb7caf151257dc0c3308fa526d41",
+      "size": [
+        32,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/walker-props-v1/held_loaf_NE-v1.png",
+      "sha256": "dbd3dc7cf6cdb513d96c6a7ab9c80ec70ec7159abe915b07fc7fbbf68be1d7be",
+      "size": [
+        32,
+        32
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "public/assets/walkers-v2/wk_artisan_m_01-v1.png",
+      "sha256": "7f659fc914232263330e9cc8304ce062a634026f3c549fa67aad56c7c6f17ce3",
+      "size": [
+        296,
+        148
+      ],
+      "mode": "RGBA"
+    }
+  ]
+}

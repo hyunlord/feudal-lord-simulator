@@ -1,0 +1,1495 @@
+{
+  "assets": [
+    {
+      "path": "assets-inbox/wave17/candidates-20260926/assets/prop/held_longbow_ne-v1.png",
+      "status": "inbox-candidate-world-art",
+      "width": 32,
+      "height": 32,
+      "sha256": "27e4d91dc88909d4a685a2ee4c0e771e5bfa9f83ada3f16f232b6c851f7248ac",
+      "pngValid": true,
+      "season": "all",
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/held_longbow_ne-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "assets-inbox/wave17/candidates-20260926/assets/prop/held_longbow_nw-v1.png",
+      "status": "inbox-candidate-world-art",
+      "width": 32,
+      "height": 32,
+      "sha256": "43f0d03b8e47322775b47b069b0a2e7a0fc956e3827c8861b83556b172305d80",
+      "pngValid": true,
+      "season": "all",
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/held_longbow_nw-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "assets-inbox/wave17/candidates-20260926/assets/prop/held_longbow_se-v1.png",
+      "status": "inbox-candidate-world-art",
+      "width": 32,
+      "height": 32,
+      "sha256": "7cbd97bca4231fd144b80ddfe1680a317765c67cf43f78bab6db506a745e03b0",
+      "pngValid": true,
+      "season": "all",
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/held_longbow_se-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "assets-inbox/wave17/candidates-20260926/assets/prop/held_longbow_sw-v1.png",
+      "status": "inbox-candidate-world-art",
+      "width": 32,
+      "height": 32,
+      "sha256": "940796a124a1716d773ae4de32acb4b163973e9f1a295479028a2621a0d33ed0",
+      "pngValid": true,
+      "season": "all",
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/held_longbow_sw-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "assets-inbox/wave17/candidates-20260926/assets/wk/wk_levy_archer-v1.png",
+      "status": "inbox-candidate-world-art",
+      "width": 296,
+      "height": 148,
+      "sha256": "9c04c53dcb7dd8b5bc38fca98770c7cfe63016f581d23f2ee4a61fbbe40137d3",
+      "pngValid": true,
+      "season": "all",
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/wk_levy_archer-v1.png",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0,
+          1
+        ],
+        "width": 74,
+        "height": 74,
+        "count": 8
+      },
+      "template": "legacy_civilian_man",
+      "perFrameAnchors": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.72,
+            "y": 67.24
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 34
+            },
+            "right": {
+              "x": 58,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.63,
+            "y": 68.24
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 34
+            },
+            "right": {
+              "x": 47,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.71,
+            "y": 67.74
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.2,
+            "y": 67.74
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 37
+            },
+            "right": {
+              "x": 40,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 42.88,
+            "y": 67.16
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 32
+            },
+            "right": {
+              "x": 59,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.71,
+            "y": 67.66
+          },
+          "figureHeight": 65.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 32
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 30.87,
+            "y": 67.33
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 29.87,
+            "y": 66.99
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 14,
+              "y": 34
+            },
+            "right": {
+              "x": 40,
+              "y": 32
+            }
+          }
+        }
+      ],
+      "anchorProvenance": "registered source template from walkerSheetManifest; original sprite feet protected by generation records",
+      "measuredGroundAnchors": [
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "NE",
+          "frame": "0",
+          "alpha_ground_x": "40.32",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "SE",
+          "frame": "0",
+          "alpha_ground_x": "45.08",
+          "alpha_ground_y": "68",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "SW",
+          "frame": "0",
+          "alpha_ground_x": "28.7",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "NW",
+          "frame": "0",
+          "alpha_ground_x": "33",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "NE",
+          "frame": "1",
+          "alpha_ground_x": "39.81",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "SE",
+          "frame": "1",
+          "alpha_ground_x": "45.79",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "SW",
+          "frame": "1",
+          "alpha_ground_x": "28.74",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_archer-v1.png",
+          "direction": "NW",
+          "frame": "1",
+          "alpha_ground_x": "33.4",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        }
+      ]
+    },
+    {
+      "path": "assets-inbox/wave17/candidates-20260926/assets/wk/wk_levy_billman-v1.png",
+      "status": "inbox-candidate-world-art",
+      "width": 296,
+      "height": 148,
+      "sha256": "145f36d3a772cece6cc8775739e2a2d04b23603ea9c97b7228b174362bb81ca6",
+      "pngValid": true,
+      "season": "all",
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/wk_levy_billman-v1.png",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0,
+          1
+        ],
+        "width": 74,
+        "height": 74,
+        "count": 8
+      },
+      "template": "legacy_civilian_man",
+      "perFrameAnchors": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.72,
+            "y": 67.24
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 34
+            },
+            "right": {
+              "x": 58,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.63,
+            "y": 68.24
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 34
+            },
+            "right": {
+              "x": 47,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.71,
+            "y": 67.74
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.2,
+            "y": 67.74
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 37
+            },
+            "right": {
+              "x": 40,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 42.88,
+            "y": 67.16
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 32
+            },
+            "right": {
+              "x": 59,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.71,
+            "y": 67.66
+          },
+          "figureHeight": 65.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 32
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 30.87,
+            "y": 67.33
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 29.87,
+            "y": 66.99
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 14,
+              "y": 34
+            },
+            "right": {
+              "x": 40,
+              "y": 32
+            }
+          }
+        }
+      ],
+      "anchorProvenance": "registered source template from walkerSheetManifest; original sprite feet protected by generation records",
+      "measuredGroundAnchors": [
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "NE",
+          "frame": "0",
+          "alpha_ground_x": "40.32",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "SE",
+          "frame": "0",
+          "alpha_ground_x": "45.08",
+          "alpha_ground_y": "68",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "SW",
+          "frame": "0",
+          "alpha_ground_x": "28.7",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "NW",
+          "frame": "0",
+          "alpha_ground_x": "33",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "NE",
+          "frame": "1",
+          "alpha_ground_x": "39.81",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "SE",
+          "frame": "1",
+          "alpha_ground_x": "45.79",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "SW",
+          "frame": "1",
+          "alpha_ground_x": "28.74",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        },
+        {
+          "asset": "assets/wk/wk_levy_billman-v1.png",
+          "direction": "NW",
+          "frame": "1",
+          "alpha_ground_x": "33.4",
+          "alpha_ground_y": "67",
+          "note": "Reference measurement only; preserve sheet registration, not an instruction to recenter."
+        }
+      ]
+    },
+    {
+      "path": "public/assets/buildings/historical-facilities-v1/market_active-v2.png",
+      "status": "public-world-art",
+      "width": 224,
+      "height": 224,
+      "sha256": "c1dda89871ac0270737e607a2bd487a6532088695259444ff32395141a6bc0ef",
+      "pngValid": true,
+      "season": "all",
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/market_active-v2.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/buildings/historical-facilities-v1/market_quiet-v2.png",
+      "status": "public-world-art",
+      "width": 224,
+      "height": 224,
+      "sha256": "6db439b052b90d99e12e1de2418f94000942840d64e38e2dc51342154e76e47b",
+      "pngValid": true,
+      "season": "all",
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/market_quiet-v2.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/walkers-v2/wk_priest_m_01-v1.png",
+      "status": "public-world-art",
+      "width": 296,
+      "height": 148,
+      "sha256": "87cc0643daed82c6581fd311559076f3375e041d57104618c5c04278d4c5a0cd",
+      "pngValid": true,
+      "season": "all",
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/wk_priest_m_01-v1.png",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0,
+          1
+        ],
+        "width": 74,
+        "height": 74,
+        "count": 8
+      },
+      "template": "legacy_cleric",
+      "perFrameAnchors": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 44.05,
+            "y": 66.91
+          },
+          "figureHeight": 56.9,
+          "hands": {
+            "left": {
+              "x": 35,
+              "y": 35
+            },
+            "right": {
+              "x": 57,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 38.79,
+            "y": 67.08
+          },
+          "figureHeight": 57.23,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 37
+            },
+            "right": {
+              "x": 48,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.29,
+            "y": 67.08
+          },
+          "figureHeight": 56.56,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 37
+            },
+            "right": {
+              "x": 46,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 33.29,
+            "y": 67.58
+          },
+          "figureHeight": 57.73,
+          "hands": {
+            "left": {
+              "x": 20,
+              "y": 38
+            },
+            "right": {
+              "x": 42,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.63,
+            "y": 63.15
+          },
+          "figureHeight": 56.23,
+          "hands": {
+            "left": {
+              "x": 32,
+              "y": 32
+            },
+            "right": {
+              "x": 55,
+              "y": 29
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 38.71,
+            "y": 63.49
+          },
+          "figureHeight": 55.73,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 34
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.87,
+            "y": 63.99
+          },
+          "figureHeight": 55.9,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 33.2,
+            "y": 64.16
+          },
+          "figureHeight": 57.23,
+          "hands": {
+            "left": {
+              "x": 18,
+              "y": 30
+            },
+            "right": {
+              "x": 41,
+              "y": 32
+            }
+          }
+        }
+      ],
+      "anchorProvenance": "registered source template from walkerSheetManifest; original sprite feet protected by generation records"
+    },
+    {
+      "path": "public/assets/wave7/signifier/empty_stall-v1.png",
+      "status": "public-world-art",
+      "width": 96,
+      "height": 96,
+      "sha256": "9d324d415a60378d5b5dd97f66c2ba1967d36467d8432ef69432666cae0baec6",
+      "pngValid": true,
+      "season": "all",
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/empty_stall-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/event/burnt_l1-v1.png",
+      "status": "public-world-art",
+      "width": 139,
+      "height": 139,
+      "sha256": "147e0add6a2a14f09f0461686878ef592db6c298f89b5afc2d963f42c4e22ea5",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/event/burnt_l1-v1.png",
+        "width": 139,
+        "height": 139,
+        "pivot": {
+          "x": 0,
+          "y": 0,
+          "overlay": true
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/burnt_l1-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/event/crowd_manor_gate-v1.png",
+      "status": "public-world-art",
+      "width": 192,
+      "height": 128,
+      "sha256": "4702bfbc032f2c8d0b7ad94503fe4381704890122a64a699011997cf104939d1",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/event/crowd_manor_gate-v1.png",
+        "width": 192,
+        "height": 128,
+        "pivot": {
+          "x": 96,
+          "y": 64
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/crowd_manor_gate-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/event/plague_shut_l1-v1.png",
+      "status": "public-world-art",
+      "width": 139,
+      "height": 139,
+      "sha256": "9b142f8864ce724c14aedfac3cb359e4fd289ed4880de57bd7cb900dbe71f9ef",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/event/plague_shut_l1-v1.png",
+        "width": 139,
+        "height": 139,
+        "pivot": {
+          "x": 0,
+          "y": 0,
+          "overlay": true
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/plague_shut_l1-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/field/ridge_flooded-v1.png",
+      "status": "public-world-art",
+      "width": 512,
+      "height": 64,
+      "sha256": "d51c59506546e0919dc13bc0539f07839aef731ad665d167a3270aa6a42f32ba",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/field/ridge_flooded-v1.png",
+        "width": 512,
+        "height": 64,
+        "pivot": {
+          "x": 256,
+          "y": 32
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/ridge_flooded-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/fx/black_smoke_column_sheet-v1.png",
+      "status": "public-world-art",
+      "width": 384,
+      "height": 192,
+      "sha256": "28d40e5b07d47baf3a859c8c791c155227b7ad1f8dae219c9af0f7ac99eaed30",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/fx/black_smoke_column_sheet-v1.png",
+        "width": 384,
+        "height": 192,
+        "pivot": {
+          "x": 48,
+          "y": 186
+        },
+        "frames": {
+          "width": 96,
+          "height": 192,
+          "count": 4,
+          "rows": 1
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/black_smoke_column_sheet-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/prop/bier_shroud_ne-v1.png",
+      "status": "public-world-art",
+      "width": 64,
+      "height": 32,
+      "sha256": "5726d1eb760a2fe604616766f221b10a63270c7f94a9a7a92c9d2b4974884fa7",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/prop/bier_shroud_ne-v1.png",
+        "width": 64,
+        "height": 32,
+        "pivot": {
+          "x": 32,
+          "y": 16
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/bier_shroud_ne-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/prop/bier_shroud_nw-v1.png",
+      "status": "public-world-art",
+      "width": 64,
+      "height": 32,
+      "sha256": "0431d99caf69ce82867f313c214f5751f7090d698b6b36b06b32d15a39393533",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/prop/bier_shroud_nw-v1.png",
+        "width": 64,
+        "height": 32,
+        "pivot": {
+          "x": 32,
+          "y": 16
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/bier_shroud_nw-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/prop/scroll_royal_ne-v1.png",
+      "status": "public-world-art",
+      "width": 32,
+      "height": 32,
+      "sha256": "2ab40c0fd3b4374e7fb792050722ad5e7c47e02275744df1c50e9d8a86cbf241",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/prop/scroll_royal_ne-v1.png",
+        "width": 32,
+        "height": 32,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/scroll_royal_ne-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/prop/scroll_royal_nw-v1.png",
+      "status": "public-world-art",
+      "width": 32,
+      "height": 32,
+      "sha256": "f507f0cb9455eeb9f941b373e2402aa54ec0d965f7a1bf900c319e36739d3199",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/prop/scroll_royal_nw-v1.png",
+        "width": 32,
+        "height": 32,
+        "pivot": {
+          "x": 16,
+          "y": 16
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/scroll_royal_nw-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/signifier/hungry_queue-v1.png",
+      "status": "public-world-art",
+      "width": 128,
+      "height": 64,
+      "sha256": "305f67eb549e18a8355fea199de4c42ead1efdc85e615bb59625f3318cc35a7b",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/signifier/hungry_queue-v1.png",
+        "width": 128,
+        "height": 64,
+        "pivot": {
+          "x": 64,
+          "y": 32
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/hungry_queue-v1.png",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/wave9/walker/wk_funeral_bearers-v1.png",
+      "status": "public-world-art",
+      "width": 296,
+      "height": 148,
+      "sha256": "8e51b570cd335df31af90ddaff625102d4db57beb31ee04784a17f10c0dcee68",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/walker/wk_funeral_bearers-v1.png",
+        "width": 296,
+        "height": 148,
+        "pivot": {
+          "x": 37,
+          "y": 70
+        },
+        "frames": {
+          "width": 74,
+          "height": 74,
+          "count": 4,
+          "rows": 2
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/wk_funeral_bearers-v1.png",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0,
+          1
+        ],
+        "width": 74,
+        "height": 74,
+        "count": 8
+      },
+      "template": "legacy_civilian_man",
+      "perFrameAnchors": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.72,
+            "y": 67.24
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 34
+            },
+            "right": {
+              "x": 58,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.63,
+            "y": 68.24
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 34
+            },
+            "right": {
+              "x": 47,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.71,
+            "y": 67.74
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.2,
+            "y": 67.74
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 37
+            },
+            "right": {
+              "x": 40,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 42.88,
+            "y": 67.16
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 32
+            },
+            "right": {
+              "x": 59,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.71,
+            "y": 67.66
+          },
+          "figureHeight": 65.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 32
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 30.87,
+            "y": 67.33
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 29.87,
+            "y": 66.99
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 14,
+              "y": 34
+            },
+            "right": {
+              "x": 40,
+              "y": 32
+            }
+          }
+        }
+      ],
+      "anchorProvenance": "registered source template from walkerSheetManifest; original sprite feet protected by generation records"
+    },
+    {
+      "path": "public/assets/wave9/walker/wk_royal_messenger-v1.png",
+      "status": "public-world-art",
+      "width": 296,
+      "height": 148,
+      "sha256": "8eb9884ec8478c78276762d400fba0537e27bb265df923830b8f29a3e69467ca",
+      "pngValid": true,
+      "season": "all",
+      "renderMetadata": {
+        "url": "assets/wave9/walker/wk_royal_messenger-v1.png",
+        "width": 296,
+        "height": 148,
+        "pivot": {
+          "x": 37,
+          "y": 70
+        },
+        "frames": {
+          "width": 74,
+          "height": 74,
+          "count": 4,
+          "rows": 2
+        }
+      },
+      "seasonContract": "all-season original, no newly painted winter clothing claim",
+      "file": "assets/reused/wk_royal_messenger-v1.png",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0,
+          1
+        ],
+        "width": 74,
+        "height": 74,
+        "count": 8
+      },
+      "template": "legacy_merchant",
+      "perFrameAnchors": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 37.46,
+            "y": 68.91
+          },
+          "figureHeight": 67.24,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 33
+            },
+            "right": {
+              "x": 51,
+              "y": 32
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.21,
+            "y": 69.91
+          },
+          "figureHeight": 67.58,
+          "hands": {
+            "left": {
+              "x": 22,
+              "y": 35
+            },
+            "right": {
+              "x": 50,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.21,
+            "y": 70.08
+          },
+          "figureHeight": 67.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 50,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 36.04,
+            "y": 68.91
+          },
+          "figureHeight": 67.24,
+          "hands": {
+            "left": {
+              "x": 21,
+              "y": 33
+            },
+            "right": {
+              "x": 47,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 36.37,
+            "y": 68.33
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 34
+            },
+            "right": {
+              "x": 52,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 39.63,
+            "y": 68.99
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 34
+            },
+            "right": {
+              "x": 48,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.62,
+            "y": 68.99
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 36
+            },
+            "right": {
+              "x": 50,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 37.88,
+            "y": 68.16
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 22,
+              "y": 34
+            },
+            "right": {
+              "x": 49,
+              "y": 35
+            }
+          }
+        }
+      ],
+      "anchorProvenance": "registered source template from walkerSheetManifest; original sprite feet protected by generation records"
+    },
+    {
+      "path": "public/assets/zones/animals/cattle_pair-v1.png",
+      "file": "assets/reused/cattle_pair-v1.png",
+      "sha256": "2a87515ebf312141f99270e079e3c5b3ac36bcd86a7dac61548bab8043446760",
+      "width": 128,
+      "height": 96,
+      "season": "all",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/zones/animals/sheep_flock-v1.png",
+      "file": "assets/reused/sheep_flock-v1.png",
+      "sha256": "77bb4712641f8d56517f74f7e80157c6deb40a1bc2f29c5197347badfc561945",
+      "width": 128,
+      "height": 96,
+      "season": "all",
+      "newArt": false
+    },
+    {
+      "path": "public/assets/visibility-v1/fx/fire_small.png",
+      "file": "assets/reused/fire_small.png",
+      "sha256": "babdeb0fed0ecf95afdab7c1f1babf1b7c39eab16583c08a778730f842fc98d1",
+      "width": 48,
+      "height": 64,
+      "season": "all",
+      "newArt": false,
+      "animation": "single still; not flame animation"
+    },
+    {
+      "path": "public/assets/visibility-v1/fx/fire_large.png",
+      "file": "assets/reused/fire_large.png",
+      "sha256": "6adee08c013e2787a26d22e74d99524538b7a9677b301cabbd7a5af4ccfaed82",
+      "width": 96,
+      "height": 96,
+      "season": "all",
+      "newArt": false,
+      "animation": "single still; not flame animation"
+    },
+    {
+      "path": "public/assets/walker-props-v1/overlay_cloak_m-v1.png",
+      "file": "assets/reused/overlay_cloak_m-v1.png",
+      "sha256": "75ec7c0c4f806c3593d5ce685d4e4991b7a8c193a884d5cde6b5e4ae89e5a02e",
+      "width": 296,
+      "height": 148,
+      "season": "all",
+      "newArt": false,
+      "compatibleTemplates": [
+        "legacy_civilian_man"
+      ],
+      "winterRule": "Only original template silhouette, not priest or arbitrary new group"
+    },
+    {
+      "path": "public/assets/walker-props-v1/overlay_cloak_f-v1.png",
+      "file": "assets/reused/overlay_cloak_f-v1.png",
+      "sha256": "6747d58058ce03fca8e5923d9408cfaf763c42ad1bdc49f06a54aa2035600ab1",
+      "width": 296,
+      "height": 148,
+      "season": "all",
+      "newArt": false,
+      "compatibleTemplates": [
+        "legacy_civilian_woman"
+      ],
+      "winterRule": "Only original template silhouette, not priest or arbitrary new group"
+    },
+    {
+      "path": "public/assets/walker-props-v1/overlay_cloak_merchant_m-v1.png",
+      "file": "assets/reused/overlay_cloak_merchant_m-v1.png",
+      "sha256": "83701f008910169dd6e4bb4cce9d2143df419a6c821dd616f7b528e52f308045",
+      "width": 296,
+      "height": 148,
+      "season": "all",
+      "newArt": false,
+      "compatibleTemplates": [
+        "legacy_merchant"
+      ],
+      "winterRule": "Only original template silhouette, not priest or arbitrary new group"
+    },
+    {
+      "path": "public/assets/runtime-actors-v1/cart_hand-v4.png",
+      "file": "assets/reused/cart_hand-v4.png",
+      "sha256": "e32522862491eb85317c089c61c291189837fd92042b8329b840d20e0e62f2e2",
+      "width": 314,
+      "height": 157,
+      "season": "all",
+      "newArt": false,
+      "frames": {
+        "columns": [
+          "NE",
+          "SE",
+          "SW",
+          "NW"
+        ],
+        "rows": [
+          0
+        ],
+        "count": 4
+      },
+      "anchorWarning": "Cart has its own runtimeActor manifest; do not use human foot values"
+    },
+    {
+      "path": "public/assets/wave9/decal/fresh_graves_a-v1.png",
+      "file": "assets/reused/fresh_graves_a-v1.png",
+      "sha256": "38117bdf171e4c33ffe190b7b98887cddae9320c439b09d33d615b00c1f973c4",
+      "width": 128,
+      "height": 64,
+      "season": "all",
+      "newArt": false
+    }
+  ],
+  "count": 31,
+  "sourceRepo": "/Users/rexxa/fls-astra-worldevents",
+  "rule": "Exact byte copies; all-season originals, never counted as newly drawn winter variants. Existing house overlays only valid over their exact house canvas.",
+  "graftTokensSaved": 51363
+}

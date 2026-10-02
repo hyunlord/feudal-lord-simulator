@@ -1,0 +1,30 @@
+{
+  "outputs": [
+    "flood-layer-summer-z1.0",
+    "flood-layer-summer-z0.6",
+    "flood-layer-winter-z1.0",
+    "flood-layer-winter-z0.6"
+  ],
+  "fields": [
+    {
+      "index": 3,
+      "zone": {
+        "id": "zone-000005",
+        "kind": "arable",
+        "bounds": {
+          "left": 51.5,
+          "top": 46.5,
+          "right": 61.5,
+          "bottom": 51.5
+        },
+        "floor": "soil_a",
+        "floorOffset": {
+          "x": 1.25,
+          "y": 0.5
+        },
+        "hash": 3516058732
+      }
+    }
+  ],
+  "triggerNote": "Proof-only flooded state lookup; original field geometry and engine painter; winter wetSummer not active"
+}

@@ -7,10 +7,17 @@
 //  3. duplicates: a row added base..head whose sha256 equals another row's must carry that marker, or be the row
 //     that another same-sha256 row names as its canonical. Existing rows were marked once (INBOX-1y), so only new
 //     rows are held to this.
-import { git, isMain, resolveRange } from './gitRange.mjs';
+//  4. one row per image: when base..head touches anything under assets-inbox/ (any session; adding, moving, deleting,
+//     or the ledger itself), the image files under assets-inbox/ at <head> (.png .jpg .jpeg .webp .gif .svg) and the
+//     ledger's file column must be the same set — an image without a row, or a row whose file is gone, fails
+//     (docs/ASSET_INBOX.md: rows = images). Added 2026-10-03 after 11ca755e moved 8 retired sprites into
+//     assets-inbox/retired/ without rows and passed; the GIF/WebP/SVG records counted from the same day.
+import { changedFiles, git, isMain, resolveRange } from './gitRange.mjs';
 
 export const LEDGER = 'assets-inbox/INBOX_LEDGER.csv';
 const CANON = /\(정본: ([^)]+)\)/g;
+const INBOX = 'assets-inbox/';
+const IMAGE = /\.(png|jpe?g|webp|gif|svg)$/i;
 
 /** RFC 4180 rows (quoted fields may hold commas, quotes and line breaks); CRLF or LF line ends. */
 export function parseCsv(text) {
@@ -43,7 +50,7 @@ function readLedger(rev, cwd) {
 
 export function checkInboxLedger({ base, head, cwd = process.cwd() }) {
   const rows = readLedger(head, cwd);
-  if (rows === null) return { present: false, rows: 0, dangling: [], badMarks: [], unmarked: [], added: 0 };
+  if (rows === null) return { present: false, rows: 0, dangling: [], badMarks: [], unmarked: [], added: 0, images: null, unledgered: [], fileless: [] };
   const byFile = new Map(rows.map(row => [row.file, row]));
   const bySha = new Map();
   for (const row of rows) bySha.set(row.sha, [...(bySha.get(row.sha) ?? []), row]);
@@ -68,16 +75,32 @@ export function checkInboxLedger({ base, head, cwd = process.cwd() }) {
   const added = rows.filter(row => !old.has(row.file));
   const unmarked = added.filter(row => (bySha.get(row.sha) ?? []).length > 1 && marks(row).length === 0 && !namedCanon.has(row.file))
     .map(row => ({ file: row.file, same: bySha.get(row.sha).filter(other => other !== row).map(other => other.file) }));
-  return { present: true, rows: rows.length, dangling, badMarks, unmarked, added: added.length };
+  const files = base === undefined || changedFiles(base, head, cwd).some(file => file.path.startsWith(INBOX)) ? inboxImages(head, cwd) : null;
+  const unledgered = files === null ? [] : files.filter(file => !byFile.has(file));
+  const present = new Set(files ?? []);
+  const fileless = files === null ? [] : rows.map(row => row.file).filter(file => !present.has(file));
+  return { present: true, rows: rows.length, dangling, badMarks, unmarked, added: added.length, images: files === null ? null : files.length, unledgered, fileless };
 }
 
-export const ledgerOk = result => result.dangling.length === 0 && result.badMarks.length === 0 && result.unmarked.length === 0;
+/** Image paths (.png .jpg .jpeg .webp .gif .svg) under assets-inbox/ at <rev>, relative to it as the ledger writes them. */
+export function inboxImages(rev, cwd) {
+  return git(['ls-tree', '-r', '--name-only', '-z', rev, '--', INBOX], cwd).split('\0')
+    .filter(path => path.startsWith(INBOX) && IMAGE.test(path)).map(path => path.slice(INBOX.length));
+}
+
+export const ledgerOk = result => result.dangling.length === 0 && result.badMarks.length === 0 && result.unmarked.length === 0
+  && result.unledgered.length === 0 && result.fileless.length === 0;
 
 export function formatLedgerResult(result) {
-  const { present, rows, dangling, badMarks, unmarked, added } = result;
+  const { present, rows, dangling, badMarks, unmarked, added, images, unledgered, fileless } = result;
   if (!present) return `ledger: skipped (${LEDGER} does not exist)`;
-  if (ledgerOk(result)) return `ledger: ${rows} rows, every replaced_by path is a ledger row, canonical marks match, ${added} new row(s) and none an unmarked duplicate`;
-  const lines = [`ledger: ${dangling.length} dangling replaced_by, ${badMarks.length} bad canonical mark(s), ${unmarked.length} new duplicate row(s) without a canonical mark`];
+  const count = images === null ? 'no assets-inbox change, rows = images not checked' : `${images} image(s) under assets-inbox/`;
+  if (ledgerOk(result)) return `ledger: ${rows} rows, ${count}${images === null ? '' : ', one row each'}, every replaced_by path is a ledger row, canonical marks match, ${added} new row(s) and none an unmarked duplicate`;
+  const lines = [`ledger: ${rows} rows vs ${count}: ${unledgered.length} image(s) without a row, ${fileless.length} row(s) without a file, ${dangling.length} dangling replaced_by, ${badMarks.length} bad canonical mark(s), ${unmarked.length} new duplicate row(s) without a canonical mark`];
+  for (const file of unledgered) lines.push(`  NOROW ${file}`);
+  if (unledgered.length > 0) lines.push(`  Every image (png, jpg, jpeg, webp, gif, svg) under assets-inbox/ has one ledger row (wave, file, sha256, status…), retired or moved files too (docs/ASSET_INBOX.md).`);
+  for (const file of fileless) lines.push(`  NOFILE ${file}`);
+  if (fileless.length > 0) lines.push('  Inbox files are never deleted or overwritten; a moved file takes its row along (change the row\'s file).');
   for (const { file, target } of dangling) lines.push(`  MISSING ${file} -> ${target}`);
   if (dangling.length > 0) lines.push('  Write each replacement as the file path of its own ledger row; join several with ";".');
   for (const { file, target, why } of badMarks) lines.push(`  BADMARK ${file} (정본: ${target}): ${why}`);

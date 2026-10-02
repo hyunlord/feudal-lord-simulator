@@ -1,0 +1,37 @@
+{
+  "summerAlphaDiffPixels": 0,
+  "seasonLowerBodyDiffPixels": 0,
+  "approvedFiveUnchanged": {
+    "gate_corner_palisade_summer-v1": true,
+    "gate_corner_palisade_winter-v1": true,
+    "storehouse_a_snow-v1": true,
+    "storehouse_b_snow-v1": true,
+    "storehouse_c_snow-v1": true
+  },
+  "assetCount": 2,
+  "proofCount": 2,
+  "canvas": [
+    256,
+    320
+  ],
+  "pivotPx": [
+    127,
+    268
+  ],
+  "proofSource": "references/ch5-gate-51-38-zoom1.4.jpg",
+  "sourceCrop": [
+    0,
+    22,
+    420,
+    322
+  ],
+  "anchorOnOriginalCapture": [
+    244,
+    180
+  ],
+  "scale": 0.20631578947368417,
+  "runtime": "not installed; static composite only",
+  "rawGenerationsIncluded": true,
+  "transparentRgb": "zero on both",
+  "visualVerdict": "pass: less creamy, darker muted gray, finer shaft masonry; same scene and placement"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "ck_evt_013",
+  "tool": "image_gen__imagegen",
+  "prompt": "Use case: historical-scene. Finished landscape16:9 event-card illustration, target960x540. References STYLE ONLY richly textured painterly historical realism, natural oak, wool, restrained earth pigments. Entirely new close SIDE-VIEW composition outdoors in an English manor STABLE YARD circa1330, autumn daytime. Subject is whether a well-connected steward should retain authority after concealed money is found, show impending choice not an already executed punishment. Three adults: anxious steward at left holds out a LARGE IRON ESTATE KEY on open palm, dignified lord at right hesitates with hand hovering short of taking key, and a younger replacement candidate stands several paces behind beside a saddled brown horse at the dark stable opening. Key and almost-meeting hands are visual focus. A small untied recovered purse with a modest scattering of silver pennies lies on a LOW STONE MOUNTING BLOCK in lowerforeground, NOT a table. Sideways compressed diagonal, chest-up foreground men and receding candidate contrast; hands clear natural anatomy. Early14th-century long loose wool tunic/surcoat and linen undergarments, leather belt, hoods/simplecaps, modest distinctions of cloth quality. Rough timber stable, straw, warm ochre leaves, soft daylight from upperleft. No violence, guards, shackles, arrest, completed handover or triumphant smiles. No documents, scrolls, ledgers, papers, TABLES, desks, writing, captions, logos, watermarks, borders. No chimney, windowglass, Tudor facade, modern clothing. One finished wide image.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/09_common_pasture.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2/exec-7b163ee9-29b1-4525-a508-5a3537b1b1b2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2/exec-7b163ee9-29b1-4525-a508-5a3537b1b1b2.png",
+  "visual_qa": "Pass: close side view suspended key handover, lord hovering hand not taking; candidate/horse secondary, coin purse on mounting stone. No paper/table/text/watermark/chimney; plausible anatomy.",
+  "raw_dimensions": [
+    1672,
+    941
+  ],
+  "output_file": "assets/ck_evt_013.jpg",
+  "raw_sha256": "9d96db7cd39124268fbca87072d7b4e6ca99542ec58cbe7c98c350499fde607e",
+  "sha256": "d89c9347dcc61b88a2dbc9daa21f973966ceefc395b1bc3b518d7a7b3b57498f",
+  "dimensions": [
+    960,
+    540
+  ],
+  "final_file": "assets/ck_evt_013.jpg",
+  "final_sha256": "d89c9347dcc61b88a2dbc9daa21f973966ceefc395b1bc3b518d7a7b3b57498f",
+  "status": "candidate",
+  "revision_action": "regenerate"
+}

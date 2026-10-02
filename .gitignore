@@ -21,6 +21,8 @@ coverage/
 
 # oh-my-claudecode's per-session state (HUD, notepad) — written into whatever folder a session runs in, never shared.
 .omc/
+# Codex (oh-my-codex) session state, the same kind of per-session files.
+.omx/
 
 # The Astra visual checker (tools/vision-check, Python via uv): its environment and caches.
 tools/vision-check/.venv/

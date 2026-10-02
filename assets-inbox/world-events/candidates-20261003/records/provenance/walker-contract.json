@@ -1,0 +1,924 @@
+{
+  "sheet": {
+    "width": 296,
+    "height": 148,
+    "cellWidth": 74,
+    "cellHeight": 74,
+    "columns": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "rows": [
+      "gait0",
+      "gait1"
+    ],
+    "frameCount": 8
+  },
+  "footRule": "Use exact per-frame foot and figureHeight, never assume cell bottom center. Crop foot coordinates in 74px normalized cells.",
+  "render": {
+    "currentAdultWorldPx": 16,
+    "bibleAdultWorldPx": 17.6,
+    "bibleDrift": true,
+    "zoomFloor": 0.65,
+    "actualAdultScreenPxAtZoom1": 16,
+    "actualAdultScreenPxAtZoom0_6": 10.4,
+    "bibleTargetAtZoom1": 17.6
+  },
+  "sourceFiles": [
+    "src/render/walkerComposer.ts:35",
+    "src/render/drawWalkers.ts:42",
+    "scripts/buildWalkerSheetManifest.py:1",
+    "docs/design/art-bible.md:33"
+  ],
+  "selectedTemplates": [
+    {
+      "id": "legacy_civilian_man",
+      "url": "assets/runtime-actors-v1/actor_civilian_man-v1.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "a2a9bc625bd590a66a4efb75d0ece0e3fdf125d748ab1b9e001cdbafd4e1cdb8",
+      "classBand": "labor",
+      "sex": "male",
+      "occupationTags": [],
+      "legacy": true,
+      "holdsTool": false,
+      "template": "civilian_man",
+      "season": "all",
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "cloak": "male",
+      "cloakPoke": 18,
+      "frames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.72,
+            "y": 67.24
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 34
+            },
+            "right": {
+              "x": 58,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.63,
+            "y": 68.24
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 34
+            },
+            "right": {
+              "x": 47,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.71,
+            "y": 67.74
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.2,
+            "y": 67.74
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 37
+            },
+            "right": {
+              "x": 40,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 42.88,
+            "y": 67.16
+          },
+          "figureHeight": 65.07,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 32
+            },
+            "right": {
+              "x": 59,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.71,
+            "y": 67.66
+          },
+          "figureHeight": 65.74,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 32
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 30.87,
+            "y": 67.33
+          },
+          "figureHeight": 64.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 29.87,
+            "y": 66.99
+          },
+          "figureHeight": 64.57,
+          "hands": {
+            "left": {
+              "x": 14,
+              "y": 34
+            },
+            "right": {
+              "x": 40,
+              "y": 32
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "legacy_civilian_woman",
+      "url": "assets/runtime-actors-v1/actor_civilian_woman-v1.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "e47bcb380ba57e2cf2440fd191cfcde9bba711d85b93131b0f73c00ac3ed6cd8",
+      "classBand": "servant",
+      "sex": "female",
+      "occupationTags": [],
+      "legacy": true,
+      "holdsTool": false,
+      "template": "civilian_woman",
+      "season": "all",
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "cloak": "female",
+      "cloakPoke": 35,
+      "frames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 38.54,
+            "y": 66.91
+          },
+          "figureHeight": 61.4,
+          "hands": {
+            "left": {
+              "x": 31,
+              "y": 34
+            },
+            "right": {
+              "x": 50,
+              "y": 38
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 36.71,
+            "y": 67.41
+          },
+          "figureHeight": 61.74,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 39
+            },
+            "right": {
+              "x": 47,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 38.79,
+            "y": 67.41
+          },
+          "figureHeight": 60.74,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 38
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 35.29,
+            "y": 66.74
+          },
+          "figureHeight": 61.07,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 39
+            },
+            "right": {
+              "x": 41,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 39.21,
+            "y": 65.49
+          },
+          "figureHeight": 60.74,
+          "hands": {
+            "left": {
+              "x": 31,
+              "y": 34
+            },
+            "right": {
+              "x": 51,
+              "y": 38
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 39.79,
+            "y": 64.32
+          },
+          "figureHeight": 61.24,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 36
+            },
+            "right": {
+              "x": 48,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.29,
+            "y": 63.99
+          },
+          "figureHeight": 60.74,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 32
+            },
+            "right": {
+              "x": 46,
+              "y": 42
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.71,
+            "y": 65.49
+          },
+          "figureHeight": 60.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 39
+            },
+            "right": {
+              "x": 41,
+              "y": 32
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "legacy_merchant",
+      "url": "assets/runtime-actors-v1/actor_merchant-v1.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "66967eef9aaf54c341258740e99567ca2c106fae7ddfb01e25da9c784bc62836",
+      "classBand": "merchant",
+      "sex": "male",
+      "occupationTags": [],
+      "legacy": true,
+      "holdsTool": false,
+      "template": "merchant",
+      "season": "all",
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "cloak": "merchant",
+      "cloakPoke": 248,
+      "frames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 37.46,
+            "y": 68.91
+          },
+          "figureHeight": 67.24,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 33
+            },
+            "right": {
+              "x": 51,
+              "y": 32
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 39.21,
+            "y": 69.91
+          },
+          "figureHeight": 67.58,
+          "hands": {
+            "left": {
+              "x": 22,
+              "y": 35
+            },
+            "right": {
+              "x": 50,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.21,
+            "y": 70.08
+          },
+          "figureHeight": 67.74,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 35
+            },
+            "right": {
+              "x": 50,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 36.04,
+            "y": 68.91
+          },
+          "figureHeight": 67.24,
+          "hands": {
+            "left": {
+              "x": 21,
+              "y": 33
+            },
+            "right": {
+              "x": 47,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 36.37,
+            "y": 68.33
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 34
+            },
+            "right": {
+              "x": 52,
+              "y": 33
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 39.63,
+            "y": 68.99
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 34
+            },
+            "right": {
+              "x": 48,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.62,
+            "y": 68.99
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 36
+            },
+            "right": {
+              "x": 50,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 37.88,
+            "y": 68.16
+          },
+          "figureHeight": 66.57,
+          "hands": {
+            "left": {
+              "x": 22,
+              "y": 34
+            },
+            "right": {
+              "x": 49,
+              "y": 35
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "legacy_cleric",
+      "url": "assets/runtime-actors-v1/actor_cleric-v3.png",
+      "width": 1774,
+      "height": 887,
+      "sha256": "9bf25a1704562da88c2dfa742976e32db70f88c1f2a5b6557a21c2f1427907c1",
+      "classBand": "priest",
+      "sex": "male",
+      "occupationTags": [],
+      "legacy": true,
+      "holdsTool": false,
+      "template": "cleric",
+      "season": "all",
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "cloak": null,
+      "cloakPoke": 17,
+      "frames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 44.05,
+            "y": 66.91
+          },
+          "figureHeight": 56.9,
+          "hands": {
+            "left": {
+              "x": 35,
+              "y": 35
+            },
+            "right": {
+              "x": 57,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 38.79,
+            "y": 67.08
+          },
+          "figureHeight": 57.23,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 37
+            },
+            "right": {
+              "x": 48,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.29,
+            "y": 67.08
+          },
+          "figureHeight": 56.56,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 37
+            },
+            "right": {
+              "x": 46,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 33.29,
+            "y": 67.58
+          },
+          "figureHeight": 57.73,
+          "hands": {
+            "left": {
+              "x": 20,
+              "y": 38
+            },
+            "right": {
+              "x": 42,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.63,
+            "y": 63.15
+          },
+          "figureHeight": 56.23,
+          "hands": {
+            "left": {
+              "x": 32,
+              "y": 32
+            },
+            "right": {
+              "x": 55,
+              "y": 29
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 38.71,
+            "y": 63.49
+          },
+          "figureHeight": 55.73,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 34
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.87,
+            "y": 63.99
+          },
+          "figureHeight": 55.9,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 33.2,
+            "y": 64.16
+          },
+          "figureHeight": 57.23,
+          "hands": {
+            "left": {
+              "x": 18,
+              "y": 30
+            },
+            "right": {
+              "x": 41,
+              "y": 32
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "wk_priest_m_01",
+      "url": "assets/walkers-v2/wk_priest_m_01-v1.png",
+      "width": 296,
+      "height": 148,
+      "sha256": "87cc0643daed82c6581fd311559076f3375e041d57104618c5c04278d4c5a0cd",
+      "classBand": "priest",
+      "sex": "male",
+      "occupationTags": [],
+      "legacy": false,
+      "holdsTool": false,
+      "template": "cleric",
+      "season": "all",
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "cloak": null,
+      "cloakPoke": 19,
+      "frames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 44.05,
+            "y": 66.91
+          },
+          "figureHeight": 56.9,
+          "hands": {
+            "left": {
+              "x": 35,
+              "y": 35
+            },
+            "right": {
+              "x": 57,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 38.79,
+            "y": 67.08
+          },
+          "figureHeight": 57.23,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 37
+            },
+            "right": {
+              "x": 48,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.29,
+            "y": 67.08
+          },
+          "figureHeight": 56.56,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 37
+            },
+            "right": {
+              "x": 46,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 33.29,
+            "y": 67.58
+          },
+          "figureHeight": 57.73,
+          "hands": {
+            "left": {
+              "x": 20,
+              "y": 38
+            },
+            "right": {
+              "x": 42,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.63,
+            "y": 63.15
+          },
+          "figureHeight": 56.23,
+          "hands": {
+            "left": {
+              "x": 32,
+              "y": 32
+            },
+            "right": {
+              "x": 55,
+              "y": 29
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 38.71,
+            "y": 63.49
+          },
+          "figureHeight": 55.73,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 34
+            },
+            "right": {
+              "x": 50,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.87,
+            "y": 63.99
+          },
+          "figureHeight": 55.9,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 33.2,
+            "y": 64.16
+          },
+          "figureHeight": 57.23,
+          "hands": {
+            "left": {
+              "x": 18,
+              "y": 30
+            },
+            "right": {
+              "x": 41,
+              "y": 32
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Legacy native sheets 1774x887 normalize by296/1774.",
+    "Composed cell108=74+2*17padding; propScale0.65.",
+    "Static crowd groups are not walker sheets and must not claim animated gait.",
+    "Winter cloak overlays are template-specific; do not wrap priest or arbitrary new group with male cloak."
+  ],
+  "graftTokensSaved": 43847
+}

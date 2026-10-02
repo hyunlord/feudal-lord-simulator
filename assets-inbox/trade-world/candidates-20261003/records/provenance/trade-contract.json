@@ -1,0 +1,479 @@
+{
+  "status": "candidate_planning_contract",
+  "source_head": "872cc612da43c4355539e9a7c3da51d0a94121e7",
+  "engine_trade_definitions_found": false,
+  "id_namespace": "provisional_delivery_only_not_engine_ids",
+  "trades": [
+    {
+      "id": "baker",
+      "ko": "제빵",
+      "icon_cue": "bread loaf and long oven peel",
+      "suggested_archetype": "street_front_shop",
+      "tier": "core",
+      "needs_new_front_marker": false
+    },
+    {
+      "id": "brewer",
+      "ko": "양조",
+      "icon_cue": "mash paddle crossing stave tub; no hop cones",
+      "suggested_archetype": "large_yard",
+      "tier": "core",
+      "needs_new_front_marker": false
+    },
+    {
+      "id": "butcher",
+      "ko": "푸줏간",
+      "icon_cue": "cleaver and suspended meat joint",
+      "suggested_archetype": "dirty_yard",
+      "tier": "core",
+      "needs_new_front_marker": true
+    },
+    {
+      "id": "miller",
+      "ko": "방앗간지기",
+      "icon_cue": "round millstone with central eye and grain scoop; no water wheel",
+      "suggested_archetype": "no_shop_labor",
+      "tier": "core",
+      "needs_new_front_marker": false
+    },
+    {
+      "id": "innkeeper",
+      "ko": "여관",
+      "icon_cue": "horse hitch rail and manger; lodging key secondary",
+      "suggested_archetype": "large_yard",
+      "tier": "core",
+      "needs_new_front_marker": false
+    },
+    {
+      "id": "tailor",
+      "ko": "재단",
+      "icon_cue": "large medieval shears crossing tunic",
+      "suggested_archetype": "street_front_shop",
+      "tier": "core",
+      "needs_new_front_marker": true
+    },
+    {
+      "id": "weaver",
+      "ko": "직조",
+      "icon_cue": "loom shuttle with warp threads",
+      "suggested_archetype": "rear_workshop",
+      "tier": "core",
+      "needs_new_front_marker": false
+    },
+    {
+      "id": "smith",
+      "ko": "대장",
+      "icon_cue": "anvil and smith hammer",
+      "suggested_archetype": "forge",
+      "tier": "core",
+      "needs_new_front_marker": false
+    },
+    {
+      "id": "carpenter",
+      "ko": "목수",
+      "icon_cue": "trestles with long beam and broad axe",
+      "suggested_archetype": "large_yard",
+      "tier": "core",
+      "needs_new_front_marker": false
+    },
+    {
+      "id": "shoemaker",
+      "ko": "구두장이",
+      "icon_cue": "turnshoe over wooden last and awl",
+      "suggested_archetype": "rear_workshop",
+      "tier": "core",
+      "needs_new_front_marker": true
+    },
+    {
+      "id": "carrier",
+      "ko": "운송",
+      "icon_cue": "loaded two-wheel cart and tied parcel",
+      "suggested_archetype": "no_shop_labor",
+      "tier": "core",
+      "needs_new_front_marker": true
+    },
+    {
+      "id": "merchant",
+      "ko": "상인",
+      "icon_cue": "large beam balance above tied bale",
+      "suggested_archetype": "warehouse_shop",
+      "tier": "core",
+      "needs_new_front_marker": false
+    },
+    {
+      "id": "fuller",
+      "ko": "축융",
+      "icon_cue": "paired wooden fulling hammers and pale folded cloth",
+      "suggested_archetype": "water_power",
+      "tier": "conditional",
+      "needs_new_front_marker": true
+    },
+    {
+      "id": "dyer",
+      "ko": "염색",
+      "icon_cue": "open dye vat and single muted colored cloth",
+      "suggested_archetype": "waterside_workshop",
+      "tier": "conditional",
+      "needs_new_front_marker": false
+    },
+    {
+      "id": "tanner",
+      "ko": "무두",
+      "icon_cue": "spread hide silhouette and bark scoop",
+      "suggested_archetype": "nuisance_yard",
+      "tier": "conditional",
+      "needs_new_front_marker": false
+    },
+    {
+      "id": "cooper",
+      "ko": "통장이",
+      "icon_cue": "unfinished stave barrel with separate hoop and mallet",
+      "suggested_archetype": "large_yard",
+      "tier": "conditional",
+      "needs_new_front_marker": true
+    },
+    {
+      "id": "wheelwright",
+      "ko": "수레장이",
+      "icon_cue": "spoked wheel with hub and separate rim section",
+      "suggested_archetype": "large_yard",
+      "tier": "conditional",
+      "needs_new_front_marker": true
+    },
+    {
+      "id": "mercer",
+      "ko": "잡화",
+      "icon_cue": "ribbons and thread skeins with small clasp wares",
+      "suggested_archetype": "street_front_shop",
+      "tier": "conditional",
+      "needs_new_front_marker": true
+    },
+    {
+      "id": "spicer",
+      "ko": "향료",
+      "icon_cue": "small mortar and pestle with lidded dry spice pots",
+      "suggested_archetype": "street_front_shop",
+      "tier": "conditional",
+      "needs_new_front_marker": true
+    },
+    {
+      "id": "vintner",
+      "ko": "포도주",
+      "icon_cue": "wine cask and grape-bunch painted symbol; no modern wine bottle",
+      "suggested_archetype": "warehouse_shop",
+      "tier": "conditional",
+      "needs_new_front_marker": true
+    }
+  ],
+  "archetypes": [
+    {
+      "id": "street_front_shop",
+      "ko": "거리 앞방 점포",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "tailor",
+          "subject": "Detached trestle cutting table, draped tunic cloth, very large readable shears, small sewing basket",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "spicer",
+          "subject": "Freestanding small dry-goods table, mortar and pestle, three squat earthenware spice pots, tied spice pouch",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rear_workshop",
+      "ko": "주택 후면 공방",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "weaver",
+          "subject": "Self-standing timber loom under separate four-post flat-board lean shelter with no wall; single broad pale cloth warp",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "shoemaker",
+          "subject": "Low cobbler bench, two wooden lasts, recognizable pair of turnshoes, hanging leather strip on independent short rack",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large_yard",
+      "ko": "큰 뒷마당",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "cooper",
+          "subject": "Barrel assembly hoop jig, unfinished stave barrel, bundle of curved staves and mallet on low block",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "wheelwright",
+          "subject": "Independent wheel hanging rack with one spoked wheel, two hubs and separated curved rim parts on trestles",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dirty_yard",
+      "ko": "더러운 뒷마당",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "butcher",
+          "subject": "Independent stout meat hanging beam, chopping block and covered offal tub; no blood spectacle",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "brewer",
+          "subject": "Broad wooden mash tub with paddle, two tied malt sacks, small fermentation cask; brewing process rather than wine retail",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nuisance_yard",
+      "ko": "외곽 냄새 마당",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "tanner",
+          "subject": "Low open tanning pit with distinct rim, hide stretching frame, small rough bark heap",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "tanner",
+          "subject": "Two shallow tanning vats, curved fleshing beam with hide, bark basket; asymmetrical new arrangement not mirror",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "forge",
+      "ko": "대장간",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "smith",
+          "subject": "Four-post freestanding small forge roof over low stone hearth, anvil on stump, small quench tub and iron stock",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "smith",
+          "subject": "Independent open timber hood on four posts, hand bellows beside low hearth, squat anvil and bundled iron bars; no industrial chimney",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "waterside_workshop",
+      "ko": "물가 공방",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "dyer",
+          "subject": "One dye vat with paddle and muted madder cloth on separate drying rail; no fulling hammers",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "fuller",
+          "subject": "Open washing trough, wooden beating tools and pale wool cloth on low stretching rack; no colored-dye cues",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "water_power",
+      "ko": "수력 시설",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "fuller",
+          "subject": "Freestanding small waterwheel axle and paired fulling hammers over trough; no grain sacks or flour",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "fuller",
+          "subject": "Distinct freestanding timber fulling hammer frame with modest wheel on opposite composition side, wash trough and pale cloth; redraw light, no mirror",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "warehouse_shop",
+      "ko": "대형 창고상점",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "merchant",
+          "subject": "Loading trestles, broad bale, two tied cargo parcels and beam balance; clear yard gap between items",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "vintner",
+          "subject": "Two horizontal wine casks on timber cradles, small measuring jug, unloading skids; no modern glass bottle",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "institution",
+      "ko": "기관",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "institution_support",
+          "subject": "Detached alms table and locked provision chest near church courtyard; not claimed current20 profession",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "institution_support",
+          "subject": "Independent writing trestle, closed coffer and parchment rolls under small freestanding shelter; institutional clerk support, not current20 trade",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "no_shop_labor",
+      "ko": "무점포 노동",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "carrier",
+          "subject": "Temporary tied load beside carrying frame and small two-wheel handcart; no permanent workshop roof",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "miller",
+          "subject": "Temporary flour-sack loading staging, grain scoop and spare millstone beside delivery path to post mill; support-only, not mill itself",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "itinerant",
+      "ko": "순회",
+      "variants": [
+        {
+          "variant": "a",
+          "trade": "mercer",
+          "subject": "Foldable trestle with roll-up smallwares cloth, skeins and travel pannier; explicitly temporary stall",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        },
+        {
+          "variant": "b",
+          "trade": "itinerant_repair_support",
+          "subject": "Portable repair chest, folded trestle and small wood/metal repair tools; no fixed foundation or invented permanent rare workshop",
+          "seasons": [
+            "summer",
+            "winter"
+          ]
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "yard": 48,
+    "new_front_markers": 20,
+    "street_signs": 20,
+    "cargo_target": 10,
+    "total_target": 98
+  },
+  "placement": {
+    "no_wall_attachment": true,
+    "no_mirroring": true,
+    "light": "screen upper left",
+    "projection": "2:1 ground axes +/-26.565 degrees",
+    "ground": "transparent sparse broken contact earth; no diamond platform"
+  },
+  "semantic_exceptions": [
+    "Institution has no exclusive member of current20: neutral support not false profession assignment.",
+    "No-shop is temporary labor staging; miller sacks do not turn household into mill.",
+    "Itinerant temporary stall is compatible with mercer trading behavior; no permanent-shop claim.",
+    "Water-power is fulling only; grain watermills prohibited by project bible.",
+    "Twenty professions are all represented through street signs; 24 archetype variants are not falsely promised one unique primary yard per profession."
+  ]
+}

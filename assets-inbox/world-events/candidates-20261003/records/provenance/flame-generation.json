@@ -1,0 +1,21 @@
+{
+  "id": "fire-flicker",
+  "prompt": "Create a transparent PNG sprite sheet for Charter & Kin medieval handpainted 2D isometric game. Reference is existing approved small fire style. One animation asset: FOUR separate consecutive flame frames left-to-right in four identical square cells, no borders or labels. Each flame identical anchored base width, tongues flicker subtly left/up/right/down over four frames. Muted amber ochre and burnt orange, pale yellow core, delicate painted edge, no black outline, no smoke background, no ground plane, no logs or building. Flame standalone isolated actual alpha. 1024x256 long sheet if possible, 4 equal256 cells, each base at cell center x128 y224 and tip around y32. This is four frames of ONE flame not four unrelated fires. Keep same scale no dramatic brightglow. Project's existing fire shape and warm illustrated texture, not photoreal or neon. Summer and winter use same fire, weather-neutral. No text checkerboard watermark.",
+  "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-ea9a-79c0-91ea-1492d0b9ca08/exec-63ffcb5c-7ac5-4073-a370-0ad93e0da2ae.png",
+  "reference": "public/assets/visibility-v1/fx/fire_small.png",
+  "season": "all",
+  "status": "candidate",
+  "frames": 4,
+  "output": "assets/new/fire-flicker-all.png",
+  "width": 256,
+  "height": 96,
+  "frameWidth": 64,
+  "frameHeight": 96,
+  "pivot": [
+    32,
+    88
+  ],
+  "frameCount": 4,
+  "join": "four horizontal frames; loop 0,1,2,3; 100ms each; timing proposed",
+  "note": "Weather-neutral both seasons; mechanically anchored frames. Not a new actor animation."
+}

@@ -1,0 +1,1 @@
+Inspect U01-U32. Decide if a separate corner asset was inserted: added=true/false, confidence 0-1, short visual reason. Also rate unnaturalness from 0 (natural continuation) to 3 (obvious pasted block or broken join). Do not assume class balance. Read only this public folder. Do not search source, sibling folders, previous reviews or answer keys.

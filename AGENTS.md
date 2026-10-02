@@ -120,14 +120,14 @@
   - **끊김 판정**(`npm run perf:gate`, 최대·33/50 ms 초과·순간): 이 Mac의 실제 Chrome 창에서만 판정한다. DGX 헤드리스는 소프트웨어 래스터라 끊김 판정에 쓰지 않는다([perf-gate](docs/verification/perf-gate/README.md), 결정 SG1~SG5).
   - **메모리 측정**(`scripts/perf/memoryHolders.ts`, 힙 스냅숏·픽셀 붙잡이): 이 Mac의 실제 Chrome 창에서 잰다. 픽셀 메모리는 DPR·GPU에 따라 달라서다. 판정에 써도 된다(결정 RR2).
 - **성능 판정은 추이로 한다**(사용자 판정 2026-09-30, 결정 RR3). 측정은 아무것도 기다리지 않는다: 잠금·대기열·조용한 기계 기다리기가 없고, 다른 세션을 막지도 막히지도 않는다. 그때의 환경은 수치 옆에 적는다.
-  - **커밋마다 추이**: 본선 푸시 때 pre-push 훅이 그 커밋을 DGX에서 뒤로 잰다(`scripts/perf/trendRun.ts`, 판정 지표 넷: JS 할당 MB/s·GC/분·캔버스 생성/초·GC 뒤 남은 힙. 스크립트 시간은 DGX 부하에 끌려가므로 다른 일 CPU와 나란히 참고 칸에만 두고, 판정은 `perf:ab` 짝 비교에서만 한다 — 결정 RR6). 값이 비교 커밋(앞 본선 커밋)이 제 실행들에서 보인 범위를 그 폭만큼 넓힌 범위 밖이면 **의심**이고, 그러면 DGX가 두 커밋을 A-B-A-B(`perf:ab`)로 자동으로 돌려 짝 차이의 95 % 폭(t 분포)이 0 위이면 A-B를 한 번 더 돌려 두 번 모두 그럴 때만 **나빠짐**으로 확정한다(결정 RR7). `npm run perf:trend`가 [`docs/verification/perf-trend/`](docs/verification/perf-trend/README.md)를 다시 쓴다. 본선에 합치는 세션은 이 문서를 갱신해 함께 커밋한다. 문서가 본선 머리보다 10개 넘게 뒤처지면 `check:merge`가 경고 한 줄을 찍는다(푸시는 막지 않음). 경고가 쌓이면 인프라 세션이 모아 커밋한다(결정 RR4).
+  - **커밋마다 추이**: 본선 푸시 때 pre-push 훅이 그 커밋을 DGX에서 뒤로 잰다(`scripts/perf/trendRun.ts`, 판정 지표 넷: JS 할당 MB/s·GC/분·캔버스 생성/초·GC 뒤 남은 힙. 스크립트 시간은 DGX 부하에 끌려가므로 다른 일 CPU와 나란히 참고 칸에만 두고, 판정은 `perf:ab` 짝 비교에서만 한다 — 결정 RR6). 값이 비교 커밋(앞 본선 커밋)이 제 실행들에서 보인 범위를 그 폭만큼 넓힌 범위 밖이면 **의심**이고, 그러면 DGX가 두 커밋을 A-B-A-B(`perf:ab`)로 자동으로 돌려 짝 차이의 95 % 폭(t 분포)이 0 위이면 A-B를 한 번 더 돌려 두 번 모두 그럴 때만 **나빠짐**으로 확정한다(결정 RR7). `npm run perf:trend`가 [`docs/verification/perf-trend/`](docs/verification/perf-trend/README.md)를 다시 쓴다. 본선에 합치는 세션은 이 문서를 갱신해 함께 커밋한다. 작업 브랜치에 본선을 합칠 때 문서가 10개 넘게 뒤처졌으면 병합 뒤 훅이 갱신해 그 폴더만 따로 커밋한다(`FLS_TREND_AUTO=0`으로 끔). 문서가 본선 머리보다 10개 넘게 뒤처지면 `check:merge`가 경고 한 줄을 찍는다(푸시는 막지 않음). 경고가 쌓이면 인프라 세션이 모아 커밋한다(결정 RR4).
   - **두 커밋 비교**: `npm run perf:ab -- --a <커밋> --b <커밋>`. 같은 장면을 A-B-A-B로 번갈아 돌려, 같은 소음을 둘이 같이 맞게 한다. 짝지은 차이의 95 % 폭(쌍 수에 맞춘 t 분포, 4쌍이면 ±3.18 표준오차)이 0의 한쪽에 있을 때만 나빠짐·좋아짐이다(결정 RR7). Mac 실제 창(기본)이나 DGX(`--headless`, `run.sh`로).
   - **항상 켜진 텔레메트리**: 개발 서버(`npm run dev`)는 누가 돌리든 10초마다 프레임 분포·33/50 ms 초과·긴 프레임의 우리 함수·힙·GC·캔버스 생성·계절 전환/자동 저장을 그때의 환경(다른 CPU·입력·창·배속·인구)과 함께 `~/.fls-telemetry/`에 쌓는다(`scripts/telemetry/`, 배포판에는 없음, `FLS_TELEMETRY=0`으로 끔). `npm run telemetry:report`가 환경별로 나눠 본다. 게임 쪽 훅(줌·캐시 재생성 이름)은 [요청서](docs/requests/render-telemetry-hooks.md).
 - **원격 폴더 label은 `<세션>-<작업ID>`다**(예: `render-F0V`, `engine-F0A`). `FLS_REMOTE_LABEL`로 준다.
 - 원격 실행은 48GB·12코어·nice 10 안에서만 돈다(`fls-runs.slice`). 이 상한을 올리거나 우회하지 않는다. 플레이 서버(4173)는 건드리지 않는다. 원격 실행의 포트는 4300~4399다.
 
 ### 상시 규칙
-1. 커밋은 작업 단위. 증빙은 단계당 3MB 이하(재플레이 캡처 별도), 이미지 JPEG. 준비 상태·자연 플레이·자동 성장 재생을 캡처마다 구분 표기.
+1. 커밋은 작업 단위. 증빙은 단계당 3MB 이하(재플레이 캡처 별도, 병합 전 검사가 막는다 — 규칙 19), 이미지 JPEG. 준비 상태·자연 플레이·자동 성장 재생을 캡처마다 구분 표기.
 2. 배포·main 병합은 명시 지시 없이 금지.
 3. 원인 표시는 원인 등록표, 예측은 `PredictionLine[]` 재사용. 새 표시 체계를 따로 만들지 않는다.
 4. 모바일·Steam Deck: 호버 전용 정보 금지(선택·탭으로도 보여야 함), 입력은 의도(선택·확정·취소·이동·확대·긋기)로 추상화, 터치 영역 44×44px, 글자 최소 11px·권장 12px.
@@ -152,6 +152,7 @@
 18. **렌더 수정 금지의 예외**: 새 건물 종류를 추가할 때 렌더의 종류별 분기 세 곳(`buildingInspectorModel` 용도 문구, `buildingVisualState` 몸체, `historicalFacilityAssets` 그림 id)에 최소 줄을 넣는 것은 렌더 수정 금지의 예외다. 그 밖의 렌더는 건드리지 않고, 보고서에 "렌더 세션이 넘겨받을 것"으로 적는다.
 19. **병합 전 자동 검사**: 본선·main 푸시마다 pre-push 훅이 `npm run check:merge`를 푸시하는 범위(원격 머리..로컬 머리)에 돌린다(`FLS_PUSH_OK=1`일 때도). 하나라도 실패하면 푸시를 거부한다. 기존 위반은 목록으로 두고 새 것만 본다. [사용법](docs/REMOTE_RUNS.md#병합-전-자동-검사)
     - **회귀 시험은 벽시계로 판정하지 않는다**(결정 RR9): 시간은 가짜 시계·틱 수로 정하고, 성능 예산은 `recordCodeBudget`(`tests/helpers/codeBudget.ts`)으로 넘겨 DGX 추이가 커밋마다 잰다. 목록은 [wall-clock-tests](docs/verification/wall-clock-tests.md).
+    - **증거 폴더는 3 MB 이하다**(`scripts/checks/evidenceSize.mjs`, 결정 RR10): 범위에서 바뀐 `docs/verification/<작업>/` 폴더가 3 MB(2^20 단위)를 넘으면 푸시를 거부한다. 재플레이 캡처·`uiaudit1/geometry/`·`perf-trend/`는 세지 않고, 이미 넘은 두 폴더는 기준선 크기까지다.
     - **결정 ID는 하나뿐이다**(`scripts/checks/decisionIds.mjs`, 결정 RR8): `docs/decisions/README.md`에서 같은 ID가 두 행에 있으면 푸시를 거부한다. 다른 세션이 먼저 쓴 번호면 내 것에 새 번호를 준다.
     - **고정값 재기록은 결정 목록에 이유와 함께 한다.**
       - 대상: 가드레일 기준선 `seeds/baseline-*`, DGX 성능 기준선 `perf/baseline-dgx-*`, 저장 지문 `src/save/schemaFingerprint*.json`, C25 판 `c25-board*.json`, 장부 세계 기준 `fixtures/ledger/world-baseline-*`, `fixtures/determinism/`, `fixtures/saves/`, 테스트 파일 안의 16자 이상 해시 값.
@@ -171,6 +172,7 @@
       - 기존 40개 파일의 문자열 463개는 `scripts/checks/korean-strings-baseline.json` 목록에 있다(파일별 정확한 문구). 목록의 문구를 고치면 새 문자열로 본다.
     - typecheck도 함께 돈다. 새 억제·예외 목록 항목을 손으로 추가해 검사를 통과시키지 않는다.
     - **Astra 장부의 `replaced_by`는 장부에 있는 파일 경로만 쓴다**(`scripts/checks/inboxLedger.mjs`). 여러 장이면 `;`로 잇고, 패턴·설명은 `verdict_note`에 쓴다. 기존 행과 바이트가 같은 행을 새로 넣으면 비고에 `○○와 동일 바이트(정본: 경로)`를 단다(정본 = runtime manifest나 설치 대장이 가리키는 행, 없으면 같은 바이트 중 confirmed이면서 가장 먼저 받은 행).
+    - **inbox 그림 한 장에 장부 한 행**(`scripts/checks/inboxLedger.mjs`, 결정 RR11): 범위가 `assets-inbox/` 아래를 하나라도 바꾸면(어느 세션이든, 더하기·옮기기·지우기·장부 고치기), `<head>`의 그림(`.png`·`.jpg`·`.jpeg`·`.webp`·`.gif`·`.svg`) 목록과 장부 `file` 열이 같아야 한다. 행 없는 그림(`NOROW`)이나 파일 없는 행(`NOFILE`)이면 푸시를 거부한다. 옮긴 파일은 그 행의 `file`도 옮긴다.
 
 20. **개인 Claude Code 설정은 `.claude/settings.local.json`에 둔다**(git에 올리지 않음, `.gitignore`).
     - 저장소의 `.claude/settings.json`은 모든 세션이 같이 쓰는 것만 담는다: graft 훅·graft 권한, 그리고 `GRAFT_NO_STATUSLINE=1`(`env`).

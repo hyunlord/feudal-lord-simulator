@@ -1,0 +1,32 @@
+{
+  "id": "ck_evt_013",
+  "prompt": "Use case: historical-scene. Generate one complete finished narrative game event illustration, wide 16:9 fullbleed, 960x540 target. References are STYLE ONLY, not copied scenes: warm muted ochre, oak brown, earthy green and subdued burgundy, finely textured painterly realism, believable faces/hands/materials, soft natural directional light, like references. Southern England medieval market-town manor. Absolutely NO text, letters, numerals, pseudo-writing, captions, border, watermark; all documents completely blank parchment with plain wax seals. Period-correct wool tunics, gowns, linen coifs, leather belts, no modern objects, no Tudor black-white, no ordinary house chimney. England c1330, autumn daytime accounting room. Exactly THREE people. SIDE view: a disgraced middle-aged steward holding a completely empty open account book faces a seated lord in plain long tunic and mantle. Small bowl of recoverable loose silver coins near book. Potential younger successor stands noticeably APART at distant doorway, waiting. Social distance and empty ledger the unmistakable narrative. Lord weighs keeping connected steward or replacing him. No additional witnesses. Light enters left small unglazed shuttered window. Different composition from style reference: broad side-on space, candidate framed by door.",
+  "reference_image_paths": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c/exec-03545f44-0b22-4d95-971b-39e0577099df.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c/exec-03545f44-0b22-4d95-971b-39e0577099df.png",
+  "revision": null,
+  "tool": "builtin image_gen",
+  "status": "candidate",
+  "visual_review": "Reviewed generated image: intended people/action visible, no text; historical architectural fixes recorded where applicable.",
+  "raw_dimensions": [
+    1672,
+    941
+  ],
+  "file": "assets/ck_evt_013.jpg",
+  "dimensions": [
+    960,
+    540
+  ],
+  "raw_sha256": "43de754234fa04f7ffc64c3b4cd95d3ad4205557f4b609825492658fc917bd96",
+  "sha256": "7aa46a51720bd9a04485e65ae6e76231d4ccc5a361ae9a60ba92922f60662fdd",
+  "postprocess": "Pillow ImageOps.fit LANCZOS 960x540, JPEG quality85 optimize; no painting",
+  "final_file": "assets/ck_evt_013.jpg",
+  "final_sha256": "7aa46a51720bd9a04485e65ae6e76231d4ccc5a361ae9a60ba92922f60662fdd",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}

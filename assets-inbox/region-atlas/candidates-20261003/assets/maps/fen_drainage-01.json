@@ -1,0 +1,426 @@
+{
+  "schemaVersion": 1,
+  "mapId": "fen_drainage-01",
+  "archetype": "fen_drainage",
+  "image": "maps/fen_drainage-01.jpg",
+  "width": 1600,
+  "height": 1000,
+  "coordinateSystem": "pixels; origin top-left; x right y down; slot anchor bottom-center of overlay",
+  "slots": [
+    {
+      "id": "s01",
+      "x": 332,
+      "y": 232,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s03",
+      "x": 569,
+      "y": 287,
+      "allowedKinds": [
+        "market",
+        "abbey",
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 70
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s04",
+      "x": 431,
+      "y": 397,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s05",
+      "x": 230,
+      "y": 520,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s06",
+      "x": 345,
+      "y": 598,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s07",
+      "x": 360,
+      "y": 700,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s08",
+      "x": 281,
+      "y": 800,
+      "allowedKinds": [
+        "market",
+        "abbey",
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 70
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j03"
+      ]
+    },
+    {
+      "id": "s10",
+      "x": 447,
+      "y": 775,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j03"
+      ]
+    },
+    {
+      "id": "s11",
+      "x": 630,
+      "y": 860,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j03"
+      ]
+    },
+    {
+      "id": "s13",
+      "x": 929,
+      "y": 850,
+      "allowedKinds": [
+        "market",
+        "abbey",
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 70
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j03"
+      ]
+    },
+    {
+      "id": "s14",
+      "x": 1035,
+      "y": 803,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "c05"
+      ]
+    },
+    {
+      "id": "s15",
+      "x": 1154,
+      "y": 806,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "c05"
+      ]
+    },
+    {
+      "id": "s16",
+      "x": 1100,
+      "y": 715,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "c05"
+      ]
+    },
+    {
+      "id": "s17",
+      "x": 982,
+      "y": 710,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "c05"
+      ]
+    },
+    {
+      "id": "s18",
+      "x": 700,
+      "y": 683,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "c05"
+      ]
+    },
+    {
+      "id": "s19",
+      "x": 766,
+      "y": 555,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "c05"
+      ]
+    },
+    {
+      "id": "s20",
+      "x": 610,
+      "y": 535,
+      "allowedKinds": [
+        "market",
+        "abbey",
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 70
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s21",
+      "x": 544,
+      "y": 447,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s22",
+      "x": 738,
+      "y": 134,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "c04"
+      ]
+    },
+    {
+      "id": "s23",
+      "x": 815,
+      "y": 200,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "c04"
+      ]
+    },
+    {
+      "id": "s24",
+      "x": 555,
+      "y": 970,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "길 옆 건조 초지; 습지·수목을 피해 수동 지정",
+      "landmarkRefs": [
+        "j03"
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "j01",
+      "kind": "junction",
+      "x": 495,
+      "y": 343,
+      "note": "그림에 보이는 흙길 갈림"
+    },
+    {
+      "id": "j02",
+      "kind": "junction",
+      "x": 525,
+      "y": 493,
+      "note": "그림에 보이는 흙길 갈림"
+    },
+    {
+      "id": "j03",
+      "kind": "junction",
+      "x": 617,
+      "y": 925,
+      "note": "그림에 보이는 흙길 갈림"
+    },
+    {
+      "id": "c04",
+      "kind": "crossing",
+      "x": 713,
+      "y": 220,
+      "crossingType": "causeway",
+      "note": "육안으로 식별되는 도하부; 얕은 여울/둑길의 정확한 기능은 운용 시 확정"
+    },
+    {
+      "id": "c05",
+      "kind": "crossing",
+      "x": 854,
+      "y": 493,
+      "crossingType": "causeway",
+      "note": "육안으로 식별되는 도하부; 얕은 여울/둑길의 정확한 기능은 운용 시 확정"
+    }
+  ],
+  "review": {
+    "method": "manual visual annotation and rectangle proof review; color-risk local search assisted, then manual correction",
+    "status": "candidate",
+    "notes": [
+      "거점 없는 연속 회화 전체 지도",
+      "직사각형은 오버레이 권장 범위이며 게임 충돌 마스크 아님",
+      "큰 수목·수면·주도로를 피한 후보. 작은 풀/관목 터치는 배경 회화 일부로 남으며 픽셀 충돌 마스크가 아니다.",
+      "주석 사각형을 실제 그림과 재검토하여 수목 가장자리/겹침 후보를 제거함; 최종 22개.",
+      "최종 통합 검증에서 s08/s09 사각형 가장자리 중첩 확인: s09 삭제, 최종21곳."
+    ]
+  }
+}

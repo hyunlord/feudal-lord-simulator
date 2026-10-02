@@ -1,0 +1,152 @@
+[
+  {
+    "id": "boundary-brush",
+    "path": "overlays/boundary-brush.png",
+    "width": 256,
+    "height": 16,
+    "pivot": [
+      128.5,
+      10
+    ],
+    "alphaBounds": [
+      6,
+      7,
+      251,
+      10
+    ],
+    "source": "code-native dashed polyline boundary brush",
+    "prompt": "256x16 transparent brown dashed irregular polyline, 2px stroke, RGB126/82/53 alpha180; x=6..249 step21; points x,8 x+5,7 x+13,8",
+    "method": "Pillow ImageDraw authorized code-native marker",
+    "sha256": "3276b67331a6effd124549e431b8eea5e375b50089e38537c6e012a5e4e64129",
+    "status": "candidate",
+    "recommendedArtWidthPx": 120,
+    "alphaMin": 0,
+    "alphaMax": 180,
+    "reuse": "byte-identical from prior map kit"
+  },
+  {
+    "id": "flag-delegated",
+    "path": "overlays/flag-delegated.png",
+    "width": 64,
+    "height": 96,
+    "pivot": [
+      15.0,
+      91
+    ],
+    "alphaBounds": [
+      9,
+      5,
+      52,
+      91
+    ],
+    "source": "/Users/rexxa/fls-astra-mapkit/assets-inbox/lord-components/candidates-20261002/assets/flag_delegated_64x96.png",
+    "prompt": "Direct native-size reuse; original generation prompt unavailable in this lane",
+    "method": "byte-identical reference reuse",
+    "sha256": "0162b7020a5f4b23bbedeea05fd39c9a79aca97b43b2f10b3444e13e09751586",
+    "status": "candidate",
+    "recommendedArtWidthPx": 22,
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "reuse": "byte-identical from prior map kit"
+  },
+  {
+    "id": "flag-direct",
+    "path": "overlays/flag-direct.png",
+    "width": 64,
+    "height": 96,
+    "pivot": [
+      14.0,
+      91
+    ],
+    "alphaBounds": [
+      9,
+      5,
+      44,
+      91
+    ],
+    "source": "/Users/rexxa/fls-astra-mapkit/assets-inbox/lord-components/candidates-20261002/assets/flag_direct_64x96.png",
+    "prompt": "Direct native-size reuse; original generation prompt unavailable in this lane",
+    "method": "byte-identical reference reuse",
+    "sha256": "58dd104a0b86b6de0cdb99fd7927de3d51d04655522555dd14275a815cd85dc3",
+    "status": "candidate",
+    "recommendedArtWidthPx": 22,
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "reuse": "byte-identical from prior map kit"
+  },
+  {
+    "id": "flag-hostile",
+    "path": "overlays/flag-hostile.png",
+    "width": 64,
+    "height": 96,
+    "pivot": [
+      19.0,
+      88
+    ],
+    "alphaBounds": [
+      14,
+      9,
+      54,
+      88
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd39-fe45-7863-b369-4201148434dd/exec-c044926f-b1aa-4609-a6ef-5b2e59bf94df.png",
+    "prompt": "One isolated medieval map marker flag on a slender aged oak pole, muted dark rust-red tattered rectangular banner with simple pale diagonal cross, small brass finial, no text. Same softly painted style as medieval southern England manor map icons. Top left light, slender vertical silhouette, transparent background, no ground patch, no cast shadow.",
+    "method": "built-in imagegen; alpha crop; one Lanczos reduction; transparent canvas",
+    "sha256": "74384b72698bfd5b7893eb3c5300230c96dfb5d15c979748f259457b346ba6cb",
+    "status": "candidate",
+    "recommendedArtWidthPx": 22,
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "reuse": "byte-identical from prior map kit"
+  },
+  {
+    "id": "flag-neighbor",
+    "path": "overlays/flag-neighbor.png",
+    "width": 64,
+    "height": 96,
+    "pivot": [
+      14.5,
+      91
+    ],
+    "alphaBounds": [
+      10,
+      5,
+      47,
+      91
+    ],
+    "source": "/Users/rexxa/fls-astra-mapkit/assets-inbox/lord-components/candidates-20261002/assets/flag_neighbor_64x96.png",
+    "prompt": "Direct native-size reuse; original generation prompt unavailable in this lane",
+    "method": "byte-identical reference reuse",
+    "sha256": "194b0c66af75a0a182805aabc6deec2ca34b4b89fb466ea2f982a231d223e686",
+    "status": "candidate",
+    "recommendedArtWidthPx": 22,
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "reuse": "byte-identical from prior map kit"
+  },
+  {
+    "id": "name-ribbon",
+    "path": "overlays/name-ribbon.png",
+    "width": 240,
+    "height": 48,
+    "pivot": [
+      119.5,
+      32
+    ],
+    "alphaBounds": [
+      55,
+      8,
+      184,
+      32
+    ],
+    "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd39-fe45-7863-b369-4201148434dd/exec-99826b17-9db5-4a08-ad27-37adbbcf3a49.png",
+    "prompt": "One isolated BLANK horizontal medieval parchment name ribbon, warm ivory parchment, subtle handpainted brown edges, small folded tails at both ends, softly worn natural parchment texture, NO text or symbols at all. Width to height ratio 5:1, straight central writable area, transparent background outside ribbon. Restrained elegant medieval map label, no glossy 3D, no black outline.",
+    "method": "built-in imagegen; alpha crop; one Lanczos reduction; transparent canvas",
+    "sha256": "55a4ad995e829a358f9f9dd9b2f52c1f794a43dc2e100080b76de371147b6834",
+    "status": "candidate",
+    "recommendedArtWidthPx": 105,
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "reuse": "byte-identical from prior map kit"
+  }
+]

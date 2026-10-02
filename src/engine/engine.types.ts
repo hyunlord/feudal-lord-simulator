@@ -197,6 +197,8 @@ export interface GameState {
   readonly legacy?: import("./legacy.types").LegacyState;
   /** LM-E1 (TA-1, save v36): lord mode's town agency — present only in lord mode (absent: sandbox and campaign). */
   readonly agency?: import("./townAgency.types").AgencyState;
+  /** LM-E6a (TR-9, save v46): lord mode's trade households, trade goods, chains and streets. Absent outside lord mode. */
+  readonly trades?: import("./trades.types").TradeState;
   /** F2-A the war of 1337 (save v20, spec WR-1…WR-9). Absent until the War era's messenger. */
   readonly war?: import("./war.types").WarState;
   /** FACTION-0 the factions around the town (save v21, spec FX-1…FX-8). Absent until the first tick. */

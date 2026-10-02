@@ -1,0 +1,19 @@
+{
+  "id": "cargo_iron_bar_bundle_NW",
+  "prompt": "Use case: historical-scene. ONE isolated carried-cargo sprite for a 1300\u20131450 southern England hand-painted isometric town game. Reference is existing small carried cloth bundle, STYLE ONLY. Warm muted hand-painted material, restrained shading, readable simple silhouette intended to reduce to 32x32 pixels. Orthographic 2:1 isometric view. Genuinely transparent background. No person, hand, body, ground, platform, floor, shadow blob, lettering, frame or extra objects. Square canvas generous transparent padding, complete object. Light from SCREEN UPPER LEFT in every direction, right sides darker, no mirroring. Small human-portable load, not a stockpile. Add a clearly visible sturdy cord carrying loop at top center; this is the hand grip. Four short slim dark wrought iron bars with uneven forged ends, tied tightly with brown hemp rope, top loop. Dull charcoal blue metal with restrained upper-left highlights, no steel shine. CORRECT NW view. Reference shows correct diagonal for this request. Bars MUST run from screen UPPER LEFT to screen LOWER RIGHT, long axis slope downward right. Keep this diagonal. Camera sees the rear ends at UPPER LEFT and broad side below; far lower-right ends less prominent. Draw anew and preserve SCREEN UPPER LEFT light. Never copy the opposite ascending diagonal. Four bars in 2 by 2 section, exact same small bundle construction. NO lettering.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "original_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd96-5b91-71e2-ab58-5ddd8d92557b/exec-065614b4-79e6-4546-8091-e11920fdd642.png",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd96-5b91-71e2-ab58-5ddd8d92557b as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd96-5b91-71e2-ab58-5ddd8d92557b/exec-065614b4-79e6-4546-8091-e11920fdd642.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "revision": 2,
+  "rejection_reason_prior": "NW image retained ascending NE diagonal; regenerated correct descending diagonal.",
+  "raw_path": "/Users/rexxa/fls-astra-trades-delivery/working/raw/cargo_iron_bar_bundle_NW.png",
+  "raw_sha256": "28d076c8d6a6ecbdfad68511818a4dbfc112a03937a430ef211b733162643b09",
+  "references": [
+    {
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd96-5b91-71e2-ab58-5ddd8d92557b/exec-5c93c362-55f5-4d34-9bb2-d952d1c626d7.png",
+      "sha256": "387b7d41f9921b623572a11def4d438c0e90329a01d2db7afdb990ad4cfd6631"
+    }
+  ]
+}

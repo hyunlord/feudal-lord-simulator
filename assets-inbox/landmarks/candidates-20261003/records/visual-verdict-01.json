@@ -1,0 +1,20 @@
+{
+  "iteration": 1,
+  "scope": "base church market manor",
+  "score": 90,
+  "verdict": "pass",
+  "category_match": true,
+  "differences": [
+    "generator ignores requested small source occupancy; whole-image registration still required",
+    "market earth patch larger than requested"
+  ],
+  "suggestions": [
+    "normalize using core doorway rather than outer bounding box",
+    "keep enlargement space in constant family canvas"
+  ],
+  "reasoning": "Complete warm material silhouettes and 2:1 camera agree with project references; final world size and anchors remain unverified.",
+  "next_actions": [
+    "generate complete later stages",
+    "measure registration before city proof"
+  ]
+}

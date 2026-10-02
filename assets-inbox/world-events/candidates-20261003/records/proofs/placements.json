@@ -1,0 +1,3646 @@
+[
+  {
+    "id": "wedding-summer-z1.0",
+    "event": "wedding",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/wedding-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/wedding-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 790,
+      "top": 558,
+      "width": 121,
+      "height": 108
+    },
+    "overlays": [
+      {
+        "file": "assets/new/wedding-summer.png",
+        "left": 825,
+        "top": 593,
+        "width": 51,
+        "height": 38,
+        "pivot": [
+          160,
+          203
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "wedding-summer-z0.6",
+    "event": "wedding",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/wedding-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/wedding-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 779,
+      "top": 519,
+      "width": 103,
+      "height": 95
+    },
+    "overlays": [
+      {
+        "file": "assets/new/wedding-summer.png",
+        "left": 814,
+        "top": 554,
+        "width": 33,
+        "height": 25,
+        "pivot": [
+          160,
+          203
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "wedding-winter-z1.0",
+    "event": "wedding",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/wedding-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/wedding-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 790,
+      "top": 558,
+      "width": 121,
+      "height": 108
+    },
+    "overlays": [
+      {
+        "file": "assets/new/wedding-winter.png",
+        "left": 825,
+        "top": 593,
+        "width": 51,
+        "height": 38,
+        "pivot": [
+          160,
+          203
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "wedding-winter-z0.6",
+    "event": "wedding",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/wedding-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/wedding-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 779,
+      "top": 519,
+      "width": 103,
+      "height": 95
+    },
+    "overlays": [
+      {
+        "file": "assets/new/wedding-winter.png",
+        "left": 814,
+        "top": 554,
+        "width": 33,
+        "height": 25,
+        "pivot": [
+          160,
+          203
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "funeral-summer-z1.0",
+    "event": "funeral",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/funeral-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/funeral-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 170,
+      "top": 397,
+      "width": 175,
+      "height": 137
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 205,
+        "top": 432,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 227,
+        "top": 444,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 251,
+        "top": 456,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 227,
+        "top": 456,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 247,
+        "top": 468,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/bier_shroud_ne-v1.png",
+        "left": 227,
+        "top": 457,
+        "width": 42,
+        "height": 21,
+        "pivot": [
+          32,
+          16
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 269,
+        "top": 462,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 278,
+        "top": 469,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 287,
+        "top": 476,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "funeral-summer-z0.6",
+    "event": "funeral",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/funeral-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/funeral-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 407,
+      "top": 423,
+      "width": 134,
+      "height": 111
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 442,
+        "top": 458,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 456,
+        "top": 465,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 470,
+        "top": 472,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 456,
+        "top": 472,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 468,
+        "top": 480,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/bier_shroud_ne-v1.png",
+        "left": 457,
+        "top": 474,
+        "width": 25,
+        "height": 13,
+        "pivot": [
+          32,
+          16
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 481,
+        "top": 476,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 486,
+        "top": 480,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 491,
+        "top": 484,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "funeral-winter-z1.0",
+    "event": "funeral",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/funeral-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/funeral-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 170,
+      "top": 397,
+      "width": 175,
+      "height": 137
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 205,
+        "top": 432,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 227,
+        "top": 444,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 251,
+        "top": 456,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 227,
+        "top": 456,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 247,
+        "top": 468,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/bier_shroud_ne-v1.png",
+        "left": 227,
+        "top": 457,
+        "width": 42,
+        "height": 21,
+        "pivot": [
+          32,
+          16
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 269,
+        "top": 462,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 278,
+        "top": 469,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 287,
+        "top": 476,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "funeral-winter-z0.6",
+    "event": "funeral",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/funeral-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/funeral-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 407,
+      "top": 423,
+      "width": 134,
+      "height": 111
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 442,
+        "top": 458,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 456,
+        "top": 465,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 470,
+        "top": 472,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 456,
+        "top": 472,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_funeral_bearers-v1.png",
+        "left": 468,
+        "top": 480,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/bier_shroud_ne-v1.png",
+        "left": 457,
+        "top": 474,
+        "width": 25,
+        "height": 13,
+        "pivot": [
+          32,
+          16
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 481,
+        "top": 476,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 486,
+        "top": 480,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 491,
+        "top": 484,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "baptism-summer-z1.0",
+    "event": "baptism",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/baptism-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/baptism-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 795,
+      "top": 564,
+      "width": 111,
+      "height": 101
+    },
+    "overlays": [
+      {
+        "file": "assets/new/baptism-summer.png",
+        "left": 830,
+        "top": 599,
+        "width": 41,
+        "height": 31,
+        "pivot": [
+          160,
+          203
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "baptism-summer-z0.6",
+    "event": "baptism",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/baptism-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/baptism-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 782,
+      "top": 523,
+      "width": 97,
+      "height": 90
+    },
+    "overlays": [
+      {
+        "file": "assets/new/baptism-summer.png",
+        "left": 817,
+        "top": 558,
+        "width": 27,
+        "height": 20,
+        "pivot": [
+          160,
+          203
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "baptism-winter-z1.0",
+    "event": "baptism",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/baptism-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/baptism-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 795,
+      "top": 564,
+      "width": 111,
+      "height": 101
+    },
+    "overlays": [
+      {
+        "file": "assets/new/baptism-winter.png",
+        "left": 830,
+        "top": 599,
+        "width": 41,
+        "height": 31,
+        "pivot": [
+          160,
+          203
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "baptism-winter-z0.6",
+    "event": "baptism",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/baptism-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/baptism-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 782,
+      "top": 523,
+      "width": 97,
+      "height": 90
+    },
+    "overlays": [
+      {
+        "file": "assets/new/baptism-winter.png",
+        "left": 817,
+        "top": 558,
+        "width": 27,
+        "height": 20,
+        "pivot": [
+          160,
+          203
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "market-summer-z1.0",
+    "event": "market",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/market-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/market-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 846,
+      "top": 645,
+      "width": 154,
+      "height": 109
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/cattle_pair-v1.png",
+        "left": 935,
+        "top": 684,
+        "width": 30,
+        "height": 23,
+        "pivot": [
+          64,
+          81.6
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/crowd_manor_gate-v1.png",
+        "left": 881,
+        "top": 680,
+        "width": 58,
+        "height": 39,
+        "pivot": [
+          96,
+          106
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "market-summer-z0.6",
+    "event": "market",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/market-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/market-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 814,
+      "top": 573,
+      "width": 120,
+      "height": 93
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/cattle_pair-v1.png",
+        "left": 881,
+        "top": 610,
+        "width": 18,
+        "height": 14,
+        "pivot": [
+          64,
+          81.6
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/crowd_manor_gate-v1.png",
+        "left": 849,
+        "top": 608,
+        "width": 35,
+        "height": 23,
+        "pivot": [
+          96,
+          106
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "market-winter-z1.0",
+    "event": "market",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/market-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/market-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 846,
+      "top": 645,
+      "width": 154,
+      "height": 109
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/cattle_pair-v1.png",
+        "left": 935,
+        "top": 684,
+        "width": 30,
+        "height": 23,
+        "pivot": [
+          64,
+          81.6
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/crowd_manor_gate-v1.png",
+        "left": 881,
+        "top": 680,
+        "width": 58,
+        "height": 39,
+        "pivot": [
+          96,
+          106
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "market-winter-z0.6",
+    "event": "market",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/market-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/market-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 814,
+      "top": 573,
+      "width": 120,
+      "height": 93
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/cattle_pair-v1.png",
+        "left": 881,
+        "top": 610,
+        "width": 18,
+        "height": 14,
+        "pivot": [
+          64,
+          81.6
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/crowd_manor_gate-v1.png",
+        "left": 849,
+        "top": 608,
+        "width": 35,
+        "height": 23,
+        "pivot": [
+          96,
+          106
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "fair-summer-z1.0",
+    "event": "fair",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/fair-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/fair-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 186,
+      "top": 744,
+      "width": 148,
+      "height": 128
+    },
+    "overlays": [
+      {
+        "file": "assets/new/fair-summer.png",
+        "left": 221,
+        "top": 779,
+        "width": 78,
+        "height": 58,
+        "pivot": [
+          160,
+          213
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "fair-summer-z0.6",
+    "event": "fair",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/fair-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/fair-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 416,
+      "top": 629,
+      "width": 120,
+      "height": 108
+    },
+    "overlays": [
+      {
+        "file": "assets/new/fair-summer.png",
+        "left": 451,
+        "top": 664,
+        "width": 50,
+        "height": 38,
+        "pivot": [
+          160,
+          213
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "fair-winter-z1.0",
+    "event": "fair",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/fair-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/fair-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 186,
+      "top": 744,
+      "width": 148,
+      "height": 128
+    },
+    "overlays": [
+      {
+        "file": "assets/new/fair-winter.png",
+        "left": 221,
+        "top": 779,
+        "width": 78,
+        "height": 58,
+        "pivot": [
+          160,
+          213
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "fair-winter-z0.6",
+    "event": "fair",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/fair-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/fair-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 416,
+      "top": 629,
+      "width": 120,
+      "height": 108
+    },
+    "overlays": [
+      {
+        "file": "assets/new/fair-winter.png",
+        "left": 451,
+        "top": 664,
+        "width": 50,
+        "height": 38,
+        "pivot": [
+          160,
+          213
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "famine-summer-z1.0",
+    "event": "famine",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/famine-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/famine-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 759,
+      "top": 520,
+      "width": 191,
+      "height": 179
+    },
+    "overlays": [
+      {
+        "file": "assets/new/relief-table-summer.png",
+        "left": 794,
+        "top": 555,
+        "width": 113,
+        "height": 84,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/hungry_queue-v1.png",
+        "left": 834,
+        "top": 624,
+        "width": 42,
+        "height": 40,
+        "pivot": [
+          30,
+          10
+        ],
+        "extract": {
+          "left": 60,
+          "top": 0,
+          "width": 40,
+          "height": 38
+        }
+      },
+      {
+        "file": "assets/reused/empty_stall-v1.png",
+        "left": 885,
+        "top": 625,
+        "width": 30,
+        "height": 30,
+        "pivot": [
+          48,
+          81.6
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "famine-summer-z0.6",
+    "event": "famine",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/famine-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/famine-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 759,
+      "top": 494,
+      "width": 145,
+      "height": 140
+    },
+    "overlays": [
+      {
+        "file": "assets/new/relief-table-summer.png",
+        "left": 794,
+        "top": 529,
+        "width": 73,
+        "height": 55,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/hungry_queue-v1.png",
+        "left": 820,
+        "top": 575,
+        "width": 25,
+        "height": 24,
+        "pivot": [
+          30,
+          10
+        ],
+        "extract": {
+          "left": 60,
+          "top": 0,
+          "width": 40,
+          "height": 38
+        }
+      },
+      {
+        "file": "assets/reused/empty_stall-v1.png",
+        "left": 851,
+        "top": 575,
+        "width": 18,
+        "height": 18,
+        "pivot": [
+          48,
+          81.6
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "famine-winter-z1.0",
+    "event": "famine",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/famine-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/famine-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 759,
+      "top": 520,
+      "width": 191,
+      "height": 179
+    },
+    "overlays": [
+      {
+        "file": "assets/new/relief-table-winter.png",
+        "left": 794,
+        "top": 555,
+        "width": 113,
+        "height": 84,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/hungry_queue-v1.png",
+        "left": 834,
+        "top": 624,
+        "width": 42,
+        "height": 40,
+        "pivot": [
+          30,
+          10
+        ],
+        "extract": {
+          "left": 60,
+          "top": 0,
+          "width": 40,
+          "height": 38
+        }
+      },
+      {
+        "file": "assets/reused/empty_stall-v1.png",
+        "left": 885,
+        "top": 625,
+        "width": 30,
+        "height": 30,
+        "pivot": [
+          48,
+          81.6
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "famine-winter-z0.6",
+    "event": "famine",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/famine-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/famine-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 759,
+      "top": 494,
+      "width": 145,
+      "height": 140
+    },
+    "overlays": [
+      {
+        "file": "assets/new/relief-table-winter.png",
+        "left": 794,
+        "top": 529,
+        "width": 73,
+        "height": 55,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/hungry_queue-v1.png",
+        "left": 820,
+        "top": 575,
+        "width": 25,
+        "height": 24,
+        "pivot": [
+          30,
+          10
+        ],
+        "extract": {
+          "left": 60,
+          "top": 0,
+          "width": 40,
+          "height": 38
+        }
+      },
+      {
+        "file": "assets/reused/empty_stall-v1.png",
+        "left": 851,
+        "top": 575,
+        "width": 18,
+        "height": 18,
+        "pivot": [
+          48,
+          81.6
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "plague-summer-z1.0",
+    "event": "plague",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/plague-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/plague-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 136,
+      "top": 402,
+      "width": 220,
+      "height": 146
+    },
+    "overlays": [
+      {
+        "file": "assets/new/plague-cart-summer.png",
+        "left": 185,
+        "top": 443,
+        "width": 94,
+        "height": 70,
+        "pivot": [
+          169,
+          156
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/new/plague-marker-brazier-summer.png",
+        "left": 227,
+        "top": 437,
+        "width": 94,
+        "height": 70,
+        "pivot": [
+          165,
+          140
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/empty_stall-v1.png",
+        "left": 171,
+        "top": 451,
+        "width": 38,
+        "height": 38,
+        "pivot": [
+          48,
+          81.6
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "plague-summer-z0.6",
+    "event": "plague",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/plague-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/plague-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 388,
+      "top": 425,
+      "width": 162,
+      "height": 119
+    },
+    "overlays": [
+      {
+        "file": "assets/new/plague-cart-summer.png",
+        "left": 429,
+        "top": 463,
+        "width": 61,
+        "height": 46,
+        "pivot": [
+          169,
+          156
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/new/plague-marker-brazier-summer.png",
+        "left": 454,
+        "top": 460,
+        "width": 61,
+        "height": 46,
+        "pivot": [
+          165,
+          140
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/empty_stall-v1.png",
+        "left": 423,
+        "top": 470,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          48,
+          81.6
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "plague-winter-z1.0",
+    "event": "plague",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/plague-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/plague-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 136,
+      "top": 402,
+      "width": 220,
+      "height": 146
+    },
+    "overlays": [
+      {
+        "file": "assets/new/plague-cart-winter.png",
+        "left": 185,
+        "top": 443,
+        "width": 94,
+        "height": 70,
+        "pivot": [
+          169,
+          156
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/new/plague-marker-brazier-winter.png",
+        "left": 227,
+        "top": 437,
+        "width": 94,
+        "height": 70,
+        "pivot": [
+          165,
+          140
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/empty_stall-v1.png",
+        "left": 171,
+        "top": 451,
+        "width": 38,
+        "height": 38,
+        "pivot": [
+          48,
+          81.6
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "plague-winter-z0.6",
+    "event": "plague",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/plague-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/plague-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 388,
+      "top": 425,
+      "width": 162,
+      "height": 119
+    },
+    "overlays": [
+      {
+        "file": "assets/new/plague-cart-winter.png",
+        "left": 429,
+        "top": 463,
+        "width": 61,
+        "height": 46,
+        "pivot": [
+          169,
+          156
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/new/plague-marker-brazier-winter.png",
+        "left": 454,
+        "top": 460,
+        "width": 61,
+        "height": 46,
+        "pivot": [
+          165,
+          140
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/empty_stall-v1.png",
+        "left": 423,
+        "top": 470,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          48,
+          81.6
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "fire-summer-z1.0",
+    "event": "fire",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/fire-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/fire-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 177,
+      "top": 362,
+      "width": 221,
+      "height": 221
+    },
+    "overlays": [
+      {
+        "file": "assets/new/bucket-brigade-summer.png",
+        "left": 212,
+        "top": 464,
+        "width": 113,
+        "height": 84,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/new/fire-flicker-all.png",
+        "left": 317,
+        "top": 426,
+        "width": 46,
+        "height": 69,
+        "pivot": [
+          32,
+          88
+        ],
+        "extract": {
+          "left": 0,
+          "top": 0,
+          "width": 64,
+          "height": 96
+        }
+      },
+      {
+        "file": "assets/reused/black_smoke_column_sheet-v1.png",
+        "left": 320,
+        "top": 397,
+        "width": 40,
+        "height": 80,
+        "pivot": [
+          48,
+          186
+        ],
+        "extract": {
+          "left": 0,
+          "top": 0,
+          "width": 96,
+          "height": 192
+        }
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "fire-summer-z0.6",
+    "event": "fire",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/fire-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/fire-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 410,
+      "top": 403,
+      "width": 163,
+      "height": 161
+    },
+    "overlays": [
+      {
+        "file": "assets/new/bucket-brigade-summer.png",
+        "left": 445,
+        "top": 474,
+        "width": 73,
+        "height": 55,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/new/fire-flicker-all.png",
+        "left": 510,
+        "top": 455,
+        "width": 28,
+        "height": 41,
+        "pivot": [
+          32,
+          88
+        ],
+        "extract": {
+          "left": 0,
+          "top": 0,
+          "width": 64,
+          "height": 96
+        }
+      },
+      {
+        "file": "assets/reused/black_smoke_column_sheet-v1.png",
+        "left": 512,
+        "top": 438,
+        "width": 24,
+        "height": 48,
+        "pivot": [
+          48,
+          186
+        ],
+        "extract": {
+          "left": 0,
+          "top": 0,
+          "width": 96,
+          "height": 192
+        }
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "fire-winter-z1.0",
+    "event": "fire",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/fire-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/fire-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 177,
+      "top": 362,
+      "width": 221,
+      "height": 221
+    },
+    "overlays": [
+      {
+        "file": "assets/new/bucket-brigade-winter.png",
+        "left": 212,
+        "top": 464,
+        "width": 113,
+        "height": 84,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/new/fire-flicker-all.png",
+        "left": 317,
+        "top": 426,
+        "width": 46,
+        "height": 69,
+        "pivot": [
+          32,
+          88
+        ],
+        "extract": {
+          "left": 0,
+          "top": 0,
+          "width": 64,
+          "height": 96
+        }
+      },
+      {
+        "file": "assets/reused/black_smoke_column_sheet-v1.png",
+        "left": 320,
+        "top": 397,
+        "width": 40,
+        "height": 80,
+        "pivot": [
+          48,
+          186
+        ],
+        "extract": {
+          "left": 0,
+          "top": 0,
+          "width": 96,
+          "height": 192
+        }
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "fire-winter-z0.6",
+    "event": "fire",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/fire-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/fire-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 410,
+      "top": 403,
+      "width": 163,
+      "height": 161
+    },
+    "overlays": [
+      {
+        "file": "assets/new/bucket-brigade-winter.png",
+        "left": 445,
+        "top": 474,
+        "width": 73,
+        "height": 55,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/new/fire-flicker-all.png",
+        "left": 510,
+        "top": 455,
+        "width": 28,
+        "height": 41,
+        "pivot": [
+          32,
+          88
+        ],
+        "extract": {
+          "left": 0,
+          "top": 0,
+          "width": 64,
+          "height": 96
+        }
+      },
+      {
+        "file": "assets/reused/black_smoke_column_sheet-v1.png",
+        "left": 512,
+        "top": 438,
+        "width": 24,
+        "height": 48,
+        "pivot": [
+          48,
+          186
+        ],
+        "extract": {
+          "left": 0,
+          "top": 0,
+          "width": 96,
+          "height": 192
+        }
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "flood-summer-z1.0",
+    "event": "flood",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/flood-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/flood-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 240,
+      "top": 780,
+      "width": 269,
+      "height": 161
+    },
+    "overlays": [
+      {
+        "file": "references/flood-layer-summer-z1.0.png",
+        "left": 275,
+        "top": 815,
+        "width": 160,
+        "height": 80,
+        "compositionOrigin": [
+          0,
+          0
+        ],
+        "rule": "actual engine affine clipped field renderer"
+      },
+      {
+        "file": "assets/new/sandbags-summer.png",
+        "left": 380,
+        "top": 836,
+        "width": 94,
+        "height": 70,
+        "pivot": [
+          159,
+          153
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "flood-summer-z0.6",
+    "event": "flood",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/flood-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/flood-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 450,
+      "top": 654,
+      "width": 192,
+      "height": 127
+    },
+    "overlays": [
+      {
+        "file": "references/flood-layer-summer-z0.6.png",
+        "left": 485,
+        "top": 689,
+        "width": 96,
+        "height": 48,
+        "compositionOrigin": [
+          0,
+          0
+        ],
+        "rule": "actual engine affine clipped field renderer"
+      },
+      {
+        "file": "assets/new/sandbags-summer.png",
+        "left": 546,
+        "top": 700,
+        "width": 61,
+        "height": 46,
+        "pivot": [
+          159,
+          153
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "flood-winter-z1.0",
+    "event": "flood",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/flood-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/flood-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 240,
+      "top": 780,
+      "width": 269,
+      "height": 161
+    },
+    "overlays": [
+      {
+        "file": "references/flood-layer-winter-z1.0.png",
+        "left": 275,
+        "top": 815,
+        "width": 160,
+        "height": 80,
+        "compositionOrigin": [
+          0,
+          0
+        ],
+        "rule": "actual engine affine clipped field renderer"
+      },
+      {
+        "file": "assets/new/sandbags-winter.png",
+        "left": 380,
+        "top": 836,
+        "width": 94,
+        "height": 70,
+        "pivot": [
+          159,
+          153
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "flood-winter-z0.6",
+    "event": "flood",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/flood-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/flood-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 450,
+      "top": 654,
+      "width": 192,
+      "height": 127
+    },
+    "overlays": [
+      {
+        "file": "references/flood-layer-winter-z0.6.png",
+        "left": 485,
+        "top": 689,
+        "width": 96,
+        "height": 48,
+        "compositionOrigin": [
+          0,
+          0
+        ],
+        "rule": "actual engine affine clipped field renderer"
+      },
+      {
+        "file": "assets/new/sandbags-winter.png",
+        "left": 546,
+        "top": 700,
+        "width": 61,
+        "height": 46,
+        "pivot": [
+          159,
+          153
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "levy-summer-z1.0",
+    "event": "levy",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/levy-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/levy-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 0,
+      "top": 343,
+      "width": 180,
+      "height": 154
+    },
+    "overlays": [
+      {
+        "file": "assets/new/expedition-wagon-summer.png",
+        "left": 32,
+        "top": 378,
+        "width": 113,
+        "height": 84,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 21,
+        "top": 397,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 34,
+        "top": 397,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 47,
+        "top": 397,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 21,
+        "top": 412,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 34,
+        "top": 412,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 47,
+        "top": 412,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "levy-summer-z0.6",
+    "event": "levy",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/levy-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/levy-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 297,
+      "top": 388,
+      "width": 148,
+      "height": 125
+    },
+    "overlays": [
+      {
+        "file": "assets/new/expedition-wagon-summer.png",
+        "left": 337,
+        "top": 423,
+        "width": 73,
+        "height": 55,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 332,
+        "top": 437,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 340,
+        "top": 437,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 348,
+        "top": 437,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 332,
+        "top": 446,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 340,
+        "top": 446,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 348,
+        "top": 446,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "levy-winter-z1.0",
+    "event": "levy",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/levy-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/levy-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 0,
+      "top": 343,
+      "width": 180,
+      "height": 154
+    },
+    "overlays": [
+      {
+        "file": "assets/new/expedition-wagon-winter.png",
+        "left": 32,
+        "top": 378,
+        "width": 113,
+        "height": 84,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 21,
+        "top": 397,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 34,
+        "top": 397,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 47,
+        "top": 397,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 21,
+        "top": 412,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 34,
+        "top": 412,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 47,
+        "top": 412,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "levy-winter-z0.6",
+    "event": "levy",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/levy-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/levy-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 297,
+      "top": 388,
+      "width": 148,
+      "height": 125
+    },
+    "overlays": [
+      {
+        "file": "assets/new/expedition-wagon-winter.png",
+        "left": 337,
+        "top": 423,
+        "width": 73,
+        "height": 55,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 332,
+        "top": 437,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 340,
+        "top": 437,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 348,
+        "top": 437,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 332,
+        "top": 446,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 340,
+        "top": 446,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 348,
+        "top": 446,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "revolt-summer-z1.0",
+    "event": "revolt",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/revolt-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/revolt-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 958,
+      "top": 507,
+      "width": 164,
+      "height": 140
+    },
+    "overlays": [
+      {
+        "file": "assets/new/revolt-summer.png",
+        "left": 993,
+        "top": 542,
+        "width": 94,
+        "height": 70,
+        "pivot": [
+          159,
+          157
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "revolt-summer-z0.6",
+    "event": "revolt",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/revolt-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/revolt-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 879,
+      "top": 488,
+      "width": 131,
+      "height": 116
+    },
+    "overlays": [
+      {
+        "file": "assets/new/revolt-summer.png",
+        "left": 914,
+        "top": 523,
+        "width": 61,
+        "height": 46,
+        "pivot": [
+          159,
+          157
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "revolt-winter-z1.0",
+    "event": "revolt",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/revolt-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/revolt-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 958,
+      "top": 507,
+      "width": 164,
+      "height": 140
+    },
+    "overlays": [
+      {
+        "file": "assets/new/revolt-winter.png",
+        "left": 993,
+        "top": 542,
+        "width": 94,
+        "height": 70,
+        "pivot": [
+          159,
+          157
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "revolt-winter-z0.6",
+    "event": "revolt",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/revolt-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/revolt-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 879,
+      "top": 488,
+      "width": 131,
+      "height": 116
+    },
+    "overlays": [
+      {
+        "file": "assets/new/revolt-winter.png",
+        "left": 914,
+        "top": 523,
+        "width": 61,
+        "height": 46,
+        "pivot": [
+          159,
+          157
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "pilgrimage-summer-z1.0",
+    "event": "pilgrimage",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/pilgrimage-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/pilgrimage-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 60,
+      "top": 441,
+      "width": 125,
+      "height": 127
+    },
+    "overlays": [
+      {
+        "file": "assets/new/pilgrimage-summer.png",
+        "left": 95,
+        "top": 501,
+        "width": 43,
+        "height": 32,
+        "pivot": [
+          160,
+          212
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 118,
+        "top": 485,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 127,
+        "top": 476,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "pilgrimage-summer-z0.6",
+    "event": "pilgrimage",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/pilgrimage-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/pilgrimage-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 341,
+      "top": 449,
+      "width": 104,
+      "height": 105
+    },
+    "overlays": [
+      {
+        "file": "assets/new/pilgrimage-summer.png",
+        "left": 376,
+        "top": 498,
+        "width": 28,
+        "height": 21,
+        "pivot": [
+          160,
+          212
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 390,
+        "top": 490,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 395,
+        "top": 484,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "pilgrimage-winter-z1.0",
+    "event": "pilgrimage",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/pilgrimage-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/pilgrimage-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 60,
+      "top": 441,
+      "width": 125,
+      "height": 127
+    },
+    "overlays": [
+      {
+        "file": "assets/new/pilgrimage-winter.png",
+        "left": 95,
+        "top": 501,
+        "width": 43,
+        "height": 32,
+        "pivot": [
+          160,
+          212
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 118,
+        "top": 485,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 127,
+        "top": 476,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "pilgrimage-winter-z0.6",
+    "event": "pilgrimage",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/pilgrimage-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/pilgrimage-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 341,
+      "top": 449,
+      "width": 104,
+      "height": 105
+    },
+    "overlays": [
+      {
+        "file": "assets/new/pilgrimage-winter.png",
+        "left": 376,
+        "top": 498,
+        "width": 28,
+        "height": 21,
+        "pivot": [
+          160,
+          212
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 390,
+        "top": 490,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 395,
+        "top": 484,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "royal_envoy-summer-z1.0",
+    "event": "royal_envoy",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/royal_envoy-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/royal_envoy-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 178,
+      "top": 437,
+      "width": 122,
+      "height": 106
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/wk_royal_messenger-v1.png",
+        "left": 230,
+        "top": 472,
+        "width": 19,
+        "height": 19,
+        "pivot": [
+          39.21,
+          69.91
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 242,
+        "top": 476,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 213,
+        "top": 480,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 229,
+        "top": 488,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/scroll_royal_ne-v1.png",
+        "left": 238,
+        "top": 479,
+        "width": 9,
+        "height": 9,
+        "pivot": [
+          16,
+          16
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "royal_envoy-summer-z0.6",
+    "event": "royal_envoy",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/royal_envoy-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/royal_envoy-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 412,
+      "top": 447,
+      "width": 102,
+      "height": 93
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/wk_royal_messenger-v1.png",
+        "left": 457,
+        "top": 482,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.21,
+          69.91
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 464,
+        "top": 484,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 447,
+        "top": 487,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 457,
+        "top": 492,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/scroll_royal_ne-v1.png",
+        "left": 463,
+        "top": 488,
+        "width": 5,
+        "height": 5,
+        "pivot": [
+          16,
+          16
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "royal_envoy-winter-z1.0",
+    "event": "royal_envoy",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/royal_envoy-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/royal_envoy-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 178,
+      "top": 437,
+      "width": 122,
+      "height": 106
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/wk_royal_messenger-v1.png",
+        "left": 230,
+        "top": 472,
+        "width": 19,
+        "height": 19,
+        "pivot": [
+          39.21,
+          69.91
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 242,
+        "top": 476,
+        "width": 23,
+        "height": 23,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 213,
+        "top": 480,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 229,
+        "top": 488,
+        "width": 20,
+        "height": 20,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/scroll_royal_ne-v1.png",
+        "left": 238,
+        "top": 479,
+        "width": 9,
+        "height": 9,
+        "pivot": [
+          16,
+          16
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "royal_envoy-winter-z0.6",
+    "event": "royal_envoy",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/royal_envoy-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/royal_envoy-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 412,
+      "top": 447,
+      "width": 102,
+      "height": 93
+    },
+    "overlays": [
+      {
+        "file": "assets/reused/wk_royal_messenger-v1.png",
+        "left": 457,
+        "top": 482,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.21,
+          69.91
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_priest_m_01-v1.png",
+        "left": 464,
+        "top": 484,
+        "width": 15,
+        "height": 15,
+        "pivot": [
+          38.79,
+          67.08
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 447,
+        "top": 487,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/wk_levy_archer-v1.png",
+        "left": 457,
+        "top": 492,
+        "width": 13,
+        "height": 13,
+        "pivot": [
+          39.63,
+          68.24
+        ],
+        "extract": {
+          "left": 74,
+          "top": 0,
+          "width": 74,
+          "height": 74
+        }
+      },
+      {
+        "file": "assets/reused/scroll_royal_ne-v1.png",
+        "left": 463,
+        "top": 488,
+        "width": 5,
+        "height": 5,
+        "pivot": [
+          16,
+          16
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "judgment-summer-z1.0",
+    "event": "judgment",
+    "season": "summer",
+    "zoom": 1,
+    "capture": "church-summer-z1.0",
+    "after": "proofs/judgment-summer-z1.0-after.jpg",
+    "before": "proofs/church-summer-z1.0-before.jpg",
+    "detail": "proofs/judgment-summer-z1.0-detail.png",
+    "detailBounds": {
+      "left": 175,
+      "top": 348,
+      "width": 187,
+      "height": 188
+    },
+    "overlays": [
+      {
+        "file": "assets/new/judgment-bailiff-summer.png",
+        "left": 214,
+        "top": 383,
+        "width": 113,
+        "height": 84,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/crowd_manor_gate-v1.png",
+        "left": 210,
+        "top": 454,
+        "width": 70,
+        "height": 47,
+        "pivot": [
+          96,
+          106
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "judgment-summer-z0.6",
+    "event": "judgment",
+    "season": "summer",
+    "zoom": 0.6,
+    "capture": "church-summer-z0.6",
+    "after": "proofs/judgment-summer-z0.6-after.jpg",
+    "before": "proofs/church-summer-z0.6-before.jpg",
+    "detail": "proofs/judgment-summer-z0.6-detail.png",
+    "detailBounds": {
+      "left": 411,
+      "top": 391,
+      "width": 143,
+      "height": 145
+    },
+    "overlays": [
+      {
+        "file": "assets/new/judgment-bailiff-summer.png",
+        "left": 446,
+        "top": 426,
+        "width": 73,
+        "height": 55,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/crowd_manor_gate-v1.png",
+        "left": 446,
+        "top": 473,
+        "width": 42,
+        "height": 28,
+        "pivot": [
+          96,
+          106
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "judgment-winter-z1.0",
+    "event": "judgment",
+    "season": "winter",
+    "zoom": 1,
+    "capture": "church-winter-z1.0",
+    "after": "proofs/judgment-winter-z1.0-after.jpg",
+    "before": "proofs/church-winter-z1.0-before.jpg",
+    "detail": "proofs/judgment-winter-z1.0-detail.png",
+    "detailBounds": {
+      "left": 175,
+      "top": 348,
+      "width": 187,
+      "height": 188
+    },
+    "overlays": [
+      {
+        "file": "assets/new/judgment-bailiff-winter.png",
+        "left": 214,
+        "top": 383,
+        "width": 113,
+        "height": 84,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/crowd_manor_gate-v1.png",
+        "left": 210,
+        "top": 454,
+        "width": 70,
+        "height": 47,
+        "pivot": [
+          96,
+          106
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 17.6,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  },
+  {
+    "id": "judgment-winter-z0.6",
+    "event": "judgment",
+    "season": "winter",
+    "zoom": 0.6,
+    "capture": "church-winter-z0.6",
+    "after": "proofs/judgment-winter-z0.6-after.jpg",
+    "before": "proofs/church-winter-z0.6-before.jpg",
+    "detail": "proofs/judgment-winter-z0.6-detail.png",
+    "detailBounds": {
+      "left": 411,
+      "top": 391,
+      "width": 143,
+      "height": 145
+    },
+    "overlays": [
+      {
+        "file": "assets/new/judgment-bailiff-winter.png",
+        "left": 446,
+        "top": 426,
+        "width": 73,
+        "height": 55,
+        "pivot": [
+          160,
+          200
+        ],
+        "extract": null
+      },
+      {
+        "file": "assets/reused/crowd_manor_gate-v1.png",
+        "left": 446,
+        "top": 473,
+        "width": 42,
+        "height": 28,
+        "pivot": [
+          96,
+          106
+        ],
+        "extract": null
+      }
+    ],
+    "adultTarget": 11.440000000000001,
+    "scaleRule": "Bible H17.6 with current renderer floor .65; current runtime adult is16. No oversized proof sprites."
+  }
+]

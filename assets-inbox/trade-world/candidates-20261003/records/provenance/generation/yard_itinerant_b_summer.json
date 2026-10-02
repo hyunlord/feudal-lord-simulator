@@ -1,0 +1,24 @@
+{
+  "id": "yard_itinerant_b_summer",
+  "archetype": "itinerant",
+  "variant": "b",
+  "trade": "itinerant_repair_support",
+  "subject": "Portable repair chest, folded trestle and small wood/metal repair tools; no fixed foundation or invented permanent rare workshop",
+  "prompt": "Use case: style-transfer. Reference image is ONLY the art style and orthographic camera guide, not subject. Draw ONE isolated freestanding medieval workyard sprite, southern England 1300\u20131450. Subject: Portable repair chest, folded trestle and small wood/metal repair tools; no fixed foundation or invented permanent rare workshop. Warm muted hand-painted game art matching the reference, 2:1 isometric ground axes \u00b126.565 degrees, verticals upright. Summer. No people, no animals, no buildings or walls, no attached parts, no text, no modern objects. ALL objects independently stand on ground. NO terrain slab, no diamond/rectangle ground tile; truly transparent surroundings and gaps between objects; only tiny broken contact dirt beneath feet. Upper-left illumination, right-facing sides darker, contact occlusion only, NO long cast shadow. Compact clearly readable silhouettes, avoid tiny clutter. Wide landscape 2:1 canvas. Entire composition within central 82% width and 76% height, generous transparent margins on all sides, no clipping. Largest standing rack roughly 1 adult height, trestles 0.5H, wheel roughly1.2H when applicable. This is a single candidate asset, not an atlas, no border.",
+  "reference_paths": [
+    "/Users/rexxa/fls-astra-trades/public/assets/wave27/yards/yard_tanner_a.png"
+  ],
+  "original_generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd95-3888-7f82-8eee-2cb96c1e05d0/exec-73b90808-d016-4dde-aefd-df726e25940b.png",
+  "raw_path": "/Users/rexxa/fls-astra-trades-delivery/working/raw/yard_itinerant_b_summer.png",
+  "tool_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd95-3888-7f82-8eee-2cb96c1e05d0 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd95-3888-7f82-8eee-2cb96c1e05d0/exec-73b90808-d016-4dde-aefd-df726e25940b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "tool": "image_gen.imagegen",
+  "model": "not exposed",
+  "seed": "not exposed",
+  "raw_sha256": "a3c1f2b2d9b9e7415923fdc7f677b8f79980431576e705447fc3e8087fe51f92",
+  "references": [
+    {
+      "path": "/Users/rexxa/fls-astra-trades/public/assets/wave27/yards/yard_tanner_a.png",
+      "sha256": "255bd0d424e0817338bda7b0a255c93e8563194a4cd7f27c12a37ec43f739f13"
+    }
+  ]
+}

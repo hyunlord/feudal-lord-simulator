@@ -1,0 +1,246 @@
+[
+  {
+    "round": "round1",
+    "reviewers": [
+      {
+        "reviewer": "one",
+        "correct": 16,
+        "total": 16,
+        "accuracy": 1.0,
+        "candidateDetected": 8,
+        "candidateTotal": 8,
+        "subsets": {
+          "summer": {
+            "correct": 16,
+            "total": 16
+          },
+          "winter": {
+            "correct": 0,
+            "total": 0
+          },
+          "stone": {
+            "correct": 8,
+            "total": 8
+          },
+          "palisade": {
+            "correct": 8,
+            "total": 8
+          }
+        }
+      },
+      {
+        "reviewer": "two",
+        "correct": 16,
+        "total": 16,
+        "accuracy": 1.0,
+        "candidateDetected": 8,
+        "candidateTotal": 8,
+        "subsets": {
+          "summer": {
+            "correct": 16,
+            "total": 16
+          },
+          "winter": {
+            "correct": 0,
+            "total": 0
+          },
+          "stone": {
+            "correct": 8,
+            "total": 8
+          },
+          "palisade": {
+            "correct": 8,
+            "total": 8
+          }
+        }
+      }
+    ],
+    "correct": 32,
+    "total": 32,
+    "accuracy": 1.0,
+    "targetMet": false
+  },
+  {
+    "round": "round2",
+    "reviewers": [
+      {
+        "reviewer": "a",
+        "correct": 18,
+        "total": 32,
+        "accuracy": 0.5625,
+        "candidateDetected": 10,
+        "candidateTotal": 16,
+        "subsets": {
+          "summer": {
+            "correct": 9,
+            "total": 16
+          },
+          "winter": {
+            "correct": 9,
+            "total": 16
+          },
+          "stone": {
+            "correct": 4,
+            "total": 16
+          },
+          "palisade": {
+            "correct": 14,
+            "total": 16
+          }
+        }
+      },
+      {
+        "reviewer": "b",
+        "correct": 30,
+        "total": 32,
+        "accuracy": 0.9375,
+        "candidateDetected": 14,
+        "candidateTotal": 16,
+        "subsets": {
+          "summer": {
+            "correct": 15,
+            "total": 16
+          },
+          "winter": {
+            "correct": 15,
+            "total": 16
+          },
+          "stone": {
+            "correct": 14,
+            "total": 16
+          },
+          "palisade": {
+            "correct": 16,
+            "total": 16
+          }
+        }
+      }
+    ],
+    "correct": 48,
+    "total": 64,
+    "accuracy": 0.75,
+    "targetMet": false
+  },
+  {
+    "round": "round3",
+    "reviewers": [
+      {
+        "reviewer": "a",
+        "correct": 32,
+        "total": 32,
+        "accuracy": 1.0,
+        "candidateDetected": 16,
+        "candidateTotal": 16,
+        "subsets": {
+          "summer": {
+            "correct": 16,
+            "total": 16
+          },
+          "winter": {
+            "correct": 16,
+            "total": 16
+          },
+          "stone": {
+            "correct": 16,
+            "total": 16
+          },
+          "palisade": {
+            "correct": 16,
+            "total": 16
+          }
+        }
+      },
+      {
+        "reviewer": "b",
+        "correct": 16,
+        "total": 32,
+        "accuracy": 0.5,
+        "candidateDetected": 6,
+        "candidateTotal": 16,
+        "subsets": {
+          "summer": {
+            "correct": 8,
+            "total": 16
+          },
+          "winter": {
+            "correct": 8,
+            "total": 16
+          },
+          "stone": {
+            "correct": 8,
+            "total": 16
+          },
+          "palisade": {
+            "correct": 8,
+            "total": 16
+          }
+        }
+      }
+    ],
+    "correct": 48,
+    "total": 64,
+    "accuracy": 0.75,
+    "targetMet": false
+  },
+  {
+    "round": "round4",
+    "reviewers": [
+      {
+        "reviewer": "a",
+        "correct": 22,
+        "total": 32,
+        "accuracy": 0.6875,
+        "candidateDetected": 12,
+        "candidateTotal": 16,
+        "subsets": {
+          "summer": {
+            "correct": 11,
+            "total": 16
+          },
+          "winter": {
+            "correct": 11,
+            "total": 16
+          },
+          "stone": {
+            "correct": 8,
+            "total": 16
+          },
+          "palisade": {
+            "correct": 14,
+            "total": 16
+          }
+        }
+      },
+      {
+        "reviewer": "b",
+        "correct": 28,
+        "total": 32,
+        "accuracy": 0.875,
+        "candidateDetected": 14,
+        "candidateTotal": 16,
+        "subsets": {
+          "summer": {
+            "correct": 14,
+            "total": 16
+          },
+          "winter": {
+            "correct": 14,
+            "total": 16
+          },
+          "stone": {
+            "correct": 12,
+            "total": 16
+          },
+          "palisade": {
+            "correct": 16,
+            "total": 16
+          }
+        }
+      }
+    ],
+    "correct": 50,
+    "total": 64,
+    "accuracy": 0.78125,
+    "targetMet": false
+  }
+]

@@ -1,14 +1,50 @@
 {
-  "about": "Detector status for the repository (user decision 2026-10-02, expansion round). use: findings are defect candidates a person checks and fixes. All six are use.",
-  "performance": "교정 성능(같은 시험지로 조정) — 홀드아웃 검증 전, 병합 관문 아님",
-  "performance_detail": "Recall and precision below were measured on the frozen expansion answer key testdata/frozen-truth-expansion-20261002 (38 positives, 14 scenes x 20 frames) with config/expansion.json, after the thresholds and code were tuned on that same key; precision counts only candidates inside annotated regions (35 of 404). Not an independent holdout result, and no detector is a merge gate.",
+  "about": "Detector status for the repository (user decision 2026-10-03, after the holdout). use: findings are defect candidates a person checks; experimental: hints for a person to look at. Neither is ever a gate.",
+  "performance": "홀드아웃에서 교정 성능 재현 실패 — QA 후보 생성 보조용, 병합 관문 아님",
+  "performance_detail": "calibration: the expansion answer key testdata/frozen-truth-expansion-20261002 after tuning on it. holdout: thresholds frozen, 15 unused scenes (12 fresh maps, 3 later years; game d6ae1549), strict spatial matching; null = no denominator (not a pass). sample: 50 of the 369 calibration candidates outside annotated regions, drawn at random and judged by eye (AI visual review): 36 true, 5 false, 9 uncertain, candidate precision 72-90 %. The tool is fixed as a helper; tuning stopped.",
   "thresholds": "config/expansion.json",
   "detectors": {
-    "straight_boundary": { "status": "use", "label": "경계(직각·직선 땅 경계)", "positives": 9, "tp": 7, "fp": 1, "fn": 2, "recall": 0.778, "precision": 0.875 },
-    "tile_seam": { "status": "use", "label": "이음새(타일 이음새)", "positives": 6, "tp": 5, "fp": 0, "fn": 1, "recall": 0.833, "precision": 1.0 },
-    "stationary_person": { "status": "use", "label": "멈춘 사람", "positives": 7, "tp": 7, "fp": 0, "fn": 0, "recall": 1.0, "precision": 1.0 },
-    "roof_overlap": { "status": "use", "label": "겹침(지붕·벽 위 사람)", "positives": 6, "tp": 6, "fp": 0, "fn": 0, "recall": 1.0, "precision": 1.0 },
-    "scale_ratio": { "status": "use", "label": "크기(크기 비율)", "positives": 5, "tp": 4, "fp": 0, "fn": 1, "recall": 0.8, "precision": 1.0 },
-    "repeat_density": { "status": "use", "label": "반복(반복 밀도)", "positives": 5, "tp": 4, "fp": 1, "fn": 1, "recall": 0.8, "precision": 0.8 }
+    "straight_boundary": {
+      "status": "experimental",
+      "label": "경계(직각·직선 땅 경계)",
+      "holdout": { "tp": 13, "fp": 78, "fn": 16, "recall": 0.448, "precision": 0.143 },
+      "calibration": { "positives": 9, "tp": 7, "fp": 1, "fn": 2, "recall": 0.778, "precision": 0.875 },
+      "sample": { "drawn": 10, "true": 5, "false": 5, "uncertain": 0 }
+    },
+    "tile_seam": {
+      "status": "use",
+      "label": "이음새(타일 이음새)",
+      "holdout": { "tp": 9, "fp": 0, "fn": 9, "recall": 0.5, "precision": 1.0 },
+      "calibration": { "positives": 6, "tp": 5, "fp": 0, "fn": 1, "recall": 0.833, "precision": 1.0 },
+      "sample": { "drawn": 0, "true": 0, "false": 0, "uncertain": 0 }
+    },
+    "stationary_person": {
+      "status": "experimental",
+      "label": "멈춘 사람",
+      "holdout": { "tp": 0, "fp": 0, "fn": 0, "recall": null, "precision": null },
+      "calibration": { "positives": 7, "tp": 7, "fp": 0, "fn": 0, "recall": 1.0, "precision": 1.0 },
+      "sample": { "drawn": 27, "true": 18, "false": 0, "uncertain": 9 }
+    },
+    "roof_overlap": {
+      "status": "experimental",
+      "label": "겹침(지붕·벽 위 사람)",
+      "holdout": { "tp": 0, "fp": 1, "fn": 0, "recall": null, "precision": 0.0 },
+      "calibration": { "positives": 6, "tp": 6, "fp": 0, "fn": 0, "recall": 1.0, "precision": 1.0 },
+      "sample": { "drawn": 10, "true": 10, "false": 0, "uncertain": 0 }
+    },
+    "scale_ratio": {
+      "status": "experimental",
+      "label": "크기(크기 비율)",
+      "holdout": { "tp": 0, "fp": 0, "fn": 22, "recall": 0.0, "precision": null },
+      "calibration": { "positives": 5, "tp": 4, "fp": 0, "fn": 1, "recall": 0.8, "precision": 1.0 },
+      "sample": { "drawn": 1, "true": 1, "false": 0, "uncertain": 0 }
+    },
+    "repeat_density": {
+      "status": "experimental",
+      "label": "반복(반복 밀도)",
+      "holdout": { "tp": 0, "fp": 2, "fn": 0, "recall": null, "precision": 0.0 },
+      "calibration": { "positives": 5, "tp": 4, "fp": 1, "fn": 1, "recall": 0.8, "precision": 0.8 },
+      "sample": { "drawn": 2, "true": 2, "false": 0, "uncertain": 0 }
+    }
   }
 }

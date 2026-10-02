@@ -1,0 +1,2002 @@
+{
+ "archetypeId": "core:open_field",
+ "seed": 3,
+ "lastYear": 1340,
+ "policy": "growth",
+ "final": {
+  "year": 1341,
+  "population": 689,
+  "l2": 20,
+  "l4": 16,
+  "houses": 24,
+  "treasury": 5937,
+  "kinds": {
+   "house": 24,
+   "well": 5,
+   "granary": 7,
+   "logging_camp": 1,
+   "storehouse": 4,
+   "manor_house": 1,
+   "farmstead": 5,
+   "mill": 13,
+   "sawmill": 3,
+   "chapel": 1,
+   "market": 1,
+   "masonry": 1,
+   "quarry": 1,
+   "church": 1,
+   "malt_kiln": 1
+  },
+  "housePlots": [
+   [
+    1,
+    11
+   ],
+   [
+    2,
+    9
+   ],
+   [
+    3,
+    12
+   ],
+   [
+    4,
+    7
+   ],
+   [
+    4,
+    13
+   ],
+   [
+    4,
+    14
+   ],
+   [
+    5,
+    5
+   ],
+   [
+    5,
+    11
+   ],
+   [
+    5,
+    14
+   ],
+   [
+    6,
+    4
+   ],
+   [
+    7,
+    7
+   ],
+   [
+    7,
+    10
+   ],
+   [
+    7,
+    12
+   ],
+   [
+    7,
+    13
+   ],
+   [
+    7,
+    14
+   ],
+   [
+    8,
+    3
+   ],
+   [
+    9,
+    13
+   ],
+   [
+    9,
+    14
+   ],
+   [
+    11,
+    4
+   ],
+   [
+    11,
+    6
+   ],
+   [
+    11,
+    8
+   ],
+   [
+    13,
+    6
+   ],
+   [
+    13,
+    8
+   ],
+   [
+    14,
+    14
+   ]
+  ]
+ },
+ "eras": [],
+ "years": [
+  {
+   "year": 1300,
+   "population": 56,
+   "households": 4,
+   "counts": {
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "brewer": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 2% — 방앗간지기, 주원인: 밀 부족(1일분)",
+    "ale": "에일 생산성 3% — 양조인, 주원인: 밀 부족(3일분)",
+    "wood": "목재 생산성 37% — 목수, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 32% — 수레꾼, 주원인: 살 사람 부족"
+   },
+   "chainGoods": {
+    "hides": 0,
+    "leather": 1.9,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 0,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1301,
+   "population": 64,
+   "households": 6,
+   "counts": {
+    "butcher": 1,
+    "baker": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "brewer": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 32% — 방앗간지기, 주원인: 살 사람 부족",
+    "ale": "에일 생산성 64% — 양조인, 주원인: 살 사람 부족",
+    "meat_leather": "고기·가죽 생산성 14% — 푸줏간 주인, 주원인: 가축 부족(12일분)",
+    "wood": "목재 생산성 43% — 목수, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 37% — 수레꾼, 주원인: 살 사람 부족"
+   },
+   "chainGoods": {
+    "hides": 1.5,
+    "leather": 2,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 0,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1302,
+   "population": 111,
+   "households": 9,
+   "counts": {
+    "butcher": 1,
+    "baker": 1,
+    "tailor": 1,
+    "shoemaker": 1,
+    "smith": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "brewer": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 33% — 제빵사, 주원인: 빵 부족(0일분)",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 15% — 푸줏간 주인, 주원인: 가축 부족(12일분)",
+    "cloth": "모직 생산성 17% — 재단사, 주원인: 생모직 부족(15일분)",
+    "metal": "금속 생산성 40% — 대장장이, 주원인: 철 부족(36일분)",
+    "wood": "목재 생산성 74% — 목수, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 63% — 수레꾼, 주원인: 살 사람 부족"
+   },
+   "chainGoods": {
+    "hides": 3,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 0,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1303,
+   "population": 89,
+   "households": 7,
+   "counts": {
+    "butcher": 1,
+    "baker": 1,
+    "tailor": 1,
+    "shoemaker": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 29% — 제빵사, 주원인: 빵 부족(4일분)",
+    "meat_leather": "고기·가죽 생산성 20% — 푸줏간 주인, 주원인: 가축 부족(12일분)",
+    "cloth": "모직 생산성 17% — 재단사, 주원인: 생모직 부족(15일분)",
+    "wood": "목재 생산성 59% — 목수, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 51% — 수레꾼, 주원인: 살 사람 부족"
+   },
+   "chainGoods": {
+    "hides": 3,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 0,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1304,
+   "population": 167,
+   "households": 9,
+   "counts": {
+    "butcher": 1,
+    "baker": 1,
+    "tailor": 1,
+    "shoemaker": 1,
+    "brewer": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 90% — 방앗간지기, 주원인: 살 사람 부족",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 15% — 푸줏간 주인, 주원인: 가축 부족(12일분)",
+    "cloth": "모직 생산성 17% — 재단사, 주원인: 생모직 부족(15일분)",
+    "metal": "금속 생산성 40% — 대장장이, 주원인: 철 부족(36일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 95% — 수레꾼, 주원인: 살 사람 부족"
+   },
+   "chainGoods": {
+    "hides": 3,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 0,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1305,
+   "population": 192,
+   "households": 10,
+   "counts": {
+    "butcher": 1,
+    "baker": 1,
+    "tailor": 1,
+    "shoemaker": 1,
+    "brewer": 2,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 98% — 방앗간지기, 주원인: 살 사람 부족",
+    "ale": "에일 생산성 96% — 양조인, 주원인: 살 사람 부족",
+    "meat_leather": "고기·가죽 생산성 15% — 푸줏간 주인, 주원인: 가축 부족(12일분)",
+    "cloth": "모직 생산성 17% — 재단사, 주원인: 생모직 부족(15일분)",
+    "metal": "금속 생산성 40% — 대장장이, 주원인: 철 부족(36일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 3,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 0,
+   "stuck": {
+    "total": 551,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1306,
+   "population": 204,
+   "households": 11,
+   "counts": {
+    "butcher": 1,
+    "baker": 1,
+    "tailor": 1,
+    "shoemaker": 1,
+    "brewer": 2,
+    "tanner": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 15% — 푸줏간 주인, 주원인: 가축 부족(12일분)",
+    "cloth": "모직 생산성 17% — 재단사, 주원인: 생모직 부족(15일분)",
+    "metal": "금속 생산성 40% — 대장장이, 주원인: 철 부족(36일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 3,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 4,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1307,
+   "population": 203,
+   "households": 11,
+   "counts": {
+    "butcher": 1,
+    "baker": 1,
+    "tailor": 1,
+    "shoemaker": 1,
+    "brewer": 2,
+    "tanner": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 96% — 제빵사, 주원인: 빵 부족(81일분)",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 15% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 17% — 재단사, 주원인: 생모직 부족(15일분)",
+    "metal": "금속 생산성 40% — 대장장이, 주원인: 철 부족(36일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 11,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 42,
+   "stuck": {
+    "total": 783,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1308,
+   "population": 201,
+   "households": 11,
+   "counts": {
+    "butcher": 1,
+    "baker": 1,
+    "tailor": 1,
+    "shoemaker": 1,
+    "brewer": 2,
+    "tanner": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 76% — 제빵사, 주원인: 빵 부족(36일분)",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 15% — 푸줏간 주인, 주원인: 가축 부족(12일분)",
+    "cloth": "모직 생산성 17% — 재단사, 주원인: 생모직 부족(15일분)",
+    "metal": "금속 생산성 40% — 대장장이, 주원인: 철 부족(36일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 4.3,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 16,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1309,
+   "population": 206,
+   "households": 13,
+   "counts": {
+    "butcher": 1,
+    "baker": 1,
+    "tailor": 1,
+    "shoemaker": 1,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 39% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 17% — 재단사, 주원인: 생모직 부족(15일분)",
+    "metal": "금속 생산성 40% — 대장장이, 주원인: 철 부족(36일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 23.9,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 56,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1310,
+   "population": 238,
+   "households": 13,
+   "counts": {
+    "butcher": 1,
+    "baker": 1,
+    "tailor": 1,
+    "shoemaker": 1,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 43% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 42% — 재단사, 주원인: 생모직 부족(37일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 48,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1311,
+   "population": 266,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 29% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 80% — 대장장이, 주원인: 살 사람 부족",
+    "wood": "목재 생산성 62% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 0,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1312,
+   "population": 277,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 85% — 대장장이, 주원인: 살 사람 부족",
+    "wood": "목재 생산성 84% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 0,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1313,
+   "population": 326,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 92% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 8,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1314,
+   "population": 334,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 90% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 80,
+   "stuck": {
+    "total": 804,
+    "noCarrier": 804
+   }
+  },
+  {
+   "year": 1315,
+   "population": 358,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 94% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 80,
+   "stuck": {
+    "total": 833,
+    "noCarrier": 833
+   }
+  },
+  {
+   "year": 1316,
+   "population": 366,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 92% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 49,
+   "stuck": {
+    "total": 10,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1317,
+   "population": 366,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 92% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 33,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1318,
+   "population": 366,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 92% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 48,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1319,
+   "population": 366,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 92% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 58,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1320,
+   "population": 374,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 94% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 79,
+   "stuck": {
+    "total": 2330,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1321,
+   "population": 374,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 93% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 80,
+   "stuck": {
+    "total": 2513,
+    "noCarrier": 2513
+   }
+  },
+  {
+   "year": 1322,
+   "population": 374,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 93% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 76,
+   "stuck": {
+    "total": 2377,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1323,
+   "population": 374,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 93% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 72,
+   "stuck": {
+    "total": 2650,
+    "noCarrier": 13
+   }
+  },
+  {
+   "year": 1324,
+   "population": 374,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 93% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 79,
+   "stuck": {
+    "total": 1751,
+    "noCarrier": 1751
+   }
+  },
+  {
+   "year": 1325,
+   "population": 374,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 93% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 73,
+   "stuck": {
+    "total": 2398,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1326,
+   "population": 374,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 93% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 79,
+   "stuck": {
+    "total": 2503,
+    "noCarrier": 30
+   }
+  },
+  {
+   "year": 1327,
+   "population": 374,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 93% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 75,
+   "stuck": {
+    "total": 2592,
+    "noCarrier": 2592
+   }
+  },
+  {
+   "year": 1328,
+   "population": 374,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 93% — 통장이, 주원인: 살 사람 부족",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 79,
+   "stuck": {
+    "total": 2466,
+    "noCarrier": 2466
+   }
+  },
+  {
+   "year": 1329,
+   "population": 531,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 33% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 80,
+   "stuck": {
+    "total": 2539,
+    "noCarrier": 2539
+   }
+  },
+  {
+   "year": 1330,
+   "population": 544,
+   "households": 17,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "carter": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 36% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 80,
+   "stuck": {
+    "total": 15,
+    "noCarrier": 15
+   }
+  },
+  {
+   "year": 1331,
+   "population": 553,
+   "households": 19,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 2,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 1,
+    "cooper": 1,
+    "carter": 2,
+    "wheelwright": 1,
+    "carpenter": 1,
+    "miller": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 36% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 95,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1332,
+   "population": 590,
+   "households": 22,
+   "counts": {
+    "butcher": 2,
+    "baker": 1,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 3,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 2,
+    "cooper": 1,
+    "carter": 2,
+    "wheelwright": 1,
+    "carpenter": 2,
+    "miller": 1,
+    "smith": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 36% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 73,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1333,
+   "population": 630,
+   "households": 24,
+   "counts": {
+    "butcher": 2,
+    "baker": 2,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 3,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 2,
+    "cooper": 1,
+    "carter": 2,
+    "wheelwright": 1,
+    "carpenter": 2,
+    "smith": 2,
+    "miller": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 36% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 100% — 대장장이, 주원인: 없음",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 86,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1334,
+   "population": 656,
+   "households": 24,
+   "counts": {
+    "butcher": 2,
+    "baker": 2,
+    "tailor": 2,
+    "shoemaker": 2,
+    "brewer": 3,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 2,
+    "cooper": 1,
+    "carter": 2,
+    "wheelwright": 1,
+    "carpenter": 2,
+    "smith": 2,
+    "miller": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 36% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 60% — 대장장이, 주원인: 철 부족(54일분)",
+    "wood": "목재 생산성 68% — 통장이, 주원인: 철 부족(0일분)",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 101,
+   "stuck": {
+    "total": 0,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1335,
+   "population": 705,
+   "households": 24,
+   "counts": {
+    "butcher": 2,
+    "baker": 2,
+    "tailor": 2,
+    "shoemaker": 3,
+    "brewer": 3,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 2,
+    "carter": 2,
+    "mercer": 1,
+    "carpenter": 2,
+    "smith": 2,
+    "miller": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 32% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 60% — 대장장이, 주원인: 철 부족(54일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 88% — 잡화상, 주원인: 살 사람 부족"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 133,
+   "stuck": {
+    "total": 833,
+    "noCarrier": 833
+   }
+  },
+  {
+   "year": 1336,
+   "population": 754,
+   "households": 24,
+   "counts": {
+    "butcher": 2,
+    "baker": 2,
+    "tailor": 2,
+    "shoemaker": 3,
+    "brewer": 3,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 2,
+    "carter": 2,
+    "vintner": 1,
+    "carpenter": 2,
+    "smith": 2,
+    "miller": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 32% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 21% — 재단사, 주원인: 생모직 부족(18일분)",
+    "metal": "금속 생산성 60% — 대장장이, 주원인: 철 부족(54일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 91% — 포도주상, 주원인: 살 사람 부족"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 110,
+   "stuck": {
+    "total": 899,
+    "noCarrier": 899
+   }
+  },
+  {
+   "year": 1337,
+   "population": 760,
+   "households": 24,
+   "counts": {
+    "butcher": 2,
+    "baker": 2,
+    "tailor": 3,
+    "shoemaker": 3,
+    "brewer": 3,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 2,
+    "carter": 2,
+    "carpenter": 2,
+    "smith": 2,
+    "miller": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 35% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 14% — 재단사, 주원인: 생모직 부족(12일분)",
+    "metal": "금속 생산성 60% — 대장장이, 주원인: 철 부족(54일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 144,
+   "stuck": {
+    "total": 850,
+    "noCarrier": 850
+   }
+  },
+  {
+   "year": 1338,
+   "population": 735,
+   "households": 24,
+   "counts": {
+    "butcher": 2,
+    "baker": 2,
+    "tailor": 3,
+    "shoemaker": 3,
+    "brewer": 3,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 2,
+    "carter": 2,
+    "carpenter": 2,
+    "smith": 2,
+    "miller": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 35% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 14% — 재단사, 주원인: 생모직 부족(12일분)",
+    "metal": "금속 생산성 60% — 대장장이, 주원인: 철 부족(54일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 160,
+   "stuck": {
+    "total": 13,
+    "noCarrier": 13
+   }
+  },
+  {
+   "year": 1339,
+   "population": 696,
+   "households": 24,
+   "counts": {
+    "butcher": 2,
+    "baker": 2,
+    "tailor": 3,
+    "shoemaker": 3,
+    "brewer": 3,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 2,
+    "carter": 2,
+    "carpenter": 2,
+    "smith": 2,
+    "miller": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 35% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 14% — 재단사, 주원인: 생모직 부족(12일분)",
+    "metal": "금속 생산성 60% — 대장장이, 주원인: 철 부족(54일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 109,
+   "stuck": {
+    "total": 3367,
+    "noCarrier": 0
+   }
+  },
+  {
+   "year": 1340,
+   "population": 689,
+   "households": 24,
+   "counts": {
+    "butcher": 2,
+    "baker": 2,
+    "tailor": 3,
+    "shoemaker": 3,
+    "brewer": 3,
+    "merchant": 1,
+    "tanner": 1,
+    "innkeeper": 2,
+    "carter": 2,
+    "carpenter": 2,
+    "smith": 2,
+    "miller": 1
+   },
+   "chains": {
+    "grain": "곡물·빵 생산성 100% — 제빵사, 주원인: 없음",
+    "ale": "에일 생산성 100% — 양조인, 주원인: 없음",
+    "meat_leather": "고기·가죽 생산성 35% — 무두장이, 주원인: 나무껍질 부족(6일분)",
+    "cloth": "모직 생산성 14% — 재단사, 주원인: 생모직 부족(12일분)",
+    "metal": "금속 생산성 60% — 대장장이, 주원인: 철 부족(54일분)",
+    "wood": "목재 생산성 100% — 목수, 주원인: 없음",
+    "commerce": "상업·운송 생산성 100% — 수레꾼, 주원인: 없음"
+   },
+   "chainGoods": {
+    "hides": 64,
+    "leather": 0,
+    "shoes": 0,
+    "meat": 0
+   },
+   "streets": [],
+   "haulage": 110,
+   "stuck": {
+    "total": 3765,
+    "noCarrier": 0
+   }
+  }
+ ],
+ "receipts": [
+  {
+   "house": "construction-site-000005",
+   "year": 1301,
+   "line": "푸줏간 주인: 필지 +17 · 악취 규정 −5 · 손님 +4",
+   "score": 16,
+   "chance": "629‰ of 5",
+   "productivity": 614,
+   "workshop": "dirty_yard"
+  },
+  {
+   "house": "construction-site-000006",
+   "year": 1302,
+   "line": "제빵사: 길 +10 · 임대료 −9 · 손님 +5 · 화재 규정 −2",
+   "score": 4,
+   "chance": "164‰ of 4",
+   "productivity": 1000,
+   "workshop": "front_shop"
+  },
+  {
+   "house": "construction-site-000008",
+   "year": 1302,
+   "line": "재단사: 길 +10 · 임대료 −9 · 손님 +6 · 생모직 +2",
+   "score": 9,
+   "chance": "396‰ of 4",
+   "productivity": 139,
+   "workshop": "front_shop"
+  },
+  {
+   "house": "construction-site-000009",
+   "year": 1303,
+   "line": "구두장이: 길 +10 · 임대료 −8 · 손님 +5 · 가죽 +3",
+   "score": 10,
+   "chance": "731‰ of 2",
+   "productivity": 139,
+   "workshop": "front_shop"
+  },
+  {
+   "house": "construction-site-000010",
+   "year": 1304,
+   "line": "양조인: 필지 +17 · 물 +11 · 길 +10 · 임대료 −7 · 손님 +3",
+   "score": 34,
+   "chance": "841‰ of 2",
+   "productivity": 1000,
+   "workshop": "big_yard"
+  },
+  {
+   "house": "construction-site-000015",
+   "year": 1305,
+   "line": "양조인: 필지 +17 · 물 +11 · 길 +10 · 손님 +6 · 임대료 −6 · 경쟁 −6",
+   "score": 32,
+   "chance": "491‰ of 3",
+   "productivity": 1000,
+   "workshop": "big_yard"
+  },
+  {
+   "house": "construction-site-000017",
+   "year": 1310,
+   "line": "상인: 길 +10 · 필지 −10 · 손님 +5",
+   "score": 5,
+   "chance": "1000‰ of 1",
+   "productivity": 1000,
+   "workshop": "warehouse_shop"
+  },
+  {
+   "house": "construction-site-000018",
+   "year": 1309,
+   "line": "무두장이: 필지 +17 · 생가죽 +10 · 악취 규정 −6",
+   "score": 21,
+   "chance": "173‰ of 3",
+   "productivity": 69,
+   "workshop": "edge_stink_yard"
+  },
+  {
+   "house": "construction-site-000022",
+   "year": 1309,
+   "line": "여관 주인: 손님 +17 · 필지 +17 · 길 +10 · 임대료 −2",
+   "score": 42,
+   "chance": "461‰ of 4",
+   "productivity": 1000,
+   "workshop": "big_yard"
+  },
+  {
+   "house": "construction-site-000024",
+   "year": 1311,
+   "line": "푸줏간 주인: 필지 +17 · 손님 +12 · 악취 규정 −7",
+   "score": 22,
+   "chance": "493‰ of 3",
+   "productivity": 614,
+   "workshop": "dirty_yard"
+  },
+  {
+   "house": "construction-site-000028",
+   "year": 1335,
+   "line": "구두장이: 손님 +23 · 경쟁 −12 · 가죽 +11 · 길 +10 · 임대료 −2",
+   "score": 30,
+   "chance": "212‰ of 12",
+   "productivity": 139,
+   "workshop": "front_shop"
+  },
+  {
+   "house": "construction-site-000029",
+   "year": 1312,
+   "line": "구두장이: 가죽 +11 · 손님 +11 · 길 +10 · 임대료 −4",
+   "score": 28,
+   "chance": "897‰ of 2",
+   "productivity": 139,
+   "workshop": "front_shop"
+  },
+  {
+   "house": "construction-site-000031",
+   "year": 1311,
+   "line": "재단사: 길 +10 · 손님 +9 · 임대료 −9 · 생모직 +2",
+   "score": 12,
+   "chance": "583‰ of 2",
+   "productivity": 139,
+   "workshop": "front_shop"
+  },
+  {
+   "house": "construction-site-000046",
+   "year": 1331,
+   "line": "수레꾼: 창고 물자 +24 · 필지 +17 · 길 +12 · 경쟁 −4",
+   "score": 49,
+   "chance": "829‰ of 4",
+   "productivity": 1000,
+   "workshop": "big_yard"
+  },
+  {
+   "house": "construction-site-000047",
+   "year": 1337,
+   "line": "재단사: 손님 +13 · 길 +10 · 생모직 +2",
+   "score": 25,
+   "chance": "139‰ of 5",
+   "productivity": 139,
+   "workshop": "front_shop"
+  },
+  {
+   "house": "construction-site-000048",
+   "year": 1332,
+   "line": "여관 주인: 필지 +17 · 손님 +10 · 길 +10 · 경쟁 −6",
+   "score": 31,
+   "chance": "284‰ of 8",
+   "productivity": 1000,
+   "workshop": "big_yard"
+  },
+  {
+   "house": "construction-site-000049",
+   "year": 1332,
+   "line": "양조인: 필지 +17 · 손님 +16 · 경쟁 −12 · 길 +10 · 임대료 −2",
+   "score": 29,
+   "chance": "123‰ of 6",
+   "productivity": 1000,
+   "workshop": "big_yard"
+  },
+  {
+   "house": "construction-site-000051",
+   "year": 1333,
+   "line": "목수: 필지 +17 · 목재 +16 · 길 +10 · 경쟁 −4",
+   "score": 39,
+   "chance": "806‰ of 5",
+   "productivity": 1000,
+   "workshop": "big_yard"
+  },
+  {
+   "house": "construction-site-000052",
+   "year": 1333,
+   "line": "대장장이: 손님 +11 · 화재 규정 −11 · 길 +10",
+   "score": 10,
+   "chance": "30‰ of 6",
+   "productivity": 600,
+   "workshop": "forge"
+  },
+  {
+   "house": "construction-site-000053",
+   "year": 1333,
+   "line": "제빵사: 손님 +21 · 길 +10 · 화재 규정 −9 · 임대료 −2",
+   "score": 20,
+   "chance": "59‰ of 8",
+   "productivity": 1000,
+   "workshop": "front_shop"
+  },
+  {
+   "house": "house-44-40-0",
+   "year": 1300,
+   "line": "목수: 필지 +17 · 길 +10",
+   "score": 27,
+   "chance": "221‰ of 9",
+   "productivity": 1000,
+   "workshop": "big_yard"
+  },
+  {
+   "house": "house-44-42-0",
+   "year": 1300,
+   "line": "방앗간지기: 길 +10",
+   "score": 10,
+   "chance": "268‰ of 6",
+   "productivity": 1000,
+   "workshop": "water_mill"
+  },
+  {
+   "house": "house-46-40-0",
+   "year": 1300,
+   "line": "수레꾼: 필지 +17 · 길 +12",
+   "score": 29,
+   "chance": "112‰ of 12",
+   "productivity": 1000,
+   "workshop": "big_yard"
+  },
+  {
+   "house": "house-46-42-0",
+   "year": 1304,
+   "line": "대장장이: 길 +10 · 임대료 −8 · 손님 +5 · 화재 규정 −5",
+   "score": 2,
+   "chance": "1000‰ of 1",
+   "productivity": 600,
+   "workshop": "forge"
+  }
+ ],
+ "quits": [
+  {
+   "houseId": "construction-site-000028",
+   "tradeId": "cooper",
+   "tick": 141000
+  },
+  {
+   "houseId": "construction-site-000047",
+   "tradeId": "wheelwright",
+   "tick": 141000
+  },
+  {
+   "houseId": "construction-site-000047",
+   "tradeId": "mercer",
+   "tick": 145000
+  },
+  {
+   "houseId": "construction-site-000047",
+   "tradeId": "vintner",
+   "tick": 149000
+  }
+ ],
+ "elapsedSeconds": 2894.3
+}

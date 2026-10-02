@@ -118,6 +118,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
   3. ESLint(`tools/eslint/`): 바뀐 코드 파일만 본다. `tools/eslint/eslint-suppressions.json`에 없는 위반만 실패한다(REVIEW-1 때 122건: 금지 컨트롤 118, exhaustive-deps 4. UI-KIT-1이 모두 고쳐 0건).
   4. typecheck: 루트 `node_modules`의 `tsc --noEmit`.
   5. `scripts/checks/inboxLedger.mjs`(INBOX-1q): `<head>`의 `assets-inbox/INBOX_LEDGER.csv` 전체에서 `replaced_by`의 경로(`;`로 이은 것 하나하나)가 장부의 다른 행 `file`이어야 한다. `cursor_*.png(6장)` 같은 패턴·설명·오타는 실패한다. 범위에서 바뀐 행만이 아니라 장부 전체를 본다(도입 때 걸린 행 1개는 같은 커밋에서 고쳐 기존 위반 목록이 없다). INBOX-1y부터 둘을 더 본다. ① 장부 전체에서 `verdict_note`의 `(정본: <경로>)`는 sha256이 같은 다른 행을 가리켜야 한다. ② 범위에서 새로 생긴 행의 sha256이 다른 행과 같으면 그 행 비고에 `○○와 동일 바이트(정본: 경로)`가 있거나, 같은 바이트의 다른 행이 그 행을 정본으로 적고 있어야 한다. 정본은 runtime manifest나 설치 대장이 가리키는 행, 없으면 같은 바이트 가운데 confirmed이면서 가장 먼저 받은 행이다(순서는 `docs/ASSET_INBOX.md` 2절). 기존 중복 215묶음 245행은 INBOX-1y에서 한 번에 표시했다.
+     - 한 그림 한 행(2026-10-03, 결정 RR11): 범위에서 `assets-inbox/` 아래가 하나라도 바뀌면(장부 포함, 옮기기·지우기 포함) `<head>`의 `assets-inbox/**/*.{png,jpg,jpeg,webp,gif,svg}` 목록과 장부 `file` 열을 집합으로 맞춰 본다. 행 없는 그림은 `NOROW`, 파일 없는 행은 `NOFILE`로 실패한다. 계기: 렌더 `11ca755e`가 은퇴 그림 8장을 `assets-inbox/retired/`로 옮기면서 행을 만들지 않았는데 통과했다(이 검사로 그 커밋은 NOROW 8로 실패한다).
   6. `scripts/checks/koreanStrings.mjs`(CODE-1b): `<head>`의 `src/**/*.{ts,tsx,js,jsx,mjs,cjs}`에서 한글이 든 문자열·템플릿·JSX 텍스트는 `*.ko.ts`와 `*.generated.*`에만 둘 수 있다(주석 제외).
      - 파싱은 `tools/eslint`의 TypeScript 6으로 한다.
      - 기존 것은 `scripts/checks/korean-strings-baseline.json`(40개 파일, 463개 문구)에 파일별 정확한 문구로 있다. 목록 문구를 고치면 새 문자열로 본다.
@@ -129,6 +130,12 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
      - 세는 단위는 본선 머리(추이가 재는 단위)다: 이 저장소의 `origin/codex/phase15-organic-ground` reflog(워크트리끼리 공유)에 있던 커밋과 `<head>` 가운데, 문서의 측정 커밋 어느 것에서도 닿지 않는 것. reflog가 없는 새 클론에서는 그 범위의 커밋 전부를 센다(병합된 브랜치의 커밋까지 세어 많게 나온다).
      - 경고는 `<git common dir>/fls-trend-lag.log`에도 한 줄씩 쌓인다. 어느 워크트리에서든 `cat "$(git rev-parse --git-common-dir)/fls-trend-lag.log"`로 본다.
      - 갱신: `npm run perf:trend`로 DGX 결과를 모아 `docs/verification/perf-trend`를 커밋한다. 합치는 세션이 하고, 경고가 쌓이면 인프라 세션이 모아 커밋한다.
+     - 자동 갱신(2026-10-03): `npm run hooks:install`(npm ci·install이 함께 돌림)이 `post-merge` 훅과 병합 드라이버 `fls-trend`를 설치한다. 작업 브랜치에 본선을 합쳤을 때 문서가 10개 넘게 뒤처졌으면 훅이 `perf:trend`를 돌려 `docs/verification/perf-trend`만 따로 커밋한다("post-merge: trend …" 한 줄). 본선·main·분리된 HEAD·squash 병합·그 폴더에 커밋 안 한 변경이 있을 때는 하지 않는다. 충돌로 멈춘 병합은 훅이 돌지 않으므로 다음 병합이 맡는다. 실패하면 폴더를 되돌린다. 끄기: `FLS_TREND_AUTO=0`. 두 세션의 갱신이 만나면 드라이버가 측정 커밋이 많은 쪽을 남긴다.
+  10. `scripts/checks/evidenceSize.mjs`(결정 RR10, 상시 규칙 1): 범위에서 바뀐 `docs/verification/<작업>/` 폴더마다 `<head>`의 크기가 3 MB(3 × 2^20바이트, `du -h`의 단위) 이하여야 한다. 넘으면 실패하고 큰 파일 다섯을 보여 준다.
+     - 세지 않는 것: 재플레이 캡처(경로에 `replay`가 든 것, 규칙 1의 "재플레이 캡처 별도"), 병합 전 검사가 읽는 DGX 화면 기하 결과 `docs/verification/uiaudit1/geometry/`, 커밋마다 생성되는 성능 추이 `docs/verification/perf-trend/`(한 커밋에 약 10 KB, 병합 뒤 훅이 커밋).
+     - Git LFS 파일은 포인터가 가리키는 실제 크기로 센다.
+     - 이미 넘은 폴더(asset-audit 6.34 MB, ui9b 3.28 MB)는 `scripts/checks/evidence-size-baseline.json`에 그때 크기로 있다. 그보다 커지면 실패하고, 목록은 줄이기만 한다.
+     - 계기: NAT-4에서 회귀 묶음 결과 17 MB(`d39ca363`, 이 검사로 15.86 MB)가 커밋에 섞였는데 아무 검사도 잡지 못했다.
 - **ESLint 설치가 따로인 이유**
   - typescript-eslint는 TypeScript 6.1 미만만 지원한다. 루트의 TypeScript 7(네이티브 포트)에는 JS 컴파일러 API가 없다.
   - 그래서 `tools/eslint/`에 ESLint 10.11 · @typescript-eslint/parser 8.70 · TypeScript 6.0.3(파싱 전용) · react-hooks 7.1.1을 자체 lock으로 둔다. 루트 package.json의 의존성과 lock에는 넣지 않는다.

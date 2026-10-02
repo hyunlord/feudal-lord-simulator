@@ -1,0 +1,50 @@
+{
+  "reviewer_count": 2,
+  "family_count": 7,
+  "judgment_count": 14,
+  "yes_count": 14,
+  "both_yes_families": [
+    "church",
+    "market",
+    "gate",
+    "bridge",
+    "manor",
+    "guildhall",
+    "inn"
+  ],
+  "response_sha256": {
+    "proofs/reviews/identity-a.json": "a45c94e1cd0e943004a0fbbc1fcf3074d034075a393cefc2a6306c18d2233b25",
+    "proofs/reviews/identity-b.json": "db1af0dbb892ec0c28de36077126e75783140b273bed6e4f3c14cee08241484e"
+  },
+  "by_family": {
+    "church": {
+      "a": "yes",
+      "b": "yes"
+    },
+    "market": {
+      "a": "yes",
+      "b": "yes"
+    },
+    "gate": {
+      "a": "yes",
+      "b": "yes"
+    },
+    "bridge": {
+      "a": "yes",
+      "b": "yes"
+    },
+    "manor": {
+      "a": "yes",
+      "b": "yes"
+    },
+    "guildhall": {
+      "a": "yes",
+      "b": "yes"
+    },
+    "inn": {
+      "a": "yes",
+      "b": "yes"
+    }
+  },
+  "interpretation": "Rebuild/extensions and same-site market growth; not identical original materials or pixel-locked geometry."
+}
