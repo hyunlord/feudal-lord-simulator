@@ -32,7 +32,7 @@ export const SCENARIO_COPY = {
     saturation: "포화",
     famine: "기근과 취약",
     war: "전쟁 동원",
-    collapse: "인구 붕괴와 노동 반전",
+    collapse: "역병 뒤의 일손 부족",
     specialisation: "재편과 전문화",
   },
   seasons: ["봄", "여름", "가을", "겨울"] as const,

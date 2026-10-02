@@ -156,7 +156,7 @@ test("P5 (PL-5) the labourers ask for wages: raised, the treasury pays them each
   assert.ok(periods(shared, "wages").size >= 6, `${periods(shared, "wages").size}`);
   assert.ok(cash(shared, "wages").every(entry => entry.amount < 0));
   assert.deepEqual(cash(at(spring(1351) + 2), "statute_fine").map(entry => entry.amount), [-PLAGUE_BALANCE.statuteFine]);
-  assert.equal(historySummary(records(shared, "plague.ordinance")[0]!), `노동자 조례가 낭독되었다 — 임금을 올린 영주에게 벌금 ${moneyWords(PLAGUE_BALANCE.statuteFine)}`);
+  assert.equal(historySummary(records(shared, "plague.ordinance")[0]!), `노동자법이 공포되었다 — 임금을 올린 영주에게 벌금 ${moneyWords(PLAGUE_BALANCE.statuteFine)}`);
   assert.ok(records(shared, "faction.relation").some(record => record.params?.faction === "commons" && record.params?.reason === "petition:wages:accept"));
   // Bound by the ordinance: no wages, no fine, and households leave.
   const bound = run(at(arrival + SEASON + 2), spring(1352), { ...BOT, [WAGES_PETITION_ID]: "refuse" });

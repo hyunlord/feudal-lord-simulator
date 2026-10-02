@@ -61,7 +61,7 @@ test("a kind without a glyph takes its category's; without a body, a timber body
 });
 
 test("the chronicle names a building by its catalog line and leaves any other id as it is", () => {
-  assert.equal(buildingHistoryName("logging_camp"), "벌목장");
+  assert.equal(buildingHistoryName("logging_camp"), "벌목소");
   assert.equal(buildingHistoryName("keep"), "성채", "the keep has a chronicle name now");
   assert.equal(buildingHistoryName("stone_wall_segment"), "stone_wall_segment");
   assert.equal(Object.keys(BUILDING_CATALOG).length, BUILDING_CONFIG.length);
