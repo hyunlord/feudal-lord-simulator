@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "mapId": "open_field-03",
+  "archetype": "open_field",
+  "image": "maps/open_field-03.jpg",
+  "width": 1600,
+  "height": 1000,
+  "coordinateSystem": "pixels; origin top-left; x right y down; slot anchor bottom-center of overlay",
+  "slots": [
+    {
+      "id": "s01",
+      "x": 323,
+      "y": 70,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s02",
+      "x": 438,
+      "y": 66,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s03",
+      "x": 570,
+      "y": 79,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s04",
+      "x": 766,
+      "y": 126,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s05",
+      "x": 859,
+      "y": 80,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s06",
+      "x": 1006,
+      "y": 61,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s07",
+      "x": 1080,
+      "y": 153,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s08",
+      "x": 886,
+      "y": 224,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s09",
+      "x": 889,
+      "y": 397,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s10",
+      "x": 1121,
+      "y": 490,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s11",
+      "x": 1110,
+      "y": 690,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c03"
+      ]
+    },
+    {
+      "id": "s12",
+      "x": 1280,
+      "y": 880,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c03"
+      ]
+    },
+    {
+      "id": "s13",
+      "x": 1305,
+      "y": 975,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c03"
+      ]
+    },
+    {
+      "id": "s14",
+      "x": 1102,
+      "y": 818,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c03"
+      ]
+    },
+    {
+      "id": "s15",
+      "x": 1010,
+      "y": 605,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c03"
+      ]
+    },
+    {
+      "id": "s16",
+      "x": 660,
+      "y": 720,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s17",
+      "x": 675,
+      "y": 623,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s18",
+      "x": 492,
+      "y": 595,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s19",
+      "x": 280,
+      "y": 311,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s20",
+      "x": 668,
+      "y": 268,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Visually empty dry grass or harvested-field parcel; existing hedges and roads retained around footprint.",
+      "landmarkRefs": [
+        "j01"
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "c01",
+      "kind": "crossing",
+      "x": 445,
+      "y": 363,
+      "crossingType": "ford",
+      "note": "Western river shallow crossing"
+    },
+    {
+      "id": "c02",
+      "kind": "crossing",
+      "x": 1090,
+      "y": 381,
+      "crossingType": "ford",
+      "note": "Eastern river shallow crossing"
+    },
+    {
+      "id": "c03",
+      "kind": "crossing",
+      "x": 965,
+      "y": 719,
+      "crossingType": "bridge",
+      "note": "Bridge downstream of Y confluence"
+    },
+    {
+      "id": "j01",
+      "kind": "junction",
+      "x": 750,
+      "y": 157,
+      "note": "Northern three-way road junction"
+    },
+    {
+      "id": "j02",
+      "kind": "junction",
+      "x": 800,
+      "y": 697,
+      "note": "Southwest bank road fork"
+    }
+  ],
+  "review": {
+    "method": "manual visual annotation on final image, then numbered clearance-overlay inspection",
+    "status": "candidate",
+    "notes": [
+      "Two northern rivers merge into a Y; broad dry central interfluve, southwest chalk ridges, continuous eastern forest.",
+      "Clearance rectangles are overlay footprints, not buildability simulation. Large market/abbey symbols must fit the declared rectangle."
+    ]
+  }
+}

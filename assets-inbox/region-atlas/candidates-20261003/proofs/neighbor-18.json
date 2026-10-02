@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 1,
+  "status": "visual-slot-assignment-demo-not-engine-world",
+  "mapId": "open_field-01",
+  "baseMapSha256": "3f6f2ac2432fab7bcf40a4233caa385d5e8103a74a436fc8a434d669a1626669",
+  "image": "proofs/neighbor-18.jpg",
+  "imageSha256": "b88aa8b6145321d7110b24de83bbf56f06e811656c78750821bc27b84c600784",
+  "placements": [
+    {
+      "houseId": "h01",
+      "houseNameEn": "de Haverel",
+      "houseNameKo": "드 해버럴",
+      "estateId": "estate-home",
+      "kind": "manor",
+      "sourceAnchor": [
+        665,
+        473
+      ],
+      "slotId": "s05",
+      "x": 540,
+      "y": 533,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-direct"
+    },
+    {
+      "houseId": "h02",
+      "houseNameEn": "de Coldmere",
+      "houseNameKo": "드 콜드미어",
+      "estateId": "estate-h02",
+      "kind": "manor",
+      "sourceAnchor": [
+        310,
+        397
+      ],
+      "slotId": "s02",
+      "x": 160,
+      "y": 331,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h03",
+      "houseNameEn": "de Brancel",
+      "houseNameKo": "드 브랑셀",
+      "estateId": "estate-h03",
+      "kind": "manor",
+      "sourceAnchor": [
+        465,
+        510
+      ],
+      "slotId": "s15",
+      "x": 416,
+      "y": 532,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h04",
+      "houseNameEn": "de Vauterre",
+      "houseNameKo": "드 보테르",
+      "estateId": "estate-h04",
+      "kind": "manor",
+      "sourceAnchor": [
+        890,
+        290
+      ],
+      "slotId": "s06",
+      "x": 773,
+      "y": 300,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h05",
+      "houseNameEn": "de Grimesand",
+      "houseNameKo": "드 그라임샌드",
+      "estateId": "estate-h05",
+      "kind": "manor",
+      "sourceAnchor": [
+        1020,
+        335
+      ],
+      "slotId": "s14",
+      "x": 1092,
+      "y": 397,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h06",
+      "houseNameEn": "de Wystanley",
+      "houseNameKo": "드 위스턴리",
+      "estateId": "estate-h06",
+      "kind": "manor",
+      "sourceAnchor": [
+        1260,
+        387
+      ],
+      "slotId": "s13",
+      "x": 1310,
+      "y": 470,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h07",
+      "houseNameEn": "de Hollenby",
+      "houseNameKo": "드 홀렌비",
+      "estateId": "estate-h07",
+      "kind": "manor",
+      "sourceAnchor": [
+        1470,
+        530
+      ],
+      "slotId": "s11",
+      "x": 1530,
+      "y": 249,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h08",
+      "houseNameEn": "de Querney",
+      "houseNameKo": "드 쿼니",
+      "estateId": "estate-h08",
+      "kind": "manor",
+      "sourceAnchor": [
+        1135,
+        665
+      ],
+      "slotId": "s21",
+      "x": 1140,
+      "y": 762,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h09",
+      "houseNameEn": "de Tamerel",
+      "houseNameKo": "드 태머럴",
+      "estateId": "estate-h09",
+      "kind": "manor",
+      "sourceAnchor": [
+        1320,
+        755
+      ],
+      "slotId": "s22",
+      "x": 1080,
+      "y": 880,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h10",
+      "houseNameEn": "Abbey of Saint Mary at Avenel",
+      "houseNameKo": "아브넬 성모 수도원",
+      "estateId": "estate-h10",
+      "kind": "abbey",
+      "sourceAnchor": [
+        875,
+        455
+      ],
+      "slotId": "s10",
+      "x": 1404,
+      "y": 250,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h11",
+      "houseNameEn": "See of Merrowen",
+      "houseNameKo": "메로언 주교좌",
+      "estateId": "estate-h11",
+      "kind": "manor",
+      "sourceAnchor": [
+        960,
+        230
+      ],
+      "slotId": "s07",
+      "x": 1059,
+      "y": 130,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h12",
+      "houseNameEn": "Chapman",
+      "houseNameKo": "채프먼",
+      "estateId": "estate-h12",
+      "kind": "market",
+      "sourceAnchor": [
+        750,
+        430
+      ],
+      "slotId": "s19",
+      "x": 545,
+      "y": 925,
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h13",
+      "houseNameEn": "Miller",
+      "houseNameKo": "밀러",
+      "estateId": "estate-h13",
+      "kind": "market",
+      "sourceAnchor": [
+        848,
+        367
+      ],
+      "slotId": "s12",
+      "x": 1440,
+      "y": 538,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h14",
+      "houseNameEn": "de Sauvenay",
+      "houseNameKo": "드 소브네",
+      "estateId": "estate-h14",
+      "kind": "manor",
+      "sourceAnchor": [
+        430,
+        700
+      ],
+      "slotId": "s18",
+      "x": 386,
+      "y": 838,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h15",
+      "houseNameEn": "de Ravenholt",
+      "houseNameKo": "드 레이븐홀트",
+      "estateId": "estate-h15",
+      "kind": "manor",
+      "sourceAnchor": [
+        310,
+        210
+      ],
+      "slotId": "s04",
+      "x": 376,
+      "y": 218,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h16",
+      "houseNameEn": "de Blaucourt",
+      "houseNameKo": "드 블로쿠르",
+      "estateId": "estate-h16",
+      "kind": "manor",
+      "sourceAnchor": [
+        700,
+        195
+      ],
+      "slotId": "s03",
+      "x": 658,
+      "y": 287,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h17",
+      "houseNameEn": "Fitzaldric",
+      "houseNameKo": "피츠올드릭",
+      "estateId": "estate-h17",
+      "kind": "manor",
+      "sourceAnchor": [
+        590,
+        555
+      ],
+      "slotId": "s16",
+      "x": 573,
+      "y": 618,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    },
+    {
+      "houseId": "h18",
+      "houseNameEn": "de Montgarnier",
+      "houseNameKo": "드 몽가르니에",
+      "estateId": "estate-h18",
+      "kind": "manor",
+      "sourceAnchor": [
+        1160,
+        165
+      ],
+      "slotId": "s08",
+      "x": 1153,
+      "y": 222,
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "flag": "flag-neighbor"
+    }
+  ],
+  "unusedSlotIds": [
+    "s01",
+    "s09",
+    "s17",
+    "s20"
+  ],
+  "preserved": "18 household and estate IDs, names, source sprite kind",
+  "changed": "Coordinates reassigned to compatible dry slots; old road graph, journey distances and travelDays are NOT transplanted.",
+  "display": "Flags and houseId ribbons only; no buildings baked into base maps. h01 direct and others neighbor; no invented political hostility.",
+  "source": "references/neighbor-world.json"
+}

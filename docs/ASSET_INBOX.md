@@ -23,7 +23,7 @@ assets-inbox/
 - **이미 inbox에 있던 Wave**(d1·d1b·wave2·wave4-pilot·wave4b~4e·wave5a·wave5b)에는 **없는 파일만** 묶음 폴더로 더했다. 같은 바이트(또는 C2PA `caBX` 청크만 다른 바이트)가 Wave 안에 이미 있으면 넣지 않았다. 덮어쓴 파일은 없다.
 - `ui-p0/`는 UX-2 브랜치(`claude/ux2-art-skin`, 본선 미병합)가 먼저 만든 구조(`ui/` 43 · `superseded/` 12 · `pilot/` 12 + `inbox-status.csv`·`provenance-ui-p0*.csv`)를 **같은 경로·같은 바이트**로 가져왔다. UX-2가 본선에 병합될 때 같은 파일끼리라 충돌하지 않는다. UI 파일럿은 UX-2와 맞춰 `ui-p0/pilot/`에 있고, 거기 없던 파일럿 확인 그림·기록은 `ui-p0/pilot-candidates-v1/`에 있다.
 - C2PA `caBX` 청크가 붙은 PNG도 받은 바이트 그대로다. 설치할 때 청크를 빼면 Astra 대장 SHA와 같다(장부 `verdict_note`에 `C2PA caBX 포함` 표시).
-- `assets-inbox/**/*.png`는 Git LFS다(`.gitattributes`). CSV·JSON·MD·HTML과 JPG(Wave 24 앱 아이콘 16KB 한 장)는 일반 파일이다.
+- `assets-inbox/**/*.png`는 Git LFS다(`.gitattributes`). CSV·JSON·MD·HTML은 일반 파일이다. **JPG·JPEG는 2026-10-03부터 새 파일이 LFS**(`assets-inbox/**/*.jpg`·`*.jpeg`, 사용자 판정). 그 전에 받은 JPG 207장은 일반 파일로 둔다(이력 재작성 안 함) — `.gitattributes`가 그 JPG가 든 묶음 폴더 27곳에만 LFS를 풀어 둔다(`!filter !diff !merge !text`). 그 27곳에 나중에 JPG를 더하면 일반 파일이 되니, 새 JPG는 새 묶음 폴더에 넣는다.
 
 ## 2. 상태 뜻
 
@@ -41,7 +41,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-10-03 01시 58분 갱신)
+## 3. 현재 장부 요약 (2026-10-03 02시 22분 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -58,6 +58,7 @@ assets-inbox/
 | `lord-components` | 43 |  | 43 |  |  |  |  | 0 |
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
 | `portrait-pool` | 340 |  | 340 |  |  |  |  | 304 |
+| `region-atlas` | 48 |  | 48 |  |  |  |  | 0 |
 | `retired` | 37 |  |  |  |  |  | 37 | 16 |
 | `storehouse-corner` | 15 |  | 5 | 3 |  | 7 |  | 0 |
 | `ui-p0` | 85 |  | 56 |  | 29 |  |  | 43 |
@@ -111,7 +112,7 @@ assets-inbox/
 | `wave8` | 41 |  | 39 |  | 2 |  |  | 37 |
 | `wave9` | 52 |  | 44 |  | 5 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **5165** | **0** | **3790** | **3** | **306** | **1022** | **44** | **2065** |
+| **합계** | **5213** | **0** | **3838** | **3** | **306** | **1022** | **44** | **2065** |
 
 ## 4. 찾는 법
 
@@ -249,6 +250,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-era-pilot-20261003.zip` (10-03 01:04) | `era-pilot/candidates-20261003` | 11,794 KB | `09dbb05c50200545…` | 132 | 4 | `records/references/`(24) 제외. `pilot/houses/*_1300.png` 3장은 설치 그림 `public/assets/buildings/historical-houses/house_l{2,3,4}-v2.png`와 같은 바이트(보존 기본형, 게임 그림 사본)라 제외 | `pilot/<종류>/*.png` → `assets/<종류>/`, 매니페스트 CSV는 `records/pilot/`. `proofs/`(확인판·눈가림 원본)·`ERA_GUIDE.md`·`PLAN.md`·`README.md`·`SOURCES.md`·`SHA256SUMS`는 `records/` 아래로(사용자 지시). 이미 있어 건너뜀 4: 워커 `wk_labor_{f,m}_1300`(`wave5a/workers/wk_labor_{f,m}_01-v1.png`와 같은 바이트)과 2차 눈가림 `scene-B`·`scene-E`(1차와 같은 바이트). `records/inventory/source_inventory.csv`(256KB 초과)는 안내 파일. 작업 폴더 `/tmp/astra-era-pilot-20261003`(ZIP과 같은 내용)은 `astra-raw/output/`에 보관
 | `/tmp/astra-stone-corner-revision-20261003.zip` (10-03 01:16) | `storehouse-corner/stone-revision-20261003` | 2,201 KB | `794c183a42842687…` | 16 | 0 | `references/`(v1 사본·바이블 사본 포함)와 `records/raw-*.png`·`records/*-scaled.png`(생성 원본과 그 축소 중간본) 제외 | 석벽 모서리 v2만 담은 수정판. `assets/`·`proofs/`는 그대로, `README.md`·`manifest.*`·`SHA256SUMS`는 `records/`. ZIP 해시 파일과 함께 `astra-raw/zips/`에 보관
 | `/tmp/astra-region-map-kit-20261003.zip` (10-03 01:13) | `experiments/region-map-kit-20261003` | 38,123 KB | `80606e121370211a…` | 151 | 7 | `references/`(원본 지도 파생본·이웃 JSON)와 `proofs/comparisons/`(16, 원본 손그림 지도 사본이 들어간 나란히 비교) 제외. 조립 지도 16장 가운데 대표 4장(`coastal_port-seed83`·`forest_edge-seed17`·`open_field-seed17`·`neighbor-18`)만 | 실패 실험 기록(Wave 36 집 키트처럼). 키트 PNG → `assets/<종류>/`, 키트 목록 → `records/kit/`, 대표 지도 → `proofs/maps/`(JSON은 `records/samples/`), 모아보기 2 → `proofs/`, 눈가림 16 → `records/blind/`, 조립 소스 `assembler/`·`provenance/`·문서는 `records/`. 이미 있어 건너뜀 7: 깃발 받침 3·거점 3(`lord-components/candidates-20261002/assets/`의 `flag_*_64x96`·`map_{abbey,manor,market}_96x96`와 같은 바이트)과 `stream-straight`(같은 묶음 `stream-estuary`와 같은 바이트). 지도 16장·비교판·참조 전부는 ZIP과 함께 `astra-raw/`에 보관
+| `/tmp/astra-region-atlas-20261003.zip` (10-03 02:14) | `region-atlas/candidates-20261003` | 38,166 KB | `2a39f78fa1b8c0c5…` | 104 | 6 | `references/`(원본 지도 비교 JPEG·이웃 18영지 원본 JSON) 제외 | 지도 20(JPEG)과 같은 이름의 슬롯 JSON 20은 `assets/maps/`에 나란히, 확인판 28과 `neighbor-18.json`은 `proofs/`, `README.md`·`REVIEW.md`·`manifest.json`·`SHA256SUMS`·`overlays/manifest.json`·`provenance/`·`tools/`는 `records/`. 이미 있어 건너뜀 6: 겹침 표지 PNG 6장(깃발 받침 3은 `lord-components/candidates-20261002/assets/flag_*_64x96`, 경계 붓질·적대 깃발·지명 띠는 `experiments/region-map-kit-20261003/assets/markers/`와 같은 바이트) — 파일도 행도 넣지 않음. 이 묶음부터 inbox JPG는 LFS. 생성 원본 PNG는 Astra 로컬 `~/fls-astra-region-atlas/masters/`(ZIP에 없음)
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -329,6 +331,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **석벽 모서리 v2와 모서리 판정 변경**(`storehouse-corner/stone-revision-20261003`, 2026-10-03 판정): v2 여름·겨울(어두운 회색·작은 돌로 고친 판)과 확인판 2 `rejected`, 비고 "벽이 꺾이지 않고 끊긴 자리에 매끈한 블록 — 흉벽·잡석 질감 불연속, 방식 변경". 옛 v1 석벽 2장도 `rework_pending` → `rejected`(대체본이 없어 `replaced_by` 빈칸). 목책 모서리 2장은 `confirmed` → `rework_pending`, 비고 "같은 방식(성벽 띠 이어 붙이기)으로 재작업". 창고 눈 층 3장은 `confirmed` 그대로. 앞 묶음 확인판은 확인하는 대상을 따라 `02-corner-stone.jpg` → `rejected`, `02-corner-palisade.jpg` → `rework_pending`, 나머지 둘(`01-storehouse-snow.jpg`·`03-corner-alpha-scale.jpg`)은 `confirmed`(사용자 판정).
 - **퇴역 그림 8장 장부 행**(2026-10-03, 사용자 판정): `11ca755e`(BLD-01·ENV-03, 렌더 NAT-4)가 `assets-inbox/retired/`로 옮긴 평면 시설 그림 7(`buildings/church`·`keep`·`market`·`masonry`·`mill`·`quarry`·`stone_wall_segment`)과 옛 `terrain/water.png`에 ASSET2-D 규칙대로 `retired` 행을 더했다(wave `retired`, 비고 "BLD-01·ENV-03 아트 감사로 퇴역 — 렌더 NAT-4 11ca755e"). 설치 대장에는 이미 `retired`와 새 경로가 있고, 기존 장부 행과 같은 바이트는 없다. 이 행이 없던 동안 장부 행 수와 inbox 그림 수가 8 어긋났다.
 - **지역 지도 키트 — 실패 실험 기록**(`experiments/region-map-kit-20261003`, 2026-10-03 판정): 손그림 지도를 조각 79장 + 결정론 조립기로 대체하려던 시험. 눈가림 16/16(100%) 구별로 목표(70% 이하) 미달. 지형 조각(숲·구릉 등 27·밭 3·물 4·강/개울 9)은 `rejected`, 비고 "조립 지도가 손그림과 100% 구별됨 — 반복 덩어리·직선 강·매끈한 해안". 손그림 지도 위 겹침용 깃발 받침·경계 붓질·지명 띠(새 3)와 거점 그림(새 9)은 `confirmed`. 길 8·도하 3은 `confirmed`, 비고 "손그림 지도 위 '새로 생긴 길' 겹침용". 바탕 6(`ground/` 지면·종이)은 `rejected`, 비고 "조립 지도 반복 무늬의 원인 — 손그림 지도 방식에서 미사용"(2026-10-03 판정, 처음엔 판정 목록에 없어 `candidate`였음). 대표 지도 4·모아보기 2·눈가림 16·작업 확인판 4는 기록 그림(지형 작업 확인판 3만 `rejected`).
+- **지역 지도 20장**(`region-atlas/candidates-20261003`, 2026-10-03 판정): 조각 조립 대신 지도 한 장 전체를 손그림 화풍으로 생성한 1600×1000 JPEG 20장(강가·해안·백악·숲·습지 각 4) `confirmed`, 비고 "땅 종류별 손그림 바탕 지도 — 거점은 겹쳐 그림". 지도마다 거점 후보 슬롯 20~23곳(총 415)을 같은 이름의 JSON으로 지도 옆에 둔다. 이웃 18영지 배치판과 20장 모아보기 `confirmed`. 땅별 비교판 5·지도별 슬롯 표시판 20·표지 재사용 견본 1은 확인하는 대상(지도·표지)을 따라 `confirmed`. 겹침 표지 6종은 이미 장부에 있는 표지를 바이트 그대로 재사용한 것이라 행을 만들지 않았다.
 - **시대 파일럿**(`era-pilot/candidates-20261003`, 2026-10-03 판정): 1300·1340·1380·1420 시대 변화 시험. 초상 18(6명 × 1300·1380·1420, 256×256) `confirmed`, 비고 "같은 얼굴 시대판 — 초상 시대판 정식 방향". 집 1420판 3(L2·L3·L4) `confirmed`, 비고 "1400 뒤 부유한 집 변형". 간판 8 `confirmed`. 워커 16시트 가운데 새 14 `rejected`, 비고 "약 18px 세계 크기에서 시대 판독 불가 — 워커 시대판 중단"(1300 노동자 남녀 2시트는 Wave 5a 원본과 같은 바이트라 행 없음). 확인판·눈가림 원본은 `records/`에 기록 그림으로 — 워커 걸음 펼침·최악 실루엣 5는 `rejected`, 나머지 19는 `confirmed`. 독립 눈가림 두 차례 4/6(66.7%, 목표 75%)로 관문 미달 — `records/PLAN.md`의 전면 제작은 "양산 보류" 그대로.
 - **Wave 43 봄**(`wave43/candidates-20261002`, 2026-10-02 판정): 24장 — 지면 채움 5(256×128, XY 반복)·밭 3(512×64, X 반복)·활엽수 3·기타 나무 3(여름 원본의 캔버스·알파·피벗 그대로)·과수 4(벚나무는 `plum_j` 기하 템플릿)·봄 소품 6 — 과 확인 그림 40(그룹별 34·묶음 전체 6) `confirmed`. 봄 전용 소품은 여름·겨울판이 없다.
 - **Wave 44 초반 청원 삽화**(`wave44/candidates-20261002`, 2026-10-02 판정): 960×540 JPG 13장(경계 분쟁·방앗간 사용 의무·상속세·혼인세·에일 검정·다리 수리·장터 좌판 분쟁·미성년 후견·공동 목초지·이주민 정착·장원 법정·숲 무단 출입·선례에 따라)과 확인판 1 `confirmed`. Wave 40 사건 삽화 화풍. 장부에 각각 한 행.
