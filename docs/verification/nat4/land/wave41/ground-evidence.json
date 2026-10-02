@@ -1,0 +1,94 @@
+{
+  "calls:forest_edge-summer-after": {
+    "tile": [
+      52,
+      40
+    ],
+    "rasters": 41,
+    "fill": 13619,
+    "drawImage": 10950,
+    "fillRect": 0,
+    "stroke": 102,
+    "perRaster": 602
+  },
+  "calls:forest_edge-summer-before": {
+    "tile": [
+      52,
+      40
+    ],
+    "rasters": 41,
+    "fill": 12415,
+    "drawImage": 10950,
+    "fillRect": 0,
+    "stroke": 102,
+    "perRaster": 572
+  },
+  "calls:forest_edge-winter-after": {
+    "tile": [
+      52,
+      40
+    ],
+    "rasters": 41,
+    "fill": 13888,
+    "drawImage": 10960,
+    "fillRect": 0,
+    "stroke": 104,
+    "perRaster": 609
+  },
+  "calls:forest_edge-winter-before": {
+    "tile": [
+      52,
+      40
+    ],
+    "rasters": 41,
+    "fill": 12684,
+    "drawImage": 10960,
+    "fillRect": 0,
+    "stroke": 104,
+    "perRaster": 579
+  },
+  "calls:chalk_downs-summer-after": {
+    "tile": [
+      42,
+      30
+    ],
+    "rasters": 60,
+    "fill": 20167,
+    "drawImage": 8469,
+    "fillRect": 0,
+    "stroke": 340,
+    "perRaster": 483
+  },
+  "calls:chalk_downs-summer-before": {
+    "tile": [
+      42,
+      30
+    ],
+    "rasters": 60,
+    "fill": 20167,
+    "drawImage": 8469,
+    "fillRect": 0,
+    "stroke": 340,
+    "perRaster": 483
+  },
+  "riverside": {
+    "chunks": 42,
+    "afterChunks": 42,
+    "differing": [],
+    "sample": {
+      "1,2": [
+        "162926234|2047:11011:1:w11111111111111111:ws:i1:r1|1.00 #27eab6d 516x260",
+        "162926234|2047:11011:1:w11111111111111111:ws:i1:r1|1.00 #27eab6d 516x260"
+      ],
+      "2,2": [
+        "2310667802|2047:11011:1:w11111111111111111:ws:i1:r1|1.00 #fbaa7390 516x260",
+        "2310667802|2047:11011:1:w11111111111111111:ws:i1:r1|1.00 #fbaa7390 516x260"
+      ],
+      "3,2": [
+        "3834776865|2047:11011:1:w11111111111111111:ws:i1:r1|1.00 #425d074e 516x260",
+        "3834776865|2047:11011:1:w11111111111111111:ws:i1:r1|1.00 #425d074e 516x260"
+      ]
+    }
+  },
+  "errors": []
+}
