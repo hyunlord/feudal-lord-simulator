@@ -1,0 +1,230 @@
+[
+  {
+    "id": "path_clear_fork_ne_summer",
+    "path": "assets/connections/path_clear_fork_ne_summer.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      80
+    ],
+    "season": "summer",
+    "ports": {
+      "NW": [
+        32,
+        64
+      ],
+      "NE": [
+        96,
+        64
+      ],
+      "SW": [
+        32,
+        96
+      ]
+    },
+    "portAlpha": {
+      "NW": 251,
+      "NE": 250,
+      "SW": 252
+    },
+    "sha256": "acbbc91698c1c03264c4a409fe9637430a35feb0a73e5a1d7ba7ae5f3c8435eb"
+  },
+  {
+    "id": "path_clear_fork_ne_winter",
+    "path": "assets/connections/path_clear_fork_ne_winter.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      80
+    ],
+    "season": "winter",
+    "ports": {
+      "NW": [
+        32,
+        64
+      ],
+      "NE": [
+        96,
+        64
+      ],
+      "SW": [
+        32,
+        96
+      ]
+    },
+    "portAlpha": {
+      "NW": 252,
+      "NE": 250,
+      "SW": 253
+    },
+    "sha256": "09cc1cc3c40f90cfd4baac4cd5380a9ff39ccd9716a9c1e942f85d777172b10c"
+  },
+  {
+    "id": "path_clear_fork_nw_summer",
+    "path": "assets/connections/path_clear_fork_nw_summer.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      80
+    ],
+    "season": "summer",
+    "ports": {
+      "NW": [
+        32,
+        64
+      ],
+      "NE": [
+        96,
+        64
+      ],
+      "SE": [
+        96,
+        96
+      ]
+    },
+    "portAlpha": {
+      "NW": 250,
+      "NE": 250,
+      "SE": 252
+    },
+    "sha256": "f2d82deab6a19765b25858955a0a1dca454f809c23a401667aa04eab1c3e4301"
+  },
+  {
+    "id": "path_clear_fork_nw_winter",
+    "path": "assets/connections/path_clear_fork_nw_winter.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      80
+    ],
+    "season": "winter",
+    "ports": {
+      "NW": [
+        32,
+        64
+      ],
+      "NE": [
+        96,
+        64
+      ],
+      "SE": [
+        96,
+        96
+      ]
+    },
+    "portAlpha": {
+      "NW": 253,
+      "NE": 253,
+      "SE": 253
+    },
+    "sha256": "069e0750100008367c60385ada12c1f7df261120ac8bd47f6f6a29045bab559b"
+  },
+  {
+    "id": "path_clear_corner_ne_summer",
+    "path": "assets/connections/path_clear_corner_ne_summer.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      80
+    ],
+    "season": "summer",
+    "ports": {
+      "NW": [
+        32,
+        64
+      ],
+      "SW": [
+        32,
+        96
+      ]
+    },
+    "portAlpha": {
+      "NW": 203,
+      "SW": 207
+    },
+    "sha256": "001a6ab3a10174007e15f2f8c903d64a248b6e9053e5a1ff8fa7bcb667945641"
+  },
+  {
+    "id": "path_clear_corner_ne_winter",
+    "path": "assets/connections/path_clear_corner_ne_winter.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      80
+    ],
+    "season": "winter",
+    "ports": {
+      "NW": [
+        32,
+        64
+      ],
+      "SW": [
+        32,
+        96
+      ]
+    },
+    "portAlpha": {
+      "NW": 221,
+      "SW": 219
+    },
+    "sha256": "bb8f1a7ab36e0c70fe92809f657e7aeedb5e8dda897df4211f8d79fdd300d986"
+  },
+  {
+    "id": "path_clear_corner_nw_summer",
+    "path": "assets/connections/path_clear_corner_nw_summer.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      80
+    ],
+    "season": "summer",
+    "ports": {
+      "NE": [
+        96,
+        64
+      ],
+      "SE": [
+        96,
+        96
+      ]
+    },
+    "portAlpha": {
+      "NE": 252,
+      "SE": 249
+    },
+    "sha256": "9a99f06a80b20ec9dd8422a6943438f5564be25c5d13fa34cbc55287a04eb8fe"
+  },
+  {
+    "id": "path_clear_corner_nw_winter",
+    "path": "assets/connections/path_clear_corner_nw_winter.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      80
+    ],
+    "season": "winter",
+    "ports": {
+      "NE": [
+        96,
+        64
+      ],
+      "SE": [
+        96,
+        96
+      ]
+    },
+    "portAlpha": {
+      "NE": 253,
+      "SE": 251
+    },
+    "sha256": "77ae0653feea9536c369b159d22a338bf856ed0657aabb719fa467fc5dd803ba"
+  }
+]

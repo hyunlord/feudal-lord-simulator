@@ -1,0 +1,246 @@
+{
+  "kind": "offline-composite-not-runtime",
+  "scene": [
+    640,
+    450
+  ],
+  "zoom": [
+    1,
+    0.6
+  ],
+  "groundPatternScale": 0.5,
+  "plots": "fixed rectangular material study regions, not engine terrain masks",
+  "placements": [
+    {
+      "id": "tree_oak_large_spring",
+      "anchor": [
+        60,
+        135
+      ],
+      "scale": 0.5714285714285714,
+      "width": 50,
+      "height": 64,
+      "summer": "references/tree_oak_large.png",
+      "winter": "references/tree_oak_large_winter-v1.png"
+    },
+    {
+      "id": "tree_oak_small_spring",
+      "anchor": [
+        140,
+        175
+      ],
+      "scale": 0.8,
+      "width": 51,
+      "height": 64,
+      "summer": "references/tree_oak_small.png",
+      "winter": "references/tree_oak_small_winter-v1.png"
+    },
+    {
+      "id": "tree_birch_spring",
+      "anchor": [
+        220,
+        145
+      ],
+      "scale": 0.6666666666666666,
+      "width": 40,
+      "height": 64,
+      "summer": "references/tree_birch.png",
+      "winter": "references/tree_birch_winter-v1.png"
+    },
+    {
+      "id": "tree_pine_tall_spring",
+      "anchor": [
+        405,
+        145
+      ],
+      "scale": 0.5333333333333333,
+      "width": 34,
+      "height": 64,
+      "summer": "references/tree_pine_tall.png",
+      "winter": "references/tree_pine_tall_winter_snow-v1.png"
+    },
+    {
+      "id": "tree_pine_short_spring",
+      "anchor": [
+        490,
+        185
+      ],
+      "scale": 0.7272727272727273,
+      "width": 41,
+      "height": 64,
+      "summer": "references/tree_pine_short.png",
+      "winter": "references/tree_pine_short_winter_snow-v1.png"
+    },
+    {
+      "id": "tree_dead_spring",
+      "anchor": [
+        570,
+        135
+      ],
+      "scale": 0.8,
+      "width": 45,
+      "height": 64,
+      "summer": "references/tree_dead.png",
+      "winter": "references/tree_dead_winter_snow-v1.png"
+    },
+    {
+      "id": "orchard_apple_spring",
+      "anchor": [
+        55,
+        315
+      ],
+      "scale": 0.16796875,
+      "width": 43,
+      "height": 43,
+      "summer": "references/apple-summer.png",
+      "winter": "references/apple-winter.png"
+    },
+    {
+      "id": "orchard_pear_spring",
+      "anchor": [
+        130,
+        315
+      ],
+      "scale": 0.16796875,
+      "width": 43,
+      "height": 43,
+      "summer": "references/pear-summer.png",
+      "winter": "references/pear-winter.png"
+    },
+    {
+      "id": "orchard_plum_spring",
+      "anchor": [
+        205,
+        315
+      ],
+      "scale": 0.16796875,
+      "width": 43,
+      "height": 43,
+      "summer": "references/plum-summer.png",
+      "winter": "references/plum-winter.png"
+    },
+    {
+      "id": "orchard_cherry_spring",
+      "anchor": [
+        280,
+        315
+      ],
+      "scale": 0.16796875,
+      "width": 43,
+      "height": 43,
+      "summer": "references/cherry-summer.png",
+      "winter": "references/cherry-winter.png"
+    },
+    {
+      "id": "ridge_ploughed_spring_a",
+      "anchor": [
+        330,
+        250
+      ],
+      "scale": 0.18,
+      "width": 92,
+      "height": 12,
+      "summer": "references/ridge_ploughed_spring_a-summer.png",
+      "winter": "references/ridge_ploughed_spring_a-winter.png"
+    },
+    {
+      "id": "ridge_seedling_spring_a",
+      "anchor": [
+        330,
+        282
+      ],
+      "scale": 0.18,
+      "width": 92,
+      "height": 12,
+      "summer": "references/ridge_seedling_spring_a-summer.png",
+      "winter": "references/ridge_seedling_spring_a-winter.png"
+    },
+    {
+      "id": "ridge_seedling_spring_b",
+      "anchor": [
+        330,
+        314
+      ],
+      "scale": 0.18,
+      "width": 92,
+      "height": 12,
+      "summer": "references/ridge_seedling_spring_b-summer.png",
+      "winter": "references/ridge_seedling_spring_b-winter.png"
+    },
+    {
+      "id": "ewe_lamb_a_spring",
+      "anchor": [
+        235,
+        200
+      ],
+      "scale": 0.21875,
+      "width": 28,
+      "height": 21,
+      "summer": null,
+      "winter": null
+    },
+    {
+      "id": "ewe_lamb_b_spring",
+      "anchor": [
+        315,
+        210
+      ],
+      "scale": 0.21875,
+      "width": 28,
+      "height": 21,
+      "summer": null,
+      "winter": null
+    },
+    {
+      "id": "swollen_stream_bank_spring",
+      "anchor": [
+        85,
+        390
+      ],
+      "scale": 0.5,
+      "width": 128,
+      "height": 64,
+      "summer": null,
+      "winter": null
+    },
+    {
+      "id": "hawthorn_blossom_strip_spring",
+      "anchor": [
+        230,
+        415
+      ],
+      "scale": 0.5,
+      "width": 256,
+      "height": 32,
+      "summer": null,
+      "winter": null
+    },
+    {
+      "id": "nest_bird_spring",
+      "anchor": [
+        390,
+        180
+      ],
+      "scale": 0.0703125,
+      "width": 9,
+      "height": 7,
+      "summer": null,
+      "winter": null
+    },
+    {
+      "id": "laundry_yard_spring",
+      "anchor": [
+        365,
+        390
+      ],
+      "scale": 0.15625,
+      "width": 40,
+      "height": 30,
+      "summer": null,
+      "winter": null
+    }
+  ],
+  "cherry": "summer/winter geometry proxy; no existing cherry seasonal pair",
+  "fields": "winter fallow proxy, not identical crop state",
+  "props": "spring-only new decorations omitted when corresponding seasonal asset absent"
+}

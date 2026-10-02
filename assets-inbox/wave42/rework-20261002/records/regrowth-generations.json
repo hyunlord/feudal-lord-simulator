@@ -1,0 +1,82 @@
+[
+  {
+    "id": "sapling_1to3_summer",
+    "prompt": "ONE isolated game sprite for southern England medieval land regeneration. Painted soft prereNDER isometric 2:1, upper left sunlight, moss olive/fern green and warm dark oak stems, no black outline, no text. Actual transparent background. Must be a WIDE DENSE LOW GROUP of many saplings with tall rough grass and ferns at their feet, NOT a single tree/stick. Multiple stems visible but crowns and ferns merge into several solid readable masses; strong dark trunks and warm light leaf clumps to remain visible at tiny runtime size. Overall plant cluster has an irregular elliptical isometric ground footprint, wide across canvas, no soil diamond, no floating slab, no broad cast shadow, tiny contact AO only. Full object uncropped transparent padding, no collage, no multiple views. Supplied oak is STYLE reference, NOT shape to copy. No flip or mirror. KNEE-HIGH dense young regeneration: SEVEN short thin oak and ash shoots rising amid MANY knee-high broad fern fronds and tall tuft grasses. Broad low mound silhouette width about 2.6 times total visible height, seven visible dark short stems dispersed across footprint. Many clustered small green leaves. Almost ground cover with low woody shoots, much shorter than a human.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-c1eef442-7853-44b3-8d3f-d2d72ad0393f.png",
+    "inputs": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png",
+        "sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4"
+      }
+    ],
+    "generatedSha256": "744d88970650d86caedfa271c0e5231a94fac5e625830d8f2e5b769fbaba269a",
+    "outputSha256": "af99e860759eeb79d8486caed3052df5db021fefdbc4a570fe98f6086ad80537"
+  },
+  {
+    "id": "sapling_1to3_winter",
+    "prompt": "Convert this EXACT cluster of young saplings with tall grass and ferns into winter. Preserve ALL trunk/root positions, the wide cluster footprint and overall composition, same camera and scale. Remove green foliage but KEEP a READABLE DENSE MASS of dark brown tangled woody branches and stems: strong clustered silhouettes, not pale hairlines, NOT thin nearly invisible sticks. Tall dry tawny grass and brown curled fern fronds remain thick at base, with tiny restrained patches of snow on ground and upward branches, never broad white coating hiding the dark twigs. This is a tiny game sprite shown at 0.6 zoom: dark interwoven bare branch clusters must be obvious against ordinary olive grass. Upper-left illumination, painterly grouped forms, no black stroke, no flip or rotation, transparent background, no ground slab, no broad shadow, no text. Low knee-high seedling patch, preserve broad low width/height ratio.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-71aba621-51f5-4ca0-973e-aa5e31d063b0.png",
+    "inputs": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-c1eef442-7853-44b3-8d3f-d2d72ad0393f.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-c1eef442-7853-44b3-8d3f-d2d72ad0393f.png",
+        "sha256": "744d88970650d86caedfa271c0e5231a94fac5e625830d8f2e5b769fbaba269a"
+      }
+    ],
+    "generatedSha256": "eab8890a114300ca4fb52253ae70e1f820877200797d08764f25dbd53c13388d",
+    "outputSha256": "1dd81fca48173ecb10665de88f8275df1699cb6d15c8074dddcd82532000cf68"
+  },
+  {
+    "id": "sapling_4to8_summer",
+    "prompt": "ONE isolated game sprite for southern England medieval land regeneration. Painted soft prereNDER isometric 2:1, upper left sunlight, moss olive/fern green and warm dark oak stems, no black outline, no text. Actual transparent background. Must be a WIDE DENSE LOW GROUP of many saplings with tall rough grass and ferns at their feet, NOT a single tree/stick. Multiple stems visible but crowns and ferns merge into several solid readable masses; strong dark trunks and warm light leaf clumps to remain visible at tiny runtime size. Overall plant cluster has an irregular elliptical isometric ground footprint, wide across canvas, no soil diamond, no floating slab, no broad cast shadow, tiny contact AO only. Full object uncropped transparent padding, no collage, no multiple views. Supplied oak is STYLE reference, NOT shape to copy. No flip or mirror. PERSON-HEIGHT young regeneration: FIVE young oak and ash saplings together among knee-high ferns and tall tuft grasses. Broad compact cluster silhouette width about 1.45 times total visible height. FIVE DARK slender trunks must be clearly visible under 5 overlapping dense small crowns; lowest quarter is dense grass and fern. Uneven heights, not mature trees, and no single large trunk.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-395e4a27-fd52-46b9-87fd-25a35c836aad.png",
+    "inputs": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_small.png",
+        "sha256": "5c175f0d07377cff758d41f0e5c8eb807042e4a2fc71a5d15279f63f66bce6a4"
+      }
+    ],
+    "generatedSha256": "357acb22c0e03e219fac8a37a2618874a918f3b4e183ba43eaad9bdaa8708821",
+    "outputSha256": "f4209411e46a57ac1def5158dd6d42d1070bbcaef95d1480cf5ec604dcf1d816"
+  },
+  {
+    "id": "sapling_4to8_winter",
+    "prompt": "Convert this EXACT cluster of young saplings with tall grass and ferns into winter. Preserve ALL trunk/root positions, the wide cluster footprint and overall composition, same camera and scale. Remove green foliage but KEEP a READABLE DENSE MASS of dark brown tangled woody branches and stems: strong clustered silhouettes, not pale hairlines, NOT thin nearly invisible sticks. Tall dry tawny grass and brown curled fern fronds remain thick at base, with tiny restrained patches of snow on ground and upward branches, never broad white coating hiding the dark twigs. This is a tiny game sprite shown at 0.6 zoom: dark interwoven bare branch clusters must be obvious against ordinary olive grass. Upper-left illumination, painterly grouped forms, no black stroke, no flip or rotation, transparent background, no ground slab, no broad shadow, no text. Person-height young tree thicket, multiple trunks clearly distinguishable, preserve relatively taller stage.",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-dec736b9-0850-4035-b6e0-7418cc5f539c.png",
+    "inputs": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-395e4a27-fd52-46b9-87fd-25a35c836aad.png"
+    ],
+    "model": null,
+    "seed": null,
+    "tool": "image_gen.imagegen",
+    "status": "candidate",
+    "inputHashes": [
+      {
+        "file": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-e891-75e3-94bc-85e0471e11c1/exec-395e4a27-fd52-46b9-87fd-25a35c836aad.png",
+        "sha256": "357acb22c0e03e219fac8a37a2618874a918f3b4e183ba43eaad9bdaa8708821"
+      }
+    ],
+    "generatedSha256": "1ad12aea5c0d00c7855980da11408d5bf5036f707824af6daf3c6060bae5687a",
+    "outputSha256": "1f448d2494b949faf7a07d77876d537a3836dda28a79bc8f4a8e205eafa46704"
+  }
+]

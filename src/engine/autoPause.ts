@@ -62,7 +62,9 @@ function reasonOf(template: string, params: Readonly<Record<string, string | num
     if (params.to === LORD) return "estate_gained";
     if (params.from === LORD) return "estate_lost";
   }
-  // A steward bringing a petition that changes a right (the exceptions' rights rule).
+  // A steward bringing a petition that changes a right (the exceptions' rights rule); FIX-14: a home petition with a
+  // right at stake (a boundary, the mill's suit).
   if (template === "stewardship.escalated" && params.rule === "rights") return "rights_petition";
+  if (template === "manor.petition" && Number(params.rights) === 1) return "rights_petition";
   return null;
 }

@@ -10,6 +10,7 @@ import { canProclaimPalisadeEra } from "./era";
 import type { GameState, PalisadeSegment } from "./engine.types";
 import { getTile, type TileCoordinate } from "../world/grid";
 import {
+  isWaterReachStep,
   isPointInsidePalisade,
   palisadePathEnclosesFootprints,
   palisadePerimeterSteps,
@@ -144,9 +145,44 @@ function nearestRingPoint(
   })[0] ?? { x: 0, y: 0 };
 }
 
-function chooseGate(state: GameState, ring: readonly TileEdgePoint[], center: SettlementCenter): BoundaryGate | null {
+/** FIX-15 (WP-3): whether each ring step (point `i` to `i + 1`) is a water reach. */
+function waterReachSteps(state: GameState, ring: readonly TileEdgePoint[]): readonly boolean[] {
+  return ring.map((point, index) => isWaterReachStep(state, point, ring[(index + 1) % ring.length]!));
+}
+
+/** FIX-15 (WP-3): a ring point that ends a land step (a gate stands in a wall, not in the river). */
+function landRingPoint(water: readonly boolean[], index: number): boolean {
+  const n = water.length;
+  return !water[index] || !water[(index - 1 + n) % n];
+}
+
+/**
+ * FIX-15 (WP-3): a ring with water reaches — its land steps from the gate, in runs, each cut into sites of
+ * `PALISADE_SEGMENT_SITE_STEPS` at most (a ring all on land keeps `orderedSegments`).
+ */
+function landRunSegments(ring: readonly TileEdgePoint[], gate: BoundaryGate, water: readonly boolean[]): readonly OrderedSegment[] {
+  const n = ring.length;
+  const runs: { start: number; points: TileEdgePoint[] }[] = [];
+  let current: { start: number; points: TileEdgePoint[] } | null = null;
+  for (let offset = 0; offset < n; offset += 1) {
+    const index = (gate.stepIndex + offset) % n;
+    const a = ring[index]!, b = ring[(index + 1) % n]!;
+    if (water[index]) { if (current !== null) { runs.push(current); current = null; } continue; }
+    if (current === null || current.points.length - 1 >= PALISADE_SEGMENT_SITE_STEPS) {
+      if (current !== null) runs.push(current);
+      current = { start: offset, points: [a, b] };
+    } else current.points.push(b);
+  }
+  if (current !== null) runs.push(current);
+  return runs.map(run => ({ path: run.points, tileCount: palisadePerimeterSteps(run.points), clockwiseDistance: run.start, gateDistance: Math.min(run.start, n - run.start) }))
+    .sort((left, right) => left.gateDistance - right.gateDistance || left.clockwiseDistance - right.clockwiseDistance);
+}
+
+function chooseGate(state: GameState, ring: readonly TileEdgePoint[], center: SettlementCenter, water?: readonly boolean[]): BoundaryGate | null {
   const scores = trafficScores(state);
-  const crossed = crossedGateCandidates(state, ring, scores);
+  // FIX-15 (WP-3): with water reaches, the gate only where a wall stands.
+  const land = water === undefined ? ring : ring.filter((_, index) => landRingPoint(water, index));
+  const crossed = crossedGateCandidates(state, land, scores);
   const roads = roadTiles(state);
   const isStr = (point: TileEdgePoint): boolean => {
     const idx = ring.findIndex(p => p.x === point.x && p.y === point.y);
@@ -163,7 +199,7 @@ function chooseGate(state: GameState, ring: readonly TileEdgePoint[], center: Se
           const distanceDelta = edgeDistanceSquared(left.point, center) - edgeDistanceSquared(right.point, center);
           return distanceDelta !== 0 ? distanceDelta : left.point.y === right.point.y ? left.point.x - right.point.x : left.point.y - right.point.y;
         })[0]?.point
-      : nearestRingPoint(ring, bestTrafficRoad(roads, scores, center) ?? center);
+      : nearestRingPoint(land, bestTrafficRoad(roads, scores, center) ?? center);
   if (target === undefined) return null;
   const stepIndex = ring.findIndex((point) => point.x === target.x && point.y === target.y);
   return stepIndex < 0 ? null : { point: target, stepIndex };
@@ -241,14 +277,17 @@ export function projectPalisadeProclamation(
 ): GameState {
   if (state.era !== 'hamlet' || state.palisade !== null) return state;
   const footprints = palisadeFootprintsForState(state);
-  const validation = validatePalisadeCandidate(state, candidatePath, footprints, palisadeCoreFootprintsForState(state), 1);
+  // FIX-15 (WP-1): a ring may take the water as its bound where it runs through it.
+  const validation = validatePalisadeCandidate(state, candidatePath, footprints, palisadeCoreFootprintsForState(state), 1, { waterReach: true });
   if (!validation.ok) return state;
   const ring = palisadeRingPoints(validation.candidate.path);
-  const gate = chooseGate(state, ring, settlementCenter(footprints));
+  const water = waterReachSteps(state, ring);
+  const reach = water.some(Boolean);
+  const gate = chooseGate(state, ring, settlementCenter(footprints), reach ? water : undefined);
   if (gate === null) return state;
   const wallId = wallIdForOrdinal(state.nextConstructionOrdinal);
-  const additionalGates = additionalRoadGates(state, validation.candidate.path, gate.point);
-  const wallSegments = orderedSegments(validation.candidate.path, gate);
+  const wallSegments = reach ? landRunSegments(ring, gate, water) : orderedSegments(validation.candidate.path, gate);
+  const additionalGates = additionalRoadGates(state, validation.candidate.path, gate.point, reach ? wallSegments.map(segment => segment.path) : undefined);
   const sites = createWallSites(wallId, wallSegments, state.tick);
 
   return {
@@ -306,7 +345,7 @@ export function previewPalisadeExpansion(state: GameState, path: PalisadePath): 
   // The new ring must clear every building and hold all the old wall held (a town may have built outside its wall).
   const footprints = palisadeFootprintsForState(state);
   const enclosed = footprints.filter(footprint => palisadePathEnclosesFootprints(palisade.polygon, [footprint]));
-  const validation = validatePalisadeCandidate(state, path, footprints, enclosed, 1);
+  const validation = validatePalisadeCandidate(state, path, footprints, enclosed, 1, { waterReach: true });
   if (!validation.ok) return { ok: false, reason: "invalid_path" };
   const candidate = validation.candidate.path;
   const before = interiorCells(state, palisade.polygon);
@@ -316,7 +355,12 @@ export function previewPalisadeExpansion(state: GameState, path: PalisadePath): 
   const ring = new Set(pathStepKeys(candidate));
   const reused = palisade.segments.filter(segment => pathStepKeys(segment.edgePath).every(key => ring.has(key)));
   const reusedKeys = new Set(reused.flatMap(segment => pathStepKeys(segment.edgePath)));
-  const newSteps = [...ring].filter(key => !reusedKeys.has(key)).length;
+  // FIX-15 (WP-3): a water reach is not built (a ring all on land counts as before).
+  const ringPoints = palisadeRingPoints(candidate);
+  const waterStep = (index: number) => isWaterReachStep(state, ringPoints[index]!, ringPoints[(index + 1) % ringPoints.length]!);
+  const reach = ringPoints.some((_, index) => waterStep(index));
+  const newSteps = !reach ? [...ring].filter(key => !reusedKeys.has(key)).length
+    : ringPoints.filter((point, index) => !reusedKeys.has(stepKey(point, ringPoints[(index + 1) % ringPoints.length]!)) && !waterStep(index)).length;
   const arable = new Set((state.zones ?? []).filter(zone => zone.kind === "arable").flatMap(zone => zone.membership));
   return {
     ok: true, path: candidate, newSteps, timber: newSteps * PALISADE_TIMBER_PER_STEP,
@@ -334,7 +378,9 @@ export function expandPalisade(state: GameState, path: PalisadePath): GameState 
   const palisade = state.palisade;
   const ring = palisadeRingPoints(preview.path);
   const gateIndex = ring.findIndex(point => point.x === palisade.gate.x && point.y === palisade.gate.y);
-  const gate = gateIndex >= 0 ? { point: palisade.gate, stepIndex: gateIndex } : chooseGate(state, ring, settlementCenter(palisadeFootprintsForState(state)));
+  const water = waterReachSteps(state, ring);
+  const reach = water.some(Boolean);
+  const gate = gateIndex >= 0 ? { point: palisade.gate, stepIndex: gateIndex } : chooseGate(state, ring, settlementCenter(palisadeFootprintsForState(state)), reach ? water : undefined);
   if (gate === null) return state;
   const reusedIds = new Set(preview.reusedSegmentIds);
   const reused = palisade.segments.filter(segment => reusedIds.has(segment.id));
@@ -347,7 +393,7 @@ export function expandPalisade(state: GameState, path: PalisadePath): GameState 
   for (let index = 1; index < rotated.length; index += 1) {
     const a = rotated[index - 1]!;
     const b = rotated[index]!;
-    const fresh = !reusedKeys.has(stepKey(a, b));
+    const fresh = !reusedKeys.has(stepKey(a, b)) && !(reach && isWaterReachStep(state, a, b));
     if (fresh && (current === null || current.points.length - 1 >= PALISADE_SEGMENT_SITE_STEPS)) {
       if (current !== null) runs.push(current);
       current = { start: index - 1, points: [a, b] };
@@ -366,7 +412,8 @@ export function expandPalisade(state: GameState, path: PalisadePath): GameState 
   const removedSiteIds = new Set(removed.flatMap(segment => [segment.constructionSiteId, segment.replacementConstructionSiteId]).filter((id): id is string => typeof id === "string"));
   // Sites taken down refund as a cancelled site does (M-rule: 60 % of what was delivered).
   const refund = state.constructionSites.filter(site => removedSiteIds.has(site.id)).reduce((sum, site) => sum + (constructionCancellationRefunds(site).deliveredRefund.timber ?? 0), 0);
-  const additionalGates = additionalRoadGates(state, preview.path, gate.point);
+  const additionalGates = additionalRoadGates(state, preview.path, gate.point,
+    reach ? [...reused.map(segment => segment.edgePath), ...sites.map(site => site.path)] : undefined);
   return {
     ...state,
     treasuryTimber: state.treasuryTimber + refund,

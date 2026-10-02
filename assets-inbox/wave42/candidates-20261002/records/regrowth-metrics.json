@@ -1,0 +1,470 @@
+[
+  {
+    "id": "log_stack_a_summer",
+    "file": "assets/regrowth/log_stack_a_summer.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      108
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 34,
+      "top": 66,
+      "width": 60,
+      "height": 42
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "939aa30123e143d42d851afbb298f66a9bd446505fd7fc737812700cd79a0af8",
+    "rawSha256": "3b5bddb6a0afd16ddc8777ae0f1410c6e4a54ef05aba708c2d10587e2cd9a425",
+    "transform": {
+      "crop": {
+        "left": 353,
+        "top": 254,
+        "width": 845,
+        "height": 594
+      },
+      "resize": [
+        60,
+        42
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "log_stack_b_summer",
+    "file": "assets/regrowth/log_stack_b_summer.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      108
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 30,
+      "top": 66,
+      "width": 69,
+      "height": 42
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "71106370e1adc23619df0cc77016a8c7e36e271c205183658489f48ef087fd3a",
+    "rawSha256": "6381df1e0878c912e9ea475720fa32602f4ddc33c8ef25af6b29abc4354686bb",
+    "transform": {
+      "crop": {
+        "left": 306,
+        "top": 266,
+        "width": 936,
+        "height": 566
+      },
+      "resize": [
+        69,
+        42
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "sapling_1to3_summer",
+    "file": "assets/regrowth/sapling_1to3_summer.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 57,
+      "top": 148,
+      "width": 15,
+      "height": 24
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "1a52a2afd34b19c3bb8bfb03fd0fc5207812ac01a8a854f96227dd0f9e05a475",
+    "rawSha256": "ec777084318726fa64887be4ed7b8a4dcabe66e85d61257557922bb8eb6fe6a5",
+    "transform": {
+      "crop": {
+        "left": 357,
+        "top": 448,
+        "width": 453,
+        "height": 713
+      },
+      "resize": [
+        15,
+        24
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "sapling_4to8_summer",
+    "file": "assets/regrowth/sapling_4to8_summer.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 49,
+      "top": 136,
+      "width": 30,
+      "height": 36
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "a12bf1bde79fea8b5049b62ea5b50e904ce03e165a4f03b2f5eda1b2abf948dd",
+    "rawSha256": "5577415fe922446e1e0b1d3b8b13b2861a178c62ffc666c39e516c1a50327b19",
+    "transform": {
+      "crop": {
+        "left": 209,
+        "top": 313,
+        "width": 768,
+        "height": 923
+      },
+      "resize": [
+        30,
+        36
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "young_wood_a_summer",
+    "file": "assets/regrowth/young_wood_a_summer.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 10,
+      "top": 66,
+      "width": 108,
+      "height": 106
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "a480f58fe5a678ec5d1991032226e4e67e09a1e5982e2577b93fa0fd2b08cdbf",
+    "rawSha256": "670cc82b2248af5549684d74340fdaf9ba4482bcbe302cf7432d6ed41d31c5b8",
+    "transform": {
+      "crop": {
+        "left": 411,
+        "top": 155,
+        "width": 724,
+        "height": 711
+      },
+      "resize": [
+        108,
+        106
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "young_wood_b_summer",
+    "file": "assets/regrowth/young_wood_b_summer.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 10,
+      "top": 68,
+      "width": 108,
+      "height": 104
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "976f5abdd71d3cd51d1bfef97382ce5e5ccb0d941e97deab815d178fdf96618a",
+    "rawSha256": "a4c4711330ca6f7ee023a744c5d96521398b6e74397d24048f1c5b58a876eb8c",
+    "transform": {
+      "crop": {
+        "left": 335,
+        "top": 73,
+        "width": 867,
+        "height": 832
+      },
+      "resize": [
+        108,
+        104
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "log_stack_a_winter",
+    "file": "assets/regrowth/log_stack_a_winter.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      108
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 34,
+      "top": 66,
+      "width": 61,
+      "height": 42
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "b760e7f60afcdc7fe88326f14a731ac7b1d7257c7f6a3a415da88e30408d90a2",
+    "rawSha256": "63cf0f32baa74d59c262f287f56cee6f31fe80e0209c0ea6a33e4763b8aa8783",
+    "transform": {
+      "crop": {
+        "left": 190,
+        "top": 124,
+        "width": 1196,
+        "height": 818
+      },
+      "resize": [
+        61,
+        42
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "log_stack_b_winter",
+    "file": "assets/regrowth/log_stack_b_winter.png",
+    "width": 128,
+    "height": 128,
+    "pivot": [
+      64,
+      108
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 30,
+      "top": 66,
+      "width": 69,
+      "height": 42
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "a04e37fc95bbc6e4ccad48b5eb02d5c778e41b7d255156f25efbd18c22d42a55",
+    "rawSha256": "ec4287bb60300c00b2927ddf0ff5f6c86c320b641bf05faa5b4d3aa7530b2977",
+    "transform": {
+      "crop": {
+        "left": 186,
+        "top": 171,
+        "width": 1188,
+        "height": 723
+      },
+      "resize": [
+        69,
+        42
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "sapling_1to3_winter",
+    "file": "assets/regrowth/sapling_1to3_winter.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 57,
+      "top": 148,
+      "width": 15,
+      "height": 24
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "0d2b502e86a562c93c374cf2a699b50598f3aef3cdc9418639c1762070af2b80",
+    "rawSha256": "44c58e8078bf1fdfd831d3eb198d14211a16afc379c76d9f2a97a3e6645f4863",
+    "transform": {
+      "crop": {
+        "left": 372,
+        "top": 449,
+        "width": 431,
+        "height": 705
+      },
+      "resize": [
+        15,
+        24
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "sapling_4to8_winter",
+    "file": "assets/regrowth/sapling_4to8_winter.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 51,
+      "top": 136,
+      "width": 27,
+      "height": 36
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "b1b286ee883bba56d1ed065ce2be8100506e08cc088e655939ba2f389fe5ec1a",
+    "rawSha256": "09bd75577571fe4625dd431c514662b0ca365a6989401b9578cb930c2f71e36d",
+    "transform": {
+      "crop": {
+        "left": 166,
+        "top": 111,
+        "width": 875,
+        "height": 1169
+      },
+      "resize": [
+        27,
+        36
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "young_wood_a_winter",
+    "file": "assets/regrowth/young_wood_a_winter.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 10,
+      "top": 66,
+      "width": 108,
+      "height": 106
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "f42b85ab4d1fab9f54bd95609f4fc2f6de9641d9d911649e3bfba2792d3d7a21",
+    "rawSha256": "2fbf161c78e5fd80a4e92ccda3df52f9a5fa8e5c071716cc88ba01fb53042b0e",
+    "transform": {
+      "crop": {
+        "left": 314,
+        "top": 36,
+        "width": 917,
+        "height": 900
+      },
+      "resize": [
+        108,
+        106
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  },
+  {
+    "id": "young_wood_b_winter",
+    "file": "assets/regrowth/young_wood_b_winter.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "footprint": [
+      128,
+      64
+    ],
+    "visibleBounds": {
+      "left": 10,
+      "top": 72,
+      "width": 108,
+      "height": 100
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeMax": 0,
+    "sha256": "b759cd34e097ae7112b2091dce5c9ad3b29feb0f11bedea7da5ff75eb51d72e1",
+    "rawSha256": "18f0ccbb7e59726db0dea32d903004d9f8707081e8cc6c3a30a19ba44abdbb4f",
+    "transform": {
+      "crop": {
+        "left": 293,
+        "top": 44,
+        "width": 944,
+        "height": 878
+      },
+      "resize": [
+        108,
+        100
+      ],
+      "flipX": false
+    },
+    "candidate": true
+  }
+]

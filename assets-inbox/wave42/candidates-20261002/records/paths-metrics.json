@@ -1,0 +1,614 @@
+[
+  {
+    "id": "path_faint_ne_summer",
+    "path": "assets/paths/path_faint_ne_summer.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "summer",
+    "state": "faint",
+    "orientation": "NE",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      -128
+    ],
+    "du": [
+      0.5,
+      -0.25
+    ],
+    "dv": [
+      0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 175,
+      "width": 2172,
+      "height": 370
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "0c28cd40f14c5c65715f0e85a8d88dc332ce3449a9b2a908a11b572cc7128b81"
+  },
+  {
+    "id": "path_faint_ne_winter",
+    "path": "assets/paths/path_faint_ne_winter.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "winter",
+    "state": "faint",
+    "orientation": "NE",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      -128
+    ],
+    "du": [
+      0.5,
+      -0.25
+    ],
+    "dv": [
+      0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 175,
+      "width": 2172,
+      "height": 370
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "04eb322daa548cfeb51e9c090556200809ffd78eea7bcdfba2c3fb7f5e778cfd"
+  },
+  {
+    "id": "path_faint_nw_summer",
+    "path": "assets/paths/path_faint_nw_summer.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "summer",
+    "state": "faint",
+    "orientation": "NW",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      128
+    ],
+    "du": [
+      0.5,
+      0.25
+    ],
+    "dv": [
+      -0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 220,
+      "width": 2172,
+      "height": 283
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "9d652deeb6d74870dfb25ec6dcb70760ac16d58ccf4e77ea6fdd1d8671d7d360"
+  },
+  {
+    "id": "path_faint_nw_winter",
+    "path": "assets/paths/path_faint_nw_winter.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "winter",
+    "state": "faint",
+    "orientation": "NW",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      128
+    ],
+    "du": [
+      0.5,
+      0.25
+    ],
+    "dv": [
+      -0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 220,
+      "width": 2172,
+      "height": 283
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "c0569ba38d3652d58f4e53dc2ed6db6f05e053d80877ad65ed7f5acdf4b52099"
+  },
+  {
+    "id": "path_clear_ne_summer",
+    "path": "assets/paths/path_clear_ne_summer.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "summer",
+    "state": "clear",
+    "orientation": "NE",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      -128
+    ],
+    "du": [
+      0.5,
+      -0.25
+    ],
+    "dv": [
+      0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 209,
+      "width": 2172,
+      "height": 307
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "5133d1366dc554a3c72913f2179d5d3a84ae9c22253f10295192bbb1a64b543e"
+  },
+  {
+    "id": "path_clear_ne_winter",
+    "path": "assets/paths/path_clear_ne_winter.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "winter",
+    "state": "clear",
+    "orientation": "NE",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      -128
+    ],
+    "du": [
+      0.5,
+      -0.25
+    ],
+    "dv": [
+      0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 209,
+      "width": 2172,
+      "height": 307
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "19fc62b1e490a6d85dd1f54deb1c85522d4c3966d6bb5c0b8344d93f4d34bb21"
+  },
+  {
+    "id": "path_clear_nw_summer",
+    "path": "assets/paths/path_clear_nw_summer.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "summer",
+    "state": "clear",
+    "orientation": "NW",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      128
+    ],
+    "du": [
+      0.5,
+      0.25
+    ],
+    "dv": [
+      -0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 170,
+      "width": 2172,
+      "height": 365
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "a544206298a01f3206d10231f2bebc702cc2a50c8e380f3ceda53fdea0d02399"
+  },
+  {
+    "id": "path_clear_nw_winter",
+    "path": "assets/paths/path_clear_nw_winter.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "winter",
+    "state": "clear",
+    "orientation": "NW",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      128
+    ],
+    "du": [
+      0.5,
+      0.25
+    ],
+    "dv": [
+      -0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 170,
+      "width": 2172,
+      "height": 365
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "5a5cf0a4640350fc74aff0381468b10911219f045a49c4be95d0a6e3e36d3bdc"
+  },
+  {
+    "id": "path_muddy_ne_summer",
+    "path": "assets/paths/path_muddy_ne_summer.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "summer",
+    "state": "muddy",
+    "orientation": "NE",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      -128
+    ],
+    "du": [
+      0.5,
+      -0.25
+    ],
+    "dv": [
+      0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 173,
+      "width": 2172,
+      "height": 373
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "799ccd46ae92650f033240863227db1aab519afeac6cb266ec72641f1d85643d"
+  },
+  {
+    "id": "path_muddy_ne_winter",
+    "path": "assets/paths/path_muddy_ne_winter.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "winter",
+    "state": "muddy",
+    "orientation": "NE",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      -128
+    ],
+    "du": [
+      0.5,
+      -0.25
+    ],
+    "dv": [
+      0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 173,
+      "width": 2172,
+      "height": 373
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "e478eb91530d0d32eafe37b29acde9bdef6e0c4155c84140d8bc4f1b6c91fd5b"
+  },
+  {
+    "id": "path_muddy_nw_summer",
+    "path": "assets/paths/path_muddy_nw_summer.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "summer",
+    "state": "muddy",
+    "orientation": "NW",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      128
+    ],
+    "du": [
+      0.5,
+      0.25
+    ],
+    "dv": [
+      -0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 177,
+      "width": 2172,
+      "height": 363
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "463aee24fdb0247e576c5bf9aafc065e159de9cc00473882e085ce9cebaba2f8"
+  },
+  {
+    "id": "path_muddy_nw_winter",
+    "path": "assets/paths/path_muddy_nw_winter.png",
+    "width": 512,
+    "height": 64,
+    "channels": 4,
+    "pivot": [
+      256,
+      32
+    ],
+    "season": "winter",
+    "state": "muddy",
+    "orientation": "NW",
+    "source_geometry": "unwrapped horizontal UV strip; direction is renderer transform, not diagonal source",
+    "ports": [
+      [
+        0,
+        32
+      ],
+      [
+        512,
+        32
+      ]
+    ],
+    "repeat_axis": "X",
+    "repeat_pitch_uv": 512,
+    "repeat_pitch_world": [
+      256,
+      128
+    ],
+    "du": [
+      0.5,
+      0.25
+    ],
+    "dv": [
+      -0.5,
+      0.25
+    ],
+    "core_width_uv": 32,
+    "connect_rule": "same state+season+direction end to start; clear may connect compatible corner/fork port; other states need transition blend; no flipX",
+    "flipX": false,
+    "crop": {
+      "left": 0,
+      "top": 177,
+      "width": 2172,
+      "height": 363
+    },
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0,
+    "sha256": "3380dd577fa2fcc0c0701ffbae39fd25222447eedfa9db8f5ad84e71e2f05f92"
+  }
+]

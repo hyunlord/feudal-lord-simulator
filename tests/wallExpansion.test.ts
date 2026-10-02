@@ -61,10 +61,10 @@ test("W2 an expansion is refused without a wall, when it gives up inside cells, 
   const larger = expandPalisade(state, path);
   const shrink = previewPalisadeExpansion({ ...larger, constructionSites: state.constructionSites }, state.palisade!.polygon);
   assert.equal(shrink.ok, false);
-  // A ring through the lake to the north is not a wall.
+  // FIX-15 (WP-3): a ring through the lake to the north takes the lake as its bound there — the water steps are not built.
   const wet: PalisadePath = [{ x: 0, y: 0 }, { x: 30, y: 0 }, { x: 30, y: 30 }, { x: 0, y: 30 }, { x: 0, y: 0 }];
-  assert.equal(previewPalisadeExpansion(state, wet).ok, false);
-  assert.equal(expandPalisade(state, wet), state);
+  const wetPreview = previewPalisadeExpansion(state, wet);
+  assert.ok(wetPreview.ok && wetPreview.newSteps < 120, JSON.stringify(wetPreview.ok ? wetPreview.newSteps : wetPreview));
 });
 
 test("W3 the gate stays on the ring, segments left inside come down with their sites, and timber delivered to them refunds as for a cancelled site", () => {

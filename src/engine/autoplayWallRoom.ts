@@ -117,7 +117,7 @@ export function autoplayWallExpansionAction(state: GameState, targetLots: number
   if (cached?.key === key) return cached.path === null ? NONE : { kind: 'proclaim_era', candidatePath: cached.path };
   const all = palisadeFootprintsForState(state);
   const enclosed = all.filter(footprint => palisadePathEnclosesFootprints(palisade.polygon, [footprint]));
-  const current = validatePalisadeCandidate(state, palisade.polygon, all, enclosed, 1);
+  const current = validatePalisadeCandidate(state, palisade.polygon, all, enclosed, 1, { waterReach: true });
   let best: { readonly path: PalisadePath; readonly newSteps: number } | null = null;
   if (current.ok) {
     for (let run = 0; run < current.candidate.runs.length; run += 1) {

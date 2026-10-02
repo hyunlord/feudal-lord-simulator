@@ -1,0 +1,46 @@
+{
+  "id": "tree_birch_spring",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "attempt": 1,
+  "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned summer slender birch tree into spring. ONE tree only, transparent background, same canvas proportions60:96. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(30,96). Do not recenter, enlarge or extend crown. KEEP ALL pale birch trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite.",
+  "status": "candidate",
+  "references": [
+    {
+      "path": "references/tree_birch.png",
+      "role": "immutable summer geometry edit target",
+      "sha256": "d97dc399fbe522e4a3f499f7610f826cdea258dad9c7ee169dd2e0b6b14f6db8"
+    }
+  ],
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f702-f327-7ae1-8b3a-d8d5e824be22/exec-dede0c06-6aa9-47ad-8390-c9f4ec2a0706.png",
+  "raw_copy": "raw/tree_birch_spring-attempt1.png",
+  "raw_sha256": "6b0be9077b2af5a882fba3e69069fd3829a8581217c41744e25d419e4f16a5a7",
+  "postprocessing": {
+    "operation": "Single resize of generated image to source canvas; generated RGB bbox registered to source bbox, leaf RGB80%+original20%; source nonleaf wood RGB preserved; exact source alpha reapplied; alpha0RGBzero",
+    "source_bbox": {
+      "x0": 2,
+      "y0": 9,
+      "x1": 57,
+      "y1": 94
+    },
+    "generated_bbox": {
+      "x0": 1,
+      "y0": 6,
+      "x1": 56,
+      "y1": 89
+    },
+    "leaf_rgb_pixels": 2129,
+    "wood_rgb_preserved_pixels": 615,
+    "leaf_selector": "original G>0.93R and G>1.18B, alpha>16; generated green sample nearest within6px when mapped sample is wood/empty",
+    "spring_leaf_color_finish": {
+      "pixels": 2129,
+      "red_delta": -5,
+      "green_delta": 8,
+      "reason": "Generated spring birch remained close to summer olive; subtle greenward finish inside source foliage mask only"
+    }
+  },
+  "output": "assets/tree_birch_spring.png",
+  "sha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+  "runtime_installed": false
+}

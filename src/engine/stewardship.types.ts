@@ -34,11 +34,18 @@ export type OversightMode = "direct" | "steward";
 
 /** SW-4: an estate's petition — who asks, what it costs or brings, and whether it touches a right or a marriage. */
 export type EstatePetitionKind = "rent_relief" | "market_dues" | "repair" | "common_dispute" | "charter_request" | "marriage_licence";
+/**
+ * FIX-14 (SW-11): the home estate's petitions of 1300–1320, brought to the lord himself — a boundary, the suit of the
+ * mill, a heriot, a merchet, the ale fines, a road or bridge, a stall, a wardship, the common's stint, a newcomer's
+ * holding, the pannage, the chancel.
+ */
+export type HomePetitionKind = "boundary_dispute" | "mill_suit" | "heriot" | "merchet" | "ale_fines" | "road_bridge" | "stall_dispute" | "wardship"
+  | "common_pasture" | "newcomer" | "pannage" | "chancel_repair";
 
 export interface EstatePetition {
   readonly id: string;
   readonly estateId: string;
-  readonly kind: EstatePetitionKind;
+  readonly kind: EstatePetitionKind | HomePetitionKind;
   readonly group: "tenants" | "merchants";
   /** Pennies: relief or dues forgone, a repair's cost, a licence's fee. */
   readonly amount: number;
@@ -53,6 +60,10 @@ export interface EstatePetition {
   readonly decidedBy?: "steward" | "lord";
   /** Why it came to the lord: the exceptions' rule it matched, or `direct`. */
   readonly escalated?: "amount" | "rights" | "marriage" | "direct";
+  /** FIX-14 (SW-11): the other side a home petition sets the lord's men against (a neighbour house's faction). */
+  readonly party?: string;
+  /** FIX-14 (SW-12): the steward answered it as the lord answered the same kind before (no longer brought up). */
+  readonly precedent?: true;
 }
 
 /** SW-5: the lord's exceptions — what a steward must bring to him (£5 or more, a right changed, a marriage). */
@@ -60,6 +71,8 @@ export interface ExceptionRules {
   readonly amountAtLeast: number | null;
   readonly rights: boolean;
   readonly marriage: boolean;
+  /** FIX-14 (SW-12): bring up a kind the lord has answered before too (the steward follows no precedent). */
+  readonly recurring?: boolean;
 }
 
 /** SW-7: one season of an off-map estate, as the lord sees it (and what he does not). */
@@ -74,7 +87,7 @@ export interface QuarterSummary {
   readonly error: number;
   readonly rentPermille: number;
   readonly duesPermille: number;
-  readonly petitions: readonly { readonly id: string; readonly kind: EstatePetitionKind; readonly status: EstatePetition["status"]; readonly decidedBy?: "steward" | "lord" }[];
+  readonly petitions: readonly { readonly id: string; readonly kind: EstatePetition["kind"]; readonly status: EstatePetition["status"]; readonly decidedBy?: "steward" | "lord" }[];
   readonly tenants: number;
   readonly merchants: number;
   /** SW-1: the lord's attention was over its limit this season (a direct estate's petitions waited, its books erred). */

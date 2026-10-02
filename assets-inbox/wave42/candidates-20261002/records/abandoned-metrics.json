@@ -1,0 +1,462 @@
+[
+  {
+    "id": "abandoned_grass_summer",
+    "file": "assets/abandoned/abandoned_grass_summer.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 88,
+      "width": 119,
+      "height": 64,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "1e0fa5058e69631ac23d9c2f67c3c7ea9015265402eba149e76fe564028a378a",
+    "transform": {
+      "crop": {
+        "left": 18,
+        "top": 753,
+        "width": 1088,
+        "height": 584
+      },
+      "resize": [
+        120,
+        64
+      ],
+      "placement": [
+        4,
+        88
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_grass_winter",
+    "file": "assets/abandoned/abandoned_grass_winter.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 88,
+      "width": 120,
+      "height": 64,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "ee9853e79843341e22532870eab76a25bf5ae5cdb717ccca0829f95014189b8c",
+    "transform": {
+      "crop": {
+        "left": 18,
+        "top": 753,
+        "width": 1088,
+        "height": 584
+      },
+      "resize": [
+        120,
+        64
+      ],
+      "placement": [
+        4,
+        88
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_bramble_summer",
+    "file": "assets/abandoned/abandoned_bramble_summer.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 86,
+      "width": 120,
+      "height": 66,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "a26b6cee99e10187a85f81ebd59d9fabda2b0e95993c3e665fb2632045dd836b",
+    "transform": {
+      "crop": {
+        "left": 34,
+        "top": 679,
+        "width": 1058,
+        "height": 579
+      },
+      "resize": [
+        120,
+        66
+      ],
+      "placement": [
+        4,
+        86
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_bramble_winter",
+    "file": "assets/abandoned/abandoned_bramble_winter.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 86,
+      "width": 120,
+      "height": 66,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "6732b0b32e98f1b076c46b5a4aa3c8d4c3d800b2ac6248705443665cb44c3781",
+    "transform": {
+      "crop": {
+        "left": 34,
+        "top": 679,
+        "width": 1058,
+        "height": 579
+      },
+      "resize": [
+        120,
+        66
+      ],
+      "placement": [
+        4,
+        86
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_saplings_summer",
+    "file": "assets/abandoned/abandoned_saplings_summer.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 11,
+      "width": 120,
+      "height": 141,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "2eb6013b25d601aefc954c82ad427f51c621ceacb0f96c1d84e43b0b1d20bfb3",
+    "transform": {
+      "crop": {
+        "left": 38,
+        "top": 97,
+        "width": 1043,
+        "height": 1225
+      },
+      "resize": [
+        120,
+        141
+      ],
+      "placement": [
+        4,
+        11
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_saplings_winter",
+    "file": "assets/abandoned/abandoned_saplings_winter.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 11,
+      "width": 120,
+      "height": 141,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "b2a7e5ebaa54124570eec6c25e4d57d01c2f1fc39baaa1adae12ebe640881f34",
+    "transform": {
+      "crop": {
+        "left": 38,
+        "top": 97,
+        "width": 1043,
+        "height": 1225
+      },
+      "resize": [
+        120,
+        141
+      ],
+      "placement": [
+        4,
+        11
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_collapsed_fence_summer",
+    "file": "assets/abandoned/abandoned_collapsed_fence_summer.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 86,
+      "width": 119,
+      "height": 66,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "8c3f5b9ad110a73310734adc7902afa8d0fb9578c475896d6076d44a346d75f6",
+    "transform": {
+      "crop": {
+        "left": 59,
+        "top": 661,
+        "width": 998,
+        "height": 546
+      },
+      "resize": [
+        120,
+        66
+      ],
+      "placement": [
+        4,
+        86
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_collapsed_fence_winter",
+    "file": "assets/abandoned/abandoned_collapsed_fence_winter.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 86,
+      "width": 119,
+      "height": 66,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "df3b9f9dfb5648bc7c0d5012269a83199d726429d333fc86112e9290dff69dda",
+    "transform": {
+      "crop": {
+        "left": 59,
+        "top": 661,
+        "width": 998,
+        "height": 546
+      },
+      "resize": [
+        120,
+        66
+      ],
+      "placement": [
+        4,
+        86
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_overgrown_furrows_summer",
+    "file": "assets/abandoned/abandoned_overgrown_furrows_summer.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 91,
+      "width": 120,
+      "height": 61,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "e7abb17baec0db1c350f73c78f6cc4e06c45bf446ab8a00f53b17f1821659060",
+    "transform": {
+      "crop": {
+        "left": 36,
+        "top": 758,
+        "width": 1052,
+        "height": 552
+      },
+      "resize": [
+        120,
+        63
+      ],
+      "placement": [
+        4,
+        89
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_overgrown_furrows_winter",
+    "file": "assets/abandoned/abandoned_overgrown_furrows_winter.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 89,
+      "width": 120,
+      "height": 63,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "2ab606668c931308e16cb1008e4b0b9a8d72e71baf54515748b835d5bc1635af",
+    "transform": {
+      "crop": {
+        "left": 36,
+        "top": 758,
+        "width": 1052,
+        "height": 552
+      },
+      "resize": [
+        120,
+        63
+      ],
+      "placement": [
+        4,
+        89
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  }
+]

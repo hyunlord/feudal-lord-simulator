@@ -1,4 +1,6 @@
-# 개발 헌장 — Feudal Lord Simulator (AGENTS.md·CLAUDE.md 공통 절)
+# 개발 헌장 — Charter & Kin · 인장과 가문 (AGENTS.md·CLAUDE.md 공통 절)
+
+게임 이름: 영어 **Charter & Kin**, 한국어 **인장과 가문**(2026-10-02 결정 TITLE-1, 가제 "봉건 영주 시뮬레이터" 대체, 출시 전 상표 확인 필요).
 
 이 절은 모든 에이전트 세션(엔진·렌더·INBOX·REMOTE·Astra)이 작업 전에 읽는다. 상세 근거는 `docs/ROADMAP.html`(비전·화면·로드맵·작업 방식)과 설계서들에 있다. 충돌 시 `docs/ROADMAP.html` > 이 절 > 개별 지시서.
 

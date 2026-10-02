@@ -1,0 +1,108 @@
+[
+  {
+    "id": "abandoned_grass_summer",
+    "group": "grass",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Redraw a single transparent RGBA sprite of an abandoned medieval southern England parcel, soft hand-painted prerendered strategy-game illustration. Attached old sprite is reference for camera/material only and is TOO LOW, insufficiently distinct from ordinary grass. Change silhouette as specified. Orthographic 2:1 isometric ground axes, upper-left daylight, muted natural colors, NO flip or mirror. One parcel footprint twice as wide as deep, full width about120 units, lower ground tip at152 in eventual128x160 canvas, common ground center64,120. Vegetation rises vertically above this footprint. No thick opaque soil plate, no outline, no separate cast shadow, no other props, no rocks/fence/tree/flowers/text/checkerboard. Loose irregular cutout with true transparent exterior and gaps. Do not create grass-covered tile edges; silhouette is freestanding standing vegetation. Output tall portrait ample transparent margins. Large coherent painterly masses stay legible at60% scale.\nSUBJECT: UNMANAGED TALL SEED-BEARING GRASS, not lawn: a dense rough stand of golden-olive waist-high grass, upright straw stems topped with large oat-like seed sprays, tousled lighter ochre tops and green ochre lower blades. Seed heads in broad coherent clusters, bright and dry-looking. The stand must have total visible bounding ratio WIDTH120:HEIGHT82; flat ground depth60 plus vegetation rising around24 above it. Distinct upright ragged silhouette, not low weeds. Summer only; no snow.",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/abandoned/abandoned_grass_summer.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-7c068fef-b219-4451-be8b-cef9a06e0555.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "7903a01e9c3def95f961c0748884d74eea437851b9f81974325eae93048e2c89",
+    "raw_path": "raw/abandoned_grass_summer.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/abandoned/abandoned_grass_summer.png",
+        "sha256": "1e0fa5058e69631ac23d9c2f67c3c7ea9015265402eba149e76fe564028a378a"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_grass_winter",
+    "group": "grass",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Exact attached sprite season edit. Preserve camera, full shape proportions, ground footprint, plant locations and height, upper-left illumination. Do not flip/rotate/mirror. Winter version of this abandoned parcel: Keep the very tall standing straw seed-head stems recognizable and golden-beige, desaturate lower leaves. A light trace of frost on some tips only, no blanket snow. Preserve genuinely transparent background. No additional objects, text, border, flat tile slab. Same soft painterly medium.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-7c068fef-b219-4451-be8b-cef9a06e0555.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-6205820b-a2a8-4fea-a9f4-b3212564ad04.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "2879c3f432c5a3ada32cb93d258bd1c84ffcacbe251c0b31fd5367507c22c446",
+    "raw_path": "raw/abandoned_grass_winter.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-7c068fef-b219-4451-be8b-cef9a06e0555.png",
+        "sha256": "7903a01e9c3def95f961c0748884d74eea437851b9f81974325eae93048e2c89"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_bramble_summer",
+    "group": "bramble",
+    "season": "summer",
+    "prompt": "Precise object edit of attached transparent game sprite. Keep the dark olive thorny bramble materials, upper-left light, exact same lower diamond ground boundary. Rebuild the central bramble into a dramatically TALLER domed thicket, with the top almost twice as high above the ground as now. Required whole visible shape width:height = 120:108, almost square rather than wide and low. Height is vegetation rising vertically, NOT deeper soil footprint. Retain arcing thorn branches and dense dark small-leaf masses, no trees, no extra props. Same 2:1 isometric footprint, transparent background, no flip, no hard outline or castshadow. The whole mound must be within frame.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-78070529-6e2a-411e-b14a-97e4bf02b78c.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-b91cc58a-0b1d-423b-8fb7-33ed69aad42b.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "4b9f0255a66c6c4be2167f108d0365803eacf3709d8afdf0406fd5516a35597e",
+    "raw_path": "raw/abandoned_bramble_summer.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-78070529-6e2a-411e-b14a-97e4bf02b78c.png",
+        "sha256": "a5f2c609385b7d9d06548b3e82c53fb9ec1e7ec5faae68e8f691d11b8931240e"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_bramble_winter",
+    "group": "bramble",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Exact attached sprite season edit. Preserve camera, full shape proportions, ground footprint, plant locations and height, upper-left illumination. Do not flip/rotate/mirror. Winter version of this abandoned parcel: Keep the HIGH RAISED DARK bramble mound exact height and mass. Mostly bare dark intertwined thorn canes, retain some deep dull olive leaves so mass stays dark and dense. Tiny discontinuous snow accents on very few top branches only. NO white carpet, no broad snow planes; at least85percent of the mound stays visibly dark brown olive. Preserve genuinely transparent background. No additional objects, text, border, flat tile slab. Same soft painterly medium.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-b91cc58a-0b1d-423b-8fb7-33ed69aad42b.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-0bcca86a-ea25-4066-9086-13464303b703.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "82b885491004bdac45ba9c39118fa0981456e50700911b69464aaaae0d06d9c7",
+    "raw_path": "raw/abandoned_bramble_winter.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-b91cc58a-0b1d-423b-8fb7-33ed69aad42b.png",
+        "sha256": "4b9f0255a66c6c4be2167f108d0365803eacf3709d8afdf0406fd5516a35597e"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_bramble_summer_rejected-low",
+    "group": "bramble",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Redraw a single transparent RGBA sprite of an abandoned medieval southern England parcel, soft hand-painted prerendered strategy-game illustration. Attached old sprite is reference for camera/material only and is TOO LOW, insufficiently distinct from ordinary grass. Change silhouette as specified. Orthographic 2:1 isometric ground axes, upper-left daylight, muted natural colors, NO flip or mirror. One parcel footprint twice as wide as deep, full width about120 units, lower ground tip at152 in eventual128x160 canvas, common ground center64,120. Vegetation rises vertically above this footprint. No thick opaque soil plate, no outline, no separate cast shadow, no other props, no rocks/fence/tree/flowers/text/checkerboard. Loose irregular cutout with true transparent exterior and gaps. Do not create grass-covered tile edges; silhouette is freestanding standing vegetation. Output tall portrait ample transparent margins. Large coherent painterly masses stay legible at60% scale.\nSUBJECT: THICK RAISED BRAMBLE THICKET: a broad very dark olive-green convex thorn bush mound, tangled woody arching canes visible beneath heavy matte leaf masses. Total visible bounding ratio WIDTH120:HEIGHT108, clearly tall raised mound, not a flat mat. Nearly half height rises above rear ground level. Deep dense shadowed interior and curved thorn stems on edges, sparse grass only at foot. Very few highlights; substantially darker and taller than golden seed grass. Summer only; no snow.",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/abandoned/abandoned_bramble_summer.png"
+    ],
+    "status": "rejected-low-silhouette",
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-78070529-6e2a-411e-b14a-97e4bf02b78c.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "a5f2c609385b7d9d06548b3e82c53fb9ec1e7ec5faae68e8f691d11b8931240e",
+    "raw_path": "raw/abandoned_bramble_summer_rejected-low.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/abandoned/abandoned_bramble_summer.png",
+        "sha256": "a26b6cee99e10187a85f81ebd59d9fabda2b0e95993c3e665fb2632045dd836b"
+      }
+    ]
+  }
+]

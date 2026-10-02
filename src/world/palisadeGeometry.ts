@@ -297,6 +297,24 @@ function stepCrossesWater(grid: Grid, from: TileEdgePoint, to: TileEdgePoint): b
   });
 }
 
+/**
+ * FIX-15 (WP-1): a unit step of a wall ring that lies in water (both sides water, or a diagonal through a water cell) — a
+ * water reach: the river or the mere is the town's bound there, and no wall is built on it.
+ */
+export function isWaterReachStep(grid: Grid, from: TileEdgePoint, to: TileEdgePoint): boolean {
+  return stepCrossesWater(grid, from, to);
+}
+
+/** FIX-15 (WP-1): the ring's unit steps that are water reaches (by the step's index along `palisadeStepPoints`-style rings). */
+export function pathHasWaterReach(grid: Grid, path: PalisadePath): boolean {
+  for (let index = 1; index < path.length; index += 1) {
+    const previous = path[index - 1];
+    const current = path[index];
+    if (previous !== undefined && current !== undefined && edgeCrossesWater(grid, previous, current)) return true;
+  }
+  return false;
+}
+
 function edgeCrossesWater(grid: Grid, from: TileEdgePoint, to: TileEdgePoint): boolean {
   const raster = rasterSegment(from, to);
   for (let index = 1; index < raster.length; index += 1) {
@@ -312,9 +330,10 @@ function routeEdge(
   from: TileEdgePoint,
   to: TileEdgePoint,
   clearance: ProposalClearance | null,
+  waterReach = false,
 ): readonly TileEdgePoint[] | null {
   const direct = rasterSegment(from, to);
-  if (!edgeCrossesWater(grid, from, to) && direct.every((point) => hasProposalClearance(point, clearance))) return direct;
+  if ((waterReach || !edgeCrossesWater(grid, from, to)) && direct.every((point) => hasProposalClearance(point, clearance))) return direct;
   const margin = Math.max(6, segmentSteps(from, to) + 3);
   const minX = Math.max(0, Math.min(from.x, to.x) - margin);
   const maxX = Math.min(grid.width, Math.max(from.x, to.x) + margin);
@@ -332,7 +351,7 @@ function routeEdge(
     for (const step of CARDINAL_AND_DIAGONAL_STEPS) {
       const next = { x: current.x + step.x, y: current.y + step.y };
       if (next.x < minX || next.x > maxX || next.y < minY || next.y > maxY) continue;
-      if (!edgeInBounds(grid, next) || stepCrossesWater(grid, current, next) || !hasProposalClearance(next, clearance)) continue;
+      if (!edgeInBounds(grid, next) || (!waterReach && stepCrossesWater(grid, current, next)) || !hasProposalClearance(next, clearance)) continue;
       const key = pointKey(next);
       if (visited.has(key)) continue;
       visited.add(key);
@@ -346,6 +365,7 @@ function routeClosedPath(
   grid: Grid,
   vertices: readonly TileEdgePoint[],
   clearance: ProposalClearance | null = null,
+  waterReach = false,
 ): PalisadePath | null {
   const closed = clockwisePath(vertices);
   const routed: TileEdgePoint[] = [];
@@ -353,7 +373,7 @@ function routeClosedPath(
     const previous = closed[index - 1];
     const current = closed[index];
     if (previous === undefined || current === undefined) continue;
-    const segment = routeEdge(grid, previous, current, clearance);
+    const segment = routeEdge(grid, previous, current, clearance, waterReach);
     if (segment === null) return null;
     routed.push(...(routed.length === 0 ? segment : segment.slice(1)));
   }
@@ -447,15 +467,27 @@ export function validatePalisadeCandidate(
   footprints: readonly PalisadeFootprint[],
   enclosureFootprints = footprints,
   minimumEnclosureRatio = 0.6,
+  options: { readonly waterReach?: boolean } = {},
 ): PalisadeValidationResult {
   if (!isClosed(path)) return { ok: false, reason: "open_polygon" };
   if (path.some((point) => !edgeInBounds(grid, point))) return { ok: false, reason: "out_of_bounds" };
   if (hasSelfIntersection(path)) return { ok: false, reason: "self_intersection" };
+  // FIX-15 (WP-1): with `waterReach`, a ring may run through water — the water is the bound there (no wall built);
+  // at least one step must be on land.
+  let landSteps = 0;
   for (let index = 1; index < path.length; index += 1) {
     const previous = path[index - 1];
     const current = path[index];
-    if (previous !== undefined && current !== undefined && edgeCrossesWater(grid, previous, current)) return { ok: false, reason: "water_crossing" };
+    if (previous === undefined || current === undefined) continue;
+    const raster = rasterSegment(previous, current);
+    for (let step = 1; step < raster.length; step += 1) {
+      const a = raster[step - 1], b = raster[step];
+      if (a === undefined || b === undefined) continue;
+      if (!stepCrossesWater(grid, a, b)) landSteps += 1;
+      else if (options.waterReach !== true) return { ok: false, reason: "water_crossing" };
+    }
   }
+  if (landSteps === 0) return { ok: false, reason: "water_crossing" };
   const perimeterSteps = palisadePerimeterSteps(path);
   if (perimeterSteps <= 0) return { ok: false, reason: "empty_perimeter" };
   const enclosedFootprints = enclosedCount(path, enclosureFootprints);
@@ -570,6 +602,7 @@ export function computePalisadeProposal(
   footprints: readonly PalisadeFootprint[],
   acceptPath?: (path: PalisadePath) => boolean,
   margins?: readonly number[],
+  waterReach = false,
 ): PalisadeProposalResult {
   const proposal = primaryPalisadeProposal(grid, footprints, margins?.[0] ?? PROPOSAL_MARGIN_TILES);
   if (proposal.ok && (acceptPath === undefined || acceptPath(proposal.path))) return proposal;
@@ -607,6 +640,20 @@ export function computePalisadeProposal(
         return { ok: true, path: candidate.path, runs: candidate.runs, perimeterSteps: candidate.perimeterSteps };
       }
     }
+  }
+  // FIX-15 (WP-2): asked for (`waterReach`) once no ring stands on land — the town's hull, clamped to the map, routed
+  // through the water where it must (the river or the mere its bound there), the land kept clear of the buildings.
+  if (waterReach) for (const margin of margins ?? [1, 2, PROPOSAL_MARGIN_TILES]) {
+    const hull = convexHull(ordered.flatMap(footprint => expandedFootprintCorners(footprint, margin))
+      .map(point => ({ x: Math.max(0, Math.min(grid.width, point.x)), y: Math.max(0, Math.min(grid.height, point.y)) })));
+    if (hull.length < 3) continue;
+    const routed = routeClosedPath(grid, hull, { footprints, margin }, true);
+    if (routed === null) continue;
+    const validation = validatePalisadeCandidate(grid, routed, footprints, footprints, 0.6, { waterReach: true });
+    if (!validation.ok) continue;
+    const { candidate } = validation;
+    if (acceptPath !== undefined && !acceptPath(candidate.path)) { rejected = true; rejectedPath ??= candidate.path; continue; }
+    return { ok: true, path: candidate.path, runs: candidate.runs, perimeterSteps: candidate.perimeterSteps };
   }
   return rejected ? rejectedPalisadeProposal(proposal, rejectedPath) : proposal;
 }

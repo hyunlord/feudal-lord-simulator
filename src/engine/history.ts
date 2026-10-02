@@ -16,7 +16,9 @@
  *   128² thumbnails that old are kept only at a year's end (winter's close). Everything else stays for good.
  */
 import { WITNESS_RELATION_LOSS } from "../content/diplomacyConfig";
-import { PUNISH_CONNECTION_RELATION, PUNISH_RECOVERY } from "../content/stewardshipConfig";
+import { HOME_PETITION_KINDS, PUNISH_CONNECTION_RELATION, PUNISH_RECOVERY } from "../content/stewardshipConfig";
+import { HOME_ESTATE_ID } from "../content/estateConfig";
+import type { HomePetitionKind } from "./stewardship.types";
 import { estatesOf } from "./estates";
 import { PETITION_DEFS, type FamineResponseChoice, type PetitionResponse } from "../content/chapterConfig";
 import { GREAT_FAMINE_EVENT_ID } from "../content/eventConfig";
@@ -219,7 +221,8 @@ export function recordDecision(before: GameState, reduced: GameState, command: {
   // LM-E2 (ES-7): a suit command's effect (a suit filed, evidence, a patron, an enforcement) is in the ledger as well.
   const lines = kind === "lawsuit" ? estateDrafts(before, reduced) : kind === "marriage" ? [...diplomacyDrafts(before, reduced), ...estateDrafts(before, reduced)]
     : kind === "stewardship" ? stewardshipDrafts(before, reduced) : [];
-  const after = lines.length === 0 ? reduced : { ...reduced, history: append(historyOf(reduced), lines) };
+  // FIX-14: a command's own lines may move factions (an estate petition answered, a steward punished): applied with them.
+  const after = lines.length === 0 ? reduced : withFactionRecords(reduced, historyOf(reduced), append(historyOf(reduced), lines));
   // LM-E1b (TA-6 ②): a subsidy refused is no decision; the ledger keeps its reason as an event.
   const refusal = after.agency?.lastRefusal;
   if (command.type === "set_project_subsidy" && refusal !== undefined && refusal !== before.agency?.lastRefusal) {
@@ -931,8 +934,9 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
     }
   }
   const rules = now.rules, oldRules = was?.rules;
-  if (oldRules !== undefined && (oldRules.amountAtLeast !== rules.amountAtLeast || oldRules.rights !== rules.rights || oldRules.marriage !== rules.marriage)) {
-    line("stewardship.rules", { amount: rules.amountAtLeast ?? -1, rights: rules.rights ? 1 : 0, marriage: rules.marriage ? 1 : 0 });
+  if (oldRules !== undefined && (oldRules.amountAtLeast !== rules.amountAtLeast || oldRules.rights !== rules.rights || oldRules.marriage !== rules.marriage
+    || (oldRules.recurring === true) !== (rules.recurring === true))) {
+    line("stewardship.rules", { amount: rules.amountAtLeast ?? -1, rights: rules.rights ? 1 : 0, marriage: rules.marriage ? 1 : 0, recurring: rules.recurring === true ? 1 : 0 });
   }
   for (const summary of now.summaries.filter(entry => !(was?.summaries ?? []).includes(entry))) {
     line("stewardship.season", { house: house(summary.estateId), reported: summary.reported, mode: summary.mode, overloaded: summary.overloaded ? 1 : 0 }, 0);
@@ -940,7 +944,25 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
   for (const petition of now.petitions) {
     const old = was?.petitions.find(entry => entry.id === petition.id);
     const stewardId = now.oversight.find(entry => entry.estateId === petition.estateId)?.stewardId ?? "";
-    if (old === undefined && petition.decidedBy === "steward") {
+    // FIX-14 (SW-11): the home estate's petitions come to the lord himself; an answer (or the wait) moves its factions.
+    if (petition.estateId === HOME_ESTATE_ID) {
+      if (old === undefined) line("manor.petition", { kind: petition.kind, amount: petition.amount, party: petition.party ?? "", rights: petition.rights ? 1 : 0 }, 1);
+      else if (old.status === "open" && petition.status !== "open") {
+        line(petition.status === "lapsed" ? "manor.petition_lapsed" : "manor.petition_answered", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 1);
+        const table = HOME_PETITION_KINDS[petition.kind as HomePetitionKind][petition.status === "granted" ? "grant" : "refuse"].factions;
+        for (const [key, delta] of Object.entries(table)) {
+          const faction = after.factions?.factions.find(entry => entry.id === (key === "party" ? petition.party : key));
+          if (faction === undefined) continue;
+          drafts.push({ tick: after.tick, kind: "faction", template: "faction.relation", subject: { type: "faction", id: faction.id }, severity: 1,
+            params: { faction: faction.id, name: faction.name, delta, reason: `manor_petition:${petition.kind}:${petition.status}`, relation: Math.max(-100, Math.min(100, faction.relation + delta)) } });
+        }
+      }
+      continue;
+    }
+    if (old === undefined && petition.decidedBy === "steward" && petition.precedent === true) {
+      // FIX-14 (SW-12): answered by precedent (as the lord answered the same kind before).
+      line("stewardship.precedent", { stewardId, kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 0);
+    } else if (old === undefined && petition.decidedBy === "steward") {
       line("stewardship.steward_decided", { stewardId, kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 0);
     } else if (old === undefined && petition.escalated !== undefined && petition.escalated !== "direct") {
       line("stewardship.escalated", { stewardId, kind: petition.kind, rule: petition.escalated, amount: petition.amount });
@@ -1080,10 +1102,13 @@ function estateDrafts(before: GameState, after: GameState): Draft[] {
 function agencyDrafts(before: GameState, after: GameState): Draft[] {
   const receipts = after.agency?.receipts ?? [];
   const known = before.agency?.nextReceipt ?? 1;
-  return receipts.filter(receipt => Number(receipt.id.slice("receipt-".length)) >= known).map(receipt => ({
+  // FIX-14 (FX13-5): the town ordered its charter's timber from the traders in the tick (a lord's order is a command).
+  const ordered: Draft[] = after.agency !== undefined && (after.timberOrder ?? 0) > (before.timberOrder ?? 0)
+    ? [{ tick: after.tick, kind: "event", template: "agency.timber_ordered", subject: TOWN, severity: 1, params: { amount: after.timberOrder ?? 0 } }] : [];
+  return [...ordered, ...receipts.filter(receipt => Number(receipt.id.slice("receipt-".length)) >= known).map(receipt => ({
     tick: after.tick, kind: "event" as const, template: "agency.project_started", subject: TOWN, severity: 1 as const,
     place: { tx: receipt.tx, ty: receipt.ty, ...(receipt.siteId === null ? {} : { buildingId: receipt.siteId }) },
     params: { receipt: receipt.id, actor: receipt.actor, what: receipt.what, planner: receipt.planner, score: receipt.score,
       reasons: receipt.reasons.map(reason => `${reason.name}:${reason.value}`).join(","), decisions: receipt.decisionIds.join(",") },
-  }));
+  }))];
 }

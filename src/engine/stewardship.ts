@@ -11,8 +11,10 @@ import {
   DEFAULT_RULES, DIRECT_KEEP_SHARE, DIRECT_RATES, DISPOSITION_RATES, ERROR_PER_ABILITY, ERROR_SHARE, GRANT_RELATION, GREEDY_KEEP_BASE, MICHAELMAS_IN_YEAR,
   NEGLECT_PERMILLE, OVERLOAD_ERROR_PERMILLE, OVERLOAD_PETITION_DELAY, OVERLOAD_WAIT_RELATION, PETITION_ANSWER_TICKS, PETITION_KINDS, PUNISH_RECOVERY,
   PUNISH_TENANTS, RATE_RELATION_PER_PERMILLE, REFUSE_RELATION, RENT_SHARE, SOUR_TENANTS, SOUR_YIELD_LOSS, SUMMARIES_KEPT, TOLERATE_LOYALTY,
+  HOME_PETITION_KINDS, HOME_PETITION_ORDER, HOME_PETITION_PERMILLE,
 } from "../content/stewardshipConfig";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
+import { HOME_ESTATE_ID } from "../content/estateConfig";
 import { MALE_GIVEN_NAMES, TOPOGRAPHIC_SURNAMES } from "../content/personNames";
 import { postLedgerEntries } from "../ledger/ledger";
 import type { GameState } from "./engine.types";
@@ -168,7 +170,36 @@ function petitionEffect(petition: Pick<EstatePetition, "kind" | "amount">, grant
     case "common_dispute": return grant ? { ...none, tenants: GRANT_RELATION / 2 + 1, merchants: -(GRANT_RELATION / 2 + 1) } : { ...none, tenants: -(GRANT_RELATION / 2 + 1), merchants: GRANT_RELATION / 2 + 1 };
     case "charter_request": return grant ? { ...none, income: -petition.amount, merchants: GRANT_RELATION + 4, kept: greedy ? 2 * petition.amount : 0 } : { ...none, merchants: REFUSE_RELATION - 2 };
     case "marriage_licence": return grant ? { ...none, income: greedy ? 0 : petition.amount, tenants: 2, kept: greedy ? petition.amount : 0 } : { ...none, tenants: -4 };
+    // FIX-14 (SW-11): a home petition moves the treasury by its table (its factions through the ledger, `history.ts`).
+    default: return { ...none, income: HOME_PETITION_KINDS[petition.kind][grant ? "grant" : "refuse"].income * petition.amount };
   }
+}
+
+/**
+ * FIX-14 (SW-11): the home estate's season in lord mode — its petitions past their deadline lapse (refused, the wait
+ * remembered), and one comes to the lord himself with the season's chance (`HOME_PETITION_PERMILLE`), in winter always
+ * when none came that year. The kinds come in cycles of twelve, each cycle in its own order from the seed.
+ */
+function homePetitionSeason(state: GameState): GameState {
+  if (state.agency === undefined) return state;
+  let stewardship = stewardshipOf(state);
+  const lapsed = stewardship.petitions.filter(petition => petition.estateId === HOME_ESTATE_ID && petition.status === "open" && state.tick > petition.deadline);
+  if (lapsed.length > 0) stewardship = { ...stewardship, petitions: stewardship.petitions.map(petition => lapsed.includes(petition) ? { ...petition, status: "lapsed" as const } : petition) };
+  const homes = stewardship.petitions.filter(petition => petition.estateId === HOME_ESTATE_ID);
+  const year = Math.floor(state.tick / YEAR);
+  const winter = Math.floor((state.tick % YEAR) / SEASON) === 3;
+  const comes = hashSeed(state.seed, "home-petition", state.tick) % 1000 < HOME_PETITION_PERMILLE
+    || (winter && !homes.some(petition => Math.floor(petition.tick / YEAR) === year));
+  if (!comes) return lapsed.length === 0 ? state : withStewardship(state, stewardship);
+  const cycle = Math.floor(homes.length / HOME_PETITION_ORDER.length);
+  const order = [...HOME_PETITION_ORDER].sort((a, b) => hashSeed(state.seed, `home-petition-order:${a}`, cycle) - hashSeed(state.seed, `home-petition-order:${b}`, cycle) || a.localeCompare(b));
+  const kind = order[homes.length % order.length]!;
+  const def = HOME_PETITION_KINDS[kind];
+  const amount = def.amount[0] + hashSeed(state.seed, "home-petition-amount", state.tick) % (def.amount[1] - def.amount[0] + 1);
+  const petition: EstatePetition = { id: `estate-petition-${stewardship.nextPetition}`, estateId: HOME_ESTATE_ID, kind, group: def.group, amount,
+    rights: def.rights === true, marriage: def.marriage === true, tick: state.tick, deadline: state.tick + PETITION_ANSWER_TICKS, status: "open", escalated: "direct",
+    ...(def.party === true ? { party: hashSeed(state.seed, "home-petition-party", state.tick) % 2 === 0 ? "neighbour_1" : "neighbour_2" } : {}) };
+  return withStewardship(state, { ...stewardship, petitions: [...stewardship.petitions, petition], nextPetition: stewardship.nextPetition + 1 });
 }
 
 /** SW-3: how a steward answers each kind, by his disposition (a dispute: grant = the tenants' side). */
@@ -233,17 +264,22 @@ function estateSeason(state: GameState, estate: Estate): GameState {
   const def = PETITION_KINDS[kind];
   const base = Math.round(estatesOf(next).estates.find(entry => entry.id === estate.id)!.annualValue / 4);
   const size = def.size[0] + hashSeed(state.seed, "estate-petition-size", number, state.tick) % (def.size[1] - def.size[0] + 1);
-  const rule = oversight.mode === "direct" ? "direct" as const : exceptionMatch(stewardship.rules, { amount: Math.round(base * size / 1000), rights: def.rights === true, marriage: def.marriage === true });
+  const matched = oversight.mode === "direct" ? "direct" as const : exceptionMatch(stewardship.rules, { amount: Math.round(base * size / 1000), rights: def.rights === true, marriage: def.marriage === true });
+  // FIX-14 (SW-12): a delegated estate's petition of a kind the lord has answered there before — the steward answers it
+  // as he did (the precedent), unless the lord's exceptions bring recurring ones up again.
+  const precedent = matched === null || matched === "direct" || stewardship.rules.recurring === true ? undefined
+    : [...stewardship.petitions].reverse().find(entry => entry.estateId === estate.id && entry.kind === kind && entry.decidedBy === "lord" && (entry.status === "granted" || entry.status === "refused"));
+  const rule = precedent === undefined ? matched : null;
   const petition: EstatePetition = { id: `estate-petition-${stewardship.nextPetition}`, estateId: estate.id, kind, group: def.group, amount: Math.round(base * size / 1000),
     rights: def.rights === true, marriage: def.marriage === true, tick: state.tick, deadline: state.tick + PETITION_ANSWER_TICKS + (overloaded ? OVERLOAD_PETITION_DELAY : 0),
     status: "open", ...(rule === null ? {} : { escalated: rule, ...(overloaded ? { reachesLord: state.tick + OVERLOAD_PETITION_DELAY } : {}) }) };
   let answered = petition;
   if (rule === null) {
-    const grant = STEWARD_ANSWERS[record.disposition][kind];
+    const grant = precedent !== undefined ? precedent.status === "granted" : STEWARD_ANSWERS[record.disposition][kind];
     const effect = petitionEffect(petition, grant, record.disposition === "greedy");
     incomeDelta += effect.income; tenants += effect.tenants; merchants += effect.merchants; keptExtra += effect.kept;
     if (effect.neglect) next = neglectEstate(next, estate.id);
-    answered = { ...petition, status: grant ? "granted" : "refused", decidedBy: "steward" };
+    answered = { ...petition, status: grant ? "granted" : "refused", decidedBy: "steward", ...(precedent === undefined ? {} : { precedent: true as const }) };
   } else if (overloaded) {
     // An overloaded lord's estate: the petition waits a season before it reaches him.
     if (petition.group === "tenants") tenants -= OVERLOAD_WAIT_RELATION; else merchants -= OVERLOAD_WAIT_RELATION;
@@ -319,6 +355,7 @@ export function advanceStewardship(state: GameState): GameState {
   if (!seasonStart && !michaelmasDay && state.stewardship === undefined) return state;
   let next = state;
   if (seasonStart) {
+    next = homePetitionSeason(next);
     next = ensureOversight(next);
     if (next.stewardship !== undefined) next = replaceDeadStewards(next);
     for (const estate of heldOffMapEstates(next)) next = estateSeason(next, estate);
@@ -348,7 +385,8 @@ export function setEstateOversight(state: GameState, estateId: string, mode: Ove
 export function setExceptionRules(state: GameState, rules: ExceptionRules): GameState {
   if (state.stewardship === undefined) return state;
   const current = stewardshipOf(state).rules;
-  if (current.amountAtLeast === rules.amountAtLeast && current.rights === rules.rights && current.marriage === rules.marriage) return state;
+  if (current.amountAtLeast === rules.amountAtLeast && current.rights === rules.rights && current.marriage === rules.marriage
+    && (current.recurring === true) === (rules.recurring === true)) return state;
   return withStewardship(state, { ...stewardshipOf(state), rules });
 }
 
@@ -362,6 +400,18 @@ export function answerEstatePetition(state: GameState, petitionId: string, grant
   const stewardship = stewardshipOf(state);
   const petition = lordEstatePetitions(state).find(entry => entry.id === petitionId);
   if (petition === undefined || state.tick > petition.deadline) return state;
+  const settled = (entry: EstatePetition) => entry.id === petitionId ? { ...entry, status: grant ? "granted" as const : "refused" as const, decidedBy: "lord" as const } : entry;
+  // FIX-14 (SW-11): a home petition — the treasury by its table; its factions move through the ledger (`history.ts`).
+  if (petition.estateId === HOME_ESTATE_ID) {
+    const income = petitionEffect(petition, grant, false).income;
+    let next: GameState = state;
+    if (income !== 0) {
+      const posted = postLedgerEntries(next, [{ account: "cash", category: "estate_income", amount: income,
+        sourceRefs: [{ type: "actor", id: `estate:${HOME_ESTATE_ID}` }, { type: "claim", id: petition.id, detail: petition.kind }] }]);
+      next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
+    }
+    return withStewardship(next, { ...stewardship, petitions: stewardship.petitions.map(settled) });
+  }
   const oversight = stewardship.oversight.find(entry => entry.estateId === petition.estateId)!;
   const effect = petitionEffect(petition, grant, false);
   let next: GameState = state;

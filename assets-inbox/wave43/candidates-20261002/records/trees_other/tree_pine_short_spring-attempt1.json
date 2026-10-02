@@ -1,0 +1,47 @@
+{
+  "id": "tree_pine_short_spring",
+  "prompt": "Edit this exact tiny isometric game tree_pine_short sprite into an early spring seasonal material variant. Preserve its exact conical bushy evergreen crown contour, trunk and all branch layout, canvas framing, footprint and bottom pivot. Preserve structural shapes and transparent silhouette. Only subtly repaint existing needle surfaces: mostly muted deep green with fresh restrained pale yellow-green candle shoot accents WITHIN existing foliage, never extending its silhouette. Hand-painted medieval strategy game natural texture, soft upper-left daylight, brown-gray bark. No snow, no new branches or ground, no flowers, no text/symbols, no white edge or black stroke. Transparent background. Exact overlay alignment with input, no crop, reposition, redesign or changed perspective.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "raw_original": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-a3fb-7f81-8832-01110f2fccc6/exec-43671d55-bffc-4d15-86ab-2324089b445b.png",
+  "status": "candidate",
+  "reference": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../references/tree_pine_short.png",
+  "reference_sha256": "1d76034ea71d74970ffd9460f6387280710e12a83d00e2bb479a7549501ce917",
+  "winter_reference": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../references/tree_pine_short_winter_snow-v1.png",
+  "winter_sha256": "7671687bf3ebccbba08d85d213f5eae4e34546e1736bfdc56feef31980c31ec8",
+  "raw_copy": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../raw/tree_pine_short_spring.png",
+  "raw_sha256": "2c4db78dee4172b88323d97bbd278abcecb5c15eb2e0d8835f7b9437956b3cc1",
+  "output": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../assets/tree_pine_short_spring.png",
+  "output_sha256": "9f0159c5a1116397ce294af033cc6d368c7dcb9a3577657a1f6c2182fabd1f3f",
+  "width": 56,
+  "height": 88,
+  "pivot": {
+    "x": 28,
+    "y": 88
+  },
+  "worldRenderScale": 0.7272727272727273,
+  "manifest_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/src/render/worldAssetManifest.generated.ts",
+  "processing": {
+    "method": "Sharp alpha-bbox registration, Lanczos3 resample, selective generated RGB material blend into original RGB, exact summer alpha restoration, transparent RGB zero",
+    "source_bbox": {
+      "left": 3,
+      "top": 3,
+      "width": 50,
+      "height": 84
+    },
+    "generated_bbox": {
+      "left": 60,
+      "top": 28,
+      "width": 893,
+      "height": 1483
+    },
+    "blend": "66% needle interior / 12% bark interior; quarter weight at silhouette boundaries",
+    "geometry": "Original edge and branch-boundary RGB retained at 92-97%; generated alpha discarded"
+  },
+  "qa": {
+    "alpha_different_pixels": 0,
+    "transparent_rgb_nonzero_pixels": 0
+  },
+  "exception": "Evergreen spring has modest candle-shoot coloring inside original crown; no broadleaf transformation."
+}

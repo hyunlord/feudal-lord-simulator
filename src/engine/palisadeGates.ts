@@ -11,10 +11,12 @@ import { isStraightRingPoint, palisadeRingPoints } from "./palisadeSegments";
 
 type Crossing = readonly [TileCoordinate, TileCoordinate];
 
-export function additionalRoadGates(grid: Grid & { readonly buildings?: readonly Building[] }, path: PalisadePath, primary: TileEdgePoint): readonly TileEdgePoint[] {
+export function additionalRoadGates(grid: Grid & { readonly buildings?: readonly Building[] }, path: PalisadePath, primary: TileEdgePoint,
+  landPaths?: readonly PalisadePath[]): readonly TileEdgePoint[] {
   const ring = palisadeRingPoints(path);
   const selected: TileEdgePoint[] = [];
-  const segments = [{ completed: true, edgePath: path }];
+  // FIX-15 (WP-3): a ring with water reaches walls only its land runs (a bridge over the reach needs no gate).
+  const segments = landPaths === undefined ? [{ completed: true, edgePath: path }] : landPaths.map(edgePath => ({ completed: true, edgePath }));
   const wall = (extra: readonly TileEdgePoint[]): WallBoundary => ({ gate: primary, additionalGates: extra, segments });
   const primaryWall = { ...grid, palisade: wall([]) };
   let blocked: Crossing[] = [];
