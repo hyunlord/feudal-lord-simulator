@@ -1,0 +1,94 @@
+[
+  {
+    "id": "abandoned_bramble_summer",
+    "file": "assets/abandoned/abandoned_bramble_summer.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 102,
+      "width": 120,
+      "height": 49,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "4d22bfa28bd6b259f78513fe195f8d32e021840af50114560c053d5c98c6e0fd",
+    "transform": {
+      "crop": {
+        "left": 28,
+        "top": 463,
+        "width": 1069,
+        "height": 441
+      },
+      "resize": [
+        120,
+        50
+      ],
+      "placement": [
+        4,
+        102
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "abandoned_bramble_winter",
+    "file": "assets/abandoned/abandoned_bramble_winter.png",
+    "width": 128,
+    "height": 160,
+    "channels": 4,
+    "pivot": [
+      64,
+      120
+    ],
+    "groundFootprint": [
+      128,
+      64
+    ],
+    "alphaBounds": {
+      "left": 4,
+      "top": 102,
+      "width": 120,
+      "height": 50,
+      "sourceWidth": 128,
+      "sourceHeight": 160
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlphaMax": 0,
+    "sha256": "649277ae59fb2e8070129a283232db4f4aa25443b306d6fbde00ee3a9b0674eb",
+    "transform": {
+      "crop": {
+        "left": 28,
+        "top": 463,
+        "width": 1069,
+        "height": 441
+      },
+      "resize": [
+        120,
+        50
+      ],
+      "placement": [
+        4,
+        102
+      ],
+      "flipX": false,
+      "flipY": false
+    },
+    "status": "candidate"
+  }
+]
