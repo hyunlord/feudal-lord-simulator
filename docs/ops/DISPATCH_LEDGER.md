@@ -86,6 +86,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 - [x] `AGENTS.md`·CHARTER·CLAUDE.md에 **"문구는 glossary.md 따름"** 규칙(INBOX가 glossary 넣은 뒤) — 본선 `eb701f8b`
 - [x] "증거 폴더 3MB 넘으면 병합 실패" 검사(렌더 NAT-4가 넘김, 결정 RR10) — 본선 `73c80c8b`
 - [x] 병합 전 검사: inbox 그림 한 장 = 장부 한 행(`assets-inbox/`를 건드리는 모든 푸시, 결정 RR11) — 본선 `366b1111`
+- [x] 장부 검사가 그림 여섯 종류(png·jpg·jpeg·webp·gif·svg)를 장부 file 열과 대조 — 본선 `75928eee` (INBOX GIF·SVG 17행 뒤 5,067 = 5,067 확인은 보고서에)
 - [x] 성능 추이 자동 갱신(병합 뒤 훅, 결정 RR4) — 본선 `31554791`
 ### 운영 규칙(확인용)
 추이 판정 지표 넷(할당·GC/분·캔버스/초·GC 뒤 힙), 의심 → A-B 자동(95% t 폭) → 나빠짐은 두 번 확정, 실행 폴더 잠금, 푸시 훅 분리, 결정 ID 중복 실패, settings.local.json 규칙, 무거운 검증 Mac 금지.
