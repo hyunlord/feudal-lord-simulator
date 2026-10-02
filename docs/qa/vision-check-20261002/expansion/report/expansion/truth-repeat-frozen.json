@@ -1,0 +1,135 @@
+[
+  {
+    "scene": "exp-prenat1-city",
+    "detector": "repeat_density",
+    "defects": [
+      {
+        "id": "yarn-seed2-south",
+        "box": {
+          "x": 778,
+          "y": 395,
+          "width": 416,
+          "height": 212
+        },
+        "note": "Reused calibration: repeated conspicuous white coils outside southwest neighborhood doors."
+      },
+      {
+        "id": "yarn-seed2-north",
+        "box": {
+          "x": 1190,
+          "y": 125,
+          "width": 320,
+          "height": 267
+        },
+        "note": "Reused calibration: separate northeast street cluster of white coils."
+      }
+    ],
+    "regions": [
+      {
+        "x": 778,
+        "y": 395,
+        "width": 416,
+        "height": 212
+      },
+      {
+        "x": 1190,
+        "y": 125,
+        "width": 320,
+        "height": 267
+      }
+    ]
+  },
+  {
+    "scene": "exp-seed1-ch5-detail",
+    "detector": "repeat_density",
+    "defects": [
+      {
+        "id": "yarn-seed1-east",
+        "box": {
+          "x": 865,
+          "y": 438,
+          "width": 251,
+          "height": 112
+        },
+        "note": "Fresh blind: four conspicuous identical coils on distinct waterfront doorsteps."
+      },
+      {
+        "id": "yarn-seed1-middle",
+        "box": {
+          "x": 429,
+          "y": 545,
+          "width": 280,
+          "height": 88
+        },
+        "note": "Fresh blind: five conspicuous identical coils in central residential street; excludes southern row."
+      },
+      {
+        "id": "yarn-seed1-south",
+        "box": {
+          "x": 563,
+          "y": 635,
+          "width": 397,
+          "height": 120
+        },
+        "note": "Fresh blind: repeated conspicuous white coils in southern residential street; independent doors from central row."
+      }
+    ],
+    "regions": [
+      {
+        "x": 865,
+        "y": 438,
+        "width": 251,
+        "height": 112
+      },
+      {
+        "x": 429,
+        "y": 545,
+        "width": 280,
+        "height": 88
+      },
+      {
+        "x": 563,
+        "y": 635,
+        "width": 397,
+        "height": 120
+      }
+    ]
+  },
+  {
+    "scene": "exp-current-city",
+    "detector": "repeat_density",
+    "regions": [
+      {
+        "x": 1090,
+        "y": 198,
+        "width": 290,
+        "height": 150
+      },
+      {
+        "x": 750,
+        "y": 419,
+        "width": 340,
+        "height": 123
+      },
+      {
+        "x": 935,
+        "y": 361,
+        "width": 172,
+        "height": 90
+      },
+      {
+        "x": 1370,
+        "y": 167,
+        "width": 175,
+        "height": 85
+      },
+      {
+        "x": 1259,
+        "y": 576,
+        "width": 180,
+        "height": 135
+      }
+    ],
+    "defects": []
+  }
+]
