@@ -41,3 +41,4 @@
 - 로드맵·상태: `docs/ROADMAP.html`(작업 상태는 TASKS 배열), `docs/STATUS.md`(세션별 현재·다음).
 - 설계서: `docs/design/DESIGN_MASTER.md`, `CONTENT_DESIGN.md`, `PLAYER_FLOW_DESIGN.md`, `VISIBILITY_DESIGN.md`, `CHRONICLE_DESIGN.md`, `lord-mode.md`, (예정) `UI_STATE_DESIGN.md`, `PERSON_DESIGN.md`.
 - 결정 목록: 규칙·기준을 바꿀 때마다 ID와 이유. 조사 결과는 `docs/research/`.
+- 용어: 게임 문구는 docs/design/glossary.md의 용어 정본을 따른다. 새 용어가 필요하면 정본에 먼저 추가한다.
