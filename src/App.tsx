@@ -90,6 +90,7 @@ import type { ZoneKind } from "./zones/zone.types";
 import { EventCards } from "./ui/hud/EventCards";
 import { personRow, stewardPerson } from "./ui/persons/personModels";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
+import { guidanceSampleKey } from "./ui/hud/guidanceSample";
 import { AppModals } from "./ui/screens/AppModals";
 import { readWelcomeDismissed, WelcomeParchment, writeWelcomeDismissed } from "./ui/screens/WelcomeScreen";
 import { isDefaultLand, landStartCommand, type LandChoice } from "./ui/landChoice";
@@ -174,7 +175,8 @@ export function App() {
     createOnboardingPresentationState,
   );
   const onboardingPresentationRef = useRef(onboardingPresentation);
-  const guidanceSample = Math.floor(state.tick / 60);
+  // QA-030: the 60-tick bucket while time runs, the state itself while paused (guidanceSample.ts).
+  const guidanceSample = guidanceSampleKey(state, speed);
   const guidanceSnapshotRef = useRef({
     sample: guidanceSample,
     state,
@@ -201,7 +203,7 @@ export function App() {
   }, [presentationNowMs, state.era]);
 
   const tutorial = useTutorialController({ state, paused: speed === 0, selectedTool, zoneTool, layer, setLayer, nowMs: presentationNowMs,
-    onOpenDrawer: () => sendUi({ type: "open_goals" }) });
+    onOpenDrawer: () => sendUi({ type: "open_goals" }), onOpenChapterGoals: () => sendUi({ type: "push_modal", modal: "chapter_preview" }) });
   // Tool intents obey the tutorial's unlocks (menu, Q / E, controller X alike).
   const accessRef = useRef(tutorial.access);
   accessRef.current = tutorial.access;
@@ -273,7 +275,8 @@ export function App() {
   // UI-4: the town's story beats (fire, wet summer, famine, petition, chapter end): chips after the world, decisions
   // and the chronicle as modals (useStoryPresentation).
   const story = useStoryPresentation({ state, nowMs: presentationNowMs, blocked: welcomeVisible, topModal: topModal(ui),
-    pushModal: modal => sendUi({ type: "push_modal", modal }), pause: () => setSpeed(0) });
+    pushModal: modal => sendUi({ type: "push_modal", modal }), pause: () => setSpeed(0),
+    markChapterSeen: chapter => dispatch({ type: "mark_chapter_page_seen", chapter }) });
   const stewardOfTown = stewardPerson(state);
   const steward = stewardOfTown === null ? null : personRow(state, stewardOfTown);
   const openPerson = (id: string) => { setPersonCardId(id); sendUi({ type: "push_modal", modal: "person_card" }); };
