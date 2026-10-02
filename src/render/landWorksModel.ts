@@ -11,12 +11,14 @@ import type { FlowDirection } from "../world/river";
 //  - Fords: RiverData.fords lists cells only. A group is the 4-joined ford cells (the engine puts each ford on one
 //    straight crossing, perpendicular to the flow, a dozen path steps from the next: river.ts). Axis: flow e / w
 //    crosses along ty, the `ne` sheet; flow n / s crosses along tx, the `nw` sheet (records/README: ne runs to the
-//    screen's upper right, nw to its lower right). Width = the group's cells; there is no w1 sheet, so a single cell
-//    takes w2 centred on it (LU-D4). Only a group carrying a road draws (isFordRoad, FD-1); bare fords stay water.
+//    screen's upper right, nw to its lower right). Width = the group's cells; a single cell takes the Wave 41 w1 sheet
+//    (NAT-4; LU-D4 drew w2 centred on it until then). Only a group carrying a road draws (isFordRoad, FD-1); bare
+//    fords stay water.
 //  - Works: stage by workDone / workNeeded (< 1/3 staked, < 2/3 ditched, else drying). Stage 1 stakes the perimeter
 //    cells; stage 2 digs two ditch rows along tx (the v3 stage-3 sheet's ditch direction); stage 3 is one region
-//    sheet (3x3 when the cells' box is at most 3x3, else 5x5) on the box centre, clipped to the cells. DrainageWork
-//    keeps no origin (engine handoff), so the box centre stands for it.
+//    sheet on the works' origin (FIX-13 `DrainageWork.origin`, the tile the player chose; every cell lies within the
+//    patch radius 2 of it), clipped to the cells: 3x3 when every cell is within one tile of it, else 5x5. A work saved
+//    before v44 has no origin: the cells' box centre stands for it, 3x3 when the box is at most 3x3.
 //  - Drained: the edges between a drained cell and any other cell carry the finished drain strip.
 
 export type FordAxis = "ne" | "nw";
@@ -42,8 +44,9 @@ export type WorkPlan = {
   readonly stakes: readonly { readonly cell: number; readonly along: "tx" | "ty" }[];
   /** Stage 2: the ditched cells (two rows along tx). */
   readonly ditches: readonly number[];
-  /** Stage 3: the region sheet. */
+  /** Stage 3: the region sheet, and the tile its pivot goes on (the works' origin, else the box centre). */
   readonly region: "3x3" | "5x5";
+  readonly centre: { readonly tx: number; readonly ty: number };
   /** A grass cell on the bank beside the works (the earth cart), or null. */
   readonly bank: number | null;
 };
@@ -109,7 +112,17 @@ export function regionSheet(box: TileBox): "3x3" | "5x5" {
   return box.maxTx - box.minTx < 3 && box.maxTy - box.minTy < 3 ? "3x3" : "5x5";
 }
 
-/** The box's centre in tile coordinates (the region sheet's pivot goes there). */
+/**
+ * The stage-3 sheet and its pivot tile: on the works' origin, 3x3 when the box lies within one tile of it, else 5x5;
+ * without an origin (a pre-v44 work) on the box centre, by the box (regionSheet).
+ */
+export function regionAnchor(box: TileBox, origin: { readonly tx: number; readonly ty: number } | undefined): { readonly region: "3x3" | "5x5"; readonly centre: { readonly tx: number; readonly ty: number } } {
+  if (origin === undefined) return { region: regionSheet(box), centre: boxCentre(box) };
+  const reach = Math.max(origin.tx - box.minTx, box.maxTx - origin.tx, origin.ty - box.minTy, box.maxTy - origin.ty);
+  return { region: reach <= 1 ? "3x3" : "5x5", centre: { tx: origin.tx, ty: origin.ty } };
+}
+
+/** The box's centre in tile coordinates (a pre-v44 work's region sheet pivot goes there). */
 export function boxCentre(box: TileBox): { readonly tx: number; readonly ty: number } {
   return { tx: (box.minTx + box.maxTx) / 2, ty: (box.minTy + box.maxTy) / 2 };
 }
@@ -144,7 +157,7 @@ export function workPlan(state: Pick<GameState, "tiles" | "width" | "height">, w
       if (bank === null || nx + ny > bank % width + Math.floor(bank / width) || (nx + ny === bank % width + Math.floor(bank / width) && next < bank)) bank = next;
     }
   }
-  return { id: work.id, stage: drainStage(work), cells: work.cells, box, digging: (work.diggers ?? 0) > 0, stakes, ditches, region: regionSheet(box), bank };
+  return { id: work.id, stage: drainStage(work), cells: work.cells, box, digging: (work.diggers ?? 0) > 0, stakes, ditches, ...regionAnchor(box, work.origin), bank };
 }
 
 /** The drained set's outer edges, in cell order. */
