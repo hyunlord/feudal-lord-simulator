@@ -208,8 +208,13 @@ function homePetitionSeason(state: GameState): GameState {
     ...(def.party === true ? { party: hashSeed(state.seed, "home-petition-party", state.tick) % 2 === 0 ? "neighbour_1" : "neighbour_2" } : {}) };
   const entry = HOME_PETITION_ENTRIES.find(candidate => candidate.id === `${HOME_PETITION_ENTRY_PREFIX}${kind}`);
   const rules = stewardship.rules;
-  const precedent = entry?.precedent !== true || rules.recurring === true || exceptionMatch(rules, petition) !== null ? undefined
-    : [...homes].reverse().find(earlier => earlier.kind === kind && earlier.decidedBy === "lord" && (earlier.status === "granted" || earlier.status === "refused"));
+  // ER-6 (the user's decision 2026-10-03): a precedent is the lord's same answer to the kind twice running; and the year's
+  // first home petition always comes to the lord (a year is never without his decision).
+  const lordAnswers = homes.filter(earlier => earlier.kind === kind && earlier.decidedBy === "lord" && (earlier.status === "granted" || earlier.status === "refused"));
+  const [last, before] = [lordAnswers.at(-1), lordAnswers.at(-2)];
+  const settled = last !== undefined && before !== undefined && last.status === before.status ? last : undefined;
+  const firstOfYear = !homes.some(earlier => Math.floor(earlier.tick / YEAR) === year && earlier.precedent !== true);
+  const precedent = entry?.precedent !== true || rules.recurring === true || exceptionMatch(rules, petition) !== null || firstOfYear ? undefined : settled;
   if (precedent === undefined) {
     return withStewardship(state, { ...stewardship, petitions: [...stewardship.petitions, petition], nextPetition: stewardship.nextPetition + 1 });
   }
@@ -418,6 +423,14 @@ export function setExceptionRules(state: GameState, rules: ExceptionRules): Game
 /** SW-4 API: the petitions waiting for the lord (escalated, or a direct estate's) that have reached him. */
 export function lordEstatePetitions(state: GameState): readonly EstatePetition[] {
   return stewardshipOf(state).petitions.filter(petition => petition.status === "open" && (petition.reachesLord ?? petition.tick) <= state.tick);
+}
+
+/**
+ * LM-E9 (ER-6) API: the season report's list "청지기가 선례대로 처리한 것" — the petitions (home and off-map estates)
+ * the steward answered by precedent in a season (by default the season just closed, as the season report shows it).
+ */
+export function precedentReport(state: GameState, startTick = Math.max(0, (Math.floor(state.tick / SEASON) - 1) * SEASON), endTick = startTick + SEASON): readonly EstatePetition[] {
+  return stewardshipOf(state).petitions.filter(petition => petition.precedent === true && petition.tick >= startTick && petition.tick < endTick);
 }
 
 /** SW-4 API: the lord answers an estate's petition (its effect falls on the estate's goodwill and the treasury now). */

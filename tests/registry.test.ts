@@ -14,7 +14,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { estatePortfolio, estatesOf } from "../src/engine/estates";
 import { fileSuit } from "../src/engine/estateSuits";
 import { advanceRegistry, applyChoice, DEFAULT_LORD_HOUSE, entryProblem, initialRegistry, lordHouse, registryLoad, registryOf } from "../src/engine/registry";
-import { advanceStewardship, answerEstatePetition, lordEstatePetitions, setExceptionRules, stewardshipOf } from "../src/engine/stewardship";
+import { advanceStewardship, answerEstatePetition, lordEstatePetitions, precedentReport, setExceptionRules, stewardshipOf } from "../src/engine/stewardship";
 import { initialAgency } from "../src/engine/townAgency";
 import { HISTORY_TEMPLATES } from "../src/content/historyCopy.ko";
 import { decodeSave } from "../src/save/saveCodec";
@@ -81,6 +81,16 @@ test("ER-6 a home petition of a kind the lord answered before is answered by pre
   assert.ok(precedent !== null, "a kind came round and the steward answered it");
   assert.ok(kinds.has(precedent!.kind), "the lord had answered that kind");
   assert.equal(precedent!.status, "granted", "as the lord did");
+  // The user's rule: the lord's same answer twice before the first precedent; never the year's first home petition.
+  const homesNow = stewardshipOf(state).petitions.filter(petition => petition.estateId === "estate-home");
+  const first = homesNow.find(petition => petition.precedent === true)!;
+  assert.ok(homesNow.filter(petition => petition.kind === first.kind && petition.decidedBy === "lord" && petition.tick < first.tick).length >= 2, "two answers by the lord first");
+  for (const petition of homesNow.filter(entry => entry.precedent === true)) {
+    const year = Math.floor(petition.tick / 4000);
+    assert.ok(homesNow.some(earlier => Math.floor(earlier.tick / 4000) === year && earlier.tick < petition.tick && earlier.precedent !== true), "not the year's first");
+  }
+  // The season report lists it.
+  assert.ok(precedentReport({ ...state, tick: (Math.floor(first.tick / 1000) + 1) * 1000 }).some(petition => petition.id === first.id));
   assert.match(HISTORY_TEMPLATES["manor.petition_precedent"]!({ kind: precedent!.kind, granted: 1, amount: 0 }), /^청지기가 선례대로 /);
   // With "bring recurring kinds up", none is answered by precedent.
   // (The lord sets his exceptions once there is a stewardship — after the first home petition.)
