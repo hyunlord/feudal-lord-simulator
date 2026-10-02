@@ -1,8 +1,9 @@
 // NAT-5 ground evidence: the QA round 17 cameras (docs/qa/round17/repro/*.json, window 1600 × 1100) on map 1 of every
-// land, and the vision checker's two fen views (fen-summer-z1.0 / fen-winter-z1.4, 1600 × 1000, report/light scenes.json),
-// each a new game on map 1 (seed 1) advanced in Node to the QA's tick (no player commands: the ground is what is judged),
-// loaded paused through 이어하기 with the start camera set at load (as scripts/nat4WorldCaptures.ts). One JPEG per
-// camera, <land>-<season>[-vision]-<label>.jpg, into <out dir>, and one JSON line of what the page read.
+// land, the vision checker's two fen views (fen-summer-z1.0 / fen-winter-z1.4, 1600 × 1000, report/light scenes.json)
+// and two close views of the riverside's rock (N5-D1). Each is a new game (map 1; one rock view map 5) advanced in Node
+// to the QA's tick (no player commands: the ground is what is judged), loaded paused through 이어하기 with the start
+// camera set at load (as scripts/nat4WorldCaptures.ts). One JPEG per camera, <id>-<label>.jpg, into <out dir>, and one
+// JSON line of what the page read.
 //   PLAYWRIGHT_MODULE=... tsx scripts/nat5GroundCaptures.ts <url> <out dir> <label> [camera id ...]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/nat5GroundCaptures.ts)", { remote: "scripts/remote/run.sh render-NAT5-ground-<sha7> -- bash scripts/nat5GroundCaptures.sh …", entry: import.meta.url });
@@ -20,7 +21,7 @@ mkdirSync(out, { recursive: true });
 const saves = join(".remote", "nat5-ground-saves"); mkdirSync(saves, { recursive: true });
 
 /** zoom, and the world point (the QA readout's "화면 중심 월드") at the canvas centre. */
-type Camera = { readonly id: string; readonly land: string; readonly tick: number; readonly zoom: number; readonly x: number; readonly y: number; readonly height?: number };
+type Camera = { readonly id: string; readonly land: string; readonly tick: number; readonly zoom: number; readonly x: number; readonly y: number; readonly height?: number; readonly seed?: number };
 const CAMERAS: readonly Camera[] = [
   { id: "river-summer", land: "core:open_field", tick: 1003, zoom: 1.063, x: 128, y: 1448 },
   { id: "river-winter", land: "core:open_field", tick: 3002, zoom: 1.063, x: 128, y: 1448 },
@@ -34,15 +35,19 @@ const CAMERAS: readonly Camera[] = [
   { id: "fen-winter", land: "core:fen_drainage", tick: 3002, zoom: 1.101, x: 495, y: 1253 },
   { id: "fen-summer-vision", land: "core:fen_drainage", tick: 1054, zoom: 1.0, x: 0, y: 1024, height: 1000 },
   { id: "fen-winter-vision", land: "core:fen_drainage", tick: 3070, zoom: 1.4, x: 0, y: 1024, height: 1000 },
+  // N5-D1: the riverside's rock up close — map 1's big outcrop (ringed by forest: map 1 has no rock beside the meadow)
+  // centred on tile (25, 28), and map 5's rock in the meadow, centred on tile (40, 48).
+  { id: "river-rock-forest", land: "core:open_field", tick: 1003, zoom: 1.3, x: (25 - 28) * 32, y: (25 + 28) * 16 },
+  { id: "river-rock-grass", land: "core:open_field", tick: 1003, zoom: 1.5, x: (40 - 48) * 32, y: (40 + 48) * 16, seed: 5 },
 ];
 const wanted = new Set(process.argv.slice(5));
 const cameras = CAMERAS.filter(camera => wanted.size === 0 || wanted.has(camera.id));
 
-/** Map 1 of the land advanced in Node to `tick`, as a save file (made once per land and tick; before and after share it). */
-function saveAt(land: string, tick: number): string {
-  const path = join(saves, `${land.split(":").pop()}-${tick}.save.json`);
+/** A map of the land (map 1 unless the camera names one) advanced in Node to `tick`, as a save file (made once; before and after share it). */
+function saveAt(land: string, tick: number, seed: number): string {
+  const path = join(saves, `${land.split(":").pop()}-map${seed}-${tick}.save.json`);
   if (existsSync(path)) return path;
-  let state = newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: land, seed: 1 }) as GameState | null;
+  let state = newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: land, seed }) as GameState | null;
   if (state === null) throw new Error(`no new game on ${land}`);
   while (state.tick < tick) state = advanceTick(state);
   const at = "2026-10-03T00:00:00.000Z";
@@ -57,7 +62,7 @@ const browser = await chromium.launch({ channel: "chrome", headless: true });
 const rows: unknown[] = [];
 
 for (const camera of cameras) {
-  const save = saveAt(camera.land, camera.tick);
+  const save = saveAt(camera.land, camera.tick, camera.seed ?? 1);
   const viewport = { width: 1600, height: camera.height ?? 1100 };
   const context = await browser.newContext({ viewport, deviceScaleFactor: 1 });
   await context.addInitScript(TUTORIAL_OFF);

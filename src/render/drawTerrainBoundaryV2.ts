@@ -11,7 +11,6 @@ import { arableStripStateLookup, drawArableFields, stripStateKey } from "./drawA
 import { drawCroftBeds } from "./drawYardProps";
 import { ZONE_VARIANTS } from "./zoneAssetManifest";
 import { drawGroundDecalDetail } from "./drawTerrainDetails";
-import { drawTerrainTransitions } from "./drawTerrainSeams";
 import { waterSurface } from "./drawWater";
 import { drawBridgeAbutments, drawShoreline } from "./drawShoreline";
 import { drawIceRim, drawWaterMotion, iceRimDrawn, liveReeds, waterChunkToken } from "./drawWaterMotion";
@@ -33,7 +32,7 @@ import { seasonFadeMs } from "./seasonTransition";
 import { drawLandWorksInChunk, landWorksChunkToken } from "./landWorksDraw";
 import { landGroundOf } from "./archetypeGroundModel";
 import { drawLandDecals, drawLandEdges, drawLandFills, hasLandFill, landChunkToken, landShoreStrips } from "./archetypeGroundDraw";
-import { groundTileAs } from "./landRockRegions";
+import { drawLandRock, groundTileAs, rockChunkToken, rockGroundOf } from "./landRockRegions";
 
 // RENDER_BOUNDARY_V2 ground pass. Order: water (live) -> ground chunks (diamonds, seams, forest outline + fringe,
 // zone fills, building yards, field clusters, zone lines, building aprons) -> town landscape (live) -> road-ribbon
@@ -139,7 +138,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const seasonToken = seasonChunkToken(season);
   const fade = { token: `s${season}`, ms: seasonFadeMs() };
   const land = landGroundOf(input.state);
-  const landToken = (plan: GroundChunkPlan, at: SeasonIndex): string => (land === null ? "" : landChunkToken(land, plan, scene.shore, at));
+  const landToken = (plan: GroundChunkPlan, at: SeasonIndex): string => (land === null ? "" : landChunkToken(land, plan, scene.shore, at)) + rockChunkToken(rockGroundOf(input.state), plan);
   const groundRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
     id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}${landToken(plan, season)}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
     // Same local ground = the chunk only changed its zones, or a water loop changed elsewhere: its old raster may stand
@@ -197,22 +196,22 @@ function drawGroundChunk(
 ): void {
   const tiles = chunkTiles(input.state, plan, 1);
   const land = landGroundOf(input.state);
-  for (const tile of tiles) {
-    // Forest and water tiles (on a land, rock too: NAT-5) are laid as grass; their smoothed outlines paint over them.
-    parts.drawGroundDiamond(context, groundTileAs(tile, land), input.state.seed, input.terrainPatterns);
-  }
-  if (season !== 1) drawSeasonGrass(context, tiles, season);
+  // Forest, water and (NAT-5) rock tiles are laid as grass, season grass too; their smoothed outlines paint over them.
+  const laid = tiles.map(groundTileAs);
+  for (const tile of laid) parts.drawGroundDiamond(context, tile, input.state.seed, input.terrainPatterns);
+  if (season !== 1) drawSeasonGrass(context, laid, season);
   const bounds = chunkTileBounds(plan.cx, plan.cy);
   const diamond = chunkDiamond(plan);
   const box = { left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4 };
   // The land fills carry their own seasons: over the season grass, which (and the code-drawn tufts) shows on the meadow.
-  if (land !== null) drawLandFills(context, land, plan, box, season, input.terrainPatterns);
+  if (land !== null) drawLandFills(context, land, plan, box, season);
   for (const tile of tiles) {
     if (tile.terrain === "water") continue;
     if (zoom > 0.7 && (land === null || !hasLandFill(land, tile))) drawGroundDecalDetail(context, tile, input.state.seed);
-    if (land === null) drawTerrainTransitions(context, input.state, tile, zoom, input.terrainPatterns, false, false); // NAT-5: no rock pebbles on a land
   }
   if (land !== null) drawLandEdges(context, land, plan, season);
+  // NAT-5 (N5-D1): the rock as one smoothed region on every land; no pebble seam marks (the V2 seams drew only those).
+  drawLandRock(context, rockGroundOf(input.state), plan, box, input.terrainPatterns);
   drawForestFill(context, scene.forest, plan.forestLoops, plan.forestParity, box, { tx: bounds.left + 0.5, ty: bounds.top + 0.5 }, input.state.seed, input.terrainPatterns);
   drawForestFringeDecals(context, scene.forest, plan.forestLoops, season);
   drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, box, bounds, input.state.seed, liveReeds(zoom, input.state), land === null ? undefined : landShoreStrips(context, land, scene.shore, plan.waterLoops, bounds));

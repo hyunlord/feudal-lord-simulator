@@ -1,0 +1,317 @@
+{
+ "what": "Riverside map 1 ground chunks before (e802d7bc) and after (N5-D1), drawn in Node with recording canvases (scripts/nat5RiversideChunks.ts); a chunk 'moved' when its content key or its draw-op hash changed. Node loads no images, so the rock texture swap is not in the ops.",
+ "views": {
+  "lu": {
+   "camera": "LAND-UI's riverside view: centre (40, 44), zoom 1.0, 1280 x 800",
+   "chunks": 42,
+   "moved": 11,
+   "movedChunks": {
+    "1,6": {
+     "rockTilesWithin2": 11,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "1,7": {
+     "rockTilesWithin2": 6,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,2": {
+     "rockTilesWithin2": 15,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,3": {
+     "rockTilesWithin2": 64,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,4": {
+     "rockTilesWithin2": 35,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,5": {
+     "rockTilesWithin2": 1,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,2": {
+     "rockTilesWithin2": 22,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,3": {
+     "rockTilesWithin2": 86,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,4": {
+     "rockTilesWithin2": 48,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,5": {
+     "rockTilesWithin2": 1,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "4,3": {
+     "rockTilesWithin2": 2,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    }
+   },
+   "movedWithoutRockToken": [],
+   "unmovedWithRockToken": []
+  },
+  "qa": {
+   "camera": "QA-17 river summer: t1003, centre (47, 43), zoom 1.063, 1600 x 1100",
+   "chunks": 49,
+   "moved": 11,
+   "movedChunks": {
+    "1,6": {
+     "rockTilesWithin2": 11,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "1,7": {
+     "rockTilesWithin2": 6,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,2": {
+     "rockTilesWithin2": 15,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,3": {
+     "rockTilesWithin2": 64,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,4": {
+     "rockTilesWithin2": 35,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,5": {
+     "rockTilesWithin2": 1,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,2": {
+     "rockTilesWithin2": 22,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,3": {
+     "rockTilesWithin2": 86,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,4": {
+     "rockTilesWithin2": 48,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,5": {
+     "rockTilesWithin2": 1,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "4,3": {
+     "rockTilesWithin2": 2,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    }
+   },
+   "movedWithoutRockToken": [],
+   "unmovedWithRockToken": []
+  },
+  "qaw": {
+   "camera": "QA-17 river winter: t3002, same camera",
+   "chunks": 49,
+   "moved": 11,
+   "movedChunks": {
+    "1,6": {
+     "rockTilesWithin2": 11,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "1,7": {
+     "rockTilesWithin2": 6,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,2": {
+     "rockTilesWithin2": 15,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,3": {
+     "rockTilesWithin2": 64,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,4": {
+     "rockTilesWithin2": 35,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,5": {
+     "rockTilesWithin2": 1,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,2": {
+     "rockTilesWithin2": 22,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,3": {
+     "rockTilesWithin2": 86,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,4": {
+     "rockTilesWithin2": 48,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,5": {
+     "rockTilesWithin2": 1,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "4,3": {
+     "rockTilesWithin2": 2,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    }
+   },
+   "movedWithoutRockToken": [],
+   "unmovedWithRockToken": []
+  },
+  "all": {
+   "camera": "the whole map: centre (32, 32), zoom 0.35, 1600 x 1100",
+   "chunks": 64,
+   "moved": 13,
+   "movedChunks": {
+    "0,6": {
+     "rockTilesWithin2": 8,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "0,7": {
+     "rockTilesWithin2": 9,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "1,6": {
+     "rockTilesWithin2": 11,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "1,7": {
+     "rockTilesWithin2": 6,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,2": {
+     "rockTilesWithin2": 15,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,3": {
+     "rockTilesWithin2": 64,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,4": {
+     "rockTilesWithin2": 35,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "2,5": {
+     "rockTilesWithin2": 1,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,2": {
+     "rockTilesWithin2": 22,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,3": {
+     "rockTilesWithin2": 86,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,4": {
+     "rockTilesWithin2": 48,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "3,5": {
+     "rockTilesWithin2": 1,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    },
+    "4,3": {
+     "rockTilesWithin2": 2,
+     "keyMoved": true,
+     "opsMoved": true,
+     "rockToken": true
+    }
+   },
+   "movedWithoutRockToken": [],
+   "unmovedWithRockToken": []
+  }
+ }
+}

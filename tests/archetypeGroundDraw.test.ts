@@ -209,7 +209,7 @@ function countingContext() {
   return { context: context as unknown as CanvasRenderingContext2D, counts };
 }
 
-test("draw calls one land chunk adds: two fills per fill region, four for the rock, one per strip quad, one blit per decal", () => {
+test("draw calls one land chunk adds: two fills per fill region, one per strip quad, one blit per decal", () => {
   // Node has no Image: a stand-in that is loaded at once, so the land's art is ready.
   (globalThis as unknown as { Image: unknown }).Image = class { naturalWidth = 512; naturalHeight = 64; onload: (() => void) | null = null; onerror: unknown = null;
     set src(_url: string) { queueMicrotask(() => this.onload?.()); } };
@@ -231,8 +231,7 @@ test("draw calls one land chunk adds: two fills per fill region, four for the ro
           assert.equal(counts.fill, fills + edgeQuads + shoreQuads);
           const total = counts.fill + counts.drawImage;
           if (total > worst.total) worst = { fills, quads: edgeQuads + shoreQuads, decals, total, chunk: `${plan.cx},${plan.cy}` };
-          // NAT-5: the rock adds its rim and its body, each the colour and the texture (landRockRegions.ts).
-          assert.ok(fills <= 2 * 3 + 4, `${id} ${plan.cx},${plan.cy}: ${fills} fill passes`);
+          assert.ok(fills <= 2 * 3, `${id} ${plan.cx},${plan.cy}: ${fills} fill passes`);
         }
         report[id] = worst;
       }
