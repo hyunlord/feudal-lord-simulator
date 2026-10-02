@@ -1,0 +1,76 @@
+{
+  "branch": "codex/phase15-organic-ground",
+  "head": "83b06802661d6eef33ebf7dc5b7c31a18aa9fae8",
+  "canonicalInputAuthorization": "2차 사용자 지시로 pull 후 최신 지정 가지 소스와 저장소 정본 사용",
+  "canonicalInputs": [
+    {
+      "actualPath": "/Users/rexxa/fls-astra-content/docs/design/glossary.md",
+      "intendedRepoPath": "docs/design/glossary.md",
+      "sha256": "30827ee61c89b83741cb955e7c57b83c21164759412405ffd3e14f3ec19a0cb5"
+    },
+    {
+      "actualPath": "/Users/rexxa/fls-astra-content/docs/design/copy-audit-20261002/SOURCES.md",
+      "intendedRepoPath": "docs/design/copy-audit-20261002/SOURCES.md",
+      "sha256": "ce2fea7e061b37a18ff601521a3a7e3739d883172272d6a14fa3971eef130e30"
+    }
+  ],
+  "researchFiles": [
+    {
+      "path": "docs/research/2026-09-24-content-catalog.md",
+      "sha256": "537726b262d0d1306d4e9ad69388e5ffe248864dd8bf361da4296b0787631029"
+    },
+    {
+      "path": "docs/research/2026-09-26-research15-ui-state-design-claude.md",
+      "sha256": "c691a18cbf148b097f614863df39324f3c3ce615f3d8fb51f7051580312b1e65"
+    },
+    {
+      "path": "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md",
+      "sha256": "6e579206bb8e28e4d077ed8caf19dc7bf43d2baf8646398d1c877df2a9ae3729"
+    },
+    {
+      "path": "docs/research/2026-09-30-indirect-rule-expansion-loop-gpt.md",
+      "sha256": "6148e338ada48dae93a4994ccd8b3e424b46b48602913ff3b11d7d29aac3ac56"
+    },
+    {
+      "path": "docs/research/2026-10-02-lordly-force-gpt.md",
+      "sha256": "43060f800427e4a8ce919d76af7939517eadf9f037a20e2ddf408d1698594def"
+    },
+    {
+      "path": "docs/research/2026-10-02-market-town-trades-gpt.md",
+      "sha256": "af19ab4a98bbe8dd26f1961be2eb778ffa749861af0296e5f8840f3ee7e5a3ef"
+    }
+  ],
+  "sourceEdits": false,
+  "commits": false,
+  "pushes": false,
+  "initialHead": "602fdd8467ada0a9288654c7f850db293ab76ef6",
+  "canonicalInputsPreviouslyUsed": [
+    {
+      "actualPath": "/tmp/astra-copy-audit-20261002/GLOSSARY.md",
+      "intendedRepoPath": "docs/design/glossary.md",
+      "sha256": "9558470c2f4ac872b9c5625d145ceece6181c4ca76a052c0b93ab14f4f39f22e"
+    },
+    {
+      "actualPath": "/tmp/astra-copy-audit-20261002/SOURCES.md",
+      "intendedRepoPath": "docs/design/copy-audit-20261002/SOURCES.md",
+      "sha256": "ce2fea7e061b37a18ff601521a3a7e3739d883172272d6a14fa3971eef130e30"
+    }
+  ],
+  "pullAudit": {
+    "command": "git pull --ff-only",
+    "from": "602fdd8467ada0a9288654c7f850db293ab76ef6",
+    "to": "d6ae15498a45c2202a10f3ce8f20a543dd305c3f",
+    "engineAndContentSourceDiff": [],
+    "researchDiff": [],
+    "glossaryDifference": "원본 출처 주석 추가와 SOURCES 상대 링크 수정만; 용어 본문 동일",
+    "sourcesDifference": "바이트 동일"
+  },
+  "revision": 2,
+  "previousDeliveryHead": "d6ae15498a45c2202a10f3ce8f20a543dd305c3f",
+  "revisionPullAudit": {
+    "command": "git pull --ff-only",
+    "from": "d6ae15498a45c2202a10f3ce8f20a543dd305c3f",
+    "to": "83b06802661d6eef33ebf7dc5b7c31a18aa9fae8",
+    "engineDiff": []
+  }
+}

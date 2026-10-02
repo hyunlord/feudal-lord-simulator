@@ -1,0 +1,25 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const root=path.resolve(import.meta.dirname,'..');
+const read=n=>JSON.parse(fs.readFileSync(path.join(root,n),'utf8'));
+const events=read('events.json');
+const previous=read('records/baseline-counts.json');
+const classes={existing_event_copy_revision:'기존 사건 문구 개선',existing_petition_variant:'기존 청원 변주',new_event_draft:'신규 사건 초안'};
+const countBy=f=>Object.fromEntries([...new Set(events.map(f))].sort().map(k=>[k,events.filter(e=>f(e)===k).length]));
+const totals={events:events.length,choices:events.reduce((n,e)=>n+e.choices.length,0),choiceCountDistribution:countBy(e=>e.choices.length),contentClasses:countBy(e=>e.contentClass),previousChoices:previous.reduce((n,e)=>n+e.choiceCount,0),previousChoiceCountDistribution:Object.fromEntries([2,3,4].map(n=>[n,previous.filter(e=>e.choiceCount===n).length]))};
+fs.writeFileSync(path.join(root,'records/REVISION_METRICS.json'),JSON.stringify(totals,null,2)+'\n');
+let md='# 2차 변경 요약\n\n';
+md+='60개 ID·시대별20개·종류별 분포를 유지했다. 1차 파일 실측은 선택124개(2개 선택56건, 3개 선택4건)다. 사용자 언급 수량과 별개로 아래 비교는 납품 JSON을 기준으로 했다.\n\n';
+md+=`2차는 선택 **${totals.choices}개**이며, 선택 수별 사건 수는 ${Object.entries(totals.choiceCountDistribution).map(([k,n])=>`${k}개 선택 ${n}건`).join(', ')}이다.\n\n`;
+md+='## 구분과 실행 범위\n\n';
+for(const[k,n]of Object.entries(totals.contentClasses))md+=`- ${classes[k]}: ${n}개\n`;
+md+='\n기존 사건 문구 개선은 같은 실제 장 사건을 대체·보충하는 원고다. 신규 발생량으로 더하지 않는다. 기존 청원 변주 역시 실제 대상에 결부하며 원래 청원의 효과를 두 번 실행하지 않는다.\n\n';
+md+='NE10은 신규 제안에서 철회했고 남은 제안은9개다. 최신 pull HEAD83b06802에서 FIX-14 SW-12의 지도 밖 선례는 확인했지만 홈 생성은 direct였다. [실사](records/ENGINE_EFFECTS.md)에 이 차이를 명시했다.\n\n';
+md+='등록기 형식은 [제안](REGISTRY_PROPOSAL.md)·[스키마](registry.schema.json)·[예시](registry.example.json)로 나눴다. 신규 등록기나 묶음 명령을 이번에 구현한 것은 아니다. 기존 시간 경과를 기다리는 선택은 자동 기한 연장을 뜻하지 않는다. 명령을 여러 개 쓰는 선택은 순차 실행 제안이며, 실패·부분 실행·재시도 처리는 등록기 계약으로 구별한다.\n\n';
+md+='## 초안별 변경\n\n| 번호 | 구분 | 선택 수 변화 | 2차 선택 | 대가의 축 |\n|---|---|---|---|---|\n';
+for(const e of events){const prev=previous.find(x=>x.id===e.id);const axes=[...new Set(e.choices.flatMap(c=>c.costAxes??[]))];md+=`| ${e.number} | ${classes[e.contentClass]} | ${prev.choiceCount}→${e.choices.length} | ${e.choices.map(c=>c.label.replaceAll('|','/')).join(' / ')} | ${axes.join(', ')} |\n`;}
+fs.writeFileSync(path.join(root,'REVISION_NOTES.md'),md);
+let copy='# 기존 사건 문구 개선\n\n이 목록은 새 사건을 더하는 원고가 아니라 엔진에 존재하는 장 사건의 문구·선택 안내 개선이다. 기존 사건 인스턴스에 결부하여 기존 ID·발동 시점·기한·후처리를 유지한다. 추가 선택이 별도 기존 명령을 안내할 때에도 원본 사건을 자동으로 해결했다고 기록하지 않는다.\n\n| 번호 | 제목 | 기존 사건 ID와 코드 근거 | 선택 수 |\n|---|---|---|---|\n';
+for(const e of events.filter(e=>e.contentClass==='existing_event_copy_revision'))copy+=`| ${e.number} | ${e.title} | ${JSON.stringify(e.existingEvent).replaceAll('|','/')} | ${e.choices.length} |\n`;
+fs.writeFileSync(path.join(root,'EXISTING_EVENT_COPY.md'),copy);
+console.log(JSON.stringify(totals));
