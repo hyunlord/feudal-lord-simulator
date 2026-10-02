@@ -59,8 +59,11 @@ for (const season of ["summer", "winter"] as const) {
       const name = `forest-y${year}-${season}`;
       const state = load(name);
       const distance = near(state);
-      const piece = footpathPieces(state, landOf(state).footpaths).filter(entry => entry.rule.shape === shape)
-        .sort((a, b) => distance(a.tx, a.ty) - distance(b.tx, b.ty))[0];
+      // A piece with no building within two cells (so no roof hides it), else any; nearest the town centre.
+      const built = (tx: number, ty: number) => state.buildings.some(building => Math.abs(building.tx - tx) <= 2 && Math.abs(building.ty - ty) <= 2);
+      const pieces = footpathPieces(state, landOf(state).footpaths).filter(entry => entry.rule.shape === shape);
+      const piece = [...pieces.filter(entry => !built(entry.tx, entry.ty)), ...pieces.filter(entry => built(entry.tx, entry.ty))]
+        .sort((a, b) => Number(built(a.tx, a.ty)) - Number(built(b.tx, b.ty)) || distance(a.tx, a.ty) - distance(b.tx, b.ty))[0];
       if (piece === undefined) continue;
       views.push({ name: `path-${shape}-${season}`, state: name, tile: [piece.tx, piece.ty], ...CLOSE });
       break;

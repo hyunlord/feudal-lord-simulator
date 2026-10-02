@@ -178,3 +178,23 @@ test("Given fallow cells Then their pictures join the object queue by depth, a p
   const merged = withLandFallow(queue, state, range);
   assert.deepEqual(merged.map(item => item.id), ["fallow:18", "home", "fallow:44"]);
 });
+
+test("Given a drawn town When one footpath, one felled tree or one fallow cell changes Then only the touched ground chunks re-raster (none for the objects)", async () => {
+  const { seedGroundState } = await import("../scripts/boundaryFixtureStates");
+  const { measureRebake, withOneFallowTurned, withOneMoreFootpath, withOneTreeOlder } = await import("../scripts/nat5StageRebake");
+  const town = seedGroundState(2);
+  const open = (cell: number) => { const tile = town.tiles[cell]; return tile !== undefined && tile.terrain === "grass" && !tile.hasRoad && tile.buildingId === null; };
+  const row = Array.from({ length: 24 }, (_, dx) => 40 * town.width + 26 + dx).filter(open);
+  const forest = town.tiles.findIndex(tile => tile.terrain === "forest" && tile.buildingId === null && !tile.hasRoad);
+  assert.ok(row.length >= 6 && forest >= 0);
+  const state: GameState = { ...town, tick: 1_500, land: { footfall: [], footpaths: row, fallow: [[row[0] ?? 0, 0]] },
+    forestHarvests: [{ tx: forest % town.width, ty: Math.floor(forest / town.width), harvestedAtTick: 1_000 }] };
+  const camera = { tx: 38, ty: 40, zoom: 1, width: 1280, height: 800 };
+  const footpath = measureRebake(state, withOneMoreFootpath(state, camera), camera);
+  assert.ok(footpath.rerastered.length >= 1 && footpath.rerastered.length <= 4, footpath.rerastered.join(","));
+  assert.ok(footpath.chunksInView >= 20, `${footpath.chunksInView} chunks in view`);
+  const tree = measureRebake(state, withOneTreeOlder(state, camera), camera);
+  assert.deepEqual([tree.rerastered, tree.contentRasters, tree.objectQueueChanged], [[], 0, true]);
+  const fallow = measureRebake(state, withOneFallowTurned(state), camera);
+  assert.deepEqual([fallow.rerastered, fallow.contentRasters, fallow.objectQueueChanged], [[], 0, true]);
+});

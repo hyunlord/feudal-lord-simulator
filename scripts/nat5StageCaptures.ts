@@ -2,7 +2,7 @@
 // states (scripts/nat5StageStates.ts). Starts its own vite dev server (no watch) on --port; writes one PNG per view and
 // result.json (per view: the Wave 42 pictures loaded, the ground chunk counters, page errors) to <out>. Needs none of the
 // NAT-5 modules, so the same views run on the base commit for the "before" frames.
-//   PLAYWRIGHT_MODULE=... npx tsx scripts/nat5StageCaptures.ts <out> --states <dir> --views <file> --port <port>
+//   PLAYWRIGHT_MODULE=... npx tsx scripts/nat5StageCaptures.ts <out> --states <dir> --views <file> [--port <port>, default $FLS_REMOTE_PORT]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/nat5StageCaptures.ts)", { remote: "scripts/remote/run.sh render-NAT5-stages-<sha7> -- node_modules/.bin/tsx scripts/nat5StageCaptures.ts …", entry: import.meta.url });
 import { spawn } from "node:child_process";
@@ -20,7 +20,7 @@ type Page = {
 };
 const [out] = process.argv.slice(2);
 const flag = (name: string) => { const index = process.argv.indexOf(`--${name}`); return index > 0 ? process.argv[index + 1] : undefined; };
-const statesDir = flag("states") ?? ""; const viewsFile = flag("views") ?? ""; const port = Number(flag("port") ?? 4391);
+const statesDir = flag("states") ?? ""; const viewsFile = flag("views") ?? ""; const port = Number(flag("port") ?? process.env.FLS_REMOTE_PORT ?? 4391);
 mkdirSync(out ?? ".", { recursive: true });
 const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
 const views = JSON.parse(readFileSync(viewsFile, "utf8")) as View[];
@@ -60,7 +60,7 @@ try {
       page.on("pageerror", error => { pageErrors.push(String(error.message).slice(0, 300)); });
       page.on("console", message => { if (message.type?.() === "error") pageErrors.push((message.text?.() ?? "").slice(0, 300)); });
       // The pictures load on their first draw; the chunks re-raster once they have (their key's readiness bit).
-      await page.waitForTimeout(4_000);
+      await page.waitForTimeout(Number(process.env.NAT5_CAPTURE_WAIT_MS ?? 4_000));
       await page.screenshot({ path: join(out ?? ".", `${view.name}.png`), clip: view.clip });
       result[view.name] = { view, ...(await probe(page)), pageErrors };
       await context.close();
