@@ -193,13 +193,12 @@ test("NAT-5: the rock region covers the rock tiles and leaves the rest (tile cen
   }
 });
 
-test("NAT-5 / N5-D1: wherever rock has its region (a land, the riverside) it is laid as ground and draws no pebbles", () => {
+test("NAT-5 / LU-D2: the riverside keeps its rock tiles and pebble marks; a land lays rock as ground and draws no pebbles", () => {
   const rock = { tx: 3, ty: 4, terrain: "rock" } as Parameters<typeof groundTileAs>[0];
   assert.equal(groundTileAs(rock, null).terrain, "rock");
   assert.equal(groundTileAs(rock, groundOf("core:chalk_downs", 1)).terrain, "grass");
   assert.equal(groundTileAs({ ...rock, terrain: "forest" }, null).terrain, "grass");
   const source = readFileSync(new URL("../src/render/drawTerrainBoundaryV2.ts", import.meta.url), "utf8");
-  assert.match(source, /if \(rock === null\) drawTerrainTransitions\(/);
-  assert.match(source, /const rock = land \?\? riversideRockGround\(input\.state\)/);
-  assert.match(source, /drawGroundDiamond\(context, groundTileAs\(tile, rock\)/);
+  assert.match(source, /if \(land === null\) drawTerrainTransitions\(/);
+  assert.match(source, /drawGroundDiamond\(context, groundTileAs\(tile, land\)/);
 });

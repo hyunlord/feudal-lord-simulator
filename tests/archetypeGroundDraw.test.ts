@@ -112,12 +112,12 @@ test("LU-D5: drained cells read as meadow, and the layer follows the terrain, no
   assert.equal(landGroundOf(roadOnly), changed);
 });
 
-test("LU-D2 / N5-D1: the riverside never enters the land code (no layer); its chunk token is its rock region's alone", () => {
+test("LU-D2: the riverside never enters the land code (no layer, no chunk token)", () => {
   assert.equal(landGroundOf(DEFAULT_GAME_STATE), null);
   assert.equal(landGroundOf(land(RIVERSIDE_ARCHETYPE_ID, 1)), null);
   assert.equal(landGroundOf({ ...DEFAULT_GAME_STATE, archetypeId: RIVERSIDE_ARCHETYPE_ID }), null);
   const source = readFileSync(new URL("../src/render/drawTerrainBoundaryV2.ts", import.meta.url), "utf8");
-  assert.match(source, /land === null \? riversideRockToken\(input\.state, plan\) : landChunkToken\(/);
+  assert.match(source, /land === null \? "" : landChunkToken\(/);
   assert.match(source, /land === null \? undefined : landShoreStrips\(/);
   for (const call of ["drawLandFills", "drawLandEdges", "drawLandDecals"]) assert.match(source, new RegExp(`if \\(land !== null\\) ${call}\\(`), call);
 });

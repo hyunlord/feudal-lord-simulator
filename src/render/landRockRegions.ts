@@ -17,11 +17,8 @@ import { getTerrainPattern, TERRAIN_TEXTURE_COMPOSITE_OPACITY, type TerrainPatte
 // the land's warp at ROCK_WARP_SCALE: archetypeGroundRegions.ts smoothRegionLoop), filled with the rock texture (Wave 41's ENV-07 rework,
 // public/assets/terrain/rock.png) unturned over the rock colour (the tile pass's 0.6 texture over the colour), once
 // ROCK_RIM tiles wider at ROCK_RIM_ALPHA first, so the rock's edge fades into the ground instead of a cut line. No
-// pebble marks on a land (drawGroundChunk). NAT-5 decision N5-D1: the riverside's rock too (riversideRock.ts), though its other ground stays as it was (LU-D2).
+// pebble marks on a land (drawGroundChunk). The riverside keeps its rock tiles (LU-D2).
 // Cached on the land layer with the fill regions (the terrain is in its key) and per chunk.
-
-/** What the rock region reads: a land's ground, or (NAT-5, decision N5-D1) the riverside's rock-only ground (riversideRock.ts). */
-export type RockGround = Pick<LandGround, "width" | "height" | "seed" | "drained" | "rock"> & { readonly cache: Pick<LandGround["cache"], "rock" | "rockChunks"> };
 
 /** How far the soft rim reaches past the outline (tiles), and its alpha. */
 export const ROCK_RIM = 0.18;
@@ -29,7 +26,7 @@ export const ROCK_RIM_ALPHA = 0.45;
 type ScreenBox = { readonly left: number; readonly top: number; readonly right: number; readonly bottom: number };
 
 /** The land's rock as one region (no strips; beyond the map is not rock). */
-export function rockRegion(land: RockGround): FillRegion {
+export function rockRegion(land: LandGround): FillRegion {
   if (land.cache.rock !== undefined) return land.cache.rock;
   const field = landWarp(land, ROCK_WARP_SCALE);
   const loops = cellContourLoops({ width: land.width, height: land.height, inside: (tx, ty) => land.rock[ty * land.width + tx] === 1, outside: false })
@@ -43,7 +40,7 @@ export function rockRegion(land: RockGround): FillRegion {
 }
 
 /** The rock a chunk draws, or null (cached per chunk on the layer). */
-export function chunkRock(land: RockGround, plan: GroundChunkPlan): ChunkRegion | null {
+export function chunkRock(land: LandGround, plan: GroundChunkPlan): ChunkRegion | null {
   const id = plan.cy * 4096 + plan.cx;
   const cached = land.cache.rockChunks.get(id);
   if (cached !== undefined) return cached;
@@ -53,12 +50,12 @@ export function chunkRock(land: RockGround, plan: GroundChunkPlan): ChunkRegion 
 }
 
 /** The tile as the land's diamond pass lays it: forest, water and (NAT-5) rock as grass; their own outlines paint over. */
-export function groundTileAs(tile: Tile, land: RockGround | null): Tile {
+export function groundTileAs(tile: Tile, land: LandGround | null): Tile {
   return tile.terrain === "forest" || tile.terrain === "water" || (land !== null && tile.terrain === "rock") ? { ...tile, terrain: "grass" } : tile;
 }
 
 /** The rock over a chunk's land fills: the soft rim, then the rock. Returns the fills drawn. */
-export function drawLandRock(context: CanvasRenderingContext2D, land: RockGround, plan: GroundChunkPlan, box: ScreenBox, patterns?: TerrainPatternAssets): number {
+export function drawLandRock(context: CanvasRenderingContext2D, land: LandGround, plan: GroundChunkPlan, box: ScreenBox, patterns?: TerrainPatternAssets): number {
   const part = chunkRock(land, plan);
   if (part === null) return 0;
   const pattern = getTerrainPattern(context, "rock", patterns);
