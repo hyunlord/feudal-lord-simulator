@@ -8,7 +8,8 @@
 //                                                    in tools/eslint/eslint-suppressions.json fail
 //  4. typecheck   tsc --noEmit (root node_modules)
 //  5. ledger      scripts/checks/inboxLedger.mjs     assets-inbox/INBOX_LEDGER.csv: every replaced_by path is a ledger
-//                                                    row, canonical marks match, new same-sha256 rows are marked
+//                                                    row, canonical marks match, new same-sha256 rows are marked,
+//                                                    and when the range touches assets-inbox/, one row per PNG/JPG
 //  6. korean      scripts/checks/koreanStrings.mjs   no new Korean string in src outside *.ko.ts and *.generated.*
 //                                                    (parsed with tools/eslint's TypeScript 6)
 //  7. budget      scripts/checks/distBudget.mjs      `vite build` of <head> into a temporary folder: the total and each

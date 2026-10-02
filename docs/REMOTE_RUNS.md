@@ -118,6 +118,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
   3. ESLint(`tools/eslint/`): 바뀐 코드 파일만 본다. `tools/eslint/eslint-suppressions.json`에 없는 위반만 실패한다(REVIEW-1 때 122건: 금지 컨트롤 118, exhaustive-deps 4. UI-KIT-1이 모두 고쳐 0건).
   4. typecheck: 루트 `node_modules`의 `tsc --noEmit`.
   5. `scripts/checks/inboxLedger.mjs`(INBOX-1q): `<head>`의 `assets-inbox/INBOX_LEDGER.csv` 전체에서 `replaced_by`의 경로(`;`로 이은 것 하나하나)가 장부의 다른 행 `file`이어야 한다. `cursor_*.png(6장)` 같은 패턴·설명·오타는 실패한다. 범위에서 바뀐 행만이 아니라 장부 전체를 본다(도입 때 걸린 행 1개는 같은 커밋에서 고쳐 기존 위반 목록이 없다). INBOX-1y부터 둘을 더 본다. ① 장부 전체에서 `verdict_note`의 `(정본: <경로>)`는 sha256이 같은 다른 행을 가리켜야 한다. ② 범위에서 새로 생긴 행의 sha256이 다른 행과 같으면 그 행 비고에 `○○와 동일 바이트(정본: 경로)`가 있거나, 같은 바이트의 다른 행이 그 행을 정본으로 적고 있어야 한다. 정본은 runtime manifest나 설치 대장이 가리키는 행, 없으면 같은 바이트 가운데 confirmed이면서 가장 먼저 받은 행이다(순서는 `docs/ASSET_INBOX.md` 2절). 기존 중복 215묶음 245행은 INBOX-1y에서 한 번에 표시했다.
+     - 한 그림 한 행(2026-10-03, 결정 RR11): 범위에서 `assets-inbox/` 아래가 하나라도 바뀌면(장부 포함, 옮기기·지우기 포함) `<head>`의 `assets-inbox/**/*.{png,jpg,jpeg}` 목록과 장부 `file` 열을 집합으로 맞춰 본다. 행 없는 그림은 `NOROW`, 파일 없는 행은 `NOFILE`로 실패한다. 계기: 렌더 `11ca755e`가 은퇴 그림 8장을 `assets-inbox/retired/`로 옮기면서 행을 만들지 않았는데 통과했다(이 검사로 그 커밋은 NOROW 8로 실패한다).
   6. `scripts/checks/koreanStrings.mjs`(CODE-1b): `<head>`의 `src/**/*.{ts,tsx,js,jsx,mjs,cjs}`에서 한글이 든 문자열·템플릿·JSX 텍스트는 `*.ko.ts`와 `*.generated.*`에만 둘 수 있다(주석 제외).
      - 파싱은 `tools/eslint`의 TypeScript 6으로 한다.
      - 기존 것은 `scripts/checks/korean-strings-baseline.json`(40개 파일, 463개 문구)에 파일별 정확한 문구로 있다. 목록 문구를 고치면 새 문자열로 본다.

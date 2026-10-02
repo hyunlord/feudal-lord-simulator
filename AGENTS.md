@@ -172,6 +172,7 @@
       - 기존 40개 파일의 문자열 463개는 `scripts/checks/korean-strings-baseline.json` 목록에 있다(파일별 정확한 문구). 목록의 문구를 고치면 새 문자열로 본다.
     - typecheck도 함께 돈다. 새 억제·예외 목록 항목을 손으로 추가해 검사를 통과시키지 않는다.
     - **Astra 장부의 `replaced_by`는 장부에 있는 파일 경로만 쓴다**(`scripts/checks/inboxLedger.mjs`). 여러 장이면 `;`로 잇고, 패턴·설명은 `verdict_note`에 쓴다. 기존 행과 바이트가 같은 행을 새로 넣으면 비고에 `○○와 동일 바이트(정본: 경로)`를 단다(정본 = runtime manifest나 설치 대장이 가리키는 행, 없으면 같은 바이트 중 confirmed이면서 가장 먼저 받은 행).
+    - **inbox 그림 한 장에 장부 한 행**(`scripts/checks/inboxLedger.mjs`, 결정 RR11): 범위가 `assets-inbox/` 아래를 하나라도 바꾸면(어느 세션이든, 더하기·옮기기·지우기·장부 고치기), `<head>`의 PNG·JPG 목록과 장부 `file` 열이 같아야 한다. 행 없는 그림(`NOROW`)이나 파일 없는 행(`NOFILE`)이면 푸시를 거부한다. 옮긴 파일은 그 행의 `file`도 옮긴다.
 
 20. **개인 Claude Code 설정은 `.claude/settings.local.json`에 둔다**(git에 올리지 않음, `.gitignore`).
     - 저장소의 `.claude/settings.json`은 모든 세션이 같이 쓰는 것만 담는다: graft 훅·graft 권한, 그리고 `GRAFT_NO_STATUSLINE=1`(`env`).
