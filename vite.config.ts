@@ -77,4 +77,8 @@ export default defineConfig({
   plugins: [react(), keyartDerivativesPlugin(), woff2OnlyFontsPlugin(), nat1PseudoLongPlugin(), flsTelemetryPlugin()],
   base: process.env.GITHUB_PAGES === "true" ? "/feudal-lord-simulator/" : "/",
   define: { __GAME_VERSION__: JSON.stringify(gameVersion()) },
+  // The dependency scan reads the game's own page only. By default it reads every *.html under the root, and the saved
+  // web pages in docs/design/brand/research/ import scripts that are not here: the scan failed, pre-bundling was skipped,
+  // and the server re-optimised and reset connections mid-run (the DGX ui-geometry audit died on ECONNRESET).
+  optimizeDeps: { entries: ["index.html"] },
 });
