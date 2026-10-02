@@ -97,9 +97,13 @@ const stored = (commit: string): Stored | null => { const file = join(store, `${
 async function holdPort(except: number): Promise<{ port: number; release: () => void } | null> {
   for (let port = 4300; port <= 4399; port++) {
     if (port === except || spawnSync("ss", ["-Hltn", `sport = :${port}`], { encoding: "utf8" }).stdout.trim() !== "") continue;
-    const holder = spawn("flock", ["-n", join(homedir(), "fls-runs", "_ports", `${port}.lock`), "sleep", "86400"], { stdio: "ignore" });
+    // One process holds the lock: the shell takes it on fd 9, then becomes `sleep` (exec), so killing that process lets
+    // the port go. (`flock <file> sleep` forked a sleep that kept the lock after flock was killed: 36 trend runs left
+    // ports 4300–4346 held and their scopes alive for a day, 2026-10-02.) The sleep is also capped at three hours.
+    const lock = join(homedir(), "fls-runs", "_ports", `${port}.lock`);
+    const holder = spawn("bash", ["-c", 'exec 9>"$1"; flock -n 9 || exit 1; exec sleep 10800', "hold-port", lock], { stdio: "ignore" });
     await new Promise(done => setTimeout(done, 300));   // flock -n exits at once when another run holds the port
-    if (holder.exitCode === null) return { port, release: () => holder.kill() };
+    if (holder.exitCode === null) return { port, release: () => { holder.kill("SIGKILL"); } };
   }
   return null;
 }
