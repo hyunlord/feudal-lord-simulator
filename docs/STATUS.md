@@ -2,7 +2,7 @@
 
 게임 이름: 영어 **Charter & Kin**, 한국어 **인장과 가문**(2026-10-02 결정 TITLE-1, 가제 "봉건 영주 시뮬레이터" 대체). 출시 전 상표 확인 필요(로드맵 TRADEMARK). 게임 안의 타이틀 화면·창 제목은 렌더가 정식 로고가 오면 바꾼다.
 
-갱신: 2026-10-02(FIX-16 · COPY-1e · FIX-15 · FIX-14 · LM-E8 · FIX-13 · LM-E5 · LM-E4 · FIX-12 · LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
+갱신: 2026-10-03(LM-E6a · FIX-16 · COPY-1e · FIX-15 · FIX-14 · LM-E8 · FIX-13 · LM-E5 · LM-E4 · FIX-12 · LM-E3 · QA-0314-E · LM-E2 · UI-AUDIT-1 · LM-E1b · LM-E1 · FIX-11 · BOT-4 · INSTALL-30~33 · UI-10 · FIX-10 · SMOOTH-2E · LEAK-1 · NAT-1 · ARCH-1b · UI-9b · ARCH-1 · UI-9 · CLOTH-UI · FIX-9 · F5-A · PLAGUE-b · FIX-8 · F4-A · UI-8 · INSTALL-26~29 · ECON-UI · C5 · UI-7b · UI-7 · F3-A · UI-6c · FIX-7 · INSTALL-3b · PERSON-1a · BUDGET-1b · BUDGET-1 · INSTALL-23b · C4 · INSTALL-23 · ASSET-2 · NAME-1 · BLD-REG · UI-6b · FIX-6 · UI-6 · FIX-5b · CODE-1c · FIX-5 · RES-REG · FACTION-0 · F2-A · UI-KIT-1b · FAIL-3 · UI-KIT-1 · FIX-4 · BOT-3 · UX-0b2 · ASSET-1 · TEST-1 · UI-5 · AUDIO-1 · CHRON-1 · UX-0b · MARKET-1 · FIX-3 · FIX-2 · INSTALL-15 · WALL-2 · PERSON-0 · UI-4b · UI-4 · UX-3R2 · HIST-1 · BOT-2 · J1 판정 네 가지 · F0-C2 · UI-3 · UX-3R 1차 · F0-C1 · F0-B · INSTALL-11 · INSTALL-7 · R0 · F0-V · F0-A · INSTALL-5c · UX-2 · UX-1 · MOVE-1 · FIX-1 · BOT-1 완료 · INSTALL-4e · TOUCH-1 · PLAY-1 · V2 · C3 · C1f · C1c-2 · B9 · D3b 벽 띠 플래그 · D3b · D3a · C1e · C1d · C1c · C2 · C1b · B3 · D1a-2 · B5+C1a). 제품 본선: `codex/phase15-organic-ground`.
 
 **로드맵**: [`ROADMAP.html`](ROADMAP.html)(비전·화면·로드맵, 작업 상태는 5절 `TASKS` 배열) · 헌장 [`CHARTER.md`](CHARTER.md).
 - **상태 변경 시 두 곳을 갱신한다.** `ROADMAP.html`의 `TASKS`(status·note, 변경 이력 한 줄)와 이 파일을 같은 커밋에서 고친다.
@@ -16,6 +16,11 @@
   - 넘김: 012는 NAT-3, 003·026·RUN-02 그림은 Astra, RUN-01·UI-01·UI-02는 LM-R1.
 
 - **LAND-UI 땅 고르기·지면·여울·배수(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 연쇄 F 4번·연쇄 G 1번): [보고서](verification/landui/REPORT.md), 결정 LU-D1~D10(사용자 승인 2026-10-02 — D1은 임시, D7은 NAT-4에서 숫자 칸 + 무작위로 바꿈). 새 게임에서 땅 다섯(미리보기·지도 번호), Wave 22 지면·Wave 28 돌담·Wave 29 강 흐름·물레 도랑·Wave 34 여울·배수 단계, 배수 도구, "흐르는 물가" 문구. 강가 그림 그대로. 지면 띠는 렌더가 넓고 부드럽게(NAT-4), 숲 가장자리 띠는 Astra(LU-D11).
+
+- **LM-E6a 직업 확장 1차 — 완료, 본선 병합**(Claude Code, 엔진 세션, 영주 모드에서만·화면 없음): [보고서](verification/lm-e6a/REPORT.md), [명세](design/trades.md) TR-1~TR-9, 결정 LM6A-1~5, 저장 v46.
+  - 직업 20·작업장 원형 12를 데이터로, 가구가 위치 점수로 직업을 고르고 영수증을 남김. 사슬 일곱의 병목 하나, 같은 직업 셋이 모이면 거리 이름.
+  - 수레꾼이 묶인 물자를 옮기고(시장이 있으면 받을 곳 없는 잉여를 실어 냄), 수레꾼을 늘리면 일손 부족으로 묶인 물자와 썩는 밭 밀이 준다.
+  - 렌더·Astra가 받을 것: [직업·작업장 그림 목록](requests/trades-art.md), `state.trades`와 `trades.ko.ts` 문구.
 
 - **FIX-16 Astra 첫 플레이 엔진 몫 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 판정): [보고서](verification/fix16/REPORT.md), 명세 [PS-3](design/persons.md)·[SK-5](design/stuck-stock.md)·[WX-7](design/wall-expansion.md), 결정 FX16-1~5, 새 가드레일 기준선 `baseline-eb18454`.
   - 기근 사망은 식량이 모자란 가구가 지고, 식량 있는 가구의 몇은 "기근 해에 병들어 죽었다". 봇 대기근 굶주림 사망: 구휼 0·0·4 / 방관 11·8·13(seed 1~3).
