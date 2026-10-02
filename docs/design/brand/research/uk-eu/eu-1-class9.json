@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-02T15:49:24.333334+09:00",
+  "term": "Charter & Kin",
+  "class": "9",
+  "url": "https://euipo.europa.eu/copla/ctmsearch/json",
+  "status": 200,
+  "request": "start=0&rows=100&searchMode=advanced&criterion_1=ApplicationNumber&term_1=&operator_1=AND&condition_1=CONTAINS&criterion_2=MarkVerbalElementText&term_2=Charter+%26+Kin&operator_2=AND&condition_2=CONTAINS&criterion_3=GoodsServicesClassNumber&term_3=9&operator_3=AND&sortField=ApplicationNumber&sortOrder=asc",
+  "response": "{\"total\":0,\"items\":[],\"analysis\":[{\"title\":\"MarkCurrentStatusCode\",\"fieldname\":\"MarkCurrentStatusCode\",\"header2\":\"Count\",\"header1\":\"Feature\"},{\"title\":\"IntRegCurrentStatusCode\",\"fieldname\":\"IntRegCurrentStatusCode\",\"header2\":\"Count\",\"header1\":\"Feature\"},{\"title\":\"PublicationSection\",\"fieldname\":\"PublicationSection\",\"header2\":\"Count\",\"header1\":\"Feature\"},{\"title\":\"GoodsServicesClassNumber\",\"fieldname\":\"GoodsServicesClassNumber\",\"header2\":\"Count\",\"header1\":\"Feature\"},{\"title\":\"MarkFeature\",\"fieldname\":\"MarkFeature\",\"header2\":\"Count\",\"header1\":\"Feature\"}]}"
+}
