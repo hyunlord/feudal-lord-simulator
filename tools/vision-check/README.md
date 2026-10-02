@@ -4,6 +4,7 @@ Astra가 만든 화면 자연스러움 검사기(Python·uv)다.
 - 2026-10-02 재현율 회차 개선판으로 처음 들였다(`astra-vision-recall-20261002.zip`).
 - 같은 날 확장 회차 판으로 바꿨다(`astra-vision-expansion-20261002.zip`의 `tools/vision-check/`). 바뀐 것: 부위 크기 측정, 정상 재고 반복 제외, 양성 38개 시험지.
 - 원본 묶음은 `~/feudal-lord-analysis/astra-raw/qa/vision-expansion-20261002/`에 있다.
+- 확장 회차 보고서 전체(대표 그림·판독 표 포함)는 `docs/qa/vision-check-20261002/expansion/`에 있다.
 
 - **보조 도구다.** `npm test`와 병합 전 검사(`check:merge`)에 들어가지 않는다.
   - 파이썬 시험(`tests/`)은 `tests/*.test.ts`에 걸리지 않는다.
