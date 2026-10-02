@@ -1,0 +1,37 @@
+{
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "assets": [
+    {
+      "id": "woodland_grass_edge_summer-v1",
+      "prompt": "Use case: style-transfer. Create ONE seamless horizontal forest-floor to grass transition strip for a hand-painted southern England medieval isometric game. Reference1 is Wave22 strip geometry and soft painterly style only; reference2 is woodland floor color. Target final 512x64, horizontal X-repeat. Render a very wide narrow ribbon across entire canvas width, no side margins, transparent background above and below. Upper side muted olive summer meadow grass; lower side fine warm grey-brown woodland leaf litter. Blend irregular small tongues of grass, sparse dry oak leaves and soft earth patches through center, never a broad solid brown band or hard straight boundary. No trees, shrubs, rocks, raised bank, outline, shadow, text. Soft medium brush masses, subdued contrast, no photographic noise. Top and bottom feather to genuine transparency. Left and right ends must connect seamlessly with same material layout and color. Flat ground, diffuse upper-left light. Reference2 is color only, do not reproduce its noisy grain. One ribbon only, no sheet.",
+      "references": [
+        {
+          "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/candidates-20260927/assets/boundary/heath_edge_a-v1.png",
+          "sha256": "6266f03521f4d2a18d1a2fcac146e52cf957d41fbfde735dd970b814b1b9c09f"
+        },
+        {
+          "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/assets-inbox/wave22/rework-20260927/assets/terrain/woodland_floor_summer_a-v2.png",
+          "sha256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36"
+        }
+      ],
+      "raw_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-aaa8be0f-2db0-4087-880a-5a524939f236.png",
+      "raw_copy": "raw/woodland_grass_edge_summer-v1.png",
+      "raw_sha256": "97f2c25acd566bdce6a41990332e71d59839f517196f3b9086e34cbfa6087cdb"
+    },
+    {
+      "id": "woodland_grass_edge_winter-v1",
+      "prompt": "Use case: lighting-weather. Edit this single summer horizontal forest-floor to meadow transition ribbon into WINTER. Preserve exact ribbon composition, canvas, footprint, sparse leaf positions, grass/woodland orientation and horizontal seamless repeat. Upper meadow side dormant desaturated olive-grey grass with sparse thin offwhite frost, lower woodland litter cool grey-brown with tiny patchy frost. NOT thick snow, NOT white wall or ice bank. Keep organic soft gradual mixture of grass and leaves, no broad hard brown band. Same soft painterly game art, no photographic noise, upper-left diffuse light. True transparent background, no new elements, no trees/text. One ribbon only. The image will be cropped to its occupied vertical range and resized to512x64.",
+      "references": [
+        {
+          "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-aaa8be0f-2db0-4087-880a-5a524939f236.png",
+          "sha256": "97f2c25acd566bdce6a41990332e71d59839f517196f3b9086e34cbfa6087cdb"
+        }
+      ],
+      "raw_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-b681f1ee-e08e-4069-bf9b-1f3573d88b07.png",
+      "raw_copy": "raw/woodland_grass_edge_winter-v1.png",
+      "raw_sha256": "dedf29c16119d6d136cc8c1019891e4b9b0b7ce0bc8344893867d1b1a3db3a0e"
+    }
+  ]
+}

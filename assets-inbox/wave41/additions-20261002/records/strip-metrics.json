@@ -1,0 +1,50 @@
+[
+  {
+    "id": "woodland_grass_edge_summer-v1",
+    "path": "assets/boundary/woodland_grass_edge_summer-v1.png",
+    "width": 512,
+    "height": 64,
+    "pivot": [
+      256,
+      32
+    ],
+    "repeat": "X only",
+    "pitch": 512,
+    "logicalTiles": 4,
+    "orientation": "top grass; bottom woodland",
+    "crop": [
+      0,
+      261,
+      2172,
+      240
+    ],
+    "postprocess": "One resize to512x48; centered Y8px transparent, inward8px fade; X24px shared-endpoint blend",
+    "sha256": "2206cff216096255a18e09774872ae9f118181602e8800dbd9d2c8dc0290c123",
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0
+  },
+  {
+    "id": "woodland_grass_edge_winter-v1",
+    "path": "assets/boundary/woodland_grass_edge_winter-v1.png",
+    "width": 512,
+    "height": 64,
+    "pivot": [
+      256,
+      32
+    ],
+    "repeat": "X only",
+    "pitch": 512,
+    "logicalTiles": 4,
+    "orientation": "top grass; bottom woodland",
+    "crop": [
+      0,
+      251,
+      2172,
+      261
+    ],
+    "postprocess": "One resize to512x48; centered Y8px transparent, inward8px fade; X24px shared-endpoint blend",
+    "sha256": "bd88bd10de53226d5eb0abf8bc37a8a7b095f200943d8b38dc7b045adffe74b8",
+    "endpointRGBAMax": 0,
+    "Y8pxAlphaMax": 0
+  }
+]
