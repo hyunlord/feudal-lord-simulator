@@ -6,7 +6,7 @@ Astra가 만든 산출물은 **설치 여부와 관계없이** `assets-inbox/<wa
 
 ```
 assets-inbox/
-  INBOX_LEDGER.csv          ← 그림(PNG·JPG) 한 장당 한 행 (inbox 그림 수 = 장부 행 수)
+  INBOX_LEDGER.csv          ← 그림(PNG·JPG·WEBP) 한 장당 한 행 (inbox 그림 수 = 장부 행 수)
   README.md                 ← Wave별 받은 곳과 설치 이력(초기 Wave)
   <wave>/
     <파일들>                 ← INBOX-1 이전에 받은 것(평평한 구조, 그대로 둠)
@@ -41,7 +41,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-10-03 01시 35분 갱신)
+## 3. 현재 장부 요약 (2026-10-03 01시 47분 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -82,7 +82,7 @@ assets-inbox/
 | `wave26` | 103 |  | 103 |  |  |  |  | 100 |
 | `wave27` | 43 |  | 43 |  |  |  |  | 40 |
 | `wave28` | 50 |  | 50 |  |  |  |  | 39 |
-| `wave29` | 32 |  | 32 |  |  |  |  | 14 |
+| `wave29` | 33 |  | 33 |  |  |  |  | 14 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 62 |
 | `wave30` | 141 |  | 141 |  |  |  |  | 90 |
 | `wave31` | 4 |  | 4 |  |  |  |  | 3 |
@@ -111,7 +111,7 @@ assets-inbox/
 | `wave8` | 41 |  | 39 |  | 2 |  |  | 37 |
 | `wave9` | 52 |  | 44 |  | 5 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **5049** | **0** | **3726** | **3** | **306** | **970** | **44** | **2065** |
+| **합계** | **5050** | **0** | **3727** | **3** | **306** | **970** | **44** | **2065** |
 
 ## 4. 찾는 법
 
@@ -344,7 +344,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - 재작업본이 오면 원본 행은 `superseded` + `replaced_by`, 재작업본은 판정 전까지 `candidate`.
 - 장부는 여러 세션이 고친다. 다시 생성하지 말고 해당 행만 고치거나 행을 더한다.
 - 판정·재작업·설치가 바뀌면 장부 행의 `status`·`replaced_by`·`installed_by`만 고친다. 파일은 지우거나 덮어쓰지 않는다.
-- 장부 행 수 = inbox 그림(PNG·JPG) 수를 유지한다. JPG 행은 Wave 24부터(판정이 따로 온 파생본).
+- 장부 행 수 = inbox 그림(PNG·JPG·WEBP) 수를 유지한다. JPG 행은 Wave 24부터(판정이 따로 온 파생본). WEBP는 2026-10-03부터(Wave 29 움직이는 미리보기 1장, 사용자 판정). `records/`의 GIF 2·SVG 15(Wave 23 새 비행 순환, Wave 4~5 위상·마스크 도면)는 아직 장부 밖이다. `check:merge`의 장부 검사는 이 수를 세지 않는다.
 - **큰 기계 기록은 astra-raw에만**(2026-09-30 사용자 규칙, Wave 39 다음 묶음부터): 기계가 만든 기록 파일(JSON·JSONL·CSV·TSV·TXT·LOG·XML 등)이 256KB(262,144바이트)를 넘으면 저장소에 넣지 않는다. 원본은 `~/feudal-lord-analysis/astra-raw/`(받은 ZIP과 작업 폴더)에만 두고, 저장소의 같은 자리에는 `<파일 이름>.astra-raw.txt` 안내 파일 하나를 둔다. 안내 파일은 한 줄: `<파일 이름> · <바이트> bytes · sha256 <64자> · <astra-raw 경로>`(ZIP 안이면 `zips/<ZIP>::<묶음 안 경로>`, 작업 폴더에도 있으면 그 경로를 `;`로 덧붙임).
   - 사람이 읽는 문서(README·REPORT·QA·PLAN 같은 `.md`, 갤러리 `index.html`)와 확인 그림은 크기와 관계없이 그대로 저장소에 둔다.
   - 이미 들어간 Wave 39 `records/proofs/placements.json`(약 60,000줄) 등 규칙 전의 파일은 그대로 둔다(사용자 판정).
