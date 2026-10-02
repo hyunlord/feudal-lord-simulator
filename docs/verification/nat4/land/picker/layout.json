@@ -68,7 +68,7 @@
     67,
     44
    ],
-   "value": "591133",
+   "value": "274012",
    "fieldSkin": true,
    "fieldFontPx": 16,
    "modes": [
@@ -87,48 +87,12 @@
    ],
    "centre": {
     "tag": "DIV",
-    "className": "tutorial-toggle",
+    "className": "welcome-dismiss-layer title-screen",
     "inButton": false
    },
    "landPreviews": 5,
    "centreAboveLandsPx": 91,
-   "parchmentInside": true,
-   "afterPick": {
-    "pressed": [
-     "false",
-     "false",
-     "false",
-     "false",
-     "true"
-    ],
-    "value": "482913",
-    "invalid": null,
-    "problem": null,
-    "modesDisabled": [
-     null,
-     null
-    ],
-    "previews": 5,
-    "welcome": true
-   },
-   "unbuildable": {
-    "pressed": [
-     "true",
-     "false",
-     "false",
-     "false",
-     "false"
-    ],
-    "value": "118",
-    "invalid": "true",
-    "problem": "이 번호의 지도에는 마을을 세울 자리가 없습니다. 다른 번호를 고르세요.",
-    "modesDisabled": [
-     "true",
-     "true"
-    ],
-    "previews": 4,
-    "welcome": true
-   }
+   "parchmentInside": true
   },
   {
    "viewport": [
@@ -198,7 +162,7 @@
     67,
     44
    ],
-   "value": "865889",
+   "value": "755987",
    "fieldSkin": true,
    "fieldFontPx": 16,
    "modes": [
@@ -292,7 +256,7 @@
     67,
     44
    ],
-   "value": "975683",
+   "value": "67744",
    "fieldSkin": true,
    "fieldFontPx": 16,
    "modes": [
@@ -311,7 +275,7 @@
    ],
    "centre": {
     "tag": "DIV",
-    "className": "tutorial-toggle",
+    "className": "welcome-dismiss-layer title-screen",
     "inButton": false
    },
    "landPreviews": 5,
@@ -386,7 +350,7 @@
     67,
     44
    ],
-   "value": "315238",
+   "value": "396110",
    "fieldSkin": true,
    "fieldFontPx": 16,
    "modes": [
@@ -405,7 +369,7 @@
    ],
    "centre": {
     "tag": "DIV",
-    "className": "tutorial-toggle",
+    "className": "welcome-dismiss-layer title-screen",
     "inButton": false
    },
    "landPreviews": 5,
@@ -480,7 +444,7 @@
     80,
     44
    ],
-   "value": "275831",
+   "value": "554381",
    "fieldSkin": true,
    "fieldFontPx": 16,
    "modes": [
@@ -504,6 +468,194 @@
    },
    "landPreviews": 5,
    "centreAboveLandsPx": 39,
+   "parchmentInside": true
+  },
+  {
+   "viewport": [
+    1920,
+    1080
+   ],
+   "pseudoLong": true,
+   "emblem": [
+    872,
+    86,
+    176,
+    176
+   ],
+   "parchment": [
+    520,
+    512,
+    880,
+    546
+   ],
+   "lands": [
+    [
+     537,
+     714,
+     163,
+     184
+    ],
+    [
+     708,
+     714,
+     163,
+     184
+    ],
+    [
+     879,
+     714,
+     163,
+     184
+    ],
+    [
+     1049,
+     714,
+     163,
+     184
+    ],
+    [
+     1220,
+     714,
+     163,
+     184
+    ]
+   ],
+   "seed": [
+    986,
+    664,
+    263,
+    44
+   ],
+   "field": [
+    1069,
+    664,
+    93,
+    44
+   ],
+   "random": [
+    1169,
+    664,
+    80,
+    44
+   ],
+   "value": "864355",
+   "fieldSkin": true,
+   "fieldFontPx": 16,
+   "modes": [
+    [
+     714,
+     907,
+     169,
+     44
+    ],
+    [
+     1038,
+     907,
+     169,
+     44
+    ]
+   ],
+   "centre": {
+    "tag": "DIV",
+    "className": "welcome-dismiss-layer title-screen",
+    "inButton": false
+   },
+   "landPreviews": 5,
+   "centreAboveLandsPx": 174,
+   "parchmentInside": true
+  },
+  {
+   "viewport": [
+    1180,
+    820
+   ],
+   "pseudoLong": true,
+   "emblem": [
+    502,
+    66,
+    176,
+    176
+   ],
+   "parchment": [
+    150,
+    258,
+    880,
+    546
+   ],
+   "lands": [
+    [
+     167,
+     459,
+     163,
+     184
+    ],
+    [
+     338,
+     459,
+     163,
+     184
+    ],
+    [
+     509,
+     459,
+     163,
+     184
+    ],
+    [
+     679,
+     459,
+     163,
+     184
+    ],
+    [
+     850,
+     459,
+     163,
+     184
+    ]
+   ],
+   "seed": [
+    616,
+    409,
+    263,
+    44
+   ],
+   "field": [
+    699,
+    409,
+    93,
+    44
+   ],
+   "random": [
+    799,
+    409,
+    80,
+    44
+   ],
+   "value": "300909",
+   "fieldSkin": true,
+   "fieldFontPx": 16,
+   "modes": [
+    [
+     344,
+     652,
+     169,
+     44
+    ],
+    [
+     668,
+     652,
+     169,
+     44
+    ]
+   ],
+   "centre": {
+    "tag": "DIV",
+    "className": "welcome-dismiss-layer title-screen",
+    "inButton": false
+   },
+   "landPreviews": 5,
+   "centreAboveLandsPx": 49,
    "parchmentInside": true
   },
   {
@@ -574,7 +726,7 @@
     80,
     44
    ],
-   "value": "178247",
+   "value": "969902",
    "fieldSkin": true,
    "fieldFontPx": 16,
    "modes": [
@@ -602,6 +754,11 @@
   }
  ],
  "flows": {
+  "tutorialSwitch": {
+   "before": "true",
+   "after": "false",
+   "welcome": true
+  },
   "proofDefaultValue": "1",
   "defaultModeButton": {
    "archetypeId": null,
@@ -609,11 +766,11 @@
    "scenarioId": "core:campaign_market_town",
    "tick": 0
   },
-  "drawn": "225527",
+  "drawn": "496141",
   "drawnKeepsWelcome": true,
   "drawnThenCentre": {
    "archetypeId": null,
-   "seed": 225527,
+   "seed": 496141,
    "scenarioId": "core:campaign_market_town",
    "tick": 0
   },
