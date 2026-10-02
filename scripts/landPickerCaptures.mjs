@@ -24,7 +24,7 @@ await mkdir(outDir, { recursive: true });
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const box = rect => rect === null ? null : [Math.round(rect.x), Math.round(rect.y), Math.round(rect.width), Math.round(rect.height)];
 const rows = [];
-for (const [width, height, long] of [[1280, 800], [1920, 1080], [1180, 820], [1024, 768], [1280, 800, true], [1024, 768, true]]) {
+for (const [width, height, long] of [[1280, 800], [1920, 1080], [1180, 820], [1024, 768], [1280, 800, true], [1920, 1080, true], [1180, 820, true], [1024, 768, true]]) {
   const context = await browser.newContext({ viewport: { width, height } });
   const page = await context.newPage();
   await page.routeWebSocket("**", socket => socket.close());
@@ -94,6 +94,12 @@ const flows = {};
   const value = () => page.locator(".welcome-seed-field").inputValue();
   const centre = () => page.mouse.click(640, 400);
   await fresh();
+  // LU-D8 still holds with only the switch taking the pointer (NAT-4): a press on it toggles and keeps the welcome.
+  const switchBefore = await page.locator(".welcome-parchment .tutorial-switch").getAttribute("aria-checked");
+  await page.locator(".welcome-parchment .tutorial-switch").click();
+  flows.tutorialSwitch = { before: switchBefore, after: await page.locator(".welcome-parchment .tutorial-switch").getAttribute("aria-checked"),
+    welcome: await page.locator(".welcome-parchment").count() === 1 };
+  await page.locator(".welcome-parchment .tutorial-switch").click();
   flows.proofDefaultValue = await value();
   await page.locator(".welcome-parchment [data-scenario]").first().click(); await page.waitForTimeout(800);
   flows.defaultModeButton = await land();
