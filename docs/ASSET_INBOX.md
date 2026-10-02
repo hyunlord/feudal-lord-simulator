@@ -41,7 +41,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-10-02 15시 40분 갱신)
+## 3. 현재 장부 요약 (2026-10-03 01시 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -58,6 +58,7 @@ assets-inbox/
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
 | `portrait-pool` | 340 |  | 340 |  |  |  |  | 304 |
 | `retired` | 29 |  |  |  |  |  | 29 | 16 |
+| `storehouse-corner` | 11 |  | 9 | 2 |  |  |  | 0 |
 | `ui-p0` | 85 |  | 56 |  | 29 |  |  | 43 |
 | `walker-pilot2` | 96 |  | 96 |  |  |  |  | 0 |
 | `wave10` | 735 |  |  |  |  | 735 |  | 0 |
@@ -93,7 +94,7 @@ assets-inbox/
 | `wave39` | 61 |  | 61 |  |  |  |  | 0 |
 | `wave40` | 15 |  | 15 |  |  |  |  | 0 |
 | `wave4-pilot` | 15 |  | 8 |  | 4 | 3 |  | 12 |
-| `wave41` | 70 |  | 63 |  |  | 7 |  | 0 |
+| `wave41` | 70 |  | 63 |  |  | 7 |  | 8 |
 | `wave42` | 100 |  | 90 |  | 10 |  |  | 0 |
 | `wave43` | 64 |  | 64 |  |  |  |  | 0 |
 | `wave44` | 14 |  | 14 |  |  |  |  | 0 |
@@ -109,7 +110,7 @@ assets-inbox/
 | `wave8` | 41 |  | 39 |  | 2 |  |  | 37 |
 | `wave9` | 52 |  | 44 |  | 5 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **4959** | **0** | **3673** | **0** | **306** | **944** | **36** | **2057** |
+| **합계** | **4970** | **0** | **3682** | **2** | **306** | **944** | **36** | **2065** |
 
 ## 4. 찾는 법
 
@@ -243,6 +244,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-wave44-early-petitions-20261002.zip` (10-02 14:29) | `wave44/candidates-20261002` | 4,219 KB | `55bc1ed29f972d5b…` | 28 | 0 | `reference/`(Wave 40 두 장·수정 전 판 4) 제외 | `assets/`·`proofs/`·`records/`는 그대로, `README.md`·`QA_CHECKLIST.md`·`assets.csv`·`SHA256SUMS`는 `records/`. `records/ART_BIBLE_v2.md`는 Wave 41 것과 같은 바이트라 뺌. 작업 폴더 `ondine/output/astra-wave44-candidates-20261002`(55MB, 원본 `originals/` 포함)은 `astra-raw/output/`에 보관
 | `/tmp/astra-wave42-rework8-v2-lite.zip` (10-02 15:19, 경량판) | `wave42/rework-20261002` | 1,245 KB | `7cc77e9047d01877…` | 36 | 0 | 없음(생성 원본은 ZIP에 없음) | `assets/abandoned`·`assets/regrowth`·`proofs/`는 그대로, `README.md`·`QA.md`·`assets.csv`·`SHA256SUMS.txt`는 `records/` 아래로. `records/art-bible.md`는 원래 묶음 `records/art-bible.md`와 같은 바이트라 뺌. ZIP 검증 기록 `/tmp/astra-wave42-rework8-v2-zip-verification.json`은 `astra-raw/zips/`에만. 작업 폴더 `bramble/output/astra-wave42-land-stages-rework8-v2`(18MB)는 `astra-raw/output/`에 보관
 | `/tmp/astra-wave42-bramble-v3-lite.zip` (10-02 15:33, 경량판) | `wave42/bramble-v3-20261002` | 262 KB | `1437802d2d807050…` | 16 | 0 | 없음 | `assets/abandoned`·`proofs/`는 그대로, `README.md`·`QA.md`·`assets.csv`·`SHA256SUMS.txt`는 `records/` 아래로. `records/art-bible.md`는 원래 묶음 사본과 같은 바이트라 뺌. 작업 폴더 `bramble/output/astra-wave42-bramble-v3`는 `astra-raw/output/`에 보관
+| `/tmp/astra-storehouse-corner-20261003.zip` (10-03 01:04) | `storehouse-corner/candidates-20261003` | 1,708 KB | `04aed11ef9ec45ba…` | 24 | 0 | `references/`(원본 참조 9, 바이블 사본 포함)와 `records/*-scaled.png` 8(생성 원본을 한 번 줄인 중간 PNG — 생성 원본은 저장소에 넣지 않는 규칙) 제외 | `assets/`·`proofs/`는 그대로, `README.md`·`QA.md`·`manifest.csv`·`manifest.json`·`SHA256SUMS`는 `records/`, ZIP의 `records/`는 `records/`에 그대로(중간 PNG만 빼고). ZIP 해시 파일과 함께 `astra-raw/zips/`에 보관
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -319,6 +321,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 42 땅의 변화 단계**(`wave42/candidates-20261002`, 2026-10-02 판정): PNG 50장(그루터기 8·통나무와 재생 12·발길 길 기본띠 12·길 연결 조각 8·버려진 땅 10, 모두 여름·겨울 짝) 가운데 42장과 확인 그림 26 `confirmed`. `rework_pending` 8장 — `sapling_1to3_*`·`sapling_4to8_*` "실제 크기에서 막대 하나 — 어린나무 무리·덤불로", `abandoned_grass_*`·`abandoned_bramble_*` "보통 풀밭과 구별 안 됨". 좌우 반전 금지(NE/NW는 독립 원본), 길 띠 UV 투영과 포트 규칙은 `records/assets.csv`·`records/CONNECTIONS.md`. 확인 그림의 연도 흐름은 아트 예시이며 엔진 수치가 아니다.
 - **Wave 42 재작업 v2**(`wave42/rework-20261002`, 2026-10-02 판정): 묘목 1–3년·4–8년(128×192, 피벗 (64,172))과 방치 풀(128×160, 피벗 (64,120)) 여름·겨울 6장 `confirmed`, 비고 "재작업판(바이트 다름)" — 파일 이름이 원래 납품과 같다. 옛 6장(`rework_pending`)은 `superseded`, `replaced_by`에 새 경로. 방치 덤불 v2 2장(`abandoned_bramble_{summer,winter}`)은 받되 `rework_pending`, 비고 "좌우 대칭 피라미드 — 낮게 퍼진 불규칙 덤불로". 원래 덤불 2장도 `rework_pending` 그대로이며 비고에 "v2도 재작업 — v3 대기". 비교판 10(JPEG 4·PNG 6)은 확인 그림으로 `confirmed`.
 - **Wave 42 가시나무 v3**(`wave42/bramble-v3-20261002`, 2026-10-02 판정): `abandoned_bramble_{summer,winter}` v3(128×160, 피벗 (64,120), 낮고 옆으로 퍼진 비대칭 덩어리, 겨울은 잎 없는 붉은 갈색 줄기)과 비교판 4 `confirmed`. 처음 판과 v2의 덤불 4행(`rework_pending`)은 `superseded`, `replaced_by`에 v3 경로. 이로써 Wave 42의 `rework_pending`은 0.
+- **창고 눈·성문 모서리 조각**(`storehouse-corner/candidates-20261003`, 2026-10-03 판정): 창고 A·B·C 눈 전용 층 3(160×136, 원본 `storehouse.png`·`storehouse_b-v1`·`storehouse_c-v1`과 같은 캔버스·피벗, 오프셋 (0,0), 지붕 눈 피복 63~72%)과 목책 모서리 조각 여름·겨울 2(256×320, 피벗 (127,270)), 확인판 4 `confirmed`. 석벽 모서리 조각 여름·겨울 2(`gate_corner_stone_*`, 피벗 (127,268))는 `rework_pending`, 비고 "주변 석벽보다 밝은 크림색·큰 돌 — 회색 돌 색·크기 맞추기". 권장 시작 배율·좌우 반전 금지·엔진 연결 위치는 `records/README.md`. 게임 미설치.
 - **Wave 43 봄**(`wave43/candidates-20261002`, 2026-10-02 판정): 24장 — 지면 채움 5(256×128, XY 반복)·밭 3(512×64, X 반복)·활엽수 3·기타 나무 3(여름 원본의 캔버스·알파·피벗 그대로)·과수 4(벚나무는 `plum_j` 기하 템플릿)·봄 소품 6 — 과 확인 그림 40(그룹별 34·묶음 전체 6) `confirmed`. 봄 전용 소품은 여름·겨울판이 없다.
 - **Wave 44 초반 청원 삽화**(`wave44/candidates-20261002`, 2026-10-02 판정): 960×540 JPG 13장(경계 분쟁·방앗간 사용 의무·상속세·혼인세·에일 검정·다리 수리·장터 좌판 분쟁·미성년 후견·공동 목초지·이주민 정착·장원 법정·숲 무단 출입·선례에 따라)과 확인판 1 `confirmed`. Wave 40 사건 삽화 화풍. 장부에 각각 한 행.
 ## 7. 찾지 못한 것
