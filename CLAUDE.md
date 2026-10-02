@@ -1,4 +1,6 @@
-# CLAUDE.md — Feudal Lord Simulator
+# CLAUDE.md — Charter & Kin · 인장과 가문
+
+게임 이름: 영어 **Charter & Kin**, 한국어 **인장과 가문**(결정 TITLE-1, 가제 "봉건 영주 시뮬레이터" 대체). 저장소 이름 `feudal-lord-simulator`는 그대로다.
 
 Claude Code 세션이 시작할 때 읽는 요약이다.
 - 원본: 규칙은 [`AGENTS.md`](AGENTS.md)(맨 아래에서 불러온다), 헌장은 [`docs/CHARTER.md`](docs/CHARTER.md).

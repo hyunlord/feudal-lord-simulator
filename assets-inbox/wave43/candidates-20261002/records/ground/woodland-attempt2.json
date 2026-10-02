@@ -1,0 +1,21 @@
+{
+  "attempt": 2,
+  "prompt": "Precise correction of spring woodland floor texture. Input1 is CURRENT spring candidate: its big red oak leaves are WRONG SCALE and too contrasty. Input2 is APPROVED SUMMER material: match its subdued brown base, tiny grain scale and low contrast. Completely remove all individually recognizable large lobed leaf shapes and red autumn-carpet appearance from input1. Make old leaf litter a TINY quiet broken brown grain, mostly moist muted taupe brown earth, only a little fresh low soft moss, very rare pinprick white spring flowers. At final256x128 no individual old leaf should be larger than about1 pixel. Keep brown dominant, not green meadow. Very low contrast, soft painterly quiet surface, no macro shapes. Full opaque flat seamless XY-repeat2:1 tile. No vignette, borders, lettering, objects or perspective. Output one corrected material image.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-3cf91047-62bb-4ee8-866d-f9ed7717b859.png",
+  "raw_copy": "raw/woodland_floor_spring_a-attempt2.png",
+  "references": [
+    {
+      "path": "raw/woodland_floor_spring_a-attempt1.png",
+      "sha256": "c92f3250636e30b8891034b860459ec23cb3f4f154e1768f9716491a4aed23da"
+    },
+    {
+      "path": "references/woodland_floor_spring_a-summer.png",
+      "sha256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36"
+    }
+  ],
+  "decision": "rejected: still recognizable large leaf shapes",
+  "raw_sha256": "5bf616f82f5e36b7f2b5260656ab89517efb8ac4c2990b53b38e3208912992fd"
+}

@@ -1,0 +1,52 @@
+{
+  "id": "ridge_seedling_spring_b",
+  "file": "assets/ridge_seedling_spring_b-v1.png",
+  "width": 512,
+  "height": 64,
+  "pivot": {
+    "x": 0,
+    "y": 0
+  },
+  "repeat": "X",
+  "summer_reference": "references/ridge_seedling_spring_b-summer.png",
+  "winter_reference": "references/ridge_seedling_spring_b-winter.png",
+  "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_seedling_b-v1.png",
+  "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/fields/ridge_fallow_winter-v1.png",
+  "note": "Winter reference is fallow proxy, not same crop's winter variant.",
+  "prompt": "Edit reference field strip into spring seedlings B: slightly uneven newly sprouted rows with two small narrow cotyledon leaves per cluster. Preserve original THREE horizontal soil ridge rows and original B cluster layout,512x64 aspect8:1, X-seamless repeat, same thin transparent margins. Fresh muted pale green and wet warm brown soil, broad quiet hand-painted strokes, no pixel noise. Do not add mature crops, flowers, new rows, framing, lettering or perspective.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "status": "candidate",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-d266e677-4692-453e-9ea1-ad84f27dfe6c.png",
+  "raw_copy": "raw/ridge_seedling_spring_b-attempt1.png",
+  "summer_sha256": "c573ebc854983abd7eb3ecc875a68d7662b9a1e551ab1d8c9cf533641da10faf",
+  "winter_sha256": "9c9536c152d5dc5039ffeec75b90cf9d07e3bbcfdc88aea42cf00cfce602f686",
+  "raw_sha256": "41e9b5b72bbca0767dd57c84befab68151f2f3261ae79413f85a5626d91bfc07",
+  "final_sha256": "89d3c9898840b91c7e3147c90ec714ae6a3044e15ce41ae2e9b71988ddd7fac2",
+  "postprocess": {
+    "raw_crop": {
+      "left": 0,
+      "top": 241,
+      "width": 2172,
+      "height": 245
+    },
+    "resize": "one resize to target",
+    "alpha": "original strip alpha restored before repeat-edge blend; zero-alpha RGB zeroed",
+    "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+    "edge_rgba_mae_x": 0,
+    "edge_rgba_mae_y": 0,
+    "zero_alpha_rgb_nonzero": 0
+  },
+  "inspection": {
+    "id": "ridge_seedling_spring_b",
+    "width": 512,
+    "height": 64,
+    "zero_alpha_nonzero_rgb": 0,
+    "nonopaque_pixels": 32768,
+    "edge_rgba_mae_x": 0,
+    "edge_rgba_mae_y": 0,
+    "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+    "runtime_installed": false
+  }
+}

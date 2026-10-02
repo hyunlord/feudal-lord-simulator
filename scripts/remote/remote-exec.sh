@@ -70,7 +70,9 @@ keep_results() {
 fail() { echo "remote-exec: $*" >&2; finish 2; }
 
 exec 8>"$BASE/_locks/$RUN.lock"
-flock -n 8 || { echo "remote-exec: $RUN is already running" >&2; exit 3; }
+# run.sh holds this lock through the upload and lets it go right after the launch: wait for it (a minute), so the folder
+# is never unlocked between upload and run. A run that really is already going still holds it past the minute.
+flock -w 60 8 || { echo "remote-exec: $RUN is already running" >&2; exit 3; }
 
 prune_runs() {
   local count=0 dir name

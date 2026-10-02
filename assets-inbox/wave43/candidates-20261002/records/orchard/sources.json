@@ -1,0 +1,46 @@
+[
+  {
+    "species": "apple",
+    "variant": "c",
+    "source": "output/astra-wave41-candidates-20261002-v1/delivery/astra-wave41-candidates-20261002/assets/11-orchard_apple_c-v1-wave41-v1.png",
+    "summer": "output/astra-wave43-spring-20261002/orchard/references/apple-summer.png",
+    "winterSource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/orchard/orchard_apple_c_winter-v1.png",
+    "winter": "output/astra-wave43-spring-20261002/orchard/references/apple-winter.png",
+    "reference_sha": "9b4e11045540c46e1c477554ae0363b6ee1d9b202ab49905637c8521e09e8753",
+    "winter_sha": "9f8364ec8898da73ae1c2112aa0682ff9bae848260de5d2097374cc1cc2fd041",
+    "proxy": null
+  },
+  {
+    "species": "pear",
+    "variant": "e",
+    "source": "output/astra-wave41-candidates-20261002-v1/delivery/astra-wave41-candidates-20261002/assets/13-orchard_pear_e-v1-wave41-v1.png",
+    "summer": "output/astra-wave43-spring-20261002/orchard/references/pear-summer.png",
+    "winterSource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/orchard/orchard_pear_e_winter-v1.png",
+    "winter": "output/astra-wave43-spring-20261002/orchard/references/pear-winter.png",
+    "reference_sha": "ded1852c37d7a24c33216b7b7b63b2a4ca2ca8428d19462bd4bbcf3954708bf5",
+    "winter_sha": "7ee905876ef9788d504ecf9439b3b4b131cfc8e22d4cc916bd7a19f20df3e98a",
+    "proxy": null
+  },
+  {
+    "species": "plum",
+    "variant": "f",
+    "source": "output/astra-wave41-candidates-20261002-v1/delivery/astra-wave41-candidates-20261002/assets/14-orchard_plum_f-v1-wave41-v1.png",
+    "summer": "output/astra-wave43-spring-20261002/orchard/references/plum-summer.png",
+    "winterSource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/orchard/orchard_plum_f_winter-v1.png",
+    "winter": "output/astra-wave43-spring-20261002/orchard/references/plum-winter.png",
+    "reference_sha": "fa158f5ac19631e608c00e0e38f7be23db5a40c08c1738c5104a4c8a281c6665",
+    "winter_sha": "a6e7f742931607b36ef2e85eaf40cb654b76644bdb85d403a9899f88a4555c8f",
+    "proxy": null
+  },
+  {
+    "species": "cherry",
+    "variant": "j",
+    "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/zones/orchard_plum_j-v1.png",
+    "summer": "output/astra-wave43-spring-20261002/orchard/references/cherry-summer.png",
+    "winterSource": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/orchard/orchard_plum_j_winter-v1.png",
+    "winter": "output/astra-wave43-spring-20261002/orchard/references/cherry-winter.png",
+    "reference_sha": "7a1b5e5de20682af913489b9239769886dae8021d0f28d141e64e7163513958a",
+    "winter_sha": "e2e77285fe5fbc3e944e6be93a919fcc07728433327faceb7ce32a9de1278ec0",
+    "proxy": "plum_j summer/winter are species-neutral geometry/proof proxies, not cherry botanical source"
+  }
+]

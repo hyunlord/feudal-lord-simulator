@@ -1,0 +1,48 @@
+{
+  "verdict": "PASS_OFFLINE",
+  "count": 4,
+  "canvas": [
+    256,
+    256
+  ],
+  "results": [
+    {
+      "id": "apple",
+      "alpha_mismatch_pixels": 0,
+      "hiddenRGB_nonzero": 0,
+      "preserved_wood_mask_RGB_mismatch": 0,
+      "sha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449"
+    },
+    {
+      "id": "pear",
+      "alpha_mismatch_pixels": 0,
+      "hiddenRGB_nonzero": 0,
+      "preserved_wood_mask_RGB_mismatch": 0,
+      "sha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156"
+    },
+    {
+      "id": "plum",
+      "alpha_mismatch_pixels": 0,
+      "hiddenRGB_nonzero": 0,
+      "preserved_wood_mask_RGB_mismatch": 0,
+      "sha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee"
+    },
+    {
+      "id": "cherry",
+      "alpha_mismatch_pixels": 0,
+      "hiddenRGB_nonzero": 0,
+      "preserved_wood_mask_RGB_mismatch": 0,
+      "sha256": "049dc09ac5d25137a2dacf905ab995e2f54d55634c7a00207dc760239ccbbdce"
+    }
+  ],
+  "review_modes": [
+    "native256pxwinter-spring-summer",
+    "same-view0.6",
+    "dark/light alpha"
+  ],
+  "runtime_installed": false,
+  "limits": [
+    "Cherry summer/winter are plum_j geometry proxies; not cherry seasonal originals.",
+    "RGB canopy mask is color-based; structural wood retained and visually inspected."
+  ]
+}

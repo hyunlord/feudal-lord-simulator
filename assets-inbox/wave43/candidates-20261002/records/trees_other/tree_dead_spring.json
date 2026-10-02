@@ -1,0 +1,47 @@
+{
+  "id": "tree_dead_spring",
+  "prompt": "Edit this exact tree_dead game sprite into a spring seasonal bark-material variant. It is a DEAD leafless tree and MUST REMAIN DEAD: absolutely no leaves, buds, green shoots or new living branches. Preserve every fork, broken tip, branch gap, root shape, silhouette, framing, canvas and bottom pivot precisely. Only give existing bark a subtly damp spring tone and a few restrained muted gray-green moss flecks WITHIN the lower existing bark surface, never a new silhouette. Keep dark brown-gray wood, restrained upper-left diffuse light, original hand-painted medieval strategy game texture. No snow, no flowers, no ground or cast shadow, no added objects, text, white edge lines or black outline strokes. Transparent background. Exact structural overlay with source, no crop or reposition.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "raw_original": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-a3fb-7f81-8832-01110f2fccc6/exec-003aadbf-d22b-4e4e-b1d4-e466e9a31160.png",
+  "status": "candidate",
+  "reference": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../references/tree_dead.png",
+  "reference_sha256": "288aed1fe360bbdb39b2dd27935e7b4a7ae990f59b32908a76423dba1a008a35",
+  "winter_reference": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../references/tree_dead_winter_snow-v1.png",
+  "winter_sha256": "b1a05c875d08439ec40c95e24f5fc3bb0ca1aef303ead50f830a4599049d581d",
+  "raw_copy": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../raw/tree_dead_spring.png",
+  "raw_sha256": "a4728eec8b62281111444130a44dbc0465cf07c332d446985d4d1dd85b200f1a",
+  "output": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../assets/tree_dead_spring.png",
+  "output_sha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78",
+  "width": 56,
+  "height": 80,
+  "pivot": {
+    "x": 28,
+    "y": 80
+  },
+  "worldRenderScale": 0.8,
+  "manifest_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/src/render/worldAssetManifest.generated.ts",
+  "processing": {
+    "method": "Sharp alpha-bbox registration, Lanczos3 resample, selective generated RGB material blend into original RGB, exact summer alpha restoration, transparent RGB zero",
+    "source_bbox": {
+      "left": 2,
+      "top": 9,
+      "width": 52,
+      "height": 70
+    },
+    "generated_bbox": {
+      "left": 48,
+      "top": 168,
+      "width": 967,
+      "height": 1313
+    },
+    "blend": "32% interior / 8% edge",
+    "geometry": "Original edge and branch-boundary RGB retained at 92-97%; generated alpha discarded"
+  },
+  "qa": {
+    "alpha_different_pixels": 0,
+    "transparent_rgb_nonzero_pixels": 0
+  },
+  "exception": "Dead remains leafless: no buds, leaves, living shoots. Spring conveyed only by damp bark and restrained moss inside original body."
+}

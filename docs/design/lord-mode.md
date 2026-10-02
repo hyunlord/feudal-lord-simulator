@@ -3,6 +3,7 @@
 작성 2026-09-30 · 결정: **영주 모드를 기본, 지금의 직접 배치는 샌드박스용 선택 도구로 유지**(사용자 확정). 근거: [`lord-mode-synthesis.md`](lord-mode-synthesis.md)(딥리서치 둘 + 기존 조사 둘 종합), 본선 코드.
 딥리서치: [향신·영주의 영지 1300–1450](../research/2026-09-30-gentry-estates-1300-1450-gpt.md) · [간접 통치 + 확장의 루프](../research/2026-09-30-indirect-rule-expansion-loop-gpt.md).
 화면 시안: [`mockups/lord-screens-20261002/`](mockups/lord-screens-20261002/README.md)(Astra 2026-10-02, 8화면 — 인물, 가문, 지역 지도, 영지, 회의, 협상·혼인, 청원, 무력 — × 1920·1280, 디자인 검토용 candidate, 게임 미설치).
+튜토리얼 대본: [`tutorial-lord-mode-20261002/`](tutorial-lord-mode-20261002/TUTORIAL_SCRIPT.md)(Astra 2026-10-02, 첫 20분 12단계 대본·분기 대사와 1280×800 스토리보드 12장, 정적 연출 검토용 candidate, 게임 미설치).
 
 ## 0. 한 문장
 플레이어는 건물을 놓지 않는다. **권리·약속·사람·돈의 조건**을 만들고, 도시의 가구·가문·공동체가 그 조건에 **이유 있게** 반응해 도시를 짓는다. 모든 결과는 **누가 왜**로 되짚을 수 있다.
