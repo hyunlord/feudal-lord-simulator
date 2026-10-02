@@ -31,6 +31,7 @@ import { preloadSeasonArt, seasonArtStatuses, seasonOf, type SeasonIndex } from 
 import { drawSeasonGrass, seasonChunkToken } from "./seasonGround";
 import { seasonFadeMs } from "./seasonTransition";
 import { drawLandWorksInChunk, landWorksChunkToken } from "./landWorksDraw";
+import { drawFootpathsInChunk, footpathChunkToken } from "./footpathDraw";
 import { landGroundOf } from "./archetypeGroundModel";
 import { drawLandDecals, drawLandEdges, drawLandFills, hasLandFill, landChunkToken, landShoreStrips } from "./archetypeGroundDraw";
 import { drawLandRock, groundTileAs } from "./landRockRegions";
@@ -132,7 +133,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const shoreReadiness = scene.shore.loops.length > 0 ? `:w${shoreAssetReadiness()}${wallStripsEnabled() ? ":ws" : ""}${waterChunkToken(zoom, input.state)}` : "";
   const cropStates = scene.zones.arableBands.length > 0 ? arableStripStateLookup(input.state) : null;
   const groundReadiness = (plan: GroundChunkPlan): string => (plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness)
-    + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "") + landWorksChunkToken(input.state, plan);
+    + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "") + landWorksChunkToken(input.state, plan) + footpathChunkToken(input.state, plan);
   const visible = visibleChunks(scene, input.range);
   // INSTALL-15: the season (and its art's readiness) is in both chunk keys but not in their deferKeys, so the season's
   // re-rasters may spread over a few frames; SMOOTH-2R: each chunk turns at its own moment (turn token = the season).
@@ -230,6 +231,7 @@ function drawGroundChunk(
     context.restore();
     if (plan.arableBands.length > 0) drawArableFields(context, scene.zones, plan.zoneIndexes, arableStripStateLookup(input.state), season);
   }
+  drawFootpathsInChunk(context, input.state, plan, season); // NAT-5 Wave 42: the engine's footpaths (footpathDraw.ts)
   drawYards(context, scene.grounds, plan.yards, input.state.seed);
   if (plan.beds.length > 0) drawCroftBeds(context, scene.yardProps, plan.beds);
   drawFieldClusters(context, scene.fields, plan.fieldClusters, season);

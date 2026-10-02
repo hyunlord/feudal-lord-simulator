@@ -7,7 +7,6 @@ import {
   buildTreeCluster,
   type ForestLookup,
   type GroundCoverDescriptor,
-  type StumpDescriptor,
   type TreeDescriptor,
 } from "./treeLayout";
 import { applyInkOutline, snapToPixel } from "./style";
@@ -16,7 +15,7 @@ import { seasonForObject, type SeasonBlend } from "./seasonTransition";
 import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSprite";
 
 /**
- * INSTALL-15: a tree, shrub, stump, tuft or stone in this season's art (the Wave 15 variant on the base's canvas and
+ * INSTALL-15: a tree, shrub, tuft or stone in this season's art (the Wave 15 variant on the base's canvas and
  * registration; the base art where there is none or it is still loading). While the season turns, each object switches
  * at its own moment (seasonForObject). Variants are drawn untinted: the foliage-ramp tint only moves exact ramp
  * colours, and the received Wave 15 art has none (0 of ~3,000 opaque pixels on the large oak and each of its variants).
@@ -102,30 +101,6 @@ export function drawGroundCoverDescriptor(
   drawGroundCoverPrimitive(context, input.descriptor, input.zoom);
 }
 
-export function drawStumpDescriptor(
-  context: CanvasRenderingContext2D,
-  input: {
-    readonly descriptor: StumpDescriptor;
-    readonly zoom: number;
-    readonly spriteOptions: WorldSpriteOptions;
-    readonly season?: SeasonBlend;
-  },
-): void {
-  if (
-    drawSeasonalSprite(
-      context,
-      input.descriptor.spriteKey,
-      input.descriptor.anchorTx,
-      input.descriptor.anchorTy,
-      { ...input.spriteOptions, scale: input.descriptor.scale },
-      input.season, saltOf(input.descriptor.anchorTx, input.descriptor.anchorTy),
-    )
-  ) {
-    return;
-  }
-  drawStumpPrimitive(context, input.descriptor, input.zoom);
-}
-
 function drawTree(
   context: CanvasRenderingContext2D,
   nowMs: number,
@@ -174,27 +149,6 @@ function drawGroundCoverPrimitive(
     snapToPixel(descriptor.y - 4 * descriptor.scale),
     snapToPixel(8 * descriptor.scale),
     snapToPixel(5 * descriptor.scale),
-    0,
-    0,
-    Math.PI * 2,
-  );
-  context.fill();
-  applyInkOutline(context, zoom);
-  context.stroke();
-}
-
-function drawStumpPrimitive(
-  context: CanvasRenderingContext2D,
-  descriptor: StumpDescriptor,
-  zoom: number,
-): void {
-  context.fillStyle = SEMANTIC_PALETTE.earthDark;
-  context.beginPath();
-  context.ellipse(
-    snapToPixel(descriptor.x),
-    snapToPixel(descriptor.y - 3),
-    snapToPixel(11),
-    snapToPixel(5),
     0,
     0,
     Math.PI * 2,
