@@ -1,0 +1,24 @@
+{
+  "revision": "alpha-v2-final",
+  "reason": "Assembly review showed pale contour halos; condition only alpha at output scale to blend terrain into ground.",
+  "count": 27,
+  "uniqueHashes": 27,
+  "hashMatches": 27,
+  "mastersUnchanged": true,
+  "rgbChangedChannels": 0,
+  "alphaIncreasedPixels": 0,
+  "alphaDecreasedPixels": 1312173,
+  "allSoftAlpha": true,
+  "edgePixelsAlphaOver5": 0,
+  "visualReview": {
+    "light": "Reviewed: pale outlines substantially reduced, details sharp",
+    "dark": "Reviewed: warm land wash remains but sharper pale fringe reduced",
+    "ground": "Reviewed native-size terrain overlap on open_field ground; forests and hills blend without near-white outlines; native ground tiled rather than rescaled"
+  },
+  "knownLimitations": [
+    "Natural painted color differences remain",
+    "Not runtime rendering QA",
+    "Forest split glade contains some conifers"
+  ],
+  "implementationCorrections": "During local QA corrected sharp one-channel blur expansion via explicit greyscale and avoided forwarding premultiplied output metadata as raw input; regenerated all finals before final readiness."
+}

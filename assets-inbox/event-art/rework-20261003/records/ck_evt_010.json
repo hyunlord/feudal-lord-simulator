@@ -1,0 +1,39 @@
+{
+  "id": "ck_evt_010",
+  "tool": "builtin image_gen__imagegen",
+  "prompt": "Use case: historical-scene. Create ONE finished full-bleed 16:9 landscape 960x540 event-card illustration for Charter & Kin. References are STYLE ONLY, do not copy their composition. Match warm painterly narrative realism, convincing natural anatomy, soft painted edges, muted earthy oak browns and limestone cream, textured linen and wool, warm atmospheric light, readable story silhouettes. Southern England early 14th century, 1300-1340: loose belted tunics, hoods/coifs, long modest gowns and linen veils; no later Tudor fashion, modern collars or equipment. Brown oak timber, warm plaster, thatch or flat terracotta tiles, NO house chimneys, no modern glass, no black-white Tudor facade. Absolutely NO text, letters, numerals, writing, watermark or border anywhere. Paper is blank uninscribed parchment with wax seals; no pseudo-writing. Natural consistent scene lighting. Scene ck_evt_010, year1310, SUMMER MORNING. WIDE riverbank landscape, river clearly separates TWO OPPOSING BANKS. Exactly FIVE people: on near bank at lower left a steward presents a large blank fishing-right parchment with wax seal to an estate lord, both looking toward opposite bank. On far bank mid-right, a collector accepts visible small coins from fisherman for a basket of fish while another fisherman lifts fish from net. Fishing nets on BOTH banks, a wicker fish basket near foreground. The opposite bank transaction must be big and clear enough to read, not tiny silhouettes; river spans middle of composition. Documentary ownership claim here versus actual fish income over there is core story. Natural summer foliage, low grassy banks, no fishing rods/reels, no bridge, no boats obscuring action, no table, no church, no text. Sun from upper left, shimmering muted river.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed/exec-af13e835-baad-4890-ae47-2087f34d8c1d.png",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed/exec-af13e835-baad-4890-ae47-2087f34d8c1d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "style_references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "revision": {
+    "reason": "First generation included prohibited chimney on distant ordinary house; removed with builtin image edit.",
+    "prompt": "Precise historical correction to this finished illustration. Keep the full 16:9 frame, five people, river, fishing nets, all poses and clothes, foreground blank charter, warm painterly realism and lighting exactly as in reference. REMOVE ONLY the small chimney/chimney pot projecting above the red tiled roof in upper right background, and continue an uninterrupted roof ridge beneath it. This ordinary house is southern England year1310 and the project requires NO chimney. Keep every other feature unchanged. No text, letters, numerals, watermark or border. Full finished landscape image, not a crop.",
+    "first_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed/exec-44c9565a-945f-4492-b8b5-6cd8e4fe8355.png",
+    "first_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed/exec-44c9565a-945f-4492-b8b5-6cd8e4fe8355.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "first_raw_sha256": "b90b2f85dcadc65a08069a7844644761b71bbdc1a301af3a17638a172ab6b2b4"
+  },
+  "qa": "Visual inspection after edit: ordinary house roof now has no chimney. Five people separated by river, foreground blank fishing charter, opposite-bank fish payment, fishing nets on both banks. No visible text or modern equipment; anatomy and light coherent.",
+  "status": "candidate",
+  "raw_dimensions": [
+    1672,
+    941
+  ],
+  "file": "assets/ck_evt_010.jpg",
+  "dimensions": [
+    960,
+    540
+  ],
+  "raw_sha256": "1b113da9bc5f9a3c6a448a0dc20a17e08f7feabc59bc3b8aa6b717f700dd186a",
+  "sha256": "076043102d4c339e54d66b20eeebec74f4b23c893f5101a1ed09d62d68898808",
+  "conversion": "one ImageOps.fit Lanczos resize/crop; RGB JPEG quality85 optimized progressive",
+  "final_file": "assets/ck_evt_010.jpg",
+  "final_sha256": "076043102d4c339e54d66b20eeebec74f4b23c893f5101a1ed09d62d68898808",
+  "final_dimensions": [
+    960,
+    540
+  ],
+  "revision_action": "preserve"
+}

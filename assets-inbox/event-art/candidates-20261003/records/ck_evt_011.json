@@ -1,0 +1,31 @@
+{
+  "id": "ck_evt_011",
+  "tool": "builtin image_gen__imagegen",
+  "prompt": "Use case: historical-scene. Create ONE finished full-bleed 16:9 landscape 960x540 event-card illustration for Charter & Kin. References are STYLE ONLY, do not copy their composition. Match warm painterly narrative realism, convincing natural anatomy, soft painted edges, muted earthy oak browns and limestone cream, textured linen and wool, warm atmospheric light, readable story silhouettes. Southern England early 14th century, 1300-1340: loose belted tunics, hoods/coifs, long modest gowns and linen veils; no later Tudor fashion, modern collars or equipment. Brown oak timber, warm plaster, thatch or flat terracotta tiles, NO house chimneys, no modern glass, no black-white Tudor facade. Absolutely NO text, letters, numerals, writing, watermark or border anywhere. Paper is blank uninscribed parchment with wax seals; no pseudo-writing. Natural consistent scene lighting. Scene ck_evt_011, year1315, spring evening. Intimate modest gentry house parlour, exactly THREE ADULTS: neighboring family's travel-cloaked envoy foreground seated beside a narrow bench-side table, and young adult prospective husband and wife separated expectantly in background. Envoy pushes a RETURNED blank parchment marriage proposal back across table toward viewer; TWO distinctly folded marriage proposals on table bear DIFFERENT wax seals, one red and one dark green, with the returned one partly unrolled and the first laid flat. Young woman wears modest long soft russet gown, linen veil; young man simple belted blue-gray long tunic. Show hesitant exchanged glances to make marriage context clear. Warm spring evening light from small unglazed shuttered left window, oak bench and warm plaster. No money or purses, no stacked ledgers, no extra people. Focus on amended terms and waiting for response, not a wedding celebration.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed/exec-991b1b0d-9931-469e-b867-cc17bb1d199c.png",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-c172-7500-9aee-6d22cf0d40ed/exec-991b1b0d-9931-469e-b867-cc17bb1d199c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "style_references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "qa": "Visual inspection: envoy returns sealed document, two differently folded/sealed proposals, young adult couple awaits answer. Three adults coherent anatomy, blank parchment, modest early-period clothing and warm parlour light.",
+  "status": "candidate",
+  "raw_dimensions": [
+    1672,
+    941
+  ],
+  "file": "assets/ck_evt_011.jpg",
+  "dimensions": [
+    960,
+    540
+  ],
+  "raw_sha256": "cd06033e1886d4317ab0c7cd0f9111986ea6983cc3f8cc95c8795ef9db2af27b",
+  "sha256": "42b4e6002cc821512f66dfd5f9701b2e7986d3a46545876f8821bfb22a6808c0",
+  "conversion": "one ImageOps.fit Lanczos resize/crop; RGB JPEG quality85 optimized progressive",
+  "final_file": "assets/ck_evt_011.jpg",
+  "final_sha256": "42b4e6002cc821512f66dfd5f9701b2e7986d3a46545876f8821bfb22a6808c0",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}

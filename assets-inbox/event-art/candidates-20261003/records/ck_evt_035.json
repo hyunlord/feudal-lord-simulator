@@ -1,0 +1,29 @@
+{
+  "id": "ck_evt_035",
+  "prompt": "Use case: historical-scene. Generate one finished narrative event illustration for Charter & Kin, southern England market town. Input images are STYLE references only, not scene templates. Match warm earthy painterly narrative realism, nuanced natural faces, rough wool and linen, worn natural oak, softly worked brush texture in both references. Wide 16:9 landscape full bleed, intended 960x540. Natural anatomy and believable hands. No text whatsoever, no letters, numbers, pseudo-writing, captions, UI, watermarks. Every document entirely blank parchment except a simple wax seal. No modern objects, no Tudor black-white architecture, no ordinary cottage chimneys or glazed windows. ONE complete original scene, not collage. Year1375. Winter daylight just after strong wind subsides, leafless hedges and open brown farmland. Exactly TWO people: a carpenter kneeling stretching a measuring cord along a single replacement oak beam, and an assistant holding the cord's far end. Beside them a sharply bent broken wattle fence, loose split timber ends; small plain medieval handcart with a few beams. Broad open field occupies right half, no houses required. Practical repair work, measuring timber is dominant action. Simple wool tunics, linen coifs, leather shoes; natural bodies; crisp cool sky and muted winter ground with warm wood.",
+  "reference_paths": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-2fbf2453-3827-429b-8112-caaa9d51a80c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-7afb-7753-96fc-dc7e1f539f6a/exec-2fbf2453-3827-429b-8112-caaa9d51a80c.png",
+  "tool": "builtin image_gen",
+  "qa": "Visually reviewed full generated image: story clear, no writing, natural anatomy; three foreground principals in034 plus minor distant silhouettes.",
+  "raw_size": [
+    1672,
+    941
+  ],
+  "raw_sha256": "2131f6633ffa9816e7e6d4ad0fdba286b0caaee968decffff85bc577c28b5a1e",
+  "final_sha256": "e6c6a6bc9910ae9e6d3567e9410b2aea0ad913b1d00607f87e03b2cfa70c8f9b",
+  "final_file": "assets/ck_evt_035.jpg",
+  "final_size": [
+    960,
+    540
+  ],
+  "processing": "Pillow ImageOps.fit Lanczos centered crop/resize; RGB JPEG quality85 optimize",
+  "status": "candidate",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}

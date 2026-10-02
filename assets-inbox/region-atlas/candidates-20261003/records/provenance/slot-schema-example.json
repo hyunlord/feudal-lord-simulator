@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "mapId": "open_field-01",
+  "archetype": "open_field",
+  "image": "maps/open_field-01.jpg",
+  "width": 1600,
+  "height": 1000,
+  "coordinateSystem": "pixels; origin top-left; x right y down; slot anchor bottom-center of overlay",
+  "slots": [
+    {
+      "id": "s01",
+      "x": 200,
+      "y": 200,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "roadside dry meadow",
+      "landmarkRefs": [
+        "j01"
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "j01",
+      "kind": "junction",
+      "x": 180,
+      "y": 225,
+      "note": "visible path fork"
+    },
+    {
+      "id": "c01",
+      "kind": "crossing",
+      "x": 800,
+      "y": 500,
+      "crossingType": "ford",
+      "note": "visible shallow stream crossing; reference only"
+    }
+  ],
+  "review": {
+    "method": "manual visual annotation on final image",
+    "status": "candidate",
+    "notes": []
+  }
+}

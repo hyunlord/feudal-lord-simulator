@@ -1,0 +1,32 @@
+{
+  "id": "ck_evt_025",
+  "mode": "builtin historical-scene",
+  "prompt": "Use case historical-scene. New complete wide 16:9 event-card illustration 960x540 for Charter & Kin. Both attached images are STYLE REFERENCES ONLY: match their warm subdued natural pigments, painterly detailed historical storytelling, tactile oak wool limestone and natural anatomy, but invent the following completely different composition. Southern England autumn night AD1354. EXTREMELY STEEP OVERHEAD CLOSE VIEW onto a large EMPTY open iron-banded oak treasury chest on a worn stone floor, EMPTY wooden interior occupies most of lower center image. Scattered medieval split tally sticks with irregular cut notches and just a few silver pennies lie on the floor around the chest. Three people only, cropped along edges to subordinate faces to object: worried elderly long-serving steward crouches upper right with one hand on empty rim; auditor upper left compares two split tally stick halves with mismatched notches; older family member at top hesitates protectively touching steward's shoulder. Candle light from a small plain candle on floor at left consistently lights all. Mid 14th century plain wool tunics, fitted coat, hoods, medieval leather shoes. The unmistakable subject is MISSING MONEY, physical empty chest and scattered tally sticks; no paperwork whatsoever. Do NOT create people seated at a desk. No tables, desk, parchment, letters, books, scrolls, modern objects, text, numbers, captions, symbols or watermarks. No violence. Restrained gold candle highlights and deep oak browns, readable empty interior even in thumbnail. Maintain wide landscape composition edge to edge.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/09_common_pasture.jpg"
+  ],
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-f023-70e2-9eff-1954e37d7ad8/exec-faf4cde5-6a1c-4b8e-acee-0c54200aaf1d.png",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-f023-70e2-9eff-1954e37d7ad8 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-f023-70e2-9eff-1954e37d7ad8/exec-faf4cde5-6a1c-4b8e-acee-0c54200aaf1d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "output_path": "/tmp/astra-event-illustrations-20261003-v2/assets/ck_evt_025.jpg",
+  "visual_qa": {
+    "reviewer": "events_v2_b",
+    "passed": true,
+    "notes": "Empty chest strongly dominates steep overhead composition. Three anatomically plausible figures along edge. Tally sticks and coins visible, no papers/table/text/watermark. Single candle coherent. No buildings/chimneys."
+  },
+  "raw_size": [
+    1672,
+    941
+  ],
+  "raw_sha256": "95d9187a15f4d5b092f6d00d491b6794d5e5f4fa35e35b275abb2697d871cf5a",
+  "output_sha256": "78f2b86d2a2fa6d9828e0769d6c10876a193f3a3164edd501e79818a971eb02c",
+  "output_size": [
+    960,
+    540
+  ],
+  "format": "JPEG RGB quality85",
+  "final_file": "assets/ck_evt_025.jpg",
+  "final_sha256": "78f2b86d2a2fa6d9828e0769d6c10876a193f3a3164edd501e79818a971eb02c",
+  "status": "candidate",
+  "revision_action": "regenerate"
+}

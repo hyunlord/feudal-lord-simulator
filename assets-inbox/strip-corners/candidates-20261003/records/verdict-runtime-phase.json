@@ -1,0 +1,12 @@
+{
+  "score": 87,
+  "verdict": "revise",
+  "category_match": true,
+  "differences": [
+    "Stone apex cuts a crenellation through its centre."
+  ],
+  "suggestions": [
+    "Move shared stone texture phase to a gap in the 32px battlement repeat."
+  ],
+  "reasoning": "Runtime preview fixes foreground occlusion and resampling; apex unit placement still needs adjustment."
+}

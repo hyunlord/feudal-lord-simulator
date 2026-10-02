@@ -1,0 +1,399 @@
+{
+  "schemaVersion": 1,
+  "mapId": "forest_edge-02",
+  "archetype": "forest_edge",
+  "image": "maps/forest_edge-02.jpg",
+  "width": 1600,
+  "height": 1000,
+  "coordinateSystem": "pixels; origin top-left; x right y down; slot anchor bottom-center of overlay",
+  "slots": [
+    {
+      "id": "s01",
+      "x": 170,
+      "y": 205,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s02",
+      "x": 270,
+      "y": 240,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s03",
+      "x": 460,
+      "y": 150,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s04",
+      "x": 450,
+      "y": 245,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s05",
+      "x": 385,
+      "y": 330,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s07",
+      "x": 590,
+      "y": 355,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s08",
+      "x": 835,
+      "y": 285,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s09",
+      "x": 915,
+      "y": 335,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s10",
+      "x": 1070,
+      "y": 170,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j03"
+      ]
+    },
+    {
+      "id": "s11",
+      "x": 1220,
+      "y": 85,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s14",
+      "x": 1380,
+      "y": 475,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s15",
+      "x": 1120,
+      "y": 460,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j03"
+      ]
+    },
+    {
+      "id": "s16",
+      "x": 995,
+      "y": 415,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j03"
+      ]
+    },
+    {
+      "id": "s17",
+      "x": 140,
+      "y": 515,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s18",
+      "x": 490,
+      "y": 515,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s19",
+      "x": 690,
+      "y": 545,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s20",
+      "x": 940,
+      "y": 535,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s22",
+      "x": 1140,
+      "y": 730,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 60,
+        "height": 45
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j03"
+      ]
+    },
+    {
+      "id": "s23",
+      "x": 785,
+      "y": 690,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s24",
+      "x": 515,
+      "y": 640,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 60
+      },
+      "context": "Dry open meadow or cultivated clearing beside woodland; whole overlay footprint reserved above anchor",
+      "landmarkRefs": [
+        "j01"
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "j01",
+      "kind": "junction",
+      "x": 654,
+      "y": 574,
+      "note": "Visible dirt path fork"
+    },
+    {
+      "id": "j02",
+      "kind": "junction",
+      "x": 820,
+      "y": 553,
+      "note": "Visible dirt path fork"
+    },
+    {
+      "id": "j03",
+      "kind": "junction",
+      "x": 1105,
+      "y": 581,
+      "note": "Visible dirt path fork"
+    },
+    {
+      "id": "c01",
+      "kind": "crossing",
+      "x": 1464,
+      "y": 501,
+      "crossingType": "proposed_ford",
+      "note": "Narrow reach near valley road; proposed crossing candidate only, no painted cross-river road."
+    }
+  ],
+  "review": {
+    "method": "manual visual annotation on final image, reviewed with clearance rectangles",
+    "status": "candidate",
+    "notes": [
+      "No buildings or flags baked into map. Existing crop strokes are ground treatment, not occupied structures.",
+      "Landmark proximity records visual association, not a traversability graph.",
+      "Clearance excludes flag mast, ribbon and larger settlement silhouette beyond declared footprint."
+    ]
+  }
+}

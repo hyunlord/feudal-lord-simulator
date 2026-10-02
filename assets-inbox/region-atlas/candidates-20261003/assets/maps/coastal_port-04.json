@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "mapId": "coastal_port-04",
+  "archetype": "coastal_port",
+  "image": "maps/coastal_port-04.jpg",
+  "width": 1600,
+  "height": 1000,
+  "coordinateSystem": "pixels; origin top-left; x right y down; slot anchor bottom-center of overlay",
+  "slots": [
+    {
+      "id": "s01",
+      "x": 323,
+      "y": 82,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s02",
+      "x": 400,
+      "y": 248,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s03",
+      "x": 317,
+      "y": 175,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s04",
+      "x": 558,
+      "y": 171,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s05",
+      "x": 769,
+      "y": 248,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 70
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s06",
+      "x": 626,
+      "y": 389,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 70
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s07",
+      "x": 349,
+      "y": 432,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s08",
+      "x": 461,
+      "y": 552,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 70
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s09",
+      "x": 496,
+      "y": 706,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s10",
+      "x": 654,
+      "y": 774,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s11",
+      "x": 805,
+      "y": 831,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c02"
+      ]
+    },
+    {
+      "id": "s12",
+      "x": 1150,
+      "y": 884,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s13",
+      "x": 1104,
+      "y": 679,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 70
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "j01"
+      ]
+    },
+    {
+      "id": "s14",
+      "x": 1349,
+      "y": 778,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 70
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s15",
+      "x": 1384,
+      "y": 660,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s16",
+      "x": 1334,
+      "y": 533,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s17",
+      "x": 1163,
+      "y": 548,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s18",
+      "x": 1380,
+      "y": 293,
+      "allowedKinds": [
+        "manor",
+        "village",
+        "market",
+        "abbey"
+      ],
+      "clearance": {
+        "width": 100,
+        "height": 70
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s19",
+      "x": 1204,
+      "y": 179,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s20",
+      "x": 1370,
+      "y": 82,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "j02"
+      ]
+    },
+    {
+      "id": "s21",
+      "x": 1035,
+      "y": 237,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c01"
+      ]
+    },
+    {
+      "id": "s22",
+      "x": 759,
+      "y": 568,
+      "allowedKinds": [
+        "manor",
+        "village"
+      ],
+      "clearance": {
+        "width": 70,
+        "height": 55
+      },
+      "context": "육안 확인한 마른 초지 또는 비어 있는 경작지 내부; 길 밖 배치",
+      "landmarkRefs": [
+        "c02"
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "id": "c01",
+      "kind": "crossing",
+      "x": 945,
+      "y": 446,
+      "crossingType": "ford",
+      "note": "중앙 계곡 개울 도하"
+    },
+    {
+      "id": "c02",
+      "kind": "crossing",
+      "x": 717,
+      "y": 632,
+      "crossingType": "ford",
+      "note": "남서 계곡 개울 도하"
+    },
+    {
+      "id": "j01",
+      "kind": "junction",
+      "x": 1144,
+      "y": 740,
+      "note": "남동 초지 길 갈림"
+    },
+    {
+      "id": "j02",
+      "kind": "junction",
+      "x": 1276,
+      "y": 633,
+      "note": "동쪽 들판 길 갈림"
+    }
+  ],
+  "review": {
+    "method": "manual visual annotation on final JPEG and clearance overlay",
+    "status": "candidate",
+    "minimumAnchorDistance": 93.1933474020544,
+    "notes": [
+      "거점은 원본 지도에 그리지 않음. 얕은 도하는 그림의 시각적 표시이며 수문 시뮬레이션 결과가 아님.",
+      "경작지 슬롯은 작물 무늬가 남아 있으나 나무·길·물·건축물이 없는 지면을 골랐음."
+    ]
+  }
+}

@@ -1,0 +1,575 @@
+{
+  "scope": "20 front marker raw outputs; inspection at generated resolution, not blind recognition or runtime size approval",
+  "imagegen_calls": 22,
+  "accepted_png": 20,
+  "revisions": [
+    "fuller A/B raw fleece corrected to folded woven cloth with two imagegen edits"
+  ],
+  "limitations": [
+    "Final normalization, foot anchor measurement, city H scale, low zoom and blind recognition remain root QA tasks.",
+    "Tailor prompts requested spring shears; output pivot scissors retained as period-compatible visual cue.",
+    "Front_vintner_b uses horizontal rather than requested upright barrel but independent grape marker makes variant distinct."
+  ],
+  "assets": [
+    {
+      "id": "front_butcher_a",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        273,
+        71,
+        1209,
+        998
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_butcher_b",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        360,
+        146,
+        1173,
+        914
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_carrier_a",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        226,
+        122,
+        1287,
+        952
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_carrier_b",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        244,
+        97,
+        1273,
+        973
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_cooper_a",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        237,
+        72,
+        1230,
+        1010
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_cooper_b",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        239,
+        67,
+        1273,
+        993
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_fuller_a",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        306,
+        57,
+        1242,
+        1042
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_fuller_b",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        148,
+        47,
+        1376,
+        1035
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_mercer_a",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        274,
+        59,
+        1191,
+        1034
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_mercer_b",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        374,
+        76,
+        1096,
+        1014
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_shoemaker_a",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        285,
+        144,
+        1198,
+        966
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_shoemaker_b",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        327,
+        58,
+        1126,
+        1015
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_spicer_a",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        429,
+        88,
+        1074,
+        987
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_spicer_b",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        379,
+        83,
+        1102,
+        994
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_tailor_a",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        351,
+        67,
+        1131,
+        972
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_tailor_b",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        240,
+        150,
+        1247,
+        969
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_vintner_a",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        331,
+        123,
+        1192,
+        938
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_vintner_b",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        249,
+        136,
+        1163,
+        941
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_wheelwright_a",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        303,
+        59,
+        1187,
+        926
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    },
+    {
+      "id": "front_wheelwright_b",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "bbox_alpha8": [
+        256,
+        109,
+        1243,
+        959
+      ],
+      "edge_clear": true,
+      "provenance_hash_match": true,
+      "visual_review": {
+        "freestanding": true,
+        "no_wall_attachment": true,
+        "no_text": true,
+        "upper_left_light": true,
+        "complete_feet": true,
+        "not_a_mirror_variant": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "ck_evt_024",
+  "prompt": "Use case: historical-scene. Generate one complete finished narrative game event illustration, wide 16:9 fullbleed, 960x540 target. References are STYLE ONLY, not copied scenes: warm muted ochre, oak brown, earthy green and subdued burgundy, finely textured painterly realism, believable faces/hands/materials, soft natural directional light, like references. Southern England medieval market-town manor. Absolutely NO text, letters, numerals, pseudo-writing, captions, border, watermark; all documents completely blank parchment with plain wax seals. Period-correct wool tunics, gowns, linen coifs, leather belts, no modern objects, no Tudor black-white, no ordinary house chimney. England c1353, overcast spring daytime modest outdoor market. Exactly TWO people. Intimate eye-level profile of female ale vendor in wool kirtle, linen veil, apron, holding large unmistakable earthenware ALE JUG, her free hand gestures toward entirely EMPTY neighboring trestle sales counter occupying right half. Opposite her tax collector listens with small open completely blank dues book. Empty stall canopy behind, quiet lanes. Vendor and ale jug emotionally central, no packed merchandise, no third person, no signage text. The vacant counter and small dues ledger distinctly readable.",
+  "reference_image_paths": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c/exec-3ecd3eb4-cf7b-4c6b-a01d-e2a5fd8d8d8f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c/exec-3ecd3eb4-cf7b-4c6b-a01d-e2a5fd8d8d8f.png",
+  "revision": {
+    "prompt": "Edit only upper-left distant background buildings of this illustration. Remove the prominent chimney completely and replace its house roof with plain straw thatch, and simplify decorative close-spaced timber framing on adjacent house to plain plaster walls with just sparse structural oak beams. England1353 modest market street: absolutely NO chimneys anywhere, NO late Tudor facades. Keep church tower, both people and all their hands, ale jug, book, empty stall, camera, colors, spring plants, all other composition exactly as close as possible. No text. Fullbleed16:9.",
+    "raw_original": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c/exec-b14abd3b-5415-415b-bd4c-5941f9a70ed6.png",
+    "original_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8c-fc89-7ae2-8915-41d0ff230e2c/exec-b14abd3b-5415-415b-bd4c-5941f9a70ed6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "reason": "Remove ordinaryhouse chimney and overly late timber facade in1353 scene."
+  },
+  "tool": "builtin image_gen",
+  "status": "candidate",
+  "visual_review": "Reviewed generated image: intended people/action visible, no text; historical architectural fixes recorded where applicable.",
+  "raw_dimensions": [
+    1672,
+    941
+  ],
+  "file": "assets/ck_evt_024.jpg",
+  "dimensions": [
+    960,
+    540
+  ],
+  "raw_sha256": "1938940afed732aa400fa8b136bfa5f3a4ea4dcf68e135c646b3c44b3bd8ee42",
+  "sha256": "d9c3157224f84547ae28c23f5814aa0bd5640edea784539e9662fe059cfb3a08",
+  "postprocess": "Pillow ImageOps.fit LANCZOS 960x540, JPEG quality85 optimize; no painting",
+  "final_file": "assets/ck_evt_024.jpg",
+  "final_sha256": "d9c3157224f84547ae28c23f5814aa0bd5640edea784539e9662fe059cfb3a08",
+  "final_dimensions": [
+    960,
+    540
+  ],
+  "revision_action": "preserve"
+}

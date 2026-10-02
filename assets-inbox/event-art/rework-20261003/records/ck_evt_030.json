@@ -1,0 +1,28 @@
+{
+  "id": "ck_evt_030",
+  "prompt": "Use case historical-scene. Create ONE finished full-bleed horizontal 16:9 960x540 event illustration for Charter & Kin. References are STYLE ONLY: match their warm earthy painterly narrative realism, tactile wool, pale linen, weathered oak, restrained natural colors, soft brush texture and lifelike faces. Invent the specified distinct scene, never reproduce reference composition. Southern England medieval market town. Absolutely NO writing, letters, numbers, symbols resembling writing, captions, borders, logos, watermarks: all paper surfaces blank; wax seals may plain round. No Tudor black-and-white timber, ordinary house chimneys, glass storefronts, modern objects, theatrical fantasy, gore. Natural hands/anatomy. One coherent light direction. Year1371, spring afternoon, exactly TWO people on bank of narrow flowing fulling water channel beside rough oak tub. Dominant action: bare forearmed fuller in knee-length unbleached wool working tunic twists/wrings and extends a THICK WET WOOL CLOTH SAMPLE with water droplets visibly falling into wooden tub. Merchant in modest fitted olive wool gown and soft cap studies offered sample, holding a small OPEN POUCH OF GRAIN in both hands, grains visible. Cloth and grain visibly compete as two livelihoods; no parchment, no loom, no house model. Eye level intimate two-person outdoor negotiation, wet blue-gray wool sweeping diagonal across foreground, running water below, low wooden sluice and lush early green riverbank background, no modern machinery. Afternoon light from upper left, faces quietly earnest, tactile wet cloth focal point.",
+  "reference_paths": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-1cd4ec50-6aaf-4d9f-b1e3-8440f9812292.png",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-1cd4ec50-6aaf-4d9f-b1e3-8440f9812292.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "tool": "builtin image_gen",
+  "revision_prompt": "Edit only the distant background behind the two men: replace ALL buildings, church tower, market tents and tiny extra people with a quiet lush green spring riverbank, low oak sluice and trees. This historical 1371 scene must contain exactly these two foreground men, water channel, tub, wet cloth and grain pouch, NO buildings or chimneys or other people anywhere. Preserve both foreground men's faces/hands/clothing and wet cloth/water/tub exactly. Preserve 16:9 framing. No text.",
+  "initial_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-97887e1d-8b02-4887-8735-06ed0a1f94eb.png",
+  "status": "candidate",
+  "raw_sha256": "dce69d9af7cc1c19cb42751dc29c894081a3f76bb04377472e31acde37ecc0a1",
+  "final_sha256": "3d86649e1360905daa7a853910b8a09b958b82d4b178f771a9487703a50b2747",
+  "final_file": "assets/ck_evt_030.jpg",
+  "final_size": [
+    960,
+    540
+  ],
+  "processing": "Pillow ImageOps.fit Lanczos to960x540; RGB JPEG quality85 optimize; no painting",
+  "visual_qa": "viewed full generated image; blank documents and primary scene action checked",
+  "final_dimensions": [
+    960,
+    540
+  ],
+  "revision_action": "preserve"
+}

@@ -1,0 +1,15 @@
+{
+  "score": 88,
+  "verdict": "fail",
+  "category_match": true,
+  "differences": [
+    "Battlement spacing and dense stake runs still reveal some corners."
+  ],
+  "suggestions": [
+    "Future integration should share runtime strip UV phase and review straight palisade upper geometry."
+  ],
+  "reasoning": "The candidate package is produced and verified; blind acceptance remains unmet at 50/64.",
+  "next_actions": [
+    "Deliver as failed-acceptance candidate with full evidence; no installation."
+  ]
+}
