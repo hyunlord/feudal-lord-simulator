@@ -29,7 +29,6 @@ import { preloadWave3AleArt } from "./wave3AleArt";
 import { preloadWave3ClothArt } from "./wave3ClothArt";
 import { preloadWave26HouseLayers, preloadWave26HousePaintings } from "./wave26HouseArt";
 import { preloadWave32GranaryLayers, preloadWave32GranaryPaintings } from "./wave32GranaryArt";
-import { preloadStorehouseSnow } from "./storehouseSnowArt";
 import { preloadCanvasIcons } from "../ui/uiArt";
 
 /** The world art, awaited by captures; `chapter` (chapterArt.ts): the facility paintings up to it (default: all). */
@@ -60,7 +59,6 @@ export function preloadFrameArt(chapter: number): void {
   preloadWave3ClothArt();
   preloadWave26HouseLayers(); // INSTALL-26 the house paintings' weathered, fresh, snow and boarded layers
   preloadWave32GranaryLayers(); // INSTALL-32 the granary paintings' full / half / empty, weathered, boarded and snow layers
-  preloadStorehouseSnow(); // NAT-5 RUN-02 the storehouse a / b / c roof snow layers
   preloadCanvasIcons();
 }
 
