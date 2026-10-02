@@ -1,0 +1,1595 @@
+[
+  {
+    "sample_index": 1,
+    "id": "exp-prenat1-city-confirm:stationary_person:figure:0",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1094,
+      "y": 579,
+      "width": 27,
+      "height": 27
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 3.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 12.48,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 2,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:50",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 783,
+      "y": 483,
+      "width": 21,
+      "height": 21
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 3.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 3,
+    "id": "70d4d4ad069b",
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 355,
+      "y": 480,
+      "width": 18,
+      "height": 29
+    },
+    "score": 0.7513636363636363,
+    "reason": "이동 인물 위치 근처의 실제 변화하는 유색 실루엣이 돌담 그림 위에 겹침",
+    "metrics": [
+      {
+        "name": "measurement_frame",
+        "value": 5.0,
+        "unit": "frame"
+      },
+      {
+        "name": "wall_changed_pixels",
+        "value": 111.0,
+        "unit": "px"
+      },
+      {
+        "name": "wall_overlap_fraction",
+        "value": 0.5045454545454545,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_foot_distance",
+        "value": 4.738945030273969,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 4,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:21",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1312,
+      "y": 312,
+      "width": 22,
+      "height": 22
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 2.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 5,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:73",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 870,
+      "y": 516,
+      "width": 22,
+      "height": 22
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 4.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 6,
+    "id": "6f284a730fbe",
+    "scene": "exp-main-chalk-wide",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 1205,
+      "y": 615,
+      "width": 343,
+      "height": 168
+    },
+    "score": 0.98,
+    "reason": "회색 바위 영역의 외곽이 서로 반대인 등각 칸 방향으로 세 번 이상 잘림",
+    "metrics": [
+      {
+        "name": "aligned_perimeter",
+        "value": 0.576974189517868,
+        "unit": "ratio"
+      },
+      {
+        "name": "rock_cut_edges",
+        "value": 26.0,
+        "unit": "count"
+      },
+      {
+        "name": "rock_texture_std",
+        "value": 18.15645565085888,
+        "unit": "gray"
+      },
+      {
+        "name": "rock_area",
+        "value": 27985.0,
+        "unit": "px2"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 0.9602330205462727,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 7,
+    "id": "fbcd36796e1c",
+    "scene": "exp-holdout-forest-s2",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 1271,
+      "y": 694,
+      "width": 59,
+      "height": 13
+    },
+    "score": 0.8384615384615385,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 0.71875,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 41.78516387939453,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 8,
+    "id": "c98894301e6a",
+    "scene": "exp-main-fen",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 145,
+      "y": 596,
+      "width": 85,
+      "height": 13
+    },
+    "score": 0.7458987914598905,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 1.125,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 17.189960479736328,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 9,
+    "id": "exp-prenat1-roof-confirm:repeat_density:0",
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "repeat_density",
+    "box": {
+      "x": 774,
+      "y": 296,
+      "width": 378,
+      "height": 167
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/yarn_skeins_1.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 5.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 307.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 10,
+    "id": "exp-prenat1-roof-confirm:stationary_person:figure:15",
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1404,
+      "y": 96,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 11,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:19",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1216,
+      "y": 264,
+      "width": 22,
+      "height": 22
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 2.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 12,
+    "id": "exp-prenat1-roof-confirm:stationary_person:figure:10",
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1212,
+      "y": 320,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 13,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:46",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1153,
+      "y": 247,
+      "width": 21,
+      "height": 21
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 3.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 14,
+    "id": "exp-prenat2-city-confirm:roof_overlap:figure:85",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1007,
+      "y": 435,
+      "width": 21,
+      "height": 21
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "sample_index": 15,
+    "id": "f283ca57c42f",
+    "scene": "exp-main-fen",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 152,
+      "y": 984,
+      "width": 59,
+      "height": 13
+    },
+    "score": 0.7063863002336942,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 0.71875,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 18.867961883544922,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 16,
+    "id": "exp-prenat1-city-confirm:stationary_person:figure:71",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 964,
+      "y": 289,
+      "width": 28,
+      "height": 28
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 12.48,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 17,
+    "id": "exp-prenat2-city-confirm:roof_overlap:figure:89",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1217,
+      "y": 343,
+      "width": 21,
+      "height": 21
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "sample_index": 18,
+    "id": "exp-prenat1-city:roof_overlap:figure:6",
+    "scene": "exp-prenat1-city",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1139,
+      "y": 309,
+      "width": 27,
+      "height": 27
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "sample_index": 19,
+    "id": "exp-prenat1-city-confirm:stationary_person:figure:73",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1380,
+      "y": 331,
+      "width": 28,
+      "height": 28
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 12.48,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 20,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:11",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1088,
+      "y": 360,
+      "width": 22,
+      "height": 22
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 2.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 21,
+    "id": "6d68b6ccadbc",
+    "scene": "exp-seed1-ch5",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1026,
+      "y": 624,
+      "width": 10,
+      "height": 15
+    },
+    "score": 0.8797752808988764,
+    "reason": "이동 인물 위치 근처의 실제 변화하는 유색 실루엣이 돌담 그림 위에 겹침",
+    "metrics": [
+      {
+        "name": "measurement_frame",
+        "value": 10.0,
+        "unit": "frame"
+      },
+      {
+        "name": "wall_changed_pixels",
+        "value": 83.0,
+        "unit": "px"
+      },
+      {
+        "name": "wall_overlap_fraction",
+        "value": 0.9325842696629213,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_foot_distance",
+        "value": 5.210758102230954,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 22,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:67",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1199,
+      "y": 275,
+      "width": 21,
+      "height": 21
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 3.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 23,
+    "id": "19148c7abbf6",
+    "scene": "exp-holdout-forest-s2",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 64,
+      "y": 213,
+      "width": 138,
+      "height": 14
+    },
+    "score": 0.9903846153846154,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "contrast_rgb",
+        "value": 40.5030517578125,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "length_tiles",
+        "value": 1.96875,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 24,
+    "id": "exp-prenat1-roof-confirm:stationary_person:figure:32",
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1252,
+      "y": 490,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 25,
+    "id": "exp-prenat1-city-confirm:stationary_person:figure:58",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1071,
+      "y": 407,
+      "width": 27,
+      "height": 27
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 12.48,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 26,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:22",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1184,
+      "y": 248,
+      "width": 22,
+      "height": 22
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 2.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 27,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:47",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1089,
+      "y": 247,
+      "width": 21,
+      "height": 21
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 3.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 28,
+    "id": "exp-prenat1-roof-confirm:stationary_person:figure:33",
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1316,
+      "y": 586,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 29,
+    "id": "exp-prenat1-city-confirm:stationary_person:figure:10",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1344,
+      "y": 329,
+      "width": 27,
+      "height": 27
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 3.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 12.48,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 30,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:58",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1007,
+      "y": 435,
+      "width": 21,
+      "height": 21
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 3.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 31,
+    "id": "exp-prenat1-roof-confirm:stationary_person:figure:4",
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 700,
+      "y": 384,
+      "width": 41,
+      "height": 41
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 32,
+    "id": "62ae78b57ddf",
+    "scene": "exp-main-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 1246,
+      "y": 693,
+      "width": 67,
+      "height": 13
+    },
+    "score": 0.8538461538461538,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 0.84375,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 43.880489349365234,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 33,
+    "id": "exp-prenat2-city-confirm:roof_overlap:figure:93",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1281,
+      "y": 311,
+      "width": 21,
+      "height": 21
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "sample_index": 34,
+    "id": "exp-prenat1-city-confirm:scale_ratio:0",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "scale_ratio",
+    "box": {
+      "x": 1168,
+      "y": 424,
+      "width": 26,
+      "height": 33
+    },
+    "score": 0.75,
+    "reason": "Alpha height outside bible range plus 20% tolerance: barrel:/assets/wave27/yards/yard_rain_barrel.png#component=water-cask-body:original",
+    "metrics": [
+      {
+        "name": "object_person_height",
+        "value": 1.3914529914529914,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_height",
+        "value": 23.716216216216218,
+        "unit": "px"
+      },
+      {
+        "name": "reference_min",
+        "value": 0.45,
+        "unit": "ratio"
+      },
+      {
+        "name": "reference_max",
+        "value": 0.65,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 35,
+    "id": "exp-prenat1-city-confirm:stationary_person:figure:69",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 756,
+      "y": 435,
+      "width": 28,
+      "height": 28
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 12.48,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 36,
+    "id": "exp-prenat1-city-confirm:stationary_person:figure:47",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 946,
+      "y": 470,
+      "width": 27,
+      "height": 27
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 5.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 12.48,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 37,
+    "id": "exp-prenat1-roof-confirm:stationary_person:figure:36",
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1444,
+      "y": 202,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 8.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 19.2,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 38,
+    "id": "901947bd6ccc",
+    "scene": "exp-prenat1-city",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 541,
+      "y": 523,
+      "width": 101,
+      "height": 13
+    },
+    "score": 0.7930560042872231,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 1.0576923076923077,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 26.060558319091797,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 39,
+    "id": "3d6138144d95",
+    "scene": "exp-seed1-ch5-detail",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 931,
+      "y": 569,
+      "width": 4,
+      "height": 9
+    },
+    "score": 0.8999999999999999,
+    "reason": "이동 인물 위치 근처의 실제 변화하는 유색 실루엣이 돌담 그림 위에 겹침",
+    "metrics": [
+      {
+        "name": "measurement_frame",
+        "value": 6.0,
+        "unit": "frame"
+      },
+      {
+        "name": "wall_changed_pixels",
+        "value": 14.0,
+        "unit": "px"
+      },
+      {
+        "name": "wall_overlap_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_foot_distance",
+        "value": 10.805716377655042,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 40,
+    "id": "exp-prenat1-roof-confirm:roof_overlap:figure:56",
+    "scene": "exp-prenat1-roof-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 932,
+      "y": 330,
+      "width": 43,
+      "height": 43
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "sample_index": 41,
+    "id": "a74815b23fe8",
+    "scene": "exp-main-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 320,
+      "y": 629,
+      "width": 96,
+      "height": 14
+    },
+    "score": 0.8962480655083289,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "contrast_rgb",
+        "value": 38.065731048583984,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "length_tiles",
+        "value": 1.3125,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 42,
+    "id": "exp-prenat1-city-confirm:stationary_person:figure:23",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1053,
+      "y": 517,
+      "width": 27,
+      "height": 27
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 3.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 12.48,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 43,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:79",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1318,
+      "y": 292,
+      "width": 22,
+      "height": 22
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 4.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 44,
+    "id": "exp-prenat1-city-confirm:stationary_person:figure:14",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1474,
+      "y": 263,
+      "width": 28,
+      "height": 28
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 4.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 12.48,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 45,
+    "id": "exp-seed1-ch5:repeat_density:2",
+    "scene": "exp-seed1-ch5",
+    "detector": "repeat_density",
+    "box": {
+      "x": 1043,
+      "y": 908,
+      "width": 157,
+      "height": 84
+    },
+    "score": 0.75,
+    "reason": "Dense visible copies; review intended repetition: /assets/wave3/pile/yarn_skeins_1.png#crop=0,0,96,64",
+    "metrics": [
+      {
+        "name": "matching_instances",
+        "value": 5.0,
+        "unit": "count"
+      },
+      {
+        "name": "radius",
+        "value": 153.6,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "sample_index": 46,
+    "id": "exp-prenat1-city-confirm:roof_overlap:figure:86",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1178,
+      "y": 246,
+      "width": 27,
+      "height": 27
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "sample_index": 47,
+    "id": "c8de33e014fa",
+    "scene": "exp-seed4-middle",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 1202,
+      "y": 677,
+      "width": 119,
+      "height": 15
+    },
+    "score": 0.8591946177228669,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "contrast_rgb",
+        "value": 31.80019187927246,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "length_tiles",
+        "value": 1.2860576923076923,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 48,
+    "id": "56d555b76b28",
+    "scene": "exp-seed4-middle",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 318,
+      "y": 698,
+      "width": 103,
+      "height": 13
+    },
+    "score": 0.8831360946745562,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 1.0817307692307692,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 48.54682922363281,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "sample_index": 49,
+    "id": "exp-prenat1-city-confirm:roof_overlap:figure:89",
+    "scene": "exp-prenat1-city-confirm",
+    "detector": "roof_overlap",
+    "box": {
+      "x": 1362,
+      "y": 303,
+      "width": 27,
+      "height": 27
+    },
+    "score": 0.8,
+    "reason": "RGB-visible human drawn after building, feet inside roof mask.",
+    "metrics": []
+  },
+  {
+    "sample_index": 50,
+    "id": "exp-prenat2-city-confirm:stationary_person:figure:56",
+    "scene": "exp-prenat2-city-confirm",
+    "detector": "stationary_person",
+    "box": {
+      "x": 1007,
+      "y": 531,
+      "width": 21,
+      "height": 21
+    },
+    "score": 0.75,
+    "reason": "Visible figure stays within 0.15 tile for 10s; review intended idle role.",
+    "metrics": [
+      {
+        "name": "elapsed_ms",
+        "value": 11400.0,
+        "unit": "ms"
+      },
+      {
+        "name": "maximum_displacement",
+        "value": 3.0,
+        "unit": "px"
+      },
+      {
+        "name": "stationary_tolerance",
+        "value": 9.6,
+        "unit": "px"
+      }
+    ]
+  }
+]

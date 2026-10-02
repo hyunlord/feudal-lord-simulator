@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-02T14:40:17.372210+00:00",
+  "population": 369,
+  "sample_n": 50,
+  "seed_decimal": "110216634856640726771175532210459454358298083649577549451552438681696283916987",
+  "selection": "random.Random(int(seed_decimal)).sample(sorted excluded candidate ids, 50); without replacement; no stratification; never redraw",
+  "source_sha256": {
+    "enhanced-findings.json": "c7acdc4845895181f7e18fed282ff867e7777e89a34e68e62aeeb67f0090da00",
+    "enhanced-benchmark/MATCHES.json": "f6bb14f58ede47a35574907587a331128d2ad29802311403eed61f75b3d1d8da"
+  },
+  "review": "AI visual review, not independent human certification; candidate-level semantic correctness; duplicates of an actual defect remain true but marked correlated; insufficient behavioral evidence uncertain; precision TP/50 lower and (TP+uncertain)/50 upper"
+}

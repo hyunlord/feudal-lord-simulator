@@ -1,0 +1,28 @@
+{
+  "repo": "/Users/rexxa/fls-astra-vision/wt-current",
+  "commit": "d6ae15498a45c2202a10f3ce8f20a543dd305c3f",
+  "save": "/Users/rexxa/fls-astra-vision/docs/qa/round15/repro/saves/normal-ui-1407.json.gz",
+  "save_sha256": "56eb5064e79ac29354478946fdea762bf3dbc4518a6d91d5dec8ad108a37c3e3",
+  "seed": 1,
+  "seed_source": "save.state.seed",
+  "save_schema_version": 33,
+  "requested_camera": {
+    "zoom": 1.3,
+    "center": [
+      46,
+      37
+    ],
+    "pan": null
+  },
+  "observed_camera": {
+    "zoom": 1.3,
+    "panX": 425.6000061035156,
+    "panY": -1176.4000244140625
+  },
+  "observed_viewport": {
+    "width": 1600,
+    "height": 1100
+  },
+  "wall_seconds": 18.241466042003594,
+  "source_commit_verification": "caller must ensure port 4470 serves this repo"
+}

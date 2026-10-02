@@ -1,0 +1,1001 @@
+{
+  "archive": "/tmp/astra-vision-holdout-20261003.zip",
+  "markdown_documents": 19,
+  "counts": {
+    "included": 83,
+    "source_only": 10,
+    "included_group": 10
+  },
+  "passed": true,
+  "rules": [
+    {
+      "pattern": "/assets/*",
+      "reason": "Runtime game asset URL; game art is not bundled in the tool ZIP",
+      "document": "*"
+    },
+    {
+      "pattern": "/public/assets/*",
+      "reason": "Repository runtime game art; excluded from lightweight tool ZIP",
+      "document": "*"
+    },
+    {
+      "pattern": "public/assets/*",
+      "reason": "Repository runtime game art; excluded from lightweight tool ZIP",
+      "document": "*"
+    },
+    {
+      "pattern": "*/expansion/raw/*/*.png",
+      "reason": "Original expansion PNG sequence remains local; SOURCE_SHA256 and JPEG review evidence are bundled",
+      "document": "*"
+    },
+    {
+      "pattern": "expansion/raw/*/*.png",
+      "reason": "Original expansion PNG sequence remains local; SOURCE_SHA256 and JPEG review evidence are bundled",
+      "document": "*"
+    },
+    {
+      "pattern": "raw/*/*.png",
+      "reason": "Original frame PNGs remain local; compressed metadata and review JPEGs are bundled",
+      "document": "*"
+    },
+    {
+      "pattern": "00.png",
+      "reason": "Generic first-frame source filename for fifteen scenes. Full source PNGs remain local at report/holdout/raw/<scene>/00.png; ground-freeze.json records scene paths and SHA256, and ground-proof JPEGs are bundled. This is a raw input reference, not a promised report image.",
+      "document": "report/holdout/GROUND_TRUTH.md"
+    },
+    {
+      "pattern": "src/ui/landChoice.ts",
+      "reason": "Read-only game-source evidence at pinned wt-current commit d6ae15498a45c2202a10f3ce8f20a543dd305c3f; src/ui/landChoice.ts lines26-43 encode native river seed1. Game repository source is intentionally not bundled in the detector results ZIP.",
+      "document": "report/holdout/scripts/capture-VALIDATION.md"
+    },
+    {
+      "pattern": "capture.json",
+      "reason": "Generic generated raw capture input basename in the replay recipe; scene-specific lossless capture metadata and PNG hashes are included under new/metadata.",
+      "document": "report/holdout/USAGE.md"
+    },
+    {
+      "pattern": "/path/to/tools/vision-check/config/expansion.json",
+      "reason": "Command template for caller-selected absolute path; actual fixed configuration is included at tools/vision-check/config/expansion.json.",
+      "document": "report/holdout/USAGE.md"
+    },
+    {
+      "pattern": "/path/to/delivery.zip",
+      "reason": "Command placeholder for outer delivery archive, not an in-archive evidence reference.",
+      "document": "report/holdout/USAGE.md"
+    },
+    {
+      "pattern": "/tmp/link-audit.json",
+      "reason": "Output destination of the documented validation command; final actual audit is included as report/holdout/LINK_AUDIT.json.",
+      "document": "report/holdout/USAGE.md"
+    }
+  ],
+  "references": [
+    {
+      "document": "README.md",
+      "line": 3,
+      "reference": "report/holdout/PRECISION.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/PRECISION.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 3,
+      "reference": "report/holdout/score-final/METRICS.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/score-final/METRICS.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 16,
+      "reference": "report/holdout/sample/README.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/sample/README.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 16,
+      "reference": "report/holdout/sample/REVIEW_TABLE.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/sample/REVIEW_TABLE.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 20,
+      "reference": "report/holdout/TRUTH_FREEZE.json",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/TRUTH_FREEZE.json",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 20,
+      "reference": "report/holdout/truth-combined.json",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/truth-combined.json",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 20,
+      "reference": "report/holdout/FROZEN_TOOL.json",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/FROZEN_TOOL.json",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 21,
+      "reference": "report/holdout/score-fresh-maps/METRICS.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/score-fresh-maps/METRICS.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 21,
+      "reference": "report/holdout/score-temporal/METRICS.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/score-temporal/METRICS.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 22,
+      "reference": "report/holdout/new/capture-dataset.json",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/new/capture-dataset.json",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 22,
+      "reference": "report/holdout/new/capture-assets.json",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/new/capture-assets.json",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 23,
+      "reference": "report/holdout/TOP_FINDINGS.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/TOP_FINDINGS.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 23,
+      "reference": "report/holdout/GROUND_POSTREVIEW.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/GROUND_POSTREVIEW.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 23,
+      "reference": "report/holdout/OBJECT_POSTREVIEW.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/OBJECT_POSTREVIEW.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 24,
+      "reference": "report/holdout/USAGE.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/USAGE.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 24,
+      "reference": "report/holdout/VALIDATION.json",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/VALIDATION.json",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 24,
+      "reference": "report/holdout/LINK_AUDIT_POLICY.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/LINK_AUDIT_POLICY.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 30,
+      "reference": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 32,
+      "reference": "report/expansion/OBJECT_MATCH_exp-prenat1-city.jpg",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_MATCH_exp-prenat1-city.jpg",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 33,
+      "reference": "report/expansion/OBJECT_MATCH_exp-seed1-ch5-detail.jpg",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_MATCH_exp-seed1-ch5-detail.jpg",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 34,
+      "reference": "report/expansion/OBJECT_MATCH_exp-seed4-middle.jpg",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_MATCH_exp-seed4-middle.jpg",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 35,
+      "reference": "report/expansion/OBJECT_MATCH_seed1_middle_copies.jpg",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_MATCH_seed1_middle_copies.jpg",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 37,
+      "reference": "report/holdout/JPEG_DELIVERY.json",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/JPEG_DELIVERY.json",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "README.md",
+      "line": 39,
+      "reference": "report/holdout/LINK_AUDIT.json",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/LINK_AUDIT.json",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 3,
+      "reference": "enhanced-findings-initial.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/expansion/enhanced-findings-initial.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 3,
+      "reference": "score-enhanced-initial/MATCHES.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/expansion/score-enhanced-initial/MATCHES.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 15,
+      "reference": "/assets/walkers-v2/wk_servant_m_01-v1.png",
+      "kind": "code_file",
+      "status": "source_only",
+      "resolved": "",
+      "reason": "Runtime game asset URL; game art is not bundled in the tool ZIP"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 15,
+      "reference": "/assets/walkers-v2/wk_labor_f_04-v1.png",
+      "kind": "code_file",
+      "status": "source_only",
+      "resolved": "",
+      "reason": "Runtime game asset URL; game art is not bundled in the tool ZIP"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 15,
+      "reference": "scale.py:detect_scale",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "tools/vision-check/vision_check/scale.py",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 30,
+      "reference": "/public/assets/wave3/pile/yarn_skeins_1.png",
+      "kind": "code_file",
+      "status": "source_only",
+      "resolved": "",
+      "reason": "Repository runtime game art; excluded from lightweight tool ZIP"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 38,
+      "reference": "OBJECT_MATCH_exp-prenat1-city.jpg",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_MATCH_exp-prenat1-city.jpg",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 39,
+      "reference": "OBJECT_MATCH_exp-seed1-ch5-detail.jpg",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_MATCH_exp-seed1-ch5-detail.jpg",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 40,
+      "reference": "OBJECT_MATCH_exp-seed4-middle.jpg",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_MATCH_exp-seed4-middle.jpg",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 41,
+      "reference": "OBJECT_TRUTH_normal_stocks.jpg",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_TRUTH_normal_stocks.jpg",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 45,
+      "reference": "enhanced-findings-initial.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/expansion/enhanced-findings-initial.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 47,
+      "reference": "score-enhanced-initial/MATCHES.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/expansion/score-enhanced-initial/MATCHES.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "line": 51,
+      "reference": "OBJECT_MATCH_seed1_middle_copies.jpg",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_MATCH_seed1_middle_copies.jpg",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/GROUND_POSTREVIEW.md",
+      "line": 3,
+      "reference": "ground-postreview.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/ground-postreview.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/GROUND_POSTREVIEW.md",
+      "line": 3,
+      "reference": "truth-ground.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/truth-ground.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/GROUND_POSTREVIEW.md",
+      "line": 3,
+      "reference": "ground-rejections.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/ground-rejections.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/GROUND_POSTREVIEW.md",
+      "line": 34,
+      "reference": "ground-proof/postreview-*.jpg",
+      "kind": "code_file",
+      "status": "included_group",
+      "resolved": "report/holdout/ground-proof/postreview-1.jpg; report/holdout/ground-proof/postreview-2.jpg; report/holdout/ground-proof/postreview-3.jpg; report/holdout/ground-proof/postreview-4.jpg; report/holdout/ground-proof/postreview-5.jpg; report/holdout/ground-proof/postreview-6.jpg; report/holdout/ground-proof/postreview-7.jpg; report/holdout/ground-proof/postreview-8.jpg",
+      "reason": "Wildcard has matching archive members; numeric ranges use all-member validation"
+    },
+    {
+      "document": "report/holdout/GROUND_POSTREVIEW.md",
+      "line": 34,
+      "reference": "holdout-*.jpg",
+      "kind": "code_file",
+      "status": "included_group",
+      "resolved": "report/holdout/evaluation/frozen-results/annotated/holdout-chalk-s3-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-chalk-s4-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-chalk-s5-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-city-year1362-confirm-frame15.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-city-year1362-confirm.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-city-year1407-confirm.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-coast-s3-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-coast-s4-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-coast-s5-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-fen-s3-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-fen-s4-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-fen-s5-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-forest-s3-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-forest-s4-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-forest-s5-summer.jpg; report/holdout/evaluation/frozen-results/annotated/holdout-river-s1-year1301.jpg; report/holdout/ground-proof/holdout-chalk-s3-summer.jpg; report/holdout/ground-proof/holdout-chalk-s4-summer.jpg; report/holdout/ground-proof/holdout-chalk-s5-summer.jpg; report/holdout/ground-proof/holdout-city-year1362-confirm.jpg; report/holdout/ground-proof/holdout-city-year1407-confirm.jpg; report/holdout/ground-proof/holdout-coast-s3-summer.jpg; report/holdout/ground-proof/holdout-coast-s4-summer.jpg; report/holdout/ground-proof/holdout-coast-s5-summer.jpg; report/holdout/ground-proof/holdout-fen-s3-summer.jpg; report/holdout/ground-proof/holdout-fen-s4-summer.jpg; report/holdout/ground-proof/holdout-fen-s5-summer.jpg; report/holdout/ground-proof/holdout-forest-s3-summer.jpg; report/holdout/ground-proof/holdout-forest-s4-summer.jpg; report/holdout/ground-proof/holdout-forest-s5-summer.jpg; report/holdout/ground-proof/holdout-river-s1-year1301.jpg; report/holdout/object-proofs/holdout-chalk-s3-summer-motion.jpg; report/holdout/object-proofs/holdout-chalk-s4-summer-blind-scale.jpg; report/holdout/object-proofs/holdout-chalk-s4-summer-motion.jpg; report/holdout/object-proofs/holdout-chalk-s5-summer-motion.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-blind-scale.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-page0.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-page1.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-page2.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-page3.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-page4.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-blind-scale.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-page0.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-page1.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-page2.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-page3.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-page4.jpg; report/holdout/object-proofs/holdout-city-year1407-motion.jpg; report/holdout/object-proofs/holdout-coast-s3-summer-blind-scale.jpg; report/holdout/object-proofs/holdout-coast-s3-summer-motion.jpg; report/holdout/object-proofs/holdout-coast-s4-summer-motion.jpg; report/holdout/object-proofs/holdout-coast-s5-summer-motion.jpg; report/holdout/object-proofs/holdout-fen-s3-summer-motion.jpg; report/holdout/object-proofs/holdout-fen-s4-summer-motion.jpg; report/holdout/object-proofs/holdout-fen-s5-summer-motion.jpg; report/holdout/object-proofs/holdout-forest-s3-summer-motion.jpg; report/holdout/object-proofs/holdout-forest-s4-summer-motion.jpg; report/holdout/object-proofs/holdout-forest-s5-summer-motion.jpg; report/holdout/object-proofs/holdout-river-s1-year1301-motion.jpg",
+      "reason": "Wildcard has matching archive members; numeric ranges use all-member validation"
+    },
+    {
+      "document": "report/holdout/GROUND_TRUTH.md",
+      "line": 3,
+      "reference": "00.png",
+      "kind": "code_file",
+      "status": "source_only",
+      "resolved": "",
+      "reason": "Generic first-frame source filename for fifteen scenes. Full source PNGs remain local at report/holdout/raw/<scene>/00.png; ground-freeze.json records scene paths and SHA256, and ground-proof JPEGs are bundled. This is a raw input reference, not a promised report image."
+    },
+    {
+      "document": "report/holdout/GROUND_TRUTH.md",
+      "line": 3,
+      "reference": "ground-freeze.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/ground-freeze.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/GROUND_TRUTH.md",
+      "line": 3,
+      "reference": "truth-ground.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/truth-ground.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/GROUND_TRUTH.md",
+      "line": 15,
+      "reference": "ground-proof/*.jpg",
+      "kind": "code_file",
+      "status": "included_group",
+      "resolved": "report/holdout/ground-proof/city1407-rock-crop.jpg; report/holdout/ground-proof/coast3-rock-crop.jpg; report/holdout/ground-proof/holdout-chalk-s3-summer.jpg; report/holdout/ground-proof/holdout-chalk-s4-summer.jpg; report/holdout/ground-proof/holdout-chalk-s5-summer.jpg; report/holdout/ground-proof/holdout-city-year1362-confirm.jpg; report/holdout/ground-proof/holdout-city-year1407-confirm.jpg; report/holdout/ground-proof/holdout-coast-s3-summer.jpg; report/holdout/ground-proof/holdout-coast-s4-summer.jpg; report/holdout/ground-proof/holdout-coast-s5-summer.jpg; report/holdout/ground-proof/holdout-fen-s3-summer.jpg; report/holdout/ground-proof/holdout-fen-s4-summer.jpg; report/holdout/ground-proof/holdout-fen-s5-summer.jpg; report/holdout/ground-proof/holdout-forest-s3-summer.jpg; report/holdout/ground-proof/holdout-forest-s4-summer.jpg; report/holdout/ground-proof/holdout-forest-s5-summer.jpg; report/holdout/ground-proof/holdout-river-s1-year1301.jpg; report/holdout/ground-proof/postreview-1.jpg; report/holdout/ground-proof/postreview-2.jpg; report/holdout/ground-proof/postreview-3.jpg; report/holdout/ground-proof/postreview-4.jpg; report/holdout/ground-proof/postreview-5.jpg; report/holdout/ground-proof/postreview-6.jpg; report/holdout/ground-proof/postreview-7.jpg; report/holdout/ground-proof/postreview-8.jpg",
+      "reason": "Wildcard has matching archive members; numeric ranges use all-member validation"
+    },
+    {
+      "document": "report/holdout/LINK_AUDIT_POLICY.md",
+      "line": 3,
+      "reference": "scripts/audit_archive_links.py",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/scripts/audit_archive_links.py",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/LINK_AUDIT_POLICY.md",
+      "line": 11,
+      "reference": "OBJECT_MATCH_REVIEW.md",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/expansion/OBJECT_MATCH_REVIEW.md",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/LINK_AUDIT_POLICY.md",
+      "line": 13,
+      "reference": "link-closure-plan.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/link-closure-plan.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/OBJECT_POSTREVIEW.md",
+      "line": 3,
+      "reference": "object-rejections.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/object-rejections.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/OBJECT_POSTREVIEW.md",
+      "line": 3,
+      "reference": "object-proofs/postreview-four-candidates.jpg",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/object-proofs/postreview-four-candidates.jpg",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/OBJECT_POSTREVIEW.md",
+      "line": 21,
+      "reference": "OBJECT_TRUTH.md",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/OBJECT_TRUTH.md",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/OBJECT_POSTREVIEW.md",
+      "line": 25,
+      "reference": "../../tools/vision-check/config/component-parts.json",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "tools/vision-check/config/component-parts.json",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "report/holdout/OBJECT_POSTREVIEW.md",
+      "line": 25,
+      "reference": "/assets/wave27/yards/yard_merchant_a.png",
+      "kind": "code_file",
+      "status": "source_only",
+      "resolved": "",
+      "reason": "Runtime game asset URL; game art is not bundled in the tool ZIP"
+    },
+    {
+      "document": "report/holdout/OBJECT_POSTREVIEW.md",
+      "line": 26,
+      "reference": "../../tools/vision-check/vision_check/parts.py",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "tools/vision-check/vision_check/parts.py",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "report/holdout/OBJECT_POSTREVIEW.md",
+      "line": 27,
+      "reference": "rain.py",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "tools/vision-check/vision_check/rain.py",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/OBJECT_POSTREVIEW.md",
+      "line": 27,
+      "reference": "analyze.py",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "tools/vision-check/vision_check/analyze.py",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/OBJECT_POSTREVIEW.md",
+      "line": 27,
+      "reference": "coverage.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/evaluation/frozen-results/coverage.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/OBJECT_TRUTH.md",
+      "line": 30,
+      "reference": "object-proofs/*-motion.jpg",
+      "kind": "code_file",
+      "status": "included_group",
+      "resolved": "report/holdout/object-proofs/holdout-chalk-s3-summer-motion.jpg; report/holdout/object-proofs/holdout-chalk-s4-summer-motion.jpg; report/holdout/object-proofs/holdout-chalk-s5-summer-motion.jpg; report/holdout/object-proofs/holdout-city-year1407-motion.jpg; report/holdout/object-proofs/holdout-coast-s3-summer-motion.jpg; report/holdout/object-proofs/holdout-coast-s4-summer-motion.jpg; report/holdout/object-proofs/holdout-coast-s5-summer-motion.jpg; report/holdout/object-proofs/holdout-fen-s3-summer-motion.jpg; report/holdout/object-proofs/holdout-fen-s4-summer-motion.jpg; report/holdout/object-proofs/holdout-fen-s5-summer-motion.jpg; report/holdout/object-proofs/holdout-forest-s3-summer-motion.jpg; report/holdout/object-proofs/holdout-forest-s4-summer-motion.jpg; report/holdout/object-proofs/holdout-forest-s5-summer-motion.jpg; report/holdout/object-proofs/holdout-river-s1-year1301-motion.jpg",
+      "reason": "Wildcard has matching archive members; numeric ranges use all-member validation"
+    },
+    {
+      "document": "report/holdout/OBJECT_TRUTH.md",
+      "line": 30,
+      "reference": "object-proofs/holdout-city-year1362-confirm-page0..4.jpg",
+      "kind": "code_file",
+      "status": "included_group",
+      "resolved": "report/holdout/object-proofs/holdout-city-year1362-confirm-page0.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-page1.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-page2.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-page3.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-page4.jpg",
+      "reason": "Every numeric range member exists"
+    },
+    {
+      "document": "report/holdout/OBJECT_TRUTH.md",
+      "line": 30,
+      "reference": "object-proofs/holdout-city-year1407-confirm-page0..4.jpg",
+      "kind": "code_file",
+      "status": "included_group",
+      "resolved": "report/holdout/object-proofs/holdout-city-year1407-confirm-page0.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-page1.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-page2.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-page3.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-page4.jpg",
+      "reason": "Every numeric range member exists"
+    },
+    {
+      "document": "report/holdout/OBJECT_TRUTH.md",
+      "line": 30,
+      "reference": "*-blind-scale.jpg",
+      "kind": "code_file",
+      "status": "included_group",
+      "resolved": "report/holdout/object-proofs/holdout-chalk-s4-summer-blind-scale.jpg; report/holdout/object-proofs/holdout-city-year1362-confirm-blind-scale.jpg; report/holdout/object-proofs/holdout-city-year1407-confirm-blind-scale.jpg; report/holdout/object-proofs/holdout-coast-s3-summer-blind-scale.jpg",
+      "reason": "Wildcard has matching archive members; numeric ranges use all-member validation"
+    },
+    {
+      "document": "report/holdout/PRECISION.md",
+      "line": 44,
+      "reference": "JPEG_DELIVERY.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/JPEG_DELIVERY.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/PROTOCOL.md",
+      "line": 5,
+      "reference": "config/expansion.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "tools/vision-check/config/expansion.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/PROTOCOL.md",
+      "line": 19,
+      "reference": "OBJECT_MATCH_*.jpg",
+      "kind": "plain_file",
+      "status": "included_group",
+      "resolved": "report/expansion/OBJECT_MATCH_exp-prenat1-city.jpg; report/expansion/OBJECT_MATCH_exp-seed1-ch5-detail.jpg; report/expansion/OBJECT_MATCH_exp-seed4-middle.jpg; report/expansion/OBJECT_MATCH_seed1_middle_copies.jpg",
+      "reason": "Wildcard has matching archive members; numeric ranges use all-member validation"
+    },
+    {
+      "document": "report/holdout/TOP_FINDINGS.md",
+      "line": 18,
+      "reference": "GROUND_POSTREVIEW.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/GROUND_POSTREVIEW.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "report/holdout/TOP_FINDINGS.md",
+      "line": 18,
+      "reference": "OBJECT_POSTREVIEW.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/OBJECT_POSTREVIEW.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "report/holdout/TOP_FINDINGS.md",
+      "line": 18,
+      "reference": "sample/REVIEW_TABLE.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/sample/REVIEW_TABLE.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 10,
+      "reference": "../../report/holdout/evaluation/frozen-results/findings.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/evaluation/frozen-results/findings.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 10,
+      "reference": "../../report/holdout/truth-combined.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/truth-combined.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 10,
+      "reference": "../../report/holdout/semantic-rejections.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/semantic-rejections.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 23,
+      "reference": "scripts/capture_lands.py",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/scripts/capture_lands.py",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 23,
+      "reference": "scripts/capture_extra.py",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/scripts/capture_extra.py",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 23,
+      "reference": "scripts/capture_manifest.py",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/scripts/capture_manifest.py",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 27,
+      "reference": "capture.json",
+      "kind": "plain_file",
+      "status": "source_only",
+      "resolved": "",
+      "reason": "Generic generated raw capture input basename in the replay recipe; scene-specific lossless capture metadata and PNG hashes are included under new/metadata."
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 27,
+      "reference": "config/expansion.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "tools/vision-check/config/expansion.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 30,
+      "reference": "/path/to/tools/vision-check/config/expansion.json",
+      "kind": "plain_file",
+      "status": "source_only",
+      "resolved": "",
+      "reason": "Command template for caller-selected absolute path; actual fixed configuration is included at tools/vision-check/config/expansion.json."
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 42,
+      "reference": "report/holdout/scripts/audit_archive_links.py",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/scripts/audit_archive_links.py",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 42,
+      "reference": "/path/to/delivery.zip",
+      "kind": "plain_file",
+      "status": "source_only",
+      "resolved": "",
+      "reason": "Command placeholder for outer delivery archive, not an in-archive evidence reference."
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 42,
+      "reference": "/tmp/link-audit.json",
+      "kind": "plain_file",
+      "status": "source_only",
+      "resolved": "",
+      "reason": "Output destination of the documented validation command; final actual audit is included as report/holdout/LINK_AUDIT.json."
+    },
+    {
+      "document": "report/holdout/USAGE.md",
+      "line": 42,
+      "reference": "report/holdout/link-allowlist.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/link-allowlist.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/sample/README.md",
+      "line": 9,
+      "reference": "expansion/enhanced-benchmark/MATCHES.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/expansion/enhanced-benchmark/MATCHES.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/sample/README.md",
+      "line": 10,
+      "reference": "sample-protocol.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/sample/sample-protocol.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/sample/README.md",
+      "line": 12,
+      "reference": "sample-frozen.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/sample/sample-frozen.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/sample/README.md",
+      "line": 12,
+      "reference": "sample-frozen.sha256",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/sample/sample-frozen.sha256",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/sample/README.md",
+      "line": 31,
+      "reference": "reviews.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/sample/reviews.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/sample/README.md",
+      "line": 37,
+      "reference": "reviews.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/sample/reviews.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/sample/README.md",
+      "line": 37,
+      "reference": "SOURCE_SHA256.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/sample/SOURCE_SHA256.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/sample/README.md",
+      "line": 37,
+      "reference": "contact-1~5.jpg",
+      "kind": "plain_file",
+      "status": "included_group",
+      "resolved": "report/holdout/sample/contact-1.jpg; report/holdout/sample/contact-2.jpg; report/holdout/sample/contact-3.jpg; report/holdout/sample/contact-4.jpg; report/holdout/sample/contact-5.jpg",
+      "reason": "Every numeric range member exists"
+    },
+    {
+      "document": "report/holdout/sample/README.md",
+      "line": 37,
+      "reference": "temporal-1~7.jpg",
+      "kind": "plain_file",
+      "status": "included_group",
+      "resolved": "report/holdout/sample/temporal-1.jpg; report/holdout/sample/temporal-2.jpg; report/holdout/sample/temporal-3.jpg; report/holdout/sample/temporal-4.jpg; report/holdout/sample/temporal-5.jpg; report/holdout/sample/temporal-6.jpg; report/holdout/sample/temporal-7.jpg",
+      "reason": "Every numeric range member exists"
+    },
+    {
+      "document": "report/holdout/sample/README.md",
+      "line": 37,
+      "reference": "context-check.jpg",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/sample/context-check.jpg",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/score-final/METRICS.md",
+      "line": 40,
+      "reference": "MATCHES.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/score-final/MATCHES.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/score-final/METRICS.md",
+      "line": 42,
+      "reference": "metrics.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/score-final/metrics.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/score-fresh-maps/METRICS.md",
+      "line": 40,
+      "reference": "MATCHES.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/score-fresh-maps/MATCHES.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/score-fresh-maps/METRICS.md",
+      "line": 42,
+      "reference": "metrics.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/score-fresh-maps/metrics.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/score-spatial/METRICS.md",
+      "line": 40,
+      "reference": "MATCHES.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/score-spatial/MATCHES.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/score-spatial/METRICS.md",
+      "line": 42,
+      "reference": "metrics.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/score-spatial/metrics.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/score-temporal/METRICS.md",
+      "line": 40,
+      "reference": "MATCHES.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/score-temporal/MATCHES.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/score-temporal/METRICS.md",
+      "line": 42,
+      "reference": "metrics.json",
+      "kind": "plain_file",
+      "status": "included",
+      "resolved": "report/holdout/score-temporal/metrics.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/scripts/capture-VALIDATION.md",
+      "line": 5,
+      "reference": "capture-pyright.json",
+      "kind": "code_file",
+      "status": "included",
+      "resolved": "report/holdout/scripts/capture-pyright.json",
+      "reason": "Exact archive member"
+    },
+    {
+      "document": "report/holdout/scripts/capture-VALIDATION.md",
+      "line": 7,
+      "reference": "src/ui/landChoice.ts:26-43",
+      "kind": "code_file",
+      "status": "source_only",
+      "resolved": "",
+      "reason": "Read-only game-source evidence at pinned wt-current commit d6ae15498a45c2202a10f3ce8f20a543dd305c3f; src/ui/landChoice.ts lines26-43 encode native river seed1. Game repository source is intentionally not bundled in the detector results ZIP."
+    },
+    {
+      "document": "tools/vision-check/README.md",
+      "line": 5,
+      "reference": "../../README.md",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "README.md",
+      "reason": "Actual Markdown target exists"
+    },
+    {
+      "document": "tools/vision-check/README.md",
+      "line": 5,
+      "reference": "../../report/holdout/FROZEN_TOOL.json",
+      "kind": "markdown_link",
+      "status": "included",
+      "resolved": "report/holdout/FROZEN_TOOL.json",
+      "reason": "Actual Markdown target exists"
+    }
+  ]
+}

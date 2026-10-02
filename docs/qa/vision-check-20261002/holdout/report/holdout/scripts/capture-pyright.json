@@ -1,0 +1,14 @@
+{
+  "typeCheckingMode": "all",
+  "pythonVersion": "3.12",
+  "include": [
+    "capture_lands.py",
+    "capture_extra.py",
+    "capture_manifest.py"
+  ],
+  "extraPaths": [
+    "../frozen-tool"
+  ],
+  "reportUnusedCallResult": "none",
+  "reportPrivateUsage": "none"
+}

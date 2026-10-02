@@ -1,0 +1,1305 @@
+{
+  "frozen_truth_sha256": "7f42c5a4b60aa4bcebeb7557efbab29979dcd256c447eb96b9f648b282b3092a",
+  "candidates_total": 100,
+  "tp_reviewed": 22,
+  "fp_reviewed": 36,
+  "fp_not_individually_postreviewed": 42,
+  "semantic_tp_rejections": [],
+  "strict_boundary": {
+    "tp": 13,
+    "fp": 78,
+    "fn": 16
+  },
+  "strict_seam": {
+    "tp": 9,
+    "fp": 0,
+    "fn": 9
+  },
+  "boundary_fn_localization_unit_mismatch": 10,
+  "boundary_fn_no_corresponding_output": 6,
+  "tile_seam_fn_no_corresponding_output": 9,
+  "observations": [
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "9cc2f9e5f2f9",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "702f31750ccd",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "weak_or_unannotated_boundary",
+      "note_post": "짧거나 완만한 경계 또는 사전 GT에 없는 경계. 일부는 GT 판독 한계 가능성도 있어 사후 긍정으로 바꾸지 않음. strict FP 유지."
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "c17ac8dbf880",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "5651bdf32b92",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "a32b0221f49c",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "827e3c1f503f",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "272e54df9944",
+      "defect_id": "holdout-chalk-s3-summer-straight_boundary-2",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "8c21d9038ba3",
+      "defect_id": "holdout-chalk-s3-summer-straight_boundary-1",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "d50436d275e2",
+      "defect_id": "holdout-chalk-s3-summer-tile_seam-2",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s3-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s3-summer-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3731b2794757",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "f5c78a316ca9",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "7c4efb8a2b40",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "b6e58026700d",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "3120de3753c9",
+      "defect_id": "holdout-chalk-s4-summer-straight_boundary-1",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "def4a138cef3",
+      "defect_id": "holdout-chalk-s4-summer-straight_boundary-2",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "aced13a535e3",
+      "defect_id": "holdout-chalk-s4-summer-tile_seam-1",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s4-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s4-summer-tile_seam-2",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ab174fe0ecd7",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "weak_or_unannotated_boundary",
+      "note_post": "짧거나 완만한 경계 또는 사전 GT에 없는 경계. 일부는 GT 판독 한계 가능성도 있어 사후 긍정으로 바꾸지 않음. strict FP 유지."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "d79a6b25d35b",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "39d361e0123c",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ef22bda71837",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "b492c07b55ac",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "41973d50c8f5",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-4",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "854b8dc49b5e",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-2",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "8087198c69ce",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-1",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "a5dea3476c91",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-6",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "bbb14eabdf2b",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-3",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "ad16ccecf5a1",
+      "defect_id": "holdout-chalk-s5-summer-straight_boundary-5",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "798bae587cd3",
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-4",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "5fb7270f7256",
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-2",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "d4b7e7500e68",
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-1",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "2e1c2bc869fe",
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-3",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-5",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-chalk-s5-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-chalk-s5-summer-tile_seam-6",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ff2ba489e186",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "weak_or_unannotated_boundary",
+      "note_post": "짧거나 완만한 경계 또는 사전 GT에 없는 경계. 일부는 GT 판독 한계 가능성도 있어 사후 긍정으로 바꾸지 않음. strict FP 유지."
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "7a35e8491e20",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-city-year1362-confirm",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-city-year1362-confirm-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3fdc9ae4d48d",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0489c16d8394",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-city-year1407-confirm",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-city-year1407-confirm-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "91170c8893b9",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "weak_or_unannotated_boundary",
+      "note_post": "짧거나 완만한 경계 또는 사전 GT에 없는 경계. 일부는 GT 판독 한계 가능성도 있어 사후 긍정으로 바꾸지 않음. strict FP 유지."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ed33c13a7f9d",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "32035ad8f6b6",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "4a8986ddbf16",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "07a4aef3c437",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0148958c16c1",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "ef47074c3214",
+      "defect_id": "holdout-coast-s3-summer-straight_boundary-2",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s3-summer-straight_boundary-1",
+      "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "02ce8ed2753c",
+      "defect_id": "holdout-coast-s3-summer-tile_seam-2",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-coast-s3-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s3-summer-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0274d9c5ec3e",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "8a9620f4b22b",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "b9e60bb14ed4",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "f73dffa01671",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "3487601fd686",
+      "defect_id": "holdout-coast-s4-summer-straight_boundary-1",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-coast-s4-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "9bb51e1c02e0",
+      "defect_id": "holdout-coast-s4-summer-tile_seam-1",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "5701387eb946",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "6690d611bba5",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3318e9f616c7",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "9ca466f58160",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-coast-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-coast-s5-summer-straight_boundary-1",
+      "note": "모래·잔디 경계가 화면 가로축을 따라 수백 픽셀 직선 판으로 잘리고 급격히 단차를 이룸.",
+      "review": "localization_unit_mismatch",
+      "supporting_candidate_ids": [
+        "6690d611bba5"
+      ],
+      "note_post": "실제 결함 경계 위에 선분 예측이 있으나 연결 패치 GT 대비 IoU<0.1로 고정 매칭 실패. FN 유지."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3f2109766a34",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "e0b782ee7f80",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "4ace099c8f9d",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ba2a5559d7ec",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "108a7b27ff54",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "af811c3bc5b3",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0547ac6bbc81",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "1d2fa01ee3bf",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "614161217649",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "65e17ba052b9",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "4ea77257a8eb",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "3d65e05dd224",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "69b5a66983e1",
+      "defect_id": "holdout-fen-s3-summer-straight_boundary-1",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s3-summer-straight_boundary-2",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+      "review": "localization_unit_mismatch",
+      "supporting_candidate_ids": [
+        "0547ac6bbc81"
+      ],
+      "note_post": "실제 결함 경계 위에 선분 예측이 있으나 연결 패치 GT 대비 IoU<0.1로 고정 매칭 실패. FN 유지."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s3-summer-straight_boundary-3",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+      "review": "localization_unit_mismatch",
+      "supporting_candidate_ids": [
+        "3f2109766a34",
+        "af811c3bc5b3"
+      ],
+      "note_post": "실제 결함 경계 위에 선분 예측이 있으나 연결 패치 GT 대비 IoU<0.1로 고정 매칭 실패. FN 유지."
+    },
+    {
+      "scene": "holdout-fen-s3-summer",
+      "detector": "tile_seam",
+      "outcome": "TP",
+      "candidate_id": "2188c3598c77",
+      "defect_id": "holdout-fen-s3-summer-tile_seam-1",
+      "note": "Spatial one-to-one match",
+      "review": "semantic_tp_confirmed",
+      "note_post": "실제 바위 결함 패치를 가리킴. 내부 이음새와 외곽 반복 표지는 같은 타일 조립 결함의 서로 다른 단서일 수 있음. 의미 거부 없음."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "c79d472464d2",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "d8ff0ec6f68a",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "99ebec8b07cc",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "545f2ab956f9",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "6ec8dded78ba",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "db07b719f6da",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "29cc69af6758",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "1388239de56a",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-straight_boundary-1",
+      "note": "원본에서 바위 외곽이 등각 격자 방향으로 칼같이 잘리고 마름모·계단 실루엣을 이룸. 연결된 바위 패치 1건.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-straight_boundary-2",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+      "review": "localization_unit_mismatch",
+      "supporting_candidate_ids": [
+        "d8ff0ec6f68a"
+      ],
+      "note_post": "실제 결함 경계 위에 선분 예측이 있으나 연결 패치 GT 대비 IoU<0.1로 고정 매칭 실패. FN 유지."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-straight_boundary-3",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s4-summer",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s4-summer-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "e8421d87e30b",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "weak_or_unannotated_boundary",
+      "note_post": "짧거나 완만한 경계 또는 사전 GT에 없는 경계. 일부는 GT 판독 한계 가능성도 있어 사후 긍정으로 바꾸지 않음. strict FP 유지."
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "cf323f5c2d73",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s5-summer-straight_boundary-1",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s5-summer-straight_boundary-2",
+      "note": "습지와 잔디의 경계가 긴 직선 및 직각 판 형태로 꺾임. 자연 수변 곡선·인공 시설 경계가 아닌 지면 자체의 기하학적 절단.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-fen-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-fen-s5-summer-straight_boundary-3",
+      "note": "수풀 오른쪽에 드러난 바위 표면의 날카로운 등각 직선 절단. 내부는 가려져 이음새 양성으로 세지 않음.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "a35f1055f4fd",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "d7d5212a5a64",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "weak_or_unannotated_boundary",
+      "note_post": "짧거나 완만한 경계 또는 사전 GT에 없는 경계. 일부는 GT 판독 한계 가능성도 있어 사후 긍정으로 바꾸지 않음. strict FP 유지."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "ccd2d47239ef",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "40d7bd04a8f9",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "310c7c834838",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "14ee53f8074d",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "c6ace6138528",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "b64a5178c005",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s3-summer-straight_boundary-1",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+      "review": "localization_unit_mismatch",
+      "supporting_candidate_ids": [
+        "ccd2d47239ef"
+      ],
+      "note_post": "실제 결함 경계 위에 선분 예측이 있으나 연결 패치 GT 대비 IoU<0.1로 고정 매칭 실패. FN 유지."
+    },
+    {
+      "scene": "holdout-forest-s3-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s3-summer-straight_boundary-2",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+      "review": "localization_unit_mismatch",
+      "supporting_candidate_ids": [
+        "a35f1055f4fd"
+      ],
+      "note_post": "실제 결함 경계 위에 선분 예측이 있으나 연결 패치 GT 대비 IoU<0.1로 고정 매칭 실패. FN 유지."
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "d9ec00c869bd",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "586bdcb435e6",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "wrong_material_false_alarm",
+      "note_post": "지면 경계가 아니라 영주관의 벽/바닥 테두리, 나무·수풀·낙엽 등 객체 경계/명암선. strict FP 유지."
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "fcd69b7640b0",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "30646803fa79",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0ad00bf6b8d0",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s4-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s4-summer-straight_boundary-1",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+      "review": "localization_unit_mismatch",
+      "supporting_candidate_ids": [
+        "fcd69b7640b0"
+      ],
+      "note_post": "실제 결함 경계 위에 선분 예측이 있으나 연결 패치 GT 대비 IoU<0.1로 고정 매칭 실패. FN 유지."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "4b93541fb40a",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0aceea929b91",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "12ba4b6a2cda",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "8ded03b53770",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "0f04d1de12b3",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "d5c52fa85bad",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "c945f8547736",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "real_boundary_strict_spatial_fp",
+      "note_post": "실제 사전 동결 경계의 일부를 가리키나 IoU 및 단위 불일치로 strict FP 유지; 의미상 거짓 경보라고 부르면 안 됨."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "2807c35de268",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "e6b34ad71f66",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "not_individually_postreviewed",
+      "note_post": "사전 전체화면 GT는 판독했으나 이 후보 crop의 사후 의미 재판정은 하지 않음."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s5-summer-straight_boundary-1",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+      "review": "localization_unit_mismatch",
+      "supporting_candidate_ids": [
+        "c945f8547736"
+      ],
+      "note_post": "실제 결함 경계 위에 선분 예측이 있으나 연결 패치 GT 대비 IoU<0.1로 고정 매칭 실패. FN 유지."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s5-summer-straight_boundary-2",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+      "review": "localization_unit_mismatch",
+      "supporting_candidate_ids": [
+        "4b93541fb40a",
+        "12ba4b6a2cda"
+      ],
+      "note_post": "실제 결함 경계 위에 선분 예측이 있으나 연결 패치 GT 대비 IoU<0.1로 고정 매칭 실패. FN 유지."
+    },
+    {
+      "scene": "holdout-forest-s5-summer",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-forest-s5-summer-straight_boundary-3",
+      "note": "숲 바닥 갈색 면이 긴 가로·세로 직선/직각 계단으로 끊김. 같은 연결된 경계 결함 묶음을 1건으로 판정.",
+      "review": "localization_unit_mismatch",
+      "supporting_candidate_ids": [
+        "0aceea929b91"
+      ],
+      "note_post": "실제 결함 경계 위에 선분 예측이 있으나 연결 패치 GT 대비 IoU<0.1로 고정 매칭 실패. FN 유지."
+    },
+    {
+      "scene": "holdout-river-s1-year1301",
+      "detector": "straight_boundary",
+      "outcome": "FP",
+      "candidate_id": "5b23c1f923f2",
+      "defect_id": null,
+      "note": "No unmatched annotated target",
+      "review": "weak_or_unannotated_boundary",
+      "note_post": "짧거나 완만한 경계 또는 사전 GT에 없는 경계. 일부는 GT 판독 한계 가능성도 있어 사후 긍정으로 바꾸지 않음. strict FP 유지."
+    },
+    {
+      "scene": "holdout-river-s1-year1301",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "holdout-river-s1-year1301-tile_seam-1",
+      "note": "원본에서 바위 덩어리 내부의 반복적인 대각 절단·명암 단절이 칸 간격으로 이어짐. 연결된 바위 패치 전체를 1건으로 판정. 일반 자연 균열 및 수풀 가림과 구별.",
+      "review": "no_matching_detector_output",
+      "note_post": "원본 양성은 보이나 해당 결함 유형의 후보가 그 영역을 가리키지 않음. 공간 크기 차이만으로 설명하지 않음."
+    }
+  ]
+}

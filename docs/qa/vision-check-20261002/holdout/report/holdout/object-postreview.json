@@ -1,0 +1,73 @@
+{
+  "reviewed_at": "2026-10-02T15:15:30.703207+00:00",
+  "ground_truth_sha256": "7d36679e5a6a3a37c2110052e7b90456fc525a54dac622f7e5fdea684c2e3725",
+  "phase": "posthoc_semantic_review_frozen_thresholds",
+  "reviewed_all_object_detector_candidates": true,
+  "candidate_count": 4,
+  "true_positives_before_review": 0,
+  "semantic_metric_changes": 0,
+  "proof": "object-proofs/postreview-four-candidates.jpg",
+  "candidates": [
+    {
+      "candidate_id": "holdout-chalk-s4-summer:repeat_density:0",
+      "detector": "repeat_density",
+      "spatial_status": "FP",
+      "semantic_verdict": "false_positive",
+      "frame": 0,
+      "box": [
+        1207,
+        108,
+        176,
+        155
+      ],
+      "reason": "네 백악 노두가 주변 큰 암반·풀·관목 사이에 자연스럽게 분산되어 있다. 동일 자산 사용은 보이나 과도한 반복 밀도 결함은 아니다."
+    },
+    {
+      "candidate_id": "holdout-chalk-s5-summer:repeat_density:0",
+      "detector": "repeat_density",
+      "spatial_status": "FP",
+      "semantic_verdict": "false_positive",
+      "frame": 0,
+      "box": [
+        687,
+        557,
+        143,
+        46
+      ],
+      "reason": "실제 보이는 분리된 낮은 관목은 두 군집이며 나머지는 영주관 임시 도형/표지에 가려진다. 자연스러운 식생을 과밀 반복으로 검출했다."
+    },
+    {
+      "candidate_id": "60ffa08b8194",
+      "detector": "roof_overlap",
+      "spatial_status": "FP",
+      "semantic_verdict": "false_positive",
+      "frame": 15,
+      "box": [
+        384,
+        382,
+        9,
+        11
+      ],
+      "reason": "노란 인물은 석벽 기둥 사이의 열린 문 통로에 있다. 고체 벽이나 지붕 면을 뚫은 것이 아니다. 석벽 그림의 직사각 경계가 열린 통로를 포함하는 오탐이다."
+    },
+    {
+      "candidate_id": "holdout-city-year1362-confirm:scale_ratio:0",
+      "detector": "scale_ratio",
+      "spatial_status": "excluded",
+      "semantic_verdict": "uncertain_outside_preregistered_roi",
+      "frame": 0,
+      "box": [
+        904,
+        683,
+        6,
+        8
+      ],
+      "reason": "6×8px 통은 집 모서리/식생/비 주변의 작은 부분으로 독립 높이·가림 판정이 불확실하다. 모든 사전 크기 ROI 밖이므로 제외를 유지한다. 빗줄기가 아니며 비 정답 TP로 사용할 수 없다."
+    }
+  ],
+  "limitations": [
+    "No stationary, roof or repetition positives in blind truth; their recall is not demonstrated.",
+    "Scale precision covers preregistered measurable ROIs, not entire canvas.",
+    "Ground truth, ROIs, thresholds and tool source were not changed."
+  ]
+}
