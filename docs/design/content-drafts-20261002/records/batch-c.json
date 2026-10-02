@@ -1,0 +1,1915 @@
+[
+  {
+    "number": 41,
+    "id": "ck_evt_041",
+    "category": "장원",
+    "period": "1382–1450",
+    "years": [
+      1382,
+      1386
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 본거지 장원의 숲 또는 관습상 숲 이용 관계",
+      "population": "편집 발동 필터: 최소 인구 제한 없음",
+      "rights": "편집 발동 필터: 추가 권리 제한 없음",
+      "relations": "편집 발동 필터: 관계 수치 하한 없음",
+      "season": "편집 발동 필터: 가을",
+      "state": "실제 open pannage 홈 청원. 보고된 생활 사정은 서사이며 별도 빈곤 변수는 없음."
+    },
+    "sender": {
+      "faction": "농민 공동체",
+      "role": "마을 대표(리브)"
+    },
+    "title": "숲의 돼지와 가을 납부금",
+    "body": "숲을 쓰던 소작인들이 올해 돼지 방목료를 덜어 달라고 합니다. 집행관은 받아야 할 돈을 장부에 남겼고, 마을 대표는 살림의 여유가 없다고 전했습니다.",
+    "choices": [
+      {
+        "id": "remit",
+        "label": "이번 납부금을 면제한다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openHomePetition.id",
+              "kind": "pannage",
+              "grant": true
+            },
+            "rangeNote": "금고 [0,0]d; commons [+4,+4] 고정 관계값은 [x,x]; amount는 현재 청원 값, 게임 추정.",
+            "preconditions": "home의 pannage 청원이 lordEstatePetitions에 실제 open이고 deadline 이내; 지출 선택은 금고≥amount인 때만 제시.",
+            "limits": "승인/거절·금고·지정 관계만 변경한다. 실제 시설 수선·권리 경계·인물 이동 효과는 없다."
+          }
+        ],
+        "tradeoff": "10~30d를 받을 기회를 포기하고 소작인의 관계를 얻는다. 숲의 생산량은 증가하지 않는다.",
+        "ledger": "돼지 방목료 청원 승인: 추가 수입 없음.",
+        "chronicle": "영주는 숲을 쓰는 소작인들의 이번 부담을 덜었다."
+      },
+      {
+        "id": "collect",
+        "label": "장부의 납부금을 받는다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openHomePetition.id",
+              "kind": "pannage",
+              "grant": false
+            },
+            "rangeNote": "금고 +amount [10,30]d; commons [−3,−3] 고정 관계값은 [x,x]; amount는 현재 청원 값, 게임 추정.",
+            "preconditions": "home의 pannage 청원이 lordEstatePetitions에 실제 open이고 deadline 이내; 지출 선택은 금고≥amount인 때만 제시.",
+            "limits": "승인/거절·금고·지정 관계만 변경한다. 실제 시설 수선·권리 경계·인물 이동 효과는 없다."
+          }
+        ],
+        "tradeoff": "수입을 확보하지만 공동체의 불만이 남는다.",
+        "ledger": "돼지 방목료 청원 거절: {amount}d 수입.",
+        "chronicle": "영주는 소작인들의 감면 청원을 받아들이지 않았다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "홈 청원은 현 엔진에서 선례 자동처리 불가. 명령 안내형 사건은 영주가 직접 선택한다.",
+      "exclusions": "같은 미해결 대상에 중복 표시하지 않는다. 다른 사건과 한 해에 겹치면 뒤 후보로 돌리며 기한 있는 실제 청원은 기한을 연장하지 않는다. 쿨다운은 게임 추정 제안이다."
+    },
+    "illustration": "가을 숲 가장자리에서 돼지를 모은 소작인과 납부 장부를 든 마을 대표.",
+    "history": {
+      "sourceIds": [
+        "HK01",
+        "HK02"
+      ],
+      "basis": "장원 관습에 따른 공유 자원 이용과 징수·회계 책임을 근거로 삼는다.",
+      "inference": "가공 인물·가공 사건을 합성한 초안. 어느 특정 해의 흉작·정해진 남부 방목료를 재현하지 않았다.",
+      "limits": "HK01은 지역 용어 해설이며 모든 숲에 동일 관습이 있었다는 뜻이 아니다. 모든 금액·관계·확률은 역사 실측 아닌 게임 추정 또는 기존 엔진 수치다."
+    },
+    "integration": {
+      "mode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+      "requirements": "현재 존재하는 대상 ID를 바인딩하고 전제조건을 재검증한다. 새 사건 등록·조건 필터·빈도·결과 문구 어댑터는 미구현이다. 원장 문장은 UI 요약 제안이며 해당 명령이 금전 원장을 쓰지 않으면 별도 회계 거래를 생성하지 않는다. "
+    },
+    "newEffectLinks": [
+      "NE08",
+      "NE10"
+    ]
+  },
+  {
+    "number": 42,
+    "id": "ck_evt_042",
+    "category": "도시",
+    "period": "1382–1450",
+    "years": [
+      1385,
+      1389
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 시장이 있는 본거지 도시",
+      "population": "편집 발동 필터: 최소 인구 제한 없음",
+      "rights": "편집 발동 필터: 기존 시장 좌판세 징수 경로",
+      "relations": "편집 발동 필터: 관계 수치 하한 없음",
+      "season": "편집 발동 필터: 계절 제한 없음",
+      "state": "townAgency 존재; 기존 duesPermille 확인. 수레 이동 증가는 가공 보고이며 실제 교역량 조건은 아님. 현재 duesPermille=1000일 때만 표시하여 두 선택의 낮춤/높임을 보장한다."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "시장 서기"
+    },
+    "title": "옆 시장으로 향하는 수레",
+    "body": "상인들이 이웃 시장을 들렀다 오는 수레가 늘었다고 전합니다. 좌판세를 낮춰 거래를 붙잡자는 말과, 장날 수입을 지키자는 말이 갈립니다.",
+    "choices": [
+      {
+        "id": "light",
+        "label": "시장 좌판세를 낮춘다",
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues",
+            "parameters": {
+              "permilleCandidateRange": [
+                750,
+                850
+              ]
+            },
+            "rangeNote": "기본 시장 좌판세 대비 [750,850]‰에서 한 값 선택, 게임 추정; 허용250~2000‰.",
+            "preconditions": "agency 및 현재 값 확인. 현재 duesPermille=1000.",
+            "limits": "영구 설정 변경. 한 철 뒤 자동 복원이나 총수입 증가 보장 없음."
+          }
+        ],
+        "tradeoff": "한 거래에서 거두는 몫을 줄여 상인이 저축할 여지를 넓힌다.",
+        "ledger": "시장 좌판세 배율을 {duesPermille}‰로 정했다; 즉시 현금 이동 없음.",
+        "chronicle": "영주는 시장으로 오는 장사꾼의 부담을 낮췄다."
+      },
+      {
+        "id": "firm",
+        "label": "시장 좌판세를 높여 수입을 받친다",
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues",
+            "parameters": {
+              "permilleCandidateRange": [
+                1100,
+                1200
+              ]
+            },
+            "rangeNote": "기본 시장 좌판세 대비 [1100,1200]‰에서 한 값 선택, 게임 추정.",
+            "preconditions": "agency 및 현재 값 확인. 현재 duesPermille=1000.",
+            "limits": "상인의 세후 저축과 자율 사업 조건에 영향; 확정 수익률 아님."
+          }
+        ],
+        "tradeoff": "거래당 몫은 커지지만 상인이 쌓는 자금은 줄어든다.",
+        "ledger": "시장 좌판세 배율을 {duesPermille}‰로 정했다; 즉시 현금 이동 없음.",
+        "chronicle": "영주는 장날 수입을 위해 시장 좌판세를 높였다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "홈 청원은 현 엔진에서 선례 자동처리 불가. 명령 안내형 사건은 영주가 직접 선택한다.",
+      "exclusions": "같은 미해결 대상에 중복 표시하지 않는다. 다른 사건과 한 해에 겹치면 뒤 후보로 돌리며 기한 있는 실제 청원은 기한을 연장하지 않는다. 쿨다운은 게임 추정 제안이다."
+    },
+    "illustration": "시장 길목의 갈림길에서 짐수레를 바라보며 좌판세 장부를 펼친 시장 서기.",
+    "history": {
+      "sourceIds": [
+        "HK04"
+      ],
+      "basis": "이웃 시장 사이의 이해 충돌과 시장 운영권의 지역성을 활용한다.",
+      "inference": "가공 인물·가공 사건을 합성한 초안. 수레의 이동과 배율 선택은 가공. 현대 경쟁시장 수요함수를 사료 사실로 주장하지 않는다.",
+      "limits": "특허 보유와 실제 시장의 성패는 별개다. 모든 금액·관계·확률은 역사 실측 아닌 게임 추정 또는 기존 엔진 수치다."
+    },
+    "integration": {
+      "mode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+      "requirements": "현재 존재하는 대상 ID를 바인딩하고 전제조건을 재검증한다. 새 사건 등록·조건 필터·빈도·결과 문구 어댑터는 미구현이다. 원장 문장은 UI 요약 제안이며 해당 명령이 금전 원장을 쓰지 않으면 별도 회계 거래를 생성하지 않는다. "
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 43,
+    "id": "ck_evt_043",
+    "category": "교회",
+    "period": "1382–1450",
+    "years": [
+      1396,
+      1396
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 교회가 있는 본거지",
+      "population": "편집 발동 필터: 최소 인구 제한 없음",
+      "rights": "편집 발동 필터: 추가 권리 제한 없음",
+      "relations": "편집 발동 필터: 관계 수치 하한 없음",
+      "season": "편집 발동 필터: 계절 제한 없음",
+      "state": "기존 legacy church_rebuilding 청원이1396년 봄 실제 도착해 미응답. 해당 legacy 시작이 사건보다 이르고 해당 interlude가 생성된 경우만."
+    },
+    "sender": {
+      "faction": "교구 공동체",
+      "role": "교구 대표"
+    },
+    "title": "교회 증축 청원",
+    "body": "교구 사람들이 예배를 드리는 공간을 넓혀 달라는 청원을 올렸습니다. 집행관은 한 해의 다른 지출과 함께 큰 공사비를 감당할 수 있을지 살펴 달라고 합니다.",
+    "choices": [
+      {
+        "id": "rebuild",
+        "label": "교회를 넓혀 짓는다",
+        "effects": [
+          {
+            "catalogKey": "chapter.legacy",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$pendingChurchRebuilding.id",
+              "response": "accept"
+            },
+            "rangeNote": "금고−min(가용금고,[300,300]d); bishop[+10,+10]; legacy.naveRebuilt=true, 유산 평가 rebuilt[15,15].",
+            "preconditions": "실제 legacy church_rebuilding 대기·제공된 accept 응답.",
+            "limits": "기존 장별 경로 전체. naveRebuilt는 기록·평가 상태이며 지도 교회 건물의 면적을 늘리지 않는다."
+          }
+        ],
+        "tradeoff": "큰 재정 부담을 내고 교회 재건 기록을 남긴다. 다른 영지 지출에 쓸 금고는 줄어든다.",
+        "ledger": "교구 교회 증축에 실제 {paid}d 지출; 재건 기록 확정.",
+        "chronicle": "영주는 교구 교회의 증축을 후원했다."
+      },
+      {
+        "id": "delay",
+        "label": "증축을 미룬다",
+        "effects": [
+          {
+            "catalogKey": "chapter.legacy",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$pendingChurchRebuilding.id",
+              "response": "refuse"
+            },
+            "rangeNote": "금고[0,0]d; bishop[−10,−10]; naveRebuilt를 새로 설정하지 않음.",
+            "preconditions": "같은 기존 청원·refuse 응답.",
+            "limits": "신규 반복 수선 청원으로 바꾸지 않으며 실제 기존 무응답 규칙도 유지."
+          }
+        ],
+        "tradeoff": "금고를 지키지만 주교 측의 불만이 남고 이번 재건 기록을 얻지 못한다.",
+        "ledger": "교구 교회 증축 거절; 지출 없음.",
+        "chronicle": "영주는 교구 교회의 증축을 미뤘다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "기존 장별 일회 결정. 선례 자동처리 없음.",
+      "exclusions": "1396년 실제 청원이 생성되지 않은 진행에서는 표시하지 않는다."
+    },
+    "illustration": "교회 신랑 안, 교구 대표가 추가 공간을 가리키고 서기가 큰 지출 장부를 펼치는 장면.",
+    "history": {
+      "sourceIds": [
+        "HK11",
+        "HK08"
+      ],
+      "basis": "교구 후원과 재산을 종교적 기념에 연결한 관행을 기존1396년 장 사건의 배경으로 활용한다.",
+      "inference": "가공 지역·인물의 합성 사건. 역사 관행을 게임의 기존 상태와 지렛대에 맞춘 추측이다.",
+      "limits": "1396년 해당 가공 교회의 증축은 게임 서사이고 Otham의 실제 사건이라고 주장하지 않는다. 금액·관계·가중치는 역사 실측이 아닌 게임 추정이다."
+    },
+    "integration": {
+      "mode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+      "requirements": "정본 제목·응답 대사를 유지하는 기존1396년 청원의 보충 대사. 실제 기한·순서를 변경하거나 새 청원으로 재발시키지 않는다. naveRebuilt 기록과 지도상 증축은 구별한다. 설치·대사 어댑터 미구현."
+    },
+    "newEffectLinks": [
+      "NE02"
+    ]
+  },
+  {
+    "number": 44,
+    "id": "ck_evt_044",
+    "category": "이웃 가문",
+    "period": "1382–1450",
+    "years": [
+      1391,
+      1396
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 본거지와 이웃 영지가 맞닿는 길",
+      "population": "편집 발동 필터: 최소 인구 제한 없음",
+      "rights": "편집 발동 필터: 실제 boundary_dispute의 party가 가리키는 이웃 세력",
+      "relations": "편집 발동 필터: 관계 수치 하한 없음",
+      "season": "편집 발동 필터: 계절 제한 없음",
+      "state": "실제 open boundary_dispute 홈 청원; partyId를 현재 청원에서 읽음."
+    },
+    "sender": {
+      "faction": "해당 이웃 가문",
+      "role": "이웃 영지의 집행관"
+    },
+    "title": "길가의 새 말뚝",
+    "body": "이웃 영지와 맞닿은 길에 새 말뚝이 박혔습니다. 소작인들은 예전 통행 자리를 막았다고 하고, 이웃의 집행관은 자기 영지의 경계라고 주장합니다.",
+    "choices": [
+      {
+        "id": "tenants",
+        "label": "우리 소작인의 주장을 지지한다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openHomePetition.id",
+              "kind": "boundary_dispute",
+              "grant": true
+            },
+            "rangeNote": "금고 [0,0]d; commons [+5,+5], 해당 party [−5,−5] 고정 관계값은 [x,x]; amount는 현재 청원 값, 게임 추정.",
+            "preconditions": "home의 boundary_dispute 청원이 lordEstatePetitions에 실제 open이고 deadline 이내; 지출 선택은 금고≥amount인 때만 제시.",
+            "limits": "승인/거절·금고·지정 관계만 변경한다. 실제 시설 수선·권리 경계·인물 이동 효과는 없다."
+          }
+        ],
+        "tradeoff": "공동체의 지지를 얻는 대신 이웃과의 관계가 나빠진다. 경계 좌표는 바뀌지 않는다.",
+        "ledger": "경계 청원 승인: 현금 이동 없음; 당사자 관계 변경.",
+        "chronicle": "영주는 길가 경계 다툼에서 소작인의 주장을 지지했다."
+      },
+      {
+        "id": "neighbour",
+        "label": "이웃의 주장을 받아들인다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openHomePetition.id",
+              "kind": "boundary_dispute",
+              "grant": false
+            },
+            "rangeNote": "금고 [0,0]d; commons [−4,−4], 해당 party [+4,+4] 고정 관계값은 [x,x]; amount는 현재 청원 값, 게임 추정.",
+            "preconditions": "home의 boundary_dispute 청원이 lordEstatePetitions에 실제 open이고 deadline 이내; 지출 선택은 금고≥amount인 때만 제시.",
+            "limits": "승인/거절·금고·지정 관계만 변경한다. 실제 시설 수선·권리 경계·인물 이동 효과는 없다."
+          }
+        ],
+        "tradeoff": "이웃과의 관계를 지키지만 소작인에게 불만을 남긴다.",
+        "ledger": "경계 청원 거절: 현금 이동 없음; 당사자 관계 변경.",
+        "chronicle": "영주는 길가 경계 다툼에서 이웃의 주장을 받아들였다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "홈 청원은 현 엔진에서 선례 자동처리 불가. 명령 안내형 사건은 영주가 직접 선택한다.",
+      "exclusions": "같은 미해결 대상에 중복 표시하지 않는다. 다른 사건과 한 해에 겹치면 뒤 후보로 돌리며 기한 있는 실제 청원은 기한을 연장하지 않는다. 쿨다운은 게임 추정 제안이다."
+    },
+    "illustration": "길가 새 말뚝 양편에서 낡은 경계 그림과 문서를 맞대는 두 집행관.",
+    "history": {
+      "sourceIds": [
+        "HK07",
+        "HK01"
+      ],
+      "basis": "1445년 Paston 서한의 길·말뚝 분쟁을 더 이른 시기의 가공 지역 갈등에 참고했다.",
+      "inference": "가공 인물·가공 사건을 합성한 초안. 1390년대에 같은 실재 사건이 일어났다는 뜻이 아니며 당사자 주장의 옳고 그름도 미확정이다.",
+      "limits": "홈 경로에는 권원·점유·길 위치 변경 효과가 없다. 모든 금액·관계·확률은 역사 실측 아닌 게임 추정 또는 기존 엔진 수치다."
+    },
+    "integration": {
+      "mode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+      "requirements": "현재 존재하는 대상 ID를 바인딩하고 전제조건을 재검증한다. 새 사건 등록·조건 필터·빈도·결과 문구 어댑터는 미구현이다. 원장 문장은 UI 요약 제안이며 해당 명령이 금전 원장을 쓰지 않으면 별도 회계 거래를 생성하지 않는다. "
+    },
+    "newEffectLinks": [
+      "NE08",
+      "NE10"
+    ]
+  },
+  {
+    "number": 45,
+    "id": "ck_evt_045",
+    "category": "세력",
+    "period": "1382–1450",
+    "years": [
+      1394,
+      1394
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 길드가 있는 본거지 시장도시",
+      "population": "편집 발동 필터: 최소 인구 제한 없음",
+      "rights": "편집 발동 필터: 추가 권리 제한 없음",
+      "relations": "편집 발동 필터: 관계 수치 하한 없음",
+      "season": "편집 발동 필터: 계절 제한 없음",
+      "state": "기존 legacy guild_dispute가1394년 봄 길드 존재 조건으로 실제 생성돼 미응답. 시장 화재로 갈라진 진행에는 표시하지 않음."
+    },
+    "sender": {
+      "faction": "직인 길드와 첫째 상인 가문",
+      "role": "직인 대표와 상인 대리인"
+    },
+    "title": "길드와 상인의 다툼",
+    "body": "길드는 완성한 천을 직접 내다 팔게 해 달라고 하고, 상인들은 그동안 맡아 온 판매 몫을 내세웁니다. 직인 대표와 상인 대리인이 각자 거래 장부를 들고 판결을 기다립니다.",
+    "choices": [
+      {
+        "id": "guild",
+        "label": "길드 편을 든다",
+        "effects": [
+          {
+            "catalogKey": "chapter.legacy",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$pendingGuildDispute.id",
+              "response": "accept"
+            },
+            "rangeNote": "금고[0,0]d; town[+10,+10], merchant_house_1[−10,−10].",
+            "preconditions": "실제 legacy guild_dispute 대기·accept 가능.",
+            "limits": "별도 독점권·직물가격·판매 경로 생성 없음. 기존 세력 변화 전체를 실행."
+          }
+        ],
+        "tradeoff": "직인 중심 도시의 지지를 얻지만 첫째 상인 가문의 협조를 잃는다.",
+        "ledger": "직물 판매 다툼: 길드 지지; 금전 이동 없음.",
+        "chronicle": "영주는 직물 판매 다툼에서 길드의 손을 들었다."
+      },
+      {
+        "id": "merchants",
+        "label": "상인 편을 든다",
+        "effects": [
+          {
+            "catalogKey": "chapter.legacy",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$pendingGuildDispute.id",
+              "response": "refuse"
+            },
+            "rangeNote": "금고[0,0]d; merchant_house_1[+10,+10], town[−10,−10].",
+            "preconditions": "같은 청원·refuse 가능.",
+            "limits": "길드를 해산하거나 기존 특허를 없애지 않음."
+          }
+        ],
+        "tradeoff": "상인 가문의 협조를 얻지만 도시의 직인들에게 반발을 산다.",
+        "ledger": "직물 판매 다툼: 상인 지지; 금전 이동 없음.",
+        "chronicle": "영주는 직물 판매 다툼에서 상인의 손을 들었다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "기존 장 사건의 일회 판결.",
+      "exclusions": "같은 기존 청원에 한 번만 부착."
+    },
+    "illustration": "길드 회합실의 천 꾸러미를 사이에 두고 판매 몫을 따지는 직인 대표와 상인.",
+    "history": {
+      "sourceIds": [
+        "HT03",
+        "HT04"
+      ],
+      "basis": "축융공 등 직물 생산자의 성장과 직물 교역 구조를 기존 길드·상인 갈등의 배경으로 삼는다.",
+      "inference": "가공 지역·인물의 합성 사건. 역사 관행을 게임의 기존 상태와 지렛대에 맞춘 추측이다.",
+      "limits": "직인의 보편적 판매권이나 모든 시장의 동일 독점 구조를 단정하지 않는다. 금액·관계·가중치는 역사 실측이 아닌 게임 추정이다."
+    },
+    "integration": {
+      "mode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+      "requirements": "정본 제목·응답을 유지하는1394년 실제 guild_dispute 보충 대사. 길드가 없어 market_fire로 진행하면 생략한다. 새 시기에 재발시키지 않는다. 대사 어댑터 미구현."
+    },
+    "newEffectLinks": [
+      "NE08"
+    ]
+  },
+  {
+    "number": 46,
+    "id": "ck_evt_046",
+    "category": "자연",
+    "period": "1382–1450",
+    "years": [
+      1397,
+      1402
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 기존 목재 거래 거점과 금고 목재 비축이 있는 본거지",
+      "population": "편집 발동 필터: 최소 인구 제한 없음",
+      "rights": "편집 발동 필터: 추가 권리 제한 없음",
+      "relations": "편집 발동 필터: 관계 수치 하한 없음",
+      "season": "편집 발동 필터: 여름 또는 가을",
+      "state": "현재 timberOrder≥8, 기존 목재 보유량>0, 거래 거점 존재. 바람·수선 사정은 가공 보고이며 실제 폭풍이나 손상 효과를 새로 만들지 않음."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "집행관"
+    },
+    "title": "바람이 잦아든 뒤의 주문서",
+    "body": "거센 바람 뒤에 급히 낸 목재 주문이 아직 남아 있습니다. 집행관은 먼저 들여온 목재가 쌓여 있다며, 남은 주문을 줄여 현금을 아낄지 더 받아 둘지 살펴 달라고 합니다.",
+    "choices": [
+      {
+        "id": "trim",
+        "label": "남은 주문을 네 단으로 줄인다",
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 4
+            },
+            "rangeNote": "기존 잔량을 [4,4]단으로 대체. 시장18d/단·한 번2단; 촌락27d/단·한 번1단. 즉시 지출0d.",
+            "preconditions": "현재 주문≥8; 시장 또는 촌락 거래 거점.",
+            "limits": "새4단 추가가 아닌 잔량 교체. 기존 구매 환불·수선 완료 없음."
+          }
+        ],
+        "tradeoff": "향후 지출을 줄이면서 소량의 추가 목재는 남긴다. 이후 자재 필요가 커지면 다시 주문해야 한다.",
+        "ledger": "목재 미입고 주문을4단으로 축소; 기지출 환불 없음.",
+        "chronicle": "영주는 바람 뒤에 낸 목재 주문의 남은 양을 줄였다."
+      },
+      {
+        "id": "cancel",
+        "label": "미입고 주문을 모두 거둔다",
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 0
+            },
+            "rangeNote": "timberOrder 제거; 즉시 금고·목재 변화[0,0].",
+            "preconditions": "현재 미입고 주문 존재.",
+            "limits": "주문 철회 위약금·상인 관계 손실 없음. 이미 온 목재를 되팔지 않음."
+          }
+        ],
+        "tradeoff": "추가 지출을 막지만 이 주문으로 더 들어올 목재도 없어진다. 현재 비축만으로 버틸지는 도시의 실제 필요에 달렸다.",
+        "ledger": "미입고 목재 주문 취소; 환불 없음.",
+        "chronicle": "영주는 비축을 남기고 추가 목재 주문을 거뒀다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "홈 청원은 현 엔진에서 선례 자동처리 불가. 명령 안내형 사건은 영주가 직접 선택한다.",
+      "exclusions": "같은 미해결 대상에 중복 표시하지 않는다. 다른 사건과 한 해에 겹치면 뒤 후보로 돌리며 기한 있는 실제 청원은 기한을 연장하지 않는다. 쿨다운은 게임 추정 제안이다."
+    },
+    "illustration": "창고에 쌓인 들보 옆에서 이미 받은 분량과 남은 목재 주문을 가르는 집행관.",
+    "history": {
+      "sourceIds": [
+        "HK02",
+        "HK09"
+      ],
+      "basis": "자재 관리와 방치 손실을 점검하는 관행을 재해 뒤 과잉 주문 검토로 재구성했다.",
+      "inference": "가공 지역·인물의 합성 사건. 역사 관행을 게임의 기존 상태와 지렛대에 맞춘 추측이다.",
+      "limits": "특정1397년 폭풍이나 실제 재고 과잉 기록을 주장하지 않는다. 금액·관계·가중치는 역사 실측이 아닌 게임 추정이다."
+    },
+    "integration": {
+      "mode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+      "requirements": "현재 존재하는 대상 ID를 바인딩하고 전제조건을 재검증한다. 새 사건 등록·조건 필터·빈도·결과 문구 어댑터는 미구현이다. 원장 문장은 UI 요약 제안이며 해당 명령이 금전 원장을 쓰지 않으면 별도 회계 거래를 생성하지 않는다. "
+    },
+    "newEffectLinks": [
+      "NE02"
+    ]
+  },
+  {
+    "number": 47,
+    "id": "ck_evt_047",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1400,
+      1404
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 본거지 영주관",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 아래 대상 경로에 필요한 기존 권리·청구권만 요구",
+      "relations": "편집 발동 필터: 아래 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 청원·감사 기한 안; 별도 계절 제한 없음",
+      "state": "기존 legacy heir_choice가 실제 미응답 상태. 현재 후보 목록에 eldest_son과 daughter_husband가 모두 있고 두 응답이 허용될 때만 보충 문구 표시."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "현재 가문의 서기"
+    },
+    "title": "영주의 후계자",
+    "body": "집안 사람들이 후계자 명단을 들고 모였습니다. 상위 영주에게 낼 상속 승인금과 각 후보가 맺어 온 관계를 함께 살펴 달라고 합니다.",
+    "choices": [
+      {
+        "id": "son",
+        "label": "맏아들에게 잇게 한다",
+        "effects": [
+          {
+            "catalogKey": "chapter.legacy",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$existingHeirChoice.id",
+              "response": "accept"
+            },
+            "rangeNote": "상속 승인금 min(가용금고,[100,100]d); overlord [+5,+5]; 실제 후계 인물 착좌.",
+            "preconditions": "legacy 활성, 실제 heir_choice 대기, eldest_son 후보·accept 존재.",
+            "limits": "기존 처리 경로 전체를 사용한다. 임의 후계자 생성·나이·능력치 변경 없음."
+          }
+        ],
+        "tradeoff": "상속 승인금은 적지만 딸의 남편 선택에서 얻을 이웃 관계 상승은 없다. 맏아들의 실제 인물 기록을 확인한다.",
+        "ledger": "후계 착좌: 맏아들; 실제 상속 승인금 {paid}d 지출.",
+        "chronicle": "맏아들이 영주 가문을 잇도록 정했다."
+      },
+      {
+        "id": "son_in_law",
+        "label": "딸의 남편에게 잇게 한다",
+        "effects": [
+          {
+            "catalogKey": "chapter.legacy",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$existingHeirChoice.id",
+              "response": "accept_with_price"
+            },
+            "rangeNote": "상속 승인금 min(가용금고,[150,150]d); neighbour_1 [+10,+10]; 실제 후계 인물 착좌.",
+            "preconditions": "legacy 활성, 실제 heir_choice 대기, daughter_husband 후보·응답 존재.",
+            "limits": "가문 관계와 착좌는 seatHeir의 기존 규칙을 그대로 따른다. 새 혼인 체결 아님."
+          }
+        ],
+        "tradeoff": "상속 승인금이 더 크고 기존 결말의 가문 후계 점수는 맏아들보다 낮지만 이웃 가문 관계를 얻는다.",
+        "ledger": "후계 착좌: 딸의 남편; 실제 상속 승인금 {paid}d 지출.",
+        "chronicle": "딸의 남편이 영주 가문을 잇도록 정했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "영주의 결정. 자동 선례 처리 없음.",
+      "exclusions": "실제 heir_choice 한 번에만 부착. 후보가 한 명이면 이 초안은 생략하고 원래 청원을 유지한다."
+    },
+    "illustration": "영주관 긴 탁자에서 현재 후계 후보 두 사람의 문서와 봉인을 나란히 놓는 가문 서기.",
+    "history": {
+      "sourceIds": [
+        "HK05",
+        "HK06"
+      ],
+      "basis": "혼인 재산설정과 친족별 차순위 승계 사례를 후계 논의의 배경으로 사용한다.",
+      "inference": "가공 인물·가공 사건을 합성한 초안. 사료의 관행을 다른 남부 가공 영지에 적용한 추측이며 특정 연도의 실재 사건을 재현하지 않는다.",
+      "limits": "Paston 사례는 플레이어가 자유롭게 상속법을 고를 수 있었다는 증거가 아니다. 현재 실제 후보 선택 규칙은 게임 추상화다. 수치·금액·확률은 역사 실측 아닌 게임 추정 또는 기존 엔진 값이다. 기존 legacy는 생전 후계자 착좌(양위)와 사망 뒤 보유 승인의 relief를 한 경로에 묶은 게임 간소화다. 생전 양위에 항상 같은 상속 승인금이 붙었다는 역사 주장이 아니다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 명령·응답 안내 어댑터",
+      "requirements": "현재 실제 대상 ID를 바인딩하고 전제와 선택 가용성을 재검증한다. 사건 등록·연도/조건/빈도·원장/연대기 문구 어댑터는 미구현. 금전 원장을 쓰지 않는 명령의 원장 문구는 별도 회계 거래가 아닌 UI 요약이다. 정본 제목·원래 청원은 변경하지 않는 보충 대사. 기존 도착 날짜와 기한 유지. 연도창 밖 도착하면 이 초안은 표시하지 않으며 강제 재상신하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE09"
+    ]
+  },
+  {
+    "number": 48,
+    "id": "ck_evt_048",
+    "category": "장원",
+    "period": "1382–1450",
+    "years": [
+      1403,
+      1408
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 본거지 장원의 공유 목초지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 아래 대상 경로에 필요한 기존 권리·청구권만 요구",
+      "relations": "편집 발동 필터: 아래 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 청원·감사 기한 안; 별도 계절 제한 없음",
+      "state": "실제 open home common_pasture 청원이 영주에게 도착. commons와 merchant_house_2가 모두 현재 존재."
+    },
+    "sender": {
+      "faction": "농민 공동체와 둘째 상인 가문",
+      "role": "마을 대표와 가축 소유 상인의 대리인"
+    },
+    "title": "소의 수보다 앞서는 관습",
+    "body": "공유지에 짐승을 더 들인 상인 가문을 두고 소작인들이 방목 한도를 요구합니다. 상인 가문은 오래 쓰던 풀밭을 갑자기 막지 말라며 맞섭니다.",
+    "choices": [
+      {
+        "id": "limit",
+        "label": "방목 한도를 두자는 청을 받아들인다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openCommonPasture.id",
+              "grant": true
+            },
+            "rangeNote": "금고[0,0]d; commons[+5,+5], merchant_house_2[−4,−4].",
+            "preconditions": "실제 home common_pasture·deadline 내.",
+            "limits": "정치 판결·관계만 변경. 실제 가축 수 상한·타일 접근·권원 mutation 없음."
+          }
+        ],
+        "tradeoff": "소작인의 지지를 얻지만 큰 가축떼를 들인 상인 가문과 갈등한다.",
+        "ledger": "공유지 방목 한도 청원 승인; 현금 변화 없음.",
+        "chronicle": "영주는 공유지 방목에 한도를 두자는 소작인의 청을 받았다."
+      },
+      {
+        "id": "open",
+        "label": "이번에는 한도를 두지 않는다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$openCommonPasture.id",
+              "grant": false
+            },
+            "rangeNote": "금고[0,0]d; commons[−5,−5], merchant_house_2[+3,+3].",
+            "preconditions": "같은 실제 청원·기한 내.",
+            "limits": "공유지를 상인 소유로 양도하지 않는다."
+          }
+        ],
+        "tradeoff": "상인 가문과의 관계를 지키지만 소작인의 목초지 불안을 남긴다.",
+        "ledger": "공유지 방목 한도 청원 거절; 현금 변화 없음.",
+        "chronicle": "영주는 이번 공유지 방목에 새 한도를 두지 않았다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "home 청원은 선례 자동처리 불가.",
+      "exclusions": "실제 대상의 미해결 상태를 중복 표시하지 않으며 해결 뒤 동일 인스턴스 재등장 금지. 쿨다운과 연간 배분은 게임 추정 편집안으로 미구현."
+    },
+    "illustration": "공유 목초지 울타리 문 앞, 소작인의 작은 소 떼와 상인의 큰 소 떼를 가리키는 두 대표.",
+    "history": {
+      "sourceIds": [
+        "HK01"
+      ],
+      "basis": "공유지의 이용권과 제한된 방목 몫이라는 관습에서 소재를 얻었다.",
+      "inference": "가공 지역·인물의 합성 사건. 역사 관행을 게임의 기존 상태와 지렛대에 맞춘 추측이다.",
+      "limits": "Cumbria 사례의 구체적인 마릿수·보유관행을 남부 전체에 적용하지 않는다. 금액·관계·가중치는 역사 실측이 아닌 게임 추정이다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 명령·응답 안내 어댑터",
+      "requirements": "home common_pasture의 기존 응답 경로에 연결. 미래 가축 상한이나 범위 판결은 NE08로 분리. 새 방목 효과는 쓰지 않음. 대사·등록 어댑터 미구현."
+    },
+    "newEffectLinks": [
+      "NE08",
+      "NE10"
+    ]
+  },
+  {
+    "number": 49,
+    "id": "ck_evt_049",
+    "category": "도시",
+    "period": "1382–1450",
+    "years": [
+      1406,
+      1411
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 직물 거래가 있는 시장도시",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 아래 대상 경로에 필요한 기존 권리·청구권만 요구",
+      "relations": "편집 발동 필터: 아래 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 청원·감사 기한 안; 별도 계절 제한 없음",
+      "state": "townAgency 존재; weaver_house와 fulling_mill 장려금 모두0. 실효 차이를 위해 해당 사업을 제안할 건축 주체가 있는 도시."
+    },
+    "sender": {
+      "faction": "직인 길드",
+      "role": "직조공과 축융공의 대표"
+    },
+    "title": "천을 짜는 집, 천을 다듬는 물길",
+    "body": "직조공은 일을 늘릴 집을, 축융공은 천을 다듬을 시설을 두고 이야기합니다. 어느 쪽에 장려금을 내걸든 나머지 자금과 자리는 장인들이 마련해야 합니다.",
+    "choices": [
+      {
+        "id": "weave",
+        "label": "직조 작업장에 장려금을 내건다",
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy",
+            "parameters": {
+              "kind": "weaver_house",
+              "amountCandidateRange": [
+                24,
+                40
+              ]
+            },
+            "rangeNote": "[24,40]d/채택 사업 중 한 정수, 게임 추정; 설정 즉시 지출0.",
+            "preconditions": "전체 장려금 합계≤금고250‰; 유효 kind; 직조공 관련 자율 사업 가능.",
+            "limits": "개별 장인·부지에 지급 약속 아님. 실제 사업 시작 시만 지급. 기간 만료·완공 보장 없음."
+          }
+        ],
+        "tradeoff": "직조 단계에 자금 여지를 주지만 축융 시설에는 같은 제안을 걸지 않는다.",
+        "ledger": "직조 작업장 장려금 {amount}d 설정; 착수 때 설정액과 당시 금고 중 적은 금액 지급.",
+        "chronicle": "영주는 직조 작업장에 장려금을 내걸었다."
+      },
+      {
+        "id": "full",
+        "label": "축융 시설에 장려금을 내건다",
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy",
+            "parameters": {
+              "kind": "fulling_mill",
+              "amountCandidateRange": [
+                24,
+                40
+              ]
+            },
+            "rangeNote": "[24,40]d/채택 사업 중 한 정수, 게임 추정; 설정 즉시 지출0.",
+            "preconditions": "전체 장려금 합계≤금고250‰; 유효 kind; 축융 관련 자율 사업 가능.",
+            "limits": "목재·인력·자리·수요 조건을 대체하지 않는다. 다른 기존 종류의 장려금 유지."
+          }
+        ],
+        "tradeoff": "마감 단계에 자금 여지를 주지만 직조 작업장에는 이 제안을 걸지 않는다.",
+        "ledger": "축융 시설 장려금 {amount}d 설정; 착수 때 설정액과 당시 금고 중 적은 금액 지급.",
+        "chronicle": "영주는 천을 다듬는 시설에 장려금을 내걸었다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "청지기 자동처리 불가. 지도 밖 반복 청원만 동일 영지·종류의 선례와 기존 예외 규칙이 허용할 때 자동처리 가능.",
+      "exclusions": "실제 대상의 미해결 상태를 중복 표시하지 않으며 해결 뒤 동일 인스턴스 재등장 금지. 쿨다운과 연간 배분은 게임 추정 편집안으로 미구현."
+    },
+    "illustration": "직조틀 견본과 축융한 천을 나란히 놓고 공정의 차이를 설명하는 두 직인.",
+    "history": {
+      "sourceIds": [
+        "HT03",
+        "HT04"
+      ],
+      "basis": "14세기 후반 축융공의 위상 변화와 성장한 모직물 거래의 여러 공정을 바탕으로 한다.",
+      "inference": "가공 인물·가공 사건을 합성한 초안. 사료의 관행을 다른 남부 가공 영지에 적용한 추측이며 특정 연도의 실재 사건을 재현하지 않는다.",
+      "limits": "공개 초록 수준 연구를 이용했으며 해당 도시의 수출액·고용 증가를 수치로 확정하지 않는다. 수치·금액·확률은 역사 실측 아닌 게임 추정 또는 기존 엔진 값이다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 명령·응답 안내 어댑터",
+      "requirements": "현재 실제 대상 ID를 바인딩하고 전제와 선택 가용성을 재검증한다. 사건 등록·연도/조건/빈도·원장/연대기 문구 어댑터는 미구현. 금전 원장을 쓰지 않는 명령의 원장 문구는 별도 회계 거래가 아닌 UI 요약이다. 두 사업이 도시의 실제 제안 후보가 될 수 있는지 확인해 한쪽이 불가능한 때에는 사건을 미루며 존재하지 않는 고용 보상을 추가하지 않는다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 50,
+    "id": "ck_evt_050",
+    "category": "교회",
+    "period": "1382–1450",
+    "years": [
+      1409,
+      1414
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 교구와 주거가 있는 본거지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 아래 대상 경로에 필요한 기존 권리·청구권만 요구",
+      "relations": "편집 발동 필터: 아래 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 청원·감사 기한 안; 별도 계절 제한 없음",
+      "state": "townAgency 존재; 당장의 특정 건물 완공 청원이 아닌 영지 방침 자문. 실제 불편 수치를 발동 조건으로 가장하지 않는다."
+    },
+    "sender": {
+      "faction": "교구 공동체",
+      "role": "교구 대표"
+    },
+    "title": "교구의 살림을 먼저 봐 주십시오",
+    "body": "교구 대표가 곡물 보관과 물 긷는 일이 불편하다는 말을 모아 왔습니다. 집안 서기는 새집과 장터를 기다리는 사람들의 사정도 함께 전합니다.",
+    "choices": [
+      {
+        "id": "stability",
+        "label": "살림의 안정을 먼저 살핀다",
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "자율 제안 가중치 granary[25,25], well[20,20], farmstead[20,20], chapel/church[15,15], market[−10,−10].",
+            "preconditions": "townAgency 존재.",
+            "limits": "방침 대체만 실행. 식량·물 즉시 지급이나 질병 감소 효과 없음."
+          }
+        ],
+        "tradeoff": "저장·물·경작 관련 제안을 더 중시하지만 시장 제안의 우선 점수는 낮아진다.",
+        "ledger": "영지 방침: 안정; 즉시 지출 없음.",
+        "chronicle": "영주는 교구의 살림을 받치는 일을 먼저 살피기로 했다."
+      },
+      {
+        "id": "growth",
+        "label": "새 살림을 받아들이는 일을 앞세운다",
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "growth"
+            },
+            "rangeNote": "자율 제안 가중치 house/fill_plot[20,20], market[15,15], granary/well[10,10].",
+            "preconditions": "townAgency 존재.",
+            "limits": "주민 수나 주택을 직접 늘리지 않는다. 종교 관계 보너스 없음."
+          }
+        ],
+        "tradeoff": "새집과 시장 제안을 밀어 주지만 저장·우물 제안에는 안정 방침만큼의 가중치를 주지 않는다.",
+        "ledger": "영지 방침: 성장; 즉시 지출 없음.",
+        "chronicle": "영주는 새 살림을 받아들이는 쪽으로 방침을 세웠다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "청지기 자동처리 불가. 지도 밖 반복 청원만 동일 영지·종류의 선례와 기존 예외 규칙이 허용할 때 자동처리 가능.",
+      "exclusions": "실제 대상의 미해결 상태를 중복 표시하지 않으며 해결 뒤 동일 인스턴스 재등장 금지. 쿨다운과 연간 배분은 게임 추정 편집안으로 미구현."
+    },
+    "illustration": "교구 회합의 탁자 위에 곡물 자루·물통·새집 청원서를 놓고 방침을 논하는 주민들.",
+    "history": {
+      "sourceIds": [
+        "HK02",
+        "HT05"
+      ],
+      "basis": "장원 관리의 생계·저장 책임과 다양한 정주 형태를 지역 공동체의 요구로 재구성했다.",
+      "inference": "가공 인물·가공 사건을 합성한 초안. 사료의 관행을 다른 남부 가공 영지에 적용한 추측이며 특정 연도의 실재 사건을 재현하지 않는다.",
+      "limits": "교회가 공공사업을 단독 통제했다는 주장도, 우물 지원이 역병을 치료한다는 주장도 아니다. 수치·금액·확률은 역사 실측 아닌 게임 추정 또는 기존 엔진 값이다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 명령·응답 안내 어댑터",
+      "requirements": "현재 실제 대상 ID를 바인딩하고 전제와 선택 가용성을 재검증한다. 사건 등록·연도/조건/빈도·원장/연대기 문구 어댑터는 미구현. 금전 원장을 쓰지 않는 명령의 원장 문구는 별도 회계 거래가 아닌 UI 요약이다. 안정/성장 enum을 기존 명령에 연결. 현재 방침과 같으면 유지라고 표시."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 51,
+    "id": "ck_evt_051",
+    "category": "이웃 가문",
+    "period": "1382–1450",
+    "years": [
+      1412,
+      1417
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 이웃 영지의 기존 어업권",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 아래 대상 경로에 필요한 기존 권리·청구권만 요구",
+      "relations": "편집 발동 필터: 아래 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 청원·감사 기한 안; 별도 계절 제한 없음",
+      "state": "현재 estates.claims에 player 측 open fishery claim 존재, 타인 title. 시작 시 기본 청구권을 이미 처리했으면 표시하지 않으며 새 청구권을 만들지 않음."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문의 법률 서기"
+    },
+    "title": "오래된 어업 청구권",
+    "body": "가문의 서기가 아직 해결되지 않은 이웃 영지의 어업 청구권을 꺼냈습니다. 문서가 남아 있어도 상대가 거두는 수입을 우리 몫으로 삼으려면 소송 절차를 밟아야 합니다.",
+    "choices": [
+      {
+        "id": "file",
+        "label": "기존 청구권으로 소송을 낸다",
+        "effects": [
+          {
+            "catalogKey": "suit.file",
+            "operation": "file_suit",
+            "parameters": {
+              "claimId": "$openFisheryClaim.id"
+            },
+            "rangeNote": "접수비 [60,60]d; 이후 심리 [120,120]d·집행 [80,80]d는 해당 단계에서 별도.",
+            "preconditions": "실제 open claim 및 타인 title, 금고≥60d.",
+            "limits": "claim을 suing으로, 소송을 filed로. 즉시 권원·점유·수입 변경 없음."
+          }
+        ],
+        "tradeoff": "접수비와 이후 절차 부담을 감수해 판결을 구한다. 승소는 보장되지 않는다.",
+        "ledger": "어업 청구권 소송 접수비 60d 지출.",
+        "chronicle": "영주는 오래된 어업 청구권을 법정에 내기로 했다."
+      },
+      {
+        "id": "leave",
+        "label": "지금은 소송을 내지 않는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "no_op",
+            "parameters": {},
+            "rangeNote": "즉시 모든 변화 [0,0].",
+            "preconditions": "진행 중인 대상의 현재 상태 확인.",
+            "limits": "기존 시스템의 시간 진행은 계속된다. 새로운 기한·후원·보호·미루기 보너스를 만들지 않는다."
+          }
+        ],
+        "tradeoff": "금고를 보존하지만 상대의 점유와 미해결 청구권이 그대로 남는다. 화해나 청구권 포기 효과는 없다.",
+        "ledger": "어업 청구권 접수 보류; 금고 변화 없음.",
+        "chronicle": "영주는 어업 청구권의 소송 접수를 미뤘다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "청지기 자동처리 불가. 지도 밖 반복 청원만 동일 영지·종류의 선례와 기존 예외 규칙이 허용할 때 자동처리 가능.",
+      "exclusions": "실제 대상의 미해결 상태를 중복 표시하지 않으며 해결 뒤 동일 인스턴스 재등장 금지. 쿨다운과 연간 배분은 게임 추정 편집안으로 미구현. 같은 장기 변주 묶음 010,051은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "old_fishery_claim"
+    },
+    "illustration": "영주관 문서함에서 어업 청구권 문서와 법정 접수비 돈주머니를 꺼낸 법률 서기.",
+    "history": {
+      "sourceIds": [
+        "HK10",
+        "HK03"
+      ],
+      "basis": "권원 문서와 실제 점유의 차이, 법정 문서를 통한 대응을 활용했다.",
+      "inference": "가공 인물·가공 사건을 합성한 초안. 사료의 관행을 다른 남부 가공 영지에 적용한 추측이며 특정 연도의 실재 사건을 재현하지 않는다.",
+      "limits": "1450년 Norfolk 분쟁을 참고한 앞선 시기의 합성 사례. 현 게임의 소송 비용은 역사 법정 비용표가 아니다. 수치·금액·확률은 역사 실측 아닌 게임 추정 또는 기존 엔진 값이다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 명령·응답 안내 어댑터",
+      "requirements": "현재 실제 대상 ID를 바인딩하고 전제와 선택 가용성을 재검증한다. 사건 등록·연도/조건/빈도·원장/연대기 문구 어댑터는 미구현. 금전 원장을 쓰지 않는 명령의 원장 문구는 별도 회계 거래가 아닌 UI 요약이다. 연도창은 아직 미해결인 기본 청구권을 재상기시키는 편집안이다. 없으면 건너뛴다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 52,
+    "id": "ck_evt_052",
+    "category": "세력",
+    "period": "1382–1450",
+    "years": [
+      1415,
+      1420
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 청지기가 관리하는 보유 영지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "실제 pending audit, revealedKept>0, deadline 이내. 현직 청지기 connection이 유효 세력이며 후임은 같은 영지의 살아 있고 dismissed/dead가 아닌 실제 후보. loyalty<100."
+    },
+    "sender": {
+      "faction": "청지기 후원 세력과 농민 공동체",
+      "role": "감사 서기와 청지기의 후원자 대리인"
+    },
+    "title": "빠진 돈과 청지기의 후원자",
+    "body": "감사에서 장부와 맞지 않는 돈이 드러났습니다. 청지기를 밀어 준 세력의 대리인은 처벌을 거두어 달라고 하고, 소작인들은 설명을 기다립니다.",
+    "choices": [
+      {
+        "id": "punish",
+        "label": "해임하고 드러난 돈을 회수한다",
+        "effects": [
+          {
+            "catalogKey": "audit.answer",
+            "operation": "answer_audit",
+            "parameters": {
+              "auditId": "$pendingAudit.id",
+              "choice": "punish",
+              "replacementId": "$livingSuccessor.personId"
+            },
+            "rangeNote": "회수 round(revealedKept×[500,500]‰)d; tenants[+5,+5]; 연결 세력[−5,−5]; 해임·후임 serving.",
+            "preconditions": "위 조건을 모두 만족; history 관계 반영 경로 포함.",
+            "limits": "전액 회수·수감·신체 처벌 없음. 후임의 현재 능력·성향을 그대로 사용."
+          }
+        ],
+        "tradeoff": "일부 돈과 소작인의 지지를 되찾지만 청지기의 후원 세력과 사이가 나빠진다.",
+        "ledger": "감사 처분: {recovered}d 회수; 청지기 해임 및 후임 지정.",
+        "chronicle": "영주는 장부에서 드러난 돈 일부를 회수하고 청지기를 바꿨다."
+      },
+      {
+        "id": "replace",
+        "label": "회수 없이 청지기만 바꾼다",
+        "effects": [
+          {
+            "catalogKey": "audit.answer",
+            "operation": "answer_audit",
+            "parameters": {
+              "auditId": "$pendingAudit.id",
+              "choice": "replace",
+              "replacementId": "$livingSuccessor.personId"
+            },
+            "rangeNote": "금고[0,0]d; tenants[0,0]; 연결 세력 처벌 변화[0,0]; 현직 dismissed·후임 serving.",
+            "preconditions": "같은 유효 audit와 후임.",
+            "limits": "일반 임명과 달리 기존 인물 dismissed. 숨은 화해 보너스 없음."
+          }
+        ],
+        "tradeoff": "돈을 되찾지 못하지만 처벌로 인한 연결 세력의 관계 손실은 피한다. 후임의 역량으로 이후 관리가 달라진다.",
+        "ledger": "감사 처분: 회수 없음; 청지기 교체.",
+        "chronicle": "영주는 돈을 돌려받지 않고 청지기를 바꿨다."
+      },
+      {
+        "id": "tolerate",
+        "label": "현직을 남겨 둔다",
+        "effects": [
+          {
+            "catalogKey": "audit.answer",
+            "operation": "answer_audit",
+            "parameters": {
+              "auditId": "$pendingAudit.id",
+              "choice": "tolerate"
+            },
+            "rangeNote": "충성도 min(100,현재+[10,10]); 회수[0,0]d; 인물 유지.",
+            "preconditions": "같은 pending audit; 현직 충성도<100.",
+            "limits": "관계 추가 보상·횡령 완전 방지 없음."
+          }
+        ],
+        "tradeoff": "현직의 충성도는 오르지만 드러난 돈을 회수하지 못하고 능력·성향도 그대로 남는다.",
+        "ledger": "감사 처분: 현직 유임; 회수 없음.",
+        "chronicle": "영주는 드러난 잘못에도 청지기를 유임했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "영주의 명령·감사 결정은 자동 선례 처리 불가. 지도 밖 반복 청원만 같은 영지·종류의 lord 선례와 기존 예외 규칙에 따라 위임 가능.",
+      "exclusions": "동일 미해결 대상을 중복 표시하지 않으며 해결한 인스턴스 재사용 금지. 빈도·쿨다운은 게임 추정 미구현 편집안. 같은 장기 변주 묶음 013,025,052은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "audit_findings"
+    },
+    "illustration": "가을 감사 탁자에서 맞지 않는 장부와 봉인된 돈궤를 바라보는 청지기·후임·후원자 대리인.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "연례 감사와 청지기의 회계 책임을 토대로 후원 관계가 있는 가공 관리 분쟁을 구성했다.",
+      "inference": "가공 인물·가공 사건의 합성 초안. 문헌의 관행을 가공 남부 영지에 옮긴 추측이며 해당 연도의 실재 사건 재현이 아니다.",
+      "limits": "규범서가 이 게임의 징계 세 가지나 회수율을 규정한 것은 아니다. 모든 수치·가격·효과는 역사 실측이 아닌 게임 추정 또는 현행 엔진 수치다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 경로 안내 어댑터",
+      "requirements": "현재 실제 대상 ID와 선택 가용성을 검사한다. 등록·조건·빈도·원장/연대기 문구 어댑터는 미구현. 금전 원장이 없는 경로의 원장 문구는 회계 거래 아닌 UI 요약으로만 쓴다. connection이 없으면 punish가 replace보다 일방적으로 유리하므로 이 초안은 표시하지 않는다. 후임 가용성·능력 비교를 함께 표시."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 53,
+    "id": "ck_evt_053",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1418,
+      1423
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 본거지와 지도 밖 보유 영지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "실제 suit.stage=filed/evidence; deed·court_roll 모두 미제출. 해당 가공 증서와 법정 기록의 실재 확인을 편집 전제로 두며, 실제 생성되지 않은 친족·새 청구권은 만들지 않음."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "현재 가문의 서기"
+    },
+    "title": "할머니의 증서와 장원 법정 기록",
+    "body": "가문의 서기가 할머니 때 작성한 증서와 장원 법정 기록을 나란히 펼쳤습니다. 진행 중인 권리 소송에 어느 쪽을 먼저 갖추어 낼지, 돈과 증거의 무게를 살펴 달라고 합니다.",
+    "choices": [
+      {
+        "id": "deed",
+        "label": "재산 증서를 먼저 갖춘다",
+        "effects": [
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence",
+            "parameters": {
+              "suitId": "$activeSuit.id",
+              "kind": "deed"
+            },
+            "rangeNote": "금고[−30,−30]d; 증거 가중치[+15,+15].",
+            "preconditions": "실제 filed/evidence 소송, deed미제출, 금고≥30d; 문서가 있다는 편집 전제.",
+            "limits": "한 종류 증거를 추가할 뿐 원문 위조·권원 즉시 이전·가족 감정 효과 없음."
+          }
+        ],
+        "tradeoff": "비용을 더 내고 더 무거운 문서 증거를 확보한다. 이번 선택이 나머지 증거를 영구히 금지하지는 않는다.",
+        "ledger": "재산 증서 증거 준비비30d 지출.",
+        "chronicle": "영주는 가문에 남은 재산 증서를 먼저 소송에 냈다."
+      },
+      {
+        "id": "roll",
+        "label": "장원 법정 기록을 먼저 갖춘다",
+        "effects": [
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence",
+            "parameters": {
+              "suitId": "$activeSuit.id",
+              "kind": "court_roll"
+            },
+            "rangeNote": "금고[−20,−20]d; 증거 가중치[+10,+10].",
+            "preconditions": "같은 소송, court_roll미제출, 금고≥20d; 해당 법정 기록 존재 편집 전제.",
+            "limits": "기록이 모든 상속 문제를 판정한다는 뜻 아님. 다른 증거 후속 제출 가능."
+          }
+        ],
+        "tradeoff": "현금을 덜 쓰지만 이번에 더하는 증거의 무게도 작다.",
+        "ledger": "법정 기록 증거 준비비20d 지출.",
+        "chronicle": "영주는 장원 법정 기록을 먼저 소송에 냈다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "영주의 명령·감사 결정은 자동 선례 처리 불가. 지도 밖 반복 청원만 같은 영지·종류의 lord 선례와 기존 예외 규칙에 따라 위임 가능.",
+      "exclusions": "동일 미해결 대상을 중복 표시하지 않으며 해결한 인스턴스 재사용 금지. 빈도·쿨다운은 게임 추정 미구현 편집안."
+    },
+    "illustration": "영주관 서고에서 친족의 봉인 증서와 두루마리 법정 기록을 펼쳐 비교하는 서기.",
+    "history": {
+      "sourceIds": [
+        "HK03",
+        "HK06"
+      ],
+      "basis": "가문 재산설정과 보유권을 증명하는 법정 기록이 서로 다른 증거라는 점을 활용했다.",
+      "inference": "가공 지역·인물의 합성 사건. 역사 관행을 기존 상태와 효과에 맞춘 추측이다.",
+      "limits": "법정 기록보다 사적 증서가 항상 우월하다는 역사 주장이 아니라 기존 엔진 가중치를 따른다. 금액·게이지·관계는 역사 실측 아닌 게임 추정이다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 경로 안내 어댑터",
+      "requirements": "실제 기존 소송의 증거 추가 명령을 안내. 문서별 실재는 편집 확인 전제이며 범용 문서재고를 생성하지 않는다. 대사·등록 어댑터 미구현."
+    },
+    "newEffectLinks": [
+      "NE09"
+    ]
+  },
+  {
+    "number": 54,
+    "id": "ck_evt_054",
+    "category": "자연",
+    "period": "1382–1450",
+    "years": [
+      1421,
+      1426
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 목초지·농지가 있는 지도 밖 보유 영지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "보유 지도 밖 영지의 실제 open rent_relief 청원. 비·건초 손상은 가공 보고이며 현재 날씨·생산 감소 수치에 새 효과를 덧붙이지 않음."
+    },
+    "sender": {
+      "faction": "지도 밖 영지의 농민 공동체",
+      "role": "그 영지의 청지기"
+    },
+    "title": "늦은 건초, 늦은 지대",
+    "body": "소작인들이 비에 젖은 건초와 밀린 지대를 함께 이야기합니다. 지도 밖 영지의 청지기는 이번 요구액을 덜어 줄지 장부대로 받을지 판결을 청합니다.",
+    "choices": [
+      {
+        "id": "relief",
+        "label": "이번 지대 감면을 받아들인다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$rentRelief.id",
+              "grant": true
+            },
+            "rangeNote": "amount=round(round(annualValue/4)×size/1000), size[150,300]‰; 금고−amount; 해당 tenants[+8,+8].",
+            "preconditions": "lord에게 도착한 실제 open rent_relief, deadline 내; 금고≥amount.",
+            "limits": "영지의 소작인 호감이며 글로벌 commons 아님. 기상·생산·질병을 회복하지 않음."
+          }
+        ],
+        "tradeoff": "현재 금고를 줄여 소작인의 지지를 얻는다. 미래 연가치 상승은 보장하지 않는다.",
+        "ledger": "지도 밖 영지 지대 감면 {amount}d 지출.",
+        "chronicle": "영주는 건초와 지대 사정을 호소한 영지의 부담을 덜었다."
+      },
+      {
+        "id": "refuse",
+        "label": "감면을 허락하지 않는다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$rentRelief.id",
+              "grant": false
+            },
+            "rangeNote": "즉시 금고[0,0]d; 해당 tenants[−6,−6].",
+            "preconditions": "동일 open 청원·기한.",
+            "limits": "거절이 별도 amount 수입을 만들지는 않는다. 강제 퇴거나 사망 효과 없음."
+          }
+        ],
+        "tradeoff": "현금을 보존하지만 해당 영지 소작인의 불만을 감수한다.",
+        "ledger": "지대 감면 거절; 이번 응답의 현금 변화 없음.",
+        "chronicle": "영주는 건초 사정을 들었으나 지대 감면은 거절했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "영주의 명령·감사 결정은 자동 선례 처리 불가. 지도 밖 반복 청원만 같은 영지·종류의 lord 선례와 기존 예외 규칙에 따라 위임 가능.",
+      "exclusions": "동일 미해결 대상을 중복 표시하지 않으며 해결한 인스턴스 재사용 금지. 빈도·쿨다운은 게임 추정 미구현 편집안."
+    },
+    "illustration": "젖은 건초 더미 앞에서 지대 납부 장부를 접어 청지기에게 내미는 소작인들.",
+    "history": {
+      "sourceIds": [
+        "HK02",
+        "HK09"
+      ],
+      "basis": "가축 사료·관리 책임과 곡물 사정·체납이 함께 보고되는 관행에 기댔다.",
+      "inference": "가공 인물·가공 사건의 합성 초안. 문헌의 관행을 가공 남부 영지에 옮긴 추측이며 해당 연도의 실재 사건 재현이 아니다.",
+      "limits": "약1450년 보고를1420년대 사건의 실제 연대 증거로 쓰지 않는다. 특정 악천후나 대기근을 새로 발동하지 않는다. 모든 수치·가격·효과는 역사 실측이 아닌 게임 추정 또는 현행 엔진 수치다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 경로 안내 어댑터",
+      "requirements": "현재 실제 대상 ID와 선택 가용성을 검사한다. 등록·조건·빈도·원장/연대기 문구 어댑터는 미구현. 금전 원장이 없는 경로의 원장 문구는 회계 거래 아닌 UI 요약으로만 쓴다. 자동 선례 허용 상태면 기존 청지기 판정에 맡기고 새 중복 청원을 만들지 않는다."
+    },
+    "newEffectLinks": [
+      "NE03"
+    ]
+  },
+  {
+    "number": 55,
+    "id": "ck_evt_055",
+    "category": "장원",
+    "period": "1382–1450",
+    "years": [
+      1424,
+      1429
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 실제 시장 부담 청원이 발생한 지도 밖 보유 영지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "지도 밖 보유 영지의 실제 open market_dues 청원, lord에게 도착했고 기한 내. home townAgency 세율은 변경하지 않음."
+    },
+    "sender": {
+      "faction": "지도 밖 영지의 상인 집단",
+      "role": "그 영지의 상인 대표"
+    },
+    "title": "장원의 장날 부담을 나누어 주십시오",
+    "body": "지도 밖 영지의 장사꾼들이 이번 장날 부담을 덜어 달라고 모였습니다. 영지의 청지기는 수레를 모아 장을 유지한 이들의 사정과, 금고에 들어올 돈을 함께 살펴 달라고 합니다.",
+    "choices": [
+      {
+        "id": "grant",
+        "label": "이번 시장 부담 감면을 승인한다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$offmapMarketDues.id",
+              "grant": true
+            },
+            "rangeNote": "A=round(round(annualValue/4)×size/1000), size[100,200]‰; 금고−A; 해당 merchants[+8,+8].",
+            "preconditions": "실제 offmap market_dues·기한 내·금고≥A.",
+            "limits": "해당 영지 merchants 호감만 변경; 글로벌 세력·merchantGauge·duesPermille 아님."
+          }
+        ],
+        "tradeoff": "지금 금고를 써 해당 영지의 상인들과 관계를 돌본다. 계속되는 세율 감면은 약속하지 않는다.",
+        "ledger": "지도 밖 영지 시장 부담 감면 {amount}d 지출.",
+        "chronicle": "영주는 장원 장사꾼들의 이번 부담을 덜었다."
+      },
+      {
+        "id": "refuse",
+        "label": "장부대로 부담하게 한다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$offmapMarketDues.id",
+              "grant": false
+            },
+            "rangeNote": "금고[0,0]d; 해당 merchants[−6,−6].",
+            "preconditions": "같은 실제 청원·기한 내.",
+            "limits": "거절이 추가 금액 수입을 만드는 것은 아님. 새 시장 특허나 연가치 손실 없음."
+          }
+        ],
+        "tradeoff": "금고를 보존하지만 그 영지 장사꾼들의 불만이 남는다.",
+        "ledger": "지도 밖 시장 부담 감면 거절; 즉시 금고 변화 없음.",
+        "chronicle": "영주는 장원 장사꾼들의 감면 청원을 거절했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "영주의 명령·감사 결정은 자동 선례 처리 불가. 지도 밖 반복 청원만 같은 영지·종류의 lord 선례와 기존 예외 규칙에 따라 위임 가능.",
+      "exclusions": "동일 미해결 대상을 중복 표시하지 않으며 해결한 인스턴스 재사용 금지. 빈도·쿨다운은 게임 추정 미구현 편집안."
+    },
+    "illustration": "작은 장원 장터의 저울 옆, 이번 부담액이 적힌 장부를 두고 상인 대표와 청지기가 협의하는 장면.",
+    "history": {
+      "sourceIds": [
+        "HK04",
+        "HK02"
+      ],
+      "basis": "시장이 장원과 도시 여러 규모에서 운영되고 별도 수입·관리의 대상이 된다는 관행을 적용했다.",
+      "inference": "가공 지역·인물의 합성 사건. 역사 관행을 기존 상태와 효과에 맞춘 추측이다.",
+      "limits": "감면 금액은 현행 게임 계산이며 역사적 시장 수입률이 아니다. 금액·게이지·관계는 역사 실측 아닌 게임 추정이다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 경로 안내 어댑터",
+      "requirements": "offmap market_dues 응답 단일 경로. 본거지 세율 설정·권리양도와 혼동하지 않는다. 기존 선례가 자동처리하면 중복 청원을 추가하지 않음. 대사·등록 어댑터 미구현."
+    },
+    "newEffectLinks": [
+      "NE03"
+    ]
+  },
+  {
+    "number": 56,
+    "id": "ck_evt_056",
+    "category": "도시",
+    "period": "1382–1450",
+    "years": [
+      1427,
+      1432
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 시장 진입로",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "실제 open home road_bridge 청원. 도로 파손은 서사이며 현재 경로 비용·내구도와 자동 연결하지 않음."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "마을 대표(리브)"
+    },
+    "title": "장날 수레가 빠지는 길",
+    "body": "장날 짐수레가 지나는 길을 손보자는 청원이 왔습니다. 마을 대표는 바퀴 자국이 깊어진 곳을 짚으며 도시도 부담을 나눠 달라고 합니다.",
+    "choices": [
+      {
+        "id": "contribute",
+        "label": "길 수선 부담금을 보탠다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$roadBridge.id",
+              "grant": true
+            },
+            "rangeNote": "금고−amount[30,80]d; town[+5,+5].",
+            "preconditions": "home road_bridge 실제 open·기한 내·금고≥amount.",
+            "limits": "금고·관계·청원 상태만 변경. 길 배치·속도 향상·수선 완공 없음."
+          }
+        ],
+        "tradeoff": "금고를 쓰고 도시의 협조를 얻는다. 수송량 증가는 약속하지 않는다.",
+        "ledger": "길 수선 청원에 {amount}d 지출.",
+        "chronicle": "영주는 장날 길의 수선에 부담금을 보탰다."
+      },
+      {
+        "id": "decline",
+        "label": "이번 부담을 받지 않는다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition",
+            "parameters": {
+              "petitionId": "$roadBridge.id",
+              "grant": false
+            },
+            "rangeNote": "금고[0,0]d; town[−5,−5].",
+            "preconditions": "동일 home 청원·기한 내.",
+            "limits": "새 통행료나 강제 노동 효과 없음."
+          }
+        ],
+        "tradeoff": "현금을 보존하지만 도시의 불만을 감수한다.",
+        "ledger": "길 수선 청원 거절; 금고 변화 없음.",
+        "chronicle": "영주는 장날 길의 수선 부담을 거절했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "영주의 명령·감사 결정은 자동 선례 처리 불가. 지도 밖 반복 청원만 같은 영지·종류의 lord 선례와 기존 예외 규칙에 따라 위임 가능.",
+      "exclusions": "동일 미해결 대상을 중복 표시하지 않으며 해결한 인스턴스 재사용 금지. 빈도·쿨다운은 게임 추정 미구현 편집안."
+    },
+    "illustration": "시장 진입로의 깊은 바퀴 자국 앞에서 수레바퀴와 수선 분담 장부를 가리키는 마을 대표.",
+    "history": {
+      "sourceIds": [
+        "HK07",
+        "HK04"
+      ],
+      "basis": "길의 경계·통행을 두고 문서로 다투는 사례와 정기 시장의 운영을 결합했다.",
+      "inference": "가공 인물·가공 사건의 합성 초안. 문헌의 관행을 가공 남부 영지에 옮긴 추측이며 해당 연도의 실재 사건 재현이 아니다.",
+      "limits": "수선 분담은 합성 상황이며 모든 영주의 보편 의무로 단정하지 않는다. 모든 수치·가격·효과는 역사 실측이 아닌 게임 추정 또는 현행 엔진 수치다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 경로 안내 어댑터",
+      "requirements": "현재 실제 대상 ID와 선택 가용성을 검사한다. 등록·조건·빈도·원장/연대기 문구 어댑터는 미구현. 금전 원장이 없는 경로의 원장 문구는 회계 거래 아닌 UI 요약으로만 쓴다. home은 선례 자동처리 대상이 아니다."
+    },
+    "newEffectLinks": [
+      "NE02",
+      "NE07"
+    ]
+  },
+  {
+    "number": 57,
+    "id": "ck_evt_057",
+    "category": "교회",
+    "period": "1382–1450",
+    "years": [
+      1430,
+      1436
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 교회 가까운 기존 장터; 새 시장 타일 생성하지 않음",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: market_charter 부재·현재 좌판세 권리배율1000‰",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "신규 generic PetitionDef등록 필요. petitioner=merchants; 기존 politics.rights에 market_charter 없음, stallFeePermille=1000, 해당 특허 수요가 살아 있음. 이미 특허를 준 진행에는 표시하지 않음. townAgency.duesPermille=1000일 때만 표시. 정치 권리의 현재 최저 배율도1000‰."
+    },
+    "sender": {
+      "faction": "첫째 상인 가문과 교구 공동체",
+      "role": "교회 앞 상인 대표와 교구 대표"
+    },
+    "title": "교회 앞 장날의 새 조건",
+    "body": "교회 앞에서 거래하는 상인들이 자기 관리인 아래 장사를 계속할 특허를 청합니다. 교구 대표는 특허의 일회 납부금보다, 앞으로 누가 얼마의 좌판세를 거둘지가 오래 남을 일이라고 말합니다.",
+    "choices": [
+      {
+        "id": "light",
+        "label": "좌판세를 낮춘 특허를 허락한다",
+        "effects": [
+          {
+            "catalogKey": "petition.right",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$registered_ck_evt_057.id",
+              "response": "accept",
+              "singleOutcome": {
+                "right": "market_charter",
+                "stallFeePermille": 750,
+                "charterFee": 0,
+                "gauge": 12
+              },
+              "genericFaction": {
+                "merchant_house_1": 10
+              }
+            },
+            "rangeNote": "좌판세 권리배율[750,750]‰; 일회수입[0,0]d; merchantGauge[+12,+12]; merchant_house_1[+10,+10]. 숫자는 게임 추정 제안, 관계+10은 기존 고정.",
+            "preconditions": "미응답 등록def의 accept; 현재 같은 권리ID 없음; 새def는 responses에accept/accept_with_price만 노출.",
+            "limits": "한 respondToPetition 실행. politics.rights에holder=merchants 추가 및 기존 좌판세 계산에 참여. estates 권원·점유 양도나 교회 토지·임직권 이전 아님. 시장 전체 좌판세의 정치 권리 배율이며 별도 townAgency.duesPermille 설정과 구별한다. 자동만료 없음."
+          }
+        ],
+        "tradeoff": "더 낮은 계속되는 좌판세와 현재 납부금 면제를 내주고 상인들의 더 큰 호응을 얻는다.",
+        "ledger": "상인 관리 시장 특허 승인; 좌판세750‰·일회 납부금 없음.",
+        "chronicle": "영주는 교회 앞 상인들에게 낮은 좌판세의 시장 특허를 허락했다."
+      },
+      {
+        "id": "fee",
+        "label": "납부금을 받고 기본 좌판세의 특허를 준다",
+        "effects": [
+          {
+            "catalogKey": "petition.right",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$registered_ck_evt_057.id",
+              "response": "accept_with_price",
+              "singleOutcome": {
+                "right": "market_charter",
+                "stallFeePermille": 1000,
+                "charterFee": 80,
+                "gauge": 3
+              },
+              "genericFaction": {
+                "merchant_house_1": 3
+              }
+            },
+            "rangeNote": "일회수입[80,80]d; 권리 좌판세[1000,1000]‰; merchantGauge[+3,+3]; merchant_house_1[+3,+3].80d와게이지는 게임 추정,관계+3기존값.",
+            "preconditions": "같은 신규등록def·제공된accept_with_price; 권리중복 없음.",
+            "limits": "동일단일응답 전체. 납부금은 일반금고로 들어가며 교회 수선기금으로 귀속되지 않음. 시장 전체 좌판세의 정치 권리 배율이며 별도 townAgency.duesPermille 설정과 구별한다. 자동만료 없음."
+          }
+        ],
+        "tradeoff": "금고와 기존 좌판세 몫을 지키지만 낮은 세율의 특허보다 상인의 호응은 작다.",
+        "ledger": "시장 특허 납부금80d 수입; 기본 좌판세 배율 유지.",
+        "chronicle": "영주는 납부금을 받고 상인 관리의 시장 특허를 허락했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "generic 특허 청원은 청지기 선례 자동처리 대상 아님.",
+      "exclusions": "같은 market_charter 존재시 제외. 부재 조건은 미구현 편집 필터."
+    },
+    "illustration": "교회 담장 곁 기존 장터에서 특허 봉인과 시장 전체의 좌판세 조건을 읽는 상인·교구 대표.",
+    "history": {
+      "sourceIds": [
+        "HK04",
+        "HK11"
+      ],
+      "basis": "교회 주변을 포함한 시장의 지역 후원 관계와 조건부 시장 특허 관행에서 소재를 얻었다.",
+      "inference": "가공 지역·인물의 합성 사건. 역사 관행을 기존 상태와 효과에 맞춘 추측이다.",
+      "limits": "영주가 왕의 승인 없이 어떤 왕실 시장권이든 만들 수 있었다는 주장이 아니다. 기존 게임 market_charter의 지역 운영권 추상화 범위다. 금액·게이지·관계는 역사 실측 아닌 게임 추정이다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 경로 안내 어댑터",
+      "requirements": "신규 PetitionDef ck_evt_057를 등록하는 어댑터 필요, 새 효과 엔진은 불필요. trigger=calendar,petitioner=merchants,fromYear=1430,toYear=1436,requiresLots=6,responses=[accept,accept_with_price],expiredGauge=−5. 숨은 refuse outcome은right:null,stallFeePermille:1000,charterFee:0,gauge:−5로 정의하되responses에노출하지 않음. 만료시generic merchant_house_1−10 및expiredGauge−5. 효과는 선택마다단한번respondToPetition; 관계는factions공통후처리. 기존권리ID 소비자사용, estates조각획득아님. 적용 범위는 교회 앞 좌판만이 아니라 시장 전체이다. politics.stallFeePermille은 모든 권리의 최저값을 쓰며 이 특허750‰는 기존 최저1000‰를 낮춘다. townAgency.duesPermille은 별도 설정으로 유지된다. 영구 권리기록이므로 한 철 뒤 자동종료하지 않는다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 58,
+    "id": "ck_evt_058",
+    "category": "이웃 가문",
+    "period": "1382–1450",
+    "years": [
+      1434,
+      1440
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 이웃 영지와 거래하는 본거지 시장",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "신규 generic PetitionDef등록 필요. petitioner=merchants. 이웃 가문은 가공 중개자이며 실제 응답 상대·공통관계는merchant_house_1. 지속 세금·새 권리·이웃 외교 변화 없음."
+    },
+    "sender": {
+      "faction": "해당 이웃 가문과 첫째 상인 가문",
+      "role": "이웃 가문의 중개인과 본거지 상인 대표"
+    },
+    "title": "이웃 가문이 중개한 일회 납부",
+    "body": "이웃 가문의 대리인이 우리 상인들과 장날 마찰을 정리할 일회 납부안을 가져왔습니다. 상인들은 지금 돈을 내라는 요구를 거두어 주면 더 기꺼이 협조하겠다고 합니다.",
+    "choices": [
+      {
+        "id": "remit",
+        "label": "이번 납부 요구를 거둔다",
+        "effects": [
+          {
+            "catalogKey": "petition.charterFee",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$registered_ck_evt_058.id",
+              "response": "accept",
+              "singleOutcome": {
+                "right": null,
+                "stallFeePermille": 1000,
+                "charterFee": 0,
+                "gauge": 8
+              },
+              "genericFaction": {
+                "merchant_house_1": 10
+              }
+            },
+            "rangeNote": "금고[0,0]d; merchantGauge[+8,+8]; merchant_house_1[+10,+10]. 게이지는게임추정,관계는기존고정.",
+            "preconditions": "신규등록generic 청원미응답·accept허용.",
+            "limits": "한응답의 전체효과. 이미 청구된 별도 채무를 삭제하거나 기존 세율을 낮추지 않음."
+          }
+        ],
+        "tradeoff": "일회 수입을 포기하고 상인의 더 큰 협조를 얻는다. 이웃 가문 관계 보상은 없다.",
+        "ledger": "일회 납부 요구 면제; 금고 변화 없음.",
+        "chronicle": "영주는 이웃이 중개한 협의에서 상인들의 일회 납부를 받지 않았다."
+      },
+      {
+        "id": "collect",
+        "label": "일회 납부금을 받고 합의한다",
+        "effects": [
+          {
+            "catalogKey": "petition.charterFee",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$registered_ck_evt_058.id",
+              "response": "accept_with_price",
+              "singleOutcome": {
+                "right": null,
+                "stallFeePermille": 1000,
+                "charterFee": 50,
+                "gauge": 0
+              },
+              "genericFaction": {
+                "merchant_house_1": 3
+              }
+            },
+            "rangeNote": "금고[+50,+50]d; merchantGauge[0,0]; merchant_house_1[+3,+3].50d게임추정,관계기존고정.",
+            "preconditions": "같은등록청원·accept_with_price허용.",
+            "limits": "한번respondToPetition 실행; right=null이라 권리기록 추가 없음. 납부는합의금 성격의게임추상화이며 새 영구세금 아님."
+          }
+        ],
+        "tradeoff": "현금을 얻지만 면제했을 때보다 상인의 협조는 작다.",
+        "ledger": "일회 합의 납부금50d 수입.",
+        "chronicle": "영주는 이웃이 중개한 협의에서 일회 납부금을 받았다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "generic 신규 청원은 청지기 선례 자동처리 대상 아님.",
+      "exclusions": "같은 일회 합의 재청구 금지. 동일 갈등을 임의 재발시키지 않는다."
+    },
+    "illustration": "이웃 가문 중개인의 외투 옆, 한 번의 합의금 돈주머니와 상인들의 응답서를 놓은 협의 탁자.",
+    "history": {
+      "sourceIds": [
+        "HK04",
+        "HK10"
+      ],
+      "basis": "시장 이해관계와 분쟁을 중재·문서로 정리하려는 관행을 가공 납부 협의로 결합했다.",
+      "inference": "가공 지역·인물의 합성 사건. 역사 관행을 기존 상태와 효과에 맞춘 추측이다.",
+      "limits": "Gresham의 수입 중립 보관을 실제 구현한 것이 아니며 특정 합의금 사례·가격의 재현도 아니다. 금액·게이지·관계는 역사 실측 아닌 게임 추정이다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 경로 안내 어댑터",
+      "requirements": "신규PetitionDef ck_evt_058등록어댑터만필요. trigger=calendar,petitioner=merchants,fromYear=1434,toYear=1440,requiresLots=6,responses=[accept,accept_with_price],expiredGauge=−4; 숨은refuse outcome은right:null,stallFeePermille:1000,charterFee:0,gauge:−4. 만료는merchant_house_1−10,게이지−4. charterFee/gauge/공통세력관계는단일응답 전체이며 중복실행금지. 이웃외교관계효과없음."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 59,
+    "id": "ck_evt_059",
+    "category": "세력",
+    "period": "1382–1450",
+    "years": [
+      1439,
+      1445
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 지도 밖 보유 영지",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "지도 밖 보유 영지 oversight 및 살아 있는 유효 후보. 현재 직접 감독이며 직접 감독 영지 수가 관리 여력 근처이거나 초과. 후보의 실제 능력·충성·성향 표시."
+    },
+    "sender": {
+      "faction": "농민 공동체와 청지기 후보",
+      "role": "청지기 후보와 마을 대표"
+    },
+    "title": "누구의 손에 장부를 맡길 것인가",
+    "body": "영지를 자주 찾기 어렵다는 말을 듣고 청지기 후보가 장부를 맡겠다고 나섰습니다. 마을 대표는 누구를 맡기느냐에 따라 지대와 시장 부담을 다르게 다룰 수 있다고 말합니다.",
+    "choices": [
+      {
+        "id": "delegate",
+        "label": "현재 후보에게 관리를 맡긴다",
+        "effects": [
+          {
+            "catalogKey": "steward.appoint",
+            "operation": "set_estate_oversight",
+            "parameters": {
+              "estateId": "$oversight.estateId",
+              "mode": "steward",
+              "stewardId": "$livingCandidate.personId"
+            },
+            "rangeNote": "현직 교체면 기존 담당 candidate·선택 후보 serving. 임명비[0,0]d.",
+            "preconditions": "같은 영지 후보·살아 있음·dismissed/dead 아님.",
+            "limits": "능력·충성·성향 부여 없음. 감독과 인물 상태만 변경; 즉시 관계 보너스 없음."
+          }
+        ],
+        "tradeoff": "직접 감독 부담을 줄이는 대신 후보의 재량과 장부 위험을 받아들인다.",
+        "ledger": "청지기 {name}에게 위임; 임명비 없음.",
+        "chronicle": "영주는 영지 관리를 청지기에게 맡겼다."
+      },
+      {
+        "id": "direct",
+        "label": "직접 감독을 계속한다",
+        "effects": [
+          {
+            "catalogKey": "steward.appoint",
+            "operation": "set_estate_oversight",
+            "parameters": {
+              "estateId": "$oversight.estateId",
+              "mode": "direct",
+              "stewardId": "$oversight.stewardId"
+            },
+            "rangeNote": "현재 direct 유지면 mutation[0,0].",
+            "preconditions": "현재 담당도 같은 영지 유효 기록·살아 있음.",
+            "limits": "무료 임명에 가짜 비용을 붙이지 않는다. 부담은 기존 attention 과부하 처리만 적용."
+          }
+        ],
+        "tradeoff": "후보에게 재량을 주지 않지만 여러 영지를 직접 보면 청원 지연과 장부 오류 위험이 남는다.",
+        "ledger": "직접 감독 유지; 금전 이동 없음.",
+        "chronicle": "영주는 영지를 계속 직접 살피기로 했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "영주의 명령·감사 결정은 자동 선례 처리 불가. 지도 밖 반복 청원만 같은 영지·종류의 lord 선례와 기존 예외 규칙에 따라 위임 가능.",
+      "exclusions": "동일 미해결 대상을 중복 표시하지 않으며 해결한 인스턴스 재사용 금지. 빈도·쿨다운은 게임 추정 미구현 편집안. 같은 장기 변주 묶음 019,037,059은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "estate_oversight"
+    },
+    "illustration": "지도 밖 영지의 장부와 열쇠를 앞에 두고 실제 청지기 후보를 소개하는 마을 대표.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "청지기·집행관의 권한과 영주의 감사 책임을 토대로 위임 여부를 묻는다.",
+      "inference": "가공 인물·가공 사건의 합성 초안. 문헌의 관행을 가공 남부 영지에 옮긴 추측이며 해당 연도의 실재 사건 재현이 아니다.",
+      "limits": "후보 성향·능력은 게임 인물 상태이며 계급이나 역사 집단의 고정 도덕성이 아니다. 모든 수치·가격·효과는 역사 실측이 아닌 게임 추정 또는 현행 엔진 수치다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 경로 안내 어댑터",
+      "requirements": "현재 실제 대상 ID와 선택 가용성을 검사한다. 등록·조건·빈도·원장/연대기 문구 어댑터는 미구현. 금전 원장이 없는 경로의 원장 문구는 회계 거래 아닌 UI 요약으로만 쓴다. 실제 관리 과부하와 후보 정보를 함께 표시하며 임의 관계 보상을 붙이지 않는다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 60,
+    "id": "ck_evt_060",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1440,
+      1450
+    ],
+    "conditions": {
+      "land": "편집 발동 필터: 본거지 영주관",
+      "population": "편집 발동 필터: 추가 인구 하한 없음",
+      "rights": "편집 발동 필터: 경로에 필요한 기존 권리·청구권 이외 추가 제한 없음",
+      "relations": "편집 발동 필터: 선택 전제 외 별도 관계 하한 없음",
+      "season": "편집 발동 필터: 실제 대상 기한 내; 계절 제한 없음",
+      "state": "실제 legacy_choice 미응답이며1440년 이후 기존 절차로 도착. legacy 활성·현재 응답3개 존재."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "현재 가문의 서기"
+    },
+    "title": "남길 유산 하나",
+    "body": "가문과 도시가 함께 남길 일을 두고 마지막 장부를 펼쳤습니다. 집안의 기록을 보전하자는 말, 도시의 일을 돕자는 말, 교회를 후원하자는 말 가운데 하나를 정해 달라고 합니다.",
+    "choices": [
+      {
+        "id": "town",
+        "label": "도시에 길드홀과 시청을 남긴다",
+        "effects": [
+          {
+            "catalogKey": "chapter.legacy",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$legacyChoice.id",
+              "response": "accept"
+            },
+            "rangeNote": "지출 min(가용금고,[500,500]d); town[+10,+10]; 유산 축 town·해당 유산점수[25,25].",
+            "preconditions": "실제 legacy_choice·accept 가능.",
+            "limits": "물리적 길드홀·시청 즉시 생성 아님. 기존 평가 경로 전체 사용."
+          }
+        ],
+        "tradeoff": "같은 기부 재원을 도시의 기억에 맡기고 가문·교회 유산 축은 선택하지 않는다.",
+        "ledger": "도시 유산에 {paid}d 기부.",
+        "chronicle": "영주는 도시를 돕는 일을 남길 유산으로 정했다."
+      },
+      {
+        "id": "family",
+        "label": "가문의 영주관과 문장, 혈통 기록을 남긴다",
+        "effects": [
+          {
+            "catalogKey": "chapter.legacy",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$legacyChoice.id",
+              "response": "accept_with_price"
+            },
+            "rangeNote": "지출 min(가용금고,[500,500]d); overlord[+5,+5]; 유산 축 family·해당 점수[25,25].",
+            "preconditions": "실제 legacy_choice·accept_with_price 가능.",
+            "limits": "가계 인물·능력·상속권 생성 없음."
+          }
+        ],
+        "tradeoff": "같은 재원을 가문의 기억에 맡기고 도시·교회 유산 축은 선택하지 않는다.",
+        "ledger": "가문 유산에 {paid}d 기부.",
+        "chronicle": "영주는 가문의 기록을 남길 유산으로 정했다."
+      },
+      {
+        "id": "church",
+        "label": "교회를 넓히고 기도처를 세운다",
+        "effects": [
+          {
+            "catalogKey": "chapter.legacy",
+            "operation": "petition_response",
+            "parameters": {
+              "petitionId": "$legacyChoice.id",
+              "response": "refuse"
+            },
+            "rangeNote": "지출 min(가용금고,[500,500]d); bishop[+15,+15]; 유산 축 church·해당 점수[25,25].",
+            "preconditions": "실제 legacy_choice·refuse 가능; 이 enum은 정본에서 교회 유산 선택.",
+            "limits": "교회 확장·정기 미사 계약을 자동 생성하지 않는다."
+          }
+        ],
+        "tradeoff": "같은 재원을 교회의 기억에 맡기고 도시·가문 유산 축은 선택하지 않는다.",
+        "ledger": "교회 유산에 {paid}d 기부.",
+        "chronicle": "영주는 교회를 후원하는 일을 남길 유산으로 정했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "영주의 일회 결정. 선례 처리 없음.",
+      "exclusions": "동일 legacy_choice 재발 금지. 기한 만료시 기존 무응답 처리 유지."
+    },
+    "illustration": "영주관 탁자에 도시의 인장·가문의 문장 기록·교회 후원 문서를 나란히 펼친 마지막 회합.",
+    "history": {
+      "sourceIds": [
+        "HK08",
+        "HK05"
+      ],
+      "basis": "재산 설정과 종교 기념 약정 등 다음 세대의 기억을 준비한 사례를 참고했다.",
+      "inference": "가공 인물·가공 사건의 합성 초안. 문헌의 관행을 가공 남부 영지에 옮긴 추측이며 해당 연도의 실재 사건 재현이 아니다.",
+      "limits": "세 유산·점수·결말은 게임 설계이며 기부가 구원·명예·건축 완공을 보장하지 않는다. 모든 수치·가격·효과는 역사 실측이 아닌 게임 추정 또는 현행 엔진 수치다."
+    },
+    "integration": {
+      "mode": "미설치 초안 / 기존 경로 안내 어댑터",
+      "requirements": "현재 실제 대상 ID와 선택 가용성을 검사한다. 등록·조건·빈도·원장/연대기 문구 어댑터는 미구현. 금전 원장이 없는 경로의 원장 문구는 회계 거래 아닌 UI 요약으로만 쓴다. 기존 정본 제목과 선택 대사 유지. 실제 도착 청원에만 보충 대사를 부착하고 날짜를 옮기지 않는다."
+    },
+    "newEffectLinks": [
+      "NE06"
+    ]
+  }
+]

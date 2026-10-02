@@ -125,7 +125,7 @@ test("H1 each of the twelve decision kinds is recorded: seven as the season's li
   assert.deepEqual(records(closeSeason(prioritised)).filter(record => record.template === "decision.bundle").map(record => record.params?.decisionKind), ["wall_priority"]);
   assert.equal(DECISION_KINDS.length, 20, "twelve, WALL-2's wall expansion, ARCH-1b's drainage, LM-E1's three lord conditions, LM-E2's suits, LM-E3's marriage and LM-E4's stewardship");
   assert.equal(before.history, undefined, "the fixture had no ledger");
-  assert.equal(historySummary(records(closed).find(record => record.template === "decision.bundle" && record.params?.decisionKind === "build")!), "이번 계절 건물 1곳의 공사를 놓았다");
+  assert.equal(historySummary(records(closed).find(record => record.template === "decision.bundle" && record.params?.decisionKind === "build")!), "이번 계절 건물 1곳의 공사를 시작했다");
 });
 
 test("H2 the famine answer keeps its alternatives and prediction, and two seasons later its actual on the same keys", () => {

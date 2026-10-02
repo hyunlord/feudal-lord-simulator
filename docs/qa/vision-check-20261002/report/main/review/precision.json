@@ -1,0 +1,61 @@
+{
+  "target": 0.8,
+  "total_findings": 21,
+  "total_reviewed": 21,
+  "detectors": [
+    {
+      "detector": "straight_boundary",
+      "tp": 11,
+      "fp": 2,
+      "reviewed": 13,
+      "precision": 0.8461538461538461,
+      "target_status": "met_on_reviewed_candidates"
+    },
+    {
+      "detector": "tile_seam",
+      "tp": 0,
+      "fp": 0,
+      "reviewed": 0,
+      "precision": null,
+      "target_status": "not_demonstrated"
+    },
+    {
+      "detector": "stationary_person",
+      "tp": 0,
+      "fp": 0,
+      "reviewed": 0,
+      "precision": null,
+      "target_status": "not_demonstrated"
+    },
+    {
+      "detector": "roof_overlap",
+      "tp": 0,
+      "fp": 0,
+      "reviewed": 0,
+      "precision": null,
+      "target_status": "not_demonstrated"
+    },
+    {
+      "detector": "scale_ratio",
+      "tp": 7,
+      "fp": 1,
+      "reviewed": 8,
+      "precision": 0.875,
+      "target_status": "met_on_reviewed_candidates"
+    },
+    {
+      "detector": "repeat_density",
+      "tp": 0,
+      "fp": 0,
+      "reviewed": 0,
+      "precision": null,
+      "target_status": "not_demonstrated"
+    }
+  ],
+  "limitations": [
+    "Precision uses supplied human judgments; the tool does not invent or verify judgments.",
+    "Zero candidates means N/A and target not demonstrated, never 100% precision.",
+    "Repeated views may be correlated; this report does not establish independent validation.",
+    "No recall estimate or confidence guarantee follows from candidate precision alone."
+  ]
+}

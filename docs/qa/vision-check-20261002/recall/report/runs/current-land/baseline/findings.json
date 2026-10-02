@@ -1,0 +1,137 @@
+[
+  {
+    "id": "6209fd488ef9",
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 572,
+      "y": 343,
+      "width": 240,
+      "height": 13
+    },
+    "score": 0.8633866133866134,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 3.543331668331669,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 43.640567779541016,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "702c8a97a4e6",
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 1023,
+      "y": 567,
+      "width": 198,
+      "height": 13
+    },
+    "score": 0.8424075924075924,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 2.887737262737263,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 45.97825622558594,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "022f97cc2f94",
+    "scene": "current-forest",
+    "detector": "straight_boundary",
+    "box": {
+      "x": 1354,
+      "y": 620,
+      "width": 13,
+      "height": 176
+    },
+    "score": 0.8314185814185815,
+    "reason": "화면 수평·수직 방향의 긴 직선 색 경계; 도로·밭두렁 여부를 검토해야 함",
+    "metrics": [
+      {
+        "name": "length_tiles",
+        "value": 2.5443306693306695,
+        "unit": "ratio"
+      },
+      {
+        "name": "contrast_rgb",
+        "value": 43.97726821899414,
+        "unit": "rgb_distance"
+      },
+      {
+        "name": "angle_error",
+        "value": 0.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "angle",
+        "value": -90.0,
+        "unit": "degrees"
+      },
+      {
+        "name": "screen_axis",
+        "value": 1.0,
+        "unit": "ratio"
+      },
+      {
+        "name": "eligible_fraction",
+        "value": 1.0,
+        "unit": "ratio"
+      }
+    ]
+  }
+]

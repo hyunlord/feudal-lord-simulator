@@ -1,0 +1,299 @@
+{
+  "policy": {
+    "min_iou": 0.1,
+    "min_prediction_coverage": 0.5,
+    "recall_target": 0.7,
+    "precision_target": 0.8
+  },
+  "detectors": [
+    {
+      "detector": "straight_boundary",
+      "tp": 1,
+      "fp": 0,
+      "fn": 6,
+      "precision": 1.0,
+      "recall": 0.14285714285714285,
+      "eligible_annotations": 3,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 3,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "tile_seam",
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": null,
+      "recall": 0.0,
+      "eligible_annotations": 2,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "stationary_person",
+      "tp": 0,
+      "fp": 0,
+      "fn": 5,
+      "precision": null,
+      "recall": 0.0,
+      "eligible_annotations": 2,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "roof_overlap",
+      "tp": 0,
+      "fp": 0,
+      "fn": 3,
+      "precision": null,
+      "recall": 0.0,
+      "eligible_annotations": 3,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "scale_ratio",
+      "tp": 0,
+      "fp": 0,
+      "fn": 2,
+      "precision": null,
+      "recall": 0.0,
+      "eligible_annotations": 1,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 4,
+      "target_status": "below_target"
+    },
+    {
+      "detector": "repeat_density",
+      "tp": 0,
+      "fp": 0,
+      "fn": 1,
+      "precision": null,
+      "recall": 0.0,
+      "eligible_annotations": 1,
+      "excluded_annotations": 0,
+      "excluded_defects": 0,
+      "excluded_candidates": 0,
+      "target_status": "below_target"
+    }
+  ],
+  "observations": [
+    {
+      "scene": "current-forest",
+      "detector": "straight_boundary",
+      "outcome": "excluded",
+      "candidate_id": "702c8a97a4e6",
+      "defect_id": null,
+      "note": "Outside eligible coverage or inside explicitly excluded target region"
+    },
+    {
+      "scene": "current-forest",
+      "detector": "straight_boundary",
+      "outcome": "excluded",
+      "candidate_id": "022f97cc2f94",
+      "defect_id": null,
+      "note": "Outside eligible coverage or inside explicitly excluded target region"
+    },
+    {
+      "scene": "current-city",
+      "detector": "scale_ratio",
+      "outcome": "excluded",
+      "candidate_id": "current-city:scale_ratio:0",
+      "defect_id": null,
+      "note": "Outside eligible coverage or inside explicitly excluded target region"
+    },
+    {
+      "scene": "current-city-confirm",
+      "detector": "scale_ratio",
+      "outcome": "excluded",
+      "candidate_id": "current-city-confirm:scale_ratio:0",
+      "defect_id": null,
+      "note": "Outside eligible coverage or inside explicitly excluded target region"
+    },
+    {
+      "scene": "prenat2-city",
+      "detector": "scale_ratio",
+      "outcome": "excluded",
+      "candidate_id": "prenat2-city:scale_ratio:0",
+      "defect_id": null,
+      "note": "Outside eligible coverage or inside explicitly excluded target region"
+    },
+    {
+      "scene": "prenat2-city-confirm",
+      "detector": "scale_ratio",
+      "outcome": "excluded",
+      "candidate_id": "prenat2-city-confirm:scale_ratio:0",
+      "defect_id": null,
+      "note": "Outside eligible coverage or inside explicitly excluded target region"
+    },
+    {
+      "scene": "prenat1-roof",
+      "detector": "straight_boundary",
+      "outcome": "excluded",
+      "candidate_id": "522131583500",
+      "defect_id": null,
+      "note": "Outside eligible coverage or inside explicitly excluded target region"
+    },
+    {
+      "scene": "current-chalk",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA039-rock-mass",
+      "note": "직접 시각 확인: 연결된 회색 바위 덩어리가 등각 마름모 외곽으로 잘림"
+    },
+    {
+      "scene": "current-chalk",
+      "detector": "tile_seam",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA039-black-stamps",
+      "note": "바위 외곽을 따라 작은 검은 사각 테두리가 반복됨; 자연 바위균열과 다름"
+    },
+    {
+      "scene": "current-forest",
+      "detector": "straight_boundary",
+      "outcome": "TP",
+      "candidate_id": "6209fd488ef9",
+      "defect_id": "QA040-north-middle",
+      "note": "Spatial one-to-one match"
+    },
+    {
+      "scene": "current-forest",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA040-north-left",
+      "note": "숲 위쪽 왼편의 수평 판 절단"
+    },
+    {
+      "scene": "current-forest",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA040-north-step",
+      "note": "중앙 수직 계단"
+    },
+    {
+      "scene": "current-forest",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA040-north-right",
+      "note": "숲 오른쪽 긴 수평 경계"
+    },
+    {
+      "scene": "current-forest",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA040-south-left",
+      "note": "아래쪽 판의 수직 절단"
+    },
+    {
+      "scene": "current-forest",
+      "detector": "straight_boundary",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA040-bottom",
+      "note": "화면 아래쪽 왼편 수평 판 경계"
+    },
+    {
+      "scene": "prenat2-city-confirm",
+      "detector": "stationary_person",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA002-visible-1",
+      "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용."
+    },
+    {
+      "scene": "prenat2-city-confirm",
+      "detector": "stationary_person",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA002-visible-4",
+      "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용."
+    },
+    {
+      "scene": "prenat2-city-confirm",
+      "detector": "stationary_person",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA002-visible-6",
+      "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용."
+    },
+    {
+      "scene": "prenat2-city-confirm",
+      "detector": "stationary_person",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA002-visible-8",
+      "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용."
+    },
+    {
+      "scene": "prenat2-city-confirm",
+      "detector": "stationary_person",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA002-visible-19",
+      "note": "실제 PNG 00–19의 파란 옷 손님을 직접 확인. 11.4초 동안 같은 곳에서 몸만 흔듦. drawAlehouseDrinkers는 위치 찾기 용도로만 사용."
+    },
+    {
+      "scene": "prenat1-city-confirm",
+      "detector": "roof_overlap",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "PRENAT1-static-roof-4",
+      "note": "파란 옷 장식 손님의 발이 붉은 지붕 앞에 보임. PNG 00–19 모두 확인. QA005 원래 NW벽 이동인물과 다른 원인."
+    },
+    {
+      "scene": "prenat1-city-confirm",
+      "detector": "roof_overlap",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "PRENAT1-static-roof-19",
+      "note": "파란 옷 장식 손님의 발이 붉은 지붕 앞에 보임. PNG 00–19 모두 확인. QA005 원래 NW벽 이동인물과 다른 원인."
+    },
+    {
+      "scene": "prenat1-city",
+      "detector": "repeat_density",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "OBJ-YARN-01",
+      "note": "검출 결과를 보지 않고 00.png에서 직접 판독: 인접 주택 문 앞에 같은 흰 고리 실타래가 빽빽하게 반복. 중앙·호숫가 주택군을 한 군집 결함으로 셈."
+    },
+    {
+      "scene": "prenat1-city",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "OBJ-BARREL-01",
+      "note": "중앙 주택 앞 세로 나무통. 성인 약17.6px에 비해 통 몸통 약30px, 통 기준0.45–0.65H 초과. 왼쪽 넓은 곡물통은 용도 불명으로 별도 제외."
+    },
+    {
+      "scene": "prenat1-city",
+      "detector": "scale_ratio",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "OBJ-BARREL-02",
+      "note": "오른쪽 주택 뒤 물이 든 세로 나무통. 몸통 약28px로 성인보다 큼. 빗물통 일반비율 기준 위반으로 판정; 대형통 예외 승인 여부는 확인되지 않음."
+    },
+    {
+      "scene": "prenat1-roof-confirm",
+      "detector": "roof_overlap",
+      "outcome": "FN",
+      "candidate_id": null,
+      "defect_id": "QA005-NW-wall-moving-figure",
+      "note": "원기록과 같은 줌2·pan(544,-2277)의 NW벽 면. 확인 프레임16/tick320238에서 빨간 옷 이동 인물과 수레가 수직 벽 그림 앞에 겹침. 프레임3에도 같은 위치에서 노란 옷 인물·수레가 통과. 동일 공간 결함 1곳으로 계산하며 정지 지붕 손님과 다름. 시간 기준은20프레임 중발생,대표증거16.png."
+    }
+  ],
+  "rejected_candidate_ids": []
+}

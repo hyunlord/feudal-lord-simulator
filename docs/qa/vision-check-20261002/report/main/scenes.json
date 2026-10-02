@@ -1,0 +1,542 @@
+[
+  {
+    "id": "chalk-summer-z0.6",
+    "terrain": "chalk",
+    "season": "summer",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 5638.185083982535,
+    "qa_text": "틱\n1030\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "chalk-summer-z1.0",
+    "terrain": "chalk",
+    "season": "summer",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 4188.55312501546,
+    "qa_text": "틱\n1050\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "chalk-summer-z1.4",
+    "terrain": "chalk",
+    "season": "summer",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 4082.000499998685,
+    "qa_text": "틱\n1070\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "chalk-winter-z0.6",
+    "terrain": "chalk",
+    "season": "winter",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 5861.1776669858955,
+    "qa_text": "틱\n3035\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "chalk-winter-z1.0",
+    "terrain": "chalk",
+    "season": "winter",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 4242.660874966532,
+    "qa_text": "틱\n3055\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "chalk-winter-z1.4",
+    "terrain": "chalk",
+    "season": "winter",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 4181.920665956568,
+    "qa_text": "틱\n3076\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "city-summer-z0.6",
+    "terrain": "city",
+    "season": "summer",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 9123.783374961931,
+    "qa_text": "틱\n321030\n연도·계절\n1380년 여름\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "city-summer-z1.0",
+    "terrain": "city",
+    "season": "summer",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 7183.983208029531,
+    "qa_text": "틱\n321050\n연도·계절\n1380년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "city-summer-z1.4",
+    "terrain": "city",
+    "season": "summer",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 6315.927042043768,
+    "qa_text": "틱\n321071\n연도·계절\n1380년 여름\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "city-winter-z0.6",
+    "terrain": "city",
+    "season": "winter",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 9423.243416997138,
+    "qa_text": "틱\n323035\n연도·계절\n1380년 겨울\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "city-winter-z1.0",
+    "terrain": "city",
+    "season": "winter",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 7626.888416009024,
+    "qa_text": "틱\n323055\n연도·계절\n1380년 겨울\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "city-winter-z1.4",
+    "terrain": "city",
+    "season": "winter",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 6750.513082952239,
+    "qa_text": "틱\n323076\n연도·계절\n1380년 겨울\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "coast-summer-z0.6",
+    "terrain": "coast",
+    "season": "summer",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 6967.292083019856,
+    "qa_text": "틱\n1034\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "coast-summer-z1.0",
+    "terrain": "coast",
+    "season": "summer",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 4705.390708055347,
+    "qa_text": "틱\n1054\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "coast-summer-z1.4",
+    "terrain": "coast",
+    "season": "summer",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 3743.9951249980368,
+    "qa_text": "틱\n1074\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "coast-winter-z0.6",
+    "terrain": "coast",
+    "season": "winter",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 6908.907459001057,
+    "qa_text": "틱\n3030\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "coast-winter-z1.0",
+    "terrain": "coast",
+    "season": "winter",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 4699.642749968916,
+    "qa_text": "틱\n3050\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "coast-winter-z1.4",
+    "terrain": "coast",
+    "season": "winter",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 3784.479292051401,
+    "qa_text": "틱\n3070\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "fen-summer-z0.6",
+    "terrain": "fen",
+    "season": "summer",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 5618.984000000637,
+    "qa_text": "틱\n1034\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "fen-summer-z1.0",
+    "terrain": "fen",
+    "season": "summer",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 4633.5067500476725,
+    "qa_text": "틱\n1054\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "fen-summer-z1.4",
+    "terrain": "fen",
+    "season": "summer",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 3891.1465000128374,
+    "qa_text": "틱\n1074\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "fen-winter-z0.6",
+    "terrain": "fen",
+    "season": "winter",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 5750.8393750176765,
+    "qa_text": "틱\n3030\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "fen-winter-z1.0",
+    "terrain": "fen",
+    "season": "winter",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 7773.514165950473,
+    "qa_text": "틱\n3050\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "fen-winter-z1.4",
+    "terrain": "fen",
+    "season": "winter",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 3973.1208329903893,
+    "qa_text": "틱\n3070\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "forest-summer-z0.6",
+    "terrain": "forest",
+    "season": "summer",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 11636.39920798596,
+    "qa_text": "틱\n1030\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "forest-summer-z1.0",
+    "terrain": "forest",
+    "season": "summer",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 7637.583125033416,
+    "qa_text": "틱\n1050\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "forest-summer-z1.4",
+    "terrain": "forest",
+    "season": "summer",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 6077.7859590016305,
+    "qa_text": "틱\n1071\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "forest-winter-z0.6",
+    "terrain": "forest",
+    "season": "winter",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 11725.534665980376,
+    "qa_text": "틱\n3035\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "forest-winter-z1.0",
+    "terrain": "forest",
+    "season": "winter",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 7694.772458053194,
+    "qa_text": "틱\n3055\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "forest-winter-z1.4",
+    "terrain": "forest",
+    "season": "winter",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 6114.371541014407,
+    "qa_text": "틱\n3076\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "river-summer-z0.6",
+    "terrain": "river",
+    "season": "summer",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 10528.413416992407,
+    "qa_text": "틱\n1030\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "river-summer-z1.0",
+    "terrain": "river",
+    "season": "summer",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 8287.249999993946,
+    "qa_text": "틱\n1051\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "river-summer-z1.4",
+    "terrain": "river",
+    "season": "summer",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 6666.577083000448,
+    "qa_text": "틱\n1071\n연도·계절\n1300년 여름\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "river-winter-z0.6",
+    "terrain": "river",
+    "season": "winter",
+    "zoom": 0.6,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 10067.194500006735,
+    "qa_text": "틱\n3031\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n0.600\n카메라 이동\n(800, -114)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "river-winter-z1.0",
+    "terrain": "river",
+    "season": "winter",
+    "zoom": 1.0,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 18,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 8012.750625028275,
+    "qa_text": "틱\n3051\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n1.000\n카메라 이동\n(800, -524)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  },
+  {
+    "id": "river-winter-z1.4",
+    "terrain": "river",
+    "season": "winter",
+    "zoom": 1.4,
+    "seed": 1,
+    "frames": 20,
+    "tick_span": 19,
+    "camera_tile": [
+      32,
+      32
+    ],
+    "capture_wall_ms": 6616.4822920109145,
+    "qa_text": "틱\n3072\n연도·계절\n1300년 겨울\n속도\n1배속\n줌\n1.400\n카메라 이동\n(800, -934)\n화면 중심 월드\n(0, 1024)\n화면 중심 칸\n(32, 32)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×"
+  }
+]

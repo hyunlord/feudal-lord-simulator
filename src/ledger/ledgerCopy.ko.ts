@@ -61,7 +61,7 @@ export const LEDGER_CATEGORY_LABELS = {
   murage: "성벽세",
   // F3-A (PL-5…PL-7)
   wages: "임금",
-  statute_fine: "노동자 조례 벌금",
+  statute_fine: "노동자법 벌금",
   church_fee: "수도원 사제 봉급",
   entry_fine: "새 이주민 입주금",
   // C5 (CL-5, CL-8)

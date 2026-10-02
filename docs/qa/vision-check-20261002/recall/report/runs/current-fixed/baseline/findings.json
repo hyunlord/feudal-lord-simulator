@@ -1,0 +1,72 @@
+[
+  {
+    "id": "current-city:scale_ratio:0",
+    "scene": "current-city",
+    "detector": "scale_ratio",
+    "box": {
+      "x": 1056,
+      "y": 452,
+      "width": 64,
+      "height": 32
+    },
+    "score": 0.75,
+    "reason": "Alpha height outside bible range plus 20% tolerance: /assets/wave27/yards/yard_rain_barrel.png#crop=0,0,128,64",
+    "metrics": [
+      {
+        "name": "object_person_height",
+        "value": 1.5991058122205661,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_height",
+        "value": 18.135135135135137,
+        "unit": "px"
+      },
+      {
+        "name": "reference_min",
+        "value": 0.45,
+        "unit": "ratio"
+      },
+      {
+        "name": "reference_max",
+        "value": 0.65,
+        "unit": "ratio"
+      }
+    ]
+  },
+  {
+    "id": "current-city-confirm:scale_ratio:0",
+    "scene": "current-city-confirm",
+    "detector": "scale_ratio",
+    "box": {
+      "x": 1056,
+      "y": 452,
+      "width": 64,
+      "height": 32
+    },
+    "score": 0.75,
+    "reason": "Alpha height outside bible range plus 20% tolerance: /assets/wave27/yards/yard_rain_barrel.png#crop=0,0,128,64",
+    "metrics": [
+      {
+        "name": "object_person_height",
+        "value": 1.5991058122205661,
+        "unit": "ratio"
+      },
+      {
+        "name": "person_height",
+        "value": 18.135135135135137,
+        "unit": "px"
+      },
+      {
+        "name": "reference_min",
+        "value": 0.45,
+        "unit": "ratio"
+      },
+      {
+        "name": "reference_max",
+        "value": 0.65,
+        "unit": "ratio"
+      }
+    ]
+  }
+]

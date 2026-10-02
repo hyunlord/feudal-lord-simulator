@@ -1,0 +1,257 @@
+{
+  "proposalVersion": 2,
+  "implementationStatus": "proposal_only",
+  "sourceHead": "83b06802661d6eef33ebf7dc5b7c31a18aa9fae8",
+  "policy": {
+    "evaluation": "season_boundary_after_existing_engine",
+    "newContentMaxPerYear": 2,
+    "newContentMaxPerSeason": 1,
+    "selection": "seeded_integer_weighted_sorted_id",
+    "seedNamespace": "ck-registry-v2",
+    "failurePolicy": "skip_without_engine_mutation"
+  },
+  "entries": [
+    {
+      "contentRevision": 2,
+      "deadlinePolicy": "inherit_engine_never_extend",
+      "deferPolicy": "leave_open_no_effect_no_deadline_reset",
+      "minimumEnabledConsequentialChoices": 2,
+      "choiceSource": "content_draft_existing_handler_adapters",
+      "precedentPolicy": "defer_to_engine_only",
+      "id": "ck_evt_001",
+      "contentClass": "existing_petition_variant",
+      "contentRef": "events.json#/0",
+      "binding": {
+        "kind": "estate_petition",
+        "definitionKey": "common_dispute",
+        "instanceSelector": "open_matching_instance",
+        "effectOwner": "existing_engine_handler",
+        "creation": "never",
+        "onMissing": "skip"
+      },
+      "conditions": {
+        "all": [
+          {
+            "field": "calendar.year",
+            "subject": "world",
+            "op": "gte",
+            "value": 1300
+          },
+          {
+            "field": "calendar.year",
+            "subject": "world",
+            "op": "lte",
+            "value": 1310
+          },
+          {
+            "field": "bound.status",
+            "subject": "bound",
+            "op": "eq",
+            "value": "open"
+          },
+          {
+            "field": "bound.reachedLord",
+            "subject": "bound",
+            "op": "eq",
+            "value": true
+          },
+          {
+            "field": "estate.ownedByLord",
+            "subject": "bound.estate",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "chancePermille": 500,
+        "weight": 2,
+        "minGapSeasons": 8,
+        "maxPerYear": 1,
+        "countsAgainstNewContentBudget": true
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasons": 16,
+        "maxOccurrences": 3,
+        "contextKeyFields": [
+          "bound.instanceId",
+          "bound.estateId",
+          "bound.partyId"
+        ],
+        "requireContextChange": true
+      },
+      "dedup": {
+        "exclusiveGroups": [
+          "common_land_dispute"
+        ],
+        "semanticKeyFields": [
+          "bound.estateId",
+          "bound.partyId",
+          "bound.kind"
+        ],
+        "groupCooldownSeasons": 16,
+        "suppressWhileBoundOpen": true,
+        "winnerPriority": 10
+      },
+      "executionPolicy": {
+        "singleCommand": "existing_handler_with_revalidation",
+        "compoundCommands": "blocked_until_atomic_adapter",
+        "requireContentPreconditions": true
+      }
+    },
+    {
+      "contentRevision": 2,
+      "deadlinePolicy": "inherit_engine_never_extend",
+      "deferPolicy": "leave_open_no_effect_no_deadline_reset",
+      "minimumEnabledConsequentialChoices": 2,
+      "choiceSource": "content_draft_existing_handler_adapters",
+      "precedentPolicy": "defer_to_engine_only",
+      "id": "ck_evt_014",
+      "contentClass": "existing_event_copy_revision",
+      "contentRef": "events.json#/13",
+      "binding": {
+        "kind": "chapter_petition",
+        "definitionKey": "wool_payment",
+        "instanceSelector": "open_matching_instance",
+        "effectOwner": "existing_engine_handler",
+        "creation": "never",
+        "onMissing": "skip"
+      },
+      "conditions": {
+        "all": [
+          {
+            "field": "calendar.year",
+            "subject": "world",
+            "op": "gte",
+            "value": 1337
+          },
+          {
+            "field": "calendar.year",
+            "subject": "world",
+            "op": "lte",
+            "value": 1347
+          },
+          {
+            "field": "bound.status",
+            "subject": "bound",
+            "op": "eq",
+            "value": "open"
+          }
+        ]
+      },
+      "frequency": {
+        "mode": "existing_arrival_only",
+        "chancePermille": 1000,
+        "weight": 1,
+        "minGapSeasons": 0,
+        "maxPerYear": 1,
+        "countsAgainstNewContentBudget": false
+      },
+      "recurrence": {
+        "mode": "once_per_bound_instance",
+        "cooldownSeasons": 0,
+        "maxOccurrences": 1,
+        "contextKeyFields": [
+          "bound.instanceId"
+        ],
+        "requireContextChange": false
+      },
+      "dedup": {
+        "exclusiveGroups": [
+          "chapter_wool_payment"
+        ],
+        "semanticKeyFields": [
+          "bound.instanceId"
+        ],
+        "groupCooldownSeasons": 0,
+        "suppressWhileBoundOpen": true,
+        "winnerPriority": 100
+      },
+      "executionPolicy": {
+        "singleCommand": "existing_handler_with_revalidation",
+        "compoundCommands": "blocked_until_atomic_adapter",
+        "requireContentPreconditions": true
+      }
+    },
+    {
+      "contentRevision": 2,
+      "deadlinePolicy": "inherit_engine_never_extend",
+      "deferPolicy": "leave_open_no_effect_no_deadline_reset",
+      "minimumEnabledConsequentialChoices": 2,
+      "choiceSource": "content_draft_existing_handler_adapters",
+      "precedentPolicy": "defer_to_engine_only",
+      "id": "ck_evt_004",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#/3",
+      "binding": {
+        "kind": "existing_command_target",
+        "definitionKey": "agency.project_subsidy",
+        "instanceSelector": "eligible_existing_target",
+        "effectOwner": "existing_engine_handler",
+        "creation": "never",
+        "onMissing": "skip"
+      },
+      "conditions": {
+        "all": [
+          {
+            "field": "calendar.year",
+            "subject": "world",
+            "op": "gte",
+            "value": 1301
+          },
+          {
+            "field": "calendar.year",
+            "subject": "world",
+            "op": "lte",
+            "value": 1312
+          },
+          {
+            "field": "treasury.coinD",
+            "subject": "world",
+            "op": "gte",
+            "value": 120
+          }
+        ]
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "chancePermille": 500,
+        "weight": 2,
+        "minGapSeasons": 8,
+        "maxPerYear": 1,
+        "countsAgainstNewContentBudget": true
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasons": 16,
+        "maxOccurrences": 1,
+        "contextKeyFields": [
+          "bound.instanceId"
+        ],
+        "requireContextChange": false
+      },
+      "dedup": {
+        "exclusiveGroups": [
+          "town_well_granary_subsidy"
+        ],
+        "semanticKeyFields": [
+          "bound.instanceId"
+        ],
+        "groupCooldownSeasons": 16,
+        "suppressWhileBoundOpen": true,
+        "winnerPriority": 10
+      },
+      "executionPolicy": {
+        "singleCommand": "existing_handler_with_revalidation",
+        "compoundCommands": "blocked_until_atomic_adapter",
+        "requireContentPreconditions": true
+      }
+    }
+  ],
+  "runtimeState": {
+    "schemaVersion": 1,
+    "records": []
+  }
+}

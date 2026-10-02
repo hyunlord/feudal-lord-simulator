@@ -1,0 +1,393 @@
+{
+  "status": "read_only_source_audit",
+  "head": "d6ae15498a45c2202a10f3ce8f20a543dd305c3f",
+  "branch": "codex/phase15-organic-ground",
+  "scope": "editorial drafts only; no engine code changed",
+  "units": {
+    "money": "정수 페니 d; 금액은 역사적 실측 아닌 게임 수치",
+    "season": "1000 tick",
+    "year": "4000 tick",
+    "fixed": "고정 엔진수치는 [x,x] 범위로 표시 가능; 이를 임의 ±범위로 재조정하면 tuning proposal"
+  },
+  "global_limits": [
+    "60개 새 JSON은 현 엔진 등록 데이터가 아님. 기존 command로 안내하는 초안도 대상 상태/ID가 실제 존재해야 함.",
+    "효과 연결과 조건/빈도/원장 문구 어댑터는 미구현. 새 문구만 썼다고 실행되지 않음.",
+    "관계/금고 효과는 해당 경로의 고정 조합만 유효하며 서로 다른 경로의 독립 효과를 마음대로 합치지 않음.",
+    "그림·서사상 수리/혼인허가/입촌은 실제 건물 수리/혼인/가구이주 mutation을 뜻하지 않음.",
+    "집단 감정, 정치 merchantGauge, offmap goodwill, 외교 관계는 서로 다른 필드."
+  ],
+  "entries": [
+    {
+      "key": "petition.charterFee",
+      "route": "generic PetitionDef → respondToPetition",
+      "refs": [
+        "src/content/chapterConfig.ts:48",
+        "src/engine/politics.ts:211",
+        "src/engine/factions.ts:378",
+        "src/content/factionConfig.ts:118"
+      ],
+      "units": "페니 d",
+      "numeric": "양의 정수만 실제 수입; 0 무변동",
+      "conditions": "등록된 defId, 미응답 청원, 제공된 응답",
+      "behavior": "charter_fee 원장에 일회 수입",
+      "limits": "음수 값은 generic 경로에서 무시. 지출은 별도 장별/명령 경로 필요. 일반 응답은 기록 후 공통 세력 후처리가 따른다: 왕실 +5/+5/−20/−20, 기타 청원 세력 +10/+3/−15/−10(accept/accept_with_price/refuse/expired), 범위−100~100. 독립 보상으로 중복 실행하지 않는다."
+    },
+    {
+      "key": "petition.gauge",
+      "route": "generic PetitionDef → respondToPetition",
+      "refs": [
+        "src/engine/politics.ts:220",
+        "src/engine/factions.ts:378",
+        "src/content/factionConfig.ts:118"
+      ],
+      "units": "merchantGauge 점",
+      "numeric": "정수 delta, clampGauge",
+      "conditions": "generic 경로",
+      "behavior": "상인 게이지 변경",
+      "limits": "임의 세력 관계가 아님. 일반 응답은 기록 후 공통 세력 후처리가 따른다: 왕실 +5/+5/−20/−20, 기타 청원 세력 +10/+3/−15/−10(accept/accept_with_price/refuse/expired), 범위−100~100. 독립 보상으로 중복 실행하지 않는다."
+    },
+    {
+      "key": "petition.right",
+      "route": "generic PetitionDef → respondToPetition",
+      "refs": [
+        "src/engine/politics.ts:222",
+        "src/engine/politics.ts:230",
+        "src/engine/factions.ts:378",
+        "src/content/factionConfig.ts:118"
+      ],
+      "units": "politics.rights 권리기록",
+      "numeric": "right ID 및 stallFeePermille",
+      "conditions": "등록된 청원",
+      "behavior": "청원 세력 holder로 권리기록 추가",
+      "limits": "estates.pieces 소유권과 다름. 임의 ID는 downstream 소비자가 없어 실제 효력이 없을 수 있음. 일반 응답은 기록 후 공통 세력 후처리가 따른다: 왕실 +5/+5/−20/−20, 기타 청원 세력 +10/+3/−15/−10(accept/accept_with_price/refuse/expired), 범위−100~100. 독립 보상으로 중복 실행하지 않는다."
+    },
+    {
+      "key": "home_petition.answer",
+      "route": "answer_estate_petition → answerEstatePetition → history",
+      "refs": [
+        "src/content/stewardshipConfig.ts:61",
+        "src/engine/stewardship.ts:399",
+        "src/engine/history.ts:948"
+      ],
+      "units": "페니 d, 세력 관계 점",
+      "numeric": "12종 표의 amount 범위와 고정 faction delta",
+      "conditions": "home estate의 open 청원, deadline 이내",
+      "behavior": "승인/거절: 표에 따른 금고 ±amount, 관계 변화, granted/refused 기록",
+      "limits": "rights/marriage 플래그는 상신 분류뿐. 실제 권리·혼인·이주·수리 생성 안 함. 새 ID 또는 선택지 3개 연결은 신규 어댑터 필요."
+    },
+    {
+      "key": "offmap_petition.answer",
+      "route": "answer_estate_petition → answerEstatePetition",
+      "refs": [
+        "src/engine/stewardship.ts:163",
+        "src/engine/stewardship.ts:415",
+        "src/content/stewardshipConfig.ts:40"
+      ],
+      "units": "페니 d, 해당 영지 tenants/merchants 점",
+      "numeric": "amount=영지 연가치/4 × size‰; 6종 고정 관계 delta",
+      "conditions": "보유 지도 밖 영지, 해당 청원 open/deadline",
+      "behavior": "rent_relief·market_dues·repair·common_dispute·charter_request·marriage_licence",
+      "limits": "글로벌 commons/town 관계와 다름. charter_request도 실제 권리조각 양도 없음."
+    },
+    {
+      "key": "offmap_petition.neglect",
+      "route": "repair 거절",
+      "refs": [
+        "src/engine/stewardship.ts:169",
+        "src/engine/stewardship.ts:237",
+        "src/content/stewardshipConfig.ts:88"
+      ],
+      "units": "영지 annualValue",
+      "numeric": "고정 −20‰, 반올림",
+      "conditions": "지도 밖 repair 청원 거절",
+      "behavior": "영지 카드 연가치 손실",
+      "limits": "지도상의 건물 파괴·내구도 효과 아님."
+    },
+    {
+      "key": "steward.precedent",
+      "route": "set_exception_rules / estateSeason",
+      "refs": [
+        "src/engine/stewardship.ts:265",
+        "src/engine/stewardship.ts:385"
+      ],
+      "units": "선례·예외 규칙",
+      "numeric": "amountAtLeast/null, rights, marriage, recurring boolean",
+      "conditions": "위임된 지도 밖 영지, 같은 estateId/kind의 과거 lord 결정",
+      "behavior": "recurring!=true면 과거 승인/거절을 청지기가 재사용",
+      "limits": "home 청원은 선례 자동처리 안 됨. 새 초안 ID마다 선례 저장하는 범용 시스템 아님."
+    },
+    {
+      "key": "steward.appoint",
+      "route": "set_estate_oversight",
+      "refs": [
+        "src/engine/stewardship.ts:371"
+      ],
+      "units": "인물 serving/candidate; direct/steward",
+      "numeric": "비수치",
+      "conditions": "해당 영지 유효 living 후보",
+      "behavior": "청지기 지정 또는 직접 감독 전환",
+      "limits": "임의 인물 생성/능력치 부여 아님."
+    },
+    {
+      "key": "audit.mode",
+      "route": "set_audit_mode",
+      "refs": [
+        "src/engine/stewardship.ts:431",
+        "src/content/stewardshipConfig.ts:95"
+      ],
+      "units": "accounts/visit, 연도",
+      "numeric": "발견율 accounts300‰ / visit850‰ + 능력식",
+      "conditions": "기존 oversight",
+      "behavior": "다음 미카엘마스 감사 방식; 방문시 attention 부담",
+      "limits": "즉시 횡령 적발 보장 아님."
+    },
+    {
+      "key": "audit.answer",
+      "route": "answer_audit",
+      "refs": [
+        "src/engine/stewardship.ts:443",
+        "src/content/stewardshipConfig.ts:101"
+      ],
+      "units": "페니 d, loyalty/tenants 점, 인물 상태",
+      "numeric": "punish 회수 round(revealedKept×500‰), tenants+5; tolerate loyalty+10",
+      "conditions": "pending 감사 deadline 이내; 해임시 살아 있는 후임 필요",
+      "behavior": "punish/replace는 dismissed+후임 serving; tolerate 유지",
+      "limits": "임의 사형/구금/상처/망명 상태 효과 없음."
+    },
+    {
+      "key": "policy",
+      "route": "set_estate_policy",
+      "refs": [
+        "src/engine/townAgency.ts:64",
+        "src/engine/townAgency.types.ts:11"
+      ],
+      "units": "growth/revenue/stability/defence",
+      "numeric": "enum",
+      "conditions": "agency 영주모드",
+      "behavior": "도시 자율 제안 점수의 방침 변경",
+      "limits": "건물 직접 배치나 특정 결과 보장 없음."
+    },
+    {
+      "key": "subsidy",
+      "route": "set_project_subsidy",
+      "refs": [
+        "src/engine/townAgency.ts:73",
+        "src/engine/townAgency.ts:82",
+        "src/engine/townAgency.ts:540",
+        "src/engine/townAgency.ts:527"
+      ],
+      "units": "페니 d / building kind",
+      "numeric": "정수 ≥0; 합계≤현재 금고250‰; 0철회; 채택시 paid=min(설정 장려금,max(0,당시 금고))",
+      "conditions": "agency; 유효 BuildingKind",
+      "behavior": "해당 종류 프로젝트 장려금; 실제 채택시 금고 지급",
+      "limits": "설정 즉시 지출 아님; 건설 보장 안 함; 개별 청원 earmark/만료일 없음."
+    },
+    {
+      "key": "market_dues",
+      "route": "set_market_dues",
+      "refs": [
+        "src/engine/townAgency.ts:94"
+      ],
+      "units": "기본 노점세 대비 ‰",
+      "numeric": "정수250–2000",
+      "conditions": "agency",
+      "behavior": "duesPermille 변경",
+      "limits": "임의 권리조각 세율 변경/한 철 뒤 자동 복원 아님."
+    },
+    {
+      "key": "timber.order",
+      "route": "order_timber → orderTimber → advanceTimberTrade",
+      "refs": [
+        "src/engine/timberTrade.ts:19",
+        "src/engine/timberTrade.ts:42",
+        "src/content/timberTradeConfig.ts:5"
+      ],
+      "units": "목재 단위 및 페니 d",
+      "numeric": "주문0–400; 촌락0–60; 시장일당2/1; 가격18/27d",
+      "conditions": "거래 시장 또는 촌락 창고; 금고 구매력",
+      "behavior": "주문 후 시장 주기 때 구매한 만큼 treasuryTimber 증가·금고 감소",
+      "limits": "즉시 목재 지급 아님. 다른 물자 범용 grant API 아님."
+    },
+    {
+      "key": "marriage.offer",
+      "route": "propose_marriage / answer_counter",
+      "refs": [
+        "src/engine/marriage.ts:114",
+        "src/engine/marriage.ts:137",
+        "src/engine/marriage.ts:154",
+        "src/engine/marriage.ts:255"
+      ],
+      "units": "페니 d, years, 협상 점수",
+      "numeric": "Term cash/pension/debt_assumption 등; 가용성/수락식",
+      "conditions": "살아 있는 적합 groom/bride, 협상 미진행, 금고",
+      "behavior": "수락/역제안/거절; 계약시 cash 차감·관계 상승·혼인 청구권 생성",
+      "limits": "MARRIAGE_ESTATE_ID와 상대/혼인 경로 제한. 자유로운 어떤 두 인물 혼인 아님. 새 사건이 즉시 혼인 성공시키면 안 됨."
+    },
+    {
+      "key": "marriage.promises",
+      "route": "contractPromises → keep_promise",
+      "refs": [
+        "src/engine/marriage.ts:180",
+        "src/engine/marriage.ts:211",
+        "src/engine/marriage.ts:236",
+        "src/content/diplomacyConfig.ts:72"
+      ],
+      "units": "페니 d / years / tick",
+      "numeric": "pension 연별, debt_assumption 분할; 정치지원8000tick",
+      "conditions": "혼인 계약 생성 약속 또는 기존 open lord 약속, deadline 이내",
+      "behavior": "금고 지불/정치지원 이행과 kept; 미이행 broken·관계손실",
+      "limits": "일반 청원에서 자유로운 약속 생성 불가. 혼인 계약 및 will_change의 정해진 생성 경로에 한정. 임의 deadline은 신규 효과."
+    },
+    {
+      "key": "marriage.jointure",
+      "route": "혼인 contract → 남편 사망 → settleForLife",
+      "refs": [
+        "src/engine/marriage.ts:270",
+        "src/engine/marriage.ts:445",
+        "src/engine/estates.ts:204"
+      ],
+      "units": "기존 권리조각 종신보유",
+      "numeric": "pieceId, 비수치",
+      "conditions": "계약 jointure 조각·남편 사망·아내 생존",
+      "behavior": "아내에게 종신보유, remainder 유지",
+      "limits": "right_piece/land_use term 자체는 즉시 양도 안 함. 협상 점수 term 존재만으로 mutation 단정 금지."
+    },
+    {
+      "key": "marriage.will",
+      "route": "answer_will_change",
+      "refs": [
+        "src/engine/marriage.ts:374"
+      ],
+      "units": "favour/support_promise/let_it_be",
+      "numeric": "favour 고정 비용 또는 정치지원 약속 기한 8000 tick; let_it_be 경쟁 청구권 생성",
+      "conditions": "해당 혼인 will-change 단계",
+      "behavior": "청탁 지출 또는 해당 will_change에서 정치지원 약속 생성 또는 개입 안 함",
+      "limits": "범용 유언 재작성/후계자 임의 지정 아님."
+    },
+    {
+      "key": "suit.file",
+      "route": "file_suit",
+      "refs": [
+        "src/engine/estateSuits.ts:59",
+        "src/engine/estateSuits.ts:72",
+        "src/content/estateConfig.ts:91"
+      ],
+      "units": "페니 d·claim 상태",
+      "numeric": "접수60d, 이후 심리120d/집행80d 고정",
+      "conditions": "기존 open 청구권, 타인 명의, 금고",
+      "behavior": "suing 및 filed 소송; 이후 시간 경과",
+      "limits": "임의 청구권 생성은 별도 엔진 어댑터 필요."
+    },
+    {
+      "key": "suit.evidence",
+      "route": "add_suit_evidence / seek_suit_patron",
+      "refs": [
+        "src/engine/estateSuits.ts:86",
+        "src/engine/estateSuits.ts:99",
+        "src/content/estateConfig.ts:81"
+      ],
+      "units": "페니 d·증거 가중치·patronSupport",
+      "numeric": "종류별 비용/가중치 고정; 후원 relation≥10, 최대30",
+      "conditions": "filed/evidence 단계 증거 종류 1회; patronage 단계 후원1회",
+      "behavior": "증거 추가·기존 세력관계를 후원력으로 활용",
+      "limits": "후원 요구 자체가 세력관계 대가를 차감하지 않음."
+    },
+    {
+      "key": "suit.enforce",
+      "route": "enforce_possession",
+      "refs": [
+        "src/engine/estateSuits.ts:142"
+      ],
+      "units": "페니 d·권리조각/영지 possessor",
+      "numeric": "집행80d; force vs hold 식",
+      "conditions": "enforcing 소송, 금고",
+      "behavior": "성공시 점유자 변경; 실패시 hold 감소",
+      "limits": "승소 즉시 실제 점유 확보 아님; 임의 군대 생성 안 됨."
+    },
+    {
+      "key": "chapter.famine",
+      "route": "famine_response",
+      "refs": [
+        "src/engine/politics.ts:92",
+        "src/engine/politics.ts:105",
+        "src/engine/eventSchedule.ts:304",
+        "src/engine/factions.ts:378",
+        "src/content/factionConfig.ts:118"
+      ],
+      "units": "금고·빵/밀·가격‰·가구 이탈 상한",
+      "numeric": "relief/price_control/laissez_faire/speculation 고정 enum/계산식",
+      "conditions": "기존 도착한 대기근, 아직 미응답",
+      "behavior": "계절별 구휼·가격제한·방임·매점 매각 경로",
+      "limits": "매년 새 날씨 청원에 복제할 수 있는 범용 식량배급 효과 아님."
+    },
+    {
+      "key": "chapter.war",
+      "route": "respondToPetition(trigger=war) → answerWarPetition",
+      "refs": [
+        "src/engine/war.ts:284",
+        "src/engine/factions.ts:378",
+        "src/content/factionConfig.ts:118"
+      ],
+      "units": "금고·분할납부·징집·피난가구·전쟁대응",
+      "numeric": "WOOL_PAYMENT/LEVY_RESPONSE/WAR_FUNDING/REFUGEE_ADMISSION/WALL_OR_MARKET 고정 ID·balance",
+      "conditions": "war 상태 존재, 해당 기존 청원",
+      "behavior": "현물부담, 면역금, 차입/전쟁세, 피난민 수용(빈자리 범위), 방위 방침",
+      "limits": "새 ID·다른 시대에서 동일 mutation 자동 호출 안 됨. 인력 사망 비율은 장별 시뮬레이션 결과."
+    },
+    {
+      "key": "chapter.plague",
+      "route": "respondToPetition(trigger=plague) → answerPlaguePetition",
+      "refs": [
+        "src/engine/plague.ts:376",
+        "src/engine/plague.ts:336",
+        "src/engine/factions.ts:378",
+        "src/content/factionConfig.ts:118"
+      ],
+      "units": "성직 공석·금고·지대권리·이주가구",
+      "numeric": "VACANT_PRIEST/CASH_RENT 등 고정 ID와 balance",
+      "conditions": "plague 상태/공석·빈집·물 서비스 등 해당 조건",
+      "behavior": "성직자 기다림/평신도 서기, 부역 금납화, 후속 계절 재정착",
+      "limits": "임의 사람 치유/사망 확률 증감 효과 아님. 양도된 commuted_rent는 정치권리 기록."
+    },
+    {
+      "key": "chapter.reorganisation",
+      "route": "respondToPetition(trigger=reorganisation)",
+      "refs": [
+        "src/engine/reorganisation.ts:234",
+        "src/engine/reorganisation.ts:251"
+      ],
+      "units": "길드·시장/다리 수입권·금고",
+      "numeric": "GUILD_CHARTER/BOROUGH_CHARTER/TAX_COLLECTION/CLOTH_OR_GRAIN ID",
+      "conditions": "해당 장 상태/청원",
+      "behavior": "길드 설립, 도시 권리기록, 세금징수/직업특화의 후속 효과",
+      "limits": "새 사건의 임의 길드나 수익률을 바꾸는 범용 API 아님."
+    },
+    {
+      "key": "chapter.legacy",
+      "route": "respondToPetition(trigger=legacy)",
+      "refs": [
+        "src/engine/legacy.ts:146"
+      ],
+      "units": "금고·후계 인물·자치권",
+      "numeric": "ROYAL_TAX/HEIR_CHOICE/BOROUGH_AUTONOMY/LEGACY_CHOICE ID",
+      "conditions": "legacy 상태; 후보 목록/제시 응답",
+      "behavior": "특별세 납부·상속부담금·후계 착좌·기존 도시 자치권",
+      "limits": "청원 60개의 일반 후계자/명성 조작 API 아님."
+    },
+    {
+      "key": "chapter.restore",
+      "route": "restore_right → answerRestoration",
+      "refs": [
+        "src/engine/lordship.ts:203",
+        "src/content/chapterConfig.ts:104"
+      ],
+      "units": "금고·권리복구·시간",
+      "numeric": "100d 즉시 또는50d·1년 기다림 고정",
+      "conditions": "쇠퇴 후 원인 해소·기존 restore_right 청원",
+      "behavior": "빼앗긴 권리복구/협상/거절 후 재청원",
+      "limits": "일반 권리조각 매입 단가 아님."
+    }
+  ],
+  "originalAuditHead": "602fdd8467ada0a9288654c7f850db293ab76ef6",
+  "headRevalidation": "git diff 이전HEAD HEAD -- src 결과 없음"
+}
