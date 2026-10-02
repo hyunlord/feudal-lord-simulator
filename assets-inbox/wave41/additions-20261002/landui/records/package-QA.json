@@ -1,0 +1,154 @@
+{
+  "kind": "offline-only",
+  "alphaBoundsThreshold": 0,
+  "seasonalAlpha": [
+    {
+      "axis": "ne",
+      "differentPixels": 0
+    },
+    {
+      "axis": "nw",
+      "differentPixels": 0
+    }
+  ],
+  "assets": [
+    {
+      "id": "ford_w1_ne_summer",
+      "file": "ford/assets/ford_w1_ne_summer.png",
+      "status": "candidate",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "alphaBounds": [
+        158,
+        83,
+        358,
+        188
+      ],
+      "opaque": 3601,
+      "partial": 2149,
+      "transparent": 125322,
+      "hiddenRGB": 0,
+      "xSeamMax": null,
+      "sha256": "85053f4ff7e1ec60adabd07b610db6278dd51b20ea98aaaee0eaf5a16b03e495"
+    },
+    {
+      "id": "ford_w1_ne_winter",
+      "file": "ford/assets/ford_w1_ne_winter.png",
+      "status": "candidate",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "alphaBounds": [
+        158,
+        83,
+        358,
+        188
+      ],
+      "opaque": 3601,
+      "partial": 2149,
+      "transparent": 125322,
+      "hiddenRGB": 0,
+      "xSeamMax": null,
+      "sha256": "1f8d077b989b4abca85ca30e52c7d7d2053aa0523b32853e212bee23b26a5951"
+    },
+    {
+      "id": "ford_w1_nw_summer",
+      "file": "ford/assets/ford_w1_nw_summer.png",
+      "status": "candidate",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "alphaBounds": [
+        171,
+        78,
+        340,
+        174
+      ],
+      "opaque": 4581,
+      "partial": 2067,
+      "transparent": 124424,
+      "hiddenRGB": 0,
+      "xSeamMax": null,
+      "sha256": "d419db75830740295d51ed9874bccfdb994e226551a19212852d85bf037b2e3d"
+    },
+    {
+      "id": "ford_w1_nw_winter",
+      "file": "ford/assets/ford_w1_nw_winter.png",
+      "status": "candidate",
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "alphaBounds": [
+        171,
+        78,
+        340,
+        174
+      ],
+      "opaque": 4581,
+      "partial": 2067,
+      "transparent": 124424,
+      "hiddenRGB": 0,
+      "xSeamMax": null,
+      "sha256": "9e142631eac9846f719e4a95ae515ad5bcd74412a308d7f25237727c4fb469aa"
+    },
+    {
+      "id": "woodland_edge_a",
+      "file": "forest/assets/woodland_edge_a.png",
+      "status": "candidate",
+      "width": 512,
+      "height": 64,
+      "pivot": [
+        0,
+        0
+      ],
+      "alphaBounds": [
+        0,
+        1,
+        511,
+        62
+      ],
+      "opaque": 19456,
+      "partial": 12288,
+      "transparent": 1024,
+      "hiddenRGB": 0,
+      "xSeamMax": 0,
+      "sha256": "e1279f9b84a25a13b9711c8255173147697ecae84537d4c0eddb5590d0f66abf"
+    },
+    {
+      "id": "woodland_edge_b",
+      "file": "forest/assets/woodland_edge_b.png",
+      "status": "candidate",
+      "width": 512,
+      "height": 64,
+      "pivot": [
+        0,
+        0
+      ],
+      "alphaBounds": [
+        0,
+        1,
+        511,
+        62
+      ],
+      "opaque": 19456,
+      "partial": 12288,
+      "transparent": 1024,
+      "hiddenRGB": 0,
+      "xSeamMax": 0,
+      "sha256": "9c79ca871d54d65ed7c766e69dde44563715b321fed44eda4b22bf9b84a7c6e6"
+    }
+  ]
+}
