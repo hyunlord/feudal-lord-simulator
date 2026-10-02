@@ -143,6 +143,8 @@
 - **끝**: 일이 차면 그 칸들이 풀밭이 되고, `drainage.drained`에 남는다(렌더의 마른 땅).
 - **기록**: 원장에 결정 `decision.drainage`(메움/둠)와 끝 기록 `drainage.done`(칸 수)이 남는다.
 - **거절 이유**: `not_fen`, `not_still_water`, `no_bank`, `busy`, `too_many_works`, `insufficient_timber`. 거절된 명령은 상태를 그대로 둔다.
+  - FIX-13: `insufficient_timber`에는 필요한 양과 쓸 수 있는 양(`timberNeeded`, `timberHave`)이 붙는다(렌더 "목재 부족" 문구).
+- **시작 칸**(FIX-13): 공사는 명령의 칸을 `origin`(`{ tx, ty }`)으로 지닌다. 렌더가 공사 표시를 그 칸에 단다. v43 저장의 공사에는 없다.
 - 봇은 배수하지 않는다. 사람만의 결정이다.
 
 ## MA-12 새 땅 캠페인 비교

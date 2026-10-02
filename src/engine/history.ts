@@ -1053,7 +1053,8 @@ function estateDrafts(before: GameState, after: GameState): Draft[] {
   for (const person of now.people) {
     if (person.alive || was.people.find(entry => entry.id === person.id)?.alive !== true) continue;
     const role = person.occupation === "steward" ? "steward" : person.role === "head" ? "head" : "kin";
-    drafts.push({ tick: after.tick, kind: "event", template: "estate.person_died", subject: TOWN, severity: role === "kin" ? 1 : 2,
+    // Severity 1: in the ledger and the biographies, not on a chapter's page (the inheritance it opens is its own line).
+    drafts.push({ tick: after.tick, kind: "event", template: "estate.person_died", subject: TOWN, severity: 1,
       params: { deceasedId: person.id, role, age: (person.deathYear ?? 0) - person.birthYear } });
   }
   for (const estate of now.estates) {
