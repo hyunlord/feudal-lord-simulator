@@ -1,0 +1,2292 @@
+[
+  {
+    "number": 1,
+    "id": "ck_evt_001",
+    "category": "장원",
+    "period": "1300–1347",
+    "years": [
+      1300,
+      1310
+    ],
+    "conditions": {
+      "land": "목초지와 장날 통행이 겹치는 영지라는 편집 발동 필터. 실제 타일 판정 미구현.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "플레이어가 보유한 지도 밖 영지에 common_dispute 청원이 open이고 기한 전이다. 기존 청원의 당사자만 묘사한다."
+    },
+    "sender": {
+      "faction": "지도 밖 영지의 소작인·상인",
+      "role": "마을 대표(리브)"
+    },
+    "title": "쟁기 길 끝의 풀밭",
+    "body": "소작인들은 오래 쓰던 길을 따라 소를 몰겠다고 합니다. 장날 물건을 싣는 이들은 그 길목을 비워 달라고 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "소작인 쪽의 청원을 받아들인다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition(grant=true)",
+            "parameters": {
+              "kind": "common_dispute",
+              "incomeD": [
+                0,
+                0
+              ],
+              "estateTenantsDelta": [
+                5,
+                5
+              ],
+              "estateMerchantsDelta": [
+                -5,
+                -5
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "현재 지도 밖 common_dispute petitionId",
+            "limits": "실제 도로·울타리·공유지 권리 범위는 바뀌지 않는다."
+          }
+        ],
+        "tradeoff": "소작인의 지지를 얻고 같은 영지 상인들의 호의를 잃는다.",
+        "ledger": "풀밭 분쟁: 소작인 편에 답했다. 금고 이동 없음.",
+        "chronicle": "쟁기 길의 분쟁에서 소작인들의 말이 받아들여졌다."
+      },
+      {
+        "id": "b",
+        "label": "상인 쪽의 사정을 따른다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition(grant=false)",
+            "parameters": {
+              "kind": "common_dispute",
+              "incomeD": [
+                0,
+                0
+              ],
+              "estateTenantsDelta": [
+                -5,
+                -5
+              ],
+              "estateMerchantsDelta": [
+                5,
+                5
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 기존 petitionId",
+            "limits": "집단 호의만 움직이며 누구의 토지 소유권도 바꾸지 않는다."
+          }
+        ],
+        "tradeoff": "상인의 지지를 얻는 대신 소작인들의 반발이 남는다.",
+        "ledger": "풀밭 분쟁: 상인 편에 답했다. 금고 이동 없음.",
+        "chronicle": "그 길목을 두고 상인들의 사정이 먼저 고려되었다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "가능: 지도 밖 같은 estateId/common_dispute에 남은 영주 결정만 선례로 재사용. recurring 예외를 켜면 다시 상신.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "장원 길목의 풀밭을 사이에 두고 소를 모는 소작인과 짐수레를 세운 상인이 서로 다른 길을 가리킨다.",
+    "history": {
+      "sourceIds": [
+        "HK01",
+        "HT05"
+      ],
+      "basis": "공유지 이용권은 무제한 공동 소유가 아니며, 정착지의 생활·생업 공간이 맞물렸다는 해설에 기댄다.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. ",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE08"
+    ]
+  },
+  {
+    "number": 2,
+    "id": "ck_evt_002",
+    "category": "장원",
+    "period": "1300–1347",
+    "years": [
+      1303,
+      1320
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "여름~초가을, 미카엘마스 전이라는 편집 발동 필터.",
+      "state": "보유 지도 밖 영지 oversight가 있고 그해 미카엘마스 전이다. 실제 횡령은 아직 판정되지 않았다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "수입관리인"
+    },
+    "title": "가을 장부에 없는 곡물 자루",
+    "body": "멀리 맡긴 영지에서 곡물 장부와 보고가 맞지 않는다는 말이 왔습니다. 청지기는 미카엘마스에 장부를 보내겠다고 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "장부로 감사를 받는다",
+        "effects": [
+          {
+            "catalogKey": "audit.mode",
+            "operation": "set_audit_mode(accounts)",
+            "parameters": {
+              "baseFindPermille": [
+                300,
+                300
+              ],
+              "abilityAdjustment": "(100−ability)×3",
+              "attentionVisitLoss": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "유효 estateId/oversight",
+            "limits": "현재 금고 변화 없음. 오류는 드러나지만 횡령 적발은 확률이다."
+          }
+        ],
+        "tradeoff": "방문으로 줄어드는 주의력을 보존하지만 숨긴 돈을 찾을 가능성은 낮다.",
+        "ledger": "미카엘마스 감사: 장부 제출로 정했다.",
+        "chronicle": "그해 먼 영지의 장부는 영주관으로 보내기로 했다."
+      },
+      {
+        "id": "b",
+        "label": "영주가 찾아가 감사를 한다",
+        "effects": [
+          {
+            "catalogKey": "audit.mode",
+            "operation": "set_audit_mode(visit)",
+            "parameters": {
+              "baseFindPermille": [
+                850,
+                850
+              ],
+              "abilityAdjustment": "(100−ability)×3",
+              "attentionCapacityLoss": [
+                1,
+                1
+              ],
+              "lossYears": [
+                1,
+                1
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "유효 estateId; 다음 미카엘마스에 실행",
+            "limits": "지금 즉시 횡령 판정·회수하지 않는다. 그 감사 방문 뒤 1년의 주의력 감소만 기존 규칙대로 적용."
+          }
+        ],
+        "tradeoff": "적발 가능성을 높이는 대신 다음 해 직접 관리할 수 있는 영지 수가 줄어든다.",
+        "ledger": "미카엘마스 감사: 방문으로 정했다.",
+        "chronicle": "영주가 먼 영지의 장부를 직접 받기로 했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        5,
+        8
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다. 같은 장기 변주 묶음 002,029은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "audit_mode"
+    },
+    "illustration": "곡물 자루 옆 장부를 펼친 수입관리인과, 멀리 떠날 준비의 망토가 같은 탁자 양편에 놓인다.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "Seneschaucy의 회계 검사와 곡물 계량 규범에서 취했다.",
+      "limits": "13세기 규범서가 실제 장원마다 그대로 시행되었다고 단정하지 않는다. 방문의 주의력·발견율은 게임 추정.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. "
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 3,
+    "id": "ck_evt_003",
+    "category": "장원",
+    "period": "1300–1347",
+    "years": [
+      1308,
+      1327
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "보유 지도 밖 영지의 repair 청원이 open이며 기한 전이다. 금액 A는 현행 생성값이다."
+    },
+    "sender": {
+      "faction": "지도 밖 영지의 소작인",
+      "role": "청지기"
+    },
+    "title": "다음 장날까지 버틸 지붕",
+    "body": "지도 밖 영지의 청지기가 창고 지붕에 손이 필요하다고 보고했습니다. 당장 돈을 보내면 이번 철 수입이 줄고, 미루면 영지의 가치가 닳습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "청지기의 수선 지출을 승인한다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition(grant=true)",
+            "parameters": {
+              "kind": "repair",
+              "amountD": "A=round(round(annualValue/4)×s/1000)",
+              "sPermille": [
+                200,
+                400
+              ],
+              "cashDeltaD": "[-A,-A]",
+              "estateTenantsDelta": [
+                4,
+                4
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "현행 repair petitionId",
+            "limits": "건물 즉시 수리·보이는 지붕 교체가 아니라 금고와 영지 호의의 기존 효과다."
+          }
+        ],
+        "tradeoff": "이번 철 지출을 감수해 소작인 호의를 얻고 거절에 따른 연가치 손실을 피한다.",
+        "ledger": "수선 청원 승인: 금고에서 Ad 지출.",
+        "chronicle": "먼 영지의 지붕을 돌볼 돈이 나갔다."
+      },
+      {
+        "id": "b",
+        "label": "이번 수선 청원을 거절한다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition(grant=false)",
+            "parameters": {
+              "kind": "repair",
+              "cashDeltaD": [
+                0,
+                0
+              ],
+              "estateTenantsDelta": [
+                -6,
+                -6
+              ],
+              "annualValueLossPermille": [
+                20,
+                20
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 기존 repair petitionId",
+            "limits": "연가치 감소는 카드 영지 수치이며 지도 건물 파괴가 아니다."
+          }
+        ],
+        "tradeoff": "지금 금고를 보존하지만 해당 영지의 호의와 연가치가 줄어든다.",
+        "ledger": "수선 청원 거절: 금고 이동 없음, 영지 연가치 20‰ 감소.",
+        "chronicle": "그해 먼 영지의 수선은 미뤄졌다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        6,
+        10
+      ],
+      "steward": "가능: 위임된 같은 영지 repair 종류의 이전 영주 결정을 선례로 사용. recurring 예외 설정을 존중.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다. 같은 장기 변주 묶음 003,023은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "estate_repair"
+    },
+    "illustration": "지도 밖 영지의 창고 처마를 받친 나무와 작은 돈주머니를 든 청지기를 함께 보여 준다.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "관리 규범의 수선 책임과 회계 부담을 바탕으로 한 가공 청원.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. ",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE02"
+    ]
+  },
+  {
+    "number": 4,
+    "id": "ck_evt_004",
+    "category": "도시",
+    "period": "1300–1347",
+    "years": [
+      1301,
+      1312
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "살아 있는 가구와 물·저장 공간 부족이 함께 확인될 때라는 편집 필터.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "agency 존재. well과 granary에 미설정 장려금. 다른 장려금을 뺀 한도 안에서 동일 A=[30,60]d를 어느 한 종류에만 새로 설정할 수 있다. 두 종류의 실현 가능한 자율 제안이 있다는 편집 필터. 다른 장려금을 제외한 남은 허용액 L은 A≤L<2A여야 한다."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "청지기"
+    },
+    "title": "우물과 곡창의 두 장려금",
+    "body": "공동체는 물을 길어 올릴 곳이 모자란다고 합니다. 곡물을 다루는 사람들은 먼저 창고를 늘릴 조건을 달라고 합니다. 둘 다 지원하기에는 이번에 내걸 수 있는 돈이 적습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "우물 사업에 장려금을 건다",
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy(well,A)",
+            "parameters": {
+              "kind": "well",
+              "amountD": [
+                30,
+                60
+              ],
+              "totalLimitTreasuryPermille": [
+                250,
+                250
+              ],
+              "immediateCashDeltaD": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "금액·주문량·설정 세율은 현행 명령이 허용하는 게임 추정 선택안이며 사료값/엔진 기본값이 아니다. 비용·한도·계산식은 현행 고정 규칙과 구별한다. [x,x]는 이 초안에서 고정한 입력이다.",
+            "preconditions": "양 선택 공통 A를 생성하고 금고25% 총한도 이내인지 검사",
+            "limits": "설정 즉시 건설·지급하지 않는다. 실제 사업 채택 때에만 기존 계산액 지급."
+          }
+        ],
+        "tradeoff": "같은 한도를 물 공급 사업에 쓰므로 이번 선택에서 곡창 장려금은 추가하지 않는다.",
+        "ledger": "우물 사업 장려금 Ad 공고. 지급은 사업 채택 때.",
+        "chronicle": "도시의 물을 위한 장려금이 내걸렸다."
+      },
+      {
+        "id": "b",
+        "label": "곡창 사업에 장려금을 건다",
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy(granary,A)",
+            "parameters": {
+              "kind": "granary",
+              "amountD": [
+                30,
+                60
+              ],
+              "totalLimitTreasuryPermille": [
+                250,
+                250
+              ],
+              "immediateCashDeltaD": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "금액·주문량·설정 세율은 현행 명령이 허용하는 게임 추정 선택안이며 사료값/엔진 기본값이 아니다. 비용·한도·계산식은 현행 고정 규칙과 구별한다. [x,x]는 이 초안에서 고정한 입력이다.",
+            "preconditions": "같은 A/한도, 유효 granary 종류",
+            "limits": "창고 재고·식량 배급을 즉시 늘리지 않는다."
+          }
+        ],
+        "tradeoff": "자금 한도를 곡물 보관에 배분하므로 이번 선택에서 우물 장려금은 추가하지 않는다.",
+        "ledger": "곡창 사업 장려금 Ad 공고. 지급은 사업 채택 때.",
+        "chronicle": "수확을 담을 사업을 먼저 돕기로 했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        8,
+        12
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "물동이를 든 가구 대표와 곡물 자루를 가리키는 상인이 두 장려금 공고 앞에서 기다린다.",
+    "history": {
+      "sourceIds": [
+        "HK02",
+        "HT05"
+      ],
+      "basis": "곡물 보관 관리와 가구 생활공간의 필요에서 만든 합성 상황.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. 현대적 공모 방식이 실재했다는 주장이 아니라 영주 모드 장려금 지렛대로 번역했다.",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 5,
+    "id": "ck_evt_005",
+    "category": "도시",
+    "period": "1300–1347",
+    "years": [
+      1304,
+      1318
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "agency와 운영 중인 시장, duesPermille=1000인 때만. 시장 수입권 상실·이미 다른 세율이면 이 카드 보류."
+    },
+    "sender": {
+      "faction": "상인 가문",
+      "role": "시장 좌판 대표"
+    },
+    "title": "빈 좌판 곁의 세금 장부",
+    "body": "상인들은 새 좌판이 늘기 전에 시장 좌판세부터 낮춰 달라고 합니다. 수입관리인은 그 돈으로 다른 지출을 치러야 한다고 답합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "시장 좌판세를 낮춘다",
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues(750)",
+            "parameters": {
+              "duesPermille": [
+                750,
+                750
+              ],
+              "previousPermille": [
+                1000,
+                1000
+              ]
+            },
+            "rangeNote": "금액·주문량·설정 세율은 현행 명령이 허용하는 게임 추정 선택안이며 사료값/엔진 기본값이 아니다. 비용·한도·계산식은 현행 고정 규칙과 구별한다. [x,x]는 이 초안에서 고정한 입력이다.",
+            "preconditions": "agency; 현행 세율1000‰",
+            "limits": "임시 감면 아님. 이후 플레이어가 다시 바꾸기 전까지 유지; 시장 개설권 양도 아님."
+          }
+        ],
+        "tradeoff": "좌판의 부담과 영주 수입 계수를 함께 낮춘다. 실제 유입·매출 증가는 보장하지 않는다.",
+        "ledger": "시장 좌판세를 기본의 750‰로 정했다.",
+        "chronicle": "영주는 빈 좌판을 보며 시장의 부담을 낮췄다."
+      },
+      {
+        "id": "b",
+        "label": "시장 좌판세를 높여 세입을 구한다",
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues(1250)",
+            "parameters": {
+              "duesPermille": [
+                1250,
+                1250
+              ],
+              "previousPermille": [
+                1000,
+                1000
+              ]
+            },
+            "rangeNote": "금액·주문량·설정 세율은 현행 명령이 허용하는 게임 추정 선택안이며 사료값/엔진 기본값이 아니다. 비용·한도·계산식은 현행 고정 규칙과 구별한다. [x,x]는 이 초안에서 고정한 입력이다.",
+            "preconditions": "동일 agency 및 시장",
+            "limits": "금고 즉시 증액이나 고정 관계 변화는 없다. 실제 수입은 거래에 달림."
+          }
+        ],
+        "tradeoff": "거래당 세입 조건을 높이지만 상업 프로젝트의 부담도 커진다.",
+        "ledger": "시장 좌판세를 기본의 1250‰로 정했다.",
+        "chronicle": "영주는 시장에서 다음 지출의 몫을 구했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        7,
+        11
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "장터의 빈 좌판과 시장 좌판세 장부를 한 화면에 두고 상인과 수입관리인이 마주 선다.",
+    "history": {
+      "sourceIds": [
+        "HK04"
+      ],
+      "basis": "시장 개설과 실제 운영을 구분하는 시장·정기시 연구를 바탕으로 했다.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. 750·1250‰는 게임의 설정 후보이지 중세 관세표가 아니다.",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE03"
+    ]
+  },
+  {
+    "number": 6,
+    "id": "ck_evt_006",
+    "category": "도시",
+    "period": "1300–1347",
+    "years": [
+      1326,
+      1347
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "home ale_fines 기존 청원이 open. 벌금 A=[8,30]d는 그 청원에 기록된 값이다."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "에일 양조업자"
+    },
+    "title": "에일값보다 큰 벌금",
+    "body": "에일을 빚어 파는 여인이 법정에서 정한 벌금을 줄여 달라고 왔습니다. 면제하면 이번 수입은 없어지지만, 도시 사람들은 그 답을 기억할 것입니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "이번 벌금을 면제한다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition(grant=true)",
+            "parameters": {
+              "kind": "ale_fines",
+              "amountD": [
+                8,
+                30
+              ],
+              "cashDeltaD": [
+                0,
+                0
+              ],
+              "townRelationDelta": [
+                4,
+                4
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "해당 기존 home petitionId",
+            "limits": "생산량·품질·법률 범위를 바꾸지 않는다."
+          }
+        ],
+        "tradeoff": "도시 호의를 얻는 대신 이번 벌금 수입을 받지 않는다.",
+        "ledger": "에일 벌금 Ad 면제. 금고 수입 없음.",
+        "chronicle": "에일을 빚는 이의 벌금 청원이 받아들여졌다."
+      },
+      {
+        "id": "b",
+        "label": "정해진 벌금을 받는다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition(grant=false)",
+            "parameters": {
+              "kind": "ale_fines",
+              "cashIncomeD": [
+                8,
+                30
+              ],
+              "townRelationDelta": [
+                -4,
+                -4
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 A",
+            "limits": "다른 가구에 벌금 확대·가게 폐쇄 없음."
+          }
+        ],
+        "tradeoff": "벌금 수입을 얻지만 도시의 호의를 잃는다.",
+        "ledger": "에일 벌금 Ad 수납.",
+        "chronicle": "법정의 에일 벌금은 그대로 걷혔다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        9,
+        14
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "에일 통 앞의 여성 양조업자가 접힌 벌금 기록을 내밀고 법정 서기가 금액을 짚는다.",
+    "history": {
+      "sourceIds": [
+        "HT02",
+        "HK03"
+      ],
+      "basis": "여성 에일 양조업의 역사와 장원 법정 기록의 성격에 기댄다.",
+      "limits": "HT02는 출판사 초록·목차, HK03은 기관 안내 색인 범위. 이 개인의 벌금 사유·정확액은 창작이며 에일 벌금 규정 전체를 재현하지 않는다.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. "
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE10"
+    ]
+  },
+  {
+    "number": 7,
+    "id": "ck_evt_007",
+    "category": "교회",
+    "period": "1300–1347",
+    "years": [
+      1302,
+      1319
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "home chancel_repair 기존 청원이 open. A=[30,80]d이며 기한 전이다."
+    },
+    "sender": {
+      "faction": "주교 측·교구",
+      "role": "교구 사제"
+    },
+    "title": "성소 지붕을 받치는 임시 기둥",
+    "body": "교구 사제가 성소 쪽 지붕 수선에 보탤 돈을 청했습니다. 수입관리인은 같은 돈이 영지의 다른 지출에도 필요하다고 말합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "수선비를 보탠다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition(grant=true)",
+            "parameters": {
+              "kind": "chancel_repair",
+              "cashCostD": [
+                30,
+                80
+              ],
+              "bishopRelationDelta": [
+                5,
+                5
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "기존 home chancel_repair petitionId",
+            "limits": "금고/주교 관계만. 교회 지붕 내구도·질병 감소·예배 효능 없음."
+          }
+        ],
+        "tradeoff": "주교 측 호의를 얻는 대신 금고에서 수선 몫을 내놓는다.",
+        "ledger": "성소 수선 청원에 Ad 지출.",
+        "chronicle": "교구가 청한 수선비가 영주관에서 나왔다."
+      },
+      {
+        "id": "b",
+        "label": "이번 수선비 청원을 거절한다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition(grant=false)",
+            "parameters": {
+              "kind": "chancel_repair",
+              "cashDeltaD": [
+                0,
+                0
+              ],
+              "bishopRelationDelta": [
+                -5,
+                -5
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 petitionId",
+            "limits": "건물 붕괴를 새로 일으키지 않는다."
+          }
+        ],
+        "tradeoff": "당장 금고를 지키지만 주교 측 관계는 나빠진다.",
+        "ledger": "성소 수선 청원 거절. 금고 이동 없음.",
+        "chronicle": "교구는 이번 수선비를 영주에게서 받지 못했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        10,
+        16
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "성소 쪽 지붕의 임시 받침 아래 교구 사제와 수입관리인이 작은 돈주머니를 바라본다.",
+    "history": {
+      "sourceIds": [
+        "HK02",
+        "HK11"
+      ],
+      "basis": "관리 규범의 수선 책임과 남부 교구 후원 관계를 함께 참고했다.",
+      "limits": "Otham의 추천권 연구는 이 가공 영주의 성소 수선 법적 의무나 금액을 입증하지 않는다.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. "
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE02",
+      "NE10"
+    ]
+  },
+  {
+    "number": 8,
+    "id": "ck_evt_008",
+    "category": "교회",
+    "period": "1300–1347",
+    "years": [
+      1323,
+      1347
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "주거가 분산되고 예배 서비스 부족이 실제 진단될 때라는 편집 필터.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "agency. chapel 장려금 미설정. 유효 chapel 자율 제안이 있으며 현재 장려금 A=[40,60]d가 금고25% 한도 이내라는 편집 조건."
+    },
+    "sender": {
+      "faction": "교회·도시 가구",
+      "role": "교구 사제"
+    },
+    "title": "멀어진 예배당까지의 길",
+    "body": "새로 사는 사람들이 늘어 예배당까지 가는 길이 멀다는 청원이 왔습니다. 교구는 새 사업에 장려금이 있다면 뜻을 모아 보겠다고 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "예배당 사업의 장려금을 공고한다",
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy(chapel,A)",
+            "parameters": {
+              "kind": "chapel",
+              "amountD": [
+                40,
+                60
+              ],
+              "immediateCashDeltaD": [
+                0,
+                0
+              ],
+              "totalLimitTreasuryPermille": [
+                250,
+                250
+              ]
+            },
+            "rangeNote": "금액·주문량·설정 세율은 현행 명령이 허용하는 게임 추정 선택안이며 사료값/엔진 기본값이 아니다. 비용·한도·계산식은 현행 고정 규칙과 구별한다. [x,x]는 이 초안에서 고정한 입력이다.",
+            "preconditions": "agency·유효 BuildingKind chapel·한도",
+            "limits": "교회가 제안을 채택해야 지급. 위치 지정·완공·성직자 임명은 하지 않는다."
+          }
+        ],
+        "tradeoff": "자율 사업의 자금 조건을 돕지만 같은 장려금 한도를 다른 사업에 쓸 여지가 줄어든다.",
+        "ledger": "예배당 사업 장려금 Ad 공고. 아직 지급 없음.",
+        "chronicle": "사람들이 모인 곳에 예배당 사업을 도울 조건이 마련되었다."
+      },
+      {
+        "id": "b",
+        "label": "지금은 새 장려금을 내걸지 않는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "아무 명령도 보내지 않는다",
+            "parameters": {
+              "immediateDelta": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "기존 상태를 보존한다.",
+            "limits": "현재 chapel 장려금 없음 유지; 교회 사업·주교 관계·신앙 수치를 바꾸지 않음."
+          }
+        ],
+        "tradeoff": "자금 한도를 보존하지만 교회 제안에 영주의 추가 자금 조건은 생기지 않는다.",
+        "ledger": "예배당 장려금 청원 보류. 금고 이동 없음.",
+        "chronicle": "교구는 새 장려금 없이 뜻을 모으기로 했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        10,
+        16
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "먼 예배당까지 걷는 가구들과 가까운 빈터에 모인 교구 대표를 보여 주되 새 건물은 완성시키지 않는다.",
+    "history": {
+      "sourceIds": [
+        "HT05",
+        "HK11"
+      ],
+      "basis": "정착지 분산과 교구의 후원 관계를 바탕으로 만든 상황.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. 새 예배당 사업의 추진 방식은 게임 조건으로 번역한 추정.",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE06"
+    ]
+  },
+  {
+    "number": 9,
+    "id": "ck_evt_009",
+    "category": "교회",
+    "period": "1300–1347",
+    "years": [
+      1324,
+      1347
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "현재 소송에 이미 연결된 권리만 대상으로 한다. 성직자 추천권 청구권을 새로 만들지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "기존 소송이 filed/evidence 단계. 연결 청구권에 charter와 deed 증거가 둘 다 없으며 두 자료를 갖출 서사 조건을 만족. 금고≥40d."
+    },
+    "sender": {
+      "faction": "교회",
+      "role": "수도원 서기"
+    },
+    "title": "수도원 문서함의 두 묶음",
+    "body": "수도원의 서기가 진행 중인 권리 소송에 쓸 문서를 찾았다고 알렸습니다. 특허장 사본을 갖출지, 재산 증서를 먼저 갖출지 정해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "특허장 사본을 증거로 갖춘다",
+        "effects": [
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence(charter)",
+            "parameters": {
+              "kind": "charter",
+              "cashCostD": [
+                40,
+                40
+              ],
+              "evidenceWeight": [
+                20,
+                20
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "기존 suitId와 해당 단계, charter 미등록",
+            "limits": "새 권원이나 확정 승소를 만들지 않는다. 문서 진위 자동 보증 아님."
+          }
+        ],
+        "tradeoff": "더 큰 증거 가중치를 얻지만 사본을 갖추는 비용이 더 든다.",
+        "ledger": "진행 소송에 특허장 증거 등록, 40d 지출.",
+        "chronicle": "수도원에서 찾은 특허장 사본이 소송에 제출되었다."
+      },
+      {
+        "id": "b",
+        "label": "재산 증서를 증거로 갖춘다",
+        "effects": [
+          {
+            "catalogKey": "suit.evidence",
+            "operation": "add_suit_evidence(deed)",
+            "parameters": {
+              "kind": "deed",
+              "cashCostD": [
+                30,
+                30
+              ],
+              "evidenceWeight": [
+                15,
+                15
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "동일 suitId, deed 미등록",
+            "limits": "같은 소송의 증거 추가이며 성직자 추천권을 새로 부여하지 않는다."
+          }
+        ],
+        "tradeoff": "지출을 줄이는 대신 이번에 얻는 증거 가중치가 작다.",
+        "ledger": "진행 소송에 재산 증서 등록, 30d 지출.",
+        "chronicle": "재산 증서가 먼저 심리의 자료가 되었다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "수도원 문서함 앞의 서기가 인장이 붙은 특허장과 접힌 재산 증서를 따로 펼친다.",
+    "history": {
+      "sourceIds": [
+        "HK03",
+        "HK11"
+      ],
+      "basis": "권리를 증명하는 문서의 구분과 교회 기록이 권리 관계를 남겼다는 연구에 기댄다.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. 수도원 문서함과 두 사본의 동시 발견은 창작. 문서 종류별 숫자 차이는 게임 추정.",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 10,
+    "id": "ck_evt_010",
+    "category": "이웃 가문",
+    "period": "1300–1347",
+    "years": [
+      1300,
+      1321
+    ],
+    "conditions": {
+      "land": "강 또는 하천 어업권이 실제 존재하는 대상 영지.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "기존 fishery claim이 있을 때만. 이 초안이 새 청구권을 생성하지 않음.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "estate-neighbour-1 fishery의 기존 open 청구권 또는 동일 조건의 실재 청구권. 현재 명의가 청구인과 다르고 금고≥60d."
+    },
+    "sender": {
+      "faction": "영주 가문·이웃 영주",
+      "role": "청지기"
+    },
+    "title": "저쪽 강둑에서 거둔 고기값",
+    "body": "이웃 영지의 어업권을 두고 우리 가문이 가진 청구권이 다시 올라왔습니다. 문서는 있지만, 그곳에서 이익을 거두는 이는 아직 이웃입니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "기존 청구권으로 소송을 접수한다",
+        "effects": [
+          {
+            "catalogKey": "suit.file",
+            "operation": "file_suit(claimId)",
+            "parameters": {
+              "fileCostD": [
+                60,
+                60
+              ],
+              "laterHearingCostD": [
+                120,
+                120
+              ],
+              "laterEnforcementAttemptCostD": [
+                80,
+                80
+              ],
+              "stageMinimumSeasons": [
+                1,
+                1
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "현행 fileSuitRefusal=null; 대상 open claimId",
+            "limits": "후속 비용은 해당 단계 도달시에만. 즉시 어업권·수입·점유를 얻지 않는다."
+          }
+        ],
+        "tradeoff": "접수비와 뒤의 절차를 감수하고 권원을 다툴 길을 연다.",
+        "ledger": "어업권 청구 소송 접수, 60d 지출.",
+        "chronicle": "강둑의 어업권 다툼이 문서 심리로 들어갔다."
+      },
+      {
+        "id": "b",
+        "label": "지금은 청구권을 접수하지 않는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "아무 명령도 보내지 않는다",
+            "parameters": {
+              "immediateDelta": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "기존 상태를 보존한다.",
+            "limits": "청구권 open과 이웃의 명의·점유 그대로. 별도 권리 포기·관계 상승 없음."
+          }
+        ],
+        "tradeoff": "비용을 보존하지만 이웃의 현재 점유와 우리 청구의 미해결 상태가 이어진다.",
+        "ledger": "어업권 청구 미접수. 금고 이동 없음.",
+        "chronicle": "영주는 강둑의 다툼을 아직 법정에 내지 않았다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        8,
+        12
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다. 같은 장기 변주 묶음 010,051은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "old_fishery_claim"
+    },
+    "illustration": "강 양편의 그물과 이웃의 징수인을 배경으로 청지기가 어업권 문서를 영주에게 내민다.",
+    "history": {
+      "sourceIds": [
+        "HK01",
+        "HK03"
+      ],
+      "basis": "특정 수역의 이용권과 이를 주장하는 문서·법정 기록의 구분을 바탕으로 했다.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. ",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 11,
+    "id": "ck_evt_011",
+    "category": "이웃 가문",
+    "period": "1300–1347",
+    "years": [
+      1302,
+      1325
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "실제 countered negotiation이 있고 deadline 전. 역제안의 cash 지불 가능. 원안보다 물질적 의무가 증가한 역제안만 편집 발동."
+    },
+    "sender": {
+      "faction": "기존 혼인 상대 가문",
+      "role": "이웃 영주의 사자"
+    },
+    "title": "혼담에 되돌아온 조건",
+    "body": "이웃 가문은 혼담을 거절하지 않았으나 조건을 고쳐 돌려보냈습니다. 청지기가 처음 보낸 것과 달라진 몫을 나란히 펼쳤습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "되돌아온 조건을 받아들인다",
+        "effects": [
+          {
+            "catalogKey": "marriage.offer",
+            "operation": "answer_counter(accept=true)",
+            "parameters": {
+              "cashCostD": "[C,C], C=counter.terms의 proposer cash 합계",
+              "pensionAnnualD": "[P,P], 실제 역제안 pension만",
+              "debtTotalD": "[D,D], 실제 역제안 debt_assumption만",
+              "contractRelationGain": [
+                10,
+                10
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "기존 negotiationId와 counter terms 원문 표시·cash≤금고",
+            "limits": "표시된 실제 항목만 적용. 권리조각 term만으로 즉시 양도 단정 금지; 새 혼인/상속 성공 보장 아님."
+          }
+        ],
+        "tradeoff": "원안보다 무거워진 실제 계약 조건을 떠안고 혼인 계약을 성립시킨다.",
+        "ledger": "혼인 역제안 수락. 현금 Cd와 실제 후속 약정 기록.",
+        "chronicle": "돌아온 혼담은 상대가 고친 조건으로 맺어졌다."
+      },
+      {
+        "id": "b",
+        "label": "이번 역제안을 거두게 한다",
+        "effects": [
+          {
+            "catalogKey": "marriage.offer",
+            "operation": "answer_counter(accept=false)",
+            "parameters": {
+              "immediateCashDeltaD": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 유효 countered negotiationId",
+            "limits": "추가 관계 벌점이나 영구 혼인 금지는 없다."
+          }
+        ],
+        "tradeoff": "증가한 의무를 피하지만 이 역제안으로 계약은 맺지 못한다.",
+        "ledger": "혼인 역제안 거절. 새 지급·약속 없음.",
+        "chronicle": "되돌아온 조건은 인장을 받지 못했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        3,
+        6
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 negotiationId에서는 한 번. 기존 역제안 기한을 새 카드가 연장하지 않으며 기존 UI와 이중 응답을 막는다."
+    },
+    "illustration": "서로 다른 혼인 조건 두 장을 같은 탁자에 펴 놓고 이웃 가문의 사자가 답을 기다린다.",
+    "history": {
+      "sourceIds": [
+        "HK12",
+        "HK05"
+      ],
+      "basis": "혼담의 가족 중개와 혼인 재산조건의 문서화를 참고했다.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. 근거 문서는 주로 1420~1440 Norfolk 사례다. 초기 14세기 남부에 같은 문구·금액이 쓰였다는 증거는 아니며 계약 협상이라는 넓은 관행만 소급한 창작.",
+      "limits": "연대·지역 차이를 명시한다. 실제 역제안 금액은 엔진 산출값이지 사료 인용액이 아니다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 12,
+    "id": "ck_evt_012",
+    "category": "세력",
+    "period": "1300–1347",
+    "years": [
+      1323,
+      1347
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "home stall_dispute 기존 청원이 open. 두 고정 상인 가문이 존재."
+    },
+    "sender": {
+      "faction": "상인 가문 1·상인 가문 2",
+      "role": "두 가문의 대리인"
+    },
+    "title": "장터 입구의 같은 자리",
+    "body": "두 상인 가문이 장터 입구의 자리를 두고 서로 앞선 관행을 내세웁니다. 어느 쪽의 말을 들었는지는 두 가문 모두 기억할 것입니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "첫 가문의 청원을 받아들인다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition(grant=true)",
+            "parameters": {
+              "kind": "stall_dispute",
+              "cashDeltaD": [
+                0,
+                0
+              ],
+              "merchantHouse1Delta": [
+                5,
+                5
+              ],
+              "merchantHouse2Delta": [
+                -5,
+                -5
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "기존 home stall_dispute petitionId",
+            "limits": "실제 좌판 위치/독점/시장 개설권은 변경되지 않는다."
+          }
+        ],
+        "tradeoff": "첫 가문의 호의를 얻고 둘째 가문의 호의를 잃는다.",
+        "ledger": "좌판 분쟁: 첫 가문 편에 답했다.",
+        "chronicle": "장터 자리 다툼에서 첫 가문이 영주의 답을 얻었다."
+      },
+      {
+        "id": "b",
+        "label": "둘째 가문의 사정을 따른다",
+        "effects": [
+          {
+            "catalogKey": "home_petition.answer",
+            "operation": "answer_estate_petition(grant=false)",
+            "parameters": {
+              "kind": "stall_dispute",
+              "cashDeltaD": [
+                0,
+                0
+              ],
+              "merchantHouse1Delta": [
+                -5,
+                -5
+              ],
+              "merchantHouse2Delta": [
+                5,
+                5
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 petitionId",
+            "limits": "관계 변화 외 새 좌판 배치 없음."
+          }
+        ],
+        "tradeoff": "둘째 가문의 호의를 얻고 첫 가문의 호의를 잃는다.",
+        "ledger": "좌판 분쟁: 둘째 가문 편에 답했다.",
+        "chronicle": "두 가문 중 둘째의 말이 받아들여졌다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        9,
+        14
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "장터 입구의 한 좌판 자리를 두 가문 대리인이 서로 다른 방향에서 가리킨다.",
+    "history": {
+      "sourceIds": [
+        "HK04",
+        "HT05"
+      ],
+      "basis": "시장 운영과 제한된 생활·거래 공간을 바탕으로 한 가공 가문 분쟁.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. ",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE08",
+      "NE10"
+    ]
+  },
+  {
+    "number": 13,
+    "id": "ck_evt_013",
+    "category": "세력",
+    "period": "1300–1347",
+    "years": [
+      1321,
+      1347
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "지도 밖 영지 pending audit, revealedKept>0, 기한 전, 살아 있는 대체 후보 존재. 기존 감사의 실제 수치를 사용. 청지기의 connection이 null이 아니며 그 세력이 실제 factions에 존재해야 한다. 현 청지기 loyalty≤90으로 유임 충성 증가가 실제 발생하는 경우에만."
+    },
+    "sender": {
+      "faction": "청지기의 연줄 세력·영지 소작인",
+      "role": "감사 담당자"
+    },
+    "title": "연줄 있는 청지기의 빈 장부",
+    "body": "미카엘마스 감사에서 청지기가 감춘 돈이 드러났습니다. 그의 연줄을 생각할지, 드러난 돈을 거둬들이고 사람을 바꿀지 정해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "돈을 회수하고 청지기를 해임한다",
+        "effects": [
+          {
+            "catalogKey": "audit.answer",
+            "operation": "answer_audit(punish)",
+            "parameters": {
+              "recoverD": "[R,R], R=round(revealedKept×500/1000)",
+              "recoverPermille": [
+                500,
+                500
+              ],
+              "estateTenantsDelta": [
+                5,
+                5
+              ],
+              "connectionFactionDelta": [
+                -5,
+                -5
+              ],
+              "status": "serving→dismissed; 유효 후임→serving"
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "기존 auditId·후임 가능",
+            "limits": "전액 회수·투옥·새 후보 생성 없음. 연줄 세력 변화는 현행 감사 history 경로."
+          }
+        ],
+        "tradeoff": "감춘 돈 일부와 소작인의 지지를 얻지만 청지기의 연줄 세력을 잃고 담당자를 바꾼다.",
+        "ledger": "감사 징계: Rd 회수, 청지기 해임과 후임 기록.",
+        "chronicle": "빈 장부의 주인은 자리를 잃었다."
+      },
+      {
+        "id": "b",
+        "label": "드러난 일을 덮고 유임한다",
+        "effects": [
+          {
+            "catalogKey": "audit.answer",
+            "operation": "answer_audit(tolerate)",
+            "parameters": {
+              "recoverD": [
+                0,
+                0
+              ],
+              "loyaltyDelta": [
+                10,
+                10
+              ],
+              "loyaltyCap": [
+                100,
+                100
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 pending auditId",
+            "limits": "사라진 돈 복구 없음. 능력 상승/횡령 면제법 생성 없음."
+          }
+        ],
+        "tradeoff": "현 담당자의 충성을 얻고 교체를 피하지만 드러난 돈은 회수하지 않는다.",
+        "ledger": "감사 관용: 회수 없음, 청지기 유임.",
+        "chronicle": "영주는 빈 장부를 알고도 청지기를 남겼다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        7,
+        11
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다. 같은 장기 변주 묶음 013,025,052은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "audit_findings"
+    },
+    "illustration": "미카엘마스 장부의 빈 항목과 회수할 돈 옆에 청지기와 후임 후보가 떨어져 서 있다.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "영지 회계·감사의 감독 관행을 바탕으로 한 합성 사건.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. ",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 14,
+    "id": "ck_evt_014",
+    "category": "세력",
+    "period": "1300–1347",
+    "years": [
+      1337,
+      1347
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "war 상태가 있고 기존 wool_payment 청원이 실제 open일 때만 보충 카드. 기존 정본 청원의 제목·순서·시기를 유지한다."
+    },
+    "sender": {
+      "faction": "왕실",
+      "role": "왕실 조달의 요구를 전하는 사자"
+    },
+    "title": "양모 공납 칙령",
+    "body": "왕실의 양모 부담을 앞두고 청지기가 창고와 금고를 함께 살폈습니다. 여러 철에 나누어 현물로 감당할지, 현금으로 치를지 정해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "기존 요구를 현물 분납으로 답한다",
+        "effects": [
+          {
+            "catalogKey": "chapter.war",
+            "operation": "respondToPetition(wool_payment,accept)",
+            "parameters": {
+              "baseLevyD": "L=거주 가구수×20d",
+              "levyPerHouseD": [
+                20,
+                20
+              ],
+              "inKindTotalPermille": [
+                1250,
+                1250
+              ],
+              "instalmentSeasons": [
+                4,
+                4
+              ],
+              "rounding": "철당 ceil(L×1250/1000/4), 네 철 합계는 반올림 때문에 명목1250‰보다 조금 클 수 있음",
+              "crownFactionRelationDelta": [
+                5,
+                5
+              ],
+              "factionRelationClamp": [
+                -100,
+                100
+              ],
+              "factionMemory": "이번 응답 사유와 원장 기록 ID를 왕실 세력 기억에 추가"
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "실제 wool_payment petitionId/war 상태; 현행 gameStore→history 후처리와 factions 상태가 존재해야 관계·기억 적용",
+            "limits": "양모 재고를 우선 쓰고 모자란 몫은 현금. 임의 물자 징발·수레꾼 차출 추가 없음. 왕실 +5는 답변 때 한 번의 후처리이며 분납 철마다 반복하지 않는다. 근거 src/engine/factions.ts:382, src/content/factionConfig.ts:119, src/engine/history.ts:268·315."
+          }
+        ],
+        "tradeoff": "지금 현금을 한꺼번에 내지 않는 대신 총부담이 커지고 뒤의 계절 양모·현금을 써야 한다.",
+        "ledger": "양모 부담: 기본 요구 Ld의 1250‰를 네 철 분납. 왕실 관계 +5(한도 적용), 응답 기억 기록.",
+        "chronicle": "왕실의 양모 요구는 여러 철의 몫으로 나뉘었다."
+      },
+      {
+        "id": "b",
+        "label": "기존 요구를 현금으로 치른다",
+        "effects": [
+          {
+            "catalogKey": "chapter.war",
+            "operation": "respondToPetition(wool_payment,accept_with_price)",
+            "parameters": {
+              "cashCostD": "[L,L], L=거주 가구수×20d",
+              "levyPerHouseD": [
+                20,
+                20
+              ],
+              "crownFactionRelationDelta": [
+                5,
+                5
+              ],
+              "factionRelationClamp": [
+                -100,
+                100
+              ],
+              "factionMemory": "이번 응답 사유와 원장 기록 ID를 왕실 세력 기억에 추가"
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 기존 petitionId; 현행 gameStore→history 후처리와 factions 상태가 존재해야 관계·기억 적용",
+            "limits": "현행 charge 원장 경로 사용. 임의 추가 면제권 없음. 왕실 +5는 답변 때 한 번의 후처리이며 분납 철마다 반복하지 않는다. 근거 src/engine/factions.ts:382, src/content/factionConfig.ts:119, src/engine/history.ts:268·315."
+          }
+        ],
+        "tradeoff": "총부담을 줄이지만 금고에서 기본 요구액을 한꺼번에 지출한다.",
+        "ledger": "양모 부담 Ld 현금 납부. 왕실 관계 +5(한도 적용), 응답 기억 기록.",
+        "chronicle": "양털 대신 금고의 돈이 왕실 요구에 쓰였다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "양모 묶음 네 무더기와 금고의 동전을 나란히 두고 왕실 사자와 청지기가 수량을 확인한다.",
+    "history": {
+      "sourceIds": [
+        "HT09"
+      ],
+      "basis": "왕실의 전쟁 조달이 물자·금전·운송 부담을 함께 일으켰다는 연구에 기댄다.",
+      "limits": "연구 발췌가 이 도시의 납부율을 입증하지 않는다. 1250‰·네 철은 현행 게임 추정.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. "
+    },
+    "integration": {
+      "mode": "기존 장 청원의 보충 장면. 새 독립 왕실 징수 사건 아님",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE07"
+    ],
+    "subtitle": "양털과 현금 중 어느 몫으로"
+  },
+  {
+    "number": 15,
+    "id": "ck_evt_015",
+    "category": "자연",
+    "period": "1300–1347",
+    "years": [
+      1326,
+      1347
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "습한 봄·여름이라는 편집 필터.",
+      "state": "완성된 거래 시장이 있는 agency 영지, timberOrder 없음. treasuryCoin≥180d. 습한 계절과 목재 부족의 동시 확인은 편집 필터."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "수레꾼의 말을 전하는 수입관리인"
+    },
+    "title": "젖은 목재와 마른 들보",
+    "body": "긴 비 뒤에 마른 들보를 구한다는 말이 시장에 돌았습니다. 수입관리인은 상인이 들여오는 목재를 주문할 수 있으나, 도착할 때마다 값을 치러야 한다고 말합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "목재 열 단을 주문한다",
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber(10)",
+            "parameters": {
+              "orderUnits": [
+                10,
+                10
+              ],
+              "pricePerUnitD": [
+                18,
+                18
+              ],
+              "deliveryPerMarketDay": [
+                2,
+                2
+              ],
+              "marketDayTicks": [
+                80,
+                80
+              ],
+              "maximumTotalCostD": [
+                180,
+                180
+              ],
+              "immediateCashDeltaD": [
+                0,
+                0
+              ],
+              "unit": "목재 단"
+            },
+            "rangeNote": "금액·주문량·설정 세율은 현행 명령이 허용하는 게임 추정 선택안이며 사료값/엔진 기본값이 아니다. 비용·한도·계산식은 현행 고정 규칙과 구별한다. [x,x]는 이 초안에서 고정한 입력이다.",
+            "preconditions": "실재 거래시장/금고 조건, 기존 주문없음",
+            "limits": "금고가 모자라면 납품량 감소·대기. 즉시 10단 지급·수선 완료·목재 건조 상태 효과 없음."
+          }
+        ],
+        "tradeoff": "시장일마다 금고를 써서 영주의 목재를 마련하지만 다른 지출에 쓸 돈이 줄어든다.",
+        "ledger": "목재 10단 주문. 시장일 납품분마다 단당 18d 지급.",
+        "chronicle": "비가 이어진 철, 마른 목재를 들여오는 주문이 나갔다."
+      },
+      {
+        "id": "b",
+        "label": "새 목재 주문은 넣지 않는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "아무 명령도 보내지 않는다",
+            "parameters": {
+              "immediateDelta": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "기존 상태를 보존한다.",
+            "limits": "timberOrder 없는 상태 유지. 기존 재고·시장 물량·날씨를 바꾸지 않는다."
+          }
+        ],
+        "tradeoff": "현금을 남기는 대신 영주의 추가 목재 구매는 시작되지 않는다.",
+        "ledger": "목재 주문 보류. 금고 이동 없음.",
+        "chronicle": "이번에는 시장 상인에게 목재를 주문하지 않았다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        7,
+        11
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "젖은 수레 덮개 아래 마른 들보를 점검하는 수레꾼과 주문판을 든 수입관리인.",
+    "history": {
+      "sourceIds": [
+        "HK02",
+        "HT05"
+      ],
+      "basis": "영지 수선 책임과 재료를 다루는 정착지 생업을 바탕으로 한 가공 요청.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. 비로 마른 목재가 부족해졌다는 구체적 상황은 창작; 엔진에서 목재 부패를 일으키지 않는다.",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE02"
+    ]
+  },
+  {
+    "number": 16,
+    "id": "ck_evt_016",
+    "category": "자연",
+    "period": "1300–1347",
+    "years": [
+      1315,
+      1320
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "great_famine의 기존 arrival이고 record.response 미설정. 기존 대기근 응답을 보충하는 장면으로만 제시."
+    },
+    "sender": {
+      "faction": "도시 가구·상인",
+      "role": "마을 대표(리브)"
+    },
+    "title": "곡창 앞의 기다림",
+    "body": "큰 흉년이 닥치자 가난한 가구들이 곡창 앞에 모였습니다. 돈과 곡물을 내놓을지, 시장의 식량값을 묶을지 정해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "기존 구휼 방침으로 답한다",
+        "effects": [
+          {
+            "catalogKey": "chapter.famine",
+            "operation": "famine_response(relief)",
+            "parameters": {
+              "poorHouseholdsPermille": [
+                250,
+                250
+              ],
+              "treasuryLimitPermille": [
+                500,
+                500
+              ],
+              "departureCapHouseholdsPerSeason": [
+                1,
+                1
+              ],
+              "cashCostD": "[0,B], B는 기존 reliefSeason의 전철 수입·금고한도·필요량 계산",
+              "commonsFactionRelationDelta": [
+                15,
+                15
+              ],
+              "bishopFactionRelationDelta": [
+                10,
+                10
+              ],
+              "factionRelationClamp": [
+                -100,
+                100
+              ],
+              "factionMemory": "famine 응답 사유·원장 기록 ID를 해당 세력 기억에 추가"
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "도착한 미응답 대기근; 구휼의 창고/재고 계산조건 유지; 현행 history 후처리와 factions 상태 유지",
+            "limits": "분기 이후 매 철 기존 구휼 계산. 가구 전원 생존·현장 치료 보장 아님. commons/주교 관계 변화는 최초 답변 때 한 번이며 계절마다 반복하지 않는다. src/engine/factions.ts:386, src/content/factionConfig.ts:120, src/engine/history.ts:268·315. merchantGauge의 계절 변화와 별개이다."
+          }
+        ],
+        "tradeoff": "가난한 가구의 식량 압박을 낮추지만 계절 수입과 금고·곡물 여력을 구휼에 쓴다. 답변 때 주민 세력과 주교의 관계도 각각 +15·+10(한도 적용)이다.",
+        "ledger": "대기근 구휼 방침 채택. 매 철 기존 계산에 따른 지출·현물 기록. 주민 세력 +15, 주교 +10(관계 한도 적용).",
+        "chronicle": "곡창 앞의 기다림에 구휼로 답했다."
+      },
+      {
+        "id": "b",
+        "label": "기존 가격 제한 방침으로 답한다",
+        "effects": [
+          {
+            "catalogKey": "chapter.famine",
+            "operation": "famine_response(price_control)",
+            "parameters": {
+              "foodPriceCapPermille": [
+                1500,
+                1500
+              ],
+              "merchantGaugePerSeason": [
+                -10,
+                -10
+              ],
+              "commonsFactionRelationDelta": [
+                5,
+                5
+              ],
+              "bishopFactionRelationDelta": [
+                0,
+                0
+              ],
+              "factionRelationClamp": [
+                -100,
+                100
+              ],
+              "factionMemory": "famine 응답 사유·원장 기록 ID를 해당 세력 기억에 추가"
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 대기근 record; 현행 history 후처리와 factions 상태 유지",
+            "limits": "merchantGauge 변화이며 모든 세력 관계를 −10 하지 않는다. 새 생산량 효과 없음. commons/주교 관계 변화는 최초 답변 때 한 번이며 계절마다 반복하지 않는다. src/engine/factions.ts:386, src/content/factionConfig.ts:120, src/engine/history.ts:268·315. merchantGauge의 계절 변화와 별개이다."
+          }
+        ],
+        "tradeoff": "구휼의 직접 부담 대신 식량 가격 상한을 두지만 상인의 불만이 매 철 쌓인다. 답변 때 주민 세력 +5, 주교 0이며 계절 상인 게이지 손실과 구별한다.",
+        "ledger": "대기근 식량 가격 상한을 기본의 1500‰로 정했다. 주민 세력 +5, 주교 +0(관계 한도 적용).",
+        "chronicle": "영주는 비싸진 빵과 밀의 값을 제한했다."
+      },
+      {
+        "id": "c",
+        "label": "기존 방임 방침으로 답한다",
+        "effects": [
+          {
+            "catalogKey": "chapter.famine",
+            "operation": "famine_response(laissez_faire)",
+            "parameters": {
+              "newDirectCashDeltaD": [
+                0,
+                0
+              ],
+              "commonsFactionRelationDelta": [
+                -10,
+                -10
+              ],
+              "bishopFactionRelationDelta": [
+                -5,
+                -5
+              ],
+              "factionRelationClamp": [
+                -100,
+                100
+              ],
+              "factionMemory": "famine 응답 사유·원장 기록 ID를 해당 세력 기억에 추가",
+              "directMerchantGaugeDelta": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 record; 현행 history 후처리와 factions 상태 유지",
+            "limits": "기근 가격·가난한 가구 부족·기존 이탈 규칙은 그대로 지속. 무위험 효과 아님. commons/주교 관계 변화는 최초 답변 때 한 번이며 계절마다 반복하지 않는다. src/engine/factions.ts:386, src/content/factionConfig.ts:120, src/engine/history.ts:268·315. merchantGauge의 계절 변화와 별개이다."
+          }
+        ],
+        "tradeoff": "추가 개입 부담은 없지만 높은 가격 아래의 식량 부족을 그대로 둔다. 개입하지 않겠다는 답 자체로 주민 세력 −10, 주교 −5(한도 적용)를 받는다.",
+        "ledger": "대기근 방임 방침 기록. 추가 직접 지출 없음. 주민 세력 -10, 주교 -5(관계 한도 적용).",
+        "chronicle": "영주는 큰 흉년의 시장에 직접 손을 대지 않았다."
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "곡창 앞에 기다리는 가구들, 자루를 세는 마을 대표와 빵값을 적은 시장판.",
+    "history": {
+      "sourceIds": [
+        "HT08",
+        "HK02"
+      ],
+      "basis": "1315년 이후 북유럽 기근과 곡물 관리 규범을 바탕으로 한다.",
+      "limits": "실제 남부 모든 도시의 동일 대응을 주장하지 않는다. 가격 상한·이탈 상한은 게임 수치.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. "
+    },
+    "integration": {
+      "mode": "기존 대기근 응답의 보충 장면",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE04"
+    ]
+  },
+  {
+    "number": 17,
+    "id": "ck_evt_017",
+    "category": "자연",
+    "period": "1300–1347",
+    "years": [
+      1319,
+      1323
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "보유 지도 밖 영지에 rent_relief 청원이 실제 open. 가축 손실 언급은 역사적 배경의 창작이며 신규 livestock 손실 효과를 생성하지 않는다."
+    },
+    "sender": {
+      "faction": "지도 밖 영지 소작인",
+      "role": "마을 대표(리브)"
+    },
+    "title": "소를 잃은 집의 지대",
+    "body": "소가 죽은 뒤 밭일과 우유를 함께 걱정하는 집들이 생겼다고 합니다. 지도 밖 영지의 소작인들이 이번 철 지대 부담을 덜어 달라고 청했습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "기존 지대 감면 청원을 승인한다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition(grant=true)",
+            "parameters": {
+              "kind": "rent_relief",
+              "amountD": "A=round(round(annualValue/4)×s/1000)",
+              "sPermille": [
+                150,
+                300
+              ],
+              "cashDeltaD": "[-A,-A]",
+              "estateTenantsDelta": [
+                8,
+                8
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "해당 기존 rent_relief petitionId",
+            "limits": "금고/해당 영지 호의만. 소 지급·축산 회복·자동 여러해 감면 없음."
+          }
+        ],
+        "tradeoff": "해당 영지 소작인의 호의를 얻지만 이번 감면액만큼 금고에서 부담한다.",
+        "ledger": "지대 감면 Ad 승인.",
+        "chronicle": "소를 잃었다는 집들의 청원에 영주가 지대 몫을 덜었다."
+      },
+      {
+        "id": "b",
+        "label": "기존 감면 청원을 거절한다",
+        "effects": [
+          {
+            "catalogKey": "offmap_petition.answer",
+            "operation": "answer_estate_petition(grant=false)",
+            "parameters": {
+              "kind": "rent_relief",
+              "cashDeltaD": [
+                0,
+                0
+              ],
+              "estateTenantsDelta": [
+                -6,
+                -6
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 petitionId",
+            "limits": "추가 가축 사망이나 강제 축출을 발생시키지 않는다."
+          }
+        ],
+        "tradeoff": "이번 지출을 피하지만 소작인들의 호의를 잃는다.",
+        "ledger": "지대 감면 청원 거절. 추가 지출 없음.",
+        "chronicle": "가축을 잃었다는 청원에도 지대 감면은 허락되지 않았다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        12,
+        18
+      ],
+      "steward": "위임된 같은 영지 rent_relief 종류는 현행 선례 처리 가능. 질병별 별도 선례는 저장되지 않는다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "빈 외양간 문 앞에서 지대 청원서를 든 소작인과 마을 대표가 서 있다.",
+    "history": {
+      "sourceIds": [
+        "HT07",
+        "HK02"
+      ],
+      "basis": "1319~1320년 소 역병의 생계 충격과 장원 회계를 바탕으로 했다.",
+      "limits": "논문의 잉글랜드·웨일스 전국 추정 손실률을 이 영지에 적용하지 않는다. 해당 집의 피해 정도는 창작.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. "
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE04"
+    ]
+  },
+  {
+    "number": 18,
+    "id": "ck_evt_018",
+    "category": "가문 내부",
+    "period": "1300–1347",
+    "years": [
+      1301,
+      1324
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "marriageRefusal을 통과하는 현재 groom/bride. 진행 협상 없음, treasury≥120d. 동일 상대·후보·나머지 조건으로 두 제안 비교."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "혼담을 맡은 친족"
+    },
+    "title": "지참금은 지금인가 해마다인가",
+    "body": "가문 사람들은 같은 혼담의 조건을 두고 금고와 뒤의 수입을 비교합니다. 지금 더 내놓는 쪽과 해마다 연금을 약속하는 쪽이 책상에 함께 놓였습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "현금 지참금 120d를 제안한다",
+        "effects": [
+          {
+            "catalogKey": "marriage.offer",
+            "operation": "propose_marriage(cash)",
+            "parameters": {
+              "terms": [
+                {
+                  "kind": "cash",
+                  "giver": "proposer",
+                  "amount": [
+                    120,
+                    120
+                  ]
+                },
+                {
+                  "kind": "inheritance_non_infringement",
+                  "giver": "counterpart"
+                }
+              ],
+              "contractOnlyCashCostD": [
+                120,
+                120
+              ],
+              "contractRelationGain": [
+                10,
+                10
+              ]
+            },
+            "rangeNote": "금액·주문량·설정 세율은 현행 명령이 허용하는 게임 추정 선택안이며 사료값/엔진 기본값이 아니다. 비용·한도·계산식은 현행 고정 규칙과 구별한다. [x,x]는 이 초안에서 고정한 입력이다.",
+            "preconditions": "현재 가능한 혼인 후보와 제안; 수락은 evaluateOffer/seed 판정",
+            "limits": "제안 즉시120 지출 아님. 계약 때만; 수락·상속·후계 출생 보장 없음."
+          }
+        ],
+        "tradeoff": "계약되면 지금 금고를 더 쓰지만 연금 납기 의무는 이 제안에 넣지 않는다.",
+        "ledger": "현금 지참금 120d 혼인 제안. 지급은 계약 성립 때.",
+        "chronicle": "가문은 당장의 돈으로 혼인 조건을 내밀었다."
+      },
+      {
+        "id": "b",
+        "label": "해마다 40d씩 세 해의 연금을 제안한다",
+        "effects": [
+          {
+            "catalogKey": "marriage.offer",
+            "operation": "propose_marriage(pension)",
+            "parameters": {
+              "terms": [
+                {
+                  "kind": "pension",
+                  "giver": "proposer",
+                  "amount": [
+                    40,
+                    40
+                  ],
+                  "years": [
+                    3,
+                    3
+                  ]
+                },
+                {
+                  "kind": "inheritance_non_infringement",
+                  "giver": "counterpart"
+                }
+              ],
+              "annualPensionD": [
+                40,
+                40
+              ],
+              "years": [
+                3,
+                3
+              ],
+              "contractRelationGain": [
+                10,
+                10
+              ],
+              "paymentIntervalTicks": [
+                4000,
+                4000
+              ],
+              "deadlines": "계약 tick+4000, +8000, +12000"
+            },
+            "rangeNote": "금액·주문량·설정 세율은 현행 명령이 허용하는 게임 추정 선택안이며 사료값/엔진 기본값이 아니다. 비용·한도·계산식은 현행 고정 규칙과 구별한다. [x,x]는 이 초안에서 고정한 입력이다.",
+            "preconditions": "같은 groom/bride/상대; 기존 협상 평가",
+            "limits": "계약시 세 개 연별 약속이 생긴다. 현금 제안과 수락 점수 동일하다고 단정하지 않음."
+          }
+        ],
+        "tradeoff": "현재 현금을 남기는 대신 세 차례 납기를 지켜야 하며 어기면 기존 신뢰·관계 손실이 따른다.",
+        "ledger": "연 40d, 세 해의 연금 혼인 제안. 약속은 계약 때 생성.",
+        "chronicle": "가문은 여러 해의 수입을 혼인 조건에 묶기로 제안했다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        8,
+        12
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다."
+    },
+    "illustration": "혼담을 맡은 친족들이 당장 낼 돈주머니와 세 해의 지급 기록을 나란히 비교한다.",
+    "history": {
+      "sourceIds": [
+        "HK05",
+        "HK12"
+      ],
+      "basis": "혼담의 중개와 혼인 재산설정이라는 관행에 기댄다.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. 직접 자료는 15세기 Norfolk 사례로 초기 14세기 남부의 동일 형식을 입증하지 않는다. 120d·40d와 연금 비교는 엔진 지렛대에 맞춘 게임 추정.",
+      "limits": "과부산·지참금·연금은 구별한다. 가공 사례이며 사료의 실제 계약 금액으로 표시하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": []
+  },
+  {
+    "number": 19,
+    "id": "ck_evt_019",
+    "category": "가문 내부",
+    "period": "1300–1347",
+    "years": [
+      1322,
+      1347
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "플레이어 보유 지도 밖 영지 oversight와 살아 있는 청지기 후보. 직접 관리 부하가 현 주의력 한도를 넘는 상황일 때만 편집 발동."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "성년 친족"
+    },
+    "title": "새 영지의 열쇠를 누구에게",
+    "body": "새로 맡게 된 지도 밖 영지의 보고가 가문 회의에 쌓였습니다. 영주가 직접 답할지, 후보 중 청지기 한 사람에게 일상 판단을 맡길지 정해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "영주가 직접 감독한다",
+        "effects": [
+          {
+            "catalogKey": "steward.appoint",
+            "operation": "set_estate_oversight(direct)",
+            "parameters": {
+              "mode": "direct",
+              "directRentPermille": [
+                1000,
+                1000
+              ],
+              "directDuesPermille": [
+                1000,
+                1000
+              ],
+              "overloadedPetitionDelayTicks": [
+                1000,
+                1000
+              ],
+              "overloadedWaitGoodwillLoss": [
+                3,
+                3
+              ],
+              "overloadedErrorPermille": [
+                200,
+                200
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "해당 estateId/후보·현재 주의력 한도 초과",
+            "limits": "수입관리인은 유지되며 직접 감독의 기존 과부하 규칙만. 새 친족 싸움 점수 없음."
+          }
+        ],
+        "tradeoff": "기존 부과율과 판결권을 직접 유지하지만 과부하 탓에 청원이 늦고 장부 오류가 커진다.",
+        "ledger": "지도 밖 영지 직접 감독 선택. 현재 주의력 초과 경고 기록.",
+        "chronicle": "가문 회의 뒤에도 영주는 그 영지를 직접 보기로 했다."
+      },
+      {
+        "id": "b",
+        "label": "소작인 친화 후보에게 위임한다",
+        "effects": [
+          {
+            "catalogKey": "steward.appoint",
+            "operation": "set_estate_oversight(steward,peasantCandidate)",
+            "parameters": {
+              "mode": "steward",
+              "candidateDisposition": "peasant",
+              "rentPermille": [
+                850,
+                850
+              ],
+              "duesPermille": [
+                1000,
+                1000
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "그 영지의 살아 있는 peasant 후보를 실제 ID로 선택",
+            "limits": "후보를 새로 생성하지 않음. 후보의 실제 능력·충성·연줄 표시; 청원은 성향·예외규칙대로."
+          }
+        ],
+        "tradeoff": "직접 처리 부담을 덜지만 소작인 친화 후보의 낮은 지대율과 판결 성향을 받아들인다.",
+        "ledger": "청지기 위임과 실제 후보 이름 기록.",
+        "chronicle": "새 영지의 일상 판단은 청지기에게 넘어갔다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        9,
+        14
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 대상·같은 단계에는 한 번만. 다른 중요 청원·역제안·장 사건과 동시 제시하지 않는다. 쿨다운은 편집 제안이며 현재 저장 상태에 자동 적용되지 않는다. 같은 장기 변주 묶음 019,037,059은 동일 대상·동일 사정을 새 사건처럼 재상신하지 않는다. 새 감사연도·현직 교체·당사자 변경 등 기존 상태로 확인되는 변화가 있을 때만 후보로 삼는다. 이 교차 중복 필터는 NE01의 편집 제안이다.",
+      "variantGroup": "estate_oversight"
+    },
+    "illustration": "지도 밖 영지의 열쇠와 보고 장부를 사이에 둔 영주와 실제 청지기 후보 한 사람.",
+    "history": {
+      "sourceIds": [
+        "HK02"
+      ],
+      "basis": "청지기·마을 대표·감사 역할을 구분한 관리 규범에서 취했다.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. 가문 회의와 인물 성향 수치는 합성 창작이다.",
+      "limits": "사료는 관행의 근거이며 이 가공 사건의 실제 발생·금액·관계 수치를 증명하지 않는다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE09"
+    ]
+  },
+  {
+    "number": 20,
+    "id": "ck_evt_020",
+    "category": "가문 내부",
+    "period": "1300–1347",
+    "years": [
+      1326,
+      1347
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "현재 open lord pension 약속 1건, amount A=[20,60]d, deadline 전이고 treasury≥A. 납기까지 적어도 다음 시장일은 남았을 때만 편집 발동."
+    },
+    "sender": {
+      "faction": "영주 가문·혼인 상대 가문",
+      "role": "수입관리인"
+    },
+    "title": "기한보다 먼저 온 연금 청구",
+    "body": "혼인 때 약속한 연금의 청구가 들어왔습니다. 수입관리인은 지금 낼 수 있다고 하지만, 다음 시장일까지 금고에 두자는 친족도 있습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "그 약속을 지금 이행한다",
+        "effects": [
+          {
+            "catalogKey": "marriage.promises",
+            "operation": "keep_promise(promiseId)",
+            "parameters": {
+              "existingPensionAmountD": [
+                20,
+                60
+              ],
+              "cashDeltaD": "[-A,-A]",
+              "promiseStatus": "open→kept"
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "실재 open/lord pension 약속, 기한 이내·금고충분",
+            "limits": "새 연금·관계 보너스 생성 없음. 이 약속 하나만 이행."
+          }
+        ],
+        "tradeoff": "금고의 유동성을 지금 줄이는 대신 이 납기를 잊을 위험을 없앤다.",
+        "ledger": "기존 혼인 연금 Ad 지급, 약속 이행 기록.",
+        "chronicle": "그해 연금은 약속한 기한보다 먼저 지급되었다."
+      },
+      {
+        "id": "b",
+        "label": "현재 기한 안에서 지급을 미룬다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "아무 명령도 보내지 않는다",
+            "parameters": {
+              "immediateDelta": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "기존 상태를 보존한다.",
+            "limits": "약속 open과 원래 deadline 유지. 자동 지급·기한 연장·추가 보류 표시 없음. 추후 기존 keep_promise를 직접 실행해야 함."
+          }
+        ],
+        "tradeoff": "지금 현금을 보존하지만 원래 기한을 넘기면 기존 미이행·관계 손실이 생긴다.",
+        "ledger": "이번에는 지급하지 않음. 기존 연금 기한 유지.",
+        "chronicle": "가문은 남은 기한 동안 연금 몫을 금고에 두었다."
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        5,
+        8
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 promiseId에는 한 번만. 다른 미납 경고와 중복 금지; 카드는 기존 deadline을 연장하지 않는다."
+    },
+    "illustration": "날짜가 남은 연금 약속 장부와 닫힌 금고 앞에서 수입관리인이 친족의 말을 듣는다.",
+    "history": {
+      "sourceIds": [
+        "HK05",
+        "HK12"
+      ],
+      "basis": "혼인 재산조건을 가문이 협의·문서화했다는 사례를 바탕으로 한 후속 장면.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. 기초 직접 문서는 15세기 Norfolk이므로 초기 시기의 같은 지급 관행 증명은 아니다. 이 연금과 납기는 이미 생성된 게임 계약을 소재로 삼았다.",
+      "limits": "사료의 특정 지참금·생애권 약정을 연금과 동일시하지 않는다. 기계적 지급액은 기존 엔진 약속이다."
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE03"
+    ]
+  }
+]
