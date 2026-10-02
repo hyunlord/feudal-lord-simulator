@@ -1,0 +1,60 @@
+{
+  "id": "tree_pine_short_spring",
+  "attempt": 2,
+  "prompt": "Edit this exact short conical pine sprite into CLEARLY IDENTIFIABLE EARLY SPRING. Preserve exact original silhouette, crown tiers, trunk, branches, roots, framing and bottom pivot. Add distinctly fresh light yellow-green needle candle clusters at the tips of the EXISTING foliage tiers, especially top and upper-left surfaces, completely INSIDE existing crown contour. About one third of needle tips should look fresh spring green and lighter than mature olive needles, enough to distinguish spring at only 34px sprite width. Natural muted apple/sage yellow-green, not neon, no broad leaves or flowers. Dark mature needles remain in inner crown. Preserve trunk and roots exactly. No added shape or outline, no ground, no snow, no text. Transparent background. Strong spring tip differentiation, not merely an overall tint. Same tree, exact overlay.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "raw_original": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-a3fb-7f81-8832-01110f2fccc6/exec-5d9e82df-644b-47ea-a457-97405df57cbf.png",
+  "status": "candidate",
+  "previous_attempt": "records/tree_pine_short_spring-attempt1.json",
+  "revision_reason": "Spring needle-tip readability insufficient at 1x/0.6x",
+  "reference": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../references/tree_pine_short.png",
+  "reference_sha256": "1d76034ea71d74970ffd9460f6387280710e12a83d00e2bb479a7549501ce917",
+  "winter_reference": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../references/tree_pine_short_winter_snow-v1.png",
+  "winter_sha256": "7671687bf3ebccbba08d85d213f5eae4e34546e1736bfdc56feef31980c31ec8",
+  "raw_copy": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../raw/tree_pine_short_spring-attempt2.png",
+  "raw_sha256": "f873bf49abf2744dabafc3b9d3ff378ac577a597e3a612446b703d17880896df",
+  "output": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/galeocerdo/output/astra-wave43-spring-20261002/trees_other/records/../assets/tree_pine_short_spring.png",
+  "output_sha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5",
+  "width": 56,
+  "height": 88,
+  "pivot": {
+    "x": 28,
+    "y": 88
+  },
+  "worldRenderScale": 0.7272727272727273,
+  "manifest_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/src/render/worldAssetManifest.generated.ts",
+  "processing": {
+    "method": "Sharp alpha-bbox registration, Lanczos3 resample, selective generated RGB material blend into original RGB, exact summer alpha restoration, transparent RGB zero",
+    "source_bbox": {
+      "left": 3,
+      "top": 3,
+      "width": 50,
+      "height": 84
+    },
+    "generated_bbox": {
+      "left": 62,
+      "top": 16,
+      "width": 880,
+      "height": 1528
+    },
+    "blend": "94% generated needle RGB / original bark RGB; 80% weight at silhouette edge",
+    "geometry": "Original bark RGB fixed; crown material from generation; generated alpha discarded"
+  },
+  "qa": {
+    "alpha_different_pixels": 0,
+    "transparent_rgb_nonzero_pixels": 0,
+    "visual_review": {
+      "scales": [
+        1,
+        0.6,
+        4
+      ],
+      "spring_readability": "Distinct light yellow-green candle clusters, clearer than summer at 1x and 0.6x",
+      "silhouette": "Original alpha exact; no exterior shoots",
+      "verdict": "ready_for_parent_review"
+    }
+  },
+  "exception": "Evergreen spring has modest candle-shoot coloring inside original crown; no broadleaf transformation."
+}

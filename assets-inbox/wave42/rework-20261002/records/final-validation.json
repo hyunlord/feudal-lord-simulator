@@ -1,0 +1,193 @@
+{
+  "assets": [
+    {
+      "id": "sapling_1to3_summer",
+      "size": [
+        128,
+        192
+      ],
+      "pivot": [
+        64,
+        172
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bounds": [
+        24,
+        142,
+        104,
+        172
+      ],
+      "sha256": "af99e860759eeb79d8486caed3052df5db021fefdbc4a570fe98f6086ad80537",
+      "changed": true
+    },
+    {
+      "id": "sapling_4to8_summer",
+      "size": [
+        128,
+        192
+      ],
+      "pivot": [
+        64,
+        172
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bounds": [
+        24,
+        116,
+        104,
+        172
+      ],
+      "sha256": "f4209411e46a57ac1def5158dd6d42d1070bbcaef95d1480cf5ec604dcf1d816",
+      "changed": true
+    },
+    {
+      "id": "sapling_1to3_winter",
+      "size": [
+        128,
+        192
+      ],
+      "pivot": [
+        64,
+        172
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bounds": [
+        24,
+        142,
+        104,
+        172
+      ],
+      "sha256": "1dd81fca48173ecb10665de88f8275df1699cb6d15c8074dddcd82532000cf68",
+      "changed": true
+    },
+    {
+      "id": "sapling_4to8_winter",
+      "size": [
+        128,
+        192
+      ],
+      "pivot": [
+        64,
+        172
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bounds": [
+        24,
+        116,
+        104,
+        172
+      ],
+      "sha256": "1f448d2494b949faf7a07d77876d537a3836dda28a79bc8f4a8e205eafa46704",
+      "changed": true
+    },
+    {
+      "id": "abandoned_grass_summer",
+      "size": [
+        128,
+        160
+      ],
+      "pivot": [
+        64,
+        120
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bounds": [
+        4,
+        80,
+        124,
+        152
+      ],
+      "sha256": "7347638527587c2e7371cb63945ba6db7a0b815be86e7711c6e38dbcb1549f59",
+      "changed": true
+    },
+    {
+      "id": "abandoned_grass_winter",
+      "size": [
+        128,
+        160
+      ],
+      "pivot": [
+        64,
+        120
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bounds": [
+        4,
+        80,
+        124,
+        152
+      ],
+      "sha256": "d0902241fd3b0dcfb558a4b4a3feb9f8d1845d7a4f776f6c4c9bf980a34b0472",
+      "changed": true
+    },
+    {
+      "id": "abandoned_bramble_summer",
+      "size": [
+        128,
+        160
+      ],
+      "pivot": [
+        64,
+        120
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bounds": [
+        4,
+        45,
+        124,
+        152
+      ],
+      "sha256": "a9d0b9e9ae0a6d5de52ee3ff65d9134281ac8422e4b915de7dc6d205df0b9130",
+      "changed": true
+    },
+    {
+      "id": "abandoned_bramble_winter",
+      "size": [
+        128,
+        160
+      ],
+      "pivot": [
+        64,
+        120
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bounds": [
+        4,
+        45,
+        124,
+        152
+      ],
+      "sha256": "77628671ef5c27fb3696518b7281689de14744c2a6615a5340fff4630d99fb97",
+      "changed": true
+    }
+  ],
+  "asset_count": 8,
+  "original50_hashes_unchanged": true,
+  "raw_generation_hashes_checked": 9,
+  "reference_hashes_checked": 9,
+  "runtime": "not installed; offline proofs only"
+}

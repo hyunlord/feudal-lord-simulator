@@ -1,0 +1,47 @@
+{
+  "id": "fen_spring_a",
+  "file": "assets/fen_spring_a-v1.png",
+  "width": 256,
+  "height": 128,
+  "pivot": {
+    "x": 0,
+    "y": 0
+  },
+  "repeat": "XY",
+  "summer_reference": "references/fen_spring_a-summer.png",
+  "winter_reference": "references/fen_spring_a-winter.png",
+  "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/fen_summer_a.png",
+  "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave22/terrain/fen_winter_a.png",
+  "note": "Matching Wave22 summer/winter fill A.",
+  "prompt": "One spring fen ground seamless XY-repeat texture. Maintain reference wetland identity. Soft damp sage-green new sedge shoots dispersed across grey-brown wet soil, tiny shallow dull grey water traces, extremely sparse little marsh flowers. No pond shape, reed wall or horizon. Fully opaque flat2:1 rectangle256x128; paint to all edges. Muted broad painterly game material, no photographic noise, border, text or vignette. Seamless opposing edges. More fresh spring growth than reference summer, but marsh wetness clearly distinguishable from meadow.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "status": "candidate",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-4af5997c-6db2-429e-bebe-bd9f630d0f46.png",
+  "raw_copy": "raw/fen_spring_a-attempt1.png",
+  "summer_sha256": "68e3b98c6b3bd76c04b12d568613d8e156f44a24d81b61b592a96571171bd3d8",
+  "winter_sha256": "cec139c429ce8b6961435f50a6bf12d5be657f48fd24e23a8384ef0bc6c0d5fc",
+  "raw_sha256": "6634a3d1dd1509335d3769fe52b05208b07fb8d1b72ad9d749d1b302c4589cc6",
+  "final_sha256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+  "postprocess": {
+    "raw_crop": null,
+    "resize": "one resize to target",
+    "alpha": "fully opaque",
+    "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+    "edge_rgba_mae_x": 0,
+    "edge_rgba_mae_y": 0,
+    "zero_alpha_rgb_nonzero": 0
+  },
+  "inspection": {
+    "id": "fen_spring_a",
+    "width": 256,
+    "height": 128,
+    "zero_alpha_nonzero_rgb": 0,
+    "nonopaque_pixels": 0,
+    "edge_rgba_mae_x": 0,
+    "edge_rgba_mae_y": 0,
+    "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+    "runtime_installed": false
+  }
+}

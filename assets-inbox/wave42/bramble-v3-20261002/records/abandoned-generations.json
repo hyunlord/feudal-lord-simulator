@@ -1,0 +1,44 @@
+[
+  {
+    "id": "abandoned_bramble_summer",
+    "group": "bramble",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. Single transparent game sprite, southern England medieval abandoned parcel, soft painterly prerender, orthographic 2:1 isometric, upper-left light. Reference image is ONLY style, footprint and LOW UNDERGROWTH HEIGHT reference. Draw just the low bramble undergrowth WITHOUT ANY TREES. Broad, LOW SPRAWLING ASYMMETRICAL patch of living wild blackberry brambles. Several crooked woody canes arch outward and droop to root again, irregular humps at different off-center positions, gaps and uneven scalloped edges, dark olive foliage in disconnected clumps on reddish brown thorny stems. Horizontal mass, width roughly TWICE total visible height including ground depth, not a mound with a central peak. The vegetation rises only a short distance above the ground footprint, similar to undergrowth around feet of the trees in reference, much lower than the trees. CLEAR prominent lateral arching canes, natural wild tangled growth. Absolutely no pyramid, cone, symmetrical heap, piled branches, dome, topiary, central summit, upright saplings or trees. One patch with full transparency around and in gaps, no background, no soil slab, no large castshadow, no text. Production export will be128x160 with groundcenter64,120 and frontground152; broad footprint120 wide. Draw the sprite large with ample transparent padding; no horizontal flips.",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/abandoned/abandoned_saplings_summer.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-2f1e4b27-bcc6-44df-a4fd-83b2726b85c0.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "8574e10cbc1aabe26550e7678ee7184a26a9611bddda78946916ea79a7fbdde6",
+    "raw_path": "raw/abandoned_bramble_summer.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/abandoned/abandoned_saplings_summer.png",
+        "sha256": "2eb6013b25d601aefc954c82ad427f51c621ceacb0f96c1d84e43b0b1d20bfb3"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_bramble_winter",
+    "group": "bramble",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit this exact bramble patch into WINTER. Preserve precisely the low wide sprawling asymmetric silhouette, same camera, footprint, leaning arching cane arrangement and canvas position. REMOVE ALL leaves and berries. Expose a tangled network of REDDISH BROWN woody thorny canes, visible thick dark russet primary arch stems, thinner irregular connecting twigs, drooping arches in multiple off-center clusters, some dry grass at their feet. Sparse subtle pale frost only on ground-contact twigs, not white coating on branches. True transparent exterior and interior gaps. No trees, no central peak, no pyramid, no symmetry, no pile or soilplate. Match handpainted medieval strategygame style, upperleft light, 2:1 isometric. Do not mirror, flip or reposition.",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-2f1e4b27-bcc6-44df-a4fd-83b2726b85c0.png"
+    ],
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-aa95bde6-7046-4405-9ffe-5b9ebc2599f0.png",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "raw_sha256": "14771aa282b8eb71ee4a7b3d9e3da6205f2f88d28de1b8bdea99f251480f6faa",
+    "raw_path": "raw/abandoned_bramble_winter.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-2f1e4b27-bcc6-44df-a4fd-83b2726b85c0.png",
+        "sha256": "8574e10cbc1aabe26550e7678ee7184a26a9611bddda78946916ea79a7fbdde6"
+      }
+    ]
+  }
+]

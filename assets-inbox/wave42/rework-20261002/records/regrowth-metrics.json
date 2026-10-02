@@ -1,0 +1,154 @@
+[
+  {
+    "id": "sapling_1to3_summer",
+    "file": "assets/regrowth/sapling_1to3_summer.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "visibleBounds": {
+      "left": 24,
+      "top": 142,
+      "width": 80,
+      "height": 30
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlpha": 0,
+    "sha256": "af99e860759eeb79d8486caed3052df5db021fefdbc4a570fe98f6086ad80537",
+    "transform": {
+      "crop": {
+        "left": 40,
+        "top": 30,
+        "width": 1944,
+        "height": 720
+      },
+      "resize": [
+        80,
+        30
+      ],
+      "placement": [
+        24,
+        142
+      ],
+      "flipX": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "sapling_1to3_winter",
+    "file": "assets/regrowth/sapling_1to3_winter.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "visibleBounds": {
+      "left": 24,
+      "top": 142,
+      "width": 80,
+      "height": 30
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlpha": 0,
+    "sha256": "1dd81fca48173ecb10665de88f8275df1699cb6d15c8074dddcd82532000cf68",
+    "transform": {
+      "crop": {
+        "left": 39,
+        "top": 21,
+        "width": 1949,
+        "height": 735
+      },
+      "resize": [
+        80,
+        30
+      ],
+      "placement": [
+        24,
+        142
+      ],
+      "flipX": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "sapling_4to8_summer",
+    "file": "assets/regrowth/sapling_4to8_summer.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "visibleBounds": {
+      "left": 24,
+      "top": 116,
+      "width": 80,
+      "height": 56
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlpha": 0,
+    "sha256": "f4209411e46a57ac1def5158dd6d42d1070bbcaef95d1480cf5ec604dcf1d816",
+    "transform": {
+      "crop": {
+        "left": 55,
+        "top": 51,
+        "width": 1389,
+        "height": 941
+      },
+      "resize": [
+        80,
+        56
+      ],
+      "placement": [
+        24,
+        116
+      ],
+      "flipX": false
+    },
+    "status": "candidate"
+  },
+  {
+    "id": "sapling_4to8_winter",
+    "file": "assets/regrowth/sapling_4to8_winter.png",
+    "width": 128,
+    "height": 192,
+    "pivot": [
+      64,
+      172
+    ],
+    "visibleBounds": {
+      "left": 24,
+      "top": 116,
+      "width": 80,
+      "height": 56
+    },
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "edgeAlpha": 0,
+    "sha256": "1f448d2494b949faf7a07d77876d537a3836dda28a79bc8f4a8e205eafa46704",
+    "transform": {
+      "crop": {
+        "left": 26,
+        "top": 16,
+        "width": 1461,
+        "height": 998
+      },
+      "resize": [
+        80,
+        56
+      ],
+      "placement": [
+        24,
+        116
+      ],
+      "flipX": false
+    },
+    "status": "candidate"
+  }
+]

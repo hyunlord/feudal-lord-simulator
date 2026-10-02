@@ -6,3 +6,6 @@ output/playtest-a-double-prime/*.pdf binary
 docs/qa/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 docs/design/mockups/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 docs/design/art-audit-*/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+docs/design/title-*/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+docs/design/title-*/**/*.png filter=lfs diff=lfs merge=lfs -text
+docs/design/tutorial-*/**/*.jpg filter=lfs diff=lfs merge=lfs -text

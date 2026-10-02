@@ -1,0 +1,47 @@
+{
+  "id": "riverside_grass_spring_a",
+  "file": "assets/riverside_grass_spring_a-v1.png",
+  "width": 256,
+  "height": 128,
+  "pivot": {
+    "x": 0,
+    "y": 0
+  },
+  "repeat": "XY",
+  "summer_reference": "references/riverside_grass_spring_a-summer.png",
+  "winter_reference": "references/riverside_grass_spring_a-winter.png",
+  "summer_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+  "winter_source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/wave15/terrain/grass_winter_fill-v1.png",
+  "note": "Summer reference256x256 is material-only; seasonal fill canvas256x128.",
+  "prompt": "Create one spring ground fill texture using input1 as the project's summer grass material reference. Flat top-down repeatable material swatch, aspect2:1, final256x128, FULLY OPAQUE to every edge. Southern English riverside meadow1300-1450: fresh soft lighter yellow-green grass, scattered tiny white meadow flowers very sparse, subtly damp brown earth showing irregularly. Clearly spring, restrained painterly broad color patches and brushwork, not photographic pixel noise. No river shape, no shoreline, no objects, paths, horizon, perspective diamond, border or lettering. No vignette or directional gradient. Seamless XY repeating terrain; left/right and top/bottom should join. Same subdued hand-painted game palette as reference, fresher than summer without neon.",
+  "tool": "image_gen.imagegen",
+  "model": null,
+  "seed": null,
+  "status": "candidate",
+  "raw_source_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f809-3c78-7140-8426-8120a0895a1f/exec-21e39452-e840-43f6-b743-aac1db6626e4.png",
+  "raw_copy": "raw/riverside_grass_spring_a-attempt1.png",
+  "summer_sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288",
+  "winter_sha256": "fb3944c40dde9679ff08f5b6c019e57af53e5814e743e31176f00627de41c052",
+  "raw_sha256": "f9d25b68e11f8bb6c7603323c13ed5f4c4c2ac7fa86836905fddab45d7970a84",
+  "final_sha256": "db2882b50af8e5249946d07e310c188112c11a1e533008d12f35c124c9add8ef",
+  "postprocess": {
+    "raw_crop": null,
+    "resize": "one resize to target",
+    "alpha": "fully opaque",
+    "repeat": "symmetric opposite-edge blend16px X,10px Y for fills; preserves interior",
+    "edge_rgba_mae_x": 0,
+    "edge_rgba_mae_y": 0,
+    "zero_alpha_rgb_nonzero": 0
+  },
+  "inspection": {
+    "id": "riverside_grass_spring_a",
+    "width": 256,
+    "height": 128,
+    "zero_alpha_nonzero_rgb": 0,
+    "nonopaque_pixels": 0,
+    "edge_rgba_mae_x": 0,
+    "edge_rgba_mae_y": 0,
+    "visual_verdict": "PASS offline2x2 repeat and winter-spring-summer board viewed",
+    "runtime_installed": false
+  }
+}

@@ -1,0 +1,237 @@
+[
+  {
+    "id": "abandoned_grass_summer",
+    "group": "grass",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. One production game sprite only, transparent RGBA cutout, soft hand-painted prerendered 2:1 isometric illustration for southern England 1300-1450. Match attached project references only for muted olive vegetation, warm oak browns and soft painterly density. Camera orthographic isometric ground axes ±26.565 degrees, vertical trunks, illumination upper left, subtle contact AO only. Do not mirror or flip. No black outline, modern objects, photoreal noise, text, watermark, checkerboard, background, opaque soil slab or thick brown boundary. Ground occupies a single diamond parcel exactly twice as wide as deep, centered in lower quarter; vegetation grows upward. Keep all extremities comfortably inside canvas; transparent holes through ground vegetation, irregular wispy boundary. Output portrait 1024x1280 composition intended to reduce to128x160, parcel ground corners approximately (512,720),(960,944),(512,1168),(64,944) but prioritize accurate 2:1 footprint with center at(512,960).\nSubject: Abandoned plot first succession stage: low knee-height clumps of meadow grasses and sparse tiny wild plants, irregular bare transparent gaps, very low growth. No shrubs or trees.\nSeason: summer, muted living greens; no snow. Preserve a clear ground diamond but do not draw its outline.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-c650bca0-5296-4fab-b6e0-ebb9496a5d11.png",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_fallow_a-v1.png"
+    ],
+    "raw_sha256": "5b63dd3c510f38e897c4577c2aed2429a0405d31cc63c2e8f8b0f6168943b49b",
+    "raw_path": "raw/abandoned_grass_summer.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_fallow_a-v1.png",
+        "sha256": "5e78645f7af2a3c5a38688a9f32d2db1867204956d969f449722e49bb5336fc1"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_grass_winter",
+    "group": "grass",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target is this exact summer abandoned-land game sprite. Change ONLY season to southern England winter: grass straw ochre and dull olive, bramble mostly bare brown thorn stems with a few dull leaves, deciduous trees mostly bare and visible fine branches; a light irregular dusting of snow on upper surfaces and tiny scattered patches at ground, never continuous snow plate. Preserve EXACT canvas, camera, lower ground footprint, positions of every major plant/trunk/fence rail/furrow, all trunk sizes and rooted bases, perspective and upper-left illumination. Do not add or delete objects, do not rotate, flip or mirror. Same soft painterly materials, no heavy outline. Preserve real transparent background and irregular transparent gaps. No text, border, backdrop or fake checkerboard.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-e2400f04-1a1c-4393-927a-c5b96c86e196.png",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-c650bca0-5296-4fab-b6e0-ebb9496a5d11.png"
+    ],
+    "raw_sha256": "3486f723d8e2cd022856622c09585e8fbf7fcc838a35c4fd8ed203d1da993672",
+    "raw_path": "raw/abandoned_grass_winter.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-c650bca0-5296-4fab-b6e0-ebb9496a5d11.png",
+        "sha256": "5b63dd3c510f38e897c4577c2aed2429a0405d31cc63c2e8f8b0f6168943b49b"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_bramble_summer",
+    "group": "bramble",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. One production game sprite only, transparent RGBA cutout, soft hand-painted prerendered 2:1 isometric illustration for southern England 1300-1450. Match attached project references only for muted olive vegetation, warm oak browns and soft painterly density. Camera orthographic isometric ground axes ±26.565 degrees, vertical trunks, illumination upper left, subtle contact AO only. Do not mirror or flip. No black outline, modern objects, photoreal noise, text, watermark, checkerboard, background, opaque soil slab or thick brown boundary. Ground occupies a single diamond parcel exactly twice as wide as deep, centered in lower quarter; vegetation grows upward. Keep all extremities comfortably inside canvas; transparent holes through ground vegetation, irregular wispy boundary. Output portrait 1024x1280 composition intended to reduce to128x160, parcel ground corners approximately (512,720),(960,944),(512,1168),(64,944) but prioritize accurate 2:1 footprint with center at(512,960).\nSubject: Abandoned plot second succession stage: several tangled thorny bramble bushes among coarse grasses, waist-high uneven rounded growth and visible brown interlacing stems. No trees.\nSeason: summer, muted living greens; no snow. Preserve a clear ground diamond but do not draw its outline.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-61b77923-78e7-431f-8045-f2f12bdace5b.png",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_fallow_a-v1.png"
+    ],
+    "raw_sha256": "f71c7d5b2ff9f420da5b71461e1058333a28ea92e70117f2ff7aa70251150e00",
+    "raw_path": "raw/abandoned_bramble_summer.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_fallow_a-v1.png",
+        "sha256": "5e78645f7af2a3c5a38688a9f32d2db1867204956d969f449722e49bb5336fc1"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_bramble_winter",
+    "group": "bramble",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target is this exact summer abandoned-land game sprite. Change ONLY season to southern England winter: grass straw ochre and dull olive, bramble mostly bare brown thorn stems with a few dull leaves, deciduous trees mostly bare and visible fine branches; a light irregular dusting of snow on upper surfaces and tiny scattered patches at ground, never continuous snow plate. Preserve EXACT canvas, camera, lower ground footprint, positions of every major plant/trunk/fence rail/furrow, all trunk sizes and rooted bases, perspective and upper-left illumination. Do not add or delete objects, do not rotate, flip or mirror. Same soft painterly materials, no heavy outline. Preserve real transparent background and irregular transparent gaps. No text, border, backdrop or fake checkerboard.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-d328ea66-f446-487b-9277-bf6167cc959a.png",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-61b77923-78e7-431f-8045-f2f12bdace5b.png"
+    ],
+    "raw_sha256": "f15c473be6ed6b46ad7991e9fe7aa35a3cab1e6ba7dd68c00255f62b227bdf1a",
+    "raw_path": "raw/abandoned_bramble_winter.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-61b77923-78e7-431f-8045-f2f12bdace5b.png",
+        "sha256": "f71c7d5b2ff9f420da5b71461e1058333a28ea92e70117f2ff7aa70251150e00"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_saplings_summer",
+    "group": "saplings",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. One production game sprite only, transparent RGBA cutout, soft hand-painted prerendered 2:1 isometric illustration for southern England 1300-1450. Match attached project references only for muted olive vegetation, warm oak browns and soft painterly density. Camera orthographic isometric ground axes ±26.565 degrees, vertical trunks, illumination upper left, subtle contact AO only. Do not mirror or flip. No black outline, modern objects, photoreal noise, text, watermark, checkerboard, background, opaque soil slab or thick brown boundary. Ground occupies a single diamond parcel exactly twice as wide as deep, centered in lower quarter; vegetation grows upward. Keep all extremities comfortably inside canvas; transparent holes through ground vegetation, irregular wispy boundary. Output portrait 1024x1280 composition intended to reduce to128x160, parcel ground corners approximately (512,720),(960,944),(512,1168),(64,944) but prioritize accurate 2:1 footprint with center at(512,960).\nSubject: Abandoned plot third succession stage: three slender young oak and birch trees rising above an understory of bramble and grass. One tallest tree at rear-left, smaller at right; young open crowns not mature forest. Clear taller stage silhouette.\nSeason: summer, muted living greens; no snow. Preserve a clear ground diamond but do not draw its outline.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-efa0f005-a8ac-4252-822b-ddfe62036251.png",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_fallow_a-v1.png"
+    ],
+    "raw_sha256": "f92e3d1cb02407750dc449cda968521a2a018193b3b7fe9b431f8a949293f7e9",
+    "raw_path": "raw/abandoned_saplings_summer.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_fallow_a-v1.png",
+        "sha256": "5e78645f7af2a3c5a38688a9f32d2db1867204956d969f449722e49bb5336fc1"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_saplings_winter",
+    "group": "saplings",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target is this exact summer abandoned-land game sprite. Change ONLY season to southern England winter: grass straw ochre and dull olive, bramble mostly bare brown thorn stems with a few dull leaves, deciduous trees mostly bare and visible fine branches; a light irregular dusting of snow on upper surfaces and tiny scattered patches at ground, never continuous snow plate. Preserve EXACT canvas, camera, lower ground footprint, positions of every major plant/trunk/fence rail/furrow, all trunk sizes and rooted bases, perspective and upper-left illumination. Do not add or delete objects, do not rotate, flip or mirror. Same soft painterly materials, no heavy outline. Preserve real transparent background and irregular transparent gaps. No text, border, backdrop or fake checkerboard.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-558b3004-17eb-4c5c-acbf-30e88b151108.png",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-efa0f005-a8ac-4252-822b-ddfe62036251.png"
+    ],
+    "raw_sha256": "40292eedf66443e1cdc7f61243cfa36e185c85edb1df436b64453bd01d8b1be6",
+    "raw_path": "raw/abandoned_saplings_winter.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-efa0f005-a8ac-4252-822b-ddfe62036251.png",
+        "sha256": "f92e3d1cb02407750dc449cda968521a2a018193b3b7fe9b431f8a949293f7e9"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_collapsed_fence_summer",
+    "group": "collapsed_fence",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. One production game sprite only, transparent RGBA cutout, soft hand-painted prerendered 2:1 isometric illustration for southern England 1300-1450. Match attached project references only for muted olive vegetation, warm oak browns and soft painterly density. Camera orthographic isometric ground axes ±26.565 degrees, vertical trunks, illumination upper left, subtle contact AO only. Do not mirror or flip. No black outline, modern objects, photoreal noise, text, watermark, checkerboard, background, opaque soil slab or thick brown boundary. Ground occupies a single diamond parcel exactly twice as wide as deep, centered in lower quarter; vegetation grows upward. Keep all extremities comfortably inside canvas; transparent holes through ground vegetation, irregular wispy boundary. Output portrait 1024x1280 composition intended to reduce to128x160, parcel ground corners approximately (512,720),(960,944),(512,1168),(64,944) but prioritize accurate 2:1 footprint with center at(512,960).\nSubject: A short collapsed medieval split-oak post-and-rail fence, two leaning posts and three broken rails fallen diagonally along the ground. Weathered grey brown oak, jagged ends, small grass at foot. No nails, wire, rope or masonry. Narrow 2:1 ground footprint.\nSeason: summer, muted living greens; no snow. Preserve a clear ground diamond but do not draw its outline.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-c36afd80-5f86-4e13-8a59-c75df6c1cfaa.png",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_fallow_a-v1.png"
+    ],
+    "raw_sha256": "e87edc55e54dfdd9fa79d12e0348f11856679b79be336689d35bd581963ac193",
+    "raw_path": "raw/abandoned_collapsed_fence_summer.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_fallow_a-v1.png",
+        "sha256": "5e78645f7af2a3c5a38688a9f32d2db1867204956d969f449722e49bb5336fc1"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_collapsed_fence_winter",
+    "group": "collapsed_fence",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target is this exact summer abandoned-land game sprite. Change ONLY season to southern England winter: grass straw ochre and dull olive, bramble mostly bare brown thorn stems with a few dull leaves, deciduous trees mostly bare and visible fine branches; a light irregular dusting of snow on upper surfaces and tiny scattered patches at ground, never continuous snow plate. Preserve EXACT canvas, camera, lower ground footprint, positions of every major plant/trunk/fence rail/furrow, all trunk sizes and rooted bases, perspective and upper-left illumination. Do not add or delete objects, do not rotate, flip or mirror. Same soft painterly materials, no heavy outline. Preserve real transparent background and irregular transparent gaps. No text, border, backdrop or fake checkerboard.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-1c2caf92-7c96-4e4c-b4a6-78e6b2779241.png",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-c36afd80-5f86-4e13-8a59-c75df6c1cfaa.png"
+    ],
+    "raw_sha256": "29a4545f10f57aaf310f4aead57b7a933b80cf1bbf5a289206f5a73241c6755d",
+    "raw_path": "raw/abandoned_collapsed_fence_winter.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-c36afd80-5f86-4e13-8a59-c75df6c1cfaa.png",
+        "sha256": "e87edc55e54dfdd9fa79d12e0348f11856679b79be336689d35bd581963ac193"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_overgrown_furrows_summer",
+    "group": "overgrown_furrows",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. One production game sprite only, transparent RGBA cutout, soft hand-painted prerendered 2:1 isometric illustration for southern England 1300-1450. Match attached project references only for muted olive vegetation, warm oak browns and soft painterly density. Camera orthographic isometric ground axes ±26.565 degrees, vertical trunks, illumination upper left, subtle contact AO only. Do not mirror or flip. No black outline, modern objects, photoreal noise, text, watermark, checkerboard, background, opaque soil slab or thick brown boundary. Ground occupies a single diamond parcel exactly twice as wide as deep, centered in lower quarter; vegetation grows upward. Keep all extremities comfortably inside canvas; transparent holes through ground vegetation, irregular wispy boundary. Output portrait 1024x1280 composition intended to reduce to128x160, parcel ground corners approximately (512,720),(960,944),(512,1168),(64,944) but prioritize accurate 2:1 footprint with center at(512,960).\nSubject: Abandoned arable plot: four shallow parallel old earth furrows along NE isometric axis, discontinuous broken brown earth ridges now covered by irregular grass tufts. Aged field traces not a ploughed clean patch. Transparent gaps between broken ridges. No trees, fence or stones.\nSeason: summer, muted living greens; no snow. Preserve a clear ground diamond but do not draw its outline.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-00f1af23-8aed-4840-ab86-f4c467aa0dfb.png",
+    "references": [
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+      "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_fallow_a-v1.png"
+    ],
+    "raw_sha256": "80ac38c111efb861696722929a7faf9c53a2f594121894d1c930bb85193d3d4c",
+    "raw_path": "raw/abandoned_overgrown_furrows_summer.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/foliage/tree_oak_large.png",
+        "sha256": "4447a4a31a64ca9d5282b1c236996d0f81e21ab4ceca63ec3f30dc3dd8ede82f"
+      },
+      {
+        "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/fields/ridge_fallow_a-v1.png",
+        "sha256": "5e78645f7af2a3c5a38688a9f32d2db1867204956d969f449722e49bb5336fc1"
+      }
+    ]
+  },
+  {
+    "id": "abandoned_overgrown_furrows_winter",
+    "group": "overgrown_furrows",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit target is this exact summer abandoned-land game sprite. Change ONLY season to southern England winter: grass straw ochre and dull olive, bramble mostly bare brown thorn stems with a few dull leaves, deciduous trees mostly bare and visible fine branches; a light irregular dusting of snow on upper surfaces and tiny scattered patches at ground, never continuous snow plate. Preserve EXACT canvas, camera, lower ground footprint, positions of every major plant/trunk/fence rail/furrow, all trunk sizes and rooted bases, perspective and upper-left illumination. Do not add or delete objects, do not rotate, flip or mirror. Same soft painterly materials, no heavy outline. Preserve real transparent background and irregular transparent gaps. No text, border, backdrop or fake checkerboard.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-3d0d4817-32e7-4101-af30-ec5c7e1272cf.png",
+    "references": [
+      "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-00f1af23-8aed-4840-ab86-f4c467aa0dfb.png"
+    ],
+    "raw_sha256": "a2c8b3209b05010be3f2e06d7fb32ae1bf28000a9cbeeddb3b96df837bb386bd",
+    "raw_path": "raw/abandoned_overgrown_furrows_winter.png",
+    "reference_sha256": [
+      {
+        "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb07-1fee-7143-b1e3-039733c1d1bc/exec-00f1af23-8aed-4840-ab86-f4c467aa0dfb.png",
+        "sha256": "80ac38c111efb861696722929a7faf9c53a2f594121894d1c930bb85193d3d4c"
+      }
+    ]
+  }
+]

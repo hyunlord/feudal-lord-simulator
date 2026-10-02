@@ -1,0 +1,254 @@
+[
+  {
+    "id": "path_clear_fork_ne_summer",
+    "base": "fork_ne",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. One transparent isolated medieval ground decal: a well-used dirt FOOTPATH FORK in summer grass. three arms towards upper-left,upper-right,lower-left; NO lower-right arm. Strict orthographic2:1 isometric ground axes at26.565degrees. Flat earth surface, not upright object, no bank, no slab, no outline. Modest warm muted brown beaten earth, sparse crushed olive grass along edges, subtle irregular foot scuffs, no modern shoe tread. Upper-left illumination, no long cast shadow. Subject centered in square canvas: junction at(50%,62.5%). Arm endpoints: upper-left(25%,50%),upper-right(75%,50%),lower-left(25%,75%),lower-right(75%,75%) ONLY the arms specified. Each path arm roughly8% canvas width, equivalent to a narrow walking track. Ends cut straight across to connect to other path segments; no rounded terminal caps. Genuine transparent background everywhere outside the track and sparse grassy edge fringe; no full grass diamond or background. Hand-painted game material in reference palette. No trees, logs, roadsigns, stones, words. One piece only. Final output128x128, keep generous transparent padding.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "input": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+    "raw_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-d3d659d7-8a9b-4098-9ff7-17fb12fe6a42.png",
+    "raw_copy": "raw/connections-path_clear_fork_ne_summer.png",
+    "input_sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288",
+    "raw_sha256": "85f541a9be7e019f7d48624fc4eb377a8a5e5c357c5e8c8c53f4d0acbc4f995f",
+    "output": "assets/connections/path_clear_fork_ne_summer.png",
+    "sha256": "acbbc91698c1c03264c4a409fe9637430a35feb0a73e5a1d7ba7ae5f3c8435eb",
+    "transform": {
+      "sx": 0.0927536231884058,
+      "sy": 0.06336633663366337,
+      "ox": 6.492753623188406,
+      "oy": 38.336633663366335,
+      "ports": [
+        "NW",
+        "NE",
+        "SW"
+      ],
+      "reference_coordinate_space": [
+        1280,
+        1280
+      ],
+      "method": "single full-canvas resize + translation; matched summer/winter; no mirror"
+    }
+  },
+  {
+    "id": "path_clear_fork_ne_winter",
+    "base": "fork_ne",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit this EXACT isolated footpath connection piece to mild southern English winter. Preserve its exact arms, junction shape, endpoint positions, widths, transparent margins and overall canvas. ONLY season changes: dormant grey-olive edge grass with sparse frost outside the trodden path; central path remains clear of snow and is grey-brown compacted earth. No deep snow, no extra branches, no stones, no text. Same soft hand-painted game art and upper-left light. Genuine transparent background. Do not mirror or rotate. Do not move anything. One piece only.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "input": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-d3d659d7-8a9b-4098-9ff7-17fb12fe6a42.png",
+    "raw_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-f24cb58f-0d92-4313-a311-d616bd47b64d.png",
+    "raw_copy": "raw/connections-path_clear_fork_ne_winter.png",
+    "input_sha256": "85f541a9be7e019f7d48624fc4eb377a8a5e5c357c5e8c8c53f4d0acbc4f995f",
+    "raw_sha256": "6c86b226d07ec4888383bfbb973e9631d6f3de63e9f0f7b0068a32c0b325c506",
+    "output": "assets/connections/path_clear_fork_ne_winter.png",
+    "sha256": "09cc1cc3c40f90cfd4baac4cd5380a9ff39ccd9716a9c1e942f85d777172b10c",
+    "transform": {
+      "sx": 0.0927536231884058,
+      "sy": 0.06336633663366337,
+      "ox": 6.492753623188406,
+      "oy": 38.336633663366335,
+      "ports": [
+        "NW",
+        "NE",
+        "SW"
+      ],
+      "reference_coordinate_space": [
+        1280,
+        1280
+      ],
+      "method": "single full-canvas resize + translation; matched summer/winter; no mirror"
+    }
+  },
+  {
+    "id": "path_clear_fork_nw_summer",
+    "base": "fork_nw",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. One transparent isolated medieval ground decal: a well-used dirt FOOTPATH FORK in summer grass. three arms towards upper-left,upper-right,lower-right; NO lower-left arm. Strict orthographic2:1 isometric ground axes at26.565degrees. Flat earth surface, not upright object, no bank, no slab, no outline. Modest warm muted brown beaten earth, sparse crushed olive grass along edges, subtle irregular foot scuffs, no modern shoe tread. Upper-left illumination, no long cast shadow. Subject centered in square canvas: junction at(50%,62.5%). Arm endpoints: upper-left(25%,50%),upper-right(75%,50%),lower-left(25%,75%),lower-right(75%,75%) ONLY the arms specified. Each path arm roughly8% canvas width, equivalent to a narrow walking track. Ends cut straight across to connect to other path segments; no rounded terminal caps. Genuine transparent background everywhere outside the track and sparse grassy edge fringe; no full grass diamond or background. Hand-painted game material in reference palette. No trees, logs, roadsigns, stones, words. One piece only. Final output128x128, keep generous transparent padding.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "input": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+    "raw_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-c4c7f2c8-031e-437f-be08-435015ca2180.png",
+    "raw_copy": "raw/connections-path_clear_fork_nw_summer.png",
+    "input_sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288",
+    "raw_sha256": "102259c0186921615ef8a547bb03471e04ee8f6a7e3dc3aaad0dc14e5ffd6aa3",
+    "output": "assets/connections/path_clear_fork_nw_summer.png",
+    "sha256": "f2d82deab6a19765b25858955a0a1dca454f809c23a401667aa04eab1c3e4301",
+    "transform": {
+      "sx": 0.09169054441260745,
+      "sy": 0.06153846153846154,
+      "ox": 4.951289398280803,
+      "oy": 33.84615384615385,
+      "ports": [
+        "NW",
+        "NE",
+        "SE"
+      ],
+      "reference_coordinate_space": [
+        1280,
+        1280
+      ],
+      "method": "single full-canvas resize + translation; matched summer/winter; no mirror"
+    }
+  },
+  {
+    "id": "path_clear_fork_nw_winter",
+    "base": "fork_nw",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit this EXACT isolated footpath connection piece to mild southern English winter. Preserve its exact arms, junction shape, endpoint positions, widths, transparent margins and overall canvas. ONLY season changes: dormant grey-olive edge grass with sparse frost outside the trodden path; central path remains clear of snow and is grey-brown compacted earth. No deep snow, no extra branches, no stones, no text. Same soft hand-painted game art and upper-left light. Genuine transparent background. Do not mirror or rotate. Do not move anything. One piece only.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "input": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-c4c7f2c8-031e-437f-be08-435015ca2180.png",
+    "raw_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-0765efcc-1b04-4e7f-80d3-ee16ce6f1ea4.png",
+    "raw_copy": "raw/connections-path_clear_fork_nw_winter.png",
+    "input_sha256": "102259c0186921615ef8a547bb03471e04ee8f6a7e3dc3aaad0dc14e5ffd6aa3",
+    "raw_sha256": "6f4ced4d1989310591acc0be6c5e59cc897af97c526e85084dd4e9d0438e40bc",
+    "output": "assets/connections/path_clear_fork_nw_winter.png",
+    "sha256": "069e0750100008367c60385ada12c1f7df261120ac8bd47f6f6a29045bab559b",
+    "transform": {
+      "sx": 0.09169054441260745,
+      "sy": 0.06153846153846154,
+      "ox": 4.951289398280803,
+      "oy": 33.84615384615385,
+      "ports": [
+        "NW",
+        "NE",
+        "SE"
+      ],
+      "reference_coordinate_space": [
+        1280,
+        1280
+      ],
+      "method": "single full-canvas resize + translation; matched summer/winter; no mirror"
+    }
+  },
+  {
+    "id": "path_clear_corner_ne_summer",
+    "base": "corner_ne",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. One transparent isolated medieval ground decal: a well-used dirt FOOTPATH CORNER in summer grass. ONLY two arms towards upper-left and lower-left, meeting at center, forming a > angle with its point at center. NO right side arms. Strict orthographic2:1 isometric ground axes at26.565degrees. Flat earth surface, not upright object, no bank, no slab, no outline. Modest warm muted brown beaten earth, sparse crushed olive grass along edges, subtle irregular foot scuffs, no modern shoe tread. Upper-left illumination, no long cast shadow. Subject centered in square canvas: junction at(50%,62.5%). Arm endpoints: upper-left(25%,50%),upper-right(75%,50%),lower-left(25%,75%),lower-right(75%,75%) ONLY the arms specified. Each path arm roughly8% canvas width, equivalent to a narrow walking track. Ends cut straight across to connect to other path segments; no rounded terminal caps. Genuine transparent background everywhere outside the track and sparse grassy edge fringe; no full grass diamond or background. Hand-painted game material in reference palette. No trees, logs, roadsigns, stones, words. One piece only. Final output128x128, keep generous transparent padding.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "input": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+    "raw_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-8492cea4-655a-4ed3-afae-f3988e2a0b7c.png",
+    "raw_copy": "raw/connections-path_clear_corner_ne_summer.png",
+    "input_sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288",
+    "raw_sha256": "2be1d94634842e65f1a997d1630f6d774e9b122e0c0f4ee29cbe684e6c5c9a88",
+    "output": "assets/connections/path_clear_corner_ne_summer.png",
+    "sha256": "001a6ab3a10174007e15f2f8c903d64a248b6e9053e5a1ff8fa7bcb667945641",
+    "transform": {
+      "sx": 0.0761904761904762,
+      "sy": 0.04426002766251729,
+      "ox": 8.38095238095238,
+      "oy": 50.98755186721992,
+      "ports": [
+        "NW",
+        "SW"
+      ],
+      "reference_coordinate_space": [
+        1280,
+        1280
+      ],
+      "method": "single full-canvas resize + translation; matched summer/winter; no mirror"
+    }
+  },
+  {
+    "id": "path_clear_corner_ne_winter",
+    "base": "corner_ne",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit this EXACT isolated footpath connection piece to mild southern English winter. Preserve its exact arms, junction shape, endpoint positions, widths, transparent margins and overall canvas. ONLY season changes: dormant grey-olive edge grass with sparse frost outside the trodden path; central path remains clear of snow and is grey-brown compacted earth. No deep snow, no extra branches, no stones, no text. Same soft hand-painted game art and upper-left light. Genuine transparent background. Do not mirror or rotate. Do not move anything. One piece only.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "input": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-8492cea4-655a-4ed3-afae-f3988e2a0b7c.png",
+    "raw_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-0800663c-2ecf-4c5d-baf7-d60a7bef35e8.png",
+    "raw_copy": "raw/connections-path_clear_corner_ne_winter.png",
+    "input_sha256": "2be1d94634842e65f1a997d1630f6d774e9b122e0c0f4ee29cbe684e6c5c9a88",
+    "raw_sha256": "3a289cc698eb77c0a4882c050fc7dfa355a3c46c49c5462e06a1c6be7dad76a6",
+    "output": "assets/connections/path_clear_corner_ne_winter.png",
+    "sha256": "bb8f1a7ab36e0c70fe92809f657e7aeedb5e8dda897df4211f8d79fdd300d986",
+    "transform": {
+      "sx": 0.0761904761904762,
+      "sy": 0.04426002766251729,
+      "ox": 8.38095238095238,
+      "oy": 50.98755186721992,
+      "ports": [
+        "NW",
+        "SW"
+      ],
+      "reference_coordinate_space": [
+        1280,
+        1280
+      ],
+      "method": "single full-canvas resize + translation; matched summer/winter; no mirror"
+    }
+  },
+  {
+    "id": "path_clear_corner_nw_summer",
+    "base": "corner_nw",
+    "season": "summer",
+    "prompt": "Use case: historical-scene. One transparent isolated medieval ground decal: a well-used dirt FOOTPATH CORNER in summer grass. ONLY two arms towards upper-right and lower-right, meeting at center, forming a < angle with its point at center. NO left side arms. Strict orthographic2:1 isometric ground axes at26.565degrees. Flat earth surface, not upright object, no bank, no slab, no outline. Modest warm muted brown beaten earth, sparse crushed olive grass along edges, subtle irregular foot scuffs, no modern shoe tread. Upper-left illumination, no long cast shadow. Subject centered in square canvas: junction at(50%,62.5%). Arm endpoints: upper-left(25%,50%),upper-right(75%,50%),lower-left(25%,75%),lower-right(75%,75%) ONLY the arms specified. Each path arm roughly8% canvas width, equivalent to a narrow walking track. Ends cut straight across to connect to other path segments; no rounded terminal caps. Genuine transparent background everywhere outside the track and sparse grassy edge fringe; no full grass diamond or background. Hand-painted game material in reference palette. No trees, logs, roadsigns, stones, words. One piece only. Final output128x128, keep generous transparent padding.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "input": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill/public/assets/terrain/grass.png",
+    "raw_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-7b9e3012-f088-4d58-bcb1-075fc01666f7.png",
+    "raw_copy": "raw/connections-path_clear_corner_nw_summer.png",
+    "input_sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288",
+    "raw_sha256": "6d86e89c3a48731dd7745a0d749ba3bc1296dcf193b88e272c705131191cfdb8",
+    "output": "assets/connections/path_clear_corner_nw_summer.png",
+    "sha256": "9a99f06a80b20ec9dd8422a6943438f5564be25c5d13fa34cbc55287a04eb8fe",
+    "transform": {
+      "sx": 0.07710843373493977,
+      "sy": 0.056239015817223195,
+      "ox": 24.906024096385536,
+      "oy": 43.13532513181019,
+      "ports": [
+        "NE",
+        "SE"
+      ],
+      "reference_coordinate_space": [
+        1280,
+        1280
+      ],
+      "method": "single full-canvas resize + translation; matched summer/winter; no mirror"
+    }
+  },
+  {
+    "id": "path_clear_corner_nw_winter",
+    "base": "corner_nw",
+    "season": "winter",
+    "prompt": "Use case: lighting-weather. Edit this EXACT isolated footpath connection piece to mild southern English winter. Preserve its exact arms, junction shape, endpoint positions, widths, transparent margins and overall canvas. ONLY season changes: dormant grey-olive edge grass with sparse frost outside the trodden path; central path remains clear of snow and is grey-brown compacted earth. No deep snow, no extra branches, no stones, no text. Same soft hand-painted game art and upper-left light. Genuine transparent background. Do not mirror or rotate. Do not move anything. One piece only.",
+    "tool": "image_gen.imagegen",
+    "model": null,
+    "seed": null,
+    "input": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-7b9e3012-f088-4d58-bcb1-075fc01666f7.png",
+    "raw_source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-fcce1182-24cd-4dab-81ec-697bb3b938af.png",
+    "raw_copy": "raw/connections-path_clear_corner_nw_winter.png",
+    "input_sha256": "6d86e89c3a48731dd7745a0d749ba3bc1296dcf193b88e272c705131191cfdb8",
+    "raw_sha256": "53276bdf18eefffa27fc3b801b3c7c28936bc2f83e9f5272fbc8566fb8983e4a",
+    "output": "assets/connections/path_clear_corner_nw_winter.png",
+    "sha256": "77ae0653feea9536c369b159d22a338bf856ed0657aabb719fa467fc5dd803ba",
+    "transform": {
+      "sx": 0.07710843373493977,
+      "sy": 0.056239015817223195,
+      "ox": 24.906024096385536,
+      "oy": 43.13532513181019,
+      "ports": [
+        "NE",
+        "SE"
+      ],
+      "reference_coordinate_space": [
+        1280,
+        1280
+      ],
+      "method": "single full-canvas resize + translation; matched summer/winter; no mirror"
+    }
+  }
+]

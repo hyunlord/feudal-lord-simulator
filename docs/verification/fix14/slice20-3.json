@@ -1,0 +1,616 @@
+{
+ "seed": 3,
+ "start": {
+  "seed": 3,
+  "startYear": 1300,
+  "goalYears": {
+   "min": 12,
+   "max": 20
+  },
+  "end": {
+   "years": 20,
+   "afterSecondEstateYears": 5
+  },
+  "home": {
+   "estateId": "estate-home",
+   "name": "home",
+   "annualValue": 0,
+   "pieces": [
+    {
+     "id": "home:land_rent",
+     "kind": "land_rent",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:manor_court",
+     "kind": "manor_court",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:market",
+     "kind": "market",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:tolls",
+     "kind": "tolls",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:mill",
+     "kind": "mill",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:fishery",
+     "kind": "fishery",
+     "possessor": "lord"
+    },
+    {
+     "id": "home:advowson",
+     "kind": "advowson",
+     "possessor": "lord"
+    }
+   ]
+  },
+  "town": {
+   "population": 12,
+   "houses": 4,
+   "treasury": 60
+  },
+  "neighbours": [
+   {
+    "estateId": "estate-neighbour-1",
+    "name": "de Corbelle",
+    "manors": 3,
+    "annualValue": 6400,
+    "debt": 0,
+    "house": "de Corbelle",
+    "rank": "gentry",
+    "lordId": null,
+    "lordAge": null,
+    "factionId": "neighbour_1",
+    "daughtersOnly": false
+   },
+   {
+    "estateId": "estate-neighbour-2",
+    "name": "de Lisonde",
+    "manors": 2,
+    "annualValue": 4000,
+    "debt": 800,
+    "house": "de Lisonde",
+    "rank": "gentry",
+    "lordId": null,
+    "lordAge": null,
+    "factionId": "neighbour_2",
+    "daughtersOnly": false
+   },
+   {
+    "estateId": "estate-neighbour-3",
+    "name": "de Heronel",
+    "manors": 2,
+    "annualValue": 4000,
+    "debt": 6400,
+    "house": "de Heronel",
+    "rank": "gentry",
+    "lordId": "est-000001",
+    "lordAge": 63,
+    "factionId": null,
+    "daughtersOnly": true
+   }
+  ],
+  "factions": [
+   {
+    "id": "overlord",
+    "kind": "overlord",
+    "relation": 20
+   },
+   {
+    "id": "bishop",
+    "kind": "church",
+    "relation": 10
+   },
+   {
+    "id": "merchant_house_1",
+    "kind": "merchant_house",
+    "relation": 0
+   },
+   {
+    "id": "merchant_house_2",
+    "kind": "merchant_house",
+    "relation": 0
+   },
+   {
+    "id": "town",
+    "kind": "town",
+    "relation": 10
+   }
+  ]
+ },
+ "outcome": {
+  "ended": true,
+  "reason": "years",
+  "endTick": 80000,
+  "summary": {
+   "year": 1320,
+   "population": 350,
+   "houses": 24,
+   "treasury": 320,
+   "estatesHeld": [
+    "estate-home"
+   ],
+   "secondEstateYear": null,
+   "projects": 142,
+   "projectsByLord": 28,
+   "decisions": {
+    "decision.market_dues": 2,
+    "decision.petition_response": 2,
+    "decision.project_subsidy": 5,
+    "decision.estate_policy": 3,
+    "decision.market_town": 1,
+    "decision.famine_response": 1,
+    "decision.bundle": 7
+   },
+   "promises": {
+    "kept": 5,
+    "broken": 0,
+    "open": 0
+   },
+   "marriage": "lost"
+  }
+ },
+ "endedAt": {
+  "tick": 80000,
+  "year": 1320,
+  "reason": "years"
+ },
+ "table": [
+  {
+   "year": 1300,
+   "decisions": 4,
+   "asked": 1,
+   "own": 3,
+   "byKind": {
+    "suit": 2,
+    "dues": 1,
+    "estate_petition": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1301,
+   "decisions": 2,
+   "asked": 2,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 2
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1302,
+   "decisions": 4,
+   "asked": 4,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 4
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1303,
+   "decisions": 2,
+   "asked": 2,
+   "own": 0,
+   "byKind": {
+    "petition": 1,
+    "estate_petition": 1
+   },
+   "pauses": 2,
+   "stops": 2,
+   "pausesByReason": {
+    "estate_crisis": 1,
+    "rights_petition": 1
+   }
+  },
+  {
+   "year": 1304,
+   "decisions": 3,
+   "asked": 3,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 3
+   },
+   "pauses": 2,
+   "stops": 2,
+   "pausesByReason": {
+    "rights_petition": 1,
+    "major_death": 1
+   }
+  },
+  {
+   "year": 1305,
+   "decisions": 3,
+   "asked": 2,
+   "own": 1,
+   "byKind": {
+    "estate_petition": 2,
+    "subsidy": 1
+   },
+   "pauses": 3,
+   "stops": 2,
+   "pausesByReason": {
+    "inheritance": 1,
+    "rights_petition": 1,
+    "judgment": 1
+   }
+  },
+  {
+   "year": 1306,
+   "decisions": 4,
+   "asked": 3,
+   "own": 1,
+   "byKind": {
+    "subsidy": 1,
+    "estate_petition": 2,
+    "petition": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1307,
+   "decisions": 4,
+   "asked": 3,
+   "own": 1,
+   "byKind": {
+    "estate_petition": 3,
+    "subsidy": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1308,
+   "decisions": 8,
+   "asked": 3,
+   "own": 5,
+   "byKind": {
+    "estate_petition": 2,
+    "policy": 1,
+    "marriage_offer": 1,
+    "counter": 1,
+    "promise": 3
+   },
+   "pauses": 1,
+   "stops": 1,
+   "pausesByReason": {
+    "counter_offer": 1
+   }
+  },
+  {
+   "year": 1309,
+   "decisions": 5,
+   "asked": 3,
+   "own": 2,
+   "byKind": {
+    "promise": 2,
+    "estate_petition": 2,
+    "town_request": 1
+   },
+   "pauses": 2,
+   "stops": 2,
+   "pausesByReason": {
+    "rights_petition": 2
+   }
+  },
+  {
+   "year": 1310,
+   "decisions": 4,
+   "asked": 3,
+   "own": 1,
+   "byKind": {
+    "estate_petition": 3,
+    "dues": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1311,
+   "decisions": 2,
+   "asked": 2,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 2
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1312,
+   "decisions": 5,
+   "asked": 4,
+   "own": 1,
+   "byKind": {
+    "estate_petition": 4,
+    "subsidy": 1
+   },
+   "pauses": 3,
+   "stops": 1,
+   "pausesByReason": {
+    "major_death": 2,
+    "inheritance": 1
+   }
+  },
+  {
+   "year": 1313,
+   "decisions": 3,
+   "asked": 2,
+   "own": 1,
+   "byKind": {
+    "estate_petition": 2,
+    "subsidy": 1
+   },
+   "pauses": 1,
+   "stops": 1,
+   "pausesByReason": {
+    "rights_petition": 1
+   }
+  },
+  {
+   "year": 1314,
+   "decisions": 2,
+   "asked": 2,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 1,
+    "town_request": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1315,
+   "decisions": 7,
+   "asked": 6,
+   "own": 1,
+   "byKind": {
+    "famine": 1,
+    "estate_petition": 3,
+    "policy": 1,
+    "town_request": 2
+   },
+   "pauses": 2,
+   "stops": 2,
+   "pausesByReason": {
+    "estate_crisis": 1,
+    "rights_petition": 1
+   }
+  },
+  {
+   "year": 1316,
+   "decisions": 4,
+   "asked": 4,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 4
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1317,
+   "decisions": 3,
+   "asked": 3,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 3
+   },
+   "pauses": 2,
+   "stops": 2,
+   "pausesByReason": {
+    "rights_petition": 2
+   }
+  },
+  {
+   "year": 1318,
+   "decisions": 5,
+   "asked": 4,
+   "own": 1,
+   "byKind": {
+    "estate_petition": 4,
+    "policy": 1
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  },
+  {
+   "year": 1319,
+   "decisions": 3,
+   "asked": 3,
+   "own": 0,
+   "byKind": {
+    "estate_petition": 3
+   },
+   "pauses": 0,
+   "stops": 0,
+   "pausesByReason": {}
+  }
+ ],
+ "pauses": [
+  {
+   "reason": "estate_crisis",
+   "tick": 13000,
+   "recordId": "h-000401",
+   "template": "decline.entered",
+   "year": 1303,
+   "line": "영지가 쇠퇴했다 — 빈 필지가 늘어, 방앗간 사용료를 상인들이 가져갔고 칭호가 강등되었다"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 14000,
+   "petitionId": "restore_right@14000",
+   "year": 1303,
+   "line": "petition restore_right@14000"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 16000,
+   "recordId": "h-000605",
+   "template": "manor.petition",
+   "year": 1304,
+   "line": "장원에서 방앗간 강제를 풀어 달라는 청원이 영주에게 왔다 — 4s 10d"
+  },
+  {
+   "reason": "major_death",
+   "tick": 17001,
+   "recordId": "h-000657",
+   "template": "faction.leader_succeeded",
+   "year": 1304,
+   "line": "피어슨 상인 가문의 앨런 롤린슨이 세상을 떠나 존 피어슨이 무리를 이끈다"
+  },
+  {
+   "reason": "inheritance",
+   "tick": 20000,
+   "recordId": "h-000787",
+   "template": "lord.wardship_begun",
+   "year": 1305,
+   "line": "조앤 드 메로언이 미성년 영주다 — 후견인 앨리스 드 메로언"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 20000,
+   "recordId": "h-000803",
+   "template": "manor.petition",
+   "year": 1305,
+   "line": "장원에서 이웃 영지와의 경계 다툼이 영주에게 왔다"
+  },
+  {
+   "reason": "judgment",
+   "tick": 23000,
+   "recordId": "h-000898",
+   "template": "estate.suit_judged",
+   "year": 1305,
+   "line": "판결이 났다: 원고가 졌다"
+  },
+  {
+   "reason": "counter_offer",
+   "tick": 33619,
+   "recordId": "h-001368",
+   "template": "negotiation.countered",
+   "year": 1308,
+   "line": "이웃 영주가 조건을 고쳐 되물었다 — 채무 인수·상속 뒤 빚 갚기"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 37000,
+   "recordId": "h-001517",
+   "template": "manor.petition",
+   "year": 1309,
+   "line": "장원에서 이웃 영지와의 경계 다툼이 영주에게 왔다"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 39000,
+   "recordId": "h-001604",
+   "template": "manor.petition",
+   "year": 1309,
+   "line": "장원에서 방앗간 강제를 풀어 달라는 청원이 영주에게 왔다 — 4s 9d"
+  },
+  {
+   "reason": "major_death",
+   "tick": 48000,
+   "recordId": "h-002087",
+   "template": "estate.person_died",
+   "year": 1312,
+   "line": "랠프 드 손넬(이웃 영주)이 75세로 세상을 떠났다"
+  },
+  {
+   "reason": "major_death",
+   "tick": 48000,
+   "recordId": "h-002090",
+   "template": "marriage.father_died",
+   "year": 1312,
+   "line": "이웃 영주가 죽었다"
+  },
+  {
+   "reason": "inheritance",
+   "tick": 48000,
+   "recordId": "h-002091",
+   "template": "marriage.lost",
+   "year": 1312,
+   "line": "이웃 영지는 그의 아들에게 갔다"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 52000,
+   "recordId": "h-002382",
+   "template": "manor.petition",
+   "year": 1313,
+   "line": "장원에서 이웃 영지와의 경계 다툼이 영주에게 왔다"
+  },
+  {
+   "reason": "estate_crisis",
+   "tick": 60000,
+   "recordId": "h-002957",
+   "template": "event.arrived",
+   "year": 1315,
+   "line": "대기근이 닥쳤다"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 61000,
+   "recordId": "h-003051",
+   "template": "manor.petition",
+   "year": 1315,
+   "line": "장원에서 방앗간 강제를 풀어 달라는 청원이 영주에게 왔다 — 3s"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 68000,
+   "recordId": "h-003665",
+   "template": "manor.petition",
+   "year": 1317,
+   "line": "장원에서 방앗간 강제를 풀어 달라는 청원이 영주에게 왔다 — 4s 3d"
+  },
+  {
+   "reason": "rights_petition",
+   "tick": 70000,
+   "recordId": "h-003853",
+   "template": "manor.petition",
+   "year": 1317,
+   "line": "장원에서 이웃 영지와의 경계 다툼이 영주에게 왔다"
+  }
+ ],
+ "features": [
+  "counter",
+  "dues",
+  "estate_petition",
+  "famine",
+  "marriage_offer",
+  "petition",
+  "policy",
+  "promise",
+  "subsidy",
+  "suit",
+  "town_request"
+ ],
+ "finalYear": 1320,
+ "tick": 80000,
+ "seconds": 261,
+ "stateSha256": "d8b897951418be0d59ef0b20da654b715e36fe42abdcd0aecc6a9562ec62bc86"
+}

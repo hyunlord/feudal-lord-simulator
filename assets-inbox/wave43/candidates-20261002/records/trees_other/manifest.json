@@ -1,0 +1,44 @@
+[
+  {
+    "id": "tree_pine_tall_spring",
+    "file": "assets/tree_pine_tall_spring.png",
+    "width": 64,
+    "height": 120,
+    "pivot": {
+      "x": 32,
+      "y": 120
+    },
+    "worldRenderScale": 0.5333333333333333,
+    "summer_reference": "references/tree_pine_tall.png",
+    "winter_reference": "references/tree_pine_tall_winter_snow-v1.png",
+    "status": "candidate"
+  },
+  {
+    "id": "tree_pine_short_spring",
+    "file": "assets/tree_pine_short_spring.png",
+    "width": 56,
+    "height": 88,
+    "pivot": {
+      "x": 28,
+      "y": 88
+    },
+    "worldRenderScale": 0.7272727272727273,
+    "summer_reference": "references/tree_pine_short.png",
+    "winter_reference": "references/tree_pine_short_winter_snow-v1.png",
+    "status": "candidate"
+  },
+  {
+    "id": "tree_dead_spring",
+    "file": "assets/tree_dead_spring.png",
+    "width": 56,
+    "height": 80,
+    "pivot": {
+      "x": 28,
+      "y": 80
+    },
+    "worldRenderScale": 0.8,
+    "summer_reference": "references/tree_dead.png",
+    "winter_reference": "references/tree_dead_winter_snow-v1.png",
+    "status": "candidate"
+  }
+]

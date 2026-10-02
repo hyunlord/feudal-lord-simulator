@@ -140,10 +140,22 @@ if git bundle create "$TMP/head.bundle" HEAD --not --remotes=origin >/dev/null 2
   printf 'CMD=%q\n' "$(printf '%q ' "$@")"
 } > "$TMP/meta.env"
 
-state=$(rsh "mkdir -p $RROOT/_locks $RROOT/$RUN/.remote-in && \
-  { flock -n $RROOT/_locks/$RUN.lock true 2>/dev/null || echo BUSY; }; \
+# The run's lock is held from before its folder exists until the run itself holds it: an ssh session takes it and keeps
+# it while its stdin (a fifo held open here) stays open. A prune from any run (any branch's remote-exec.sh) skips a
+# locked folder, so the upload is never deleted under rsync (6e6b96eb's trend, 2026-10-02: its folder was pruned while
+# files were still arriving). remote-exec.sh run waits for the lock, so releasing it after the launch leaves no gap.
+mkfifo "$TMP/lock.fifo"
+rsh "mkdir -p $RROOT/_locks && exec 9>$RROOT/_locks/$RUN.lock && { flock -n 9 || { echo BUSY; exit 1; }; } && echo LOCKED && cat >/dev/null" \
+  < "$TMP/lock.fifo" > "$TMP/lock.out" 2>&1 &
+LOCK_SSH=$!
+exec 7>"$TMP/lock.fifo"
+release_lock() { exec 7>&- 2>/dev/null; wait "$LOCK_SSH" 2>/dev/null; }
+trap 'release_lock; rm -rf "$TMP"' EXIT
+for _ in $(seq 1 300); do grep -q 'LOCKED\|BUSY' "$TMP/lock.out" 2>/dev/null && break; kill -0 "$LOCK_SSH" 2>/dev/null || break; sleep 0.1; done
+grep -q BUSY "$TMP/lock.out" && die "$RUN is already running on the DGX (scripts/remote/run.sh --attach $RUN)"
+grep -q LOCKED "$TMP/lock.out" || die "could not lock $RUN on the DGX: $(tail -1 "$TMP/lock.out")"
+state=$(rsh "mkdir -p $RROOT/$RUN/.remote-in && \
   ls -1dt $RROOT/*/ 2>/dev/null | sed 's#/\$##; s#.*/##' | grep -v '^_' | grep -vx '$RUN' | head -1 | sed 's/^/PREV=/'")
-case "$state" in *BUSY*) die "$RUN is already running on the DGX (scripts/remote/run.sh --attach $RUN)";; esac
 PREV=$(printf '%s\n' "$state" | sed -n 's/^PREV=//p')
 COPY_DEST=""; [ -n "$PREV" ] && COPY_DEST="--copy-dest=../$PREV"
 
@@ -153,7 +165,10 @@ rsync -a -e "ssh $SSH_OPTS" "$TMP/meta.env" "$TMP/in-files.txt" $( [ -f "$TMP/he
 SYNC_S=$(since "$T0")
 echo "SYNC_S=$SYNC_S" > "$TMP/sync.env"; rsync -a -e "ssh $SSH_OPTS" "$TMP/sync.env" "$HOST:$RROOT/$RUN/.remote-in/"
 
+# rsync -a gave the folder the Mac's old modification time; the prune keeps the newest ten, so make it new.
+rsh "touch $RROOT/$RUN" || true
 rsh "bash $RROOT/$RUN/scripts/remote/remote-exec.sh launch $RUN" >/dev/null || die "launch failed"
+release_lock   # remote-exec.sh run is waiting for it
 if [ "$DETACH" = 1 ]; then
   echo "remote: $RUN running detached. Follow: scripts/remote/run.sh --attach $RUN   Fetch: scripts/remote/run.sh --fetch $RUN"
   exit 0
