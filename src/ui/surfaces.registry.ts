@@ -115,6 +115,8 @@ export const VIEWPORTS: Readonly<Record<ViewportId, { readonly width: number; re
 export const HUD_ALWAYS: readonly string[] = [
   ".status-pill", ".hud-time-cluster .speed-seal", ".hud-time-cluster .settings-disclosure > summary", ".action-dock .action-dock-button",
   ".layer-switch .control-layer", ".crisis-icons > *", ".event-cards .event-chip", ".goal-chip-rail .goal-card", ".steward-line",
+  // NAT-4 (R15 leftover): the open bubble's first row — the ledger's foot covered the steward's name above his line.
+  ".action-dock + .steward-bubble .steward-name",
 ];
 
 const TOWN = { kind: "state", set: "ui5", name: "merchant-town", tile: "house", zoom: 1.4 } as const;
@@ -163,7 +165,7 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "hud.action-dock", root: ".action-dock", frame: "flat", scene: TOWN, open: [], data: "build, ledger, steward (undo when a site is new)",
     siblingsNoOverlap: [".action-dock-button", ".hud-undo"] },
   { id: "hud.steward-bubble", root: ".steward-bubble", frame: "css", scene: TOWN, open: [{ click: "[data-dock='steward']" }, { pause: 500 }],
-    data: "the steward's line (quiet, or the advisor's line when he speaks)" },
+    scrollParts: [".steward-line"], data: "the steward's line (quiet, or the advisor's line when he speaks)" },
   { id: "hud.crisis-icons", root: ".crisis-icons", frame: "flat", scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: QUIET },
     open: [DISMISS], data: "the famine's alerts (at most three bells)" },
   { id: "hud.stuck-goods", root: ".crisis-icons .stuck-goods-chip", frame: "css", scene: { kind: "state", set: "ui10", name: "empty-manor", tile: "house", zoom: 1.1, query: QUIET },
@@ -235,6 +237,17 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "slot.inspector.body", extends: "slot.inspector", root: ".left-inspector", frame: "css", scene: TOWN, open: [], scroll: "y", data: "the inspector inside the slot" },
   { id: "slot.ledger.stock", root: ".slot-panel.ledger-drawer", frame: "css", scene: TOWN, open: [LEDGER, { pause: 600 }], scroll: "y",
     scrollParts: [".ledger-matrix-scroll"], data: "the stone town's stocks" },
+  // NAT-4 (R15 leftover): the ledger with the steward's bubble open over the dock (the town's steward speaks of a crisis
+  // row; the click opens his line in full) — the slot stops above it. The bubble's own row catches it painted over.
+  { id: "slot.ledger.steward", root: ".slot-panel.ledger-drawer", frame: "css", scene: TOWN,
+    open: [LEDGER, { pause: 600 }, { click: "[data-dock='steward']" }, { pause: 500 }], scroll: "y", scrollParts: [".ledger-matrix-scroll"],
+    expect: ".action-dock + .steward-bubble .steward-button", data: "the stone town's stocks with the steward's advice open" },
+  { id: "hud.steward-bubble.ledger", extends: "slot.ledger.steward", root: ".action-dock + .steward-bubble", frame: "css", scene: TOWN, open: [],
+    scrollParts: [".steward-line"], data: "the steward's open advice beside the ledger" },
+  { id: "slot.ledger.steward-concern", root: ".slot-panel.ledger-drawer", frame: "css",
+    scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: QUIET },
+    open: [DISMISS, LEDGER, { click: "[data-ledger-tab='alerts']" }, { pause: 500 }, { click: "[data-dock='steward']" }, { pause: 500 }], scroll: "y",
+    expect: ".action-dock + .steward-bubble .steward-button", data: "the famine's alerts with the steward's warning open" },
   { id: "slot.ledger.alerts", root: ".slot-panel.ledger-drawer", frame: "css", scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: QUIET },
     open: [DISMISS, LEDGER, { click: "[data-ledger-tab='alerts']" }, { pause: 500 }], scroll: "y", data: "the famine's alerts" },
   { id: "slot.ledger.view", root: ".slot-panel.ledger-drawer", frame: "css", scene: TOWN, open: [LEDGER, { click: "[data-ledger-tab='view']" }, { pause: 500 }], scroll: "y",

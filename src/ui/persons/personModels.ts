@@ -34,6 +34,9 @@ const ROLE_ORDER: Readonly<Record<string, number>> = { steward: 0, head: 1, spou
 const occupationOf = (person: Person) => person.occupation === "labourer" || person.occupation === "child" || person.occupation === ""
   || PERSONS_COPY.occupation(person.occupation) === PERSONS_COPY.role(person.role) ? null : PERSONS_COPY.occupation(person.occupation);
 
+/** NAT-4 (QA-014): an outside faction's person (the king, an earl, the bishop, a neighbour lord) heads no household in the town. */
+export const isOutsider = (person: Pick<Person, "householdId">) => person.householdId.startsWith("faction:");
+
 /** The picture a person is drawn with: the pool's pick for their age, or the steward's fixed portrait (the office's own, so it matches). */
 function drawnPortrait(state: GameState, person: Person) {
   const pick = persons.portrait(state, person);
@@ -67,10 +70,14 @@ export function householdRows(state: GameState, houseId: string): readonly Perso
     .map(person => personRow(state, person, states));
 }
 
-/** The petition's petitioners (PERSON-0 PS-4: two or three household heads, the most substantial first). */
+/**
+ * The petition's petitioners (PERSON-0 PS-4: two or three household heads, the most substantial first). NAT-4 (QA-036):
+ * only the living in town — FIX-12 replaces a town representative who died, but an outside faction's petition keeps its
+ * leaders' ids (a king who died since); the leader's chip follows him to his successor (`petitionFrom`).
+ */
 export function petitionerRows(state: GameState, petition: Pick<PetitionRecord, "petitionerIds">): readonly PersonRow[] {
   const states = personStatesReader(state);
-  return (petition.petitionerIds ?? []).flatMap(id => { const person = personById(state, id); return person === undefined ? [] : [personRow(state, person, states)]; });
+  return (petition.petitionerIds ?? []).flatMap(id => { const person = personById(state, id); return person === undefined || !inTown(person) ? [] : [personRow(state, person, states)]; });
 }
 
 /** The lord's steward (the manor household's steward; PERSON-0 keeps one in office). */
@@ -153,7 +160,9 @@ export function personCardView(state: GameState, personId: string): PersonCardVi
   const head = persons.of(state, person.householdId).find(member => member.role === "head");
   const emblem = personEmblem(state, person);
   return {
-    id: person.id, name: personDisplayName(person), role: PERSONS_COPY.cardRole(PERSONS_COPY.role(person.role), occupationOf(person)),
+    id: person.id, name: personDisplayName(person),
+    // NAT-4 (QA-014): an outsider by his title alone (the card read "가구주 · king").
+    role: isOutsider(person) ? PERSONS_COPY.occupation(person.occupation) : PERSONS_COPY.cardRole(PERSONS_COPY.role(person.role), occupationOf(person)),
     life: PERSONS_COPY.cardLife(person.birthYear, ageOf(person, year)),
     household: person.householdId !== MANOR_HOUSEHOLD ? PERSONS_COPY.householdOf(personDisplayName(head ?? person))
       // UI-10: the lord's family after it left the manor (the steward's office stays with the manor).
