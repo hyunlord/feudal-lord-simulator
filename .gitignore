@@ -18,3 +18,8 @@ coverage/
 
 # Personal Claude Code settings (status line, own permissions, own env) — never shared; see AGENTS.md rule 20.
 .claude/settings.local.json
+
+# The Astra visual checker (tools/vision-check, Python via uv): its environment and caches.
+tools/vision-check/.venv/
+tools/vision-check/**/__pycache__/
+tools/vision-check/.pytest_cache/

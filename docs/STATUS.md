@@ -9,6 +9,7 @@
 
 ## 현재 단계
 
+- **시각 검사기 도구 반입(VISION-CHECK) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): Astra 시각 검사기(재현율 2차 개선판)를 [`tools/vision-check/`](../tools/vision-check/README.md)로. `npm run vision:check`, 검출기 상태 `config/detectors.json`(사용: 경계·이음새·멈춘 사람·겹침 / 실험: 크기·반복), 동결 정답 시험지 `testdata/frozen-truth-20261002/`(양성 19, 재채점 17 TP·2 FP·2 FN = 저장된 결과). 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다.
 - **FIX-15 물 둘레 성벽 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 판정): [보고서](verification/fix15/REPORT.md), [명세](design/water-perimeter.md) WP-1~WP-4, 결정 FX15-1~4.
   - 성벽 고리가 물을 지나는 칸은 쌓지 않고 물을 둘레로 친다(공사장·성문은 땅에만). 봇은 땅 고리가 모두 실패할 때만 쓴다.
   - seed 77777이 1310년에 칙허를 내고 1320년까지 공사·벌목이 이어진다. 칙허 전 상인 목재는 27d·장날 하나·한 번 60.

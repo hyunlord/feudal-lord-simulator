@@ -1,0 +1,12 @@
+{
+  "about": "Detector status for the repository (user decision 2026-10-02). use: findings are acted on; experimental: findings are hints for a person to look at, never a gate. Measured on the frozen answer key testdata/frozen-truth-20261002 with config/recall.json (calibration set, not an independent test).",
+  "thresholds": "config/recall.json",
+  "detectors": {
+    "straight_boundary": { "status": "use", "label": "경계(직각·직선 땅 경계)", "recall": 0.857, "precision": 0.857 },
+    "tile_seam": { "status": "use", "label": "이음새(타일 이음새)", "recall": 1.0, "precision": 1.0 },
+    "stationary_person": { "status": "use", "label": "멈춘 사람", "recall": 1.0, "precision": 1.0 },
+    "roof_overlap": { "status": "use", "label": "겹침(지붕 위 사람)", "recall": 1.0, "precision": 1.0 },
+    "scale_ratio": { "status": "experimental", "label": "크기(크기 비율)", "recall": 0.5, "precision": 1.0 },
+    "repeat_density": { "status": "experimental", "label": "반복(반복 밀도)", "recall": 1.0, "precision": 0.5 }
+  }
+}
