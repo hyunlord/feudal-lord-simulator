@@ -13,6 +13,7 @@ import { drawStoryProps } from "./storyWorldProps";
 import { seasonBlend, seasonForObject } from "./seasonTransition";
 import { drawWave26HouseLayers, houseStateLayerNow, shownHouseVariant } from "./wave26HouseArt";
 import { drawWave32GranaryLayers } from "./wave32GranaryArt";
+import { drawStorehouseSnow } from "./storehouseSnowArt";
 import { fittedBuildingSpriteRect } from "./buildingSpriteFit";
 
 // INSTALL-7 building overlays, drawn right after a finished building's art in the object pass (above block detail —
@@ -70,6 +71,8 @@ export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: G
   }
   if (building.kind === "house" && building.houseLot !== undefined) drawPairHouseLayers(context, state, building);
   if (building.kind === "granary") drawWave32GranaryLayers(context, state, building, fittedBuildingSpriteRect("barn", building));
+  // NAT-5 (RUN-02): a storehouse takes its roof snow at its own moment, like the houses (same seasonForObject salt).
+  if (building.kind === "storehouse" && seasonForObject(seasonBlend(state), building.tx * 31 + building.ty * 17) === 3) drawStorehouseSnow(context, building);
   if (!props) return;
   drawStockPiles(context, state, building);
   drawStoryProps(context, state, building); // UI-4 petition crowd, S12 leaving family
