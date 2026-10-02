@@ -1,8 +1,10 @@
 import { BALANCE } from "../content/balanceConfig";
-import type { Building } from "../content/buildingConfig";
+import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { RESOURCE_TYPES, type ResourceType } from "../content/resourceConfig";
 import {
+  charterTimberWait,
   wallDeliveryAvailable,
+  type CharterTimberWait,
   type WallConstructionPriority,
   type WallConstructionReserve,
 } from "../domain/wallReserve";
@@ -110,6 +112,7 @@ function siteCandidates(params: {
   readonly busyHomeIds: ReadonlySet<string>;
   readonly wallConstructionReserve?: WallConstructionReserve;
   readonly wallConstructionPriority?: WallConstructionPriority;
+  readonly charter: { readonly wait: CharterTimberWait; readonly townStock: number };
 }): readonly SiteCandidate[] {
   return [...params.sites].sort(byId).flatMap((site) => {
     const need = constructionDeliveryNeed(site);
@@ -121,7 +124,7 @@ function siteCandidates(params: {
         if (params.busyHomeIds.has(source.id)) return [];
         const sourceAvailable = params.inventory.availableStock(source, resource);
         const available = site.kind === "palisade_segment" || site.kind === "stone_wall_segment"
-          ? wallDeliveryAvailable(params.wallConstructionReserve, params.wallConstructionPriority ?? "balanced", source.id, resource, sourceAvailable)
+          ? wallDeliveryAvailable(params.wallConstructionReserve, params.wallConstructionPriority ?? "balanced", source.id, resource, sourceAvailable, params.charter)
           : sourceAvailable;
         if (available === 0) return [];
         const path = params.routes.fromBuildingToDestination(source.id, destination);
@@ -144,6 +147,7 @@ function treasuryCandidate(params: {
   readonly busyHomeIds: ReadonlySet<string>;
   readonly wallConstructionReserve?: WallConstructionReserve;
   readonly wallConstructionPriority?: WallConstructionPriority;
+  readonly charter: { readonly wait: CharterTimberWait; readonly townStock: number };
 }): TreasurySiteCandidate | null {
   if (params.treasuryTimber <= 0) return null;
   const homes = [...params.buildings]
@@ -157,7 +161,7 @@ function treasuryCandidate(params: {
     const missing = amountOf(constructionDeliveryNeed(site), "timber");
     if (missing === 0) continue;
     const available = site.kind === "palisade_segment" || site.kind === "stone_wall_segment"
-      ? wallDeliveryAvailable(params.wallConstructionReserve, params.wallConstructionPriority ?? "balanced", "treasury", "timber", params.treasuryTimber)
+      ? wallDeliveryAvailable(params.wallConstructionReserve, params.wallConstructionPriority ?? "balanced", "treasury", "timber", params.treasuryTimber, params.charter)
       : params.treasuryTimber;
     if (available <= 0) continue;
     const destination = siteDestination(site);
@@ -177,6 +181,19 @@ function treasuryCandidate(params: {
   return nearestWallCandidate(candidates, params.routes);
 }
 
+/** FIX-16: whether the next charter building waits for timber, and the town's timber (buildings and treasury). */
+export function charterTimberContext(params: {
+  readonly buildings: readonly Building[];
+  readonly constructionSites: readonly ConstructionSite[];
+  readonly inventory: DeliveryInventoryPort;
+  readonly treasuryTimber: number;
+}): { readonly wait: CharterTimberWait; readonly townStock: number } {
+  const wait = charterTimberWait(params.buildings, params.constructionSites, kind => BUILDING_CONFIG_BY_KIND[kind].buildCost.timber ?? 0);
+  if (wait.wallSharePermille >= 1_000) return { wait, townStock: 0 };
+  const townStock = params.buildings.reduce((sum, building) => sum + params.inventory.availableStock(building, "timber"), 0) + Math.max(0, params.treasuryTimber);
+  return { wait, townStock };
+}
+
 export function spawnSiteDelivery(params: {
   readonly tick: number;
   readonly buildings: readonly Building[];
@@ -188,12 +205,14 @@ export function spawnSiteDelivery(params: {
   readonly wallConstructionReserve?: WallConstructionReserve;
   readonly wallConstructionPriority?: WallConstructionPriority;
 }): DeliveryStepResult | null {
+  const charter = charterTimberContext(params);
   const candidates = siteCandidates({
     sites: params.constructionSites,
     buildings: params.buildings,
     routes: params.routes,
     inventory: params.inventory,
     busyHomeIds: params.busyHomeIds,
+    charter,
     ...(params.wallConstructionReserve === undefined ? {} : { wallConstructionReserve: params.wallConstructionReserve }),
     ...(params.wallConstructionPriority === undefined ? {} : { wallConstructionPriority: params.wallConstructionPriority }),
   });
@@ -256,6 +275,7 @@ export function spawnSiteDelivery(params: {
     routes: params.routes,
     treasuryTimber: params.treasuryTimber,
     busyHomeIds: params.busyHomeIds,
+    charter,
     ...(params.wallConstructionReserve === undefined ? {} : { wallConstructionReserve: params.wallConstructionReserve }),
     ...(params.wallConstructionPriority === undefined ? {} : { wallConstructionPriority: params.wallConstructionPriority }),
   });
