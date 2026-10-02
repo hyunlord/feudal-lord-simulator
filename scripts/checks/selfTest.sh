@@ -4,7 +4,8 @@
 # trunk are refused for each violation kind (pin without decision, lint exception without "// why:", native control
 # in src/ui, type error, inbox ledger replaced_by that is not a ledger row, a simulation folder importing src/ui,
 # a new Korean string outside *.ko.ts, a new ledger row with another row's sha256 and no canonical mark or a mark
-# naming other bytes, an inbox image without a ledger row or a row whose image moved away) and pass for their fixed
+# naming other bytes, an inbox image without a ledger row or a row whose image moved away, a new inbox JPG outside
+# Git LFS) and pass for their fixed
 # versions, ordinary changes and work branches.
 # Needs npm ci here.
 set -u
@@ -13,6 +14,7 @@ T=$(mktemp -d /tmp/fls-review1-gate.XXXXXX)
 TRUNK=codex/phase15-organic-ground
 cd "$T" && git init -q --bare remote.git && git init -q -b "$TRUNK" work && cd work
 git config user.email gate@test; git config user.name gate
+git config lfs.allowincompletepush true   # case 14b pushes an LFS pointer whose object this throwaway repo never had
 mkdir -p scripts tools/eslint src/ui/kit src/engine seeds docs/decisions tests assets-inbox
 cp -R "$REPO/scripts/checks" "$REPO/scripts/git-hooks" scripts/
 cp "$REPO"/tools/eslint/{package.json,package-lock.json,eslint.config.mjs,uiControls.mjs,layers.mjs} tools/eslint/
@@ -47,7 +49,7 @@ pass=0; fail=0
 try() { # try <name> <expect: refused|passes> <push args...>
   local name=$1 expect=$2; shift 2
   if "$@" > "$T/out" 2>&1; then got=passes; else got=refused; fi
-  local reason; reason=$(grep -hE "NOROW|NOFILE|MISSING|UNMARKED|BADMARK|no-restricted-syntax|no-restricted-imports|refused a push|error TS|FAILED" "$T/out" | head -2 | sed 's/^ *//' | cut -c1-110 | tr '\n' ' ')
+  local reason; reason=$(grep -hE "NOTLFS|NOROW|NOFILE|MISSING|UNMARKED|BADMARK|no-restricted-syntax|no-restricted-imports|refused a push|error TS|FAILED" "$T/out" | head -2 | sed 's/^ *//' | cut -c1-110 | tr '\n' ' ')
   if [ "$got" = "$expect" ]; then pass=$((pass+1)); mark=OK; else fail=$((fail+1)); mark=WRONG; fi
   printf '%-5s %-58s %-8s %s\n' "$mark" "$name" "$got" "$reason"
 }
@@ -110,6 +112,10 @@ branch move; mkdir -p assets-inbox/retired && git mv assets-inbox/w1/a-v1.png as
 try "13 image moved, its row still names the old path" refused trunk_push
 perl -pi -e 's{^w1,w1/a-v1\.png,}{w1,retired/a-v1.png,}; s{,w1/a-v1\.png,}{,retired/a-v1.png,}g' assets-inbox/INBOX_LEDGER.csv; commit "row follows"
 try "13b the row follows the file"                     passes  trunk_push
+branch jpg; img w3/scene.jpg; printf 'w3,w3/scene.jpg,66,confirmed,,,\r\n' >> assets-inbox/INBOX_LEDGER.csv; commit "plain jpg"
+try "14 new inbox JPG stored as plain bytes"           refused trunk_push
+git rm -q --cached assets-inbox/w3/scene.jpg && printf 'version https://git-lfs.github.com/spec/v1\noid sha256:%064d\nsize 2048\n' 6 > assets-inbox/w3/scene.jpg; commit "as LFS pointer"
+try "14b the same JPG as an LFS pointer"               passes  trunk_push
 echo "gate: $pass as expected, $fail wrong"
 cd / && rm -rf "$T"
 [ "$fail" = 0 ]
