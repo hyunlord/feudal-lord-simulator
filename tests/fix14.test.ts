@@ -12,6 +12,8 @@ import { HOME_ESTATE_ID } from "../src/content/estateConfig";
 import { LORD_SLICE_FACTIONS, LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
 import { HOME_PETITION_KINDS, PETITION_ANSWER_TICKS, PETITION_KINDS } from "../src/content/stewardshipConfig";
 import { autoplayEraAction } from "../src/engine/autoplayEra";
+import { MARKET_CADENCE_TICKS } from "../src/engine/marketSettlement";
+import { advanceTimberTrade, botTimberOrderFor, orderTimber, timberTradePoint } from "../src/engine/timberTrade";
 import type { GameState } from "../src/engine/engine.types";
 import { estatesOf, LORD } from "../src/engine/estates";
 import { historySummary } from "../src/engine/history";
@@ -120,15 +122,23 @@ test("SW-12 the steward answers by precedent a kind the lord answered there befo
   assert.ok(PETITION_ANSWER_TICKS > 0);
 });
 
-test("FX13-5 (가) the charter waiting on timber the town cannot store: the era step orders the shortfall from the traders (FIX-10's rule); not while its sawmills work", () => {
+test("FX13-5 (가) the charter waiting on timber the town cannot store: the era step orders the shortfall (FIX-10's rule); a hamlet has no market yet, so the traders cart it to its storehouse (TT-5); not while its sawmills work", () => {
   const saved = decodeSave(new Uint8Array(readFileSync("fixtures/saves/v45/population-176.save.json"))).envelope.state as GameState;
-  const market = (decodeSave(new Uint8Array(readFileSync("fixtures/saves/v45/chapter-two-town.save.json"))).envelope.state as GameState).buildings.find(building => building.kind === "market")!;
-  const idle: GameState = { ...saved, buildings: [...saved.buildings, market], constructionSites: [], treasuryCoin: 5_000,
+  assert.equal(saved.era, "hamlet");
+  assert.ok(!saved.buildings.some(building => building.kind === "market"), "no market before the charter");
+  const idle: GameState = { ...saved, constructionSites: [], treasuryCoin: 5_000,
     timberProductionWindow: { startTick: saved.tick - 2_400, throughTick: saved.tick, produced: 0, productionTicks: [] } };
   const build = () => ({ kind: "none" as const });
   const action = autoplayEraAction(idle, build);
-  assert.equal(action.kind, "order_timber");
-  assert.ok(action.kind === "order_timber" && action.amount > 0);
+  assert.ok(action.kind === "order_timber" && action.amount > 0, JSON.stringify(action));
   const working = { ...idle, timberProductionWindow: { ...idle.timberProductionWindow!, produced: 12 } };
   assert.equal(autoplayEraAction(working, build).kind, "none");
+  // The sandbox bot's own orders still need a market (TT-4b unchanged).
+  assert.equal(botTimberOrderFor(idle, 250), null);
+  // Delivered on the market cadence at the hamlet's storehouse, into the treasury's timber.
+  assert.equal(timberTradePoint(idle)?.kind, "storehouse");
+  let ordered = orderTimber({ ...idle, tick: Math.ceil(idle.tick / MARKET_CADENCE_TICKS) * MARKET_CADENCE_TICKS - 1 }, action.kind === "order_timber" ? action.amount : 0);
+  ordered = { ...ordered, tick: ordered.tick + 1 };
+  const delivered = advanceTimberTrade(ordered);
+  assert.ok(delivered.treasuryTimber > ordered.treasuryTimber, `${ordered.treasuryTimber} → ${delivered.treasuryTimber}`);
 });

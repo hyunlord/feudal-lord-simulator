@@ -28,11 +28,20 @@ export function timberTradeMarket(state: GameState) {
   return completedMarkets(state.buildings)[0] ?? null;
 }
 
+/**
+ * FIX-14 (TT-5): where the traders deliver — the trading market, or, in a hamlet (no market before the market charter),
+ * its first storehouse (the traders cart it from a neighbouring market on the market cadence).
+ */
+export function timberTradePoint(state: GameState) {
+  return timberTradeMarket(state) ?? (state.era === "hamlet"
+    ? [...state.buildings].filter(building => building.kind === "storehouse").sort((a, b) => a.id.localeCompare(b.id))[0] ?? null : null);
+}
+
 /** TT-2, TT-3: a market day's delivery of the standing order. */
 export function advanceTimberTrade(state: GameState): GameState {
   const order = state.timberOrder ?? 0;
   if (order <= 0 || state.tick <= 0 || state.tick % MARKET_CADENCE_TICKS !== 0) return state;
-  const market = timberTradeMarket(state);
+  const market = timberTradePoint(state);
   if (market === null) return state;
   const brought = Math.min(order, TIMBER_TRADE_BALANCE.perMarketDay, Math.floor(Math.max(0, state.treasuryCoin) / TIMBER_TRADE_BALANCE.price));
   if (brought <= 0) return state;
@@ -59,6 +68,22 @@ export function botTimberOrder(state: GameState): number | null {
   const affordable = Math.floor((state.treasuryCoin - TIMBER_TRADE_BALANCE.botCoinReserve) / TIMBER_TRADE_BALANCE.price);
   const amount = Math.min(need, affordable, TIMBER_TRADE_BALANCE.maxOrder);
   return amount >= TIMBER_TRADE_BALANCE.perMarketDay ? amount : null;
+}
+
+/**
+ * FIX-14 (TT-5, decision FX13-5 (가)): the market charter waits on timber the town cannot reach (its sawmills made none in
+ * the last window: the receivers full) — TT-4b's shortfall and reserve, delivered at the trade point (a hamlet's storehouse).
+ */
+export function charterTimberOrder(state: GameState, timberNeeded: number): number | null {
+  if ((state.timberOrder ?? 0) > 0 || timberTradePoint(state) === null) return null;
+  const production = state.timberProductionWindow;
+  if (production === undefined || production.produced > 0 || state.tick - production.startTick < 2399
+    || !state.buildings.some(building => building.kind === "sawmill")) return null;
+  const shortfall = timberNeeded - placementSpendableResource(state, "timber");
+  if (shortfall <= 0) return null;
+  const affordable = Math.floor((state.treasuryCoin - TIMBER_TRADE_BALANCE.botCoinReserve) / TIMBER_TRADE_BALANCE.price);
+  const amount = Math.min(Math.max(shortfall, TIMBER_TRADE_BALANCE.perMarketDay), TIMBER_TRADE_BALANCE.maxOrder);
+  return amount <= affordable ? amount : null;
 }
 
 /**
