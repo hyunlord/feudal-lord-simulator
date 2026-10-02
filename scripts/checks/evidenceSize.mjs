@@ -3,7 +3,8 @@
 // 17 MB of regression-bundle output that no check saw (2026-10-02).
 // Not counted: replay captures (rule 1: "재플레이 캡처 별도" — any path with "replay" in it) and the committed DGX
 // ui-geometry results docs/verification/uiaudit1/geometry/, which check:merge itself reads and which grow by one run
-// per UI task. Git LFS files count at their real size (the pointer's "size" line).
+// per UI task, and the perf-trend page docs/verification/perf-trend/ (generated per trunk commit, ~10 KB each; the
+// post-merge hook commits it). Git LFS files count at their real size (the pointer's "size" line).
 // Folders already over the limit are listed in evidence-size-baseline.json with their size then; they may not grow
 // past it, and the list only shrinks. Reads git objects only.
 import { execFileSync } from 'node:child_process';
@@ -15,7 +16,7 @@ import { changedFiles } from './gitRange.mjs';
 export const EVIDENCE_ROOT = 'docs/verification';
 export const EVIDENCE_LIMIT_BYTES = 3 * 2 ** 20;
 export const EVIDENCE_BASELINE_FILE = join(dirname(fileURLToPath(import.meta.url)), 'evidence-size-baseline.json');
-const EXEMPT = [/^docs\/verification\/uiaudit1\/geometry\//, /replay/i];
+const EXEMPT = [/^docs\/verification\/uiaudit1\/geometry\//, /^docs\/verification\/perf-trend\//, /replay/i];
 
 /** docs/verification/<task> for a path inside a task folder, else null (files right under docs/verification). */
 export function evidenceFolder(path) {
@@ -60,7 +61,7 @@ const mib = bytes => `${(bytes / 2 ** 20).toFixed(2)} MB`;
 export function formatEvidenceResult({ folders, over }) {
   if (folders.length === 0) return 'evidence: no docs/verification/<task>/ folder changed';
   if (over.length === 0) return `evidence: ${folders.length} folder(s) changed, each within its limit (${folders.map(row => `${row.folder.slice(EVIDENCE_ROOT.length + 1)} ${mib(row.bytes)}`).join(', ')}; 3 MB = 3 × 2^20 bytes)`;
-  return [`evidence: FAILED — ${over.length} evidence folder(s) over 3 MB (AGENTS.md rule 1; replay captures and uiaudit1/geometry not counted):`,
+  return [`evidence: FAILED — ${over.length} evidence folder(s) over 3 MB (AGENTS.md rule 1; replay captures, uiaudit1/geometry and perf-trend not counted):`,
     ...over.flatMap(row => [`  ${row.folder} ${mib(row.bytes)} > ${mib(row.allowed)}; largest:`,
       ...row.files.slice(0, 5).map(file => `    ${mib(file.bytes)} ${file.path}`)]),
     '  Keep summaries and a few JPEGs; leave bulk output out of git (or in .remote-runs) and say where it is in the report.'].join('\n');

@@ -12,6 +12,7 @@ test("a task folder is docs/verification/<task>; replay captures and the geometr
   assert.equal(evidenceFolder("docs/qa/round17/a.jpg"), null);
   assert.equal(isExempt("docs/verification/uiaudit1/geometry/render-x/geometry.json"), true);
   assert.equal(isExempt("docs/verification/nat4/ui6/gates/replay/replay.json"), true);
+  assert.equal(isExempt("docs/verification/perf-trend/data/abc.json"), true);
   assert.equal(isExempt("docs/verification/nat4/world/run03-forest.jpg"), false);
   assert.equal(EVIDENCE_LIMIT_BYTES, 3 * 1024 * 1024);
   assert.ok(Object.keys(loadEvidenceBaseline()).every(folder => evidenceFolder(`${folder}/x`) === folder));

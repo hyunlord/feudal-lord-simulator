@@ -23,7 +23,7 @@
 //                                                    commits (logged to <git common dir>/fls-trend-lag.log)
 // 11. evidence    scripts/checks/evidenceSize.mjs    every docs/verification/<task>/ folder the range touches holds
 //                                                    at most 3 MB (2^20) at <head>, replay captures and the committed
-//                                                    ui-geometry results not counted (AGENTS.md rule 1, decision RR10)
+//                                                    ui-geometry results and perf-trend page not counted (rule 1, RR10)
 // The layer rule (simulation folders do not import src/ui or src/render) is an ESLint rule: tools/eslint/layers.mjs.
 // 1, 2, 5, 6, 8, 9 and 11 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
 // changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules; step 7
