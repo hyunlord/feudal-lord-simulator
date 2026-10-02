@@ -1,0 +1,27 @@
+{
+  "id": "ck_evt_020",
+  "tool": "image_gen__imagegen",
+  "prompt": "Use case: historical-scene. Finished LANDSCAPE16:9 event card illustration,960x540 target. References STYLE ONLY richly textured painterly historical realism, oak/wool/linen, quiet muted earthpigments. Completely new LOW FLOOR-LEVEL DEEP DOORWAY composition, English manor treasury circa1335 winter evening. The object of an early annuity request is a LOCKED iron-banded timber money chest on the stone floor. From inside the dark narrow treasury looking OUT through a thick stone doorway, large LOCKED CLOSED CHEST occupies the near-left foreground and halfheight; dark wood door partly open behind it creates narrow deep aperture. Two adults appear smaller at threshold on right: elderly female relative in plain wool mantle and linen wimple extends a visibly EMPTY open leather purse toward a sober receiver who holds an iron key poised, still well away from the chest lock. Receiver listening, relative appealing, neither key nor purse touching chest. No transfer yet. Clear distinction closed treasury assets versus empty purse, threshold distance and long pale winter light from upperleft doorway across stone flags. Early14th-century loose tunic, mantle, coif; believable faces and hands. Warm candle glow from one small wall candle inside, cold dusk outer corridor, no fires or chimney. No papers, ledgers, scrolls, books, tablets, desk, table, writing, numbers, logo, watermark, caption, borders. No modernsafe, no treasure overflowing, no coins scattered, no luxurious modern furniture. One finished wide image, no collage.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/09_common_pasture.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2/exec-ffefd252-a385-46b0-a496-bbe92ed7a0fc.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-ac92-7d13-b986-0759c88588c2/exec-ffefd252-a385-46b0-a496-bbe92ed7a0fc.png",
+  "visual_qa": "Pass: low floor angle locked chest foreground, deep doorway aperture, smaller older relative with empty purse/receiver key held distant; no completed payout, paper/table/text/watermark/chimney; plausible anatomy.",
+  "raw_dimensions": [
+    1672,
+    941
+  ],
+  "output_file": "assets/ck_evt_020.jpg",
+  "raw_sha256": "26aad5d3802e1ee5e0b90d381717a102a356af3d3582dd6b69d715b7218278d3",
+  "sha256": "cf878ffe1f3c1ee67a28757ccb1c3be7df305a10eb4c44f9f2b49f205dd059af",
+  "dimensions": [
+    960,
+    540
+  ],
+  "final_file": "assets/ck_evt_020.jpg",
+  "final_sha256": "cf878ffe1f3c1ee67a28757ccb1c3be7df305a10eb4c44f9f2b49f205dd059af",
+  "status": "candidate",
+  "revision_action": "regenerate"
+}

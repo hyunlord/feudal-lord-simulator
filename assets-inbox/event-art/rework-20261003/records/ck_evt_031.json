@@ -1,0 +1,36 @@
+{
+  "id": "ck_evt_031",
+  "prompt": "Use case: historical-scene. Finished event-card illustration for Charter & Kin, Southern England. WIDE LANDSCAPE 16:9 image, full bleed, no borders. Use attached project illustrations ONLY for naturalistic painterly rendering, warm muted ochre oak and cream, believable humans and materials, soft hand-painted edges, coherent light. Create an entirely NEW composition, never copy reference poses or setting. No writing, lettering, watermark, signature, number, paper, document, scroll, desk, or table. No modern clothing, rubber, metal modern tools, fantasy props, black-white Tudor decoration, chimney on ordinary houses. Historic wool/linen, natural skin variations, leather turnshoes. Final composition should read at 960x540. Year 1367, cold clear winter morning, no snow. CHOOSING A CAPABLE OR LOYAL STEWARD: broad rear-view outdoor V composition from a low grassy rise. Lord in foreground CENTER seen from BEHIND, dark muted burgundy cloak, head and back visible from waist up, observing TWO distinct steward candidates below on opposite sides. LEFT middle ground: practical clever candidate crouches beside an upright round wooden grain measure and sacks, carefully matching split wooden tally sticks across his knees, while one tenant waits. RIGHT middle ground: loyal candidate in simple well-kept fitted wool coat stands attentively looking up toward lord, holding ONE large iron estate key in his open palm, no bowing excessively. The key candidate separated by open yard space from tally candidate; the lord's vantage and two diverging groups form clear V. No desks, tables, documents, papers, books, scrolls, floating game symbols, modern marks. FOUR people total. Bare orchard trees, fallow fields and small thatched barn with NO chimney in background. Realistic scale of grain measure, key and people; winter morning soft upper-left sunlight, warm oak plus cool muted earth.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/01_boundary_dispute.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg"
+  ],
+  "revision": "v2 subject/action replacement",
+  "tool": "builtin image_gen",
+  "status": "candidate",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda7-26fb-7f63-9b3a-d1c1c30b2d93/exec-ee1732e9-7263-4ad4-af03-f8d942511dbb.png",
+  "raw_size": [
+    1672,
+    941
+  ],
+  "raw_sha256": "b9f22e9601d39e8b130632d419b074585df0cf95ee04b989e36ba7cf77eaf94b",
+  "file": "assets/ck_evt_031.jpg",
+  "sha256": "e12ab0691ab6057179de15d6916df94061670bc289164ea3672b8c7c99e9850f",
+  "visual_qa": {
+    "subject": "lord back view compares tally-sorting working candidate and attentive key-bearing candidate",
+    "composition": "large rear-view lord foreground separates two groups into broad V",
+    "no_documents": true,
+    "no_text_watermark": true,
+    "anatomy": "four coherent adults; tally grip, open palm with key, folded tenant hands",
+    "period": "1367 wool hoods/tunics cloak, thatched barn no chimney",
+    "conversion": "single Lanczos resize RGB JPEG quality85"
+  },
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda7-26fb-7f63-9b3a-d1c1c30b2d93 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda7-26fb-7f63-9b3a-d1c1c30b2d93/exec-ee1732e9-7263-4ad4-af03-f8d942511dbb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "reference_hashes": {
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/01_boundary_dispute.jpg": "7162f14d848c4f47264edcbb918718ac4b9e4f8ab808561090e449176639d411",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg": "746cf6ac22a07e38d9d335dfbbb7b80be6d5d436a0a799f7c0a9e93dd8926d3b"
+  },
+  "final_file": "assets/ck_evt_031.jpg",
+  "final_sha256": "e12ab0691ab6057179de15d6916df94061670bc289164ea3672b8c7c99e9850f",
+  "revision_action": "regenerate"
+}

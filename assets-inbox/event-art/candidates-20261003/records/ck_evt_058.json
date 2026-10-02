@@ -1,0 +1,39 @@
+{
+  "id": "ck_evt_058",
+  "status": "candidate",
+  "tool": "image_gen__imagegen",
+  "prompt": "Use case: historical-scene. Create one finished full-bleed landscape 16:9 event illustration for a medieval English market-town game. References are STYLE ONLY: warm painterly narrative realism, natural anatomy, soft brush-textured wood/wool/stone, ochre earthy browns and muted greens, lifelike characters as shown. No captions, NO letters, words, numerals, scribbles, watermark, borders or graphic panels. All parchment faces entirely blank; seals can be simple nonletter shapes. South England, period specified. No Tudor black-and-white framing, no modern clothes/objects, no ordinary cottage chimneys. Light coherent and soft, details visible at960x540. Distinct clear action and environment. Year1437 autumn early evening. Exactly FOUR adult men at an outdoor negotiation table in a timber-and-warm-plaster English inn courtyard, roofs out of frame. Left seated lord's receiver in sober blue long gown faces TWO merchant delegates seated together on right in russet and olive gowns and soft chaperons. Center standing BETWEEN receiver and merchants, a neighboring-family mediator in modest fine burgundy long gown gently SETS ONE substantial closed leather settlement purse on the otherwise sparse oak table, his free hand open to invite response. His dusty traveling cloak lies conspicuously over an empty chair beside him. TWO blank merchant response parchments lie by the merchant delegation. Receiver is considering collection or waiver of this SINGLE payment; merchants appeal with open hands. Not a quarrel between opposing merchants. Low side view along table, mediator and purse visually dominant; mellow late sunlight from upper left, ivy and cobbled courtyard beyond. No lettering, no stacked purses, no marriage symbols.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-3b1df090-35f7-4e07-add0-250b099e4ed5.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-3b1df090-35f7-4e07-add0-250b099e4ed5.png",
+  "visual_review": "Inspected generated image; key narrative action and blank documents pass.",
+  "revisions": [
+    {
+      "reason": "Remove two background people to retain four negotiation figures",
+      "prompt": "Edit this image only to remove the TWO distant background people at far left beside the produce stall. Replace those two background people with baskets and cobbled courtyard, preserving stall and horse. Exactly FOUR foreground negotiation men remain unchanged. Preserve faces, hands, clothes, the central one payment purse, blank reply papers, inn courtyard, lighting, composition and all other details. No new figures, no text.",
+      "input": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-e51c3d1a-7b4e-4e60-b3cc-4bcc00314622.png"
+    }
+  ],
+  "raw_size": [
+    1673,
+    940
+  ],
+  "final_file": "assets/ck_evt_058.jpg",
+  "raw_sha256": "751b3a5d75c3c0170251e1488b21e306201f283323bfb2ec742ce3fe3d831616",
+  "final_sha256": "05d31f32f1c0d51dc485cdc5b1e1932eb0821c2b39deb5ce80affc439ccbbeee",
+  "finalization": "Pillow RGB conversion and ImageOps.fit Lanczos960x540, JPEGquality85 optimize; no painting",
+  "initial_output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-e51c3d1a-7b4e-4e60-b3cc-4bcc00314622.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "initial_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-b2a2-7cb0-b1e2-e2fe43d4b82e/exec-e51c3d1a-7b4e-4e60-b3cc-4bcc00314622.png",
+  "reference_sha256": {
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg": "8bc8ce03711ddd155f8f82952752bc69204c9fc25555de2a3d6d8dcc6352be96",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg": "fee7ffe398177110f4a4df5788d886519dbe6b5e29f0214a500648b6493a4f42"
+  },
+  "initial_raw_sha256": "807b84cca797ec930a07bf31bcc90394d5f3572687b7277ca19b16c209ef32c5",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}

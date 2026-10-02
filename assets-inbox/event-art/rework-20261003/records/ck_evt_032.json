@@ -1,0 +1,32 @@
+{
+  "id": "ck_evt_032",
+  "mode": "builtin historical-scene",
+  "prompt": "Use case historical-scene. New complete wide 16:9 event-card illustration 960x540 for Charter & Kin. Both attached images are STYLE REFERENCES ONLY: match their warm subdued natural pigments, painterly detailed historical storytelling, tactile wool oak limestone and natural anatomy, but make new scene/composition. Southern England autumn afternoon AD1368. LOW WIDE FIELD VIEW: rough ancient uninscribed boundary stone large in foreground at center, furrows and grass lead into hedgerow behind. TWO distinct groups each bring an elderly witness: left small group of two a landholder and grey-haired witness who points along hedge, right small group of two a landholder and old woman witness who indicates stone. Four people total, full figures comparatively small enough that LANDSCAPE and BOUNDARY STONE are subject. A simple measuring cord lies taut from stone to hedge. Both sides calmly give different testimony, no violence. Central open interval around stone gives clear spatial disagreement, horizons varied green-and-brown rolling field. Afternoon light from upper left. Mid14thcentury simple fitted wool tunics, modest kirtle with white linen coif, cloth hoods and leather turnshoes. No indoor meeting, NO desks, NO tables, NO documents, NO scrolls, no books. No text, letters, numbers, marks on stone, crests, watermark or modern items. No houses, chimneys, fantasy castle. Show physical landscape over paperwork, warm pastoral painterly textures of references, edge-to-edge finished image.",
+  "references": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/09_common_pasture.jpg"
+  ],
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-f023-70e2-9eff-1954e37d7ad8/exec-c7154b63-d8c4-44d8-b5a8-35e090af5dbb.png",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-f023-70e2-9eff-1954e37d7ad8 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fda6-f023-70e2-9eff-1954e37d7ad8/exec-c7154b63-d8c4-44d8-b5a8-35e090af5dbb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "output_path": "/tmp/astra-event-illustrations-20261003-v2/assets/ck_evt_032.jpg",
+  "visual_qa": {
+    "reviewer": "events_v2_b",
+    "passed": true,
+    "notes": "Landscape/boundary stone dominates. Two witness groups of two stand separately and point out boundaries. No paper/table/letters/watermark or buildings. Anatomically plausible. Four people intentionally fulfills two parties each with witness; source plan count3 corrected to4."
+  },
+  "raw_size": [
+    1672,
+    941
+  ],
+  "raw_sha256": "685213b788dadf57110c43ab5804bf8b99eab57786843a345a6485b8aacd8e2e",
+  "output_sha256": "d0906ef9738869c63e08fa7960f002d0a89d24128d21fecca31638ba506827b1",
+  "output_size": [
+    960,
+    540
+  ],
+  "format": "JPEG RGB quality85",
+  "final_file": "assets/ck_evt_032.jpg",
+  "final_sha256": "d0906ef9738869c63e08fa7960f002d0a89d24128d21fecca31638ba506827b1",
+  "status": "candidate",
+  "revision_action": "regenerate"
+}

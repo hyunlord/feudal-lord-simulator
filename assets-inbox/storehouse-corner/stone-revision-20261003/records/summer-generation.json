@@ -1,0 +1,18 @@
+{
+  "rawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fb40-94e1-76f0-90ee-e023e6693a0b/exec-01e8aae4-fd22-4a25-9c84-34850a0c575c.png",
+  "prompt": "EDIT image1 ONLY: this existing small Y-shaped corner stone gate pier sprite. Keep EXACT silhouette, canvas aspect 256x320, location, foot anchor at(127,268), proportions, all transparent margins, isometric camera, left-upper lighting, and short two return beams. Change MATERIAL ONLY. Image2 is the neighboring gate material reference. Image3 is actual wall scene: match the DARKER WEATHERED NEUTRAL GRAY stone wall belt, not pale cream ashlar. Current image1 is unacceptably bright beige with oversized toy bricks. Repaint all stone in subdued cool-neutral gray, low saturation, target midtone RGB roughly(108,108,101), light surfaces about(133,133,124), shaded surfaces(78,81,77). No cream/yellow highlights, no bright outline. Use MANY much SMALLER tightly packed irregular rectangular rubble stones, each about half the current linear stone size, about 24-30 uneven courses along shaft rather than the current 11 large blocks. Quiet fine low-contrast mortar, slightly rough weathering. Keep cap coping scale modest with fine joints, no giant bright blocks. Lower local contrast so sprite blends into neighboring dense wall texture at actual world scale. ART_BIBLE_v2 soft painted prerendered 2:1 isometric medieval game. Summer dry, no snow. No ground, no scene, no extra structure, no geometry change. True transparent RGBA background, no text. Preserve exact framing and silhouette of image1.",
+  "references": [
+    "references/gate_corner_stone_summer-v1.png",
+    "references/stone_gate_v3_nwse-v1.png",
+    "references/ch5-gate-51-38-zoom1.4.jpg"
+  ],
+  "tool": "image_gen.imagegen",
+  "transparent_background": true,
+  "rawSha256": "a507c9572e021b1f3ad6979747414b55058e702da464d9005691477eb7c00882",
+  "rawCanvas": [
+    1122,
+    1402
+  ],
+  "packagedRaw": "records/raw-summer.png",
+  "model": "tool default, not exposed"
+}

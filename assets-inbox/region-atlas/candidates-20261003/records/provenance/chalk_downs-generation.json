@@ -1,0 +1,68 @@
+{
+  "status": "candidate",
+  "tool": "image_gen.imagegen",
+  "reference": "/Users/rexxa/fls-astra-mapkit-output/references/original-map.png",
+  "generations": [
+    {
+      "mapId": "chalk_downs-01",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd88-ad0a-7f22-b0cf-9fcc0b1f5886/exec-c7ee092a-f695-4be3-ace2-4824d08cada5.png",
+      "prompt": "Create ONE complete hand-painted regional map, landscape 1600x1000 aspect 8:5, for southern England 1300-1450. Reference image is STYLE ONLY: match its warm parchment ochre, muted olive woods, fine sepia contour hatching, soft watercolor, slightly oblique bird's-eye/isometric viewpoint, no horizon, left-top daylight. Continuous coherent landscape painting, never scattered modular stamps. No buildings, structures, settlement drawings, flags, text, labels, symbols, UI, grid or frame. Land itself fills entire canvas edge to edge. Rounded low South English chalk downs, NOT mountains or alpine peaks. Chalk scars creamy white, sparse mature broadleaf copses, grazing and strip fields organically follow contours. Leave at least24 generously sized naturally dry vacant meadow benches by connected old lanes, distributed irregularly throughout scene, no drawn circles or blank discs. Vacant benches must fit manor/village/market/abbey overlays later, but draw NONE now. Very little blue water, streams only. Distinct landscape01: one long diagonal chalk escarpment from northwest to southeast with gently rounded ridgeline; springline at its southwestern foot feeds several tiny converging rills toward lower left; ancient scarpfoot lane curves parallel to ridge, with cross-ridge saddle tracks. Valley grazing meadows broad on southwest, drier open plateau northeast. Make natural terrain interdependencies clear.",
+      "master": "masters/chalk_downs-01.png",
+      "masterSha256": "6387728a3463ec5f9014eafee26e1a0c5c43c2c966117fffe4bcbb9951f41221",
+      "image": "maps/chalk_downs-01.jpg",
+      "imageSha256": "122f34bc4b813680ebc8bb77bc1158d764061cea959054662b95c30438599fff",
+      "generatedDimensions": {
+        "width": 1586,
+        "height": 992
+      }
+    },
+    {
+      "mapId": "chalk_downs-02",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd88-ad0a-7f22-b0cf-9fcc0b1f5886/exec-9aefc405-c610-42bd-8344-00e344993ff5.png",
+      "prompt": "Create ONE complete hand-painted regional map, landscape 1600x1000 aspect 8:5, for southern England 1300-1450. Reference image is STYLE ONLY: match its warm parchment ochre, muted olive woods, fine sepia contour hatching, soft watercolor, slightly oblique bird's-eye/isometric viewpoint, no horizon, left-top daylight. Continuous coherent landscape painting, never scattered modular stamps. No buildings, structures, settlement drawings, flags, text, labels, symbols, UI, grid or frame. Land itself fills entire canvas edge to edge. Rounded low South English chalk downs, NOT mountains or alpine peaks. Chalk scars creamy white, sparse mature broadleaf copses, grazing and strip fields organically follow contours. Leave at least24 generously sized naturally dry vacant meadow benches by connected old lanes, distributed irregularly throughout scene, no drawn circles or blank discs. Vacant benches must fit manor/village/market/abbey overlays later, but draw NONE now. Very little blue water, streams only. Distinct landscape02: broad sinuous DRY valley runs west-east across middle, opposing low chalk spurs descend from north and south without closing valley. A single tiny spring brook begins in eastern third and exits right. Connected lanes follow valley floor and low saddles. Sparse elongated woods occupy sheltered combes, broad empty grazing benches between them.",
+      "master": "masters/chalk_downs-02.png",
+      "masterSha256": "d1d07ec304011b0a4158989817255529d7cc93272f4e2a4cedf2e6d39be303ac",
+      "image": "maps/chalk_downs-02.jpg",
+      "imageSha256": "d280a422dcdb1dffc7eb7c94f6851e44d5e5f5922c3ede8c0caa179732d3f636",
+      "generatedDimensions": {
+        "width": 1586,
+        "height": 992
+      }
+    },
+    {
+      "mapId": "chalk_downs-03",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd88-ad0a-7f22-b0cf-9fcc0b1f5886/exec-11a09591-daa9-4ea9-b9a1-1860b6cbe72c.png",
+      "prompt": "Create ONE complete hand-painted regional map, landscape 1600x1000 aspect 8:5, for southern England 1300-1450. Reference image is STYLE ONLY: match its warm parchment ochre, muted olive woods, fine sepia contour hatching, soft watercolor, slightly oblique bird's-eye/isometric viewpoint, no horizon, left-top daylight. Continuous coherent landscape painting, never scattered modular stamps. No buildings, structures, settlement drawings, flags, text, labels, symbols, UI, grid or frame. Land itself fills entire canvas edge to edge. Rounded low South English chalk downs, NOT mountains or alpine peaks. Chalk scars creamy white, sparse mature broadleaf copses, grazing and strip fields organically follow contours. Leave at least24 generously sized naturally dry vacant meadow benches by connected old lanes, distributed irregularly throughout scene, no drawn circles or blank discs. Vacant benches must fit manor/village/market/abbey overlays later, but draw NONE now. Very little blue water, streams only. Distinct landscape03: horseshoe of rounded low chalk downland curves around a broad central grazing basin, open toward east. Tiny spring-fed stream starts near southwest basin and exits east through gap; very small water coverage. Lanes curve around basin and branch into three saddle routes. Sparse woods cling to outer northern slopes, broad grassy dry settlement benches throughout.",
+      "master": "masters/chalk_downs-03.png",
+      "masterSha256": "075892836e7e7389acdf4c49747f05bd2d618677392890ca3339cc613797739b",
+      "image": "maps/chalk_downs-03.jpg",
+      "imageSha256": "c38995f2d84aa856f40735207dabc73b70f674779a2429220b283ee58512d992",
+      "generatedDimensions": {
+        "width": 1586,
+        "height": 992
+      }
+    },
+    {
+      "mapId": "chalk_downs-04",
+      "source": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd88-ad0a-7f22-b0cf-9fcc0b1f5886/exec-c41f719d-c6c6-4d9c-81a2-499507762f2a.png",
+      "prompt": "Create ONE complete hand-painted regional map, landscape 1600x1000 aspect 8:5, for southern England 1300-1450. Reference image is STYLE ONLY: match its warm parchment ochre, muted olive woods, fine sepia contour hatching, soft watercolor, slightly oblique bird's-eye/isometric viewpoint, no horizon, left-top daylight. Continuous coherent landscape painting, never scattered modular stamps. No buildings, structures, settlement drawings, flags, text, labels, symbols, UI, grid or frame. Land itself fills entire canvas edge to edge. Rounded low South English chalk downs, NOT mountains or alpine peaks. Chalk scars creamy white, sparse mature broadleaf copses, grazing and strip fields organically follow contours. Leave at least24 generously sized naturally dry vacant meadow benches by connected old lanes, distributed irregularly throughout scene, no drawn circles or blank discs. Vacant benches must fit manor/village/market/abbey overlays later, but draw NONE now. Very little blue water, streams only. Distinct landscape04: two long gently rolling parallel chalk downs trend northwest-southeast separated by branching dry combes. Southernmost combes drain into a small chalkstream crossing lower quarter west-east. Ridge paths and valley paths meet at saddles; small hedged stripfields at sheltered feet, sparse irregular woodland in northeastern corner. Generous empty dry meadows between lanes and slopes.",
+      "master": "masters/chalk_downs-04.png",
+      "masterSha256": "972af96098c9a2893125773be632e4a141baf73db6d127cdf6985ee406ca70f0",
+      "image": "maps/chalk_downs-04.jpg",
+      "imageSha256": "9cc071f13f9e99b26033c87483f27ad1e58191987f753d2f46fc3ed0f6a60e7f",
+      "generatedDimensions": {
+        "width": 1586,
+        "height": 992
+      }
+    }
+  ],
+  "referenceSha256": "54d6ad354a71de8ace6a1029dc163b3758ff9a6330e7b030318661e961db71c8",
+  "export": {
+    "width": 1600,
+    "height": 1000,
+    "fit": "fill",
+    "jpegQuality": 92,
+    "chromaSubsampling": "4:4:4",
+    "sharpVersion": "0.34.5"
+  }
+}

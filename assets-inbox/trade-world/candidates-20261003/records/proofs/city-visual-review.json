@@ -1,0 +1,1738 @@
+{
+  "reviewer": "independent AI visual reviewer; not external human approval",
+  "reviewed_at_utc": "2026-10-02T17:46:00.444779+00:00",
+  "verdict": "PASS_STATIC_COMPOSITION",
+  "scope": "10 offline city compositions, all 60 unique added sprites; 10 resize proxies; source image directly viewed",
+  "confidence": "high for visible static placement; medium for artistic scale/light judgement",
+  "source_provenance": "Older actual 1380 spring runtime capture. These additions are offline compositions. 0.6 views are resized proxies, not engine captures. Historical person ruler approximately 19px.",
+  "initial_review": {
+    "verdict": "REVISE",
+    "old_proof_hashes": null,
+    "hash_limitation": "Initial failing images were overwritten before SHA capture; findings derive from direct views in this review session. Do not present final hashes as initial evidence.",
+    "findings": [
+      {
+        "slot": "A4",
+        "foot_px": [
+          465,
+          573
+        ],
+        "specific_pages": [
+          2,
+          6
+        ],
+        "issue": "Tall workshop beam/forge canopy visually abutted mill lower wall/base; not safely freestanding.",
+        "fix": "Moved every A4 yard to (465,600).",
+        "final_status": "resolved by direct re-view of all ten final images"
+      },
+      {
+        "slot": "A7",
+        "foot_px": [
+          1140,
+          869
+        ],
+        "pages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "issue": "Yard contents on or merging into southeast field hedge/crop edge; canopy examples pages2,6,8 particularly clear.",
+        "fix": "Moved every A7 yard to (1170,910).",
+        "final_status": "resolved by direct re-view of all ten final images"
+      }
+    ]
+  },
+  "remaining_limits": [
+    "No installed runtime rendering, movement, collision, navigation, animation, DPR, native zoom 0.6 LOD, or depth-occlusion test.",
+    "Only six sprites per page on the same old scene; no dense simultaneous 60-sprite stress case.",
+    "Tiny occupational pictograms are not reliably distinguishable at 0.6 proxy; silhouette/clutter judgment only.",
+    "Front A objects occupy open dirt near a road connection; pass is visual separation, not walkability permission.",
+    "Shade/light match is qualitative. No calibrated photometric or ground-contact-shadow measurement.",
+    "JPEG city proofs cannot certify original PNG alpha integrity.",
+    "Candidate review only; no external human acceptance."
+  ],
+  "viewed_files_sha256": {
+    "references/city/city-1380-spring-z1-source.png": "a628b1720ff2b3cafd68fe8552274ca5518d567a4a6247d64aaceb177960459f",
+    "provenance/CITY_SOURCE.md": "9b7bb1b47ce023703c86e08147e3f54df59ad0c113689444ed5639aedcb560ec",
+    "proofs/city/placements.json": "af5a66c03f19ab7136807d1e354bdfb509004721a3712fec95bc565afca7b534",
+    "proofs/city/after-01-z1.jpg": "94dd43a76a7e3521d084df70d792eb5af56694f711449a986737c0249c6d62db",
+    "proofs/city/after-01-z06-proxy.jpg": "e57c96088314e0dc222159529e7d3d667ebece6d3a6fe3601eea77962747ecec",
+    "proofs/city/after-02-z1.jpg": "26f2978e3a00eb9fe2cc221b30fb0094ee018be4e589c445e4ca5be7d98d8522",
+    "proofs/city/after-02-z06-proxy.jpg": "2fef1428b9fb16ff101f9b8d8d1ce174fc2463ac5bf1745df8db059d2c1f5967",
+    "proofs/city/after-03-z1.jpg": "f4588ba4d47822bd2f78344b542b148ee021ab53814ef3e2004b4be7c7a6efcc",
+    "proofs/city/after-03-z06-proxy.jpg": "079974ad56fed4ce4f6b86488d2212fc4ce9c7d7ee5167a50e41cacaf864cb6b",
+    "proofs/city/after-04-z1.jpg": "8634ecf2f9e3ac1c307cc62e33762a6285063c6bee089d2a2ebe4dace90b2aad",
+    "proofs/city/after-04-z06-proxy.jpg": "f2b55dab87a0d42311499e80e26e90dda65ac6abe78bf15363468c905864bdca",
+    "proofs/city/after-05-z1.jpg": "7fe8e0435829bf93e0d8131ed72556a8152870ae03644cb0f5d83022599b19bd",
+    "proofs/city/after-05-z06-proxy.jpg": "e8871e431e33dea7182d9ec08f94b873d50ba5cab384754a3cfdb409cdb377a7",
+    "proofs/city/after-06-z1.jpg": "666a15f2ce1527078bd4e010842c5458d2db6e9a41318c47c9c4b9bb8a38fe41",
+    "proofs/city/after-06-z06-proxy.jpg": "49a6a9d2156cb118346bcb8787e2593289dc3ca4a6bba72518888e925fdd9a5c",
+    "proofs/city/after-07-z1.jpg": "7f8166bf790998d5268e7e2fcf0e8ce4cd7f130baaff07bfce194a2858a6bc4c",
+    "proofs/city/after-07-z06-proxy.jpg": "d837c4530fe4fa5c7bc356af0615a9c29c9ab022b0a6450011ed3759bcedc425",
+    "proofs/city/after-08-z1.jpg": "e5c95bd04eb568b4b5c2d75a990580643cc73b8141d66bb92ae1d9cc6ad1348b",
+    "proofs/city/after-08-z06-proxy.jpg": "4a5f8778927f9c559a513fc46009e72b36519952c816b7ba8a26becb61122ac2",
+    "proofs/city/after-09-z1.jpg": "4977ae71af8162cc348ad716ad78b0d10c53891f4c7091486b041cd6868b254b",
+    "proofs/city/after-09-z06-proxy.jpg": "57f21a54ff3e47906507bd9829f04a3a39f3c37b106f0e5b05479c60c0281d0c",
+    "proofs/city/after-10-z1.jpg": "313e7f2da3025af41e2c08b8335f879ec492fee097217235dc0c9e6cdf25afec",
+    "proofs/city/after-10-z06-proxy.jpg": "cdaa707e60694cd531beff0747c29b8e3138ada3911f7dabb461c3b70cee2787",
+    "provenance/asset_anchors.json": "24a9b66e963b639014b47e3cb61845f65fb123d482392c45fcdab055ce1334f5"
+  },
+  "placements": [
+    {
+      "page": 1,
+      "asset_id": "yard_street_front_shop_a_summer",
+      "foot_px": [
+        465,
+        600
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        433,
+        567,
+        497,
+        603
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "방앗간·길과 떨어진 잔디. 수정 후 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 1,
+      "asset_id": "yard_street_front_shop_b_summer",
+      "foot_px": [
+        1170,
+        910
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        1138,
+        877,
+        1202,
+        913
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "밭과 곡창 아래 잔디. 수정 후 울타리·작물과 분리, 지도 가장자리 안쪽에 전부 남음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 1,
+      "asset_id": "front_butcher_a",
+      "foot_px": [
+        860,
+        804
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        840,
+        779,
+        870,
+        806
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "남쪽 작은 집 앞 흙마당. 집·인물·작물 줄과 분리. 길 연결부의 소품으로 보이며 통행 가능 여부는 미검증.",
+      "source_anchor": [
+        82,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 1,
+      "asset_id": "front_butcher_b",
+      "foot_px": [
+        1523,
+        474
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        1507,
+        449,
+        1538,
+        476
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "동쪽 길 북쪽 풀밭. 최종 (1523,474)에서 나무줄기와 분리, 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        63,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 1,
+      "asset_id": "street_baker",
+      "foot_px": [
+        716,
+        373
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        704,
+        347,
+        723,
+        375
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "북서 넓은 흙광장. 성벽·지붕·기존 인물과 분리, 넓은 보행 여백 유지.",
+      "source_anchor": [
+        74,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 1,
+      "asset_id": "street_brewer",
+      "foot_px": [
+        849,
+        334
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        842,
+        308,
+        859,
+        336
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "곡창 북서 흙광장. 성벽·곡창·인물과 분리, 표지의 바닥 지지 구조 보임.",
+      "source_anchor": [
+        55,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 2,
+      "asset_id": "yard_rear_workshop_a_summer",
+      "foot_px": [
+        465,
+        600
+      ],
+      "scale": 0.38,
+      "visible_box": [
+        436,
+        560,
+        492,
+        602
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "방앗간·길과 떨어진 잔디. 수정 후 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 2,
+      "asset_id": "yard_rear_workshop_b_summer",
+      "foot_px": [
+        1170,
+        910
+      ],
+      "scale": 0.38,
+      "visible_box": [
+        1143,
+        871,
+        1196,
+        912
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "밭과 곡창 아래 잔디. 수정 후 울타리·작물과 분리, 지도 가장자리 안쪽에 전부 남음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 2,
+      "asset_id": "front_tailor_a",
+      "foot_px": [
+        860,
+        804
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        842,
+        779,
+        868,
+        806
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "남쪽 작은 집 앞 흙마당. 집·인물·작물 줄과 분리. 길 연결부의 소품으로 보이며 통행 가능 여부는 미검증.",
+      "source_anchor": [
+        82,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 2,
+      "asset_id": "front_tailor_b",
+      "foot_px": [
+        1523,
+        474
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        1499,
+        449,
+        1534,
+        475
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "동쪽 길 북쪽 풀밭. 최종 (1523,474)에서 나무줄기와 분리, 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        91,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 2,
+      "asset_id": "street_butcher",
+      "foot_px": [
+        716,
+        373
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        705,
+        347,
+        722,
+        375
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "북서 넓은 흙광장. 성벽·지붕·기존 인물과 분리, 넓은 보행 여백 유지.",
+      "source_anchor": [
+        73,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 2,
+      "asset_id": "street_miller",
+      "foot_px": [
+        849,
+        334
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        842,
+        308,
+        859,
+        336
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "곡창 북서 흙광장. 성벽·곡창·인물과 분리, 표지의 바닥 지지 구조 보임.",
+      "source_anchor": [
+        55,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 3,
+      "asset_id": "yard_large_yard_a_summer",
+      "foot_px": [
+        465,
+        600
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        428,
+        567,
+        501,
+        603
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "방앗간·길과 떨어진 잔디. 수정 후 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 3,
+      "asset_id": "yard_large_yard_b_summer",
+      "foot_px": [
+        1170,
+        910
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        1144,
+        877,
+        1196,
+        913
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "밭과 곡창 아래 잔디. 수정 후 울타리·작물과 분리, 지도 가장자리 안쪽에 전부 남음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 3,
+      "asset_id": "front_shoemaker_a",
+      "foot_px": [
+        860,
+        804
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        843,
+        779,
+        875,
+        806
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "남쪽 작은 집 앞 흙마당. 집·인물·작물 줄과 분리. 길 연결부의 소품으로 보이며 통행 가능 여부는 미검증.",
+      "source_anchor": [
+        67,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 3,
+      "asset_id": "front_shoemaker_b",
+      "foot_px": [
+        1523,
+        474
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        1506,
+        449,
+        1532,
+        476
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "동쪽 길 북쪽 풀밭. 최종 (1523,474)에서 나무줄기와 분리, 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        78,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 3,
+      "asset_id": "street_innkeeper",
+      "foot_px": [
+        716,
+        373
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        707,
+        347,
+        728,
+        375
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "북서 넓은 흙광장. 성벽·지붕·기존 인물과 분리, 넓은 보행 여백 유지.",
+      "source_anchor": [
+        57,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 3,
+      "asset_id": "street_tailor",
+      "foot_px": [
+        849,
+        334
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        841,
+        308,
+        858,
+        336
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "곡창 북서 흙광장. 성벽·곡창·인물과 분리, 표지의 바닥 지지 구조 보임.",
+      "source_anchor": [
+        59,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 4,
+      "asset_id": "yard_dirty_yard_a_summer",
+      "foot_px": [
+        465,
+        600
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        439,
+        567,
+        491,
+        603
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "방앗간·길과 떨어진 잔디. 수정 후 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 4,
+      "asset_id": "yard_dirty_yard_b_summer",
+      "foot_px": [
+        1170,
+        910
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        1141,
+        877,
+        1199,
+        913
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "밭과 곡창 아래 잔디. 수정 후 울타리·작물과 분리, 지도 가장자리 안쪽에 전부 남음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 4,
+      "asset_id": "front_carrier_a",
+      "foot_px": [
+        860,
+        804
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        833,
+        779,
+        869,
+        806
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "남쪽 작은 집 앞 흙마당. 집·인물·작물 줄과 분리. 길 연결부의 소품으로 보이며 통행 가능 여부는 미검증.",
+      "source_anchor": [
+        95,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 4,
+      "asset_id": "front_carrier_b",
+      "foot_px": [
+        1523,
+        474
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        1500,
+        449,
+        1534,
+        476
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "동쪽 길 북쪽 풀밭. 최종 (1523,474)에서 나무줄기와 분리, 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        85,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 4,
+      "asset_id": "street_weaver",
+      "foot_px": [
+        716,
+        373
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        710,
+        346,
+        727,
+        375
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "북서 넓은 흙광장. 성벽·지붕·기존 인물과 분리, 넓은 보행 여백 유지.",
+      "source_anchor": [
+        53,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 4,
+      "asset_id": "street_smith",
+      "foot_px": [
+        849,
+        334
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        838,
+        307,
+        853,
+        336
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "곡창 북서 흙광장. 성벽·곡창·인물과 분리, 표지의 바닥 지지 구조 보임.",
+      "source_anchor": [
+        78,
+        118
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 5,
+      "asset_id": "yard_nuisance_yard_a_summer",
+      "foot_px": [
+        465,
+        600
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        440,
+        567,
+        490,
+        603
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "방앗간·길과 떨어진 잔디. 수정 후 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 5,
+      "asset_id": "yard_nuisance_yard_b_summer",
+      "foot_px": [
+        1170,
+        910
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        1133,
+        877,
+        1208,
+        913
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "밭과 곡창 아래 잔디. 수정 후 울타리·작물과 분리, 지도 가장자리 안쪽에 전부 남음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 5,
+      "asset_id": "front_fuller_a",
+      "foot_px": [
+        860,
+        804
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        842,
+        779,
+        870,
+        806
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "남쪽 작은 집 앞 흙마당. 집·인물·작물 줄과 분리. 길 연결부의 소품으로 보이며 통행 가능 여부는 미검증.",
+      "source_anchor": [
+        79,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 5,
+      "asset_id": "front_fuller_b",
+      "foot_px": [
+        1523,
+        474
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        1506,
+        450,
+        1542,
+        475
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "동쪽 길 북쪽 풀밭. 최종 (1523,474)에서 나무줄기와 분리, 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        62,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 5,
+      "asset_id": "street_carpenter",
+      "foot_px": [
+        716,
+        373
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        707,
+        347,
+        727,
+        375
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "북서 넓은 흙광장. 성벽·지붕·기존 인물과 분리, 넓은 보행 여백 유지.",
+      "source_anchor": [
+        55,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 5,
+      "asset_id": "street_shoemaker",
+      "foot_px": [
+        849,
+        334
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        843,
+        308,
+        860,
+        336
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "곡창 북서 흙광장. 성벽·곡창·인물과 분리, 표지의 바닥 지지 구조 보임.",
+      "source_anchor": [
+        52,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 6,
+      "asset_id": "yard_forge_a_summer",
+      "foot_px": [
+        465,
+        600
+      ],
+      "scale": 0.38,
+      "visible_box": [
+        440,
+        561,
+        489,
+        602
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "방앗간·길과 떨어진 잔디. 수정 후 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 6,
+      "asset_id": "yard_forge_b_summer",
+      "foot_px": [
+        1170,
+        910
+      ],
+      "scale": 0.38,
+      "visible_box": [
+        1134,
+        870,
+        1204,
+        912
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "밭과 곡창 아래 잔디. 수정 후 울타리·작물과 분리, 지도 가장자리 안쪽에 전부 남음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 6,
+      "asset_id": "front_cooper_a",
+      "foot_px": [
+        860,
+        804
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        840,
+        779,
+        871,
+        806
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "남쪽 작은 집 앞 흙마당. 집·인물·작물 줄과 분리. 길 연결부의 소품으로 보이며 통행 가능 여부는 미검증.",
+      "source_anchor": [
+        79,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 6,
+      "asset_id": "front_cooper_b",
+      "foot_px": [
+        1523,
+        474
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        1500,
+        449,
+        1532,
+        476
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "동쪽 길 북쪽 풀밭. 최종 (1523,474)에서 나무줄기와 분리, 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        89,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 6,
+      "asset_id": "street_carrier",
+      "foot_px": [
+        716,
+        373
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        708,
+        346,
+        727,
+        375
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "북서 넓은 흙광장. 성벽·지붕·기존 인물과 분리, 넓은 보행 여백 유지.",
+      "source_anchor": [
+        58,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 6,
+      "asset_id": "street_merchant",
+      "foot_px": [
+        849,
+        334
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        843,
+        307,
+        860,
+        336
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "곡창 북서 흙광장. 성벽·곡창·인물과 분리, 표지의 바닥 지지 구조 보임.",
+      "source_anchor": [
+        53,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 7,
+      "asset_id": "yard_warehouse_shop_a_summer",
+      "foot_px": [
+        465,
+        600
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        429,
+        567,
+        501,
+        603
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "방앗간·길과 떨어진 잔디. 수정 후 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 7,
+      "asset_id": "yard_warehouse_shop_b_summer",
+      "foot_px": [
+        1170,
+        910
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        1139,
+        877,
+        1200,
+        913
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "밭과 곡창 아래 잔디. 수정 후 울타리·작물과 분리, 지도 가장자리 안쪽에 전부 남음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 7,
+      "asset_id": "front_wheelwright_a",
+      "foot_px": [
+        860,
+        804
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        839,
+        779,
+        869,
+        806
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "남쪽 작은 집 앞 흙마당. 집·인물·작물 줄과 분리. 길 연결부의 소품으로 보이며 통행 가능 여부는 미검증.",
+      "source_anchor": [
+        86,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 7,
+      "asset_id": "front_wheelwright_b",
+      "foot_px": [
+        1523,
+        474
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        1498,
+        449,
+        1532,
+        476
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "동쪽 길 북쪽 풀밭. 최종 (1523,474)에서 나무줄기와 분리, 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        92,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 7,
+      "asset_id": "street_fuller",
+      "foot_px": [
+        716,
+        373
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        708,
+        347,
+        727,
+        375
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "북서 넓은 흙광장. 성벽·지붕·기존 인물과 분리, 넓은 보행 여백 유지.",
+      "source_anchor": [
+        55,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 7,
+      "asset_id": "street_dyer",
+      "foot_px": [
+        849,
+        334
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        844,
+        307,
+        861,
+        336
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "곡창 북서 흙광장. 성벽·곡창·인물과 분리, 표지의 바닥 지지 구조 보임.",
+      "source_anchor": [
+        50,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 8,
+      "asset_id": "yard_institution_a_summer",
+      "foot_px": [
+        465,
+        600
+      ],
+      "scale": 0.38,
+      "visible_box": [
+        421,
+        561,
+        507,
+        602
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "방앗간·길과 떨어진 잔디. 수정 후 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 8,
+      "asset_id": "yard_institution_b_summer",
+      "foot_px": [
+        1170,
+        910
+      ],
+      "scale": 0.38,
+      "visible_box": [
+        1145,
+        871,
+        1193,
+        912
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "밭과 곡창 아래 잔디. 수정 후 울타리·작물과 분리, 지도 가장자리 안쪽에 전부 남음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 8,
+      "asset_id": "front_mercer_a",
+      "foot_px": [
+        860,
+        804
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        842,
+        779,
+        870,
+        806
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "남쪽 작은 집 앞 흙마당. 집·인물·작물 줄과 분리. 길 연결부의 소품으로 보이며 통행 가능 여부는 미검증.",
+      "source_anchor": [
+        79,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 8,
+      "asset_id": "front_mercer_b",
+      "foot_px": [
+        1523,
+        474
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        1509,
+        449,
+        1533,
+        475
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "동쪽 길 북쪽 풀밭. 최종 (1523,474)에서 나무줄기와 분리, 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        71,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 8,
+      "asset_id": "street_tanner",
+      "foot_px": [
+        716,
+        373
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        704,
+        347,
+        723,
+        375
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "북서 넓은 흙광장. 성벽·지붕·기존 인물과 분리, 넓은 보행 여백 유지.",
+      "source_anchor": [
+        73,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 8,
+      "asset_id": "street_cooper",
+      "foot_px": [
+        849,
+        334
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        844,
+        307,
+        861,
+        336
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "곡창 북서 흙광장. 성벽·곡창·인물과 분리, 표지의 바닥 지지 구조 보임.",
+      "source_anchor": [
+        49,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 9,
+      "asset_id": "yard_no_shop_labor_a_summer",
+      "foot_px": [
+        465,
+        600
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        433,
+        567,
+        497,
+        603
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "방앗간·길과 떨어진 잔디. 수정 후 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 9,
+      "asset_id": "yard_no_shop_labor_b_summer",
+      "foot_px": [
+        1170,
+        910
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        1134,
+        877,
+        1205,
+        913
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "밭과 곡창 아래 잔디. 수정 후 울타리·작물과 분리, 지도 가장자리 안쪽에 전부 남음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 9,
+      "asset_id": "front_spicer_a",
+      "foot_px": [
+        860,
+        804
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        843,
+        779,
+        865,
+        806
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "남쪽 작은 집 앞 흙마당. 집·인물·작물 줄과 분리. 길 연결부의 소품으로 보이며 통행 가능 여부는 미검증.",
+      "source_anchor": [
+        84,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 9,
+      "asset_id": "front_spicer_b",
+      "foot_px": [
+        1523,
+        474
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        1508,
+        449,
+        1532,
+        475
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "동쪽 길 북쪽 풀밭. 최종 (1523,474)에서 나무줄기와 분리, 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        75,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 9,
+      "asset_id": "street_wheelwright",
+      "foot_px": [
+        716,
+        373
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        710,
+        347,
+        727,
+        375
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "북서 넓은 흙광장. 성벽·지붕·기존 인물과 분리, 넓은 보행 여백 유지.",
+      "source_anchor": [
+        52,
+        118
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 9,
+      "asset_id": "street_mercer",
+      "foot_px": [
+        849,
+        334
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        842,
+        308,
+        859,
+        336
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "곡창 북서 흙광장. 성벽·곡창·인물과 분리, 표지의 바닥 지지 구조 보임.",
+      "source_anchor": [
+        56,
+        118
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 10,
+      "asset_id": "yard_itinerant_a_summer",
+      "foot_px": [
+        465,
+        600
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        432,
+        567,
+        498,
+        603
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "방앗간·길과 떨어진 잔디. 수정 후 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 10,
+      "asset_id": "yard_itinerant_b_summer",
+      "foot_px": [
+        1170,
+        910
+      ],
+      "scale": 0.32,
+      "visible_box": [
+        1141,
+        877,
+        1199,
+        913
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "밭과 곡창 아래 잔디. 수정 후 울타리·작물과 분리, 지도 가장자리 안쪽에 전부 남음.",
+      "source_anchor": [
+        128,
+        104
+      ],
+      "anchor_rechecked": false
+    },
+    {
+      "page": 10,
+      "asset_id": "front_vintner_a",
+      "foot_px": [
+        860,
+        804
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        848,
+        779,
+        878,
+        806
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "남쪽 작은 집 앞 흙마당. 집·인물·작물 줄과 분리. 길 연결부의 소품으로 보이며 통행 가능 여부는 미검증.",
+      "source_anchor": [
+        55,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 10,
+      "asset_id": "front_vintner_b",
+      "foot_px": [
+        1523,
+        474
+      ],
+      "scale": 0.28,
+      "visible_box": [
+        1510,
+        449,
+        1542,
+        476
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "동쪽 길 북쪽 풀밭. 최종 (1523,474)에서 나무줄기와 분리, 벽/지붕/인물/밭 겹침 보이지 않음.",
+      "source_anchor": [
+        52,
+        88
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 10,
+      "asset_id": "street_spicer",
+      "foot_px": [
+        716,
+        373
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        710,
+        347,
+        727,
+        375
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "북서 넓은 흙광장. 성벽·지붕·기존 인물과 분리, 넓은 보행 여백 유지.",
+      "source_anchor": [
+        52,
+        117
+      ],
+      "anchor_rechecked": true
+    },
+    {
+      "page": 10,
+      "asset_id": "street_vintner",
+      "foot_px": [
+        849,
+        334
+      ],
+      "scale": 0.23,
+      "visible_box": [
+        845,
+        307,
+        860,
+        336
+      ],
+      "viewed_z1": true,
+      "viewed_z06_proxy": true,
+      "viewed_detail_crop": true,
+      "static_overlap_verdict": "PASS",
+      "scale_light_verdict": "PASS_PLAUSIBLE",
+      "low_zoom_clutter_verdict": "PASS_AT_SIX_PER_PAGE",
+      "observation_ko": "곡창 북서 흙광장. 성벽·곡창·인물과 분리, 표지의 바닥 지지 구조 보임.",
+      "source_anchor": [
+        49,
+        117
+      ],
+      "anchor_rechecked": true
+    }
+  ],
+  "anchor_recheck": {
+    "verdict": "PASS",
+    "reviewed_all_40_front_street": true,
+    "viewed_all_20_proofs": true,
+    "finding": "Front B page03 shoemaker and page06 cooper visually merge with thin background tree trunk after actual-foot anchoring. Move all Front B down and recheck.",
+    "suggested_foot_px": [
+      1523,
+      474
+    ],
+    "second_review": "Front B down to y474 clears main crossings, but carrier04 and wheelwright07 remain tangent to trunk tip; move x to1523 for clear horizontal separation.",
+    "final_front_b_foot_px": [
+      1523,
+      474
+    ],
+    "final_check": "All40 front/street inspected in detail after actual foot registration; final10 Front B crops directly viewed after moving x1523,y474. Trunk contacts resolved; no new wall/roof/person/crop overlap.",
+    "forge_art_revision": "Final summer clay-tile roofs page06 z1 and z06-proxy directly re-opened; both yard detail crops inspected. Ground gaps preserved, plausible tile scale/light, no new crop/wall/road overlap. PASS."
+  },
+  "retained_anchor_failure_proofs_sha256": {
+    "proofs/revisions/tree-contact-before-03.jpg": "373c832a558524694fbc21a60856be128667f3d252fd73dc9fd249f4f949db71",
+    "proofs/revisions/tree-contact-before-06.jpg": "b29f12d9a7a5a8c8c3f716507bd5c8ed24c3ad81d31306eacca2068fb2b47152"
+  },
+  "final_forge_recheck": {
+    "page": 6,
+    "viewed_z1": true,
+    "viewed_z06_proxy": true,
+    "viewed_both_yard_detail_crops": true,
+    "verdict": "PASS",
+    "note": "Opaque clay-tile roofs visually supported by open timber posts; both yards clear of buildings, crop hedge and paths. Winter art not part of this city review.",
+    "common_season_crop_recheck": "After final winter-B cleanup changed summer-B normalization: directly viewed page06 z1, z06-proxy, and enlarged B crop again. PASS: open ground gap to crops/building/path, no clipped or floating pieces visible, scale and tile lighting coherent."
+  }
+}

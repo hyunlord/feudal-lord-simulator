@@ -1,0 +1,188 @@
+{
+  "source_capture": "/Users/rexxa/fls-astra-vision/report/expansion/raw/exp-current-city/00.png",
+  "packaged_source": "references/city/city-1380-spring-z1-source.png",
+  "sha256": "a628b1720ff2b3cafd68fe8552274ca5518d567a4a6247d64aaceb177960459f",
+  "capture_metadata_source": "/Users/rexxa/fls-astra-vision/report/expansion/raw/exp-current-city/capture.json",
+  "capture_metadata_sha256": "e6336c032f468b494a15df5d15d0b1a1850f490affd72180ed384cac4071f551",
+  "source_capture_kind": "unchanged actual runtime world canvas PNG; not an art composite",
+  "scene": "exp-current-city",
+  "game_source_sha_recorded": "d6ae15498a45c2202a10f3ce8f20a543dd305c3f",
+  "source_sha_caveat": "historical QA provenance record, not runtime self-attestation; differs from new trades checkout",
+  "calendar": {
+    "year": 1380,
+    "season": "spring"
+  },
+  "actual_seed": 2,
+  "capture_seed_field_caveat": "capture.json.seed=1 is known adapter default, scene lineage says actual seed2",
+  "source_save": "fixtures/perf-gate/ch4-1380.save.json.gz",
+  "first_frame_tick": 320001,
+  "qa_text": "틱\n320020\n연도·계절\n1380년 봄\n속도\n1배속\n줌\n1.000\n카메라 이동\n(672, -858)\n화면 중심 월드\n(128, 1408)\n화면 중심 칸\n(46, 42)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×",
+  "camera": {
+    "zoom": 1.0,
+    "panX": 672.0,
+    "panY": -858.0
+  },
+  "viewport": {
+    "width": 1600,
+    "height": 1100
+  },
+  "proof_mode": false,
+  "capture_notes": [
+    "ordinary IndexedDB save load; no proof; native input only",
+    "20 frames; browser clock interval 100 ms; wall time recorded separately",
+    "camera observed from native world canvas transform"
+  ],
+  "adult_reference": {
+    "asset": "/assets/walkers-v2/wk_labor_f_01-v1.png",
+    "frame_source_box": [
+      0,
+      74,
+      74,
+      74
+    ],
+    "draw_box_px": {
+      "x": 1041,
+      "y": 154,
+      "width": 22,
+      "height": 22
+    },
+    "alpha_extent_source_px": [
+      27,
+      4,
+      55,
+      68
+    ],
+    "alpha_height_screen_px": 19.027027,
+    "interpretation": "approximate visible sprite height including shadow/carry items; not exact anatomical height",
+    "suggested_visual_proof_ruler_px": 19,
+    "current_game_H_caveat": "Current production H=16 worldpx per coordinator code audit. Historical screenshot uses older scale; do not claim current engine integration scale validation."
+  },
+  "anchors": [
+    {
+      "id": "A1",
+      "foot_px": [
+        707,
+        359
+      ],
+      "maximum_visible_box_px": {
+        "width": 42,
+        "height": 30
+      },
+      "approx_clearance_to_building_px": 18,
+      "note": "성 안 북서 광장, 남쪽 주택에서 떨어진 지면",
+      "placement_rule": "small freestanding sign or bench; do not expand onto northern wall",
+      "status": "visual_proposal_requires_final_alpha_overlay_review"
+    },
+    {
+      "id": "A2",
+      "foot_px": [
+        849,
+        334
+      ],
+      "maximum_visible_box_px": {
+        "width": 36,
+        "height": 26
+      },
+      "approx_clearance_to_building_px": 18,
+      "note": "성 안 큰 곡창 북서쪽 빈 땅",
+      "placement_rule": "small sign or low tub, keep east edge clear of barn",
+      "status": "visual_proposal_requires_final_alpha_overlay_review"
+    },
+    {
+      "id": "A3",
+      "foot_px": [
+        986,
+        355
+      ],
+      "maximum_visible_box_px": {
+        "width": 30,
+        "height": 24
+      },
+      "approx_clearance_to_building_px": 12,
+      "note": "중앙 곡창과 우물 사이의 땅",
+      "placement_rule": "small sign only; avoid well at1050,355 and nearby walkers",
+      "status": "visual_proposal_requires_final_alpha_overlay_review"
+    },
+    {
+      "id": "A4",
+      "foot_px": [
+        465,
+        573
+      ],
+      "maximum_visible_box_px": {
+        "width": 64,
+        "height": 44
+      },
+      "approx_clearance_to_building_px": 28,
+      "note": "성 밖 남서쪽, 방앗간 남쪽 땅",
+      "placement_rule": "small open yard; detached from mill, leave path to northeast open",
+      "status": "visual_proposal_requires_final_alpha_overlay_review"
+    },
+    {
+      "id": "A5",
+      "foot_px": [
+        860,
+        804
+      ],
+      "maximum_visible_box_px": {
+        "width": 48,
+        "height": 34
+      },
+      "approx_clearance_to_building_px": 20,
+      "note": "남문 밖 작은 집의 남서쪽",
+      "placement_rule": "small yard, keep crops to southwest unpainted",
+      "status": "visual_proposal_requires_final_alpha_overlay_review"
+    },
+    {
+      "id": "A6",
+      "foot_px": [
+        1049,
+        831
+      ],
+      "maximum_visible_box_px": {
+        "width": 52,
+        "height": 40
+      },
+      "approx_clearance_to_building_px": 20,
+      "note": "성 밖 남쪽 공방과 밭 사이",
+      "placement_rule": "low yard or wheel rack; do not cover cropped field below",
+      "status": "visual_proposal_requires_final_alpha_overlay_review"
+    },
+    {
+      "id": "A7",
+      "foot_px": [
+        1140,
+        869
+      ],
+      "maximum_visible_box_px": {
+        "width": 56,
+        "height": 38
+      },
+      "approx_clearance_to_building_px": 24,
+      "note": "성 밖 남동쪽 큰 곡창의 남서쪽",
+      "placement_rule": "yard/sign separated from granary and field edge",
+      "status": "visual_proposal_requires_final_alpha_overlay_review"
+    },
+    {
+      "id": "A8",
+      "foot_px": [
+        1511,
+        452
+      ],
+      "maximum_visible_box_px": {
+        "width": 38,
+        "height": 28
+      },
+      "approx_clearance_to_building_px": 18,
+      "note": "성 안 동쪽 나무와 큰 건물의 남동쪽",
+      "placement_rule": "low sign/yard; preserve path and distant wall",
+      "status": "visual_proposal_requires_final_alpha_overlay_review"
+    }
+  ],
+  "zoom_0_6": {
+    "native_same_camera_capture_available": false,
+    "permitted_proof": "offline 0.6 linear resampling of complete unchanged-background composite",
+    "claim_limit": "static simulated distant zoom only, not native LOD or moving scene validation"
+  },
+  "placement_claim_limit": "Candidate image-ground slots, not authoritative game parcels, collision masks, occupancy or routing validation."
+}

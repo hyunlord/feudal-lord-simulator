@@ -1,0 +1,266 @@
+{
+  "reviewer": "events_blind_r2",
+  "method": "허용 폴더의 titles.json과 4개 보드를 모두 확인한 뒤, 혼동되는 20개 개별 이미지를 확대 확인했다. 인물 행동과 사물 및 공간의 가시적 단서만으로 일대일 대응했다. 빈 문서에서 글을 읽었다고 간주하지 않았고, 제목의 날짜·권리·관계 등 비가시적 의미는 추정으로 표시했다.",
+  "matches": [
+    {
+      "picture": "P01",
+      "title_code": "T05",
+      "confidence": "medium",
+      "reason": "청지기로 보이는 남자가 거의 빈 펼친 장부를 영주에게 내밀며, 책상에는 적은 동전과 궤짝이 있다. 문밖의 인물이 연줄의 단서일 수 있으나 관계는 보이지 않는다."
+    },
+    {
+      "picture": "P02",
+      "title_code": "T33",
+      "confidence": "high",
+      "reason": "탁자 위에 봉인된 평평한 문서 묶음과 말린 두루마리 묶음이 분리되어 있고 가운데 인물이 양쪽을 제시한다."
+    },
+    {
+      "picture": "P03",
+      "title_code": "T32",
+      "confidence": "medium",
+      "reason": "텅 빈 큰 좌판 맞은편 인물이 펼친 장부를 들고 상인으로 보이는 남자와 이야기한다. 과세 여부는 글로 확인되지 않는다."
+    },
+    {
+      "picture": "P04",
+      "title_code": "T06",
+      "confidence": "medium",
+      "reason": "한 인물이 봉인 문서를 다시 내밀고 관리가 비슷한 봉인 문서와 나란히 대조한다. 반복 청원의 시간적 맥락은 직접 보이지 않는다."
+    },
+    {
+      "picture": "P05",
+      "title_code": "T28",
+      "confidence": "medium",
+      "reason": "혼담처럼 보이는 가족 상담 탁자에 동전 그릇과 여러 개의 개별 봉인 두루마리가 놓여 즉시 지급과 나눈 지급의 선택을 암시한다."
+    },
+    {
+      "picture": "P06",
+      "title_code": "T21",
+      "confidence": "high",
+      "reason": "봉인 문서를 든 사람이 굳게 닫힌 문 앞에 있고 안쪽 인물이 작은 창으로 거절하는 손짓을 한다."
+    },
+    {
+      "picture": "P07",
+      "title_code": "T09",
+      "confidence": "medium",
+      "reason": "겨울의 텅 빈 작업장에 직조 설비가 보이고 한 사람이 문 앞에서 얼굴 쪽에 손을 댄다. 병의 원인은 이미지로 확인되지 않는다."
+    },
+    {
+      "picture": "P08",
+      "title_code": "T10",
+      "confidence": "medium",
+      "reason": "젊은 남녀가 뒤에 앉아 있고 앞의 관리가 봉인된 두루마리를 기존 문서 쪽으로 펼친다."
+    },
+    {
+      "picture": "P09",
+      "title_code": "T13",
+      "confidence": "high",
+      "reason": "젖은 덮개를 걷자 밝고 마른 듯한 각재가 드러나며, 주변 수레와 바닥에는 물기가 뚜렷하다."
+    },
+    {
+      "picture": "P10",
+      "title_code": "T08",
+      "confidence": "medium",
+      "reason": "교회 회랑과 묘지 앞 주민들이 곡물 자루, 물통, 그릇을 놓고 문서를 두고 호소한다."
+    },
+    {
+      "picture": "P11",
+      "title_code": "T35",
+      "confidence": "medium",
+      "reason": "두 사람이 진흙길에서 멀리 걸어가는 주민들과 언덕 너머 교회 방향을 바라본다."
+    },
+    {
+      "picture": "P12",
+      "title_code": "T14",
+      "confidence": "low",
+      "reason": "영주 앞에 장부와 열쇠가 있고 두 후보처럼 보이는 남자가 손을 내민다. 장부 위임 제목 두 개 사이의 문구 차이는 식별할 수 없다."
+    },
+    {
+      "picture": "P13",
+      "title_code": "T26",
+      "confidence": "medium",
+      "reason": "노년 여성이 봉인 문서를 내밀고 영주가 큰 금고를 손으로 짚는다. 연금과 기한은 글이나 날짜로 확인되지 않는다."
+    },
+    {
+      "picture": "P14",
+      "title_code": "T11",
+      "confidence": "high",
+      "reason": "나이 든 남자가 빈 듯한 돈주머니를 뒤집고 다른 사람이 장부를 가리키며 영주가 지켜본다."
+    },
+    {
+      "picture": "P15",
+      "title_code": "T02",
+      "confidence": "high",
+      "reason": "수도사가 두루마리로 가득한 문서함을 열고 다른 사람이 책상 위 펼친 문서들을 비교한다."
+    },
+    {
+      "picture": "P16",
+      "title_code": "T30",
+      "confidence": "medium",
+      "reason": "여행 짐을 실은 말의 고삐를 잡은 인물과 여러 봉인 두루마리를 안은 사람이 출발 전 상담한다. 미카엘마스라는 날짜 자체는 식별되지 않는다."
+    },
+    {
+      "picture": "P17",
+      "title_code": "T31",
+      "confidence": "high",
+      "reason": "강 건너에서 물고기 바구니를 사이에 두고 돈처럼 보이는 작은 물건을 건네며 가까운 강둑의 인물들이 그쪽을 가리킨다."
+    },
+    {
+      "picture": "P18",
+      "title_code": "T01",
+      "confidence": "medium",
+      "reason": "물동이를 든 여성이 텅 빈 옆 좌판을 향해 손을 펴고 관리가 작은 장부를 들고 있다. 빈 노점의 몫이라는 관계는 추정이다."
+    },
+    {
+      "picture": "P19",
+      "title_code": "T22",
+      "confidence": "high",
+      "reason": "오래된 두루마리 서가에서 문서를 살피는 남자 옆에 어망이 쌓여 있고 창밖에 배와 강이 보인다."
+    },
+    {
+      "picture": "P20",
+      "title_code": "T16",
+      "confidence": "high",
+      "reason": "성문 안 영주가 큰 열쇠를 들어 두 남자 사이에 내밀고 옆 서기가 기록한다."
+    },
+    {
+      "picture": "P21",
+      "title_code": "T24",
+      "confidence": "medium",
+      "reason": "물자 수레와 짐말이 길목에 모였으며 봉인 문서를 든 인물이 지시하고 다른 인물이 물자를 기록한다. 왕의 명령이라는 글은 보이지 않는다."
+    },
+    {
+      "picture": "P22",
+      "title_code": "T25",
+      "confidence": "high",
+      "reason": "왼쪽 우물과 오른쪽 곡물 자루 사이에서 관리와 주민들이 상담하고 두루마리가 놓여 있다."
+    },
+    {
+      "picture": "P23",
+      "title_code": "T03",
+      "confidence": "high",
+      "reason": "실내 직조기와 원모, 펼쳐 다듬는 천이 보이고 창밖에는 물레방아가 있다."
+    },
+    {
+      "picture": "P24",
+      "title_code": "T19",
+      "confidence": "high",
+      "reason": "여성이 작은 상자의 천에 싸인 낡은 증서를 들고 관리가 긴 두루마리 기록과 대조한다."
+    },
+    {
+      "picture": "P25",
+      "title_code": "T29",
+      "confidence": "low",
+      "reason": "푸른 끈과 붉은 끈으로 나뉜 두 장부 및 두루마리가 나란히 있고 영주가 선택을 고민한다. 거의 같은 장부 위임 제목 중 강제 선택이다."
+    },
+    {
+      "picture": "P26",
+      "title_code": "T17",
+      "confidence": "high",
+      "reason": "물길 옆에서 작업자가 젖은 천 견본을 펼쳐 보여 주고 상대가 돈주머니를 들고 살펴본다."
+    },
+    {
+      "picture": "P27",
+      "title_code": "T15",
+      "confidence": "high",
+      "reason": "수도사가 교회 내부 궤짝에서 봉인 문서를 들어 보이고 문가에서 남녀가 기다린다."
+    },
+    {
+      "picture": "P28",
+      "title_code": "T07",
+      "confidence": "high",
+      "reason": "곡창 안 여러 곡물 자루 앞에서 두 사람이 펼친 장부를 두고 수량을 따지는 듯한 손짓을 한다."
+    },
+    {
+      "picture": "P29",
+      "title_code": "T18",
+      "confidence": "high",
+      "reason": "곡물 창고 옆 관리가 장부를 든 채 상담하고 짐 실은 수레는 길을 따라 멀리 시장 쪽으로 향한다."
+    },
+    {
+      "picture": "P30",
+      "title_code": "T12",
+      "confidence": "medium",
+      "reason": "탁자 중앙의 중개자처럼 보이는 인물이 큰 돈주머니 하나를 내놓고 양쪽 사람들이 봉인 문서를 두고 협의한다."
+    },
+    {
+      "picture": "P31",
+      "title_code": "T23",
+      "confidence": "high",
+      "reason": "교회 벽을 따라 선 시장 노점에서 수도사와 상인이 봉인 문서를 함께 들여다본다."
+    },
+    {
+      "picture": "P32",
+      "title_code": "T04",
+      "confidence": "high",
+      "reason": "걱정하는 청지기 뒤의 화려한 옷을 입은 인물이 어깨를 감싸며 영주에게 설명하고 탁자에는 동전과 장부가 있다."
+    },
+    {
+      "picture": "P33",
+      "title_code": "T27",
+      "confidence": "high",
+      "reason": "부러진 울타리와 어지러운 목재 곁에서 두 사람이 긴 들보의 길이를 잰다."
+    },
+    {
+      "picture": "P34",
+      "title_code": "T20",
+      "confidence": "medium",
+      "reason": "목재가 쌓인 작업장에서 긴 봉인 주문서를 든 관리가 자재와 공사 구역을 가리킨다. 바람이 지나갔다는 시간적 맥락은 확정할 수 없다."
+    },
+    {
+      "picture": "P35",
+      "title_code": "T34",
+      "confidence": "medium",
+      "reason": "가정 식탁 같은 공간의 영주와 노년 여성 앞에서 서기가 여러 장부 및 문서 꾸러미를 정리한다."
+    }
+  ],
+  "ambiguities": [
+    {
+      "pictures": [
+        "P12",
+        "P25"
+      ],
+      "title_codes": [
+        "T14",
+        "T29"
+      ],
+      "note": "두 제목은 사실상 동의어다. P12의 대면 후보 선택을 T14, P25의 두 장부 선택을 T29로 강제 배정했으나 문구 차이를 시각적으로 판별할 근거가 없다."
+    },
+    {
+      "pictures": [
+        "P03",
+        "P18"
+      ],
+      "title_codes": [
+        "T01",
+        "T32"
+      ],
+      "note": "둘 다 빈 좌판과 장부를 포함한다. 큰 빈 좌판과 펼친 장부가 강조된 P03을 T32, 인접 빈 자리와 여성의 호소가 강조된 P18을 T01로 배정했다. 교환 가능성을 남긴다."
+    },
+    {
+      "pictures": [
+        "P01",
+        "P14",
+        "P32"
+      ],
+      "title_codes": [
+        "T04",
+        "T05",
+        "T11"
+      ],
+      "note": "돈과 장부를 함께 다루는 장면들이다. P32의 어깨를 감싼 후원자, P14의 나이 든 남성과 빈 주머니, P01의 직접 내미는 빈 장부로 구분했다. P01의 연줄 자체는 확인할 수 없다."
+    },
+    {
+      "pictures": [
+        "P09",
+        "P33",
+        "P34"
+      ],
+      "title_codes": [
+        "T13",
+        "T20",
+        "T27"
+      ],
+      "note": "P09는 젖은 덮개 아래 밝은 들보, P33은 파손 울타리와 실측 중인 들보, P34는 긴 문서와 쌓인 목재로 구분했다. 바람의 전후는 정지 화면에서 직접 확인되지 않는다."
+    }
+  ]
+}

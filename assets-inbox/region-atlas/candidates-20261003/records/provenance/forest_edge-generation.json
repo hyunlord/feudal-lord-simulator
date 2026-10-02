@@ -1,0 +1,64 @@
+{
+  "tool": "image_gen.imagegen",
+  "reference": "references/original-map.png",
+  "status": "candidate",
+  "records": [
+    {
+      "mapId": "forest_edge-01",
+      "prompt": "Create ONE complete landscape regional map painting, landscape aspect 8:5, target1600x1000. Match attached project reference exactly in high oblique hand-drawn cartographic viewpoint, warm aged parchment ochre grass, muted olive broadleaf oak forest, thin earthy pen detail and soft painted wash, bluegrey stream, top-left light. Southern England1300-1450 summer. Fill canvas edge to edge, no horizon, border, labels, text, buildings, ruins, settlements, flags, icons or marked circles. This is a cohesive hand-painted landscape NOT assembled stamps. Terrain and natural drainage have causal relationships. Include 24 dispersed naturally vacant dry meadow spaces sized enough for future settlement overlays, spread across whole map in broad open countryside and woodland edge clearings, connected by winding dirt paths; leave these unmarked, not circles, not a grid. NO bridges/buildings, shallow ford road crossings only. Keep path network organic, coherent and sparse. Map1: Huge continuous dense woodland covers northwest and northern hills, with deep irregular woodland edge descending toward the southeast. Broad diagonal northeast-to-southwest agricultural frontier on the southeastern half, several generously broad forest-edge glades reaching into woodland. One narrow winding stream flows from high northwest woodland through the middle toward southeast edge; it is a minor stream not a broad river. Irregular hedged fields on the sunny open side follow slopes; old roads follow contour and converge at two shallow stream fords. Large connected wooded mass, not scattered round forest islands. Woodland max40percent so plenty of dry open meadow slots.",
+      "generatedSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd89-04e4-79e2-95fb-ce135c61d5c4/exec-eaff0507-6228-477d-b673-7329b43172b4.png",
+      "master": "masters/forest_edge-01.png",
+      "delivery": "maps/forest_edge-01.jpg",
+      "masterSha256": "94ba7926a739a37f8dabd5035ec9f58fcdf75d17d9f24c33c008323eb7ea97ee",
+      "deliverySha256": "7980aa38e0fd92d5b824ca314a700cbb32e5a50080efa10f91ea64da0b849247",
+      "masterDimensions": {
+        "width": 1586,
+        "height": 992
+      },
+      "deliveryTransform": "single resize 1600x1000 fit fill; JPEG quality92 4:4:4; no composited terrain"
+    },
+    {
+      "mapId": "forest_edge-02",
+      "prompt": "undefinedMap2: Two large interlocking continuous woodland masses occupy north and south ridgelines, separated by a BROAD east-to-west pale sunlit settled clearing valley across center, opening generously at both ends. Minor stream meanders longitudinally from east edge through valley to west edge, with short side tributaries from wooded northern ridge. Old track runs beside valley and forks into three broad glades on south. Woodland40percent, connected rolling landforms NOT round islands. At least24 dry vacant meadow clearances distributed in upper clearings, center valley, lower clearings, generous foreground margins. Unique long valley composition, no diagonal central river.",
+      "generatedSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd89-04e4-79e2-95fb-ce135c61d5c4/exec-19d6b5a6-9452-44fe-a9a0-2d232b41a085.png",
+      "master": "masters/forest_edge-02.png",
+      "delivery": "maps/forest_edge-02.jpg",
+      "masterSha256": "1726609b48d0e5859c78123934960c1becf5729b077b2e2c89ecc009164079bb",
+      "deliverySha256": "2b2a29b7f35ddbb7a33a67fc567b118a4938428c2374e1b4087cb110ffb2131d",
+      "masterDimensions": {
+        "width": 1586,
+        "height": 992
+      },
+      "deliveryTransform": "single resize 1600x1000 fit fill; JPEG quality92 4:4:4; no composited terrain"
+    },
+    {
+      "mapId": "forest_edge-03",
+      "prompt": "Create ONE complete landscape regional map painting, landscape aspect 8:5, target1600x1000. Match attached project reference exactly in high oblique hand-drawn cartographic viewpoint, warm aged parchment ochre grass, muted olive broadleaf oak forest, thin earthy pen detail and soft painted wash, bluegrey stream, top-left light. Southern England1300-1450 summer. Fill canvas edge to edge, no horizon, border, labels, text, buildings, ruins, settlements, flags, icons or marked circles. This is a cohesive hand-painted landscape NOT assembled stamps. Terrain and natural drainage have causal relationships. Include 24 dispersed naturally vacant dry meadow spaces sized enough for future settlement overlays, spread across whole map in broad open countryside and woodland edge clearings, connected by winding dirt paths; leave these unmarked, not circles, not a grid. NO bridges/buildings, shallow ford road crossings only. Keep path network organic, coherent and sparse. Map3: One large central elongated woodland ridge from middle-left to upper-right, surrounded by broad connected HORSESHOE-shaped meadow/agricultural clearing around west, south and east. Horseshoe is asymmetrical geography not an icon or geometric ring; plenty of open northern corners too. Small stream follows low horseshoe valley along southern foot of central ridge and exits bottom-right; tributary from northeast bends southwest to meet it. Contour road makes an irregular broken loop around ridge and connects open large glades. Forest35percent, not pasted round clumps. 24+ dry meadow vacancies on open apron around wooded ridge. Distinct centralized mass composition, richly irregular edge.",
+      "generatedSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd89-04e4-79e2-95fb-ce135c61d5c4/exec-f3d41095-7a14-40dc-ac99-2cee77ac2786.png",
+      "master": "masters/forest_edge-03.png",
+      "delivery": "maps/forest_edge-03.jpg",
+      "masterSha256": "1b35404b07d2c5dcc41757ae63aeae8bb3b4d6aef643cd9f23a5addfa901cedf",
+      "deliverySha256": "15494cdbb51096036145691072b2741e131daffc2da23a249d4eb0f4512f86fd",
+      "masterDimensions": {
+        "width": 1586,
+        "height": 992
+      },
+      "deliveryTransform": "single resize 1600x1000 fit fill; JPEG quality92 4:4:4; no composited terrain"
+    },
+    {
+      "mapId": "forest_edge-04",
+      "prompt": "Create ONE complete landscape regional map painting, landscape aspect 8:5, target1600x1000. Match attached project reference exactly in high oblique hand-drawn cartographic viewpoint, warm aged parchment ochre grass, muted olive broadleaf oak forest, thin earthy pen detail and soft painted wash, bluegrey stream, top-left light. Southern England1300-1450 summer. Fill canvas edge to edge, no horizon, border, labels, text, buildings, ruins, settlements, flags, icons or marked circles. This is a cohesive hand-painted landscape NOT assembled stamps. Terrain and natural drainage have causal relationships. Include 24 dispersed naturally vacant dry meadow spaces sized enough for future settlement overlays, spread across whole map in broad open countryside and woodland edge clearings, connected by winding dirt paths; leave these unmarked, not circles, not a grid. NO bridges/buildings, shallow ford road crossings only. Keep path network organic, coherent and sparse. Map4: Forest follows three BRANCH-SHAPED long high ridges extending from northwest trunk toward east and southeast, creating THREE broad linked grassy basins between wooded fingers. Narrow bluegrey tributaries run along lowest floor of each basin and join a modest stream exiting lower-left. Roads follow dry contour shelves above streams, connected by shallow fords at narrow necks. Plenty of broad dry vacant grass in each basin and lower/east rim, 24 overlay sites unmarked. Woodland35percent, strongly sinuous connected wooded fingers, NOT isolated round groves. Basin arrangement asymmetric: upper-right broad basin, central long basin, lower-right wide basin. No large river.",
+      "generatedSourcePath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd89-04e4-79e2-95fb-ce135c61d5c4/exec-b0099641-b97e-4cc5-a12b-9ca99db6553b.png",
+      "master": "masters/forest_edge-04.png",
+      "delivery": "maps/forest_edge-04.jpg",
+      "masterSha256": "2013b90e201ab0ee0f7cb6552ecb3a32131f070edd3ea93726bac2755aaa75ab",
+      "deliverySha256": "a54ff678df409c204d74b3be0ca550eb62515d6f42b2743b4d7b924ee5abd5ce",
+      "masterDimensions": {
+        "width": 1586,
+        "height": 992
+      },
+      "deliveryTransform": "single resize 1600x1000 fit fill; JPEG quality92 4:4:4; no composited terrain"
+    }
+  ],
+  "referenceSha256": "54d6ad354a71de8ace6a1029dc163b3758ff9a6330e7b030318661e961db71c8"
+}

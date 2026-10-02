@@ -6,7 +6,7 @@ Astra가 만든 산출물은 **설치 여부와 관계없이** `assets-inbox/<wa
 
 ```
 assets-inbox/
-  INBOX_LEDGER.csv          ← 그림(PNG·JPG) 한 장당 한 행 (inbox 그림 수 = 장부 행 수)
+  INBOX_LEDGER.csv          ← 그림 한 장당 한 행 — png·jpg·jpeg·webp·gif·svg 전부 (inbox 그림 수 = 장부 행 수)
   README.md                 ← Wave별 받은 곳과 설치 이력(초기 Wave)
   <wave>/
     <파일들>                 ← INBOX-1 이전에 받은 것(평평한 구조, 그대로 둠)
@@ -23,7 +23,7 @@ assets-inbox/
 - **이미 inbox에 있던 Wave**(d1·d1b·wave2·wave4-pilot·wave4b~4e·wave5a·wave5b)에는 **없는 파일만** 묶음 폴더로 더했다. 같은 바이트(또는 C2PA `caBX` 청크만 다른 바이트)가 Wave 안에 이미 있으면 넣지 않았다. 덮어쓴 파일은 없다.
 - `ui-p0/`는 UX-2 브랜치(`claude/ux2-art-skin`, 본선 미병합)가 먼저 만든 구조(`ui/` 43 · `superseded/` 12 · `pilot/` 12 + `inbox-status.csv`·`provenance-ui-p0*.csv`)를 **같은 경로·같은 바이트**로 가져왔다. UX-2가 본선에 병합될 때 같은 파일끼리라 충돌하지 않는다. UI 파일럿은 UX-2와 맞춰 `ui-p0/pilot/`에 있고, 거기 없던 파일럿 확인 그림·기록은 `ui-p0/pilot-candidates-v1/`에 있다.
 - C2PA `caBX` 청크가 붙은 PNG도 받은 바이트 그대로다. 설치할 때 청크를 빼면 Astra 대장 SHA와 같다(장부 `verdict_note`에 `C2PA caBX 포함` 표시).
-- `assets-inbox/**/*.png`는 Git LFS다(`.gitattributes`). CSV·JSON·MD·HTML과 JPG(Wave 24 앱 아이콘 16KB 한 장)는 일반 파일이다.
+- `assets-inbox/**/*.png`는 Git LFS다(`.gitattributes`). CSV·JSON·MD·HTML은 일반 파일이다. **JPG·JPEG는 2026-10-03부터 새 파일이 LFS**(`assets-inbox/**/*.jpg`·`*.jpeg`, 사용자 판정). 그 전에 받은 JPG 207장은 일반 파일로 둔다(이력 재작성 안 함) — `.gitattributes`가 그 JPG가 든 묶음 폴더 27곳에만 LFS를 풀어 둔다(`!filter !diff !merge !text`). 그 27곳에 나중에 JPG를 더하면 일반 파일이 되니, 새 JPG는 새 묶음 폴더에 넣는다.
 
 ## 2. 상태 뜻
 
@@ -41,7 +41,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-10-02 15시 40분 갱신)
+## 3. 현재 장부 요약 (2026-10-03 02시 53분 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -50,14 +50,20 @@ assets-inbox/
 | `d1b` | 4 |  | 4 |  |  |  |  | 2 |
 | `derived-templates` | 5 |  | 5 |  |  |  |  | 0 |
 | `endings-manors` | 12 |  | 11 |  | 1 |  |  | 6 |
-| `experiments` | 78 |  | 54 |  |  | 24 |  | 0 |
+| `era-pilot` | 67 |  | 48 |  |  | 19 |  | 0 |
+| `event-art` | 67 |  | 51 | 3 | 13 |  |  | 0 |
+| `experiments` | 176 |  | 100 |  |  | 76 |  | 0 |
 | `l1-tile` | 1 |  | 1 |  |  |  |  | 1 |
 | `lineage` | 374 |  | 333 |  | 41 |  |  | 260 |
 | `lineage-pilot` | 117 |  | 79 |  | 30 | 8 |  | 66 |
 | `lord-components` | 43 |  | 43 |  |  |  |  | 0 |
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
 | `portrait-pool` | 340 |  | 340 |  |  |  |  | 304 |
-| `retired` | 29 |  |  |  |  |  | 29 | 16 |
+| `region-atlas` | 48 |  | 48 |  |  |  |  | 0 |
+| `retired` | 37 |  |  |  |  |  | 37 | 16 |
+| `storehouse-corner` | 15 |  | 5 |  | 3 | 7 |  | 0 |
+| `strip-corners` | 113 |  | 113 |  |  |  |  | 0 |
+| `trade-world` | 196 |  | 196 |  |  |  |  | 0 |
 | `ui-p0` | 85 |  | 56 |  | 29 |  |  | 43 |
 | `walker-pilot2` | 96 |  | 96 |  |  |  |  | 0 |
 | `wave10` | 735 |  |  |  |  | 735 |  | 0 |
@@ -74,13 +80,13 @@ assets-inbox/
 | `wave20` | 97 |  | 82 |  | 15 |  |  | 0 |
 | `wave21` | 90 |  | 66 |  | 24 |  |  | 58 |
 | `wave22` | 103 |  | 87 |  | 16 |  |  | 79 |
-| `wave23` | 120 |  | 119 |  | 1 |  |  | 82 |
+| `wave23` | 122 |  | 121 |  | 1 |  |  | 82 |
 | `wave24` | 32 |  | 28 |  | 4 |  |  | 0 |
 | `wave25` | 17 |  | 17 |  |  |  |  | 16 |
 | `wave26` | 103 |  | 103 |  |  |  |  | 100 |
 | `wave27` | 43 |  | 43 |  |  |  |  | 40 |
 | `wave28` | 50 |  | 50 |  |  |  |  | 39 |
-| `wave29` | 32 |  | 32 |  |  |  |  | 14 |
+| `wave29` | 33 |  | 33 |  |  |  |  | 14 |
 | `wave3` | 98 |  | 88 |  | 10 |  |  | 62 |
 | `wave30` | 141 |  | 141 |  |  |  |  | 90 |
 | `wave31` | 4 |  | 4 |  |  |  |  | 3 |
@@ -92,24 +98,24 @@ assets-inbox/
 | `wave38` | 49 |  | 44 |  | 5 |  |  | 0 |
 | `wave39` | 61 |  | 61 |  |  |  |  | 0 |
 | `wave40` | 15 |  | 15 |  |  |  |  | 0 |
-| `wave4-pilot` | 15 |  | 8 |  | 4 | 3 |  | 12 |
-| `wave41` | 70 |  | 63 |  |  | 7 |  | 0 |
+| `wave4-pilot` | 16 |  | 9 |  | 4 | 3 |  | 12 |
+| `wave41` | 70 |  | 63 |  |  | 7 |  | 8 |
 | `wave42` | 100 |  | 90 |  | 10 |  |  | 0 |
 | `wave43` | 64 |  | 64 |  |  |  |  | 0 |
 | `wave44` | 14 |  | 14 |  |  |  |  | 0 |
-| `wave4b` | 57 |  | 43 |  | 14 |  |  | 53 |
-| `wave4c` | 29 |  | 26 |  | 3 |  |  | 18 |
-| `wave4d` | 25 |  | 24 |  | 1 |  |  | 22 |
+| `wave4b` | 62 |  | 48 |  | 14 |  |  | 53 |
+| `wave4c` | 34 |  | 31 |  | 3 |  |  | 18 |
+| `wave4d` | 27 |  | 26 |  | 1 |  |  | 22 |
 | `wave4e` | 53 |  | 41 |  | 9 | 3 |  | 35 |
 | `wave5a` | 151 |  | 61 |  | 3 | 87 |  | 55 |
 | `wave5b` | 36 |  |  |  | 4 | 32 |  | 0 |
-| `wave5c` | 17 |  | 17 |  |  |  |  | 14 |
+| `wave5c` | 19 |  | 19 |  |  |  |  | 14 |
 | `wave6` | 25 |  | 25 |  |  |  |  | 22 |
 | `wave7` | 206 |  | 168 |  | 38 |  |  | 77 |
 | `wave8` | 41 |  | 39 |  | 2 |  |  | 37 |
 | `wave9` | 52 |  | 44 |  | 5 |  | 3 | 41 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **4959** | **0** | **3673** | **0** | **306** | **944** | **36** | **2057** |
+| **합계** | **5589** | **0** | **4198** | **3** | **322** | **1022** | **44** | **2065** |
 
 ## 4. 찾는 법
 
@@ -243,6 +249,15 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-wave44-early-petitions-20261002.zip` (10-02 14:29) | `wave44/candidates-20261002` | 4,219 KB | `55bc1ed29f972d5b…` | 28 | 0 | `reference/`(Wave 40 두 장·수정 전 판 4) 제외 | `assets/`·`proofs/`·`records/`는 그대로, `README.md`·`QA_CHECKLIST.md`·`assets.csv`·`SHA256SUMS`는 `records/`. `records/ART_BIBLE_v2.md`는 Wave 41 것과 같은 바이트라 뺌. 작업 폴더 `ondine/output/astra-wave44-candidates-20261002`(55MB, 원본 `originals/` 포함)은 `astra-raw/output/`에 보관
 | `/tmp/astra-wave42-rework8-v2-lite.zip` (10-02 15:19, 경량판) | `wave42/rework-20261002` | 1,245 KB | `7cc77e9047d01877…` | 36 | 0 | 없음(생성 원본은 ZIP에 없음) | `assets/abandoned`·`assets/regrowth`·`proofs/`는 그대로, `README.md`·`QA.md`·`assets.csv`·`SHA256SUMS.txt`는 `records/` 아래로. `records/art-bible.md`는 원래 묶음 `records/art-bible.md`와 같은 바이트라 뺌. ZIP 검증 기록 `/tmp/astra-wave42-rework8-v2-zip-verification.json`은 `astra-raw/zips/`에만. 작업 폴더 `bramble/output/astra-wave42-land-stages-rework8-v2`(18MB)는 `astra-raw/output/`에 보관
 | `/tmp/astra-wave42-bramble-v3-lite.zip` (10-02 15:33, 경량판) | `wave42/bramble-v3-20261002` | 262 KB | `1437802d2d807050…` | 16 | 0 | 없음 | `assets/abandoned`·`proofs/`는 그대로, `README.md`·`QA.md`·`assets.csv`·`SHA256SUMS.txt`는 `records/` 아래로. `records/art-bible.md`는 원래 묶음 사본과 같은 바이트라 뺌. 작업 폴더 `bramble/output/astra-wave42-bramble-v3`는 `astra-raw/output/`에 보관
+| `/tmp/astra-storehouse-corner-20261003.zip` (10-03 01:04) | `storehouse-corner/candidates-20261003` | 1,708 KB | `04aed11ef9ec45ba…` | 24 | 0 | `references/`(원본 참조 9, 바이블 사본 포함)와 `records/*-scaled.png` 8(생성 원본을 한 번 줄인 중간 PNG — 생성 원본은 저장소에 넣지 않는 규칙) 제외 | `assets/`·`proofs/`는 그대로, `README.md`·`QA.md`·`manifest.csv`·`manifest.json`·`SHA256SUMS`는 `records/`, ZIP의 `records/`는 `records/`에 그대로(중간 PNG만 빼고). ZIP 해시 파일과 함께 `astra-raw/zips/`에 보관
+| `/tmp/astra-era-pilot-20261003.zip` (10-03 01:04) | `era-pilot/candidates-20261003` | 11,794 KB | `09dbb05c50200545…` | 132 | 4 | `records/references/`(24) 제외. `pilot/houses/*_1300.png` 3장은 설치 그림 `public/assets/buildings/historical-houses/house_l{2,3,4}-v2.png`와 같은 바이트(보존 기본형, 게임 그림 사본)라 제외 | `pilot/<종류>/*.png` → `assets/<종류>/`, 매니페스트 CSV는 `records/pilot/`. `proofs/`(확인판·눈가림 원본)·`ERA_GUIDE.md`·`PLAN.md`·`README.md`·`SOURCES.md`·`SHA256SUMS`는 `records/` 아래로(사용자 지시). 이미 있어 건너뜀 4: 워커 `wk_labor_{f,m}_1300`(`wave5a/workers/wk_labor_{f,m}_01-v1.png`와 같은 바이트)과 2차 눈가림 `scene-B`·`scene-E`(1차와 같은 바이트). `records/inventory/source_inventory.csv`(256KB 초과)는 안내 파일. 작업 폴더 `/tmp/astra-era-pilot-20261003`(ZIP과 같은 내용)은 `astra-raw/output/`에 보관
+| `/tmp/astra-stone-corner-revision-20261003.zip` (10-03 01:16) | `storehouse-corner/stone-revision-20261003` | 2,201 KB | `794c183a42842687…` | 16 | 0 | `references/`(v1 사본·바이블 사본 포함)와 `records/raw-*.png`·`records/*-scaled.png`(생성 원본과 그 축소 중간본) 제외 | 석벽 모서리 v2만 담은 수정판. `assets/`·`proofs/`는 그대로, `README.md`·`manifest.*`·`SHA256SUMS`는 `records/`. ZIP 해시 파일과 함께 `astra-raw/zips/`에 보관
+| `/tmp/astra-region-map-kit-20261003.zip` (10-03 01:13) | `experiments/region-map-kit-20261003` | 38,123 KB | `80606e121370211a…` | 151 | 7 | `references/`(원본 지도 파생본·이웃 JSON)와 `proofs/comparisons/`(16, 원본 손그림 지도 사본이 들어간 나란히 비교) 제외. 조립 지도 16장 가운데 대표 4장(`coastal_port-seed83`·`forest_edge-seed17`·`open_field-seed17`·`neighbor-18`)만 | 실패 실험 기록(Wave 36 집 키트처럼). 키트 PNG → `assets/<종류>/`, 키트 목록 → `records/kit/`, 대표 지도 → `proofs/maps/`(JSON은 `records/samples/`), 모아보기 2 → `proofs/`, 눈가림 16 → `records/blind/`, 조립 소스 `assembler/`·`provenance/`·문서는 `records/`. 이미 있어 건너뜀 7: 깃발 받침 3·거점 3(`lord-components/candidates-20261002/assets/`의 `flag_*_64x96`·`map_{abbey,manor,market}_96x96`와 같은 바이트)과 `stream-straight`(같은 묶음 `stream-estuary`와 같은 바이트). 지도 16장·비교판·참조 전부는 ZIP과 함께 `astra-raw/`에 보관
+| `/tmp/astra-region-atlas-20261003.zip` (10-03 02:14) | `region-atlas/candidates-20261003` | 38,166 KB | `2a39f78fa1b8c0c5…` | 104 | 6 | `references/`(원본 지도 비교 JPEG·이웃 18영지 원본 JSON) 제외 | 지도 20(JPEG)과 같은 이름의 슬롯 JSON 20은 `assets/maps/`에 나란히, 확인판 28과 `neighbor-18.json`은 `proofs/`, `README.md`·`REVIEW.md`·`manifest.json`·`SHA256SUMS`·`overlays/manifest.json`·`provenance/`·`tools/`는 `records/`. 이미 있어 건너뜀 6: 겹침 표지 PNG 6장(깃발 받침 3은 `lord-components/candidates-20261002/assets/flag_*_64x96`, 경계 붓질·적대 깃발·지명 띠는 `experiments/region-map-kit-20261003/assets/markers/`와 같은 바이트) — 파일도 행도 넣지 않음. 이 묶음부터 inbox JPG는 LFS. 생성 원본 PNG는 Astra 로컬 `~/fls-astra-region-atlas/masters/`(ZIP에 없음)
+| `/tmp/astra-event-illustrations-20261003.zip` (10-03 02:21) | `event-art/candidates-20261003` | 9,282 KB | `b9396d1ab8d778d1…` | 106 | 0 | 없음(생성 원본은 ZIP에 없음) | `assets/`(사건 삽화 JPG 35)·`proofs/`의 그림(모아보기·눈가림 보드·수정 전후 14)은 그대로, `proofs/`의 검수 문서·JSON은 `records/qa/`, `PLAN.md`·`manifest.csv`·`README.md`·`SHA256SUMS`는 `records/`. 새 JPG라 LFS
+| `/tmp/astra-strip-corners-20261003.zip` (10-03 02:26) | `strip-corners/candidates-20261003` | 19,517 KB | `bf1242bc090911cd…` | 179 | 41 | `references/`(원본 띠 PNG 8, 게임 그림 사본) 제외 | `assets/` 16은 그대로, 확인판(`proofs/`, JPEG 26)·눈가림 기록(`blind/`)·`manifest.*`·`README.md`·`BLIND_REVIEW.md`·`SHA256SUMS`는 `records/` 아래로(사용자 지시). 건너뜀 41: 눈가림 2~4차 자극 WEBP 가운데 앞 회차와 같은 바이트인 것(회차마다 다시 쓴 자극, 하나만 둠). `records/browser-diagnosis.json`(256KB 초과)은 안내 파일. WEBP는 일반 파일, JPG는 LFS
+| `/tmp/astra-event-illustrations-20261003-v2.zip` (10-03 02:46) | `event-art/rework-20261003` | 9,922 KB | `057dc5ac180709f0…` | 75 | 24 | 없음 | 새로 그린 12장은 `assets/`, 새 확인판 6(새 12장·35장 모아보기, 1차 판 3과 그 모아보기)은 `proofs/`, 검수 문서·JSON은 `records/qa/`, `PLAN.md`·`manifest.csv`·`README.md`·`SHA256SUMS`·`records/`는 `records/`. 건너뜀 24: 바이트가 그대로인 22장, `held/ck_evt_059.jpg`(앞 묶음 059와 같음), `proofs/contact-before35.jpg`(앞 묶음 `contact-sheet.jpg`와 같음)
+| `/tmp/astra-trade-world-20261003.zip` (10-03 02:48) | `trade-world/candidates-20261003` | 25,249 KB | `31fc4bd052fb70c2…` | 384 | 0 | `references/`(화풍 참조 9·도시 캡처와 그 메타데이터) 제외 | `assets/{yard,front,cargo,street}` 128은 그대로, 확인판 JPEG 56은 `proofs/`(문서·JSON·CSV는 `records/proofs/`), 판독 기록 `review/`·`provenance/`·`tools/`·`assets.csv`·`README.md`·`QA_REPORT.md`·`SHA256SUMS`는 `records/`. 새 JPG는 LFS
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -319,6 +334,16 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **Wave 42 땅의 변화 단계**(`wave42/candidates-20261002`, 2026-10-02 판정): PNG 50장(그루터기 8·통나무와 재생 12·발길 길 기본띠 12·길 연결 조각 8·버려진 땅 10, 모두 여름·겨울 짝) 가운데 42장과 확인 그림 26 `confirmed`. `rework_pending` 8장 — `sapling_1to3_*`·`sapling_4to8_*` "실제 크기에서 막대 하나 — 어린나무 무리·덤불로", `abandoned_grass_*`·`abandoned_bramble_*` "보통 풀밭과 구별 안 됨". 좌우 반전 금지(NE/NW는 독립 원본), 길 띠 UV 투영과 포트 규칙은 `records/assets.csv`·`records/CONNECTIONS.md`. 확인 그림의 연도 흐름은 아트 예시이며 엔진 수치가 아니다.
 - **Wave 42 재작업 v2**(`wave42/rework-20261002`, 2026-10-02 판정): 묘목 1–3년·4–8년(128×192, 피벗 (64,172))과 방치 풀(128×160, 피벗 (64,120)) 여름·겨울 6장 `confirmed`, 비고 "재작업판(바이트 다름)" — 파일 이름이 원래 납품과 같다. 옛 6장(`rework_pending`)은 `superseded`, `replaced_by`에 새 경로. 방치 덤불 v2 2장(`abandoned_bramble_{summer,winter}`)은 받되 `rework_pending`, 비고 "좌우 대칭 피라미드 — 낮게 퍼진 불규칙 덤불로". 원래 덤불 2장도 `rework_pending` 그대로이며 비고에 "v2도 재작업 — v3 대기". 비교판 10(JPEG 4·PNG 6)은 확인 그림으로 `confirmed`.
 - **Wave 42 가시나무 v3**(`wave42/bramble-v3-20261002`, 2026-10-02 판정): `abandoned_bramble_{summer,winter}` v3(128×160, 피벗 (64,120), 낮고 옆으로 퍼진 비대칭 덩어리, 겨울은 잎 없는 붉은 갈색 줄기)과 비교판 4 `confirmed`. 처음 판과 v2의 덤불 4행(`rework_pending`)은 `superseded`, `replaced_by`에 v3 경로. 이로써 Wave 42의 `rework_pending`은 0.
+- **창고 눈·성문 모서리 조각**(`storehouse-corner/candidates-20261003`, 2026-10-03 판정): 창고 A·B·C 눈 전용 층 3(160×136, 원본 `storehouse.png`·`storehouse_b-v1`·`storehouse_c-v1`과 같은 캔버스·피벗, 오프셋 (0,0), 지붕 눈 피복 63~72%)과 목책 모서리 조각 여름·겨울 2(256×320, 피벗 (127,270)), 확인판 4 `confirmed`. 석벽 모서리 조각 여름·겨울 2(`gate_corner_stone_*`, 피벗 (127,268))는 `rework_pending`, 비고 "주변 석벽보다 밝은 크림색·큰 돌 — 회색 돌 색·크기 맞추기". 권장 시작 배율·좌우 반전 금지·엔진 연결 위치는 `records/README.md`. 게임 미설치.
+- **석벽 모서리 v2와 모서리 판정 변경**(`storehouse-corner/stone-revision-20261003`, 2026-10-03 판정): v2 여름·겨울(어두운 회색·작은 돌로 고친 판)과 확인판 2 `rejected`, 비고 "벽이 꺾이지 않고 끊긴 자리에 매끈한 블록 — 흉벽·잡석 질감 불연속, 방식 변경". 옛 v1 석벽 2장도 `rework_pending` → `rejected`(대체본이 없어 `replaced_by` 빈칸). 목책 모서리 2장은 `confirmed` → `rework_pending`, 비고 "같은 방식(성벽 띠 이어 붙이기)으로 재작업". 창고 눈 층 3장은 `confirmed` 그대로. 앞 묶음 확인판은 확인하는 대상을 따라 `02-corner-stone.jpg` → `rejected`, `02-corner-palisade.jpg` → `rework_pending`, 나머지 둘(`01-storehouse-snow.jpg`·`03-corner-alpha-scale.jpg`)은 `confirmed`(사용자 판정).
+- **퇴역 그림 8장 장부 행**(2026-10-03, 사용자 판정): `11ca755e`(BLD-01·ENV-03, 렌더 NAT-4)가 `assets-inbox/retired/`로 옮긴 평면 시설 그림 7(`buildings/church`·`keep`·`market`·`masonry`·`mill`·`quarry`·`stone_wall_segment`)과 옛 `terrain/water.png`에 ASSET2-D 규칙대로 `retired` 행을 더했다(wave `retired`, 비고 "BLD-01·ENV-03 아트 감사로 퇴역 — 렌더 NAT-4 11ca755e"). 설치 대장에는 이미 `retired`와 새 경로가 있고, 기존 장부 행과 같은 바이트는 없다. 이 행이 없던 동안 장부 행 수와 inbox 그림 수가 8 어긋났다.
+- **지역 지도 키트 — 실패 실험 기록**(`experiments/region-map-kit-20261003`, 2026-10-03 판정): 손그림 지도를 조각 79장 + 결정론 조립기로 대체하려던 시험. 눈가림 16/16(100%) 구별로 목표(70% 이하) 미달. 지형 조각(숲·구릉 등 27·밭 3·물 4·강/개울 9)은 `rejected`, 비고 "조립 지도가 손그림과 100% 구별됨 — 반복 덩어리·직선 강·매끈한 해안". 손그림 지도 위 겹침용 깃발 받침·경계 붓질·지명 띠(새 3)와 거점 그림(새 9)은 `confirmed`. 길 8·도하 3은 `confirmed`, 비고 "손그림 지도 위 '새로 생긴 길' 겹침용". 바탕 6(`ground/` 지면·종이)은 `rejected`, 비고 "조립 지도 반복 무늬의 원인 — 손그림 지도 방식에서 미사용"(2026-10-03 판정, 처음엔 판정 목록에 없어 `candidate`였음). 대표 지도 4·모아보기 2·눈가림 16·작업 확인판 4는 기록 그림(지형 작업 확인판 3만 `rejected`).
+- **지역 지도 20장**(`region-atlas/candidates-20261003`, 2026-10-03 판정): 조각 조립 대신 지도 한 장 전체를 손그림 화풍으로 생성한 1600×1000 JPEG 20장(강가·해안·백악·숲·습지 각 4) `confirmed`, 비고 "땅 종류별 손그림 바탕 지도 — 거점은 겹쳐 그림". 지도마다 거점 후보 슬롯 20~23곳(총 415)을 같은 이름의 JSON으로 지도 옆에 둔다. 이웃 18영지 배치판과 20장 모아보기 `confirmed`. 땅별 비교판 5·지도별 슬롯 표시판 20·표지 재사용 견본 1은 확인하는 대상(지도·표지)을 따라 `confirmed`. 겹침 표지 6종은 이미 장부에 있는 표지를 바이트 그대로 재사용한 것이라 행을 만들지 않았다.
+- **사건 삽화 35장**(`event-art/candidates-20261003`, 2026-10-03 판정): 콘텐츠 초안 2차의 새 사건 35개 삽화(960×540 JPG). 22장 `confirmed`. 12장(011·013·018·020·025·031·032·034·037·051·052·058) `rework_pending`, 비고 "실내 탁자 문서 구도 반복 — 문서가 걸린 대상을 그리기". 059 `rework_pending`, 비고 "031과 같은 사건으로 보임 — 콘텐츠 정리 대기". 확인판 14 가운데 모아보기·눈가림 보드 8·002·057 수정 전 판은 `confirmed`, 031·059 수정 전 2장과 비교판은 그 둘을 따라 `rework_pending`. 눈가림 두 차례 각 33/35(목표 80% 통과, 031·059 제목 교차 오답).
+- **사건 삽화 재작업**(`event-art/rework-20261003`, 2026-10-03 판정): 탁자 문서 구도 12장(011·013·018·020·025·031·032·034·037·051·052·058)을 문서 대신 대상·행동 중심으로 다시 그린 판 `confirmed`, 비고 "재작업판(바이트 다름)". 옛 12장(`rework_pending`)은 `superseded`, `replaced_by`에 새 경로. 앞 묶음 확인판 `revisions/031-before.jpg`도 대상 031을 따라 `superseded`. 059는 `rework_pending` 그대로(콘텐츠 정리 대기), 059를 다루는 앞 묶음 확인판 2장(`revisions/059-before.jpg`, 031·059 비교판)도 그대로. 새 확인판 6은 `confirmed`.
+- **직업 세계 그림**(`trade-world/candidates-20261003`, 2026-10-03 판정): LM-E6a용 128장 — 작업장 마당 48(원형 12 × 배치 A·B × 여름·겨울, 256×128), 집 앞 표지 20(Wave 37에 없는 직업 10 × A·B), 워커 짐 40(10종 × 4방향, 32×32), 거리 그림 표지 20 — 과 확인판 56 `confirmed`, 비고 "LM-E6a 직업·작업장 원형 — 땅에 서는 구조물". 익명 판독 기록 그림 12(판독 시험 10, 지붕 수정 전 1차 판 2)도 `confirmed`. 판독 57/61(93.4%). 벽에 붙이지 않고 별도 지면에 놓으며 좌우 반전 금지 — 규격·기준점·배율은 `records/assets.csv`.
+- **성벽 띠 모서리**(`strip-corners/candidates-20261003`, 2026-10-03 판정): 기존 잡석 벽면·흉벽·목책 띠 PNG를 잘라 등각 투영한 90도 모서리 16장(4방향 × 석벽·목책 × 여름·겨울, 1024×768, 피벗 (512,544), 월드 배율 0.125) `confirmed`, 비고 "원본 띠 접합 — 눈가림 78%(2배 확대 기준), 흉벽 간격·목책 말뚝 밀집 잔여, 설치 후 줌 1.0 재확인". 확인판 26·눈가림 자극 71은 `records/`의 기록 그림으로 `confirmed`. 앞 판 목책 모서리 기둥 2장(`storehouse-corner/candidates-20261003/assets/gate_corner_palisade_{summer,winter}-v1`)과 그 확인판(`02-corner-palisade.jpg`)은 `rework_pending` → `superseded`, `replaced_by`에 새 목책 4방향(계절별)과 새 목책 확인판.
+- **시대 파일럿**(`era-pilot/candidates-20261003`, 2026-10-03 판정): 1300·1340·1380·1420 시대 변화 시험. 초상 18(6명 × 1300·1380·1420, 256×256) `confirmed`, 비고 "같은 얼굴 시대판 — 초상 시대판 정식 방향". 집 1420판 3(L2·L3·L4) `confirmed`, 비고 "1400 뒤 부유한 집 변형". 간판 8 `confirmed`. 워커 16시트 가운데 새 14 `rejected`, 비고 "약 18px 세계 크기에서 시대 판독 불가 — 워커 시대판 중단"(1300 노동자 남녀 2시트는 Wave 5a 원본과 같은 바이트라 행 없음). 확인판·눈가림 원본은 `records/`에 기록 그림으로 — 워커 걸음 펼침·최악 실루엣 5는 `rejected`, 나머지 19는 `confirmed`. 독립 눈가림 두 차례 4/6(66.7%, 목표 75%)로 관문 미달 — `records/PLAN.md`의 전면 제작은 "양산 보류" 그대로.
 - **Wave 43 봄**(`wave43/candidates-20261002`, 2026-10-02 판정): 24장 — 지면 채움 5(256×128, XY 반복)·밭 3(512×64, X 반복)·활엽수 3·기타 나무 3(여름 원본의 캔버스·알파·피벗 그대로)·과수 4(벚나무는 `plum_j` 기하 템플릿)·봄 소품 6 — 과 확인 그림 40(그룹별 34·묶음 전체 6) `confirmed`. 봄 전용 소품은 여름·겨울판이 없다.
 - **Wave 44 초반 청원 삽화**(`wave44/candidates-20261002`, 2026-10-02 판정): 960×540 JPG 13장(경계 분쟁·방앗간 사용 의무·상속세·혼인세·에일 검정·다리 수리·장터 좌판 분쟁·미성년 후견·공동 목초지·이주민 정착·장원 법정·숲 무단 출입·선례에 따라)과 확인판 1 `confirmed`. Wave 40 사건 삽화 화풍. 장부에 각각 한 행.
 ## 7. 찾지 못한 것
@@ -335,7 +360,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - 재작업본이 오면 원본 행은 `superseded` + `replaced_by`, 재작업본은 판정 전까지 `candidate`.
 - 장부는 여러 세션이 고친다. 다시 생성하지 말고 해당 행만 고치거나 행을 더한다.
 - 판정·재작업·설치가 바뀌면 장부 행의 `status`·`replaced_by`·`installed_by`만 고친다. 파일은 지우거나 덮어쓰지 않는다.
-- 장부 행 수 = inbox 그림(PNG·JPG) 수를 유지한다. JPG 행은 Wave 24부터(판정이 따로 온 파생본).
+- 장부 행 수 = inbox 그림 수를 유지한다. 그림은 **png·jpg·jpeg·webp·gif·svg 전부**다(2026-10-03 사용자 판정 — `records/` 안의 기록 그림·기록 도면 포함). JPG 행은 Wave 24부터(판정이 따로 온 파생본), WEBP·GIF·SVG 행은 2026-10-03부터(Wave 29 움직이는 미리보기, Wave 23 새 비행 순환 GIF 2, Wave 4~5 위상·생성 마스크 도면 SVG 15). `assets-inbox/`를 건드리는 본선 푸시마다 `check:merge`의 장부 검사가 이 여섯 종류의 목록과 장부 `file` 열을 맞춰 보고, 어긋나면 거부한다(결정 RR11). 옮긴 그림은 그 행의 `file`도 옮긴다.
 - **큰 기계 기록은 astra-raw에만**(2026-09-30 사용자 규칙, Wave 39 다음 묶음부터): 기계가 만든 기록 파일(JSON·JSONL·CSV·TSV·TXT·LOG·XML 등)이 256KB(262,144바이트)를 넘으면 저장소에 넣지 않는다. 원본은 `~/feudal-lord-analysis/astra-raw/`(받은 ZIP과 작업 폴더)에만 두고, 저장소의 같은 자리에는 `<파일 이름>.astra-raw.txt` 안내 파일 하나를 둔다. 안내 파일은 한 줄: `<파일 이름> · <바이트> bytes · sha256 <64자> · <astra-raw 경로>`(ZIP 안이면 `zips/<ZIP>::<묶음 안 경로>`, 작업 폴더에도 있으면 그 경로를 `;`로 덧붙임).
   - 사람이 읽는 문서(README·REPORT·QA·PLAN 같은 `.md`, 갤러리 `index.html`)와 확인 그림은 크기와 관계없이 그대로 저장소에 둔다.
   - 이미 들어간 Wave 39 `records/proofs/placements.json`(약 60,000줄) 등 규칙 전의 파일은 그대로 둔다(사용자 판정).

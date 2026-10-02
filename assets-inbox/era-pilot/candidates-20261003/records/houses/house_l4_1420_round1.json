@@ -1,0 +1,44 @@
+{
+  "id": "house_l4_1420",
+  "source": "/Users/rexxa/fls-astra-era/public/assets/buildings/historical-houses/house_l4-v2.png",
+  "raw": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f6fe-0a65-7ab3-8260-4f1eeafb5969/exec-b7390257-11c8-46d3-908a-e8c98ba57a7f.png",
+  "prompt": "Edit this complete existing project-owned isometric house sprite into its year1420 southern England wealthy merchant townhouse version. It must remain unmistakably the SAME house: preserve camera, canvas aspect, building position and overall silhouette envelope, roof ridge and eaves, foundation corners, door position, all main timber posts and story heights, left-upper lighting and warm oak/cream limewash/terracotta flat roof tiles painterly miniature style. Paint one complete finished house, not a kit or overlay. Historically restrained modifications only: add ONE small plain weathered stone chimney with no pot tucked within the existing roof outline (do not expand silhouette), replace just the two small upper front window openings with dull small leaded diamond panes, show subtle existing upper-floor jetty joinery and worn oak beam detail while keeping outer boundaries. No blue glass, no shop display glazing, no Tudor black-and-white contrast, no brick wall, no slate, no text, no ground scene, no extra buildings. Exact transparent background and same object placement as reference. Preserve the ground contact and silhouette as closely as possible. Output a single edited house.",
+  "tool": "image_gen.imagegen",
+  "model": "not disclosed",
+  "seed": "not disclosed",
+  "status": "candidate",
+  "normalization": {
+    "method": "single full-object affine registration from raw alpha>=8 bbox to original bbox; no part compositing or copied alpha",
+    "arguments": [
+      161,
+      161,
+      171,
+      66,
+      864,
+      1107,
+      25,
+      11,
+      114,
+      147
+    ],
+    "final_bbox": [
+      25,
+      11,
+      139,
+      158
+    ],
+    "source_bbox": [
+      25,
+      11,
+      139,
+      158
+    ],
+    "silhouette_iou": 0.9764921786244866,
+    "canvas": [
+      161,
+      161
+    ]
+  },
+  "source_sha256": "b3f7e40cda9de09b2e0af0a596bb8b414b40fb037f46897ab0d4d3cb264d72b8",
+  "raw_sha256": "0110817d7b06e13844c013d7d9f9bc8863999ae828ab80a5ff9a5380686b8e77"
+}

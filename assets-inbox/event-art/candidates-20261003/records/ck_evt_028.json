@@ -1,0 +1,27 @@
+{
+  "id": "ck_evt_028",
+  "prompt": "Use case historical-scene. Create ONE finished full-bleed horizontal 16:9 960x540 event illustration for Charter & Kin. References are STYLE ONLY: match their warm earthy painterly narrative realism, tactile wool, pale linen, weathered oak, restrained natural colors, soft brush texture and lifelike faces. Invent the specified distinct scene, never reproduce reference composition. Southern England medieval market town. Absolutely NO writing, letters, numbers, symbols resembling writing, captions, borders, logos, watermarks: all paper surfaces blank; wax seals may plain round. No Tudor black-and-white timber, ordinary house chimneys, glass storefronts, modern objects, theatrical fantasy, gore. Natural hands/anatomy. One coherent light direction. Year1362 winter overcast daylight. Exactly ONE person, a worried manor steward in muted dark wool cotehardie and simple hood stands outside a completely shut textile workshop, checking its clearly visible iron hasp and padlock. He turns his head back toward a full grain sack and a stone water well across a small empty yard. Through a single open unglazed window beside the locked door, show an abandoned medieval upright wooden loom with unfinished warp and a vacant stool. Nobody else, no bodies, no illness marks, no red cross or plague mask. Cold quiet empty workshop occupies two thirds composition, steward on right and sack/well left in depth. Oblique medium-wide view, weathered oak closed door central, stone and cream plaster, bare twigs, weak gray winter light with restrained warm material tones. This is interruption of textile work after disease rumors, visibly a locked workshop and empty loom, not burial or hospital.",
+  "reference_paths": [
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave40/candidates-20261001/assets/10_documentary_evidence.jpg",
+    "/Users/rexxa/fls-astra-eventart/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg"
+  ],
+  "raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-141f8214-20a0-426b-8971-f9331c7e0d02.png",
+  "output_hint": "Generated images are saved to /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3 as /Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-141f8214-20a0-426b-8971-f9331c7e0d02.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "tool": "builtin image_gen",
+  "revision_prompt": "Edit this image only to remove EVERY chimney from the background ordinary cottage roofs. Rooflines must be plain unbroken thatch or flat stone roofs with simple gables and no upright masonry stacks. Preserve the solitary steward, locked door, loom, well, sack, winter season, composition and all other details exactly. No text. Full 16:9.",
+  "initial_raw_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd8d-3ec8-7a60-81a4-0132219c45f3/exec-722e1135-6c21-4968-a80c-474e9f09d18a.png",
+  "status": "candidate",
+  "raw_sha256": "53f2b86ba10361f587db95182c4dbc77edf2f2b6e6279cf0c10fa0795f8c08c5",
+  "final_sha256": "31b4bedcf1643c148fcf93756d6a1d25cf991449b98dbfe848c8c7524195bba0",
+  "final_file": "assets/ck_evt_028.jpg",
+  "final_size": [
+    960,
+    540
+  ],
+  "processing": "Pillow ImageOps.fit Lanczos to960x540; RGB JPEG quality85 optimize; no painting",
+  "visual_qa": "viewed full generated image; blank documents and primary scene action checked",
+  "final_dimensions": [
+    960,
+    540
+  ]
+}
