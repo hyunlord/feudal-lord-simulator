@@ -1,7 +1,7 @@
 // Player-facing copy of the house progress and facility cause presentation (blocker labels and summaries).
 export const HOUSE_PROGRESS_COPY = {
   serviceUsage: (used: number, capacity: number) => ` · 담당 ${used}/${capacity}필지`,
-  serviceRange: (distance: number, radius: number) => ` · 거리 ${distance} / 범위 ${radius}`,
+  serviceRange: (measure: string) => ` · ${measure}`, // QA-033: in the service's own ruler (SERVICE_DIAGNOSIS_COPY.measure)
   breadNoGranary: '빵이 없고 배급할 곡창이 없습니다',
   breadGranaryEmpty: '빵이 없고 곡창의 빵 재고가 없습니다',
   breadAwaitingDelivery: '집에 빵이 없습니다 — 배급을 기다립니다',

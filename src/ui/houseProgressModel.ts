@@ -11,7 +11,7 @@ import type { GameState } from '../engine/engine.types';
 import { BALANCE } from '../content/balanceConfig';
 import { feasibleDistributorDistance } from '../engine/distributorAccess';
 import { householdServices } from '../engine/householdServices';
-import { marketRoadService } from '../engine/marketService';
+import { MARKET_ROAD_REACH, marketRoadDistance, marketRoadService } from '../engine/marketService';
 import { buildingHasRequiredRoadAccess } from '../engine/roadAccess';
 import { productionOperation } from '../economy/production';
 import { buildingFootprintDistance } from '../geometry/buildingDistance';
@@ -24,6 +24,7 @@ import type { CauseDetail } from './causeRegistry';
 import { buildingSource } from '../contracts';
 import { buildingProblemCause } from './problemCauseModel';
 import { serviceDiagnosis } from './serviceDiagnosisModel';
+import { SERVICE_DIAGNOSIS_COPY } from './serviceDiagnosisCopy.ko';
 import { buildBuildingVisualState } from '../render/buildingVisualState';
 import { problemMarkerKind } from '../render/drawBuildingDetails';
 
@@ -63,17 +64,22 @@ function serviceBlocker(state: GameState, home: Building, service: HouseholdServ
   if (diagnosis.kind === 'served') return null;
   const config = HOUSEHOLD_SERVICE_CONFIG[service];
   const definition = BUILDING_CONFIG_BY_KIND[config.kind];
+  // QA-033: a provider is in reach by the service's own ruler — a market by road steps (MARKET-1), the rest by
+  // footprint tiles within the service radius (engine serviceMeasure).
+  const roadSteps = service === 'market' ? marketRoadDistance(state) : null;
+  const ruler = (b: Building): number => roadSteps === null ? buildingFootprintDistance(home, b) : roadSteps(home, b) ?? Infinity;
+  const reach = roadSteps === null ? definition.serviceRadius : MARKET_ROAD_REACH;
   const providers = state.buildings.filter(b => b.kind === config.kind)
-    .sort((a, b) => buildingFootprintDistance(home, a) - buildingFootprintDistance(home, b) || a.id.localeCompare(b.id));
-  const eligible = providers.find(b => !operationSuspended(b) && buildingFootprintDistance(home, b) <= definition.serviceRadius
+    .sort((a, b) => ruler(a) - ruler(b) || a.id.localeCompare(b.id));
+  const eligible = providers.find(b => !operationSuspended(b) && ruler(b) <= reach
     && b.workers >= definition.workersRequired && (!config.roadRequired || road(home, b)));
   const allocation = eligible === undefined ? undefined : householdServices(state).providers.get(eligible.id);
   const usage = allocation === undefined ? '' : HOUSE_PROGRESS_COPY.serviceUsage(allocation.used, allocation.capacity);
-  const distance = eligible === undefined ? diagnosis.distance : buildingFootprintDistance(home, eligible);
+  const distance = eligible === undefined ? diagnosis.distance : ruler(eligible);
   return {
     causeId: diagnosis.kind === 'paused' ? 'operation_paused' : diagnosis.kind === 'unreachable' ? 'delivery' : diagnosis.kind === 'understaffed' ? 'workers' : service,
     requirement: service, reason: diagnosis.kind,
-    label: `${diagnosis.label}${usage}${['capacity', 'understaffed', 'unreachable'].includes(diagnosis.kind) && Number.isFinite(distance) ? HOUSE_PROGRESS_COPY.serviceRange(distance, diagnosis.serviceRadius) : ''}`,
+    label: `${diagnosis.label}${usage}${['capacity', 'understaffed', 'unreachable'].includes(diagnosis.kind) && Number.isFinite(distance) ? HOUSE_PROGRESS_COPY.serviceRange(eligible === undefined ? diagnosis.measure : SERVICE_DIAGNOSIS_COPY.measure(roadSteps === null ? 'tiles' : 'road_steps', distance, reach)) : ''}`,
     ...(eligible === undefined ? {} : { providerId: eligible.id }),
     ...(allocation === undefined ? {} : { used: allocation.used, capacity: allocation.capacity }),
     sources: [buildingSource(home.id)],

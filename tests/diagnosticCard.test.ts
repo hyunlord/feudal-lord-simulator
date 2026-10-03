@@ -40,12 +40,12 @@ test("house card renders its complete water and bread cause chain result", () =>
   const houseModel = {
     buildingId: "house", name: "오두막", level: 1, builtLevel: 1, condition: "maintained", conditionLabel: "관리 양호", residents: 3,
     thumbnailUrl: "/assets/buildings/house_l1.png", capacity: 8, footprintLabel: "1×1", mergeOptions: [], mergeStatus: "2등급부터 합필할 수 있습니다.",
-    water: { kind: "well_too_far", label: "우물이 너무 멉니다 — 거리 8 / 범위 6", distance: 8, serviceRadius: 6 },
+    water: { kind: "well_too_far", label: "우물이 너무 멉니다 — 거리 8칸 / 범위 6칸", distance: 8, serviceRadius: 6 },
     bread: { kind: "road_disconnected", label: "곡창에서 이 집까지 도로가 이어지지 않음" },
     population: { kind: "declining", label: "감소 중 — 식량 없음, 340틱 경과", elapsedTicks: 340 },
     protection: { kind: "inactive", label: "성벽 미완성", amenityBonus: 0 },
     market: { kind: "no_market", label: "시장 없음", serviceRadius: 8 },
-    church: { kind: "missing", label: "교회 없음", distance: Infinity, serviceRadius: 12 },
+    church: { kind: "missing", label: "교회 없음", distance: Infinity, serviceRadius: 12, measure: "닿는 곳 없음 / 범위 12칸" },
     stoneHouse: { kind: "blocked", label: "도시 대가옥 불가 — 물 공급 필요", blockers: ["물 공급 필요"] },
   } as const;
   const markup = renderToStaticMarkup(createElement(DiagnosticCard, {
@@ -57,7 +57,7 @@ test("house card renders its complete water and bread cause chain result", () =>
   }));
   assert.match(markup, /aria-label="오두막 원인 진단"/);
   assert.match(markup, /주민 3명/);
-  assert.match(markup, /우물이 너무 멉니다 — 거리 8 \/ 범위 6/);
+  assert.match(markup, /우물이 너무 멉니다 — 거리 8칸 \/ 범위 6칸/);
   assert.match(markup, /곡창에서 이 집까지 도로가 이어지지 않음/);
   assert.match(markup, /인구/);
   assert.match(markup, /감소 중 — 식량 없음, 340틱 경과/);

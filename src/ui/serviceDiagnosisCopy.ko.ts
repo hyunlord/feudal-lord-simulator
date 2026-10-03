@@ -4,13 +4,18 @@ export const SERVICE_DIAGNOSIS_COPY = {
   names: { water: '우물', market: '시장', church: '교회' },
   usage: (used: number, capacity: number) => ` · 담당 ${used}/${capacity}필지`,
   wellServed: (distance: number) => `우물에서 ${distance}칸`,
-  served: (name: string, distance: number, radius: number, usage: string) => `${name} 이용 가능 — 거리 ${distance} / 범위 ${radius}${usage}`,
+  // QA-033 (COPY-1r): the distance in the ruler the service's rule uses (engine serviceMeasure) — a market by road
+  // steps, the well and the church by tiles — never a market's tiles against an old radius.
+  measure: (ruler: 'road_steps' | 'tiles', distance: number | null, limit: number) => ruler === 'road_steps'
+    ? (distance === null ? `길로 닿지 않음 / 최대 ${limit}걸음` : `길 ${distance}걸음 / 최대 ${limit}걸음`)
+    : (distance === null ? `닿는 곳 없음 / 범위 ${limit}칸` : `거리 ${distance}칸 / 범위 ${limit}칸`),
+  served: (name: string, measure: string, usage: string) => `${name} 이용 가능 — ${measure}${usage}`,
   noWell: '우물이 없습니다',
   missing: (name: string) => `${name} 없음`,
-  wellTooFar: (distance: number, radius: number) => `우물이 너무 멉니다 — 거리 ${distance} / 범위 ${radius}`,
+  wellTooFar: (measure: string) => `우물이 너무 멉니다 — ${measure}`,
   /** The subject particle follows the last syllable: 교회가, 시장이. */
-  tooFar: (name: string, isChurch: boolean, distance: number, radius: number) =>
-    `${name}${isChurch ? '가' : '이'} 멉니다 — 거리 ${distance} / 범위 ${radius}`,
+  tooFar: (name: string, isChurch: boolean, measure: string) =>
+    `${name}${isChurch ? '가' : '이'} 멉니다 — ${measure}`,
   understaffed: (name: string) => `가까운 ${name}의 일꾼이 부족합니다`,
   unreachable: (name: string) => `${name}까지 연결된 도로가 없습니다`,
   providerLoad: (used: number, capacity: number) => `서비스 담당 ${used}/${capacity} 주거 필지`,
