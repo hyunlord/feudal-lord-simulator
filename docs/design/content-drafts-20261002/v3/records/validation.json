@@ -1,0 +1,145 @@
+{
+  "location": "Mac offline",
+  "draftSchema": "PASS",
+  "original60Schema": "PASS",
+  "changedCount": 15,
+  "mergedCount": 60,
+  "untouchedCount": 45,
+  "newEffectCatalogKeys": [],
+  "negativeSchemaCasesRejected": 3,
+  "changes": [
+    {
+      "id": "ck_evt_002",
+      "changedTopLevelFields": [
+        "conditions",
+        "body",
+        "choices"
+      ]
+    },
+    {
+      "id": "ck_evt_004",
+      "changedTopLevelFields": [
+        "conditions",
+        "body",
+        "choices",
+        "integration"
+      ]
+    },
+    {
+      "id": "ck_evt_008",
+      "changedTopLevelFields": [
+        "conditions",
+        "body",
+        "choices",
+        "integration"
+      ]
+    },
+    {
+      "id": "ck_evt_015",
+      "changedTopLevelFields": [
+        "conditions",
+        "title",
+        "body",
+        "choices",
+        "integration"
+      ]
+    },
+    {
+      "id": "ck_evt_019",
+      "changedTopLevelFields": [
+        "conditions",
+        "body",
+        "choices"
+      ]
+    },
+    {
+      "id": "ck_evt_025",
+      "changedTopLevelFields": [
+        "conditions",
+        "body",
+        "choices"
+      ]
+    },
+    {
+      "id": "ck_evt_028",
+      "changedTopLevelFields": [
+        "conditions",
+        "title",
+        "body",
+        "choices",
+        "integration"
+      ]
+    },
+    {
+      "id": "ck_evt_030",
+      "changedTopLevelFields": [
+        "conditions",
+        "sender",
+        "body",
+        "choices",
+        "integration"
+      ]
+    },
+    {
+      "id": "ck_evt_031",
+      "changedTopLevelFields": [
+        "conditions",
+        "title",
+        "body",
+        "choices",
+        "illustration"
+      ]
+    },
+    {
+      "id": "ck_evt_035",
+      "changedTopLevelFields": [
+        "conditions",
+        "body",
+        "choices",
+        "integration"
+      ]
+    },
+    {
+      "id": "ck_evt_037",
+      "changedTopLevelFields": [
+        "conditions",
+        "body",
+        "choices"
+      ]
+    },
+    {
+      "id": "ck_evt_042",
+      "changedTopLevelFields": [
+        "conditions",
+        "choices"
+      ]
+    },
+    {
+      "id": "ck_evt_046",
+      "changedTopLevelFields": [
+        "conditions",
+        "choices",
+        "integration"
+      ]
+    },
+    {
+      "id": "ck_evt_049",
+      "changedTopLevelFields": [
+        "conditions",
+        "choices"
+      ]
+    },
+    {
+      "id": "ck_evt_059",
+      "changedTopLevelFields": [
+        "conditions",
+        "title",
+        "body",
+        "choices",
+        "integration"
+      ]
+    }
+  ],
+  "runtimeTested": false,
+  "eventsSha256": "3c3cf8e029e3aecf50cc49e92bd10f107fec5bf4f9608090a77ba28e8cf6c1fc"
+}

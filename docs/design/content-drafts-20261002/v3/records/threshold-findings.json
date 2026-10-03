@@ -1,0 +1,238 @@
+{
+  "head": "5c16778d2eff26a1501485a7c0d7413ce16a6388",
+  "bindings": {
+    "LIVE": {
+      "expression": "state.houses.filter(h => h.residents > 0)",
+      "unit": "가구",
+      "source": "src/population/population.types.ts:22"
+    },
+    "TIMBER_AVAILABLE": {
+      "expression": "state.treasuryTimber + state.buildings.reduce((sum,b) => sum + availableStock(b,'timber'),0)",
+      "unit": "단",
+      "source": "src/economy/storage.ts:184; src/world/placement.ts:267"
+    },
+    "TIMBER_NEED": {
+      "expression": "waitingTimberNeed(state)",
+      "unit": "단",
+      "source": "src/engine/autoplayTimberDemand.ts:23; src/economy/construction.ts:95"
+    },
+    "SEASON": {
+      "expression": "stateCalendar(state).season",
+      "unit": "봄0/여름1/가을2/겨울3",
+      "source": "src/engine/scenarioState.ts:81"
+    },
+    "SUB": {
+      "expression": "state.agency?.subsidies.find(s => s.kind === kind)?.amount ?? 0",
+      "unit": "d",
+      "source": "src/engine/townAgency.ts:73"
+    },
+    "LEGAL": {
+      "expression": "const a = autoplayBuildAction(state,kind); a.kind === 'place_building' && a.building === kind",
+      "unit": "boolean",
+      "source": "src/engine/autoplay.ts:275"
+    },
+    "WATERLESS": {
+      "expression": "LIVE.filter(h => { const service=allocateHouseServices(state).houses.get(h.buildingId); return service !== undefined && service.water.kind !== 'served'; }).length",
+      "unit": "가구",
+      "source": "src/population/serviceAllocation.ts:53"
+    },
+    "WHEAT_BLOCKED": {
+      "expression": "storageCapacityBlock(state.buildings,'wheat') !== null",
+      "unit": "boolean; 밀 반입 가능 공간 0",
+      "source": "src/economy/storage.ts:98"
+    },
+    "REMOTE": {
+      "expression": "LIVE.filter(h => { const home = state.buildings.find(b => b.id === h.buildingId); return home !== undefined && CHAPELS.every(c => buildingFootprintDistance(home,c)>8); }).length",
+      "unit": "가구",
+      "source": "src/geometry/buildingDistance.ts:12"
+    },
+    "CHAPELS": {
+      "expression": "state.buildings.filter(b => b.kind === 'chapel')",
+      "unit": "건물",
+      "source": "src/content/buildingConfig.ts:200",
+      "note": "state.buildings contains completed buildings; construction sites are state.constructionSites, not counted."
+    }
+  },
+  "events": [
+    {
+      "number": 4,
+      "id": "ck_evt_004",
+      "predicates": [
+        "LIVE.length >= 2",
+        "WATERLESS >= 2",
+        "WHEAT_BLOCKED === true",
+        "SUB('well') === 0 && SUB('granary') === 0",
+        "40 <= L && L < 80",
+        "LEGAL('well') && LEGAL('granary')"
+      ],
+      "sources": [
+        {
+          "ref": "src/population/serviceAllocation.ts:53",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/population/serviceAllocation.ts#L53"
+        },
+        {
+          "ref": "src/economy/storage.ts:98",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/economy/storage.ts#L98"
+        },
+        {
+          "ref": "src/engine/townAgency.ts:73",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/townAgency.ts#L73"
+        }
+      ],
+      "existingEngineFieldsOnly": true,
+      "adapterStatus": "조건 별칭 바인딩은 제안이며 엔진 등록기 구현으로 주장하지 않음"
+    },
+    {
+      "number": 8,
+      "id": "ck_evt_008",
+      "predicates": [
+        "LIVE.length >= 3",
+        "CHAPELS.length >= 1",
+        "REMOTE >= 3",
+        "SUB('chapel') === 0",
+        "subsidyRefusal(state,'chapel',50) === null",
+        "LEGAL('chapel')"
+      ],
+      "sources": [
+        {
+          "ref": "src/geometry/buildingDistance.ts:12",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/geometry/buildingDistance.ts#L12"
+        },
+        {
+          "ref": "src/content/buildingConfig.ts:200",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/content/buildingConfig.ts#L200"
+        },
+        {
+          "ref": "src/population/serviceAllocation.ts:34",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/population/serviceAllocation.ts#L34"
+        },
+        {
+          "ref": "src/engine/autoplay.ts:275",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/autoplay.ts#L275"
+        }
+      ],
+      "existingEngineFieldsOnly": true,
+      "adapterStatus": "조건 별칭 바인딩은 제안이며 엔진 등록기 구현으로 주장하지 않음"
+    },
+    {
+      "number": 15,
+      "id": "ck_evt_015",
+      "predicates": [
+        "SEASON === 0 || SEASON === 1",
+        "timberTradeMarket(state) !== null",
+        "(state.timberOrder ?? 0) === 0",
+        "state.treasuryCoin >= 180",
+        "TIMBER_AVAILABLE < 10",
+        "TIMBER_NEED > TIMBER_AVAILABLE"
+      ],
+      "sources": [
+        {
+          "ref": "src/engine/timberTrade.ts:28",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/timberTrade.ts#L28"
+        },
+        {
+          "ref": "src/engine/autoplayTimberDemand.ts:23",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/autoplayTimberDemand.ts#L23"
+        },
+        {
+          "ref": "src/economy/storage.ts:184",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/economy/storage.ts#L184"
+        }
+      ],
+      "existingEngineFieldsOnly": true,
+      "adapterStatus": "조건 별칭 바인딩은 제안이며 엔진 등록기 구현으로 주장하지 않음"
+    },
+    {
+      "number": 28,
+      "id": "ck_evt_028",
+      "predicates": [
+        "state.population >= 1",
+        "state.plague?.second !== undefined",
+        "state.plague.second.arrivalTick <= state.tick",
+        "state.plague.second.endTick === undefined",
+        "state.plague.endedTick === undefined",
+        "state.agency.policy === 'growth' || state.agency.policy === 'defence'"
+      ],
+      "sources": [
+        {
+          "ref": "src/engine/plague.types.ts:9",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/plague.types.ts#L9"
+        },
+        {
+          "ref": "src/engine/plague.ts:77",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/plague.ts#L77"
+        },
+        {
+          "ref": "src/engine/plague.ts:551",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/plague.ts#L551"
+        }
+      ],
+      "existingEngineFieldsOnly": true,
+      "adapterStatus": "조건 별칭 바인딩은 제안이며 엔진 등록기 구현으로 주장하지 않음"
+    },
+    {
+      "number": 35,
+      "id": "ck_evt_035",
+      "predicates": [
+        "state.population >= 1",
+        "SEASON === 2 || SEASON === 3",
+        "timberTradeMarket(state) !== null",
+        "(state.timberOrder ?? 0) === 0",
+        "state.treasuryCoin >= 72",
+        "TIMBER_AVAILABLE < 12",
+        "TIMBER_NEED > TIMBER_AVAILABLE"
+      ],
+      "sources": [
+        {
+          "ref": "src/engine/timberTrade.ts:28",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/timberTrade.ts#L28"
+        },
+        {
+          "ref": "src/content/timberTradeConfig.ts:5",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/content/timberTradeConfig.ts#L5"
+        },
+        {
+          "ref": "src/engine/autoplayTimberDemand.ts:23",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/autoplayTimberDemand.ts#L23"
+        }
+      ],
+      "existingEngineFieldsOnly": true,
+      "adapterStatus": "조건 별칭 바인딩은 제안이며 엔진 등록기 구현으로 주장하지 않음"
+    },
+    {
+      "number": 46,
+      "id": "ck_evt_046",
+      "predicates": [
+        "SEASON === 1 || SEASON === 2",
+        "timberTradePoint(state) !== null",
+        "(state.timberOrder ?? 0) >= 8",
+        "state.treasuryTimber > 0",
+        "stock 선택만: state.timberOrder <= 60 && TIMBER_NEED > TIMBER_AVAILABLE"
+      ],
+      "sources": [
+        {
+          "ref": "src/engine/timberTrade.ts:19",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/timberTrade.ts#L19"
+        },
+        {
+          "ref": "src/engine/timberTrade.ts:37",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/engine/timberTrade.ts#L37"
+        },
+        {
+          "ref": "src/content/timberTradeConfig.ts:5",
+          "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5c16778d2eff26a1501485a7c0d7413ce16a6388/src/content/timberTradeConfig.ts#L5"
+        }
+      ],
+      "existingEngineFieldsOnly": true,
+      "adapterStatus": "조건 별칭 바인딩은 제안이며 엔진 등록기 구현으로 주장하지 않음"
+    }
+  ],
+  "graft": {
+    "buildCalls": 1,
+    "queryCalls": 11,
+    "successfulQueryCalls": 9,
+    "failedQueryCalls": 2,
+    "tokensSaved": 113412,
+    "dollars": null
+  }
+}

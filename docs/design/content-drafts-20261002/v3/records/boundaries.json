@@ -1,0 +1,53 @@
+{
+  "kind": "authored arithmetic boundary evaluation; not engine integration",
+  "cases": [
+    {
+      "rule": "32d subsidy, other0",
+      "treasuryD": 127,
+      "eligible": false
+    },
+    {
+      "rule": "32d subsidy, other0",
+      "treasuryD": 128,
+      "eligible": true
+    },
+    {
+      "rule": "004 remaining limit",
+      "remainingD": 39,
+      "eligible": false
+    },
+    {
+      "rule": "004 remaining limit",
+      "remainingD": 40,
+      "eligible": true
+    },
+    {
+      "rule": "004 remaining limit",
+      "remainingD": 79,
+      "eligible": true
+    },
+    {
+      "rule": "004 remaining limit",
+      "remainingD": 80,
+      "eligible": false
+    },
+    {
+      "rule": "015 timber",
+      "need": 10,
+      "available": 10,
+      "eligible": false
+    },
+    {
+      "rule": "015 timber",
+      "need": 10,
+      "available": 9,
+      "eligible": true
+    },
+    {
+      "rule": "015 timber",
+      "need": 9,
+      "available": 9,
+      "eligible": false
+    }
+  ]
+}
