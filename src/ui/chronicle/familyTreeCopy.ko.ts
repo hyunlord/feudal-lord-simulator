@@ -1,4 +1,5 @@
 import type { NamedLineageKind } from "../../engine/persons.types";
+import { PERSONS_COPY } from "../persons/personsCopy.ko";
 
 // UI-7 the biography's family tree (가계도): the tab, the banner, the generation labels and the node lines.
 export const FAMILY_TREE_COPY = {
@@ -14,7 +15,7 @@ export const FAMILY_TREE_COPY = {
   outsideSpouse: "혼인으로 든 사람",
   deceased: "고인",
   // UI-8 (F3-A PL-2): plague-dead persons show the cause in the node's aria-label and as a visible line.
-  plagueDeath: (year: number) => `역병으로 죽음 (${year})`,
+  plagueDeath: PERSONS_COPY.plagueDeath,
   // On the frame itself, a tag in its corner (the death year is in the years line; the full line is the node's label).
   plagueShort: "역병",
   node: (name: string, years: string, outside: boolean, dead: boolean, deathCause?: string) =>

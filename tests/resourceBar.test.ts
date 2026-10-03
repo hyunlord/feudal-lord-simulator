@@ -25,7 +25,7 @@ test("resource bar presents all current stocks including stone and transported c
   for (const [label, value] of [["인구", 28], ["빵", 38], ["가용 목재", 19], ["가용 석재", 41], ["재정", 19]]) {
     assert.ok(html.includes(`<span>${label}</span><strong>${value}</strong>`));
   }
-  for (const text of ["밀 37", "원목 23", "원석 43", "유휴 일꾼 <b>9</b>", "운송 중인 물량 포함"]) assert.ok(html.includes(text));
+  for (const text of ["밀 37", "통나무 23", "원석 43", "유휴 일꾼 <b>9</b>", "운송 중인 물량 포함"]) assert.ok(html.includes(text));
   assert.ok(!html.includes("500"));
 });
 

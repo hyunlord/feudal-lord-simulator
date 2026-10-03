@@ -29,7 +29,7 @@ export const SEASON_LEDGER_COPY = {
   held: (name: string, amount: number) => `${name} ${amount}`,
   // UI-4b: the Wave 19 scene names (records/metadata-scenes-*.json), shown under the title and read for each icon.
   scene: {
-    population_up: "인구 늘음", population_down: "인구 줄음", household_arrival: "가구 입주", household_departure: "가구 이탈",
+    population_up: "인구 증가", population_down: "인구 감소", household_arrival: "가구 입주", household_departure: "가구 이탈",
     house_hungry: "굶은 집", house_fed: "다시 먹음", bread_shortage: "빵 부족", bread_reserve: "비축 충분",
     timber_shortage: "목재 부족", stone_shortage: "석재 부족", complete_house: "주택 완공", complete_facility: "시설 완공",
     complete_defense: "방어 완공", complete_public: "공공 완공", construction_blocked: "공사 막힘", fire: "화재",
@@ -54,7 +54,7 @@ export const SEASON_LEDGER_COPY = {
     event_recovered: (name: string) => `${name}에서 회복했습니다`,
   },
   eventNames: { fire: "불", dearth: "흉년", great_famine: "대기근" },
-  quiet: "큰 일 없이 지나간 계절입니다",
+  quiet: "큰일 없이 지나간 계절입니다",
   /** UX-0b: the season's own loss when no event names it (starvation is not an engine event). */
   populationFell: (people: number) => `사람이 ${people}명 줄었습니다`,
   /** FIX-4 E11: a food hint says with what (the engine's `foodNeeds`). */

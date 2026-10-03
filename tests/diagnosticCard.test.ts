@@ -74,7 +74,7 @@ test("walker card renders route, mission and cancellation facts", () => {
     model: {
       kind: "walker",
       value: {
-        walkerId: "carter", roleLabel: "운반인", cargoLabel: "통나무 4",
+        walkerId: "carter", roleLabel: "운반꾼", cargoLabel: "통나무 4",
         sourceLabel: "벌목소", sourceDirectionLabel: null, sourceDistance: null,
         destinationLabel: "제재소", statusLabel: "배송 취소",
         remainingDistance: 7, etaTicks: 88, housesPassed: 2, tilesTravelled: null,
@@ -82,7 +82,7 @@ test("walker card renders route, mission and cancellation facts", () => {
       },
     },
   }));
-  assert.match(markup, /aria-label="운반인 임무 진단"/);
+  assert.match(markup, /aria-label="운반꾼 임무 진단"/);
   for (const label of ["통나무 4", "벌목소", "제재소", "배송 취소", "7칸", "약 8일", "지난 집 2", "도로가 끊김"]) {
     assert.match(markup, new RegExp(label));
   }

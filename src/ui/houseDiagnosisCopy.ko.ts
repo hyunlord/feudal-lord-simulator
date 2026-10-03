@@ -18,6 +18,6 @@ export const HOUSE_DIAGNOSIS_COPY = {
   freshBreadNeeded: "신선한 빵 필요",
   insideWallNeeded: "완성된 성벽 안 필요",
   stoneHouseBlocked: (blockers: string) => `도시 대가옥 불가 — ${blockers}`,
-  noDistributorRecord: "배급자 순회 기록 없음 — 다음 배급 후 다시 확인",
+  noDistributorRecord: "배급꾼 순회 기록 없음 — 다음 배급 후 다시 확인",
   mergedHouseSuffix: " · 합필 주택",
 } as const;

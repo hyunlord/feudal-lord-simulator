@@ -15,6 +15,7 @@ import { existingRoadComponent } from "../world/roadGraph";
 import { farmsteadCause } from "../zones/arableStrips";
 import { ARABLE_CAUSE_LABELS, FARMSTEAD_COPY } from "../zones/arableCopy.ko";
 import { resourceName } from "../content/resourceCatalog.ko";
+import { PROBLEM_CAUSE_COPY } from "./problemCauseCopy.ko";
 
 /** The store a good waits for: its granary or storehouse (money has none; its causes name the storehouse). */
 const storeLabelOf = (resource: ResourceType): string =>
@@ -58,18 +59,18 @@ function outputDestinationCause(
   const destinations = state.buildings.filter((candidate) =>
     candidate.id !== target.id && acceptsResource(candidate.kind, resource),
   );
-  if (destinations.length === 0) return `운반인이 가져갈 ${storageLabel}이 없습니다`;
+  if (destinations.length === 0) return PROBLEM_CAUSE_COPY.noStore(storageLabel);
   const storable = STORABLE_RESOURCE_TYPES.find((candidate) => candidate === resource);
   const blocked = storable === undefined ? null : storageCapacityBlock(destinations, storable);
-  if (blocked !== null) return `${storageLabel} 가득 참 (${blocked.used}/${blocked.capacity})`;
+  if (blocked !== null) return PROBLEM_CAUSE_COPY.storeFull(storageLabel, blocked.used, blocked.capacity);
   const available = destinations.filter((candidate) =>
     storable !== undefined && storageIntakeSpace(candidate, storable,
       availableSpace(candidate, BUILDING_CONFIG_BY_KIND[candidate.kind])) > 0,
   );
   if (!available.some((candidate) => isRoadConnected(state, target, candidate))) {
-    return `${storageLabel}까지 경로가 없습니다 — ${resourceName(resource)} 운반 불가`;
+    return PROBLEM_CAUSE_COPY.noRoute(storageLabel, resourceName(resource));
   }
-  return `운반인이 ${storageLabel}으로 옮기기를 기다리는 중`;
+  return PROBLEM_CAUSE_COPY.waiting(storageLabel);
 }
 
 export function buildingProblemCause(state: GameState, buildingId: string): string | null {
