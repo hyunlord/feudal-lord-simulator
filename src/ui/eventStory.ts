@@ -20,6 +20,8 @@ import { beaconLit, conscriptsAway, warForecast, warOf } from "../engine/war";
 import { moneyShort } from "./money.ko";
 import { petitionPresentation } from "./petitionPresentation";
 import type { StoryIllustration } from "./storyArt";
+import { lordBeats } from "./lordStoryBeats";
+import type { UiModal } from "./stateMachine/uiStateMachine";
 
 // UI-4 (world before UI): what the town is living through now, as story beats. Each beat is read from the engine's
 // state (F0-B events and forecast, F0-C1 politics) — nothing here decides anything. The app shows a beat's card only
@@ -38,20 +40,29 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   // UI-10: chapter 5's eight steps (F5-A LG-1; its four petitions share the "petition" kind) and the interlude's five (LG-13).
   | "legacy_mayor_demand" | "legacy_royal_tax" | "legacy_succession" | "legacy_city_seal" | "legacy_charter"
   | "legacy_departure" | "legacy_record" | "legacy_last_market"
-  | "interlude_staple" | "interlude_guild_dispute" | "interlude_market_fire" | "interlude_church_rebuilding" | "interlude_deposition";
+  | "interlude_staple" | "interlude_guild_dispute" | "interlude_market_fire" | "interlude_church_rebuilding" | "interlude_deposition"
+  // LM-R1 (lord mode): a home estate's petition, the steward's answers by precedent, the town's request (lordStoryBeats.ts).
+  | "home_petition" | "home_precedent" | "lord_request";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
-  illustration: StoryIllustration;
+  /** LM-R1: null for a beat without its own picture (a home petition kind Wave 44 has none for; no other picture stands in). */
+  illustration: StoryIllustration | null;
   /** Where [위치로] looks (null: nowhere in particular). */
   tile: { readonly tx: number; readonly ty: number } | null;
   title: string;
   line: string;
   facts: readonly string[];
   advice: string;
-  /** The beat is a decision the lord answers in a modal (the famine, a petition). */
-  decision: "famine" | "petition" | null;
+  /** The beat is a decision the lord answers in a modal (the famine, a petition; LM-R1: a home petition, the steward's
+   * precedents, the town's request). */
+  decision: "famine" | "petition" | "estate_petition" | "precedent" | "lord_request" | null;
 }>;
+
+/** The modal a decision beat's [결정하기] opens. */
+export function decisionModal(decision: NonNullable<StoryBeat["decision"]>): UiModal {
+  return decision === "famine" ? "decision" : decision;
+}
 
 export const EVENT_WORLD_FIRST_MS = 1_500;
 /** The delay in use: EVENT_WORLD_FIRST_MS, or the proof query `story-delay=<ms>` (evidence captures lengthen it to
@@ -144,6 +155,7 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
         : reorgPetition !== undefined ? copy.reorg.demand.advice
         : copy.petition.advice, facts: [] });
   }
+  beats.push(...lordBeats(state));
   beats.push(...warBeats(state));
   beats.push(...plagueBeats(state));
   beats.push(...reorgBeats(state));

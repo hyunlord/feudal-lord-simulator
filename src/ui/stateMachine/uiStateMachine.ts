@@ -23,7 +23,9 @@ export type UiModal = "pause_menu" | "event" | "season_ledger" | "decision" | "p
   /** UI-5: a person's card (from a house's members, a petition's petitioners, the famine's steward). */
   | "person_card"
   /** UI-10: the legacy verdict and the campaign's ending (after chapter 5's page), and the chronicle book (LG-9). */
-  | "legacy_ending" | "chronicle_book";
+  | "legacy_ending" | "chronicle_book"
+  /** LM-R1 (lord mode): a home estate's petition, the steward's answers by precedent, the town's request. */
+  | "estate_petition" | "precedent" | "lord_request";
 export type UiState = Readonly<{ mode: UiMode; modals: readonly { readonly modal: UiModal; readonly under: UiMode }[]; hudHidden: boolean }>;
 export type UiEvent =
   | { readonly type: "open_build" } | { readonly type: "toggle_build" }

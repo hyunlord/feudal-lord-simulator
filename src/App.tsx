@@ -86,6 +86,7 @@ import { ZoneToolbar } from "./ui/hud/ZoneToolbar";
 import { zoneEditHistory } from "./render/zoneEditHistory";
 import type { ZoneKind } from "./zones/zone.types";
 import { EventCards } from "./ui/hud/EventCards";
+import { decisionModal } from "./ui/eventStory";
 import { personRow, stewardPerson } from "./ui/persons/personModels";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
 import { guidanceSampleKey } from "./ui/hud/guidanceSample";
@@ -473,7 +474,7 @@ export function App() {
         {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector}
           lead={stuckChip === null ? null : <StuckGoodsChip view={stuckChip} onInspect={openInspector} />} /> : null}
         {visibility.crisis ? <EventCards beats={story.visible} onDismiss={story.dismiss}
-          onDecide={beat => sendUi({ type: "push_modal", modal: beat.decision === "famine" ? "decision" : "petition" })} /> : null}
+          onDecide={beat => { if (beat.decision !== null) sendUi({ type: "push_modal", modal: decisionModal(beat.decision) }); }} /> : null}
         {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
           <GoalCards tutorial={tutorial} maxActive={1} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
         </aside> : null}

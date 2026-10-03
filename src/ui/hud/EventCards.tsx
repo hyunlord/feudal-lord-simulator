@@ -26,7 +26,7 @@ export function EventCards({ beats, onDismiss, onDecide }: {
         {beats.map(beat => (
           <Button key={beat.id} type="button" className="event-chip" data-story={beat.kind} aria-expanded={openId === beat.id}
             aria-label={EVENT_STORY_COPY.chipLabel(beat.title)} onPress={() => setOpenId(current => current === beat.id ? null : beat.id)} variant="secondary">
-            <span className="event-chip-art" aria-hidden="true" style={storyArtStyle(beat.illustration, 64)} />{beat.title}
+            {beat.illustration === null ? null : <span className="event-chip-art" aria-hidden="true" style={storyArtStyle(beat.illustration, 64)} />}{beat.title}
           </Button>
         ))}
       </div>
@@ -61,7 +61,7 @@ export function EventCardDetail({ open, onDismiss, onDecide }: {
   }, [lineExpanded, open.title, open.line]);
   return (
     <article className="event-card" data-frame="light" data-story={open.kind}>
-      <div className="event-card-art" aria-hidden="true" style={storyArtStyle(open.illustration, 296)} />
+      {open.illustration === null ? null : <div className="event-card-art" aria-hidden="true" style={storyArtStyle(open.illustration, 296)} />}
       {/* NAT-1: one line (ellipsis); "더 보기" shows it whole with the body (no hover-only title tooltip). */}
       <h2 ref={titleRef} className={lineExpanded ? "event-card-title--whole" : undefined}>{open.title}</h2>
       {/* NAT-1: clamp to 4 lines; the "더 보기" button reveals the rest (NAT-4: shown only when there is a rest). */}

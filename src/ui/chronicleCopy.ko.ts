@@ -82,7 +82,7 @@ export const CHRONICLE_COPY = {
     // UI-9 (F4-A): chapter 4, the reorganisation.
     4: { title: (from: number | null) => `제4장 · 재편${chapterSpan(from, CHAPTER_FOUR.toYear)}`, line: "역병이 지나간 도시가 부유해졌습니다. 이제 도시는 영주에게 권리를 요구합니다", start: "제4장 시작" },
     // UI-9b: chapter 5 (F5-A), autonomy and legacy, over its Wave 31 painting.
-    5: { title: (from: number | null) => `제5장 · 자치와 유산${chapterSpan(from, CHAPTER_FIVE.toYear)}`, line: "도시가 제 시장과 인장을 원합니다. 늙은 영주는 무엇을 남길지 정해야 합니다", start: "제5장 시작" },
+    5: { title: (from: number | null) => `제5장 · 자치와 유산${chapterSpan(from, CHAPTER_FIVE.toYear)}`, line: "도시가 제 시장과 인장을 원합니다. 영주는 무엇을 남길지 정해야 합니다", start: "제5장 시작" },
   } as Readonly<Record<number, { readonly title: (from: number | null) => string; readonly line: string; readonly start: string }>>,
   laterTitle: (chapter: number) => `제${chapter}장 — 예고`,
   laterLine: "다음 장은 아직 준비 중입니다",
