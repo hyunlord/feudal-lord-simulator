@@ -136,6 +136,8 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/wave12GuildhallManifest.generated.ts", // UI-9 chapter 4 guildhall world prop
     "src/render/wave17WalkerManifest.generated.ts", // UI-9b the lord's tax collector
     "src/ui/lord/receiptArt.ts", // LM-R1 the lord mode's receipt frame, reason caps and decision ribbon (Wave 35)
+    "src/render/wave37DoorSignManifest.generated.ts", // LM-R1 the lord-mode house-front signs (Wave 37)
+    "src/render/manorHouseManifest.generated.ts", // LM-R1 RUN-01 the manor house (Wave 12 A / B, activity, empty A / B v2)
   ];
   for (const file of manifestFiles) {
     for (const url of extractUrlLiterals(readText(file))) {
