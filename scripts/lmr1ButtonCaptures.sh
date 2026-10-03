@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # LM-R1 buttons evidence on the DGX: serves this run folder and the trunk before (with the no-watch dev server,
 # scripts/remote/viteNoWatch.config.ts) and runs scripts/lmr1ButtonCaptures.mjs on each ("after" whole; "before" the
-# gallery only). Raw clips to .remote/lmr1-buttons/ (composed on the Mac by scripts/lmr1ButtonSheets.py), numbers to
+# gallery at 1280 x 800 DPR 1). Raw clips to .remote/lmr1-buttons/ (composed on the Mac by scripts/lmr1ButtonSheets.py), numbers to
 # docs/verification/lmr1/buttons/captures-<label>.json.
 #   scripts/remote/run.sh render-LMR1-buttons-<sha7> -- bash scripts/lmr1ButtonCaptures.sh <base-sha|->
 set -euo pipefail
@@ -28,5 +28,5 @@ up "http://127.0.0.1:$port/"
 node scripts/lmr1ButtonCaptures.mjs "http://127.0.0.1:$port/" "$raw" "$out/captures-after.json" --label after
 if [ "$base_sha" != "-" ]; then
   up "http://127.0.0.1:$((port + 50))/"
-  node scripts/lmr1ButtonCaptures.mjs "http://127.0.0.1:$((port + 50))/" "$raw" "$out/captures-before.json" --label before --only gallery
+  node scripts/lmr1ButtonCaptures.mjs "http://127.0.0.1:$((port + 50))/" "$raw" "$out/captures-before.json" --label before --only gallery --views 1280-dpr1
 fi

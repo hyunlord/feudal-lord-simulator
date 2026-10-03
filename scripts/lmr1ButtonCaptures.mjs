@@ -10,7 +10,7 @@
 //  - the game: the welcome screen (primary mode buttons) and the build drawer (the primary cards), and where seal_slot.png
 //    is drawn (computed backgrounds of .build-seal / .speed-seal).
 // Raw PNG clips go to <raw-dir> (composed into small JPEG sheets on the Mac); the numbers to <json>.
-//   node scripts/lmr1ButtonCaptures.mjs <url> <raw-dir> <json> [--label after|before] [--only gallery]
+//   node scripts/lmr1ButtonCaptures.mjs <url> <raw-dir> <json> [--label after|before] [--only gallery] [--views 1280-dpr1,...]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/lmr1ButtonCaptures.mjs)", { remote: "scripts/remote/run.sh render-LMR1-buttons-<sha7> -- bash scripts/lmr1ButtonCaptures.sh …", entry: import.meta.url });
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -55,8 +55,9 @@ async function gallery(view) {
   const context = await browser.newContext({ viewport: { width: view.width, height: view.height }, deviceScaleFactor: view.dpr, hasTouch: view.touch === true });
   const page = await context.newPage();
   page.on("pageerror", error => result.errors.push(`${view.name}: ${String(error)}`));
-  await page.goto(`${url}dev/ui-kit`);
-  await page.locator('[data-testid="ui-kit-gallery"]').waitFor();
+  page.setDefaultTimeout(8_000); // a row the trunk's gallery lacks fails its part in 8 s, not 30
+  await page.goto(`${url}dev/ui-kit`, { timeout: 60_000 });
+  await page.locator('[data-testid="ui-kit-gallery"]').waitFor({ timeout: 60_000 });
   await page.evaluate(() => document.fonts.ready);
   await pause(1200);
   await page.evaluate(`window.__lmr1Measure = ${measureButton.toString()}`);
@@ -173,7 +174,7 @@ async function fallback() {
   let asked = 0;
   await page.route("**/assets/wave38/tab_hover.png", route => { asked += 1; return route.abort(); });
   await page.goto(`${url}dev/ui-kit`);
-  await page.locator('[data-testid="ui-kit-gallery"]').waitFor(); await pause(2500);
+  await page.locator('[data-testid="ui-kit-gallery"]').waitFor({ timeout: 60_000 }); await pause(2500);
   const attribute = await page.evaluate(() => document.documentElement.getAttribute("data-ui-art"));
   const primary = await page.locator('[data-states="primary"] .ui-btn').first().evaluate(element => getComputedStyle(element).borderImageSource.replace(/.*\/assets\//, "").replace(/"\)$/, ""));
   const section = page.locator('[data-section="buttons"]');
@@ -198,8 +199,8 @@ async function game() {
   if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
   await page.keyboard.press("Escape"); await page.waitForTimeout(800);
   if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");
-  const category = page.locator(".build-menu-category:not([aria-disabled=\"true\"])").first();
-  if (await category.count()) { await category.click(); await page.waitForTimeout(800); }
+  // The build drawer as the geometry audit opens it (surfaces.registry.ts hud.build-drawer: the dock's build button).
+  if (await page.locator("[data-dock='build']").count()) { await page.locator("[data-dock='build']").first().click(); await page.waitForTimeout(800); }
   await page.mouse.move(640, 300); await page.waitForTimeout(300);
   await page.screenshot({ path: join(dir, "build-drawer.png"), clip: { x: 0, y: 520, width: 1280, height: 280 } });
   const cards = await page.locator(".build-menu .build-tool").evaluateAll(elements => elements.slice(0, 6).map(element => ({ text: element.textContent, color: getComputedStyle(element).color,
@@ -214,7 +215,8 @@ async function game() {
 }
 
 try {
-  for (const view of VIEWS) await gallery(view).catch(error => result.errors.push(`${view.name}: ${String(error).slice(0, 400)}`));
+  const views = flag("views")?.split(",");
+  for (const view of VIEWS.filter(entry => views === undefined || views.includes(entry.name))) await gallery(view).catch(error => result.errors.push(`${view.name}: ${String(error).slice(0, 400)}`));
   if (only !== "gallery") {
     await fallback().catch(error => result.errors.push(`fallback: ${String(error).slice(0, 400)}`));
     await game().catch(error => result.errors.push(`game: ${String(error).slice(0, 400)}`));

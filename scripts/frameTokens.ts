@@ -136,7 +136,8 @@ const BUTTONS = {
     fallback: art("tab_build_base") },
   chip: { states: { normal: art("chip_condition_base") }, scale: 0.5, safe: sides(2, 3, 3, 3) },
 } as const satisfies Record<string, ButtonSpec>;
-const BUTTON_SIZES = { sm: "2px 10px", md: "6px 14px", lg: "10px 22px" } as const;
+// LM-R1: each size clears Wave 38's text_safe x (14 source px = 14 CSS px at 1:1) with the 2 px border: sm 12 + 2.
+const BUTTON_SIZES = { sm: "2px 12px", md: "6px 14px", lg: "10px 22px" } as const;
 /** Wave 38 controls (scale 1). 9-slice pieces become `--control-K[-state]-art` border-images (with a P0 fallback where one
  * exists, else `none`: the kit keeps its drawn shape); fixed-size pictures become `--control-K` url()s (`none` in fallback).
  * Safe insets measured like the buttons; hand-set: select right 26 = the chevron's slice (records: "Right 26px slice

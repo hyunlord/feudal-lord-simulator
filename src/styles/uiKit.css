@@ -114,9 +114,9 @@
   box-shadow: inset 0 0 0 2px var(--seal-red);
 }
 :root .ui-btn.ui-btn--tab:is([aria-selected="true"], [aria-pressed="true"]) { box-shadow: inset 0 -3px 0 var(--status-warn); }
-/* Disabled: the family's disabled picture; a family without one (tab, quiet) greys as before. */
+/* Disabled: the family's disabled picture; a family without one (tab, quiet, close) greys as before. */
 :root .ui-btn.ui-btn:is(:disabled, [aria-disabled="true"]) { cursor: default; filter: grayscale(0.6); opacity: 0.6; }
-:root .ui-btn.ui-btn.ui-btn.ui-btn:is(.ui-btn--primary, .ui-btn--secondary, .ui-btn--danger, .ui-btn--icon, .ui-btn--close):is(:disabled, [aria-disabled="true"]) {
+:root .ui-btn.ui-btn.ui-btn.ui-btn:is(.ui-btn--primary, .ui-btn--secondary, .ui-btn--danger, .ui-btn--icon, .ui-btn--toggle):is(:disabled, [aria-disabled="true"]) {
   color: var(--ink-soft);
   filter: none;
   opacity: 1;
@@ -334,6 +334,8 @@
 
 /* ---- Tabs ---- */
 .ui-tabs { display: flex; flex-wrap: wrap; gap: var(--space-half); }
+/* LM-R1: a kit tab's label clears the Wave 38 tab's rim and text_safe x (14 px; a screen's own tab rule keeps its padding). */
+:where(.ui-tabs > .ui-btn--tab) { padding: 4px 14px; }
 
 /* ---- Chip ---- */
 :root .ui-chip.ui-chip {
@@ -389,8 +391,9 @@
    no Wave 38 picture: a plain ink thumb. Scrollers that set `scrollbar-width` keep the browser's bar (the standard
    property wins), and the P0 fallback keeps the browser's bar too. */
 :root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar { width: 12px; height: 8px; background: transparent; }
-:root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar-track:vertical { border-style: solid; border-color: transparent; border-width: 0; border-image: var(--control-scrollbar-track-art); }
-:root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar-thumb:vertical { min-height: 20px; border-style: solid; border-color: transparent; border-width: 0; border-image: var(--control-scrollbar-thumb-art); }
+/* A scrollbar part paints its border-image only over a border as wide as the slices (border-width 0 drew nothing). */
+:root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar-track:vertical { border-style: solid; border-color: transparent; border-width: var(--control-scrollbar-track-width); border-image: var(--control-scrollbar-track-art); }
+:root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar-thumb:vertical { min-height: 20px; border-style: solid; border-color: transparent; border-width: var(--control-scrollbar-thumb-width); border-image: var(--control-scrollbar-thumb-art); }
 :root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar-thumb:horizontal { background: color-mix(in srgb, var(--ink-soft) 70%, transparent); border-radius: 4px; }
 :root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar-corner { background: transparent; }
 
