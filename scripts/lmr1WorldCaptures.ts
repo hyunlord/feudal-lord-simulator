@@ -128,28 +128,33 @@ if (sections.has("signs")) {
       const { page, context, proof } = await openPaused(save, cameraOn(middle.tx, middle.ty, zoom), view);
       await shot(page, `signs-${season}-z${zoom.toFixed(1)}`);
       if (zoom === 1.4 && season === "summer") {
-        // A crop per sign kind present, the first in house order; a road side away from the camera; a skipped house.
+        // A crop per sign kind present, the first in house order; a road side away from the camera; a skipped house —
+        // each beside the same crop of the town without lord mode (no signs: what the sandbox and the campaign show).
         const firsts = new Map<string, typeof signs[number]>();
         for (const sign of signs) if (!firsts.has(sign.key.replace(/_[ab]$/, ""))) firsts.set(sign.key.replace(/_[ab]$/, ""), sign);
-        for (const [kind, sign] of firsts) await shot(page, `sign-${kind}`, clip(await proof(`tileClientPoint(${JSON.stringify({ tx: sign.x, ty: sign.y })})`) as Point, { width: 260, height: 200 }, view));
+        const regions: { name: string; at: { tx: number; ty: number }; size: { width: number; height: number } }[] =
+          [...firsts].map(([kind, sign]) => ({ name: `sign-${kind}`, at: { tx: sign.x, ty: sign.y }, size: { width: 260, height: 200 } }));
         const byId = new Map(houses.map(building => [building.id, building]));
         const away = signs.find(sign => { const front = doorSignFront(state, byId.get(sign.buildingId)!); return front !== null && front.tx + front.ty < 0; });
-        if (away !== undefined) await shot(page, "sign-away-front", clip(await proof(`tileClientPoint(${JSON.stringify({ tx: away.x, ty: away.y })})`) as Point, { width: 300, height: 240 }, view));
+        if (away !== undefined) regions.push({ name: "sign-away-front", at: { tx: away.x, ty: away.y }, size: { width: 300, height: 240 } });
         const placed = new Set(signs.map(sign => sign.buildingId));
         const skipped = houses.find(building => {
           const house = state.houses.find(entry => entry.buildingId === building.id);
           return house !== undefined && !placed.has(building.id) && yardHash(building.id, 37) % 2 === 0
             && doorSignKind({ house, members: [], trade: null, tick: state.tick, movedInTick: null }) !== null;
         });
-        if (skipped !== undefined) await shot(page, "sign-skipped", clip(await proof(`tileClientPoint(${JSON.stringify({ tx: skipped.tx, ty: skipped.ty })})`) as Point, { width: 300, height: 240 }, view));
-        rows.push({ away: away?.id ?? null, skipped: skipped?.id ?? null, kinds: [...firsts.keys()] });
+        if (skipped !== undefined) regions.push({ name: "sign-skipped", at: { tx: skipped.tx, ty: skipped.ty }, size: { width: 300, height: 240 } });
+        const clips = [];
+        for (const region of regions) clips.push({ ...region, clip: clip(await proof(`tileClientPoint(${JSON.stringify(region.at)})`) as Point, region.size, view) });
+        for (const entry of clips) await shot(page, entry.name, entry.clip);
+        const { agency: _agency, ...sandboxState } = state;
+        const sandbox = await openPaused(writeState(sandboxState, `town-${season}-sandbox`), cameraOn(middle.tx, middle.ty, zoom), view);
+        for (const entry of clips) await shot(sandbox.page, `${entry.name}-sandbox`, entry.clip);
+        await sandbox.context.close();
+        rows.push({ away: away?.id ?? null, skipped: skipped?.id ?? null, kinds: [...firsts.keys()], clips: clips.map(entry => [entry.name, entry.clip]) });
         // The same save again: the same signs, the same A / B.
         const again = await openPaused(save, cameraOn(middle.tx, middle.ty, zoom), view);
-        const first = [...firsts.values()][0];
-        if (first !== undefined) {
-          const region = clip(await proof(`tileClientPoint(${JSON.stringify({ tx: first.x, ty: first.y })})`) as Point, { width: 260, height: 200 }, view);
-          await shot(page, "reload-before", region); await shot(again.page, "reload-after", region);
-        }
+        if (clips[0] !== undefined) { await shot(page, "reload-before", clips[0].clip); await shot(again.page, "reload-after", clips[0].clip); }
         await again.context.close();
       }
       rows.push({ season, zoom, tick: await proof("state().tick"), signs: signs.length, houses: houses.length,
