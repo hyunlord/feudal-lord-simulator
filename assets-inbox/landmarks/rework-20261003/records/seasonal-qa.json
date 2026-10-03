@@ -1,0 +1,38 @@
+[
+  {
+    "id": "bridge_s01",
+    "silhouette_iou": 0.9805377667452387,
+    "threshold": 0.95,
+    "passed": true
+  },
+  {
+    "id": "bridge_s02",
+    "silhouette_iou": 0.9925494149099355,
+    "threshold": 0.95,
+    "passed": true
+  },
+  {
+    "id": "bridge_s03",
+    "silhouette_iou": 0.9644011136873667,
+    "threshold": 0.95,
+    "passed": true
+  },
+  {
+    "id": "guildhall_s01",
+    "silhouette_iou": 0.9864717266752256,
+    "threshold": 0.95,
+    "passed": true
+  },
+  {
+    "id": "guildhall_s02",
+    "silhouette_iou": 0.986570949510607,
+    "threshold": 0.95,
+    "passed": true
+  },
+  {
+    "id": "guildhall_s03",
+    "silhouette_iou": 0.9925105563637264,
+    "threshold": 0.95,
+    "passed": true
+  }
+]

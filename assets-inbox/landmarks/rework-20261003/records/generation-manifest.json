@@ -1,0 +1,194 @@
+[
+  {
+    "output": "bridge_s01_summer.png",
+    "input_path": "/tmp/astra-landmark-growth-20261003-work/raw/bridge_s01_summer.png",
+    "input_sha256": "9d187defecf05b76c9e752627e3603408d0b52e9955610330beef04714fab73f",
+    "generated_raw_sha256": "f4220ee4e547dea66e0f11223fc89c190407e4cc5b5cf0ded4b72de62c9bc328",
+    "registered_sha256": "23aa12a57e9cbc3ec53abaa05c54f766196153a2b9af80103ec96dfd4660a4e2",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/bridge_s01_summer.txt",
+    "registration_matrix": [
+      0.48150470219435737,
+      -0.03722270392849997,
+      0.48150470219435737,
+      465.0131661442006,
+      1244.759063562996
+    ]
+  },
+  {
+    "output": "bridge_s01_winter.png",
+    "input_path": "/tmp/astra-landmark-growth-v2-20261003-work/raw/bridge_s01_summer.png",
+    "input_sha256": "f4220ee4e547dea66e0f11223fc89c190407e4cc5b5cf0ded4b72de62c9bc328",
+    "generated_raw_sha256": "9e2c79c6c18f5a9ff4ca8f505430b17f72e6b0c92364be0a828a3b5ee772539e",
+    "registered_sha256": "0eba6fb7e801762bfd91b6e26a40e603d0ffaf6971a9c96711384962f6630e3d",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/bridge_s01_winter.txt",
+    "registration_matrix": [
+      0.48150470219435737,
+      -0.03722270392849997,
+      0.48150470219435737,
+      465.0131661442006,
+      1244.759063562996
+    ]
+  },
+  {
+    "output": "bridge_s02_summer.png",
+    "input_path": "/tmp/astra-landmark-growth-20261003-work/raw/bridge_s02_summer.png",
+    "input_sha256": "b318b4deafb7902e758b74a37e9f54036f5d90afe2e4b9b6668e06ccbe76d9a3",
+    "generated_raw_sha256": "4e33e9cba52bb691a2e74b42885961160e521971989f4fc950ffd571195cd3d9",
+    "registered_sha256": "bc954ff1ccb7d148d19d78953da06a4b6270bdb5a1fe68cd77bd1406adbae73f",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/bridge_s02_summer.txt",
+    "registration_matrix": [
+      0.4278551532033426,
+      -0.0034806739622299243,
+      0.4278551532033426,
+      496.2050139275766,
+      1253.5804574659828
+    ]
+  },
+  {
+    "output": "bridge_s02_winter.png",
+    "input_path": "/tmp/astra-landmark-growth-v2-20261003-work/raw/bridge_s02_summer.png",
+    "input_sha256": "4e33e9cba52bb691a2e74b42885961160e521971989f4fc950ffd571195cd3d9",
+    "generated_raw_sha256": "9f8a62c4345baad3ffa79de318ba3275d834691a79ac1d24c2ad83402d544615",
+    "registered_sha256": "bf8c484e613c6d64f0c2fabcab88e0c38bf7ebb1be80347672ea7e1c04cff9ab",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/bridge_s02_winter.txt",
+    "registration_matrix": [
+      0.4278551532033426,
+      -0.0034806739622299243,
+      0.4278551532033426,
+      496.2050139275766,
+      1253.5804574659828
+    ]
+  },
+  {
+    "output": "bridge_s03_summer.png",
+    "input_path": "/tmp/astra-landmark-growth-20261003-work/raw/bridge_s03_summer.png",
+    "input_sha256": "06dc4cf304196ffe716acab4152de7199ad4cfa90032cd95249332fc331b0936",
+    "generated_raw_sha256": "a6dde83712ac6226d21a6e72168e458933f355efe343684f4b6b86f11b1d8904",
+    "registered_sha256": "e2920f0b777780ec63fe9e059ed3f7645c533b9aa4a3ed654a3530c3453a6f84",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/bridge_s03_summer.txt",
+    "registration_matrix": [
+      0.5099601593625498,
+      -0.043666536860078486,
+      0.6,
+      313.62549800796813,
+      1171.85688434233
+    ]
+  },
+  {
+    "output": "bridge_s03_winter.png",
+    "input_path": "/tmp/astra-landmark-growth-v2-20261003-work/raw/bridge_s03_summer.png",
+    "input_sha256": "a6dde83712ac6226d21a6e72168e458933f355efe343684f4b6b86f11b1d8904",
+    "generated_raw_sha256": "8848aa9e14b1679a61813b53824209e876cb6264370ccf5889d8d0eeb0c9bac1",
+    "registered_sha256": "9eac72f5c30c22f6d63933433575d069a50169500c73f144c4e035ffc74a9980",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/bridge_s03_winter.txt",
+    "registration_matrix": [
+      0.5099601593625498,
+      -0.043666536860078486,
+      0.6,
+      313.62549800796813,
+      1171.85688434233
+    ]
+  },
+  {
+    "output": "guildhall_s01_summer.png",
+    "input_path": "/tmp/astra-landmark-growth-20261003-work/raw/guildhall_s01_summer.png",
+    "input_sha256": "27ea1c66a2a4227f0c1fe6be5b3710e24e08bea75094757d198ae000425330aa",
+    "generated_raw_sha256": "cbd3466c0b6f785f5a242998b2c908f9e9aeaa9ba0f8dd0b96c9e2b8cf8dc71d",
+    "registered_sha256": "589cc759670b8619d02b284a5e7c5165a3e04bd023f84c3ea20db6bcd6757ab9",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/guildhall_s01_summer.txt",
+    "registration_matrix": [
+      0.5,
+      -0.05049261083743842,
+      0.5,
+      325.5,
+      1175.685960591133
+    ]
+  },
+  {
+    "output": "guildhall_s01_winter.png",
+    "input_path": "/tmp/astra-landmark-growth-v2-20261003-work/raw/guildhall_s01_summer.png",
+    "input_sha256": "cbd3466c0b6f785f5a242998b2c908f9e9aeaa9ba0f8dd0b96c9e2b8cf8dc71d",
+    "generated_raw_sha256": "d18f4692330c6d22b06cf1576229130f9cc418df9d885f97f626baf074dc730e",
+    "registered_sha256": "4c1844d631a456bd43732ac84102b60fa7be9464c3cae7fd6913ec1d1d3584b7",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/guildhall_s01_winter.txt",
+    "registration_matrix": [
+      0.5,
+      -0.05049261083743842,
+      0.5,
+      325.5,
+      1175.685960591133
+    ]
+  },
+  {
+    "output": "guildhall_s02_summer.png",
+    "input_path": "/tmp/astra-landmark-growth-20261003-work/raw/guildhall_s02_summer.png",
+    "input_sha256": "fe2aaa297ab080d304366a907be350cafef6dad1567f340f0452336fe5aae69d",
+    "generated_raw_sha256": "d7b20a8781621ec29d7dd203df4271656987e60a6ab50f1b9f7788ab6e494938",
+    "registered_sha256": "344b6240ccfa3b35cbdcde5598b83bcae30d0ae9c5041247baf3b10a305a6898",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/guildhall_s02_summer.txt",
+    "registration_matrix": [
+      0.6,
+      -0.03302325581395349,
+      0.6,
+      321.0,
+      958.2023255813953
+    ]
+  },
+  {
+    "output": "guildhall_s02_winter.png",
+    "input_path": "/tmp/astra-landmark-growth-v2-20261003-work/raw/guildhall_s02_summer.png",
+    "input_sha256": "d7b20a8781621ec29d7dd203df4271656987e60a6ab50f1b9f7788ab6e494938",
+    "generated_raw_sha256": "330c06e6955acd03a54f9bfa41ed1d082cb4e7df0de9d59ae4a55b9ef60e6229",
+    "registered_sha256": "fe34cbb97da5b4fb3bb3ef070ae6ed7373db42e29becc55a5cee659cd78589f7",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/guildhall_s02_winter.txt",
+    "registration_matrix": [
+      0.6,
+      -0.03302325581395349,
+      0.6,
+      321.0,
+      958.2023255813953
+    ]
+  },
+  {
+    "output": "guildhall_s03_summer.png",
+    "input_path": "/tmp/astra-landmark-growth-20261003-work/raw/guildhall_s03_summer.png",
+    "input_sha256": "7cd29afa76bb73198a2f78368ddf7daaa24c2de338edf29140e0b2e3cb68ea67",
+    "generated_raw_sha256": "2321228b1a62502f0a10645a4326111735f57a41e5c8fedceaae2bbc1a148eff",
+    "registered_sha256": "ce1d32c6c8656fed3ff0cf889e86f2fed3f49bb18321a59ee50b75b78ca79d82",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/guildhall_s03_summer.txt",
+    "registration_matrix": [
+      0.6,
+      -0.011876075731497404,
+      0.6,
+      366.6,
+      1051.3450946643718
+    ]
+  },
+  {
+    "output": "guildhall_s03_winter.png",
+    "input_path": "/tmp/astra-landmark-growth-v2-20261003-work/raw/guildhall_s03_summer.png",
+    "input_sha256": "2321228b1a62502f0a10645a4326111735f57a41e5c8fedceaae2bbc1a148eff",
+    "generated_raw_sha256": "a0783044fb9effdcd36cf4ef2b12098ee39e94925ed73fc8c532765ab2569aa7",
+    "registered_sha256": "5083c89a6182a1e2b783631e42d3684d82a6ad081d4612203c7392de40021717",
+    "tool": "image_gen.imagegen",
+    "prompt": "records/prompts/guildhall_s03_winter.txt",
+    "registration_matrix": [
+      0.6,
+      -0.011876075731497404,
+      0.6,
+      366.6,
+      1051.3450946643718
+    ]
+  }
+]
