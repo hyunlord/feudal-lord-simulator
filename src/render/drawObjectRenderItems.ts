@@ -30,6 +30,7 @@ import { drawPlagueProp } from "./plagueWorldProps";
 import { drawReorgPropAt } from "./reorgWorldProps";
 import { drawAleDrinker } from "./alehouseCrowd";
 import { drawCountrysideItem } from "./countrysideDraw";
+import { drawDoorSign } from "./doorSigns";
 import { inGatePassage, placeWalkers, walkerHiddenBehind } from "./walkerOcclusion";
 import { beginSpriteMipFrame, endSpriteMipFrame } from "./spriteMipCache";
 
@@ -113,6 +114,10 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "countryside") { // INSTALL-28 hedges, baulks, dry-stone walls and point props outside the walls
       if (viewMode === "normal") drawCountrysideItem(context, item, input.state, input.zoom);
+      continue;
+    }
+    if (item.kind === "door_sign") { // LM-R1 Wave 37 house-front signs (lord mode)
+      if (viewMode === "normal") drawDoorSign(context, item.sign, input.zoom);
       continue;
     }
     if (item.kind === "village_life") { // INSTALL-23 hens, cats, dogs, birds, toys, washing lines, doorstep props

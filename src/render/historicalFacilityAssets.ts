@@ -16,6 +16,7 @@ import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteR
 import { frameBuildingVariant, variantRandom, type BuildingVariant } from "./buildingVariants";
 import { variantSprite } from "./buildingVariantAssets";
 import { chapterOfArt } from "./chapterArt";
+import { drawManorHouse, manorHouseReady, manorHouseRect } from "./manorHouseArt";
 
 type Meta = typeof historicalFacilityManifest[number];
 type Asset = { readonly meta: Meta; readonly url: string; status: "idle" | "loading" | "ready" | "missing"; image: HTMLImageElement | null; raster: RasterizedWorldSprite | null; rasterError: string | null; loaded: Promise<void> | null };
@@ -86,6 +87,7 @@ export function historicalFacilityAssetStatuses() {
 }
 
 export function historicalFacilityReady(building: Building, state?: GameState): boolean {
+  if (building.kind === "manor_house") return state !== undefined && manorHouseReady(building, state); // LM-R1 RUN-01
   const id = historicalFacilityAssetId(building, state);
   return assets.some(asset => asset.meta.id === id && asset.status === "ready");
 }
@@ -129,7 +131,8 @@ export function getHistoricalFacilityPresentation(kind: BuildingKind) {
   return asset === undefined ? null : { url: asset.url, width: asset.meta.width, height: asset.meta.height, crop: asset.meta.source };
 }
 
-export function historicalFacilitySpriteRect(building: Building) {
+export function historicalFacilitySpriteRect(building: Building, state?: Pick<GameState, "seed">) {
+  if (building.kind === "manor_house") return manorHouseRect(building, state?.seed); // LM-R1 RUN-01: Astra's pivot, not centred
   const meta = assets.find(asset => asset.meta.kind === building.kind)?.meta;
   if (meta === undefined) return null;
   const size = buildingFootprint(building);
@@ -142,6 +145,7 @@ export function historicalFacilitySpriteRect(building: Building) {
 }
 
 export function drawHistoricalFacility(context: CanvasRenderingContext2D, building: Building, state: GameState): boolean {
+  if (building.kind === "manor_house") return drawManorHouse(context, building, state); // LM-R1 RUN-01 (manorHouseArt.ts)
   const variant = frameBuildingVariant(building);
   // The windmill variant is one static painting (sails included) in the mill-v2 frame, so it skips the animated mill.
   if (variant?.id !== "windmill" && drawAnimatedMill(context, building)) return true;
