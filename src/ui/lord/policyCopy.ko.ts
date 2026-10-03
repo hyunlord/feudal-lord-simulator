@@ -43,4 +43,7 @@ export const POLICY_COPY = {
   duesLower: "5%p 낮추기",
   duesRaise: "5%p 높이기",
   duesRange: "평소의 25%에서 200%까지",
+  /** The chronicle's decision record: what a lord's condition was set to, and what it replaced. */
+  choiceSubsidy: (name: string, amount: string) => `${name} 장려금 ${amount}`,
+  choiceSubsidyNone: (name: string) => `${name} 장려금 없음`,
 } as const;

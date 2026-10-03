@@ -23,6 +23,19 @@ export const DUES_MAX = 2000;
 
 const projectName = (key: string): string => COPY.projects[key] ?? BUILDING_COPY[key as BuildingKind]?.name ?? key;
 
+/** A lord's condition as the chronicle's decision record names it ("stability", "farmstead:10", "800" in the engine's
+ *  record), or null for any other decision kind. */
+export function lordChoiceLabel(kind: string, key: string): string | null {
+  if (kind === "estate_policy") return COPY.policies[key as EstatePolicy] ?? null;
+  if (kind === "market_dues") return Number.isFinite(Number(key)) ? COPY.duesNow(Number(key)) : null;
+  if (kind !== "project_subsidy") return null;
+  const at = key.lastIndexOf(":");
+  const amount = Number(key.slice(at + 1));
+  if (at < 0 || !Number.isFinite(amount)) return null;
+  const name = projectName(key.slice(0, at));
+  return amount === 0 ? COPY.choiceSubsidyNone(name) : COPY.choiceSubsidy(name, moneyFull(amount));
+}
+
 export type PolicyOption = Readonly<{ key: EstatePolicy; label: string; weights: string; chosen: boolean }>;
 export type SubsidyRow = Readonly<{ kind: BuildingKind; name: string; amount: number; line: string }>;
 export type SubsidyDraft = Readonly<{ kind: BuildingKind; amount: number; amountLine: string; points: string;

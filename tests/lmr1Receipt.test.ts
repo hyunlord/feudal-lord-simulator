@@ -21,6 +21,7 @@ import { DUES_MAX, DUES_MIN, duesStep, policyView, subsidyDraft } from "../src/u
 import { LordWhyHere, ReceiptPanel } from "../src/ui/lord/ReceiptPanel";
 import { RECEIPT_COPY } from "../src/ui/lord/receiptCopy.ko";
 import { receiptView } from "../src/ui/lord/receiptModel";
+import { decisionCompare } from "../src/ui/chronicle/chronicleScreenModel";
 import { moneyFull } from "../src/ui/money.ko";
 
 function funded(state: GameState, amount: number): GameState {
@@ -181,4 +182,17 @@ test("LM-R1 a decision ribbon leaves its record and asks for the chronicle; the 
   assert.deepEqual(chronicleFocus(), { recordId: "h-000002", tick: 120 });
   clearChronicleFocus();
   assert.equal(chronicleFocus(), null);
+});
+
+test("LM-R1 the chronicle names the lord's conditions in the lord tab's words, not the engine's keys", () => {
+  const state = lordTown();
+  const shown = (kind: string) => {
+    const record = (state.history?.records ?? []).find(entry => entry.decision !== undefined && entry.params?.decisionKind === kind);
+    assert.ok(record !== undefined, kind);
+    const view = decisionCompare(state, record)!;
+    return [view.chosen, ...view.alternatives];
+  };
+  assert.deepEqual(shown("estate_policy"), ["안정", "성장", "세입", "방어"]);
+  assert.deepEqual(shown("market_dues"), [POLICY_COPY.duesNow(800), POLICY_COPY.duesNow(1000)]);
+  assert.deepEqual(shown("project_subsidy"), [POLICY_COPY.choiceSubsidy("헛간", moneyFull(10)), POLICY_COPY.choiceSubsidyNone("헛간")]);
 });
