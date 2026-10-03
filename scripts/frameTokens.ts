@@ -100,6 +100,10 @@ const KINDS = {
   "faction-page": { type: "painting", ...w19("frame_faction_page"), slice: null, scale: 1, safe: sides(29, 28, 29, 28), note: "faction page (drawn at the page scale)" },
   "pause-badge": { type: "painting", url: "assets/wave8/time/pause_badge.png", size: { width: 128, height: 48 }, slice: null, scale: 44 / 48,
     safe: sides(2, 1, 2, 25), note: "the pause badge (hand: the hourglass at its left)" },
+  // LM-R1: measured 168 40 39 44; the bottom is the slice's 110 by hand — the separator and the lower field under it are
+  // the receipt's foot slot (its money line), not the reading field.
+  receipt: { type: "layer", url: "assets/wave35-receipts/E_receipts/receipt_frame.png", size: { width: 384, height: 512 }, slice: sides(190, 40, 110, 40),
+    scale: 0.875, safe: sides(168, 40, 110, 44), note: "the lord's why-here receipt (Wave 35; hand: the lower field is the foot slot)" },
 } as const satisfies Record<string, KindSpec>;
 
 /** Button art (Wave 38 replaces these per state later): draw width, the measured edge, the kit's border and paddings. */

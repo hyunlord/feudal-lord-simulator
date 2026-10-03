@@ -1,0 +1,418 @@
+{
+ "states": {
+  "tick": 6864,
+  "year": 1301,
+  "treasury": 39,
+  "subsidyLimit": 9
+ },
+ "rows": [
+  {
+   "name": "receipt-runnerup",
+   "file": "receipt-runnerup.jpg",
+   "target": {
+    "id": "construction-site-000001",
+    "kind": "farmstead",
+    "tx": 44,
+    "ty": 38,
+    "receipt": "receipt-2"
+   },
+   "viewport": "1280x800",
+   "dpr": 1,
+   "kind": "receipt",
+   "values": [
+    "+67",
+    "+20",
+    "+5",
+    "+4",
+    "−4"
+   ],
+   "lines": [
+    "후보지 3곳 중 고른 자리 (44, 38) · 점수 94",
+    "다음 자리 (46, 38) · 점수 90 · 4점 차로 밀림",
+    "이번 주 사업 1건 중 점수 1위를 100%(1000‰) 확률로 골랐음 · 신중한 성향",
+    "자리는 후보 3곳 중 1위를 68.8%(688‰) 확률로 골랐음"
+   ],
+   "runnerUp": "90",
+   "chance": "known",
+   "foot": "비용 10s · 장려금 10d · 공동체에서 빌림 0d",
+   "subsidy": "paid",
+   "ribbons": [
+    "h-000001",
+    "h-000003"
+   ],
+   "none": null,
+   "frame": "url(\"http://127.0.0.1:4306/assets/wave35-receipts/E_receipts/receipt_frame.png\")",
+   "art": [
+    [
+     "wave35-receipts/E_receipts/receipt_frame.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/related_decision_ribbon.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_plus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_minus.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "decision-opened",
+   "file": "decision-opened.jpg",
+   "record": "h-000001",
+   "detail": "h-000001",
+   "line": "영지 방침을 정했다: 안정"
+  },
+  {
+   "name": "receipt-subsidy0",
+   "file": "receipt-subsidy0.jpg",
+   "target": {
+    "id": "construction-site-000003",
+    "kind": "sawmill",
+    "tx": 46,
+    "ty": 38,
+    "receipt": "receipt-4"
+   },
+   "viewport": "1280x800",
+   "dpr": 1,
+   "kind": "receipt",
+   "values": [
+    "+76",
+    "+10",
+    "+5",
+    "−4",
+    "+4"
+   ],
+   "lines": [
+    "후보지 5곳 중 고른 자리 (46, 38) · 점수 87",
+    "다음 자리 (42, 39) · 점수 83 · 4점 차로 밀림",
+    "이번 주 사업 1건 중 점수 1위를 100%(1000‰) 확률로 골랐음 · 신중한 성향",
+    "자리는 후보 5곳 중 1위를 50.5%(505‰) 확률로 골랐음"
+   ],
+   "runnerUp": "83",
+   "chance": "known",
+   "foot": "비용 15s · 장려금 0d · 공동체에서 빌림 3s 8d",
+   "subsidy": "none",
+   "ribbons": [
+    "h-000002"
+   ],
+   "none": null,
+   "frame": "url(\"http://127.0.0.1:4306/assets/wave35-receipts/E_receipts/receipt_frame.png\")",
+   "art": [
+    [
+     "wave35-receipts/E_receipts/receipt_frame.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_plus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_minus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/related_decision_ribbon.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "receipt-single",
+   "file": "receipt-single.jpg",
+   "target": {
+    "id": "construction-site-000008",
+    "kind": "house",
+    "tx": 45,
+    "ty": 40,
+    "receipt": "receipt-11"
+   },
+   "viewport": "1280x800",
+   "dpr": 1,
+   "kind": "receipt",
+   "values": [
+    "+58",
+    "−12",
+    "+5",
+    "+5",
+    "+4"
+   ],
+   "lines": [
+    "후보지 1곳 중 고른 자리 (45, 40) · 점수 61",
+    "후보지가 이곳 한 곳뿐이라 비교할 다음 자리가 없음",
+    "이번 주 사업 1건 중 점수 1위를 100%(1000‰) 확률로 골랐음 · 신중한 성향"
+   ],
+   "runnerUp": "none",
+   "chance": "known",
+   "foot": "비용 0d · 장려금 0d · 공동체에서 빌림 0d",
+   "subsidy": "none",
+   "ribbons": [],
+   "none": null,
+   "frame": "url(\"http://127.0.0.1:4306/assets/wave35-receipts/E_receipts/receipt_frame.png\")",
+   "art": [
+    [
+     "wave35-receipts/E_receipts/receipt_frame.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_plus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_minus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/related_decision_ribbon.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "receipt-old",
+   "file": "receipt-old.jpg",
+   "target": {
+    "id": "construction-site-000001",
+    "kind": "farmstead",
+    "tx": 44,
+    "ty": 38,
+    "receipt": "receipt-2"
+   },
+   "viewport": "1280x800",
+   "dpr": 1,
+   "kind": "receipt",
+   "values": [
+    "+67",
+    "+20",
+    "+5",
+    "+4",
+    "−4"
+   ],
+   "lines": [
+    "후보지 3곳 중 고른 자리 (44, 38) · 점수 94",
+    "다음 자리 (46, 38) · 점수 90 · 4점 차로 밀림",
+    "확률 기록 없음: 확률 선택 이전의 옛 저장에서 온 영수증"
+   ],
+   "runnerUp": "90",
+   "chance": "none",
+   "foot": "비용 10s · 장려금 10d · 공동체에서 빌림 0d",
+   "subsidy": "paid",
+   "ribbons": [
+    "h-000001",
+    "h-000003"
+   ],
+   "none": null,
+   "frame": "url(\"http://127.0.0.1:4306/assets/wave35-receipts/E_receipts/receipt_frame.png\")",
+   "art": [
+    [
+     "wave35-receipts/E_receipts/receipt_frame.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_plus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_minus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/related_decision_ribbon.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "receipt-none",
+   "file": "receipt-none.jpg",
+   "target": {
+    "id": "well-45-41-0",
+    "kind": "well",
+    "tx": 45,
+    "ty": 41
+   },
+   "viewport": "1280x800",
+   "dpr": 1,
+   "kind": "none",
+   "values": [],
+   "lines": [],
+   "runnerUp": null,
+   "chance": null,
+   "foot": null,
+   "subsidy": null,
+   "ribbons": [],
+   "none": "마을이 스스로 짓기 전부터 있던 건물(처음 마을, 영수증 이전의 옛 저장)이거나 오래되어 지워진 기록이라 영수증이 없음",
+   "frame": "url(\"http://127.0.0.1:4306/assets/wave35-receipts/E_receipts/receipt_frame.png\")",
+   "art": [
+    [
+     "wave35-receipts/E_receipts/receipt_frame.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_plus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_minus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/related_decision_ribbon.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "receipt-tablet-dpr2",
+   "file": "receipt-tablet-dpr2.jpg",
+   "target": {
+    "id": "construction-site-000001",
+    "kind": "farmstead",
+    "tx": 44,
+    "ty": 38,
+    "receipt": "receipt-2"
+   },
+   "viewport": "1180x820",
+   "dpr": 2,
+   "kind": "receipt",
+   "values": [
+    "+67",
+    "+20",
+    "+5",
+    "+4",
+    "−4"
+   ],
+   "lines": [
+    "후보지 3곳 중 고른 자리 (44, 38) · 점수 94",
+    "다음 자리 (46, 38) · 점수 90 · 4점 차로 밀림",
+    "이번 주 사업 1건 중 점수 1위를 100%(1000‰) 확률로 골랐음 · 신중한 성향",
+    "자리는 후보 3곳 중 1위를 68.8%(688‰) 확률로 골랐음"
+   ],
+   "runnerUp": "90",
+   "chance": "known",
+   "foot": "비용 10s · 장려금 10d · 공동체에서 빌림 0d",
+   "subsidy": "paid",
+   "ribbons": [
+    "h-000001",
+    "h-000003"
+   ],
+   "none": null,
+   "frame": "url(\"http://127.0.0.1:4306/assets/wave35-receipts/E_receipts/receipt_frame.png\")",
+   "art": [
+    [
+     "wave35-receipts/E_receipts/receipt_frame.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_plus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_minus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/related_decision_ribbon.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "receipt-art-missing",
+   "file": "receipt-art-missing.jpg",
+   "target": {
+    "id": "construction-site-000001",
+    "kind": "farmstead",
+    "tx": 44,
+    "ty": 38,
+    "receipt": "receipt-2"
+   },
+   "viewport": "1280x800",
+   "dpr": 1,
+   "kind": "receipt",
+   "values": [
+    "+67",
+    "+20",
+    "+5",
+    "+4",
+    "−4"
+   ],
+   "lines": [
+    "후보지 3곳 중 고른 자리 (44, 38) · 점수 94",
+    "다음 자리 (46, 38) · 점수 90 · 4점 차로 밀림",
+    "이번 주 사업 1건 중 점수 1위를 100%(1000‰) 확률로 골랐음 · 신중한 성향",
+    "자리는 후보 3곳 중 1위를 68.8%(688‰) 확률로 골랐음"
+   ],
+   "runnerUp": "90",
+   "chance": "known",
+   "foot": "비용 10s · 장려금 10d · 공동체에서 빌림 0d",
+   "subsidy": "paid",
+   "ribbons": [
+    "h-000001",
+    "h-000003"
+   ],
+   "none": null,
+   "frame": "url(\"http://127.0.0.1:4306/assets/wave35-receipts/E_receipts/receipt_frame.png\")",
+   "art": [
+    [
+     "wave35-receipts/E_receipts/receipt_frame.png",
+     404
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_plus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/related_decision_ribbon.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/reason_bar_cap_minus.png",
+     200
+    ],
+    [
+     "wave35-receipts/E_receipts/receipt_frame.png",
+     404
+    ],
+    [
+     "wave35-receipts/E_receipts/receipt_frame.png",
+     404
+    ]
+   ]
+  },
+  {
+   "name": "policy-tab",
+   "file": "policy-tab.jpg",
+   "chosen": "stability",
+   "subsidies": [
+    "farmstead"
+   ],
+   "dues": "800",
+   "natives": 0
+  },
+  {
+   "name": "policy-refusal",
+   "file": "policy-refusal.jpg",
+   "text": "걸 수 없음: 장려금 합계 1s 8d — 한도(금고의 4분의 1) 9d 초과",
+   "setDisabled": true,
+   "amount": "10"
+  },
+  {
+   "name": "policy-set",
+   "file": null,
+   "pressed": "growth"
+  },
+  {
+   "name": "sandbox-card",
+   "file": "sandbox-card.jpg",
+   "button": 0,
+   "lordTab": 0
+  }
+ ],
+ "failures": []
+}

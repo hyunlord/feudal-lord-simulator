@@ -41,6 +41,7 @@ export const FRAME_TOKENS = {
   "biography": { type: "painting", url: "assets/wave19/pages/frame_biography.png", size: {"width":640,"height":800}, slice: null, scale: 1, repeat: "stretch", width: null, safe: {"top":29,"right":26,"bottom":28,"left":26}, safeSource: {"top":29,"right":26,"bottom":28,"left":26} },
   "faction-page": { type: "painting", url: "assets/wave19/pages/frame_faction_page.png", size: {"width":640,"height":800}, slice: null, scale: 1, repeat: "stretch", width: null, safe: {"top":29,"right":28,"bottom":29,"left":28}, safeSource: {"top":29,"right":28,"bottom":29,"left":28} },
   "pause-badge": { type: "painting", url: "assets/wave8/time/pause_badge.png", size: {"width":128,"height":48}, slice: null, scale: 0.9166666666666666, repeat: "stretch", width: null, safe: {"top":2,"right":1,"bottom":2,"left":23}, safeSource: {"top":2,"right":1,"bottom":2,"left":25} },
+  "receipt": { type: "layer", url: "assets/wave35-receipts/E_receipts/receipt_frame.png", size: {"width":384,"height":512}, slice: {"top":190,"right":40,"bottom":110,"left":40}, scale: 0.875, repeat: "stretch", width: {"top":166.25,"right":35,"bottom":96.25,"left":35}, safe: {"top":147,"right":35,"bottom":97,"left":39}, safeSource: {"top":168,"right":40,"bottom":110,"left":44} },
 } as const;
 
 export const BUTTON_TOKENS = {
