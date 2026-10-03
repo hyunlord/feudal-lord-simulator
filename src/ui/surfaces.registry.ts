@@ -405,17 +405,19 @@ export const SURFACES: readonly SurfaceRow[] = [
   // LM-R1 petitions: the lord's cards in lord mode (src/ui/hud/LordCards.tsx) on scripts/lmr1PetitionStates.ts's states — a
   // home estate's petition with its Wave 44 picture (opens by itself), one without a picture, a minor lord's court line,
   // the steward's precedents and the town's request (from their chips).
+  // The picture is not a required element: the content check proves paint by text and controls changing between its two
+  // captures, which a picture never does (scripts/lmr1PetitionCaptures.mjs checks each picture loads at 960 × 540).
   { id: "modal.lord.home-petition", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".lord-card-art", ".petition-body > h2 + p", ".petition-option", ".lord-card-forecast", ".lord-card-recurring", ".story-modal-later"],
+    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".lord-card-forecast", ".lord-card-recurring", ".story-modal-later"],
     scene: petitionScene("petitions", "home-boundary_dispute", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the boundary dispute (Wave 44 01), both answers' numbers" },
   { id: "modal.lord.home-petition.no-art", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
     requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".lord-card-forecast", ".story-modal-later"],
     scene: petitionScene("petitions", "home-chancel_repair", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the chancel's repair (no picture)" },
   { id: "modal.lord.home-petition.guardian", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".lord-card-art", ".petition-option", ".story-modal-later"],
+    requires: ["h2", ".lord-card-court", ".petition-option", ".story-modal-later"],
     scene: petitionScene("petitions", "guardian", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "a minor lord's wardship petition (the court line with his guardian)" },
   { id: "modal.lord.precedent", ...PETITION, root: ".story-modal.petition-card.lord-card[data-precedent]", frameSlots: [], siblingsNoOverlap: [".lord-card-recurring", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".lord-card-art", ".lord-card-precedents li", ".lord-card-recurring", ".story-modal-later"],
+    requires: ["h2", ".lord-card-court", ".lord-card-precedents li", ".lord-card-recurring", ".story-modal-later"],
     scene: petitionScene("petitions", "precedent", 1500), open: [{ story: ".lord-card[data-precedent]" }, { pause: 600 }], data: "the steward's answers by precedent (Wave 44 13)" },
   { id: "modal.lord.request", ...PETITION, root: ".story-modal.petition-card.lord-card[data-lord-request]", frameSlots: [],
     requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".story-modal-later"],
