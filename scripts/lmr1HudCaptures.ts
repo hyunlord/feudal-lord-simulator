@@ -123,7 +123,7 @@ await step("03-05 stuck", async () => {
   await shot(page, "04-sawmill-card", before === null ? undefined : { x: Math.max(0, before.x - 8), y: Math.max(0, before.y - 8), width: Math.min(1280 - Math.max(0, before.x - 8), before.width + 16), height: Math.min(800 - Math.max(0, before.y - 8), before.height + 16) });
   await page.locator(".inspector-stuck-store-jump").first().click(); await page.waitForTimeout(1_200);
   views["05-store-after-jump"] = { heading: await text(page, ".diagnostic-card h2"), body: (await text(page, ".diagnostic-card .inspector-body"))?.slice(0, 160) ?? null };
-  await shot(page, "05-store-after-jump");
+  await shot(page, "05-store-after-jump", { x: 440, y: 60, width: 840, height: 420 });
   await context.close();
 });
 
@@ -180,7 +180,8 @@ for (const [name, width, height, touch] of [["11-lord-pins-1280", 1280, 800, fal
     const layers = await page.locator(".layer-switch").first().isVisible();
     await page.locator("[data-dock='build']").first().click(); await page.waitForTimeout(600);
     views[name] = { dock: await text(page, "[data-dock='build']"), layerSwitchVisible: layers, pins: await text(page, ".command-pins"), drawer: await page.locator(".court-console.build-drawer").count() };
-    await shot(page, name);
+    // The foot of the screen: the pins in the drawer's place, the dock, and no layer switch at the left.
+    await shot(page, name, { x: 0, y: height - 240, width, height: 240 });
     await context.close();
   });
 }
@@ -190,7 +191,7 @@ await step("13 sandbox drawer", async () => {
   await page.locator("[data-dock='build']").first().click(); await page.waitForTimeout(600);
   views["13-sandbox-drawer"] = { dock: await text(page, "[data-dock='build']"), drawerOpen: await page.locator(".court-console.build-drawer[data-open='true']").count(),
     pins: await page.locator(".command-pins").count(), layerSwitchVisible: await page.locator(".layer-switch").first().isVisible() };
-  await shot(page, "13-sandbox-drawer");
+  await shot(page, "13-sandbox-drawer", { x: 0, y: 800 - 240, width: 1280, height: 240 });
   await context.close();
 });
 
