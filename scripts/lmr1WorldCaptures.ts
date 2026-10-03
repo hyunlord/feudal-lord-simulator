@@ -96,7 +96,8 @@ async function openPaused(save: string, camera: Camera, viewport: { width: numbe
     db.close();
   }, { base64: Buffer.from(bytes).toString("base64"), meta });
   await page.reload({ waitUntil: "load" });
-  await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 60_000 });
+  // A busy DGX (another run beside this one) serves the first load slowly: a generous wait for the menu.
+  await page.getByRole("button", { name: "이어하기" }).first().click({ timeout: 240_000 });
   await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90_000 });
   await page.waitForTimeout(2_000);
   if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
