@@ -92,15 +92,15 @@ function eraCeremonyCopy(targetEra: EraCeremony["targetEra"]): {
     case "palisade":
       return {
         ariaLabel: KO_UI.ceremony.palisade,
-        title: "목책마을 선포",
-        body: "성문이 열리고 집들이 새 목재를 두릅니다",
+        title: KO_UI.ceremony.palisadeTitle,
+        body: KO_UI.ceremony.palisadeBody,
         dismissLabel: KO_UI.ceremony.dismissPalisade,
       };
     case "stone_town":
       return {
         ariaLabel: KO_UI.ceremony.stoneTown,
-        title: "석조 도시 선포",
-        body: "석재가 목책을 대신하고 집들이 돌빛으로 바뀝니다",
+        title: KO_UI.ceremony.stoneTownTitle,
+        body: KO_UI.ceremony.stoneTownBody,
         dismissLabel: KO_UI.ceremony.dismissStoneTown,
       };
     default:

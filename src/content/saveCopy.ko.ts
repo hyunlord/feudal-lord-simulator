@@ -27,7 +27,7 @@ export const SAVE_COPY = {
   eraLabels: {
     hamlet: "촌락 시대",
     palisade: "목책 시대",
-    stone_town: "석조 도시 시대",
+    stone_town: "석벽 도시 시대",
   } as const satisfies Record<Era, string>,
   problems: {
     food_shortage: "빵 배급 부족",
