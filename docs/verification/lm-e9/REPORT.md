@@ -95,7 +95,7 @@
 ## 필수 조건
 - 전체 회귀 4,469/4,469 — DGX `da74b56`.
 - 깨끗한 클론 `5e36f2d`: npm ci·typecheck·전체 회귀 4,479/4,479·build 통과 — DGX. 그 뒤 바뀐 것은 문서와 진단 스크립트 하나(`scripts/registryEntryDiagnosis.ts`)이고, typecheck는 Mac에서 통과했다.
-- ui-geometry `5e36f2d`: 셀 1,942, 기준선 대비 새 실패 0(예외 하나 아래 20, 앞선 실행과 같음) — DGX. 그 뒤 화면 입력(`*.ko.ts`·`src/ui` 등)은 바뀌지 않았다.
+- ui-geometry: `5e36f2d` 셀 1,942 새 실패 0, 본선(NAT-5)을 합친 머리 `ad0a6e3`에서 다시 재어 셀 1,942 새 실패 0(예외 하나 아래 20, 앞선 실행과 같음, 입력 해시 `f75b7e94…` = 병합 머리) — DGX.
 - 시나리오 시험 `tests/registry.test.ts` 9/9, typecheck — Mac.
 
 ## 지시서와 다르게 한 것과 사용자 판정(2026-10-03)
