@@ -28,6 +28,8 @@ export function LordPolicyView({ state, dispatch }: { readonly state: GameState;
   const view = policyView(state);
   if (view === null) return null;
   const draft = subsidyDraft(state, kind, amount);
+  // The lord's commands (as GameCanvas's demolishHouse): a press names the command, the command dispatches it.
+  const command = (action: GameAction) => dispatch(action);
   return (
     <section className="lord-policy" aria-label={COPY.regionLabel}>
       <p className="lord-policy-intro">{COPY.intro}</p>
@@ -36,7 +38,7 @@ export function LordPolicyView({ state, dispatch }: { readonly state: GameState;
       <div className="lord-policy-options">
         {view.options.map(option => (
           <Button key={option.key} type="button" className="lord-policy-option" data-policy={option.key} aria-pressed={option.chosen}
-            aria-label={COPY.policyChoose(option.label)} onPress={() => { if (!option.chosen) dispatch({ type: "set_estate_policy", policy: option.key }); }} variant="toggle">
+            aria-label={COPY.policyChoose(option.label)} onPress={() => { if (!option.chosen) command({ type: "set_estate_policy", policy: option.key }); }} variant="toggle">
             <span className="lord-policy-option-name">{option.label}</span>
             <span className="lord-policy-option-weights">{option.weights}</span>
           </Button>
@@ -50,7 +52,7 @@ export function LordPolicyView({ state, dispatch }: { readonly state: GameState;
           <li key={subsidy.kind}>
             <span>{subsidy.line}</span>
             <Button type="button" className="lord-policy-withdraw" data-withdraw={subsidy.kind} aria-label={COPY.subsidyWithdrawLabel(subsidy.name)}
-              onPress={() => dispatch({ type: "set_project_subsidy", kind: subsidy.kind, amount: 0 })} variant="secondary">{COPY.subsidyWithdraw}</Button>
+              onPress={() => command({ type: "set_project_subsidy", kind: subsidy.kind, amount: 0 })} variant="secondary">{COPY.subsidyWithdraw}</Button>
           </li>
         ))}
       </ul>}
@@ -68,17 +70,17 @@ export function LordPolicyView({ state, dispatch }: { readonly state: GameState;
         {draft.blocked === null ? null
           : <p className="lord-policy-refusal" role="status" data-refused={draft.refused ? "true" : "false"}>{draft.blocked}</p>}
         <Button type="button" className="lord-policy-set" data-subsidy-set="true" disabled={draft.blocked !== null}
-          onPress={() => { if (draft.blocked === null) dispatch({ type: "set_project_subsidy", kind, amount }); }} variant="primary">
+          onPress={() => { if (draft.blocked === null) command({ type: "set_project_subsidy", kind, amount }); }} variant="primary">
           {draft.replaces ? COPY.subsidyReplace : COPY.subsidySet}</Button>
       </div>
       {view.lastRefusal === null ? null : <p className="lord-policy-line lord-policy-last-refusal">{view.lastRefusal}</p>}
       <h3>{COPY.duesHeading}</h3>
       <div className="lord-policy-stepper">
         <Button type="button" className="lord-policy-step" data-dues="lower" aria-label={COPY.duesLower} disabled={!view.dues.canLower}
-          onPress={() => dispatch({ type: "set_market_dues", permille: duesStep(view.dues.permille, -1) })} variant="icon">−</Button>
+          onPress={() => command({ type: "set_market_dues", permille: duesStep(view.dues.permille, -1) })} variant="icon">−</Button>
         <span className="lord-policy-amount" data-dues-permille={view.dues.permille}>{view.dues.now}</span>
         <Button type="button" className="lord-policy-step" data-dues="raise" aria-label={COPY.duesRaise} disabled={!view.dues.canRaise}
-          onPress={() => dispatch({ type: "set_market_dues", permille: duesStep(view.dues.permille, 1) })} variant="icon">+</Button>
+          onPress={() => command({ type: "set_market_dues", permille: duesStep(view.dues.permille, 1) })} variant="icon">+</Button>
       </div>
       <ul className="lord-policy-dues">
         <li>{view.dues.lord}</li><li>{view.dues.merchants}</li><li>{view.dues.points}</li><li>{COPY.duesRange}</li>
