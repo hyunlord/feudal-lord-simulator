@@ -393,15 +393,16 @@
 
 /* ---- Scrollbars (LM-R1) ----
    Wave 38's track and thumb (12 px wide, only their height stretches) on every vertical scroller in the game: the
-   browser's own scrollbar (`::-webkit-scrollbar`), so scrolling, dragging and the wheel stay native. A horizontal bar has
-   no Wave 38 picture: a plain ink thumb. Scrollers that set `scrollbar-width` keep the browser's bar (the standard
-   property wins), and the P0 fallback keeps the browser's bar too. */
-:root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar { width: 12px; height: 8px; background: transparent; }
-/* A scrollbar part paints its border-image only over a border as wide as the slices (border-width 0 drew nothing). */
-:root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar-track:vertical { border-style: solid; border-color: transparent; border-width: var(--control-scrollbar-track-width); border-image: var(--control-scrollbar-track-art); }
-:root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar-thumb:vertical { min-height: 20px; border-style: solid; border-color: transparent; border-width: var(--control-scrollbar-thumb-width); border-image: var(--control-scrollbar-thumb-art); }
-:root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar-thumb:horizontal { background: color-mix(in srgb, var(--ink-soft) 70%, transparent); border-radius: 4px; }
-:root:not([data-ui-art="p0"]) :is(.app-shell, .app-shell *)::-webkit-scrollbar-corner { background: transparent; }
+   browser's own scrollbar (`::-webkit-scrollbar`), so scrolling, dragging and the wheel stay native. A part paints its
+   border-image only over a border as wide as the slices. A horizontal bar has no Wave 38 picture: a plain ink thumb. In the
+   P0 fallback the tokens are `none` and the thumb's ink fill shows. Scrollers that set `scrollbar-width` keep the browser's
+   bar (the standard property wins). No `:root:not(…)` prefix here: Chromium did not paint the parts under it (DGX probe). */
+:is(.app-shell, .app-shell *)::-webkit-scrollbar { width: 12px; height: 8px; background: transparent; }
+:is(.app-shell, .app-shell *)::-webkit-scrollbar-track { border-style: solid; border-color: transparent; border-width: var(--control-scrollbar-track-width); border-image: var(--control-scrollbar-track-art); }
+:is(.app-shell, .app-shell *)::-webkit-scrollbar-thumb { min-height: 20px; background-color: color-mix(in srgb, var(--ink-soft) 70%, transparent); border-style: solid; border-color: transparent; border-width: var(--control-scrollbar-thumb-width); border-image: var(--control-scrollbar-thumb-art); }
+:is(.app-shell, .app-shell *)::-webkit-scrollbar-track:horizontal { background: transparent; border-width: 0; border-image: none; }
+:is(.app-shell, .app-shell *)::-webkit-scrollbar-thumb:horizontal { border-width: 0; border-radius: 4px; border-image: none; }
+:is(.app-shell, .app-shell *)::-webkit-scrollbar-corner { background: transparent; }
 
 /* ---- /dev/ui-kit gallery (a developer screen) ---- */
 .app-shell.ui-kit-gallery { box-sizing: border-box; height: 100dvh; padding: var(--space-2) var(--space-3) var(--space-3); overflow-y: auto; overflow-x: hidden; background: var(--parchment) var(--art-texture-light) repeat; }
