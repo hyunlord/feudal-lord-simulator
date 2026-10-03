@@ -1,7 +1,7 @@
 // LM-R1 (receipt) states: the lord's slice (core:lord_slice, seed 1) with the lord's three conditions set at the start —
 // the stability policy, the market dues at 80% and a 10d farmstead subsidy (each a ledger decision) — run week by week
 // until the town has built (finished) a building whose receipt compared sites with a next best and was paid the
-// subsidy, one paid none, and (when the run finds one before `lastWeek`) one that had a single candidate site. Saved:
+// subsidy, one paid none, and one that had a single candidate site (the run stops at `lastWeek` without it). Saved:
 //  - `lord-receipts`: that state (the "왜 여기?" receipts and the lord tab);
 //  - `lord-receipts-old`: the same town with every receipt's `chance` removed — what a save from before v43 (LM-E5)
 //    loads as (the field is absent there), for the receipt's "no chance on an old save" line.
@@ -51,9 +51,7 @@ while (week < lastWeek && (now.subsidised === null || now.unsubsidised === null 
   const until = (week + 1) * AGENCY_WEEK_TICKS;
   while (state.tick < until) state = advanceTick(state);
   week += 1;
-  // The single-site receipt is a bonus: stop once the other two stand and a year has passed without it.
   now = found(state);
-  if (now.subsidised !== null && now.unsubsidised !== null && now.single === null && week >= 52) break;
 }
 const opening = state.buildings.find(building => whyHere(state, building.id) === null && building.kind === "well") ?? null;
 const old: GameState = { ...state, agency: { ...state.agency!, receipts: state.agency!.receipts.map(({ chance: _chance, ...receipt }) => receipt) } };
