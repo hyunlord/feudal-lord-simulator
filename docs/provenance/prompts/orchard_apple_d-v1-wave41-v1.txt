@@ -1,0 +1,9 @@
+Use case: precise-object-edit / style-transfer.
+Asset: one existing installed Feudal Lord Simulator game image; non-destructive Wave41 revision.
+Input1 is the immutable geometry reference. Edit this image, do not design a different asset.
+Retexture the smooth cloud canopy with small readable leaf clumps and broken painterly internal edges, keep original fruit species/color, trunks, every branch position and exact canopy silhouette. Not a species change.
+ART_BIBLE_v2: soft hand-painted prerender, muted southern English1300-1450 material palette, upper-left world lighting, no black cartoon outline, no added text/watermark.
+Maintain EXACT original canvas aspect 256:256, original transparent padding, anchor/pivot, ground contact, silhouette, perspective and occupied bounds. Do not crop, recenter or rotate. Output exactly one image; no comparison sheet.
+Genuine transparent background. All originally empty regions remain transparent.
+Input 2 is ONLY a material brushwork reference, never a geometry reference. Preserve Input 1's exact silhouette, occupied bounds and all empty padding. Preserve original fruit color/species and every original trunk and branch; never copy oak shape or species.
+Apple foliage: small simple oval leaves, never lobed oak leaves. Do not invent fruit where Input 1 has none.

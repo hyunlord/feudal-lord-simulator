@@ -95,13 +95,6 @@ function patternOf(context: CanvasRenderingContext2D, image: CanvasImageSource):
   return map.get(image) ?? null;
 }
 
-function traceDiamond(context: CanvasRenderingContext2D, tile: Tile): void {
-  const centre = tileToScreen(tile.tx, tile.ty);
-  context.moveTo(centre.sx, centre.sy - TILE_H / 2); context.lineTo(centre.sx + TILE_W / 2, centre.sy);
-  context.lineTo(centre.sx, centre.sy + TILE_H / 2); context.lineTo(centre.sx - TILE_W / 2, centre.sy);
-  context.closePath();
-}
-
 /** Traces a chunk's part of a fill region (its loops, plus the chunk's box when the chunk lies inside): fill "evenodd". */
 function traceRegion(context: CanvasRenderingContext2D, part: ChunkRegion, box: ScreenBox): void {
   context.beginPath();
@@ -113,11 +106,9 @@ function traceRegion(context: CanvasRenderingContext2D, part: ChunkRegion, box: 
   if (part.parity) { context.moveTo(box.left, box.top); context.lineTo(box.right, box.top); context.lineTo(box.right, box.bottom); context.lineTo(box.left, box.bottom); context.closePath(); }
 }
 
-/** 1. The land fills over the chunk's grass diamonds and season grass, clipped off its rock tiles. Returns the fill passes. */
-export function drawLandFills(context: CanvasRenderingContext2D, land: LandGround, plan: GroundChunkPlan, tiles: readonly Tile[], box: ScreenBox, season: SeasonIndex): number {
+/** 1. The land fills over the chunk's grass diamonds and season grass (NAT-5: the rock is drawn over them, landRockRegions.ts). Returns the fill passes. */
+export function drawLandFills(context: CanvasRenderingContext2D, land: LandGround, plan: GroundChunkPlan, box: ScreenBox, season: SeasonIndex): number {
   const parts = chunkRegions(land, plan);
-  if (parts.length === 0) return 0;
-  const rock = tiles.filter(tile => tile.terrain === "rock");
   const bounds = chunkTileBounds(plan.cx, plan.cy);
   let passes = 0;
   for (const part of parts) {
@@ -128,12 +119,6 @@ export function drawLandFills(context: CanvasRenderingContext2D, land: LandGroun
       // Pattern px (u, v) -> tile (u / 128 - 0.5, v / 64 - 0.5) -> iso screen: 2 x 2 tiles per repeat, origin on a block corner.
       pattern.setTransform({ a: 0.25, b: 0.125, c: -0.5, d: 0.25, e: 0, f: -TILE_H / 2 });
       context.save();
-      if (rock.length > 0) {
-        context.beginPath();
-        context.moveTo(box.left, box.top); context.lineTo(box.right, box.top); context.lineTo(box.right, box.bottom); context.lineTo(box.left, box.bottom); context.closePath();
-        for (const tile of rock) traceDiamond(context, tile);
-        context.clip("evenodd");
-      }
       traceRegion(context, part, box);
       if (variant === "b") {
         // The b blocks inside the region: the region as the clip, then the blocks' 2 x 2 diamonds.

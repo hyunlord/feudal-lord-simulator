@@ -14,10 +14,9 @@ import { KO_UI } from "./content/locale.ko";
 import type { GameState, OverlayMode } from "./engine/engine.types";
 import { confirmPalisadeProclamation } from "./engine/palisade";
 import { canProclaimPalisadeEra } from "./engine/era";
-import { validatePalisadeCandidate } from "./world/palisadeGeometry";
 import { GameCanvas } from "./render/GameCanvas";
 import { applyPalisadeIntent, initialExpansionDraft, initialOpenPalisadeDraft, initialPalisadeDraft, type PalisadeDraftState } from "./render/palisadeDraftInteraction";
-import { cachedExpansionPreview, expansionStartCandidate } from "./ui/wallExpansionModel";
+import { cachedExpansionPreview, expansionStartCandidate, proposalDraftCandidate } from "./ui/wallExpansionModel";
 import type { ZoneBrushTool } from "./render/zoneBrushInteraction";
 import type { PlacementTool } from "./render/renderer";
 import { useGameApi, useGameSpeed, useGameUiSelector } from "./state/gameStore";
@@ -57,7 +56,6 @@ import {
   visibleEraCeremony,
 } from "./ui/eraCeremonyModel";
 import { palisadeFootprintsForState, proposalSummaryForState } from "./ui/eraConsoleModel";
-import { palisadeCoreFootprintsForState } from './engine/palisadeFootprints';
 import { wallConstructionPriority } from './engine/constructionReserve';
 import { platformServices } from "./platform/platform";
 import { INTENT_ORDER } from "./input/intentBus";
@@ -359,10 +357,10 @@ export function App() {
         affectedFootprintIds: proposal.affectedFootprintIds ?? [] });
       return;
     }
-    const validation = validatePalisadeCandidate(state, proposal.path, footprints, palisadeCoreFootprintsForState(state), 1);
-    if (!validation.ok) return;
+    const candidate = proposalDraftCandidate(state, proposal.path, footprints);
+    if (candidate === null) return;
     setSelectedTool(null);
-    setPalisadeDraft(initialPalisadeDraft(validation.candidate));
+    setPalisadeDraft(initialPalisadeDraft(candidate));
   };
   const confirmPalisadeProposal = () => {
     if (palisadeDraft?.candidate === null || palisadeDraft === null) return;

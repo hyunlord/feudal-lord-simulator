@@ -1,6 +1,4 @@
 import { RAMPS, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
-import type { ForestHarvest } from "../engine/engine.types";
-import { forestVisualStage } from "./forestRecovery";
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, screenToTile, tileToScreen } from "./iso";
 import { objectPhase } from "./renderMotion";
@@ -14,7 +12,6 @@ export type TreeSpriteKey =
   | "tree_pine_short"
   | "tree_birch"
   | "tree_dead";
-export type StumpSpriteKey = "stump_fresh" | "stump_old";
 
 export type TreeDescriptor = {
   readonly id: string;
@@ -31,17 +28,6 @@ export type TreeDescriptor = {
   readonly anchorTy: number;
   readonly spriteKey: TreeSpriteKey;
   readonly flipX: boolean;
-};
-
-export type StumpDescriptor = {
-  readonly id: string;
-  readonly x: number;
-  readonly y: number;
-  readonly scale: number;
-  readonly sortY: number;
-  readonly anchorTx: number;
-  readonly anchorTy: number;
-  readonly spriteKey: StumpSpriteKey;
 };
 
 export type ForestLookup = ReadonlySet<string>;
@@ -152,35 +138,6 @@ export function buildTreeCluster(input: TreeClusterInput): readonly TreeDescript
   tileCache.set(cacheKey, result);
   treeClusterCache.set(input.tile, tileCache);
   return result;
-}
-
-export function buildStumpDescriptor(input: {
-  readonly harvest: ForestHarvest;
-  readonly tick: number;
-}): StumpDescriptor {
-  const center = tileToScreen(input.harvest.tx, input.harvest.ty);
-  const stage = forestVisualStage(input.harvest, input.tick);
-  const spriteKey = stage === "fresh" ? "stump_fresh" : "stump_old";
-  const { tx, ty } = input.harvest;
-  const offset = constrainToDiamond({
-    x: jitter(tx, ty, 0, 0, 149) * 10,
-    y: jitter(tx, ty, 0, 0, 163) * 5,
-  });
-  const x = center.sx + offset.x;
-  const y = center.sy + offset.y;
-  const anchor = screenToTile(x, y);
-  const ageScale = stage === "fresh" ? 1 : stage === "old" ? 0.82 : 0.65;
-  const scale = (0.62 + hashUnit(tx, ty, 0, 0, 179) * 0.26) * ageScale;
-  return {
-    id: `stump:${input.harvest.tx}:${input.harvest.ty}:${input.harvest.harvestedAtTick}`,
-    x,
-    y,
-    scale,
-    sortY: y + scale * 3,
-    anchorTx: anchor.tx,
-    anchorTy: anchor.ty,
-    spriteKey,
-  };
 }
 
 export function buildForestLookup(tiles: readonly Tile[]): ForestLookup {

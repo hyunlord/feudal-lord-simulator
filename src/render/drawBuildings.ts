@@ -21,7 +21,8 @@ import { buildBuildingVisualState, renderDetailLevel } from "./buildingVisualSta
 import { houseMaterialEraFromEra, type HouseMaterialWave } from "./buildingMaterialWave";
 import { buildingSpriteKey, spriteOptionsFor } from "./buildingSprites";
 import { buildObjectRenderItems, type WorldObjectRenderItem } from "./objectRenderOrder";
-import { drawGroundCoverDescriptor, drawStumpDescriptor, drawTreeDescriptor, seasonBlend } from "./drawTrees";
+import { drawGroundCoverDescriptor, drawTreeDescriptor, seasonBlend } from "./drawTrees";
+import { drawLandStageItem } from "./landStageItems";
 import { drawWalker } from "./drawWalkers";
 import { drawZoneProp } from "./zonePropSprites";
 import type { TileRange, ViewportSize } from "./renderer";
@@ -83,12 +84,8 @@ export function drawBuildings(
         zoom: input.zoom,
         spriteOptions, season,
       });
-    } else if (item.kind === "stump") {
-      drawStumpDescriptor(context, {
-        descriptor: item.descriptor,
-        zoom: input.zoom,
-        spriteOptions, season,
-      });
+    } else if (item.kind === "land_stage") {
+      drawLandStageItem(context, item, input.state, input.zoom); // NAT-5 Wave 42: felled trees' stages, fallow
     } else if (item.kind === "walker") {
       drawWalker(context, item.walker, input.zoom, input.viewMode ?? "normal", input.state, input.transform);
     } else if (item.kind === "zone_prop") {

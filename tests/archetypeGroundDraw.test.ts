@@ -17,6 +17,7 @@ import { chunkHash, fillArtKey, fillVariant, landArtKeys, landGroundOf, loopStri
 import { drawLandDecals, drawLandEdges, drawLandFills, drawLandShoreStrips, landArtReadiness } from "../src/render/archetypeGroundDraw";
 import { countrysideOf } from "../src/render/countrysideLayout";
 import { chunkRegions, fillRegions } from "../src/render/archetypeGroundRegions";
+import { warpPoint } from "../src/render/landRegionWarp";
 import { pointInPolygon } from "../src/render/groundSceneParts";
 import { groundBoundaryScene } from "../src/render/groundBoundaryScene";
 import { WAVE22_GROUND_IMAGES, type Wave22GroundKey } from "../src/render/wave22GroundManifest.generated";
@@ -29,6 +30,12 @@ const land = (archetypeId: string, seed: number): GameState => {
   return state;
 };
 const NEW_LANDS = MAP_ARCHETYPE_IDS.filter(id => id !== RIVERSIDE_ARCHETYPE_ID);
+/** The tile-plane point the land's warp takes to `point` (fixed-point iteration: the warp's offset changes slowly). */
+const unwarp = (ground: { seed: number; width: number; height: number }, point: { x: number; y: number }) => {
+  let x = point;
+  for (let step = 0; step < 30; step += 1) { const w = warpPoint({ seed: ground.seed, width: ground.width, height: ground.height, scale: 1 }, x); x = { x: point.x - (w.x - x.x), y: point.y - (w.y - x.y) }; }
+  return x;
+};
 const SEASONS: readonly SeasonIndex[] = [0, 1, 2, 3];
 const installed = (key: string): boolean => {
   const meta = (WAVE22_GROUND_IMAGES as Record<string, { readonly url: string } | undefined>)[key];
@@ -152,7 +159,9 @@ test("the fill regions cover their own tiles and leave the meadow: smoothed outl
         if (strip === null) return;
         const a = loop.smoothed[index]!; const b = loop.smoothed[(index + 1) % loop.smoothed.length]!;
         const length = Math.hypot(b.x - a.x, b.y - a.y) || 1; const t = { x: (b.x - a.x) / length, y: (b.y - a.y) / length };
-        const at = (sign: number) => Math.round((a.y + b.y) / 2 - sign * t.x * 0.4) * state.width + Math.round((a.x + b.x) / 2 + sign * t.y * 0.4);
+        // NAT-5: the outline is warped (landRegionWarp.ts); the sample point is taken back to the tile plane first.
+        const at = (sign: number) => { const tile = unwarp(ground, { x: (a.x + b.x) / 2 + sign * t.y * 0.4, y: (a.y + b.y) / 2 - sign * t.x * 0.4 });
+          return Math.round(tile.y) * state.width + Math.round(tile.x); };
         total += 1;
         if (ground.fillBase[ground.fill[at(1)]!] === region.base) left += 1;
         if (ground.fillBase[ground.fill[at(-1)]!] !== region.base) right += 1;
@@ -214,8 +223,7 @@ test("draw calls one land chunk adds: two fills per fill region, one per strip q
         let worst = { fills: 0, quads: 0, decals: 0, total: 0, chunk: "" };
         for (const plan of scene.chunks) {
           const { context, counts } = countingContext();
-          const tiles = state.tiles.filter(tile => Math.floor(tile.tx / GROUND_CHUNK_TILES) === plan.cx && Math.floor(tile.ty / GROUND_CHUNK_TILES) === plan.cy);
-          drawLandFills(context, ground, plan, tiles, { left: -1e4, top: -1e4, right: 1e4, bottom: 1e4 }, 1);
+          drawLandFills(context, ground, plan, { left: -1e4, top: -1e4, right: 1e4, bottom: 1e4 }, 1);
           const fills = counts.fill;
           const edgeQuads = drawLandEdges(context, ground, plan, 1);
           const shoreQuads = drawLandShoreStrips(context, ground, scene.shore, plan.waterLoops, { left: plan.cx * 8 - 0.5, top: plan.cy * 8 - 0.5, right: plan.cx * 8 + 7.5, bottom: plan.cy * 8 + 7.5 });

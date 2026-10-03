@@ -81,9 +81,10 @@ export function compareRenderItems(left: SortableRenderItem, right: SortableRend
 function renderSortY(item: SortableRenderItem): number {
   switch (item.kind) {
     case "tree":
-    case "stump":
     case "groundCover":
       return item.descriptor.sortY;
+    case "land_stage":
+      return item.piece.ty;
     case "walker":
       return item.walker.position.ty;
     case "zone_prop":

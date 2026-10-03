@@ -14,6 +14,7 @@ import { seasonBlend, seasonForObject } from "./seasonTransition";
 import { drawWave26HouseLayers, houseStateLayerNow, shownHouseVariant } from "./wave26HouseArt";
 import { drawWave32GranaryLayers } from "./wave32GranaryArt";
 import { fittedBuildingSpriteRect } from "./buildingSpriteFit";
+import { drawStorehouseSnow } from "./storehouseSnowArt";
 
 // INSTALL-7 building overlays, drawn right after a finished building's art in the object pass (above block detail —
 // NAT-2: the small views too, by the same rules):
@@ -34,6 +35,7 @@ import { fittedBuildingSpriteRect } from "./buildingSpriteFit";
 // or fresh (houseVariantChoice.ts houseStateLayer), then boarded and snow by the same rules as above.
 // INSTALL-32: a granary showing a Wave 32 painting takes its layers (granaryVariantChoice.ts): weathered, its stock
 // (full / half / empty), boarded, snow — the stock in the painting, so the Wave 7 door sacks leave it (stockPiles.ts).
+// NAT-5 RUN-02: a storehouse takes its body's roof snow in winter (storehouseSnowArt.ts).
 const SMOKE_FRAME_MS = 150;
 
 /** PLAGUE-b: the boards an abandoned house shows. A house the plague emptied (died or fled — both in vacantHouseIds,
@@ -70,6 +72,7 @@ export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: G
   }
   if (building.kind === "house" && building.houseLot !== undefined) drawPairHouseLayers(context, state, building);
   if (building.kind === "granary") drawWave32GranaryLayers(context, state, building, fittedBuildingSpriteRect("barn", building));
+  if (building.kind === "storehouse") drawStorehouseSnow(context, state, building);
   if (!props) return;
   drawStockPiles(context, state, building);
   drawStoryProps(context, state, building); // UI-4 petition crowd, S12 leaving family

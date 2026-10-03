@@ -5,7 +5,6 @@ import type { PalisadeSegmentRenderItem } from "./palisadeObjectRenderItems";
 import type { ZoneProp } from "./zoneLayer";
 import type {
   GroundCoverDescriptor,
-  StumpDescriptor,
   TreeDescriptor,
 } from "./treeLayout";
 
@@ -18,9 +17,10 @@ export type ObjectRenderItem =
       readonly anchorTx: number;
     }
   | {
-      readonly kind: "stump";
+      /** NAT-5 Wave 42 land stages (landStageItems.ts): a felled tree's stump, saplings or young wood; a fallow cell. */
+      readonly kind: "land_stage";
       readonly id: string;
-      readonly descriptor: StumpDescriptor;
+      readonly piece: import("./landStageItems").LandStagePiece;
       readonly depth: number;
       readonly anchorTx: number;
     }

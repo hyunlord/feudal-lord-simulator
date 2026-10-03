@@ -124,15 +124,6 @@ function drawObjectGrounding(
         baseRadiusX: 13 * item.descriptor.scale,
         baseRadiusY: 5 * item.descriptor.scale,
       });
-    } else if (item.kind === "stump") {
-      drawGroundingShadow(context, {
-        centerX: item.descriptor.x,
-        centerY: item.descriptor.y + 2,
-        height: 20,
-        scale: item.descriptor.scale,
-        baseRadiusX: 8,
-        baseRadiusY: 3,
-      });
     } else if (item.kind === "building" && includeBuildings) {
       const config = buildingFootprint(item.building);
       const center = buildingCenter(item);

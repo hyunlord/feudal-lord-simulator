@@ -89,7 +89,7 @@ function loggedContext() {
 
 Object.defineProperty(globalThis, "Image", { configurable: true, value: MissingFoliageImage });
 const { SEMANTIC_PALETTE } = await import("./src/content/palette.ts");
-const { drawStumpDescriptor, drawTreeDescriptor } = await import("./src/render/drawTrees.ts");
+const { drawTreeDescriptor } = await import("./src/render/drawTrees.ts");
 const { preloadWorldAssets, spriteMeta } = await import("./src/render/worldAssets.ts");
 const { drawWorldSpriteAtWorldAnchor } = await import("./src/render/worldSprite.ts");
 await preloadWorldAssets();
@@ -120,20 +120,6 @@ drawTreeDescriptor(context, {
   zoom: 1,
   spriteOptions,
 });
-drawStumpDescriptor(context, {
-  descriptor: {
-    id: "stump:missing",
-    x: 128,
-    y: 120,
-    scale: 1,
-    sortY: 120,
-    anchorTx: 1,
-    anchorTy: 1,
-    spriteKey: "stump_fresh",
-  },
-  zoom: 1,
-  spriteOptions,
-});
 
 console.log(JSON.stringify({
   treeStatus: spriteMeta("tree_oak_large")?.status,
@@ -149,7 +135,7 @@ console.log(JSON.stringify({
   }));
 }
 
-test("visible missing tree and stump sprites fall back to procedural marks", () => {
+test("visible missing tree sprites fall back to procedural marks and a missing stump sprite draws nothing", () => {
   // Given
   const result = runMissingFoliageScenario();
   const calls = result["calls"];
@@ -165,5 +151,4 @@ test("visible missing tree and stump sprites fall back to procedural marks", () 
   assert.ok(calls.includes(`fillStyle:${SEMANTIC_PALETTE.earthDark}`));
   assert.ok(calls.includes("rect:62,76,4,24"));
   assert.ok(calls.includes("ellipse:64,68,17,14"));
-  assert.ok(calls.includes("ellipse:128,117,11,5"));
 });

@@ -367,7 +367,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - 재작업본이 오면 원본 행은 `superseded` + `replaced_by`, 재작업본은 판정 전까지 `candidate`.
 - 장부는 여러 세션이 고친다. 다시 생성하지 말고 해당 행만 고치거나 행을 더한다.
 - 판정·재작업·설치가 바뀌면 장부 행의 `status`·`replaced_by`·`installed_by`만 고친다. 파일은 지우거나 덮어쓰지 않는다.
-- 장부 행 수 = inbox 그림 수를 유지한다. 그림은 **png·jpg·jpeg·webp·gif·svg 전부**다(2026-10-03 사용자 판정 — `records/` 안의 기록 그림·기록 도면 포함). JPG 행은 Wave 24부터(판정이 따로 온 파생본), WEBP·GIF·SVG 행은 2026-10-03부터(Wave 29 움직이는 미리보기, Wave 23 새 비행 순환 GIF 2, Wave 4~5 위상·생성 마스크 도면 SVG 15). `assets-inbox/`를 건드리는 본선 푸시마다 `check:merge`의 장부 검사가 이 여섯 종류의 목록과 장부 `file` 열을 맞춰 보고, 어긋나면 거부한다(결정 RR11). 옮긴 그림은 그 행의 `file`도 옮긴다.
+- 장부 행 수 = inbox 그림 수를 유지한다. 그림은 **png·jpg·jpeg·webp·gif·svg 전부**다(2026-10-03 사용자 판정 — `records/` 안의 기록 그림·기록 도면 포함). JPG 행은 Wave 24부터(판정이 따로 온 파생본), WEBP·GIF·SVG 행은 2026-10-03부터(Wave 29 움직이는 미리보기, Wave 23 새 비행 순환 GIF 2, Wave 4~5 위상·생성 마스크 도면 SVG 15). `assets-inbox/`를 건드리는 본선 푸시마다 `check:merge`의 장부 검사가 이 여섯 종류의 목록과 장부 `file` 열을 맞춰 보고, 어긋나면 거부한다(결정 RR11). 옮긴 그림은 그 행의 `file`도 옮긴다. 새 JPG·JPEG는 Git LFS로 넣는다 — 옛 JPG를 일반 파일로 두는 예외 폴더 27곳에 새 JPG를 넣지 말고 새 묶음 폴더에 넣는다. 아니면 같은 검사가 `NOTLFS`로 거부한다. 1 MB가 넘는 새 그림이 LFS가 아니면 경고가 뜬다.
 - **큰 기계 기록은 astra-raw에만**(2026-09-30 사용자 규칙, Wave 39 다음 묶음부터): 기계가 만든 기록 파일(JSON·JSONL·CSV·TSV·TXT·LOG·XML 등)이 256KB(262,144바이트)를 넘으면 저장소에 넣지 않는다. 원본은 `~/feudal-lord-analysis/astra-raw/`(받은 ZIP과 작업 폴더)에만 두고, 저장소의 같은 자리에는 `<파일 이름>.astra-raw.txt` 안내 파일 하나를 둔다. 안내 파일은 한 줄: `<파일 이름> · <바이트> bytes · sha256 <64자> · <astra-raw 경로>`(ZIP 안이면 `zips/<ZIP>::<묶음 안 경로>`, 작업 폴더에도 있으면 그 경로를 `;`로 덧붙임).
   - 사람이 읽는 문서(README·REPORT·QA·PLAN 같은 `.md`, 갤러리 `index.html`)와 확인 그림은 크기와 관계없이 그대로 저장소에 둔다.
   - 이미 들어간 Wave 39 `records/proofs/placements.json`(약 60,000줄) 등 규칙 전의 파일은 그대로 둔다(사용자 판정).

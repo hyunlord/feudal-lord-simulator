@@ -11,8 +11,11 @@ import { WAVE16_DERIVATIVES } from "../scripts/keyartDerivatives";
 test("every keyart derivative comes from a received inbox PNG and is the manifest's url", () => {
   const inbox = readFileSync("assets-inbox/INBOX_LEDGER.csv", "utf8");
   for (const item of KEYART_DERIVATIVES) {
-    assert.ok(item.source.startsWith("assets-inbox/wave8/"), item.id);
-    assert.ok(inbox.includes(sha256(readFileSync(item.source))), `${item.id}: the source is the confirmed received file`);
+    // NAT-5: the title background is Wave 41's rework of the Wave 8 painting (ILL-02 / ILL-03).
+    assert.ok(item.source.startsWith(item.id === "keyart_title_bg" ? "assets-inbox/wave41/" : "assets-inbox/wave8/"), item.id);
+    const file = item.source.replace("assets-inbox/", "");
+    const row = inbox.split(/\r?\n/).find(line => line.startsWith(`${file.split("/")[0]},${file},`));
+    assert.ok(row !== undefined && row.includes(`,${sha256(readFileSync(item.source))},confirmed,`), `${item.id}: the source is the confirmed received file`);
     assert.equal(WAVE8_IMAGES[item.id as keyof typeof WAVE8_IMAGES].url, item.url);
   }
 });

@@ -2,7 +2,7 @@ import type { GameState } from "../engine/engine.types";
 import { history } from "../engine/history";
 import { previewPalisadeExpansion, type PalisadeExpansionPreview } from "../engine/palisade";
 import { palisadeExpansionWarning } from "../engine/palisadeExpansion";
-import { palisadeFootprintsForState } from "../engine/palisadeFootprints";
+import { palisadeCoreFootprintsForState, palisadeFootprintsForState } from "../engine/palisadeFootprints";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { palisadePathEnclosesFootprints, palisadePathHasBuildingClearance, validatePalisadeCandidate, type PalisadeFootprint, type PalisadePath,
   type ValidPalisadeCandidate } from "../world/palisadeGeometry";
@@ -15,6 +15,16 @@ import { WALL_EXPANSION_COPY } from "./wallExpansionCopy.ko";
 // which are still to turn and when. Dates are calendar seasons, never ticks.
 
 /**
+ * The era console's wall proposal as a draft candidate, or null when it does not validate. FIX-15: the proposal may
+ * take the water as its bound where the ring runs through it (the engine's proclamation and bot do), so the screen
+ * validates it the same way; a stricter check refused it and "성벽 제안" did nothing on water-heavy lands (seed 77777).
+ */
+export function proposalDraftCandidate(state: GameState, path: PalisadePath, footprints: readonly PalisadeFootprint[]): ValidPalisadeCandidate | null {
+  const validation = validatePalisadeCandidate(state, path, footprints, palisadeCoreFootprintsForState(state), 1, { waterReach: true });
+  return validation.ok ? validation.candidate : null;
+}
+
+/**
  * The wall as it stands, as a draft candidate whose runs can be dragged outward. The town may have built against the
  * wall since it was proclaimed (a farmstead a tile off it), so the standing ring is taken without the clearance test;
  * every drag and the preview then test the new ring against every building.
@@ -23,7 +33,8 @@ export function expansionStartCandidate(state: GameState): ValidPalisadeCandidat
   const palisade = state.palisade;
   if (palisade === null) return null;
   const enclosed = palisadeFootprintsForState(state).filter(footprint => palisadePathEnclosesFootprints(palisade.polygon, [footprint]));
-  const validation = validatePalisadeCandidate(state, palisade.polygon, [], enclosed, 1);
+  // FIX-15: a standing ring may run through water (the water is its bound there).
+  const validation = validatePalisadeCandidate(state, palisade.polygon, [], enclosed, 1, { waterReach: true });
   return validation.ok ? validation.candidate : null;
 }
 

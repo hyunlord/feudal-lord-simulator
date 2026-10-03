@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "engine-LME9-geo-5e36f2d",
- "commit": "5e36f2d0714ab4dffa7436652b9196677f29182c",
+ "run": "render-NAT5-geom-5fcf90e-5fcf90e",
+ "commit": "5fcf90e1f36bb0cc6e549c4061d86e51a42d7b74",
  "dirty": false,
- "inputs": 1781,
- "inputHash": "f379324037d063b4ecfc8b9bccc614eece914cc49d7c14dcbad49a0b2f221d46",
- "measuredAt": "2026-10-02T19:22:07.270Z",
- "report": "docs/verification/uiaudit1/geometry/engine-LME9-geo-5e36f2d/geometry.json",
+ "inputs": 1819,
+ "inputHash": "ba71fd907592b101d13282b8fd2e0a7708e4ea76299ad8eab0bd4401008c73e7",
+ "measuredAt": "2026-10-02T19:20:31.743Z",
+ "report": "docs/verification/uiaudit1/geometry/render-NAT5-geom-5fcf90e-5fcf90e/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -26,9 +26,9 @@
  },
  "rows": 108,
  "conditions": 1942,
- "measured": 1942,
+ "measured": 1936,
  "failures": 20,
- "unopened": 0,
+ "unopened": 6,
  "unreachable": [
   "hud.goal-help",
   "hud.unlock-banner",
@@ -130,7 +130,7 @@
   },
   "hud.completion-toast": {
    "failures": 0,
-   "unopened": 0,
+   "unopened": 6,
    "byCheck": {}
   },
   "hud.cause-legend": {

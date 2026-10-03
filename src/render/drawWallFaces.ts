@@ -16,11 +16,14 @@ import { preloadWallFaceAssets, wallFaceAsset } from "./terrainVariantAssets";
 import { TERRAIN_VARIANTS, type WallFaceKey } from "./terrainVariantManifest";
 import { drawGateMarker, drawPost } from "./timberGateRenderer";
 import { preloadTimberWallAssets } from "./timberWallAssets";
+import { chainSides, wallChainJoints, type ChainJoints } from "./wallFaceJoints";
 
 // Wall strips (D3b; v2 two-layer strips D3b-2; RENDER_WALL_STRIPS on the curved ground): completed walls are strips
 // extruded along the wall baselines (world/boundary/wallBaseline), and modules stand on the nodes. Each object-queue
 // wall item is one unit edge of the logic path; it draws the stretch whose raw arc position lies on that edge, so the
 // depth order of the wall pieces is the existing one.
+//  - Joints (NAT-5): the quads stand on the chain's two mitred side lines (wallFaceJoints), joined with the next chain
+//    where two chains meet at a tower, a material join or a ring's seam, so the band runs on round every bend.
 //  - Face (Wave 4d v2, no battlements): every baseline sample pair is one quad from the projected front line straight
 //    up FACE_HEIGHT (the strip's 128 source px), textured by an affine map (u = arc length at 205 px per tile, plus a
 //    phase hashed per chain; v = height). Stone: the Wave 4e rubble faces a | b (5 tiles); within GATE_ASHLAR_TILES of
@@ -35,7 +38,7 @@ import { preloadTimberWallAssets } from "./timberWallAssets";
 //  - Gates: the strip stops GATE_HALF_CLEARANCE short of a gate; the existing gate art (or its fallback) stands there.
 //  - Modules: a stone tower (90 degree corner) is the Wave 4d drum tower or the Wave 4e square tower b (position
 //    hash), a stone pillar (135 degree bend) the Wave 4e chamfered pillar; other stone nodes use the masonry piers,
-//    timber the posts.
+//    timber the posts, except at a palisade's corners and bends, where the joined band turns by itself (NAT-5).
 
 /**
  * Face height at zoom 1 (D3b-2): 20 px, so face + top (about 28 px) stays under the gate arch and near the old pieces'
@@ -56,8 +59,9 @@ const TOP_SOURCE_HEIGHT = 48;
 /** The top strip's own screen height (48 source px at the face's 128 px = FACE_HEIGHT scale). */
 export const TOP_HEIGHT = FACE_HEIGHT * TOP_SOURCE_HEIGHT / FACE_SOURCE_HEIGHT;
 const DIAG_SOURCE_HEIGHT = 64;
-/** Face runs: screen direction at least this far from vertical (|dx| / length); steeper runs draw the diag top. */
-const FACE_MIN_SPREAD = 0.5;
+/** The end-on threshold (wallFaceJoints FACE_MIN_SPREAD) and the spread over which the top leans back above it. */
+const END_ON_SPREAD = 0.5;
+const TOP_LEAN_RANGE = 0.25;
 /** Wall thickness (tiles): the face stands half of it in front of the baseline, the top reaches half of it behind. */
 export const WALL_THICKNESS: Readonly<Record<WallMaterial, number>> = { stone: 0.3, timber: 0.16 };
 /** The wall body seen end-on (the side of a run's end). */
@@ -65,12 +69,17 @@ const SIDE_COLOUR: Readonly<Record<WallMaterial, string>> = { stone: SEMANTIC_PA
 /** Quads overlap by this much along the line so antialiased joins leave no hairline (tile units). */
 const QUAD_OVERLAP = 0.005;
 
-export type WallFaceSlice = { readonly chain: WallChain; readonly t0: number; readonly t1: number };
+/** `joints`: the other arm's direction where the chain's ends join another chain (wallFaceJoints). */
+export type WallFaceSlice = { readonly chain: WallChain; readonly t0: number; readonly t1: number; readonly joints: ChainJoints };
 
 /** Unit edge key -> the chain stretch it draws. */
 export function wallFaceSlices(walls: WallBaselines): ReadonlyMap<string, WallFaceSlice> {
   const slices = new Map<string, WallFaceSlice>();
-  for (const chain of walls.chains) for (const [key, [t0, t1]] of chain.edges) slices.set(key, { chain, t0, t1 });
+  const joints = wallChainJoints(walls);
+  for (const chain of walls.chains) {
+    const ends = joints.get(chain) ?? { start: null, end: null };
+    for (const [key, [t0, t1]] of chain.edges) slices.set(key, { chain, t0, t1, joints: ends });
+  }
   return slices;
 }
 
@@ -89,16 +98,17 @@ export function drawWallFaceSlice(context: CanvasRenderingContext2D, slice: Wall
   const high = Math.min(slice.t1, chain.endKind === "gate" ? length - GATE_HALF_CLEARANCE : length);
   if (high <= low) return;
   const samples = chain.samples;
-  const pointAt = (t: number): BoundaryPoint => {
+  // Stretch points carry their place in the samples (`at`: index + fraction), where the side lines are read.
+  const pointAt = (t: number): { point: BoundaryPoint; t: number; at: number } => {
     let index = 0;
     while (index < samples.length - 2 && (samples[index + 1] as { t: number }).t < t) index += 1;
     const a = samples[index] as { point: BoundaryPoint; t: number }; const b = samples[index + 1] as { point: BoundaryPoint; t: number };
     const f = b.t === a.t ? 0 : Math.max(0, Math.min(1, (t - a.t) / (b.t - a.t)));
-    return { x: a.point.x + (b.point.x - a.point.x) * f, y: a.point.y + (b.point.y - a.point.y) * f };
+    return { point: { x: a.point.x + (b.point.x - a.point.x) * f, y: a.point.y + (b.point.y - a.point.y) * f }, t, at: index + f };
   };
-  const stretch: { point: BoundaryPoint; t: number }[] = [{ point: pointAt(low), t: low }];
-  for (const sample of samples) if (sample.t > low && sample.t < high) stretch.push({ point: sample.point, t: sample.t });
-  stretch.push({ point: pointAt(high), t: high });
+  const stretch: { point: BoundaryPoint; t: number; at: number }[] = [pointAt(low)];
+  samples.forEach((sample, index) => { if (sample.t > low && sample.t < high) stretch.push({ point: sample.point, t: sample.t, at: index }); });
+  stretch.push(pointAt(high));
   const face = faceCanvas(chain.material);
   const ashlar = chain.material === "stone" && (chain.startKind === "gate" || chain.endKind === "gate") ? gateFaceCanvas() : null;
   const top = topCanvas(chain.material);
@@ -117,28 +127,47 @@ export function drawWallFaceSlice(context: CanvasRenderingContext2D, slice: Wall
   const arcStart = arcTo(chain, low);
   const phase = (chain.hash % 12) * FACE_PX_PER_TILE;
   const half = WALL_THICKNESS[chain.material] / 2;
+  const sides = chainSides(chain, slice.joints, half, chain.material);
+  const sideAt = (line: readonly BoundaryPoint[], at: number): BoundaryPoint => {
+    const index = Math.min(line.length - 2, Math.floor(at)); const f = at - index;
+    const a = line[index] as BoundaryPoint; const b = line[index + 1] as BoundaryPoint;
+    return { x: a.x + (b.x - a.x) * f, y: a.y + (b.y - a.y) * f };
+  };
   // Three passes: the body (end faces) of the whole stretch, then the faces (or the end-on top views), then the tops,
   // so a later segment's end face never paints over an earlier face and every top lies over the faces below it.
   for (const pass of ["body", "face", "top"] as const) {
     let arc = arcStart;
     for (let index = 0; index < stretch.length - 1; index += 1) {
-      const a = stretch[index] as { point: BoundaryPoint; t: number }; const b = stretch[index + 1] as { point: BoundaryPoint; t: number };
+      const a = stretch[index] as { point: BoundaryPoint; t: number; at: number }; const b = stretch[index + 1] as { point: BoundaryPoint; t: number; at: number };
       const dx = b.point.x - a.point.x; const dy = b.point.y - a.point.y;
       const segment = Math.hypot(dx, dy);
       if (segment === 0) continue;
-      const ext = { x: dx / segment * QUAD_OVERLAP, y: dy / segment * QUAD_OVERLAP };
-      // The face stands on the side toward the camera (world normal with n . (1, 1) >= 0), the top reaches the back.
-      let n = { x: -dy / segment, y: dx / segment };
-      if (n.x + n.y < 0) n = { x: -n.x, y: -n.y };
-      const front = (point: BoundaryPoint, sign: number) => screenOf({ x: point.x + n.x * half + ext.x * sign, y: point.y + n.y * half + ext.y * sign });
-      const back = (point: BoundaryPoint, sign: number) => screenOf({ x: point.x - n.x * half + ext.x * sign, y: point.y - n.y * half + ext.y * sign });
-      const fa = front(a.point, -1); const fb = front(b.point, 1);
-      const ba = back(a.point, -1); const bb = back(b.point, 1);
-      const sa = screenOf({ x: a.point.x + n.x * half, y: a.point.y + n.y * half }); const sb = screenOf({ x: b.point.x + n.x * half, y: b.point.y + n.y * half });
+      const direction = { x: dx / segment, y: dy / segment };
+      const ext = { x: direction.x * QUAD_OVERLAP, y: direction.y * QUAD_OVERLAP };
+      // The face stands on the side toward the camera (the left side when its normal has n . (1, 1) >= 0), the top
+      // reaches the back; both on the chain's mitred side lines.
+      const [frontLine, backLine] = direction.x - direction.y >= 0 ? [sides.left, sides.right] : [sides.right, sides.left];
+      const shifted = (point: BoundaryPoint, sign: number) => screenOf({ x: point.x + ext.x * sign, y: point.y + ext.y * sign });
+      const frontA = sideAt(frontLine, a.at); const frontB = sideAt(frontLine, b.at);
+      const fa = shifted(frontA, -1); const fb = shifted(frontB, 1);
+      const backA = sideAt(backLine, a.at); const backB = sideAt(backLine, b.at);
+      const ba = shifted(backA, -1); const bb = shifted(backB, 1);
+      const sa = screenOf(frontA); const sb = screenOf(frontB);
       const screenLength = Math.hypot(sb.x - sa.x, sb.y - sa.y);
-      const faceRun = screenLength > 0 && Math.abs(sb.x - sa.x) / screenLength >= FACE_MIN_SPREAD;
-      const u0 = arc * FACE_PX_PER_TILE + phase; const u1 = (arc + segment) * FACE_PX_PER_TILE + phase;
+      const faceRun = screenLength > 0 && sides.faceRun[Math.min(sides.faceRun.length - 1, Math.floor((a.at + b.at) / 2))] === true;
+      // u: arc length along the baseline, carried onto the front line by the side point's lead along the run (a mitred
+      // corner reaches past the baseline end on the outer side, short of it on the inner one).
+      const lead = (side: BoundaryPoint, base: BoundaryPoint) => ((side.x - base.x) * direction.x + (side.y - base.y) * direction.y) * FACE_PX_PER_TILE;
+      const base0 = arc * FACE_PX_PER_TILE + phase; const base1 = (arc + segment) * FACE_PX_PER_TILE + phase;
+      const u0 = base0 + lead(frontA, a.point); const u1 = base1 + lead(frontB, b.point);
+      // The top and end-on strips are laid from the rear line, so they read u there.
+      const r0 = base0 + lead(backA, a.point); const r1 = base1 + lead(backB, b.point);
       arc += segment;
+      // Beside a joined corner one side line stops on the corner point, so a step's side there can have no length: the
+      // strips are then laid from the other side (the front run carried back to the rear point).
+      const rearOpen = Math.abs(r1 - r0) > 1e-3;
+      const rearStrip = (rows: number, rise: number, frontRise = rise): Matrix => rearOpen ? strip(ba, bb, fa, r0, r1, rows, rise, frontRise)
+        : strip(ba, { x: ba.x + fb.x - fa.x, y: ba.y + fb.y - fa.y }, fa, u0, u1, rows, rise, frontRise);
       if (pass === "body") {
         context.beginPath();
         context.moveTo(ba.x, ba.y); context.lineTo(fa.x, fa.y); context.lineTo(fa.x, fa.y - FACE_HEIGHT); context.lineTo(ba.x, ba.y - FACE_HEIGHT);
@@ -150,18 +179,21 @@ export function drawWallFaceSlice(context: CanvasRenderingContext2D, slice: Wall
       if (pass === "face" && !faceRun) {
         // End-on: the top view across the thickness at wall height (u along the wall, v from the back to the front).
         quad(context, [ba, bb, fb, fa].map(point => ({ x: point.x, y: point.y - FACE_HEIGHT })) as Quad,
-          diagPattern, strip(ba, bb, fa, u0, u1, DIAG_SOURCE_HEIGHT, FACE_HEIGHT), SIDE_COLOUR[chain.material]);
+          diagPattern, rearStrip(DIAG_SOURCE_HEIGHT, FACE_HEIGHT), SIDE_COLOUR[chain.material]);
         continue;
       }
-      if (!faceRun || screenLength < 0.05) continue;
+      if (!faceRun) continue;
       if (pass === "top") {
-        // Sheared from the face's top edge (the strip's bottom row) to the rear line raised by TOP_HEIGHT.
-        const rise = FACE_HEIGHT + TOP_HEIGHT;
+        if (!rearOpen && Math.abs(u1 - u0) <= 1e-3) continue;
+        // Sheared from the face's top edge (the strip's bottom row) to the rear line raised by TOP_HEIGHT. Turning toward
+        // end-on, the rear line comes down to the end-on top view's height (NAT-5), so the two meet without a step.
+        const rise = FACE_HEIGHT + TOP_HEIGHT * topLean(direction);
         const backTopA = { x: ba.x, y: ba.y - rise }; const backTopB = { x: bb.x, y: bb.y - rise };
         quad(context, [backTopA, backTopB, { x: fb.x, y: fb.y - FACE_HEIGHT }, { x: fa.x, y: fa.y - FACE_HEIGHT }],
-          topPattern, strip(ba, bb, fa, u0, u1, TOP_SOURCE_HEIGHT, rise, FACE_HEIGHT), CAP_FALLBACK[chain.material]);
+          topPattern, rearStrip(TOP_SOURCE_HEIGHT, rise, FACE_HEIGHT), CAP_FALLBACK[chain.material]);
         continue;
       }
+      if (screenLength < 0.05 || Math.abs(u1 - u0) <= 1e-3) continue;
       context.beginPath();
       context.moveTo(fa.x, fa.y); context.lineTo(fb.x, fb.y); context.lineTo(fb.x, fb.y - FACE_HEIGHT); context.lineTo(fa.x, fa.y - FACE_HEIGHT);
       context.closePath();
@@ -202,6 +234,13 @@ export function drawWallFaceSlice(context: CanvasRenderingContext2D, slice: Wall
       }
     }
   }
+}
+
+/** How far the top's rear line stands above the face top (0..1): full along the run, none at the end-on threshold. */
+function topLean(direction: BoundaryPoint): number {
+  const sx = (direction.x - direction.y) * 32; const sy = (direction.x + direction.y) * 16;
+  const spread = Math.abs(sx) / Math.hypot(sx, sy);
+  return Math.max(0, Math.min(1, (spread - END_ON_SPREAD) / TOP_LEAN_RANGE));
 }
 
 type Quad = [BoundaryPoint, BoundaryPoint, BoundaryPoint, BoundaryPoint];
@@ -253,12 +292,16 @@ export function drawWallModules(context: CanvasRenderingContext2D, nodes: readon
     if (node.kind === "tower" && kind === "stone" && drawCornerTower(context, node.point)) continue;
     // NAT-2 QA-003: the end of a corner gate's off-axis arm (gateCornerModules) is capped by the painted pillar.
     if ("gateEnd" in node && kind === "stone" && drawModuleSprite(context, MODULES.pillar, node.point)) continue;
+    // NAT-5: a palisade's corner is the band itself, joined round the turn (wallFaceJoints); the corner post that stood
+    // over the butted runs went with them.
+    if (node.kind === "tower" && kind === "timber") continue;
     const size = node.kind === "tower" ? { radius: 0.2, height: FACE_HEIGHT + 10, post: { width: 11, height: FACE_HEIGHT + 10 } }
       : { radius: 0.15, height: FACE_HEIGHT + 4, post: { width: 9, height: FACE_HEIGHT + 4 } };
     drawModule(context, node.point, kind, size, zoom);
   }
   for (const pillar of pillars) {
     if (pillar.material === "stone" && drawPillar135(context, pillar)) continue;
+    if (pillar.material === "timber") continue;
     drawModule(context, pillar.point, pillar.material, { radius: 0.12, height: FACE_HEIGHT + 2, post: { width: 8, height: FACE_HEIGHT + 2 } }, zoom);
   }
 }

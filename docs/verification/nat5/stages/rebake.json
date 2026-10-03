@@ -1,0 +1,74 @@
+{
+ "forest-y3-summer": {
+  "state": "forest-y3-summer",
+  "tick": 45500,
+  "camera": {
+   "tx": 44,
+   "ty": 38,
+   "zoom": 1,
+   "width": 1600,
+   "height": 1100
+  },
+  "footpathCells": 224,
+  "fallowCells": 24,
+  "felledTrees": 878,
+  "footpath": {
+   "chunksInView": 56,
+   "rerastered": [
+    "ground:4,3",
+    "ground:4,4",
+    "ground:5,3",
+    "ground:5,4"
+   ],
+   "contentRasters": 4,
+   "objectQueueChanged": false
+  },
+  "tree": {
+   "chunksInView": 56,
+   "rerastered": [],
+   "contentRasters": 0,
+   "objectQueueChanged": true
+  },
+  "fallow": {
+   "chunksInView": 56,
+   "rerastered": [],
+   "contentRasters": 0,
+   "objectQueueChanged": true
+  }
+ },
+ "forest-y1-winter": {
+  "state": "forest-y1-winter",
+  "tick": 39500,
+  "camera": {
+   "tx": 44,
+   "ty": 38,
+   "zoom": 1,
+   "width": 1600,
+   "height": 1100
+  },
+  "footpathCells": 99,
+  "fallowCells": 24,
+  "felledTrees": 775,
+  "footpath": {
+   "chunksInView": 56,
+   "rerastered": [
+    "ground:5,4",
+    "ground:6,4"
+   ],
+   "contentRasters": 2,
+   "objectQueueChanged": false
+  },
+  "tree": {
+   "chunksInView": 56,
+   "rerastered": [],
+   "contentRasters": 0,
+   "objectQueueChanged": true
+  },
+  "fallow": {
+   "chunksInView": 56,
+   "rerastered": [],
+   "contentRasters": 0,
+   "objectQueueChanged": true
+  }
+ }
+}
