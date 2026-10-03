@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "png_count": 44,
+  "changed_png_count": 12,
+  "unchanged_png_count": 32,
+  "changed_files": [
+    "assets/bridge_s01_summer.png",
+    "assets/bridge_s01_winter.png",
+    "assets/bridge_s02_summer.png",
+    "assets/bridge_s02_winter.png",
+    "assets/bridge_s03_summer.png",
+    "assets/bridge_s03_winter.png",
+    "assets/guildhall_s01_summer.png",
+    "assets/guildhall_s01_winter.png",
+    "assets/guildhall_s02_summer.png",
+    "assets/guildhall_s02_winter.png",
+    "assets/guildhall_s03_summer.png",
+    "assets/guildhall_s03_winter.png"
+  ],
+  "backgrounds_byte_identical": {
+    "summer": true,
+    "winter": true
+  },
+  "city_scope": [
+    {
+      "file": "city-1300-summer-zoom-1.0.png",
+      "changed_pixels": 16521,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1300-summer-zoom-0.6.png",
+      "changed_pixels": 6653,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1300-winter-zoom-1.0.png",
+      "changed_pixels": 16540,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1300-winter-zoom-0.6.png",
+      "changed_pixels": 6704,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1380-summer-zoom-1.0.png",
+      "changed_pixels": 22178,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1380-summer-zoom-0.6.png",
+      "changed_pixels": 8779,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1380-winter-zoom-1.0.png",
+      "changed_pixels": 22261,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1380-winter-zoom-0.6.png",
+      "changed_pixels": 8832,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1450-summer-zoom-1.0.png",
+      "changed_pixels": 28855,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1450-summer-zoom-0.6.png",
+      "changed_pixels": 11380,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1450-winter-zoom-1.0.png",
+      "changed_pixels": 28957,
+      "outside_target_regions": 0
+    },
+    {
+      "file": "city-1450-winter-zoom-0.6.png",
+      "changed_pixels": 11443,
+      "outside_target_regions": 0
+    }
+  ],
+  "runtime_verified": false
+}

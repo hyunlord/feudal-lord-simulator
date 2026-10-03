@@ -1,0 +1,434 @@
+[
+  {
+    "filename": "bridge_s01_summer.png",
+    "matrix": [
+      0.48150470219435737,
+      -0.03722270392849997,
+      0.48150470219435737,
+      465.0131661442006,
+      1244.759063562996
+    ],
+    "raw_anchor": [
+      629.25,
+      653.5
+    ],
+    "primary_segment": [
+      [
+        342,
+        380
+      ],
+      [
+        1047,
+        787
+      ]
+    ],
+    "heldout_segment": [
+      [
+        209,
+        455
+      ],
+      [
+        914,
+        862
+      ]
+    ],
+    "target_slope": 0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "bridge_s01_winter.png",
+    "matrix": [
+      0.48150470219435737,
+      -0.03722270392849997,
+      0.48150470219435737,
+      465.0131661442006,
+      1244.759063562996
+    ],
+    "raw_anchor": [
+      629.25,
+      653.5
+    ],
+    "primary_segment": [
+      [
+        342,
+        380
+      ],
+      [
+        1047,
+        787
+      ]
+    ],
+    "heldout_segment": [
+      [
+        209,
+        455
+      ],
+      [
+        914,
+        862
+      ]
+    ],
+    "target_slope": 0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "bridge_s02_summer.png",
+    "matrix": [
+      0.4278551532033426,
+      -0.0034806739622299243,
+      0.4278551532033426,
+      496.2050139275766,
+      1253.5804574659828
+    ],
+    "raw_anchor": [
+      635.25,
+      665.25
+    ],
+    "primary_segment": [
+      [
+        286,
+        384
+      ],
+      [
+        1085,
+        790
+      ]
+    ],
+    "heldout_segment": [
+      [
+        159,
+        457
+      ],
+      [
+        960,
+        863
+      ]
+    ],
+    "target_slope": 0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "bridge_s02_winter.png",
+    "matrix": [
+      0.4278551532033426,
+      -0.0034806739622299243,
+      0.4278551532033426,
+      496.2050139275766,
+      1253.5804574659828
+    ],
+    "raw_anchor": [
+      635.25,
+      665.25
+    ],
+    "primary_segment": [
+      [
+        286,
+        384
+      ],
+      [
+        1085,
+        790
+      ]
+    ],
+    "heldout_segment": [
+      [
+        159,
+        457
+      ],
+      [
+        960,
+        863
+      ]
+    ],
+    "target_slope": 0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "bridge_s03_summer.png",
+    "matrix": [
+      0.5099601593625498,
+      -0.043666536860078486,
+      0.6,
+      313.62549800796813,
+      1171.85688434233
+    ],
+    "raw_anchor": [
+      891,
+      671.75
+    ],
+    "primary_segment": [
+      [
+        600,
+        443
+      ],
+      [
+        1265,
+        774
+      ]
+    ],
+    "heldout_segment": [
+      [
+        484,
+        513
+      ],
+      [
+        1122,
+        831
+      ]
+    ],
+    "target_slope": 0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "bridge_s03_winter.png",
+    "matrix": [
+      0.5099601593625498,
+      -0.043666536860078486,
+      0.6,
+      313.62549800796813,
+      1171.85688434233
+    ],
+    "raw_anchor": [
+      891,
+      671.75
+    ],
+    "primary_segment": [
+      [
+        600,
+        443
+      ],
+      [
+        1265,
+        774
+      ]
+    ],
+    "heldout_segment": [
+      [
+        484,
+        513
+      ],
+      [
+        1122,
+        831
+      ]
+    ],
+    "target_slope": 0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "guildhall_s01_summer.png",
+    "matrix": [
+      0.5,
+      -0.05049261083743842,
+      0.5,
+      325.5,
+      1175.685960591133
+    ],
+    "raw_anchor": [
+      885,
+      810
+    ],
+    "primary_segment": [
+      [
+        583,
+        896
+      ],
+      [
+        786,
+        815
+      ]
+    ],
+    "heldout_segment": [
+      [
+        996,
+        739
+      ],
+      [
+        1308,
+        613
+      ]
+    ],
+    "target_slope": -0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "guildhall_s01_winter.png",
+    "matrix": [
+      0.5,
+      -0.05049261083743842,
+      0.5,
+      325.5,
+      1175.685960591133
+    ],
+    "raw_anchor": [
+      885,
+      810
+    ],
+    "primary_segment": [
+      [
+        583,
+        896
+      ],
+      [
+        786,
+        815
+      ]
+    ],
+    "heldout_segment": [
+      [
+        996,
+        739
+      ],
+      [
+        1308,
+        613
+      ]
+    ],
+    "target_slope": -0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "guildhall_s02_summer.png",
+    "matrix": [
+      0.6,
+      -0.03302325581395349,
+      0.6,
+      321.0,
+      958.2023255813953
+    ],
+    "raw_anchor": [
+      745,
+      1004
+    ],
+    "primary_segment": [
+      [
+        482,
+        877
+      ],
+      [
+        1127,
+        590
+      ]
+    ],
+    "heldout_segment": [
+      [
+        732,
+        638
+      ],
+      [
+        849,
+        586
+      ]
+    ],
+    "target_slope": -0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "guildhall_s02_winter.png",
+    "matrix": [
+      0.6,
+      -0.03302325581395349,
+      0.6,
+      321.0,
+      958.2023255813953
+    ],
+    "raw_anchor": [
+      745,
+      1004
+    ],
+    "primary_segment": [
+      [
+        482,
+        877
+      ],
+      [
+        1127,
+        590
+      ]
+    ],
+    "heldout_segment": [
+      [
+        732,
+        638
+      ],
+      [
+        849,
+        586
+      ]
+    ],
+    "target_slope": -0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "guildhall_s03_summer.png",
+    "matrix": [
+      0.6,
+      -0.011876075731497404,
+      0.6,
+      366.6,
+      1051.3450946643718
+    ],
+    "raw_anchor": [
+      669,
+      821
+    ],
+    "primary_segment": [
+      [
+        399,
+        777
+      ],
+      [
+        980,
+        498
+      ]
+    ],
+    "heldout_segment": [
+      [
+        782,
+        602
+      ],
+      [
+        971,
+        511
+      ]
+    ],
+    "target_slope": -0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  },
+  {
+    "filename": "guildhall_s03_winter.png",
+    "matrix": [
+      0.6,
+      -0.011876075731497404,
+      0.6,
+      366.6,
+      1051.3450946643718
+    ],
+    "raw_anchor": [
+      669,
+      821
+    ],
+    "primary_segment": [
+      [
+        399,
+        777
+      ],
+      [
+        980,
+        498
+      ]
+    ],
+    "heldout_segment": [
+      [
+        782,
+        602
+      ],
+      [
+        971,
+        511
+      ]
+    ],
+    "target_slope": -0.5,
+    "season_geometry": "same source pixel coordinates; verified separately"
+  }
+]
