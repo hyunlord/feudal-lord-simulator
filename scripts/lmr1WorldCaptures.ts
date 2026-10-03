@@ -178,7 +178,13 @@ if (sections.has("manor")) {
     // Past the first season, so the engine has made the ruling family (a new game's manor has only its steward).
     const summer = toSeason(base, 1), winter = toSeason(summer, 3);
     for (const [season, occupied] of [["summer", summer], ["winter", winter]] as const) {
-      for (const [label, state] of [["occupied", occupied], ["empty", gone(occupied)]] as const) {
+      // A town with no petition waiting gets one more state: its latest answered petition open again (constructed for the
+      // capture: the activity overlay over the occupied picture).
+      const last = (occupied.politics?.petitions ?? []).at(-1);
+      const court: GameState | null = occupied.politics === undefined || last === undefined || occupied.politics.petitions.some(petition => petition.response === undefined) ? null
+        : { ...occupied, politics: { ...occupied.politics, petitions: [...occupied.politics.petitions, { id: `${last.defId}@capture`, defId: last.defId, petitioner: last.petitioner, arrivedTick: occupied.tick }] } };
+      const states: (readonly [string, GameState])[] = [["occupied", occupied], ["empty", gone(occupied)], ...(court === null ? [] : [["court", court] as const])];
+      for (const [label, state] of states) {
         const manor = state.buildings.find(building => building.kind === "manor_house")!;
         const save = writeState(state, `manor-${name}-${season}-${label}`);
         for (const zoom of [0.6, 1.0, 1.4]) {

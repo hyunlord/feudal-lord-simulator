@@ -23,8 +23,9 @@ import { MANOR_HOUSE_IMAGES, type ManorHouseKey } from "./manorHouseManifest.gen
 //    the manor, has no lord there any more (engine `manorLord`: it died out or left). Never while a lord lives there,
 //    however quiet the house; a town with no persons yet, or whose ruling family the engine has not made yet (a new
 //    game's first season, a new house arriving), keeps the occupied picture.
-//  - the activity overlay (the lit hall window and the petitioners' bench, same canvas and rect) over the occupied
-//    picture while a petition waits for the lord's answer (engine `openPetitions`), as the petition crowd gathers.
+//  - the activity overlay (the rework-20260926 pictures: the hall's open, lit door and the smoke of its hearth, same
+//    canvas and rect) over the occupied picture while a petition waits for the lord's answer (engine `openPetitions`),
+//    as the petition crowd gathers: the lord is holding court.
 // A picture still loading, or missing, draws nothing here and the building falls back to its block (no empty plot).
 
 const art = manifestArt<ManorHouseKey>(MANOR_HOUSE_IMAGES);
