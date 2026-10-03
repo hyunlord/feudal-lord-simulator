@@ -77,4 +77,11 @@ export const SEASON_LEDGER_COPY = {
   resume: "계속",
   autoOn: "계절마다 결산 띄우기: 켬",
   autoOff: "계절마다 결산 띄우기: 끔",
+  /** LM-R1 (playtest #7): the first card asks whether later ones open by themselves or wait as a notice. */
+  firstAsk: "다음 계절부터 결산은",
+  firstAuto: "매번 띄우기",
+  firstNotice: "알림으로 쌓기",
+  /** The notice of seasons closed while the card did not open (the event chips' row). */
+  notice: (count: number) => `계절 결산 ${count}건`,
+  noticeLabel: (count: number) => `쌓인 계절 결산 ${count}건 — 누르면 마지막 결산을 엽니다`,
 } as const;

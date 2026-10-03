@@ -13,6 +13,9 @@
 //    construction, the camera on the wall works at zoom 1 — the default screen's budget. The construction tags are drawn
 //    on the canvas, so this state's hidden shot also hides them (the proof port's constructionLabels) and their boxes (the
 //    port's constructionTagBoxes, the frame of the first shot) join the DOM boxes.
+//  - normal:lord / build:lord / placement:lord (LM-R1): the lord's slice at its start (lord mode: the town builds itself),
+//    the tutorial off — the default screen without the layer switch, the dock's 명령 opening the command pins in the
+//    build drawer's place, and the pins' public work (성채) picked with the cursor on open ground. Same budgets.
 // The gate is not one run: HUD-MEDIAN (docs/decisions/README.md) judges each row by the median of three runs
 // (scripts/uiaudit1HudThrice.sh, then scripts/hudMedian.ts); this run's own `pass` and exit code are one sample.
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/measureHudCoverage.ts <out.json> --url <url> [--shots <dir>] [--only walls]
@@ -32,6 +35,8 @@ import { WALL_SITE_LABEL_COPY } from "../src/ui/wallCarryCopy.ko";
 import type { GameState } from "../src/engine/engine.types";
 import { initialPolitics } from "../src/engine/politics";
 import { decodeSave } from "../src/save/saveCodec";
+import { LORD_SLICE_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
+import { newGameState } from "../src/state/newGame";
 
 const [out] = process.argv.slice(2);
 const flags = Object.fromEntries(process.argv.slice(2).reduce<string[][]>((pairs, value, index, all) => value.startsWith("--") ? [...pairs, [value.slice(2), all[index + 1]!]] : pairs, []));
@@ -166,10 +171,14 @@ const segmentTagBefore = (site: WallConstructionSite) => {
   const schedule = palisadeConstructionSchedule(site, wallTown.constructionSites);
   return schedule.kind === "queued" ? WALL_SITE_LABEL_COPY.queued(schedule.position) : currentConstructionSiteLabel(wallTown, site);
 };
+// LM-R1: the lord's slice at its start, the camera on its manor house.
+const lordTown = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID })!;
+const lordSeat = lordTown.buildings.find(building => building.kind === "manor_house") ?? lordTown.buildings[0]!;
+const lordTile = [lordSeat.tx, lordSeat.ty];
 const wallMiddle = [wallSites.reduce((sum, site) => sum + site.anchor.tx, 0) / wallSites.length, wallSites.reduce((sum, site) => sum + site.anchor.ty, 0) / wallSites.length];
 for (const resolution of RESOLUTIONS) {
-  // `--only walls`: the chapter 2 wall works state alone.
-  if (flags.only !== "walls") {
+  // `--only walls` / `--only lord`: the chapter 2 wall works or the lord-mode states alone.
+  if (flags.only !== "walls" && flags.only !== "lord") {
   const { context, page } = await openScene(browser, { state: null, tile: [45, 41], baseUrl: url, width: resolution.width, height: resolution.height, dpr: 1, zoom: 1, run: true, hasTouch: resolution.touch }) as { context: { close: () => Promise<void> }; page: Page };
   // The steward's new line is a transient (one line, 8 s, UX3R 7): the normal state is measured once it has folded.
   await page.waitForTimeout(2_500);
@@ -207,6 +216,26 @@ for (const resolution of RESOLUTIONS) {
   await page.locator("[data-zone-tool='arable']").first().click(); await page.waitForTimeout(400); await push("zone", undefined, "armed");
   await context.close();
   }
+  // LM-R1: lord mode (the lord's slice at its start): its normal screen, the command pins, a public work being placed.
+  if (flags.only !== "walls") {
+    const lord = await openScene(browser, { state: lordTown, tile: lordTile, baseUrl: url, width: resolution.width, height: resolution.height, dpr: 1, zoom: 1, run: true, hasTouch: resolution.touch,
+      query: "&story-delay=600000&weather=none", initScript: TUTORIAL_OFF }) as { context: { close: () => Promise<void> }; page: Page };
+    await dismissModals(lord.page);
+    await lord.page.waitForTimeout(2_500);
+    await dismissModals(lord.page);
+    await lord.page.waitForFunction(() => document.querySelector(".steward-bubble") === null, null, { timeout: 12_000 }).catch(() => undefined);
+    const lordPoint = async (tx: number, ty: number) => { const p = await lord.page.evaluate(t => (window as unknown as Proof).__FEUDAL_PHASE10_PROOF__.tileClientPoint(t), { tx, ty }); return { x: p.clientX, y: p.clientY }; };
+    const lordRest = await lordPoint(lordTile[0]! - 6, lordTile[1]! + 4);
+    const lordPush = async (name: StateName, cursor: { x: number; y: number }) => {
+      const measured = await measure(lord.page, name, flags.shots, `${resolution.name}-lord`, cursor);
+      rows.push({ resolution: resolution.name, ...measured, view: "lord", budget: budgetFor(name, resolution), pass: measured.percent <= budgetFor(name, resolution) });
+    };
+    await lordPush("normal", lordRest);
+    await lord.page.locator("[data-dock='build']").first().click(); await lord.page.waitForTimeout(400); await lordPush("build", lordRest);
+    await lord.page.locator(".command-pin[data-command-pin='work:keep']").first().click(); await lord.page.waitForTimeout(300); await lordPush("placement", await lordPoint(lordTile[0]! - 4, lordTile[1]! + 3));
+    await lord.context.close();
+  }
+  if (flags.only === "lord") continue;
   // INSTALL-3b: chapter 2 with its walls under construction (the tags on the canvas count; see the header).
   const walls = await openScene(browser, { state: wallTown, tile: wallMiddle, baseUrl: url, width: resolution.width, height: resolution.height, dpr: 1, zoom: 1, run: true, hasTouch: resolution.touch,
     query: "&story-delay=600000&weather=none", initScript: TUTORIAL_OFF }) as { context: { close: () => Promise<void> }; page: Page };

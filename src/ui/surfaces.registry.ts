@@ -399,7 +399,14 @@ export const SURFACES: readonly SurfaceRow[] = [
     data: "the kit Tooltip in the gallery" },
   // NAT-4 (LU-D7): the kit NumberField's row in the gallery (the land agent's NumberField; screen.welcome holds the map number one).
   { id: "dev.ui-kit.number", extends: "dev.ui-kit", root: "[data-states='number']", frame: "flat", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
-    data: "the kit NumberField's states in the gallery" },
+    data: "the kit NumberField's states in the gallery" },  // LM-R1 hud
+  // Playtest 2026-10-02 #5: the food cell's breakdown under the pill (total, milling, carrying, access, hunger).
+  { id: "hud.food-breakdown", root: ".food-breakdown", frame: "css", scene: TOWN, open: [{ click: ".status-pill-cell[data-food-days]" }, { pause: 500 }],
+    requires: [".food-breakdown-row", ".food-breakdown-ledger"], data: "the town's food split five ways, the ledger and close buttons" },
+  // Lord mode's command pins in the build drawer's place (no cached lord-mode state yet; scripts/lmr1HudCaptures.ts opens it).
+  { id: "hud.command-pins", root: ".command-pins", frame: "css", scene: { kind: "new-game" }, numbers: false, open: [{ click: "[data-dock='build']" }, { pause: 500 }],
+    requires: [".command-pin"], data: "the lord's public work (성채) and encouragement-zone pins",
+    unreachable: "lord mode starts from the lord's slice (core:lord_slice), which the start screen does not offer until LM-R3; no state set holds a lord-mode town" },
 ];
 
 /**

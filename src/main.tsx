@@ -14,6 +14,7 @@ import "./styles/tutorial.css";
 import "./styles/alertStack.css";
 import "./styles/uiInspector.css";
 import "./styles/hudShell.css";
+import "./styles/lmr1Hud.css";
 import "./styles/stuckGoods.css";
 import "./styles/chronicle.css";
 import "./styles/legacy.css";

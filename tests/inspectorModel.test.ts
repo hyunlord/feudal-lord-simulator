@@ -117,12 +117,12 @@ test("the inspector renders name, state line, 왜?/조치 and a close button", (
 });
 
 test("UI-AUDIT-1: a barn the stuck-goods chip reports says the chip's reason and what to do, not '지금 할 일이 없습니다'", () => {
-  // Given: the chip's row for a barn (its harvest lost behind the full barn, the cart not keeping up); the seed city
-  // has no barn, so its mill carries the row
+  // Given: the chip's row for a barn (its harvest lost behind the full barn, the cart not keeping up; LM-R1: the engine's
+  // field entry); the seed city has no barn, so its mill carries the row
   const state = seedGroundState(2);
   const barn = state.buildings.find((candidate) => candidate.kind === "farmstead") ?? state.buildings.find((candidate) => candidate.kind === "mill")!;
-  const row = { buildingId: barn.id, kind: barn.kind, good: "wheat", amount: 932, since: null, reason: "no_carrier", spoiling: true,
-    carriers: 1, tile: { tx: barn.tx, ty: barn.ty } } as const;
+  const row = { buildingId: barn.id, kind: barn.kind, good: "wheat", amount: 932, days: 0, reason: "no_carrier", source: "field", store: null,
+    tile: { tx: barn.tx, ty: barn.ty } } as const;
 
   // When
   const model = inspectorModel(state, barn.id, [row]);
@@ -139,11 +139,13 @@ test("UI-AUDIT-1: a barn the stuck-goods chip reports says the chip's reason and
 test("UI-AUDIT-1: the stuck reasons read as actions with the store's particle (곡창과 · 창고를)", () => {
   const state = seedGroundState(2);
   const barn = state.buildings.find((candidate) => candidate.kind === "farmstead") ?? state.buildings.find((candidate) => candidate.kind === "mill")!;
-  const base = { buildingId: barn.id, kind: barn.kind, amount: 800, since: null, spoiling: false, carriers: 0, tile: { tx: barn.tx, ty: barn.ty } } as const;
-  const first = (good: "wheat" | "fleece", reason: "no_road" | "no_receiver" | "receiver_full" | "unknown") =>
-    inspectorModel(state, barn.id, [{ ...base, good, reason }])?.actions[0];
+  const base = { buildingId: barn.id, kind: barn.kind, amount: 800, days: 0, source: "stock", tile: { tx: barn.tx, ty: barn.ty } } as const;
+  const granary = { id: "granary-x", kind: "granary", used: 200, capacity: 200 } as const;
+  const first = (good: "wheat" | "fleece", reason: "no_road" | "receiver_full" | "no_carrier", store: typeof granary | null = null) =>
+    inspectorModel(state, barn.id, [{ ...base, good, reason, store }])?.actions[0];
   assert.equal(first("wheat", "no_road"), "곡창과 이 건물을 도로로 이어 주세요");
-  assert.equal(first("fleece", "no_receiver"), "창고를 지으세요");
-  assert.equal(first("wheat", "receiver_full"), "곡창을 하나 더 지으세요");
-  assert.equal(first("fleece", "unknown"), "창고까지 가는 길과 창고의 빈 자리를 확인하세요");
+  // LM-R1: the engine's receiver_full with no such store at all builds one; with full stores, another.
+  assert.equal(first("fleece", "receiver_full"), "창고를 지으세요");
+  assert.equal(first("wheat", "receiver_full", granary), "곡창을 하나 더 지으세요");
+  assert.equal(first("fleece", "no_carrier"), "이 건물 가까이에 창고를 지어 수레 길을 줄이세요");
 });

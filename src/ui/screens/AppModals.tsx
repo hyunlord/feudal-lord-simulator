@@ -40,7 +40,7 @@ import { chapterStartYear, latestChapterEnd } from "../chronicleModel";
  * any time, and the ending again from the chronicle screen once it is written.
  */
 export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChroniclePerson, steward, onPerson, ledgerAuto, onLedgerAuto,
-  onMenuRequest, tutorial, chapterGoalsView = false }: {
+  ledgerFirst = false, onMenuRequest, tutorial, chapterGoalsView = false }: {
   readonly ui: UiState;
   readonly sendUi: (event: UiEvent) => void;
   readonly personCardId: string | null;
@@ -50,6 +50,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   readonly onPerson: (id: string) => void;
   readonly ledgerAuto: boolean;
   readonly onLedgerAuto: (next: boolean) => void;
+  /** LM-R1: the season card up is the first that opened by itself (it asks how later seasons come). */
+  readonly ledgerFirst?: boolean;
   readonly onMenuRequest: (request: { readonly category: BuildCategory; readonly nonce: number }) => void;
   readonly tutorial: Pick<TutorialController, "enabled" | "setEnabled">;
   /** QA-025: the preview was opened from the chapter's card ("목표 보기"): the current chapter's goals, a close button. */
@@ -74,7 +76,7 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       || (topModal(ui) === "person_card" && personCardGone) || (topModal(ui) === "legacy_ending" && legacyGone)) sendUi({ type: "pop_modal" });
   }, [ui, famineGone, petitionGone, chronicleGone, personCardGone, legacyGone, sendUi]);
   return <>
-    {seasonCard === null ? null : <SeasonLedgerCard model={seasonCard} auto={ledgerAuto}
+    {seasonCard === null ? null : <SeasonLedgerCard model={seasonCard} auto={ledgerAuto} first={ledgerFirst}
       onAutoChange={onLedgerAuto}
       onResume={() => sendUi({ type: "pop_modal" })}
       onHint={() => { const hint = seasonCard.hint; sendUi({ type: "pop_modal" }); if (hint !== null) onMenuRequest({ category: hint.category, nonce: Date.now() }); }} />}
