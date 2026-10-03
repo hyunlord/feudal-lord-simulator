@@ -1,0 +1,83 @@
+{
+  "head": "5c16778d2eff26a1501485a7c0d7413ce16a6388",
+  "readOnly": true,
+  "ids": [
+    2,
+    25,
+    30,
+    37,
+    42,
+    49
+  ],
+  "graft": {
+    "calls": 6,
+    "callsWithSavings": 5,
+    "savedTokens": 114080,
+    "dollars": null
+  },
+  "changes": [
+    {
+      "id": 2,
+      "change": "accounts→accounts 선택 a 제거; c의 중복 accounts 명령 제거. b visit와 c direct만 남김.",
+      "refs": [
+        "src/engine/stewardship.ts:371",
+        "src/engine/stewardship.ts:431",
+        "src/engine/stewardship.ts:60"
+      ],
+      "remaining": "실제 estateId/currentSteward 바인딩은 등록기 몫."
+    },
+    {
+      "id": 25,
+      "change": "후임 선택 파라미터를 생략하여 현행 자동후임 사용. pending/deadline/revealedKept>=2/loyalty<=90/tenants<=95/연결세력relation>=-95/생존후임 조건으로 회수·충성·관계·교체 실제 차이 보장.",
+      "refs": [
+        "src/engine/stewardship.ts:443",
+        "src/engine/history.ts:981"
+      ],
+      "remaining": "실제 pendingAudit 바인딩·출력 시점 재검사 필요. 후임 정렬은 엔진 기존 localeCompare."
+    },
+    {
+      "id": 30,
+      "change": "도시 공동체(town)의 기존 직인 길드 대표(reorganisation.guild.headId), 사람 persons.people.id로 명시. 건축actor guild와 회계merchant_house_2 구분.",
+      "refs": [
+        "src/engine/reorganisation.ts:214",
+        "src/content/factionConfig.ts:35",
+        "src/engine/townAgency.ts:207"
+      ],
+      "remaining": "대표headId 없거나 해당 인물이 없으면 사건 제외; 새 세력/인물 생성 없음."
+    },
+    {
+      "id": 37,
+      "change": "동일 위임·동일 담당 재설정 delegate 제거. direct와 delegate_visit 두 실효 선택만.",
+      "refs": [
+        "src/engine/stewardship.ts:371",
+        "src/engine/stewardship.ts:431"
+      ],
+      "remaining": "영지/담당 바인딩은 등록기 몫."
+    },
+    {
+      "id": 42,
+      "change": "시장 장려금32d. 세율 후보범위도800/1150‰로 확정. 현재1000‰, market 장려금0, 전체합계+32<=floor(금고/4).",
+      "refs": [
+        "src/engine/townAgency.ts:73",
+        "src/engine/townAgency.ts:82",
+        "src/engine/townAgency.ts:94"
+      ],
+      "remaining": "지속 장려금; 반복 사업마다 지급 가능; 자동만료 없음."
+    },
+    {
+      "id": 49,
+      "change": "직조 단독32d/축융 단독32d/분할16+16d, 총설정액32d 동일. 다른장려금0이면 금고128d부터.",
+      "refs": [
+        "src/engine/townAgency.ts:73",
+        "src/engine/townAgency.ts:527"
+      ],
+      "remaining": "분할 기존 비원자적 순차경로 유지; 실패시 부분 성공만 기록."
+    }
+  ],
+  "checks": {
+    "atTreasury127": "32d 단독 또는16+16d 공통 사전한도 실패(floor31)",
+    "atTreasury128": "32d 단독 또는16+16d 공통 사전한도 통과(32)",
+    "subsidyImmediateCashDelta": 0,
+    "subsidyTotalLifetimeCap": false
+  }
+}

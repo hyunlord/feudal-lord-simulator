@@ -1,0 +1,43 @@
+{
+  "reviewer": "final_geometry_review",
+  "date": "2026-10-03",
+  "score": 91,
+  "verdict": "pass",
+  "category_match": true,
+  "inspected": {
+    "axis_proofs": 12,
+    "river_proofs": 6,
+    "identity_boards": 4,
+    "city_proofs": 1,
+    "final_bridge3_sprites": 2
+  },
+  "differences": [
+    "Observed deck ends remain approximately 0 to 3 world pixels from guides; snow and hidden approach boundaries limit precision.",
+    "Cross axes and runtime installation were not certified."
+  ],
+  "suggestions": [
+    "Report 26.565 degrees as calibrated long-axis angle, with held-out line error separately.",
+    "Describe 1.852 world pixels as manual-coordinate estimate, not an independently proven strict upper bound.",
+    "Do not call reused summer coordinates an independent winter measurement or reuse prior blind scores as new results."
+  ],
+  "reasoning": "Visible level beams and deck rails track the guide direction. Seasonal structural geometry remains consistent. Bridge and guildhall growth preserve recognizable architectural identity. The 1450 city shows no obvious new overlap, truncation, or detachment. Independent visual endpoint reading is compatible with the reported approximate residuals but cannot establish subpixel exactness.",
+  "independent_endpoint_visual_estimate_world_px": {
+    "range": [
+      0,
+      3
+    ],
+    "uncertainty_about_px": [
+      1,
+      2
+    ],
+    "largest_ambiguous_case": "bridge_s03 right deck end; left approach boundary is also partly semantic"
+  },
+  "identity": {
+    "bridge": "same crossing visibly develops",
+    "guildhall": "same hall visibly grows"
+  },
+  "runtime_verified": false,
+  "blind_test_performed": false,
+  "frozen_asset_hashes_independently_checked": false,
+  "scope": "requested_long_axis_and_static_three_cell_bridge_fit"
+}
