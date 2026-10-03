@@ -53,7 +53,8 @@ export function nearestReceiver(state: GameState, from: Building, good: Resource
   if (best === null || !isStorableResource(good)) return null;
   // The room that binds this good (a granary's wheat, a storehouse's raw goods, take half its room): 곡창 100/100.
   const usage = storageIntakeUsage(best, good);
-  return { id: best.id, kind: best.kind, used: Math.floor(usage.used), capacity: usage.capacity };
+  // Goods already on their way in count as used (the store takes no more); shown at most full (not 203/200).
+  return { id: best.id, kind: best.kind, used: Math.min(usage.capacity, Math.floor(usage.used)), capacity: usage.capacity };
 }
 
 /** The engine's stuck stock as the HUD shows it, the largest pile first (ties by building id). */

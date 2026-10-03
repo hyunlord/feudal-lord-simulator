@@ -68,18 +68,22 @@ const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const errors: string[] = [];
 const views: Record<string, unknown> = {};
+/** What each map click opened (the building cards' headings), for a capture that did not find its card. */
+const picked: string[] = [];
 const step = async (name: string, run: () => Promise<void>) => { try { await run(); console.log(name, "ok"); } catch (error) { errors.push(`${name}: ${String(error).slice(0, 300)}`); console.log(name, "FAILED"); } };
 const shot = (page: Page, name: string, clip?: Box) => page.screenshot({ path: join(out!, `${name}.jpg`), type: "jpeg", quality: 50, ...(clip === undefined ? {} : { clip }) });
 const text = async (page: Page, selector: string) => (await page.locator(selector).count()) > 0 ? (await page.locator(selector).first().textContent())?.trim() ?? null : null;
 const point = async (page: Page, tx: number, ty: number) => { const p = await page.evaluate((t: never) => (window as unknown as Proof).__FEUDAL_PHASE10_PROOF__.tileClientPoint(t), { tx, ty }); return { x: p.clientX, y: p.clientY }; };
 
-/** Click the building's tiles in turn until its map card shows `until` (a neighbour's sprite can take a click). */
+/** Click around the building's tile until its map card shows `until` (a neighbour's sprite can take a click); a wrong
+ * card is closed by its own button (Esc on an empty screen would open the pause menu). */
 async function selectBuilding(page: Page, building: { readonly tx: number; readonly ty: number }, until: string): Promise<boolean> {
-  for (const [dx, dy] of [[0, 0], [1, 0], [0, 1], [1, 1], [-1, 0], [0, -1]] as const) {
-    const at = await point(page, building.tx + dx, building.ty + dy);
-    await page.mouse.click(at.x, at.y); await page.waitForTimeout(900);
+  const at = await point(page, building.tx, building.ty);
+  for (const [dx, dy] of [[0, 0], [0, -8], [0, -16], [0, 6], [-10, -4], [10, -4], [0, -24]] as const) {
+    await page.mouse.click(at.x + dx, at.y + dy); await page.waitForTimeout(900);
+    picked.push(`${building.tx},${building.ty} +${dx},${dy}: ${await text(page, ".diagnostic-card h2") ?? "-"}`);
     if (await page.locator(until).count() > 0) return true;
-    await page.keyboard.press("Escape"); await page.waitForTimeout(300);
+    if (await page.locator(".diagnostic-card .inspector-close").count() > 0) { await page.locator(".diagnostic-card .inspector-close").first().click(); await page.waitForTimeout(300); }
   }
   return false;
 }
@@ -191,6 +195,6 @@ await step("13 sandbox drawer", async () => {
 });
 
 await browser.close();
-writeFileSync(join(out!, "captures.json"), `${JSON.stringify({ url, views, errors }, null, 2)}\n`);
+writeFileSync(join(out!, "captures.json"), `${JSON.stringify({ url, views, picked, errors }, null, 2)}\n`);
 console.log(errors.length === 0 ? "captures ok" : `errors:\n${errors.join("\n")}`);
 process.exit(errors.length === 0 ? 0 : 1);
