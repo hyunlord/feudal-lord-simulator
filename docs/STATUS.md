@@ -14,6 +14,10 @@
 - **성능 추이 자동 갱신(TREND-AUTO) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 작업 브랜치에 본선을 합칠 때 [추이 문서](verification/perf-trend/README.md)가 10개 넘게 뒤처졌으면 병합 뒤 훅이 `perf:trend`를 돌려 그 폴더만 따로 커밋한다(결정 RR4, `FLS_TREND_AUTO=0`으로 끔). 설치는 `npm run hooks:install`(npm ci·install이 함께). 결정 HOUSE-1: 플레이어 가문 기본 이름 드 해버럴(새 게임에서 이름·문장 변경 가능).
 - **시각 검사기 홀드아웃(VISION-HOLDOUT) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 홀드아웃에서 교정 성능 재현 실패 — QA 후보 생성 보조용, 병합 관문 아님. [`tools/vision-check/`](../tools/vision-check/README.md)의 검출기 상태는 **이음새만 사용, 나머지 다섯은 실험**이고, 각 검출기에 홀드아웃·교정·무작위 50 수치를 적었다. 보조 도구로 고정했고 다듬기는 멈췄다. 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다.
 
+- **COPY-1r 문구 감사의 화면 몫 — 완료, 본선 병합**(Claude Code, 렌더 세션, NAT-5 다음·LM-R1 앞): [보고서](verification/copy1r/REPORT.md). Astra 문구 감사 src/ui·src/ledger 28건 + CA-006 + QA-033.
+  - 상세·확정 금액은 완전 표기(장부·계절 결산·왕실 보조세), 장부에 틱 없이 달력 날짜. 시장 거리는 길 걸음(serviceMeasure).
+  - 용어집 기준: 석벽 도시, 왕실 보조세 요구, 영주의 후계자, 자치 연납금, 운반꾼·배급꾼, 통나무, 시장도시, 일시 정지. 첫해 파종 안내를 규칙대로.
+
 - **NAT-5 땅 자연스러움 — 완료, 본선 병합**(Claude Code, 렌더 세션, LM-R1 앞에 끼움): [보고서](verification/nat5/REPORT.md), 결정 N5-D1·D2(D2 사용자 결정), N5-G1~G3, N5S-1~7, N5-W1·W2.
   - 땅 경계(QA-040 숲 바닥, QA-039 백악 바위, 검사기 습지 #5·#10): 지도 전체 뒤틀림으로 칸 직각 윤곽 62~77% → 9~10%, 바위는 부드러운 영역·자갈 표시 없음, 강가 바위도(N5-D1). 습지의 긴 경계는 땅 생성기 몫으로 남음(엔진).
   - 설치: Wave 41 재작업 27장, Wave 41 바위, 창고 눈 셋(RUN-02), Wave 42 땅의 변화 단계 36장(그루터기·어린나무·발길·묵은 밭, 엔진 treeStage·fallowStage·footpaths).
