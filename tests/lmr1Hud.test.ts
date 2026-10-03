@@ -174,4 +174,6 @@ test("lord mode only: App mounts the pins and hides the layer switch only when l
   assert.match(app, /\{lord \? ui\.mode === "build" \? <CommandPins/);
   assert.match(app, /hidden=\{!visibility\.layers \|\| \(lord && ui\.mode !== "zone"\)\}/);
   assert.match(app, /commands=\{lord\}/);
+  // Q / E and the pad arm only the public works in lord mode (the engine refuses every other placement there).
+  assert.match(app, /if \(tool !== null && lordRef\.current && \(tool === "road" \|\| !LORD_PUBLIC_WORKS\.includes\(tool\)\)\) return;/);
 });

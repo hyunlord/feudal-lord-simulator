@@ -1,10 +1,11 @@
 // LM-R1 hud captures (the playtest's six blockers in real states, lord mode's pins, the sandbox's drawer unchanged), on
 // the DGX. The chapter-1 town is the v24 palisade-construction save (walls going up, chapter 1); its variants change one
 // thing each (a hamlet short of timber with its stores full, a barn of bound wheat and a hungry house, a burnt house).
-// The chapter-2 town is the ui6 `decline` state; lord mode is the lord's slice at its start; the sandbox a new sandbox.
+// The chapter-2 town is the ui6 `raid` state (1337's war, as scripts/nat4PauseHolds.mjs opens chapter 2); lord mode is
+// the lord's slice at its start; the sandbox a new sandbox.
 //  01 pin-rail          the town goal's card on the rail: its next action and button (chapter 1, after the tutorial)
 //  02 pin-drawer        the goal log: the chapter and the town goal side by side, the next action, the finished goals folded
-//  03 timber-stuck      a hamlet 54 timber short with every store full: the rail says so and its button is the full store;
+//  03 timber-stuck      a hamlet short of timber with every store full: the rail says so and its button is the full store;
 //                       the stuck chip names the store's fullness (받을 곳 가득 · 창고 200/200)
 //  04 sawmill-card      the sawmill's map card: its pile and the 창고 보기 jump; 05 after the jump (the store's card)
 //  06 food-breakdown    the food cell pressed: total, milling, carrying (782 bound wheat), access, hungry households
@@ -72,6 +73,17 @@ const shot = (page: Page, name: string, clip?: Box) => page.screenshot({ path: j
 const text = async (page: Page, selector: string) => (await page.locator(selector).count()) > 0 ? (await page.locator(selector).first().textContent())?.trim() ?? null : null;
 const point = async (page: Page, tx: number, ty: number) => { const p = await page.evaluate((t: never) => (window as unknown as Proof).__FEUDAL_PHASE10_PROOF__.tileClientPoint(t), { tx, ty }); return { x: p.clientX, y: p.clientY }; };
 
+/** Click the building's tiles in turn until its map card shows `until` (a neighbour's sprite can take a click). */
+async function selectBuilding(page: Page, building: { readonly tx: number; readonly ty: number }, until: string): Promise<boolean> {
+  for (const [dx, dy] of [[0, 0], [1, 0], [0, 1], [1, 1], [-1, 0], [0, -1]] as const) {
+    const at = await point(page, building.tx + dx, building.ty + dy);
+    await page.mouse.click(at.x, at.y); await page.waitForTimeout(900);
+    if (await page.locator(until).count() > 0) return true;
+    await page.keyboard.press("Escape"); await page.waitForTimeout(300);
+  }
+  return false;
+}
+
 async function open(name: string, scene: GameState, tile: readonly number[], options: { readonly run?: boolean; readonly seasons?: "unset" | "notice"; readonly width?: number; readonly height?: number; readonly touch?: boolean } = {}) {
   const { context, page } = await openScene(browser, { state: scene, tile, baseUrl: url, width: options.width ?? 1280, height: options.height ?? 800, zoom: 1,
     run: options.run ?? false, hasTouch: options.touch ?? false, initScript: init(options.seasons ?? "notice"), query: "&story-delay=600000&weather=none", loadTimeout: 90_000 }) as { context: { close: () => Promise<void> }; page: Page };
@@ -100,8 +112,7 @@ await step("03-05 stuck", async () => {
   views["03-timber-stuck"] = { next: await text(page, '[data-goal-card="settlement"] .goal-card-why'), cta: await text(page, '[data-tutorial-cta="settlement"]'),
     chip: await text(page, ".stuck-goods-chip") };
   await shot(page, "03-timber-stuck", { x: 0, y: 0, width: 1280, height: 230 });
-  const at = await point(page, sawmill.tx, sawmill.ty);
-  await page.mouse.click(at.x, at.y - 8); await page.waitForTimeout(900);
+  if (!await selectBuilding(page, sawmill, ".diagnostic-card .inspector-stuck-store")) throw new Error("the sawmill's card did not open");
   const card = async () => page.locator(".diagnostic-card").first().boundingBox();
   views["04-sawmill-card"] = { heading: await text(page, ".diagnostic-card h2"), pile: await text(page, ".inspector-stuck-store"), jump: await text(page, ".inspector-stuck-store-jump") };
   const before = await card();
@@ -140,8 +151,7 @@ await step("07-08 seasons", async () => {
 
 await step("09 burnt", async () => {
   const { context, page } = await open("burnt", burnt, [houseBuilding.tx, houseBuilding.ty]);
-  const at = await point(page, houseBuilding.tx, houseBuilding.ty);
-  await page.mouse.click(at.x, at.y - 8); await page.waitForTimeout(900);
+  if (!await selectBuilding(page, houseBuilding, ".diagnostic-card .inspector-burnt")) throw new Error("the burnt house's card did not open");
   views["09-burnt-house"] = { section: await text(page, ".inspector-burnt"), button: await text(page, ".inspector-burnt-rebuild") };
   const card = await page.locator(".diagnostic-card").first().boundingBox();
   await shot(page, "09-burnt-house", card === null ? undefined : { x: Math.max(0, card.x - 8), y: Math.max(0, card.y - 8), width: Math.min(1280 - Math.max(0, card.x - 8), card.width + 16), height: Math.min(800 - Math.max(0, card.y - 8), card.height + 16) });
@@ -151,8 +161,8 @@ await step("09 burnt", async () => {
 });
 
 await step("10 chapter 2", async () => {
-  const decline = JSON.parse(readFileSync(join(states6, "decline.json"), "utf8")) as GameState;
-  const { context, page } = await open("chapter2", decline, seatOf(decline));
+  const raid = JSON.parse(readFileSync(join(states6, "raid.json"), "utf8")) as GameState;
+  const { context, page } = await open("chapter2", raid, seatOf(raid));
   await page.locator(".goal-drawer-toggle").first().click(); await page.waitForTimeout(700);
   views["10-chapter2-drawer"] = { chapter: await text(page, ".goal-pin-chapter"), town: await text(page, ".goal-pin-town"), next: await text(page, ".goal-pin-next") };
   const slot = await page.locator(".goal-slot").first().boundingBox();

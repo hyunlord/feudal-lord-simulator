@@ -13,9 +13,10 @@
 //    construction, the camera on the wall works at zoom 1 — the default screen's budget. The construction tags are drawn
 //    on the canvas, so this state's hidden shot also hides them (the proof port's constructionLabels) and their boxes (the
 //    port's constructionTagBoxes, the frame of the first shot) join the DOM boxes.
-//  - normal:lord / build:lord / placement:lord (LM-R1): the lord's slice at its start (lord mode: the town builds itself),
-//    the tutorial off — the default screen without the layer switch, the dock's 명령 opening the command pins in the
-//    build drawer's place, and the pins' public work (성채) picked with the cursor on open ground. Same budgets.
+//  - normal:lord / build:lord / zone:lord (LM-R1): the lord's slice at its start (lord mode: the town builds itself), the
+//    tutorial off — the default screen without the layer switch, the dock's 명령 opening the command pins in the build
+//    drawer's place, and the pins' 장려 구역 (the zone layer, a kind armed). Same budgets. No placement row: the slice's
+//    one public work (the keep) opens at the fortified town, so nothing is placeable at its start.
 // The gate is not one run: HUD-MEDIAN (docs/decisions/README.md) judges each row by the median of three runs
 // (scripts/uiaudit1HudThrice.sh, then scripts/hudMedian.ts); this run's own `pass` and exit code are one sample.
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/measureHudCoverage.ts <out.json> --url <url> [--shots <dir>] [--only walls]
@@ -232,7 +233,8 @@ for (const resolution of RESOLUTIONS) {
     };
     await lordPush("normal", lordRest);
     await lord.page.locator("[data-dock='build']").first().click(); await lord.page.waitForTimeout(400); await lordPush("build", lordRest);
-    await lord.page.locator(".command-pin[data-command-pin='work:keep']").first().click(); await lord.page.waitForTimeout(300); await lordPush("placement", await lordPoint(lordTile[0]! - 4, lordTile[1]! + 3));
+    await lord.page.locator(".command-pin[data-command-pin='zone']").first().click(); await lord.page.waitForTimeout(500);
+    await lord.page.locator("[data-zone-tool]:not([aria-disabled='true'])").first().click(); await lord.page.waitForTimeout(400); await lordPush("zone", lordRest);
     await lord.context.close();
   }
   if (flags.only === "lord") continue;

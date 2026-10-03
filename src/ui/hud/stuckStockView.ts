@@ -1,9 +1,9 @@
 import { BARN_BACKLOG_STOCK } from "../../agents/deliveryBuildingCandidates";
 import { BUILDING_CONFIG_BY_KIND, type Building, type BuildingKind } from "../../content/buildingConfig";
-import type { ResourceType } from "../../content/resourceConfig";
+import { isStorableResource, type ResourceType } from "../../content/resourceConfig";
 import type { GameState } from "../../engine/engine.types";
 import { stuckStock, type StuckReason } from "../../engine/stuckStock";
-import { acceptsResource, storageUsage } from "../../economy/storage";
+import { acceptsResource, storageIntakeUsage } from "../../economy/storage";
 import { buildingFootprint } from "../../geometry/buildingFootprint";
 import type { TileCoordinate } from "../../world/grid";
 
@@ -40,7 +40,8 @@ function footprintCentre(building: Building): TileCoordinate {
   return { tx: building.tx + Math.floor((size.width - 1) / 2), ty: building.ty + Math.floor((size.height - 1) / 2) };
 }
 
-/** The receiver a full pile waits on: the nearest other building that takes `good` (grid distance between corners). */
+/** The receiver a full pile waits on: the nearest other building that takes `good` (grid distance between corners), with
+ * the fullness that binds that good there. */
 export function nearestReceiver(state: GameState, from: Building, good: ResourceType): StuckStore | null {
   let best: Building | null = null;
   let bestDistance = Infinity;
@@ -49,9 +50,10 @@ export function nearestReceiver(state: GameState, from: Building, good: Resource
     const distance = Math.abs(building.tx - from.tx) + Math.abs(building.ty - from.ty);
     if (distance < bestDistance || (distance === bestDistance && best !== null && building.id < best.id)) { best = building; bestDistance = distance; }
   }
-  if (best === null) return null;
-  const usage = storageUsage(best);
-  return { id: best.id, kind: best.kind, used: Math.floor(usage.used + usage.incoming), capacity: BUILDING_CONFIG_BY_KIND[best.kind].storageCapacity };
+  if (best === null || !isStorableResource(good)) return null;
+  // The room that binds this good (a granary's wheat, a storehouse's raw goods, take half its room): 곡창 100/100.
+  const usage = storageIntakeUsage(best, good);
+  return { id: best.id, kind: best.kind, used: Math.floor(usage.used), capacity: usage.capacity };
 }
 
 /** The engine's stuck stock as the HUD shows it, the largest pile first (ties by building id). */

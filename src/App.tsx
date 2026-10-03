@@ -86,7 +86,7 @@ import { chapterFlow, goalPin, type GoalPinAction } from "./ui/hud/goalPinModel"
 import { GoalPinBlock } from "./ui/hud/GoalPinBlock";
 import { SeasonNotice } from "./ui/hud/SeasonNotice";
 import { CommandPins } from "./ui/hud/CommandPins";
-import { lordMode } from "./engine/townAgency";
+import { LORD_PUBLIC_WORKS, lordMode } from "./engine/townAgency";
 import { statusPillModel } from "./ui/hud/statusPillModel";
 import { ZoneToolbar } from "./ui/hud/ZoneToolbar";
 import { zoneEditHistory } from "./render/zoneEditHistory";
@@ -222,8 +222,12 @@ export function App() {
   // Tool intents obey the tutorial's unlocks (menu, Q / E, controller X alike).
   const accessRef = useRef(tutorial.access);
   accessRef.current = tutorial.access;
+  // LM-R1: in lord mode the lord places only the public works (the engine refuses the rest); Q / E and the pad step past
+  // the town's kinds instead of arming a tool that cannot place.
+  const lordRef = useRef(false);
   const selectPlacementTool = (tool: PlacementTool | null) => {
     if (tool !== null && !accessRef.current.tools(tool)) return;
+    if (tool !== null && lordRef.current && (tool === "road" || !LORD_PUBLIC_WORKS.includes(tool))) return;
     setPalisadeDraft(null); setSelectedTool(tool); setDrainTool(false); if (tool !== null) { setZoneTool(null); setLayer("direct"); }
   };
   const selectDrainTool = (armed: boolean) => {
@@ -339,6 +343,7 @@ export function App() {
   // LM-R1 (lord-mode design §4): in lord mode the build drawer is the lord's command pins and the layer switch shows
   // only in the zone layer (to leave it); the sandbox and the campaign keep both.
   const lord = lordMode(state);
+  lordRef.current = lord;
   const immediateWarning = alertRows.some(row => row.severity === "immediate");
   // UX-3 cache (AGENTS rule 10): the status pill's numbers (food days walk every store, money the ledger totals) —
   // key: the sampled guidance state, reason: App renders every tick and the pill's numbers change slowly; measured on
