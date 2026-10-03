@@ -104,6 +104,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/walkerSheetManifest.generated.ts",
     "src/ui/uiArtManifest.generated.ts",
     "src/ui/wave25ArtManifest.generated.ts",
+    "src/ui/wave38ArtManifest.generated.ts", // LM-R1 the Wave 38 UI controls (buttons, tabs, checkbox, radio, select, slider, scrollbars)
     "src/render/visibilityArtManifest.ts",
     "src/render/wave7ArtManifest.generated.ts",
     "src/render/wave11ArtManifest.generated.ts",

@@ -257,7 +257,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   return (
     <section className="ledger-drawer slot-panel" data-frame="ledger" aria-label={HUD_COPY.ledgerTitle}>
       <header className="slot-panel-heading"><h2>{HUD_COPY.ledgerTitle}</h2>
-        <Button type="button" className="slot-panel-close" aria-label={HUD_COPY.close} onPress={() => onClose()} variant="icon">{HUD_COPY.closeMark}</Button></header>
+        <Button type="button" className="slot-panel-close" aria-label={HUD_COPY.close} onPress={() => onClose()} variant="close">{HUD_COPY.closeMark}</Button></header>
       <div className="ledger-tabs">
         <div className="ledger-tab-list" role="tablist">
           {(Object.keys(HUD_COPY.ledgerTabs) as (keyof typeof HUD_COPY.ledgerTabs)[]).map(key => (

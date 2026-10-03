@@ -26,6 +26,10 @@ import "@fontsource/noto-serif-kr/600.css";
 import "./styles/uiSkin.css";
 // UI-KIT-1: the shared controls and frames, after the skin tokens.
 import "./styles/uiKit.css";
+// LM-R1: the Wave 38 control pictures, loaded once; a failure swaps the P0 pictures back (src/ui/wave38Art.ts).
+import { preloadWave38Art } from "./ui/wave38Art";
+
+preloadWave38Art();
 
 const rootElement = document.getElementById("root");
 

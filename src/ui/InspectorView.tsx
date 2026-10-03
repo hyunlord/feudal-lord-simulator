@@ -40,7 +40,7 @@ export function Inspector({ state, buildingId, onClose, storeHistory = null, onP
           <h2>{model.name}</h2>
           <p className="left-inspector-state">{model.stateLine}</p>
         </div>
-        <Button type="button" className="left-inspector-close" aria-label={INSPECTOR_COPY.close} onPress={() => onClose()} variant="icon">
+        <Button type="button" className="left-inspector-close" aria-label={INSPECTOR_COPY.close} onPress={() => onClose()} variant="close">
           <UiIcon sheet="prediction" cell="block" />
         </Button>
       </header>

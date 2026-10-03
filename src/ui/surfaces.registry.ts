@@ -483,4 +483,8 @@ export const NOT_SURFACES: Readonly<Record<string, string>> = {
   "ui-number": "the kit NumberField (a control; measured inside screen.welcome and the gallery)",
   "resource-bar": "ResourceBar is not mounted (survey §2)", "ledger-panel": "LedgerPanel is not mounted (survey §2)",
   "resource-bar__coin-detail": "part of the unmounted ResourceBar", "alert-stack-row": "AlertStack is not mounted (survey §2)",
+  // LM-R1 buttons: Wave 38 control pictures on parts of kit controls (the controls check covers the controls themselves).
+  "ui-select-option": "the kit select's active row (Wave 38 select_row_hover; inside modal.select-list)",
+  "ui-slider": "the kit slider's groove (Wave 38 slider_track; a control measured in hud.settings-popover and the gallery)",
+  "app-shell": "the Wave 38 scrollbar track and thumb (::-webkit-scrollbar of every scroller in the app shell; not a box)",
 };
