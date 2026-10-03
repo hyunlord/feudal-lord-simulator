@@ -79,7 +79,7 @@ test("INSTALL-23 the hints switch with the device: pad glyphs with a gamepad, ke
     reportInputDevice("gamepad");
     const pad = render();
     assert.match(pad.pause, /data-input-device="gamepad"/);
-    assert.match(pad.pause, /일시정지 중[\s\S]*aria-label="Y 버튼"[\s\S]*aria-label="메뉴 버튼"/);
+    assert.match(pad.pause, /일시 정지 중[\s\S]*aria-label="Y 버튼"[\s\S]*aria-label="메뉴 버튼"/);
     assert.doesNotMatch(pad.pause, /Space/);
     assert.match(pad.build, /class="build-menu-instruction" data-input-device="gamepad"><span class="pad-hint/);
     assert.doesNotMatch(pad.build, /Esc\/우클릭/);

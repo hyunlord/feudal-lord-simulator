@@ -40,7 +40,7 @@ export const HUD_COPY = {
   /** UI-AUDIT-1: the treasury the coin cell's press opens, to the penny, with the engine's penny count beside it. */
   ledgerTreasuryLine: (coin: number) => `금고 ${moneyFull(coin)}${moneyFull(coin) === moneyPence(coin) ? "" : ` · ${moneyPence(coin)}`}`,
   crisis: "위기",
-  pauseTitle: "일시정지",
+  pauseTitle: "일시 정지",
   pauseResume: "계속",
   close: "닫기",
   closeMark: "×",

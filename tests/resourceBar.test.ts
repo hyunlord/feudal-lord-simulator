@@ -42,7 +42,7 @@ test("Given a paused city When resource bar renders Then trend rows stay blank",
   const html = renderToStaticMarkup(createElement(ResourceBar, {
     state: DEFAULT_GAME_STATE, paused: true, populationDrawerOpen: false, onPopulationDrawerToggle: () => undefined,
   }));
-  assert.doesNotMatch(html, /일시정지/);
+  assert.doesNotMatch(html, /일시 정지/);
   assert.doesNotMatch(html, /관측 중/);
 });
 

@@ -118,7 +118,7 @@ for (const row of script) {
   } else if (row.op === 'key') {
     const onScreen = row.k === 'Escape'
       ? await visible('.placement-confirm-bar [data-confirm="cancel"]') ?? await visible('[aria-label="닫기"]')
-      : row.k === 'Space' ? await visible('[aria-label="일시정지"]') : null;
+      : row.k === 'Space' ? await visible('[aria-label="일시 정지"]') : null;
     if (onScreen === null) entry.result = `keyboard only (${row.k})`;
     else { entry.target = await tapLocator(onScreen); entry.result = `${row.k} → on-screen control`; }
   } else if (row.op === 'wheel') {
