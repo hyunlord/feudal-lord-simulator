@@ -45,7 +45,8 @@ test("Given the lordship When it is read Then the manor is empty only once the l
   const opening = load("new-game");
   assert.equal(opening.persons!.people.some(person => isFamily(person.tags)), false);
   assert.equal(lordInResidence(opening), true);
-  assert.equal(lordInResidence({ ...town, persons: undefined }), true, "no persons yet: the occupied manor");
+  const { persons: _persons, ...noPersons } = town;
+  assert.equal(lordInResidence(noPersons), true, "no persons yet: the occupied manor");
   // A widowed lady keeps the house (chapter five's town: the head died, the spouse lives on): still in residence.
   assert.equal(lordInResidence(load("chapter-five-town")), true);
   // The family died out (the steward stays): empty.
