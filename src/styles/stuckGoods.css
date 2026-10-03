@@ -6,8 +6,10 @@
   padding: 0 12px; font-size: 13px; font-weight: 600; line-height: 1.2; white-space: nowrap;
 }
 .app-shell .stuck-goods-bell { display: inline-block; flex: 0 0 auto; width: 16px; height: 16px; }
-.app-shell .stuck-goods-line { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-.app-shell .stuck-goods-reason { flex: 0 0 auto; color: var(--palette-vermilion); font-size: 12px; }
+.app-shell .stuck-goods-line { flex: 0 3 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/* LM-R1: the reason carries the full store's fullness (받을 곳 가득 · 창고 200/200 · 수확 버려짐); it gives way after the line,
+   cut with an ellipsis rather than leaving the chip (the whole text is the chip's accessible name). */
+.app-shell .stuck-goods-reason { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--palette-vermilion); font-size: 12px; }
 .app-shell .stuck-goods-more { flex: 0 0 auto; font-size: 12px; font-weight: 400; }
 @media (pointer: coarse) {
   .app-shell .stuck-goods-chip { min-height: 48px; }
