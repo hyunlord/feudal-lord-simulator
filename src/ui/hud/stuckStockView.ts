@@ -12,10 +12,11 @@ import type { TileCoordinate } from "../../world/grid";
 // go to — the nearest building that takes the good — with its fullness (창고 200/200), so the player can go from the
 // sawmill straight to that store.
 //
-// What the HUD raises (`hudStuckRows`): a pile with no road, a pile whose receivers are all full and the harvest spoiled
-// behind a full barn at once — each is the state's own fact; a pile the carters do not keep up with (`no_carrier`, which
-// the engine also gives an understaffed barn holding three sacks) only once it is a pile (the barn backlog, or two
-// fifths of a smaller building's room) and has stood a month (the UI-AUDIT-1 chip's own window).
+// What the HUD raises (`hudStuckRows`): a pile with no road and a pile whose receivers are all full at once — each is the
+// state's own fact; a pile the carters do not keep up with (`no_carrier`, which the engine also gives an understaffed
+// barn holding three sacks) only once it is a pile (the barn backlog, or two fifths of a smaller building's room) and
+// has stood a month (the UI-AUDIT-1 chip's own window). The engine's field entry (this year's harvest lost behind a full
+// barn, SK-2) is not stock that sits and can be freed: the food breakdown reports it, not the "묶임" chip.
 
 export type StuckStore = Readonly<{ id: string; kind: BuildingKind; used: number; capacity: number }>;
 
@@ -65,7 +66,8 @@ export function stuckRows(state: GameState): readonly StuckRow[] {
     if (building === undefined) return [];
     return [{ buildingId: entry.buildingId, kind: building.kind, good: entry.resource, amount: Math.floor(entry.amount), days: entry.days,
       reason: entry.reason, source: entry.source, tile: footprintCentre(building),
-      store: entry.reason === "receiver_full" ? nearestReceiver(state, building, entry.resource) : null }];
+      // A field entry's receivers were full at the harvest; their room now says nothing about it.
+      store: entry.reason === "receiver_full" && entry.source === "stock" ? nearestReceiver(state, building, entry.resource) : null }];
   }).filter(row => row.amount > 0).sort((a, b) => b.amount - a.amount || a.buildingId.localeCompare(b.buildingId));
 }
 
@@ -80,8 +82,13 @@ function pileThreshold(kind: BuildingKind): number {
   return Math.max(1, Math.min(BARN_BACKLOG_STOCK, Math.floor(room * HUD_STUCK_MIN_SHARE_PERMILLE / 1000)));
 }
 
-/** The engine's piles the HUD raises (the chip, the inspector's "왜?"), largest first. */
+/** The engine's piles the HUD raises (the chip, the inspector's "왜?"), largest first; no field entry. */
 export function hudStuckRows(state: GameState): readonly StuckRow[] {
-  return stuckRows(state).filter(row => row.source === "field" || row.reason !== "no_carrier"
-    || (row.days >= HUD_STUCK_MIN_DAYS && row.amount >= pileThreshold(row.kind)));
+  return stuckRows(state).filter(row => row.source === "stock" && (row.reason !== "no_carrier"
+    || (row.days >= HUD_STUCK_MIN_DAYS && row.amount >= pileThreshold(row.kind))));
+}
+
+/** SK-2: this year's ripe wheat lost behind a full barn (the engine's field entry), or 0. */
+export function lostHarvest(state: GameState): number {
+  return stuckStock(state).filter(entry => entry.source === "field").reduce((sum, entry) => sum + Math.floor(entry.amount), 0);
 }

@@ -15,6 +15,7 @@ import { newGameState } from "../src/state/newGame";
 import { burntHouseView } from "../src/ui/burntHouseModel";
 import { CommandPins, publicWorkPins } from "../src/ui/hud/CommandPins";
 import { foodBreakdown } from "../src/ui/hud/foodBreakdownModel";
+import { hudStuckRows, lostHarvest, stuckRows } from "../src/ui/hud/stuckStockView";
 import { GoalPinBlock } from "../src/ui/hud/GoalPinBlock";
 import { chapterFlow, goalPin, goalPinFor } from "../src/ui/hud/goalPinModel";
 import { SeasonLedgerCard } from "../src/ui/hud/SeasonLedgerCard";
@@ -79,6 +80,12 @@ test("#5: the food cell splits into total, milling, carrying, access and the hou
   assert.deepEqual(model.rows.map(row => row.key), ["total", "milling", "carrying", "access", "starving"]);
   assert.match(model.rows[0]!.value, /^곳간의 빵 [\d,]+덩이 · 밀 [\d,]+자루 — [\d,]+일$/);
   assert.equal(model.starving, foodShortage(town).starvingHouseholds);
+  // The engine's field entry (this year's harvest lost behind a full barn, SK-2) is the food's story, not a "묶임" chip.
+  const lostYear: GameState = { ...town, harvestRecord: { year: Math.floor(town.tick / 4000), wheat: 1200, lost: 688, past: [] } };
+  assert.equal(lostHarvest(lostYear), 688);
+  assert.ok(stuckRows(lostYear).some(row => row.source === "field" && row.store === null));
+  assert.ok(hudStuckRows(lostYear).every(row => row.source === "stock"));
+  assert.match(foodBreakdown(lostYear).rows.find(row => row.key === "carrying")!.value, /올해 헛간이 가득 차 밀 688자루를 버렸습니다$/);
   // Bound wheat in a barn the engine marks stuck: "묶인 밀 n자루 — 풀리면 +n일", the most urgent after hunger.
   const barn = town.buildings.find(building => building.kind === "farmstead")!;
   const bound: GameState = { ...town, buildings: town.buildings.map(building => building.id === barn.id

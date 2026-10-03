@@ -15,6 +15,8 @@ export const FOOD_BREAKDOWN_COPY = {
   bound: (wheat: number, days: number) => days > 0 ? `묶인 밀 ${n(wheat)}자루 — 풀리면 +${n(days)}일` : `묶인 밀 ${n(wheat)}자루 — 빻을 방앗간이 없습니다`,
   onCarts: (bread: number, wheat: number) => `수레 위 빵 ${n(bread)}덩이 · 밀 ${n(wheat)}자루`,
   nothingCarried: "나르는 식량이 없습니다",
+  /** The engine's field entry (SK-2): ripe wheat the full barns could not take this year, lost. */
+  lostHarvest: (carrying: string, wheat: number) => `${carrying} · 올해 헛간이 가득 차 밀 ${n(wheat)}자루를 버렸습니다`,
   /** Lived-in houses without bread, and how many of them no granary road reaches. */
   access: (empty: number, cut: number) => empty === 0 ? "모든 집에 빵이 있습니다" : cut > 0 ? `빵 없는 집 ${empty}채 · 곡창 길이 끊긴 집 ${cut}채` : `빵 없는 집 ${empty}채`,
   noGranary: (empty: number) => `곡창이 없습니다 — 빵 없는 집 ${empty}채`,

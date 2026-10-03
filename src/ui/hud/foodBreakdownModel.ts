@@ -5,7 +5,7 @@ import type { TileCoordinate } from "../../world/grid";
 import { houseDiagnosisModel } from "../houseDiagnosisModel";
 import { FOOD_BREAKDOWN_COPY as COPY } from "./foodBreakdownCopy.ko";
 import { foodDays } from "./statusPillModel";
-import { stuckRows } from "./stuckStockView";
+import { lostHarvest, stuckRows } from "./stuckStockView";
 
 // LM-R1 (playtest 2026-10-02 #5): "식량 277일" stood beside a barn of 782 bound wheat and hunger deaths. Pressing the food
 // cell splits the number: the stores' total, the milling (a mill to grind the stored wheat), the carrying (the engine's
@@ -39,10 +39,12 @@ export function foodBreakdown(state: GameState): FoodBreakdown {
       ? { key: "milling", term: COPY.terms.milling, value: COPY.millStopped(wheat), urgent: wheat > 0, target: targetOf(state, mills[0]?.id) }
       : { key: "milling", term: COPY.terms.milling, value: COPY.milling(grinding.length), urgent: false, target: targetOf(state, grinding[0]?.id) };
   const carts = (resource: "bread" | "wheat") => state.walkers.reduce((sum, walker) => sum + (walker.cargo?.resource === resource ? walker.cargo.amount : 0), 0);
-  const barn = stuckRows(state).find(row => row.good === "wheat");
-  const carrying: FoodRow = shortage.boundWheat > 0
-    ? { key: "carrying", term: COPY.terms.carrying, value: COPY.bound(shortage.boundWheat, shortage.releaseDays), urgent: true, target: targetOf(state, barn?.buildingId) }
-    : { key: "carrying", term: COPY.terms.carrying, value: carts("bread") + carts("wheat") > 0 ? COPY.onCarts(carts("bread"), carts("wheat")) : COPY.nothingCarried, urgent: false, target: null };
+  const barn = stuckRows(state).find(row => row.good === "wheat" && row.source === "stock");
+  const lost = lostHarvest(state);
+  const carried = shortage.boundWheat > 0 ? COPY.bound(shortage.boundWheat, shortage.releaseDays)
+    : carts("bread") + carts("wheat") > 0 ? COPY.onCarts(carts("bread"), carts("wheat")) : COPY.nothingCarried;
+  const carrying: FoodRow = { key: "carrying", term: COPY.terms.carrying, value: lost > 0 ? COPY.lostHarvest(carried, lost) : carried,
+    urgent: shortage.boundWheat > 0, target: shortage.boundWheat > 0 ? targetOf(state, barn?.buildingId) : null };
   const lived = state.houses.filter(house => house.residents > 0 && house.abandonedTick === undefined);
   const empty = lived.filter(house => house.breadStock <= 0);
   const granaries = state.buildings.some(building => building.kind === "granary");
