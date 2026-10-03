@@ -39,6 +39,7 @@ test("the 40 runtime pictures are the ledger's current Wave 38 files (reworks wh
     let entry = inbox.find(row => row.file === `wave38/candidates-20260930/assets/${id}.png`)!;
     if (entry.status === "superseded") { reworked.push(id); entry = inbox.find(row => row.file === entry.replaced_by)!; }
     assert.equal(entry.status, "confirmed", id);
+    assert.equal(entry.installed_by, "LM-R1", `${id}: installed_by (after the copy, the consumer and the captures)`);
     const runtime = `public/${item.url}`;
     assert.equal(sha(runtime), entry.sha256, `${id}: the received bytes`);
     assert.deepEqual(pngSize(runtime), [item.width, item.height], id);
