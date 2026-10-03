@@ -266,6 +266,14 @@
   --frame-faction-page-safe-right: 28px;
   --frame-faction-page-safe-bottom: 29px;
   --frame-faction-page-safe-left: 28px;
+  /* select-list: the select's open list (Wave 38) — select_open_list.png ×1 */
+  --frame-select-list-width: 10px;
+  --frame-select-list-art: url("/assets/wave38/select_open_list.png") 10 fill / var(--frame-select-list-width) / 0 stretch;
+  --frame-select-list-safe: 10px 9px;
+  --frame-select-list-safe-top: 10px;
+  --frame-select-list-safe-right: 9px;
+  --frame-select-list-safe-bottom: 10px;
+  --frame-select-list-safe-left: 9px;
   /* pause-badge: the pause badge (hand: the hourglass at its left) — pause_badge.png ×0.9167 */
   --frame-pause-badge-art: url("/assets/wave8/time/pause_badge.png");
   --frame-pause-badge-safe: 2px 1px 2px 23px;
@@ -273,26 +281,79 @@
   --frame-pause-badge-safe-right: 1px;
   --frame-pause-badge-safe-bottom: 2px;
   --frame-pause-badge-safe-left: 23px;
-  /* Buttons: the P0 art (one state; code draws hover / pressed / disabled), the kit's border and size paddings. */
+  /* Buttons (LM-R1: Wave 38, one picture per state; the chip P0), the kit's border and size paddings. Per family F:
+     --button-F-art (normal), --button-F-<state>-art, --button-F-width, --button-F-safe. Wave 38 controls: --control-K[-state]-art
+     (9-slice) and --control-<id> (fixed-size url). `:root[data-ui-art="p0"]` below swaps the P0 pictures back. */
   --button-border: 2px;
   --button-pad-sm: 2px 10px;
   --button-pad-md: 6px 14px;
   --button-pad-lg: 10px 22px;
-  --button-primary-width: 6px;
-  --button-primary-art: url("/assets/ui-p0/button_primary_base.png") 12 fill / var(--button-primary-width) / 0 stretch;
-  --button-primary-safe: 1px 1px 2px 2px;
-  --button-secondary-width: 6px;
-  --button-secondary-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-width) / 0 stretch;
-  --button-secondary-safe: 1px;
-  --button-icon-width: 5px;
-  --button-icon-art: url("/assets/ui-p0/button_icon_square_base.png") 10 fill / var(--button-icon-width) / 0 stretch;
-  --button-icon-safe: 0px;
-  --button-tab-width: 6px;
-  --button-tab-art: url("/assets/ui-p0/tab_build_base.png") 12 fill / var(--button-tab-width) / 0 stretch;
-  --button-tab-safe: 1px;
+  --button-primary-width: 10px;
+  --button-primary-art: url("/assets/wave38/button_primary_normal.png") 10 fill / var(--button-primary-width) / 0 stretch;
+  --button-primary-hover-art: url("/assets/wave38/button_primary_hover.png") 10 fill / var(--button-primary-width) / 0 stretch;
+  --button-primary-pressed-art: url("/assets/wave38/button_primary_pressed.png") 10 fill / var(--button-primary-width) / 0 stretch;
+  --button-primary-disabled-art: url("/assets/wave38/button_primary_disabled.png") 10 fill / var(--button-primary-width) / 0 stretch;
+  --button-primary-safe: 7px 5px 5px 5px;
+  --button-secondary-width: 10px;
+  --button-secondary-art: url("/assets/wave38/button_secondary_normal.png") 10 fill / var(--button-secondary-width) / 0 stretch;
+  --button-secondary-hover-art: url("/assets/wave38/button_secondary_hover.png") 10 fill / var(--button-secondary-width) / 0 stretch;
+  --button-secondary-pressed-art: url("/assets/wave38/button_secondary_pressed.png") 10 fill / var(--button-secondary-width) / 0 stretch;
+  --button-secondary-disabled-art: url("/assets/wave38/button_secondary_disabled.png") 10 fill / var(--button-secondary-width) / 0 stretch;
+  --button-secondary-safe: 8px 5px 6px 5px;
+  --button-danger-width: 10px;
+  --button-danger-art: url("/assets/wave38/button_danger_normal.png") 10 fill / var(--button-danger-width) / 0 stretch;
+  --button-danger-hover-art: url("/assets/wave38/button_danger_hover.png") 10 fill / var(--button-danger-width) / 0 stretch;
+  --button-danger-pressed-art: url("/assets/wave38/button_danger_pressed.png") 10 fill / var(--button-danger-width) / 0 stretch;
+  --button-danger-disabled-art: url("/assets/wave38/button_danger_disabled.png") 10 fill / var(--button-danger-width) / 0 stretch;
+  --button-danger-safe: 7px 4px 6px 4px;
+  --button-icon-width: 10px;
+  --button-icon-art: url("/assets/wave38/button_icon_normal.png") 10 fill / var(--button-icon-width) / 0 stretch;
+  --button-icon-hover-art: url("/assets/wave38/button_icon_hover.png") 10 fill / var(--button-icon-width) / 0 stretch;
+  --button-icon-pressed-art: url("/assets/wave38/button_icon_pressed.png") 10 fill / var(--button-icon-width) / 0 stretch;
+  --button-icon-disabled-art: url("/assets/wave38/button_icon_disabled.png") 10 fill / var(--button-icon-width) / 0 stretch;
+  --button-icon-safe: 6px;
+  --button-tab-width: 10px;
+  --button-tab-art: url("/assets/wave38/tab_unselected.png") 10 fill / var(--button-tab-width) / 0 stretch;
+  --button-tab-hover-art: url("/assets/wave38/tab_hover.png") 10 fill / var(--button-tab-width) / 0 stretch;
+  --button-tab-selected-art: url("/assets/wave38/tab_selected.png") 10 fill / var(--button-tab-width) / 0 stretch;
+  --button-tab-safe: 7px 5px;
   --button-chip-width: 4px;
   --button-chip-art: url("/assets/ui-p0/chip_condition_base.png") 8 fill / var(--button-chip-width) / 0 stretch;
   --button-chip-safe: 1px 2px 2px 2px;
+  --control-input-width: 10px;
+  --control-input-art: url("/assets/wave38/input_normal.png") 10 fill / var(--control-input-width) / 0 stretch;
+  --control-input-focus-art: url("/assets/wave38/input_focus.png") 10 fill / var(--control-input-width) / 0 stretch;
+  --control-input-safe: 10px 8px 9px 8px;
+  --control-select-width: 10px 26px 10px 10px;
+  --control-select-art: url("/assets/wave38/select_closed.png") 10 26 10 10 fill / var(--control-select-width) / 0 stretch;
+  --control-select-safe: 8px 26px 7px 6px;
+  --control-select-row-width: 6px;
+  --control-select-row-art: url("/assets/wave38/select_row_hover.png") 6 fill / var(--control-select-row-width) / 0 stretch;
+  --control-select-row-safe: 6px 5px;
+  --control-chip-width: 8px;
+  --control-chip-art: url("/assets/wave38/chip_normal.png") 8 fill / var(--control-chip-width) / 0 stretch;
+  --control-chip-selected-art: url("/assets/wave38/chip_selected.png") 8 fill / var(--control-chip-width) / 0 stretch;
+  --control-chip-safe: 5px 4px;
+  --control-slider-track-width: 4px 5px;
+  --control-slider-track-art: url("/assets/wave38/slider_track.png") 4 5 4 5 fill / var(--control-slider-track-width) / 0 stretch;
+  --control-slider-track-safe: 5px 5px 4px 5px;
+  --control-scrollbar-track-width: 5px 4px;
+  --control-scrollbar-track-art: url("/assets/wave38/scrollbar_track.png") 5 4 5 4 fill / var(--control-scrollbar-track-width) / 0 stretch;
+  --control-scrollbar-track-safe: 8px 4px 7px 5px;
+  --control-scrollbar-thumb-width: 5px 4px;
+  --control-scrollbar-thumb-art: url("/assets/wave38/scrollbar_thumb.png") 5 4 5 4 fill / var(--control-scrollbar-thumb-width) / 0 stretch;
+  --control-scrollbar-thumb-safe: 2px 1px 1px 1px;
+  --control-checkbox-empty: url("/assets/wave38/checkbox_empty.png");
+  --control-checkbox-checked: url("/assets/wave38/checkbox_checked.png");
+  --control-checkbox-disabled: url("/assets/wave38/checkbox_disabled.png");
+  --control-radio-empty: url("/assets/wave38/radio_empty.png");
+  --control-radio-selected: url("/assets/wave38/radio_selected.png");
+  --control-toggle-off: url("/assets/wave38/toggle_off.png");
+  --control-toggle-on: url("/assets/wave38/toggle_on.png");
+  --control-close-normal: url("/assets/wave38/close_normal.png");
+  --control-close-hover: url("/assets/wave38/close_hover.png");
+  --control-close-pressed: url("/assets/wave38/close_pressed.png");
+  --control-slider-thumb: url("/assets/wave38/slider_thumb.png");
 }
 
 /* The box contract, keyed on the surface's `data-frame` (0-4-0: an older screen rule's border or padding cannot win).
@@ -329,4 +390,59 @@
 :root [data-frame][data-frame][data-frame="person-card"] { border-style: solid; border-color: transparent; border-width: var(--frame-person-card-safe); padding: var(--frame-gap); background-origin: border-box; }
 :root [data-frame][data-frame][data-frame="biography"] { border-style: solid; border-color: transparent; border-width: var(--frame-biography-safe); padding: var(--frame-gap); background-origin: border-box; }
 :root [data-frame][data-frame][data-frame="faction-page"] { border-style: solid; border-color: transparent; border-width: var(--frame-faction-page-safe); padding: var(--frame-gap); background-origin: border-box; }
+:root [data-frame][data-frame][data-frame="select-list"] { border-style: solid; border-color: transparent; border-width: var(--frame-select-list-safe); padding: var(--frame-gap); }
 :root [data-frame][data-frame][data-frame="pause-badge"] { border-style: solid; border-color: transparent; border-width: var(--frame-pause-badge-safe); padding: var(--frame-gap); background-origin: border-box; }
+
+/* LM-R1: a Wave 38 picture did not load (src/ui/wave38Art.ts): every button and control wears its P0 picture again, the
+   fixed-size controls their drawn shapes (uiKit.css), so nothing is left blank. */
+:root[data-ui-art="p0"] {
+  --button-primary-width: 6px;
+  --button-primary-art: url("/assets/ui-p0/button_primary_base.png") 12 fill / var(--button-primary-width) / 0 stretch;
+  --button-primary-hover-art: url("/assets/ui-p0/button_primary_base.png") 12 fill / var(--button-primary-width) / 0 stretch;
+  --button-primary-pressed-art: url("/assets/ui-p0/button_primary_base.png") 12 fill / var(--button-primary-width) / 0 stretch;
+  --button-primary-disabled-art: url("/assets/ui-p0/button_primary_base.png") 12 fill / var(--button-primary-width) / 0 stretch;
+  --button-secondary-width: 6px;
+  --button-secondary-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-width) / 0 stretch;
+  --button-secondary-hover-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-width) / 0 stretch;
+  --button-secondary-pressed-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-width) / 0 stretch;
+  --button-secondary-disabled-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-width) / 0 stretch;
+  --button-danger-width: 6px;
+  --button-danger-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-danger-width) / 0 stretch;
+  --button-danger-hover-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-danger-width) / 0 stretch;
+  --button-danger-pressed-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-danger-width) / 0 stretch;
+  --button-danger-disabled-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-danger-width) / 0 stretch;
+  --button-icon-width: 5px;
+  --button-icon-art: url("/assets/ui-p0/button_icon_square_base.png") 10 fill / var(--button-icon-width) / 0 stretch;
+  --button-icon-hover-art: url("/assets/ui-p0/button_icon_square_base.png") 10 fill / var(--button-icon-width) / 0 stretch;
+  --button-icon-pressed-art: url("/assets/ui-p0/button_icon_square_base.png") 10 fill / var(--button-icon-width) / 0 stretch;
+  --button-icon-disabled-art: url("/assets/ui-p0/button_icon_square_base.png") 10 fill / var(--button-icon-width) / 0 stretch;
+  --button-tab-width: 6px;
+  --button-tab-art: url("/assets/ui-p0/tab_build_base.png") 12 fill / var(--button-tab-width) / 0 stretch;
+  --button-tab-hover-art: url("/assets/ui-p0/tab_build_base.png") 12 fill / var(--button-tab-width) / 0 stretch;
+  --button-tab-selected-art: url("/assets/ui-p0/tab_build_base.png") 12 fill / var(--button-tab-width) / 0 stretch;
+  --control-input-width: 6px;
+  --control-input-art: url("/assets/ui-p0/frame_tooltip.png") 12 fill / var(--control-input-width) / 0 stretch;
+  --control-input-focus-art: url("/assets/ui-p0/frame_tooltip.png") 12 fill / var(--control-input-width) / 0 stretch;
+  --control-select-width: 6px;
+  --control-select-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--control-select-width) / 0 stretch;
+  --control-select-row-art: none;
+  --control-chip-width: 4px;
+  --control-chip-art: url("/assets/ui-p0/chip_condition_base.png") 8 fill / var(--control-chip-width) / 0 stretch;
+  --control-chip-selected-art: url("/assets/ui-p0/chip_condition_base.png") 8 fill / var(--control-chip-width) / 0 stretch;
+  --control-slider-track-art: none;
+  --control-scrollbar-track-art: none;
+  --control-scrollbar-thumb-art: none;
+  --control-checkbox-empty: none;
+  --control-checkbox-checked: none;
+  --control-checkbox-disabled: none;
+  --control-radio-empty: none;
+  --control-radio-selected: none;
+  --control-toggle-off: none;
+  --control-toggle-on: none;
+  --control-close-normal: none;
+  --control-close-hover: none;
+  --control-close-pressed: none;
+  --control-slider-thumb: none;
+  --frame-select-list-width: 16px;
+  --frame-select-list-art: url("/assets/ui-p0/frame_panel_light.png") 32 fill / var(--frame-select-list-width) / 0 stretch;
+}

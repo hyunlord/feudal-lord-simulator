@@ -1,10 +1,12 @@
 /** UI-KIT-1 /dev/ui-kit: the gallery's own labels (a developer screen; the parts carry the game's copy elsewhere). */
 export const UI_KIT_GALLERY_COPY = {
   title: "공용 부품 갤러리",
-  note: "모든 부품 · 변형 · 상태 (UI-KIT-1). 상태는 코드로 그립니다: 밝게(호버), 1px 눌림, 봉랍색 초점 고리, 회색(사용 불가).",
+  note: "모든 부품 · 변형 · 상태 (UI-KIT-1). 상태마다 Wave 38 그림: 보통 · 올림(호버) · 눌림 · 사용 불가, 키보드 초점은 봉랍색 고리.",
   sections: {
     buttons: "단추", sizes: "크기", states: "상태", icon: "아이콘 단추", select: "선택 목록", toggles: "켜기·끄기", slider: "밀대",
     tabs: "탭", chips: "칩", frames: "틀", tooltip: "도움말 · 구분선", number: "숫자 칸",
+    // LM-R1: the Wave 38 checks (long labels, radio, close, a long list).
+    longLabels: "긴 이름", radio: "하나 고르기", close: "닫기 단추", scroll: "긴 목록",
   },
   variants: { primary: "주 동작", secondary: "보조", quiet: "조용히", danger: "위험", toggle: "켜고 끄기", tab: "탭", surface: "표면(틀 안의 칸)" },
   sizes: { sm: "작게", md: "보통", lg: "크게" },
@@ -20,7 +22,12 @@ export const UI_KIT_GALLERY_COPY = {
   numberInvalid: "틀린 값",
   numberNote: "숫자만 받습니다(붙여 넣은 글자도 숫자만 남김). 틀린 값은 봉랍색 테두리.",
   tabs: { resources: "자원", view: "보기", map: "지도" },
-  chips: { ok: "충분", warn: "주의", block: "모자람", info: "정보" },
+  chips: { ok: "충분", warn: "주의", block: "모자람", info: "정보", selected: "고름" },
+  longLabels: ["창고에 쌓인 곡식을 시장으로 모두 내보내기", "이웃 영주에게 사절과 선물을 함께 보내기", "올해 장원 세금 장부를 다시 셈하기"],
+  radioLabel: "수확 나누기",
+  radioOptions: { keep: "창고에 두기", market: "시장에 팔기", tithe: "십일조로 바치기" },
+  radioDisabled: "영주에게 바치기(아직 못 함)",
+  scrollItem: (index: number) => `${index}번째 기록 · 마을 장부에 적힌 줄`,
   frames: { light: "밝은 판", dark: "어두운 판", objective: "목표 카드", advisor: "청지기", modal: "대화 상자", tooltip: "도움말", record: "기록 카드" },
   frameStates: { complete: "목표 완료", warn: "목표 경고", advisorWarn: "청지기 걱정" },
   frameBody: "양피지 9-slice 틀. 글은 틀 안쪽 여백에 놓입니다.",
