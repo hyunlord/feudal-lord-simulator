@@ -48,8 +48,8 @@ const rows = [];
 const failures = [];
 const expect = (name, ok, what) => { if (!ok) failures.push(`${name}: ${what}`); };
 
-async function scene(state, at, { width = 1280, height = 800, dpr = 1, touch = false, block = null } = {}) {
-  const opened = await openScene(browser, { state, tile: [at.tx, at.ty], baseUrl: url, width, height, dpr, zoom: 1.4, run: false, hasTouch: touch,
+async function scene(state, at, { width = 1280, height = 800, dpr = 1, touch = false, block = null, zoom = 1.4 } = {}) {
+  const opened = await openScene(browser, { state, tile: [at.tx, at.ty], baseUrl: url, width, height, dpr, zoom, run: false, hasTouch: touch,
     loadTimeout: 120_000, initScript: `${NAME_SHIM}${TUTORIAL_OFF}`, query: '&story-delay=600000' });
   const art = [];
   opened.page.on('response', response => { if (response.url().includes('wave35-receipts')) art.push([response.url().replace(/^.*assets\//, ''), response.status()]); });
@@ -157,17 +157,18 @@ if (moments.opening !== null) { const { context, seen } = await receiptView('rec
   await context.close();
 }
 // 9. The sandbox: no button, no tab.
-{
+try {
+  // As the audit's map.selection.house: the camera on the first house at zoom 1.6, that house clicked.
   const house = sandbox.buildings.find(building => building.kind === 'house');
-  const { context, page } = await scene(sandbox, house);
-  await select(page, house);
+  const { context, page } = await scene(sandbox, house, { zoom: 1.6 });
+  await select(page, house).catch(async error => { await writeFile(join(outDir, 'sandbox-debug.jpg'), await page.screenshot({ type: 'jpeg', quality: 40 })); throw error; });
   const card = await page.evaluate(() => ({ button: document.querySelectorAll('.lord-why-here').length }));
   await page.locator("[data-dock='ledger']").click(); await pause(500);
   const tab = await page.locator("[data-ledger-tab='lord']").count();
   expect('sandbox-card', card.button === 0 && tab === 0, `button ${card.button}, tab ${tab}`);
   rows.push({ name: 'sandbox-card', file: await shot(page, 'sandbox-card', ['.diagnostic-card', '.ledger-drawer'], 45), button: card.button, lordTab: tab });
   await context.close();
-}
+} catch (error) { failures.push(`sandbox-card: ${String(error).slice(0, 200)}`); }
 await browser.close();
 stopVite();
 await writeFile(join(outDir, 'captures.json'), JSON.stringify({ states: { tick: moments.tick, year: moments.year, treasury: moments.treasury, subsidyLimit: moments.subsidyLimit }, rows, failures }, null, 1) + '\n');

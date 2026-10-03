@@ -26,7 +26,8 @@
   color: var(--palette-ink); font-size: 24px; line-height: 1; }
 .app-shell .lord-receipt-foot { display: flex; align-items: center; margin: 0; padding: 0 6px; font-size: 12px; line-height: 1.35;
   color: var(--palette-ink); word-break: keep-all; overflow-wrap: anywhere; }
-.app-shell .lord-receipt-body { display: grid; align-content: start; gap: 4px; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+/* Above the frame layer (a positioned sibling painted over an unpositioned body, as the petition's). */
+.app-shell .lord-receipt-body { position: relative; z-index: 1; display: grid; align-content: start; gap: 4px; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
   scrollbar-color: var(--palette-earth) var(--palette-parchment); }
 .app-shell .lord-receipt-body h2 { margin: 0; font: 600 16px/1.3 var(--ui-title-font, var(--ui-body-font)); color: var(--palette-ink); }
 .app-shell .lord-receipt-body h3 { margin: 6px 0 0; font: 600 13px/1.4 var(--ui-body-font); color: var(--palette-ink-light); }
