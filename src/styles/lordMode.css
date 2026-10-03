@@ -20,7 +20,7 @@
 .app-shell .lord-receipt-frame { pointer-events: none; }
 .app-shell .lord-receipt-slots { pointer-events: none; }
 .app-shell .lord-receipt-window { display: grid; place-items: center; overflow: hidden; background: var(--palette-parchment-dark); }
-.app-shell .lord-receipt-window img { width: 100%; height: 100%; object-fit: contain; }
+.app-shell .lord-receipt-window img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .app-shell .lord-receipt-window .seal-glyph { width: 56px; height: 56px; }
 .app-shell .lord-receipt-close { position: absolute; top: 44px; right: 40px; width: 44px; height: 44px; padding: 0; pointer-events: auto;
   color: var(--palette-ink); font-size: 24px; line-height: 1; }

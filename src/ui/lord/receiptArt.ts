@@ -38,3 +38,14 @@ export function receiptSlotStyle(slot: keyof typeof SLOTS): CSSProperties {
   return { position: "absolute", left: rect.x * scale, top: rect.y * scale, width: rect.width * scale, height: rect.height * scale,
     ...(slot === "foot" ? { top: "auto", bottom: (size.height - rect.y - rect.height) * scale } : {}) };
 }
+
+/**
+ * The four pictures asked for once, when the first why-here button shows (lord mode only), so a receipt does not
+ * open frameless while its frame loads. Not a cache: the browser keeps the files; this only starts the requests once.
+ */
+let requested = false;
+export function preloadReceiptArt(): void {
+  if (requested || typeof Image === "undefined") return;
+  requested = true;
+  for (const art of Object.values(RECEIPT_ART)) new Image().src = url(art.url);
+}

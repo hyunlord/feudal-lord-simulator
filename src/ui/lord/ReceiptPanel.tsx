@@ -7,7 +7,7 @@ import { buildThumbnail } from "../buildMenuPresentation";
 import { frameArtSpaceStyle, frameLayerStyle } from "../frameBox";
 import { Button } from "../kit";
 import { openChronicleRecord } from "./chronicleFocus";
-import { receiptArtStyle, receiptSlotStyle } from "./receiptArt";
+import { preloadReceiptArt, receiptArtStyle, receiptSlotStyle } from "./receiptArt";
 import { RECEIPT_COPY as COPY } from "./receiptCopy.ko";
 import { receiptView, type ReceiptView } from "./receiptModel";
 
@@ -19,8 +19,10 @@ import { receiptView, type ReceiptView } from "./receiptModel";
 /** The selection the card shows: a building or construction site id (null: a walker, a wall). */
 export function LordWhyHere({ state, targetId }: { readonly state: GameState; readonly targetId: string | null }): ReactElement | null {
   const [open, setOpen] = useState(false);
+  const lord = lordMode(state);
   useEffect(() => { setOpen(false); }, [targetId]);
-  if (!lordMode(state) || targetId === null) return null;
+  useEffect(() => { if (lord) preloadReceiptArt(); }, [lord]);
+  if (!lord || targetId === null) return null;
   const view = receiptView(state, targetId);
   if (view === null) return null;
   return (

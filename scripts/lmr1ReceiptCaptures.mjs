@@ -66,6 +66,11 @@ async function openReceipt(page, touch = false) {
   const button = page.locator('.lord-why-here').first();
   if (touch) await button.tap(); else await button.click();
   await page.locator('.lord-receipt').first().waitFor({ timeout: 10_000 });
+  // The frame is a border image: wait until its file has answered (loaded, or failed in the missing-art view).
+  await page.evaluate(() => new Promise(done => {
+    const source = getComputedStyle(document.querySelector('.lord-receipt-frame')).borderImageSource.replace(/^url\("?|"?\)$/g, '');
+    const image = new Image(); image.onload = () => done(); image.onerror = () => done(); image.src = source;
+  }));
   await pause(700);
 }
 async function shot(page, name, selectors, quality = 55) {
@@ -163,10 +168,12 @@ try {
   const { context, page } = await scene(sandbox, house, { zoom: 1.6 });
   await select(page, house).catch(async error => { await writeFile(join(outDir, 'sandbox-debug.jpg'), await page.screenshot({ type: 'jpeg', quality: 40 })); throw error; });
   const card = await page.evaluate(() => ({ button: document.querySelectorAll('.lord-why-here').length }));
+  const file = await shot(page, 'sandbox-card', ['.diagnostic-card'], 45);
+  // The ledger takes the panel slot (the card closes): its tabs, without the lord's.
   await page.locator("[data-dock='ledger']").click(); await pause(500);
   const tab = await page.locator("[data-ledger-tab='lord']").count();
   expect('sandbox-card', card.button === 0 && tab === 0, `button ${card.button}, tab ${tab}`);
-  rows.push({ name: 'sandbox-card', file: await shot(page, 'sandbox-card', ['.diagnostic-card', '.ledger-drawer'], 45), button: card.button, lordTab: tab });
+  rows.push({ name: 'sandbox-card', file, button: card.button, lordTab: tab });
   await context.close();
 } catch (error) { failures.push(`sandbox-card: ${String(error).slice(0, 200)}`); }
 await browser.close();
