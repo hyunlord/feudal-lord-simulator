@@ -14,11 +14,12 @@ dir=${TMPDIR:-/tmp}/fls-base-$port
 git worktree remove --force "$dir" 2>/dev/null || true
 git worktree add -q --detach "$dir" "$base_sha"
 ln -sfn "$PWD/node_modules" "$dir/node_modules"
-node_modules/.bin/vite --host 127.0.0.1 --port "$port" --strictPort > .remote/vite-this.log 2>&1 &
-this=$!
-(cd "$dir" && exec node_modules/.bin/vite --host 127.0.0.1 --port "$base_port" --strictPort) > .remote/vite-base.log 2>&1 &
-base=$!
-trap 'kill $this $base 2>/dev/null; git worktree remove --force "$dir" 2>/dev/null || true' EXIT
+. scripts/remote/devServers.sh   # both servers stop on any exit, failures and a stopped run included
+fls_serve .remote/vite-this.log --host 127.0.0.1 --port "$port" --strictPort
+this=$FLS_SERVE_PID
+fls_serve .remote/vite-base.log --in "$dir" --host 127.0.0.1 --port "$base_port" --strictPort
+base=$FLS_SERVE_PID
+fls_on_exit 'git worktree remove --force "$dir" 2>/dev/null || true'
 export URL="http://127.0.0.1:$port/" BASE_URL="http://127.0.0.1:$base_port/"
 for url in "$URL" "$BASE_URL"; do
   for _ in $(seq 1 90); do curl -sf "$url" > /dev/null && break; sleep 1; done

@@ -12,7 +12,8 @@
 //   PLAYWRIGHT_MODULE=... tsx scripts/perf/memoryHolders.ts --scene big-town [--save fixtures/perf-gate/ch4-1380.save.json.gz]
 //     [--speed 5] [--play-seconds 120] [--camera-seconds 60] [--commit <sha>] --out <summary dir> --raw <dir outside the repository>
 //   --commit builds that commit (a temporary worktree, scripts/perf/sourceTree.ts) instead of this checkout.
-import { spawn, spawnSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
+import { spawnServer } from "../serverProcess";
 import { createReadStream, createWriteStream, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { createInterface } from "node:readline";
 import { tmpdir } from "node:os";
@@ -172,7 +173,7 @@ async function main() {
   if (tree !== null) spawnSync("git", ["worktree", "remove", "--force", tree], { encoding: "utf8" });
   if (built.status !== 0) throw new Error(`vite build failed:\n${built.stdout}\n${built.stderr}`);
   const port = fixedPort === undefined ? await freePort() : Number(fixedPort);   // never a port another session may hold
-  const preview = spawn("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
+  const preview = spawnServer("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
   const url = `http://127.0.0.1:${port}/`;
   for (let i = 0; i < 60; i++) { if (await fetch(url).then(response => response.ok, () => false)) break; await new Promise(resolve => setTimeout(resolve, 1000)); }
   const resolve = await stackResolver(build);

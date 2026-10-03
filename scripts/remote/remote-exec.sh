@@ -54,6 +54,7 @@ finish() {
   } > .remote/timing.env
   echo "$rc" > .remote/exit-code.tmp && mv .remote/exit-code.tmp .remote/exit-code
   keep_results
+  stop_dev_servers
   prune_runs
   exit "$rc"
 }
@@ -68,6 +69,35 @@ keep_results() {
   echo "remote-exec: kept results in _kept/$RUN (release: run.sh --release $RUN)"
 }
 fail() { echo "remote-exec: $*" >&2; finish 2; }
+
+# Dev servers left behind (2026-10-03: capture scripts that did not stop their Vite left 24 on the DGX, each holding a
+# port of 4300-4399): a node process running vite whose working directory is in a run folder ($BASE/<run>/… or
+# $BASE/_clones/<run>/…) of a run that is no longer going — this run's, now that its command has ended, or another run's
+# whose lock is free. Each is named in this run's log and stopped (TERM, then KILL). Anything outside $BASE, such as the
+# play server, and the servers of runs still going are never touched. By pid, not group: a server started without its own
+# group shares this script's.
+stop_dev_servers() {
+  local pid args cwd rel name stopped=""
+  for pid in $(pgrep -u "$(id -u)" node 2>/dev/null); do
+    args=$(tr '\0' ' ' < "/proc/$pid/cmdline" 2>/dev/null) || continue
+    case "$args" in *vite*) ;; *) continue ;; esac
+    cwd=$(readlink "/proc/$pid/cwd" 2>/dev/null) || continue
+    case "$cwd" in "$BASE"/*) rel=${cwd#"$BASE"/} ;; *) continue ;; esac
+    case "$rel" in _clones/*) rel=${rel#_clones/} ;; _*) continue ;; esac
+    name=${rel%%/*}
+    [ -n "$name" ] || continue
+    # A run still going holds its lock; a pruned run's lock file is gone (opened for reading: never created here).
+    if [ "$name" != "$RUN" ] && [ -e "$BASE/_locks/$name.lock" ]; then
+      ( flock -n 9 ) 9<"$BASE/_locks/$name.lock" || continue
+    fi
+    echo "remote-exec: stopping a dev server left by $name (pid $pid: ${args:0:140})"
+    kill -TERM "$pid" 2>/dev/null && stopped="$stopped $pid"
+  done
+  [ -n "$stopped" ] || return 0
+  sleep 3
+  for pid in $stopped; do kill -0 "$pid" 2>/dev/null && kill -KILL "$pid" 2>/dev/null; done
+  return 0
+}
 
 exec 8>"$BASE/_locks/$RUN.lock"
 # run.sh holds this lock through the upload and lets it go right after the launch: wait for it (a minute), so the folder

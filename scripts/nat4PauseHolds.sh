@@ -5,9 +5,8 @@
 set -u
 out=${1:-docs/verification/nat4/story}
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
-node_modules/.bin/vite --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$port" --strictPort > .remote/vite.log 2>&1 &
-vite=$!
-trap 'kill $vite 2>/dev/null' EXIT
+. scripts/remote/devServers.sh   # the server stops on any exit, failures and a stopped run included
+fls_serve .remote/vite.log --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$port" --strictPort
 url="http://127.0.0.1:$port/"
 for _ in $(seq 1 90); do curl -sf "$url" > /dev/null && break; sleep 1; done
 curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; exit 1; }

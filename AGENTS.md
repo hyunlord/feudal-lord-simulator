@@ -114,6 +114,7 @@
 - **장치로 막는다**(`scripts/remote/localGuard.mjs`): 전체 시험 스위트(`npm test`), 가드레일(`scripts/efficientGrowthRun.ts`), 브라우저 캡처 스크립트(`scripts/*Captures*`·`*Evidence*` 등 Playwright를 쓰는 스크립트)는 Mac에서 시작하면 거부하고 쓸 명령(`npm run remote:*`·`scripts/remote/run.sh`)을 알려 준다.
   - Mac 판별은 macOS와 `scutil --get LocalHostName`이다. Mac의 `os.hostname()`은 네트워크가 주는 이름이라 쓰지 않는다.
   - 급할 때만 `FLS_ALLOW_LOCAL=1`로 푼다. 그 경우 보고서에 반드시 적는다. 실행은 `.remote-runs/local-heavy.log`에 남는다.
+  - 개발 서버를 띄우는 스크립트는 `scripts/remote/devServers.sh`(셸 `fls_serve`)나 `scripts/serverProcess.ts`(`spawnServer`)로 띄운다. 실패·중지에도 서버가 꺼진다(결정 RR12, [원격 실행](docs/REMOTE_RUNS.md#브라우저)).
   - 새 브라우저 캡처 스크립트는 첫 import 앞에 `refuseHeavyOnMac("브라우저 캡처(<경로>)", { entry: import.meta.url })`를 넣는다.
 - **성능은 두 가지이고, 재는 곳이 다르다.**
   - **처리량 기준선**(프레임 p50·p95, 단계 시간 등): DGX 기준선(`perf/baseline-dgx-<sha>.json`)과만 비교한다. Mac 수치와 섞지 않는다.

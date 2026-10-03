@@ -5,7 +5,7 @@
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/nat5StageCaptures.ts <out> --states <dir> --views <file> [--port <port>, default $FLS_REMOTE_PORT]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/nat5StageCaptures.ts)", { remote: "scripts/remote/run.sh render-NAT5-stages-<sha7> -- node_modules/.bin/tsx scripts/nat5StageCaptures.ts …", entry: import.meta.url });
-import { spawn } from "node:child_process";
+import { spawnServer } from "./serverProcess";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
@@ -29,7 +29,7 @@ const errors: string[] = [];
 const states = new Map<string, unknown>();
 const state = (name: string) => { if (!states.has(name)) states.set(name, JSON.parse(readFileSync(join(statesDir, `${name}.json`), "utf8"))); return states.get(name); };
 
-const vite = spawn("node_modules/.bin/vite", ["--config", "scripts/remote/viteNoWatch.config.ts", "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
+const vite = spawnServer("node_modules/.bin/vite", ["--config", "scripts/remote/viteNoWatch.config.ts", "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
 const url = `http://127.0.0.1:${port}/`;
 for (let tries = 0; tries < 90; tries += 1) {
   try { if ((await fetch(url)).ok) break; } catch { /* not up yet */ }

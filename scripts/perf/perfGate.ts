@@ -17,6 +17,7 @@
 // void it. Exit 0 = pass, 1 = fail, 2 = not a judgement (not a Mac, a page error, a run that did not finish).
 // Results: docs/verification/perf-gate/<date>-<time>-<commit>.{json,md} and a line in its README.md.
 import { spawn, spawnSync } from "node:child_process";
+import { spawnServer } from "../serverProcess";
 import { appendFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { cpus, loadavg, tmpdir } from "node:os";
 import { otherCpuSample, otherCpuShare } from "./machineLoad";
@@ -132,7 +133,7 @@ async function main() {
       const built = run(join(sourceDir, "node_modules/.bin/vite"), ["build", "--minify", "false", "--outDir", build, "--emptyOutDir"], sourceDir);
       if (built.status !== 0) throw new Error(`vite build failed:\n${built.stdout}\n${built.stderr}`);
       const port = fixedPort === "" ? await freePort() : Number(fixedPort);   // never a port another session may hold
-      preview = spawn("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
+      preview = spawnServer("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
       const url = `http://127.0.0.1:${port}/`;
       for (let i = 0; i < 60; i++) { if (await fetch(url).then(response => response.ok, () => false)) break; await new Promise(resolve => setTimeout(resolve, 1000)); }
       const minZoom = minZoomOf(sourceDir);
