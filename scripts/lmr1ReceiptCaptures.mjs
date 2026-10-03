@@ -97,7 +97,9 @@ async function receiptView(name, state, at, extra = {}) {
   const { context, page, art } = await scene(state, at, extra);
   await select(page, at, extra.touch === true); await openReceipt(page, extra.touch === true);
   const seen = await facts(page);
-  const file = await shot(page, name, ['.lord-receipt', '.diagnostic-card'], extra.dpr === 2 ? 45 : 55);
+  // The receipt's body scrolls on an 800 px screen: the part this view is about is brought into it.
+  if (extra.focus !== undefined) { await page.locator(`.lord-receipt ${extra.focus}`).first().evaluate(node => node.scrollIntoView({ block: 'center' })); await pause(300); }
+  const file = await shot(page, name, ['.lord-receipt', '.diagnostic-card'], extra.dpr === 2 ? 38 : 50);
   rows.push({ name, file, target: at, viewport: `${extra.width ?? 1280}x${extra.height ?? 800}`, dpr: extra.dpr ?? 1, ...seen, art });
   return { context, page, seen };
 }
@@ -113,19 +115,19 @@ async function receiptView(name, state, at, extra = {}) {
   const picked = await page.evaluate(id => ({ detail: document.querySelector('.chronicle-detail-body')?.getAttribute('data-detail') ?? null,
     line: document.querySelector('.chronicle-detail-line')?.textContent ?? null }), record);
   expect('decision-opened', picked.detail === record, `chronicle detail ${picked.detail}, ribbon ${record}`);
-  const file = await shot(page, 'decision-opened', ['.chronicle-screen'], 45);
+  const file = await shot(page, 'decision-opened', ['.chronicle-screen'], 38);
   rows.push({ name: 'decision-opened', file, record, ...picked });
   await context.close();
 }
 // 2. A receipt paid no subsidy.
-{ const { context, seen } = await receiptView('receipt-subsidy0', lord, moments.unsubsidised);
+{ const { context, seen } = await receiptView('receipt-subsidy0', lord, moments.unsubsidised, { focus: '.lord-receipt-decisions' });
   expect('receipt-subsidy0', seen.kind === 'receipt' && seen.subsidy === 'none', `foot ${seen.foot}`); await context.close(); }
 // 3. One candidate site (when the state run found one).
 if (moments.single !== null) { const { context, seen } = await receiptView('receipt-single', lord, moments.single);
   expect('receipt-single', seen.runnerUp === 'none', `runnerUp ${seen.runnerUp}`); await context.close(); }
 else rows.push({ name: 'receipt-single', file: null, note: 'scripts/lmr1LordStates.ts found no single-site receipt in its run (tests/lmr1Receipt.test.ts covers the line)' });
 // 4. The old save: no chance kept.
-{ const { context, seen } = await receiptView('receipt-old', old, moments.subsidised);
+{ const { context, seen } = await receiptView('receipt-old', old, moments.subsidised, { focus: "[data-chance]" });
   expect('receipt-old', seen.chance === 'none', `chance ${seen.chance}`); await context.close(); }
 // 5. No receipt: the opening well.
 if (moments.opening !== null) { const { context, seen } = await receiptView('receipt-none', lord, moments.opening);

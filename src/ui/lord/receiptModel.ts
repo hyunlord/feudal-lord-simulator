@@ -22,7 +22,7 @@ export type ReceiptReasonRow = Readonly<{ name: ReasonName; label: string; value
 export type ReceiptDecisionRow = Readonly<{ id: string; tick: number | null; date: string; line: string; found: boolean }>;
 
 export type ReceiptView =
-  | Readonly<{ kind: "receipt"; id: string; name: string; building: BuildingKind | null; builtBy: string; origin: string; score: string;
+  | Readonly<{ kind: "receipt"; id: string; name: string; building: BuildingKind | null; builtBy: string; origin: string;
       reasons: readonly ReceiptReasonRow[];
       /** The sites compared, line by line; `runnerUp` the next site's score (null with one candidate or none compared). */
       sites: readonly string[]; runnerUp: number | null; siteCount: number | null;
@@ -42,9 +42,9 @@ function reasonRows(reasons: readonly Reason[]): readonly ReceiptReasonRow[] {
 function siteLines(receipt: ProjectReceipt): readonly string[] {
   const sites = receipt.sites;
   if (sites === undefined) return [COPY.noSites];
-  const lines = [COPY.sitesCount(sites.count), COPY.chosenSite(receipt.tx, receipt.ty, receipt.score)];
-  if (sites.runnerUp === null) lines.push(COPY.noRunnerUp);
-  else lines.push(COPY.nextSite(sites.runnerUp.tx, sites.runnerUp.ty, sites.runnerUp.score), COPY.siteGap(receipt.score - sites.runnerUp.score));
+  const lines = [COPY.chosenSite(sites.count, receipt.tx, receipt.ty, receipt.score)];
+  const next = sites.runnerUp;
+  lines.push(next === null ? COPY.noRunnerUp : COPY.nextSite(next.tx, next.ty, next.score, receipt.score - next.score));
   if (sites.planTx !== receipt.tx || sites.planTy !== receipt.ty) lines.push(COPY.planSite(sites.planTx, sites.planTy));
   return lines;
 }
@@ -80,9 +80,8 @@ export function receiptView(state: GameState, id: string): ReceiptView | null {
   }
   return {
     kind: "receipt", id, name, building: kind,
-    builtBy: COPY.builtBy(COPY.actors[receipt.actor], chronicleDate(state, receipt.tick)),
+    builtBy: COPY.builtBy(COPY.actors[receipt.actor], chronicleDate(state, receipt.tick), receipt.score, START_SCORE),
     origin: receipt.rank === null ? COPY.fromOpportunity : COPY.fromNeed(receipt.rank + 1),
-    score: COPY.score(receipt.score, START_SCORE),
     reasons: reasonRows(receipt.reasons),
     sites: siteLines(receipt), runnerUp: receipt.sites?.runnerUp?.score ?? null, siteCount: receipt.sites?.count ?? null,
     chance: chanceLines(receipt), chanceKnown: receipt.chance !== undefined,

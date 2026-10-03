@@ -53,8 +53,7 @@ export function ReceiptPanel({ view, onClose }: { readonly view: ReceiptView; re
         <Button type="button" className="lord-receipt-close" aria-label={COPY.close} onPress={() => onClose()} variant="icon">×</Button>
       </div>
       <div className="lord-receipt-body">
-        <h2>{COPY.heading}</h2>
-        <p className="lord-receipt-name">{view.name}</p>
+        <h2>{COPY.heading(view.name)}</h2>
         {view.kind === "none" ? <><h3>{COPY.noneHeading}</h3><p className="lord-receipt-none">{view.explanation}</p></> : <ReceiptBody view={view} />}
       </div>
     </aside>
@@ -66,7 +65,6 @@ function ReceiptBody({ view }: { readonly view: Extract<ReceiptView, { kind: "re
     <>
       <p className="lord-receipt-line">{view.builtBy}</p>
       <p className="lord-receipt-line">{view.origin}</p>
-      <p className="lord-receipt-line">{view.score}</p>
       <h3>{COPY.reasonsHeading}</h3>
       <ul className="lord-receipt-reasons">
         {view.reasons.map(reason => (

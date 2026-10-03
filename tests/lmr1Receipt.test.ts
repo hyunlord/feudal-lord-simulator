@@ -78,8 +78,8 @@ test("LM-R1 a town-built building's receipt: the top reasons signed, the sites a
   assert.equal(view.runnerUp, receipt.sites!.runnerUp?.score ?? null);
   assert.equal(view.siteCount, receipt.sites!.count);
   if (receipt.sites!.runnerUp !== null) {
-    assert.ok(view.sites.includes(RECEIPT_COPY.nextSite(receipt.sites!.runnerUp.tx, receipt.sites!.runnerUp.ty, receipt.sites!.runnerUp.score)));
-    assert.ok(view.sites.includes(RECEIPT_COPY.siteGap(receipt.score - receipt.sites!.runnerUp.score)));
+    const next = receipt.sites!.runnerUp;
+    assert.ok(view.sites.includes(RECEIPT_COPY.nextSite(next.tx, next.ty, next.score, receipt.score - next.score)));
   }
   const chance = receipt.chance!;
   assert.ok(view.chanceKnown);
