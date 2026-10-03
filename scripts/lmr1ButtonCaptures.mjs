@@ -30,7 +30,8 @@ const VIEWS = [
 ];
 const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
 const chromium = await loadChromium();
-const browser = await chromium.launch({ channel: "chrome", headless: true });
+// Headless Chromium hides scrollbars by default (--hide-scrollbars): the scrollbar check needs them drawn.
+const browser = await chromium.launch({ channel: "chrome", headless: true, ignoreDefaultArgs: ["--hide-scrollbars"] });
 const result = { label, url, errors: [], views: {}, fallback: null, game: null };
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 

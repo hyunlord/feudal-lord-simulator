@@ -100,6 +100,12 @@
 :where(.ui-btn--sm) { min-height: 32px; padding: var(--button-pad-sm); font-size: var(--text-13); }
 :where(.ui-btn--md) { min-height: 40px; padding: var(--button-pad-md); font-size: var(--text-14); }
 :where(.ui-btn--lg) { min-height: 48px; padding: var(--button-pad-lg); font-size: var(--text-16); }
+/* LM-R1: a 128 × 40 Wave 38 button keeps its 44 px target (the floor in uiBoundaries.css) and 48 px on a touch screen.
+   Sized kit buttons and the select only: the HUD's own buttons keep their sizes (the tablet HUD budget has no margin). */
+@media (pointer: coarse) {
+  :root .ui-btn.ui-btn:is(.ui-btn--sm, .ui-btn--md, .ui-btn--lg) { min-height: 48px !important; } /* above the 44 px !important floor */
+  :root .ui-select .ui-select-trigger.ui-btn { height: 48px; }
+}
 
 :root .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):active { transform: translateY(1px); }
 /* LM-R1 states: hover only where the pointer hovers (a tap leaves no sticky hover), pressed while held, the keyboard focus
