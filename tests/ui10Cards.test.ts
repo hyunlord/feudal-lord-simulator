@@ -37,7 +37,7 @@ import { PetitionModal } from "../src/ui/hud/StoryModals";
 import { isPetitionDefId, petitionArtOf, petitionPresentation, type PetitionDefId } from "../src/ui/petitionPresentation";
 import { at, legacyTown } from "./helpers/legacyTown";
 import { answer, ui10Course } from "./helpers/ui10Course";
-import { moneyObject, moneyShort } from "../src/ui/money.ko";
+import { moneyFull, moneyObject, moneyShort } from "../src/ui/money.ko";
 
 const states = ui10Course;
 const view = (state: GameState) => petitionDecisionView(state)!;
@@ -65,10 +65,11 @@ test("UI-10 (LG-4): the Crown's tax card — two answers, the tenth in pence, th
   assert.equal(card.presentation.defId, ROYAL_TAX_PETITION_ID);
   assert.deepEqual(card.options.map(option => option.choice), ["accept", "refuse"]);
   const due = Math.max(B.subsidyMin, Math.min(B.subsidyMax, Math.floor(treasuryBalance(envoy) * B.subsidyPermille / 1000)));
-  assert.ok(card.presentation.demand.includes(moneyShort(due)) && card.presentation.demand.includes("10 %"), card.presentation.demand);
+  // COPY-1r (CA-005, CA-052): the sums asked in full, the ratio written "10%".
+  assert.ok(card.presentation.demand.includes(moneyFull(due)) && card.presentation.demand.includes("10%"), card.presentation.demand);
   const [pay, plead] = card.options;
-  assert.match(pay!.line, new RegExp(`금고에서 ${moneyShort(due)} · 관계 국왕 \\+10 · 도시 −5$`));
-  assert.match(plead!.line, new RegExp(`국왕 확인금 ${moneyShort(B.confirmationFine)} · 관계 국왕 −15 · 도시 \\+5$`));
+  assert.match(pay!.line, new RegExp(`금고에서 ${moneyFull(due)} · 관계 국왕 \\+10 · 도시 −5$`));
+  assert.match(plead!.line, new RegExp(`국왕 확인금 ${moneyFull(B.confirmationFine)} · 관계 국왕 −15 · 도시 \\+5$`));
   for (const option of card.options) {
     assert.equal(option.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(envoy) }, { treasury: legacyDecisionForecast(envoy, ROYAL_TAX_PETITION_ID, option.choice) }));
     assert.doesNotMatch(option.line, LATIN);
@@ -112,14 +113,15 @@ test("UI-10 (LG-3): the heir's card — only the answers the record allows, each
     for (const line of [option.line, option.heir!.who, option.heir!.lineage, option.heir!.resemblance, option.heir!.records]) assert.doesNotMatch(line, LATIN);
   }
   const [son, husband, nephew] = card.options.map(option => option.heir!);
-  assert.equal(son!.lineage, "늙은 영주의 아들");
+  // COPY-1r (CA-012): the candidates are described by the lord, whatever his age.
+  assert.equal(son!.lineage, "영주의 아들");
   // The son was made in the old lord's likeness (the fixture's lord copied): the face, the hair and the eyes.
-  assert.match(son!.resemblance, /^닮은 점: 늙은 영주의 얼굴 생김, .+ 머리|^닮은 점: 늙은 영주의 얼굴 생김, .+ 금발/);
+  assert.match(son!.resemblance, /^닮은 점: 영주의 얼굴 생김, .+ 머리|^닮은 점: 영주의 얼굴 생김, .+ 금발/);
   const agnes = personDisplayName(heir.persons!.past.find(person => person.id === "m-900003") ?? heir.persons!.people.find(person => person.id === "m-900003")!);
-  assert.equal(husband!.lineage, `늙은 영주의 딸 ${agnes}의 남편`);
+  assert.equal(husband!.lineage, `영주의 딸 ${agnes}의 남편`);
   assert.ok(husband!.records.includes("이번에 영지에 옴"));
   const walter = personDisplayName(heir.persons!.past.find(person => person.id === "m-900004")!);
-  assert.equal(nephew!.lineage, `늙은 영주의 형제 ${walter}의 아들`);
+  assert.equal(nephew!.lineage, `영주의 형제 ${walter}의 아들`);
   assert.equal(card.options[1]!.label, "딸의 남편에게 잇게 한다");
   // The fixture's own house: a widower without children or siblings — one answer, a distant kinsman in the nephew's place.
   const own = view(ownHeir);

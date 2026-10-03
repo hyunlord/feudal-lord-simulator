@@ -1,4 +1,4 @@
-import { moneyWords, moneyWordsJosa } from "../ledger/moneyWords.ko";
+import { moneyWords, moneyWordsFullDelta, moneyWordsJosa } from "../ledger/moneyWords.ko";
 import { BUILDING_COPY } from "./buildingCatalog.ko";
 /**
  * F0-C2 history ledger sentences (spec docs/design/history-ledger.md HL-1): one template per record kind. A record
@@ -322,7 +322,7 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "milestone.lots": params => `필지가 ${n(params, "lots")}개가 되었다`,
   "milestone.chapter_end": params => `${n(params, "chapter")}장이 끝났다`,
   // COPY-1e (CA-006): the treasury's change in money words (£ s d), the people counted.
-  "ledger.season": params => `계절 결산 — 인구 ${n(params, "population")}명(${n(params, "popDelta") >= 0 ? "+" : ""}${n(params, "popDelta")}명), 금고 ${n(params, "net") >= 0 ? "+" : "−"}${moneyWords(Math.abs(n(params, "net")))}`,
+  "ledger.season": params => `계절 결산 — 인구 ${n(params, "population")}명(${n(params, "popDelta") >= 0 ? "+" : ""}${n(params, "popDelta")}명), 금고 ${moneyWordsFullDelta(n(params, "net"))}`, // COPY-1r CA-006: a confirmed sum, in full
   "ledger.population": params => `인구가 한 계절에 ${n(params, "percent") >= 0 ? "+" : ""}${n(params, "percent")}% 바뀌었다`,
   "ledger.treasury_turn": params => n(params, "net") >= 0 ? "금고가 다시 늘기 시작했다" : "금고가 줄기 시작했다",
   "ledger.l4": params => `도시 대가옥이 ${n(params, "from")}채에서 ${n(params, "to")}채가 되었다`,

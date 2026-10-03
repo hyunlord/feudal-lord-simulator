@@ -1,14 +1,16 @@
-import { moneyObject, moneyShort } from "./money.ko";
+import { LEGACY_BALANCE } from "../content/legacyConfig";
+import { moneyFull, moneyObject, moneyShort } from "./money.ko";
 
 // UI-6: what each petition asks and what each answer does, by the petition's defId (F2-A WR-2…WR-8, FAIL-3 FL-6). The
 // answers' labels are the ledger's own (historyCopy `WAR_CHOICES`); the numbers come from the rules (war.ts).
-const percent = (permille: number) => `${Math.round(permille / 10)} %`;
+// COPY-1r: a ratio is written "70%" (glossary rule 7).
+const percent = (permille: number) => `${Math.round(permille / 10)}%`;
 /** The particle after a Korean word: the first form after a final consonant (받침), the second after a vowel. */
 const josa = (word: string, withFinal: string, without: string) => { const code = word.charCodeAt(word.length - 1) - 0xac00; return code >= 0 && code <= 11171 && code % 28 !== 0 ? withFinal : without; };
 export const PETITION_COPY = {
   restore_right: {
     title: "권리 복원 청원",
-    demand: "쇠퇴 때 잃은 권리를 넘겨받은 쪽이 되사기를 제안합니다.",
+    demand: "쇠퇴 때 잃은 권리를 넘겨받은 쪽이 영주에게 그 권리를 되팔겠다고 제안합니다.",
     accept: (paid: number) => `${moneyShort(paid)}에 권리를 되삽니다 · 칭호도 곧바로 돌아옵니다`,
     accept_with_price: (paid: number) => `값을 깎아 ${moneyShort(paid)}에 되삽니다 · 칭호는 한 해 뒤에 돌아옵니다`,
     refuse: () => "거절합니다 · 한 해 뒤에 다시 청해 옵니다",
@@ -90,12 +92,12 @@ export const PETITION_COPY = {
   guild_charter: {
     title: "길드 인가 청원",
     demand: "장인들이 직물 길드를 세우게 해 달라고 청합니다. 길드가 서면 직물 네 건물이 더 빨리 돌아갑니다.",
-    accept: (relations: string) => `길드를 인가합니다 · 직물 네 건물 작업 ×¾ · 도시의 힘 +20 · 자치 요구가 1382년으로 · ${relations}`,
-    refuse: (households: number, relations: string) => `거부합니다 · 다음 계절 직조공 ${households}가구가 떠남 · 직조 작업 ×1¼ · 반란 압력 +10 · ${relations}`,
+    accept: (relations: string) => `길드를 인가합니다 · 직물 생산 시설 4종의 작업 시간 25% 단축 · 도시의 힘 +20 · 자치 요구가 1382년으로 · ${relations}`,
+    refuse: (households: number, relations: string) => `거부합니다 · 다음 계절 직조공 ${households}가구가 떠남 · 직조 작업 시간 25% 증가 · 반란 압력 +10 · ${relations}`,
   },
   tax_collection: {
     title: "인두세 징수 방식",
-    demand: "국왕의 인두세(14세 이상 한 사람 4d)를 도시 공동체가 스스로 걷겠다고 청합니다. 국왕의 몫은 금고를 지나지 않고 영주의 몫만 듭니다.",
+    demand: "1377년 인두세(14세 이상 한 사람 4d)를 도시 공동체가 대신 걷겠다고 청합니다. 이후 징수의 대상과 금액은 게임 규칙으로 간소화되며, 금고에는 징수 방식에 따른 수입만 들어옵니다.",
     accept: (perAdult: number, relations: string) => `도시 공동체에 맡깁니다 · 걷을 때마다 어른 한 사람당 ${moneyShort(perAdult)} · ${relations}`,
     refuse: (perAdult: number, relations: string) => `영주의 징수원이 걷습니다 · 어른 한 사람당 ${moneyShort(perAdult)} · 반란 압력 +40 · ${relations}`,
   },
@@ -108,23 +110,26 @@ export const PETITION_COPY = {
   },
   borough_charter: {
     title: "자치 특허 협상",
-    demand: "도시 공동체가 자치 특허를 청합니다. 시장 좌판세와 통행세 절반을 도시가 걷고, 그 대가로 해마다 영주에게 fee farm을 내겠다고 합니다.",
-    accept: (feeFarm: number, relations: string) => `일부 허용합니다 · 시장 좌판세 도시로 · 통행세 절반 도시로 · 도시가 해마다 봄에 ${moneyShort(feeFarm)} · ${relations}`,
+    demand: "도시 공동체가 자치 특허를 청합니다. 시장 좌판세와 통행세 절반을 도시가 걷고, 그 대가로 해마다 영주에게 자치 연납금(fee farm)을 내겠다고 합니다.",
+    accept: (feeFarm: number, relations: string) => `일부 허용합니다 · 시장 좌판세 도시로 · 통행세 절반 도시로 · 도시가 해마다 봄에 자치 연납금 ${moneyShort(feeFarm)} · ${relations}`,
     refuse: (relations: string) => `거부합니다 · 권리는 그대로 · 5장에 도시의 반발 · ${relations}`,
   },
   // UI-10 (F5-A LG-2…LG-6): chapter 5's four cards; each answer's sums and relations are the engine's (`LEGACY_BALANCE`, `LEGACY_RELATIONS`).
   royal_tax: {
-    title: "국왕의 과세 요구",
+    title: "왕실 보조세 요구",
     demand: (share: number, due: number, min: number, max: number) =>
-      `국왕의 과세 사절이 15분의 1·10분의 1세를 요구합니다: 금고의 ${percent(share)}, 지금이면 ${moneyShort(due)}(적어도 ${moneyShort(min)}, 많아야 ${moneyShort(max)}).`,
-    accept: (due: number, relations: string) => `과세를 냅니다 · 금고에서 ${moneyShort(due)} · ${relations}`,
-    refuse: (confirmation: number, relations: string) => `감면을 청원합니다 · 지금은 내지 않음 · 나중에 자치 특허를 내주면 국왕 확인금 ${moneyShort(confirmation)} · ${relations}`,
+      // COPY-1r CA-052 / CA-005: the game's rule named as such, and the sums asked in full (£·s·d).
+      `국왕의 사절이 왕실 보조세(15분의 1세·10분의 1세)를 요구합니다. 게임에서는 지금 금고의 ${percent(share)}를 기준으로 ${moneyFull(min)}~${moneyFull(max)}을 냅니다: 지금은 ${moneyFull(due)}.`,
+    accept: (due: number, relations: string) => `보조세를 냅니다 · 금고에서 ${moneyFull(due)} · ${relations}`,
+    refuse: (confirmation: number, relations: string) => `감면을 청원합니다 · 지금은 내지 않음 · 나중에 자치 특허를 내주면 국왕 확인금 ${moneyFull(confirmation)} · ${relations}`,
   },
   heir_choice: {
-    title: "늙은 영주의 후계자",
+    title: "영주의 후계자",
+    // COPY-1r CA-012: "늙은" only from the engine's own old age (LEGACY_BALANCE.lordOldAge); the petition also comes to a
+    // grown lord at its deadline.
     demand: (lord: string, age: number) => lord === ""
-      ? "늙은 영주의 뒤를 이을 사람을 정해야 합니다. 상위 영주가 상속세를 받고 후계자를 인정합니다. 늙은 영주와 그 배우자는 가족으로 남습니다."
-      : `늙은 영주 ${lord}(${age}살)의 뒤를 이을 사람을 정해야 합니다. 상위 영주가 상속세를 받고 후계자를 인정합니다. 늙은 영주와 그 배우자는 가족으로 남습니다.`,
+      ? "가문을 이을 사람을 정해야 합니다. 상위 영주가 상속세를 받고 후계자를 인정합니다. 물러나는 영주와 그 배우자는 가족으로 남습니다."
+      : `${age >= LEGACY_BALANCE.lordOldAge ? "늙은 " : ""}영주 ${lord}(${age}살)의 뒤를 이을 사람을 정해야 합니다. 상위 영주가 상속세를 받고 후계자를 인정합니다. 물러나는 영주와 그 배우자는 가족으로 남습니다.`,
     accept: (relief: number, relations: string) => `맏아들이 영주관의 가장이 됩니다 · 상위 영주에게 상속세 ${moneyShort(relief)} · ${relations}`,
     accept_with_price: (relief: number, relations: string) => `딸의 남편이 가장이 되고 딸이 영주관으로 돌아옵니다 · 상속세 ${moneyShort(relief)} · 고르지 않은 새 후보는 떠남 · ${relations}`,
     refuse: (kinsman: boolean, relief: number, relations: string) =>
@@ -165,12 +170,12 @@ export const PETITION_COPY = {
   /** UI-10 (LG-3): an heir candidate on the heir's card — who, through whom, what of the old lord they have, their records. */
   heir: {
     who: (relation: string, age: string) => `${relation} · ${age}`,
-    son: "늙은 영주의 아들",
-    daughter: "늙은 영주의 딸",
-    husband: (daughter: string) => daughter === "" ? "늙은 영주의 딸의 남편" : `늙은 영주의 딸 ${daughter}의 남편`,
-    nephew: (parent: string, sister: boolean) => parent === "" ? "늙은 영주의 형제자매의 아들" : `늙은 영주의 ${sister ? "자매" : "형제"} ${parent}의 아들`,
+    son: "영주의 아들",
+    daughter: "영주의 딸",
+    husband: (daughter: string) => daughter === "" ? "영주의 딸의 남편" : `영주의 딸 ${daughter}의 남편`,
+    nephew: (parent: string, sister: boolean) => parent === "" ? "영주의 형제자매의 아들" : `영주의 ${sister ? "자매" : "형제"} ${parent}의 아들`,
     kinsman: "가문의 먼 친척",
-    resemblance: (parts: readonly string[]) => parts.length === 0 ? "늙은 영주와 닮은 데가 없습니다" : `닮은 점: 늙은 영주의 ${parts.join(", ")}`,
+    resemblance: (parts: readonly string[]) => parts.length === 0 ? "영주와 닮은 데가 없습니다" : `닮은 점: 영주의 ${parts.join(", ")}`,
     /** The same pool face as the old lord (`portraitIdentity`). */
     face: "얼굴 생김",
     records: (born: number, left: number | null, records: number, newcomer: boolean) =>
