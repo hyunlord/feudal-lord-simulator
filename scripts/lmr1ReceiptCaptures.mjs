@@ -99,7 +99,7 @@ async function receiptView(name, state, at, extra = {}) {
   const seen = await facts(page);
   // The receipt's body scrolls on an 800 px screen: the part this view is about is brought into it.
   if (extra.focus !== undefined) { await page.locator(`.lord-receipt ${extra.focus}`).first().evaluate(node => node.scrollIntoView({ block: 'center' })); await pause(300); }
-  const file = await shot(page, name, ['.lord-receipt', '.diagnostic-card'], extra.dpr === 2 ? 38 : 50);
+  const file = await shot(page, name, ['.lord-receipt', '.diagnostic-card'], extra.dpr === 2 ? 30 : 50);
   rows.push({ name, file, target: at, viewport: `${extra.width ?? 1280}x${extra.height ?? 800}`, dpr: extra.dpr ?? 1, ...seen, art });
   return { context, page, seen };
 }
@@ -115,7 +115,7 @@ async function receiptView(name, state, at, extra = {}) {
   const picked = await page.evaluate(id => ({ detail: document.querySelector('.chronicle-detail-body')?.getAttribute('data-detail') ?? null,
     line: document.querySelector('.chronicle-detail-line')?.textContent ?? null }), record);
   expect('decision-opened', picked.detail === record, `chronicle detail ${picked.detail}, ribbon ${record}`);
-  const file = await shot(page, 'decision-opened', ['.chronicle-screen'], 38);
+  const file = await shot(page, 'decision-opened', ['.chronicle-screen'], 32);
   rows.push({ name: 'decision-opened', file, record, ...picked });
   await context.close();
 }
