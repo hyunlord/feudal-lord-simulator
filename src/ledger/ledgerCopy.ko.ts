@@ -43,6 +43,8 @@ export const LEDGER_CATEGORY_LABELS = {
   marriage_portion: "혼인 계약금",
   estate_income: "영지 수입",
   audit_recovery: "감사로 되찾은 돈",
+  registry_settlement: "청원·사건 답의 지급",
+  instalment: "분할 납부",
   promise_payment: "약속 이행 지급",
   famine_sale: "기근 곡물 판매",
   charter_fee: "특허 대가",

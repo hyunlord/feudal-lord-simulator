@@ -13,6 +13,7 @@ import { buildArchetypeWorld } from "../world/archetypeTerrain";
 import { DEFAULT_GAME_STATE } from "./gameStore";
 import { applyOpeningVillageToTile, placeManorSite } from "./openingVillage";
 import { initialAgency } from "../engine/townAgency";
+import { DEFAULT_LORD_HOUSE, initialRegistry } from "../engine/registry";
 import { InvalidGrowthOpeningError, seededOpening } from "./growthOpening";
 
 /** LG-1: the seeds a new game draws from (six digits at most, so a player can read and type one). */
@@ -42,6 +43,8 @@ export interface NewGameOptions {
    * (the default, today's game) — the player builds. A different axis from the scenario's campaign / sandbox.
    */
   readonly mode?: "lord" | "sandbox";
+  /** LM-E9 (ER-9): the player's house in lord mode — its name and arms; absent = "de Haverel" (드 해버럴). */
+  readonly house?: { readonly name: string; readonly arms: string };
 }
 
 /** MA-6: the lands a new game can start on, in the start screen's order. */
@@ -55,7 +58,9 @@ export function newGameState(options: NewGameOptions): GameState | null {
   // LM-E1 (TA-1): lord mode's town starts with its actors (the campaign's default stays sandbox). LM-E8 (LS-1): the lord's
   // slice is always lord mode.
   const lord = options.mode === "lord" || options.scenarioId === LORD_SLICE_SCENARIO_ID;
-  return state === null || !lord ? state : { ...state, agency: initialAgency() };
+  if (state === null || !lord) return state;
+  // LM-E9 (ER-9): the player's house is kept from the start (the campaign keeps its own names).
+  return { ...state, agency: initialAgency(), registry: initialRegistry(options.house ?? DEFAULT_LORD_HOUSE) };
 }
 
 function openingState(options: NewGameOptions): GameState | null {

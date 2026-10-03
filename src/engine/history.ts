@@ -55,6 +55,7 @@ import { currentYear, manorLord } from "./persons";
 import { REORGANISATION_PETITION_IDS } from "../content/reorganisationConfig";
 import { PLAGUE_PETITION_IDS } from "../content/plagueConfig";
 import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./factions";
+import { registryEntryData } from "../content/registry/registryEntries";
 import { finishedDrainage } from "./drainage";
 import { WAR_PETITION_IDS } from "../content/warConfig";
 
@@ -73,7 +74,9 @@ export const DECISION_KINDS = ["build", "road", "zone", "house", "cancel", "oper
   // LM-E3 (NG-7): the marriage — the offer, the answer to a counter, a promise kept, the will-change answer.
   "marriage",
   // LM-E4 (SW-2, SW-4…SW-6): an estate's oversight, the exceptions, an estate petition answered, the audit's mode and answer.
-  "stewardship"] as const;
+  "stewardship",
+  // LM-E9 (ER-4): a registry offer answered.
+  "registry"] as const;
 export type DecisionKind = (typeof DECISION_KINDS)[number];
 /** HL-3: the big five, one record each with alternatives, a prediction and (later) the actual. */
 export const BIG_DECISION_KINDS: readonly DecisionKind[] = ["market_town", "stone_town", "famine_response", "petition_response", "rebuild", "wall_expand", "drainage",
@@ -93,6 +96,7 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   file_suit: "lawsuit", add_suit_evidence: "lawsuit", seek_suit_patron: "lawsuit", enforce_possession: "lawsuit",
   propose_marriage: "marriage", answer_counter: "marriage", keep_promise: "marriage", answer_will_change: "marriage",
   set_estate_oversight: "stewardship", set_exception_rules: "stewardship", answer_estate_petition: "stewardship", set_audit_mode: "stewardship", answer_audit: "stewardship",
+  answer_registry_offer: "registry",
 };
 
 /** HL-2 ③: buildings whose first completion is a milestone. */
@@ -220,7 +224,7 @@ export function recordDecision(before: GameState, reduced: GameState, command: {
   if (kind === undefined || reduced === before) return reduced;
   // LM-E2 (ES-7): a suit command's effect (a suit filed, evidence, a patron, an enforcement) is in the ledger as well.
   const lines = kind === "lawsuit" ? estateDrafts(before, reduced) : kind === "marriage" ? [...diplomacyDrafts(before, reduced), ...estateDrafts(before, reduced)]
-    : kind === "stewardship" ? stewardshipDrafts(before, reduced) : [];
+    : kind === "stewardship" ? stewardshipDrafts(before, reduced) : kind === "registry" ? [...registryDrafts(before, reduced), ...stewardshipDrafts(before, reduced), ...estateDrafts(before, reduced)] : [];
   // FIX-14: a command's own lines may move factions (an estate petition answered, a steward punished): applied with them.
   const after = lines.length === 0 ? reduced : withFactionRecords(reduced, historyOf(reduced), append(historyOf(reduced), lines));
   // LM-E1b (TA-6 ②): a subsidy refused is no decision; the ledger keeps its reason as an event.
@@ -805,6 +809,8 @@ export function advanceHistory(before: GameState, after: GameState): GameState {
   drafts.push(...diplomacyDrafts(before, after));
   // LM-E4 (SW-7, SW-6): the off-map estates' seasons, their petitions and Michaelmas.
   drafts.push(...stewardshipDrafts(before, after));
+  // LM-E9 (ER-3, ER-4, ER-7): the registry's offers, lapses and terms that changed this tick.
+  drafts.push(...registryDrafts(before, after));
   // ARCH-1b (MA-11): a drainage works finished — its cells are meadow now.
   for (const work of finishedDrainage(before, after)) {
     const cell = work.cells[0]!;
@@ -946,9 +952,12 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
     const stewardId = now.oversight.find(entry => entry.estateId === petition.estateId)?.stewardId ?? "";
     // FIX-14 (SW-11): the home estate's petitions come to the lord himself; an answer (or the wait) moves its factions.
     if (petition.estateId === HOME_ESTATE_ID) {
-      if (old === undefined) line("manor.petition", { kind: petition.kind, amount: petition.amount, party: petition.party ?? "", rights: petition.rights ? 1 : 0 }, 1);
-      else if (old.status === "open" && petition.status !== "open") {
-        line(petition.status === "lapsed" ? "manor.petition_lapsed" : "manor.petition_answered", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 1);
+      // LM-E9 (ER-6): a home petition the steward answered by precedent comes already settled — its line, then its factions.
+      const byPrecedent = old === undefined && petition.precedent === true && petition.status !== "open";
+      if (old === undefined && !byPrecedent) line("manor.petition", { kind: petition.kind, amount: petition.amount, party: petition.party ?? "", rights: petition.rights ? 1 : 0 }, 1);
+      else if (byPrecedent || (old !== undefined && old.status === "open" && petition.status !== "open")) {
+        if (byPrecedent) line("manor.petition_precedent", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 0);
+        else line(petition.status === "lapsed" ? "manor.petition_lapsed" : "manor.petition_answered", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 1);
         const table = HOME_PETITION_KINDS[petition.kind as HomePetitionKind][petition.status === "granted" ? "grant" : "refuse"].factions;
         for (const [key, delta] of Object.entries(table)) {
           const faction = after.factions?.factions.find(entry => entry.id === (key === "party" ? petition.party : key));
@@ -1111,4 +1120,43 @@ function agencyDrafts(before: GameState, after: GameState): Draft[] {
     params: { receipt: receipt.id, actor: receipt.actor, what: receipt.what, planner: receipt.planner, score: receipt.score,
       reasons: receipt.reasons.map(reason => `${reason.name}:${reason.value}`).join(","), decisions: receipt.decisionIds.join(",") },
   }))];
+}
+
+/**
+ * LM-E9 (ER-3, ER-4, ER-7): the registry's lines — an offer (with its receipt), an answer or a lapse (and the factions the
+ * choice moves, through the ledger), a term that ended.
+ */
+function registryDrafts(before: GameState, after: GameState): Draft[] {
+  if (after.registry === before.registry || after.registry === undefined) return [];
+  const drafts: Draft[] = [];
+  const was = before.registry?.occurrences ?? [];
+  for (const occurrence of after.registry.occurrences) {
+    const old = was.find(entry => entry.id === occurrence.id);
+    if (old === undefined) {
+      drafts.push({ tick: after.tick, kind: "event", template: "registry.offered", subject: TOWN, severity: 1,
+        params: { entry: occurrence.entryId, bound: occurrence.boundId, draw: occurrence.receipt.draw, chance: occurrence.receipt.chancePermille } });
+      continue;
+    }
+    if (old.status !== "offered" || occurrence.status === "offered") continue;
+    drafts.push({ tick: after.tick, kind: "event", template: occurrence.status === "answered" ? "registry.answered" : occurrence.status === "lapsed" ? "registry.lapsed" : "registry.invalid",
+      subject: TOWN, severity: 1, params: { entry: occurrence.entryId, choice: occurrence.choiceId ?? "" } });
+    const choice = registryEntryData(occurrence.entryId)?.choices.find(candidate => candidate.id === occurrence.choiceId);
+    for (const effect of choice?.effects ?? []) {
+      if (effect.command !== "faction_relation") continue;
+      const faction = after.factions?.factions.find(entry => entry.id === effect.faction);
+      if (faction === undefined) continue;
+      drafts.push({ tick: after.tick, kind: "faction", template: "faction.relation", subject: { type: "faction", id: faction.id }, severity: 1,
+        params: { faction: faction.id, name: faction.name, delta: effect.delta, reason: `registry:${occurrence.entryId}:${occurrence.choiceId ?? ""}`,
+          relation: Math.max(-100, Math.min(100, faction.relation + effect.delta)) } });
+    }
+  }
+  const terms = before.registry?.terms ?? [];
+  for (const term of after.registry.terms) {
+    const old = terms.find(entry => entry.id === term.id);
+    if (old === undefined) drafts.push({ tick: after.tick, kind: "event", template: "registry.term_began", subject: TOWN, severity: 1,
+      params: { kind: term.kind, what: term.what, amount: term.amountPerYear, years: term.years } });
+    else if (old.status === "running" && term.status === "ended") drafts.push({ tick: after.tick, kind: "event", template: "registry.term_ended", subject: TOWN, severity: 1,
+      params: { kind: term.kind, what: term.what, amount: term.amountPerYear, years: term.years } });
+  }
+  return drafts;
 }

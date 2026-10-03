@@ -7,6 +7,7 @@ import { BUILDING_COPY } from "./buildingCatalog.ko";
 import { buildingHistoryName } from "./buildingCatalog.ko";
 import { factionDisplayName, factionReasonLine } from "./factionCopy.ko";
 import { PETITION_CHOICES } from "./petitionChoices.ko";
+import { REGISTRY_TERM_WORDS, registryChoiceLedger, registryTitle } from "./registry/registryCopy.ko";
 import { GENTRY_NAMES_KO } from "./gentryNames";
 import { SURNAMES_KO } from "./personNames.ko";
 
@@ -232,6 +233,13 @@ export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> 
   "stewardship.season": params => `${estateWord(s(params, "house"))}의 한 철 — 장부상 수입 ${moneyWords(n(params, "reported"))}${n(params, "overloaded") === 1 ? " (영주의 눈이 닿지 못함)" : ""}`,
   // FIX-14 (SW-11, SW-12): the home estate's petitions to the lord himself, and the steward's precedent.
   "manor.petition": params => `장원에서 ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "이", "가")} 영주에게 왔다${n(params, "amount") > 0 ? ` — ${moneyWords(n(params, "amount"))}` : ""}`,
+  "registry.offered": params => `${registryTitle(s(params, "entry"))}`,
+  "registry.answered": params => `${registryTitle(s(params, "entry"))}: ${registryChoiceLedger(s(params, "entry"), s(params, "choice"))}`,
+  "registry.lapsed": params => `${registryTitle(s(params, "entry"))}: 답하지 않아 기한이 지났다`,
+  "registry.invalid": params => `${registryTitle(s(params, "entry"))}: 사정이 바뀌어 없던 일이 되었다`,
+  "registry.term_began": params => { const kind = REGISTRY_TERM_WORDS[s(params, "kind")] ?? s(params, "kind"); return `${REGISTRY_TERM_WORDS[s(params, "what")] ?? s(params, "what")} ${kind}${josa(kind, "이", "가")} ${n(params, "years")}년 동안 이어진다`; },
+  "registry.term_ended": params => { const kind = REGISTRY_TERM_WORDS[s(params, "kind")] ?? s(params, "kind"); return `${REGISTRY_TERM_WORDS[s(params, "what")] ?? s(params, "what")} ${kind}${josa(kind, "이", "가")} 기한이 끝나 그쳤다`; },
+  "manor.petition_precedent": params => `청지기가 선례대로 ${estatePetitionWord(s(params, "kind"))}에 답했다: ${manorAnswerWord(s(params, "kind"), n(params, "granted") === 1)}`,
   "manor.petition_answered": params => `영주가 ${estatePetitionWord(s(params, "kind"))}에 답했다: ${manorAnswerWord(s(params, "kind"), n(params, "granted") === 1)}`,
   "manor.petition_lapsed": params => `${estatePetitionWord(s(params, "kind"))}에 답하지 않았다 — 기다리다 거둬졌다`,
   "stewardship.precedent": params => `청지기 ${s(params, "steward")}${josa(s(params, "steward"), "이", "가")} 선례대로 ${estatePetitionWord(s(params, "kind"))}${josa(estatePetitionWord(s(params, "kind")), "을", "를")} ${n(params, "granted") === 1 ? "허락했다" : "기각했다"}`,

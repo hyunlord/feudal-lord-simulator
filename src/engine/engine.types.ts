@@ -199,6 +199,8 @@ export interface GameState {
   readonly agency?: import("./townAgency.types").AgencyState;
   /** LM-E6a (TR-9, save v46): lord mode's trade households, trade goods, chains and streets. Absent outside lord mode. */
   readonly trades?: import("./trades.types").TradeState;
+  /** LM-E9 (ER-12, save v47): the registry's occurrences, timed terms and the player's house. Absent outside lord mode. */
+  readonly registry?: import("./registry.types").RegistryState;
   /** F2-A the war of 1337 (save v20, spec WR-1…WR-9). Absent until the War era's messenger. */
   readonly war?: import("./war.types").WarState;
   /** FACTION-0 the factions around the town (save v21, spec FX-1…FX-8). Absent until the first tick. */
