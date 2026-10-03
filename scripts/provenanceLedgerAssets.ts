@@ -133,6 +133,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/storehouseSnowManifest.generated.ts", // NAT-5 RUN-02 the storehouse roof snow layers
     "src/render/wave12GuildhallManifest.generated.ts", // UI-9 chapter 4 guildhall world prop
     "src/render/wave17WalkerManifest.generated.ts", // UI-9b the lord's tax collector
+    "src/ui/lord/receiptArt.ts", // LM-R1 the lord mode's receipt frame, reason caps and decision ribbon (Wave 35)
   ];
   for (const file of manifestFiles) {
     for (const url of extractUrlLiterals(readText(file))) {

@@ -13,7 +13,7 @@
 // the input hash scripts/checks/uiGeometry.mjs compares, the failure count).
 // Needs the dev server (?pseudo-long=1 is a dev-server transform): on the DGX, npm run remote:ui-geometry.
 //   PLAYWRIGHT_MODULE=... node_modules/.bin/tsx scripts/uiGeometryAudit.mjs <out> --url <dev server> --states5 <dir> --states6 <dir>
-//     --states8 <dir> --states9 <dir> --states10 <dir> --extra <dir> [--states-lands <dir>] [--only id,prefix.] [--viewports …] [--copy normal,long]
+//     --states8 <dir> --states9 <dir> --states10 <dir> --extra <dir> [--states-lands <dir>] [--states-lord <dir>] [--only id,prefix.] [--viewports …] [--copy normal,long]
 //     [--numbers normal,extreme] [--jobs 4] [--shots 40] [--summary <path>|none]
 // Exit 1 when any condition fails or cannot be opened.
 import { refuseHeavyOnMac } from './remote/localGuard.mjs';
@@ -35,8 +35,8 @@ const flag = name => { const index = process.argv.indexOf(`--${name}`); return i
 const list = (name, all) => (flag(name) ?? all.join(',')).split(',').filter(Boolean);
 if (out === undefined || out.startsWith('--')) { console.error('usage: uiGeometryAudit.mjs <out> --url <url> --states5 <dir> …'); process.exit(2); }
 const url = flag('url') ?? 'http://127.0.0.1:5173/';
-// The flag each state set's folder comes by (`lands`: scripts/landStates.ts's states, LAND-UI).
-const STATE_FLAGS = { ui5: 'states5', ui6: 'states6', ui8: 'states8', ui9: 'states9', ui10: 'states10', 'ui10-extra': 'extra', lands: 'states-lands' };
+// The flag each state set's folder comes by (`lands`: scripts/landStates.ts's states, LAND-UI; `lord`: scripts/lmr1LordStates.ts's, LM-R1).
+const STATE_FLAGS = { ui5: 'states5', ui6: 'states6', ui8: 'states8', ui9: 'states9', ui10: 'states10', 'ui10-extra': 'extra', lands: 'states-lands', lord: 'states-lord' };
 const STATE_DIRS = Object.fromEntries(Object.entries(STATE_FLAGS).map(([set, name]) => [set, flag(name)]));
 const viewports = list('viewports', Object.keys(VIEWPORTS));
 const copies = list('copy', ['normal', 'long']);

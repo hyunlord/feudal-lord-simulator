@@ -64,6 +64,7 @@ KINDS: dict[str, tuple[str, tuple[int, int, int, int] | None, float]] = {
     "biography": ("wave19/pages/frame_biography.png", None, 1),
     "faction-page": ("wave19/pages/frame_faction_page.png", None, 1),
     "pause-badge": ("wave8/time/pause_badge.png", None, 1),
+    "receipt": ("wave35-receipts/E_receipts/receipt_frame.png", (190, 40, 110, 40), 0.875),
 }
 
 

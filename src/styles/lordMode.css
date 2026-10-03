@@ -1,0 +1,75 @@
+/* LM-R1: lord mode's own surfaces — the "왜 여기?" receipt beside a selected building's card (src/ui/lord/ReceiptPanel.tsx)
+   and the lord's conditions in the ledger drawer (src/ui/lord/LordPolicyPanel.tsx). Lord mode only: the sandbox and the
+   campaign never mount them. */
+
+/* The card's button (a kit secondary button, the touch floor). */
+.app-shell .lord-why-here { min-height: 44px; min-width: 44px; justify-self: start; font-size: 13px; }
+
+/* The receipt: a layer frame (data-frame="receipt": its border is the safe inset, its padding the gap). It sits left of
+   the card (the card's position box is its containing block; the card's own scroll does not clip it), as tall as its
+   lines, its body scrolling when the screen is short. Without the frame art the padding box keeps a plain parchment. */
+.app-shell .lord-receipt {
+  position: absolute; top: 0; right: calc(100% + 8px); z-index: 1;
+  display: flex; flex-direction: column; box-sizing: border-box;
+  width: 336px; min-height: 301px;
+  max-height: calc(100vh - var(--hud-right-top) - var(--hud-right-bottom));
+  pointer-events: auto;
+  background: var(--palette-vellum); background-clip: padding-box;
+  color: var(--palette-ink); font-family: var(--ui-body-font);
+}
+.app-shell .lord-receipt-frame { pointer-events: none; }
+.app-shell .lord-receipt-slots { pointer-events: none; }
+.app-shell .lord-receipt-window { display: grid; place-items: center; overflow: hidden; background: var(--palette-parchment-dark); }
+.app-shell .lord-receipt-window img { width: 100%; height: 100%; object-fit: contain; }
+.app-shell .lord-receipt-window .seal-glyph { width: 56px; height: 56px; }
+.app-shell .lord-receipt-close { position: absolute; top: 44px; right: 40px; width: 44px; height: 44px; padding: 0; pointer-events: auto;
+  color: var(--palette-ink); font-size: 24px; line-height: 1; }
+.app-shell .lord-receipt-foot { display: flex; align-items: center; margin: 0; padding: 0 6px; font-size: 12px; line-height: 1.35;
+  color: var(--palette-ink); word-break: keep-all; overflow-wrap: anywhere; }
+.app-shell .lord-receipt-body { display: grid; align-content: start; gap: 4px; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+  scrollbar-color: var(--palette-earth) var(--palette-parchment); }
+.app-shell .lord-receipt-body h2 { margin: 0; font: 600 16px/1.3 var(--ui-title-font, var(--ui-body-font)); color: var(--palette-ink); }
+.app-shell .lord-receipt-body h3 { margin: 6px 0 0; font: 600 13px/1.4 var(--ui-body-font); color: var(--palette-ink-light); }
+.app-shell .lord-receipt-body p,
+.app-shell .lord-receipt-body li { margin: 0; font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+.app-shell .lord-receipt-name { font-weight: 700; }
+.app-shell .lord-receipt-lines,
+.app-shell .lord-receipt-reasons,
+.app-shell .lord-receipt-decisions { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+/* A reason: its sign's cap, its name, the bar (its length is |value| / the largest) and the value written beside it. */
+.app-shell .lord-receipt-reason { display: grid; grid-template-columns: 20px minmax(0, 5.5em) minmax(0, 1fr) 3em; align-items: center; column-gap: 6px; }
+.app-shell .lord-receipt-cap { width: 20px; height: 20px; }
+.app-shell .lord-receipt-bar { position: relative; height: 8px; background: var(--palette-parchment-dark); }
+.app-shell .lord-receipt-bar > span { position: absolute; inset: 0 auto 0 0; width: calc(var(--receipt-share) * 100%); background: var(--palette-forest); }
+.app-shell .lord-receipt-reason[data-sign="minus"] .lord-receipt-bar > span { background: var(--palette-vermilion); }
+.app-shell .lord-receipt-value { font-size: 13px; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+.app-shell .lord-receipt-reason[data-sign="minus"] .lord-receipt-value { color: var(--palette-vermilion); }
+/* A decision: the ribbon art (256 × 64, its ring at the left) as the button's skin, the date and the ledger's line on it. */
+.app-shell .lord-receipt-ribbon { display: grid; gap: 0; width: 100%; min-height: 48px; padding: 4px 22px 4px 44px; text-align: left; color: var(--palette-ink); }
+.app-shell .lord-receipt-ribbon-date { font-size: 12px; color: var(--palette-ink-light); }
+.app-shell .lord-receipt-ribbon-line { font-size: 13px; line-height: 1.3; }
+
+/* The lord tab of the ledger drawer: the four policies as toggle buttons (two by two), the subsidies with their
+   refusal line, the dues' stepper. */
+.app-shell .lord-policy { display: grid; gap: 6px; margin-top: 4px; }
+.app-shell .lord-policy h3 { margin: 6px 0 0; font: 600 13px/1.4 var(--ui-body-font); color: var(--palette-ink); }
+.app-shell .lord-policy p,
+.app-shell .lord-policy li { margin: 0; font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }
+.app-shell .lord-policy-intro { color: var(--palette-ink-light); }
+.app-shell .lord-policy-now { font-weight: 700; }
+.app-shell .lord-policy-options { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px; }
+.app-shell .lord-policy-option { display: grid; gap: 2px; min-height: 64px; padding: 6px 10px; text-align: left; justify-items: start; align-content: center; }
+.app-shell .lord-policy-option-name { font-size: 14px; font-weight: 700; }
+.app-shell .lord-policy-option-weights { font-size: 12px; line-height: 1.35; white-space: normal; word-break: keep-all; overflow-wrap: anywhere; }
+.app-shell .lord-policy-subsidies,
+.app-shell .lord-policy-dues { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.app-shell .lord-policy-subsidies li { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.app-shell .lord-policy-withdraw { min-height: 44px; min-width: 44px; }
+.app-shell .lord-policy-draft { display: grid; gap: 6px; padding: 6px 0; border-top: 1px solid var(--palette-parchment-dark); border-bottom: 1px solid var(--palette-parchment-dark); }
+.app-shell .lord-policy-kind { width: 100%; }
+.app-shell .lord-policy-stepper { display: flex; align-items: center; gap: 8px; }
+.app-shell .lord-policy-step { width: 44px; height: 44px; padding: 0; font-size: 20px; line-height: 1; color: var(--palette-ink); }
+.app-shell .lord-policy-amount { flex: 1; min-width: 0; font-size: 14px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+.app-shell .lord-policy-refusal { color: var(--palette-vermilion); font-weight: 600; }
+.app-shell .lord-policy-set { min-height: 44px; justify-self: start; }
+.app-shell .lord-policy-last-refusal { color: var(--palette-ink-light); }

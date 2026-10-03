@@ -273,6 +273,14 @@
   --frame-pause-badge-safe-right: 1px;
   --frame-pause-badge-safe-bottom: 2px;
   --frame-pause-badge-safe-left: 23px;
+  /* receipt: the lord's why-here receipt (Wave 35; hand: the lower field is the foot slot) — receipt_frame.png ×0.875 */
+  --frame-receipt-width: 166.25px 35px 96.25px 35px;
+  --frame-receipt-art: url("/assets/wave35-receipts/E_receipts/receipt_frame.png") 190 40 110 40 fill / var(--frame-receipt-width) / 0 stretch;
+  --frame-receipt-safe: 147px 35px 97px 39px;
+  --frame-receipt-safe-top: 147px;
+  --frame-receipt-safe-right: 35px;
+  --frame-receipt-safe-bottom: 97px;
+  --frame-receipt-safe-left: 39px;
   /* Buttons: the P0 art (one state; code draws hover / pressed / disabled), the kit's border and size paddings. */
   --button-border: 2px;
   --button-pad-sm: 2px 10px;
@@ -330,3 +338,4 @@
 :root [data-frame][data-frame][data-frame="biography"] { border-style: solid; border-color: transparent; border-width: var(--frame-biography-safe); padding: var(--frame-gap); background-origin: border-box; }
 :root [data-frame][data-frame][data-frame="faction-page"] { border-style: solid; border-color: transparent; border-width: var(--frame-faction-page-safe); padding: var(--frame-gap); background-origin: border-box; }
 :root [data-frame][data-frame][data-frame="pause-badge"] { border-style: solid; border-color: transparent; border-width: var(--frame-pause-badge-safe); padding: var(--frame-gap); background-origin: border-box; }
+:root [data-frame][data-frame][data-frame="receipt"] { border-style: solid; border-color: transparent; border-width: var(--frame-receipt-safe); padding: var(--frame-gap); }

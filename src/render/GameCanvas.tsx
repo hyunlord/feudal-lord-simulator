@@ -33,6 +33,7 @@ import { constructionBlockerLine } from "../ui/constructionBlockerLine";
 import { PlacementConfirmBar } from "../ui/hud/PlacementConfirmBar";
 import type { TileCoordinate } from "../world/grid";
 import { getTile } from '../world/grid';
+import { LordWhyHere } from "../ui/lord/ReceiptPanel";
 
 type GameCanvasProps = {
   readonly selectedTool?: PlacementTool | null;
@@ -215,6 +216,7 @@ export function GameCanvas({
           reachLine={selection.kind === 'building' ? marketReachLine(state, selection.buildingId) : null}
           {...(selection.kind !== 'building' || cardModel.kind !== 'building' ? {} : cropChoice(selection.buildingId))}
           {...(onPerson === undefined ? {} : { onPerson })}
+          lordReceipt={<LordWhyHere state={state} targetId={selection.kind === 'building' ? selection.buildingId : selection.kind === 'construction_site' ? selection.siteId : null} />}
         />
       ) : null}
     </>

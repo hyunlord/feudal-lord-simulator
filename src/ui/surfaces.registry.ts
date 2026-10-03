@@ -14,8 +14,9 @@
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
 export type FrameKind = "css" | "layer" | "painting" | "flat";
-/** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states). */
-export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands";
+/** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
+ * `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice). */
+export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "lord";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -149,6 +150,13 @@ const PERSON_CARD_ART = { art: { w: 320, h: 200 }, safe: { x: 15, y: 22, w: 290,
 /** frame_biography.png / frame_faction_page.png 640×800: the plain parchment inside the border (PIL). */
 const BIOGRAPHY_ART = { art: { w: 640, h: 800 }, safe: { x: 26, y: 29, w: 586, h: 741 } } as const;
 const FACTION_PAGE_ART = { art: { w: 640, h: 800 }, safe: { x: 28, y: 29, w: 582, h: 740 } } as const;
+
+// LM-R1 receipt: the lord's slice, the camera on its first farmstead (town-built: its receipt); the frame layer's slots
+// are the picture recess, the lower field (the money) and the close seal.
+const LORD_TOWN = { kind: "state", set: "lord", name: "lord-receipts", focus: { building: ["farmstead"] }, zoom: 1.4, query: QUIET } as const;
+const LORD_PICK: OpenStep = { map: { building: ["farmstead"] }, action: "click" };
+const RECEIPT = { frame: "layer", frameLayer: ".lord-receipt-frame", contentSlot: ".lord-receipt-body",
+  frameSlots: [".lord-receipt-window", ".lord-receipt-foot", ".lord-receipt-close"], scrollParts: [".lord-receipt-body"] } as const;
 
 export const SURFACES: readonly SurfaceRow[] = [
   // --- The always-on HUD, its strips and small floating boxes (survey §2.1).
@@ -400,6 +408,25 @@ export const SURFACES: readonly SurfaceRow[] = [
   // NAT-4 (LU-D7): the kit NumberField's row in the gallery (the land agent's NumberField; screen.welcome holds the map number one).
   { id: "dev.ui-kit.number", extends: "dev.ui-kit", root: "[data-states='number']", frame: "flat", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
     data: "the kit NumberField's states in the gallery" },
+  // LM-R1 receipt: lord mode's "왜 여기?" receipt beside a selected building's card, and the ledger drawer's lord tab
+  // (scripts/lmr1LordStates.ts: the lord's slice with the stability policy, dues 80% and a 10d farmstead subsidy).
+  { id: "map.selection.lord-farmstead", root: ".diagnostic-card", frame: "css", scene: LORD_TOWN, open: [LORD_PICK], scroll: "y",
+    expect: ".lord-why-here", data: "the lord's slice: a town-built farmstead's card with its why-here button" },
+  { id: "lord.receipt", root: ".lord-receipt", ...RECEIPT, scene: LORD_TOWN, open: [LORD_PICK, { click: ".lord-why-here" }, { pause: 600 }],
+    requires: ["h2", ".lord-receipt-reason", ".lord-receipt-value", ".lord-receipt-ribbon", ".lord-receipt-foot"],
+    data: "a town-built farmstead's receipt: five reasons, the next best site, the chance, the 10d subsidy and its decisions" },
+  { id: "lord.receipt-old", root: ".lord-receipt", ...RECEIPT, scene: { ...LORD_TOWN, name: "lord-receipts-old" }, open: [LORD_PICK, { click: ".lord-why-here" }, { pause: 600 }],
+    requires: ["h2", ".lord-receipt-reason", "[data-chance='none']"], data: "the same receipt from a save before the chance was kept" },
+  { id: "lord.receipt-none", root: ".lord-receipt", ...RECEIPT, scene: { ...LORD_TOWN, focus: { building: ["well"] } },
+    open: [{ map: { building: ["well"] }, action: "click" }, { pause: 800 }, { click: ".lord-why-here" }, { pause: 600 }],
+    requires: ["h2", ".lord-receipt-none"], data: "the opening well: no receipt, the reason instead of an empty frame" },
+  { id: "slot.ledger.lord", root: ".slot-panel.ledger-drawer", frame: "css", scene: LORD_TOWN, open: [LEDGER, { click: "[data-ledger-tab='lord']" }, { pause: 500 }], scroll: "y",
+    requires: [".lord-policy-option", ".lord-policy-kind", ".lord-policy-set", "[data-dues='raise']"], siblingsNoOverlap: [".lord-policy-option"],
+    data: "the lord tab: the four policies (stability), the 10d farmstead subsidy, the draft and the dues at 80%" },
+  // The quarter-of-the-treasury refusal: the draft raised until the engine refuses it (the extreme treasury never does).
+  { id: "slot.ledger.lord-refusal", extends: "slot.ledger.lord", root: ".slot-panel.ledger-drawer", frame: "css", scene: LORD_TOWN, numbers: false, scroll: "y",
+    open: [{ repeat: "[data-step='more']", until: ".lord-policy-refusal[data-refused='true']", max: 15 }, { pause: 300 }],
+    requires: [".lord-policy-refusal"], data: "a subsidy draft past a quarter of the treasury: the reason written, the set button shut" },
 ];
 
 /**

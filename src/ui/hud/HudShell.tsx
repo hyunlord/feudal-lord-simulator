@@ -23,6 +23,9 @@ import { CHRONICLE_SCREEN_COPY } from "../chronicle/chronicleScreenCopy.ko";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
 import { PersonList } from "../persons/PersonViews";
 import { Button } from "../kit";
+import { lordMode } from "../../engine/townAgency";
+import { LordPolicyPanel } from "../lord/LordPolicyPanel";
+import { POLICY_COPY } from "../lord/policyCopy.ko";
 import { EmblemImage } from "../heraldry/EmblemImage";
 import { LORDSHIP_COPY } from "../lordshipCopy.ko";
 import { lordshipView, type LordshipView } from "../lordshipModel";
@@ -173,7 +176,7 @@ export function CrisisIcons({ rows: all, onInspect, lead = null }: { readonly ro
   );
 }
 
-type LedgerTab = "stock" | "alerts" | "rights" | "view" | "map";
+type LedgerTab = "stock" | "alerts" | "rights" | "view" | "map" | "lord";
 /**
  * Ledger drawer (S-26): resource x storage with the total, this week's change and (for food) how long it lasts; a
  * row lights the buildings holding it on the map, a column head opens that store's inspector (UX-3R2). Alerts,
@@ -257,9 +260,12 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
         <Button type="button" className="slot-panel-close" aria-label={HUD_COPY.close} onPress={() => onClose()} variant="icon">{HUD_COPY.closeMark}</Button></header>
       <div className="ledger-tabs">
         <div className="ledger-tab-list" role="tablist">
-          {(Object.keys(HUD_COPY.ledgerTabs) as LedgerTab[]).map(key => (
+          {(Object.keys(HUD_COPY.ledgerTabs) as (keyof typeof HUD_COPY.ledgerTabs)[]).map(key => (
             <Button key={key} data-ledger-tab={key} type="button" role="tab" aria-selected={tab === key} className="ledger-tab" onPress={() => setTab(key)} variant="tab">{HUD_COPY.ledgerTabs[key]}</Button>
           ))}
+          {/* LM-R1: the lord's conditions (estate policy, subsidies, market dues), lord mode only. */}
+          {lordMode(state) ? <Button data-ledger-tab="lord" type="button" role="tab" aria-selected={tab === "lord"} aria-label={POLICY_COPY.tabLabel} className="ledger-tab"
+            onPress={() => setTab("lord")} variant="tab">{POLICY_COPY.tab}</Button> : null}
         </div>
         {/* CHRON-1: not a tab of the drawer — it opens the chronicle screen over it. */}
         {onOpenChronicle === undefined ? null : <Button type="button" className="ledger-tab ledger-tab--chronicle" aria-haspopup="dialog"
@@ -312,6 +318,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
         <li key={row.id}><strong>{row.title}</strong> · {row.countLabel}<br /><span>{row.cause}</span>
           <Button type="button" className="ledger-alert-look" onPress={() => { const first = row.targetIds[0]; if (first !== undefined) { platformServices().input.emit(alertRowLookAtIntent(row)); onInspect(first); } }} variant="secondary">
             <UiIcon sheet="action" cell="look" />{ALERT_STACK_COPY.inspect}</Button></li>))}</ul>) : null}
+      {tab === "lord" ? <LordPolicyPanel state={state} /> : null}
       {tab === "view" ? viewTab : null}
       {tab === "map" ? mapTab : null}
     </section>
