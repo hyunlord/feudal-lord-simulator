@@ -26,6 +26,9 @@ import { courtLine, homePetitionView, lordRequestView, openHomePetitions, preced
 import { lordBeats } from "../src/ui/lordStoryBeats";
 import { HOME_PETITION_ART, PRECEDENT_ART } from "../src/ui/wave44Art";
 import { WAVE44_IMAGES } from "../src/ui/wave44ArtManifest.generated";
+import { LORD_SLICE_FACTIONS } from "../src/content/lordSliceConfig";
+import { lordSliceFactionsMet } from "../src/engine/lordSlice";
+import { factionRows } from "../src/ui/chronicle/factionTabModel";
 
 const SEASON = 1_000;
 const inbox = readFileSync("assets-inbox/INBOX_LEDGER.csv", "utf8");
@@ -199,4 +202,16 @@ test("the court line: the king at the date (kingAt), the old lord by the engine'
   const minor = aged(1290);
   const ward = beginWardship(minor, minor.tick, manorLord(minor.persons.people, lordHouse(minor).order, 1301)!);
   assert.match(courtLine(ward), /· 영주 .+\(11살\) · (후견인 .+|후견: 상위 영주)$/);
+});
+
+test("LM-R1 the chronicle's factions in lord mode: the five the start introduces, then those the lord has dealt with", () => {
+  const ids = (state: GameState) => factionRows(state).map(row => row.id as string).sort();
+  assert.deepEqual(ids(firstPetition), [...lordSliceFactionsMet(firstPetition)].sort());
+  for (const id of LORD_SLICE_FACTIONS) assert.ok(ids(firstPetition).includes(id), id);
+  const unmet = (firstPetition.factions?.factions ?? []).filter(faction => !lordSliceFactionsMet(firstPetition).includes(faction.id));
+  assert.ok(unmet.length > 0, "the slice holds factions not met yet");
+  for (const faction of unmet) assert.equal(ids(firstPetition).includes(faction.id), false, faction.id);
+  // Outside lord mode (no agency) every faction is listed, as before.
+  const { agency: _agency, ...sandbox } = firstPetition;
+  assert.equal(factionRows(sandbox as GameState).length, firstPetition.factions?.factions.length);
 });
