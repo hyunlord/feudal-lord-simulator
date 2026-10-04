@@ -1,0 +1,151 @@
+[
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 627,
+        "end": 628,
+        "text": "  if (now.licenceSeasonsLeft !== undefined && was?.licenceSeasonsLeft === undefined) drafts.push({ ...at, kind: \"event\", template: \"war.licence\", severity: 2 });\n  for (const [defId, answer] of Object.entries(now.answers)) {\n"
+      },
+      {
+        "start": 587,
+        "end": 600,
+        "text": "  const lordOf = (state: GameState) => manorLord(state.persons?.people ?? [], lordshipOf(state).house.order, currentYear(state));\n  if (was.wardship === undefined && now.wardship !== undefined) {\n    const lord = lordOf(after);\n    const guardianId = now.wardship.guardianId;\n    const guardian = guardianId === null ? undefined : after.persons?.people.find(person => person.id === guardianId);\n    drafts.push({ tick: after.tick, kind: \"milestone\", template: \"lord.wardship_begun\",\n      params: { lordId: lord?.id ?? \"\", guardianId: guardian?.id ?? \"\" },\n      subject: TOWN, severity: 2 });\n  } else if (was.wardship !== undefined && now.wardship === undefined) {\n    const lord = lordOf(after) ?? lordOf(before);\n    drafts.push({ tick: after.tick, kind: \"milestone\", template: \"lord.wardship_ended\",\n      params: { lordId: lord?.id ?? \"\" },\n      subject: TOWN, severity: 2 });\n  }\n"
+      },
+      {
+        "start": 700,
+        "end": 700,
+        "text": "  if (came(\"surgeTick\")) drafts.push({ ...at, ...by(\"merchant_house_1\"), kind: \"event\", template: \"reorg.petitions_surge\", severity: 2, cause });\n"
+      },
+      {
+        "start": 1020,
+        "end": 1027,
+        "text": "  for (const negotiation of now.negotiations) {\n    const old = was?.negotiations.find(entry => entry.id === negotiation.id);\n    if (old === undefined) {\n      line(\"negotiation.offered\", { negotiation: negotiation.id, counterpart: negotiation.counterpart, tier: negotiation.acceptance.tier, score: negotiation.acceptance.score });\n      line(`negotiation.${negotiation.status === \"countered\" ? \"countered\" : negotiation.status === \"accepted\" ? \"accepted\" : \"rejected\"}`,\n        { negotiation: negotiation.id, changes: (negotiation.counter?.changes ?? []).map(change => change.kind).join(\",\") });\n    } else if (old.status !== negotiation.status) line(`negotiation.${negotiation.status === \"accepted\" ? \"accepted\" : \"withdrawn\"}`, { negotiation: negotiation.id, changes: \"\" });\n  }\n"
+      },
+      {
+        "start": 1042,
+        "end": 1058,
+        "text": "  if (plan !== undefined) {\n    // FIX-12 (item 2): who the groom is to the lord (a son, the widowed lord, a brother, a nephew, a cousin).\n    const groom = after.persons?.people.find(person => person.id === plan.groomId);\n    const relation = groom?.tags.find(tag => tag.startsWith(\"lord-kin:\"))?.slice(\"lord-kin:\".length) ?? (groom?.role === \"head\" ? \"widowed_lord\" : \"son\");\n    // FIX-13 (NG-5b): the groom died before the bride: her jointure (the piece for her life).\n    if (plan.jointureSettled === true && was?.marriage?.jointureSettled !== true) line(\"marriage.jointure_settled\", { bride: plan.brideId, piece: plan.jointurePieceId ?? \"\" }, 2);\n    if (was?.marriage === undefined) line(\"marriage.contracted\", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId, relation }, 3);\n    for (const [event, tick] of Object.entries(plan.events)) {\n      if (tick === undefined || tick < 0 || (was?.marriage?.events as Record<string, number | undefined> | undefined)?.[event] !== undefined) continue;\n      line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? \"\" }, event === \"father_died\" ? 3 : 2);\n    }\n    if (was?.marriage?.stage !== plan.stage && (plan.stage === \"inherited\" || plan.stage === \"lost\" || plan.stage === \"contested\")) {\n      line(`marriage.${plan.stage}`, { estate: plan.estateId, rival: plan.rival ?? \"\" }, 3);\n      // FIX-13 (NG-5b): a debt promised after the inheritance falls away with an estate that did not come.\n      if (plan.stage === \"lost\" && (plan.deferredDebt ?? 0) > 0) line(\"marriage.deferred_void\", { amount: plan.deferredDebt ?? 0 }, 2);\n    }\n  }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 15,
+        "end": 22,
+        "text": "const PERSON_PARAMS: Readonly<Record<string, string>> = {\n  lordId: \"lord\", guardianId: \"guardian\", candidateId: \"candidate\", heirId: \"heir\", mayorId: \"mayor\", leaderId: \"leader\", predecessorId: \"predecessor\",\n  // LM-E4: the steward of an estate (an estate person).\n  stewardId: \"steward\",\n  // FIX-13 (ES-11): a person off the map who died (a neighbour house's, a steward).\n  deceasedId: \"deceased\",\n};\nexport type PersonReader = Partial<Pick<GameState, \"persons\" | \"factions\" | \"estates\">>;\n"
+      },
+      {
+        "start": 25,
+        "end": 39,
+        "text": "\n/** The town's people (living and past), the factions' and the neighbour estates' — by id (rebuilt when one of them changes). */\nfunction personNamed(state: PersonReader, id: string): Person | undefined {\n  const key = state.persons ?? state;\n  const factions = state.factions?.people, estates = state.estates?.people;\n  let entry = personIndex.get(key);\n  if (entry === undefined || entry.factions !== factions || entry.estates !== estates) {\n    entry = { factions, estates, byId: new Map([...(estates ?? []), ...(factions ?? []), ...(state.persons?.past ?? []), ...(state.persons?.people ?? [])]\n      .map(person => [person.id, person])) };\n    personIndex.set(key, entry);\n  }\n  return entry.byId.get(id);\n}\n\n/**\n"
+      },
+      {
+        "start": 43,
+        "end": 54,
+        "text": "export function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/lordship.ts",
+    "sha256": "b20b8a24ebbd8a36d6e9cc55e8e8fc8dfe6e079b96e1cf1beeb1ce294f8c1190",
+    "spans": [
+      {
+        "start": 56,
+        "end": 73,
+        "text": "/** FIX-11: find the guardian for a minor lord (mother → adult blood kin → null = overlord wardship). */\nfunction findWardshipGuardian(state: GameState, lord: Person, houseOrder: number): string | null {\n  const year = currentYear(state);\n  const manorPeople = (state.persons?.people ?? []).filter(p => p.householdId === MANOR_HOUSEHOLD);\n  const houseTag = `lord-house:${houseOrder}`;\n  const mother = manorPeople.find(p => p.sex === \"female\" && p.role === \"spouse\");\n  if (mother !== undefined) return mother.id;\n  const kin = manorPeople.find(p => p.tags.includes(houseTag) && p.id !== lord.id && ageOf(p, year) >= WARDSHIP_AGE_YEARS);\n  if (kin !== undefined) return kin.id;\n  return null;\n}\n\n/** FIX-11: begin wardship for a minor lord — sets guardianId in lordship state. */\nexport function beginWardship(state: GameState, tick: number, lord: Person): GameState {\n  const lordship = lordshipOf(state);\n  const guardianId = findWardshipGuardian(state, lord, lordship.house.order);\n  return { ...state, lordship: { ...lordship, wardship: { guardianId, since: tick } } };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/reorganisation.ts",
+    "sha256": "bf8b86099535fc3b3098c774da0aa5d45d8e7c21fdd25c013e79cf58d92c0595",
+    "spans": [
+      {
+        "start": 433,
+        "end": 435,
+        "text": "  if (r.surgeTick === undefined) {\n    const both = r.textileStreetTick !== undefined && r.alehouseBoomTick !== undefined && tick >= Math.max(r.textileStreetTick, r.alehouseBoomTick) + SEASON;\n    if ((both && year >= B.surgeFromYear) || tick >= seasonOf(state, B.surgeLatestYear)) next = withReorganisation(next, r = { ...r, surgeTick: tick });\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/marriage.ts",
+    "sha256": "181b1c50f543c3bdbe66adff77b4710ea689cda5f99c5dbbb9f73e6411eeb99a",
+    "spans": [
+      {
+        "start": 85,
+        "end": 111,
+        "text": "export function marriageGrooms(state: GameState): readonly GroomCandidate[] {\n  const order = lordshipOf(state).house.order;\n  const year = currentYear(state);\n  const people = state.persons?.people ?? [];\n  const married = new Set(people.flatMap(person => person.tags.filter(tag => tag.startsWith(\"spouse-of:\")).map(tag => tag.slice(\"spouse-of:\".length))));\n  const ofAge = (person: Person) => ageOf(person, year) >= GROOM_MIN_AGE && ageOf(person, year) <= GROOM_MAX_AGE && !married.has(person.id);\n  const sons = people.filter(person => person.householdId === MANOR_HOUSEHOLD && person.tags.includes(`lord-house:${order}`) && person.sex === \"male\"\n    && person.role === \"child\" && ofAge(person)).sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id));\n  const lord = manorLord(people, order, year);\n  const widowed = lord !== undefined && lord.sex === \"male\" && ofAge(lord)\n    && !people.some(person => person.alive && person.householdId === MANOR_HOUSEHOLD && person.tags.includes(`lord-house:${order}`)\n      && person.id !== lord.id && (person.role === \"spouse\" || (person.role === \"head\" && person.sex === \"female\")));\n  // A kin already married into the manor (a contract made) is a manor person now, no longer off the map.\n  const materialised = new Set(people.flatMap(person => person.tags.filter(tag => tag.startsWith(\"kin-of:\")).map(tag => tag.slice(\"kin-of:\".length))));\n  const kin = lordHouseKin(state).filter(entry => !materialised.has(entry.person.id) && !entry.person.tags.includes(\"married\") && ofAge(entry.person));\n  return [...sons.map(person => ({ person, relation: \"son\" as const })), ...(widowed ? [{ person: lord, relation: \"widowed_lord\" as const }] : []), ...kin];\n}\n\n/** NG-7 API: the groom (the first of `marriageGrooms`, or the one asked for) and the bride — the old lord's elder unmarried daughter. */\nexport function marriageCandidates(state: GameState, groomId?: string): { readonly groom: Person | null; readonly bride: Person | null; readonly relation: GroomRelation | null } {\n  const grooms = marriageGrooms(state);\n  const chosen = groomId === undefined ? grooms[0] : grooms.find(entry => entry.person.id === groomId);\n  const estate = estatesOf(state).estates.find(entry => entry.id === MARRIAGE_ESTATE_ID);\n  const bride = estatesOf(state).people.filter(person => person.alive && person.sex === \"female\" && person.fatherId === estate?.house?.lordId\n    && !person.tags.includes(\"married-out\")).sort((a, b) => a.birthYear - b.birthYear || a.id.localeCompare(b.id))[0] ?? null;\n  return { groom: chosen?.person ?? null, bride, relation: chosen?.relation ?? null };\n}\n"
+      },
+      {
+        "start": 137,
+        "end": 170,
+        "text": "export function proposeMarriage(state: GameState, offered: readonly Term[], groomId?: string): GameState {\n  if (marriageRefusal(state, offered, groomId) !== null) return state;\n  const { groom, bride } = marriageCandidates(state, groomId);\n  const terms = withConsent(offered);\n  const diplomacy = diplomacyOf(state);\n  const ordinal = diplomacy.nextNegotiation;\n  const acceptance = evaluateOffer(state, LORD, COUNTERPART, terms);\n  const accepted = offerDraw(state, ordinal) < acceptance.permille;\n  const counter = accepted ? null : counterOffer(state, LORD, COUNTERPART, terms, `negotiation-${ordinal}`);\n  const negotiation: Negotiation = { id: `negotiation-${ordinal}`, proposer: LORD, counterpart: COUNTERPART, purpose: \"marriage\",\n    groomId: groom!.id, brideId: bride!.id, terms, acceptance, status: accepted ? \"accepted\" : counter === null ? \"rejected\" : \"countered\",\n    ...(counter === null ? {} : { counter }), tick: state.tick, deadline: state.tick + COUNTER_ANSWER_TICKS };\n  const next = withDiplomacy(state, { ...diplomacy, negotiations: [...diplomacy.negotiations, negotiation], nextNegotiation: ordinal + 1 });\n  return accepted ? contract(next, negotiation, terms) : next;\n}\n\n/** NG-5: the lord takes the counter (the counterpart's own terms: it holds to them) or lets it go. */\nexport function answerCounter(state: GameState, negotiationId: string, accept: boolean): GameState {\n  const diplomacy = diplomacyOf(state);\n  const negotiation = diplomacy.negotiations.find(entry => entry.id === negotiationId);\n  if (negotiation === undefined || negotiation.status !== \"countered\" || negotiation.counter === undefined || state.tick > negotiation.deadline) return state;\n  if (accept && cashOf(negotiation.counter.terms) > Math.max(0, treasuryBalance(state))) return state;\n  const settled = { ...negotiation, status: accept ? \"accepted\" as const : \"withdrawn\" as const };\n  const next = withDiplomacy(state, { ...diplomacy, negotiations: diplomacy.negotiations.map(entry => entry.id === negotiationId ? settled : entry) });\n  return accept ? contract(next, settled, negotiation.counter.terms) : next;\n}\n\n/** NG-5: a counter not answered within its season lapses (withdrawn). */\nfunction lapseCounters(state: GameState): GameState {\n  const diplomacy = state.diplomacy;\n  if (diplomacy === undefined || !diplomacy.negotiations.some(entry => entry.status === \"countered\" && state.tick > entry.deadline)) return state;\n  return withDiplomacy(state, { ...diplomacy, negotiations: diplomacy.negotiations.map(entry =>\n    entry.status === \"countered\" && state.tick > entry.deadline ? { ...entry, status: \"withdrawn\" as const } : entry) });\n}\n"
+      },
+      {
+        "start": 256,
+        "end": 294,
+        "text": "function contract(state: GameState, negotiation: Negotiation, terms: readonly Term[]): GameState {\n  let next = state;\n  const cash = cashOf(terms);\n  if (cash > 0) {\n    const posted = postLedgerEntries(next, [{ account: \"cash\", category: \"marriage_portion\", amount: -cash,\n      sourceRefs: [{ type: \"claim\", id: negotiation.id, detail: \"marriage\" }, { type: \"actor\", id: negotiation.counterpart }] }]);\n    next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n  }\n  const claimed = raiseClaim(next, { claimant: LORD, estateId: MARRIAGE_ESTATE_ID, basis: \"marriage\" });\n  const claimId = estatesOf(claimed).claims.at(-1)!.id;\n  let diplomacy = contractPromises(diplomacyOf(claimed), negotiation, terms, state.tick);\n  diplomacy = { ...diplomacy, relations: { ...diplomacy.relations, [negotiation.counterpart]: (diplomacy.relations[negotiation.counterpart] ?? 0) + CONTRACT_RELATION_GAIN } };\n  const groomed = groomToManor(claimed, negotiation.groomId);\n  // FIX-13 (NG-5b): what is not cash waits — the jointure for the groom's death, the deferred debt for the inheritance.\n  const jointure = terms.find(term => term.kind === \"jointure\" && term.giver === \"proposer\")?.pieceId;\n  const deferred = terms.filter(term => term.kind === \"debt_after_inheritance\" && term.giver === \"proposer\").reduce((sum, term) => sum + (term.amount ?? 0), 0);\n  const plan: MarriagePlan = { negotiationId: negotiation.id, groomId: groomed.groomId, brideId: negotiation.brideId, estateId: MARRIAGE_ESTATE_ID,\n    contractedTick: state.tick, stage: \"contracted\", claimId, events: {}, ...(jointure === undefined ? {} : { jointurePieceId: jointure }),\n    ...(deferred > 0 ? { deferredDebt: deferred } : {}) };\n  return withDiplomacy(groomed.state, { ...diplomacy, marriage: plan });\n}\n\n/**\n * FIX-12 (item 2, NG-7a): a groom from off the map comes to the manor at the contract — a manor person of the lord's\n * house (the family's own ordinal), tagged with the kin id he had (`kin-of:`), so he is no longer offered.\n */\nfunction groomToManor(state: GameState, groomId: string): { readonly state: GameState; readonly groomId: string } {\n  const persons = state.persons;\n  if (!groomId.startsWith(KIN_PREFIX) || persons === undefined) return { state, groomId };\n  const kin = lordHouseKin(state).find(entry => entry.person.id === groomId);\n  if (kin === undefined) return { state, groomId };\n  const ordinal = persons.lordOrdinal ?? 1;\n  const id = `m-${String(ordinal).padStart(6, \"0\")}`;\n  const order = lordshipOf(state).house.order;\n  const { fatherId: _offMapFather, ...person } = kin.person;\n  const groom: Person = { ...person, id, householdId: MANOR_HOUSEHOLD, role: \"kin\",\n    tags: [\"lord-family\", `lord-house:${order}`, `lord-kin:${kin.relation}`, `kin-of:${groomId}`] };\n  return { state: { ...state, persons: { ...persons, people: [...persons.people, groom].sort((a, b) => a.id.localeCompare(b.id)), lordOrdinal: ordinal + 1 } }, groomId: id };\n}\n"
+      },
+      {
+        "start": 336,
+        "end": 362,
+        "text": "function brideArrives(state: GameState, plan: MarriagePlan): GameState {\n  const people = estatesOf(state).people;\n  const bride = people.find(person => person.id === plan.brideId);\n  if (bride === undefined || state.persons === undefined) return state;\n  const order = lordshipOf(state).house.order;\n  const moved: Person = { ...bride, householdId: MANOR_HOUSEHOLD, role: \"kin\", tags: [\"lord-family\", `lord-house:${order}`, `spouse-of:${plan.groomId}`, `born:${MARRIAGE_ESTATE_ID}`] };\n  const next = withEstatePeople(state, people.map(person => person.id === bride.id ? { ...person, tags: [...person.tags, \"married-out\"] } : person));\n  return { ...next, persons: { ...state.persons, people: [...state.persons.people, moved].sort((a, b) => a.id.localeCompare(b.id)) } };\n}\n\n/** NG-8: the couple's first child, born in the manor (the lord's family's own ordinal). */\nfunction firstChild(state: GameState, plan: MarriagePlan): GameState {\n  const persons = state.persons;\n  if (persons === undefined) return state;\n  const groom = persons.people.find(person => person.id === plan.groomId);\n  const ordinal = persons.lordOrdinal ?? 1;\n  const id = `m-${String(ordinal).padStart(6, \"0\")}`;\n  const sex = hashSeed(state.seed, \"marriage-child\", ordinal) % 2 === 0 ? \"male\" as const : \"female\" as const;\n  const traits = populationTraits(state.seed, \"lord-child\", ordinal);\n  const order = lordshipOf(state).house.order;\n  const draft = { id, sex, classBand: \"gentry\" as const, build: traits.buildBias, occupation: \"\", tags: [\"lord-family\", `lord-house:${order}`], role: \"child\" as const, traits };\n  const child: Person = { ...draft, givenName: weightedName(sex === \"male\" ? MALE_GIVEN_NAMES : FEMALE_GIVEN_NAMES, hashSeed(state.seed, \"lord-child\", ordinal)),\n    ...(groom?.surname === undefined ? {} : { surname: groom.surname }), birthYear: currentYear(state), householdId: MANOR_HOUSEHOLD, hair: hairWords(traits),\n    alive: true, lineageId: groom?.lineageId ?? `lin:${id}`, motherId: plan.brideId, fatherId: plan.groomId,\n    portraitIdentity: choosePortraitIdentity(state.seed, draft, ageBandOf(0), new Map()) };\n  return { ...state, persons: { ...persons, people: [...persons.people, child].sort((a, b) => a.id.localeCompare(b.id)), lordOrdinal: ordinal + 1 } };\n}\n"
+      },
+      {
+        "start": 408,
+        "end": 420,
+        "text": "function inheritance(state: GameState, plan: MarriagePlan): GameState {\n  const lord = oldLord(state);\n  let next = lord === undefined ? state : withEstatePeople(state, estatesOf(state).people.map(person => person.id === lord.id ? { ...person, alive: false, deathYear: currentYear(state), deathCause: \"age\" as const } : person));\n  const son = plan.brotherInLawId === undefined ? undefined : estatesOf(next).people.find(person => person.id === plan.brotherInLawId && person.alive);\n  const events = { ...plan.events, father_died: state.tick };\n  if (son !== undefined) {\n    next = claimStatus(estateTo(next, MARRIAGE_ESTATE_ID, `person:${son.id}`), plan.claimId, \"lapsed\");\n    return withPlan(next, { ...plan, stage: \"lost\", events });\n  }\n  if (plan.rival !== undefined) return withPlan(estateTo(next, MARRIAGE_ESTATE_ID, plan.rival), { ...plan, stage: \"contested\", events });\n  next = claimStatus(estateTo(next, MARRIAGE_ESTATE_ID, LORD), plan.claimId, \"won\");\n  return withPlan(deferredDebtDue(next, plan), { ...plan, stage: \"inherited\", events });\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/war.ts",
+    "sha256": "502703a1be4dbae2764cdbc247b9cba9b35fda3ae7895add24694b1e51acd58b",
+    "spans": [
+      {
+        "start": 280,
+        "end": 290,
+        "text": "/**\n * WR-2…WR-8: the lord's answer to a war petition (called by `respondToPetition`, which records the decision and marks\n * the petition answered). `expired` is a demand left unanswered: it counts as a refusal.\n */\nexport function answerWarPetition(state: GameState, petition: PetitionRecord, response: PetitionResponse | \"expired\"): GameState {\n  const war = warOf(state);\n  if (war === undefined) return state;\n  const refused = response === \"refuse\" || response === \"expired\";\n  const source: readonly [SourceRef, ...SourceRef[]] = [CROWN, { type: \"claim\", id: petition.id, detail: petition.defId }];\n  let next: GameState = withWar(state, { ...war, answers: { ...war.answers, [petition.defId]: response },\n    ...(refused && petition.petitioner === \"crown\" ? { favour: false } : {}) });\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/stewardship.ts",
+    "sha256": "e73a230a40cc61951e6173ecb9cfde2ac62144b57fb573a10f183002743abe49",
+    "spans": [
+      {
+        "start": 117,
+        "end": 135,
+        "text": "/** SW-2: the estates the lord came to hold get their oversight (direct, the most loyal candidate keeping the accounts). */\nfunction ensureOversight(state: GameState): GameState {\n  const held = heldOffMapEstates(state);\n  const current = stewardshipOf(state);\n  const missing = held.filter(estate => !current.oversight.some(entry => entry.estateId === estate.id));\n  if (missing.length === 0) return state;\n  let next = state;\n  let stewardship = current;\n  for (const estate of missing) {\n    const made = makeCandidates(next, estate.id);\n    const receiver = [...made.stewards].sort((a, b) => b.loyalty - a.loyalty || a.personId.localeCompare(b.personId))[0]!;\n    next = { ...next, estates: { ...estatesOf(next), people: [...estatesOf(next).people, ...made.people] } };\n    stewardship = { ...stewardship, stewards: [...stewardship.stewards, ...made.stewards.map(record => record === receiver ? { ...record, status: \"serving\" as const } : record)],\n      oversight: [...stewardship.oversight, { estateId: estate.id, mode: \"direct\", stewardId: receiver.personId, auditMode: \"accounts\", tenants: 0, merchants: 0,\n      undetected: 0, since: state.tick }] };\n  }\n  return withStewardship(next, stewardship);\n}\n\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/townAgency.ts",
+    "sha256": "b2e99ce084df555b676423a2d767b0bd9874f349a2d71d50dd1bd48fb2bac63d",
+    "spans": [
+      {
+        "start": 513,
+        "end": 518,
+        "text": "  const charterTimber = needs.find(need => need.planner === \"era\" && need.action.kind === \"order_timber\");\n  const requests = needs.filter(need => LORD_REQUEST_KINDS.has(need.action.kind) && need !== charterTimber).map(need => need.action as LordRequest);\n  let next: GameState = { ...week, agency: { ...week.agency!, requests } };\n  if (charterTimber !== undefined && charterTimber.action.kind === \"order_timber\" && (next.timberOrder ?? 0) === 0) next = orderTimber(next, charterTimber.action.amount);\n  const receipts: ProjectReceipt[] = [];\n  let started = 0;\n"
+      }
+    ]
+  },
+  {
+    "path": "docs/design/glossary.md",
+    "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181",
+    "spans": [
+      {
+        "start": 45,
+        "end": 98,
+        "text": "| 수레꾼 | 인물의 생업·직업명 | carter | 모든 carrier와 일괄 치환 |\n\n## 땅·권리·혼인·청원\n\n| 한국어 정본 | 뜻·사용 범위 | 영어 원어 | 쓰지 말 표기·혼동 |\n| --- | --- | --- | --- |\n| 영지 | 인물·가문이 보유한 토지와 권리의 묶음 | estate | 장원과 무조건 치환 |\n| 장원 | 장원 법정·관습·소작 관계의 단위 | manor | 영주관(건물), 영지 전체와 동일시 |\n| 직영지 | 영주를 위해 직접 경영하는 땅 | demesne | 모든 직할 영지와 동일시 |\n| 영주관 | 영주 가문의 거처 건물 | manor house | 장원 전체 |\n| 필지 | 구분된 토지 단위. 도시 집터는 용도 설명 | plot / burgage plot | 집·가구 |\n| 경작지 | 농작물을 기르는 구역 | arable land | 모든 경작지가 영주 직영지라고 단정 |\n| 목초지 | 가축을 먹이는 풀밭 | pasture | 공유지와 동일시 |\n| 공유지 | 공동 이용권이 적용되는 땅이라는 게임 용어 | common land | 누구나 소유·처분할 수 있는 공공 토지 |\n| 공유지 방목권 | 정해진 공동 이용권에 따른 방목 권리 | common of pasture | 무제한 방목권 |\n| 권원 | 권리를 주장하는 법적 근거·명의 | title | 점유, 귀족 작위와 무조건 통합 |\n| 점유 | 실제로 땅·권리를 쥐고 행사하는 상태 | possession | 권원의 존재가 곧 점유라는 서술 |\n| 청구권 | 권리를 요구·주장하는 근거가 있는 권리 | claim | 승소가 확정된 소유권 |\n| 장원 법정 | 장원 내 사건을 다루는 법정의 포괄 이름 | manor court | 현대 형사법원과 동일한 권한 |\n| 배심원 | 장원 법정의 배심 역할 | juror | 현대 재판의 권한을 그대로 투영 |\n| 청원 | 영주·권한자에게 판단·허가를 구하는 요청 | petition | 일방적 칙령과 자동 통합 |\n| 특허장 | 특정 권리·특전을 부여·확인하는 문서 | charter | 기술 발명 특허 |\n| 자치 특허 | 도시의 자치권을 정하는 특허·합의 | borough charter | 현대 지방자치 제도와 동일시 |\n| 시장 개설권 | 장터를 열 권리 | market right | 도시 시장(mayor) 선출권 |\n| 시장 선출권 | 도시 대표를 선출하는 권리 | right to elect a mayor | 장터 개설권 |\n| 시장 좌판세 | 시장 좌판에서 걷는 이 게임의 수입 | market stall dues | 통행세 |\n| 통행세 | 통행·운송에 따른 수입 | toll | 모든 시장세와 통합 |\n| 제분료 | 곡물 제분의 대가 | multure / milling toll | 축융료와 통합 |\n| 방앗간 사용료 | 권리 패널의 기존 포괄 명칭. 상세에서 제분료 설명 | mill dues | 모호한 방앗간세 남발 |\n| 축융 방앗간 사용료 | 모직 축융 시설 이용 수입 | fulling toll | 곡물 제분료 |\n| 성벽세 | 성벽 건설·유지 재원을 위한 해당 수입 | murage | 모든 통행세와 동일시 |\n| 직물 검정·인장세 | 직물 검사·인증에 관련된 해당 세목 | ulnage / alnage | 단순 판매세와 동일시 |\n| 직물 매매세 | 거래에 따른 이 게임의 수입 | cloth toll | 직물 검정·인장세 |\n| 성직자 추천권 | 공석 성직의 후보를 추천할 권리 | advowson | 교회 추천권, 교회 소유권 |\n| 어업권 | 특정 수역의 어업 권리 | fishery right | 수역 전체의 절대 소유권 |\n| 사냥권 | 정해진 범위의 수렵 권리 | hunting right | 모든 숲의 무제한 사용권 |\n| 지대 | 토지 사용의 대가 | rent | 모든 조세·수입 |\n| 부역 | 관습·계약에 따른 노동 의무 | labour service | 현대 자원봉사 |\n| 현금 지대 | 돈으로 내는 지대 | cash rent | 부역 자체와 동일시 |\n| 자치 연납금 | 자치권 등에 대한 도시의 정기 지급액 | fee farm | 영어만 fee farm, 권리 종류로 분류 |\n| 입주금 | 토지 보유·입주 허용에 따른 이 게임의 지급금 | entry fine | 위반 벌금으로만 번역 |\n| 상속 승인금 | 상속인의 승계를 승인받으며 내는 금액 | relief | 현대 세법의 상속세와 동일시 |\n| 사망 부과금(헤리엇) | 소작인 사망 시 관습상 납부하는 금액·물품 | heriot | relief와 무조건 같은 상속세 |\n| 혼인 부담금(머쳇) | 특정 소작 관습의 혼인 관련 부담 | merchet | 모든 주민에게 보편적인 현대 혼인세 |\n| 왕실 보조세 | 왕실의 보조세 요구를 뜻하는 포괄 명칭 | royal subsidy | 과세를 낸다 |\n| 15분의 1세·10분의 1세 | 역사적 세목명. 게임 금고 비율 수식과 구분 | fifteenth and tenth | 교회 십일조 |\n| 인두세 | 개인을 과세 대상으로 하는 세금 | poll tax | 모든 연도의 대상·세율을 동일하게 단정 |\n| 왕실 조달 | 왕실을 위한 물자 조달·징발 | purveyance | 일반 시장 구매와 항상 동일시 |\n| 지참금 | 혼인 계약에서 제공되는 재산 | dowry / marriage portion | 과부산 |\n| 과부산 | 배우자 사망 뒤 아내의 생계를 위한 재산 약정, 이 게임의 jointure | jointure | 지참금, dower와 자동 동일시 |\n| 과부 몫 | 법적·관습적 dower를 따로 설명할 때의 명칭 | dower | jointure와 근거 없이 치환 |\n| 채무 인수 | 남의 빚을 떠맡는 약정 | assumption of debt | 원채무 탕감 |\n| 조건부 의무 해제 | 조건 불성립으로 약속 이행 의무가 사라짐 | discharge of conditional obligation | 이웃의 빚이 소멸함 |\n| 후견 | 미성년자와 재산의 관리 관계 | wardship | 곧 입양이라는 표현 |\n"
+      }
+    ]
+  }
+]

@@ -1,0 +1,957 @@
+{
+  "additionalNegativeSchemaChecks": 238,
+  "checks": [
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid.unknown-verified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.context-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.record-root0",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.context-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.record-root1",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.context-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.record-root2",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.context-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.record-root3",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.context-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.record-root4",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.context-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.record-root5",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.null-recordId",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.null-recordTick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.null-fields",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.null-referenceVerified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record.unknown-verified",
+      "rejected": true
+    }
+  ]
+}

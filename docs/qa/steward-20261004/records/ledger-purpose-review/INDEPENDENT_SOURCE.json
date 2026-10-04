@@ -1,0 +1,132 @@
+[
+  {
+    "path": "src/engine/marriage.ts",
+    "sha256": "181b1c50f543c3bdbe66adff77b4710ea689cda5f99c5dbbb9f73e6411eeb99a",
+    "spans": [
+      {
+        "start": 209,
+        "end": 223,
+        "text": "\n/** NG-6 API: the lord keeps a promise before its deadline — a payment is paid from the treasury; support is given. */\nexport function keepPromise(state: GameState, promiseId: string): GameState {\n  const diplomacy = diplomacyOf(state);\n  const record = diplomacy.promises.find(entry => entry.id === promiseId);\n  if (record === undefined || record.status !== \"open\" || record.promisor !== LORD || state.tick > record.deadline) return state;\n  let next = state;\n  const amount = record.amount ?? 0;\n  if (amount > 0) {\n    if (treasuryBalance(state) < amount) return state;\n    const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"promise_payment\", amount: -amount,\n      sourceRefs: [{ type: \"claim\", id: record.id, detail: record.term }, { type: \"actor\", id: record.promisee }] }]);\n    next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n  }\n  return settle(next, record.id, \"kept\");\n"
+      },
+      {
+        "start": 373,
+        "end": 386,
+        "text": "/** NG-8 API: the will-change answer — a favour paid, support promised, or the new will let stand (it names a rival). */\nexport function answerWillChange(state: GameState, choice: \"favour\" | \"support_promise\" | \"let_it_be\"): GameState {\n  const plan = diplomacyOf(state).marriage;\n  if (plan === undefined || plan.stage !== \"will_change\" || plan.willAnswer !== undefined) return state;\n  if (choice === \"favour\") {\n    if (treasuryBalance(state) < WILL_FAVOUR_PENNIES) return state;\n    const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"promise_payment\", amount: -WILL_FAVOUR_PENNIES,\n      sourceRefs: [{ type: \"claim\", id: plan.claimId, detail: \"will_favour\" }, { type: \"actor\", id: COUNTERPART }] }]);\n    return withPlan({ ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin },\n      { ...plan, stage: \"father_ill\", willAnswer: choice, events: { ...plan.events, will_dropped: state.tick } });\n  }\n  if (choice === \"support_promise\") {\n    const made = promise(diplomacyOf(state), { promisor: LORD, promisee: COUNTERPART, term: \"political_support\", deadline: state.tick + PROMISE_SUPPORT_TICKS,\n      witnesses: MARRIAGE_WITNESSES, stake: PROMISE_STAKE, negotiationId: plan.negotiationId });\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/legacy.ts",
+    "sha256": "b2d4dfbf1bcbebd1cae5b58b72dc6770f4abb78526f9053d576dc4fdb25ccbd9",
+    "spans": [
+      {
+        "start": 71,
+        "end": 78,
+        "text": "/** Posts `amount` (positive: into the treasury; negative: out of it, at most what it holds); returns what moved. */\nfunction post(state: GameState, category: LedgerCategory, amount: number, sources: readonly [SourceRef, ...SourceRef[]]): { readonly state: GameState; readonly moved: number } {\n  const moved = amount < 0 ? -Math.min(-amount, Math.max(0, treasuryBalance(state))) : amount;\n  if (moved === 0) return { state, moved: 0 };\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category, amount: moved, sourceRefs: sources }]);\n  return { state: { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger }, moved };\n}\n\n"
+      },
+      {
+        "start": 146,
+        "end": 157,
+        "text": "export function answerLegacyPetition(state: GameState, petition: PetitionRecord, response: PetitionResponse | \"expired\"): GameState {\n  const legacy = legacyOf(state);\n  if (legacy === undefined) return state;\n  let next = withLegacy(state, { ...legacy, answers: { ...legacy.answers, [petition.defId]: response } });\n  const l = legacyOf(next)!;\n  switch (petition.defId) {\n    case ROYAL_TAX_PETITION_ID: {\n      if (response !== \"accept\") break;\n      const due = Math.max(B.subsidyMin, Math.min(B.subsidyMax, Math.floor(treasuryBalance(next) * B.subsidyPermille / 1000)));\n      const paid = post(next, \"royal_subsidy\", -due, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"royal_subsidy\", detail: \"tenth_and_fifteenth\" }]);\n      next = withLegacy(paid.state, { ...l, royalSubsidy: l.royalSubsidy - paid.moved });\n      break;\n"
+      },
+      {
+        "start": 172,
+        "end": 182,
+        "text": "      if (response === \"accept\") {\n        // LG-2: the mayoralty and the seal to the town (and chapter 4's two lines if it had refused); the fine; the fee farm.\n        const held = new Set((next.politics?.rights ?? []).map(right => right.id));\n        const lines = [MAYORALTY_RIGHT_ID, BOROUGH_SEAL_RIGHT_ID, MARKET_TOLLS_RIGHT_ID, BRIDGE_TOLLS_RIGHT_ID].filter(id => !held.has(id));\n        if (next.politics !== undefined) next = { ...next, politics: { ...next.politics, rights: [...next.politics.rights, ...lines.map(id => ({ id, holder: \"townsfolk\" as const,\n          grantedTick: state.tick, petitionId: petition.id, stallFeePermille: id === MARKET_TOLLS_RIGHT_ID ? 0 : 1000 }))] } };\n        next = post(next, \"charter_fee\", B.charterFine, [TOWN_ACTOR, { type: \"right\", id: BOROUGH_SEAL_RIGHT_ID, detail: \"charter_fine\" }]).state;\n        if (l.answers[ROYAL_TAX_PETITION_ID] !== \"accept\") {\n          next = post(next, \"royal_subsidy\", -B.confirmationFine, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"royal_subsidy\", detail: \"confirmation\" }]).state;\n        }\n        const mayorCandidate = personOf(next, l.mayorCandidateId);\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/ale.ts",
+    "sha256": "ccb11033375137164b40cc027f165f4b06b4333a61533ce8729e9bc1c2a455a8",
+    "spans": [
+      {
+        "start": 138,
+        "end": 182,
+        "text": " * full slot went dry when the alehouses did), else from its nearest alehouse with ale; the alehouses' dues on their sales.\n */\nfunction drinkSeason(state: GameState): GameState {\n  const buildings = new Map(state.buildings.map(building => [building.id, building]));\n  const houses = [...state.houses];\n  const at = new Map(houses.map((house, index) => [house.buildingId, index]));\n  const sold = new Map<string, number>();\n  let drunk = 0;\n  for (const house of [...state.houses].sort((a, b) => a.buildingId.localeCompare(b.buildingId))) {\n    if (house.level < 1 || house.residents <= 0) continue;\n    const home = buildings.get(house.buildingId);\n    if (home === undefined) continue;\n    const own = houses[at.get(house.buildingId)!]!;\n    const ownSlot = brewingSlot(own);\n    if (ownSlot !== null && (ownSlot.stock.ale ?? 0) >= ALE_BALANCE.alePerHouseSeason) {\n      houses[at.get(house.buildingId)!] = { ...withSlot(own, { ...ownSlot, stock: { ...ownSlot.stock, ale: (ownSlot.stock.ale ?? 0) - ALE_BALANCE.alePerHouseSeason } }),\n        aleUntilTick: state.tick + ALE_BALANCE.aleServedTicks };\n      drunk += ALE_BALANCE.alePerHouseSeason;\n      continue;\n    }\n    const stake = houses.filter(entry => isAlehouse(entry) && (brewingSlot(entry)?.stock.ale ?? 0) > 0 && buildings.has(entry.buildingId)\n      && buildingFootprintDistance(home, buildings.get(entry.buildingId)!) <= ALE_BALANCE.alehouseReach)\n      .sort((a, b) => buildingFootprintDistance(home, buildings.get(a.buildingId)!) - buildingFootprintDistance(home, buildings.get(b.buildingId)!)\n        || a.buildingId.localeCompare(b.buildingId))[0];\n    if (stake === undefined) continue;\n    const slot = brewingSlot(stake)!;\n    const drink = Math.min(ALE_BALANCE.alePerHouseSeason, slot.stock.ale ?? 0);\n    if (drink <= 0) continue;\n    houses[at.get(stake.buildingId)!] = withSlot(stake, { ...slot, stock: { ...slot.stock, ale: (slot.stock.ale ?? 0) - drink } });\n    const drinker = houses[at.get(house.buildingId)!]!;\n    houses[at.get(house.buildingId)!] = { ...drinker, aleUntilTick: state.tick + ALE_BALANCE.aleServedTicks };\n    sold.set(stake.buildingId, (sold.get(stake.buildingId) ?? 0) + drink);\n    drunk += drink;\n  }\n  const next = counted({ ...state, houses }, { drunk, sold: [...sold.values()].reduce((sum, casks) => sum + casks, 0) });\n  if (sold.size === 0) return next;\n  const postings: LedgerPosting[] = [];\n  for (const [id, casks] of [...sold.entries()].sort(([a], [b]) => a.localeCompare(b))) {\n    const dues = Math.ceil(casks * ALE_BALANCE.alePrice * ALE_BALANCE.alehouseDuesPermille / 1000);\n    if (dues > 0) postings.push({ account: \"cash\", category: \"stall_fee\", amount: dues, sourceRefs: [{ type: \"building\", id, detail: `alehouse:${casks}` }] });\n  }\n  if (postings.length === 0) return next;\n  const posted = postLedgerEntries(next, postings);\n  return { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/diplomacyConfig.ts",
+    "sha256": "c37266ce00dd391f0db7e42ceddfc8aa420d03c8fc081d263e5cee3e87036967",
+    "spans": [
+      {
+        "start": 94,
+        "end": 100,
+        "text": "/** NG-8: a brother-in-law born lowers the expectation; the counterpart's broken non-infringement raises it. */\nexport const BROTHER_IN_LAW_CLAIM_LOSS = 30;\nexport const BREACHED_NON_INFRINGEMENT_GAIN = 15;\n/** NG-8: the favour that talks the old lord out of a new will, pennies. */\nexport const WILL_FAVOUR_PENNIES = 120;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/legacyConfig.ts",
+    "sha256": "3ca61d68328e3b15bd062a6bdd06061eaa56e0ccf8f02ab8510f1805993de1f8",
+    "spans": [
+      {
+        "start": 80,
+        "end": 86,
+        "text": "\n  /** LG-2: a sealed charter — the town's one-off fine, the fee farm from then, the Crown's confirmation after a petition. */\n  charterFine: 300,\n  feeFarm: 200,\n  confirmationFine: 200,\n  /** LG-2: a refusal's backlash — at least this, the town's influence, or chapter 4's backlash and this much. */\n  backlashFloor: 30,\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/aleConfig.ts",
+    "sha256": "edbb0c889508acc87e4852402c8d2511127ac87d23bab9234f6cc28ec562b45c",
+    "spans": [
+      {
+        "start": 31,
+        "end": 36,
+        "text": "  servedBonusFromLevel: 2,\n  servedHoldPermille: 1_000,\n  /** AL-7: ale's market price (pennies a cask), and the alehouse's dues a ledger period: this share of its sales. */\n  alePrice: 3,\n  alehouseDuesPermille: 200,\n  /**\n"
+      }
+    ]
+  },
+  {
+    "path": "src/ledger/ledger.ts",
+    "sha256": "ef2029b12fe25445410501cdd12147b233dca5b767650a7a6ba4a465326064b7",
+    "spans": [
+      {
+        "start": 114,
+        "end": 132,
+        "text": " */\nexport function postLedgerEntries(\n  state: Pick<GameState, \"ledger\" | \"treasuryCoin\" | \"tick\" | \"scenarioId\">,\n  postings: readonly LedgerPosting[],\n): { readonly ledger: Ledger; readonly treasuryCoin: number } {\n  for (const posting of postings) {\n    if (!Array.isArray(posting.sourceRefs) || posting.sourceRefs.length === 0) {\n      throw new LedgerSourceError(`Ledger entry ${posting.category} has no source`);\n    }\n    if (!Number.isSafeInteger(posting.amount)) throw new RangeError(`Ledger amount must be whole pennies: ${posting.amount}`);\n  }\n  let ledger = state.ledger ?? openingLedger(state, \"ledger_start\");\n  const previousCash = accountBalance(ledger, \"cash\");\n  const entries = [...ledger.entries];\n  let ordinal = ledger.nextEntryOrdinal;\n  let postedCash = 0;\n  for (const posting of postings) {\n    entries.push({ ...posting, id: ledgerEntryId(ordinal), tick: state.tick });\n    if (posting.account === \"cash\") postedCash += posting.amount;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/ledger/ledgerCopy.ko.ts",
+    "sha256": "2c678158542786812f2ba5e13177ac984ee060f2d8689ff2e02e85c3a7bd4765",
+    "spans": [
+      {
+        "start": 30,
+        "end": 50,
+        "text": "  market_sale: \"시장 판매\",\n  construction: \"건설비\",\n  upkeep: \"유지비\",\n  toll: \"통행세\",\n  stall_fee: \"좌판세\",\n  rent: \"지대\",\n  mill_toll: \"제분료\",\n  demesne_sale: \"직영 판매\",\n  project: \"공사 재원\",\n  famine_relief: \"구휼\",\n  timber_purchase: \"목재 구입\",\n  project_subsidy: \"사업 장려금\",\n  lawsuit: \"소송 비용\",\n  marriage_portion: \"혼인 계약금\",\n  estate_income: \"영지 수입\",\n  audit_recovery: \"감사로 되찾은 돈\",\n  registry_settlement: \"청원·사건 답의 지급\",\n  instalment: \"분할 납부\",\n  promise_payment: \"약속 이행 지급\",\n  famine_sale: \"기근 곡물 판매\",\n  charter_fee: \"특허 대가\",\n"
+      },
+      {
+        "start": 74,
+        "end": 80,
+        "text": "  poll_tax: \"인두세 영주 몫\",\n  fee_farm: \"도시의 연납금\",\n  // F5-A (LG-3…LG-5)\n  royal_subsidy: \"국왕 과세\",\n  succession_relief: \"상속세\",\n  legacy_endowment: \"유산 기부\",\n  // FIX-9 (LG-13)\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/moneyRules.ts",
+    "sha256": "98136a56b880c47d87e18f764f11d3f4705e17db6de2f4ee6b707d64a50adc67",
+    "spans": [
+      {
+        "start": 138,
+        "end": 150,
+        "text": "  // FAIL-3 (FL-1): a right lost to the overlord or the merchants pays its holder, not the treasury.\n  const markets = rightHeld(state, \"market\"), tolls = rightHeld(state, \"tolls\"), mill = rightHeld(state, \"mill\");\n  for (const market of [...state.buildings].filter(building => markets && building.kind === \"market\").sort((a, b) => a.id.localeCompare(b.id))) {\n    const stalls = marketStalls(state, market);\n    // FC-3/FC-4: a market charter lowers the dues (the right is a source of the posting).\n    const right = stallFeeRightSource(state);\n    // F2-A (WR-8): the market chosen over the wall raises the dues a quarter.\n    // LM-E1 (TA-6 ③): in lord mode the lord's market dues scale the fee (1000‰ otherwise).\n    const fee = Math.round(stalls * MONEY_BALANCE.stallFeePerStall * stallFeePermille(state) / 1000 * marketExpansionPermille(state) / 1000\n      * agencyDuesPermille(state) / 1000);\n    if (stalls > 0 && fee > 0) postings.push({ account: \"cash\", category: \"stall_fee\", amount: fee,\n      sourceRefs: [buildingSource(market.id, `stalls:${stalls}`), ...(right === null ? [] : [right])] });\n  }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/politics.ts",
+    "sha256": "c78d456fa63bf7eb2fa48361919ff760da4a4e822c291559de6d12af9bf336cf",
+    "spans": [
+      {
+        "start": 229,
+        "end": 238,
+        "text": "/** FC-3/FC-4: the stall fee under the granted rights, permille of the usual fee (the lowest right applies). */\nexport function stallFeePermille(state: Pick<GameState, \"politics\">): number {\n  return Math.min(1000, ...(state.politics?.rights ?? []).map(right => right.stallFeePermille));\n}\n\n/** FC-4: the source a stall fee under a right carries, or null. */\nexport function stallFeeRightSource(state: Pick<GameState, \"politics\">): SourceRef | null {\n  const right = (state.politics?.rights ?? []).find(entry => entry.stallFeePermille < 1000);\n  return right === undefined ? null : { type: \"right\", id: right.id, detail: `stall_fee:${right.stallFeePermille}` };\n}\n"
+      }
+    ]
+  }
+]

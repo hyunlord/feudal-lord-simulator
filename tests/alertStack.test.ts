@@ -70,7 +70,7 @@ test("the same cause folds across buildings; immediate rows come first, then by 
   // Houses too far from the remaining wells fold into one row although their distances differ.
   const water = rows.find((row) => row.title === "물 부족");
   assert.ok(water !== undefined);
-  assert.match(water.cause, /^우물이 너무 멉니다 — 거리 \d+ \/ 범위 \d+$/);
+  assert.match(water.cause, /^우물이 너무 멉니다 — 거리 \d+칸 \/ 범위 \d+칸$/);
   assert.ok(water.count > 1);
   for (let index = 1; index < rows.length; index += 1) {
     const previous = rows[index - 1]!, current = rows[index]!;

@@ -1,0 +1,937 @@
+{
+  "selection": [
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.widowed_lord",
+      "selected": "marriage.brother_in_law_born.r06life.lord",
+      "fallback": false
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son.son",
+      "selected": "marriage.brother_in_law_born.r06life.son",
+      "fallback": false
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.brother",
+      "selected": "marriage.brother_in_law_born.r06life.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.nephew",
+      "selected": "marriage.brother_in_law_born.r06life.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.cousin",
+      "selected": "marriage.brother_in_law_born.r06life.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.widowed_lord",
+      "selected": "marriage.father_ill.r06life.lord",
+      "fallback": false
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.son.son",
+      "selected": "marriage.father_ill.r06life.son",
+      "fallback": false
+    },
+    {
+      "id": "marriage.father_ill.r06life.son.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.son.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.son.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.son.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.son.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.son.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.son.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.brother",
+      "selected": "marriage.father_ill.r06life.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.nephew",
+      "selected": "marriage.father_ill.r06life.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.cousin",
+      "selected": "marriage.father_ill.r06life.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.widowed_lord",
+      "selected": "marriage.deferred_void.r06life.lord",
+      "fallback": false
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son.son",
+      "selected": "marriage.deferred_void.r06life.son",
+      "fallback": false
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.brother",
+      "selected": "marriage.deferred_void.r06life.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.nephew",
+      "selected": "marriage.deferred_void.r06life.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.cousin",
+      "selected": "marriage.deferred_void.r06life.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open.open",
+      "selected": "marriage.will_change.r06life.open",
+      "fallback": false
+    },
+    {
+      "id": "marriage.will_change.r06life.open.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.absent.absent",
+      "selected": "marriage.will_change.r06life.absent",
+      "fallback": false
+    },
+    {
+      "id": "marriage.will_change.r06life.absent.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.absent.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.absent.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.absent.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.absent.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.absent.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.absent.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.paid_favour",
+      "selected": "marriage.will_dropped.r06life.paid",
+      "fallback": false
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised.support_promised",
+      "selected": "marriage.will_dropped.r06life.promised",
+      "fallback": false
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son.living_son",
+      "selected": "marriage.father_died.r06life.son",
+      "fallback": false
+    },
+    {
+      "id": "marriage.father_died.r06life.son.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.rival.rival",
+      "selected": "marriage.father_died.r06life.rival",
+      "fallback": false
+    },
+    {
+      "id": "marriage.father_died.r06life.rival.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.rival.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.rival.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.rival.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.rival.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.rival.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.rival.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.house.lord_house",
+      "selected": "marriage.father_died.r06life.house",
+      "fallback": false
+    },
+    {
+      "id": "marriage.father_died.r06life.house.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.house.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.house.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.house.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.house.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.house.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.house.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt.positive",
+      "selected": "marriage.lost.r06life.debt",
+      "fallback": false
+    },
+    {
+      "id": "marriage.lost.r06life.debt.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt.absent",
+      "selected": "marriage.lost.r06life.no_debt",
+      "fallback": false
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.explicit_let_stand",
+      "selected": "marriage.contested.r06life.explicit",
+      "fallback": false
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.deadline.unanswered_deadline",
+      "selected": "marriage.contested.r06life.deadline",
+      "fallback": false
+    },
+    {
+      "id": "marriage.contested.r06life.deadline.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.deadline.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.deadline.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.deadline.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.deadline.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.deadline.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.deadline.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    }
+  ],
+  "adversarialEnvelope": [
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.widowed_lord.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.widowed_lord.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.widowed_lord.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.widowed_lord.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.widowed_lord.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.widowed_lord.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.widowed_lord.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.widowed_lord.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.widowed_lord.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open.open.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open.open.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open.open.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.paid_favour.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.paid_favour.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.paid_favour.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son.living_son.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son.living_son.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son.living_son.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt.positive.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt.positive.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt.positive.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.explicit_let_stand.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.explicit_let_stand.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.explicit_let_stand.bad_capture",
+      "fallback": true
+    }
+  ],
+  "nameContract": {
+    "cases": 4,
+    "passed": true,
+    "scope": "Offline ID/display substitution contract only; production historyParams not executed"
+  }
+}

@@ -62,7 +62,8 @@ export const PERSONS_COPY = {
   cardRole: (role: string, occupation: string | null) => occupation === null ? role : `${role} · ${occupation}`,
   cardLife: (born: number, age: number) => `${born}년생 · ${age}살`,
   // UI-8 (F3-A PL-2): plague death cause on the person card, shown below life/state lines.
-  plagueDeath: (year: number) => `역병으로 죽음 (${year})`,
+  // COPY-1r CA-048/049: the one plague-death line, reused by the family tree and the chronicle screen.
+  plagueDeath: (year: number) => `역병으로 사망(${year}년)`,
   portraitMatch: (identity: string, stage: string, exact: boolean) =>
     `초상 ${identity}${STAGES[stage] === "" || STAGES[stage] === undefined ? "" : ` ${STAGES[stage]}`} · ${exact ? "성별·나이대·계층 일치" : "가장 가까운 그림"}`,
   /** UI-5 ⑥: the steward's fixed portrait (the P0 steward, whoever holds the office). */

@@ -1,0 +1,20 @@
+{
+  "input_sha_matches": 21,
+  "raw_counts_match_comparison": true,
+  "independent_manifests_checked": {
+    "food": 4,
+    "storage": 4,
+    "fen_completion": 5,
+    "fen_cash": 8,
+    "fen_comparison": 13
+  },
+  "new_count_parent": null,
+  "holds_preserved": [
+    "R08_FOOD_SELECTION",
+    "R08_MILL_OVERBUILD"
+  ],
+  "engine_execution": false,
+  "local_validation_first_attempt": "Ruby null typo raised NameError before write; corrected nil and reran",
+  "comparison_author_handoff_received": true,
+  "local_finalization_retry": "mixed symbol/string input hash corrected by reloading written JSON; initial manifest check had no manifest; retry verified all"
+}

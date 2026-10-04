@@ -1,0 +1,98 @@
+{
+  "inputStateKeys": [
+    "tick",
+    "seed",
+    "tiles",
+    "width",
+    "height",
+    "buildings",
+    "constructionSites",
+    "houses",
+    "walkers",
+    "population",
+    "idleWorkers",
+    "treasuryTimber",
+    "treasuryCoin",
+    "wallTick",
+    "era",
+    "eraProclaimedTick",
+    "palisade",
+    "forestHarvests",
+    "nextConstructionOrdinal",
+    "roadRevision",
+    "pathCache",
+    "scenarioId",
+    "river",
+    "zones",
+    "nextZoneOrdinal",
+    "agency",
+    "registry",
+    "autoplayFoodFlow",
+    "labour",
+    "autoplayRecurringDelivery",
+    "timberProductionWindow",
+    "historicalEras",
+    "seasons",
+    "events",
+    "persons",
+    "politics",
+    "factions",
+    "autoplayEmptyHomes",
+    "settlement",
+    "history",
+    "ledger",
+    "estates",
+    "zoneUndo",
+    "arableFields",
+    "trades",
+    "land",
+    "autoplayFoodObservation",
+    "harvestRecord",
+    "stewardship",
+    "money",
+    "lordship",
+    "diplomacy",
+    "wallConstructionReserve",
+    "ale",
+    "war",
+    "plague"
+  ],
+  "ledgerEntryCount": 436,
+  "ledgerLastEntry": {
+    "account": "cash",
+    "category": "wages",
+    "amount": -111,
+    "sourceRefs": [
+      {
+        "type": "actor",
+        "id": "labourers"
+      },
+      {
+        "type": "claim",
+        "id": "wages",
+        "detail": "workers:111"
+      }
+    ],
+    "id": "ledger-005032",
+    "tick": 199200
+  },
+  "ledgerRuntimeGuard": "projection requires Array.isArray(s.ledger?.entries); missing is failure, not empty",
+  "source": [
+    {
+      "path": "src/engine/engine.types.ts",
+      "sha256": "7fca0a48be1878e2189d39525c7cf0ecac7ab20c32126bb4fc60952de6c65540"
+    },
+    {
+      "path": "src/ledger/ledger.types.ts",
+      "sha256": "1fa6380f8257594f2a2e88ecaae540832cd935c05c75aa578c9c46b60d44cb21"
+    },
+    {
+      "path": "src/ledger/ledger.ts",
+      "sha256": "ef2029b12fe25445410501cdd12147b233dca5b767650a7a6ba4a465326064b7"
+    },
+    {
+      "path": "src/engine/routing.ts",
+      "sha256": "7f2d48370e462809505abd4d91f4097e7d4e56e2e2dd98961304926d53fb3146"
+    }
+  ]
+}

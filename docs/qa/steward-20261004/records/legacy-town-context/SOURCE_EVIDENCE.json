@@ -1,0 +1,126 @@
+[
+  {
+    "path": "src/engine/legacy.ts",
+    "sha256": "b2d4dfbf1bcbebd1cae5b58b72dc6770f4abb78526f9053d576dc4fdb25ccbd9",
+    "spans": [
+      {
+        "start": 73,
+        "end": 78,
+        "text": "  const moved = amount < 0 ? -Math.min(-amount, Math.max(0, treasuryBalance(state))) : amount;\n  if (moved === 0) return { state, moved: 0 };\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category, amount: moved, sourceRefs: sources }]);\n  return { state: { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger }, moved };\n}\n\n"
+      },
+      {
+        "start": 196,
+        "end": 201,
+        "text": "    case CHURCH_REBUILDING_PETITION_ID: {\n      // FIX-9 (LG-13): the nave rebuilt at the lord's cost (the guild's quarrel moves only the factions).\n      if (response !== \"accept\") break;\n      const paid = post(next, \"church_rebuilding\", -B.churchRebuildingCost, [{ type: \"actor\", id: \"bishop\" }, { type: \"claim\", id: \"church_rebuilding\", detail: \"nave\" }]);\n      next = withLegacy(paid.state, { ...l, naveRebuilt: true });\n      break;\n"
+      },
+      {
+        "start": 270,
+        "end": 304,
+        "text": "/** LG-13: the tick of each interlude event (the guild's quarrel and the market's fire share 1394). */\nfunction interludeTick(state: Pick<GameState, \"scenarioId\">, id: LegacyInterludeId): number {\n  const [year, season] = id === \"staple\" ? B.staple : id === \"church_rebuilding\" ? B.churchRebuilding : id === \"deposition\" ? B.deposition : B.guildDispute;\n  return seasonOf(state, year, season);\n}\n\n/**\n * LG-13 API `legacyInterludes`: the interlude's events and their state — those the chapter opened too late for are left\n * out; of 1394's two, the one the town has (the guild's quarrel with a guild, else the market's fire).\n */\nexport function legacyInterludes(state: GameState): readonly { readonly id: LegacyInterludeId; readonly tick: number; readonly state: \"done\" | \"ahead\" }[] {\n  const legacy = legacyOf(state);\n  if (legacy === undefined) return [];\n  const guild = state.reorganisation?.guild !== undefined;\n  return LEGACY_INTERLUDE_IDS.filter(id => (id === \"guild_dispute\" ? guild : id === \"market_fire\" ? !guild : true) && interludeTick(state, id) > legacy.startTick)\n    .map(id => ({ id, tick: interludeTick(state, id), state: legacy.interludes?.[id] !== undefined ? \"done\" as const : \"ahead\" as const }));\n}\n\n/** LG-13: the interlude's events due by this season start (by the calendar, in a chapter opened before them). */\nfunction advanceInterlude(state: GameState): GameState {\n  let next = state;\n  for (const due of legacyInterludes(state).filter(entry => entry.state === \"ahead\" && entry.tick <= state.tick)) {\n    const legacy = legacyOf(next)!;\n    next = withLegacy(next, { ...legacy, interludes: { ...legacy.interludes, [due.id]: state.tick } });\n    if (due.id === \"guild_dispute\") next = addPetition(next, GUILD_DISPUTE_PETITION_ID, \"craftsmen\");\n    if (due.id === \"church_rebuilding\") next = addPetition(next, CHURCH_REBUILDING_PETITION_ID, \"parish\");\n    if (due.id === \"market_fire\") next = post(next, \"construction\", -B.marketFireRepair, [TOWN_ACTOR, { type: \"claim\", id: \"market_fire\", detail: \"repair\" }]).state;\n  }\n  return next;\n}\n\n/** LG-13: the Staple's years — cloth sells dearer (permille), else 1,000. */\nexport function legacyClothPermille(state: Partial<Pick<GameState, \"legacy\" | \"tick\">>): number {\n  const staple = state.legacy?.interludes?.staple;\n  return staple !== undefined && state.tick !== undefined && state.tick < staple + B.stapleSeasons * SEASON ? B.staplePricePermille : 1_000;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 760,
+        "end": 767,
+        "text": "  // FIX-9 (LG-13): the interlude's events, the nave rebuilt.\n  for (const [id, tick] of Object.entries(now.interludes ?? {})) {\n    if (was?.interludes?.[id as keyof typeof now.interludes] !== undefined || tick !== after.tick) continue;\n    const actor = id === \"staple\" || id === \"deposition\" ? \"crown\" : id === \"church_rebuilding\" ? \"bishop\" : id === \"guild_dispute\" ? \"merchant_house_1\" : \"town\";\n    drafts.push({ ...at, ...by(actor), kind: \"event\", template: `legacy.${id}`, severity: id === \"deposition\" ? 3 : 2, cause,\n      ...(id === \"market_fire\" ? { params: { cost: LEGACY_BALANCE.marketFireRepair } } : {}) });\n  }\n  if (now.naveRebuilt === true && was?.naveRebuilt !== true) drafts.push({ ...at, ...by(\"bishop\"), kind: \"event\", template: \"legacy.nave_rebuilt\", severity: 2, cause, thumbnail: { state: after, size: 128 } });\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/factions.ts",
+    "sha256": "e36ea2902b8d4a4bd752a931f7f25958701cb61888e0f16fa5fe2c497f37fb04",
+    "spans": [
+      {
+        "start": 423,
+        "end": 431,
+        "text": "  }\n  // FIX-9 (LG-13): Richard II deposed (1399) — the new king's reign goes halfway back to where the Crown started.\n  if (after.legacy?.interludes?.deposition !== undefined && before.legacy?.interludes?.deposition === undefined) {\n    const crown = factions.factions.find(faction => faction.id === \"crown\");\n    const start = FACTION_DEF_BY_ID.get(\"crown\")!.startRelation;\n    if (crown !== undefined) changes.push({ factionId: \"crown\", delta: Math.round((start - crown.relation) * LEGACY_BALANCE.depositionPermille / 1000), reason: \"legacy:deposition\" });\n  }\n  return changes.filter(change => change.delta !== 0);\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/legacyConfig.ts",
+    "sha256": "3ca61d68328e3b15bd062a6bdd06061eaa56e0ccf8f02ab8510f1805993de1f8",
+    "spans": [
+      {
+        "start": 101,
+        "end": 113,
+        "text": "   * LG-13 the interlude (year, in-year season). The Staple: cloth sells at `staplePricePermille` for `stapleSeasons`\n   * (wool bound at home, the weavers' market wider). The market's fire: its repair. The nave: its cost. The deposition:\n   * the Crown's relation goes `depositionPermille` of the way back to where it started (a new king's reign).\n   */\n  staple: [1391, 0] as readonly [number, number],\n  staplePricePermille: 1_100,\n  stapleSeasons: 8,\n  guildDispute: [1394, 0] as readonly [number, number],\n  marketFireRepair: 150,\n  churchRebuilding: [1396, 0] as readonly [number, number],\n  churchRebuildingCost: 300,\n  deposition: [1399, 2] as readonly [number, number],\n  depositionPermille: 500,\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/buildingCatalog.ts",
+    "sha256": "a1ca152f29ba05a01e7bc3277c281717159f62ae28cb792db27eaceb7a7d49f6",
+    "spans": [
+      {
+        "start": 127,
+        "end": 128,
+        "text": "  weaver_house: { category: \"trade\", group: \"production\", glyph: \"house\", thumbnail: \"facility\", signIcon: { chain: \"weaver_house\" }, kit: \"timber_small\",\n    facilityArt: { variants: [\"weaver_house_a\", \"weaver_house_b\"] },\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/reorganisation.types.ts",
+    "sha256": "ea0b94f110a68c3cdfaa6c45e0df9d18da310b9b887adb4db78ba8e1ce9b2270",
+    "spans": [
+      {
+        "start": 6,
+        "end": 11,
+        "text": "\n/** RG-5: the guild — founded when the lord grants it, its head a town household head (a person). */\nexport interface GuildRecord {\n  readonly foundedTick: number;\n  readonly headId: string | null;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/historyCopy.ko.ts",
+    "sha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+    "spans": [
+      {
+        "start": 201,
+        "end": 206,
+        "text": "  \"legacy.staple\": () => \"칼레의 양모 지정 무역 제도가 잠시 중단되었다 — 직물 값이 오른다(게임 효과)\",\n  \"legacy.guild_dispute\": () => \"길드와 상인이 직물을 파는 권리를 두고 다툰다\",\n  \"legacy.market_fire\": params => `장터에 불이 났다 — 수리에 ${moneyWords(n(params, \"cost\"))}`,\n  \"legacy.church_rebuilding\": () => \"교구가 낡은 교회의 증축을 청했다\",\n  \"legacy.nave_rebuilt\": () => \"교회의 새 회중석이 섰다\",\n  \"legacy.deposition\": () => \"리처드 2세가 폐위되고 헨리 4세가 즉위했다\",\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 15,
+        "end": 20,
+        "text": "const PERSON_PARAMS: Readonly<Record<string, string>> = {\n  lordId: \"lord\", guardianId: \"guardian\", candidateId: \"candidate\", heirId: \"heir\", mayorId: \"mayor\", leaderId: \"leader\", predecessorId: \"predecessor\",\n  // LM-E4: the steward of an estate (an estate person).\n  stewardId: \"steward\",\n  // FIX-13 (ES-11): a person off the map who died (a neighbour house's, a steward).\n  deceasedId: \"deceased\",\n"
+      },
+      {
+        "start": 43,
+        "end": 54,
+        "text": "export function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "docs/design/glossary.md",
+    "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181",
+    "spans": [
+      {
+        "start": 11,
+        "end": 21,
+        "text": "| 영주 | 해당 영지·권리를 가진 지배자. 귀족 작위와 별개 | lord | 모든 영주를 백작·왕으로 부르기 |\n| 상위 영주 | 플레이어보다 위의 봉건적 관계에 있는 영주 | overlord | 상급 영주, 관계명으로서 대영주 |\n| 이웃 영주 | 인접·주변 영지를 보유한 협상 상대 | neighbouring lord | 이웃 왕 |\n| 대영주 | 큰 권력·영지를 가진 유력자라는 서술 | magnate | overlord의 자동 번역 |\n| 지주층(젠트리) | 기사·에스콰이어 등을 포함하는 토지 보유 계층 | gentry | 모두 귀족 작위 보유자로 단정 |\n| 기사 | 기사 신분·칭호 | knight | 기사 영주를 곧 백작으로 취급 |\n| 에스콰이어 | 기사와 구별되는 젠트리 신분. 처음에 설명 병기 | esquire | 남작, 현대 변호사 호칭 |\n| 백작 | 작위. 가문명·백작령 이름과 구별 | earl | 왕, 모든 상위 영주의 보통명 |\n| 국왕 | 재위 중인 왕 개인 | king | 왕실과 무조건 치환 |\n| 왕실 | 국왕을 중심으로 한 제도·가솔·권력 집단 | Crown / royal household, 문맥별 | 국왕 개인의 행동으로 자동 변환 |\n| 청지기 | 영주의 위임을 받아 영지를 관리하는 직책 | steward | 집사, 집행관, 마을 대표와 혼용 |\n"
+      },
+      {
+        "start": 45,
+        "end": 72,
+        "text": "| 수레꾼 | 인물의 생업·직업명 | carter | 모든 carrier와 일괄 치환 |\n\n## 땅·권리·혼인·청원\n\n| 한국어 정본 | 뜻·사용 범위 | 영어 원어 | 쓰지 말 표기·혼동 |\n| --- | --- | --- | --- |\n| 영지 | 인물·가문이 보유한 토지와 권리의 묶음 | estate | 장원과 무조건 치환 |\n| 장원 | 장원 법정·관습·소작 관계의 단위 | manor | 영주관(건물), 영지 전체와 동일시 |\n| 직영지 | 영주를 위해 직접 경영하는 땅 | demesne | 모든 직할 영지와 동일시 |\n| 영주관 | 영주 가문의 거처 건물 | manor house | 장원 전체 |\n| 필지 | 구분된 토지 단위. 도시 집터는 용도 설명 | plot / burgage plot | 집·가구 |\n| 경작지 | 농작물을 기르는 구역 | arable land | 모든 경작지가 영주 직영지라고 단정 |\n| 목초지 | 가축을 먹이는 풀밭 | pasture | 공유지와 동일시 |\n| 공유지 | 공동 이용권이 적용되는 땅이라는 게임 용어 | common land | 누구나 소유·처분할 수 있는 공공 토지 |\n| 공유지 방목권 | 정해진 공동 이용권에 따른 방목 권리 | common of pasture | 무제한 방목권 |\n| 권원 | 권리를 주장하는 법적 근거·명의 | title | 점유, 귀족 작위와 무조건 통합 |\n| 점유 | 실제로 땅·권리를 쥐고 행사하는 상태 | possession | 권원의 존재가 곧 점유라는 서술 |\n| 청구권 | 권리를 요구·주장하는 근거가 있는 권리 | claim | 승소가 확정된 소유권 |\n| 장원 법정 | 장원 내 사건을 다루는 법정의 포괄 이름 | manor court | 현대 형사법원과 동일한 권한 |\n| 배심원 | 장원 법정의 배심 역할 | juror | 현대 재판의 권한을 그대로 투영 |\n| 청원 | 영주·권한자에게 판단·허가를 구하는 요청 | petition | 일방적 칙령과 자동 통합 |\n| 특허장 | 특정 권리·특전을 부여·확인하는 문서 | charter | 기술 발명 특허 |\n| 자치 특허 | 도시의 자치권을 정하는 특허·합의 | borough charter | 현대 지방자치 제도와 동일시 |\n| 시장 개설권 | 장터를 열 권리 | market right | 도시 시장(mayor) 선출권 |\n| 시장 선출권 | 도시 대표를 선출하는 권리 | right to elect a mayor | 장터 개설권 |\n| 시장 좌판세 | 시장 좌판에서 걷는 이 게임의 수입 | market stall dues | 통행세 |\n| 통행세 | 통행·운송에 따른 수입 | toll | 모든 시장세와 통합 |\n| 제분료 | 곡물 제분의 대가 | multure / milling toll | 축융료와 통합 |\n"
+      },
+      {
+        "start": 189,
+        "end": 192,
+        "text": "## 문장·금액·날짜·숫자 규칙\n\n1. 청지기·안내는 ‘~합니다/~하십시오’, 선택 버튼은 플레이어 행동 ‘~한다’, 연대기는 ‘~했다’로 통일한다. 인물의 개별 말투는 허용하되 한 문장 안 주체를 분명히 쓴다.\n2. 선택 결과는 `{청원 ID, 실제 선택}`으로 정한다. 저장값 `refuse`가 항상 거절은 아니다. 후계 후보·유산 방향처럼 실제 행위를 기록한다. 비용·수입·작업 시간·생산량은 명사를 생략하지 않는다.\n"
+      }
+    ]
+  }
+]

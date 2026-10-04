@@ -1,0 +1,183 @@
+{
+  "formatVersion": "person-context-sidecar-v1",
+  "baselineSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "status": "NOT_CANONICAL_NOT_INSTALLED",
+  "existingAge20Duplicated": false,
+  "variants": [
+    {
+      "id": "person.arrived.r06ctx.young",
+      "template": "person.arrived",
+      "axis": "historical_age",
+      "min": 14,
+      "max": 29,
+      "headline": "{ageAtRecord}살의 젊은 친척이 가구에 합류했다.",
+      "requiredSlots": [
+        "ageAtRecord"
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_CONTEXT_ADAPTER"
+    },
+    {
+      "id": "person.arrived.r06ctx.elder",
+      "template": "person.arrived",
+      "axis": "historical_age",
+      "min": 55,
+      "max": 70,
+      "headline": "{ageAtRecord}살의 나이 든 친척이 가구에 합류했다.",
+      "requiredSlots": [
+        "ageAtRecord"
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_CONTEXT_ADAPTER"
+    },
+    {
+      "id": "person.reeve.r06ctx.youth",
+      "template": "person.reeve",
+      "axis": "historical_age",
+      "min": 25,
+      "max": 29,
+      "headline": "젊은 시절, {ageAtRecord}살에 마을 대표로 뽑혔다.",
+      "requiredSlots": [
+        "ageAtRecord"
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_CONTEXT_ADAPTER"
+    },
+    {
+      "id": "person.reeve.r06ctx.adult",
+      "template": "person.reeve",
+      "axis": "historical_age",
+      "min": 30,
+      "max": 54,
+      "headline": "{ageAtRecord}살에 마을 대표 일을 맡게 되었다.",
+      "requiredSlots": [
+        "ageAtRecord"
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_CONTEXT_ADAPTER"
+    },
+    {
+      "id": "person.reeve.r06ctx.elder",
+      "template": "person.reeve",
+      "axis": "historical_age",
+      "min": 55,
+      "max": 60,
+      "headline": "나이 들어, {ageAtRecord}살에 마을 대표로 뽑혔다.",
+      "requiredSlots": [
+        "ageAtRecord"
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_CONTEXT_ADAPTER"
+    },
+    {
+      "id": "person.expecting.r06ctx.youth",
+      "template": "person.expecting",
+      "axis": "historical_age",
+      "min": 16,
+      "max": 29,
+      "headline": "젊은 시절, {ageAtRecord}살에 아이를 갖게 되었다.",
+      "requiredSlots": [
+        "ageAtRecord"
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_CONTEXT_ADAPTER"
+    },
+    {
+      "id": "person.expecting.r06ctx.adult",
+      "template": "person.expecting",
+      "axis": "historical_age",
+      "min": 30,
+      "max": 44,
+      "headline": "{ageAtRecord}살에 아이를 갖게 되었다.",
+      "requiredSlots": [
+        "ageAtRecord"
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_CONTEXT_ADAPTER"
+    },
+    {
+      "id": "person.emptied.r06ctx.one",
+      "template": "person.emptied",
+      "axis": "emitter_snapshot",
+      "field": "residentsBefore",
+      "op": "eq",
+      "value": 1,
+      "headline": "한 명이 살던 집이 비었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_BASELINE_FACT_LINE_AND_NEW_FIELD"
+    },
+    {
+      "id": "person.emptied.r06ctx.many",
+      "template": "person.emptied",
+      "axis": "emitter_snapshot",
+      "field": "residentsBefore",
+      "op": "gte",
+      "value": 2,
+      "headline": "여럿이 살던 집이 비었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_BASELINE_FACT_LINE_AND_NEW_FIELD"
+    },
+    {
+      "id": "person.steward.r06ctx.after_death",
+      "template": "person.steward",
+      "axis": "emitter_snapshot",
+      "field": "predecessorExitAtAppointment",
+      "op": "eq",
+      "value": "died",
+      "headline": "앞선 청지기가 세상을 떠난 뒤 새 청지기가 임명되었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_FIELD_REACHABILITY_UNVERIFIED"
+    },
+    {
+      "id": "person.steward.r06ctx.after_departure",
+      "template": "person.steward",
+      "axis": "emitter_snapshot",
+      "field": "predecessorExitAtAppointment",
+      "op": "eq",
+      "value": "left_town",
+      "headline": "앞선 청지기가 도시를 떠난 뒤 새 청지기가 임명되었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_FIELD_REACHABILITY_UNVERIFIED"
+    },
+    {
+      "id": "person.bailiff.r06ctx.artisan",
+      "template": "person.bailiff",
+      "axis": "emitter_snapshot",
+      "field": "classBandAtAppointment",
+      "op": "eq",
+      "value": "artisan",
+      "headline": "장인 가구를 이끌던 이가 영주의 집행관이 되었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_FIELD"
+    },
+    {
+      "id": "person.bailiff.r06ctx.merchant",
+      "template": "person.bailiff",
+      "axis": "emitter_snapshot",
+      "field": "classBandAtAppointment",
+      "op": "eq",
+      "value": "merchant",
+      "headline": "상인 가구를 이끌던 이가 영주의 집행관이 되었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_FIELD"
+    }
+  ]
+}

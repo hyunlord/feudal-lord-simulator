@@ -1,0 +1,441 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "anyOf": [
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "lord.wardship_ended"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "endingGuardianKind"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "endingGuardianKind": {
+              "enum": [
+                "named_guardian",
+                "overlord"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "lord.wardship_ended"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "faction.leader_succeeded"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "successorHouseholdAtEvent"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "successorHouseholdAtEvent": {
+              "enum": [
+                "same_household",
+                "different_household"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "faction.leader_succeeded"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "stewardship.steward_died"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "oversightModeAtSuccession"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "oversightModeAtSuccession": {
+              "enum": [
+                "direct",
+                "steward"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "stewardship.steward_died"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "stewardship.began"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "offMapPortfolioAtStart"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "offMapPortfolioAtStart": {
+              "enum": [
+                "sole_estate",
+                "multiple_estates"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "stewardship.began"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+ControlGroup=/user.slice/user-1000.slice/user@1000.service/fls.slice/fls-runs.slice/fls-run-astra-steward-seed3-fen-growth-r08-5fb1aeb-1791077860.scope
+ActiveState=active
+SubState=running
+2130704 2130525  10 timeout --signal=TERM --kill-after=30s 2400s nice -n 19 node_modules/.bin/tsx output/steward-probe-v3/stewardProbe.ts --seed 3 --land core:fen_drainage --mode fixed --policy growth --years 150 --output .remote/seed3-fen-fixed-growth
+2130705 2130704  19 node node_modules/.bin/tsx output/steward-probe-v3/stewardProbe.ts --seed 3 --land core:fen_drainage --mode fixed --policy growth --years 150 --output .remote/seed3-fen-fixed-growth
+2130716 2130705  19 /home/hyunlord/fls-runs/_tools/node-v24.21.0-linux-arm64/bin/node --require /home/hyunlord/fls-runs/astra-steward-seed3-fen-growth-r08-5fb1aeb/node_modules/tsx/dist/preflight.cjs --import file:///home/hyunlord/fls-runs/astra-steward-seed3-fen-growth-r08-5fb1aeb/node_modules/tsx/dist/loader.mjs output/steward-probe-v3/stewardProbe.ts --seed 3 --land core:fen_drainage --mode fixed --policy growth --years 150 --output .remote/seed3-fen-fixed-growth

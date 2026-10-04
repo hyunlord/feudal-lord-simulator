@@ -1,0 +1,191 @@
+{
+  "origin": "static extraction of saved reconstructed-stage observation; no engine execution",
+  "source": "/Users/rexxa/fls-astra-steward/output/steward-food-boundary-r07/result/stage.json",
+  "sourceSha256": "f5bc425b4c6a763e1beda92fbdb4547ee76bb783ac1e5486ccf55b13436a0203",
+  "rows": [
+    {
+      "walkerId": "distributor:construction-site-000036:299880",
+      "observedBeforePhase": "roaming",
+      "observedBeforeCargo": {
+        "resource": "bread",
+        "amount": 4
+      },
+      "observedAfterCargo": {
+        "resource": "bread",
+        "amount": 1
+      },
+      "observedAfterPhase": "roaming",
+      "observedTilesTravelledBefore": 12,
+      "derivedRemainingRangeBeforeNextChoice": 28,
+      "observedTargetBreadAfterService": 0,
+      "observedTargetResidents": 6,
+      "observedTargetServicePathCalls": [
+        {
+          "start": {
+            "tx": 47,
+            "ty": 41
+          },
+          "derivedEdges": 20,
+          "resultNonNull": true,
+          "sameFirstStepAsWalkerAfter": false
+        }
+      ],
+      "observedDeliveryEvents": [
+        {
+          "homeBuildingId": "construction-site-000036",
+          "houseBuildingId": "construction-site-000004",
+          "amount": 3
+        }
+      ],
+      "directCanServiceTargetCount": 0
+    },
+    {
+      "walkerId": "distributor:construction-site-000036:300000",
+      "observedBeforePhase": "roaming",
+      "observedBeforeCargo": {
+        "resource": "bread",
+        "amount": 12
+      },
+      "observedAfterCargo": {
+        "resource": "bread",
+        "amount": 12
+      },
+      "observedAfterPhase": "roaming",
+      "observedTilesTravelledBefore": 0,
+      "derivedRemainingRangeBeforeNextChoice": 40,
+      "observedTargetBreadAfterService": 0,
+      "observedTargetResidents": 6,
+      "observedTargetServicePathCalls": [
+        {
+          "start": {
+            "tx": 48,
+            "ty": 32
+          },
+          "derivedEdges": 20,
+          "resultNonNull": true,
+          "sameFirstStepAsWalkerAfter": true
+        }
+      ],
+      "observedDeliveryEvents": [
+
+      ],
+      "directCanServiceTargetCount": 0
+    },
+    {
+      "walkerId": "distributor:construction-site-000067:299640",
+      "observedBeforePhase": "returning",
+      "observedBeforeCargo": null,
+      "observedAfterCargo": null,
+      "observedAfterPhase": "returning",
+      "observedTilesTravelledBefore": 22,
+      "derivedRemainingRangeBeforeNextChoice": 18,
+      "observedTargetBreadAfterService": 0,
+      "observedTargetResidents": 6,
+      "observedTargetServicePathCalls": [
+
+      ],
+      "observedDeliveryEvents": [
+
+      ],
+      "directCanServiceTargetCount": 0
+    },
+    {
+      "walkerId": "distributor:construction-site-000067:299760",
+      "observedBeforePhase": "roaming",
+      "observedBeforeCargo": {
+        "resource": "bread",
+        "amount": 9
+      },
+      "observedAfterCargo": {
+        "resource": "bread",
+        "amount": 1
+      },
+      "observedAfterPhase": "roaming",
+      "observedTilesTravelledBefore": 24,
+      "derivedRemainingRangeBeforeNextChoice": 16,
+      "observedTargetBreadAfterService": 0,
+      "observedTargetResidents": 6,
+      "observedTargetServicePathCalls": [
+        {
+          "start": {
+            "tx": 47,
+            "ty": 40
+          },
+          "derivedEdges": 19,
+          "resultNonNull": true,
+          "sameFirstStepAsWalkerAfter": false
+        }
+      ],
+      "observedDeliveryEvents": [
+        {
+          "homeBuildingId": "construction-site-000067",
+          "houseBuildingId": "house-46-40-0",
+          "amount": 4
+        },
+        {
+          "homeBuildingId": "construction-site-000067",
+          "houseBuildingId": "construction-site-000008",
+          "amount": 4
+        }
+      ],
+      "directCanServiceTargetCount": 0
+    },
+    {
+      "walkerId": "distributor:granary-42-37-0:299880",
+      "observedBeforePhase": "roaming",
+      "observedBeforeCargo": {
+        "resource": "bread",
+        "amount": 1
+      },
+      "observedAfterCargo": null,
+      "observedAfterPhase": "returning",
+      "observedTilesTravelledBefore": 12,
+      "derivedRemainingRangeBeforeNextChoice": 28,
+      "observedTargetBreadAfterService": 0,
+      "observedTargetResidents": 6,
+      "observedTargetServicePathCalls": [
+
+      ],
+      "observedDeliveryEvents": [
+        {
+          "homeBuildingId": "granary-42-37-0",
+          "houseBuildingId": "construction-site-000007",
+          "amount": 1
+        }
+      ],
+      "directCanServiceTargetCount": 0
+    },
+    {
+      "walkerId": "distributor:granary-42-37-0:300000",
+      "observedBeforePhase": "roaming",
+      "observedBeforeCargo": {
+        "resource": "bread",
+        "amount": 9
+      },
+      "observedAfterCargo": {
+        "resource": "bread",
+        "amount": 9
+      },
+      "observedAfterPhase": "roaming",
+      "observedTilesTravelledBefore": 0,
+      "derivedRemainingRangeBeforeNextChoice": 40,
+      "observedTargetBreadAfterService": 0,
+      "observedTargetResidents": 6,
+      "observedTargetServicePathCalls": [
+        {
+          "start": {
+            "tx": 44,
+            "ty": 37
+          },
+          "derivedEdges": 19,
+          "resultNonNull": true,
+          "sameFirstStepAsWalkerAfter": true
+        }
+      ],
+      "observedDeliveryEvents": [
+
+      ],
+      "directCanServiceTargetCount": 0
+    }
+  ]
+}

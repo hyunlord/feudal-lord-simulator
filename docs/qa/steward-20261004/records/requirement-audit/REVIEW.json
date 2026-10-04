@@ -1,0 +1,201 @@
+{
+  "status": "CONTINUE_PENDING_ROUND_CLOSE",
+  "at": "2026-10-04T10:54:31+09:00",
+  "goalComplete": false,
+  "roundComplete": false,
+  "finalR08NewMediumPlus": null,
+  "method": "Actual included text and JSON; direct counts/hash only. Historical semantic/runtime review explicitly inherited.",
+  "matrix": [
+    {
+      "id": "REQ-01",
+      "requirement": "매 회차 pull·지정 가지/작업폴더",
+      "evidence": "records/ROUND_START.json, ROUND_PLAN.md",
+      "assessment": "HEAD5fb 및 Already up to date 부모 기록 있음. 이 감사에서 git pull 재실행하지 않음. 모든 필독 문서를 이번 회차 다시 읽었다는 증거로 source 핀 목록을 확대 해석하지 않음.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-02",
+      "requirement": "무수정·공식 DGX·nice·직렬·detach/keep",
+      "evidence": "각 executed 결과와 records/fen-run-lifecycle/START_METADATA.json·SYNC_BOUNDARY.json",
+      "assessment": "포함 실행 기록 범위의 운영 근거. 모든 타 세션/전체 시간의 무수정·직렬성을 전역 입증한 것은 아님. 이번 감사는 경량 로컬 읽기만.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-03",
+      "requirement": "A 시스템 지도 최초 작성·매 회차 갱신",
+      "evidence": "SYSTEM_MAP.md, records/SYSTEM_MAP_HISTORY_THROUGH_R08_EARLY.md",
+      "assessment": "갱신본 있음. 결정→성장→물류→인물/권리/약속 등 고리와 관측 공백 구별. 지도 존재가 모든 고리의 실행 검증은 아님.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-04",
+      "requirement": "A 불변식·seed/tick/save 재현",
+      "evidence": "records/food-choice-review, records/storage-flow-review; inherited/top10의 SAVE01/A02/A05/B04 근거",
+      "assessment": "새 식량 함수 재실행과 공개 3840틱 물류 관측, 과거 돈/사망자/원자성 등 최소 재현 입력 있음. 물자 양수 합계·4선택 반환·codec 성공을 세계 보존/장기 사망 원인/전체 결정론으로 바꾸지 않음. 모든 불변식 전면 통과를 목표로 추가하지 않음.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-05",
+      "requirement": "A 여러 seed·땅·방침 125–150년",
+      "evidence": "records/long-run-inheritance/REPORT.md, inherited/R07/long-run·graphs·analysis",
+      "assessment": "150년 5판, 3seed·2땅, 고정growth/stability 및 동적chalk 정책의 승계 근거. 750연간 행·127핵심 파일. R08 새 실행 아님. 중간 저장25개 제외를 숨기지 않으며 seed2를 고정정책 대조군으로 삼지 않음.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-06",
+      "requirement": "A 경제·결정밀도·사망·영지·세력·직업 이상 탐지",
+      "evidence": "inherited/R07/graphs 4 SVG와 분석/요약, SYSTEM_MAP.md",
+      "assessment": "요약과 그래프 존재. 기록된 인물 사망≠전세계 사망률, 명령 빈도≠재미. 습지 새 판 결과·비교는 아직 미완료.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-07",
+      "requirement": "B 영주 정체성·이유·봇경로·큰 사건·문구 감시",
+      "evidence": "records/status-midround/STATUS.md, SYSTEM_MAP.md, inherited/top10, E 문구 검수",
+      "assessment": "이전 B01/B02/B03와 원고/사실행 문제를 추적. 현재 모든 기능의 정상 UI 접근을 새로 검증한 것으로 주장하지 않음.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-08",
+      "requirement": "B 첫플레이 막힘10 추적",
+      "evidence": "FIRST_PLAY_STATUS_R08.md, records/firstplay-current/TRACKING.json",
+      "assessment": "10행·담당·현상·남은 확인 있음. 대표 과거 근거59파일 모두 SHA 확인. 첫플레이10과 결함 상위10은 서로 다름. 0/10 전면해결은 해결 미확인 상태이며 모두 현행 재현이라는 뜻 아님.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-09",
+      "requirement": "C 현행 장부·설치계획 대조",
+      "evidence": "ASSET_STRATEGY.md, records/assets-current/REPORT.md·검사물",
+      "assessment": "5885장부·858계획·858원본 현재 검사 승계, 불일치0. 승인44 보존. 후보 바이트 존재≠설치 완료/시각 품질.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "C 중단/필요/순서·바이블 충돌 제안",
+      "evidence": "ASSET_STRATEGY.md, install-plan-updated/R08_CURRENT.md",
+      "assessment": "기존 영주관 연결 우선, 2×2 엔진/3×3 원화 계약 등 제안 있음. 새 제작·승인44 재작업·자동 설치로 확대하지 않음. 문서 앞 R07 표제는 승계 부분이며 R08 추가와 분리해 읽어야 함.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-11",
+      "requirement": "C 설치된 행 제외·새 승인 추가한 현재 계획",
+      "evidence": "install-plan-updated/INVENTORY.csv·REMOVED.csv·EXCLUSIONS.csv·ORDER.md, records/assets-current",
+      "assessment": "858행 계획 유지가 현행 해시 검사에 근거함. 새 설치 변화가 없다고 CSV를 억지 변경할 필요 없음.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-12",
+      "requirement": "D 누적200·근거·비용·장면",
+      "evidence": "content/events.json·EVENTS.md·SOURCE_CATALOG.json·CHANGES.md",
+      "assessment": "직접200ID/572선택, 사건별 필수 필드·선택별 tradeoff/costAxes/원장/연대기 필드 누락0. 사료 타당성·대가의 재미는 기존 의미검수 승계이며 이번 구조 검사만으로 보장하지 않음.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-13",
+      "requirement": "D 넓은창·범위·엔진이름·등록기 형식",
+      "evidence": "content/registry.json·ADAPTER_CONTRACTS.json·COMMAND_CONTRACT.json·ENGINE_SUPPORT.json",
+      "assessment": "200 registry entry, proposal_only_not_runtime_registry. 395명령 템플릿과 61사건 HOLD/60전선택미지원/sidecar0의 기존 감사 보존. 동일ID 11개 현행 존재를 200설치로 세지 않음.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-14",
+      "requirement": "D LM-E9 Astra 확인 해결",
+      "evidence": "content/ASTRA_ANSWERS_R05.json·ASTRA_RESOLUTIONS_R05.md, records/de-coverage-current/REVIEW.md",
+      "assessment": "24답 직접 재계수. 20기존+4개정의 검수 승계. 답변/원고 해결과 엔진 구현은 별개.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-15",
+      "requirement": "E 모든 종류·한국어 변형·선택 데이터",
+      "evidence": "chronicle/variants.ko.json·CONTEXT_DRAFTS.catalog.json·COVERAGE.csv, records/de-coverage-current",
+      "assessment": "직접history182/ledger46, 정본650+별도212+나이20=882. 현재 유형키 누락0 판정 승계. 전 관계/시대/나이 조합 실행을 뜻하지 않음. 91단일정본 유형의 별도 보완과 HOLD30도 보존.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-16",
+      "requirement": "E 전기·당시 나이·FIX12 읽을때 이름",
+      "evidence": "chronicle/BIOGRAPHY_CONTRACT.json·AGE_CONTEXT_PROPOSAL.md, records/historical-age-contract·age-context-copy-proposal",
+      "assessment": "전기API의 params 등 부족 필드를 같은 저장 history ID로 연결하는 제안, 당시 나이6유형20행. 현재 나이 대입 금지·unknown fallback·저장 ID 유지 계약 있음. capture/formatter/UI 미설치는 작성 승인 자체의 장벽이 아님.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-17",
+      "requirement": "납품 REPORT 상위10·심각도·재현·담당·근거·지난 상태",
+      "evidence": "records/status-midround/STATUS.md, records/top10-evidence-plan/REPORT.md, inherited/top10",
+      "assessment": "현재 REPORT.md에 심각도·담당·범위·원자료 입구를 갖춘10행이 있으며64대응 근거 전부 SHA 확인. 부모 10:53 개정본을 읽고 반영했다. 최종 신규수와 종결판정은 아직 미정. A01은 HEAD5ad 과거 profile이며 현5fb 재측정 아님. 실패저장·원자성·사망자 검사에 UI사진을 추가 필수조건으로 만들지 않음.",
+      "status": "intermediate_report_ready_final_pending"
+    },
+    {
+      "id": "REQ-18",
+      "requirement": "납품 지도·전략·장기표/그래프·content/chronicle·선택패치",
+      "evidence": "해당 root문서, inherited/R07, content, chronicle, patches",
+      "assessment": "요구 산출물 종류 존재. 패치는 선택사항으로 없음 자체가 누락 아님. 장기표 승계와 R08 새습지 결과를 구분할 것.",
+      "status": "present_bounded_or_inherited"
+    },
+    {
+      "id": "REQ-19",
+      "requirement": "경량 ZIP·내부 SHA256SUMS·보고",
+      "evidence": "/tmp/astra-steward-r08-20261004.zip, root SHA256SUMS",
+      "assessment": "검사 시 둘 다 없음. 하위 manifest는 root납품 manifest를 대신하지 않음. 최종 바이트 동결/ZIP 검증·경로 보고가 남음.",
+      "status": "pending_archive"
+    },
+    {
+      "id": "REQ-20",
+      "requirement": "계속/최종 멈춤",
+      "evidence": "ROUND_PLAN.md, records/status-midround/findings.json",
+      "assessment": "R07 신규확정0 1회차, R08 최종null. 아직 2회 연속0 아님. D200/E유형작성 충족만으로 멈추지 않음. 최종 새중간이상0이면 다른 종료조건과 함께 부모가 판정; 0이 아니면 다음 회차. 알려진 결함 전체 수정·D/E 런타임 설치를 별도 필수조건으로 넣지 않음.",
+      "status": "pending_final_severity"
+    }
+  ],
+  "checks": "CHECKS.json",
+  "inputPins": "INPUT_PINS.json",
+  "remaining": [
+    {
+      "id": "P1",
+      "path": "records/fen-run-lifecycle",
+      "need": "started fen run terminal state and result handoff; inspected progress1370 running",
+      "mandatoryPerRoundAllTerrain": false
+    },
+    {
+      "id": "P2",
+      "path": "REPORT.md",
+      "need": "REPORT top10 required fields now present; final severity/new signature and closing decision pending"
+    },
+    {
+      "id": "P3",
+      "path": "/tmp/astra-steward-r08-20261004.zip",
+      "need": "root SHA256SUMS and archive integrity/contents verification plus final path report"
+    }
+  ],
+  "correctedHandoffGaps": {
+    "top10Evidence64": "all matching SHA",
+    "firstplayEvidence59": "all matching SHA",
+    "oldAssetRelativeLink": true
+  },
+  "authored": {
+    "D": 200,
+    "Etypes": {
+      "history": 182,
+      "ledger": 46
+    },
+    "variants": 882,
+    "missingMandatoryDraftsFound": 0,
+    "installedClaim": false
+  },
+  "notAddedAsExitRequirements": [
+    "all existing defects fixed",
+    "D/E runtime installed",
+    "all possible age/relation/context combinations tested",
+    "UI screenshots for non-UI decoder/atomicity/dead-person checks",
+    "exhaustive invariant proof",
+    "every terrain in every round"
+  ],
+  "limits": [
+    "no engine/browser/remote execution",
+    "no new visual verdict",
+    "prior 150yr runs are inherited not new R08 executions",
+    "A01 historical HEAD5ad not current5fb repro",
+    "not full historical link closure",
+    "snapshot not future parent evidence approval"
+  ]
+}

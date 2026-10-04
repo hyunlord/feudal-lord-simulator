@@ -1,0 +1,164 @@
+{
+  "cases": 26,
+  "rows": [
+    {
+      "field": "campaignId",
+      "value": "   ",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "campaignId",
+      "value": "\n",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "campaignId",
+      "value": "\t",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "campaignId",
+      "value": "",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "claim",
+      "value": "   ",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "claim",
+      "value": "\n",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "claim",
+      "value": "claim-0",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "claim",
+      "value": "claim-01",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "claim",
+      "value": "claim-1 ",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "claim",
+      "value": "claim-1\n",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "claim",
+      "value": "claim-9007199254740992",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "claim",
+      "value": "suit-1",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "ledger",
+      "value": "ledger-000000",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "ledger",
+      "value": "ledger-0000001",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "ledger",
+      "value": "ledger-1",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "ledger",
+      "value": "ledger-000001\n",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "ledger",
+      "value": "ledger-9007199254740992",
+      "expected": null,
+      "actual": null
+    },
+    {
+      "field": "ledger",
+      "value": "ledger-000001",
+      "expected": "lawsuit.r06context.filed",
+      "actual": "lawsuit.r06context.filed"
+    },
+    {
+      "field": "ledger",
+      "value": "ledger-999999",
+      "expected": "lawsuit.r06context.filed",
+      "actual": "lawsuit.r06context.filed"
+    },
+    {
+      "field": "ledger",
+      "value": "ledger-1000000",
+      "expected": "lawsuit.r06context.filed",
+      "actual": "lawsuit.r06context.filed"
+    },
+    {
+      "field": "ledger",
+      "value": "ledger-9007199254740991",
+      "expected": "lawsuit.r06context.filed",
+      "actual": "lawsuit.r06context.filed"
+    },
+    {
+      "field": "claim",
+      "value": "claim-1",
+      "expected": "lawsuit.r06context.filed",
+      "actual": "lawsuit.r06context.filed"
+    },
+    {
+      "field": "claim",
+      "value": "claim-999",
+      "expected": "lawsuit.r06context.filed",
+      "actual": "lawsuit.r06context.filed"
+    },
+    {
+      "field": "claim",
+      "value": "claim-9007199254740991",
+      "expected": "lawsuit.r06context.filed",
+      "actual": "lawsuit.r06context.filed"
+    },
+    {
+      "field": "campaignId",
+      "value": "campaign-test",
+      "expected": "lawsuit.r06context.filed",
+      "actual": "lawsuit.r06context.filed"
+    },
+    {
+      "field": "campaignId",
+      "value": "캠페인 1",
+      "expected": "lawsuit.r06context.filed",
+      "actual": "lawsuit.r06context.filed"
+    }
+  ],
+  "originalUnchanged": true,
+  "proposalByteIdentical": true,
+  "engineExecuted": false
+}

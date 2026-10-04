@@ -1,0 +1,34 @@
+{
+  "status": "PASS_REVISED_DRAFT_WITH_COMPOSITION_HOLDS",
+  "templates": 9,
+  "variants": 22,
+  "fields": 9,
+  "originalFixtureCount": 176,
+  "byteIdenticalFiles": [
+    "PROPOSAL.json",
+    "FIELD_CONTRACTS.json",
+    "FIXTURES.json",
+    "SOURCE_EVIDENCE.json",
+    "READ_TIME_NAMES.md",
+    "NOT_AUTHORED.json",
+    "baseline647.ko.json"
+  ],
+  "independentSchemaNegativeCount": 127,
+  "knownPositiveCount": 22,
+  "safeTickPositiveCount": 2,
+  "independentRegressionProbeCount": 45,
+  "unknownEmptyAccepted": true,
+  "compositionHolds": [
+    "legacy.charter_refused.r06ctx2.expired",
+    "decision.market_town.r06ctx2.water_reach",
+    "decision.market_town.r06ctx2.land_ring"
+  ],
+  "sourceFiles": 13,
+  "sourceSpans": 24,
+  "candidateUnchanged": true,
+  "canonicalUnchanged": true,
+  "canonicalSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "runtimeExecuted": false,
+  "captureAdapterImplemented": false,
+  "fullJsonSchemaConformance": false
+}

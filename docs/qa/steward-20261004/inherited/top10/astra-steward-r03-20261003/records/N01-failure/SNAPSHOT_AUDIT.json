@@ -1,0 +1,298 @@
+{
+  "tick": 560000,
+  "population": 111,
+  "marked": [
+    "storehouse-41-40-0",
+    "construction-site-000036",
+    "construction-site-000042",
+    "construction-site-000043",
+    "construction-site-000048",
+    "construction-site-000078",
+    "construction-site-000081",
+    "construction-site-000086",
+    "construction-site-000091"
+  ],
+  "arrearsCount": 93,
+  "arrearsSum": 2607,
+  "unmarkedQueuedBuildings": [
+    "construction-site-000017",
+    "construction-site-000032",
+    "construction-site-000038",
+    "construction-site-000039",
+    "construction-site-000027",
+    "construction-site-000015",
+    "construction-site-000016"
+  ],
+  "details": [
+    {
+      "building": {
+        "id": "construction-site-000017",
+        "kind": "well",
+        "tx": 46,
+        "ty": 38,
+        "workers": 0,
+        "inventory": {
+        },
+        "reserved": {
+        },
+        "stockReserved": {
+        },
+        "productionProgress": 0
+      },
+      "arrears": [
+        {
+          "tick": 540000,
+          "amount": 1,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000017"
+          }
+        },
+        {
+          "tick": 547200,
+          "amount": 1,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000017"
+          }
+        },
+        {
+          "tick": 552000,
+          "amount": 1,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000017"
+          }
+        }
+      ]
+    },
+    {
+      "building": {
+        "id": "construction-site-000032",
+        "kind": "well",
+        "tx": 52,
+        "ty": 43,
+        "workers": 0,
+        "inventory": {
+        },
+        "reserved": {
+        },
+        "stockReserved": {
+        },
+        "productionProgress": 0
+      },
+      "arrears": [
+        {
+          "tick": 540000,
+          "amount": 1,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000032"
+          }
+        },
+        {
+          "tick": 547200,
+          "amount": 1,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000032"
+          }
+        },
+        {
+          "tick": 552000,
+          "amount": 1,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000032"
+          }
+        },
+        {
+          "tick": 554400,
+          "amount": 1,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000032"
+          }
+        }
+      ]
+    },
+    {
+      "building": {
+        "id": "construction-site-000038",
+        "kind": "mill",
+        "tx": 54,
+        "ty": 44,
+        "workers": 2,
+        "inventory": {
+          "wheat": 15,
+          "bread": 16
+        },
+        "reserved": {
+        },
+        "stockReserved": {
+        },
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "bread": 468300
+        }
+      },
+      "arrears": [
+        {
+          "tick": 547200,
+          "amount": 8,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000038"
+          }
+        },
+        {
+          "tick": 552000,
+          "amount": 8,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000038"
+          }
+        },
+        {
+          "tick": 554400,
+          "amount": 8,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000038"
+          }
+        }
+      ]
+    },
+    {
+      "building": {
+        "id": "construction-site-000039",
+        "kind": "mill",
+        "tx": 53,
+        "ty": 45,
+        "workers": 2,
+        "inventory": {
+          "wheat": 15,
+          "bread": 16
+        },
+        "reserved": {
+        },
+        "stockReserved": {
+        },
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "bread": 462800
+        }
+      },
+      "arrears": [
+        {
+          "tick": 547200,
+          "amount": 8,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000039"
+          }
+        },
+        {
+          "tick": 552000,
+          "amount": 8,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000039"
+          }
+        },
+        {
+          "tick": 554400,
+          "amount": 8,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000039"
+          }
+        }
+      ]
+    },
+    {
+      "building": {
+        "id": "construction-site-000027",
+        "kind": "mill",
+        "tx": 49,
+        "ty": 38,
+        "workers": 2,
+        "inventory": {
+          "wheat": 13,
+          "bread": 16
+        },
+        "reserved": {
+        },
+        "stockReserved": {
+        },
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "bread": 471900
+        }
+      },
+      "arrears": [
+        {
+          "tick": 552000,
+          "amount": 8,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000027"
+          }
+        }
+      ]
+    },
+    {
+      "building": {
+        "id": "construction-site-000015",
+        "kind": "well",
+        "tx": 45,
+        "ty": 42,
+        "workers": 0,
+        "inventory": {
+        },
+        "reserved": {
+        },
+        "stockReserved": {
+        },
+        "productionProgress": 0
+      },
+      "arrears": [
+        {
+          "tick": 552000,
+          "amount": 1,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000015"
+          }
+        }
+      ]
+    },
+    {
+      "building": {
+        "id": "construction-site-000016",
+        "kind": "well",
+        "tx": 47,
+        "ty": 43,
+        "workers": 0,
+        "inventory": {
+        },
+        "reserved": {
+        },
+        "stockReserved": {
+        },
+        "productionProgress": 0
+      },
+      "arrears": [
+        {
+          "tick": 552000,
+          "amount": 1,
+          "facility": {
+            "type": "building",
+            "id": "construction-site-000016"
+          }
+        }
+      ]
+    }
+  ],
+  "sha256": "f95a35dee518c76ce539d16dc949d4e25c241e403fe30afa301f594a1e20d3de"
+}

@@ -1,0 +1,237 @@
+{
+  "status": "R08_MIDROUND_NOT_FINAL",
+  "captured_utc": "2026-10-04T01:38:03Z",
+  "top10": [
+    {
+      "rank": 1,
+      "id": "SAVE01",
+      "severity": "high",
+      "owner": "엔진 저장/회계",
+      "R08_status": "inherited_open",
+      "reason": "seed1/open t560000 decode거부. R08의 다른 입력/저장 검사는 이 fixture 거부를 닫지 않음.",
+      "resolved": false,
+      "new_confirmed_medium_plus_in_this_audit": false
+    },
+    {
+      "rank": 2,
+      "id": "A02",
+      "severity": "high",
+      "owner": "엔진 인물/청지기",
+      "R08_status": "inherited_open",
+      "reason": "seed2 t600000 사망청지기 선임. R08 선택진단·창고흐름은 자격/후임경로 검사 아님.",
+      "resolved": false,
+      "new_confirmed_medium_plus_in_this_audit": false
+    },
+    {
+      "rank": 3,
+      "id": "A05",
+      "severity": "high",
+      "owner": "엔진 등록기",
+      "R08_status": "inherited_open",
+      "reason": "장려금7+9 부분적용 원자성. D sidecar차단·작성범위 감사는 엔진수정 증거 아님.",
+      "resolved": false,
+      "new_confirmed_medium_plus_in_this_audit": false
+    },
+    {
+      "rank": 4,
+      "id": "B02",
+      "severity": "high",
+      "owner": "렌더 명령접근",
+      "R08_status": "inherited_open",
+      "reason": "청원후 방향잠금·lord 정상진입 제약. 공개함수 재실행은 사용자 동사 연결 아님.",
+      "resolved": false,
+      "new_confirmed_medium_plus_in_this_audit": false
+    },
+    {
+      "rank": 5,
+      "id": "B03",
+      "severity": "high",
+      "owner": "렌더 성장영수증",
+      "R08_status": "inherited_open",
+      "reason": "receipt98 한 자율창고 원인표시공백. 현재DiagnosticCard 분석과 재고trace는 성장영수증 표시 해결 아님.",
+      "resolved": false,
+      "new_confirmed_medium_plus_in_this_audit": false
+    },
+    {
+      "rank": 6,
+      "id": "B01",
+      "severity": "high",
+      "owner": "렌더 진입",
+      "R08_status": "inherited_open",
+      "reason": "집놓기CTA·정상lord진입 연결. 기존fixture 정상불러오기와 자연신규플레이 구별.",
+      "resolved": false,
+      "new_confirmed_medium_plus_in_this_audit": false
+    },
+    {
+      "rank": 7,
+      "id": "A01",
+      "severity": "high",
+      "owner": "엔진 성능",
+      "R08_status": "inherited_open",
+      "reason": "목책탐색 집중프로파일. 짧은1.7/13.7초 진단·승계150년완주를 성능결함 해결로 쓰지 않음.",
+      "resolved": false,
+      "new_confirmed_medium_plus_in_this_audit": false
+    },
+    {
+      "rank": 8,
+      "id": "E02.factline.seven",
+      "severity": "medium",
+      "owner": "콘텐츠/엔진 문구",
+      "R08_status": "authored_remedy_runtime_open",
+      "reason": "R06확정7의 사실행/문맥원고검수 승계. E182종覆盖·882문구는 formatter/capture/UI 설치나엔진문구수정 아님.",
+      "resolved": false,
+      "new_confirmed_medium_plus_in_this_audit": false
+    },
+    {
+      "rank": 9,
+      "id": "ledger.purpose.three",
+      "severity": "medium_candidate",
+      "owner": "콘텐츠/엔진 문구",
+      "R08_status": "authored_remedy_runtime_unverified",
+      "reason": "약속/유언호의·보조세/특허확인금·좌판/에일집 목적6문구와계약유지. 실제UI·통합별도.",
+      "resolved": false,
+      "new_confirmed_medium_plus_in_this_audit": false
+    },
+    {
+      "rank": 10,
+      "id": "B04.restore-affordability",
+      "severity": "medium_candidate",
+      "owner": "엔진/렌더",
+      "R08_status": "inherited_open",
+      "reason": "부족자금 복원응답·재청원지연경계 승계. R08 자연원UI/실패안내 미검증.",
+      "resolved": false,
+      "new_confirmed_medium_plus_in_this_audit": false
+    }
+  ],
+  "additional": [
+    {
+      "id": "R07C_FOOD_SELECTION",
+      "status": "cause_HOLD",
+      "new_confirmed": false,
+      "scope": "4 reconstructed recorded inputs; bestHouseDemand4+next4 direct imports, advanceTick0,604checks not604scenarios. Selected house-46-42-0 or000018. Not officialprefix interception or1200tickcause."
+    },
+    {
+      "id": "FP02_STORAGE",
+      "status": "UI_unresolved_transient_flow_verified",
+      "new_confirmed": false,
+      "scope": "3840ticks200000–203840,progresschanges70=35tickcycle2. First inventory200394 vs firstproduction200840. Endlogs1/timber19/progress0. No directdeliverycallbacks."
+    },
+    {
+      "id": "A03",
+      "status": "inherited_medium_open",
+      "new_confirmed": false,
+      "scope": "R07seed3 deadpersonal title/possession recurrence,notA02. No new R08 successor implementation."
+    },
+    {
+      "id": "FP08_FIRE",
+      "status": "inherited_guidance_scope_expansion",
+      "new_confirmed": false,
+      "scope": "R07 staged guidance mismatch preserved; no R08 UI repair."
+    }
+  ],
+  "classification": {
+    "R07_final_new_confirmed_medium_plus": 0,
+    "R06_previous_new_confirmed_medium_plus": 7,
+    "R08_new_confirmed_in_reviewed_evidence": [
+
+    ],
+    "R08_final_new_medium_plus": null,
+    "goal_complete": false,
+    "note": "R07 확정0을 R08에 복사하지 않는다. 읽은 현재근거에 새중간이상 확정없음, 회차전체0 선언아님."
+  },
+  "C": {
+    "ledger": 5885,
+    "plan": 858,
+    "uninstalled_confirmed": 2221,
+    "excluded": 1363,
+    "approved44_unchanged": true,
+    "bytes_verified_not_installed": true
+  },
+  "D": {
+    "events": 200,
+    "choices": 572,
+    "commandTemplates": 395,
+    "answers": 24,
+    "eventBlocked": 61,
+    "allChoicesUnsupported": 60,
+    "sidecarEnabled": 0,
+    "authored_scope": true,
+    "runtime_integrated": false
+  },
+  "E": {
+    "history": 182,
+    "ledger": 46,
+    "variants": 882,
+    "missingTypes": 0,
+    "holds": 30,
+    "authored_scope": true,
+    "all_combinations": false,
+    "runtime_integrated": false
+  },
+  "inheritance": {
+    "runs": 5,
+    "coreFiles": 127,
+    "checkpointFilesExcluded": 25,
+    "seed2_chalk_policy": "dynamic full; not fixed growth",
+    "new_R08_runs": false
+  },
+  "inputs": [
+    {
+      "path": "/tmp/astra-steward-r08-20261004/REPORT.md",
+      "sha256": "0ccefd3f384825308f8e6c082f4c9f95627152e30b20a2a85de520667d85a43d"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/HANDOFF_CURRENT.md",
+      "sha256": "aad17c5f14c4f8867e46cd27a0133f5d90b0d502c41513266d937682a09b199b"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/food-choice-review/REPORT.md",
+      "sha256": "0ec579578e4603344bf2d22ce8860284ad4ba360a9bcc7191d620ad3759b61e0"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/storage-flow-review/REPORT.md",
+      "sha256": "2c356d39f8cc3cc00d0c815ad1c1d1e6ea4cb71a72bdf01e9d375c712c0b9425"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/storage-surface-boundary/REPORT.md",
+      "sha256": "b249285ce8b4a5bc3f55917f6478885e6a71e9c934aedca2e32f98dc5626267c"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/assets-current/REPORT.md",
+      "sha256": "43908d1a389ec9fc114d3c76ca4a9db8c8f4e46ef08c7b9c60c3016d9a6a3f14"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/de-coverage-current/REVIEW.md",
+      "sha256": "2b00fe38f5a3db1499be4010e4c96da82e7c506ce5a23d44a3fa51d628b76093"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/DE_PARENT_ADOPTION.json",
+      "sha256": "15ae473750e2b8b74e9a98511a7fb99ac3134875f3ce6277dbab76ea75a7f472"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/FOOD_CHOICE_PARENT_ADOPTION.json",
+      "sha256": "aad46caa6f0745a065f4c6dde5b211ab3fbb2415d1946a1db982b5d5436c3b12"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/STORAGE_FLOW_PARENT_ADOPTION.json",
+      "sha256": "9f277d54a681bbd9b21f90f47f9a2c5d588370872261097fc484cd7165283a23"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/long-run-inheritance/REPORT.md",
+      "sha256": "5d9c99883d6a87e5c33710945d41789092d0bae9c9efedf1ce6a9654c67b127e"
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/LONG_RUN_PARENT_ADOPTION.json",
+      "sha256": "516006c148207f3ae4f16bcc6b98a09344809acf4628a75ef7f4104785b08c47"
+    },
+    {
+      "path": "/tmp/astra-steward-r07-20261004/REPORT.md",
+      "sha256": "04f5e27a32f602fc0895753824e622e3d27494f565bb0a7cd299959fc051c78f"
+    },
+    {
+      "path": "/tmp/astra-steward-r07-20261004/records/SEVERITY_FINAL_R07.json",
+      "sha256": "4354dd7e578f25f09c232b1afa62a44bb2adfa92d2db67c3b9e7d1a53ccf1b22"
+    }
+  ],
+  "scope": "읽기전용정합검토. 엔진/브라우저/DGX/source실행없음. 다른보고서미수정."
+}

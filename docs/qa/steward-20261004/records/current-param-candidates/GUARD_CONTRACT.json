@@ -1,0 +1,38 @@
+{
+  "status": "PROPOSED_NOT_IMPLEMENTED",
+  "preconditions": [
+    {
+      "templates": [
+        "plague.new_graves"
+      ],
+      "field": "params.dead",
+      "type": "finite_safe_integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    {
+      "templates": [
+        "plague.empty_streets"
+      ],
+      "field": "params.houses",
+      "type": "finite_safe_integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    {
+      "templates": [
+        "legacy.mayor_demand"
+      ],
+      "field": "params.candidateId",
+      "type": "string",
+      "normalization": "none: exact empty vs any nonempty string; do not trim or resolve the ID to select"
+    }
+  ],
+  "conditionExtension": {
+    "op": "neq",
+    "semantics": "Typed string inequality only after the declared string guard; missing/null/number/object/array must fallback, never coerce"
+  },
+  "fallback": "Any failed type/domain precondition selects original baseline; never compare malformed values",
+  "nameContract": "No personal names in added headlines. Retain raw candidateId and baseline history.summary(record,state), whose historyParams resolves names at reading. Empty ID means no identified candidate in this record, not death, vacancy, or no possible candidate anywhere.",
+  "runtimeImplemented": false
+}

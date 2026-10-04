@@ -1,5 +1,6 @@
 import { SCENARIO_COPY } from "../../content/scenario/scenarioCopy.ko";
 import { moneyFull, moneyShort } from "../money.ko";
+import { PERSONS_COPY } from "../persons/personsCopy.ko";
 
 // CHRON-1 chronicle screen copy (the records' own sentences are src/content/historyCopy.ko.ts).
 const METRIC_NAMES: Readonly<Record<string, string>> = { population: "인구", treasury: "금고", merchantGauge: "상인 게이지", lots: "필지", l4: "도시 대가옥" };
@@ -127,7 +128,7 @@ export const CHRONICLE_SCREEN_COPY = {
   portraitMatch: (identity: string, stage: string, exact: boolean) =>
     `초상 ${identity}${PORTRAIT_STAGES[stage] === "" || PORTRAIT_STAGES[stage] === undefined ? "" : ` ${PORTRAIT_STAGES[stage]}`} · ${exact ? "성별·나이대·계층 일치" : "가장 가까운 그림"}`,
   // UI-8 (F3-A PL-2): plague death cause shown below the life span in the biography header.
-  plagueDeath: (year: number) => `역병으로 죽음 (${year})`,
+  plagueDeath: PERSONS_COPY.plagueDeath,
   lifeHeading: "생애",
   lifeEmpty: "아직 남긴 기록이 없습니다",
   relationsHeading: "관계",

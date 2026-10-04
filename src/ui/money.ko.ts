@@ -67,6 +67,13 @@ export function moneyPence(value: number): string {
   return `${whole < 0 ? MARK.minus : ""}${grouped(Math.abs(whole))}${MARK.penny}`;
 }
 
+/** COPY-1r (CA-002, CA-005): a detailed or confirmed change in the full form with its sign: "+£1 13s 3d", "−7d", "±0d". */
+export function moneyFullDelta(value: number): string {
+  if (!Number.isFinite(value)) return MARK.unknown;
+  const whole = Math.trunc(value);
+  return whole === 0 ? `${MARK.zero}0${MARK.penny}` : `${whole > 0 ? MARK.plus : ""}${moneyFull(whole)}`;
+}
+
 /** A change of money in the short form with its sign: "+£1 3s", "−7d", "±0d". */
 export function moneyDelta(value: number): string {
   if (!Number.isFinite(value)) return MARK.unknown;

@@ -1,0 +1,1226 @@
+{
+  "inputSha256": "b663dde465f0b8b4fceae704bd583fca4e79ea6fd0852a1ee83d78f88990dbbb",
+  "stateSha256": "00b11b329d230aaf635f47f19f396e3f86985ca0cc743bff862585d4807b0ae1",
+  "projection": {
+    "tick": 200000,
+    "wallTick": 200000,
+    "buildings": [
+      {
+        "id": "logging-camp-50-40-0",
+        "kind": "logging_camp",
+        "tx": 50,
+        "ty": 40,
+        "inventory": {
+          "logs": 20
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 3,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "logs": 157700
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "storehouse-41-40-0",
+        "kind": "storehouse",
+        "tx": 41,
+        "ty": 40,
+        "inventory": {
+          "timber": 60,
+          "logs": 88,
+          "stone": 51,
+          "malt": 0,
+          "stone_raw": 1
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 2,
+        "productionProgress": 0,
+        "stuckSinceTick": null,
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 200
+      },
+      {
+        "id": "construction-site-000003",
+        "kind": "sawmill",
+        "tx": 42,
+        "ty": 39,
+        "inventory": {
+          "logs": 1,
+          "timber": 18
+        },
+        "reserved": {
+          "timber": 1
+        },
+        "stockReserved": {},
+        "workers": 2,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "timber": 160600
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000039",
+        "kind": "storehouse",
+        "tx": 41,
+        "ty": 45,
+        "inventory": {
+          "logs": 97,
+          "timber": 60,
+          "malt": 0,
+          "stone": 41
+        },
+        "reserved": {
+          "timber": 1,
+          "logs": 1
+        },
+        "stockReserved": {},
+        "workers": 2,
+        "productionProgress": 0,
+        "stuckSinceTick": null,
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 200
+      },
+      {
+        "id": "construction-site-000046",
+        "kind": "logging_camp",
+        "tx": 47,
+        "ty": 30,
+        "inventory": {
+          "logs": 20
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 3,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "logs": 168500
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000048",
+        "kind": "storehouse",
+        "tx": 52,
+        "ty": 48,
+        "inventory": {
+          "logs": 100,
+          "timber": 60,
+          "malt": 0,
+          "stone": 40
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 2,
+        "productionProgress": 0,
+        "stuckSinceTick": null,
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 200
+      },
+      {
+        "id": "construction-site-000049",
+        "kind": "logging_camp",
+        "tx": 47,
+        "ty": 29,
+        "inventory": {
+          "logs": 20
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 3,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "logs": 157700
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000050",
+        "kind": "sawmill",
+        "tx": 43,
+        "ty": 43,
+        "inventory": {
+          "logs": 1,
+          "timber": 19
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 2,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "timber": 164900
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000051",
+        "kind": "logging_camp",
+        "tx": 46,
+        "ty": 29,
+        "inventory": {
+          "logs": 19
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 3,
+        "productionProgress": 25,
+        "stuckSinceTick": {
+          "logs": 168500
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000052",
+        "kind": "logging_camp",
+        "tx": 45,
+        "ty": 29,
+        "inventory": {
+          "logs": 19
+        },
+        "reserved": {
+          "logs": 1
+        },
+        "stockReserved": {},
+        "workers": 3,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "logs": 168500
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000053",
+        "kind": "logging_camp",
+        "tx": 44,
+        "ty": 29,
+        "inventory": {
+          "logs": 20
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 3,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "logs": 162900
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000054",
+        "kind": "sawmill",
+        "tx": 43,
+        "ty": 26,
+        "inventory": {
+          "logs": 1,
+          "timber": 19
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 2,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "timber": 160200
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000056",
+        "kind": "logging_camp",
+        "tx": 43,
+        "ty": 24,
+        "inventory": {
+          "logs": 20
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 3,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "logs": 157700
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000057",
+        "kind": "logging_camp",
+        "tx": 41,
+        "ty": 27,
+        "inventory": {
+          "logs": 20
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 3,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "logs": 157700
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000060",
+        "kind": "sawmill",
+        "tx": 37,
+        "ty": 27,
+        "inventory": {
+          "logs": 1,
+          "timber": 19
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 2,
+        "productionProgress": 0,
+        "stuckSinceTick": {
+          "timber": 160600
+        },
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 20
+      },
+      {
+        "id": "construction-site-000062",
+        "kind": "storehouse",
+        "tx": 33,
+        "ty": 29,
+        "inventory": {
+          "logs": 100,
+          "stone": 40,
+          "timber": 60,
+          "malt": 0
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 2,
+        "productionProgress": 0,
+        "stuckSinceTick": null,
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 200
+      },
+      {
+        "id": "construction-site-000065",
+        "kind": "storehouse",
+        "tx": 38,
+        "ty": 30,
+        "inventory": {
+          "timber": 60,
+          "malt": 0,
+          "stone": 40,
+          "logs": 100
+        },
+        "reserved": {},
+        "stockReserved": {},
+        "workers": 2,
+        "productionProgress": 0,
+        "stuckSinceTick": null,
+        "operationPaused": false,
+        "upkeepUnpaid": false,
+        "capacity": 200
+      }
+    ],
+    "stores": [
+      {
+        "id": "storehouse-41-40-0",
+        "used": 200,
+        "incoming": 0,
+        "capacity": 200,
+        "space": 0
+      },
+      {
+        "id": "construction-site-000039",
+        "used": 198,
+        "incoming": 2,
+        "capacity": 200,
+        "space": 0
+      },
+      {
+        "id": "construction-site-000048",
+        "used": 200,
+        "incoming": 0,
+        "capacity": 200,
+        "space": 0
+      },
+      {
+        "id": "construction-site-000062",
+        "used": 200,
+        "incoming": 0,
+        "capacity": 200,
+        "space": 0
+      },
+      {
+        "id": "construction-site-000065",
+        "used": 200,
+        "incoming": 0,
+        "capacity": 200,
+        "space": 0
+      }
+    ],
+    "carters": [
+      {
+        "id": "carter:construction-site-000001:200000",
+        "homeBuildingId": "construction-site-000001",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000067"
+        },
+        "cargo": {
+          "resource": "wheat",
+          "amount": 1
+        },
+        "position": {
+          "tx": 44,
+          "ty": 37
+        },
+        "pathIndex": 0,
+        "spawnedTick": 200000,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000067"
+          },
+          "resource": "wheat",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": {
+            "buildingId": "construction-site-000001",
+            "resource": "wheat",
+            "amount": 1
+          }
+        },
+        "pathSha": "be603c1cbf1d04c72347aa961046940e1148bc3f5619400aeac6bda17f7e5b3b"
+      },
+      {
+        "id": "carter:construction-site-000002:199961",
+        "homeBuildingId": "construction-site-000002",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000072"
+        },
+        "cargo": {
+          "resource": "bread",
+          "amount": 1
+        },
+        "position": {
+          "tx": 47,
+          "ty": 37.53999999999998
+        },
+        "pathIndex": 5,
+        "spawnedTick": 199961,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000072"
+          },
+          "resource": "bread",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": {
+            "buildingId": "construction-site-000002",
+            "resource": "bread",
+            "amount": 1
+          }
+        },
+        "pathSha": "373df274bd51bff7cd10064133d9b334ef3a84fbb13f998c25a85799c8738384"
+      },
+      {
+        "id": "carter:construction-site-000002:intake:199991",
+        "homeBuildingId": "construction-site-000002",
+        "cart": "intake",
+        "mission": "fetch",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000001"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 47.739999999999995,
+          "ty": 41
+        },
+        "pathIndex": 1,
+        "spawnedTick": 199991,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000002"
+          },
+          "resource": "wheat",
+          "amount": 4,
+          "sourceStockClaim": {
+            "kind": "building",
+            "buildingId": "construction-site-000001",
+            "resource": "wheat",
+            "amount": 4
+          },
+          "homeCapacityClaim": null
+        },
+        "pathSha": "0b550b6cb156e15dac313c4d03226afb300073d671e76eb30a6a1e996cf1c9b6"
+      },
+      {
+        "id": "carter:construction-site-000003:199936",
+        "homeBuildingId": "construction-site-000003",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000039"
+        },
+        "cargo": {
+          "resource": "timber",
+          "amount": 1
+        },
+        "position": {
+          "tx": 49.960000000000036,
+          "ty": 37
+        },
+        "pathIndex": 8,
+        "spawnedTick": 199936,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000039"
+          },
+          "resource": "timber",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": {
+            "buildingId": "construction-site-000003",
+            "resource": "timber",
+            "amount": 1
+          }
+        },
+        "pathSha": "6731c18f2b438ede4c411b45ec4907450ab77c28d4e75a62edbaec62a7072607"
+      },
+      {
+        "id": "carter:construction-site-000021:199636",
+        "homeBuildingId": "construction-site-000021",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "returning",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000067"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 49.88000000000008,
+          "ty": 37
+        },
+        "pathIndex": 19,
+        "spawnedTick": 199636,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000067"
+          },
+          "resource": "bread",
+          "amount": 6,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": null
+        },
+        "pathSha": "413705fd8f3d5bbb97fdbc2ff55e22c052b7f48a75dd85aebca15410b044c4be"
+      },
+      {
+        "id": "carter:construction-site-000025:199520",
+        "homeBuildingId": "construction-site-000025",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "returning",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000067"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 49,
+          "ty": 44.20000000000013
+        },
+        "pathIndex": 32,
+        "spawnedTick": 199520,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000067"
+          },
+          "resource": "wheat",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": null
+        },
+        "pathSha": "555388fe3223ece3761a32235b87453beadc4e6473bc8d84932afc914ccf8caa"
+      },
+      {
+        "id": "carter:construction-site-000026:199911",
+        "homeBuildingId": "construction-site-000026",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "returning",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000036"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 48,
+          "ty": 36.34000000000002
+        },
+        "pathIndex": 4,
+        "spawnedTick": 199911,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000036"
+          },
+          "resource": "bread",
+          "amount": 3,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": null
+        },
+        "pathSha": "d66541d9a4635dbc6d95cadd010e0aee20db19cd1c5e924428ea9b6e81b2d802"
+      },
+      {
+        "id": "carter:construction-site-000027:199920",
+        "homeBuildingId": "construction-site-000027",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000067"
+        },
+        "cargo": {
+          "resource": "bread",
+          "amount": 1
+        },
+        "position": {
+          "tx": 46.799999999999955,
+          "ty": 28
+        },
+        "pathIndex": 11,
+        "spawnedTick": 199920,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000067"
+          },
+          "resource": "bread",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": {
+            "buildingId": "construction-site-000027",
+            "resource": "bread",
+            "amount": 1
+          }
+        },
+        "pathSha": "3be3b10aff015b2c463f1e5de0894b1fb572dd4b397e8131afde5b9436d8101a"
+      },
+      {
+        "id": "carter:construction-site-000037:199876",
+        "homeBuildingId": "construction-site-000037",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000067"
+        },
+        "cargo": {
+          "resource": "bread",
+          "amount": 5
+        },
+        "position": {
+          "tx": 48,
+          "ty": 31.63999999999993
+        },
+        "pathIndex": 17,
+        "spawnedTick": 199876,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000067"
+          },
+          "resource": "bread",
+          "amount": 5,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": {
+            "buildingId": "construction-site-000037",
+            "resource": "bread",
+            "amount": 5
+          }
+        },
+        "pathSha": "532a8f0d745d998414778f37c8129904cf3e1fffb3997b7cf2c2f8adfa1fc0ec"
+      },
+      {
+        "id": "carter:construction-site-000037:intake:199936",
+        "homeBuildingId": "construction-site-000037",
+        "cart": "intake",
+        "mission": "fetch",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000025"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 49,
+          "ty": 44.960000000000036
+        },
+        "pathIndex": 8,
+        "spawnedTick": 199936,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000037"
+          },
+          "resource": "wheat",
+          "amount": 3,
+          "sourceStockClaim": {
+            "kind": "building",
+            "buildingId": "construction-site-000025",
+            "resource": "wheat",
+            "amount": 3
+          },
+          "homeCapacityClaim": null
+        },
+        "pathSha": "d9b3a628061c18fe7962aefdeae413e682949966660b0ec73704ef46ed210b77"
+      },
+      {
+        "id": "carter:construction-site-000041:199881",
+        "homeBuildingId": "construction-site-000041",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000036"
+        },
+        "cargo": {
+          "resource": "bread",
+          "amount": 1
+        },
+        "position": {
+          "tx": 52,
+          "ty": 39.33999999999993
+        },
+        "pathIndex": 16,
+        "spawnedTick": 199881,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000036"
+          },
+          "resource": "bread",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": {
+            "buildingId": "construction-site-000041",
+            "resource": "bread",
+            "amount": 1
+          }
+        },
+        "pathSha": "fe8e7cbf80e3ae546a727582916e066c0ee0f017cae6881668076c6643e9183a"
+      },
+      {
+        "id": "carter:construction-site-000042:199551",
+        "homeBuildingId": "construction-site-000042",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "returning",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000067"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 53,
+          "ty": 42.84000000000012
+        },
+        "pathIndex": 28,
+        "spawnedTick": 199551,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000067"
+          },
+          "resource": "bread",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": null
+        },
+        "pathSha": "507aaf753d2fe39340d08a7e7ba6a353ab988f674a164e75c2e7e83a742fdf25"
+      },
+      {
+        "id": "carter:construction-site-000043:199931",
+        "homeBuildingId": "construction-site-000043",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000036"
+        },
+        "cargo": {
+          "resource": "bread",
+          "amount": 1
+        },
+        "position": {
+          "tx": 51.33999999999996,
+          "ty": 38
+        },
+        "pathIndex": 9,
+        "spawnedTick": 199931,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000036"
+          },
+          "resource": "bread",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": {
+            "buildingId": "construction-site-000043",
+            "resource": "bread",
+            "amount": 1
+          }
+        },
+        "pathSha": "863230f815141b86d82ad552732ce1f27819e3b8641a792b82d0848ea4d17998"
+      },
+      {
+        "id": "carter:construction-site-000043:intake:199961",
+        "homeBuildingId": "construction-site-000043",
+        "cart": "intake",
+        "mission": "fetch",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000025"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 51.53999999999998,
+          "ty": 42
+        },
+        "pathIndex": 5,
+        "spawnedTick": 199961,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000043"
+          },
+          "resource": "wheat",
+          "amount": 4,
+          "sourceStockClaim": {
+            "kind": "building",
+            "buildingId": "construction-site-000025",
+            "resource": "wheat",
+            "amount": 4
+          },
+          "homeCapacityClaim": null
+        },
+        "pathSha": "a7f74559f91e393e5efdc39a4b6586d4c95035bc0e5812b8b4ce971061961159"
+      },
+      {
+        "id": "carter:construction-site-000047:199531",
+        "homeBuildingId": "construction-site-000047",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "returning",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000067"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 51,
+          "ty": 42.560000000000116
+        },
+        "pathIndex": 28,
+        "spawnedTick": 199531,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000067"
+          },
+          "resource": "wheat",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": null
+        },
+        "pathSha": "8931cdcb3de3d04a9490cc5a4f5552dfdbda0660ba9c616a41a4796a5ce0f256"
+      },
+      {
+        "id": "carter:construction-site-000049:199834",
+        "homeBuildingId": "construction-site-000049",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "returning",
+        "destination": {
+          "kind": "building",
+          "buildingId": "storehouse-41-40-0"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 47.14000000000003,
+          "ty": 37
+        },
+        "pathIndex": 7,
+        "spawnedTick": 199834,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "storehouse-41-40-0"
+          },
+          "resource": "logs",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": null
+        },
+        "pathSha": "ebe2b2dc8e534be951fb6f343ca5ea52235b3b3e28825d2b16619ca60bb6c3b3"
+      },
+      {
+        "id": "carter:construction-site-000051:199840",
+        "homeBuildingId": "construction-site-000051",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "returning",
+        "destination": {
+          "kind": "building",
+          "buildingId": "storehouse-41-40-0"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 45.360000000000014,
+          "ty": 39
+        },
+        "pathIndex": 3,
+        "spawnedTick": 199840,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "storehouse-41-40-0"
+          },
+          "resource": "logs",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": null
+        },
+        "pathSha": "1be71aa1fffbce8f9f4b547787dcd7a6c411d75a7927d3ac34187ea6cc61223b"
+      },
+      {
+        "id": "carter:construction-site-000052:199986",
+        "homeBuildingId": "construction-site-000052",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000039"
+        },
+        "cargo": {
+          "resource": "logs",
+          "amount": 1
+        },
+        "position": {
+          "tx": 46.96000000000001,
+          "ty": 28
+        },
+        "pathIndex": 1,
+        "spawnedTick": 199986,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000039"
+          },
+          "resource": "logs",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": {
+            "buildingId": "construction-site-000052",
+            "resource": "logs",
+            "amount": 1
+          }
+        },
+        "pathSha": "6718a424ca3f9113adcc410a9e68ac7b63c1a9daea4b82d83051f2089127f231"
+      },
+      {
+        "id": "carter:construction-site-000064:199831",
+        "homeBuildingId": "construction-site-000064",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "returning",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000036"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 43.459999999999965,
+          "ty": 27
+        },
+        "pathIndex": 8,
+        "spawnedTick": 199831,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000036"
+          },
+          "resource": "bread",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": null
+        },
+        "pathSha": "86dd0f42a4ea76ee23d85c240128dcbdc10e51a4d690335cde41a27f2ba256b5"
+      },
+      {
+        "id": "carter:construction-site-000066:199941",
+        "homeBuildingId": "construction-site-000066",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "outbound",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000036"
+        },
+        "cargo": {
+          "resource": "bread",
+          "amount": 1
+        },
+        "position": {
+          "tx": 43.26000000000003,
+          "ty": 27
+        },
+        "pathIndex": 8,
+        "spawnedTick": 199941,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000036"
+          },
+          "resource": "bread",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": {
+            "buildingId": "construction-site-000066",
+            "resource": "bread",
+            "amount": 1
+          }
+        },
+        "pathSha": "d21fd94a3e075ddb0150026f788a29c8ef3c0517fd3e3e67cac0ea5ae6abaa3b"
+      },
+      {
+        "id": "carter:construction-site-000069:199661",
+        "homeBuildingId": "construction-site-000069",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "returning",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000067"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 37,
+          "ty": 44.46000000000008
+        },
+        "pathIndex": 19,
+        "spawnedTick": 199661,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000067"
+          },
+          "resource": "bread",
+          "amount": 4,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": null
+        },
+        "pathSha": "bdd2fc2bf67d05457af6ac5f361f7694fa973bba5dd9f5115741a215ed9a4feb"
+      },
+      {
+        "id": "carter:construction-site-000071:199731",
+        "homeBuildingId": "construction-site-000071",
+        "cart": "main",
+        "mission": "deliver",
+        "phase": "returning",
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000067"
+        },
+        "cargo": null,
+        "position": {
+          "tx": 37,
+          "ty": 40.54000000000006
+        },
+        "pathIndex": 15,
+        "spawnedTick": 199731,
+        "cancellation": null,
+        "reservation": {
+          "destination": {
+            "kind": "building",
+            "buildingId": "construction-site-000067"
+          },
+          "resource": "bread",
+          "amount": 1,
+          "sourceStockClaim": null,
+          "homeCapacityClaim": null
+        },
+        "pathSha": "94f27b7c5a3061394ba4b95716bea72db8167162cd7d301e950f91a7d7d8428e"
+      }
+    ],
+    "target": {
+      "id": "construction-site-000050",
+      "kind": "sawmill",
+      "tx": 43,
+      "ty": 43,
+      "inventory": {
+        "logs": 1,
+        "timber": 19
+      },
+      "reserved": {},
+      "stockReserved": {},
+      "workers": 2,
+      "productionProgress": 0,
+      "stuckSinceTick": {
+        "timber": 164900
+      },
+      "operationPaused": false,
+      "upkeepUnpaid": false,
+      "capacity": 20
+    },
+    "treasuryTimber": 0,
+    "constructionSites": [],
+    "roadRevision": 114,
+    "topologySha": "c3152886e5009395b40efdaf274870d382f84e28533c7eb0ca03262a44ef339d",
+    "ledgerTail": [
+      {
+        "id": "ledger-005028",
+        "tick": 199200,
+        "account": "cash",
+        "category": "upkeep",
+        "amount": -2,
+        "sourceRefs": [
+          {
+            "type": "building",
+            "id": "construction-site-000062"
+          }
+        ]
+      },
+      {
+        "id": "ledger-005029",
+        "tick": 199200,
+        "account": "cash",
+        "category": "upkeep",
+        "amount": -2,
+        "sourceRefs": [
+          {
+            "type": "building",
+            "id": "construction-site-000065"
+          }
+        ]
+      },
+      {
+        "id": "ledger-005030",
+        "tick": 199200,
+        "account": "cash",
+        "category": "upkeep",
+        "amount": -10,
+        "sourceRefs": [
+          {
+            "type": "right",
+            "id": "gate:44,28",
+            "detail": "gate"
+          }
+        ]
+      },
+      {
+        "id": "ledger-005031",
+        "tick": 199200,
+        "account": "cash",
+        "category": "upkeep",
+        "amount": -10,
+        "sourceRefs": [
+          {
+            "type": "right",
+            "id": "gate:50,37",
+            "detail": "gate"
+          }
+        ]
+      },
+      {
+        "id": "ledger-005032",
+        "tick": 199200,
+        "account": "cash",
+        "category": "wages",
+        "amount": -111,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "labourers"
+          },
+          {
+            "type": "claim",
+            "id": "wages",
+            "detail": "workers:111"
+          }
+        ]
+      }
+    ],
+    "eventsSha": "772cd884cd2073b41ccc2aad4ac1f8b9ae580a3b64e35ffa91ecc3b55853c77c"
+  }
+}

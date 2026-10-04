@@ -1,0 +1,56 @@
+[
+  {
+    "run": "N02-v3-open-1-growth",
+    "finalFile": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/final.fls.json",
+    "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db",
+    "finalStateEquals1450": true,
+    "checksumEqual": true,
+    "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+    "config": {
+      "seed": 1,
+      "years": 150,
+      "land": "core:open_field",
+      "mode": "fixed",
+      "policy": "growth",
+      "output": "/home/hyunlord/fls-runs/astra-steward-N02-v3-r04-5fb1aeb/.remote/N02-v3-open-1-growth"
+    },
+    "tick": 600000,
+    "seed": "1"
+  },
+  {
+    "run": "N03-v3-open-1-stability",
+    "finalFile": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/final.fls.json",
+    "sha256": "f14300baeaf2b4bb40311b413ad04730d8149bad78f3b57e2c5501ca3a39705d",
+    "finalStateEquals1450": true,
+    "checksumEqual": true,
+    "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+    "config": {
+      "seed": 1,
+      "years": 150,
+      "land": "core:open_field",
+      "mode": "fixed",
+      "policy": "stability",
+      "output": "/home/hyunlord/fls-runs/astra-steward-N03-v3-r04-5fb1aeb/.remote/N03-v3-open-1-stability"
+    },
+    "tick": 600000,
+    "seed": "1"
+  },
+  {
+    "run": "N04-chalk-2-full",
+    "finalFile": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/final.fls.json",
+    "sha256": "760f899b00d0864572bb12b8a20e50e76911b9d9186019130b7ca701e1149d20",
+    "finalStateEquals1450": true,
+    "checksumEqual": true,
+    "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+    "config": {
+      "seed": 2,
+      "years": 150,
+      "land": "core:chalk_downs",
+      "mode": "full",
+      "policy": "growth",
+      "output": "/home/hyunlord/fls-runs/astra-steward-N04-r03-5fb1aeb/.remote/N04-chalk-2-full"
+    },
+    "tick": 600000,
+    "seed": "2"
+  }
+]

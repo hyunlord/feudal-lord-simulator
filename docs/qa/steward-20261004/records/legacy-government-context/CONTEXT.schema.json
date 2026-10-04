@@ -1,0 +1,239 @@
+{
+  "type": "object",
+  "required": [
+    "status",
+    "recordId",
+    "recordTick",
+    "template",
+    "sourceHead",
+    "captureKind",
+    "referenceVerified",
+    "fields"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "known",
+        "unknown"
+      ]
+    },
+    "recordId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S+$"
+    },
+    "recordTick": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "template": {
+      "enum": [
+        "legacy.royal_tax_envoy",
+        "legacy.royal_subsidy",
+        "legacy.city_seal",
+        "legacy.charter_sealed",
+        "legacy.family_departed",
+        "legacy.family_stayed"
+      ]
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "captureKind": {
+      "const": "emission_snapshot"
+    },
+    "referenceVerified": {
+      "type": "boolean"
+    },
+    "fields": {
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "legacy.royal_tax_envoy"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "townMarketTollsAtEnvoy"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "townMarketTollsAtEnvoy": {
+              "enum": [
+                "held",
+                "not_held"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "legacy.royal_subsidy"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "cashAfterSubsidy"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "cashAfterSubsidy": {
+              "enum": [
+                "zero",
+                "remaining"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "legacy.city_seal"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "heirChoiceBeforeSeal"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "heirChoiceBeforeSeal": {
+              "enum": [
+                "son",
+                "daughter_husband",
+                "collateral"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "legacy.charter_sealed"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "mayorSelectionAtSeal"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "mayorSelectionAtSeal": {
+              "enum": [
+                "same",
+                "replacement",
+                "unnamed"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "legacy.family_departed"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "priorSubsidyAtDeparture"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "priorSubsidyAtDeparture": {
+              "enum": [
+                "paid",
+                "no_record"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "legacy.family_stayed"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "priorSubsidyAtStay"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "priorSubsidyAtStay": {
+              "enum": [
+                "paid",
+                "no_record"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      }
+    }
+  ]
+}

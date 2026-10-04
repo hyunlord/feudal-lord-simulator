@@ -1,0 +1,274 @@
+{
+  "panelHtml": "<aside class=\"diagnostic-card\" data-frame=\"light\" aria-label=\"창고 저장소\"><header class=\"inspector-heading\"><div class=\"inspector-thumbnail\" aria-hidden=\"true\"><img alt=\"\" src=\"/assets/buildings/storehouse.png\"></div><div><p>저장소</p><h2>창고</h2></div><button class=\"inspector-close ui-btn ui-btn--icon\" type=\"button\" aria-label=\"상세 정보 닫기\">×</button></header><p class=\"inspector-cause-line\" role=\"status\">창고 · 창고 운영 정보</p><div class=\"inspector-body\"><div class=\"store-inspector\" data-store=\"construction-site-000039\"><div class=\"store-capacity\" role=\"meter\" aria-label=\"용량\" aria-valuemin=\"0\" aria-valuemax=\"200\" aria-valuenow=\"198\"><span class=\"store-capacity-bar\"><span class=\"store-capacity-fill\" style=\"width: 100%;\"></span></span><span class=\"store-capacity-text\">198 / 200 · 들어올 몫 2</span></div><h3>받는 품목</h3><p class=\"store-accepts\"><span class=\"store-accept-chip\" data-accepted=\"true\">통나무</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"resource.timber\" style=\"width: 24px; height: 24px; background-image: image-set(url(&quot;/assets/ui-p0/icons/icon_resource_sheet-24.png&quot;) 1x, url(&quot;/assets/ui-p0/icons/icon_resource_sheet-48.png&quot;) 2x); background-size: 216px 24px; background-position: -48px 0px; background-repeat: no-repeat;\"></span>목재</span><span class=\"store-accept-chip\" data-accepted=\"true\">원석</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"resource.stone\" style=\"width: 24px; height: 24px; background-image: image-set(url(&quot;/assets/ui-p0/icons/icon_resource_sheet-24.png&quot;) 1x, url(&quot;/assets/ui-p0/icons/icon_resource_sheet-48.png&quot;) 2x); background-size: 216px 24px; background-position: -72px 0px; background-repeat: no-repeat;\"></span>석재</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.malt\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -24px 0px; background-repeat: no-repeat;\"></span>엿기름</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.ale\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -48px 0px; background-repeat: no-repeat;\"></span>에일</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.fleece\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -72px 0px; background-repeat: no-repeat;\"></span>양털</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.yarn\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -96px 0px; background-repeat: no-repeat;\"></span>털실</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.raw_cloth\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -120px 0px; background-repeat: no-repeat;\"></span>생모직</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.fulled_cloth\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -144px 0px; background-repeat: no-repeat;\"></span>축융 모직</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.dyes\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -216px 0px; background-repeat: no-repeat;\"></span>염료</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.dyed_cloth\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -168px 0px; background-repeat: no-repeat;\"></span>염색 모직</span><span class=\"store-accept-chip\" data-accepted=\"true\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.finished_cloth\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -192px 0px; background-repeat: no-repeat;\"></span>완성 모직</span></p><p class=\"store-accepts-note\">이 저장소는 위 품목을 모두 받습니다</p><h3>품목별 재고 · 이번 주</h3><table class=\"store-stock\"><tbody><tr data-resource=\"logs\"><th scope=\"row\"><span class=\"store-stock-name\">통나무</span></th><td>97</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"timber\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"resource.timber\" style=\"width: 24px; height: 24px; background-image: image-set(url(&quot;/assets/ui-p0/icons/icon_resource_sheet-24.png&quot;) 1x, url(&quot;/assets/ui-p0/icons/icon_resource_sheet-48.png&quot;) 2x); background-size: 216px 24px; background-position: -48px 0px; background-repeat: no-repeat;\"></span>목재</span></th><td>60</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"stone_raw\"><th scope=\"row\"><span class=\"store-stock-name\">원석</span></th><td>0</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"stone\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"resource.stone\" style=\"width: 24px; height: 24px; background-image: image-set(url(&quot;/assets/ui-p0/icons/icon_resource_sheet-24.png&quot;) 1x, url(&quot;/assets/ui-p0/icons/icon_resource_sheet-48.png&quot;) 2x); background-size: 216px 24px; background-position: -72px 0px; background-repeat: no-repeat;\"></span>석재</span></th><td>41</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"malt\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.malt\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -24px 0px; background-repeat: no-repeat;\"></span>엿기름</span></th><td>0</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"ale\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.ale\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -48px 0px; background-repeat: no-repeat;\"></span>에일</span></th><td>0</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"fleece\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.fleece\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -72px 0px; background-repeat: no-repeat;\"></span>양털</span></th><td>0</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"yarn\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.yarn\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -96px 0px; background-repeat: no-repeat;\"></span>털실</span></th><td>0</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"raw_cloth\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.raw_cloth\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -120px 0px; background-repeat: no-repeat;\"></span>생모직</span></th><td>0</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"fulled_cloth\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.fulled_cloth\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -144px 0px; background-repeat: no-repeat;\"></span>축융 모직</span></th><td>0</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"dyes\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.dyes\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -216px 0px; background-repeat: no-repeat;\"></span>염료</span></th><td>0</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"dyed_cloth\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.dyed_cloth\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -168px 0px; background-repeat: no-repeat;\"></span>염색 모직</span></th><td>0</td><td class=\"store-week\">기록 중</td></tr><tr data-resource=\"finished_cloth\"><th scope=\"row\"><span class=\"store-stock-name\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.finished_cloth\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -192px 0px; background-repeat: no-repeat;\"></span>완성 모직</span></th><td>0</td><td class=\"store-week\">기록 중</td></tr></tbody></table><p class=\"store-ale-note\" data-resource=\"ale\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"chain.ale\" style=\"width: 24px; height: 24px; background-image: url(&quot;/assets/wave3/icons/icon_resource_chain_sheet.png&quot;); background-size: 240px 24px; background-position: -48px 0px; background-repeat: no-repeat;\"></span>에일은 집 안에 둡니다 — 도시에 0통, 그중 에일집 0통</p><h3>이 창고를 쓰는 곳</h3><ul class=\"store-users\"><li>제재소에서 목재 들여옴</li><li>벌목소에서 통나무 들여옴</li></ul><button type=\"button\" class=\"store-look ui-btn ui-btn--secondary\"><span class=\"ui-icon\" aria-hidden=\"true\" data-icon=\"action.look\" style=\"width: 24px; height: 24px; background-image: image-set(url(&quot;/assets/ui-p0/icons/icon_objective_action_sheet-24.png&quot;) 1x, url(&quot;/assets/ui-p0/icons/icon_objective_action_sheet-48.png&quot;) 2x); background-size: 96px 24px; background-position: -24px 0px; background-repeat: no-repeat;\"></span>위치로</button></div></div></aside>",
+  "scrolls": [
+    {
+      "className": "diagnostic-card",
+      "scrollTop": 0,
+      "scrollHeight": 1032,
+      "clientHeight": 396
+    }
+  ],
+  "foodHud": "식량 234일",
+  "foodDays": "234",
+  "pausePressed": "true",
+  "inspector": "저장소\n\n창고\n×\n\n창고 · 창고 운영 정보\n\n198 / 200 · 들어올 몫 2\n받는 품목\n\n통나무\n목재\n원석\n석재\n엿기름\n에일\n양털\n털실\n생모직\n축융 모직\n염료\n염색 모직\n완성 모직\n\n이 저장소는 위 품목을 모두 받습니다\n\n품목별 재고 · 이번 주\n통나무\t97\t기록 중\n\n목재\t60\t기록 중\n원석\t0\t기록 중\n\n석재\t41\t기록 중\n\n엿기름\t0\t기록 중\n\n에일\t0\t기록 중\n\n양털\t0\t기록 중\n\n털실\t0\t기록 중\n\n생모직\t0\t기록 중\n\n축융 모직\t0\t기록 중\n\n염료\t0\t기록 중\n\n염색 모직\t0\t기록 중\n\n완성 모직\t0\t기록 중\n\n에일은 집 안에 둡니다 — 도시에 0통, 그중 에일집 0통\n\n이 창고를 쓰는 곳\n제재소에서 목재 들여옴\n벌목소에서 통나무 들여옴\n위치로",
+  "calendar": "1350년 봄",
+  "text": "봉건 영주 시뮬레이터\n1350년 봄\n인구 225\n식량 234일\n£12 1s\n\n저장소\n\n창고\n×\n\n창고 · 창고 운영 정보\n\n198 / 200 · 들어올 몫 2\n받는 품목\n\n통나무\n목재\n원석\n석재\n엿기름\n에일\n양털\n털실\n생모직\n축융 모직\n염료\n염색 모직\n완성 모직\n\n이 저장소는 위 품목을 모두 받습니다\n\n품목별 재고 · 이번 주\n통나무\t97\t기록 중\n\n목재\t60\t기록 중\n원석\t0\t기록 중\n\n석재\t41\t기록 중\n\n엿기름\t0\t기록 중\n\n에일\t0\t기록 중\n\n양털\t0\t기록 중\n\n털실\t0\t기록 중\n\n생모직\t0\t기록 중\n\n축융 모직\t0\t기록 중\n\n염료\t0\t기록 중\n\n염색 모직\t0\t기록 중\n\n완성 모직\t0\t기록 중\n\n에일은 집 안에 둡니다 — 도시에 0통, 그중 에일집 0통\n\n이 창고를 쓰는 곳\n제재소에서 목재 들여옴\n벌목소에서 통나무 들여옴\n위치로\n일시 정지 중 · Space\n×5\n설정\n빈 거리\n직접\n구역\n방향\n건설\n장부\n청지기",
+  "buttons": [
+    {
+      "text": "1350년 봄",
+      "label": "계절 띠 — 다가오는 일 보기",
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "testid": "hud-calendar"
+      }
+    },
+    {
+      "text": "인구 225",
+      "label": "인구 기록 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "식량 234일",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "foodDays": "234"
+      }
+    },
+    {
+      "text": "£12 1s",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "×",
+      "label": "상세 정보 닫기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "일시 정지",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "seal": "pause"
+      }
+    },
+    {
+      "text": "",
+      "label": "1배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "normal"
+      }
+    },
+    {
+      "text": "",
+      "label": "3배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "threefold"
+      }
+    },
+    {
+      "text": "×5",
+      "label": "5배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "fast"
+      }
+    },
+    {
+      "text": "설정",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 발전",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {}
+    },
+    {
+      "text": "튜토리얼 끔",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "소리 켬",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "곡선 지면",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {}
+    },
+    {
+      "text": "해상도 배율",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "renderScale": "1"
+      }
+    },
+    {
+      "text": "색약 모드",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "colorblind": "off"
+      }
+    },
+    {
+      "text": "지금 저장",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "수동 저장시장도시 목표 · 333분째 · 인구 225 · 목책 시대",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "일꾼 부족 — 첫 건물 보기 · 가용 일꾼이 없습니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "빵 부족 — 첫 건물 보기 · 집에 빵이 없습니다 — 배급을 기다립니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "빵 부족 — 첫 건물 보기 · 집에 빵이 없습니다 — 배급을 기다립니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "빈 거리",
+      "label": "빈 거리 — 카드 열기",
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "story": "plague_empty_streets"
+      }
+    },
+    {
+      "text": "직접",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "layer": "direct"
+      }
+    },
+    {
+      "text": "구역",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "zone"
+      }
+    },
+    {
+      "text": "방향",
+      "label": null,
+      "disabled": true,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "direction"
+      }
+    },
+    {
+      "text": "건설",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "build"
+      }
+    },
+    {
+      "text": "장부",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "ledger"
+      }
+    },
+    {
+      "text": "청지기",
+      "label": "청지기 바살러뮤 드 애시비",
+      "disabled": false,
+      "expanded": "true",
+      "pressed": null,
+      "data": {
+        "dock": "steward",
+        "speaking": "true"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "verdict": "PASS_BOUNDED_RECORDED_DEATH_COVERAGE",
+  "claim": "recorded persons death year/cause reconstructible for these three runs only",
+  "annualWindows": 450,
+  "checkpointSaves": 21,
+  "finalEquivalenceChecks": 3,
+  "failures": [
+
+  ],
+  "requiredCorrections": [
+
+  ],
+  "wholeWorldCertified": false,
+  "mortalityRatesCertified": false,
+  "engineExecuted": false,
+  "sourceFiles": 7,
+  "sourceSpans": 15,
+  "parentCheckRead": true
+}

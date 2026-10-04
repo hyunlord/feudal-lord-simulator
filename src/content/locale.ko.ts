@@ -36,6 +36,9 @@ export const KO_UI = {
   },
   ceremony: {
     palisade: "목책마을 시대 선포식", dismissPalisade: "목책마을 선포식 닫기",
-    stoneTown: "석조 도시 선포식", dismissStoneTown: "석조 도시 선포식 닫기",
+    palisadeTitle: "목책마을 선포", palisadeBody: "성문이 열리고 집들이 새 목재를 두릅니다",
+    // COPY-1r CA-015: era stone_town is 석벽 도시 (glossary) — a wall raised, not every house turned to stone.
+    stoneTown: "석벽 도시 선포식", dismissStoneTown: "석벽 도시 선포식 닫기",
+    stoneTownTitle: "석벽 도시 선포", stoneTownBody: "목책을 대신할 석벽을 세우고 도시의 방비를 다집니다",
   },
 } as const;

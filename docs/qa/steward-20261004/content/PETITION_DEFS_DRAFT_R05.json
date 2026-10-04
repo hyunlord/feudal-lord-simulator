@@ -1,0 +1,79 @@
+{
+  "status": "unregistered_definition_data",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "definitions": [
+    {
+      "id": "ck_evt_057",
+      "petitioner": "merchants",
+      "demand": "church_market_charter",
+      "fromYear": 1382,
+      "toYear": 1450,
+      "requiresLots": 0,
+      "responses": [
+        "accept",
+        "accept_with_price",
+        "refuse"
+      ],
+      "outcomes": {
+        "accept": {
+          "right": "market_charter",
+          "stallFeePermille": 750,
+          "charterFee": 0,
+          "gauge": 12
+        },
+        "accept_with_price": {
+          "right": "market_charter",
+          "stallFeePermille": 1000,
+          "charterFee": 80,
+          "gauge": 3
+        },
+        "refuse": {
+          "right": null,
+          "stallFeePermille": 1000,
+          "charterFee": 0,
+          "gauge": -5
+        }
+      },
+      "expiredGauge": -5
+    },
+    {
+      "id": "ck_evt_058",
+      "petitioner": "merchants",
+      "demand": "merchant_single_payment",
+      "fromYear": 1382,
+      "toYear": 1450,
+      "requiresLots": 0,
+      "responses": [
+        "accept",
+        "accept_with_price"
+      ],
+      "outcomes": {
+        "accept": {
+          "right": null,
+          "stallFeePermille": 1000,
+          "charterFee": 0,
+          "gauge": 8
+        },
+        "accept_with_price": {
+          "right": null,
+          "stallFeePermille": 1000,
+          "charterFee": 50,
+          "gauge": 0
+        },
+        "refuse": {
+          "right": null,
+          "stallFeePermille": 1000,
+          "charterFee": 0,
+          "gauge": -4
+        }
+      },
+      "expiredGauge": -4
+    }
+  ],
+  "notes": [
+    "requiresLots=0 means no additional lot gate; registry contextual gates still mandatory.",
+    "Existing draft expiry tuning retained: 057 gauge -5, 058 gauge -4; generic faction expiry -10. Silence is not cost-free.",
+    "058 refuse outcome is structurally required by Record<PetitionResponse,PetitionOutcome>; responses excludes it.",
+    "No registry trigger exists in PetitionDef. Omitted trigger would calendar-schedule if directly appended to PETITION_DEFS. Engine must add isolated lookup and registry-owned arrival, or explicit registry trigger support. Do not label this install-ready."
+  ]
+}

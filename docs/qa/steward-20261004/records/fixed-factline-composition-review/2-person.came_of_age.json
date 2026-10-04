@@ -1,0 +1,28 @@
+{
+  "variantId": "person.came_of_age.r06fixed.not_co_resident",
+  "template": "person.came_of_age",
+  "headline": "기록된 부모와 함께 살지 않는 가구에서 아이가 성장의 고비를 맞았다.",
+  "proposedFactLine": "어른이 되었다",
+  "composedText": "기록된 부모와 함께 살지 않는 가구에서 아이가 성장의 고비를 맞았다.\n어른이 되었다",
+  "currentEngineFactLine": "어른이 되어 일을 거들기 시작했다",
+  "proposedCompositionVerdict": "DRAFT_COMPOSITION_PASS",
+  "currentEngineHold": "RETAIN",
+  "captureContract": {
+    "id": "parentsAtAdulthood",
+    "templates": [
+      "person.came_of_age"
+    ],
+    "values": [
+      "co_resident",
+      "not_co_resident"
+    ],
+    "capture": "src/engine/history.ts:392-406; src/engine/persons.types.ts:48-72; src/engine/persons.ts:85-87,233-237",
+    "captureRule": "At age-threshold emission bind subject person ID before/after, preserve birthYear, require before age<14 and after age>=14 at event years. Both motherId and fatherId must be distinct nonempty IDs and each resolve exactly once across after.persons.people and after.persons.past with explicit alive and nonempty householdId. Subject must belong to current people, alive=true, leftYear absent. A co-resident parent must belong to current people AND alive=true AND leftYear absent AND householdId equal subject; only then co_resident. A living parent in past, or any parent with leftYear, never qualifies even when historical householdId is equal. If both parents resolve but neither qualifies -> not_co_resident. Unknown/missing parent IDs -> unknown, never absent. No orphanhood, death cause, care quality or work start inferred; current ages/parents never backfill.",
+    "provenance": "emission_snapshot",
+    "currentRecordStorage": "absent: proposed event-time context",
+    "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+  },
+  "reason": "연령 경계에 따른 성장을 말하며 실제 일 배정·돌봄·부모 사망 원인을 덧붙이지 않는다. 부모 동거는 수정된 당시 people 소속/alive/leftYear 없음/같은 householdId 계약이 필요하다.",
+  "engineExecuted": false,
+  "uiRendered": false
+}

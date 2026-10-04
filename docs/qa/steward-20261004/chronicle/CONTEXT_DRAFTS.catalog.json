@@ -1,0 +1,4869 @@
+{
+  "status": "READING_CATALOG_NOT_RUNTIME_SCHEMA",
+  "canonicalSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "count": 212,
+  "entries": [
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse",
+      "template": "lord.wardship_begun",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "lord.wardship_begun.r06ctx.spouse",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guardianRouteAtStart",
+            "op": "eq",
+            "value": "manor_female_spouse"
+          }
+        ],
+        "headline": "영주관에서 배우자로 살던 이가 미성년 영주의 후견을 맡았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult",
+      "template": "lord.wardship_begun",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "lord.wardship_begun.r06ctx.adult",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guardianRouteAtStart",
+            "op": "eq",
+            "value": "adult_house_member"
+          }
+        ],
+        "headline": "가문에 속한 성인이 미성년 영주의 후견을 맡았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord",
+      "template": "lord.wardship_begun",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "lord.wardship_begun.r06ctx.overlord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guardianRouteAtStart",
+            "op": "eq",
+            "value": "overlord"
+          }
+        ],
+        "headline": "가문 안에서 후견인을 정하지 못해 상위 영주의 후견이 시작되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry",
+      "template": "reorg.petitions_surge",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.petitions_surge.r06ctx.industry",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.surgeTriggerAtRecord",
+            "op": "eq",
+            "value": "industry_ready"
+          }
+        ],
+        "headline": "직물 거리와 에일집이 성장한 뒤, 상인과 직인 무리의 청원이 몰려왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar",
+      "template": "reorg.petitions_surge",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.petitions_surge.r06ctx.calendar",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.surgeTriggerAtRecord",
+            "op": "eq",
+            "value": "calendar_backstop"
+          }
+        ],
+        "headline": "상인과 직인 무리의 요구가 올라왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial",
+      "template": "negotiation.accepted",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "negotiation.accepted.r06ctx.initial",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.acceptanceRouteAtRecord",
+            "op": "eq",
+            "value": "initial_offer"
+          }
+        ],
+        "headline": "처음 내민 혼인 조건을 이웃 가문이 받아들였다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter",
+      "template": "negotiation.accepted",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "negotiation.accepted.r06ctx.counter",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.acceptanceRouteAtRecord",
+            "op": "eq",
+            "value": "accepted_counter"
+          }
+        ],
+        "headline": "이웃 가문이 고쳐 보낸 조건을 받아 혼인 계약을 맺었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined",
+      "template": "negotiation.withdrawn",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "negotiation.withdrawn.r06ctx.declined",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.withdrawalCauseAtRecord",
+            "op": "eq",
+            "value": "declined_counter"
+          }
+        ],
+        "headline": "고쳐 온 혼인 조건을 받지 않겠다고 답해 혼담을 끝냈다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.expired",
+      "template": "negotiation.withdrawn",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "negotiation.withdrawn.r06ctx.expired",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.withdrawalCauseAtRecord",
+            "op": "eq",
+            "value": "counter_expired"
+          }
+        ],
+        "headline": "고쳐 온 혼인 조건에 답하지 않아, 기한이 지나 혼담이 끝났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "war.favour_lost.r06ctx.refused",
+      "template": "war.favour_lost",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "war.favour_lost.r06ctx.refused",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.favourLossCauseAtRecord",
+            "op": "eq",
+            "value": "royal_request_refused"
+          }
+        ],
+        "headline": "왕실의 요구를 거절한 뒤 국왕의 신임을 잃었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "war.favour_lost.r06ctx.expired",
+      "template": "war.favour_lost",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "war.favour_lost.r06ctx.expired",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.favourLossCauseAtRecord",
+            "op": "eq",
+            "value": "royal_request_expired"
+          }
+        ],
+        "headline": "왕실의 요구에 답하지 않은 채 기한을 넘겨 국왕의 신임을 잃었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.lord",
+      "template": "marriage.bride_arrived",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "marriage.bride_arrived.r06ctx.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인의 혼인으로 신부가 영주관에 들어왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.son",
+      "template": "marriage.bride_arrived",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "marriage.bride_arrived.r06ctx.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들이 맺은 혼인으로 신부가 영주관에 들어왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin",
+      "template": "marriage.bride_arrived",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "marriage.bride_arrived.r06ctx.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 가운데 한 사람이 맺은 혼인으로 신부가 영주관에 들어왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.child_born.r06ctx.lord",
+      "template": "marriage.child_born",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "marriage.child_born.r06ctx.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인이 맺은 혼인에서 부부의 첫아이가 태어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.child_born.r06ctx.son",
+      "template": "marriage.child_born",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "marriage.child_born.r06ctx.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들이 맺은 혼인에서 부부의 첫아이가 태어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin",
+      "template": "marriage.child_born",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "marriage.child_born.r06ctx.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 가운데 한 사람이 맺은 혼인에서 부부의 첫아이가 태어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.inherited.r06ctx.lord",
+      "template": "marriage.inherited",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "marriage.inherited.r06ctx.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인이 맺은 혼인을 통해 이웃 영지를 물려받았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son",
+      "template": "marriage.inherited",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "marriage.inherited.r06ctx.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들이 맺은 혼인을 통해 이웃 영지를 물려받았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin",
+      "template": "marriage.inherited",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "sourceSha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "sourceEntry": {
+        "id": "marriage.inherited.r06ctx.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 가운데 한 사람이 맺은 혼인을 통해 이웃 영지를 물려받았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded",
+      "template": "reorg.textile_street",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "reorg.textile_street.r06ctx2.already_recorded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.aleMilestoneBeforeTextile",
+            "op": "eq",
+            "value": "already_recorded"
+          }
+        ],
+        "headline": "에일집의 성장에 이어 직물 거리도 도시의 기록에 올랐다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick",
+      "template": "reorg.textile_street",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "reorg.textile_street.r06ctx2.same_tick",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.aleMilestoneBeforeTextile",
+            "op": "eq",
+            "value": "same_tick"
+          }
+        ],
+        "headline": "직물 거리와 에일집의 성장이 함께 도시의 기록에 올랐다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded",
+      "template": "reorg.textile_street",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "reorg.textile_street.r06ctx2.not_yet_recorded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.aleMilestoneBeforeTextile",
+            "op": "eq",
+            "value": "not_yet_recorded"
+          }
+        ],
+        "headline": "직물 거리의 성장이 기록되었다. 에일집은 아직 성장의 기준에 이르렀다는 기록이 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded",
+      "template": "reorg.alehouse_boom",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "reorg.alehouse_boom.r06ctx2.already_recorded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.textileMilestoneBeforeAle",
+            "op": "eq",
+            "value": "already_recorded"
+          }
+        ],
+        "headline": "직물 거리가 기록된 뒤 에일집의 성장도 도시의 기록에 올랐다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick",
+      "template": "reorg.alehouse_boom",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "reorg.alehouse_boom.r06ctx2.same_tick",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.textileMilestoneBeforeAle",
+            "op": "eq",
+            "value": "same_tick"
+          }
+        ],
+        "headline": "에일집과 직물 거리의 성장이 함께 도시의 기록에 올랐다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded",
+      "template": "reorg.alehouse_boom",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.textileMilestoneBeforeAle",
+            "op": "eq",
+            "value": "not_yet_recorded"
+          }
+        ],
+        "headline": "에일집의 성장이 기록되었다. 직물 거리는 아직 성장의 기준에 이르렀다는 기록이 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused",
+      "template": "legacy.charter_refused",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "legacy.charter_refused.r06ctx2.refused",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.charterNonAcceptanceAtRecord",
+            "op": "eq",
+            "value": "refused"
+          }
+        ],
+        "headline": "도시의 자치 특허를 내어 달라는 청원을 거절했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired",
+      "template": "legacy.charter_refused",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "legacy.charter_refused.r06ctx2.expired",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.charterNonAcceptanceAtRecord",
+            "op": "eq",
+            "value": "expired"
+          }
+        ],
+        "headline": "자치 특허 청원에 답하지 않은 채 기한을 넘겼다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.town",
+      "template": "legacy.last_market",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "legacy.last_market.r06ctx2.town",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.finalEndingAxis",
+            "op": "eq",
+            "value": "town"
+          }
+        ],
+        "headline": "마지막 장날, 도시가 남긴 유산이 가문과 교회의 유산보다 작지 않았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.family",
+      "template": "legacy.last_market",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "legacy.last_market.r06ctx2.family",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.finalEndingAxis",
+            "op": "eq",
+            "value": "family"
+          }
+        ],
+        "headline": "마지막 장날, 가문의 유산이 도시를 앞서고 교회의 유산에도 뒤지지 않았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.church",
+      "template": "legacy.last_market",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "legacy.last_market.r06ctx2.church",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.finalEndingAxis",
+            "op": "eq",
+            "value": "church"
+          }
+        ],
+        "headline": "마지막 장날, 교회의 유산이 도시와 가문보다 크게 남았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach",
+      "template": "decision.market_town",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.market_town.r06ctx2.water_reach",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.marketBoundaryAtStart",
+            "op": "eq",
+            "value": "water_reach"
+          }
+        ],
+        "headline": "물길을 경계의 일부로 삼고, 땅 위에는 목책을 두를 시장도시를 선포했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring",
+      "template": "decision.market_town",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.market_town.r06ctx2.land_ring",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.marketBoundaryAtStart",
+            "op": "eq",
+            "value": "land_ring"
+          }
+        ],
+        "headline": "땅 위를 잇는 목책 둘레를 정하고 시장도시를 선포했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.all_ready",
+      "template": "decision.stone_town",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.stone_town.r06ctx2.all_ready",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.stoneReplacementReadiness",
+            "op": "eq",
+            "value": "all_ready"
+          }
+        ],
+        "headline": "목책의 모든 구간이 완성된 뒤, 이를 돌로 바꾸는 석벽 사업을 열었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.partly_ready",
+      "template": "decision.stone_town",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.stone_town.r06ctx2.partly_ready",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.stoneReplacementReadiness",
+            "op": "eq",
+            "value": "partly_ready"
+          }
+        ],
+        "headline": "아직 짓는 목책을 남겨 둔 채, 완성된 구간부터 돌로 바꾸는 사업을 열었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.none_ready",
+      "template": "decision.stone_town",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.stone_town.r06ctx2.none_ready",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.stoneReplacementReadiness",
+            "op": "eq",
+            "value": "none_ready"
+          }
+        ],
+        "headline": "목책이 완성되기를 기다리며 석벽 사업을 먼저 선포했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.residents_present",
+      "template": "decision.rebuild",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.rebuild.r06ctx2.residents_present",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.rebuildOccupancyAtStart",
+            "op": "eq",
+            "value": "residents_present"
+          }
+        ],
+        "headline": "살던 사람들이 남아 있는 불탄 집에 재건 공사를 열었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.empty",
+      "template": "decision.rebuild",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.rebuild.r06ctx2.empty",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.rebuildOccupancyAtStart",
+            "op": "eq",
+            "value": "empty"
+          }
+        ],
+        "headline": "거주자가 없는 불탄 집에 재건 공사를 열었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.retained",
+      "template": "decision.wall_expand",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.wall_expand.r06ctx2.retained",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.expansionGateAtStart",
+            "op": "eq",
+            "value": "retained"
+          }
+        ],
+        "headline": "기존 성문 자리를 지키면서 목책 둘레를 넓히기로 했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.moved",
+      "template": "decision.wall_expand",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.wall_expand.r06ctx2.moved",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.expansionGateAtStart",
+            "op": "eq",
+            "value": "moved"
+          }
+        ],
+        "headline": "새 둘레에 맞춰 성문 자리를 옮기고 목책을 넓히기로 했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.drainage.r06ctx2.sole_work",
+      "template": "decision.drainage",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.drainage.r06ctx2.sole_work",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.drainageQueueAtStart",
+            "op": "eq",
+            "value": "sole_work"
+          }
+        ],
+        "headline": "다른 배수 공사가 없는 때에 웅덩이의 물을 빼는 공사를 열었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "decision.drainage.r06ctx2.parallel_work",
+      "template": "decision.drainage",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sourceSha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "sourceEntry": {
+        "id": "decision.drainage.r06ctx2.parallel_work",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.drainageQueueAtStart",
+            "op": "eq",
+            "value": "parallel_work"
+          }
+        ],
+        "headline": "먼저 시작한 배수 공사를 남겨 둔 채 또 한 곳의 물빼기 공사를 열었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "person.arrived.r06ctx.young",
+      "template": "person.arrived",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.arrived.r06ctx.young",
+        "template": "person.arrived",
+        "axis": "historical_age",
+        "min": 14,
+        "max": 29,
+        "headline": "{ageAtRecord}살의 젊은 친척이 가구에 합류했다.",
+        "requiredSlots": [
+          "ageAtRecord"
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_CONTEXT_ADAPTER"
+      }
+    },
+    {
+      "id": "person.arrived.r06ctx.elder",
+      "template": "person.arrived",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.arrived.r06ctx.elder",
+        "template": "person.arrived",
+        "axis": "historical_age",
+        "min": 55,
+        "max": 70,
+        "headline": "{ageAtRecord}살의 나이 든 친척이 가구에 합류했다.",
+        "requiredSlots": [
+          "ageAtRecord"
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_CONTEXT_ADAPTER"
+      }
+    },
+    {
+      "id": "person.reeve.r06ctx.youth",
+      "template": "person.reeve",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.reeve.r06ctx.youth",
+        "template": "person.reeve",
+        "axis": "historical_age",
+        "min": 25,
+        "max": 29,
+        "headline": "젊은 시절, {ageAtRecord}살에 마을 대표로 뽑혔다.",
+        "requiredSlots": [
+          "ageAtRecord"
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_CONTEXT_ADAPTER"
+      }
+    },
+    {
+      "id": "person.reeve.r06ctx.adult",
+      "template": "person.reeve",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.reeve.r06ctx.adult",
+        "template": "person.reeve",
+        "axis": "historical_age",
+        "min": 30,
+        "max": 54,
+        "headline": "{ageAtRecord}살에 마을 대표 일을 맡게 되었다.",
+        "requiredSlots": [
+          "ageAtRecord"
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_CONTEXT_ADAPTER"
+      }
+    },
+    {
+      "id": "person.reeve.r06ctx.elder",
+      "template": "person.reeve",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.reeve.r06ctx.elder",
+        "template": "person.reeve",
+        "axis": "historical_age",
+        "min": 55,
+        "max": 60,
+        "headline": "나이 들어, {ageAtRecord}살에 마을 대표로 뽑혔다.",
+        "requiredSlots": [
+          "ageAtRecord"
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_CONTEXT_ADAPTER"
+      }
+    },
+    {
+      "id": "person.expecting.r06ctx.youth",
+      "template": "person.expecting",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.expecting.r06ctx.youth",
+        "template": "person.expecting",
+        "axis": "historical_age",
+        "min": 16,
+        "max": 29,
+        "headline": "젊은 시절, {ageAtRecord}살에 아이를 갖게 되었다.",
+        "requiredSlots": [
+          "ageAtRecord"
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_CONTEXT_ADAPTER"
+      }
+    },
+    {
+      "id": "person.expecting.r06ctx.adult",
+      "template": "person.expecting",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.expecting.r06ctx.adult",
+        "template": "person.expecting",
+        "axis": "historical_age",
+        "min": 30,
+        "max": 44,
+        "headline": "{ageAtRecord}살에 아이를 갖게 되었다.",
+        "requiredSlots": [
+          "ageAtRecord"
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_CONTEXT_ADAPTER"
+      }
+    },
+    {
+      "id": "person.emptied.r06ctx.one",
+      "template": "person.emptied",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.emptied.r06ctx.one",
+        "template": "person.emptied",
+        "axis": "emitter_snapshot",
+        "field": "residentsBefore",
+        "op": "eq",
+        "value": 1,
+        "headline": "한 명이 살던 집이 비었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_BASELINE_FACT_LINE_AND_NEW_FIELD"
+      }
+    },
+    {
+      "id": "person.emptied.r06ctx.many",
+      "template": "person.emptied",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.emptied.r06ctx.many",
+        "template": "person.emptied",
+        "axis": "emitter_snapshot",
+        "field": "residentsBefore",
+        "op": "gte",
+        "value": 2,
+        "headline": "여럿이 살던 집이 비었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_BASELINE_FACT_LINE_AND_NEW_FIELD"
+      }
+    },
+    {
+      "id": "person.steward.r06ctx.after_death",
+      "template": "person.steward",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.steward.r06ctx.after_death",
+        "template": "person.steward",
+        "axis": "emitter_snapshot",
+        "field": "predecessorExitAtAppointment",
+        "op": "eq",
+        "value": "died",
+        "headline": "앞선 청지기가 세상을 떠난 뒤 새 청지기가 임명되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_FIELD_REACHABILITY_UNVERIFIED"
+      }
+    },
+    {
+      "id": "person.steward.r06ctx.after_departure",
+      "template": "person.steward",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.steward.r06ctx.after_departure",
+        "template": "person.steward",
+        "axis": "emitter_snapshot",
+        "field": "predecessorExitAtAppointment",
+        "op": "eq",
+        "value": "left_town",
+        "headline": "앞선 청지기가 도시를 떠난 뒤 새 청지기가 임명되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_FIELD_REACHABILITY_UNVERIFIED"
+      }
+    },
+    {
+      "id": "person.bailiff.r06ctx.artisan",
+      "template": "person.bailiff",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.bailiff.r06ctx.artisan",
+        "template": "person.bailiff",
+        "axis": "emitter_snapshot",
+        "field": "classBandAtAppointment",
+        "op": "eq",
+        "value": "artisan",
+        "headline": "장인 가구를 이끌던 이가 영주의 집행관이 되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_FIELD"
+      }
+    },
+    {
+      "id": "person.bailiff.r06ctx.merchant",
+      "template": "person.bailiff",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "sourceSha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "sourceEntry": {
+        "id": "person.bailiff.r06ctx.merchant",
+        "template": "person.bailiff",
+        "axis": "emitter_snapshot",
+        "field": "classBandAtAppointment",
+        "op": "eq",
+        "value": "merchant",
+        "headline": "상인 가구를 이끌던 이가 영주의 집행관이 되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_FIELD"
+      }
+    },
+    {
+      "id": "person.leaving.r06life.water",
+      "template": "person.leaving",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.leaving.r06life.water",
+        "template": "person.leaving",
+        "field": "waterAfter",
+        "op": "eq",
+        "value": true,
+        "headline": "물은 공급되고 있었지만 가구는 떠날 준비를 했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.leaving.r06life.no_water",
+      "template": "person.leaving",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.leaving.r06life.no_water",
+        "template": "person.leaving",
+        "field": "waterAfter",
+        "op": "eq",
+        "value": false,
+        "headline": "물 공급도 없는 가구가 떠날 준비를 했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.left.r06life.one",
+      "template": "person.left",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.left.r06life.one",
+        "template": "person.left",
+        "field": "residentsBefore",
+        "op": "eq",
+        "value": 1,
+        "headline": "한 명이 살던 집에서 가구가 떠나 집이 비었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.left.r06life.many",
+      "template": "person.left",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.left.r06life.many",
+        "template": "person.left",
+        "field": "residentsBefore",
+        "op": "gte",
+        "value": 2,
+        "headline": "여럿이 함께 살던 집에서 가구가 떠나 집이 비었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.resettled.r06life.early",
+      "template": "person.resettled",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.resettled.r06life.early",
+        "template": "person.resettled",
+        "field": "elapsedTicks",
+        "op": "lt",
+        "value": 4000,
+        "headline": "빈집이 된 지 한 해가 지나기 전에 새 가구가 들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.resettled.r06life.later",
+      "template": "person.resettled",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.resettled.r06life.later",
+        "template": "person.resettled",
+        "field": "elapsedTicks",
+        "op": "gte",
+        "value": 4000,
+        "headline": "한 해 이상 비어 있던 집에 새 가구가 들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.burnt.r06life.one",
+      "template": "person.burnt",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.burnt.r06life.one",
+        "template": "person.burnt",
+        "field": "residentsBefore",
+        "op": "eq",
+        "value": 1,
+        "headline": "한 명이 살던 집이 불탔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.burnt.r06life.many",
+      "template": "person.burnt",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.burnt.r06life.many",
+        "template": "person.burnt",
+        "field": "residentsBefore",
+        "op": "gte",
+        "value": 2,
+        "headline": "여럿이 함께 살던 집이 불탔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.rebuilt.r06life.early",
+      "template": "person.rebuilt",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.rebuilt.r06life.early",
+        "template": "person.rebuilt",
+        "field": "elapsedTicks",
+        "op": "lt",
+        "value": 4000,
+        "headline": "집이 불탄 지 한 해가 지나기 전에 다시 지었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.rebuilt.r06life.later",
+      "template": "person.rebuilt",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.rebuilt.r06life.later",
+        "template": "person.rebuilt",
+        "field": "elapsedTicks",
+        "op": "gte",
+        "value": 4000,
+        "headline": "불탄 뒤 한 해 이상 지난 집을 다시 지었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.stayed.r06life.water",
+      "template": "person.stayed",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.stayed.r06life.water",
+        "template": "person.stayed",
+        "field": "waterAfter",
+        "op": "eq",
+        "value": true,
+        "headline": "물이 공급되는 집에 가구가 떠날 준비를 거두고 남았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.stayed.r06life.no_water",
+      "template": "person.stayed",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.stayed.r06life.no_water",
+        "template": "person.stayed",
+        "field": "waterAfter",
+        "op": "eq",
+        "value": false,
+        "headline": "물 공급은 아직 없었지만 가구는 떠날 준비를 거두었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.hungry.r06life.one",
+      "template": "person.hungry",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.hungry.r06life.one",
+        "template": "person.hungry",
+        "field": "residentsAfter",
+        "op": "eq",
+        "value": 1,
+        "headline": "한 명이 사는 집에 먹을거리 부족이 닥쳤다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.hungry.r06life.many",
+      "template": "person.hungry",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.hungry.r06life.many",
+        "template": "person.hungry",
+        "field": "residentsAfter",
+        "op": "gte",
+        "value": 2,
+        "headline": "여럿이 사는 집에 먹을거리 부족이 닥쳤다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.fed.r06life.brief",
+      "template": "person.fed",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.fed.r06life.brief",
+        "template": "person.fed",
+        "field": "elapsedTicks",
+        "op": "lte",
+        "value": 1000,
+        "headline": "먹을거리 부족이 시작된 지 한 철 안에 사정이 나아졌다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_BASELINE_FACT_LINE_AND_CONTEXT"
+      }
+    },
+    {
+      "id": "person.fed.r06life.long",
+      "template": "person.fed",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.fed.r06life.long",
+        "template": "person.fed",
+        "field": "elapsedTicks",
+        "op": "gt",
+        "value": 1000,
+        "headline": "한 철 넘게 이어지던 먹을거리 부족이 풀렸다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_BASELINE_FACT_LINE_AND_CONTEXT"
+      }
+    },
+    {
+      "id": "person.water.r06life.one",
+      "template": "person.water",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.water.r06life.one",
+        "template": "person.water",
+        "field": "residentsAfter",
+        "op": "eq",
+        "value": 1,
+        "headline": "한 명이 사는 집에 우물물이 닿기 시작했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.water.r06life.many",
+      "template": "person.water",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.water.r06life.many",
+        "template": "person.water",
+        "field": "residentsAfter",
+        "op": "gte",
+        "value": 2,
+        "headline": "여럿이 사는 집에 우물물이 닿기 시작했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.water_lost.r06life.burnt",
+      "template": "person.water_lost",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.water_lost.r06life.burnt",
+        "template": "person.water_lost",
+        "field": "burntAfter",
+        "op": "eq",
+        "value": true,
+        "headline": "불탄 집에서 지내던 가구의 물 공급이 끊겼다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "person.water_lost.r06life.not_burnt",
+      "template": "person.water_lost",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "sourceSha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "sourceEntry": {
+        "id": "person.water_lost.r06life.not_burnt",
+        "template": "person.water_lost",
+        "field": "burntAfter",
+        "op": "eq",
+        "value": false,
+        "headline": "집은 불타지 않았지만 가구의 물 공급은 끊겼다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true,
+        "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+      }
+    },
+    {
+      "id": "promise_payment.r06purpose.kept",
+      "category": "promise_payment",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "sourceSha256": "9d7731e82e7ccbc79bb1fcb20a027419e36c42103177d88f37c729735a796c7f",
+      "reviewPath": "records/ledger-purpose-review",
+      "reviewStatus": "PASS_OFFLINE_PURPOSE_DRAFT_6_variants",
+      "sourceEntry": {
+        "id": "promise_payment.r06purpose.kept",
+        "category": "promise_payment",
+        "purpose": "kept",
+        "text": "약속한 돈을 지급하여 금고에서 {amountAbsExact} 나갔다.",
+        "requiredSlots": [
+          "amountAbsExact"
+        ]
+      }
+    },
+    {
+      "id": "promise_payment.r06purpose.will_favour",
+      "category": "promise_payment",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "sourceSha256": "9d7731e82e7ccbc79bb1fcb20a027419e36c42103177d88f37c729735a796c7f",
+      "reviewPath": "records/ledger-purpose-review",
+      "reviewStatus": "PASS_OFFLINE_PURPOSE_DRAFT_6_variants",
+      "sourceEntry": {
+        "id": "promise_payment.r06purpose.will_favour",
+        "category": "promise_payment",
+        "purpose": "will_favour",
+        "text": "유언 변경에 답하는 호의 지급으로 금고에서 {amountAbsExact} 나갔다.",
+        "requiredSlots": [
+          "amountAbsExact"
+        ]
+      }
+    },
+    {
+      "id": "royal_subsidy.r06purpose.tax",
+      "category": "royal_subsidy",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "sourceSha256": "9d7731e82e7ccbc79bb1fcb20a027419e36c42103177d88f37c729735a796c7f",
+      "reviewPath": "records/ledger-purpose-review",
+      "reviewStatus": "PASS_OFFLINE_PURPOSE_DRAFT_6_variants",
+      "sourceEntry": {
+        "id": "royal_subsidy.r06purpose.tax",
+        "category": "royal_subsidy",
+        "purpose": "tax",
+        "text": "왕실 보조세로 금고에서 {amountAbsExact} 나갔다.",
+        "requiredSlots": [
+          "amountAbsExact"
+        ]
+      }
+    },
+    {
+      "id": "royal_subsidy.r06purpose.confirmation",
+      "category": "royal_subsidy",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "sourceSha256": "9d7731e82e7ccbc79bb1fcb20a027419e36c42103177d88f37c729735a796c7f",
+      "reviewPath": "records/ledger-purpose-review",
+      "reviewStatus": "PASS_OFFLINE_PURPOSE_DRAFT_6_variants",
+      "sourceEntry": {
+        "id": "royal_subsidy.r06purpose.confirmation",
+        "category": "royal_subsidy",
+        "purpose": "confirmation",
+        "text": "자치 특허 확인금으로 금고에서 {amountAbsExact} 나갔다.",
+        "requiredSlots": [
+          "amountAbsExact"
+        ]
+      }
+    },
+    {
+      "id": "stall_fee.r06purpose.market",
+      "category": "stall_fee",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "sourceSha256": "9d7731e82e7ccbc79bb1fcb20a027419e36c42103177d88f37c729735a796c7f",
+      "reviewPath": "records/ledger-purpose-review",
+      "reviewStatus": "PASS_OFFLINE_PURPOSE_DRAFT_6_variants",
+      "sourceEntry": {
+        "id": "stall_fee.r06purpose.market",
+        "category": "stall_fee",
+        "purpose": "market",
+        "text": "시장 좌판세로 금고에 {amountExact} 들어왔다.",
+        "requiredSlots": [
+          "amountExact"
+        ]
+      }
+    },
+    {
+      "id": "stall_fee.r06purpose.alehouse",
+      "category": "stall_fee",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "sourceSha256": "9d7731e82e7ccbc79bb1fcb20a027419e36c42103177d88f37c729735a796c7f",
+      "reviewPath": "records/ledger-purpose-review",
+      "reviewStatus": "PASS_OFFLINE_PURPOSE_DRAFT_6_variants",
+      "sourceEntry": {
+        "id": "stall_fee.r06purpose.alehouse",
+        "category": "stall_fee",
+        "purpose": "alehouse",
+        "text": "에일집 판매에 따른 부담금으로 금고에 {amountExact} 들어왔다.",
+        "requiredSlots": [
+          "amountExact"
+        ]
+      }
+    },
+    {
+      "id": "lawsuit.r06context.filed",
+      "category": "lawsuit",
+      "sourcePath": "records/ledger-lawsuit-revised/PROPOSAL.json",
+      "sourceSha256": "8a56de6ccc131c3b1bb123145276f478b6c244acac6f52d74c1767754b484b84",
+      "reviewPath": "records/ledger-lawsuit-revised-review",
+      "reviewStatus": "reviewed_4_conditional_ledger_drafts_0_review_holds",
+      "sourceEntry": {
+        "id": "lawsuit.r06context.filed",
+        "phase": "filed",
+        "text": "소송을 제기하는 비용으로 금고에서 {amountAbsExact} 나갔다.",
+        "requiredSlots": [
+          "amountAbsExact"
+        ],
+        "fallback": "existing lawsuit cash_out/general account selector"
+      }
+    },
+    {
+      "id": "lawsuit.r06context.evidence",
+      "category": "lawsuit",
+      "sourcePath": "records/ledger-lawsuit-revised/PROPOSAL.json",
+      "sourceSha256": "8a56de6ccc131c3b1bb123145276f478b6c244acac6f52d74c1767754b484b84",
+      "reviewPath": "records/ledger-lawsuit-revised-review",
+      "reviewStatus": "reviewed_4_conditional_ledger_drafts_0_review_holds",
+      "sourceEntry": {
+        "id": "lawsuit.r06context.evidence",
+        "phase": "evidence",
+        "text": "소송 증거를 마련하는 비용으로 금고에서 {amountAbsExact} 나갔다.",
+        "requiredSlots": [
+          "amountAbsExact"
+        ],
+        "fallback": "existing lawsuit cash_out/general account selector"
+      }
+    },
+    {
+      "id": "lawsuit.r06context.hearing",
+      "category": "lawsuit",
+      "sourcePath": "records/ledger-lawsuit-revised/PROPOSAL.json",
+      "sourceSha256": "8a56de6ccc131c3b1bb123145276f478b6c244acac6f52d74c1767754b484b84",
+      "reviewPath": "records/ledger-lawsuit-revised-review",
+      "reviewStatus": "reviewed_4_conditional_ledger_drafts_0_review_holds",
+      "sourceEntry": {
+        "id": "lawsuit.r06context.hearing",
+        "phase": "hearing",
+        "text": "소송 심리 단계의 비용으로 금고에서 {amountAbsExact} 나갔다.",
+        "requiredSlots": [
+          "amountAbsExact"
+        ],
+        "fallback": "existing lawsuit cash_out/general account selector"
+      }
+    },
+    {
+      "id": "lawsuit.r06context.enforcing",
+      "category": "lawsuit",
+      "sourcePath": "records/ledger-lawsuit-revised/PROPOSAL.json",
+      "sourceSha256": "8a56de6ccc131c3b1bb123145276f478b6c244acac6f52d74c1767754b484b84",
+      "reviewPath": "records/ledger-lawsuit-revised-review",
+      "reviewStatus": "reviewed_4_conditional_ledger_drafts_0_review_holds",
+      "sourceEntry": {
+        "id": "lawsuit.r06context.enforcing",
+        "phase": "enforcing",
+        "text": "판결에 따른 점유 집행을 시도하는 비용으로 금고에서 {amountAbsExact} 나갔다.",
+        "requiredSlots": [
+          "amountAbsExact"
+        ],
+        "fallback": "existing lawsuit cash_out/general account selector"
+      }
+    },
+    {
+      "id": "person.move_in.r06transition.one",
+      "template": "person.move_in",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "sourceSha256": "df91258644cf580f461159830928c89ff18ef7cf0461b667755a2b9b8f20eabc",
+      "reviewPath": "records/person-transitions-review",
+      "reviewStatus": "reviewed_6_conditional_drafts_fills_3_semantic_gaps",
+      "sourceEntry": {
+        "id": "person.move_in.r06transition.one",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.arrivalSize",
+            "op": "eq",
+            "value": "one"
+          }
+        ],
+        "headline": "비어 있던 집에 한 사람이 들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "person.move_in.r06transition.several",
+      "template": "person.move_in",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "sourceSha256": "df91258644cf580f461159830928c89ff18ef7cf0461b667755a2b9b8f20eabc",
+      "reviewPath": "records/person-transitions-review",
+      "reviewStatus": "reviewed_6_conditional_drafts_fills_3_semantic_gaps",
+      "sourceEntry": {
+        "id": "person.move_in.r06transition.several",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.arrivalSize",
+            "op": "eq",
+            "value": "several"
+          }
+        ],
+        "headline": "비어 있던 집에 여러 사람이 들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "person.married.r06transition.manor",
+      "template": "person.married",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "sourceSha256": "df91258644cf580f461159830928c89ff18ef7cf0461b667755a2b9b8f20eabc",
+      "reviewPath": "records/person-transitions-review",
+      "reviewStatus": "reviewed_6_conditional_drafts_fills_3_semantic_gaps",
+      "sourceEntry": {
+        "id": "person.married.r06transition.manor",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.spouseHousehold",
+            "op": "eq",
+            "value": "manor"
+          }
+        ],
+        "headline": "영주관 가구의 배우자로 새로 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "person.married.r06transition.town_house",
+      "template": "person.married",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "sourceSha256": "df91258644cf580f461159830928c89ff18ef7cf0461b667755a2b9b8f20eabc",
+      "reviewPath": "records/person-transitions-review",
+      "reviewStatus": "reviewed_6_conditional_drafts_fills_3_semantic_gaps",
+      "sourceEntry": {
+        "id": "person.married.r06transition.town_house",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.spouseHousehold",
+            "op": "eq",
+            "value": "town_house"
+          }
+        ],
+        "headline": "도시 주택의 가구에 배우자로 새로 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "person.left_town.r06transition.present",
+      "template": "person.left_town",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "sourceSha256": "df91258644cf580f461159830928c89ff18ef7cf0461b667755a2b9b8f20eabc",
+      "reviewPath": "records/person-transitions-review",
+      "reviewStatus": "reviewed_6_conditional_drafts_fills_3_semantic_gaps",
+      "sourceEntry": {
+        "id": "person.left_town.r06transition.present",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.householdPeopleAfter",
+            "op": "eq",
+            "value": "present"
+          }
+        ],
+        "headline": "도시를 떠날 때 같은 가구의 다른 인물이 도시 기록에 있었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "person.left_town.r06transition.absent",
+      "template": "person.left_town",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "sourceSha256": "df91258644cf580f461159830928c89ff18ef7cf0461b667755a2b9b8f20eabc",
+      "reviewPath": "records/person-transitions-review",
+      "reviewStatus": "reviewed_6_conditional_drafts_fills_3_semantic_gaps",
+      "sourceEntry": {
+        "id": "person.left_town.r06transition.absent",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.householdPeopleAfter",
+            "op": "eq",
+            "value": "absent"
+          }
+        ],
+        "headline": "도시를 떠난 뒤 같은 가구의 인물이 도시 기록에 남지 않았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "house.withdrew.r06move.empty_town",
+      "template": "house.withdrew",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "house.withdrew.r06move.empty_town",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.houseReplacementTrigger",
+            "op": "eq",
+            "value": "empty_town"
+          }
+        ],
+        "headline": "도시에 주민이 남지 않은 때, 종전 가문이 영지를 맡는 일이 끝났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "house.withdrew.r06move.family_extinct",
+      "template": "house.withdrew",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "house.withdrew.r06move.family_extinct",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.houseReplacementTrigger",
+            "op": "eq",
+            "value": "family_extinct"
+          }
+        ],
+        "headline": "역병으로 식구를 잃었던 가문의 식구가 현재 도시 기록에 남아 있지 않고 대기 중인 후계 후보도 없어, 새 가문으로 교체되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "house.withdrew.r06move.decline_elapsed",
+      "template": "house.withdrew",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "house.withdrew.r06move.decline_elapsed",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.houseReplacementTrigger",
+            "op": "eq",
+            "value": "decline_elapsed"
+          }
+        ],
+        "headline": "쇠퇴가 이어진 끝에 종전 가문이 영지에서 물러났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "house.arrived.r06move.inhabited",
+      "template": "house.arrived",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "house.arrived.r06move.inhabited",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.residentPresenceAtHouseArrival",
+            "op": "eq",
+            "value": "inhabited"
+          }
+        ],
+        "headline": "주민들이 살고 있는 도시를 새 가문이 맡았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "house.arrived.r06move.empty",
+      "template": "house.arrived",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "house.arrived.r06move.empty",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.residentPresenceAtHouseArrival",
+            "op": "eq",
+            "value": "empty"
+          }
+        ],
+        "headline": "주민이 없어 비어 있던 도시를 새 가문이 맡았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "house.resettled.r06move.granary_only",
+      "template": "house.resettled",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "house.resettled.r06move.granary_only",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.settlerBreadAllocation",
+            "op": "eq",
+            "value": "granary_only"
+          }
+        ],
+        "headline": "빈집에 들어온 이주민들이 가져온 한 철치 빵을 모두 곡창에 넣었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "house.resettled.r06move.split",
+      "template": "house.resettled",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "house.resettled.r06move.split",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.settlerBreadAllocation",
+            "op": "eq",
+            "value": "split"
+          }
+        ],
+        "headline": "빈집에 들어온 이주민들은 가져온 빵을 곡창에 넣고, 남은 몫은 이주민 가구에 나누어 두었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "house.resettled.r06move.household_only",
+      "template": "house.resettled",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "house.resettled.r06move.household_only",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.settlerBreadAllocation",
+            "op": "eq",
+            "value": "household_only"
+          }
+        ],
+        "headline": "빈집에 들어온 이주민들은 가져온 한 철치 빵을 집집마다 나누어 두었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "agency.timber_ordered.r06move.market",
+      "template": "agency.timber_ordered",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "agency.timber_ordered.r06move.market",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.charterTimberTradePoint",
+            "op": "eq",
+            "value": "market"
+          }
+        ],
+        "headline": "도시가 시장 칙허에 모자란 목재를 주문했다. 주문 당시에는 시장이 받을 곳으로 정해져 있었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "agency.timber_ordered.r06move.hamlet_storehouse",
+      "template": "agency.timber_ordered",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "agency.timber_ordered.r06move.hamlet_storehouse",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.charterTimberTradePoint",
+            "op": "eq",
+            "value": "hamlet_storehouse"
+          }
+        ],
+        "headline": "도시가 시장 칙허에 모자란 목재를 주문했다. 주문 당시에는 촌락의 창고가 받을 곳으로 정해져 있었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "negotiation.rejected.r06move.jointure",
+      "template": "negotiation.rejected",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "negotiation.rejected.r06move.jointure",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.rejectedOfferCommitment",
+            "op": "eq",
+            "value": "jointure"
+          }
+        ],
+        "headline": "과부산을 조건에 넣은 혼인 제안을 이웃 가문이 받아들이지 않았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "negotiation.rejected.r06move.deferred_without_jointure",
+      "template": "negotiation.rejected",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "negotiation.rejected.r06move.deferred_without_jointure",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.rejectedOfferCommitment",
+            "op": "eq",
+            "value": "deferred_without_jointure"
+          }
+        ],
+        "headline": "과부산 없이 상속 뒤 빚을 떠맡는 조건을 넣은 혼인 제안을 이웃 가문이 받아들이지 않았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "negotiation.rejected.r06move.neither",
+      "template": "negotiation.rejected",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "sourceSha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "sourceEntry": {
+        "id": "negotiation.rejected.r06move.neither",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.rejectedOfferCommitment",
+            "op": "eq",
+            "value": "neither"
+          }
+        ],
+        "headline": "과부산이나 상속 뒤 채무인수 조건을 넣지 않은 혼인 제안을 이웃 가문이 받아들이지 않았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "person.came_of_age.r06fixed.co_resident",
+      "template": "person.came_of_age",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "sourceSha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "sourceEntry": {
+        "id": "person.came_of_age.r06fixed.co_resident",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.parentsAtAdulthood",
+            "op": "eq",
+            "value": "co_resident"
+          }
+        ],
+        "headline": "기록된 부모와 한 가구에서 지내던 아이가 성장의 고비를 맞았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "person.came_of_age.r06fixed.not_co_resident",
+      "template": "person.came_of_age",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "sourceSha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "sourceEntry": {
+        "id": "person.came_of_age.r06fixed.not_co_resident",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.parentsAtAdulthood",
+            "op": "eq",
+            "value": "not_co_resident"
+          }
+        ],
+        "headline": "기록된 부모와 함께 살지 않는 가구에서 아이가 성장의 고비를 맞았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "milestone.stone_town.r06fixed.all_complete",
+      "template": "milestone.stone_town",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "sourceSha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "sourceEntry": {
+        "id": "milestone.stone_town.r06fixed.all_complete",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.wallCompletionAtMilestone",
+            "op": "eq",
+            "value": "all_complete"
+          }
+        ],
+        "headline": "석벽 사업 단계가 기록될 때, 성벽 구간들은 모두 완성 상태였다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "milestone.stone_town.r06fixed.partly_complete",
+      "template": "milestone.stone_town",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "sourceSha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "sourceEntry": {
+        "id": "milestone.stone_town.r06fixed.partly_complete",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.wallCompletionAtMilestone",
+            "op": "eq",
+            "value": "partly_complete"
+          }
+        ],
+        "headline": "석벽 사업 단계가 기록될 때, 완성된 성벽 구간과 미완성 구간이 함께 있었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "milestone.stone_town.r06fixed.none_complete",
+      "template": "milestone.stone_town",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "sourceSha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "sourceEntry": {
+        "id": "milestone.stone_town.r06fixed.none_complete",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.wallCompletionAtMilestone",
+            "op": "eq",
+            "value": "none_complete"
+          }
+        ],
+        "headline": "석벽 사업 단계가 기록될 때, 아직 완성 상태인 성벽 구간은 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "plague.priest_died.r06fixed.present",
+      "template": "plague.priest_died",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "sourceSha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "sourceEntry": {
+        "id": "plague.priest_died.r06fixed.present",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.worshipBuildingsAtVacancy",
+            "op": "eq",
+            "value": "present"
+          }
+        ],
+        "headline": "교회나 예배당이 있는 도시에 사제직 공석이 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "plague.priest_died.r06fixed.absent",
+      "template": "plague.priest_died",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "sourceSha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "sourceEntry": {
+        "id": "plague.priest_died.r06fixed.absent",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.worshipBuildingsAtVacancy",
+            "op": "eq",
+            "value": "absent"
+          }
+        ],
+        "headline": "교회와 예배당이 없는 도시에 사제직 공석이 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "ledger.l4.r06fixed.increased",
+      "template": "ledger.l4",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "sourceSha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "sourceEntry": {
+        "id": "ledger.l4.r06fixed.increased",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.archivedL4Direction",
+            "op": "eq",
+            "value": "increased"
+          }
+        ],
+        "headline": "보존된 집계에서 도시 대가옥 수가 늘었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "ledger.l4.r06fixed.decreased",
+      "template": "ledger.l4",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "sourceSha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "sourceEntry": {
+        "id": "ledger.l4.r06fixed.decreased",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.archivedL4Direction",
+            "op": "eq",
+            "value": "decreased"
+          }
+        ],
+        "headline": "보존된 집계에서 도시 대가옥 수가 줄었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "ledger.l4.r06fixed.unchanged",
+      "template": "ledger.l4",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "sourceSha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "sourceEntry": {
+        "id": "ledger.l4.r06fixed.unchanged",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.archivedL4Direction",
+            "op": "eq",
+            "value": "unchanged"
+          }
+        ],
+        "headline": "보존된 집계에서 도시 대가옥 수는 그대로였다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.staple.r06town.present",
+      "template": "legacy.staple",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.staple.r06town.present",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.weaversAtStaple",
+            "op": "eq",
+            "value": "present"
+          }
+        ],
+        "headline": "양모 지정 무역 제도의 중단이 기록될 때, 도시에는 직조공 작업장이 있었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.staple.r06town.absent",
+      "template": "legacy.staple",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.staple.r06town.absent",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.weaversAtStaple",
+            "op": "eq",
+            "value": "absent"
+          }
+        ],
+        "headline": "양모 지정 무역 제도의 중단이 기록될 때, 도시에는 직조공 작업장이 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.guild_dispute.r06town.identified",
+      "template": "legacy.guild_dispute",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.guild_dispute.r06town.identified",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guildHeadAtDispute",
+            "op": "eq",
+            "value": "identified"
+          }
+        ],
+        "headline": "수장이 기록된 길드와 상인이 직물 판매 권리를 두고 다투는 안건이 올랐다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.guild_dispute.r06town.unidentified",
+      "template": "legacy.guild_dispute",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.guild_dispute.r06town.unidentified",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guildHeadAtDispute",
+            "op": "eq",
+            "value": "unidentified"
+          }
+        ],
+        "headline": "길드 수장이 특정되지 않은 가운데 직물 판매 권리의 다툼이 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.market_fire.r06town.full",
+      "template": "legacy.market_fire",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.market_fire.r06town.full",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.repairPaymentAtFire",
+            "op": "eq",
+            "value": "full"
+          }
+        ],
+        "headline": "장터 화재 수리비로 정해진 금액이 모두 금고에서 나갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.market_fire.r06town.partial",
+      "template": "legacy.market_fire",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.market_fire.r06town.partial",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.repairPaymentAtFire",
+            "op": "eq",
+            "value": "partial"
+          }
+        ],
+        "headline": "장터 화재 수리비 가운데 일부만 금고에서 나갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.market_fire.r06town.zero",
+      "template": "legacy.market_fire",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.market_fire.r06town.zero",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.repairPaymentAtFire",
+            "op": "eq",
+            "value": "zero"
+          }
+        ],
+        "headline": "장터 화재 수리비가 기록되었으나 금고에서 나간 돈은 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.church_rebuilding.r06town.covers_cost",
+      "template": "legacy.church_rebuilding",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.church_rebuilding.r06town.covers_cost",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.treasuryAtNaveRequest",
+            "op": "eq",
+            "value": "covers_cost"
+          }
+        ],
+        "headline": "교회 증축 청원이 올랐다. 당시 금고에는 정해진 증축비를 감당할 돈이 있었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.church_rebuilding.r06town.below_cost",
+      "template": "legacy.church_rebuilding",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.church_rebuilding.r06town.below_cost",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.treasuryAtNaveRequest",
+            "op": "eq",
+            "value": "below_cost"
+          }
+        ],
+        "headline": "교회 증축 청원이 올랐다. 당시 금고의 돈은 정해진 증축비에 미치지 못했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.nave_rebuilt.r06town.full",
+      "template": "legacy.nave_rebuilt",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.nave_rebuilt.r06town.full",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.navePaymentAtRecord",
+            "op": "eq",
+            "value": "full"
+          }
+        ],
+        "headline": "회중석 증축이 기록되었고, 정해진 비용이 모두 금고에서 나갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.nave_rebuilt.r06town.partial",
+      "template": "legacy.nave_rebuilt",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.nave_rebuilt.r06town.partial",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.navePaymentAtRecord",
+            "op": "eq",
+            "value": "partial"
+          }
+        ],
+        "headline": "회중석 증축이 기록되었으나, 정해진 비용 중 일부만 금고에서 나갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.nave_rebuilt.r06town.zero",
+      "template": "legacy.nave_rebuilt",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.nave_rebuilt.r06town.zero",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.navePaymentAtRecord",
+            "op": "eq",
+            "value": "zero"
+          }
+        ],
+        "headline": "회중석 증축이 기록되었으나, 금고에서 나간 비용은 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.deposition.r06town.toward_closer",
+      "template": "legacy.deposition",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.deposition.r06town.toward_closer",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.crownResetAtDeposition",
+            "op": "eq",
+            "value": "toward_closer"
+          }
+        ],
+        "headline": "왕위 교체에 따른 조정은 왕실과의 관계를 가까워지는 쪽으로 움직였다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.deposition.r06town.toward_distant",
+      "template": "legacy.deposition",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.deposition.r06town.toward_distant",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.crownResetAtDeposition",
+            "op": "eq",
+            "value": "toward_distant"
+          }
+        ],
+        "headline": "왕위 교체에 따른 조정은 왕실과의 관계를 멀어지는 쪽으로 움직였다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.deposition.r06town.unchanged",
+      "template": "legacy.deposition",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "sourceSha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "sourceEntry": {
+        "id": "legacy.deposition.r06town.unchanged",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.crownResetAtDeposition",
+            "op": "eq",
+            "value": "unchanged"
+          }
+        ],
+        "headline": "왕위 교체가 기록되었으나, 그에 따른 왕실 관계 조정분은 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held",
+      "template": "legacy.royal_tax_envoy",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.royal_tax_envoy.r06gov.held",
+        "when": {
+          "field": "context.townMarketTollsAtEnvoy",
+          "op": "eq",
+          "value": "held"
+        },
+        "headline": "도시가 시장 좌판세를 거둘 권리를 지닌 때에 국왕의 과세 사절이 왔다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held",
+      "template": "legacy.royal_tax_envoy",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.royal_tax_envoy.r06gov.not_held",
+        "when": {
+          "field": "context.townMarketTollsAtEnvoy",
+          "op": "eq",
+          "value": "not_held"
+        },
+        "headline": "도시가 시장 좌판세를 거둘 권리를 지니지 않은 때에 국왕의 과세 사절이 왔다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero",
+      "template": "legacy.royal_subsidy",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.royal_subsidy.r06gov.zero",
+        "when": {
+          "field": "context.cashAfterSubsidy",
+          "op": "eq",
+          "value": "zero"
+        },
+        "headline": "국왕에게 보조세를 낸 때, 금고에 남은 돈은 없었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining",
+      "template": "legacy.royal_subsidy",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.royal_subsidy.r06gov.remaining",
+        "when": {
+          "field": "context.cashAfterSubsidy",
+          "op": "eq",
+          "value": "remaining"
+        },
+        "headline": "국왕에게 보조세를 낸 뒤에도 금고에 돈이 남아 있었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son",
+      "template": "legacy.city_seal",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.city_seal.r06gov.son",
+        "when": {
+          "field": "context.heirChoiceBeforeSeal",
+          "op": "eq",
+          "value": "son"
+        },
+        "headline": "아들을 후계자로 정한 뒤, 도시는 제 인장을 새겼다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband",
+      "template": "legacy.city_seal",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.city_seal.r06gov.daughter_husband",
+        "when": {
+          "field": "context.heirChoiceBeforeSeal",
+          "op": "eq",
+          "value": "daughter_husband"
+        },
+        "headline": "딸의 남편을 후계자로 정한 뒤, 도시는 제 인장을 새겼다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral",
+      "template": "legacy.city_seal",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.city_seal.r06gov.collateral",
+        "when": {
+          "field": "context.heirChoiceBeforeSeal",
+          "op": "eq",
+          "value": "collateral"
+        },
+        "headline": "다른 친족을 후계자로 정한 뒤, 도시는 제 인장을 새겼다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same",
+      "template": "legacy.charter_sealed",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.charter_sealed.r06gov.same",
+        "when": {
+          "field": "context.mayorSelectionAtSeal",
+          "op": "eq",
+          "value": "same"
+        },
+        "headline": "당초 후보를 첫 도시의 시장으로 올리며 자치 특허에 인장을 찍었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement",
+      "template": "legacy.charter_sealed",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.charter_sealed.r06gov.replacement",
+        "when": {
+          "field": "context.mayorSelectionAtSeal",
+          "op": "eq",
+          "value": "replacement"
+        },
+        "headline": "당초 후보와 다른 이를 첫 도시의 시장으로 올리며 자치 특허에 인장을 찍었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed",
+      "template": "legacy.charter_sealed",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.charter_sealed.r06gov.unnamed",
+        "when": {
+          "field": "context.mayorSelectionAtSeal",
+          "op": "eq",
+          "value": "unnamed"
+        },
+        "headline": "첫 도시의 시장 이름을 기록하지 않은 채 자치 특허에 인장을 찍었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid",
+      "template": "legacy.family_departed",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.family_departed.r06gov.paid",
+        "when": {
+          "field": "context.priorSubsidyAtDeparture",
+          "op": "eq",
+          "value": "paid"
+        },
+        "headline": "과세 사절이 요구한 보조세를 낸 가문이 영주관을 떠나 시골 장원으로 갔다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record",
+      "template": "legacy.family_departed",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.family_departed.r06gov.no_record",
+        "when": {
+          "field": "context.priorSubsidyAtDeparture",
+          "op": "eq",
+          "value": "no_record"
+        },
+        "headline": "과세 사절의 요구에 따른 납부 기록 없이 가문은 영주관을 떠나 시골 장원으로 갔다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid",
+      "template": "legacy.family_stayed",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.family_stayed.r06gov.paid",
+        "when": {
+          "field": "context.priorSubsidyAtStay",
+          "op": "eq",
+          "value": "paid"
+        },
+        "headline": "과세 사절이 요구한 보조세를 낸 가문은 영주관에 그대로 남았다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record",
+      "template": "legacy.family_stayed",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "sourceSha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "sourceEntry": {
+        "id": "legacy.family_stayed.r06gov.no_record",
+        "when": {
+          "field": "context.priorSubsidyAtStay",
+          "op": "eq",
+          "value": "no_record"
+        },
+        "headline": "과세 사절의 요구에 따른 납부 기록 없이 가문은 영주관에 남았다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded",
+      "template": "reorg.wage_competition",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.wage_competition.r06rg.none_recorded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.departuresAtWageOpening",
+            "op": "eq",
+            "value": "none_recorded"
+          }
+        ],
+        "headline": "이웃 장원의 임금 경쟁이 시작됐지만, 그 첫 시점의 임금 경쟁 이주 기록은 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded",
+      "template": "reorg.wage_competition",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.wage_competition.r06rg.departure_recorded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.departuresAtWageOpening",
+            "op": "eq",
+            "value": "departure_recorded"
+          }
+        ],
+        "headline": "이웃 장원의 임금 경쟁이 시작된 때에, 이 경쟁으로 떠난 가구도 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned",
+      "template": "reorg.guild_founded",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.guild_founded.r06rg.assigned",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.headAtGuildFoundation",
+            "op": "eq",
+            "value": "assigned"
+          }
+        ],
+        "headline": "대표를 정하며 직인 길드가 섰다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned",
+      "template": "reorg.guild_founded",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.guild_founded.r06rg.unassigned",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.headAtGuildFoundation",
+            "op": "eq",
+            "value": "unassigned"
+          }
+        ],
+        "headline": "대표가 아직 지정되지 않은 채 직인 길드가 섰다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused",
+      "template": "reorg.weavers_left",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.weavers_left.r06rg.refused",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guildAnswerAtDeparture",
+            "op": "eq",
+            "value": "refused"
+          }
+        ],
+        "headline": "길드 설립 청원을 거절한 뒤, 이주한 가구가 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired",
+      "template": "reorg.weavers_left",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.weavers_left.r06rg.expired",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guildAnswerAtDeparture",
+            "op": "eq",
+            "value": "expired"
+          }
+        ],
+        "headline": "길드 설립 청원이 답 없이 기한을 넘긴 뒤, 이주한 가구가 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded",
+      "template": "reorg.overlord_warning",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.overlord_warning.r06rg.founded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guildAtWarning",
+            "op": "eq",
+            "value": "founded"
+          }
+        ],
+        "headline": "직인 길드가 선 도시에 상위 영주의 경고가 전해졌다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded",
+      "template": "reorg.overlord_warning",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.overlord_warning.r06rg.not_founded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guildAtWarning",
+            "op": "eq",
+            "value": "not_founded"
+          }
+        ],
+        "headline": "직인 길드가 아직 서지 않은 때에 상위 영주의 경고가 전해졌다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased",
+      "template": "reorg.autonomy_request",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.autonomy_request.r06rg.chased",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.autonomyRouteAtRequest",
+            "op": "eq",
+            "value": "chased"
+          }
+        ],
+        "headline": "인두세 징수원을 쫓아낸 일이 있은 뒤, 도시가 자치 특허를 요구했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted",
+      "template": "reorg.autonomy_request",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.autonomy_request.r06rg.guild_accepted",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.autonomyRouteAtRequest",
+            "op": "eq",
+            "value": "guild_accepted"
+          }
+        ],
+        "headline": "길드 설립을 받아들인 도시에 자치 특허 청원이 올라왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted",
+      "template": "reorg.autonomy_request",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "sourceSha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "sourceEntry": {
+        "id": "reorg.autonomy_request.r06rg.guild_not_accepted",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.autonomyRouteAtRequest",
+            "op": "eq",
+            "value": "guild_not_accepted"
+          }
+        ],
+        "headline": "길드 설립을 받아들이지 않은 상태에서 도시가 자치 특허를 요구했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "lord.wardship_ended.r06office.named_guardian",
+      "template": "lord.wardship_ended",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "sourceSha256": "ad100b4b2cf5f19cf6cdfa0aac55f9c72a323e6e329b746040081b49305d1d85",
+      "reviewPath": "records/office-context-revised-review",
+      "reviewStatus": "reviewed_6_conditional_2_factline_holds_216_checks",
+      "sourceEntry": {
+        "id": "lord.wardship_ended.r06office.named_guardian",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.endingGuardianKind",
+            "op": "eq",
+            "value": "named_guardian"
+          }
+        ],
+        "headline": "후견인이 기록되어 있던 영주의 후견이 성년과 함께 끝났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "lord.wardship_ended.r06office.overlord",
+      "template": "lord.wardship_ended",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "sourceSha256": "ad100b4b2cf5f19cf6cdfa0aac55f9c72a323e6e329b746040081b49305d1d85",
+      "reviewPath": "records/office-context-revised-review",
+      "reviewStatus": "reviewed_6_conditional_2_factline_holds_216_checks",
+      "sourceEntry": {
+        "id": "lord.wardship_ended.r06office.overlord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.endingGuardianKind",
+            "op": "eq",
+            "value": "overlord"
+          }
+        ],
+        "headline": "상위 영주의 후견 아래 있던 영주가 성년이 되어 후견을 벗어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "faction.leader_succeeded.r06office.same_household",
+      "template": "faction.leader_succeeded",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "sourceSha256": "ad100b4b2cf5f19cf6cdfa0aac55f9c72a323e6e329b746040081b49305d1d85",
+      "reviewPath": "records/office-context-revised-review",
+      "reviewStatus": "reviewed_6_conditional_2_factline_holds_216_checks",
+      "sourceEntry": {
+        "id": "faction.leader_succeeded.r06office.same_household",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.successorHouseholdAtEvent",
+            "op": "eq",
+            "value": "same_household"
+          }
+        ],
+        "headline": "세상을 떠난 수장과 같은 가구의 사람이 무리를 이었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "faction.leader_succeeded.r06office.different_household",
+      "template": "faction.leader_succeeded",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "sourceSha256": "ad100b4b2cf5f19cf6cdfa0aac55f9c72a323e6e329b746040081b49305d1d85",
+      "reviewPath": "records/office-context-revised-review",
+      "reviewStatus": "reviewed_6_conditional_2_factline_holds_216_checks",
+      "sourceEntry": {
+        "id": "faction.leader_succeeded.r06office.different_household",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.successorHouseholdAtEvent",
+            "op": "eq",
+            "value": "different_household"
+          }
+        ],
+        "headline": "세상을 떠난 수장과 다른 가구의 사람이 무리를 이었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "stewardship.steward_died.r06office.direct",
+      "template": "stewardship.steward_died",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "sourceSha256": "ad100b4b2cf5f19cf6cdfa0aac55f9c72a323e6e329b746040081b49305d1d85",
+      "reviewPath": "records/office-context-revised-review",
+      "reviewStatus": "reviewed_6_conditional_2_factline_holds_216_checks",
+      "sourceEntry": {
+        "id": "stewardship.steward_died.r06office.direct",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.oversightModeAtSuccession",
+            "op": "eq",
+            "value": "direct"
+          }
+        ],
+        "headline": "영주가 직접 보는 영지에서 장부를 맡던 사람이 세상을 떠나 후임이 장부를 맡았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "stewardship.steward_died.r06office.steward",
+      "template": "stewardship.steward_died",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "sourceSha256": "ad100b4b2cf5f19cf6cdfa0aac55f9c72a323e6e329b746040081b49305d1d85",
+      "reviewPath": "records/office-context-revised-review",
+      "reviewStatus": "reviewed_6_conditional_2_factline_holds_216_checks",
+      "sourceEntry": {
+        "id": "stewardship.steward_died.r06office.steward",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.oversightModeAtSuccession",
+            "op": "eq",
+            "value": "steward"
+          }
+        ],
+        "headline": "청지기에게 맡긴 영지에서 담당자가 세상을 떠나 후임 청지기가 뒤를 이었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "stewardship.began.r06office.sole_estate",
+      "template": "stewardship.began",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "sourceSha256": "ad100b4b2cf5f19cf6cdfa0aac55f9c72a323e6e329b746040081b49305d1d85",
+      "reviewPath": "records/office-context-revised-review",
+      "reviewStatus": "reviewed_6_conditional_2_factline_holds_216_checks",
+      "sourceEntry": {
+        "id": "stewardship.began.r06office.sole_estate",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.offMapPortfolioAtStart",
+            "op": "eq",
+            "value": "sole_estate"
+          }
+        ],
+        "headline": "관리하는 지도 밖 영지가 한 곳인 가운데, 영주가 직접 보고 청지기가 장부를 맡기 시작했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "stewardship.began.r06office.multiple_estates",
+      "template": "stewardship.began",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "sourceSha256": "ad100b4b2cf5f19cf6cdfa0aac55f9c72a323e6e329b746040081b49305d1d85",
+      "reviewPath": "records/office-context-revised-review",
+      "reviewStatus": "reviewed_6_conditional_2_factline_holds_216_checks",
+      "sourceEntry": {
+        "id": "stewardship.began.r06office.multiple_estates",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.offMapPortfolioAtStart",
+            "op": "eq",
+            "value": "multiple_estates"
+          }
+        ],
+        "headline": "여러 지도 밖 영지를 관리하는 가운데, 이 영지도 영주가 직접 보고 청지기가 장부를 맡기 시작했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "milestone.chapter_start.r06stage.second",
+      "template": "milestone.chapter_start",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "sourceSha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "sourceEntry": {
+        "id": "milestone.chapter_start.r06stage.second",
+        "template": "milestone.chapter_start",
+        "axis": "params",
+        "field": "chapter",
+        "op": "eq",
+        "value": 2,
+        "headline": "첫 장을 지나 두 번째 장이 시작되었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ],
+        "status": "BLOCKED_TYPED_INPUT_GUARD"
+      }
+    },
+    {
+      "id": "milestone.chapter_start.r06stage.last",
+      "template": "milestone.chapter_start",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "sourceSha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "sourceEntry": {
+        "id": "milestone.chapter_start.r06stage.last",
+        "template": "milestone.chapter_start",
+        "axis": "params",
+        "field": "chapter",
+        "op": "eq",
+        "value": 5,
+        "headline": "가문의 마지막 장이 시작되었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ],
+        "status": "BLOCKED_TYPED_INPUT_GUARD"
+      }
+    },
+    {
+      "id": "milestone.chapter_end.r06stage.first",
+      "template": "milestone.chapter_end",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "sourceSha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "sourceEntry": {
+        "id": "milestone.chapter_end.r06stage.first",
+        "template": "milestone.chapter_end",
+        "axis": "params",
+        "field": "chapter",
+        "op": "eq",
+        "value": 1,
+        "headline": "도시가 거쳐 온 첫 장의 기록을 마쳤다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ],
+        "status": "BLOCKED_TYPED_INPUT_GUARD"
+      }
+    },
+    {
+      "id": "milestone.chapter_end.r06stage.last",
+      "template": "milestone.chapter_end",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "sourceSha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "sourceEntry": {
+        "id": "milestone.chapter_end.r06stage.last",
+        "template": "milestone.chapter_end",
+        "axis": "params",
+        "field": "chapter",
+        "op": "eq",
+        "value": 5,
+        "headline": "다음 장을 열지 않고 가문의 마지막 장을 마쳤다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ],
+        "status": "BLOCKED_TYPED_INPUT_GUARD"
+      }
+    },
+    {
+      "id": "milestone.market_town.r06stage.market",
+      "template": "milestone.market_town",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "sourceSha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "sourceEntry": {
+        "id": "milestone.market_town.r06stage.market",
+        "template": "milestone.market_town",
+        "axis": "capture",
+        "field": "era",
+        "op": "eq",
+        "value": "market_town",
+        "headline": "시장도시 단계에서 도시의 이정표가 기록되었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ],
+        "status": "BLOCKED_NEW_CAPTURE_FIELD"
+      }
+    },
+    {
+      "id": "milestone.market_town.r06stage.stone",
+      "template": "milestone.market_town",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "sourceSha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "sourceEntry": {
+        "id": "milestone.market_town.r06stage.stone",
+        "template": "milestone.market_town",
+        "axis": "capture",
+        "field": "era",
+        "op": "eq",
+        "value": "stone_town",
+        "headline": "석벽 도시 단계에서 시장도시 이정표가 기록되었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ],
+        "status": "BLOCKED_NEW_CAPTURE_FIELD"
+      }
+    },
+    {
+      "id": "milestone.first_l4.r06stage.one",
+      "template": "milestone.first_l4",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "sourceSha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "sourceEntry": {
+        "id": "milestone.first_l4.r06stage.one",
+        "template": "milestone.first_l4",
+        "axis": "capture",
+        "field": "l4Count",
+        "op": "eq",
+        "value": 1,
+        "headline": "도시 대가옥 한 채가 처음 이정표에 올랐다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ],
+        "status": "BLOCKED_NEW_CAPTURE_FIELD"
+      }
+    },
+    {
+      "id": "milestone.first_l4.r06stage.several",
+      "template": "milestone.first_l4",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "sourceSha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "sourceEntry": {
+        "id": "milestone.first_l4.r06stage.several",
+        "template": "milestone.first_l4",
+        "axis": "capture",
+        "field": "l4Count",
+        "op": "gt",
+        "value": 1,
+        "headline": "도시 대가옥 여러 채가 있는 때에 첫 이정표가 기록되었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ],
+        "status": "BLOCKED_NEW_CAPTURE_FIELD"
+      }
+    },
+    {
+      "id": "person.grew.r06stage.two",
+      "template": "person.grew",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "sourceSha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "sourceEntry": {
+        "id": "person.grew.r06stage.two",
+        "template": "person.grew",
+        "axis": "params",
+        "field": "residents",
+        "op": "eq",
+        "value": 2,
+        "headline": "식구가 늘어 두 사람이 한집에 살게 되었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ],
+        "status": "BLOCKED_TYPED_INPUT_GUARD"
+      }
+    },
+    {
+      "id": "person.grew.r06stage.several",
+      "template": "person.grew",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "sourceSha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "sourceEntry": {
+        "id": "person.grew.r06stage.several",
+        "template": "person.grew",
+        "axis": "params",
+        "field": "residents",
+        "op": "gt",
+        "value": 2,
+        "headline": "식구가 늘어 세 사람 이상이 한집에 살게 되었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ],
+        "status": "BLOCKED_TYPED_INPUT_GUARD"
+      }
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord",
+      "template": "marriage.brother_in_law_born",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.brother_in_law_born.r06life.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인이 맺은 혼인의 상대 가문에 아들이 태어나 상속 기대가 줄었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son",
+      "template": "marriage.brother_in_law_born",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.brother_in_law_born.r06life.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들이 맺은 혼인의 상대 가문에 아들이 태어나 상속 기대가 줄었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin",
+      "template": "marriage.brother_in_law_born",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.brother_in_law_born.r06life.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 중 한 사람이 맺은 혼인의 상대 가문에 아들이 태어나 상속 기대가 줄었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord",
+      "template": "marriage.father_ill",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.father_ill.r06life.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인과 혼인한 신부의 아버지가 병들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.father_ill.r06life.son",
+      "template": "marriage.father_ill",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.father_ill.r06life.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들과 혼인한 신부의 아버지가 병들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin",
+      "template": "marriage.father_ill",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.father_ill.r06life.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 중 한 사람과 혼인한 신부의 아버지가 병들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord",
+      "template": "marriage.deferred_void",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.deferred_void.r06life.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인의 혼인에 딸린 상속 후 채무인수 약정이 풀렸다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son",
+      "template": "marriage.deferred_void",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.deferred_void.r06life.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들이 맺은 혼인에 딸린 상속 후 채무인수 약정이 풀렸다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin",
+      "template": "marriage.deferred_void",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.deferred_void.r06life.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 중 한 사람이 맺은 혼인에 딸린 상속 후 채무인수 약정이 풀렸다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.will_change.r06life.open",
+      "template": "marriage.will_change",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.will_change.r06life.open",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.nonInfringementOpenAtWillAttempt",
+            "op": "eq",
+            "value": "open"
+          }
+        ],
+        "headline": "상속을 침해하지 않겠다는 약속이 남아 있는 가운데 이웃 영주가 유언을 고치려 했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.will_change.r06life.absent",
+      "template": "marriage.will_change",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.will_change.r06life.absent",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.nonInfringementOpenAtWillAttempt",
+            "op": "eq",
+            "value": "absent"
+          }
+        ],
+        "headline": "이웃 영주가 유언을 고치려 했다. 그때 아직 열려 있는 상속 불침해 약속은 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid",
+      "template": "marriage.will_dropped",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.will_dropped.r06life.paid",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.willDroppedConsideration",
+            "op": "eq",
+            "value": "paid_favour"
+          }
+        ],
+        "headline": "돈을 건넨 뒤 이웃 영주가 유언을 고치지 않기로 했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised",
+      "template": "marriage.will_dropped",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.will_dropped.r06life.promised",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.willDroppedConsideration",
+            "op": "eq",
+            "value": "support_promised"
+          }
+        ],
+        "headline": "정치적 지지를 약속한 뒤 이웃 영주가 유언을 고치지 않기로 했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.father_died.r06life.son",
+      "template": "marriage.father_died",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.father_died.r06life.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.inheritanceRouteAtFatherDeath",
+            "op": "eq",
+            "value": "living_son"
+          }
+        ],
+        "headline": "이웃 영주가 죽자 살아 있던 아들에게 영지가 넘어갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.father_died.r06life.rival",
+      "template": "marriage.father_died",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.father_died.r06life.rival",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.inheritanceRouteAtFatherDeath",
+            "op": "eq",
+            "value": "rival"
+          }
+        ],
+        "headline": "이웃 영주가 죽자 새 유언에 적힌 경쟁자에게 영지가 넘어갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.father_died.r06life.house",
+      "template": "marriage.father_died",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.father_died.r06life.house",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.inheritanceRouteAtFatherDeath",
+            "op": "eq",
+            "value": "lord_house"
+          }
+        ],
+        "headline": "이웃 영주가 죽자 혼인에서 비롯한 상속 청구가 인정되어 우리 가문이 영지를 물려받았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.lost.r06life.debt",
+      "template": "marriage.lost",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.lost.r06life.debt",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.deferredDebtAtInheritanceLoss",
+            "op": "eq",
+            "value": "positive"
+          }
+        ],
+        "headline": "영지가 이웃 영주의 아들에게 가면서 상속 뒤 빚을 떠맡기로 한 약정도 풀렸다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt",
+      "template": "marriage.lost",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.lost.r06life.no_debt",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.deferredDebtAtInheritanceLoss",
+            "op": "eq",
+            "value": "absent"
+          }
+        ],
+        "headline": "영지는 이웃 영주의 아들에게 갔다. 이 혼인에는 상속 뒤 떠맡을 빚이 정해져 있지 않았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.contested.r06life.explicit",
+      "template": "marriage.contested",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.contested.r06life.explicit",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.willAllowedRoute",
+            "op": "eq",
+            "value": "explicit_let_stand"
+          }
+        ],
+        "headline": "새 유언을 그대로 두겠다고 답한 뒤, 이웃 영주가 죽자 그의 조카가 영지를 차지했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "marriage.contested.r06life.deadline",
+      "template": "marriage.contested",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "sourceSha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "sourceEntry": {
+        "id": "marriage.contested.r06life.deadline",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.willAllowedRoute",
+            "op": "eq",
+            "value": "unanswered_deadline"
+          }
+        ],
+        "headline": "유언 변경에 답하지 않아 기한을 넘겼고, 이웃 영주가 죽자 그의 조카가 영지를 차지했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring",
+      "template": "war.messenger",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "war.messenger.r06wp.no_ring",
+        "when": {
+          "field": "context.ringAtMessenger",
+          "op": "eq",
+          "value": "no_ring"
+        },
+        "headline": "둘레 방벽이 없는 도시에 국왕의 전령이 전쟁 소식을 가져왔다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished",
+      "template": "war.messenger",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "war.messenger.r06wp.unfinished",
+        "when": {
+          "field": "context.ringAtMessenger",
+          "op": "eq",
+          "value": "unfinished"
+        },
+        "headline": "둘레 방벽 공사가 끝나지 않은 때에 국왕의 전령이 왔다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "war.messenger.r06wp.complete",
+      "template": "war.messenger",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "war.messenger.r06wp.complete",
+        "when": {
+          "field": "context.ringAtMessenger",
+          "op": "eq",
+          "value": "complete"
+        },
+        "headline": "둘레 방벽이 완성된 도시에 국왕의 전령이 전쟁 소식을 가져왔다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring",
+      "template": "war.beacon",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "war.beacon.r06wp.no_ring",
+        "when": {
+          "field": "context.ringAtBeacon",
+          "op": "eq",
+          "value": "no_ring"
+        },
+        "headline": "해안의 봉화가 올랐지만 도시에는 둘레 방벽이 없었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished",
+      "template": "war.beacon",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "war.beacon.r06wp.unfinished",
+        "when": {
+          "field": "context.ringAtBeacon",
+          "op": "eq",
+          "value": "unfinished"
+        },
+        "headline": "해안의 봉화가 오를 때에도 둘레 방벽은 아직 미완성이었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "war.beacon.r06wp.complete",
+      "template": "war.beacon",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "war.beacon.r06wp.complete",
+        "when": {
+          "field": "context.ringAtBeacon",
+          "op": "eq",
+          "value": "complete"
+        },
+        "headline": "둘레 방벽이 완성된 때에 해안의 봉화가 올랐다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "war.licence.r06wp.no_stock",
+      "template": "war.licence",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "war.licence.r06wp.no_stock",
+        "when": {
+          "field": "context.granaryWheatAtLicence",
+          "op": "eq",
+          "value": "no_stock"
+        },
+        "headline": "왕실 조달 면허를 받았으나 그때 곡물창고에 든 밀은 없었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "war.licence.r06wp.stocked",
+      "template": "war.licence",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "war.licence.r06wp.stocked",
+        "when": {
+          "field": "context.granaryWheatAtLicence",
+          "op": "eq",
+          "value": "stocked"
+        },
+        "headline": "곡물창고에 밀이 남아 있는 때에 왕실 조달 면허를 받았다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival",
+      "template": "plague.rumour",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "plague.rumour.r06wp.no_arrival",
+        "when": {
+          "field": "context.arrivalAlongsideRumour",
+          "op": "eq",
+          "value": "no_arrival"
+        },
+        "headline": "항구의 열병 소문이 먼저 들어왔고, 도시의 역병 도착은 아직 기록되지 않았다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded",
+      "template": "plague.rumour",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "plague.rumour.r06wp.arrival_recorded",
+        "when": {
+          "field": "context.arrivalAlongsideRumour",
+          "op": "eq",
+          "value": "arrival_recorded"
+        },
+        "headline": "항구의 열병 소문과 도시의 역병 도착이 같은 때에 기록되었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour",
+      "template": "plague.arrived",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "plague.arrived.r06wp.prior_rumour",
+        "when": {
+          "field": "context.priorRumourAtArrival",
+          "op": "eq",
+          "value": "prior_rumour"
+        },
+        "headline": "앞서 열병 소문이 들어온 뒤, 역병이 도시에 도착했다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour",
+      "template": "plague.arrived",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "plague.arrived.r06wp.no_prior_rumour",
+        "when": {
+          "field": "context.priorRumourAtArrival",
+          "op": "eq",
+          "value": "no_prior_rumour"
+        },
+        "headline": "앞선 열병 소문 기록 없이 역병의 도시 도착이 기록되었다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "plague.second.r06wp.filled",
+      "template": "plague.second",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "plague.second.r06wp.filled",
+        "when": {
+          "field": "context.curacyAtSecondArrival",
+          "op": "eq",
+          "value": "filled"
+        },
+        "headline": "사제 자리를 채운 상태에서 두 번째 역병이 도착했다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "plague.second.r06wp.vacant",
+      "template": "plague.second",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "sourceSha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "sourceEntry": {
+        "id": "plague.second.r06wp.vacant",
+        "when": {
+          "field": "context.curacyAtSecondArrival",
+          "op": "eq",
+          "value": "vacant"
+        },
+        "headline": "사제 자리가 빈 상태에서 두 번째 역병이 도착했다.",
+        "retainFactLine": true,
+        "requiredSlots": [
+
+        ]
+      }
+    },
+    {
+      "id": "plague.new_graves.r06raw.one",
+      "template": "plague.new_graves",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "sourceSha256": "498b3c2d3741e7d9b671ec25ab8b1951588a9ed4af18fc586df4da234f850715",
+      "reviewPath": "records/current-param-review",
+      "reviewStatus": "reviewed_6_blocked_drafts_not_direct_merge",
+      "sourceEntry": {
+        "id": "plague.new_graves.r06raw.one",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.dead",
+            "op": "eq",
+            "value": 1
+          }
+        ],
+        "headline": "역병으로 숨진 한 사람이 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "plague.new_graves.r06raw.several",
+      "template": "plague.new_graves",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "sourceSha256": "498b3c2d3741e7d9b671ec25ab8b1951588a9ed4af18fc586df4da234f850715",
+      "reviewPath": "records/current-param-review",
+      "reviewStatus": "reviewed_6_blocked_drafts_not_direct_merge",
+      "sourceEntry": {
+        "id": "plague.new_graves.r06raw.several",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.dead",
+            "op": "gt",
+            "value": 1
+          }
+        ],
+        "headline": "역병으로 숨진 여러 사람이 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "plague.empty_streets.r06raw.one",
+      "template": "plague.empty_streets",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "sourceSha256": "498b3c2d3741e7d9b671ec25ab8b1951588a9ed4af18fc586df4da234f850715",
+      "reviewPath": "records/current-param-review",
+      "reviewStatus": "reviewed_6_blocked_drafts_not_direct_merge",
+      "sourceEntry": {
+        "id": "plague.empty_streets.r06raw.one",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.houses",
+            "op": "eq",
+            "value": 1
+          }
+        ],
+        "headline": "역병 기록에 빈집 한 채가 올랐다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "plague.empty_streets.r06raw.several",
+      "template": "plague.empty_streets",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "sourceSha256": "498b3c2d3741e7d9b671ec25ab8b1951588a9ed4af18fc586df4da234f850715",
+      "reviewPath": "records/current-param-review",
+      "reviewStatus": "reviewed_6_blocked_drafts_not_direct_merge",
+      "sourceEntry": {
+        "id": "plague.empty_streets.r06raw.several",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.houses",
+            "op": "gt",
+            "value": 1
+          }
+        ],
+        "headline": "역병 기록에 여러 채의 빈집이 올랐다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.mayor_demand.r06raw.unidentified",
+      "template": "legacy.mayor_demand",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "sourceSha256": "498b3c2d3741e7d9b671ec25ab8b1951588a9ed4af18fc586df4da234f850715",
+      "reviewPath": "records/current-param-review",
+      "reviewStatus": "reviewed_6_blocked_drafts_not_direct_merge",
+      "sourceEntry": {
+        "id": "legacy.mayor_demand.r06raw.unidentified",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.candidateId",
+            "op": "eq",
+            "value": ""
+          }
+        ],
+        "headline": "시장 후보를 특정하지 않은 선출권 요구가 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "id": "legacy.mayor_demand.r06raw.identified",
+      "template": "legacy.mayor_demand",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "sourceSha256": "498b3c2d3741e7d9b671ec25ab8b1951588a9ed4af18fc586df4da234f850715",
+      "reviewPath": "records/current-param-review",
+      "reviewStatus": "reviewed_6_blocked_drafts_not_direct_merge",
+      "sourceEntry": {
+        "id": "legacy.mayor_demand.r06raw.identified",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.candidateId",
+            "op": "neq",
+            "value": ""
+          }
+        ],
+        "headline": "시장 후보가 함께 적힌 선출권 요구가 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    }
+  ],
+  "neutralFallbackCount": 2,
+  "neutralFallbackProposals": [
+    {
+      "sourceField": "unknownCashOutFallback",
+      "text": "지출 목적 미확인 — 금고에서 {amountAbsExact} 나갔다.",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "sourceSha256": "9d7731e82e7ccbc79bb1fcb20a027419e36c42103177d88f37c729735a796c7f",
+      "status": "SEPARATE_ADAPTER_PROPOSAL_NOT_INSTALLED_NOT_COUNTED_AS_VARIANT"
+    },
+    {
+      "sourceField": "unknownCashInFallback",
+      "text": "수입 목적 미확인 — 금고에 {amountExact} 들어왔다.",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "sourceSha256": "9d7731e82e7ccbc79bb1fcb20a027419e36c42103177d88f37c729735a796c7f",
+      "status": "SEPARATE_ADAPTER_PROPOSAL_NOT_INSTALLED_NOT_COUNTED_AS_VARIANT"
+    }
+  ]
+}

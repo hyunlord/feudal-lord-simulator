@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "id": "original_migrated_counterexample",
+      "actual": "not_co_resident",
+      "expected": "not_co_resident"
+    },
+    {
+      "id": "current_mother",
+      "actual": "co_resident",
+      "expected": "co_resident"
+    },
+    {
+      "id": "subject_absent",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "subject_duplicate",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "parent_is_subject",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "parent_alive_string",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "parent_empty_home",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "parent_duplicate_people",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "nonarray_people",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "nonarray_past",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "nonsubject",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "missing_subject_alive",
+      "actual": null,
+      "expected": null
+    }
+  ],
+  "variantObjectsPreserved": 10,
+  "compositionHoldsByteIdentical": true,
+  "engineExecuted": false
+}

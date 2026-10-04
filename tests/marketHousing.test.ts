@@ -141,7 +141,9 @@ test("house diagnosis reports within outside and no-market access without mutati
   assert.equal(withinModel?.market.kind, "within");
   assert.equal(withinModel?.market.distance, 8);
   assert.equal(outsideModel?.market.kind, "outside");
-  assert.equal(outsideModel?.market.distance, 9);
+  // QA-033 (COPY-1r): measured by the rule's own ruler, the road — with the road cut the market is not reached at all.
+  assert.equal(outsideModel?.market.distance, Infinity);
+  assert.match(outsideModel?.market.label ?? "", /길로 닿지 않음 \/ 최대 40걸음/);
   assert.equal(missingModel?.market.kind, "no_market");
 });
 

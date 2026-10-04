@@ -1,0 +1,313 @@
+{
+  "formatVersion": "event-context-proposal-v1",
+  "status": "DRAFT_UNINSTALLED_AUTHOR_ONLY",
+  "baselineSha256": "ac1bde4a2c92381f8adaed3b3e5c6a4cd6dbe5745098639754bb6389919aba88",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "canonicalModified": false,
+  "engineChangesRequiredForUse": true,
+  "engineIntegrationRequiredToCompleteUserDraftTask": false,
+  "fields": [
+    {
+      "id": "departuresAtWageOpening",
+      "values": [
+        "none_recorded",
+        "departure_recorded"
+      ],
+      "templates": [
+        "reorg.wage_competition"
+      ],
+      "capture": "src/engine/reorganisation.ts:417-424",
+      "producer": "src/engine/history.ts:689-720",
+      "currentRecordStorage": "Context absent from existing record; snapshot proposed.",
+      "currentOtherStorage": "Mutable reorganisation/person state; never read current state to reconstruct a historical condition.",
+      "immutableReconstruction": "Unknown for older records unless exact immutable event-time capture verified; no nearest-record or present-person inference.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Only wageCompetitionTick undefined->defined at after.tick. Compare before/after wageLeavers counters, safe nonnegative integers (undefined before reorganisation means source default0 only when creation proved). delta0 -> none_recorded; delta>0 -> departure_recorded. Counter captures this wage mechanism, not all town departures; no claim poorest person chose destination."
+    },
+    {
+      "id": "headAtGuildFoundation",
+      "values": [
+        "assigned",
+        "unassigned"
+      ],
+      "templates": [
+        "reorg.guild_founded"
+      ],
+      "capture": "src/engine/reorganisation.ts:214-220,238-240",
+      "producer": "src/engine/history.ts:689-720",
+      "currentRecordStorage": "Context absent from existing record; snapshot proposed.",
+      "currentOtherStorage": "Mutable reorganisation/person state; never read current state to reconstruct a historical condition.",
+      "immutableReconstruction": "Unknown for older records unless exact immutable event-time capture verified; no nearest-record or present-person inference.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Only guild undefined->defined. after.guild.headId null -> unassigned; nonempty ID -> assigned only if exact selected ID exists uniquely in event-time persons.people. Current head at reading does not qualify. No class/occupation/blood relation inference; null proves no recorded appointee, not permanent headless guild."
+    },
+    {
+      "id": "guildAnswerAtDeparture",
+      "values": [
+        "refused",
+        "expired"
+      ],
+      "templates": [
+        "reorg.weavers_left"
+      ],
+      "capture": "src/engine/reorganisation.ts:189-211,469-476",
+      "producer": "src/engine/history.ts:689-720",
+      "currentRecordStorage": "Context absent from existing record; snapshot proposed.",
+      "currentOtherStorage": "Mutable reorganisation/person state; never read current state to reconstruct a historical condition.",
+      "immutableReconstruction": "Unknown for older records unless exact immutable event-time capture verified; no nearest-record or present-person inference.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Only actual weaverLeavers increase. Capture after.answers.guild_charter exact refuse or expired. Do not derive occupation from nearest weaver_house sorting; count is cumulative and not this departure delta. Existing factual line calls all departing households weavers and gives a destination not modeled by leave; block composition until neutral fact reviewed."
+    },
+    {
+      "id": "guildAtWarning",
+      "values": [
+        "founded",
+        "not_founded"
+      ],
+      "templates": [
+        "reorg.overlord_warning"
+      ],
+      "capture": "src/engine/reorganisation.ts:438-446",
+      "producer": "src/engine/history.ts:689-720",
+      "currentRecordStorage": "Context absent from existing record; snapshot proposed.",
+      "currentOtherStorage": "Mutable reorganisation/person state; never read current state to reconstruct a historical condition.",
+      "immutableReconstruction": "Unknown for older records unless exact immutable event-time capture verified; no nearest-record or present-person inference.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Only warningTick undefined->defined. after.guild exists foundedTick<=after.tick -> founded; absent -> not_founded. Invalid/future tick unknown. Condition documents coexistence only, not guild as sole warning cause; warning requires petition and influence threshold."
+    },
+    {
+      "id": "autonomyRouteAtRequest",
+      "values": [
+        "chased",
+        "guild_accepted",
+        "guild_not_accepted"
+      ],
+      "templates": [
+        "reorg.autonomy_request"
+      ],
+      "capture": "src/engine/reorganisation.ts:305-308,478-480",
+      "producer": "src/engine/history.ts:689-720",
+      "currentRecordStorage": "Context absent from existing record; snapshot proposed.",
+      "currentOtherStorage": "Mutable reorganisation/person state; never read current state to reconstruct a historical condition.",
+      "immutableReconstruction": "Unknown for older records unless exact immutable event-time capture verified; no nearest-record or present-person inference.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Capture actual autonomyDue branch at first autonomyTick. rebellion.outcome=chased with rebellion.tick<after.tick -> chased; else answers.guild_charter=accept -> guild_accepted; else -> guild_not_accepted. Require valid state and emission guard. Ordered first match; no cause inference beyond stored prior answer/event, no internal deadline historical story."
+    }
+  ],
+  "additions": [
+    {
+      "template": "reorg.wage_competition",
+      "variant": {
+        "id": "reorg.wage_competition.r06rg.none_recorded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.departuresAtWageOpening",
+            "op": "eq",
+            "value": "none_recorded"
+          }
+        ],
+        "headline": "이웃 장원의 임금 경쟁이 시작됐지만, 그 첫 시점의 임금 경쟁 이주 기록은 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.wage_competition",
+      "variant": {
+        "id": "reorg.wage_competition.r06rg.departure_recorded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.departuresAtWageOpening",
+            "op": "eq",
+            "value": "departure_recorded"
+          }
+        ],
+        "headline": "이웃 장원의 임금 경쟁이 시작된 때에, 이 경쟁으로 떠난 가구도 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.guild_founded",
+      "variant": {
+        "id": "reorg.guild_founded.r06rg.assigned",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.headAtGuildFoundation",
+            "op": "eq",
+            "value": "assigned"
+          }
+        ],
+        "headline": "대표를 정하며 직인 길드가 섰다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.guild_founded",
+      "variant": {
+        "id": "reorg.guild_founded.r06rg.unassigned",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.headAtGuildFoundation",
+            "op": "eq",
+            "value": "unassigned"
+          }
+        ],
+        "headline": "대표가 아직 지정되지 않은 채 직인 길드가 섰다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.weavers_left",
+      "variant": {
+        "id": "reorg.weavers_left.r06rg.refused",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guildAnswerAtDeparture",
+            "op": "eq",
+            "value": "refused"
+          }
+        ],
+        "headline": "길드 설립 청원을 거절한 뒤, 이주한 가구가 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.weavers_left",
+      "variant": {
+        "id": "reorg.weavers_left.r06rg.expired",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guildAnswerAtDeparture",
+            "op": "eq",
+            "value": "expired"
+          }
+        ],
+        "headline": "길드 설립 청원이 답 없이 기한을 넘긴 뒤, 이주한 가구가 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.overlord_warning",
+      "variant": {
+        "id": "reorg.overlord_warning.r06rg.founded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guildAtWarning",
+            "op": "eq",
+            "value": "founded"
+          }
+        ],
+        "headline": "직인 길드가 선 도시에 상위 영주의 경고가 전해졌다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.overlord_warning",
+      "variant": {
+        "id": "reorg.overlord_warning.r06rg.not_founded",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guildAtWarning",
+            "op": "eq",
+            "value": "not_founded"
+          }
+        ],
+        "headline": "직인 길드가 아직 서지 않은 때에 상위 영주의 경고가 전해졌다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.autonomy_request",
+      "variant": {
+        "id": "reorg.autonomy_request.r06rg.chased",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.autonomyRouteAtRequest",
+            "op": "eq",
+            "value": "chased"
+          }
+        ],
+        "headline": "인두세 징수원을 쫓아낸 일이 있은 뒤, 도시가 자치 특허를 요구했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.autonomy_request",
+      "variant": {
+        "id": "reorg.autonomy_request.r06rg.guild_accepted",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.autonomyRouteAtRequest",
+            "op": "eq",
+            "value": "guild_accepted"
+          }
+        ],
+        "headline": "길드 설립을 받아들인 도시에 자치 특허 청원이 올라왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.autonomy_request",
+      "variant": {
+        "id": "reorg.autonomy_request.r06rg.guild_not_accepted",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.autonomyRouteAtRequest",
+            "op": "eq",
+            "value": "guild_not_accepted"
+          }
+        ],
+        "headline": "길드 설립을 받아들이지 않은 상태에서 도시가 자치 특허를 요구했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    }
+  ],
+  "fallback": {
+    "rule": "unknown/missing/malformed/context provenance mismatch -> existing baseline only; never guess",
+    "legacyDefault": "Do not backfill inferred historical relationships or causes into old records.",
+    "nameRule": "Only IDs in snapshots; resolve names through existing historyParams(record,state) at reading time."
+  }
+}

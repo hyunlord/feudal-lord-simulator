@@ -1,0 +1,372 @@
+[
+  {
+    "id": "plague.new_graves.value0",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": 1
+    },
+    "expectedVariant": "plague.new_graves.r06raw.one"
+  },
+  {
+    "id": "plague.new_graves.value1",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": 2
+    },
+    "expectedVariant": "plague.new_graves.r06raw.several"
+  },
+  {
+    "id": "plague.new_graves.value2",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": 9007199254740991
+    },
+    "expectedVariant": "plague.new_graves.r06raw.several"
+  },
+  {
+    "id": "plague.new_graves.value3",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": 0
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.value4",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": -1
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.value5",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": 1.5
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.value6",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": 9007199254740992
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.value7",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": "1"
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.value8",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": null
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.value9",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": false
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.value10",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": [
+
+      ]
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.value11",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": {
+      }
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.value12",
+    "template": "plague.new_graves",
+    "params": {
+      "dead": 1.0
+    },
+    "expectedVariant": "plague.new_graves.r06raw.one"
+  },
+  {
+    "id": "plague.new_graves.missing0",
+    "template": "plague.new_graves",
+    "params": null,
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.missing1",
+    "template": "plague.new_graves",
+    "params": {
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.new_graves.missing2",
+    "template": "plague.new_graves",
+    "params": [
+
+    ],
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.value0",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": 1
+    },
+    "expectedVariant": "plague.empty_streets.r06raw.one"
+  },
+  {
+    "id": "plague.empty_streets.value1",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": 2
+    },
+    "expectedVariant": "plague.empty_streets.r06raw.several"
+  },
+  {
+    "id": "plague.empty_streets.value2",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": 9007199254740991
+    },
+    "expectedVariant": "plague.empty_streets.r06raw.several"
+  },
+  {
+    "id": "plague.empty_streets.value3",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": 0
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.value4",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": -1
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.value5",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": 1.5
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.value6",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": 9007199254740992
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.value7",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": "1"
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.value8",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": null
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.value9",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": false
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.value10",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": [
+
+      ]
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.value11",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": {
+      }
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.value12",
+    "template": "plague.empty_streets",
+    "params": {
+      "houses": 1.0
+    },
+    "expectedVariant": "plague.empty_streets.r06raw.one"
+  },
+  {
+    "id": "plague.empty_streets.missing0",
+    "template": "plague.empty_streets",
+    "params": null,
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.missing1",
+    "template": "plague.empty_streets",
+    "params": {
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "plague.empty_streets.missing2",
+    "template": "plague.empty_streets",
+    "params": [
+
+    ],
+    "expectedVariant": null
+  },
+  {
+    "id": "legacy.mayor_demand.value0",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": ""
+    },
+    "expectedVariant": "legacy.mayor_demand.r06raw.unidentified"
+  },
+  {
+    "id": "legacy.mayor_demand.value1",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": "p17"
+    },
+    "expectedVariant": "legacy.mayor_demand.r06raw.identified"
+  },
+  {
+    "id": "legacy.mayor_demand.value2",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": "missing-person-id"
+    },
+    "expectedVariant": "legacy.mayor_demand.r06raw.identified"
+  },
+  {
+    "id": "legacy.mayor_demand.value3",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": " "
+    },
+    "expectedVariant": "legacy.mayor_demand.r06raw.identified"
+  },
+  {
+    "id": "legacy.mayor_demand.value4",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": null
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "legacy.mayor_demand.value5",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": 0
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "legacy.mayor_demand.value6",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": 1
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "legacy.mayor_demand.value7",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": false
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "legacy.mayor_demand.value8",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": [
+
+      ]
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "legacy.mayor_demand.value9",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": {
+      }
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "legacy.mayor_demand.value10",
+    "template": "legacy.mayor_demand",
+    "params": {
+      "candidateId": [
+        "p17"
+      ]
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "legacy.mayor_demand.missing0",
+    "template": "legacy.mayor_demand",
+    "params": null,
+    "expectedVariant": null
+  },
+  {
+    "id": "legacy.mayor_demand.missing1",
+    "template": "legacy.mayor_demand",
+    "params": {
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "legacy.mayor_demand.missing2",
+    "template": "legacy.mayor_demand",
+    "params": [
+
+    ],
+    "expectedVariant": null
+  }
+]

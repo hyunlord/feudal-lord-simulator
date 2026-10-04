@@ -1,0 +1,52 @@
+{
+  "status": "AUTHOR_ONLY_PROPOSED_GUARDED_CANDIDATES",
+  "templates": 3,
+  "variants": 6,
+  "baselineCount": 650,
+  "hypotheticalMergedCount": 656,
+  "baselineUnchanged": true,
+  "canonicalModified": false,
+  "fixtureCount": 46,
+  "fallbackCount": 34,
+  "nonJsonNonfiniteCases": 6,
+  "proposedSchemaPassed": true,
+  "currentSchemaCompatibility": [
+    {
+      "id": "plague.new_graves.r06raw.one",
+      "currentSchemaShapeAccepted": true,
+      "inputGuardProvidedByCurrentSchema": false
+    },
+    {
+      "id": "plague.new_graves.r06raw.several",
+      "currentSchemaShapeAccepted": true,
+      "inputGuardProvidedByCurrentSchema": false
+    },
+    {
+      "id": "plague.empty_streets.r06raw.one",
+      "currentSchemaShapeAccepted": true,
+      "inputGuardProvidedByCurrentSchema": false
+    },
+    {
+      "id": "plague.empty_streets.r06raw.several",
+      "currentSchemaShapeAccepted": true,
+      "inputGuardProvidedByCurrentSchema": false
+    },
+    {
+      "id": "legacy.mayor_demand.r06raw.unidentified",
+      "currentSchemaShapeAccepted": true,
+      "inputGuardProvidedByCurrentSchema": false
+    },
+    {
+      "id": "legacy.mayor_demand.r06raw.identified",
+      "currentSchemaShapeAccepted": false,
+      "inputGuardProvidedByCurrentSchema": false
+    }
+  ],
+  "installBlocks": 6,
+  "operatorExtension": "neq after string guard only",
+  "sourceFiles": 6,
+  "sourceSpans": 12,
+  "runtimeVerified": false,
+  "fix12Executed": false,
+  "independentReview": "pending"
+}

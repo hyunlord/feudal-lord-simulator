@@ -49,12 +49,12 @@ test("CHAPTER_COPY.goals.resettled is defined for the chapter 3 recovery goal", 
   assert.ok(CHAPTER_COPY.goals.resettled.length > 0);
 });
 
-test("CHAPTER_COPY.resettledProgress shows the current permille as a percentage out of 70 %", () => {
+test("CHAPTER_COPY.resettledProgress shows the current permille as a percentage out of 70% (COPY-1r: no space)", () => {
   const label = CHAPTER_COPY.resettledProgress(350);
   assert.match(label, /35/);
   assert.match(label, /70/);
   const full = CHAPTER_COPY.resettledProgress(700);
-  assert.match(full, /70 %/);
+  assert.match(full, /70%/);
 });
 
 // ─── Wage ledger model ────────────────────────────────────────────────────────

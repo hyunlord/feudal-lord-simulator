@@ -1,0 +1,62 @@
+[
+  {
+    "id": "endingGuardianKind",
+    "templates": [
+      "lord.wardship_ended"
+    ],
+    "values": [
+      "named_guardian",
+      "overlord"
+    ],
+    "capture": "src/engine/lordship.ts:56-72,170-181; src/engine/history.ts:586-600",
+    "captureRule": "At successful ending, bind SAME ward lord ID before and after; verify event-year minus birthYear is finite safe integer >=21. Snapshot before.lordship.wardship.guardianId: nonempty string -> named_guardian; null -> overlord by engine convention; missing/invalid unknown. Do not infer mother/kin from role or current state.",
+    "provenance": "emission_snapshot",
+    "currentRecordStorage": "absent: proposed event-time context",
+    "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+  },
+  {
+    "id": "successorHouseholdAtEvent",
+    "templates": [
+      "faction.leader_succeeded"
+    ],
+    "values": [
+      "same_household",
+      "different_household"
+    ],
+    "capture": "src/engine/history.ts:285-294; src/engine/factions.ts:117-149,290-305",
+    "captureRule": "Match params predecessorId and leaderId to exact event identities. Require predecessor explicitly dead and successor explicitly alive. Snapshot predecessor householdId from before persons people/past and successor householdId after; both nonempty valid IDs. Equal -> same_household else different_household. No inference of blood kin, hereditary right, rivalry, or motive.",
+    "provenance": "emission_snapshot",
+    "currentRecordStorage": "absent: proposed event-time context",
+    "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+  },
+  {
+    "id": "oversightModeAtSuccession",
+    "templates": [
+      "stewardship.steward_died"
+    ],
+    "values": [
+      "direct",
+      "steward"
+    ],
+    "capture": "src/engine/stewardship.ts:137-158; src/engine/history.ts:924-940",
+    "captureRule": "Capture in per-estate oversight loop, retaining estate ID even though current history record lacks it. Require prior/current steward IDs equal record params, deceased explicitly dead, successor exists and alive=true in estates.people, prior.mode==after.mode. direct/steward only. Multiple estate matches without capture identity -> unknown. No current-state backfill or promises of loyal/competent successor.",
+    "provenance": "emission_snapshot",
+    "currentRecordStorage": "absent: proposed event-time context",
+    "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+  },
+  {
+    "id": "offMapPortfolioAtStart",
+    "templates": [
+      "stewardship.began"
+    ],
+    "values": [
+      "sole_estate",
+      "multiple_estates"
+    ],
+    "capture": "src/engine/stewardship.ts:51-54,117-134; src/engine/history.ts:924-935",
+    "captureRule": "At new oversight require after mode=direct, estate offMap=true and titleHolder=possessor=lord, appointed person exists alive=true. Count distinct after oversight estate IDs whose after estates are offMap and held in BOTH title/possession by lord, including this estate. One -> sole_estate, greater than one -> multiple_estates; zero/duplicate/invalid -> unknown. This describes concurrent oversight portfolio only, not lifetime first acquisition. Multiple additions share after snapshot; never invent ordering.",
+    "provenance": "emission_snapshot",
+    "currentRecordStorage": "absent: proposed event-time context",
+    "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "status": "PASS_SIX_CONTEXT_DRAFTS_WITH_CAPTURE_CONTRACT",
+  "draftsApproved": 6,
+  "typesCovered": [
+    "person.move_in",
+    "person.married",
+    "person.left_town"
+  ],
+  "factlineHolds": 0,
+  "captureSelection": 92,
+  "positiveCapture": 7,
+  "schemaNegative": 72,
+  "bindingNegative": 18,
+  "proposalNegative": 5,
+  "unknownFallback": 6,
+  "independentCases": 9,
+  "sourceFiles": 5,
+  "sourceSpans": 12,
+  "originalFilesUnchanged": 17,
+  "runtimeExecuted": false,
+  "actualCaptureAdapterImplemented": false,
+  "canonicalModified": false
+}

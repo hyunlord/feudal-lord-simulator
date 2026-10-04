@@ -1,0 +1,279 @@
+{
+  "status": "PASS_REVISED_DRAFT_17_CONDITIONAL_3_FACTLINE_BLOCKS",
+  "selectionFixtures": 166,
+  "schemaNegatives": 114,
+  "schemaGateRegressions": 52,
+  "original20Unchanged": true,
+  "original3FactLineBlocksUnchanged": true,
+  "fieldContractChangeOnly": "willAllowedRoute.captureRule death/identity guard expanded",
+  "deathGuardImplemented": false,
+  "deathGuardStatus": "DECLARATIVE_ADAPTER_CONTRACT_ONLY",
+  "sourceFiles": 8,
+  "sourceSpans": 14,
+  "baselinePath": "/tmp/astra-steward-r06-20261004/records/marriage-life-review/baseline650.ko.json",
+  "baselineSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "currentCanonicalSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "runtimeExecuted": false,
+  "regressionResults": [
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.widowed_lord.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord.widowed_lord.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son.son.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son.son.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.brother.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.brother.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.nephew.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.nephew.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.cousin.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin.cousin.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.widowed_lord.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord.widowed_lord.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_ill.r06life.son.son.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_ill.r06life.son.son.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.brother.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.brother.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.nephew.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.nephew.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.cousin.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin.cousin.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.widowed_lord.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord.widowed_lord.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son.son.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son.son.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.brother.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.brother.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.nephew.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.nephew.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.cousin.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin.cousin.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.will_change.r06life.open.open.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.will_change.r06life.open.open.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.will_change.r06life.absent.absent.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.will_change.r06life.absent.absent.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.paid_favour.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid.paid_favour.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised.support_promised.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised.support_promised.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_died.r06life.son.living_son.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_died.r06life.son.living_son.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_died.r06life.rival.rival.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_died.r06life.rival.rival.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_died.r06life.house.lord_house.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.father_died.r06life.house.lord_house.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.lost.r06life.debt.positive.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.lost.r06life.debt.positive.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt.absent.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt.absent.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.explicit_let_stand.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.contested.r06life.explicit.explicit_let_stand.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.contested.r06life.deadline.unanswered_deadline.unexpected_field",
+      "rejected": true,
+      "selected": null
+    },
+    {
+      "id": "marriage.contested.r06life.deadline.unanswered_deadline.unexpected_envelope",
+      "rejected": true,
+      "selected": null
+    }
+  ]
+}

@@ -1,0 +1,902 @@
+{
+  "schema_version": 1,
+  "round": "R08",
+  "status": "MIDROUND_NOT_FINAL",
+  "generated_at": "2026-10-04T10:48:33+09:00",
+  "scope": "기존 첫플레이 막힘10의 증거 추적. 제품 결함 상위10과 별개.",
+  "rows": [
+    {
+      "id": "FP01",
+      "rank": 1,
+      "title": "완료 목록 뒤 다음 목표",
+      "original_experience": "8–12분 장부·청지기를 돌고 완료 튜토리얼 아래 발전 조건을 찾음.",
+      "current_status": "inherited_unresolved",
+      "resolved": false,
+      "current_evidence": "R07 정상 타이틀 시작은 lord 모드를 전달하지 않음. R08 자연 신규 첫청원→다음 목표의 새 UI 증거 없음.",
+      "evidence": [
+        "/tmp/astra-steward-r07-20261004/records/natural-firstplay-r07/REPORT.md",
+        "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R06.md"
+      ],
+      "original_captures": [
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/09-next-goal-steward.jpg",
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/11-growth-requirements.jpg"
+      ],
+      "remaining_verification": "정상 Lord 시작부터 첫청원 뒤 현재 목적·다음 한 행동을 완료 목록 스크롤 없이 읽기. direction 잠금과 진입 경로를 먼저 확인.",
+      "owner": "렌더 LM-R3 진입 / LM-R1 목표, 엔진 연결",
+      "new_medium_or_higher_confirmed": false,
+      "current_screen_and_action_evidence": [
+
+      ],
+      "evidence_scope": "이 항목의 R08 새 UI 실행 없음. 원전 화면 및 승계 보고서/정적 연결 근거만 사용."
+    },
+    {
+      "id": "FP02",
+      "rank": 2,
+      "title": "창고 포화·목재 정체",
+      "original_experience": "목재238 정체 때 제재소는 운반 대기, 창고를 따로 눌러200/200 발견. 둘째 창고 후 증가 순서만 관측.",
+      "current_status": "ui_unresolved_transient_flow_verified",
+      "resolved": false,
+      "current_evidence": "R07 창고200/200·198/200+예약2, 제재소 통나무1/목재19와 대기 안내 확인. R08 200000–203840에 생산2주기 잠시 재개, 종점 다시 통나무1/목재19/progress0. 영구 교착 단정은 좁혀졌으나 UI·개입 해결은 미검증.",
+      "evidence": [
+        "/tmp/astra-steward-r07-20261004/records/storage-ui-review-r07/REPORT.md",
+        "/tmp/astra-steward-r08-20261004/records/storage-flow-review/REPORT.md",
+        "/tmp/astra-steward-r08-20261004/records/storage-surface-boundary/REPORT.md"
+      ],
+      "original_captures": [
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/19-wood-stalls-at-238.jpg",
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/21-full-warehouse.jpg"
+      ],
+      "remaining_verification": "제재소에서 관련 창고·실제 원인·가능한 조건 변경을 스스로 찾아 실행하고 결과 확인. 받는 품목 목록을 설정 버튼으로 오인하지 않기.",
+      "owner": "렌더 LM-R1 공급망 안내 / 엔진 운반·생산",
+      "new_medium_or_higher_confirmed": false,
+      "current_screen_and_action_evidence": [
+        "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0015-storehouse-41-40-0-top.jpg",
+        "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0015-storehouse-41-40-0-top.json",
+        "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0025-construction-site-000039-top.jpg",
+        "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0025-construction-site-000039-top.json",
+        "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0038-construction-site-000050-scroll-2.jpg",
+        "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0038-construction-site-000050-scroll-2.json",
+        "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/actions.jsonl"
+      ],
+      "evidence_scope": "기존 독립검수 인용. 이 추적 작성자가 화면을 새로 판독하거나 실행하지 않음."
+    },
+    {
+      "id": "FP03",
+      "rank": 3,
+      "title": "성벽의 시장 운반 차단",
+      "original_experience": "길가 시장 배치 뒤 성벽이 경로 차단 안내. 성문 연결 방법을 못 찾음.",
+      "current_status": "inherited_not_retested",
+      "resolved": false,
+      "current_evidence": "R07/R08 해당 UI의 새 재현 없음. 다른 운반 추적을 시장·성문 경로 검증으로 대체하지 않음.",
+      "evidence": [
+        "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R07.md",
+        "/tmp/astra-steward-r01-20261003/records/IDENTITY_AUDIT.md"
+      ],
+      "original_captures": [
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/37-market-blocked-by-wall.jpg"
+      ],
+      "remaining_verification": "동일 성벽 안팎 후보에서 승인 전 도달 불가·성문 경로 표시, 후보 비교와 실제 운반 성공을 각각 확인.",
+      "owner": "렌더 공공사업 후보·경로 안내 / 엔진 경로",
+      "new_medium_or_higher_confirmed": false,
+      "current_screen_and_action_evidence": [
+
+      ],
+      "evidence_scope": "이 항목의 R08 새 UI 실행 없음. 원전 화면 및 승계 보고서/정적 연결 근거만 사용."
+    },
+    {
+      "id": "FP04",
+      "rank": 4,
+      "title": "목책 자재·시장 비축 대기",
+      "original_experience": "과거54칸·810목재와 긴 완공 예상, 시장60 모으기 어려워 수치 확인 반복.",
+      "current_status": "rule_partial_ui_unverified",
+      "resolved": false,
+      "current_evidence": "과거 FIX16의15→8/칸 규칙 개선과 R06 구간 완공 승계. R07 취소 화물 목재16·돌12 반환146검사 통과는 목책 대기 UI 이해의 증거가 아님. R08 새 해당 UI 증거 없음.",
+      "evidence": [
+        "/tmp/astra-steward-r01-20261003/records/IDENTITY_AUDIT.md",
+        "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R06.md",
+        "/tmp/astra-steward-r07-20261004/records/material-return-probe/REVIEW.md"
+      ],
+      "original_captures": [
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/12-wall-cost-nine-years.jpg",
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/26-market-competes-for-wood.jpg"
+      ],
+      "remaining_verification": "현재 비용/투입/대기 및 시장 보호 비축을 일반 플레이에서 읽고 우선순위 변경 결과 확인. 과거810을 현 비용으로 인용 금지.",
+      "owner": "렌더 비용·공사 안내 / 엔진 비축·공사",
+      "new_medium_or_higher_confirmed": false,
+      "current_screen_and_action_evidence": [
+
+      ],
+      "evidence_scope": "이 항목의 R08 새 UI 실행 없음. 원전 화면 및 승계 보고서/정적 연결 근거만 사용."
+    },
+    {
+      "id": "FP05",
+      "rank": 5,
+      "title": "식량 일수와 가구 굶주림",
+      "original_experience": "총량·분배를 구별하지 못하고 식량 일수가 충분해 보일 때도 굶주림 사망 기록을 봄.",
+      "current_status": "ui_unresolved_cause_HOLD",
+      "resolved": false,
+      "current_evidence": "R07 HUD191일·대상000023·빵 없음/배급 대기 확인,6명 전원 펼침 실패 보존. R08 기록 입력4개의 원 선택함수 반환만 확인; 공식 내부 prefix·장기 미배급 원인은 HOLD.",
+      "evidence": [
+        "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/review/REPORT.md",
+        "/tmp/astra-steward-r08-20261004/records/food-choice-review/REPORT.md",
+        "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R07.md"
+      ],
+      "original_captures": [
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/17-house-hunger-versus-bread.jpg"
+      ],
+      "remaining_verification": "위험 가구를 사전 좌표 없이 찾고6명/이유를 읽은 뒤 실제 가능한 대응으로 연결. 시간별 선택·배달·식사로 장기 원인 분리. 빈집 이후를 계속된 주민 배급 대기로 세지 않기.",
+      "owner": "렌더 식량 위험·이동 / 엔진 배급 인과",
+      "new_medium_or_higher_confirmed": false,
+      "current_screen_and_action_evidence": [
+        "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0002-paused-hud.jpg",
+        "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0002-paused-hud.json",
+        "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0012-target-selection-top.jpg",
+        "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0012-target-selection-top.json",
+        "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0014-actual-card-advice-scroll-0.jpg",
+        "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0014-actual-card-advice-scroll-0.json",
+        "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/actions.jsonl"
+      ],
+      "evidence_scope": "기존 독립검수 인용. 이 추적 작성자가 화면을 새로 판독하거나 실행하지 않음."
+    },
+    {
+      "id": "FP06",
+      "rank": 6,
+      "title": "첫 수동 배치 조건 학습",
+      "original_experience": "밭·헛간·벌목소의 길/구역/숲 조건을 따로 익히며 시행착오.",
+      "current_status": "lord_entry_unresolved",
+      "resolved": false,
+      "current_evidence": "R05 집놓기 CTA와 R07 정상 진입 공백 승계. R08 fixture·봇의 성공은 자연 영주 튜토리얼 증거가 아님.",
+      "evidence": [
+        "/tmp/astra-steward-r07-20261004/records/natural-firstplay-r07/REPORT.md",
+        "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R07.md",
+        "/tmp/astra-steward-r01-20261003/records/IDENTITY_AUDIT.md"
+      ],
+      "original_captures": [
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/03-barn-needs-road.jpg"
+      ],
+      "remaining_verification": "정상 영주 첫 청원→도시 반응→왜 여기 영수증 진행, 건물 직접 배치 요구 없음. 샌드박스 수동 학습은 별도 구분.",
+      "owner": "렌더 LM-R3 튜토리얼 / LM-R1 영수증",
+      "new_medium_or_higher_confirmed": false,
+      "current_screen_and_action_evidence": [
+
+      ],
+      "evidence_scope": "이 항목의 R08 새 UI 실행 없음. 원전 화면 및 승계 보고서/정적 연결 근거만 사용."
+    },
+    {
+      "id": "FP07",
+      "rank": 7,
+      "title": "계절 결산이 학습 중단",
+      "original_experience": "0–15분 조작 중 결산 반복. 자동 표시를 끈 뒤 편해짐.",
+      "current_status": "bounded_toggle_pass_whole_experience_unverified",
+      "resolved": false,
+      "current_evidence": "R07 42화면/DOM에서 정지→계속,OFF→같은 프로필 reload→다음 계절 생략,ON→재표시 확인. R08 새 해당 UI 없음. 토글 경로 통과는 초기 학습 중 반복 중단 해소와 다름.",
+      "evidence": [
+        "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/review/REPORT.md",
+        "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R07.md"
+      ],
+      "original_captures": [
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/06-ledger-interrupts-tutorial.jpg"
+      ],
+      "remaining_verification": "실제 첫 작업 중 알림·유예 정책과 중요 사건 정지 구별. 브라우저 프로세스 재시작/다른 프로필·저장 이식 설정은 별도 미검증.",
+      "owner": "렌더 시간 제어·결산",
+      "new_medium_or_higher_confirmed": false,
+      "current_screen_and_action_evidence": [
+        "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0008-first-season-card-stability.jpg",
+        "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0008-first-season-card-stability.json",
+        "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0030-off-season-passed-without-card.jpg",
+        "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0030-off-season-passed-without-card.json",
+        "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0042-reenabled-season-card-stability.jpg",
+        "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0042-reenabled-season-card-stability.json",
+        "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/actions.jsonl"
+      ],
+      "evidence_scope": "기존 독립검수 인용. 이 추적 작성자가 화면을 새로 판독하거나 실행하지 않음."
+    },
+    {
+      "id": "FP08",
+      "rank": 8,
+      "title": "화재 뒤 회복 행동 발견 실패",
+      "original_experience": "불탄 집에서 재건이 수동인지 자동인지 모르고 회복 조건·행동 관계를 못 읽음.",
+      "current_status": "existing_guidance_gap_scope_expansion",
+      "resolved": false,
+      "current_evidence": "R07 자연명령 재생에서9400발화→9460소실→9516자동재건→9576완료.4개 fixture UI120화면,소실 저장완료 별도재검수. 재건중·완료후에도 시작 조언 유지: 원래 자동 추진·조건 안내 공백의 단계 확장. R08 해결 증거 없음.",
+      "evidence": [
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-review-r07b/REPORT.md",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-save-review-r07c/REPORT.md",
+        "/tmp/astra-steward-r01-20261003/records/IDENTITY_AUDIT.md"
+      ],
+      "original_captures": [
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/16-fire-recovery-advice.jpg",
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/18-no-rebuild-found.jpg"
+      ],
+      "remaining_verification": "소실/진행/완료별 자동 추진 상태·재료·승인·기간·가능 행동을 읽고 자연 복구 흐름 확인. r07b 저장 관측 실패는 도구 타이밍 한계로 보존, 새 제품 저장 결함으로 세지 않음.",
+      "owner": "렌더 사건·건물 조언 / 엔진 재건 상태 계약",
+      "new_medium_or_higher_confirmed": false,
+      "current_screen_and_action_evidence": [
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/burnt-house/0014-event-full-advice.jpg",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/burnt-house/0014-event-full-advice.json",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/burnt-house/0021-target-top.jpg",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/burnt-house/0021-target-top.json",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/burnt-house/actions.jsonl",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/automatic-rebuild-site/0014-event-full-advice.jpg",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/automatic-rebuild-site/0014-event-full-advice.json",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/automatic-rebuild-site/actions.jsonl",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/rebuild-completed/0014-event-full-advice.jpg",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/rebuild-completed/0014-event-full-advice.json",
+        "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/rebuild-completed/actions.jsonl"
+      ],
+      "evidence_scope": "기존 독립검수 인용. 이 추적 작성자가 화면을 새로 판독하거나 실행하지 않음."
+    },
+    {
+      "id": "FP09",
+      "rank": 9,
+      "title": "목책 직접 그리기 조작 기준",
+      "original_experience": "긋기 진입 뒤 확정·취소 방법을 못 찾고 저장·새로고침 후 추천 초안으로 진행.",
+      "current_status": "inherited_not_retested",
+      "resolved": false,
+      "current_evidence": "R07/R08 새 해당 UI 없음. 과거 관측은 기능 자체의 불능 확정이 아님.",
+      "evidence": [
+        "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R07.md",
+        "/tmp/astra-steward-r01-20261003/records/IDENTITY_AUDIT.md"
+      ],
+      "original_captures": [
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/22-wall-mode-no-instructions.jpg"
+      ],
+      "remaining_verification": "영주 공공사업 후보 선택·확정·취소, 수동 모드 추천/취소/Esc 복귀를 실제 화면에서 분리 확인.",
+      "owner": "렌더 방어·공공사업 조작",
+      "new_medium_or_higher_confirmed": false,
+      "current_screen_and_action_evidence": [
+
+      ],
+      "evidence_scope": "이 항목의 R08 새 UI 실행 없음. 원전 화면 및 승계 보고서/정적 연결 근거만 사용."
+    },
+    {
+      "id": "FP10",
+      "rank": 10,
+      "title": "장 종료와 도시 목표 혼동",
+      "original_experience": "L4 네 곳 미달인데1322여름1장 종료. 역사 진행과 도시 발전의 종료 기준을 혼동.",
+      "current_status": "inherited_not_retested",
+      "resolved": false,
+      "current_evidence": "R07/R08 자연 장 종료→도시 목표→다음 영주 행동의 새 UI 확인 없음. 장기 봇150년 또는1325 fixture가 이 경험을 대신하지 않음.",
+      "evidence": [
+        "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R07.md",
+        "/tmp/astra-steward-r01-20261003/records/IDENTITY_AUDIT.md"
+      ],
+      "original_captures": [
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/35-l4-next-requirement.jpg",
+        "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/40-chapter-one-ending-screen.jpg"
+      ],
+      "remaining_verification": "현재 장 흐름과 별개 도시 발전 목표를 화면에서 구별하고 종료 전후 다음 행동 확인.20년 slice와150년 완주 구분.",
+      "owner": "렌더 장·도시 목표 / 엔진 진행 계약",
+      "new_medium_or_higher_confirmed": false,
+      "current_screen_and_action_evidence": [
+
+      ],
+      "evidence_scope": "이 항목의 R08 새 UI 실행 없음. 원전 화면 및 승계 보고서/정적 연결 근거만 사용."
+    }
+  ],
+  "resolved_count": 0,
+  "new_medium_or_higher_final_count": null,
+  "round_complete": false,
+  "evidence_method": "기존 보고서·파일 메타데이터만 읽음. 새 화면 육안 판독·엔진·브라우저·SSH 실행 없음.",
+  "input_pins": [
+    {
+      "key": "original",
+      "path": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/TOP10_FRICTION.md",
+      "sha256": "56b0b085086966c9c5c4066aa5706c92b2eec4a09cb2c4eda497270e57da3c0e",
+      "size": 9654
+    },
+    {
+      "key": "identity",
+      "path": "/tmp/astra-steward-r01-20261003/records/IDENTITY_AUDIT.md",
+      "sha256": "c5259e05dfc5ffca7e923e0337c34e277dca8360fe06ba660ed8f976da0788d6",
+      "size": 12520
+    },
+    {
+      "key": "r7",
+      "path": "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R07.md",
+      "sha256": "4ec398da28f016ac8e7997941c46a0cafd9f9069e4da9c3598b44522f4514c15",
+      "size": 3914
+    },
+    {
+      "key": "r6",
+      "path": "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R06.md",
+      "sha256": "369bf6a7c9a228bb39ccd0ee7396f505aa93e18654a984348a50291ebb8d9524",
+      "size": 2879
+    },
+    {
+      "key": "entry",
+      "path": "/tmp/astra-steward-r07-20261004/records/natural-firstplay-r07/REPORT.md",
+      "sha256": "a0a292a4a03512c08350f41897c6bee402ed9302befc6acd8beee5c335a94ae2",
+      "size": 3102
+    },
+    {
+      "key": "storage_ui",
+      "path": "/tmp/astra-steward-r07-20261004/records/storage-ui-review-r07/REPORT.md",
+      "sha256": "67980d253059de5b0bf1275e19ca8d1e4a48e1ddabdeaaea599ddf92e8abbb61",
+      "size": 6441
+    },
+    {
+      "key": "storage_flow",
+      "path": "/tmp/astra-steward-r08-20261004/records/storage-flow-review/REPORT.md",
+      "sha256": "2c356d39f8cc3cc00d0c815ad1c1d1e6ea4cb71a72bdf01e9d375c712c0b9425",
+      "size": 6307
+    },
+    {
+      "key": "storage_surface",
+      "path": "/tmp/astra-steward-r08-20261004/records/storage-surface-boundary/REPORT.md",
+      "sha256": "b249285ce8b4a5bc3f55917f6478885e6a71e9c934aedca2e32f98dc5626267c",
+      "size": 2876
+    },
+    {
+      "key": "food_ui",
+      "path": "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/review/REPORT.md",
+      "sha256": "7cf4e19ea2d9affeefe15bb0db9a95c4092ee37489516782473efbf1eb409aa0",
+      "size": 5794
+    },
+    {
+      "key": "food_choice",
+      "path": "/tmp/astra-steward-r08-20261004/records/food-choice-review/REPORT.md",
+      "sha256": "0ec579578e4603344bf2d22ce8860284ad4ba360a9bcc7191d620ad3759b61e0",
+      "size": 5217
+    },
+    {
+      "key": "season",
+      "path": "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/review/REPORT.md",
+      "sha256": "46b71b41722cf649393ea440a08608142f340a049e20d989dddad0905f237875",
+      "size": 6174
+    },
+    {
+      "key": "material",
+      "path": "/tmp/astra-steward-r07-20261004/records/material-return-probe/REVIEW.md",
+      "sha256": "30b16e0c5e696a5e10a564963233205699d07e1a13f6f04a0da04b95557d62ed",
+      "size": 1594
+    },
+    {
+      "key": "fire",
+      "path": "/tmp/astra-steward-r07-20261004/records/fire-ui-review-r07b/REPORT.md",
+      "sha256": "0774f2c14d3c93fff12b61e2149917947d60fc217799d2226d883481b7bd853a",
+      "size": 10585
+    },
+    {
+      "key": "fire_save",
+      "path": "/tmp/astra-steward-r07-20261004/records/fire-ui-save-review-r07c/REPORT.md",
+      "sha256": "0dfffff8eef7ffd14e7ae2e9e3f403b72b810678031eca2d5d2f1bc510fc564a",
+      "size": 4615
+    }
+  ],
+  "handoff_recommendations": [
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/TOP10_FRICTION.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/TOP10_FRICTION.md",
+      "sha256": "56b0b085086966c9c5c4066aa5706c92b2eec4a09cb2c4eda497270e57da3c0e",
+      "size": 9654,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r01-20261003/records/IDENTITY_AUDIT.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R01/records/IDENTITY_AUDIT.md",
+      "sha256": "c5259e05dfc5ffca7e923e0337c34e277dca8360fe06ba660ed8f976da0788d6",
+      "size": 12520,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R07.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/FIRST_PLAY_STATUS_R07.md",
+      "sha256": "4ec398da28f016ac8e7997941c46a0cafd9f9069e4da9c3598b44522f4514c15",
+      "size": 3914,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/FIRST_PLAY_STATUS_R06.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/FIRST_PLAY_STATUS_R06.md",
+      "sha256": "369bf6a7c9a228bb39ccd0ee7396f505aa93e18654a984348a50291ebb8d9524",
+      "size": 2879,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/natural-firstplay-r07/REPORT.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/natural-firstplay-r07/REPORT.md",
+      "sha256": "a0a292a4a03512c08350f41897c6bee402ed9302befc6acd8beee5c335a94ae2",
+      "size": 3102,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/storage-ui-review-r07/REPORT.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/storage-ui-review-r07/REPORT.md",
+      "sha256": "67980d253059de5b0bf1275e19ca8d1e4a48e1ddabdeaaea599ddf92e8abbb61",
+      "size": 6441,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/review/REPORT.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/food-ui-probe-r07c/review/REPORT.md",
+      "sha256": "7cf4e19ea2d9affeefe15bb0db9a95c4092ee37489516782473efbf1eb409aa0",
+      "size": 5794,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/review/REPORT.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/season-ui-probe-r07/review/REPORT.md",
+      "sha256": "46b71b41722cf649393ea440a08608142f340a049e20d989dddad0905f237875",
+      "size": 6174,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/material-return-probe/REVIEW.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/material-return-probe/REVIEW.md",
+      "sha256": "30b16e0c5e696a5e10a564963233205699d07e1a13f6f04a0da04b95557d62ed",
+      "size": 1594,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-review-r07b/REPORT.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-review-r07b/REPORT.md",
+      "sha256": "0774f2c14d3c93fff12b61e2149917947d60fc217799d2226d883481b7bd853a",
+      "size": 10585,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-save-review-r07c/REPORT.md",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-save-review-r07c/REPORT.md",
+      "sha256": "0dfffff8eef7ffd14e7ae2e9e3f403b72b810678031eca2d5d2f1bc510fc564a",
+      "size": 4615,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/09-next-goal-steward.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/09-next-goal-steward.jpg",
+      "sha256": "6671c238a7cc90f43c184096c434f26d8a6a2584dc7f31fa9bbcbfc0ef365eed",
+      "size": 222594,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/11-growth-requirements.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/11-growth-requirements.jpg",
+      "sha256": "b4e7c2358a95b65ff4fee238daaf737906403bfa7360c0b03d15cf43fd985b8f",
+      "size": 239654,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/19-wood-stalls-at-238.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/19-wood-stalls-at-238.jpg",
+      "sha256": "5f5c4de4ab36e977b99d99b75ba0d47be26ab3baa619c999c05c9b34be5add57",
+      "size": 282648,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/21-full-warehouse.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/21-full-warehouse.jpg",
+      "sha256": "e743d9eaea07ad9bc0f3006374b70afbeeb515db40dd072dd02bac24d06f2922",
+      "size": 270111,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/37-market-blocked-by-wall.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/37-market-blocked-by-wall.jpg",
+      "sha256": "7cc144ff8e7bb698a9f67b16b8943b454d35d7eaa9df78a7dd4d9482204e062d",
+      "size": 203121,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/12-wall-cost-nine-years.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/12-wall-cost-nine-years.jpg",
+      "sha256": "368e591e9ec4fe3e8fb87d4d0071eff070b400424f4cf673107998dee2d6dbc6",
+      "size": 236195,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/26-market-competes-for-wood.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/26-market-competes-for-wood.jpg",
+      "sha256": "bad9eabc8bed9d9bb043dfa28535e6fbcf9fae2ef9f9e9e49a620170fceebc53",
+      "size": 291029,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/17-house-hunger-versus-bread.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/17-house-hunger-versus-bread.jpg",
+      "sha256": "ab9940c3e2512f6463632fdd09e35737a3cfe5475b14cf63953600e7a72de061",
+      "size": 234475,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/03-barn-needs-road.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/03-barn-needs-road.jpg",
+      "sha256": "096c3f0aa77b11a5e6528f9b8cfb43aa76c685e74fa41f6b2cdaeaf41071d3bb",
+      "size": 261655,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/06-ledger-interrupts-tutorial.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/06-ledger-interrupts-tutorial.jpg",
+      "sha256": "4689e64475c5eed4a1e762e6c581d2b04ef5243816ec7f03d710dd44d3c50e22",
+      "size": 202801,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/16-fire-recovery-advice.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/16-fire-recovery-advice.jpg",
+      "sha256": "f3375e45571fa28d8f823876e4b1b9a4daaf61266ca4e933956a497528517298",
+      "size": 249032,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/18-no-rebuild-found.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/18-no-rebuild-found.jpg",
+      "sha256": "12735dbd0bb1e5ef00aebf4ac014e7d67d9a3f405ddb9b50359e2f7e2cebddc2",
+      "size": 236946,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/22-wall-mode-no-instructions.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/22-wall-mode-no-instructions.jpg",
+      "sha256": "d8bb4d1a1b378642dcfef3a7acd31c5398c56e56af8d086353e185eff96be228",
+      "size": 234479,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/35-l4-next-requirement.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/35-l4-next-requirement.jpg",
+      "sha256": "1f080014487b375b766928503d16196dbd75c3ca3126a17efe44129a7a8ad11f",
+      "size": 298870,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/Users/rexxa/fls-astra-steward/docs/qa/playtest-20261002/captures/40-chapter-one-ending-screen.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/firstplay-original/docs/qa/playtest-20261002/captures/40-chapter-one-ending-screen.jpg",
+      "sha256": "e88c056909edcdc1f9bab83c76f523f529752474e6b70baa862b482be8ae9aa3",
+      "size": 227121,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0015-storehouse-41-40-0-top.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/storage-ui-executed-r07/storage-1350/0015-storehouse-41-40-0-top.jpg",
+      "sha256": "e9caddf297efe5d518a7f7b2614566bb8e7f70c7fde28d68ab27875ad8602c1e",
+      "size": 178066,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0015-storehouse-41-40-0-top.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/storage-ui-executed-r07/storage-1350/0015-storehouse-41-40-0-top.json",
+      "sha256": "3bc9767da3a36e65989708e699f969df4833668e68e07ab8622bc2381f07c920",
+      "size": 19814,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0025-construction-site-000039-top.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/storage-ui-executed-r07/storage-1350/0025-construction-site-000039-top.jpg",
+      "sha256": "115a6d0a56a249702dfd7e976637b10f1e6567f5158ffe6968d6fb0b0ea89dfe",
+      "size": 160601,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0025-construction-site-000039-top.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/storage-ui-executed-r07/storage-1350/0025-construction-site-000039-top.json",
+      "sha256": "d2ea305d8bc26f4d468ea66b11036f8d3524f83cc4dc71334984e0207f936479",
+      "size": 19809,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0038-construction-site-000050-scroll-2.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/storage-ui-executed-r07/storage-1350/0038-construction-site-000050-scroll-2.jpg",
+      "sha256": "ce051a14099b520999765e5e31aa9c838566c07b4313cafc18433f0a558d20c0",
+      "size": 169726,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0038-construction-site-000050-scroll-2.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/storage-ui-executed-r07/storage-1350/0038-construction-site-000050-scroll-2.json",
+      "sha256": "68b1c59fe9a26919b39f27d4bd8bd74e90d5704b2e62f146202b2f97b6793142",
+      "size": 8357,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/actions.jsonl",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/storage-ui-executed-r07/storage-1350/actions.jsonl",
+      "sha256": "bef75c6e11d740ee98edfa9eb943112d1479a74eea314b697cb552b218ca49b1",
+      "size": 37910,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0002-paused-hud.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/food-ui-probe-r07c/executed/0002-paused-hud.jpg",
+      "sha256": "27a6388e36bc51eac6000f8c5bb14baf1e6b9e9f95144fa4443bd65be25d39e8",
+      "size": 172354,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0002-paused-hud.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/food-ui-probe-r07c/executed/0002-paused-hud.json",
+      "sha256": "4abd9197c0ad3ec84dd034c2a62a3c782d3e9f2338622367553f448a8446edf9",
+      "size": 5440,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0012-target-selection-top.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/food-ui-probe-r07c/executed/0012-target-selection-top.jpg",
+      "sha256": "b0ba4f77a689547a39b1889bb9f603e86ec91e3cc67c7fdd13b96ac906fdd52d",
+      "size": 170574,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0012-target-selection-top.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/food-ui-probe-r07c/executed/0012-target-selection-top.json",
+      "sha256": "d07d3b9e86529c495b64950b26639c80de3d6ae602952062ddefdbc0318ac7e2",
+      "size": 8767,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0014-actual-card-advice-scroll-0.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/food-ui-probe-r07c/executed/0014-actual-card-advice-scroll-0.jpg",
+      "sha256": "b079ed4a5f45ebeae2470dd351fa1e2b288e9bbeb8b25c93b5d241da50c74191",
+      "size": 166677,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/0014-actual-card-advice-scroll-0.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/food-ui-probe-r07c/executed/0014-actual-card-advice-scroll-0.json",
+      "sha256": "91521a51efd24b36afd8eb076ddf6057a38308a91a543e75aae5802a27aac5f9",
+      "size": 9124,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/food-ui-probe-r07c/executed/actions.jsonl",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/food-ui-probe-r07c/executed/actions.jsonl",
+      "sha256": "2f8eca305dd0bb3dccece9a8ec5c5bada702d495c3025ef4170ca9cd10ed5467",
+      "size": 12001,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0008-first-season-card-stability.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/season-ui-probe-r07/executed/0008-first-season-card-stability.jpg",
+      "sha256": "2b5aa3c58669f66fdaa685aa259c57b20f597c705e0ba720e0c1fd932b080e23",
+      "size": 161220,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0008-first-season-card-stability.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/season-ui-probe-r07/executed/0008-first-season-card-stability.json",
+      "sha256": "e833edd34bb121273926c4b1e03f2e9c71422a96a1681122f335317bfb5b3034",
+      "size": 6705,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0030-off-season-passed-without-card.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/season-ui-probe-r07/executed/0030-off-season-passed-without-card.jpg",
+      "sha256": "4b2a97778bfab1184eb0e072e6be6fd1d3e2466391c47b920010681ded1f995f",
+      "size": 184416,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0030-off-season-passed-without-card.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/season-ui-probe-r07/executed/0030-off-season-passed-without-card.json",
+      "sha256": "a15d695c19c67143e560e7ac22889a1b8b282fc70ed4345d49dc8893a1a6b71b",
+      "size": 6812,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0042-reenabled-season-card-stability.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/season-ui-probe-r07/executed/0042-reenabled-season-card-stability.jpg",
+      "sha256": "20a3c8eac4b5007e46868d1a414c4a4925ca114a1d6fdacac75fd76f3f7e151b",
+      "size": 166514,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/0042-reenabled-season-card-stability.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/season-ui-probe-r07/executed/0042-reenabled-season-card-stability.json",
+      "sha256": "d254c05a7ba1c9a858b6ac4d1c13d4af86f3c5f1152ab58af398dfe3f532988e",
+      "size": 6834,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/season-ui-probe-r07/executed/actions.jsonl",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/season-ui-probe-r07/executed/actions.jsonl",
+      "sha256": "70fdfe3da96820692b874e0d99bb6122213b86871d430c83682cdaeac6eeac2d",
+      "size": 44971,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/burnt-house/0014-event-full-advice.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/burnt-house/0014-event-full-advice.jpg",
+      "sha256": "d5e740f5dffe42a6677e900113ae45d0f08114890985f87409c6877e7a3375d1",
+      "size": 156029,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/burnt-house/0014-event-full-advice.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/burnt-house/0014-event-full-advice.json",
+      "sha256": "8837febb65ee5ba249b57e7d3cbfd938974c64a3556a6863c44cd41d294d7893",
+      "size": 6617,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/burnt-house/0021-target-top.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/burnt-house/0021-target-top.jpg",
+      "sha256": "a8f9fcac86fb35df47c7e21b01710afa6a4f5ed901e78d616ad4e243035b2b9d",
+      "size": 154358,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/burnt-house/0021-target-top.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/burnt-house/0021-target-top.json",
+      "sha256": "63878c7183af5e4d7c0784a7e2b26524412ab8dad9da65ee81bd8e2af64151c9",
+      "size": 10075,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/burnt-house/actions.jsonl",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/burnt-house/actions.jsonl",
+      "sha256": "7f4096653d1ed84f116e87facabe9a19832d56270f29a0d7a89008c45cb30dac",
+      "size": 21801,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/automatic-rebuild-site/0014-event-full-advice.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/automatic-rebuild-site/0014-event-full-advice.jpg",
+      "sha256": "f57f3a2d7118ff1a17637b6729b22e1c3fb60204f7fbe7ad05df4053928f4f33",
+      "size": 155360,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/automatic-rebuild-site/0014-event-full-advice.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/automatic-rebuild-site/0014-event-full-advice.json",
+      "sha256": "713bdb2f5234d0c1d190284165bf3423b29ae39eec9537bc88a9cf1010ecfa18",
+      "size": 6833,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/automatic-rebuild-site/actions.jsonl",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/automatic-rebuild-site/actions.jsonl",
+      "sha256": "b264e5078c532d1dda069a76467896488379623b52e57ef2f47edc2d331fe8d5",
+      "size": 21806,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/rebuild-completed/0014-event-full-advice.jpg",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/rebuild-completed/0014-event-full-advice.jpg",
+      "sha256": "e1d97590bcef6409686e70cf6f6169d87ae8b2a7e0ae004192a8e5da7bc58451",
+      "size": 154428,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/rebuild-completed/0014-event-full-advice.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/rebuild-completed/0014-event-full-advice.json",
+      "sha256": "0ba1bcfa9e8435aeb75ac8ee79963fbe303c5882450c4733710812f11095faf1",
+      "size": 6851,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/fire-ui-executed-r07b/rebuild-completed/actions.jsonl",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/fire-ui-executed-r07b/rebuild-completed/actions.jsonl",
+      "sha256": "5b5c0eac65801a3b24adb4a4b64bdda8f0a67f2f8d50fe0bc64122f582ac1df7",
+      "size": 21806,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    },
+    {
+      "source": "/tmp/astra-steward-r07-20261004/records/natural-firstplay-r07/SOURCE_EVIDENCE.json",
+      "destination": "/tmp/astra-steward-r08-20261004/inherited/R07/records/natural-firstplay-r07/SOURCE_EVIDENCE.json",
+      "sha256": "37366df43a46878009b7d8cb556b3350bebd0c1351fd9e55344504afbfeb3fc3",
+      "size": 16154,
+      "copied_by_this_audit": false,
+      "destination_exists": false,
+      "destination_matches": null
+    }
+  ],
+  "handoff_total_bytes": 6206813,
+  "handoff_limits": "최소 독해·대표 화면 인계안이며 전체 원자료/소스 closure 아님. 실행 재검증에는 원 검수 manifest와 전체 산출물 필요. 아직 복사하지 않음."
+}

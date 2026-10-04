@@ -1,0 +1,21 @@
+{
+  "status": "AUTHOR_DRAFT_VALIDATED_UNINSTALLED",
+  "requestedTemplates": 7,
+  "authoredTemplates": 6,
+  "variants": 14,
+  "notAuthored": [
+    "plague.priest_died"
+  ],
+  "positiveFixtures": 14,
+  "negativeContextSchema": 112,
+  "bindingMismatchFixtures": 28,
+  "negativeProposalSchema": 6,
+  "unknownFallbackCases": 14,
+  "sourceFiles": 5,
+  "sourceSpans": 12,
+  "actualCaptureImplemented": false,
+  "runtimeExecuted": false,
+  "naturalOccurrenceVerified": false,
+  "independentReview": false,
+  "schemaScope": "Strict schema for this frozen authored package and context; Ruby supports explicit used keyword subset, not a complete JSON Schema compliance implementation"
+}

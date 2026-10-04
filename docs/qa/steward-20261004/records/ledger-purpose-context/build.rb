@@ -1,0 +1,12 @@
+require 'json';require 'digest'
+d=__dir__;root='/Users/rexxa/fls-astra-steward';head='5fb1aebfe735592c1424c947e88388d4ffe21742'
+def object(p);{'type'=>'object','required'=>p.keys,'additionalProperties'=>false,'properties'=>p};end
+str={'type'=>'string','minLength'=>1};ref=object({'type'=>{'enum'=>['claim','actor']},'id'=>str});ref['required']=['type','id'];ref['properties']['detail']=str
+entry=object({'id'=>str,'tick'=>{'type'=>'integer','minimum'=>0,'maximum'=>9007199254740991},'account'=>{'const'=>'cash'},'category'=>{'enum'=>['promise_payment','royal_subsidy']},'amount'=>{'type'=>'integer','minimum'=>-9007199254740991,'maximum'=>-1},'sourceRefs'=>{'type'=>'array','minItems'=>2,'maxItems'=>2,'items'=>ref}})
+schema=object({'status'=>{'const'=>'known'},'sourceHead'=>{'const'=>head},'campaignId'=>str,'entry'=>entry});schema['$schema']='https://json-schema.org/draft/2020-12/schema'
+File.write(d+'/RAW.schema.json',JSON.pretty_generate(schema)+"\n")
+rows=[['promise_payment','kept','약속한 돈을 지급하여 금고에서 {amountAbsExact} 나갔다.'],['promise_payment','will_favour','유언 변경에 답하는 호의 지급으로 금고에서 {amountAbsExact} 나갔다.'],['royal_subsidy','tax','왕실 보조세로 금고에서 {amountAbsExact} 나갔다.'],['royal_subsidy','confirmation','자치 특허 확인금으로 금고에서 {amountAbsExact} 나갔다.']]
+File.write(d+'/PROPOSAL.json',JSON.pretty_generate({status:'DRAFT_UNINSTALLED',variants:rows.map{|cat,key,text|{id:cat+'.r06purpose.'+key,category:cat,purpose:key,text:text,requiredSlots:['amountAbsExact']}},unknownCashOutFallback:'지출 목적 미확인 — 금고에서 {amountAbsExact} 나갔다.',fallbackStatus:'separate neutral adapter proposal, not installed'})+"\n")
+spans={'src/engine/marriage.ts'=>[[28,30],[174,177],[212,225],[374,388]],'src/engine/legacy.ts'=>[[72,76],[150,156],[170,182]],'src/engine/estates.ts'=>[[180,189]],'src/ledger/ledger.ts'=>[[22,26],[116,138]],'src/engine/historyNames.ts'=>[[43,54]],'src/content/diplomacyConfig.ts'=>[[96,99]],'src/content/legacyConfig.ts'=>[[80,85]]}
+File.write(d+'/SOURCE_EVIDENCE.json',JSON.pretty_generate(spans.map{|path,ss|body=File.read(root+'/'+path);{path:path,sha256:Digest::SHA256.hexdigest(body),spans:ss.map{|a,b|{start:a,end:b,text:body.lines[(a-1)...b].join}}}})+"\n")
+base='/tmp/astra-steward-r06-20261004/chronicle/variants.ko.json';v=JSON.parse(File.read(base));File.write(d+'/BASELINE_REF.json',JSON.pretty_generate({path:base,sha256:Digest::SHA256.file(base).hexdigest,variants:(v['historyTemplates']+v['ledgerCategories']).sum{|x|x['variants'].size},adapterSha256:Digest::SHA256.file(File.dirname(base)+'/money-slot-adapter.mjs').hexdigest})+"\n")

@@ -1,0 +1,309 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "anyOf": [
+    {
+      "type": "object",
+      "required": [
+        "status",
+        "recordId",
+        "recordTick",
+        "template",
+        "subject",
+        "householdId",
+        "sourceHead",
+        "captureKind",
+        "fields"
+      ],
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "recordId": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "template": {
+          "const": "person.move_in"
+        },
+        "subject": {
+          "type": "object",
+          "required": [
+            "type",
+            "id"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "person",
+                "household"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "additionalProperties": false
+        },
+        "householdId": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "arrivalSize"
+          ],
+          "properties": {
+            "arrivalSize": {
+              "enum": [
+                "one",
+                "several"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "status",
+        "recordId",
+        "recordTick",
+        "template",
+        "subject",
+        "householdId",
+        "sourceHead",
+        "captureKind",
+        "fields"
+      ],
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "recordId": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "template": {
+          "const": "person.married"
+        },
+        "subject": {
+          "type": "object",
+          "required": [
+            "type",
+            "id"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "person",
+                "household"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "additionalProperties": false
+        },
+        "householdId": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "spouseHousehold"
+          ],
+          "properties": {
+            "spouseHousehold": {
+              "enum": [
+                "manor",
+                "town_house"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "status",
+        "recordId",
+        "recordTick",
+        "template",
+        "subject",
+        "householdId",
+        "sourceHead",
+        "captureKind",
+        "fields"
+      ],
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "recordId": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "template": {
+          "const": "person.left_town"
+        },
+        "subject": {
+          "type": "object",
+          "required": [
+            "type",
+            "id"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "person",
+                "household"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "additionalProperties": false
+        },
+        "householdId": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "householdPeopleAfter"
+          ],
+          "properties": {
+            "householdPeopleAfter": {
+              "enum": [
+                "present",
+                "absent"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": [
+        "status",
+        "recordId",
+        "recordTick",
+        "template",
+        "subject",
+        "fields"
+      ],
+      "properties": {
+        "status": {
+          "const": "unknown"
+        },
+        "recordId": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "template": {
+          "enum": [
+            "person.move_in",
+            "person.married",
+            "person.left_town"
+          ]
+        },
+        "subject": {
+          "type": "object",
+          "required": [
+            "type",
+            "id"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "person",
+                "household"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "additionalProperties": false
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+
+          ],
+          "properties": {
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

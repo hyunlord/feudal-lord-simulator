@@ -1,0 +1,17 @@
+{
+  "allVariantsRequireVerifiedCapture": true,
+  "compositionHolds": [
+    {
+      "variantId": "stewardship.began.r06office.sole_estate",
+      "reason": "Baseline says estate just entered lord hands, but emitter checks new oversight, not fresh transfer. Must review composed line; proposed neutral baseline: 영주가 이 영지를 직접 보고 청지기가 장부를 맡기 시작했다.",
+      "engineModified": false
+    },
+    {
+      "variantId": "stewardship.began.r06office.multiple_estates",
+      "reason": "Baseline says estate just entered lord hands, but emitter checks new oversight, not fresh transfer. Must review composed line; proposed neutral baseline: 영주가 이 영지를 직접 보고 청지기가 장부를 맡기 시작했다.",
+      "engineModified": false
+    }
+  ],
+  "inheritedRisk": "Dead or missing successor must produce unknown context; this proposal does not fix existing dead-steward runtime bugs or baseline claims.",
+  "runtimeInstalled": false
+}

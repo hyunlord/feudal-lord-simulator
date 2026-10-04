@@ -103,10 +103,12 @@ test("era ceremony banner uses distinct Stone Town copy without palisade aria te
 
   // Then
   assert.match(markup, /class="era-ceremony"/);
-  assert.match(markup, /aria-label="석조 도시 선포식"/);
-  assert.match(markup, /석조 도시 선포/);
-  assert.match(markup, /석재가 목책을 대신하고 집들이 돌빛으로 바뀝니다/);
-  assert.match(markup, /aria-label="석조 도시 선포식 닫기"/);
+  assert.match(markup, /aria-label="석벽 도시 선포식"/);
+  assert.match(markup, /석벽 도시 선포/);
+  // COPY-1r CA-015: a wall raised for the town's defence, not every house turned to stone.
+  assert.match(markup, /목책을 대신할 석벽을 세우고 도시의 방비를 다집니다/);
+  assert.doesNotMatch(markup, /돌빛으로 바뀝니다/);
+  assert.match(markup, /aria-label="석벽 도시 선포식 닫기"/);
   assert.doesNotMatch(markup, /Palisade age ceremony|Dismiss palisade ceremony|목책마을 선포/);
 });
 

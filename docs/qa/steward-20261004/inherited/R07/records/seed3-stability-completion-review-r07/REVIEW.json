@@ -1,0 +1,71 @@
+{
+  "verdict": "PASS_BOUNDED_COMPLETED_RUN",
+  "checks": {
+    "manifest": 22,
+    "official_copies": 19,
+    "source_pins": 9,
+    "annual_rows": 150,
+    "codec_logs": 38,
+    "saved_files": 9,
+    "annual_death_reconstruction_mismatches": [
+
+    ],
+    "final_population": 640,
+    "final_cash": 521469,
+    "final_deaths": {
+      "age": 1840,
+      "fire": 13,
+      "famine_year": 14,
+      "famine": 27,
+      "plague": 342
+    },
+    "recorded_death_total": 2236,
+    "exit": 0,
+    "command_seconds": 969.9,
+    "summary_seconds": 967,
+    "final_tick": 600000,
+    "findings": [
+
+    ],
+    "pending": [
+
+    ]
+  },
+  "runtime_execution": false,
+  "whole_world_mortality_claim": false,
+  "whole_repo_clean_claim": false,
+  "source_pins": [
+    {
+      "path": "/Users/rexxa/fls-astra-steward/.remote-runs/astra-steward-seed3-stability-r07-5fb1aeb/run.log",
+      "sha256": "ab6ef11d4100b2492acfd46a968d49273d84f7e2a519590250fd95bdd7ed7b14"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/.remote-runs/astra-steward-seed3-stability-r07-5fb1aeb/timing.env",
+      "sha256": "7331126cc846f71ca47fac54ed0345e48bce28f37d998ae1caf087c59e63331d"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/.remote-runs/astra-steward-seed3-stability-r07-5fb1aeb/exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/.remote-runs/astra-steward-seed3-stability-r07-5fb1aeb/unit",
+      "sha256": "8939cb69af15d576c772755ef3f1bfbbc156f939a1b9a0bc093c9fafa15e3e86"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/.remote-runs/astra-steward-seed3-stability-r07-5fb1aeb/changed-files.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/SEED3_STABILITY_RESULT.json",
+      "sha256": "6e7f54922400741597f6ea17f498b315a0739bd2617d6fc8dd3e307933731896"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/output/steward-probe-v3/probeMetrics.ts",
+      "sha256": "ebb18a685624f4b909f734ca0f425c64c78c9add709d8b51cb9bb7934014f244"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/src/ledger/ledger.ts",
+      "sha256": "ef2029b12fe25445410501cdd12147b233dca5b767650a7a6ba4a465326064b7"
+    }
+  ]
+}

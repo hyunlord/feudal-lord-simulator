@@ -1,0 +1,36 @@
+{
+  "status": "14_DRAFTS_CONDITIONAL_PASS_1_NOT_AUTHORED_BASELINE_RISK",
+  "authoredTemplates": 6,
+  "reviewedDrafts": 14,
+  "notAuthored": [
+    "plague.priest_died"
+  ],
+  "blockingDraftFindings": [
+
+  ],
+  "sourceFiles": 5,
+  "sourceSpans": 12,
+  "replay": {
+    "positive": 14,
+    "negativeContextSchema": 112,
+    "bindingMismatch": 28,
+    "unknownFallback": 14,
+    "negativeProposalSchema": 6
+  },
+  "additionalNegativeSchema": 70,
+  "retainsFactLine": true,
+  "noNamesOrSlotsAdded": true,
+  "originalManifestVerified": true,
+  "sourcePackageUnmodified": true,
+  "actualCaptureImplemented": false,
+  "runtimeExecuted": false,
+  "naturalOccurrenceVerified": false,
+  "immutableProvenanceVerified": false,
+  "installApproved": false,
+  "limits": [
+    "handmade enum fixtures do not test capture from before/after states",
+    "referenceVerified=true is not evidence of source integrity",
+    "filled curacy can be supplied by a lay clerk; headline must not become ordained priest present",
+    "historical original saves lack this context; no current-state backfill"
+  ]
+}

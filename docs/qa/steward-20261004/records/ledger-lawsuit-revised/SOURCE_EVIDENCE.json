@@ -1,0 +1,98 @@
+[
+  {
+    "path": "src/engine/estateSuits.ts",
+    "sha256": "da874ca02d90d42f610d3799964513198dcede76aeef0181abc98fbdc8c5ff80",
+    "spans": [
+      {
+        "start": 39,
+        "end": 45,
+        "text": "/** The lord pays a stage's cost from the treasury (a ledger line); another plaintiff's costs are its own. */\nfunction pay(state: GameState, suit: Suit, amount: number, stage: string): GameState | null {\n  if (amount <= 0 || suit.plaintiff !== LORD) return state;\n  if (treasuryBalance(state) < amount) return null;\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"lawsuit\", amount: -amount,\n    sourceRefs: [{ type: \"claim\", id: suit.claimId, detail: `${suit.id}:${stage}` }] }]);\n  return { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n"
+      },
+      {
+        "start": 70,
+        "end": 96,
+        "text": "\n/** ES-7: a claim filed as a suit against the title holder (the filing fee paid). Refused: the state unchanged. */\nexport function fileSuit(state: GameState, claimId: string): GameState {\n  if (fileSuitRefusal(state, claimId) !== null) return state;\n  const estates = estatesOf(state);\n  const claim = estates.claims.find(entry => entry.id === claimId)!;\n  const found = target(estates, claim.estateId, claim.pieceId)!;\n  const suit: Suit = { id: `suit-${estates.nextSuit}`, claimId, plaintiff: claim.claimant, defendant: titleOf(found), estateId: claim.estateId,\n    ...(claim.pieceId === undefined ? {} : { pieceId: claim.pieceId }), stage: \"filed\", stageSince: state.tick, patronSupport: 0, enforcements: 0, costs: SUIT_STAGE_COST.filed ?? 0 };\n  const paid = pay(state, suit, SUIT_STAGE_COST.filed ?? 0, \"filed\");\n  if (paid === null) return state;\n  return { ...paid, estates: { ...estates, suits: [...estates.suits, suit], nextSuit: estates.nextSuit + 1,\n    claims: estates.claims.map(entry => entry.id === claimId ? { ...entry, status: \"suing\" as const } : entry) } };\n}\n\n/** ES-7: evidence brought while the suit is filed or gathering it (once per kind; old possession counts its years). */\nexport function addSuitEvidence(state: GameState, suitId: string, kind: Evidence[\"kind\"]): GameState {\n  const estates = estatesOf(state);\n  const suit = estates.suits.find(entry => entry.id === suitId);\n  if (suit === undefined || (suit.stage !== \"filed\" && suit.stage !== \"evidence\")) return state;\n  const claim = estates.claims.find(entry => entry.id === suit.claimId)!;\n  if (claim.evidence.some(entry => entry.kind === kind)) return state;\n  const paid = pay(state, suit, EVIDENCE_COST[kind], `evidence:${kind}`);\n  if (paid === null) return state;\n  const withEvidence = withClaim(paid, { ...claim, evidence: [...claim.evidence, { kind, weight: EVIDENCE_WEIGHT[kind], tick: state.tick }] });\n  return withSuit(withEvidence, { ...suit, costs: suit.costs + EVIDENCE_COST[kind] });\n}\n"
+      },
+      {
+        "start": 144,
+        "end": 156,
+        "text": "  if (suit === undefined || suit.stage !== \"enforcing\") return state;\n  const cost = SUIT_STAGE_COST.enforcing ?? 0;\n  const paid = pay(state, suit, cost, `enforcing:${suit.enforcements + 1}`);\n  if (paid === null) return state;\n  const hold = suit.hold ?? 0;\n  const succeeded = ENFORCEMENT_BASE + suit.patronSupport > hold;\n  const attempted: Suit = { ...suit, enforcements: suit.enforcements + 1, costs: suit.costs + cost, enforced: succeeded,\n    hold: succeeded ? hold : Math.max(0, hold - ENFORCEMENT_WEAR), ...(succeeded ? { stage: \"closed\" as const, stageSince: state.tick } : {}) };\n  let next = withSuit(paid, attempted);\n  if (!succeeded) return next;\n  const estates = estatesOf(next);\n  next = { ...next, estates: { ...estates, estates: estates.estates.map(estate => {\n    if (estate.id !== suit.estateId) return estate;\n"
+      },
+      {
+        "start": 172,
+        "end": 190,
+        "text": "  if (state.estates === undefined || state.tick <= 0 || state.tick % SEASON !== 0) return state;\n  let next = state;\n  for (const suit of state.estates.suits) {\n    const stage = NEXT_STAGE[suit.stage];\n    if (stage === undefined || state.tick - suit.stageSince < SEASON) continue;\n    if (stage === \"judged\") { next = judge(next, suit); continue; }\n    const cost = SUIT_STAGE_COST[stage] ?? 0;\n    const paid = pay(next, suit, cost, stage);\n    if (paid === null) continue;\n    next = withSuit(paid, { ...suit, stage, stageSince: state.tick, costs: suit.costs + cost });\n  }\n  return next;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/estateConfig.ts",
+    "sha256": "5b925d82b0ffcc3ccc2b738c064ac5b834f147ef5232f56e5866fc1217038416",
+    "spans": [
+      {
+        "start": 81,
+        "end": 91,
+        "text": "export const EVIDENCE_WEIGHT: Readonly<Record<Evidence[\"kind\"], number>> = {\n  charter: 20, deed: 15, court_roll: 10, witnesses: 8, possession_years: 12,\n};\n/** ES-7: what bringing a piece of evidence costs (search, copying, the witnesses' journey), pennies. */\nexport const EVIDENCE_COST: Readonly<Record<Evidence[\"kind\"], number>> = {\n  charter: 40, deed: 30, court_roll: 20, witnesses: 24, possession_years: 0,\n};\n\n/** ES-7: the suit's stages in order, each one season at least, and what entering it costs the plaintiff. */\nexport const SUIT_STAGES: readonly SuitStage[] = [\"filed\", \"evidence\", \"patronage\", \"hearing\", \"judged\", \"enforcing\", \"closed\"];\nexport const SUIT_STAGE_COST: Readonly<Partial<Record<SuitStage, number>>> = { filed: 60, hearing: 120, enforcing: 80 };\n"
+      }
+    ]
+  },
+  {
+    "path": "src/ledger/ledger.types.ts",
+    "sha256": "1fa6380f8257594f2a2e88ecaae540832cd935c05c75aa578c9c46b60d44cb21",
+    "spans": [
+      {
+        "start": 53,
+        "end": 75,
+        "text": "export interface LedgerEntry {\n  /** `ledger-000001`, from `Ledger.nextEntryOrdinal`. */\n  readonly id: string;\n  readonly tick: number;\n  readonly account: LedgerAccount;\n  readonly category: LedgerCategory;\n  /** Pennies; income positive, spending negative. */\n  readonly amount: number;\n  readonly sourceRefs: LedgerSources;\n  /** `restricted` only: which fund. */\n  readonly fundId?: string;\n  /** `in_kind` only: which resource is owed or held. */\n  readonly resource?: string;\n}\n\n/** Entries of older periods folded to per-category sums (spec L-4). `periodEnd` is exclusive. */\nexport interface LedgerRollup {\n  readonly periodStart: number;\n  readonly periodEnd: number;\n  readonly account: LedgerAccount;\n  readonly byCategory: Readonly<Partial<Record<LedgerCategory, number>>>;\n}\n\n"
+      }
+    ]
+  },
+  {
+    "path": "src/ledger/ledger.ts",
+    "sha256": "ef2029b12fe25445410501cdd12147b233dca5b767650a7a6ba4a465326064b7",
+    "spans": [
+      {
+        "start": 85,
+        "end": 98,
+        "text": "    }\n    const periodStart = ledgerPeriodStart(entry.tick);\n    const key = `${periodStart}:${entry.account}`;\n    const target = rollups.get(key) ?? { periodStart, periodEnd: periodStart + LEDGER_PERIOD_TICKS, account: entry.account, byCategory: {} };\n    target.byCategory[entry.category] = (target.byCategory[entry.category] ?? 0) + entry.amount;\n    rollups.set(key, target);\n  }\n  const archiveBefore = ledgerPeriodStart(tick) - LEDGER_ROLLUP_PERIODS * LEDGER_PERIOD_TICKS;\n  const ordered = [...rollups.values()].sort((left, right) => left.periodStart - right.periodStart || left.account.localeCompare(right.account));\n  const archived = new Map<LedgerAccount, LedgerRollup>();\n  const kept: LedgerRollup[] = [];\n  for (const rollup of ordered) {\n    if (rollup.periodEnd > archiveBefore) {\n      kept.push(rollup);\n"
+      },
+      {
+        "start": 115,
+        "end": 138,
+        "text": "export function postLedgerEntries(\n  state: Pick<GameState, \"ledger\" | \"treasuryCoin\" | \"tick\" | \"scenarioId\">,\n  postings: readonly LedgerPosting[],\n): { readonly ledger: Ledger; readonly treasuryCoin: number } {\n  for (const posting of postings) {\n    if (!Array.isArray(posting.sourceRefs) || posting.sourceRefs.length === 0) {\n      throw new LedgerSourceError(`Ledger entry ${posting.category} has no source`);\n    }\n    if (!Number.isSafeInteger(posting.amount)) throw new RangeError(`Ledger amount must be whole pennies: ${posting.amount}`);\n  }\n  let ledger = state.ledger ?? openingLedger(state, \"ledger_start\");\n  const previousCash = accountBalance(ledger, \"cash\");\n  const entries = [...ledger.entries];\n  let ordinal = ledger.nextEntryOrdinal;\n  let postedCash = 0;\n  for (const posting of postings) {\n    entries.push({ ...posting, id: ledgerEntryId(ordinal), tick: state.tick });\n    if (posting.account === \"cash\") postedCash += posting.amount;\n    ordinal += 1;\n  }\n  ledger = rollUpLedger({ ...ledger, entries, nextEntryOrdinal: ordinal }, state.tick);\n  cashBalances.set(ledger, previousCash + postedCash);\n  return { ledger, treasuryCoin: previousCash + postedCash };\n}\n"
+      },
+      {
+        "start": 22,
+        "end": 26,
+        "text": "export const EMPTY_LEDGER: Ledger = { entries: [], rollups: [], nextEntryOrdinal: 1 };\n\nexport function ledgerEntryId(ordinal: number): string {\n  return `ledger-${String(ordinal).padStart(6, \"0\")}`;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 43,
+        "end": 54,
+        "text": "export function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/estates.ts",
+    "sha256": "d592e9373961ed2b23780c83376dc00b78cea69b6c411732ea476629677e1c2e",
+    "spans": [
+      {
+        "start": 87,
+        "end": 93,
+        "text": "/** ES-9: the opening portfolio — the home estate and the three neighbours, read from the seed. */\nexport function initialEstates(state: Pick<GameState, \"seed\" | \"scenarioId\" | \"factions\">): EstatesState {\n  const neighbours = neighbourEstates(state);\n  const claims: Claim[] = OPENING_CLAIMS.map((claim, index) => ({ id: `claim-${index + 1}`, claimant: LORD, estateId: claim.estateId,\n    pieceId: `${claim.estateId}:${claim.pieceKind}`, basis: claim.basis, strength: CLAIM_BASIS_STRENGTH[claim.basis], evidence: [], since: 0, status: \"open\" }));\n  return { estates: [homeEstate(), ...neighbours.estates], claims, suits: [], nextClaim: claims.length + 1, nextSuit: 1, people: neighbours.people };\n}\n"
+      },
+      {
+        "start": 180,
+        "end": 189,
+        "text": "export function raiseClaim(state: GameState, fields: { readonly claimant: HolderId; readonly estateId: string; readonly pieceId?: string;\n  readonly basis: ClaimBasis; readonly strength?: number }): GameState {\n  const estates = estatesOf(state);\n  if (estates.claims.some(claim => claim.claimant === fields.claimant && claim.estateId === fields.estateId && claim.pieceId === fields.pieceId\n    && claim.basis === fields.basis && (claim.status === \"open\" || claim.status === \"suing\"))) return state;\n  const claim: Claim = { id: `claim-${estates.nextClaim}`, claimant: fields.claimant, estateId: fields.estateId,\n    ...(fields.pieceId === undefined ? {} : { pieceId: fields.pieceId }), basis: fields.basis,\n    strength: fields.strength ?? CLAIM_BASIS_STRENGTH[fields.basis], evidence: [], since: state.tick, status: \"open\" };\n  return { ...state, estates: { ...estates, claims: [...estates.claims, claim], nextClaim: estates.nextClaim + 1 } };\n}\n"
+      }
+    ]
+  }
+]

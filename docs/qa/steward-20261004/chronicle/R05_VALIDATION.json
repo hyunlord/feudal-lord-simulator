@@ -1,0 +1,16 @@
+{
+  "status": "PASS_REVIEWED_OFFLINE_MERGE",
+  "baselinePreserved": 505,
+  "added": 43,
+  "total": 548,
+  "historyTypes": 182,
+  "ledgerCategories": 46,
+  "singleHistoryTypes": 118,
+  "fixtures": 395,
+  "semanticCorrection": "agency.project_started.r05.households",
+  "reachabilityCaveat": "estate.suit_stage.r05.enforcing: current judgment transition emits suit_judged, not suit_stage; not counted as naturally observed",
+  "schemaPassed": true,
+  "runtimeInstalled": false,
+  "runtimeSelected": false,
+  "sha256": "9be04c56bd58145021d4d0b9887abf515e9e1bbf1c4585c6b5bbc0cb5537af4c"
+}

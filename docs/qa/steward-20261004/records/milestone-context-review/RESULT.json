@@ -1,0 +1,15 @@
+{
+  "status": "9_CONDITIONAL_1_FACTLINE_COMPOSITION_HOLD",
+  "originalManifestEntries": 9,
+  "authorFixtureReplay": 116,
+  "hold": [
+    "milestone.market_town.r06stage.stone"
+  ],
+  "additionalSource": {
+    "file": "src/engine/history.ts",
+    "line": 406,
+    "text": "if (year - person.birthYear >= 14 && beforeYear - old.birthYear < 14) personRecord(person, \"person.came_of_age\", 0);"
+  },
+  "canonicalSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "runtimeExecuted": false
+}

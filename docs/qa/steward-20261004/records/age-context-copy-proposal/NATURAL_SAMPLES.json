@@ -1,0 +1,347 @@
+{
+  "source": "/Users/rexxa/fls-astra-steward/.remote-runs/astra-steward-N04-r03-5fb1aeb/N04-chalk-2-full/year-1450.fls.json",
+  "sha256": "b487a43879068c01c6db746ae604d121718114011777d347b802b599752a4ecb",
+  "samples": [
+    {
+      "recordId": "h-000624",
+      "subjectId": "p-000153",
+      "tick": 12000,
+      "template": "person.pilgrimage",
+      "result": {
+        "status": "candidate",
+        "id": "person.pilgrimage.age_proposal.adult",
+        "headline": "32살에 순례길에 올랐다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1303,
+          "subjectAgeAtRecord": 32,
+          "subjectAgeBandAtRecord": "adult"
+        }
+      }
+    },
+    {
+      "recordId": "h-000634",
+      "subjectId": "p-000217",
+      "tick": 12000,
+      "template": "person.pilgrimage",
+      "result": {
+        "status": "candidate",
+        "id": "person.pilgrimage.age_proposal.youth",
+        "headline": "젊은 시절, 24살에 순례길에 올랐다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1303,
+          "subjectAgeAtRecord": 24,
+          "subjectAgeBandAtRecord": "youth"
+        }
+      }
+    },
+    {
+      "recordId": "h-007481",
+      "subjectId": "p-000461",
+      "tick": 112000,
+      "template": "person.pilgrimage",
+      "result": {
+        "status": "candidate",
+        "id": "person.pilgrimage.age_proposal.elder",
+        "headline": "나이 들어 57살에 순례길에 올랐다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1328,
+          "subjectAgeAtRecord": 57,
+          "subjectAgeBandAtRecord": "elder"
+        }
+      }
+    },
+    {
+      "recordId": "h-050881",
+      "subjectId": "p-001896",
+      "tick": 593000,
+      "template": "person.recovered",
+      "result": {
+        "status": "candidate",
+        "id": "person.recovered.age_proposal.elder",
+        "headline": "나이 들어 91살에 앓던 병에서 회복했다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 91,
+          "subjectAgeBandAtRecord": "elder"
+        }
+      }
+    },
+    {
+      "recordId": "h-050882",
+      "subjectId": "p-002417",
+      "tick": 593000,
+      "template": "person.fell_ill",
+      "result": {
+        "status": "candidate",
+        "id": "person.fell_ill.age_proposal.elder",
+        "headline": "나이 들어 75살에 병을 얻었다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 75,
+          "subjectAgeBandAtRecord": "elder"
+        }
+      }
+    },
+    {
+      "recordId": "h-050891",
+      "subjectId": "p-002638",
+      "tick": 593000,
+      "template": "person.healed",
+      "result": {
+        "status": "candidate",
+        "id": "person.healed.age_proposal.elder",
+        "headline": "나이 들어 59살에 입었던 상처가 아물었다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 59,
+          "subjectAgeBandAtRecord": "elder"
+        }
+      }
+    },
+    {
+      "recordId": "h-050893",
+      "subjectId": "p-002693",
+      "tick": 593000,
+      "template": "person.injured",
+      "result": {
+        "status": "candidate",
+        "id": "person.injured.age_proposal.elder",
+        "headline": "나이 들어 55살에 일을 하던 중 다쳤다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 55,
+          "subjectAgeBandAtRecord": "elder"
+        }
+      }
+    },
+    {
+      "recordId": "h-050895",
+      "subjectId": "p-002716",
+      "tick": 593000,
+      "template": "person.injured",
+      "result": {
+        "status": "candidate",
+        "id": "person.injured.age_proposal.adult",
+        "headline": "53살에 일을 하던 중 다쳤다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 53,
+          "subjectAgeBandAtRecord": "adult"
+        }
+      }
+    },
+    {
+      "recordId": "h-050896",
+      "subjectId": "p-002828",
+      "tick": 593000,
+      "template": "person.healed",
+      "result": {
+        "status": "candidate",
+        "id": "person.healed.age_proposal.adult",
+        "headline": "47살에 입었던 상처가 아물었다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 47,
+          "subjectAgeBandAtRecord": "adult"
+        }
+      }
+    },
+    {
+      "recordId": "h-050898",
+      "subjectId": "p-002843",
+      "tick": 593000,
+      "template": "person.recovered",
+      "result": {
+        "status": "candidate",
+        "id": "person.recovered.age_proposal.adult",
+        "headline": "47살에 앓던 병에서 회복했다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 47,
+          "subjectAgeBandAtRecord": "adult"
+        }
+      }
+    },
+    {
+      "recordId": "h-050899",
+      "subjectId": "p-002848",
+      "tick": 593000,
+      "template": "person.fell_ill",
+      "result": {
+        "status": "candidate",
+        "id": "person.fell_ill.age_proposal.adult",
+        "headline": "47살에 병을 얻었다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 47,
+          "subjectAgeBandAtRecord": "adult"
+        }
+      }
+    },
+    {
+      "recordId": "h-050913",
+      "subjectId": "p-003213",
+      "tick": 593000,
+      "template": "person.injured",
+      "result": {
+        "status": "candidate",
+        "id": "person.injured.age_proposal.youth",
+        "headline": "젊은 시절, 29살에 일을 하던 중 다쳤다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 29,
+          "subjectAgeBandAtRecord": "youth"
+        }
+      }
+    },
+    {
+      "recordId": "h-050914",
+      "subjectId": "p-003234",
+      "tick": 593000,
+      "template": "person.recovered",
+      "result": {
+        "status": "candidate",
+        "id": "person.recovered.age_proposal.youth",
+        "headline": "젊은 시절, 28살에 앓던 병에서 회복했다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 28,
+          "subjectAgeBandAtRecord": "youth"
+        }
+      }
+    },
+    {
+      "recordId": "h-050916",
+      "subjectId": "p-003256",
+      "tick": 593000,
+      "template": "person.healed",
+      "result": {
+        "status": "candidate",
+        "id": "person.healed.age_proposal.youth",
+        "headline": "젊은 시절, 28살에 입었던 상처가 아물었다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 28,
+          "subjectAgeBandAtRecord": "youth"
+        }
+      }
+    },
+    {
+      "recordId": "h-050917",
+      "subjectId": "p-003298",
+      "tick": 593000,
+      "template": "person.fell_ill",
+      "result": {
+        "status": "candidate",
+        "id": "person.fell_ill.age_proposal.youth",
+        "headline": "젊은 시절, 25살에 병을 얻었다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 25,
+          "subjectAgeBandAtRecord": "youth"
+        }
+      }
+    },
+    {
+      "recordId": "h-050932",
+      "subjectId": "p-003651",
+      "tick": 593000,
+      "template": "person.recovered",
+      "result": {
+        "status": "candidate",
+        "id": "person.recovered.age_proposal.child",
+        "headline": "어린 시절, 9살에 앓던 병에서 회복했다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 9,
+          "subjectAgeBandAtRecord": "child"
+        }
+      }
+    },
+    {
+      "recordId": "h-050933",
+      "subjectId": "p-003683",
+      "tick": 593000,
+      "template": "person.fell_ill",
+      "result": {
+        "status": "candidate",
+        "id": "person.fell_ill.age_proposal.child",
+        "headline": "어린 시절, 8살에 병을 얻었다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 8,
+          "subjectAgeBandAtRecord": "child"
+        }
+      }
+    },
+    {
+      "recordId": "h-050986",
+      "subjectId": "p-002734",
+      "tick": 594000,
+      "template": "person.returned",
+      "result": {
+        "status": "candidate",
+        "id": "person.returned.age_proposal.adult",
+        "headline": "52살에 순례에서 돌아왔다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 52,
+          "subjectAgeBandAtRecord": "adult"
+        }
+      }
+    },
+    {
+      "recordId": "h-051010",
+      "subjectId": "p-003284",
+      "tick": 594000,
+      "template": "person.returned",
+      "result": {
+        "status": "candidate",
+        "id": "person.returned.age_proposal.youth",
+        "headline": "젊은 시절, 26살에 순례에서 돌아왔다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1448,
+          "subjectAgeAtRecord": 26,
+          "subjectAgeBandAtRecord": "youth"
+        }
+      }
+    },
+    {
+      "recordId": "h-051354",
+      "subjectId": "p-002644",
+      "tick": 598000,
+      "template": "person.returned",
+      "result": {
+        "status": "candidate",
+        "id": "person.returned.age_proposal.elder",
+        "headline": "나이 들어 60살에 순례에서 돌아왔다.",
+        "context": {
+          "status": "known",
+          "eventYear": 1449,
+          "subjectAgeAtRecord": 60,
+          "subjectAgeBandAtRecord": "elder"
+        }
+      }
+    }
+  ],
+  "scope": "First retained matching record per template/band; offline read adapter plus proposed formatter, no engine execution"
+}

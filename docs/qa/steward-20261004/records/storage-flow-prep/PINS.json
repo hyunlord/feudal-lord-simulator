@@ -1,0 +1,37 @@
+{
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "sourceFilesVerified": 1095,
+  "originalStateTopologyKeys": [
+    "tiles",
+    "width",
+    "height",
+    "palisade",
+    "river",
+    "roadRevision",
+    "wallConstructionReserve"
+  ],
+  "files": [
+    {
+      "path": "/Users/rexxa/fls-astra-steward/output/steward-storage-flow-r08/SOURCE_SHA256SUMS",
+      "sha256": "9f46ed9a8dcec3926c3ae075b850049b8665dc15c992d5510c0fc0038b00e132"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/output/steward-storage-flow-r08/diagnosis.mjs",
+      "sha256": "fbab3e3adae20480e1b40793e1e4792fa44aea93346a708e3a9e1bad9a9cde34"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/output/steward-storage-flow-r08/inputs/storage-1350.fls.json",
+      "sha256": "b663dde465f0b8b4fceae704bd583fca4e79ea6fd0852a1ee83d78f88990dbbb"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/output/steward-storage-flow-r08/probe.mjs",
+      "sha256": "1f67ae13bfa7cf427bb32531248717c05b877727a748418a583e9aade1953523"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/output/steward-storage-flow-r08/run.sh",
+      "sha256": "17c4f7c1b538e837b615d16734d36e5924f67da3a7d91d838a05cbe33a1e0235"
+    }
+  ],
+  "artifactManifestSha256": "e17eb1be5b33e00523970af518ea7ea641f1c33329ebf7d9743d32cdf8d09272",
+  "engineExecution": false
+}

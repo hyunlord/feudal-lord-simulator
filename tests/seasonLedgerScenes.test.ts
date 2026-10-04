@@ -68,7 +68,7 @@ test("UX-0b: the quiet line is only for a calm season; people lost with no event
   const starving = ledger(1_000, { popDelta: -20, stockDelta: { bread: 0, wheat: 0, timber: 0, stone: 0 } });
   assert.deepEqual(seasonLedgerCardModel(stateWith([], [starving]))?.events, ["사람이 20명 줄었습니다"]);
   const calm = ledger(1_000, { popDelta: 0, stockDelta: { bread: 0, wheat: 0, timber: 0, stone: 0 } });
-  assert.deepEqual(seasonLedgerCardModel(stateWith([], [calm]))?.events, ["큰 일 없이 지나간 계절입니다"]);
+  assert.deepEqual(seasonLedgerCardModel(stateWith([], [calm]))?.events, ["큰일 없이 지나간 계절입니다"]);
 });
 
 test("Given every ledger template When mapped Then each change has a scene and forecasts and everyday lines have none", () => {

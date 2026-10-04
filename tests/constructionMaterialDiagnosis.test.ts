@@ -141,7 +141,7 @@ test("Given a cancelled material carter When diagnosing a construction site Then
 
   // Then
   assert.deepEqual(diagnostics.map((diagnosis) => diagnosis.label), [
-    "목재 12/30 · 예약 8 · 배정된 운반인 없음 · ETA 확인 불가",
+    "목재 12/30 · 예약 8 · 배정된 운반꾼 없음 · 도착 예상 시점을 알 수 없음",
   ]);
   assert.equal(diagnostics[0]?.carrierId, null);
   assert.equal(diagnostics[0]?.etaTicks, null);
@@ -165,9 +165,9 @@ test("Given no source or disconnected material state When diagnosing a site Then
 
   // Then
   assert.deepEqual(noSource.map((diagnosis) => diagnosis.label), [
-    "목재 0/30 · 공급처 없음 · ETA 확인 불가",
+    "목재 0/30 · 공급처 없음 · 도착 예상 시점을 알 수 없음",
   ]);
   assert.deepEqual(disconnected.map((diagnosis) => diagnosis.label), [
-    "목재 0/30 · 공급처까지 도로 없음 · ETA 확인 불가",
+    "목재 0/30 · 공급처까지 도로 없음 · 도착 예상 시점을 알 수 없음",
   ]);
 });

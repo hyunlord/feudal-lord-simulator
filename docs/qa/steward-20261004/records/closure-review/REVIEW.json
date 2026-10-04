@@ -1,0 +1,45 @@
+{
+  "status": "CONTENT_CLOSURE_ELIGIBLE_ARCHIVE_PENDING",
+  "at": "2026-10-04T11:16:10+09:00",
+  "contentStopConditionSatisfied": true,
+  "deliveryComplete": false,
+  "archiveGate": "pending",
+  "conditions": {
+    "r7NewConfirmedMediumPlus": 0,
+    "r8ParentFinalNewConfirmedMediumPlus": 0,
+    "consecutiveZeroRounds": 2,
+    "D": 200,
+    "EHistoryTypes": 182,
+    "ELedgerCategories": 46,
+    "authoredVariants": 882
+  },
+  "requiredRemaining": [
+    "root SHA256SUMS",
+    "ZIP creation",
+    "CRC and extracted-file SHA verification",
+    "final summary and artifact path report"
+  ],
+  "holds": [
+    "long-term food causal mechanism",
+    "mill overbuilding"
+  ],
+  "notAddedAsStopConditions": [
+    "existing defects all fixed",
+    "D/E installed in runtime",
+    "all combinations of age/relation/context proved",
+    "all invariants universally proved",
+    "all firstplay blockers resolved"
+  ],
+  "weakEvidence": [
+    "R08 actual64minutes shorter than approximate3-4hour guidance",
+    "0 confirmed new issues is not proof of zero defects",
+    "all src1095 inventory first captured during run",
+    "one seed fen/open path comparison is not terrain causal effect",
+    "old cash rollup loses individual sourceRefs",
+    "E coverage is authored current-type coverage not runtime combinations",
+    "prior UI evidence is inherited not replayed"
+  ],
+  "verification": "CHECKS.json",
+  "pins": "INPUT_PINS.json",
+  "report": "REPORT.md"
+}

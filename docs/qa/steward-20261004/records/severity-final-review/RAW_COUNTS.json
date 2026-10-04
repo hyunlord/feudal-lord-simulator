@@ -1,0 +1,77 @@
+{
+  "method": "Ruby raw JSON field counts only; no engine execution or runtime rate inference",
+  "runs": [
+    {
+      "run": "long-run/seed3-fen-fixed-growth",
+      "path": "/tmp/astra-steward-r08-20261004/long-run/seed3-fen-fixed-growth/final.fls.json",
+      "sha256": "a606e61731eef3b571ad1d36e1df1aa3e3d671d892653009ef497d6b517bb285",
+      "size": 6153283,
+      "tick": 600000,
+      "zone_counts": {
+        "arable": 4,
+        "pasture": 1
+      },
+      "arable_zones": 4,
+      "strips": 30,
+      "cells": 86,
+      "crop_cells": {
+        "wheat": 73,
+        "barley": 13
+      },
+      "mills": 13,
+      "farmsteads": 4,
+      "final_mills_with_wheat_under_2": 1,
+      "mill_receipts": 13,
+      "planner_counts": {
+        "food": 9,
+        "barn_mill": 4
+      },
+      "first_receipt": {
+        "id": "receipt-3",
+        "tick": 858,
+        "planner": "food"
+      },
+      "last_receipt": {
+        "id": "receipt-193",
+        "tick": 497640,
+        "planner": "barn_mill"
+      }
+    },
+    {
+      "run": "inherited/R07/long-run/seed3-open-fixed-growth",
+      "path": "/tmp/astra-steward-r08-20261004/inherited/R07/long-run/seed3-open-fixed-growth/final.fls.json",
+      "sha256": "f8a9491032c3fee40085ff7ea3cb2ce8c97f7e574b9082bec2b1c0e469375489",
+      "size": 6130250,
+      "tick": 600000,
+      "zone_counts": {
+        "arable": 3,
+        "pasture": 1
+      },
+      "arable_zones": 3,
+      "strips": 34,
+      "cells": 95,
+      "crop_cells": {
+        "barley": 6,
+        "wheat": 89
+      },
+      "mills": 26,
+      "farmsteads": 6,
+      "final_mills_with_wheat_under_2": 14,
+      "mill_receipts": 26,
+      "planner_counts": {
+        "food": 10,
+        "barn_mill": 16
+      },
+      "first_receipt": {
+        "id": "receipt-4",
+        "tick": 858,
+        "planner": "food"
+      },
+      "last_receipt": {
+        "id": "receipt-227",
+        "tick": 441636,
+        "planner": "barn_mill"
+      }
+    }
+  ]
+}

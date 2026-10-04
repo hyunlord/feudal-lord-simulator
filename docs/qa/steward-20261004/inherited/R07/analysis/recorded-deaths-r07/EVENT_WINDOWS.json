@@ -1,0 +1,161 @@
+[
+  {
+    "run": "N02-v3-open-1-growth",
+    "kind": "great_famine",
+    "startTick": 76450,
+    "endTick": 85500,
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1450.fls.json",
+    "recordId": "great_famine@61",
+    "history": [
+      {
+        "id": "h-004641",
+        "tick": 76450,
+        "template": "event.arrived"
+      },
+      {
+        "id": "h-004644",
+        "tick": 76450,
+        "template": "decision.famine_response"
+      }
+    ]
+  },
+  {
+    "run": "N02-v3-open-1-growth",
+    "kind": "plague_first",
+    "startTick": 194000,
+    "endTick": 198000,
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1450.fls.json",
+    "history": [
+      {
+        "id": "h-015480",
+        "tick": 194000,
+        "template": "plague.arrived"
+      },
+      {
+        "id": "h-015481",
+        "tick": 194000,
+        "template": "plague.priest_died"
+      }
+    ]
+  },
+  {
+    "run": "N02-v3-open-1-growth",
+    "kind": "plague_second",
+    "startTick": 244000,
+    "endTick": 246000,
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1450.fls.json",
+    "history": [
+      {
+        "id": "h-018953",
+        "tick": 244000,
+        "template": "plague.second"
+      }
+    ]
+  },
+  {
+    "run": "N03-v3-open-1-stability",
+    "kind": "great_famine",
+    "startTick": 80000,
+    "endTick": 89500,
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1450.fls.json",
+    "recordId": "great_famine@61",
+    "history": [
+      {
+        "id": "h-004135",
+        "tick": 80000,
+        "template": "event.arrived"
+      },
+      {
+        "id": "h-004196",
+        "tick": 80000,
+        "template": "decision.famine_response"
+      }
+    ]
+  },
+  {
+    "run": "N03-v3-open-1-stability",
+    "kind": "plague_first",
+    "startTick": 194000,
+    "endTick": 198000,
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1450.fls.json",
+    "history": [
+      {
+        "id": "h-010935",
+        "tick": 194000,
+        "template": "plague.arrived"
+      },
+      {
+        "id": "h-010936",
+        "tick": 194000,
+        "template": "plague.priest_died"
+      }
+    ]
+  },
+  {
+    "run": "N03-v3-open-1-stability",
+    "kind": "plague_second",
+    "startTick": 244000,
+    "endTick": 246000,
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1450.fls.json",
+    "history": [
+      {
+        "id": "h-013924",
+        "tick": 244000,
+        "template": "plague.second"
+      }
+    ]
+  },
+  {
+    "run": "N04-chalk-2-full",
+    "kind": "great_famine",
+    "startTick": 80000,
+    "endTick": 93500,
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1450.fls.json",
+    "recordId": "great_famine@61",
+    "history": [
+      {
+        "id": "h-005604",
+        "tick": 80000,
+        "template": "event.arrived"
+      },
+      {
+        "id": "h-005705",
+        "tick": 80000,
+        "template": "decision.famine_response"
+      }
+    ]
+  },
+  {
+    "run": "N04-chalk-2-full",
+    "kind": "plague_first",
+    "startTick": 195000,
+    "endTick": 199000,
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1450.fls.json",
+    "history": [
+      {
+        "id": "h-013951",
+        "tick": 195000,
+        "template": "plague.arrived"
+      },
+      {
+        "id": "h-013952",
+        "tick": 195000,
+        "template": "plague.priest_died"
+      }
+    ]
+  },
+  {
+    "run": "N04-chalk-2-full",
+    "kind": "plague_second",
+    "startTick": 244000,
+    "endTick": 246000,
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1450.fls.json",
+    "history": [
+      {
+        "id": "h-017646",
+        "tick": 244000,
+        "template": "plague.second"
+      }
+    ]
+  }
+]

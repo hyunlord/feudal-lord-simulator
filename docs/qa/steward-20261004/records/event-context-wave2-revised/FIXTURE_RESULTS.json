@@ -1,0 +1,987 @@
+{
+  "selection": [
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.already_recorded",
+      "selected": "reorg.textile_street.r06ctx2.already_recorded",
+      "fallback": false
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.same_tick",
+      "selected": "reorg.textile_street.r06ctx2.same_tick",
+      "fallback": false
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.not_yet_recorded",
+      "selected": "reorg.textile_street.r06ctx2.not_yet_recorded",
+      "fallback": false
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.already_recorded",
+      "selected": "reorg.alehouse_boom.r06ctx2.already_recorded",
+      "fallback": false
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.same_tick",
+      "selected": "reorg.alehouse_boom.r06ctx2.same_tick",
+      "fallback": false
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.not_yet_recorded",
+      "selected": "reorg.alehouse_boom.r06ctx2.not_yet_recorded",
+      "fallback": false
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.refused",
+      "selected": "legacy.charter_refused.r06ctx2.refused",
+      "fallback": false
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.expired",
+      "selected": "legacy.charter_refused.r06ctx2.expired",
+      "fallback": false
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.town.town",
+      "selected": "legacy.last_market.r06ctx2.town",
+      "fallback": false
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.town.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.town.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.town.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.town.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.town.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.town.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.town.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.family.family",
+      "selected": "legacy.last_market.r06ctx2.family",
+      "fallback": false
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.family.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.family.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.family.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.family.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.family.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.family.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.family.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.church.church",
+      "selected": "legacy.last_market.r06ctx2.church",
+      "fallback": false
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.church.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.church.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.church.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.church.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.church.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.church.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.church.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach.water_reach",
+      "selected": "decision.market_town.r06ctx2.water_reach",
+      "fallback": false
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring.land_ring",
+      "selected": "decision.market_town.r06ctx2.land_ring",
+      "fallback": false
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.all_ready.all_ready",
+      "selected": "decision.stone_town.r06ctx2.all_ready",
+      "fallback": false
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.all_ready.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.all_ready.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.all_ready.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.all_ready.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.all_ready.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.all_ready.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.all_ready.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.partly_ready.partly_ready",
+      "selected": "decision.stone_town.r06ctx2.partly_ready",
+      "fallback": false
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.partly_ready.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.partly_ready.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.partly_ready.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.partly_ready.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.partly_ready.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.partly_ready.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.partly_ready.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.none_ready.none_ready",
+      "selected": "decision.stone_town.r06ctx2.none_ready",
+      "fallback": false
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.none_ready.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.none_ready.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.none_ready.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.none_ready.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.none_ready.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.none_ready.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.none_ready.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.residents_present.residents_present",
+      "selected": "decision.rebuild.r06ctx2.residents_present",
+      "fallback": false
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.residents_present.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.residents_present.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.residents_present.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.residents_present.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.residents_present.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.residents_present.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.residents_present.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.empty.empty",
+      "selected": "decision.rebuild.r06ctx2.empty",
+      "fallback": false
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.empty.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.empty.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.empty.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.empty.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.empty.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.empty.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.empty.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.retained.retained",
+      "selected": "decision.wall_expand.r06ctx2.retained",
+      "fallback": false
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.retained.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.retained.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.retained.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.retained.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.retained.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.retained.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.retained.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.moved.moved",
+      "selected": "decision.wall_expand.r06ctx2.moved",
+      "fallback": false
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.moved.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.moved.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.moved.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.moved.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.moved.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.moved.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.moved.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.sole_work.sole_work",
+      "selected": "decision.drainage.r06ctx2.sole_work",
+      "fallback": false
+    },
+    {
+      "id": "decision.drainage.r06ctx2.sole_work.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.sole_work.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.sole_work.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.sole_work.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.sole_work.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.sole_work.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.sole_work.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.parallel_work.parallel_work",
+      "selected": "decision.drainage.r06ctx2.parallel_work",
+      "fallback": false
+    },
+    {
+      "id": "decision.drainage.r06ctx2.parallel_work.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.parallel_work.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.parallel_work.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.parallel_work.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.parallel_work.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.parallel_work.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.parallel_work.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    }
+  ],
+  "adversarialEnvelope": [
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.already_recorded.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.already_recorded.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded.already_recorded.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.same_tick.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.same_tick.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick.same_tick.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.not_yet_recorded.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.not_yet_recorded.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded.not_yet_recorded.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.already_recorded.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.already_recorded.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded.already_recorded.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.same_tick.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.same_tick.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick.same_tick.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.not_yet_recorded.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.not_yet_recorded.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.not_yet_recorded.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.refused.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.refused.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused.refused.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.expired.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.expired.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired.expired.bad_capture",
+      "fallback": true
+    }
+  ],
+  "nameContract": {
+    "cases": 4,
+    "passed": true,
+    "scope": "Offline ID/display substitution contract only; production historyParams not executed"
+  }
+}

@@ -58,7 +58,7 @@ test("NAT-2 QA overlay: a selected carter — who, what they are doing, what is 
   const gone = qaSelectionLines(town, { kind: "walker", walkerId: "walker:gone" });
 
   // Then
-  assert.equal(value(walker, "selection"), `운반인 ${headline?.name ?? "이름 없음"} · ${carter.id}`);
+  assert.equal(value(walker, "selection"), `운반꾼 ${headline?.name ?? "이름 없음"} · ${carter.id}`);
   assert.equal(value(walker, "state"), headline === null ? diagnosis.statusLabel : `${diagnosis.statusLabel} · ${headline.line}`);
   assert.equal(value(walker, "way"), diagnosis.cancellationLabel ?? `남은 길 ${diagnosis.remainingDistance.toFixed(1)}칸 · 도착까지 ${diagnosis.etaTicks}틱`);
   assert.match(value(building, "selection")!, new RegExp(`^.+ · ${house.id} · 칸 \\(${house.tx}, ${house.ty}\\)$`));

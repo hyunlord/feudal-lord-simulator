@@ -1,0 +1,1386 @@
+{
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "inputSha256": "f5bc425b4c6a763e1beda92fbdb4547ee76bb783ac1e5486ccf55b13436a0203",
+  "rows": [
+    {
+      "origin": "original_exported_function_on_recorded_input",
+      "walkerId": "distributor:construction-site-000036:299880",
+      "current": {
+        "tx": 47,
+        "ty": 41
+      },
+      "remainingRangeDerived": 28,
+      "minimumEdges": 1,
+      "replaySelectedHouseId": "house-46-42-0",
+      "replaySelectedMeals": 0,
+      "replaySelectedPath": [
+        {
+          "tx": 47,
+          "ty": 41
+        },
+        {
+          "tx": 46,
+          "ty": 41
+        }
+      ],
+      "replayNextTile": {
+        "tx": 46,
+        "ty": 41
+      },
+      "recordedReconstructedStageNextTile": {
+        "tx": 46,
+        "ty": 41
+      },
+      "nextTileEqual": true,
+      "directOfficialSelectionObserved": false,
+      "targetPredicateEvaluation": {
+        "origin": "source_predicate_evaluation_not_observed_branch",
+        "breadStock": 0,
+        "capacityFromOriginalFunction": 3,
+        "pathEdges": 20,
+        "stockBelowCapacity": true,
+        "pathPresent": true,
+        "meetsMinimum": true,
+        "fitsRemainingRange": true
+      },
+      "sameNextTileHouseIds": [
+        "house-46-42-0"
+      ],
+      "bestCalls": [
+        {
+          "ordinal": 0,
+          "houseId": "house-46-40-0",
+          "argumentsSha256": "0308fd41164f7c75f3c8f65e7a8e54c133b8917c2fa252f3f779a6f32e0e7f77",
+          "resultSha256": "4a40435928545f9028bd72805385c98de7d6b0fa6a45bc7f0ae36fe65648213f"
+        },
+        {
+          "ordinal": 1,
+          "houseId": "house-44-40-0",
+          "argumentsSha256": "674e99f2ba9740322371957be178cc0593d0b896ec813465534b5ec7eac055d8",
+          "resultSha256": "d97c81b678476dac2b564311fab319ddde43c5963ec80c1e7fccc02b5f636998"
+        },
+        {
+          "ordinal": 2,
+          "houseId": "house-44-42-0",
+          "argumentsSha256": "976e6adcd4b733e79584ae98b0cd01d1576b64138f807e411a980bb2ebd893e0",
+          "resultSha256": "53df824ea69124fc2966fbeb68f6ac9b64e8ff445a9cf96e6995b448171d7755"
+        },
+        {
+          "ordinal": 3,
+          "houseId": "house-46-42-0",
+          "argumentsSha256": "17f6a1f49761a6fe46113ebe962ae119c8a515de5d7ea7607c79938d829922c9",
+          "resultSha256": "b446045a26338c4025bd640e76f76f2622331a85a60ae3a523fb108bca0de88f"
+        },
+        {
+          "ordinal": 4,
+          "houseId": "construction-site-000004",
+          "argumentsSha256": "760893eff173d74a7fa2d16e3c8fa5ae783bf9bb6526de4f309512ee4f0311f3",
+          "resultSha256": "bf05821894dffdd085e5dff169c3e70506281f26df40576daa8f630dc0625299"
+        },
+        {
+          "ordinal": 5,
+          "houseId": "construction-site-000006",
+          "argumentsSha256": "9be4b65071f637b136188c64896f5ade5b25d3c6eda65b29e35c8232f6317beb",
+          "resultSha256": "e1a44eaee730a5555ab59c03183d6de4d092850966eae5f9854eed08a0bc3bbf"
+        },
+        {
+          "ordinal": 6,
+          "houseId": "construction-site-000007",
+          "argumentsSha256": "6c5fb19aafb7746cf6a898f5b5869ebf4aee6648868bf558724fa0f740e38634",
+          "resultSha256": "7b89929f121fe968254f97a38e1d9a7a8e341328875159f196850891103a315e"
+        },
+        {
+          "ordinal": 7,
+          "houseId": "construction-site-000008",
+          "argumentsSha256": "54e80e3d30e1f0ca155a27f896bca1b7bff27ab80d5d4340d5c6fdcda2b38dc3",
+          "resultSha256": "4a40435928545f9028bd72805385c98de7d6b0fa6a45bc7f0ae36fe65648213f"
+        },
+        {
+          "ordinal": 8,
+          "houseId": "construction-site-000010",
+          "argumentsSha256": "106e6a99668e6162b63b69890cbde5f5bc6fae73813cddc5e5728e839885ec03",
+          "resultSha256": "030eb9d854a0f7d4ab5e2c219cfeb02c6e36dacc105a00aad1a4250a90eee998"
+        },
+        {
+          "ordinal": 9,
+          "houseId": "construction-site-000011",
+          "argumentsSha256": "227ae769bf9b99c08b8a3015f786bc84366c704afc27c8fcabb8141f9766bb43",
+          "resultSha256": "d0f96d61913b6306e4075284a3a7187c0c9b0f5778e315f99b94325fe196fdbe"
+        },
+        {
+          "ordinal": 10,
+          "houseId": "construction-site-000012",
+          "argumentsSha256": "63d7d8cc6120a11a6194cbf933f28465d9ac2f86fc4b1c0c0cf56f2d3e883167",
+          "resultSha256": "169f532b0b1cfa1646bd71ee9448c93514845202b8a25da46f5fb03982e95147"
+        },
+        {
+          "ordinal": 11,
+          "houseId": "construction-site-000013",
+          "argumentsSha256": "bd267a3eba80ffeabc5954349d6d3ab6c3a8ebffff3176741864f04a4c37e7be",
+          "resultSha256": "1e4b59a715020c19e85e008bfeee07664c6c49252587f79192bd9d059a68ca09"
+        },
+        {
+          "ordinal": 12,
+          "houseId": "construction-site-000014",
+          "argumentsSha256": "49c135d3ee5df5afb34347d4e580a7e7eedb79a2fc202c3b7133d76e3ff030e1",
+          "resultSha256": "e22d288cbae1638bf7eef24f15f0aac1e0e73c885e577da661f5849188ca04b2"
+        },
+        {
+          "ordinal": 13,
+          "houseId": "construction-site-000018",
+          "argumentsSha256": "b30e1478f61c8f0df6c7950f3ead47de1d0b290c6d53e7fda430780ee966c053",
+          "resultSha256": "edc206d58e85d9c35fda7412fd0e59d3ec1d481ff752f98c8c592219aa7a29a0"
+        },
+        {
+          "ordinal": 14,
+          "houseId": "construction-site-000019",
+          "argumentsSha256": "65975bfb1118c9af9c31c1ea53b31989b3769553c8530c58b4a3b7777ec08887",
+          "resultSha256": "e89861641e25a4e8bd23b40c91e1bb0e45753cbb3601686cda13b8f0b3ab557a"
+        },
+        {
+          "ordinal": 15,
+          "houseId": "construction-site-000022",
+          "argumentsSha256": "b44fae5ff41ec72947106a053fec47d53320b6cf0a5d80f75b0044ebe1906617",
+          "resultSha256": "a6957bd40845bd10a035e86272db3c08e7695cc2a810b12084a49d1168ce9765"
+        },
+        {
+          "ordinal": 16,
+          "houseId": "construction-site-000023",
+          "argumentsSha256": "d731626295b5a3ef85f6aaa7da3b4de2322e36b13ecf3f186b032ad78040793b",
+          "resultSha256": "25c1e1c089eb6d5bdbed06447d714c220a3192aa7d968c60487a077579d795ec"
+        },
+        {
+          "ordinal": 17,
+          "houseId": "construction-site-000028",
+          "argumentsSha256": "77bd0597c64fa18e9b6c9bd0c0c096729bb48cd0b0bb94f913179b0b13f30d05",
+          "resultSha256": "9df8f07c183b50a9a84196cf55ae49bab31434a9f5febc1d003c8a37ac6cb50a"
+        },
+        {
+          "ordinal": 18,
+          "houseId": "construction-site-000029",
+          "argumentsSha256": "fbcfbbbb38cdf294625c1f4a0c7545ee40bbe51aff44a7867d564b6a8d63d02f",
+          "resultSha256": "5bddffba83e52af44047ff705035fdd28d47fa88423e71acd6c55def8045372c"
+        },
+        {
+          "ordinal": 19,
+          "houseId": "construction-site-000030",
+          "argumentsSha256": "1862b1591bb799997c9bc29e89b1c280548a7c6a537ae8f58cb1e92845aeb40f",
+          "resultSha256": "1062a5538e9f7857671a2bcc12a9756adf6072a89db10b1d0855b57a3d0d2938"
+        },
+        {
+          "ordinal": 20,
+          "houseId": "construction-site-000031",
+          "argumentsSha256": "f514b2a700c53ec487c04a87ba182b001192b008ae976f40a0c9d2ca880a9add",
+          "resultSha256": "bc21829b676c66f0493e8a8545d9caf7d470768db7c2b84d734d53f4df93a348"
+        },
+        {
+          "ordinal": 21,
+          "houseId": "construction-site-000033",
+          "argumentsSha256": "03958e4a0008e8366372f7af31b03288fc237e45bf35668db32780c2979ec2b9",
+          "resultSha256": "dae3e002c94a6f85101102026afeaf03cff2ca3dd535925039fb284e197ec6f5"
+        },
+        {
+          "ordinal": 22,
+          "houseId": "construction-site-000034",
+          "argumentsSha256": "dd990dcc12e0da29efab4fce93cfe39cc2d426c6cb89f56ac705f81b00b5216f",
+          "resultSha256": "1eefcb4d21a3bf7ddd0ab68fd3fff08063cdffee59434dec21d981b74d9a4cd0"
+        },
+        {
+          "ordinal": 23,
+          "houseId": "construction-site-000035",
+          "argumentsSha256": "28268ee6418cd60d5965a98e09732a509083130d30b593353459a51ccaeab228",
+          "resultSha256": "182e59ff0b229bdc8cf9da07a21839b18d65324026ba115a7c98d1c87a621be8"
+        }
+      ],
+      "nextCalls": [
+        {
+          "ordinal": 0,
+          "houseId": "house-46-40-0",
+          "argumentsSha256": "0308fd41164f7c75f3c8f65e7a8e54c133b8917c2fa252f3f779a6f32e0e7f77",
+          "resultSha256": "4a40435928545f9028bd72805385c98de7d6b0fa6a45bc7f0ae36fe65648213f"
+        },
+        {
+          "ordinal": 1,
+          "houseId": "house-44-40-0",
+          "argumentsSha256": "674e99f2ba9740322371957be178cc0593d0b896ec813465534b5ec7eac055d8",
+          "resultSha256": "d97c81b678476dac2b564311fab319ddde43c5963ec80c1e7fccc02b5f636998"
+        },
+        {
+          "ordinal": 2,
+          "houseId": "house-44-42-0",
+          "argumentsSha256": "976e6adcd4b733e79584ae98b0cd01d1576b64138f807e411a980bb2ebd893e0",
+          "resultSha256": "53df824ea69124fc2966fbeb68f6ac9b64e8ff445a9cf96e6995b448171d7755"
+        },
+        {
+          "ordinal": 3,
+          "houseId": "house-46-42-0",
+          "argumentsSha256": "17f6a1f49761a6fe46113ebe962ae119c8a515de5d7ea7607c79938d829922c9",
+          "resultSha256": "b446045a26338c4025bd640e76f76f2622331a85a60ae3a523fb108bca0de88f"
+        },
+        {
+          "ordinal": 4,
+          "houseId": "construction-site-000004",
+          "argumentsSha256": "760893eff173d74a7fa2d16e3c8fa5ae783bf9bb6526de4f309512ee4f0311f3",
+          "resultSha256": "bf05821894dffdd085e5dff169c3e70506281f26df40576daa8f630dc0625299"
+        },
+        {
+          "ordinal": 5,
+          "houseId": "construction-site-000006",
+          "argumentsSha256": "9be4b65071f637b136188c64896f5ade5b25d3c6eda65b29e35c8232f6317beb",
+          "resultSha256": "e1a44eaee730a5555ab59c03183d6de4d092850966eae5f9854eed08a0bc3bbf"
+        },
+        {
+          "ordinal": 6,
+          "houseId": "construction-site-000007",
+          "argumentsSha256": "6c5fb19aafb7746cf6a898f5b5869ebf4aee6648868bf558724fa0f740e38634",
+          "resultSha256": "7b89929f121fe968254f97a38e1d9a7a8e341328875159f196850891103a315e"
+        },
+        {
+          "ordinal": 7,
+          "houseId": "construction-site-000008",
+          "argumentsSha256": "54e80e3d30e1f0ca155a27f896bca1b7bff27ab80d5d4340d5c6fdcda2b38dc3",
+          "resultSha256": "4a40435928545f9028bd72805385c98de7d6b0fa6a45bc7f0ae36fe65648213f"
+        },
+        {
+          "ordinal": 8,
+          "houseId": "construction-site-000010",
+          "argumentsSha256": "106e6a99668e6162b63b69890cbde5f5bc6fae73813cddc5e5728e839885ec03",
+          "resultSha256": "030eb9d854a0f7d4ab5e2c219cfeb02c6e36dacc105a00aad1a4250a90eee998"
+        },
+        {
+          "ordinal": 9,
+          "houseId": "construction-site-000011",
+          "argumentsSha256": "227ae769bf9b99c08b8a3015f786bc84366c704afc27c8fcabb8141f9766bb43",
+          "resultSha256": "d0f96d61913b6306e4075284a3a7187c0c9b0f5778e315f99b94325fe196fdbe"
+        },
+        {
+          "ordinal": 10,
+          "houseId": "construction-site-000012",
+          "argumentsSha256": "63d7d8cc6120a11a6194cbf933f28465d9ac2f86fc4b1c0c0cf56f2d3e883167",
+          "resultSha256": "169f532b0b1cfa1646bd71ee9448c93514845202b8a25da46f5fb03982e95147"
+        },
+        {
+          "ordinal": 11,
+          "houseId": "construction-site-000013",
+          "argumentsSha256": "bd267a3eba80ffeabc5954349d6d3ab6c3a8ebffff3176741864f04a4c37e7be",
+          "resultSha256": "1e4b59a715020c19e85e008bfeee07664c6c49252587f79192bd9d059a68ca09"
+        },
+        {
+          "ordinal": 12,
+          "houseId": "construction-site-000014",
+          "argumentsSha256": "49c135d3ee5df5afb34347d4e580a7e7eedb79a2fc202c3b7133d76e3ff030e1",
+          "resultSha256": "e22d288cbae1638bf7eef24f15f0aac1e0e73c885e577da661f5849188ca04b2"
+        },
+        {
+          "ordinal": 13,
+          "houseId": "construction-site-000018",
+          "argumentsSha256": "b30e1478f61c8f0df6c7950f3ead47de1d0b290c6d53e7fda430780ee966c053",
+          "resultSha256": "edc206d58e85d9c35fda7412fd0e59d3ec1d481ff752f98c8c592219aa7a29a0"
+        },
+        {
+          "ordinal": 14,
+          "houseId": "construction-site-000019",
+          "argumentsSha256": "65975bfb1118c9af9c31c1ea53b31989b3769553c8530c58b4a3b7777ec08887",
+          "resultSha256": "e89861641e25a4e8bd23b40c91e1bb0e45753cbb3601686cda13b8f0b3ab557a"
+        },
+        {
+          "ordinal": 15,
+          "houseId": "construction-site-000022",
+          "argumentsSha256": "b44fae5ff41ec72947106a053fec47d53320b6cf0a5d80f75b0044ebe1906617",
+          "resultSha256": "a6957bd40845bd10a035e86272db3c08e7695cc2a810b12084a49d1168ce9765"
+        },
+        {
+          "ordinal": 16,
+          "houseId": "construction-site-000023",
+          "argumentsSha256": "d731626295b5a3ef85f6aaa7da3b4de2322e36b13ecf3f186b032ad78040793b",
+          "resultSha256": "25c1e1c089eb6d5bdbed06447d714c220a3192aa7d968c60487a077579d795ec"
+        },
+        {
+          "ordinal": 17,
+          "houseId": "construction-site-000028",
+          "argumentsSha256": "77bd0597c64fa18e9b6c9bd0c0c096729bb48cd0b0bb94f913179b0b13f30d05",
+          "resultSha256": "9df8f07c183b50a9a84196cf55ae49bab31434a9f5febc1d003c8a37ac6cb50a"
+        },
+        {
+          "ordinal": 18,
+          "houseId": "construction-site-000029",
+          "argumentsSha256": "fbcfbbbb38cdf294625c1f4a0c7545ee40bbe51aff44a7867d564b6a8d63d02f",
+          "resultSha256": "5bddffba83e52af44047ff705035fdd28d47fa88423e71acd6c55def8045372c"
+        },
+        {
+          "ordinal": 19,
+          "houseId": "construction-site-000030",
+          "argumentsSha256": "1862b1591bb799997c9bc29e89b1c280548a7c6a537ae8f58cb1e92845aeb40f",
+          "resultSha256": "1062a5538e9f7857671a2bcc12a9756adf6072a89db10b1d0855b57a3d0d2938"
+        },
+        {
+          "ordinal": 20,
+          "houseId": "construction-site-000031",
+          "argumentsSha256": "f514b2a700c53ec487c04a87ba182b001192b008ae976f40a0c9d2ca880a9add",
+          "resultSha256": "bc21829b676c66f0493e8a8545d9caf7d470768db7c2b84d734d53f4df93a348"
+        },
+        {
+          "ordinal": 21,
+          "houseId": "construction-site-000033",
+          "argumentsSha256": "03958e4a0008e8366372f7af31b03288fc237e45bf35668db32780c2979ec2b9",
+          "resultSha256": "dae3e002c94a6f85101102026afeaf03cff2ca3dd535925039fb284e197ec6f5"
+        },
+        {
+          "ordinal": 22,
+          "houseId": "construction-site-000034",
+          "argumentsSha256": "dd990dcc12e0da29efab4fce93cfe39cc2d426c6cb89f56ac705f81b00b5216f",
+          "resultSha256": "1eefcb4d21a3bf7ddd0ab68fd3fff08063cdffee59434dec21d981b74d9a4cd0"
+        },
+        {
+          "ordinal": 23,
+          "houseId": "construction-site-000035",
+          "argumentsSha256": "28268ee6418cd60d5965a98e09732a509083130d30b593353459a51ccaeab228",
+          "resultSha256": "182e59ff0b229bdc8cf9da07a21839b18d65324026ba115a7c98d1c87a621be8"
+        }
+      ]
+    },
+    {
+      "origin": "original_exported_function_on_recorded_input",
+      "walkerId": "distributor:construction-site-000036:300000",
+      "current": {
+        "tx": 48,
+        "ty": 32
+      },
+      "remainingRangeDerived": 40,
+      "minimumEdges": 1,
+      "replaySelectedHouseId": "construction-site-000018",
+      "replaySelectedMeals": 0,
+      "replaySelectedPath": [
+        {
+          "tx": 48,
+          "ty": 32
+        },
+        {
+          "tx": 48,
+          "ty": 33
+        },
+        {
+          "tx": 48,
+          "ty": 34
+        },
+        {
+          "tx": 48,
+          "ty": 35
+        },
+        {
+          "tx": 48,
+          "ty": 36
+        },
+        {
+          "tx": 48,
+          "ty": 37
+        },
+        {
+          "tx": 47,
+          "ty": 37
+        },
+        {
+          "tx": 46,
+          "ty": 37
+        }
+      ],
+      "replayNextTile": {
+        "tx": 48,
+        "ty": 33
+      },
+      "recordedReconstructedStageNextTile": {
+        "tx": 48,
+        "ty": 33
+      },
+      "nextTileEqual": true,
+      "directOfficialSelectionObserved": false,
+      "targetPredicateEvaluation": {
+        "origin": "source_predicate_evaluation_not_observed_branch",
+        "breadStock": 0,
+        "capacityFromOriginalFunction": 3,
+        "pathEdges": 20,
+        "stockBelowCapacity": true,
+        "pathPresent": true,
+        "meetsMinimum": true,
+        "fitsRemainingRange": true
+      },
+      "sameNextTileHouseIds": [
+        "house-46-40-0",
+        "house-44-40-0",
+        "house-44-42-0",
+        "house-46-42-0",
+        "construction-site-000004",
+        "construction-site-000006",
+        "construction-site-000007",
+        "construction-site-000008",
+        "construction-site-000010",
+        "construction-site-000011",
+        "construction-site-000012",
+        "construction-site-000013",
+        "construction-site-000014",
+        "construction-site-000018",
+        "construction-site-000019",
+        "construction-site-000022",
+        "construction-site-000023",
+        "construction-site-000028",
+        "construction-site-000029",
+        "construction-site-000030",
+        "construction-site-000031",
+        "construction-site-000033",
+        "construction-site-000034",
+        "construction-site-000035"
+      ],
+      "bestCalls": [
+        {
+          "ordinal": 0,
+          "houseId": "house-46-40-0",
+          "argumentsSha256": "071c9ff63d7fa13b26f6668f9090498143d8babae42a85bd0297ee16f3a19ecc",
+          "resultSha256": "fdac6bee9ff7d3155f8f89375f031ab667e5e63301d3281233c5f591bdcfd04f"
+        },
+        {
+          "ordinal": 1,
+          "houseId": "house-44-40-0",
+          "argumentsSha256": "822e7a6559596b178119b9312f3d47041dd9d61d015b225f54250774945e613a",
+          "resultSha256": "9c0534890037f4fdd202e4a64b19e59bd27e620acf32a0d8885336bd51c4b652"
+        },
+        {
+          "ordinal": 2,
+          "houseId": "house-44-42-0",
+          "argumentsSha256": "708dd5effa7ebdfe4885361dd7c2d538f0d4c177840422e780f648fe52eab493",
+          "resultSha256": "326df2c571d53309e412c0a81b84b34aca8e7d37e9c710018bb70cd2dbbba1be"
+        },
+        {
+          "ordinal": 3,
+          "houseId": "house-46-42-0",
+          "argumentsSha256": "79903e8adc081b9778d09b25eaa65845f8ac39828d75807e9dcdf9e8203767f2",
+          "resultSha256": "9a6215e92861352c20d3aa40c91bb1153865ff318351083b8220547d8e85ac8d"
+        },
+        {
+          "ordinal": 4,
+          "houseId": "construction-site-000004",
+          "argumentsSha256": "697177d61135e35fc466015ac1b359f82a86107ce9f0820d45a17b6b7040677b",
+          "resultSha256": "316d74baa407ce9cb51a3ead296ea403dbcabbce127c9d8ebd9c4063baad95ca"
+        },
+        {
+          "ordinal": 5,
+          "houseId": "construction-site-000006",
+          "argumentsSha256": "154c7e5e67ebe51837731b2be3765054c8ae88c2f3aaf6a9322c3f64d2f042f9",
+          "resultSha256": "e3030099bebfb9cb7359eb0c174be7b2564f05df76925d7c8c5417c084533f73"
+        },
+        {
+          "ordinal": 6,
+          "houseId": "construction-site-000007",
+          "argumentsSha256": "f8883380b5c963f63bd3e2ae50571b9d575355dcdc528f1d61466efeaf628802",
+          "resultSha256": "294ce648c92bcca9d74ee15bc256d66a7630f630a5c7b4c1ba14c8fae87b3a45"
+        },
+        {
+          "ordinal": 7,
+          "houseId": "construction-site-000008",
+          "argumentsSha256": "3a0217dd8cf8e7db44a21c9853fb6b50fc759abbbfa529408bf0a79e92117218",
+          "resultSha256": "ae75b4557893ec0d4ea9814823c1b934c77a899b835d572f9f1453ea3795de66"
+        },
+        {
+          "ordinal": 8,
+          "houseId": "construction-site-000010",
+          "argumentsSha256": "7ffd011e0cbc68c5fcd77c6ad305b1907f5260fade83d3ea89b7b26b5411b1f0",
+          "resultSha256": "83d8267f2ffeb60c63a9734b704a32fa9340e7a9ed2af1244917b30f00651271"
+        },
+        {
+          "ordinal": 9,
+          "houseId": "construction-site-000011",
+          "argumentsSha256": "4b5e9ca6f15de351f80b95e907c773da425a11813cbdad745ab8a4ec864d258b",
+          "resultSha256": "a139f256ab1453bf4c8fa880237215599b4022ea62b62448280b545b4cd7f339"
+        },
+        {
+          "ordinal": 10,
+          "houseId": "construction-site-000012",
+          "argumentsSha256": "a0eb5e2cc98799187adbad01f2a081bedf6a8304a2c1be70cb0224b764630661",
+          "resultSha256": "98c18ca26162b8ed9f327345e247287c282bf0b3624e8fc3c51e69692c243b21"
+        },
+        {
+          "ordinal": 11,
+          "houseId": "construction-site-000013",
+          "argumentsSha256": "fd443f63b58862a6c8393183c822d1ca5cdc8a205d635ee7dd9aa53b0e008738",
+          "resultSha256": "39359062155fbfe5babeab64fa5986ee5827042093ceec90744e68d3ffcb6d4a"
+        },
+        {
+          "ordinal": 12,
+          "houseId": "construction-site-000014",
+          "argumentsSha256": "5a3c13608f8b6011914f06e8907a7ab554e1aa2f5a7a4baff2a5cbd168d03484",
+          "resultSha256": "5a32f30983003d638926208d412ef32975e26155f5f0ae0c84532224253907ed"
+        },
+        {
+          "ordinal": 13,
+          "houseId": "construction-site-000018",
+          "argumentsSha256": "3a60e34518af4a24f8d96b45af1c2374991c6eee20b54f327a79f850a1c03014",
+          "resultSha256": "e44e4cb763925e9e04185928c30b6d349408c6a0898c3448bb7dcbfaf9270a05"
+        },
+        {
+          "ordinal": 14,
+          "houseId": "construction-site-000019",
+          "argumentsSha256": "9eb5ac0ef7c42e6b1ca28418017dd2a903d71ba63bda3c54839363e67b6d9a9b",
+          "resultSha256": "0328c99f932f4ab89d87536cb6c35bba31bce72f766c76ff894971a4ccffecac"
+        },
+        {
+          "ordinal": 15,
+          "houseId": "construction-site-000022",
+          "argumentsSha256": "b16795bc7e64517ded108bc0e5c9f70290870a2f1237be7f57ca4d44c54aabdd",
+          "resultSha256": "ea1d4334cf049d06b1cd8594cd292f27183e3e123f287edcfbc2b0a57715c34b"
+        },
+        {
+          "ordinal": 16,
+          "houseId": "construction-site-000023",
+          "argumentsSha256": "9f408d7642d7cce07676ce70382a6414baf38a4e05b1c3a1c8e13ebf465120cd",
+          "resultSha256": "6bb0d2bda97dff45688d5ec5fb7ee5e06350c0e71818477d6a36829f3f65332d"
+        },
+        {
+          "ordinal": 17,
+          "houseId": "construction-site-000028",
+          "argumentsSha256": "c3d989212555c46e7a0f8377bda7f97c6b0f5945874ef17be77cb3ebb3f83e75",
+          "resultSha256": "d84f62b28584660e0708099496740ef782231b0b02ac7bc7f1ab4b2023f1818d"
+        },
+        {
+          "ordinal": 18,
+          "houseId": "construction-site-000029",
+          "argumentsSha256": "e5b32d62a83703bff2e095c7e22b7410123d373fdf68046d6d8b81b945f611e8",
+          "resultSha256": "674b7a62d43e1a6c76555a0329c6d8625fcebf8ddc2d333b048e62bc602c3092"
+        },
+        {
+          "ordinal": 19,
+          "houseId": "construction-site-000030",
+          "argumentsSha256": "a83a13f455de35ee3768a707160fe85ecca1770e18023e613a42af0b441b6ea8",
+          "resultSha256": "a6858fdd39f0545aa66ea8a88a7db5b5cd8aed47bf3e0da017803011c3bf033c"
+        },
+        {
+          "ordinal": 20,
+          "houseId": "construction-site-000031",
+          "argumentsSha256": "6d6ab91d8c2493cf2cb3bfcaabc2f5c695ce95d73d92b6ad8737bbe83f69347a",
+          "resultSha256": "b400c59cc16f12c0adc93f3a8f11048d7dae33b01f910300bb241d02b2951c28"
+        },
+        {
+          "ordinal": 21,
+          "houseId": "construction-site-000033",
+          "argumentsSha256": "7b007190167dfb06a7da386397d3eca9a34030ef40fcce6fbbf7bef8ecd9d4ab",
+          "resultSha256": "1af83e2e75dc7851e02f9f8159eeddac7cf3337612c8b2f0999fc0173867e4c9"
+        },
+        {
+          "ordinal": 22,
+          "houseId": "construction-site-000034",
+          "argumentsSha256": "cde99d1d0a915868773c45f8d7a77b5137827278e4139aa2aba518cf9cfeae5d",
+          "resultSha256": "023111a4f4cd10dd92a4adb3ed2114b2317cad9f4ea0cab483364354cf7d50b5"
+        },
+        {
+          "ordinal": 23,
+          "houseId": "construction-site-000035",
+          "argumentsSha256": "00ac02ef3bcaf81334edc55b385719988a41509a788532b0ba378559f9a91daa",
+          "resultSha256": "13f71635bc94fad1875e867da3f169fa0d56c7b9d0c3f51ad34ebcb8b36535ca"
+        }
+      ],
+      "nextCalls": [
+        {
+          "ordinal": 0,
+          "houseId": "house-46-40-0",
+          "argumentsSha256": "071c9ff63d7fa13b26f6668f9090498143d8babae42a85bd0297ee16f3a19ecc",
+          "resultSha256": "fdac6bee9ff7d3155f8f89375f031ab667e5e63301d3281233c5f591bdcfd04f"
+        },
+        {
+          "ordinal": 1,
+          "houseId": "house-44-40-0",
+          "argumentsSha256": "822e7a6559596b178119b9312f3d47041dd9d61d015b225f54250774945e613a",
+          "resultSha256": "9c0534890037f4fdd202e4a64b19e59bd27e620acf32a0d8885336bd51c4b652"
+        },
+        {
+          "ordinal": 2,
+          "houseId": "house-44-42-0",
+          "argumentsSha256": "708dd5effa7ebdfe4885361dd7c2d538f0d4c177840422e780f648fe52eab493",
+          "resultSha256": "326df2c571d53309e412c0a81b84b34aca8e7d37e9c710018bb70cd2dbbba1be"
+        },
+        {
+          "ordinal": 3,
+          "houseId": "house-46-42-0",
+          "argumentsSha256": "79903e8adc081b9778d09b25eaa65845f8ac39828d75807e9dcdf9e8203767f2",
+          "resultSha256": "9a6215e92861352c20d3aa40c91bb1153865ff318351083b8220547d8e85ac8d"
+        },
+        {
+          "ordinal": 4,
+          "houseId": "construction-site-000004",
+          "argumentsSha256": "697177d61135e35fc466015ac1b359f82a86107ce9f0820d45a17b6b7040677b",
+          "resultSha256": "316d74baa407ce9cb51a3ead296ea403dbcabbce127c9d8ebd9c4063baad95ca"
+        },
+        {
+          "ordinal": 5,
+          "houseId": "construction-site-000006",
+          "argumentsSha256": "154c7e5e67ebe51837731b2be3765054c8ae88c2f3aaf6a9322c3f64d2f042f9",
+          "resultSha256": "e3030099bebfb9cb7359eb0c174be7b2564f05df76925d7c8c5417c084533f73"
+        },
+        {
+          "ordinal": 6,
+          "houseId": "construction-site-000007",
+          "argumentsSha256": "f8883380b5c963f63bd3e2ae50571b9d575355dcdc528f1d61466efeaf628802",
+          "resultSha256": "294ce648c92bcca9d74ee15bc256d66a7630f630a5c7b4c1ba14c8fae87b3a45"
+        },
+        {
+          "ordinal": 7,
+          "houseId": "construction-site-000008",
+          "argumentsSha256": "3a0217dd8cf8e7db44a21c9853fb6b50fc759abbbfa529408bf0a79e92117218",
+          "resultSha256": "ae75b4557893ec0d4ea9814823c1b934c77a899b835d572f9f1453ea3795de66"
+        },
+        {
+          "ordinal": 8,
+          "houseId": "construction-site-000010",
+          "argumentsSha256": "7ffd011e0cbc68c5fcd77c6ad305b1907f5260fade83d3ea89b7b26b5411b1f0",
+          "resultSha256": "83d8267f2ffeb60c63a9734b704a32fa9340e7a9ed2af1244917b30f00651271"
+        },
+        {
+          "ordinal": 9,
+          "houseId": "construction-site-000011",
+          "argumentsSha256": "4b5e9ca6f15de351f80b95e907c773da425a11813cbdad745ab8a4ec864d258b",
+          "resultSha256": "a139f256ab1453bf4c8fa880237215599b4022ea62b62448280b545b4cd7f339"
+        },
+        {
+          "ordinal": 10,
+          "houseId": "construction-site-000012",
+          "argumentsSha256": "a0eb5e2cc98799187adbad01f2a081bedf6a8304a2c1be70cb0224b764630661",
+          "resultSha256": "98c18ca26162b8ed9f327345e247287c282bf0b3624e8fc3c51e69692c243b21"
+        },
+        {
+          "ordinal": 11,
+          "houseId": "construction-site-000013",
+          "argumentsSha256": "fd443f63b58862a6c8393183c822d1ca5cdc8a205d635ee7dd9aa53b0e008738",
+          "resultSha256": "39359062155fbfe5babeab64fa5986ee5827042093ceec90744e68d3ffcb6d4a"
+        },
+        {
+          "ordinal": 12,
+          "houseId": "construction-site-000014",
+          "argumentsSha256": "5a3c13608f8b6011914f06e8907a7ab554e1aa2f5a7a4baff2a5cbd168d03484",
+          "resultSha256": "5a32f30983003d638926208d412ef32975e26155f5f0ae0c84532224253907ed"
+        },
+        {
+          "ordinal": 13,
+          "houseId": "construction-site-000018",
+          "argumentsSha256": "3a60e34518af4a24f8d96b45af1c2374991c6eee20b54f327a79f850a1c03014",
+          "resultSha256": "e44e4cb763925e9e04185928c30b6d349408c6a0898c3448bb7dcbfaf9270a05"
+        },
+        {
+          "ordinal": 14,
+          "houseId": "construction-site-000019",
+          "argumentsSha256": "9eb5ac0ef7c42e6b1ca28418017dd2a903d71ba63bda3c54839363e67b6d9a9b",
+          "resultSha256": "0328c99f932f4ab89d87536cb6c35bba31bce72f766c76ff894971a4ccffecac"
+        },
+        {
+          "ordinal": 15,
+          "houseId": "construction-site-000022",
+          "argumentsSha256": "b16795bc7e64517ded108bc0e5c9f70290870a2f1237be7f57ca4d44c54aabdd",
+          "resultSha256": "ea1d4334cf049d06b1cd8594cd292f27183e3e123f287edcfbc2b0a57715c34b"
+        },
+        {
+          "ordinal": 16,
+          "houseId": "construction-site-000023",
+          "argumentsSha256": "9f408d7642d7cce07676ce70382a6414baf38a4e05b1c3a1c8e13ebf465120cd",
+          "resultSha256": "6bb0d2bda97dff45688d5ec5fb7ee5e06350c0e71818477d6a36829f3f65332d"
+        },
+        {
+          "ordinal": 17,
+          "houseId": "construction-site-000028",
+          "argumentsSha256": "c3d989212555c46e7a0f8377bda7f97c6b0f5945874ef17be77cb3ebb3f83e75",
+          "resultSha256": "d84f62b28584660e0708099496740ef782231b0b02ac7bc7f1ab4b2023f1818d"
+        },
+        {
+          "ordinal": 18,
+          "houseId": "construction-site-000029",
+          "argumentsSha256": "e5b32d62a83703bff2e095c7e22b7410123d373fdf68046d6d8b81b945f611e8",
+          "resultSha256": "674b7a62d43e1a6c76555a0329c6d8625fcebf8ddc2d333b048e62bc602c3092"
+        },
+        {
+          "ordinal": 19,
+          "houseId": "construction-site-000030",
+          "argumentsSha256": "a83a13f455de35ee3768a707160fe85ecca1770e18023e613a42af0b441b6ea8",
+          "resultSha256": "a6858fdd39f0545aa66ea8a88a7db5b5cd8aed47bf3e0da017803011c3bf033c"
+        },
+        {
+          "ordinal": 20,
+          "houseId": "construction-site-000031",
+          "argumentsSha256": "6d6ab91d8c2493cf2cb3bfcaabc2f5c695ce95d73d92b6ad8737bbe83f69347a",
+          "resultSha256": "b400c59cc16f12c0adc93f3a8f11048d7dae33b01f910300bb241d02b2951c28"
+        },
+        {
+          "ordinal": 21,
+          "houseId": "construction-site-000033",
+          "argumentsSha256": "7b007190167dfb06a7da386397d3eca9a34030ef40fcce6fbbf7bef8ecd9d4ab",
+          "resultSha256": "1af83e2e75dc7851e02f9f8159eeddac7cf3337612c8b2f0999fc0173867e4c9"
+        },
+        {
+          "ordinal": 22,
+          "houseId": "construction-site-000034",
+          "argumentsSha256": "cde99d1d0a915868773c45f8d7a77b5137827278e4139aa2aba518cf9cfeae5d",
+          "resultSha256": "023111a4f4cd10dd92a4adb3ed2114b2317cad9f4ea0cab483364354cf7d50b5"
+        },
+        {
+          "ordinal": 23,
+          "houseId": "construction-site-000035",
+          "argumentsSha256": "00ac02ef3bcaf81334edc55b385719988a41509a788532b0ba378559f9a91daa",
+          "resultSha256": "13f71635bc94fad1875e867da3f169fa0d56c7b9d0c3f51ad34ebcb8b36535ca"
+        }
+      ]
+    },
+    {
+      "origin": "original_exported_function_on_recorded_input",
+      "walkerId": "distributor:construction-site-000067:299760",
+      "current": {
+        "tx": 47,
+        "ty": 40
+      },
+      "remainingRangeDerived": 16,
+      "minimumEdges": 1,
+      "replaySelectedHouseId": "house-46-42-0",
+      "replaySelectedMeals": 0,
+      "replaySelectedPath": [
+        {
+          "tx": 47,
+          "ty": 40
+        },
+        {
+          "tx": 47,
+          "ty": 41
+        },
+        {
+          "tx": 46,
+          "ty": 41
+        }
+      ],
+      "replayNextTile": {
+        "tx": 47,
+        "ty": 41
+      },
+      "recordedReconstructedStageNextTile": {
+        "tx": 47,
+        "ty": 41
+      },
+      "nextTileEqual": true,
+      "directOfficialSelectionObserved": false,
+      "targetPredicateEvaluation": {
+        "origin": "source_predicate_evaluation_not_observed_branch",
+        "breadStock": 0,
+        "capacityFromOriginalFunction": 3,
+        "pathEdges": 19,
+        "stockBelowCapacity": true,
+        "pathPresent": true,
+        "meetsMinimum": true,
+        "fitsRemainingRange": false
+      },
+      "sameNextTileHouseIds": [
+        "house-46-42-0",
+        "construction-site-000004",
+        "construction-site-000010",
+        "construction-site-000011",
+        "construction-site-000012"
+      ],
+      "bestCalls": [
+        {
+          "ordinal": 0,
+          "houseId": "house-44-40-0",
+          "argumentsSha256": "619929a458f687d9b2de88d099f98479379b0c75287ccc200c7e79508c6521c8",
+          "resultSha256": "cf06de3f1533883970d2902b520484d01da9b7381d8f0128c1ccfab74262037d"
+        },
+        {
+          "ordinal": 1,
+          "houseId": "house-44-42-0",
+          "argumentsSha256": "d6d2ac4e3aa1afdda9aa88e1f63baa9c3f6e2ec9886f36acfb17a0d2f23d9371",
+          "resultSha256": "dff1a0780804f79123385346230d26a339a711b3012922471713a4b940fd6409"
+        },
+        {
+          "ordinal": 2,
+          "houseId": "house-46-42-0",
+          "argumentsSha256": "e57f694cbfaf66e27f52380ef18e97eab12a9417752abb451576de8597fa3565",
+          "resultSha256": "2ca79c3fe8870a3d4270a77baeebe8677e0845c9ee25c3bec6ccf12dd793832f"
+        },
+        {
+          "ordinal": 3,
+          "houseId": "construction-site-000004",
+          "argumentsSha256": "7bf28a1be6398d1e2b2029c31b3986658dee48c3e1f0ff95d4b61e103baa3c41",
+          "resultSha256": "0a6e756583193fa2f04ce1134ffa9ce0f495430a19a141903be20c8a3a18ae37"
+        },
+        {
+          "ordinal": 4,
+          "houseId": "construction-site-000006",
+          "argumentsSha256": "92183d198e32114c7b73ae5e3f8e5032e44ebb8b7cc4ca7fa3e35e82db4f13eb",
+          "resultSha256": "de4674e16a98870cb0b0d0396eb18b108a131b1765821e0efacd7d8b717e50de"
+        },
+        {
+          "ordinal": 5,
+          "houseId": "construction-site-000007",
+          "argumentsSha256": "3ef88eb3dc0278fdcb93c7962bcd8e3d4eecd7279640df2d6d072a3c8a38f73c",
+          "resultSha256": "5b8b38fe6fd6bf3699fe7dc62a22836550e421998e029b18aa83761a7b3d68a6"
+        },
+        {
+          "ordinal": 6,
+          "houseId": "construction-site-000010",
+          "argumentsSha256": "a94f490210a86a46fb02ab7f49ad095e6286fd55c3793064267568a8bb34ddd9",
+          "resultSha256": "26e16698fceed8cb4cb7b7292354c094a82d210b9e3e35f6b8210f6fd05df783"
+        },
+        {
+          "ordinal": 7,
+          "houseId": "construction-site-000011",
+          "argumentsSha256": "41eced64c58e1ac206f34a9d7827beafd076638379bbb1ab75d453e3a2f4dff1",
+          "resultSha256": "e0db3144b1abece6a8d64b74427fd830dbb5858ebba2ad1672687aee755aac2f"
+        },
+        {
+          "ordinal": 8,
+          "houseId": "construction-site-000012",
+          "argumentsSha256": "8d797898cffd04a69eb8c8b9cd22c4e2f26d16df8ca81c8b046ff31b6458eebd",
+          "resultSha256": "42be64b1bb14b890562941b91cc5cecb7656c2b520e78e7bd9cff59ff8e551ef"
+        },
+        {
+          "ordinal": 9,
+          "houseId": "construction-site-000013",
+          "argumentsSha256": "493a777b3d4cddb7b11bcc10ea6204949b0d162afe5f4cd2487bf195be0c500b",
+          "resultSha256": "051e4c7b6bd5a419f2ddd8a41c1939df9b11bae6e2f1063c73b12cc8a85bc89d"
+        },
+        {
+          "ordinal": 10,
+          "houseId": "construction-site-000014",
+          "argumentsSha256": "60ddca34d3a096b315536f03e3f073a611d06bdb000251186ff5283cd5c2becc",
+          "resultSha256": "efaea0cd546f611d531805de5598b68d76e9d02d278528bc3d5962de10844daa"
+        },
+        {
+          "ordinal": 11,
+          "houseId": "construction-site-000018",
+          "argumentsSha256": "08668df63398540c5ebe4ec0fb6ba7070a9c147eab1528673af97847c2613081",
+          "resultSha256": "49f6bcf6d7ad1427f5e6f4d360c1b90216d1ae03dcbb216b6a4b38951dd3e1bf"
+        },
+        {
+          "ordinal": 12,
+          "houseId": "construction-site-000019",
+          "argumentsSha256": "ffb7df1e622cefa09b73afbfc14636fa88a6615bca09fba475897c77dc713ad3",
+          "resultSha256": "748c1217b093f4523a43b03fc5f68b10b756de6f2d9bed8f380f4a9a2b764c54"
+        },
+        {
+          "ordinal": 13,
+          "houseId": "construction-site-000022",
+          "argumentsSha256": "c08e4bf6101c0cba14b4567341e004ba29d69b41472a16326a708d23bbeafec8",
+          "resultSha256": "d79cd8e54d2a573ef3fa1c115b210f13e0fdd9a64d97df2b1bac1bf70d78058f"
+        },
+        {
+          "ordinal": 14,
+          "houseId": "construction-site-000023",
+          "argumentsSha256": "8755741133ac2bf9a6e85a0b576e19767ddda02e3304ee21ec9629f337f49226",
+          "resultSha256": "0d9a481be1852a58580b41171033e7c4ffded16babebe488979fcd87c021315c"
+        },
+        {
+          "ordinal": 15,
+          "houseId": "construction-site-000028",
+          "argumentsSha256": "ab01be37a5fbb7dd7a89c06f9c817b169defe27a9576d0ec15decd9a844c41fa",
+          "resultSha256": "6acfb16258befffb321e16f9a3aaf724eed0c2101d422e62b0f7ba82557edb76"
+        },
+        {
+          "ordinal": 16,
+          "houseId": "construction-site-000029",
+          "argumentsSha256": "71e0f5b158188ce36749cc527aa14583d6cdf37f01e0712db53e8681f6b54f14",
+          "resultSha256": "327822875d03d2ad9cb014e4fe0b4cc7fc1ad931c557813fd97ebd2537594432"
+        },
+        {
+          "ordinal": 17,
+          "houseId": "construction-site-000030",
+          "argumentsSha256": "a9999f40759207233b91ea277db22a06da1feb49090b4e70fe15c8a84d18bd0a",
+          "resultSha256": "ce27fd7a05457b5d8007c8345dd08715dd67babe90a69f6151a823495fb5554a"
+        },
+        {
+          "ordinal": 18,
+          "houseId": "construction-site-000031",
+          "argumentsSha256": "5ad5796748fade7bd6fda64251e03dd1514f8d63ee44df4a4531fbcd76f1e7b7",
+          "resultSha256": "66fde3dfe532fc160b38258dce1c9b58d73564cd9dbeba1d523b35ce216d876d"
+        },
+        {
+          "ordinal": 19,
+          "houseId": "construction-site-000033",
+          "argumentsSha256": "c5a3e5293cc226a631c50068746e69b30853bb176178a83773f10d480cd5a7fd",
+          "resultSha256": "9d87928f9d9ec6906ca928534268737a62c2f3bc62fd5d4cb2ee5e65aa7a1d9d"
+        },
+        {
+          "ordinal": 20,
+          "houseId": "construction-site-000034",
+          "argumentsSha256": "3f2d2ddbfc004131cc9aad61fef7db37eb978d10edddeb3c8ff124a3ad877abb",
+          "resultSha256": "b1c7d367d9d5eed7f8a147e4c5e51d1302012419f57f1d735b8c5a81a95f2b28"
+        },
+        {
+          "ordinal": 21,
+          "houseId": "construction-site-000035",
+          "argumentsSha256": "755abf37c2b25d285c5af5cb628bb8dcb64e15c2b39bba54eb9f18ca09fe7211",
+          "resultSha256": "a0ce1ce8f67dde67facdcccb97c9f0b6bec0475a8013cd52b082c379cd19ba92"
+        }
+      ],
+      "nextCalls": [
+        {
+          "ordinal": 0,
+          "houseId": "house-44-40-0",
+          "argumentsSha256": "619929a458f687d9b2de88d099f98479379b0c75287ccc200c7e79508c6521c8",
+          "resultSha256": "cf06de3f1533883970d2902b520484d01da9b7381d8f0128c1ccfab74262037d"
+        },
+        {
+          "ordinal": 1,
+          "houseId": "house-44-42-0",
+          "argumentsSha256": "d6d2ac4e3aa1afdda9aa88e1f63baa9c3f6e2ec9886f36acfb17a0d2f23d9371",
+          "resultSha256": "dff1a0780804f79123385346230d26a339a711b3012922471713a4b940fd6409"
+        },
+        {
+          "ordinal": 2,
+          "houseId": "house-46-42-0",
+          "argumentsSha256": "e57f694cbfaf66e27f52380ef18e97eab12a9417752abb451576de8597fa3565",
+          "resultSha256": "2ca79c3fe8870a3d4270a77baeebe8677e0845c9ee25c3bec6ccf12dd793832f"
+        },
+        {
+          "ordinal": 3,
+          "houseId": "construction-site-000004",
+          "argumentsSha256": "7bf28a1be6398d1e2b2029c31b3986658dee48c3e1f0ff95d4b61e103baa3c41",
+          "resultSha256": "0a6e756583193fa2f04ce1134ffa9ce0f495430a19a141903be20c8a3a18ae37"
+        },
+        {
+          "ordinal": 4,
+          "houseId": "construction-site-000006",
+          "argumentsSha256": "92183d198e32114c7b73ae5e3f8e5032e44ebb8b7cc4ca7fa3e35e82db4f13eb",
+          "resultSha256": "de4674e16a98870cb0b0d0396eb18b108a131b1765821e0efacd7d8b717e50de"
+        },
+        {
+          "ordinal": 5,
+          "houseId": "construction-site-000007",
+          "argumentsSha256": "3ef88eb3dc0278fdcb93c7962bcd8e3d4eecd7279640df2d6d072a3c8a38f73c",
+          "resultSha256": "5b8b38fe6fd6bf3699fe7dc62a22836550e421998e029b18aa83761a7b3d68a6"
+        },
+        {
+          "ordinal": 6,
+          "houseId": "construction-site-000010",
+          "argumentsSha256": "a94f490210a86a46fb02ab7f49ad095e6286fd55c3793064267568a8bb34ddd9",
+          "resultSha256": "26e16698fceed8cb4cb7b7292354c094a82d210b9e3e35f6b8210f6fd05df783"
+        },
+        {
+          "ordinal": 7,
+          "houseId": "construction-site-000011",
+          "argumentsSha256": "41eced64c58e1ac206f34a9d7827beafd076638379bbb1ab75d453e3a2f4dff1",
+          "resultSha256": "e0db3144b1abece6a8d64b74427fd830dbb5858ebba2ad1672687aee755aac2f"
+        },
+        {
+          "ordinal": 8,
+          "houseId": "construction-site-000012",
+          "argumentsSha256": "8d797898cffd04a69eb8c8b9cd22c4e2f26d16df8ca81c8b046ff31b6458eebd",
+          "resultSha256": "42be64b1bb14b890562941b91cc5cecb7656c2b520e78e7bd9cff59ff8e551ef"
+        },
+        {
+          "ordinal": 9,
+          "houseId": "construction-site-000013",
+          "argumentsSha256": "493a777b3d4cddb7b11bcc10ea6204949b0d162afe5f4cd2487bf195be0c500b",
+          "resultSha256": "051e4c7b6bd5a419f2ddd8a41c1939df9b11bae6e2f1063c73b12cc8a85bc89d"
+        },
+        {
+          "ordinal": 10,
+          "houseId": "construction-site-000014",
+          "argumentsSha256": "60ddca34d3a096b315536f03e3f073a611d06bdb000251186ff5283cd5c2becc",
+          "resultSha256": "efaea0cd546f611d531805de5598b68d76e9d02d278528bc3d5962de10844daa"
+        },
+        {
+          "ordinal": 11,
+          "houseId": "construction-site-000018",
+          "argumentsSha256": "08668df63398540c5ebe4ec0fb6ba7070a9c147eab1528673af97847c2613081",
+          "resultSha256": "49f6bcf6d7ad1427f5e6f4d360c1b90216d1ae03dcbb216b6a4b38951dd3e1bf"
+        },
+        {
+          "ordinal": 12,
+          "houseId": "construction-site-000019",
+          "argumentsSha256": "ffb7df1e622cefa09b73afbfc14636fa88a6615bca09fba475897c77dc713ad3",
+          "resultSha256": "748c1217b093f4523a43b03fc5f68b10b756de6f2d9bed8f380f4a9a2b764c54"
+        },
+        {
+          "ordinal": 13,
+          "houseId": "construction-site-000022",
+          "argumentsSha256": "c08e4bf6101c0cba14b4567341e004ba29d69b41472a16326a708d23bbeafec8",
+          "resultSha256": "d79cd8e54d2a573ef3fa1c115b210f13e0fdd9a64d97df2b1bac1bf70d78058f"
+        },
+        {
+          "ordinal": 14,
+          "houseId": "construction-site-000023",
+          "argumentsSha256": "8755741133ac2bf9a6e85a0b576e19767ddda02e3304ee21ec9629f337f49226",
+          "resultSha256": "0d9a481be1852a58580b41171033e7c4ffded16babebe488979fcd87c021315c"
+        },
+        {
+          "ordinal": 15,
+          "houseId": "construction-site-000028",
+          "argumentsSha256": "ab01be37a5fbb7dd7a89c06f9c817b169defe27a9576d0ec15decd9a844c41fa",
+          "resultSha256": "6acfb16258befffb321e16f9a3aaf724eed0c2101d422e62b0f7ba82557edb76"
+        },
+        {
+          "ordinal": 16,
+          "houseId": "construction-site-000029",
+          "argumentsSha256": "71e0f5b158188ce36749cc527aa14583d6cdf37f01e0712db53e8681f6b54f14",
+          "resultSha256": "327822875d03d2ad9cb014e4fe0b4cc7fc1ad931c557813fd97ebd2537594432"
+        },
+        {
+          "ordinal": 17,
+          "houseId": "construction-site-000030",
+          "argumentsSha256": "a9999f40759207233b91ea277db22a06da1feb49090b4e70fe15c8a84d18bd0a",
+          "resultSha256": "ce27fd7a05457b5d8007c8345dd08715dd67babe90a69f6151a823495fb5554a"
+        },
+        {
+          "ordinal": 18,
+          "houseId": "construction-site-000031",
+          "argumentsSha256": "5ad5796748fade7bd6fda64251e03dd1514f8d63ee44df4a4531fbcd76f1e7b7",
+          "resultSha256": "66fde3dfe532fc160b38258dce1c9b58d73564cd9dbeba1d523b35ce216d876d"
+        },
+        {
+          "ordinal": 19,
+          "houseId": "construction-site-000033",
+          "argumentsSha256": "c5a3e5293cc226a631c50068746e69b30853bb176178a83773f10d480cd5a7fd",
+          "resultSha256": "9d87928f9d9ec6906ca928534268737a62c2f3bc62fd5d4cb2ee5e65aa7a1d9d"
+        },
+        {
+          "ordinal": 20,
+          "houseId": "construction-site-000034",
+          "argumentsSha256": "3f2d2ddbfc004131cc9aad61fef7db37eb978d10edddeb3c8ff124a3ad877abb",
+          "resultSha256": "b1c7d367d9d5eed7f8a147e4c5e51d1302012419f57f1d735b8c5a81a95f2b28"
+        },
+        {
+          "ordinal": 21,
+          "houseId": "construction-site-000035",
+          "argumentsSha256": "755abf37c2b25d285c5af5cb628bb8dcb64e15c2b39bba54eb9f18ca09fe7211",
+          "resultSha256": "a0ce1ce8f67dde67facdcccb97c9f0b6bec0475a8013cd52b082c379cd19ba92"
+        }
+      ]
+    },
+    {
+      "origin": "original_exported_function_on_recorded_input",
+      "walkerId": "distributor:granary-42-37-0:300000",
+      "current": {
+        "tx": 44,
+        "ty": 37
+      },
+      "remainingRangeDerived": 40,
+      "minimumEdges": 1,
+      "replaySelectedHouseId": "construction-site-000018",
+      "replaySelectedMeals": 0,
+      "replaySelectedPath": [
+        {
+          "tx": 44,
+          "ty": 37
+        },
+        {
+          "tx": 45,
+          "ty": 37
+        },
+        {
+          "tx": 46,
+          "ty": 37
+        }
+      ],
+      "replayNextTile": {
+        "tx": 45,
+        "ty": 37
+      },
+      "recordedReconstructedStageNextTile": {
+        "tx": 45,
+        "ty": 37
+      },
+      "nextTileEqual": true,
+      "directOfficialSelectionObserved": false,
+      "targetPredicateEvaluation": {
+        "origin": "source_predicate_evaluation_not_observed_branch",
+        "breadStock": 0,
+        "capacityFromOriginalFunction": 3,
+        "pathEdges": 19,
+        "stockBelowCapacity": true,
+        "pathPresent": true,
+        "meetsMinimum": true,
+        "fitsRemainingRange": true
+      },
+      "sameNextTileHouseIds": [
+        "house-44-40-0",
+        "house-44-42-0",
+        "house-46-42-0",
+        "construction-site-000004",
+        "construction-site-000006",
+        "construction-site-000007",
+        "construction-site-000010",
+        "construction-site-000011",
+        "construction-site-000012",
+        "construction-site-000013",
+        "construction-site-000014",
+        "construction-site-000018",
+        "construction-site-000019",
+        "construction-site-000022",
+        "construction-site-000023",
+        "construction-site-000028",
+        "construction-site-000029",
+        "construction-site-000030",
+        "construction-site-000031",
+        "construction-site-000033",
+        "construction-site-000034",
+        "construction-site-000035"
+      ],
+      "bestCalls": [
+        {
+          "ordinal": 0,
+          "houseId": "house-44-40-0",
+          "argumentsSha256": "2885f621ec380c3a59cffb456ae0dbc1119fc2de999dbacf93bd714d76e6976a",
+          "resultSha256": "bf242d974627ed2543eeda16d602f8a742dc20cc981949b9d18292b43ec89d51"
+        },
+        {
+          "ordinal": 1,
+          "houseId": "house-44-42-0",
+          "argumentsSha256": "d2cc7c7c9d90091868e68bdab2f858d2daf322ab0fc4c45ed7d5847d45f08e5d",
+          "resultSha256": "cdbbef7378c655dd7cc86c2c15dca6af64889494c61d8a5c87a445d7c327b9fe"
+        },
+        {
+          "ordinal": 2,
+          "houseId": "house-46-42-0",
+          "argumentsSha256": "042417307e7d4bf5a39c16e66f434786c6e6111b335782ae2fd37eb9d6f29437",
+          "resultSha256": "bec22ad359f1708b0ca4baa4073d2f03a7c67e7d5f1e263989ae44f62a64cd90"
+        },
+        {
+          "ordinal": 3,
+          "houseId": "construction-site-000004",
+          "argumentsSha256": "8c18463c4a0afebb8908376d3c4b17d4b37f4efef170fde2f8b77be837d39d3f",
+          "resultSha256": "288df142b811ffbbd04a95d3195e8bde791ec6fb5b411fdabe9f987a5f6e43b7"
+        },
+        {
+          "ordinal": 4,
+          "houseId": "construction-site-000006",
+          "argumentsSha256": "c4741843601aa6f1387e495c7e028560b84514fb659f16483d0e5afd831cee76",
+          "resultSha256": "c68b9cda6f838a57c3a25319297ff81ebdc099f421edc7bde38a9f57a06bf4b7"
+        },
+        {
+          "ordinal": 5,
+          "houseId": "construction-site-000007",
+          "argumentsSha256": "f0bd735cebefab4ca49a41b8e0ce68f2e7d76160eb6e5435a89d15466fc07c85",
+          "resultSha256": "4062da66a439a370361016cea8bb19feb5216e3f13afec18b850c390d987a735"
+        },
+        {
+          "ordinal": 6,
+          "houseId": "construction-site-000010",
+          "argumentsSha256": "1e019189e064df504f9587a4522a55e4c87de9b065ae5c078aab1e293da56925",
+          "resultSha256": "2fd462e6b53fede26c363173c75a6c74808d0f5db0d597b4e59f71ac32e90d49"
+        },
+        {
+          "ordinal": 7,
+          "houseId": "construction-site-000011",
+          "argumentsSha256": "f3bb3eff828a31d10d4d6c38ebff0c5844772bebf4b0fb96f21c5df0ac079379",
+          "resultSha256": "7597c0c4a6f463dcf7065e0c77924832f2e60046290aa2f93e1bddd82dacc62f"
+        },
+        {
+          "ordinal": 8,
+          "houseId": "construction-site-000012",
+          "argumentsSha256": "7cd631cc29044da5ea0af317b9a0db0ff1f56239aef9a4b9307b5491933690b8",
+          "resultSha256": "3a857bc5af92ce2bf66f93a02f35c13776a127f15a5b1da6e2e1ede43baf34b0"
+        },
+        {
+          "ordinal": 9,
+          "houseId": "construction-site-000013",
+          "argumentsSha256": "b252f8e4aaf57422fb1dd8ad9eb2ca2e1a2546a9b65bb447c04e7fe7090e136a",
+          "resultSha256": "f628e6ac7711258cf3f1f19cd9738cd35d68443c1d96fca4aae93169c181b79e"
+        },
+        {
+          "ordinal": 10,
+          "houseId": "construction-site-000014",
+          "argumentsSha256": "decdc68352426d31b95de40a98d91a775b6944dd03baea01cfd9c39960318a19",
+          "resultSha256": "cc9808b9cfb0538dc46c51282923991525c17a3766c803edcb6b823700f787ad"
+        },
+        {
+          "ordinal": 11,
+          "houseId": "construction-site-000018",
+          "argumentsSha256": "8e855c1fa9d0c349f601158aeed760dbed274fe66413fb948d789cdeb46fb629",
+          "resultSha256": "9da4ae6093adacf71c840f59627c8168888df5a13e23a228973f1dfa7192796c"
+        },
+        {
+          "ordinal": 12,
+          "houseId": "construction-site-000019",
+          "argumentsSha256": "bab08608fd771475b2c4ea5121e94cfed4f67f39f8b17d083668168428c7639c",
+          "resultSha256": "e10d542953679fc70499d28d743db41aa39e5c76066b0e892dd5e1cd3c59e926"
+        },
+        {
+          "ordinal": 13,
+          "houseId": "construction-site-000022",
+          "argumentsSha256": "1171296b4a0073f9a75a0f6a8736c0ad7bdbad864859282ebd46efab1f635098",
+          "resultSha256": "7f914d0657edcf2b06ff6e450ef90c2bba57bed4b759eaa7974d9bc10378aa04"
+        },
+        {
+          "ordinal": 14,
+          "houseId": "construction-site-000023",
+          "argumentsSha256": "37f4c42ae1a110d0313a1c153e3ab899df124c0ade2addf27390652ec2c65756",
+          "resultSha256": "d163c2bd6cfbfc32629f2cf28ee024892d6cabab798bf0e6282b015231dcf97b"
+        },
+        {
+          "ordinal": 15,
+          "houseId": "construction-site-000028",
+          "argumentsSha256": "c2292e4a4f1732e1135be7af44767e79dc4ca3e508b4ee88212965eee71b0fcd",
+          "resultSha256": "9e832a39ca145f1a1fbdc4c9e82c730c7ce109b85182e25a76a2f3785329e65e"
+        },
+        {
+          "ordinal": 16,
+          "houseId": "construction-site-000029",
+          "argumentsSha256": "c93c7617a1279168742b1f1c8d6c212ea69bd7dcb40b9da48d03212c3644014e",
+          "resultSha256": "23a84d7f992853f5d43e972406e2ced2a99dc83f91e7e0255f480cbbc62ca0a2"
+        },
+        {
+          "ordinal": 17,
+          "houseId": "construction-site-000030",
+          "argumentsSha256": "505420aa473576c58c51edd82dc122f0aea8d6ae8288b38b6aafbab2fae4b943",
+          "resultSha256": "82776a0e98faf0bda646bbcdf874f63eaaf200b2fbbe1a5b927e1d036b5acfca"
+        },
+        {
+          "ordinal": 18,
+          "houseId": "construction-site-000031",
+          "argumentsSha256": "64e76f1bef850c06a71b9f305b314102e967b29865f01fdb0487c28561635ce0",
+          "resultSha256": "f2ae4822e69e55815806b218b17eca27b55bc61a4b157386ad487cbe0c22a5d4"
+        },
+        {
+          "ordinal": 19,
+          "houseId": "construction-site-000033",
+          "argumentsSha256": "fac82284ff7a7d72a3765553b1550f8415667bf8dedb75f5dcb03928e86b9a0d",
+          "resultSha256": "c7bd2c85eb3dc5a9a8f7a2ab2906c98fa4db4c242be298baaa0fcbe776de60f5"
+        },
+        {
+          "ordinal": 20,
+          "houseId": "construction-site-000034",
+          "argumentsSha256": "d36a4ef02ae5806d512e38866eaab804b9818b4c6efaf546667c0d509bdb5aa4",
+          "resultSha256": "4a532e7bf896f3e18be17b76ac0493212dfcb180be3bf0aaaf2483396eba57e3"
+        },
+        {
+          "ordinal": 21,
+          "houseId": "construction-site-000035",
+          "argumentsSha256": "523ca478e70f9847a04fc79c86c622948b5a3e27105658113aedda63960e726e",
+          "resultSha256": "35e61be7e971cab9d4d80930e36f7fcbae9ec5b1bf8e508a2b6244acabc0a1e7"
+        }
+      ],
+      "nextCalls": [
+        {
+          "ordinal": 0,
+          "houseId": "house-44-40-0",
+          "argumentsSha256": "2885f621ec380c3a59cffb456ae0dbc1119fc2de999dbacf93bd714d76e6976a",
+          "resultSha256": "bf242d974627ed2543eeda16d602f8a742dc20cc981949b9d18292b43ec89d51"
+        },
+        {
+          "ordinal": 1,
+          "houseId": "house-44-42-0",
+          "argumentsSha256": "d2cc7c7c9d90091868e68bdab2f858d2daf322ab0fc4c45ed7d5847d45f08e5d",
+          "resultSha256": "cdbbef7378c655dd7cc86c2c15dca6af64889494c61d8a5c87a445d7c327b9fe"
+        },
+        {
+          "ordinal": 2,
+          "houseId": "house-46-42-0",
+          "argumentsSha256": "042417307e7d4bf5a39c16e66f434786c6e6111b335782ae2fd37eb9d6f29437",
+          "resultSha256": "bec22ad359f1708b0ca4baa4073d2f03a7c67e7d5f1e263989ae44f62a64cd90"
+        },
+        {
+          "ordinal": 3,
+          "houseId": "construction-site-000004",
+          "argumentsSha256": "8c18463c4a0afebb8908376d3c4b17d4b37f4efef170fde2f8b77be837d39d3f",
+          "resultSha256": "288df142b811ffbbd04a95d3195e8bde791ec6fb5b411fdabe9f987a5f6e43b7"
+        },
+        {
+          "ordinal": 4,
+          "houseId": "construction-site-000006",
+          "argumentsSha256": "c4741843601aa6f1387e495c7e028560b84514fb659f16483d0e5afd831cee76",
+          "resultSha256": "c68b9cda6f838a57c3a25319297ff81ebdc099f421edc7bde38a9f57a06bf4b7"
+        },
+        {
+          "ordinal": 5,
+          "houseId": "construction-site-000007",
+          "argumentsSha256": "f0bd735cebefab4ca49a41b8e0ce68f2e7d76160eb6e5435a89d15466fc07c85",
+          "resultSha256": "4062da66a439a370361016cea8bb19feb5216e3f13afec18b850c390d987a735"
+        },
+        {
+          "ordinal": 6,
+          "houseId": "construction-site-000010",
+          "argumentsSha256": "1e019189e064df504f9587a4522a55e4c87de9b065ae5c078aab1e293da56925",
+          "resultSha256": "2fd462e6b53fede26c363173c75a6c74808d0f5db0d597b4e59f71ac32e90d49"
+        },
+        {
+          "ordinal": 7,
+          "houseId": "construction-site-000011",
+          "argumentsSha256": "f3bb3eff828a31d10d4d6c38ebff0c5844772bebf4b0fb96f21c5df0ac079379",
+          "resultSha256": "7597c0c4a6f463dcf7065e0c77924832f2e60046290aa2f93e1bddd82dacc62f"
+        },
+        {
+          "ordinal": 8,
+          "houseId": "construction-site-000012",
+          "argumentsSha256": "7cd631cc29044da5ea0af317b9a0db0ff1f56239aef9a4b9307b5491933690b8",
+          "resultSha256": "3a857bc5af92ce2bf66f93a02f35c13776a127f15a5b1da6e2e1ede43baf34b0"
+        },
+        {
+          "ordinal": 9,
+          "houseId": "construction-site-000013",
+          "argumentsSha256": "b252f8e4aaf57422fb1dd8ad9eb2ca2e1a2546a9b65bb447c04e7fe7090e136a",
+          "resultSha256": "f628e6ac7711258cf3f1f19cd9738cd35d68443c1d96fca4aae93169c181b79e"
+        },
+        {
+          "ordinal": 10,
+          "houseId": "construction-site-000014",
+          "argumentsSha256": "decdc68352426d31b95de40a98d91a775b6944dd03baea01cfd9c39960318a19",
+          "resultSha256": "cc9808b9cfb0538dc46c51282923991525c17a3766c803edcb6b823700f787ad"
+        },
+        {
+          "ordinal": 11,
+          "houseId": "construction-site-000018",
+          "argumentsSha256": "8e855c1fa9d0c349f601158aeed760dbed274fe66413fb948d789cdeb46fb629",
+          "resultSha256": "9da4ae6093adacf71c840f59627c8168888df5a13e23a228973f1dfa7192796c"
+        },
+        {
+          "ordinal": 12,
+          "houseId": "construction-site-000019",
+          "argumentsSha256": "bab08608fd771475b2c4ea5121e94cfed4f67f39f8b17d083668168428c7639c",
+          "resultSha256": "e10d542953679fc70499d28d743db41aa39e5c76066b0e892dd5e1cd3c59e926"
+        },
+        {
+          "ordinal": 13,
+          "houseId": "construction-site-000022",
+          "argumentsSha256": "1171296b4a0073f9a75a0f6a8736c0ad7bdbad864859282ebd46efab1f635098",
+          "resultSha256": "7f914d0657edcf2b06ff6e450ef90c2bba57bed4b759eaa7974d9bc10378aa04"
+        },
+        {
+          "ordinal": 14,
+          "houseId": "construction-site-000023",
+          "argumentsSha256": "37f4c42ae1a110d0313a1c153e3ab899df124c0ade2addf27390652ec2c65756",
+          "resultSha256": "d163c2bd6cfbfc32629f2cf28ee024892d6cabab798bf0e6282b015231dcf97b"
+        },
+        {
+          "ordinal": 15,
+          "houseId": "construction-site-000028",
+          "argumentsSha256": "c2292e4a4f1732e1135be7af44767e79dc4ca3e508b4ee88212965eee71b0fcd",
+          "resultSha256": "9e832a39ca145f1a1fbdc4c9e82c730c7ce109b85182e25a76a2f3785329e65e"
+        },
+        {
+          "ordinal": 16,
+          "houseId": "construction-site-000029",
+          "argumentsSha256": "c93c7617a1279168742b1f1c8d6c212ea69bd7dcb40b9da48d03212c3644014e",
+          "resultSha256": "23a84d7f992853f5d43e972406e2ced2a99dc83f91e7e0255f480cbbc62ca0a2"
+        },
+        {
+          "ordinal": 17,
+          "houseId": "construction-site-000030",
+          "argumentsSha256": "505420aa473576c58c51edd82dc122f0aea8d6ae8288b38b6aafbab2fae4b943",
+          "resultSha256": "82776a0e98faf0bda646bbcdf874f63eaaf200b2fbbe1a5b927e1d036b5acfca"
+        },
+        {
+          "ordinal": 18,
+          "houseId": "construction-site-000031",
+          "argumentsSha256": "64e76f1bef850c06a71b9f305b314102e967b29865f01fdb0487c28561635ce0",
+          "resultSha256": "f2ae4822e69e55815806b218b17eca27b55bc61a4b157386ad487cbe0c22a5d4"
+        },
+        {
+          "ordinal": 19,
+          "houseId": "construction-site-000033",
+          "argumentsSha256": "fac82284ff7a7d72a3765553b1550f8415667bf8dedb75f5dcb03928e86b9a0d",
+          "resultSha256": "c7bd2c85eb3dc5a9a8f7a2ab2906c98fa4db4c242be298baaa0fcbe776de60f5"
+        },
+        {
+          "ordinal": 20,
+          "houseId": "construction-site-000034",
+          "argumentsSha256": "d36a4ef02ae5806d512e38866eaab804b9818b4c6efaf546667c0d509bdb5aa4",
+          "resultSha256": "4a532e7bf896f3e18be17b76ac0493212dfcb180be3bf0aaaf2483396eba57e3"
+        },
+        {
+          "ordinal": 21,
+          "houseId": "construction-site-000035",
+          "argumentsSha256": "523ca478e70f9847a04fc79c86c622948b5a3e27105658113aedda63960e726e",
+          "resultSha256": "35e61be7e971cab9d4d80930e36f7fcbae9ec5b1bf8e508a2b6244acabc0a1e7"
+        }
+      ]
+    }
+  ]
+}

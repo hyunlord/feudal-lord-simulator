@@ -1,0 +1,40 @@
+{
+  "status": "all_candidates_uninstalled",
+  "blocks": [
+    {
+      "variantId": "marriage.brother_in_law_born.r06life.lord",
+      "status": "BLOCK_UNPROVEN_REMARRIAGE_FACTLINE",
+      "headline": "계약 당시 영주 본인이 맺은 혼인의 상대 가문에 아들이 태어나 상속 기대가 줄었다.",
+      "originalFactLine": "이웃 영주가 다시 장가들어 아들을 얻었다 — 상속 기대가 줄었다",
+      "proposedFactLine": "이웃 영주에게 아들이 태어났다 — 상속 기대가 줄었다",
+      "reason": "advanceMarriage creates a son with fatherId, but does not record a remarriage or new wife. Birth does not prove remarriage.",
+      "engineModified": false
+    },
+    {
+      "variantId": "marriage.brother_in_law_born.r06life.son",
+      "status": "BLOCK_UNPROVEN_REMARRIAGE_FACTLINE",
+      "headline": "계약 당시 영주의 아들이 맺은 혼인의 상대 가문에 아들이 태어나 상속 기대가 줄었다.",
+      "originalFactLine": "이웃 영주가 다시 장가들어 아들을 얻었다 — 상속 기대가 줄었다",
+      "proposedFactLine": "이웃 영주에게 아들이 태어났다 — 상속 기대가 줄었다",
+      "reason": "advanceMarriage creates a son with fatherId, but does not record a remarriage or new wife. Birth does not prove remarriage.",
+      "engineModified": false
+    },
+    {
+      "variantId": "marriage.brother_in_law_born.r06life.kin",
+      "status": "BLOCK_UNPROVEN_REMARRIAGE_FACTLINE",
+      "headline": "계약 당시 영주의 형제·조카·사촌 중 한 사람이 맺은 혼인의 상대 가문에 아들이 태어나 상속 기대가 줄었다.",
+      "originalFactLine": "이웃 영주가 다시 장가들어 아들을 얻었다 — 상속 기대가 줄었다",
+      "proposedFactLine": "이웃 영주에게 아들이 태어났다 — 상속 기대가 줄었다",
+      "reason": "advanceMarriage creates a son with fatherId, but does not record a remarriage or new wife. Birth does not prove remarriage.",
+      "engineModified": false
+    }
+  ],
+  "allVariantsRequireProvenanceAdapter": true,
+  "additionalPitfalls": [
+    "father_ill is the scripted illness flag; no diagnosis or prognosis inferred",
+    "father_died source treats missing oldLord like dead; contextual author requires actual verified identity/death or fallback",
+    "deferred_void clears contingent debt assumption, not original debt",
+    "contested means estate currently transferred to rival; no suit filed or victory implied"
+  ],
+  "completionBoundary": "Engine implementation not required for requested draft delivery."
+}

@@ -1,0 +1,157 @@
+{
+  "rows": 6,
+  "negativeCases": 30,
+  "results": [
+    {
+      "variant": "promise_payment.r06purpose.kept",
+      "mutated": "purpose",
+      "rejected": true
+    },
+    {
+      "variant": "promise_payment.r06purpose.kept",
+      "mutated": "category",
+      "rejected": true
+    },
+    {
+      "variant": "promise_payment.r06purpose.kept",
+      "mutated": "id",
+      "rejected": true
+    },
+    {
+      "variant": "promise_payment.r06purpose.kept",
+      "mutated": "requiredSlots",
+      "rejected": true
+    },
+    {
+      "variant": "promise_payment.r06purpose.kept",
+      "mutated": "text",
+      "rejected": true
+    },
+    {
+      "variant": "promise_payment.r06purpose.will_favour",
+      "mutated": "purpose",
+      "rejected": true
+    },
+    {
+      "variant": "promise_payment.r06purpose.will_favour",
+      "mutated": "category",
+      "rejected": true
+    },
+    {
+      "variant": "promise_payment.r06purpose.will_favour",
+      "mutated": "id",
+      "rejected": true
+    },
+    {
+      "variant": "promise_payment.r06purpose.will_favour",
+      "mutated": "requiredSlots",
+      "rejected": true
+    },
+    {
+      "variant": "promise_payment.r06purpose.will_favour",
+      "mutated": "text",
+      "rejected": true
+    },
+    {
+      "variant": "royal_subsidy.r06purpose.tax",
+      "mutated": "purpose",
+      "rejected": true
+    },
+    {
+      "variant": "royal_subsidy.r06purpose.tax",
+      "mutated": "category",
+      "rejected": true
+    },
+    {
+      "variant": "royal_subsidy.r06purpose.tax",
+      "mutated": "id",
+      "rejected": true
+    },
+    {
+      "variant": "royal_subsidy.r06purpose.tax",
+      "mutated": "requiredSlots",
+      "rejected": true
+    },
+    {
+      "variant": "royal_subsidy.r06purpose.tax",
+      "mutated": "text",
+      "rejected": true
+    },
+    {
+      "variant": "royal_subsidy.r06purpose.confirmation",
+      "mutated": "purpose",
+      "rejected": true
+    },
+    {
+      "variant": "royal_subsidy.r06purpose.confirmation",
+      "mutated": "category",
+      "rejected": true
+    },
+    {
+      "variant": "royal_subsidy.r06purpose.confirmation",
+      "mutated": "id",
+      "rejected": true
+    },
+    {
+      "variant": "royal_subsidy.r06purpose.confirmation",
+      "mutated": "requiredSlots",
+      "rejected": true
+    },
+    {
+      "variant": "royal_subsidy.r06purpose.confirmation",
+      "mutated": "text",
+      "rejected": true
+    },
+    {
+      "variant": "stall_fee.r06purpose.market",
+      "mutated": "purpose",
+      "rejected": true
+    },
+    {
+      "variant": "stall_fee.r06purpose.market",
+      "mutated": "category",
+      "rejected": true
+    },
+    {
+      "variant": "stall_fee.r06purpose.market",
+      "mutated": "id",
+      "rejected": true
+    },
+    {
+      "variant": "stall_fee.r06purpose.market",
+      "mutated": "requiredSlots",
+      "rejected": true
+    },
+    {
+      "variant": "stall_fee.r06purpose.market",
+      "mutated": "text",
+      "rejected": true
+    },
+    {
+      "variant": "stall_fee.r06purpose.alehouse",
+      "mutated": "purpose",
+      "rejected": true
+    },
+    {
+      "variant": "stall_fee.r06purpose.alehouse",
+      "mutated": "category",
+      "rejected": true
+    },
+    {
+      "variant": "stall_fee.r06purpose.alehouse",
+      "mutated": "id",
+      "rejected": true
+    },
+    {
+      "variant": "stall_fee.r06purpose.alehouse",
+      "mutated": "requiredSlots",
+      "rejected": true
+    },
+    {
+      "variant": "stall_fee.r06purpose.alehouse",
+      "mutated": "text",
+      "rejected": true
+    }
+  ],
+  "scope": "six variant rows; envelope metadata not schema-certified"
+}

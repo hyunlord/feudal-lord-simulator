@@ -1,0 +1,76 @@
+[
+  {
+    "file": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 375,
+        "end": 383,
+        "text": "    if (house.leavingSinceTick === undefined && old.leavingSinceTick !== undefined && house.abandonedTick === undefined) push(\"person.stayed\", 0);\n    if (house.foodShortSinceTick !== undefined && old.foodShortSinceTick === undefined) push(\"person.hungry\", 0);\n    if (house.foodShortSinceTick === undefined && old.foodShortSinceTick !== undefined && house.abandonedTick === undefined) push(\"person.fed\", 0);\n    if (house.hasWater !== old.hasWater) push(house.hasWater ? \"person.water\" : \"person.water_lost\", 0);\n    // Without persons (a town before save v16's first tick) the household's size is its own line.\n    if (after.persons === undefined) {\n      if (old.residents > 0 && house.residents > old.residents) push(\"person.grew\", 0, { params: { residents: house.residents } });\n      if (house.residents > 0 && house.residents < old.residents) push(\"person.shrank\", 0, { params: { residents: house.residents } });\n    }\n"
+      },
+      {
+        "start": 400,
+        "end": 404,
+        "text": "        nameFrom: person.nameFrom ?? \"common\", ...(person.godparentId === undefined ? {} : { godparentId: person.godparentId }) });\n      else if (person.role === \"spouse\") personRecord(person, \"person.married\", 0);\n      else if (person.role === \"kin\") personRecord(person, \"person.arrived\", 0);\n      else if (person.role === \"steward\") personRecord(person, \"person.steward\", 1);\n      continue;\n"
+      },
+      {
+        "start": 451,
+        "end": 466,
+        "text": "function milestoneDrafts(after: GameState, reached: ReadonlySet<string>): { readonly drafts: Draft[]; readonly ids: string[] } {\n  const drafts: Draft[] = [];\n  const ids: string[] = [];\n  const add = (id: string, template: string, params?: Readonly<Record<string, number | string>>) => {\n    if (reached.has(id)) return;\n    ids.push(id);\n    drafts.push({ tick: after.tick, kind: \"milestone\", template, ...(params === undefined ? {} : { params }), subject: TOWN, severity: 1 });\n  };\n  for (const kind of MILESTONE_BUILDINGS) if (after.buildings.some(building => building.kind === kind)) add(`building:${kind}`, \"milestone.first_building\", { building: kind });\n  if (after.era !== \"hamlet\") add(\"market_town\", \"milestone.market_town\");\n  if (after.era === \"stone_town\") add(\"stone_town\", \"milestone.stone_town\");\n  if (after.houses.some(house => house.level === 4)) add(\"first_l4\", \"milestone.first_l4\");\n  const lots = housingLotCount(after);\n  for (const threshold of LOT_MILESTONES) if (lots >= threshold) add(`lots:${threshold}`, \"milestone.lots\", { lots: threshold });\n  return { drafts, ids };\n}\n"
+      },
+      {
+        "start": 580,
+        "end": 585,
+        "text": "    drafts.push({ tick: after.tick, kind: \"milestone\", template: \"decline.recovered\", params: { right: was.decline.lost ?? \"none\" }, subject: TOWN, severity: 2 });\n  }\n  const chapter = after.politics?.chapter.number ?? 1;\n  if (chapter > (before.politics?.chapter.number ?? 1)) {\n    drafts.push({ tick: after.tick, kind: \"milestone\", template: \"milestone.chapter_start\", params: { chapter }, subject: TOWN, severity: 2 });\n  }\n"
+      },
+      {
+        "start": 788,
+        "end": 798,
+        "text": "  for (const era of (after.historicalEras ?? []).slice(beforeEras)) {\n    drafts.push({ tick: after.tick, kind: \"era\", template: \"era.entered\", params: { eraId: era.id, forced: era.forced ? 1 : 0 }, subject: TOWN, severity: 3,\n      thumbnail: { state: after, size: 256 } });\n  }\n  for (const end of (after.politics?.chapterEnds ?? []).slice(before.politics?.chapterEnds.length ?? 0)) {\n    drafts.push({ tick: after.tick, kind: \"milestone\", template: \"milestone.chapter_end\", params: { chapter: end.chapter }, subject: TOWN, severity: 3,\n      thumbnail: { state: after, size: 256 } });\n  }\n  drafts.push(...lordshipDrafts(before, after));\n  drafts.push(...warDrafts(before, after));\n  drafts.push(...plagueDrafts(before, after));\n"
+      }
+    ]
+  },
+  {
+    "file": "src/engine/politics.ts",
+    "sha256": "c78d456fa63bf7eb2fa48361919ff760da4a4e822c291559de6d12af9bf336cf",
+    "spans": [
+      {
+        "start": 342,
+        "end": 369,
+        "text": "export function endChapterFour(state: GameState): GameState {\n  const politics = politicsOf(state);\n  if (politics.chapter.number !== CHAPTER_FOUR.chapter || chapterEnd(state, CHAPTER_FOUR.chapter) !== null) return state;\n  const page = chronicleEntry(state);\n  const r = state.reorganisation;\n  const startYear = scenarioOf(state).startYear;\n  const chronicle: ChronicleEntry = r?.chapterFiveStart === undefined ? page : { ...page, stats: { ...page.stats, reorganisation: {\n    startYear: calendar(r.startTick, startYear).year, wageLeavers: r.wageLeavers, weaverLeavers: r.weaverLeavers,\n    clothSold: r.clothSold, clothIncome: r.clothIncome, guild: r.guild !== undefined, pollTax: r.pollTax,\n    rebellion: r.rebellion?.outcome ?? null, charter: r.chapterFiveStart.charter,\n    townInfluence: r.influence.town ?? 0, merchantInfluence: r.influence.merchant_house_1 ?? 0 } } };\n  return { ...state, politics: { ...politics,\n    chapterEnds: [...politics.chapterEnds, { chapter: CHAPTER_FOUR.chapter, tick: state.tick, chronicle }],\n    chapter: { number: CHAPTER_FOUR.chapter + 1, startTick: state.tick, populationStart: state.population, peakPopulation: state.population } } };\n}\n\n/**\n * F5-A (LG-8): chapter 5 ends at the last market day of 1450 — its chronicle page is written (with the legacy's line);\n * the campaign is won (FL-9: its last chapter's end). No chapter follows.\n */\nexport function endChapterFive(state: GameState): GameState {\n  const politics = politicsOf(state);\n  if (politics.chapter.number !== CHAPTER_FIVE.chapter || chapterEnd(state, CHAPTER_FIVE.chapter) !== null) return state;\n  const page = chronicleEntry(state);\n  const legacy = legacyChronicleStats(state);\n  const chronicle: ChronicleEntry = legacy === undefined ? page : { ...page, stats: { ...page.stats, legacy } };\n  return { ...state, politics: { ...politics, chapterEnds: [...politics.chapterEnds, { chapter: CHAPTER_FIVE.chapter, tick: state.tick, chronicle }] } };\n}\n"
+      }
+    ]
+  },
+  {
+    "file": "src/content/historyCopy.ko.ts",
+    "sha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+    "spans": [
+      {
+        "start": 327,
+        "end": 336,
+        "text": "  \"milestone.market_town\": () => \"시장도시가 되었다\",\n  \"milestone.stone_town\": () => \"석벽 도시가 되었다\",\n  \"milestone.first_l4\": () => \"처음으로 도시 대가옥(L4)이 생겼다\",\n  \"milestone.lots\": params => `필지가 ${n(params, \"lots\")}개가 되었다`,\n  \"milestone.chapter_end\": params => `${n(params, \"chapter\")}장이 끝났다`,\n  // COPY-1e (CA-006): the treasury's change in money words (£ s d), the people counted.\n  \"ledger.season\": params => `계절 결산 — 인구 ${n(params, \"population\")}명(${n(params, \"popDelta\") >= 0 ? \"+\" : \"\"}${n(params, \"popDelta\")}명), 금고 ${moneyWordsFullDelta(n(params, \"net\"))}`, // COPY-1r CA-006: a confirmed sum, in full\n  \"ledger.population\": params => `인구가 한 계절에 ${n(params, \"percent\") >= 0 ? \"+\" : \"\"}${n(params, \"percent\")}% 바뀌었다`,\n  \"ledger.treasury_turn\": params => n(params, \"net\") >= 0 ? \"금고가 다시 늘기 시작했다\" : \"금고가 줄기 시작했다\",\n  \"ledger.l4\": params => `도시 대가옥이 ${n(params, \"from\")}채에서 ${n(params, \"to\")}채가 되었다`,\n"
+      },
+      {
+        "start": 355,
+        "end": 357,
+        "text": "  \"person.arrived\": () => \"친척이 와서 함께 살게 되었다\",\n  \"person.came_of_age\": () => \"어른이 되어 일을 거들기 시작했다\",\n  \"person.occupation\": params => `${HISTORY_OCCUPATIONS[s(params, \"occupation\")] ?? s(params, \"occupation\")} 일을 맡았다`,\n"
+      },
+      {
+        "start": 371,
+        "end": 371,
+        "text": "  \"person.grew\": params => `식구가 늘어 ${n(params, \"residents\")}명이 되었다`,\n"
+      }
+    ]
+  },
+  {
+    "file": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 43,
+        "end": 54,
+        "text": "export function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  }
+]

@@ -1,0 +1,418 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trusted proposed adapter output; not arbitrary user input",
+  "type": "object",
+  "required": [
+    "status",
+    "recordId",
+    "recordTick",
+    "template",
+    "sourceHead",
+    "captureKind",
+    "referenceVerified",
+    "fields"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "known",
+        "unknown"
+      ]
+    },
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordTick": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "template": {
+      "enum": [
+        "reorg.textile_street",
+        "reorg.alehouse_boom",
+        "legacy.charter_refused",
+        "legacy.last_market",
+        "decision.market_town",
+        "decision.stone_town",
+        "decision.rebuild",
+        "decision.wall_expand",
+        "decision.drainage"
+      ]
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "captureKind": {
+      "enum": [
+        "emission_snapshot",
+        "immutable_contract_reference"
+      ]
+    },
+    "referenceVerified": {
+      "type": "boolean"
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "aleMilestoneBeforeTextile": {
+          "enum": [
+            "already_recorded",
+            "same_tick",
+            "not_yet_recorded"
+          ]
+        },
+        "textileMilestoneBeforeAle": {
+          "enum": [
+            "already_recorded",
+            "same_tick",
+            "not_yet_recorded"
+          ]
+        },
+        "charterNonAcceptanceAtRecord": {
+          "enum": [
+            "refused",
+            "expired"
+          ]
+        },
+        "finalEndingAxis": {
+          "enum": [
+            "town",
+            "family",
+            "church"
+          ]
+        },
+        "marketBoundaryAtStart": {
+          "enum": [
+            "water_reach",
+            "land_ring"
+          ]
+        },
+        "stoneReplacementReadiness": {
+          "enum": [
+            "all_ready",
+            "partly_ready",
+            "none_ready"
+          ]
+        },
+        "rebuildOccupancyAtStart": {
+          "enum": [
+            "residents_present",
+            "empty"
+          ]
+        },
+        "expansionGateAtStart": {
+          "enum": [
+            "retained",
+            "moved"
+          ]
+        },
+        "drainageQueueAtStart": {
+          "enum": [
+            "sole_work",
+            "parallel_work"
+          ]
+        }
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "reorg.textile_street"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "aleMilestoneBeforeTextile"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "aleMilestoneBeforeTextile": {
+              "enum": [
+                "already_recorded",
+                "same_tick",
+                "not_yet_recorded"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "reorg.alehouse_boom"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "textileMilestoneBeforeAle"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "textileMilestoneBeforeAle": {
+              "enum": [
+                "already_recorded",
+                "same_tick",
+                "not_yet_recorded"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "legacy.charter_refused"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "charterNonAcceptanceAtRecord"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "charterNonAcceptanceAtRecord": {
+              "enum": [
+                "refused",
+                "expired"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "legacy.last_market"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "finalEndingAxis"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "finalEndingAxis": {
+              "enum": [
+                "town",
+                "family",
+                "church"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "decision.market_town"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "marketBoundaryAtStart"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "marketBoundaryAtStart": {
+              "enum": [
+                "water_reach",
+                "land_ring"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "decision.stone_town"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "stoneReplacementReadiness"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "stoneReplacementReadiness": {
+              "enum": [
+                "all_ready",
+                "partly_ready",
+                "none_ready"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "decision.rebuild"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "rebuildOccupancyAtStart"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "rebuildOccupancyAtStart": {
+              "enum": [
+                "residents_present",
+                "empty"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "decision.wall_expand"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "expansionGateAtStart"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "expansionGateAtStart": {
+              "enum": [
+                "retained",
+                "moved"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "decision.drainage"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "drainageQueueAtStart"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "drainageQueueAtStart": {
+              "enum": [
+                "sole_work",
+                "parallel_work"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "unknown"
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    }
+  ]
+}

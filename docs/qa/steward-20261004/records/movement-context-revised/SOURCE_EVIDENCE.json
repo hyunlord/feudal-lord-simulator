@@ -1,0 +1,178 @@
+[
+  {
+    "path": "src/engine/lordship.ts",
+    "sha256": "b20b8a24ebbd8a36d6e9cc55e8e8fc8dfe6e079b96e1cf1beeb1ce294f8c1190",
+    "spans": [
+      {
+        "start": 40,
+        "end": 54,
+        "text": "}\n\n/**\n * F3-A (PL-2): the lord's family is gone — none of the house's family is left and the pestilence took some of them (at\n * once, or a family it thinned dying out years on): the overlord grants the town to a new house (FL-7's change, with no\n * decline before it). A family gone without the pestilence is left as before (chapters 1–2 unchanged).\n */\nexport function lordFamilyExtinct(state: Pick<GameState, \"persons\" | \"lordship\" | \"seed\">): boolean {\n  const tag = `lord-house:${lordshipOf(state).house.order}`;\n  const persons = state.persons;\n  if (persons === undefined || persons.people.some(person => person.tags.includes(tag))) return false;\n  // FIX-11: heir candidates are pending succession — do not fire extinction while the heir petition is open.\n  if (persons.people.some(person => person.tags.includes(HEIR_CANDIDATE_TAG))) return false;\n  return persons.past.some(person => person.tags.includes(tag) && !person.alive && person.deathCause === \"plague\");\n}\n"
+      },
+      {
+        "start": 81,
+        "end": 90,
+        "text": "export function depopulated(state: Pick<GameState, \"population\" | \"politics\">): boolean {\n  const start = state.politics?.chapter.populationStart ?? 0;\n  return start > 0 && state.population * 1000 < start * LORDSHIP_BALANCE.depopulatedPermille;\n}\n\n/** FL-14: nobody lives in the town any more (a town that had people: its chapter started with some). */\nexport function townEmpty(state: Pick<GameState, \"population\" | \"politics\">): boolean {\n  return state.population <= 0 && (state.politics?.chapter.populationStart ?? 0) > 0;\n}\n\n"
+      },
+      {
+        "start": 118,
+        "end": 168,
+        "text": "/** FL-7: the house withdraws; a new one takes the town, its treasury halved, the merchants' grudge half forgotten. */\nfunction changeHouse(state: GameState, lordship: LordshipState): GameState {\n  const order = lordship.house.order + 1;\n  const house = { order, name: lordHouseName(state.seed, order), heraldrySeed: lordHouseHeraldrySeed(state.seed, order), since: state.tick };\n  const loss = Math.floor(Math.max(0, treasuryBalance(state)) * LORDSHIP_BALANCE.houseChangeTreasuryLossPermille / 1000);\n  let next: GameState = state;\n  if (loss > 0) {\n    const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"house_change\", amount: -loss,\n      sourceRefs: [{ type: \"actor\", id: `lord_house:${lordship.house.order}`, detail: lordship.house.name }] }]);\n    next = { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };\n  }\n  const politics = next.politics === undefined ? undefined : {\n    ...next.politics,\n    merchantGauge: Math.round((next.politics.merchantGauge + 50) / 2),\n    petitions: next.politics.petitions.map(petition => petition.defId === RESTORE_RIGHT_PETITION_ID && petition.response === undefined\n      ? { ...petition, response: \"expired\" as const, respondedTick: state.tick } : petition),\n  };\n  return {\n    ...next,\n    ...(politics === undefined ? {} : { politics }),\n    lordship: { house, pastHouses: [...lordship.pastHouses, { ...lordship.house, until: state.tick }], titleDemoted: false, decline: null },\n  };\n}\n\n/** FL-7 with LM-E2 (ES-6): the house changes, the rights it lost come back to the town's lord, its kin keeps a claim. */\nfunction changeHouseAndEstate(state: GameState, lordship: LordshipState): GameState {\n  return houseChanged(changeHouse(state, lordship), lordship.house.order);\n}\n\n/** One tick of FAIL-3 (a no-op except at season starts, and while a haggled title has not yet come back). */\nexport function advanceLordship(state: GameState): GameState {\n  if (state.tick <= 0) return state;\n  let lordship = lordshipOf(state);\n  let next = state;\n  // FL-13/FL-14: an emptied town does not wait for the season — it declines at the sample, and an empty one changes\n  // its house and is resettled there and then (before the settlement's abandonment count can run out).\n  if (state.tick % SAMPLE === 0 && (townEmpty(state) || (lordship.decline === null && depopulated(state)))) {\n    if (lordship.decline === null) {\n      next = enterDecline(next, lordship, townEmpty(state) ? \"empty\" : \"depopulated\");\n      lordship = lordshipOf(next);\n    }\n    return townEmpty(next) ? resettleTown(changeHouseAndEstate(next, lordship)) : next;\n  }\n  // FL-6: a haggled restoration gives the title back a year later.\n  if (lordship.titleReturnsTick !== undefined && state.tick >= lordship.titleReturnsTick) {\n    const { titleReturnsTick: _returns, ...rest } = lordship;\n    lordship = { ...rest, titleDemoted: lordship.decline !== null };\n    next = { ...next, lordship };\n  }\n  if (state.tick % SEASON !== 0) return next;\n  // F3-A (PL-2): the pestilence took the lord's whole family — a new house takes the town.\n"
+      },
+      {
+        "start": 186,
+        "end": 194,
+        "text": "    return cause === null ? next : enterDecline(next, lordship, cause);\n  }\n  // FL-7: two years unbroken.\n  if (state.tick - decline.since >= LORDSHIP_BALANCE.houseChangeTicks) return changeHouseAndEstate(next, lordship);\n  // FL-6: the cause cleared — the holder offers the right back (the merchants when nothing was lost).\n  if (declineCause(next) === null && state.tick >= (decline.petitionFrom ?? 0) && next.politics !== undefined && openRestoration(next) === undefined) {\n    const petition: PetitionRecord = { id: `${RESTORE_RIGHT_PETITION_ID}@${state.tick}`, defId: RESTORE_RIGHT_PETITION_ID,\n      petitioner: decline.lost === null ? \"merchants\" : decline.by, arrivedTick: state.tick };\n    next = { ...next, politics: { ...next.politics, petitions: [...next.politics.petitions, petition] } };\n"
+      },
+      {
+        "start": 225,
+        "end": 255,
+        "text": " * FL-14: the new house brings settlers — one household in each standing house (not burnt). FIX-5b (decision FL16):\n * each household brings a season of bread at its ration, stored in the first working granary with room and the rest in\n * the households' own larders, and a meal's grace for the carts. A town that grows no food starves again after it.\n */\nexport function resettleTown(state: GameState): GameState {\n  const lots = new Map(state.buildings.map(building => [building.id, building]));\n  const settled = new Set<string>();\n  let houses = state.houses.map(house => {\n    if (house.burntTick !== undefined || house.residents > 0) return house;\n    settled.add(house.buildingId);\n    const { abandonedTick: _abandoned, leavingSinceTick: _leaving, foodShortSinceTick: _short, ...rest } = house;\n    return { ...rest, residents: houseLotArea(lots.get(house.buildingId)), emptyFoodTicks: 0, starvationGraceUntilTick: state.tick + LORDSHIP_BALANCE.resettleGraceTicks };\n  });\n  const seasonOf = (house: typeof houses[number]) => Math.ceil(houseFoodRation(house) * LORDSHIP_BALANCE.resettleBreadTicks / HOUSE_FOOD_INTERVAL);\n  const bread = houses.reduce((sum, house) => sum + (settled.has(house.buildingId) ? seasonOf(house) : 0), 0);\n  const granary = state.buildings.filter(building => building.kind === \"granary\" && building.operationPaused !== true).sort((a, b) => a.id.localeCompare(b.id))\n    .map(building => ({ building, room: BUILDING_CONFIG_BY_KIND.granary.storageCapacity - Object.values(building.inventory).reduce((sum, amount) => sum + (amount ?? 0), 0) }))\n    .find(entry => entry.room > 0);\n  const stored = Math.min(bread, granary?.room ?? 0);\n  let left = bread - stored;\n  if (left > 0) houses = houses.map(house => {\n    if (!settled.has(house.buildingId) || left <= 0) return house;\n    const share = Math.min(left, seasonOf(house));\n    left -= share;\n    return { ...house, breadStock: house.breadStock + share };\n  });\n  const buildings = stored <= 0 || granary === undefined ? state.buildings : state.buildings.map(building => building.id === granary.building.id\n    ? { ...building, inventory: { ...building.inventory, bread: (building.inventory.bread ?? 0) + stored } } : building);\n  return { ...state, houses, buildings, population: houses.reduce((sum, house) => sum + Math.max(0, house.residents), 0) };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 568,
+        "end": 575,
+        "text": "  const was = lordshipOf(before), now = lordshipOf(after);\n  if (now.house.order > was.house.order) {\n    drafts.push({ tick: after.tick, kind: \"milestone\", template: \"house.withdrew\", params: { name: was.house.name, order: was.house.order }, subject: TOWN, severity: 3 });\n    drafts.push({ tick: after.tick, kind: \"milestone\", template: \"house.arrived\", params: { name: now.house.name, order: now.house.order }, subject: TOWN, severity: 2 });\n    // FIX-5 (FL-14): an emptied town's new house brings settlers.\n    if (before.population <= 0 && after.population > 0) {\n      drafts.push({ tick: after.tick, kind: \"milestone\", template: \"house.resettled\", params: { name: now.house.name, settlers: after.population }, subject: TOWN, severity: 3 });\n    }\n"
+      },
+      {
+        "start": 1020,
+        "end": 1027,
+        "text": "  for (const negotiation of now.negotiations) {\n    const old = was?.negotiations.find(entry => entry.id === negotiation.id);\n    if (old === undefined) {\n      line(\"negotiation.offered\", { negotiation: negotiation.id, counterpart: negotiation.counterpart, tier: negotiation.acceptance.tier, score: negotiation.acceptance.score });\n      line(`negotiation.${negotiation.status === \"countered\" ? \"countered\" : negotiation.status === \"accepted\" ? \"accepted\" : \"rejected\"}`,\n        { negotiation: negotiation.id, changes: (negotiation.counter?.changes ?? []).map(change => change.kind).join(\",\") });\n    } else if (old.status !== negotiation.status) line(`negotiation.${negotiation.status === \"accepted\" ? \"accepted\" : \"withdrawn\"}`, { negotiation: negotiation.id, changes: \"\" });\n  }\n"
+      },
+      {
+        "start": 1111,
+        "end": 1123,
+        "text": "function agencyDrafts(before: GameState, after: GameState): Draft[] {\n  const receipts = after.agency?.receipts ?? [];\n  const known = before.agency?.nextReceipt ?? 1;\n  // FIX-14 (FX13-5): the town ordered its charter's timber from the traders in the tick (a lord's order is a command).\n  const ordered: Draft[] = after.agency !== undefined && (after.timberOrder ?? 0) > (before.timberOrder ?? 0)\n    ? [{ tick: after.tick, kind: \"event\", template: \"agency.timber_ordered\", subject: TOWN, severity: 1, params: { amount: after.timberOrder ?? 0 } }] : [];\n  return [...ordered, ...receipts.filter(receipt => Number(receipt.id.slice(\"receipt-\".length)) >= known).map(receipt => ({\n    tick: after.tick, kind: \"event\" as const, template: \"agency.project_started\", subject: TOWN, severity: 1 as const,\n    place: { tx: receipt.tx, ty: receipt.ty, ...(receipt.siteId === null ? {} : { buildingId: receipt.siteId }) },\n    params: { receipt: receipt.id, actor: receipt.actor, what: receipt.what, planner: receipt.planner, score: receipt.score,\n      reasons: receipt.reasons.map(reason => `${reason.name}:${reason.value}`).join(\",\"), decisions: receipt.decisionIds.join(\",\") },\n  }))];\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/townAgency.ts",
+    "sha256": "b2e99ce084df555b676423a2d767b0bd9874f349a2d71d50dd1bd48fb2bac63d",
+    "spans": [
+      {
+        "start": 508,
+        "end": 517,
+        "text": "  const skipEra = layout !== undefined && agency.charterWallTried === layout;\n  const needs = planningNeeds(week, LORD_MODE_POLICY, skipEra ? [\"era\"] : []);\n  const tried = searching && (skipEra || !needs.some(need => need.action.kind === \"proclaim_era\")) ? layout : undefined;\n  // FIX-14 (decision FX13-5, the user's (가)): the charter's timber the town's own stores cannot reach — the town orders\n  // it from the market's traders itself (FIX-10's standing order); it is not the lord's to grant.\n  const charterTimber = needs.find(need => need.planner === \"era\" && need.action.kind === \"order_timber\");\n  const requests = needs.filter(need => LORD_REQUEST_KINDS.has(need.action.kind) && need !== charterTimber).map(need => need.action as LordRequest);\n  let next: GameState = { ...week, agency: { ...week.agency!, requests } };\n  if (charterTimber !== undefined && charterTimber.action.kind === \"order_timber\" && (next.timberOrder ?? 0) === 0) next = orderTimber(next, charterTimber.action.amount);\n  const receipts: ProjectReceipt[] = [];\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/autoplayEra.ts",
+    "sha256": "d705cc30e4004e9aa8faf7a22ff516df4e112c09b027e75939cbb86ca1dcf84a",
+    "spans": [
+      {
+        "start": 197,
+        "end": 203,
+        "text": "      case \"timber\": {\n        // FIX-13 (FX13-5) / FIX-14: the charter waits on timber the town's stores cannot reach (its sawmills stood idle\n        // a whole window, the receivers full) — the shortfall bought from the traders (FIX-10 TT-4b's rule, TT-5's trade point).\n        const order = charterTimberOrder(state, requirement.target);\n        if (order !== null) return { kind: \"order_timber\", amount: order };\n        break;\n      }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/timberTrade.ts",
+    "sha256": "0983dcbf2ba146f186845e3f22bc6c764162c2b90c5d7b69ab14e6f8972905ca",
+    "spans": [
+      {
+        "start": 19,
+        "end": 56,
+        "text": "export function orderTimber(state: GameState, amount: number): GameState {\n  const cap = state.era === \"hamlet\" && timberTradeMarket(state) === null ? TIMBER_TRADE_BALANCE.hamletMaxOrder : TIMBER_TRADE_BALANCE.maxOrder;\n  const next = Math.max(0, Math.min(cap, Math.floor(Number.isFinite(amount) ? amount : 0)));\n  if (next === (state.timberOrder ?? 0)) return state;\n  if (next === 0) { const { timberOrder: _gone, ...rest } = state; return rest; }\n  return { ...state, timberOrder: next };\n}\n\n/** TT-2: the market that trades with the timber merchants (the first staffed one), or null. */\nexport function timberTradeMarket(state: GameState) {\n  return completedMarkets(state.buildings)[0] ?? null;\n}\n\n/**\n * FIX-14 (TT-5): where the traders deliver — the trading market, or, in a hamlet (no market before the market charter),\n * its first storehouse (the traders cart it from a neighbouring market on the market cadence).\n */\nexport function timberTradePoint(state: GameState) {\n  return timberTradeMarket(state) ?? (state.era === \"hamlet\"\n    ? [...state.buildings].filter(building => building.kind === \"storehouse\").sort((a, b) => a.id.localeCompare(b.id))[0] ?? null : null);\n}\n\n/** TT-2, TT-3: a market day's delivery of the standing order. */\nexport function advanceTimberTrade(state: GameState): GameState {\n  const order = state.timberOrder ?? 0;\n  if (order <= 0 || state.tick <= 0 || state.tick % MARKET_CADENCE_TICKS !== 0) return state;\n  const market = timberTradePoint(state);\n  if (market === null) return state;\n  // FIX-15 (TT-5): carted to a hamlet's storehouse — dearer and less a market day.\n  const carted = market.kind !== \"market\";\n  const price = carted ? TIMBER_TRADE_BALANCE.hamletPrice : TIMBER_TRADE_BALANCE.price;\n  const brought = Math.min(order, carted ? TIMBER_TRADE_BALANCE.hamletPerMarketDay : TIMBER_TRADE_BALANCE.perMarketDay, Math.floor(Math.max(0, state.treasuryCoin) / price));\n  if (brought <= 0) return state;\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"timber_purchase\", amount: -brought * price,\n    sourceRefs: [{ type: \"building\", id: market.id, detail: `timber:${brought}` }] }]);\n  const left = order - brought;\n  const { timberOrder: _order, ...rest } = state;\n  return { ...rest, ...(left > 0 ? { timberOrder: left } : {}), treasuryTimber: state.treasuryTimber + brought,\n"
+      },
+      {
+        "start": 81,
+        "end": 97,
+        "text": "export function charterTimberOrder(state: GameState, timberNeeded: number): number | null {\n  if ((state.timberOrder ?? 0) > 0 || timberTradePoint(state) === null) return null;\n  const production = state.timberProductionWindow;\n  if (production === undefined || production.produced > 0 || state.tick - production.startTick < 2399\n    || !state.buildings.some(building => building.kind === \"sawmill\")) return null;\n  const shortfall = timberNeeded - placementSpendableResource(state, \"timber\");\n  if (shortfall <= 0) return null;\n  // FIX-15 (TT-5): without a market, the carted price and the hamlet's largest order.\n  const carted = timberTradeMarket(state) === null;\n  const affordable = Math.floor((state.treasuryCoin - TIMBER_TRADE_BALANCE.botCoinReserve) / (carted ? TIMBER_TRADE_BALANCE.hamletPrice : TIMBER_TRADE_BALANCE.price));\n  const amount = Math.min(Math.max(shortfall, carted ? TIMBER_TRADE_BALANCE.hamletPerMarketDay : TIMBER_TRADE_BALANCE.perMarketDay),\n    carted ? TIMBER_TRADE_BALANCE.hamletMaxOrder : TIMBER_TRADE_BALANCE.maxOrder);\n  return amount <= affordable ? amount : null;\n}\n\n/**\n * TT-4b: the bot wants a building that lacks only timber while the town's own timber has stopped (sawmills stand but\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/marriage.ts",
+    "sha256": "181b1c50f543c3bdbe66adff77b4710ea689cda5f99c5dbbb9f73e6411eeb99a",
+    "spans": [
+      {
+        "start": 115,
+        "end": 150,
+        "text": "  const { groom, bride } = marriageCandidates(state, groomId);\n  if (groom === null) return \"no_groom\";\n  if (bride === null) return \"no_bride\";\n  const diplomacy = diplomacyOf(state);\n  if (diplomacy.marriage !== undefined || diplomacy.negotiations.some(entry => entry.status === \"countered\")) return \"under_way\";\n  if (terms.length === 0) return \"no_terms\";\n  return cashOf(terms) > Math.max(0, treasuryBalance(state)) ? \"treasury\" : null;\n}\n\nconst cashOf = (terms: readonly Term[]) => terms.filter(term => term.kind === \"cash\" && term.giver === \"proposer\").reduce((sum, term) => sum + (term.amount ?? 0), 0);\n\n/** NG-7: the terms with the counterpart's consent (a marriage offer always asks it). */\nfunction withConsent(terms: readonly Term[]): readonly Term[] {\n  return terms.some(term => term.kind === \"consent\") ? terms : [...terms, { kind: \"consent\", giver: \"counterpart\" }];\n}\n\n// --- NG-7 the offer and the counter -------------------------------------------------------------------------------------\n\n/**\n * NG-7: the lord's marriage offer — weighed now and answered by the seed's draw: accepted (the contract is made),\n * countered (the counter waits a season for the lord), or refused. Refused offers (`marriageRefusal`) change nothing.\n */\nexport function proposeMarriage(state: GameState, offered: readonly Term[], groomId?: string): GameState {\n  if (marriageRefusal(state, offered, groomId) !== null) return state;\n  const { groom, bride } = marriageCandidates(state, groomId);\n  const terms = withConsent(offered);\n  const diplomacy = diplomacyOf(state);\n  const ordinal = diplomacy.nextNegotiation;\n  const acceptance = evaluateOffer(state, LORD, COUNTERPART, terms);\n  const accepted = offerDraw(state, ordinal) < acceptance.permille;\n  const counter = accepted ? null : counterOffer(state, LORD, COUNTERPART, terms, `negotiation-${ordinal}`);\n  const negotiation: Negotiation = { id: `negotiation-${ordinal}`, proposer: LORD, counterpart: COUNTERPART, purpose: \"marriage\",\n    groomId: groom!.id, brideId: bride!.id, terms, acceptance, status: accepted ? \"accepted\" : counter === null ? \"rejected\" : \"countered\",\n    ...(counter === null ? {} : { counter }), tick: state.tick, deadline: state.tick + COUNTER_ANSWER_TICKS };\n  const next = withDiplomacy(state, { ...diplomacy, negotiations: [...diplomacy.negotiations, negotiation], nextNegotiation: ordinal + 1 });\n  return accepted ? contract(next, negotiation, terms) : next;\n"
+      },
+      {
+        "start": 256,
+        "end": 277,
+        "text": "function contract(state: GameState, negotiation: Negotiation, terms: readonly Term[]): GameState {\n  let next = state;\n  const cash = cashOf(terms);\n  if (cash > 0) {\n    const posted = postLedgerEntries(next, [{ account: \"cash\", category: \"marriage_portion\", amount: -cash,\n      sourceRefs: [{ type: \"claim\", id: negotiation.id, detail: \"marriage\" }, { type: \"actor\", id: negotiation.counterpart }] }]);\n    next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n  }\n  const claimed = raiseClaim(next, { claimant: LORD, estateId: MARRIAGE_ESTATE_ID, basis: \"marriage\" });\n  const claimId = estatesOf(claimed).claims.at(-1)!.id;\n  let diplomacy = contractPromises(diplomacyOf(claimed), negotiation, terms, state.tick);\n  diplomacy = { ...diplomacy, relations: { ...diplomacy.relations, [negotiation.counterpart]: (diplomacy.relations[negotiation.counterpart] ?? 0) + CONTRACT_RELATION_GAIN } };\n  const groomed = groomToManor(claimed, negotiation.groomId);\n  // FIX-13 (NG-5b): what is not cash waits — the jointure for the groom's death, the deferred debt for the inheritance.\n  const jointure = terms.find(term => term.kind === \"jointure\" && term.giver === \"proposer\")?.pieceId;\n  const deferred = terms.filter(term => term.kind === \"debt_after_inheritance\" && term.giver === \"proposer\").reduce((sum, term) => sum + (term.amount ?? 0), 0);\n  const plan: MarriagePlan = { negotiationId: negotiation.id, groomId: groomed.groomId, brideId: negotiation.brideId, estateId: MARRIAGE_ESTATE_ID,\n    contractedTick: state.tick, stage: \"contracted\", claimId, events: {}, ...(jointure === undefined ? {} : { jointurePieceId: jointure }),\n    ...(deferred > 0 ? { deferredDebt: deferred } : {}) };\n  return withDiplomacy(groomed.state, { ...diplomacy, marriage: plan });\n}\n\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/negotiation.ts",
+    "sha256": "5ece73ef37d8d7d28ce596864789f55d8876855a7a42b8cb6482c43a7d1a5a21",
+    "spans": [
+      {
+        "start": 203,
+        "end": 237,
+        "text": "export function counterOffer(state: GameState, proposer: string, counterpart: string, terms: readonly Term[], key: string):\n  { readonly terms: readonly Term[]; readonly changes: readonly TermChange[]; readonly acceptance: Acceptance } | null {\n  const greed = hashSeed(state.seed, \"negotiation-greed\", counterpart.length, key.length) % (GREED_MAX + 1);\n  const target = ACCEPT_THETA + COUNTER_MARGIN + greed;\n  let draft: Term[] = terms.filter(term => !redLine(state, term));\n  let acceptance = evaluateOffer(state, proposer, counterpart, draft);\n  for (const kind of COUNTER_DESIRES) {\n    if (acceptance.score >= target) break;\n    if (kind === \"political_support\") {\n      if (draft.some(term => term.kind === kind)) continue;\n      draft = [...draft, { kind, giver: \"proposer\", years: 2 }];\n    } else if (kind === \"jointure\") {\n      // FIX-13 (NG-5b): one jointure, on the first piece the lord holds that can carry it.\n      const piece = jointurePiece(state);\n      if (draft.some(term => term.kind === kind) || piece === null) continue;\n      draft = [...draft, { kind, giver: \"proposer\", pieceId: piece }];\n    } else {\n      const per = (MATERIAL_PER_PENNY[kind] ?? 0) * (kind === \"pension\" ? 5 : 1);\n      const material = acceptance.reasons.find(reason => reason.name === \"material\")?.value ?? 0;\n      const room = Math.min(target - acceptance.score, MATERIAL_CAP - material);\n      if (room <= 0 || per <= 0) continue;\n      const have = amountOf(draft, kind);\n      const more = Math.min(Math.ceil(room / per), desireRoom(state, counterpart, kind, draft) - have);\n      if (more <= 0) continue;\n      const years = kind === \"pension\" ? 5 : kind === \"debt_assumption\" ? debtInstalmentYears(state, have + more, debtInstalmentCap(state) - amountOf(draft, \"pension\")) : undefined;\n      if (years === null) continue;\n      draft = [...draft.filter(term => !(term.kind === kind && term.giver === \"proposer\")),\n        { kind, giver: \"proposer\", amount: have + more, ...(years === undefined ? {} : { years }) }];\n    }\n    acceptance = evaluateOffer(state, proposer, counterpart, draft);\n  }\n  if (acceptance.score < target) return null;\n  return { terms: draft, changes: termChanges(terms, draft), acceptance };\n}\n\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/diplomacy.types.ts",
+    "sha256": "5c25329593d4bea64edb546951e4e53d1222576e3d0ca58fafb03051188a8d07",
+    "spans": [
+      {
+        "start": 9,
+        "end": 29,
+        "text": "/** NG-2: the kinds of term. The lord's side gives the first five, the counterpart's the last five. */\nexport type TermKind =\n  | \"cash\" | \"pension\" | \"right_piece\" | \"political_support\" | \"debt_assumption\"\n  // FIX-13 (NG-5b): what is not cash — a jointure on one of the lord's pieces, the counterpart's debt repaid from the\n  // estate once it is inherited.\n  | \"jointure\" | \"debt_after_inheritance\"\n  | \"consent\" | \"inheritance_non_infringement\" | \"residence\" | \"land_use\" | \"wardship\";\n\nexport interface Term {\n  readonly kind: TermKind;\n  /** Who gives it. */\n  readonly giver: \"proposer\" | \"counterpart\";\n  /** Pennies (cash, a year's pension, debt), years (pension, support, the debt's instalments — FIX-12), or nothing. */\n  readonly amount?: number;\n  readonly years?: number;\n  /** A right piece's id (right_piece, land_use). */\n  readonly pieceId?: string;\n}\n\n/** NG-3: a named reason of the acceptance score. */\nexport type AcceptanceReasonName =\n"
+      },
+      {
+        "start": 56,
+        "end": 72,
+        "text": "export interface Negotiation {\n  readonly id: string;\n  readonly proposer: HolderId;\n  readonly counterpart: HolderId;\n  /** What it is for (the marriage of `groomId` and `brideId`). */\n  readonly purpose: \"marriage\";\n  readonly groomId: string;\n  readonly brideId: string;\n  readonly terms: readonly Term[];\n  readonly acceptance: Acceptance;\n  readonly status: \"countered\" | \"accepted\" | \"rejected\" | \"withdrawn\";\n  /** NG-5: the counterpart's counter (its terms and what changed). */\n  readonly counter?: { readonly terms: readonly Term[]; readonly changes: readonly TermChange[]; readonly acceptance: Acceptance };\n  readonly tick: number;\n  /** The deadline for the proposer to answer a counter. */\n  readonly deadline: number;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/historyCopy.ko.ts",
+    "sha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+    "spans": [
+      {
+        "start": 265,
+        "end": 268,
+        "text": "  \"house.withdrew\": params => `${houseName(s(params, \"name\"))} 가문이 물러났다`,\n  \"house.arrived\": params => `${houseName(s(params, \"name\"))} 가문이 영지를 맡았다`,\n  // FIX-5 (FL-14): the new house resettles the emptied town.\n  \"house.resettled\": params => `${houseName(s(params, \"name\"))} 가문이 이주민 ${n(params, \"settlers\")}명을 데려와 빈 도시에 다시 살게 했다`,\n"
+      },
+      {
+        "start": 282,
+        "end": 286,
+        "text": "  \"negotiation.offered\": params => `이웃 영주에게 혼인을 청했다 — ${TIER_KO[s(params, \"tier\")] ?? s(params, \"tier\")}(점수 ${n(params, \"score\")})`,\n  \"negotiation.accepted\": () => \"혼인 계약이 맺어졌다\",\n  \"negotiation.countered\": params => `이웃 영주가 조건을 고쳐 되물었다 — ${s(params, \"changes\").split(\",\").filter(kind => kind !== \"\").map(kind => TERM_KO[kind] ?? kind).join(\"·\")}`,\n  \"negotiation.rejected\": () => \"이웃 영주가 혼인을 거절했다\",\n  \"negotiation.withdrawn\": () => \"고쳐 온 조건을 받지 않아 혼담이 끝났다\",\n"
+      },
+      {
+        "start": 318,
+        "end": 318,
+        "text": "  \"agency.timber_ordered\": params => `도시가 시장 칙허에 모자란 목재 ${n(params, \"amount\")}을 상인에게 주문했다`,\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 15,
+        "end": 54,
+        "text": "const PERSON_PARAMS: Readonly<Record<string, string>> = {\n  lordId: \"lord\", guardianId: \"guardian\", candidateId: \"candidate\", heirId: \"heir\", mayorId: \"mayor\", leaderId: \"leader\", predecessorId: \"predecessor\",\n  // LM-E4: the steward of an estate (an estate person).\n  stewardId: \"steward\",\n  // FIX-13 (ES-11): a person off the map who died (a neighbour house's, a steward).\n  deceasedId: \"deceased\",\n};\nexport type PersonReader = Partial<Pick<GameState, \"persons\" | \"factions\" | \"estates\">>;\nexport const namesPerson = (record: Pick<HistoryRecord, \"params\">) => record.params !== undefined && Object.keys(record.params).some(key => key in PERSON_PARAMS);\nconst personIndex = new WeakMap<object, { readonly factions: unknown; readonly estates: unknown; readonly byId: Map<string, Person> }>();\n\n/** The town's people (living and past), the factions' and the neighbour estates' — by id (rebuilt when one of them changes). */\nfunction personNamed(state: PersonReader, id: string): Person | undefined {\n  const key = state.persons ?? state;\n  const factions = state.factions?.people, estates = state.estates?.people;\n  let entry = personIndex.get(key);\n  if (entry === undefined || entry.factions !== factions || entry.estates !== estates) {\n    entry = { factions, estates, byId: new Map([...(estates ?? []), ...(factions ?? []), ...(state.persons?.past ?? []), ...(state.persons?.people ?? [])]\n      .map(person => [person.id, person])) };\n    personIndex.set(key, entry);\n  }\n  return entry.byId.get(id);\n}\n\n/**\n * FIX-12 (item 4) API: a record's parameters with each person named now — `lordId` gives `lord`, and so on. An id no\n * reader knows keeps the name the record was written with (a save before FIX-12) or the copy's fallback word.\n */\nexport function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "docs/design/glossary.md",
+    "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181",
+    "spans": [
+      {
+        "start": 45,
+        "end": 98,
+        "text": "| 수레꾼 | 인물의 생업·직업명 | carter | 모든 carrier와 일괄 치환 |\n\n## 땅·권리·혼인·청원\n\n| 한국어 정본 | 뜻·사용 범위 | 영어 원어 | 쓰지 말 표기·혼동 |\n| --- | --- | --- | --- |\n| 영지 | 인물·가문이 보유한 토지와 권리의 묶음 | estate | 장원과 무조건 치환 |\n| 장원 | 장원 법정·관습·소작 관계의 단위 | manor | 영주관(건물), 영지 전체와 동일시 |\n| 직영지 | 영주를 위해 직접 경영하는 땅 | demesne | 모든 직할 영지와 동일시 |\n| 영주관 | 영주 가문의 거처 건물 | manor house | 장원 전체 |\n| 필지 | 구분된 토지 단위. 도시 집터는 용도 설명 | plot / burgage plot | 집·가구 |\n| 경작지 | 농작물을 기르는 구역 | arable land | 모든 경작지가 영주 직영지라고 단정 |\n| 목초지 | 가축을 먹이는 풀밭 | pasture | 공유지와 동일시 |\n| 공유지 | 공동 이용권이 적용되는 땅이라는 게임 용어 | common land | 누구나 소유·처분할 수 있는 공공 토지 |\n| 공유지 방목권 | 정해진 공동 이용권에 따른 방목 권리 | common of pasture | 무제한 방목권 |\n| 권원 | 권리를 주장하는 법적 근거·명의 | title | 점유, 귀족 작위와 무조건 통합 |\n| 점유 | 실제로 땅·권리를 쥐고 행사하는 상태 | possession | 권원의 존재가 곧 점유라는 서술 |\n| 청구권 | 권리를 요구·주장하는 근거가 있는 권리 | claim | 승소가 확정된 소유권 |\n| 장원 법정 | 장원 내 사건을 다루는 법정의 포괄 이름 | manor court | 현대 형사법원과 동일한 권한 |\n| 배심원 | 장원 법정의 배심 역할 | juror | 현대 재판의 권한을 그대로 투영 |\n| 청원 | 영주·권한자에게 판단·허가를 구하는 요청 | petition | 일방적 칙령과 자동 통합 |\n| 특허장 | 특정 권리·특전을 부여·확인하는 문서 | charter | 기술 발명 특허 |\n| 자치 특허 | 도시의 자치권을 정하는 특허·합의 | borough charter | 현대 지방자치 제도와 동일시 |\n| 시장 개설권 | 장터를 열 권리 | market right | 도시 시장(mayor) 선출권 |\n| 시장 선출권 | 도시 대표를 선출하는 권리 | right to elect a mayor | 장터 개설권 |\n| 시장 좌판세 | 시장 좌판에서 걷는 이 게임의 수입 | market stall dues | 통행세 |\n| 통행세 | 통행·운송에 따른 수입 | toll | 모든 시장세와 통합 |\n| 제분료 | 곡물 제분의 대가 | multure / milling toll | 축융료와 통합 |\n| 방앗간 사용료 | 권리 패널의 기존 포괄 명칭. 상세에서 제분료 설명 | mill dues | 모호한 방앗간세 남발 |\n| 축융 방앗간 사용료 | 모직 축융 시설 이용 수입 | fulling toll | 곡물 제분료 |\n| 성벽세 | 성벽 건설·유지 재원을 위한 해당 수입 | murage | 모든 통행세와 동일시 |\n| 직물 검정·인장세 | 직물 검사·인증에 관련된 해당 세목 | ulnage / alnage | 단순 판매세와 동일시 |\n| 직물 매매세 | 거래에 따른 이 게임의 수입 | cloth toll | 직물 검정·인장세 |\n| 성직자 추천권 | 공석 성직의 후보를 추천할 권리 | advowson | 교회 추천권, 교회 소유권 |\n| 어업권 | 특정 수역의 어업 권리 | fishery right | 수역 전체의 절대 소유권 |\n| 사냥권 | 정해진 범위의 수렵 권리 | hunting right | 모든 숲의 무제한 사용권 |\n| 지대 | 토지 사용의 대가 | rent | 모든 조세·수입 |\n| 부역 | 관습·계약에 따른 노동 의무 | labour service | 현대 자원봉사 |\n| 현금 지대 | 돈으로 내는 지대 | cash rent | 부역 자체와 동일시 |\n| 자치 연납금 | 자치권 등에 대한 도시의 정기 지급액 | fee farm | 영어만 fee farm, 권리 종류로 분류 |\n| 입주금 | 토지 보유·입주 허용에 따른 이 게임의 지급금 | entry fine | 위반 벌금으로만 번역 |\n| 상속 승인금 | 상속인의 승계를 승인받으며 내는 금액 | relief | 현대 세법의 상속세와 동일시 |\n| 사망 부과금(헤리엇) | 소작인 사망 시 관습상 납부하는 금액·물품 | heriot | relief와 무조건 같은 상속세 |\n| 혼인 부담금(머쳇) | 특정 소작 관습의 혼인 관련 부담 | merchet | 모든 주민에게 보편적인 현대 혼인세 |\n| 왕실 보조세 | 왕실의 보조세 요구를 뜻하는 포괄 명칭 | royal subsidy | 과세를 낸다 |\n| 15분의 1세·10분의 1세 | 역사적 세목명. 게임 금고 비율 수식과 구분 | fifteenth and tenth | 교회 십일조 |\n| 인두세 | 개인을 과세 대상으로 하는 세금 | poll tax | 모든 연도의 대상·세율을 동일하게 단정 |\n| 왕실 조달 | 왕실을 위한 물자 조달·징발 | purveyance | 일반 시장 구매와 항상 동일시 |\n| 지참금 | 혼인 계약에서 제공되는 재산 | dowry / marriage portion | 과부산 |\n| 과부산 | 배우자 사망 뒤 아내의 생계를 위한 재산 약정, 이 게임의 jointure | jointure | 지참금, dower와 자동 동일시 |\n| 과부 몫 | 법적·관습적 dower를 따로 설명할 때의 명칭 | dower | jointure와 근거 없이 치환 |\n| 채무 인수 | 남의 빚을 떠맡는 약정 | assumption of debt | 원채무 탕감 |\n| 조건부 의무 해제 | 조건 불성립으로 약속 이행 의무가 사라짐 | discharge of conditional obligation | 이웃의 빚이 소멸함 |\n| 후견 | 미성년자와 재산의 관리 관계 | wardship | 곧 입양이라는 표현 |\n"
+      }
+    ]
+  }
+]

@@ -1,0 +1,211 @@
+[
+  {
+    "id": "reorg.wage_competition.r06rg.none_recorded",
+    "template": "reorg.wage_competition",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.wage_competition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "departuresAtWageOpening": "none_recorded"
+      }
+    },
+    "expected": "reorg.wage_competition.r06rg.none_recorded"
+  },
+  {
+    "id": "reorg.wage_competition.r06rg.departure_recorded",
+    "template": "reorg.wage_competition",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.wage_competition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "departuresAtWageOpening": "departure_recorded"
+      }
+    },
+    "expected": "reorg.wage_competition.r06rg.departure_recorded"
+  },
+  {
+    "id": "reorg.guild_founded.r06rg.assigned",
+    "template": "reorg.guild_founded",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.guild_founded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "headAtGuildFoundation": "assigned"
+      }
+    },
+    "expected": "reorg.guild_founded.r06rg.assigned"
+  },
+  {
+    "id": "reorg.guild_founded.r06rg.unassigned",
+    "template": "reorg.guild_founded",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.guild_founded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "headAtGuildFoundation": "unassigned"
+      }
+    },
+    "expected": "reorg.guild_founded.r06rg.unassigned"
+  },
+  {
+    "id": "reorg.weavers_left.r06rg.refused",
+    "template": "reorg.weavers_left",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.weavers_left",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "guildAnswerAtDeparture": "refused"
+      }
+    },
+    "expected": "reorg.weavers_left.r06rg.refused"
+  },
+  {
+    "id": "reorg.weavers_left.r06rg.expired",
+    "template": "reorg.weavers_left",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.weavers_left",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "guildAnswerAtDeparture": "expired"
+      }
+    },
+    "expected": "reorg.weavers_left.r06rg.expired"
+  },
+  {
+    "id": "reorg.overlord_warning.r06rg.founded",
+    "template": "reorg.overlord_warning",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.overlord_warning",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "guildAtWarning": "founded"
+      }
+    },
+    "expected": "reorg.overlord_warning.r06rg.founded"
+  },
+  {
+    "id": "reorg.overlord_warning.r06rg.not_founded",
+    "template": "reorg.overlord_warning",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.overlord_warning",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "guildAtWarning": "not_founded"
+      }
+    },
+    "expected": "reorg.overlord_warning.r06rg.not_founded"
+  },
+  {
+    "id": "reorg.autonomy_request.r06rg.chased",
+    "template": "reorg.autonomy_request",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.autonomy_request",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "autonomyRouteAtRequest": "chased"
+      }
+    },
+    "expected": "reorg.autonomy_request.r06rg.chased"
+  },
+  {
+    "id": "reorg.autonomy_request.r06rg.guild_accepted",
+    "template": "reorg.autonomy_request",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.autonomy_request",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "autonomyRouteAtRequest": "guild_accepted"
+      }
+    },
+    "expected": "reorg.autonomy_request.r06rg.guild_accepted"
+  },
+  {
+    "id": "reorg.autonomy_request.r06rg.guild_not_accepted",
+    "template": "reorg.autonomy_request",
+    "recordId": "h-test",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.autonomy_request",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "autonomyRouteAtRequest": "guild_not_accepted"
+      }
+    },
+    "expected": "reorg.autonomy_request.r06rg.guild_not_accepted"
+  }
+]

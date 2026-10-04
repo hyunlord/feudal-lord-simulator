@@ -1,0 +1,268 @@
+[
+  {
+    "id": "war.messenger.r06wp.no_ring",
+    "template": "war.messenger",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "war.messenger",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "ringAtMessenger": "no_ring"
+      }
+    },
+    "expected": "war.messenger.r06wp.no_ring"
+  },
+  {
+    "id": "war.messenger.r06wp.unfinished",
+    "template": "war.messenger",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "war.messenger",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "ringAtMessenger": "unfinished"
+      }
+    },
+    "expected": "war.messenger.r06wp.unfinished"
+  },
+  {
+    "id": "war.messenger.r06wp.complete",
+    "template": "war.messenger",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "war.messenger",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "ringAtMessenger": "complete"
+      }
+    },
+    "expected": "war.messenger.r06wp.complete"
+  },
+  {
+    "id": "war.beacon.r06wp.no_ring",
+    "template": "war.beacon",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "war.beacon",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "ringAtBeacon": "no_ring"
+      }
+    },
+    "expected": "war.beacon.r06wp.no_ring"
+  },
+  {
+    "id": "war.beacon.r06wp.unfinished",
+    "template": "war.beacon",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "war.beacon",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "ringAtBeacon": "unfinished"
+      }
+    },
+    "expected": "war.beacon.r06wp.unfinished"
+  },
+  {
+    "id": "war.beacon.r06wp.complete",
+    "template": "war.beacon",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "war.beacon",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "ringAtBeacon": "complete"
+      }
+    },
+    "expected": "war.beacon.r06wp.complete"
+  },
+  {
+    "id": "war.licence.r06wp.no_stock",
+    "template": "war.licence",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "war.licence",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "granaryWheatAtLicence": "no_stock"
+      }
+    },
+    "expected": "war.licence.r06wp.no_stock"
+  },
+  {
+    "id": "war.licence.r06wp.stocked",
+    "template": "war.licence",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "war.licence",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "granaryWheatAtLicence": "stocked"
+      }
+    },
+    "expected": "war.licence.r06wp.stocked"
+  },
+  {
+    "id": "plague.rumour.r06wp.no_arrival",
+    "template": "plague.rumour",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "plague.rumour",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "arrivalAlongsideRumour": "no_arrival"
+      }
+    },
+    "expected": "plague.rumour.r06wp.no_arrival"
+  },
+  {
+    "id": "plague.rumour.r06wp.arrival_recorded",
+    "template": "plague.rumour",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "plague.rumour",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "arrivalAlongsideRumour": "arrival_recorded"
+      }
+    },
+    "expected": "plague.rumour.r06wp.arrival_recorded"
+  },
+  {
+    "id": "plague.arrived.r06wp.prior_rumour",
+    "template": "plague.arrived",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "plague.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorRumourAtArrival": "prior_rumour"
+      }
+    },
+    "expected": "plague.arrived.r06wp.prior_rumour"
+  },
+  {
+    "id": "plague.arrived.r06wp.no_prior_rumour",
+    "template": "plague.arrived",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "plague.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorRumourAtArrival": "no_prior_rumour"
+      }
+    },
+    "expected": "plague.arrived.r06wp.no_prior_rumour"
+  },
+  {
+    "id": "plague.second.r06wp.filled",
+    "template": "plague.second",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "plague.second",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "curacyAtSecondArrival": "filled"
+      }
+    },
+    "expected": "plague.second.r06wp.filled"
+  },
+  {
+    "id": "plague.second.r06wp.vacant",
+    "template": "plague.second",
+    "recordId": "h-probe",
+    "recordTick": 1000,
+    "context": {
+      "status": "known",
+      "recordId": "h-probe",
+      "recordTick": 1000,
+      "template": "plague.second",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "curacyAtSecondArrival": "vacant"
+      }
+    },
+    "expected": "plague.second.r06wp.vacant"
+  }
+]

@@ -1,0 +1,26 @@
+require 'json';require 'fileutils';require 'digest'
+d=__dir__;orig=File.dirname(d)+'/event-context-wave2';reference=File.dirname(d)+'/event-context-revised'
+Dir.children(orig).reject{|f|%w[build.rb SHA256SUMS].include?(f)}.each{|f|FileUtils.cp(orig+'/'+f,d+'/'+f)}
+FileUtils.cp(orig+'/SHA256SUMS',d+'/ORIGINAL_SHA256SUMS')
+read=lambda{|f|JSON.parse(File.read(d+'/'+f))};write=lambda{|f,j|File.write(d+'/'+f,JSON.pretty_generate(j)+"\n")}
+p=read.call('PROPOSAL.json');s=read.call('PROPOSAL.schema.json')
+s['properties']['sourceHead']={'const'=>p['sourceHead']};s['properties']['fields']={'type'=>'array','minItems'=>9,'maxItems'=>9,'uniqueItems'=>true,'items'=>{'enum'=>p['fields']}};s['properties']['fallback']={'type'=>'object','required'=>p['fallback'].keys,'additionalProperties'=>false,'properties'=>p['fallback'].transform_values{|v|{'const'=>v}}};s['properties']['additions']['minItems']=22;s['properties']['additions']['maxItems']=22
+v=s['$defs']['variant'];v['required']=%w[id priority when headline requiredSlots retainFactLine];v['additionalProperties']=false;v['properties'].delete('text');v.delete('anyOf');v['properties']['when']['minItems']=1;v['properties']['when']['maxItems']=1;v['properties']['requiredSlots']['maxItems']=0;v['properties']['retainFactLine']={'const'=>true}
+branches=p['fields'].flat_map do |f|
+ condition={'anyOf'=>[{'type'=>'object','required'=>%w[field op value],'additionalProperties'=>false,'properties'=>{'field'=>{'const'=>'context.'+f['id']},'op'=>{'const'=>'eq'},'value'=>{'enum'=>f['values']}}},{'type'=>'object','required'=>%w[field op value],'additionalProperties'=>false,'properties'=>{'field'=>{'const'=>'context.'+f['id']},'op'=>{'const'=>'in'},'value'=>{'type'=>'array','minItems'=>1,'uniqueItems'=>true,'items'=>{'enum'=>f['values']}}}}]}
+ f['templates'].map{|t|vv=Marshal.load(Marshal.dump(v));vv['properties']['when']['items']=condition;{'type'=>'object','required'=>%w[template variant],'additionalProperties'=>false,'properties'=>{'template'=>{'const'=>t},'variant'=>vv}}}
+end
+s['properties']['additions']['items']={'anyOf'=>branches};write.call('PROPOSAL.schema.json',s)
+c=read.call('CONTEXT.schema.json');c['properties']['recordTick'].merge!('minimum'=>0,'maximum'=>9007199254740991);c['properties']['sourceHead']={'const'=>p['sourceHead']}
+c['anyOf']=p['fields'].flat_map{|f|f['templates'].map{|t|{'properties'=>{'status'=>{'const'=>'known'},'template'=>{'const'=>t},'captureKind'=>{'const'=>f['provenance']},'referenceVerified'=>{'const'=>true},'fields'=>{'type'=>'object','required'=>[f['id']],'additionalProperties'=>false,'properties'=>{f['id']=>{'enum'=>f['values']}}}}}}} +[{'properties'=>{'status'=>{'const'=>'unknown'},'fields'=>{'const'=>{}}}}];write.call('CONTEXT.schema.json',c)
+a=read.call('ADOPTION_LIMITS.json');a['blocks']=[{variantId:'legacy.charter_refused.r06ctx2.expired',status:'BLOCK_FACT_LINE_CONFLICT',originalFactLine:'영주가 자치 특허를 거절했다 — 도시의 반발 {backlash}',proposedFactLine:'자치 특허 청원에 답하지 않은 채 기한을 넘겼다 — 도시의 반발 {backlash}',requires:'응답별 기본 사실줄 분기 후 headline과 사실줄 함께 검수',engineModified:false}]
+p['additions'].select{|r|r['template']=='decision.market_town'}.each{|r|a['blocks']<<{variantId:r['variant']['id'],status:'HOLD_COMPOSED_LINE_COMPLETION_AMBIGUITY',headline:r['variant']['headline'],originalFactLine:'목책을 두르고 시장도시를 선포했다',combinedReadingRisk:'headline은 경계 계획·선포이나 원래 사실줄을 붙이면 목책 완공으로 읽힐 여지가 있음',proposedFactLine:'목책을 두를 경계를 정하고 시장도시를 선포했다',evidence:'src/engine/palisade.ts:293-306 — constructionSites를 생성하는 시점',requires:'최종 출력의 headline+사실줄을 함께 검수하고 계획·착수 문구 확정 전 사용 보류',engineModified:false}}
+a['compositionReviewRequired']=a['blocks'].map{|b|b[:variantId]};a['reviewApplied']='event-context-wave2-review; revised schema needs separate review';write.call('ADOPTION_LIMITS.json',a)
+code=File.read(d+'/validate.rb').sub('minLength anyOf $defs','minLength minimum maximum anyOf $defs')
+needle='  raise "#{path}: const"'
+code.sub!(needle, '  raise "#{path}: minimum" if schema.key?("minimum") && value.is_a?(Numeric) && value<schema["minimum"]' + "\n" + '  raise "#{path}: maximum" if schema.key?("maximum") && value.is_a?(Numeric) && value>schema["maximum"]' + "\n"+needle)
+code.sub!("oldschema=JSON.parse", "expected_holds=%w[legacy.charter_refused.r06ctx2.expired decision.market_town.r06ctx2.water_reach decision.market_town.r06ctx2.land_ring];raise 'composition holds lost' unless limits['blocks'].map{|b|b['variantId']}.sort==expected_holds.sort;raise 'engine changed claim' unless limits['blocks'].all?{|b|b['engineModified']==false}\noldschema=JSON.parse")
+code.sub!("File.write(root+'/FIXTURE_RESULTS.json'", "require_relative 'negative_schema_checks'\nnegative_results=negative_schema_checks(p,schema,context_schema,fixtures)\nFile.write(root+'/NEGATIVE_SCHEMA_RESULTS.json',JSON.pretty_generate(negative_results)+\"\\n\")\nFile.write(root+'/FIXTURE_RESULTS.json'")
+code.sub!("independentReview:'not_performed_author_only'", "independentReview:'Original review addressed; revision awaiting independent re-review',negativeSchemaCases:negative_results[:negativeCount],compositionHolds:3")
+code.sub!("fixtures=JSON.parse", "raise 'original fixture176 changed' unless Digest::SHA256.file(root+'/FIXTURES.json').hexdigest==Digest::SHA256.file(File.dirname(root)+'/event-context-wave2/FIXTURES.json').hexdigest\nfixtures=JSON.parse")
+File.write(d+'/validate.rb',code)

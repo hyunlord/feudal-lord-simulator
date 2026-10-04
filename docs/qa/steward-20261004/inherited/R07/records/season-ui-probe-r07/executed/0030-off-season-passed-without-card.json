@@ -1,0 +1,298 @@
+{
+  "foodHud": "식량 273일",
+  "foodDays": "273",
+  "pausePressed": "true",
+  "inspector": null,
+  "calendar": "1325년 가을",
+  "text": "봉건 영주 시뮬레이터\n1325년 가을\n인구 528\n식량 273일\n£5 5s\n틱\n102107\n연도·계절\n1325년 가을\n속도\n멈춤\n줌\n2.000\n카메라 이동\n(384, -2427)\n화면 중심 월드\n(128, 1414)\n화면 중심 칸\n(46, 42)\n마지막 클릭 칸\n없음\n선택\n없음\n복사\n×\n일시 정지 중 · Space\n×5\n설정\n서쪽 헛간에 밀 969 묶임\n운반꾼 부족 · 수확 버려짐\n제2장 · 전쟁의 그늘\n0/2\n목표 기록\n직접\n구역\n방향\n되돌리기\n건설\n장부\n청지기",
+  "buttons": [
+    {
+      "text": "1325년 가을",
+      "label": "계절 띠 — 다가오는 일 보기",
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "testid": "hud-calendar"
+      }
+    },
+    {
+      "text": "인구 528",
+      "label": "인구 기록 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "식량 273일",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "foodDays": "273"
+      }
+    },
+    {
+      "text": "£5 5s",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "복사",
+      "label": "QA 정보를 글로 복사",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "×",
+      "label": "QA 정보 닫기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "일시 정지",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "seal": "pause"
+      }
+    },
+    {
+      "text": "",
+      "label": "1배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "normal"
+      }
+    },
+    {
+      "text": "",
+      "label": "3배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "threefold"
+      }
+    },
+    {
+      "text": "×5",
+      "label": "5배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "fast"
+      }
+    },
+    {
+      "text": "설정",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 발전",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {}
+    },
+    {
+      "text": "튜토리얼 끔",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "소리 켬",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "곡선 지면",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {}
+    },
+    {
+      "text": "해상도 배율",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "renderScale": "1"
+      }
+    },
+    {
+      "text": "색약 모드",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "colorblind": "off"
+      }
+    },
+    {
+      "text": "지금 저장",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "수동 저장시장도시 목표 · 168분째 · 인구 528 · 목책 시대",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 저장 2시장도시 목표 · 168분째 · 인구 528 · 목책 시대",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "서쪽 헛간에 밀 969 묶임운반꾼 부족 · 수확 버려짐",
+      "label": "서쪽 헛간에 밀 969 묶임 — 운반꾼 부족 · 수확 버려짐. 누르면 그 건물로 갑니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "stuckReason": "no_carrier",
+        "stuckBuilding": "construction-site-000047"
+      }
+    },
+    {
+      "text": "",
+      "label": "교회 이용 불가 — 첫 건물 보기 · 교회 없음",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "밀 공급 없음 — 첫 건물 보기 · 곡창에서 밀 운반을 기다리는 중",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "제2장 · 전쟁의 그늘2장0/2",
+      "label": "제2장 · 전쟁의 그늘 0/2",
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "목표 기록",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "직접",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "layer": "direct"
+      }
+    },
+    {
+      "text": "구역",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "zone"
+      }
+    },
+    {
+      "text": "방향",
+      "label": null,
+      "disabled": true,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "direction"
+      }
+    },
+    {
+      "text": "되돌리기",
+      "label": "마지막 공사를 취소합니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "건설",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "build"
+      }
+    },
+    {
+      "text": "장부",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "ledger"
+      }
+    },
+    {
+      "text": "청지기",
+      "label": "청지기 바살러뮤 드 애시비",
+      "disabled": false,
+      "expanded": "true",
+      "pressed": null,
+      "data": {
+        "dock": "steward",
+        "speaking": "true"
+      }
+    }
+  ]
+}

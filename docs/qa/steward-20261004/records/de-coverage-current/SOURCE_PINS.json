@@ -1,0 +1,131 @@
+[
+  {
+    "path": "src/ledger/ledger.ts",
+    "sha256": "ef2029b12fe25445410501cdd12147b233dca5b767650a7a6ba4a465326064b7",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/ledger/ledger.types.ts",
+    "sha256": "1fa6380f8257594f2a2e88ecaae540832cd935c05c75aa578c9c46b60d44cb21",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/legacy.ts",
+    "sha256": "b2d4dfbf1bcbebd1cae5b58b72dc6770f4abb78526f9053d576dc4fdb25ccbd9",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/moneyRules.ts",
+    "sha256": "98136a56b880c47d87e18f764f11d3f4705e17db6de2f4ee6b707d64a50adc67",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/ale.ts",
+    "sha256": "ccb11033375137164b40cc027f165f4b06b4333a61533ce8729e9bc1c2a455a8",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/marketSettlement.ts",
+    "sha256": "e0c29ccbeb76affafa1032a2c2bd69b4290e9d589cd2d21fd8269e6f0fe4eaa0",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/politics.ts",
+    "sha256": "c78d456fa63bf7eb2fa48361919ff760da4a4e822c291559de6d12af9bf336cf",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/lordship.ts",
+    "sha256": "b20b8a24ebbd8a36d6e9cc55e8e8fc8dfe6e079b96e1cf1beeb1ce294f8c1190",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/war.ts",
+    "sha256": "502703a1be4dbae2764cdbc247b9cba9b35fda3ae7895add24694b1e51acd58b",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/plague.ts",
+    "sha256": "97f424f6a7bf85c461363eb00dbeb31b7fd600f16a3f4d4d6845a15d396531db",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/cloth.ts",
+    "sha256": "2d5262f029de5af0ba07c135087905a54b8d6575ed7f1fb58e9eaaf471dddd6d",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/reorganisation.ts",
+    "sha256": "bf8b86099535fc3b3098c774da0aa5d45d8e7c21fdd25c013e79cf58d92c0595",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/timberTrade.ts",
+    "sha256": "0983dcbf2ba146f186845e3f22bc6c764162c2b90c5d7b69ab14e6f8972905ca",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/townAgency.ts",
+    "sha256": "b2e99ce084df555b676423a2d767b0bd9874f349a2d71d50dd1bd48fb2bac63d",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/estateSuits.ts",
+    "sha256": "da874ca02d90d42f610d3799964513198dcede76aeef0181abc98fbdc8c5ff80",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/marriage.ts",
+    "sha256": "181b1c50f543c3bdbe66adff77b4710ea689cda5f99c5dbbb9f73e6411eeb99a",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/stewardship.ts",
+    "sha256": "e73a230a40cc61951e6173ecb9cfde2ac62144b57fb573a10f183002743abe49",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/registry.ts",
+    "sha256": "5a5bb81ff2e7fe445a8db833895217b13d7f5d1e4831d9ef0380e050b2a835a4",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/personsApi.ts",
+    "sha256": "fc9ac366b9dad35278ec44bc0bed8e2f66378d0bd8bbce8a66b4191ddd139cbc",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/ui/chronicle/chronicleScreenModel.ts",
+    "sha256": "52a47405117893ca1b1cbd281c2cc1fe2a1de64b4e8ca8c6ff9a74a2d86fdaf4",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/content/diplomacyConfig.ts",
+    "sha256": "c37266ce00dd391f0db7e42ceddfc8aa420d03c8fc081d263e5cee3e87036967",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/content/legacyConfig.ts",
+    "sha256": "3ca61d68328e3b15bd062a6bdd06061eaa56e0ccf8f02ab8510f1805993de1f8",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/content/aleConfig.ts",
+    "sha256": "edbb0c889508acc87e4852402c8d2511127ac87d23bab9234f6cc28ec562b45c",
+    "matchesPrior": true
+  },
+  {
+    "path": "src/content/historyCopy.ko.ts",
+    "sha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc"
+  }
+]

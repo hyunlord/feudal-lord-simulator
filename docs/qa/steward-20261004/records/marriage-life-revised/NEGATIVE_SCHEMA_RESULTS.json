@@ -1,0 +1,466 @@
+{
+  "safeTickBoundaryPositiveCases": 2,
+  "status": "PASS_SUPPORTED_SCHEMA_SUBSET",
+  "negativeCases": [
+    {
+      "id": "proposal.fields.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.fallback.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.field.domain",
+      "rejected": true
+    },
+    {
+      "id": "proposal.when.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.domain",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.op_type",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.in_empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.fact_line.missing",
+      "rejected": true
+    },
+    {
+      "id": "proposal.slot.unapproved",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_ill.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.deferred_void.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_change.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.will_dropped.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.father_died.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.lost.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "marriage.contested.unknown_with_facts",
+      "rejected": true
+    }
+  ],
+  "negativeCount": 114,
+  "knownPositiveCount": 26,
+  "unknownEmptyAccepted": true,
+  "scope": "JSON schema keywords used in these documents executed by explicit Ruby subset validator; not full JSON Schema conformance suite or provenance proof"
+}

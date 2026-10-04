@@ -1,0 +1,1493 @@
+[
+  {
+    "id": "NE_SR01_MT03",
+    "eventIds": [
+      "ck_evt_063"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "본안 채무와 적법한 소환·불출석 책임을 분리.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "소환의 전달부터 다시 확인한다",
+        "proposedOutcome": "전달자를 불러 기록하고 본안 심리를 다음 회기로 늦춘다",
+        "cost": "서기·전달자 비용과 채권자의 기다림",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "불출석 책임을 본안과 나누어 심리한다",
+        "proposedOutcome": "출석 면제 주장만 별도 판단하고 채무는 독립 심리한다",
+        "cost": "두 절차의 시간과 기록 비용",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "양쪽이 동의하면 새 기일을 잡는다",
+        "proposedOutcome": "기존 불출석 제재를 유보하되 합의된 출석 의무를 남긴다",
+        "cost": "원고의 동의와 새로운 기한 약속",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+  },
+  {
+    "id": "NE_SR01_MT04",
+    "eventIds": [
+      "ck_evt_064"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "물건 반환과 수선비 상계를 구별. 돈만의 채무와 다른 점유·작업기한 문제.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "쟁기부터 돌려주고 수선비는 따로 따진다",
+        "proposedOutcome": "도구 반환과 별도 수선비 청구를 기록한다",
+        "cost": "수선한 사람의 미회수 비용",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "수선비를 합의한 뒤 돌려준다",
+        "proposedOutcome": "정한 비용 지급을 반환 조건으로 한다",
+        "cost": "경작 기한의 지연과 현금 부담",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "두 집이 쓰는 순서를 먼저 합의한다",
+        "proposedOutcome": "한 철의 사용순서와 반환일을 정하고 소유 판단은 보존한다",
+        "cost": "어느 쪽도 원하는 날을 모두 쓰지 못함",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+  },
+  {
+    "id": "NE_SR01_MT06",
+    "eventIds": [
+      "ck_evt_066"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "농작물 손해, 가축 보관, 무단 반출 세 책임을 분리.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "밭 손해와 무단 반출을 따로 묻는다",
+        "proposedOutcome": "독립 책임 둘과 보관비를 구분해 심리한다",
+        "cost": "절차가 길어지고 양쪽 증언이 필요",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "보관 절차부터 확인한다",
+        "proposedOutcome": "압류 권한과 풀어 줄 조건이 고지되었는지 조사한다",
+        "cost": "집행관의 시간과 조사 중 회수 지연",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "배상을 담보로 소는 집에 둔다",
+        "proposedOutcome": "소 반환 없이 배상 기한·보증인을 정한다",
+        "cost": "채권자는 현물 담보를 놓고 보증 위험을 받음",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+  },
+  {
+    "id": "NE_SR01_MT09",
+    "eventIds": [
+      "ck_evt_069"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "생활 수선용 채취권과 상업 판매권의 범위 차이.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "집 수선에 쓴 몫부터 확인한다",
+        "proposedOutcome": "허용 용도와 판매 물량을 따로 판정한다",
+        "cost": "조사 비용과 판매 지연",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "판매한 몫만 따로 합의한다",
+        "proposedOutcome": "생활 채취권을 보존하고 판매분의 대가를 협의한다",
+        "cost": "판매자 현금 부담과 좁은 허가 선례",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "다음 채취까지 임시 허가를 쓴다",
+        "proposedOutcome": "용도·수량·기한을 한정하고 그 뒤 다시 판단한다",
+        "cost": "상시 권리를 얻지 못하며 재심 업무가 남음",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+  },
+  {
+    "id": "NE_SR01_MT10",
+    "eventIds": [
+      "ck_evt_070"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "이행 결과와 인적 노무 의무의 대리 허용을 분리. 후기 지속 여부 추가 고증 필요.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "끝낸 일의 대가를 지급한다",
+        "proposedOutcome": "대리 이행을 이번 한 번만 인정한다",
+        "cost": "향후 다른 사람이 같은 예외를 요구할 위험",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "약속 당사자에게 다시 이행을 요구한다",
+        "proposedOutcome": "인적 의무와 실제 대리노동 대가를 따로 정산한다",
+        "cost": "이미 일한 사람의 보상 문제와 중복 시간",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "대리인의 몫을 계약 당사자와 나눈다",
+        "proposedOutcome": "동의한 임금 분할과 다음 대리 허용조건을 기록한다",
+        "cost": "두 사람이 모두 합의해야 하며 기록 비용 발생",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+  },
+  {
+    "id": "NE_SR01_MT11",
+    "eventIds": [
+      "ck_evt_071"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "직영 경영의 변동 수입과 임대의 고정 약속 교환.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "고정 납부액으로 여러 해를 맡긴다",
+        "proposedOutcome": "기한 있는 직영지 임대를 맺는다",
+        "cost": "풍년 수익과 직접 경영 선택을 넘김",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "한 해만 시험 임대한다",
+        "proposedOutcome": "단기 임대와 수선·반환 조건을 맺는다",
+        "cost": "곧 다시 협상해야 하고 임차인이 장기 투자를 꺼릴 수 있음",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "직접 경영하며 일부 작업만 맡긴다",
+        "proposedOutcome": "토지점유 이전 없이 작업별 계약을 맺는다",
+        "cost": "작황·임금·관리 위험이 영주에게 남음",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다."
+  },
+  {
+    "id": "NE_SR01_MT12",
+    "eventIds": [
+      "ck_evt_072"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "실사용 가구 분할과 원임차인의 공동 납부 책임 구분.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "한 사람의 책임 아래 나눠 쓰게 한다",
+        "proposedOutcome": "원임차인이 전체 지대를 책임지는 전대를 허용한다",
+        "cost": "원임차인이 다른 가구 미납까지 부담",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "각 집의 몫을 별도 등록한다",
+        "proposedOutcome": "임차권·지대·수선의무를 나누어 기록한다",
+        "cost": "영주의 관리 항목과 기록비 증가",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "다음 납부일까지 분할을 정리한다",
+        "proposedOutcome": "거주 이전의 유예와 원래 필지 복원을 합의한다",
+        "cost": "가구가 다른 자리를 찾는 시간·이주 부담",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+  },
+  {
+    "id": "NE_SR01_MT13",
+    "eventIds": [
+      "ck_evt_073"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "경계 권원 확인과 실제 통행권 복구·작물 보상 분리.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "길을 열고 밭의 손해를 따로 갚는다",
+        "proposedOutcome": "통행 복구와 작물손실 보상을 기록한다",
+        "cost": "보상 지출과 경작면적 감소",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "수확 뒤까지 임시 우회를 쓴다",
+        "proposedOutcome": "우회 허용과 원래 길 복구 기한을 정한다",
+        "cost": "통행자의 우회 시간과 기한 미이행 위험",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "양쪽 동의로 다른 길을 문서화한다",
+        "proposedOutcome": "기존 통행권 대신 새 경로권을 교환한다",
+        "cost": "새 경로 제공자의 토지 사용 제한",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+  },
+  {
+    "id": "NE_SR01_MT14",
+    "eventIds": [
+      "ck_evt_074"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "같은 공유지라도 수선·연료·이탄의 용도별 권리는 다를 수 있음.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "지붕 수선 몫만 허가한다",
+        "proposedOutcome": "용도 제한 갈대채취권을 설정한다",
+        "cost": "판매·연료 전용 불가와 감독 부담",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "대금을 받고 별도 채취 몫을 준다",
+        "proposedOutcome": "기존 권리와 별개의 유상 채취 허가를 맺는다",
+        "cost": "소작인의 현금과 임시 허가 기한",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "기존 관습을 조사하는 동안 묶음 수를 제한한다",
+        "proposedOutcome": "임시 상한과 재심 기일을 남긴다",
+        "cost": "충분히 수선하지 못할 위험과 조사 비용",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+  },
+  {
+    "id": "NE_SR01_MT19",
+    "eventIds": [
+      "ck_evt_079"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "외부판매납기와자체수선의생산배정. 기와를목재자원으로치환하지않음.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "이웃의 선금을 받고 먼저 굽는다",
+        "proposedOutcome": "외부 주문의 선금·납기·불이행 조건을 계약한다",
+        "cost": "자체 수선 지연과 외부 납기 의무",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "자기 장원의 수선분부터 굽는다",
+        "proposedOutcome": "내부 주문을 먼저 배정한다",
+        "cost": "외부 판매 수입과 거래 기회를 잃음",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "두 차례로 나누어 납품한다",
+        "proposedOutcome": "자체·외부 주문에 생산량과 기한을 나눈다",
+        "cost": "가마 가동·운반 횟수와 재료 선투자 증가",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+  },
+  {
+    "id": "NE_SR01_MT21",
+    "eventIds": [
+      "ck_evt_081"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "인장차이와문서위조를구분하는인증절차. 진위결론자동생성금지.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "증인 앞에서 문서를 다시 확인한다",
+        "proposedOutcome": "당사자 확인과 인장 대여 경위를 별도 기록한다",
+        "cost": "증인 출석·서기 비용",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "발급자를 찾아 확인할 때까지 집행을 늦춘다",
+        "proposedOutcome": "집행 유예와 확인 기한을 둔다",
+        "cost": "채권자 회수 지연과 증거 소실 위험",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "쌍방 동의로 새 문서를 쓴다",
+        "proposedOutcome": "옛 문서와 대체문서의 취소·승계 관계를 남긴다",
+        "cost": "양쪽 재동의와 작성비가 필요",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "인장이 다르다는 이유만으로 위조를 확정하지 않는다. 예시 중 시기 밖 문서를 게임 기간의 사건으로 쓰지 않는다."
+  },
+  {
+    "id": "NE_SR01_MT22",
+    "eventIds": [
+      "ck_evt_082"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "주채무와보증채무순서·한도·해제시점.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "원채무자에게 먼저 기한을 준다",
+        "proposedOutcome": "보증 청구를 유예하고 주채무 이행기한을 둔다",
+        "cost": "채권자의 기다림과 채무자 부재 위험",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "보증 약속의 한도만큼 청구한다",
+        "proposedOutcome": "보증한도 내에서 청구하고 대위 구상권을 남긴다",
+        "cost": "보증인의 현금 지출과 나중 회수 위험",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "채권자와 보증인이 분할을 합의한다",
+        "proposedOutcome": "주채무와 보증 잔액을 중복 없이 분할 기록한다",
+        "cost": "채권자 동의·장기 회수·관리 비용",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+  },
+  {
+    "id": "NE_SR01_MT24",
+    "eventIds": [
+      "ck_evt_084"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "이중기록의정정이력·원채무합산중복방지.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "두 원본을 함께 보관하고 대조한다",
+        "proposedOutcome": "정정 흔적과 두 기록의 발급 순서를 심리한다",
+        "cost": "기록 확보 비용과 추심 지연",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "일치하는 액수만 먼저 정산한다",
+        "proposedOutcome": "다툼 없는 원금만 갚고 잔액을 보류한다",
+        "cost": "일부 현금 지출과 잔액 분쟁 존속",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "당사자가 새 액수에 함께 인장을 찍는다",
+        "proposedOutcome": "대체 합의서와 옛 채무 소멸 범위를 기록한다",
+        "cost": "불리한 액수 양보와 양쪽 동의 필요",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+  },
+  {
+    "id": "NE_SR01_MT26",
+    "eventIds": [
+      "ck_evt_086"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "운송대금회수와물건반환의선후·담보보관.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "짐을 돌려주고 운임 지급일을 정한다",
+        "proposedOutcome": "반환과 무담보 운임 채권을 남긴다",
+        "cost": "수레꾼이 회수 위험을 떠안음",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "합의한 일부 짐만 담보로 둔다",
+        "proposedOutcome": "담보 평가액·보관비·해제조건을 정한다",
+        "cost": "물건 주인의 판매 가능 물량 감소",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "짐을 함께 팔아 운임부터 정산한다",
+        "proposedOutcome": "공동 매각과 배분 순서를 합의한다",
+        "cost": "급매 손실·매각비·소유자 동의 필요",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+  },
+  {
+    "id": "NE_SR01_MT29",
+    "eventIds": [
+      "ck_evt_089"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "취수·배출위치와오염책임;보통우물장려금으로해결완료라할수없음.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "배출하는 작업을 다른 자리로 옮기도록 합의한다",
+        "proposedOutcome": "배출 위치·접근권·이전비용을 계약한다",
+        "cost": "이전비용과 작업 중단",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "취수와 배출 시간을 나눈다",
+        "proposedOutcome": "공동 시간표와 위반 책임을 설정한다",
+        "cost": "생산시간 제한과 감독 업무",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "한쪽이 별도 물길을 마련하도록 지원한다",
+        "proposedOutcome": "시설·토지권·관리책임을 함께 합의한다",
+        "cost": "공사비와 물길을 내줄 사람의 동의",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "제목 범위만으로 1400년 특정 작업장·인물의 존재를 확정하지 않는다. 1450 이후 개별 소송·재혼·직종 사례는 사용하지 않았다."
+  },
+  {
+    "id": "NE_SR01_MT31",
+    "eventIds": [
+      "ck_evt_091"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "현물평가·매각비용·담보와변제의구분.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "독립 평가를 거쳐 변제로 받는다",
+        "proposedOutcome": "현물가격과 채무 소멸액을 따로 기록한다",
+        "cost": "평가비와 이후 매각 위험",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "물건은 담보로만 받고 기한을 둔다",
+        "proposedOutcome": "물건 소유와 채무를 남겨 두는 담보 계약",
+        "cost": "보관비와 장기 회수 위험",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "일부만 받아 급한 현금을 남긴다",
+        "proposedOutcome": "부분 현물변제·현금잔액·기한을 나눈다",
+        "cost": "채무자는 두 방식의 이행을 함께 책임짐",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+  },
+  {
+    "id": "NE_SR01_MT34",
+    "eventIds": [
+      "ck_evt_094"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "토지권원·건물임대·수선책임다층관계.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "수선할 부분별 책임을 적는다",
+        "proposedOutcome": "토지·건물·사용자 의무를 삼자합의로 분리한다",
+        "cost": "세 당사자 동의·작성비",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "임대인이 먼저 고치고 다음 지대에서 정산한다",
+        "proposedOutcome": "수선 선지출과 장래 지대 상계를 정한다",
+        "cost": "임대인의 당장 현금 부담",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "장인이 고치되 돌려받을 한도를 정한다",
+        "proposedOutcome": "임차인의 수선비 상환한도와 증빙을 계약한다",
+        "cost": "장인의 선투자·한도초과 위험",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+  },
+  {
+    "id": "NE_SR01_MT36",
+    "eventIds": [
+      "ck_evt_096"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "대여물감가·수선·보증금반환. 후기계약관행추가근거필요.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "망가진 부품만 따로 평가한다",
+        "proposedOutcome": "기존 마모와 새 손상을 분리해 정산한다",
+        "cost": "평가자 비용과 대여물 재사용 지연",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "빌린 이가 고쳐 돌려준다",
+        "proposedOutcome": "수선 완료검사와 반환기한을 정한다",
+        "cost": "직조공의 재료·노동·시간 부담",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "대금을 깎아 베틀을 넘긴다",
+        "proposedOutcome": "합의된 매매로 대여관계를 종료한다",
+        "cost": "사는 쪽의 현금과 파는 쪽의 자산 포기",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+  },
+  {
+    "id": "NE_SR01_MT37",
+    "eventIds": [
+      "ck_evt_097"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "연쇄채무의기한불일치·상계·부분결제.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "가까운 기한의 빚부터 따로 갚게 한다",
+        "proposedOutcome": "연쇄채무를 개별 기한대로 분리한다",
+        "cost": "먼 거래 채권이 회수되기 전 현금 필요",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "모두 동의한 한 기한으로 모은다",
+        "proposedOutcome": "채권자별 동의와 유예 대가를 기록한다",
+        "cost": "빠른 기한 채권자의 기다림과 불이행 집중 위험",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "서로 맞는 채무만 상계한다",
+        "proposedOutcome": "당사자 일치·동의가 있는 채무만 상계한다",
+        "cost": "상계되지 않는 잔액과 기록 대조 비용",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+  },
+  {
+    "id": "NE_SR01_MT38",
+    "eventIds": [
+      "ck_evt_098"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "다리유지수입과병행여울경로권리;시장부담을통행세로치환금지.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "여울은 남기고 다리 이용에만 부담을 둔다",
+        "proposedOutcome": "두 경로의 권리와 수선 부담을 분리한다",
+        "cost": "다리 수입이 줄고 여울 관리가 남음",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "다리 수선 기간에만 통행을 모은다",
+        "proposedOutcome": "임시 경로 제한과 종료기한을 정한다",
+        "cost": "여울 이용자의 우회·기한 감시",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "공동 부담으로 두 길을 함께 유지한다",
+        "proposedOutcome": "이용자들의 동의를 받은 유지기금을 정한다",
+        "cost": "당장 현금·노동 부담과 회계 공개",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다."
+  },
+  {
+    "id": "NE_SR01_MT39",
+    "eventIds": [
+      "ck_evt_099"
+    ],
+    "status": "proposal_not_engine_effect",
+    "problem": "인물식별정정과조세의무분리;이름누락을유죄또는출신차별로단정하지않음.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "본인의 이름과 거주 증언을 함께 적는다",
+        "proposedOutcome": "인물 동일성 정정 이력을 남긴다",
+        "cost": "확인 비용·중복 납부 기록 대조",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "b",
+        "label": "이전 납부 증서를 먼저 대조한다",
+        "proposedOutcome": "식별 전 추징을 유보하고 납부 이력을 연결한다",
+        "cost": "징수 지연과 잃어버린 증서 수색",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      },
+      {
+        "id": "c",
+        "label": "이웃의 진술을 받아 별도 심리에 넘긴다",
+        "proposedOutcome": "지역 배심 증언과 당사자 이의제기를 함께 보존한다",
+        "cost": "출석 시간·재심 비용, 유죄 판단 아님",
+        "suggestedRanges": {
+          "administrationCostD": [
+            12,
+            60
+          ],
+          "delayCourtSittings": [
+            1,
+            2
+          ]
+        },
+        "numericalStatus": "게임추정;모든선택에일괄청구할값아님.구현전개별조정."
+      }
+    ],
+    "requiredState": [
+      "stable dispute/contract id",
+      "actual parties and authority",
+      "amount/property or right scope",
+      "deadline and expiry",
+      "consent and evidence provenance",
+      "balanced ledger entries and idempotency key"
+    ],
+    "mustNotReuse": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지.",
+    "historyScope": "이름 누락의 원인이 적대감인지 새 이주인지 저자도 확정하지 않는다.1440년의 과세·면제 규칙을 이후 모든 연도에 동일 적용하지 않는다. 현대 가치 환산과 임금 수치는 사용하지 않았다."
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "verdict": "SAFE_AS_BLOCKED_DRAFT_NOT_DIRECT_MERGE",
+  "fixtureCount": 46,
+  "nonfiniteCases": 6,
+  "actualProposalConditionsEvaluated": true,
+  "compatibility": [
+    {
+      "id": "plague.new_graves.r06raw.one",
+      "currentShape": true
+    },
+    {
+      "id": "plague.new_graves.r06raw.several",
+      "currentShape": true
+    },
+    {
+      "id": "plague.empty_streets.r06raw.one",
+      "currentShape": true
+    },
+    {
+      "id": "plague.empty_streets.r06raw.several",
+      "currentShape": true
+    },
+    {
+      "id": "legacy.mayor_demand.r06raw.unidentified",
+      "currentShape": true
+    },
+    {
+      "id": "legacy.mayor_demand.r06raw.identified",
+      "currentShape": false
+    }
+  ],
+  "runtimeExecuted": false,
+  "sourceFiles": 6,
+  "canonicalSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf"
+}

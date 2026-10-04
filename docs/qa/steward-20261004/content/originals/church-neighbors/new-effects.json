@@ -1,0 +1,257 @@
+[
+  {
+    "id": "NE_SR01_CN01",
+    "title": "지역 소환·출석·경계 답사 절차",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_103",
+      "ck_evt_109"
+    ],
+    "operations": [
+      "witness_meeting",
+      "local_summons",
+      "boundary_walk",
+      "summons_service_hearing",
+      "reissue_summons",
+      "customary_service_rule"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN02",
+    "title": "성직자 추천권·성직록 교환 절차",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_104",
+      "ck_evt_116"
+    ],
+    "operations": [
+      "benefice_exchange_recommend",
+      "temporary_service_agreement",
+      "advowson_review",
+      "benefice_presentation",
+      "advowson_dispute_mediation"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN03",
+    "title": "용도 제한 채취권과 별도 매매 허락",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_106"
+    ],
+    "operations": [
+      "estovers_scope",
+      "timber_sale_licence",
+      "earmarked_repair_grant"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN04",
+    "title": "교구·장원 회계 인계와 독립 확인",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_107",
+      "ck_evt_120"
+    ],
+    "operations": [
+      "dated_account_handover",
+      "joint_inventory_receipt",
+      "independent_handover_audit",
+      "independent_parish_signoff",
+      "separate_parish_office",
+      "public_parish_account"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN05",
+    "title": "직영지 임대·노동 계약",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_110"
+    ],
+    "operations": [
+      "demesne_lease",
+      "demesne_direct_labour",
+      "partial_demesne_lease"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN06",
+    "title": "타일 등 물자 납품 계약과 재협상",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_112"
+    ],
+    "operations": [
+      "honour_goods_delivery",
+      "renegotiate_goods_delivery",
+      "purchase_tiles"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN07",
+    "title": "종자 비축·현물 구휼·씨앗 대여",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_114"
+    ],
+    "operations": [
+      "earmarked_grain_purchase",
+      "seed_reserve_release",
+      "seed_loan"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN08",
+    "title": "목적 제한 기부 재산 회계",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_118"
+    ],
+    "operations": [
+      "restricted_endowment_account",
+      "endowment_interfund_loan",
+      "trust_fund_audit"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN09",
+    "title": "유증 동산의 인도·대체·청구",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_119"
+    ],
+    "operations": [
+      "moveable_bequest_delivery",
+      "commute_moveable_bequest",
+      "moveable_bequest_claim"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN10",
+    "title": "일반 채무·보증·면책 문서",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_121",
+      "ck_evt_126"
+    ],
+    "operations": [
+      "bounded_surety",
+      "bilateral_loan",
+      "conditional_surety",
+      "debt_discharge_reconciliation",
+      "conditional_debt_discharge",
+      "partial_debt_settlement"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN11",
+    "title": "일시 통행 허락·가축 피해 중재",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_122",
+      "ck_evt_129"
+    ],
+    "operations": [
+      "temporary_access_licence",
+      "boundary_work_contract",
+      "shared_access_agreement",
+      "livestock_release_surety",
+      "impound_damage_assessment",
+      "livestock_damage_arbitration"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN12",
+    "title": "공동 다리 수선 분담 약정",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_125"
+    ],
+    "operations": [
+      "one_off_bridge_contribution",
+      "shared_bridge_maintenance",
+      "bridge_liability_inquiry"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN13",
+    "title": "분쟁 수입 예치와 중립 결산",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_134"
+    ],
+    "operations": [
+      "disputed_income_escrow",
+      "partial_income_escrow",
+      "escrow_refusal_existing_suit"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN14",
+    "title": "생존권자의 벌채 제한과 동의",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_137"
+    ],
+    "operations": [
+      "life_tenant_timber_limit",
+      "consensual_timber_sale",
+      "neighbour_debt_extension"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN15",
+    "title": "권원 소송의 재판 외 중재",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_135"
+    ],
+    "operations": [
+      "litigation_mediation"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  },
+  {
+    "id": "NE_SR01_CN16",
+    "title": "지정 벽화 제작 계약",
+    "status": "proposal_not_implemented",
+    "engineCommands": [],
+    "draftIds": [
+      "ck_evt_117"
+    ],
+    "operations": [
+      "earmarked_art_commission"
+    ],
+    "need": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+  }
+]

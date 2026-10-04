@@ -1,0 +1,23 @@
+{
+  "status": "AUTHOR_DRAFT_VALIDATED_UNINSTALLED",
+  "requestedTemplates": 5,
+  "authoredTemplates": 5,
+  "variants": 11,
+  "positiveFixtures": 11,
+  "negativeContextSchema": 99,
+  "bindingMismatchFixtures": 22,
+  "negativeProposalSchema": 7,
+  "unknownFallbackCases": 11,
+  "factLineBlocked": [
+    "reorg.weavers_left.r06rg.refused",
+    "reorg.weavers_left.r06rg.expired"
+  ],
+  "sourceFiles": 4,
+  "sourceSpans": 9,
+  "baselineSha256": "ac1bde4a2c92381f8adaed3b3e5c6a4cd6dbe5745098639754bb6389919aba88",
+  "actualCaptureImplemented": false,
+  "runtimeExecuted": false,
+  "naturalOccurrenceVerified": false,
+  "independentReview": false,
+  "schemaScope": "Strict frozen authored package; explicit Ruby keyword subset, not complete JSON Schema compliance implementation"
+}
