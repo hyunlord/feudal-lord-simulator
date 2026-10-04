@@ -516,11 +516,12 @@ export function advanceTownAgency(state: GameState): GameState {
   }
   // TA-11: a charter wall search that found no wall is not run again on the same layout (the walls and their service
   // space are read from it); any change to the layout searches again.
-  // TA-13 (LM-E9b): after WALK_REUSE_IDLE_WEEKS weeks in a row that started nothing, on the same layout and the lord's
-  // same conditions, within a season of the walk and below its fund threshold, a week reuses that walk.
+  // TA-13 (LM-E9b): in a full town (its housing lots all built), after a week that started nothing, on the same layout
+  // and the lord's same conditions, within a season of the walk and below its fund threshold, a week reuses that walk.
   const key = walkKey(week);
   const last = agency.lastWalk;
-  const reused = last !== undefined && last.idleWeeks >= WALK_REUSE_IDLE_WEEKS && last.key === key && week.tick - last.tick < WALK_REUSE_TICKS
+  const full = week.houses.length >= LORD_MODE_POLICY.maxHousingLots;
+  const reused = full && last !== undefined && last.idleWeeks >= WALK_REUSE_IDLE_WEEKS && last.key === key && week.tick - last.tick < WALK_REUSE_TICKS
     && (last.fundThreshold === null || treasuryBalance(week) < last.fundThreshold) ? last : undefined;
   let needs: readonly PlanningNeed[];
   let tried: string | undefined;
