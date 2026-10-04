@@ -44,16 +44,36 @@ export function initializeCaptureDocument() {
   const sources = image => image instanceof HTMLImageElement
     ? new Set([new URL(image.currentSrc || image.src, location.href).pathname])
     : lineage.get(image) ?? new Set();
+  const patternSources = new WeakMap();
+  const recordPaint = (context, urls) => {
+    if (context.globalAlpha === 0 || context.globalCompositeOperation === 'destination-out') return;
+    const target = lineage.get(context.canvas) ?? new Set();
+    for (const url of urls) target.add(url);
+    lineage.set(context.canvas, target);
+    if (context.canvas === document.querySelector('canvas')) for (const url of urls) draws.add(url);
+  };
   const observe = prototype => {
+    const originalPattern = prototype.createPattern;
+    if (typeof originalPattern === 'function') prototype.createPattern = function(image, ...args) {
+      const pattern = originalPattern.call(this, image, ...args);
+      if (pattern !== null) patternSources.set(pattern, new Set(sources(image)));
+      return pattern;
+    };
+    for (const method of ['fill', 'fillRect', 'stroke', 'strokeRect']) {
+      const originalPaint = prototype[method];
+      if (typeof originalPaint !== 'function') continue;
+      prototype[method] = function(...args) {
+        const result = originalPaint.apply(this, args);
+        if (method === 'fillRect' && (args[2] === 0 || args[3] === 0)) return result;
+        const urls = patternSources.get(method.startsWith('stroke') ? this.strokeStyle : this.fillStyle);
+        if (urls !== undefined) recordPaint(this, urls);
+        return result;
+      };
+    }
     const originalDraw = prototype.drawImage;
     prototype.drawImage = function(image, ...args) {
       const result = originalDraw.call(this, image, ...args);
-      if (this.globalAlpha === 0 || this.globalCompositeOperation === 'destination-out') return result;
-      const urls = sources(image);
-      const target = lineage.get(this.canvas) ?? new Set();
-      for (const url of urls) target.add(url);
-      lineage.set(this.canvas, target);
-      if (this.canvas === document.querySelector('canvas')) for (const url of urls) draws.add(url);
+      recordPaint(this, sources(image));
       return result;
     };
     const originalClear = prototype.clearRect;
@@ -128,7 +148,7 @@ if (!Number.isInteger(port) || port < 4300 || port > 4399) throw new Error('Capt
 const out = resolve(flags.out);
 mkdirSync(out, { recursive: true });
 mkdirSync(join(out, 'repeat'), { recursive: true });
-const result = { pass: false, commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), views: [], errors: [], coverageScope: 'Expected URLs must be requested, decoded, and observed in drawImage lineage reaching the captured canvas; coverage set is explicit per view, not a claim of final visible pixels or occlusion.' };
+const result = { pass: false, commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), views: [], errors: [], coverageScope: 'Expected URLs must be requested, decoded, and observed in image/canvas/pattern paint lineage reaching the captured canvas; coverage set is explicit per view, not a claim of final visible pixels or occlusion.' };
 const progress = event => { const row = { time: new Date().toISOString(), ...event }; appendFileSync(join(out, 'progress.jsonl'), `${JSON.stringify(row)}\n`); console.log(JSON.stringify(row)); };
 const phase = (name, operation, timeoutMs = 90000) => capturePhase(name, operation, { timeoutMs, progress });
 const FROZEN = { date: 1700000000000, performance: 12345 };

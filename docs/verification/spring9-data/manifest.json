@@ -715,6 +715,15 @@
   },
   "history": "history.json",
   "runtime": "runtime-receipt.json",
-  "postLedgerReference4": "PENDING",
+  "postLedgerReference4": {
+    "status": "PASS",
+    "commit": "c8089d606ace9ae1543e197fcfa981483906343a",
+    "receipt": "reference4-receipt.json",
+    "views": 4,
+    "identityEqual": 4,
+    "rgbaExact": 4,
+    "aaPass": 4,
+    "errors": 0
+  },
   "finalPublication": "PENDING"
 }

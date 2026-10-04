@@ -8,4 +8,4 @@
 
 70c 이전 detached 검증은 history.json 및 spring9-v2-visual-review.md에 별도 보존했다. 현재 JPEG를 과거 실행의 그림으로 재명명하지 않았다. transfer-receipt.json은 당시 전송의 정적 영수증이며 현재 런타임 판정은 runtime-receipt.json이다. retirement.json/md는 후보 커밋 시점의 기록이다.
 
-원장 승격 뒤 참조 4뷰와 최종 게이트·게시는 아직 PENDING이다. 이 패키지는 설치 장부를 수정하거나 최종 게시 완료를 주장하지 않는다.
+원장 승격 커밋 c8089d60의 참조 4뷰도 실제 촬영 PASS다(70c 대비 식별자·RGBA 동일4, A/A4, 오류0). reference4-receipt.json 참조. 최종 게이트·게시는 아직 PENDING이다. 이 패키지는 설치 장부를 수정하거나 최종 게시 완료를 주장하지 않는다.
