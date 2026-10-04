@@ -6,3 +6,8 @@
 export const NW07_CLAIM_SURFACES_PERMILLE = 100;
 /** NW08: a neighbour house's head died last year — a contested succession gives the lord a claim, permille (the design's 250‰). */
 export const NW08_CONTESTED_SUCCESSION_PERMILLE = 250;
+/**
+ * ER-21 (Paston, the user's decision 2026-10-05): a piece the lord took from a neighbour house that still holds the
+ * estate's title — its heirs, widow or kin claim it back and sue, permille a year (one open on an estate at a time).
+ */
+export const RECOVERY_CLAIM_PERMILLE = 100;

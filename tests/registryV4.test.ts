@@ -152,3 +152,19 @@ test("R4 a compound choice runs whole: a suit filed and its deed added to that s
   const unfiled: GameState = { ...state, estates: { ...estatesOf(state), claims: estatesOf(withDeed).claims.map(entry => entry.id === claim.id ? { ...entry, status: "open" as const } : entry) } };
   assert.equal(runCommands(unfiled, choice.commands, { ...scope, state: unfiled }), null);
 });
+
+test("ER-22 one-shot entries are paced: the chance is the ones left over the seasons left, and falls as they are used", async () => {
+  const { oneShotPacePermille, v4Entries } = await import("../src/engine/registryV4");
+  const state = suing(1);
+  const full = oneShotPacePermille(state, []);
+  assert.ok(full > 0 && full < 1000, `${full}‰ at the start`);
+  const oneShots = v4Entries().filter(entry => entry.recurrence.mode === "once_per_campaign").map(entry => entry.id);
+  const used = oneShotPacePermille(state, oneShots.slice(0, Math.floor(oneShots.length / 2)).map(entryId => ({ entryId, offeredTick: 0, status: "answered" })));
+  assert.ok(used < full, "fewer left, a smaller chance");
+  // A season whose pace draw fails offers no one-shot entry.
+  const candidates = v4Candidates(state, []);
+  const pace = oneShotPacePermille(state, []);
+  const { hashSeed } = await import("../src/engine/prng");
+  const open = hashSeed(state.seed, "registry-pace", Math.floor(state.tick / 1000)) % 1000 < pace;
+  if (!open) assert.ok(candidates.every(candidate => candidate.entry.recurrence.mode !== "once_per_campaign"));
+});

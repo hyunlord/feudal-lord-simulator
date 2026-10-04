@@ -1,7 +1,7 @@
 /**
  * LM-E9b (spec docs/design/registry.md ER-21): the neighbour world makes the lord's situations — claims surface on the
  * neighbour estates across the years (NW07, one open at a time on an estate), a dead head's house leaves a contested
- * succession (NW08); nothing outside lord mode.
+ * succession (NW08), a house claims back a piece the lord took and sues (Paston); nothing outside lord mode.
  */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -65,4 +65,31 @@ test("ER-21 NW08 a neighbour house's head dead last year: a contested succession
 test("ER-21 outside lord mode nothing happens", () => {
   const sandbox = { ...load("chapter-two-town"), tick: 40 * YEAR };
   assert.equal(advanceNeighbourRules(sandbox), sandbox);
+});
+
+test("ER-21 (Paston) a piece the lord took is claimed back by the house that holds the estate, which sues at once; a judgment it won is enforced", () => {
+  let state = lordTown();
+  const estate = estatesOf(state).estates.find(entry => entry.offMap && entry.titleHolder !== LORD)!;
+  const piece = estate.pieces[0]!;
+  // The lord holds one of its pieces (as a won suit leaves it).
+  state = { ...state, estates: { ...estatesOf(state), estates: estatesOf(state).estates.map(entry => entry.id !== estate.id ? entry
+    : { ...entry, pieces: entry.pieces.map(item => item.id === piece.id ? { ...item, titleHolder: LORD, possessor: LORD } : item) }) } };
+  const start = state.tick - (state.tick % YEAR);
+  let year = 1;
+  let next = state;
+  for (; year <= 80; year += 1) {
+    next = advanceNeighbourRules({ ...state, tick: start + year * YEAR });
+    if (estatesOf(next).suits.some(suit => suit.plaintiff === estate.titleHolder && suit.pieceId === piece.id)) break;
+  }
+  const suit = estatesOf(next).suits.find(entry => entry.plaintiff === estate.titleHolder && entry.pieceId === piece.id);
+  assert.ok(suit !== undefined, "the house sued for the piece within 80 years");
+  assert.equal(suit.defendant, LORD);
+  assert.equal(estatesOf(next).claims.find(claim => claim.id === suit.claimId)!.basis, "inheritance");
+  // A second claim is not raised on the estate while this one is open.
+  const later = advanceNeighbourRules({ ...next, tick: start + (year + 1) * YEAR });
+  assert.equal(estatesOf(later).claims.filter(claim => claim.claimant === estate.titleHolder && claim.estateId === estate.id && claim.status !== "won" && claim.status !== "lost").length, 1);
+  // Won and enforcing: the house tries to take possession at the next year's turn.
+  const enforcing: GameState = { ...later, estates: { ...estatesOf(later), suits: estatesOf(later).suits.map(entry => entry.id === suit.id ? { ...entry, stage: "enforcing" as const, verdict: "plaintiff" as const, hold: 0 } : entry) } };
+  const tried = advanceNeighbourRules({ ...enforcing, tick: start + (year + 2) * YEAR });
+  assert.equal(estatesOf(tried).suits.find(entry => entry.id === suit.id)!.enforcements, 1);
 });

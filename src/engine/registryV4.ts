@@ -353,16 +353,33 @@ export interface V4Candidate {
 export interface V4Past { readonly entryId: string; readonly offeredTick: number; readonly status: string; readonly key?: string; readonly context?: string }
 
 /** ER-3, ER-15, ER-17: this season's v4 candidates (in their window and seasons, not repeated or open on the same key, drawn under their chance, bound, with two choices that can be carried out). */
+/**
+ * ER-22 (the user's decision 2026-10-05): this season's chance, permille, that a one-shot entry (`once_per_campaign`) may
+ * be offered — the one-shot entries not yet offered whose windows are still open, over the seasons left until those
+ * windows end. Many left: often; few: rarely — spread to the end of the windows.
+ */
+export function oneShotPacePermille(state: GameState, past: readonly V4Past[]): number {
+  const { year, season } = stateCalendar(state);
+  const left = ENTRIES.filter(entry => SUPPORT.get(entry.id)?.runs === true && entry.recurrence.mode === "once_per_campaign"
+    && entry.calendar.yearMaxInclusive >= year && !past.some(occurrence => occurrence.entryId === entry.id));
+  if (left.length === 0) return 0;
+  const end = Math.max(...left.map(entry => entry.calendar.yearMaxInclusive));
+  const seasons = (end - year) * 4 + (4 - season);
+  return Math.min(1000, Math.floor(1000 * left.length / Math.max(1, seasons)));
+}
+
 export function v4Candidates(state: GameState, past: readonly V4Past[]): readonly V4Candidate[] {
   const { year, season } = stateCalendar(state);
   const index = Math.floor(state.tick / SEASON);
   const thisYear = past.filter(occurrence => Math.floor(occurrence.offeredTick / YEAR) === Math.floor(state.tick / YEAR));
+  // ER-22: one-shot entries come this season only under the pace's draw.
+  const oneShotsOpen = hashSeed(state.seed, "registry-pace", index) % 1000 < oneShotPacePermille(state, past);
   const out: V4Candidate[] = [];
   for (const entry of ENTRIES) {
     if (SUPPORT.get(entry.id)?.runs !== true) continue;
     if (year < entry.calendar.yearMinInclusive || year > entry.calendar.yearMaxInclusive || !entry.calendar.seasonIndices.includes(season)) continue;
     const own = past.filter(occurrence => occurrence.entryId === entry.id);
-    if (entry.recurrence.mode === "once_per_campaign" && own.length > 0) continue;
+    if (entry.recurrence.mode === "once_per_campaign" && (own.length > 0 || !oneShotsOpen)) continue;
     if (own.filter(occurrence => thisYear.includes(occurrence)).length >= entry.frequency.maxPerYear) continue;
     const last = own.at(-1);
     const gap = Math.max(entry.frequency.minGapSeasons, entry.recurrence.cooldownSeasonsMinimum ?? 0);

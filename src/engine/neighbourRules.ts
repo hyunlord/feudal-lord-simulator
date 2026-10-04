@@ -1,11 +1,14 @@
 /**
  * LM-E9b (spec docs/design/registry.md ER-21): the neighbour world makes the lord's situations — at each year's turn in
- * lord mode, a neighbour estate's papers may surface a claim of the lord's (NW07), and a neighbour house whose head died
- * last year may leave a contested succession the lord can claim (NW08). Nothing runs without `state.agency`.
+ * lord mode, a neighbour estate's papers may surface a claim of the lord's (NW07), a neighbour house whose head died
+ * last year may leave a contested succession the lord can claim (NW08), and a house whose pieces the lord took claims
+ * one back and sues (the Paston rule: the more the lord wins, the more he must keep), enforcing a judgment it won once a
+ * year. Nothing runs without `state.agency`.
  */
-import { NW07_CLAIM_SURFACES_PERMILLE, NW08_CONTESTED_SUCCESSION_PERMILLE } from "../content/neighbourRulesConfig";
+import { NW07_CLAIM_SURFACES_PERMILLE, NW08_CONTESTED_SUCCESSION_PERMILLE, RECOVERY_CLAIM_PERMILLE } from "../content/neighbourRulesConfig";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD, raiseClaim } from "./estates";
+import { enforcePossession, fileSuit } from "./estateSuits";
 import { hashSeed } from "./prng";
 import { stateCalendar } from "./scenarioState";
 
@@ -37,5 +40,18 @@ export function advanceNeighbourRules(state: GameState): GameState {
     const piece = pieces[hashSeed(state.seed, `NW07-piece:${estate.id}`, year) % pieces.length]!;
     next = raiseClaim(next, { claimant: LORD, estateId: estate.id, pieceId: piece.id, basis: "purchase_deed" });
   }
+  // Paston: a house claims back a piece the lord holds of its estate, and sues at once (the lord the defendant).
+  for (const estate of estatesOf(next).estates) {
+    if (!estate.offMap || estate.titleHolder === LORD) continue;
+    const taken = estate.pieces.filter(piece => piece.titleHolder === LORD);
+    const suing = estatesOf(next).claims.some(claim => claim.claimant === estate.titleHolder && claim.estateId === estate.id && (claim.status === "open" || claim.status === "suing"));
+    if (taken.length === 0 || suing || hashSeed(state.seed, `recovery:${estate.id}`, year) % 1000 >= RECOVERY_CLAIM_PERMILLE) continue;
+    const piece = taken[hashSeed(state.seed, `recovery-piece:${estate.id}`, year) % taken.length]!;
+    next = raiseClaim(next, { claimant: estate.titleHolder, estateId: estate.id, pieceId: piece.id, basis: "inheritance" });
+    const claim = estatesOf(next).claims.find(entry => entry.claimant === estate.titleHolder && entry.estateId === estate.id && entry.pieceId === piece.id && entry.status === "open");
+    if (claim !== undefined) next = fileSuit(next, claim.id);
+  }
+  // A neighbour that won its judgment tries once a year to take possession (the lord's own suits are his to enforce).
+  for (const suit of estatesOf(next).suits) if (suit.plaintiff !== LORD && suit.stage === "enforcing") next = enforcePossession(next, suit.id);
   return next;
 }
