@@ -29,7 +29,7 @@ export function registryEntryDiagnosis(seed: number, years: number, out?: string
   const startYear = stateCalendar(state).year;
   const entries = registryEntries().filter(entry => entry.generator === undefined && entry.kind !== "annual_rule");
   const counts: Record<string, Count> = Object.fromEntries(entries.map(entry => [entry.id, { inYears: 0, withTarget: 0, conditionsHeld: 0, drawPassed: 0, offered: 0, firstHeldYear: null }]));
-  const world: { year: number; season: number; market: boolean; dues: number | null; suits: string[]; pendingAudits: string[]; delegated: number; lordDecided: number; policy: string | null }[] = [];
+  const world: { year: number; season: number; market: boolean; dues: number | null; suits: string[]; pendingAudits: string[]; delegated: number; lordDecided: number; policy: string | null; lordPieces: number; neighbourPieces: number; lordClaims: number }[] = [];
   let lastWritten = startYear;
   const result = () => ({ seed, years, reachedYear: stateCalendar(state).year, counts, world });
   while (stateCalendar(state).year < startYear + years) {
@@ -69,7 +69,11 @@ export function registryEntryDiagnosis(seed: number, years: number, out?: string
       suits: estates.suits.filter(suit => suit.stage !== "closed")
         .map(suit => `${suit.id}:${suit.stage}:${(estates.claims.find(claim => claim.id === suit.claimId)?.evidence ?? []).map(evidence => evidence.kind).join("+")}`),
       pendingAudits: pendingAudits(state).map(audit => `${audit.id}:kept${audit.revealedKept ?? -1}`), delegated: stewardship.oversight.filter(entry => entry.mode === "steward").length,
-      lordDecided: stewardship.petitions.filter(petition => petition.estateId !== "estate-home" && petition.decidedBy === "lord").length, policy: state.agency?.policy ?? null });
+      lordDecided: stewardship.petitions.filter(petition => petition.estateId !== "estate-home" && petition.decidedBy === "lord").length, policy: state.agency?.policy ?? null,
+      // ER-21: the neighbour estates' pieces the lord holds, of all their pieces, and the lord's claims raised so far.
+      lordPieces: estates.estates.filter(estate => estate.offMap).flatMap(estate => estate.pieces).filter(piece => piece.titleHolder === "lord").length,
+      neighbourPieces: estates.estates.filter(estate => estate.offMap).flatMap(estate => estate.pieces).length,
+      lordClaims: estates.claims.filter(claim => claim.claimant === "lord").length });
     if (out !== undefined && year >= lastWritten + 10) { lastWritten = year; writeFileSync(out, `${JSON.stringify(result())}\n`); }
   }
   if (out !== undefined) writeFileSync(out, `${JSON.stringify(result())}\n`);
