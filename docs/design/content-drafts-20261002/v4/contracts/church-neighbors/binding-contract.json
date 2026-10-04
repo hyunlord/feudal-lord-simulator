@@ -1,0 +1,33 @@
+{
+  "status": "proposal_not_runtime",
+  "requiredForChoices": {
+    "absent": "entry mandatory",
+    "present": "resolve lazily only for listed choices; missing=invalidate invalidates those choices, not entry; propagate same scope through dependency bindings; evaluate minimumEnabledConsequentialChoices after all choice-local failures"
+  },
+  "argumentDefaults": {
+    "syntax": {
+      "binding": "path",
+      "default": false
+    },
+    "semantics": "Only absent/undefined (not null) resolves to supplied default; existing false and true preserved. Used solely for optional recurring. Produce a plain boolean before GameCommand dispatch.",
+    "allowedDefaults": [
+      false
+    ],
+    "requiredAdapter": true
+  },
+  "onUnsupported": "block_dependent_entry; never pass wrapper objects to game handlers",
+  "choiceBindingScope": {
+    "ck_evt_128": [
+      "home -> b",
+      "jointure -> b"
+    ],
+    "ck_evt_132": [
+      "home -> b",
+      "jointure -> b"
+    ],
+    "ck_evt_140": [
+      "ableCandidate -> c"
+    ]
+  },
+  "source": "src/content/stewardshipConfig.ts:93; src/engine/stewardship.ts:385"
+}

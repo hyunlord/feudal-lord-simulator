@@ -1,0 +1,131 @@
+{
+  "status": "explicit_proposed_read_model_not_installed",
+  "sourceHead": "5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b",
+  "engineCalls": {
+    "marriageGrooms": {
+      "sourceRef": "src/engine/marriage.ts:85",
+      "args": [
+        "state"
+      ],
+      "returns": "GroomCandidate[]; 엔진이 기존 후보와 가계 후보를 계산",
+      "pure": true
+    },
+    "marriageRefusal": {
+      "sourceRef": "src/engine/marriage.ts:114",
+      "args": [
+        "state",
+        "terms",
+        "groomId"
+      ],
+      "returns": "null | no_groom | no_bride | under_way | treasury | no_terms",
+      "pure": true,
+      "limit": "이 함수는 현금과 후보/진행 여부를 검사한다. 연금 상한·담보 권리를 검사하지 않으므로 별도 AST를 생략하지 않는다. guard의 jointure에는 pieceId를 생략해도 이 함수가 검사하는 값은 같으며 command에는 실제 bound.jointure.id를 넣는다."
+    },
+    "debtInstalmentCap": {
+      "sourceRef": "src/engine/negotiation.ts:135",
+      "args": [
+        "state"
+      ],
+      "returns": "지난 한 해 실제 영지 수입의 25% 정수",
+      "pure": true
+    },
+    "jointurePiece": {
+      "sourceRef": "src/engine/negotiation.ts:152",
+      "args": [
+        "state"
+      ],
+      "returns": "실제 담보 후보 pieceId 또는 null",
+      "pure": true,
+      "limit": "점유만 검사하는 selector이므로 권원·생존권·후순위 귀속과 열린 분쟁 검사를 별도로 해야 한다."
+    },
+    "marriageCandidates": {
+      "sourceRef": "src/engine/marriage.ts:104",
+      "args": [
+        "state",
+        "groomId?"
+      ],
+      "returns": "{groom,bride,relation}; same live pair used by marriageRefusal",
+      "pure": true
+    }
+  },
+  "derived": {
+    "CN_JOINTURE_CONFLICT_COUNT": {
+      "status": "derived_spec",
+      "parameters": [
+        "pieceId"
+      ],
+      "expression": {
+        "operation": "count",
+        "args": [
+          {
+            "filter": {
+              "from": {
+                "field": "selectors.estatesOf.claims"
+              },
+              "as": "claim",
+              "where": {
+                "all": [
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "claim.estateId"
+                      },
+                      "op": "eq",
+                      "right": {
+                        "literal": "estate-home"
+                      }
+                    }
+                  },
+                  {
+                    "any": [
+                      {
+                        "not": {
+                          "exists": {
+                            "field": "claim.pieceId"
+                          }
+                        }
+                      },
+                      {
+                        "compare": {
+                          "left": {
+                            "field": "claim.pieceId"
+                          },
+                          "op": "eq",
+                          "right": {
+                            "field": "arg.pieceId"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "claim.status"
+                      },
+                      "op": "in",
+                      "right": {
+                        "literal": [
+                          "open",
+                          "suing",
+                          "won"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/estates.types.ts:82"
+      ],
+      "onMissing": "block_dependent_choice",
+      "runtimeImplementation": "not_installed",
+      "conservativePolicy": "의도적 보수 차단: 첫 점유 후보가 권원/생존권/후순위/청구 검사에서 탈락하면 다음 후보를 찾지 않는다. 본인 won 청구도 재검토 전 충돌로 센다. 이는 권원 안전을 완전히 증명하지 않으며 128.b/132.b에만 적용한다. 현금·연금 선택은 유지한다."
+    }
+  },
+  "note": "기존 READ_MODEL.json에 이 명세를 병합하여 evaluator를 구현하기 전에는 조건을 실행하지 않는다. filter/operation은 공용 DSL과 동일하다. 임의 문자열 eval 금지."
+}

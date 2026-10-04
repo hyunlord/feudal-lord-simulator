@@ -1,0 +1,15 @@
+{
+  "id": "rock_cross",
+  "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-67e5dbb8-b156-4cd2-a688-35186249a21e.png",
+  "prompt": "Precise repair/inpainting. This rock texture has an UGLY ARTIFICIAL CROSS: the straight blurred vertical stripe through x50% and the straight blurred horizontal stripe through y50%. REMOVE BOTH artificial stripes completely. Repaint ONLY a band around those central lines so the natural rock stone faces and dark fractures continue smoothly through them. Keep all large irregular angular natural bedrock blocks in the same positions; do not redesign other areas. Preserve upper-left huge slab, large lower right slab, black deep irregular fractures. Fill in realistic matching mottled painted stone texture across the cross, with NO blurred straight stripe, no seam, no straight grid line. Original warm grey-brown colors. Seamless outside boundary, no cobblestones, no round uniform stones. No text. Full image square.",
+  "refs": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-two-revisions-20261004/references/rock-cross-edit-input.png"
+  ],
+  "generatedSha256": "8960ac14b76b93179bd54ecaf4459010c32202dafa9813644944517f42c2aaac",
+  "referenceSha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-two-revisions-20261004/references/rock-cross-edit-input.png",
+      "sha256": "a025a5f3248ed6efff64277ac9062cb2325ad2197f3ea8bfc034443907496133"
+    }
+  ]
+}
