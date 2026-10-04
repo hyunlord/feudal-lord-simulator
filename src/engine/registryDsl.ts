@@ -5,6 +5,7 @@
  * `expressionProblem` (the entry is blocked at load, ER-17) and evaluates as missing.
  *
  * Missing (`MISSING`) is not null: every comparison with a missing side is false (neq too); only `exists` looks at it.
+ * A command argument may read `result.previousCommand` (R4: the previous command of the same choice, ER-16).
  */
 import type { Building, BuildingKind } from "../content/buildingConfig";
 import { V4_DERIVED } from "../content/registry/v4Entries.generated";

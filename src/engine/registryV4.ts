@@ -120,15 +120,30 @@ function resolveArgs(value: unknown, scope: Scope): unknown {
   return value;
 }
 
-/** ER-16: a choice's commands in order on a copy — all done as asked, or none (null). */
+/** ER-16 (R4): what a command leaves for the next one in the same choice (`result.previousCommand`): its arguments, and a filed suit's id. */
+function commandResult(command: V4Command, args: Args, before: GameState, after: GameState): Readonly<Record<string, unknown>> {
+  if (command.type === "file_suit") {
+    const suit = estatesOf(after).suits.find(entry => entry.claimId === args.claimId && !estatesOf(before).suits.some(old => old.id === entry.id));
+    return { ...args, ...(suit === undefined ? {} : { suitId: suit.id }) };
+  }
+  return args;
+}
+
+/**
+ * ER-16, R4: a choice's commands in order on a copy — all done as asked, or none (null). A compound choice is atomic this
+ * way: each command is checked to have done what it was asked, and a later one may read the previous one's result.
+ */
 export function runCommands(state: GameState, commands: readonly V4Command[], scope: Scope): GameState | null {
   let next = state;
+  let previous: Readonly<Record<string, unknown>> | undefined;
   for (const command of commands) {
     const dispatch = V4_COMMANDS[command.type];
-    const args = resolveArgs(command.args ?? {}, { ...scope, state: next });
+    const vars = previous === undefined ? scope.vars : { ...scope.vars, result: { previousCommand: previous } };
+    const args = resolveArgs(command.args ?? {}, { ...scope, state: next, vars });
     if (dispatch === undefined || args === MISSING) return null;
     const after = dispatch.run(next, args as Args);
     if (after === next || !dispatch.did(after, next, args as Args)) return null;
+    previous = commandResult(command, args as Args, next, after);
     next = after;
   }
   return next;
@@ -176,7 +191,7 @@ export interface V4EntrySupport { readonly id: string; readonly contentClass: st
 
 function choiceSupport(entry: V4Entry, choice: V4Choice): V4ChoiceSupport {
   if (choice.execution === "blocked_unsupported_effect") return { id: choice.id, supported: false, reason: "new effect (R5)" };
-  if (choice.execution === "blocked_until_atomic_adapter") return { id: choice.id, supported: false, reason: "compound command (R4)" };
+  // R4: a compound choice runs through `runCommands`, which is atomic (blocked_until_atomic_adapter is lifted here).
   if (choice.commands.length === 0 && holdCost(entry) === null) return { id: choice.id, supported: false, reason: "hold without a time cost (R3)" };
   const unknown = choice.commands.find(command => V4_COMMANDS[command.type] === undefined);
   if (unknown !== undefined) return { id: choice.id, supported: false, reason: `command ${unknown.type}` };

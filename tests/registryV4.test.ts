@@ -134,3 +134,21 @@ test("ER-19 (R3) a hold is a choice only when time costs it: a held suit's claim
   const recorded = recordDecision(offered, answered, { type: "answer_registry_offer", occurrenceId: offer.id, choiceId: "c" });
   assert.equal(recorded.factions!.factions.find(faction => faction.id === "merchant_house_1")!.relation, Math.max(-100, before + HOLD_RELATION_DELTA));
 });
+
+test("R4 a compound choice runs whole: a suit filed and its deed added to that suit (the second reads the first's result); a refused second step keeps no suit", () => {
+  let state = funded({ ...load("chapter-two-town"), agency: initialAgency(), registry: initialRegistry() }, 500);
+  const neighbour = estatesOf(state).estates.find(estate => estate.id !== "estate-home")!;
+  state = raiseClaim(state, { claimant: LORD, estateId: neighbour.id, pieceId: neighbour.pieces[0]!.id, basis: "purchase_deed" });
+  const claim = estatesOf(state).claims.at(-1)!;
+  const choice = v4Entry("ck_evt_051")!.choices.find(entry => entry.id === "file_with_deed")!;
+  const scope = { state, bound: { claim }, vars: {} };
+  const done = runCommands(state, choice.commands, scope)!;
+  const suit = estatesOf(done).suits.find(entry => entry.claimId === claim.id)!;
+  assert.ok(suit !== undefined, "the suit is filed");
+  assert.ok(estatesOf(done).claims.find(entry => entry.id === claim.id)!.evidence.some(entry => entry.kind === "deed"), "and its deed added");
+  // The deed already on the claim: the second step is refused, so the filing is not kept either.
+  const filedOnly = runCommands(state, [choice.commands[0]!], scope)!;
+  const withDeed = addSuitEvidence(filedOnly, estatesOf(filedOnly).suits.find(entry => entry.claimId === claim.id)!.id, "deed");
+  const unfiled: GameState = { ...state, estates: { ...estatesOf(state), claims: estatesOf(withDeed).claims.map(entry => entry.id === claim.id ? { ...entry, status: "open" as const } : entry) } };
+  assert.equal(runCommands(unfiled, choice.commands, { ...scope, state: unfiled }), null);
+});
