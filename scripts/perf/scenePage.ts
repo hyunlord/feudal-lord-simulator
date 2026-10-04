@@ -105,7 +105,7 @@ export async function openScene(page: any, input: { readonly url: string; readon
   if (proof) await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90_000 });
   else await page.locator(SEASON_TEXT).first().waitFor({ timeout: 90_000 });
   await page.waitForTimeout(2_000);
-  if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
+  if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click({ position: { x: 20, y: 20 } });
   if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");
   await closeModals(page);
   await page.getByRole("button", { name: `${input.speed}배속`, exact: true }).click();

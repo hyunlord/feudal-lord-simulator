@@ -197,7 +197,7 @@ async function game() {
   await page.screenshot({ path: join(dir, "welcome.png") });
   const welcome = await page.locator(".welcome-modes .ui-btn").evaluateAll(elements => elements.map(element => ({ text: element.textContent, color: getComputedStyle(element).color,
     art: getComputedStyle(element).borderImageSource.replace(/.*\/assets\//, "").replace(/"\)$/, ""), h: element.getBoundingClientRect().height }))).catch(() => []);
-  if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
+  if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click({ position: { x: 20, y: 20 } });
   await page.keyboard.press("Escape"); await page.waitForTimeout(800);
   if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");
   // The build drawer as the geometry audit opens it (surfaces.registry.ts hud.build-drawer: the dock's build button).

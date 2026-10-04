@@ -44,7 +44,7 @@ try {
       await route.fulfill({ response, body: text.replace('function cameraForStartingHouse(canvas, state) {', `function cameraForStartingHouse(canvas, state) { return ${JSON.stringify(camera)};`) });
     });
     await page.goto((flags.url ?? 'http://127.0.0.1:3226/') + '?phase10-proof=1');
-    if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click();
+    if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click({ position: { x: 20, y: 20 } });
     await page.keyboard.press('Escape');
     if (await page.locator('.settlement-progress[open]').count()) await page.locator('.settlement-progress summary').click();
     await page.mouse.move(800, 950);
