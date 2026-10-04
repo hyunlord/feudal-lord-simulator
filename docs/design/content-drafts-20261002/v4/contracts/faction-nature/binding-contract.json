@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "revision": "r03-binding-scope",
+  "status": "proposal_only_not_installed",
+  "scope": "FN142/158/167 candidate binding correction",
+  "rules": {
+    "requiredForChoicesPresent": "Every named choice must exist and consume this binding. Missing binding invalidates only those choices, not the entry.",
+    "requiredForChoicesAbsent": "Shared binding: missing invalidates the entry.",
+    "unusedBinding": "Do not resolve an unconsumed candidate binding. Remove copied template bindings with zero consumers.",
+    "entryPredicateRestriction": "Choice-only binding must not be required by an entry condition. Put existence checks on its consuming choices.",
+    "failureOrder": [
+      "resolve_shared_bindings_or_reject_entry",
+      "resolve_choice_bindings_or_disable_listed_choices",
+      "evaluate_remaining_choice_guards",
+      "apply_unsupported_filters_without_bypass",
+      "offer_only_if_at_least_minimum_enabled_consequential_choices"
+    ],
+    "missingEnumNote": "Schema field missing remains invalidate. requiredForChoices scopes invalidation to the listed choices; without that list it invalidates the entry.",
+    "unsupportedContext": "A successful binding-scope check never removes unsupportedFilters."
+  },
+  "entries": [
+    {
+      "id": "ck_evt_142",
+      "removedUnusedBindings": [
+        "ableCandidate"
+      ],
+      "consumers": {
+        "ableCandidate": [
+
+        ]
+      },
+      "expectedChoiceIds": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "id": "ck_evt_158",
+      "removedUnusedBindings": [
+        "ableCandidate"
+      ],
+      "consumers": {
+        "ableCandidate": [
+
+        ]
+      },
+      "expectedChoiceIds": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "id": "ck_evt_167",
+      "removedUnusedBindings": [
+        "ableCandidate",
+        "peasantCandidate"
+      ],
+      "consumers": {
+        "ableCandidate": [
+
+        ],
+        "peasantCandidate": [
+
+        ],
+        "merchantCandidate": [
+          "c"
+        ]
+      },
+      "merchantCandidateMissing": {
+        "disableChoices": [
+          "c"
+        ],
+        "preserveChoicesSubjectToTheirOwnGuards": [
+          "a",
+          "b"
+        ],
+        "invalidateEntry": false
+      },
+      "minimumEnabledConsequentialChoices": 2,
+      "originalUnsupportedContextStillBlocks": true
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "centralGroups": 15,
+  "scopedMirrorsEqual": true,
+  "unrelatedGroupsPreserved": 11,
+  "standaloneRemoved": [
+    "ck_evt_146",
+    "ck_evt_150",
+    "ck_evt_153",
+    "ck_evt_154"
+  ],
+  "evidenceMembers": [
+    "ck_evt_009",
+    "ck_evt_032",
+    "ck_evt_033",
+    "ck_evt_053",
+    "ck_evt_075",
+    "ck_evt_143",
+    "ck_evt_146",
+    "ck_evt_150",
+    "ck_evt_153"
+  ],
+  "enforcementMembers": [
+    "ck_evt_038"
+  ],
+  "debtMembers": [
+    "ck_evt_154"
+  ],
+  "runtimeExecuted": false
+}

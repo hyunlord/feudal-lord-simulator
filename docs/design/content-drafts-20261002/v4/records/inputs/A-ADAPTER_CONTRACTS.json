@@ -1,0 +1,1997 @@
+{
+  "status": "not_installed",
+  "commonContract": "DEDUP_CONTRACT.md",
+  "policy": {
+    "newContentMaxPerYear": 2,
+    "newContentMaxPerSeason": 1,
+    "minimumEnabledConsequentialChoices": 2,
+    "engineMutationOnMissingBinding": false,
+    "selection": "seeded_integer_weighted_sorted_id"
+  },
+  "originalPolicies": [
+    {
+      "block": "baseline",
+      "policy": {
+        "newContentMaxPerYear": 2,
+        "newContentMaxPerSeason": 1,
+        "seedNamespace": "astra-steward-content-v1",
+        "selection": "seeded_integer_weighted_sorted_id",
+        "engineMutationOnMissingBinding": false,
+        "minimumEnabledConsequentialChoices": 2
+      },
+      "otherRootKeys": [
+        "formatVersion",
+        "status",
+        "sourceHead"
+      ]
+    },
+    {
+      "block": "manor-town",
+      "policy": {
+        "budget": {
+          "newEventsPerYear": 2,
+          "newEventsPerSeason": 1
+        },
+        "missingAuthoringContext": "block_entry",
+        "runtimeReadyCount": 0
+      },
+      "otherRootKeys": [
+        "formatVersion",
+        "sourceHead",
+        "status"
+      ]
+    },
+    {
+      "block": "church-neighbors",
+      "policy": {
+        "globalNewEventsPerYear": 2,
+        "maxPerSeason": 1,
+        "minimumEnabledConsequentialChoices": 2,
+        "readModelAdditions": "read-model-additions.json",
+        "unsupported": "fail_closed",
+        "existingEventsUnaffected": true,
+        "bindingContract": "binding-contract.json",
+        "dedupContract": "dedup-contract.json"
+      },
+      "otherRootKeys": [
+        "formatVersion",
+        "status",
+        "sourceHead"
+      ]
+    },
+    {
+      "block": "faction-nature",
+      "policy": {
+        "minimumEnabledConsequentialChoices": 2,
+        "globalNewEventBudget": {
+          "perYear": 2,
+          "perSeason": 1
+        },
+        "missingState": "block",
+        "commandResultOwner": "existing_engine_handler"
+      },
+      "otherRootKeys": [
+        "formatVersion",
+        "status",
+        "sourceHead"
+      ]
+    },
+    {
+      "block": "family",
+      "policy": {
+        "newContentMaxPerYear": 2,
+        "newContentMaxPerSeason": 1,
+        "minimumEnabledConsequentialChoices": 2,
+        "engineMutationOnMissingBinding": false,
+        "selection": "seeded_integer_weighted_sorted_id"
+      },
+      "otherRootKeys": [
+        "formatVersion",
+        "status",
+        "sourceHead"
+      ]
+    }
+  ],
+  "scopedContracts": [
+    {
+      "scope": "church-neighbors",
+      "file": "originals/church-neighbors/binding-contract.json",
+      "document": {
+        "status": "proposal_not_runtime",
+        "requiredForChoices": {
+          "absent": "entry mandatory",
+          "present": "resolve lazily only for listed choices; missing=invalidate invalidates those choices, not entry; propagate same scope through dependency bindings; evaluate minimumEnabledConsequentialChoices after all choice-local failures"
+        },
+        "argumentDefaults": {
+          "syntax": {
+            "binding": "path",
+            "default": false
+          },
+          "semantics": "Only absent/undefined (not null) resolves to supplied default; existing false and true preserved. Used solely for optional recurring. Produce a plain boolean before GameCommand dispatch.",
+          "allowedDefaults": [
+            false
+          ],
+          "requiredAdapter": true
+        },
+        "onUnsupported": "block_dependent_entry; never pass wrapper objects to game handlers",
+        "choiceBindingScope": {
+          "ck_evt_128": [
+            "home -> b",
+            "jointure -> b"
+          ],
+          "ck_evt_132": [
+            "home -> b",
+            "jointure -> b"
+          ],
+          "ck_evt_140": [
+            "ableCandidate -> c"
+          ]
+        },
+        "source": "src/content/stewardshipConfig.ts:93; src/engine/stewardship.ts:385"
+      }
+    },
+    {
+      "scope": "church-neighbors",
+      "file": "originals/church-neighbors/dedup-contract.json",
+      "document": {
+        "status": "adapter_contract_not_installed",
+        "onMissing": "block_dependent_entry",
+        "keyEncoding": "JSON array of typed scalar values; no string concatenation; reject missing/null person IDs",
+        "groups": [
+          {
+            "id": "marriage.candidate_pair.v1",
+            "canonicalGroup": "marriage.offer",
+            "events": [
+              "ck_evt_018",
+              "ck_evt_124",
+              "ck_evt_128",
+              "ck_evt_131",
+              "ck_evt_132",
+              "ck_evt_133",
+              "ck_evt_139"
+            ],
+            "key": {
+              "elements": [
+                {
+                  "literal": "marriage.candidate_pair.v1"
+                },
+                {
+                  "registryContext": "campaignId"
+                },
+                {
+                  "canonicalField": "groomId"
+                },
+                {
+                  "canonicalField": "brideId"
+                }
+              ]
+            },
+            "mappings": [
+              {
+                "ids": [
+                  "ck_evt_018"
+                ],
+                "fields": {
+                  "groomId": {
+                    "field": "bound.groom.id"
+                  },
+                  "brideId": {
+                    "field": "bound.bride.id"
+                  }
+                }
+              },
+              {
+                "ids": [
+                  "ck_evt_124",
+                  "ck_evt_128",
+                  "ck_evt_131",
+                  "ck_evt_132",
+                  "ck_evt_133",
+                  "ck_evt_139"
+                ],
+                "fields": {
+                  "groomId": {
+                    "field": "bound.groom.person.id"
+                  },
+                  "brideId": {
+                    "field": "bound.bride.id"
+                  }
+                }
+              }
+            ],
+            "oldKeyReplacement": {
+              "group": "marriage.offer",
+              "semanticFields": [
+                "bound.instanceId"
+              ],
+              "replaceOnlyFor": [
+                "ck_evt_018"
+              ]
+            },
+            "reserveAt": "offer_visible",
+            "releaseAt": "never_for_same_pair_in_campaign",
+            "effects": "Candidate advice seen once per pair; negotiation status does not reset the pair key. A refusal does not cause a different title to reoffer the same pair.",
+            "saveRestore": "Registry must persist key reservation with event resolution; no evaluator/persistence currently installed. If legacy018 history lacks pair IDs, fail closed for remaining marriage variants until a verified migration identifies the pair."
+          },
+          {
+            "id": "civic_conditions.shared.v1",
+            "events": [
+              "ck_evt_101",
+              "ck_evt_102",
+              "ck_evt_105",
+              "ck_evt_108",
+              "ck_evt_111",
+              "ck_evt_113",
+              "ck_evt_115",
+              "ck_evt_117",
+              "ck_evt_123",
+              "ck_evt_127",
+              "ck_evt_130",
+              "ck_evt_136",
+              "ck_evt_138",
+              "ck_evt_140",
+              "ck_evt_024",
+              "ck_evt_027",
+              "ck_evt_029",
+              "ck_evt_030",
+              "ck_evt_031",
+              "ck_evt_034",
+              "ck_evt_035",
+              "ck_evt_037",
+              "ck_evt_042",
+              "ck_evt_046",
+              "ck_evt_049",
+              "ck_evt_050",
+              "ck_evt_059"
+            ],
+            "tokenRules": {
+              "set_project_subsidy": {
+                "family": "project_support",
+                "scope": "home",
+                "kind": "args.kind"
+              },
+              "order_timber": {
+                "family": "timber_supply",
+                "scope": "home"
+              },
+              "set_market_dues": {
+                "family": "market_burden",
+                "scope": "home"
+              },
+              "set_estate_policy": {
+                "family": "development_priority",
+                "scope": "home"
+              },
+              "set_estate_oversight": {
+                "family": "estate_supervision",
+                "scope": "resolved args.estateId"
+              },
+              "set_audit_mode": {
+                "family": "estate_supervision",
+                "scope": "resolved args.estateId"
+              },
+              "set_exception_rules": {
+                "family": "estate_exceptions",
+                "scope": "all_held_offmap"
+              }
+            },
+            "matching": "Evaluate actual eligible choices, create each declared token, suppress an entry if any token overlaps a reserved eligible-choice token. Do not merge unrelated new-effect scenes by title alone.",
+            "cooldownSeasons": 8,
+            "requireActualStateChangeAfterResolution": true,
+            "stateSignatures": {
+              "project_support": [
+                "state.agency.subsidies[kind].amount",
+                "completed building IDs of kind"
+              ],
+              "timber_supply": [
+                "state.timberOrder default 0",
+                "state.treasuryTimber"
+              ],
+              "market_burden": [
+                "state.agency.duesPermille",
+                "completed market IDs"
+              ],
+              "development_priority": [
+                "state.agency.policy",
+                "completed building IDs"
+              ],
+              "estate_supervision": [
+                "oversight[estateId].mode",
+                "oversight[estateId].stewardId",
+                "oversight[estateId].auditMode"
+              ],
+              "estate_exceptions": [
+                "state.stewardship.rules with recurring default false"
+              ]
+            },
+            "snapshotAt": "after_choice_resolution_or_dismissal; not before own command",
+            "existingArrivalPolicy": "Do not suppress engine chapter events or existing petition arrivals. Suppress only additional advisory copy for their matching tokens; engine arrival retains priority.",
+            "legacyMapping": "Resolve each listed old entry actual command types/args through tokenRules; rules not matching a supported command do not create a token. Unknown required target binding blocks this additional copy, not the old engine arrival.",
+            "scopeLimit": "These are explicit registry-owned reads/specifications, not GameState fields. Preserve current campaign-once limits as additional restriction."
+          }
+        ],
+        "tokenRulesRef": "groups[id=civic_conditions.shared.v1].tokenRules"
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "file": "originals/faction-nature/dedup-contract.json",
+      "document": {
+        "formatVersion": 2,
+        "status": "proposal_only_not_installed",
+        "sourceHead": "5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b",
+        "entryReferencesOnly": true,
+        "groups": [
+          {
+            "id": "fn.right_evidence_case.v2",
+            "problemDefinition": "동일 권리 소송의 증거 선택",
+            "memberIds": [
+              "ck_evt_009",
+              "ck_evt_032",
+              "ck_evt_143"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_143"
+            ],
+            "kind": "bound_suit_id",
+            "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+            "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+            "releaseAt": "never_for_same_key",
+            "legacyHistoryPolicy": "missing_required_identity_blocks_additional_copy; never infer identity from title, command or event instance counter",
+            "keyEncoding": "typed_json_array_in_declared_order",
+            "key": [
+              {
+                "literal": "fn.right_evidence_case.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "canonicalField": "suitId"
+              }
+            ],
+            "mapping": [
+              {
+                "memberIds": [
+                  "ck_evt_009",
+                  "ck_evt_032",
+                  "ck_evt_143"
+                ],
+                "fields": {
+                  "suitId": {
+                    "field": "bound.suit.id"
+                  }
+                },
+                "requiredNonNull": true
+              }
+            ]
+          },
+          {
+            "id": "fn.wood_input_shortfall.v2",
+            "problemDefinition": "재료 투입을 수입과 자체생산 중 어디서 마련할지",
+            "memberIds": [
+              "ck_evt_015",
+              "ck_evt_144"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_144"
+            ],
+            "kind": "existing_state_snapshot_cooldown",
+            "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+            "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+            "releaseAt": "only_after_cooldown_and_real_snapshot_change",
+            "keyEncoding": "typed_json_array_in_declared_order",
+            "key": [
+              {
+                "literal": "fn.wood_input_shortfall.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "literal": "home"
+              }
+            ],
+            "snapshotReads": [
+              {
+                "projection": "sorted_id_kind_pairs",
+                "from": "state.buildings",
+                "whereKindIn": [
+                  "sawmill",
+                  "storehouse"
+                ]
+              },
+              {
+                "field": "state.treasuryTimber"
+              }
+            ],
+            "snapshotContract": "Registry read-model projection, not a new GameState path: filter existing completed buildings by kind, map [id,kind], sort by id codepoint; scalar values read as declared. Missing read-model mapping blocks additional copy.",
+            "cooldownSeasons": 8,
+            "reofferRule": "same key: suppress while pending; after resolution require >=8 seasons AND actual snapshot differs from persisted post-resolution snapshot; also retain each draft once-per-campaign restriction",
+            "snapshotAt": "after own choice resolution, not before its commands; pending reservation atomically linked to existing occurrence",
+            "legacyHistoryPolicy": "Known old occurrence without post-resolution snapshot: hold additional copy for8seasons after known resolution, then capture a baseline; require later actual snapshot change. Unknown occurrence time/history: block additional copy until verified migration; never block original arrival.",
+            "rationale": "명령 일치만으로 묶지 않는다. 위에 지정한 같은 생활문제 범위에서만 물자·완성시설 상태를 비교한다. 방침/장려금/주문 숫자 왕복은 새 기회로 세지 않는다. 실제 피해 사례를 주장하지 않는 예방·우선순위 청원에 새 problemCaseId를 요구하지 않는다.",
+            "codeReferences": [
+              "src/engine/townAgency.ts:371",
+              "src/engine/townAgency.ts:454",
+              "src/engine/timberTrade.ts:44"
+            ]
+          },
+          {
+            "id": "fn.roof_repair_materials.v2",
+            "problemDefinition": "지붕 수선에 대비할 목재 조달",
+            "memberIds": [
+              "ck_evt_035",
+              "ck_evt_163",
+              "ck_evt_177"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_163",
+              "ck_evt_177"
+            ],
+            "kind": "existing_state_snapshot_cooldown",
+            "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+            "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+            "releaseAt": "only_after_cooldown_and_real_snapshot_change",
+            "keyEncoding": "typed_json_array_in_declared_order",
+            "key": [
+              {
+                "literal": "fn.roof_repair_materials.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "literal": "home"
+              },
+              {
+                "canonicalField": "intent"
+              }
+            ],
+            "mapping": [
+              {
+                "memberIds": [
+                  "ck_evt_035"
+                ],
+                "fields": {
+                  "intent": {
+                    "literal": "post_damage"
+                  }
+                }
+              },
+              {
+                "memberIds": [
+                  "ck_evt_163"
+                ],
+                "fields": {
+                  "intent": {
+                    "literal": "preventive"
+                  }
+                }
+              },
+              {
+                "memberIds": [
+                  "ck_evt_177"
+                ],
+                "fields": {
+                  "intent": {
+                    "literal": "contract_labor_shortfall"
+                  }
+                }
+              }
+            ],
+            "snapshotReads": [
+              {
+                "projection": "sorted_id_kind_pairs",
+                "from": "state.buildings",
+                "whereKindIn": [
+                  "sawmill",
+                  "market"
+                ]
+              },
+              {
+                "field": "state.treasuryTimber"
+              }
+            ],
+            "snapshotContract": "Registry read-model projection, not a new GameState path: filter existing completed buildings by kind, map [id,kind], sort by id codepoint; scalar values read as declared. Missing read-model mapping blocks additional copy.",
+            "cooldownSeasons": 8,
+            "reofferRule": "same key: suppress while pending; after resolution require >=8 seasons AND actual snapshot differs from persisted post-resolution snapshot; also retain each draft once-per-campaign restriction",
+            "snapshotAt": "after own choice resolution, not before its commands; pending reservation atomically linked to existing occurrence",
+            "legacyHistoryPolicy": "Known old occurrence without post-resolution snapshot: hold additional copy for8seasons after known resolution, then capture a baseline; require later actual snapshot change. Unknown occurrence time/history: block additional copy until verified migration; never block original arrival.",
+            "rationale": "명령 일치만으로 묶지 않는다. 위에 지정한 같은 생활문제 범위에서만 물자·완성시설 상태를 비교한다. 방침/장려금/주문 숫자 왕복은 새 기회로 세지 않는다. 실제 피해 사례를 주장하지 않는 예방·우선순위 청원에 새 problemCaseId를 요구하지 않는다.",
+            "codeReferences": [
+              "src/engine/townAgency.ts:371",
+              "src/engine/townAgency.ts:454",
+              "src/engine/timberTrade.ts:44"
+            ]
+          },
+          {
+            "id": "fn.timber_order_reconsideration.v2",
+            "problemDefinition": "남은 목재 주문과 생산·저장 투자 재고려",
+            "memberIds": [
+              "ck_evt_046",
+              "ck_evt_165"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_165"
+            ],
+            "kind": "existing_state_snapshot_cooldown",
+            "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+            "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+            "releaseAt": "only_after_cooldown_and_real_snapshot_change",
+            "keyEncoding": "typed_json_array_in_declared_order",
+            "key": [
+              {
+                "literal": "fn.timber_order_reconsideration.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "literal": "home"
+              }
+            ],
+            "snapshotReads": [
+              {
+                "projection": "sorted_id_kind_pairs",
+                "from": "state.buildings",
+                "whereKindIn": [
+                  "sawmill",
+                  "storehouse"
+                ]
+              },
+              {
+                "field": "state.treasuryTimber"
+              }
+            ],
+            "snapshotContract": "Registry read-model projection, not a new GameState path: filter existing completed buildings by kind, map [id,kind], sort by id codepoint; scalar values read as declared. Missing read-model mapping blocks additional copy.",
+            "cooldownSeasons": 8,
+            "reofferRule": "same key: suppress while pending; after resolution require >=8 seasons AND actual snapshot differs from persisted post-resolution snapshot; also retain each draft once-per-campaign restriction",
+            "snapshotAt": "after own choice resolution, not before its commands; pending reservation atomically linked to existing occurrence",
+            "legacyHistoryPolicy": "Known old occurrence without post-resolution snapshot: hold additional copy for8seasons after known resolution, then capture a baseline; require later actual snapshot change. Unknown occurrence time/history: block additional copy until verified migration; never block original arrival.",
+            "rationale": "명령 일치만으로 묶지 않는다. 위에 지정한 같은 생활문제 범위에서만 물자·완성시설 상태를 비교한다. 방침/장려금/주문 숫자 왕복은 새 기회로 세지 않는다. 실제 피해 사례를 주장하지 않는 예방·우선순위 청원에 새 problemCaseId를 요구하지 않는다.",
+            "codeReferences": [
+              "src/engine/townAgency.ts:371",
+              "src/engine/townAgency.ts:454",
+              "src/engine/timberTrade.ts:44"
+            ]
+          },
+          {
+            "id": "fn.steward_appointment_case.v2",
+            "problemDefinition": "같은 영지의 동일 관리 선임 사유",
+            "memberIds": [
+              "ck_evt_019",
+              "ck_evt_147",
+              "ck_evt_157",
+              "ck_evt_176"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_147",
+              "ck_evt_157",
+              "ck_evt_176"
+            ],
+            "kind": "bound_steward_candidate_context",
+            "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+            "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+            "releaseAt": "never_for_same_key",
+            "legacyHistoryPolicy": "missing_required_identity_blocks_additional_copy; never infer identity from title, command or event instance counter",
+            "keyEncoding": "typed_json_array_in_declared_order",
+            "key": [
+              {
+                "literal": "fn.steward_appointment_case.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "canonicalField": "estateId"
+              },
+              {
+                "canonicalField": "currentStewardId"
+              },
+              {
+                "canonicalField": "peasantCandidateId"
+              },
+              {
+                "canonicalField": "merchantCandidateId"
+              }
+            ],
+            "mapping": [
+              {
+                "memberIds": [
+                  "ck_evt_019",
+                  "ck_evt_147",
+                  "ck_evt_157",
+                  "ck_evt_176"
+                ],
+                "fields": {
+                  "estateId": {
+                    "field": "bound.estate.id"
+                  },
+                  "currentStewardId": {
+                    "field": "bound.currentSteward.personId"
+                  },
+                  "peasantCandidateId": {
+                    "field": "bound.peasantCandidate.personId"
+                  },
+                  "merchantCandidateId": {
+                    "field": "bound.merchantCandidate.personId"
+                  }
+                },
+                "requiredNonNull": true
+              }
+            ],
+            "rationale": "157은 살아 있는 현직과 서로 다른 실제 두 후보를 이미 바인딩한다. 같은 영지·현직·후보 조합의 선임 권고는 같은 결정기회로 충분히 키화된다. 사망/흉작을 주장하는147/176의 별도 unsupportedFilters는 이 키로 해소하지 않는다."
+          },
+          {
+            "id": "fn.routine_petition_copy.v2",
+            "problemDefinition": "기존034의 동일 청원 발생 문구",
+            "memberIds": [
+              "ck_evt_034",
+              "ck_evt_149"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_149"
+            ],
+            "kind": "existing_occurrence_copy",
+            "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+            "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+            "releaseAt": "never_for_same_key",
+            "legacyHistoryPolicy": "missing_required_identity_blocks_additional_copy; never infer identity from title, command or event instance counter",
+            "keyEncoding": "typed_json_array_in_declared_order",
+            "key": [
+              {
+                "literal": "fn.routine_petition_copy.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "registryContext": "existingOccurrenceId"
+              }
+            ],
+            "copyOwner": "ck_evt_034",
+            "variant": "ck_evt_149",
+            "pipeline": [
+              "resolve_actual_existing_ck_evt_034_occurrence_without_creating_one",
+              "select_at_most_one_copy_034_or_149_for_same_occurrence",
+              "exclude_own_occurrence_reservation_from_duplicate_checks",
+              "suppress_conflicting_other_occurrences_or_other_visible_copy",
+              "display_selected_copy_and_resolve_original_occurrence_once"
+            ],
+            "ownPendingOccurrence": "not_a_duplicate_of_itself",
+            "budget": {
+              "existingOccurrenceOwner": "ck_evt_034",
+              "variantAdditionalBudgetCost": 0,
+              "variantIndependentSchedule": false
+            },
+            "requiredContext": [
+              "campaignId",
+              "existingOccurrenceId",
+              "originalDefinitionId=ck_evt_034",
+              "unresolved_original_occurrence",
+              "copySelectionPersisted"
+            ],
+            "missingOriginalOccurrence": "do_not_offer_variant",
+            "selectionImmutability": "Select copy only before first display; persist the selected ID atomically with the original occurrence. If034 or149 copy is already visible/resolved, do not show a second copy or change its selection.",
+            "ownPendingException": "A queued base occurrence with no selected visible copy is eligible for copy selection. This exception never allows a second visible copy."
+          },
+          {
+            "id": "fn.textile_finishing_bottleneck.v2",
+            "problemDefinition": "직물 가공 단계에 둘 지원의 우선순위",
+            "memberIds": [
+              "ck_evt_049",
+              "ck_evt_155"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_155"
+            ],
+            "kind": "existing_state_snapshot_cooldown",
+            "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+            "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+            "releaseAt": "only_after_cooldown_and_real_snapshot_change",
+            "keyEncoding": "typed_json_array_in_declared_order",
+            "key": [
+              {
+                "literal": "fn.textile_finishing_bottleneck.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "literal": "home"
+              }
+            ],
+            "snapshotReads": [
+              {
+                "projection": "sorted_id_kind_pairs",
+                "from": "state.buildings",
+                "whereKindIn": [
+                  "weaver_house",
+                  "fulling_mill",
+                  "dyehouse",
+                  "tenter_yard"
+                ]
+              }
+            ],
+            "snapshotContract": "Registry read-model projection, not a new GameState path: filter existing completed buildings by kind, map [id,kind], sort by id codepoint; scalar values read as declared. Missing read-model mapping blocks additional copy.",
+            "cooldownSeasons": 8,
+            "reofferRule": "same key: suppress while pending; after resolution require >=8 seasons AND actual snapshot differs from persisted post-resolution snapshot; also retain each draft once-per-campaign restriction",
+            "snapshotAt": "after own choice resolution, not before its commands; pending reservation atomically linked to existing occurrence",
+            "legacyHistoryPolicy": "Known old occurrence without post-resolution snapshot: hold additional copy for8seasons after known resolution, then capture a baseline; require later actual snapshot change. Unknown occurrence time/history: block additional copy until verified migration; never block original arrival.",
+            "rationale": "명령 일치만으로 묶지 않는다. 위에 지정한 같은 생활문제 범위에서만 물자·완성시설 상태를 비교한다. 방침/장려금/주문 숫자 왕복은 새 기회로 세지 않는다. 실제 피해 사례를 주장하지 않는 예방·우선순위 청원에 새 problemCaseId를 요구하지 않는다.",
+            "codeReferences": [
+              "src/engine/townAgency.ts:371",
+              "src/engine/townAgency.ts:454",
+              "src/engine/timberTrade.ts:44"
+            ]
+          },
+          {
+            "id": "fn.epidemic_labor_report.v2",
+            "problemDefinition": "같은 지역·유행의 동일 일손 부족 보고",
+            "memberIds": [
+              "ck_evt_028",
+              "ck_evt_168",
+              "ck_evt_178"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_168",
+              "ck_evt_178"
+            ],
+            "kind": "verified_problem_case",
+            "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+            "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+            "releaseAt": "never_for_same_key",
+            "legacyHistoryPolicy": "missing_required_identity_blocks_additional_copy; never infer identity from title, command or event instance counter",
+            "keyEncoding": "typed_json_array_in_declared_order",
+            "key": [
+              {
+                "literal": "fn.epidemic_labor_report.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "canonicalField": "problemCaseId"
+              },
+              {
+                "canonicalField": "problemPhase"
+              }
+            ],
+            "mapping": [
+              {
+                "memberIds": [
+                  "ck_evt_028",
+                  "ck_evt_168",
+                  "ck_evt_178"
+                ],
+                "fields": {
+                  "problemCaseId": {
+                    "registryCaseContext": "verifiedProblemCaseId"
+                  },
+                  "problemPhase": {
+                    "registryCaseContext": "verifiedProblemPhase"
+                  }
+                },
+                "support": "unsupported_context_adapter_required",
+                "onMissing": "block_additional_copy"
+              }
+            ],
+            "sameProblemRule": "Only a verified shared causal case and phase may match. Equal command type, setting, estate alone, or title never establishes sameness. Preventive preparation and post-damage repair, foreign report and local outbreak, and distinct bottleneck stages remain distinct cases/phases.",
+            "caseCreation": "No IDs are synthesized from draft IDs or counters. Registry must receive evidence-backed bindings for the actual shortage/repair/appointment/report; until implemented, dependent additional copies stay blocked."
+          },
+          {
+            "id": "fn.food_storage_priority.v2",
+            "problemDefinition": "동일 식량 저장 부족의 사업 우선순위",
+            "memberIds": [
+              "ck_evt_004",
+              "ck_evt_170"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_170"
+            ],
+            "kind": "verified_problem_case",
+            "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+            "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+            "releaseAt": "never_for_same_key",
+            "legacyHistoryPolicy": "missing_required_identity_blocks_additional_copy; never infer identity from title, command or event instance counter",
+            "keyEncoding": "typed_json_array_in_declared_order",
+            "key": [
+              {
+                "literal": "fn.food_storage_priority.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "canonicalField": "problemCaseId"
+              },
+              {
+                "canonicalField": "problemPhase"
+              }
+            ],
+            "mapping": [
+              {
+                "memberIds": [
+                  "ck_evt_004",
+                  "ck_evt_170"
+                ],
+                "fields": {
+                  "problemCaseId": {
+                    "registryCaseContext": "verifiedProblemCaseId"
+                  },
+                  "problemPhase": {
+                    "registryCaseContext": "verifiedProblemPhase"
+                  }
+                },
+                "support": "unsupported_context_adapter_required",
+                "onMissing": "block_additional_copy"
+              }
+            ],
+            "sameProblemRule": "Only a verified shared causal case and phase may match. Equal command type, setting, estate alone, or title never establishes sameness. Preventive preparation and post-damage repair, foreign report and local outbreak, and distinct bottleneck stages remain distinct cases/phases.",
+            "caseCreation": "No IDs are synthesized from draft IDs or counters. Registry must receive evidence-backed bindings for the actual shortage/repair/appointment/report; until implemented, dependent additional copies stay blocked."
+          },
+          {
+            "id": "fn.water_access_priority.v2",
+            "problemDefinition": "현재 물을 멀리 길어오는 가구를 위한 급수·접근 우선순위",
+            "memberIds": [
+              "ck_evt_004",
+              "ck_evt_180"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_180"
+            ],
+            "kind": "existing_state_snapshot_cooldown",
+            "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+            "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+            "releaseAt": "only_after_cooldown_and_real_snapshot_change",
+            "keyEncoding": "typed_json_array_in_declared_order",
+            "key": [
+              {
+                "literal": "fn.water_access_priority.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "literal": "home"
+              }
+            ],
+            "snapshotReads": [
+              {
+                "projection": "sorted_id_kind_pairs",
+                "from": "state.buildings",
+                "whereKindIn": [
+                  "well",
+                  "house"
+                ]
+              },
+              {
+                "derived": "WATERLESS",
+                "args": []
+              }
+            ],
+            "snapshotContract": "Registry read-model projection, not a new GameState path: filter existing completed buildings by kind, map [id,kind], sort by id codepoint; scalar values read as declared. Missing read-model mapping blocks additional copy.",
+            "cooldownSeasons": 8,
+            "reofferRule": "same key: suppress while pending; after resolution require >=8 seasons AND actual snapshot differs from persisted post-resolution snapshot; also retain each draft once-per-campaign restriction",
+            "snapshotAt": "after own choice resolution, not before its commands; pending reservation atomically linked to existing occurrence",
+            "legacyHistoryPolicy": "Known old occurrence without post-resolution snapshot: hold additional copy for8seasons after known resolution, then capture a baseline; require later actual snapshot change. Unknown occurrence time/history: block additional copy until verified migration; never block original arrival.",
+            "rationale": "명령 일치만으로 묶지 않는다. 위에 지정한 같은 생활문제 범위에서만 물자·완성시설 상태를 비교한다. 방침/장려금/주문 숫자 왕복은 새 기회로 세지 않는다. 실제 피해 사례를 주장하지 않는 예방·우선순위 청원에 새 problemCaseId를 요구하지 않는다.",
+            "codeReferences": [
+              "src/engine/townAgency.ts:371",
+              "src/engine/townAgency.ts:454",
+              "src/engine/timberTrade.ts:44"
+            ]
+          },
+          {
+            "id": "fn.standalone_draft_once.v2",
+            "problemDefinition": "교차군에 없는 초안 각각의 캠페인당1회 제한. 서로 다른 ID를 묶지 않음.",
+            "memberIds": [
+              "ck_evt_141",
+              "ck_evt_142",
+              "ck_evt_145",
+              "ck_evt_146",
+              "ck_evt_148",
+              "ck_evt_150",
+              "ck_evt_151",
+              "ck_evt_152",
+              "ck_evt_153",
+              "ck_evt_154",
+              "ck_evt_156",
+              "ck_evt_158",
+              "ck_evt_159",
+              "ck_evt_160",
+              "ck_evt_161",
+              "ck_evt_162",
+              "ck_evt_164",
+              "ck_evt_166",
+              "ck_evt_167",
+              "ck_evt_169",
+              "ck_evt_171",
+              "ck_evt_172",
+              "ck_evt_173",
+              "ck_evt_174",
+              "ck_evt_175",
+              "ck_evt_179"
+            ],
+            "additionalCopyIds": [
+              "ck_evt_141",
+              "ck_evt_142",
+              "ck_evt_145",
+              "ck_evt_146",
+              "ck_evt_148",
+              "ck_evt_150",
+              "ck_evt_151",
+              "ck_evt_152",
+              "ck_evt_153",
+              "ck_evt_154",
+              "ck_evt_156",
+              "ck_evt_158",
+              "ck_evt_159",
+              "ck_evt_160",
+              "ck_evt_161",
+              "ck_evt_162",
+              "ck_evt_164",
+              "ck_evt_166",
+              "ck_evt_167",
+              "ck_evt_169",
+              "ck_evt_171",
+              "ck_evt_172",
+              "ck_evt_173",
+              "ck_evt_174",
+              "ck_evt_175",
+              "ck_evt_179"
+            ],
+            "kind": "per_draft_campaign_once",
+            "key": [
+              {
+                "literal": "fn.standalone_draft_once.v2"
+              },
+              {
+                "registryContext": "campaignId"
+              },
+              {
+                "registryContext": "draftId"
+              }
+            ],
+            "onMissing": "block_additional_copy",
+            "reserveAt": "offer_visible",
+            "releaseAt": "never_in_campaign",
+            "keyEncoding": "typed_json_array_in_declared_order"
+          }
+        ],
+        "evaluationOrder": [
+          "validate_existing_context_and_authored_conditions",
+          "resolve_existing_occurrence_copy_before_own_pending_gate",
+          "resolve_canonical_key_or_block_additional_copy",
+          "evaluate_cross_problem_key_reservations",
+          "apply_existing_once_per_campaign_and_choice_count_gates"
+        ],
+        "sourcePriority": "Existing engine arrivals remain authoritative. Additional copy gating must not block original chapter/petition arrival.",
+        "externalContractBoundary": {
+          "readOnlyReviewed": "../church-neighbors/dedup-contract.json",
+          "redefinesExternalGroupIds": false,
+          "note": "CN marriage/civic token definitions are not repeated or modified. FN canonical problem keys do not equate commands with life problems. Root owns reconciliation of any shared global advisory cooldown."
+        },
+        "engineStateMutation": false
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "file": "originals/faction-nature/binding-contract.json",
+      "document": {
+        "version": 1,
+        "revision": "r03-binding-scope",
+        "status": "proposal_only_not_installed",
+        "scope": "FN142/158/167 candidate binding correction",
+        "rules": {
+          "requiredForChoicesPresent": "Every named choice must exist and consume this binding. Missing binding invalidates only those choices, not the entry.",
+          "requiredForChoicesAbsent": "Shared binding: missing invalidates the entry.",
+          "unusedBinding": "Do not resolve an unconsumed candidate binding. Remove copied template bindings with zero consumers.",
+          "entryPredicateRestriction": "Choice-only binding must not be required by an entry condition. Put existence checks on its consuming choices.",
+          "failureOrder": [
+            "resolve_shared_bindings_or_reject_entry",
+            "resolve_choice_bindings_or_disable_listed_choices",
+            "evaluate_remaining_choice_guards",
+            "apply_unsupported_filters_without_bypass",
+            "offer_only_if_at_least_minimum_enabled_consequential_choices"
+          ],
+          "missingEnumNote": "Schema field missing remains invalidate. requiredForChoices scopes invalidation to the listed choices; without that list it invalidates the entry.",
+          "unsupportedContext": "A successful binding-scope check never removes unsupportedFilters."
+        },
+        "entries": [
+          {
+            "id": "ck_evt_142",
+            "removedUnusedBindings": [
+              "ableCandidate"
+            ],
+            "consumers": {
+              "ableCandidate": []
+            },
+            "expectedChoiceIds": [
+              "a",
+              "b",
+              "c"
+            ]
+          },
+          {
+            "id": "ck_evt_158",
+            "removedUnusedBindings": [
+              "ableCandidate"
+            ],
+            "consumers": {
+              "ableCandidate": []
+            },
+            "expectedChoiceIds": [
+              "a",
+              "b",
+              "c"
+            ]
+          },
+          {
+            "id": "ck_evt_167",
+            "removedUnusedBindings": [
+              "ableCandidate",
+              "peasantCandidate"
+            ],
+            "consumers": {
+              "ableCandidate": [],
+              "peasantCandidate": [],
+              "merchantCandidate": [
+                "c"
+              ]
+            },
+            "merchantCandidateMissing": {
+              "disableChoices": [
+                "c"
+              ],
+              "preserveChoicesSubjectToTheirOwnGuards": [
+                "a",
+                "b"
+              ],
+              "invalidateEntry": false
+            },
+            "minimumEnabledConsequentialChoices": 2,
+            "originalUnsupportedContextStillBlocks": true
+          }
+        ]
+      }
+    }
+  ],
+  "centralGroups": [
+    {
+      "scope": "church-neighbors",
+      "group": {
+        "id": "marriage.candidate_pair.v1",
+        "canonicalGroup": "marriage.offer",
+        "events": [
+          "ck_evt_018",
+          "ck_evt_124",
+          "ck_evt_128",
+          "ck_evt_131",
+          "ck_evt_132",
+          "ck_evt_133",
+          "ck_evt_139"
+        ],
+        "key": {
+          "elements": [
+            {
+              "literal": "marriage.candidate_pair.v1"
+            },
+            {
+              "registryContext": "campaignId"
+            },
+            {
+              "canonicalField": "groomId"
+            },
+            {
+              "canonicalField": "brideId"
+            }
+          ]
+        },
+        "mappings": [
+          {
+            "ids": [
+              "ck_evt_018"
+            ],
+            "fields": {
+              "groomId": {
+                "field": "bound.groom.id"
+              },
+              "brideId": {
+                "field": "bound.bride.id"
+              }
+            }
+          },
+          {
+            "ids": [
+              "ck_evt_124",
+              "ck_evt_128",
+              "ck_evt_131",
+              "ck_evt_132",
+              "ck_evt_133",
+              "ck_evt_139"
+            ],
+            "fields": {
+              "groomId": {
+                "field": "bound.groom.person.id"
+              },
+              "brideId": {
+                "field": "bound.bride.id"
+              }
+            }
+          }
+        ],
+        "oldKeyReplacement": {
+          "group": "marriage.offer",
+          "semanticFields": [
+            "bound.instanceId"
+          ],
+          "replaceOnlyFor": [
+            "ck_evt_018"
+          ]
+        },
+        "reserveAt": "offer_visible",
+        "releaseAt": "never_for_same_pair_in_campaign",
+        "effects": "Candidate advice seen once per pair; negotiation status does not reset the pair key. A refusal does not cause a different title to reoffer the same pair.",
+        "saveRestore": "Registry must persist key reservation with event resolution; no evaluator/persistence currently installed. If legacy018 history lacks pair IDs, fail closed for remaining marriage variants until a verified migration identifies the pair."
+      }
+    },
+    {
+      "scope": "church-neighbors",
+      "group": {
+        "id": "civic_conditions.shared.v1",
+        "events": [
+          "ck_evt_101",
+          "ck_evt_102",
+          "ck_evt_105",
+          "ck_evt_108",
+          "ck_evt_111",
+          "ck_evt_113",
+          "ck_evt_115",
+          "ck_evt_117",
+          "ck_evt_123",
+          "ck_evt_127",
+          "ck_evt_130",
+          "ck_evt_136",
+          "ck_evt_138",
+          "ck_evt_140",
+          "ck_evt_024",
+          "ck_evt_027",
+          "ck_evt_029",
+          "ck_evt_030",
+          "ck_evt_031",
+          "ck_evt_034",
+          "ck_evt_035",
+          "ck_evt_037",
+          "ck_evt_042",
+          "ck_evt_046",
+          "ck_evt_049",
+          "ck_evt_050",
+          "ck_evt_059"
+        ],
+        "tokenRules": {
+          "set_project_subsidy": {
+            "family": "project_support",
+            "scope": "home",
+            "kind": "args.kind"
+          },
+          "order_timber": {
+            "family": "timber_supply",
+            "scope": "home"
+          },
+          "set_market_dues": {
+            "family": "market_burden",
+            "scope": "home"
+          },
+          "set_estate_policy": {
+            "family": "development_priority",
+            "scope": "home"
+          },
+          "set_estate_oversight": {
+            "family": "estate_supervision",
+            "scope": "resolved args.estateId"
+          },
+          "set_audit_mode": {
+            "family": "estate_supervision",
+            "scope": "resolved args.estateId"
+          },
+          "set_exception_rules": {
+            "family": "estate_exceptions",
+            "scope": "all_held_offmap"
+          }
+        },
+        "matching": "Evaluate actual eligible choices, create each declared token, suppress an entry if any token overlaps a reserved eligible-choice token. Do not merge unrelated new-effect scenes by title alone.",
+        "cooldownSeasons": 8,
+        "requireActualStateChangeAfterResolution": true,
+        "stateSignatures": {
+          "project_support": [
+            "state.agency.subsidies[kind].amount",
+            "completed building IDs of kind"
+          ],
+          "timber_supply": [
+            "state.timberOrder default 0",
+            "state.treasuryTimber"
+          ],
+          "market_burden": [
+            "state.agency.duesPermille",
+            "completed market IDs"
+          ],
+          "development_priority": [
+            "state.agency.policy",
+            "completed building IDs"
+          ],
+          "estate_supervision": [
+            "oversight[estateId].mode",
+            "oversight[estateId].stewardId",
+            "oversight[estateId].auditMode"
+          ],
+          "estate_exceptions": [
+            "state.stewardship.rules with recurring default false"
+          ]
+        },
+        "snapshotAt": "after_choice_resolution_or_dismissal; not before own command",
+        "existingArrivalPolicy": "Do not suppress engine chapter events or existing petition arrivals. Suppress only additional advisory copy for their matching tokens; engine arrival retains priority.",
+        "legacyMapping": "Resolve each listed old entry actual command types/args through tokenRules; rules not matching a supported command do not create a token. Unknown required target binding blocks this additional copy, not the old engine arrival.",
+        "scopeLimit": "These are explicit registry-owned reads/specifications, not GameState fields. Preserve current campaign-once limits as additional restriction."
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.right_evidence_case.v2",
+        "problemDefinition": "동일 권리 소송의 증거 선택",
+        "memberIds": [
+          "ck_evt_009",
+          "ck_evt_032",
+          "ck_evt_143"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_143"
+        ],
+        "kind": "bound_suit_id",
+        "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+        "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+        "releaseAt": "never_for_same_key",
+        "legacyHistoryPolicy": "missing_required_identity_blocks_additional_copy; never infer identity from title, command or event instance counter",
+        "keyEncoding": "typed_json_array_in_declared_order",
+        "key": [
+          {
+            "literal": "fn.right_evidence_case.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "canonicalField": "suitId"
+          }
+        ],
+        "mapping": [
+          {
+            "memberIds": [
+              "ck_evt_009",
+              "ck_evt_032",
+              "ck_evt_143"
+            ],
+            "fields": {
+              "suitId": {
+                "field": "bound.suit.id"
+              }
+            },
+            "requiredNonNull": true
+          }
+        ]
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.wood_input_shortfall.v2",
+        "problemDefinition": "재료 투입을 수입과 자체생산 중 어디서 마련할지",
+        "memberIds": [
+          "ck_evt_015",
+          "ck_evt_144"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_144"
+        ],
+        "kind": "existing_state_snapshot_cooldown",
+        "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+        "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+        "releaseAt": "only_after_cooldown_and_real_snapshot_change",
+        "keyEncoding": "typed_json_array_in_declared_order",
+        "key": [
+          {
+            "literal": "fn.wood_input_shortfall.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "literal": "home"
+          }
+        ],
+        "snapshotReads": [
+          {
+            "projection": "sorted_id_kind_pairs",
+            "from": "state.buildings",
+            "whereKindIn": [
+              "sawmill",
+              "storehouse"
+            ]
+          },
+          {
+            "field": "state.treasuryTimber"
+          }
+        ],
+        "snapshotContract": "Registry read-model projection, not a new GameState path: filter existing completed buildings by kind, map [id,kind], sort by id codepoint; scalar values read as declared. Missing read-model mapping blocks additional copy.",
+        "cooldownSeasons": 8,
+        "reofferRule": "same key: suppress while pending; after resolution require >=8 seasons AND actual snapshot differs from persisted post-resolution snapshot; also retain each draft once-per-campaign restriction",
+        "snapshotAt": "after own choice resolution, not before its commands; pending reservation atomically linked to existing occurrence",
+        "legacyHistoryPolicy": "Known old occurrence without post-resolution snapshot: hold additional copy for8seasons after known resolution, then capture a baseline; require later actual snapshot change. Unknown occurrence time/history: block additional copy until verified migration; never block original arrival.",
+        "rationale": "명령 일치만으로 묶지 않는다. 위에 지정한 같은 생활문제 범위에서만 물자·완성시설 상태를 비교한다. 방침/장려금/주문 숫자 왕복은 새 기회로 세지 않는다. 실제 피해 사례를 주장하지 않는 예방·우선순위 청원에 새 problemCaseId를 요구하지 않는다.",
+        "codeReferences": [
+          "src/engine/townAgency.ts:371",
+          "src/engine/townAgency.ts:454",
+          "src/engine/timberTrade.ts:44"
+        ]
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.roof_repair_materials.v2",
+        "problemDefinition": "지붕 수선에 대비할 목재 조달",
+        "memberIds": [
+          "ck_evt_035",
+          "ck_evt_163",
+          "ck_evt_177"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_163",
+          "ck_evt_177"
+        ],
+        "kind": "existing_state_snapshot_cooldown",
+        "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+        "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+        "releaseAt": "only_after_cooldown_and_real_snapshot_change",
+        "keyEncoding": "typed_json_array_in_declared_order",
+        "key": [
+          {
+            "literal": "fn.roof_repair_materials.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "literal": "home"
+          },
+          {
+            "canonicalField": "intent"
+          }
+        ],
+        "mapping": [
+          {
+            "memberIds": [
+              "ck_evt_035"
+            ],
+            "fields": {
+              "intent": {
+                "literal": "post_damage"
+              }
+            }
+          },
+          {
+            "memberIds": [
+              "ck_evt_163"
+            ],
+            "fields": {
+              "intent": {
+                "literal": "preventive"
+              }
+            }
+          },
+          {
+            "memberIds": [
+              "ck_evt_177"
+            ],
+            "fields": {
+              "intent": {
+                "literal": "contract_labor_shortfall"
+              }
+            }
+          }
+        ],
+        "snapshotReads": [
+          {
+            "projection": "sorted_id_kind_pairs",
+            "from": "state.buildings",
+            "whereKindIn": [
+              "sawmill",
+              "market"
+            ]
+          },
+          {
+            "field": "state.treasuryTimber"
+          }
+        ],
+        "snapshotContract": "Registry read-model projection, not a new GameState path: filter existing completed buildings by kind, map [id,kind], sort by id codepoint; scalar values read as declared. Missing read-model mapping blocks additional copy.",
+        "cooldownSeasons": 8,
+        "reofferRule": "same key: suppress while pending; after resolution require >=8 seasons AND actual snapshot differs from persisted post-resolution snapshot; also retain each draft once-per-campaign restriction",
+        "snapshotAt": "after own choice resolution, not before its commands; pending reservation atomically linked to existing occurrence",
+        "legacyHistoryPolicy": "Known old occurrence without post-resolution snapshot: hold additional copy for8seasons after known resolution, then capture a baseline; require later actual snapshot change. Unknown occurrence time/history: block additional copy until verified migration; never block original arrival.",
+        "rationale": "명령 일치만으로 묶지 않는다. 위에 지정한 같은 생활문제 범위에서만 물자·완성시설 상태를 비교한다. 방침/장려금/주문 숫자 왕복은 새 기회로 세지 않는다. 실제 피해 사례를 주장하지 않는 예방·우선순위 청원에 새 problemCaseId를 요구하지 않는다.",
+        "codeReferences": [
+          "src/engine/townAgency.ts:371",
+          "src/engine/townAgency.ts:454",
+          "src/engine/timberTrade.ts:44"
+        ]
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.timber_order_reconsideration.v2",
+        "problemDefinition": "남은 목재 주문과 생산·저장 투자 재고려",
+        "memberIds": [
+          "ck_evt_046",
+          "ck_evt_165"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_165"
+        ],
+        "kind": "existing_state_snapshot_cooldown",
+        "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+        "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+        "releaseAt": "only_after_cooldown_and_real_snapshot_change",
+        "keyEncoding": "typed_json_array_in_declared_order",
+        "key": [
+          {
+            "literal": "fn.timber_order_reconsideration.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "literal": "home"
+          }
+        ],
+        "snapshotReads": [
+          {
+            "projection": "sorted_id_kind_pairs",
+            "from": "state.buildings",
+            "whereKindIn": [
+              "sawmill",
+              "storehouse"
+            ]
+          },
+          {
+            "field": "state.treasuryTimber"
+          }
+        ],
+        "snapshotContract": "Registry read-model projection, not a new GameState path: filter existing completed buildings by kind, map [id,kind], sort by id codepoint; scalar values read as declared. Missing read-model mapping blocks additional copy.",
+        "cooldownSeasons": 8,
+        "reofferRule": "same key: suppress while pending; after resolution require >=8 seasons AND actual snapshot differs from persisted post-resolution snapshot; also retain each draft once-per-campaign restriction",
+        "snapshotAt": "after own choice resolution, not before its commands; pending reservation atomically linked to existing occurrence",
+        "legacyHistoryPolicy": "Known old occurrence without post-resolution snapshot: hold additional copy for8seasons after known resolution, then capture a baseline; require later actual snapshot change. Unknown occurrence time/history: block additional copy until verified migration; never block original arrival.",
+        "rationale": "명령 일치만으로 묶지 않는다. 위에 지정한 같은 생활문제 범위에서만 물자·완성시설 상태를 비교한다. 방침/장려금/주문 숫자 왕복은 새 기회로 세지 않는다. 실제 피해 사례를 주장하지 않는 예방·우선순위 청원에 새 problemCaseId를 요구하지 않는다.",
+        "codeReferences": [
+          "src/engine/townAgency.ts:371",
+          "src/engine/townAgency.ts:454",
+          "src/engine/timberTrade.ts:44"
+        ]
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.steward_appointment_case.v2",
+        "problemDefinition": "같은 영지의 동일 관리 선임 사유",
+        "memberIds": [
+          "ck_evt_019",
+          "ck_evt_147",
+          "ck_evt_157",
+          "ck_evt_176"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_147",
+          "ck_evt_157",
+          "ck_evt_176"
+        ],
+        "kind": "bound_steward_candidate_context",
+        "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+        "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+        "releaseAt": "never_for_same_key",
+        "legacyHistoryPolicy": "missing_required_identity_blocks_additional_copy; never infer identity from title, command or event instance counter",
+        "keyEncoding": "typed_json_array_in_declared_order",
+        "key": [
+          {
+            "literal": "fn.steward_appointment_case.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "canonicalField": "estateId"
+          },
+          {
+            "canonicalField": "currentStewardId"
+          },
+          {
+            "canonicalField": "peasantCandidateId"
+          },
+          {
+            "canonicalField": "merchantCandidateId"
+          }
+        ],
+        "mapping": [
+          {
+            "memberIds": [
+              "ck_evt_019",
+              "ck_evt_147",
+              "ck_evt_157",
+              "ck_evt_176"
+            ],
+            "fields": {
+              "estateId": {
+                "field": "bound.estate.id"
+              },
+              "currentStewardId": {
+                "field": "bound.currentSteward.personId"
+              },
+              "peasantCandidateId": {
+                "field": "bound.peasantCandidate.personId"
+              },
+              "merchantCandidateId": {
+                "field": "bound.merchantCandidate.personId"
+              }
+            },
+            "requiredNonNull": true
+          }
+        ],
+        "rationale": "157은 살아 있는 현직과 서로 다른 실제 두 후보를 이미 바인딩한다. 같은 영지·현직·후보 조합의 선임 권고는 같은 결정기회로 충분히 키화된다. 사망/흉작을 주장하는147/176의 별도 unsupportedFilters는 이 키로 해소하지 않는다."
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.routine_petition_copy.v2",
+        "problemDefinition": "기존034의 동일 청원 발생 문구",
+        "memberIds": [
+          "ck_evt_034",
+          "ck_evt_149"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_149"
+        ],
+        "kind": "existing_occurrence_copy",
+        "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+        "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+        "releaseAt": "never_for_same_key",
+        "legacyHistoryPolicy": "missing_required_identity_blocks_additional_copy; never infer identity from title, command or event instance counter",
+        "keyEncoding": "typed_json_array_in_declared_order",
+        "key": [
+          {
+            "literal": "fn.routine_petition_copy.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "registryContext": "existingOccurrenceId"
+          }
+        ],
+        "copyOwner": "ck_evt_034",
+        "variant": "ck_evt_149",
+        "pipeline": [
+          "resolve_actual_existing_ck_evt_034_occurrence_without_creating_one",
+          "select_at_most_one_copy_034_or_149_for_same_occurrence",
+          "exclude_own_occurrence_reservation_from_duplicate_checks",
+          "suppress_conflicting_other_occurrences_or_other_visible_copy",
+          "display_selected_copy_and_resolve_original_occurrence_once"
+        ],
+        "ownPendingOccurrence": "not_a_duplicate_of_itself",
+        "budget": {
+          "existingOccurrenceOwner": "ck_evt_034",
+          "variantAdditionalBudgetCost": 0,
+          "variantIndependentSchedule": false
+        },
+        "requiredContext": [
+          "campaignId",
+          "existingOccurrenceId",
+          "originalDefinitionId=ck_evt_034",
+          "unresolved_original_occurrence",
+          "copySelectionPersisted"
+        ],
+        "missingOriginalOccurrence": "do_not_offer_variant",
+        "selectionImmutability": "Select copy only before first display; persist the selected ID atomically with the original occurrence. If034 or149 copy is already visible/resolved, do not show a second copy or change its selection.",
+        "ownPendingException": "A queued base occurrence with no selected visible copy is eligible for copy selection. This exception never allows a second visible copy."
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.textile_finishing_bottleneck.v2",
+        "problemDefinition": "직물 가공 단계에 둘 지원의 우선순위",
+        "memberIds": [
+          "ck_evt_049",
+          "ck_evt_155"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_155"
+        ],
+        "kind": "existing_state_snapshot_cooldown",
+        "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+        "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+        "releaseAt": "only_after_cooldown_and_real_snapshot_change",
+        "keyEncoding": "typed_json_array_in_declared_order",
+        "key": [
+          {
+            "literal": "fn.textile_finishing_bottleneck.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "literal": "home"
+          }
+        ],
+        "snapshotReads": [
+          {
+            "projection": "sorted_id_kind_pairs",
+            "from": "state.buildings",
+            "whereKindIn": [
+              "weaver_house",
+              "fulling_mill",
+              "dyehouse",
+              "tenter_yard"
+            ]
+          }
+        ],
+        "snapshotContract": "Registry read-model projection, not a new GameState path: filter existing completed buildings by kind, map [id,kind], sort by id codepoint; scalar values read as declared. Missing read-model mapping blocks additional copy.",
+        "cooldownSeasons": 8,
+        "reofferRule": "same key: suppress while pending; after resolution require >=8 seasons AND actual snapshot differs from persisted post-resolution snapshot; also retain each draft once-per-campaign restriction",
+        "snapshotAt": "after own choice resolution, not before its commands; pending reservation atomically linked to existing occurrence",
+        "legacyHistoryPolicy": "Known old occurrence without post-resolution snapshot: hold additional copy for8seasons after known resolution, then capture a baseline; require later actual snapshot change. Unknown occurrence time/history: block additional copy until verified migration; never block original arrival.",
+        "rationale": "명령 일치만으로 묶지 않는다. 위에 지정한 같은 생활문제 범위에서만 물자·완성시설 상태를 비교한다. 방침/장려금/주문 숫자 왕복은 새 기회로 세지 않는다. 실제 피해 사례를 주장하지 않는 예방·우선순위 청원에 새 problemCaseId를 요구하지 않는다.",
+        "codeReferences": [
+          "src/engine/townAgency.ts:371",
+          "src/engine/townAgency.ts:454",
+          "src/engine/timberTrade.ts:44"
+        ]
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.epidemic_labor_report.v2",
+        "problemDefinition": "같은 지역·유행의 동일 일손 부족 보고",
+        "memberIds": [
+          "ck_evt_028",
+          "ck_evt_168",
+          "ck_evt_178"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_168",
+          "ck_evt_178"
+        ],
+        "kind": "verified_problem_case",
+        "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+        "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+        "releaseAt": "never_for_same_key",
+        "legacyHistoryPolicy": "missing_required_identity_blocks_additional_copy; never infer identity from title, command or event instance counter",
+        "keyEncoding": "typed_json_array_in_declared_order",
+        "key": [
+          {
+            "literal": "fn.epidemic_labor_report.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "canonicalField": "problemCaseId"
+          },
+          {
+            "canonicalField": "problemPhase"
+          }
+        ],
+        "mapping": [
+          {
+            "memberIds": [
+              "ck_evt_028",
+              "ck_evt_168",
+              "ck_evt_178"
+            ],
+            "fields": {
+              "problemCaseId": {
+                "registryCaseContext": "verifiedProblemCaseId"
+              },
+              "problemPhase": {
+                "registryCaseContext": "verifiedProblemPhase"
+              }
+            },
+            "support": "unsupported_context_adapter_required",
+            "onMissing": "block_additional_copy"
+          }
+        ],
+        "sameProblemRule": "Only a verified shared causal case and phase may match. Equal command type, setting, estate alone, or title never establishes sameness. Preventive preparation and post-damage repair, foreign report and local outbreak, and distinct bottleneck stages remain distinct cases/phases.",
+        "caseCreation": "No IDs are synthesized from draft IDs or counters. Registry must receive evidence-backed bindings for the actual shortage/repair/appointment/report; until implemented, dependent additional copies stay blocked."
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.food_storage_priority.v2",
+        "problemDefinition": "동일 식량 저장 부족의 사업 우선순위",
+        "memberIds": [
+          "ck_evt_004",
+          "ck_evt_170"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_170"
+        ],
+        "kind": "verified_problem_case",
+        "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+        "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+        "releaseAt": "never_for_same_key",
+        "legacyHistoryPolicy": "missing_required_identity_blocks_additional_copy; never infer identity from title, command or event instance counter",
+        "keyEncoding": "typed_json_array_in_declared_order",
+        "key": [
+          {
+            "literal": "fn.food_storage_priority.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "canonicalField": "problemCaseId"
+          },
+          {
+            "canonicalField": "problemPhase"
+          }
+        ],
+        "mapping": [
+          {
+            "memberIds": [
+              "ck_evt_004",
+              "ck_evt_170"
+            ],
+            "fields": {
+              "problemCaseId": {
+                "registryCaseContext": "verifiedProblemCaseId"
+              },
+              "problemPhase": {
+                "registryCaseContext": "verifiedProblemPhase"
+              }
+            },
+            "support": "unsupported_context_adapter_required",
+            "onMissing": "block_additional_copy"
+          }
+        ],
+        "sameProblemRule": "Only a verified shared causal case and phase may match. Equal command type, setting, estate alone, or title never establishes sameness. Preventive preparation and post-damage repair, foreign report and local outbreak, and distinct bottleneck stages remain distinct cases/phases.",
+        "caseCreation": "No IDs are synthesized from draft IDs or counters. Registry must receive evidence-backed bindings for the actual shortage/repair/appointment/report; until implemented, dependent additional copies stay blocked."
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.water_access_priority.v2",
+        "problemDefinition": "현재 물을 멀리 길어오는 가구를 위한 급수·접근 우선순위",
+        "memberIds": [
+          "ck_evt_004",
+          "ck_evt_180"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_180"
+        ],
+        "kind": "existing_state_snapshot_cooldown",
+        "onMissing": "block_additional_copy_only_preserve_existing_arrival",
+        "reserveAt": "additional_copy_visible_or_existing_occurrence_selected",
+        "releaseAt": "only_after_cooldown_and_real_snapshot_change",
+        "keyEncoding": "typed_json_array_in_declared_order",
+        "key": [
+          {
+            "literal": "fn.water_access_priority.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "literal": "home"
+          }
+        ],
+        "snapshotReads": [
+          {
+            "projection": "sorted_id_kind_pairs",
+            "from": "state.buildings",
+            "whereKindIn": [
+              "well",
+              "house"
+            ]
+          },
+          {
+            "derived": "WATERLESS",
+            "args": []
+          }
+        ],
+        "snapshotContract": "Registry read-model projection, not a new GameState path: filter existing completed buildings by kind, map [id,kind], sort by id codepoint; scalar values read as declared. Missing read-model mapping blocks additional copy.",
+        "cooldownSeasons": 8,
+        "reofferRule": "same key: suppress while pending; after resolution require >=8 seasons AND actual snapshot differs from persisted post-resolution snapshot; also retain each draft once-per-campaign restriction",
+        "snapshotAt": "after own choice resolution, not before its commands; pending reservation atomically linked to existing occurrence",
+        "legacyHistoryPolicy": "Known old occurrence without post-resolution snapshot: hold additional copy for8seasons after known resolution, then capture a baseline; require later actual snapshot change. Unknown occurrence time/history: block additional copy until verified migration; never block original arrival.",
+        "rationale": "명령 일치만으로 묶지 않는다. 위에 지정한 같은 생활문제 범위에서만 물자·완성시설 상태를 비교한다. 방침/장려금/주문 숫자 왕복은 새 기회로 세지 않는다. 실제 피해 사례를 주장하지 않는 예방·우선순위 청원에 새 problemCaseId를 요구하지 않는다.",
+        "codeReferences": [
+          "src/engine/townAgency.ts:371",
+          "src/engine/townAgency.ts:454",
+          "src/engine/timberTrade.ts:44"
+        ]
+      }
+    },
+    {
+      "scope": "faction-nature",
+      "group": {
+        "id": "fn.standalone_draft_once.v2",
+        "problemDefinition": "교차군에 없는 초안 각각의 캠페인당1회 제한. 서로 다른 ID를 묶지 않음.",
+        "memberIds": [
+          "ck_evt_141",
+          "ck_evt_142",
+          "ck_evt_145",
+          "ck_evt_146",
+          "ck_evt_148",
+          "ck_evt_150",
+          "ck_evt_151",
+          "ck_evt_152",
+          "ck_evt_153",
+          "ck_evt_154",
+          "ck_evt_156",
+          "ck_evt_158",
+          "ck_evt_159",
+          "ck_evt_160",
+          "ck_evt_161",
+          "ck_evt_162",
+          "ck_evt_164",
+          "ck_evt_166",
+          "ck_evt_167",
+          "ck_evt_169",
+          "ck_evt_171",
+          "ck_evt_172",
+          "ck_evt_173",
+          "ck_evt_174",
+          "ck_evt_175",
+          "ck_evt_179"
+        ],
+        "additionalCopyIds": [
+          "ck_evt_141",
+          "ck_evt_142",
+          "ck_evt_145",
+          "ck_evt_146",
+          "ck_evt_148",
+          "ck_evt_150",
+          "ck_evt_151",
+          "ck_evt_152",
+          "ck_evt_153",
+          "ck_evt_154",
+          "ck_evt_156",
+          "ck_evt_158",
+          "ck_evt_159",
+          "ck_evt_160",
+          "ck_evt_161",
+          "ck_evt_162",
+          "ck_evt_164",
+          "ck_evt_166",
+          "ck_evt_167",
+          "ck_evt_169",
+          "ck_evt_171",
+          "ck_evt_172",
+          "ck_evt_173",
+          "ck_evt_174",
+          "ck_evt_175",
+          "ck_evt_179"
+        ],
+        "kind": "per_draft_campaign_once",
+        "key": [
+          {
+            "literal": "fn.standalone_draft_once.v2"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "registryContext": "draftId"
+          }
+        ],
+        "onMissing": "block_additional_copy",
+        "reserveAt": "offer_visible",
+        "releaseAt": "never_in_campaign",
+        "keyEncoding": "typed_json_array_in_declared_order"
+      }
+    }
+  ],
+  "scopedContractAliases": [
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_101",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_102",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_105",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_108",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_111",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_113",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_115",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_117",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_123",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_127",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_130",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_136",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_138",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    },
+    {
+      "scope": "church-neighbors",
+      "entry": "ck_evt_140",
+      "alias": "dedup-contract.json#tokenRules",
+      "resolvesTo": "groups[id=civic_conditions.shared.v1].tokenRules"
+    }
+  ],
+  "resolution": "Resolve relative refs within registry.sourceScopes; no last-file-wins overlay. Existing events retain engine arrival and same-occurrence display exception."
+}
