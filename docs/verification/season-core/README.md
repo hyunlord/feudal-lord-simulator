@@ -1,9 +1,7 @@
-# season-core — DETACHED PRECOMMIT PROOFS
+# season-core — committed runtime and historical detached proofs
 
-Seven before/after pairs: summer/winter zoom1.0 and0.6; spring zoom1.0,0.6 and1.4. JPEG previews preserve1280×800 and use quality85. Identical pixels may share oneJPEG; manifest retains separate originalPNG SHA, decodedRGBA SHA, captureidentity and receipt path for each logical capture.
+Actual committed-head `208c6222` capture passed10/10 with exact baseline identity/PNG/RGBA equality, A/A10 and no errors. See REPORT.md and committed-runtime.json. Final branch integration/publication remains pending.
 
-Core notify-v3: all10 original-baseline comparisons RGBA-identical; selected7 pairs identical.
+Historical detached manifest pairs and seven reencoded JPEGs remain preserved. Seven additional original JPEGs cover summer/winter zoom1.0/0.6 and spring1.0/0.6/1.4. Actual baseline/committed JPEG bytes match pairwise, so each pair shares one file. The historical previews differ in JPEG encoding and are not falsely shared with the new receipts. All10 raw PNG identities/hashes are referenced, not copied here. JPEGs are review aids, never comparison inputs.
 
-Authoritative evidence is linked by absolute path andSHA in manifest. PNG bytes and raw receipts were not rewritten. These JPEGs are review aids, not pixel-comparison inputs. Existing detached runtime evidence is not a future committed-head or trunk claim. **Final committed-head10-view capture and4 preservation pairs remain required.** No ledger installation mark, product edit, officialdocs edit, commit or remote run occurred during packaging.
-
-SHA256SUMS.json covers every delivered file except itself. Budget is3MiB per directory including that hash inventory. Read manifest for exact run IDs, raw comparison numbers, input freeze and remote verification receipt.
+SHA256SUMS.json covers every file except itself. Directory budget is3MiB including inventory. Prepared fixed-camera captures do not prove natural play, animations, all GPUs or final trunk publication.

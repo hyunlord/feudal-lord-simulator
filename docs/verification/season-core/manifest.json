@@ -1,9 +1,6 @@
 {
-  "classification": "DETACHED PRECOMMIT PROOFS",
-  "finalCommittedHeadRequired": {
-    "views10": true,
-    "preservationPairs4": true
-  },
+  "classification": "COMMITTED CORE RUNTIME PASS with preserved detached historical proofs",
+  "finalCommittedHeadRequired": false,
   "notClaimed": [
     "future commit",
     "trunk installation",
@@ -954,5 +951,11 @@
     "pass": true
   },
   "rawReceiptsUntouched": true,
-  "uniqueJpegs": 7
+  "uniqueJpegs": 7,
+  "committedRuntime": {
+    "path": "committed-runtime.json",
+    "sha256": "7bd431b637c55205f2c3d017e003fa49797af38b72e2b71a99dc5a8f01d63338"
+  },
+  "historicalClassification": "DETACHED PRECOMMIT PROOFS",
+  "finalBranchPublicationPending": true
 }

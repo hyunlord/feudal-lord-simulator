@@ -1,11 +1,11 @@
-# 계절 기존20 계약 이전 — 통합 관문 대기
+# 계절 기존20 계약 이전 — 실제 커밋 런타임 PASS
 
-**본선 작업트리 반영, 아직 미커밋. 최종 committed-head10뷰/보존4쌍 미실행.** 신규9/밭/그림/출처CSV/설치장부 변경은 없다. legacy45+contract20=65의 URL·선택·preload순서·기하 보존을 목표로 한 기존자료 이전이다.
+**커밋 `208c622222b2d2a2b7d0aa883d6a598984b25ca4`의 실제 DGX 10뷰 PASS. 최종 작업 가지 통합 관문·본선 게시 대기.** 신규9/밭/그림/출처CSV/설치장부 변경을 이 결과로 주장하지 않는다. legacy45+contract20=65의 기존 URL·선택·preload 순서·기하 보존 검증이다.
 
-현재 자료는 **DETACHED PRECOMMIT PROOFS**다. `astra-season-core-notify-v3-ab67dcb`의10뷰는 이전baseline과identity/A-A/전후RGBA동일,오류0,20URL도달이며 remote1097입력일치를 확인했다. 그 뒤 역사65source/INSTALL-15receipt와 현재activeprovenance를 분리하는 test-only수정은 기존runtimefreeze에 포함되지 않는다. 해당시험과제품1075해시 동일을 별도로 확인했다. 원본PNG·captureidentity·전체freeze 위치와SHA는manifest에 있으며 JPEG는열람용손실압축이다.
+`astra-season-core-committed-208c622`: remote/fetch exit0, 원격 clean tracked HEAD와 입력 4,137개 해시 일치, 오류0, A/A10 PASS. `season-before-v2`와 expectedRequests를 포함한 전체 identity10 및 PNG/RGBA10 정확히 동일하다. 기존20 URL의 request/decode/draw는 실행 영수증에서 확인했다. 여름·겨울×줌1.0/0.6 보존 네 쌍도 포함한다. 10개 개별 원본의 독립 시각 검토에서 새 회귀가 없었다. 근거는 [committed-runtime.json](committed-runtime.json), [원본 시각 검토](season-core-committed-visual-review.md)다.
 
-여름·겨울×줌1.0/0.6 네쌍과 봄1.0/0.6/1.4 세쌍을 포함한다. 동일JPEG저장이라도 before/after논리receipt는분리한다. 이후실제작업commit에서10뷰재촬영·보존4쌍·최종통합관문을 통과해야 완료로변경한다. 미래commit/trunk설치/installed_by를 주장하지 않는다.
+기존 `manifest.json`의 detached notify-v3 자료와 이전 검토·test-only 수정 영수증은 역사 증거로 보존했다. 최신 실제 커밋 실행과 혼합하거나 과거 실행을 사후 커밋 실행으로 바꾸지 않았다. 원본 PNG·각 논리 capture identity·PNG/RGBA SHA 및 source freeze 참조를 분리했다. 실제 JPEG7개는 실제 기준/결과 바이트 동일을 확인한 뒤 공유한다. 과거 재인코딩 JPEG7개와는 달라 각각 별도 보존했다. JPEG는 픽셀 비교 입력으로 사용하지 않는다.
 
-로컬 통합 검사: 집중 시험 37/37, typecheck, 명시 설정 ESLint, catalog 92개 파일 검사, git diff --check 모두 PASS. 제품 1,075파일은 승인 source SHA와 동일하다. public·provenance·설치 장부 및 기존 ARCH1/W37 증거 문서는 변경하지 않았다. 정확한 20개 이전 SHA와 검사 범위는 transfer-receipt.json에 있다. 기존 ARCH1/W37 판정은 각 보고서가 소유한다.
+이전 로컬 통합 검사: 집중 시험37/37, typecheck, 명시 설정 ESLint, catalog92개 검사, git diff --check PASS. 정확한20개 이전 SHA와 검사 범위는 `transfer-receipt.json`에 보존한다. ARCH1/W37 판정은 각 보고서가 소유한다.
 
-독립 코드 검토와 pre-notify v2 시각 검토, 뒤의 test-only 검토를 원문으로 첨부한다. v2 시각 검토를 notify-v3 오류 분기 검증으로 확대하지 않는다. 이 보고서는 미커밋 통합 상태이며 최종 committed-head 검증을 대신하지 않는다.
+가을·겨울 지면 패치와 겨울 과수원의 낮은 대비는 기준과 동일한 기존 모습이다. 자연 플레이·애니메이션·모든 기기/가림 검증은 하지 않았다. 최종 가지 검증과 본선 게시는 아직 완료로 표기하지 않는다.
