@@ -405,7 +405,7 @@ export const SURFACES: readonly SurfaceRow[] = [
     requires: [".food-breakdown-row", ".food-breakdown-ledger"], data: "the town's food split five ways, the ledger and close buttons" },
   // Lord mode's command pins in the build drawer's place (no cached lord-mode state yet; scripts/lmr1HudCaptures.ts opens it).
   { id: "hud.command-pins", root: ".command-pins", frame: "css", scene: { kind: "new-game" }, numbers: false, open: [{ click: "[data-dock='build']" }, { pause: 500 }],
-    requires: [".command-pin"], data: "the lord's public work (성채) and encouragement-zone pins",
+    requires: [".command-pin"], data: "the lord's public work (the keep) and encouragement-zone pins",
     unreachable: "lord mode starts from the lord's slice (core:lord_slice), which the start screen does not offer until LM-R3; no state set holds a lord-mode town" },
 ];
 
