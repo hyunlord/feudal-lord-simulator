@@ -1,0 +1,15 @@
+{
+  "references": [
+    {
+      "path": ".omo/prepared-delivery/heath-core/package-index.json",
+      "sha256": "583f92b5e9650e80a76890003151a8b518d5b027549b010e06ae9c5c70eba69c",
+      "scope": "HISTORICAL_DETACHED_PREPARATION_ONLY_NOT_CURRENT_MAIN"
+    },
+    {
+      "path": ".omo/prepared-delivery/heath-data/package-index.json",
+      "sha256": "77b5a64a9da8f5e985505910539284170ecd1d90cdbc8b5ece4dbfc526b7beaf",
+      "scope": "HISTORICAL_DETACHED_PREPARATION_ONLY_NOT_CURRENT_MAIN"
+    }
+  ],
+  "currentMainRuntimeProof": false
+}

@@ -1,3 +1,4 @@
+import { LAND_DECAL_ART } from './art/landDecalArt';
 import type { BoundaryBounds, BoundaryPoint } from "../world/boundary/boundaryGeometry";
 import type { Shoreline } from "../world/boundary/shoreline";
 import type { Tile } from "../world/world.types";
@@ -51,7 +52,7 @@ export function landArtReadiness(land: LandGround, season: SeasonIndex): string 
   // Asked for every chunk request of every frame: once all the season's files are ready the bits cannot change.
   const ready = land.cache.allReady.get(season);
   if (ready !== undefined) return ready;
-  const bits = landArtKeys(land, season).map(key => (art.art(key) === null ? 0 : 1)).join("") + forestEdgeReadiness(land.fillBase, season);
+  const bits = landArtKeys(land, season).map(request => ((request.owner === 'catalog' ? LAND_DECAL_ART.image(request.key) : art.art(request.key)) === null ? 0 : 1)).join("") + forestEdgeReadiness(land.fillBase, season);
   if (!bits.includes("0")) land.cache.allReady.set(season, bits);
   return bits;
 }
@@ -63,7 +64,9 @@ export function landArtReadiness(land: LandGround, season: SeasonIndex): string 
  */
 function preloadLandArt(land: LandGround): void {
   if (land.cache.preloaded === true) return;
-  for (const season of [0, 1, 2, 3] as const) for (const key of landArtKeys(land, season)) art.art(key);
+  for (const season of [0, 1, 2, 3] as const) for (const request of landArtKeys(land, season)) {
+    if (request.owner === 'catalog') LAND_DECAL_ART.image(request.key); else art.art(request.key);
+  }
   land.cache.preloaded = true;
 }
 
@@ -244,7 +247,7 @@ export function drawLandShoreStrips(context: CanvasRenderingContext2D, land: Lan
 }
 
 /** 4. Decals and props of the chunk and its ring, in painter's order. Returns the number drawn. */
-export function drawLandDecals(context: CanvasRenderingContext2D, land: LandGround, mapTiles: readonly Tile[], plan: GroundChunkPlan): number {
+export function drawLandDecals(context: CanvasRenderingContext2D, land: LandGround, mapTiles: readonly Tile[], plan: GroundChunkPlan, season: SeasonIndex): number {
   const x0 = plan.cx * GROUND_CHUNK_TILES - TILE_RING; const y0 = plan.cy * GROUND_CHUNK_TILES - TILE_RING;
   const size = GROUND_CHUNK_TILES + TILE_RING * 2;
   let drawn = 0;
@@ -263,7 +266,9 @@ export function drawLandDecals(context: CanvasRenderingContext2D, land: LandGrou
         if (sea !== undefined) { x = tx + sea[0] / 3; y = ty + sea[1] / 3; }
       }
       const at = tileToScreen(x, y);
-      if (art.draw(context, key as Wave22GroundKey, at.sx, at.sy, DECAL_SCALE)) drawn += 1;
+      if (LAND_DECAL_ART.owns(land.id, key, season)) {
+        if (LAND_DECAL_ART.draw(context, land.id, key, season, hashSeed(land.seed, 'land-decal:variant', index), at.sx, at.sy)) drawn += 1;
+      } else if (art.draw(context, key as Wave22GroundKey, at.sx, at.sy, DECAL_SCALE)) drawn += 1;
     }
   }
   return drawn;

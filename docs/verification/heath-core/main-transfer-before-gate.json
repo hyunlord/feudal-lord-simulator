@@ -1,0 +1,37 @@
+{
+  "schema": "heath-main-before30-v1",
+  "status": "PASS",
+  "head": "d367382392a4806e683b91463f3996b7654704d6",
+  "viewCount": 30,
+  "positiveEdgeViews": 14,
+  "negativeViews": 16,
+  "actualRemoteRun": true,
+  "identityVerified": true,
+  "aaVerified": true,
+  "errorsClear": true,
+  "nativeReviewPassed": true,
+  "runId": "astra-heath-main-before-d367382",
+  "evidence": [
+    {
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/heath-main-before-summary.json",
+      "sha256": "ff2d25c8e7c6821939fe0a1ab93fb68bf3db076b5bc362c94bc7a6099126266d"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/heath-main-before-watch.json",
+      "sha256": "466417a98a0ee73e8278f1e2d27a0fec5ee8e51b4fed52ca6c6d614ed9314be9"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/heath-main-before-native-review.md",
+      "sha256": "c5434c80624c33474d6842f006e6efe3c22ff7aa3a9a2dba66fe4b83896771ef"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/heath-main-before-native-review.json",
+      "sha256": "281005fe0bfd505a320fc41aa6b6e4fd6bb3bf75a6c0157b28cc851f9bebc15c"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/heath-main-before-parent-check.json",
+      "sha256": "6be508e4741303e8230b1d050cf8650ce4899a5c6a2c3733726d4cf89aa2accd"
+    }
+  ],
+  "directive": "Parent reviewed actuald367 before30 numeric+native receipts; authorizes exact16 guarded core transfer only, core/data runtime separate."
+}

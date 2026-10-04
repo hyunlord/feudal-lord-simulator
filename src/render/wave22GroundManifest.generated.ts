@@ -21,7 +21,6 @@ export const WAVE22_GROUND_IMAGES = {
   "decals/fen_pool_a": {"url": "assets/wave22/decals/fen_pool_a.png", "folder": "decals", "width": 64, "height": 48, "pivot": {"x": 32, "y": 40}},
   "decals/fen_pool_b": {"url": "assets/wave22/decals/fen_pool_b.png", "folder": "decals", "width": 96, "height": 64, "pivot": {"x": 48, "y": 56}},
   "decals/fen_pool_c": {"url": "assets/wave22/decals/fen_pool_c.png", "folder": "decals", "width": 128, "height": 96, "pivot": {"x": 64, "y": 88}},
-  "decals/heath_patch_a": {"url": "assets/wave22/decals/heath_patch_a.png", "folder": "decals", "width": 64, "height": 48, "pivot": {"x": 32, "y": 40}},
   "decals/woodland_litter_a": {"url": "assets/wave22/decals/woodland_litter_a.png", "folder": "decals", "width": 64, "height": 48, "pivot": {"x": 32, "y": 40}},
   "decals/woodland_litter_b": {"url": "assets/wave22/decals/woodland_litter_b.png", "folder": "decals", "width": 96, "height": 64, "pivot": {"x": 48, "y": 56}},
   "decals/woodland_litter_c": {"url": "assets/wave22/decals/woodland_litter_c.png", "folder": "decals", "width": 128, "height": 96, "pivot": {"x": 64, "y": 88}},

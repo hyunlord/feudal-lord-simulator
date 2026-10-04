@@ -6482,5 +6482,70 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave22-land-decals",
+    "entries": [
+      {
+        "id": "wave22-heath-patch-a",
+        "kind": "ground-prop",
+        "placement": "land",
+        "baseId": "decals/heath_patch_a",
+        "archetypes": [
+          "core:chalk_downs"
+        ],
+        "image": {
+          "url": "assets/wave22/decals/heath_patch_a.png",
+          "width": 64,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/decals/heath_patch_a-v1.png",
+          "sourceSha256": "dc24ac33e8869c47977d1adea44ed6a939f94079eb26b4a1d44592ef0ca2576a",
+          "runtimeSha256": "dc24ac33e8869c47977d1adea44ed6a939f94079eb26b4a1d44592ef0ca2576a"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 40
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        }
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave22-heath-base",
+        "kind": "ground-prop",
+        "slot": "land-decal-base",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "decals/heath_patch_a"
+          },
+          {
+            "field": "archetype",
+            "op": "eq",
+            "value": "core:chalk_downs"
+          },
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "land"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-heath-patch-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]

@@ -1,0 +1,38 @@
+{
+  "pass": true,
+  "phase": "APPLIED_MAIN_CORE_STATIC_ONLY_RUNTIME_NOT_RUN",
+  "tests": {
+    "files": 24,
+    "tests": 305,
+    "pass": 305,
+    "fail": 0,
+    "skipped": 0
+  },
+  "typecheckExit": 0,
+  "lintExit": 0,
+  "lintFiles": 13,
+  "catalogEntries": 103,
+  "diffCheckExit": 0,
+  "evidence": [
+    {
+      "path": ".omo/evidence/heath-main-core-focused.log",
+      "sha256": "385bfcba51d064bd7c7b6136c7a6e34c3a31a10ba3a67fa7cec1f80cf94283ef"
+    },
+    {
+      "path": ".omo/evidence/heath-main-core-typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".omo/evidence/heath-main-core-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".omo/evidence/heath-main-core-catalog.json",
+      "sha256": "25195b45b0e8a74cc265fdc21564668cd6003e0a5f0eb20a1b57af4882a284c5"
+    },
+    {
+      "path": ".omo/evidence/heath-main-transfer-receipt.json",
+      "sha256": "b819ba3a50837dde589bb381d9d2e34558a512e79e5d510711a5974d664231ce"
+    }
+  ]
+}

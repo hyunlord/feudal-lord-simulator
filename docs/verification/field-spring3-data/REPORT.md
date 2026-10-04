@@ -1,6 +1,6 @@
 # FIELD 봄3 — 실제 main 수치·독립 시각 통과, 정확3행 승격
 
-`a392694c3056b93812a0bcc3de767a387f2f3f3b`의 [FIELD core 실제20쌍 통과](../field-core/REPORT.md) 뒤 적용했다. **APPLIED / STATIC PASS / INDEPENDENT DATA REVIEW PASS / RUNTIME PASS WITH LIMITS**. 이후 아래 별도 승격 영수증에 따라 정확3행을 표시했다. [독립 적용 검토](independent-main-data-review.md)는 PASS이며 실제 main20뷰 수치와 [독립 눈검토](main-data-visual-review.md)는 PASS WITH LIMITS이며 승격 뒤 reference4와 최종 게시가 남아 있다. 과거 detached data20 성공은 이번 main 증거로 사용하지 않는다.
+`a392694c3056b93812a0bcc3de767a387f2f3f3b`의 [FIELD core 실제20쌍 통과](../field-core/REPORT.md) 뒤 적용했다. **APPLIED / STATIC PASS / INDEPENDENT DATA REVIEW PASS / RUNTIME PASS WITH LIMITS**. 이후 아래 별도 승격 영수증에 따라 정확3행을 표시했다. [독립 적용 검토](independent-main-data-review.md)는 PASS이며 실제 main20뷰 수치와 [독립 눈검토](main-data-visual-review.md)는 PASS WITH LIMITS이며 승격 뒤 reference4도 통과했으며 최종 가지 관문·게시가 남아 있다. 과거 detached data20 성공은 이번 main 증거로 사용하지 않는다.
 
 ## 적용 경계와 보존
 
@@ -61,4 +61,12 @@
 
 원본425 집계는 marked150→153, runtime-status/byte-verified154→157, physical-byte-matched157→157이다. 서로 다른 집계를 설치 수로 합치지 않는다. 코드·public4,259파일 변경0은 승격 실행자 영수증의 보고 수치다(이 패키지에 개별4,259 해시 목록은 없다). [부모 독립 재검토](main-promotion-parent-review.json)는 실제 CSV records와 근거4 SHA를 재확인했다. 앞 단계의 코드2,595 및 원격4,168은 서로 다른 범위의 동결이며4,259와 혼동하지 않는다. 직접 참조 가능한 실제 원격 동결은 앞의4,168 입력 영수증이며 존재하지 않는4,259 raw 파일 참조를 만들지 않는다.
 
-승격 영수증 SHA256: `b3b1df3672bad59f055e18cffa1264148c961777a481f2ff32d0d2a2b6367a0d`. **승격 커밋 뒤 실제 summer/winter ×1/.6 reference4는 PENDING**. 기존20뷰의 봄3 소비 검증과 별도로 동일 identity·RGBA0·A/A4·오류0·원본 눈검토를 확인해야 한다. 최종 가지 관문·게시도 별도다.
+승격 영수증 SHA256: `b3b1df3672bad59f055e18cffa1264148c961777a481f2ff32d0d2a2b6367a0d`. **승격 커밋 뒤 실제 summer/winter ×1/.6 reference4도 PASS**. 아래 영수증은 기존20뷰의 봄3 소비 검증과 별도로 동일 identity·RGBA0·A/A4·오류0·실행자 원본 눈검토를 확인한다. 최종 가지 관문·게시도 별도다.
+
+## 승격 후 d367 실제 reference4 통과
+
+실제 `d367382392a4806e683b91463f3996b7654704d6` / `astra-field-spring3-ledger-reference-d367382`를 직전 데이터 `cd399e4abb26fc04b37dc27b5c61bec270934a7d`와 대조했다. [원영수증](post-promotion-reference4-summary.json), [실행/수집 기록](post-promotion-reference4-watch.json), [원격 동결 대조](post-promotion-reference4-remote-freeze.json), [전체 raw 동결·capture 참조](post-promotion-reference4-source-reference.json)를 보존한다. 원격4,281 SHA 일치·퇴역 public6 부재·실행/수집 exit0.
+
+여름/겨울 ×1/.6 네 장면 full identity4·RGBA 차이0·A/A4·오류0. 요구 source 요청·정상 decode·paint lineage 확인. 실행자가 native PNG4개를 각각 열어 PASS_EXECUTOR4로 기록했으며 독립 검토로 이름을 바꾸지 않는다. 이전 장식/반복 지면/작은 crop 세부 한계는 유지한다.
+
+[before/after 실제 PNG/JPEG 별도 경로·SHA·identity](post-promotion-reference4-raw-index.json)를 확인했다. JPEG4개는 기존 패키지의 동일 바이트4개와 일치하여 추가 물리 이미지 없이 공유한다. 다시 저장하거나 리샘플링하지 않았다. 이 네 장면에는 봄이 없으므로 **cd399 실제20뷰 중 봄8의 새3 소비·독립 시각 증거를 대체하지 않는다**. 원래 data20, 승격, 독립 시각 영수증은 바이트 그대로 보존했다. 장시간 자연플레이·가림·저장되지 않은 repeat 요청/paint 부재나 최종 게시를 새로 주장하지 않는다.

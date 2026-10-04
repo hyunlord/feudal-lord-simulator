@@ -222,7 +222,7 @@ function drawGroundChunk(
   drawShoreline(context, scene.shore, plan.waterLoops, plan.waterParity, box, bounds, input.state.seed, liveReeds(zoom, input.state), land === null ? undefined : landShoreStrips(context, land, scene.shore, plan.waterLoops, bounds));
   if (iceRimDrawn(season)) drawIceRim(context, scene.shore, plan.waterLoops, box); // INSTALL-29: winter, static: baked with the strips
   drawLandWorksInChunk(context, input.state, plan, season); // LAND-UI Wave 34: fords, drainage works, drained edge
-  if (land !== null) drawLandDecals(context, land, input.state.tiles, plan);
+  if (land !== null) drawLandDecals(context, land, input.state.tiles, plan, season);
   if (plan.zoneIndexes.length > 0) {
     // A plot's tone stops at a yard: the yard is its own trodden ground.
     context.save();

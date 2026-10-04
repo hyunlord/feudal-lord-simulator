@@ -33,10 +33,15 @@ export type StateOverlayEntry = WorldEntry & {
   readonly transform: 'inherit-body'; readonly order: number;
 };
 export type ArtRange = { readonly min: number; readonly max?: number } | { readonly min?: number; readonly max: number };
-export type GroundPropEntry = WorldEntry & {
+export type HouseholdGroundPropEntry = WorldEntry & {
   readonly kind: 'ground-prop'; readonly archetypes: readonly string[]; readonly occupations: readonly string[];
   readonly placement: 'front-yard' | 'back-yard' | 'yard' | 'street' | 'frontage'; readonly wealthRange?: ArtRange;
 };
+export type LandGroundPropEntry = EntryBase & {
+  readonly kind: 'ground-prop'; readonly placement: 'land'; readonly baseId: string;
+  readonly archetypes: readonly string[]; readonly geometry: ArtGeometry; readonly season?: ArtSeason;
+};
+export type GroundPropEntry = HouseholdGroundPropEntry | LandGroundPropEntry;
 export type WalkerCargoEntry = EntryBase & {
   readonly kind: 'walker-cargo'; readonly cargoKinds: readonly string[];
   readonly frames: readonly ArtFrame[]; readonly facing: ArtFacing; readonly scale: number; readonly allowMirror: false;

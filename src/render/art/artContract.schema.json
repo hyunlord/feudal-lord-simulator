@@ -505,89 +505,150 @@
       "additionalProperties": false
     },
     "ground-prop": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "image": {
-          "$ref": "#/$defs/image"
-        },
-        "provenance": {
-          "$ref": "#/$defs/provenance"
-        },
-        "kind": {
-          "const": "ground-prop"
-        },
-        "geometry": {
-          "$ref": "#/$defs/geometry"
-        },
-        "season": {
-          "type": "string",
-          "enum": [
-            "spring",
-            "summer",
-            "autumn",
-            "winter"
-          ]
-        },
-        "facing": {
-          "type": "string",
-          "enum": [
-            "n",
-            "ne",
-            "e",
-            "se",
-            "s",
-            "sw",
-            "w",
-            "nw"
-          ]
-        },
-        "archetypes": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "season": {
+              "type": "string",
+              "enum": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+              ]
+            },
+            "facing": {
+              "type": "string",
+              "enum": [
+                "n",
+                "ne",
+                "e",
+                "se",
+                "s",
+                "sw",
+                "w",
+                "nw"
+              ]
+            },
+            "archetypes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "occupations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "placement": {
+              "type": "string",
+              "enum": [
+                "front-yard",
+                "back-yard",
+                "yard",
+                "street",
+                "frontage"
+              ]
+            },
+            "wealthRange": {
+              "$ref": "#/$defs/range"
+            }
           },
-          "minItems": 1,
-          "uniqueItems": true
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "kind",
+            "geometry",
+            "archetypes",
+            "occupations",
+            "placement"
+          ],
+          "additionalProperties": false
         },
-        "occupations": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "season": {
+              "type": "string",
+              "enum": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+              ]
+            },
+            "archetypes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "placement": {
+              "const": "land"
+            },
+            "baseId": {
+              "type": "string",
+              "minLength": 1
+            }
           },
-          "minItems": 1,
-          "uniqueItems": true
-        },
-        "placement": {
-          "type": "string",
-          "enum": [
-            "front-yard",
-            "back-yard",
-            "yard",
-            "street",
-            "frontage"
-          ]
-        },
-        "wealthRange": {
-          "$ref": "#/$defs/range"
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "kind",
+            "geometry",
+            "archetypes",
+            "placement",
+            "baseId"
+          ],
+          "additionalProperties": false
         }
-      },
-      "required": [
-        "id",
-        "image",
-        "provenance",
-        "kind",
-        "geometry",
-        "archetypes",
-        "occupations",
-        "placement"
-      ],
-      "additionalProperties": false
+      ]
     },
     "walker-cargo": {
       "oneOf": [

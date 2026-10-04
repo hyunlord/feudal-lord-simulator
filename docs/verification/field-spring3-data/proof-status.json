@@ -31,7 +31,11 @@
     "physicalByteMatched": 157
   },
   "protectedCodePublicFilesUnchanged": 4259,
-  "postPromotionReference4": "PENDING_PARENT_COMMIT_AND_ACTUAL_CAPTURE",
+  "postPromotionReference4": "PASS_IDENTITY4_RGBA0_AA4_ERRORS0",
   "protectedCodePublicCountEvidence": "Reported by promotion executor; individual4259 hashes not included. Parent review verifies literal CSV changes and four proof hashes.",
-  "promotionParentReview": "main-promotion-parent-review.json"
+  "promotionParentReview": "main-promotion-parent-review.json",
+  "postPromotionReferenceHead": "d367382392a4806e683b91463f3996b7654704d6",
+  "postPromotionReferenceReceipt": "post-promotion-reference4-summary.json",
+  "postPromotionReferenceVisual": "PASS_EXECUTOR4_NOT_INDEPENDENT",
+  "finalBranchPublication": "SEPARATE_PENDING_GATE"
 }

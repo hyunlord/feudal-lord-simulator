@@ -14,7 +14,7 @@
 |---|---|---|
 | `building-body` | `buildingKinds[]`, `levels[]`, `variantId`, 세계 geometry; 선택 `season`,`facing` | 완성 본체. 기존 seed·family continuity·neighbor push는 별도 의미 보존 대상 |
 | `state-overlay` | `targetBodyIds[]`, `layer`=snow/boarded/worn/wealth/era, `transform:inherit-body`, `order`, 세계 geometry | 대상 body/landmark와 canvas/pivot/scale/crop 일치 검증. 소비자가 준 실제 body sourceRect/targetRect를 그대로 상속 |
-| `ground-prop` | `archetypes[]`, `occupations[]`, `placement`=front-yard/back-yard/yard/street/frontage, 선택 `wealthRange`, 세계 geometry | 그림 선택과 합법 배치 계산을 구분. 길·물·다른 소품 충돌은 소비자의 실제 기하 사실 필요 |
+| `ground-prop` | household: `archetypes[]`, `occupations[]`, 기존5 placement와 선택 `wealthRange`; land: `placement:land`, 실제 `baseId`·map `archetypes[]`, 세계 geometry | 그림 선택과 합법 배치 계산을 구분. 길·물·다른 소품 충돌은 소비자의 실제 기하 사실 필요 |
 | `walker-cargo` | `role`=walker/cargo, `cargoKinds[]`, `frames[]`, `facing`, `scale`, `allowMirror:false`, `attachment` | walker는 foot, cargo는 grip. frame별 피벗 사용; attachment.pivot을 추가 offset으로 중복 더하지 않음 |
 | `land-stage` | `family`, `stage`, `layout`=single/strip/connector, 세계 geometry, 선택 season/facing | single은 선택 ports, strip은 start/end 필수, connector는 SW/NW/SE/NE 포트. 포트는 소스 픽셀 좌표이며 접속 mask가 아님 |
 | `landmark` | `family`, `growthStage`, `expansion`=none/approved-footprint, 세계 geometry | 성장 조건은 엔진이 제공해야 함. 달력만으로 증축을 발명하지 않음 |
@@ -117,6 +117,32 @@ C25 봄 기대값 하나는 spring9 predecessor가 바꾼 실제 선택 결과�
 
 
 실제 main `3e722109` before20·A/A20·오류0이 통과했고 원격 입력4150개와 별도 보완 시험1개 해시가 일치했다. 이후22파일 core를 보호된 이관으로 반영했다. 실제 main 집중196/196·타입·19파일 린트·catalog99/99가 통과했고, 적용본 독립 검토에서22/22 이관 SHA와 보호1622/1622 일치로 PASS를 확인했다. **core 커밋·실제 after20 및 새 FIELD3 설치는 아직 미완료**다. detached oldseason20의 이전20뷰 RGBA0은 역사 증거이며 현재 main 비교를 대신하지 않는다. [FIELD 보고서](../verification/field-core/REPORT.md)가 최신 실행 상태를 소유한다.
+
+## HEATH ground-prop 확장 — core 적용·runtime 대기
+
+### ground-prop의 household/land 구분
+
+기존 household branch(placement front-yard/back-yard/yard/street/frontage, occupations 필수)는 그대로 유지한다. placement `land`는 별도의 strict branch로, 실제 legacy `baseId`와 실제 map `archetypes`를 사용한다. household용 occupations/wealth/facing을 land에 허용하거나 가짜 직업을 공급하지 않는다. FIELD ground-texture 정의와12번째 종류는 바뀌지 않는다.
+
+land 소비자는 실제 `LandGround.id`, `land.keys[land.decal[index]]`, 요청된 paint season을 공급한다. 기존 chalk-downs scenario의 `decals/heath_patch_a`를 그대로 사용하며 density/pool/engine/content/road/building 제외 규칙을 변경하지 않는다. 기본 가족 선택이 끝난 뒤 `hashSeed(land.seed, 'land-decal:variant', index)`의 uint32 seed로 표면 변형만 고른다. season을 seed에 넣지 않는다.
+
+`land-decal-base`는 관리하는 실제 archetype/base/4season 조합마다 정확1개 rule·1개 variant·weight1의 fallback을 제공한다. `land-decal-variant`는 없거나 명확한1개 rule이다. 모든 선언 rule·모든 참조 variant를 유한 조합 전체에서 검사한다. 지원하지 않는 base/archetype/season, 소비자가 공급하지 않는 condition, 적용불가능 rule, 다른 가족 참조, base 없는 variant, 모호한 중복을 이미지 요청 전에 거부한다. 각 geometry는 native dimensions/pivot/scale을 따르며 allowMirror=false다.
+
+단일 `LAND_DECAL_ART` facade가 기존 adapters와 loader를 통해 descriptor·요청·선택·fallback·draw를 소유한다. 요청은 기존 land 첫 draw의4계절/정렬된 base 순서를 유지하며 이관 가족 위치에서 후보 ID를 정렬한다. 나머지 legacy78은 기존 manifest가 소유한다. 준비되지 않거나 실패한 selected variant는 base로 돌아가며 base도 없으면 기존 빈 draw 의미를 따른다.
+
+readiness는 기존 per-land/per-season 단조 ready bits 및 chunk token 범위를 유지한다. deferred paint가 key 계산보다 늦으면 더 최신 ready source를 이전 key 아래 그릴 수 있고 다음 요청에서 재베이크한다. 한 전환에서 추가 deferred bake를 허용하며 총 warming1회나 엄격한 key/paint snapshot, 영향 셀만의 invalidation을 약속하지 않는다. FIELD의 별도 frame snapshot 계약을 이 land warming 의미로 완화하지 않는다.
+
+### 기존 Wave22 A의 소유권 이전
+
+기존 `wave22-heath-patch-a`64×48/pivot32,40/scale0.5 한 entry와 base rule을 추가한다. 기존102 entries·여섯 bundle 객체/순서 보존→103. public/source/CSV/장부 변경0이며 B/C2는 포함하지 않는다.
+
+생성기는 source records/scenario로 제외 전 canonical79를 매번 다시 만든다. 실제 registry가 모든 사용 archetype/4season의 fallback을 검증한 unique owned base를 복사·출처·장부 쓰기 전에 제외하여 legacy78을 만든다. 이전 generated78을 canonical 기준으로 읽지 않는다. variant 수가 아니라 base1개를 제외하며 남은78/A출처/귀속은 유지한다. 임시 fixture에서 두 번 실행하는 소유권 시험의 합성 B/C는 실제 설치가 아니다.
+
+### 수락 경계
+
+격리 소스305/305·catalog103·type/lint 통과와 독립 준비검토는 이관 준비 증거다. 실제 최신 main before30/core30의 full identity·equal-readiness RGBA0·A/A·오류0와 원본 시각 검토가 별도로 필요하다. 양성/edge14와 음성16(first-open)을 구분하고 저장되지 않은 repeat source absence를 주장하지 않는다. 그 뒤 B/C2 data-only와 실제data30을 별도로 검증한다.
+
+실제 main before30·독립 원본 검토 후 core16을 적용했다. 실제 main305/305·type/lint·catalog103은 통과했고 core30은 미실행이며 [단계별 증거](../verification/heath-core/REPORT.md)를 따른다.
 
 ## 7. JSON Schema 방언과 data-only 설치 경계
 

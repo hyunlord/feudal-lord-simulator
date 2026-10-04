@@ -1,3 +1,4 @@
+import { validateLandDecals } from './landDecalValidation';
 import { validateFieldTextures } from './fieldTextureValidation';
 import { validateSeasonVariants } from './seasonVariantValidation';
 import type { ArtBundle, ArtPoint, ArtRect } from './artContract';
@@ -5,7 +6,7 @@ import type { ArtSchemaIssue } from './schemaValidation';
 
 /** Semantic checks require the complete bundle set so references can cross bundle boundaries. */
 export function validateRegistryData(bundles: readonly ArtBundle[]): readonly ArtSchemaIssue[] {
-  const issues: ArtSchemaIssue[] = [...validateSeasonVariants(bundles), ...validateFieldTextures(bundles)];
+  const issues: ArtSchemaIssue[] = [...validateSeasonVariants(bundles), ...validateFieldTextures(bundles), ...validateLandDecals(bundles)];
   const identities = new Set<string>();
   const entries = bundles.flatMap(bundle => bundle.entries);
   const byId = new Map(entries.map(entry => [entry.id, entry]));
@@ -52,7 +53,7 @@ export function validateRegistryData(bundles: readonly ArtBundle[]): readonly Ar
         if (!finiteScaled(Object.values(point))) report(at, 'Scaled port overflows');
       }
     }
-    if (entry.kind === 'ground-prop' && entry.wealthRange && entry.wealthRange.min !== undefined && entry.wealthRange.max !== undefined && entry.wealthRange.min >= entry.wealthRange.max) report(at, 'Wealth range requires min < max');
+    if (entry.kind === 'ground-prop' && entry.placement !== 'land' && entry.wealthRange && entry.wealthRange.min !== undefined && entry.wealthRange.max !== undefined && entry.wealthRange.min >= entry.wealthRange.max) report(at, 'Wealth range requires min < max');
     if (entry.kind === 'state-overlay') for (const id of entry.targetBodyIds) {
       const body = byId.get(id);
       if (!body || (body.kind !== 'building-body' && body.kind !== 'landmark')) { report(at, `Missing body or landmark target ${id}`); continue; }

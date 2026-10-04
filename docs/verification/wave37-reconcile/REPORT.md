@@ -2,7 +2,7 @@
 
 **상태: installed_by16 commit 및 실제 post-ledger after4 runtime PASS / 최종 phase2 게시 관문 대기.** 게시된 `90d9b5865bee4dc012f49f6eded135ac85975e78` 위에서 기존 LM-R1 사용의 미표시16행을 `RENDER-B-W37`로 표시했다. 신규 코드·PNG·출처행 설치가 아니다.
 
-[application.json](application.json)은 실제 적용 전후 장부 SHA, exact16행, CRLF 보존, 기존 LM-R1 12와 unsupported fisher/shepherd4 공란 보존을 기록한다. 장부6,122 records의 나머지 열·행은 모두 byte/field 동일하다. source/public SHA 및 provenance의 모든 원문 열과 원행 번호를 prepared manifest에 재대조했다. 현재 원425는 **150표시+4byteproof 미표시+255활성 미입증+16퇴역=425**이며 byteproof154는 그대로다.
+[application.json](application.json)은 실제 적용 전후 장부 SHA, exact16행, CRLF 보존, 기존 LM-R1 12와 unsupported fisher/shepherd4 공란 보존을 기록한다. 장부6,122 records의 나머지 열·행은 모두 byte/field 동일하다. source/public SHA 및 provenance의 모든 원문 열과 원행 번호를 prepared manifest에 재대조했다. W37 승격 `bc29f6b2` 당시 원425는 **150표시+4byteproof 미표시+255활성 미입증+16퇴역=425**이며 byteproof154였다. 이후 FIELD3 승격 `d3673823`의 집계는 153표시·runtime157·physical157이다([후속 증거](../field-spring3-data/REPORT.md)). 이 문서의 W37 원본 영수증은 당시 수치를 보존한다.
 
 ## 과거 증거와 별도 작업 이후 증거
 
