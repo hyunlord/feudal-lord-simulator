@@ -11,3 +11,10 @@ export const NW08_CONTESTED_SUCCESSION_PERMILLE = 250;
  * estate's title — its heirs, widow or kin claim it back and sue, permille a year (one open on an estate at a time).
  */
 export const RECOVERY_CLAIM_PERMILLE = 100;
+/**
+ * ER-21 (Paston): the house brings its old papers to the suit — each of these with this chance, permille (seed draw).
+ * Without them its claim (inheritance 60) never passes the lord's defence (title 60 + hold 20); with a charter, or a deed
+ * and witnesses, it does — about half its suits. Game estimate.
+ */
+export const RECOVERY_EVIDENCE_PERMILLE = 500;
+export const RECOVERY_EVIDENCE: readonly ("charter" | "deed" | "witnesses")[] = ["charter", "deed", "witnesses"];

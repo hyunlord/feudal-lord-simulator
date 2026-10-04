@@ -5,10 +5,10 @@
  * one back and sues (the Paston rule: the more the lord wins, the more he must keep), enforcing a judgment it won once a
  * year. Nothing runs without `state.agency`.
  */
-import { NW07_CLAIM_SURFACES_PERMILLE, NW08_CONTESTED_SUCCESSION_PERMILLE, RECOVERY_CLAIM_PERMILLE } from "../content/neighbourRulesConfig";
+import { NW07_CLAIM_SURFACES_PERMILLE, NW08_CONTESTED_SUCCESSION_PERMILLE, RECOVERY_CLAIM_PERMILLE, RECOVERY_EVIDENCE, RECOVERY_EVIDENCE_PERMILLE } from "../content/neighbourRulesConfig";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD, raiseClaim } from "./estates";
-import { enforcePossession, fileSuit } from "./estateSuits";
+import { addSuitEvidence, enforcePossession, fileSuit } from "./estateSuits";
 import { hashSeed } from "./prng";
 import { stateCalendar } from "./scenarioState";
 
@@ -49,7 +49,14 @@ export function advanceNeighbourRules(state: GameState): GameState {
     const piece = taken[hashSeed(state.seed, `recovery-piece:${estate.id}`, year) % taken.length]!;
     next = raiseClaim(next, { claimant: estate.titleHolder, estateId: estate.id, pieceId: piece.id, basis: "inheritance" });
     const claim = estatesOf(next).claims.find(entry => entry.claimant === estate.titleHolder && entry.estateId === estate.id && entry.pieceId === piece.id && entry.status === "open");
-    if (claim !== undefined) next = fileSuit(next, claim.id);
+    if (claim === undefined) continue;
+    next = fileSuit(next, claim.id);
+    // The house's old papers, each by the seed (a non-lord plaintiff's evidence costs the treasury nothing).
+    const suit = estatesOf(next).suits.find(entry => entry.claimId === claim.id);
+    if (suit === undefined) continue;
+    for (const kind of RECOVERY_EVIDENCE) {
+      if (hashSeed(state.seed, `recovery-evidence:${claim.id}:${kind}`, year) % 1000 < RECOVERY_EVIDENCE_PERMILLE) next = addSuitEvidence(next, suit.id, kind);
+    }
   }
   // A neighbour that won its judgment tries once a year to take possession (the lord's own suits are his to enforce).
   for (const suit of estatesOf(next).suits) if (suit.plaintiff !== LORD && suit.stage === "enforcing") next = enforcePossession(next, suit.id);
